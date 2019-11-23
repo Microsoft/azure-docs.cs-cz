@@ -17,18 +17,18 @@ ms.locfileid: "71844690"
 
 V Azure Portal můžete nakonfigurovat, vypsat a stáhnout [protokoly pomalých dotazů Azure Database for MariaDB](concepts-server-logs.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Postup v tomto článku vyžaduje, abyste měli [Azure Database for MariaDB Server](quickstart-create-mariadb-server-database-using-azure-portal.md).
 
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Nakonfigurujte přístup k protokolu pomalých dotazů. 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte server Azure Database for MariaDB.
 
 3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. 
-   @no__t – 0Screenshot možností protokolu serveru @ no__t-1
+   ![snímek obrazovky s možnostmi protokolu serveru](./media/howto-configure-server-logs-portal/1-select-server-logs-configure.png)
 
 4. Pokud chcete zobrazit parametry serveru, vyberte **kliknutím sem povolíte protokoly a nakonfigurujete parametry protokolu**.
 
@@ -71,10 +71,10 @@ Po zahájení protokolování můžete zobrazit seznam dostupných protokolů po
 1. Určete, které datové jímky mají Odeslat protokoly pomalých dotazů (účet úložiště, centrum událostí nebo Log Analytics pracovní prostor).
 
 1. Jako typ protokolu vyberte **MySqlSlowLogs** .
-@no__t 0Screenshot možností konfigurace nastavení diagnostiky @ no__t-1
+![snímku možností konfigurace nastavení diagnostiky](./media/howto-configure-server-logs-portal/configure-diagnostic-setting.png)
 
 1. Po nakonfigurování datových umyvadel pro přesměrování protokolů pomalých dotazů na vyberte **Uložit**.
-@no__t 0Screenshot možností konfigurace nastavení diagnostiky s zvýrazněným parametrem @ no__t-1
+![snímek možností konfigurace nastavení diagnostiky se zvýrazněným](./media/howto-configure-server-logs-portal/save-diagnostic-setting.png)em Uložit
 
 1. Přístup k protokolům pomalým dotazům můžete prozkoumat v datech, která jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
 

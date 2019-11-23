@@ -58,10 +58,10 @@ Můžete zvolit, aby se v tabulce společně **AggregatedValuey**další proměn
 
 Předpokládejme například, že pravidlo pro výstrahu protokolu měření metrik bylo nakonfigurováno jako:
 
-- Dotaz na @no__t – 0  
-- časové období 6 hodin
-- prahová hodnota 50
-- logika výstrah pro tři po sobě jdoucí porušení
+- Dotaz na `search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)`  
+- Časové období 6 hodin
+- Prahová hodnota 50
+- Logika výstrah pro tři po sobě jdoucí porušení
 - **Agregovat** podle zvolených jako **$Table**
 
 Protože příkaz obsahuje **Souhrn... a poskytuje** dvě proměnné (**časové razítko** a **$Table**), systém zvolí **$Table** pro **agregaci**na. Systém seřadí tabulku výsledků podle pole **$Table** , jak je znázorněno na následujícím snímku obrazovky. Pak se podívejte na více instancí **AggregatedValue** pro každý typ tabulky (jako **availabilityResults**), aby se zjistilo, jestli došlo k třem nebo více po sobě jdoucích porušení.
@@ -78,7 +78,7 @@ Nyní předpokládejme, že pravidlo pro výstrahu protokolu měření metrik by
 
    ![Zpracování dotazu měření metrik s hodnotou v čísle](media/alert-log-troubleshoot/LogMMtimestamp.png)
 
-Vzhledem k tomu, že **agregace** na je definována v **časovém razítku**, data jsou řazena ve sloupci **časového razítka** (označeno červeně). Pak budeme seskupovat podle **časového razítka**. Například hodnoty pro `2018-10-17T06:00:00Z` se budou považovat za jeden vykreslení nebo entitu (označeno oranžovým). V tomto grafu hodnoty nebo entitě služba Alert nenajde žádná po sobě jdoucí porušení (protože každá hodnota **časového razítka** obsahuje pouze jednu položku). Výstraha se proto nikdy neaktivuje. V takovém případě musí uživatel buď:
+Vzhledem k tomu, že **agregace** na je definována v **časovém razítku**, data jsou řazena ve sloupci **časového razítka** (označeno červeně). Pak budeme seskupovat podle **časového razítka**. Například hodnoty pro `2018-10-17T06:00:00Z` budou považovány za jeden vykreslení nebo entitu (označeno oranžovým). V tomto grafu hodnoty nebo entitě služba Alert nenajde žádná po sobě jdoucí porušení (protože každá hodnota **časového razítka** obsahuje pouze jednu položku). Výstraha se proto nikdy neaktivuje. V takovém případě musí uživatel buď:
 
 - Přidejte fiktivní proměnnou nebo existující proměnnou (například **$Table**) pro správné řazení pomocí pole **agregace po** .
 - Překonfigurujte pravidlo výstrahy tak, aby místo toho používalo logiku výstrahy na základě **celkového porušení** .

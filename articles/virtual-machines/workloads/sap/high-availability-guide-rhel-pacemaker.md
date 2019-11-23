@@ -108,9 +108,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
    > [!IMPORTANT]
    > Doporučujeme, aby následující verze agenta Azure plot (nebo novější) mohly zákazníkům těžit z rychlejšího převzetí služeb při selhání, pokud dojde k selhání prostředku nebo pokud uzly clusteru nemůžou vzájemně komunikovat.  
-   > RHEL 7,6: fence-Agents-4.2.1 -11. el7 _ 6.8  
-   > RHEL 7,5: fence-Agents-4.0.11 -86. el7 _ 5.8  
-   > RHEL 7,4: fence-Agents-4.0.11 -66. el7 _ 4.12  
+   > RHEL 7,6: plot-Agents-4.2.1-11. el7_6.8  
+   > RHEL 7,5: plot-Agents-4.0.11-86. el7_5.8  
+   > RHEL 7,4: plot-Agents-4.0.11-66. el7_4.12  
    > Další informace najdete v článku o [virtuálním počítači Azure spuštěném jako RHELý člen clusteru s vysokou dostupností, který může být ve velkém čase, nebo když se virtuální počítač vypne, neprojde nebo](https://access.redhat.com/solutions/3408711)neuplyne.
 
    Podívejte se na verzi agenta Azure plot. V případě potřeby ho aktualizujte na verzi, která se rovná nebo je vyšší než výše uvedená.
@@ -265,7 +265,7 @@ sudo pcs property set stonith-timeout=900
 K nakonfigurování ochranného zařízení použijte následující příkaz.
 
 > [!NOTE]
-> Možnost ' pcmk_host_map ' je vyžadována pouze v příkazu, pokud názvy hostitelů RHEL a názvy uzlů Azure nejsou totožné. Přečtěte si část tučné v příkazu.
+> Možnost ' pcmk_host_map ' je požadována pouze v příkazu, pokud názvy hostitelů RHEL a názvy uzlů Azure nejsou stejné. Přečtěte si část tučné v příkazu.
 
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
 

@@ -238,7 +238,7 @@ Otevřete soubor `pom.xml` v adresáři `initial/spring-boot-todo` a přidejte n
 </plugins>
 ```
 
-## <a name="deploy-to-app-service-on-linux"></a>Nasazení na App Service v systému Linux
+## <a name="deploy-to-app-service-on-linux"></a>Nasazení do App Service v Linuxu
 
 K nasazení aplikace TODO pro Azure App Service v systému Linux použijte `azure-webapp:deploy` cíl Maven.
 

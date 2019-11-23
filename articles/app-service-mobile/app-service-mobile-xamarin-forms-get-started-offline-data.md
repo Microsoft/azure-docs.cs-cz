@@ -27,7 +27,7 @@ ms.locfileid: "72388428"
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Přehled
 Tento kurz zavádí funkci offline synchronizace pro Azure Mobile Apps pro Xamarin. Forms. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací – zobrazení, přidávání nebo upravování dat – i když není dostupné žádné síťové připojení. Změny jsou uloženy v místní databázi. Jakmile je zařízení zase online, tyto změny se synchronizují se vzdálenou službou.
@@ -37,7 +37,7 @@ Tento kurz je založený na řešení rychlý Start pro Xamarin. Forms pro Mobil
 Další informace o funkci offline synchronizace najdete v tématu [synchronizace offline dat v Azure Mobile Apps][2].
 
 ## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>Povolení funkce offline synchronizace v řešení pro rychlé zprovoznění
-Kód offline synchronizace je součástí projektu pomocí C# direktiv preprocesoru. Pokud je definován **offline symbol @ no__t-1SYNC @ no__t-2ENABLED** , jsou tyto cesty kódu zahrnuty do sestavení. Pro aplikace pro Windows je nutné nainstalovat také platformu SQLite.
+Kód offline synchronizace je součástí projektu pomocí C# direktiv preprocesoru. Pokud je definován symbol **\_synchronizace\_offline** , jsou tyto cesty kódu zahrnuty do sestavení. Pro aplikace pro Windows je nutné nainstalovat také platformu SQLite.
 
 1. V aplikaci Visual Studio klikněte pravým tlačítkem na řešení > **Spravovat balíčky NuGet pro řešení...** , vyhledejte a nainstalujte balíček NuGet **Microsoft. Azure. Mobile. Client. SQLiteStore** pro všechny projekty v řešení.
 2. V Průzkumník řešení otevřete soubor TodoItemManager.cs z projektu s **přenosným** názvem, který je Přenosná knihovna tříd projektu, a pak zrušte komentář následující direktivy preprocesoru:
@@ -149,13 +149,13 @@ V této části upravíte projekt klienta pro simulaci offline scénáře pomoc�
 ## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>Aktualizace klientské aplikace pro opětovné připojení k vašemu mobilnímu back-endu
 V této části znovu připojíte aplikaci k mobilnímu back-endu, která simuluje aplikaci, která se vrátí zpátky do online stavu. Při provádění gesta aktualizace se data synchronizují do mobilního back-endu.
 
-1. Znovu otevřete Constants.cs. Opravte `applicationURL` a nasměrujte na správnou adresu URL.
+1. Znovu otevřete Constants.cs. Opravte `applicationURL`, aby odkazovalo na správnou adresu URL.
 2. Znovu sestavte a spusťte klientskou aplikaci. Aplikace se po spuštění pokusí o synchronizaci s back-endu mobilní aplikace. Ověřte, že v konzole ladění nejsou protokolovány žádné výjimky.
 3. Volitelné Zobrazte aktualizovaná data pomocí Průzkumník objektů systému SQL Server nebo nástroje REST, jako je Fiddler nebo [post][6]. Všimněte si, že data byla synchronizovaná mezi databází back-end a místním úložištěm.
 
     Všimněte si, že data byla synchronizovaná mezi databází a místním úložištěm a obsahuje položky, které jste přidali v době, kdy byla aplikace odpojena.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další prostředky
 * [Synchronizace offline dat v prostředí Azure Mobile Apps][2]
 * [POSTUPY pro sadu Azure Mobile Apps .NET SDK][8]
 

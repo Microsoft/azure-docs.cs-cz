@@ -50,10 +50,10 @@ V článku limity [, kvóty a omezení předplatného a služeb Azure](../../azu
 Pomocí jednoho z následujících nástrojů nebo sad SDK můžete vytvářet a vytvářet datové továrny:
 
 * **Visual Studio** Pomocí sady Visual Studio můžete vytvořit datovou továrnu Azure. Podrobnosti najdete v tématu [Vytvoření prvního datového kanálu pomocí sady Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) .
-* **Azure PowerShell** Kurz nebo návod k vytvoření datové továrny pomocí PowerShellu najdete v tématu věnovaném [Vytvoření a sledování Azure Data Factory používání Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) . Kompletní dokumentaci k Data Factory rutinám najdete v tématu [Data Factory][adf-powershell-reference] obsahu rutiny v knihovně MSDN.
+* **Azure PowerShell** Kurz nebo návod k vytvoření datové továrny pomocí PowerShellu najdete v tématu věnovaném [Vytvoření a sledování Azure Data Factory používání Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) . Kompletní dokumentaci k Data Factory rutinám najdete v tématu [Data Factory obsahu rutiny][adf-powershell-reference] v knihovně MSDN.
 * **Knihovna tříd .NET** Pomocí programu Data Factory .NET SDK můžete programově vytvářet datové továrny. Návod k vytvoření datové továrny pomocí sady .NET SDK najdete v tématu [Vytvoření, monitorování a Správa datových továren pomocí sady .NET SDK](data-factory-create-data-factories-programmatically.md) . Kompletní dokumentaci sady Data Factory .NET SDK naleznete v tématu [Data Factory reference knihovny tříd][msdn-class-library-reference] .
 * **REST API** K vytváření a nasazování datových továren můžete použít taky REST API vystavené službou Azure Data Factory. Ucelenou dokumentaci k Data Factory REST API najdete v tématu [Data Factory REST API Reference][msdn-rest-api-reference] .
-* **Šablona Azure Resource Manager** Viz [kurz: Sestavte svou první datovou továrnu](data-factory-build-your-first-pipeline-using-arm.md) Azure pomocí Azure Resource Manager detailů šablony.
+* **Šablona Azure Resource Manager** Viz [kurz: sestavení prvního objektu pro vytváření dat Azure pomocí Azure Resource Manager](data-factory-build-your-first-pipeline-using-arm.md) detailů šablony FO.
 
 ### <a name="can-i-rename-a-data-factory"></a>Můžu přejmenovat datovou továrnu?
 Ne. Podobně jako u jiných prostředků Azure nejde změnit název objektu pro vytváření dat Azure.
@@ -66,16 +66,16 @@ Ano. V okně Data Factory použijte tlačítko **přesunout** , jak je znázorn�
 ### <a name="what-are-the-compute-environments-supported-by-data-factory"></a>Jaká jsou výpočetní prostředí podporovaná nástrojem Data Factory?
 Následující tabulka uvádí seznam výpočetních prostředí podporovaných Data Factory a aktivit, které na nich můžou běžet.
 
-| Výpočetní prostředí | aktivity |
+| Výpočetní prostředí | activities |
 | --- | --- |
 | [Cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) nebo [vlastní cluster HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[Dotnet](data-factory-use-custom-activities.md), [podregistr](data-factory-hive-activity.md), [prase](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [streamování Hadoop](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning aktivity: Dávkové zpracování a aktualizace prostředku](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Aktivity Machine Learning: Dávkové spouštění a Aktualizace prostředku](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[U-SQL Data Lake Analytics](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Uložená procedura](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Jak Azure Data Factory porovnat s služba SSIS (SQL Server Integration Services) (SSIS)? 
-Podívejte se [na Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) prezentaci od některého z našich odborníků MVP (nejvíc vyhodnocených profesionálů): Reza rad. Některé nedávné změny v Data Factory nemusí být uvedeny v balíčku snímků. Nepřetržitě přidáváme další možnosti pro Azure Data Factory. Nepřetržitě přidáváme další možnosti pro Azure Data Factory. Tyto aktualizace budeme začlenit do porovnání technologií pro integraci dat od Microsoftu po celý tento rok.   
+Podívejte se na prezentaci [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) z některého z našich odborníků MVP (nejvíc vyhodnocených profesionálů): Reza rad. Některé nedávné změny v Data Factory nemusí být uvedeny v balíčku snímků. Nepřetržitě přidáváme další možnosti pro Azure Data Factory. Nepřetržitě přidáváme další možnosti pro Azure Data Factory. Tyto aktualizace budeme začlenit do porovnání technologií pro integraci dat od Microsoftu po celý tento rok.   
 
 ## <a name="activities---faq"></a>Aktivity – Nejčastější dotazy
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Jaké jsou různé typy aktivit, které můžete použít v kanálu Data Factory?

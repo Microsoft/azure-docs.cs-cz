@@ -72,7 +72,7 @@ Předdefinované sešity poskytují integrovaná data z připojených zdrojů da
       ![Řídicí panel PAL Alto](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Sešity můžete přizpůsobit úpravou hlavního dotazu ![button @ no__t-1. Kliknutím na tlačítko ![button @ no__t-1 můžete přejít na Log Analytics a [Upravit dotaz tam](../azure-monitor/log-query/get-started-portal.md). můžete také vybrat tři tečky (...) a vybrat **přizpůsobit data dlaždice**, což vám umožní upravit hlavní filtr času nebo odebrat konkrétní dlaždice z sešit.
+Sešity můžete přizpůsobit úpravou ![](./media/qs-get-visibility/edit-query-button.png)tlačítkem hlavní dotaz. Můžete kliknout na tlačítko ![tlačítko](./media/qs-get-visibility/go-to-la-button.png) přejít na Log Analytics a [Upravit dotaz tam](../azure-monitor/log-query/get-started-portal.md). můžete také vybrat tři tečky (...) a vybrat **přizpůsobit data dlaždice**, což umožňuje upravit hlavní filtr času nebo odebrat konkrétní dlaždice ze sešitu.
 
 Další informace o práci s dotazy najdete v tématu [kurz: vizuální data v Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

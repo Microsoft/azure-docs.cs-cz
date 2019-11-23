@@ -29,9 +29,9 @@ Rychlý Start používá předem napsanou aplikaci pro Android k posílání tel
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Android Studio z @no__t – 0. Další informace o instalaci Android Studio najdete v tématu [instalace Androidu](https://developer.android.com/studio/install).
+* Android Studio z https://developer.android.com/studio/. Další informace o instalaci Android Studio najdete v tématu [instalace Androidu](https://developer.android.com/studio/install).
 
 * Ukázka v tomto článku se používá Android SDK 27.
 
@@ -43,7 +43,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * [Ukázková aplikace pro Android](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample) , kterou spouštíte v tomto rychlém startu, je součástí úložiště Azure-IoT-Samples-Java na GitHubu. Stáhněte nebo naklonujte úložiště [Azure-IoT-Samples-Java](https://github.com/Azure-Samples/azure-iot-samples-java) .
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -81,13 +81,13 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
         \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
 
-2. V Android Studio otevřete *Gradle. Properties* pro ukázkový projekt a nahraďte zástupný symbol **Device_Connection_String** připojovacím řetězcem zařízení, který jste si poznamenali dříve.
+2. V Android Studio otevřete *Gradle. Properties* pro ukázkový projekt a nahraďte zástupný text **Device_Connection_String** pomocí připojovacího řetězce zařízení, který jste si poznamenali dříve.
 
     ```
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. V Android Studio klikněte na **soubor** > **Synchronizace projektu se soubory Gradle**. Ověřte, že se sestavení dokončilo.
+3. V Android Studio klikněte na **soubor** > **synchronizovat projekt se soubory Gradle**. Ověřte, že se sestavení dokončilo.
 
    > [!NOTE]
    > Pokud synchronizace projektu neproběhne úspěšně, může to být z některého z následujících důvodů:
@@ -95,7 +95,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
    > * Verze modulu plug-in pro Android Gradle a Gradle, na které se odkazuje v projektu, jsou zastaralé pro vaši verzi Android Studio. Podle [těchto pokynů](https://developer.android.com/studio/releases/gradle-plugin) můžete odkazovat a instalovat správné verze modulu plug-in a Gradle pro vaši instalaci.
    > * Licenční smlouva pro Android SDK nebyla podepsána. Podle pokynů ve výstupu sestavení podepište licenční smlouvu a Stáhněte si sadu SDK.
 
-4. Po dokončení sestavení klikněte na **spustit** > **Spustit aplikaci**. Nakonfigurujte aplikaci tak, aby běžela na fyzickém zařízení s Androidem nebo v emulátoru Androidu. Další informace o spuštění aplikace pro Android na fyzickém zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
+4. Po dokončení sestavování klikněte na **spustit** > **Spustit aplikaci**. Nakonfigurujte aplikaci tak, aby běžela na fyzickém zařízení s Androidem nebo v emulátoru Androidu. Další informace o spuštění aplikace pro Android na fyzickém zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Po načtení aplikace kliknutím na tlačítko **Start** spustíte odesílání telemetrie do IoT Hub:
 

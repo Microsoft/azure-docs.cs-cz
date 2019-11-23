@@ -20,7 +20,7 @@ ms.locfileid: "72025789"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Pochopení a řešení potíží s Proxy aplikací služby Azure Active Directory CORS
 
-[Sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/)@no__t – 1can někdy představují výzvy pro aplikace a rozhraní API, které publikujete prostřednictvím proxy aplikací služby Azure Active Directory. Tento článek popisuje problémy a řešení pro Azure Proxy aplikací služby AD CORS.
+ pro [sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/) může někdy docházet k problémům s aplikacemi a rozhraními API, která publikujete prostřednictvím proxy aplikací služby Azure Active Directory. Tento článek popisuje problémy a řešení pro Azure Proxy aplikací služby AD CORS.
 
 Zabezpečení prohlížeče obvykle brání webové stránce v provádění požadavků AJAX na jinou doménu. Toto omezení se nazývá *zásady stejného původu*a brání škodlivému webu v čtení citlivých dat z jiné lokality. V některých případech však můžete chtít povolit jiným webům volat vaše webové rozhraní API. CORS je standard W3C, který umožňuje serveru zmírnit zásady stejného původce a při zamítnutí dalších požadavků umožnit některé žádosti mezi zdroji.
 
@@ -28,15 +28,15 @@ Zabezpečení prohlížeče obvykle brání webové stránce v provádění pož
 
 Dvě adresy URL mají stejný původ, pokud mají identická schémata, hostitele a porty ([RFC 6454](https://tools.ietf.org/html/rfc6454)), například:
 
--   http: @no__t – 0/contoso.com/foo.html
--   http: @no__t – 0/contoso.com/bar.html
+-   http:\//contoso.com/foo.html
+-   http:\//contoso.com/bar.html
 
 Následující adresy URL mají jiný původ než předchozí dvě:
 
--   http: \//contoso. NET – odlišná doména
--   http: \//contoso.com:9000/foo.html – jiný port
--   https: \//contoso.com/foo.html – odlišné schéma
--   http: \//www.contoso.com/foo.html – odlišná subdoména
+-   http:\//contoso.net – odlišná doména
+-   http:\//contoso.com:9000/foo.html – jiný port
+-   https:\//contoso.com/foo.html – odlišné schéma
+-   http:\//www.contoso.com/foo.html – odlišná subdoména
 
 Zásady stejného původu zabraňují aplikacím v přístupu k prostředkům z jiných zdrojů, pokud nepoužívají správné hlavičky řízení přístupu. Pokud jsou hlavičky CORS chybějící nebo nesprávné, požadavky na více zdrojů selžou. 
 
@@ -46,7 +46,7 @@ Problémy CORS můžete identifikovat pomocí ladicích nástrojů prohlížeče
 1. Stisknutím klávesy **F12** otevřete konzolu ladění.
 1. Zkuste reprodukování transakce a zkontrolujte zprávu konzoly. Porušení CORS vyvolá chybu konzoly týkající se původu.
 
-Na následujícím snímku obrazovky se při výběru tlačítka **vyzkoušet** vyvolala chybová zpráva CORS s protokolem https: \//corswebclient-contoso. msappproxy. NET se nenašla v hlavičce Access-Control-Allow-Origin.
+Když na následujícím snímku obrazovky vyberete tlačítko **vyzkoušet** , vyvolala se chybová zpráva CORS s protokolem https:\//corswebclient-contoso.msappproxy.NET se nenašlo v hlavičce Access-Control-Allow-Origin.
 
 ![Problém CORS](./media/application-proxy-understand-cors-issues/image3.png)
 
@@ -82,8 +82,8 @@ Místo toho nastavte **interní adresu URL** pro publikování nadřazeného adr
 
 Výsledné adresy URL aplikací efektivně vyřeší problém CORS:
 
-- https: \//corswebclient-contoso. msappproxy. NET/CORSWebService
-- https: \//corswebclient-contoso. msappproxy. NET/CORSWebClient
+- https:\//corswebclient-contoso.msappproxy.net/CORSWebService
+- https:\//corswebclient-contoso.msappproxy.net/CORSWebClient
 
 ### <a name="option-3-update-http-headers"></a>Možnost 3: Aktualizace hlaviček protokolu HTTP
 
@@ -93,7 +93,7 @@ Přidejte vlastní hlavičku HTTP odpovědi na webovou službu, aby odpovídala 
 
 Tato úprava nevyžaduje žádné změny kódu. Můžete ho ověřit v trasování Fiddler:
 
-@No__t **přidání hlavičky**– 1
+**Vystavte\ přidávání hlaviček** .
 HTTP/1.1 200 OK \
 Cache-Control: no-cache \
 Pragma: no-cache \
@@ -101,7 +101,7 @@ Content-Type: text/prostý; charset = UTF-8 \
 Konec platnosti:-1 \
 Lišící se: přijmout – kódování \
 Server: Microsoft-IIS/8.5 Microsoft-HTTPAPI/2.0 \
-**Přístup-řízení-Allow-Origin: https @ no__t-1//corswebclient-contoso. msappproxy. net**\
+**Access-Control-Allow-Origin: https\://corswebclient-contoso.msappproxy.net**\
 X-AspNet-verze: 4.0.30319 \
 X-napájen-by: ASP.NET \
 Content-Length: 17
@@ -114,7 +114,7 @@ Aplikaci můžete změnit tak, aby podporovala CORS přidáním hlavičky Access
 
 Některé problémy CORS nelze vyřešit, například když vaše aplikace přesměruje na *Login.microsoftonline.com* k ověření a platnost přístupového tokenu vyprší. Volání CORS pak neproběhne úspěšně. Alternativním řešením pro tento scénář je prodloužení životnosti přístupového tokenu, aby nedocházelo k vypršení jeho platnosti během uživatelské relace. Další informace o tom, jak to udělat, najdete [v tématu konfigurovatelné životnosti tokenů ve službě Azure AD](../develop/active-directory-configurable-token-lifetimes.md).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 - [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md) 
 - [Plánování nasazení služby Azure Proxy aplikací služby AD](application-proxy-deployment-plan.md) 
 - [Vzdálený přístup k místním aplikacím prostřednictvím Proxy aplikací služby Azure Active Directory](application-proxy.md) 

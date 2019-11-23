@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect synchronizace: Proveďte změnu konfigurace v Azure AD Connect synchronizaci | Microsoft Docs'
+title: 'Azure AD Connect synchronizace: proveďte změnu konfigurace v Azure AD Connect synchronizaci | Microsoft Docs'
 description: Provede vás postupem provedení změny konfigurace v Azure AD Connect synchronizaci.
 services: active-directory
 documentationcenter: ''
@@ -23,7 +23,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/29/2019
 ms.locfileid: "71672969"
 ---
-# <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizace: Provedení změny ve výchozí konfiguraci
+# <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizace: proveďte změnu ve výchozí konfiguraci.
 Tento článek vás seznámí s postupem, jak provést změny ve výchozí konfiguraci v Azure Active Directory (Azure AD) Connect Sync. Poskytuje kroky pro některé běžné scénáře. S tímto vědomím byste měli být schopni provádět jednoduché změny vlastní konfigurace na základě vašich vlastních obchodních pravidel.
 
 > [!WARNING]
@@ -33,7 +33,7 @@ Tento článek vás seznámí s postupem, jak provést změny ve výchozí konfi
 
 ## <a name="synchronization-rules-editor"></a>Editor pravidel synchronizace
 Editor pravidel synchronizace slouží k zobrazení a změně výchozí konfigurace. Můžete ji najít v nabídce **Start** pod skupinou **Azure AD Connect** .  
-Nabídka ![Start s editorem pravidel synchronizace @ no__t-1
+![nabídku Start s editorem pravidel synchronizace](./media/how-to-connect-sync-change-the-configuration/startmenu2.png)
 
 Když otevřete Editor, zobrazí se výchozí Přednastavená pravidla.
 
@@ -59,20 +59,20 @@ Nejběžnějšími změnami jsou toky atributů. Data ve zdrojovém adresáři n
 ### <a name="create-the-rule"></a>Vytvoření pravidla
 1. Klikněte na tlačítko **Přidat nové pravidlo**.
 2. Na stránce **Popis** zadejte následující:  
-   @no__t – filtrování pravidel 0Inbound @ no__t-1  
-   * **Název**: Zadejte popisný název pravidla.
-   * **Popis**: Dejte nějaké vysvětlení, aby mohl někdo jiný pochopit, pro které pravidlo platí.
-   * **Připojený systém**: Toto je systém, ve kterém lze objekt najít. V takovém případě vyberte možnost **konektor služby Active Directory**.
-   * **Připojený systém/typ objektu úložiště metaverse**: Vyberte **uživatele** a **osobu**v uvedeném pořadí.
-   * **Typ odkazu**: Změňte tuto hodnotu na **Join**.
-   * **Priorita**: Zadejte hodnotu, která je v systému jedinečná. Dolní číselná hodnota označuje vyšší prioritu.
-   * **Značka**: Nechte toto pole prázdné. Pouze dodaná pravidla od společnosti Microsoft by měla mít tato pole naplněna hodnotou.
+   ![filtrování příchozích pravidel](./media/how-to-connect-sync-change-the-configuration/description2.png)  
+   * **Název**: zadejte popisný název pravidla.
+   * **Popis**: Dejte nějaké vysvětlení, aby někdo jiný mohl pochopit, pro které pravidlo platí.
+   * **Připojený systém**: Jedná se o systém, ve kterém se objekt nachází. V takovém případě vyberte možnost **konektor služby Active Directory**.
+   * **Připojený systém/typ objektu úložiště metaverse**: vyberte **uživatele** a **osobu**, v uvedeném pořadí.
+   * **Typ odkazu**: Změňte tuto hodnotu na **připojit**.
+   * **Priorita**: zadejte hodnotu, která je v systému jedinečná. Dolní číselná hodnota označuje vyšší prioritu.
+   * **Tag**: nechejte toto prázdné. Pouze dodaná pravidla od společnosti Microsoft by měla mít tato pole naplněna hodnotou.
 3. Na stránce **Filtr oboru** zadejte jméno **daného ISNOTNULL**.  
-   @no__t – filtr oboru pravidel 0Inbound @ no__t-1  
+   ![filtr oboru příchozího pravidla](./media/how-to-connect-sync-change-the-configuration/scopingfilter.png)  
    Tato část slouží k definování objektů, které by měly pravidlo použít. Pokud je ponecháno prázdné, pravidlo bude platit pro všechny uživatelské objekty. To však zahrnuje konferenční místnosti, účty služeb a jiné uživatelské objekty mimo uživatele.
 4. Na stránce **pravidla spojování** ponechte pole prázdné.
 5. Na stránce **transformace** změňte **FlowType** na **výraz**. Pro **atribut target**vyberte **křestní**jméno. A pro **zdroj**zadejte **PCase ([jméno])** .
-   transformace pravidel @no__t 0Inbound @ no__t-1  
+   ![transformace pravidel pro příchozí](./media/how-to-connect-sync-change-the-configuration/transformations.png)  
    Synchronizační modul rozlišuje velká a malá písmena pro název funkce i název atributu. Pokud zadáte něco špatného, zobrazí se upozornění, když přidáte pravidlo. Můžete uložit a pokračovat, ale je nutné pravidlo znovu otevřít a opravit.
 6. Kliknutím na tlačítko **Přidat** uložte pravidlo.
 
@@ -91,7 +91,7 @@ Z nabídky **Start** otevřete **synchronizační službu** . Kroky v této čá
    1. V horní části vyberte **konektory** . Identifikujte konektor, který jste změnili v předchozí části (v tomto případě Active Directory Domain Services), a vyberte ho. 
    2. V případě **akcí**vyberte **Spustit**.
    3. Vyberte **Úplná synchronizace**a pak vyberte **OK**.
-   @no__t – synchronizace 0Full @ no__t-1  
+   ![úplnou synchronizaci](./media/how-to-connect-sync-change-the-configuration/fullsync.png)  
    Objekty jsou teď aktualizované v úložišti Metaverse. Ověřte změny tím, že prohlížíte objekt v úložišti Metaverse.
 
 **Náhled a Úplná synchronizace pro jeden objekt**  
@@ -100,7 +100,7 @@ Z nabídky **Start** otevřete **synchronizační službu** . Kroky v této čá
    2. Vyberte možnost **Hledat místo v konektoru**. 
    3. Pomocí **oboru** můžete najít objekt, který chcete použít k otestování změny. Vyberte objekt a klikněte na **Náhled**. 
    4. Na nové obrazovce vyberte **Potvrdit náhled**.  
-   @no__t – 0Commit Preview @ no__t-1  
+   verze Preview pro ![potvrzení](./media/how-to-connect-sync-change-the-configuration/commitpreview.png)  
    Tato změna se teď potvrdí do úložiště metaverse.
 
 **Zobrazení objektu v úložišti Metaverse**  
@@ -127,11 +127,11 @@ Pokud chcete vytvořit pravidlo s dalšími toky atributů, udělejte toto:
 1. V nabídce **Start** otevřete **Editor pravidel synchronizace** .
 2. Kliknutím na tlačítko pro **Přidání nového pravidla** u pole **příchozí** zůstane vybraná vlevo.
 3. Zadejte název a popis pravidla. Vyberte místní instanci služby Active Directory a příslušné typy objektů. V **typu odkazu**vyberte **připojit**. V případě **priority**vyberte číslo, které nepoužívá jiné pravidlo. Pravidla předdefinovaných součástí začínají na 100, takže v tomto příkladu lze použít hodnotu 50.
-  ![Attribute Flow 2 @ no__t-1
+  tok atributů ![2](./media/how-to-connect-sync-change-the-configuration/attributeflowjp2.png)
 4. Nechejte **Filtr oboru** prázdný. (To znamená, že by měl platit pro všechny uživatelské objekty v doménové struktuře.)
 5. Nechejte **pravidla JOIN** prázdné. (To znamená, že pravidlo pro vynechání na pole zpracuje všechna spojení.)
 6. V části **transformace**vytvořte následující toky:  
-  @no__t – 0Attribute Flow 3 @ no__t-1
+  tok atributů ![3](./media/how-to-connect-sync-change-the-configuration/attributeflowjp3.png)
 7. Kliknutím na tlačítko **Přidat** uložte pravidlo.
 8. Přejít na **Synchronization Service Manager**. V okně **konektory**vyberte konektor, do kterého jste přidali pravidlo. Vyberte **Spustit**a pak vyberte **Úplná synchronizace**. Úplná synchronizace přepočítá všechny objekty pomocí aktuálních pravidel.
 
@@ -148,7 +148,7 @@ Atribut userPrincipalName ve službě Active Directory není vždy znám uživat
 Například společnost Contoso má dva adresáře služby Azure AD, jednu pro produkční prostředí a jednu pro testování. Chtějí uživatelům v tenantovi, aby v přihlašovacím ID používali jinou příponu:  
 `userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`.
 
-V tomto výrazu proveďte vše vlevo od prvního @-sign (Word) a zřetězení s pevným řetězcem.
+V tomto výrazu proveďte vše vlevo od první @-sign (Word) a zřetězení s pevným řetězcem.
 
 ### <a name="convert-a-multi-value-attribute-to-single-value"></a>Převést vícehodnotový atribut na jednu hodnotu
 Některé atributy ve službě Active Directory jsou ve schématu ve více hodnotách, i když v modulu Uživatelé a počítače služby Active Directory vypadají jako nejednotně. Příkladem je atribut Description:  
@@ -167,12 +167,12 @@ V tomto scénáři Fabrikam jsme provedli, že některé atributy, které synchr
 ![Chybné atributy rozšíření](./media/how-to-connect-sync-change-the-configuration/badextensionattribute.png)
 
 1. Vytvořte nové pravidlo příchozí synchronizace a naplňte jeho popis.
-  @no__t – 0Descriptions @ no__t-1
+  Popisy ![](./media/how-to-connect-sync-change-the-configuration/syncruledescription.png)
 2. Vytvoří toky atributů s **výrazem** pro **FlowType** a **AuthoritativeNull** pro **zdroj**. Literální **AuthoritativeNull** označuje, že hodnota by měla být v úložišti Metaverse prázdná, a to i v případě, že se pravidlo synchronizace s nižší prioritou pokusí naplnit hodnotu.
-  @no__t – 0Transformation pro atributy rozšíření @ no__t-1
+  Transformace ![pro atributy rozšíření](./media/how-to-connect-sync-change-the-configuration/syncruletransformations.png)
 3. Uložte pravidlo synchronizace. Spusťte **synchronizační službu**, najděte konektor, vyberte **Spustit**a pak vyberte **Úplná synchronizace**. Tento krok přepočítá všechny toky atributů.
 4. Ověřte, že se chystá export zamýšlených změn, a to tak, že se bude hledat v prostoru konektoru.
-  ![Staged odstranit @ no__t-1
+  ![dvoufázové odstranění](./media/how-to-connect-sync-change-the-configuration/deletetobeexported.png)
 
 ## <a name="create-rules-with-powershell"></a>Vytváření pravidel pomocí PowerShellu
 Použití editoru pravidel synchronizace funguje v případě, že máte jen několik změn, které je třeba provést. Pokud potřebujete provést mnoho změn, může být prostředí PowerShell lepší volbou. Některé pokročilé funkce jsou dostupné jenom v prostředí PowerShell.
@@ -186,7 +186,7 @@ Přednastavená pravidla synchronizace začnou mít hodnotu priority 100. Pokud 
 Synchronizačnímu modulu, který chcete vložit další pravidla, můžete dát pokyn před přednastavenými pravidly. K získání tohoto chování použijte následující postup:
 
 1. V editoru pravidel synchronizace označte první předem připravené pravidlo synchronizace (**v nástroji ze služby AD-User JOIN**) a vyberte **exportovat**. Zkopírujte hodnotu identifikátoru SR.  
-![PowerShell před změnou @ no__t-1  
+![PowerShell před změnou](./media/how-to-connect-sync-change-the-configuration/powershell1.png)  
 2. Vytvořte nové pravidlo synchronizace. K jeho vytvoření můžete použít Editor pravidel synchronizace. Exportujte pravidlo do skriptu PowerShellu.
 3. Do vlastnosti **PrecedenceBefore**vložte hodnotu identifikátoru z pravidla předdefinovaných polí. Nastavte **prioritu** na **0**. Ujistěte se, že je atribut identifikátoru jedinečný a že nepoužíváte znovu identifikátor GUID z jiného pravidla. Také se ujistěte, že není nastavena vlastnost **ImmutableTag** . Tato vlastnost by měla být nastavena pouze pro pravidlo předdefinovaných polí.
 4. Uložte PowerShellový skript a spusťte ho. Výsledkem je, že vaše vlastní pravidlo má přiřazenou hodnotu priority 100 a všechna ostatní pravidla pro dodávání okna se zvýší.  
@@ -202,7 +202,7 @@ Azure AD Connect podporuje synchronizaci atributu **usertype** pro objekty **už
 
 Ve výchozím nastavení není atribut UserType povolen pro synchronizaci, protože v místní službě Active Directory neexistuje žádný odpovídající atribut UserType. Musíte ručně povolit synchronizaci. Než to uděláte, musíte si uvědomit následující chování vynutilé službou Azure AD:
 
-- Azure AD přijímá jenom dvě hodnoty atributu UserType: **Člen** a **Host**.
+- Azure AD přijímá jenom dvě hodnoty atributu UserType: **Member** a **Host**.
 - Pokud atribut UserType není povolený pro synchronizaci v Azure AD Connect, budou uživatelé Azure AD, kteří vytvořili prostřednictvím synchronizace adresářů, mít atribut UserType nastavený na **Member**.
 - Azure AD nepovoluje, aby byl atribut UserType u stávajících uživatelů služby Azure AD změněn pomocí Azure AD Connect. Dá se nastavit jenom během vytváření uživatelů Azure AD.
 
@@ -229,15 +229,15 @@ Postup, jak povolit synchronizaci atributu UserType, může být shrnut jako:
 >[!NOTE]
 > Zbytek této části se zabývá těmito kroky. Jsou popsané v kontextu nasazení Azure AD s topologií s jednou doménovou strukturou a bez vlastních pravidel synchronizace. Pokud máte topologii s více doménovými strukturami, nakonfigurovali jste vlastní pravidla synchronizace nebo máte pracovní server, musíte upravit postup odpovídajícím způsobem.
 
-### <a name="step-1-disable-the-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1: Zakázání plánovače synchronizace a ověření, že probíhá žádná synchronizace
+### <a name="step-1-disable-the-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Krok 1: zákaz plánovače synchronizace a ověření, že probíhá žádná synchronizace
 Abyste se vyhnuli exportu nezamýšlených změn do služby Azure AD, zajistěte, aby během aktualizace synchronizačních pravidel probíhala žádná synchronizace. Zakázání integrovaného plánovače synchronizace:
 
  1. Spusťte relaci PowerShellu na Azure AD Connectovém serveru.
  2. Zakažte naplánovanou synchronizaci spuštěním rutiny `Set-ADSyncScheduler -SyncCycleEnabled $false`.
- 3. Otevřete Synchronization Service Manager spuštěním**synchronizační služby**@no__t **-** 1.
+ 3. Otevřete **Synchronization Service Manager spuštěním** **služby > synchronizace**.
  4. Přejít na kartu **operace** a potvrďte, že neexistuje žádná operace se stavem *probíhá.*
 
-### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Krok 2: Přidání zdrojového atributu do schématu místního AD Connectoru
+### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Krok 2: Přidání zdrojového atributu do schématu místního AD Connector
 Ne všechny atributy služby Azure AD se importují do místního prostoru služby AD Connector. Chcete-li přidat zdrojový atribut do seznamu importovaných atributů:
 
  1. V Synchronization Service Manager otevřete kartu **konektory** .
@@ -245,7 +245,7 @@ Ne všechny atributy služby Azure AD se importují do místního prostoru služ
  3. V místním dialogovém okně přejdete na kartu **vybrat atributy** .
  4. Zajistěte, aby byl zdrojový atribut vrácen se změnami v seznamu atributů.
  5. Kliknutím na tlačítko **OK** uložte.
-zdrojový atribut ![Add k místnímu schématu AD Connector @ no__t-1
+![přidat zdrojový atribut k místnímu schématu AD Connector](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
 ### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>Krok 3: Přidání UserType do schématu konektoru služby Azure AD
 Ve výchozím nastavení atribut UserType není importován do Azure AD Connectho prostoru. Chcete-li přidat atribut UserType do seznamu importovaných atributů:
@@ -258,17 +258,17 @@ Ve výchozím nastavení atribut UserType není importován do Azure AD Connecth
 
 ![Přidat zdrojový atribut do schématu konektoru služby Azure AD](./media/how-to-connect-sync-change-the-configuration/usertype2.png)
 
-### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>Krok 4: Vytvořit pravidlo příchozí synchronizace pro tok hodnoty atributu z místní služby Active Directory
+### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>Krok 4: vytvoření pravidla příchozí synchronizace pro tok hodnoty atributu z místní služby Active Directory
 Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přecházet ze zdrojového atributu z místní služby Active Directory do úložiště metaverse:
 
-1. Otevřete Editor synchronizačních pravidel tak, že **spustíte** **editor pravidel synchronizace**@no__t 1.
+1. Kliknutím na **spustit** > **Editor pravidel synchronizace**otevřete Editor pravidel synchronizace.
 2. Nastavte **směr** vyhledávacího filtru na **příchozí**.
 3. Kliknutím na tlačítko **Přidat nové pravidlo** vytvoříte nové příchozí pravidlo.
 4. Na kartě **Popis** zadejte následující konfiguraci:
 
-    | Atribut | Value | Podrobnosti |
+    | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Name | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
+    | Název | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
     | Popis | *Zadejte popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby AD* |  |
     | Typ připojeného systémového objektu | **Uživatelský** |  |
@@ -278,29 +278,29 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
 5. Přejít na kartu **obor filtru** a přidejte **jednu skupinu filtru oborů** s následující klauzulí:
 
-    | Atribut | Operator | Value |
+    | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
-    | adminDescription | NOTSTARTWITH | Uživatel @ no__t-0 |
+    | adminDescription | NOTSTARTWITH | \_ uživatelů |
 
     Filtr oboru určuje, které místní objekty služby AD toto pravidlo příchozí synchronizace používá. V tomto příkladu používáme stejný filtr pro vytváření oborů, který se používá v nástroji *ve službě AD – společné* pravidlo pro synchronizaci předem, které brání použití synchronizačního pravidla pro uživatelské objekty vytvořené prostřednictvím funkce zpětného zápisu uživatelů Azure AD. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
 
 6. Přejít na kartu **transformace** a implementovat požadované pravidlo transformace. Pokud jste například určili nepoužitý místní atribut AD (například extensionAttribute1) jako zdrojový atribut pro UserType, můžete implementovat přímý tok atributů:
 
-    | Typ toku | Cílový atribut | Source | Použít jednou | Typ sloučení |
+    | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Přímé | UserType | extensionAttribute1 | není zaškrtnuto | Aktualizace |
+    | Direct | UserType | extensionAttribute1 | Není zaškrtnuto | Aktualizace |
 
     V jiném příkladu chcete odvodit hodnotu atributu UserType z jiných vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut AD userPrincipalName končí částí domény <em>@partners.fabrikam123.org</em>. Můžete implementovat výraz podobný tomuto:
 
-    | Typ toku | Cílový atribut | Source | Použít jednou | Typ sloučení |
+    | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Výraz | UserType | IIF (nepřítomné ([userPrincipalName]), IIF (CBool (InStr ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "Member", "Guest"), chyba ("UserPrincipalName není k dispozici pro určení UserType")) | není zaškrtnuto | Aktualizace |
+    | Výraz | UserType | IIF (nepřítomné ([userPrincipalName]), IIF (CBool (InStr ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "Member", "Guest"), chyba ("UserPrincipalName není k dispozici pro určení UserType")) | Není zaškrtnuto | Aktualizace |
 
 7. Kliknutím na tlačítko **Přidat** vytvořte pravidlo pro příchozí spojení.
 
 ![Vytvořit pravidlo příchozí synchronizace](./media/how-to-connect-sync-change-the-configuration/usertype3.png)
 
-### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>Krok 5: Vytvoření pravidla odchozí synchronizace pro Flow hodnoty atributu do Azure AD
+### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>Krok 5: vytvoření pravidla odchozí synchronizace pro Flow hodnoty atributu do Azure AD
 Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložiště metaverse předávána do atributu UserType v Azure AD:
 
 1. Umožňuje přejít do editoru pravidel synchronizace.
@@ -308,9 +308,9 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 3. Klikněte na tlačítko **Přidat nové pravidlo** .
 4. Na kartě **Popis** zadejte následující konfiguraci:
 
-    | Atribut | Value | Podrobnosti |
+    | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
-    | Name | *Zadat název* | Například pro *AAD – uživatel – usertype* |
+    | Název | *Zadat název* | Například pro *AAD – uživatel – usertype* |
     | Popis | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor AAD.* ||
     | Typ připojeného systémového objektu | **Uživatelský** ||
@@ -320,7 +320,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
 5. Přejít na kartu **obor filtru** a přidejte **jednu skupinu filtru oborů** se dvěma klauzulemi:
 
-    | Atribut | Operator | Value |
+    | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
     | sourceObjectType | VÝŠI | Uživatel |
     | cloudMastered | NOTEQUAL | Pravda |
@@ -329,15 +329,15 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
 6. Přejít na kartu **transformace** a implementovat následující pravidlo transformace:
 
-    | Typ toku | Cílový atribut | Source | Použít jednou | Typ sloučení |
+    | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Přímé | UserType | UserType | není zaškrtnuto | Aktualizace |
+    | Direct | UserType | UserType | Není zaškrtnuto | Aktualizace |
 
 7. Kliknutím na **Přidat** vytvořte odchozí pravidlo.
 
 ![Vytvořit pravidlo odchozí synchronizace](./media/how-to-connect-sync-change-the-configuration/usertype4.png)
 
-### <a name="step-6-run-a-full-synchronization-cycle"></a>Krok 6: Spustit úplný cyklus synchronizace
+### <a name="step-6-run-a-full-synchronization-cycle"></a>Krok 6: spuštění úplného cyklu synchronizace
 Obecně je potřeba úplný cyklus synchronizace, protože jsme přidali nové atributy do schémat služby Active Directory a konektoru služby Azure AD a zavedli jste vlastní pravidla synchronizace. Před exportem do služby Azure AD chcete ověřit jejich změny. 
 
 Pomocí následujících kroků můžete ověřit změny, a to ručním spuštěním kroků, které tvoří cyklus úplné synchronizace.
@@ -350,7 +350,7 @@ Pomocí následujících kroků můžete ověřit změny, a to ručním spuště
    4. Počkejte na dokončení operace.
 
       > [!NOTE]
-      > Pokud je zdrojový atribut již obsažen v seznamu importovaných atributů, můžete přeskočit úplný import na místní konektor AD. Jinými slovy, během [Step 2 nemusíte dělat žádné změny: Přidejte zdrojový atribut do schématu místního AD Connectoru @ no__t-0.
+      > Pokud je zdrojový atribut již obsažen v seznamu importovaných atributů, můžete přeskočit úplný import na místní konektor AD. Jinými slovy, během kroku 2 nemusíte dělat žádné změny [: přidejte zdrojový atribut do schématu místního AD Connector](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
 
 2. Spusťte **úplný import** na **konektoru služby Azure AD**:
 
@@ -370,12 +370,12 @@ Pomocí následujících kroků můžete ověřit změny, a to ručním spuště
    2. V místním dialogovém okně vyberte **úplnou synchronizaci** a pak klikněte na **OK**.
    3. Počkejte na dokončení operace.
 
-5. Ověřit nedokončené exporty do Azure AD:
+5. Ověřit **nedokončené exporty** do Azure AD:
 
    1. Klikněte pravým tlačítkem na **konektor Azure AD** a vyberte **Hledat místo v konektoru**.
    2. V automaticky otevíraném okně **prostor pro hledání konektoru** :
 
-      - Nastavte **Rozsah** na **Export čeká**na vyřízení.
+      - Nastavte **Rozsah** na **Export čeká na vyřízení**.
       - Zaškrtněte všechna tři zaškrtávací políčka: **Přidat**, **Upravit**a **Odstranit**.
       - Kliknutím na tlačítko **Hledat** získáte seznam objektů se změnami, které mají být exportovány. Chcete-li prostudovat změny pro daný objekt, dvakrát klikněte na objekt.
       - Ověřte, zda jsou tyto změny očekávány.
@@ -389,11 +389,11 @@ Pomocí následujících kroků můžete ověřit změny, a to ručním spuště
 > [!NOTE]
 > Tyto kroky nezahrnují kroky úplné synchronizace a exportu v konektoru služby Azure AD. Tyto kroky nejsou povinné, protože hodnoty atributu jsou z místní služby Active Directory předávány pouze do služby Azure AD.
 
-### <a name="step-7-re-enable-the-sync-scheduler"></a>Krok 7: Opětovné povolení plánovače synchronizace
+### <a name="step-7-re-enable-the-sync-scheduler"></a>Krok 7: opětovné povolení plánovače synchronizace
 Opětovné povolení integrovaného plánovače synchronizace:
 
 1. Spusťte relaci PowerShellu.
-2. Opětovně povolte plánovanou synchronizaci spuštěním rutiny `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+2. Spusťte `Set-ADSyncScheduler -SyncCycleEnabled $true`rutiny a znovu povolte plánovanou synchronizaci.
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -402,5 +402,5 @@ Opětovné povolení integrovaného plánovače synchronizace:
 
 **Témata s přehledem**
 
-* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Azure AD Connect synchronizace: pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

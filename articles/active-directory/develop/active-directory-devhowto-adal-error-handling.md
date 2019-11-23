@@ -61,8 +61,8 @@ V podstatě existují dva případy AcquireTokenSilent chyb:
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení s metodami ADAL: 
 
-- acquireTokenSilentAsync(...)
-- acquireTokenSilentSync(...) 
+- acquireTokenSilentAsync(…)
+- acquireTokenSilentSync(…) 
 - [zastaralé] acquireTokenSilent (...)
 - [zastaralé] acquireTokenByRefreshToken (...) 
 
@@ -105,7 +105,7 @@ catch (AdalException e) {
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení s metodami ADAL: 
 
-- acquireTokenSilentSync(...)
+- acquireTokenSilentSync(…)
 - acquireTokenSilentAsync(...)
 - [zastaralé] acquireTokenSilent (...)
 
@@ -211,7 +211,7 @@ Zpracování chyb v nativních aplikacích lze definovat dvěma případy:
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení se všemi netichými AcquireToken (...). ADAL – metody *s výjimkou*: 
 
-- AcquireTokenAsync(..., IClientAssertionCertification, ...)
+- AcquireTokenAsync(…, IClientAssertionCertification, …)
 - AcquireTokenAsync (..., ClientCredential,...)
 - AcquireTokenAsync(..., ClientAssertion, ...)
 - AcquireTokenAsync (..., UserAssertion,...)   
@@ -347,7 +347,7 @@ Pokud vytváříte webovou aplikaci .NET, která volá získání tokenu pomocí
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení s metodami ADAL: 
 
-- AcquireTokenByAuthorizationCodeAsync(...)
+- AcquireTokenByAuthorizationCodeAsync(…)
 
 Váš kód by byl implementován následujícím způsobem:
 
@@ -416,10 +416,10 @@ Pro *všechny* scénáře aplikací služby na službu, včetně:
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení s metodami ADAL: 
 
-- AcquireTokenAsync(..., IClientAssertionCertification, ...)
-- AcquireTokenAsync (..., ClientCredential,...)
-- AcquireTokenAsync(...,ClientAssertion, ...)
-- AcquireTokenAsync(...,UserAssertion, ...)
+- AcquireTokenAsync(…, IClientAssertionCertification, …)
+- AcquireTokenAsync(…,ClientCredential, …)
+- AcquireTokenAsync(…,ClientAssertion, …)
+- AcquireTokenAsync(…,UserAssertion, …)
 
 Váš kód by byl implementován následujícím způsobem:
 
@@ -444,7 +444,7 @@ Pro *scénáře aplikací služby na službu* .
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení s metodami ADAL: 
 
-- AcquireTokenAsync(..., UserAssertion, ...)
+- AcquireTokenAsync(…, UserAssertion, …)
 
 Váš kód by byl implementován následujícím způsobem:
 
@@ -503,7 +503,7 @@ Aby bylo možné prozkoumat konkrétní chyby ADAL, je nejlepším odkazem na ch
 
 #### <a name="operating-system-errors"></a>Chyby operačního systému
 
-Chyby operačního systému Android jsou zpřístupněny prostřednictvím AuthenticationException – v ADAL, jsou identifikovatelné jako "SERVER_INVALID_REQUEST" a je možné je dále členit prostřednictvím popisů chyb. 
+Chyby OS Androidu jsou zpřístupněné prostřednictvím AuthenticationException – v ADAL, jsou identifikovatelné jako "SERVER_INVALID_REQUEST" a je možné je dále členit prostřednictvím popisů chyb. 
 
 Úplný seznam běžných chyb a kroky, které je potřeba provést, když se jim aplikace nebo koncoví uživatelé dostanou, najdete na [wikiwebu na wikiwebu ADAL pro Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki). 
 
@@ -586,7 +586,7 @@ window.Logging = {
 
 Použijte níže uvedené komentáře, které vám poskytnou zpětnou vazbu a pomáhají nám zdokonalit a poobrazovat náš obsah.
 
-[@no__t – 1Shows na tlačítko "Přihlásit se účtem Microsoft"][AAD-Sign-In]][AAD-Sign-In]
+[![se zobrazuje tlačítko Přihlásit se účtem Microsoft][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md

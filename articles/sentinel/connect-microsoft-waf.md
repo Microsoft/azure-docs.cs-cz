@@ -40,7 +40,7 @@ Jakmile je vaše brána firewall webových aplikací Microsoftu nasazená a nač
     
 1. Na portálu Sentinel Azure vyberte **datové konektory**.
 1. Na stránce datové konektory vyberte dlaždici **WAF** .
-1. Přejít na [Application Gateway prostředek](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) AND zvolit WAF.
+1. Přejít na [Application Gateway prostředek](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) a vyberte WAF.
     1. Vyberte **nastavení diagnostiky**.
     1. V tabulce vyberte **+ Přidat nastavení diagnostiky** .
     1. Na stránce **nastavení diagnostiky** zadejte **název** a vyberte **Odeslat do Log Analytics**.

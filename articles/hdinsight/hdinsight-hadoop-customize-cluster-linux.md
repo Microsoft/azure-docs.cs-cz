@@ -24,8 +24,8 @@ Akce skriptu je také možné publikovat do Azure Marketplace jako aplikace HDIn
 
 U clusteru HDInsight připojeného k doméně jsou k dispozici dvě oprávnění Apache Ambari, která se vyžadují při použití akcí skriptu s clusterem:
 
-* **AMBARI. Spusťte příkaz @ no__t-1CUSTOM @ no__t-2COMMAND**. Role správce Ambari má ve výchozím nastavení toto oprávnění.
-* **Cluster. Spusťte příkaz @ no__t-1CUSTOM @ no__t-2COMMAND**. Ve výchozím nastavení má Správce clusteru HDInsight i správce Ambari toto oprávnění.
+* **AMBARI. Spusťte příkaz\_vlastní\_** . Role správce Ambari má ve výchozím nastavení toto oprávnění.
+* **Cluster. Spusťte příkaz\_vlastní\_** . Ve výchozím nastavení má Správce clusteru HDInsight i správce Ambari toto oprávnění.
 
 Další informace o práci s oprávněními s HDInsight připojenými k doméně najdete v tématu [Správa clusterů HDInsight pomocí balíček zabezpečení podniku](./domain-joined/apache-domain-joined-manage.md).
 
@@ -123,7 +123,7 @@ Selhání skriptu spuštěného na již běžícím clusteru automaticky nezpůs
 >
 > Akce skriptů se spouští s oprávněními root. Ujistěte se, že rozumíte tomu, co skript dělá předtím, než ho použijete pro váš cluster.
 
-Když použijete skript na cluster, stav clusteru se změní ze **spuštěno** na **přijato**. Pak se změní na **konfiguraci HDInsight** a nakonec zpátky na **spuštěno** pro úspěšné skripty. Stav skriptu je zaznamenán v historii akcí skriptu. Tyto informace vám sdělí, jestli byl skript úspěšný nebo neúspěšný. Například rutina prostředí PowerShell `Get-AzHDInsightScriptActionHistory` zobrazuje stav skriptu. Vrátí informace podobné následujícímu textu:
+Když použijete skript na cluster, stav clusteru se změní ze **spuštěno** na **přijato**. Pak se změní na **konfiguraci HDInsight** a nakonec zpátky na **spuštěno** pro úspěšné skripty. Stav skriptu je zaznamenán v historii akcí skriptu. Tyto informace vám sdělí, jestli byl skript úspěšný nebo neúspěšný. Například rutina prostředí PowerShell pro `Get-AzHDInsightScriptActionHistory` zobrazuje stav skriptu. Vrátí informace podobné následujícímu textu:
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 8/14/2017 7:40:55 PM
@@ -144,7 +144,7 @@ Skripty akcí skriptů lze použít prostřednictvím následujících nástroj�
 
 HDInsight poskytuje skripty pro instalaci následujících komponent do clusterů HDInsight:
 
-| Name (Název) | Skript |
+| Název | Skript |
 | --- | --- |
 | Přidat účet Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Viz [Přidání dalších účtů úložiště do služby HDInsight](hdinsight-hadoop-add-storage.md). |
 | Instalace rozhraní Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Viz [instalace a použití odstínu v clusterech HDInsight Hadoop](hdinsight-hadoop-hue-linux.md). |
@@ -170,7 +170,7 @@ V této části jsou vysvětleny různé způsoby, jak můžete při vytvářen�
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__. V opačném případě vyberte jeden ze zadaných skriptů. |
-    | Name (Název) |Zadejte název akce skriptu. |
+    | Název |Zadejte název akce skriptu. |
     | Identifikátor URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | Vedoucí/pracovní proces/ZooKeeper |Zadejte uzly, na kterých je spuštěn skript: **head**, **Worker**nebo **Zookeeper**. |
     | Parametry |Zadejte parametry, pokud to skript vyžaduje. |
@@ -205,7 +205,7 @@ Získejte další informace o tom, jak nasadit šablonu:
 
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 
-* [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Použití akce skriptu během vytváření clusteru z Azure PowerShell
 
@@ -231,7 +231,7 @@ V této části se dozvíte, jak aplikovat akce skriptů na běžící cluster.
 
 Přejít na [Azure Portal](https://portal.azure.com):
 
-1. V nabídce vlevo přejděte na **všechny služby** >  **analýzy** > **HDInsight clustery**.
+1. V nabídce vlevo přejděte na **všechny služby** >  **Analytics** > **clustery HDInsight**.
 
 1. V seznamu vyberte svůj cluster, ve kterém se otevře výchozí zobrazení.
 
@@ -250,7 +250,7 @@ Přejít na [Azure Portal](https://portal.azure.com):
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__. V opačném případě vyberte poskytnutý skript. |
-    | Name (Název) |Zadejte název akce skriptu. |
+    | Název |Zadejte název akce skriptu. |
     | Identifikátor URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | Vedoucí/pracovní proces/Zookeeper |Zadejte uzly, na kterých je spuštěn skript: **head**, **Worker**nebo **Zookeeper**. |
     | Parametry |Zadejte parametry, pokud to skript vyžaduje. |
@@ -302,7 +302,7 @@ Než začnete, ujistěte se, že jste nainstalovali a nakonfigurovali rozhraní 
 
     Pokud vynecháte parametry pro tento příkaz, budete vyzváni k jejich zadání. Pokud skript zadaný pomocí `-u` přijímá parametry, můžete je zadat pomocí parametru `-p`.
 
-    Platné typy uzlů jsou `headnode`, `workernode` a `zookeeper`. Pokud má být skript použit pro několik typů uzlů, určete typy oddělené středníkem `;`. Například, `-n headnode;workernode`.
+    Platné typy uzlů jsou `headnode`, `workernode`a `zookeeper`. Pokud má být skript použit pro několik typů uzlů, určete typy oddělené středníkem `;`. Například, `-n headnode;workernode`.
 
     Pokud chcete skript zachovat, přidejte `--persistOnSuccess`. Skript můžete také zachovat později pomocí `azure hdinsight script-action persisted set`.
 
@@ -328,9 +328,9 @@ Příklad použití sady .NET SDK pro použití skriptů v clusteru najdete v t�
 
 ### <a name="the-azure-portal"></a>Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 
-1. V nabídce vlevo přejděte na **všechny služby** > **analýzy** > **HDInsight clustery**.
+1. V nabídce vlevo přejděte na **všechny služby** > **Analytics** > **clustery HDInsight**.
 
 1. V seznamu vyberte svůj cluster, ve kterém se otevře výchozí zobrazení.
 
@@ -350,7 +350,7 @@ Příklad použití sady .NET SDK pro použití skriptů v clusteru najdete v t�
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-| Rutiny | Funkce |
+| rutiny | Funkce |
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |Načte informace o trvalých akcích skriptu. |
 | `Get-AzHDInsightScriptActionHistory` |Načtěte historii akcí skriptu použitých pro cluster nebo podrobnosti konkrétního skriptu. |
@@ -358,7 +358,7 @@ Příklad použití sady .NET SDK pro použití skriptů v clusteru najdete v t�
 | `Remove-AzHDInsightPersistedScriptAction` |Snížit úroveň trvalé akce skriptu na akci ad hoc. |
 
 > [!IMPORTANT]  
-> `Remove-AzHDInsightPersistedScriptAction` nevrátí zpět akce provedené skriptem. Tato rutina odebere jenom trvalý příznak.
+> `Remove-AzHDInsightPersistedScriptAction` nevrátí zpět akce prováděné skriptem. Tato rutina odebere jenom trvalý příznak.
 
 Následující příklad skriptu ukazuje použití rutin pro povýšení a pak snížení úrovně skriptu.
 
@@ -366,7 +366,7 @@ Následující příklad skriptu ukazuje použití rutin pro povýšení a pak s
 
 ### <a name="the-azure-classic-cli"></a>Rozhraní příkazového řádku Azure Classic
 
-| Rutiny | Funkce |
+| rutiny | Funkce |
 | --- | --- |
 | `azure hdinsight script-action persisted list <clustername>` |Načte seznam trvalých akcí skriptu. |
 | `azure hdinsight script-action persisted show <clustername> <scriptname>` |Načte informace o konkrétní trvalé akci skriptu. |
@@ -376,7 +376,7 @@ Následující příklad skriptu ukazuje použití rutin pro povýšení a pak s
 | `azure hdinsight script-action persisted delete <clustername> <scriptname>` |Snížit úroveň trvalé akce skriptu na akci ad hoc. |
 
 > [!IMPORTANT]  
-> `azure hdinsight script-action persisted delete` nevrátí zpět akce provedené skriptem. Tato rutina odebere jenom trvalý příznak.
+> `azure hdinsight script-action persisted delete` nevrátí zpět akce prováděné skriptem. Tato rutina odebere jenom trvalý příznak.
 
 ### <a name="the-hdinsight-net-sdk"></a>Sada HDInsight .NET SDK
 
@@ -430,7 +430,7 @@ K zobrazení informací protokolovaných akcemi skriptů můžete použít webov
 
     ![Panel webového uživatelského rozhraní Ambari s vybranou operací Operations](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
-3. Ve sloupci **Operations (operace** ) vyhledejte položky, které mají **spuštěnou položku @ no__t-1customscriptaction** . Tyto položky jsou vytvořeny při spuštění akcí skriptu.
+3. Vyhledá položky, které se **spouštějí\_customscriptaction** ve sloupci **Operations** . Tyto položky jsou vytvořeny při spuštění akcí skriptu.
 
     ![Operace s akcemi skriptu Apache Ambari](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
@@ -452,7 +452,7 @@ Pokud se vytvoření clusteru nepovede kvůli chybě skriptu, protokoly se uchov
 
     * **Zookeeper uzel**: `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* Všechny **stdout** a **stderr** odpovídajícího hostitele se nahrají do účtu úložiště. Pro každou akci skriptu existuje jeden **@no__t. txt** a **errors – @no__t -3. txt** . Soubor **Output-*. txt** obsahuje informace o identifikátoru URI skriptu, který byl spuštěn na hostiteli. Následující text je příkladem těchto informací:
+* Všechny **stdout** a **stderr** odpovídajícího hostitele se nahrají do účtu úložiště. Pro každou akci skriptu existuje jeden **\*. txt** a **errors-\*. txt** . Soubor **Output-*. txt** obsahuje informace o identifikátoru URI skriptu, který byl spuštěn na hostiteli. Následující text je příkladem těchto informací:
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 

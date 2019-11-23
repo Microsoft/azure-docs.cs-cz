@@ -20,7 +20,7 @@ ms.lasthandoff: 10/02/2019
 ms.locfileid: "71828249"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
-Máte nějaké otázky? Další informace najdete v následujících nejčastějších dotazech.
+Máte otázky? Další informace najdete v následujících nejčastějších dotazech.
 
 ## <a name="general-faq"></a>Obecné Nejčastější dotazy
 
@@ -30,7 +30,7 @@ Ne. Rozšíření není k dispozici pro stažení a instalaci sady Visual Studio
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Musím v mém buildu spustit analýzu kódu zabezpečení od Microsoftu? 
 
-Možná. Závisí na typu analytického nástroje. Zdrojový kód může být jen to, co je potřeba, nebo se může vyžadovat výstup sestavení.
+Podle potřeby. Závisí na typu analytického nástroje. Zdrojový kód může být jen to, co je potřeba, nebo se může vyžadovat výstup sestavení.
 
 Například kontrola přihlašovacích údajů (CredScan) analyzuje soubory v rámci struktury složek v úložišti kódu. Z důvodu této analýzy můžete k získání výsledků spustit úlohy CredScan a publikovat protokoly analýzy zabezpečení v samostatném sestavení.
 
@@ -48,7 +48,7 @@ Ve většině případů jsou úkoly sestavení Azure DevOps přímými obálkam
 
 Patrné rozdíly:
 
-- Nástroje jsou spouštěny ze zdrojové složky agenta $ (Build. SourcesDirectory) nebo z% BUILD_SOURCESDIRECTORY%. Příkladem je C:\Agent @ no__t-0work\1\s.
+- Nástroje jsou spouštěny ze zdrojové složky agenta $ (Build. SourcesDirectory) nebo z% BUILD_SOURCESDIRECTORY%. Příkladem je C:\Agent\_work\1\s.
 - Cesty v argumentech mohou být relativní ke kořenu výše uvedeného zdrojového adresáře. Cesty mohou být také absolutní. Absolutní cesty můžete získat buď pomocí proměnných sestavení Azure DevOps, nebo spuštěním místního agenta se známými umístěními nasazení místních prostředků.
 - Nástroje automaticky poskytují cestu k výstupnímu souboru nebo složku. Pokud zadáte umístění výstupu pro úlohu sestavení, bude toto umístění nahrazeno cestou k našemu dobře známému umístění protokolů agenta sestavení.
 - Některé další argumenty příkazového řádku se u některých nástrojů změnily. Jedním z příkladů je přidání nebo odebrání možností, které zajistí, že se nespustí žádné grafické rozhraní (GUI).
@@ -63,7 +63,7 @@ Ne. Používání nástrojů pro bezpečné vývoj v různých úložištích v 
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Kde jsou výstupní soubory generované nástroji uložené? 
 
-Úkoly sestavení automaticky přidávají výstupní cesty k tomuto známému umístění v agentovi sestavení: $ (agent. BuildDirectory) \_sdt \ Logs. Vzhledem k tomu, že jsme v tomto umístění standardizaci, všechny týmy, které vytváří nebo využívají protokoly analýzy kódu, mají přístup k výstupu.
+Úkoly sestavení automaticky přidávají výstupní cesty k tomuto známému umístění v agentovi sestavení: $ (agent. BuildDirectory)\_sdt\logs. Vzhledem k tomu, že jsme v tomto umístění standardizaci, všechny týmy, které vytváří nebo využívají protokoly analýzy kódu, mají přístup k výstupu.
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Můžu sestavení zařadit do fronty a spustit tyto úlohy v hostovaném agentu sestavení? 
 
@@ -173,7 +173,7 @@ Hledání obsahu je definováno následujícím způsobem:
 - **Název**: popisný název vyhledávacího programu, který se má použít ve výstupních souborech pro kontrolu přihlašovacích údajů. Doporučujeme používat ve stylu CamelCase konvence pojmenovávání pro názvy vyhledávacích jmen.
 - **RuleId**: stabilní neprůhledné ID vyhledávacího pole:
     - Výchozímu vyhledávacímu skeneru přihlašovacích údajů se přiřadí hodnota **RuleId** , jako je CSCAN0010, CSCAN0020 nebo CSCAN0030. Poslední číslice je vyhrazena pro potenciálně slučování nebo rozdělování skupin hledání prostřednictvím regulárních výrazů (Regex).
-    - Hodnota **RuleId** přizpůsobeného vyhledávacího modulu by měla mít vlastní obor názvů. Příklady zahrnují CSCAN-\<Namespace @ no__t-10010, CSCAN-\<Namespace @ no__t-30020 a CSCAN-\<Namespace @ no__t-50030.
+    - Hodnota **RuleId** přizpůsobeného vyhledávacího modulu by měla mít vlastní obor názvů. Příklady zahrnují CSCAN-\<obor názvů\>0010, CSCAN-\<obor názvů\>0020 a CSCAN-\<oboru názvů\>0030.
     - Plně kvalifikovaný název hledání je kombinací hodnoty **RuleId** a názvu vyhledávacího pole. Příklady zahrnují CSCAN0010. KeyStoreFiles a CSCAN0020. Base64EncodedCertificate.
 - **ResourceMatchPattern**: Regex pro přípony souborů, které se mají kontrolovat u hledání.
 - **ContentSearchPatterns**: pole řetězců obsahující příkazy Regex, které mají být shodné. Pokud nejsou definovány žádné vzory hledání, vrátí se všechny soubory, které odpovídají hodnotě **ResourceMatchPattern** .
@@ -202,13 +202,13 @@ Krok do hlavního postupu sestavení a analyzátoru Roslyn může vést k tomu, 
 
 Úplná chybová zpráva:
 
-soubor csc. exe byl ukončen s kódem chyby 1--instanci služby Analyzer *AAAA* nelze vytvořit z jazyka C: \\*bbbb*. dll: nelze načíst soubor nebo sestavení Microsoft. CodeAnalysis, Version =*X. x. x*. x, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' nebo jedna z jeho závislostí. Systém nemůže najít zadaný soubor.
+soubor csc. exe byl ukončen s kódem chyby 1--instanci služby Analyzer *AAAA* nelze vytvořit z jazyka C:\\*bbbb*. dll: nelze načíst soubor nebo sestavení Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 nebo jedna z jejích závislostí. Systém nemůže najít zadaný soubor."
 
 Ujistěte se, že kompilátor podporuje analyzátory Roslyn. Spuštěním příkazu **CSc. exe/Version** by měla být nahlášena hodnota verze 2,6 nebo novější.
 
 V některých případech může soubor. csproj přepsat instalaci sady Visual Studio sestavení počítače tím, že odkazuje na balíček z Microsoft.Net. compilers. Pokud nechcete použít konkrétní verzi kompilátoru, odeberte odkazy na Microsoft.Net. compilers. V opačném případě se ujistěte, že verze odkazovaného balíčku je také 2,6 nebo novější.
 
-Pokuste se získat cestu k protokolu chyb, která je zadána v možnosti **/Errorlog CSc. exe** . Možnost a cesta se zobrazí v protokolu pro úlohu sestavení analyzátorů Roslyn. Můžou vypadat nějak takto **:/errorlog: F:\ts-Services-123 @ no__t-1work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Pokuste se získat cestu k protokolu chyb, která je zadána v možnosti **/Errorlog CSc. exe** . Možnost a cesta se zobrazí v protokolu pro úlohu sestavení analyzátorů Roslyn. Můžou vypadat nějak jako **/errorlog: f:\ts-services-123\_work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>Verze C# kompilátoru není dost nedávného.
 

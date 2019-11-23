@@ -75,10 +75,10 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 ## <a name="load-the-example-json-data"></a>Načtení ukázkových dat JSON
 
-1. V rámci značky `<script>` vytvořte proměnnou pro sampleJson. Pak vytvořte funkci JavaScriptu s názvem `openFile()`, která otevře Průzkumníka souborů, abyste mohli vybrat soubor JSON. Po kliknutí na tlačítko `Recognize ink` bude tato funkce volána a začít číst soubor.
+1. V rámci značky `<script>` Vytvořte proměnnou pro sampleJson. Pak vytvořte funkci JavaScriptu s názvem `openFile()`, která otevře Průzkumníka souborů, abyste mohli vybrat soubor JSON. Po kliknutí na tlačítko `Recognize ink` bude tato funkce volána a začít číst soubor.
 2. K asynchronnímu zpracování souboru použijte funkci `FileReader` objektu `onload()`. 
-    1. Nahradí všechny znaky `\n` nebo `\r` v souboru prázdným řetězcem. 
-    2. K převedení textu do platného formátu JSON použijte `JSON.parse()`.
+    1. Nahraďte všechny `\n` nebo `\r` znaky v souboru prázdným řetězcem. 
+    2. Pomocí `JSON.parse()` převést text na platný formát JSON
     3. Aktualizujte textové pole `request` v aplikaci. K formátování řetězce JSON použijte `JSON.stringify()`. 
     
     ```javascript
@@ -98,7 +98,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 ## <a name="send-a-request-to-the-ink-recognizer-api"></a>Poslat žádost na rozhraní API pro rozpoznávání rukopisu
 
-1. V rámci značky `<script>` vytvořte funkci nazvanou `recognizeInk()`. Tato funkce později zavolá rozhraní API a aktualizuje stránku pomocí odpovědi. Do této funkce přidejte kód z následujících kroků. 
+1. V rámci značky `<script>` vytvořte funkci s názvem `recognizeInk()`. Tato funkce později zavolá rozhraní API a aktualizuje stránku pomocí odpovědi. Do této funkce přidejte kód z následujících kroků. 
         
     ```javascript
     function recognizeInk() {
@@ -133,7 +133,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
         }
         ```
 
-    4. Vytvořte funkci pro vlastnost @no__t 0 objektu žádosti. Když se změní stav připravenosti objektu žádosti, použijí se výše uvedené návratové a chybové funkce.
+    4. Vytvořte funkci pro vlastnost `onreadystatechange` objektu žádosti. Když se změní stav připravenosti objektu žádosti, použijí se výše uvedené návratové a chybové funkce.
             
         ```javascript
         xhttp.onreadystatechange = function () {
@@ -147,7 +147,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
         };
         ```
     
-    5. Odešlete žádost o rozhraní API. Přidejte klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key` a nastavte `content-type` na `application/json`.
+    5. Odešlete žádost o rozhraní API. Do hlavičky `Ocp-Apim-Subscription-Key` přidejte svůj klíč předplatného a nastavte `content-type` na `application/json`
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);
@@ -164,11 +164,11 @@ Tuto aplikaci lze spustit ve webovém prohlížeči. Ve formátu JSON se vrátí
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Odkaz na REST API](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API – referenční informace](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 Pokud chcete zjistit, jak funguje rozhraní API pro rozpoznávání rukopisu v digitální aplikaci pro rukopis, podívejte se na následující ukázkové aplikace na GitHubu:
-* [C#a Univerzální platforma Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C#a Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [JavaScriptová aplikace pro web – prohlížeč](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [Mobilní aplikace Java a Android](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Mobilní aplikace SWIFT a iOS](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [C# a Univerzální platforma Windows (UPW)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# a Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Aplikace webového prohlížeče v Javascriptu](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Mobilní aplikace v Javě a Androidu](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Mobilní aplikace ve Swiftu a iOS](https://go.microsoft.com/fwlink/?linkid=2089805)

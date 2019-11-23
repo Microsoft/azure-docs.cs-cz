@@ -31,7 +31,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Java @ no__t-1 Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo novější.
+- [Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo novější.
 
 - Importovat tyto knihovny z úložiště Maven
     - [JSON v balíčku Java](https://mvnrepository.com/artifact/org.json/json)
@@ -45,7 +45,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 ## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
-1. V oblíbených IDE nebo editoru vytvořte nový projekt Java a importujte následující knihovny.
+1. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java a naimportujte následující knihovny.
     
     [!code-java[import statements](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=imports)]
 
@@ -57,13 +57,13 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 1. Vytvořte novou funkci nazvanou `sendRequest()`, která přebírá proměnné vytvořené výše. Pak proveďte následující kroky.
 
-2. Vytvoří objekt `CloseableHttpClient`, který může odesílat požadavky do rozhraní API. Odešlete žádost do objektu žádosti o @no__t 0 tak, že zkombinujete koncový bod a adresu URL nástroje pro rozpoznávání rukopisu.
+2. Vytvoří objekt `CloseableHttpClient`, který může odesílat požadavky do rozhraní API. Odešlete požadavek do objektu žádosti o `HttpPut` kombinováním koncového bodu a adresy URL nástroje pro rozpoznávání rukopisu.
 
-3. Pomocí funkce `setHeader()` žádosti nastavte hlavičku `Content-Type` na `application/json` a přidejte svůj klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key`.
+3. Pomocí funkce `setHeader()` žádosti nastavte hlavičku `Content-Type` na `application/json`a přidejte svůj klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key`.
 
-4. K datům, která se mají odeslat, použijte funkci @no__t 0 žádosti.   
+4. K odeslání dat použijte funkci `setEntity()` žádosti.   
 
-5. K odeslání žádosti použijte funkci klienta `execute()` a uložte ji do objektu `CloseableHttpResponse`. 
+5. K odeslání žádosti použijte funkci `execute()` klienta a uložte ji do objektu `CloseableHttpResponse`. 
 
 6. Vytvořte objekt `HttpEntity` pro uložení obsahu odpovědi. Získejte obsah pomocí `getEntity()`. Pokud odpověď není prázdná, vraťte ji.
     
@@ -91,12 +91,12 @@ Spusťte aplikaci. Ve formátu JSON se vrátí úspěšná odpověď. Můžete t
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Odkaz na REST API](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API – referenční informace](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
 Pokud chcete zjistit, jak funguje rozhraní API pro rozpoznávání rukopisu v digitální aplikaci pro rukopis, podívejte se na následující ukázkové aplikace na GitHubu:
-* [C#a Univerzální platforma Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C#a Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [JavaScriptová aplikace pro web – prohlížeč](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [Mobilní aplikace Java a Android](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Mobilní aplikace SWIFT a iOS](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [C# a Univerzální platforma Windows (UPW)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# a Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Aplikace webového prohlížeče v Javascriptu](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Mobilní aplikace v Javě a Androidu](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Mobilní aplikace ve Swiftu a iOS](https://go.microsoft.com/fwlink/?linkid=2089805)

@@ -28,16 +28,16 @@ Po importu složených prostředků do účtu Automation můžete na stránce **
 
 Než budete moct přiřadit konfiguraci provedenou ze složených prostředků v Azure Portal, je nutné ji vytvořit. To lze provést pomocí **Konfigurace psaní** na stránce **Konfigurace stavu (DSC)** , a to na kartách **Konfigurace** nebo **zkompilované konfigurace** .
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **všechny prostředky** a pak na název svého účtu Automation.
 1. Na stránce **účet Automation** vyberte v části **Správa konfigurace**možnost **Konfigurace stavu (DSC)** .
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Konfigurace** nebo **zkompilované konfigurace** a pak v nabídce v horní části stránky klikněte na **vytvořit konfiguraci** .
 1. V kroku **základy** zadejte nový název konfigurace (požadováno) a klikněte kamkoli na řádek každého složeného prostředku, který chcete zahrnout do nové konfigurace, a potom klikněte na **Další** nebo klikněte na krok **zdrojového kódu** . Pro následující kroky jsme vybrali složené prostředky **PSExecutionPolicy** a **RenameAndDomainJoin** .
-   @no__t – 0Screenshot kroku základní stránky pro vytváření konfigurace @ no__t-1
+   ![snímku kroku základy stránky konfigurace pro psaní](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
 1. Krok **zdrojového kódu** ukazuje, jak vypadá složená konfigurace vybraných složených prostředků. Můžete zobrazit sloučení všech parametrů a jejich předání do složeného prostředku. Po dokončení kontroly nového zdrojového kódu klikněte na tlačítko **Další** nebo klikněte na krok **parametry** .
-   @no__t – 0Screenshot kroku zdrojového kódu stránky konfigurace pro psaní @ no__t-1
+   ![snímku kroku zdrojového kódu stránky konfigurace pro psaní](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
 1. V kroku **Parameters** je parametr, který má každý složený prostředek vystavený, aby mohl být poskytnut. Pokud má parametr popis, zobrazí se vedle pole parametru. Pokud je pole parametr typu **PSCredential** , rozevírací seznam, který se má nakonfigurovat, poskytne seznam objektů **přihlašovacích údajů** v aktuálním účtu Automation. K dispozici je také možnost **+ Přidat pověření** . Po zadání všech požadovaných parametrů klikněte na **Uložit a zkompilovat**.
-   @no__t – 0Screenshot kroku Parameters stránky konfigurace pro psaní @ no__t-1
+   ![snímku kroku s parametry stránky konfigurace pro psaní](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
 Po uložení nové konfigurace je odeslána pro kompilaci. Stav úlohy kompilace můžete zobrazit stejně jako všechny importované konfigurace. Další informace naleznete v tématu [zobrazení úlohy kompilace](automation-dsc-getting-started.md#viewing-a-compilation-job).
 

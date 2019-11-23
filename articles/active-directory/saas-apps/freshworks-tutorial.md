@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat Freshworks s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -82,7 +82,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.freshworks.com/login`.
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.freshworks.com/login`
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.freshworks.com/sp/SAML/<MODULE_ID>/metadata`
 
@@ -91,9 +91,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-1. Pokud chcete změnit **podpis**@no__t 1options podle vašeho požadavku, klikněte na **Upravit** button a otevřete **podpisový certifikát SAML** dialog.
+1. Pokud chcete upravit možnosti **podpisového** podle vašich požadavků, klikněte na tlačítko **Upravit** a otevřete dialog **podpisový certifikát SAML** .
 
      ![image](common/edit-certificate.png)
 
@@ -101,25 +101,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Vyberte možnost **podepsat odpověď SAML** jako **možnost podepisování**.
 
-    b. Klikněte na **Uložit**.
+    b. Klikněte na možnost **Uložit**.
 
 1. V části **Nastavení Freshworks** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Vyberte **nového uživatele** v horní části obrazovky.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Freshworks.
 
@@ -127,7 +127,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **Freshworks**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -141,7 +141,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Otevřete nové okno webového prohlížeče a přihlaste se k webu Freshworks společnosti jako správce a proveďte následující kroky:
 
-2. V levé části nabídky klikněte na **zabezpečení**@no__t – 1icon a potom zaškrtněte možnost **jednotné přihlašování** a v části **metody ověřování**vyberte **jednotné přihlašování SAML** .
+2. V levé části nabídky klikněte na ikonu  **zabezpečení** a pak zaškrtněte možnost **jednotného přihlašování** a v části **metody ověřování**vyberte **jednotné přihlašování SAML** .
 
     ![Konfigurace Freshworks](./media/freshworks-tutorial/configure01.png)
 
@@ -157,19 +157,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     d. Otevřete v programu Poznámkový blok certifikát kódovaný jako base64, zkopírujte jeho obsah a vložte ho do textového pole **certifikát zabezpečení** .
 
-    e. Klikněte na **Uložit**.
+    e. Klikněte na možnost **Uložit**.
 
 ### <a name="create-freshworks-test-user"></a>Vytvořit testovacího uživatele Freshworks
 
-V této části vytvoříte uživatele s názvem B. Simon v Freshworks. Pokud chcete přidat uživatele na platformě Freshworks, pracujte s [týmem podpory klienta Freshworks](mailto:support@freshworks.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele. 
+V této části vytvoříte uživatele s názvem B. Simon v Freshworks. Pokud chcete přidat uživatele na platformě Freshworks, pracujte s [týmem podpory klienta Freshworks](mailto:support@freshworks.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici Freshworks, měli byste se automaticky přihlásit k Freshworks, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

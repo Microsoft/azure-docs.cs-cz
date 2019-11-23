@@ -24,7 +24,7 @@ ms.locfileid: "70012575"
 # <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
 Vytvoření účtu NetApp umožňuje nastavit fond kapacity a následně vytvořit svazek. K vytvoření nového účtu NetApp se používá okno Azure NetApp Files.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Je nutné, abyste obdrželi e-mail od Azure NetApp Files týmu potvrzujícího, že vám byl udělen přístup k této službě. Viz [odeslání žádosti o přístup ke službě pořadníku](azure-netapp-files-register.md#waitlist).
 
 Musíte taky zaregistrovat předplatné pro používání poskytovatele prostředků NetApp. Viz [registrace poskytovatele prostředků NetApp](azure-netapp-files-register.md#resource-provider).
@@ -48,7 +48,7 @@ Musíte taky zaregistrovat předplatné pro používání poskytovatele prostře
      Vyberte předplatné z vašich stávajících předplatných.
    * **Skupina prostředků**   
      Použijte existující skupinu prostředků, nebo vytvořte novou.
-   * **Location**  
+   * **Umístění**  
      Vyberte oblast, kde má být umístěný účet a jeho podřízené prostředky.  
 
      ![Nový účet NetApp](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)

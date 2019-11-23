@@ -39,7 +39,7 @@ Tento článek se týká Graph API služby Azure AD. Podobné informace souvisej
 
 V Graph API můžete pro přístup k datům adresáře a objektům (jinými slovy, prostředkům nebo entitám), u kterých chcete provádět operace CRUD, používat adresy URL založené na protokolu OData (Open data). Adresy URL používané v Graph API se skládají ze čtyř hlavních částí: kořen služby, identifikátor tenanta, cesta prostředku a možnosti řetězce dotazu: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Vezměte v úvahu příklad následující adresy URL: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
 
-* **Kořenový adresář služby**: ve službě Azure AD Graph API má kořen služby vždycky https://graph.windows.net.
+* **Kořenový adresář služby**: v Azure AD Graph API je kořenový adresář služby vždycky https://graph.windows.net.
 * **Identifikátor tenanta**: v předchozím příkladu se může jednat o ověřený (registrovaný) název domény, contoso.com. Může to být také ID objektu tenanta nebo alias "myorganization" nebo "já". Další informace najdete v tématu věnovaném [adresování entit a operací v Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview).
 * **Cesta prostředku**: Tato část adresy URL identifikuje prostředek, se kterým se bude pracovat (uživatelé, skupiny, konkrétní uživatel nebo konkrétní skupina atd.). V předchozím příkladu je to nejvyšší úroveň "skupiny", která tuto sadu prostředků řeší. Můžete také adresovat konkrétní entitu, například "uživatelé/{objectId}" nebo "uživatelé/userPrincipalName".
 * **Parametry dotazu**: otazník (?) odděluje oddíl cesta prostředku z oddílu parametrů dotazu. Parametr dotazu API-Version je vyžadován u všech požadavků ve službě Azure AD Graph API. Azure AD Graph API také podporuje následující možnosti dotazů OData: **$Filter**, **$OrderBy**, **$expand**, **$Top**a **$Format**. Následující možnosti dotazu nejsou aktuálně podporovány: **$Count**, **$inlinecount**a **$Skip**. Další informace najdete v tématu [podporované dotazy, filtry a možnosti stránkování ve službě Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
@@ -56,7 +56,7 @@ Pokud chcete vrátit soubor metadat Graph API služby Azure AD, přidejte segmen
 
 [Azure ad Graph API Common dotazuje](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries) seznam běžných dotazů, které je možné používat s grafem Azure AD, včetně dotazů, které se dají použít k přístupu k prostředkům nejvyšší úrovně ve vašem adresáři a dotazům k provádění operací ve vašem adresáři.
 
-Například `https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` vrátí společnost informace o společnosti pro adresář contoso.com.
+`https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` například vrátí informace o společnosti pro adresář contoso.com.
 
 Nebo `https://graph.windows.net/contoso.com/users?api-version=1.6` vypíše všechny uživatelské objekty v adresáři contoso.com.
 
@@ -69,13 +69,13 @@ Následující snímek obrazovky je výstup, který vidíte, pokud jste chtěli 
 
 **Načtení Průzkumníka Azure AD graphu**: Pokud chcete nástroj načíst, přejděte na [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/). Klikněte na **Přihlásit** se a přihlaste se pomocí přihlašovacích údajů k účtu Azure AD a spusťte Průzkumníka Azure AD graphu s vaším klientem. Pokud spustíte Průzkumníka služby Azure AD Graph pro vašeho vlastního tenanta, budete vy nebo váš správce muset během přihlašování souhlasit. Pokud máte předplatné Office 365, budete mít automaticky tenanta Azure AD. Přihlašovací údaje, které používáte pro přihlášení k Office 365, jsou ve skutečnosti účty Azure AD a tyto přihlašovací údaje můžete použít s Průzkumníkem Azure AD Graph.
 
-**Spustit dotaz**: Chcete-li spustit dotaz, zadejte do textového pole žádost dotaz a klikněte na tlačítko **získat** nebo klikněte na klávesu **ENTER** . Výsledky se zobrazí v poli odpověď. Například `https://graph.windows.net/myorganization/groups?api-version=1.6` vypíše všechny objekty skupiny v adresáři přihlášeného uživatele.
+**Spustit dotaz**: Chcete-li spustit dotaz, zadejte do textového pole žádost dotaz a klikněte na tlačítko **získat** nebo klikněte na klávesu **ENTER** . Výsledky se zobrazí v poli odpověď. `https://graph.windows.net/myorganization/groups?api-version=1.6` například vypíše všechny objekty skupiny v adresáři přihlášeného uživatele.
 
 Všimněte si následujících funkcí a omezení Průzkumníka Azure AD graphu:
 
 * Funkce automatického dokončování v sadách prostředků Tuto funkci zobrazíte tak, že kliknete na textové pole žádosti (kde se zobrazí adresa URL společnosti). Můžete vybrat sadu prostředků z rozevíracího seznamu.
 * Historie žádostí
-* Podporuje aliasy pro adresování "já" a "myorganization". Můžete například použít `https://graph.windows.net/me?api-version=1.6` pro vrácení objektu uživatele přihlášeného uživatele nebo `https://graph.windows.net/myorganization/users?api-version=1.6` pro vrácení všech uživatelů v adresáři přihlášeného uživatele.
+* Podporuje aliasy pro adresování "já" a "myorganization". Můžete například použít `https://graph.windows.net/me?api-version=1.6` k vrácení uživatelského objektu přihlášeného uživatele nebo `https://graph.windows.net/myorganization/users?api-version=1.6`, který vrátí všechny uživatele v adresáři přihlášeného uživatele.
 * Podporuje úplné operace CRUD proti vašemu vlastnímu adresáři pomocí `POST`, `GET`, `PATCH` a `DELETE`.
 * Část s hlavičkami odpovědi. Tato část se dá použít k řešení problémů, ke kterým dochází při spouštění dotazů.
 * Prohlížeč JSON pro odpověď s funkcemi rozbalení a sbalení.
@@ -107,7 +107,7 @@ V následujícím příkladu použijete webový ladicí program Fiddler k vytvo�
    ```
    
    > [!NOTE]
-   > Pomocí přístupového tokenu pro váš adresář služby Azure AD Nahraďte svůj přístupový token @no__t 0your @ no__t-1.
+   > &lt;přístupového tokenu&gt; pomocí přístupového tokenu pro adresář služby Azure AD.
 
 5. Do pole **Text žádosti** zadejte následující kód JSON:
    

@@ -16,7 +16,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/18/2019
 ms.locfileid: "67175410"
 ---
-| Resource | Omezení |
+| Prostředek | Omezení |
 | --- | --- |
 | Maximální počet jednotek škálování | 10 na oblast<sup>1</sup> |
 | Velikost mezipaměti | 5 GB na jednotku<sup>2</sup> |
@@ -38,7 +38,7 @@ ms.locfileid: "67175410"
 <sup>2</sup> . Velikost mezipaměti pro jednotky závisí na cenové úrovni. Pokud chcete zobrazit cenové úrovně a jejich omezení škálování, přečtěte si téma [API Management ceny](https://azure.microsoft.com/pricing/details/api-management/).<br/>
 <sup>3</sup> . Připojení se ve fondu a znovu používají, pokud není explicitně Uzavřeno pomocí back-endu.<br/>
 <sup>4</sup> . Toto omezení je na jednotku úrovně Basic, Standard a Premium. Úroveň pro vývojáře je omezená na 1 024. Toto omezení se nevztahuje na úroveň spotřeby.<br/> 
-<sup>5</sup> . Toto omezení se vztahuje na úrovně Basic, Standard a Premium. V úrovni spotřeby je velikost dokumentu zásad omezená na 4 KB.<br/>
+<sup>5</sup>toto omezení se vztahuje na úrovně Basic, Standard a Premium. V úrovni spotřeby je velikost dokumentu zásad omezená na 4 KB.<br/>
 <sup>6</sup> Tento prostředek je k dispozici pouze v úrovni Premium.<br/>
 <sup>7</sup> Tento prostředek se vztahuje pouze na úroveň spotřeby.<br/>
 

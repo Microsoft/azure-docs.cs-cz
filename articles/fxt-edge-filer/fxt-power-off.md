@@ -29,7 +29,7 @@ Po použití uzlu Azure FXT Edge souborového v rámci clusteru byste měli pou�
 Postupujte podle těchto pokynů a bezpečně vypněte uzel Azure FXT Edge souborového:
 
 1. Přihlaste se k ovládacímu panelu clusteru. (Pokyny v [části otevření stránek nastavení](fxt-cluster-create.md#open-the-settings-pages))
-1. Klikněte na kartu **Nastavení** a potom na stránku @no__t **clusteru**–**uzly FXT** -2.
+1. Klikněte na kartu **Nastavení** a potom na stránce > uzly clusteru načtěte uzel **clustery** **FXT** .
 1. V seznamu uzlů clusteru Najděte ten, který chcete vypnout. Ve sloupci **Akce** klikněte **na tlačítko vypnout** . 
 1. Chvíli počkejte. Uzel se vypne a zapíná se.
 

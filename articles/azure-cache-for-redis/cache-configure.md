@@ -363,7 +363,7 @@ Nastavení v části **Podpora a řešení potíží** poskytují možnosti pro 
 * [Stav prostředku](#resource-health)
 * [Nová žádost o podporu](#new-support-request)
 
-### <a name="resource-health"></a>Stav prostředků
+### <a name="resource-health"></a>Stav prostředku
 **Stav prostředku** sleduje váš prostředek a oznamuje, zda je spuštěný podle očekávání. Další informace o službě Azure Resource Health najdete v článku [Přehled Azure Resource Health](../resource-health/resource-health-overview.md).
 
 > [!NOTE]
@@ -396,7 +396,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 | `maxclients` |Závisí na cenové úrovni<sup>2</sup> . |Tato hodnota je maximální povolený počet připojených klientů ve stejnou dobu. Po dosažení limitu Redis ukončí všechna nová připojení a vrátí chybu maximální počet klientů, které se dosáhly. |
 | `maxmemory-policy` |`volatile-lru` |Zásada Maxmemory je nastavení, jak Redis vybere, co se má odebrat, když se dosáhne `maxmemory` (velikost nabídky mezipaměti, kterou jste vybrali při vytváření mezipaměti). S Azure cache for Redis je výchozí nastavení `volatile-lru`, což odstraní klíče s nastavenou hodnotou vypršení platnosti pomocí LRU algoritmu. Toto nastavení lze nakonfigurovat v Azure Portal. Další informace najdete v tématu [zásady paměti](#memory-policies). |
 | `maxmemory-samples` |3 |Aby se ušetřila paměť, LRU a minimální algoritmy TTL jsou přibližné algoritmy místo přes přesné algoritmy. Ve výchozím nastavení Redis zkontroluje tři klíče a vybere ten, který byl naposledy použit méně. |
-| `lua-time-limit` |5 000 |Maximální doba provádění lua skriptu v milisekundách Pokud je dosaženo maximální doby spuštění, protokol Redis zaznamená, že skript je stále spuštěný po maximálním povoleném čase, a začne odpovídat na dotazy s chybou. |
+| `lua-time-limit` |5,000 |Maximální doba provádění lua skriptu v milisekundách Pokud je dosaženo maximální doby spuštění, protokol Redis zaznamená, že skript je stále spuštěný po maximálním povoleném čase, a začne odpovídat na dotazy s chybou. |
 | `lua-event-limit` |500 |Maximální velikost fronty událostí skriptu |
 | `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Limity výstupní vyrovnávací paměti klienta se dají použít k vynucení odpojení klientů, kteří nečtou data ze serveru z nějakého důvodu dostatečně rychle (běžným důvodem je to, že klient typu Pub/Sub nemůže spotřebovávat zprávy tak rychle, jak je může vydavatel vytvořit). Další informace najdete na adrese [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 

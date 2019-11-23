@@ -26,12 +26,12 @@ ms.locfileid: "72299949"
 ## <a name="overview"></a>Přehled
 Tento článek obsahuje C# ukázky kódu, které ukazují, jak používat sadu Azure WebJobs SDK verze 1. x se službou Azure Table Storage. Ukázky kódu používají [sadu WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) verze 1. x.
 
-Služba Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Služba je úložiště dat NoSQL, které přijímá ověřená volání zevnitř i mimo cloud Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.  Další informace najdete v tématu Začínáme [s Azure Table Storage pomocí rozhraní .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
+Služba Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Jsou ideální pro ukládání strukturovaných, nerelačních dat tabulky Azure.  Další informace najdete v tématu Začínáme [s Azure Table Storage pomocí rozhraní .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
 
 Některé fragmenty kódu ukazují atribut **tabulky** používané ve funkcích, které jsou volány ručně, to znamená, že nepoužívají jeden z atributů triggeru.
 
 ## <a name="how-to-add-entities-to-a-table"></a>Postup přidání entit do tabulky
-Chcete-li přidat entity do tabulky, použijte atribut **Table** s parametrem **ICollector @ no__t-2T >** nebo **IAsyncCollector @ no__t-4T >** , kde **t** Určuje schéma entit, které chcete přidat. Konstruktor atributu přebírá řetězcový parametr, který určuje název tabulky.
+Chcete-li do tabulky přidat entity, použijte atribut **Table** s parametrem **ICollector\<t >** nebo **IAsyncCollector\<t >** , kde **t** Určuje schéma entit, které chcete přidat. Konstruktor atributu přebírá řetězcový parametr, který určuje název tabulky.
 
 Následující ukázka kódu přidá entity **osob** do tabulky s názvem příchozí příchozí *přenosy*.
 
@@ -80,7 +80,7 @@ Po dokončení funkce se na stránce **Podrobnosti o vyvolání** zobrazí poče
 ![Funkce příchozího přenosu byla dokončena](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Čtení více entit z tabulky
-Chcete-li číst tabulku, použijte atribut **Table** s parametrem **IQueryable @ no__t-2T >** , kde type **t** je odvozen z **TableEntity** nebo implementuje **ITableEntity**.
+Chcete-li číst tabulku, použijte atribut **Table** s parametrem **IQueryable\<t >** parametr, kde type **t** je odvozen z **TableEntity** nebo implementuje **ITableEntity**.
 
 Následující ukázka kódu čte a zapisuje všechny řádky **z tabulky** příchozího přenosu dat:
 

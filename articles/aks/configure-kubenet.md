@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak pomocí sítě *kubenet* vytvořit a použít 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější. Vyhledejte verzi spuštěním @ no__t-0. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Přehled sítě kubenet s vlastní podsítí
 
@@ -85,7 +85,7 @@ Další informace, které vám pomůžou určit, který model sítě se má pou�
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Vytvoření virtuální sítě a podsítě
 
-Pokud chcete začít používat *kubenet* a vlastní podsíť virtuální sítě, vytvořte nejprve skupinu prostředků pomocí příkazu [AZ Group Create][az-group-create] . Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
+Pokud chcete začít používat *kubenet* a vlastní podsíť virtuální sítě, vytvořte nejprve skupinu prostředků pomocí příkazu [AZ Group Create][az-group-create] . Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -104,7 +104,7 @@ az network vnet create \
 
 ## <a name="create-a-service-principal-and-assign-permissions"></a>Vytvoření instančního objektu a přiřazení oprávnění
 
-Pokud chcete, aby cluster AKS spolupracoval s dalšími prostředky Azure, použije se Azure Active Directory instanční objekt. Instanční objekt musí mít oprávnění ke správě virtuální sítě a podsítě, kterou používají uzly AKS. Objekt služby vytvoříte pomocí příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] :
+Aby mohl cluster AKS pracovat a komunikovat s jinými prostředky Azure, používá se instanční objekt služby Azure Active Directory. Instanční objekt musí mít oprávnění ke správě virtuální sítě a podsítě, kterou používají uzly AKS. Objekt služby vytvoříte pomocí příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] :
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -131,7 +131,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Nyní přiřaďte instančnímu objektu oprávnění *přispěvatele* clusteru AKS ve virtuální síti pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Zadejte vlastní *> @no__t 1appId* , jak je znázorněno ve výstupu z předchozího příkazu pro vytvoření instančního objektu:
+Nyní přiřaďte instančnímu objektu oprávnění *přispěvatele* clusteru AKS ve virtuální síti pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Zadejte vlastní *\<appId >* , jak je znázorněno ve výstupu z předchozího příkazu k vytvoření instančního objektu:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -139,7 +139,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Vytvoření clusteru AKS ve virtuální síti
 
-Nyní jste vytvořili virtuální síť a podsíť a vytvořili a přiřadili jste oprávnění instančnímu objektu pro použití těchto síťových prostředků. Teď ve své virtuální síti a podsíti vytvořte cluster AKS pomocí příkazu [AZ AKS Create][az-aks-create] . Definujte vlastní instanční objekt *\<appId >* a *> \<password*, jak je znázorněno na výstupu z předchozího příkazu k vytvoření instančního objektu.
+Nyní jste vytvořili virtuální síť a podsíť a vytvořili a přiřadili jste oprávnění instančnímu objektu pro použití těchto síťových prostředků. Teď ve své virtuální síti a podsíti vytvořte cluster AKS pomocí příkazu [AZ AKS Create][az-aks-create] . Definujte vlastní instanční objekt *\<appId >* a *\<> hesla*, jak je znázorněno ve výstupu z předchozího příkazu pro vytvoření instančního objektu.
 
 V rámci procesu vytváření clusteru se definují taky tyto rozsahy IP adres:
 

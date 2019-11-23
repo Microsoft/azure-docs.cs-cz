@@ -31,7 +31,7 @@ ms.locfileid: "72024620"
 
 Tento kurz vám pomůže prozkoumat incidenty pomocí služby Azure Sentinel. Po připojení zdrojů dat ke službě Azure Sentinel chcete být upozorněni, když dojde k nějaké podezřelé situaci. Pokud to chcete povolit, Azure Sentinel vám umožní vytvářet Pokročilá pravidla výstrah, která generují incidenty, které můžete přiřadit a prozkoumat.
 
-Tento článek popisuje:
+Tento článek se týká:
 > [!div class="checklist"]
 > * Šetření incidentů
 > * Použití grafu šetření
@@ -39,7 +39,7 @@ Tento článek popisuje:
 
 Incident může zahrnovat více výstrah. Jedná se o agregaci všech relevantních důkazů pro konkrétní šetření. Incident se vytvoří na základě analytických pravidel, která jste vytvořili na stránce **Analytics** . Vlastnosti související s výstrahami, jako je závažnost a stav, se nastavují na úrovni incidentu. Až budete chtít, aby služba Azure Sentinel znala, jaké druhy hrozeb hledáte a jak se mají najít, můžete monitorovat zjištěné hrozby zkoumáním incidentů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla pro analýzu použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
 
 ## <a name="how-to-investigate-incidents"></a>Jak prozkoumat incidenty
@@ -97,7 +97,7 @@ Použití grafu šetření:
 
     ![Zobrazit související výstrahy](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Pro každý dotaz průzkumu můžete vybrat možnost pro otevření nezpracovaných výsledků události a dotaz použitý v Log Analytics, a to tak, že vyberete **události @ no__t-1**.
+1. Pro každý dotaz průzkumu můžete vybrat možnost pro otevření nezpracovaných výsledků události a dotaz použitý v Log Analytics, a to tak, že vyberete **události\>** .
 
 1. Aby bylo možné porozumět incidentu, graf vám nabídne paralelní časovou osu.
 

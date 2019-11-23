@@ -52,13 +52,13 @@ Pokud chcete získat přístup k frontám v ASP.NET Core projektech, zahrňte C#
         CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. Získejte objekt `CloudQueueClient`, který bude odkazovat na objekty fronty v účtu úložiště:
+1. Získat objekt `CloudQueueClient`, který odkazuje na objekty fronty ve vašem účtu úložiště:
 
     ```cs
     // Create the CloudQueueClient object for the storage account.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
-1. Získat objekt `CloudQueue` pro odkaz na konkrétní frontu:
+1. Získat objekt `CloudQueue`, který odkazuje na konkrétní frontu:
 
     ```cs
     // Get a reference to the CloudQueue named "messagequeue"
@@ -76,7 +76,7 @@ await messageQueue.CreateIfNotExistsAsync();
 
 ## <a name="add-a-message-to-a-queue"></a>Přidat zprávu do fronty
 
-Chcete-li vložit zprávu do existující fronty, vytvořte nový objekt @no__t 0 a zavolejte metodu `AddMessageAsync`. Objekt `CloudQueueMessage` lze vytvořit buď z řetězce (ve formátu UTF-8), nebo pole bajtů.
+Chcete-li vložit zprávu do existující fronty, vytvořte nový objekt `CloudQueueMessage` a zavolejte metodu `AddMessageAsync`. Objekt `CloudQueueMessage` lze vytvořit buď z řetězce (ve formátu UTF-8), nebo pole bajtů.
 
 ```cs
 // Create a message and add it to the queue.
@@ -86,7 +86,7 @@ await messageQueue.AddMessageAsync(message);
 
 ## <a name="read-a-message-in-a-queue"></a>Čtení zprávy ve frontě
 
-Můžete prohlížet zprávy před frontou, aniž byste je museli odebírat z fronty voláním metody `PeekMessageAsync`:
+Můžete prohlížet zprávy před frontou, aniž byste je odebrali z fronty voláním metody `PeekMessageAsync`:
 
 ```cs
 // Peek the next message in the queue.
@@ -97,7 +97,7 @@ CloudQueueMessage peekedMessage = await messageQueue.PeekMessageAsync();
 
 Váš kód může z fronty odebrat (odřadit z fronty) zprávu ve dvou krocích.
 
-1. Chcete-li získat další zprávu ve frontě, zavolejte `GetMessageAsync`. Zpráva vrácená z `GetMessageAsync` bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund.
+1. Zavolejte `GetMessageAsync` pro získání další zprávy ve frontě. Zpráva vrácená z `GetMessageAsync` bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund.
 1. Chcete-li dokončit odebrání zprávy z fronty, zavolejte `DeleteMessageAsync`.
 
 Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Následující kód volá `DeleteMessageAsync` hned po zpracování zprávy:
@@ -114,7 +114,7 @@ await messageQueue.DeleteMessageAsync(retrievedMessage);
 
 ## <a name="additional-options-for-dequeuing-messages"></a>Další možnosti pro vyřazování zpráv do fronty
 
-Existují dva způsoby, jak přizpůsobit načítání zpráv z fronty. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé si můžete nastavit delší nebo kratší časový limit neviditelnosti, aby měl váš kód více nebo méně času na úplné zpracování jednotlivých zpráv. Následující příklad kódu používá metodu `GetMessages` pro získání 20 zpráv v jednom volání. Potom zpracuje každou zprávu pomocí smyčky `foreach`. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut. Všimněte si, že časovač pět minut začíná u všech zpráv současně, takže po pěti minutách budou všechny zprávy, které nebyly odstraněny, opět viditelné.
+Existují dva způsoby, jak přizpůsobit načítání zpráv z fronty. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé si můžete nastavit delší nebo kratší časový limit neviditelnosti, aby měl váš kód více nebo méně času na úplné zpracování jednotlivých zpráv. Následující příklad kódu používá metodu `GetMessages` k získání 20 zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `foreach` smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut. Všimněte si, že časovač pět minut začíná u všech zpráv současně, takže po pěti minutách budou všechny zprávy, které nebyly odstraněny, opět viditelné.
 
 ```cs
 // Retrieve 20 messages at a time, keeping those messages invisible for 5 minutes, 
@@ -144,7 +144,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
 ## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Použití vzoru Async-await s běžnými rozhraními API fronty
 
-Tento příklad ukazuje použití vzoru Async-await s běžnými rozhraními API front končícím na `Async`. Při použití asynchronní metody vzorek Async-await pozastaví místní spuštění, dokud se volání nedokončí. Toto chování umožňuje aktuálnímu vláknu provádět další práci, která pomáhá vyhnout se kritickým bodům výkonu a zlepšuje celkovou odezvu vaší aplikace.
+Tento příklad ukazuje, jak použít vzor Async-await s běžnými rozhraními API front končícím na `Async`. Při použití asynchronní metody vzorek Async-await pozastaví místní spuštění, dokud se volání nedokončí. Toto chování umožňuje aktuálnímu vláknu provádět další práci, která pomáhá vyhnout se kritickým bodům výkonu a zlepšuje celkovou odezvu vaší aplikace.
 
 ```cs
 // Create a message to add to the queue.

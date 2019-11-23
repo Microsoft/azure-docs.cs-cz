@@ -14,7 +14,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/30/2019
 ms.locfileid: "71679523"
 ---
-# <a name="install-office-on-a-master-vhd-image"></a>Instalace Office na hlavní bitovou kopii VHD
+# <a name="install-office-on-a-master-vhd-image"></a>Instalace sady Office do hlavní image virtuálního pevného disku
 
 V tomto článku se dozvíte, jak nainstalovat Office 365 ProPlus, OneDrive a další běžné aplikace na hlavní image virtuálního pevného disku (VHD) pro nahrání do Azure. Pokud uživatelé potřebují přístup k určitým obchodním aplikacím (LOB), doporučujeme je nainstalovat po dokončení pokynů v tomto článku.
 
@@ -30,7 +30,7 @@ Tento článek také předpokládá, že máte na virtuálním počítači vyš�
 Aktivace pomocí sdíleného počítače vám umožní nasadit Office 365 ProPlus na počítač ve vaší organizaci, ke kterému má více uživatelů přistup. Další informace o aktivaci sdíleného počítače najdete v tématu [Přehled aktivace sdíleného počítače pro Office 365 ProPlus](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus).
 
 K instalaci Office použijte [Nástroj pro nasazení Office](https://www.microsoft.com/download/details.aspx?id=49117) . Windows 10 Enterprise multi-session podporuje jenom tyto verze Office:
-- Office 365 ProPlus
+- Office 365 ProPlus
 - Office 365 Business, který je součástí předplatného Microsoft 365 Business
 
 Nástroj pro nasazení Office vyžaduje konfigurační soubor XML. Postup přizpůsobení následující ukázky najdete v tématu [Možnosti konfigurace pro nástroj pro nasazení Office](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
@@ -53,7 +53,7 @@ Tady je postup, jak tento ukázkový konfigurační soubor XML neprovede:
 - Nainstalujte OneDrive v režimu pro jednotlivé uživatele. Další informace najdete v tématu [instalace OneDrivu v režimu podle počítače](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Aktivace sdíleného počítače se dá nastavit prostřednictvím objektů Zásady skupiny (GPO) nebo nastavení registru. Objekt zásad skupiny se nachází v **konfiguraci počítače @ no__t-1Policies @ no__t-2Administrative Templates @ no__t-3Microsoft Office 2016 (Machine) \\Licensing Settings**
+>Aktivace sdíleného počítače se dá nastavit prostřednictvím objektů Zásady skupiny (GPO) nebo nastavení registru. Objekt zásad skupiny se nachází v **zásadách\\konfigurace počítače\\Šablony pro správu\\systém Microsoft Office 2016 (počítač)\\nastavení licencování** .
 
 Nástroj pro nasazení Office obsahuje Setup. exe. Pokud chcete nainstalovat Office, spusťte na příkazovém řádku následující příkaz:
 
@@ -130,11 +130,11 @@ OneDrive je obvykle nainstalovaný pro jednotlivé uživatele. V tomto prostřed
 
 Tady je postup, jak nainstalovat OneDrive v režimu podle počítače:
 
-1. Nejdřív vytvořte umístění pro přípravu instalačního programu OneDrivu. Umístění složky místního disku nebo [\\ @ no__t-1unc] (file://unc) je v pořádku.
+1. Nejdřív vytvořte umístění pro přípravu instalačního programu OneDrivu. Umístění složky místního disku nebo umístění [\\\\UNC] (file://unc) je v pořádku.
 
-2. Stáhněte OneDriveSetup. exe do připraveného umístění pomocí tohoto odkazu: <https://aka.ms/OneDriveWVD-Installer>
+2. Stáhněte OneDriveSetup. exe do připraveného umístění s tímto odkazem: <https://aka.ms/OneDriveWVD-Installer>
 
-3. Pokud jste nainstalovali Office s OneDrivem tak, že vynecháte **\<EXCLUDEAPP ID = "OneDrive"/\>** , odinstalujte všechny existující instalace OneDrivu na příkazovém řádku se zvýšenými oprávněními spuštěním tohoto příkazu:
+3. Pokud jste nainstalovali Office s OneDrivem tím, že vynecháte **\<EXCLUDEAPP ID = "OneDrive"/\>** , odinstalujte všechny existující instalace OneDrivu na příkazovém řádku se zvýšenými oprávněními spuštěním tohoto příkazu:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

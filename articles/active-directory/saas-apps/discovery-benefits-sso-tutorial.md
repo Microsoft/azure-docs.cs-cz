@@ -53,7 +53,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci výhod zjišťování jednotného přihlašování do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat výhody zjišťování jednotného přihlašování z galerie.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -83,11 +83,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V **základní konfiguraci SAML**@no__t – 1SECTION je aplikace předem nakonfigurovaná v režimu **IDP** Initiated a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na **uložit**@no__t – 1button.
+1. V části **základní konfigurace SAML** je aplikace předem nakonfigurovaná v režimu iniciované  **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **uložit** .
 
 1. Aplikace jednotného přihlašování pro jednotné přihlašování očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
-    ![obrázek](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
     a. Kliknutím na ikonu **Upravit** otevřete dialogové okno **jedinečný identifikátor uživatele (ID názvu)** .
 
@@ -97,40 +97,40 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Kliknutím na ikonu **Upravit** otevřete dialogové okno **Spravovat transformaci** .
 
-    r. Do textového pole **transformace** zadejte **ToUppercase ()** zobrazený pro tento řádek.
+    c. Do textového pole **transformace** zadejte **ToUppercase ()** zobrazený pro tento řádek.
 
-    trojrozměrné. Do textového pole **parametr 1** zadejte parametr jako `<Name Identifier value>`.
+    d. Do textového pole **parametr 1** zadejte parametr jako `<Name Identifier value>`.
 
-    Cerebrální. Klikněte na tlačítko **Přidat**.
+    e. Klikněte na **Přidat**.
 
     > [!NOTE]
     > K tomu, aby tato integrace fungovala, musí být v poli **jedinečného uživatelského identifikátoru (ID)** předána pevná řetězcová hodnota pro zjišťování výhod. Azure AD v tuto chvíli nepodporuje tuto funkci, takže pokud chcete nastavit pevnou hodnotu řetězce, jak je znázorněno na snímku obrazovky, můžete použít transformace **ToUpper** nebo **ToLower** NameId.
 
-    FJ. Vyplnili jsme automaticky dodatečné deklarace identity, které jsou potřeba pro konfiguraci jednotného přihlašování (`SSOInstance` a `SSOID`). Pomocí ikony **Upravit** namapujte hodnoty dle vaší organizace.
+    f. Vyplnili jsme automaticky dodatečné deklarace identity, které jsou potřeba pro konfiguraci jednotného přihlašování (`SSOInstance` a `SSOID`). Pomocí ikony **Upravit** namapujte hodnoty dle vaší organizace.
 
     ![Konfigurace jednotného přihlašování k výhodám zjišťování](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
 1. V části **nastavení jednotného přihlašování k výhodám zjišťování** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Vyberte **nového uživatele** v horní části obrazovky.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například `B.Simon@contoso.com`.
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k výhodám zjišťování jednotného přihlašování.
 
@@ -138,7 +138,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. V seznamu aplikace vyberte možnost **zjišťování výhody pro jednotné přihlašování**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -150,15 +150,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-discovery-benefits-sso-sso"></a>Konfigurovat výhody zjišťování jednotného přihlašování SSO
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **jednotného přihlašování k výhodám zjišťování** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal na [tým podpory jednotného přihlašování pro výhody zjišťování](mailto:Jsimpson@DiscoveryBenefits.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Chcete-li nakonfigurovat jednotné přihlašování na straně **jednotného přihlašování k výhodám zjišťování** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal na [tým podpory jednotného přihlašování pro výhody zjišťování](mailto:Jsimpson@DiscoveryBenefits.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-discovery-benefits-sso-test-user"></a>Vytvořit uživatele testu jednotného přihlašování pro uživatele
 
-V této části vytvoříte v rámci jednotného přihlašování k výhodám zjišťování uživatele s názvem Britta Simon. Pokud chcete přidat uživatele na platformě jednotného přihlašování k výhodám zjišťování, využijte [tým podpory pro jednotné přihlašování s výhodami zjišťování](mailto:Jsimpson@DiscoveryBenefits.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte v rámci jednotného přihlašování k výhodám zjišťování uživatele s názvem Britta Simon. Pokud chcete přidat uživatele na platformě jednotného přihlašování k výhodám zjišťování, využijte [tým podpory pro jednotné přihlašování s výhodami zjišťování](mailto:Jsimpson@DiscoveryBenefits.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici přihlášení k výhodám vyhledávání, měli byste být automaticky přihlášení k výhodám zjišťování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

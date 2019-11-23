@@ -42,21 +42,21 @@ ADAL 2.7. x může číst formát MSAL cache. Pro jednotné přihlašování mez
 
 ### <a name="account-identifier-differences"></a>Rozdíly v identifikátorech účtů
 
-MSAL a ADAL používají jiné identifikátory účtu. ADAL používá jako svůj primární identifikátor účtu hlavní název uživatele (UPN). MSAL používá nezobrazitelný identifikátor účtu, který je založen na ID objektu a ID tenanta pro účty AAD, a na dalších typech účtů `sub` deklarace identity.
+MSAL a ADAL používají jiné identifikátory účtu. ADAL používá jako svůj primární identifikátor účtu hlavní název uživatele (UPN). MSAL používá nezobrazitelný identifikátor účtu, který je založen na ID objektu a ID tenanta pro účty AAD, a `sub` deklarací pro jiné typy účtů.
 
-Když obdržíte objekt `MSALAccount` v výsledku MSAL, obsahuje identifikátor účtu ve vlastnosti `identifier`. Aplikace by měla tento identifikátor používat pro následné tiché požadavky.
+Když obdržíte objekt `MSALAccount` ve výsledku MSAL, obsahuje identifikátor účtu ve vlastnosti `identifier`. Aplikace by měla tento identifikátor používat pro následné tiché požadavky.
 
-Kromě `identifier` @no__t objekt-1 obsahuje zobrazitelný identifikátor nazvaný `username`. To se týká `userId` v ADAL. `username` se nepovažuje za jedinečný identifikátor a může se kdykoli změnit, takže by se mělo použít jenom pro scénáře zpětné kompatibility s ADAL. MSAL podporuje dotazy mezipaměti pomocí `username` nebo `identifier`, kde se dotazování podle `identifier` doporučuje.
+Kromě `identifier`obsahuje objekt `MSALAccount` nezobrazitelný identifikátor nazvaný `username`. To se týká `userId` v ADAL. `username` se nepovažují za jedinečný identifikátor a může se kdykoli změnit, takže by se mělo používat jenom pro scénáře zpětné kompatibility s ADAL. MSAL podporuje dotazy mezipaměti pomocí `username` nebo `identifier`, kde se doporučuje dotazování podle `identifier`.
 
 Následující tabulka shrnuje rozdíly v identifikátorech účtů mezi ADAL a MSAL:
 
 | Identifikátor účtu                | MSAL                                                         | ADAL 2.7. x      | Starší knihovna ADAL (před ADAL 2.7. x) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | zobrazitelný identifikátor            | `username`                                                   | `userId`        | `userId`                       |
-| jedinečný nezobrazitelný identifikátor | `identifier`                                                 | `homeAccountId` | Není k dispozici                            |
-| Není známé žádné ID účtu.               | Dotazování všech účtů prostřednictvím rozhraní API `allAccounts:` v `MSALPublicClientApplication` | Není k dispozici             | Není k dispozici                            |
+| jedinečný nezobrazitelný identifikátor | `identifier`                                                 | `homeAccountId` | neuvedeno                            |
+| Není známé žádné ID účtu.               | Dotazování všech účtů prostřednictvím rozhraní API `allAccounts:` v `MSALPublicClientApplication` | neuvedeno             | neuvedeno                            |
 
-Toto je rozhraní @no__t 0, které poskytuje tyto identifikátory:
+Toto je `MSALAccount` rozhraní, které poskytuje tyto identifikátory:
 
 ```objc
 @protocol MSALAccount <NSObject>
@@ -89,7 +89,7 @@ Toto je rozhraní @no__t 0, které poskytuje tyto identifikátory:
 
 ### <a name="sso-from-msal-to-adal"></a>Jednotné přihlašování z MSAL do ADAL
 
-Pokud máte aplikaci MSAL a aplikaci ADAL a uživatel se poprvé přihlásí do aplikace založené na MSAL, můžete v aplikaci ADAL získat jednotné přihlašování, a to tak, že z objektu `MSALAccount` uložíte `username` a předáte ho do aplikace založené na ADAL jako `userId`. ADAL pak může najít informace o účtu v tichém režimu s rozhraním API `acquireTokenSilentWithResource:clientId:redirectUri:userId:completionBlock:`.
+Pokud máte aplikaci MSAL a aplikaci ADAL a uživatel se poprvé přihlásí do aplikace založené na MSAL, můžete k získání jednotného přihlašování v aplikaci ADAL Uložit `username` z objektu `MSALAccount` a předat ho do aplikace založené na ADAL jako `userId`. ADAL pak může najít informace účtu v tichém režimu pomocí rozhraní `acquireTokenSilentWithResource:clientId:redirectUri:userId:completionBlock:` API.
 
 ### <a name="sso-from-adal-to-msal"></a>Jednotné přihlašování z ADAL do MSAL
 
@@ -106,11 +106,11 @@ ADAL 2.7. x vrátí `homeAccountId` v objektu `ADUserInformation` ve výsledku p
 
 `homeAccountId` v ADAL je ekvivalentem `identifier` v MSAL. Tento identifikátor můžete uložit pro použití v MSAL pro vyhledávání účtů s rozhraním API `accountForIdentifier:error:`.
 
-#### <a name="adals-userid"></a>ADAL `userId`
+#### <a name="adals-userid"></a>`userId` ADAL
 
 Pokud `homeAccountId` není k dispozici nebo máte jenom zobrazitelný identifikátor, můžete k vyhledání účtu v MSAL použít `userId` ADAL.
 
-V MSAL nejprve vyhledá účet `username` nebo `identifier`. Při dotazování vždy použít `identifier` a jako zálohu použít pouze `username`. Pokud je účet nalezen, použijte účet v volání `acquireTokenSilent`.
+V MSAL nejprve vyhledá účet `username` nebo `identifier`. Vždy používat `identifier` pro dotazování, pokud máte, a používejte `username` jako záložní. Pokud je účet nalezen, použijte účet ve `acquireTokenSilent` volání.
 
 Cíl-C:
 
@@ -139,7 +139,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-SWIFT
+Swift:
 
 ```swift
         
@@ -219,7 +219,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 do {
@@ -259,7 +259,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-SWIFT
+Swift:
 
 ```swift
       

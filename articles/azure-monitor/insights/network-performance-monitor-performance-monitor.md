@@ -95,7 +95,7 @@ Před zvolením protokolu zvažte následující informace:
 
 Pokud se rozhodnete používat protokol ICMP během nasazení, můžete kdykoli přejít na protokol TCP úpravou výchozího pravidla monitorování.
 
-1. Přejít na **výkon sítě** > **monitorování** > **Konfigurace**  **monitorování**. Pak vyberte **výchozí pravidlo**. 
+1. Přejít na **výkon sítě** > **monitorování** > **Konfigurace**  **monitorování**.> Pak vyberte **výchozí pravidlo**. 
 2. Přejděte do části **protokol** a vyberte protokol, který chcete použít. 
 3. Vyberte **Uložit** a použijte nastavení. 
 

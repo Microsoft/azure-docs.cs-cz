@@ -43,7 +43,7 @@ Následující toky nejsou podporovány:
 5. Zadejte název toku uživatele, například *ROPC_Auth*.
 6. V části **deklarace aplikací**klikněte na **Zobrazit více**.
 7. Vyberte deklarace identity aplikace, které potřebujete pro vaši aplikaci, například zobrazované jméno, e-mailovou adresu a poskytovatele identity.
-8. Vyberte **OK**a pak vyberte **vytvořit**.
+8. Vyberte **OK** a potom vyberte **Vytvořit**.
 9. Klikněte na **Spustit tok uživatele**.
 
    Pak uvidíte koncový bod, jako je například tento příklad:
@@ -58,22 +58,22 @@ Následující toky nejsou podporovány:
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
 Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování volání rozhraní API a Projděte si odpověď pro ladění toku uživatele. Sestavte podobné volání s informacemi v následující tabulce jako text požadavku POST:
-- Nahraďte *@no__t -1yourtenant... Microsoft. com >* názvem vašeho tenanta B2C.
-- Nahraďte *\<B2C_1A_ROPC_Auth >* úplným názvem zásad pro hesla vlastníka prostředku.
+- Nahraďte *\<yourtenant... Microsoft. com >* názvem vašeho tenanta B2C.
+- Nahraďte *\<B2C_1A_ROPC_Auth >* úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
 - Nahraďte *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* s ID aplikace z vaší registrace.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Key | Hodnota |
+| Klíč | Hodnota |
 | --- | ----- |
-| jmen | leadiocl@outlook.com |
-| zadáno | Passxword1 |
-| parametr grant_type | zadáno |
-| rozsah | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| uživatelské jméno | leadiocl@outlook.com |
+| heslo | Passxword1 |
+| grant_type | heslo |
+| scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | id_token tokenu |
 
-*Client_id* je hodnota, kterou jste dříve poznamenali jako ID aplikace. *Offline_access* je nepovinný, pokud chcete získat obnovovací token. Uživatelské jméno a heslo, které použijete, musí být přihlašovací údaje od stávajícího uživatele v Azure AD B2C tenantovi.
+*Client_id* je hodnota, kterou jste dříve poznamenali jako ID aplikace. *Offline_access* je volitelné, pokud chcete získat obnovovací token. Uživatelské jméno a heslo, které použijete, musí být přihlašovací údaje od stávajícího uživatele v Azure AD B2C tenantovi.
 
 Skutečný požadavek POST vypadá takto:
 
@@ -104,15 +104,15 @@ Sestavte následné volání jako tu, která se tady zobrazuje s informacemi v n
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Key | Hodnota |
+| Klíč | Hodnota |
 | --- | ----- |
-| parametr grant_type | refresh_token |
+| grant_type | refresh_token |
 | response_type | id_token |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
-| prostředek | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
-*Client_id* a *Resource* jsou hodnoty, které jste dříve poznamenali jako ID aplikace. *Refresh_token* je token, který jste dostali ve výše zmíněném ověřovacím volání.
+*Client_id* a *prostředku* jsou hodnoty, které jste dříve poznamenali jako ID aplikace. *Refresh_token* je token, který jste dostali do výše uvedeného ověřovacího hovoru.
 
 Úspěšná odpověď vypadá jako v následujícím příkladu:
 

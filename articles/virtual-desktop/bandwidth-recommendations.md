@@ -14,7 +14,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/02/2019
 ms.locfileid: "71802615"
 ---
-# <a name="bandwidth-recommendations-for-remote-sessions"></a>Doporučení šířky pásma pro vzdálené relace
+# <a name="bandwidth-recommendations-for-remote-sessions"></a>Doporučené šířky pásma pro vzdálené relace
 
 Při použití vzdálené relace Windows má dostupná šířka pásma vaší sítě výrazně dopad na kvalitu prostředí. Různé aplikace a rozlišení zobrazení vyžadují různé konfigurace sítě, proto je důležité zajistit, aby vaše síť byla nakonfigurovaná tak, aby vyhovovala vašim potřebám.
 
@@ -27,10 +27,10 @@ V následující tabulce jsou uvedeny minimální Doporučené šířky pásma p
 
 |Úloha        |Ukázkové aplikace                                                                                           |Doporučená šířka pásma|
 |----------------|--------------------------------------------------------------------------------------------------------------|---------------------|
-|Pracovníci zpracovávající úkoly     |Microsoft Word, Outlook, Excel, Adobe Reader                                                                  |1,5 @ no__t – 0Mbps        |
-|Pracovní proces Office   |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer                                        |3 @ no__t – 0Mbps          |
-|Pracovní proces znalostí|Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java                                  |5 @ no__t – 0Mbps          |
-|Power Worker    |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java, CAD/VAČKa, ilustrace/publikování|15 @ no__t – 0Mbps         |
+|Pracovníci zpracovávající úkoly     |Microsoft Word, Outlook, Excel, Adobe Reader                                                                  |1,5&nbsp;MB/s        |
+|Pracovní proces Office   |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer                                        |3&nbsp;MB/s          |
+|Pracovní proces znalostí|Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java                                  |5&nbsp;MB/s          |
+|Power Worker    |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java, CAD/VAČKa, ilustrace/publikování|15&nbsp;MB/s         |
 
 >[!NOTE]
 >Tato doporučení platí bez ohledu na to, kolik uživatelů se v relaci nachází.
@@ -59,6 +59,6 @@ Různá rozlišení zobrazení vyžadují různé dostupné šířky pásma. V n
 >[!NOTE]
 >Tato doporučení platí bez ohledu na to, kolik uživatelů se v relaci nachází.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 Oblast Azure, ve které se nacházíte, může ovlivnit uživatelské prostředí, a to až do stavu sítě. Další informace najdete v části [prostředí pro virtuální počítače s Windows Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/) .

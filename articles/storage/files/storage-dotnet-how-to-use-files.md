@@ -36,10 +36,10 @@ Další informace o službě soubory Azure najdete v tématu [co je Azure Files?
 
 Soubory Azure poskytuje dva přístupy ke klientským aplikacím: protokol SMB (Server Message Block) a REST. V rozhraní .NET rozhraní API `System.IO` a `WindowsAzure.Storage` tyto přístupy abstraktní.
 
-API | When to use | Poznámky
+Rozhraní API | When to use | Poznámky:
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Vaše aplikace: <ul><li>Musí číst/zapisovat soubory pomocí protokolu SMB.</li><li>Je spuštěná v zařízení, které má prostřednictvím portu 445 přístup k vašemu účtu služby Soubory Azure.</li><li>Nemusí spravovat žádná nastavení pro správu sdílené složky.</li></ul> | I/O souborů implementovaných pomocí služby Azure Files přes SMB je obvykle stejné jako u vstupu a výstupu pomocí libovolné síťové sdílené složky nebo místního úložného zařízení. Úvod do řady funkcí v rozhraní .NET, včetně vstupně-výstupních operací se soubory, najdete v kurzu [konzolové aplikace](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) .
-[Microsoft. Azure. Storage. File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Vaše aplikace: <ul><li>K souborům Azure nelze přistupovat pomocí protokolu SMB na portu 445 z důvodu omezení brány firewall nebo poskytovatele internetových služeb.</li><li>Vyžaduje funkce pro správu, jako je například možnost nastavit kvótu sdílené složky nebo vytvořit sdílený přístupový podpis.</li></ul> | Tento článek ukazuje použití `Microsoft.Azure.Storage.File` pro vstupně-výstupní operace se soubory pomocí REST namísto SMB a správy sdílené složky.
+[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Vaše aplikace: <ul><li>K souborům Azure nelze přistupovat pomocí protokolu SMB na portu 445 z důvodu omezení brány firewall nebo poskytovatele internetových služeb.</li><li>Vyžaduje funkce pro správu, jako je například možnost nastavit kvótu sdílené složky nebo vytvořit sdílený přístupový podpis.</li></ul> | Tento článek ukazuje použití `Microsoft.Azure.Storage.File` pro vstupně-výstupní operace se soubory pomocí REST místo SMB a správy sdílené složky.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>Vytvoření konzolové aplikace a získání sestavení
 
@@ -79,12 +79,12 @@ K získání obou balíčků můžete použít balíček NuGet. Postupujte násl
 1. Vyhledejte a nainstalujte tyto balíčky:
 
    * **Microsoft. Azure. Storage. Common**
-   * **Microsoft. Azure. Storage. File**
+   * **Microsoft.Azure.Storage.File**
    * **Microsoft. Azure. ConfigurationManager**
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Uložte přihlašovací údaje účtu úložiště do souboru App. config.
 
-Potom uložte své přihlašovací údaje do souboru `App.config` vašeho projektu. V **Průzkumník řešení**dvakrát klikněte `App.config` a upravte soubor tak, aby byl podobný následujícímu příkladu. Nahraďte `myaccount` názvem svého účtu úložiště a `mykey` s klíčem účtu úložiště.
+Potom uložte své přihlašovací údaje do souboru `App.config` projektu. V **Průzkumník řešení**dvakrát klikněte `App.config` a upravte soubor tak, aby byl podobný následujícímu příkladu. Nahraďte `myaccount` názvem svého účtu úložiště a `mykey` s klíčem účtu úložiště.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -103,7 +103,7 @@ Potom uložte své přihlašovací údaje do souboru `App.config` vašeho projek
 
 ## <a name="add-using-directives"></a>Přidání direktiv using
 
-V **Průzkumník řešení**otevřete soubor `Program.cs` a na začátek souboru přidejte následující direktivy using.
+V **Průzkumník řešení**otevřete `Program.cs` soubor a na začátek souboru přidejte následující direktivy using.
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -116,7 +116,7 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 ## <a name="access-the-file-share-programmatically"></a>Programový přístup ke sdílené složce
 
-Dále přidejte následující obsah do metody `Main()` po výše uvedeném kódu pro načtení připojovacího řetězce. Tento kód získá odkaz na soubor, který jsme vytvořili dříve, a vytvoří výstup svého obsahu.
+Dále přidejte následující obsah do metody `Main()` za kód zobrazený výše k načtení připojovacího řetězce. Tento kód získá odkaz na soubor, který jsme vytvořili dříve, a vytvoří výstup svého obsahu.
 
 ```csharp
 // Create a CloudFileClient object for credentialed access to Azure Files.
@@ -428,14 +428,14 @@ Metriky pro soubory Azure můžete povolit z [Azure Portal](https://portal.azure
 
 Následující příklad kódu ukazuje, jak můžete použít Klientskou knihovnu pro úložiště pro .NET k zapnutí metrik pro Soubory Azure.
 
-Nejdřív přidejte následující direktivy `using` do souboru `Program.cs` společně s těmi, které jste přidali výše:
+Nejprve do `Program.cs` souboru přidejte následující direktivy `using` společně s těmi, které jste přidali výše:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Přestože objekty blob Azure, tabulky Azure a fronty Azure používají sdílený typ @no__t 0 v oboru názvů `Microsoft.Azure.Storage.Shared.Protocol`, používá soubory Azure vlastní typ, typ `FileServiceProperties` v oboru názvů `Microsoft.Azure.Storage.File.Protocol`. Pro zkompilování tohoto kódu je však nutné odkazovat oba obory názvů z kódu.
+I když objekty blob Azure, tabulky Azure a fronty Azure používají sdílený `ServiceProperties` typ v oboru názvů `Microsoft.Azure.Storage.Shared.Protocol`, Azure Files používá vlastní typ, `FileServiceProperties` typ v oboru názvů `Microsoft.Azure.Storage.File.Protocol`. Pro zkompilování tohoto kódu je však nutné odkazovat oba obory názvů z kódu.
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -500,7 +500,7 @@ Další informace o službě soubory Azure najdete v následujících zdrojích 
 * [Rozhraní API pro Azure Storage pro .NET](/dotnet/api/overview/azure/storage)
 * [REST API souborové služby](/rest/api/storageservices/File-Service-REST-API)
 
-### <a name="blog-posts"></a>Blogové příspěvky
+### <a name="blog-posts"></a>Příspěvky na blozích
 
 * [Azure File Storage, teď všeobecně dostupné](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Uvnitř Azure File Storage](https://azure.microsoft.com/blog/inside-azure-file-storage/)

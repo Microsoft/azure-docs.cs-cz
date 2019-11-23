@@ -38,7 +38,7 @@ Azure AD Connect používá pro Azure Active Directory k synchronizaci informac�
 
 - **Účet konektoru Azure AD**: používá se k zápisu informací do Azure AD.
 
-Kromě těchto tří účtů, které se používají ke spouštění Azure AD Connect, budete k instalaci Azure AD Connect potřebovat taky tyto další účty.  Jsou to tyto:
+Kromě těchto tří účtů, které se používají ke spouštění Azure AD Connect, budete k instalaci Azure AD Connect potřebovat taky tyto další účty.  Jsou to:
 
 - **Účet místního správce**: správce, který instaluje Azure AD Connect a který má oprávnění místního správce k tomuto počítači.
 
@@ -86,7 +86,7 @@ Tyto přihlašovací údaje se používají jenom během instalace a po dokonče
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>Účet konektoru služba AD DS vyžaduje oprávnění pro expresní nastavení.
 Účet konektoru služba AD DS se vytvoří pro čtení a zápis do Windows Server AD a má následující oprávnění, když se vytvoří pomocí expresního nastavení:
 
-| Oprávnění | Používá se pro |
+| Oprávnění | Použití |
 | --- | --- |
 | <li>Replikovat změny adresáře</li><li>Replikovat všechny změny adresáře |Synchronizace hodnot hash hesel |
 | Číst/zapisovat všechny vlastnosti uživatele |Import a Exchange Hybrid |
@@ -103,9 +103,9 @@ Následuje souhrn stránek průvodce expresní instalací, shromažďovaných p�
 
 | Stránka průvodce | Shromážděné přihlašovací údaje | Požadovaná oprávnění | Používá se pro |
 | --- | --- | --- | --- |
-| Není k dispozici |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří účet služby ADSync, který se používá jako ke spuštění synchronizační služby. |
+| neuvedeno |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří účet služby ADSync, který se používá jako ke spuštění synchronizační služby. |
 | Připojení k Azure AD |Přihlašovací údaje k adresáři Azure AD |Role globálního správce v Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu konektoru služby Azure AD, který se používá pro probíhající operace synchronizace ve službě Azure AD.</li> |
-| Připojení k služba AD DS |Místní přihlašovací údaje služby Active Directory |Člen skupiny Enterprise Admins (EA) ve službě Active Directory |<li>Vytvoří účet konektoru služba AD DS ve službě Active Directory a udělí mu oprávnění. Tento vytvořený účet se používá ke čtení a zápisu informací o adresáři během synchronizace.</li> |
+| Připojení ke službě AD DS |Místní přihlašovací údaje služby Active Directory |Člen skupiny Enterprise Admins (EA) ve službě Active Directory |<li>Vytvoří účet konektoru služba AD DS ve službě Active Directory a udělí mu oprávnění. Tento vytvořený účet se používá ke čtení a zápisu informací o adresáři během synchronizace.</li> |
 
 
 ## <a name="custom-installation-settings"></a>Vlastní nastavení instalace
@@ -120,11 +120,11 @@ Následuje souhrn stránek průvodce vlastní instalace, shromážděných pově
 
 | Stránka průvodce | Shromážděné přihlašovací údaje | Požadovaná oprávnění | Používá se pro |
 | --- | --- | --- | --- |
-| Není k dispozici |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte úplný SQL Server, musí být uživatel správcem systému (SA) v SQL.</li> |Ve výchozím nastavení vytvoří místní účet, který se používá jako účet služby synchronizačního modulu. Účet je vytvořen pouze v případě, že správce nezadá konkrétní účet. |
+| neuvedeno |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte úplný SQL Server, musí být uživatel správcem systému (SA) v SQL.</li> |Ve výchozím nastavení vytvoří místní účet, který se používá jako účet služby synchronizačního modulu. Účet je vytvořen pouze v případě, že správce nezadá konkrétní účet. |
 | Instalace synchronizačních služeb, možnost účet služby |Přihlašovací údaje účtu služby AD nebo místního uživatele |Uživatel, oprávnění jsou udělována Průvodcem instalací |Pokud správce zadá účet, použije se tento účet jako účet služby pro synchronizační službu. |
 | Připojení k Azure AD |Přihlašovací údaje k adresáři Azure AD |Role globálního správce v Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu konektoru služby Azure AD, který se používá pro probíhající operace synchronizace ve službě Azure AD.</li> |
 | Připojení adresářů |Místní přihlašovací údaje služby Active Directory pro každou doménovou strukturu, která je připojená k Azure AD |Oprávnění závisí na tom, které funkce povolíte a najdete v části Vytvoření účtu služba AD DS Connectoru. |Tento účet slouží ke čtení a zápisu informací o adresáři během synchronizace. |
-| AD FS servery |Pro každý server v seznamu shromažďuje Průvodce přihlašovací údaje, když přihlašovací údaje uživatele, který spouští Průvodce, nejsou pro připojení k dispozici. |Správce domény |Instalace a konfigurace role serveru AD FS. |
+| Servery služby AD FS |Pro každý server v seznamu shromažďuje Průvodce přihlašovací údaje, když přihlašovací údaje uživatele, který spouští Průvodce, nejsou pro připojení k dispozici. |Správce domény |Instalace a konfigurace role serveru AD FS. |
 | Proxy servery webových aplikací |Pro každý server v seznamu shromažďuje Průvodce přihlašovací údaje, když přihlašovací údaje uživatele, který spouští Průvodce, nejsou pro připojení k dispozici. |Místní správce na cílovém počítači |Instalace a konfigurace role serveru WAP. |
 | Přihlašovací údaje vztahu důvěryhodnosti proxy serveru |Pověření vztahu důvěryhodnosti federační služby (přihlašovací údaje, které proxy server používá k registraci certifikátu důvěryhodnosti z FS) |Doménový účet, který je místním správcem serveru AD FS |Počáteční registrace certifikátu důvěryhodnosti FS-WAP. |
 | Stránka AD FS účet služby, možnost použít účet uživatele domény |Přihlašovací údaje k účtu uživatele služby AD |Uživatel domény |Uživatelský účet Azure AD, jehož přihlašovací údaje jsou k dispozici, se používá jako přihlašovací účet služby AD FS. |
@@ -152,14 +152,14 @@ Požadovaná oprávnění závisí na volitelných funkcích, které povolíte. 
 | Zpětný zápis zařízení |Oprávnění udělená pomocí skriptu prostředí PowerShell, jak je popsáno v tématu [zpětný zápis zařízení](how-to-connect-device-writeback.md). |
 | Zpětný zápis skupin |Umožňuje zpětný zápis **skupin Office 365** do doménové struktury s nainstalovaným systémem Exchange.  Další informace najdete v tématu [zpětný zápis skupin](how-to-connect-preview.md#group-writeback).|
 
-## <a name="upgrade"></a>Přejít
+## <a name="upgrade"></a>Upgrade
 Při upgradu z jedné verze Azure AD Connect na novou verzi budete potřebovat následující oprávnění:
 
 >[!IMPORTANT]
 >Počínaje sestavou Build 1.1.484 Azure AD Connect představili regresní chybu, která vyžaduje oprávnění sysadmin pro upgrade databáze SQL.  Tato chyba je opravena v 1.1.647 sestavení.  Pokud provádíte upgrade na toto sestavení, budete potřebovat oprávnění správce systému.  Oprávnění dbo nejsou dostatečná.  Pokud se pokusíte upgradovat Azure AD Connect bez oprávnění sysadmin, upgrade se nezdaří a Azure AD Connect nebude nadále fungovat správně.  Společnost Microsoft je o tom vědomá a pracuje na tom, aby ji opravila.
 
 
-| Objekt zabezpečení | Požadovaná oprávnění | Používá se pro |
+| Komitent | Požadovaná oprávnění | Použití |
 | --- | --- | --- |
 | Uživatel, který spouští Průvodce instalací |Správce místního serveru |Aktualizace binárních souborů. |
 | Uživatel, který spouští Průvodce instalací |Člen ADSyncAdmins |Proveďte změny pravidel synchronizace a jiné konfigurace. |
@@ -180,7 +180,7 @@ Synchronizační služba může běžet pod různými účty. Může běžet pod
 | --- | --- | --- |
 | [Účet virtuální služby](#virtual-service-account) | Express a Custom, 2017. dubna a novější | Tato možnost se používá pro všechny Expresní instalace, s výjimkou instalací na řadič domény. Pro vlastní je výchozí možnost, pokud nepoužijete jinou možnost. |
 | [Skupinový účet spravované služby](#group-managed-service-account) | Vlastní, 2017. dubna a novější | Pokud používáte vzdálený SQL Server, doporučujeme použít skupinový účet spravované služby. |
-| [Uživatelský účet](#user-account) | Express a Custom, 2017. dubna a novější | Uživatelský účet s předponou AAD_ se vytvoří během instalace jenom v případě, že je nainstalovaný na Windows serveru 2008 a je nainstalovaný na řadiči domény. |
+| [Uživatelský účet](#user-account) | Express a Custom, 2017. dubna a novější | Uživatelský účet s předponou AAD_ se vytvoří jenom během instalace, pokud je nainstalovaný na Windows serveru 2008 a je nainstalovaný na řadiči domény. |
 | [Uživatelský účet](#user-account) | Express a Custom, 2017 březen a starší | Během instalace se vytvoří místní účet s předponou AAD_. Při použití vlastní instalace je možné zadat jiný účet. |
 
 Použijete-li příkaz připojit se sestavou z 2017. března nebo staršího, neměli byste heslo resetovat na účet služby, protože systém Windows odstraní šifrovací klíče z bezpečnostních důvodů. Účet nemůžete změnit na žádný jiný účet, aniž byste museli přeinstalovat Azure AD Connect. Pokud upgradujete na sestavení z verze 2017. dubna nebo novější, je podporována Změna hesla na účtu služby, ale nemůžete změnit použitý účet.
@@ -190,7 +190,7 @@ Použijete-li příkaz připojit se sestavou z 2017. března nebo staršího, ne
 
 Toto je tabulka výchozích, doporučených a podporovaných možností pro účet synchronizační služby.
 
-Legenda:
+Popisek
 
 - **Tučné** označuje výchozí možnost a ve většině případů doporučenou možnost.
 - *Kurzíva* označuje doporučenou možnost, pokud není výchozí možností.
@@ -201,16 +201,16 @@ Legenda:
 - sMSA – [samostatný účet spravované služby](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA – [skupinový účet spravované služby](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Express | LocalDB/LocalSQL</br>Uživatelská | Vzdálený SQL</br>Uživatelská |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Vlastní | Remote SQL</br>Vlastní |
 | --- | --- | --- | --- |
-| **počítač pro samostatnou/pracovní skupinu** | Není podporováno | **ATRIBUT**</br>Místní účet (2008)</br>Místní účet |  Není podporováno |
-| **počítač připojený k doméně** | **ATRIBUT**</br>Místní účet (2008) | **ATRIBUT**</br>Místní účet (2008)</br>Místní účet</br>Doménový účet</br>sMSA, gMSA | **gMSA**</br>Doménový účet |
+| **počítač pro samostatnou/pracovní skupinu** | Nepodporuje se | **VSA**</br>Místní účet (2008)</br>Místní účet |  Nepodporuje se |
+| **počítač připojený k doméně** | **VSA**</br>Místní účet (2008) | **VSA**</br>Místní účet (2008)</br>Místní účet</br>Účet domény</br>sMSA, gMSA | **gMSA**</br>Účet domény |
 | **Řadič domény** | **Doménový účet** | *gMSA*</br>**Doménový účet**</br>sMSA| *gMSA*</br>**Doménový účet**|
 
 #### <a name="virtual-service-account"></a>Účet virtuální služby
 Účet virtuální služby je speciální typ účtu, který nemá heslo a spravuje ho Windows.
 
-![ATRIBUT](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
+![VSA](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
 Atributy VSA mají být použity ve scénářích, kde je synchronizační modul a SQL na stejném serveru. Pokud používáte vzdálený SQL Server, doporučujeme místo toho použít skupinový účet spravované služby.
 
@@ -220,13 +220,13 @@ Tato funkce vyžaduje systém Windows Server 2008 R2 nebo novější. Pokud nain
 Pokud používáte vzdálený SQL Server, doporučujeme použít **skupinový účet spravované služby**. Další informace o tom, jak připravit službu Active Directory pro skupinový účet spravované služby, najdete v tématu [Přehled skupinových účtů spravované služby](https://technet.microsoft.com/library/hh831782.aspx).
 
 Chcete-li použít tuto možnost, vyberte na stránce [instalovat požadované součásti](how-to-connect-install-custom.md#install-required-components) možnost **použít existující účet služby**a vyberte možnost **účet spravované služby**.  
-@no__t – 0VSA @ no__t-1  
+![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
 Také se podporuje použití [samostatného účtu spravované služby](https://technet.microsoft.com/library/dd548356.aspx). Ty se ale dají použít jenom na místním počítači a pro jejich použití přes výchozí účet virtuální služby se nevyužívají výhody.
 
 Tato funkce vyžaduje systém Windows Server 2012 nebo novější. Pokud potřebujete použít starší operační systém a použít vzdálený SQL, musíte použít [uživatelský účet](#user-account).
 
 #### <a name="user-account"></a>Uživatelský účet
-Účet místní služby se vytvoří pomocí Průvodce instalací (Pokud nezadáte účet, který se má použít ve vlastním nastavení). Účet je předem pevně **AAD_** a slouží ke spuštění skutečné synchronizační služby jako. Pokud nainstalujete Azure AD Connect na řadič domény, účet se vytvoří v doméně. Účet služby **AAD_** se musí nacházet v doméně, pokud:
+Účet místní služby se vytvoří pomocí Průvodce instalací (Pokud nezadáte účet, který se má použít ve vlastním nastavení). Účet je předem opraven **AAD_** a slouží ke spuštění skutečné synchronizační služby jako. Pokud nainstalujete Azure AD Connect na řadič domény, účet se vytvoří v doméně. Účet služby **AAD_** musí být v doméně umístěn v těchto případech:
    - používáte vzdálený server, na kterém běží SQL Server.
    - použijete proxy server, který vyžaduje ověření.
 
@@ -249,9 +249,9 @@ Název serveru, na kterém se účet používá, se dá identifikovat v druhé �
 
 Účet se vytvoří s dlouhým složitým heslem, jehož platnost nevyprší. Přidělí se speciální účty pro **synchronizaci adresářů** rolí, které mají pouze oprávnění k provádění úloh synchronizace adresáře. Tato speciální předdefinovaná role nemůže být udělena mimo Průvodce Azure AD Connect. Azure Portal zobrazuje tento účet s **uživatelem**role.
 
-Ve službě Azure AD je povolený limit 20 účtů synchronizačních služeb. Pokud chcete získat seznam existujících účtů služby Azure AD ve službě Azure AD, spusťte následující rutinu Azure AD PowerShellu: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`.
+Ve službě Azure AD je povolený limit 20 účtů synchronizačních služeb. Pokud chcete získat seznam existujících účtů služby Azure AD ve službě Azure AD, spusťte následující rutinu Azure AD PowerShellu: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
-Pokud chcete odebrat nepoužívané účty služby Azure AD, spusťte následující rutinu Azure AD PowerShellu: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`.
+Pokud chcete odebrat nepoužívané účty služby Azure AD, spusťte následující rutinu Azure AD PowerShellu: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
 >Než budete moct použít výše uvedené příkazy PowerShellu, musíte si nainstalovat [modul Azure Active Directory PowerShell for Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) a připojit se k vaší instanci Azure AD pomocí příkazu [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0) .
@@ -261,13 +261,13 @@ Další informace o tom, jak spravovat nebo resetovat heslo pro účet konektoru
 ## <a name="related-documentation"></a>Související dokumentace
 Pokud jste nečetli dokumentaci k [integraci místních identit s Azure Active Directory](whatis-hybrid-identity.md), v následující tabulce najdete odkazy na související témata.
 
-|Téma |Propojit|  
+|Téma |Odkaz|  
 | --- | --- |
-|Stáhnout Azure AD Connect | [Stáhnout Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)|
-|Instalace pomocí expresního nastavení | [Expresní instalace Azure AD Connect](how-to-connect-install-express.md)|
-|Instalace s vlastním nastavením | [Vlastní instalace Azure AD Connect](./how-to-connect-install-custom.md)|
-|Upgrade z DirSync | [Upgrade z nástroje Azure AD Sync (DirSync)](how-to-dirsync-upgrade-get-started.md)|
+|Stažení Azure AD Connect | [Stažení služby Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)|
+|Instalace pomocí expresního nastavení | [Expresní instalace služby Azure AD Connect](how-to-connect-install-express.md)|
+|Instalace s vlastním nastavením | [Vlastní instalace služby Azure AD Connect](./how-to-connect-install-custom.md)|
+|Upgrade z nástroje DirSync | [Upgrade ze synchronizačního nástroje služby Azure AD (DirSync)](how-to-dirsync-upgrade-get-started.md)|
 |Po instalaci | [Ověření instalace a přiřazení licencí](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o [integraci místních identit s Azure Active Directory](whatis-hybrid-identity.md).
+Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

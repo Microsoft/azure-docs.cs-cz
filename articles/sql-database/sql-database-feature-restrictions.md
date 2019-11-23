@@ -65,8 +65,8 @@ Zobrazení `sys.sql_feature_restrictions` prezentuje všechna aktuálně definov
 
 | Název sloupce | Data type | Popis |
 |-------------|-----------|-------------|
-| Deník       | nvarchar (128) | Třída objektu, na kterou se vztahuje omezení |
-| objekt      | nvarchar (256) | Název objektu, na který se vztahuje omezení |
+| Třída       | nvarchar (128) | Třída objektu, na kterou se vztahuje omezení |
+| objekt      | nvarchar(256) | Název objektu, na který se vztahuje omezení |
 | Zapnut     | nvarchar (128) | Funkce, která je omezená |
 
 ## <a name="feature-restrictions"></a>Omezení funkcí

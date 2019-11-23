@@ -60,7 +60,7 @@ K úpravě výchozí konfigurace můžete použít [konfigurační balíček](se
 
 Přidejte část TransportSettings do souboru Settings. XML.
 
-Ve výchozím nastavení kód objektu actor hledá položku sectionGroup jako "&lt;ActorName @ no__t-1TransportSettings". Pokud se tato možnost nenajde, zkontroluje se v části "TransportSettings".
+Ve výchozím nastavení kód objektu actor hledá položku sectionGroup jako "&lt;herec&gt;TransportSettings". Pokud se tato možnost nenajde, zkontroluje se v části "TransportSettings".
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -79,7 +79,7 @@ Ve výchozím nastavení kód objektu actor hledá položku sectionGroup jako "&
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Konfigurace nastavení FabricTransport pro klientské sestavení objektu actor
 
-Pokud klient neběží jako součást služby, můžete vytvořit soubor "&lt;Client exe Name&gt;.settings.xml" ve stejném umístění jako soubor Client. exe. Pak do tohoto souboru přidejte část TransportSettings. Třída sectionGroup by měla být "TransportSettings".
+Pokud klient neběží jako součást služby, můžete vytvořit soubor&lt;klientský spustitelný soubor&gt;. Settings. XML ve stejném umístění jako soubor Client. exe. Pak do tohoto souboru přidejte část TransportSettings. Třída sectionGroup by měla být "TransportSettings".
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

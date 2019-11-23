@@ -61,7 +61,7 @@ MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig 
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
 
-SWIFT
+Swift:
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
@@ -82,7 +82,7 @@ var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
 
-Existují další metody*parametrů* , které nastavují nadřazený objekt uživatelského rozhraní, přepíší výchozí autority, určují název klienta a verzi (pro telemetrii), určují identifikátor URI pro přesměrování, určují továrnu protokolu HTTP, který se má použít (například pro zpracování proxy serverů), zadejte telemetrie a protokolování). Toto je téma v následujících odstavcích.
+Existují další metody*parametrů* , které nastavují nadřazený objekt uživatelského rozhraní, přepíší výchozí autority, určují název klienta a verzi (pro telemetrii), určují identifikátor URI přesměrování, určují továrnu protokolu HTTP, který se má použít (například pro zpracování proxy serverů, určení telemetrie a protokolování). Toto je téma v následujících odstavcích.
 
 ##### <a name="specifying-the-parent-uiwindowactivity"></a>Zadání nadřazeného uživatelského rozhraní/okna/aktivity
 
@@ -216,7 +216,7 @@ Chcete-li nastavit okno objektu, proveďte následující kroky:
 1) V `AppDelegate.cs`nastavte `App.RootViewController` na nové `UIViewController()`. Tím se zajistí, že `UIViewController` se voláním zprostředkovatele. Pokud není správně nastavená, může se zobrazit tato chyba: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 2) V volání AcquireTokenInteractive použijte `.WithParentActivityOrWindow(App.RootViewController)` a předejte odkaz na okno objektu, které použijete.
 
-**Například:**
+**Příklad:**
 
 V `App.cs`:
 ```CSharp
@@ -297,7 +297,7 @@ Cíl-C:
 }
 ```
 
-SWIFT
+Swift:
 
 ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {

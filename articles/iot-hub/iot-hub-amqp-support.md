@@ -67,7 +67,7 @@ Další informace o výměně zpráv z cloudu na zařízení mezi službou a cen
 
 | Vytvořil | Typ odkazu | Cesta odkazu | Popis |
 |------------|-----------|-----------|-------------|
-| Služba | Odkaz odesílatele | `/messages/devicebound` | Zprávy z cloudu do zařízení, které jsou určené pro zařízení, se na tento odkaz odesílají prostřednictvím služby. Zprávy odeslané prostřednictvím tohoto odkazu mají svou vlastnost `To` nastavenou na cestu k přijímači cílového zařízení `/devices/<deviceID>/messages/devicebound`. |
+| Služba | Odkaz odesílatele | `/messages/devicebound` | Zprávy z cloudu do zařízení, které jsou určené pro zařízení, se na tento odkaz odesílají prostřednictvím služby. Zprávy odeslané prostřednictvím tohoto odkazu mají svou `To` vlastnost nastavenou na cestu k přijímači cílového zařízení `/devices/<deviceID>/messages/devicebound`. |
 | Služba | Odkaz na přijímače | `/messages/serviceBound/feedback` | Zprávy o dokončení, odmítnutí a zrušení zpětné vazby, které pocházejí ze zařízení přijatých prostřednictvím tohoto odkazu, se službou. Další informace o zprávách zpětné vazby najdete v tématu [posílání zpráv z cloudu na zařízení ze služby IoT Hub](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
 Následující fragment kódu ukazuje, jak vytvořit zprávu typu cloud-zařízení a odeslat ji do zařízení pomocí [knihovny uAMQP v Pythonu](https://github.com/Azure/azure-uamqp-python).
@@ -128,11 +128,11 @@ for msg in batch:
 
 Jak je uvedeno v předchozím kódu, zpráva o zpětné vazbě z cloudu na zařízení má typ obsahu *application/vnd. Microsoft. iothub. feedback. JSON*. Stav doručení původní zprávy můžete odvodit pomocí vlastností v těle zprávy JSON:
 
-* Key @no__t – 0 v těle zpětné vazby má jednu z následujících hodnot: *úspěch*, *vypršení platnosti*, *DeliveryCountExceeded*, *zamítnutí*nebo *vyprázdnění*.
+* Klíčová `statusCode` v těle zpětné vazby má jednu z následujících hodnot: *úspěch*, *vypršení platnosti*, *DeliveryCountExceeded*, *zamítnutí*nebo *vyprázdnění*.
 
-* Key @no__t – 0 v těle zpětné vazby má ID cílového zařízení.
+* Klávesová `deviceId` v těle zpětné vazby má ID cílového zařízení.
 
-* Key @no__t – 0 v těle zpětné vazby má ID původní zprávy typu cloud-zařízení, která byla odeslána službou. Tento stav doručování můžete použít ke korelaci zpětné vazby ke zprávám z cloudu na zařízení.
+* Klávesová `originalMessageId` v těle zpětné vazby má ID původní zprávy typu cloud-zařízení, která byla odeslána službou. Tento stav doručování můžete použít ke korelaci zpětné vazby ke zprávám z cloudu na zařízení.
 
 ### <a name="receive-telemetry-messages-service-client"></a>Dostávat zprávy telemetrie (klient služby)
 
@@ -267,7 +267,7 @@ Následující cesty odkazů jsou podporovány jako operace zařízení:
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>Příjem příkazů z cloudu na zařízení (klient zařízení)
 
-Příkazy typu cloud-zařízení, které se odesílají do zařízení, přicházejí na odkaz `/devices/<deviceID>/messages/devicebound`. Zařízení mohou přijímat tyto zprávy v dávkách a v případě potřeby ve zprávě použít datovou část dat zprávy, vlastnosti zprávy, poznámky nebo vlastnosti aplikace.
+Příkazy z cloudu do zařízení, které se odesílají do zařízení, přicházejí na odkaz `/devices/<deviceID>/messages/devicebound`. Zařízení mohou přijímat tyto zprávy v dávkách a v případě potřeby ve zprávě použít datovou část dat zprávy, vlastnosti zprávy, poznámky nebo vlastnosti aplikace.
 
 Následující fragment kódu používá [knihovnu uAMQP v Pythonu](https://github.com/Azure/azure-uamqp-python)k přijímání zpráv z cloudu na zařízení podle zařízení.
 

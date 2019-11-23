@@ -17,15 +17,15 @@ ms.locfileid: "72023608"
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům serveru pomocí Azure CLI
 Protokoly Azure Database for MariaDB serveru můžete stáhnout pomocí Azure CLI, nástroje příkazového řádku Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete projít tento průvodce, budete potřebovat:
 - [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
 - Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo Azure Cloud Shell v prohlížeči
 
 ## <a name="configure-logging-for-azure-database-for-mariadb"></a>Konfigurovat protokolování pro Azure Database for MariaDB
 Server můžete nakonfigurovat tak, aby se přihlásil k protokolu MariaDB pomalých dotazů, a to provedením následujících kroků:
-1. Zapněte protokolování nastavením **pomalého parametru @ no__t-1query @ no__t-2log** na hodnotu on.
-2. Upravte jiné parametry, například **Long @ no__t-1query @ no__t-2time** a **log @ no__t-4slow @ no__t-5admin @ no__t-6statements**.
+1. Zapněte protokolování nastavením parametru **pomalého\_dotaz\_protokolu** na zapnuto.
+2. Upravte další parametry, třeba **long\_dotaz\_Time** a **log\_pomalé\_příkazy správce\_** .
 
 Informace o tom, jak nastavit hodnotu těchto parametrů prostřednictvím rozhraní příkazového řádku Azure CLI, najdete v tématu [Postup konfigurace parametrů serveru](howto-configure-server-parameters-cli.md).
 
@@ -40,7 +40,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Vypsat protokoly pro Azure Database for MariaDB Server
 Chcete-li zobrazit seznam dostupných souborů protokolu pomalých dotazů pro váš server, spusťte příkaz [AZ MariaDB Server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) .
 
-Soubory protokolu pro server **mydemoserver.MariaDB.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **log @ no__t-1files\_list.txt**.
+Soubory protokolu pro server **mydemoserver.MariaDB.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **log\_soubory\_list. txt**.
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

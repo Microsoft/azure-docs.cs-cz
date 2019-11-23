@@ -47,9 +47,9 @@ V následujících krocích se přidá server NAS Core souborového:
 
 1. V ovládacím panelu avere klikněte na kartu **Nastavení** v horní části.
 
-1. Klikněte na **Core souborového** >  na levé straně**Spravovat Core filers** .
+1. Klikněte na **Core souborového** > na levé straně **spravovat základní filers** .
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
    ![Snímek obrazovky se stránkou přidat novou základní souborového s ukazatelem na tlačítku pro vytvoření](media/avere-vfxt-add-core-filer-start.png)
 
@@ -98,7 +98,7 @@ Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupu
 
    Můžete použít Azure Portal nebo kliknout na tlačítko nasadit do Azure níže.
 
-   [@no__t – 1button k vytvoření účtu úložiště](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fstorageaccount%2Fazuredeploy.json)
+   [![tlačítko pro vytvoření účtu úložiště](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fstorageaccount%2Fazuredeploy.json)
 
 1. Po vytvoření účtu přejděte na stránku účtu úložiště.
 
@@ -112,7 +112,7 @@ Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupu
 
    ![Azure Portal grafické uživatelské rozhraní pro kopírování klíče](media/avere-vfxt-copy-storage-key.png) 
 
-1. Otevřete ovládací panel avere pro váš cluster. Klikněte na **Nastavení**a pak v levém navigačním podokně otevřete **cluster** > **přihlašovací údaje cloudu** . Na stránce přihlašovací údaje cloudu klikněte na **Přidat přihlašovací údaje**.
+1. Otevřete ovládací panel avere pro váš cluster. Klikněte na **Nastavení**a pak otevřete **cluster** > **cloudové přihlašovací údaje** v levém navigačním podokně. Na stránce přihlašovací údaje cloudu klikněte na **Přidat přihlašovací údaje**.
 
    ![Klikněte na tlačítko Přidat pověření na stránce konfigurace přihlašovacích údajů cloudu.](media/avere-vfxt-new-credential-button.png)
 
@@ -126,11 +126,11 @@ Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupu
    | Předplatné | subscription ID |
    | Přístupový klíč k úložišti | Klíč účtu úložiště Azure (zkopírovaný v předchozím kroku) | 
 
-   Klikněte na **Odeslat**.
+   Klikněte na **Submit** (Odeslat).
 
    ![Dokončený formulář přihlašovacích údajů cloudu v Ovládacích panelech avere](media/avere-vfxt-new-credential-submit.png)
 
-1. Dále vytvořte základní souborového. Na levé straně ovládacího panelu avere klikněte na **Core souborového** >  **Spravovat Core filers**. 
+1. Dále vytvořte základní souborového. Na levé straně ovládacího panelu avere klikněte na **Core souborového** >  **spravovat základní filers**. 
 
 1. Klikněte na tlačítko **vytvořit** na stránce **spravovat základní filers** nastavení.
 
@@ -159,7 +159,7 @@ Dále musíte [vytvořit spojení](#create-a-junction).
 
 Spojení je cesta, kterou vytvoříte pro klienty. Klienti připojí cestu a dorazí na cíl, který zvolíte.
 
-Můžete například vytvořit `/avere/files` pro mapování na NetApp Core souborového `/vol0/data` Export a podadresář `/project/resources`.
+Můžete například vytvořit `/avere/files` k mapování `/vol0/data` exportu NetApp Core souborového a `/project/resources` podadresáři.
 
 Další informace o spojeních najdete v [části obor názvů Průvodce konfigurací clusteru avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html).
 

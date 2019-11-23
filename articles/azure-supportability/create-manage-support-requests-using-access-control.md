@@ -95,7 +95,7 @@ Chcete udělit přístup k vašemu partnerovi, Jana, možnost vytvářet a sprav
 
     ![Nová žádost o podporu](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. Kliknutím na položku všechny žádosti o podporu se zobrazí seznam žádostí o podporu vytvořených pro toto předplatné ![Case Details @ no__t-1.
+8. Kliknutím na položku všechny žádosti o podporu se zobrazí seznam žádostí o podporu vytvořených pro toto předplatné ![zobrazení podrobností případu](./media/create-manage-support-requests-using-access-control/case-details-view.png)
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Odebrat přístup k žádosti o podporu v Azure Portal
 

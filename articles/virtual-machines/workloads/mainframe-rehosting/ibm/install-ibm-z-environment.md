@@ -44,7 +44,7 @@ V tomto článku se dozvíte, jak v Azure nastavit vývojové a testovací prost
 > [!NOTE]
 > IBM umožňuje instalovat zD & T Enterprise Edition pouze do prostředí pro vývoj a testování,*nikoli* v produkčních prostředích.
 
-- Předplatné Azure. Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+- Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Potřebujete přístup k médiu, které je k dispozici pouze pro zákazníky a partnery společnosti IBM. Pokud chcete získat další informace, obraťte se na zástupce IBM nebo na webu [zD & T](https://www.ibm.com/us-en/marketplace/z-systems-development-test-environment) kontaktujte kontaktní údaje.
 
@@ -62,11 +62,11 @@ V tomto článku se dozvíte, jak v Azure nastavit vývojové a testovací prost
 
 3. Pomocí tlačítka **připojit** získáte přihlašovací údaje SSH zobrazené v okně **Přehled** virtuálního počítače. Vyberte kartu **SSH** a zkopírujte přihlašovací příkaz SSH do schránky.
 
-4. Přihlaste se k [prostředí bash](/azure/cloud-shell/quickstart) z místního počítače a vložte příkaz. Bude ve formátu **SSH @ no__t-1User ID @ no__t-2 @ no__t-3 @ no__t-4IP Address @ no__t-5**. Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
+4. Přihlaste se k [prostředí bash](/azure/cloud-shell/quickstart) z místního počítače a vložte příkaz. Bude ve formátu **ssh\<ID uživatele\>\@\<IP adresa\>** . Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Zkopírujte instalační soubor na server.
 
-Instalační soubor pro webový server je **ZDT @ no__t-1Install @ no__t-2EE\_V12.0.0.1.tgz**. Je součástí médií dodaných společností IBM. Tento soubor musíte nahrát na virtuální počítač s Ubuntu.
+Instalační soubor pro webový server je **ZDT\_nainstalujte\_et\_v 12.0.0.1. tgz**. Je součástí médií dodaných společností IBM. Tento soubor musíte nahrát na virtuální počítač s Ubuntu.
 
 1. V příkazovém řádku zadejte následující příkaz, abyste se ujistili, že je vše v nově vytvořené imagi aktuální:
 
@@ -91,7 +91,7 @@ Instalační soubor pro webový server je **ZDT @ no__t-1Install @ no__t-2EE\_V1
 
 ## <a name="install-the-enterprise-edition"></a>Instalace edice Enterprise
 
-1. Do adresáře ZDT a dekomprimujte soubor ZDT @ no__t-0Install @ no__t-1EE\_V12.0.0.1.tgz pomocí následujících příkazů:
+1. Do adresáře ZDT a dekomprimujte ZDT\_nainstalujte soubor\_et\_V 12.0.0.1. tgz pomocí následujících příkazů:
 
     ```
     cd ZDT
