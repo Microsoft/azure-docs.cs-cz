@@ -8,27 +8,29 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 11/05/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: bbe40083159d433c0b5746834e1c530b23b03851
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e4147fbb27c8538f801f6c49f8b535a283faf50f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648297"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325918"
 ---
-Klientská aplikace musí znát, jestli utterance není smysluplná nebo vhodná pro aplikaci. V rámci procesu vytváření se do každé aplikace přidá záměr **none** , který určí, jestli klientská aplikace nemůže na utterance odpovědět.
+The client application needs to know if an utterance is not meaningful or appropriate for the application. The **None** intent is added to each application as part of the creation process to determine if an utterance shouldn't be answered by the client application.
 
-Pokud LUIS vrátí záměr **none** pro utterance, může klientská aplikace požádat, jestli chce uživatel ukončit konverzaci, nebo dát další pokyny pro pokračování v konverzaci. 
+If LUIS returns the **None** intent for an utterance, your client application can ask if the user wants to end the conversation or give more directions for continuing the conversation. 
 
-Pokud necháte žádný záměr **none** prázdný, utterance, který by měl být předpovězen mimo doménu subjektu, bude předpovězen v jedné z existujících záměrů domény předmětu. Výsledkem je, že klientská aplikace, jako je například robota v chatu, provede nesprávné operace na základě nesprávné předpovědi. 
+If you leave the **None** intent empty, an utterance that should be predicted outside the subject domain will be predicted in one of the existing subject domain intents. The result is that the client application, such as a chat bot, will perform incorrect operations based on an incorrect prediction. 
 
 1. Na levém panelu vyberte **Intents** (Záměry).
 
-1. Vyberte záměr **None** (Žádný). Přidejte tři promluvy, které může uživatel zadat, ale které nejsou pro aplikaci relevantní:
+1. Vyberte záměr **None** (Žádný). Add three utterances that your user might enter but are not relevant to your Pizza ordering app:
 
-    |`None` příklad projevy|
+    |`None` example utterances|
     |--|
     |`Barking dogs are annoying`|
     |`Order a pizza for me`|
     |`Penguins in the ocean`|
+
+    These examples shouldn't use words you expect in your subject domain such as `pizza`, `cheese`, `crust`, `pickup` `deliver`.

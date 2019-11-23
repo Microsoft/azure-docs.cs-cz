@@ -1,39 +1,39 @@
 ---
-title: Správa dat v Azure Data Lake Storage Gen2 pomocí Průzkumník služby Azure Storage
-description: V tomto rychlém startu se dozvíte, jak pomocí Průzkumník služby Azure Storage vytvořit kontejner v účtu Azure Data Lake Storage Gen2 a také v adresáři a souboru. V dalším kroku se dozvíte, jak stáhnout soubor do místního počítače a jak zobrazit celý soubor v adresáři.
+title: Use Azure Storage Explorer with Azure Data Lake Storage Gen2
+description: In this quickstart, you learn how to use Azure Storage Explorer to create a container in an Azure Data Lake Storage Gen2 account, as well as a directory and a file. Next, you learn how to download the file to your local computer, and how to view all of the file in a directory.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 95d7a58c8188e8c6633f6be50af608aed437edff
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 53f43945b13a9dae44eba752f935eb34d7aa498b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991422"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327620"
 ---
-# <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Správa dat v účtu Azure Data Lake Storage Gen2 pomocí Průzkumník služby Azure Storage
+# <a name="use-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Use Azure Storage Explorer with Azure Data Lake Storage Gen2
 
-V tomto rychlém startu se dozvíte, jak pomocí [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) vytvořit adresář a objekt BLOB. V dalším kroku se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit všechny objekty BLOB v adresáři. Naučíte se také, jak vytvořit snímek objektu blob, jak spravovat zásady přístupu k adresářům a vytvořit sdílený přístupový podpis.
+In this quickstart, you learn how to use [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) to create a directory and a blob. Next, you learn how to download the blob to your local computer, and how to view all of the blobs in a directory. You also learn how to create a snapshot of a blob, manage directory access policies, and create a shared access signature.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 Tento rychlý start vyžaduje instalaci Průzkumníka služby Azure Storage. Instalaci Průzkumníka služby Azure Storage pro Windows, Macintosh nebo Linux popisuje článek [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
-## <a name="sign-in-to-storage-explorer"></a>Přihlášení k Průzkumník služby Storage
+## <a name="sign-in-to-storage-explorer"></a>Sign in to Storage Explorer
 
-Při prvním spuštění se objeví okno **Průzkumník služby Microsoft Azure Storage – Připojení**. I když Průzkumník služby Storage poskytuje několik způsobů, jak se připojit k účtům úložiště, v současné době se podporuje jenom jeden způsob správy seznamů ACL.
+Při prvním spuštění se objeví okno **Průzkumník služby Microsoft Azure Storage – Připojení**. While Storage Explorer provides several ways to connect to storage accounts, only one way is currently supported for managing ACLs.
 
-|Úloha|Účel|
+|Úkol|Účel|
 |---|---|
-|Přidání účtu Azure | Přesměruje vás na přihlašovací stránku vaší organizace, kde budete moci ověřit svůj přístup do Azure. V současné době se jedná o jedinou podporovanou metodu ověřování, pokud chcete spravovat a nastavovat seznamy ACL. |
+|Přidání účtu Azure | Přesměruje vás na přihlašovací stránku vaší organizace, kde budete moci ověřit svůj přístup do Azure. Currently this is the only supported authentication method if you want to manage and set ACLs. |
 
-Vyberte **Přidat účet Azure** a klikněte na tlačítko **Přihlásit...** Podle pokynů na obrazovce se přihlaste ke svému účtu Azure.
+Select **Add an Azure Account** and click **Sign in..** . Follow the on-screen prompts to sign into your Azure account.
 
 ![Průzkumník služby Microsoft Azure Storage – okno Připojení](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
@@ -43,41 +43,41 @@ Po dokončení připojení se Průzkumník služby Azure Storage otevře se zobr
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Objekty blob jsou vždy nahrány do adresáře. Díky tomu můžete organizovat skupiny objektů blob podobně, jako organizujete soubory do složek na svém počítači.
+Blobs are always uploaded into a directory. Díky tomu můžete organizovat skupiny objektů blob podobně, jako organizujete soubory do složek na svém počítači.
 
-Chcete-li vytvořit adresář, rozbalte účet úložiště, který jste vytvořili v kroku pokračování. Vyberte **kontejner objektů BLOB**, klikněte pravým tlačítkem a vyberte **vytvořit kontejner objektů BLOB**. Zadejte název kontejneru. Po dokončení stiskněte klávesu **ENTER** a kontejner se vytvoří. Jakmile se adresář objektů BLOB úspěšně vytvoří, zobrazí se ve složce **kontejneru objektů BLOB** pro vybraný účet úložiště.
+To create a directory, expand the storage account you created in the proceeding step. Select **Blob container**, right-click and select **Create Blob container**. Enter the name for your container. When complete, press **Enter** to create the container. Once the blob directory has been successfully created, it is displayed under the **Blob container** folder for the selected storage account.
 
-![Průzkumník služby Microsoft Azure Storage – vytváření kontejneru](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
+![Microsoft Azure Storage Explorer - Creating a container](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
 
-## <a name="upload-blobs-to-the-directory"></a>Nahrajte objekty blob do adresáře.
+## <a name="upload-blobs-to-the-directory"></a>Upload blobs to the directory
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Soubory VHD, které se používají pro virtuální počítače IaaS, jsou objekty blob stránky. Doplňovací objekty blob se používají k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Většina souborů uložených v úložišti objektů blob je objekty blob bloku.
 
-Na pásu karet adresář vyberte **Odeslat**. Tato operace umožňuje nahrát složku nebo soubor.
+On the directory ribbon, select **Upload**. Tato operace umožňuje nahrát složku nebo soubor.
 
 Vyberte soubory nebo složku k nahrání. Vyberte **typ blobu**. K dispozici jsou možnosti **Připojit**, **Stránka** nebo **Blok**.
 
 Pokud chcete nahrát soubor .vhd nebo .vhdx, zvolte **Nahrát soubory .vhd/.vhdx jako objekty blob stránky (doporučeno)** .
 
-Do pole **Odeslat do složky (volitelné)** buď uložte název složky, ve které se budou soubory nebo složky ukládat do složky v adresáři. Pokud není zvolena žádná složka, soubory se nahrají přímo v adresáři.
+In the **Upload to folder (optional)** field either a folder name to store the files or folders in a folder under the directory. If no folder is chosen, the files are uploaded directly under the directory.
 
 ![Průzkumník služby Microsoft Azure Storage – nahrání objektu blob](media/storage-quickstart-blobs-storage-explorer/uploadblob.png)
 
 Když vyberete **OK**, vybrané soubory se zařadí do fronty a postupně se nahrají. Po dokončení nahrávání se výsledky zobrazí v okně **Aktivity**.
 
-## <a name="view-blobs-in-a-directory"></a>Zobrazení objektů BLOB v adresáři
+## <a name="view-blobs-in-a-directory"></a>View blobs in a directory
 
-V aplikaci **Průzkumník služby Azure Storage** vyberte adresář pod účtem úložiště. Hlavní podokno zobrazuje seznam objektů BLOB ve vybraném adresáři.
+In the **Azure Storage Explorer** application, select a directory under a storage account. The main pane shows a list of the blobs in the selected directory.
 
-![Průzkumník služby Microsoft Azure Storage – vypíše objekty BLOB v adresáři.](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
+![Microsoft Azure Storage Explorer - list blobs in a directory](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
 
 ## <a name="download-blobs"></a>Stáhnout objekty blob
 
 Když chcete stáhnout objekty blob pomocí **Průzkumníka služby Azure Storage**, vyberte objekt blob a pak na pásu karet **Stáhnout**. Otevře se dialogové okno pro výběr souboru, kde můžete zadat umístění a název staženého souboru. Výběrem **Uložit** zahájíte stahování objektu blob do místní složky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí **Průzkumníka služby Azure Storage**. Další informace o nastavení seznamů ACL pro vaše soubory a adresáře najdete v našem postupu na tomto předmětu.
+V tomto rychlém startu jste se naučili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí **Průzkumníka služby Azure Storage**. To learn about how to set ACLs on your files and directories, continue to our How-to on the subject.
 
 > [!div class="nextstepaction"]
-> [Postup nastavení seznamů ACL pro soubory a adresáře](data-lake-storage-how-to-set-permissions-storage-explorer.md)
+> [How to set ACLs on files and directories](data-lake-storage-how-to-set-permissions-storage-explorer.md)

@@ -1,387 +1,380 @@
 ---
-title: Ethereem – kontrola-of-Authority Consortium – Azure
-description: K nasazení a konfiguraci Ethereem sítě konsorcia Ethereem pro více členů použijte řešení pro kontrolu pravopisu.
-services: azure-blockchain
-keywords: ''
-author: CodyBorn
-ms.author: coborn
+title: Deploy Ethereum Proof-of-Authority consortium solution template on Azure
+description: Use the Ethereum Proof-of-Authority Consortium solution to deploy and configure a multi-member consortium Ethereum network on Azure
 ms.date: 04/08/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: brendal
-manager: vamelech
-ms.openlocfilehash: 01b9f7f74077737ea95a56bbe81f440db425bf0c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.reviewer: coborn
+ms.openlocfilehash: c3e449c1d6ebaf7c6cb2c35dc9f91d55f569447a
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698452"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326178"
 ---
-# <a name="ethereum-proof-of-authority-consortium"></a>Ethereem konsorcium pro kontrolu-of-Authority
+# <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Deploy Ethereum proof-of-authority consortium solution template on Azure
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Přehled
-[Toto řešení](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) je navrženo tak, aby bylo snazší nasazovat, konfigurovat a řídit Ethereem síť pro více členů konsorcia s minimálními znalostmi Azure a ethereem.
+[The Ethereum Proof-of-Authority Consortium Azure solution template](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) is designed to make it easier to deploy, configure, and govern a multi-member consortium Proof-of-authority Ethereum network with minimal Azure and Ethereum knowledge.
 
-Díky několik uživatelským vstupům a nasazení jedním kliknutím prostřednictvím Azure Portal může každý člen zřídit síťové nároky pomocí Microsoft Azure výpočetních, síťových a služby úložiště po celém světě. Nároky na síť jednotlivých členů se skládají ze sady uzlů validátoru s vyrovnáváním zatížení, se kterými může aplikace nebo uživatel interagovat s odesláním Ethereem transakcí.
+With a handful of user inputs and a single-click deployment through the Azure portal, each member can provision a network footprint, using Microsoft Azure Compute, networking, and storage services across the globe. Each member's network footprint consists of a set of load-balanced validator nodes with which an application or user can interact to submit Ethereum transactions.
 
 ## <a name="concepts"></a>Koncepty
 
 ### <a name="terminology"></a>Terminologie
 
--   **Konsensu** – jedná se o synchronizaci dat napříč distribuovanou sítí prostřednictvím ověření bloku a vytvoření.
+-   **Consensus** - The act of synchronizing data across the distributed network through block validation and creation.
 
--   **Člen konsorcia** – entita, která se účastní konsensu v blockchain síti.
+-   **Consortium member** - An entity that participates in consensus on the Blockchain network.
 
--   **Správce** – účet ethereem, který se používá ke správě účasti pro daného člena konsorcia.
+-   **Admin** - An Ethereum account that is used to manage participation for a given consortium member.
 
--   **Validátor** – počítač přidružený k účtu ethereem, který se účastní konsensu jménem správce.
+-   **Validator** - A machine associated with an Ethereum account that participates in consensus on behalf of an Admin.
 
-### <a name="proof-of-authority"></a>Kontrola-of-Authority
+### <a name="proof-of-authority"></a>Proof-of-authority
 
-Pro ty, které jsou v komunitě blockchain novinkou, je vydání tohoto řešení skvělou příležitostí k tomu, abyste se mohli snadno a konfigurovatelným způsobem dozvědět o technologii Azure. Důkazem o práci je Sybil mechanismus, který využívá výpočetní náklady k samoobslužnému regulování sítě a umožňuje spravedlivou účast. To je ideální pro anonymní otevřené sítě blockchain, kde soutěž pro cryptocurrency propaguje zabezpečení v síti. V privátních nebo konsorciných sítích ale základní ether neobsahuje žádnou hodnotu. Alternativní protokol, ověření platnosti, je vhodnější pro povolené sítě, kde jsou všichni účastníci konsensui známí a jsou renomovaní. Bez nutnosti dolování je ověření autority efektivnější, pokud stále zůstává Byzantine odolnost proti chybám.
+For those of you who are new to the blockchain community, the release of this solution is a great opportunity to learn about the technology in an easy and configurable manner on Azure. Proof-of-work is a Sybil-resistance mechanism that leverages computation costs to self-regulate the network and allow fair participation. This works great in anonymous, open blockchain networks where competition for cryptocurrency promotes security on the network. However, in private/consortium networks the underlying Ether has no value. An alternative protocol, proof-of-authority, is more suitable for permitted networks where all consensus participants are known and reputable. Without the need for mining, Proof-of-authority is more efficient while still retaining Byzantine fault tolerance.
 
-### <a name="consortium-governance"></a>Zásady správného řízení konsorcia
+### <a name="consortium-governance"></a>Consortium governance
 
-Vzhledem k tomu, že ověření stavu spoléhá na povolený seznam síťových autorit, aby byla síť v pořádku, je důležité zajistit, aby se v tomto seznamu oprávnění provedly úpravy. Každé nasazení se dodává se sadou inteligentních kontraktů a portálu pro zásady správného řízení tohoto seznamu povolených certifikátů. Jakmile navrhovaná změna dosáhne většiny hlasů členů konsorcia, je tato změna určena. To umožňuje, aby se noví účastníci konsensu mohli přidat nebo napadnout, aby je mohli odebrat transparentním způsobem, který podporuje pochybnou síť.
+Since proof-of-authority relies upon a permitted list of network authorities to keep the network healthy, it's important to provide a fair mechanism to make modifications to this permission list. Each deployment comes with a set of smart-contracts and portal for on-chain governance of this permitted list. Once a proposed change reaches a majority vote by consortium members, the change is enacted. This allows new consensus participants to be added or compromised participants to be removed in a transparent way that encourages an honest network.
 
-### <a name="admin-account"></a>Účet správce
+### <a name="admin-account"></a>Admin account
 
-Během nasazování uzlů pro ověření oprávnění se zobrazí výzva k zadání adresy správce Ethereem. K vygenerování a zabezpečení tohoto účtu Ethereem můžete použít několik různých mechanismů. Jakmile tuto adresu přidáte jako autoritu v síti, můžete tento účet použít k účasti na řízení. Tento účet správce bude taky sloužit k delegování konsensu v účasti na uzlech validátoru, které jsou vytvořené jako součást tohoto nasazení. Vzhledem k tomu, že se používá jenom veřejná Ethereem adresa, má každý správce flexibilitu pro zabezpečení svých privátních klíčů způsobem, který odpovídá jejich požadovanému modelu zabezpečení.
+During the deployment of the proof-of-authority nodes, you'll be asked for an Admin Ethereum address. You may use several different mechanisms to generate and secure this Ethereum account. Once this address is added as an authority on the network, you can use this account to participate in governance. This admin account will also be used to delegate consensus participation to the validator nodes that are created as part of this deployment. Since only the public Ethereum address is used, each admin has the flexibility to secure their private keys in a way that follows their wanted security model.
 
-### <a name="validator-node"></a>Uzel validátoru
+### <a name="validator-node"></a>Validator node
 
-V protokolu ověření autority vybírají uzly validátory místo tradičních uzlů Miner. Každý validátor má jedinečnou Ethereem identitu, která se přidá do seznamu oprávnění inteligentního kontraktu. Jakmile je validátor na tomto seznamu, může se zúčastnit procesu vytváření bloku. Další informace o tomto procesu najdete v dokumentaci ke paritě na autoritě na základě [souhlasu](https://wiki.parity.io/Aura). Každý člen konsorcia může zřídit dva nebo více uzlů validátoru v rámci pěti oblastí pro geografickou redundanci. Uzly validátoru komunikují s jinými uzly validátoru a přijdou do konsensu na stav základní distribuované hlavní knihy.
-Aby se zajistila poctivá účast v síti, je pro každého člena konsorcia zakázáno používat více validátorů než první člen sítě (Pokud první člen nasadí tři validátory, každý člen může mít maximálně tři validátory).
+In the proof-of-authority protocol, validator nodes take the place of traditional miner nodes. Each validator has a unique Ethereum identity that gets added to a smart-contract permission list. Once a validator is on this list, it can participate in the block creation process. To learn more about this process, see Parity's documentation on [Authority Round consensus](https://wiki.parity.io/Aura). Each consortium member can provision two or more validator nodes across five regions, for geo-redundancy. Validator nodes communicate with other validator nodes to come to consensus on the state of the underlying distributed ledger.
+To ensure fair participation on the network, each consortium member is prohibited from using more validators than the first member on the network (if the first member deploys three validators, each member can only have up to three validators).
 
-### <a name="identity-store"></a>Úložiště identit
+### <a name="identity-store"></a>Identity store
 
-Vzhledem k tomu, že každý člen bude mít současně spuštěno několik uzlů validátoru a každý uzel musí mít povolenou identitu, je důležité, aby validátory mohli bezpečně získat jedinečnou aktivní identitu v síti. Abychom to usnadnili, vytvořili jsme úložiště identit, které se nasadí v předplatném každého člena, které bezpečně udržuje vygenerované Ethereem identity. Po nasazení vygeneruje kontejner orchestrace Ethereem privátní klíč pro každý validátor a uloží jej do Azure Key Vault. Před spuštěním uzlu parity nejprve získá zapůjčení nevyužité identity, aby se zajistilo, že identita nebude vyzvednuta jiným uzlem. Identita se poskytne klientovi, který mu dává oprávnění začít vytvářet bloky. Pokud dojde k výpadku hostitelského virtuálního počítače, zapůjčení identity se uvolní a umožní náhradnímu uzlu obnovit jeho identitu v budoucnu.
+Since each member will have multiple validator nodes running simultaneously and each node must have a permitted identity, it's important that the validators can safely acquire a unique active identity on the network. To make this easier, we've built an Identity Store that gets deployed in each member's subscription that securely holds the generated Ethereum identities. Upon deployment, the orchestration container will generate an Ethereum private key for each validator and store it in Azure Key Vault. Before the parity node starts up, it first acquires a lease on an unused identity to ensure the identity isn't picked up by another node. The identity is provided to the client which gives it the authority to start creating blocks. If the hosting VM experiences an outage, the identity lease will be released, allowing a replacement node to resume its identity in the future.
 
-### <a name="bootnode-registrar"></a>Registrátor Bootnode
+### <a name="bootnode-registrar"></a>Bootnode registrar
 
-Aby bylo možné snadno připojit, každý člen bude hostovat sadu informací o připojení na [koncovém bodu rozhraní data API](#data-api). Tato data obsahují seznam bootnodesů, které jsou k dispozici jako partnerské uzly pro spojující člena. V rámci tohoto datového rozhraní API udržujeme tento seznam bootnode aktuální.
+To enable the ease of connectivity, each member will host a set of connection information at the [data API endpoint](#data-api). This data includes a list of bootnodes that are provided as peering nodes for the joining member. As part of this data API, we keep this bootnode list up-to-date
 
-### <a name="bring-your-own-operator"></a>Přineste si vlastní operátor
+### <a name="bring-your-own-operator"></a>Bring your own operator
 
-Člen konsorcia se často bude chtít zapojit do zásad správného řízení sítě, ale nechce provozovat a spravovat jejich infrastrukturu. Na rozdíl od tradičních systémů funguje jeden operátor napříč sítí na decentralizovaný model blockchain systémů. Místo toho, aby bylo možné provozovat síť centralizovaným zprostředkovatelem, může každý člen konsorcia delegovat správu infrastruktury na operátor jejich výběru. To umožňuje hybridní model, ve kterém se každý člen může rozhodnout pro provoz své vlastní infrastruktury nebo operace delegáta pro jiného partnera. Pracovní postup delegované operace funguje takto:
+Often a consortium member will want to participate in network governance but don't want to operate and maintain their infrastructure. Unlike traditional systems, having a single operator across the network works against the decentralized model of blockchain systems. Instead of hiring a centralized intermediary to operate a network, each consortium member can delegate infrastructure management to the operator of their choosing. This allows a hybrid model where each member can choose to operate their own infrastructure or delegate operation to a different partner. The delegated operation workflow works as follows:
 
-1.  **Člen konsorcia** generuje adresu ethereem (drží privátní klíč).
+1.  **Consortium Member** generates an Ethereum address (holds private key)
 
-2.  **Člen konsorcia** poskytuje veřejnou Ethereem adresu **operátoru** .
+2.  **Consortium Member** provides public Ethereum address to **Operator**
 
-3.  **Operátor** nasadí a nakonfiguruje uzly validátoru POA pomocí našeho řešení Azure Resource Manager.
+3.  **Operator** deploys and configures the PoA validator nodes using our Azure Resource Manager solution
 
-4.  **Operátor** poskytuje **člena** služby RPC and Management Endpoint na konsorcium.
+4.  **Operator** provides the RPC and management endpoint to **Consortium Member**
 
-5.  **Člen konsorcia** používá svůj privátní klíč k podepsání žádosti o přijetí **operátoru** ověřovacích uzlů, aby se účastnil jeho jménem.
+5.  **Consortium Member** uses their private key to sign a request accepting the validator nodes **Operator** has deployed to participate on their behalf
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-Toto řešení je také součástí Azure Monitor ke sledování statistiky uzlů a sítě. Pro vývojáře aplikací to poskytuje přehled o základních blockchain ke sledování statistik generování bloku. Operátoři sítě mohou pomocí Azure Monitor rychle zjistit a zabránit výpadkům sítě prostřednictvím statistik infrastruktury a protokolů Queryable. Další informace najdete v tématu [monitorování služby](#service-monitoring).
+This solution also comes with Azure Monitor to track node and network statistics. For application developers, this provides visibility into the underlying blockchain to track block generation statistics. Network operators can use Azure Monitor to quickly detect and prevent network outages through infrastructure statistics and queryable logs. For more information, see [Service monitoring](#service-monitoring).
 
-### <a name="deployment-architecture"></a>Architektura nasazení
+### <a name="deployment-architecture"></a>Deployment architecture
 
 #### <a name="description"></a>Popis
 
-Toto řešení může nasazovat jednu nebo více oblastí založených na více členských Ethereem konsorciem. Ve výchozím nastavení jsou koncové body RPC a peering přístupné přes veřejnou IP adresu, aby bylo možné zjednodušené připojení mezi předplatnými a cloudy. Pro řízení přístupu na úrovni aplikace doporučujeme používat [kontrakty oprávnění parity](https://wiki.parity.io/Permissioning) . Podporujeme také sítě nasazené za sítě VPN, které využívají brány virtuální sítě pro připojení mezi předplatnými. Tato nasazení jsou složitější, takže se nejdřív doporučuje začít s modelem veřejné IP adresy.
+This solution can deploy a single or multi-region based multi-member Ethereum consortium network. By default, the RPC and peering endpoints are accessible over public IP to enable simplified connectivity across subscriptions and clouds. We recommend leveraging [Parity's permissioning contracts](https://wiki.parity.io/Permissioning) for application level access-controls. We also support networks deployed behind VPNs, which leverage VNet gateways for cross-subscription connectivity. These deployments are more complex, so it is recommended to start with the public IP model first.
 
-#### <a name="consortium-member-overview"></a>Přehled členů konsorcia
+#### <a name="consortium-member-overview"></a>Consortium member overview
 
-Každé nasazení člena konsorcia zahrnuje:
+Each consortium member deployment includes:
 
--   Virtual Machines pro spouštění validátorů pro PoA
+-   Virtual Machines for running the PoA validators
 
--   Azure Load Balancer pro distribuci požadavků RPC, partnerských vztahů a zásad správného řízení DApp
+-   Azure Load Balancer for distributing RPC, peering, and Governance DApp requests
 
--   Azure Key Vault pro zabezpečení ověřovacích identit
+-   Azure Key Vault for securing the validator identities
 
--   Azure Storage pro hostování trvalých síťových informací a koordinace leasingu
+-   Azure Storage for hosting persistent network information and coordinating leasing
 
--   Azure Monitor pro agregaci protokolů a statistiky výkonu
+-   Azure Monitor for aggregating logs and performance statistics
 
--   Brána virtuální sítě (volitelné) pro povolení připojení VPN v privátních virtuální sítě
+-   VNet Gateway (optional) for allowing VPN connections across private VNets
 
-![architektura nasazení](./media/ethereum-poa-deployment/deployment-architecture.png)
+![deployment architecture](./media/ethereum-poa-deployment/deployment-architecture.png)
 
-Pro spolehlivost a modularitu využíváme kontejnery Docker. Používáme Azure Container Registry k hostování a obsluze imagí s verzemi v rámci každého nasazení. Image kontejneru se skládají z těchto:
+We leverage Docker containers for reliability and modularity. We use Azure Container Registry to host and serve versioned images as part of each deployment. The container images consist of:
 
 -   Orchestrator
 
-    -   Spustí se jednou během nasazení.
+    -   Runs once during deployment
 
-    -   Generuje identity a smlouvy zásad správného řízení.
+    -   Generates identities and governance contracts
 
-    -   Ukládá identity do úložiště identit.
+    -   Stores identities in Identity Store
 
--   Klient parity
+-   Parity Client
 
-    -   Identita zapůjčení z úložiště identity
+    -   Leases identity from Identity Store
 
-    -   Zjišťuje a připojuje se k partnerským uzlům.
+    -   Discovers and connects to peers
 
--   Agent EthStats
+-   EthStats Agent
 
-    -   Shromažďuje místní protokoly a statistiky prostřednictvím protokolu RPC a nabízí Azure Monitor
+    -   Collects local logs and stats via RPC and pushes to Azure Monitor
 
--   DApp zásad správného řízení
+-   Governance DApp
 
-    -   Webové rozhraní pro interakci se smlouvami zásad správného řízení
+    -   Web interface for interacting with Governance contracts
 
 ## <a name="how-to-guides"></a>Návody
-### <a name="governance-dapp"></a>DApp zásad správného řízení
+### <a name="governance-dapp"></a>Governance DApp
 
-Na základě špičkového kontrolního úřadu je decentralizované řízení. DApp zásad správného řízení je sada předem nasazených [inteligentních kontraktů](https://github.com/Azure-Samples/blockchain/tree/master/ethereum-on-azure/) a webové aplikace, které se používají k řízení autorit v síti.
-Autority jsou rozděleny do identit správců a uzlů validátorů.
-Správci mají oprávnění delegovat účast na sadě ověřovacích uzlů. Správci mohou také hlasovat jiné správce do sítě nebo z ní.
+At the heart of proof-of-authority is decentralized governance. The governance DApp is a set of pre-deployed [smart contracts](https://github.com/Azure-Samples/blockchain/tree/master/ethereum-on-azure/) and a web application that are used to govern the authorities on the network.
+Authorities are broken up into Admin identities and Validator nodes.
+Admins have the power to delegate consensus participation to a set of Validator nodes. Admins also may vote other admins into or out of the network.
 
-![dapp zásad správného řízení](./media/ethereum-poa-deployment/governance-dapp.png)
+![governance dapp](./media/ethereum-poa-deployment/governance-dapp.png)
 
--   **Decentralizované zásady správného řízení –** Změny v síťových autoritách se spravují prostřednictvím hlasování v řetězcích, a to výběrem správce.
+-   **Decentralized Governance -** Changes in network authorities are administered through on-chain voting by select administrators.
 
--   **Delegování ověřovacího modulu –** Autority mohou spravovat své uzly validátoru, které jsou nastaveny v každém nasazení PoA.
+-   **Validator Delegation -** Authorities can manage their validator nodes that are set up in each PoA deployment.
 
--   **Auditovat historii změn –** Každá změna se zaznamená na blockchain, která poskytuje transparentnost a audit.
+-   **Auditable Change History -** Each change is recorded on the blockchain providing transparency and auditability.
 
-#### <a name="getting-started-with-governance"></a>Začínáme se zásadami správného řízení
-K provedení libovolného druhu transakcí prostřednictvím DApp zásad správného řízení budete muset využít Ethereem peněženku.  Nejjednodušším přístupem je použití kapesního prohlížeče, jako je [MetaMask](https://metamask.io); vzhledem k tomu, že se jedná o chytré smlouvy nasazené v síti, můžete také automatizovat interakce se smlouvou zásad správného řízení.
+#### <a name="getting-started-with-governance"></a>Getting started with governance
+To perform any kind of transactions through the Governance DApp, you'll need to leverage an Ethereum wallet.  The most straightforward approach is to use an in-browser wallet such as [MetaMask](https://metamask.io); however, because these are smart contracts deployed on the network you may also automate your interactions to the Governance contract.
 
-Po instalaci MetaMask přejděte v prohlížeči na DApp zásad správného řízení.  Adresu URL můžete najít v e-mailu s potvrzením nasazení nebo prostřednictvím Azure Portal ve výstupu nasazení.  Pokud nemáte nainstalovanou peněženku v prohlížeči, nebudete moct provádět žádné akce. Pořád ale můžete číst stav správce.  
+After installing MetaMask, navigate to the Governance DApp in the browser.  You can locate the URL in the deployment confirmation email or through Azure portal in the deployment output.  If you don't have an in-browser wallet installed you'll not be able to perform any actions; however, you still can read the administrator state.  
 
-#### <a name="becoming-an-admin"></a>Stane se správcem
-Pokud jste prvním členem, který je v síti nasazený, automaticky se stanete správcem a vaše paritní uzly budou uvedené jako validátory.  Pokud se připojujete k síti, budete se muset přihlásit jako správce o většinu (víc než 50%). existující sady pro správu.  Pokud se rozhodnete, že se nestanete správcem, vaše uzly budou pořád synchronizovat a ověřit blockchain; Nicméně nebudou zapojeny do procesu vytváření bloků. Chcete-li zahájit hlasovací proces, který se stane správcem, klikněte na položku __název__ a zadejte adresu ethereem a alias.
+#### <a name="becoming-an-admin"></a>Becoming an admin
+If you're the first member that deployed on the network, then you'll automatically become an Admin and your Parity nodes will be listed as Validators.  If you're joining the network, you'll need to get voted in as an Admin by a majority (greater than 50%) of the existing Admin set.  If you choose not to become an Admin then your nodes will still sync and validate the blockchain; however, they will not participate in the block creation process. To start the voting process to become an Admin, click __Nominate__ and enter your Ethereum address and alias.
 
-![Jmenovat](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
+![Nominovat](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
-#### <a name="candidates"></a>Kandidáty
-Kliknutím na kartu kandidáti zobrazíte aktuální sadu kandidátů na správce.  Jakmile kandidát dostane v rámci současných správců většinu hlasů, bude kandidát povýšen na správce.  Pokud chcete hlasovat o kandidátu, vyberte řádek a v horní části klikněte na hlasovací tlačítko.  Pokud změníte svůj názor na hlas, můžete vybrat kandidáta a kliknout na tlačítko "zrušit hlasování".
+#### <a name="candidates"></a>Candidates
+Selecting the __Candidates__ tab will show you the current set of candidate administrators.  Once a Candidate reaches a majority vote by the current Admins, the Candidate will get promoted to an Admin.  To vote on a Candidate, select the row and click "Vote in" at the top.  If you change your mind on a vote, you may select the candidate and click "Rescind vote".
 
-![Kandidáty](./media/ethereum-poa-deployment/governance-dapp-candidates.png)
+![Candidates](./media/ethereum-poa-deployment/governance-dapp-candidates.png)
 
 
-#### <a name="admins"></a>Správci
-Na kartě __Správci__ se zobrazí aktuální sada správců a poskytne vám možnost hlasovat proti.  Když správce ztratí více než 50% podporu, odeberou se jako správce v síti.  Všechny uzly validátoru, které tento správce vlastní, ztratí stav validátoru a stanou se uzly transakcí v síti.  Správce může být odebrán z libovolného počtu důvodů; je však až konsorcium k tomu, aby předem souhlasila se zásadami.
+#### <a name="admins"></a>Admins
+The __Admins__ tab will show the current set of Admins and provide you the ability to vote against.  Once an Admin loses more than 50% support, they'll be removed as an Admin on the network.  Any validator nodes that this Admin owns will lose validator status and become transaction nodes on the network.  An Admin may be removed for any number of reasons; however, it's up to the consortium to agree on a policy in advance.
 
-![Správci](./media/ethereum-poa-deployment/governance-dapp-admins.png)
+![Admins](./media/ethereum-poa-deployment/governance-dapp-admins.png)
 
-#### <a name="validators"></a>Validátory
-Výběrem karty __validátory__ v nabídce vlevo zobrazíte aktuální nasazené uzly parity pro tuto instanci a jejich aktuální stav (typ uzlu).  Každý člen konsorcia bude mít v tomto seznamu jinou sadu validátorů, protože toto zobrazení představuje stávajícího nasazeného člena konsorcia.  Pokud se jedná o nově nasazenou instanci a ještě jste nepřidali validátory, zobrazí se vám možnost Přidat validátory.  Výběrem této možnosti se automaticky zvolí sada paritních uzlů s vyrovnáváním zatížení a přiřadí se k sadě validátorů.  Pokud jste nasadili více uzlů než povolená kapacita, zbývající uzly se stanou uzly transakcí v síti.
+#### <a name="validators"></a>Validators
+Selecting the __Validators__ tab in the left menu will display the current deployed Parity nodes for this instance and their current status (Node type).  Each consortium member will have a different set of validators in this list, since this view represents the current deployed consortium member.  If this is a newly deployed instance and you haven't yet added your validators, you'll be shown the option to 'Add Validators'.  Selecting this will automatically choose a regionally balanced set of Parity nodes and assign them to your validator set.  If you have deployed more nodes than the allowed capacity, the remaining nodes will become transaction nodes on the network.
 
-Adresa každého validátoru se automaticky přiřadí prostřednictvím [úložiště identit](#identity-store) v Azure.  Pokud dojde k výpadku uzlu, přijde jeho identita, což umožní jinému uzlu ve vašem nasazení provést jeho umístění.  Tím zajistíte vysokou dostupnost vaší účasti v rámci konsensu.
+The address of each validator is automatically assigned via the [identity store](#identity-store) in Azure.  If a node goes down, it will relinquish its identity, allowing another node in your deployment to take its place.  This ensures that your consensus participation is highly available.
 
-![Validátory](./media/ethereum-poa-deployment/governance-dapp-validators.png)
+![Validators](./media/ethereum-poa-deployment/governance-dapp-validators.png)
 
-#### <a name="consortium-name"></a>Název konsorcia
-Každý správce může aktualizovat název konsorcia zobrazený v horní části stránky.  Vyberte ikonu ozubeného kolečka v levém horním rohu pro aktualizaci názvu konsorcia.
+#### <a name="consortium-name"></a>Consortium name
+Any Admin may update the Consortium Name, displayed at the top of the page.  Select the gear icon in the top left to update the Consortium Name.
 
-#### <a name="account-menu"></a>Nabídka Účet
-V pravém horním rohu je váš alias účtu Ethereem a identicon.  Pokud jste správce, budete mít možnost aktualizovat svůj alias.
+#### <a name="account-menu"></a>Account menu
+In the top-right is your Ethereum account alias and identicon.  If you're an Admin you'll have the ability to update your alias.
 
 ![Účet](./media/ethereum-poa-deployment/governance-dapp-account.png)
 
-### <a name="deploy-ethereum-proof-of-authority"></a>Nasazení Ethereem pro kontrolu-of-Authority
+### <a name="deploy-ethereum-proof-of-authority"></a>Deploy Ethereum Proof-of-Authority
 
-Tady je příklad toku nasazení více stran:
+Here's an example of a multi-party deployment flow:
 
-1.  Tři členové generují účet Ethereem pomocí MetaMask
+1.  Three members each generate an Ethereum account using MetaMask
 
-2.  *Člen A* nasadí ethereem POA a poskytne jim svou Ethereem veřejnou adresu.
+2.  *Member A* deploys Ethereum PoA, providing their Ethereum Public Address
 
-3.  *Člen A* poskytuje konsorcium URL pro *členské B* a *členské C* .
+3.  *Member A* provides the consortium URL to *Member B* and *Member C*
 
-4.  *Členské B* a *členské C* nasazují ethereem POA a poskytují svou ethereem veřejnou adresu a adresu URL *člena*a 's Consortium.
+4.  *Member B* and *Member C* deploy, Ethereum PoA, providing their Ethereum Public Address and *Member A*'s consortium URL
 
-5.  *Člen A* hlasy *člena B* jako správce
+5.  *Member A* votes in *Member B* as an admin
 
-6.  *Člen a* a *člen B* – hlas *členů C* jako správce
+6.  *Member A* and *Member B* both vote *Member C* as an admin
 
-Tento proces vyžaduje předplatné Azure, které může podporovat nasazení několika virtuálních počítačů a spravovaných disků. V případě potřeby si [vytvořte bezplatný účet Azure](https://azure.microsoft.com/free/) , který začne.
+This process requires an Azure subscription that can support deploying several virtual machines and managed disks. If necessary, [create a free Azure account](https://azure.microsoft.com/free/) to begin.
 
-Po zabezpečení předplatného je potřeba přejít na Azure Portal. Vyberte ' + ', Marketplace (' Zobrazit vše ') a vyhledejte konsorcium Ethereem PoA.
+Once a subscription is secured, go to Azure portal. Select '+', Marketplace ('See all'), and search for Ethereum PoA Consortium.
 
-Následující část vás provede konfigurací přístavů prvního člena v síti. Tok nasazení je rozdělen do pěti kroků: Základní informace, oblasti nasazení, velikost a výkon sítě, nastavení Ethereem, Azure Monitor.
+The following section will walk you through configuring the first member's footprint in the network. The deployment flow is divided into five steps: Basics, Deployment regions, Network size and performance, Ethereum settings, Azure Monitor.
 
-#### <a name="basics"></a>Základní informace
+#### <a name="basics"></a>Základy
 
-V části **základy**zadejte hodnoty pro standardní parametry pro jakékoli nasazení, jako je například předplatné, skupina prostředků a základní vlastnosti virtuálního počítače.
+Under **Basics**, specify values for standard parameters for any deployment, such as subscription, resource group and basic virtual machine properties.
 
-Podrobný popis každého parametru je následující:
+A detailed description of each parameter follows:
 
 Název parametru|Popis|Povolené hodnoty|Výchozí hodnoty
 ---|---|---|---
-Chcete vytvořit novou síť nebo připojit se k existující síti?|Vytvoření nové sítě nebo připojení k již existující síti konsorcia|Vytvořit nové spojení – existující|Vytvořit nové
-E-mailová adresa (nepovinné)|Až se vaše nasazení dokončí s informacemi o vašem nasazení, obdržíte e-mailové oznámení.|Platná e-mailová adresa|Není k dispozici
-Uživatelské jméno virtuálního počítače|Uživatelské jméno správce každého nasazeného virtuálního počítače (jenom alfanumerické znaky)|1-64 znaků|Není k dispozici
-Typ ověřování|Metoda, která se má ověřit pro virtuální počítač.|Heslo nebo veřejný klíč SSH|Heslo
-Heslo (typ ověřování = heslo)|Heslo pro účet správce pro každý nasazený virtuální počítač.  Heslo musí obsahovat 3 z následujících možností: 1 velké písmeno, 1 znak malého písmena, 1 číslice a 1 speciální znak. Všechny virtuální počítače mají zpočátku stejné heslo, ale po zřízení můžete heslo změnit.|12-72 znaků|Není k dispozici
-Klíč SSH (typ ověřování = veřejný klíč)|Klíč zabezpečeného prostředí používaný pro vzdálené přihlášení||Není k dispozici
-Subscription|Předplatné, ke kterému se má nasadit síť konsorcia||Není k dispozici
-Skupina prostředků|Skupina prostředků, do které se má nasadit síť konsorcia||Není k dispozici
-Location|Oblast Azure pro skupinu prostředků.||Není k dispozici
+Create a new network or join existing network?|Create a new network or join a pre-existing consortium network|Create New Join Existing|Vytvořit nový
+Email Address (Optional)|You'll receive an email notification when your deployment completes with information about your deployment.|Valid email address|není k dispozici
+VM user name|Administrator username of each deployed VM (alphanumeric characters only)|1-64 characters|není k dispozici
+Typ ověřování|The method to authenticate to the virtual machine.|Password or SSH public key|Heslo
+Password (Authentication type = Password)|The password for the administrator account for each of the virtual machines deployed.  The password must contain 3 of the following: 1 upper case character, 1 lower case character, 1 number, and 1 special character. While all VMs initially have the same password, you can change the password after provisioning.|12-72 characters|není k dispozici
+SSH Key (Authentication type = Public Key)|The secure shell key used for remote login.||není k dispozici
+Předplatné|The subscription to which to deploy the consortium network||není k dispozici
+Skupina prostředků|The resource group to which to deploy the consortium network.||není k dispozici
+Umístění|The Azure region for resource group.||není k dispozici
 
-Ukázkové nasazení je uvedené níže: ![základní okno](./media/ethereum-poa-deployment/basic-blade.png)
+A sample deployment is shown below: ![basic blade](./media/ethereum-poa-deployment/basic-blade.png)
 
-#### <a name="deployment-regions"></a>Oblasti nasazení
+#### <a name="deployment-regions"></a>Deployment regions
 
-V části oblasti nasazení zadejte vstupy pro počet oblastí pro nasazení sítě konsorcia a výběr oblastí Azure na základě počtu zadaných oblastí. Uživatel může nasadit maximálně 5 oblastí. Doporučujeme, abyste si zvolili první oblast, která bude odpovídat umístění skupiny prostředků z části základy. Pro vývojové nebo testovací sítě se doporučuje jedna oblast na člena. V případě produkčního prostředí doporučujeme nasazení do dvou nebo více oblastí pro zajištění vysoké dostupnosti.
+Next, under Deployment regions, specify inputs for number of region(s) to deploy the consortium network and selection of Azure regions based on the number of regions given. User can deploy in maximum of 5 regions. We recommend choosing the first region to match the resource group location from Basics section. For development or test networks, a single region per member is recommended. For production, we recommend deploying across two or more regions for high-availability.
 
-Podrobný popis každého parametru je následující:
-
-  Název parametru|Popis|Povolené hodnoty|Výchozí hodnoty
-  ---|---|---|---
-  Počet oblastí|Počet oblastí pro nasazení sítě konsorcia|1, 2, 3, 4, 5|1
-  První oblast|První oblast pro nasazení sítě konsorcia|Všechny povolené oblasti Azure|Není k dispozici
-  Druhá oblast|Druhá oblast pro nasazení sítě konsorcia (viditelná pouze v případě, že je vybrán počet oblastí jako 2)|Všechny povolené oblasti Azure|Není k dispozici
-  Třetí oblast|Třetí oblast pro nasazení sítě konsorcia (viditelná pouze v případě, že je vybrán počet oblastí jako 3)|Všechny povolené oblasti Azure|Není k dispozici
-  Čtvrtá oblast|Čtvrtá oblast pro nasazení sítě konsorcia (viditelná jenom v případě, že počet oblastí je vybraný jako 4)|Všechny povolené oblasti Azure|Není k dispozici
-  Páté oblasti|Pátá oblast pro nasazení sítě konsorcia (viditelná jenom v případě, že počet oblastí je vybraný jako 5)|Všechny povolené oblasti Azure|Není k dispozici
-
-Ukázkové nasazení je uvedené níže: ![oblasti nasazení](./media/ethereum-poa-deployment/deployment-regions.png)
-
-#### <a name="network-size-and-performance"></a>Velikost a výkon sítě
-
-Dále v části velikost sítě a výkon zadejte vstupy pro velikost sítě konsorcia, jako je počet a velikost uzlů validátoru.
-Velikost úložiště uzlu validátoru určí potenciální velikost blockchain. To může být po nasazení změněno.
-
-Podrobný popis každého parametru je následující:
+A detailed description of each parameter follows:
 
   Název parametru|Popis|Povolené hodnoty|Výchozí hodnoty
   ---|---|---|---
-  Počet uzlů validátoru vyrovnávání zatížení|Počet uzlů validátoru, které se mají zřídit v rámci sítě|2-15|2
-  Výkon úložiště uzlu validátoru|Typ spravovaného disku, který zálohuje všechny nasazené uzly validátoru.|SSD úrovně Standard nebo Premium|SSD úrovně Standard
-  Velikost virtuálního počítače uzlu validátoru|Velikost virtuálního počítače používaná pro uzly validátoru.|Standard A, Standard D, Standard D-V2, Standard F Series, Standard DS a Standard FS|Standard D1 v2
+  Number of region(s)|Number of regions to deploy the consortium network|1, 2, 3, 4, 5|1\. místo
+  First region|First region to deploy the consortium network|All allowed Azure regions|není k dispozici
+  Second region|Second region to deploy the consortium network (Visible only when number of regions is selected as 2)|All allowed Azure regions|není k dispozici
+  Third region|Third region to deploy the consortium network (Visible only when number of regions is selected as 3)|All allowed Azure regions|není k dispozici
+  Fourth region|Fourth region to deploy the consortium network (Visible only when number of regions is selected as 4)|All allowed Azure regions|není k dispozici
+  Fifth region|Fifth region to deploy the consortium network (Visible only when number of regions is selected as 5)|All allowed Azure regions|není k dispozici
 
-[Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/managed-disks/)
+A sample deployment is shown below: ![deployment regions](./media/ethereum-poa-deployment/deployment-regions.png)
 
-[Podrobnosti o cenách virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
+#### <a name="network-size-and-performance"></a>Network size and performance
 
-Virtuální počítač a vrstva úložiště budou mít vliv na výkon sítě.  V závislosti na požadované cenové efektivitě doporučujeme použít následující SKU:
+Next, under 'Network size and performance' specify inputs for the size of the consortium network, such as number and size of validator nodes.
+The validator node storage size will dictate the potential size of the blockchain. This can be changed after deployment.
 
-  SKU virtuálního počítače|Vrstva úložiště|Cena|Propustnost|Latence
+A detailed description of each parameter follows:
+
+  Název parametru|Popis|Povolené hodnoty|Výchozí hodnoty
+  ---|---|---|---
+  Number of load balanced validator nodes|The number of validator nodes to provision as part of the network|2-15|2
+  Validator node storage performance|The type of managed disk backing each of the deployed validator nodes.|Standard SSD or Premium|SSD úrovně Standard
+  Validator node virtual machine size|The virtual machine size used for validator nodes.|Standard A, Standard D, Standard D-v2, Standard F series, Standard DS, and Standard FS|Standard D1 v2
+
+[Storage Pricing Details](https://azure.microsoft.com/pricing/details/managed-disks/)
+
+[Virtual Machine Pricing Details](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
+
+Virtual Machine and Storage Tier will affect network performance.  We recommend the following SKUs based on desired cost-efficiency:
+
+  Virtual Machine SKU|Storage Tier|Cena|Propustnost|Latence
   ---|---|---|---|---
-  F1|SSD úrovně Standard|nízká|nízká|maximální
-  D2_v3|SSD úrovně Standard|středně silné|středně silné|středně silné
-  F16s|SSD úrovně Premium|maximální|maximální|nízká
+  F1|SSD úrovně Standard|low|low|high
+  D2_v3|SSD úrovně Standard|medium|medium|medium
+  F16s|Premium SSD|high|high|low
 
-Níže je uvedeno ukázkové nasazení: velikost ![a výkon sítě.](./media/ethereum-poa-deployment/network-size-and-performance.png)
+A sample deployment is shown below: ![network size and performance](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
-#### <a name="ethereum-settings"></a>Nastavení ethereem
+#### <a name="ethereum-settings"></a>Ethereum settings
 
-Dále v části nastavení Ethereem zadejte nastavení konfigurace související s Ethereem, jako je ID sítě a heslo účtu Ethereem nebo blok Genesis.
+Next, under Ethereum settings, specify Ethereum-related configuration settings, like the network ID and Ethereum account password or genesis block.
 
-Podrobný popis každého parametru je následující:
+A detailed description of each parameter follows:
 
   Název parametru|Popis|Povolené hodnoty|Výchozí hodnoty
   ---|---|---|---
-ID člena konsorcia|ID přidružené ke každému členovi zapojenému do sítě konsorcia používané ke konfiguraci adresních prostorů IP adres, aby se zabránilo kolizi. V případě privátní sítě by ID člena mělo být jedinečné v různých organizacích ve stejné síti.  Jedinečné ID člena je nutné i v případě, že je stejná organizace nasazena do více oblastí. Poznamenejte si hodnotu tohoto parametru, protože ho budete muset sdílet s dalšími připojujícími se členy, abyste se ujistili, že nedochází k žádné kolizi.|0-255|Není k dispozici
-ID sítě|ID sítě pro nasazování sítě konsorcia Ethereem  Každá Ethereem síť má své vlastní ID sítě, přičemž 1 je identifikátor veřejné sítě.|5 – 999 999 999|10101010
-Adresa Ethereem správce|Adresa účtu ethereem, která se používá pro zapojení do zásad správného řízení PoA  Pro vygenerování Ethereem adresy doporučujeme použít MetaMask.|42 alfanumerických znaků začínajících 0x|Není k dispozici
-Upřesnit možnosti|Rozšířené možnosti pro nastavení Ethereem|Povolit nebo zakázat|Zakázat
-Veřejná IP adresa (rozšířené možnosti = Povolit)|Nasadí síť za bránou virtuální sítě a odebere přístup partnerských vztahů. Pokud je vybraná tato možnost, všichni členové musí používat bránu virtuální sítě, aby připojení bylo kompatibilní.|Privátní virtuální síť veřejné IP adresy|Veřejná IP adresa
-Limit bloku plynů (rozšířené možnosti = Povolit)|Počáteční limit pro blokový plyn sítě|Libovolné číselné|50000000
-Zablokovat dobu trvání uzávěrky (s)|Frekvence, s níž budou vytvořeny prázdné bloky, pokud v síti nejsou žádné transakce. Vyšší frekvence bude mít rychlejší, ale zvýšené náklady na úložiště.|Libovolné číselné|15
-Kontrakt oprávnění transakce (rozšířené možnosti = Povolit)|Kód pro kontrakt oprávnění transakce. Omezí nasazení a provádění inteligentních kontraktů na povolený seznam účtů Ethereem.|Bajtový kód kontraktu|Není k dispozici
+Consortium Member ID|The ID associated with each member participating in the consortium network used to configure IP address spaces to avoid collision. In the case of a private network, Member ID should be unique across different organizations in the same network.  A unique member ID is needed even when the same organization deploys to multiple regions. Make note of the value of this parameter since you'll need to share it with other joining members to ensure there’s no collision.|0-255|není k dispozici
+Network ID|The network ID for the consortium Ethereum network being deployed.  Each Ethereum network has its own Network ID, with 1 being the ID for the public network.|5 - 999,999,999|10101010
+Admin Ethereum Address|Ethereum account address that is used for participating in PoA governance.  We recommend using MetaMask for generating an Ethereum address.|42 alphanumeric characters starting with 0x|není k dispozici
+Advanced Options|Advanced options for Ethereum settings|Enable or Disable|Zákaz
+Public IP (Advanced Options = Enable)|Deploys the network behind a VNet Gateway and removes peering access. If this option is selected, all members must use a VNet Gateway for the connection to be compatible.|Public IP Private VNet|Veřejná IP adresa
+Block Gas Limit (Advanced Options = Enable)|The starting block gas limit of the network|Any numeric|50000000
+Block Reseal Period (sec)|The frequency at which empty blocks will be created when there are no transactions on the network. A higher frequency will have faster finality but increased storage costs.|Any numeric|15
+Transaction Permission Contract (Advanced Options = Enable)|Bytecode for the Transaction Permissioning contract. Restricts smart contract deployment and execution to a permitted list of Ethereum accounts.|Contract bytecode|není k dispozici
 
-Ukázkové nasazení je uvedené níže: ![nastavení ethereem](./media/ethereum-poa-deployment/ethereum-settings.png)
+A sample deployment is shown below: ![ethereum settings](./media/ethereum-poa-deployment/ethereum-settings.png)
 
-#### <a name="monitoring"></a>Monitorování
+#### <a name="monitoring"></a>Sledování
 
-Okno monitorování umožňuje nakonfigurovat prostředek Azure Monitorch protokolů pro vaši síť. Agent monitorování bude shromažďovat a obcházet užitečné metriky a protokoly ze sítě a poskytuje možnost rychle kontrolovat stav sítě nebo problémy s laděním.
+The Monitoring blade allows you to configure an Azure Monitor logs resource for your network. The monitoring agent will collect and surface useful metrics and logs from your network, providing the ability to quickly check the network health or debug issues.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
   Název parametru|Popis|Povolené hodnoty|Výchozí hodnoty
   ---|---|---|---
-Monitorování|Možnost povolení monitorování|Povolit nebo zakázat|Povolení
-Připojit k existujícím protokolům Azure Monitor|Vytvořit novou instanci protokolů Azure Monitor nebo se připojit k existující instanci|Vytvořit novou nebo připojit existující|Vytvořit nový
-Umístění monitorování (připojit k existujícím protokolům Azure Monitor = vytvořit nové)|Oblast, do které bude nasazena nová instance protokolu Azure Monitor|Všechny oblasti protokolu Azure Monitor|Není k dispozici
-Existující ID pracovního prostoru Log Analytics (připojit k existujícím protokolům Azure Monitor = připojit existující)|ID pracovního prostoru existující instance protokolu Azure Monitor||Není k dispozici
-Existující primární klíč Log Analytics (Připojte se k existujícím protokolům Azure Monitor = připojit existující)|Primární klíč, který se používá pro připojení ke stávající instanci Azure Monitorch protokolů||Není k dispozici
+Sledování|Option to enable Monitoring|Enable or Disable|Povolení
+Connect to existing Azure Monitor logs|Create a new Azure Monitor logs instance or join an existing instance|Create new or Join existing|Vytvořit nový
+Monitor Location(Connect to existing Azure Monitor logs= Create new)|The region where the new Azure Monitor logs instance will be deployed|All Azure Monitor logs regions|není k dispozici
+Existing log analytics workspace ID (Connect to existing Azure Monitor logs = Join Existing)|Workspace ID of the existing Azure Monitor logs instance||není k dispozici
+Existing log analytics primary key (Connect to existing Azure Monitor logs = Join Existing)|The primary key used to connect to the existing Azure Monitor logs instance||není k dispozici
 
 
-Níže je uvedeno ukázkové nasazení: ![Azure monitor](./media/ethereum-poa-deployment/azure-monitor.png)
+A sample deployment is shown below: ![azure monitor](./media/ethereum-poa-deployment/azure-monitor.png)
 
 #### <a name="summary"></a>Souhrn
 
-Kliknutím na okno Souhrn zkontrolujte zadané vstupy a spusťte základní ověřování před nasazením. Před nasazením si můžete stáhnout šablonu a parametry.
+Click through the summary blade to review the inputs specified and to run basic pre-deployment validation. Before deploying you may download the template and parameters.
 
-Přečtěte si právní a osobní údaje a kliknutím na koupit nasaďte. Pokud nasazení zahrnuje brány virtuální sítě, nasazení bude trvat 45 až 50 minut.
+Review legal and privacy terms and click 'Purchase' to deploy. If the deployment includes VNet Gateways, the deployment will take up 45 to 50 minutes.
 
-#### <a name="post-deployment"></a>Po nasazení
+#### <a name="post-deployment"></a>Post deployment
 
-##### <a name="deployment-output"></a>Výstup nasazení
+##### <a name="deployment-output"></a>Deployment output
 
-Po dokončení nasazení získáte přístup k potřebným parametrům prostřednictvím e-mailu s potvrzením nebo prostřednictvím Azure Portal. V těchto parametrech najdete tyto informace:
+Once the deployment has completed, you can access the necessary parameters via the confirmation email or through the Azure portal. In these parameters you'll find:
 
--   Koncový bod ethereem RPC
+-   Ethereum RPC endpoint
 
--   Adresa URL řídicího panelu zásad správného řízení
+-   Governance Dashboard URL
 
--   Adresa URL Azure Monitor
+-   Azure Monitor URL
 
--   Adresa URL dat
+-   Data URL
 
--   ID prostředku brány virtuální sítě (volitelné)
+-   VNet Gateway Resource ID (optional)
 
-##### <a name="confirmation-email"></a>Potvrzovací e-mail
+##### <a name="confirmation-email"></a>Confirmation email
 
-Pokud zadáte e-mailovou adresu ([oddíl základy](#basics)), pošle se e-mail na e-mailovou adresu s informacemi o výstupu nasazení.
+If you provide an email address ([Basics Section](#basics)), an email would be sent to the email address with the deployment output information.
 
-![e-mail pro nasazení](./media/ethereum-poa-deployment/deployment-email.png)
+![deployment email](./media/ethereum-poa-deployment/deployment-email.png)
 
 ##### <a name="portal"></a>Portál
 
-Po úspěšném dokončení nasazení a zřízení všech prostředků můžete zobrazit výstupní parametry ve vaší skupině prostředků.
+Once the deployment has completed successfully and all resources have been provisioned you can view the output parameters in your resource group.
 
-1.  Vyhledání skupiny prostředků na portálu
+1.  Locate your resource group in the portal
 
-2.  Navigace v *nasazeních*
+2.  Navigate to *Deployments*
 
-3.  Vyberte nasazení na nejvyšší úrovni se stejným názvem, jako má vaše skupina prostředků.
+3.  Select the top deployment with the same name as your resource group
 
-4.  Vybrat *výstupy*
+4.  Select *Outputs*
 
-### <a name="growing-the-consortium"></a>Rozšiřování konsorcia
+### <a name="growing-the-consortium"></a>Growing the consortium
 
-Chcete-li rozšířit konsorcium, musíte nejprve připojit fyzickou síť.
-Použití veřejného nasazení založeného na protokolu IP je v tomto prvním kroku bezproblémové. Pokud nasazujete za síť VPN, přečtěte si část [připojení brány virtuální](#connecting-vnet-gateways) sítě, která umožňuje připojení k síti v rámci nového nasazení členů.  Až se nasazení dokončí, stane se správcem sítě [DApp zásad správného řízení](#governance-dapp) .
+To expand your consortium, you must first connect the physical network.
+Using the Public IP-based deployment this first step is seamless. If deploying behind a VPN, see the section [Connecting VNet Gateway](#connecting-vnet-gateways) to do the network connection as part of the new member deployment.  Once your deployment completes use the [Governance DApp](#governance-dapp) to become a network Admin.
 
-#### <a name="new-member-deployment"></a>Nasazení nového člena
+#### <a name="new-member-deployment"></a>New member deployment
 
-1.  Sdílet následující informace s připojujícím se členem. Tyto informace najdete v e-mailu po nasazení nebo ve výstupu nasazení na portálu.
+1.  Share the following information with the joining member. This information can be found in your post-deployment email or in the portal deployment output.
 
-    -  Adresa URL dat konsorcia
+    -  Consortium Data Url
 
-    -  Počet uzlů, které jste nasadili
+    -  The number of nodes you've deployed
 
-    -  ID prostředku brány virtuální sítě (Pokud používáte VPN)
+    -  VNet Gateway Resource ID (if using VPN)
 
-2.  Člen nasazení by měl používat [stejné řešení](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) při nasazení jejich síťové přítomnosti, a přitom je potřeba mít na paměti následující:
+2.  The deploying member should use the [same solution](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) when deploying their network presence with keeping the following in mind:
 
-    -  Vyberte *připojit existující*
+    -  Select *Join Existing*
 
-    -  Vyberte stejný počet uzlů validátoru jako zbytek členů sítě, aby se zajistila korektní reprezentace.
+    -  Choose the same number of validator nodes as the rest of the  members on the network to ensure fair representation
 
-    -  Použijte stejnou Ethereem adresu, kterou jste zadali v předchozím kroku.
+    -  Use the same Ethereum address that was provided in the previous  step
 
-    -  Předejte *adresu URL* poskytnutého data konsorcia na kartě *Nastavení ethereem*
+    -  Pass in the provided *Consortium Data Url* on the *Ethereum  Settings* tab
 
-    -  Pokud je zbytek sítě za sítí VPN, vyberte v části Upřesnit možnost *privátní virtuální síť* .
+    -  If the rest of the network is behind a VPN, select *Private  VNet* under the advanced section
 
-#### <a name="connecting-vnet-gateways"></a>Připojení bran virtuální sítě
+#### <a name="connecting-vnet-gateways"></a>Connecting VNet gateways
 
-Pokud jste nasadili pomocí výchozího nastavení veřejné IP adresy, můžete tento krok ignorovat. V případě privátní sítě jsou různí členové připojeni prostřednictvím připojení brány virtuální sítě. Předtím, než se člen může připojit k síti a zobrazit transakční provoz, musí stávající člen provést konečnou konfiguraci brány VPN, aby bylo možné připojení přijmout. To znamená, že uzly Ethereem spojovacího člena nebudou spuštěny, dokud není navázáno připojení. Doporučuje se vytvořit redundantní síťová připojení (síť) do konsorcia, aby se snížila pravděpodobnost jednoho bodu selhání.
+You may ignore this step if you've deployed using the default Public IP settings. In the case of a private network, the different members are connected via VNet gateway connections. Before a member can join the network and see transaction traffic, an existing member must do a final configuration on their VPN gateway to accept the connection. This means that the Ethereum nodes of the joining member won't run until a connection is established. It's recommended to create redundant network connections (mesh) into the consortium to reduce chances of a single point of failure.
 
-Po nasazení nového člena musí stávající člen dokončit obousměrné připojení tím, že nastaví připojení brány virtuální sítě k novému členu. Pro dosažení tohoto toho bude potřebovat stávající člen:
+After the new member deploys, the existing member must complete the bi-directional connection by setting up a VNet gateway connection to the new member. To achieve this, existing member will need:
 
-1.  Brána virtuální sítě ResourceID připojujícího se člena (viz výstup nasazení)
+1.  The VNet gateway ResourceID of the connecting member (see deployment output)
 
-2.  Sdílený klíč připojení
+2.  The shared connection key
 
-Aby bylo možné dokončit připojení, musí stávající člen spustit následující skript prostředí PowerShell. Doporučujeme použít Azure Cloud Shell umístěnou v pravém horním navigačním panelu na portálu.
+The existing member must run the following PowerShell script to complete the connection. We recommend using Azure Cloud Shell located in the top-right navigation bar in the portal.
 
-![Cloud Shell](./media/ethereum-poa-deployment/cloud-shell.png)
+![cloud shell](./media/ethereum-poa-deployment/cloud-shell.png)
 
 ```Powershell
 $MyGatewayResourceId = "<EXISTING_MEMBER_RESOURCEID>"
@@ -413,27 +406,27 @@ $MyGateway = Get-AzVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName
 New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
 ```
 
-### <a name="service-monitoring"></a>Sledování služby
+### <a name="service-monitoring"></a>Monitorování služeb
 
-Portál Azure monitor můžete najít buď pomocí odkazu v e-mailu pro nasazení, nebo vyhledáním parametru v adrese URL \[\]portálu\_\_pro výstup služby OMS.
+You can locate your Azure Monitor portal either by following the link in the deployment email or locating the parameter in the deployment output \[OMS\_PORTAL\_URL\].
 
-Portál nejprve zobrazí statistiku sítě vysoké úrovně a přehled uzlů.
+The portal will first display high-level network statistics and node overview.
 
-![kategorie monitorování](./media/ethereum-poa-deployment/monitor-categories.png)
+![monitor categories](./media/ethereum-poa-deployment/monitor-categories.png)
 
-Vybírání **přehledu uzlů** vás přesměruje na portál a zobrazí statistiku infrastruktury pro jednotlivé uzly.
+Selecting **Node Overview** will direct you to a portal to view per-node infrastructure statistics.
 
-![statistiky uzlů](./media/ethereum-poa-deployment/node-stats.png)
+![node stats](./media/ethereum-poa-deployment/node-stats.png)
 
-Výběr statistiky **sítě** vás nasměruje na zobrazení statistik sítě ethereem.
+Selecting **Network Stats** will direct you to view Ethereum network statistics.
 
-![statistiky sítě](./media/ethereum-poa-deployment/network-stats.png)
+![network stats](./media/ethereum-poa-deployment/network-stats.png)
 
-#### <a name="sample-kusto-queries"></a>Ukázkové dotazy Kusto
+#### <a name="sample-kusto-queries"></a>Sample Kusto queries
 
-Za těmito řídicími panely je sada Queryable nezpracovaných protokolů. Tyto nezpracované protokoly můžete použít k přizpůsobení řídicích panelů, prozkoumání selhání nebo upozorňování prahové hodnoty instalace. Níže najdete sadu ukázkových dotazů, které mohou být spuštěny v nástroji pro prohledávání protokolu:
+Behind these dashboards is a set of queryable raw logs. You can use these raw logs to customize the dashboards, investigate failures, or setup threshold alerting. Below you'll find a set of example queries that can be ran in the Log Search tool:
 
-##### <a name="lists-blocks-that-have-been-reported-by-more-than-one-validator-useful-to-help-find-chain-forks"></a>Zobrazí seznam bloků, které byly hlášeny více než jedním validátorem. Užitečné při hledání větví zřetězení.
+##### <a name="lists-blocks-that-have-been-reported-by-more-than-one-validator-useful-to-help-find-chain-forks"></a>Lists blocks that have been reported by more than one validator. Useful to help find chain forks.
 
 ```sql
 MinedBlock_CL
@@ -441,7 +434,7 @@ MinedBlock_CL
 | where DistinctMiners > 1
 ```
 
-##### <a name="get-average-peer-count-for-a-specified-validator-node-averaged-over-5-minute-buckets"></a>Získejte průměrnou hodnotu počtu partnerských uzlů pro zadaný uzel validátoru na průměr v intervalu 5 minut.
+##### <a name="get-average-peer-count-for-a-specified-validator-node-averaged-over-5-minute-buckets"></a>Get average peer count for a specified validator node averaged over 5 minute buckets.
 
 ```sql
 let PeerCountRegex = @"Syncing with peers: (\d+) active, (\d+) confirmed, (\d+)";
@@ -453,72 +446,72 @@ ParityLog_CL
 | summarize avg(ActivePeers) by bin(TimeGenerated, 5m)
 ```
 
-### <a name="ssh-access"></a>Přístup přes SSH
+### <a name="ssh-access"></a>SSH access
 
-Z bezpečnostních důvodů je ve výchozím nastavení odepřený přístup portu SSH pravidlem zabezpečení skupiny sítě. Pokud chcete získat přístup k instancím virtuálních počítačů v síti POA, budete muset změnit toto pravidlo, \"aby povolovalo.\"
+For security reasons, the SSH port access is denied by a network group security rule by default. To access the virtual machine instances in the PoA network, you'll need to change this rule to \"Allow\"
 
-1.  Začněte v části Přehled nasazené skupiny prostředků z Azure Portal.
+1.  Start in the Overview section of the deployed resource group from Azure portal.
 
-    ![Přehled SSH](./media/ethereum-poa-deployment/ssh-overview.png)
+    ![ssh overview](./media/ethereum-poa-deployment/ssh-overview.png)
 
-2.  Vyberte skupinu zabezpečení sítě pro oblast virtuálního počítače, ke kterému chcete získat přístup.
+2.  Select the Network Security Group for the region of the VM that you are wanting to access
 
-    ![NSG SSH](./media/ethereum-poa-deployment/ssh-nsg.png)
+    ![ssh nsg](./media/ethereum-poa-deployment/ssh-nsg.png)
 
-3.  \" Vyberte pravidlo \"Allow-SSH.
+3.  Select the \"allow-ssh\" rule
 
-    ![SSH – povolení](./media/ethereum-poa-deployment/ssh-allow.png)
+    ![ssh-allow](./media/ethereum-poa-deployment/ssh-allow.png)
 
-4.  Změnit \"akci\" na povoleno
+4.  Change \"Action\" to Allow
 
-    ![Povolit povolení protokolu SSH](./media/ethereum-poa-deployment/ssh-enable-allow.png)
+    ![ssh enable allow](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-5.  Klikněte \"na\" Uložit (změny můžou trvat několik minut).
+5.  Click \"Save\" (Changes may take a few minutes to apply)
 
-Nyní se můžete vzdáleně připojit k virtuálním počítačům pro uzly validátoru přes SSH s vaším uživatelským jménem správce a heslem/klíčem SSH.
-Příkaz SSH, který se má spustit pro přístup k prvnímu uzlu validátoru, je uvedený v parametru Output nasazení šablony\_jako\_,\_"SSH\_to First VL\_Node REGION1" (pro ukázkové nasazení: SSH-p 4000 poaadmin\@leader4vb.eastus.cloudapp.Azure.com). Chcete-li získat další uzly transakcí, zvyšte číslo portu o jednu (například první uzel transakce je na portu 4000).
+You can now remotely connect to the virtual machines for the validator nodes via SSH with your provided admin username and password/SSH key.
+The SSH command to run to access the first validator node is listed in the template deployment output parameter as, 'SSH\_TO\_FIRST\_VL\_NODE\_REGION1' (for the sample deployment: ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com). To get to additional transaction nodes, increment the port number by one (For example, the first transaction node is on port 4000).
 
-Pokud jste nasadili do více než jedné oblasti, změňte výše uvedený příkaz na název DNS nebo IP adresu nástroje pro vyrovnávání zatížení v této oblasti. Pokud chcete najít název DNS nebo IP adresu ostatních oblastí, vyhledejte prostředek pomocí \*konvence \* \* \* \*pojmenování – lbpip-reg\#a zobrazte jeho název DNS a IP adresu.
+If you deployed to more than one region, change the above command to the DNS name or IP address of the load balancer in that region. To find the DNS name or IP address of the other regions, find the resource with the naming convention \*\*\*\*\*-lbpip-reg\#, and view its DNS name and IP address properties.
 
-### <a name="azure-traffic-manager-load-balancing"></a>Vyrovnávání zatížení Azure Traffic Manager
+### <a name="azure-traffic-manager-load-balancing"></a>Azure Traffic Manager load balancing
 
-Služba Azure Traffic Manager může pomoci snižovat prostoje a zlepšit odezvu sítě PoA směrováním příchozího provozu napříč několika nasazeními v různých oblastech. Integrované kontroly stavu a automatické přesměrování vám pomůžou zajistit vysokou dostupnost koncových bodů RPC a DApp zásad správného řízení. Tato funkce je užitečná v případě, že jste nasadili více oblastí a jste připravení pro produkci.
+Azure Traffic Manager can help reduce downtime and improve responsiveness of the PoA network by routing incoming traffic across multiple deployments in different regions. Built-in health checks and automatic re-routing help ensure high availability of the RPC endpoints and the Governance DApp. This feature is useful if you have deployed to multiple regions and are production ready.
 
-Použít Traffic Manager k:
+Use Traffic Manager to:
 
--   Zvyšte dostupnost sítě pro PoA pomocí automatického převzetí služeb při selhání.
+-   Improve PoA network availability with automatic failover.
 
--   Zvyšte rychlost odezvy sítí směrováním koncových uživatelů do umístění Azure s nejnižší latencí sítě.
+-   Increase your networks responsiveness by routing end users to the Azure location with lowest network latency.
 
-Pokud se rozhodnete vytvořit profil Traffic Manager, můžete k přístupu k síti použít název DNS daného profilu. Po přidání dalších členů konsorcia do sítě je možné Traffic Manager použít také k vyrovnávání zatížení napříč nasazenými validátory.
+If you decide to create a Traffic Manager profile, you can use the DNS name of the profile to access your network. Once other consortium members have been added to the network, the Traffic Manager can also be used to load balance across their deployed validators.
 
-#### <a name="creating-a-traffic-manager-profile"></a>Vytváří se profil Traffic Manager.
+#### <a name="creating-a-traffic-manager-profile"></a>Creating a Traffic Manager profile
 
-Po \"kliknutí na\" \" tlačítko vytvořit prostředek v Azure Portal vyhledejte a vyberte profil Traffic Manager. \"
+Search for and select \"Traffic Manager profile\" after clicking the \"Create a resource\" button in the Azure portal.
 
-![hledání Azure Traffic Manageru](./media/ethereum-poa-deployment/traffic-manager-search.png)
+![search for azure traffic manager](./media/ethereum-poa-deployment/traffic-manager-search.png)
 
-Dejte profilu jedinečný název a vyberte skupinu prostředků, která se vytvořila během nasazování PoA. Kliknutím na tlačítko vytvořit nasadíte.
+Give the profile a unique name and select the Resource Group that was created during the PoA deployment. Click the "Create" button to deploy.
 
-![Vytvoření Traffic Manageru](./media/ethereum-poa-deployment/traffic-manager-create.png)
+![create traffic manager](./media/ethereum-poa-deployment/traffic-manager-create.png)
 
-Po nasazení vyberte instanci ve skupině prostředků. Název DNS pro přístup k Traffic Manageru najdete na kartě Přehled.
+Once it's deployed, then select the instance in the resource group. The DNS name to access the traffic manager can be found in the Overview tab
 
-![Vyhledání služby DNS Traffic Manageru](./media/ethereum-poa-deployment/traffic-manager-dns.png)
+![Locate traffic manager DNS](./media/ethereum-poa-deployment/traffic-manager-dns.png)
 
-Vyberte kartu koncové body a klikněte na tlačítko Přidat. Zadejte jedinečný název koncového bodu. Změňte typ cílového prostředku na veřejnou IP adresu. Pak vyberte veřejnou IP adresu prvního regionu\'s vyrovnáváním zatížení.
+Select the Endpoints tab and click the Add button. Give the endpoint a unique name. Change the Target resource type to Public IP address. Then select the public IP address of the first region\'s load balancer.
 
-![Směrování Traffic Manageru](./media/ethereum-poa-deployment/traffic-manager-routing.png)
+![Routing traffic manager](./media/ethereum-poa-deployment/traffic-manager-routing.png)
 
-Opakujte pro každou oblast v nasazené síti. Jakmile jsou koncové body v \"povoleném\" stavu, budou automaticky načteny a vyrovnány oblastmi na název DNS Traffic Manageru. Tento název DNS teď můžete \[použít místo parametru URL\] dat\_konsorcia\_v dalších krocích dokumentu.
+Repeat for each region in the deployed network. Once the endpoints are in the \"enabled\" status, they'll be automatically load and region balanced at the DNS name of the traffic manager. You can now use this DNS name in place of the \[CONSORTIUM\_DATA\_URL\] parameter in other steps of the document.
 
-### <a name="data-api"></a>Rozhraní API pro data
+### <a name="data-api"></a>Data API
 
-Každý člen konsorcia hostuje nezbytné informace, aby je ostatní mohli připojit k síti. Stávající člen bude před nasazením člena poskytovat [CONSORTIUM_DATA_URL]. Při nasazení bude připojující člen získat informace z rozhraní JSON v následujícím koncovém bodu:
+Each consortium member hosts the necessary information for others to connect to the network. The existing member will provide the [CONSORTIUM_DATA_URL] before the member's deployment. Upon deployment, a joining member will retrieve information from the JSON interface at the following endpoint:
 
 `<CONSORTIUM_DATA_URL>/networkinfo`
 
-Odpověď bude obsahovat informace, které jsou užitečné pro spojování členů (blok Genesis, ověřovací sada kontraktu ABI, bootnodes), a informace užitečné pro existujícího člena (adresy validátoru). Pro rozšiřování konsorcia mezi poskytovateli cloudu doporučujeme použití této standardizace. Toto rozhraní API vrátí odpověď ve formátu JSON s následující strukturou:
+The response will contain information useful for joining members (Genesis block, Validator Set contract ABI, bootnodes) and information useful to the existing member (validator addresses). We encourage use of this standardization to extend the consortium across cloud providers. This API will return a JSON formatted response with the following structure:
 ```json
 {
   "$id": "",
@@ -629,14 +622,14 @@ Odpověď bude obsahovat informace, které jsou užitečné pro spojování čle
 ```
 ## <a name="tutorials"></a>Kurzy
 
-### <a name="programmatically-interacting-with-a-smart-contract"></a>Programové interakce s čipovou smlouvou
+### <a name="programmatically-interacting-with-a-smart-contract"></a>Programmatically interacting with a smart contract
 
 > [!WARNING]
-> Nikdy Neodesílat privátní klíč Ethereem prostřednictvím sítě! Ujistěte se, že je každá transakce podepsaná místně a že se podepsaná transakce posílá přes síť.
+> Never send your Ethereum private key over the network! Ensure that each transaction is signed locally first and the signed transaction is sent over the network.
 
-V následujícím příkladu používáme *ethereumjs* k vygenerování ethereem adresy, *ethereumjs-TX* pro místní přihlášení a *web3* k odeslání nezpracované transakce do koncového bodu RPC pro ethereem.
+In the following example, we use *ethereumjs-wallet* to generate an Ethereum address, *ethereumjs-tx* to sign locally, and *web3* to send the raw transaction to the Ethereum RPC endpoint.
 
-Tento příklad používáme jako jednoduchý kontrakt Hello-World:
+We'll use this simple Hello-World smart contract for this example:
 
 ```javascript
 pragma solidity ^0.4.11;
@@ -651,19 +644,19 @@ contract postBox {
 }
 ```
 
-Tento příklad předpokládá, že kontrakt je už nasazený. *Solc* a *web3* můžete použít k programovému nasazení smlouvy. Nejprve nainstalujte následující moduly uzlů:
+This example assumes the contract is already deployed. You can use *solc* and *web3* for deploying a contract programmatically. First install the following node modules:
 ```
 sudo npm install web3@0.20.2
 sudo npm install ethereumjs-tx@1.3.6
 sudo npm install ethereumjs-wallet@0.6.1
 ```
-Tento skript nodeJS provede následující akce:
+This nodeJS script will perform the following:
 
--   Vytvoření nezpracované transakce: postMsg
+-   Construct a raw transaction: postMsg
 
--   Podepsat transakci pomocí generovaného privátního klíče
+-   Sign the transaction using the generated private key
 
--   Odeslání podepsané transakce do sítě Ethereem
+-   Submit the signed transaction to the Ethereum network
 
 ```javascript
 var ethereumjs = require('ethereumjs-tx')
@@ -706,16 +699,16 @@ web3.eth.getTransactionCount(accountAddress, function (err, nonce) {
  });
 ```
 
-### <a name="deploy-smart-contract-with-truffle"></a>Nasazení inteligentních kontraktů pomocí Truffle
+### <a name="deploy-smart-contract-with-truffle"></a>Deploy smart contract with Truffle
 
--   Nainstalovat potřebné knihovny
+-   Install necessary libraries
 
 ```javascript
 npm init
 
 npm install truffle-hdwallet-provider --save
 ```
--   V Truffle. js přidejte následující kód k odemknutí účtu MetaMask a konfiguraci uzlu PoA jako vstupního bodu zadáním symbolické fráze (MetaMask/nastavení/zobrazení počátečních slov)
+-   In truffle.js, add following code to unlock your MetaMask account and configure the PoA node as entry point by providing the mnemonic phrase (MetaMask / Settings / Reveal Seed Words)
 
 ```javascript
 var HDWalletProvider = require("truffle-hdwallet-provider");
@@ -740,65 +733,65 @@ module.exports = {
 
 ```
 
--   Nasazení na síť PoA
+-   Deploy to PoA network
 
 ```javascript
 $ truffle migrate --network poa
 ```
 
-### <a name="debug-smart-contract-with-truffle"></a>Ladění inteligentních kontraktů pomocí Truffle
+### <a name="debug-smart-contract-with-truffle"></a>Debug smart contract with Truffle
 
-Truffle má místní vývojovou síť, která je dostupná pro ladění inteligentních kontraktů. Úplný kurz najdete [tady](https://truffleframework.com/tutorials/debugging-a-smart-contract).
+Truffle has a local develop network that is available for debugging smart contract. You can find the full tutorial [here](https://truffleframework.com/tutorials/debugging-a-smart-contract).
 
-### <a name="webassembly-wasm-support"></a>Podpora WebAssembly (WASM)
+### <a name="webassembly-wasm-support"></a>WebAssembly (WASM) support
 
-Podpora WebAssembly je už povolená na nově nasazených sítích PoA. Umožňuje vývoj inteligentních kontraktů v jakémkoli jazyce, který předává do webového sestavení (Rust, C, C++). Další informace najdete na odkazech níže.
+WebAssembly support is already enabled for you on newly deployed PoA networks. It allows for smart-contract development in any language that transpiles to Web-Assembly (Rust, C, C++). See the links below for additional information
 
--   Přehled parity WebAssembly-<https://wiki.parity.io/WebAssembly-Home>
+-   Parity Overview of WebAssembly - <https://wiki.parity.io/WebAssembly-Home>
 
--   Kurz z parity tech-<https://github.com/paritytech/pwasm-tutorial>
+-   Tutorial from Parity Tech - <https://github.com/paritytech/pwasm-tutorial>
 
-## <a name="reference"></a>Reference
+## <a name="reference"></a>Referenční informace
 
-### <a name="faq"></a>Nejčastější dotazy
+### <a name="faq"></a>Časté otázky
 
-#### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>Všimněte si, že síť obsahuje mnoho transakcí, které nefungovala\'t posílá. Odkud pocházejí?
+#### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>I notice there are many transactions on the network that I didn\'t send. Where are these coming from?
 
-Odemknutí [osobního rozhraní API](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-personal.html)je nezabezpečené. Roboty naslouchat odemčeným účtům Ethereem a pokusit se o vyprázdnění prostředků. Robot předpokládá, že tyto účty obsahují reálný a pokus o odsávání zůstatku. Nepovolujte osobní rozhraní API v síti. Místo toho, aby transakce byly předem podepsány buď ručně, jako je MetaMask nebo programově, jak je uvedeno v části [programově spolupracuje s čipovou smlouvou](#programmatically-interacting-with-a-smart-contract).
+It is insecure to unlock the [personal API](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-personal.html). Bots listen for unlocked Ethereum accounts and attempt to drain the funds. The bot assumes these accounts contain real-ether and attempt to be the first to siphon the balance. Do not enable the personal API on the network. Instead pre-sign the transactions either manually using a wallet like MetaMask or programmatically as outlined in the section [Programmatically Interacting with a Smart Contract](#programmatically-interacting-with-a-smart-contract).
 
-#### <a name="how-to-ssh-onto-a-vm"></a>Jak se SSH na virtuální počítač?
+#### <a name="how-to-ssh-onto-a-vm"></a>How to SSH onto a VM?
 
-Z bezpečnostních důvodů se port SSH nezveřejňuje. Podle [tohoto průvodce povolte port SSH](#ssh-access).
+The SSH port is not exposed for security reasons. Follow [this guide to enable the SSH port](#ssh-access).
 
-#### <a name="how-do-i-set-up-an-audit-member-or-transaction-nodes"></a>Návody nastavit člena auditu nebo uzly transakcí?
+#### <a name="how-do-i-set-up-an-audit-member-or-transaction-nodes"></a>How do I set up an audit member or transaction nodes?
 
-Uzly transakcí jsou sadou paritních klientů, které jsou v síti partnerského vztahu, ale nejsou zapojeny do konsensu. Tyto uzly se pořád dají použít k odeslání transakcí Ethereem a přečtení stavu inteligentního kontraktu.
-Tento postup je vhodný jako mechanismus pro poskytování auditování pro členy v síti, kteří nejsou samosprávi. K tomuto účelu stačí postupovat podle kroku 2 z rozšiřování konsorcia.
+Transaction nodes are a set of Parity clients that are peered with the network but are not participating in consensus. These nodes can still be used to submit Ethereum transactions and read the smart contract state.
+This works well as a mechanism for providing auditability to non-authority consortium members on the network. To achieve this simply follow Step 2 from Growing the Consortium.
 
-#### <a name="why-are-metamask-transactions-taking-a-long-time"></a>Proč trvá transakce MetaMask dlouhou dobu?
+#### <a name="why-are-metamask-transactions-taking-a-long-time"></a>Why are MetaMask transactions taking a long time?
 
-Aby bylo zajištěno, že transakce jsou přijímány ve správném pořadí, každá transakce Ethereem se dostane k přírůstkové hodnotě nonce. Pokud jste účet v MetaMask použili v jiné síti, budete muset resetovat hodnotu nonce. Klikněte na ikonu nastavení (3 panely), nastavení, Resetování účtu. Historie transakcí se vymaže a teď můžete transakci znovu odeslat.
+To ensure transactions are received in the correct order, each Ethereum transaction comes with an incrementing nonce. If you've used an account in MetaMask on a different network, you'll need to reset the nonce value. Click on the settings icon (3-bars), Settings, Reset Account. The transaction history will be cleared and now you can resubmit the transaction.
 
-#### <a name="do-i-need-to-specify-gas-fee-in-metamask"></a>Potřebuji zadat poplatek za plyn v MetaMask?
+#### <a name="do-i-need-to-specify-gas-fee-in-metamask"></a>Do I need to specify gas fee in MetaMask?
 
-Ether neslouží k tomu, aby byl v rámci úřadu ověření platnosti. Proto není nutné zadávat poplatky za plyn při odesílání transakcí v MetaMask.
+Ether doesn't serve a purpose in proof-of-authority consortium. Hence there is no need to specify gas fee when submitting transactions in MetaMask.
 
-#### <a name="what-should-i-do-if-my-deployment-fails-due-to-failure-to-provision-azure-oms"></a>Co mám dělat, když se moje nasazení nepovede kvůli chybě při zřizování Azure OMS?
+#### <a name="what-should-i-do-if-my-deployment-fails-due-to-failure-to-provision-azure-oms"></a>What should I do if my deployment fails due to failure to provision Azure OMS?
 
-Monitorování je volitelná funkce. Ve výjimečných případech, kdy se nasazení nezdaří kvůli nemožnostem úspěšného zřízení Azure Monitor prostředků, se můžete znovu nasadit bez Azure Monitor.
+Monitoring is an optional feature. In some rare cases where your deployment fails because of inability to successfully provision Azure Monitor resource you can redeploy without Azure Monitor.
 
-#### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>Jsou nasazení veřejné IP adresy kompatibilní s nasazeními privátních sítí?
+#### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>Are public IP deployments compatible with private network deployments?
 
-Ne, partnerský vztah vyžaduje obousměrnou komunikaci, takže celá síť musí být buď veřejná, nebo soukromá.
+No, peering requires two-way communication so the entire network must either be public or private.
 
-#### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>Jaká je očekávaná propustnost transakce v rámci autority pro ověření?
+#### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>What is the expected transaction throughput of Proof-of-Authority?
 
-Propustnost transakce bude vysoce závislá na typech transakcí a topologii sítě.  Při použití jednoduchých transakcí jsme provedli průměrně 400 transakcí za sekundu pomocí sítě nasazené napříč několika oblastmi.
+The transaction throughput will be highly dependent upon the types of transactions and the network topology.  Using simple transactions, we've benchmarked an average of 400 transactions per second with a network deployed across multiple regions.
 
-#### <a name="how-do-i-subscribe-to-smart-contract-events"></a>Návody se přihlásit k odběru událostí inteligentních kontraktů?
+#### <a name="how-do-i-subscribe-to-smart-contract-events"></a>How do I subscribe to smart contract events?
 
-Ethereem Proofing-of-Authority teď podporuje webové sokety.  Pomocí e-mailu nasazení nebo výstupu nasazení vyhledejte adresu URL a port webového soketu.
+Ethereum Proof-of-Authority now supports web-sockets.  Check your deployment email or deployment output to locate the web-socket URL and port.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Začněte tím, že použijete [ethereem řešení pro kontrolu pravopisu](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) .
+Get started by using the [Ethereum Proof-of-Authority Consortium](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) solution.

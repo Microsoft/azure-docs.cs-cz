@@ -1,7 +1,7 @@
 ---
-title: Glosář – LUIS
+title: Glossary - LUIS
 titleSuffix: Azure Cognitive Services
-description: Glosář vysvětluje výrazy, se kterými se můžete setkat při práci se službou LUIS API.
+description: The glossary explains terms that you might encounter as you work with the LUIS API Service.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,182 +10,181 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 22e8fa8fb6999828076ea5f8f34b1f601b920013
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f78b4c50f4cd65f3dc32c48cea81b705dc44de1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499569"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325952"
 ---
-# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Jazyk porozumění běžným slovníkům a konceptům
-Glosář Language Understanding (LUIS) vysvětluje výrazy, se kterými se můžete setkat při práci se službou LUIS API.
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language understanding glossary of common vocabulary and concepts
+The Language Understanding (LUIS) glossary explains terms that you might encounter as you work with the LUIS API Service.
 
-## <a name="active-version"></a>Aktivní verze
+## <a name="active-version"></a>Active version
 
-Aktivní verze LUIS je verze, která přijímá změny modelu. Pokud chcete provést změny verze, která není aktivní, musíte na portálu [Luis](luis-reference-regions.md) nejdřív nastavit tuto verzi jako aktivní.
+The active LUIS version is the version that receives any changes to the model. In the [LUIS](luis-reference-regions.md) portal, if you want to make changes to a version that is not the active version, you need to first set that version as active.
 
-## <a name="authoring"></a>Zdroj
+## <a name="authoring"></a>Authoring
 
-Vytváření, Správa a nasazování [aplikace Luis](#luis-app), a to buď pomocí portálu [Luis](luis-reference-regions.md) nebo [rozhraní API pro vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087), je možné vytvářet.
+Authoring is the ability to create, manage and deploy a [LUIS app](#luis-app), either using the [LUIS](luis-reference-regions.md) portal or the [authoring APIs](https://go.microsoft.com/fwlink/?linkid=2092087).
 
-## <a name="authoring-key"></a>Vytváření klíče
+## <a name="authoring-key"></a>Authoring Key
 
-Dříve pojmenovaný klíč "program". Slouží k vytváření aplikací. Nepoužívá se pro dotazy na koncové body na úrovni výroby. Další informace najdete v tématu [omezení klíčů](luis-boundaries.md#key-limits).   
+Previously named "Programmatic" key. Used to author the app. Not used for production-level endpoint queries. For more information, see [Key limits](luis-boundaries.md#key-limits).
 
-## <a name="batch-test-json-file"></a>Textový soubor JSON pro dávku
+## <a name="batch-test-json-file"></a>Batch test JSON file
 
-Dávkové testování je schopnost ověřit aktuální model aplikace v LUIS s konzistentní a známou sadou testů uživatele projevy. Dávkový test je definován v souboru ve [formátu JSON](luis-concept-batch-test.md#batch-file-format).
+Batch testing is the ability to validate a current LUIS app's model with a consistent and known test set of user utterances. The batch test is defined in a [JSON formatted file](luis-concept-batch-test.md#batch-file-format).
 
-Viz také: 
+Viz také:
 * [Koncepty](luis-concept-batch-test.md)
-* [Postupy](luis-how-to-batch-test.md)
+* [How-to](luis-how-to-batch-test.md)
 * [Kurz](luis-tutorial-batch-testing.md)
 
+## <a name="collaborator"></a>Collaborator
 
-## <a name="collaborator"></a>Spolupracovníka
+A collaborator/contributor, is not the [owner](#owner) of the app, but has the same permissions to add, edit, and delete the intents, entities, utterances.
 
-Spolupracovníka/Přispěvatel není [vlastníkem](#owner) aplikace, ale má stejná oprávnění k přidávání, úpravám a odstraňování záměrů, entit a projevy.
+## <a name="contributor"></a>Contributor
 
-## <a name="contributor"></a>Skupinou
+A contributor is the same thing as a [collaborator](#collaborator).
 
-Přispěvatel je stejný jako [spolupracovníka](#collaborator).
+## <a name="descriptor"></a>Descriptor
 
-## <a name="descriptor"></a>Popisovač
-
-Popisovač je [funkce](#features) použitá pro model v době školení, včetně [seznamů frází](#phrase-list) a [entit](#entity). 
+A descriptor is a [feature](#features) applied to a model at training time, including [phrase lists](#phrase-list) and [entities](#entity). 
 
 ## <a name="domain"></a>Domain
 
-V kontextu LUIS je **doména** oblastí znalostí. Vaše doména je specifická pro vaši oblast znalostí vaší aplikace. Může to být obecná oblast, jako je například aplikace cestovního agenta. Aplikace cestovního agenta může být také specifická jenom pro oblasti informací vaší společnosti, jako jsou určitá geografická umístění, jazyky a služby.
+In the LUIS context, a **domain** is an area of knowledge. Your domain is specific to your app area of knowledge. This can be a general area such as the travel agent app. A travel agent app can also be specific to just the areas of information for your company such as specific geographical locations, languages, and services.
 
-## <a name="endpoint"></a>Služba
+## <a name="endpoint"></a>Endpoint
 
-Adresa URL [koncového bodu Luis](https://go.microsoft.com/fwlink/?linkid=2092356) je místo, kam odesíláte dotazy Luis, až bude [aplikace Luis](#luis-app) vytvořená a publikovaná. Adresa URL koncového bodu obsahuje oblast publikované aplikace i ID aplikace. Koncový bod můžete najít na stránce **[klíčů a koncových bodů](luis-how-to-azure-subscription.md)** vaší aplikace, nebo můžete získat adresu URL koncového bodu z rozhraní API [získat informace o aplikaci](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) .
+The [LUIS endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) URL is where you submit LUIS queries after the [LUIS app](#luis-app) is authored and published. The endpoint URL contains the region of the published app as well as the app ID. You can find the endpoint on the **[Keys and endpoints](luis-how-to-azure-subscription.md)** page of your app, or you can get the endpoint URL from the [Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
 
-## <a name="entity"></a>Právnick
+## <a name="entity"></a>Entity
 
-[Entity](luis-concept-entity-types.md) jsou důležitá slova v [projevy](luis-concept-utterance.md) , která popisují informace týkající se [záměru](luis-concept-intent.md)a někdy jsou pro ně zásadní. Entita je v podstatě datovým typem v LUIS.
+[Entities](luis-concept-entity-types.md) are important words in [utterances](luis-concept-utterance.md) that describe information relevant to the [intent](luis-concept-intent.md), and sometimes they are essential to it. An entity is essentially a datatype in LUIS.
 
-## <a name="f-measure"></a>Měření F
+## <a name="f-measure"></a>F-measure
 
-V [dávkovém testování](luis-interactive-test.md#batch-testing)je míra přesnosti testu.
+In [batch testing](luis-interactive-test.md#batch-testing), a measure of the test's accuracy.
 
-## <a name="false-negative"></a>Falešně negativní (FN)
+## <a name="false-negative"></a>False negative (FN)
 
-V [dávkovém testování](luis-interactive-test.md#batch-testing)představuje datový bod projevy, ve kterém vaše aplikace nesprávně předpovídá absenci cílového záměru nebo entity.
+In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app incorrectly predicted the absence of the target intent/entity.
 
-## <a name="false-positive"></a>Falešně pozitivní (FP)
+## <a name="false-positive"></a>False positive (FP)
 
-V [dávkovém testování](luis-interactive-test.md#batch-testing)představuje datový bod projevy, ve kterém vaše aplikace nesprávně předpovězena existenci cílového záměru nebo entity.
+In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app incorrectly predicted the existence of the target intent/entity.
 
-## <a name="features"></a>Funkce
+## <a name="features"></a>Features
 
-Ve službě Machine Learning je [funkce](luis-concept-feature.md) odlišující se vlastností a atributů dat, která systém sleduje.
+In machine learning, a [feature](luis-concept-feature.md) is a distinguishing trait or attribute of data that your system observes.
 
-## <a name="intent"></a>Úmysl
+## <a name="intent"></a>Intent
 
-[Záměr](luis-concept-intent.md) představuje úkol nebo akci, kterou chce uživatel provést. Jedná se o účel nebo cíl vyjádřený ve vstupu uživatele, jako je například rezervace letu, placení faktury nebo hledání článku s novinkami. V LUIS je předpověď záměrů založena na celé utterance. Entity, podle porovnání, jsou části utterance.
+An [intent](luis-concept-intent.md) represents a task or action the user wants to perform. It is a purpose or goal expressed in a user's input, such as booking a flight, paying a bill, or finding a news article. In LUIS, the intent prediction is based on the entire utterance. Entities, by comparison, are pieces of an utterance.
 
-## <a name="labeling"></a>Označování
+## <a name="labeling"></a>Labeling
 
-Označení nebo označení je proces přidružení slova nebo fráze v [utterance](#utterance) záměru k [entitě](#entity) (DataType).
+Labeling, or marking, is the process of associating a word or phrase in an intent's [utterance](#utterance) with an [entity](#entity) (datatype).
 
-## <a name="luis-app"></a>Aplikace LUIS
+## <a name="luis-app"></a>LUIS app
 
-Aplikace LUIS je kolekce jazykových modelů pro zpracování v přirozeném jazyce, včetně [záměrů](#intent), [entit](#entity)a popisků [projevy](#utterance).
+A LUIS app is a collection of language models for natural language processing including [intents](#intent), [entities](#entity), and labeled [utterances](#utterance).
 
 ## <a name="owner"></a>Owner
 
-Každá aplikace má jednoho vlastníka, který je osoba, která aplikaci vytvořila. Vlastník může přidat [spolupracovníky](#collaborator).
+Each app has one owner who is the person that created the app. The owner can add [collaborators](#collaborator).
 
-## <a name="pattern"></a>Charakteristiky
-Funkce předchozí vzor je nahrazena [vzorci](luis-concept-patterns.md). Pomocí vzorů můžete zlepšit přesnost předpovědi tím, že poskytnete méně příkladů školení.
+## <a name="pattern"></a>Patterns
+The previous Pattern feature is replaced with [Patterns](luis-concept-patterns.md). Use patterns to improve prediction accuracy by providing fewer training examples.
 
-## <a name="phrase-list"></a>Seznam frází
+## <a name="phrase-list"></a>Phrase list
 
-[Seznam frází](luis-concept-feature.md) obsahuje skupinu hodnot (slova nebo fráze), které patří do stejné třídy a musí se nacházet podobně (například názvy měst nebo produktů). Seznam proměnitelné se považuje za synonyma.
+A [phrase list](luis-concept-feature.md) includes a group of values (words or phrases) that belong to the same class and must be treated similarly (for example, names of cities or products). An interchangeable list is treated as synonyms.
 
-## <a name="prebuilt-domains"></a>Předem sestavená doména
+## <a name="prebuilt-domains"></a>Prebuilt domain
 
-[Předem vytvořená doména](luis-how-to-use-prebuilt-domains.md) je aplikace Luis konfigurovaná pro konkrétní doménu, jako je například domácí automatizace (HomeAutomation) nebo rezervace restaurace (RestaurantReservation). Záměry, projevy a entity jsou nakonfigurovány pro tuto doménu.
+A [prebuilt domain](luis-how-to-use-prebuilt-domains.md) is a LUIS app configured for a specific domain such as home automation (HomeAutomation) or restaurant reservations (RestaurantReservation). The intents, utterances, and entities are configured for this domain.
 
-## <a name="prebuilt-entity"></a>Předem vytvořená entita
+## <a name="prebuilt-entity"></a>Prebuilt entity
 
-[Předem vytvořená entita](luis-prebuilt-entities.md) je Luis entit, která poskytuje běžné typy informací, jako je číslo, adresa URL a e-mail. Rozhodnete se do své aplikace přidat předem vytvořenou entitu.
+A [prebuilt entity](luis-prebuilt-entities.md) is an entity LUIS provides for common types of information such as number, URL, and email. You choose to add a prebuilt entity to your application.
 
-## <a name="precision"></a>Číslic
-V [dávkovém testování](luis-interactive-test.md#batch-testing)je přesnost (označovaná také jako kladná prediktivní hodnota) zlomkem relevantního projevy mezi načteným projevy.
+## <a name="precision"></a>Precision
+In [batch testing](luis-interactive-test.md#batch-testing), precision (also called positive predictive value) is the fraction of relevant utterances among the retrieved utterances.
 
-## <a name="programmatic-key"></a>Programový klíč
+## <a name="programmatic-key"></a>Programmatic key
 
-Přejmenováno na [klíč pro vytváření](#authoring-key).
+Renamed to [authoring key](#authoring-key).
 
-## <a name="publish"></a>Opětovn
+## <a name="publish"></a>Publish
 
-Publikování znamená, že LUIS aktivní verze je dostupná na pracovním nebo produkčním [koncovém bodu](#endpoint).  
+Publishing means making a LUIS active version available on either the staging or production [endpoint](#endpoint).  
 
-## <a name="quota"></a>Přidělení
+## <a name="quota"></a>Quota
 
-LUIS kvóta je omezením [úrovně předplatného Azure](https://aka.ms/luis-price-tier). Kvóta LUIS může být omezená oběma požadavky za sekundu (stav HTTP 429) a celkovými požadavky v měsíci (stav HTTP 403).
+LUIS quota is the limitation of the [Azure subscription tier](https://aka.ms/luis-price-tier). The LUIS quota can be limited by both requests per second (HTTP Status 429) and total requests in a month (HTTP Status 403).
 
-## <a name="recall"></a>Hled
-Při [dávkovém testování](luis-interactive-test.md#batch-testing)je možné Luis zobecnit (označované také jako citlivost).
+## <a name="recall"></a>Recall
+In [batch testing](luis-interactive-test.md#batch-testing), recall (also known as sensitivity), is the ability for LUIS to generalize.
 
-## <a name="semantic-dictionary"></a>Sémantický slovník
-Sémantický slovník je k dispozici na stránce seznam entit a také na stránce seznam frází. Sémantický slovník poskytuje návrhy slov na základě aktuálního rozsahu.
+## <a name="semantic-dictionary"></a>Semantic dictionary
+A semantic dictionary is provided on the List entity page as well as the Phrase list page. The semantic dictionary provides suggestions of words based on the current scope.
 
-## <a name="sentiment-analysis"></a>Analýza mínění
-Analýza mínění poskytuje kladné nebo záporné hodnoty projevy, které poskytuje [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
+## <a name="sentiment-analysis"></a>Sentiment Analysis
+Sentiment analysis provides positive or negative values of the utterances provided by [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
 
-## <a name="speech-priming"></a>Neprojevení řeči
+## <a name="speech-priming"></a>Speech priming
 
-Prokládání řeči umožňuje, aby vaše služba pro rozpoznávání řeči byla v LUIS modelu.
+Speech priming allows your speech service to be primed with your LUIS model.
 
-## <a name="spelling-correction"></a>Oprava pravopisu
+## <a name="spelling-correction"></a>Spelling correction
 
-Povolí kontrolu pravopisu Bingu, která před předpověď opraví nesprávně napsaná slova v projevy.
+Enable Bing spell checker to correct misspelled words in the utterances before prediction.
 
-## <a name="starter-key"></a>Počáteční klíč
+## <a name="starter-key"></a>Starter key
 
-Bezplatný klíč, který se použije při prvním spuštění pomocí LUIS.
+A free key to use when first starting out using LUIS.
 
-## <a name="structure"></a>Strukturované
+## <a name="structure"></a>Structure
 
-Přidáním struktury k entitě získané na stroji můžete poskytnout dílčí komponenty s popisovači (funkcemi) a omezeními (regulární výraz nebo seznam entit).
+Add structure to a machine-learned entity to provide subcomponents with descriptors (features) and constraints (regular expression or list entities).
 
-## <a name="subscription-key"></a>Klíč předplatného
+## <a name="subscription-key"></a>Subscription key
 
-Klíč předplatného je klíč **koncového bodu předpovědi** přidružený ke službě Luis [, kterou jste vytvořili v Azure](luis-how-to-azure-subscription.md). Tento klíč není klíč pro [vytváření](#programmatic-key). Pokud máte klíč koncového bodu, měl by se místo vytváření klíče použít pro všechny požadavky na koncový bod. Aktuální klíč koncového bodu můžete zobrazit v adrese URL koncového bodu na konci [stránky **klíče a koncové body** ](luis-how-to-azure-subscription.md) na webu [Luis](luis-reference-regions.md) . Je to hodnota dvojice název/hodnota **klíče předplatného** .
+The subscription key is the **prediction endpoint** key associated with the LUIS service [you created in Azure](luis-how-to-azure-subscription.md). This key is not the [authoring key](#programmatic-key). If you have an endpoint key, it should be used for any endpoint requests instead of the authoring key. You can see your current endpoint key inside the endpoint URL at the bottom of [**Keys and endpoints** page](luis-how-to-azure-subscription.md) in [LUIS](luis-reference-regions.md) website. It is the value of **subscription-key** name/value pair.
 
-## <a name="test"></a>Napaden
+## <a name="test"></a>Test
 
-[Testování](luis-interactive-test.md#test-your-app) aplikace Luis znamená předání UTTERANCE do Luis a zobrazení výsledků JSON.
+[Testing](luis-interactive-test.md#test-your-app) a LUIS app means passing an utterance to LUIS and viewing the JSON results.
 
-## <a name="timezoneoffset"></a>Posun časového pásma
+## <a name="timezoneoffset"></a>Timezone offset
 
-Koncový bod zahrnuje timezoneOffset. Toto je číslo v minutách, po které chcete přidat nebo odebrat z předdefinované entity datetimeV2. Například pokud je utterance "jaký čas je nyní?", vrácený datetimeV2 je aktuální čas pro požadavek klienta. Pokud žádost klienta pochází z robota nebo jiné aplikace, která není stejná jako uživatel vaší robota, měli byste předávat posun od robota a uživatele.
+The endpoint includes timezoneOffset. This is the number in minutes you want to add or remove from the datetimeV2 prebuilt entity. For example, if the utterance is "what time is it now?", the datetimeV2 returned is the current time for the client request. If your client request is coming from a bot or other application that is not the same as your bot's user, you should pass in the offset between the bot and the user.
 
-Podívejte se [na téma Změna časového pásma předem sestavené entity datetimeV2](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
+See [Change time zone of prebuilt datetimeV2 entity](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
 
-## <a name="token"></a>Klíčové
-Token je nejmenší jednotka, která může být označena v entitě. Tokenizace je založena na [jazykové verzi](luis-language-support.md#tokenization)aplikace.
+## <a name="token"></a>Token
+A token is the smallest unit that can be labeled in an entity. Tokenization is based on the application's [culture](luis-language-support.md#tokenization).
 
-## <a name="train"></a>Průřez
+## <a name="train"></a>Train
 
-Školení je proces výuky LUIS o jakýchkoli změnách v aktivní verzi od posledního školení.
+Training is the process of teaching LUIS about any changes to the active version since the last training.
 
-## <a name="true-negative"></a>Pravý záporný (TN)
+## <a name="true-negative"></a>True negative (TN)
 
-V [dávkovém testování](luis-interactive-test.md#batch-testing)představuje datový bod projevy, ve kterém vaše aplikace správně předpovídá absenci cílového záměru nebo entity.
+In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app correctly predicted the absence of the target intent/entity.
 
-## <a name="true-positive"></a>Pravdivý pozitivní (TP)
+## <a name="true-positive"></a>True positive (TP)
 
-V [dávkovém testování](luis-interactive-test.md#batch-testing)představuje datové body projevy, ve kterém vaše aplikace správně předpovězena existenci cílového záměru nebo entity.
+In [batch testing](luis-interactive-test.md#batch-testing), the data points represent utterances in which your app correctly predicted the existence of the target intent/entity.
 
 ## <a name="utterance"></a>Utterance
 
-Utterance je fráze přirozeného jazyka, například lístky Book 2 do Seattlu Next úterý. Do záměru se přidají například projevy.
+An utterance is a natural language phrase such as "book 2 tickets to Seattle next Tuesday". Example utterances are added to the intent.
 
-## <a name="version"></a>Znění
+## <a name="version"></a>Version
 
-[Verze](luis-how-to-manage-versions.md) Luis je konkrétní datový model PŘIDRUŽENÝ k ID aplikace Luis a publikovanému koncovému bodu. Každá aplikace LUIS má alespoň jednu verzi.
+A LUIS [version](luis-how-to-manage-versions.md) is a specific data model associated with a LUIS app ID and the published endpoint. Every LUIS app has at least one version.

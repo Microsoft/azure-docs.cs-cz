@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání entit s Vyhledávání entit Bingu SDK pro Python'
+title: 'Quickstart: Search for entities with the SDK for Python - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete vyhledat entity s Vyhledávání entit Bingu SDK pro Python.
+description: Use this quickstart to search for entities with the Bing Entity Search SDK for Python.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 0a4a4e3ce6f318a693b8ee760a0d892eaecb2c82
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 7720304cc017db86b052cee39ca0430e5c1bf9c2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479005"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327127"
 ---
-# <a name="quickstart-bing-entity-search-sdk-with-python"></a>Rychlý start: Vyhledávání entit Bingu SDK pomocí Pythonu
+# <a name="quickstart-bing-entity-search-sdk-with-python"></a>Rychlý start: Sada SDK Bingu pro vyhledávání entit s využitím Pythonu
 
-V tomto rychlém startu můžete začít vyhledávat entity pomocí Vyhledávání entit Bingu SDK pro Python. I když Vyhledávání entit Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py)
+Use this quickstart to begin searching for entities with the Bing Entity Search SDK for Python. While Bing Entity Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Python [2. x nebo 3. x](https://www.python.org/)
+* Python [2.x or 3.x](https://www.python.org/)
 
-* [Sada SDK vyhledávání entit Bingu pro Python](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
+* The [Bing Entity Search SDK for Python](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
 
-Doporučuje se používat virtuální prostředí Python. Virtuální prostředí můžete nainstalovat a inicializovat pomocí modulu venv. Virtualenv můžete nainstalovat pomocí:
+It is recommended that you use a python virtual environment. You can install and initialize a virtual environment with the venv module. You can install virtualenv with:
 
 ```Console
 python -m venv mytestenv
 ```
 
-Nainstalujte sadu Vyhledávání entit Bingu SDK pomocí:
+Install the Bing Entity Search SDK with:
 
 ```Console
 cd mytestenv
@@ -44,7 +44,7 @@ python -m pip install azure-cognitiveservices-search-entitysearch
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor Pythonu v oblíbeném prostředí IDE nebo editoru a přidejte následující příkazy importu. 
+1. Create a new Python file in your favorite IDE or editor, and add the following import statements. 
 
     ```python
     from azure.cognitiveservices.search.entitysearch import EntitySearchAPI
@@ -52,22 +52,22 @@ python -m pip install azure-cognitiveservices-search-entitysearch
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
-2. Vytvořte proměnnou pro svůj klíč předplatného a vytvořte instanci klienta vytvořením nového `CognitiveServicesCredentials` objektu.
+2. Create a variable for your subscription key, and instantiate the client by creating a new `CognitiveServicesCredentials` object with it.
     
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
     client = EntitySearchAPI(CognitiveServicesCredentials(subscription_key))
     ```
 
-## <a name="send-a-search-request-and-receive-a-response"></a>Odeslat žádost o vyhledávání a přijmout odpověď
+## <a name="send-a-search-request-and-receive-a-response"></a>Send a search request and receive a response
 
-1. Odešlete žádost o vyhledávání do vyhledávání entit Bingu `client.entities.search()` pomocí vyhledávacího dotazu. 
+1. Send a search request to Bing Entity Search with `client.entities.search()` and a search query. 
     
     ```python
     entity_data = client.entities.search(query="Gibralter")
     ```
 
-2. Pokud byly vráceny entity, převeďte `entity_data.entities.value` je na seznam a vytiskněte první výsledek.
+2. If entities were returned, convert `entity_data.entities.value` to a list, and print the first result.
     ```python
     if entity_data.entities.value:
     
@@ -78,9 +78,9 @@ python -m pip install azure-cognitiveservices-search-entitysearch
             print(main_entities[0].description)
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )
+* [What is the Bing Entity Search API?](../overview.md )
