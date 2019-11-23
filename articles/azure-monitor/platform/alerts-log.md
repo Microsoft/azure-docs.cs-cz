@@ -36,7 +36,7 @@ Podrobný návod, jak používat výstrahy protokolu pomocí rozhraní Azure Por
 
 1. Na [portálu](https://portal.azure.com/)vyberte **monitorování** a v části Monitorování – zvolte **výstrahy**.
 
-    ![Sledovaný](media/alerts-log/AlertsPreviewMenu.png)
+    ![Monitorování](media/alerts-log/AlertsPreviewMenu.png)
 
 1. Kliknutím na tlačítko **nové pravidlo výstrahy** vytvoříte novou výstrahu v Azure.
 
@@ -50,7 +50,7 @@ Podrobný návod, jak používat výstrahy protokolu pomocí rozhraní Azure Por
 
    > [!NOTE]
    > Pro vytvoření upozornění protokolu – před pokračováním ověřte, že je signál **protokolu** pro vybraný prostředek k dispozici.
-   >  @no__t – prostředek 0Select @ no__t-1
+   >  ![vybrat](media/alerts-log/Alert-SelectResourceLog.png) prostředků
 
 1. *Výstrahy protokolu*: Ujistěte se, že **typ prostředku** je zdroj analýz, jako je *Log Analytics* nebo *Application Insights* a typ signálu jako **log**, potom klikněte na *hotový* **prostředek** . V dalším kroku použijte tlačítko **Přidat kritéria** k zobrazení seznamu možností signálu dostupných pro prostředek a ze zvolené možnosti **hledání vlastního protokolu** v seznamu signálů pro vybranou službu log monitor, jako je *Log Analytics* nebo *Application Insights*.
 
@@ -119,11 +119,11 @@ Uživatelé také mohou v [Log Analytics](../log-query/portals.md) absolvovat sv
     > Pravidla upozornění protokolů se skládají z vlastní logiky založené na dotazech, kterou poskytují uživatelé, a proto bez vyřešeného stavu. Vzhledem k tomu, že všechny podmínky zadané v pravidle protokolu výstrahy jsou splněné, je aktivována.
 
 1. Výběrem tlačítka **Spravovat pravidla** na horním panelu přejděte do části Správa pravidel – kde jsou uvedena všechna vytvořená pravidla výstrahy. včetně výstrah, které byly zakázány.
-    ![ spravovat pravidla výstrah @ no__t-1
+    ![ spravovat pravidla výstrah](media/alerts-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Správa výstrah protokolu pomocí šablony prostředků Azure
 
-Výstrahy protokolu v Azure Monitor jsou přidruženy k typu prostředku `Microsoft.Insights/scheduledQueryRules/`. Další informace o tomto typu prostředku najdete v tématu [Azure monitor – Reference k rozhraní API pro pravidla dotazů na naplánované dotazy](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Výstrahy protokolu pro Application Insights nebo Log Analytics můžete vytvořit pomocí [naplánovaných rozhraní API pravidel dotazů](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+Výstrahy protokolu v Azure Monitor jsou přidruženy k `Microsoft.Insights/scheduledQueryRules/`typu prostředku. Další informace o tomto typu prostředku najdete v tématu [Azure monitor – Reference k rozhraní API pro pravidla dotazů na naplánované dotazy](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Výstrahy protokolu pro Application Insights nebo Log Analytics můžete vytvořit pomocí [naplánovaných rozhraní API pravidel dotazů](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
 > [!NOTE]
 > Výstrahy protokolu pro Log Analytics je taky možné spravovat pomocí starších [Log Analytics rozhraní API pro upozornění](api-alerts.md) a starších šablon [Log Analytics uložená hledání a upozornění](../insights/solutions-resources-searches-alerts.md) . Další informace o tom, jak se ve výchozím nastavení používá nové rozhraní API ScheduledQueryRules, najdete v tématu [Přepnutí na nové rozhraní API pro Log Analytics výstrahy](alerts-log-api-switch.md).
@@ -320,7 +320,7 @@ Azure Monitor – [rozhraní API pro plánovaná pravidla dotazů](https://docs.
 1. [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell Rutina pro odstranění existujícího pravidla upozornění protokolu
 
 > [!NOTE]
-> Rutiny PowerShellu pro ScheduledQueryRules můžou spravovat jenom pravidla vytvořená samotným rutinou nebo [rozhraní API pro naplánovaná pravidla dotazování](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)pomocí Azure monitor. Pravidla upozornění protokolů vytvořená pomocí starších [Log Analytics rozhraní API výstrah](api-alerts.md) a starších šablon [Log Analytics uložených hledání a upozornění](../insights/solutions-resources-searches-alerts.md) se dají spravovat pomocí rutin prostředí ScheduledQueryRules PowerShellu jenom po [Přepnutí uživatelského rozhraní API pro protokol. Výstrahy analýzy](alerts-log-api-switch.md).
+> Rutiny PowerShellu pro ScheduledQueryRules můžou spravovat jenom pravidla vytvořená samotným rutinou nebo [rozhraní API pro naplánovaná pravidla dotazování](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)pomocí Azure monitor. Pravidla upozornění protokolů vytvořená pomocí starších [Log Analytics rozhraní API výstrah](api-alerts.md) a starších šablon [Log Analytics uložených hledání a upozornění](../insights/solutions-resources-searches-alerts.md) se dají spravovat pomocí rutin prostředí ScheduledQueryRules PowerShellu, jenom když uživatel [přepne předvolby rozhraní API pro Log Analytics výstrahy](alerts-log-api-switch.md).
 
 V následujícím seznamu jsou uvedené kroky pro vytvoření ukázkového pravidla upozornění protokolu pomocí rutin PowerShellu pro scheduledQueryRules.
 ```powershell

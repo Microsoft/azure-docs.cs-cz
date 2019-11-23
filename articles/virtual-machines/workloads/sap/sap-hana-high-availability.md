@@ -233,7 +233,7 @@ K nasazení šablony použijte následující postup:
    Další informace o požadovaných portech pro SAP HANA naleznete v kapitole [připojení k databázím tenantů](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) v průvodci [SAP HANA databáze klienta](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) nebo v tématu [SAP Note 2388694][2388694].
 
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. TCP _timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 > Viz také SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="create-a-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
@@ -584,7 +584,7 @@ Tato část popisuje, jak můžete otestovat instalaci. Každý test předpoklá
 
 ### <a name="test-the-migration"></a>Testování migrace
 
-Než začnete s testem, ujistěte se, že Pacemaker nemá žádnou neúspěšnou akci (prostřednictvím crm_mon-r), neexistují žádná neočekávaná omezení umístění (například Leftovers test migrace) a že HANA je stav synchronizace, například pomocí SAPHanaSR-showAttr:
+Před zahájením testu se ujistěte, že Pacemaker nemá žádnou neúspěšnou akci (přes crm_mon-r), že neexistují žádná neočekávaná omezení umístění (například Leftovers testu migrace) a že HANA je stav synchronizace, například s SAPHanaSR-showAttr:
 
 <pre><code>hn1-db-0:~ # SAPHanaSR-showAttr
 

@@ -92,13 +92,13 @@ Další informace najdete v následujících článcích:
 
 Azure Data Lake Storage Gen2 je nejnovější nabídka úložiště. Sjednocuje základní funkce od první generace Azure Data Lake Storage s koncovým bodem systému souborů kompatibilním s Hadoop přímo integrovanými do Azure Blob Storage. Toto vylepšení kombinuje výhody škálování a nákladů na úložiště objektů s spolehlivostí a výkonem obvykle přidruženou pouze k místním systémům souborů.
 
-ADLS Gen 2 je postaven na [službě Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) a umožňuje rozhraní s daty pomocí systémů souborů i úložišť objektů. Funkce z [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), jako jsou sémantika systému souborů, zabezpečení na úrovni souborů a škálování, jsou kombinovány s nízkými náklady, vrstvenými úložištěm, vysoce dostupnými možnostmi zotavení po havárii a rozsáhlým EKOSYSTÉMEM sady SDK/nástrojů z [Azure. Úložiště objektů BLOB](../../storage/blobs/storage-blobs-introduction.md). V Data Lake Storage Gen2 všechny kvality úložiště objektů zůstanou při přidávání výhod rozhraní systému souborů optimalizovaného pro analytické úlohy.
+ADLS Gen 2 je postaven na [službě Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) a umožňuje rozhraní s daty pomocí systémů souborů i úložišť objektů. Funkce z [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), jako jsou sémantika systému souborů, zabezpečení na úrovni souborů a škálování, jsou kombinovány s nízkými náklady, vrstvenými úložištěm, vysoce dostupnými možnostmi zotavení po havárii a rozsáhlým EKOSYSTÉMEM sady SDK/nástrojů ze služby [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md). V Data Lake Storage Gen2 všechny kvality úložiště objektů zůstanou při přidávání výhod rozhraní systému souborů optimalizovaného pro analytické úlohy.
 
-Základní funkcí Data Lake Storage Gen2 je přidání [hierarchického oboru názvů](../../storage/data-lake-storage/namespace.md) To služby Blob Storage, která slouží k uspořádání objektů a souborů do hierarchie adresářů pro účely přístupu k datům. Hierarchická struktura umožňuje operace, jako je například přejmenování nebo odstranění adresáře, aby byly jednou atomické operace s metadaty v adresáři, nikoli vytváření výčtu a zpracování všech objektů, které sdílejí předponu názvu adresáře.
+Základní funkcí Data Lake Storage Gen2 je přidání [hierarchického oboru názvů](../../storage/data-lake-storage/namespace.md) do služby Blob Storage, která slouží k uspořádání objektů a souborů do hierarchie adresářů pro účely přístupu k datům. Hierarchická struktura umožňuje operace, jako je například přejmenování nebo odstranění adresáře, aby byly jednou atomické operace s metadaty v adresáři, nikoli vytváření výčtu a zpracování všech objektů, které sdílejí předponu názvu adresáře.
 
-V minulosti se cloudové analýzy musely napadnout v oblasti výkonu, správy a zabezpečení. Klíčové funkce Azure Data Lake Storage (ADLS) Gen2 jsou následující:
+V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a zabezpečení. Klíčové funkce Azure Data Lake Storage (ADLS) Gen2 jsou následující:
 
-- **Přístup**s platformou hadoop: Azure Data Lake Storage Gen2 umožňuje správu a přístup k datům stejně, jako byste použili [systém souborů DFS (DISTRIBUTED File System) Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nový [ovladač ABFS](../../storage/data-lake-storage/abfs-driver.md) Is dostupný ve všech Apache Hadoop prostředích, která jsou součástí [Azure HDInsight](../index.yml). Tento ovladač vám umožní získat přístup k datům uloženým v Data Lake Storage Gen2.
+- **Přístup**s platformou hadoop: Azure Data Lake Storage Gen2 umožňuje správu a přístup k datům stejně, jako byste použili [systém souborů DFS (DISTRIBUTED File System) Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nový  [ovladače ABFS](../../storage/data-lake-storage/abfs-driver.md) je k dispozici ve všech Apache Hadoop prostředích, která jsou součástí [Azure HDInsight](../index.yml). Tento ovladač vám umožní získat přístup k datům uloženým v Data Lake Storage Gen2.
 
 - **Nadmnožina oprávnění POSIX**: model zabezpečení pro data Lake Gen2 plně podporuje oprávnění ACL a POSIX spolu s některými dalšími podrobnostmi, které jsou specifické pro data Lake Storage Gen2. Nastavení lze nakonfigurovat prostřednictvím nástrojů pro správu nebo prostřednictvím architektury, jako je například podregistr a Spark.
 
@@ -106,7 +106,7 @@ V minulosti se cloudové analýzy musely napadnout v oblasti výkonu, správy a 
 
 - **Spolupracuje s nástroji, architekturami a aplikacemi služby Blob Storage**: Data Lake Storage Gen2 nadále pracovat se spoustou nástrojů, platforem a aplikací, které existují v dnešní době pro úložiště objektů BLOB.
 
-- **Optimalizovaný ovladač**: ovladač systému souborů objektů BLOB v Azure (ABFS) je [optimalizovaný konkrétně](../../storage/data-lake-storage/abfs-driver.md) For analýzy velkých objemů dat. Odpovídající rozhraní REST API se procházejí prostřednictvím koncového bodu DFS dfs.core.windows.net.
+- **Optimalizovaný ovladač**: ovladač systému souborů objektů BLOB v Azure (ABFS) je [optimalizován speciálně](../../storage/data-lake-storage/abfs-driver.md) pro analýzu velkých objemů dat. Odpovídající rozhraní REST API se procházejí prostřednictvím koncového bodu DFS dfs.core.windows.net.
 
 Pro přístup k datům, která jsou uložená v ADLS Gen2, se dá použít jeden z následujících formátů:
 - `abfs:///`: přístup k výchozímu Data Lake Storage clusteru.
@@ -173,7 +173,7 @@ Ve výchozím nastavení má služba HDInsight úplný přístup k datům v úč
 
 6. Pro pole **klíč** a **hodnota** použijte následující hodnoty:
 
-    **Klíč**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **hodnota**: klíč SAS VRÁCENÝ aplikací Pythonu z kroku 4 výše.
+    **Key**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **hodnota**: klíč SAS VRÁCENÝ aplikací Pythonu z kroku 4 výše.
 
 7. Kliknutím na tlačítko **Přidat** uložte tento klíč a hodnotu a potom kliknutím na tlačítko **Uložit** uložte změny konfigurace. Po zobrazení výzvy přidejte popis změny (například "Přidání přístupu k úložišti SAS") a pak klikněte na **Uložit**.
 
@@ -183,9 +183,9 @@ Ve výchozím nastavení má služba HDInsight úplný přístup k datům v úč
 
 Existují tři důležité věci, které byste si měli pamatovat v souvislosti s používáním tokenů SAS v Azure:
 
-1. Pokud jsou tokeny SAS vytvořené pomocí oprávnění číst a seznam, uživatelé, kteří přistupují k kontejneru objektů BLOB s tímto tokenem SAS, nebudou moct zapisovat a odstraňovat data. Uživatelé, kteří přistupují k kontejneru objektů BLOB pomocí tohoto tokenu SAS a operaci zápisu nebo odstranění, obdrží zprávu, jako je `"This request is not authorized to perform this operation"`.
+1. Pokud jsou tokeny SAS vytvořené pomocí oprávnění číst a seznam, uživatelé, kteří přistupují k kontejneru objektů BLOB s tímto tokenem SAS, nebudou moct zapisovat a odstraňovat data. Uživatelé, kteří přistupují k kontejneru objektů BLOB s tímto tokenem SAS a operaci zápisu nebo odstranění, obdrží zprávu, jako je `"This request is not authorized to perform this operation"`.
 
-2. Pokud jsou tokeny SAS generovány s oprávněním `READ + LIST + WRITE` (k omezení pouze `DELETE`), `hadoop fs -put` nejprve zapisovat do souboru `\_COPYING\_` a potom se pokusí přejmenovat soubor. Tato operace HDFS mapuje na `copy+delete` pro WASB. Vzhledem k tomu, že nebylo zadáno oprávnění `DELETE`, "Put" selže. Operace `\_COPYING\_` je funkce Hadoop určená k poskytnutí nějakého řízení souběžnosti. V současné době neexistuje způsob, jak omezit pouze operaci "odstranit", aniž by to ovlivnilo i "WRITE" operace.
+2. Pokud jsou tokeny SAS generovány s oprávněním `READ + LIST + WRITE` (k omezení pouze `DELETE`), `hadoop fs -put` nejprve zapisovat do souboru `\_COPYING\_` a potom se pokusí přejmenovat soubor. Tato operace HDFS mapuje na `copy+delete` pro WASB. Protože nebylo zadáno oprávnění `DELETE`, "Put" selže. Operace `\_COPYING\_` je funkce Hadoop určená k poskytnutí nějakého řízení souběžnosti. V současné době neexistuje způsob, jak omezit pouze operaci "odstranit", aniž by to ovlivnilo i "WRITE" operace.
 
 3. Poskytovatel pověření Hadoop a zprostředkovatel dešifrovacího klíče (ShellDecryptionKeyProvider) v současné době nefungují s tokeny SAS, takže se v současné době nedá chránit z viditelnosti.
 

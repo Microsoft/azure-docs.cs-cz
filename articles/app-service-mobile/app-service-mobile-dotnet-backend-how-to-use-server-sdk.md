@@ -28,7 +28,7 @@ ms.locfileid: "72388779"
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 V tomto tématu se dozvíte, jak používat sadu SDK back-end serveru .NET v klíčových Azure App Servicech Mobile Appsch scénářích. Sada Azure Mobile Apps SDK vám pomůže pracovat s mobilními klienty z aplikace ASP.NET.
 
@@ -56,7 +56,7 @@ Zpátky *v okně Začínáme v části* **Vytvoření rozhraní API tabulky**vyb
 
 Nainstalujte úlohu Azure pomocí Instalační program pro Visual Studio pro publikování do Azure Mobile Apps projektu ze sady Visual Studio. Po instalaci sady SDK vytvořte aplikaci ASP.NET pomocí následujících kroků:
 
-1. Otevřete dialogové okno **Nový projekt** (ze **souboru** > **Nový** **projekt** > ).
+1. Otevřete dialogové okno **Nový projekt** (ze **souboru** > **Nový** > **projekt...** ).
 2. Rozbalte **vizuál C#**  a vyberte **Web**.
 3. Vyberte **Webová aplikace v ASP.NET (.NET Framework)** .
 4. Zadejte název projektu. Pak klikněte na **OK**.
@@ -69,22 +69,22 @@ Nainstalujte úlohu Azure pomocí Instalační program pro Visual Studio pro pub
 
 Pokud chcete vytvořit projekt Azure Mobile Apps v sadě Visual Studio, nainstalujte [sadu Azure SDK pro .NET][4] (verze 2.9.0 nebo novější). Po instalaci sady SDK vytvořte aplikaci ASP.NET pomocí následujících kroků:
 
-1. Otevřete dialogové okno **Nový projekt** (ze **souboru** > **Nový** **projekt** > ).
+1. Otevřete dialogové okno **Nový projekt** (ze **souboru** > **Nový** > **projekt...** ).
 2. Rozbalte **šablony** > **vizuál C#** a vyberte **Web**.
 3. Vyberte **Webová aplikace ASP.NET**.
 4. Zadejte název projektu. Pak klikněte na **OK**.
 5. V části *šablony ASP.NET 4.5.2*vyberte **mobilní aplikace Azure**. Pokud chcete vytvořit mobilní back-end v cloudu, do kterého můžete tento projekt publikovat, podívejte se do **části hostitel v cloudu** .
-6. Klikněte na **OK**.
+6. Klikněte na tlačítko **OK**.
 
 ## <a name="install-sdk"></a>Postupy: stažení a inicializace sady SDK
 Sada SDK je dostupná na [NuGet.org]. Tento balíček obsahuje základní funkce potřebné k tomu, abyste mohli začít používat sadu SDK. Chcete-li inicializovat sadu SDK, je třeba provést akce s objektem **HttpConfiguration** .
 
 ### <a name="install-the-sdk"></a>Instalace sady SDK
-Pokud chcete nainstalovat sadu SDK, klikněte pravým tlačítkem na projekt serveru v sadě Visual Studio, vyberte **Spravovat balíčky NuGet**, vyhledejte balíček [Microsoft. Azure. Mobile. Server] a pak klikněte na **nainstalovat**.
+Pokud chcete nainstalovat sadu SDK, klikněte pravým tlačítkem na projekt serveru v sadě Visual Studio, vyberte **Spravovat balíčky NuGet**, vyhledejte balíček [Microsoft.Azure.Mobile.Server] a pak klikněte na **nainstalovat**.
 
 ### <a name="server-project-setup"></a>Inicializovat serverový projekt
-Projekt back-end serveru .NET je inicializován podobně jako jiné projekty ASP.NET, včetně spouštěcí třídy OWIN. Ujistěte se, že máte odkaz na balíček NuGet `Microsoft.Owin.Host.SystemWeb`. Chcete-li přidat tuto třídu v aplikaci Visual Studio, klikněte pravým tlačítkem myši na serverový projekt a vyberte **přidat** >
-**Nová položka**a pak na položku **Web** > **General** > **Owin Startup Class**.  Třída je vygenerována s následujícím atributem:
+Projekt back-end serveru .NET je inicializován podobně jako jiné projekty ASP.NET, včetně spouštěcí třídy OWIN. Ujistěte se, že máte odkaz na balíček NuGet `Microsoft.Owin.Host.SystemWeb`. Postup přidání této třídy v sadě Visual Studio, klikněte pravým tlačítkem na svůj serverový projekt a vyberte **přidat** >
+**nová položka**, pak **webové** > **Obecné** > **třída OWIN Startup**.  Třída je vygenerována s následujícím atributem:
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
@@ -126,23 +126,23 @@ Rychlý Start serveru z Azure Portal volá **UseDefaultConfiguration ()** . To o
 Používané metody rozšíření:
 
 * `AddMobileAppHomeController()` poskytuje výchozí domovskou stránku Azure Mobile Apps.
-* `MapApiControllers()` poskytuje možnosti vlastního rozhraní API pro řadiče WebAPI dekorované pomocí atributu `[MobileAppController]`.
+* `MapApiControllers()` poskytuje vlastní funkce rozhraní API pro řadiče WebAPI dekorované pomocí atributu `[MobileAppController]`.
 * `AddTables()` poskytuje mapování koncových bodů `/tables` na řadiče tabulky.
-* `AddTablesWithEntityFramework()` je krátká ruka pro mapování koncových bodů `/tables` pomocí řadičů založených na Entity Framework.
+* `AddTablesWithEntityFramework()` je krátkodobá pro mapování `/tables` koncových bodů pomocí řadičů založených na Entity Framework.
 * `AddPushNotifications()` poskytuje jednoduchou metodu registrace zařízení pro Notification Hubs.
 * `MapLegacyCrossDomainController()` poskytuje standardní hlavičky CORS pro místní vývoj.
 
 ### <a name="sdk-extensions"></a>Rozšíření sady SDK
 Následující balíčky rozšíření založené na NuGet poskytují různé mobilní funkce, které může používat vaše aplikace. Rozšíření můžete povolit během inicializace pomocí objektu **MobileAppConfiguration** .
 
-* [Microsoft. Azure. Mobile. Server. rychlý Start] podporuje základní instalaci Mobile Apps. Přidáno do konfigurace voláním metody rozšíření **UseDefaultConfiguration** během inicializace. Toto rozšíření zahrnuje následující rozšíření: oznámení, ověřování, entita, tabulky, mezidoménové a domovské balíčky. Tento balíček používá rychlý Start Mobile Apps dostupný na Azure Portal.
+* [Microsoft.Azure.Mobile.Server.Quickstart] podporuje základní instalaci Mobile Apps. Přidáno do konfigurace voláním metody rozšíření **UseDefaultConfiguration** během inicializace. Toto rozšíření zahrnuje následující rozšíření: oznámení, ověřování, entita, tabulky, mezidoménové a domovské balíčky. Tento balíček používá rychlý Start Mobile Apps dostupný na Azure Portal.
 * [Microsoft. Azure. Mobile. Server. Home](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) implementuje výchozí *tuto mobilní aplikaci* pro kořenovou stránku webu. Přidejte do konfigurace voláním metody rozšíření **AddMobileAppHomeController** .
 * [Microsoft. Azure. Mobile. Server. Tables](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) obsahuje třídy pro práci s daty a nastavení datového kanálu. Přidejte do konfigurace voláním metody rozšíření **AddTables** .
 * [Microsoft. Azure. Mobile. Server. entity](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) umožňuje Entity Framework získat přístup k datům v SQL Database. Přidejte do konfigurace voláním metody rozšíření **AddTablesWithEntityFramework** .
-* [Microsoft. Azure. Mobile. Server. Authentication] umožňuje ověřování a nastavuje Owin middleware, který slouží k ověření tokenů. Přidejte do konfigurace voláním **AddAppServiceAuthentication** a **IAppBuilder**. Metody rozšíření **UseAppServiceAuthentication** .
-* [Microsoft. Azure. Mobile. Server. Notifications] umožňuje nabízená oznámení a definuje koncový bod registrace nabízených oznámení. Přidejte do konfigurace voláním metody rozšíření **AddPushNotifications** .
+* [Microsoft.Azure.Mobile.Server.Authentication] umožňuje ověřování a nastavuje Owin middleware, který slouží k ověření tokenů. Přidejte do konfigurace voláním **AddAppServiceAuthentication** a **IAppBuilder**. Metody rozšíření **UseAppServiceAuthentication** .
+* [Microsoft.Azure.Mobile.Server.Notifications] umožňuje nabízená oznámení a definuje koncový bod registrace nabízených oznámení. Přidejte do konfigurace voláním metody rozšíření **AddPushNotifications** .
 * [Microsoft. Azure. Mobile. Server. CrossDomain](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) vytvoří kontroler, který obsluhuje data pro starší webové prohlížeče z vaší mobilní aplikace. Přidejte do konfigurace voláním metody rozšíření **MapLegacyCrossDomainController** .
-* [Microsoft. Azure. Mobile. Server. Login] poskytuje metodu AppServiceLoginHandler. okta (), která je statickou metodou použitou během vlastních scénářů ověřování.
+* [Microsoft.Azure.Mobile.Server.Login] poskytuje metodu AppServiceLoginHandler. okta (), která je statickou metodou použitou během vlastních scénářů ověřování.
 
 ## <a name="publish-server-project"></a>Postupy: publikování projektu serveru
 V této části se dozvíte, jak publikovat projekt back-endu .NET ze sady Visual Studio. Back-end projekt můžete také nasadit pomocí [Gitu](../app-service/deploy-local-git.md) nebo kterékoli z dalších metod, které jsou zde k dispozici.
@@ -171,7 +171,7 @@ Definujte řadič tabulky k vystavení tabulky SQL pro mobilní klienty.  Konfig
 2. Nakonfigurujte odkaz na tabulku v mobilní třídě DbContext.
 3. Vytvořte řadič tabulky.
 
-Objekt Přenos dat (DTO) je jednoduchý C# objekt, který dědí z `EntityData`.  Například:
+Objekt Přenos dat (DTO) je jednoduchý C# objekt, který dědí z `EntityData`.  Příklad:
 
     public class TodoItem : EntityData
     {
@@ -179,7 +179,7 @@ Objekt Přenos dat (DTO) je jednoduchý C# objekt, který dědí z `EntityData`.
         public bool Complete {get; set;}
     }
 
-DTO se používá k definování tabulky v rámci databáze SQL.  Chcete-li vytvořit položku databáze, přidejte vlastnost `DbSet<>` do DbContext, které používáte.  V výchozí šabloně projektu pro Azure Mobile Apps se DbContext nazývá `Models\MobileServiceContext.cs`:
+DTO se používá k definování tabulky v rámci databáze SQL.  Chcete-li vytvořit položku databáze, přidejte do DbContext, které používáte, vlastnost `DbSet<>`.  V výchozí šabloně projektu pro Azure Mobile Apps se DbContext nazývá `Models\MobileServiceContext.cs`:
 
     public class MobileServiceContext : DbContext
     {
@@ -202,27 +202,27 @@ DTO se používá k definování tabulky v rámci databáze SQL.  Chcete-li vytv
 
 Pokud máte nainstalovanou sadu Azure SDK, můžete teď vytvořit řadič tabulky šablon následujícím způsobem:
 
-1. Klikněte pravým tlačítkem na složku řadiče a vyberte **přidat** > **kontroler...** .
+1. Klikněte pravým tlačítkem na složku Controllers a vyberte **přidat** > **kontroler...** .
 2. Vyberte možnost **řadič tabulky Azure Mobile Apps** a pak klikněte na **Přidat**.
 3. V dialogovém okně **Přidat řadič** :
    * V rozevíracím seznamu **třída modelu** vyberte nové DTO.
    * V rozevíracím seznamu **DbContext** vyberte DbContext třídu mobilní služby.
    * Název kontroleru se vytvoří za vás.
-4. Klikněte na tlačítko **Přidat**.
+4. Klikněte na **Přidat**.
 
 Projekt serveru pro rychlý Start obsahuje příklad jednoduchého **TodoItemController**.
 
 ### <a name="adjust-pagesize"></a>Postupy: Úprava velikosti stránkování tabulky
-Ve výchozím nastavení Azure Mobile Apps vrátí 50 záznamů na požadavek.  Stránkování zajišťuje, že klient neodkazuje své vlákno uživatelského rozhraní ani server příliš dlouho a zajišťuje tak dobré prostředí pro uživatele. Chcete-li změnit velikost stránkování tabulky, zvyšte velikost povoleného dotazu na straně serveru a velikost stránky na straně klienta s povolenou velikostí dotazu na straně serveru, která je upravena pomocí atributu `EnableQuery`:
+Ve výchozím nastavení Azure Mobile Apps vrátí 50 záznamů na požadavek.  Stránkování zajišťuje, že klient neodkazuje své vlákno uživatelského rozhraní ani server příliš dlouho a zajišťuje tak dobré prostředí pro uživatele. Chcete-li změnit velikost stránkování tabulky, zvyšte hodnotu povolené velikosti dotazu na straně serveru a velikost stránky na straně klienta s povolenou velikostí dotazu na straně serveru, která je upravena pomocí atributu `EnableQuery`:
 
     [EnableQuery(PageSize = 500)]
 
 Zajistěte, aby byla hodnota PageSize stejná nebo větší než velikost požadovaná klientem.  Podrobnosti o změně velikosti stránky klienta najdete v dokumentaci konkrétního klienta.
 
 ## <a name="how-to-define-a-custom-api-controller"></a>Postupy: definování vlastního kontroleru rozhraní API
-Vlastní kontroler rozhraní API poskytuje základní funkce back-endu mobilní aplikace tím, že vystavuje koncový bod. Pomocí atributu [MobileAppController] můžete zaregistrovat řadič API pro konkrétní mobilní zařízení. Atribut `MobileAppController` registruje trasu, nastaví Mobile Apps serializátoru JSON a zapne [kontrolu verze klienta](app-service-mobile-client-and-server-versioning.md).
+Vlastní kontroler rozhraní API poskytuje základní funkce back-endu mobilní aplikace tím, že vystavuje koncový bod. Pomocí atributu [MobileAppController] můžete zaregistrovat řadič API pro konkrétní mobilní zařízení. Atribut `MobileAppController` registruje trasu, nastaví serializátor Mobile Apps JSON a zapne [kontrolu verze klienta](app-service-mobile-client-and-server-versioning.md).
 
-1. V aplikaci Visual Studio klikněte pravým tlačítkem myši na složku Controllers a pak klikněte na **přidat** > **kontroler**, vyberte možnost **webový rozhraní API 2 Controller @ no__t-4Empty** a klikněte na tlačítko **Přidat**.
+1. V aplikaci Visual Studio klikněte pravým tlačítkem na složku řadiče a pak klikněte na **přidat** > **kontroler**, vyberte možnost **kontroler webového rozhraní API 2&mdash;prázdné** a klikněte na **Přidat**.
 2. Zadejte **název kontroleru**, například `CustomController`, a klikněte na **Přidat**.
 3. V novém souboru třídy kontroleru přidejte následující příkaz using:
 
@@ -234,13 +234,13 @@ Vlastní kontroler rozhraní API poskytuje základní funkce back-endu mobilní 
         {
               //...
         }
-5. V souboru App_Start/Startup. MobileApp. cs přidejte volání metody rozšíření **MapApiControllers** , jako v následujícím příkladu:
+5. V souboru App_Start/Startup.MobileApp.cs přidejte volání metody rozšíření **MapApiControllers** , jako v následujícím příkladu:
 
         new MobileAppConfiguration()
             .MapApiControllers()
             .ApplyTo(config);
 
-Místo `MapApiControllers()` můžete také použít metodu rozšíření `UseDefaultConfiguration()`. K jakémukoli řadiči, který nemá použité **MobileAppControllerAttribute** , se budou klienti pořád přihlašovat, ale nemusí je správně spotřebovat klienti pomocí žádné klientské sady SDK pro mobilní aplikace.
+Místo `MapApiControllers()`můžete použít také metodu rozšíření `UseDefaultConfiguration()`. K jakémukoli řadiči, který nemá použité **MobileAppControllerAttribute** , se budou klienti pořád přihlašovat, ale nemusí je správně spotřebovat klienti pomocí žádné klientské sady SDK pro mobilní aplikace.
 
 ## <a name="how-to-work-with-authentication"></a>Postupy: práce s ověřováním
 Azure Mobile Apps používá k zabezpečení mobilního back-endu App Service ověřování/autorizaci.  V této části se dozvíte, jak provádět následující úlohy související s ověřováním v projektu back-end serveru .NET:
@@ -251,9 +251,9 @@ Azure Mobile Apps používá k zabezpečení mobilního back-endu App Service ov
 * [Postupy: omezení přístupu k datům u autorizovaných uživatelů](#authorize)
 
 ### <a name="add-auth"></a>Postupy: Přidání ověřování do projektu serveru
-Můžete přidat ověřování do projektu serveru rozšířením objektu **MobileAppConfiguration** a konfigurací middleware Owin. Když nainstalujete balíček [Microsoft. Azure. Mobile. Server. rychlý Start] a zavoláte metodu rozšíření **UseDefaultConfiguration** , můžete přeskočit na krok 3.
+Můžete přidat ověřování do projektu serveru rozšířením objektu **MobileAppConfiguration** a konfigurací middleware Owin. Když nainstalujete balíček [Microsoft.Azure.Mobile.Server.Quickstart] a zavoláte metodu rozšíření **UseDefaultConfiguration** , můžete přeskočit na krok 3.
 
-1. V aplikaci Visual Studio nainstalujte balíček [Microsoft. Azure. Mobile. Server. Authentication] .
+1. V aplikaci Visual Studio nainstalujte balíček [Microsoft.Azure.Mobile.Server.Authentication] .
 2. V souboru projektu Startup.cs přidejte na začátek metody **Konfigurace** následující řádek kódu:
 
         app.UseAppServiceAuthentication(config);
@@ -268,11 +268,11 @@ Další informace o ověřování klientů do back-endu Mobile Apps najdete v t�
 > Aby bylo možné povolit vlastní ověřování, musíte nejprve povolit ověřování App Service bez výběru poskytovatele pro App Service v Azure Portal. Tato akce povolí proměnnou prostředí WEBSITE_AUTH_SIGNING_KEY při hostování.
 > 
 > 
-> Pokud nechcete použít některý z App Service ověřovacích nebo autorizačních zprostředkovatelů, můžete implementovat vlastní přihlašovací systém. Nainstalujte balíček [Microsoft. Azure. Mobile. Server. Login] , který vám pomůže s generováním ověřovacího tokenu.  Zadejte vlastní kód pro ověření přihlašovacích údajů uživatele. Můžete například kontrolovat hesla na základě hodnoty salt a hesla v databázi. V následujícím příkladu je metoda `isValidAssertion()` (definovaná jinde) zodpovědná za tyto kontroly.
+> Pokud nechcete použít některý z App Service ověřovacích nebo autorizačních zprostředkovatelů, můžete implementovat vlastní přihlašovací systém. Nainstalujte balíček [Microsoft.Azure.Mobile.Server.Login] , který vám pomůže s generováním ověřovacího tokenu.  Zadejte vlastní kód pro ověření přihlašovacích údajů uživatele. Můžete například kontrolovat hesla na základě hodnoty salt a hesla v databázi. V následujícím příkladu je metoda `isValidAssertion()` (definovaná jinde) zodpovědná za tyto kontroly.
 
-Vlastní ověřování je vystaveno vytvořením ApiController a vystavením @no__t 0 a `login` akcí. Klient by měl k shromažďování informací od uživatele používat vlastní uživatelské rozhraní.  Informace se pak odešlou do rozhraní API se standardním voláním HTTP POST. Jakmile server ověří kontrolní výraz, vystaví se token pomocí metody `AppServiceLoginHandler.CreateToken()`.  ApiController **by neměl** používat atribut `[MobileAppController]`.
+Vlastní ověřování je vystaveno vytvořením ApiController a vystavením `register` a `login` akcí. Klient by měl k shromažďování informací od uživatele používat vlastní uživatelské rozhraní.  Informace se pak odešlou do rozhraní API se standardním voláním HTTP POST. Po ověření kontrolního výrazu serverem je token vydán pomocí metody `AppServiceLoginHandler.CreateToken()`.  ApiController **by neměl** používat atribut `[MobileAppController]`.
 
-Příklad akce @no__t 0:
+Příklad `login` akce:
 
         public IHttpActionResult Post([FromBody] JObject assertion)
         {
@@ -304,16 +304,16 @@ V předchozím příkladu jsou LoginResult a LoginResultUser serializovatelné o
             }
         }
 
-Metoda `AppServiceLoginHandler.CreateToken()` obsahuje *cílovou skupinu* a parametr *vystavitele* . Oba tyto parametry jsou nastaveny na adresu URL kořenového adresáře vaší aplikace pomocí schématu HTTPS. Podobně byste měli nastavit *secretKey* na hodnotu pro podpisový klíč vaší aplikace. Nedistribuujte podpisový klíč v klientovi, protože ho můžete použít k mentolováí klíčů a zosobnění uživatelů. Podpisový klíč můžete získat při hostování v App Service odkazem na *Web @ no__t-1AUTH @ no__t-2SIGNING @ no__t-3KEY* prostředí. V případě potřeby v místním kontextu ladění postupujte podle pokynů v části [místní ladění pomocí ověřování](#local-debug) a načtěte klíč a uložte ho jako nastavení aplikace.
+Metoda `AppServiceLoginHandler.CreateToken()` obsahuje *cílovou skupinu* a parametr *vystavitele* . Oba tyto parametry jsou nastaveny na adresu URL kořenového adresáře vaší aplikace pomocí schématu HTTPS. Podobně byste měli nastavit *secretKey* na hodnotu pro podpisový klíč vaší aplikace. Nedistribuujte podpisový klíč v klientovi, protože ho můžete použít k mentolováí klíčů a zosobnění uživatelů. Podpisový klíč můžete získat, když je hostovaný v App Service odkazem na *web\_ověřování pomocí klíčového prostředí pro ověřování\_\_* . V případě potřeby v místním kontextu ladění postupujte podle pokynů v části [místní ladění pomocí ověřování](#local-debug) a načtěte klíč a uložte ho jako nastavení aplikace.
 
 Vydaný token může zahrnovat i další deklarace identity a datum vypršení platnosti.  Vydaný token musí mít minimálně deklaraci identity subjektu (**Sub**).
 
-Pomocí přetížení ověřovací trasy můžete podporovat standardní metodu klienta `loginAsync()`.  Pokud klient zavolá `client.loginAsync('custom');` pro přihlášení, musí být trasa `/.auth/login/custom`.  Trasu pro vlastní ověřovací řadič můžete nastavit pomocí `MapHttpRoute()`:
+Metodu standardní `loginAsync()` klienta můžete podporovat přetížením ověřovací trasy.  Pokud klient zavolá `client.loginAsync('custom');` pro přihlášení, musí být vaše trasa `/.auth/login/custom`.  Trasu pro vlastní ověřovací řadič můžete nastavit pomocí `MapHttpRoute()`:
 
     config.Routes.MapHttpRoute("custom", ".auth/login/custom", new { controller = "CustomAuth" });
 
 > [!TIP]
-> Použití `loginAsync()` zajistí, že se ověřovací token připojí ke každé následnému volání služby.
+> Použití `loginAsync()` přístupu zajistí, že se ověřovací token připojí ke každé následnému volání služby.
 >
 >
 
@@ -364,14 +364,14 @@ V předchozí části jsme ukázali, jak načíst ID uživatele ověřeného už
     // Only return data rows that belong to the current user.
     return Query().Where(t => t.UserId == sid);
 
-Metoda `Query()` vrátí `IQueryable`, které lze manipulovat pomocí LINQ pro zpracování filtrování.
+Metoda `Query()` vrací `IQueryable`, která může být zpracována technologií LINQ pro zpracování filtrování.
 
 ## <a name="how-to-add-push-notifications-to-a-server-project"></a>Postupy: Přidání nabízených oznámení do projektu serveru
 Přidejte nabízená oznámení do projektu serveru rozšířením objektu **MobileAppConfiguration** a vytvořením klienta Notification Hubs.
 
-1. V aplikaci Visual Studio klikněte pravým tlačítkem myši na serverový projekt a klikněte na **Spravovat balíčky NuGet**, vyhledejte `Microsoft.Azure.Mobile.Server.Notifications` a pak klikněte na **nainstalovat**.
+1. V aplikaci Visual Studio klikněte pravým tlačítkem myši na serverový projekt, klikněte na **Spravovat balíčky NuGet**, vyhledejte `Microsoft.Azure.Mobile.Server.Notifications`a pak klikněte na **nainstalovat**.
 2. Zopakováním tohoto kroku nainstalujete balíček `Microsoft.Azure.NotificationHubs`, který obsahuje klientskou knihovnu Notification Hubs.
-3. V App_Start/Startup. MobileApp. cs a při inicializaci přidejte volání metody rozšíření **AddPushNotifications ()** :
+3. V App_Start/Startup.MobileApp.cs a při inicializaci přidejte volání metody rozšíření **AddPushNotifications ()** :
 
         new MobileAppConfiguration()
             // other features...
@@ -461,7 +461,7 @@ Svou aplikaci můžete spustit místně, abyste před jejich publikováním do c
 
 Musíte mít cloudovou mobilní aplikaci s nakonfigurovaným App Service ověřování/autorizací a klient musí mít koncový bod cloudu zadaný jako alternativní hostitel přihlášení. Konkrétní požadované kroky najdete v dokumentaci ke klientské platformě.
 
-Ujistěte se, že váš mobilní back-end má nainstalované [Microsoft. Azure. Mobile. Server. Authentication] . Potom do třídy OWIN Startup vaší aplikace přidejte následující, po `MobileAppConfiguration` se použije na `HttpConfiguration`:
+Ujistěte se, že váš mobilní back-end má nainstalované [Microsoft.Azure.Mobile.Server.Authentication] . Potom do třídy OWIN Startup vaší aplikace přidejte následující, po použití `MobileAppConfiguration` pro `HttpConfiguration`:
 
         app.UseAppServiceAuthentication(new AppServiceAuthenticationOptions()
         {
@@ -477,7 +477,7 @@ Získání podpisového klíče:
 1. Přejděte do aplikace v [Azure Portal]
 2. Klikněte na **nástroje**, **Kudu**, **Přejít**.
 3. Na webu pro správu Kudu klikněte na **prostředí**.
-4. Vyhledejte hodnotu *Web @ no__t-1AUTH @ no__t-2SIGNING @ no__t-3KEY*.
+4. Vyhledejte hodnotu pro *web\_ověřování\_podpisový klíč\_* .
 
 V konfiguraci místní aplikace použijte podpisový klíč pro parametr *authSigningKey* .  Váš mobilní back-end je nyní vybaven pro ověřování tokenů při spuštění místně, který klient obdrží token z cloudového koncového bodu.
 
@@ -489,9 +489,9 @@ V konfiguraci místní aplikace použijte podpisový klíč pro parametr *authSi
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
 [Azure Portal]: https://portal.azure.com
 [NuGet.org]: https://www.nuget.org/
-[Microsoft. Azure. Mobile. Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
-[Microsoft. Azure. Mobile. Server. rychlý Start]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
-[Microsoft. Azure. Mobile. Server. Authentication]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
-[Microsoft. Azure. Mobile. Server. Login]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
-[Microsoft. Azure. Mobile. Server. Notifications]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
+[Microsoft.Azure.Mobile.Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
+[Microsoft.Azure.Mobile.Server.Quickstart]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
+[Microsoft.Azure.Mobile.Server.Authentication]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
+[Microsoft.Azure.Mobile.Server.Login]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
+[Microsoft.Azure.Mobile.Server.Notifications]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx

@@ -35,7 +35,7 @@ V této příručce se dozvíte, jak automatizovat operace zálohování a obnov
 > Operace zálohování nezachycuje předem agregovaná data protokolu používaná v sestavách zobrazených v okně Analýza v Azure Portal.
 
 > [!WARNING]
-> Platnost každé zálohy vyprší po 30 dnech. Pokud se pokusíte obnovit zálohu po uplynutí 30denní doby platnosti, obnovení se nezdaří a zobrazí se zpráva `Cannot restore: backup expired`.
+> Platnost každé zálohy vyprší po 30 dnech. Pokud se pokusíte obnovit zálohu po uplynutí 30 dnů od vypršení platnosti, obnovení se nezdaří a zobrazí se zpráva `Cannot restore: backup expired`.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -54,7 +54,7 @@ Všechny úlohy, které provedete v prostředcích pomocí Azure Resource Manage
 
 ### <a name="create-an-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. Pomocí předplatného, které obsahuje vaši instanci služby API Management, přejděte v **Azure Active Directory** na kartu **Registrace aplikací** (Azure Active Directory > spravovat/registrace aplikací).
 
     > [!NOTE]
@@ -67,7 +67,7 @@ Všechny úlohy, které provedete v prostředcích pomocí Azure Resource Manage
 4. Zadejte název aplikace.
 5. Jako typ aplikace vyberte **nativní**.
 6. Zadejte adresu URL zástupného symbolu, například `http://resources` pro **identifikátor URI přesměrování**, protože se jedná o požadované pole, ale hodnota se nepoužije později. Kliknutím na zaškrtávací políčko aplikaci uložíte.
-7. Klikněte na **vytvořit**.
+7. Klikněte na možnost **Vytvořit**.
 
 ### <a name="add-an-application"></a>Přidání aplikace
 
@@ -113,18 +113,18 @@ namespace GetTokenResourceManagerRequests
 }
 ```
 
-Pomocí následujících pokynů nahraďte `{tenant id}`, `{application id}` a `{redirect uri}`:
+Pomocí následujících pokynů nahraďte `{tenant id}`, `{application id}`a `{redirect uri}`:
 
-1. Hodnotu `{tenant id}` nahraďte ID klienta vytvořeného Azure Active Directory aplikace. Kliknutím na **Registrace aplikací** **koncových bodů** ->  získáte přístup k ID.
+1. Nahraďte `{tenant id}` ID tenanta vytvořené aplikace Azure Active Directory. Kliknutím na **Registrace aplikací** -> **koncových bodů**můžete získat přístup k tomuto ID.
 
     ![Koncové body][api-management-endpoint]
 
 2. Nahraďte `{application id}` hodnotou, kterou získáte, přechodem na stránku **Nastavení** .
-3. Hodnotu `{redirect uri}` nahraďte hodnotou z karty **identifikátory URI pro přesměrování** vaší aplikace Azure Active Directory.
+3. Nahraďte `{redirect uri}` hodnotou z karty URI pro **přesměrování** vaší aplikace Azure Active Directory.
 
     Po zadání hodnot by měl příklad kódu vracet token podobný následujícímu příkladu:
 
-    ![Klíčové][api-management-arm-token]
+    ![Podpisový][api-management-arm-token]
 
     > [!NOTE]
     > Platnost tokenu může po určitou dobu vypršet. Spusťte znovu ukázku kódu pro vygenerování nového tokenu.
@@ -149,9 +149,9 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 kde:
 
--   `subscriptionId`-ID předplatného, které má API Management službu, kterou se pokoušíte zálohovat
--   `resourceGroupName`-název skupiny prostředků služby Azure API Management
--   `serviceName` – název služby API Management, kterou provádíte zálohu zadaného v době jejího vytvoření.
+-   `subscriptionId` – ID předplatného, které obsahuje službu API Management, se kterou se pokoušíte zálohovat
+-   `resourceGroupName` – název skupiny prostředků služby Azure API Management
+-   `serviceName` – název služby API Management, kterou vytváříte v okamžiku vytvoření zálohy.
 -   `api-version` – nahradit `2018-06-01-preview`
 
 V těle žádosti zadejte název cílového účtu Azure Storage, přístupový klíč, název kontejneru objektů BLOB a název zálohy:
@@ -165,9 +165,9 @@ V těle žádosti zadejte název cílového účtu Azure Storage, přístupový 
 }
 ```
 
-Nastavte hodnotu v hlavičce požadavku `Content-Type` na `application/json`.
+Nastavte hodnotu v hlavičce `Content-Type` žádosti na `application/json`.
 
-Zálohování je dlouhodobá operace, která může trvat déle než minutu. Pokud byla žádost úspěšná a začala proces zálohování, obdržíte kód stavu odpovědi `202 Accepted` s hlavičkou `Location`. Pokud chcete zjistit stav operace, vytvořte na adrese URL v hlavičce `Location` požadavky GET. I když probíhá zálohování, budete dál dostávat stavový kód 202. Kód odpovědi `200 OK` označuje úspěšné dokončení operace zálohování.
+Zálohování je dlouhodobá operace, která může trvat déle než minutu. Pokud je požadavek úspěšný a proces zálohování začal, obdržíte kód stavu odpovědi `202 Accepted` s hlavičkou `Location`. Chcete-li zjistit stav operace, vytvořte žádosti na adresu URL v hlavičce `Location`. I když probíhá zálohování, budete dál dostávat stavový kód 202. Kód odpovědi `200 OK` označuje úspěšné dokončení operace zálohování.
 
 Při vytváření žádosti o zálohu Pamatujte na následující omezení:
 
@@ -190,9 +190,9 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 kde:
 
--   `subscriptionId`-ID předplatného, které obsahuje službu API Management, do které obnovujete zálohu
--   `resourceGroupName`-název skupiny prostředků, která obsahuje službu Azure API Management, do které provádíte obnovení zálohy
--   `serviceName` – název služby API Management, která se obnovuje v době jejího vytvoření.
+-   `subscriptionId` – ID předplatného, které obsahuje službu API Management, do které obnovujete zálohu
+-   `resourceGroupName` – název skupiny prostředků, která obsahuje službu Azure API Management, do které provádíte obnovení zálohy
+-   `serviceName` – název služby API Management, která se v okamžiku vytvoření obnovuje.
 -   `api-version` – nahradit `2018-06-01-preview`
 
 V těle žádosti zadejte umístění záložního souboru. To znamená, že přidejte název účtu Azure Storage, přístupový klíč, název kontejneru objektů BLOB a název zálohy:
@@ -206,9 +206,9 @@ V těle žádosti zadejte umístění záložního souboru. To znamená, že př
 }
 ```
 
-Nastavte hodnotu v hlavičce požadavku `Content-Type` na `application/json`.
+Nastavte hodnotu v hlavičce `Content-Type` žádosti na `application/json`.
 
-Obnovení je dlouhodobá operace, která může trvat až 30 minut, než se dokončí. Pokud se žádost úspěšně dokončila a proces obnovení začal, obdržíte kód stavu odpovědi `202 Accepted` s hlavičkou `Location`. Pokud chcete zjistit stav operace, vytvořte na adrese URL v hlavičce `Location` požadavky GET. I když probíhá obnovení, budete mít i nadále přijatý stavový kód 202. Kód odpovědi `200 OK` označuje úspěšné dokončení operace obnovení.
+Obnovení je dlouhodobá operace, která může trvat až 30 minut, než se dokončí. Pokud je požadavek úspěšný a proces obnovení začal, obdržíte kód stavu odpovědi `202 Accepted` s hlavičkou `Location`. Chcete-li zjistit stav operace, vytvořte žádosti na adresu URL v hlavičce `Location`. I když probíhá obnovení, budete mít i nadále přijatý stavový kód 202. Kód odpovědi `200 OK` označuje úspěšné dokončení operace obnovení.
 
 > [!IMPORTANT]
 > **SKU** služby, která se má obnovit do, se **musí shodovat** s SKU obnovované zálohované služby.
@@ -225,9 +225,9 @@ Obnovení je dlouhodobá operace, která může trvat až 30 minut, než se doko
 V různých návodech k procesu zálohování a obnovení si Projděte následující zdroje informací.
 
 -   [Replikace účtů Azure API Management](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
--   [Automatizace API Management zálohování a obnovování pomocí Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
+-   [Automatizace zálohování a obnovení služby API Management pomocí Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
 -   [Azure API Management: zálohování a obnovení konfigurace](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-    _Metoda Stanislav se neshoduje s oficiálními pokyny, ale je zajímavá._
+    _Metoda podrobná podle Stanislav se neshoduje s oficiálními pokyny, ale je zajímavá._
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

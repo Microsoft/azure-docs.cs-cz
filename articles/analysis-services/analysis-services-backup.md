@@ -49,7 +49,7 @@ Před zálohováním musíte nakonfigurovat nastavení úložiště pro váš se
 
     ![Uložit nastavení zálohování](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Zálohování
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>Zálohování pomocí SSMS
 

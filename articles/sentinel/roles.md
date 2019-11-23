@@ -24,21 +24,21 @@ ms.locfileid: "71316789"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění v Azure Sentinel
 
-Služba Azure Sentinel používá [Access Control na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md)k poskytování [předdefinovaných rolí](../role-based-access-control/built-in-roles.md) , které se dají přiřadit uživatelům, skupinám a službám v Azure.
+Služba Azure Sentinel používá [Access Control na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md)k poskytování [integrovaných rolí](../role-based-access-control/built-in-roles.md) , které je možné přiřadit uživatelům, skupinám a službám v Azure.
 
 Pomocí RBAC můžete použít a vytvořit role v rámci vašeho týmu zabezpečení provozu a udělit odpovídající přístup k Sentinel Azure. Na základě rolí máte detailní kontrolu nad tím, co můžou uživatelé s přístupem k Azure Sentinel sledovat. Role RBAC můžete přiřadit přímo do pracovního prostoru Azure Sentinel nebo do předplatného nebo skupiny prostředků, do které pracovní prostor patří.
 
 Existují tři konkrétní předdefinované role Sentinel Azure.  
 **Všechny předdefinované role Azure Sentinel udělují přístup pro čtení k datům v pracovním prostoru Sentinel Azure.**
-- **Čtečka Sentinel Azure**: Uživatel přiřazený k této roli má oprávnění k zobrazení pro Sentinel Azure. Uživatel může zobrazit incidenty a data, ale nemůže provádět změny.
-- **Respondér služby Azure Sentinel**: Uživatel přiřazený k této roli může číst a provádět akce na incidentech, jako je například přiřazení a změny závažnosti.
+- **Čtečka Sentinel Azure**: Uživatel přiřazený k této roli má práva k zobrazení pro Sentinel Azure. Uživatel může zobrazit incidenty a data, ale nemůže provádět změny.
+- **Respondér služby Azure Sentinel**: Uživatel přiřazený k této roli může číst a provádět akce s incidenty, jako je například přiřazení a změny závažnosti.
 - **Přispěvatel Sentinel Azure**: Uživatel přiřazený k této roli může číst a provádět akce s incidenty a vytvářet a odstraňovat analytická pravidla.
 
 Kromě vyhrazených rolí RBAC v Azure jsou k dispozici role RBAC Azure a Log Analytics, které jim umožňují poskytnout širší sadu oprávnění, která zahrnují přístup k vašemu pracovnímu prostoru Azure Sentinel a dalším prostředkům:
 
-- **Role Azure:** [Vlastník](../role-based-access-control/built-in-roles.md#owner), [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor)a [Čtenář](../role-based-access-control/built-in-roles.md#reader). Role Azure udělují přístup napříč všemi prostředky Azure, včetně Log Analyticsch pracovních prostorů a prostředků Sentinel Azure.
+- **Role Azure:** [vlastník](../role-based-access-control/built-in-roles.md#owner), [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor)a [Čtenář](../role-based-access-control/built-in-roles.md#reader). Role Azure udělují přístup napříč všemi prostředky Azure, včetně Log Analyticsch pracovních prostorů a prostředků Sentinel Azure.
 
--   **Log Analytics role:** [Přispěvatel Log Analytics](../role-based-access-control/built-in-roles.md#log-analytics-contributor) [Log Analytics čtenář](../role-based-access-control/built-in-roles.md#log-analytics-reader). Role Log Analytics udělují přístup ve všech vašich pracovních prostorech Log Analytics. 
+-   **Role Log Analytics:** [Log Analytics Přispěvatel](../role-based-access-control/built-in-roles.md#log-analytics-contributor), [Log Analytics Reader](../role-based-access-control/built-in-roles.md#log-analytics-reader). Role Log Analytics udělují přístup ve všech vašich pracovních prostorech Log Analytics. 
 
 > [!NOTE]
 > Role Log Analytics taky udělují přístup pro čtení napříč všemi prostředky Azure, ale přiřazují jenom oprávnění k zápisu do prostředků Log Analytics.
@@ -58,10 +58,10 @@ V následující tabulce jsou uvedeny role a povolené akce ve službě Azure Se
 
 | Role | Vytvoření a spuštění playbooky| Vytváření a úpravy řídicích panelů, analytických pravidel a dalších prostředků Sentinel Azure | Spravovat incidenty (zavřít, přiřadit atd.) | Zobrazení dat, incidentů, řídicích panelů a dalších prostředků Sentinel Azure |
 |--- |---|---|---|---|
-| Čtečka Sentinel Azure | -- | -- | -- | X |
-| Respondér služby Azure Sentinel|--|--| X | X |
-| Přispěvatel Sentinel Azure | -- | X | X | X |
-| Přispěvatel Azure Sentinel + Přispěvatel aplikace logiky | X | X | X | X |
+| Čtečka Sentinel Azure | -- | -- | -- | × |
+| Respondér služby Azure Sentinel|--|--| × | × |
+| Přispěvatel Sentinel Azure | -- | × | × | × |
+| Přispěvatel Azure Sentinel + Přispěvatel aplikace logiky | × | × | × | × |
 
 
 > [!NOTE]

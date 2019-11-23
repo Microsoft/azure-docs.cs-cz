@@ -37,7 +37,7 @@ Informace o tom, jak nastavit protokolování do protokolů Azure Storage, Event
 
 ## <a name="installing-pgaudit"></a>Instalace pgAudit
 
-Chcete-li nainstalovat pgAudit, je třeba jej zahrnout do sdílených předem načtených knihoven serveru. Parametr Postgres-0 změny @no__t vyžaduje, aby se restart serveru projevil. Parametry můžete měnit pomocí [Azure Portal](howto-configure-server-parameters-using-portal.md), rozhraní příkazového [řádku Azure](howto-configure-server-parameters-using-cli.md)nebo [REST API](/rest/api/postgresql/configurations/createorupdate).
+Chcete-li nainstalovat pgAudit, je třeba jej zahrnout do sdílených předem načtených knihoven serveru. Změna parametru `shared_preload_libraries` Postgres vyžaduje, aby se restart serveru projevil. Parametry můžete měnit pomocí [Azure Portal](howto-configure-server-parameters-using-portal.md), rozhraní příkazového [řádku Azure](howto-configure-server-parameters-using-cli.md)nebo [REST API](/rest/api/postgresql/configurations/createorupdate).
 
 Použití [Azure Portal](https://portal.azure.com):
 
@@ -65,13 +65,13 @@ pgAudit umožňuje konfigurovat protokolování auditu relace nebo objektů. [Pr
 Jakmile [nainstalujete pgAudit](#installing-pgaudit), můžete nakonfigurovat jeho parametry pro spuštění protokolování. [Dokumentace k pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) poskytuje definici každého parametru. Nejprve otestujte parametry a potvrďte, že se vám zobrazuje očekávané chování.
 
 > [!NOTE]
-> Nastavení `pgaudit.log_client` na ZAPNUTo způsobí přesměrování protokolů do procesu klienta (například psql) namísto zápisu do souboru. Toto nastavení by se obecně mělo nechávat zakázané.
+> Nastavení `pgaudit.log_client` na ZAPNUTo bude přesměrovat protokoly do klientského procesu (například psql) místo zápisu do souboru. Toto nastavení by se obecně mělo nechávat zakázané.
 
 > [!NOTE]
-> `pgaudit.log_level` je povoleno pouze v případě, že je zapnutá `pgaudit.log_client`. V Azure Portal v současnosti existuje chyba s `pgaudit.log_level`: je zobrazeno pole se seznamem, což znamená, že je možné vybrat více úrovní. Musí se však vybrat pouze jedna úroveň. 
+> `pgaudit.log_level` je povoleno pouze v případě, že je `pgaudit.log_client` zapnuto. V Azure Portal v současnosti existuje chyba s `pgaudit.log_level`: zobrazí se pole se seznamem, což znamená, že je možné vybrat více úrovní. Musí se však vybrat pouze jedna úroveň. 
 
 > [!NOTE]
-> V Azure Database for PostgreSQL nelze nastavit `pgaudit.log` pomocí zástupce `-` (mínus) symbol, jak je popsáno v dokumentaci k pgAudit. Všechny požadované třídy příkazů (ČTENÍ, ZÁPIS atd.) je potřeba zadat zvlášť.
+> V Azure Database for PostgreSQL nelze `pgaudit.log` nastavit pomocí zástupce `-` (mínus), jak je popsáno v dokumentaci k pgAudit. Všechny požadované třídy příkazů (ČTENÍ, ZÁPIS atd.) je potřeba zadat zvlášť.
 
 ### <a name="audit-log-format"></a>Formát protokolu auditu
 Každý záznam auditu je uveden `AUDIT:` poblíž začátku řádku protokolu. Formát zbytku položky je podrobně popsán v [dokumentaci k pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
@@ -82,10 +82,10 @@ Pokud k splnění požadavků na audit potřebujete další pole, použijte para
 t=%m u=%u db=%d pid=[%p]:
 ```
 
-Další informace o `log_line_prefix` najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
+Další informace o `log_line_prefix`najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
 
 ### <a name="getting-started"></a>Začínáme
-Pokud chcete rychle začít, nastavte `pgaudit.log` na `WRITE` a otevřete svoje protokoly a zkontrolujte výstup. 
+Chcete-li rychle začít, nastavte `pgaudit.log` na `WRITE`a otevřete protokoly a zkontrolujte výstup. 
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -41,13 +41,14 @@ Pro zajištění optimálního výkonu nakonfigurujte server DNS tak, aby zpraco
 
 Na levé straně se zobrazí cluster VServer a IP adresy se zobrazí v centru a na pravé straně. Nakonfigurujte všechny klientské přístupové body pomocí záznamů a ukazatelů, jak je znázorněno.
 
-@no__t – diagram DNS pro kruhové dotazování v 0Avere @ no__t-1<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
+![diagram DNS pro kruhové dotazování clusteru avere](media/avere-vfxt-rrdns-diagram.png) 
+<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 Každá IP adresa pro klienta musí mít jedinečný název pro interní použití clusterem. (V tomto diagramu se IP adresy klientů nazývají VS1-Client-IP-* pro přehlednost, ale v produkčním prostředí byste pravděpodobně použili něco výstižného, jako je třeba klient *.)
 
 Klienti připojí cluster pomocí názvu VServer jako argumentu serveru. 
 
-Upravte soubor ``named.conf`` serveru DNS pro nastavení cyklického pořadí dotazů na vaše VServer. Tato možnost zajistí, že se všechny dostupné hodnoty cyklují cyklicky. Přidejte příkaz podobný následujícímu:
+Upravte soubor ``named.conf`` serveru DNS tak, aby se nastavila cyklická objednávka pro dotazy na vaše VServer. Tato možnost zajistí, že se všechny dostupné hodnoty cyklují cyklicky. Přidejte příkaz podobný následujícímu:
 
 ```
 options {
@@ -73,7 +74,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>Nastavení DNS clusteru
 
-Zadejte server DNS, který cluster vFXT používá, na stránce nastavení**sítě pro správu**  >  **clusteru**. Nastavení na této stránce zahrnují:
+Zadejte server DNS, který cluster vFXT používá, na stránce **clusteru** > nastavení **sítě pro správu** . Nastavení na této stránce zahrnují:
 
 * Adresa serveru DNS
 * Název domény DNS

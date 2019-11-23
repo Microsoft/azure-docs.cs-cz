@@ -30,7 +30,7 @@ Tento článek popisuje různé autorizační agenty, které Microsoft Authentic
 
 Volba konkrétní strategie pro autorizační agenty je volitelná a představuje další funkční aplikace, které můžete přizpůsobit. Většina aplikací bude používat výchozí hodnoty MSAL (informace o různých výchozích nastaveních najdete v tématu [vysvětlení konfiguračního souboru Android MSAL](msal-configuration.md) ).
 
-MSAL podporuje autorizaci pomocí `WebView` nebo systémového prohlížeče.  Následující obrázek ukazuje, jak vypadá pomocí `WebView` nebo v prohlížeči systému pomocí CustomTabs nebo bez CustomTabs:
+MSAL podporuje autorizaci pomocí `WebView`nebo prohlížeč systému.  Následující obrázek ukazuje, jak vypadá pomocí `WebView`, nebo v prohlížeči systému pomocí CustomTabs nebo bez CustomTabs:
 
 ![Příklady přihlášení MSAL](./media/authorization-agents/sign-in-ui.jpg)
 
@@ -38,7 +38,7 @@ MSAL podporuje autorizaci pomocí `WebView` nebo systémového prohlížeče.  N
 
 Ve výchozím nastavení aplikace integrované s MSAL používají k autorizaci vlastní karty systémového prohlížeče. Na rozdíl od webového zobrazení vlastní karty sdílí JAR se souborem cookie s výchozím systémovým prohlížečem, který umožňuje menší počet přihlášení pomocí webových nebo jiných nativních aplikací, které jsou integrované s vlastními kartami.
 
-Pokud aplikace používá strategii @no__t 0 bez integrace Microsoft Authenticator nebo Portál společnosti podporu do své aplikace, uživatelé nebudou mít k dispozici prostředí jednotného přihlašování (SSO) v rámci zařízení nebo mezi nativními aplikacemi a webovými aplikacemi.
+Pokud aplikace používá strategii `WebView` bez integrace Microsoft Authenticator nebo Portál společnosti podporu do své aplikace, uživatelé nebudou mít k dispozici jednotné přihlašování (SSO) v rámci zařízení nebo mezi nativními aplikacemi a webovými aplikacemi.
 
 Pokud aplikace používá MSAL s podporou Microsoft Authenticator nebo Portál společnosti, mohou uživatelé mít v aplikacích prostředí jednotného přihlašování, pokud má uživatel aktivní přihlášení pomocí jedné z aplikací.
 
@@ -50,13 +50,13 @@ Pokud chcete použít webzobrazení v aplikaci, vložte do kódu JSON konfigurac
 "authorization_user_agent" : "WEBVIEW"
 ```
 
-Při použití `WebView` v aplikaci se uživatel přihlásí přímo do aplikace. Tokeny se uchovávají v izolovaném prostoru aplikace a nejsou dostupné mimo JAR souborů cookie aplikace. V důsledku toho uživatel nemůže mít v aplikacích možnosti jednotného přihlašování, pokud se aplikace neintegrují s ověřovatelem nebo Portál společnosti.
+Při použití `WebView`v aplikaci se uživatel přihlásí přímo k aplikaci. Tokeny se uchovávají v izolovaném prostoru aplikace a nejsou dostupné mimo JAR souborů cookie aplikace. V důsledku toho uživatel nemůže mít v aplikacích možnosti jednotného přihlašování, pokud se aplikace neintegrují s ověřovatelem nebo Portál společnosti.
 
-@No__t-0 však poskytuje možnost přizpůsobit vzhled a chování uživatelského rozhraní pro přihlašování. Další informace o tom, jak toto přizpůsobení provést, najdete v tématu věnovaném [zobrazením v Androidu](https://developer.android.com/reference/android/webkit/WebView) .
+`WebView` ale nabízí možnost přizpůsobit si vzhled a chování uživatelského rozhraní pro přihlašování. Další informace o tom, jak toto přizpůsobení provést, najdete v tématu věnovaném [zobrazením v Androidu](https://developer.android.com/reference/android/webkit/WebView) .
 
 ## <a name="default-browser-plus-custom-tabs"></a>Výchozí prohlížeč a vlastní karty
 
-Ve výchozím nastavení MSAL používá strategii prohlížeče a [vlastních karet](https://developer.chrome.com/multidevice/android/customtabs) . Tuto strategii můžete výslovně označit, aby nedocházelo ke změnám v budoucích verzích `DEFAULT` pomocí následující konfigurace JSON v souboru vlastního konfigurace:
+Ve výchozím nastavení MSAL používá strategii prohlížeče a [vlastních karet](https://developer.chrome.com/multidevice/android/customtabs) . Tuto strategii můžete explicitně označit, aby nedocházelo ke změnám v budoucích verzích `DEFAULT` pomocí následující konfigurace JSON v souboru vlastního konfigurace:
 
 ```json
 "authorization_user_agent" : "BROWSER"
@@ -68,9 +68,9 @@ Tento přístup slouží k zajištění jednotného přihlašování přes prohl
 
 Vzhledem k tomu, že MSAL není možné zadat přesný balíček prohlížeče, který se má použít pro každé široké spektrum telefonů s Androidem, MSAL implementuje heuristickou volbu pro výběr prohlížeče, která se pokusí poskytnout nejlepší jednotné přihlašování mezi zařízeními.
 
-MSAL načte úplný seznam prohlížečů nainstalovaných na zařízení a vybere prohlížeč, který se má použít. Seznam je v pořadí vráceném správcem balíčků, který nepřímo odráží předvolby uživatele. Například výchozí prohlížeč, pokud je nastaveno, je první záznam v seznamu. _První_ prohlížeč v seznamu se vybere bez ohledu na to, jestli podporuje vlastní karty. Pokud prohlížeč podporuje vlastní karty, MSAL spustí vlastní kartu. vlastní karty mají vzhled a chování blíž k v aplikaci `WebView` a umožňují základní přizpůsobení uživatelského rozhraní. Další informace najdete [v tématu vlastní karty v Androidu](https://developer.chrome.com/multidevice/android/customtabs) .
+MSAL načte úplný seznam prohlížečů nainstalovaných na zařízení a vybere prohlížeč, který se má použít. Seznam je v pořadí vráceném správcem balíčků, který nepřímo odráží předvolby uživatele. Například výchozí prohlížeč, pokud je nastaveno, je první záznam v seznamu. _První_ prohlížeč v seznamu se vybere bez ohledu na to, jestli podporuje vlastní karty. Pokud prohlížeč podporuje vlastní karty, MSAL spustí vlastní kartu. vlastní karty mají vzhled a chování blíž k `WebView` v aplikaci a umožňují základní přizpůsobení uživatelského rozhraní. Další informace najdete [v tématu vlastní karty v Androidu](https://developer.chrome.com/multidevice/android/customtabs) .
 
-Pokud na zařízení nejsou žádné balíčky prohlížeče, MSAL používá `WebView` v aplikaci.
+Pokud na zařízení nejsou žádné balíčky prohlížeče, MSAL používá `WebView`v aplikaci.
 
 Pořadí prohlížečů v seznamu prohlížeče je určeno operačním systémem. Je v pořadí od nejvíce do nejnižší. Pokud se výchozí nastavení zařízení nezmění, měl by se pro každé přihlášení spustit stejný prohlížeč, aby se zajistilo prostředí jednotného přihlašování.
 
@@ -79,19 +79,19 @@ Pořadí prohlížečů v seznamu prohlížeče je určeno operačním systémem
 
 ### <a name="tested-browsers"></a>Testované prohlížeče
 
-Následující prohlížeče byly testovány, aby bylo možné zjistit, zda správně přesměrují na `"redirect_uri"` zadané v konfiguračním souboru:
+Následující prohlížeče byly testovány, aby se zjistilo, zda správně přesměrují na `"redirect_uri"` zadané v konfiguračním souboru:
 
 | | Vestavěný prohlížeč | Chrome | Opera  | Microsoft Edge | Prohlížeč UC | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
-| Nexus 4 (rozhraní API 17) | dána | dána |Nelze použít |Nelze použít |Nelze použít |Nelze použít |
-| Samsung S7 (rozhraní API 25) | dána | dána | dána | dána | Proběhne |dána |
-| Huawei (rozhraní API 26) |Pass * * | dána | Proběhne | dána | dána |dána |
-| Vivo (API 26) |dána|dána|dána|dána|dána|Proběhne|
-| Pixel 2 (rozhraní API 26) |dána | dána | dána | dána | Proběhne |dána |
-| OPPO | dána | nelze použít * * * |Nelze použít  |Nelze použít |Nelze použít | Nelze použít|
-| OnePlus (rozhraní API 25) |dána | dána | dána | dána | Proběhne |dána |
-| Nexus (rozhraní API 28) |dána | dána | dána | dána | Proběhne |dána |
-|MI | dána | dána | dána | dána | Proběhne |dána |
+| Nexus 4 (rozhraní API 17) | Dána | Dána |nelze použít |nelze použít |nelze použít |nelze použít |
+| Samsung S7 (rozhraní API 25) | dána | Dána | Dána | Dána | Proběhne |Dána |
+| Huawei (rozhraní API 26) |Pass * * | Dána | Proběhne | Dána | Dána |Dána |
+| Vivo (API 26) |Dána|Dána|Dána|Dána|Dána|Proběhne|
+| Pixel 2 (rozhraní API 26) |Dána | Dána | Dána | Dána | Proběhne |Dána |
+| OPPO | Dána | nelze použít * * * |nelze použít  |nelze použít |nelze použít | nelze použít|
+| OnePlus (rozhraní API 25) |Dána | Dána | Dána | Dána | Proběhne |Dána |
+| Nexus (rozhraní API 28) |Dána | Dána | Dána | Dána | Proběhne |Dána |
+|MI | Dána | Dána | Dána | Dána | Proběhne |Dána |
 
 \* Integrovaný Prohlížeč Samsung je Samsung Internet.  
 \* * Vestavěný prohlížeč Huawei je Huawei prohlížeč.  

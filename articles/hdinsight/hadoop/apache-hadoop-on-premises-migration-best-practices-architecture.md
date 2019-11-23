@@ -31,8 +31,8 @@ Clustery Azure HDInsight jsou navržené pro konkrétní typ výpočetního vyu�
 |Datové sklady|Hadoop, Spark, interaktivní dotaz|
 |IoT/streamování|Kafka, vyplavení, Spark|
 |Zpracování transakcí NoSQL|HBase|
-|Interaktivní a rychlejší dotazy s ukládáním do mezipaměti v paměti|Interactive Query|
-|Datové vědy|Služby ML, Spark|
+|Interaktivní a rychlejší dotazy s ukládáním do mezipaměti v paměti|Interaktivní dotaz|
+|Pro datové vědy|Služby ML, Spark|
 
 V následující tabulce jsou uvedeny různé metody, které lze použít k vytvoření clusteru HDInsight.
 

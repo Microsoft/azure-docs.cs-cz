@@ -42,7 +42,7 @@ Nejdřív načtěte data do [Azure Data Lake Storage](https://docs.microsoft.com
 |:--- |:--- |
 | Distribuce | Kruhové dotazování. |
 | Indexování | Halda |
-| Dělení | Žádné |
+| Dělení | Žádný |
 | Třída prostředku | largerc nebo xlargerc |
 
 Další informace o [migraci dat], [načítání dat] a [procesu extrakce, načítání a transformace (ELT)](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading). 

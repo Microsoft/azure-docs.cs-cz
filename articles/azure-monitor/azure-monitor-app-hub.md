@@ -149,7 +149,7 @@ ms.locfileid: "72899165"
                                                             <a href="./app/profiler-aspnetcore-linux.md">ASP.NET Core profilace</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Vlastní události a metriky</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Open Source .NET Core SDK
-úložiště githubu</a>                                                        </p>
+úložiště githubu</a>                                                         </p>
                                                         <br><br>
                                                           <h3>Aplikace Node. js</h3>
                                                         <p>

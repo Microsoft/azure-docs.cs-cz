@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
-description: Learn how to troubleshoot known issues with Azure Load Balancer.
+description: Naučte se řešit známé problémy s Azure Load Balancer.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -24,115 +24,115 @@ ms.locfileid: "74214766"
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-This page provides troubleshooting information for common Azure Load Balancer questions. When the Load Balancer connectivity is unavailable, the most common symptoms are as follows: 
-- VMs behind the Load Balancer are not responding to health probes 
-- VMs behind the Load Balancer are not responding to the traffic on the configured port
+Tato stránka poskytuje informace pro odstraňování běžných otázek Azure Load Balancer. Když je připojení Load Balancer nedostupné, nejběžnější příznaky jsou následující: 
+- Virtuální počítače za Load Balancer nereagují na sondy stavu. 
+- Virtuální počítače za Load Balancer nereagují na provoz na konfigurovaném portu.
 
-When the external clients to the backend VMs go through the load balancer, the IP address of the clients will be used for the communication. Make sure the IP address of the clients are added into the NSG allow list. 
+Když externí klienti back-end virtuálních počítačů procházejí nástrojem pro vyrovnávání zatížení, použijí se pro tuto komunikaci IP adresa klientů. Ujistěte se, že se IP adresa klientů přidala do seznamu povolených NSG. 
 
-## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Symptom: VMs behind the Load Balancer are not responding to health probes
-For the backend servers to participate in the load balancer set, they must pass the probe check. For more information about health probes, see [Understanding Load Balancer Probes](load-balancer-custom-probe-overview.md). 
+## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Příznak: virtuální počítače za Load Balancer nereagují na sondy stavu.
+Aby se servery back-end účastnily sady nástroje pro vyrovnávání zatížení, musí projít kontrolu sondy. Další informace o sondách stavu najdete v tématu [principy Load Balancer sondy](load-balancer-custom-probe-overview.md). 
 
-The Load Balancer backend pool VMs may not be responding to the probes due to any of the following reasons: 
-- Load Balancer backend pool VM is unhealthy 
-- Load Balancer backend pool VM is not listening on the probe port 
-- Firewall, or a network security group is blocking the port on the Load Balancer backend pool VMs 
-- Other misconfigurations in Load Balancer
+Virtuální počítače Load Balancer fondu back-endu nereagují na sondy z některého z následujících důvodů: 
+- Virtuální počítač fondu back-endu Load Balancer není v pořádku. 
+- Virtuální počítač fondu back-endu Load Balancer nenaslouchá na portu testu paměti 
+- Brána firewall nebo skupina zabezpečení sítě blokuje port ve virtuálních počítačích Load Balancer fondu back-endu. 
+- Další neLoad Balanceré konfigurace v
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>Cause 1: Load Balancer backend pool VM is unhealthy 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>Příčina 1: Load Balancer virtuální počítač fondu back-endu není v pořádku 
 
-**Validation and resolution**
+**Ověření a rozlišení**
 
-To resolve this issue, log in to the participating VMs, and check if the VM state is healthy, and can respond to **PsPing** or **TCPing** from another VM in the pool. If the VM is unhealthy, or is unable to respond to the probe, you must rectify the issue and get the VM back to a healthy state before it can participate in load balancing.
+Pokud chcete tento problém vyřešit, přihlaste se k zúčastněným virtuálním počítačům a ověřte, jestli je stav virtuálního počítače v pořádku, a můžete reagovat na **PsPing** nebo **TCPing** z jiného virtuálního počítače ve fondu. Pokud virtuální počítač není v pořádku nebo není schopen reagovat na test paměti, je nutné problém vyřešit a získat virtuální počítač zpátky do správného stavu, než se bude moci zúčastnit vyrovnávání zatížení.
 
-### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>Cause 2: Load Balancer backend pool VM is not listening on the probe port
-If the VM is healthy, but is not responding to the probe, then one possible reason could be that the probe port is not open on the participating VM, or the VM is not listening on that port.
+### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>Příčina 2: Load Balancer virtuální počítač fondu back-endu nenaslouchá na portu testu paměti
+Pokud je virtuální počítač v pořádku, ale nereaguje na test, pak může být jedním z možných důvodů, že port testu není otevřený na zapojeném virtuálním počítači, nebo virtuální počítač na tomto portu nenaslouchá.
 
-**Validation and resolution**
+**Ověření a rozlišení**
 
-1. Log in to the backend VM. 
-2. Open a command prompt and run the following command to validate there is an application listening on the probe port:   
-            netstat -an
-3. If the port state is not listed as **LISTENING**, configure the proper port. 
-4. Alternatively, select another port, that is listed as **LISTENING**, and update load balancer configuration accordingly.              
+1. Přihlaste se k virtuálnímu počítači back-end. 
+2. Otevřete příkazový řádek a spuštěním následujícího příkazu ověřte, že aplikace naslouchá na portu sondy:   
+            netstat – a
+3. Pokud stav portu není uveden jako **naslouchání**, nakonfigurujte správný port. 
+4. Případně vyberte jiný port, který je uveden jako **naslouchání**, a odpovídajícím způsobem aktualizujte konfiguraci nástroje pro vyrovnávání zatížení.              
 
-### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Cause 3: Firewall, or a network security group is blocking the port on the load balancer backend pool VMs  
-If the firewall on the VM is blocking the probe port, or one or more network security groups configured on the subnet or on the VM, is not allowing the probe to reach the port, the VM is unable to respond to the health probe.          
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Příčina 3: Brána firewall nebo skupina zabezpečení sítě blokuje port ve virtuálních počítačích back-endu fondu nástroje pro vyrovnávání zatížení.  
+Pokud brána firewall na virtuálním počítači blokuje port sondy nebo jednu nebo více skupin zabezpečení sítě nakonfigurovaných v podsíti nebo na virtuálním počítači, nepovoluje testům přístup k portu, virtuální počítač nemůže odpovědět na sondu stavu.          
 
-**Validation and resolution**
+**Ověření a rozlišení**
 
-* If the firewall is enabled, check if it is configured to allow the probe port. If not, configure the firewall to allow traffic on the probe port, and test again. 
-* From the list of network security groups, check if the incoming or outgoing traffic on the probe port has interference. 
-* Also, check if a **Deny All** network security groups rule on the NIC of the VM or the subnet that has a higher priority than the default rule that allows LB probes & traffic (network security groups must allow Load Balancer IP of 168.63.129.16). 
-* If any of these rules are blocking the probe traffic, remove and reconfigure the rules to allow the probe traffic.  
-* Test if the VM has now started responding to the health probes. 
+* Pokud je povolená brána firewall, ověřte, jestli je nakonfigurovaná tak, aby umožňovala port testu. V takovém případě nakonfigurujte bránu firewall tak, aby povolovala přenosy na portu sondy, a znovu spusťte test. 
+* V seznamu skupin zabezpečení sítě ověřte, zda příchozí nebo odchozí provoz na portu sondy obsahuje rušivý vliv. 
+* Také ověřte, zda pravidlo **Odepřít všechny** skupiny zabezpečení sítě na síťové kartě virtuálního počítače nebo podsítě s vyšší prioritou, než je výchozí pravidlo, které povoluje sondy po kg & provozu (skupiny zabezpečení sítě musí umožňovat Load Balancer IP adresy 168.63.129.16). 
+* Pokud některá z těchto pravidel blokují provoz sondy, odeberte a překonfigurujte pravidla, aby umožňovala provoz sondy.  
+* Otestujte, jestli virtuální počítač nyní začal reagovat na sondy stavu. 
 
-### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>Cause 4: Other misconfigurations in Load Balancer
-If all the preceding causes seem to be validated and resolved correctly, and the backend VM still does not respond to the health probe, then manually test for connectivity, and collect some traces to understand the connectivity.
+### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>Příčina 4: jiné chyby v Load Balancer
+Pokud se zdá, že se všechny předchozí příčiny ověřují a správně vyřeší, a back-end virtuální počítač pořád nereaguje na sondu stavu, pak ručně otestuje připojení a shromáždí některá trasování pro pochopení připojení.
 
-**Validation and resolution**
+**Ověření a rozlišení**
 
-* Use **Psping** from one of the other VMs within the VNet to test the probe port response (example: .\psping.exe -t 10.0.0.4:3389) and record results. 
-* Use **TCPing** from one of the other VMs within the VNet to test the probe port response (example: .\tcping.exe 10.0.0.4 3389) and record results. 
-* If no response is received in these ping tests, then
-    - Run a simultaneous Netsh trace on the target backend pool VM and another test VM from the same VNet. Now, run a PsPing test for some time, collect some network traces, and then stop the test. 
-    - Analyze the network capture and see if there are both incoming and outgoing packets related to the ping query. 
-        - If no incoming packets are observed on the backend pool VM, there is potentially a network security groups or UDR mis-configuration blocking the traffic. 
-        - If no outgoing packets are observed on the backend pool VM, the VM needs to be checked for any unrelated issues (for example, Application blocking the probe port). 
-    - Verify if the probe packets are being forced to another destination (possibly via UDR settings) before reaching the load balancer. This can cause the traffic to never reach the backend VM. 
-* Change the probe type (for example, HTTP to TCP), and configure the corresponding port in network security groups ACLs and firewall to validate if the issue is with the configuration of probe response. For more information about health probe configuration, see [Endpoint Load Balancing health probe configuration](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
+* Pomocí **Psping** z jednoho z dalších virtuálních počítačů v rámci virtuální sítě otestujte odpověď na port testu paměti (příklad: .\psping.exe-t 10.0.0.4:3389) a výsledky záznamu. 
+* Pomocí **TCPing** z jednoho z dalších virtuálních počítačů v rámci virtuální sítě otestujte odpověď na port testu paměti (příklad: .\tcping.exe 10.0.0.4 3389) a výsledky záznamu. 
+* Pokud v těchto testech otestujete žádnou odpověď, pak
+    - Spusťte souběžné trasování Netsh v cílovém virtuálním počítači back-end fondu a další testovací virtuální počítač ze stejné virtuální sítě. Nyní spusťte test PsPing ještě jednou, shromážděte několik trasování sítě a potom test zastavte. 
+    - Analyzujte síťové zachycení a zkontrolujte, jestli jsou příchozí i odchozí pakety související s dotazem na příkazy. 
+        - Pokud se na virtuálním počítači s back-end fondem nepozorovany žádné příchozí pakety, může se stát, že se zablokuje přenos pomocí skupin zabezpečení sítě nebo UDR MIS. 
+        - Pokud na virtuálním počítači fondu back-end nejsou žádné odchozí pakety, musí být virtuální počítač zkontrolován na případné nesouvisející problémy (například aplikace blokující port testu). 
+    - Před dosažením nástroje pro vyrovnávání zatížení ověřte, zda jsou pakety sondy vynuceny do jiného cílového umístění (případně prostřednictvím nastavení UDR). To může způsobit, že se přenosy nikdy nedostanou do back-endu virtuálního počítače. 
+* Změňte typ sondy (například HTTP na TCP) a nakonfigurujte odpovídající port v seznamech ACL skupin zabezpečení sítě a bránu firewall, abyste ověřili, jestli se jedná o problém s konfigurací odezvy testu. Další informace o konfiguraci sondy stavu najdete v tématu [Konfigurace sondy stavu služby Vyrovnávání zatížení koncového bodu](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
 
-## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Symptom: VMs behind Load Balancer are not responding to traffic on the configured data port
+## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Příznak: virtuální počítače za Load Balancer nereagují na provoz na nakonfigurovaném datovém portu.
 
-If a backend pool VM is listed as healthy and responds to the health probes, but is still not participating in the Load Balancing, or is not responding to the data traffic, it may be due to any of the following reasons: 
-* Load Balancer Backend pool VM is not listening on the data port 
-* Network security group is blocking the port on the Load Balancer backend pool VM  
-* Accessing the Load Balancer from the same VM and NIC 
-* Accessing the Internet Load Balancer frontend from the participating Load Balancer backend pool VM 
+Pokud je virtuální počítač s back-end fondem uveden jako v pořádku a reaguje na sondy stavu, ale stále se neúčastní vyrovnávání zatížení nebo nereaguje na přenos dat, může to být z následujících důvodů: 
+* Virtuální počítač Load Balancerového fondu back-endu nenaslouchá na datovém portu. 
+* Skupina zabezpečení sítě blokuje port ve virtuálním počítači Load Balancer fondu back-endu.  
+* Přístup k Load Balancer ze stejného virtuálního počítače a síťové karty 
+* Přístup k Internetu Load Balancer front-endu z virtuálního počítače fondu back-endu Load Balancer 
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Cause 1: Load Balancer backend pool VM is not listening on the data port 
-If a VM does not respond to the data traffic, it may be because either the target port is not open on the participating VM, or, the VM is not listening on that port. 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Příčina 1: Load Balancer virtuální počítač fondu back-endu nenaslouchá na datovém portu 
+Pokud virtuální počítač nereaguje na přenos dat, může to být způsobeno tím, že cílový port není otevřen na daném virtuálním počítači, nebo virtuální počítač na tomto portu nenaslouchá. 
 
-**Validation and resolution**
+**Ověření a rozlišení**
 
-1. Log in to the backend VM. 
-2. Open a command prompt and run the following command to validate there is an application listening on the data port:  netstat -an 
-3. If the port is not listed with State “LISTENING”, configure the proper listener port 
-4. If the port is marked as Listening, then check the target application on that port for any possible issues.
+1. Přihlaste se k virtuálnímu počítači back-end. 
+2. Otevřete příkazový řádek a spuštěním následujícího příkazu ověřte, že aplikace naslouchá na datovém portu:  netstat-a 
+3. Pokud port není uveden se stavem "NASLOUCHÁní", nakonfigurujte správný port naslouchacího procesu. 
+4. Pokud je port označený jako naslouchání, zkontrolujte u cílové aplikace na tomto portu případné problémy.
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Cause 2: Network security group is blocking the port on the Load Balancer backend pool VM  
+### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Příčina 2: Skupina zabezpečení sítě blokuje port ve virtuálním počítači Load Balancer fondu back-endu.  
 
-If one or more network security groups configured on the subnet or on the VM, is blocking the source IP or port, then the VM is unable to respond.
+Pokud jedna nebo více skupin zabezpečení sítě nakonfigurovaných v podsíti nebo na VIRTUÁLNÍm počítači blokuje zdrojovou IP adresu nebo port, virtuální počítač nemůže odpovědět.
 
-For the public load balancer, the IP address of the Internet clients will be used for communication between the clients and the load balancer backend VMs. Make sure the IP address of the clients are allowed in the backend VM's network security group.
+Pro veřejný Nástroj pro vyrovnávání zatížení se IP adresa internetových klientů použije pro komunikaci mezi klienty a back-end virtuálními počítači nástroje pro vyrovnávání zatížení. Ujistěte se, že IP adresa klientů je povolená ve skupině zabezpečení virtuálního počítače back-endu.
 
-1. List the network security groups configured on the backend VM. For more information, see [Manage network security groups](../virtual-network/manage-network-security-group.md)
-1. From the list of network security groups, check if:
-    - the incoming or outgoing traffic on the data port has interference. 
-    - a **Deny All** network security group rule on the NIC of the VM or the subnet that has a higher priority that the default rule that allows Load Balancer probes and traffic (network security groups must allow Load Balancer IP of 168.63.129.16, that is probe port)
-1. If any of the rules are blocking the traffic, remove and reconfigure those rules to allow the data traffic.  
-1. Test if the VM has now started to respond to the health probes.
+1. Vypíše skupiny zabezpečení sítě nakonfigurované na virtuálním počítači back-end. Další informace najdete v tématu [Správa skupin zabezpečení sítě](../virtual-network/manage-network-security-group.md) .
+1. V seznamu skupin zabezpečení sítě ověřte, zda:
+    - příchozí nebo odchozí provoz na datovém portu má rušivý vliv. 
+    - **zamítne všechna** pravidla skupiny zabezpečení sítě na síťové kartě virtuálního počítače nebo podsítě s vyšší prioritou, jako je výchozí pravidlo, které umožňuje Load Balancer sondy a provozu (skupiny zabezpečení sítě musí umožňovat Load Balancer IP adresy 168.63.129.16, což je port testu).
+1. Pokud některá pravidla blokují provoz, odeberte a překonfigurujte tato pravidla, aby umožňovala přenos dat.  
+1. Otestujte, jestli virtuální počítač teď začal reagovat na sondy stavu.
 
-### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Cause 3: Accessing the Load Balancer from the same VM and Network interface 
+### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Příčina 3: přístup k Load Balancer ze stejného virtuálního počítače a síťového rozhraní 
 
-If your application hosted in the backend VM of a Load Balancer is trying to access another application hosted in the same backend VM over the same Network Interface, it is an unsupported scenario and will fail. 
+Pokud se vaše aplikace hostovaná na virtuálním počítači back-endu Load Balancer pokouší o přístup k jiné aplikaci hostované ve stejném virtuálním počítači back-end přes stejné síťové rozhraní, jedná se o nepodporovaný scénář a nezdaří se. 
 
-**Resolution** You can resolve this issue via one of the following methods:
-* Configure separate backend pool VMs per application. 
-* Configure the application in dual NIC VMs so each application was using its own Network interface and IP address. 
+**Řešení** Tento problém můžete vyřešit pomocí jedné z následujících metod:
+* Nakonfigurujte samostatné virtuální počítače back-end fondu na aplikaci. 
+* Nakonfigurujte aplikaci na virtuálních počítačích s více síťovými kartami, aby každá aplikace používala vlastní síťové rozhraní a IP adresu. 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Cause 4: Accessing the internal Load Balancer frontend from the participating Load Balancer backend pool VM
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Příčina 4: přístup k internímu Load Balancer front-endu z virtuálního počítače fondu back-endu Load Balancer
 
-If an internal Load Balancer is configured inside a VNet, and one of the participant backend VMs is trying to access the internal Load Balancer frontend, failures can occur when the flow is mapped to the originating VM. This scenario is not supported. Review [limitations](load-balancer-overview.md#limitations) for a detailed discussion.
+Pokud je interní Load Balancer nakonfigurovaný v rámci virtuální sítě a jeden z back-end účastníka se snaží získat přístup k internímu front-endu Load Balancer, můžou se selhání vyskytnout, když se tok namapuje na původní virtuální počítač. Tento scénář není podporován. Přečtěte si [omezení](load-balancer-overview.md#limitations) pro podrobnou diskuzi.
 
-**Resolution** There are several ways to unblock this scenario, including using a proxy. Evaluate Application Gateway or other 3rd party proxies (for example, nginx or haproxy). For more information about Application Gateway, see [Overview of Application Gateway](../application-gateway/application-gateway-introduction.md)
+**Řešení** Existuje několik způsobů, jak tento scénář odblokovat, včetně použití proxy serveru. Vyhodnoťte Application Gateway nebo jiné proxy servery třetích stran (například Nginx nebo HAProxy). Další informace o Application Gateway najdete v tématu [přehled Application Gateway](../application-gateway/application-gateway-introduction.md)
 
-## <a name="additional-network-captures"></a>Additional network captures
-If you decide to open a support case, collect the following information for a quicker resolution. Choose a single backend VM to perform the following tests:
-- Use Psping from one of the backend VMs within the VNet to test the probe port response (example: psping 10.0.0.4:3389) and record results. 
-- If no response is received in these ping tests, run a simultaneous Netsh trace on the backend VM and the VNet test VM while you run PsPing then stop the Netsh trace. 
+## <a name="additional-network-captures"></a>Další síťové zachycení
+Pokud se rozhodnete otevřít případ podpory, shromážděte při rychlejším řešení následující informace. Vyberte jeden back-end virtuální počítač pro provedení následujících testů:
+- Pomocí Psping z jednoho ze back-end virtuálních počítačů v rámci virtuální sítě otestujte odpověď na port testu paměti (příklad: Psping 10.0.0.4:3389) a výsledky záznamu. 
+- Pokud se v těchto testech testu příkazu otestuje žádná odpověď, spusťte pro virtuální počítač back-end a virtuální počítač s testovacím virtuálním počítačem při spuštění PsPing a pak zastavte trasování Netsh. 
   
 ## <a name="next-steps"></a>Další kroky
 
-If the preceding steps do not resolve the issue, open a [support ticket](https://azure.microsoft.com/support/options/).
+Pokud předchozí kroky problém nevyřeší, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).
 

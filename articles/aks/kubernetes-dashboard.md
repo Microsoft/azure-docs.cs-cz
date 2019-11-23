@@ -20,9 +20,9 @@ Kubernetes zahrnuje webový řídicí panel, který se dá použít pro základn
 
 Další informace o řídicím panelu Kubernetes najdete v tématu [řídicí panel webového uživatelského rozhraní Kubernetes][kubernetes-dashboard].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili cluster AKS a navázali `kubectl` připojení k tomuto clusteru. Pokud potřebujete vytvořit cluster AKS, přečtěte si téma [rychlý Start AKS][aks-quickstart].
+Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili cluster AKS a navázali jste `kubectl` připojení k tomuto clusteru. Pokud potřebujete vytvořit cluster AKS, přečtěte si téma [rychlý Start AKS][aks-quickstart].
 
 Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.46 nebo novější. Verzi zjistíte spuštěním příkazu  `az --version` . Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
@@ -34,7 +34,7 @@ Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Tento příkaz vytvoří proxy server mezi vývojovým systémem a rozhraním API Kubernetes a otevře webový prohlížeč na řídicím panelu Kubernetes. Pokud se webový prohlížeč neotevře na řídicím panelu Kubernetes, zkopírujte a vložte adresu URL, kterou jste si poznamenali `http://127.0.0.1:8001`v Azure CLI, obvykle.
+Tento příkaz vytvoří proxy server mezi vývojovým systémem a rozhraním API Kubernetes a otevře webový prohlížeč na řídicím panelu Kubernetes. Pokud se webový prohlížeč neotevře na řídicím panelu Kubernetes, zkopírujte a vložte adresu URL, kterou jste si poznamenali v rozhraní příkazového řádku Azure CLI, obvykle `http://127.0.0.1:8001`.
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -107,7 +107,7 @@ Vyberte adresu koncového bodu a otevřete tak okno webového prohlížeče na v
 
 Řídicí panel Kubernetes může poskytovat základní metriky monitorování a informace o řešení problémů, jako jsou protokoly.
 
-Pokud chcete zobrazit další informace o luskech aplikací, vyberte v nabídce vlevo možnost lusky. Zobrazí se seznam dostupných lusků. Pokud si chcete zobrazit informace, jako je například spotřeba prostředků, vyberte *Nginx* pod.
+Pokud chcete zobrazit další informace o luskech aplikací, vyberte v nabídce vlevo možnost **lusky** . Zobrazí se seznam dostupných lusků. Pokud si chcete zobrazit informace, jako je například spotřeba prostředků, vyberte *Nginx* pod.
 
 ![Zobrazit informace pod](./media/kubernetes-dashboard/view-pod-info.png)
 
@@ -119,7 +119,7 @@ Postup úpravy nasazení:
 
 1. V nabídce vlevo vyberte **nasazení** a pak zvolte nasazení *Nginx* .
 1. V pravém horním navigačním panelu vyberte **Upravit** .
-1. `spec.replica` Vyhledejte hodnotu, při přibližně na řádku 20. Chcete-li zvýšit počet replik pro aplikaci, změňte tuto hodnotu z *1* na *3*.
+1. Najděte `spec.replica`ovou hodnotu, a to přibližně na řádku 20. Chcete-li zvýšit počet replik pro aplikaci, změňte tuto hodnotu z *1* na *3*.
 1. Po přípravě vyberte **aktualizovat** .
 
 ![Upravte nasazení a aktualizujte počet replik.](./media/kubernetes-dashboard/edit-deployment.png)

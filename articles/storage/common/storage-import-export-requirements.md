@@ -1,6 +1,6 @@
 ---
-title: Požadavky na službu Azure import/export | Microsoft Docs
-description: Seznamte se s požadavky na software a hardware pro službu Azure import/export.
+title: Požadavky pro službu Azure Import/Export | Dokumentace Microsoftu
+description: Vysvětlení softwarové a hardwarové požadavky pro službu Azure Import/Export.
 author: alkohli
 services: storage
 ms.service: storage
@@ -15,21 +15,21 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/23/2019
 ms.locfileid: "72821410"
 ---
-# <a name="azure-importexport-system-requirements"></a>Požadavky na systém pro import a export v Azure
+# <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
 
-Tento článek popisuje důležité požadavky na službu Azure import/export. Doporučujeme pečlivě zkontrolovat informace, než použijete službu import/export, a pak se na ni v případě potřeby v průběhu této operace znovu odkazuje.
+Tento článek popisuje důležité požadavky pro vaši službu Azure Import/Export. Doporučujeme, abyste si informace o pečlivě před používat službu Import/Export a poté vraťte se k němu podle potřeby během operace.
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Pro přípravu pevných disků pomocí nástroje WAImportExport jsou podporovány následující **64 operační systémy, které podporují nástroj BitLocker Drive Encryption** .
+Pro přípravu pevných disků pomocí nástroje WAImportExport následující **64bitová verze operačního systému, které podporují nástroj BitLocker Drive Encryption** jsou podporovány.
 
 
 |Platforma |Version |
 |---------|---------|
-|Windows     | Windows 7 Enterprise, Windows 7 Ultimate <br> Windows 8 pro, Windows 8 Enterprise, Windows 8.1 pro, Windows 8.1 Enterprise <br> Windows 10        |
+|Windows     | Windows 7 Enterprise, Windows 7 Ultimate <br> Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012, Windows Server 2012 R2         |
 
-## <a name="other-required-software-for-windows-client"></a>Další požadovaný software pro klienta Windows
+## <a name="other-required-software-for-windows-client"></a>Jiného požadovaného softwaru pro klienta Windows
 
 |Platforma |Version |
 |---------|---------|
@@ -39,61 +39,61 @@ Pro přípravu pevných disků pomocí nástroje WAImportExport jsou podporován
 
 ## <a name="supported-storage-accounts"></a>Podporované účty úložiště
 
-Služba import/export Azure podporuje následující typy účtů úložiště:
+Služba Import/Export Azure podporuje následující typy účtů úložiště:
 
 - Účty úložiště Standard Pro obecné účely v2 (doporučeno pro většinu scénářů)
-- Účty Blob Storage
+- Účty služby Blob Storage
 - Účty úložiště Pro obecné účely V1 (nasazení Classic nebo Azure Resource Manager), 
 
-Další informace o účtech úložiště najdete v tématu [Přehled účtů Azure Storage](storage-account-overview.md).
+Další informace o účtech úložiště najdete v tématu [účtů úložiště Azure, přehled](storage-account-overview.md).
 
-Každou úlohu můžete použít k přenosu dat do nebo z jednoho účtu úložiště. Jinými slovy, jedna úloha importu/exportu nemůže být rozložená mezi několik účtů úložiště. Informace o vytvoření nového účtu úložiště najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
+Každá úloha slouží k přenosu dat do nebo z pouze jeden účet úložiště. Jinými slovy úlohu importu/exportu jedné nemůžou zahrnovat napříč několika účty úložiště. Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-quickstart-create-account.md).
 
 > [!IMPORTANT] 
-> Služba Azure import export nepodporuje účty úložiště, ve kterých je povolená funkce [koncové body služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md) . 
+> Služba Azure Import Export nepodporuje účty úložiště ve kterém [koncové body služeb virtuální sítě](../../virtual-network/virtual-network-service-endpoints-overview.md) se povolila funkce. 
 
-## <a name="supported-storage-types"></a>Podporované typy úložišť
+## <a name="supported-storage-types"></a>Typy podporovaných úložišť
 
-Služba Azure import/export podporuje následující seznam typů úložišť.
+Následující seznam typů úložiště podporuje služba Azure Import/Export.
 
 
-|Úloha  |Služba úložiště |Podporováno  |Nepodporováno  |
+|Úloha  |Služba Storage |Podporuje se  |Nepodporuje se  |
 |---------|---------|---------|---------|
-|Import     |  Azure Blob Storage <br><br> Služba Azure File Storage       | Podporované objekty blob bloku a objekty blob stránky <br><br> Podporované soubory          |
-|Exportovat     |   Azure Blob Storage       | Podporované objekty blob bloku, objekty blob stránky a doplňovací objekty blob         | Soubory Azure nejsou podporované
+|Import     |  Azure Blob Storage <br><br> Azure File storage       | Objekty BLOB bloku a stránku objekty BLOB podporována <br><br> Podporované soubory          |
+|Export     |   Azure Blob Storage       | Objekty BLOB bloku, objekty BLOB stránky a doplňovací objekty BLOB, nepodporuje         | Nepodporuje soubory Azure
 
 
 ## <a name="supported-hardware"></a>Podporovaný hardware 
 
-Pro službu Azure import/export potřebujete Podporované disky pro kopírování dat.
+Pro službu Azure Import/Export potřebujete podporované disky kopírovat data.
 
 ### <a name="supported-disks"></a>Podporované disky
 
-Následující seznam disků je podporován pro použití se službou Import/export.
+Následující seznam disků se podporuje pro použití se službou Import/Export.
 
 
-|Typ disku  |Velikost  |Podporováno |
+|Typ disku  |Velikost  |Podporuje se |
 |---------|---------|---------|
-|SSD    |   2,5 "      |SATA III          | 
-|HDD     |  2,5 "<br>3,5 "       |SATA II, SATA III         |
+|SSD    |   2,5"      |SATA III          | 
+|HDD     |  2,5"<br>3,5"       |II SATA, SATA III         |
 
 Následující typy disků nejsou podporovány:
 - USBs.
 - Externí HDD s integrovaným adaptérem USB
 - Disky, které se nacházejí v malých a velkých jednotkách externího pevného disku.
 
-Jedna úloha importu/exportu může mít tyto:
-- Maximálně 10 HDD/SSD.
-- Kombinace HDD/SSD libovolné velikosti.
+Úloha importu/exportu jedné může mít:
+- Maximálně 10 pevný disk nebo disky SSD.
+- Kombinace pevný disk nebo SSD libovolné velikosti.
 
-Velký počet jednotek může být rozložen mezi více úloh a neexistuje žádné omezení počtu úloh, které lze vytvořit. Pro úlohy importu se zpracovává jenom první datový svazek na disku. Datový svazek musí být naformátován systémem souborů NTFS.
+Velký počet jednotek, lze distribuovat mezi několika úlohami a neexistuje žádné omezení počtu úloh, které je možné vytvořit. Pro úlohy importu se zpracuje pouze první datový svazek na disku. Objem dat musí být naformátovaná za použití systému souborů NTFS.
 
-Když připravujete pevné disky a kopírujete data pomocí nástroje WAImportExport, můžete použít externí adaptéry USB. Většina adaptérů USB 3,0 nebo vyšší musí být funkční. 
+Když příprava pevných disků a kopírování dat pomocí nástroje WAImportExport, můžete použít externí adaptéry USB. Většina předem připravená USB 3.0 nebo novější adaptéry by měla fungovat. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Nastavení nástroje WAImportExport](storage-import-export-tool-how-to.md)
 * [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)
-* [Ukázka REST API exportu pro import do Azure](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
+* [Ukázkový Import exportovat rozhraní REST API služby Azure](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
 

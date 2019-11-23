@@ -28,7 +28,7 @@ ms.locfileid: "72388873"
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Přehled
 
@@ -87,7 +87,7 @@ Spusťte následující příkaz:
 
 **Z aplikace Visual Studio:**
 
-1. V Průzkumník řešení otevřete soubor `config.xml`. V dalším kroku vyberte **moduly plug-in** > **vlastní**. Pak jako zdroj instalace vyberte **Git** .
+1. V Průzkumník řešení otevřete `config.xml` soubor. V dalším kroku vyberte **moduly plug-in** > **vlastní**. Pak jako zdroj instalace vyberte **Git** .
 
 2. Jako zdroj zadejte `https://github.com/phonegap/phonegap-plugin-push`.
 
@@ -134,7 +134,7 @@ Zpočátku jsme zahrnuli minimální kód pro Android. Později můžete aplikac
         }, handleError);
     ```
 
-    Tento příklad ukazuje volání **registerForPushNotifications** po úspěšném ověření. Můžete volat `registerForPushNotifications()` tak často, jak je třeba.
+    Tento příklad ukazuje volání **registerForPushNotifications** po úspěšném ověření. Můžete volat `registerForPushNotifications()` tak často, jak je požadováno.
 
 2. Přidejte novou metodu **registerForPushNotifications** následujícím způsobem:
 
@@ -257,7 +257,7 @@ Nabízená oznámení teď můžete testovat spuštěním aplikace a vložením 
 
     Pokud chcete použít rychlejší emulátor x86, [nainstalujte ovladač modul HAXM][11]a potom nakonfigurujte emulátor tak, aby ho používal.
 
-    Vyberte **aplikace**@no__t**nastavení**-1  > **Přidat účet**a přidejte na zařízení s Androidem účet Google. Pak postupujte podle pokynů.
+    Vyberte **aplikace** > **Nastavení** > **Přidat účet**a přidejte na zařízení s Androidem účet Google. Pak postupujte podle pokynů.
 
     ![Přidání účtu Google na zařízení s Androidem](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
@@ -280,7 +280,7 @@ Ujistěte se, že můžete sestavit aplikaci pro iOS. Kroky v příručce pro in
 
 #### <a name="find-the-id-to-use-as-your-app-id"></a>Najít ID, které se má použít jako ID aplikace
 
-Před registrací aplikace pro nabízená oznámení otevřete soubor config. XML v aplikaci Cordova, vyhledejte hodnotu atributu `id` v prvku widget a pak ji zkopírujte pro pozdější použití. V následujícím kódu XML je ID `io.cordova.myapp7777777`.
+Před registrací aplikace pro nabízená oznámení otevřete soubor config. XML v aplikaci Cordova, vyhledejte v prvku widget hodnotu atributu `id` a pak ho zkopírujte pro pozdější použití. V následujícím kódu XML je `io.cordova.myapp7777777`ID.
 
 ```xml
 <widget defaultlocale="en-US" id="io.cordova.myapp7777777"

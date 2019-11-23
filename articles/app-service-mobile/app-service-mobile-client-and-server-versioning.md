@@ -25,25 +25,25 @@ ms.locfileid: "72388886"
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 Nejnovější verze služby Azure Mobile Services je **Mobile Apps** funkce Azure App Service.
 
 Sady SDK pro Mobile Apps klienta a serveru jsou původně založené na těch, *které jsou v* Mobile Services, ale nejsou vzájemně kompatibilní.
-To znamená, že musíte použít sadu SDK klienta *Mobile Apps* se sadou sdk serveru *Mobile Apps* a podobně pro *Mobile Services*. Tato smlouva se vynutila prostřednictvím speciální hodnoty hlavičky, kterou používají klientské a serverové sady SDK, `ZUMO-API-VERSION`.
+To znamená, že musíte použít sadu SDK klienta *Mobile Apps* se sadou sdk serveru *Mobile Apps* a podobně pro *Mobile Services*. Tato smlouva se vynutila prostřednictvím speciální hodnoty hlavičky, kterou používají klientské a serverové sady SDK `ZUMO-API-VERSION`.
 
 Poznámka: pokaždé, když tento dokument odkazuje na *Mobile Services* back-end, nemusí být nutně hostovaný na Mobile Services. Nyní je možné migrovat mobilní službu, aby běžela na App Service bez jakýchkoli změn kódu, ale služba stále používá *Mobile Services* verze SDK.
 
 ## <a name="header-specification"></a>Specifikace záhlaví
-Klíč `ZUMO-API-VERSION` lze zadat buď v hlavičce protokolu HTTP, nebo v řetězci dotazu. Hodnota je řetězec verze ve formátu **x. y. z**.
+Klávesová `ZUMO-API-VERSION` může být zadána buď v hlavičce protokolu HTTP, nebo v řetězci dotazu. Hodnota je řetězec verze ve formátu **x. y. z**.
 
-Například:
+Příklad:
 
-ZÍSKAT @no__t – 0
+ZÍSKAT https://service.azurewebsites.net/tables/TodoItem
 
 HLAVIČKY: ZUMO-API-VERSION: 2.0.0
 
-POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
+PŘÍSPĚVEK https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 ## <a name="opting-out-of-version-checking"></a>Zrušení kontroly verze
 Kontrolu verzí můžete odhlásit nastavením hodnoty **true** pro nastavení aplikace **MS_SkipVersionCheck**. Zadejte to buď v souboru Web. config, nebo v části nastavení aplikace Azure Portal.
@@ -64,19 +64,19 @@ Kontrola verze byla představena počínaje následujícími verzemi klientské 
 ### <a name="mobile-apps-server-sdks"></a>Sady SDK serveru Mobile *Apps*
 Kontrola verze je zahrnutá v následujících verzích sady SDK serveru:
 
-| Serverová platforma | SDK | Hlavička přijaté verze |
+| Serverová platforma | Sada SDK | Hlavička přijaté verze |
 | --- | --- | --- |
-| .NET |[Microsoft. Azure. Mobile. Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
-| Node.js |[Azure – Mobile – aplikace](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
+| .NET |[Microsoft.Azure.Mobile.Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
+| Node.js |[azure-mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
 ### <a name="behavior-of-mobile-apps-backends"></a>Chování Mobile Apps back-endy
-| ZUMO – API – VERZE | Hodnota MS_SkipVersionCheck | Odpověď |
+| ZUMO-API-VERSION | Hodnota MS_SkipVersionCheck | Odpověď |
 | --- | --- | --- |
-| x. y. z nebo null |True |200 – OK |
+| x. y. z nebo null |Pravda |200 – OK |
 | Null |Hodnota false/není zadána |400 – Chybný požadavek |
 | 1. x. y |Hodnota false/není zadána |400 – Chybný požadavek |
-| 2.0.0-2. x. y |Hodnota false/není zadána |200 – OK |
-| 3.0.0-3. x. y |Hodnota false/není zadána |400 – Chybný požadavek |
+| 2.0.0-2.x.y |Hodnota false/není zadána |200 – OK |
+| 3.0.0-3.x.y |Hodnota false/není zadána |400 – Chybný požadavek |
 
 [Mobile Services clients]: #MobileServicesClients
 [Mobile Apps clients]: #MobileAppsClients

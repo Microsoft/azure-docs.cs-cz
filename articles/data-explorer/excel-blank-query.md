@@ -21,8 +21,8 @@ Azure Průzkumník dat poskytuje dvě možnosti pro připojení k datům v Excel
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* E-mailový účet organizace, který je členem Azure Active Directory, abyste se mohli připojit ke [clusteru azure Průzkumník dat Help](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
-<br>or</br>
+* E-mailový účet organizace, který je členem Azure Active Directory, abyste se mohli připojit ke [clusteru azure Průzkumník dat help](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
+<br>nebo</br>
 * Vytvořte [testovací cluster a databázi](create-cluster-database-portal.md) a přihlaste se k [aplikaci webového uživatelského rozhraní Azure Průzkumník dat](https://dataexplorer.azure.com/).
 
 ## <a name="define-kusto-query-as-an-excel-data-source"></a>Definování dotazu Kusto jako zdroje dat aplikace Excel
@@ -39,7 +39,7 @@ Azure Průzkumník dat poskytuje dvě možnosti pro připojení k datům v Excel
 
 1. Otevřete **aplikaci Microsoft Excel**.
 
-1. Na kartě **data** vyberte možnost **získat data** > **z jiných zdrojů** > **prázdný dotaz**.
+1. Na kartě **data** vyberte **získat data** > **z jiných zdrojů** > **prázdný dotaz**.
 
     ![Získat data a vybrat prázdný dotaz](media/excel-blank-query/get-data-blank-query.png)
 

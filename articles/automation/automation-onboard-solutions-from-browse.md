@@ -99,7 +99,7 @@ Pokud jste použili řešení Update Management, možná budete chtít po odebr�
 
 * Aktualizace plánů – každá bude mít názvy, které odpovídají vytvořeným nasazením aktualizací.
 
-* Skupiny hybridních pracovních procesů vytvořené pro řešení – každá bude pojmenována podobně jako machine1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
+* Skupiny hybridních pracovních procesů vytvořené pro řešení – každá bude pojmenována podobně jako machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 
 Pokud jste použili řešení Start/Stop VMs during off-hours, možná budete chtít po odebrání řešení odebrat následující položky, které už nepotřebujete.
 
@@ -113,7 +113,7 @@ Alternativně můžete také zrušit propojení pracovního prostoru s účtem A
 
 Při připojování více počítačů můžou existovat počítače, které ukazují, že se **nedají povolit**. Existují různé důvody, proč nemusí být některé počítače povolené. V následujících částech se dozvíte o možných důvodech, proč se při pokusu o připojení k virtuálnímu počítači **nepodaří stav povolit** .
 
-### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Virtuální počítač sestaví do jiného pracovního prostoru: ' \<workspaceName @ no__t-1 '.  Změnit konfiguraci, aby se použila pro povolení
+### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Virtuální počítače se sestavují do jiného pracovního prostoru:\<\>pracovního prostoru.  Změnit konfiguraci, aby se použila pro povolení
 
 **Příčina**: Tato chyba ukazuje, že virtuální počítač, který se pokoušíte připojit, do jiného pracovního prostoru.
 
@@ -151,7 +151,7 @@ Při připojování více počítačů můžou existovat počítače, které uka
 
 Odebrání virtuálního počítače z Update Management:
 
-* Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates`. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
+* Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro `MicrosoftDefaultScopeConfig-Updates`konfigurace oboru. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
 * Odeberte [agenta Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Další kroky

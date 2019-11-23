@@ -70,7 +70,7 @@ V této části se seznámíte s vytvořením skupiny prostředků, která obsah
    New-AzResourceGroup -Name appgw-rg -Location "West US"
    ```
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Vytvoření virtuální sítě a podsítě pro službu Application Gateway
+## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Vytvořte virtuální síť a podsíť pro aplikační bránu
 
 Následující příklad vytvoří virtuální síť a dvě podsítě. Jedna podsíť se používá k uchování aplikační brány. Druhá podsíť se používá pro back-endy, které hostují webovou aplikaci.
 
@@ -115,7 +115,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
 > [!IMPORTANT]
 > Application Gateway nepodporuje použití veřejné IP adresy vytvořené s popiskem definované domény. Podporovaná je jenom veřejná IP adresa s názvem dynamicky vytvořenou doménou. Pokud pro aplikační bránu potřebujete popisný název DNS, doporučujeme použít záznam CNAME jako alias.
 
-## <a name="create-an-application-gateway-configuration-object"></a>Vytvoření objektu konfigurace služby Application Gateway
+## <a name="create-an-application-gateway-configuration-object"></a>Vytvořte objekt konfigurace aplikační brány
 
 Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brány. Následující kroky slouží k vytvoření položek konfigurace potřebné pro prostředek služby Application Gateway.
 
@@ -167,7 +167,7 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
    > [!NOTE]
    > Výchozí sonda získá veřejný klíč z *výchozí* vazby SSL na IP adrese back-endu a porovná hodnotu veřejného klíče, kterou přijme, k hodnotě veřejného klíče, kterou tady zadáte. 
    > 
-   > Pokud používáte hlavičky hostitele a Indikace názvu serveru (SNI) na back-endu, načtený veřejný klíč nemusí být zamýšlenou lokalitou, na kterou přenosové toky. Pokud nejste jistí, na back-endové servery navštivte https://127.0.0.1/ a ověřte, který certifikát se používá pro *výchozí* vazbu SSL. Použijte veřejný klíč z tohoto požadavku v této části. Pokud používáte pro vazby HTTPS a SNI a neobdržíte odpověď a certifikát z ruční žádosti prohlížeče o https://127.0.0.1/ na back-endové servery, musíte pro ně nastavit výchozí vazbu SSL. Pokud to neuděláte, sondy selžou a back-end není povolený.
+   > Pokud používáte hlavičky hostitele a Indikace názvu serveru (SNI) na back-endu, načtený veřejný klíč nemusí být zamýšlenou lokalitou, na kterou přenosové toky. Pokud nejste jistí, navštivte https://127.0.0.1/ na back-endové servery a ověřte, který certifikát se používá pro *výchozí* vazbu SSL. Použijte veřejný klíč z tohoto požadavku v této části. Pokud používáte pro vazby HTTPS a SNI a nedostanete odpověď a certifikát z ruční žádosti prohlížeče o https://127.0.0.1/ na back-endové servery, musíte pro ně nastavit výchozí vazbu SSL. Pokud to neuděláte, sondy selžou a back-end není povolený.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -200,7 +200,7 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Nakonfigurujte velikost instance služby Application Gateway. Dostupné velikosti jsou **Standard @ no__t-1Small**, **Standard @ no__t-3Medium**a **Standard @ no__t-5Large**.  V případě kapacity mají dostupné hodnoty **1** až **10**.
+10. Nakonfigurujte velikost instance služby Application Gateway. Dostupné velikosti jsou **standardní\_malé**, **standardní\_střední**a **standardní\_Velká**.  V případě kapacity mají dostupné hodnoty **1** až **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -217,7 +217,7 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Následující příklad nastaví minimální verzi protokolu na **TLSv1_2** a povolí **TLS @ no__t-2ECDHE @ no__t-3ECDSA @ no__t-4WITH @ no__t-5AES @ no__t-6128 @ no__t-7GCM @ no__t-8SHA256**, **TLS @ no__t-10ECDHE @ no__t-11ECDSA @ no__t-12WITH @ No __t-13AES @ no__t-14256 @ no__t-15GCM @ no__t-16SHA384**a **TLS @ NO__T-18RSA @ NO__T-19WITH @ NO__T-20AES @ no__t-21128 @ NO__T-22GCM @** no__t-23SHA256.
+    Následující příklad nastaví minimální verzi protokolu na **TLSv1_2** a povolí **TLS\_ecdh\_ECDSA\_s\_aes\_128\_GCM\_SHA256**, **tls\_ecdh\_ECDSA\_s\_aes\_256\_GCM\_SHA384**a **TLS\_RSA\_\_\_AES\_128\_GCM SHA256** .
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -310,7 +310,7 @@ Předchozí kroky vás provedly vytvořením aplikace s koncovým protokolem SSL
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Definujte zásadu protokolu SSL. V následujícím příkladu jsou **tlsv 1.0** a **tlsv 1.1** zakázané a šifrovací sady **TLS @ no__t-3ECDHE @ no__t-4ECDSA @ no__t-5WITH @ no__t-6AES @ no__t-7128 @ no__t-8GCM @ no__t-9SHA256**, **TLS @ no__t-11ECDHE @ no__t-12ECDSA @ no__ t-13WITH @ no__t-14AES @ no__t-15256 @ no__t-16GCM @ no__t-17SHA384**a **TLS @ NO__T-19RSA @ NO__T-20WITH @ NO__T-21AES @ no__t-22128 @ NO__T-23GCM** @ no__t-24SHA256 jsou pouze ty povolené.
+2. Definujte zásadu protokolu SSL. V následujícím příkladu jsou **tlsv 1.0** a **tlsv 1.1** zakázané a šifrovací sady **TLS\_ecdh\_ECDSA\_se\_aes\_128\_GCM\_SHA256**, **tls\_ecdh\_ECDSA\_s\_AES\_256\_GCM\_** SHA384, a tls\_RSA\_\_**AES\_128\_GCM\_SHA256** jsou jenom ty, které jsou povolené.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw

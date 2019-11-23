@@ -15,7 +15,7 @@ ms.locfileid: "72326642"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Klauzule WHERE v Azure Cosmos DB
 
-Volitelná klauzule WHERE (`WHERE <filter_condition>`) určuje podmínky, které musí zdrojové položky JSON splňovat, aby je mohl dotaz zahrnout do výsledků. Položka JSON musí vyhodnotit zadané podmínky, aby se pro výsledek považovaly za `true`. Vrstva indexu používá klauzuli WHERE k určení nejmenší podmnožiny zdrojových položek, které mohou být součástí výsledku.
+Volitelná klauzule WHERE (`WHERE <filter_condition>`) určuje podmínky, které musí zdrojové položky JSON splňovat, aby se dotaz zahrnul do výsledků. Položka JSON musí vyhodnotit zadané podmínky, které se mají pro výsledek považovat za `true`. Vrstva indexu používá klauzuli WHERE k určení nejmenší podmnožiny zdrojových položek, které mohou být součástí výsledku.
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -29,16 +29,16 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   Určuje podmínku, která má být splněna pro vrácení dokumentů.  
+   Určuje podmínku, která má být splněny pro dokumenty, které se mají vrátit.  
   
 - `<scalar_expression>`  
   
-   Výraz představující hodnotu, která má být vypočítána. Podrobnosti najdete v tématu [skalární výrazy](sql-query-scalar-expressions.md) .  
+   Výraz představující hodnotu, která chcete vypočítat. Podrobnosti najdete v tématu [skalární výrazy](sql-query-scalar-expressions.md) .  
   
 
 ## <a name="remarks"></a>Poznámky
   
-  Aby bylo možné dokument vrátit, je nutné vyhodnotit výraz zadaný jako podmínka filtru na hodnotu true. Pouze logická hodnota true bude splnit podmínku, jakákoli jiná hodnota: undefined, null, false, Number, Array nebo Object nesplňuje podmínku. 
+  Aby dokumentu, který má být vrácen výraz zadaný jako filtr musí podmínka vyhodnocena na hodnotu true. Pouze pro logickou hodnotu true budou splňují zadanou podmínku, jakákoli jiná hodnota: undefined, null, hodnotu false, číslo, pole nebo objekt nebude splňují zadanou podmínku. 
 
 ## <a name="examples"></a>Příklady
 
@@ -64,17 +64,17 @@ Výsledky jsou:
 
 ### <a name="scalar-expressions-in-the-where-clause"></a>Skalární výrazy v klauzuli WHERE
 
-Předchozí příklad ukázal jednoduchý dotaz rovnosti. Rozhraní SQL API podporuje také různé [skalární výrazy](sql-query-scalar-expressions.md). Nejběžněji používané jsou binární a unární výrazy. Odkazy na vlastnosti ze zdrojového objektu JSON jsou také platné výrazy.
+Předchozí příklad ukázal dotaz rovnosti jednoduché. Rozhraní SQL API podporuje také různé [skalární výrazy](sql-query-scalar-expressions.md). Nejčastěji používané jsou binární soubor a unární výrazy. Odkazy na vlastnosti z objektu JSON zdroje jsou také výrazy platný.
 
 Můžete použít následující podporované binární operátory:  
 
 |**Typ operátoru**  | **Hodnoty** |
 |---------|---------|
-|Průměr | +,-,*,/,% |
-|Číslo2    | \|, &, ^, < <, > >, > > > (s nulovou výplní vpravo Shift) |
-|Biolog    | A, NEBO, NOT      |
-|Porovnání | =,! =, &lt;, &gt;, &lt; =, &gt; =, < > |
-|Řetězec     |  \| @ no__t-1 (zřetězení) |
+|Aritmetické operace | +,-,*,/,% |
+|bitové operace    | \|, &, ^, <<>>,, >>> (výplně nulové posunutí doprava) |
+|Logické    | A, NEBO NE      |
+|Porovnání | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
+|Řetězec     |  \|\| (zřetězení) |
 
 Následující dotazy používají binární operátory:
 
@@ -104,10 +104,10 @@ Můžete také použít unární operátory +,-, ~ a ne v dotazech, jak je znáz
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Odkazy na vlastnosti můžete použít také v dotazech. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí položku JSON obsahující Vlastnost `isRegistered` s hodnotou rovnou `true`. Jakákoli jiná hodnota, například `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>` nebo `<array>`, vyloučí položku z výsledku. 
+Odkazy na vlastnosti můžete použít také v dotazech. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí položku JSON obsahující Vlastnost `isRegistered` s hodnotou rovnou `true`. Jakákoli jiná hodnota, například `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>`nebo `<array>`, vyloučí položku z výsledku. 
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Začínáme](sql-query-getting-started.md)
-- [Ukázky Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Klauzule FROM](sql-query-from.md)
+- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [FROM – klauzule](sql-query-from.md)

@@ -54,8 +54,8 @@ Připojte se ke [konzole sériového portu, otevřete instanci prostředí Power
 
 2. Stáhněte si příslušnou aktualizaci na nový nebo existující datový disk, který je připojený k pracovnímu virtuálnímu počítači ze stejné oblasti:
 
-   - **10.0.14393.594**: [](https://support.microsoft.com/help/4073562)KB4073562 nebo novější aktualizace
-   - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) nebo novější aktualizace
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) nebo pozdější aktualizace
+   - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) nebo pozdější aktualizace
 
 3. Odpojte disk s nástrojem od pracovního virtuálního počítače a pak ho připojte k poškozenému virtuálnímu počítači.
 
@@ -79,7 +79,7 @@ Připojte se ke [konzole sériového portu, otevřete instanci prostředí Power
 
 5. Na záchranném virtuálním počítači spusťte Editor registru (Regedit. exe).
 
-6. Vyberte klíč **HKEY_LOCAL_MACHINE** a v nabídce **Vyberte možnost** > **Načíst podregistr** .
+6. Vyberte **HKEY_LOCAL_MACHINE** klíč a potom z nabídky vyberte **soubor** > **Načíst podregistr** .
 
 7. Vyhledejte systémový soubor ve složce **\Windows\System32\config** .
 
@@ -97,8 +97,8 @@ Připojte se ke [konzole sériového portu, otevřete instanci prostředí Power
 
 12. Stáhněte si příslušnou aktualizaci:
 
-    - **10.0.14393.594**: [](https://support.microsoft.com/help/4073562)KB4073562 nebo novější aktualizace
-    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) nebo novější aktualizace
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) nebo pozdější aktualizace
+    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) nebo pozdější aktualizace
 
 13. Připojte systémový disk jako datový disk na záchranném VIRTUÁLNÍm počítači, na kterém si můžete stáhnout aktualizaci.
 
@@ -116,6 +116,6 @@ Připojte se ke [konzole sériového portu, otevřete instanci prostředí Power
 
 16. [Odpojte systémový disk a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 
 Pokud stále potřebujete pomoc, obraťte se na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , která vám umožní rychle vyřešit potíže.

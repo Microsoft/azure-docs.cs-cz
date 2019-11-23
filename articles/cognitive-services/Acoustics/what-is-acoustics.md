@@ -31,17 +31,17 @@ Cloudové inovace s využitím cloudu jsou v rámci tradičních konceptů návr
 ![Animace ukazující horizontální 2D řez šíření vlny prostřednictvím scény](media/wave-simulation.gif)
 
 ## <a name="video-presentation-from-gdc-2019-30-min"></a>Prezentace videa z GDC 2019 (~ 30 min)
-[Video o akustické @no__t 1Project](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Přehrát video kliknutím")
+[Video o akustickém projektu ![](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Přehrát video kliknutím")
 
-## <a name="setup"></a>Instalace
+## <a name="setup"></a>Nastavení
 Cloudová [integrace Unity](unity-integration.md) je přetažena myší a obsahuje modul plug-in pro zvukové moduly Unity. Rozšiřte ovládací prvky zdroje zvuku ve službě Unity tím, že připojíte komponentu C# ovládacích prvků projekt ke každému zvukovému objektu.
 
 [Unreal integrace projektu](unreal-integration.md) zahrnuje editory a herní moduly plug-in pro Unreal a modul plug-in Wwise mixer. Vlastní zvuková komponenta rozšiřuje známé funkce Wwise v rámci Unreal s ovládacími prvky návrhu pro živé akustické práci. Ovládací prvky návrhu jsou také zpřístupněny v Wwise modulu plug-in směšovače.
 
 ## <a name="workflow"></a>Pracovní postup
 * **Před zanesli:** Začněte nastavením zanesli, a to tak, že vyberete, který geometrii reaguje na akustické, například se ignorováním lehkých hřídelí. Pak upravte automatické přiřazení materiálu a vyberte navigační oblasti pro vzorkování naslouchacího procesu. Neexistují žádné ruční označení pro zóny reverb/Portal nebo místnost.
-* **Zanesli** Krok analýzy se spouští místně, který provádí voxelization a další geometrickou analýzu scény na základě výše uvedených výběrů. Výsledky jsou vizuální editory pro ověření nastavení scény. Při odesílání zanesli se data Voxel odesílají do Azure a Vy se dostanete ke zvukovému prostředku.
-* **Runtime** Načte Asset do vaší úrovně a Vy jste připraveni naslouchat akustickým hladinám na úrovni. Navrhněte akustické akustické využití v editoru pomocí podrobnějších ovládacích prvků pro zdroj. Ovládací prvky lze také řídit pomocí skriptování na úrovni.
+* **Zanesli:** Krok analýzy se spouští místně, který provádí voxelization a další geometrickou analýzu scény na základě výše uvedených výběrů. Výsledky jsou vizuální editory pro ověření nastavení scény. Při odesílání zanesli se data Voxel odesílají do Azure a Vy se dostanete ke zvukovému prostředku.
+* **Modul runtime:** Načte Asset do vaší úrovně a Vy jste připraveni naslouchat akustickým hladinám na úrovni. Navrhněte akustické akustické využití v editoru pomocí podrobnějších ovládacích prvků pro zdroj. Ovládací prvky lze také řídit pomocí skriptování na úrovni.
 
 ## <a name="runtime-platforms"></a>Běhové platformy
 Moduly plug-in pro modul runtime v projektu se teď dají nasadit na tyto platformy:
@@ -55,7 +55,7 @@ Modul plug-in Editor akustického projektu je k dispozici pro následující pla
 * Windows
 * MacOS (jenom Unity)
 
-## <a name="download"></a>Ke stažení
+## <a name="download"></a>Stáhnout
 * [Modul plug-in a ukázky pro projekt akustické Unity](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
 * [Projekt akustické Unreal & moduly plug-in a ukázky Wwise](https://www.microsoft.com/download/details.aspx?id=58090)
   * V případě binárních souborů Xbox a další podpory kontaktujte nás prostřednictvím [fóra](https://github.com/microsoft/ProjectAcoustics/issues).

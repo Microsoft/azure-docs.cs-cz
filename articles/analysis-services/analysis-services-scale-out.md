@@ -109,10 +109,10 @@ Vrátit stavové kódy:
 
 |Kód  |Popis  |
 |---------|---------|
-|– 1     |  Neplatný       |
+|-1     |  Neplatný       |
 |0     | Replikaci        |
 |1     |  Dosazování dat       |
-|2     |   Dokončeno       |
+|2     |   Dokončení       |
 |3     |   Selhalo      |
 |4     |    Dokončuje     |
 |||

@@ -30,7 +30,7 @@ Po dobu osmi minut a ukázku této funkce se podívejte na toto video:
 
 Návratový typ funkce Azure Function musí být platným `JObject`. ( *Mějte na paměti* , že [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) není `JObject`.) Libovolný návratový typ jiný než `JObject` se nezdařil a vyvolává obsah odpovědi na chyb uživatele není *platný JObject*.
 
-| **Vlastnost** | **Popis** | **Požadovanou** |
+| **Vlastnost** | **Popis** | **Požadováno** |
 | --- | --- | --- |
 | type   | Vlastnost Type musí být nastavená na: **AzureFunction** . | ano |
 | Adresa URL aplikace Function App | Adresa URL pro Azure Function App. Formát je `https://<accountname>.azurewebsites.net`. Tato adresa URL je hodnota v sekci **URL** při zobrazení Function App v Azure Portal  | ano |
@@ -39,11 +39,11 @@ Návratový typ funkce Azure Function musí být platným `JObject`. ( *Mějte n
 
 ## <a name="azure-function-activity"></a>Aktivita funkce Azure
 
-| **Vlastnost**  | **Popis** | **Povolené hodnoty** | **Požadovanou** |
+| **Vlastnost**  | **Popis** | **Povolené hodnoty** | **Požadováno** |
 | --- | --- | --- | --- |
 | jméno  | Název aktivity v kanálu  | Řetězec | ano |
 | type  | Typ aktivity je "AzureFunctionActivity". | Řetězec | ano |
-| Propojená služba | Propojená služba funkce Azure pro odpovídající Function App Azure  | Odkaz na propojenou službu | ano |
+| propojená služba | Propojená služba funkce Azure pro odpovídající Function App Azure  | Odkaz na propojenou službu | ano |
 | Název funkce  | Název funkce v Azure Function App, kterou tato aktivita volá | Řetězec | ano |
 | method  | Metoda REST API pro volání funkce | Typy podporované řetězcem: "GET", "POST", "PUT"   | ano |
 | záhlaví  | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: "hlavičky": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne |

@@ -30,7 +30,7 @@ Pomocí Azure Portal otevřete lístek podpory s zákaznickými službami a podp
     1. Vyberte své předplatné. 
     1. V části **Služba**vyberte **Azure FXT Edge souborového**. Možná budete muset kliknout na ovládací prvek filtru **všechny služby** a najít ho. 
     1. Zadejte **Souhrn** a vyberte **typ problému**. 
-    @no__t 0Screenshot prázdného formuláře žádosti o podporu @ no__t-1 
+    ![snímku prázdného formuláře žádosti o podporu](media/fxt-support-populated.png) 
     1. Pokračujte kliknutím na tlačítko **Další** . 
 1. Na kartě **Podrobnosti** přidejte další informace o problému a o tom, jak vás kontaktovat. Můžete nahrát soubor, který se vztahuje k problému. 
 1. V části **Revize + vytvořit**zkontrolujte informace a kliknutím na tlačítko **vytvořit** odešlete žádost.

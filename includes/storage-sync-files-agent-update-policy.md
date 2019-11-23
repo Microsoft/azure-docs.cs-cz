@@ -14,8 +14,8 @@ ms.locfileid: "72391600"
 Agent Azure File Sync se pravidelně aktualizuje, aby bylo možné přidat nové funkce a vyřešit problémy. Doporučujeme, abyste nakonfigurovali Microsoft Update, abyste získali aktualizace pro agenta Azure File Sync, jak jsou k dispozici.
 
 #### <a name="major-vs-minor-agent-versions"></a>Hlavní verze agentů vs.
-* Hlavní verze agenta často obsahují nové funkce a v první části čísla verze se zvyšuje číslo. Například: \*2. \*. \* @ no__t-3
-* Dílčí verze agenta se také nazývají "opravy" a jsou vydávány častěji než hlavní verze. Často obsahují opravy chyb a menší vylepšení, ale žádné nové funkce. Například: \* @ no__t-1.3. \* @ no__t-3
+* Hlavní verze agenta často obsahují nové funkce a v první části čísla verze se zvyšuje číslo. Například: \*2.\*.\*\*
+* Dílčí verze agenta se také nazývají "opravy" a jsou vydávány častěji než hlavní verze. Často obsahují opravy chyb a menší vylepšení, ale žádné nové funkce. Například: \*\*. 3.\*\*
 
 #### <a name="upgrade-paths"></a>Cesty upgradu
 Existují čtyři schválené a testované způsoby, jak nainstalovat aktualizace agenta Azure File Sync. 
@@ -61,7 +61,7 @@ Azure File Sync je cloudová služba, která průběžně přináší nové funk
 - Hlavní verze agenta se podporují aspoň po dobu šesti měsíců od data prvotní verze.
 - U podpory hlavních verzí agentů garantujeme, že se překrývá aspoň tři měsíce. 
 - Upozornění se vydávají pro registrované servery s použitím již neplatného agenta, který uplyne nejméně tři měsíce před vypršením platnosti. Můžete zjistit, jestli registrovaný Server používá starší verzi agenta v části registrované servery služby synchronizace úložiště.
-- Životnost dílčí verze agenta je svázána s přidruženou hlavní verzí. Například když se uvolní Agent verze 3,0, verze agenta 2. \* se nastaví tak, aby vyprší dohromady.
+- Životnost dílčí verze agenta je svázána s přidruženou hlavní verzí. Například když se uvolní Agent verze 3,0, verze agenta 2. u\* bude vše nastavené na vypršení platnosti dohromady.
 
 > [!Note]
 > Instalace verze agenta s upozorněním na vypršení platnosti zobrazí upozornění, ale bude úspěšná. Pokus o instalaci nebo připojení pomocí verze agenta s vypršenou platností není podporován a bude zablokován.

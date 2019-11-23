@@ -23,7 +23,7 @@ V rámci úlohy Spark budete analyzovat data předplatného rádiového kanálu,
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvořte účet úložiště Data Lake Gen2. Další informace najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
 
@@ -46,7 +46,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Analýza** > **Azure Databricks**.
 
-    ![Databricks na webu Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Databricks na webu Azure Portal")
+    ![Databricks na portálu Azure](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Databricks na portálu Azure")
 
 2. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
 
@@ -90,7 +90,7 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
 
 ## <a name="create-storage-account-container"></a>Vytvořit kontejner účtu úložiště
 
-V této části nejprve vytvoříte v pracovním prostoru Azure Databricks poznámkový blok a pak spustíte fragmenty kódu, kterými nakonfigurujete účet úložiště.
+V této části nejprve vytvoříte v pracovním prostoru Azure Databricks poznámkový blok a pak spustíte fragmenty kódu, které nakonfigurují účet úložiště.
 
 1. Na portálu [Azure Portal](https://portal.azure.com) přejděte do vytvořeného pracovního prostoru Azure Databricks a vyberte **Spustit pracovní prostor**.
 
@@ -102,7 +102,7 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
 
     ![Vytvoření poznámkového bloku v Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Vytvoření poznámkového bloku v Databricks")
 
-    Vyberte **Create** (Vytvořit).
+    Vyberte **Vytvořit**.
 
 4. Zkopírujte následující blok kódu a vložte ho do první buňky, ale tento kód ještě nespouštějte.
 
@@ -121,7 +121,7 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
     > [!NOTE]
     > Tento blok kódu přímo přistupuje k Data Lake koncovému bodu Gen2 pomocí OAuth, ale existují i jiné způsoby, jak připojit pracovní prostor datacihly k vašemu účtu Data Lake Storage Gen2. Kontejner můžete například připojit pomocí protokolu OAuth nebo použít přímý přístup se sdíleným klíčem. <br>Příklady těchto přístupů najdete v [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks.
 
-5. V tomto bloku kódu Nahraďte zástupné hodnoty `storage-account-name`, `appID`, `password` a `tenant-id` v tomto bloku kódu hodnotami, které jste shromáždili při vytváření instančního objektu. Nastavte zástupný symbol `container-name` na libovolný název, který chcete kontejneru přidělit.
+5. V tomto bloku kódu nahraďte `storage-account-name`, `appID`, `password`a `tenant-id` hodnoty zástupných symbolů v tomto bloku kódu hodnotami, které jste shromáždili při vytváření instančního objektu. Nastavte hodnotu zástupný symbol `container-name` na libovolný název, který chcete kontejneru přidělit.
 
     > [!NOTE]
     > V nastavení produkčního prostředí zvažte uložení ověřovacího klíče v Azure Databricks. Pak místo ověřovacího klíče přidejte do bloku kódu vyhledávací klíč. Po dokončení tohoto rychlého startu se můžete podívat na příklady tohoto přístupu v článku věnovaném [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) na webu Azure Databricks.
@@ -190,7 +190,7 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
     - V poli **Values** (Hodnoty) nastavte hodnotu **level** (Úroveň).
     - V poli **Aggregation** (Agregace) vyberte možnost **COUNT** (Počet).
 
-6. Klikněte na **Použít**.
+6. Klikněte na tlačítko **Použít**.
 
 7. Výstup bude obsahovat vizuální reprezentaci znázorněnou na následujícím snímku obrazovky:
 
@@ -202,7 +202,7 @@ Až budete s tímto článkem hotoví, můžete cluster ukončit. V pracovním p
 
 ![Zastavení clusteru Databricks](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
 
-Pokud neukončíte ručně cluster, který se automaticky zastaví, za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_ @ no__t-2 minuty nečinnosti** . Pokud jste tuto možnost nastavili, cluster se po stanovené době nečinnosti zastaví.
+Pokud ručně neukončíte cluster, který se automaticky zastaví, za předpokladu, že jste při vytváření clusteru vybrali zaškrtávací políčko **ukončit po \_\_ minut při nečinnosti** . Pokud jste tuto možnost nastavili, cluster se po stanovené době nečinnosti zastaví.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -39,7 +39,7 @@ Pokud chcete začít, ujistěte se, že jste správně nastavili v C++ sadě Vis
 
 Potom vytvořte projekt:
 
-1. V řádku nabídek sady Visual Studio vyberte **soubor** > **Nový** **projekt**  >  pro zobrazení okna **vytvořit nový projekt** .
+1. V řádku nabídek sady Visual Studio vyberte **soubor** > **Nový** > **projekt** . zobrazí se okno **vytvořit nový projekt** .
 
    ![Vytvoření nového projektu C++ – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
 
@@ -53,7 +53,7 @@ Potom vytvořte projekt:
 
 1. V části **umístění**přejděte na a vyberte nebo vytvořte složku, do které chcete projekt uložit.
 
-Teď vyberte cílovou architekturu platformy. Na panelu nástrojů sady Visual Studio Najděte rozevírací seznam **platformy řešení** . (Pokud ji nevidíte, vyberte možnost **zobrazit** > **panely nástrojů**@no__t **-3. zobrazí se panel** nástrojů obsahující **platformy řešení**.) Pokud používáte 64-bit Windows, v rozevíracím seznamu vyberte **x64** . 64-bitová okna můžou spouštět i 32 aplikace, takže pokud chcete, můžete vybrat možnost **x86** .
+Teď vyberte cílovou architekturu platformy. Na panelu nástrojů sady Visual Studio Najděte rozevírací seznam **platformy řešení** . (Pokud ji nevidíte, vyberte možnost **zobrazit** > **panely nástrojů** > **Standard** a zobrazte panel nástrojů obsahující **platformy řešení**.) Pokud používáte 64-bit Windows, v rozevíracím seznamu vyberte **x64** . 64-bitová okna můžou spouštět i 32 aplikace, takže pokud chcete, můžete vybrat možnost **x86** .
 
 ### <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
@@ -67,7 +67,7 @@ Nakonec nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/n
 
 1. Ve **zdroji balíčku**vyberte možnost **NuGet.org**.
 
-1. Do **vyhledávacího** pole zadejte `Microsoft.CognitiveServices.Speech` a po zobrazení ve výsledcích hledání zvolte tento balíček.
+1. Do **vyhledávacího** pole zadejte `Microsoft.CognitiveServices.Speech`a potom po zobrazení ve výsledcích hledání zvolte tento balíček.
 
    ![Instalace balíčku Microsoft. Cognitiveservices Account C++ . Speech – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
 

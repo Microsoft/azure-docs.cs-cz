@@ -37,11 +37,11 @@ Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windo
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
-* [Nainstalovat Git](https://git-scm.com/).
+* [Nainstalovat Git](https://git-scm.com/)
 * [Nainstalovat .NET Core](https://www.microsoft.com/net/core/).
 
 ## <a name="create-local-aspnet-core-app"></a>Vytvoření místní aplikace ASP.NET Core
@@ -98,7 +98,7 @@ V tomto kroku nasadíte aplikaci .NET Core připojenou k databázi SQL do služb
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
-### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
+### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
@@ -158,7 +158,7 @@ V místním okně terminálu znovu spusťte ukázkovou aplikaci.
 dotnet run
 ```
 
-Přejděte do aplikace v prohlížeči na adrese `http://localhost:5000`. Otevřete okno vývojářské nástroje v prohlížeči (`Ctrl` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 v Chrome pro Windows) a prozkoumejte kartu **Konzola** . Nyní by se měla zobrazit chybová zpráva `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
+Přejděte do aplikace v prohlížeči na adrese `http://localhost:5000`. Otevřete okno vývojářské nástroje v prohlížeči (`Ctrl`+`Shift`+`i` v Chrome pro Windows) a prozkoumejte kartu **Konzola** . Nyní by se měla zobrazit chybová zpráva `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
 
 ![Chyba CORS v prohlížeči](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 

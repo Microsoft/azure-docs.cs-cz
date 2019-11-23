@@ -26,10 +26,10 @@ ms.locfileid: "72388987"
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Přehled
-Tento kurz se zabývá funkcí offline synchronizace pro Azure Mobile Apps pro Android. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací @ no__t-0viewing, přidáváním nebo úpravou dat @ no__t-1even, když není k dispozici žádné síťové připojení. Změny jsou uloženy v místní databázi. Jakmile je zařízení zase online, tyto změny se synchronizují se vzdáleným back-endu.
+Tento kurz se zabývá funkcí offline synchronizace pro Azure Mobile Apps pro Android. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací&mdash;zobrazení, přidání nebo úprava dat&mdash;i v případě, že není k dispozici žádné síťové připojení. Změny jsou uloženy v místní databázi. Jakmile je zařízení zase online, tyto změny se synchronizují se vzdáleným back-endu.
 
 Pokud je to vaše první prostředí s Azure Mobile Apps, měli byste nejdřív dokončit kurz [Vytvoření aplikace pro Android]. Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, musíte do svého projektu přidat balíčky rozšíření pro přístup k datům. Další informace o balíčcích rozšíření serveru najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
@@ -40,10 +40,10 @@ Offline synchronizace vám umožní číst a zapisovat z *synchronizační tabul
 
 Pokud chcete vložit a stáhnout změny mezi zařízením a Mobile Services Azure, použijte *kontext synchronizace* (*MobileServiceClient. SyncContext*), který se inicializuje s místní databází pro místní ukládání dat.
 
-1. V `TodoActivity.java` Odkomentujte stávající definici `mToDoTable` a odkomentujte verzi synchronizační tabulky:
+1. V `TodoActivity.java`zakomentujte existující definici `mToDoTable` a odkomentujte verzi synchronizační tabulky:
    
         private MobileServiceSyncTable<ToDoItem> mToDoTable;
-2. V metodě `onCreate` Odkomentujte existující inicializaci `mToDoTable` a odkomentujte tuto definici:
+2. V metodě `onCreate` přidejte komentář k existující inicializaci `mToDoTable` a odkomentujte tuto definici:
    
         mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
 3. V `refreshItemsFromTable` Odkomentujte definici `results` a odkomentujte tuto definici:
@@ -91,14 +91,14 @@ Po stisknutí tohoto tlačítka se spustí nová úloha na pozadí. Nejprve poš
 2. Přidejte některé položky *TODO* nebo označte některé položky jako dokončené. Ukončete zařízení nebo simulátor (nebo aplikaci vynuceně ukončete) a restartujte ji. Ověřte, že vaše změny byly na zařízení trvalé, protože jsou uložené v místním úložišti SQLite.
 3. Zobrazte obsah tabulky Azure *TodoItem* buď pomocí nástroje SQL, jako je například *SQL Server Management Studio*, nebo klienta REST, jako je například *Fiddler* nebo *Poster*. Ověřte, *že se nové* položky nesynchronizoval na server.
    
-       + Pro back-end Node. js přejděte na [Azure Portal](https://portal.azure.com/)a v back-endu mobilní aplikace klikněte na **snadné tabulky** > **TodoItem** a zobrazte obsah tabulky `TodoItem`.
+       + Pro back-end Node. js přejděte na [Azure Portal](https://portal.azure.com/)a v back-endu mobilní aplikace klikněte na možnost **jednoduché tabulky** > **TodoItem** . zobrazí se obsah tabulky `TodoItem`.
        + V případě back-endu .NET můžete zobrazit obsah tabulky buď pomocí nástroje SQL, jako je *SQL Server Management Studio*, nebo klienta REST, jako je *Fiddler* nebo *post*.
 4. Zapnout Wi-Fi v zařízení nebo simulátoru. Potom stiskněte tlačítko **aktualizovat** .
 5. Zobrazte data TodoItem znovu v Azure Portal. Nyní by se měla zobrazit nová a změněná TodoItems.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další prostředky
 * [Synchronizace offline dat v prostředí Azure Mobile Apps]
-* [Cloudové pokrytí: offline synchronizace v Azure Mobile Services] \(note: video je na Mobile Services, ale offline synchronizace funguje podobným způsobem jako v Azure Mobile Apps @ no__t-2.
+* [Cloudové pokrytí: offline synchronizace v Azure Mobile Services] \(Poznámka: video je na Mobile Services, ale offline synchronizace funguje podobným způsobem jako v Azure Mobile Apps\)
 
 <!-- URLs. -->
 

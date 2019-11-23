@@ -87,22 +87,22 @@ Když je povoleno úložiště dotazů, ukládá data v oknech agregace 15 minut
 
 Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující možnosti.
 
-| **Ukazatele** | **Popis** | **Výchozí** | **Rozsah** |
+| **Parametr** | **Popis** | **Default** | **Rozsah** |
 |---|---|---|---|
-| query_store_capture_mode | Zapněte nebo vypněte funkci úložiště dotazů na základě hodnoty. Poznámka: Pokud je performance_schema VYPNUTý, zapnutí query_store_capture_mode zapíná performance_schema a podmnožinu nástrojů schématu výkonu, které jsou pro tuto funkci nutné. | VŠEM | ŽÁDNÉ, VŠE |
+| query_store_capture_mode | Zapněte nebo vypněte funkci úložiště dotazů na základě hodnoty. Poznámka: Pokud je performance_schema VYPNUTá, zapnutí query_store_capture_mode zapnete performance_schema a podmnožinu nástrojů schématu výkonu, které jsou pro tuto funkci nutné. | VŠEM | ŽÁDNÉ, VŠE |
 | query_store_capture_interval | Interval zachycení úložiště dotazů je v řádu minut. Umožňuje zadat interval, ve kterém jsou metriky dotazu agregovány. | 15 | 5 - 60 |
 | query_store_capture_utility_queries | Zapnutí nebo vypnutí zaznamenání všech obslužných dotazů, které jsou spuštěny v systému. | NO | ANO, NE |
 | query_store_retention_period_in_days | Časový interval ve dnech, po který se mají uchovávat data v úložišti dotazů | 7 | 1 - 30 |
 
 Následující možnosti platí konkrétně pro čekání na statistiku.
 
-| **Ukazatele** | **Popis** | **Výchozí** | **Rozsah** |
+| **Parametr** | **Popis** | **Default** | **Rozsah** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Umožňuje zapnout nebo vypnout statistiku čekání. | NTATO | ŽÁDNÉ, VŠE |
 | query_store_wait_sampling_frequency | Mění frekvenci příkazu Wait-vzorkování v sekundách. 5 až 300 sekund. | 30 | 5-300 |
 
 > [!NOTE]
-> V současné době **query_store_capture_mode** nahrazuje tuto konfiguraci, a to znamená, že **query_store_capture_mode** i **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** musí být povolené pro všechny, aby statistiky čekání fungovaly. Pokud je **query_store_capture_mode** vypnutý, vyčkejte na vypínání statistik, protože statistiky čekání využívají performance_schema Enabled a query_text zachycené úložištěm dotazů.
+> V současné době **query_store_capture_mode** nahrazuje tuto konfiguraci, což znamená, že je nutné povolit obě **QUERY_STORE_CAPTURE_MODE** a **query_store_wait_sampling_capture_mode** všem, aby statistiky čekání fungovaly. Pokud je **query_store_capture_mode** vypnutý, vystaví se nevyřízená statistika, protože statistiky čekání využívají performance_schema povolené a query_text zachycené úložištěm dotazů.
 
 K získání nebo nastavení jiné hodnoty parametru použijte [Azure Portal](howto-server-parameters.md) nebo  [Azure CLI](howto-configure-server-parameters-using-cli.md) .
 
@@ -112,7 +112,7 @@ Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zo
 
 Dotazy jsou normalizovány tím, že si po odebrání literálů a konstant vyhledají jejich strukturu. Pokud jsou dva dotazy stejné s výjimkou hodnot literálů, budou mít stejnou hodnotu hash.
 
-### <a name="mysqlquery_store"></a>MySQL. query_store
+### <a name="mysqlquery_store"></a>mysql.query_store
 
 Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele a ID dotazu je k dispozici jeden řádek.
 
@@ -123,7 +123,7 @@ Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedine�
 | `timestamp_id` | časové razítko| NO| Časové razítko, ve kterém je dotaz spuštěn. To je založené na konfiguraci query_store_interval|
 | `query_digest_text`| longtext| NO| Normalizovaný text dotazu po odebrání všech literálů|
 | `query_sample_text` | longtext| NO| První vzhled skutečného dotazu s literály|
-| `query_digest_truncated` | 40bitového| Ano| Určuje, zda byl text dotazu zkrácen. Pokud je dotaz delší než 1 KB, hodnota bude Ano.|
+| `query_digest_truncated` | bit| Ano| Určuje, zda byl text dotazu zkrácen. Pokud je dotaz delší než 1 KB, hodnota bude Ano.|
 | `execution_count` | bigint (20)| NO| Počet spuštění dotazu pro toto ID časového razítka/během nakonfigurovaného časového intervalu|
 | `warning_count` | bigint (20)| NO| Počet upozornění, které tento dotaz vygeneroval během interního|
 | `error_count` | bigint (20)| NO| Počet chyb, které tento dotaz vygeneroval během intervalu|
@@ -145,7 +145,7 @@ Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedine�
 | `first_seen` | časové razítko| NO| První výskyt dotazu (UTC) během okna agregace|
 | `last_seen` | časové razítko| NO| Poslední výskyt dotazu (UTC) během tohoto okna agregace|
 
-### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
 Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele, ID dotazu a událost je jeden řádek.
 
@@ -161,7 +161,7 @@ Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro ka�
 | `count_star` | bigint (20) | NO| Počet událostí čekání vzorků vydaných během intervalu pro dotaz |
 | `sum_timer_wait_ms` | double | NO| Celková doba čekání (v milisekundách) tohoto dotazu během intervalu |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 
 | **Název**| **Popis** |
 |---|---|

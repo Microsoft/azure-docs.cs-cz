@@ -19,7 +19,7 @@ ms.locfileid: "72035196"
 
 Naučte se připojit cluster Apache Spark ve službě Azure HDInsight se službou Azure SQL Database a pak číst, zapisovat a streamovat data do databáze SQL. Pokyny v tomto článku používají [Jupyter notebook](https://jupyter.org/) ke spouštění fragmentů kódu Scala. Můžete ale vytvořit samostatnou aplikaci v Scala nebo Pythonu a provádět stejné úlohy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Azure HDInsight Spark cluster *.  Postupujte podle pokynů v tématu [Vytvoření clusteru Apache Spark v HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -107,7 +107,7 @@ V této části si přečtete data z tabulky (například **tabulky SalesLT. Add
 
 ## <a name="write-data-into-azure-sql-database"></a>Zápis dat do služby Azure SQL Database
 
-V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoření tabulky ve službě Azure SQL Database a jejímu naplnění dat. Vzorový soubor CSV (**TVK. csv**) je k dispozici na všech clusterech HDInsight na `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`.
+V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoření tabulky ve službě Azure SQL Database a jejímu naplnění dat. Ukázkový soubor CSV (**TVK. csv**) je k dispozici na všech clusterech HDInsight na `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`.
 
 1. V novém poznámkovém bloku Jupyter vložte v buňce kódu následující fragment kódu a nahraďte zástupné hodnoty hodnotami pro vaši databázi SQL Azure.
 
@@ -135,16 +135,16 @@ V této části použijeme ukázkový soubor CSV dostupný v clusteru k vytvoře
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-1. Pomocí `readDf` dataframe vytvořte dočasnou tabulku `temphvactable`. Pak použijte dočasnou tabulku k vytvoření tabulky podregistru `hvactable_hive`.
+1. Pomocí `readDf` dataframe vytvořte dočasnou tabulku `temphvactable`. Pak pomocí dočasné tabulky vytvořte tabulku podregistru `hvactable_hive`.
 
        readDf.createOrReplaceTempView("temphvactable")
        spark.sql("create table hvactable_hive as select * from temphvactable")
 
-1. Nakonec použijte tabulku podregistr k vytvoření tabulky ve službě Azure SQL Database. Následující fragment kódu vytvoří ve službě Azure SQL Database `hvactable`.
+1. Nakonec použijte tabulku podregistr k vytvoření tabulky ve službě Azure SQL Database. Následující fragment kódu vytvoří `hvactable` ve službě Azure SQL Database.
 
        spark.table("hvactable_hive").write.jdbc(jdbc_url, "hvactable", connectionProperties)
 
-1. Připojte se ke službě Azure SQL Database pomocí SSMS a ověřte, že se zde zobrazuje @no__t – 0.
+1. Připojte se ke službě Azure SQL Database pomocí SSMS a ověřte, že se zobrazí `dbo.hvactable`.
 
     a. Spusťte SSMS a připojte se ke službě Azure SQL Database zadáním podrobností o připojení, jak je znázorněno na snímku obrazovky níže.
 
@@ -178,7 +178,7 @@ V této části streamuje data do sady **TVK** , kterou jste už vytvořili ve s
        import org.apache.spark.sql.streaming._
        import java.sql.{Connection,DriverManager,ResultSet}
 
-1. Data z **TVK. csv** se streamují do služby TVK. V clusteru je k dispozici soubor TVK. csv na `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`. V následujícím fragmentu kódu nejprve získáme schéma dat, která se mají streamovat. Pak vytvoříme datový proud streamování pomocí tohoto schématu. Vložte fragment kódu do buňky kódu a stisknutím klávesy **SHIFT + ENTER** spusťte.
+1. Data z **TVK. csv** se streamují do služby TVK. Soubor TVK. CSV je k dispozici v clusteru na `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`. V následujícím fragmentu kódu nejprve získáme schéma dat, která se mají streamovat. Pak vytvoříme datový proud streamování pomocí tohoto schématu. Vložte fragment kódu do buňky kódu a stisknutím klávesy **SHIFT + ENTER** spusťte.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 

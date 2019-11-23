@@ -48,7 +48,7 @@ V případě selhání instalace konektoru je hlavní příčinou obvykle jedna 
 
 2.  Pokud některý z těchto portů neproběhne úspěšně, ověřte, zda má server firewall nebo back-end proxy přístup k požadovaným doménám a portům v tématu [Příprava místního prostředí](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
-3.  Otevřete prohlížeč (oddělený tabulátorem) a navštivte následující webovou stránku: <https://login.microsoftonline.com>. Ujistěte se, že se k této stránce můžete přihlásit.
+3.  Otevřete prohlížeč (oddělený tabulátorem) a přejít na následující webovou stránku: <https://login.microsoftonline.com>, ujistěte se, že se k této stránce můžete přihlásit.
 
 ## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Ověření podpory součástí počítačů a back-endu pro certifikát důvěryhodnosti proxy aplikací
 
@@ -71,9 +71,9 @@ V případě selhání instalace konektoru je hlavní příčinou obvykle jedna 
 
 **Ověření správnosti přihlašovacích údajů:**
 
-Připojte se k <https://login.microsoftonline.com> a použijte stejné přihlašovací údaje. Ujistěte se, že přihlášení bylo úspěšné. Roli uživatele můžete ověřit tak, že v části **Azure Active Directory** - @ no__t-2 **uživatelé a skupiny** - @ No__t-5 **Všichni uživatelé**. 
+Připojte se k <https://login.microsoftonline.com> a používejte stejné přihlašovací údaje. Ujistěte se, že přihlášení bylo úspěšné. Roli uživatele můžete ověřit tak, že na **Azure Active Directory** -&gt; **uživatelé a skupiny** -&gt; **Všichni uživatelé**. 
 
 V výsledné nabídce vyberte svůj uživatelský účet a potom zadejte "role adresáře". Ověřte, jestli je vybraná role Správce aplikací. Pokud nemůžete získat přístup k žádné ze stránek tohoto postupu, nemáte požadovanou roli.
 
 ## <a name="next-steps"></a>Další kroky
-[Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)
+[Principy konektorů Proxy aplikací Azure AD](application-proxy-connectors.md)

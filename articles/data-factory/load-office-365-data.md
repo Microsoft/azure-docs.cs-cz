@@ -73,7 +73,7 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
 
     ![Nová propojená služba Office 365](./media/load-office-365-data/new-office-365-linked-service.png)
  
-7. Po vytvoření propojené služby se vrátíte do nastavení datové sady. Vedle pole **tabulka**vyberte šipku dolů a rozbalte seznam dostupných datových sad Office 365 a vyberte "BasicDataSet_v0". Message_v0 z rozevíracího seznamu:
+7. Po vytvoření propojené služby se vrátíte do nastavení datové sady. Vedle pole **tabulka**vyberte šipku dolů a rozbalte seznam dostupných datových sad sady Office 365 a vyberte možnost "BasicDataSet_v0. Message_v0 v rozevíracím seznamu:
 
     ![Konfigurační tabulka sady Office 365](./media/load-office-365-data/edit-dataset.png)
 

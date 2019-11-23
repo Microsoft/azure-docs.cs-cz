@@ -24,8 +24,8 @@ ms.locfileid: "72173449"
 # <a name="service-remoting-in-c-with-reliable-services"></a>Vzdálená komunikace služby C# v nástroji s Reliable Services
 
 > [!div class="op_single_selector"]
-> * [C#ve Windows](service-fabric-reliable-services-communication-remoting.md)
-> * [Java v systému Linux](service-fabric-reliable-services-communication-remoting-java.md)
+> * [C# v systému Windows](service-fabric-reliable-services-communication-remoting.md)
+> * [Java v Linuxu](service-fabric-reliable-services-communication-remoting-java.md)
 >
 >
 
@@ -36,7 +36,7 @@ Pro služby, které nejsou vázané na konkrétní komunikační protokol ani z�
 Vzdálenou komunikaci pro službu můžete nastavit ve dvou jednoduchých krocích:
 
 1. Vytvořte rozhraní pro implementaci služby. Toto rozhraní definuje metody, které jsou k dispozici pro vzdálené volání procedur ve vaší službě. Metody musí být asynchronní metody vracející úlohy. Rozhraní musí implementovat `Microsoft.ServiceFabric.Services.Remoting.IService` k signalizaci, že služba má rozhraní vzdálené komunikace.
-2. V rámci služby použijte naslouchací proces vzdálené komunikace. Naslouchací proces vzdálené komunikace je implementace @no__t 0, která poskytuje funkce vzdálené komunikace. Obor názvů `Microsoft.ServiceFabric.Services.Remoting.Runtime` obsahuje metodu rozšíření `CreateServiceRemotingInstanceListeners` pro bezstavové a stavové služby, které lze použít k vytvoření naslouchacího procesu vzdálené komunikace pomocí výchozího přenosového protokolu pro vzdálenou komunikaci.
+2. V rámci služby použijte naslouchací proces vzdálené komunikace. Naslouchací proces vzdálené komunikace je `ICommunicationListener` implementace, která poskytuje funkce pro vzdálenou komunikaci. Obor názvů `Microsoft.ServiceFabric.Services.Remoting.Runtime` obsahuje metodu rozšíření `CreateServiceRemotingInstanceListeners` pro bezstavové a stavové služby, které se dají použít k vytvoření naslouchacího procesu vzdálené komunikace pomocí výchozího přenosového protokolu vzdálené komunikace.
 
 >[!NOTE]
 >Obor názvů `Remoting` je k dispozici jako samostatný balíček NuGet nazvaný `Microsoft.ServiceFabric.Services.Remoting`.
@@ -90,15 +90,15 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ```
 
-Rozhraní vzdálené komunikace šíří výjimky vyvolané službou klientovi. Výsledkem je, že při použití `ServiceProxy`is je klient zodpovědný za zpracování výjimek vyvolaných službou.
+Rozhraní vzdálené komunikace šíří výjimky vyvolané službou klientovi. V důsledku toho se při použití `ServiceProxy`zodpovídá klient za zpracování výjimek vyvolaných službou.
 
 ## <a name="service-proxy-lifetime"></a>Doba života proxy služby
 
-Vytvoření proxy služby je jednoduchá operace, takže můžete vytvořit tolik, kolik potřebujete. Instance proxy služby se dají znovu použít po dobu potřebnou k jejich použití. Pokud vzdálené volání procedury vyvolá výjimku, můžete přesto použít stejnou instanci proxy. Každý proxy server služby obsahuje komunikačního klienta, který slouží k posílání zpráv přes drát. Při vyvolání vzdálených volání se provádí interní kontroly, které určují, jestli je komunikační klient platný. Na základě výsledků těchto kontrol se komunikační klient v případě potřeby znovu vytvoří. Proto pokud dojde k výjimce, nemusíte znovu vytvářet `ServiceProxy`.
+Vytvoření proxy služby je jednoduchá operace, takže můžete vytvořit tolik, kolik potřebujete. Instance proxy služby se dají znovu použít po dobu potřebnou k jejich použití. Pokud vzdálené volání procedury vyvolá výjimku, můžete přesto použít stejnou instanci proxy. Každý proxy server služby obsahuje komunikačního klienta, který slouží k posílání zpráv přes drát. Při vyvolání vzdálených volání se provádí interní kontroly, které určují, jestli je komunikační klient platný. Na základě výsledků těchto kontrol se komunikační klient v případě potřeby znovu vytvoří. Proto pokud dojde k výjimce, není nutné znovu vytvářet `ServiceProxy`.
 
 ### <a name="service-proxy-factory-lifetime"></a>Doba života objektu proxy služby
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) je továrna, která vytváří proxy instance pro různá rozhraní vzdálené komunikace. Pokud k vytvoření proxy serveru použijete rozhraní API `ServiceProxyFactory.CreateServiceProxy`, rozhraní vytvoří proxy služby s jedním objektem.
+[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) je továrna, která vytváří proxy instance pro různá rozhraní vzdálené komunikace. Pokud k vytvoření proxy serveru použijete `ServiceProxyFactory.CreateServiceProxy` rozhraní API, rozhraní vytvoří proxy služby s jedním objektem.
 Je vhodné ho vytvořit ručně, když potřebujete přepsat vlastnosti [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) .
 Vytváření továrny je náročná operace. Objekt pro vytváření proxy služby udržuje interní mezipaměť komunikačního klienta.
 Osvědčeným postupem je, aby objekt pro vytváření objektů proxy služby byl co nejkratší.
@@ -136,7 +136,7 @@ Tyto kroky mění kód šablony pro použití zásobníku v2 pomocí atributu As
    </Resources>
    ```
 
-2. Pomocí metody rozšíření `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` můžete vytvořit naslouchací procesy vzdálené komunikace (stejné pro V1 a v2).
+2. Použijte metodu rozšíření `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` k vytvoření posluchačů vzdálené komunikace (je rovno pro V1 a v2).
 
    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -220,7 +220,7 @@ Tato změna zajistí, že služba naslouchá na naslouchací službě V1 a v2.
     }
     ```
 
-    r. Přidejte atribut assembly do rozhraní vzdálené komunikace, aby používal naslouchací proces V1 a v2 a klienta v2.
+    c. Přidejte atribut assembly do rozhraní vzdálené komunikace, aby používal naslouchací proces V1 a v2 a klienta v2.
     ```csharp
     [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2|RemotingListenerVersion.V1, RemotingClientVersion = RemotingClientVersion.V2)]
 
@@ -229,7 +229,7 @@ Tato změna zajistí, že služba naslouchá na naslouchací službě V1 a v2.
 Tento krok zajistí, že klient používá sadu v2 Stack.
 V klientském projektu/službě se nevyžaduje žádná změna. Vytváření klientských projektů s aktualizovaným sestavením rozhraní je dostatečné.
 
-3. Tento krok je nepovinný. Použijte atribut naslouchacího procesu v2 a potom upgradujte službu v2.
+3. Tento krok je volitelný. Použijte atribut naslouchacího procesu v2 a potom upgradujte službu v2.
 Tento krok zajistí, že služba naslouchá jenom na naslouchací službě v2.
 
     ```csharp
@@ -244,7 +244,7 @@ Tento krok zajistí, že služba naslouchá jenom na naslouchací službě v2.
 
 ### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>Použití atributu Assembly pro použití zásobníku vzdálené komunikace v2 (rozhraní kompatibilní s rozhraním)
 
-Pomocí těchto kroků můžete změnit V2_1 Stack.
+Pomocí těchto kroků můžete přejít na V2_1 Stack.
 
 1. Přidejte prostředek koncového bodu s názvem "ServiceEndpointV2_1" v manifestu služby.
 
@@ -277,7 +277,7 @@ Sestavte sestavení klienta se sestavením rozhraní, abyste se ujistili, že se
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>Použití explicitních tříd vzdálené komunikace k vytvoření naslouchacího procesu/továrny klienta pro verzi v2 (kompatibilní s rozhraním)
 
-Postupujte podle těchto kroků:
+Postupujte následovně:
 
 1. Přidejte prostředek koncového bodu s názvem "ServiceEndpointV2_1" v manifestu služby.
 
@@ -319,15 +319,15 @@ Postupujte podle těchto kroků:
 
 ## <a name="upgrade-from-remoting-v1-to-remoting-v2-interface-compatible"></a>Upgrade ze vzdálené verze V1 na vzdálenou verzi v2 (kompatibilní s rozhraním)
 
-Aby bylo možné upgradovat z verze V1 na v2 (rozhraní kompatibilní s rozhraním, označované jako V2_1), jsou vyžadovány dva kroky upgradu. Postupujte podle kroků v této sekvenci.
+Aby bylo možné upgradovat z verze V1 na v2 (rozhraní kompatibilní se systémem, označované jako V2_1), jsou vyžadovány dva kroky upgradu. Postupujte podle kroků v této sekvenci.
 
 > [!NOTE]
-> Při upgradu z verze V1 na v2 se ujistěte, že je obor názvů `Remoting` aktualizovaný na použití verze v2. Příklad: Microsoft. ServiceFabric. Services. Vzdálená komunikace. v2. FabricTransport. Client
+> Při upgradu z verze V1 na v2 se ujistěte, že je obor názvů `Remoting` aktualizovaný, aby používal v2. Příklad: Microsoft. ServiceFabric. Services. Vzdálená komunikace. v2. FabricTransport. Client
 >
 >
 
-1. Upgradujte službu V1 na službu V2_1 pomocí následujícího atributu.
-Tato změna zajistí, že služba naslouchá na V1 a naslouchací službě V2_1.
+1. Upgradujte službu V1 na V2_1 službu pomocí následujícího atributu.
+Tato změna zajistí, že služba naslouchá na V1 a na naslouchací službě V2_1.
 
     a. Přidejte prostředek koncového bodu s názvem "ServiceEndpointV2_1" v manifestu služby.
       ```xml
@@ -347,16 +347,16 @@ Tato změna zajistí, že služba naslouchá na V1 a naslouchací službě V2_1.
     }
     ```
 
-    r. Přidejte atribut Assembly na rozhraních vzdálené komunikace, abyste mohli používat klienta V1, V2_1 Listener a klienta V2_1.
+    c. Přidejte atribut Assembly na rozhraních vzdálené komunikace, aby používal V1, V2_1 naslouchací proces a V2_1 klienta.
     ```csharp
    [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1 | RemotingListenerVersion.V1, RemotingClientVersion = RemotingClientVersion.V2_1)]
 
       ```
-2. Upgradujte klienta V1 na klienta V2_1 pomocí atributu klienta V2_1.
+2. Upgradujte klienta V1 na klienta V2_1 pomocí atributu V2_1 klienta.
 Tento krok zajistí, že klient používá V2_1 Stack.
 V klientském projektu/službě se nevyžaduje žádná změna. Vytváření klientských projektů s aktualizovaným sestavením rozhraní je dostatečné.
 
-3. Tento krok je nepovinný. Odeberte verzi naslouchacího procesu v1 z atributu a poté proveďte upgrade služby v2.
+3. Tento krok je volitelný. Odeberte verzi naslouchacího procesu v1 z atributu a poté proveďte upgrade služby v2.
 Tento krok zajistí, že služba naslouchá jenom na naslouchací službě v2.
 
     ```csharp
@@ -366,9 +366,9 @@ Tento krok zajistí, že služba naslouchá jenom na naslouchací službě v2.
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Použití vlastní serializace se zprávou zabalené vzdálené komunikace
 
 U zprávy zabalené vzdálené komunikace vytvoříme jeden zabalený objekt se všemi parametry jako pole v něm.
-Postupujte podle těchto kroků:
+Postupujte následovně:
 
-1. Implementujte rozhraní @no__t 0 k poskytnutí implementace pro vlastní serializaci.
+1. Implementujte rozhraní `IServiceRemotingMessageSerializationProvider` k poskytnutí implementace pro vlastní serializaci.
     Tento fragment kódu ukazuje, jak implementace vypadá jako.
 
       ```csharp
@@ -530,7 +530,7 @@ Postupujte podle těchto kroků:
     }
     ```
 
-2. Pro naslouchací proces vzdálené komunikace přepište výchozího zprostředkovatele serializace hodnotou `JsonSerializationProvider`.
+2. Přepište výchozího zprostředkovatele serializace pomocí `JsonSerializationProvider` pro naslouchací proces vzdálené komunikace.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -546,7 +546,7 @@ Postupujte podle těchto kroků:
    }
    ```
 
-3. Přepište výchozího zprostředkovatele serializace hodnotou `JsonSerializationProvider` u objektu pro vzdálenou komunikaci klienta.
+3. Přepište výchozího zprostředkovatele serializace pomocí `JsonSerializationProvider` pro vzdálenou klientskou továrnu.
 
     ```csharp
     var proxyFactory = new ServiceProxyFactory((c) =>

@@ -31,7 +31,7 @@ Ovladač Microsoft .NET pro Apache Phoenix dotazový Server je k dispozici jako 
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Vytvoření instance nového objektu PhoenixClient
 
-Pokud chcete začít používat knihovnu, vytvořte instanci nového objektu @no__t 0 a předejte `ClusterCredentials` obsahující `Uri` do vašeho clusteru a Apache Hadoop uživatelské jméno a heslo v clusteru.
+Pokud chcete začít používat knihovnu, vytvořte instanci nového objektu `PhoenixClient` a předejte `ClusterCredentials` obsahující `Uri` do vašeho clusteru a Apache Hadoop uživatelské jméno a heslo v clusteru.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -48,7 +48,7 @@ Chcete-li odeslat jednu nebo více požadavků na PQS, je třeba zahrnout jedine
 string connId = Guid.NewGuid().ToString();
 ```
 
-Každý příklad vyvolá metodu `OpenConnectionRequestAsync`, která předává jedinečný identifikátor připojení. Dále definujte `ConnectionProperties` a `RequestOptions`, předejte tyto objekty a generovaný identifikátor připojení do metody `ConnectionSyncRequestAsync`. Objekt `ConnectionSyncRequest` PQS pomáhá zajistit, aby měl klient i server konzistentní zobrazení vlastností databáze.
+Každý příklad provede volání metody `OpenConnectionRequestAsync` a předáním jedinečného identifikátoru připojení. Dále definujte `ConnectionProperties` a `RequestOptions`, předejte tyto objekty a generovaný identifikátor připojení do metody `ConnectionSyncRequestAsync`. Objekt `ConnectionSyncRequest` PQS pomáhá zajistit, aby měl klient i server konzistentní zobrazení vlastností databáze.
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest a jeho ConnectionProperties
 
@@ -73,19 +73,19 @@ Tady jsou některé vlastnosti, které vás zajímají:
 
 | Vlastnost | Popis |
 | -- | -- |
-| Automatický zápis | Logická hodnota, která označuje, jestli je pro transakce v Phoenixu povolený `autoCommit`. |
+| Automatický zápis | Logická hodnota, která označuje, jestli je pro transakce v Phoenixu povolená `autoCommit`. |
 | ReadOnly | Logická hodnota, která označuje, zda je připojení jen pro čtení. |
 | TransactionIsolation | Celé číslo, které označuje úroveň izolace transakce podle specifikace JDBC – viz následující tabulka.|
 | Katalog | Název katalogu, který se má použít při načítání vlastností připojení. |
 | Schéma | Název schématu, který má být použit při načítání vlastností připojení. |
 | IsDirty | Logická hodnota, která označuje, zda byly vlastnosti změněny. |
 
-Tady jsou hodnoty `TransactionIsolation`:
+Tady jsou `TransactionIsolation` hodnoty:
 
 | Hodnota izolace | Popis |
 | -- | -- |
 | 0 | Transakce nejsou podporovány. |
-| 1\. místo | Může dojít k nezměněnému čtení, čtení bez opakování a k fiktivnímu čtení. |
+| 1 | Může dojít k nezměněnému čtení, čtení bez opakování a k fiktivnímu čtení. |
 | 2 | Nezměněné čtení se znemožňuje, ale může dojít k neopakovaným čtením a k operacím typu Fantom. |
 | 4 | Znemožňují se čtení neopakujících se čtením, ale může dojít k fiktivnímu čtení. |
 | 8 | Nezměněné čtení, čtení bez opakování a čtení s fiktivními záznamy jsou zabráněno. |
@@ -94,7 +94,7 @@ Tady jsou hodnoty `TransactionIsolation`:
 
 HBA, stejně jako jakékoli jiné RDBMS, ukládají data v tabulkách. Phoenix používá standardní dotazy SQL k vytváření nových tabulek a při definování primárních typů klíčů a sloupců.
 
-V tomto příkladu a všech dalších příkladech použijte instanci objektu `PhoenixClient`, jak je definováno v části [Vytvoření nového objektu PhoenixClient](#instantiate-new-phoenixclient-object).
+V tomto příkladu a všech následných příkladech použijte objekt `PhoenixClient` instance, jak je definován v části [Vytvoření nového objektu PhoenixClient](#instantiate-new-phoenixclient-object).
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -164,13 +164,13 @@ Předchozí příklad vytvoří novou tabulku s názvem `Customers` pomocí mož
 
 ## <a name="insert-data-individually"></a>Vkládat data jednotlivě
 
-V tomto příkladu se zobrazuje jednotlivá vložení dat s odkazem na kolekci @no__t – 0 zkratek pro americký stav a oblast:
+V tomto příkladu se zobrazuje jednotlivá vložení dat, odkazování na `List<string>`, zkratky pro země a oblasti USA:
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-V následné operaci výběru se použije hodnota sloupce `StateProvince` tabulky.
+Hodnota sloupce `StateProvince` tabulky se použije v následné operaci výběru.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,11 +277,11 @@ finally
 }
 ```
 
-Struktura pro provedení příkazu INSERT je podobná vytvoření nové tabulky. Všimněte si, že na konci bloku `try` je transakce explicitně potvrzena. V tomto příkladu se opakuje operace INSERT Transaction 300 krát. Následující příklad ukazuje efektivnější proces dávkového vkládání.
+Struktura pro provedení příkazu INSERT je podobná vytvoření nové tabulky. Všimněte si, že na konci `try` bloku je transakce explicitně potvrzena. V tomto příkladu se opakuje operace INSERT Transaction 300 krát. Následující příklad ukazuje efektivnější proces dávkového vkládání.
 
 ## <a name="batch-insert-data"></a>Dávková vložení dat
 
-Následující kód je téměř totožný s kódem pro vkládání dat jednotlivě. V tomto příkladu se používá objekt `UpdateBatch` ve volání metody `ExecuteBatchRequestAsync`, namísto opakovaného volání `ExecuteRequestAsync` s připraveným příkazem.
+Následující kód je téměř totožný s kódem pro vkládání dat jednotlivě. V tomto příkladu se používá objekt `UpdateBatch` ve volání metody `ExecuteBatchRequestAsync`namísto opakovaného volání `ExecuteRequestAsync` s připraveným příkazem.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();

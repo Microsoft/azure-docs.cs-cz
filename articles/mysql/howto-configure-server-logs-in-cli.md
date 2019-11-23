@@ -17,15 +17,15 @@ ms.locfileid: "72030631"
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům pomalým dotazům pomocí Azure CLI
 Protokoly pomalých dotazů Azure Database for MySQL můžete stáhnout pomocí Azure CLI, nástroje příkazového řádku Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete projít tento průvodce, budete potřebovat:
 - [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-cli.md)
 - Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo Azure Cloud Shell v prohlížeči
 
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Server můžete nakonfigurovat tak, aby se přihlásil k protokolu pomalým dotazů MySQL, a to provedením následujících kroků:
-1. Zapněte pomalé protokolování dotazů nastavením parametru **pomalý parametr @ no__t-1query @ no__t-2log** na hodnotu on.
-2. Upravte jiné parametry, například **Long @ no__t-1query @ no__t-2time** a **log @ no__t-4slow @ no__t-5admin @ no__t-6statements**.
+1. Zapněte pomalé protokolování dotazů nastavením parametru **pomalé\_dotaz\_protokol** na zapnuto.
+2. Upravte další parametry, třeba **long\_dotaz\_Time** a **log\_pomalé\_příkazy správce\_** .
 
 Informace o tom, jak nastavit hodnotu těchto parametrů prostřednictvím rozhraní příkazového řádku Azure CLI, najdete v tématu [Postup konfigurace parametrů serveru](howto-configure-server-parameters-using-cli.md).
 
@@ -40,7 +40,7 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>Vypsat protokoly pro Azure Database for MySQL server
 Chcete-li zobrazit seznam dostupných souborů protokolu pomalých dotazů pro váš server, spusťte příkaz [AZ MySQL server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) .
 
-Soubory protokolu pro server **mydemoserver.MySQL.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **log @ no__t-1files\_list.txt**.
+Soubory protokolu pro server **mydemoserver.MySQL.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **log\_soubory\_list. txt**.
 ```azurecli-interactive
 az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

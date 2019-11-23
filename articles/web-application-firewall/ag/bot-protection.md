@@ -23,7 +23,7 @@ Můžete povolit sadu pravidel spravované ochrany robotů pro WAF k blokování
 > [!NOTE]
 > Sada pravidel ochrany robota je aktuálně ve verzi Public Preview a poskytuje verzi Preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v tématu [dodatečné informace o použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pomocí pokynů popsaných v tématu [Vytvoření zásad firewallu webových aplikací pro Application Gateway](create-waf-policy-ag.md)vytvořte základní zásady WAF pro Application Gateway.
 

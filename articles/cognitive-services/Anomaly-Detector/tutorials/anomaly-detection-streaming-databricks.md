@@ -47,7 +47,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 > [!Note]
 > Tento kurz nejde dokončit s bezplatným zkušebním klíčem pro rozhraní API detektoru anomálií. Pokud chcete k vytvoření clusteru Azure Databricks použít bezplatný účet, přejděte na svůj profil a změňte své předplatné na **Průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Obor názvů a centrum událostí pro [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) .
 
@@ -65,7 +65,7 @@ V této části vytvoříte Azure Databricks pracovní prostor pomocí [Azure Po
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Analýza** > **Azure Databricks**.
 
-    ![Databricks na webu Azure Portal](../media/tutorials/azure-databricks-on-portal.png "Databricks na webu Azure Portal")
+    ![Databricks na portálu Azure](../media/tutorials/azure-databricks-on-portal.png "Databricks na portálu Azure")
 
 3. V části **Azure Databricks služba**zadejte následující hodnoty pro vytvoření pracovního prostoru datacihly:
 
@@ -78,7 +78,7 @@ V této části vytvoříte Azure Databricks pracovní prostor pomocí [Azure Po
     |**Umístění**     | Vyberte **východní USA 2** nebo jednu z dalších dostupných oblastí. Dostupnost oblastí najdete v tématu [služby Azure dostupné v oblasti](https://azure.microsoft.com/regions/services/) .        |
     |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Nevybírejte **zkušební verzi**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-    Vyberte **Create** (Vytvořit).
+    Vyberte **Vytvořit**.
 
 4. Vytvoření pracovního prostoru trvá několik minut. 
 
@@ -98,7 +98,7 @@ V této části vytvoříte Azure Databricks pracovní prostor pomocí [Azure Po
 
    * Zadejte název clusteru.
    * V tomto článku vytvořte cluster s modulem runtime **5,2** . Nevybírejte modul runtime **5,3** .
-   * Ujistěte se, že je zaškrtnuté políčko **ukončit po \_ @ no__t – 2 minuty neaktivity** . Zadejte dobu (v minutách), po kterou se má cluster ukončit, pokud se cluster nepoužívá.
+   * Ujistěte se, že je zaškrtnuté políčko **ukončit po \_\_ počet minut nečinnosti** . Zadejte dobu (v minutách), po kterou se má cluster ukončit, pokud se cluster nepoužívá.
 
      Vyberte **Vytvořit cluster**. 
 4. Vytvoření clusteru trvá několik minut. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
@@ -136,7 +136,7 @@ V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní 
 
      ![Zadání souřadnic Maven](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "Zadání souřadnic Maven")
 
-3. Vyberte **Create** (Vytvořit).
+3. Vyberte **Vytvořit**.
 
 4. Vyberte složku, do které jste knihovnu přidali, a pak vyberte název knihovny.
 
@@ -153,11 +153,11 @@ Na stránce Knihovna vyberte cluster, ve kterém chcete použít knihovnu, a pak
 
 V tomto kurzu použijete rozhraní API pro detekci [anomálií v Azure Cognitive Services](../overview.md) ke spouštění detekce anomálií na streamu tweety téměř v reálném čase. Než použijete rozhraní API, musíte v Azure vytvořit prostředek detektoru anomálií a načíst přístupový klíč pro použití rozhraní API detektoru anomálií.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **+ Vytvořit prostředek**.
 
-3. V části Azure Marketplace vyberte **AI + Machine Learning** > . Podívejte se na**všechna** > **Cognitive Services-more** **detektor anomálií** > . Nebo můžete použít [Tento odkaz](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) k přímému přechodu do dialogového okna **vytvořit** .
+3. V části Azure Marketplace vyberte **AI + Machine Learning** > **zobrazit všechny** > **Cognitive Services-více** > **detektor anomálií**. Nebo můžete použít [Tento odkaz](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) k přímému přechodu do dialogového okna **vytvořit** .
 
     ![Vytvoření prostředku detektoru anomálií](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "vytvoření prostředku detektoru anomálií")
 
@@ -165,14 +165,14 @@ V tomto kurzu použijete rozhraní API pro detekci [anomálií v Azure Cognitive
 
     |Hodnota |Popis  |
     |---------|---------|
-    |Name (Název)     | Název prostředku detektoru anomálií.        |
+    |Název     | Název prostředku detektoru anomálií.        |
     |Předplatné     | Předplatné Azure, ke kterému bude prostředek přidružen.        |
     |Umístění     | Umístění Azure.        |
     |Cenová úroveň     | Cenová úroveň služby. Další informace o cenách detektoru anomálií najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
-    |Skupina prostředků     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo vyberte existující.        |
+    |Skupina prostředků     | Určete, jestli chcete vytvořit novou skupinu prostředků nebo vyberte existující.        |
 
 
-     Vyberte **Create** (Vytvořit).
+     Vyberte **Vytvořit**.
 
 5. Po vytvoření prostředku na kartě **Přehled** zkopírujte a uložte adresu URL **koncového bodu** , jak je znázorněno na snímku obrazovky. Pak vyberte **Zobrazit přístupové klíče**.
 
@@ -197,13 +197,13 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 
     ![Vytvoření poznámkového bloku v Databricks](../media/tutorials/databricks-notebook-details.png "Vytvoření poznámkového bloku v Databricks")
 
-    Vyberte **Create** (Vytvořit).
+    Vyberte **Vytvořit**.
 
 3. Zopakováním těchto kroků vytvořte i poznámkový blok **AnalyzeTweetsFromEventHub**.
 
 ## <a name="send-tweets-to-event-hubs"></a>Odeslání tweetů do služby Event Hubs
 
-Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupný text hodnotami pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento Poznámkový blok extrahuje čas vytvoření a číslo "Like" s z tweety s klíčovým slovem "Azure" a streamuje je jako události do Event Hubs v reálném čase.
+V **SendTweetsToEventHub** Poznámkový blok, vložte následující kód a nahraďte zástupné hodnoty pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento Poznámkový blok extrahuje čas vytvoření a číslo "Like" s z tweety s klíčovým slovem "Azure" a streamuje je jako události do Event Hubs v reálném čase.
 
 ```scala
 //
@@ -544,7 +544,7 @@ display(msgStream)
 Výstup teď vypadá podobně jako na následujícím obrázku. Všimněte si, že vaše datum v tabulce se může od data v tomto kurzu lišit, protože data jsou v reálném čase.
 ![Načtení dat z centra událostí](../media/tutorials/load-data-from-eventhub.png "načtení dat z centra událostí")
 
-Nyní máte streamovaná data z Azure Event Hubs do Azure Databricks téměř v reálném čase pomocí konektoru Event Hubs pro Apache Spark. Další informace o použití konektoru služby Event Hubs pro Spark najdete v [dokumentaci ke konektorům](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
+Jste nyní streamovali data ze služby Azure Event Hubs do Azure Databricks v reálném čase pomocí konektoru služby Event Hubs pro Apache Spark. Další informace o použití konektoru služby Event Hubs pro Spark najdete v [dokumentaci ke konektorům](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
 
 
 
@@ -682,7 +682,7 @@ Po dokončení tohoto kurzu můžete cluster ukončit. Provedete to tak, že v p
 
 ![Zastavení clusteru Databricks](../media/tutorials/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
 
-Pokud cluster neukončíte ručně, zastaví se automaticky a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_ @ no__t – 2 minuty nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
+Pokud cluster neukončíte ručně, zastaví se automaticky a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_\_ minut při nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
 
 ## <a name="next-steps"></a>Další kroky
 

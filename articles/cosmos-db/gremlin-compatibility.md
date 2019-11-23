@@ -25,7 +25,7 @@ Modul Azure Cosmos DB Graph úzce sleduje specifikace kroků procházení [Apach
 
 * ***[Gremlin Bytecode](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** je na konkrétním programovacím jazyku nezávislá specifikace pro procházení grafů. Cosmos DB Graph ho ještě nepodporuje. Použijte ```GremlinClient.SubmitAsync()``` a předejte průchod jako textový řetězec.
 
-* nastavení mohutnosti ***```property(set, 'xyz', 1)```*** se v současné době nepodporuje. Místo toho použijte ```property(list, 'xyz', 1)```.
+* mohutnost ***```property(set, 'xyz', 1)```*** sady se ještě nepodporuje. Místo nich se používá ```property(list, 'xyz', 1)```.
 
 * ***```match()```*** umožňuje dotazování grafů pomocí deklarativního porovnávání vzorů. Tato možnost není k dispozici.
 
@@ -33,7 +33,7 @@ Modul Azure Cosmos DB Graph úzce sleduje specifikace kroků procházení [Apach
 
 * ***Řazení podle vlastností pole*** ```.order().by(<array property>)``` není podporováno. Podporuje se řazení pouze podle primitivních typů.
 
-* ***Neprimitivní typy JSON*** nejsou podporovány. Použijte typy ```string```, ```number``` nebo ```true``` @ no__t-3 @ no__t-4. hodnoty ```null``` nejsou podporovány. 
+* ***Neprimitivní typy JSON*** nejsou podporovány. Použijte ```string```typy ```false```, ```number```nebo ```true```/. ```null``` hodnoty nejsou podporovány. 
 
 * Serializátor ***GraphSONv3*** není dnes k dispozici.
 

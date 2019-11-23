@@ -47,13 +47,13 @@ Při použití sady Visual Studio 2017 verze 15,4 a starší můžete použít m
    > [!Note]
    > Certifikáty, které potřebujete pro připojení ke vzdálené ploše, se liší od certifikátů, které používáte pro jiné operace Azure. Certifikát vzdáleného přístupu musí mít privátní klíč.
 
-5. Vyberte certifikát ze seznamu nebo zvolte **&lt;Create... &gt;** . Při vytváření nového certifikátu zadejte po zobrazení výzvy popisný název nového certifikátu a vyberte **OK**. Nový certifikát se zobrazí v rozevíracím seznamu.
+5. Vyberte certifikát ze seznamu nebo zvolte **&lt;vytvořit...&gt;** . Při vytváření nového certifikátu zadejte po zobrazení výzvy popisný název nového certifikátu a vyberte **OK**. Nový certifikát se zobrazí v rozevíracím seznamu.
 
 6. Zadejte uživatelské jméno a heslo. Existující účet nemůžete použít. Jako uživatelské jméno nového účtu nepoužívejte "správce".
 
 7. Vyberte datum, kdy vyprší platnost účtu, a po kterém budou připojení ke vzdálené ploše blokovaná.
 
-8. Až zadáte všechny požadované informace, vyberte **OK**. Visual Studio přidá nastavení vzdálené plochy do souborů @no__t 0 a `.csdef` vašeho projektu, včetně hesla zašifrovaného pomocí vybraného certifikátu.
+8. Až zadáte všechny požadované informace, vyberte **OK**. Visual Studio přidá nastavení vzdálené plochy do souborů `.cscfg` a `.csdef` projektu, včetně hesla zašifrovaného pomocí vybraného certifikátu.
 
 9. Pomocí tlačítka **Další** dokončete všechny zbývající kroky a pak vyberte **publikovat** , až budete připraveni publikovat cloudovou službu. Pokud nejste připraveni k publikování, vyberte **Zrušit** a po zobrazení výzvy k uložení změn odpovězte na **Ano** . Pomocí těchto nastavení můžete cloudovou službu publikovat později.
 
@@ -86,7 +86,7 @@ Projekt cloudové služby lze nasadit ze serveru sestavení (například pomocí
 
 Pokud chcete použít rozšíření RDP z Azure DevOps Services, zahrňte do svého kanálu sestavení následující podrobnosti:
 
-1. Do argumentů MSBuild zahrňte `/p:ForceRDPExtensionOverPlugin=true`, abyste se ujistili, že nasazení funguje s rozšířením RDP a nikoli s modulem plug-in RDP. Například:
+1. Do argumentů MSBuild zahrňte `/p:ForceRDPExtensionOverPlugin=true`, abyste se ujistili, že nasazení funguje s rozšířením RDP a nikoli s modulem plug-in RDP. Příklad:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
@@ -146,6 +146,6 @@ Po publikování cloudové služby v Azure a zapnutí vzdálené plochy můžete
 
 3. Zadejte uživatelské jméno a heslo, které jste vytvořili dříve. Nyní jste přihlášeni ke vzdálené relaci.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 [Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)

@@ -19,7 +19,7 @@ Předtím, než použijete nově vytvořený cluster Azure FXT Edge souborového
 
 Tento kurz vysvětluje nastavení sítě, které může být potřeba upravit pro nový cluster. 
 
-Naučíte se: 
+Co se dozvíte: 
 
 > [!div class="checklist"]
 > * Která síťová nastavení může být potřeba aktualizovat po vytvoření clusteru
@@ -45,7 +45,7 @@ Pokud chcete získat další informace o nastavení sítě pro cluster, přečt�
 
 * Konfigurace služby Active Directory a jména uživatele nebo názvu skupiny ke stažení (v případě potřeby)
 
-  Pokud vaše síť používá službu Active Directory nebo jiný druh externí adresářové služby, musíte upravit konfiguraci adresářových služeb clusteru a nastavit, jak cluster stáhne informace o uživatelském jménu a skupině. Podrobnosti najdete v části **cluster** > **Directory Services** v Průvodci konfigurací clusteru.
+  Pokud vaše síť používá službu Active Directory nebo jiný druh externí adresářové služby, musíte upravit konfiguraci adresářových služeb clusteru a nastavit, jak cluster stáhne informace o uživatelském jménu a skupině. Podrobnosti najdete v části **Clusterová** **Služba > Directory Services** v Průvodci konfigurací clusteru.
 
   Pokud požadujete podporu protokolu SMB, je nutné zadat server služby AD. Před zahájením instalace protokolu SMB nakonfigurujte AD.
 
@@ -58,7 +58,7 @@ Pokud chcete získat další informace o nastavení sítě pro cluster, přečt�
   Pokud váš cluster používá proxy server k dosažení externích adres, postupujte podle těchto kroků a nastavte:
 
   1. Definování proxy server na stránce nastavení **konfigurace proxy serveru**
-  1. Použijte konfiguraci proxy server pomocí stránky**Obecné nastavení**  >  **clusteru**nebo základní stránky s **podrobnostmi souborového** .
+  1. Použijte konfiguraci proxy server pomocí stránky **Obecné nastavení** > **clusteru** nebo základní stránky s **podrobnostmi souborového** .
   
   Další informace najdete v tématu [použití webových proxy serverů](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/proxy_overview.html) v Průvodci konfigurací clusteru.
 
@@ -74,9 +74,9 @@ Cluster FXT Edge souborového používá certifikáty X. 509 pro tyto funkce:
 
 * Ověření certifikátů serveru poskytovatelé cloudu
 
-Pokud potřebujete do clusteru nahrávat certifikáty, použijte stránku nastavení**certifikátů**  >  **clusteru**. Podrobnosti najdete na stránce [> certifikáty clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) v Průvodci konfigurací clusteru.
+Pokud potřebujete do clusteru nahrávat certifikáty, použijte stránku nastavení **clusterů** > ch **certifikátů** . Podrobnosti najdete na stránce [> certifikáty clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) v Průvodci konfigurací clusteru.
 
-Chcete-li zašifrovat komunikaci se správou clusterů, použijte stránku**Obecné** nastavení pro **cluster** >  a vyberte certifikát, který chcete použít pro správu SSL.
+Chcete-li zašifrovat komunikaci správy clusterů, použijte stránku > **Obecné nastavení instalace** **clusteru** a vyberte certifikát, který chcete použít pro správu SSL.
 
 > [!Note] 
 > Přístupové klíče cloudové služby se ukládají pomocí stránky konfigurace **přihlašovacích údajů cloudu** . Příklad najdete v části [Add a Core souborového](fxt-add-storage.md#add-a-core-filer) . Podrobnosti najdete v části Průvodce konfigurací clusteru [Cloud přihlašovací údaje](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) . 
@@ -105,13 +105,14 @@ Pro zajištění optimálního výkonu nakonfigurujte server DNS tak, aby zpraco
 
 Na levé straně se zobrazí cluster VServer a IP adresy se zobrazí v centru a na pravé straně. Nakonfigurujte všechny klientské přístupové body pomocí záznamů a ukazatelů, jak je znázorněno.
 
-@no__t – diagram DNS pro kruhové dotazování – podrobný odkaz na text následuje obrázek @ no__t-1[podrobný popis textu](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
+Diagram DNS pro kruhové dotazování ![clusteru – podrobný odkaz na text následuje obrázek](media/fxt-cluster-config/fxt-rrdns-diagram.png) 
+[podrobný text popis](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
 
 Každá IP adresa pro klienta musí mít jedinečný název pro interní použití clusterem. (V tomto diagramu se IP adresy klientů nazývají VS1-Client-IP-* pro přehlednost, ale v produkčním prostředí byste pravděpodobně použili něco výstižného, jako je třeba klient *.)
 
 Klienti připojí cluster pomocí názvu VServer jako argumentu serveru. 
 
-Upravte soubor ``named.conf`` serveru DNS pro nastavení cyklického pořadí dotazů na vaše VServer. Tato možnost zajistí, že se všechny dostupné hodnoty cyklují cyklicky. Přidejte příkaz podobný následujícímu:
+Upravte soubor ``named.conf`` serveru DNS tak, aby se nastavila cyklická objednávka pro dotazy na vaše VServer. Tato možnost zajistí, že se všechny dostupné hodnoty cyklují cyklicky. Přidejte příkaz podobný následujícímu:
 
 ```
 options {
@@ -137,7 +138,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ### <a name="enable-dns-in-the-cluster"></a>Povolit DNS v clusteru 
 
-Zadejte server DNS, který cluster používá **, na stránce**nastavení**sítě pro správu**  > . Nastavení na této stránce zahrnují:
+Zadejte server DNS, který cluster používá, na stránce > **clusteru** nastavení **sítě pro správu** . Nastavení na této stránce zahrnují:
 
 * Adresa serveru DNS
 * Název domény DNS

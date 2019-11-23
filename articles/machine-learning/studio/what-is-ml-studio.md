@@ -42,14 +42,14 @@ Není nutné žádné programování, vizuálně propojit datové sady a moduly 
 
 Tady je rychlé porovnání:
 
-|| Machine Learning Studio (klasický) | Azure Machine Learning |
+|| Machine Learning Studio (Classic) | Azure Machine Learning |
 |---| --- | --- |
 | Rozhraní přetažení | Ano | Ano – [Azure Machine Learning Designer (Preview)](../service/concept-designer.md) |
-| Začátku | Škálovatelné (limit pro školicí data z 10 GB) | Škálování s cílem výpočetního prostředí |
+| Experiment | Škálovatelné (limit pro školicí data z 10 GB) | Škálování s cílem výpočetního prostředí |
 | Moduly pro rozhraní přetažení | Počtu | Počáteční sada oblíbených [modulů](../algorithm-module-reference/module-reference.md)|
 |Školení výpočetních cílů| Proprietární výpočetní cíl, jenom podpora procesoru| Podporuje výpočetní virtuální počítače s Azure Machine Learning (GPU nebo CPU) a notebook.<br/>([Další výpočetní prostředky podporované v sadě SDK](../service/concept-compute-target.md#train))|
 |Inferencing výpočetní cíle| Speciální formát webové služby, není přizpůsobitelný |  Služba Azure Kubernetes a služba AML COMPUTE <br/>([Další výpočetní prostředky podporované v sadě SDK](../service/how-to-deploy-and-where.md)) |
-| Kanál ML | Nepodporováno | Podporované [kanály](../service/concept-ml-pipelines.md) |
+| Kanál ML | Nepodporuje se | Podporované [kanály](../service/concept-ml-pipelines.md) |
 | MLOps | Základní Správa modelů a nasazení | Konfigurovatelné nasazení – model a správa verzí a kanálů |
 | Formát modelu | Speciální formát, pouze Studio | Standardní formát v závislosti na typu úlohy školení |
 |Automatizované školení modelů a ladění parametrů | Ne | Ještě není v návrháři. <br/> ([Podporováno na úvodní stránce sady SDK a pracovního prostoru](../service/concept-automated-ml.md)) | 

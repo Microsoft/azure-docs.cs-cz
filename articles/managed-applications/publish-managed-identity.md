@@ -53,7 +53,7 @@ Existují dva běžné způsoby vytvoření spravované aplikace s **identitou**
 
 ### <a name="using-createuidefinition"></a>Použití CreateUIDefinition
 
-Spravovaná aplikace se dá nakonfigurovat se spravovanou identitou prostřednictvím [CreateUIDefinition. JSON](./create-uidefinition-overview.md). V [části výstupy](./create-uidefinition-overview.md#outputs)lze klíč `managedIdentity` použít k přepsání vlastnosti identity šablony spravované aplikace. Vzorový níže povolí pro spravovanou aplikaci identitu **přiřazenou systémem** . Složitější objekty identity mohou být vytvořeny pomocí CreateUIDefinition elementů, aby požádaly spotřebitele o vstupy. Tyto vstupy se dají použít k sestavování spravovaných aplikací s **uživatelsky přiřazenou identitou**.
+Spravovaná aplikace se dá nakonfigurovat se spravovanou identitou prostřednictvím [CreateUIDefinition. JSON](./create-uidefinition-overview.md). V [části výstupy](./create-uidefinition-overview.md#outputs)lze klíčovou `managedIdentity` použít k přepsání vlastnosti identity šablony spravované aplikace. Vzorový níže povolí pro spravovanou aplikaci identitu **přiřazenou systémem** . Složitější objekty identity mohou být vytvořeny pomocí CreateUIDefinition elementů, aby požádaly spotřebitele o vstupy. Tyto vstupy se dají použít k sestavování spravovaných aplikací s **uživatelsky přiřazenou identitou**.
 
 ```json
 "outputs": {
@@ -139,7 +139,7 @@ Výše uvedený CreateUIDefinition. JSON vytvoří uživatelské prostředí, kt
 
 > [!NOTE]
 > Šablony spravované aplikace Marketplace se automaticky generují pro zákazníky, kteří procházejí prostředím Azure Portal vytvořit.
-> V těchto scénářích musí být pro povolení identity použit výstupní klíč `managedIdentity` pro CreateUIDefinition.
+> V těchto scénářích musí být pro povolení identity použit výstupní klíč `managedIdentity` CreateUIDefinition.
 
 Spravovaná identita se dá povolit taky prostřednictvím šablon Azure Resource Manager. Vzorový níže povolí pro spravovanou aplikaci identitu **přiřazenou systémem** . Složitější objekty identity mohou být vytvořeny pomocí parametrů šablony Azure Resource Manager k poskytnutí vstupů. Tyto vstupy se dají použít k sestavování spravovaných aplikací s **uživatelsky přiřazenou identitou**.
 
@@ -275,7 +275,7 @@ Tento CreateUIDefinition. JSON generuje prostředí pro vytváření uživatelů
 
 ### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>Vytváření mainTemplate s propojeným prostředkem
 
-Kromě aktualizace CreateUIDefinition je potřeba aktualizovat také hlavní šablonu, aby přijímala předané ID odkazovaného prostředku. Hlavní šablonu lze aktualizovat tak, aby přijímala nový výstup přidáním nového parametru. Vzhledem k tomu, že výstup `managedIdentity` Přepisuje hodnotu u generované šablony spravované aplikace, není předána do hlavní šablony a neměl by být zahrnut do oddílu Parameters.
+Kromě aktualizace CreateUIDefinition je potřeba aktualizovat také hlavní šablonu, aby přijímala předané ID odkazovaného prostředku. Hlavní šablonu lze aktualizovat tak, aby přijímala nový výstup přidáním nového parametru. Vzhledem k tomu, že výstup `managedIdentity` Přepisuje hodnotu generované šablony spravované aplikace, není předána do hlavní šablony a neměla by být obsažena v oddílu Parameters.
 
 Ukázková hlavní šablona, která nastavuje profil sítě na stávající síťové rozhraní, které poskytuje CreateUIDefinition.
 
@@ -319,7 +319,7 @@ Po vytvoření balíčku spravované aplikace je možné spravovanou aplikaci sp
 
 ## <a name="accessing-the-managed-identity-token"></a>Přístup ke spravovanému tokenu identity
 
-Token spravované aplikace je teď k dispozici prostřednictvím rozhraní API `listTokens` z tenanta vydavatele. Příklad požadavku může vypadat takto:
+Token spravované aplikace je teď k dispozici prostřednictvím rozhraní `listTokens` API z tenanta vydavatele. Příklad požadavku může vypadat takto:
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
@@ -336,8 +336,8 @@ Parametry textu žádosti:
 
 Parametr | Požaduje se | Popis
 ---|---|---
-authorizationAudience | *Ne* | Identifikátor URI ID aplikace cílového prostředku Zároveň se jedná o deklaraci identity @no__t 0 (cílová skupina) vydaného tokenu. Výchozí hodnota je "https://management.azure.com/".
-userAssignedIdentities | *Ne* | Seznam uživatelsky přiřazených spravovaných identit, pro které se má načíst token Pokud není zadán, bude `listTokens` vracet token pro spravovanou identitu přiřazenou systémem.
+authorizationAudience | *Ne* | Identifikátor URI ID aplikace cílového prostředku Je to také deklarace identity `aud` (cílová skupina) vydaného tokenu. Výchozí hodnota je "https://management.azure.com/".
+userAssignedIdentities | *Ne* | Seznam uživatelsky přiřazených spravovaných identit, pro které se má načíst token Pokud není zadaný, `listTokens` vrátí token pro spravovanou identitu přiřazenou systémem.
 
 
 Ukázková odpověď může vypadat takto:
@@ -369,7 +369,7 @@ access_token | Požadovaný přístupový token
 expires_in | Počet sekund, po který bude přístupový token platný
 expires_on | Časový interval pro přístup k vypršení platnosti přístupového tokenu Tato hodnota je vyjádřena jako počet sekund od epocha.
 not_before | Časové rozpětí, kdy se přístupový token projeví. Tato hodnota je vyjádřena jako počet sekund od epocha.
-authorizationAudience | @No__t-0 (cílová skupina) přístupový token byl požadován pro. To se shoduje s tím, co bylo zadáno v žádosti `listTokens`.
+authorizationAudience | `aud` (cílová skupina), pro který byl token přístupu požadován. To se shoduje s tím, co bylo zadáno v žádosti `listTokens`.
 resourceId | ID prostředku Azure pro vydaný token. Toto je buď ID spravované aplikace, nebo ID identity přiřazené uživatelem.
 token_type | Typ tokenu.
 

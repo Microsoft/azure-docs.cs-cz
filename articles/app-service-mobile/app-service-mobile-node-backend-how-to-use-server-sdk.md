@@ -28,7 +28,7 @@ ms.locfileid: "72388661"
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
->  Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+>  Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 Tento článek obsahuje podrobné informace a příklady, které ukazují, jak pracovat s back-end Node. js ve funkci Mobile Apps Azure App Service.
 
@@ -60,7 +60,7 @@ Každý Mobile Apps back-end Node. js začíná jako aplikace ExpressJS. Express
 
         mkdir basicapp
 
-1. Pro inicializaci struktury balíčku spusťte `npm init`:
+1. Spusťte `npm init` pro inicializaci struktury balíčku:
 
         cd basicapp
         npm init
@@ -92,15 +92,15 @@ Každý Mobile Apps back-end Node. js začíná jako aplikace ExpressJS. Express
     app.listen(process.env.PORT || 3000);
     ```
 
-Tato aplikace vytvoří mobilní optimalizované webové rozhraní API s jedním koncovým bodem (`/tables/TodoItem`), který poskytuje neověřený přístup k základnímu úložišti dat SQL pomocí dynamického schématu. Je vhodný pro následující rychlé starty klientské knihovny:
+Tato aplikace vytvoří mobilní optimalizované webové rozhraní API s jedním koncovým bodem (`/tables/TodoItem`), které poskytuje neověřený přístup k základnímu úložišti dat SQL pomocí dynamického schématu. Je vhodný pro následující rychlé starty klientské knihovny:
 
 * [Rychlý Start pro klienta Android]
 * [Rychlý Start klienta Apache Cordova]
 * [rychlý Start klienta iOS]
 * [Rychlý Start klienta Windows Storu]
-* [Rychlý Start pro klienta Xamarin. iOS]
+* [Rychlé spuštění klienta Xamarin.iOS]
 * [Rychlý Start pro klienta Xamarin. Android]
-* [Rychlý Start klienta Xamarin. Forms]
+* [Rychlé spuštění klienta Xamarin.Forms]
 
 Kód pro tuto základní aplikaci najdete v [Ukázka basicapp na GitHubu].
 
@@ -108,8 +108,8 @@ Kód pro tuto základní aplikaci najdete v [Ukázka basicapp na GitHubu].
 
 Visual Studio 2015 vyžaduje rozšíření pro vývoj aplikací Node. js v rámci integrovaného vývojového prostředí (IDE). Začněte tím, že nainstalujete [Node. js Tools 1,1 pro Visual Studio]. Po dokončení instalace vytvořte aplikaci Express 4. x:
 
-1. Otevřete dialogové okno **Nový projekt** (ze **souboru** > **Nový** **projekt** > ).
-1. Rozbalte **šablony** > **JavaScript** > **Node. js**.
+1. Otevřete dialogové okno **Nový projekt** (ze **souboru** > **Nový** > **projekt**).
+1. Rozbalte **šablony** > **JavaScriptu** > **Node. js**.
 1. Vyberte **základní aplikaci Azure Node. js Express 4**.
 1. Zadejte název projektu. Vyberte **OK**.
 
@@ -120,14 +120,14 @@ Visual Studio 2015 vyžaduje rozšíření pro vývoj aplikací Node. js v rámc
 
    ![Nainstalovat nové balíčky npm][2]
 1. Vyberte **Zavřít**.
-1. Otevřete soubor App. js a přidejte podporu pro sadu Mobile Apps SDK. Na řádku 6 v dolní části knihovny @no__t příkaz-0 přidejte následující kód:
+1. Otevřete soubor App. js a přidejte podporu pro sadu Mobile Apps SDK. Na řádku 6 v dolní části knihovny `require` příkazy přidejte následující kód:
 
     ```javascript
     var bodyParser = require('body-parser');
     var azureMobileApps = require('azure-mobile-apps');
     ```
 
-    Přibližně na řádku 27 po dalších příkazech `app.use` přidejte následující kód:
+    Přibližně na řádku 27 za jinými příkazy `app.use` přidejte následující kód:
 
     ```javascript
     app.use('/users', users);
@@ -140,7 +140,7 @@ Visual Studio 2015 vyžaduje rozšíření pro vývoj aplikací Node. js v rámc
 
     Uložte soubor.
 
-1. Buď spusťte aplikaci místně (rozhraní API se obsluhuje `http://localhost:3000`), nebo se publikuje do Azure.
+1. Buď spusťte aplikaci místně (rozhraní API se obsluhuje `http://localhost:3000`), nebo ho publikujte do Azure.
 
 ### <a name="create-node-backend-portal"></a>Vytvořte back-end Node. js pomocí Azure Portal
 
@@ -211,7 +211,7 @@ Toto webové rozhraní API podporuje [OData] a rozšiřuje schéma tabulky, aby 
 
 Předtím, než budete moci použít tabulku, je nutné ji definovat. Můžete definovat tabulky pomocí statického schématu (kde můžete definovat sloupce ve schématu) nebo dynamicky (kde sada SDK řídí schéma na základě příchozích požadavků). Kromě toho můžete určit konkrétní aspekty webového rozhraní API přidáním kódu jazyka JavaScript do definice.
 
-V rámci osvědčeného postupu byste měli definovat každou tabulku v souboru JavaScriptu v adresáři `tables` a pak k importu tabulek použít metodu `tables.import()`. Při rozšiřování ukázky základní aplikace byste měli upravit soubor App. js:
+V rámci osvědčeného postupu byste měli definovat každou tabulku v souboru JavaScriptu v adresáři `tables` a potom pomocí metody `tables.import()` importovat tabulky. Při rozšiřování ukázky základní aplikace byste měli upravit soubor App. js:
 
 ```javascript
 var express = require('express'),
@@ -245,7 +245,7 @@ var table = azureMobileApps.table();
 module.exports = table;
 ```
 
-Tabulky ve výchozím nastavení používají dynamické schéma. Pokud chcete dynamické schéma vypnout globálně, nastavte v Azure Portal nastavení aplikace `MS_DynamicSchema` na false.
+Tabulky ve výchozím nastavení používají dynamické schéma. Pokud chcete dynamické schéma globálně vypnout, nastavte v Azure Portal nastavení `MS_DynamicSchema` aplikace na false.
 
 Úplný příklad najdete v [Ukázka TODO na GitHubu].
 
@@ -271,7 +271,7 @@ table.dynamicSchema = false;
 module.exports = table;
 ```
 
-Definujete-li tabulky staticky, je také nutné zavolat metodu `tables.initialize()` a vytvořit tak schéma databáze při spuštění. Metoda `tables.initialize()` vrací [Slíbit] , aby webová služba nesloužila požadavkům před inicializací databáze.
+Definujete-li tabulky staticky, je také nutné zavolat metodu `tables.initialize()` pro vytvoření schématu databáze při spuštění. Metoda `tables.initialize()` vrátí [Slíbit] , aby webová služba nesloužila požadavkům před inicializací databáze.
 
 ### <a name="howto-sqlexpress-setup"></a>Použití SQL Server Express jako vývojového úložiště dat na místním počítači
 
@@ -319,7 +319,7 @@ Mobile Apps Node. js SDK používá [balíček Node. js pro MSSQL] k navázání
    1. Vyberte **OK**.
 
       ![Konfigurace ověřování SQL Server Express][4]
-   1. Rozbalte možnost **zabezpečení** > **přihlášení** v Průzkumník objektů.
+   1. V Průzkumník objektů rozbalte **přihlašovací údaje** > **zabezpečení** .
    1. Klikněte pravým tlačítkem na **přihlašovací údaje** a vyberte **nové přihlašovací údaje**.
    1. Zadejte přihlašovací jméno. Vyberte **Ověřování SQL Serveru**. Zadejte heslo a potom zadejte stejné heslo do pole **Potvrdit heslo**. Heslo musí splňovat požadavky Windows na složitost.
    1. Vyberte **OK**.
@@ -377,24 +377,24 @@ Většina nastavení v souboru azureMobile. js má ekvivalentní nastavení apli
 
 | Nastavení aplikace | nastavení azureMobile. js | Popis | Platné hodnoty |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |jméno |Název aplikace |string |
+| **MS_MobileAppName** |jméno |Název aplikace |řetězec |
 | **MS_MobileLoggingLevel** |Logging. Level |Minimální úroveň protokolu pro zprávy, které se mají protokolovat |Chyba, upozornění, informace, podrobný, ladění, Silly |
-| **MS_DebugMode** |Ladí |Povolí nebo zakáže režim ladění. |true, false |
-| **MS_TableSchema** |data. Schema |Výchozí název schématu pro tabulky SQL |String (výchozí: dbo) |
-| **MS_DynamicSchema** |data. dynamicSchema |Povolí nebo zakáže režim ladění. |true, false |
+| **MS_DebugMode** |ladí |Povolí nebo zakáže režim ladění. |true, false |
+| **MS_TableSchema** |data.schema |Výchozí název schématu pro tabulky SQL |String (výchozí: dbo) |
+| **MS_DynamicSchema** |data.dynamicSchema |Povolí nebo zakáže režim ladění. |true, false |
 | **MS_DisableVersionHeader** |verze (nastavená na undefined) |Zakáže hlavičku X-ZUMO-server-Version. |true, false |
 | **MS_SkipVersionCheck** |skipversioncheck |Zakáže kontrolu verze rozhraní API klienta. |true, false |
 
 Nastavení aplikace nastavíte takto:
 
-1. Přihlaste se na web [Azure Portal].
+1. Přihlásit se na [Azure Portal].
 1. Vyberte **všechny prostředky** nebo **App Services**a pak vyberte název mobilní aplikace.
 1. Ve výchozím nastavení se otevře podokno **Nastavení** . Pokud tomu tak není, vyberte **Nastavení**.
 1. V nabídce **Obecné** vyberte **nastavení aplikace**.
 1. Přejděte do části **nastavení aplikace** .
 1. Pokud už nastavení aplikace existuje, vyberte hodnotu nastavení aplikace a upravte hodnotu.
    Pokud nastavení aplikace neexistuje, zadejte nastavení aplikace v poli **klíč** a hodnotu v poli **hodnota** .
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 Změna většiny nastavení aplikace vyžaduje restart služby.
 
@@ -404,21 +404,21 @@ Změna většiny nastavení aplikace vyžaduje restart služby.
 
 Použití Azure SQL Database jako úložiště dat je identické napříč všemi Azure App Service typy aplikací. Pokud jste to ještě neudělali, postupujte podle těchto kroků a vytvořte Mobile Apps back-end:
 
-1. Přihlaste se na web [Azure Portal].
-1. V levém horním rohu okna vyberte tlačítko **+ nový** **web a mobilní zařízení** > **mobilní aplikace**> a potom zadejte název Mobile Apps back end.
+1. Přihlásit se na [Azure Portal].
+1. V levém horním rohu okna vyberte tlačítko **+ nový** > **web a mobilní zařízení** > **mobilní aplikace**a zadejte název pro Mobile Apps back end.
 1. Do pole **Skupina prostředků** zadejte stejný název jako vaše aplikace.
 1. Je vybrán výchozí plán App Service. Pokud chcete změnit plán App Service:
 
-   a. Vyberte **plán App Service** >  **+ vytvořit nové**.
+   a. Vyberte **App Service plán** >  **+ vytvořit nové**.
 
    b. Zadejte název nového plánu App Service a vyberte příslušné umístění.
 
    c. Vyberte odpovídající cenovou úroveň pro službu. Výběrem **Zobrazit vše** zobrazíte další cenové možnosti, například **Free** a **Shared**.
 
-   d. Klikněte na tlačítko **Vybrat** .
+   d. Klikněte na tlačítko **vyberte** tlačítko.
 
    e. Zpátky v podokně **App Service plán** vyberte **OK**.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 Zřízení Mobile Apps back-endu může trvat několik minut. Po zřízení back-endu Mobile Apps se portál otevře v podokně **nastavení** Mobile Apps back-endu.
 
@@ -438,11 +438,11 @@ Můžete se rozhodnout buď připojit existující databázi SQL k Mobile Apps b
 
 <!--- END OF ALTERNATE INCLUDE -->
 
-Vytvoření databáze může trvat několik minut. Pomocí oblasti **oznámení** můžete monitorovat průběh nasazení. Neprovádějte postup, dokud se databáze úspěšně nasadí. Po nasazení databáze se vytvoří připojovací řetězec pro instanci SQL Database v nastavení back-endu Mobile Apps aplikace. Toto nastavení aplikace můžete zobrazit v **nastavení** > **nastavení aplikace** > **připojovací řetězce**.
+Vytvoření databáze může trvat několik minut. Pomocí oblasti **oznámení** můžete monitorovat průběh nasazení. Neprovádějte postup, dokud se databáze úspěšně nasadí. Po nasazení databáze se vytvoří připojovací řetězec pro instanci SQL Database v nastavení back-endu Mobile Apps aplikace. Toto nastavení aplikace můžete zobrazit v **nastavení** > **nastavení aplikace** > **připojovacích řetězců**.
 
 ### <a name="howto-tables-auth"></a>Vyžadovat ověřování pro přístup k tabulkám
 
-Pokud chcete použít App Service ověřování s koncovým bodem `tables`, musíte nejprve nakonfigurovat App Service ověřování v [Azure Portal] . Další informace najdete v Průvodci konfigurací poskytovatele identity, kterého chcete použít:
+Pokud chcete App Service ověřování použít s koncovým bodem `tables`, musíte nejdřív nakonfigurovat App Service ověřování v [Azure Portal] . Další informace najdete v Průvodci konfigurací poskytovatele identity, kterého chcete použít:
 
 * [Konfigurace ověřování Azure Active Directory]
 * [Konfigurace ověřování na Facebooku]
@@ -481,7 +481,7 @@ Vlastnost Access může mít jednu ze tří hodnot:
 Pokud vlastnost Access není definovaná, je povolený neověřený přístup.
 
 ### <a name="howto-tables-getidentity"></a>Použití ověřovacích deklarací s tabulkami
-Můžete nastavit různé deklarace identity, které jsou požadovány při nastavení ověřování. Tyto deklarace nejsou obvykle k dispozici prostřednictvím objektu `context.user`. Můžete je však načíst pomocí metody `context.user.getIdentity()`. Metoda `getIdentity()` vrací příslib, který se překládá na objekt. Objekt je označen metodou ověřování (`facebook`, `google`, `twitter`, `microsoftaccount` nebo `aad`).
+Můžete nastavit různé deklarace identity, které jsou požadovány při nastavení ověřování. Tyto deklarace nejsou obvykle k dispozici prostřednictvím objektu `context.user`. Můžete je však načíst pomocí metody `context.user.getIdentity()`. Metoda `getIdentity()` vrací příslib, který se překládá na objekt. Objekt je označen metodou ověřování (`facebook`, `google`, `twitter`, `microsoftaccount`nebo `aad`).
 
 Pokud jste například nastavili ověřování účet Microsoft a požádáte o deklaraci e-mailových adres, můžete k záznamu přidat e-mailovou adresu pomocí následujícího řadiče tabulky:
 
@@ -540,7 +540,7 @@ table.delete(queryContextForEmail);
 module.exports = table;
 ```
 
-Pokud chcete zjistit, jaké deklarace identity jsou k dispozici, použijte webový prohlížeč a zobrazte koncový bod `/.auth/me` vašeho webu.
+Pokud chcete zjistit, jaké deklarace identity jsou k dispozici, použijte webový prohlížeč k zobrazení `/.auth/me`ho koncového bodu vašeho webu.
 
 ### <a name="howto-tables-disabled"></a>Zakázat přístup ke konkrétním operacím tabulky
 
@@ -610,7 +610,7 @@ context.query.where('myfield eq ?', 'value');
 
 ### <a name="howto-tables-softdelete"></a>Konfigurace obnovitelného odstranění tabulky
 
-Obnovitelné odstranění ve skutečnosti neodstraní záznamy. Místo toho je označí jako odstraněné v rámci databáze tím, že nastaví odstraněný sloupec na hodnotu true. Sada Mobile Apps SDK automaticky odstraní obnovitelné odstraněné záznamy z výsledků, pokud mobilní klientská sada SDK nepoužívá `IncludeDeleted()`. Chcete-li nakonfigurovat tabulku pro obnovitelné odstranění, nastavte vlastnost `softDelete` v souboru definice tabulky:
+Obnovitelné odstranění ve skutečnosti neodstraní záznamy. Místo toho je označí jako odstraněné v rámci databáze tím, že nastaví odstraněný sloupec na hodnotu true. Sada Mobile Apps SDK automaticky odebere záznamy s odstraněnou z výsledků, pokud mobilní klientská sada SDK nepoužívá `IncludeDeleted()`. Chcete-li nakonfigurovat tabulku pro obnovitelné odstranění, nastavte vlastnost `softDelete` v souboru definice tabulky:
 
 ```javascript
 var azureMobileApps = require('azure-mobile-apps');
@@ -667,7 +667,7 @@ module.exports = table;
 
 Dosazení dat probíhá pouze v případě, že jste k vytvoření tabulky použili sadu Mobile Apps SDK. Pokud tabulka v databázi již existuje, do tabulky nebudou vložena žádná data. Pokud je dynamické schéma zapnuté, schéma se odvozuje od dosazených dat.
 
-Pro vytvoření tabulky při spuštění služby doporučujeme explicitně zavolat metodu `tables.initialize()`.
+Doporučujeme, abyste explicitně volali metodu `tables.initialize()` pro vytvoření tabulky při spuštění služby.
 
 ### <a name="Swagger"></a>Povolit podporu Swagger
 Mobile Apps obsahuje integrovanou podporu [Swagger] . Pokud chcete povolit podporu Swagger, nejdřív nainstalujte Swagger – uživatelské rozhraní jako závislost:
@@ -680,17 +680,17 @@ Pak můžete povolit podporu Swagger v konstruktoru Mobile Apps:
 var mobile = azureMobileApps({ swagger: true });
 ```
 
-V edicích pro vývoj pravděpodobně budete chtít povolit pouze podporu Swagger. Můžete to provést pomocí nastavení aplikace `NODE_ENV`:
+V edicích pro vývoj pravděpodobně budete chtít povolit pouze podporu Swagger. To můžete provést pomocí nastavení aplikace `NODE_ENV`:
 
 ```javascript
 var mobile = azureMobileApps({ swagger: process.env.NODE_ENV !== 'production' });
 ```
 
-Koncový bod `swagger` se nachází na adrese http://*yoursite*. azurewebsites.NET/Swagger. K uživatelskému rozhraní Swagger můžete přistupovat prostřednictvím koncového bodu `/swagger/ui`. Pokud se rozhodnete, že budete vyžadovat ověřování v celé aplikaci, Swagger vytvoří chybu. Nejlepších výsledků dosáhnete, pokud povolíte neověřené požadavky v Azure App Service ověřování/nastavení autorizace, a pak pomocí vlastnosti `table.access` zařídíte ověřování.
+Koncový bod `swagger` se nachází na adrese http://*yoursite*. azurewebsites.NET/Swagger. K uživatelskému rozhraní Swagger můžete přistupovat prostřednictvím koncového bodu `/swagger/ui`. Pokud se rozhodnete, že budete vyžadovat ověřování v celé aplikaci, Swagger vytvoří chybu. Nejlepších výsledků dosáhnete, pokud povolíte neověřené požadavky v Azure App Service ověřování/nastavení autorizace a pak pomocí vlastnosti `table.access` ovládací prvek ověřování.
 
 Můžete také přidat možnost Swagger do souboru azureMobile. js, pokud chcete, aby byla podpora Swagger jenom pro vývoj místně.
 
-## <a name="a-namepushpush-notifications"></a>oznámení @no__t – 0Push
+## <a name="a-namepushpush-notifications"></a><a name="push"/>nabízených oznámení
 
 Mobile Apps se integruje s Azure Notification Hubs, takže můžete odesílat cílené nabízená oznámení milionům zařízení na všech hlavních platformách. Pomocí Notification Hubs můžete odesílat nabízená oznámení do zařízení se systémy iOS, Android a Windows. Další informace o všech tom, co můžete s Notification Hubs provádět, najdete v tématu [Notification Hubs Overview](../notification-hubs/notification-hubs-push-notification-overview.md).
 
@@ -765,7 +765,7 @@ Vlastní rozhraní API jsou definována podobným způsobem jako rozhraní API t
 
 1. Vytvořte adresář `api`.
 1. Vytvořte soubor JavaScriptu definice rozhraní API v adresáři `api`.
-1. Pomocí metody Import importujte adresář `api`.
+1. Použijte metodu import pro import adresáře `api`.
 
 Tady je definice rozhraní prototyp API na základě ukázky základní aplikace, kterou jsme použili dříve:
 
@@ -803,7 +803,7 @@ Každý parametr je jedním ze standardních RESTful operací: GET, POST, PATCH 
 
 ### <a name="howto-customapi-auth"></a>Vyžadovat ověřování pro přístup k vlastnímu rozhraní API
 
-Sada Mobile Apps SDK implementuje ověřování stejným způsobem jako koncový bod `tables` i pro vlastní rozhraní API. Chcete-li přidat ověřování do rozhraní API vyvinutého v předchozí části, přidejte vlastnost `access`:
+Sada Mobile Apps SDK implementuje ověřování stejným způsobem jak pro koncový bod `tables`, tak pro vlastní rozhraní API. Chcete-li přidat ověřování do rozhraní API vyvinutého v předchozí části, přidejte vlastnost `access`:
 
 ```javascript
 var api = {
@@ -833,7 +833,7 @@ api.get.access = 'authenticated';
 module.exports = api;
 ```
 
-Stejný token, který se používá pro koncový bod `tables`, se musí používat pro vlastní rozhraní API, která vyžadují ověřování.
+Stejný token, který se používá pro `tables` koncový bod, musí být použit pro vlastní rozhraní API, která vyžadují ověřování.
 
 ### <a name="howto-customapi-auth"></a>Zpracovat rozsáhlá nahrávání souborů
 
@@ -922,9 +922,9 @@ Aplikace Node. js mají přístup k široké škále nástrojů diagnostického 
 [Rychlý Start pro klienta Android]: app-service-mobile-android-get-started.md
 [Rychlý Start klienta Apache Cordova]: app-service-mobile-cordova-get-started.md
 [rychlý Start klienta iOS]: app-service-mobile-ios-get-started.md
-[Rychlý Start pro klienta Xamarin. iOS]: app-service-mobile-xamarin-ios-get-started.md
+[Rychlé spuštění klienta Xamarin.iOS]: app-service-mobile-xamarin-ios-get-started.md
 [Rychlý Start pro klienta Xamarin. Android]: app-service-mobile-xamarin-android-get-started.md
-[Rychlý Start klienta Xamarin. Forms]: app-service-mobile-xamarin-forms-get-started.md
+[Rychlé spuštění klienta Xamarin.Forms]: app-service-mobile-xamarin-forms-get-started.md
 [Rychlý Start klienta Windows Storu]: app-service-mobile-windows-store-dotnet-get-started.md
 [synchronizaci offline dat]: app-service-mobile-offline-data-sync.md
 [Konfigurace ověřování Azure Active Directory]: ../app-service/configure-authentication-provider-aad.md

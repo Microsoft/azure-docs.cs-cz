@@ -32,11 +32,11 @@ Pouze instalace systému Windows Nástroje Azure Data Lake pro Visual Studio pod
 
    ![Vyhledat balíčky závislostí](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
 
-   2,1 Chcete-li nainstalovat **BuildTools**, klikněte na soubor visualcppbuildtools_full. exe ve složce LocalRunDependency a postupujte podle pokynů průvodce.   
+   2,1 Pokud chcete nainstalovat **BuildTools**, klikněte ve složce LocalRunDependency na soubor visualcppbuildtools_full. exe a postupujte podle pokynů průvodce.   
 
     ![Nainstalovat BuildTools](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
 
-   2,2 Chcete-li nainstalovat **Win10SDK 10240**, klikněte na soubor sdksetup. exe ve složce LocalRunDependency/win10sdk_ 10.0.10240 _2 a postupujte podle pokynů průvodce.  
+   2,2 Chcete-li nainstalovat **Win10SDK 10240**, klikněte na soubor sdksetup. exe ve složce LocalRunDependency/Win10SDK_10.0.10240 _2 a postupujte podle pokynů průvodce.  
 
     ![Instalace Win10SDK 10240](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 
@@ -59,7 +59,8 @@ V případě prvního uživatele použijte **ADL: Stáhněte si místní spušt�
    ![Data Lake nástroje pro Visual Studio Code výběr místní](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
 5. Po odeslání úlohy si můžete zobrazit podrobnosti o odeslání. Chcete-li zobrazit podrobnosti o odeslání, vyberte v okně **výstup** možnost **jobUrl** . Stav odeslání úlohy můžete také zobrazit z konzoly cmd. Pokud chcete získat další informace o úloze, zadejte **7** v konzole cmd.
 
-   @no__t – 0Data Lake Tools for Visual Studio Code místního spuštění výstupu @ no__t-1 @ no__t-2Data Lake Tools for Visual Studio Code Local Run cmd status @ no__t-3 
+   ![Data Lake nástroje pro Visual Studio Code místní výstup spuštění](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
+   ![Data Lake nástroje pro Visual Studio Code místní spuštění – stav příkazu cmd](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
 
 
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>Spustit místní ladění pro úlohu U-SQL  
@@ -68,7 +69,7 @@ Pro uživatele v prvním čase:
 1. Pomocí **ADL: stáhnout místní balíček** pro spuštění pro stažení místních balíčků spuštění, pokud jste nastavili [místní prostředí pro spuštění U-SQL](#set-up-the-u-sql-local-run-environment).
 2. Pokud není nainstalována, nainstalujte .NET Core SDK 2,0, jak je navrženo v okně se zprávou.
  
-   @ no__t-1reminder nainstaluje dotnet @ no__t-2
+  ![připomenutí nainstaluje dotnet](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
 3. Pokud C# není nainstalovaný, nainstalujte pro Visual Studio Code, jak je navrženo v okně se zprávou. Pokračujte kliknutím na tlačítko **nainstalovat** a pak restartujte VSCode.
 
     ![Připomenutí k instalaciC#](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)

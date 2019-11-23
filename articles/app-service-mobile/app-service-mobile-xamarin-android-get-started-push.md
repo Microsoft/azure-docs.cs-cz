@@ -28,7 +28,7 @@ ms.locfileid: "72388490"
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Přehled
 
@@ -36,7 +36,7 @@ V tomto kurzu přidáte nabízená oznámení do projektu [Xamarin. Android pro 
 
 Pokud nepoužíváte stažený projekt serveru pro rychlý Start, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce se serverovou sadou .NET back-end SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) průvodce.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz vyžaduje nastavení:
 
@@ -75,7 +75,7 @@ Aplikaci můžete testovat pomocí virtuálního zařízení v emulátoru. Při 
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
 
-2. Kliknutím na **aplikace**@no__t**nastavení**-1  > **Přidat účet**a potom postupujte podle pokynů, přidejte do zařízení s Androidem účet Google.
+2. Kliknutím na **aplikace** > **Nastavení** > **Přidat účet**přidejte účet Google na zařízení s Androidem a potom postupujte podle pokynů.
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/add-google-account.png)
 

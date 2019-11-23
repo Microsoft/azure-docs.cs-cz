@@ -43,7 +43,7 @@ V tomto příkladu je aplikace webových formulářů ASP.NET vytvořena v aplik
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
 ```
 
-Událost Page_Load v Default.aspx.cs používá metodu Response. Write () k vrácení názvu serveru Azure Analysis Services.
+Událost Page_Load v Default.aspx.cs používá metodu Response. Write () k vrácení Azure Analysis Services názvu serveru.
 
 ```
 protected void Page_Load(object sender, EventArgs e)

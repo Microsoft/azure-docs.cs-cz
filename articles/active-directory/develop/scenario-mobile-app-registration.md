@@ -56,17 +56,17 @@ Všimněte si, že na portálu pro registraci aplikací je prostředí Preview, 
 1. V části registrace aplikace vyberte **ověřování** a výběr **zkuste vyzkoušet nové prostředí**
    ![image](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-2. Vyberte **přidat**![bitovou kopii
+2. Vyberte **přidat** ![bitovou kopii
    platformy](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-3. Když se podporuje seznam platforem, vyberte![image
+3. Když se podporuje seznam platforem, vyberte ![image
    pro **iOS**](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
 4. Zadejte ID sady prostředků podle požadavků a potom stiskněte **registrovat**
    ![bitová kopie](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. Identifikátor URI přesměrování je vypočítán za vás.
-   ![obrázek](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 Pokud upřednostňujete ruční konfiguraci identifikátoru URI přesměrování, můžete to provést prostřednictvím manifestu aplikace. Doporučený formát je následující:
 
@@ -76,7 +76,7 @@ Pokud upřednostňujete ruční konfiguraci identifikátoru URI přesměrování
 
 ### <a name="username-password"></a>Heslo pro uživatelské jméno
 
-Pokud vaše aplikace používá jenom uživatelské jméno a heslo, nemusíte pro svoji aplikaci registrovat identifikátor URI přesměrování. To znamená, že tento tok provede zpáteční cestu ke koncovému bodu Microsoft Identity Platform v 2.0 a vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI. Musíte ale vyjádřit, že vaše aplikace je veřejná klientská aplikace. Tato konfigurace se dosahuje tak, že do části **ověřování** pro vaši aplikaci kliknete a v podčásti **Upřesnit nastavení** zvolíte **Ano**, u otázky se **považuje aplikace za veřejného klienta** (ve **výchozím nastavení. odstavcový typ klienta** )
+Pokud vaše aplikace používá jenom uživatelské jméno a heslo, nemusíte pro svoji aplikaci registrovat identifikátor URI přesměrování. To znamená, že tento tok provede zpáteční cestu ke koncovému bodu Microsoft Identity Platform v 2.0 a vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI. Musíte ale vyjádřit, že vaše aplikace je veřejná klientská aplikace. Tuto konfiguraci dosáhnete tak, že v podčásti pro **ověřování** nasadíte aplikaci a v podčásti **Upřesnit nastavení** zvolíte **Ano**, na dotaz **považovat aplikaci za veřejného klienta** (ve výchozím odstavci **typ klienta** ).
 
 ## <a name="api-permissions"></a>Oprávnění API
 

@@ -1,5 +1,5 @@
 ---
-title: Úkoly pro jednotlivé přispěvatele v rámci vědeckého zpracování týmových dat
+title: Úlohy pro jednotlivý Přispěvatel v vědecké zpracování týmových dat
 description: Podrobný návod pro úlohy jednotlivých přispěvatelů v týmovém projektu pro datové vědy.
 author: marktab
 manager: cgronlun
@@ -17,7 +17,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/10/2019
 ms.locfileid: "72244277"
 ---
-# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Úkoly pro jednotlivé přispěvatele v rámci vědeckého zpracování týmových dat
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Úlohy pro jednotlivý Přispěvatel v vědecké zpracování týmových dat
 
 Toto téma popisuje úkoly, které *jednotlivé přispěvatelé* dokončí k nastavení projektu v rámci [vědeckého zpracování týmových dat](overview.md) (TDSP). Cílem je pracovat ve společném týmovém prostředí, které se bude standardizovat na TDSP. TDSP je navržený tak, aby pomohla zdokonalit spolupráci a týmovou výuku. Přehled rolí personálu a jejich přidružených úloh, které jsou zpracovávány týmem pro datové vědy, se standardizací na TDSP, najdete v tématu [role procesů a úlohy vědeckého zpracování dat týmu](roles-tasks.md).
 
@@ -32,7 +32,7 @@ Následující diagram znázorňuje úkoly, které Project jednotliví přispěv
 > [!NOTE] 
 > Tento článek používá Azure Repos a Data Science Virtual Machine (DSVM) k nastavení prostředí TDSP, protože to znamená, jak implementovat TDSP v Microsoftu. Pokud váš tým používá jiné hostování kódu nebo vývojové platformy, jednotlivé úkoly přispěvatele jsou stejné, ale způsob jejich dokončení může být jiný.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste [správcem skupiny](group-manager-tasks.md), vedoucím [týmu](team-lead-tasks.md)a [vedoucím projektu](project-lead-tasks.md)nastavili následující prostředky a oprávnění:
 
@@ -45,7 +45,7 @@ V tomto kurzu se předpokládá, že jste [správcem skupiny](group-manager-task
 K klonování úložišť a úpravám obsahu na vašem místním počítači nebo DSVM nebo připojení služby Azure File Storage ke svému DSVM budete potřebovat následující:
 
 - Předplatné Azure.
-- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě si přečtěte článek věnované [platformám a nástrojům](platforms-and-tools.md#appendix).
+- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě najdete v článku [platformami a nástroji příloha](platforms-and-tools.md#appendix).
 - Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
 - Pro Windows DSVM se na vašem počítači nainstaluje [Správce přihlašovacích údajů Git (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . V souboru *Readme.MD* se posuňte dolů k části **Stažení a instalace** a vyberte **nejnovější instalační program**. Stáhněte instalační program *. exe* z instalační stránky a spusťte ho. 
 - Pro Linux DSVM se v DSVM nastavil veřejný klíč SSH a přidal se do Azure DevOps. Další informace a pokyny najdete v části **vytvoření veřejného klíče SSH** v [příloze platformy a nástroje](platforms-and-tools.md#appendix). 
@@ -55,7 +55,7 @@ K klonování úložišť a úpravám obsahu na vašem místním počítači neb
 
 Chcete-li pracovat s místními úložišti a nasdílet změny až do sdíleného týmu a úložišť projektů, nejprve zkopírujte nebo *naklonujte* úložiště do místního počítače. 
 
-1. Ve službě Azure DevOps se podívejte na stránku souhrnu projektu na adrese *https: \/ @ no__t-2 @ no__t-3server název >/\<organization název >/\<team >* , například **https: \//dev. Azure. com/DataScienceUnit/myTeam**.
+1. V Azure DevOps na stránce se souhrnem projektu na adrese *https:\//\<název serveru >/\<název organizace >/\<název týmu >* , například **https:\//dev.Azure.com/DataScienceUnit/myTeam**.
    
 1. V levém navigačním panelu vyberte úložiště **a v horní** části stránky vyberte úložiště, které chcete klonovat.
    
@@ -100,7 +100,7 @@ Pokud má váš tým nebo projekt sdílené prostředky ve službě Azure File S
 
 Zde jsou odkazy na podrobné popisy dalších rolí a úloh, které jsou definovány v rámci vědeckého zpracování týmových dat:
 
-- [Úlohy správce skupin pro tým pro datové vědy](group-manager-tasks.md)
-- [Úkoly vedoucí týmu pro tým pro datové vědy](team-lead-tasks.md)
-- [Úkoly vedoucího projektu pro tým pro datové vědy](project-lead-tasks.md)
+- [Úlohy správce skupiny pro datové vědy tým](group-manager-tasks.md)
+- [Úkoly vedoucí týmu pro datové vědy tým](team-lead-tasks.md)
+- [Vedoucí úkoly pro datové vědy tým projektu](project-lead-tasks.md)
 

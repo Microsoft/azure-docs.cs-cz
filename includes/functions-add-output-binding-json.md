@@ -13,7 +13,7 @@ ms.locfileid: "71838954"
 ---
 Atributy vazby se definují přímo v souboru Function. JSON. V závislosti na typu vazby mohou být vyžadovány další vlastnosti. [Konfigurace výstupu fronty](../articles/azure-functions/functions-bindings-storage-queue.md#output---configuration) popisuje pole požadovaná pro vazbu fronty Azure Storage. Rozšíření usnadňuje přidávání vazeb do souboru Function. JSON. 
 
-Vazbu vytvoříte tak, @no__t že kliknete pravým tlačítkem (Ctrl + kliknutí na macOS) do složky HttpTrigger a kliknete na **Přidat vazbu...** . Podle pokynů definujte následující vlastnosti vazby pro novou vazbu:
+Vazbu vytvoříte tak, že kliknete pravým tlačítkem (CTRL + kliknete na macOS) do souboru `function.json` ve složce HttpTrigger a kliknete na **Přidat vazbu...** . Podle pokynů definujte následující vlastnosti vazby pro novou vazbu:
 
 | Výzva | Hodnota | Popis |
 | -------- | ----- | ----------- |

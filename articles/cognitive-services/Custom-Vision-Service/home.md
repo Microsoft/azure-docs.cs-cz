@@ -19,9 +19,9 @@ ms.locfileid: "72177829"
 ---
 # <a name="what-is-custom-vision"></a>Co je Custom Vision?
 
-Custom Vision je služba pro rozpoznávání, která umožňuje sestavovat, nasazovat a zdokonalovat vlastní klasifikátory obrázků. Klasifikátor obrázku je služba AI, která v závislosti na jejich vizuálních vlastnostech používá popisky (které reprezentují _třídy_) k obrázkům. Na rozdíl od služby [Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Custom Vision umožňuje určit popisky, které se mají použít.
+Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Klasifikátor obrázku je služba AI, která v závislosti na jejich vizuálních vlastnostech používá popisky (které reprezentují _třídy_) k obrázkům. Na rozdíl od služby [Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Custom Vision umožňuje určit popisky, které se mají použít.
 
-## <a name="what-it-does"></a>Výsledek
+## <a name="what-it-does"></a>Co dělá
 
 Služba Custom Vision používá algoritmus strojového učení pro použití popisků na obrázky. Vy, vývojář, musíte odeslat skupiny imagí, které mají funkci, a chybějící příslušné charakteristiky. Obrázky můžete označovat sami v době odeslání. Pak algoritmus navede na tato data a vypočte svou vlastní přesnost tím, že se na stejných obrázcích otestuje sám. Jakmile je algoritmus vyučený, můžete ho otestovat, revlakovat a nakonec ho použít ke klasifikaci nových imagí podle potřeb vaší aplikace. Samotný model můžete také exportovat pro offline použití.
 
@@ -31,9 +31,9 @@ Funkce služby Custom Vision je možné rozdělit do dvou funkcí. **Klasifikace
 
 ### <a name="optimization"></a>Optimalizace
 
-Služba Custom Vision je optimalizovaná tak, aby rychle rozpoznala hlavní rozdíly mezi obrázky, takže můžete začít s vytvářením prototypů modelu s malým množstvím dat. 50 obrázků na popisek jsou obecně dobrým startem. Služba ale není optimální pro detekci drobných rozdílů v obrázcích (například rozpoznávání menších prasklin nebo odsazení ve scénářích zabezpečování kvality).
+Služba Custom Vision je optimalizovaná pro rychlé rozpoznání rozdílů mezi obrázky, takže můžete začít vytvářet prototyp vašeho modelu s malým množstvím dat. 50 obrázků na popisek jsou obecně dobrým startem. Služba ale není optimální pro detekci drobných rozdílů v obrázcích (například rozpoznávání menších prasklin nebo odsazení ve scénářích zabezpečování kvality).
 
-Kromě toho si můžete vybrat z několika variant Custom Vision algoritmu, které jsou optimalizované pro obrázky s určitým materiálem předmětu @ no__t-0for example, orientačních bodů nebo maloobchodních položek. Další informace naleznete v tématu [sestavování Průvodce tříděním](getting-started-build-a-classifier.md) .
+Kromě toho můžete vybrat z několika variant Custom Vision algoritmu, které jsou optimalizované pro obrázky s určitým materiálem předmětu&mdash;například orientačních bodů nebo maloobchodních položek. Další informace naleznete v tématu [sestavování Průvodce tříděním](getting-started-build-a-classifier.md) .
 
 ## <a name="what-it-includes"></a>Co zahrnuje
 

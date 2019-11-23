@@ -91,8 +91,8 @@ Později v kroku samostatného navrácení služeb při selhání převezmete da
 Než začnete s procesem obnovení, zkontrolujte normální dobrý stav aplikace.
 1. Ve webovém prohlížeči otevřete centrum událostí Wingtip Tickets (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net – nahraďte &lt;uživatele&gt; hodnotou uživatele vašeho nasazení).
     * Posuňte se do dolní části stránky a Všimněte si názvu a umístění serveru katalogu v zápatí. Umístění je oblast, ve které jste nasadili aplikaci.
-    *Tip: Pokud chcete zobrazení zvětšit, najeďte myší na jeho umístění.* stav v pořádku
-    ![události centra událostí v původní oblasti](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *TIP: Najeďte myší umístění zvětšíte zobrazení.* 
+    ![Události v pořádku stav rozbočovače v původní oblast](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Klikněte na tenanta contoso hala a otevřete jeho stránku události.
     * V zápatí si všimněte názvu tenanta serveru. Umístění bude stejné jako umístění serveru katalogu.

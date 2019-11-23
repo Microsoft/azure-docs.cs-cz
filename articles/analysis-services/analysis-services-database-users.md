@@ -27,7 +27,7 @@ Oprávnění role zahrnují:
 
 Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte uživatele nebo skupiny k těmto rolím pomocí Správce rolí v aplikaci Visual Studio s Analysis Services projekty. Při nasazení na server můžete k přidávání a odebírání rolí a uživatelských členů použít rutiny SQL Server Management Studio (SSMS), [Analysis Services rutiny prostředí PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)nebo TMSL ( [Tabular model Scripting Language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) ).
 
-**Skupiny zabezpečení** musí být [povolené poštou](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) s vlastností `MailEnabled` nastavenou na `True`. Při zadávání e-mailové adresy Group by použijte `obj:groupid@tenantid`.
+**Skupiny zabezpečení** musí být [povoleny poštou](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) s vlastností `MailEnabled` nastavenou na hodnotu `True`. Při zadání e-mailové adresy Group by použijte `obj:groupid@tenantid`.
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Přidání nebo Správa rolí a uživatelů v aplikaci Visual Studio  
@@ -44,7 +44,7 @@ Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte u
   
     |Oprávnění|Popis|  
     |----------------|-----------------|  
-    |**NTato**|Členové nemohou upravovat schéma modelu a nemohou zadávat dotazy na data.|  
+    |**Žádné**|Členové nemohou upravovat schéma modelu a nemohou zadávat dotazy na data.|  
     |**Čtení**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
     |**Čtení a zpracování**|Členové mohou zadávat dotazy na data (na základě filtrů na úrovni řádků) a spouštět proces a zpracovávat všechny operace, ale nemohou upravovat schéma modelu.|  
     |**Přihlášení**|Členové mohou spustit proces a zpracovat všechny operace. Schéma modelu nelze upravovat a nelze zadávat dotazy na data.|  
@@ -65,7 +65,7 @@ Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte u
 
 Chcete-li přidat role a uživatele do nasazené databáze modelů, musíte být připojeni k serveru jako správce serveru nebo již v roli databáze s oprávněními správce.
 
-1. V části Object Exporer klikněte pravým tlačítkem na **role** > **Nová role**.
+1. V části Object Exporer klikněte pravým tlačítkem na **role** > **nové role**.
 
 2. V nástroji **vytvořit roli**zadejte název a popis role.
 
@@ -125,7 +125,7 @@ Modul [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analys
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Přidejte člena do databázové role.| 
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Odebere člena z databázové role.|   
-|[Invoke – ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Spusťte skript TMSL.|
+|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Spusťte skript TMSL.|
 
 ## <a name="row-filters"></a>Filtry řádků  
 
@@ -137,7 +137,7 @@ Filtry řádků lze definovat pouze pro role s oprávněním pro čtení a čten
   
 Filtry řádků se použijí na zadané řádky a související řádky. Pokud má tabulka víc relací, aplikují filtry zabezpečení na aktivní relaci. Filtry řádků se protínají s ostatními filers řádků definovanými pro související tabulky, například:  
   
-|Tabulka|Výraz DAX|  
+|Table|Výraz DAX|  
 |-----------|--------------------|  
 |Oblast|= Region [Země] = "USA"|  
 |ProductCategory|= ProductCategory [název] = "jízdní kola"|  

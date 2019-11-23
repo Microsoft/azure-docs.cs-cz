@@ -20,7 +20,7 @@ Správce imagí virtuálních počítačů Azure (Azure image Builder) umožňuj
 > Azure image Builder je momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Funkce verze Preview
+## <a name="preview-features"></a>Funkce Preview
 
 Pro verzi Preview jsou tyto funkce podporované:
 
@@ -33,26 +33,26 @@ Pro verzi Preview jsou tyto funkce podporované:
 - Vytváření imagí ve formátu VHD.
  
 
-## <a name="regions"></a>Oblasti
+## <a name="regions"></a>Regions
 Služba Azure image Builder bude k dispozici pro verzi Preview v těchto oblastech. Obrázky lze distribuovat mimo tyto oblasti.
-- USA – východ
-- Východ USA 2
+- Východní USA
+- Východní USA 2
 - Středozápadní USA
 - Západní USA
-- Západní USA 2
+- USA – západ 2
 
 ## <a name="os-support"></a>Podpora operačního systému
 AIB bude podporovat image základního operačního systému Azure Marketplace:
 - Ubuntu 18.04
 - Ubuntu 16.04
 - RHEL 7,6
-- CentOS 7,6
+- CentOS 7.6
 - Windows 10 RS5 Enterprise/Professional/Enterprise pro Virtual Desktop (EVD) 
 - Windows 2016
-- Systém Windows 2019
+- Windows 2019
 
 AIB bude podporovat RHEL ISO jako zdroj pro:
-- RHEL 7,3
+- RHEL 7.3
 - RHEL 7,4
 - RHEL 7.5
 
@@ -72,9 +72,9 @@ Azure image Builder je plně spravovaná služba Azure, která je přístupná p
 ![Koncepční vykreslení procesu Azure image Builder](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Vytvořte šablonu obrázku jako soubor. JSON. Tento soubor. JSON obsahuje informace o zdroji, přizpůsobení a distribuci obrázku. V [úložišti GitHub Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)je několik příkladů.
-1. Odešlete ji do služby. tím se vytvoří artefakt šablony obrázku ve skupině prostředků, kterou zadáte. Na pozadí bude tvůrce imagí stahovat zdrojové Image nebo ISO a skripty podle potřeby. Ukládají se do samostatné skupiny prostředků, která se automaticky vytvoří v rámci vašeho předplatného, ve formátu: IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName >. 
-1. Po vytvoření šablony image pak můžete vytvořit image. V Tvůrci imagí na pozadí používá šablonu a zdrojové soubory k vytvoření virtuálního počítače (D1v2), sítě, veřejné IP adresy a úložiště ve skupině IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > skupiny prostředků.
-1. V rámci vytváření image tvůrce imagí distribuuje image podle šablony a pak odstraní další prostředky ve skupině prostředků IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName >, která se vytvořila pro tento proces.
+1. Odešlete ji do služby. tím se vytvoří artefakt šablony obrázku ve skupině prostředků, kterou zadáte. Na pozadí bude tvůrce imagí stahovat zdrojové Image nebo ISO a skripty podle potřeby. Ukládají se do samostatné skupiny prostředků, která se automaticky vytvoří v rámci vašeho předplatného, ve formátu: IT_\<DestinationResourceGroup > _\<template >. 
+1. Po vytvoření šablony image pak můžete vytvořit image. V Tvůrci imagí na pozadí se používá šablona a zdrojové soubory k vytvoření virtuálního počítače (D1v2), sítě, veřejné IP adresy a úložiště v IT_\<DestinationResourceGroup > _\<template > skupiny prostředků.
+1. V rámci vytvoření bitové kopie obrázek sestaví image podle šablony a pak odstraní další prostředky v IT_\<DestinationResourceGroup > _\<template > Group, která byla vytvořena pro daný proces.
 
 
 ## <a name="permissions"></a>Oprávnění

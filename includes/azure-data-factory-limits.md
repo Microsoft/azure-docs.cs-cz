@@ -22,17 +22,17 @@ Azure Data Factory je víceklientské služba, která má následující výchoz
 | Prostředek | Výchozí omezení | Maximální omezení |
 | -------- | ------------- | ------------- |
 | Datové továrny v předplatném Azure | 50 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
-| Celkový počet entit, jako jsou kanály, datové sady, triggery, propojené služby a prostředí Integration runtime v rámci datové továrny | 5 000 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
+| Celkový počet entit, jako jsou kanály, datové sady, triggery, propojené služby a prostředí Integration runtime v rámci datové továrny | 5,000 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
 | Celkový počet jader procesoru pro prostředí Azure-SSIS Integration runtime v rámci jednoho předplatného | 256 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
-| Souběžné spouštění kanálů na objekt pro vytváření dat, která jsou sdílená mezi všemi kanály ve výrobě | 10 000  | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
+| Souběžné spouštění kanálů na objekt pro vytváření dat, která jsou sdílená mezi všemi kanály ve výrobě | 10,000  | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
 | Souběžná externí aktivita se spouští na základě předplatného na [Azure Integration runtime oblasti](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) .<br><small>Externí aktivity jsou spravované v prostředí Integration runtime, ale spouštějí se na propojených službách, včetně datacihly, uložených procedur, HDInsights a dalších.</small> | 3000 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
-| Souběžná spuštění aktivity kanálu na předplatné na [Azure Integration runtime oblast](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) <br><small>Aktivity kanálu se spouštějí v prostředí Integration runtime, včetně vyhledávání, GetMetadata a odstranění.</small>| 1 000 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
-| Souběžné operace vytváření obsahu na předplatné na [Azure Integration runtime oblasti](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br>@no__t – 0Including test Connection, procházet seznam složek a seznam tabulek, zobrazit data. | 200 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
+| Souběžná spuštění aktivity kanálu na předplatné na [Azure Integration runtime oblast](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) <br><small>Aktivity kanálu se spouštějí v prostředí Integration runtime, včetně vyhledávání, GetMetadata a odstranění.</small>| 1000 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
+| Souběžné operace vytváření obsahu na předplatné na [Azure Integration runtime oblasti](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>včetně testovacího připojení, procházení seznamu složek a seznamu tabulek, náhled dat. | 200 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
 | Počet současných jednotek integrace dat<sup>1</sup> na předplatné na [Azure Integration runtime oblast](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| Skupina oblastí 1<sup>2</sup>: 6000<br>Skupina oblastí 2<sup>2</sup>: 3000<br>Skupina oblastí 3<sup>2</sup>: 1500 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
 | Maximální počet aktivit na kanál, které obsahují interní aktivity pro kontejnery | 40 | 40 |
 | Maximální počet propojených prostředí Integration Integration, které se dají vytvořit na jednom místním prostředí Integration runtime | 100 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
 | Maximální počet parametrů na kanál | 50 | 50 |
-| Položky ForEach | 100 000 | 100 000 |
+| Položky ForEach | 100,000 | 100,000 |
 | Paralelismus ForEach | 20 | 50 |
 | Počet znaků na výraz | 8 192 | 8 192 |
 | Minimální interval spuštění bubnu okna | 15 min | 15 min |
@@ -53,7 +53,7 @@ Azure Data Factory je víceklientské služba, která má následující výchoz
 
 <sup>2</sup> [Azure Integration runtime](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) jsou [globálně dostupné](https://azure.microsoft.com/global-infrastructure/services/) , aby se zajistilo dodržování předpisů, efektivita a snížení nákladů na výstup sítě. 
 
-| Skupina oblastí | Oblasti | 
+| Skupina oblastí | Regions | 
 | -------- | ------ |
 | Skupina oblastí 1 | Střed USA, Východní USA, východní USA 2, Severní Evropa, Západní Evropa, Západní USA západní USA 2 |
 | Skupina oblastí 2 | Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Střed Indie, Japonsko – východ, USA – Northcentral, střed USA, jihovýchodní Asie, Středozápadní USA |
@@ -66,8 +66,8 @@ Azure Data Factory je víceklientské služba, která má následující výchoz
 | **Prostředek** | **Výchozí omezení** | **Maximální limit** |
 | --- | --- | --- |
 | Datové továrny v předplatném Azure |50 |[Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
-| Kanály v rámci datové továrny |2 500 |[Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
-| Datové sady v rámci datové továrny |5 000 |[Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
+| Kanály v rámci datové továrny |2,500 |[Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
+| Datové sady v rámci datové továrny |5,000 |[Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
 | Souběžné řezy na sadu dat |10 |10 |
 | Počet bajtů na objekt pro objekty kanálu<sup>1</sup> |200 KB |200 KB |
 | Počet bajtů na objekt pro datovou sadu a objekty propojené služby<sup>1</sup> |100 KB |2 000 KB |

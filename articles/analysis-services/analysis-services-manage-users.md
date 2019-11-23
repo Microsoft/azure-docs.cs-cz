@@ -81,4 +81,4 @@ Role na této úrovni se vztahují na uživatele nebo účty, které potřebují
 [Správa přístupu k prostředkům pomocí skupin Azure Active Directory](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Správa databázových rolí a uživatelů](analysis-services-database-users.md)  
 [Správa správců serveru](analysis-services-server-admins.md)  
-[Řízení přístupu na základě rolí](../role-based-access-control/overview.md)  
+[Řízení přístupu na základě role](../role-based-access-control/overview.md)  

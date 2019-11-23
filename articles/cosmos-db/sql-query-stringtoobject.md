@@ -34,7 +34,7 @@ StringToObject(<str_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak `StringToObject` se chová v různých typech. 
+  Následující příklad ukazuje, jak se `StringToObject` chová napříč různými typy. 
   
  Níže jsou uvedeny příklady s platným vstupem.
 
@@ -56,7 +56,7 @@ Tady je sada výsledků.
 ```
 
  Následují příklady s neplatným vstupem.
-I když jsou v rámci dotazu platné, nebudou analyzovány na platné objekty. Řetězce v řetězci objektu musí být buď uvozeny řídicím znakem "{\\" a @ no__t-1 ": \\" str @ no__t-3 "}" nebo okolní uvozovka musí být jednoduché "{" a ":" str "}".
+I když jsou v rámci dotazu platné, nebudou analyzovány na platné objekty. Řetězce v řetězci objektu musí být buď uvozeny řídicím znakem "{\\" a\\":\\" str\\"}", nebo okolní uvozovka musí být jeden "{" a ":" str "}".
 
 Jednoduché uvozovky obklopující názvy vlastností nejsou platné JSON.
 

@@ -21,7 +21,7 @@ ms.locfileid: "73685784"
 # <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Začínáme s transparentní šifrování dat (TDE) v SQL Data Warehouse
 > [!div class="op_single_selector"]
 > * [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md)
-> * [Ověřování](sql-data-warehouse-authentication.md)
+> * [Autentizace](sql-data-warehouse-authentication.md)
 > * [Šifrování (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Šifrování (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
@@ -53,13 +53,13 @@ Pokud chcete zakázat TDE SQL Data Warehouse, postupujte podle následujících 
 ## <a name="encryption-dmvs"></a>Zobrazení dynamické správy šifrování
 Šifrování lze potvrdit pomocí následujících zobrazení dynamické správy:
 
-* [sys. databases]
-* [sys. DM _pdw_nodes_database_encryption_keys]
+* [sys.databases]
+* [sys.dm_pdw_nodes_database_encryption_keys]
 
 <!--MSDN references-->
 [Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[sys. databases]: https://msdn.microsoft.com/library/ms178534.aspx
-[sys. DM _pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
+[sys.databases]: https://msdn.microsoft.com/library/ms178534.aspx
+[sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png

@@ -49,7 +49,7 @@ Pokud chcete povolit pracovní postup souhlasu správce a zvolit kontrolory:
    * **Vybraní uživatelé budou dostávat připomenutí vypršení platnosti žádosti**. Umožňuje povolit nebo zakázat e-mailová oznámení připomenutí kontrolorům, když žádost brzy vyprší.  
    * **Platnost žádosti o souhlas vyprší po (dny)** . Zadejte, jak dlouho zůstanou požadavky platné.
 
-7. Vyberte **Save** (Uložit). Může trvat až hodinu, než se funkce aktivuje.
+7. Vyberte **Uložit**. Může trvat až hodinu, než se funkce aktivuje.
 
 > [!NOTE]
 > Revidující pro tento pracovní postup můžete přidat nebo odebrat tak, že upravíte seznam **kontroloři žádosti o souhlas správce** . Všimněte si, že aktuální omezení této funkce je, že Recenzenti mohou zachovat možnost kontrolovat žádosti, které byly provedeny v době, kdy byly označeny jako kontrolor.
@@ -123,11 +123,11 @@ Následující tabulka popisuje scénáře a hodnoty auditu, které jsou k dispo
 |Správce, který povoluje pracovní postup žádosti o souhlas        |Kontroly přístupu           |UserManagement           |Vytvořit šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.            |
 |Správce zakázal pracovní postup žádosti o souhlas.       |Kontroly přístupu           |UserManagement           |Odstranit šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
 |Správce aktualizuje Konfigurace pracovního postupu souhlasu.        |Kontroly přístupu           |UserManagement           |Aktualizovat šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
-|Koncový uživatel, který vytváří žádost o souhlas správce pro aplikaci       |Kontroly přístupu           |Zásady         |Vytvořit žádost           |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
+|Koncový uživatel, který vytváří žádost o souhlas správce pro aplikaci       |Kontroly přístupu           |Zásada         |Vytvořit žádost           |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
 |Kontroloři, kteří schvalují žádost o souhlas správce       |Kontroly přístupu           |UserManagement           |Schválit všechny požadavky v podnikovém toku          |Kontext aplikace            |V současné době nemůžete najít kontext uživatele nebo ID aplikace, kterým byl udělen souhlas správce.           |
 |Kontroloři odmítající žádost o souhlas správce       |Kontroly přístupu           |UserManagement           |Schválit všechny požadavky v podnikovém toku          |Kontext aplikace            | V současné době nemůžete najít kontext uživatele objektu actor, který zamítl žádost o souhlas správce.          |
 
-## <a name="faq"></a>Časté otázky 
+## <a name="faq"></a>Nejčastější dotazy 
 
 **Mám zapnutý tento pracovní postup, ale když testujete jeho funkčnost, nemůžete mi zobrazit, že se výzva k schválení vyžaduje?**
 

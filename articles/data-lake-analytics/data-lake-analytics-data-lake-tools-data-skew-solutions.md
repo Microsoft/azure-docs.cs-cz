@@ -20,7 +20,7 @@ ms.locfileid: "71802555"
 ## <a name="what-is-data-skew"></a>Co je zkosení dat?
 
 Krátce řečeno, zkosení dat je nadlimitní hodnota. Představte si, že jste přiřadili kontrolní průzkumy 50 pro audit vrácených daňových vratek, jeden kontroler pro každý stav USA. Wyoming prozkoumávání, protože populace má malý výskyt, má málo. V Kalifornii se však zkoušející udržuje velmi zaneprázdněný kvůli velkému naplnění populace stavu.
-    Příklad problému ![Data-asymetrie @ no__t-1
+    Příklad problému s ![mi daty – zkosený](./media/data-lake-analytics-data-lake-tools-data-skew-solutions/data-skew-problem.png)
 
 V našem scénáři jsou data rovnoměrně distribuována napříč všemi daňovými průzkumy, což znamená, že některé průzkumy musí fungovat více než jiné. Ve vaší vlastní úloze často dochází k situaci, jako je příklad daňového přezkoumání. V rámci více technických podmínek jeden vrchol získá mnohem více dat než jejich partneři, což je situace, kdy vrchol funguje více než ostatní a kdy nakonec zpomaluje celou úlohu. Čím je horší, úloha může selhat, protože vrcholy můžou mít například omezení za běhu a velikost 6 GB paměti.
 

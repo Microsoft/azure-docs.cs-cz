@@ -19,7 +19,7 @@ Tento článek vysvětluje, jak zadat dotaz na kontejner (kolekci, graf nebo tab
 
 ## <a name="in-partition-query"></a>Dotaz v rámci oddílu
 
-Pokud má dotaz dotaz na data z kontejnerů, je-li v dotazu zadán filtr klíčů oddílu, Azure Cosmos DB zpracovává dotaz automaticky. Směruje dotaz na oddíly, které odpovídají hodnotám klíče oddílu zadaným ve filtru. Například následující dotaz je směrován do `DeviceId` oddílu, který obsahuje všechny dokumenty odpovídající hodnotě `XMS-0001`klíče oddílu.
+Pokud má dotaz dotaz na data z kontejnerů, je-li v dotazu zadán filtr klíčů oddílu, Azure Cosmos DB zpracovává dotaz automaticky. Směruje dotaz na oddíly, které odpovídají hodnotám klíče oddílu zadaným ve filtru. Například následující dotaz je směrován do oddílu `DeviceId`, který obsahuje všechny dokumenty odpovídající hodnotě klíče oddílu `XMS-0001`.
 
 ```csharp
 // Query using partition key into a class called, DeviceReading
@@ -30,7 +30,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 ## <a name="cross-partition-query"></a>Dotazování napříč oddíly
 
-Následující dotaz nemá filtr na klíč oddílu (`DeviceId`) a je distribuuje na všechny oddíly, kde je spuštěný proti indexu oddílu. Chcete-li spustit dotaz napříč oddíly, `EnableCrossPartitionQuery` nastavte na hodnotu true `x-ms-documentdb-query-enablecrosspartition`(nebo  v REST API).
+Následující dotaz neobsahuje filtr na klíč oddílu (`DeviceId`) a je distribuuje na všechny oddíly, na kterých je spuštěný proti indexu oddílu. Chcete-li spustit dotaz napříč oddíly, nastavte `EnableCrossPartitionQuery` na hodnotu true (nebo `x-ms-documentdb-query-enablecrosspartition` v REST API).
 
 Vlastnost EnableCrossPartitionQuery přijímá logickou hodnotu. Když se nastaví na hodnotu true, a pokud váš dotaz nemá klíč oddílu, vyAzure Cosmos DB ventilátory pro dotaz napříč oddíly. Ventilátor se provádí vykonáním jednotlivých dotazů na všechny oddíly. Chcete-li číst výsledky dotazu, klientské aplikace by měly využívat výsledky z FeedResponse a kontrolovat vlastnost token continuationtoken. Pokud chcete načíst všechny výsledky, pokračujte v iteracích dat, dokud token continuationtoken nevrátí hodnotu null. 
 
@@ -59,13 +59,13 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 
 Paralelní provádění dotazů můžete spravovat laděním následujících parametrů:
 
-- **Z MaxDegreeOfParallelism**: Nastaví maximální počet současných síťových připojení k oddílům kontejneru. Pokud nastavíte tuto vlastnost na hodnotu-1, sada SDK bude spravovat stupeň paralelismu.  `MaxDegreeOfParallelism`Pokudparametrnenízadánnebojenastavennahodnotu0,cožjevýchozíhodnota,jekoddílůmkontejneru jediné síťové připojení.
+- **MaxDegreeOfParallelism:** Nastaví maximální počet souběžných síťových připojení k oddílům kontejneru. Pokud nastavíte tuto vlastnost na hodnotu-1, sada SDK bude spravovat stupeň paralelismu. Pokud   `MaxDegreeOfParallelism`není zadán nebo je nastavena na hodnotu 0, což je výchozí hodnota, je k oddílům kontejneru jediné síťové připojení.
 
-- **MaxBufferedItemCount**: Latence dotazů při dotazování oproti využití paměti na straně klienta. Pokud je tato možnost vynechána nebo chcete-li ji nastavit na hodnotu-1, sada SDK spravuje počet položek ukládaných do vyrovnávací paměti během paralelního provádění dotazů.
+- **MaxBufferedItemCount:** Vyvažuje latenci dotazů a využití paměti na straně klienta. Pokud je tato možnost vynechána nebo chcete-li ji nastavit na hodnotu-1, sada SDK spravuje počet položek ukládaných do vyrovnávací paměti během paralelního provádění dotazů.
 
 Se stejným stavem kolekce paralelní dotaz vrátí výsledky ve stejném pořadí jako spuštění sériového čísla. Při provádění dotazu na více oddílů, který obsahuje operátory řazení (ORDER BY, TOP), sada Azure Cosmos DB SDK vydá dotaz paralelně napříč oddíly. Sloučí částečně seřazené výsledky na straně klienta, aby se vytvořily globálně seřazené výsledky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o dělení v Azure Cosmos DB najdete v následujících článcích:
 

@@ -20,7 +20,7 @@ Sdílené složky Azure můžete vytvořit pomocí [Azure Portal](https://porta
 * [Jak vytvořit sdílenou složku Azure pomocí PowerShellu](#create-file-share-through-powershell)
 * [Postup vytvoření sdílené složky Azure pomocí rozhraní příkazového řádku](#create-file-share-through-command-line-interface-cli)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete vytvořit sdílenou složku Azure, můžete použít už existující účet úložiště nebo [vytvořit nový účet služby Azure Storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Pokud chcete vytvořit sdílenou složku Azure pomocí PowerShellu, budete potřebovat klíč účtu a název účtu úložiště. Pokud plánujete použít PowerShell nebo rozhraní příkazového řádku, budete potřebovat klíč účtu úložiště.
 
 > [!NOTE]
@@ -44,7 +44,7 @@ Pokud chcete vytvořit sdílenou složku Azure, můžete použít už existujíc
 
 
 ## <a name="create-file-share-through-powershell"></a>Vytvoření sdílené složky prostřednictvím PowerShellu
-K používání PowerShellu budete potřebovat stáhnout a nainstalovat rutiny modulu Azure PowerShell. Další informace najdete v tématu instalace [a konfigurace Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)  for instalačního bodu a pokynů k instalaci.
+K používání PowerShellu budete potřebovat stáhnout a nainstalovat rutiny modulu Azure PowerShell. Pokyny k instalaci a instalaci najdete v tématu [instalace a konfigurace Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
 
 > [!Note]  
 > Doporučuje se stáhnout a nainstalovat nebo upgradovat na nejnovější modul Azure PowerShell.
@@ -73,7 +73,7 @@ K používání PowerShellu budete potřebovat stáhnout a nainstalovat rutiny m
     Přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
 2. **Vytvořte připojovací řetězec k účtu úložiště, kde chcete sdílenou složku vytvořit.**  
-    V následujícím příkladu nahraďte  ```<storage-account>```  and  ```<resource_group>```  with název svého účtu úložiště a skupinu prostředků:
+    V následujícím příkladu nahraďte ```<storage-account>``` a ```<resource_group>``` s názvem svého účtu úložiště a skupinou prostředků:
 
    ```azurecli
     current_env_conn_string=$(az storage account show-connection-string -n <storage-account> -g <resource-group> --query 'connectionString' -o tsv)

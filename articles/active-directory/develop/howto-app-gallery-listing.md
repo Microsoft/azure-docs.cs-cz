@@ -38,7 +38,7 @@ Tento článek ukazuje, jak zobrazit seznam aplikací v galerii aplikací Azure 
 - Mezi vzájemné zákazníky získáte Podrobný kurz konfigurace.
 - Zákazníci, kteří používají systém pro správu identit mezi doménami ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)), můžou použít zřizování pro stejnou aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pro federované aplikace (otevřené ID a SAML/WS) musí aplikace podporovat model software jako služba (SaaS), aby mohl být uvedený v galerii aplikací Azure AD. Aplikace podnikové Galerie musí podporovat více zákaznických konfigurací a ne žádného konkrétního zákazníka.
 - Pro otevřené ID Connect musí být aplikace víceklientské a musí být pro aplikaci správně implementovaná [Architektura souhlasu služby Azure AD](consent-framework.md) . Uživatel může odeslat žádost o přihlášení ke společnému koncovému bodu, aby každý zákazník mohl poskytnout souhlas k aplikaci. Můžete řídit přístup uživatelů na základě ID tenanta a hlavního názvu uživatele (UPN) přijatého v tokenu.
@@ -114,7 +114,7 @@ Pokud chcete aktualizovat nebo odebrat existující aplikaci v galerii aplikací
 
 ## <a name="list-requests-by-customers"></a>Vypsat žádosti od zákazníků
 
-Zákazníci můžou odeslat žádost o seznam aplikací tak, že si vyberou **žádosti o aplikace od zákazníků** > **Odeslat novou žádost**.
+Zákazníci můžou odeslat žádost o seznam aplikací tak, že si vyberou **žádosti o aplikace od zákazníků** > **Odeslat nový požadavek**.
 
 ![Zobrazuje dlaždici aplikace požadované zákazníky.](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -134,4 +134,4 @@ Tady je postup pro aplikace vyžadované zákazníky.
 
 ## <a name="escalations"></a>Eskalací zákazníka
 
-Pro všechny eskalace odešlete e-mail do [týmového týmu jednotného přihlašování služby Azure AD](mailto:SaaSApplicationIntegrations@service.microsoft.com) na adrese @no__t 1 a budeme co nejdříve reagovat.
+Pro všechny eskalace odešlete e-mail do [týmového týmu jednotného přihlašování služby Azure AD](mailto:SaaSApplicationIntegrations@service.microsoft.com) na SaaSApplicationIntegrations@service.microsoft.coma budeme co nejdříve reagovat.

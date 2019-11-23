@@ -27,7 +27,7 @@ ms.locfileid: "72374006"
 
 Funkce podmíněného přístupu v Azure Active Directory (Azure AD) nabízí jeden z několika způsobů, jak můžete použít k zabezpečení aplikace a ochraně služby. Podmíněný přístup umožňuje vývojářům a podnikovým zákazníkům chránit služby mnoha různými způsoby, včetně těchto:
 
-* Multi-Factor Authentication
+* Ověřování pomocí služby Multi-Factor Authentication
 * Povoluje přístup ke konkrétním službám jenom zařízením zaregistrovaným v Intune.
 * Omezení umístění uživatelů a rozsahů IP adres
 
@@ -79,7 +79,7 @@ Aplikace může očekávat, že jejich uživatelé splní všechny zásady nasta
 
 U několika různých topologií aplikací se zásada podmíněného přístupu vyhodnocuje při navázání relace. Vzhledem k tomu, že zásada podmíněného přístupu pracuje na členitosti aplikací a služeb, je bod, ve kterém je vyvolána, závislá na scénáři, který se pokoušíte provést.
 
-Když se vaše aplikace pokusí o přístup ke službě se zásadami podmíněného přístupu, může se objevit výzva pro podmíněný přístup. Tato výzva se zakóduje v parametru `claims`, který se nachází v odpovědi z Azure AD. Tady je příklad tohoto parametru výzvy: 
+Když se vaše aplikace pokusí o přístup ke službě se zásadami podmíněného přístupu, může se objevit výzva pro podmíněný přístup. Tato výzva je zakódovaná v parametru `claims`, který se nachází v odpovědi z Azure AD. Tady je příklad tohoto parametru výzvy: 
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -89,7 +89,7 @@ Vývojáři můžou tuto výzvu přijmout a připojit ji k nové žádosti do Az
 
 ## <a name="scenarios"></a>Scénáře
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Podmíněný přístup Azure AD je funkce, která je součástí [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Další informace o licenčních požadavcích najdete v [sestavě používání bez licenčního využití](../active-directory-conditional-access-unlicensed-usage-report.md). Vývojáři se můžou připojit ke [službě Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx), která zahrnuje bezplatné předplatné sady Enterprise mobility, které zahrnuje Azure AD Premium.
 
@@ -114,7 +114,7 @@ Požadavek na počáteční token pro webové rozhraní API 1 nevyzve koncového
 Azure AD vrátí odpověď HTTP s některými zajímavými daty:
 
 > [!NOTE]
-> V této instanci se jedná o popis chyby vícefaktorového ověřování, ale existuje celá řada `interaction_required`, která se může týkat podmíněného přístupu.
+> V této instanci se jedná o popis chyby Multi-Factor Authentication, ale existuje celá řada `interaction_required` možných, která se týká podmíněného přístupu.
 
 ```
 HTTP 400; Bad Request
@@ -123,7 +123,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 ```
 
-Ve webovém rozhraní API 1 se chyba zachytí `error=interaction_required` a pošle se zpět výzva `claims` do desktopové aplikace. V tomto okamžiku může aplikace klasické pracovní plochy vytvořit nové volání `acquireToken()` a připojit `claims`challenge jako další parametr řetězce dotazu. Tato nová žádost vyžaduje, aby uživatel prováděl vícefaktorové ověřování, a pak tento nový token poslal zpátky do webového rozhraní API 1 a dokončil tok.
+Ve webovém rozhraní API 1 se chyba zachytí `error=interaction_required`a pošle zpátky `claims` výzvu do desktopové aplikace. V tomto okamžiku aplikace klasické pracovní plochy může vytvořit nové `acquireToken()` volání a připojit `claims`výzvou jako další parametr řetězce dotazu. Tato nová žádost vyžaduje, aby uživatel prováděl vícefaktorové ověřování, a pak tento nový token poslal zpátky do webového rozhraní API 1 a dokončil tok.
 
 Chcete-li tento scénář vyzkoušet, podívejte se na náš [ukázkový kód .NET](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Ukazuje, jak předat výzvy deklarací identity zpátky z webového rozhraní API 1 do nativní aplikace a vytvořit novou žádost v klientské aplikaci.
 
@@ -146,23 +146,23 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![Aplikace přistupující k více službám požadujícím nový token](./media/conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-Pokud aplikace používá knihovnu ADAL, neúspěšné opakované pokus o získání tokenu se vždy provádí interaktivně. Když dojde k tomuto interaktivnímu požadavku, má koncový uživatel možnost dodržovat podmíněný přístup. To platí, pokud se jedná o hodnotu true, pokud se nejedná o `AcquireTokenSilentAsync` nebo `PromptBehavior.Never` v takovém případě musí aplikace provést interaktivní požadavek ```AcquireToken```, aby koncoví uživatelé měli možnost dodržovat tyto zásady.
+Pokud aplikace používá knihovnu ADAL, neúspěšné opakované pokus o získání tokenu se vždy provádí interaktivně. Když dojde k tomuto interaktivnímu požadavku, má koncový uživatel možnost dodržovat podmíněný přístup. To platí, pokud se jedná o `AcquireTokenSilentAsync` nebo `PromptBehavior.Never` v takovém případě musí aplikace provést interaktivní ```AcquireToken``` žádost, aby koncovému uživateli bylo umožněno dodržovat tyto zásady.
 
 ## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scénář: jednostránkové aplikace (SPA) využívající ADAL. js
 
 V tomto scénáři Vás provedeme v případě, že máme jednostránkovou aplikaci (SPA), pomocí knihovny ADAL. js zavoláme webové rozhraní API pro podmíněný přístup. Toto je jednoduchá architektura, ale má několik drobné odlišnosti, které je potřeba vzít v úvahu při vývoji podmíněného přístupu.
 
-V ADAL. js existuje několik funkcí, které získají tokeny: `login()`, `acquireToken(...)`, `acquireTokenPopup(…)` a `acquireTokenRedirect(…)`.
+V ADAL. js existuje několik funkcí, které získají tokeny: `login()`, `acquireToken(...)`, `acquireTokenPopup(…)`a `acquireTokenRedirect(…)`.
 
-* `login()` získá token ID prostřednictvím interaktivního přihlašovacího požadavku, ale nezíská přístupové tokeny pro žádnou službu (včetně webového rozhraní API pro podmíněný přístup).
-* `acquireToken(…)` se pak dá použít k tichému získání přístupového tokenu, což znamená, že v žádném případě nezobrazuje uživatelské rozhraní.
+* `login()` získá token ID prostřednictvím interaktivní žádosti o přihlášení, ale nezíská přístupové tokeny pro žádnou službu (včetně webového rozhraní API pro podmíněný přístup).
+* `acquireToken(…)` je pak možné použít k tichému získání přístupového tokenu, což znamená, že v žádné situaci nezobrazuje uživatelské rozhraní.
 * `acquireTokenPopup(…)` a `acquireTokenRedirect(…)` jsou použity k interaktivnímu vyžádání tokenu pro prostředek, což znamená, že vždy zobrazují uživatelské rozhraní pro přihlašování.
 
-Když aplikace potřebuje přístupový token pro volání webového rozhraní API, pokusí se o `acquireToken(…)`. Pokud vypršela platnost relace tokenu nebo je potřeba dodržovat zásady podmíněného přístupu, funkce *acquireToken* se nezdařila a aplikace používá `acquireTokenPopup()` nebo `acquireTokenRedirect()`.
+Když aplikace potřebuje přístupový token pro volání webového rozhraní API, pokusí se `acquireToken(…)`. Pokud vypršela platnost relace tokenu nebo je potřeba dodržovat zásady podmíněného přístupu, funkce *acquireToken* se nezdařila a aplikace používá `acquireTokenPopup()` nebo `acquireTokenRedirect()`.
 
 ![Jednostránkové aplikace s využitím flowového diagramu ADAL](./media/conditional-access-dev-guide/spa-using-adal-scenario.png)
 
-Podívejme se na příklad s naším scénářem podmíněného přístupu. Koncový uživatel, který se právě vyložil na webu a nemá relaci. Provádíme volání `login()`, získáme token ID bez služby Multi-Factor Authentication. Pak uživatel narazí na tlačítko, které vyžaduje, aby aplikace vyžadovala data z webového rozhraní API. Aplikace se pokusí provést volání @no__t 0, ale neproběhne úspěšně, protože uživatel ještě neprováděl službu Multi-Factor Authentication a musí splňovat zásady podmíněného přístupu.
+Podívejme se na příklad s naším scénářem podmíněného přístupu. Koncový uživatel, který se právě vyložil na webu a nemá relaci. Provádíme `login()` volání, získáme token ID bez služby Multi-Factor Authentication. Pak uživatel narazí na tlačítko, které vyžaduje, aby aplikace vyžadovala data z webového rozhraní API. Aplikace se pokusí provést `acquireToken()` volání, ale neproběhne úspěšně, protože uživatel ještě neprováděl službu Multi-Factor Authentication a musí splňovat zásady podmíněného přístupu.
 
 Azure AD pošle zpět následující odpověď HTTP:
 
@@ -176,7 +176,7 @@ Naše aplikace potřebuje zachytit `error=interaction_required`. Aplikace pak m�
 
 Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukázku kódu v tématu js Spa](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). V tomto příkladu kódu se k předvedení tohoto scénáře používá zásada podmíněného přístupu a webové rozhraní API, které jste zaregistrovali dříve pomocí zabezpečeného hesla. Ukazuje, jak správně zpracovat výzvu deklarací identity a získat přístupový token, který se dá použít pro vaše webové rozhraní API. Alternativně můžete v případě, že si vyrezervujete [vzorový kód pro obecné úhlové. js](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) , najdete pokyny k úhlů
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * Další informace o možnostech najdete [v tématu podmíněný přístup v Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
 * Další ukázky kódu Azure AD najdete v tématu [úložiště GitHub ukázek kódu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory).

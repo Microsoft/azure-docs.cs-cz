@@ -37,31 +37,31 @@ Chcete-li provádět podrobnější diagnostiku, sledovat výkon a identifikovat
 
 Pomocí této tabulky můžete určit, které metriky jsou pro váš scénář monitorování nejvhodnější. Ve stejném grafu se dají zobrazit jenom metriky stejné jednotky.
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|
+|Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|Délka fronty úloh fondu příkazů|Počet|Průměr|Počet úloh ve frontě fondu vláken příkazů|
 |CurrentConnections|Připojení: aktuální připojení|Počet|Průměr|Aktuální počet navázaných připojení klientů.|
 |CurrentUserSessions|Aktuální uživatelské relace|Počet|Průměr|Aktuální počet navázaných uživatelských relací.|
-|mashup_engine_memory_metric|Paměť motoru M|Psaný|Průměr|Využití paměti procesy modulu hybridní webové aplikace|
+|mashup_engine_memory_metric|Paměť motoru M|B|Průměr|Využití paměti procesy modulu hybridní webové aplikace|
 |mashup_engine_qpu_metric|QPU modulu M|Počet|Průměr|QPU využití hybridních procesů v hybridních modulech|
-|memory_metric|Memory (Paměť)|Psaný|Průměr|Rezident. Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|
+|memory_metric|Memory (Paměť)|B|Průměr|Rezident. Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|
 |memory_thrashing_metric|Thrashing paměti|Procento|Průměr|Průměrná velikost thrashing paměti|
 |CleanerCurrentPrice|Paměť: aktuální cena čisticího modulu|Počet|Průměr|Aktuální cena paměti $ USD, normalizovaná na 1000.|
-|CleanerMemoryNonshrinkable|Paměť: nezmenšovaná paměť čisticí paměti|Psaný|Průměr|Množství paměti (v bajtech), které není předmětem mazání čisticím pozadím.|
-|CleanerMemoryShrinkable|Paměť: velikost čisticí paměti|Psaný|Průměr|Množství paměti (v bajtech), které se může vyčistit čisticím nástrojem na pozadí.|
-|MemoryLimitHard|Paměť: limit paměti – pevný|Psaný|Průměr|Limit pevné paměti, z konfiguračního souboru.|
-|Hodnota memorylimithigh|Paměť: limit paměti – vysoká|Psaný|Průměr|Horní limit paměti, z konfiguračního souboru.|
-|MemoryLimitLow|Paměť: limit paměti – nízká|Psaný|Průměr|Omezení nedostatku paměti, z konfiguračního souboru.|
-|MemoryLimitVertiPaq|Paměť: limit paměti VertiPaq|Psaný|Průměr|Limit v paměti, z konfiguračního souboru.|
-|MemoryUsage|Paměť: využití paměti|Psaný|Průměr|Využití paměti procesu serveru, které se používá při výpočtu ceny čisticí paměti. Je rovno čítači Process\PrivateBytes a velikosti paměti, která je namapovaná na paměť, která byla namapována nebo přidělena pomocí analytického stroje v paměti (VertiPaq), nad rámec limitu paměti stroje.|
-|private_bytes_metric|Soukromé bajty |Psaný|Průměr|Celková velikost paměti, kterou proces Analysis Services modulu a procesu kontejneru hybridních webových aplikací přidělil, a ne včetně paměti sdílené s jinými procesy.|
-|virtual_bytes_metric|Virtuální bajty |Psaný|Průměr|Aktuální velikost virtuálního adresního prostoru, který používá procesy procesu Analysis Services Engine a hybridní aplikace.|
-|mashup_engine_private_bytes_metric|Počet privátních bajtů modulu M |Psaný|Průměr|Celkový objem paměťových procesů kontejneru hybridní webové aplikace, včetně paměti, která je sdílena s jinými procesy.|
-|mashup_engine_virtual_bytes_metric|Virtuální bajty motoru M |Psaný|Průměr|Aktuální velikost procesů kontejneru hybridního adresního prostoru virtuálního adresáře.|
-|Kvóta|Paměť: kvóta|Psaný|Průměr|Aktuální kvóta paměti (v bajtech). Kvóta paměti je také známá jako přidělení paměti nebo rezervace paměti.|
+|CleanerMemoryNonshrinkable|Paměť: nezmenšovaná paměť čisticí paměti|B|Průměr|Množství paměti (v bajtech), které není předmětem mazání čisticím pozadím.|
+|CleanerMemoryShrinkable|Paměť: velikost čisticí paměti|B|Průměr|Množství paměti (v bajtech), které se může vyčistit čisticím nástrojem na pozadí.|
+|MemoryLimitHard|Paměť: limit paměti – pevný|B|Průměr|Limit pevné paměti, z konfiguračního souboru.|
+|Hodnota memorylimithigh|Paměť: limit paměti – vysoká|B|Průměr|Horní limit paměti, z konfiguračního souboru.|
+|MemoryLimitLow|Paměť: limit paměti – nízká|B|Průměr|Omezení nedostatku paměti, z konfiguračního souboru.|
+|MemoryLimitVertiPaq|Paměť: limit paměti VertiPaq|B|Průměr|Limit v paměti, z konfiguračního souboru.|
+|MemoryUsage|Paměť: využití paměti|B|Průměr|Využití paměti procesu serveru, které se používá při výpočtu ceny čisticí paměti. Je rovno čítači Process\PrivateBytes a velikosti paměti, která je namapovaná na paměť, která byla namapována nebo přidělena pomocí analytického stroje v paměti (VertiPaq), nad rámec limitu paměti stroje.|
+|private_bytes_metric|Soukromé bajty |B|Průměr|Celková velikost paměti, kterou proces Analysis Services modulu a procesu kontejneru hybridních webových aplikací přidělil, a ne včetně paměti sdílené s jinými procesy.|
+|virtual_bytes_metric|Virtuální bajty |B|Průměr|Aktuální velikost virtuálního adresního prostoru, který používá procesy procesu Analysis Services Engine a hybridní aplikace.|
+|mashup_engine_private_bytes_metric|Počet privátních bajtů modulu M |B|Průměr|Celkový objem paměťových procesů kontejneru hybridní webové aplikace, včetně paměti, která je sdílena s jinými procesy.|
+|mashup_engine_virtual_bytes_metric|Virtuální bajty motoru M |B|Průměr|Aktuální velikost procesů kontejneru hybridního adresního prostoru virtuálního adresáře.|
+|Kvóta|Paměť: kvóta|B|Průměr|Aktuální kvóta paměti (v bajtech). Kvóta paměti je také známá jako přidělení paměti nebo rezervace paměti.|
 |QuotaBlocked|Paměť: kvóta blokována|Počet|Průměr|Aktuální počet požadavků na kvótu, které jsou blokovány, dokud nebudou uvolněny jiné kvóty paměti.|
-|VertiPaqNonpaged|Paměť: VertiPaq nestránkované|Psaný|Průměr|Počet bajtů paměti uzamčených v pracovní sadě pro použití modulem v paměti.|
-|VertiPaqPaged|Paměť: VertiPaq stránkované|Psaný|Průměr|Počet bajtů stránkované paměti používaných pro data v paměti.|
+|VertiPaqNonpaged|Paměť: VertiPaq nestránkované|B|Průměr|Počet bajtů paměti uzamčených v pracovní sadě pro použití modulem v paměti.|
+|VertiPaqPaged|Paměť: VertiPaq stránkované|B|Průměr|Počet bajtů stránkované paměti používaných pro data v paměti.|
 |ProcessingPoolJobQueueLength|Délka fronty úloh zpracování fondu|Počet|Průměr|Počet nevstupně-výstupních úloh ve frontě fondu vláken zpracování.|
 |RowsConvertedPerSec|Zpracování: počet převedených řádků za sekundu|CountPerSecond|Průměr|Rychlost převodu řádků během zpracování.|
 |RowsReadPerSec|Zpracování: Počet přečtených řádků za sekundu|CountPerSecond|Průměr|Rychlost čtení řádků ze všech relačních databází.|

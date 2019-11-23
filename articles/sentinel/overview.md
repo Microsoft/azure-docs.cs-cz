@@ -31,9 +31,9 @@ Azure Sentinel je pohled z ptačího oka v celém podniku, který řeší zátě
 
 - **Shromažďovat data v cloudovém měřítku** napříč všemi uživateli, zařízeními, aplikacemi a infrastrukturou, a to místně i v několika cloudech. 
 
-- **Detekuje dříve**nezjištěné hrozby a minimalizuje falešně pozitivní výsledky pomocí analýzy Microsoftu a neparalelních analýz hrozeb. 
+- **Detekuje dříve nezjištěné hrozby**a minimalizuje falešně pozitivní výsledky pomocí analýzy Microsoftu a neparalelních analýz hrozeb. 
 
-- **Prozkoumejte hrozby pomocí umělých inteligentních poznatků**a prošetřete podezřelé aktivity ve velkém měřítku, klepněte na roky zabezpečení na pracovišti v Microsoftu. 
+- **Prozkoumejte hrozby pomocí umělých inteligentních poznatků a prošetřete**podezřelé aktivity ve velkém měřítku, klepněte na roky zabezpečení na pracovišti v Microsoftu. 
 
 - **Můžete rychle reagovat na incidenty** díky integrované orchestraci a automatizaci běžných úloh.
 
@@ -49,9 +49,9 @@ Aby bylo možné připojit se ke službě Azure Sentinel, musíte se nejdřív [
 
 ![Sběrače dat](./media/collect-data/collect-data-page.png)
 
-## <a name="workbooks"></a>Pracovní sešity
+## <a name="workbooks"></a>Workbooks
 
-Po [připojení zdrojů](quickstart-onboard.md) dat ke službě Azure Sentinel můžete monitorovat data pomocí integrace služby Azure Sentinel s Azure monitor sešity, které poskytují univerzálnost při vytváření vlastních sešitů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/app/usage-workbooks.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
+Po [připojení zdrojů dat](quickstart-onboard.md) ke službě Azure Sentinel můžete monitorovat data pomocí integrace služby Azure Sentinel se sešity Azure monitor, která poskytuje univerzálnost při vytváření vlastních sešitů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/app/usage-workbooks.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
 
 ![Řídicí panely](./media/tutorial-monitor-data/access-workbooks.png)
 
@@ -78,11 +78,11 @@ V současnosti ve verzi Preview vám Azure Sentinel – [podrobné vyšetřovac�
 ![Šetření](./media/tutorial-investigate-cases/map-timeline.png)
 
 
-## <a name="hunting"></a>Proaktivní vyhledávání
+## <a name="hunting"></a>Vyhledávání
 
 Využijte [výkonné nástroje pro hledání a dotazování](hunting.md)v rámci Azure Sentinel na základě Mitre Frameworku, které vám umožní proaktivní prokládat bezpečnostní hrozby ve zdrojích dat vaší organizace, než se aktivuje výstraha. Až zjistíte, který lovecký dotaz poskytuje přehledy o možných útokech, můžete také vytvořit vlastní pravidla detekce na základě dotazu a tyto poznatky obdržíte jako výstrahy na vaše reakce na incidenty zabezpečení. Při lovu můžete vytvořit záložky pro zajímavé události, které vám umožní vrátit se k nim později, sdílet je s ostatními a seskupovat je s ostatními korelačními událostmi a vytvořit tak přesvědčivý incident pro šetření.
 
-![Proaktivní vyhledávání](./media/overview/hunting.png)
+![Vyhledávání](./media/overview/hunting.png)
 
 ## <a name="community"></a>Komunita
 

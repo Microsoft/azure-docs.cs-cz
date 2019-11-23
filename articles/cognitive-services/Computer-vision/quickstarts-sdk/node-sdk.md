@@ -25,9 +25,9 @@ Pomocí klientské knihovny Počítačové zpracování obrazu pro Node. js:
 * [Analýza obrázku](#analyze-an-image)
 * [Číst vytištěné a ručně psaný text](#read-printed-and-handwritten-text)
 
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [balíček (npm)](https://www.npmjs.com/package/azure-cognitiveservices-computervision)[ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)  | 
+[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) |  | [ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) [(npm)](https://www.npmjs.com/package/azure-cognitiveservices-computervision)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [Node. js](https://nodejs.org/)
@@ -41,7 +41,7 @@ Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste
 * Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#decision) platný po dobu sedmi dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Prohlédněte si prostředek na [Azure Portal](https://portal.azure.com/).
 
-Po získání klíče ze zkušebního předplatného nebo prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíčovou adresu URL klíče a koncového bodu s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
+Až dostanete klíč ze zkušebního předplatného nebo prostředku, [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíčovou adresu URL klíče a koncového bodu s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
  
 ### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
@@ -51,7 +51,7 @@ V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresá�
 mkdir myapp && cd myapp
 ```
 
-Spuštěním příkazu `npm init` vytvořte aplikaci uzlu se souborem `package.json`. 
+Spusťte příkaz `npm init` pro vytvoření aplikace uzlu se souborem `package.json`. 
 
 ```console
 npm init
@@ -59,13 +59,13 @@ npm init
 
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-Nainstalujte NPM balíčky `ms-rest-azure` a `azure-cognitiveservices-computervision`:
+Nainstalujte `ms-rest-azure` a balíčky `azure-cognitiveservices-computervision` NPM:
 
 ```console
 npm install azure-cognitiveservices-computervision ms-rest-azure
 ```
 
-Soubor `package.json` vaší aplikace se bude aktualizovat o závislosti.
+Soubor `package.json` vaší aplikace bude aktualizován pomocí závislostí.
 
 ### <a name="prepare-the-nodejs-script"></a>Příprava skriptu Node. js
 
@@ -83,7 +83,7 @@ Pak definujte funkci `computerVision` a deklarujte asynchronní řadu s primárn
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce Počítačové zpracování obrazu Node. js SDK.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoříte jeho instanci s informacemi o předplatném a použijete ho k provádění většiny operací s imagí.|
 |[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Tento výčet definuje různé typy analýz obrázků, které lze provést v rámci standardní operace analýzy. V závislosti na vašich potřebách můžete zadat sadu hodnot **VisualFeatureTypes** . |
@@ -131,7 +131,7 @@ Následující kód získá zjištěnou kategorii obrázku. Další podrobnosti 
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories)]
 
-Definujte pomocnou funkci `formatCategories`:
+Zadejte pomocnou funkci `formatCategories`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories_format)]
 
@@ -141,7 +141,7 @@ Následující kód získá sadu zjištěných značek v obrázku. Další podro
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tags)]
 
-Definujte pomocnou funkci `formatTags`:
+Zadejte pomocnou funkci `formatTags`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tagsformat)]
 
@@ -151,7 +151,7 @@ Následující kód detekuje běžné objekty v imagi a vytiskne je do konzoly. 
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objects)]
 
-Definujte pomocnou funkci `formatRectObjects`:
+Zadejte pomocnou funkci `formatRectObjects`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objectformat)]
 
@@ -167,7 +167,7 @@ Následující kód vrátí zjištěné plošky v obrázku s jejich souřadnicem
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_faces)]
 
-Definujte pomocnou funkci `formatRectFaces`:
+Zadejte pomocnou funkci `formatRectFaces`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_formatfaces)]
 
@@ -211,11 +211,11 @@ Definujte pomocnou funkci `formatRectDomain` k analýze dat umístění zjiště
 
 ### <a name="get-the-image-type"></a>Získat typ obrázku
 
-Následující kód Vytiskne informace o typu obrázku @ no__t-0whether je Klipart nebo kreslení čáry.
+Následující kód Vytiskne informace o typu obrázku&mdash;, zda se jedná o Klipart nebo kreslení čáry.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype)]
 
-Definujte pomocnou funkci `describeType`:
+Zadejte pomocnou funkci `describeType`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
@@ -234,7 +234,7 @@ Uložte odkaz na adresu URL obrázků, ze kterých chcete extrahovat text.
 
 ### <a name="call-the-recognize-api"></a>Volání rozhraní API pro rozpoznávání
 
-Přidejte následující kód, který zavolá funkci `recognizeText` pro dané obrázky.
+Přidejte následující kód, který volá funkci `recognizeText` pro dané obrázky.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
@@ -267,4 +267,4 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 >[Odkaz na rozhraní API pro počítačové zpracování obrazu (Node. js)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
 
 * [Co je rozhraní API pro počítačové zpracování obrazu?](../Home.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js).
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js)

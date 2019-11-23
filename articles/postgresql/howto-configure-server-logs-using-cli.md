@@ -17,7 +17,7 @@ ms.locfileid: "72023624"
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům serveru pomocí Azure CLI
 Protokoly chyb serveru PostgreSQL můžete stáhnout pomocí rozhraní příkazového řádku (Azure CLI). Přístup k protokolům transakcí ale není podporovaný. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete projít tento průvodce, budete potřebovat:
 - [Server Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
 - Nástroj příkazového řádku [Azure CLI](/cli/azure/install-azure-cli) nebo Azure Cloud Shell v prohlížeči
@@ -25,7 +25,7 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Server můžete nakonfigurovat tak, aby měl přístup k protokolům dotazů a protokolům chyb. Protokoly chyb můžou mít informace o automatickém vaku, připojení a kontrolním bodu.
 1. Zapněte protokolování.
-2. Pokud chcete povolit protokolování dotazů, aktualizujte **protokol @ no__t-1statement** a **log @ no__t-3min @ no__t-4duration @ no__t-5statement**.
+2. Pokud chcete povolit protokolování dotazů, aktualizujte **příkaz log\_** a **log\_min\_Duration\_** .
 3. Aktualizovat dobu uchování.
 
 Další informace najdete v tématu [přizpůsobení parametrů konfigurace serveru](howto-configure-server-parameters-using-cli.md).
@@ -33,7 +33,7 @@ Další informace najdete v tématu [přizpůsobení parametrů konfigurace serv
 ## <a name="list-logs"></a>Výpis protokolů
 Chcete-li zobrazit seznam dostupných souborů protokolu pro váš server, spusťte příkaz [AZ Postgres Server-logs list](/cli/azure/postgres/server-logs) .
 
-Soubory protokolu pro server **mydemoserver.Postgres.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **log @ no__t-1files\_list.txt**.
+Soubory protokolu pro server **mydemoserver.Postgres.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **log\_soubory\_list. txt**.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

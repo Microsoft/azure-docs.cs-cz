@@ -51,8 +51,8 @@ Když se skript spustí, vloží kontext plánu obnovení do Runbooku. Kontext o
 | GroupID |Určuje číslo skupiny v plánu obnovení, když je plán spuštěný. |
 | VmMap |Pole všech virtuálních počítačů ve skupině. |
 | VMMap klíč |Jedinečný klíč (GUID) pro každý virtuální počítač. |
-| subscriptionId |ID předplatného Azure, ve kterém se vytvořil virtuální počítač |
-| resourceGroupName | Název skupiny prostředků, ve které se virtuální počítač nachází.
+| SubscriptionId |ID předplatného Azure, ve kterém se vytvořil virtuální počítač |
+| ResourceGroupName | Název skupiny prostředků, ve které se virtuální počítač nachází.
 | CloudServiceName |Název cloudové služby Azure, pod kterou se vytvořil virtuální počítač. |
 | RoleName |Název virtuálního počítače Azure. |
 | RecoveryPointId|Časové razítko pro obnovení virtuálního počítače. |
@@ -99,11 +99,11 @@ Blog Aman Sharma v rámci [sběru cloudů](http://harvestingclouds.com) má uži
 
 - Pokud s Azure Automation začínáte, můžete si [zaregistrovat](https://azure.microsoft.com/services/automation/) a [stáhnout ukázkové skripty](https://azure.microsoft.com/documentation/scripts/).
 - Ujistěte se, že účet Automation obsahuje následující moduly:
-    - AzureRM. Profile
-    - AzureRM. Resources
-    - AzureRM. Automation
-    - AzureRM. Network
-    - AzureRM. COMPUTE
+    - AzureRM.profile
+    - AzureRM.Resources
+    - AzureRM.Automation
+    - AzureRM.Network
+    - AzureRM.Compute
 
     Všechny moduly by měly mít kompatibilní verze. Nejjednodušším způsobem je vždy používat nejnovější verze všech modulů.
 
@@ -117,7 +117,7 @@ Blog Aman Sharma v rámci [sběru cloudů](http://harvestingclouds.com) má uži
 
     ![Klikněte na tlačítko přizpůsobit.](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Klikněte na tlačítko se třemi tečkami (...) vedle **skupiny 1: začátek** > **přidat akci post**.
+2. Klikněte na tlačítko se třemi tečkami (...) vedle **skupiny 1: spustit** > **přidat akci post**.
 3. V části **Vložit akci**ověřte, že je vybraný **skript** , a zadejte název skriptu (**Hello World**).
 4. Zadejte účet Automation a vyberte Runbook. Chcete-li skript uložit, klikněte na tlačítko **OK**. Skript se přidá do **skupiny 1: kroky po**.
 
@@ -251,7 +251,7 @@ Stejný skript můžete použít pro různé plány obnovení. Zadejte jiné par
 
 Pokud chcete nasadit ukázkové skripty do svého účtu Automation, klikněte na tlačítko **nasadit do Azure** .
 
-[@no__t – 1Deploy do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![Nasazení do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 Toto video poskytuje další příklad. Ukazuje, jak obnovit dvě vícevrstvé aplikace WordPress do Azure:
 

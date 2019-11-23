@@ -42,7 +42,7 @@ Azure Storage podporuje tři typy podpisů sdíleného přístupu:
 Sdílený přístupový podpis může mít jednu ze dvou forem:
 
 - **Ad hoc SAS:** Když vytvoříte ad hoc SAS, čas spuštění, čas vypršení platnosti a oprávnění pro SAS jsou všechny zadané v identifikátoru URI SAS (nebo mlčky předpokládaná, pokud je vynechaný počáteční čas). Jakýkoli typ SAS může být ad hoc SAS.
-- **SAS služby s uloženými zásadami přístupu:** Uložené zásady přístupu se definují v kontejneru prostředků, což může být kontejner objektů blob, tabulka, fronta nebo sdílená složka. Zásady uloženého přístupu se dají použít ke správě omezení pro jeden nebo víc podpisů sdíleného přístupu služby. Při přidružení SAS služby k uložené zásadě přístupu SAS zdědí omezení @ no__t-0the čas spuštění, čas vypršení platnosti a oprávnění @ no__t-1defined pro uložené zásady přístupu.
+- **SAS služby s uloženými zásadami přístupu:** Uložené zásady přístupu se definují v kontejneru prostředků, což může být kontejner objektů blob, tabulka, fronta nebo sdílená složka. Zásady uloženého přístupu se dají použít ke správě omezení pro jeden nebo víc podpisů sdíleného přístupu služby. Při přidružení SAS služby k uložené zásadě přístupu SAS zdědí omezení&mdash;počáteční čas, čas vypršení platnosti a oprávnění&mdash;definované pro zásady uloženého přístupu.
 
 > [!NOTE]
 > SAS uživatele nebo podpis účtu musí být SAS ad hoc. Uložené zásady přístupu se nepodporují pro SAS uživatelů s delegováním nebo pro podpis účtu.

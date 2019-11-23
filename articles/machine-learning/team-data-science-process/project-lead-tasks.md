@@ -1,5 +1,5 @@
 ---
-title: Úlohy vedoucího projektu v rámci vědeckého zpracování týmových dat
+title: Úvodní úlohy pro projekt vědeckého zpracování týmových dat
 description: Podrobný návod pro úlohy vedoucí k projektu týmu vědeckého zpracování týmových dat
 author: marktab
 manager: cgronlun
@@ -36,7 +36,7 @@ Pro krok 6: nastavení řízení zabezpečení pro úložiště projektu, viz [P
 > [!NOTE] 
 > Tento článek používá Azure Repos k nastavení projektu TDSP, protože to znamená, jak implementovat TDSP v Microsoftu. Pokud váš tým používá jinou platformu hostování kódu, úkoly vedoucího projektu jsou stejné, ale způsob jejich dokončení může být jiný.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že váš [správce skupin](group-manager-tasks.md) a [vedoucí týmu](team-lead-tasks.md) si nastavili následující prostředky a oprávnění:
 
@@ -48,7 +48,7 @@ V tomto kurzu se předpokládá, že váš [správce skupin](group-manager-tasks
 Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počítači nebo Data Science Virtual Machine (DSVM) nebo nastavit službu Azure File Storage a připojit ji k DSVM, budete potřebovat taky následující:
 
 - Předplatné Azure.
-- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě si přečtěte článek věnované [platformám a nástrojům](platforms-and-tools.md#appendix).
+- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě najdete v článku [platformami a nástroji příloha](platforms-and-tools.md#appendix).
 - Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
 - Pro Windows DSVM se na vašem počítači nainstaluje [Správce přihlašovacích údajů Git (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . V souboru *Readme.MD* se posuňte dolů k části **Stažení a instalace** a vyberte **nejnovější instalační program**. Stáhněte instalační program *. exe* z instalační stránky a spusťte ho. 
 - Pro Linux DSVM se v DSVM nastavil veřejný klíč SSH a přidal se do Azure DevOps. Další informace a pokyny najdete v části **vytvoření veřejného klíče SSH** v [příloze platformy a nástroje](platforms-and-tools.md#appendix). 
@@ -57,7 +57,7 @@ Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počít
 
 Vytvoření úložiště projektu v projektu **myTeam** vašeho týmu:
 
-1. Přejít na stránku **souhrnu** projektu vašeho týmu na adrese *https: \/ @ no__t-3 @ no__t-4server název >/\<organization name >/\<team >* , například **https: \//dev. Azure. com/DataScienceUnit/myTeam**a v levém navigačním **panelu vyberte úložiště** . 
+1. Přejít na stránku **souhrnu** projektu vašeho týmu na adrese *https:\//\<název serveru >/\<název organizace >/\<název týmu >* , například **https:\//dev.Azure.com/DataScienceUnit/myTeam**, **a v levém navigačním panelu vyberte úložiště** . 
    
 1. V horní části stránky vyberte název úložiště a v rozevíracím seznamu vyberte **nové úložiště** .
    
@@ -83,7 +83,7 @@ Chcete-li naplnit úložiště projektu obsahem vašeho úložiště šablony t�
    
    ![Vybrat Import](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a do pole **Adresa URL klonu**zadejte adresu URL úložiště **TeamTemplate** . Adresa URL je *https: \/ @ no__t-2 @ no__t-3server name >/\<organization name >/\<team název >/_git/\<team název úložiště šablon >* . Například: **https: \//dev. Azure. com/DataScienceUnit/myTeam/_git/TeamTemplate**. 
+1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a do pole **Adresa URL klonu**zadejte adresu URL úložiště **TeamTemplate** . Adresa URL je *https:\//\<název serveru >/\<název organizace >/\<název týmu >/_git/\<název úložiště týmové šablony >* . Například: **https:\//dev.Azure.com/DataScienceUnit/myTeam/_git/TeamTemplate**. 
    
 1. Vyberte **importovat**. Obsah vašeho úložiště šablony týmu se importuje do vašeho úložiště projektu. 
    
@@ -95,6 +95,6 @@ Pokud potřebujete přizpůsobit obsah vašeho úložiště projektu tak, aby sp
 
 Zde jsou odkazy na podrobné popisy dalších rolí a úloh, které jsou definovány v rámci vědeckého zpracování týmových dat:
 
-- [Úlohy správce skupin pro tým pro datové vědy](group-manager-tasks.md)
-- [Úkoly vedoucí týmu pro tým pro datové vědy](team-lead-tasks.md)
+- [Úlohy správce skupiny pro datové vědy tým](group-manager-tasks.md)
+- [Úkoly vedoucí týmu pro datové vědy tým](team-lead-tasks.md)
 - [Jednotlivé úlohy přispěvatele pro tým pro datové vědy](project-ic-tasks.md)

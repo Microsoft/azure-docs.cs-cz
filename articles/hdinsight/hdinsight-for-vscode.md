@@ -20,7 +20,7 @@ Naučte se používat nástroje Spark & podregistr pro Visual Studio Code k vytv
 
 Nástroje Spark & podregistr lze nainstalovat na platformy podporované Visual Studio Code, které zahrnují systémy Windows, Linux a macOS. Všimněte si následujících požadavků pro různé platformy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
@@ -50,19 +50,19 @@ Po splnění požadavků můžete nainstalovat nástroje Spark & pro Visual Stud
 
 Chcete-li otevřít pracovní složku a vytvořit soubor v Visual Studio Code, postupujte podle následujících kroků:
 
-1. V řádku nabídek přejděte na do **souboru**@no__t otevřít složku-1 **...**  > **C:\HD\HDexample**a pak vyberte tlačítko **Vybrat složku** . Složka se zobrazí v zobrazení **Průzkumník** na levé straně.
+1. V řádku nabídek přejděte na do **souboru** > **otevřete složku...**  > **C:\HD\HDexample**a pak vyberte tlačítko **Vybrat složku** . Složka se zobrazí v zobrazení **Průzkumník** na levé straně.
 
 2. V zobrazení **Průzkumník** vyberte složku **HDexample** a pak vyberte ikonu **nového souboru** vedle pracovní složky:
 
    ![Ikona nového souboru pro Visual Studio Code](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
-3. Pojmenujte nový soubor pomocí `.hql` (dotazy na podregistr) nebo přípony souboru `.py` (Spark Script). V tomto příkladu se používá **HelloWorld. HQL**.
+3. Pojmenujte nový soubor pomocí `.hql` (dotazy na podregistr) nebo rozšíření souboru `.py` (Spark Script). V tomto příkladu se používá **HelloWorld. HQL**.
 
 ## <a name="set-the-azure-environment"></a>Nastavení prostředí Azure
 
 V případě národního cloudového uživatele proveďte následující kroky a nastavte prostředí Azure jako první a pak se pomocí příkazu **Azure: Sign in** přihlaste k Azure:
 
-1. Přejděte na **soubor** > **Předvolby** > **Nastavení**.
+1. Přejděte na > **Předvolby** **souboru** > **Nastavení**.
 2. Vyhledejte následující řetězec: **Azure: Cloud**.
 3. Ze seznamu vyberte národní Cloud:
 
@@ -72,7 +72,7 @@ V případě národního cloudového uživatele proveďte následující kroky a
 
 Než budete moct odesílat skripty do svých clusterů z Visual Studio Code, musíte se připojit ke svému účtu Azure nebo propojit cluster (s použitím přihlašovacích údajů k uživatelskému jménu Apache Ambari a hesla nebo účtu připojeného k doméně). Pomocí těchto kroků se připojte k Azure:
 
-1. V řádku nabídek přejděte k **zobrazení** **palety příkazů  > ...** a zadejte **Azure: přihlásit**se:
+1. V řádku nabídek přejděte na **zobrazit** > **paleta příkazů...** a zadejte **Azure: přihlásit**se:
 
     ![Nástroje pro podregistr Spark & pro přihlášení Visual Studio Code](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
@@ -84,7 +84,7 @@ Než budete moct odesílat skripty do svých clusterů z Visual Studio Code, mus
 
 Běžný cluster můžete propojit pomocí uživatelského jména spravovaného [Apache Ambari](https://ambari.apache.org/)nebo můžete propojit zabezpečený cluster sady Hadoop s podnikovým zabezpečením pomocí uživatelského jména domény (například: `user1@contoso.com`).
 
-1. V řádku nabídek přejděte k **zobrazení** **palety příkazů  > ...** a zadejte **Spark/podregistr: propojení clusteru**.
+1. V řádku nabídek přejděte na **zobrazit** > **paleta příkazů...** a zadejte **Spark/podregistr: propojení clusteru**.
 
    ![Příkaz pro propojení palety příkazů cluster](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -107,21 +107,21 @@ Běžný cluster můžete propojit pomocí uživatelského jména spravovaného 
 
 ### <a name="link-generic-livy-endpoint"></a>Odkaz: obecný koncový bod Livy
 
-1. V řádku nabídek přejděte k **zobrazení** **palety příkazů  > ...** a zadejte **Spark/podregistr: propojení clusteru**.
+1. V řádku nabídek přejděte na **zobrazit** > **paleta příkazů...** a zadejte **Spark/podregistr: propojení clusteru**.
 
 2. Vyberte typ propojeného clusteru **obecný koncový bod Livy**.
 
-3. Zadejte obecný koncový bod Livy. Například: http @ no__t-0//10.172.41.42:18080.
+3. Zadejte obecný koncový bod Livy. Například: http\://10.172.41.42:18080.
 
 4. Vyberte typ autorizace **Basic** nebo **žádný**.  Pokud vyberete **základní**:  
-    @no__t – 0a. Zadejte své uživatelské jméno Ambari; Výchozí hodnota je **admin (správce**).  
-    @no__t – 0b. Zadejte své heslo Ambari.
+    &emsp;a. Zadejte své uživatelské jméno Ambari; Výchozí hodnota je **admin (správce**).  
+    &emsp;b. Zadejte své heslo Ambari.
 
 5. Zkontrolujte zobrazení **výstupu** pro ověření.
 
 ## <a name="list-clusters"></a>Výpis clusterů
 
-1. V řádku nabídek přejděte k **zobrazení** **palety příkazů  > ...** a zadejte **Spark/podregistr: list cluster**.
+1. V řádku nabídek přejděte na **zobrazit** > **paleta příkazů...** a zadejte **Spark/podregistr: list cluster**.
 
 2. Vyberte předplatné, které chcete.
 
@@ -265,7 +265,7 @@ Konfigurace [Apache Livy](https://livy.incubator.apache.org/) je podporovaná. M
 <a id="triggerlivyconf"></a>**Jak aktivovat konfiguraci Livy**
 
 Metoda 1  
-1. V řádku nabídek přejděte na **soubor** > **Předvolby** > **Nastavení**.
+1. V řádku nabídek přejděte na > předvolby **souboru** >  **Nastavení**.
 2. Do pole **Nastavení hledání** zadejte **odeslání úlohy HDInsight: Livy conf**.  
 3. Pro příslušný výsledek hledání vyberte **Upravit v nastavení. JSON** .
 
@@ -284,28 +284,28 @@ Metoda 2 odešle soubor a Všimněte si, že složka. VSCode je automaticky při
 
     | jméno | description | type |
     | :- | :- | :- |
-    | Souborů | Soubor obsahující aplikaci, která se má provést | Cesta (povinné) |
+    | file | Soubor obsahující aplikaci, která se má provést | Cesta (povinné) |
     | proxyUser | Uživatel, který se má zosobnit při spuštění úlohy | Řetězec |
-    | NázevTřídy | Application – hlavní třída Java/Spark | Řetězec |
+    | className | Application – hlavní třída Java/Spark | Řetězec |
     | args | Argumenty příkazového řádku pro aplikaci | Seznam řetězců |
-    | JAR | JAR, která se má použít v této relaci | Seznam řetězců | 
+    | jars | JAR, která se má použít v této relaci | Seznam řetězců | 
     | pyFiles | Soubory Pythonu, které se mají použít v této relaci | Seznam řetězců |
-    | spis | Soubory, které se mají použít v této relaci | Seznam řetězců |
+    | files | Soubory, které se mají použít v této relaci | Seznam řetězců |
     | driverMemory | Velikost paměti, která se má použít pro proces ovladače | Řetězec |
-    | driverCores | Počet jader, které se mají použít pro proces ovladače | Hmot |
+    | driverCores | Počet jader, které se mají použít pro proces ovladače | Int |
     | executorMemory | Velikost paměti, která se má použít pro proces prováděcího modulu | Řetězec |
-    | executorCores | Počet jader, které se mají použít pro každý prováděcí modul | Hmot |
-    | numExecutors | Počet prováděcích modulů, které se mají spustit pro tuto relaci | Hmot |
-    | archiv | Archivy, které se mají použít v této relaci | Seznam řetězců |
+    | executorCores | Počet jader, které se mají použít pro každý prováděcí modul | Int |
+    | numExecutors | Počet prováděcích modulů, které se mají spustit pro tuto relaci | Int |
+    | archives | Archivy, které se mají použít v této relaci | Seznam řetězců |
     | fronta | Název fronty PŘÍZe, která se má odeslat| Řetězec |
     | jméno | Název této relace | Řetězec |
-    | výrobku | Vlastnosti konfigurace Sparku | Mapa klíče = Val |
+    | conf | Vlastnosti konfigurace Sparku | Mapa klíče = Val |
 
     Tělo odpovědi vytvořeného objektu Batch
 
     | jméno | description | type |
     | :- | :- | :- |
-    | id | ID relace | Hmot |
+    | id | ID relace | Int |
     | appId | ID aplikace této relace | Řetězec |
     | appInfo | Podrobné informace o aplikaci | Mapa klíče = Val |
     | protokolu | Řádky protokolu | Seznam řetězců |
@@ -385,7 +385,7 @@ Při odesílání úlohy do clusteru HDInsight budete vyzváni k propojení clus
 
   > [!NOTE]
   >
-  >K zkontrolování propojeného clusteru můžete použít `Spark / Hive: List Cluster`:
+  >K zkontrolování odkazovaného clusteru můžete použít `Spark / Hive: List Cluster`:
   >
   >![Připojené nástroje pro Visual Studio Code Reader pro Spark &](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
@@ -407,7 +407,7 @@ Když odešlete úlohu do clusteru HDInsight pomocí Data Lake Storage Gen2, zob
 
 ## <a name="unlink-cluster"></a>Zrušit propojení clusteru
 
-1. V řádku nabídek přejděte na **zobrazení** **paleta příkazů** >  a pak zadejte **Spark/podregistr: odpojte cluster**.  
+1. V řádku nabídek přejděte na **zobrazit** > **paleta příkazů**a pak zadejte **Spark/podregistr: odpojte cluster**.  
 
 2. Vyberte cluster, který chcete odpojit.  
 
@@ -415,7 +415,7 @@ Když odešlete úlohu do clusteru HDInsight pomocí Data Lake Storage Gen2, zob
 
 ## <a name="sign-out"></a>Odhlásit se  
 
-V řádku nabídek přejděte na **zobrazení** **paleta příkazů** >  a pak zadejte **Azure: odhlásit**se.
+V řádku nabídek přejděte na **zobrazit** > **paleta příkazů**a pak zadejte **Azure: odhlásit**se.
 
 ## <a name="next-steps"></a>Další kroky
 

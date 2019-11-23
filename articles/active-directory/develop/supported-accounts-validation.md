@@ -43,8 +43,8 @@ V následující tabulce jsou uvedeny rozdíly v ověřování různých vlastno
 | Oprávnění rozhraní API (`requiredResourceAccess`) | Bez omezení * | Bez omezení * | Maximální povolený počet 30 oprávnění na prostředek (např. Microsoft Graph) | 
 | Obory definované tímto rozhraním API (`oauth2Permissions`) | Maximální délka názvu rozsahu 120 znaků <br><br> Bez omezení * počtu definovaných oborů | Maximální délka názvu rozsahu 120 znaků <br><br> Bez omezení * počtu definovaných oborů |  Maximální délka názvu rozsahu 40 znaků <br><br> Je definovaných maximálně 100 oborů. | 
 | Autorizované klientské aplikace (`preautorizedApplications`) | Bez omezení * | Bez omezení * | Celkem maximum 500 <br><br> Je definovaných maximálně 100 klientských aplikací. <br><br> Maximálně 30 oborů definovaných na klienta | 
-| appRoles | Podporováno <br> Bez omezení * | Podporováno <br> Bez omezení * | Nepodporováno | 
-| Odhlašovací adresa URL | @no__t – 0 je povolený. <br><br> Maximální délka 255 znaků | @no__t – 0 je povolený. <br><br> Maximální délka 255 znaků | <br><br> https://localhost je povolený, http://localhost pro MSA se nezdařila. <br><br> Maximální délka 255 znaků <br><br> Schéma HTTP není povolené. <br><br> Zástupné znaky se nepodporují. | 
+| appRoles | Podporuje se <br> Bez omezení * | Podporuje se <br> Bez omezení * | Nepodporuje se | 
+| Adresa URL – odhlášení | http://localhost je povolený. <br><br> Maximální délka 255 znaků | http://localhost je povolený. <br><br> Maximální délka 255 znaků | <br><br> https://localhost je povolená, http://localhost pro MSA se nezdařila. <br><br> Maximální délka 255 znaků <br><br> Schéma HTTP není povolené. <br><br> Zástupné znaky se nepodporují. | 
 
 \* V rámci všech vlastností kolekce objektu aplikace je globální limit o 1000 položek.
 

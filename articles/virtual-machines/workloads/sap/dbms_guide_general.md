@@ -57,14 +57,14 @@ V tomto dokumentu jsou představeny požadavky na spouštění systémů DBMS so
 ## <a name="definitions"></a>Definice
 V celém dokumentu se používají tyto výrazy:
 
-* **IaaS**: Infrastruktura jako služba.
-* **PaaS**: Platforma jako služba.
-* **SaaS**: Software jako služba.
-* **Součást SAP**: Jednotlivá aplikace SAP, jako je například součást ERP Central (ECC), obchodní sklad (ČERNOBÍLý), správce řešení nebo Enterprise Portal (EP). Komponenty SAP můžou být založené na tradičních technologiích ABAP a Java nebo v aplikacích, které nejsou založené na NetWeaver, jako jsou třeba obchodní objekty.
-* **Prostředí SAP**: Jedna nebo více komponent SAP jsou logicky seskupeny tak, aby prováděly obchodní funkce, jako je vývoj, zabezpečování kvality, školení, zotavení po havárii nebo produkce.
+* **IaaS**: infrastruktura jako služba.
+* **PaaS**: platforma jako služba.
+* **SaaS**: software jako služba.
+* **Součást SAP**: samostatná aplikace SAP, jako je například součást ERP Central (ECC), Business Warehouse (černobílý), správce řešení nebo Enterprise Portal (EP). Komponenty SAP můžou být založené na tradičních technologiích ABAP a Java nebo v aplikacích, které nejsou založené na NetWeaver, jako jsou třeba obchodní objekty.
+* **Prostředí SAP**: jedna nebo víc komponent SAP se logicky seskupují tak, aby prováděly obchodní funkce, jako je vývoj, zabezpečování kvality, školení, zotavení po havárii nebo produkce.
 * **SAP na šířku**: Tento pojem odkazuje na celé prostředky SAP v zákaznickém oddělení IT. SAP na úrovni zahrnuje všechna produkční a nevýrobní prostředí.
-* **Systém SAP**: Kombinace vrstvy DBMS a aplikační vrstvy, například vývojového systému SAP ERP, testovacího systému SAP Business Warehouse nebo produkčního systému SAP CRM. V nasazeních Azure se nepodporují vydělení těchto dvou vrstev mezi místními a Azure. V důsledku toho je systém SAP buď nasazený místně, nebo je nasazený v Azure. Můžete nasadit různé systémy SAP na šířku v Azure i v místním prostředí. Můžete například nasadit vývojové a testovací systémy SAP CRM do Azure, ale nasadit produkční systém SAP CRM do místního prostředí.
-* **Mezi různými**místy: Popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site nebo Azure ExpressRoute mezi místními datovými centry a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi místními scénáři. 
+* **Systém SAP**: kombinace vrstvy DBMS a aplikační vrstvy, například vývojového systému SAP ERP, testovacího systému SAP Business Warehouse nebo produkčního systému SAP CRM. V nasazeních Azure se nepodporují vydělení těchto dvou vrstev mezi místními a Azure. V důsledku toho je systém SAP buď nasazený místně, nebo je nasazený v Azure. Můžete nasadit různé systémy SAP na šířku v Azure i v místním prostředí. Můžete například nasadit vývojové a testovací systémy SAP CRM do Azure, ale nasadit produkční systém SAP CRM do místního prostředí.
+* **Mezi různými**místy: popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site nebo Azure ExpressRoute mezi místními datovými centry a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi místními scénáři. 
 
     Důvodem připojení je rozšiřování místních domén, místní služby Active Directory a místní DNS do Azure. Místní orientace se rozšiřuje na prostředky v rámci předplatného Azure. S tímto rozšířením můžou být virtuální počítače součástí místní domény. Uživatelé domény v místní doméně mají přístup k serverům a spouštějí služby na těchto virtuálních počítačích, jako jsou například služby DBMS. Je možné komunikovat a překlad názvů mezi virtuálními počítači nasazenými místně a virtuálními počítači nasazenými v Azure. Tento scénář je nejběžnějším scénářem, který se používá k nasazení prostředků SAP v Azure. Další informace najdete v tématu [plánování a návrh pro bránu VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
@@ -77,24 +77,24 @@ V celém dokumentu se používají tyto výrazy:
 
 Některá dokumentace Microsoftu popisuje různé scénáře různých scénářů, a to hlavně v případě konfigurací s vysokou dostupností systému DBMS. V případě dokumentů souvisejících s SAP se scénář mezi místními systémy doloží na připojení typu Site-to-site nebo Private [ExpressRoute](https://azure.microsoft.com/services/expressroute/) a na šířku SAP, která je distribuována mezi místními a Azure.
 
-## <a name="resources"></a>Zdroje a prostředky
-V úlohách SAP v Azure jsou k dispozici další články. Začínáme s [úlohou SAP v Azure: ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) Začněte a pak zvolte svou oblast zájmu.
+## <a name="resources"></a>Prostředky
+V úlohách SAP v Azure jsou k dispozici další články. Začněte s [úlohou SAP v Azure:](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) začněte a pak zvolte svou oblast zájmu.
 
 Následující poznámky SAP souvisejí s SAP v Azure v souvislosti s oblastí pokrytou v tomto dokumentu.
 
 | Číslo poznámky | Název |
 | --- | --- |
-| [1928533] |Aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure |
-| [2015553] |SAP v Microsoft Azure: Požadavky na podporu |
+| [1928533] |Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
+| [2015553] |SAP v Microsoft Azure: požadavky na podporu |
 | [1999351] |Řešení potíží s vylepšeným monitorováním Azure pro SAP |
 | [2178632] |Klíčové metriky monitorování pro SAP v Microsoft Azure |
-| [1409604] |Virtualizace ve Windows: Rozšířené monitorování |
-| [2191498] |SAP v systému Linux s Azure: Rozšířené monitorování |
-| [2039619] |Aplikace SAP na Microsoft Azure s využitím databáze Oracle: Podporované produkty a verze |
-| [2233094] |DB6: Aplikace SAP v Azure s využitím IBM DB2 pro Linux, UNIX a Windows: Další informace |
-| [2243692] |Virtuální počítač se systémem Linux na Microsoft Azure (IaaS): Problémy s licencí SAP |
-| [1984787] |SUSE LINUX Enterprise Server 12: Poznámky k instalaci |
-| [2002167] |Red Hat Enterprise Linux 7. x: Instalace a upgrade |
+| [1409604] |Virtualizace ve Windows: rozšířené monitorování |
+| [2191498] |SAP v systému Linux s Azure: rozšířené monitorování |
+| [2039619] |Aplikace SAP na Microsoft Azure s využitím databáze Oracle: podporované produkty a verze |
+| [2233094] |DB6: aplikace SAP v Azure s využitím IBM DB2 pro Linux, UNIX a Windows: Další informace |
+| [2243692] |Virtuální počítač se systémem Linux na Microsoft Azure (IaaS): problémy s licencí SAP |
+| [1984787] |SUSE LINUX Enterprise Server 12: poznámky k instalaci |
+| [2002167] |Red Hat Enterprise Linux 7. x: instalace a upgrade |
 | [2069760] |Instalace a upgrade systému Oracle Linux 7. x SAP |
 | [1597355] |Doporučení pro zaměněné místo pro Linux |
 | [2171857] |Oracle Database 12c: Podpora systému souborů na platformě Linux |
@@ -205,16 +205,16 @@ Následující doporučení předpokládají tyto vstupně-výstupní charakteri
 
 Pro úložiště úrovně Standard jsou možné typy mezipaměti:
 
-* Žádné
-* Čtení
+* Žádný
+* Pro čtení
 * Čtení/zápis
 
-Pro zajištění konzistentního a deterministického výkonu nastavte ukládání do mezipaměti na úrovni Standard pro všechny disky, které obsahují datové soubory související se systémem DBMS, soubory protokolů a opakování,a prostor tabulky do žádného. Ukládání základního virtuálního pevného disku do mezipaměti může zůstat ve výchozím nastavení.
+Pro zajištění konzistentního a deterministického výkonu nastavte ukládání do mezipaměti na úrovni Standard pro všechny disky, které obsahují datové soubory související se systémem DBMS, soubory protokolů a opakování, a prostor tabulky do **žádného**. Ukládání základního virtuálního pevného disku do mezipaměti může zůstat ve výchozím nastavení.
 
 V případě služby Premium Storage existují následující možnosti ukládání do mezipaměti:
 
-* Žádné
-* Čtení
+* Žádný
+* Pro čtení
 * Čtení a zápis
 * None + Akcelerátor zápisu, což je jenom pro virtuální počítače Azure M-Series
 * Čtení a Akcelerátor zápisu, který je určený jenom pro virtuální počítače Azure M-Series
@@ -281,7 +281,7 @@ Tyto osvědčené postupy jsou výsledkem stovek nasazení zákazníků:
 - Virtuální sítě, ke kterým je aplikace SAP nasazená, nemají přístup k Internetu.
 - Virtuální počítače databáze běží ve stejné virtuální síti jako aplikační vrstva.
 - Virtuální počítače v rámci virtuální sítě mají statické přidělení privátní IP adresy. Další informace najdete v tématu [typy IP adres a metody přidělování v Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm).
-- Omezení směrování do a z virtuálních počítačů s DBMS nejsou nastavená pomocí bran firewall nainstalovaných na místních virtuálních počítačích DBMS. Místo toho je směrování provozu definované se [skupinami zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview).
+- Omezení směrování do a z virtuálních počítačů s DBMS *nejsou nastavená* pomocí bran firewall nainstalovaných na místních virtuálních počítačích DBMS. Místo toho je směrování provozu definované se [skupinami zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview).
 - Pokud chcete provoz oddělit a izolovat k virtuálnímu počítači DBMS, přiřaďte k virtuálnímu počítači různé síťové adaptéry. Každé síťové rozhraní získá jinou IP adresu a každá síťová karta je přiřazena k jiné podsíti virtuální sítě. Každá podsíť má odlišná pravidla NSG. Izolaci nebo oddělení síťových přenosů je míra pro směrování. Nepoužívá se k nastavení kvót pro propustnost sítě.
 
 > [!NOTE]
@@ -305,7 +305,7 @@ Tyto osvědčené postupy jsou výsledkem stovek nasazení zákazníků:
 >
 > Pokud se rozhodnete nepostupovat podle doporučení a místo toho rozdělit dvě vrstvy do různých virtuálních sítí, musí být tyto dvě virtuální sítě [partnerské](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). 
 >
-> Uvědomte si, že síťový provoz [](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi dvěma partnerskými virtuálními sítěmi Azure podléhá přenosům. Velký objem dat, který se skládá z mnoha terabajtů, se vymění mezi aplikační vrstvou SAP a vrstvou DBMS. Pokud je vrstva aplikace SAP a vrstva DBMS oddělená od dvou partnerských virtuálních sítí Azure, můžete nashromáždit značné náklady.
+> Uvědomte si, že síťový provoz mezi dvěma [partnerskými](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuálními sítěmi Azure podléhá přenosům. Velký objem dat, který se skládá z mnoha terabajtů, se vymění mezi aplikační vrstvou SAP a vrstvou DBMS. Pokud je vrstva aplikace SAP a vrstva DBMS oddělená od dvou partnerských virtuálních sítí Azure, můžete nashromáždit značné náklady.
 
 Použijte dva virtuální počítače pro nasazení v produkčním prostředí DBMS v rámci skupiny dostupnosti Azure. Použijte také samostatné směrování pro aplikační vrstvu SAP a provoz správy a provozu na tyto dva virtuální počítače se systémem DBMS. Viz následující obrázek:
 
@@ -323,7 +323,7 @@ Je přenos dat mezi virtuálními počítači DBMS a aplikační vrstvou SAP vž
 
 V tuto chvíli je příchozí provoz do virtuálního počítače s DBMS vždycky směrován přes Nástroj pro vyrovnávání zatížení. Odchozí přenosová trasa z virtuálního počítače DBMS do virtuálního počítače aplikační vrstvy závisí na konfiguraci nástroje pro vyrovnávání zatížení. 
 
-Nástroj pro vyrovnávání zatížení nabízí možnost DirectServerReturn. Pokud je tato možnost nakonfigurovaná, přenosy směrované z virtuálního počítače DBMS do aplikační vrstvy SAP se přes Nástroj pro vyrovnávání zatížení nesměrují. Místo toho přejde přímo do aplikační vrstvy. Pokud není nakonfigurováno DirectServerReturn, je návratový přenos do aplikační vrstvy SAP směrován přes Nástroj pro vyrovnávání zatížení.
+Nástroj pro vyrovnávání zatížení nabízí možnost DirectServerReturn. Pokud je tato možnost nakonfigurovaná, přenosy směrované z virtuálního počítače DBMS do aplikační vrstvy SAP se přes Nástroj pro vyrovnávání zatížení *nesměrují* . Místo toho přejde přímo do aplikační vrstvy. Pokud není nakonfigurováno DirectServerReturn, je návratový přenos do aplikační vrstvy SAP směrován přes Nástroj pro vyrovnávání zatížení.
 
 Doporučujeme nakonfigurovat DirectServerReturn v kombinaci s nástroji pro vyrovnávání zatížení, které jsou umístěné mezi vrstvou aplikace SAP a vrstvou DBMS. Tato konfigurace snižuje latenci sítě mezi oběma vrstvami.
 

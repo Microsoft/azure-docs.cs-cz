@@ -25,7 +25,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) obs
 * Přečíst strukturu odpovědi na hledání adres
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete volat rozhraní API služby Maps, potřebujete účet a klíč mapy. Informace o vytvoření účtu najdete v pokynech v tématu [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) a postup pro získání primárního klíče předplatného pro váš účet pomocí kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) .
 
@@ -52,23 +52,23 @@ Další informace o Azure Maps možností geografického kódování podle země
 
    1. Nastavte parametr `countrySet`, například US, FR. Výchozím chováním vyhledávání je hledání celého světa, což může vracet zbytečné výsledky. Pokud dotaz nezahrnuje parametr `countrySet`, hledání může vracet nepřesné výsledky. Například hledání města s názvem **Bellevue** vrátí výsledky z USA a Francie, protože existují města s názvem **Bellevue** ve Francii a v USA.
 
-   2. Pomocí parametrů `btmRight` a `topleft` můžete nastavit ohraničovací rámeček tak, aby se omezilo hledání na určitou oblast na mapě.
+   2. Pomocí parametrů `btmRight` a `topleft` můžete nastavit ohraničovací rámeček a omezit tak hledání na určitou oblast na mapě.
 
-   3. Chcete-li ovlivnit oblast důležitosti pro výsledky, můžete definovat parametry souřadnic `lat`and `lon` a nastavit poloměr oblasti hledání pomocí parametru `radius`.
+   3. Chcete-li ovlivnit oblast důležitosti pro výsledky, můžete definovat `lat`a `lon` parametry souřadnic a nastavit poloměr oblasti hledání pomocí parametru `radius`.
 
 
    **Parametry hledání přibližné vyhledávání**
 
-   1. @No__t-0 a `maxFuzzyLevel` vrátí relevantní shody, a to i v případě, že parametry dotazu přesně neodpovídají požadovaným informacím. Většina vyhledávacích dotazů je ve výchozím nastavení `minFuzzyLevel=1` a `maxFuzzyLevel=2` pro získání výkonu a omezení neobvyklých výsledků. Příkladem hledaného termínu "restrant" se shoduje s "restaurace", pokud je `maxFuzzyLevel` nastavené na 2. Výchozí přibližné úrovně mohou být přepsány podle požadavků na požadavky. 
+   1. `minFuzzyLevel` a `maxFuzzyLevel`, vrátí relevantní shody i v případě, že parametry dotazu přesně neodpovídají požadovaným informacím. Většina vyhledávacích dotazů je ve výchozím nastavení `minFuzzyLevel=1` a `maxFuzzyLevel=2` tak, aby získala výkon a snížila neobvyklé výsledky. Příkladem hledaného termínu "restrant" se shoduje s názvem "restaurace", pokud je `maxFuzzyLevel` nastaveno na 2. Výchozí přibližné úrovně mohou být přepsány podle požadavků na požadavky. 
 
    2. Můžete také zadat přesně sadu výsledných typů, které mají být vráceny pomocí parametru `idxSet`. Pro tento účel můžete odeslat seznam indexů oddělených čárkami, přičemž pořadí položek nezáleží. Podporovány jsou následující indexy:
 
-       * `Addr` @ no__t-1**rozsahy adres**: pro některé ulice existují adresní body, které se interpolují od začátku do konce ulice; Tyto body jsou reprezentovány jako rozsahy adres.
-       * `Geo` @ no__t **-1 geografické**oblasti: oblasti na mapě, které reprezentují správní rozdělení půdy, tj. země, stát, město.
-       * `PAD` @ no__t-1**adresa bodu**: odkazuje na mapě, kde se v indexu nachází konkrétní adresa s názvem a číslem ulice, například Soquel Dr 2501. Nejvyšší úroveň přesnosti je k dispozici pro adresy.  
-       * `POI` @ no__t-1**body zájmu**: body na mapě, které stojí za pozornost a můžou být zajímavé.  [Získat adresu hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) vrátí zájmu.  
-       * `Str` @ no__t-1**ulice**: reprezentace ulic na mapě.
-       * `XStr` @ no__t-1**křížové ulice/průniky**: reprezentace spojení; místa, kde se protínají dvě ulice.
+       * `Addr`**rozsahy adres** - : u některých ulic jsou k dispozici adresní body, které se interpolují od začátku do konce ulice; Tyto body jsou reprezentovány jako rozsahy adres.
+       * `Geo` - **geografické**oblasti: oblasti na mapě, které reprezentují správní rozdělení půdy, tj. země, stát, město.
+       * Adresa  - **bodu**`PAD`: body na mapě, kde se v indexu nachází konkrétní adresa s názvem a číslem ulice, například Soquel Dr 2501. Nejvyšší úroveň přesnosti je k dispozici pro adresy.  
+       * `POI` - **bodů zájmu**: body na mapě, které stojí za pozornost a můžou být zajímavé.  [Získat adresu hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) vrátí zájmu.  
+       * `Str` - **ulic**: reprezentace ulic na mapě.
+       * `XStr` - **více ulic/průniky**: reprezentace spojení; místa, kde se protínají dvě ulice.
 
 
        **Příklady použití**:
@@ -133,7 +133,7 @@ Parametr `language` umožňuje nastavit, které výsledky hledání jazyka by m�
 
 ### <a name="predictive-mode-auto-suggest"></a>Prediktivní režim (automatické návrhy)
 
-Chcete-li najít další shody pro částečné dotazy, parametr `typeahead` by měl být nastaven na hodnotu "true". Dotaz bude interpretován jako částečný vstup a hledání bude obsahovat prediktivní režim. V opačném případě převezme služba všechny příslušné informace.
+Chcete-li najít další shody pro částečné dotazy, `typeahead` parametr by měl být nastaven na hodnotu "true". Dotaz bude interpretován jako částečný vstup a hledání bude obsahovat prediktivní režim. V opačném případě převezme služba všechny příslušné informace.
 
 V ukázkovém dotazu níže vidíte, že se pro "Microso" používá dotaz na vyhledávací službu s parametrem `typeahead` nastaveným na **hodnotu true**. Pokud si vyberete odpověď, vidíte, že vyhledávací služba interpretuje dotaz jako na částečný dotaz a odpověď obsahuje výsledky pro automatický navrhovaný dotaz.
 
@@ -265,7 +265,7 @@ JavaScript/TypeScript:
 encodeURIComponent(query)
 ```
 
-C#Jazyk
+C#/VB:
 ```csharp
 Uri.EscapeDataString(query)
 ```
@@ -297,7 +297,7 @@ Ruby
 CGI::escape(query) 
 ```
 
-SWIFT
+Swift:
 ```Swift
 query.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) 
 ```
@@ -496,7 +496,7 @@ Pokud chcete načíst jenom POI výsledky kolem konkrétního umístění, můž
 
 ## <a name="understanding-the-responses"></a>Porozumění odpovědím
 
-Pojďme na [službu Azure Maps Search](https://docs.microsoft.com/rest/api/maps/search) udělat požadavek na hledání adresy v Seattlu. Pokud se vám podíváme na adresu URL žádosti níže, nastavili jsme parametr `countrySet`, **abychom** mohli adresu v USA Americe vyhledat.
+Pojďme na [službu Azure Maps Search](https://docs.microsoft.com/rest/api/maps/search) udělat požadavek na hledání adresy v Seattlu. Pokud se podíváte na adresu URL žádosti níže, nastavili jsme parametr `countrySet`, **abychom** mohli adresu v USA Americe vyhledat.
 
 **Ukázkový dotaz:**
 

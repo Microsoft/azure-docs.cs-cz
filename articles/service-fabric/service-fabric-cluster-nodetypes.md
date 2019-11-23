@@ -31,10 +31,10 @@ Následující obrázek ukazuje cluster, který má dva typy uzlů s názvem fro
 ## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Mapování instancí sady škálování virtuálního počítače na uzly
 Jak je znázorněno na předchozím obrázku, škálované instance sad se spustí v instanci 0 a pak se zvýší o 1. Číslování se projeví v názvech uzlů. Například Node BackEnd_0 je instance 0 sady škálování back-endu. Tato konkrétní sada škálování má pět instancí s názvem BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 a BackEnd_4.
 
-Při horizontálním navýšení kapacity se vytvoří nová instance. Nový název instance sady škálování je obvykle název sady škálování a další číslo instance. V našem příkladu je to BackEnd_5.
+Při horizontálním navýšení kapacity se vytvoří nová instance. Nový název instance sady škálování je obvykle název sady škálování a další číslo instance. V našem příkladu je BackEnd_5.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Škálování mapy – nastavení nástrojů pro vyrovnávání zatížení na typy uzlů a sady škálování
-Pokud jste cluster nasadili v Azure Portal nebo jste použili ukázkovou šablonu Azure Resource Manager, zobrazí se všechny prostředky v rámci skupiny prostředků. Nástroje pro vyrovnávání zatížení můžete zobrazit pro jednotlivé sady škálování nebo typy uzlů. Název nástroje pro vyrovnávání zatížení používá následující formát: diskont **-&lt;node název typu @ no__t-2**. Příklad je sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
+Pokud jste cluster nasadili v Azure Portal nebo jste použili ukázkovou šablonu Azure Resource Manager, zobrazí se všechny prostředky v rámci skupiny prostředků. Nástroje pro vyrovnávání zatížení můžete zobrazit pro jednotlivé sady škálování nebo typy uzlů. Název nástroje pro vyrovnávání zatížení používá následující formát: **&lt;název typu pro typ uzlu&gt;** . Příklad je sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
 
 ![Prostředky][Resources]
 
@@ -75,21 +75,21 @@ Následuje fragment Service Fabric rozšíření virtuálního počítače:
 
 Níže jsou uvedeny popisy vlastností:
 
-| **Jméno** | **Povolené hodnoty** | ** --- ** | **Doprovodné materiály nebo krátký popis** |
+| **Název** | **Povolené hodnoty** | ** --- ** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-| name | odkazy řetězců | --- | jedinečný název pro rozšíření |
-| – typ | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode" | --- | Identifikuje Service Fabric operačního systému. |
+| jméno | řetězec | --- | jedinečný název pro rozšíření |
+| type | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode" | --- | Identifikuje Service Fabric operačního systému. |
 | autoUpgradeMinorVersion | true nebo false | --- | Povolit automatický upgrade dílčích verzí SF modulu runtime |
-| Microsoft | Microsoft. Azure. ServiceFabric | --- | název vydavatele rozsahu Service Fabric |
-| clusterEndpont | odkazy řetězců | --- | Identifikátor URI: PORT pro koncový bod správy |
-| nodeTypeRef | odkazy řetězců | --- | název nodeType |
+| publisher | Microsoft.Azure.ServiceFabric | --- | název vydavatele rozsahu Service Fabric |
+| clusterEndpont | řetězec | --- | Identifikátor URI: PORT pro koncový bod správy |
+| nodeTypeRef | řetězec | --- | název nodeType |
 | durabilityLevel | bronzová, stříbrná, zlatá, Platinum | --- | doba, po kterou je možné pozastavit neproměnlivou infrastrukturu Azure |
 | enableParallelJobs | true nebo false | --- | Povolte výpočetní ParallelJobs, jako je například odebrat virtuální počítač a restartovat virtuální počítač ve stejné sadě škálování paralelně. |
-| nicPrefixOverride | odkazy řetězců | --- | Předpona podsítě jako 10.0.0.0/24 |
+| nicPrefixOverride | řetězec | --- | Předpona podsítě jako 10.0.0.0/24 |
 | commonNames | řetězec [] | --- | Běžné názvy instalovaných certifikátů clusteru |
-| x509StoreName | odkazy řetězců | --- | Název úložiště, ve kterém je umístěný nainstalovaný certifikát clusteru |
+| x509StoreName | řetězec | --- | Název úložiště, ve kterém je umístěný nainstalovaný certifikát clusteru |
 | typeHandlerVersion | 1.1 | --- | Verze rozšíření pro upgrade na 1,1 se doporučuje používat klasickou verzi 1,0. |
-| Cesta k DataPath | odkazy řetězců | --- | Cesta k jednotce, která slouží k uložení stavu pro Service Fabric systémových služeb a dat aplikací. 
+| dataPath | řetězec | --- | Cesta k jednotce, která slouží k uložení stavu pro Service Fabric systémových služeb a dat aplikací. 
 
 ## <a name="next-steps"></a>Další kroky
 * Podívejte se na [Přehled funkce nasazení kamkoli a porovnání s clustery spravovanými Azure](service-fabric-deploy-anywhere.md).

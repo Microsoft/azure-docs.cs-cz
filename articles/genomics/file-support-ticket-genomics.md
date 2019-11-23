@@ -32,7 +32,7 @@ Pak vyberte `New support request`.
 
 ![Nová žádost o]podporu –(./media/file-support-ticket/new-support-request.png "Nová žádost o podporu") 
 
-Vyplňte `Basics` včetně `Issue type` a `Subscription`. Vyberte nejrelevantnější @no__t – 0 k vašemu problému; jako příklad na obrázku níže byl vybrán `Technical`. Nezapomeňte jako příslušnou službu vybrat `Microsoft Genomics`.  hodnota `Microsoft Genomics` bude uvedena v kategorii `Intelligence and Analytics`.   Po výběru `Microsoft Genomics` se zobrazí také výzva k zadání typu `Support plan`.
+Vyplňte `Basics`včetně `Issue type` a `Subscription`. Vyberte relevantní `Issue type` k vašemu problému; jako příklad na obrázku níže byl vybrán `Technical`. Nezapomeňte vybrat `Microsoft Genomics` jako příslušnou službu.  `Microsoft Genomics` bude uvedeno v kategorii `Intelligence and Analytics`.   Po výběru `Microsoft Genomics`se zobrazí také výzva k zadání typu `Support plan`.
 
 Základy(./media/file-support-ticket/support-request-basics.png "Support request") ![support Request]základy
 
@@ -41,7 +41,7 @@ Dále přidejte podrobnosti o vašem problému. Nástroj pro žádosti se také 
 
 Problém(./media/file-support-ticket/support-request-problem.png "Support request") ![support Request]potíží
 
-Nakonec přidejte své kontaktní informace a v dolní části obrazovky vyberte `Create`, aby bylo možné odeslat žádost o podporu.
+Nakonec přidejte své kontaktní informace a vyberte `Create` v dolní části obrazovky, aby bylo možné odeslat žádost o podporu.
 
 Kontakt ![support Request kontaktů](./media/file-support-ticket/support-request-contact.png "support Request")
 

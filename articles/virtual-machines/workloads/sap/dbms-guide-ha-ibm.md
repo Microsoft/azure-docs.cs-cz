@@ -83,8 +83,8 @@ Než začnete s instalací, přečtěte si následující poznámky a dokumentac
 | [Příručky k osvědčeným postupům pro aplikace SAP s 12 SP4 pro SUSE Linux Enterprise Server][sles-for-sap-bp] |
 | [SUSE Linux Enterprise High Availability Extension 12 SP4][sles-ha-guide] |
 | [Nasazení IBM Db2 Azure Virtual Machines DBMS pro úlohy SAP][dbms-db2] |
-| [IBM Db2 HADR 11,1][db2-hadr-11.1] |
-| [IBM Db2 HADR R 10,5][db2-hadr-10.5] |
+| [IBM Db2 HADR 11.1][db2-hadr-11.1] |
+| [IBM Db2 HADR R 10.5][db2-hadr-10.5] |
 
 ## <a name="overview"></a>Přehled
 Pro zajištění vysoké dostupnosti se IBM Db2 LUW s HADR nainstaluje aspoň na dva virtuální počítače Azure, které jsou nasazené v rámci [skupiny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) nebo napříč [zóny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones). 
@@ -134,7 +134,7 @@ Před spuštěním nasazení dokončete proces plánování. Plánování staví
 | Název a virtuální IP adresa virtuálního hostitele pro databázi IBM Db2| Virtuální IP adresa nebo název hostitele, který se používá pro připojení aplikačních serverů SAP. **DB-Virt-hostname**, **DB-Virt-IP**. |
 | Oplocení Azure | Služby Azure pro monitorování a oplocení SBD (důrazně doporučeno). Metoda, která neumožňuje rozdělit situace mozku. |
 | VIRTUÁLNÍ POČÍTAČ SBD | Velikost virtuálního počítače SBD, úložiště, síť. |
-| Nástroj pro vyrovnávání zatížení Azure | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
+| Azure Load Balancer | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
 | Překlad adres| Jak řešení překladu názvů funguje v prostředí. Služba DNS se důrazně doporučuje. Je možné použít místní soubor hostitelů. |
     
 Další informace o Pacemaker pro Linux v Azure najdete v tématu [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker).
@@ -201,7 +201,7 @@ Nastavení primární instance databáze IBM Db2 LUW:
 
 Pokud chcete nastavit pohotovostní databázový server pomocí procedury pro homogenní systémovou kopii SAP, proveďte tyto kroky:
 
-1. Vyberte možnost **kopírování systému** > **cílové systémy** > **distribuované** **instance databáze** > .
+1. Vyberte možnost **kopírování systému** > **cílové systémy** > **distribuovanou** > **instanci databáze**.
 1. Jako metodu kopírování vyberte **homogenní systém** , abyste mohli obnovit zálohu na pohotovostní instanci serveru pomocí zálohování.
 1. Až se dostanete k kroku konec obnovení databáze pro homogenní systémovou kopii, ukončete instalační program. Obnovte databázi ze zálohy primárního hostitele. Všechny následné fáze instalace už jsou spuštěné na primárním databázovém serveru.
 1. Nastavte HADR pro IBM Db2.
@@ -499,7 +499,7 @@ Pokud jste instalaci provedli předtím, než jste vytvořili konfiguraci Db2 HA
 
 Použijte konfigurační nástroj J2EE ke kontrole nebo aktualizaci adresy URL JDBC. Vzhledem k tomu, že nástroj J2EE Configuration Tool je grafický nástroj, je nutné mít nainstalovaný X Server:
  
-1. Přihlaste se k primárnímu aplikačnímu serveru instance J2EE a spusťte: `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`.
+1. Přihlaste se k primárnímu aplikačnímu serveru instance J2EE a spusťte: `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. V levém rámci vyberte **úložiště zabezpečení**.
 1. V pravém rámečku Vyberte klíč JDBC/Pool/\<SAPSID >/URL.
 1. Změňte název hostitele v adrese URL JDBC na název virtuálního hostitele.
@@ -516,7 +516,7 @@ Archivace protokolu je prováděna pouze v primární databázi. Pokud změníte
 
 Doporučujeme nakonfigurovat společnou sdílenou složku NFS, do které se zapisují protokoly z obou uzlů. Sdílená složka systému souborů NFS musí být vysoce dostupná. 
 
-Pro přenosy nebo adresář profilu můžete použít existující sdílené složky systému souborů NFS s vysokou dostupností. Další informace:
+Pro přenosy nebo adresář profilu můžete použít existující sdílené složky systému souborů NFS s vysokou dostupností. Další informace naleznete v tématu:
 
 - [Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server][nfs-ha] 
 - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
@@ -530,7 +530,7 @@ Tato část popisuje, jak můžete otestovat instalaci Db2 HADR. *Každý test p
 Počáteční stav všech testovacích případů je vysvětlen zde: (crm_mon-r nebo CRM status)
 
 - **stav CRM** je snímek stavu Pacemaker v době spuštění. 
-- **crm_mon-r** je souvislý výstup stavu Pacemaker.
+- **crm_mon-r** je průběžný výstup stavu Pacemaker
 
 <pre><code>2 nodes configured
 5 resources configured
@@ -596,9 +596,9 @@ Migrujte prostředek zpátky do *azibmdb01* a vymažte omezení umístění.
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **prostředek CRM migrace \<res_name > \<hostitele >:** Vytvoří omezení umístění a může způsobit problémy s převzetím.
+- **prostředek CRM migrace \<res_name > \<> hostitele:** Vytvoří omezení umístění a může způsobit problémy s převzetím.
 - **prostředek CRM clear \<res_name >** : vymaže omezení umístění.
-- **\<res_name > pro vyčištění prostředků CRM**: vymaže všechny chyby prostředku.
+- **res_name \<vyčištění prostředků crm >** : vymaže všechny chyby prostředku.
 
 ### <a name="test-the-fencing-agent"></a>Testování agenta pro oplocení
 

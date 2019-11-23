@@ -119,7 +119,7 @@ Tady je informační dokument, který představuje některé z osvědčených po
 **Otázka: můžu Azure AD Connect vytvořit účet konektoru Azure AD na počítači pracovní skupiny?**
 Ne.  Aby bylo možné Azure AD Connect automaticky vytvořit účet konektoru služby Azure AD, musí být počítač připojený k doméně.  
 
-## <a name="network"></a>Síť
+## <a name="network"></a>Network (Síť)
 **Otázka: Mám bránu firewall, síťové zařízení nebo něco jiného, co omezuje dobu, po kterou mohou připojení zůstat otevřená v síti. Co má prahová hodnota časového limitu na straně klienta při použití Azure AD Connect?**  
 Veškerý síťový software, fyzická zařízení nebo cokoli jiného, co omezuje maximální dobu, po kterou můžou připojení zůstat otevřená, by mělo pro připojení mezi serverem, na kterém je nainstalovaný klient Azure AD Connect, používat prahovou hodnotu nejméně pět minut (300 sekund). a Azure Active Directory. Toto doporučení platí také pro všechny dříve vydané nástroje Microsoft Synchronizace identity.
 

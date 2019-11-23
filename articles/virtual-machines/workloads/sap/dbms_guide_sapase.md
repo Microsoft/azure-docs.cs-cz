@@ -313,14 +313,14 @@ V tomto dokumentu popisuje několik různých oblastí, které je potřeba vzít
 ## <a name="specifics-to-sap-ase-on-windows"></a>Specifická pro SAP pomocného programu SAP ve Windows
 Počínaje Microsoft Azure můžete stávající aplikace SAP pomocného mechanismu migrovat do Azure Virtual Machines. Protokol SAP pomocného programu na virtuálním počítači Azure umožňuje snížit celkové náklady na vlastnictví nasazení, správy a údržby aplikací v rozlehlých sítích, a to tak, že tyto aplikace jednoduše migrujete do Microsoft Azure. S pomocným mechanismem SAP na virtuálním počítači Azure můžou správci a vývojáři dál používat stejné nástroje pro vývoj a správu, které jsou k dispozici místně.
 
-SLA pro Azure Virtual Machines, najdete tady:<https://azure.microsoft.com/support/legal/sla/virtual-machines>
+SLA pro Azure Virtual Machines, najdete tady: <https://azure.microsoft.com/support/legal/sla/virtual-machines>
 
 Microsoft Azure nabízí spoustu různých typů virtuálních počítačů, které vám umožní spustit nejmenší systémy SAP a využít až velké systémy SAP a možnost krajiny s tisíci uživateli. V tématu SAP Note [1928533]se poskytuje SAP – počty SAP různých SKU virtuálních počítačů certifikovaných pro SAP.
 
 Příkazy a doporučení týkající se použití Azure Storage, nasazení virtuálních počítačů SAP nebo monitorování SAP provedeného v souvislosti s [nasazením Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) se vztahují i na nasazení služby SAP.
 
 ### <a name="sap-ase-version-support"></a>Podpora verze pomocného mechanismu protokolu SAP
-SAP aktuálně podporuje SAP pomocného programu SAP verze 16,0 pro použití s produkty SAP Business Suite. Všechny aktualizace serveru SAP pomocného programu nebo ovladačů JDBC a ODBC, které se mají použít s produkty SAP Business Suite, se poskytují výhradně prostřednictvím tržiště <https://support.sap.com/swdc>služby SAP na adrese:.
+SAP aktuálně podporuje SAP pomocného programu SAP verze 16,0 pro použití s produkty SAP Business Suite. Všechny aktualizace serveru SAP pomocného programu nebo ovladačů JDBC a ODBC, které se mají použít s produkty SAP Business Suite, se poskytují výhradně prostřednictvím tržiště služby SAP na adrese: <https://support.sap.com/swdc>.
 
 Nestahujte aktualizace serveru SAP pomocného mechanismu nebo pro ovladače JDBC a ODBC přímo z webů Sybase. Podrobné informace o opravách, které se podporují pro použití s produkty SAP v místním prostředí a v Azure Virtual Machines najdete v následujících komentářích ke SAP:
 
@@ -331,7 +331,7 @@ Obecné informace o spuštění SAP Business Suite na SAP pomocném mechanismu s
 
 ### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Pokyny pro konfiguraci SAP pomocného mechanismu služby pro instalaci SAP pomocného mechanismu pro SAP na virtuálních počítačích Azure
 #### <a name="structure-of-the-sap-ase-deployment"></a>Struktura nasazení SAP pomocného programu SAP
-Spustitelné soubory SAP pomocného programu by se měly nacházet nebo instalovat na systémovou jednotku disku s operačním systémem virtuálního\)počítače (jednotka c:. Většinou v databázích systému a nástrojů SAP pomocného programu SAP nedochází k velkým úlohám. Proto mohou databáze systému a nástrojů (hlavní, model, saptools, sybmgmtdb, sybsystemdb) zůstat v C:\ disky. 
+Spustitelné soubory SAP pomocného programu by se měly nacházet nebo instalovat na systémovou jednotku disku s operačním systémem virtuálního počítače (jednotka c:\). Většinou v databázích systému a nástrojů SAP pomocného programu SAP nedochází k velkým úlohám. Proto mohou databáze systému a nástrojů (hlavní, model, saptools, sybmgmtdb, sybsystemdb) zůstat v C:\ disky. 
 
 Výjimkou může být dočasná databáze, která v případě některých funkcí SAP ERP a všech ČERNOBÍLých úloh může vyžadovat buď větší objem dat, nebo vstupně-výstupní operace. Svazky nebo IOPS, které nemůže poskytnout disk s operačním systémem virtuálního počítače (jednotka C:\).
 
@@ -384,7 +384,7 @@ a odkazy vygenerované v transakční DBACockpit vypadají podobně jako:
 > 
 > 
 
-V závislosti na tom, jak je virtuální počítač Azure hostující systém SAP připojený k vaší službě AD a DNS, je potřeba zajistit, aby ICM používala plně kvalifikovaný název hostitele, který se dá vyřešit v počítači, ze kterého se DBACockpit otevírá. V tématu SAP Note [773830] můžete pochopit, jak ICM Určuje plně kvalifikovaný název hostitele na základě parametrů profilu a v případě potřeby explicitně nastavily parametry ICM/host_name_full.
+V závislosti na tom, jak je virtuální počítač Azure hostující systém SAP připojený k vaší službě AD a DNS, je potřeba zajistit, aby ICM používala plně kvalifikovaný název hostitele, který se dá vyřešit v počítači, ze kterého se DBACockpit otevírá. V části SAP Note [773830] se naučíte, jak ICM Určuje plně kvalifikovaný název hostitele na základě parametrů profilu a v případě potřeby explicitně nastaví parametry icm/host_name_full.
 
 Pokud jste virtuální počítač nasadili ve scénáři jenom pro cloud bez propojení mezi místními sítěmi a Azure, musíte definovat veřejnou IP adresu a domainlabel. Formát veřejného názvu DNS virtuálního počítače vypadá takto:
 
@@ -448,7 +448,7 @@ Pokud chcete zvýšit počet cílů, na které se má zapisovat, můžete použ�
 * Prokládání cílového svazku zálohování přes několik připojených disků pro zlepšení propustnosti IOPS na tomto prokládaném svazku
 * Vytvoření konfigurace výpisu paměti na úrovni služby SAP pro čtení, která používá více než jeden cílový adresář k zápisu výpisu paměti
 
-Prokládání diskového svazku na více připojených discích je popsáno v tématu [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Další informace o použití více adresářů v konfiguraci výpisu stavu systému SAP najdete v dokumentaci k uložené proceduře sp_config_dump, která se používá k vytvoření konfigurace výpisu paměti v [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp).
+Prokládání diskového svazku na více připojených discích je popsáno v tématu [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Další informace o použití více adresářů v konfiguraci výpisu stavu systému SAP naleznete v dokumentaci k uložené proceduře sp_config_dump, která se používá k vytvoření konfigurace výpisu paměti v [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp).
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Zotavení po havárii s virtuálními počítači Azure
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikace dat pomocí replikačního serveru SAP Sybase
@@ -461,9 +461,9 @@ SAP pomocného HADR nevyžaduje interní Load Balancer Azure a nemá žádné z�
 ## <a name="specifics-to-sap-ase-on-linux"></a>Specifická pro SAP pomocného mechanismu pro Linux
 Počínaje Microsoft Azure můžete svoje stávající aplikace SAP pomocného mechanismu migrace snadno migrovat do Azure Virtual Machines. SAP pomocného programu na virtuálním počítači umožňuje snížit celkové náklady na vlastnictví nasazení, správy a údržby aplikací v podnikové šířce tím, že tyto aplikace jednoduše migruje na Microsoft Azure. S pomocným mechanismem SAP na virtuálním počítači Azure můžou správci a vývojáři dál používat stejné nástroje pro vývoj a správu, které jsou k dispozici místně.
 
-Pro nasazení virtuálních počítačů Azure je důležité znát oficiální SLA, který najdete tady:<https://azure.microsoft.com/support/legal/sla>
+Pro nasazení virtuálních počítačů Azure je důležité znát oficiální SLA, který najdete tady: <https://azure.microsoft.com/support/legal/sla>
 
-Informace o velikosti SAP a seznam SKU certifikovaných virtuálních počítačů SAP jsou k dispozici v tématu SAP Note [1928533]. Další dokumenty SAP o velikosti pro virtuální počítače Azure najdete tady <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> a tady.<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Informace o velikosti SAP a seznam SKU certifikovaných virtuálních počítačů SAP jsou k dispozici v tématu SAP Note [1928533]. Další dokumenty SAP o velikosti pro virtuální počítače Azure najdete tady <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> a tady <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 Příkazy a doporučení týkající se použití Azure Storage, nasazení virtuálních počítačů SAP nebo monitorování SAP se vztahují na nasazení SAP pomocného programu SAP ve spojení s aplikacemi SAP, jak uvádíme v prvních čtyřech kapitolách tohoto dokumentu.
 
@@ -473,7 +473,7 @@ Následující dvě poznámky SAP obsahují obecné informace o službě pomocn�
 * [1941500]
 
 ### <a name="sap-ase-version-support"></a>Podpora verze pomocného mechanismu protokolu SAP
-SAP aktuálně podporuje SAP pomocného programu SAP verze 16,0 pro použití s produkty SAP Business Suite. Všechny aktualizace serveru SAP pomocného programu nebo ovladačů JDBC a ODBC, které se mají použít s produkty SAP Business Suite, se poskytují výhradně prostřednictvím tržiště <https://support.sap.com/swdc>služby SAP na adrese:.
+SAP aktuálně podporuje SAP pomocného programu SAP verze 16,0 pro použití s produkty SAP Business Suite. Všechny aktualizace serveru SAP pomocného programu nebo ovladačů JDBC a ODBC, které se mají použít s produkty SAP Business Suite, se poskytují výhradně prostřednictvím tržiště služby SAP na adrese: <https://support.sap.com/swdc>.
 
 Jako u místních instalací nestahujte aktualizace serveru SAP pomocného mechanismu nebo pro ovladače JDBC a ODBC přímo z webů Sybase. Podrobné informace o opravách, které se podporují pro použití s produkty SAP Business Suite v místním prostředí a v Azure Virtual Machines najdete v následujících komentářích ke SAP:
 
@@ -537,7 +537,7 @@ a odkazy vygenerované v transakční DBACockpit budou vypadat podobně jako tot
 > 
 > 
 
-V závislosti na tom, jak je virtuální počítač Azure hostující systém SAP připojený k vaší službě AD a DNS, je potřeba zajistit, aby ICM používala plně kvalifikovaný název hostitele, který se dá vyřešit v počítači, ze kterého se DBACockpit otevírá. V tématu SAP Note [773830] můžete pochopit, jak ICM Určuje plně kvalifikovaný název hostitele v závislosti na parametrech profilu a v případě potřeby explicitně nastavily parametry ICM/host_name_full.
+V závislosti na tom, jak je virtuální počítač Azure hostující systém SAP připojený k vaší službě AD a DNS, je potřeba zajistit, aby ICM používala plně kvalifikovaný název hostitele, který se dá vyřešit v počítači, ze kterého se DBACockpit otevírá. V tématu SAP Note [773830] můžete pochopit, jak ICM Určuje plně kvalifikovaný název hostitele v závislosti na parametrech profilu a v případě potřeby explicitně nastavily icm/host_name_full.
 
 Pokud jste virtuální počítač nasadili ve scénáři jenom pro cloud bez propojení mezi místními sítěmi a Azure, musíte definovat veřejnou IP adresu a domainlabel. Formát veřejného názvu DNS virtuálního počítače vypadá takto:
 
@@ -601,7 +601,7 @@ Pokud chcete zvýšit počet cílů, na které se má zapisovat, můžete použ�
 * Prokládání cílového svazku zálohování přes několik připojených disků pro zlepšení propustnosti IOPS na tomto prokládaném svazku
 * Vytvoření konfigurace výpisu paměti na úrovni služby SAP pro čtení, která používá více než jeden cílový adresář k zápisu výpisu paměti
 
-Prokládání diskového svazku na více připojených discích je popsáno v tématu [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Další informace o použití více adresářů v konfiguraci výpisu stavu systému SAP najdete v dokumentaci k uložené proceduře sp_config_dump, která se používá k vytvoření konfigurace výpisu paměti v [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp).
+Prokládání diskového svazku na více připojených discích je popsáno v tématu [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Další informace o použití více adresářů v konfiguraci výpisu stavu systému SAP naleznete v dokumentaci k uložené proceduře sp_config_dump, která se používá k vytvoření konfigurace výpisu paměti v [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp).
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Zotavení po havárii s virtuálními počítači Azure
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikace dat pomocí replikačního serveru SAP Sybase

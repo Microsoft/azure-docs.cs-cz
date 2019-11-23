@@ -40,21 +40,21 @@ Rozhraní Twilio API je rozhraní RESTful API, které poskytuje funkce hlasu a S
 Klíčovými aspekty rozhraní Twilio API jsou Twilio příkazy a Twilio Markup Language (TwiML).
 
 ### <a id="Verbs"></a>Operace Twilio
-Rozhraní API využívá operace Twilio; Například příkaz **&lt;Say @ no__t-2** vydá pokyn Twilio, aby audibly doručení zprávy na volání.
+Rozhraní API využívá operace Twilio; například **&lt;vyslovit&gt;** příkaz instruuje Twilio, aby audibly doručení zprávy na volání.
 
 Následuje seznam operací Twilio. Přečtěte si o dalších příkazech a funkcích prostřednictvím [dokumentace jazyka Twilio Markup Language][twiml].
 
-* **&lt;Dial @ no__t-2**: připojí volajícího k jinému telefonu.
-* **&lt;Gather @ no__t-2**: shromažďuje číselné číslice zadané na telefonní klávesnici.
-* **&lt;Hangup @ no__t-2**: ukončí volání.
-* **&lt;Pause @ no__t-2**: počká na zadaný počet sekund tiše.
-* **&lt;Play @ no__t-2**: přehraje zvukový soubor.
-* **&lt;Queue @ no__t-2**: přidejte do fronty volajících.
-* **&lt;Record @ no__t-2**: zaznamenává hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam.
-* **&lt;Redirect @ no__t-2**: přenáší řízení volání nebo SMS na TwiML na jiné adrese URL.
-* **&lt;Reject @ no__t-2**: odmítne příchozí volání na číslo Twilio bez fakturace.
-* **&lt;Say @ no__t-2**: převede text na řeč, který je proveden na volání.
-* **&lt;Sms @ no__t-2**: ODEŠLE zprávu SMS.
+* **&lt;Dial&gt;** : připojí volajícího k jinému telefonu.
+* **&lt;shromažďování&gt;** : shromažďuje číselné číslice, které jsou zadány na klávesnici na telefonu.
+* **&lt;Hangup&gt;** : ukončí volání.
+* **pozastavení&gt;&lt;** : počká po zadaném počtu sekund.
+* **&gt;&lt;přehrávání** : Přehrává zvukový soubor.
+* **&gt;&lt;Queue** : přidejte do fronty volajících.
+* **záznam&lt;&gt;** : zaznamená hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* **&lt;přesměrování&gt;** : přenáší řízení volání nebo SMS na TwiML na jinou adresu URL.
+* **&lt;odmítat&gt;** : odmítne příchozí volání na číslo Twilio bez fakturace.
+* **&lt;vyslovit&gt;** : převede text na řeč, který je proveden na volání.
+* **&lt;&gt;SMS** : odesílá zprávu SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML je sada instrukcí založených na XML, která je založená na příkazech Twilio, které informují Twilio o tom, jak zpracovat volání nebo SMS.
@@ -66,7 +66,7 @@ Například následující TwiML převede text **Hello World** na řeč.
       <Say>Hello World</Say>
     </Response>
 
-Když vaše aplikace volá rozhraní Twilio API, je jedním z parametrů rozhraní API adresa URL, která vrací TwiML odpověď. Pro účely vývoje můžete použít adresy URL poskytované Twilio a poskytnout tak odpovědi na TwiML používané vašimi aplikacemi. Můžete také hostovat vaše vlastní adresy URL, aby se vytvořily odpovědi TwiML, a další možnost je použít objekt `TwiMLResponse`.
+Když vaše aplikace volá rozhraní Twilio API, je jedním z parametrů rozhraní API adresa URL, která vrací TwiML odpověď. Pro účely vývoje můžete použít adresy URL poskytované Twilio a poskytnout tak odpovědi na TwiML používané vašimi aplikacemi. Můžete také hostovat vlastní adresy URL pro vytváření odpovědí TwiML a další možností je použít objekt `TwiMLResponse`.
 
 Další informace o příkazech Twilio, jejich atributech a TwiML naleznete v tématu [TwiML][twiml]. Další informace o rozhraní Twilio API najdete v tématu [rozhraní Twilio API][twilio_api].
 
@@ -78,7 +78,7 @@ Když se přihlásíte k účtu Twilio, obdržíte identifikátor SID účtu a o
 ## <a id="create_app"></a>Vytvoření aplikace v Pythonu
 Aplikace v Pythonu, která používá službu Twilio a je spuštěná v Azure, se neliší od jakékoli jiné aplikace v Pythonu, která používá službu Twilio. I když jsou služby Twilio založené na REST a můžou se volat z Pythonu několika způsoby, Tento článek se zaměřuje na použití služeb Twilio s [Twilio knihovnou pro Python z GitHubu][twilio_python]. Další informace o použití knihovny Twilio pro Python najdete v tématu [https://www.twilio.com/docs/libraries/python][twilio_lib_docs].
 
-Nejprve [nastavte nový virtuální počítač Azure Linux] [azure_vm_setup], který bude sloužit jako hostitel vaší nové webové aplikace v Pythonu. Jakmile je virtuální počítač spuštěný, budete muset svou aplikaci zveřejnit na veřejném portu, jak je popsáno níže.
+Nejprve [nastavte nový virtuální počítač Azure Linux] [azure_vm_setup], který bude sloužit jako hostitel pro novou webovou aplikaci v Pythonu. Jakmile je virtuální počítač spuštěný, budete muset svou aplikaci zveřejnit na veřejném portu, jak je popsáno níže.
 
 ### <a name="add-an-incoming-rule"></a>Přidat příchozí pravidlo
   1. Přejít na stránku [skupina zabezpečení sítě] [azure_nsg].
@@ -101,20 +101,20 @@ Aplikaci můžete nakonfigurovat tak, aby používala knihovnu Twilio pro Python
    
         $ pip install twilio
 
-    \- nebo -
+    -OR-
 
 * Stáhněte si knihovnu Twilio pro Python z GitHubu ([https://github.com/twilio/twilio-python][twilio_python]) a nainstalujte ji takto:
 
         $ python setup.py install
 
-Po instalaci knihovny Twilio pro Python můžete `import` v souborech Pythonu:
+Po instalaci knihovny Twilio pro Python ji můžete `import` v souborech Pythonu:
 
         import twilio
 
 Další informace najdete v tématu [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.md).
 
 ## <a id="howto_make_call"></a>Postupy: provedení odchozího volání
-Následující příklad ukazuje, jak provést odchozí volání. Tento kód také používá Twilio web k vrácení odpovědi TwiML (Twilio Markup Language). Před spuštěním kódu nahraďte své hodnoty pro telefonní čísla **from_number** a **TO_NUMBER** a ujistěte se, že jste ověřili telefonní číslo **from_number** pro svůj účet Twilio.
+Následující příklad ukazuje, jak provést odchozí volání. Tento kód také používá Twilio web k vrácení odpovědi TwiML (Twilio Markup Language). Před spuštěním kódu nahraďte hodnoty pro **from_number** a telefonní čísla **TO_NUMBER** a ujistěte se, že jste ověřili **from_number** telefonní číslo účtu Twilio.
 
     from urllib.parse import urlencode
 
@@ -150,7 +150,7 @@ Následující příklad ukazuje, jak provést odchozí volání. Tento kód tak
 Jak bylo zmíněno, tento kód používá Twilio web k vrácení TwiML odpovědi. Místo toho můžete k poskytnutí odpovědi TwiML použít svůj vlastní web. Další informace najdete v tématu [jak poskytnout TwiML odpovědi z vašeho vlastního](#howto_provide_twiml_responses)webu.
 
 ## <a id="howto_send_sms"></a>Postupy: odeslání zprávy SMS
-Následující příklad ukazuje, jak odeslat zprávu SMS pomocí třídy `TwilioRestClient`. Číslo **from_number** je poskytované Twilio pro zkušební účty k odeslání zpráv SMS. Před spuštěním kódu musí být **TO_NUMBER** číslo ověřené pro svůj účet Twilio.
+Následující příklad ukazuje, jak odeslat zprávu SMS pomocí třídy `TwilioRestClient`. **From_number** číslo poskytuje zkušební účty pro odeslání zpráv SMS. Před spuštěním kódu musí být pro účet Twilio ověřené číslo **TO_NUMBER** .
 
     # Import the Twilio Python Client.
     from twilio.rest import TwilioRestClient
@@ -172,7 +172,7 @@ Následující příklad ukazuje, jak odeslat zprávu SMS pomocí třídy `Twili
                                      body=message)
 
 ## <a id="howto_provide_twiml_responses"></a>Postupy: poskytování odpovědí TwiML z vašeho vlastního webu
-Když vaše aplikace zahájí volání rozhraní Twilio API, Twilio odešle požadavek na adresu URL, která by měla vrátit odpověď TwiML. Výše uvedený příklad používá adresu URL poskytnutou v Twilio [https://twimlets.com/message][twimlet_message_url]. (I když je TwiML navržený pro použití v Twilio, můžete ho zobrazit v prohlížeči. Pokud například chcete zobrazit prázdný prvek `<Response>`, klikněte na [https://twimlets.com/message][twimlet_message_url] . jako jiný příklad klikněte [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] pro zobrazení prvku `<Response>`, který obsahuje prvek `<Say>`.)
+Když vaše aplikace zahájí volání rozhraní Twilio API, Twilio odešle požadavek na adresu URL, která by měla vrátit odpověď TwiML. Výše uvedený příklad používá [https://twimlets.com/message][twimlet_message_url]adresu URL poskytnutou Twilio. (I když je TwiML navržený pro použití v Twilio, můžete ho zobrazit v prohlížeči. Například kliknutím na tlačítko [https://twimlets.com/message][twimlet_message_url] zobrazíte prázdný `<Response>` prvek. jako jiný příklad klikněte na [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] pro zobrazení `<Response>` elementu, který obsahuje prvek `<Say>`.)
 
 Místo toho, abyste museli spoléhat na adresu URL zadanou v Twilio, můžete vytvořit vlastní web, který bude vracet odpovědi HTTP. Web můžete vytvořit v jakémkoli jazyce, který vrací odpovědi XML; v tomto tématu se předpokládá, že k vytvoření TwiML použijete Python.
 

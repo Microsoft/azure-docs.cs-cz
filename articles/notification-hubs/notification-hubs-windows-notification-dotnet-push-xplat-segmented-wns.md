@@ -42,12 +42,12 @@ Pokud chcete povolit scénáře vysílání, zahrňte při vytváření registra
 V tomto kurzu provedete následující úlohy:
 
 > [!div class="checklist"]
-> * Přidání výběru kategorie do mobilní aplikace
+> * Přidání výběru kategorií do mobilní aplikace
 > * Registrace oznámení
-> * Posílání označených oznámení
+> * Posílání značených oznámení
 > * Spuštění aplikace a generování oznámení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dokončete [kurz: odeslání oznámení do Univerzální platforma Windows aplikací pomocí Azure Notification Hubs][get-started] před zahájením tohoto kurzu.  
 
@@ -55,7 +55,7 @@ Dokončete [kurz: odeslání oznámení do Univerzální platforma Windows aplik
 
 První krok spočívá v přidání prvků uživatelského rozhraní na stávající hlavní stránku, aby uživatelé mohli vybrat kategorie, které chtějí zaregistrovat. Vybrané kategorie se uloží do zařízení. Po spuštění aplikace se v centru oznámení vytvoří registrace zařízení s vybranými kategoriemi jako značky.
 
-1. Otevřete soubor projektu *MainPage. XAML* a poté zkopírujte následující kód v prvku `Grid`:
+1. Otevřete soubor projektu *MainPage. XAML* a poté zkopírujte následující kód do prvku `Grid`:
 
     ```xml
     <Grid>
@@ -81,7 +81,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
     </Grid>
     ```
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt, vyberte **Přidat** **třídu** > . V okně **Přidat novou položku**pojmenujte *oznámení*třídy a vyberte **Přidat**. V případě potřeby přidejte modifikátor `public` do definice třídy.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **Přidat** > **třídu**. V okně **Přidat novou položku**pojmenujte *oznámení*třídy a vyberte **Přidat**. V případě potřeby přidejte modifikátor `public` do definice třídy.
 
 1. Do nového souboru přidejte následující příkazy `using`:
 
@@ -92,7 +92,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
     using System.Threading.Tasks;
     ```
 
-1. Zkopírujte následující kód do nové třídy `Notifications`:
+1. Zkopírujte následující kód do nové `Notifications` třídy:
 
     ```csharp
     private NotificationHub hub;
@@ -134,7 +134,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
     }
     ```
 
-    Tato třída ukládá kategorie novinek, které bude zařízení dostávat, do místního úložiště. Namísto volání metody `RegisterNativeAsync` zavolejte `RegisterTemplateAsync` pro registraci kategorií pomocí registrace šablony.
+    Tato třída ukládá kategorie novinek, které bude zařízení dostávat, do místního úložiště. Namísto volání metody `RegisterNativeAsync` volejte `RegisterTemplateAsync` k registraci kategorií pomocí registrace šablony.
 
     Pokud chcete registrovat více než jednu šablonu, zadejte název šablony, například *simpleWNSTemplateExample*. Názvy šablon se zadávají proto, aby je bylo možné aktualizovat nebo odstranit. Můžete zaregistrovat více než jednu šablonu, která bude mít jednu pro informační zprávy a jednu pro dlaždice.
 
@@ -149,7 +149,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
     ```
 
-    Tato vlastnost slouží k vytvoření a přístup k instanci @no__t 0.
+    Tato vlastnost slouží k vytvoření instance `Notifications` a k jejímu přístupu.
 
     Nahraďte v kódu zástupné symboly `<hub name>` a `<connection string with listen access>` názvem vašeho centra oznámení a připojovacím řetězcem pro **DefaultListenSharedAccessSignature**, který jste získali dříve.
 
@@ -183,7 +183,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
     }
     ```
 
-    Tato metoda vytvoří seznam kategorií a pomocí třídy `Notifications` uloží seznam do místního úložiště. Dále zaregistruje odpovídající značky v centru oznámení. Při změně kategorií se registrace znovu vytvoří s novými kategoriemi.
+    Tato metoda vytvoří seznam kategorií a pomocí třídy `Notifications` ukládá seznam do místního úložiště. Dále zaregistruje odpovídající značky v centru oznámení. Při změně kategorií se registrace znovu vytvoří s novými kategoriemi.
 
 Aplikace teď může uchovávat sadu kategorií v místním úložišti v zařízení. Aplikace se zaregistruje v centru oznámení vždy, když uživatelé změní výběr kategorií.
 
@@ -194,7 +194,7 @@ V této části provedete registraci v centru oznámení při spuštění pomoc�
 > [!NOTE]
 > Identifikátor URI kanálu přiřazený Službou nabízených oznámení Windows se může kdykoli změnit, a proto byste měli oznámení často registrovat, abyste se vyhnuli chybám v oznámeních. V tomto příkladu se oznámení registrují při každém spuštění aplikace. Pro aplikace, které často spouštíte, například více než jednou denně, můžete pravděpodobně přeskočit registraci, abyste zachovali šířku pásma, pokud od předchozí registrace uplynul méně než jeden den.
 
-1. Chcete-li použít třídu `notifications` k přihlášení k odběru na základě kategorií, otevřete soubor *App.XAML.cs* a pak aktualizujte metodu `InitNotificationsAsync`.
+1. Chcete-li použít třídu `notifications` k přihlášení k odběru na základě kategorií, otevřete soubor *App.XAML.cs* a aktualizujte metodu `InitNotificationsAsync`.
 
     ```csharp
     // *** Remove or comment out these lines ***
@@ -228,13 +228,13 @@ Aplikace je teď hotová. Může ukládat sadu kategorií do místního úloži�
 
 ## <a name="run-the-uwp-app"></a>Spuštění aplikace pro UWP
 
-1. V aplikaci Visual Studio vyberte F5 pro zkompilování a spuštění aplikace. Uživatelské rozhraní aplikace nabízí sadu přepínačů, kterými můžete vybrat odebírané kategorie.
+1. V aplikaci Visual Studio vyberte F5 pro zkompilování a spuštění aplikace. Uživatelské rozhraní aplikace nabízí sadu přepínačů, kterými můžete vybrat kategorie přihlášené k odběru.
 
    ![Aplikace Nejnovější zprávy](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breaking-news.png)
 
 1. Povolte jeden nebo více přepínačů kategorie a potom vyberte možnost **přihlásit k odběru**.
 
-   Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o registraci nových zařízení. Aplikace zobrazí v dialogovém okně registrované kategorie.
+   Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o novou registraci zařízení. Aplikace zobrazí v dialogovém okně registrované kategorie.
 
     ![Přepínače kategorií a tlačítko Přihlásit k odběru](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast.png)
 

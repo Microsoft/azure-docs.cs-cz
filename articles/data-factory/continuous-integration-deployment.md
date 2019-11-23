@@ -421,10 +421,10 @@ Níže je uveden popis způsobu konstrukce výše uvedené šablony, rozepsaný 
 
 * Všechny vlastnosti v rámci cesty `typeProperties` jsou parametrizované s příslušnými výchozími hodnotami. Například ve vlastnostech typu **IntegrationRuntimes** existují dvě vlastnosti: `computeProperties` a `ssisProperties`. Oba typy vlastností jsou vytvořeny s příslušnými výchozími hodnotami a typy (Object).
 
-#### <a name="triggers"></a>Triggery
+#### <a name="triggers"></a>Aktivační procedury
 
 * V části `typeProperties`jsou parametrizované dvě vlastnosti. První z nich je `maxConcurrency`, která má mít výchozí hodnotu a je typu`string`. Má výchozí název parametru `<entityName>_properties_typeProperties_maxConcurrency`.
-* Vlastnost `recurrence` je také Parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimkou je vlastnost `interval`, která je parametrizovaná jako typ Number a s názvem parametru s příponou `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Podobně vlastnost `freq` je řetězec a je parametrizovaná jako řetězec. Vlastnost `freq` je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. například `<entityName>_freq`.
+* Vlastnost `recurrence` je také Parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimkou je vlastnost `interval`, která je parametrizovaná jako typ Number a s názvem parametru s příponou `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Podobně vlastnost `freq` je řetězec a je parametrizovaná jako řetězec. Vlastnost `freq` je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. Například, `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
@@ -683,9 +683,9 @@ Pokud nasadíte továrnu do produkčního prostředí a zjistíte chybu, kterou 
 
 6.  Po ověření opravy klikněte na **Exportovat šablonu ARM** a stáhněte šablonu Hot-Fix správce prostředků.
 
-7.  Ruční vrácení tohoto sestavení se změnami do větve adf_publish
+7.  Proveďte ruční vrácení tohoto sestavení se změnami do větve adf_publish.
 
-8.  Pokud jste nakonfigurovali svůj kanál pro vydávání verzí, který se automaticky aktivuje na základě vrácení se změnami adf_publish, automaticky se spustí nová verze. V opačném případě ručně vyřadí vydanou verzi.
+8.  Pokud jste nakonfigurovali svůj kanál pro vydávání verzí tak, aby se automaticky spouštěl na základě adf_publish vrácení se změnami, automaticky se spustí nová verze. V opačném případě ručně vyřadí vydanou verzi.
 
 9.  Nasaďte do testovacího a produkčního továrny vydání Hot-Fix. Tato verze obsahuje předchozí provozní datovou část a opravu provedenou v kroku 5.
 
