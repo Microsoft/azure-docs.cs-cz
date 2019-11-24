@@ -8,22 +8,22 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 09/02/2018
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 4dd638d825c73d901de0c9b909307bd6995511a2
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: a255a68eab6936de18d238b40f596076261049c1
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259714"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451626"
 ---
-Pokud je potřeba, aby vaše aplikace vytvořily jiní uživatelé, musíte do prostředku pro vytváření Azure Portal přidat přidružené e-mailové adresy.
+If your apps need to be authored by other people, you need to add the associated email addresses in the Azure portal's authoring resource.
 
-Pokud jste **vlastníkem nebo správcem předplatného Azure**, můžete do prostředku přidat přispěvatele. 
+If you are the **owner or administrator of your Azure subscription**, you can add a contributor to the resource. 
 
-Pokud nejste **vlastníkem ani správcem předplatného Azure**, musí mít `Microsoft.Authorization/roleAssignments/write` váš účet Azure oprávnění.
+If you are **not the owner or administrator of your Azure subscription**, your Azure account needs to have `Microsoft.Authorization/roleAssignments/write` permissions.
 
-Pokud máte potíže s přiřazením této role, přečtěte si: 
+If you have trouble with this role assignment, review: 
 
-* [Přiřazení rolí Azure](../../../role-based-access-control/role-assignments-portal.md)
- * [Řešení potíží s řízením přístupu Azure](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)
+* [Azure role assignments](../../../role-based-access-control/role-assignments-portal.md)
+ * [Azure access control troubleshooting](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)

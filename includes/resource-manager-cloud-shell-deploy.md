@@ -4,22 +4,22 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: aac2f3ea2b52ac0319f96279deed13c1145749bd
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175391"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451463"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Nasazení šablony ze služby Cloud Shell
 
-K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/overview.md). Pokud chcete nasadit šablonu externí, zadejte identifikátor URI šablony stejným způsobem jako u jakéhokoli externího nasazení. Pokud chcete nasadit šablonu místní, musí nejdřív načíst šablony do účtu úložiště pro službu Cloud Shell. Tato část popisuje, jak načíst šablonu do účtu cloudového prostředí a nasaďte ho jako místní soubor. Pokud jste ještě nepoužívali Cloud Shell, přečtěte si téma [Přehled služby Azure Cloud Shell](../articles/cloud-shell/overview.md) informace o jeho nastavení.
+K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/overview.md). To deploy an external template, provide the URI of the template exactly as you would for any external deployment. To deploy a local template, you must first load your template into the storage account for your Cloud Shell. This section describes how to load the template to your cloud shell account, and deploy it as a local file. If you haven't used Cloud Shell, see [Overview of Azure Cloud Shell](../articles/cloud-shell/overview.md) for information about setting it up.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Vyberte vaši skupinu prostředků služby Cloud Shell. Vzor názvů je `cloud-shell-storage-<region>`.
 
-   ![Výběr skupiny prostředků](./media/resource-manager-cloud-shell-deploy/select-cs-resource-group.png)
+   ![Výběr skupiny prostředků](./media/resource-manager-cloud-shell-deploy/select-cloud-shell-resource-group.png)
 
 1. Vyberte účet úložiště pro službu Cloud Shell.
 
@@ -33,29 +33,29 @@ K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/ove
 
    ![Přidání kontejneru](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. Zadejte svůj kontejner názvu a úroveň přístupu. Ukázková šablona v tomto článku obsahuje žádné citlivé informace, takže povolit anonymní přístup pro čtení. Vyberte **OK**.
+1. Give your container a name and an access level. The sample template in this article contains no sensitive information, so allow anonymous read access. Vyberte **OK**.
 
-   ![Zadejte hodnoty kontejneru](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
+   ![Provide container values](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
-1. Vyberte kontejner, který jste vytvořili.
+1. Select the container you created.
 
-   ![Vybrat nový kontejner](./media/resource-manager-cloud-shell-deploy/select-container.png)
+   ![Select new container](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
 1. Vyberte **Nahrát**.
 
-   ![Nahrát objekt blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
+   ![Upload blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 
 1. Vyhledejte a nahrajte vaši šablonu.
 
    ![Nahrání souboru](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
 
-1. Po odeslal, vyberte šablonu.
+1. After it has uploaded, select the template.
 
-   ![Vyberte novou šablonu](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
+   ![Select new template](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
 
-1. Zkopírujte adresu URL.
+1. Copy the URL.
 
-   ![Zkopírujte adresu URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
+   ![Copy URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Otevřete příkazový řádek.
 

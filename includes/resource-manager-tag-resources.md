@@ -8,66 +8,66 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ab55441650085f6ca89f05613fe74dd4ae3cba54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b1252c455c2dfad2963f914ee746bcb932e59aa9
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175393"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451497"
 ---
-1. Chcete-li zobrazit značky pro prostředek nebo skupinu prostředků existující značky v přehledu nástroje hledá. Pokud jste značky ještě nepoužili, seznam je prázdný.
+1. To view the tags for a resource or a resource group, looks for existing tags in the overview. Pokud jste značky ještě nepoužili, seznam je prázdný.
    
-     ![Zobrazit značky pro prostředek nebo skupinu prostředků](./media/resource-manager-tag-resources/view-tags.png)
-1. Chcete-li přidat značky, **kliknutím sem přidáte značky**.
+     ![View tags for resource or resource group](./media/resource-manager-tag-resources/view-tags.png)
+1. To add a tag, select **Click here to add tags**.
 
-1. Zadejte název a hodnotu. Vyberte **+** přidat značky.
+1. Provide a name and value. Select **+** to add the tag.
    
-     ![Přidat značku](./media/resource-manager-tag-resources/add-tag.png)
-1. Pokračujte v přidávání značek podle potřeby. Až budete hotovi, vyberte **Uložit**.
+     ![Add tag](./media/resource-manager-tag-resources/add-tag.png)
+1. Continue adding tags as needed. Až budete hotovi, vyberte **Uložit**.
    
-     ![Uložit značky](./media/resource-manager-tag-resources/save-tags.png)
-1. Značky jsou nyní zobrazeny v přehledu.
+     ![Save tags](./media/resource-manager-tag-resources/save-tags.png)
+1. The tags are now displayed in the overview.
    
-     ![Zobrazení značek](./media/resource-manager-tag-resources/view-new-tags.png)
-1. Chcete-li přidat nebo odstranit značku, vyberte **změnit**.
+     ![Show tags](./media/resource-manager-tag-resources/view-new-tags.png)
+1. To add or delete a tag, select **change**.
    
-1. Odstranit značku, vyberte ikonu koše. Potom vyberte **Uložit**.
+1. To delete a tag, select the trash icon. Potom vyberte **Uložit**.
 
-     ![Odstranit značku](./media/resource-manager-tag-resources/delete-tag.png)
+     ![Delete tag](./media/resource-manager-tag-resources/delete-tag.png)
 
 
-Chcete-li hromadně přiřadit značky k více prostředkům:
+To bulk assign tags to multiple resources:
 
-1. Seznam prostředků vyberte zaškrtávací políčko pro prostředky, které chcete přiřadit značky.
+1. From any list of resources, select the checkbox for the resources you want to assign the tag.
 
-     ![Vyberte více zdrojů.](./media/resource-manager-tag-resources/select-multiple-resources.png)
+     ![Select multiple resources](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. Vyberte **přiřadit značky**
+1. Select **Assign tags**
 
-     ![Přiřadit značky](./media/resource-manager-tag-resources/assign-tags.png)
+     ![Assign tags](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. Po každý název a hodnotu, vyberte **+** . Až budete hotovi, vyberte **přiřadit**.
+1. After each name and value, select **+** . When done, select **Assign**.
 
-     ![Vyberte přiřazení](./media/resource-manager-tag-resources/select-assign.png)
+     ![Select assign](./media/resource-manager-tag-resources/select-assign.png)
 
-Chcete-li zobrazit všechny prostředky pomocí značky:
+To view all resources with a tag:
 
-1. Vyberte **všechny služby** a **značky**.
+1. On the Azure portal menu, select **All services**. Select **General**, then **Tags**.
 
-     ![Najít podle klíčových slov](./media/resource-manager-tag-resources/find-tags.png)
+     ![Find by tag](./media/resource-manager-tag-resources/find-tags-general.png)
 
-1. Vyberte značku pro zobrazování prostředků.
+1. Select the tag for viewing resources.
 
-     ![Vybrat značku](./media/resource-manager-tag-resources/select-tag.png)
+     ![Select tag](./media/resource-manager-tag-resources/select-tag.png)
 
-1. Zobrazí se všechny prostředky s konkrétní značkou.
+1. All resources with that tag are displayed.
 
-     ![Zobrazit prostředky podle značky](./media/resource-manager-tag-resources/view-resources-by-tag.png)
+     ![View resources by tag](./media/resource-manager-tag-resources/view-resources-by-tag.png)
 
-1. Pro zajištění rychlého přístupu připnout na řídicí panel zobrazení.
+1. For quick access, pin the view to the dashboard.
 
      ![Připnout na řídicí panel](./media/resource-manager-tag-resources/pin-to-dashboard.png)
 
-1. Zobrazení je k dispozici z řídicího panelu.
+1. The view is available from the dashboard.
 
-     ![Řídicí panel](./media/resource-manager-tag-resources/dashboard.png)
+     ![Řídicí panel](./media/resource-manager-tag-resources/dashboard-with-view.png)
