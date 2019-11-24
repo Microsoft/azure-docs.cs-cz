@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: 1f47b01c4a9227d0e2ee45b17645b2ae97e4ba3d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f111b19eb07c218a9f3250ef3ffdb8a97cf07542
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821232"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420728"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Použití replik jen pro čtení k vyrovnávání zatížení úloh dotazů jen pro čtení
 
@@ -35,7 +35,7 @@ Funkce škálování čtení na více instancí je ve výchozím nastavení povo
 Pokud chcete zajistit, aby se aplikace připojovala k primární replice bez ohledu na nastavení `ApplicationIntent` v připojovacím řetězci SQL, je nutné explicitně zakázat horizontální navýšení kapacity čtení při vytváření databáze nebo při změně její konfigurace. Pokud například upgradujete databázi ze úrovně Standard nebo Pro obecné účely na úroveň Premium, Pro důležité obchodní informace nebo úrovně škálování a chcete zajistit, aby všechna vaše připojení pokračovala v přechodu na primární repliku, zakažte horizontální navýšení kapacity čtení. Podrobnosti o tom, jak ho zakázat, najdete v tématu [povolení a zakázání horizontálního navýšení kapacity pro čtení](#enable-and-disable-read-scale-out).
 
 > [!NOTE]
-> Dotazy na úložiště dat, rozšířené události, funkce SQL Profiler a audit nejsou podporovány v replikách jen pro čtení. 
+> Dotazy na úložiště dat, rozšířené události, funkce SQL Profiler a audit nejsou podporovány v replikách jen pro čtení.
 
 ## <a name="data-consistency"></a>Konzistence dat
 
@@ -50,13 +50,13 @@ Povolíte-li pro databázi škálování na více instancí, možnost `Applicati
 
 Například následující připojovací řetězec připojí klienta k replice jen pro čtení (nahrazující položky v lomených závorkách se správnými hodnotami pro vaše prostředí a vyřazením lomených závorek):
 
-```SQL
+```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
 Některý z následujících připojovacích řetězců připojí klienta k replice pro čtení i zápis (nahrazující položky v lomených závorkách se správnými hodnotami pro vaše prostředí a vyřazením lomených závorek):
 
-```SQL
+```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadWrite;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
@@ -66,7 +66,7 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>
 
 Spuštěním následujícího dotazu můžete ověřit, zda jste připojeni k replice, která je jen pro čtení. Vrátí READ_ONLY, když se připojí k replice jen pro čtení.
 
-```SQL
+```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
@@ -80,10 +80,9 @@ Když jste připojeni k replice jen pro čtení, můžete k metrikám výkonu p�
 > [!NOTE]
 > DMV `sys.resource_stats` v logické hlavní databázi vrátí využití CPU a data úložiště primární repliky.
 
-
 ## <a name="enable-and-disable-read-scale-out"></a>Povolit a zakázat horizontální navýšení kapacity čtení
 
-Ve výchozím nastavení je škálování čtení na více instancí povolené na úrovních Premium, Pro důležité obchodní informace a škálování služby. U úrovní služeb Basic, Standard a Pro obecné účely není možné povolit horizontální navýšení kapacity čtení. Pro databáze v rámci škálování s nakonfigurovanou instancí s 0 je automatické škálování na více instancí zakázané. 
+Ve výchozím nastavení je škálování čtení na více instancí povolené na úrovních Premium, Pro důležité obchodní informace a škálování služby. U úrovní služeb Basic, Standard a Pro obecné účely není možné povolit horizontální navýšení kapacity čtení. Pro databáze v rámci škálování s nakonfigurovanou instancí s 0 je automatické škálování na více instancí zakázané.
 
 Můžete zakázat a znovu povolit horizontální navýšení kapacity pro čtení v izolovaných databázích a databázích elastických fondů na úrovni Premium nebo Pro důležité obchodní informace pomocí následujících metod.
 
@@ -92,29 +91,33 @@ Můžete zakázat a znovu povolit horizontální navýšení kapacity pro čten�
 
 ### <a name="azure-portal"></a>portál Azure
 
-V okně **Konfigurovat** databázi můžete spravovat nastavení škálování pro čtení. 
+V okně **Konfigurovat** databázi můžete spravovat nastavení škálování pro čtení.
 
 ### <a name="powershell"></a>PowerShell
 
+> [!IMPORTANT]
+> Modul Azure Resource Manager PowerShellu (RM) je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
+
 Správa škálování čtení na více instancí v Azure PowerShell vyžaduje vydání Azure PowerShell verze z prosince 2016 nebo novější. Nejnovější verzi PowerShellu najdete v tématu [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-Můžete zakázat nebo znovu povolit horizontální navýšení kapacity čtení v Azure PowerShell vyvoláním rutiny [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) a předáním požadované hodnoty – `Enabled` nebo `Disabled`--pro parametr `-ReadScale`. 
+Můžete zakázat nebo znovu povolit horizontální navýšení kapacity čtení v Azure PowerShell vyvoláním rutiny [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) a předáním požadované hodnoty – `Enabled` nebo `Disabled`--pro parametr `-ReadScale`.
 
 Postup zakázání horizontálního navýšení kapacity pro čtení v existující databázi (výměna položek v lomených závorkách se správnými hodnotami pro vaše prostředí a vyřazení lomených závorek):
 
 ```powershell
-Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled
+Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled
 ```
+
 Postup zakázání horizontálního navýšení kapacity pro čtení v nové databázi (výměna položek v lomených závorkách se správnými hodnotami pro vaše prostředí a vyřazení ostrých závorek):
 
 ```powershell
-New-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled -Edition Premium
+New-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled -Edition Premium
 ```
 
 Opětovné povolení horizontálního navýšení kapacity pro čtení v existující databázi (výměna položek v lomených závorkách se správnými hodnotami pro vaše prostředí a vyřazení lomených závorek):
 
 ```powershell
-Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled
+Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
 ```
 
 ### <a name="rest-api"></a>REST API
@@ -124,10 +127,8 @@ Pokud chcete vytvořit databázi s vypnutým škálováním pro čtení nebo zm�
 ```rest
 Method: PUT
 URL: https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{GroupName}/providers/Microsoft.Sql/servers/{ServerName}/databases/{DatabaseName}?api-version= 2014-04-01-preview
-Body:
-{
-   "properties":
-   {
+Body: {
+   "properties": {
       "readScale":"Disabled"
    }
 }
@@ -137,7 +138,7 @@ Další informace najdete v tématu [databáze – vytvořit nebo aktualizovat](
 
 ## <a name="using-tempdb-on-read-only-replica"></a>Použití databáze TempDB v replice jen pro čtení
 
-Databáze TempDB není replikována do replik jen pro čtení. Každá replika má svou vlastní verzi databáze TempDB, která se vytvoří při vytvoření repliky. Zajišťuje, aby bylo možné databázi TempDB aktualizovatelné a upravitelné během provádění dotazu. Pokud vaše úloha jen pro čtení závisí na použití objektů TempDB, měli byste tyto objekty vytvořit jako součást skriptu dotazu. 
+Databáze TempDB není replikována do replik jen pro čtení. Každá replika má svou vlastní verzi databáze TempDB, která se vytvoří při vytvoření repliky. Zajišťuje, aby bylo možné databázi TempDB aktualizovatelné a upravitelné během provádění dotazu. Pokud vaše úloha jen pro čtení závisí na použití objektů TempDB, měli byste tyto objekty vytvořit jako součást skriptu dotazu.
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Použití škálování pro čtení u geograficky replikovaných databází
 
