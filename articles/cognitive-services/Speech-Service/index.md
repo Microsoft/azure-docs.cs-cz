@@ -4,12 +4,12 @@ ms.date: 10-19-2019
 ms.topic: hub-page
 title: Dokumentace ke službě Speech
 description: Začínáme se službou Speech
-ms.openlocfilehash: 0a07125764908b661216c20279ab4bdf80ae91ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e9fda2788b28ba882b5c5eb232bfd2ffbc85f049
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580337"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406190"
 ---
 <div id="main" class="v2">    
     <div class="container">
@@ -271,7 +271,7 @@ ms.locfileid: "73580337"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Rozpoznávání řeči, záměru a entit</h3>
-                                                    <p>Použijte sadu Speech SDK a službu LUIS k rozpoznávání řeči, záměru a entit.</p>
+                                                    <p>Použijte sadu Speech SDK a službu Language Understanding (LUIS) k rozpoznávání řeči, záměru a entit.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -289,7 +289,7 @@ ms.locfileid: "73580337"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Dokumentace služby LUIS</h3>
+                                                    <h3>Dokumentace ke službě Language Understanding (LUIS)</h3>
                                                     <p>Přečtěte si další informace o službě LUIS (Language Understanding Service) a zpracování přirozeného jazyka (NLP).</p>
                                                 </div>
                                             </div>
@@ -308,7 +308,7 @@ ms.locfileid: "73580337"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Portál LUIS</h3>
+                                                    <h3>Portál služby Language Understanding (LUIS)</h3>
                                                     <p>Začleňte do aplikací, robotů a zařízení IoT podporu přirozeného jazyka.</p>
                                                 </div>
                                             </div>

@@ -173,11 +173,14 @@
           href: troubleshoot-recovery-disks-linux.md
         - name: portál Azure
           href: troubleshoot-recovery-disks-portal-linux.md
-- name: Chyby spouštění
-  href: boot-error-troubleshoot.md
+- name: Chyby spouštění – Linux
+  href: boot-error-troubleshoot-linux.md
   items:
     - name: Grub Rescue
       href: troubleshoot-vm-boot-error.md
+- name: Chyby spouštění – Windows
+  href: boot-error-troubleshoot.md
+  items:
     - name: Diagnostika spouštění
       href: boot-diagnostics.md
     - name: Chyby nástroje BitLocker

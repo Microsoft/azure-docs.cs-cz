@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Language Understanding (LUIS)
-summary: Zjistěte, jak využít službu Language Understanding k tomu, aby vaší aplikaci umožnila pochopit, co lidé vlastními slovy chtějí.
+summary: Zjistěte, jak využít službu Language Understanding k tomu, aby pomohla vaší aplikaci pochopit, co lidé vlastními slovy chtějí.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/19/2019
+  ms.date: 11/22/2019
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Dokumentace ke službě Language Understanding (LUIS)
   titleSuffix: Azure Cognitive Services
   description: Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí. Služba LUIS využívá strojové učení a umožňuje vývojářům sestavovat aplikace, které dokážou přijmout uživatelský vstup v přirozeném jazyce a extrahovat jeho význam.
-  ms.openlocfilehash: 70249b540e53ab8182a25f81d7401697b2b888c1
-  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+  ms.openlocfilehash: 14386a08b92814b16fb007e4dd01cb4bb5238c0a
+  ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71155021"
+  ms.lasthandoff: 11/22/2019
+  ms.locfileid: "74406156"
 landingContent:
 - title: Informace o službě Language Understanding (LUIS)
   linkLists:
@@ -25,16 +25,18 @@ landingContent:
     links:
     - text: Co je Language Understanding?
       url: what-is-luis.md
-    - text: Co je nového
-      url: whats-new.md
     - text: Portál LUIS
       url: https://www.luis.ai
   - linkListType: concept
     links:
     - text: Plánování aplikace
       url: luis-how-plan-your-app.md
-    - text: Cyklus vytváření vaší aplikace
+    - text: Iterativní návrhy aplikací
       url: luis-concept-app-iteration.md
+  - linkListType: whats-new
+    links:
+    - text: Co je nového?
+      url: whats-new.md
   - linkListType: video
     links:
     - text: 'Propagační kampaň AI: LUIS'
@@ -47,7 +49,7 @@ landingContent:
       url: luis-concept-intent.md
     - text: Entity
       url: luis-concept-entity-types.md
-    - text: Dobrý příklad výroku
+    - text: Projevy
       url: luis-concept-utterance.md
     - text: Funkce seznamu frází
       url: luis-concept-feature.md
@@ -89,15 +91,15 @@ landingContent:
       url: sdk-python-quickstart-authoring-app.md#train-the-app
   - linkListType: how-to-guide
     links:
-    - text: Správa verzí vaší aplikace
+    - text: Správa verzí aplikace
       url: luis-how-to-manage-versions.md
-    - text: Interaktivní testování
+    - text: Provádění interaktivního testování
       url: luis-interactive-test.md
-    - text: Dávkové testování
+    - text: Provádění dávkového testování
       url: luis-how-to-batch-test.md
-    - text: Trénování vaší aplikace
+    - text: Trénování aplikace
       url: luis-how-to-train.md
-    - text: Publikování pro využití koncového bodu předpovědi
+    - text: Koncový bod předpovědi publikace
       url: luis-how-to-publish-app.md
 - title: Získání předpovědi z koncového bodu
   linkLists:
@@ -123,7 +125,7 @@ landingContent:
     links:
     - text: Materiály pro vývojáře
       url: developer-reference-resource.md
-    - text: Omezení aplikací
+    - text: Omezení aplikace
       url: luis-boundaries.md
     - text: Předem připravené entity
       url: luis-reference-prebuilt-entities.md

@@ -1,110 +1,105 @@
 ---
-title: Azure Container Registry ověřování pomocí instančního objektu
-description: Poskytněte přístup k obrázkům v soukromém registru kontejneru pomocí Azure Active Directory instančního objektu.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Authenticate with service principal
+description: Provide access to images in your private container registry by using an Azure Active Directory service principal.
 ms.topic: article
 ms.date: 10/04/2019
-ms.author: danlep
-ms.openlocfilehash: 853b9bdb771fb08185670e13ec85a45028f9a145
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150140"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455401"
 ---
-# <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry ověřování pomocí instančních objektů
+# <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry authentication with service principals
 
-K poskytnutí `docker push` imagí kontejneru a `pull` přístupu k registru kontejneru můžete použít instanční objekt Azure Active Directory (Azure AD). Pomocí instančního objektu můžete poskytnout přístup k nebezobslužným službám a aplikacím.
+You can use an Azure Active Directory (Azure AD) service principal to provide container image `docker push` and `pull` access to your container registry. By using a service principal, you can provide access to "headless" services and applications.
 
 ## <a name="what-is-a-service-principal"></a>Co je instanční objekt?
 
-*Instanční objekty služby* Azure AD poskytují přístup k prostředkům Azure v rámci vašeho předplatného. Instanční objekt si můžete představit jako identitu uživatele pro službu, kde "služba" je libovolná aplikace, služba nebo platforma, která potřebuje přístup k prostředkům. Instanční objekt s přístupovými právy můžete nakonfigurovat jenom na ty prostředky, které zadáte. Pak nakonfigurujte svoji aplikaci nebo službu tak, aby pro přístup k těmto prostředkům používala přihlašovací údaje instančního objektu.
+Azure AD *service principals* provide access to Azure resources within your subscription. You can think of a service principal as a user identity for a service, where "service" is any application, service, or platform that needs to access the resources. You can configure a service principal with access rights scoped only to those resources you specify. Then, configure your application or service to use the service principal's credentials to access those resources.
 
-V souvislosti s Azure Container Registry můžete vytvořit instanční objekt služby Azure AD s oprávněním Pull, push a pull nebo jinými oprávněními k privátnímu registru v Azure. Úplný seznam najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md).
+In the context of Azure Container Registry, you can create an Azure AD service principal with pull, push and pull, or other permissions to your private registry in Azure. For a complete list, see [Azure Container Registry roles and permissions](container-registry-roles.md).
 
-## <a name="why-use-a-service-principal"></a>Proč používat instanční objekt?
+## <a name="why-use-a-service-principal"></a>Why use a service principal?
 
-Pomocí instančního objektu služby Azure AD můžete poskytnout vymezený přístup k privátnímu registru kontejnerů. Pro každou aplikaci nebo služby vytvořte různé instanční objekty, z nichž každá má přizpůsobená přístupová práva k vašemu registru. A vzhledem k tomu, že se můžete vyhnout přihlašovacím údajům pro sdílení mezi službami a aplikacemi, můžete své přihlašovací údaje otočit nebo odvolat přístup jenom pro instanční objekt (a tedy pro aplikaci), který zvolíte.
+By using an Azure AD service principal, you can provide scoped access to your private container registry. Create different service principals for each of your applications or services, each with tailored access rights to your registry. And, because you can avoid sharing credentials between services and applications, you can rotate credentials or revoke access for only the service principal (and thus the application) you choose.
 
-Například nakonfigurujte webovou aplikaci tak, aby používala instanční objekt, který poskytuje image `pull` jenom přístup, zatímco systém sestavení používá instanční objekt, který mu poskytuje `push` a `pull` přístup. Pokud vývoj vaší aplikace se změní na ruce, můžete otočit své přihlašovací údaje instančního objektu, aniž by to ovlivnilo systém sestavení.
+For example, configure your web application to use a service principal that provides it with image `pull` access only, while your build system uses a service principal that provides it with both `push` and `pull` access. If development of your application changes hands, you can rotate its service principal credentials without affecting the build system.
 
-## <a name="when-to-use-a-service-principal"></a>Kdy použít instanční objekt
+## <a name="when-to-use-a-service-principal"></a>When to use a service principal
 
-K poskytnutí přístupu k registru v případě neintegrovaných **scénářů**byste měli použít instanční objekt. To znamená, že všechny aplikace, služby nebo skripty, které musí nabízet nebo vyčítat image kontejnerů automatizovaným nebo jinak nedobrým způsobem. Příklad:
+You should use a service principal to provide registry access in **headless scenarios**. That is, any application, service, or script that must push or pull container images in an automated or otherwise unattended manner. Například:
 
-  * *Pull*: nasaďte kontejnery z registru do systémů orchestrace, včetně KUBERNETES, DC/OS a Docker Swarm. Z registrů kontejnerů můžete také získat související služby Azure, jako je [Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md), [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/)a další.
+  * *Pull*: Deploy containers from a registry to orchestration systems including Kubernetes, DC/OS, and Docker Swarm. You can also pull from container registries to related Azure services such as [Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md), [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/), and others.
 
-  * *Push*: Sestavte image kontejnerů a nahrajte je do registru pomocí řešení pro kontinuální integraci a nasazení, jako je Azure Pipelines nebo Jenkinse.
+  * *Push*: Build container images and push them to a registry using continuous integration and deployment solutions like Azure Pipelines or Jenkins.
 
-Pro individuální přístup k registru, například když ručně načtete image kontejneru do pracovní stanice pro vývoj, doporučujeme použít místo přístupu k registru vlastní [identitu Azure AD](container-registry-authentication.md#individual-login-with-azure-ad) (například pomocí [AZ ACR Login][az-acr-login]).
+For individual access to a registry, such as when you manually pull a container image to your development workstation, we recommend using your own [Azure AD identity](container-registry-authentication.md#individual-login-with-azure-ad) instead for registry access (for example, with [az acr login][az-acr-login]).
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
 ### <a name="sample-scripts"></a>Ukázkové skripty
 
-Předchozí ukázkové skripty pro Azure CLI najdete na GitHubu a také ve verzích pro Azure PowerShell:
+You can find the preceding sample scripts for Azure CLI on GitHub, as well as versions for Azure PowerShell:
 
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
-## <a name="authenticate-with-the-service-principal"></a>Ověřování pomocí instančního objektu
+## <a name="authenticate-with-the-service-principal"></a>Authenticate with the service principal
 
-Jakmile budete mít instanční objekt, kterému jste udělili přístup k registru kontejneru, můžete nakonfigurovat jeho přihlašovací údaje pro přístup k nebezobslužným službám a aplikacím nebo je zadat pomocí příkazu `docker login`. Použijte následující hodnoty:
+Once you have a service principal that you've granted access to your container registry, you can configure its credentials for access to "headless" services and applications, or enter them using the `docker login` command. Použijte následující hodnoty:
 
-* **Uživatelské jméno** – ID aplikace instančního objektu (označuje se také jako *ID klienta*)
-* **Heslo – Hlavní** heslo služby (označuje se taky jako *tajný klíč klienta*)
+* **User name** - service principal application ID (also called *client ID*)
+* **Password** - service principal password (also called *client secret*)
 
-Každá hodnota je identifikátor GUID formuláře `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
+Each value is a GUID of the form `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
 
 > [!TIP]
-> Heslo instančního objektu můžete znovu vygenerovat spuštěním příkazu [AZ AD SP Reset-Credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) .
+> You can regenerate the password of a service principal by running the [az ad sp reset-credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) command.
 >
 
-### <a name="use-credentials-with-azure-services"></a>Použití přihlašovacích údajů se službami Azure
+### <a name="use-credentials-with-azure-services"></a>Use credentials with Azure services
 
-Přihlašovací údaje instančního objektu můžete použít ze všech služeb Azure, které se ověřují pomocí služby Azure Container Registry.  Použijte přihlašovací údaje instančního objektu místo přihlašovacích údajů správce registru pro celou řadu scénářů.
+You can use service principal credentials from any Azure service that authenticates with an Azure container registry.  Use service principal credentials in place of the registry's admin credentials for a variety of scenarios.
 
-Použijte například přihlašovací údaje k načtení obrázku z služby Azure Container Registry do [Azure Container Instances](container-registry-auth-aci.md).
+For example, use the credentials to pull an image from an Azure container registry to [Azure Container Instances](container-registry-auth-aci.md).
 
-### <a name="use-with-docker-login"></a>Použít s přihlášením Docker
+### <a name="use-with-docker-login"></a>Use with docker login
 
-`docker login` můžete spustit pomocí instančního objektu. V následujícím příkladu je ID aplikace instančního objektu předáno do proměnné prostředí `$SP_APP_ID`a heslo v proměnné `$SP_PASSWD`. Osvědčené postupy pro správu přihlašovacích údajů Docker najdete v tématu Reference k příkazům [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) .
+You can run `docker login` using a service principal. In the following example, the service principal application ID is passed in the environment variable `$SP_APP_ID`, and the password in the variable `$SP_PASSWD`. For best practices to manage Docker credentials, see the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command reference.
 
 ```bash
 # Log in to Docker with service principal credentials
 docker login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 ```
 
-Po přihlášení Docker uloží přihlašovací údaje do mezipaměti.
+Once logged in, Docker caches the credentials.
 
-### <a name="use-with-certificate"></a>Použít s certifikátem
+### <a name="use-with-certificate"></a>Use with certificate
 
-Pokud jste přidali certifikát k instančnímu objektu, můžete se přihlásit k Azure CLI pomocí ověřování založeného na certifikátech a pak pomocí příkazu [AZ ACR Login][az-acr-login] získat přístup k registru. Použití certifikátu jako tajného klíče místo hesla poskytuje vyšší zabezpečení při použití rozhraní příkazového řádku. 
+If you've added a certificate to your service principal, you can sign into the Azure CLI with certificate-based authentication, and then use the [az acr login][az-acr-login] command to access a registry. Using a certificate as a secret instead of a password provides additional security when you use the CLI. 
 
-Certifikát podepsaný svým držitelem se dá vytvořit při [vytváření instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli). Nebo přidejte jeden nebo více certifikátů k existujícímu instančnímu objektu. Pokud například použijete jeden z skriptů v tomto článku k vytvoření nebo aktualizaci instančního objektu s právy pro vyžádání nebo vložení imagí z registru, přidejte certifikát pomocí příkazu [AZ AD SP Credential Reset][az-ad-sp-credential-reset] .
+A self-signed certificate can be created when you [create a service principal](/cli/azure/create-an-azure-service-principal-azure-cli). Or, add one or more certificates to an existing service principal. For example, if you use one of the scripts in this article to create or update a service principal with rights to pull or push images from a registry, add a certificate using the [az ad sp credential reset][az-ad-sp-credential-reset] command.
 
-Pokud chcete k [přihlášení do Azure CLI](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal)použít instanční objekt s certifikátem, musí být certifikát ve formátu PEM a musí obsahovat privátní klíč. Pokud váš certifikát nemá požadovaný formát, převeďte ho pomocí nástroje, jako je `openssl`. Pokud spustíte příkaz [AZ Login][az-login] pro přihlášení k rozhraní příkazového řádku pomocí instančního objektu, zadejte také ID aplikace instančního objektu a ID tenanta služby Active Directory. Následující příklad zobrazuje tyto hodnoty jako proměnné prostředí:
+To use the service principal with certificate to [sign into the Azure CLI](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal), the certificate must be in PEM format and include the private key. If your certificate isn't in the required format, use a tool such as `openssl` to convert it. When you run [az login][az-login] to sign into the CLI using the service principal, also provide the service principal's application ID and the Active Directory tenant ID. The following example shows these values as environment variables:
 
 ```azurecli
 az login --service-principal --username $SP_APP_ID --tenant $SP_TENANT_ID  --password /path/to/cert/pem/file
 ```
 
-Pak spusťte příkaz [AZ ACR Login][az-acr-login] k ověření pomocí registru:
+Then, run [az acr login][az-acr-login] to authenticate with the registry:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-Rozhraní příkazového řádku používá token vytvořený při spuštění `az login` k ověření relace s registrem.
+The CLI uses the token created when you ran `az login` to authenticate your session with the registry.
 
 ## <a name="next-steps"></a>Další kroky
 
-* V tématu [Přehled ověřování](container-registry-authentication.md) pro jiné scénáře ověřování pomocí služby Azure Container Registry.
+* See the [authentication overview](container-registry-authentication.md) for other scenarios to authenticate with an Azure container registry.
 
-* Příklad použití trezoru klíčů Azure k ukládání a načítání přihlašovacích údajů instančního objektu pro registr kontejnerů najdete v kurzu [sestavení a nasazení image kontejneru pomocí úloh ACR](container-registry-tutorial-quick-task.md).
+* For an example of using an Azure key vault to store and retrieve service principal credentials for a container registry, see the tutorial to [build and deploy a container image using ACR Tasks](container-registry-tutorial-quick-task.md).
 
 <!-- LINKS - External -->
 [acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry
