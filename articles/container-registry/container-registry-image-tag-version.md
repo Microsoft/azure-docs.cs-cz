@@ -1,63 +1,61 @@
 ---
-title: Označení a verze obrázků v Azure Container Registry
-description: Osvědčené postupy pro označování a nastavování imagí kontejnerů Docker při vkládání imagí do a načítání imagí z služby Azure Container Registry
-services: container-registry
+title: Image tag best practices
+description: Best practices for tagging and versioning Docker container images when pushing images to and pulling images from an Azure container registry
 author: stevelasker
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: 41013fb5831d09d7a4334e94d2b8b39e0cafe4d2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931567"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454997"
 ---
-# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Doporučení pro označování a naznačení verzí imagí kontejneru
+# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Recommendations for tagging and versioning container images
 
-Při doručování nasazování imagí kontejneru do registru kontejneru a jejich nasazení budete potřebovat strategii pro označování imagí a správu verzí. Tento článek popisuje dva přístupy a jejich umístění do životního cyklu kontejneru:
+When pushing deploying container images to a container registry and then deploying them, you need a strategy for image tagging and versioning. This article discusses two approaches and where each fits during the container lifecycle:
 
-* **Stabilní značky značek** , které můžete opakovaně používat, například k označení hlavní nebo dílčí verze, jako je například *mycontainerimage: 1.0*.
-* **Jedinečné značky** – pro každý obrázek, který zadáváte do registru, jako je například *mycontainerimage: abc123*, se jedná o jinou značku.
+* **Stable tags** - Tags that you reuse, for example, to indicate a major or minor version such as *mycontainerimage:1.0*.
+* **Unique tags** - A different tag for each image you push to a registry, such as *mycontainerimage:abc123*.
 
-## <a name="stable-tags"></a>Stabilní značky
+## <a name="stable-tags"></a>Stable tags
 
-**Doporučení**: použití stabilních značek k údržbě **základních imagí** pro sestavení kontejnerů. Vyhněte se nasazení s stabilními značkami, protože tyto značky nadále získávají aktualizace a můžou v produkčních prostředích zavádět nekonzistence.
+**Recommendation**: Use stable tags to maintain **base images** for your container builds. Avoid deployments with stable tags, because those tags continue to receive updates and can introduce inconsistencies in production environments.
 
-*Stabilní značky* znamenají, že vývojář nebo systém sestavení může pokračovat v vyžádání konkrétní značky, která bude nadále získávat aktualizace. Stabilita znamená, že obsah je zmrazený. Místo toho předpokládá, že by image měla být stabilní pro záměr této verze. Aby zůstala stálá, mohla by se provozovat na použití oprav zabezpečení nebo aktualizací rozhraní.
+*Stable tags* mean a developer, or a build system, can continue to pull a specific tag, which continues to get updates. Stable doesn’t mean the contents are frozen. Rather, stable implies the image should be stable for the intent of that version. To stay “stable”, it might be serviced to apply security patches or framework updates.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
-Tým rozhraní dodává verzi 1,0. Ví, že budou dodávat aktualizace, včetně menších aktualizací. Pro podporu stabilních značek pro danou hlavní a dílčí verzi mají dvě sady stabilních značek.
+A framework team ships version 1.0. They know they’ll ship updates, including minor updates. To support stable tags for a given major and minor version, they have two sets of stable tags.
 
-* `:1` – stabilní značka pro hlavní verzi. `1` představuje "nejnovější" nebo "nejnovější" 1. * verzi.
-* `:1.0`– stabilní značka pro verzi 1,0, která vývojářům umožňuje vytvořit vázání na aktualizace 1,0 a nebude se předávat do 1,1 po vydání.
+* `:1` – a stable tag for the major version. `1` represents the “newest” or “latest” 1.* version.
+* `:1.0`- a stable tag for version 1.0, allowing a developer to bind to updates of 1.0, and not be rolled forward to 1.1 when it is released.
 
-Tým používá také značku `:latest`, která odkazuje na nejnovější stabilní značku bez ohledu na to, co je aktuální hlavní verze.
+The team also uses the `:latest` tag, which points to the latest stable tag, no matter what the current major version is.
 
-Pokud jsou k dispozici základní aktualizace obrázků nebo jakýkoli typ servisního vydání rozhraní, bitové kopie s stabilními značkami se aktualizují na nejnovější výtah, který představuje nejaktuálnější verzi této verze.
+When base image updates are available, or any type of servicing release of the framework, images with the stable tags are updated to the newest digest that represents the most current stable release of that version.
 
-V tomto případě se průběžně obsluhují hlavní i vedlejší značky. V případě základní Image to umožňuje vlastníkovi obrázku poskytovat obsluhované bitové kopie.
+In this case, both the major and minor tags are continually being serviced. From a base image scenario, this allows the image owner to provide serviced images.
 
-## <a name="unique-tags"></a>Jedinečné značky
+## <a name="unique-tags"></a>Unique tags
 
-**Doporučení**: Používejte jedinečné značky pro **nasazení**, zejména v prostředí, které by mohlo škálovat na více uzlech. Pravděpodobně budete chtít záměrné nasazení konzistentní verze komponent. Pokud se Váš kontejner restartuje nebo Orchestrator navýší více instancí, nebudou Vaši hostitelé omylem vyčítat novější verzi, která není konzistentní s ostatními uzly.
+**Recommendation**: Use unique tags for **deployments**, especially in an environment that could scale on multiple nodes. You likely want deliberate deployments of a consistent version of components. If your container restarts or an orchestrator scales out more instances, your hosts won’t accidentally pull a newer version, inconsistent with the other nodes.
 
-Jedinečné označení jednoduše znamená, že každý obrázek, který byl vložen do registru, má jedinečnou značku. Značky se znovu nepoužívají. Existuje několik vzorů, které můžete použít ke generování jedinečných značek, včetně:
+Unique tagging simply means that every image pushed to a registry has a unique tag. Tags are not reused. There are several patterns you can follow to generate unique tags, including:
 
-* **Časové razítko** – tento přístup je poměrně společný, protože můžete jasně určit, kdy se obrázek sestavil. Ale jak ho korelovat zpátky do vašeho sestavovacího systému? Je nutné najít sestavení, které bylo dokončeno ve stejnou dobu? V jakém časovém pásmu jste? Jsou všechny vaše systémy sestavení kalibrovány do standardu UTC?
-* **Git Commit** – tento přístup funguje, dokud nezačnete podporovat základní aktualizace imagí. Pokud dojde k aktualizaci základní image, systém sestavení se zahájí se stejným potvrzením Git jako předchozí sestavení. Základní image ale obsahuje nový obsah. Obecně platí, že Git potvrzení poskytuje *částečně*stabilní značku.
-* **Výtah manifestu** – každá image kontejneru vložená do registru kontejneru je přidružená k manifestu, který je identifikovaný jedinečnou hodnotou hash SHA-256 nebo hodnotou Digest. I když je jedinečný, je výtah dlouhý, obtížně čitelný a nekoreluje s vaším prostředím sestavení.
-* **ID buildu** – Tato možnost může být nejlepší, protože je pravděpodobně přírůstková a umožňuje provést korelaci zpět k určitému sestavení a vyhledat všechny artefakty a protokoly. Podobně jako u výtahu manifestu ale může být obtížné číst člověka.
+* **Date-time stamp** - This approach is fairly common, since you can clearly tell when the image was built. But, how to correlate it back to your build system? Do you have to find the build that was completed at the same time? What time zone are you in? Are all your build systems calibrated to UTC?
+* **Git commit**  – This approach works until you start supporting base image updates. If a base image update happens, your build system  kicks off with the same Git commit as the previous build. However, the base image has new content. In general, a Git commit provides a *semi*-stable tag.
+* **Manifest digest** - Each container image pushed to a container registry is associated with a manifest, identified by a unique SHA-256 hash, or digest. While unique, the digest is long, difficult to read, and uncorrelated with your build environment.
+* **Build ID** - This option may be best since it's likely incremental, and it allows you to correlate back to the specific build to find all the artifacts and logs. However, like a manifest digest, it might be difficult for a human to read.
 
-  Pokud má vaše organizace několik systémů sestavení, Předpona značky s názvem systému sestavení je variací této možnosti: `<build-system>-<build-id>`. Můžete například odlišit buildy ze systému sestavení Jenkinse týmu rozhraní API a webového týmu Azure Pipelines systém sestavení.
+  If your organization has several build systems, prefixing the tag with the build system name is a variation on this option: `<build-system>-<build-id>`. For example, you could differentiate builds from the API team’s Jenkins build system and the web team's Azure Pipelines build system.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobnější diskuzi o konceptech v tomto článku najdete v blogovém příspěvku [označení Docker: osvědčené postupy pro označování a správu verzí imagí Docker](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
+For a more detailed discussion of the concepts in this article, see the blog post [Docker Tagging: Best practices for tagging and versioning docker images](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
 
-V zájmu maximalizace výkonu a nákladově efektivního využívání služby Azure Container Registry si přečtěte téma [osvědčené postupy pro Azure Container Registry](container-registry-best-practices.md).
+To help maximize the performance and cost-effective use of your Azure container registry, see [Best practices for Azure Container Registry](container-registry-best-practices.md).
 
 <!-- IMAGES -->
 

@@ -1,22 +1,17 @@
 ---
-title: Kurz – nasazení aplikace z geograficky replikované Azure Container Registry
-description: Nasazení webové aplikace se systémem Linux do dvou různých oblastí Azure pomocí Image kontejneru z geograficky replikovaného registru kontejnerů Azure. Druhá část třídílné série.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Tutorial - Deploy from geo-replicated registry
+description: Deploy a Linux-based web app to two different Azure regions using a container image from a geo-replicated Azure container registry. Druhá část třídílné série.
 ms.topic: tutorial
 ms.date: 08/20/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 0aebc31e1b8e6849d4cc0aeccc0e0a79edf0e65d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931417"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456106"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Deploy a web app from a geo-replicated Azure container registry
 
 Toto je druhá část z třídílné série kurzů. V [první části](container-registry-tutorial-prepare-registry.md) jste vytvořili privátní, geograficky replikovaný registr kontejneru a ze zdroje jste sestavili image kontejneru, kterou jste vložili do registru. V tomto článku nasadíte kontejner do instancí webových aplikací ve dvou různých oblastech Azure a využijete tak aspekt blízkosti sítě u geograficky replikovaného registru. Každá instance pak načte image kontejneru z nejbližšího registru.
 
@@ -59,7 +54,7 @@ V části **Web App for Containers**, která se zobrazí po výběru možnosti N
 | **Operační systém** | Linux |
 
 > [!NOTE]
-> Při vytváření nového plánu služby App Service pro nasazení kontejnerové aplikace je automaticky vybrán výchozí plán pro hostování aplikace. Výchozí plán závisí na nastavení operačního systému.
+> When you create a new app service plan to deploy your containerized app, a default plan is automatically selected to host your application. The default plan depends on the operating system setting.
 
 Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *Západní USA*.
 

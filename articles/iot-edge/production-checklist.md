@@ -1,6 +1,6 @@
 ---
-title: Příprava zařízení a nasazení pro produkční Azure IoT Edge | Microsoft Docs
-description: Naučte se, jak převést Azure IoT Edge řešení z vývoje do produkčního prostředí, včetně nastavení zařízení s příslušnými certifikáty a vytvoření plánu nasazení pro budoucí aktualizace kódu.
+title: Prepare devices and deployments for production - Azure IoT Edge | Microsoft Docs
+description: Learn how to take your Azure IoT Edge solution from development to production, including setting up your devices with the appropriate certificates and making a deployment plan for future code updates.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,210 +8,209 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 610e0088fe97bdda1dce7f7391530c5128428b29
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 1d8ba8452f5f2d4ab05083e1a97fa0b9ba75017f
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73096960"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457308"
 ---
-# <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
+# <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Prepare to deploy your IoT Edge solution in production
 
-Až budete připraveni převést IoT Edge řešení z vývoje do produkčního prostředí, ujistěte se, že je nakonfigurován pro průběžný výkon.
+When you're ready to take your IoT Edge solution from development into production, make sure that it's configured for ongoing performance.
 
-Informace uvedené v tomto článku nejsou stejné. Pro pomoc s určením priorit se každá část spustí se seznamy, které rozdělují práci do dvou částí: **důležité** pro dokončení před tím, než budete pokračovat v produkčním prostředí, nebo je **vhodné** znát.
+The information provided in this article isn't all equal. To help you prioritize, each section starts with lists that divide the work into two sections: **important** to complete before going to production, or **helpful** for you to know.
 
-## <a name="device-configuration"></a>Konfigurace zařízení
+## <a name="device-configuration"></a>Device configuration
 
-IoT Edge zařízení mohou být od maliny PI až po přenosný počítač na virtuální počítač běžící na serveru. Je možné, že budete mít přístup k zařízení buď fyzicky, nebo prostřednictvím virtuálního připojení, nebo může být izolovaný po delší dobu. V obou případech se chcete ujistit, že je správně nakonfigurovaný tak, aby fungoval. 
+IoT Edge devices can be anything from a Raspberry Pi to a laptop to a virtual machine running on a server. You may have access to the device either physically or through a virtual connection, or it may be isolated for extended periods of time. Either way, you want to make sure that it's configured to work appropriately. 
 
 * **Důležité upozornění**
-    * Instalace provozních certifikátů
-    * Máte plán správy zařízení
-    * Použití Moby jako modulu kontejneru
+    * Install production certificates
+    * Have a device management plan
+    * Use Moby as the container engine
 
-* **Případech**
-    * Zvolit nadřazený protokol
+* **Helpful**
+    * Choose upstream protocol
 
-### <a name="install-production-certificates"></a>Instalace provozních certifikátů
+### <a name="install-production-certificates"></a>Install production certificates
 
-Každé IoT Edge zařízení v produkčním prostředí potřebuje certifikát certifikační autority zařízení (CA), který je na něm nainstalovaný. Tento certifikát certifikační autority se pak deklaruje jako modul runtime IoT Edge v souboru config. yaml. Aby bylo možné vývoj a testování usnadnit, modul runtime IoT Edge vytvoří dočasné certifikáty, pokud nejsou v souboru config. yaml deklarovány žádné certifikáty. Platnost těchto dočasných certifikátů však vyprší po třech měsících a nejsou zabezpečené pro produkční scénáře. 
+Every IoT Edge device in production needs a device certificate authority (CA) certificate installed on it. That CA certificate is then declared to the IoT Edge runtime in the config.yaml file. To make development and testing easier, the IoT Edge runtime creates temporary certificates if no certificates are declared in the config.yaml file. However, these temporary certificates expire after three months and aren't secure for production scenarios. 
 
-Informace o [tom, jak Azure IoT Edge používá certifikáty](iot-edge-certs.md), najdete v tématu How of a Certificate of Certificate CA.
+To understand the role of the device CA certificate, see [How Azure IoT Edge uses certificates](iot-edge-certs.md).
 
-Další informace o tom, jak nainstalovat certifikáty na zařízení IoT Edge a odkázat je ze souboru config. yaml, najdete v tématu [Konfigurace zařízení IoT Edge pro fungování jako transparentní brány](how-to-create-transparent-gateway.md). Postup konfigurace certifikátů je stejný, bez ohledu na to, jestli se zařízení bude používat jako brána. Tento článek poskytuje skripty pro generování ukázkových certifikátů pouze pro účely testování. Tyto ukázkové certifikáty nepoužívejte v produkčním prostředí. 
+For more information about how to install certificates on an IoT Edge device and reference them from the config.yaml file, see [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). The steps for configuring the certificates are the same whether the device is going to be used as a gateway or not. That article provides scripts to generate sample certificates for testing only. Don't use those sample certificates in production. 
 
-### <a name="have-a-device-management-plan"></a>Máte plán správy zařízení
+### <a name="have-a-device-management-plan"></a>Have a device management plan
 
-Než umístíte jakékoli zařízení do provozu, měli byste se seznámit s tím, jak budete spravovat budoucí aktualizace. V případě zařízení IoT Edge může seznam součástí, které se mají aktualizovat, zahrnovat:
+Before you put any device in production you should know how you're going to manage future updates. For an IoT Edge device, the list of components to update may include:
 
-* Firmware zařízení
-* Knihovny operačního systému
-* Modul pro kontejnery, jako je Moby
-* Démon IoT Edge
-* Certifikáty certifikační autority
+* Device firmware
+* Operating system libraries
+* Container engine, like Moby
+* IoT Edge daemon
+* CA certificates
 
-Další informace najdete v tématu [aktualizace modulu runtime IoT Edge](how-to-update-iot-edge.md). Aktuální metody aktualizace procesu IoT Edge démona vyžadují fyzický přístup nebo přístup SSH k zařízení IoT Edge. Pokud máte mnoho zařízení, která se mají aktualizovat, zvažte přidání kroků aktualizace do skriptu nebo použití automatizačního nástroje, jako je Ansible.
+For more information, see [Update the IoT Edge runtime](how-to-update-iot-edge.md). The current methods for updating the IoT Edge daemon require physical or SSH access to the IoT Edge device. If you have many devices to update, consider adding the update steps to a script or use an automation tool like Ansible.
 
-### <a name="use-moby-as-the-container-engine"></a>Použití Moby jako modulu kontejneru
+### <a name="use-moby-as-the-container-engine"></a>Use Moby as the container engine
 
-Kontejnerový modul je předpokladem pro jakékoli IoT Edge zařízení. V produkčním prostředí se podporuje jenom Moby-Engine. Jiné kontejnerové moduly, jako je Docker, fungují s IoT Edge a jsou v pořádku, aby je bylo možné použít pro vývoj. Moby-Engine lze znovu distribuovat při použití s Azure IoT Edge a Microsoft poskytuje údržbu tohoto stroje.
+A container engine is a prerequisite for any IoT Edge device. Only moby-engine is supported in production. Other container engines, like Docker, do work with IoT Edge and it's ok to use these engines for development. The moby-engine can be redistributed when used with Azure IoT Edge, and Microsoft provides servicing for this engine.
 
-### <a name="choose-upstream-protocol"></a>Zvolit nadřazený protokol
+### <a name="choose-upstream-protocol"></a>Choose upstream protocol
 
-Protokol (a proto použitý port) pro komunikaci s nadřazenými a IoT Hub se dá nakonfigurovat pro IoT Edge agenta i centra IoT Edge. Výchozí protokol je AMQP, ale možná budete chtít změnit v závislosti na nastavení sítě. 
+The protocol (and therefore the port used) for upstream communication to IoT Hub can be configured for both the IoT Edge agent and the IoT Edge hub. The default protocol is AMQP, but you may want to change that depending on your network setup. 
 
-Oba moduly modul runtime mají proměnnou prostředí **UpstreamProtocol** . Platné hodnoty pro proměnnou jsou: 
+The two runtime modules both have an **UpstreamProtocol** environment variable. The valid values for the variable are: 
 
 * MQTT
 * AMQP
 * MQTTWS
 * AMQPWS
 
-Nakonfigurujte proměnnou UpstreamProtocol pro agenta IoT Edge v souboru config. yaml na samotném zařízení. Pokud se například vaše zařízení IoT Edge za proxy server, které blokuje porty AMQP, může být nutné nakonfigurovat agenta IoT Edge na používání AMQP přes WebSocket (AMQPWS) a vytvořit tak počáteční připojení k IoT Hub. 
+Configure the UpstreamProtocol variable for the IoT Edge agent in the config.yaml file on the device itself. For example, if your IoT Edge device is behind a proxy server that blocks AMQP ports, you may need to configure the IoT Edge agent to use AMQP over WebSocket (AMQPWS) to establish the initial connection to IoT Hub. 
 
-Po připojení zařízení IoT Edge nezapomeňte v budoucích nasazeních pokračovat v konfiguraci proměnné UpstreamProtocol pro oba moduly runtime. Příklad tohoto procesu je k dispozici v části [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md).
+Once your IoT Edge device connects, be sure to continue configuring the UpstreamProtocol variable for both runtime modules in future deployments. An example of this process is provided in [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
 
 ## <a name="deployment"></a>Nasazení
 
-* **Případech**
-    * Konzistentní s nadřazeným protokolem
-    * Nastavení hostitelského úložiště pro systémové moduly
-    * Zmenšení místa v paměti, které používá centrum IoT Edge
-    * Nepoužívat ladicí verze imagí modulu
+* **Helpful**
+    * Be consistent with upstream protocol
+    * Set up host storage for system modules
+    * Reduce memory space used by the IoT Edge hub
+    * Do not use debug versions of module images
 
-### <a name="be-consistent-with-upstream-protocol"></a>Konzistentní s nadřazeným protokolem
+### <a name="be-consistent-with-upstream-protocol"></a>Be consistent with upstream protocol
 
-Pokud jste agenta IoT Edge v zařízení IoT Edge nakonfigurovali tak, aby používal jiný protokol než výchozí AMQP, měli byste deklarovat stejný protokol ve všech budoucích nasazeních. Pokud se například vaše zařízení IoT Edge za proxy server blokující porty AMQP, pravděpodobně jste zařízení nakonfigurovali pro připojení přes AMQP přes WebSocket (AMQPWS). Když nasadíte moduly do zařízení, nakonfigurujete stejný protokol AMQPWS pro IoT Edge agenta a centrum IoT Edge, jinak výchozí AMQP přepíše nastavení a zabráníte opětovnému připojení. 
+If you configured the IoT Edge agent on your IoT Edge device to use a different protocol than the default AMQP, then you should declare the same protocol in all future deployments. For example, if your IoT Edge device is behind a proxy server that blocks AMQP ports, you probably configured the device to connect over AMQP over WebSocket (AMQPWS). When you deploy modules to the device, configure the same AMQPWS protocol for the IoT Edge agent and IoT Edge hub, or else the default AMQP will override the settings and prevent you from connecting again. 
 
-Musíte nakonfigurovat pouze proměnnou prostředí UpstreamProtocol pro agenty IoT Edge a moduly IoT Edge hub. Jakékoli další moduly přijmou jakýkoli protokol v modulech runtime. 
+You only have to configure the UpstreamProtocol environment variable for the IoT Edge agent and IoT Edge hub modules. Any additional modules adopt whatever protocol is set in the runtime modules. 
 
-Příklad tohoto procesu je k dispozici v části [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md).
+An example of this process is provided in [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
 
-### <a name="set-up-host-storage-for-system-modules"></a>Nastavení hostitelského úložiště pro systémové moduly
+### <a name="set-up-host-storage-for-system-modules"></a>Set up host storage for system modules
 
-Rozbočovače IoT Edge a agenti používají místní úložiště k udržení stavu a povolení zasílání zpráv mezi moduly, zařízeními a cloudem. Pro zajištění vyšší spolehlivosti a výkonu nakonfigurujte systémové moduly tak, aby v hostitelském systému souborů používaly úložiště.
+The IoT Edge hub and agent modules use local storage to maintain state and enable messaging between modules, devices, and the cloud. For better reliability and performance, configure the system modules to use storage on the host filesystem.
 
-Další informace najdete v tématu [úložiště hostitele pro systémové moduly](how-to-access-host-storage-from-module.md).
+For more information, see [Host storage for system modules](how-to-access-host-storage-from-module.md).
 
-### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Zmenšení místa v paměti, které používá centrum IoT Edge
+### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Reduce memory space used by IoT Edge hub
 
-Pokud nasazujete omezená zařízení s omezenou dostupnou pamětí, můžete nakonfigurovat centrum IoT Edge tak, aby běželo efektivněji a používalo méně místa na disku. Tyto konfigurace omezují výkon centra IoT Edge, ale vyhledají správný zůstatek, který funguje pro vaše řešení. 
+If you're deploying constrained devices with limited memory available, you can configure IoT Edge hub to run in a more streamlined capacity and use less disk space. These configurations do limit the performance of the IoT Edge hub, however, so find the right balance that works for your solution. 
 
-#### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Neoptimalizujte pro výkon u omezených zařízení.
+#### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Don't optimize for performance on constrained devices
 
-Ve výchozím nastavení je centrum IoT Edge optimalizované pro výkon, takže se pokusí přidělit velké bloky paměti. Tato konfigurace může způsobit problémy s stabilitou na menších zařízeních, jako je třeba malin. PI. Pokud nasazujete zařízení s omezenými prostředky, možná budete chtít nastavit proměnnou prostředí **OptimizeForPerformance** na **hodnotu false** v centru IoT Edge. 
+The IoT Edge hub is optimized for performance by default, so it attempts to allocate large chunks of memory. This configuration can cause stability problems on smaller devices like the Raspberry Pi. If you're deploying devices with constrained resources, you may want to set the **OptimizeForPerformance** environment variable to **false** on the IoT Edge hub. 
 
-Pokud je **OptimizeForPerformance** nastaveno na **hodnotu true**, hlavička protokolu MQTT používá PooledByteBufferAllocator, který má lepší výkon, ale přiděluje více paměti. Alokátor nefunguje dobře na 32 bitových operačních systémech nebo na zařízeních s nedostatkem paměti. Kromě toho, pokud je optimalizován pro výkon, RocksDb přiděluje více paměti pro svou roli jako místní poskytovatel úložiště. 
+When **OptimizeForPerformance** is set to **true**, the MQTT protocol head uses the PooledByteBufferAllocator which has better performance but allocates more memory. The allocator does not work well on 32 bit operating systems or on devices with low memory. Additionally, when optimized for performance, RocksDb allocates more memory for its role as the local storage provider. 
 
-Další informace najdete v tématu [problémy se stabilitou na omezených zařízeních prostředků](troubleshoot.md#stability-issues-on-resource-constrained-devices).
+For more information, see [Stability issues on resource constrained devices](troubleshoot.md#stability-issues-on-resource-constrained-devices).
 
-#### <a name="disable-unused-protocols"></a>Zakázat nepoužívané protokoly
+#### <a name="disable-unused-protocols"></a>Disable unused protocols
 
-Dalším způsobem, jak optimalizovat výkon centra IoT Edge a snížit jeho využití paměti, je vypnout pro všechny protokoly, které nepoužíváte ve vašem řešení, hlavičky protokolu. 
+Another way to optimize the performance of the IoT Edge hub and reduce its memory usage is to turn off the protocol heads for any protocols that you're not using in your solution. 
 
-Hlavičky protokolu jsou nakonfigurovány nastavením logických proměnných prostředí pro modul IoT Edge hub v manifestech nasazení. Tři proměnné jsou:
+Protocol heads are configured by setting boolean environment variables for the IoT Edge hub module in your deployment manifests. The three variables are:
 
 * **amqpSettings__enabled**
 * **mqttSettings__enabled**
 * **httpSettings__enabled**
 
-Všechny tři proměnné mají *dvě podtržítka* a lze je nastavit buď na hodnotu true, nebo false. 
+All three variables have *two underscores* and can be set to either true or false. 
 
-#### <a name="reduce-storage-time-for-messages"></a>Snížení doby úložiště pro zprávy
+#### <a name="reduce-storage-time-for-messages"></a>Reduce storage time for messages
 
-Modul IoT Edge hub ukládá zprávy dočasně, pokud je nelze doručit do IoT Hub z jakéhokoli důvodu. Můžete nakonfigurovat, jak dlouho bude Centrum IoT Edge obsahovat nedoručené zprávy, a teprve potom jim vyprší jejich platnost. Pokud máte v zařízení problémy s pamětí, můžete snížit hodnotu **timeToLiveSecs** v modulu centra IoT Edge s dvojitou platností. 
+The IoT Edge hub module stores messages temporarily if they cannot be delivered to IoT Hub for any reason. You can configure how long the IoT Edge hub holds on to undelivered messages before letting them expire. If you have memory concerns on your device, you can lower the **timeToLiveSecs** value in the IoT Edge hub module twin. 
 
-Výchozí hodnota parametru timeToLiveSecs je 7200 sekund, což je dvě hodiny. 
+The default value of the timeToLiveSecs parameter is 7200 seconds, which is two hours. 
 
-### <a name="do-not-use-debug-versions-of-module-images"></a>Nepoužívat ladicí verze imagí modulu
+### <a name="do-not-use-debug-versions-of-module-images"></a>Do not use debug versions of module images
 
-Při přechodu z testovacích scénářů do produkčních scénářů nezapomeňte odebrat konfigurace ladění z manifestů nasazení. Ověřte, že žádný z imagí modulu v manifestech nasazení nemá příponu **\.debug** . Pokud jste přidali možnosti vytváření pro vystavování portů v modulech pro ladění, odeberte taky tyto možnosti vytváření. 
+When moving from test scenarios to production scenarios, remember to remove debug configurations from deployment manifests. Check that none of the module images in the deployment manifests have the **\.debug** suffix. If you added create options to expose ports in the modules for debugging, remove those create options as well. 
 
 ## <a name="container-management"></a>Správa kontejnerů
 
 * **Důležité upozornění**
-    * Správa přístupu k registru kontejneru
-    * Použití značek ke správě verzí
+    * Manage access to your container registry
+    * Use tags to manage versions
 
-### <a name="manage-access-to-your-container-registry"></a>Správa přístupu k registru kontejneru
+### <a name="manage-access-to-your-container-registry"></a>Manage access to your container registry
 
-Než nasadíte moduly do produkčních IoT Edge zařízení, ujistěte se, že máte pod kontrolou přístup k registru kontejneru, aby k nim nemohly přistupovat ani dělat změny v imagích kontejnerů. Pro správu imagí kontejneru použijte privátní registr kontejnerů, nikoli veřejný. 
+Before you deploy modules to production IoT Edge devices, ensure that you control access to your container registry so that outsiders can't access or make changes to your container images. Use a private, not public, container registry to manage container images. 
 
-V kurzech a další dokumentaci vám pomůžeme, abyste na svém zařízení IoT Edge používali stejné přihlašovací údaje registru kontejneru jako při použití ve vývojovém počítači. Tyto pokyny jsou určené jenom pro snazší nastavení testovacích a vývojových prostředí a neměli byste je dodržovat v produkčním scénáři. Azure Container Registry doporučuje [ověřování pomocí instančních objektů](../container-registry/container-registry-auth-service-principal.md) , když aplikace nebo služby vyžádají image kontejneru automatizovaným nebo jiným způsobem, jako IoT Edge zařízení. Vytvořte instanční objekt s přístupem jen pro čtení k registru kontejneru a zadejte toto uživatelské jméno a heslo v manifestu nasazení.
+In the tutorials and other documentation, we instruct you to use the same container registry credentials on your IoT Edge device as you use on your development machine. These instructions are only intended to help you set up testing and development environments more easily, and should not be followed in a production scenario. Azure Container Registry recommends [authenticating with service principals](../container-registry/container-registry-auth-service-principal.md) when applications or services pull container images in an automated or otherwise unattended manner, as IoT Edge devices do. Create a service principal with read-only access to your container registry, and provide that username and password in the deployment manifest.
 
-### <a name="use-tags-to-manage-versions"></a>Použití značek ke správě verzí
+### <a name="use-tags-to-manage-versions"></a>Use tags to manage versions
 
-Značka je koncept Docker, který můžete použít k rozlišení mezi verzemi kontejnerů Docker. Značky jsou přípony jako **1,0** , které směřují na konec úložiště kontejnerů. Například **MCR.Microsoft.com/azureiotedge-agent:1.0**. Značky jsou proměnlivé a dají se kdykoli změnit tak, aby odkazovala na jiný kontejner, takže váš tým by měl souhlasit s konvencí, která se má při aktualizaci imagí modulu pokračovat. 
+A tag is a docker concept that you can use to distinguish between versions of docker containers. Tags are suffixes like **1.0** that go on the end of a container repository. For example, **mcr.microsoft.com/azureiotedge-agent:1.0**. Tags are mutable and can be changed to point to another container at any time, so your team should agree on a convention to follow as you update your module images moving forward. 
 
-Značky vám také pomůžou vymáhat aktualizace vašich IoT Edgech zařízení. Když nahrajete aktualizovanou verzi modulu do registru kontejneru, zvyšte značku. Pak na zařízení Nahrajte nové nasazení se zvýšenými značkami. Kontejnerový modul rozpozná zvětšenou značku jako novou verzi a stáhne nejnovější verzi modulu dolů na vaše zařízení. 
+Tags also help you to enforce updates on your IoT Edge devices. When you push an updated version of a module to your container registry, increment the tag. Then, push a new deployment to your devices with the tag incremented. The container engine will recognize the incremented tag as a new version and will pull the latest module version down to your device. 
 
-Příklad konvence značek najdete v tématu [aktualizace modulu runtime IoT Edge](how-to-update-iot-edge.md#understand-iot-edge-tags) , kde zjistíte, jak IoT Edge používá ke sledování verzí značky válcování a specifické značky. 
+For an example of a tag convention, see [Update the IoT Edge runtime](how-to-update-iot-edge.md#understand-iot-edge-tags) to learn how IoT Edge uses rolling tags and specific tags to track versions. 
 
 ## <a name="networking"></a>Sítě
 
-* **Případech**
-    * Kontrola odchozí/příchozí konfigurace
-    * Povolení připojení ze zařízení IoT Edge
-    * Konfigurace komunikace prostřednictvím proxy serveru
+* **Helpful**
+    * Review outbound/inbound configuration
+    * Allow connections from IoT Edge devices
+    * Configure communication through a proxy
 
-### <a name="review-outboundinbound-configuration"></a>Kontrola odchozí/příchozí konfigurace
+### <a name="review-outboundinbound-configuration"></a>Review outbound/inbound configuration
 
-Komunikační kanály mezi Azure IoT Hub a IoT Edge jsou vždycky nakonfigurované tak, aby byly odchozí. U většiny scénářů IoT Edge je potřeba jenom tři připojení. Modul kontejneru musí být připojen pomocí registru kontejnerů (nebo registrů), které obsahují image modulu. Modul runtime IoT Edge musí být připojen pomocí IoT Hub pro načtení informací o konfiguraci zařízení a k odesílání zpráv a telemetrie. A pokud používáte Automatické zřizování, IoT Edge démon se musí připojit ke službě Device Provisioning. Další informace najdete v tématu [pravidla konfigurace pro bránu firewall a port](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
+Communication channels between Azure IoT Hub and IoT Edge are always configured to be outbound. For most IoT Edge scenarios, only three connections are necessary. The container engine needs to connect with the container registry (or registries) that holds the module images. The IoT Edge runtime needs to connect with IoT Hub to retrieve device configuration information, and to send messages and telemetry. And if you use automatic provisioning, the IoT Edge daemon needs to connect to the Device Provisioning Service. For more information, see [Firewall and port configuration rules](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
 
-### <a name="allow-connections-from-iot-edge-devices"></a>Povolení připojení ze zařízení IoT Edge
+### <a name="allow-connections-from-iot-edge-devices"></a>Allow connections from IoT Edge devices
 
-Pokud instalace sítě vyžaduje, abyste výslovně povolili připojení vytvořená ze zařízení IoT Edge, Projděte si následující seznam IoT Edge součástí:
+If your networking setup requires that you explicitly permit connections made from IoT Edge devices, review the following list of IoT Edge components:
 
-* **Agent IoT Edge** otevírá trvalé připojení AMQP/MQTT k IoT Hub, možná prostřednictvím WebSockets. 
-* **Centrum IoT Edge** otevře jedno trvalé připojení AMQP nebo několik připojení MQTT k IoT Hub, možná přes objekty WebSockets. 
-* **IoT Edge démon** způsobuje přerušované volání https IoT Hub. 
+* **IoT Edge agent** opens a persistent AMQP/MQTT connection to IoT Hub, possibly over WebSockets. 
+* **IoT Edge hub** opens a single persistent AMQP connection or multiple MQTT connections to IoT Hub, possibly over WebSockets. 
+* **IoT Edge daemon** makes intermittent HTTPS calls to IoT Hub. 
 
-Ve všech třech případech by měl název DNS odpovídat vzoru \*.azure-devices.net. 
+In all three cases, the DNS name would match the pattern \*.azure-devices.net. 
 
-Kromě toho **kontejnerový modul** provádí volání registrů kontejnerů přes protokol HTTPS. Pokud chcete načíst image kontejneru IoT Edge runtime, název DNS je mcr.microsoft.com. Kontejnerový modul se připojuje k jiným registrům, jak jsou nakonfigurované v nasazení. 
+Additionally, the **Container engine** makes calls to container registries over HTTPS. To retrieve the IoT Edge runtime container images, the DNS name is mcr.microsoft.com. The container engine connects to other registries as configured in the deployment. 
 
-Tento kontrolní seznam je výchozím bodem pro pravidla brány firewall:
+This checklist is a starting point for firewall rules:
 
-   | Adresa URL (\* = zástupný znak) | Odchozí porty TCP | Využití |
+   | URL (\* = wildcard) | Outbound TCP Ports | Využití |
    | ----- | ----- | ----- |
-   | mcr.microsoft.com  | 443 | Microsoft Container Registry |
-   | global.azure-devices-provisioning.net  | 443 | Přístup k DPS (volitelné) |
-   | \*. azurecr.io | 443 | Osobní a Registry kontejnerů třetích stran |
-   | \*.blob.core.windows.net | 443 | Stažení rozdílových rozdílů Azure Container Registry imagí ze služby Blob Storage  | 
-   | \*. azure-devices.net | 5671, 8883, 443 | Přístup k IoT Hub |
-   | \*. docker.io  | 443 | Přístup k Docker Hub (volitelné) |
+   | mcr.microsoft.com  | 443 | Microsoft container registry |
+   | global.azure-devices-provisioning.net  | 443 | DPS access (optional) |
+   | \*.azurecr.io | 443 | Personal and third-party container registries |
+   | \*.blob.core.windows.net | 443 | Download Azure Container Registry image deltas from blob storage  | 
+   | \*.azure-devices.net | 5671, 8883, 443 | IoT Hub access |
+   | \*.docker.io  | 443 | Docker Hub access (optional) |
 
-Některá z těchto pravidel brány firewall jsou zděděná z Azure Container Registry. Další informace najdete v tématu [Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall](../container-registry/container-registry-firewall-access-rules.md).
+Some of these firewall rules are inherited from Azure Container Registry. For more information, see [Configure rules to access an Azure container registry behind a firewall](../container-registry/container-registry-firewall-access-rules.md).
 
-### <a name="configure-communication-through-a-proxy"></a>Konfigurace komunikace prostřednictvím proxy serveru
+### <a name="configure-communication-through-a-proxy"></a>Configure communication through a proxy
 
-Pokud budou vaše zařízení nasazená v síti, která používá proxy server, musí být schopná komunikovat prostřednictvím proxy serveru, aby dosáhly IoT Hub a registrů kontejnerů. Další informace najdete v tématu [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md).
+If your devices are going to be deployed on a network that uses a proxy server, they need to be able to communicate through the proxy to reach IoT Hub and container registries. For more information, see [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md).
 
-## <a name="solution-management"></a>Správa řešení
+## <a name="solution-management"></a>Solution management
 
-* **Případech**
-    * Nastavení protokolů a diagnostiky
-    * Zvažte testy a kanály CI/CD.
+* **Helpful**
+    * Set up logs and diagnostics
+    * Consider tests and CI/CD pipelines
 
-### <a name="set-up-logs-and-diagnostics"></a>Nastavení protokolů a diagnostiky
+### <a name="set-up-logs-and-diagnostics"></a>Set up logs and diagnostics
 
-V systému Linux používá démon IoT Edge jako výchozí ovladač protokolování deníky. K dotazování protokolů démona můžete použít nástroj příkazového řádku `journalctl`. V systému Windows démon IoT Edge používá diagnostiku prostředí PowerShell. K dotazování protokolů z procesu démon použijte `Get-IoTEdgeLog`. IoT Edge moduly používají ovladač JSON pro protokolování, což je výchozí nastavení.  
+On Linux, the IoT Edge daemon uses journals as the default logging driver. You can use the command-line tool `journalctl` to query the daemon logs. On Windows, the IoT Edge daemon uses PowerShell diagnostics. Use `Get-IoTEdgeLog` to query logs from the daemon. IoT Edge modules use the JSON driver for logging, which is the  default.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Při testování nasazení IoT Edge můžete obvykle získat přístup k zařízením, abyste mohli načítat protokoly a řešit potíže. V případě nasazení nemusí být tato možnost k dispozici. Vezměte v úvahu, jak budete shromažďovat informace o vašich zařízeních v produkčním prostředí. Jednou z možností je použití protokolovacího modulu, který shromažďuje informace z jiných modulů a odesílá je do cloudu. Jedním z příkladů protokolovacího modulu je [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), nebo můžete navrhnout vlastní. 
+When you're testing an IoT Edge deployment, you can usually access your devices to retrieve logs and troubleshoot. In a deployment scenario, you may not have that option. Consider how you're going to gather information about your devices in production. One option is to use a logging module that collects information from the other modules and sends it to the cloud. One example of a logging module is [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), or you can design your own. 
 
-### <a name="place-limits-on-log-size"></a>Omezit omezení velikosti protokolu
+### <a name="place-limits-on-log-size"></a>Place limits on log size
 
-Ve výchozím nastavení nenastavuje Moby kontejnerového modulu limity velikosti protokolu kontejneru. V průběhu času to může vést k tomu, že zařízení zaplňuje protokoly a uvolní místo na disku. Pokud tomu chcete zabránit, vezměte v úvahu následující možnosti:
+By default the Moby container engine does not set container log size limits. Over time this can lead to the device filling up with logs and running out of disk space. Consider the following options to prevent this:
 
-**Možnost: Nastavte globální limity, které platí pro všechny moduly kontejneru.**
+**Option: Set global limits that apply to all container modules**
 
-Velikost všech protokolů kontejnerů můžete omezit v možnostech protokolu modulu container Engine. Následující příklad nastaví ovladač protokolu na `json-file` (doporučeno) s omezeními velikosti a počtu souborů:
+You can limit the size of all container logfiles in the container engine log options. The following example sets the log driver to `json-file` (recommended) with limits on size and number of files:
 
 ```JSON
 {
@@ -223,18 +222,18 @@ Velikost všech protokolů kontejnerů můžete omezit v možnostech protokolu m
 }
 ```
 
-Přidejte (nebo přidejte) tyto informace do souboru s názvem `daemon.json` a umístěte je do správného umístění pro platformu zařízení.
+Add (or append) this information to a file named `daemon.json` and place it the right location for your device platform.
 
 | Platforma | Umístění |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
 
-Aby se změny projevily, musí být modul kontejneru restartován.
+The container engine must be restarted for the changes to take effect.
 
-**Možnost: upravit nastavení protokolu pro každý modul kontejneru**
+**Option: Adjust log settings for each container module**
 
-To můžete provést v **createOptions** každého modulu. Například:
+You can do so in the **createOptions** of each module. Například:
 
 ```yml
 "createOptions": {
@@ -250,11 +249,11 @@ To můžete provést v **createOptions** každého modulu. Například:
 }
 ```
 
-**Další možnosti pro systémy Linux**
+**Additional options on Linux systems**
 
-* Nakonfigurujte modul kontejneru tak, aby odesílal protokoly do [deníku](https://docs.docker.com/config/containers/logging/journald/) `systemd`, a to nastavením `journald` jako výchozího ovladače protokolování. 
+* Configure the container engine to send logs to `systemd` [journal](https://docs.docker.com/config/containers/logging/journald/) by setting `journald` as the default logging driver. 
 
-* Pomocí nástroje logrotate pravidelně odeberte staré protokoly ze zařízení. Použijte následující specifikaci souboru: 
+* Periodically remove old logs from your device by installing a logrotate tool. Use the following file specification: 
 
    ```
    /var/lib/docker/containers/*/*-json.log{
@@ -268,11 +267,11 @@ To můžete provést v **createOptions** každého modulu. Například:
    }
    ```
 
-### <a name="consider-tests-and-cicd-pipelines"></a>Zvažte testy a kanály CI/CD.
+### <a name="consider-tests-and-cicd-pipelines"></a>Consider tests and CI/CD pipelines
 
-Pro nejúčinnější scénář nasazení IoT Edge zvažte integraci nasazení v produkčním prostředí do kanálů pro testování a CI/CD. Azure IoT Edge podporuje několik platforem CI/CD, včetně Azure DevOps. Další informace najdete v tématu [průběžná integrace a průběžné nasazování do Azure IoT Edge](how-to-ci-cd.md).
+For the most efficient IoT Edge deployment scenario, consider integrating your production deployment into your testing and CI/CD pipelines. Azure IoT Edge supports multiple CI/CD platforms, including Azure DevOps. For more information, see [Continuous integration and continuous deployment to Azure IoT Edge](how-to-ci-cd.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [IoT Edge automatickém nasazení](module-deployment-monitoring.md).
-* Podívejte se, jak IoT Edge podporuje [průběžnou integraci a průběžné nasazování](how-to-ci-cd.md).
+* Learn more about [IoT Edge automatic deployment](module-deployment-monitoring.md).
+* See how IoT Edge supports [Continuous integration and continuous deployment](how-to-ci-cd.md).

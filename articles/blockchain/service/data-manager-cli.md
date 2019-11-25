@@ -4,12 +4,12 @@ description: Create and manage a Blockchain Data Manager for Azure Blockchain Se
 ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
-ms.openlocfilehash: 88abea691219a78ee16702e231337de055dbf5e4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326242"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455936"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurace Blockchain Data Manageru s využitím Azure CLI
 
@@ -415,7 +415,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>Další kroky
 
-Try creating a blockchain transaction message explorer using Blockchain Data Manager and Azure Cosmos DB.
+Try the next tutorial creating a blockchain transaction message explorer using Blockchain Data Manager and Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Use Blockchain Data Manager to send data to Azure Cosmos DB](data-manager-cosmosdb.md)
+> [Use Blockchain Data Manager to send data to Azure Cosmos DB](data-manager-cosmosdb.md)

@@ -1,6 +1,6 @@
 ---
-title: Ověřování pro všechna zařízení – Azure IoT Edge | Microsoft Docs
-description: Jak ověřit podřízená zařízení nebo listová zařízení pro IoT Hub a směrovat jejich připojení prostřednictvím zařízení Azure IoT Edge brány.
+title: Authenticate downstream devices - Azure IoT Edge | Microsoft Docs
+description: How to authenticate downstream devices or leaf devices to IoT Hub, and route their connection through Azure IoT Edge gateway devices.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,104 +8,103 @@ ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 1e184691ebbd34de0f69e93419d9c34ab18edbe6
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 922654a6947a21eeee945762100abe086c552ad7
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025937"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457214"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Ověření podřízeného zařízení pro Azure IoT Hub
 
-V případě transparentní brány mají podřízená zařízení (někdy označovaná jako listová zařízení nebo podřízená zařízení) identity v IoT Hub jako jakékoli jiné zařízení. Tento článek vás provede možnostmi ověřování zařízení pro příjem dat IoT Hub a pak ukazuje, jak deklarovat připojení brány.
+In a transparent gateway scenario, downstream devices (sometimes called leaf devices or child devices) need identities in IoT Hub like any other device. This article walks through the options for authenticating a downstream device to IoT Hub, and then demonstrates how to declare the gateway connection.
 
-Existují tři obecné kroky k nastavení úspěšného transparentního připojení brány. Tento článek popisuje druhý krok:
+There are three general steps to set up a successful transparent gateway connection. This article covers the second step:
 
-1. Zařízení brány musí být schopné bezpečně připojit se k zařízením pro příjem dat, přijímat komunikaci ze zařízení pro příjem dat a směrovat zprávy do správného umístění. Další informace najdete v tématu [Konfigurace zařízení IoT Edge pro fungování jako transparentní brány](how-to-create-transparent-gateway.md).
-2. **Aby se zařízení mohla ověřit pomocí IoT Hub, musí mít k dispozici identitu zařízení, která může komunikovat prostřednictvím zařízení brány.**
-3. Zařízení pro příjem dat musí být schopné se bezpečně připojit k zařízení brány. Další informace najdete v tématu [připojení zařízení pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md).
+1. The gateway device needs to be able to securely connect to downstream devices, receive communications from downstream devices, and route messages to the proper destination. For more information, see [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md).
+2. **The downstream device needs to have a device identity to be able to authenticate with IoT Hub, and know to communicate through its gateway device.**
+3. The downstream device needs to be able to securely connect to its gateway device. For more information, see [Connect a downstream device to an Azure IoT Edge gateway](how-to-connect-downstream-device.md).
 
-Zařízení pro příjem dat se můžou pomocí IoT Hub ověřit pomocí jedné ze tří metod: symetrických klíčů (někdy označovaných jako sdílené přístupové klíče), certifikátů podepsaných držitelem X. 509 nebo certifikátů podepsaných certifikační autoritou (CA) X. 509. Postup ověřování se podobá postupům, které se používají k nastavení zařízení bez IoT Edge s IoT Hub, s malým rozdílem na deklaraci vztahu brány.
+Downstream devices can authenticate with IoT Hub using one of three methods: symmetric keys (sometimes referred to as shared access keys), X.509 self-signed certificates, or X.509 certificate authority (CA) signed certificates. The authentication steps are similar to the steps used to set up any non-IoT-Edge device with IoT Hub, with small differences to declare the gateway relationship.
 
-Kroky v tomto článku ukazují ruční zřizování zařízení, ne Automatické zřizování pomocí Azure IoT Hub Device Provisioning Service. 
+The steps in this article show manual device provisioning, not automatic provisioning with the Azure IoT Hub Device Provisioning Service. 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Proveďte kroky v části [konfigurace IoT Edge zařízení, které bude fungovat jako transparentní brána](how-to-create-transparent-gateway.md). Pokud pro vaše zařízení pro příjem dat používáte ověřování X. 509, musíte použít stejný skript pro generování certifikátů, který jste nastavili v článku transparentní brány. 
+Complete the steps in [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). If you're using X.509 authentication for your downstream device, you need to use the same certificate generating script that you set up in the transparent gateway article. 
 
-Tento článek odkazuje na *název hostitele brány* na několika místech. Název hostitele brány je deklarovaný v parametru **hostname** souboru config. yaml na zařízení IoT Edge brány. Používá se k vytvoření certifikátů v tomto článku a odkazuje se na připojovací řetězec zařízení pro příjem dat. Název hostitele brány musí být přeložitelný na IP adresu, a to buď pomocí DNS, nebo zadáním souboru hostitele.
+This article refers to the *gateway hostname* at several points. The gateway hostname is declared in the **hostname** parameter of the config.yaml file on the IoT Edge gateway device. It's used to create the certificates in this article, and is referred to in the connection string of the downstream devices. The gateway hostname needs to be resolvable to an IP Address, either using DNS or a host file entry.
 
-## <a name="symmetric-key-authentication"></a>Ověřování symetrického klíče
+## <a name="symmetric-key-authentication"></a>Symmetric key authentication
 
-Ověřování pomocí symetrického klíče nebo ověřování pomocí sdíleného přístupového klíče je nejjednodušší způsob, jak ověřit IoT Hub. Při ověřování pomocí symetrického klíče je klíč Base64 přidružený k vašemu ID zařízení IoT v IoT Hub. Tento klíč zahrnete do svých aplikací IoT, aby ho zařízení mohl prezentovat při připojení k IoT Hub. 
+Symmetric key authentication, or shared access key authentication, is the simplest way to authenticate with IoT Hub. With symmetric key authentication, a base64 key is associated with your IoT device ID in IoT Hub. You include that key in your IoT applications so that your device can present it when it connects to IoT Hub. 
 
-### <a name="create-the-device-identity"></a>Vytvoření identity zařízení 
+### <a name="create-the-device-identity"></a>Create the device identity 
 
-Do služby IoT Hub přidejte nové zařízení IoT pomocí Azure Portal, rozhraní příkazového řádku Azure nebo rozšíření IoT pro Visual Studio Code. Mějte na paměti, že zařízení se musí identifikovat v IoT Hub jako běžné zařízení IoT, ne IoT Edge zařízení. 
+Add a new IoT device in your IoT hub, using either the Azure portal, Azure CLI, or the IoT extension for Visual Studio Code. Remember that downstream devices need to be identified in IoT Hub as regular IoT device, not IoT Edge devices. 
 
-Když vytváříte novou identitu zařízení, zadejte následující informace: 
+When you create the new device identity, provide the following information: 
 
-* Vytvořte ID pro vaše zařízení.
+* Create an ID for your device.
 
-* Jako typ ověřování vyberte **symetrický klíč** . 
+* Select **Symmetric key** as the authentication type. 
 
-* Volitelně můžete zvolit **Nastavení nadřazeného zařízení** a vybrat zařízení IoT Edge brány, ke kterému se toto zařízení pro příjem dat připojí. Tento krok je volitelný pro ověřování pomocí symetrického klíče, ale doporučuje se, protože nastavení nadřazeného zařízení umožňuje [offline funkce](offline-capabilities.md) pro vaše zařízení pro příjem dat. Můžete vždy aktualizovat podrobnosti o zařízení a přidat nebo změnit nadřazený objekt později. 
+* Optionally, choose to **Set a parent device** and select the IoT Edge gateway device that this downstream device will connect through. This step is optional for symmetric key authentication, but it's recommended because setting a parent device enables [offline capabilities](offline-capabilities.md) for your downstream device. You can always update the device details to add or change the parent later. 
 
-   ![Vytvoření ID zařízení s symetrickým ověřováním pomocí klíče na portálu](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
+   ![Create device ID with symmetric key auth in portal](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
-K provedení stejné operace můžete použít [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . Následující příklad vytvoří nové zařízení IoT s ověřováním pomocí symetrického klíče a přiřadí nadřazené zařízení: 
+You can use the [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension) to complete the same operation. The following example creates a new IoT device with symmetric key authentication and assigns a parent device: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID}
 ```
 
-Další informace o příkazech rozhraní příkazového řádku Azure pro vytváření zařízení a správě nadřazených a podřízených objektů najdete v referenčním obsahu pro příkaz [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) .
+For more information about Azure CLI commands for device creation and parent/child management, see the reference content for [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) commands.
 
-### <a name="connect-to-iot-hub-through-a-gateway"></a>Připojení k IoT Hub přes bránu
+### <a name="connect-to-iot-hub-through-a-gateway"></a>Connect to IoT Hub through a gateway
 
-Stejný postup se používá k ověřování běžných zařízení IoT pro IoT Hub se symetrickými klíči platí i pro zařízení s podřízenou platností. Jediným rozdílem je, že je potřeba přidat ukazatel na zařízení brány, abyste mohli směrovat připojení nebo v offline scénářích zpracovávat ověřování jménem IoT Hub. 
+The same process is used to authenticate regular IoT devices to IoT Hub with symmetric keys also applies to downstream devices. The only difference is that you need to add a pointer to the gateway device to route the connection or, in offline scenarios, to handle the authentication on behalf of IoT Hub. 
 
-Pro ověřování pomocí symetrického klíče se v zařízení nemusíte provádět žádné další kroky, které by bylo možné v IoT Hub ověřit. Pořád budete potřebovat certifikáty, aby se vaše zařízení pro příjem dat mohl připojit k zařízení brány, jak je popsáno v tématu [připojení zařízení pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md).
+For symmetric key authentication, there's no additional steps that you need to take on your device for it to authenticate with IoT Hub. You still need the certificates in place so that your downstream device can connect to its gateway device, as described in [Connect a downstream device to an Azure IoT Edge gateway](how-to-connect-downstream-device.md).
 
-Po vytvoření identity zařízení IoT na portálu můžete načíst primární nebo sekundární klíč. Jeden z těchto klíčů je nutné zahrnout do připojovacího řetězce, který zahrnete do jakékoli aplikace, která komunikuje s IoT Hub. Pro ověřování symetrických klíčů IoT Hub poskytuje plně vytvořený připojovací řetězec v podrobnostech o zařízení pro vaše pohodlí. Do připojovacího řetězce je třeba přidat další informace o zařízení brány. 
+After creating an IoT device identity in the portal, you can retrieve its primary or secondary keys. One of these keys needs to be included in the connection string that you include in any application that communicates with IoT Hub. For symmetric key authentication, IoT Hub provides the fully formed connection string in the device details for your convenience. You need to add extra information about the gateway device to the connection string. 
 
-Připojovací řetězce symetrického klíče pro podřízená zařízení vyžadují následující komponenty: 
+Symmetric key connection strings for downstream devices need the following components: 
 
-* Centrum IoT, ke kterému se zařízení připojuje: `Hostname={iothub name}.azure-devices.net`
-* ID zařízení zaregistrované u centra: `DeviceID={device ID}`
-* Buď primární, nebo sekundární klíč: `SharedAccessKey={key}`
-* Zařízení brány, ke kterému se zařízení připojuje Zadejte hodnotu **názvu hostitele** ze souboru config. yaml zařízení IoT Edge brány: `GatewayHostName={gateway hostname}`
+* The IoT hub that the device connects to: `Hostname={iothub name}.azure-devices.net`
+* The device ID registered with the hub: `DeviceID={device ID}`
+* Either the primary or secondary key: `SharedAccessKey={key}`
+* The gateway device that the device connects through. Provide the **hostname** value from the IoT Edge gateway device's config.yaml file: `GatewayHostName={gateway hostname}`
 
-Celý připojovací řetězec se všemi dohromady vypadá takto:
+All together, a complete connection string looks like:
 
 ``` 
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
-Pokud jste pro toto zařízení pro příjem dat vytvořili vztah nadřazenosti/podřízenosti, můžete připojovací řetězec zjednodušit voláním brány přímo jako hostitele připojení. Například: 
+If you established a parent/child relationship for this downstream device, then you can simplify the connection string by calling the gateway directly as the connection host. Například: 
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 ```
 
-## <a name="x509-authentication"></a>Ověřování X. 509 
+## <a name="x509-authentication"></a>X.509 authentication 
 
-Existují dva způsoby, jak ověřit zařízení IoT pomocí certifikátů X. 509. Podle toho, jak se rozhodnete k ověřování, jsou kroky pro připojení zařízení k IoT Hub stejné. Zvolte pro ověřování certifikáty podepsané svým držitelem nebo CA podepsané certifikační autoritou a potom se Naučte, jak se připojit k IoT Hub. 
+There are two ways to authenticate an IoT device using X.509 certificates. Whichever way you choose to authenticate, the steps to connect your device to IoT Hub are the same. Choose either self-signed or CA-signed certs for authentication, then continue to learn how to connect to IoT Hub. 
 
-Další informace o tom, jak IoT Hub používá ověřování X. 509, najdete v následujících článcích: 
-* [Ověřování zařízení pomocí certifikátů certifikační autority X. 509](../iot-hub/iot-hub-x509ca-overview.md)
-* [Konceptuální porozumění certifikátům CA X. 509 v oboru IoT](../iot-hub/iot-hub-x509ca-concept.md)
+For more information about how IoT Hub uses X.509 authentication, see the following articles: 
+* [Device authentication using X.509 CA certificates](../iot-hub/iot-hub-x509ca-overview.md)
+* [Conceptual understanding of X.509 CA certificates in the IoT industry](../iot-hub/iot-hub-x509ca-concept.md)
 
-### <a name="create-the-device-identity-with-x509-self-signed-certificates"></a>Vytvoření identity zařízení s certifikáty podepsanými svými držiteli X. 509
+### <a name="create-the-device-identity-with-x509-self-signed-certificates"></a>Create the device identity with X.509 self-signed certificates
 
-Pro ověřování X. 509 podepsané svým držitelem, které se někdy označuje jako ověřování kryptografickým otiskem, je potřeba vytvořit nové certifikáty, které se mají na zařízení IoT umístit. Tyto certifikáty obsahují kryptografický otisk, který sdílíte s IoT Hub pro ověřování. 
+For X.509 self-signed authentication, sometimes referred to as thumbprint authentication, you need to create new certificates to place on your IoT device. These certificates have a thumbprint in them that you share with IoT Hub for authentication. 
 
-Nejjednodušší způsob, jak tento scénář otestovat, je použít stejný počítač, který jste použili k vytvoření certifikátů v části [konfigurace IoT Edge zařízení pro fungování jako transparentní brány](how-to-create-transparent-gateway.md). Tento počítač by už měl být nastavený pomocí správného nástroje, certifikátu kořenové certifikační autority a zprostředkující certifikační autority, aby se vytvořily certifikáty zařízení IoT. Konečné certifikáty a jejich privátní klíče můžete později zkopírovat do svého zařízení po telefonu. Podle postupu v článku o bráně nastavíte OpenSSL na svém počítači a pak jste naklonoval úložiště IoT Edge pro přístup ke skriptům pro vytváření certifikátů. Pak jste vytvořili pracovní adresář, který zavolá **\<WRKDIR >** pro uložení certifikátů. Výchozí certifikáty jsou určeny pro vývoj a testování, takže pouze v posledních 30 dnech. Měli byste vytvořit certifikát kořenové certifikační autority a zprostředkující certifikát. 
+The easiest way to test this scenario is to use the same machine that you used to create certificates in [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). That machine should already be set up with the right tool, root CA certificate, and intermediate CA certificate to create the IoT device certificates. You can copy the final certificates and their private keys over to your downstream device afterwards. Following the steps in the gateway article, you set up openssl on your machine, then cloned the IoT Edge repo to access certificate creation scripts. Then, you made a working directory that we call **\<WRKDIR>** to hold the certificates. The default certificates are meant for developing and testing, so only last 30 days. You should have created a root CA certificate and an intermediate certificate. 
 
-1. Přejděte do pracovního adresáře v okně bash nebo PowerShellu. 
+1. Navigate to your working directory in either a bash or PowerShell window. 
 
-2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Zadejte název zařízení a pak primární nebo sekundární popisek. Tyto informace slouží k pojmenování souborů, abyste mohli sledovat certifikáty pro více zařízení. 
+2. Create two certificates (primary and secondary) for the downstream device. Provide your device name and then the primary or secondary label. This information is used to name the files so that you can keep track of certificates for multiple devices. 
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -117,21 +116,21 @@ Nejjednodušší způsob, jak tento scénář otestovat, je použít stejný po�
    ./certGen.sh create_device_certificate "<device name>-secondary"
    ```
 
-3. Načte otisk prstu SHA1 (nazývaný kryptografický otisk v rozhraní IoT Hub) z každého certifikátu, což je 40 šestnáctkový řetězec znaků. K zobrazení certifikátu a nalezení otisku prstu použijte následující příkaz OpenSSL:
+3. Retrieve the SHA1 fingerprint (called a thumbprint in the IoT Hub interface) from each certificate, which is a 40 hexadecimal character string. Use the following openssl command to view the certificate and find the fingerprint:
 
    ```PowerShell/bash
    openssl x509 -in <WORKDIR>/certs/iot-device-<device name>-primary.cert.pem -text -fingerprint | sed 's/[:]//g'
    ```
 
-4. V Azure Portal přejděte do služby IoT Hub a vytvořte novou identitu zařízení IoT s následujícími hodnotami: 
+4. Navigate to your IoT hub in the Azure portal and create a new IoT device identity with the following values: 
 
-   * Jako typ ověřování vyberte **X. 509 podepsaný svým držitelem** .
-   * Vložte šestnáctkové řetězce, které jste zkopírovali z primárního a sekundárního certifikátu vašeho zařízení.
-   * Vyberte možnost **nastavit nadřazené zařízení** a zvolte zařízení IoT Edge brány, ke kterému se bude toto zařízení s podřízenou položkou připojovat. Pro ověřování X. 509 zařízení pro příjem dat se vyžaduje nadřazené zařízení. 
+   * Select **X.509 Self-Signed** as the authentication type.
+   * Paste the hexadecimal strings that you copied from your device's primary and secondary certificates.
+   * Select **Set a parent device** and choose the IoT Edge gateway device that this downstream device will connect through. A parent device is required for X.509 authentication of a downstream device. 
 
-   ![Vytvoření ID zařízení pomocí ověřování X. 509 podepsaného svým držitelem na portálu](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
+   ![Create device ID with X.509 self-signed auth in portal](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
 
-5. Zkopírujte následující soubory do libovolného adresáře v zařízení pro příjem dat:
+5. Copy the following files to any directory on your downstream device:
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
    * `<WRKDIR>\certs\iot-device-<device name>*.cert.pem`
@@ -139,28 +138,28 @@ Nejjednodušší způsob, jak tento scénář otestovat, je použít stejný po�
    * `<WRKDIR>\certs\iot-device-<device name>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device name>*.key.pem`
 
-   Na tyto soubory se budete odkazovat v aplikacích na listovém zařízení, které se připojují k IoT Hub. K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .
+   You'll reference these files in the leaf device applications that connect to IoT Hub. You can use a service like [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) or a function like [Secure copy protocol](https://www.ssh.com/ssh/scp/) to move the certificate files.
 
-K dokončení stejné operace vytváření zařízení můžete použít [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . Následující příklad vytvoří nové zařízení IoT s ověřováním X. 509 podepsaným svým držitelem a přiřadí nadřazené zařízení: 
+You can use the [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension) to complete the same device creation operation. The following example creates a new IoT device with X.509 self-signed authentication and assigns a parent device: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Další informace o příkazech rozhraní příkazového řádku Azure pro vytváření zařízení, generování certifikátů a nadřazené a podřízené správě najdete v referenčním obsahu pro příkaz [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) .
+For more information about Azure CLI commands for device creation, certificate generation, and parent and child management, see the reference content for [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) commands.
 
-### <a name="create-the-device-identity-with-x509-ca-signed-certificates"></a>Vytvoření identity zařízení s certifikátem podepsaným certifikační autoritou X. 509
+### <a name="create-the-device-identity-with-x509-ca-signed-certificates"></a>Create the device identity with X.509 CA signed certificates
 
-Pro ověřování podepsané certifikační autoritou (CA) X. 509 potřebujete certifikát od kořenové certifikační autority zaregistrovaný v IoT Hub, který používáte k podepisování certifikátů pro vaše zařízení IoT. Jakékoli zařízení, které vyvolalo certifikát od kořenové certifikační autority nebo jakýkoli z jeho zprostředkujících certifikátů, bude povoleno ověřování. 
+For X.509 certificate authority (CA) signed authentication, you need a root CA certificate registered in IoT Hub that you use to sign certificates for your IoT device. Any device using a certificate that was issues by the root CA certificate or any of its intermediate certificates will be permitted to authenticate. 
 
-Tato část je založená na pokynech, které jsou popsané v IoT Hub článku [nastavení zabezpečení X. 509 ve službě Azure IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md). Podle kroků v této části Zjistěte, které hodnoty se mají použít k nastavení zařízení pro příjem dat, která se připojují přes bránu. 
+This section is based on the instructions detailed in the IoT Hub article [Set up X.509 security in your Azure IoT hub](../iot-hub/iot-hub-security-x509-get-started.md). Follow the steps in this section to know which values to use to set up a downstream device that connects through a gateway. 
 
-Nejjednodušší způsob, jak tento scénář otestovat, je použít stejný počítač, který jste použili k vytvoření certifikátů v části [konfigurace IoT Edge zařízení pro fungování jako transparentní brány](how-to-create-transparent-gateway.md). Tento počítač by už měl být nastavený pomocí správného nástroje, certifikátu kořenové certifikační autority a zprostředkující certifikační autority, aby se vytvořily certifikáty zařízení IoT. Konečné certifikáty a jejich privátní klíče můžete později zkopírovat do svého zařízení po telefonu. Podle postupu v článku o bráně nastavíte OpenSSL na svém počítači a pak jste naklonoval úložiště IoT Edge pro přístup ke skriptům pro vytváření certifikátů. Pak jste vytvořili pracovní adresář, který zavolá **\<WRKDIR >** pro uložení certifikátů. Výchozí certifikáty jsou určeny pro vývoj a testování, takže pouze v posledních 30 dnech. Měli byste vytvořit certifikát kořenové certifikační autority a zprostředkující certifikát. 
+The easiest way to test this scenario is to use the same machine that you used to create certificates in [Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md). That machine should already be set up with the right tool, root CA certificate, and intermediate CA certificate to create the IoT device certificates. You can copy the final certificates and their private keys over to your downstream device afterwards. Following the steps in the gateway article, you set up openssl on your machine, then cloned the IoT Edge repo to access certificate creation scripts. Then, you made a working directory that we call **\<WRKDIR>** to hold the certificates. The default certificates are meant for developing and testing, so only last 30 days. You should have created a root CA certificate and an intermediate certificate. 
 
-1. Postupujte podle pokynů v části [Registrace certifikátů certifikační autority x. 509 do centra IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) *v tématu Nastavení zabezpečení X. 509 ve službě Azure IoT Hub*. V této části provedete následující kroky: 
+1. Follow the instructions in the [Register X.509 CA certificates to your IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) section of *Set up X.509 security in your Azure IoT hub*. In that section, you perform the following steps: 
 
-   1. Nahrajte certifikát kořenové certifikační autority. Pokud používáte certifikáty, které jste vytvořili v článku transparentní brány, nahrajte jako soubor kořenového certifikátu **\<WRKDIR >/certs/Azure-IoT-test-Only.root.ca.CERT.pem** . 
-   2. Ověřte, že vlastníte certifikát kořenové certifikační autority. Můžete si ověřit, jestli máte k dispozici nástroje pro certifikace v \<WRKDIR >. 
+   1. Upload a root CA certificate. If you're using the certificates that you created in the transparent gateway article, upload **\<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem** as the root certificate file. 
+   2. Verify that you own that root CA certificate. You can verify possession with the cert tools in \<WRKDIR>. 
 
       ```powershell
       New-CACertsVerificationCert "<verification code from Azure portal>"
@@ -170,12 +169,12 @@ Nejjednodušší způsob, jak tento scénář otestovat, je použít stejný po�
       ./certGen.sh create_verification_certificate <verification code from Azure portal>"
       ```
 
-2. Postupujte podle pokynů v části [Vytvoření zařízení x. 509 pro službu IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) *v tématu Nastavení zabezpečení x. 509 ve službě Azure IoT Hub*. V této části provedete následující kroky: 
+2. Follow the instructions in the [Create an X.509 device for your IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) section of *Set up X.509 security in your Azure IoT hub*. In that section, you perform the following steps: 
 
-   1. Přidejte nové zařízení. Zadejte malý název **ID zařízení**a vyberte typ ověřování, který je **podepsaný certifikační autoritou X. 509**. 
-   2. Nastavte nadřazené zařízení. V části zařízení pro příjem dat vyberte možnost **nastavit nadřazené zařízení** a zvolte zařízení IoT Edge brány, které bude poskytovat připojení k IoT Hub. 
+   1. Add a new device. Provide a lowercase name for **device ID**, and choose the authentication type **X.509 CA Signed**. 
+   2. Set a parent device. For downstream devices, select **Set a parent device** and choose the IoT Edge gateway device that will provide the connection to IoT Hub. 
 
-3. Vytvořte řetěz certifikátů pro vaše zařízení pro příjem dat. K provedení tohoto řetězce použijte stejný certifikát od kořenové certifikační autority, který jste nahráli do IoT Hub. Použijte stejné ID zařízení s malým písmenem, které jste přiřadili identitě zařízení na portálu.
+3. Create a certificate chain for your downstream device. Use the same root CA certificate that you uploaded to IoT Hub to make this chain. Use the same lowercase device ID that you gave to your device identity in the portal.
 
    ```powershell
    New-CACertsDevice "<device id>"
@@ -185,7 +184,7 @@ Nejjednodušší způsob, jak tento scénář otestovat, je použít stejný po�
    ./certGen.sh create_device_certificate "<device id>"
    ```
 
-4. Zkopírujte následující soubory do libovolného adresáře v zařízení pro příjem dat: 
+4. Copy the following files to any directory on your downstream device: 
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
    * `<WRKDIR>\certs\iot-device-<device id>*.cert.pem`
@@ -193,33 +192,33 @@ Nejjednodušší způsob, jak tento scénář otestovat, je použít stejný po�
    * `<WRKDIR>\certs\iot-device-<device id>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device id>*.key.pem`
 
-   Na tyto soubory se budete odkazovat v aplikacích na listovém zařízení, které se připojují k IoT Hub. K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .
+   You'll reference these files in the leaf device applications that connect to IoT Hub. You can use a service like [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) or a function like [Secure copy protocol](https://www.ssh.com/ssh/scp/) to move the certificate files.
 
-K dokončení stejné operace vytváření zařízení můžete použít [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) . Následující příklad vytvoří nové zařízení IoT s podpisem certifikační autority X. 509 podepsané ověřováním a přiřadí nadřazené zařízení: 
+You can use the [IoT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension) to complete the same device creation operation. The following example creates a new IoT device with X.509 CA signed authentication and assigns a parent device: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-Další informace o příkazech rozhraní příkazového řádku Azure pro vytváření zařízení a správě nadřazených a podřízených objektů najdete v referenčním obsahu pro příkaz [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) .
+For more information about Azure CLI commands for device creation and parent/child management, see the reference content for [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) commands.
 
 
-### <a name="connect-to-iot-hub-through-a-gateway"></a>Připojení k IoT Hub přes bránu
+### <a name="connect-to-iot-hub-through-a-gateway"></a>Connect to IoT Hub through a gateway
 
-Každá sada Azure IoT SDK zpracovává ověřování X. 509 trochu jinak. Stejný postup se ale používá k ověřování běžných zařízení IoT, aby se IoT Hub s certifikáty X. 509, které platí i pro podřízená zařízení. Jediným rozdílem je, že je potřeba přidat ukazatel na zařízení brány, abyste mohli směrovat připojení nebo v offline scénářích zpracovávat ověřování jménem IoT Hub. Obecně platí, že můžete použít stejné kroky ověřování X. 509 pro všechna IoT Hub zařízení a pak jednoduše nahradit hodnotu **názvu hostitele** v připojovacím řetězci, aby to byl název hostitele vašeho zařízení brány. 
+Each Azure IoT SDK handles X.509 authentication a little differently. However, the same process is used to authenticate regular IoT devices to IoT Hub with X.509 certificates also applies to downstream devices. The only difference is that you need to add a pointer to the gateway device to route the connection or, in offline scenarios, to handle the authentication on behalf of IoT Hub. In general, you can follow the same X.509 authentication steps for all IoT Hub devices, then simply replace the value of **Hostname** in the connection string to be the hostname of your gateway device. 
 
-V následujících částech jsou uvedeny některé příklady pro různé jazyky sady SDK. 
+The following sections show some examples for different SDK languages. 
 
 >[!IMPORTANT]
->Následující ukázky ukazují, jak IoT Hub sady SDK používají certifikáty k ověřování zařízení. V produkčním nasazení byste měli v modulu hardwarového zabezpečení (HSM) ukládat všechny tajné kódy, jako jsou privátní nebo SAS klíče. 
+>The following samples demonstrate how the IoT Hub SDKs use certificates to authenticate devices. In a production deployment, you should store all secrets like private or SAS keys in a hardware secure module (HSM). 
 
 #### <a name="net"></a>.NET
 
-Příklad C# programu ověřujícího IoT Hub s certifikáty X. 509 najdete v tématu [nastavení zabezpečení x. 509 ve službě Azure IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates). Tady jsou uvedené některé klíčové řádky této ukázky, které demonstrují proces ověřování.
+For an example of a C# program authenticating to IoT Hub with X.509 certificates, see [Set up X.509 security in your Azure IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates). Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-Při deklaraci názvu hostitele pro instanci DeviceClient použijte název hostitele zařízení IoT Edge brány. Název hostitele najdete v souboru config. yaml zařízení brány. 
+When declaring the hostname for your DeviceClient instance, use the IoT Edge gateway device's hostname. The hostname can be found in the gateway device's config.yaml file. 
 
-Pokud používáte testovací certifikáty, které poskytuje IoT Edge úložiště Git, klíč k certifikátům je **1234**.
+If you're using the test certificates provided by the IoT Edge git repository, the key to the certificates is **1234**.
 
 ```csharp
 try
@@ -248,9 +247,9 @@ catch (Exception ex)
 
 #### <a name="c"></a>C
 
-Příklad programu v jazyce C ověřování pro IoT Hub s certifikáty X. 509 najdete v tématu Ukázka [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample) sady SDK pro sadu c IoT. Tady jsou uvedené některé klíčové řádky této ukázky, které demonstrují proces ověřování.
+For an example of a C program authenticating to IoT Hub with X.509 certificates, see the C IoT SDK's [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample) sample. Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-Při definování připojovacího řetězce pro vaše zařízení pro příjem dat použijte název hostitele zařízení IoT Edge brány pro parametr **názvu hostitele** . Název hostitele najdete v souboru config. yaml zařízení brány. 
+When defining the connection string for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
 ```C
 // If your downstream device uses X.509 authentication (self signed or X.509 CA) then
@@ -296,11 +295,11 @@ int main(void)
 
 #### <a name="nodejs"></a>Node.js
 
-Příklad programu Node. js ověřování, aby IoT Hub pomocí certifikátů X. 509, naleznete v ukázce [simple_sample_device_x509. js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js) sady Node. js IoT SDK. Tady jsou uvedené některé klíčové řádky této ukázky, které demonstrují proces ověřování.
+For an example of a Node.js program authenticating to IoT Hub with X.509 certificates, see the Node.js IoT SDK's [simple_sample_device_x509.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js) sample. Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-Při definování připojovacího řetězce pro vaše zařízení pro příjem dat použijte název hostitele zařízení IoT Edge brány pro parametr **názvu hostitele** . Název hostitele najdete v souboru config. yaml zařízení brány. 
+When defining the connection string for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
-Pokud používáte testovací certifikáty, které poskytuje IoT Edge úložiště Git, klíč k certifikátům je **1234**.
+If you're using the test certificates provided by the IoT Edge git repository, the key to the certificates is **1234**.
 
 ```node
 // String containing Hostname and Device Id in the following format:
@@ -325,9 +324,9 @@ client.setOptions(options);
 
 #### <a name="python"></a>Python
 
-Sada Python SDK aktuálně podporuje jenom certifikáty x509 a klíče ze souborů, ne ty, které jsou definované jako vložené. V následujícím příkladu jsou relevantní cesty k příponám uloženy v proměnných prostředí.
+The Python SDK currently only supports using X509 certificates and and keys from files, not ones which are defined inline. In the following example, relevant filepaths are stored in environment variables.
 
-Při definování názvu hostitele pro vaše zařízení pro příjem dat použijte název hostitele zařízení IoT Edge brány pro parametr **názvu hostitele** . Název hostitele najdete v souboru config. yaml zařízení brány. 
+When defining the hostname for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
 ```python
 import os
@@ -355,9 +354,9 @@ if __name__ == '__main__':
 
 #### <a name="java"></a>Java
 
-Příklad programu Java ověřujícího IoT Hub s certifikáty X. 509 naleznete v ukázce Java IoT SDK [SendEventX509. Java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) . Tady jsou uvedené některé klíčové řádky této ukázky, které demonstrují proces ověřování.
+For an example of a Java program authenticating to IoT Hub with X.509 certificates, see the Java IoT SDK's [SendEventX509.java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) sample. Some of the key lines of that sample are included here to demonstrate the authentication process.
 
-Při definování připojovacího řetězce pro vaše zařízení pro příjem dat použijte název hostitele zařízení IoT Edge brány pro parametr **názvu hostitele** . Název hostitele najdete v souboru config. yaml zařízení brány. 
+When defining the connection string for your downstream device, use the IoT Edge gateway device's hostname for the **HostName** parameter. The hostname can be found in the gateway device's config.yaml file. 
 
 ```java
 //PEM encoded representation of the public key certificate
@@ -388,4 +387,4 @@ DeviceClient client = new DeviceClient(connectionString, protocol, publicKeyCert
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dokončení tohoto článku byste měli mít zařízení IoT Edge fungující jako transparentní bránu a pro zařízení zaregistrovaná ve službě IoT Hub. Dále je potřeba nakonfigurovat zařízení pro příjem dat tak, aby důvěřovala zařízení brány a odesílala do ní zprávy. Další informace najdete v tématu [připojení zařízení pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md).
+By completing this article, you should have an IoT Edge device working as a transparent gateway and a downstream device registered with an IoT hub. Next, you need to configure your downstream devices to trust the gateway device and send messages to it. For more information, see [Connect a downstream device to an Azure IoT Edge gateway](how-to-connect-downstream-device.md).

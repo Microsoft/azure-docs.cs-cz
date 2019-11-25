@@ -1,20 +1,15 @@
 ---
-title: Kurz – vytvoření geograficky replikované Azure Container Registry
+title: Tutorial - Create geo-replicated registry
 description: Vytvořte registr kontejnerů Azure, nakonfigurujte geografickou replikaci, připravte image Dockeru a nasaďte ji do registru. První část třídílné série.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5a2aedfe93aa27f839c416c27ac028db1e650295
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931356"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454432"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
@@ -40,9 +35,9 @@ K dokončení tohoto kurzu potřebujete místní instalaci Dockeru. Docker posky
 
 Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v tomto kurzu. Proto doporučujeme místní instalaci Azure CLI a vývojového prostředí pro Docker.
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 Vyberte **Vytvořit prostředek** > **Kontejnery** > **Azure Container Registry**.
 
@@ -66,7 +61,7 @@ V celé zbývající části tohoto kurzu používáme `<acrName>` jako zástupn
 > Vzhledem k tomu, že registry kontejnerů Azure jsou obvykle dlouhodobé prostředky, které se používají na více hostitelích kontejnerů, doporučujeme vytvořit registr ve vlastní skupině prostředků. Když budete konfigurovat geograficky replikované registry a webhooky, umístí se tyto další prostředky do stejné skupiny prostředků.
 >
 
-## <a name="configure-geo-replication"></a>Konfigurace geografické replikace
+## <a name="configure-geo-replication"></a>Konfigurace georeplikace
 
 Když teď máte registr úrovně Premium, můžete nakonfigurovat geografickou replikaci. Vaše webová aplikace, kterou v dalším kurzu nakonfigurujete pro spouštění ve dvou oblastech, si pak bude moci stáhnout image kontejnerů z nejbližšího registru.
 
@@ -111,13 +106,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-Pokud nemáte `git` nainstalované, můžete [stáhnout archiv zip][acr-helloworld-zip] přímo z GitHubu.
+If you don't have `git` installed, you can [download the ZIP archive][acr-helloworld-zip] directly from GitHub.
 
 ## <a name="update-dockerfile"></a>Aktualizace souboru Dockerfile
 
 Soubor Dockerfile, který je součástí ukázky, ukazuje postup sestavení kontejneru. Spustí se z oficiální image [aspnetcore][dockerhub-aspnetcore], zkopíruje soubory aplikace do kontejneru, nainstaluje závislosti, zkompiluje výstup pomocí oficiální image [aspnetcore-build][dockerhub-aspnetcore-build] a nakonec sestaví optimalizovanou image aspnetcore.
 
-[Souboru Dockerfile][dockerfile] se nachází v `./AcrHelloworld/Dockerfile` v naklonovaném zdroji.
+The [Dockerfile][dockerfile] is located at `./AcrHelloworld/Dockerfile` in the cloned source.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base
@@ -210,7 +205,7 @@ Potom pomocí příkazu `docker push` nasdílejte image *acr-helloworld* do své
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Vzhledem k tomu, že jste pro registr nakonfigurovali geografickou replikaci, vaše image se pomocí tohoto jediného příkazu *automaticky replikuje do oblasti*Západní USA*i*Východní USA`docker push`.
+Vzhledem k tomu, že jste pro registr nakonfigurovali geografickou replikaci, vaše image se pomocí tohoto jediného příkazu `docker push` automaticky replikuje do oblasti *Západní USA* i *Východní USA*.
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží – Azure IoT Edge | Dokumentace Microsoftu
-description: Další standardní diagnostiky dovednosti pro Azure IoT Edge, třeba načítání protokoly a stavu komponenty použijte tento článek a při řešení běžných problémů
+title: Troubleshoot - Azure IoT Edge | Microsoft Docs
+description: Use this article to learn standard diagnostic skills for Azure IoT Edge, like retrieving component status and logs, and resolve common issues
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,25 +8,24 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 61c75c011ce25c3c7238ec75cf5ed579e677531f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: cc05d820a409500e66e2525654954e4dddf48e4b
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091377"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457260"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
 Pokud ve vašem prostředí dochází k potížím s provozem služby Azure IoT Edge, použijte tento článek jako vodítko k jejich řešení.
 
-## <a name="run-the-iotedge-check-command"></a>Spusťte příkaz ' check ' iotedge
+## <a name="run-the-iotedge-check-command"></a>Run the iotedge 'check' command
 
-Prvním krokem při řešení potíží IoT Edge by měl být použití `check` příkazu, který provádí shromažďování testů konfigurace a připojení pro běžné problémy. Příkaz je k dispozici ve [verzi 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) a novější. `check`
+Your first step when troubleshooting IoT Edge should be to use the `check` command, which performs a collection of configuration and connectivity tests for common issues. The `check` command is available in [release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) and later.
 
-Tento `check` příkaz můžete spustit následujícím způsobem, nebo pokud chcete zobrazit `--help` úplný seznam možností, přidejte příznak.
+You can run the `check` command as follows, or include the `--help` flag to see a complete list of options:
 
-* V Linuxu:
+* On Linux:
 
   ```bash
   sudo iotedge check
@@ -38,49 +37,49 @@ Tento `check` příkaz můžete spustit následujícím způsobem, nebo pokud ch
   iotedge check
   ```
 
-Typy kontrol spouštěných pomocí nástroje lze klasifikovat jako:
+The types of checks run by the tool can be classified as:
 
-* Kontroly konfigurace: Kontroluje podrobnosti, které by mohly zabránit tomu, aby se hraniční zařízení připojovala k cloudu, včetně problémů s *config. yaml* a modulem kontejnerů.
-* Kontroly připojení: Ověřuje, že modul runtime IoT Edge má přístup k portům na hostitelském zařízení a všechny součásti IoT Edge se můžou připojit k IoT Hub.
-* Kontroly připravenosti na produkci: Vyhledá Doporučené provozní postupy, jako je například stav certifikátů certifikační autorita zařízení (CA) a konfigurace souboru protokolu modulu.
+* Configuration checks: Examines details that could prevent Edge devices from connecting to the cloud, including issues with *config.yaml* and the container engine.
+* Connection checks: Verifies the IoT Edge runtime can access ports on the host device and all the IoT Edge components can connect to the IoT Hub.
+* Production readiness checks: Looks for recommended production best practices, such as the state of device certificate authority (CA) certificates and module log file configuration.
 
-Úplný seznam diagnostických kontrol najdete v tématu [integrovaná funkce řešení potíží](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
+For a complete list of diagnostic checks, see [Built-in troubleshooting functionality](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
 
 ## <a name="standard-diagnostic-steps"></a>Standardní postup diagnostiky
 
-Pokud narazíte na problém, můžete získat další informace o stavu zařízení IoT Edge. Projděte si protokoly kontejnerů a zprávy, které předávají a ze zařízení. Ke shromáždění informací použijte příkazy a nástroje uvedené v této části.
+If you encounter an issue, you can learn more about the state of your IoT Edge device by reviewing the container logs and the messages that pass to and from the device. Ke shromáždění informací použijte příkazy a nástroje uvedené v této části.
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Kontrolovat stav IoT Edge Security Manageru a jeho protokolů
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Check the status of the IoT Edge Security Manager and its logs
 
-V Linuxu:
-- Chcete-li zobrazit stav správce zabezpečení Edge IoT:
+On Linux:
+- To view the status of the IoT Edge Security Manager:
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-- Chcete-li zobrazit protokoly správce zabezpečení Edge IoT:
+- To view the logs of the IoT Edge Security Manager:
 
     ```bash
     sudo journalctl -u iotedge -f
     ```
 
-- Zobrazení podrobnějších protokoly správce zabezpečení Edge IoT:
+- To view more detailed logs of the IoT Edge Security Manager:
 
-   - Upravte nastavení démon iotedge:
+   - Edit the iotedge daemon settings:
 
       ```bash
       sudo systemctl edit iotedge.service
       ```
    
-   - Aktualizujte následující řádky:
+   - Update the following lines:
     
       ```
       [Service]
       Environment=IOTEDGE_LOG=edgelet=debug
       ```
     
-   - Restartujte démona zabezpečení IoT Edge:
+   - Restart the IoT Edge Security Daemon:
     
       ```bash
       sudo systemctl cat iotedge.service
@@ -89,24 +88,24 @@ V Linuxu:
       ```
 
 Ve Windows:
-- Chcete-li zobrazit stav správce zabezpečení Edge IoT:
+- To view the status of the IoT Edge Security Manager:
 
    ```powershell
    Get-Service iotedge
    ```
 
-- Chcete-li zobrazit protokoly správce zabezpečení Edge IoT:
+- To view the logs of the IoT Edge Security Manager:
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Pokud není spuštěn Správce zabezpečení IoT Edge, ověřte váš konfigurační soubor yaml
+### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>If the IoT Edge Security Manager is not running, verify your yaml configuration file
 
 > [!WARNING]
-> Soubory YAML nemůžou jako odsazení obsahovat tabulátory. Místo toho použijte 2 mezery.
+> YAML files cannot contain tabs as indentation. Use 2 spaces instead.
 
-V Linuxu:
+On Linux:
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
@@ -118,19 +117,19 @@ Ve Windows:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-### <a name="check-container-logs-for-issues"></a>Zkontrolujte protokoly kontejneru pro problémy
+### <a name="check-container-logs-for-issues"></a>Check container logs for issues
 
-Po spuštění démona zabezpečení IoT Edge, prohlédněte si protokoly kontejnerů a detekujte problémy. Začněte s nasazenými kontejnery a pak se podívejte do kontejnerů, které tvoří modul runtime IoT Edge: edgeAgent a edgeHub. Protokoly agenta IoT Edge obvykle poskytují informace o životním cyklu každého kontejneru. Protokoly centra IoT Edge poskytují informace o zasílání zpráv a směrování. 
+Once the IoT Edge Security Daemon is running, look at the logs of the containers to detect issues. Start with your deployed containers, then look at the containers that make up the IoT Edge runtime: edgeAgent and edgeHub. The IoT Edge agent logs typically provide info on the lifecycle of each container. The IoT Edge hub logs provide info on messaging and routing. 
 
    ```cmd
    iotedge logs <container name>
    ```
 
-### <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Zobrazení zpráv, které procházejí centrem centra IoT Edge
+### <a name="view-the-messages-going-through-the-iot-edge-hub"></a>View the messages going through the IoT Edge hub
 
-Zprávy můžete zobrazit prostřednictvím centra IoT Edge a shromažďovat přehledy z podrobných protokolů z kontejnerů modulu runtime. Chcete-li zapnout podrobné protokolování na těchto kontejnerů, nastavte `RuntimeLogLevel` v konfiguračním souboru yaml. Otevřít soubor:
+You can view the messages going through the IoT Edge hub, and gather insights from verbose logs from the runtime containers. To turn on verbose logs on these containers, set `RuntimeLogLevel` in your yaml configuration file. To open the file:
 
-V Linuxu:
+On Linux:
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
@@ -142,7 +141,7 @@ Ve Windows:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-Ve výchozím nastavení `agent` element bude vypadat jako v následujícím příkladu:
+By default, the `agent` element will look like the following example:
 
    ```yaml
    agent:
@@ -154,7 +153,7 @@ Ve výchozím nastavení `agent` element bude vypadat jako v následujícím př
        auth: {}
    ```
 
-Nahraďte `env: {}` pomocí:
+Replace `env: {}` with:
 
    ```yaml
    env:
@@ -162,30 +161,30 @@ Nahraďte `env: {}` pomocí:
    ```
 
    > [!WARNING]
-   > Soubory YAML nesmí obsahovat tabulátory jako identation. Místo toho použijte 2 mezery.
+   > YAML files cannot contain tabs as identation. Use 2 spaces instead.
 
-Uložte soubor a restartujte správce zabezpečení IoT Edge.
+Save the file and restart the IoT Edge security manager.
 
-Můžete zkontrolovat také zprávy odesílané mezi službou IoT Hub a hraničními zařízeními IoT. Zobrazte tyto zprávy pomocí rozšíření [azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve rozšíření Azure IoT Toolkit) pro Visual Studio Code. Další informace najdete v tématu [užitečný nástroj pro vývoj se službou Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
+Můžete zkontrolovat také zprávy odesílané mezi službou IoT Hub a hraničními zařízeními IoT. View these messages by using the [Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) extension (formerly Azure IoT Toolkit extension) for Visual Studio Code. For more information, see [Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
-### <a name="restart-containers"></a>Restartujte kontejnery
-Po prozkoumání v protokolech a zprávách informace, můžete zkusit restartovat kontejnerů:
+### <a name="restart-containers"></a>Restart containers
+After investigating the logs and messages for information, you can try restarting containers:
 
 ```
 iotedge restart <container name>
 ```
 
-Restartujte kontejnerů modulu runtime IoT Edge:
+Restart the IoT Edge runtime containers:
 
 ```
 iotedge restart edgeAgent && iotedge restart edgeHub
 ```
 
-### <a name="restart-the-iot-edge-security-manager"></a>Restartovat správce zabezpečení IoT Edge
+### <a name="restart-the-iot-edge-security-manager"></a>Restart the IoT Edge security manager
 
-Problém je stále uchování, můžete restartováním správce zabezpečení IoT Edge.
+If issue is still persisting, you can try restarting the IoT Edge security manager.
 
-V Linuxu:
+On Linux:
 
    ```cmd
    sudo systemctl restart iotedge
@@ -199,11 +198,11 @@ Ve Windows:
    Start-Service iotedge
    ```
 
-## <a name="iot-edge-agent-stops-after-about-a-minute"></a>Agent IoT Edge se zastaví po přibližně minutě.
+## <a name="iot-edge-agent-stops-after-about-a-minute"></a>IoT Edge agent stops after about a minute
 
-Modul edgeAgent se spustí a úspěšně se spustí přibližně minutu a pak se zastaví. Protokoly signalizují, že se agent IoT Edge pokusí připojit k IoT Hub přes AMQP a pak se pokusí připojit pomocí AMQP přes WebSocket. Pokud se to nepovede, agent IoT Edge se ukončí. 
+The edgeAgent module starts and runs successfully for about a minute, then stops. The logs indicate that the IoT Edge agent attempts to connect to IoT Hub over AMQP, and then attempts to connect using AMQP over WebSocket. When that fails, the IoT Edge agent exits. 
 
-Příklady protokolů edgeAgent:
+Example edgeAgent logs:
 
 ```output
 2017-11-28 18:46:19 [INF] - Starting module management agent. 
@@ -212,19 +211,19 @@ Příklady protokolů edgeAgent:
 2017-11-28 18:46:49 [INF] - Edge agent attempting to connect to IoT Hub via AMQP over WebSocket... 
 ```
 
-**Hlavní příčina**
+**Root cause**
 
-Konfigurace sítě v hostitelské síti brání tomu, aby agent IoT Edge dosáhnout sítě. Agent se nejprve pokusí připojit přes protokol AMQP (port 5671). Pokud se nepovede, zkusí Websocket (port 443).
+A networking configuration on the host network is preventing the IoT Edge agent from reaching the network. Agent se nejprve pokusí připojit přes protokol AMQP (port 5671). If the connection fails, it tries WebSockets (port 443).
 
 Modul runtime IoT Edge nastaví pro každý z modulů síť, na které budou komunikovat. V Linuxu je tato síť síťovým mostem. Ve Windows využívá překlad adres (NAT). K tomuto problému častěji dochází na zařízeních s Windows využívajících kontejnery Windows a síť s překladem adres (NAT). 
 
-**Řešení**
+**Resolution**
 
 Ujistěte se, že se IP adresy přiřazené k tomuto síťovému mostu nebo síti NAT směrují do internetu. Někdy konfigurace sítě VPN na hostiteli přepíše síť IoT Edge. 
 
-## <a name="iot-edge-hub-fails-to-start"></a>Nepodařilo se spustit centrum IoT Edge.
+## <a name="iot-edge-hub-fails-to-start"></a>IoT Edge hub fails to start
 
-Nepodařilo se spustit modul edgeHub a vytiskne následující zprávu do protokolů: 
+The edgeHub module fails to start, and prints the following message to the logs: 
 
 ```output
 One or more errors occurred. 
@@ -233,51 +232,51 @@ One or more errors occurred.
 Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allocated\"}\n) 
 ```
 
-**Hlavní příčina**
+**Root cause**
 
-Nějaký jiný proces na hostitelském počítači používá port 443. Rozbočovač IoT Edge mapuje porty 5671 a 443 pro použití ve scénářích bran. Toto mapování portů selže, pokud daný port již používá jiný proces. 
+Nějaký jiný proces na hostitelském počítači používá port 443. The IoT Edge hub maps ports 5671 and 443 for use in gateway scenarios. Toto mapování portů selže, pokud daný port již používá jiný proces. 
 
-**Řešení**
+**Resolution**
 
 Vyhledejte a zastavte proces používající port 443. Tímto procesem je obvykle webový server.
 
-## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>Agent IoT Edge nemá přístup k imagi modulu (403).
-Nepodařilo se spustit kontejner a v protokolech edgeAgent se zobrazí chyba 403. 
+## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>IoT Edge agent can't access a module's image (403)
+A container fails to run, and the edgeAgent logs show a 403 error. 
 
-**Hlavní příčina**
+**Root cause**
 
-Agent IoT Edge nemá oprávnění pro přístup k imagi modulu. 
+The Iot Edge agent doesn't have permissions to access a module's image. 
 
-**Řešení**
+**Resolution**
 
-Ujistěte se, že jsou vaše přihlašovací údaje registru správně zadána v manifestu nasazení
+Make sure that your registry credentials are correctly specified in your deployment manifest
 
-## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>Démon zabezpečení IoT Edge se nezdaří s platný název hostitele
+## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>IoT Edge security daemon fails with an invalid hostname
 
-Příkaz `sudo journalctl -u iotedge` selže a zobrazí následující zprávu: 
+The command `sudo journalctl -u iotedge` fails and prints the following message: 
 
 ```output
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
 ```
 
-**Hlavní příčina**
+**Root cause**
 
-Modul runtime IoT Edge podporuje pouze názvy hostitelů, které jsou kratší než 64 znaků. Fyzické počítače obvykle nemusí dlouhé názvy hostitelů, ale tento problém je běžnější na virtuálním počítači. Automaticky generované názvy hostitelů pro virtuální počítače s Windows, které jsou hostované v Azure, zejména, jsou obvykle dlouhé. 
+The IoT Edge runtime can only support hostnames that are shorter than 64 characters. Physical machines usually don't have long hostnames, but the issue is more common on a virtual machine. The automatically generated hostnames for Windows virtual machines hosted in Azure, in particular, tend to be long. 
 
-**Řešení**
+**Resolution**
 
-Když se zobrazí tato chyba, ho mohli vyřešit tak, že konfigurace názvu DNS virtuálního počítače a pak nastavení název DNS jako název hostitele v příkazu pro nastavení.
+When you see this error, you can resolve it by configuring the DNS name of your virtual machine, and then setting the DNS name as the hostname in the setup command.
 
-1. Na webu Azure Portal přejděte na stránku přehled vašeho virtuálního počítače. 
-2. Vyberte **konfigurace** pod názvem DNS. Pokud je váš virtuální počítač už nakonfigurovaný název DNS, není nutné konfigurovat nové. 
+1. In the Azure portal, navigate to the overview page of your virtual machine. 
+2. Select **configure** under DNS name. If your virtual machine already has a DNS name configured, you don't need to configure a new one. 
 
-   ![Nakonfigurujte název DNS virtuálního počítače](./media/troubleshoot/configure-dns.png)
+   ![Configure DNS name of virtual machine](./media/troubleshoot/configure-dns.png)
 
-3. Zadejte hodnotu pro **popisku názvu DNS** a vyberte **Uložit**.
-4. Zkopírujte nový název DNS, které by měly být ve formátu  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
-5. Ve virtuálním počítači použijte následující příkaz pro nastavení modulu runtime IoT Edge s názvem DNS:
+3. Provide a value for **DNS name label** and select **Save**.
+4. Copy the new DNS name, which should be in the format **\<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com**.
+5. Inside the virtual machine, use the following command to set up the IoT Edge runtime with your DNS name:
 
-   - V Linuxu:
+   - On Linux:
 
       ```bash
       sudo nano /etc/iotedge/config.yaml
@@ -289,26 +288,26 @@ Když se zobrazí tato chyba, ho mohli vyřešit tak, že konfigurace názvu DNS
       notepad C:\ProgramData\iotedge\config.yaml
       ```
 
-## <a name="stability-issues-on-resource-constrained-devices"></a>Problémy se stabilitou u prostředku omezené zařízení 
-Můžete setkat s problémy stabilitu na omezené zařízeními, jako je Raspberry Pi, zejména v případě, že se používá jako brána. Mezi příznaky patří nedostatek paměti výjimky v modulu Centrum edge, podřízené zařízení se nemohou připojit nebo zařízení zastaví odesílání telemetrických zpráv po několik hodin.
+## <a name="stability-issues-on-resource-constrained-devices"></a>Stability issues on resource constrained devices 
+You may encounter stability problems on constrained devices like the Raspberry Pi, especially when used as a gateway. Symptoms include out of memory exceptions in the edge hub module, downstream devices cannot connect or the device stops sending telemetry messages after a few hours.
 
-**Hlavní příčina**
+**Root cause**
 
-Rozbočovač IoT Edge, který je součástí modulu runtime IoT Edge, je ve výchozím nastavení optimalizován pro výkon a pokusí se přidělit velké bloky paměti. Tato optimalizace není ideální pro omezené hraničními zařízeními a může způsobit problémy se stabilitou.
+The IoT Edge hub, which is part of the IoT Edge runtime, is optimized for performance by default and attempts to allocate large chunks of memory. This optimization is not ideal for constrained edge devices and can cause stability problems.
 
-**Řešení**
+**Resolution**
 
-Pro Centrum IoT Edge nastavte proměnnou prostředí **OptimizeForPerformance** na **false**. Chcete-li to provést dvěma způsoby:
+For the IoT Edge hub, set an environment variable **OptimizeForPerformance** to **false**. There are two ways to do this:
 
-V uživatelském rozhraní: 
+In the UI: 
 
-Na portálu přejděte na **Podrobnosti o** > zařízení**nastavit moduly** > **Konfigurovat nastavení pokročilého běhu na Edge**. Vytvořte proměnnou prostředí pro modul hraničního centra s názvem *OptimizeForPerformance* , který je nastaven na *hodnotu false*.
+In the portal, navigate to **Device Details** > **Set Modules** > **Configure advanced Edge Runtime settings**. Create an environment variable for the Edge Hub module called *OptimizeForPerformance* that is set to *false*.
 
-![OptimizeForPerformance nastavena na hodnotu false](./media/troubleshoot/optimizeforperformance-false.png)
+![OptimizeForPerformance set to false](./media/troubleshoot/optimizeforperformance-false.png)
 
 **OR**
 
-V manifestu nasazení:
+In the deployment manifest:
 
 ```json
   "edgeHub": {
@@ -323,16 +322,16 @@ V manifestu nasazení:
       }
     },
 ```
-## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Nelze získat IoT Edge démon protokolování pro Windows
-Pokud se zobrazí při použití EventLogException `Get-WinEvent` na Windows, zkontrolujte položky registru.
+## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Can't get the IoT Edge daemon logs on Windows
+If you get an EventLogException when using `Get-WinEvent` on Windows, check your registry entries.
 
-**Hlavní příčina**
+**Root cause**
 
-`Get-WinEvent` Příkaz Powershellu využívá vyskytovat najít protokoly určitou položku registru `ProviderName`.
+The `Get-WinEvent` PowerShell command relies on a registry entry to be present to find logs by a specific `ProviderName`.
 
-**Řešení**
+**Resolution**
 
-Nastavte položku registru pro démona IoT Edge. Vytvoření **iotedge.reg** soubor s následujícím obsahem a importu v registru Windows na ni poklikáte nebo pomocí `reg import iotedge.reg` příkaz:
+Set a registry entry for the IoT Edge daemon. Create a **iotedge.reg** file with the following content, and import in to the Windows Registry by double-clicking it or using the `reg import iotedge.reg` command:
 
 ```
 Windows Registry Editor Version 5.00
@@ -343,50 +342,50 @@ Windows Registry Editor Version 5.00
 "TypesSupported"=dword:00000007
 ```
 
-## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>Modul IoT Edge se nepodařilo odeslat zprávu do edgeHub kvůli chybě 404
+## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IoT Edge module fails to send a message to the edgeHub with 404 error
 
-Vlastní modul IoT Edge se nepodařilo odeslat zprávu do edgeHub s 404 `Module not found` chyby. Proces démon IoT Edge zobrazí následující zprávu do protokolů: 
+A custom IoT Edge module fails to send a message to the edgeHub with a 404 `Module not found` error. The IoT Edge daemon prints the following message to the logs: 
 
 ```output
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
 ```
 
-**Hlavní příčina**
+**Root cause**
 
-Proces démon IoT Edge vynutí proces identifikace pro všechny moduly propojíte edgeHub z bezpečnostních důvodů. Ověřuje, že všechny zprávy modulem pocházejí z hlavní proces ID modulu. Pokud zpráva je odesíláno modul z ID jiného procesu než původně vytvořeno, odmítne zprávy s 404 chybovou zprávu.
+The IoT Edge daemon enforces process identification for all modules connecting to the edgeHub for security reasons. It verifies that all messages being sent by a module come from the main process ID of the module. If a message is being sent by a module from a different process ID than initially established, it will reject the message with a 404 error message.
 
-**Řešení**
+**Resolution**
 
-Od verze 1.0.7 jsou všechny procesy modulů autorizované pro připojení. Pokud upgrade na 1.0.7 není možný, proveďte následující kroky. Další informace najdete v tématu protokol [změn verze 1.0.7](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
+As of version 1.0.7, all module processes are authorized to connect. If upgrading to 1.0.7 isn't possible, complete the following steps. For more information, see the [1.0.7 release changelog](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
 
-Ujistěte se, že stejné ID procesu je vždy používá vlastní modul IoT Edge pro odesílání zpráv edgeHub. Například `ENTRYPOINT` se ujistěte, že `CMD` místo příkazu v souboru Docker, protože `CMD` povede k jednomu ID procesu pro modul a jiné ID procesu pro příkaz bash, který spouští hlavní program, zatímco `ENTRYPOINT` to bude mít za následek ID jednoho procesu.
+Make sure that the same process ID is always used by the custom IoT Edge module to send messages to the edgeHub. For instance, make sure to `ENTRYPOINT` instead of `CMD` command in your Docker file, since `CMD` will lead to one process ID for the module and another process ID for the bash command running the main program whereas `ENTRYPOINT` will lead to a single process ID.
 
 
-## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Konfigurace pravidla brány firewall a portů pro nasazení IoT Edge
-Azure IoT Edge umožňuje komunikaci z místního serveru do cloudu Azure pomocí podporovaných protokolů IoT Hub najdete v tématu [Volba komunikačního protokolu](../iot-hub/iot-hub-devguide-protocols.md). Pro zvýšení zabezpečení komunikačních kanálů mezi Azure IoT Edge a Centrum IoT Azure jsou vždy nakonfigurované jako odchozí. Tato konfigurace je založená na [komunikace s asistencí služby](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), což minimalizuje napadení škodlivým entity prozkoumat. Příchozí komunikace je pouze požadovaná u konkrétních scénářů, kde Azure IoT Hub potřebuje k odesílání zpráv zařízení Azure IoT Edge. Zprávy typu cloud zařízení jsou chráněny pomocí zabezpečené kanály TLS a můžete dál zabezpečit pomocí certifikátů X.509 a modulů zařízení TPM. Správce zabezpečení Azure IoT Edge se řídí, jak může být tato komunikace naváže, naleznete v tématu [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
+## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Firewall and Port configuration rules for IoT Edge deployment
+Azure IoT Edge allows communication from an on-premises server to Azure cloud using supported IoT Hub protocols, see [choosing a communication protocol](../iot-hub/iot-hub-devguide-protocols.md). For enhanced security, communication channels between Azure IoT Edge and Azure IoT Hub are always configured to be Outbound. This configuration is based on the [Services Assisted Communication pattern](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), which minimizes the attack surface for a malicious entity to explore. Inbound communication is only required for specific scenarios where Azure IoT Hub needs to push messages to the Azure IoT Edge device. Cloud-to-device messages are protected using secure TLS channels and can be further secured using X.509 certificates and TPM device modules. The Azure IoT Edge Security Manager governs how this communication can be established, see [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
 
-I když IoT Edge poskytuje rozšířené konfigurace pro zabezpečení modulu runtime Azure IoT Edge a nasadit moduly, je stále závislá na základní konfiguraci počítače a sítě. Proto je nutné zajistit, aby byla pro zabezpečená komunikace s cloudovou komunikací nastavena správná pravidla sítě a brány firewall. Následující tabulku lze použít jako vodítko při konfiguraci pravidel brány firewall pro základní servery, kde je hostovaný Azure IoT Edge Runtime:
+While IoT Edge provides enhanced configuration for securing Azure IoT Edge runtime and deployed modules, it is still dependent on the underlying machine and network configuration. Hence, it is imperative to ensure proper network and firewall rules are set up for secure edge to cloud communication. The following table can be used as a guideline when configuration firewall rules for the underlying servers where Azure IoT Edge runtime is hosted:
 
-|Protocol|Port|příchozí|Odchozí|Doprovodné materiály|
+|Protocol (Protokol)|Port|Incoming|Outgoing|Pokyny|
 |--|--|--|--|--|
-|MQTT|8883|BLOKOVANÉ (výchozí)|BLOKOVANÉ (výchozí)|<ul> <li>Nakonfigurujte odchozí (odchozí) být otevřít, když jako protokol pro komunikaci pomocí protokolu MQTT.<li>IoT Edge není podporován. 1883 pro MQTT. <li>Příchozí připojení (příchozí) by se zablokovat.</ul>|
-|AMQP|5671|BLOKOVANÉ (výchozí)|Otevřít (výchozí)|<ul> <li>Výchozí komunikační protokol pro IoT Edge. <li> Musí být nakonfigurován Open Azure IoT Edge není nakonfigurovaný pro jiné podporované protokoly nebo je požadovaný komunikační protokol AMQP.<li>5672 pro AMQP nepodporuje IoT Edge.<li>Blokovat tento port při použití Azure IoT Edge různé IoT Hub podporovaný protokol.<li>Příchozí připojení (příchozí) by se zablokovat.</ul></ul>|
-|HTTPS|443|BLOKOVANÉ (výchozí)|Otevřít (výchozí)|<ul> <li>Nakonfigurujte odchozí (odchozí) bude otevřít na 443 pro IoT Edge zřizování. Tato konfigurace je nutná, pokud používáte ruční skripty nebo Azure IoT zařízení zřizování služby (DPS). <li>Příchozí připojení (příchozí) by měl být otevřené pouze u konkrétních scénářů: <ul> <li>  Pokud máte transparentní brány pomocí zařízení typu list, které může odesílat požadavky metod. Port 443 v takovém případě nemusí být otevřený, aby externí sítě připojit k IOT hub nebo poskytuje služby IOT hub pomocí Azure IoT Edge. Proto může být příchozí pravidlo s omezeným přístupem můžete pouze otevřít příchozí (příchozí) z interní sítě. <li> Klient zařízení (C2D) scénáře.</ul><li>80 pro protokol HTTP není podporován IoT Edge.<li>Pokud se v podnikové síti; nedá nakonfigurovat jiných protokolů než HTTP (například připojení přes AMQP nebo MQTT) zprávy odesílat přes WebSockets. Port 443 se v takovém případě používat pro komunikaci pomocí protokolu WebSocket.</ul>|
+|MQTT|8883|BLOCKED (Default)|BLOCKED (Default)|<ul> <li>Configure Outgoing (Outbound) to be Open when using MQTT as the communication protocol.<li>1883 for MQTT is not supported by IoT Edge. <li>Incoming (Inbound) connections should be blocked.</ul>|
+|AMQP|5671|BLOCKED (Default)|OPEN (Default)|<ul> <li>Default communication protocol for IoT Edge. <li> Must be configured to be Open if Azure IoT Edge is not configured for other supported protocols or AMQP is the desired communication protocol.<li>5672 for AMQP is not supported by IoT Edge.<li>Block this port when Azure IoT Edge uses a different IoT Hub supported protocol.<li>Incoming (Inbound) connections should be blocked.</ul></ul>|
+|HTTPS|443|BLOCKED (Default)|OPEN (Default)|<ul> <li>Configure Outgoing (Outbound) to be Open on 443 for IoT Edge provisioning. This configuration is required when using manual scripts or Azure IoT Device Provisioning Service (DPS). <li>Incoming (Inbound) connection should be Open only for specific scenarios: <ul> <li>  If you have a transparent gateway with leaf devices that may send method requests. In this case, Port 443 does not need to be open to external networks to connect to IoTHub or provide IoTHub services through Azure IoT Edge. Thus the incoming rule could be restricted to only open Incoming (Inbound) from the internal network. <li> For Client to Device (C2D) scenarios.</ul><li>80 for HTTP is not supported by IoT Edge.<li>If non-HTTP protocols (for example, AMQP or MQTT) cannot be configured in the enterprise; the messages can be sent over WebSockets. Port 443 will be used for WebSocket communication in that case.</ul>|
 
-## <a name="edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Modul Edge agent průběžně hlásí prázdný konfigurační soubor a žádné moduly na zařízení nezačínají.
+## <a name="edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Edge Agent module continually reports 'empty config file' and no modules start on the device
 
-Zařízení má potíže se spouštěním modulů definovaných v nasazení. Běží jenom edgeAgent, ale průběžně hlásí prázdný konfigurační soubor...
+The device has trouble starting modules defined in the deployment. Only the edgeAgent is running but continually reporting 'empty config file...'.
 
-**Hlavní příčina**
+**Root cause**
 
-Ve výchozím nastavení IoT Edge spouští moduly ve vlastní izolované síti kontejneru. Zařízení může mít potíže s překladem názvů DNS v rámci této privátní sítě.
+By default, IoT Edge starts modules in their own isolated container network. The device may be having trouble with DNS name resolution within this private network.
 
-**Řešení**
+**Resolution**
 
 
-**Možnost 1: Nastavení serveru DNS v nastavení modulu pro vytvoření kontejneru**
+**Option 1: Set DNS server in container engine settings**
 
-Zadejte server DNS pro vaše prostředí v nastavení kontejnerového modulu, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` určení serveru DNS, který chcete použít. Příklad:
+Specify the DNS server for your environment in the container engine settings which will apply to all container modules started by the engine. Create a file named `daemon.json` specifying the DNS server to use. Například:
 
 ```
 {
@@ -394,27 +393,27 @@ Zadejte server DNS pro vaše prostředí v nastavení kontejnerového modulu, kt
 }
 ```
 
-Výše uvedený příklad nastaví server DNS na veřejně dostupnou službu DNS. Pokud hraniční zařízení nemůže získat přístup k této IP adrese z jeho prostředí, nahraďte ho adresou serveru DNS, která je přístupná.
+The above example sets the DNS server to a publicly accessible DNS service. If the edge device cannot access this IP from its environment, replace it with DNS server address that is accessible.
 
-Umístit `daemon.json` do správného umístění pro vaši platformu: 
+Place `daemon.json` in the right location for your platform: 
 
-| Platforma | Location |
+| Platforma | Umístění |
 | --------- | -------- |
 | Linux | `/etc/docker` |
-| Hostitel s Windows s kontejnery Windows | `C:\ProgramData\iotedge-moby\config` |
+| Windows host with Windows containers | `C:\ProgramData\iotedge-moby\config` |
 
-Pokud umístění již obsahuje `daemon.json` soubor, přidejte do něj klíč **DNS** a soubor uložte.
+If the location already contains `daemon.json` file, add the **dns** key to it and save the file.
 
-*Restartujte modul kontejnerů, aby se aktualizace projevily.*
+*Restart the container engine for the updates to take effect*
 
 | Platforma | Příkaz |
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
-| Windows (PowerShell pro správu) | `Restart-Service iotedge-moby -Force` |
+| Windows (Admin Powershell) | `Restart-Service iotedge-moby -Force` |
 
-**Možnost 2: Nastavení serveru DNS v nasazení IoT Edge na modul**
+**Option 2: Set DNS server in IoT Edge deployment per module**
 
-Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Příklad:
+You can set DNS server for each module's *createOptions* in the IoT Edge deployment. Například:
 
 ```
 "createOptions": {
@@ -426,10 +425,10 @@ Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. P�
 }
 ```
 
-Nezapomeňte tuto hodnotu nastavit i pro moduly *edgeAgent* a *edgeHub* . 
+Be sure to set this for the *edgeAgent* and *edgeHub* modules as well. 
 
-## <a name="next-steps"></a>Další postup
-Myslíte si, že jste v platformě IoT Edge našli chybu? [Odešlete problém](https://github.com/Azure/iotedge/issues) tak, aby Pokračujeme ke zlepšení. 
+## <a name="next-steps"></a>Další kroky
+Myslíte si, že jste v platformě IoT Edge našli chybu? [Submit an issue](https://github.com/Azure/iotedge/issues) so that we can continue to improve. 
 
-Pokud máte další dotazy, vytvořit [žádost o podporu](https://portal.azure.com/#create/Microsoft.Support) nápovědu. 
+If you have more questions, create a [Support request](https://portal.azure.com/#create/Microsoft.Support) for help. 
 

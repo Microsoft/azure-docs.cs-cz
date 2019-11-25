@@ -1,66 +1,61 @@
 ---
-title: Azure Container Registry ověřování pomocí spravované identity
-description: Poskytněte přístup k obrázkům v soukromém registru kontejneru pomocí uživatelsky přiřazené spravované identity Azure, která je přiřazená uživatelem nebo systémem.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Ověřování pomocí spravované identity
+description: Provide access to images in your private container registry by using a user-assigned or system-assigned managed Azure identity.
 ms.topic: article
 ms.date: 01/16/2019
-ms.author: danlep
-ms.openlocfilehash: 0672fb71ba4f56d0faf332df029100cb48741c8b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68309890"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456492"
 ---
-# <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Použití spravované identity Azure k ověření ve službě Azure Container Registry 
+# <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Use an Azure managed identity to authenticate to an Azure container registry 
 
-Použijte [spravovanou identitu pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) pro ověření ve službě Azure Container Registry z jiného prostředku Azure, aniž byste museli poskytovat nebo spravovat přihlašovací údaje registru. Například na virtuálním počítači Linux nastavte uživatelsky přiřazenou nebo systémově přiřazenou spravovanou identitu pro přístup k imagím kontejneru z registru kontejnerů, a to jednoduše při použití veřejného registru.
+Use a [managed identity for Azure resources](../active-directory/managed-identities-azure-resources/overview.md) to authenticate to an Azure container registry from another Azure resource, without needing to provide or manage registry credentials. For example, set up a user-assigned or system-assigned managed identity on a Linux VM to access container images from your container registry, as easily as you use a public registry.
 
-V tomto článku se dozvíte víc o spravovaných identitách a o tom, jak:
+For this article, you learn more about managed identities and how to:
 
 > [!div class="checklist"]
-> * Povolení identity přiřazené uživateli nebo systému přiřazené systémem na virtuálním počítači Azure
-> * Udělení identity přístupu ke službě Azure Container Registry
-> * Použití spravované identity pro přístup k registru a stažení Image kontejneru 
+> * Enable a user-assigned or system-assigned identity on an Azure VM
+> * Grant the identity access to an Azure container registry
+> * Use the managed identity to access the registry and pull a container image 
 
-Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.55 nebo novější, abyste mohli vytvořit prostředky Azure. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+To create the Azure resources, this article requires that you run the Azure CLI version 2.0.55 or later. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-K nastavení registru kontejneru a vložení image kontejneru do něj je také nutné nainstalovat Docker místně. Docker poskytuje balíčky, které snadno konfigurují Docker na jakémkoli systému [MacOS][docker-mac], [Windows][docker-windows]nebo [Linux][docker-linux] .
+To set up a container registry and push a container image to it, you must also have Docker installed locally. Docker provides packages that easily configure Docker on any [macOS][docker-mac], [Windows][docker-windows], or [Linux][docker-linux] system.
 
-## <a name="why-use-a-managed-identity"></a>Proč používat spravovanou identitu?
+## <a name="why-use-a-managed-identity"></a>Why use a managed identity?
 
-Spravovaná identita pro prostředky Azure poskytuje služby Azure s automaticky spravovanou identitou v Azure Active Directory (Azure AD). Pomocí spravované identity můžete nakonfigurovat [určité prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), včetně virtuálních počítačů. Pak použijte identitu pro přístup k dalším prostředkům Azure bez předání přihlašovacích údajů v kódu nebo skriptech.
+A managed identity for Azure resources provides Azure services with an automatically managed identity in Azure Active Directory (Azure AD). You can configure [certain Azure resources](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), including virtual machines, with a managed identity. Then, use the identity to access other Azure resources, without passing credentials in code or scripts.
 
-Spravované identity mají dva typy:
+Managed identities are of two types:
 
-* *Uživatelsky přiřazené identity*, které můžete přiřadit k více prostředkům a uchovávat tak dlouho, dokud budete chtít. Uživatelsky přiřazené identity jsou momentálně ve verzi Preview.
+* *User-assigned identities*, which you can assign to multiple resources and persist for as long as your want. User-assigned identities are currently in preview.
 
-* *Identita spravovaná systémem*, která je jedinečná pro konkrétní prostředek, jako je jeden virtuální počítač a který trvá po dobu životnosti daného prostředku.
+* A *system-managed identity*, which is unique to a specific resource like a single virtual machine and lasts for the lifetime of that resource.
 
-Po nastavení prostředku Azure pomocí spravované identity Udělte identitě požadovaný přístup k jinému prostředku, stejně jako jakýkoli objekt zabezpečení. Přiřaďte například roli spravovaná identita s oprávněním Pull, push a pull nebo jinými oprávněními k privátnímu registru v Azure. (Úplný seznam rolí registru najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md).) Jednomu nebo více prostředkům můžete přidělit přístup k identitě.
+After you set up an Azure resource with a managed identity, give the identity the access you want to another resource, just like any security principal. For example, assign a managed identity a role with pull, push and pull, or other permissions to a private registry in Azure. (For a complete list of registry roles, see [Azure Container Registry roles and permissions](container-registry-roles.md).) You can give an identity access to one or more resources.
 
-Pak použijte identitu k ověření pro libovolnou [službu, která podporuje ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), a to bez jakýchkoli přihlašovacích údajů ve vašem kódu. Pokud chcete používat identitu pro přístup ke službě Azure Container Registry z virtuálního počítače, ověříte pomocí Azure Resource Manager. V závislosti na vašem scénáři vyberte způsob ověřování pomocí spravované identity.
+Then, use the identity to authenticate to any [service that supports Azure AD authentication](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), without any credentials in your code. To use the identity to access an Azure container registry from a virtual machine, you authenticate with Azure Resource Manager. Choose how to authenticate using the managed identity, depending on your scenario:
 
-* Programové [získání přístupového tokenu Azure AD](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) pomocí volání http nebo REST
+* [Acquire an Azure AD access token](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) programmatically using HTTP or REST calls
 
-* Použití [sad Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md)
+* Use the [Azure SDKs](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md)
 
-* Přihlaste se k [Azure CLI nebo PowerShellu](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) s identitou. 
+* [Sign into Azure CLI or PowerShell](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) with the identity. 
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
-Pokud ještě nemáte službu Azure Container Registry, vytvořte registr a nahrajte do něj ukázkovou image kontejneru. Postup najdete v tématu [rychlý Start: Vytvoření soukromého registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
+If you don't already have an Azure container registry, create a registry and push a sample container image to it. For steps, see [Quickstart: Create a private container registry using the Azure CLI](container-registry-get-started-azure-cli.md).
 
-V tomto článku se předpokládá, `aci-helloworld:v1` že máte image kontejneru uloženou v registru. V příkladech se používá název registru pro *myContainerRegistry*. Nahraďte vlastními názvy registru a imagí v pozdějších krocích.
+This article assumes you have the `aci-helloworld:v1` container image stored in your registry. The examples use a registry name of *myContainerRegistry*. Replace with your own registry and image names in later steps.
 
-## <a name="create-a-docker-enabled-vm"></a>Vytvoření virtuálního počítače s podporou Docker
+## <a name="create-a-docker-enabled-vm"></a>Create a Docker-enabled VM
 
-Vytvořte virtuální počítač s Ubuntu s podporou Docker. Na virtuálním počítači je také potřeba nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) . Pokud už máte virtuální počítač Azure, přeskočte tento krok a vytvořte virtuální počítač.
+Create a Docker-enabled Ubuntu virtual machine. You also need to install the [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) on the virtual machine. If you already have an Azure virtual machine, skip this step to create the virtual machine.
 
-Nasaďte výchozí Ubuntu virtuální počítač Azure pomocí [AZ VM Create][az-vm-create]. Následující příklad vytvoří virtuální počítač s názvem *myDockerVM* v existující skupině prostředků s názvem *myResourceGroup*:
+Deploy a default Ubuntu Azure virtual machine with [az vm create][az-vm-create]. The following example creates a VM named *myDockerVM* in an existing resource group named *myResourceGroup*:
 
 ```azurecli
 az vm create \
@@ -71,23 +66,23 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Po dokončení příkazu si poznamenejte `publicIpAddress` zobrazené v Azure CLI. Tato adresa slouží k vytvoření připojení SSH k virtuálnímu počítači.
+Vytvoření virtuálního počítače trvá několik minut. When the command completes, take note of the `publicIpAddress` displayed by the Azure CLI. Use this address to make SSH connections to the VM.
 
-### <a name="install-docker-on-the-vm"></a>Instalace Docker na virtuálním počítači
+### <a name="install-docker-on-the-vm"></a>Install Docker on the VM
 
-Po spuštění virtuálního počítače vytvořte připojení SSH k virtuálnímu počítači. Nahraďte *publicIpAddress* veřejnou IP adresou vašeho virtuálního počítače.
+After the VM is running, make an SSH connection to the VM. Replace *publicIpAddress* with the public IP address of your VM.
 
 ```bash
 ssh azureuser@publicIpAddress
 ```
 
-Spusťte následující příkaz pro instalaci Docker na virtuální počítač:
+Run the following command to install Docker on the VM:
 
 ```bash
 sudo apt install docker.io -y
 ```
 
-Po instalaci spusťte následující příkaz, který ověří, jestli je na virtuálním počítači správně spuštěný Docker:
+After installation, run the following command to verify that Docker is running properly on the VM:
 
 ```bash
 sudo docker run -it hello-world
@@ -103,21 +98,21 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 
-Podle postupu v části [instalace Azure CLI pomocí apt](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) nainstalujte rozhraní příkazového řádku Azure do svého virtuálního počítače s Ubuntu. V tomto článku se ujistěte, že instalujete verzi 2.0.55 nebo novější.
+Follow the steps in [Install Azure CLI with apt](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) to install the Azure CLI on your Ubuntu virtual machine. For this article, ensure that you install version 2.0.55 or later.
 
-Ukončete relaci SSH.
+Exit the SSH session.
 
-## <a name="example-1-access-with-a-user-assigned-identity"></a>Příklad 1: Přístup s identitou přiřazenou uživatelem
+## <a name="example-1-access-with-a-user-assigned-identity"></a>Example 1: Access with a user-assigned identity
 
-### <a name="create-an-identity"></a>Vytvoření identity
+### <a name="create-an-identity"></a>Create an identity
 
-Pomocí příkazu [AZ identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) vytvořte v předplatném identitu. Stejnou skupinu prostředků, kterou jste použili dříve, můžete použít k vytvoření registru kontejneru nebo virtuálního počítače nebo jiného.
+Create an identity in your subscription using the [az identity create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) command. You can use the same resource group you used previously to create the container registry or virtual machine, or a different one.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
 ```
 
-Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [AZ identity show][az-identity-show] uložte ID prostředku identity a ID instančního objektu do proměnných.
+To configure the identity in the following steps, use the [az identity show][az-identity-show] command to store the identity's resource ID and service principal ID in variables.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -127,124 +122,124 @@ userID=$(az identity show --resource-group myResourceGroup --name myACRId --quer
 spID=$(az identity show --resource-group myResourceGroup --name myACRId --query principalId --output tsv)
 ```
 
-Vzhledem k tomu, že v pozdějším kroku potřebujete ID identity, když se přihlásíte k rozhraní příkazového řádku z virtuálního počítače, zobrazí se hodnota:
+Because you need the identity's ID in a later step when you sign in to the CLI from your virtual machine, show the value:
 
 ```bash
 echo $userID
 ```
 
-ID má formát:
+The ID is of the form:
 
 ```
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myACRId
 ```
 
-### <a name="configure-the-vm-with-the-identity"></a>Konfigurace virtuálního počítače s identitou
+### <a name="configure-the-vm-with-the-identity"></a>Configure the VM with the identity
 
-Následující příkaz [AZ VM identity Assign][az-vm-identity-assign] NAkonfiguruje virtuální počítač Docker s uživatelem přiřazenou identitou:
+The following [az vm identity assign][az-vm-identity-assign] command configures your Docker VM with the user-assigned identity:
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myDockerVM --identities $userID
 ```
 
-### <a name="grant-identity-access-to-the-container-registry"></a>Udělení přístupu identit do registru kontejneru
+### <a name="grant-identity-access-to-the-container-registry"></a>Grant identity access to the container registry
 
-Nyní nakonfigurujte identitu pro přístup k registru kontejneru. Nejprve pomocí příkazu [AZ ACR show][az-acr-show] Získejte ID prostředku registru:
+Now configure the identity to access your container registry. First use the [az acr show][az-acr-show] command to get the resource ID of the registry:
 
 ```azurecli
 resourceID=$(az acr show --resource-group myResourceGroup --name myContainerRegistry --query id --output tsv)
 ```
 
-K přiřazení role AcrPull do registru použijte příkaz [AZ role Assignment Create][az-role-assignment-create] . Tato role poskytuje [oprávnění ke stažení](container-registry-roles.md) do registru. Pokud chcete poskytnout oprávnění ke stažení i pro nabízená oznámení, přiřaďte roli ACRPush.
+Use the [az role assignment create][az-role-assignment-create] command to assign the AcrPull role to the registry. This role provides [pull permissions](container-registry-roles.md) to the registry. To provide both pull and push permissions, assign the ACRPush role.
 
 ```azurecli
 az role assignment create --assignee $spID --scope $resourceID --role acrpull
 ```
 
-### <a name="use-the-identity-to-access-the-registry"></a>Použití identity pro přístup k registru
+### <a name="use-the-identity-to-access-the-registry"></a>Use the identity to access the registry
 
-Připojte se přes SSH k virtuálnímu počítači Docker, který je nakonfigurovaný s identitou. Spusťte následující příkazy rozhraní příkazového řádku Azure a pomocí rozhraní příkazového řádku Azure nainstalovaného na virtuálním počítači.
+SSH into the Docker virtual machine that's configured with the identity. Run the following Azure CLI commands, using the Azure CLI installed on the VM.
 
-Nejdřív pomocí identity, kterou jste nakonfigurovali na VIRTUÁLNÍm počítači, proveďte ověření v Azure CLI pomocí [AZ Login][az-login]. `<userID>`V případě nahraďte ID identity, kterou jste získali v předchozím kroku. 
+First, authenticate to the Azure CLI with [az login][az-login], using the identity you configured on the VM. For `<userID>`, substitute the ID of the identity you retrieved in a previous step. 
 
 ```azurecli
 az login --identity --username <userID>
 ```
 
-Pak proveďte ověření v registru pomocí [AZ ACR Login][az-acr-login]. Při použití tohoto příkazu rozhraní příkazového řádku používá token služby Active Directory, který byl `az login` vytvořen při bezproblémovém ověřování relace pomocí registru kontejnerů. (V závislosti na nastavení virtuálního počítače možná budete muset spustit tento příkaz a příkazy Docker s `sudo`.)
+Then, authenticate to the registry with [az acr login][az-acr-login]. When you use this command, the CLI uses the Active Directory token created when you ran `az login` to seamlessly authenticate your session with the container registry. (Depending on your VM's setup, you might need to run this command and docker commands with `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-Měla by se zobrazit `Login succeeded` zpráva. Pak můžete spustit `docker` příkazy bez zadání přihlašovacích údajů. Například spusťte [Docker Pull][docker-pull] pro načtení `aci-helloworld:v1` obrázku a zadáním názvu přihlašovacího serveru vašeho registru. Název přihlašovacího serveru se skládá z názvu registru kontejneru (všechna malá písmena) následovaných `.azurecr.io` `mycontainerregistry.azurecr.io`například.
+You should see a `Login succeeded` message. You can then run `docker` commands without providing credentials. For example, run [docker pull][docker-pull] to pull the `aci-helloworld:v1` image, specifying the login server name of your registry. The login server name consists of your container registry name (all lowercase) followed by `.azurecr.io` - for example, `mycontainerregistry.azurecr.io`.
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 
-## <a name="example-2-access-with-a-system-assigned-identity"></a>Příklad 2: Přístup s identitou přiřazenou systémem
+## <a name="example-2-access-with-a-system-assigned-identity"></a>Example 2: Access with a system-assigned identity
 
-### <a name="configure-the-vm-with-a-system-managed-identity"></a>Konfigurace virtuálního počítače pomocí identity spravované systémem
+### <a name="configure-the-vm-with-a-system-managed-identity"></a>Configure the VM with a system-managed identity
 
-Následující příkaz [AZ VM identity Assign][az-vm-identity-assign] NAkonfiguruje virtuální počítač Docker s identitou přiřazenou systémem:
+The following [az vm identity assign][az-vm-identity-assign] command configures your Docker VM with a system-assigned identity:
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myDockerVM 
 ```
 
-Pomocí příkazu [AZ VM show][az-vm-show] nastavte proměnnou na hodnotu `principalId` (ID instančního objektu) identity virtuálního počítače, která se má použít v pozdějších krocích.
+Use the [az vm show][az-vm-show] command to set a variable to the value of `principalId` (the service principal ID) of the VM's identity, to use in later steps.
 
 ```azurecli-interactive
 spID=$(az vm show --resource-group myResourceGroup --name myDockerVM --query identity.principalId --out tsv)
 ```
 
-### <a name="grant-identity-access-to-the-container-registry"></a>Udělení přístupu identit do registru kontejneru
+### <a name="grant-identity-access-to-the-container-registry"></a>Grant identity access to the container registry
 
-Nyní nakonfigurujte identitu pro přístup k registru kontejneru. Nejprve pomocí příkazu [AZ ACR show][az-acr-show] Získejte ID prostředku registru:
+Now configure the identity to access your container registry. First use the [az acr show][az-acr-show] command to get the resource ID of the registry:
 
 ```azurecli
 resourceID=$(az acr show --resource-group myResourceGroup --name myContainerRegistry --query id --output tsv)
 ```
 
-K přiřazení role AcrPull k identitě použijte příkaz [AZ role Assignment Create][az-role-assignment-create] . Tato role poskytuje [oprávnění ke stažení](container-registry-roles.md) do registru. Pokud chcete poskytnout oprávnění ke stažení i pro nabízená oznámení, přiřaďte roli ACRPush.
+Use the [az role assignment create][az-role-assignment-create] command to assign the AcrPull role to the identity. This role provides [pull permissions](container-registry-roles.md) to the registry. To provide both pull and push permissions, assign the ACRPush role.
 
 ```azurecli
 az role assignment create --assignee $spID --scope $resourceID --role acrpull
 ```
 
-### <a name="use-the-identity-to-access-the-registry"></a>Použití identity pro přístup k registru
+### <a name="use-the-identity-to-access-the-registry"></a>Use the identity to access the registry
 
-Připojte se přes SSH k virtuálnímu počítači Docker, který je nakonfigurovaný s identitou. Spusťte následující příkazy rozhraní příkazového řádku Azure a pomocí rozhraní příkazového řádku Azure nainstalovaného na virtuálním počítači.
+SSH into the Docker virtual machine that's configured with the identity. Run the following Azure CLI commands, using the Azure CLI installed on the VM.
 
-Nejdřív ověřte Azure CLI pomocí [AZ Login][az-login]a na virtuálním počítači použijte identitu přiřazenou systémem.
+First, authenticate the Azure CLI with [az login][az-login], using the system-assigned identity on the VM.
 
 ```azurecli
 az login --identity
 ```
 
-Pak proveďte ověření v registru pomocí [AZ ACR Login][az-acr-login]. Při použití tohoto příkazu rozhraní příkazového řádku používá token služby Active Directory, který byl `az login` vytvořen při bezproblémovém ověřování relace pomocí registru kontejnerů. (V závislosti na nastavení virtuálního počítače možná budete muset spustit tento příkaz a příkazy Docker s `sudo`.)
+Then, authenticate to the registry with [az acr login][az-acr-login]. When you use this command, the CLI uses the Active Directory token created when you ran `az login` to seamlessly authenticate your session with the container registry. (Depending on your VM's setup, you might need to run this command and docker commands with `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-Měla by se zobrazit `Login succeeded` zpráva. Pak můžete spustit `docker` příkazy bez zadání přihlašovacích údajů. Například spusťte [Docker Pull][docker-pull] pro načtení `aci-helloworld:v1` obrázku a zadáním názvu přihlašovacího serveru vašeho registru. Název přihlašovacího serveru se skládá z názvu registru kontejneru (všechna malá písmena) následovaných `.azurecr.io` `mycontainerregistry.azurecr.io`například.
+You should see a `Login succeeded` message. You can then run `docker` commands without providing credentials. For example, run [docker pull][docker-pull] to pull the `aci-helloworld:v1` image, specifying the login server name of your registry. The login server name consists of your container registry name (all lowercase) followed by `.azurecr.io` - for example, `mycontainerregistry.azurecr.io`.
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se seznámili s používáním spravovaných identit s Azure Container Registry a postupy:
+In this article, you learned about using managed identities with Azure Container Registry and how to:
 
 > [!div class="checklist"]
-> * Povolení uživatelsky přiřazené identity nebo identity přiřazené systémem ve virtuálním počítači Azure
-> * Udělení identity přístupu ke službě Azure Container Registry
-> * Použití spravované identity pro přístup k registru a stažení Image kontejneru
+> * Enable a user-assigned or system-assigned identity in an Azure VM
+> * Grant the identity access to an Azure container registry
+> * Use the managed identity to access the registry and pull a container image
 
-* Přečtěte si další informace o [spravovaných identitách pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/).
+* Learn more about [managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/).
 
 
 <!-- LINKS - external -->

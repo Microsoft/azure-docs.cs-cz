@@ -1,39 +1,34 @@
 ---
-title: Přístup k Azure Container Registry z Container Instances
-description: Naučte se, jak poskytnout přístup k obrázkům v privátním registru kontejneru z Azure Container Instances pomocí instančního objektu služby Azure Active Directory.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Access from Container Instances
+description: Learn how to provide access to images in your private container registry from Azure Container Instances by using an Azure Active Directory service principal.
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: danlep
-ms.openlocfilehash: 53cdca72587dafd39abd3f13ad488dcb460bf622
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931675"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456516"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Ověřování pomocí Azure Container Registry z Azure Container Instances
+# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Authenticate with Azure Container Registry from Azure Container Instances
 
-K poskytnutí přístupu k registrům privátních kontejnerů v Azure Container Registry můžete použít instanční objekt služby Azure Active Directory (Azure AD).
+You can use an Azure Active Directory (Azure AD) service principal to provide access to your private container registries in Azure Container Registry.
 
-V tomto článku se naučíte, jak vytvořit a nakonfigurovat instanční objekt služby Azure AD s oprávněními pro *vyžádání* obsahu pro váš registr. Pak spustíte kontejner v Azure Container Instances (ACI), který načte jeho image z privátního registru, a to pomocí instančního objektu pro ověřování.
+In this article, you learn to create and configure an Azure AD service principal with *pull* permissions to your registry. Then, you start a container in Azure Container Instances (ACI) that pulls its image from your private registry, using the service principal for authentication.
 
-## <a name="when-to-use-a-service-principal"></a>Kdy použít instanční objekt
+## <a name="when-to-use-a-service-principal"></a>When to use a service principal
 
-Pro ověřování z ACI v případě neintegrovaných **scénářů**byste měli použít instanční objekt, například v aplikacích nebo službách, které vytvářejí instance kontejnerů automatizovaným nebo jiným způsobem.
+You should use a service principal for authentication from ACI in **headless scenarios**, such as in applications or services that create container instances in an automated or otherwise unattended manner.
 
-Pokud máte například automatizovaný skript, který běží v noci, a vytvoří [instanci kontejneru založenou na úlohách](../container-instances/container-instances-restart-policy.md) pro zpracování některých dat, může použít instanční objekt s oprávněním pro vyžádání obsahu k ověření do registru. Pak můžete znovu otočit přihlašovací údaje instančního objektu nebo odvolat jeho úplný přístup, aniž by to ovlivnilo jiné služby a aplikace.
+For example, if you have an automated script that runs nightly and creates a [task-based container instance](../container-instances/container-instances-restart-policy.md) to process some data, it can use a service principal with pull-only permissions to authenticate to the registry. You can then rotate the service principal's credentials or revoke its access completely without affecting other services and applications.
 
-Instanční objekty by se měly používat i v případě, že je [uživatel správce](container-registry-authentication.md#admin-account) registru zakázaný.
+Service principals should also be used when the registry [admin user](container-registry-authentication.md#admin-account) is disabled.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
-## <a name="authenticate-using-the-service-principal"></a>Ověřování pomocí instančního objektu
+## <a name="authenticate-using-the-service-principal"></a>Authenticate using the service principal
 
-Pokud chcete spustit kontejner v Azure Container Instances pomocí instančního objektu, zadejte jeho ID pro `--registry-username`a heslo pro `--registry-password`.
+To launch a container in Azure Container Instances using a service principal, specify its ID for `--registry-username`, and its password for `--registry-password`.
 
 ```azurecli-interactive
 az container create \
@@ -47,17 +42,17 @@ az container create \
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 
-Předchozí ukázkové skripty pro Azure CLI najdete na GitHubu a také ve verzích pro Azure PowerShell:
+You can find the preceding sample scripts for Azure CLI on GitHub, as well versions for Azure PowerShell:
 
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující články obsahují další podrobnosti o práci s instančními objekty a ACR:
+The following articles contain additional details on working with service principals and ACR:
 
-* [Azure Container Registry ověřování pomocí instančních objektů](container-registry-auth-service-principal.md)
-* [Ověřování pomocí Azure Container Registry ze služby Azure Kubernetes (AKS)](../aks/cluster-container-registry-integration.md)
+* [Azure Container Registry authentication with service principals](container-registry-auth-service-principal.md)
+* [Authenticate with Azure Container Registry from Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

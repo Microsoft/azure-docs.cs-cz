@@ -1,33 +1,28 @@
 ---
-title: Kurz – pracovní postup úloh pro více kroků – úlohy Azure Container Registry
-description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Registry, která automaticky aktivuje pracovní postup s více kroky pro vytváření, spouštění a vkládání imagí kontejnerů v cloudu při potvrzení zdrojového kódu do úložiště Git.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Tutorial - Multi-step ACR task
+description: In this tutorial, you learn how to configure an Azure Container Registry Task to automatically trigger a multi-step workflow to build, run, and push container images in the cloud when you commit source code to a Git repository.
 ms.topic: tutorial
 ms.date: 05/09/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: dd7dd6f78087a40de93a5ab47936806076fc562a
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: f5342e51af870b1e5f8651ea2d28894233ed8e62
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931454"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456068"
 ---
-# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Kurz: spuštění víceúrovňového pracovního postupu kontejneru v cloudu při potvrzení zdrojového kódu
+# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Run a multi-step container workflow in the cloud when you commit source code
 
-Kromě [Rychlé úlohy](container-registry-tutorial-quick-task.md)ACR úlohy podporují více než více kontejnerů, které se můžou automaticky aktivovat při potvrzení zdrojového kódu do úložiště Git. 
+In addition to a [quick task](container-registry-tutorial-quick-task.md), ACR Tasks supports multi-step, multi-container-based workflows that can automatically trigger when you commit source code to a Git repository. 
 
-V tomto kurzu se naučíte, jak pomocí ukázkových souborů YAML definovat úlohy s více kroky, které sestavují, spouštějí a nadávají do registru jednu nebo více imagí kontejneru při potvrzení zdrojového kódu. Chcete-li vytvořit úkol, který automatizuje pouze jedno sestavení image při potvrzení kódu, přečtěte si [kurz: automatizace sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu](container-registry-tutorial-build-task.md). Přehled úloh ACR najdete v tématu [Automatizace oprav operačního systému a architektury s úlohami ACR](container-registry-tasks-overview.md),
+In this tutorial, you learn how to use example YAML files to define multi-step tasks that build, run, and push one or more container images to a registry when you commit source code. To create a task that only automates a single image build on code commit, see [Tutorial: Automate container image builds in the cloud when you commit source code](container-registry-tutorial-build-task.md). For an overview of ACR Tasks, see [Automate OS and framework patching with ACR Tasks](container-registry-tasks-overview.md),
 
-V tomto kurzu:
+In this tutorial:
 
 > [!div class="checklist"]
-> * Definování úlohy s více kroky pomocí souboru YAML
+> * Define a multi-step task using a YAML file
 > * Vytvoření úkolu
-> * Volitelně přidejte do úlohy přihlašovací údaje, abyste mohli povolit přístup k jinému registru.
+> * Optionally add credentials to the task to enable access to another registry
 > * Test úlohy
 > * Zobrazení stavu úkolů
 > * Aktivace úlohy potvrzením kódu
@@ -36,17 +31,17 @@ Tento kurz předpokládá, že jste už dokončili kroky z [předchozího kurzu]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud chcete rozhraní příkazového řádku Azure používat místně, musíte mít nainstalovanou verzi Azure CLI **2.0.62** nebo novější a přihlášeni pomocí [AZ Login][az-login]. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI][azure-cli].
+If you'd like to use the Azure CLI locally, you must have Azure CLI version **2.0.62** or later installed and logged in with [az login][az-login]. Verzi zjistíte spuštěním příkazu `az --version`. If you need to install or upgrade the CLI, see [Install Azure CLI][azure-cli].
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
-## <a name="create-a-multi-step-task"></a>Vytvoření úlohy s více kroky
+## <a name="create-a-multi-step-task"></a>Create a multi-step task
 
-Teď, když jste dokončili kroky potřebné k tomu, aby ACR úlohy mohly číst stav potvrzení a vytvořit Webhooky v úložišti, vytvořte úlohu s více kroky, která spustí sestavování, spuštění a vložení image kontejneru.
+Now that you've completed the steps required to enable ACR Tasks to read commit status and create webhooks in a repository, create a multi-step task that triggers building, running, and pushing a container image.
 
 ### <a name="yaml-file"></a>Soubor YAML
 
-Nadefinujete kroky pro úlohu s více kroky v [souboru YAML](container-registry-tasks-reference-yaml.md). První příklad úlohy s více kroky pro tento kurz je definován v souboru `taskmulti.yaml`, který je v kořenovém adresáři úložiště GitHub, který jste naklonováni:
+You define the steps for a multi-step task in a [YAML file](container-registry-tasks-reference-yaml.md). The first example multi-step task for this tutorial is defined in the file `taskmulti.yaml`, which is in the root of the GitHub repo that you cloned:
 
 ```yml
 version: v1.0.0
@@ -64,15 +59,15 @@ steps:
   - {{.Run.Registry}}/hello-world:{{.Run.ID}}
 ```
 
-Tato úloha s více kroky provede následující akce:
+This multi-step task does the following:
 
-1. Spustí `build` krok pro sestavení image z souboru Dockerfile v pracovním adresáři. Obrázek cílí na `Run.Registry`, registr, ve kterém je úloha spuštěná, a je označený jedinečným ID spuštění úloh ACR. 
-1. Spustí `cmd` krok pro spuštění bitové kopie v dočasném kontejneru. Tento příklad spustí dlouhodobě běžící kontejner na pozadí a vrátí ID kontejneru a potom zastaví kontejner. V reálných scénářích můžete zahrnout kroky pro otestování spuštěného kontejneru, aby se zajistilo jeho správné spuštění.
-1. V `push` kroku nahraje image, která se vytvořila v registru spuštění.
+1. Runs a `build` step to build an image from the Dockerfile in the working directory. The image targets the `Run.Registry`, the registry where the task is run, and is tagged with a unique ACR Tasks run ID. 
+1. Runs a `cmd` step to run the image in a temporary container. This example starts a long-running container in the background and returns the container ID, then stops the container. In a real-world scenario, you might include steps to test the running container to ensure it runs correctly.
+1. In a `push` step, pushes the image that was built to the run registry.
 
-### <a name="task-command"></a>Příkaz úkolu
+### <a name="task-command"></a>Task command
 
-Nejdřív vyplňte tyto proměnné prostředí hodnotami vhodnými pro vaše prostředí. Tento krok není nezbytně nutný, ale usnadní provádění víceřádkových příkazů Azure CLI v tomto kurzu. Pokud tyto proměnné prostředí neplníte, je nutné ručně nahradit každou hodnotu, pokud se zobrazí v ukázkových příkazech.
+Nejdřív vyplňte tyto proměnné prostředí hodnotami vhodnými pro vaše prostředí. Tento krok není nezbytně nutný, ale usnadní provádění víceřádkových příkazů Azure CLI v tomto kurzu. If you don't populate these environment variables, you must manually replace each value wherever it appears in the example commands.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -80,7 +75,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Teď úlohu vytvořte spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] :
+Now, create the task by executing the following [az acr task create][az-acr-task-create] command:
 
 ```azurecli-interactive
 az acr task create \
@@ -91,9 +86,9 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Tato úloha určuje, že každý kód času je potvrzen do *Hlavní* větve v úložišti určeném `--context`, úlohy ACR spustí úlohu s více kroky z kódu v této větvi. Tento postup definuje soubor YAML určený `--file` z kořenového adresáře úložiště. 
+This task specifies that any time code is committed to the *master* branch in the repository specified by `--context`, ACR Tasks will run the multi-step task from the code in that branch. The YAML file specified by `--file` from the repository root defines the steps. 
 
-Výstup úspěšného příkazu [AZ ACR Task Create][az-acr-task-create] je podobný následujícímu:
+Output from a successful [az acr task create][az-acr-task-create] command is similar to the following:
 
 ```console
 {
@@ -150,15 +145,15 @@ Výstup úspěšného příkazu [AZ ACR Task Create][az-acr-task-create] je podo
 }
 ```
 
-## <a name="test-the-multi-step-workflow"></a>Testování pracovního postupu s více kroky
+## <a name="test-the-multi-step-workflow"></a>Test the multi-step workflow
 
-Chcete-li otestovat úlohu s více kroky, aktivujte ji ručně spuštěním příkazu [AZ ACR Task Run][az-acr-task-run] :
+To test the multi-step task, trigger it manually by executing the [az acr task run][az-acr-task-run] command:
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example1
 ```
 
-Příkaz `az acr task run` ve výchozím nastavení při spuštění příkazu streamuje výstup protokolu do vaší konzoly. Výstup zobrazuje průběh spuštění jednotlivých kroků úkolu. Výstup níže je zúžený, aby se zobrazily klíčové kroky.
+Příkaz `az acr task run` ve výchozím nastavení při spuštění příkazu streamuje výstup protokolu do vaší konzoly. The output shows the progress of running each of the task steps. The output below is condensed to show key steps.
 
 ```console
 Queued a run with ID: cf19
@@ -220,7 +215,7 @@ Run ID: cf19 was successful after 18s
 
 Když jste teď ručním spuštěním otestovali úlohu, aktivujte ji automaticky pomocí změny zdrojového kódu.
 
-Nejdřív se ujistěte, že jste v adresáři, který obsahuje váš místní klon [úložiště][sample-repo]:
+First, ensure you're in the directory containing your local clone of the [repository][sample-repo]:
 
 ```azurecli-interactive
 cd acr-build-helloworld-node
@@ -243,7 +238,7 @@ Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
 
-Po vložení potvrzení do úložiště se Webhook vytvořený pomocí úloh ACR aktivuje a vypíná od něj úlohu v Azure Container Registry. Zobrazte protokoly pro aktuálně spuštěnou úlohu, abyste mohli ověřit a monitorovat průběh sestavení:
+Once you've pushed a commit to your repository, the webhook created by ACR Tasks fires and kicks off the task in Azure Container Registry. Zobrazte protokoly pro aktuálně spuštěnou úlohu, abyste mohli ověřit a monitorovat průběh sestavení:
 
 ```azurecli-interactive
 az acr task logs --registry $ACR_NAME
@@ -263,7 +258,7 @@ Run ID: cf1d was successful after 37s
 
 ## <a name="list-builds"></a>Seznam sestavení
 
-Chcete-li zobrazit seznam úloh, které ACR úkoly byly pro váš registr dokončeny, spusťte příkaz [AZ ACR Task list-][az-acr-task-list-runs] Run:
+To see a list of the task runs that ACR Tasks has completed for your registry, run the [az acr task list-runs][az-acr-task-list-runs] command:
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table
@@ -283,17 +278,17 @@ cf1a      example1   linux       Succeeded  Commit     2019-05-03T03:09:32Z  00:
 cf19      example1   linux       Succeeded  Manual     2019-05-03T03:03:30Z  00:00:21
 ```
 
-## <a name="create-a-multi-registry-multi-step-task"></a>Vytvoření úlohy s více kroky pro více registrů
+## <a name="create-a-multi-registry-multi-step-task"></a>Create a multi-registry multi-step task
 
-ACR úlohy ve výchozím nastavení mají oprávnění k odesílání nebo vyžádání imagí z registru, ve kterém je úloha spuštěná. Je možné, že budete chtít spustit úlohu s více kroky, která cílí na jeden nebo více registrů kromě registru Run. Například může být potřeba sestavit image v jednom registru a ukládat image s různými značkami v druhém registru, ke kterému se přistupovalo z produkčního systému. V tomto příkladu se dozvíte, jak vytvořit takovou úlohu a zadat přihlašovací údaje pro jiný registr.
+ACR Tasks by default has permissions to push or pull images from the registry where the task runs. You might want to run a multi-step task that targets one or more registries in addition to the run registry. For example, you might need to build images in one registry, and store images with different tags in a second registry that is accessed by a production system. This example shows you how to create such a task and provide credentials for another registry.
 
-Pokud ještě nemáte druhý registr, vytvořte ho pro tento příklad. Pokud potřebujete registr, podívejte se na [předchozí kurz](container-registry-tutorial-quick-task.md) nebo článek [Rychlý start: Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
+If you don't already have a second registry, create one for this example. Pokud potřebujete registr, podívejte se na [předchozí kurz](container-registry-tutorial-quick-task.md) nebo článek [Rychlý start: Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
 
-Chcete-li vytvořit úlohu, budete potřebovat název přihlašovacího serveru registru, který má formu *mycontainerregistrydate.azurecr.IO* (všechna malá písmena). V tomto příkladu použijete druhý registr k ukládání imagí označených datem sestavení.
+To create the task, you need the name of the registry login server, which is of the form *mycontainerregistrydate.azurecr.io* (all lowercase). In this example, you use the second registry to store images tagged by build date.
 
 ### <a name="yaml-file"></a>Soubor YAML
 
-Druhý příklad úlohy s více kroky pro tento kurz je definován v souboru `taskmulti-multiregistry.yaml`, který je v kořenovém adresáři úložiště GitHub, který jste naklonováni:
+The second example multi-step task for this tutorial is defined in the file `taskmulti-multiregistry.yaml`, which is in the root of the GitHub repo that you cloned:
 
 ```yml
 version: v1.0.0
@@ -313,17 +308,17 @@ steps:
   - {{.Values.regDate}}/hello-world:{{.Run.Date}}
 ```
 
-Tato úloha s více kroky provede následující akce:
+This multi-step task does the following:
 
-1. Spustí dva `build` kroky pro sestavení imagí z souboru Dockerfile v pracovním adresáři:
-    * První cílí na `Run.Registry`, registr, ve kterém je úloha spuštěná, a je označený ID spuštění úloh ACR. 
-    * Druhý cílí na registr identifikovaný hodnotou `regDate`, kterou jste nastavili při vytváření úlohy (nebo zadáním externího `values.yaml` souboru předaného do `az acr task create`). Tento obrázek je označený jako datum spuštění.
-1. Spustí `cmd` krok pro spuštění jednoho ze sestavených kontejnerů. Tento příklad spustí dlouhodobě běžící kontejner na pozadí a vrátí ID kontejneru a potom zastaví kontejner. Ve scénáři reálného světa můžete otestovat spuštěný kontejner, aby se zajistilo jeho správné spuštění.
-1. V `push`m kroku vloží image, které byly vytvořeny, první do registru Run, druhý do registru identifikovaného `regDate`.
+1. Runs two `build` steps to build images from the Dockerfile in the working directory:
+    * The first targets the `Run.Registry`, the registry where the task is run, and is tagged with the ACR Tasks run ID. 
+    * The second targets the registry identified by the value of `regDate`, which you set when you create the task (or provide through an external `values.yaml` file passed to `az acr task create`). This image is tagged with the run date.
+1. Runs a `cmd` step to run one of the built containers. This example starts a long-running container in the background and returns the container ID, then stops the container. In a real-world scenario, you might test a running container to ensure it runs correctly.
+1. In a `push` step, pushes the images that were built, the first to the run registry, the second to the registry identified by `regDate`.
 
-### <a name="task-command"></a>Příkaz úkolu
+### <a name="task-command"></a>Task command
 
-Pomocí dříve definovaných proměnných prostředí prostředí vytvořte úlohu provedením následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Nahraďte název vašeho registru pro *mycontainerregistrydate*.
+Using the shell environment variables defined previously, create the task by executing the following [az acr task create][az-acr-task-create] command. Substitute the name of your registry for *mycontainerregistrydate*.
 
 ```azurecli-interactive
 az acr task create \
@@ -335,13 +330,13 @@ az acr task create \
     --set regDate=mycontainerregistrydate.azurecr.io
 ```
 
-### <a name="add-task-credential"></a>Přidat pověření úkolu
+### <a name="add-task-credential"></a>Add task credential
 
-Pokud chcete vložit image do registru identifikovaného hodnotou `regDate`, pomocí příkazu [AZ ACR Task Credential Add][az-acr-task-credential-add] přidejte přihlašovací údaje pro tento registr do úlohy.
+To push images to the registry identified by the value of `regDate`, use the [az acr task credential add][az-acr-task-credential-add] command to add login credentials for that registry to the task.
 
-V tomto příkladu doporučujeme vytvořit [instanční objekt](container-registry-auth-service-principal.md) s přístupem k registru vymezenému na roli *AcrPush* . Pokud chcete vytvořit instanční objekt, přečtěte si tento [skript Azure CLI](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh).
+For this example, we recommend that you create a [service principal](container-registry-auth-service-principal.md) with access to the registry scoped to the *AcrPush* role. To create the service principal, see this [Azure CLI script](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh).
 
-V následujícím příkazu `az acr task credential add` předat ID a heslo aplikace instančního objektu:
+Pass the service principal application ID and password in the following `az acr task credential add` command:
 
 ```azurecli-interactive
 az acr task credential add --name example2 \
@@ -351,17 +346,17 @@ az acr task credential add --name example2 \
     --password <service-principal-password>
 ```
 
-Rozhraní příkazového řádku vrátí název přidaného přihlašovacího serveru registru.
+The CLI returns the name of the registry login server you added.
 
-### <a name="test-the-multi-step-workflow"></a>Testování pracovního postupu s více kroky
+### <a name="test-the-multi-step-workflow"></a>Test the multi-step workflow
 
-Jak je uvedeno v předchozím příkladu, chcete-li otestovat úlohu s více kroky, aktivujte ji ručně spuštěním příkazu [AZ ACR Task Run][az-acr-task-run] . Chcete-li aktivovat úlohu s potvrzením změn do úložiště Git, přečtěte si část [Aktivace sestavení s potvrzením](#trigger-a-build-with-a-commit).
+As in the preceding example, to test the multi-step task, trigger it manually by executing the [az acr task run][az-acr-task-run] command. To trigger the task with a commit to the Git repository, see the section [Trigger a build with a commit](#trigger-a-build-with-a-commit).
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example2
 ```
 
-Příkaz `az acr task run` ve výchozím nastavení při spuštění příkazu streamuje výstup protokolu do vaší konzoly. Stejně jako dřív výstup zobrazuje průběh spuštění jednotlivých kroků úkolu. Výstup je zúžený, aby se zobrazily klíčové kroky.
+Příkaz `az acr task run` ve výchozím nastavení při spuštění příkazu streamuje výstup protokolu do vaší konzoly. As before, the output shows the progress of running each of the task steps. The output is condensed to show key steps.
 
 Výstup:
 
@@ -461,7 +456,7 @@ Run ID: cf1g was successful after 46s
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvořit vícenásobné úlohy založené na více kontejnerech, které se automaticky aktivují při potvrzení zdrojového kódu do úložiště Git. Pokročilé funkce pro úlohy s více kroky, včetně spuštění paralelního a závislého kroku, najdete v tématu [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md). Přejděte k dalšímu kurzu, ve kterém se naučíte vytvářet úlohy, které aktivují sestavení při aktualizaci základní image kontejneru.
+In this tutorial, you learned how to create multi-step, multi-container-based tasks that automatically trigger when you commit source code to a Git repository. For advanced features of multi-step tasks, including parallel and dependent step execution, see the [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md). Přejděte k dalšímu kurzu, ve kterém se naučíte vytvářet úlohy, které aktivují sestavení při aktualizaci základní image kontejneru.
 
 > [!div class="nextstepaction"]
 > [Automatizace sestavení při aktualizaci základní image](container-registry-tutorial-base-image-update.md)

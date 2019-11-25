@@ -1,53 +1,48 @@
 ---
-title: Oprávnění k úložištím v Azure Container Registry
-description: Vytvoření tokenu s oprávněním vymezeným pro konkrétní úložiště v registru pro vyžádání nebo vložení imagí
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Permissions to repositories
+description: Create a token with permissions scoped to specific repositories in a registry to pull or push images
 ms.topic: article
 ms.date: 10/31/2019
-ms.author: danlep
-ms.openlocfilehash: 7b9d220ac7e507513458eab6b55276b3aa434739
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: cf36a49ffd6c04897e6f44b844f0c813d0992b18
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742746"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454910"
 ---
-# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Oprávnění vymezená úložiště v Azure Container Registry 
+# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Repository-scoped permissions in Azure Container Registry 
 
-Azure Container Registry podporuje několik [možností ověřování](container-registry-authentication.md) pomocí identit, které mají [přístup na základě rolí](container-registry-roles.md) k celému registru. V některých případech ale možná budete muset zadat přístup jenom ke konkrétním *úložištím* v registru. 
+Azure Container Registry supports several [authentication options](container-registry-authentication.md) using identities that have [role-based access](container-registry-roles.md) to an entire registry. However, for certain scenarios, you might need to provide access only to specific *repositories* in a registry. 
 
-Tento článek ukazuje, jak vytvořit a použít přístupový token, který má oprávnění k provádění akcí pouze v konkrétních úložištích v registru. V případě přístupového tokenu můžete uživatelům nebo službám poskytnout vymezený, časově omezený přístup k úložištím a vyžádat si obrázky nebo provádět jiné akce. 
+This article shows how to create and use an access token that has permissions to perform actions on only specific repositories in a registry. With an access token, you can provide users or services with scoped, time-limited access to repositories to pull or push images or perform other actions. 
 
-Další informace o konceptech a scénářích tokenů najdete v tématu [o oprávněních v oboru úložiště](#about-repository-scoped-permissions), dále v tomto článku.
+See [About repository-scoped permissions](#about-repository-scoped-permissions), later in this article, for background about token concepts and scenarios.
 
 > [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview a [platí některá omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+> This feature is currently in preview, and some [limitations apply](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="preview-limitations"></a>Omezení verze Preview
+## <a name="preview-limitations"></a>Preview limitations
 
-* Tato funkce je dostupná jenom v registru kontejnerů **Premium** . Informace o úrovních a omezeních služby registru najdete v tématu [Azure Container Registry SKU](container-registry-skus.md).
-* V současné době nemůžete přiřadit oprávnění vymezená úložiště k objektu Azure Active Directory, jako je například instanční objekt nebo spravovaná identita.
+* This feature is only available in a **Premium** container registry. For information about registry service tiers and limits, see [Azure Container Registry SKUs](container-registry-skus.md).
+* You can't currently assign repository-scoped permissions to an Azure Active Directory object such as a service principal or managed identity.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* **Azure CLI** – Tento článek vyžaduje místní instalaci rozhraní příkazového řádku Azure CLI (verze 2.0.76 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
-* **Docker** – k ověření pomocí registru budete potřebovat taky místní instalaci Docker. Docker poskytuje pokyny k instalaci pro systémy [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
-* **Registr kontejneru s úložištěmi** – Pokud ho nemáte, vytvořte v předplatném Azure registr kontejnerů. Použijte například [Azure Portal](container-registry-get-started-portal.md) nebo rozhraní příkazového [řádku Azure CLI](container-registry-get-started-azure-cli.md). 
+* **Azure CLI** - This article requires a local installation of the Azure CLI (version 2.0.76 or later). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+* **Docker** - To authenticate with the registry, you also need a local Docker installation. Docker poskytuje pokyny k instalaci pro systémy [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
+* **Container registry with repositories** - If you don't have one, create a container registry in your Azure subscription. For example, use the [Azure portal](container-registry-get-started-portal.md) or the [Azure CLI](container-registry-get-started-azure-cli.md). 
 
-  Pro účely testování [dosaďte](container-registry-get-started-docker-cli.md) nebo [importujte](container-registry-import-images.md) jednu nebo více ukázkových imagí do registru. Příklady v tomto článku se týkají následujících imagí ve dvou úložištích: `samples/hello-world:v1` a `samples/nginx:v1`. 
+  For test purposes, [push](container-registry-get-started-docker-cli.md) or [import](container-registry-import-images.md) one or more sample images to the registry. Examples in this article refer to the following images in two repositories: `samples/hello-world:v1` and `samples/nginx:v1`. 
 
-## <a name="create-an-access-token"></a>Vytvoření přístupového tokenu
+## <a name="create-an-access-token"></a>Create an access token
 
-Pomocí příkazu [AZ ACR token Create][az-acr-token-create] vytvořte token. Při vytváření tokenu zadejte jedno nebo více úložišť a přidružených akcí pro každé úložiště, nebo zadejte existující mapu oboru s těmito nastaveními.
+Create a token using the [az acr token create][az-acr-token-create] command. When creating a token, specify one or more repositories and associated actions on each repository, or specify an existing scope map with those settings.
 
-### <a name="create-access-token-and-specify-repositories"></a>Vytvoření přístupového tokenu a určení úložišť
+### <a name="create-access-token-and-specify-repositories"></a>Create access token and specify repositories
 
-Následující příklad vytvoří přístupový token s oprávněními k provádění akcí `content/write` a `content/read` v úložišti `samples/hello-world` a `content/read` akci v úložišti `samples/nginx`. Ve výchozím nastavení příkaz vygeneruje dvě hesla. 
+The following example creates an access token with permissions to perform `content/write` and `content/read` actions on the `samples/hello-world` repository, and the `content/read` action on the `samples/nginx` repository. By default, the command generates two passwords. 
 
-V tomto příkladu se nastaví stav tokenu na `enabled` (výchozí nastavení), ale můžete token kdykoli aktualizovat a nastavit stav na `disabled`.
+This example sets the token status to `enabled` (the default setting), but you can update the token at any time and set the status to `disabled`.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
@@ -55,9 +50,9 @@ az acr token create --name MyToken --registry myregistry \
   --repository samples/nginx content/read --status enabled
 ```
 
-Výstup zobrazuje podrobnosti o tokenu, včetně generovaných hesel a mapování oboru. Doporučuje se ukládat hesla na bezpečném místě pro pozdější použití s `docker login`. Hesla se znovu nedají načíst, ale můžou se vygenerovat nové.
+The output shows details about the token, including generated passwords and scope map. It's recommended to save the passwords in a safe place to use later with `docker login`. The passwords can't be retrieved again but new ones can be generated.
 
-Výstup také ukazuje, že se automaticky vytvoří mapa oboru s názvem `MyToken-scope-map`. Můžete použít mapu oboru a použít stejné akce úložiště pro jiné tokeny. Nebo aktualizujte mapu oboru později, abyste změnili oprávnění tokenu.
+The output also shows that a scope map is automatically created, named `MyToken-scope-map`. You can use the scope map to apply the same repository actions to other tokens. Or, update the scope map later to change the token permissions.
 
 ```console
 {
@@ -90,11 +85,11 @@ Výstup také ukazuje, že se automaticky vytvoří mapa oboru s názvem `MyToke
   "type": "Microsoft.ContainerRegistry/registries/tokens"
 ```
 
-### <a name="create-a-scope-map-and-associated-token"></a>Vytvoření mapy oboru a přidruženého tokenu
+### <a name="create-a-scope-map-and-associated-token"></a>Create a scope map and associated token
 
-Případně můžete při vytváření tokenu zadat mapu oboru s úložištěmi a přidruženými akcemi. Chcete-li vytvořit mapu oboru, použijte příkaz [AZ ACR Scope-map Create][az-acr-scope-map-create] .
+Alternatively, specify a scope map with repositories and associated actions when creating a token. To create a scope map, use the [az acr scope-map create][az-acr-scope-map-create] command.
 
-Následující příklad příkazu Vytvoří mapu oboru se stejnými oprávněními použitými v předchozím příkladu. Povoluje `content/write` a `content/read` akce v úložišti `samples/hello-world` a `content/read` akci v úložišti `samples/nginx`:
+The following example command creates a scope map with the same permissions used in the previous example. It allows `content/write` and `content/read` actions on the `samples/hello-world` repository, and the `content/read` action on the `samples/nginx` repository:
 
 ```azurecli
 az acr scope-map create --name MyScopeMap --registry myregistry \
@@ -121,21 +116,21 @@ Výstup je podobný tomuto:
   "type": "Microsoft.ContainerRegistry/registries/scopeMaps"
 ```
 
-Spuštěním [AZ ACR token Create][az-acr-token-create] vytvořte token přidružený k mapě oboru *MyScopeMap* . Ve výchozím nastavení příkaz vygeneruje dvě hesla. V tomto příkladu se nastaví stav tokenu na `enabled` (výchozí nastavení), ale můžete token kdykoli aktualizovat a nastavit stav na `disabled`.
+Run [az acr token create][az-acr-token-create] to create a token associated with the *MyScopeMap* scope map. By default, the command generates two passwords. This example sets the token status to `enabled` (the default setting), but you can update the token at any time and set the status to `disabled`.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry --scope-map MyScopeMap --status enabled
 ```
 
-Výstup zobrazuje podrobnosti o tokenu, včetně generovaných hesel a mapování oboru, které jste použili. Doporučuje se ukládat hesla na bezpečném místě pro pozdější použití s `docker login`. Hesla se znovu nedají načíst, ale můžou se vygenerovat nové.
+The output shows details about the token, including generated passwords and the scope map you applied. It's recommended to save the passwords in a safe place to use later with `docker login`. The passwords can't be retrieved again but new ones can be generated.
 
-## <a name="generate-passwords-for-token"></a>Generovat hesla pro token
+## <a name="generate-passwords-for-token"></a>Generate passwords for token
 
-Pokud byla při vytváření tokenu vytvořena hesla, pokračujte [v ověřování pomocí registru](#authenticate-using-token).
+If passwords were created when you created the token, proceed to [Authenticate with registry](#authenticate-using-token).
 
-Pokud nemáte heslo tokenu nebo chcete generovat nová hesla, spusťte příkaz [AZ ACR token Credential Generate][az-acr-token-credential-generate] .
+If you don't have a token password, or you want to generate new passwords, run the [az acr token credential generate][az-acr-token-credential-generate] command.
 
-Následující příklad vygeneruje nové heslo pro vytvořený token, jehož doba platnosti je 30 dní. Heslo ukládá do proměnné prostředí TOKEN_PWD. Tento příklad je naformátován pro prostředí bash shell.
+The following example generates a new password for the token you created, with an expiration period of 30 days. It stores the password in the environment variable TOKEN_PWD. This example is formatted for the bash shell.
 
 ```azurecli
 TOKEN_PWD=$(az acr token credential generate \
@@ -143,9 +138,9 @@ TOKEN_PWD=$(az acr token credential generate \
   --password1 --query 'passwords[0].value' --output tsv)
 ```
 
-## <a name="authenticate-using-token"></a>Ověřování pomocí tokenu
+## <a name="authenticate-using-token"></a>Authenticate using token
 
-Spusťte `docker login` k ověření pomocí registru pomocí přihlašovacích údajů tokenu. Jako uživatelské jméno zadejte název tokenu a zadejte jedno z jeho hesel. Následující příklad je naformátován pro prostředí bash a poskytuje hodnoty pomocí proměnných prostředí.
+Run `docker login` to authenticate with the registry using the token credentials. Enter the token name as the user name and provide one of its passwords. The following example is formatted for the bash shell, and provides the values using environment variables.
 
 ```bash
 TOKEN_NAME=MyToken
@@ -154,22 +149,22 @@ TOKEN_PWD=<token password>
 echo $TOKEN_PWD | docker login --username $TOKEN_NAME --password-stdin myregistry.azurecr.io
 ```
 
-Výstup by měl zobrazit úspěšné ověření:
+Output should show successful authentication:
 
 ```console
 Login Succeeded
 ```
 
-## <a name="verify-scoped-access"></a>Ověření oboru přístupu
+## <a name="verify-scoped-access"></a>Verify scoped access
 
-Můžete ověřit, že token poskytuje vymezená oprávnění pro úložiště v registru. V tomto příkladu se úspěšně dokončí následující příkazy `docker pull`, aby vyčetly image dostupné v úložištích `samples/hello-world` a `samples/nginx`:
+You can verify that the token provides scoped permissions to the repositories in the registry. In this example, the following `docker pull` commands complete successfully to pull images available in the `samples/hello-world` and `samples/nginx` repositories:
 
 ```console
 docker pull myregistry.azurecr.io/samples/hello-world:v1
 docker pull myregistry.azurecr.io/samples/nginx:v1
 ```
 
-Vzhledem k tomu, že vzorový token umožňuje `content/write` akci pouze v úložišti `samples/hello-world`, `docker push` k tomuto úložišti, ale pro `samples/nginx`selže:
+Because the example token allows the `content/write` action only on the `samples/hello-world` repository, `docker push` succeeds to that repository but fails for `samples/nginx`:
 
 ```console
 # docker push succeeds
@@ -179,90 +174,90 @@ docker pull myregistry.azurecr.io/samples/hello-world:v1
 docker pull myregistry.azurecr.io/samples/nginx:v1
 ```
 
-## <a name="update-scope-map-and-token"></a>Aktualizovat mapu a token oboru
+## <a name="update-scope-map-and-token"></a>Update scope map and token
 
-Pokud chcete aktualizovat oprávnění tokenu, aktualizujte oprávnění v přidružené mapě oboru pomocí [AZ ACR Scope-map Update][az-acr-scope-map-update]. Pokud například chcete aktualizovat *MyScopeMap* a odebrat akci `content/write` v úložišti `samples/hello-world`:
+To update token permissions, update the permissions in the associated scope map, using [az acr scope-map update][az-acr-scope-map-update]. For example, to update *MyScopeMap* to remove the `content/write` action on the `samples/hello-world` repository:
 
 ```azurecli
 az acr scope-map update --name MyScopeMap --registry myregistry \
   --remove samples/hello-world content/write
 ```
 
-Pokud je mapa oboru přidružena k více než jednomu tokenu, příkaz aktualizuje oprávnění všech přidružených tokenů.
+If the scope map is associated with more than one token, the command updates the permission of all associated tokens.
 
-Pokud chcete aktualizovat token s jinou mapou oboru, spusťte příkaz [AZ ACR token Update][az-acr-token-update]. Příklad:
+If you want to update a token with a different scope map, run [az acr token update][az-acr-token-update]. Například:
 
 ```azurecli
 az acr token update --name MyToken --registry myregistry \
   --scope-map MyNewScopeMap
 ```
 
-Po aktualizaci tokenu nebo mapování oboru přidruženého k tokenu se změny oprávnění projeví při příštím `docker login` nebo jiném ověřování pomocí tokenu.
+After updating a token, or a scope map associated with a token, the permission changes take effect at the next `docker login` or other authentication using the token.
 
-Po aktualizaci tokenu můžete vytvořit nová hesla pro přístup k registru. Spusťte příkaz [AZ ACR token Credential Generate][az-acr-token-credential-generate]. Příklad:
+After updating a token, you might want to generate new passwords to access the registry. Run [az acr token credential generate][az-acr-token-credential-generate]. Například:
 
 ```azurecli
 az acr token credential generate \
   --name MyToken --registry myregistry --days 30
 ```
 
-## <a name="about-repository-scoped-permissions"></a>O oprávněních s rozsahem úložiště
+## <a name="about-repository-scoped-permissions"></a>About repository-scoped permissions
 
 ### <a name="concepts"></a>Koncepty
 
-Pokud chcete nakonfigurovat oprávnění s rozsahem úložiště, vytvořte *přístupový token* a přidruženou *mapu oboru* pomocí příkazů v Azure CLI.
+To configure repository-scoped permissions, you create an *access token* and an associated *scope map* using commands in the Azure CLI.
 
-* **Přístupový token** je přihlašovací údaje, které se používají s heslem k ověřování pomocí registru. Přidružená ke každému tokenu jsou povolené *Akce* oboru pro jedno nebo více úložišť. Pro každý token můžete nastavit čas vypršení platnosti. 
+* An **access token** is a credential used with a password to authenticate with the registry. Associated with each token are permitted *actions* scoped to one or more repositories. You can set an expiration time for each token. 
 
-* **Akce** u každého zadaného úložiště zahrnuje jednu nebo více z následujících možností.
+* **Actions** on each specified repository include one or more of the following.
 
   |Akce  |Popis  |
   |---------|---------|
-  |`content/read`     |  Načte data z úložiště. Můžete například načíst artefakt.  |
-  |`metadata/read`    | Načte metadata z úložiště. Například seznam značek nebo zobrazit metadata manifestu.   |
-  |`content/write`     |  Zapište data do úložiště. Pomocí `content/read` můžete odeslat artefakt.    |
-  |`metadata/write`     |  Zapsat metadata do úložiště. Například aktualizujte atributy manifestu.  |
-  |`content/delete`    | Odeberte data z úložiště. Například odstraňte úložiště nebo manifest. |
+  |`content/read`     |  Read data from the repository. For example, pull an artifact.  |
+  |`metadata/read`    | Read metadata from the repository. For example, list tags or show manifest metadata.   |
+  |`content/write`     |  Write data to the repository. Use with `content/read` to push an artifact.    |
+  |`metadata/write`     |  Write metadata to the repository. For example, update manifest attributes.  |
+  |`content/delete`    | Remove data from the repository. For example, delete a repository or a manifest. |
 
-* **Mapa oboru** je objekt registru, který seskupuje oprávnění úložiště, která použijete u tokenu, nebo se může znovu vztahovat na jiné tokeny. Pokud při vytváření tokenu nepoužijete mapu oboru, vytvoří se pro vás automaticky mapa oboru, abyste mohli uložit nastavení oprávnění. 
+* A **scope map** is a registry object that groups repository permissions you apply to a token, or can reapply to other tokens. If you don't apply a scope map when creating a token, a scope map is automatically created for you, to save the permission settings. 
 
-  Mapa oboru vám pomůže nakonfigurovat více uživatelů se shodným přístupem k sadě úložišť. Azure Container Registry taky poskytuje systémem definované mapy oborů, které můžete použít při vytváření přístupových tokenů.
+  A scope map helps you configure multiple users with identical access to a set of repositories. Azure Container Registry also provides system-defined scope maps that you can apply when creating access tokens.
 
-Následující obrázek shrnuje vztah mezi tokeny a mapami rozsahu. 
+The following image summarizes the relationship between tokens and scope maps. 
 
-![Mapy a tokeny rozsahu registru](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
+![Registry scope maps and tokens](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
 
 ### <a name="scenarios"></a>Scénáře
 
-Mezi scénáře použití přístupového tokenu patří:
+Scenarios for using an access token include:
 
-* Poskytněte zařízení IoT s jednotlivými tokeny k získání image z úložiště.
-* Poskytněte externí organizaci oprávnění ke konkrétnímu úložišti. 
-* Omezte přístup k úložišti pro konkrétní skupiny uživatelů ve vaší organizaci. Poskytněte třeba přístup pro zápis a čtení vývojářům, kteří vytvářejí image, které cílí na konkrétní úložiště, a přístup pro čtení týmů, které z těchto úložišť nasazují.
+* Provide IoT devices with individual tokens to pull an image from a repository
+* Provide an external organization with permissions to a specific repository 
+* Limit repository access to specific user groups in your organization. For example, provide write and read access to developers who build images that target specific repositories, and read access to teams that deploy from those repositories.
 
-### <a name="authentication-using-token"></a>Ověřování pomocí tokenu
+### <a name="authentication-using-token"></a>Authentication using token
 
-Pro ověření pomocí cílového registru použijte název tokenu jako uživatelské jméno a jedno z jeho přidružených hesel. Metoda ověřování závisí na nakonfigurovaných akcích.
+Use a token name as a user name and one of its associated passwords to authenticate with the target registry. The authentication method depends on the configured actions.
 
-### <a name="contentread-or-contentwrite"></a>obsah/čtení nebo obsah/zápis
+### <a name="contentread-or-contentwrite"></a>content/read or content/write
 
-Pokud token povoluje pouze `content/read` nebo `content/write` akce, poskytněte přihlašovací údaje tokenu v jednom z následujících toků ověřování:
+If the token permits only `content/read` or `content/write` actions, provide token credentials in either of the following authentication flows:
 
-* Ověřování pomocí Docker pomocí `docker login`
-* Ověřování pomocí registru pomocí příkazu [AZ ACR Login][az-acr-login] v rozhraní příkazového řádku Azure
+* Authenticate with Docker using `docker login`
+* Authenticate with the registry using the [az acr login][az-acr-login] command in the Azure CLI
 
-Po ověření token povoluje nakonfigurované akce v oboru úložiště nebo úložišť s vymezeným oborem. Pokud například token povolí akci `content/read` v úložišti, jsou na obrázcích v tomto úložišti povoleny `docker pull` operace.
+Following authentication, the token permits the configured actions on the scoped repository or repositories. For example, if the token permits the `content/read` action on a repository, `docker pull` operations are permitted on images in that repository.
 
-#### <a name="metadataread-metadatawrite-or-contentdelete"></a>metadata/čtení, metadata/zápis, nebo obsah/odstranění
+#### <a name="metadataread-metadatawrite-or-contentdelete"></a>metadata/read, metadata/write, or content/delete
 
-Pokud token povoluje `metadata/read`, `metadata/write`nebo `content/delete` akcí v úložišti, musí se v rámci souvisejících příkazů [AZ ACR úložištì][az-acr-repository] v Azure CLI zadat přihlašovací údaje tokenu.
+If the token permits `metadata/read`, `metadata/write`, or `content/delete` actions on a repository, token credentials must be provided as parameters with the related [az acr repository][az-acr-repository] commands in the Azure CLI.
 
-Pokud je například `metadata/read` akcí povoleno v úložišti, předejte přihlašovací údaje tokenu při spuštění příkazu [AZ ACR úložiště show-Tags][az-acr-repository-show-tags] k vypsání značek.
+For example, if `metadata/read` actions are permitted on a repository, pass the token credentials when running the [az acr repository show-tags][az-acr-repository-show-tags] command to list tags.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete spravovat mapy oboru a přístupové tokeny, použijte další příkazy v příkazu [AZ ACR Scope-map][az-acr-scope-map] a [AZ ACR token][az-acr-token] groups.
-* V tématu [Přehled ověřování](container-registry-authentication.md) pro scénáře ověřování pomocí služby Azure Container Registry použijte účet správce nebo Azure Active Directory identitu.
+* To manage scope maps and access tokens, use additional commands in the [az acr scope-map][az-acr-scope-map] and [az acr token][az-acr-token] command groups.
+* See the [authentication overview](container-registry-authentication.md) for scenarios to authenticate with an Azure container registry using an admin account or an Azure Active Directory identity.
 
 
 <!-- LINKS - External -->

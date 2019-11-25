@@ -1,6 +1,6 @@
 ---
-title: Automatické nasazení pro skupiny zařízení – Azure IoT Edge | Dokumentace Microsoftu
-description: Automatické nasazení ve službě Azure IoT Edge použít ke správě skupiny zařízení, na základě sdílené značek
+title: Automatic deployment for device groups - Azure IoT Edge | Microsoft Docs
+description: Use automatic deployments in Azure IoT Edge to manage groups of devices based on shared tags
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,127 +8,126 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 376ee74732daf526b31129fa8c93cbaa32350eae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb45f2b929c08ce77c83af450726a00dd6af458e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318202"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456728"
 ---
-# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Principy automatického nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku
+# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Understand IoT Edge automatic deployments for single devices or at scale
 
-Postupujte podle zařízení Azure IoT Edge [životní cyklus zařízení](../iot-hub/iot-hub-device-management-overview.md) , který se podobá jiným typům zařízení IoT:
+Azure IoT Edge devices follow a [device lifecycle](../iot-hub/iot-hub-device-management-overview.md) that is similar to other types of IoT devices:
 
-1. Zřizovat nová zařízení IoT Edge imaging zařízení s operační systém a instalaci [modul runtime IoT Edge](iot-edge-runtime.md).
-2. Konfigurace zařízení ke spuštění [moduly IoT Edge](iot-edge-modules.md)a potom monitorovat jejich stav. 
-3. Nakonec vyřazení zařízení, když se nahradí nebo jsou zastaralé.  
+1. Provision new IoT Edge devices by imaging a device with an OS and installing the [IoT Edge runtime](iot-edge-runtime.md).
+2. Configure the devices to run [IoT Edge modules](iot-edge-modules.md), and then monitor their health. 
+3. Finally, retire devices when they are replaced or become obsolete.  
 
-Azure IoT Edge poskytuje dva způsoby, jak nakonfigurovat moduly, které chcete spustit na zařízeních IoT Edge: jeden pro vývoj a rychlé iterace na jednom zařízení (použít tuto metodu ve službě Azure IoT Edge [kurzy](tutorial-deploy-function.md)), a jeden pro správu velkého loďstev z Zařízení IoT Edge. Oba tyto přístupy jsou k dispozici na webu Azure Portal a prostřednictvím kódu programu. Pro cílí na skupiny nebo velký počet zařízení, můžete určit zařízení, která byste chtěli nasadit moduly pomocí [značky](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) ve dvojčeti zařízení. Následující kroky mluvit o nasazení pro skupinu zařízení státu Washington, který je identifikován vlastnost tags. 
+Azure IoT Edge provides two ways to configure the modules to run on IoT Edge devices: one for development and fast iterations on a single device (you used this method in the Azure IoT Edge [tutorials](tutorial-deploy-function.md)), and one for managing large fleets of IoT Edge devices. Both of these approaches are available in the Azure portal and programmatically. For targeting groups or a large number of devices, you can specify which devices you'd like to deploy your modules to using [tags](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) in the device twin. The following steps talk about a deployment to a Washington State device group identified through the tags property. 
 
-Tento článek se zaměřuje na konfiguraci a monitorování fáze pro flotily nebo zařízení, souhrnně označovány jako automatické nasazení IoT Edge. Celkový postup nasazení jsou následující: 
+This article focuses on the configuration and monitoring stages for fleets of devices, collectively referred to as IoT Edge automatic deployments. The overall deployment steps are as follows: 
 
-1. Operátor definuje nasazení, který popisuje sadu modulů, stejně jako cílová zařízení. Každé nasazení má manifest nasazení, který odráží tyto informace. 
-2. Služba IoT Hub komunikuje se všechna cílová zařízení nakonfigurovat požadované moduly. 
-3. Služba IoT Hub načítá stav ze zařízení IoT Edge a zpřístupní je operátor.  Operátor můžete třeba zjistit, když se úspěšně nakonfigurovala hraničního zařízení nebo pokud modulu nezdaří za běhu. 
-4. V každém okamžiku nová zařízení IoT Edge, které splňují podmínky cílení jsou nakonfigurované pro nasazení. Například nasazení, které cílí na všechna zařízení IoT Edge ve státě Washington automaticky nakonfiguruje nová zařízení IoT Edge je zřízený a přidán do skupiny zařízení státě Washington. 
+1. An operator defines a deployment that describes a set of modules as well as the target devices. Each deployment has a deployment manifest that reflects this information. 
+2. The IoT Hub service communicates with all targeted devices to configure them with the desired modules. 
+3. The IoT Hub service retrieves status from the IoT Edge devices and makes them available to the operator.  For example, an operator can see when an Edge device is not configured successfully or if a module fails during runtime. 
+4. At any time, new IoT Edge devices that meet the targeting conditions are configured for the deployment. For example, a deployment that targets all IoT Edge devices in Washington State automatically configures a new IoT Edge device once it is provisioned and added to the Washington State device group. 
  
-Tento článek popisuje jednotlivých komponent zahrnutých v konfiguraci a monitorování nasazení. Postup vytvoření a nasazení aktualizace, najdete v části [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md).
+This article describes each component involved in configuring and monitoring a deployment. For a walkthrough of creating and updating a deployment, see [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md).
 
 ## <a name="deployment"></a>Nasazení
 
-Automatické nasazení IoT Edge přiřadí IoT Edge bitové kopie modulu spouštět jako instance na cílovou sadu zařízení IoT Edge. Funguje to tím, že nakonfigurujete manifest nasazení IoT Edge do seznamu modulů s odpovídající inicializační parametry pro zahrnutí. Nasazení je možné přiřadit na jediné zařízení (podle ID zařízení) nebo do skupiny zařízení (na základě značek). Po zařízení IoT Edge dostane manifest nasazení, stáhne a nainstaluje Image kontejneru z úložišť příslušného kontejneru a nakonfiguruje je odpovídajícím způsobem. Po vytvoření nasazení operátor můžete monitorovat stav nasazení chcete zobrazit, zda jsou správně nakonfigurované cílová zařízení.
+An IoT Edge automatic deployment assigns IoT Edge module images to run as instances on a targeted set of IoT Edge devices. It works by configuring an IoT Edge deployment manifest to include a list of modules with the corresponding initialization parameters. A deployment can be assigned to a single device (based on Device ID) or to a group of devices (based on tags). Once an IoT Edge device receives a deployment manifest, it downloads and installs the container images from the respective container repositories, and configures them accordingly. Once a deployment is created, an operator can monitor the deployment status to see whether targeted devices are correctly configured.
 
-Nasazení můžete nakonfigurovat pouze zařízení IoT Edge. Následující požadavky musí být na zařízení, než může přijímat nasazení:
+Only IoT Edge devices can be configured with a deployment. The following prerequisites must be on the device before it can receive the deployment:
 
-* Základní operační systém
-* Systém správy kontejneru, jako je Moby nebo Dockeru
-* Zřizování modul runtime IoT Edge 
+* The base operating system
+* A container management system, like Moby or Docker
+* Provisioning of the IoT Edge runtime 
 
 ### <a name="deployment-manifest"></a>Manifest nasazení
 
-Manifest nasazení je dokument JSON, který popisuje moduly, které chcete nakonfigurovat na cílovém zařízení IoT Edge. Obsahuje metadat konfigurace pro všechny moduly, včetně požadovaný systém modulů (konkrétně agenta IoT Edge a Centrum IoT Edge).  
+A deployment manifest is a JSON document that describes the modules to be configured on the targeted IoT Edge devices. It contains the configuration metadata for all the modules, including the required system modules (specifically the IoT Edge agent and IoT Edge hub).  
 
-Zahrnuje metadat konfigurace pro každý modul: 
+The configuration metadata for each module includes: 
 
-* Verze 
+* Version 
 * Typ 
-* Stav (například spuštěná nebo zastavená) 
-* Zásady restartování 
-* Image a container registry
-* Trasy pro vstupní a výstupní data 
+* Status (for example, running or stopped) 
+* Restart policy 
+* Image and container registry
+* Routes for data input and output 
 
-Pokud je bitové kopie modulu uložené v privátním registru kontejneru, agenta IoT Edge obsahuje přihlašovací údaje registru. 
+If the module image is stored in a private container registry, the IoT Edge agent holds the registry credentials. 
 
-### <a name="target-condition"></a>Cílová podmínka
+### <a name="target-condition"></a>Target condition
 
-Cílová podmínka se během životnosti nasazení průběžně vyhodnocuje. Všechna nová zařízení, které splňují požadavky jsou zahrnuty, a odeberou se všechna existující zařízení, která už se. Nasazení se znovu aktivovat, pokud služba detekuje všechny změny stavu cílového. 
+The target condition is continuously evaluated throughout the lifetime of the deployment. Any new devices that meet the requirements are included, and any existing devices that no longer do are removed. The deployment is reactivated if the service detects any target condition change. 
 
-Například máte nasazení A s tags.environment podmínku cílové = 'prod'. Pokud zahájíte nasazení, se 10 zařízení produkčního prostředí. Moduly se úspěšně nainstaloval v těchto 10 zařízení. Stav agenta IoT Edge se zobrazuje jako 10 Celkový počet zařízení, 10 úspěšné odpovědi, 0 odpovědí na selhání a 0 odpovědi – čekání. Teď přidáte pět další zařízení s tags.environment = 'prod'. Služba zjistí změnu a stav agenta IoT Edge bude 15 celkový počet zařízení, 10 úspěšné odpovědi, 0 odpovědí na selhání a 5 odpovědi – čekání při pokusu o nasazení do pěti nových zařízení.
+For instance, you have a deployment A with a target condition tags.environment = 'prod'. When you kick off the deployment, there are 10 production devices. The modules are successfully installed in these 10 devices. The IoT Edge Agent Status is shown as 10 total devices, 10 successful responses, 0 failure responses, and 0 pending responses. Now you add five more devices with tags.environment = 'prod'. The service detects the change and the IoT Edge Agent Status becomes 15 total devices, 10 successful responses, 0 failure responses, and 5 pending responses when it tries to deploy to the five new devices.
 
-Vybrat cílová zařízení pomocí značky dvojčat zařízení nebo deviceId jakoukoli logickou podmínku. Pokud chcete použít podmínku se značkami, budete muset přidat "tags":{} oddílu ve dvojčeti zařízení v rámci stejné úrovně jako vlastnosti. [Další informace o značkách ve dvojčeti zařízení](../iot-hub/iot-hub-devguide-device-twins.md)
+Use any Boolean condition on device twins tags or deviceId to select the target devices. If you want to use condition with tags, you need to add "tags":{} section in the device twin under the same level as properties. [Learn more about tags in device twin](../iot-hub/iot-hub-devguide-device-twins.md)
 
-Příklady podmínek cíl:
+Target condition examples:
 
-* deviceId = 'linuxprod1.
-* Tags.Environment = 'prod'
-* Tags.Environment = 'prod' AND tags.location = 'westus'
-* Tags.Environment = 'prod' OR tags.location = 'westus'
-* Tags.Operator = "Jan" a tags.environment = 'prod' není deviceId = 'linuxprod1.
+* deviceId ='linuxprod1'
+* tags.environment ='prod'
+* tags.environment = 'prod' AND tags.location = 'westus'
+* tags.environment = 'prod' OR tags.location = 'westus'
+* tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
 
-Tady jsou některé omezí při konstrukci cílovou podmínku:
+Here are some constrains when you construct a target condition:
 
-* Ve dvojčeti zařízení může vytvořit pouze cílovou podmínku pomocí značek nebo ID zařízení.
-* Dvojité uvozovky nejsou povolené v každé části cílovou podmínku. Použijte jednoduché uvozovky.
-* Jednoduché uvozovky představují hodnoty cílovou podmínku. Proto musíte před jednoduchá uvozovka s jinou jednoduché uvozovky, pokud je součástí názvu zařízení. Například cíl na nějaké zařízení názvem `operator'sDevice`, zápis `deviceId='operator''sDevice'`.
-* V cílové podmínku hodnoty jsou povoleny číslice, písmena a následující znaky: `-:.+%_#*?!(),=@;$`.
+* In device twin, you can only build a target condition using tags or deviceId.
+* Double quotes aren't allowed in any portion of the target condition. Use single quotes.
+* Single quotes represent the values of the target condition. Therefore, you must escape the single quote with another single quote if it's part of the device name. For example, to target a device called `operator'sDevice`, write `deviceId='operator''sDevice'`.
+* Numbers, letters, and the following characters are allowed in target condition values: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Priorita
 
-Prioritu definuje, zda má být použita nasazení na cílovém zařízení vzhledem k jiné nasazení. Priorita nasazení je kladné celé číslo, s větší čísla, které označuje vyšší prioritu. Pokud zařízení IoT Edge je cílí více než jedno nasazení, použije se nasazení s nejvyšší prioritou.  Nasazení s nižší prioritou se nepoužije, ani se sloučení.  Pokud zařízení je cílem dvě nebo víc nasazení se stejnou prioritou, použije se nedávno vytvořené nasazení (určené časové razítko vytvoření).
+A priority defines whether a deployment should be applied to a targeted device relative to other deployments. A deployment priority is a positive integer, with larger numbers denoting higher priority. If an IoT Edge device is targeted by more than one deployment, the deployment with the highest priority applies.  Deployments with lower priorities are not applied, nor are they merged.  If a device is targeted with two or more deployments with equal priority, the most recently created deployment (determined by the creation timestamp) applies.
 
 ### <a name="labels"></a>Popisky 
 
-Popisky jsou páry klíč/hodnota řetězce, které můžete použít k filtrování a skupiny nasazení. Nasazení může mít více popisky. Popisky jsou volitelné a proveďte žádný vliv skutečnou konfiguraci zařízení IoT Edge. 
+Labels are string key/value pairs that you can use to filter and group of deployments. A deployment may have multiple labels. Labels are optional and do no impact the actual configuration of IoT Edge devices. 
 
 ### <a name="deployment-status"></a>Stav nasazení
 
-Chcete-li zjistit, jestli se úspěšně použity pro všechny cílové zařízení IoT Edge se dá monitorovat nasazení.  Cílové zařízení Edge se zobrazí v jedné nebo více z následujících kategorií stavu: 
+A deployment can be monitored to determine whether it applied successfully for any targeted IoT Edge device.  A targeted Edge device will appear in one or more of the following status categories: 
 
-* **Cíl** uvedena na hraničních zařízeních IoT zařízení, které odpovídají nasazení cílí na podmínku.
-* **Skutečné** zobrazuje cílové hraničních zařízeních IoT zařízení, která nejsou cílem jiné nasazení s vyšší prioritou.
-* **V pořádku** zobrazuje na hraničních zařízeních IoT zařízení, která mají hlášeny zpět do služby, moduly byla nasazena úspěšně. 
-* **Není v pořádku** ukazuje na hraničních zařízeních IoT zařízení hlášeny zpět ke službě, že jedna nebo moduly nebyly nasazeny úspěšně. Aby to prověřili chybu, vzdálené připojení k těmto zařízením a zobrazit soubory protokolů.
-* **Neznámý** zobrazuje zařízení, u kterých není nahlášená libovolný stav týkající se tohoto nasazení IoT Edge. Aby to prověřili, zobrazte služby informace a soubory protokolu.
+* **Target** shows the IoT Edge devices that match the Deployment targeting condition.
+* **Actual** shows the targeted IoT Edge devices that are not targeted by another deployment of higher priority.
+* **Healthy** shows the IoT Edge devices that have reported back to the service that the modules have been deployed successfully. 
+* **Unhealthy** shows the IoT Edge devices have reported back to the service that one or modules have not been deployed successfully. To further investigate the error, connect remotely to those devices and view the log files.
+* **Unknown** shows the IoT Edge devices that did not report any status pertaining this deployment. To further investigate, view service info and log files.
 
-## <a name="phased-rollout"></a>Postupné zavádění 
+## <a name="phased-rollout"></a>Phased rollout 
 
-Postupné zavádění je celkový proces kterým operátor nasadí změny do otevření sadu zařízení IoT Edge. Cílem je, aby změny postupně, aby se snížilo riziko zpřístupnění celou škálovací rozbíjející změny.  
+A phased rollout is an overall process whereby an operator deploys changes to a broadening set of IoT Edge devices. The goal is to make changes gradually to reduce the risk of making wide scale breaking changes.  
 
-Postupné zavádění je proveden v následujících fází a kroků: 
+A phased rollout is executed in the following phases and steps: 
 
-1. Vytvořit testovací prostředí pro zařízení IoT Edge je zřizování a nastavením značku dvojčete zařízení jako `tag.environment='test'`. Testovací prostředí zrcadlit v provozním prostředí, nakonec se zaměří na nasazení. 
-2. Vytvořte nasazení, včetně modulů a konfigurací. Cílení podmínka musí cílit na testovací prostředí pro zařízení IoT Edge.   
-3. Ověření konfigurace nového modulu v testovacím prostředí.
-4. Aktualizace nasazení, aby zahrnují podmnožinu produkční zařízení IoT Edge tak, že přidáte novou značku k cílení podmínku. Také se ujistěte, že priorita pro nasazení je vyšší než jiná nasazení aktuálně cílená na těchto zařízeních 
-5. Ověřte, že nasazení bylo úspěšné na cílových zařízeních IoT tím, že zobrazíte stav nasazení.
-6. Aktualizujte na cílit na všechny zbývající zařízení IoT Edge produkčního nasazení.
+1. Establish a test environment of IoT Edge devices by provisioning them and setting a device twin tag like `tag.environment='test'`. The test environment should mirror the production environment that the deployment will eventually target. 
+2. Create a deployment including the desired modules and configurations. The targeting condition should target the test IoT Edge device environment.   
+3. Validate the new module configuration in the test environment.
+4. Update the deployment to include a subset of production IoT Edge devices by adding a new tag to the targeting condition. Also, ensure that the priority for the deployment is higher than other deployments currently targeted to those devices 
+5. Verify that the deployment succeeded on the targeted IoT Devices by viewing the deployment status.
+6. Update the deployment to target all remaining production IoT Edge devices.
 
 ## <a name="rollback"></a>Vrácení zpět
 
-Nasazení může být vrácena zpět, pokud se zobrazí chyby nebo chybné konfigurace.  Protože nasazení definuje konfiguraci absolutní modulu pro zařízení IoT Edge, další nasazení musí také cílit na stejné zařízení s nižší prioritou i v případě, že cílem je odebrat všechny moduly.  
+Deployments can be rolled back if you receive errors or misconfigurations.  Because a deployment defines the absolute module configuration for an IoT Edge device, an additional deployment must also be targeted to the same device at a lower priority even if the goal is to remove all modules.  
 
-Proveďte vrácení zpět v následujícím pořadí: 
+Perform rollbacks in the following sequence: 
 
-1. Potvrďte, že druhé nasazení cílit také na stejnou sadu zařízení. Pokud je cílem vrácení změn odebrat všechny moduly, druhé nasazení by neměl obsahovat žádné moduly. 
-2. Změnit nebo odebrat Cílový výraz podmínky nasazení, který chcete vrátit zpět tak, že zařízení už splňují cílovou podmínku.
-3. Ověřte, že vrácení změn zobrazením stavu nasazení.
-   * Vrátit zpět nasazení již musí zobrazit stav pro zařízení, které byly vráceny zpět.
-   * Druhé nasazení by teď měl obsahovat stav nasazení pro zařízení, které byly vráceny zpět.
+1. Confirm that a second deployment is also targeted at the same device set. If the goal of the rollback is to remove all modules, the second deployment should not include any modules. 
+2. Modify or remove the target condition expression of the deployment you wish to roll back so that the devices no longer meet the targeting condition.
+3. Verify that the rollback succeeded by viewing the deployment status.
+   * The rolled-back deployment should no longer show status for the devices that were rolled back.
+   * The second deployment should now include deployment status for the devices that were rolled back.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Provede kroky k vytvoření, aktualizace nebo odstranění nasazení v [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md).
-* Další informace o dalších pojmech IoT Edge jako [modul runtime IoT Edge](iot-edge-runtime.md) a [moduly IoT Edge](iot-edge-modules.md).
+* Walk through the steps to create, update, or delete a deployment in [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md).
+* Learn more about other IoT Edge concepts like the [IoT Edge runtime](iot-edge-runtime.md) and [IoT Edge modules](iot-edge-modules.md).
 

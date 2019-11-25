@@ -1,53 +1,48 @@
 ---
-title: Pravidla brány firewall pro přístup k Azure Container Registry
-description: Nakonfigurujte pravidla pro přístup ke službě Azure Container Registry za bránou firewall.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Firewall access rules
+description: Configure rules to access an Azure container registry from behind a firewall.
 ms.topic: article
 ms.date: 07/17/2019
-ms.author: danlep
-ms.openlocfilehash: 88b6da4e9bd2938adadadc1ef0e696399fc3c75e
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6a0a169f7e5a7e07771cb9fee474b7f4a9391a4e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828004"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455182"
 ---
-# <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall
+# <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Configure rules to access an Azure container registry behind a firewall
 
-Tento článek vysvětluje, jak nakonfigurovat pravidla pro bránu firewall, aby povolovala přístup ke službě Azure Container Registry. Například zařízení Azure IoT Edge za bránou firewall nebo proxy server může vyžadovat přístup k registru kontejneru, aby mohl načíst image kontejneru. Nebo je možné, že uzamčený Server v místní síti bude potřebovat přístup k nabízení obrázku.
+This article explains how to configure rules on your firewall to allow access to an Azure container registry. For example, an Azure IoT Edge device behind a firewall or proxy server might need to access a container registry to pull a container image. Or, a locked-down server in an on-premises network might need access to push an image.
 
-Pokud místo toho chcete nakonfigurovat příchozí pravidla přístupu k síti v registru kontejneru tak, aby povolovala přístup jenom v rámci služby Azure Virtual Network, nebo z rozsahu veřejných IP adres, přečtěte si téma [omezení přístupu ke službě Azure Container Registry z virtuální sítě](container-registry-vnet.md).
+If instead you want to configure inbound network access rules on a container registry to allow access only within an Azure virtual network or a public IP address range, see [Restrict access to an Azure container registry from a virtual network](container-registry-vnet.md).
 
-## <a name="about-registry-endpoints"></a>O koncových bodech registru
+## <a name="about-registry-endpoints"></a>About registry endpoints
 
-Aby mohl klient, jako je démon Docker, načítat nebo předávat obrázky nebo jiné artefakty do služby Azure Container Registry, musí komunikovat přes protokol HTTPS se dvěma odlišnými koncovými body.
+To pull or push images or other artifacts to an Azure container registry, a client such as a Docker daemon needs to interact over HTTPS with two distinct endpoints.
 
-* **Registry REST API koncového bodu** – ověřování a správa registru se zpracovávají prostřednictvím koncového bodu veřejné REST API registru. Tento koncový bod je adresa URL přihlašovacího serveru registru nebo přidružený rozsah IP adres. 
+* **Registry REST API endpoint** - Authentication and registry management operations are handled through the registry's public REST API endpoint. This endpoint is the login server URL of the registry, or an associated IP address range. 
 
-* **Koncový bod úložiště** – Azure [přiděluje úložiště objektů BLOB](container-registry-storage.md) v účtech Azure Storage jménem každého registru za účelem správy imagí kontejneru a dalších artefaktů. Když klient přistupuje k vrstvám imagí ve službě Azure Container Registry, provede požadavky pomocí koncového bodu účtu úložiště, který poskytuje registr.
+* **Storage endpoint** - Azure [allocates blob storage](container-registry-storage.md) in Azure storage accounts on behalf of each registry to manage container images and other artifacts. When a client accesses image layers in an Azure container registry, it makes requests using a storage account endpoint provided by the registry.
 
-Pokud je registr [geograficky replikovaný](container-registry-geo-replication.md), může klient spolupracovat s koncovými body Rest a úložiště v konkrétní oblasti nebo v několika replikovaných oblastech.
+If your registry is [geo-replicated](container-registry-geo-replication.md), a client might need to interact with REST and storage endpoints in a specific region or in multiple replicated regions.
 
-## <a name="allow-access-to-rest-and-storage-urls"></a>Povolení přístupu k adresám REST a Storage
+## <a name="allow-access-to-rest-and-storage-urls"></a>Allow access to REST and storage URLs
 
-* **Koncový bod REST** – povolí přístup k adrese URL serveru registru, například`myregistry.azurecr.io`
-* **Koncový bod úložiště** – povolí přístup ke všem účtům služby Azure Blob Storage pomocí zástupného znaku.`*.blob.core.windows.net`
+* **REST endpoint** - Allow access to the registry server URL, such as  `myregistry.azurecr.io`
+* **Storage endpoint** - Allow access to all Azure blob storage accounts using the wildcard `*.blob.core.windows.net`
 
 
-## <a name="allow-access-by-ip-address-range"></a>Povolení přístupu podle rozsahu IP adres
+## <a name="allow-access-by-ip-address-range"></a>Allow access by IP address range
 
-Pokud potřebujete přístup ke konkrétním IP adresám, Stáhněte si [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519).
+If you need to allow access to specific IP addresses, download [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519).
 
-Pokud chcete najít rozsahy IP adres koncového bodu REST ACR, vyhledejte **AzureContainerRegistry** v souboru JSON.
+To find the ACR REST endpoint IP ranges, search for **AzureContainerRegistry** in the JSON file.
 
 > [!IMPORTANT]
-> Rozsahy IP adres pro služby Azure se můžou měnit a aktualizace se zveřejňují týdně. Stáhněte si soubor JSON pravidelně a proveďte potřebné aktualizace v pravidlech přístupu. Pokud váš scénář zahrnuje konfiguraci pravidel skupiny zabezpečení sítě ve službě Azure Virtual Network pro přístup k Azure Container Registry, použijte místo toho [značku služby](#allow-access-by-service-tag) **AzureContainerRegistry** .
+> IP address ranges for Azure services can change, and updates are published weekly. Download the JSON file regularly, and make necessary updates in your access rules. If your scenario involves configuring network security group rules in an Azure virtual network to access Azure Container Registry, use the **AzureContainerRegistry** [service tag](#allow-access-by-service-tag) instead.
 >
 
-### <a name="rest-ip-addresses-for-all-regions"></a>IP adresy REST pro všechny oblasti
+### <a name="rest-ip-addresses-for-all-regions"></a>REST IP addresses for all regions
 
 ```json
 {
@@ -63,9 +58,9 @@ Pokud chcete najít rozsahy IP adres koncového bodu REST ACR, vyhledejte **Azur
     [...]
 ```
 
-### <a name="rest-ip-addresses-for-a-specific-region"></a>IP adresy REST pro konkrétní oblast
+### <a name="rest-ip-addresses-for-a-specific-region"></a>REST IP addresses for a specific region
 
-Vyhledejte konkrétní oblast, například **AzureContainerRegistry. AustraliaEast**.
+Search for the specific region, such as **AzureContainerRegistry.AustraliaEast**.
 
 ```json
 {
@@ -81,7 +76,7 @@ Vyhledejte konkrétní oblast, například **AzureContainerRegistry. AustraliaEa
     [...]
 ```
 
-### <a name="storage-ip-addresses-for-all-regions"></a>IP adresy úložiště pro všechny oblasti
+### <a name="storage-ip-addresses-for-all-regions"></a>Storage IP addresses for all regions
 
 ```json
 {
@@ -97,9 +92,9 @@ Vyhledejte konkrétní oblast, například **AzureContainerRegistry. AustraliaEa
     [...]
 ```
 
-### <a name="storage-ip-addresses-for-specific-regions"></a>IP adresy úložiště pro konkrétní oblasti
+### <a name="storage-ip-addresses-for-specific-regions"></a>Storage IP addresses for specific regions
 
-Vyhledejte konkrétní oblast, například **Storage. AustraliaCentral**.
+Search for the specific region, such as **Storage.AustraliaCentral**.
 
 ```json
 {
@@ -115,17 +110,17 @@ Vyhledejte konkrétní oblast, například **Storage. AustraliaCentral**.
     [...]
 ```
 
-## <a name="allow-access-by-service-tag"></a>Povolení přístupu podle značky služby
+## <a name="allow-access-by-service-tag"></a>Allow access by service tag
 
-Ve službě Azure Virtual Network použijte pravidla zabezpečení sítě k filtrování provozu z prostředku, jako je například virtuální počítač, do registru kontejneru. Pro zjednodušení vytváření pravidel sítě Azure použijte [značku služby](../virtual-network/security-overview.md#service-tags) **AzureContainerRegistry** . Značka služby představuje skupinu předpon IP adres pro účely přístupu ke službě Azure globálně nebo podle oblasti Azure. Značka je automaticky aktualizována při změně adres. 
+In an Azure virtual network, use network security rules to filter traffic from a resource such as a virtual machine to a container registry. To simplify the creation of the Azure network rules, use the **AzureContainerRegistry** [service tag](../virtual-network/security-overview.md#service-tags). A service tag represents a group of IP address prefixes to access an Azure service globally or per Azure region. The tag is automatically updated when addresses change. 
 
-Můžete například vytvořit pravidlo skupiny zabezpečení odchozí sítě s cílovým **AzureContainerRegistry** , které umožní provoz do služby Azure Container Registry. Chcete-li udělit přístup ke značce služby pouze v konkrétní oblasti, zadejte oblast v následujícím formátu: **AzureContainerRegistry**. [*název oblasti*].
+For example, create an outbound network security group rule with destination **AzureContainerRegistry** to allow traffic to an Azure container registry. To allow access to the service tag only in a specific region, specify the region in the following format: **AzureContainerRegistry**.[*region name*].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o [osvědčených postupech Azure pro zabezpečení sítě](../security/fundamentals/network-best-practices.md)
+* Learn about [Azure best practices for network security](../security/fundamentals/network-best-practices.md)
 
-* Další informace o [skupinách zabezpečení](/azure/virtual-network/security-overview) ve službě Azure Virtual Network
+* Learn more about [security groups](/azure/virtual-network/security-overview) in an Azure virtual network
 
 
 
