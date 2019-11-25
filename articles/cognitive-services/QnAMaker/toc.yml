@@ -12,12 +12,8 @@
       href: quickstarts/create-publish-knowledge-base.md
     - name: Přidání otázek s metadaty
       href: quickstarts/add-question-metadata-portal.md
-    - name: Získání odpovědi
-      items:
-        - name: S využitím Postmana
-          href: Quickstarts/get-answer-from-kb-using-postman.md
-        - name: S využitím cURL
-          href: Quickstarts/get-answer-from-kb-using-cURL.md
+    - name: Získání odpovědí s využitím nástroje Postman nebo cURL
+      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: S využitím REST API
       items:
         - name: Vytvoření nové znalostní báze
