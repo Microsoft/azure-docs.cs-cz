@@ -124,8 +124,6 @@
               href: sql-database-threat-detection-overview.md
             - name: Atributy zabezpečení
               href: sql-database-security-attributes.md
-            - name: Omezení funkcí
-              href: sql-database-feature-restrictions.md
         - name: Zabezpečení jednoúčelové databáze
           items:
             - name: Řízení přístupu k síti

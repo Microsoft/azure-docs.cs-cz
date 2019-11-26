@@ -84,16 +84,18 @@
               href: concepts-limits.md
         - name: Zabezpečení a přístup k datům
           items:
-            - name: Pravidla brány firewall
-              href: concepts-firewall-rules.md
+            - name: Přehled zabezpečení
+              href: concepts-security.md
             - name: Konfigurace SSL
               href: concepts-ssl-connection-security.md
-            - name: Rozšířená ochrana před internetovými útoky
-              href: concepts-data-access-and-security-threat-protection.md
-            - name: Virtuální síť
-              href: concepts-data-access-and-security-vnet.md
             - name: Architektura připojení
               href: concepts-connectivity-architecture.md
+            - name: Pravidla brány firewall
+              href: concepts-firewall-rules.md
+            - name: Virtuální síť
+              href: concepts-data-access-and-security-vnet.md
+            - name: Rozšířená ochrana před internetovými útoky
+              href: concepts-data-access-and-security-threat-protection.md
             - name: Ověřování Azure AD
               href: concepts-aad-authentication.md
         - name: Kontinuita podnikových procesů

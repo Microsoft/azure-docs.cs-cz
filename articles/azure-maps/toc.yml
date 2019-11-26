@@ -127,7 +127,7 @@
               href: map-add-custom-html.md
             - name: Zobrazení provozu
               href: map-show-traffic.md
-            - name: Interakce s využitím událostí myši
+            - name: Reakce na události
               href: map-events.md
             - name: Zpřístupnění aplikace
               href: map-accessibility.md

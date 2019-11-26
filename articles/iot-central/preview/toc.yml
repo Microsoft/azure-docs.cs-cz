@@ -71,6 +71,8 @@
           href: howto-version-device-template.md
         - name: správu zařízení
           href: howto-manage-devices.md
+        - name: Konfigurace pravidel
+          href: howto-configure-rules.md
         - name: Analýza dat zařízení
           href: howto-create-analytics.md
         - name: Přidání dlaždic na řídicí panel
