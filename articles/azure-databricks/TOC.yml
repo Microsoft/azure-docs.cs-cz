@@ -226,7 +226,7 @@
       maintainContext: true
     - name: Data
       items:
-        - name: Systém souborů Databricks
+        - name: Systém souborů Databricks (DBFS)
           href: /azure/databricks/data/databricks-file-system
           maintainContext: true
         - name: Databáze a tabulky
@@ -242,7 +242,7 @@
             - name: Databáze SQL s využitím JDBC
               href: /azure/databricks/data/data-sources/sql-databases
               maintainContext: true
-            - name: Azure SQL Database s využitím konektoru Apache Spark
+            - name: Databáze SQL s využitím konektoru Apache Spark
               href: /azure/databricks/data/data-sources/sql-databases-azure
               maintainContext: true
             - name: Azure Blob Storage
@@ -254,7 +254,7 @@
             - name: Azure Data Lake Storage
               href: /azure/databricks/data/data-sources/azure/azure-datalake
               maintainContext: true
-            - name: Průchod Azure Data Lake Storage
+            - name: Předání přihlašovacích údajů ve službě Azure Data Lake Storage
               href: /azure/databricks/data/data-sources/azure/adls-passthrough
               maintainContext: true
             - name: Databáze Cosmos
@@ -263,7 +263,7 @@
             - name: Azure SQL Data Warehouse
               href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
               maintainContext: true
-            - name: Binární soubory
+            - name: Binární soubor
               href: /azure/databricks/data/data-sources/binary-file
               maintainContext: true
             - name: Cassandra
@@ -764,16 +764,16 @@
               href: /azure/databricks/applications/deep-learning/data-prep/ddl-data
               maintainContext: true
             - name: Načtení dat s využitím Petastormu
-              href: /azure/databricks//applications/deep-learning/data-prep/petastorm
+              href: /azure/databricks/applications/deep-learning/data-prep/petastorm
               maintainContext: true
             - name: Uložení datových rámců a datových sad do souborů TFRecord
-              href: /azure/databricks//applications/deep-learning/data-prep/dataset-to-tfrecords
+              href: /azure/databricks/applications/deep-learning/data-prep/dataset-to-tfrecords
               maintainContext: true
             - name: Načtení dat ze souborů TFRecord s využitím TensorFlow
-              href: /azure/databricks//applications/deep-learning/data-prep/tfrecords-to-tensorflow
+              href: /azure/databricks/applications/deep-learning/data-prep/tfrecords-to-tensorflow
               maintainContext: true
             - name: Uložení dat do souborů TFRecord s využitím TensorFlow
-              href: /azure/databricks//applications/deep-learning/data-prep/tensorflow-to-tfrecords
+              href: /azure/databricks/applications/deep-learning/data-prep/tensorflow-to-tfrecords
               maintainContext: true
         - name: Trénování s jedním uzlem
           items:
@@ -1061,6 +1061,17 @@
         - name: Správa úložiště pracovního prostoru
           href: /azure/databricks/administration-guide/workspace-storage/storage
           maintainContext: true
+        - name: Povolení konfigurace clusteru
+          items:
+            - name: Přehled konfigurace clusteru
+              href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: Povolení služeb kontejneru
+              href: /azure/databricks/administration-guide/clusters/container-services
+              maintainContext: true
+            - name: Povolení Databricks Runtime pro Genomics
+              href: /azure/databricks/administration-guide/clusters/genomics-runtime
+              maintainContext: true
         - name: Správa virtuálních sítí
           items:
             - name: Přehled virtuálních sítí
@@ -1084,7 +1095,7 @@
     - name: Řešení potíží
       items:
         - name: Časté dotazy
-          href: /azure/databricks//azure/azure-databricks/frequently-asked-questions-databricks
+          href: /azure/azure-databricks/frequently-asked-questions-databricks
           maintainContext: true
         - name: Správa
           items:

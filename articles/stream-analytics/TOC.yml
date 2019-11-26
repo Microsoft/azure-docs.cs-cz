@@ -133,6 +133,9 @@
         - name: Zpracování dat služby Event Hubs
           href: ../event-hubs/process-data-azure-stream-analytics.md
           maintainContext: true
+        - name: Zpracování Azure SQL Database
+          href: ../sql-database/sql-database-stream-analytics.md
+          maintainContext: true
         - name: Geoprostorové scénáře
           href: geospatial-scenarios.md
     - name: Monitorování

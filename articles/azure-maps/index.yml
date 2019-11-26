@@ -45,6 +45,8 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-maps/tutorial-geofence">Nastavení monitorované geografické zóny</a>
+          - html: <a href="/azure-maps/tutorial-iot-hub-maps">Prostorová analýza</a>
+          - html: <a href=/azure/azure-maps/tutorial-ev-routing">Směrování EV s využitím Azure Notebooks (Python)</a>
   - title: Referenční informace
     items:
       - type: list
@@ -52,6 +54,6 @@ sections:
         className: cardsW
         items:
           - title: JavaScript
-            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Mapový ovládací prvek</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Mapový ovládací prvek</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/">Modul nástrojů pro kreslení</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-rest/">Modul služeb</a></p>'
           - title: REST
             html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Datová služba</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Služba geografické polohy</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/mobility">Služba Mobility</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Služba Render</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Služba Route</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Služba Search</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Služba Spatial</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Služba Timezone</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Služba Traffic</a></p>'

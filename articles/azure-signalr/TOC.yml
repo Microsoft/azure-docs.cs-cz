@@ -61,6 +61,8 @@
   items:
     - name: Měřítko
       items:
+        - name: Jedna instance
+          href: signalr-howto-scale-signalr.md
         - name: Několik instancí
           href: signalr-howto-scale-multi-instances.md
     - name: Zabezpečení
