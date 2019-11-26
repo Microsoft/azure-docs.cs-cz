@@ -14,6 +14,8 @@
               href: per-vm-quota-requests.md
             - name: Celkové oblastní zvýšení limitu virtuálních jader
               href: regional-quota-requests.md
+            - name: Zvýšení limitu kvóty s nízkou prioritou
+              href: low-priority-quota.md
         - name: Model nasazení Classic
           href: classic-deployment-model-quota-increase-requests.md
     - name: Zvýšení limitu sítě

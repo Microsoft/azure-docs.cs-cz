@@ -31,6 +31,18 @@
       href: active-directory-data-storage-eu.md
     - name: Novinky ve službě Microsoft 365 Government
       href: whats-new-microsoft-365-government.md
+    - name: Reference operací Azure AD
+      items:
+        - name: Úvod
+          href: active-directory-ops-guide-intro.md
+        - name: Správa identit a přístupu
+          href: active-directory-ops-guide-iam.md
+        - name: Správa ověřování
+          href: active-directory-ops-guide-auth.md
+        - name: Zásady správného řízení identit
+          href: active-directory-ops-guide-govern.md
+        - name: Operace
+          href: active-directory-ops-guide-ops.md
 - name: Návody
   expanded: true
   items:

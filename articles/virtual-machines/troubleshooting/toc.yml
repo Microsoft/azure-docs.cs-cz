@@ -59,6 +59,8 @@
       href: linux-recovery-cannot-start-file-system-errors.md
     - name: Řešení potíží při spuštění souvisejících s jádrem
       href: 'https://support.microsoft.com/help/4091524'
+    - name: Obnovení virtuálních počítačů s konfigurací LVM a žádné spuštění
+      href: chroot-logical-volume-manager.md
     - name: Řešení potíží s chybami fstab
       href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: Podrobné řešení potíží s protokolem SSH

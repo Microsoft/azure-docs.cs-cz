@@ -151,7 +151,7 @@
         - name: Společné umístění
           href: co-location.md
         - name: Výkon sítě
-          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Velikosti a typy virtuálních počítačů
       href: sizes.md
       items:
@@ -209,7 +209,7 @@
     - name: Vyhrazení hostitelé
       href: dedicated-hosts.md
     - name: Údržba a aktualizace
-      href: maintenance-and-updates.md
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Diskové úložiště
       items:
         - name: Úvod ke spravovaným diskům
@@ -376,18 +376,32 @@
           href: download-template.md
         - name: Agent virtuálního počítače Azure
           href: ../extensions/agent-windows.md
-        - name: Plánovaná údržba
-          href: maintenance-notifications.md
         - name: Omezení spekulativního spouštění
           href: mitigate-se.md
-        - name: Naplánované události
-          href: scheduled-events.md
-        - name: Monitorování plánovaných událostí
-          href: scheduled-event-service.md
         - name: Monitorování metadat
           href: instance-metadata-service.md
         - name: Povolení vnořené virtualizace
           href: nested-virtualization.md
+    - name: Údržba platformy
+      items:
+        - name: Oznámení o údržbě
+          items:
+            - name: Přehled
+              href: maintenance-notifications.md
+            - name: Rozhraní příkazového řádku
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Portál
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Řízení údržby
+          items:
+            - name: Rozhraní příkazového řádku
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Naplánované události
+          href: scheduled-events.md
+        - name: Služba plánovaných událostí Windows
+          href: scheduled-event-service.md
     - name: Monitorování virtuálních počítačů
       items:
         - name: Azure Monitor pro virtuální počítače
