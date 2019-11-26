@@ -1,117 +1,117 @@
 ---
-title: Konfigurace sítě VPN typu Site-to-Site (S2S) pro použití se soubory Azure | Microsoft Docs
-description: Jak nakonfigurovat síť VPN typu Site-to-Site (S2S) pro použití se soubory Azure
+title: Configure a Site-to-Site (S2S) VPN for use with Azure Files | Microsoft Docs
+description: How to configure a Site-to-Site (S2S) VPN for use with Azure Files
 author: roygara
 ms.service: storage
 ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 36f85b0906b67c5bee61b9e22101f7a0d117878a
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7762366f68bee2cd8c44e81bb22366c504ff1a73
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73141756"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484423"
 ---
-# <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Site-to-site pro použití se soubory Azure
-Připojení VPN typu Site-to-Site (S2S) můžete použít k připojení sdílených složek Azure přes protokol SMB z místní sítě bez nutnosti otevření portu 445. SÍŤ VPN typu Site-to-site můžete nastavit pomocí [VPN Gateway Azure](../../vpn-gateway/vpn-gateway-about-vpngateways.md), což je prostředek Azure, který nabízí služby VPN a který je nasazený ve skupině prostředků spolu s účty úložiště nebo jinými prostředky Azure.
+# <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Configure a Site-to-Site VPN for use with Azure Files
+You can use a Site-to-Site (S2S) VPN connection to mount your Azure file shares over SMB from your on-premises network, without opening up port 445. You can set up a Site-to-Site VPN using [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md), which is an Azure resource offering VPN services, and is deployed in a resource group alongside storage accounts or other Azure resources.
 
-![Graf topologie ilustrující topologii brány Azure VPN, která připojuje sdílenou složku Azure k místní lokalitě pomocí S2S VPN](media/storage-files-configure-s2s-vpn/s2s-topology.png)
+![A topology chart illustrating the topology of an Azure VPN gateway connecting an Azure file share to an on-premises site using a S2S VPN](media/storage-files-configure-s2s-vpn/s2s-topology.png)
 
-Důrazně doporučujeme, abyste si přečetli [Přehled sítě Azure Files](storage-files-networking-overview.md) , než budete pokračovat v tomto článku, abyste mohli získat úplnou diskusi o možnostech sítě dostupných pro soubory Azure.
+We strongly recommend that you read [Azure Files networking overview](storage-files-networking-overview.md) before continuing with this how to article for a complete discussion of the networking options available for Azure Files.
 
-Tento článek podrobně popisuje kroky pro konfiguraci sítě VPN typu Site-to-site pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat provoz synchronizace pro Azure File Sync přes síť Site-to-Site VPN, přečtěte si téma [Konfigurace nastavení proxy serveru Azure File Sync a brány firewall](storage-sync-files-firewall-and-proxy.md).
+The article details the steps to configure a Site-to-Site VPN to mount Azure file shares directly on-premises. If you're looking to route sync traffic for Azure File Sync over a Site-to-Site VPN, please see [configuring Azure File Sync proxy and firewall settings](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Předpoklady
-- Sdílená složka Azure, kterou byste chtěli místně připojit. Pomocí sítě VPN typu Site-to-site můžete použít buď službu Azure [Standard](storage-how-to-create-file-share.md) , nebo [prémiovou sdílenou složku Azure](storage-how-to-create-premium-fileshare.md) .
+- An Azure file share you would like to mount on-premises. You may use either a [standard](storage-how-to-create-file-share.md) or a [premium Azure file share](storage-how-to-create-premium-fileshare.md) with your Site-to-Site VPN.
 
-- Síťové zařízení nebo server v místním datovém centru, které je kompatibilní s Azure VPN Gateway. Soubory Azure jsou nezávislá z místního síťového zařízení, ale Azure VPN Gateway udržuje [seznam testovaných zařízení](../../vpn-gateway/vpn-gateway-about-vpn-devices.md). Různá síťová zařízení nabízejí různé funkce, charakteristiky výkonu a funkce správy, proto je zvažte při výběru síťového zařízení.
+- A network appliance or server in your on-premises datacenter that is compatible with Azure VPN Gateway. Azure Files is agnostic of the on-premises network appliance chosen but Azure VPN Gateway maintains a [list of tested devices](../../vpn-gateway/vpn-gateway-about-vpn-devices.md). Different network appliances offer different features, performance characteristics, and management functionalities, so consider these when selecting a network appliance.
 
-    Pokud nemáte stávající síťové zařízení, Windows Server obsahuje integrovanou roli serveru, službu Směrování a vzdálený přístup (RRAS), která se dá použít jako místní síťové zařízení. Další informace o tom, jak nakonfigurovat Směrování a vzdálený přístup v systému Windows Server, najdete v tématu [Brána služby RAS](https://docs.microsoft.com/windows-server/remote/remote-access/ras-gateway/ras-gateway).
+    If you do not have an existing network appliance, Windows Server contains a built-in Server Role, Routing and Remote Access (RRAS), which may be used as the on-premises network appliance. To learn more about how to configure Routing and Remote Access in Windows Server, see [RAS Gateway](https://docs.microsoft.com/windows-server/remote/remote-access/ras-gateway/ras-gateway).
 
-## <a name="add-storage-account-to-vnet"></a>Přidat účet úložiště do virtuální sítě
-V Azure Portal přejděte k účtu úložiště, který obsahuje sdílenou složku Azure, kterou chcete místně připojit. V obsahu účtu úložiště vyberte položku **brány firewall a virtuální sítě** . Pokud jste při vytváření účtu úložiště nepřidali virtuální síť, musí mít výsledné podokno pro **všechny vybrané sítě** přepínač **Povolení přístupu z** .
+## <a name="add-storage-account-to-vnet"></a>Add storage account to VNet
+In the Azure portal, navigate to the storage account containing the Azure file share you would like to mount on-premises. In the table of contents for the storage account, select the **Firewalls and virtual networks** entry. Unless you added a virtual network to your storage account when you created it, the resulting pane should have the **Allow access from** radio button for **All networks** selected.
 
-Pokud chcete přidat svůj účet úložiště do požadované virtuální sítě, vyberte **vybrané sítě**. V části **virtuální sítě** klikněte buď na **+ Přidat existující virtuální síť** , nebo **přidejte novou virtuální síť** v závislosti na požadovaném stavu. Vytvoření nové virtuální sítě bude mít za následek vytvoření nového prostředku Azure. Nový nebo existující prostředek virtuální sítě se nemusí nacházet ve stejné skupině prostředků nebo předplatném jako účet úložiště, ale musí být ve stejné oblasti jako účet úložiště a skupina prostředků a předplatné, ve kterém virtuální síť nasazujete, musí odpovídat tomu, který budete používat.  Nasaďte VPN Gateway do. 
+To add your storage account to the desired virtual network, select **Selected networks**. Under the **Virtual networks** subheading, click either **+ Add existing virtual network** or **+Add new virtual network** depending on the desired state. Creating a new virtual network will result in a new Azure resource being created. The new or existing VNet resource does not need to be in the same resource group or subscription as the storage account, however it must be in the same region as the storage account and the resource group and subscription you deploy your VNet into must match the one you will deploy your VPN Gateway into. 
 
-![Snímek obrazovky Azure Portal, který poskytuje možnost Přidat existující nebo novou virtuální síť k účtu úložiště](media/storage-files-configure-s2s-vpn/add-vnet-1.png)
+![Screenshot of the Azure portal giving the option to add an existing or new virtual network to the storage account](media/storage-files-configure-s2s-vpn/add-vnet-1.png)
 
-Pokud přidáte existující virtuální síť, zobrazí se výzva k výběru jedné nebo více podsítí této virtuální sítě, do které se má účet úložiště přidat. Pokud vyberete novou virtuální síť, vytvoříte v rámci vytváření virtuální sítě podsíť a později ji můžete přidat prostřednictvím výsledného prostředku Azure pro virtuální síť.
+If you add existing virtual network, you will be asked to select one or more subnets of that virtual network which the storage account should be added to. If you select a new virtual network, you will create a subnet as part of the creation of the virtual network, and you can add more later through the resulting Azure resource for the virtual network.
 
-Pokud jste ještě nepřidali účet úložiště do předplatného, bude nutné do virtuální sítě přidat koncový bod služby Microsoft. Storage. To může nějakou dobu trvat a až do dokončení této operace nebudete mít přístup ke sdíleným složkám Azure v rámci tohoto účtu úložiště, včetně prostřednictvím připojení VPN. 
+If you have not added a storage account to your subscription before, the Microsoft.Storage service endpoint will need to be added to the virtual network. This may take some time, and until this operation has completed, you will not be able to access the Azure file shares within that storage account, including via the VPN connection. 
 
-## <a name="deploy-an-azure-vpn-gateway"></a>Nasazení VPN Gateway Azure
-V obsahu pro Azure Portal vyberte **vytvořit nový prostředek** a vyhledejte *bránu virtuální sítě*. Brána virtuální sítě musí být ve stejném předplatném, oblasti Azure a skupině prostředků jako virtuální síť, kterou jste nasadili v předchozím kroku (Všimněte si, že skupina prostředků se automaticky vybere při vyzvednutí virtuální sítě). 
+## <a name="deploy-an-azure-vpn-gateway"></a>Deploy an Azure VPN Gateway
+In the table of contents for the Azure portal, select **Create a new resource** and search for *Virtual network gateway*. Your virtual network gateway must be in the same subscription, Azure region, and resource group as the virtual network you deployed in the previous step (note that resource group is automatically selected when the virtual network is picked). 
 
-Pro účely nasazení VPN Gateway Azure je nutné vyplnit následující pole:
+For the purposes of deploying an Azure VPN Gateway, you must populate the following fields:
 
-- **Name (název**): název prostředku Azure pro VPN Gateway. Může se jednat o libovolný název, který najdete v případě správy.
-- **Oblast**: oblast, do které bude VPN Gateway nasazena.
-- **Typ brány**: pro účely nasazení sítě VPN typu Site-to-site musíte vybrat **VPN**.
-- **Typ sítě VPN**: v závislosti na vašem zařízení VPN můžete zvolit buď na základě *trasy**, nebo **na základě zásad** . Sítě VPN založené na směrování podporují IKEv2, zatímco sítě VPN založené na zásadách podporují jenom IKEv1. Další informace o těchto dvou typech bran sítě VPN najdete v tématu [informace o bránách sítě VPN založených na zásadách a směrování](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about) .
-- **SKU**: SKU řídí počet povolených tunelů typu Site-to-site a požadovaný výkon sítě VPN. Pokud chcete vybrat odpovídající SKLADOVOU položku pro váš případ použití, Projděte si seznam [SKU brány](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) . SKU VPN Gateway může v případě potřeby změnit později.
-- **Virtuální síť**: virtuální síť, kterou jste vytvořili v předchozím kroku.
-- **Veřejná IP adresa**: ip adresa VPN Gateway, která bude zpřístupněna pro Internet. Je možné, že budete muset vytvořit novou IP adresu, ale pokud to bude vhodné, můžete také použít stávající nepoužitou IP adresu. Pokud se rozhodnete **vytvořit nový**, vytvoří se nová IP adresa prostředek Azure ve stejné skupině prostředků jako VPN Gateway a **název veřejné IP adresy** bude název nově vytvořené IP adresy. Pokud vyberete možnost **použít existující**, musíte vybrat stávající nepoužitou IP adresu.
-- **Povolit režim aktivní – aktivní**: Pokud vytváříte konfiguraci brány aktivní – aktivní, vyberte jenom **povoleno** . v opačném případě nechte zaškrtnuté políčko **zakázáno** . Další informace o režimu aktivní-aktivní najdete v tématu [vysoce dostupné možnosti připojení mezi různými místy a VNET-to-VNet](../../vpn-gateway/vpn-gateway-highlyavailable.md).
-- **Konfigurovat ASN protokolu BGP**: vyberte jenom **Povolit** , pokud konfigurace konkrétně vyžaduje toto nastavení. Další informace o tomto nastavení najdete v tématu [o protokolu BGP s Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md).
+- **Name**: The name of the Azure resource for the VPN Gateway. This name may be any name you find useful for your management.
+- **Region**: The region into which the VPN Gateway will be deployed.
+- **Gateway type**: For the purpose of deploying a Site-to-Site VPN, you must select **VPN**.
+- **VPN type**: You may choose either *Route-based** or **Policy-based** depending on your VPN device. Route-based VPNs support IKEv2, while policy-based VPNs only support IKEv1. To learn more about the two types of VPN gateways, see [About policy-based and route-based VPN gateways](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about)
+- **SKU**: The SKU controls the number of allowed Site-to-Site tunnels and desired performance of the VPN. To select the appropriate SKU for your use case, consult the [Gateway SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) listing. The SKU of the VPN Gateway may be changed later if necessary.
+- **Virtual network**: The virtual network you created in the previous step.
+- **Public IP address**: The IP address of VPN Gateway that will be exposed to the internet. Likely, you will need to create a new IP address, however you may also use an existing unused IP address if that is appropriate. If you select to **Create new**, a new IP address Azure resource will be created in the same resource group as the VPN Gateway and the  **Public IP address name** will be the name of the newly created IP address. If you select **Use existing**, you must select the existing unused IP address.
+- **Enable active-active mode**: Only select **Enabled** if you are creating an active-active gateway configuration, otherwise leave **Disabled** selected. To learn more about active-active mode, see [Highly available cross-premises and VNet-to-VNet connectivity](../../vpn-gateway/vpn-gateway-highlyavailable.md).
+- **Configure BGP ASN**: Only select **Enabled** if your configuration specifically requires this setting. To learn more about this setting, see [About BGP with Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md).
 
-Vyberte možnost **zkontrolovat + vytvořit** a vytvořte VPN Gateway. Úplné vytvoření a nasazení VPN Gateway může trvat až 45 minut.
+Select **Review + create** to create the VPN Gateway. A VPN Gateway may take up to 45 minutes to fully create and deploy.
 
-### <a name="create-a-local-network-gateway-for-your-on-premises-gateway"></a>Vytvoření brány místní sítě pro místní bránu 
-Brána místní sítě je prostředek Azure, který představuje vaše místní síťové zařízení. V obsahu pro Azure Portal vyberte **vytvořit nový prostředek** a vyhledejte *bránu místní sítě*. Brána místní sítě je prostředek Azure, který se nasadí společně s vaším účtem úložiště, virtuální sítí a VPN Gateway, ale nemusí být ve stejné skupině prostředků nebo předplatném jako účet úložiště. 
+### <a name="create-a-local-network-gateway-for-your-on-premises-gateway"></a>Create a local network gateway for your on-premises gateway 
+A local network gateway is an Azure resource that represents your on-premises network appliance. In the table of contents for the Azure portal, select **Create a new resource** and search for *local network gateway*. The local network gateway is an Azure resource that will be deployed alongside your storage account, virtual network, and VPN Gateway, but does not need to be in the same resource group or subscription as the storage account. 
 
-Pro účely nasazení prostředku brány místní sítě musíte vyplnit následující pole:
+For the purposes of deploying the local network gateway resource, you must populate the following fields:
 
-- **Name (název**): název prostředku Azure pro bránu místní sítě. Může se jednat o libovolný název, který najdete v případě správy.
-- **IP adresa**: veřejná IP adresa místní brány.
-- **Adresní prostor**: rozsahy adres pro síť, kterou tato brána místní sítě představuje. Můžete přidat více rozsahů adresních prostorů, ale ujistěte se, že rozsahy, které zadáte, se nepřekrývají s rozsahy jiných sítí, ke kterým se chcete připojit. 
-- **Konfigurovat nastavení protokolu BGP**: Pokud vaše konfigurace vyžaduje toto nastavení, nakonfigurujte jenom nastavení protokolu BGP. Další informace o tomto nastavení najdete v tématu [o protokolu BGP s Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md).
-- **Předplatné**: požadované předplatné. Nemusí se shodovat s předplatným použitým pro VPN Gateway nebo účet úložiště.
-- **Skupina prostředků**: požadovaná skupina prostředků. Nemusí se shodovat se skupinou prostředků použitou pro VPN Gateway nebo účet úložiště.
-- **Umístění**: oblast Azure, ve které se má prostředek brány místní sítě vytvořit. Tato možnost by se měla shodovat s oblastí, kterou jste vybrali pro VPN Gateway a účet úložiště.
+- **Name**: The name of the Azure resource for the local network gateway. This name may be any name you find useful for your management.
+- **IP address**: The public IP address of your local gateway on-premises.
+- **Address space**: The address ranges for the network this local network gateway represents. You can add multiple address space ranges, but make sure that the ranges you specify here do not overlap with ranges of other networks that you want to connect to. 
+- **Configure BGP settings**: Only configure BGP settings if your configuration requires this setting. To learn more about this setting, see [About BGP with Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md).
+- **Subscription**: The desired subscription. This does not need to match the subscription used for the VPN Gateway or the storage account.
+- **Resource group**: The desired resource group. This does not need to match the resource group used for the VPN Gateway or the storage account.
+- **Location**: The Azure Region the local network gateway resource should be created in. This should match the region you selected for the VPN Gateway and the storage account.
 
-Vyberte **vytvořit** k vytvoření prostředku brány místní sítě.  
+Select **Create** to create the local network gateway resource.  
 
-## <a name="configure-on-premises-network-appliance"></a>Konfigurace místního síťového zařízení
-Konkrétní postup konfigurace místního síťového zařízení závisí na síťovém zařízení, které vaše organizace vybrala. V závislosti na zařízení, které vaše organizace zvolilo, může být v [seznamu testovaných zařízení](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) odkaz na pokyny dodavatele zařízení pro konfiguraci pomocí VPN Gateway Azure.
+## <a name="configure-on-premises-network-appliance"></a>Configure on-premises network appliance
+The specific steps to configure your on-premises network appliance depend based on the network appliance your organization has selected. Depending on the device your organization has chosen, the [list of tested devices](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) may have a link out to your device vendor's instructions for configuring with Azure VPN Gateway.
 
-## <a name="create-private-endpoint-preview"></a>Vytvoření privátního koncového bodu (Preview)
-Vytvoření privátního koncového bodu pro váš účet úložiště poskytuje účtu úložiště IP adresu v adresním prostoru IP adres vaší virtuální sítě. Když připojíte sdílenou složku Azure z místní sítě pomocí této privátní IP adresy, pravidla směrování automaticky definovaná při instalaci sítě VPN směrují vaši žádost o připojení k účtu úložiště přes síť VPN. 
+## <a name="create-private-endpoint-preview"></a>Create private endpoint (preview)
+Creating a private endpoint for your storage account gives your storage account an IP address within the IP address space of your virtual network. When you mount your Azure file share from on-premises using this private IP address, the routing rules autodefined by the VPN installation will route your mount request to the storage account via the VPN. 
 
-V okně účet úložiště vyberte **připojení privátního koncového bodu** v obsahu na levé straně a **+ soukromý koncový bod** pro vytvoření nového privátního koncového bodu. Výsledný Průvodce má několik stránek, které je potřeba provést:
+In the storage account blade, select **Private endpoint connections** in the left-hand table of contents and **+ Private endpoint** to create a new private endpoint. The resulting wizard has multiple pages to complete:
 
-![Snímek obrazovky s oddílem základy oddílu Vytvoření privátního koncového bodu](media/storage-files-configure-s2s-vpn/create-private-endpoint-1.png)
+![A screenshot of the Basics section of the create private endpoint section](media/storage-files-configure-s2s-vpn/create-private-endpoint-1.png)
 
-Na kartě **základy** vyberte požadovanou skupinu prostředků, název a oblast pro váš soukromý koncový bod. To může být cokoli, co potřebujete, ale nemusí se shodovat s účtem úložiště, i když musíte vytvořit privátní koncový bod ve stejné oblasti jako virtuální síť, ve které chcete vytvořit privátní koncový bod.
+On the **Basics** tab, select the desired resource group, name, and region for your private endpoint. These can be whatever you want, they don't have to match the storage account in anyway, although you must create the private endpoint in the same region as the virtual network you wish to create the private endpoint in.
 
-Na kartě **prostředek** vyberte přepínač pro **připojení k prostředku Azure ve složce Můj adresář**. V části **typ prostředku**vyberte pro typ prostředku možnost **Microsoft. Storage/storageAccounts** . Pole **prostředek** je účet úložiště se sdílenou složkou Azure, ke které se chcete připojit. Cílový dílčí prostředek je **soubor**, protože se jedná o soubory Azure.
+On the **Resource** tab, select the radio button for **Connect to an Azure resource in my directory**. Under **Resource type**, select **Microsoft.Storage/storageAccounts** for the resource type. The **Resource** field is the storage account with the Azure file share you wish to connect to. Target sub-resource is **file**, since this is for Azure Files.
 
-Karta **Konfigurace** umožňuje vybrat konkrétní virtuální síť a podsíť, do které chcete přidat privátní koncový bod. Vyberte virtuální síť, kterou jste vytvořili výše. Musíte vybrat odlišnou podsíť z podsítě, do které jste přidali koncový bod služby.
+The **Configuration** tab allows you to select the specific virtual network and subnet you would like to add your private endpoint to. Select the virtual network you created above. You must select a distinct subnet from the subnet you added your service endpoint to above.
 
-Karta **Konfigurace** také umožňuje nastavit privátní zónu DNS. Tato možnost není nutná, ale umožňuje použít místo cesty UNC cestu UNC (například `\\mystorageaccount.privatelink.file.core.windows.net\myshare`), a to v případě, že se má IP adresa připojit ke sdílené složce Azure. Můžete to udělat i s vašimi vlastními servery DNS v rámci vaší virtuální sítě.
+The **Configuration** tab also allows you to set up a private DNS zone. This is not required, but allows you to use a friendly UNC path (such as `\\mystorageaccount.privatelink.file.core.windows.net\myshare`) instead of a UNC path with an IP address to mount the Azure file share. This may also be done with your own DNS servers within your virtual network.
 
-Kliknutím na tlačítko **zkontrolovat + vytvořit** vytvořte privátní koncový bod. Po vytvoření privátního koncového bodu se zobrazí dva nové prostředky: prostředek privátního koncového bodu a spárované virtuální síťové rozhraní. Prostředek rozhraní virtuální sítě bude mít vyhrazenou privátní IP adresu účtu úložiště. 
+Click **Review + create** to create the private endpoint. Once the private endpoint has been created, you will see two new resources: a private endpoint resource and a paired virtual network interface. The virtual network interface resource will have the dedicated private IP of the storage account. 
 
-## <a name="create-the-site-to-site-connection"></a>Vytvoření připojení Site-to-site
-K dokončení nasazení S2S VPN je nutné vytvořit připojení mezi místním síťovým zařízením (reprezentovaným prostředkem místní síťové brány) a VPN Gateway. Provedete to tak, že přejdete na VPN Gateway, který jste vytvořili výše. V obsahu pro VPN Gateway vyberte možnost **připojení**a klikněte na tlačítko **Přidat**. Výsledné podokno **Přidat připojení** vyžaduje následující pole:
+## <a name="create-the-site-to-site-connection"></a>Create the Site-to-Site connection
+To complete the deployment of a S2S VPN, you must create a connection between your on-premises network appliance (represented by the local network gateway resource) and the VPN Gateway. To do this, navigate to the VPN Gateway you created above. In the table of contents for the VPN Gateway, select **Connections**, and click **Add**. The resulting **Add connection** pane requires the following fields:
 
-- **Name**(název): název připojení. VPN Gateway může hostovat několik připojení, proto si vyberte název, který je vhodný pro vaši správu, která bude toto konkrétní připojení rozlišovat.
-- **Typ připojení**: vzhledem k tomu, že se jedná o připojení S2S, vyberte v rozevíracím seznamu možnost **site-to-Site (IPSec)** .
-- **Brána virtuální sítě**: Toto pole se automaticky vybere VPN Gateway, ke kterému se připojujete, a nedá se změnit.
-- **Brána místní sítě**: Jedná se o bránu místní sítě, kterou chcete připojit k vašemu VPN Gateway. Výsledné podokno výběru by mělo mít název brány místní sítě, kterou jste vytvořili výše.
-- **Shared Key (PSK)** : kombinace písmen a číslic, která se používá k navázání šifrování pro připojení. Stejný sdílený klíč musí být použit jak v bráně virtuální sítě, tak v bráně místní sítě. Pokud vaše zařízení brány žádné neposkytuje, můžete si ho udělat tady a poskytnout zařízení.
+- **Name**: The name of the connection. A VPN Gateway can host multiple connections, so pick a name helpful for your management that will distinguish this particular connection.
+- **Connection type**: Since this a S2S connection, select **Site-to-site (IPSec)** in the drop-down list.
+- **Virtual network gateway**: This field is auto-selected to the VPN Gateway you're making the connection to and can't be changed.
+- **Local network gateway**: This is the local network gateway you want to connect to your VPN Gateway. The resulting selection pane should have the name of the local network gateway you created above.
+- **Shared key (PSK)** : A mixture of letters and numbers, used to establish encryption for the connection. The same shared key must be used in both the virtual network and local network gateways. If your gateway device doesn't provide one, you can make one up here and provide it to your device.
 
-Vyberte **OK** a vytvořte připojení. Pomocí stránky **připojení** můžete ověřit, že se připojení úspěšně provedlo.
+Select **OK** to create the connection. You can verify the connection has been made successfully through the **Connections** page.
 
-## <a name="mount-azure-file-share"></a>Připojení sdílené složky Azure 
-Posledním krokem při konfiguraci S2S VPN je ověření, že funguje pro soubory Azure. To můžete provést tak, že svou sdílenou složku Azure nasdílíte do místního prostředí s vaším preferovaným operačním systémem. Pokyny k připojení pomocí operačního systému najdete tady:
+## <a name="mount-azure-file-share"></a>Mount Azure file share 
+The final step in configuring a S2S VPN is verifying that it works for Azure Files. You can do this by mounting your Azure file share on-premises with your preferred OS. See the instructions to mount by OS here:
 
 - [Windows](storage-how-to-use-files-windows.md)
 - [macOS](storage-how-to-use-files-mac.md)
 - [Linux](storage-how-to-use-files-linux.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-- [Přehled sítě Azure Files](storage-files-networking-overview.md)
-- [Konfigurace sítě VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure](storage-files-configure-p2s-vpn-windows.md)
-- [Konfigurace sítě VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure](storage-files-configure-p2s-vpn-linux.md)
+- [Azure Files networking overview](storage-files-networking-overview.md)
+- [Configure a Point-to-Site (P2S) VPN on Windows for use with Azure Files](storage-files-configure-p2s-vpn-windows.md)
+- [Configure a Point-to-Site (P2S) VPN on Linux for use with Azure Files](storage-files-configure-p2s-vpn-linux.md)

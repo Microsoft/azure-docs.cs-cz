@@ -1,76 +1,76 @@
 ---
-title: Vyhodnocení dopadu nové zásady Azure
-description: Pochopení procesu, který se má provést při zavedení nové zásady do prostředí Azure
+title: Evaluate the impact of a new Azure policy
+description: Understand the process to follow when introducing a new policy definition into your Azure environment.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: e39183b13d2b3cf8c7527f9372879372b2123648
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279427"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463523"
 ---
-# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Vyhodnocení dopadu nové zásady Azure
+# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Evaluate the impact of a new Azure policy
 
-Azure Policy je výkonný nástroj pro správu prostředků Azure do obchodních standardů a splnění požadavků na dodržování předpisů. Když lidé, procesy nebo kanály vytvoří nebo aktualizují prostředky, Azure Policy zkontroluje požadavek. Když je efekt definice zásad přidaný nebo [DeployIfNotExists](./effects.md#deployifnotexists), zásady změní [požadavek nebo přidá](./effects.md#deny) do něj. Když je efekt definice zásad [audit](./effects.md#audit) nebo [AuditIfNotExists](./effects.md#auditifnotexists), zásada způsobí vytvoření položky protokolu aktivit. A když je vliv definice zásad [odepřený](./effects.md#deny), zásada zastaví vytváření nebo změnu žádosti.
+Azure Policy is a powerful tool for managing your Azure resources to business standards and to meet compliance needs. When people, processes, or pipelines create or update resources, Azure Policy reviews the request. When the policy definition effect is [Append](./effects.md#deny) or [DeployIfNotExists](./effects.md#deployifnotexists), Policy alters the request or adds to it. When the policy definition effect is [Audit](./effects.md#audit) or [AuditIfNotExists](./effects.md#auditifnotexists), Policy causes an Activity log entry to be created. And when the policy definition effect is [Deny](./effects.md#deny), Policy stops the creation or alteration of the request.
 
-Tyto výsledky jsou přesně tak, jak je potřeba, když víte, že je zásada správně definovaná. Je ale důležité ověřit, že nové zásady fungují tak, jak jsou zamýšlené, než je povolíte pro změnu nebo blokování práce. Ověření musí zajistit, aby byly pouze zamýšlené prostředky považovány za nevyhovující a že ve výsledcích nejsou nesprávně zahrnuté žádné odpovídající prostředky (označované jako _falešně pozitivní_).
+These outcomes are exactly as desired when you know the policy is defined correctly. However, it's important to validate a new policy works as intended before allowing it to change or block work. The validation must ensure only the intended resources are determined to be non-compliant and no compliant resources are incorrectly included (known as a _false positive_) in the results.
 
-Doporučený postup pro ověření nové definice zásady je provedením následujících kroků:
+The recommended approach to validating a new policy definition is by following these steps:
 
-- Pevně definovat zásady
-- Audit stávajících prostředků
-- Auditovat nové nebo aktualizované požadavky na prostředky
-- Nasazení zásad do prostředků
+- Tightly define your policy
+- Audit your existing resources
+- Audit new or updated resource requests
+- Deploy your policy to resources
 - Průběžné sledování
 
-## <a name="tightly-define-your-policy"></a>Pevně definovat zásady
+## <a name="tightly-define-your-policy"></a>Tightly define your policy
 
-Je důležité porozumět tomu, jak se obchodní zásady implementují jako definice zásad a vztah prostředků Azure s dalšími službami Azure. Tento krok se dosahuje [určením požadavků](../tutorials/create-custom-policy-definition.md#identify-requirements) a [určením vlastností prostředku](../tutorials/create-custom-policy-definition.md#determine-resource-properties).
-Je ale také důležité, abyste viděli, která jsou nad rámec úzké definice firemních zásad. Má stav zásad například "všechny Virtual Machines musí..."? Co jsou další služby Azure, které využívají virtuální počítače, jako je HDInsight nebo AKS? Při definování zásad je potřeba vzít v úvahu, jak tyto zásady ovlivní prostředky, které používají jiné služby.
+It's important to understand how the business policy is implemented as a policy definition and the relationship of Azure resources with other Azure services. This step is accomplished by [identifying the requirements](../tutorials/create-custom-policy-definition.md#identify-requirements) and [determining the resource properties](../tutorials/create-custom-policy-definition.md#determine-resource-properties).
+But it's also important to see beyond the narrow definition of your business policy. Does your policy state for example "All Virtual Machines must..."? What about other Azure services that make use of VMs, such as HDInsight or AKS? When defining a policy, we must consider how this policy impacts resources that are used by other services.
 
-Z tohoto důvodu by měly být definice zásad pevně definované a zaměřené na prostředky a vlastnosti, které potřebujete k vyhodnocení dodržování předpisů.
+For this reason, your policy definitions should be as tightly defined and focused on the resources and the properties you need to evaluate for compliance as possible.
 
-## <a name="audit-existing-resources"></a>Auditovat stávající prostředky
+## <a name="audit-existing-resources"></a>Audit existing resources
 
-Než budete chtít spravovat nové nebo aktualizované prostředky pomocí nové definice zásad, je nejlepší zjistit, jak vyhodnocuje omezené podmnožiny stávajících prostředků, jako je například testovací skupina prostředků. Pro přiřazení zásad použijte [režim vynucení](./assignment-structure.md#enforcement-mode)
-_zakázáno_ (DoNotEnforce), aby se zabránilo tomu, že se [projeví](./effects.md) spuštění nebo záznam z protokolu aktivit.
+Before looking to manage new or updated resources with your new policy definition, it's best to see how it evaluates a limited subset of existing resources, such as a test resource group. Use the [enforcement mode](./assignment-structure.md#enforcement-mode)
+_Disabled_ (DoNotEnforce) on your policy assignment to prevent the [effect](./effects.md) from triggering or activity log entries from being created.
 
-Tento krok vám umožní vyhodnotit výsledky dodržování předpisů pro nové zásady u existujících prostředků, aniž by to ovlivnilo pracovní tok. Ověřte, že žádné kompatibilní prostředky nejsou označené jako nevyhovující (_falešně pozitivní_) a že všechny prostředky, které očekáváte nedodržující předpisy, jsou správně označeny.
-Po počáteční podmnožině prostředků se ověří podle očekávání, pomalu Rozšiřte vyhodnocení na všechny stávající prostředky.
+This step gives you a chance to evaluate the compliance results of the new policy on existing resources without impacting work flow. Check that no compliant resources are marked as non-compliant (_false positive_) and that all the resources you expect to be non-compliant are marked correctly.
+After the initial subset of resources validates as expected, slowly expand the evaluation to all existing resources.
 
-Vyhodnocování stávajících prostředků tímto způsobem také nabízí možnost opravit prostředky, které nedodržují předpisy, před plnou implementací nové zásady. Toto vyčištění se dá provést ručně nebo prostřednictvím [úlohy nápravy](../how-to/remediate-resources.md) , pokud je efekt definice zásad _DeployIfNotExistsý_.
+Evaluating existing resources in this way also provides an opportunity to remediate non-compliant resources before full implementation of the new policy. This cleanup can be done manually or through a [remediation task](../how-to/remediate-resources.md) if the policy definition effect is _DeployIfNotExists_.
 
-## <a name="audit-new-or-updated-resources"></a>Auditovat nové nebo aktualizované prostředky
+## <a name="audit-new-or-updated-resources"></a>Audit new or updated resources
 
-Jakmile ověříte, že nová definice zásad bude správně vykazovat stávající prostředky, je čas se podívat na dopad zásad při vytváření nebo aktualizaci prostředků. Pokud definice zásady podporuje efekt Parametrizace, použijte [audit](./effects.md#audit). Tato konfigurace umožňuje monitorovat vytváření a aktualizaci prostředků, aby se zobrazila informace o tom, jestli nová definice zásady aktivuje záznam v protokolu aktivit Azure pro prostředek, který nedodržuje předpisy, aniž by to ovlivnilo existující práci nebo požadavky.
+Once you've validated your new policy definition is reporting correctly on existing resources, it's time to look at the impact of the policy when resources get created or updated. If the policy definition supports effect parameterization, use [Audit](./effects.md#audit). This configuration allows you to monitor the creation and updating of resources to see if the new policy definition triggers an entry in Azure Activity log for a resource that is non-compliant without impacting existing work or requests.
 
-Doporučuje se aktualizovat i vytvořit nové prostředky, které odpovídají definici zásady, a zjistit tak, že se v případě očekávaného chování _audit_ projeví správně. Vyhledá požadavky na prostředky, které by neměly mít vliv na novou definici zásady, která aktivuje tento efekt _auditu_ .
-Tyto ovlivněné prostředky jsou dalším příkladem _falešně pozitivních_ hodnot a musí se v definici zásady před plnou implementací opravit.
+It's recommended to both update and create new resources that match your policy definition to see that the _Audit_ effect is correctly being triggered when expected. Be on the lookout for resource requests that shouldn't be impacted by the new policy definition that trigger the _Audit_ effect.
+These impacted resources are another example of _false positives_ and must be fixed in the policy definition before full implementation.
 
-V případě, že se v této fázi testování změní definice zásad, doporučujeme zahájit proces ověřování pomocí auditování existujících prostředků. Změna definice zásad pro _falešně pozitivní_ u nových nebo aktualizovaných prostředků bude pravděpodobně mít dopad i na stávající prostředky.
+In the event the policy definition is changed at this stage of testing, it's recommended to begin the validation process over with the auditing of existing resources. A change to the policy definition for a _false positive_ on new or updated resources is likely to also have an impact on existing resources.
 
-## <a name="deploy-your-policy-to-resources"></a>Nasazení zásad do prostředků
+## <a name="deploy-your-policy-to-resources"></a>Deploy your policy to resources
 
-Po dokončení ověřování nové definice zásady s existujícími prostředky i novými nebo aktualizovanými požadavky na prostředky zahájíte proces implementace této zásady. Doporučuje se vytvořit přiřazení zásad pro novou definici zásady k podmnožině všech prostředků, jako je třeba skupina prostředků. Po ověření počátečního nasazení rozšířit rozsah zásad na širší a širší úroveň, jako jsou předplatná a skupiny pro správu. Toto rozšíření se dosahuje odebráním přiřazení a vytvořením nového v cílových oborech, dokud není přiřazený k celému oboru prostředků, které mají být zahrnuty do vaší nové definice zásady.
+After completing validation of your new policy definition with both existing resources and new or updated resource requests, you begin the process of implementing the policy. It's recommended to create the policy assignment for the new policy definition to a subset of all resources first, such as a resource group. After validating initial deployment, extend the scope of the policy to broader and broader levels, such as subscriptions and management groups. This expansion is achieved by removing the assignment and creating a new one at the target scopes until it's assigned to the full scope of resources intended to be covered by your new policy definition.
 
-Pokud se při zavedení nacházejí prostředky, které by měly být z vaší nové definice zásad vyloučené, vyřešte je jedním z následujících způsobů:
+During rollout, if resources are located that should be exempt from your new policy definition, address them in one of the following ways:
 
-- Aktualizujte definici zásady tak, aby byla spolehlivější, aby se snížil nezamýšlený dopad.
-- Změna oboru přiřazení zásady (odebráním a vytvořením nového přiřazení)
-- Přidejte skupinu prostředků do seznamu vyloučení pro přiřazení zásady.
+- Update the policy definition to be more explicit to reduce unintended impact
+- Change the scope of the policy assignment (by removing and creating a new assignment)
+- Add the group of resources to the exclusion list for the policy assignment
 
-Jakékoli změny rozsahu (úrovně nebo vyloučení) by se měly plně ověřit a sdělit organizacím zabezpečení a dodržování předpisů, aby se zajistilo, že neexistují žádné mezery v pokrytí.
+Any changes to the scope (level or exclusions) should be fully validated and communicated with your security and compliance organizations to ensure there are no gaps in coverage.
 
-## <a name="monitor-your-policy-and-compliance"></a>Monitorování zásad a dodržování předpisů
+## <a name="monitor-your-policy-and-compliance"></a>Monitor your policy and compliance
 
-Implementace a přiřazení definice zásad není posledním krokem. Průběžně monitorujte úroveň [dodržování předpisů](../how-to/get-compliance-data.md) u prostředků na novou definici zásad a nastavte vhodné [Azure monitor výstrahy a oznámení,](../../../azure-monitor/platform/alerts-overview.md) když se identifikují zařízení, která nedodržují předpisy. Doporučuje se také vyhodnotit definici zásady a související přiřazení na základě plánu, aby definice zásad splňovala požadavky na obchodní zásady a dodržování předpisů. Zásady by se měly odebrat, pokud už je nepotřebujete. Zásady se taky musí aktualizovat v čase, protože základní prostředky Azure se vyvíjí a přidávají nové vlastnosti a možnosti.
+Implementing and assigning your policy definition isn't the final step. Continuously monitor the [compliance](../how-to/get-compliance-data.md) level of resources to your new policy definition and setup appropriate [Azure Monitor alerts and notifications](../../../azure-monitor/platform/alerts-overview.md) for when non-compliant devices are identified. It's also recommended to evaluate the policy definition and related assignments on a scheduled basis to validate the policy definition is meeting business policy and compliance needs. Policies should be removed if no longer needed. Policies also need updating from time to time as the underlying Azure resources evolve and add new properties and capabilities.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [struktuře definic zásad](./definition-structure.md).
-- Přečtěte si o [struktuře přiřazení zásad](./assignment-structure.md).
-- Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
-- Přečtěte si, jak [získat data o dodržování předpisů](../how-to/get-compliance-data.md).
-- Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).
-- Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).
+- Learn about the [policy definition structure](./definition-structure.md).
+- Learn about the [policy assignment structure](./assignment-structure.md).
+- Understand how to [programmatically create policies](../how-to/programmatically-create.md).
+- Learn how to [get compliance data](../how-to/get-compliance-data.md).
+- Learn how to [remediate non-compliant resources](../how-to/remediate-resources.md).
+- Review what a management group is with [Organize your resources with Azure management groups](../../management-groups/overview.md).

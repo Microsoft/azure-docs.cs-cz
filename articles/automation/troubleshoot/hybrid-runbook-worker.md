@@ -1,68 +1,68 @@
 ---
-title: Řešení potíží – Azure Automation procesů Hybrid Runbook Worker
-description: Tento článek poskytuje informace, které Azure Automation procesy Hybrid Runbook Worker k řešení potíží.
+title: Troubleshooting - Azure Automation Hybrid Runbook Workers
+description: This article provides information troubleshooting Azure Automation Hybrid Runbook Workers
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: bobbytreed
-ms.author: robreed
-ms.date: 02/12/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39cf6126f6212b6e83f1974dae7aaab0038e69c6
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 31d81c6946fc256f5c22b93674469d7b87500173
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240983"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480714"
 ---
-# <a name="troubleshoot-hybrid-runbook-workers"></a>Řešení potíží s procesy Hybrid Runbook Worker
+# <a name="troubleshoot-hybrid-runbook-workers"></a>Troubleshoot Hybrid Runbook Workers
 
-Tento článek poskytuje informace o řešení potíží s procesy Hybrid Runbook Worker.
+This article provides information on troubleshooting issues with Hybrid Runbook Workers.
 
 ## <a name="general"></a>Obecné
 
-Hybrid Runbook Worker závisí na agentovi ke komunikaci s vaším účtem Automation za účelem registrace pracovního procesu, příjmu úloh sady Runbook a stavu sestavy. Pro Windows se jedná o Microsoft Monitoring Agent tohoto agenta. Pro Linux se jedná o Agent sady OMS pro Linux.
+The Hybrid Runbook Worker depends on an agent to communicate with your Automation account to register the worker, receive runbook jobs, and report status. For Windows, this agent is the Log Analytics agent for Windows (also referred to as the Microsoft Monitoring Agent (MMA)). For Linux, it's the Log Analytics agent for Linux.
 
-### <a name="runbook-execution-fails"></a>Případě Spuštění sady Runbook se nezdařilo
+### <a name="runbook-execution-fails"></a>Scenario: Runbook execution fails
 
 #### <a name="issue"></a>Problém
 
-Spuštění sady Runbook se nezdařilo a zobrazí se následující chyba:
+Runbook execution fails and you receive the following error:
 
 ```error
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-Vaše sada Runbook se krátce pozastaví, jakmile se pokusí ji spustit třikrát. Existují podmínky, které mohou přerušit dokončení sady Runbook. Pokud k tomu dojde, související chybová zpráva nemusí obsahovat žádné další informace, které vám pomohou.
+Your runbook is suspended shortly after it attempts to execute it three times. There are conditions, which may interrupt the runbook from completing. When this happens, the related error message may not include any additional information that tells you why.
 
 #### <a name="cause"></a>Příčina
 
-Níže jsou uvedené možné příčiny:
+The following are potential possible causes:
 
-* Runbooky se nedají ověřit u místních prostředků.
+* The runbooks can't authenticate with local resources
 
-* Hybridní pracovní proces je za proxy serverem nebo bránou firewall.
+* The hybrid worker is behind a proxy or firewall
 
-* Runbooky se nedají ověřit u místních prostředků.
+* The runbooks can't authenticate with local resources
 
-* Počítač nakonfigurovaný pro spuštění funkce Hybrid Runbook Worker nesplňuje minimální požadavky na hardware.
+* The computer configured to run the Hybrid Runbook Worker feature does not meet the minimum hardware requirements.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Ověřte, zda má počítač odchozí přístup k *. azure-automation.net na portu 443.
+Verify the computer has outbound access to *.azure-automation.net on port 443.
 
-Počítače, na kterých běží Hybrid Runbook Worker, by měly splňovat minimální požadavky na hardware před tím, než se nakonfigurují pro hostování této funkce. Runbooky a procesy na pozadí, které používají, můžou způsobit, že se systém využije a dojde ke zpoždění nebo vypršení platnosti úlohy Runbooku.
+Computers running the Hybrid Runbook Worker should meet the minimum hardware requirements before it is configured to host this feature. Runbooks and the background processes they use may cause the system to be over utilized and cause runbook job delays or timeouts.
 
-Ověřte, že počítač, který spustí funkci Hybrid Runbook Worker, splňuje minimální požadavky na hardware. V takovém případě monitoruje využití procesoru a paměti k určení korelace mezi výkonem Hybrid Runbook Workerch procesů a oken. Pokud dojde k paměti nebo přetížení procesoru, může to znamenat nutnost upgradu prostředků. Můžete také vybrat jiný výpočetní prostředek, který může podporovat minimální požadavky a škálování v případě požadavků na zatížení, což znamená, že je potřeba zvýšit kapacitu.
+Confirm the computer that will run the Hybrid Runbook Worker feature meets the minimum hardware requirements. If it does, monitor CPU and memory use to determine any correlation between the performance of Hybrid Runbook Worker processes and Windows. If there's memory or CPU pressure, this may indicate the need to upgrade resources. You can also select a different compute resource that can support the minimum requirements and scale when workload demands indicate an increase is necessary.
 
-V protokolu událostí **Microsoft-SMA** vyhledejte odpovídající událost s popisem *procesu Win32, který skončil s kódem [4294967295]* . Příčinou této chyby je, že v sadách Runbook jste nenakonfigurovali ověřování nebo jste zadali přihlašovací údaje spustit jako pro skupinu hybridních pracovních procesů. Zkontrolujte [oprávnění sady Runbook](../automation-hrw-run-runbooks.md#runbook-permissions) a potvrďte, že jste správně nakonfigurovali ověřování pro vaše Runbooky.
+Check the **Microsoft-SMA** event log for a corresponding event with description *Win32 Process Exited with code [4294967295]* . The cause of this error is you haven't configured authentication in your runbooks or specified the Run As credentials for the Hybrid worker group. Review [Runbook permissions](../automation-hrw-run-runbooks.md#runbook-permissions) to confirm you have correctly configured authentication for your runbooks.
 
-### <a name="no-cert-found"></a>Případě V úložišti certifikátů v Hybrid Runbook Worker nebyl nalezen žádný certifikát.
+### <a name="no-cert-found"></a>Scenario: No certificate was found in the certificate store on Hybrid Runbook Worker
 
 #### <a name="issue"></a>Problém
 
-Sada Runbook spuštěná na Hybrid Runbook Worker se nezdařila s následující chybovou zprávou:
+A runbook running on a Hybrid Runbook Worker fails with the following error message:
 
 ```error
 Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
@@ -75,29 +75,29 @@ At line:3 char:1
 
 #### <a name="cause"></a>Příčina
 
-K této chybě dochází, pokud se pokusíte použít [účet Spustit jako](../manage-runas-account.md) v sadě Runbook, která běží na Hybrid Runbook Worker, kde není přítomen certifikát účtu Spustit jako. Hybridní pracovní procesy Runbooku nemají ve výchozím nastavení prostředek certifikátu, který je vyžadován pro správné fungování účtu Spustit jako.
+This error occurs when you attempt to use a [Run As Account](../manage-runas-account.md) in a runbook that runs on a Hybrid Runbook Worker where the Run As Account certificate's not present. Hybrid Runbook Workers don't have the certificate asset locally by default, which is required by the Run As Account to function properly.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Pokud je vaším Hybrid Runbook Worker VIRTUÁLNÍm počítačem Azure, můžete místo toho použít [spravované identity pro prostředky Azure](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) . Tento scénář umožňuje ověření pro prostředky Azure pomocí spravované identity virtuálního počítače Azure místo účtu Spustit jako, což zjednodušuje ověřování. Když Hybrid Runbook Worker je místní počítač, musíte na tento počítač nainstalovat certifikát účtu Spustit jako. Informace o tom, jak nainstalovat certifikát, najdete v tématu spuštění sady Runbook [Export-RunAsCertificateToHybridWorker](../automation-hrw-run-runbooks.md#runas-script) .
+If your Hybrid Runbook Worker is an Azure VM, you can use [Managed Identities for Azure Resources](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) instead. This scenario allows you to authenticate to Azure resources using the managed identity of the Azure VM instead of the Run As Account, simplifying authentication. When the Hybrid Runbook Worker is an on-premises machine, you need to install the Run As Account certificate on the machine. To learn how to install the certificate, see the steps to run the [Export-RunAsCertificateToHybridWorker](../automation-hrw-run-runbooks.md#runas-script) runbook.
 
 ## <a name="linux"></a>Linux
 
-Hybrid Runbook Worker pro Linux závisí na Agent sady OMS pro Linux ke komunikaci s vaším účtem Automation k registraci pracovního procesu, příjmu úloh Runbooku a stavu sestavy. Pokud se registrace pracovního procesu nezdařila, můžete k této chybě použít některé možné příčiny:
+The Linux Hybrid Runbook Worker depends on the [Log Analytics agent for Linux](../../azure-monitor/platform/log-analytics-agent.md) to communicate with your Automation account to register the worker, receive runbook jobs, and report status. If registration of the worker fails, here are some possible causes for the error:
 
-### <a name="oms-agent-not-running"></a>Případě Agent sady OMS pro Linux neběží.
+### <a name="oms-agent-not-running"></a>Scenario: The Log Analyics agent for Linux isn't running
 
 #### <a name="issue"></a>Problém
 
-Agent sady OMS pro Linux neběží.
+The Log Analytics agent for Linux is not running
 
 #### <a name="cause"></a>Příčina
 
-Pokud Agent sady OMS pro Linux neběží, brání Hybrid Runbook Worker pro Linux komunikaci s Azure Automation. Agent možná není spuštěný z různých důvodů.
+If the agent isn't running, it prevents the Linux Hybrid Runbook Worker from communicating with Azure Automation. The agent may not be running for various reasons.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
- Ověřte, jestli je agent spuštěný, a to zadáním následujícího příkazu: `ps -ef | grep python`. Měl by se zobrazit výstup podobný následujícímu: aplikace Python zpracuje s uživatelským účtem **nxautomation** . Pokud nejsou povolena řešení Update Management nebo Azure Automation, není spuštěn žádný z následujících procesů.
+ Verify the agent is running by entering the following command: `ps -ef | grep python`. You should see output similar to the following, the python processes with **nxautomation** user account. If the Update Management or Azure Automation solutions aren't enabled, none of the following processes are running.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -105,20 +105,20 @@ nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
 ```
 
-V následujícím seznamu jsou uvedeny procesy, které jsou spuštěny pro Hybrid Runbook Worker pro Linux. Všechno jsou umístěné v `/var/opt/microsoft/omsagent/state/automationworker/` adresáři.
+The following list shows the processes that are started for a Linux Hybrid Runbook Worker. They're all located in the `/var/opt/microsoft/omsagent/state/automationworker/` directory.
 
 
-* **OMS. conf** – tato hodnota je proces správce pracovních procesů. Spouští se přímo z DSC.
+* **oms.conf** - This value is the worker manager process. It's started directly from DSC.
 
-* **Worker. conf** – tento proces je automaticky registrovaný Hybrid Worker, který je spuštěný správcem pracovních procesů. Tento proces používá Update Management a je pro uživatele transparentní. Tento proces není k dispozici, pokud řešení Update Management není na počítači povoleno.
+* **worker.conf** - This process is the Auto Registered Hybrid worker process, it's started by the worker manager. This process is used by Update Management and is transparent to the user. This process isn't present if the Update Management solution isn't enabled on the machine.
 
-* **svépomocná/Worker. conf** – tento proces je hybridní pracovní proces svépomocná. Hybridní pracovní proces SVÉPOMOCNÁ slouží ke spouštění sad Runbook na Hybrid Runbook Worker. Liší se pouze od automaticky registrovaného hybridního pracovního procesu v podrobnostech klíče, který používá jinou konfiguraci. Tento proces není k dispozici, pokud je řešení Azure Automation zakázané a Hybrid Worker SVÉPOMOCNÁ Linux není zaregistrované.
+* **diy/worker.conf** - This process is the DIY hybrid worker process. The DIY hybrid worker process is used to execute user runbooks on the Hybrid Runbook Worker. It only differs from the Auto registered Hybrid worker process in the key detail that is uses a different configuration. This process isn't present if the Azure Automation solution is disabled, and the DIY Linux Hybrid Worker isn't registered.
 
-Pokud Agent sady OMS pro Linux neběží, spusťte následující příkaz, který službu spustí: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+If the agent isn't running, run the following command to start the service: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 
-### <a name="class-does-not-exist"></a>Případě Zadaná třída neexistuje.
+### <a name="class-does-not-exist"></a>Scenario: The specified class does not exist
 
-Pokud se zobrazí následující chyba: **Zadaná třída neexistuje...** `/var/opt/microsoft/omsconfig/omsconfig.log` v agent sady OMS pro Linux je třeba aktualizovat. Spusťte následující příkaz, který znovu nainstaluje agenta OMS:
+If you see the error: **The specified class does not exist..** in the  `/var/opt/microsoft/omsconfig/omsconfig.log` then the Log Analytics agent for Linux needs to be updated. Run the following command to reinstall the agent:
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -126,45 +126,45 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 ## <a name="windows"></a>Windows
 
-Hybrid Runbook Worker Windows závisí na Microsoft Monitoring Agent ke komunikaci s vaším účtem Automation k registraci pracovního procesu, příjmu úloh Runbooku a stavu sestavy. Pokud se registrace pracovního procesu nezdařila, můžete k této chybě použít některé možné příčiny:
+The Windows Hybrid Runbook Worker depends on the [Log Analytics agent for Windows](../../azure-monitor/platform/log-analytics-agent.md) to communicate with your Automation account to register the worker, receive runbook jobs, and report status. If registration of the worker fails, here are some possible causes for the error:
 
-### <a name="mma-not-running"></a>Případě Microsoft Monitoring Agent neběží.
+### <a name="mma-not-running"></a>Scenario: The Microsoft Monitoring Agent isn't running
 
 #### <a name="issue"></a>Problém
 
-`healthservice` Služba není na Hybrid Runbook Workerm počítači spuštěna.
+The `healthservice` service isn't running on the Hybrid Runbook Worker machine.
 
 #### <a name="cause"></a>Příčina
 
-Pokud služba Microsoft Monitoring Agent Windows není spuštěná, brání tento stav Hybrid Runbook Worker komunikaci s Azure Automation.
+If the Microsoft Monitoring Agent Windows service isn't running, this state prevents the Hybrid Runbook Worker from communicating with Azure Automation.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Ověřte, že je agent spuštěný, a to zadáním následujícího `Get-Service healthservice`příkazu v PowerShellu:. Pokud je služba zastavená, zadejte do PowerShellu následující příkaz, kterým službu spustíte: `Start-Service healthservice`.
+Verify the agent is running by entering the following command in PowerShell: `Get-Service healthservice`. If the service is stopped, enter the following command in PowerShell to start the service: `Start-Service healthservice`.
 
-### <a name="event-4502"></a>Událost 4502 v protokolu Operations Manager
+### <a name="event-4502"></a> Event 4502 in Operations Manager log
 
 #### <a name="issue"></a>Problém
 
-V protokolu událostí **Application and Services Logs\Operations Manager** uvidíte událost 4502 a EventMessage obsahující **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent** s následujícím popisem: *Certifikát předložený službou \<WSID\>. OMS.opinsights.Azure.com nebyl vydán certifikační autoritou používanou pro služby společnosti Microsoft. Obraťte se na správce sítě a zjistěte, jestli se používá proxy server, který zachycuje komunikaci TLS/SSL. V článku KB3126513 najdete další informace pro řešení problémů s připojením.*
+In the **Application and Services Logs\Operations Manager** event log, you see event 4502 and EventMessage that contains **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** with the following description: *The certificate presented by the service \<wsid\>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Please contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.*
 
 #### <a name="cause"></a>Příčina
 
-Důvodem může být to, že proxy server nebo brána firewall sítě blokuje komunikaci s Microsoft Azure. Ověřte, že počítač má odchozí přístup k *. azure-automation.net na portech 443.
+This issue can be caused by your proxy or network firewall blocking communication to Microsoft Azure. Verify the computer has outbound access to *.azure-automation.net on ports 443. 
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Protokoly se ukládají místně na každý hybridní pracovní proces na C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Můžete zjistit, zda se v protokolu událostí **Logs\Microsoft-SMA\Operations** a Application and Services a **Application and Services Logs\Operations Manager** vyskytnou nějaké události s varováním nebo chybou, které by označovaly připojení nebo jiný problém má vliv na připojení role k Azure Automation nebo k vydání během normálních operací.
+Logs are stored locally on each hybrid worker at C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. You can check if there are any warning or error events in the **Application and Services Logs\Microsoft-SMA\Operations** and **Application and Services Logs\Operations Manager** event log that would indicate a connectivity or other issue that affects onboarding of the role to Azure Automation or issue while under normal operations. For additional help troubleshooting issues with the Log Analytics agent, see [Troubleshoot issues with the Log Analytics Windows agent](../../azure-monitor/platform/agent-windows-troubleshoot.md).
 
-[Výstup runbooku a zprávy](../automation-runbook-output-and-messages.md) se odesílají Azure Automation z hybridních pracovních procesů stejně jako úlohy Runbooku, které běží v cloudu. Můžete také povolit streamování verbose a průběh stejným způsobem jako jiné sady Runbook.
+[Runbook output and messages](../automation-runbook-output-and-messages.md) are sent to Azure Automation from hybrid workers just like runbook jobs that run in the cloud. You can also enable the Verbose and Progress streams the same way you would for other runbooks.
 
-### <a name="corrupt-cache"></a>Nevytváření sestav Hybrid Runbook Worker
+### <a name="corrupt-cache"></a> Hybrid Runbook Worker not reporting
 
 #### <a name="issue"></a>Problém
 
-Počítač s Hybrid Runbook Worker je spuštěný, ale nevidíte data prezenčního signálu pro počítač v pracovním prostoru.
+Your Hybrid Runbook Worker machine is running but you don't see heartbeat data for the machine in the workspace.
 
-Následující příklad dotazu zobrazuje počítače v pracovním prostoru a jejich poslední prezenční signál:
+The following example query shows the machines in a workspace and their last heartbeat:
 
 ```loganalytics
 // Last heartbeat of each computer
@@ -174,11 +174,11 @@ Heartbeat
 
 #### <a name="cause"></a>Příčina
 
-Tento problém může být způsoben poškozenou mezipamětí na Hybrid Runbook Worker.
+This issue can be caused by a corrupt cache on the Hybrid Runbook Worker.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Pokud chcete tento problém vyřešit, přihlaste se k Hybrid Runbook Worker a spusťte následující skript. Tento skript zastaví Microsoft Monitoring Agent, odebere jeho mezipaměť a restartuje službu. Tato akce vynutí, aby se Hybrid Runbook Worker znovu stáhla konfigurace z Azure Automation.
+To resolve this issue, sign in to the Hybrid Runbook Worker and run the following script. This script stops the Microsoft Monitoring Agent, removes its cache, and restarts the service. This action forces the Hybrid Runbook Worker to re-download its configuration from Azure Automation.
 
 ```powershell
 Stop-Service -Name HealthService
@@ -188,11 +188,11 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 Start-Service -Name HealthService
 ```
 
-### <a name="already-registered"></a>Případě Nemůžete přidat Hybrid Runbook Worker
+### <a name="already-registered"></a>Scenario: You are unable to add a Hybrid Runbook Worker
 
 #### <a name="issue"></a>Problém
 
-Při pokusu o přidání Hybrid Runbook Worker pomocí `Add-HybridRunbookWorker` rutiny se zobrazí následující zpráva.
+You receive the following message when trying to add a Hybrid Runbook Worker using the `Add-HybridRunbookWorker` cmdlet.
 
 ```error
 Machine is already registered
@@ -200,19 +200,19 @@ Machine is already registered
 
 #### <a name="cause"></a>Příčina
 
-To může být způsobeno tím, že je počítač již zaregistrován s jiným účtem služby Automation, nebo pokud se pokusíte Hybrid Runbook Worker znovu přidat po jeho odebrání z počítače.
+This can be caused if the machine is already registered with a different Automation Account or if you try to re-add the Hybrid Runbook Worker after removing it from a machine.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Chcete-li tento problém vyřešit, odeberte následující klíč registru a restartujte `HealthService` příkaz a `Add-HybridRunbookWorker` znovu spusťte rutinu:
+To resolve this issue, remove the following registry key and restart the `HealthService` and try the `Add-HybridRunbookWorker` cmdlet again:
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 * Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.
-* Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+* If you need more help, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.
 

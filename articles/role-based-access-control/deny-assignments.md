@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení zamítnout přiřazení pro prostředky Azure | Dokumentace Microsoftu
-description: Další informace o zamítnutí přiřazení v řízení přístupu na základě role (RBAC) pro prostředky Azure.
+title: Understand deny assignments for Azure resources | Microsoft Docs
+description: Learn about deny assignments in role-based access control (RBAC) for Azure resources.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,65 +11,68 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: f15d6fd81337aa4a859539e86f37a516848c9370
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165986"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479364"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Vysvětlení zamítnout přiřazení pro prostředky Azure
+# <a name="understand-deny-assignments-for-azure-resources"></a>Understand deny assignments for Azure resources
 
-Přiřazení role, podobně jako *zamítnout přiřazení* akce Odepřít bude k obrazci skupinu pro uživatele, skupinu nebo instanční objekt v určitém rozsahu pro účely odepření přístupu. Zamítnout přiřazení zablokovat uživatelům provádět akce konkrétních prostředků Azure i v případě přiřazení role uděluje přístup.
+Similar to a role assignment, a *deny assignment* attaches a set of deny actions to a user, group, or service principal at a particular scope for the purpose of denying access. Deny assignments block users from performing specific Azure resource actions even if a role assignment grants them access.
 
-Tento článek popisuje, jak zakázat přiřazení jsou definovány.
+This article describes how deny assignments are defined.
 
-## <a name="how-deny-assignments-are-created"></a>Jak zakázat, že se vytvoří přiřazení
+## <a name="how-deny-assignments-are-created"></a>How deny assignments are created
 
-Zamítnout přiřazení vytvoření a správa Azure k ochraně prostředků. Například plány Azure a Azure spravované aplikace používá zamítnout přiřazení k ochraně systému spravovaných prostředků. Další informace najdete v tématu [chránit nové prostředky podle zámky prostředků Azure plány](../governance/blueprints/tutorials/protect-new-resources.md).
+Deny assignments are created and managed by Azure to protect resources. Azure Blueprints and Azure managed apps use deny assignments to protect system-managed resources. Azure Blueprints and Azure managed apps are the only way that deny assignments can be created. You can't directly create your own deny assignments.  For more information, see [Protect new resources with Azure Blueprints resource locks](../governance/blueprints/tutorials/protect-new-resources.md).
 
-## <a name="compare-role-assignments-and-deny-assignments"></a>Porovnat přiřazení rolí a Odepřít přiřazení
+> [!NOTE]
+> You can't directly create your own deny assignments.
 
-Zamítnout přiřazení použijte podobný vzorec jako přiřazení rolí, ale také mají určité odlišnosti.
+## <a name="compare-role-assignments-and-deny-assignments"></a>Compare role assignments and deny assignments
 
-| Schopnost | Přiřazení role | Zamítnout přiřazení |
+Deny assignments follow a similar pattern as role assignments, but also have some differences.
+
+| Schopnost | Přiřazení role | Deny assignment |
 | --- | --- | --- |
 | Udělení přístupu | :heavy_check_mark: |  |
 | Odepření přístupu |  | :heavy_check_mark: |
-| Mohou být přímo vytvořeny. | :heavy_check_mark: |  |
-| Použít v oboru | :heavy_check_mark: | :heavy_check_mark: |
-| Vyloučit objekty zabezpečení |  | :heavy_check_mark: |
-| Zabránit dědění za účelem podřízené obory |  | :heavy_check_mark: |
-| Platí pro [klasický správce předplatného](rbac-and-directory-admin-roles.md) přiřazení |  | :heavy_check_mark: |
+| Can be directly created | :heavy_check_mark: |  |
+| Apply at a scope | :heavy_check_mark: | :heavy_check_mark: |
+| Exclude principals |  | :heavy_check_mark: |
+| Prevent inheritance to child scopes |  | :heavy_check_mark: |
+| Apply to [classic subscription administrator](rbac-and-directory-admin-roles.md) assignments |  | :heavy_check_mark: |
 
-## <a name="deny-assignment-properties"></a>Zamítnout přiřazení vlastnosti
+## <a name="deny-assignment-properties"></a>Deny assignment properties
 
- Přiřazení Odepřít má následující vlastnosti:
+ A deny assignment has the following properties:
 
 > [!div class="mx-tableFixed"]
 > | Vlastnost | Požaduje se | Typ | Popis |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Ano | String | Zobrazovaný název přiřazení odepřít. Názvy musí být jedinečné pro daný obor. |
-> | `Description` | Ne | String | Popis přiřazení odepřít. |
-> | `Permissions.Actions` | Nejméně jedna akce nebo jeden DataActions | Řetězec] | Pole řetězců, které určují operace správy, ke kterým zablokuje přiřazení odepřít přístup. |
-> | `Permissions.NotActions` | Ne | Řetězec] | Pole řetězců, které určují operace správy, které chcete vyloučit z přiřazení odepřít. |
-> | `Permissions.DataActions` | Nejméně jedna akce nebo jeden DataActions | Řetězec] | Pole řetězců, které určují operace dat, ke kterým zablokuje přiřazení odepřít přístup. |
-> | `Permissions.NotDataActions` | Ne | Řetězec] | Pole řetězců, které určují operace s daty chcete vyloučit z přiřazení odepřít. |
-> | `Scope` | Ne | String | Řetězec, který určuje obor, vztahující se k přiřazení odepřít. |
-> | `DoNotApplyToChildScopes` | Ne | Boolean | Určuje, zda Odepřít přiřazení se vztahuje na podřízené obory. Výchozí hodnota je false. |
-> | `Principals[i].Id` | Ano | Řetězec] | Pole instanční objekt Azure AD ID (uživatele, skupiny, instanční objekt nebo spravovanou identitu), u kterých bude použito přiřazení odepřít. Nastavit na prázdný identifikátor GUID `00000000-0000-0000-0000-000000000000` představující všechny objekty zabezpečení. |
-> | `Principals[i].Type` | Ne | Řetězec] | Pole typů objekt reprezentovaný .id objekty zabezpečení [i]. Nastavte na `SystemDefined` představující všechny objekty zabezpečení. |
-> | `ExcludePrincipals[i].Id` | Ne | Řetězec] | Pole instanční objekt Azure AD ID (uživatele, skupiny, instanční objekt nebo spravovanou identitu), do kterých se přiřazení odepřít nevztahuje. |
-> | `ExcludePrincipals[i].Type` | Ne | Řetězec] | Pole typů objekt reprezentovaný .id ExcludePrincipals [i]. |
-> | `IsSystemProtected` | Ne | Boolean | Určuje, zda to zamítnout přiřazení vytvořil Azure a nelze upravovat ani odstranit. V současné době všechny odepřít systému chráněné jsou odevzdané úkoly. |
+> | `DenyAssignmentName` | Ano | Řetězec | The display name of the deny assignment. Names must be unique for a given scope. |
+> | `Description` | Ne | Řetězec | The description of the deny assignment. |
+> | `Permissions.Actions` | At least one Actions or one DataActions | String[] | An array of strings that specify the management operations to which the deny assignment blocks access. |
+> | `Permissions.NotActions` | Ne | String[] | An array of strings that specify the management operations to exclude from the deny assignment. |
+> | `Permissions.DataActions` | At least one Actions or one DataActions | String[] | An array of strings that specify the data operations to which the deny assignment blocks access. |
+> | `Permissions.NotDataActions` | Ne | String[] | An array of strings that specify the data operations to exclude from the deny assignment. |
+> | `Scope` | Ne | Řetězec | A string that specifies the scope that the deny assignment applies to. |
+> | `DoNotApplyToChildScopes` | Ne | Logická hodnota | Specifies whether the deny assignment applies to child scopes. Default value is false. |
+> | `Principals[i].Id` | Ano | String[] | An array of Azure AD principal object IDs (user, group, service principal, or managed identity) to which the deny assignment applies. Set to an empty GUID `00000000-0000-0000-0000-000000000000` to represent all principals. |
+> | `Principals[i].Type` | Ne | String[] | An array of object types represented by Principals[i].Id. Set to `SystemDefined` to represent all principals. |
+> | `ExcludePrincipals[i].Id` | Ne | String[] | An array of Azure AD principal object IDs (user, group, service principal, or managed identity) to which the deny assignment does not apply. |
+> | `ExcludePrincipals[i].Type` | Ne | String[] | An array of object types represented by ExcludePrincipals[i].Id. |
+> | `IsSystemProtected` | Ne | Logická hodnota | Specifies whether this deny assignment was created by Azure and cannot be edited or deleted. Currently, all deny assignments are system protected. |
 
-## <a name="the-all-principals-principal"></a>Objekt zabezpečení pro všechny objekty zabezpečení
+## <a name="the-all-principals-principal"></a>The All Principals principal
 
-Pro podporu zamítnout přiřazení, objekt definované v systému s názvem *všechny objekty zabezpečení* je zavedený. Tento objekt zabezpečení představuje uživatele, skupiny, instančních objektů a spravovaných identit v adresáři Azure AD. Pokud je ID objektu zabezpečení žádný identifikátor GUID `00000000-0000-0000-0000-000000000000` a typ objektu zabezpečení je `SystemDefined`, objekt zabezpečení představuje všechny objekty zabezpečení. Ve výstupu prostředí Azure PowerShell všechny objekty zabezpečení vypadá takto:
+To support deny assignments, a system-defined principal named *All Principals* has been introduced. This principal represents all users, groups, service principals, and managed identities in an Azure AD directory. If the principal ID is a zero GUID `00000000-0000-0000-0000-000000000000` and the principal type is `SystemDefined`, the principal represents all principals. In Azure PowerShell output, All Principals looks like the following:
 
 ```azurepowershell
 Principals              : {
@@ -79,12 +82,12 @@ Principals              : {
                           }
 ```
 
-Všechny objekty zabezpečení je možné kombinovat s `ExcludePrincipals` pro všechny objekty zabezpečení, s výjimkou někteří uživatelé odepření. Všechny objekty zabezpečení má následující omezení:
+All Principals can be combined with `ExcludePrincipals` to deny all principals except some users. All Principals has the following constraints:
 
-- Lze použít pouze ve `Principals` a nelze jej použít v `ExcludePrincipals`.
-- `Principals[i].Type` musí být nastaveno na `SystemDefined`.
+- Can be used only in `Principals` and cannot be used in `ExcludePrincipals`.
+- `Principals[i].Type` must be set to `SystemDefined`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Seznam zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal](deny-assignments-portal.md)
-* [Pochopení definic rolí pro prostředky Azure](role-definitions.md)
+* [List deny assignments for Azure resources using the Azure portal](deny-assignments-portal.md)
+* [Understand role definitions for Azure resources](role-definitions.md)

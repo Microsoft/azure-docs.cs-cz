@@ -1,6 +1,6 @@
 ---
 title: Co je Azure IoT Central | Microsoft Docs
-description: Azure IoT Central je aplikační platforma IoT, která zjednodušuje vytváření řešení IoT a pomáhá snižovat zatížení a náklady na operace správy IoT a vývoj. Tento článek obsahuje přehled funkcí Azure IoT Central.
+description: Azure IoT Central is an IoT application platform that simplifies the creation of IoT solutions and helps to reduce the burden and cost of IoT management operations, and development. Tento článek obsahuje přehled funkcí Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/12/2019
@@ -9,104 +9,104 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 5e84b8777fc7671a19b6d8974f1309eb5af35bd3
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048011"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479714"
 ---
-# <a name="what-is-azure-iot-central-preview-features"></a>Co je Azure IoT Central (funkce verze Preview)?
+# <a name="what-is-azure-iot-central-preview-features"></a>What is Azure IoT Central (preview features)?
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 > [!WARNING]
-> Možnosti [IoT technologie Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) v Azure IoT Central jsou momentálně ve verzi Public Preview. Nepoužívejte IoT Central [šablonu aplikace](../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json) technologie Plug and Play IoT povolenou pro produkční úlohy. V produkčních prostředích se používá aplikace IoT Central vytvořená z aktuální, všeobecně dostupné [šablony aplikace](../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
+> The [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) capabilities in Azure IoT Central are currently in public preview. Don't use an IoT Plug and Play enabled IoT Central [application template](../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json) for production workloads. For production environments use an IoT central application created from a current, generally available, [application template](../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
 
-IoT Central je aplikační platforma IoT, která snižuje zatížení a náklady na vývoj, správu a údržbu řešení IoT na podnikové úrovni. Volba sestavování pomocí IoT Central vám umožní soustředit se na čas, peníze a energii při transformaci vaší firmy na data IoT, nikoli jenom na údržbu a aktualizaci složitých a nepřetržitě vyvíjejících se infrastruktury IoT.
+IoT Central is an IoT application platform that reduces the burden and cost of developing, managing, and maintaining enterprise-grade IoT solutions. Choosing to build with IoT Central gives you the opportunity to focus time, money, and energy on transforming your business with IoT data, rather than just maintaining and updating a complex and continually evolving IoT infrastructure.
 
-Webové uživatelské rozhraní umožňuje monitorovat podmínky zařízení, vytvářet pravidla a spravovat miliony zařízení a jejich data v průběhu svého životního cyklu. Kromě toho vám umožňuje reagovat na přehledy zařízení díky rozšíření IoT Intelligence do obchodních aplikací.
+The web UI lets you monitor device conditions, create rules, and manage millions of devices and their data throughout their life cycle. Furthermore, it enables you to act on device insights by extending IoT intelligence into line-of-business applications.
 
-Tento článek popisuje, jak IoT Central:
+This article outlines, for IoT Central:
 
 - Typické osoby přidružené k projektu
 - Postup vytvoření aplikace
 - Postup připojení zařízení do aplikace
 - Postup správy aplikace
-- Možnosti Azure IoT Edge v IoT Central.
-- Jak připojit zařízení s Azure IoT Edge modulem runtime do vaší aplikace
+- Azure IoT Edge capabilities in IoT Central.
+- How to connect your Azure IoT Edge runtime powered devices to your application.
 
 ## <a name="known-issues"></a>Známé problémy
 
 > [!Note]
-> Tyto známé problémy se vztahují pouze na aplikace IoT Central Preview.
+> These known issues only apply to the IoT Central preview applications.
 
-- Pravidla nepodporují všechny akce (jenom e-mail).
-- Pro komplexní typy nejsou podporovaná pravidla, analýza a skupiny zařízení.
-- Průběžný export dat nepodporuje formát Avro (nekompatibilní).
-- Simulovaná zařízení nepodporují všechny komplexní typy.
-- Pro injson není aktuálně podporováno.
-- Dlaždice mapy není momentálně podporovaná.
-- Úlohy nepodporují komplexní typy.
-- Typy schématu pole nejsou podporovány.
-- Export šablony aplikace a kopie aplikace nejsou podporovány.
-- Podporovaná je jenom sada SDK zařízení C a sady SDK zařízení a služeb Node. js.
-- Je dostupná jenom v oblastech Severní Evropa a střední USA.
-- Modely schopností zařízení musí mít všechna rozhraní definovaná vložené do stejného souboru.
+- Rules don't support all actions (only email).
+- For complex types - rules, analytics, and device groups aren't supported.
+- Continuous data export doesn't support the Avro format (incompatibility).
+- Simulated devices don't support all complex types.
+- GeoJSON isn't currently supported.
+- Map tile isn't currently supported.
+- Jobs don't support complex types.
+- Array schema types aren't supported.
+- Application template export and application copy aren't supported.
+- Only the C device SDK and the Node.js device and service SDKs are supported.
+- It's only available in the United States and Europe locations.
+- Device capability models must have all the interfaces defined inline in the same file.
 
 ## <a name="personas"></a>Osoby
 
-Dokumentace IoT Central odkazuje na čtyři osobyy, které komunikují s aplikací IoT Central:
+The IoT Central documentation refers to four personas who interact with an IoT Central application:
 
-- _Tvůrce řešení_ zodpovídá za definování typů zařízení, která se připojují k aplikaci, a přizpůsobení aplikace pro operátor.
+- A _solution builder_ is responsible for defining the types of devices that connect to the application and customizing the application for the operator.
 - _Operátor_ spravuje zařízení připojená k aplikaci.
-- _Správce_ zodpovídá za úlohy správy, jako je například Správa [rolí uživatelů a oprávnění](howto-administer.md) v rámci aplikace.
-- _Vývojář zařízení_ vytvoří kód, který běží na zařízení nebo IoT Edge modul připojený k vaší aplikaci.
+- An _administrator_ is responsible for administrative tasks such as managing [user roles and permissions](howto-administer.md) within the application.
+- A _device developer_ creates the code that runs on a device or IoT Edge module connected to your application.
 
-## <a name="create-your-iot-central-application"></a>Vytvoření aplikace IoT Central
+## <a name="create-your-iot-central-application"></a>Create your IoT Central application
 
-Jako tvůrce řešení můžete pomocí IoT Central vytvořit vlastní řešení IoT hostované v cloudu pro vaši organizaci. Vlastní řešení IoT se obvykle skládá z těchto součástí:
+As a solution builder, you use IoT Central to create a custom, cloud-hosted IoT solution for your organization. Vlastní řešení IoT se obvykle skládá z těchto součástí:
 
 - Cloudová aplikace, která přijímá ze zařízení telemetrická data a umožňuje vám tato zařízení spravovat
 - Více zařízení připojených k vaší cloudové aplikaci, na kterých běží vlastní kód
 
-Můžete rychle nasadit novou aplikaci IoT Central a pak ji přizpůsobit konkrétním požadavkům v prohlížeči. Jako tvůrce řešení můžete pomocí webových nástrojů vytvořit _šablonu zařízení_ pro zařízení, která se připojují k vaší aplikaci. Šablona zařízení je plán, který definuje charakteristiky a chování typu zařízení, například:
+You can quickly deploy a new IoT Central application and then customize it to your specific requirements in your browser. As a solution builder, you use the web-based tools to create a _device template_ for the devices that connect to your application. A device template is the blueprint that defines the characteristics and behavior of a type of device such as the:
 
-- Telemetrii, kterou posílá.
+- Telemetry it sends.
 - Obchodní vlastnosti, které můžete upravit operátor
 - Vlastnosti zařízení nastavené zařízením, které jsou v aplikaci jen pro čtení
-- Vlastnosti, které jsou nastaveny jako operátor, které určují chování zařízení.
+- Properties, that an operator sets, that determine the behavior of the device.
 
-Tato šablona zařízení zahrnuje:
+This device template includes:
 
-- _Model schopností zařízení_ , který popisuje možnosti, které by zařízení mělo implementovat, jako je například telemetrie, kterou posílá, a vlastnosti, které vystavuje.
-- Vlastnosti cloudu, které nejsou uložené na zařízení.
-- Vlastní nastavení, řídicí panely a formuláře, které jsou součástí vaší aplikace IoT Central.
+- A _device capability model_ that describes the capabilities a device should implement such as the telemetry it sends and the properties it reports.
+- Cloud properties that aren't stored on the device.
+- Customizations, dashboards, and forms that are part of your IoT Central application.
 
-### <a name="create-device-templates"></a>Vytvoření šablon zařízení
+### <a name="create-device-templates"></a>Create device templates
 
-[IoT technologie Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) umožňuje IoT Central integrovat zařízení bez psaní jakéhokoli vloženého kódu zařízení. V jádru IoT technologie Plug and Play je schéma modelu schopností zařízení, které popisuje možnosti zařízení. V aplikaci IoT Central Preview používají šablony zařízení tyto modely schopností zařízení technologie Plug and Play IoT.
+[IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) enables IoT Central to integrate devices without you writing any embedded device code. At the core of IoT Plug and Play, is a device capability model schema that describes device capabilities. In an IoT Central preview application, device templates use these IoT Plug and Play device capability models.
 
-Jako tvůrce řešení máte k dispozici několik možností pro vytváření šablon zařízení:
+As a solution builder, you have several options for creating device templates:
 
-- Navrhněte šablonu zařízení v IoT Central a potom implementujte svůj model schopností zařízení do kódu zařízení.
-- Naimportujte model schopností zařízení z [katalogu zařízení Azure Certified for IoT](https://aka.ms/iotdevcat) a pak přidejte jakékoli vlastnosti cloudu, vlastní nastavení a řídicí panely, které vaše IoT Central aplikace potřebuje.
-- Vytvořte model schopností zařízení pomocí Visual Studio Code. Implementujte kód zařízení z modelu a připojte své zařízení k aplikaci IoT Central. IoT Central najde model schopností zařízení z úložiště a vytvoří pro vás jednoduchou šablonu zařízení.
-- Vytvořte model schopností zařízení pomocí Visual Studio Code. Implementujte kód zařízení z modelu. Model schopností zařízení naimportujte ručně do aplikace IoT Central a pak přidejte jakékoli vlastnosti cloudu, přizpůsobení a řídicí panely, které aplikace IoT Central potřebuje.
+- Design the device template in IoT Central and then implement its device capability model in your device code.
+- Import a device capability model from the [Azure Certified for IoT device catalog](https://aka.ms/iotdevcat) and then add any cloud properties, customizations, and dashboards your IoT Central application needs.
+- Create a device capability model using Visual Studio code. Implement your device code from the model, and connect your device to your IoT Central application. IoT Central finds the device capability model from a repository and creates a simple device template for you.
+- Create a device capability model using Visual Studio code. Implement your device code from the model. Manually import the device capability model into your IoT Central application and then add any cloud properties, customizations, and dashboards your IoT Central application needs.
 
-Jako tvůrce řešení můžete použít IoT Central k vygenerování kódu pro testovací zařízení pro ověření šablon zařízení.
+As a solution builder, you can use IoT Central to generate code for test devices to validate your device templates.
 
 ### <a name="customize-the-ui"></a>Přizpůsobení uživatelského rozhraní
 
-Jako tvůrce řešení můžete také přizpůsobit uživatelské rozhraní aplikace IoT Central pro operátory, kteří zodpovídají za každodenní použití aplikace. Vlastní nastavení, které může tvůrce řešení provést, zahrnují:
+As a solution builder, you can also customize the IoT Central application UI for the operators who are responsible for the day-to-day use of the application. Customizations that a solution builder can make include:
 
 - Definovat rozložení vlastností a nastavení v šabloně zařízení
 - Nakonfigurovat vlastní řídicí panely, které operátorům pomůžou rychleji zjišťovat informace a řešit problémy
 - Nakonfigurovat vlastní analýzy pro zkoumání časových řad dat z připojených zařízení
 
-## <a name="connect-your-devices"></a>Připojení zařízení
+## <a name="connect-your-devices"></a>Připojit zařízení
 
-Jakmile tvůrce definuje typy zařízení, které se můžou připojovat k aplikaci, vývojář zařízení vytvoří kód, který na zařízeních poběží. Jako vývojář zařízení vytváříte kód zařízení pomocí open source [sad SDK Azure IoT](https://github.com/Azure/azure-iot-sdks) od Microsoftu. Tyto sady SDK mají širokou škálu jazyků, platforem a protokolů, které splňují vaše požadavky na připojení vašich zařízení k vaší IoT Central aplikaci. Sady SDK vám pomůžou implementovat následující možnosti zařízení:
+Jakmile tvůrce definuje typy zařízení, které se můžou připojovat k aplikaci, vývojář zařízení vytvoří kód, který na zařízeních poběží. Jako vývojář zařízení vytváříte kód zařízení pomocí open source [sad SDK Azure IoT](https://github.com/Azure/azure-iot-sdks) od Microsoftu. These SDKs have broad language, platform, and protocol support to meet your needs to connect your devices to your IoT Central application. The SDKs help you implement the following device capabilities:
 
 - Vytvořit zabezpečené připojení
 - Odesílat telemetrická data
@@ -115,38 +115,42 @@ Jakmile tvůrce definuje typy zařízení, které se můžou připojovat k aplik
 
 Další informace najdete v příspěvku na blogu [Výhody používání sad SDK Azure IoT a nástrahy, kterým je potřeba se vyhnout v opačném případě](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/).
 
-### <a name="azure-iot-edge-devices"></a>Zařízení Azure IoT Edge
+### <a name="azure-iot-edge-devices"></a>Azure IoT Edge devices
 
-I zařízení vytvořená pomocí [sad SDK služby Azure IoT](https://github.com/Azure/azure-iot-sdks)můžete také připojit [zařízení Azure IoT Edge](../../iot-edge/about-iot-edge.md) k aplikaci IoT Central. Azure IoT Edge umožňuje spustit cloudovou logiku a vlastní logiku přímo na zařízeních IoT spravovaných pomocí IoT Central. Modul runtime IoT Edge umožňuje:
+As well as devices created using the [Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks), you can also connect [Azure IoT Edge devices](../../iot-edge/about-iot-edge.md) to an IoT Central application. Azure IoT Edge lets you run cloud intelligence and custom logic directly on IoT devices managed by IoT Central. The IoT Edge runtime enables you to:
 
-- Instalace a aktualizace úloh na zařízení.
-- Udržujte na zařízení standardy zabezpečení Azure IoT Edge.
-- Ujistěte se, že moduly IoT Edge jsou vždycky spuštěné.
-- Oznamte stav modulu v cloudu pro vzdálené monitorování.
-- Spravujte komunikaci mezi moduly pro příjem a IoT Edge zařízení, mezi moduly v zařízení IoT Edge a mezi IoT Edgem zařízením a cloudem.
+- Install and update workloads on the device.
+- Maintain Azure IoT Edge security standards on the device.
+- Ensure that IoT Edge modules are always running.
+- Report module health to the cloud for remote monitoring.
+- Manage communication between downstream leaf devices and an IoT Edge device, between modules on an IoT Edge device, and between an IoT Edge device and the cloud.
 
-Další informace najdete v tématu [Azure IoT Edge zařízení a IoT Central](./concepts-architecture.md#azure-iot-edge-devices).
+For more information, see [Azure IoT Edge devices and IoT Central](./concepts-architecture.md#azure-iot-edge-devices).
 
 ## <a name="manage-your-application"></a>Správa vaší aplikace
 
-Aplikace IoT Central plně hostují Microsoft, což snižuje nároky na správu při správě vašich aplikací.
+IoT Central applications are fully hosted by Microsoft, which reduces the administration overhead of managing your applications.
 
-Jako operátor můžete použít aplikaci IoT Central ke správě zařízení v řešení IoT Central. Obsluha provede úkoly, jako například:
+As an operator, you use the IoT Central application to manage the devices in your IoT Central solution. Operators do tasks such as:
 
 - Monitorovat zařízení připojená k aplikaci
 - Řešit potíže a opravovat problémy se zařízeními
 - Zřizovat nová zařízení
 
-Jako tvůrce řešení můžete definovat vlastní pravidla a akce, které provozují streamování dat z připojených zařízení. Operátor může tato pravidla povolit nebo zakázat na úrovni zařízení za účelem řízení a automatizace úloh v rámci aplikace.
+As a solution builder, you can define custom rules and actions that operate over data streaming from connected devices. Operátor může tato pravidla povolit nebo zakázat na úrovni zařízení za účelem řízení a automatizace úloh v rámci aplikace.
 
-Správci spravují přístup k vaší aplikaci pomocí [rolí a oprávnění uživatele](howto-administer.md).
+Administrators manage access to your application with [user roles and permissions](howto-administer.md).
+
+## <a name="quotas"></a>Kvóty
+
+Each Azure subscription has default quotas that could impact the scope of your IoT solution. Currently, IoT Central limits the number of applications you can deploy in a subscription to 10. If you need to increase this limit, contact [Microsoft support](https://azure.microsoft.com/support/options/).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte přehled o IoT Central, tady jsou doporučené další kroky:
+Now that you have an overview of IoT Central, here are suggested next steps:
 
-- Pochopte rozdíly mezi [IoT Central a akcelerátory řešení Azure IoT](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
+- Understand the differences between [IoT Central and Azure IoT solution accelerators](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
 - Seznamte se s [uživatelským rozhraním Azure IoT Central](overview-iot-central-tour.md).
 - Začněte [vytvořením aplikace Azure IoT Central](quick-deploy-iot-central.md).
-- Další informace o [IoT technologie Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md)
-- Informace o tom, jak [vytvořit šablonu zařízení Azure IoT Edge](./tutorial-define-edge-device-type.md)
+- Learn more about [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md)
+- Learn how to [Create Azure IoT Edge Device template](./tutorial-define-edge-device-type.md)

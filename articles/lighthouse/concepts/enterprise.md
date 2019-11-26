@@ -1,62 +1,62 @@
 ---
 title: Azure Lighthouse v podnikových scénářích
-description: Funkce Azure Lighthouse se dají použít ke zjednodušení správy mezi klienty v rámci podniku, který používá víc tenantů Azure AD.
+description: The capabilities of Azure Lighthouse can be used to simplify cross-tenant management within an enterprise which uses multiple Azure AD tenants.
 ms.date: 09/25/2019
-ms.topic: overview
-ms.openlocfilehash: ae2241048e6ae481e319154beedab74c23c91163
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: f610f943ed7faa0d2ad64ff2f1554cdd41d76ee8
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132498"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463912"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse v podnikových scénářích
 
-Nejběžnější scénář pro [Azure Lighthouse](../overview.md) je poskytovatel služeb, který spravuje prostředky ve svých klientech Azure Active Directory (Azure AD). Funkce Azure Lighthouse se ale dají použít i ke zjednodušení správy mezi klienty v rámci podniku, který používá víc tenantů Azure AD.
+The most common scenario for [Azure Lighthouse](../overview.md) is a service provider managing resources in its customers’ Azure  Active Directory (Azure AD) tenants. However, the capabilities of Azure Lighthouse can also be used to simplify cross-tenant management within an enterprise which uses multiple Azure AD tenants.
 
-## <a name="single-vs-multiple-tenants"></a>Jeden vs. více tenantů
+## <a name="single-vs-multiple-tenants"></a>Single vs. multiple tenants
 
-Pro většinu organizací je Správa snazší díky jednomu tenantovi služby Azure AD. Všechny prostředky v rámci jednoho tenanta umožňují centralizaci úloh správy podle určených uživatelů, skupin uživatelů nebo instančních objektů v rámci tohoto tenanta. Pokud je to možné, doporučujeme používat jednoho tenanta pro vaši organizaci.
+For most organizations, management is easier with a single Azure AD tenant. Having all resources within one tenant allows centralization of management tasks by designated users, user groups, or service principals within that tenant. We recommend using one tenant for your organization whenever possible.
 
-Ve stejnou chvíli existují situace, které mohou vyžadovat, aby organizace udržovala více tenantů Azure AD. V některých případech se může jednat o dočasnou situaci, jako když se povedlo pořízení, a dlouhodobá strategie konsolidace tenanta bude nějakou dobu trvat. Organizace může také potřebovat udržovat více tenantů průběžně (v důsledku zcela nezávislých poboček, zeměpisných nebo zákonných požadavků atd.). V případech, kdy je potřeba víceklientské architektury, se dá pomocí delegované správy prostředků Azure soustředit a zjednodušit operace správy. Pro [správu delegovaných prostředků Azure](azure-delegated-resource-management.md)se dá připojit k předplatným více tenantů, což umožňuje určeným uživatelům ve spravovaném tenantovi provádět [funkce pro správu mezi klienty](cross-tenant-management-experience.md) centralizovaným a škálovatelným způsobem.
+At the same time, there are situations that may require an organization to maintain multiple Azure AD tenants. In some cases, this may be a temporary situation, as when acquisitions have taken place and a long-term tenant consolidation strategy will take some time to define. An organization may also need to maintain multiple tenants on an ongoing basis (due to wholly independent subsidiaries, geographical or legal requirements, and so on). In cases where a multi-tenant architecture is required, Azure delegated resource management can be used to centralize and streamline management operations. Subscriptions from multiple tenants can be onboarded for [Azure delegated resource management](azure-delegated-resource-management.md), allowing designated users in a managing tenant to perform [cross-tenant management functions](cross-tenant-management-experience.md) in a centralized and scalable manner.
 
-## <a name="tenant-management-architecture"></a>Architektura správy tenanta
+## <a name="tenant-management-architecture"></a>Tenant management architecture
 
-Při centralizaci operací správy napříč více klienty budete muset určit, který tenant bude obsahovat uživatele provádějící operace správy pro ostatní klienty. Jinými slovy, budete muset určit, který tenant bude spravovat tenanta pro ostatní klienty.
+When centralizing management operations across multiple tenants, you’ll need to determine which tenant will include the users performing management operations for the other tenants. In other words, you will need to determine which tenant will be the managing tenant for other tenants.
 
-Řekněme například, že vaše organizace má jednoho tenanta, který budeme volat *jako tenanta a*. Vaše organizace pak získá dva další klienty, *tenanta B* a *tenanta C*a máte obchodní důvody, které vyžadují, abyste je zachovali jako samostatné klienty.
+For example, say your organization has a single tenant that we’ll call *Tenant A*. Your organization then acquires two additional tenants, *Tenant B* and *Tenant C*, and you have business reasons that require you to maintain them as separate tenants.
 
-Vaše organizace chce použít stejné definice zásad, postupy pro zálohování a procesy zabezpečení ve všech klientech. Vzhledem k tomu, že už máte uživatele (včetně skupin uživatelů a instančních objektů), které jsou zodpovědné za provádění těchto úkolů v rámci tenanta a, můžete začlenit všechna předplatná v rámci tenanta B a tenanta C, aby je tito uživatelé v Tenantovi a mohli provádět. provádění.
+Your organization wants to use the same policy definitions, backup practices, and security processes across all tenants. Since you already have users (including user groups and service principals) that are responsible for performing these tasks within Tenant A, you can onboard all of the subscriptions within Tenant B and Tenant C so that those same users in Tenant A can perform those tasks.
 
-![Uživatelé v Tenantovi A spravují prostředky v Tenantovi B a tenant C.](../media/enterprise-azure-lighthouse.jpg)
+![Users in Tenant A managing resources in Tenant B and Tenant C](../media/enterprise-azure-lighthouse.jpg)
 
-## <a name="security-and-access-considerations"></a>Požadavky na zabezpečení a přístup
+## <a name="security-and-access-considerations"></a>Security and access considerations
 
-Ve většině podnikových scénářů budete chtít delegovat úplné předplatné pro správu delegovaných prostředků Azure, i když v rámci předplatného můžete taky delegovat jenom konkrétní skupiny prostředků.
+In most enterprise scenarios, you’ll want to delegate a full subscription for Azure delegated resource management, although you can also delegate only specific resource groups within a subscription.
 
-V obou případech nezapomeňte [při definování, kteří uživatelé budou mít přístup k prostředkům, dodržovat princip nejnižší úrovně oprávnění](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). Tím je zajištěno, že uživatelé mají pouze oprávnění potřebná k provedení požadovaných úloh a omezují riziko neúmyslných chyb.
+Either way, be sure to [follow the principle of least privilege when defining which users will have access to resources](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). Doing so helps to ensure that users only have the permissions needed to perform the required tasks and reduces the chance of inadvertent errors.
 
-Azure Lighthouse a Azure delegované správy prostředků poskytují pouze logické odkazy mezi správou tenanta a spravovaných tenantů místo fyzického přesouvání dat nebo prostředků. Přístup navíc vždy probíhá pouze v jednom směru, od správy tenanta po spravované klienty.  Uživatelé a skupiny v tenantovi pro správu by měli i nadále používat vícefaktorové ověřování při provádění operací správy u prostředků spravovaného tenanta.
+Azure Lighthouse and Azure delegated resource management only provide logical links between a managing tenant and managed tenants, rather than physically moving data or resources. Furthermore, the access always goes in only one direction, from the managing tenant to the managed tenants.  Users and groups in the managing tenant should continue to use multi-factor authentication when performing management operations on managed tenant resources.
 
-Podniky s interním nebo externím řízením a dodržováním předpisů guardrails můžou používat [protokoly aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) ke splnění svých požadavků na transparentnost. Když podniková klienti navázali vztahy správy a spravovaného tenanta, můžou uživatelé v každém tenantovi monitorovat a získávat přehled o akcích provedených uživateli v jiném tenantovi zobrazením protokolované aktivity.
+Enterprises with internal or external governance and compliance guardrails can use [Azure Activity logs](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) to meet their transparency requirements. When enterprise tenants have established managing and managed tenant relationships, users in each tenant can monitor and gain visibility to actions taken by the users in the other tenant by viewing logged activity.
 
-## <a name="onboarding-process-considerations"></a>Požadavky na registraci
+## <a name="onboarding-process-considerations"></a>Onboarding process considerations
 
-Předplatná (nebo skupiny prostředků v rámci předplatného) se dají připojit ke správě delegovaných prostředků Azure, a to buď nasazením Azure Resource Manager šablon nebo prostřednictvím spravovaných služeb. nabídky se publikovaly do Azure Marketplace, ať už soukromě, nebo veřejně.
+Subscriptions (or resource groups within a subscription) can be onboarded to Azure delegated resource management either by deploying Azure Resource Manager templates or through Managed Services offers published to Azure Marketplace, either privately or publicly.
 
-Vzhledem k tomu, že podnikoví uživatelé budou normálně moci získat přímý přístup k podnikovým klientům, a není potřeba uvádět na trh ani propagovat nabídku správy, je všeobecně rychlejší a jednodušší je nasadit přímo pomocí Azure Resource Manager šablon. I když v [pokynech k registraci](../how-to/onboard-customer.md)odkazujeme na poskytovatele služeb a zákazníky, můžou podniky používat stejné procesy.
+Since enterprise users will normally be able to gain direct access to the enterprise’s tenants, and there’s no need to market or promote a management offering, it’s generally faster and more straightforward to deploy directly with Azure Resource Manager templates. While we refer to service providers and customers in the [onboarding guidance](../how-to/onboard-customer.md), enterprises can use the same processes.
 
-Pokud dáváte přednost, můžou být klienti v rámci podniku připojeni pomocí [nabídky spravované služby na Azure Marketplace](../how-to/publish-managed-services-offers.md). Chcete-li zajistit, aby nabídka byla k dispozici pouze pro příslušné klienty, ujistěte se, že jsou vaše plány označeny jako soukromé. V případě privátního plánu můžete zadat ID předplatných pro každého tenanta, kterého se chystáte připojit, a nikdo jiný nebude moci získat vaši nabídku.
+If you prefer, tenants within an enterprise can be onboarded by [publishing a Managed Services offer to Azure Marketplace](../how-to/publish-managed-services-offers.md). To ensure that the offer is only available to the appropriate tenants, be sure that your plans are marked as private. With a private plan, you can provide the subscription IDs for each tenant that you plan to onboard, and no one else will be able to get your offer.
 
-## <a name="terminology-notes"></a>Poznámky k terminologii
+## <a name="terminology-notes"></a>Terminology notes
 
-Pro správu mezi klienty v rámci podniku se odkazy na poskytovatele služeb v dokumentaci ke službě Azure Lighthouse můžou chápat, aby se mohly vztahovat na správu tenanta v podniku, tedy na tenanta, který obsahuje uživatele, kteří budou spravovat prostředky. v ostatních klientech prostřednictvím delegované správy prostředků Azure. Podobně se odkazy na zákazníky můžou chápat, aby se mohly vztahovat na klienty, kteří mají oprávnění ke správě prostředků prostřednictvím uživatelů v rámci správy tenanta.
+For cross-tenant management within the enterprise, references to service providers in the Azure Lighthouse documentation can be understood to apply to the managing tenant within an enterprise—that is, the tenant that includes the users who will manage resources in other tenants through Azure delegated resource management. Similarly, references to customers can be understood to apply to the tenants that are delegating resources to be managed through users in the managing tenant.
 
-Například v předchozím příkladu se dá tenant představit jako tenant poskytovatele služeb (Správa tenanta) a tenanta B a tenant C jako klienti zákazníka.
+For instance, in the example described above, Tenant A can be thought of as the service provider tenant (the managing tenant) and Tenant B and Tenant C can be thought of as the customer tenants.
 
-V tomto příkladu může klient uživatele s příslušnými oprávněními [Zobrazit a spravovat delegované prostředky](../how-to/view-manage-customers.md) na stránce **moji zákazníci** v Azure Portal. Stejně tak mohou uživatelé klienta B a tenanta C s příslušnými oprávněními [Zobrazit a spravovat prostředky, které byly delegovány](../how-to/view-manage-service-providers.md) na tenanta a na stránce Azure Portal **poskytovatelé služeb** .
+In that example, Tenant A users with the appropriate permissions can [view and manage delegated resources](../how-to/view-manage-customers.md) in the **My customers** page of the Azure portal. Likewise, Tenant B and Tenant C users with the appropriate permissions can [view and manage the resources that have been delegated](../how-to/view-manage-service-providers.md) to Tenant A in the **Service providers** page of the Azure portal.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [prostředích pro správu mezi klienty](cross-tenant-management-experience.md).
+- Learn about [cross-tenant management experiences](cross-tenant-management-experience.md).
 - Další informace o [správě delegovaných prostředků Azure](azure-delegated-resource-management.md)

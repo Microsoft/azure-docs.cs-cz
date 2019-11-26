@@ -1,32 +1,32 @@
 ---
-title: Vytváření zásad pro vlastnosti polí u prostředků
-description: Naučte se vytvořit parametry pole, vytvořit pravidla pro výrazy jazyka Array, vyhodnotit alias [*] a přidat prvky do existujícího pole s pravidly Azure Policy definice.
+title: Author policies for array properties on resources
+description: Learn to work with array parameters and array language expressions, evaluate the [*] alias, and to append elements with Azure Policy definition rules.
 ms.date: 03/06/2019
 ms.topic: conceptual
-ms.openlocfilehash: f28cffcf928f9c4da6b2dae2a0811200397c1f0d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 96598918f0dbcc2f56e8ccc316844ee768306b75
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959714"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463499"
 ---
-# <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytváření zásad pro vlastnosti pole v prostředcích Azure
+# <a name="author-policies-for-array-properties-on-azure-resources"></a>Author policies for array properties on Azure resources
 
-Vlastnosti Azure Resource Manager jsou běžně definovány jako řetězce a logické hodnoty. Když existuje vztah 1: n, místo toho se jako pole definují komplexní vlastnosti. V Azure Policy se pole používají několika různými způsoby:
+Azure Resource Manager properties are commonly defined as strings and booleans. When a one-to-many relationship exists, complex properties are instead defined as arrays. In Azure Policy, arrays are used in several different ways:
 
-- Typ [parametru definice](../concepts/definition-structure.md#parameters), který poskytuje více možností
-- Součást [pravidla zásad](../concepts/definition-structure.md#policy-rule) s použitím podmínek **v** nebo **notIn**
-- Součást pravidla zásad, které vyhodnocuje [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) pro vyhodnocení konkrétních scénářů, jako jsou **none**, **Any**nebo **All**
-- V [efektu připojit](../concepts/effects.md#append) , který se má nahradit nebo přidat k existujícímu poli
+- The type of a [definition parameter](../concepts/definition-structure.md#parameters), to provide multiple options
+- Part of a [policy rule](../concepts/definition-structure.md#policy-rule) using the conditions **in** or **notIn**
+- Part of a policy rule that evaluates the [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) to evaluate specific scenarios such as **None**, **Any**, or **All**
+- In the [append effect](../concepts/effects.md#append) to replace or add to an existing array
 
-Tento článek se zabývá každým použitím Azure Policy a poskytuje několik ukázkových definic.
+This article covers each use by Azure Policy and provides several example definitions.
 
-## <a name="parameter-arrays"></a>Pole parametrů
+## <a name="parameter-arrays"></a>Parameter arrays
 
-### <a name="define-a-parameter-array"></a>Definovat pole parametrů
+### <a name="define-a-parameter-array"></a>Define a parameter array
 
-Definování parametru jako pole umožní flexibilitu v případě, že je potřeba zadat víc než jednu hodnotu.
-Tato definice zásady umožňuje, aby bylo každé jedno umístění pro parametr **allowedLocations** a výchozí hodnota _eastus2_:
+Defining a parameter as an array allows the policy flexibility when more than one value is needed.
+This policy definition allows any single location for the parameter **allowedLocations** and defaults to _eastus2_:
 
 ```json
 "parameters": {
@@ -42,9 +42,9 @@ Tato definice zásady umožňuje, aby bylo každé jedno umístění pro paramet
 }
 ```
 
-Jako _řetězec_ **typu** se dá nastavit jenom jedna hodnota při přiřazování zásady. Pokud je tato zásada přiřazena, prostředky v oboru jsou povoleny pouze v rámci jedné oblasti Azure. Většina definic zásad musí povolit seznam schválených možností, jako je například povolování _eastus2_, _eastus_a _westus2_.
+As **type** was _string_, only one value can be set when assigning the policy. If this policy is assigned, resources in scope are only allowed within a single Azure region. Most policies definitions need to allow for a list of approved options, such as allowing _eastus2_, _eastus_, and _westus2_.
 
-Pokud chcete vytvořit definici zásady, která povoluje více možností, použijte **typ**pole. Stejné zásady je možné přepsat následujícím způsobem:
+To create the policy definition to allow multiple options, use the _array_ **type**. The same policy can be rewritten as follows:
 
 ```json
 "parameters": {
@@ -67,17 +67,17 @@ Pokud chcete vytvořit definici zásady, která povoluje více možností, použ
 ```
 
 > [!NOTE]
-> Po uložení definice zásady nejde změnit vlastnost **typu** u parametru.
+> Once a policy definition is saved, the **type** property on a parameter can't be changed.
 
-Tato nová definice parametru během přiřazování zásad trvá víc než jednu hodnotu. Po definování **allowedValues** vlastností pole jsou hodnoty dostupné během přiřazování dál omezeny na předdefinovaný seznam voleb. Použití **allowedValues** je volitelné.
+This new parameter definition takes more than one value during policy assignment. With the array property **allowedValues** defined, the values available during assignment are further limited to the predefined list of choices. Use of **allowedValues** is optional.
 
-### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Předání hodnot do pole parametru během přiřazení
+### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Pass values to a parameter array during assignment
 
-Při přiřazování zásad prostřednictvím Azure Portal se jako jedno textové pole zobrazí parametr **typu** _Array_ . Nápověda říká "use; pro oddělení hodnot. (např. Londýn; New York) ". Chcete-li předat povoleným hodnotám umístění _eastus2_, _eastus_a _westus2_ parametru, použijte následující řetězec:
+When assigning the policy through the Azure portal, a parameter of **type** _array_ is displayed as a single textbox. The hint says "Use ; to separate values. (e.g. London;New York)". To pass the allowed location values of _eastus2_, _eastus_, and _westus2_ to the parameter, use the following string:
 
 `eastus2;eastus;westus2`
 
-Formát hodnoty parametru se při použití rozhraní příkazového řádku Azure, Azure PowerShell nebo REST API liší. Hodnoty jsou předány řetězcem JSON, který obsahuje také název parametru.
+The format for the parameter value is different when using Azure CLI, Azure PowerShell, or the REST API. The values are passed through a JSON string that also includes the name of the parameter.
 
 ```json
 {
@@ -91,18 +91,18 @@ Formát hodnoty parametru se při použití rozhraní příkazového řádku Azu
 }
 ```
 
-Chcete-li použít tento řetězec pro každou sadu SDK, použijte následující příkazy:
+To use this string with each SDK, use the following commands:
 
-- Azure CLI: příkaz [AZ Policy Assignment Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) with Parameter **param**
-- Azure PowerShell: rutina [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) s parametrem **PolicyParameter**
-- REST API: v rámci těla požadavku jako hodnota vlastnosti **Properties. Parameters** _v rámci textu_ [](/rest/api/resources/policyassignments/create) žádosti.
+- Azure CLI: Command [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) with parameter **params**
+- Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) with parameter **PolicyParameter**
+- REST API: In the _PUT_ [create](/rest/api/resources/policyassignments/create) operation as part of the Request Body as the value of the **properties.parameters** property
 
-## <a name="policy-rules-and-arrays"></a>Pravidla a pole zásad
+## <a name="policy-rules-and-arrays"></a>Policy rules and arrays
 
-### <a name="array-conditions"></a>Podmínky pole
+### <a name="array-conditions"></a>Array conditions
 
-[Podmínky](../concepts/definition-structure.md#conditions) pravidla zásad, které je možné použít jako **typ** parametru _Array_
-, jsou omezené na `in` a `notIn`. Jako příklad proveďte následující definici zásady s podmínkou `equals`:
+The policy rule [conditions](../concepts/definition-structure.md#conditions) that an _array_
+**type** of parameter may be used with is limited to `in` and `notIn`. Take the following policy definition with condition `equals` as an example:
 
 ```json
 {
@@ -130,20 +130,20 @@ Chcete-li použít tento řetězec pro každou sadu SDK, použijte následujíc�
 }
 ```
 
-Při pokusu o vytvoření této definice zásady prostřednictvím Azure Portal vede k chybě, například k této chybové zprávě:
+Attempting to create this policy definition through the Azure portal leads to an error such as this error message:
 
-- Zásady {GUID} nešlo parametrizované kvůli chybám ověření. Zkontrolujte prosím, jestli jsou parametry zásad správně definované. Výsledek vyhodnocení vnitřní výjimky pro výraz jazyka [Parameters (' allowedLocations ')] je typu Array, očekával se typ String.
+- "The policy '{GUID}' could not be parameterized because of validation errors. Please check if policy parameters are properly defined. The inner exception 'Evaluation result of language expression '[parameters('allowedLocations')]' is type 'Array', expected type is 'String'.'."
 
-Očekávaným **typem** podmínky `equals` je _řetězec_. Vzhledem k tomu, že **allowedLocations** je definován jako _pole_ **typu** , modul zásad vyhodnotí výraz jazyka a vyvolá chybu. V případě `in` a `notIn` podmínky očekává modul zásad ve výrazu jazyka _pole_ typu. Chcete-li tuto chybovou zprávu vyřešit, změňte `equals` na `in` nebo `notIn`.
+The expected **type** of condition `equals` is _string_. Since **allowedLocations** is defined as **type** _array_, the policy engine evaluates the language expression and throws the error. With the `in` and `notIn` condition, the policy engine expects the **type** _array_ in the language expression. To resolve this error message, change `equals` to either `in` or `notIn`.
 
-### <a name="evaluating-the--alias"></a>Vyhodnocení aliasu [*]
+### <a name="evaluating-the--alias"></a>Evaluating the [*] alias
 
-Aliasy, které mají **[\*]** připojené k jejich názvu, označují, že **typ** je _pole_. Místo vyhodnocení hodnoty celého pole, **[\*]** , umožňuje vyhodnotit každý prvek pole. Existují tři scénáře, které jsou pro vyhodnocení každé položky užitečné: žádné, žádné a všechny.
+Aliases that have **[\*]** attached to their name indicate the **type** is an _array_. Instead of evaluating the value of the entire array, **[\*]** makes it possible to evaluate each element of the array. There are three scenarios this per item evaluation is useful in: None, Any, and All.
 
-Modul zásad aktivuje **efekt** v **a pak** jenom v případě, že se pravidlo **if** vyhodnotí jako true.
-Tento fakt je důležité pochopit v kontextu způsobu, jakým **[\*]** vyhodnocuje každý jednotlivý prvek pole.
+The policy engine triggers the **effect** in **then** only when the **if** rule evaluates as true.
+This fact is important to understand in context of the way **[\*]** evaluates each individual element of the array.
 
-Příklad pravidla zásad pro tabulku scénář:
+The example policy rule for the scenario table below:
 
 ```json
 "policyRule": {
@@ -162,7 +162,7 @@ Příklad pravidla zásad pro tabulku scénář:
 }
 ```
 
-Pole **ipRules** je pro následující tabulku scénář následující:
+The **ipRules** array is as follows for the scenario table below:
 
 ```json
 "ipRules": [
@@ -177,35 +177,35 @@ Pole **ipRules** je pro následující tabulku scénář následující:
 ]
 ```
 
-U každého příkladu podmínky nahraďte `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
+For each condition example below, replace `<field>` with `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
 
-Následující výsledky jsou výsledkem kombinace podmínky a ukázkového pravidla zásad a pole stávajících hodnot výše:
+The following outcomes are the result of the combination of the condition and the example policy rule and array of existing values above:
 
 |Podmínka |Výsledek |Vysvětlení |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Žádným |Jeden prvek pole se vyhodnotí jako false (127.0.0.1! = 127.0.0.1) a jeden jako true (127.0.0.1! = 192.168.1.1), takže podmínka **notEquals** je _nepravdivá_ a efekt se neaktivuje. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Vliv na zásady |Obě prvky pole se vyhodnocují jako true (10.0.4.1! = 127.0.0.1 a 10.0.4.1! = 192.168.1.1), takže podmínka **notEquals** je _pravdivá_ a výsledek se aktivuje. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Vliv na zásady |Jeden prvek pole se vyhodnotí jako true (127.0.0.1 = = 127.0.0.1) a jeden jako false (127.0.0.1 = = 192.168.1.1), takže podmínka **Equals** je _false_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Vliv na zásady |Obě prvky pole jsou vyhodnoceny jako false (10.0.4.1 = = 127.0.0.1 a 10.0.4.1 = = 192.168.1.1), takže podmínka **Equals** je _false_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Vliv na zásady |Jeden prvek pole se vyhodnotí jako false (127.0.0.1! = 127.0.0.1) a jeden jako true (127.0.0.1! = 192.168.1.1), takže podmínka **notEquals** je _NEPRAVDA_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Žádným |Obě prvky pole jsou vyhodnoceny jako true (10.0.4.1! = 127.0.0.1 a 10.0.4.1! = 192.168.1.1), takže podmínka **notEquals** je _pravdivá_. Logický operátor se vyhodnotí jako false (**ne** _true_), takže se efekt neaktivuje. |
-|`{<field>,"Equals":"127.0.0.1"}` |Žádným |Jeden prvek pole se vyhodnotí jako true (127.0.0.1 = = 127.0.0.1) a jeden jako false (127.0.0.1 = = 192.168.1.1), takže podmínka **Equals** je _false_ a efekt se neaktivuje. |
-|`{<field>,"Equals":"10.0.4.1"}` |Žádným |Obě prvky pole jsou vyhodnoceny jako false (10.0.4.1 = = 127.0.0.1 a 10.0.4.1 = = 192.168.1.1), takže podmínka **Equals** je _false_ a účinek není aktivován. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |One array element evaluates as false (127.0.0.1 != 127.0.0.1) and one as true (127.0.0.1 != 192.168.1.1), so the **notEquals** condition is _false_ and the effect isn't triggered. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Policy effect |Both array elements evaluate as true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1), so the **notEquals** condition is _true_ and the effect is triggered. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Policy effect |One array element evaluates as true (127.0.0.1 == 127.0.0.1) and one as false (127.0.0.1 == 192.168.1.1), so the **Equals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Policy effect |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Policy effect |One array element evaluates as false (127.0.0.1 != 127.0.0.1) and one as true (127.0.0.1 != 192.168.1.1), so the **notEquals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Both array elements evaluate as true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1), so the **notEquals** condition is _true_. The logical operator evaluates as false (**not** _true_), so the effect isn't triggered. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nothing |One array element evaluates as true (127.0.0.1 == 127.0.0.1) and one as false (127.0.0.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
 
-## <a name="the-append-effect-and-arrays"></a>Efekt připojení a pole
+## <a name="the-append-effect-and-arrays"></a>The append effect and arrays
 
-[Efekt připojení](../concepts/effects.md#append) se chová odlišně v závislosti na tom, zda je v **poli podrobnosti** alias **[\*]** .
+The [append effect](../concepts/effects.md#append) behaves differently depending on if the **details.field** is a **[\*]** alias or not.
 
-- Pokud se nejedná o alias **[\*]** , příkaz append nahradí celé pole vlastností **Value** .
-- Když alias **[\*]** přidá vlastnost **Value** do existujícího pole nebo vytvoří nové pole.
+- When not a **[\*]** alias, append replaces the entire array with the **value** property
+- When a **[\*]** alias, append adds the **value** property to the existing array or creates the new array
 
-Další informace najdete v [příkladech připojení](../concepts/effects.md#append-examples).
+For more information, see the [append examples](../concepts/effects.md#append-examples).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
+- Review examples at [Azure Policy samples](../samples/index.md).
 - Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).
 - Projděte si [Vysvětlení efektů zásad](../concepts/effects.md).
-- Zjistěte, jak [programově vytvářet zásady](programmatically-create.md).
-- Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](remediate-resources.md).
-- Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).
+- Understand how to [programmatically create policies](programmatically-create.md).
+- Learn how to [remediate non-compliant resources](remediate-resources.md).
+- Review what a management group is with [Organize your resources with Azure management groups](../../management-groups/overview.md).

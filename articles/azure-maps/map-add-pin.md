@@ -1,6 +1,6 @@
 ---
-title: Přidat vrstvu symbolů do Azure Maps | Microsoft Docs
-description: Postup přidání symbolů do Azure Maps webové sady SDK.
+title: Add a Symbol layer to Azure Maps | Microsoft Docs
+description: How to add symbols to the Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,23 +9,31 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 10f6a7ef92bfd6558ed93e7fb40df9e48e1b92f5
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: fff73801d20333a6df5e7952d02ed664c17fe40b
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976180"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480609"
 ---
-# <a name="add-a-symbol-layer-to-a-map"></a>Přidání vrstvy symbolů do mapy
+# <a name="add-a-symbol-layer-to-a-map"></a>Add a symbol layer to a map
 
-Symbol může být připojen ke zdroji dat a používá se k vykreslení ikony nebo textu v daném bodě. Vrstvy symbolů se vykreslují pomocí WebGL a dají se použít k vykreslování velkých kolekcí bodů na mapě. Tato vrstva může na mapě vykreslovat mnohem více bodů s dobrým výkonem, než kolik je možné pomocí značek HTML. Nicméně vrstva symbolů nepodporuje tradiční prvky CSS a HTML pro stylování.  
+A symbol can be connected up to a data source and used to render an icon and/or text at a given point. Symbol layers are rendered using WebGL and can be used to render large collections of points on the map. This layer can render a lot more point data on the map, with good performance, than what is achievable using HTML markers. However, the symbol layer doesn't support traditional CSS and HTML elements for styling.  
 
 > [!TIP]
-> Vrstvy symbolů ve výchozím nastavení vykreslí souřadnice všech geometrií ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslí pouze funkce geometrie bodu `filter` , nastavte vlastnost vrstvy na `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` , pokud chcete zahrnout i funkce systému MultiPoint.
+> Symbol layers by default will render the coordinates of all geometries in a data source. To limit the layer such that it only renders point geometry features set the `filter` property of the layer to `['==', ['geometry-type'], 'Point']` or `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` if you want to include MultiPoint features as well.
+
+The maps image sprite manager, which is used to load custom images used by the symbol layer supports the following image formats:
+
+- JPEG
+- PNG
+- SVG
+- BMP
+- GIF (no animations)
 
 ## <a name="add-a-symbol-layer"></a>Přidání vrstvy symbolů
 
-Chcete-li přidat vrstvu symbolů do mapy a vykreslovat data, je třeba nejprve vytvořit zdroj dat a přidat mapu. Vrstvu symbolů lze poté vytvořit a předat zdroji dat a načíst data z. Nakonec je třeba přidat data do zdroje dat, aby bylo vygenerováno něco. Následující kód ukazuje kód, který by měl být přidán do mapy poté, co byl načten pro vykreslení jediného bodu na mapě pomocí vrstvy symbolů. 
+To add a symbol layer to the map and render data, a data source first needs to be created and added the map. A symbol layer can then be created and passed in the data source to retrieve the data from. Finally, data needs to be added into the data source so that there is something to be rendered. The following code shows the code that should be added to the map after it has loaded to render a single point on the map using a symbol layer. 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -42,50 +50,50 @@ map.layers.add(layer);
 dataSource.add(new atlas.data.Point([0, 0]));
 ```
 
-Existují čtyři různé typy datových bodů, které je možné přidat do mapy:
+There are four different types of point data to that can be added to the map:
 
-- Geometrická geometrie bodu JSON – tento objekt obsahuje pouze souřadnici bodu a nic jiného. `atlas.data.Point` Pomocná třída se dá použít ke snadnému vytváření těchto objektů.
-- Geometrická geometrie systému pro data JSON – tento objekt obsahuje souřadnice více bodů, ale nic jiného. `atlas.data.MultiPoint` Pomocná třída se dá použít ke snadnému vytváření těchto objektů.
-- Geografická funkce JSON – tento objekt se skládá z libovolného geometrického geometrie a sady vlastností, které obsahují metadata přidružená k geometrii. `atlas.data.Feature` Pomocná třída se dá použít ke snadnému vytváření těchto objektů.
-- `atlas.Shape`Třída je podobná funkci Geometricke v tom, že se skládá z geometrické geometrie a sady vlastností, které obsahují metadata přidružená k geometrii. Pokud je objekt. JSON přidaný do zdroje dat, může být snadno vykreslen ve vrstvě, ale pokud je vlastnost souřadnice tohoto objektu. JSON aktualizována, zdroj dat a mapování se nemění, protože v objektu JSON není žádný mechanismus pro aktivaci aktualizace. Třída Shape poskytuje funkce pro aktualizaci dat, která obsahuje, a když je provedena změna, zdroj dat a mapa budou automaticky upozorňovány a aktualizovány. 
+- GeoJSON Point geometry - This object only contains a coordinate of a point and nothing else. The `atlas.data.Point` helper class can be used to easily create these objects.
+- GeoJSON MultiPoint geometry - This object contains the coordinates of multiple points but nothing else. The `atlas.data.MultiPoint` helper class can be used to easily create these objects.
+- GeoJSON Feature - This object consists of any GeoJSON geometry and a set of properties that contain metadata associated to the geometry. The `atlas.data.Feature` helper class can be used to easily create these objects.
+- `atlas.Shape` class is similar to the GeoJSON feature in that it consists of a GeoJSON geometry and a set of properties that contain metadata associated to the geometry. If a GeoJSON object is added to a data source it can easily be rendered in a layer, however, if the coordinates property of that GeoJSON object is updated, the data source and map don't change as there is no mechanism in the JSON object to trigger an update. The shape class provides functions for updating the data it contains, and when a change is made, the data source and map are automatically notified and updated. 
 
-Následující ukázka kódu vytvoří geometrii geometrického bodu JSON a předá ji do `atlas.Shape` třídy, aby se usnadnila její aktualizace. Uprostřed mapy se zpočátku používá k vykreslení symbolu. Událost Click je přidána na mapu, například v případě, že je aktivována, souřadnice místa, kde byla stisknuta myš, se používají spolu `setCoordinates` s funkcí Shapes, která aktualizuje umístění symbolu na mapě.
-
-<br/>
-
-<iframe height='500' scrolling='no' title='Přepnout umístění PIN kódu' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>adresu PIN pro přepínač</a> pera Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-> [!TIP]
-> Ve výchozím nastavení pro výkon, vrstvy symbolů optimalizují vykreslování symbolů skrytím symbolů, které se překrývají. Při přiblížení se budou skryté symboly zobrazovat. Chcete-li tuto funkci zakázat a vykreslit všechny symboly za všech okolností `allowOverlap` , nastavte vlastnost `iconOptions` možností na `true`.
-
-## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Přidání vlastní ikony do vrstvy symbolů
-
-Vrstvy symbolů se vykreslují pomocí WebGL. Jako takové všechny prostředky, například obrázky ikon, je nutné načíst do kontextu WebGL. Tento příklad ukazuje, jak přidat vlastní ikonu do prostředků mapy a pak ji použít k vykreslení dat bodů s vlastním symbolem na mapě. `textField` Vlastnost vrstvy symbolů vyžaduje, aby byl zadán výraz. V tomto případě chceme vykreslit vlastnost teploty, ale vzhledem k tomu, že se jedná o číslo, je nutné ji převést na řetězec. Navíc chceme k němu připojit "°F". K tomu lze použít výraz. `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
+The following code sample creates a GeoJSON Point geometry and passes it into the `atlas.Shape` class to make it easy to update. The center of the map is used initially to render a symbol. A click event is added to the map such that when it fires, the coordinates of where the mouse was clicked are used with the shapes `setCoordinates` function that updates the location of the symbol on the map.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Ikona obrázku vlastního symbolu' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Azure Maps <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>Ikona obrázku vlastního symbolu</a> pera na<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>() se zobrazí na obrázku.
+<iframe height='500' scrolling='no' title='Switch pin location' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>Switch pin location</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> Sada Azure Maps Web SDK poskytuje několik přizpůsobitelných šablon obrázků, které lze použít s vrstvou symbolů. Další informace získáte v dokumentu [použití šablon obrázků](how-to-use-image-templates-web-sdk.md) .
+> By default, for performance, symbol layers optimize the rendering of symbols by hiding symbols that overlap. As you zoom in the hidden symbols become visible. To disable this feature and render all symbols at all times, set the `allowOverlap` property of the `iconOptions` options to `true`.
 
-## <a name="customize-a-symbol-layer"></a>Přizpůsobení vrstvy symbolů 
+## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Add a custom icon to a symbol layer
 
-Vrstva symbolů má k dispozici mnoho možností stylů. Tady je nástroj, který slouží k otestování těchto různých možností stylů.
+Symbol layers are rendered using WebGL. As such all resources, such as icon images, must be loaded into the WebGL context. This sample shows how to add a custom icon to the map resources and then use it to render point data with a custom symbol on the map. The `textField` property of the symbol layer requires an expression to be specified. In this case, we want to render the temperature property but since it's a number, it needs to be converted to a string. Additionally we want to append the "°F" to it. An expression can be used to do this; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Možnosti vrstvy symbolů' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/PxVXje/'>Možnosti vrstvy symbolů</a> pera od Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Custom Symbol Image Icon' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>Custom Symbol Image Icon</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> Pokud chcete pouze vykreslit text s vrstvou symbolů, můžete ikonu `image` skrýt nastavením vlastnosti možnosti ikony na. `'none'`
+> The Azure Maps web SDK provides several customizable image templates you can use with the symbol layer. For more infromation, see the [How to use image templates](how-to-use-image-templates-web-sdk.md) document.
 
-## <a name="next-steps"></a>Další postup
+## <a name="customize-a-symbol-layer"></a>Customize a symbol layer 
 
-Další informace o třídách a metodách, které se používají v tomto článku:
+The symbol layer has many styling options available. Here is a tool to test out these various styling options.
+
+<br/>
+
+<iframe height='700' scrolling='no' title='Symbol Layer Options' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/azuremaps/pen/PxVXje/'>Symbol Layer Options</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+> [!TIP]
+> When you only want to render text with a symbol layer, you can hide the icon by setting the `image` property of the icon options to `'none'`.
+
+## <a name="next-steps"></a>Další kroky
+
+Learn more about the classes and methods used in this article:
 
 > [!div class="nextstepaction"]
 > [SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)
@@ -99,28 +107,28 @@ Další informace o třídách a metodách, které se používají v tomto člá
 > [!div class="nextstepaction"]
 > [TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
 
-Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
+See the following articles for more code samples to add to your maps:
 
 > [!div class="nextstepaction"]
-> [Vytvoření zdroje dat](create-data-source-web-sdk.md)
+> [Create a data source](create-data-source-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Přidat automaticky otevírané okno](map-add-popup.md)
+> [Add a popup](map-add-popup.md)
 
 > [!div class="nextstepaction"]
-> [Použití výrazů stylu založených na datech](data-driven-style-expressions-web-sdk.md)
+> [Use data-driven style expressions](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Používání šablon obrázků](how-to-use-image-templates-web-sdk.md)
+> [How to use image templates](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Přidat řádkovou vrstvu](map-add-line-layer.md)
+> [Add a line layer](map-add-line-layer.md)
 
 > [!div class="nextstepaction"]
-> [Přidat mnohoúhelníkovou vrstvu](map-add-shape.md)
+> [Add a polygon layer](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [Přidat bublinovou vrstvu](map-add-bubble-layer.md)
+> [Add a bubble layer](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Přidání tvůrců HTML](map-add-bubble-layer.md)
+> [Add HTML Makers](map-add-bubble-layer.md)
