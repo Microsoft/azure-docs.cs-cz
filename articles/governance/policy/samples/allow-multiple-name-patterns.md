@@ -1,16 +1,16 @@
 ---
-title: Ukázka – několik vzorů názvů
-description: Tato definice ukázkové zásady vyžaduje, aby prostředek odpovídal jednomu ze zadaných vzorů názvů.
+title: Sample - multiple name patterns
+description: This sample policy definition requires that a resource matches one of the provided digit or number name patterns.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 3dcecbf69d4170dd851f1b2678ae0136c86c7e49
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 227b03d0719fcf1a8851213d96b057c9b439a99d
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076502"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463476"
 ---
-# <a name="sample---allow-multiple-name-patterns"></a>Ukázka – povolení více vzorů názvů
+# <a name="sample---allow-multiple-name-patterns"></a>Sample - Allow multiple name patterns
 
 Povolíte jeden z mnoha vzorů názvů, který se použije pro prostředky. Zadáte v pravidle zásad vzory s povolenými názvy.
 
@@ -24,9 +24,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![nasazení ukázky zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fallow-multiple-name-patterns%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fallow-multiple-name-patterns%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
+## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -45,7 +45,7 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'allow-multiple-name-patterns' --display-name
 az policy assignment create --name <assignmentname> --scope <scope> --policy "allow-multiple-name-patterns" 
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

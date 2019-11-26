@@ -1,78 +1,79 @@
 ---
 title: Řešení potíží
-description: Řešení potíží s Azure SQL Data Warehouse.
+description: Troubleshooting Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 7/29/2019
+ms.date: 11/25/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2aa7926286be277c7ad0aa7054b4bd6fceb8229f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b2a9a7b0b759f5853d83a4b1999887414fd5f430
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685398"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483214"
 ---
-# <a name="troubleshooting-azure-sql-data-warehouse"></a>Řešení potíží s Azure SQL Data Warehouse
-V tomto článku jsou uvedené běžné otázky týkající se řešení potíží.
+# <a name="troubleshooting-azure-sql-data-warehouse"></a>Troubleshooting Azure SQL Data Warehouse
+This article lists common troubleshooting question.
 
-## <a name="connecting"></a>Připojovaného
+## <a name="connecting"></a>Connecting
 | Problém                                                        | Rozlišení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Přihlášení uživatele NT AUTHORITY\ANONYMOUS LOGON selhalo. (Microsoft SQL Server, chyba: 18456) | K této chybě dojde, když se uživatel AAD pokusí připojit k hlavní databázi, ale nemá v hlavní větvi žádného uživatele.  Pokud chcete tento problém vyřešit, při připojování určete službu SQL Data Warehouse, ke které se chcete připojit, nebo přidejte daného uživatele do hlavní databáze.  Další podrobnosti najdete v článku [Přehled zabezpečení][Security overview] . |
-| Objekt zabezpečení serveru MyUserName nemůže v aktuálním kontextu zabezpečení získat přístup k databázi master. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Nezdařilo se přihlášení pro uživatele myUserName. (Microsoft SQL Server, chyba: 916) | K této chybě dojde, když se uživatel AAD pokusí připojit k hlavní databázi, ale nemá v hlavní větvi žádného uživatele.  Pokud chcete tento problém vyřešit, při připojování určete službu SQL Data Warehouse, ke které se chcete připojit, nebo přidejte daného uživatele do hlavní databáze.  Další podrobnosti najdete v článku [Přehled zabezpečení][Security overview] . |
-| Chyba CTAIP                                                  | K této chybě může dojít, když bylo vytvořeno přihlášení na hlavní databázi systému SQL Server, ale ne v databázi SQL Data Warehouse.  Pokud se zobrazí tato chyba, přečtěte si článek [Přehled zabezpečení][Security overview] .  Tento článek vysvětluje, jak vytvořit přihlašovací údaje a uživatele v hlavní větvi a jak vytvořit uživatele v databázi SQL Data Warehouse. |
-| Blokováno bránou firewall                                          | Databáze Azure SQL se chrání pomocí bran firewall na úrovni serveru a databáze, aby bylo zajištěno, že přístup k databázi bude mít jenom známé IP adresy. Brány firewall jsou ve výchozím nastavení zabezpečené, což znamená, že před připojením musíte explicitně povolit a IP adresu nebo rozsah adres.  Pokud chcete bránu firewall nakonfigurovat pro přístup, postupujte podle pokynů v tématu [Konfigurace přístupu k bráně firewall serveru pro IP adresu vašeho klienta][Configure server firewall access for your client IP] v [pokynech k zřizování][Provisioning instructions]. |
-| Nejde se připojit pomocí nástroje nebo ovladače.                           | SQL Data Warehouse doporučuje používat [SSMS][SSMS], [SSDT pro Visual Studio][SSDT for Visual Studio]nebo [Sqlcmd][sqlcmd] k dotazování na data. Další informace o ovladačích a připojení k SQL Data Warehouse najdete v tématu [ovladače pro Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] a [připojení k Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] článkům. |
+| Přihlášení uživatele NT AUTHORITY\ANONYMOUS LOGON selhalo. (Microsoft SQL Server, Error: 18456) | K této chybě dochází, když se uživatel AAD pokusí připojit k hlavní databázi, ale nemá v hlavní databázi žádného uživatele.  Pokud chcete tento problém vyřešit, při připojování určete službu SQL Data Warehouse, ke které se chcete připojit, nebo přidejte daného uživatele do hlavní databáze.  See [Security overview][Security overview] article for more details. |
+| Objekt zabezpečení serveru MyUserName nemůže v aktuálním kontextu zabezpečení získat přístup k databázi master. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Nezdařilo se přihlášení pro uživatele myUserName. (Microsoft SQL Server, Error: 916) | K této chybě dochází, když se uživatel AAD pokusí připojit k hlavní databázi, ale nemá v hlavní databázi žádného uživatele.  Pokud chcete tento problém vyřešit, při připojování určete službu SQL Data Warehouse, ke které se chcete připojit, nebo přidejte daného uživatele do hlavní databáze.  See [Security overview][Security overview] article for more details. |
+| CTAIP error                                                  | This error can occur when a login has been created on the SQL server master database, but not in the SQL Data Warehouse database.  If you encounter this error, take a look at the [Security overview][Security overview] article.  This article explains how to create a login and user on master, and then how to create a user in the SQL Data Warehouse database. |
+| Blocked by Firewall                                          | Azure SQL databases are protected by server and database level firewalls to ensure only known IP addresses have access to a database. The firewalls are secure by default, which means that you must explicitly enable and IP address or range of addresses before you can connect.  To configure your firewall for access, follow the steps in [Configure server firewall access for your client IP][Configure server firewall access for your client IP] in the [Provisioning instructions][Provisioning instructions]. |
+| Cannot connect with tool or driver                           | SQL Data Warehouse recommends using [SSMS][SSMS], [SSDT for Visual Studio][SSDT for Visual Studio], or [sqlcmd][sqlcmd] to query your data. For more information on drivers and connecting to SQL Data Warehouse, see [Drivers for Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] and [Connect to Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] articles. |
 
 ## <a name="tools"></a>Nástroje
 | Problém                                                        | Rozlišení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| V Průzkumníkovi objektů Visual studia chybí uživatelé AAD.           | Jedná se o známý problém.  Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals][sys.database_principals].  Další informace o použití Azure Active Directory s SQL Data Warehouse najdete v tématu [ověřování pro Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] . |
-| Ruční skriptování, použití Průvodce skriptováním nebo připojení prostřednictvím SSMS je pomalé, nereaguje nebo produkuje chyby. | Zajistěte, aby byl uživatel vytvořen v hlavní databázi. V možnostech skriptování se ujistěte také, že je edice stroje nastavená na Microsoft Azure SQL Data Warehouse Edition a typ modulu je "Microsoft Azure SQL Database". |
-| Generování skriptů v SSMS se nezdařilo                               | Vygenerování skriptu pro SQL Data Warehouse se nezdařila, pokud je možnost "vygenerovat skript pro závislé objekty" nastavena na hodnotu "true". Alternativním řešením je, že uživatelé musí ručně přejít na nástroje-> Možnosti-> Průzkumník objektů systému SQL Server – > vygenerovat skript pro závislé možnosti a nastavit na hodnotu NEPRAVDA. |
+| Visual Studio object explorer is missing AAD users           | Jedná se o známý problém.  As a workaround, view the users in [sys.database_principals][sys.database_principals].  See [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] to learn more about using Azure Active Directory with SQL Data Warehouse. |
+| Manual scripting, using the scripting wizard, or connecting via SSMS is slow, not responding, or producing errors | Ensure that users have been created in the master database. In scripting options, also make sure that the engine edition is set as “Microsoft Azure SQL Data Warehouse Edition” and engine type is “Microsoft Azure SQL Database”. |
+| Generate scripts fails in SSMS                               | Generating a script for SQL Data Warehouse fails if the option "Generate script for dependent objects" option is set to "True." As a workaround, users must manually go to Tools -> Options ->SQL Server Object Explorer -> Generate script for dependent options and set to false |
 
 ## <a name="performance"></a>Výkon
 | Problém                                                        | Rozlišení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Řešení potíží s výkonem dotazů                            | Pokud se snažíte řešit problémy konkrétního dotazu, začněte s [učením, jak sledovat vaše dotazy][Learning how to monitor your queries]. |
-| Nekvalitní výkon a plány dotazů často vyplývají z důvodu chybějících statistik. | Nejběžnější příčinou špatného výkonu je nedostatek statistik v tabulkách.  Podrobnosti o tom, jak vytvořit statistiku a proč jsou důležité pro váš výkon, najdete v článku [udržování statistik tabulek][Statistics] . |
-| Nízká souběžnost/dotazy zařazené do fronty                             | Pochopení [správy úloh][Workload management] je důležité, aby bylo možné pochopit, jak vyrovnávat přidělování paměti s souběžnou souběžnou. |
-| Jak implementovat osvědčené postupy                              | Nejlepším způsobem, jak začít se naučit, jak vylepšit výkon dotazů, je SQL Data Warehouse článku o [osvědčených postupech][SQL Data Warehouse best practices] . |
-| Zvýšení výkonu pomocí škálování                      | Řešení pro zlepšení výkonu někdy znamená jednoduše přidat k vašim dotazům větší výpočetní výkon, a to [škálováním SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
-| Nízký výkon dotazů v důsledku špatné kvality indexu     | Občas se můžou dotazy zpomalit kvůli [špatné kvalitě indexu columnstore][Poor columnstore index quality].  V tomto článku najdete další informace a postup [sestavení indexů pro zlepšení kvality segmentů][Rebuild indexes to improve segment quality]. |
+| Query performance troubleshooting                            | If you are trying to troubleshoot a particular query, start with [Learning how to monitor your queries][Learning how to monitor your queries]. |
+| TempDB space issues | [Monitor TempDB](sql-data-warehouse-manage-monitor.md#monitor-tempdb) space usage.  Common causes for running out of TempDB space are:<br>- Not enough resources allocated to the query causing data to spill to TempDB.  See [Workload management](resource-classes-for-workload-management.md) <br>- Statistics are missing or out of date causing excessive data movement.  See [Maintaining table statistics][Statistics] for details on how to create statistics<br>- TempDB space is allocated per service level.  [Scaling your SQL Data Warehouse][Scaling your SQL Data Warehouse] to a higher DWU setting allocates more TempDB space.|
+| Poor query performance and plans often is a result of missing statistics | The most common cause of poor performance is lack of statistics on your tables.  See [Maintaining table statistics][Statistics] for details on how to create statistics and why they are critical to your performance. |
+| Low concurrency / queries queued                             | Understanding [Workload management][Workload management] is important in order to understand how to balance memory allocation with concurrency. |
+| How to implement best practices                              | The best place to start to learn ways to improve query performance is [SQL Data Warehouse best practices][SQL Data Warehouse best practices] article. |
+| How to improve performance with scaling                      | Sometimes the solution to improving performance is to simply add more compute power to your queries by [Scaling your SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
+| Poor query performance as a result of poor index quality     | Some times queries can slow down because of [Poor columnstore index quality][Poor columnstore index quality].  See this article for more information and how to [Rebuild indexes to improve segment quality][Rebuild indexes to improve segment quality]. |
 
-## <a name="system-management"></a>Správa systému
+## <a name="system-management"></a>System management
 | Problém                                                        | Rozlišení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Msg 40847: operaci nelze provést, protože server by překročil povolenou kvótu jednotky transakce databáze 45000. | Buď snižte [DWU][DWU] databáze, kterou se pokoušíte vytvořit, nebo [požádejte o zvýšení kvóty][request a quota increase]. |
-| Zkoumání využití prostoru                              | Informace o využití prostoru v systému najdete v tématu [velikosti tabulek][Table sizes] . |
-| Pomáhat se správou tabulek                                    | Nápovědu ke správě tabulek najdete v článku [Přehled tabulky][Overview] .  Tento článek také obsahuje odkazy na podrobnější témata, jako jsou [typy dat tabulky][Data types], [distribuce tabulky][Distribute], [indexování tabulky][Index], [dělení tabulky][Partition], [Údržba statistik tabulek][Statistics] a [dočasné tabulky][Temporary]. |
-| Neprobíhá aktualizace indikátoru průběhu transparentního šifrování dat (TDE) v Azure Portal | Stav TDE můžete zobrazit přes [PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
+| Msg 40847: Could not perform the operation because server would exceed the allowed Database Transaction Unit quota of 45000. | Either reduce the [DWU][DWU] of the database you are trying to create or [request a quota increase][request a quota increase]. |
+| Investigating space utilization                              | See [Table sizes][Table sizes] to understand the space utilization of your system. |
+| Help with managing tables                                    | See the [Table overview][Overview] article for help with managing your tables.  This article also includes links into more detailed topics like [Table data types][Data types], [Distributing a table][Distribute], [Indexing a table][Index],  [Partitioning a table][Partition], [Maintaining table statistics][Statistics] and [Temporary tables][Temporary]. |
+| Transparent data encryption (TDE) progress bar is not updating in the Azure portal | You can view the state of TDE via [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
 
 
-## <a name="differences-from-sql-database"></a>Rozdíly od SQL Database
+## <a name="differences-from-sql-database"></a>Differences from SQL Database
 | Problém                                 | Rozlišení                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
-| Nepodporované funkce SQL Database     | Viz [nepodporované funkce tabulky][Unsupported table features]. |
-| Nepodporované datové typy SQL Database   | Zobrazit [nepodporované datové typy][Unsupported data types].        |
-| ODSTRANĚNÍ a aktualizace – omezení         | Pokud [chcete pracovat s nepodporovanou syntaxí aktualizace a odstranění][Using CTAS to work around unsupported UPDATE and DELETE syntax], přečtěte si téma [aktualizace řešení][UPDATE workarounds], [odstranění alternativních řešení][DELETE workarounds] a použití CTAS. |
-| Příkaz MERGE není podporován.      | Viz [alternativní řešení sloučení][MERGE workarounds].                  |
-| Omezení uložených procedur          | V tématu [omezení uložených procedur][Stored procedure limitations] můžete pochopit některá omezení uložených procedur. |
-| UDF nepodporují příkazy SELECT | Toto je aktuální omezení našich Udfů.  Podrobnější informace najdete v tématu věnovaném [Vytvoření funkce][CREATE FUNCTION] . |
+| Unsupported SQL Database features     | See [Unsupported table features][Unsupported table features]. |
+| Unsupported SQL Database data types   | See [Unsupported data types][Unsupported data types].        |
+| DELETE and UPDATE limitations         | See [UPDATE workarounds][UPDATE workarounds], [DELETE workarounds][DELETE workarounds] and [Using CTAS to work around unsupported UPDATE and DELETE syntax][Using CTAS to work around unsupported UPDATE and DELETE syntax]. |
+| MERGE statement is not supported      | See [MERGE workarounds][MERGE workarounds].                  |
+| Stored procedure limitations          | See [Stored procedure limitations][Stored procedure limitations] to understand some of the limitations of stored procedures. |
+| UDFs do not support SELECT statements | This is a current limitation of our UDFs.  See [CREATE FUNCTION][CREATE FUNCTION] for the syntax we support. |
 
 ## <a name="next-steps"></a>Další kroky
-Další nápovědu při hledání řešení problému najdete v tématu Další zdroje, které můžete vyzkoušet.
+For more help in finding solution to your issue, here are some other resources you can try.
 
 * [Blogy]
 * [Žádosti o funkce]
 * [Videa]
-* [Blogy týmu CAT]
+* [CAT team blogs]
 * [Vytvoření lístku podpory]
 * [Fórum MSDN]
 * [Fórum Stack Overflow]
@@ -122,7 +123,7 @@ Další nápovědu při hledání řešení problému najdete v tématu Další 
 
 <!--Other Web references-->
 [Blogy]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Blogy týmu CAT]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[CAT team blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Žádosti o funkce]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Fórum MSDN]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse
 [Fórum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw

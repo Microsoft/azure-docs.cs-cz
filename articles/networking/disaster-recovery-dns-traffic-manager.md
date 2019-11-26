@@ -1,6 +1,6 @@
 ---
-title: Zotavení po havárii pomocí Azure DNS a Traffic Manager | Dokumentace Microsoftu
-description: Přehled řešení zotavení po havárii pomocí Azure DNS a Traffic Manager.
+title: Disaster recovery using Azure DNS and Traffic Manager | Microsoft Docs
+description: Overview of the disaster recovery solutions using Azure DNS and Traffic Manager.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -15,97 +15,97 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65501700"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483530"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Zotavení po havárii s využitím Azure DNS a Traffic Manageru
 
-Zotavení po havárii se zaměřuje na obnovení závažné ztráty funkčnost aplikace. Pokud chcete zvolit řešení zotavení po havárii, třeba obchodním a technologickým vlastníky nejprve určit úroveň funkcí, které se vyžaduje při havárii, jako například – není k dispozici, částečně dostupného přes omezenou funkčnost, nebo zpožděného dostupnosti, nebo plně k dispozici.
-Většina podnikoví zákazníci volí architektura pro více oblastí pro odolnost proti aplikace nebo úrovni převzetí služeb při selhání infrastrukturou. Zákazníci si mohou vybrat několik přístupů v Vyžá zajistit převzetí služeb při selhání a vysokou dostupností redundantní architektury. Tady jsou některé z oblíbených přístupů:
+Disaster recovery focuses on recovering from a severe loss of application functionality. In order to choose a disaster recovery solution, business and technology owners must first determine the level of functionality that is required during a disaster, such as - unavailable, partially available via reduced functionality, or delayed availability, or fully available.
+Most enterprise customers are choosing a multi-region architecture for resiliency against an application or infrastructure level failover. Customers can choose several approaches in the quest to achieve failover and high availability via redundant architecture. Here are some of the popular approaches:
 
-- **Aktivní-pasivní vysoká dostupnost s pasivním pohotovostním režimem:** : V tomto řešení převzetí služeb při selhání virtuálních počítačů a jiných zařízení, které jsou spuštěny v pohotovostním režimu oblasti nejsou aktivní dokud je potřeba pro převzetí služeb při selhání. Produkčním prostředí se však replikují ve formě záloh, Image virtuálních počítačů nebo šablon Resource Manageru do jiné oblasti. Tento mechanismus převzetí služeb při selhání je nákladově efektivní, ale trvá delší dobu provádět dokončení převzetí služeb při selhání.
+- **Active-passive with cold standby**: In this failover solution, the VMs and other appliances that are running in the standby region are not active until there is a need for failover. However, the production environment is replicated in the form of backups, VM images, or Resource Manager templates, to a different region. This failover mechanism is cost-effective but takes a longer time to undertake a complete failover.
  
-    ![Aktivní/pasivní vysoká dostupnost s pasivním pohotovostním režimem:](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
+    ![Active/Passive with cold standby](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
     
-    *Obrázek – aktivní/pasivní vysoká dostupnost s konfigurace zotavení po havárii studenou pohotovostním režimu*
+    *Figure - Active/Passive with cold standby disaster recovery configuration*
 
-- **Aktivní/pasivní vysoká dostupnost s kontrolka**: V tomto řešení převzetí služeb při selhání pohotovostní prostředí je nastavený s minimální konfigurací. Instalační program obsahuje pouze nezbytné služby spuštěné na podporu pouze náročné a minimální sadu aplikací. V nativním formátu tento scénář můžete provést minimální funkce, ale můžete vertikálně navýšit kapacitu a spustit další služby provést hromadné provozního zatížení, pokud dojde k selhání.
+- **Active/Passive with pilot light**: In this failover solution, the standby environment is set up with a minimal configuration. The setup has only the necessary services running to support only a minimal and critical set of applications. In its native form, this scenario can only execute minimal functionality but can scale up and spawn additional services to take bulk of the production load if a failover occurs.
     
-    ![Aktivní/pasivní vysoká dostupnost s kontrolka](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
+    ![Active/Passive with pilot light](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
-    *Obrázek: Aktivní/pasivní vysoká dostupnost s kontrolka konfigurace zotavení po havárii*
+    *Figure: Active/Passive with pilot light disaster recovery configuration*
 
-- **Aktivní/pasivní vysoká dostupnost s záložním pohotovostním režimu**: V tomto řešení převzetí služeb při selhání pohotovostní oblasti je předem topným zařízením a je připravena vytvořit základní zatížení, automatické škálování je zapnuté a všechny instance jsou spuštěné. Toto řešení není škálovat, aby trvat plného zatížení, ale je funkční, a všechny služby jsou spuštěny. Toto řešení je rozšířená verze kontrolka přístup.
+- **Active/Passive with warm standby**: In this failover solution, the standby region is pre-warmed and is ready to take the base load, auto scaling is turned on, and all the instances are up and running. This solution is not scaled to take the full production load but is functional, and all services are up and running. This solution is an augmented version of the pilot light approach.
     
-    ![Aktivní/pasivní s záložním pohotovostním režimem:](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
+    ![Active/Passive with warm standby](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
-    *Obrázek: Aktivní/pasivní vysoká dostupnost s konfigurace zotavení po havárii záložním pohotovostním režimu*
+    *Figure: Active/Passive with warm standby disaster recovery configuration*
     
-Další informace o vysoké dostupnosti a převzetí služeb při selhání najdete v tématu [zotavení po havárii pro aplikace Azure](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+To learn more about failover and high availability, see [Disaster Recovery for Azure Applications](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 
-## <a name="planning-your-disaster-recovery-architecture"></a>Plánování architektury pro zotavení po havárii
+## <a name="planning-your-disaster-recovery-architecture"></a>Planning your disaster recovery architecture
 
-Existují dva technické aspekty směrem k nastavení architektury pro zotavení po havárii:
--  Pomocí mechanismu nasazení k replikaci mezi prostředími primárního a záložního instancí, dat a konfigurací. Tento typ zotavení po havárii můžete to udělat nativně přes Azure Site-Recovery pomocí služby Microsoft Azure partnerské zařízení nebo jako Veritas nebo NetApp. 
-- Vývoj řešení k rozdělení sítě a webového provozu z primární lokality do pohotovostního lokality. Tento typ zotavení po havárii můžete dosáhnout prostřednictvím Azure DNS, Manager(DNS) provozu Azure nebo nástroje pro vyrovnávání zatížení globálního třetích stran.
+There are two technical aspects towards setting up your disaster recovery architecture:
+-  Using a deployment mechanism to replicate instances, data, and configurations between primary and standby environments. This type of disaster recovery can be done natively via Azure Site-Recovery via Microsoft Azure partner appliances/services like Veritas or NetApp. 
+- Developing a solution to divert network/web traffic from the primary site to the standby site. This type of disaster recovery can be achieved via Azure DNS, Azure Traffic Manager(DNS), or third-party global load balancers.
 
-Tento článek je omezená na přístupy prostřednictvím přesměrování provozu sítě a Web. Pokyny k nastavení Azure Site Recovery najdete v tématu [dokumentace ke službě Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
-DNS je jednou z nejvíce využití efektivních mechanismů k rozdělení síťový provoz, protože DNS je často globální a mimo datové centrum a izolované od jakékoli místní nebo dostupnost zóny (AZ) úrovně chyby. Můžete s použitím mechanismus převzetí služeb při selhání na základě DNS a v Azure, můžete provést dvě služby DNS stejné nějak - Azure DNS (autoritativních DNS) a Azure Traffic Manageru (inteligentního přenosu na základě DNS směrování). 
+This article is limited to approaches via Network and Web traffic redirection. For instructions to set up Azure Site Recovery, see [Azure Site Recovery Documentation](https://docs.microsoft.com/azure/site-recovery/).
+DNS is one of the most efficient mechanisms to divert network traffic because DNS is often global and external to the data center and is insulated from any regional or availability zone (AZ) level failures. One can use a DNS-based failover mechanism and in Azure, two DNS services can accomplish the same in some fashion - Azure DNS (authoritative DNS) and Azure Traffic Manager (DNS-based smart traffic routing). 
 
-Je důležité porozumět několika konceptům ve službě DNS, který se často používají k řešení uvedené v tomto článku:
-- **Záznam DNS** – záznamy jsou ukazatele, které domény přejděte na adresu IPv4. 
-- **Název CNAME nebo Canonical** – tento typ záznamu se používá tak, aby odkazoval na jiný záznam DNS. Záznam CNAME nereaguje IP adresu, ale místo toho je ukazatel na záznam, který obsahuje IP adresu. 
-- **Váha směrování** – lze přidružit váhu do koncových bodů služby a pak distribuovat provoz podle váhy přiřazené. Tuto metodu směrování je jedním z čtyři provoz směrování mechanismy k dispozici v Traffic Manageru. Další informace najdete v tématu [váha směrování metoda](../traffic-manager/traffic-manager-routing-methods.md#weighted).
-- **Priorita směrování** – směrování Priority je založené na kontroly stavu koncových bodů. Ve výchozím nastavení Azure Traffic Manageru odesílá veškerý provoz na nejvyšší prioritního koncového bodu a při selhání nebo havárie, Traffic Manager směruje provoz do sekundárního koncového bodu. Další informace najdete v tématu [metody prioritního směrování](../traffic-manager/traffic-manager-routing-methods.md#priority).
+It is important to understand few concepts in DNS that are extensively used to discuss the solutions provided in this article:
+- **DNS A Record** – A Records are pointers that point a domain to an IPv4 address. 
+- **CNAME or Canonical name** - This record type is used to point to another DNS record. CNAME doesn’t respond with an IP address but rather the pointer to the record that contains the IP address. 
+- **Weighted Routing** – one can choose to associate a weight to service endpoints and then distribute the traffic based on the assigned weights. This routing method is one of the four traffic routing mechanisms available within Traffic Manager. For more information, see [Weighted routing method](../traffic-manager/traffic-manager-routing-methods.md#weighted).
+- **Priority Routing** – Priority routing is based on health checks of endpoints. By default, Azure Traffic manager sends all traffic to the highest priority endpoint, and upon a failure or disaster, Traffic Manager routes the traffic to the secondary endpoint. For more information, see [Priority routing method](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method).
 
-## <a name="manual-failover-using-azure-dns"></a>Ruční převzetí služeb při selhání pomocí Azure DNS
-Řešení Azure DNS ruční převzetí služeb při selhání pro zotavení po havárii využívá standardní mechanismus DNS pro převzetí služeb při selhání k zálohování lokality. Možnost ručně přes Azure DNS je nejvhodnější při použití ve spojení s pasivním pohotovostním režimem nebo kontrolka přístup. 
+## <a name="manual-failover-using-azure-dns"></a>Manual failover using Azure DNS
+The Azure DNS manual failover solution for disaster recovery uses the standard DNS mechanism to failover to the backup site. The manual option via Azure DNS works best when used in conjunction with the cold standby or the pilot light approach. 
 
-![Ruční převzetí služeb při selhání pomocí Azure DNS](./media/disaster-recovery-dns-traffic-manager/manual-failover-using-dns.png)
+![Manual failover using Azure DNS](./media/disaster-recovery-dns-traffic-manager/manual-failover-using-dns.png)
 
-*Obrázek – ruční převzetí služeb při selhání pomocí Azure DNS*
+*Figure - Manual failover using Azure DNS*
 
-Předpoklady pro řešení jsou:
-- Primární a sekundární koncové body mají statické IP adresy, která se často nemění. Dejme tomu, že primární lokalita je IP adresa 100.168.124.44 a 100.168.124.43 se IP adresa pro sekundární lokalitu.
-- Zóny DNS existuje pro primární a sekundární lokality. Dejme tomu, že pro danou primární lokalitu na koncový bod je prod.contoso.com a pro zálohování lokality dr.contoso.com. Záznam DNS pro hlavní aplikaci označuje jako www\.contoso.com také existuje.   
-- Hodnota TTL je v nebo nižší než SLA RTO, nastavte v organizaci. Pokud třeba organizace nastaví RTO s odpověď po havárii aplikace bude 60 minut, a hodnota TTL musí být menší než 60 minut, pokud možno nižší lepší. 
-  Můžete nastavit Azure DNS pro ruční převzetí služeb při selhání následujícím způsobem:
+The assumptions made for the solution are:
+- Both primary and secondary endpoints have static IPs that don’t change often. Say for the primary site the IP is 100.168.124.44 and the IP for the secondary site is 100.168.124.43.
+- An Azure DNS zone exists for both the primary and secondary site. Say for the primary site the endpoint is prod.contoso.com and for the backup site is dr.contoso.com. A DNS record for the main application known as www\.contoso.com also exists.   
+- The TTL is at or below the RTO SLA set in the organization. For example, if an enterprise sets the RTO of the application disaster response to be 60 mins, then the TTL should be less than 60 mins, preferably the lower the better. 
+  You can set up Azure DNS for manual failover as follows:
 - Vytvoření zóny DNS
 - Create DNS zone records
-- Aktualizace záznamu CNAME
+- Update CNAME record
 
-### <a name="step-1-create-a-dns"></a>Krok 1: Vytvoření DNS
-Vytvoření zóny DNS (například www\.contoso.com) jak je znázorněno níže:
+### <a name="step-1-create-a-dns"></a>Step 1: Create a DNS
+Create a DNS zone (for example, www\.contoso.com) as shown below:
 
-![Vytvoření zóny DNS v Azure](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
+![Create a DNS zone in Azure](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
-*Obrázek – vytvoření zóny DNS v Azure*
+*Figure - Create a DNS zone in Azure*
 
-### <a name="step-2-create-dns-zone-records"></a>Krok 2: Create DNS zone records
+### <a name="step-2-create-dns-zone-records"></a>Step 2: Create DNS zone records
 
-V této zóně vytvořte tři záznamy (například - www\.contoso.com, prod.contoso.com a dr.consoto.com) jako dole nezobrazují.
+Within this zone create three records (for example - www\.contoso.com, prod.contoso.com and dr.consoto.com) as show below.
 
 ![Create DNS zone records](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
-*Obrázek – vytvoření záznamů zóny DNS v Azure*
+*Figure - Create DNS zone records in Azure*
 
-V tomto scénáři, web, www\.contoso.com má hodnotu TTL 30 minut, je také níže uvedená RTO, který odkazuje na webu prod.contoso.com produkčního prostředí. Tato konfigurace je během běžné obchodní operace. Hodnota TTL prod.contoso.com a dr.contoso.com je nastavená na 300 sekund nebo 5 minut. Můžete použít monitorování služby, jako je Azure Monitor nebo Azure App Insights Azure nebo partnerského řešení, jako je například Dynatrace monitorování se dá dokonce využít domácí pěstuje řešení, které můžete monitorování nebo zjišťování aplikace nebo selhání virtuální infrastruktury na úrovni.
+In this scenario, site, www\.contoso.com has a TTL of 30 mins, which is well below the stated RTO, and is pointing to the production site prod.contoso.com. This configuration is during normal business operations. The TTL of prod.contoso.com and dr.contoso.com has been set to 300 seconds or 5 mins. You can use an Azure monitoring service such as Azure Monitor or Azure App Insights, or, any partner monitoring solutions such as Dynatrace, You can even use home grown solutions that can monitor or detect application or virtual infrastructure level failures.
 
-### <a name="step-3-update-the-cname-record"></a>Krok 3: Aktualizace záznamu CNAME
+### <a name="step-3-update-the-cname-record"></a>Step 3: Update the CNAME record
 
-Po selhání detekuje, změňte hodnotu záznamu tak, aby odkazoval na dr.contoso.com, jak je znázorněno níže:
+Once failure is detected, change the record value to point to dr.contoso.com as shown below:
        
-![Aktualizace záznamu CNAME](./media/disaster-recovery-dns-traffic-manager/update-cname-record.png)
+![Update CNAME record](./media/disaster-recovery-dns-traffic-manager/update-cname-record.png)
 
-*Obrázek – aktualizace záznam CNAME v Azure*
+*Figure - Update the CNAME record in Azure*
 
-Do 30 minut, během nichž většina překladače aktualizuje soubor v mezipaměti zóny dotazu na www\.contoso.com přesměrováni na dr.contoso.com.
-Můžete také spustit následující příkaz Azure CLI ke změně hodnoty CNAME:
+Within 30 minutes, during which most resolvers will refresh the cached zone file, any query to www\.contoso.com will be redirected to dr.contoso.com.
+You can also run the following Azure CLI command to change the CNAME value:
  ```azurecli
    az network dns record-set cname set-record \
    --resource-group 123 \
@@ -113,63 +113,63 @@ Můžete také spustit následující příkaz Azure CLI ke změně hodnoty CNAM
    --record-set-name www \
    --cname dr.contoso.com
 ```
-Tento krok lze provést ručně nebo pomocí automatizace. To lze provést ručně přes konzolu nebo pomocí rozhraní příkazového řádku Azure. Azure SDK a rozhraní API můžete použít k automatizaci aktualizace CNAME tak, aby není nutný žádný ruční zásah. Automatizaci jde integrovat prostřednictvím Azure functions nebo v rámci monitorování aplikací třetích stran nebo dokonce z místního.
+This step can be executed manually or via automation. It can be done manually via the console or by the Azure CLI. The Azure SDK and API can be used to automate the CNAME update so that no manual intervention is required. Automation can be built via Azure functions or within a third-party monitoring application or even from on- premises.
 
-### <a name="how-manual-failover-works-using-azure-dns"></a>Jak ruční převzetí služeb při selhání funguje používání Azure DNS
-Protože se DNS server mimo pásmo převzetí služeb při selhání nebo havárie, izolována žádné výpadky. To umožňuje uživatelům upravovat architekturu, když tento scénář jednoduchého převzetí služeb při selhání je nákladově efektivní a bude fungovat, všechny čas za předpokladu, že operátor má připojení k síti během po havárii a můžete provést druhou. Pokud je vytvořena řešení, pak jeden musíte zajistit, server nebo služba spuštění skriptu by měl být izolované proti problému by to mělo dopad na produkční prostředí. Také mějte na paměti s nízkou hodnotu TTL, která byla nastavena na zóně tak, aby resolver po celém světě zajišťuje koncového bodu do mezipaměti pro dlouho a zákazníci mají přístup k lokalitě v rámci RTO. Pasivním pohotovostním režimem a světla pilotního projektu protože některé prewarming a další aktivitu správy může být třeba jeden by měl také poskytují dostatek času před provedením druhou.
+### <a name="how-manual-failover-works-using-azure-dns"></a>How manual failover works using Azure DNS
+Since the DNS server is outside the failover or disaster zone, it is insulated against any downtime. This enables user to architect a simple failover scenario that is cost effective and will work all the time assuming that the operator has network connectivity during disaster and can make the flip. If the solution is scripted, then one must ensure that the server or service running the script should be insulated against the problem affecting the production environment. Also, keep in mind the low TTL that was set against the zone so that no resolver around the world keeps the endpoint cached for long and customers can access the site within the RTO. For a cold standby and pilot light, since some prewarming and other administrative activity may be required – one should also give enough time before making the flip.
 
-## <a name="automatic-failover-using-azure-traffic-manager"></a>Automatické převzetí služeb při selhání pomocí Azure Traffic Manageru
-Pokud máte komplexní architektury a více sad prostředků schopný provádět má stejnou funkci, můžete nakonfigurovat Azure Traffic Manageru (podle DNS) zkontrolovat stav svých prostředků a směrovat provoz z prostředku není v pořádku v pořádku prostředek. V následujícím příkladu primární oblasti a sekundární oblasti máte úplné nasazení. Toto nasazení zahrnuje cloudové služby a databáze synchronizované. 
+## <a name="automatic-failover-using-azure-traffic-manager"></a>Automatic failover using Azure Traffic Manager
+When you have complex architectures and multiple sets of resources capable of performing the same function, you can configure Azure Traffic Manager (based on DNS) to check the health of your resources and route the traffic from the non-healthy resource to the healthy resource. In the following example, both the primary region and the secondary region have a full deployment. This deployment includes the cloud services and a synchronized database. 
 
-![Automatické převzetí služeb při selhání pomocí Azure Traffic Manageru](./media/disaster-recovery-dns-traffic-manager/automatic-failover-using-traffic-manager.png)
+![Automatic failover using Azure Traffic Manager](./media/disaster-recovery-dns-traffic-manager/automatic-failover-using-traffic-manager.png)
 
-*Obrázek – automatické převzetí služeb při selhání pomocí Azure Traffic Manageru*
+*Figure - Automatic failover using Azure Traffic Manager*
 
-Jenom primární oblasti se však aktivně zpracování síťových požadavků od uživatelů. Sekundární oblasti stane aktivní, pouze v případě, že primární oblast dojde k přerušení služeb. V takovém případě všechny nové požadavky na sítě směrovat do sekundární oblasti. Od zálohování databáze je téměř okamžité, oba nástroje pro vyrovnávání zatížení mají IP adresy, které mohou být stav zaškrtnutí a instance jsou vždy nahoru a spuštěn, tato topologie poskytuje možnost do toho pustit v nízké RTO a převzetí služeb při selhání bez ručního zásahu. Převzetí služeb při selhání sekundární oblastí musí být připraveny pro uvedení do provozu okamžitě po selhání z primární oblasti.
-Tento scénář je ideální pro použití nástroje Azure Traffic Manageru, který má integrované testy pro různé typy kontrol stavu, včetně protokolu http / https a protokolu TCP. Azure Traffic manager má také stroj pravidel, která lze nakonfigurovat pro převzetí služeb při selhání, když dojde k selhání, jak je popsáno níže. Uvažujme následující řešení pomocí služby Traffic Manager:
-- Zákazník má koncový bod oblasti č. 1 označuje jako prod.contoso.com se statickou IP adresou jako 100.168.124.44 a říká dr.contoso.com se statickou IP adresou jako 100.168.124.43 koncový bod oblasti č. 2. 
--   Každá z těchto prostředí je přední stěnou přes veřejnou vlastnost protilehlé jako nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení můžete nakonfigurovat mít koncový bod na základě DNS nebo použitím plně kvalifikovaného názvu domény (FQDN), jak je znázorněno výše.
--   Všechny instance ve verzi 2 oblasti jsou v téměř v reálném čase replikace s 1 oblast. Kromě toho Image počítačů jsou aktuální a všechna data nebo konfigurace softwaru je opravují se a jsou tato oblast 1.  
--   Automatické škálování je předkonfigurované předem. 
+However, only the primary region is actively handling network requests from the users. The secondary region becomes active only when the primary region experiences a service disruption. In that case, all new network requests route to the secondary region. Since the backup of the database is near instantaneous, both the load balancers have IPs that can be health checked, and the instances are always up and running, this topology provides an option for going in for a low RTO and failover without any manual intervention. The secondary failover region must be ready to go-live immediately after failure of the primary region.
+This scenario is ideal for the use of Azure Traffic Manager that has inbuilt probes for various types of health checks including http / https and TCP. Azure Traffic manager also has a rule engine that can be configured to failover when a failure occurs as described below. Let’s consider the following solution using Traffic Manager:
+- Customer has the Region #1 endpoint known as prod.contoso.com with a static IP as 100.168.124.44 and a Region #2 endpoint known as dr.contoso.com with a static IP as 100.168.124.43. 
+-   Each of these environments is fronted via a public facing property like a load balancer. The load balancer can be configured to have a DNS-based endpoint or a fully qualified domain name (FQDN) as shown above.
+-   All the instances in Region 2 are in near real-time replication with Region 1. Furthermore, the machine images are up-to-date, and all software/configuration data is patched and are in line with Region 1.  
+-   Autoscaling is preconfigured in advance. 
 
-Kroky, chcete-li nakonfigurovat převzetí služeb při selhání pomocí Azure Traffic Manageru jsou následující:
-1. Vytvoření nového profilu Azure Traffic Manageru
-2. Vytváření koncových bodů v rámci profilu Traffic Manageru
-3. Nastavení konfigurace stavu zaškrtnutí a převzetí služeb při selhání
+The steps taken to configure the failover with Azure Traffic Manager are as follows:
+1. Create a new Azure Traffic Manager profile
+2. Create endpoints within the Traffic Manager profile
+3. Set up health check and failover configuration
 
-### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>Krok 1: Vytvoření nového profilu Azure Traffic Manageru
-Vytvoření nového profilu Azure Traffic Manageru s contoso123 název a vyberte metodu směrování jako prioritní. Pokud máte existující skupinu prostředků, kterou chcete přidružit, pak můžete vybrat existující skupinu prostředků, v opačném případě vytvořte novou skupinu prostředků.
+### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>Step 1: Create a new Azure Traffic Manager profile
+Create a new Azure Traffic manager profile with the name contoso123 and select the Routing method as Priority. If you have a pre-existing resource group that you want to associate with, then you can select an existing resource group, otherwise, create a new resource group.
 
-![Vytvořit profil služby Traffic Manager](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
+![Create Traffic Manager profile](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
 
-*Obrázek – vytvoření profilu Traffic Manageru*
+*Figure - Create a Traffic Manager profile*
 
-### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>Krok 2: Vytváření koncových bodů v rámci profilu Traffic Manageru
+### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>Step 2: Create endpoints within the Traffic Manager profile
 
-V tomto kroku vytvoříte koncové body, které přejděte na produkčního prostředí a servery pro zotavení po havárii. Tady, zvolte **typ** jako externí koncový bod, ale pokud prostředek je hostované v Azure, pak se můžete rozhodnout **koncový bod Azure** také. Pokud se rozhodnete **koncový bod Azure**a pak **cílový prostředek** , který je buď **služby App Service** nebo **veřejnou IP adresu** , která je přidělena Azure. Priorita je nastavena jako **1** protože jde o primární služeb pro oblast 1.
-Podobně vytvořte po havárii obnovení koncový bod v Traffic Manageru také.
+In this step, you create endpoints that point to the production and disaster recovery sites. Here, choose the **Type** as an external endpoint, but if the resource is hosted in Azure, then you can choose **Azure endpoint** as well. If you choose **Azure endpoint**, then select a **Target resource** that is either an **App Service** or a **Public IP** that is allocated by Azure. The priority is set as **1** since it is the primary service for Region 1.
+Similarly, create the disaster recovery endpoint within Traffic Manager as well.
 
-![Vytvořit koncové body obnovení po havárii](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
+![Create disaster recovery endpoints](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
 
-*Obrázek – vytvoření koncových bodů pro zotavení po havárii*
+*Figure - Create disaster recovery endpoints*
 
-### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Krok 3: Nastavení konfigurace stavu zaškrtnutí a převzetí služeb při selhání
+### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Step 3: Set up health check and failover configuration
 
-V tomto kroku nastavíte hodnotu TTL pro DNS na 10 sekund, což je respektovat většina rekurzivní překladače přístupem k Internetu. Tato konfigurace znamená, že žádné překladače DNS bude ukládat do mezipaměti informace o více než 10 sekund. Nastavení monitorování koncového bodu, cesta je v aktuální sadě / nebo kořenový, ale můžete přizpůsobit nastavení koncového bodu se vyhodnotit cestu, například prod.contoso.com/index. Na příkladu níže **https** jako protokol pro zjišťování. Ale můžete zvolit **http** nebo **tcp** také. Výběr protokolu závisí na ukončení aplikace. Zjišťování interval je nastavený na 10 sekund, což umožňuje rychlé zjišťování a opakování je nastavena na hodnotu 3. V důsledku toho Traffic Manageru se převzetí služeb při selhání do druhého koncového bodu případě tří po sobě jdoucích intervalech zaregistrovat k chybě. Tento vzorec definuje celkový čas automatické převzetí služeb při selhání: Čas pro převzetí služeb při selhání = TTL + opakujte * interval zjišťování a v takovém případě hodnota je 10 + 3 * 10 = 40 sekund (Max.).
-Pokud se nový pokus je nastavena na 1 a hodnota TTL je nastavena na 10 sekund, potom čas pro převzetí služeb při selhání 10 + 1 * 10 = 20 sekund. Nastavení opakování na hodnotu větší než **1** eliminovat riziko převzetí služeb při selhání z důvodu počet falešně pozitivních výsledků nebo jakékoli blips menší sítě. 
+In this step, you set the DNS TTL to 10 seconds, which is honored by most internet-facing recursive resolvers. This configuration means that no DNS resolver will cache the information for more than 10 seconds. For the endpoint monitor settings, the path is current set at / or root, but you can customize the endpoint settings to evaluate a path, for example, prod.contoso.com/index. The example below shows the **https** as the probing protocol. However, you can choose **http** or **tcp** as well. The choice of protocol depends upon the end application. The probing interval is set to 10 seconds, which enables fast probing, and the retry is set to 3. As a result, Traffic Manager will failover to the second endpoint if three consecutive intervals register a failure. The following formula defines the total time for an automated failover: Time for failover = TTL + Retry * Probing interval And in this case, the value is 10 + 3 * 10 = 40 seconds (Max).
+If the Retry is set to 1 and TTL is set to 10 secs, then the time for failover 10 + 1 * 10 = 20 seconds. Set the Retry to a value greater than **1** to eliminate chances of failovers due to false positives or any minor network blips. 
 
 
-![Nastavení kontroly stavu](./media/disaster-recovery-dns-traffic-manager/set-up-health-check.png)
+![Set up health check](./media/disaster-recovery-dns-traffic-manager/set-up-health-check.png)
 
-*Obrázek – nastavení konfigurace stavu zaškrtnutí a převzetí služeb při selhání*
+*Figure - Set up health check and failover configuration*
 
-### <a name="how-automatic-failover-works-using-traffic-manager"></a>Funkce automatické převzetí služeb při selhání funguje pomocí Traffic Manageru
+### <a name="how-automatic-failover-works-using-traffic-manager"></a>How automatic failover works using Traffic Manager
 
-Při havárii, získá otestovaná primárního koncového bodu a stav se změní na **degradovaný** a zůstává lokalita zotavení po havárii **Online**. Ve výchozím nastavení Traffic Manageru odesílá veškerý provoz na primární koncový bod (nejvyšší priorita). Pokud primární koncový bod se zobrazí v degradovaném stavu, Traffic Manageru směruje provoz druhý za předpokladu, zůstane v dobrém stavu. Jeden má možnost konfigurovat více koncových bodů v Traffic Manageru, které může sloužit jako koncové body další převzetí služeb při selhání nebo jako nástroje pro vyrovnávání zatížení mezi koncovými body sdílení zatížení.
+During a disaster, the primary endpoint gets probed and the status changes to **degraded** and the disaster recovery site remains **Online**. By default, Traffic Manager sends all traffic to the primary (highest-priority) endpoint. If the primary endpoint appears degraded, Traffic Manager routes the traffic to the second endpoint as long as it remains healthy. One has the option to configure more endpoints within Traffic Manager that can serve as additional failover endpoints, or, as load balancers sharing the load between endpoints.
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).
-- Další informace o [Azure DNS](../dns/dns-overview.md).
+## <a name="next-steps"></a>Další kroky
+- Learn more about [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).
+- Learn more about [Azure DNS](../dns/dns-overview.md).
 
 
 

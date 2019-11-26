@@ -4,12 +4,12 @@ description: Naučte se vytvářet funkce služby Azure Functions běžící na 
 ms.date: 09/27/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5365e788f5f277bdcfdd1add56b401976dc39c5f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7bf079f84978539735f3bbf5bb13b18130871fb1
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230757"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484383"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Create a function on Linux using a custom image
 
@@ -32,7 +32,6 @@ V tomto kurzu se naučíte:
 > * Enable continuous deployment.
 > * Enable SSH connections to the container.
 > * Add a Queue storage output binding. 
-> * Add Application Insights monitoring.
 
 Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux. 
 

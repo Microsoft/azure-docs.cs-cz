@@ -1,6 +1,6 @@
 ---
-title: Export aplikace Azure IoT Central | Microsoft Docs
-description: Jako správce řešení bych chtěl Exportovat šablonu aplikace, aby ji bylo možné znovu použít.
+title: Export an Azure IoT Central application | Microsoft Docs
+description: As a solution manager, I want to export an application template to be able to reuse it.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/17/2019
@@ -8,89 +8,95 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 81e24712de186e2d5ec03e33ecabe485cc0d9f31
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0edc1a7e470b7f0f3773b69635bbc26ab4d283b3
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894757"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480370"
 ---
-# <a name="export-your-application-preview-features"></a>Export aplikace (funkce verze Preview)
+# <a name="export-your-application-preview-features"></a>Export your application (preview features)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Tento článek popisuje, jak jako správce řešení exportovat aplikaci IoT Central, aby ji bylo možné znovu použít.
+This article describes how, as a solution manager, to export an IoT Central application to be able to reuse it.
 
 Máte dvě možnosti:
 
-- Můžete vytvořit kopii aplikace, pokud potřebujete pouze vytvořit duplicitní kopii vaší aplikace.
-- Můžete vytvořit šablonu aplikace z aplikace, pokud plánujete vytvořit více kopií.
+- You can create a copy of your application if you just need to create a duplicate copy of your application.
+- You can create an application template from your application if you plan to create multiple copies.
 
-## <a name="copy-your-application"></a>Zkopírování aplikace
+## <a name="copy-your-application"></a>Copy your application
 
-Můžete vytvořit kopii libovolné aplikace, mínus instance zařízení, historii dat zařízení a uživatelská data. Kopie je aplikace s průběžnými platbami, za kterou se vám bude účtovat. Nemůžete vytvořit zkušební aplikaci zkopírováním aplikace.
+You can create a copy of any application, minus any device instances, device data history, and user data. The copy is a Pay-As-You-Go application that you'll be charged for. You can't create a Trial application by copying an application.
 
-Vyberte **Kopírovat**. Do dialogového okna zadejte podrobnosti nové aplikace s průběžnými platbami. Pak vyberte **Kopírovat** a potvrďte, že chcete pokračovat. Další informace o polích ve formuláři najdete v rychlém startu [Vytvoření aplikace](quick-deploy-iot-central.md) .
+Select **Copy**. In the dialog box, enter the details for the new Pay-As-You-Go application. Then select **Copy** to confirm that you want to continue. To learn more about the fields in the form, see the [Create an application](quick-deploy-iot-central.md) quickstart.
 
-![Stránka nastavení aplikace](media/howto-use-app-templates/appcopy2.png)
+> [!NOTE]
+> You can **Copy your application** to **Europe** and **US** locations only.
 
-Po úspěšném dokončení operace kopírování aplikace můžete přejít k nové aplikaci pomocí odkazu.
+![Application settings page](media/howto-use-app-templates/appcopy2.png)
 
-![Stránka nastavení aplikace](media/howto-use-app-templates/appcopy3a.png)
+After the app copy operation succeeds, you can navigate to the new application using the link.
 
-Zkopírováním aplikace se také zkopírují definice pravidel a e-mailové akce. Některé akce, jako je například Flow a Logic Apps, jsou vázány na konkrétní pravidla prostřednictvím ID pravidla. Když se pravidlo zkopíruje do jiné aplikace, získá ID vlastního pravidla. V takovém případě budou muset uživatelé vytvořit novou akci a pak k ní přidružit nové pravidlo. Obecně je vhodné zkontrolovat pravidla a akce, abyste se ujistili, že jsou v nové aplikaci aktuální.
+![Application settings page](media/howto-use-app-templates/appcopy3a.png)
 
-> [!WARNING]
-> Pokud řídicí panel obsahuje dlaždice, které zobrazují informace o konkrétních zařízeních, pak tyto dlaždice ukázaly, že **požadovaný prostředek** nebyl v nové aplikaci nalezen. Aby bylo možné zobrazit informace o zařízeních v nové aplikaci, je nutné tyto dlaždice znovu nakonfigurovat.
-
-## <a name="create-an-application-template"></a>Vytvoření šablony aplikace
-
-Když vytváříte aplikaci Azure IoT Central, máte možnost zvolit si předdefinované vzorové šablony. Můžete také vytvořit vlastní šablony aplikací z existujících aplikací IoT Central. Když vytváříte nové aplikace, můžete použít vlastní šablony aplikací.
-
-Když vytváříte šablonu aplikace, zahrnuje následující položky z vaší existující aplikace:
-
-- Výchozí řídicí panel aplikace, včetně rozložení řídicího panelu a všech dlaždic, které jste definovali.
-- Šablony zařízení, včetně měření, nastavení, vlastností, příkazů a řídicího panelu.
-- Pravidly. Jsou zahrnuty všechny definice pravidel. Akce, s výjimkou e-mailových akcí, ale nejsou zahrnuté.
-- Sady zařízení, včetně jejich podmínek a řídicích panelů.
+Copying an application also copies the definition of rules and email action. Some actions, such as Flow and  Logic Apps, are tied to specific rules via the Rule ID. When a rule is copied to a different application, it gets its own Rule ID. In this case, users will have to create a new action and then associate the new rule with it. In general, it's a good idea to check the rules and actions to make sure they're up-to-date in the new app.
 
 > [!WARNING]
-> Pokud řídicí panel obsahuje dlaždice, které zobrazují informace o konkrétních zařízeních, pak tyto dlaždice ukázaly, že **požadovaný prostředek** nebyl v nové aplikaci nalezen. Aby bylo možné zobrazit informace o zařízeních v nové aplikaci, je nutné tyto dlaždice znovu nakonfigurovat.
+> If a dashboard includes tiles that display information about specific devices, then those tiles show **The requested resource was not found** in the new application. You must reconfigure these tiles to display information about devices in your new application.
 
-Když vytvoříte šablonu aplikace, nezahrnuje následující položky:
+## <a name="create-an-application-template"></a>Create an application template
+
+When you create an Azure IoT Central application, you have a choice of built-in sample templates. You can also create your own application templates from existing IoT Central applications. You can then use your own application templates when you create new applications.
+
+When you create an application template, it includes the following items from your existing application:
+
+- The default application dashboard, including the dashboard layout and all the tiles you've defined.
+- Device templates, including measurements, settings, properties, commands, and dashboard.
+- Rules. All rule definitions are included. However actions, except for email actions, aren't included.
+- Device sets, including their conditions and dashboards.
+
+> [!WARNING]
+> If a dashboard includes tiles that display information about specific devices, then those tiles show **The requested resource was not found** in the new application. You must reconfigure these tiles to display information about devices in your new application.
+
+When you create an application template, it doesn't include the following items:
 
 - Zařízení
 - Uživatelé
-- Definice úloh
-- Průběžné definice exportu dat
+- Job definitions
+- Continuous data export definitions
 
-Přidejte tyto položky ručně do všech aplikací vytvořených z šablony aplikace.
+Add these items manually to any applications created from an application template.
 
-Vytvoření šablony aplikace z existující aplikace IoT Central:
+To create an application template from an existing IoT Central application:
 
-1. V aplikaci přejdete do části **Správa** .
-1. Vyberte **Exportovat šablonu aplikace**.
-1. Na stránce **Export šablony aplikace** zadejte název a popis šablony.
-1. Chcete-li vytvořit šablonu aplikace, vyberte tlačítko **exportovat** . Nyní můžete zkopírovat odkaz umožňující **sdílení** , který někomu umožňuje vytvořit novou aplikaci ze šablony:
+1. Go to the **Administration** section in your application.
+1. Select **Application Template Export**.
+1. On the **Application Template Export** page, enter a name and description for your template.
+1. Select the **Export** button to create the application template. You can now copy the **Shareable Link** that enables someone to create a new application from the template:
 
-![Vytvoření šablony aplikace](media/howto-use-app-templates/create-template.png)
+![Create an application template](media/howto-use-app-templates/create-template.png)
 
-### <a name="use-an-application-template"></a>Použití šablony aplikace
+### <a name="use-an-application-template"></a>Use an application template
 
-Chcete-li použít šablonu aplikace k vytvoření nové aplikace IoT Central, budete potřebovat dříve vytvořený **odkaz Shared**. Do adresního řádku prohlížeče vložte **odkaz Shared** . Zobrazí se stránka **vytvořit aplikaci** s vybranou šablonou vlastní aplikace:
+To use an application template to create a new IoT Central application, you need a previously created **Shareable Link**. Paste the **Shareable Link** into your browser's address bar. The **Create an application** page displays with your custom application template selected:
 
-![Vytvoření aplikace ze šablony](media/howto-use-app-templates/create-app.png)
+![Create an application from a template](media/howto-use-app-templates/create-app.png)
 
-Vyberte svůj platební plán a vyplňte další pole ve formuláři. Pak vyberte **vytvořit** a vytvořte novou IoT Central aplikaci z šablony aplikace.
+Select your payment plan and fill out the other fields on the form. Then select **Create** to create a new IoT Central application from the application template.
 
-### <a name="manage-application-templates"></a>Správa šablon aplikací
+> [!NOTE]
+> When an application is created using **Shareable Link** the available locations are **Europe** and **US**.
 
-Na stránce **Export šablony aplikace** můžete šablonu aplikace odstranit nebo aktualizovat.
+### <a name="manage-application-templates"></a>Manage application templates
 
-Pokud šablonu aplikace odstraníte, nebudete už k vytváření nových aplikací používat dříve vygenerovaný odkaz s možnostmi sdílení.
+On the **Application Template Export** page, you can delete or update the application template.
 
-Chcete-li aktualizovat šablonu aplikace, změňte název šablony nebo popis na stránce pro **Export šablony aplikace** . Pak znovu vyberte tlačítko **exportovat** . Tato akce vygeneruje nový **odkaz Shared** a zruší platnost všech předchozích adres URL **odkazu pro sdílení** .
+If you delete an application template, you can no longer use the previously generated shareable link to create new applications.
+
+To update your application template, change the template name or description on the **Application Template Export** page. Then select the **Export** button again. This action generates a new **Shareable link** and invalidates any previous **Shareable link** URL.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se seznámili s použitím šablon aplikací, je navržený další krok, kde se dozvíte, jak [spravovat IoT Central z Azure Portal](../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)
+Now that you've learned how to use application templates, the suggested next step is to learn how to [Manage IoT Central from the Azure portal](../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)

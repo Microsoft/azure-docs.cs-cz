@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření profilu pro HA aplikací – Azure Portal – Azure Traffic Manager'
+title: Quickstart:Create a profile for HA of applications - Azure portal - Azure Traffic Manager
 description: Tento článek Rychlý start popisuje, jak vytvořit profil služby Traffic Manager umožňující vytváření vysoce dostupných webových aplikací.
 services: traffic-manager
 author: asudbring
@@ -12,138 +12,138 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: allensu
-ms.openlocfilehash: b6a015c7462f082d5114a51d83cfacb0c550b026
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b2163b76dc3a301359cf3474789c5b473f9e4552
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032701"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483671"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Rychlý Start: vytvoření profilu Traffic Manager pomocí Azure Portal
+# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Quickstart: Create a Traffic Manager profile using the Azure portal
 
-V tomto rychlém startu se dozvíte, jak vytvořit profil Traffic Manager, který poskytuje vysokou dostupnost vaší webové aplikace.
+This quickstart describes how to create a Traffic Manager profile that delivers high availability for your web application.
 
-V tomto rychlém startu si přečtete o dvou instancích webové aplikace. Každý z nich je spuštěný v jiné oblasti Azure. Vytvoříte profil Traffic Manager na základě [priority koncového bodu](traffic-manager-routing-methods.md#priority). Profil směruje uživatelský provoz do primární lokality, na které běží webová aplikace. Traffic Manager nepřetržitě monitoruje webovou aplikaci. Pokud primární lokalita není k dispozici, poskytuje automatické převzetí služeb při selhání pro záložní lokalitu.
+In this quickstart, you'll read about two instances of a web application. Each of them is running in a different Azure region. You'll create a Traffic Manager profile based on [endpoint priority](traffic-manager-routing-methods.md#priority-traffic-routing-method). The profile directs user traffic to the primary site running the web application. Traffic Manager continuously monitors the web application. If the primary site is unavailable, it provides automatic failover to the backup site.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlásit se na [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro účely tohoto rychlého startu budete potřebovat dvě instance webové aplikace nasazené ve dvou různých oblastech Azure (*východní USA* a *západní Evropa*). Každý bude sloužit jako primární koncová body a koncové body převzetí služeb při selhání pro Traffic Manager
+For this quickstart, you'll need two instances of a web application deployed in two different Azure regions (*East US* and *West Europe*). Each will serve as primary and failover endpoints for Traffic Manager.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > webové **aplikace** **Webová** > .
+1. On the upper-left side of the screen, select **Create a resource** > **Web** > **Web App**.
 
-1. V části **vytvořit webovou aplikaci**zadejte nebo vyberte následující hodnoty na kartě **základy** :
+1. In **Create a Web App**, type or select the following values in the **Basics** tab:
 
-   - **Předplatné** > **skupinu prostředků**: vyberte **vytvořit novou** a potom zadejte **myResourceGroupTM1**.
-   - **Podrobnosti Instance** > **název**: zadejte *myWebAppEastUS*.
-   - **Podrobnosti Instance** > **publikovat**: vyberte **kód**.
-   - **Podrobnosti Instance** > **zásobník modulu Runtime**: vyberte **ASP.NET v 4.7** .
-   - **Podrobnosti Instance** > **operační systém**: vyberte **Windows**.
-   - **Podrobnosti Instance** > **oblasti**: vyberte **východní USA**.
-   - **Plán App Service** > **Windows Plan (východní USA)** : vyberte **vytvořit novou** a potom zadejte **myAppServicePlanEastUS** .
-   - **Plán App Service** > **skladovou položku a velikost**: vyberte **standardní S1**.
+   - **Subscription** > **Resource Group**: Select **Create new** and then type **myResourceGroupTM1**.
+   - **Instance Details** > **Name**: Type *myWebAppEastUS*.
+   - **Instance Details** > **Publish**: Select **Code**.
+   - **Instance Details** > **Runtime stack**: Select **ASP.NET V4.7**
+   - **Instance Details** > **Operating System**: Select **Windows**.
+   - **Instance Details** > **Region**:  Select **East US**.
+   - **App Service Plan** > **Windows Plan (East US)** : Select **Create new** and then type **myAppServicePlanEastUS**
+   - **App Service Plan** > **Sku and size**: Select **Standard S1**.
    
-3. Vyberte kartu **monitorování** nebo vyberte **Další: monitorování**.  V části **monitorování**nastavte **Application Insights** > **Povolit Application Insights** na **ne**.
+3. Select the **Monitoring** tab, or select **Next:Monitoring**.  Under **Monitoring**, set **Application Insights** > **Enable Application Insights** to **No**.
 
-4. Vybrat **kontrolu a vytvořit**
+4. Select **Review and create**
 
-5. Zkontrolujte nastavení a klikněte na **vytvořit**.  Po úspěšném nasazení webové aplikace se vytvoří výchozí web.
+5. Review the settings, and then click **Create**.  When the Web App successfully deploys, it creates a default web site.
 
-6. Postupujte podle pokynů k vytvoření druhé webové aplikace s názvem *myWebAppWestEurope*s názvem **skupiny prostředků** *myResourceGroupTM2*, **oblastí** *západní Evropa*, názvem **App Service plánu** **myAppServicePlanWestEurope**a všemi ostatními nastaveními stejnými jako *myWebAppEastUS*.
+6. Follow the steps to create a second Web App named *myWebAppWestEurope*, with a **Resource Group** name of *myResourceGroupTM2*, a **Region** of *West Europe*, a **App Service Plan** name of **myAppServicePlanWestEurope**, and all the other settings the same as *myWebAppEastUS*.
 
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 
-Vytvořte profil Traffic Manager, který přesměruje přenosy uživatelů na základě priority koncových bodů.
+Create a Traffic Manager profile that directs user traffic based on endpoint priority.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **Traffic Manager profil**.
-2. V **profilu vytvořit Traffic Manager**zadejte nebo vyberte Tato nastavení:
+1. On the upper-left side of the screen, select **Create a resource** > **Networking** > **Traffic Manager profile**.
+2. In the **Create Traffic Manager profile**, enter, or select these settings:
 
     | Nastavení | Hodnota |
     | --------| ----- |
-    | Název | Zadejte jedinečný název profilu Traffic Manager.|
-    | Metoda směrování | Vyberte **Priorita**.|
-    | Předplatné | Vyberte předplatné, pro které chcete profil Traffic Manageru použít. |
-    | Skupina prostředků | Vyberte *myResourceGroupTM1*.|
-    | Umístění |Toto nastavení odkazuje na umístění skupiny prostředků. Nemá žádný vliv na profil Traffic Manager, který se globálně nasadí.|
+    | Name (Název) | Enter a unique name for your Traffic Manager profile.|
+    | Metoda směrování | Select **Priority**.|
+    | Předplatné | Select the subscription you want the traffic manager profile applied to. |
+    | Skupina prostředků | Select *myResourceGroupTM1*.|
+    | Umístění |This setting refers to the location of the resource group. It has no effect on the Traffic Manager profile that will be deployed globally.|
 
-3. Vyberte **Vytvořit**.
+3. Vyberte **Create** (Vytvořit).
 
 ## <a name="add-traffic-manager-endpoints"></a>Přidání koncových bodů služby Traffic Manager
 
-Přidejte web v oblasti *USA – východ* jako primární koncový bod, do kterého se bude směrovat veškerý provoz uživatelů. Přidejte web do *západní Evropa* jako koncový bod převzetí služeb při selhání. Když je primární koncový bod nedostupný, provoz se automaticky směruje na koncový bod převzetí služeb při selhání.
+Přidejte web v oblasti *USA – východ* jako primární koncový bod, do kterého se bude směrovat veškerý provoz uživatelů. Add the website in *West Europe* as a failover endpoint. When the primary endpoint is unavailable, traffic automatically routes to the failover endpoint.
 
-1. Na panelu hledání na portálu zadejte název profilu Traffic Manager, který jste vytvořili v předchozí části.
-2. Vyberte profil z výsledků hledání.
-3. V **Traffic Manager profil**v části **Nastavení** vyberte **koncové body**a pak vyberte **Přidat**.
-4. Zadejte nebo vyberte Tato nastavení:
+1. In the portal's search bar, enter the Traffic Manager profile name that you created in the preceding section.
+2. Select the profile from the search results.
+3. In **Traffic Manager profile**, in the **Settings** section, select **Endpoints**, and then select **Add**.
+4. Enter, or select, these settings:
 
     | Nastavení | Hodnota |
     | ------- | ------|
-    | Typ | Vyberte **koncový bod Azure**. |
-    | Název | Zadejte *myPrimaryEndpoint*. |
-    | Typ cílového prostředku | Vyberte **App Service**. |
-    | Cílový prostředek | Vyberte možnost **zvolit > App service** **východní USA**. |
-    | Priorita | Vyberte **1**. Veškerý provoz směřuje do tohoto koncového bodu, pokud je v pořádku. |
+    | Typ | Select **Azure endpoint**. |
+    | Name (Název) | Enter *myPrimaryEndpoint*. |
+    | Typ cílového prostředku | Select **App Service**. |
+    | Cílový prostředek | Select **Choose an app service** > **East US**. |
+    | Priorita | Vyberte **1**. All traffic goes to this endpoint when it's healthy. |
 
-    ![Snímek obrazovky s přidáním koncového bodu do profilu Traffic Manager.](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
+    ![Screenshot of where you add an endpoint to your Traffic Manager profile.](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
 
 5. Vyberte **OK**.
-6. Pokud chcete pro druhou oblast Azure vytvořit koncový bod převzetí služeb při selhání, opakujte kroky 3 a 4 s těmito nastaveními:
+6. To create a failover endpoint for your second Azure region, repeat steps 3 and 4 with these settings:
 
     | Nastavení | Hodnota |
     | ------- | ------|
-    | Typ | Vyberte **koncový bod Azure**. |
-    | Název | Zadejte *myFailoverEndpoint*. |
-    | Typ cílového prostředku | Vyberte **App Service**. |
-    | Cílový prostředek | Vyberte možnost **zvolit > App service** **západní Evropa**. |
-    | Priorita | Vyberte **2**. Veškerý provoz přechází na tento koncový bod převzetí služeb při selhání, pokud primární koncový bod není v pořádku. |
+    | Typ | Select **Azure endpoint**. |
+    | Name (Název) | Enter *myFailoverEndpoint*. |
+    | Typ cílového prostředku | Select **App Service**. |
+    | Cílový prostředek | Select **Choose an app service** > **West Europe**. |
+    | Priorita | Select **2**. All traffic goes to this failover endpoint if the primary endpoint is unhealthy. |
 
 7. Vyberte **OK**.
 
-Až dokončíte přidávání těchto dvou koncových bodů, zobrazí se v **profilu Traffic Manager**. Všimněte si, že stav monitorování je nyní **online** .
+When you're done adding the two endpoints, they're displayed in **Traffic Manager profile**. Notice that their monitoring status is **Online** now.
 
 ## <a name="test-traffic-manager-profile"></a>Test profilu služby Traffic Manager
 
-V této části zkontrolujete název domény vašeho profilu Traffic Manager. Také nakonfigurujete primární koncový bod jako nedostupný. Nakonec se zobrazí, že je webová aplikace stále k dispozici. Je to proto, že Traffic Manager odesílá provoz do koncového bodu převzetí služeb při selhání.
+In this section, you'll check the domain name of your Traffic Manager profile. You'll also configure the primary endpoint to be unavailable. Finally, you get to see that the web app is still available. It's because Traffic Manager sends the traffic to the failover endpoint.
 
-### <a name="check-the-dns-name"></a>Ověřte název DNS.
+### <a name="check-the-dns-name"></a>Check the DNS name
 
 1. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který jste vytvořili v předchozí části.
-2. Vyberte profil Traffic Manageru. Zobrazí se **Přehled** .
+2. Select the traffic manager profile. The **Overview** appears.
 3. V části **Profil služby Traffic Manager** se zobrazí název DNS nově vytvořeného profilu služby Traffic Manager.
   
-   ![Snímek obrazovky s umístěním názvu Traffic Manager DNS](./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png)
+   ![Screenshot of the location of your Traffic Manager DNS name](./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png)
 
 ### <a name="view-traffic-manager-in-action"></a>Zobrazení služby Traffic Manager v akci
 
-1. Ve webovém prohlížeči zadejte název DNS profilu Traffic Manager pro zobrazení výchozího webu webové aplikace.
+1. In a web browser, enter the DNS name of your Traffic Manager profile to view your Web App's default website.
 
     > [!NOTE]
-    > V tomto scénáři rychlého startu všechny požadavky směrují do primárního koncového bodu. Je nastavená na **priority 1**.
+    > In this quickstart scenario, all requests route to the primary endpoint. It is set to **Priority 1**.
 
-    ![Snímek webové stránky s potvrzením dostupnosti profilu Traffic Manager](./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png)
+    ![Screenshot of the webpage to confirm availability of Traffic Manager profile](./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png)
 
-2. Pokud chcete zobrazit Traffic Manager převzetí služeb při selhání v akci, zakažte svoji primární lokalitu:
-    1. Na stránce Traffic Manager profil vyberte v části **Přehled** možnost **myPrimaryEndpoint**.
-    2. V *myPrimaryEndpoint*vyberte **zakázáno** > **Uložit**.
-    3. Zavřete **myPrimaryEndpoint**. Všimněte si, že stav je teď **zakázaný** .
-3. Zkopírujte název DNS profilu Traffic Manager z předchozího kroku a zobrazte si web v nové relaci webového prohlížeče.
-4. Ověřte, zda je webová aplikace stále k dispozici.
+2. To view Traffic Manager failover in action, disable your primary site:
+    1. In the Traffic Manager Profile page, from the **Overview** section, select **myPrimaryEndpoint**.
+    2. In *myPrimaryEndpoint*, select **Disabled** > **Save**.
+    3. Close **myPrimaryEndpoint**. Notice that the status is **Disabled** now.
+3. Copy the DNS name of your Traffic Manager Profile from the preceding step to view the website in a new web browser session.
+4. Verify that the web app is still available.
 
-Primární koncový bod není k dispozici, takže jste byli přesměrováni na koncový bod převzetí služeb při selhání.
+The primary endpoint isn't available, so you were routed to the failover endpoint.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete hotovi, odstraňte skupiny prostředků, webové aplikace a všechny související prostředky. Provedete to tak, že na řídicím panelu vyberete každou jednotlivou položku a v horní části každé stránky vyberete **Odstranit** .
+When you're done, delete the resource groups, web applications, and all related resources. To do so, select each individual item from your dashboard and select **Delete** at the top of each page.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili profil Traffic Manager. Umožňuje směrovat uživatelský provoz pro webové aplikace s vysokou dostupností. Pokud se chcete dozvědět víc o provozu směrování, přejděte k Traffic Manager kurzům.
+In this quickstart, you created a Traffic Manager profile. It allows you to direct user traffic for high-availability web applications. To learn more about routing traffic, continue to the Traffic Manager tutorials.
 
 > [!div class="nextstepaction"]
 > [Kurzy pro službu Traffic Manager](tutorial-traffic-manager-improve-website-response.md)

@@ -1,103 +1,98 @@
 ---
-title: Azure Container Instances skupiny kontejnerů
-description: Seznamte se se skupinami kontejnerů v Azure Container Instances, kolekci instancí, které sdílejí životní cyklus a prostředky, jako je například úložiště a síť.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Introduction to container groups
+description: Learn about container groups in Azure Container Instances, a collection of instances that share a lifecycle and resources such as storage and network
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: ef6745e18a0df3ee0a572f106d1507d0fca32ac2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9fbf9fea7da0896ee6c0e248d18e18d52798fbd7
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150206"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482113"
 ---
-# <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure Container Instances
+# <a name="container-groups-in-azure-container-instances"></a>Container groups in Azure Container Instances
 
-Prostředek nejvyšší úrovně v Azure Container Instances je *Skupina kontejnerů*. Tento článek popisuje, co jsou skupiny kontejnerů a typy scénářů, které povolují.
+The top-level resource in Azure Container Instances is the *container group*. This article describes what container groups are and the types of scenarios they enable.
 
-## <a name="what-is-a-container-group"></a>Co je skupina kontejnerů?
+## <a name="what-is-a-container-group"></a>What is a container group?
 
-Skupina kontejnerů je kolekce kontejnerů, které se naplánovaly na stejném hostitelském počítači. Kontejnery ve skupině kontejnerů sdílejí životní cyklus, prostředky, místní síť a svazky úložiště. V [Kubernetes][kubernetes-pod]je to v konceptu podobné jako *pod* .
+A container group is a collection of containers that get scheduled on the same host machine. The containers in a container group share a lifecycle, resources, local network, and storage volumes. It's similar in concept to a *pod* in [Kubernetes][kubernetes-pod].
 
-Následující diagram znázorňuje příklad skupiny kontejnerů, která obsahuje více kontejnerů:
+The following diagram shows an example of a container group that includes multiple containers:
 
-![Diagram skupin kontejneru][container-groups-example]
+![Container groups diagram][container-groups-example]
 
-Tato ukázková skupina kontejnerů:
+This example container group:
 
-* Je naplánován na jednom hostitelském počítači.
-* Má přiřazený popisek názvu DNS.
-* Zveřejňuje jednu veřejnou IP adresu s jedním vystaveným portem.
-* Se skládá ze dvou kontejnerů. Jeden kontejner naslouchá na portu 80, zatímco druhý naslouchá na portu 5000.
-* Zahrnuje dvě sdílené složky Azure jako připojení svazku a každý kontejner připojí jednu z těchto sdílených složek místně.
+* Is scheduled on a single host machine.
+* Is assigned a DNS name label.
+* Exposes a single public IP address, with one exposed port.
+* Consists of two containers. One container listens on port 80, while the other listens on port 5000.
+* Includes two Azure file shares as volume mounts, and each container mounts one of the shares locally.
 
 > [!NOTE]
-> Skupiny více kontejnerů aktuálně podporují pouze kontejnery Linux. V případě kontejnerů Windows podporuje Azure Container Instances jenom nasazení jedné instance. Pracujeme na tom, abychom do kontejnerů Windows provedli všechny funkce. v [přehledu](container-instances-overview.md#linux-and-windows-containers)služeb můžete najít aktuální rozdíly v platformách.
+> Multi-container groups currently support only Linux containers. For Windows containers, Azure Container Instances only supports deployment of a single instance. While we are working to bring all features to Windows containers, you can find current platform differences in the service [Overview](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="deployment"></a>Nasazení
 
-Tady jsou dva běžné způsoby, jak nasadit skupinu s více kontejnery: použijte [šablonu správce prostředků][resource-manager template] nebo [soubor YAML][yaml-file]. Když při nasazování instancí kontejnerů potřebujete nasadit další prostředky služby Azure (například [sdílenou složku Azure Files][azure-files]), doporučuje se šablona správce prostředků. Vzhledem k výstižnější povaze formátu YAML se doporučuje soubor YAML, pokud nasazení zahrnuje jenom instance kontejnerů. Podrobnosti o vlastnostech, které lze nastavit, naleznete v tématu [Správce prostředků odkaz na šablonu](/azure/templates/microsoft.containerinstance/containergroups) nebo v referenční dokumentaci k [YAML](container-instances-reference-yaml.md) .
+Here are two common ways to deploy a multi-container group: use a [Resource Manager template][resource-manager template] or a [YAML file][yaml-file]. A Resource Manager template is recommended when you need to deploy additional Azure service resources (for example, an [Azure Files share][azure-files]) when you deploy the container instances. Due to the YAML format's more concise nature, a YAML file is recommended when your deployment includes only container instances. For details on properties you can set, see the [Resource Manager template reference](/azure/templates/microsoft.containerinstance/containergroups) or [YAML reference](container-instances-reference-yaml.md) documentation.
 
-Pokud chcete zachovat konfiguraci skupiny kontejnerů, můžete tuto konfiguraci exportovat do souboru YAML pomocí příkazu rozhraní příkazového řádku Azure CLI [AZ Container export][az-container-export]. Export umožňuje ukládat konfigurace skupiny kontejnerů ve správě verzí pro "konfiguraci jako kód". Nebo použijte exportovaný soubor jako výchozí bod při vývoji nové konfigurace v YAML.
+To preserve a container group's configuration, you can export the configuration to a YAML file by using the Azure CLI command [az container export][az-container-export]. Export allows you to store your container group configurations in version control for "configuration as code." Or, use the exported file as a starting point when developing a new configuration in YAML.
 
 
 
-## <a name="resource-allocation"></a>Přidělení prostředků
+## <a name="resource-allocation"></a>Resource allocation
 
-Azure Container Instances přiděluje prostředky, jako jsou CPU, paměť a volitelně [GPU][gpus] (Preview), do skupiny kontejnerů přidáním [požadavků na prostředky][resource-requests] instancí ve skupině. Pokud jako příklad vytvoříte skupinu kontejnerů se dvěma instancemi, každý z nich bude mít každý požadavek 1 procesor, skupina kontejnerů se přidělí 2 procesory.
+Azure Container Instances allocates resources such as CPUs, memory, and optionally [GPUs][gpus] (preview) to a container group by adding the [resource requests][resource-requests] of the instances in the group. Taking CPU resources as an example, if you create a container group with two instances, each requesting 1 CPU, then the container group is allocated 2 CPUs.
 
-### <a name="resource-usage-by-instances"></a>Využití prostředků podle instancí
+### <a name="resource-usage-by-instances"></a>Resource usage by instances
 
-Každá instance kontejneru má přidělené prostředky, které jsou zadány v žádosti o prostředky. Využití prostředků v instanci kontejneru ve skupině ale závisí na tom, jak nakonfigurujete její volitelnou vlastnost [limitu prostředků][resource-limits] .
+Each container instance is allocated the resources specified in its resource request. However, the resource usage by a container instance in a group depends on how you configure its optional [resource limit][resource-limits] property.
 
-* Pokud nezadáte omezení prostředků, maximální využití prostředků instance je stejné jako jeho požadavek na prostředek.
+* If you don't specify a resource limit, the instance's maximum resource usage is the same as its resource request.
 
-* Pokud pro instanci zadáte omezení prostředků, můžete pro její úlohu upravit využití prostředků instance, buď snížit nebo zvýšit využití vzhledem k žádosti o prostředky. Maximální počet prostředků, které můžete nastavit, je celkový počet prostředků přidělených skupině.
+* If you specify a resource limit for an instance, you can adjust the instance's resource usage for its workload, either reducing or increasing usage relative to the resource request. The maximum resource limit you can set is the total resources allocated to the group.
     
-    Například ve skupině se dvěma instancemi požadujících 1 procesor může jeden z vašich kontejnerů spustit úlohu, která vyžaduje více procesorů pro spuštění než druhá.
+    For example, in a group with two instances requesting 1 CPU, one of your containers might run a workload that requires more CPUs to run than the other.
 
-    V tomto scénáři můžete nastavit limit prostředků 0,5 procesor pro jednu instanci a limit 2 procesorů pro druhý. Tato konfigurace omezuje využití prostředků prvního kontejneru na 0,5 procesor, což umožňuje, aby druhý kontejner používal až plný 2 procesory, pokud jsou k dispozici.
+    In this scenario, you could set a resource limit of 0.5 CPU for one instance, and a limit of 2 CPUs for the second. This configuration limits the first container's resource usage to 0.5 CPU, allowing the second container to use up to the full 2 CPUs if available.
 
-Další informace naleznete v tématu vlastnost [ResourceRequirements][resource-requirements] ve skupinách kontejneru REST API.
+For more information, see the [ResourceRequirements][resource-requirements] property in the container groups REST API.
 
-### <a name="minimum-and-maximum-allocation"></a>Minimální a maximální přidělení
+### <a name="minimum-and-maximum-allocation"></a>Minimum and maximum allocation
 
-* Přidělte skupině kontejnerů **minimálně** jeden procesor a 1 GB paměti. Jednotlivé instance kontejneru v rámci skupiny můžou být zřízené s méně než 1 PROCESORem a 1 GB paměti. 
+* Allocate a **minimum** of 1 CPU and 1 GB of memory to a container group. Individual container instances within a group can be provisioned with less than 1 CPU and 1 GB of memory. 
 
-* **Maximální** prostředky ve skupině kontejnerů najdete v tématu [dostupnost prostředků][region-availability] pro Azure Container Instances v oblasti nasazení.
+* For the **maximum** resources in a container group, see the [resource availability][region-availability] for Azure Container Instances in the deployment region.
 
 ## <a name="networking"></a>Sítě
 
-Skupiny kontejnerů sdílejí IP adresu a obor názvů portu na této IP adrese. Chcete-li povolit externím klientům, aby dosáhli kontejneru v rámci skupiny, je nutné vystavit port na IP adrese a v kontejneru. Vzhledem k tomu, že kontejnery v rámci skupiny sdílejí obor názvů portu, mapování portů se nepodporuje. Kontejnery v rámci skupiny se můžou vzájemně kontaktovat přes localhost na portech, které jsou vystavené, a to i v případě, že se tyto porty nezveřejňují externě na IP adrese skupiny.
+Container groups share an IP address and a port namespace on that IP address. To enable external clients to reach a container within the group, you must expose the port on the IP address and from the container. Because containers within the group share a port namespace, port mapping isn't supported. Containers within a group can reach each other via localhost on the ports that they have exposed, even if those ports aren't exposed externally on the group's IP address.
 
-Volitelně nasaďte skupiny kontejnerů do služby [Azure Virtual Network][virtual-network] (Preview), abyste kontejnerům umožnili zabezpečenou komunikaci s ostatními prostředky ve virtuální síti.
+Optionally deploy container groups into an [Azure virtual network][virtual-network] (preview) to allow containers to communicate securely with other resources in the virtual network.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
-Můžete zadat externí svazky, které se připojí v rámci skupiny kontejnerů. Tyto svazky můžete namapovat na konkrétní cesty v rámci jednotlivých kontejnerů ve skupině.
+You can specify external volumes to mount within a container group. You can map those volumes into specific paths within the individual containers in a group.
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře
 
-Skupiny více kontejnerů jsou užitečné v případech, kdy chcete rozdělit jednu funkční úlohu na malý počet imagí kontejneru. Tyto Image je pak možné doručovat různými týmy a mít samostatné požadavky na prostředky.
+Multi-container groups are useful in cases where you want to divide a single functional task into a small number of container images. These images can then be delivered by different teams and have separate resource requirements.
 
-Příklad použití může zahrnovat:
+Example usage could include:
 
-* Kontejner obsluhující webovou aplikaci a kontejner, který vybírá nejnovější obsah ze správy zdrojového kódu.
-* Kontejner aplikace a kontejner protokolování. Kontejner protokolování shromažďuje výstup protokolů a metrik pomocí hlavní aplikace a zapisuje je do dlouhodobého úložiště.
-* Kontejner aplikace a kontejner monitorování. Kontejner monitorování pravidelně vytváří požadavek na aplikaci, aby bylo zajištěno, že je spuštěná a správně reaguje, a vyvolá výstrahu, pokud není.
-* Front-end kontejner a back-end kontejner. Front-end může sloužit webové aplikaci s back-end, který spouští službu pro načítání dat. 
+* A container serving a web application and a container pulling the latest content from source control.
+* An application container and a logging container. The logging container collects the logs and metrics output by the main application and writes them to long-term storage.
+* An application container and a monitoring container. The monitoring container periodically makes a request to the application to ensure that it's running and responding correctly, and raises an alert if it's not.
+* A front-end container and a back-end container. The front end might serve a web application, with the back end running a service to retrieve data. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak nasadit skupinu kontejnerů s více kontejnery pomocí šablony Azure Resource Manager:
+Learn how to deploy a multi-container container group with an Azure Resource Manager template:
 
 > [!div class="nextstepaction"]
-> [Nasazení skupiny kontejnerů][resource-manager template]
+> [Deploy a container group][resource-manager template]
 
 <!-- IMAGES -->
 [container-groups-example]: ./media/container-instances-container-groups/container-groups-example.png

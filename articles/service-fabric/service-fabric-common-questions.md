@@ -1,6 +1,6 @@
 ---
-title: Běžné otázky týkající se Microsoft Azure Service Fabric | Microsoft Docs
-description: Nejčastější dotazy týkající se Service Fabric a jejich odpovědí
+title: Common questions about Microsoft Azure Service Fabric | Microsoft Docs
+description: Frequently asked questions about Service Fabric and their answers
 services: service-fabric
 documentationcenter: .net
 author: chackdan
@@ -14,182 +14,183 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 28a0418fd94c03f1fe308c7cd6f17b6d9a331fb0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529367"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481641"
 ---
-# <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
+# <a name="commonly-asked-service-fabric-questions"></a>Commonly asked Service Fabric questions
 
-Existuje mnoho nejčastějších otázek, které Service Fabric můžou dělat a jak se mají použít. Tento dokument obsahuje mnoho běžných otázek a jejich odpovědi.
+There are many commonly asked questions about what Service Fabric can do and how it should be used. This document covers many of those common questions and their answers.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="cluster-setup-and-management"></a>Instalace a Správa clusteru
+## <a name="cluster-setup-and-management"></a>Cluster setup and management
 
-### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Návody vrátit Service Fabric certifikát clusteru?
+### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>How do I roll back my Service Fabric cluster certificate?
 
-Vrácení jakéhokoli upgradu do vaší aplikace vyžaduje detekci selhání stavu před tím, než vaše Service Fabric kvorum clusteru tuto změnu provedla. potvrzené změny lze provést pouze posunutím. Pokud byla zavedena nemonitorovaná změna nemonitorovaného certifikátu, může být nutné obnovit váš cluster prostřednictvím služeb podpory pro eskalace prostřednictvím služeb zákaznické podpory.  [Upgrade aplikace Service Fabric](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) aplikuje [parametry upgradu aplikace](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)a poskytuje příslib upgradu s žádným výpadkem.  Po doporučeném monitorovaném režimu upgradu aplikace je automatický průběh prostřednictvím aktualizačních domén založený na kontrolách stavu, které se provedou, pokud dojde k chybě při aktualizaci výchozí služby.
+Rolling back any upgrade to your application requires health failure detection prior to your Service Fabric cluster quorum committing the change; committed changes can only be rolled forward. Escalation engineer’s through Customer Support Services, may be required to recover your cluster, if an unmonitored breaking certificate change has been introduced.  [Service Fabric’s application upgrade](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) applies [Application upgrade parameters](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master), and delivers zero downtime upgrade promise.  Following our recommended application upgrade monitored mode, automatic progress through update domains is based upon health checks passing, rolling back automatically if updating a default service fails.
  
-Pokud váš cluster stále využívá vlastnost s klasickým kryptografickým otiskem certifikátu v šabloně Správce prostředků, doporučujeme [změnit cluster z kryptografického otisku certifikátu na běžný název](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), abyste využili moderní funkce pro správu tajných kódů.
+If your cluster is still leveraging the classic Certificate Thumbprint property in your Resource Manager template, it's recommended you [Change cluster from certificate thumbprint to common name](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), to leverage modern secrets management features.
 
-### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Můžu vytvořit cluster, který zahrnuje několik oblastí Azure nebo vlastní datová centra?
+### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Can I create a cluster that spans multiple Azure regions or my own datacenters?
 
 Ano. 
 
-Technologie clusteringu na základní Service Fabric se dá použít ke kombinování počítačů běžících kdekoli na světě, pokud mají navzájem připojení k síti. Sestavení a spuštění takového clusteru ale může být složité.
+The core Service Fabric clustering technology can be used to combine machines running anywhere in the world, so long as they have network connectivity to each other. However, building and running such a cluster can be complicated.
 
-Pokud vás zajímá tento scénář, doporučujeme vám, abyste se dostali v kontaktu buď prostřednictvím [seznamu problémů s Service Fabric GitHubem](https://github.com/azure/service-fabric-issues) , nebo prostřednictvím zástupce podpory, abyste získali další doprovodné materiály. Tým Service Fabric pracuje na poskytnutí dodatečné jasnosti, pokynů a doporučení pro tento scénář. 
+If you are interested in this scenario, we encourage you to get in contact either through the [Service Fabric GitHub Issues List](https://github.com/azure/service-fabric-issues) or through your support representative in order to obtain additional guidance. The Service Fabric team is working to provide additional clarity, guidance, and recommendations for this scenario. 
 
 Pár věcí k uvážení: 
 
-1. Prostředek clusteru Service Fabric v Azure je dnes regionální, jako je služba Virtual Machine Scale Sets, na které je cluster integrovaný. To znamená, že v případě regionálního selhání může dojít ke ztrátě schopnosti spravovat cluster prostřednictvím Azure Resource Manager nebo Azure Portal. K tomu může dojít i v případě, že cluster zůstává spuštěný a vy budete moct s ním pracovat přímo. Kromě toho Azure ještě nenabízí možnost mít jednu virtuální síť, která je použitelná v různých oblastech. To znamená, že cluster s více oblastmi v Azure vyžaduje buď [veřejné IP adresy pro každý virtuální počítač ve VM Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) nebo [bráně Azure VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Tyto možnosti sítě mají různé dopady na náklady, výkon a určitý návrh aplikace, takže je nutné provést pečlivou analýzu a plánování před tím, než takové prostředí sestaví.
-2. Údržba, Správa a monitorování těchto počítačů se můžou stát složitě, _zejména v případě_ , že jsou rozložená mezi různými poskytovateli cloudu nebo mezi místními prostředky a Azure. Před spuštěním produkčních úloh v takovém prostředí je třeba dbát na to, aby se zajistilo, že upgrady, monitorování, Správa a diagnostika jsou srozumitelné pro cluster i aplikace. Pokud již máte zkušenosti s řešením těchto problémů v Azure nebo v rámci vašich vlastních Datacenter, je pravděpodobně vhodné použít stejná řešení při sestavování nebo spouštění clusteru Service Fabric. 
+1. The Service Fabric cluster resource in Azure is regional today, as are the virtual machine scale sets that the cluster is built on. This means that in the event of a regional failure you may lose the ability to manage the cluster via the Azure Resource Manager or the Azure portal. This can happen even though the cluster remains running and you'd be able to interact with it directly. In addition, Azure today does not offer the ability to have a single virtual network that is usable across regions. This means that a multi-region cluster in Azure requires either [Public IP Addresses for each VM in the VM Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) or [Azure VPN Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md). These networking choices have different impacts on costs, performance, and to some degree application design, so careful analysis and planning is required before standing up such an environment.
+2. The maintenance, management, and monitoring of these machines can become complicated, especially when spanned across _types_ of environments, such as between different cloud providers or between on-premises resources and Azure. Care must be taken to ensure that upgrades, monitoring, management, and diagnostics are understood for both the cluster and the applications before running production workloads in such an environment. If you already have experience solving these problems in Azure or within your own datacenters, then it is likely that those same solutions can be applied when building out or running your Service Fabric cluster. 
 
-### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Budou uzly Service Fabric automaticky dostávat aktualizace operačního systému?
+### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Do Service Fabric nodes automatically receive OS updates?
 
-V dnešní době můžete používat [automatickou funkci aktualizace image sady škálování virtuálního počítače](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) , která je všeobecně dostupná.
+You can use [Virtual Machine Scale Set Automatic OS Image Update](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) Generally Available feature today.
 
-Pro clustery, které neběží v Azure, [poskytujeme aplikaci](service-fabric-patch-orchestration-application.md) , která umožňuje opravovat operační systémy pod uzly Service Fabric.
+For clusters that are NOT run in Azure, we have [provided an application](service-fabric-patch-orchestration-application.md) to patch the operating systems underneath your Service Fabric nodes.
 
-### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>Můžu v mém clusteru SF použít velké sady virtuálních počítačů s měřítkem pro virtuální počítače? 
+### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>Can I use large virtual machine scale sets in my SF cluster? 
 
-**Krátká odpověď** – ne. 
+**Short answer** - No. 
 
-**Dlouhá odpověď** – i když velké sady škálování virtuálních počítačů umožňují škálovat škálování virtuálního počítače na 1000 instancí virtuálních počítačů, provede to pomocí skupin umístění (PGS). Domény selhání (doménami selhání) a upgradované domény (UDs) jsou konzistentní jenom v rámci skupiny umístění Service Fabric, která používá doménami selhání a UDs k rozhodování o umístění replik služby/instancí služby. Vzhledem k tomu, že doménami selhání a UDs jsou srovnatelné pouze v rámci skupiny umístění, SF ji nemůže použít. Například pokud VM1 v SO1 má topologii FD = 0 a VM9 v SO2 má topologii FD = 4, neznamená to, že VM1 a VM2 jsou ve dvou různých skříních hardwaru, takže SF nemůže v tomto případě použít hodnoty FD k rozhodnutí o umístění.
+**Long Answer** - Although the large virtual machine scale sets allow you to scale a virtual machine scale set up to 1000 VM instances, it does so by the use of Placement Groups (PGs). Fault domains (FDs) and upgrade domains (UDs) are only consistent within a placement group Service fabric uses FDs and UDs to make placement decisions of your service replicas/Service instances. Since the FDs and UDs are comparable only within a placement group, SF cannot use it. For example, If VM1 in PG1 has a topology of FD=0 and VM9 in PG2 has a topology of FD=4, it does not mean that VM1 and VM2 are on two different Hardware Racks, hence SF cannot use the FD values in this case to make placement decisions.
 
-V tuto chvíli existují další problémy s velkými sadami škálování virtuálních počítačů, jako je třeba podpora vyrovnávání zatížení úrovně 4. [Podrobnosti o velkých sadách škálování najdete v](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) tématu.
-
-
-
-### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Jaká je minimální velikost clusteru Service Fabric? Proč není možné ji zmenšit?
-
-Minimální podporovaná velikost pro Service Fabric cluster s produkčními úlohami je pět uzlů. Pro scénáře vývoje podporujeme jeden uzel (optimalizovaný pro rychlé vývojové prostředí v rámci sady Visual Studio) a pět clusterů uzlů.
-
-Pro následující tři důvody potřebujeme, aby měl provozní cluster minimálně 5 uzlů:
-1. I když nejsou spuštěny žádné uživatelské služby, Cluster Service Fabric spouští sadu stavových služeb, včetně služby pojmenování a služby správce převzetí služeb při selhání. Tyto systémové služby jsou nezbytné pro to, aby cluster zůstal v provozu.
-2. Vždycky ukládáme jednu repliku služby na uzel, takže velikost clusteru je horním limitem počtu replik, které služba (ve skutečnosti oddíl) může mít.
-3. Vzhledem k tomu, že upgrade clusteru bude obsahovat alespoň jeden uzel, chceme mít vyrovnávací paměť aspoň jeden uzel. proto chceme, aby měl provozní cluster *kromě* minimálního minima aspoň dva uzly. Minimální hodnota je velikost kvora systémové služby, jak je vysvětleno níže.  
-
-Chceme, aby byl cluster dostupný na tváři souběžného selhání dvou uzlů. Aby byl cluster Service Fabric k dispozici, musí být systémové služby k dispozici. Služby stavového systému jako služba pojmenování služeb a správce převzetí služeb při selhání, které sledují, které služby jsou v clusteru nasazené a kde se aktuálně hostují, závisí na silné konzistenci. Tato silná konzistence pak závisí na schopnosti získat *kvorum* pro jakoukoli danou aktualizaci do stavu těchto služeb, kde kvorum představuje striktní většinu replik (N/2 + 1) pro danou službu. Takže pokud chceme být odolný proti souběžné ztrátě dvou uzlů (tedy současně současně se dvěma replikami systémové služby), musí mít ClusterSize-QuorumSize > = 2, což vynutí minimální velikost 5. Pokud to chcete vidět, zvažte, že cluster má N uzlů a v každém uzlu je N replik služby System Service--One. Velikost kvora systémové služby je (N/2 + 1). Výše uvedená nerovnost vypadá jako N-(N/2 + 1) > = 2. Je třeba vzít v úvahu dva případy, kdy je N i v případě, že N je liché. Pokud N je i, řekněme N = 2 \*m kde m > = 1, nerovnost vypadá jako 2 \*m-(2 \*m/2 + 1) > = 2 nebo m > = 3. Minimum pro N je 6 a je dosaženo v případě m = 3. Na druhé straně platí, že pokud N je lichá, řekněme N = 2 \*m + 1, kde m > = 1, nerovnost by vypadala 2 \*m + 1-((2 \*m + 1)/2 + 1) > = 2 nebo 2 \*m + 1-(m + 1) > = 2 nebo m > = 2. Minimum pro N je 5 a je dosaženo při m = 2. Proto ze všech hodnot N, které odpovídají nerovnosti ClusterSize-QuorumSize > = 2, je minimum 5.
-
-Všimněte si, že ve výše uvedeném argumentu jsme předpokládali, že každý uzel má repliku systémové služby, takže se velikost kvora vypočítá na základě počtu uzlů v clusteru. Změnou *TargetReplicaSetSize* však můžeme zmenšit velikost kvora menší než (N/2 + 1), což by mohlo znamenat, že by mohlo být cluster menší než 5 uzlů a stále mít 2 Navíc uzly nad velikost kvora. Například v případě clusteru se čtyřmi uzly, pokud nastavíme TargetReplicaSetSize na 3, bude velikost kvora založená na TargetReplicaSetSize (3/2 + 1) nebo 2, proto máme ClusterSize-QuorumSize = 4-2 > = 2. Nicméně nemůžeme zaručit, že systémová služba bude v kvoru nebo výše, pokud ztratíte všechny dvojice uzlů současně, může to být tím, že oba uzly ztratily dvě repliky, takže systémová služba přejde do kvora (obsahující jenom jednu repliku vlevo). ND přestane být k dispozici.
-
-Pomocí tohoto pozadí si probereme několik možných konfigurací clusteru:
-
-**Jeden uzel**: Tato možnost neposkytuje vysokou dostupnost, protože ztráta jednoho uzlu z jakéhokoli důvodu znamená ztrátu celého clusteru.
-
-**Dva uzly**: kvorum pro službu nasazené ve dvou uzlech (N = 2) je 2 (2/2 + 1 = 2). Když dojde ke ztrátě jedné repliky, není možné vytvořit kvorum. Vzhledem k tomu, že provedení upgradu služby vyžaduje dočasné provedení repliky, nejedná se o užitečnou konfiguraci.
-
-**Tři uzly**: se třemi uzly (N = 3) je požadavek na vytvoření kvora stále dva uzly (3/2 + 1 = 2). To znamená, že můžete ztratit jednotlivý uzel a zachovat kvorum, ale při současném selhání dvou uzlů dojde ke ztrátě kvora a způsobí to, že cluster přestane být dostupný.
-
-**Čtyři uzly**: se čtyřmi uzly (N = 4) je požadavek na vytvoření kvora tři uzly (4/2 + 1 = 3). To znamená, že můžete ztratit jednotlivý uzel a zachovat kvorum, ale při současném selhání dvou uzlů dojde ke ztrátě kvora a způsobí to, že cluster přestane být dostupný.
-
-**Pět uzlů**: s pěti uzly (N = 5) je požadavek na vytvoření kvora stále tři uzly (5/2 + 1 = 3). To znamená, že můžete přijít o dva uzly současně a zároveň zachovat kvorum pro systémové služby.
-
-U produkčních úloh musíte být odolné vůči současnému selhání minimálně dvou uzlů (například z důvodu upgradu clusteru, z jednoho důvodu z jiných důvodů), takže je potřeba pět uzlů.
-
-### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Můžu svůj cluster vypnout v noci nebo víkendech, abyste ušetřili náklady?
-
-Obecně platí, ne. Service Fabric ukládá stav na místních, dočasných discích, což znamená, že pokud se virtuální počítač přesune na jiného hostitele, data se s ním nepřesunou. Při běžném provozu to není problém, protože nový uzel je aktualizován jinými uzly. Pokud ale zastavíte všechny uzly a později je restartujete, je důležité mít možnost, že většina uzlů začíná na nových hostitelích a systém nemůže obnovit.
-
-Pokud chcete vytvořit clustery pro testování aplikace před jejím nasazením, doporučujeme tyto clustery dynamicky vytvářet jako součást [kanálu průběžné integrace nebo průběžného nasazování](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
+There are other issues with large virtual machine scale sets currently, like the lack of level-4 Load balancing support. Refer to for [details on Large scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)
 
 
-### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>Návody upgradovat operační systém (například ze systému Windows Server 2012 na systém Windows Server 2016)?
 
-V současné době pracujeme na vylepšeném prostředí, ale zodpovídáte za upgrade. Bitovou kopii operačního systému musíte upgradovat na virtuálních počítačích clusteru na jednom virtuálním počítači v daném okamžiku. 
+### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>What is the minimum size of a Service Fabric cluster? Why can't it be smaller?
 
-### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Můžu šifrovat připojené datové disky v typu uzlu clusteru (sada škálování virtuálního počítače)?
-Ano.  Další informace najdete v tématu [Vytvoření clusteru s připojenými datovými disky](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) a [Azure Disk Encryption pro Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
+The minimum supported size for a Service Fabric cluster running production workloads is five nodes. For dev scenarios, we support one node (optimized for quick development experience in Visual Studio) and five node clusters.
 
-### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Je možné použít virtuální počítače s nízkou prioritou v typu uzlu clusteru (sada škálování virtuálního počítače)?
-Ne. Virtuální počítače s nízkou prioritou se nepodporují. 
+We require a production cluster to have at least 5 nodes because of the following three reasons:
+1. Even when no user services are running, a Service Fabric cluster runs a set of stateful system services, including the naming service and the failover manager service. These system services are essential for the cluster to remain operational.
+2. We always place one replica of a service per node, so cluster size is the upper limit for the number of replicas a service (actually a partition) can have.
+3. Since a cluster upgrade will bring down at least one node, we want to have a buffer of at least one node, therefore, we want a production cluster to have at least two nodes *in addition* to the bare minimum. The bare minimum is the quorum size of a system service as explained below.  
 
-### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Jaké jsou adresáře a procesy, které je potřeba vyloučit při spuštění antivirového programu v mém clusteru?
+We want the cluster to be available in the face of simultaneous failure of two nodes. For a Service Fabric cluster to be available, the system services must be available. Stateful system services like naming service and failover manager service, that track what services have been deployed to the cluster and where they're currently hosted, depend on strong consistency. That strong consistency, in turn, depends on the ability to acquire a *quorum* for any given update to the state of those services, where a quorum represents a strict majority of the replicas (N/2 +1) for a given service. Thus if we want to be resilient against simultaneous loss of two nodes (thus simultaneous loss of two replicas of a system service), we must have ClusterSize - QuorumSize >= 2, which forces the minimum size to be five. To see that, consider the cluster has N nodes and there are N replicas of a system service -- one on each node. The quorum size for a system service is (N/2 + 1). The above inequality looks like N - (N/2 + 1) >= 2. There are two cases to consider: when N is even and when N is odd. If N is even, say N = 2\*m where m >= 1, the inequality looks like 2\*m - (2\*m/2 + 1) >= 2 or m >= 3. The minimum for N is 6 and that is achieved when m = 3. On the other hand, if N is odd, say N = 2\*m+1 where m >= 1, the inequality looks like 2\*m+1 - ( (2\*m+1)/2 + 1 ) >= 2 or 2\*m+1 - (m+1) >= 2 or m >= 2. The minimum for N is 5 and that is achieved when m = 2. Therefore, among all values of N that satisfy the inequality ClusterSize - QuorumSize >= 2, the minimum is 5.
 
-| **Vyloučené adresáře antivirové ochrany** |
+Note, in the above argument we have assumed that every node has a replica of a system service, thus the quorum size is computed based on the number of nodes in the cluster. However, by changing *TargetReplicaSetSize* we could make the quorum size less than (N/2+1) which might give the impression that we could have a cluster smaller than 5 nodes and still have 2 extra nodes above the quorum size. For example, in a 4 node cluster, if we set the TargetReplicaSetSize to 3, the quorum size based on TargetReplicaSetSize is (3/2 + 1) or 2, thus we have ClusterSize - QuorumSize = 4-2 >= 2. However, we cannot guarantee that the system service will be at or above quorum if we lose any pair of nodes simultaneously, it could be that the two nodes we lost were hosting two replicas, so the system service will go into quorum loss (having only a single replica left) and will become unavailable.
+
+With that background, let's examine some possible cluster configurations:
+
+**One node**: this option does not provide high availability since the loss of the single node for any reason means the loss of the entire cluster.
+
+**Two nodes**: a quorum for a service deployed across two nodes (N = 2) is 2 (2/2 + 1 = 2). When a single replica is lost, it is impossible to create a quorum. Since performing a service upgrade requires temporarily taking down a replica, this is not a useful configuration.
+
+**Three nodes**: with three nodes (N=3), the requirement to create a quorum is still two nodes (3/2 + 1 = 2). This means that you can lose an individual node and still maintain quorum, but simultaneous failure of two nodes will drive the system services into quorum loss and will cause the cluster to become unavailable.
+
+**Four nodes**: with four nodes (N=4), the requirement to create a quorum is three nodes (4/2 + 1 = 3). This means that you can lose an individual node and still maintain quorum, but simultaneous failure of two nodes will drive the system services into quorum loss and will cause the cluster to become unavailable.
+
+**Five nodes**: with five nodes (N=5), the requirement to create a quorum is still three nodes (5/2 + 1 = 3). This means that you can lose two nodes at the same time and still maintain quorum for the system services.
+
+For production workloads, you must be resilient to simultaneous failure of at least two nodes (for example, one due to cluster upgrade, one due to other reasons), so five nodes are required.
+
+### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Can I turn off my cluster at night/weekends to save costs?
+
+In general, no. Service Fabric stores state on local, ephemeral disks, meaning that if the virtual machine is moved to a different host, the data does not move with it. In normal operation, that is not a problem as the new node is brought up-to-date by other nodes. However, if you stop all nodes and restart them later, there is a significant possibility that most of the nodes start on new hosts and make the system unable to recover.
+
+If you would like to create clusters for testing your application before it is deployed, we recommend that you dynamically create those clusters as part of your [continuous integration/continuous deployment pipeline](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
+
+
+### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>How do I upgrade my Operating System (for example from Windows Server 2012 to Windows Server 2016)?
+
+While we're working on an improved experience, today, you are responsible for the upgrade. You must upgrade the OS image on the virtual machines of the cluster one VM at a time. 
+
+### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Can I encrypt attached data disks in a cluster node type (virtual machine scale set)?
+Ano.  For more information, see [Create a cluster with attached data disks](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) and [Azure Disk Encryption for Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
+
+### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Can I use low-priority VMs in a cluster node type (virtual machine scale set)?
+Ne. Low-priority VMs are not supported. 
+
+### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>What are the directories and processes that I need to exclude when running an anti-virus program in my cluster?
+
+| **Antivirus Excluded directories** |
 | --- |
 | Program Files\Microsoft Service Fabric |
-| FabricDataRoot (z konfigurace clusteru) |
-| FabricLogRoot (z konfigurace clusteru) |
+| FabricDataRoot (from cluster configuration) |
+| FabricLogRoot (from cluster configuration) |
 
-| **Vyloučené procesy antivirové ochrany** |
+| **Antivirus Excluded processes** |
 | --- |
-| Fabric. exe |
-| Hostitele fabrichost vrátilo. exe |
-| Služby fabricinstallerservice. exe |
-| FabricSetup. exe |
-| FabricDeployer. exe |
-| ImageBuilder. exe |
-| FabricGateway. exe |
-| Agent fabricdca. exe |
-| FabricFAS. exe |
-| FabricUOS. exe |
-| FabricRM. exe |
-| FileStoreService. exe |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
  
-### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Jak se dá aplikace ověřovat do trezoru klíčů, aby získala tajné kódy?
-Níže jsou uvedené možnosti pro vaši aplikaci k získání přihlašovacích údajů pro ověřování do trezoru klíčů:
+### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>How can my application authenticate to KeyVault to get secrets?
+The following are means for your application to obtain credentials for authenticating to KeyVault:
 
-A. Během sestavování/balení vaší aplikace můžete načíst certifikát do balíčku dat aplikace SF a použít ho k ověření do trezoru klíčů.
-B. Pro hostitele s podporou MSI sady škálování pro virtuální počítače můžete vyvinout jednoduché prostředí PowerShell SetupEntryPoint pro vaši aplikaci SF a získat [přístupový token z koncového bodu MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)a pak [načíst tajné kódy z trezoru klíčů](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+A. During your applications build/packing job, you can pull a certificate into your SF app's data package, and use this to authenticate to KeyVault.
+B. For virtual machine scale set MSI enabled hosts, you can develop a simple PowerShell SetupEntryPoint for your SF app to get [an access token from the MSI endpoint](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), and then [retrieve your secrets from KeyVault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
-## <a name="application-design"></a>Návrh aplikace
+## <a name="application-design"></a>Application Design
 
-### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Jaký je nejlepší způsob, jak zadávat dotazy na data napříč oddíly spolehlivé kolekce?
+### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>What's the best way to query data across partitions of a Reliable Collection?
 
-Spolehlivé kolekce jsou obvykle [rozdělené](service-fabric-concepts-partitioning.md) tak, aby umožňovaly vyšší výkon a propustnost při škálování. To znamená, že stav dané služby může být rozložený mezi desítky nebo stovky počítačů. K provedení operací s touto úplnou datovou sadou máte několik možností:
+Reliable collections are typically [partitioned](service-fabric-concepts-partitioning.md) to enable scale out for greater performance and throughput. That means that the state for a given service may be spread across tens or hundreds of machines. To perform operations over that full data set, you have a few options:
 
-- Vytvořte službu, která se dotazuje na všechny oddíly jiné služby, aby se vyžádala z požadovaných dat.
-- Vytvořte službu, která může přijímat data ze všech oddílů jiné služby.
-- Pravidelně doručovat data z každé služby do externího úložiště. Tento přístup je vhodný jenom v případě, že dotazy, které provádíte, nejsou součástí vaší základní obchodní logiky.
+- Create a service that queries all partitions of another service to pull in the required data.
+- Create a service that can receive data from all partitions of another service.
+- Periodically push data from each service to an external store. This approach is only appropriate if the queries you're performing are not part of your core business logic, as the external store's data will be stale.
+- Alternatively, store data that must support querying across all records directly in a data store rather than in a reliable collection. This eliminates the issue with stale data, but doesn't allow the advantages of reliable collections to be leveraged.
 
 
-### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>Jaký je nejlepší způsob, jak zadávat dotazy na data napříč objekty actor?
+### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>What's the best way to query data across my actors?
 
-Objekty actor jsou navržené tak, aby byly nezávislými jednotkami stavu a COMPUTE, takže nedoporučujeme provádět v době běhu široké dotazy stavu objektu actor. Pokud budete potřebovat dotaz na celou sadu stavů objektu actor, měli byste zvážit jednu z těchto akcí:
+Actors are designed to be independent units of state and compute, so it is not recommended to perform broad queries of actor state at runtime. If you have a need to query across the full set of actor state, you should consider either:
 
-- Výměna služeb objektu actor se stavem Reliable Services tak, aby počet síťových požadavků pro shromáždění všech dat z počtu objektů actor na počet oddílů ve vaší službě.
-- Navrhujte své aktéry, aby pravidelně nabízely svůj stav do externího úložiště pro snazší dotazování. Jak je uvedeno výše, tento přístup je možné realizovat pouze v případě, že dotazy, které provádíte, nejsou požadovány pro vaše běhové chování.
+- Replacing your actor services with stateful reliable services, so that the number of network requests to gather all data from the number of actors to the number of partitions in your service.
+- Designing your actors to periodically push their state to an external store for easier querying. As above, this approach is only viable if the queries you're performing are not required for your runtime behavior.
 
-### <a name="how-much-data-can-i-store-in-a-reliable-collection"></a>Kolik dat je možné uložit do spolehlivé kolekce?
+### <a name="how-much-data-can-i-store-in-a-reliable-collection"></a>How much data can I store in a Reliable Collection?
 
-Spolehlivé služby se obvykle dělí na oddíly, takže velikost, kterou můžete ukládat, je omezená jenom počtem počítačů, které máte v clusteru, a množství paměti dostupné na těchto počítačích.
+Reliable services are typically partitioned, so the amount you can store is only limited by the number of machines you have in the cluster, and the amount of memory available on those machines.
 
-Předpokládejme například, že máte v rámci služby spolehlivou kolekci s 100 oddíly a 3 replikami a ukládáte objekty, které mají průměrnou velikost 1 KB. Nyní předpokládejme, že máte cluster s 10 počítači s 16gb paměti na jeden počítač. V zájmu jednoduchosti a přístupnosti je vhodné předpokládat, že operační systém a systémové služby, Service Fabric runtime a vaše služby, budou spotřebovávat 6 GB, což zabere 10 GB na jeden počítač nebo 100 GB pro cluster.
+As an example, suppose that you have a reliable collection in a service with 100 partitions and 3 replicas, storing objects that average 1 kb in size. Now suppose that you have a 10 machine cluster with 16gb of memory per machine. For simplicity and to be conservative, assume that the operating system and system services, the Service Fabric runtime, and your services consume 6gb of that, leaving 10gb available per machine, or 100 gb for the cluster.
 
-Mějte na paměti, že každý objekt musí být uložen třikrát (jedna primární a druhá replika), měli byste mít dostatek paměti pro přibližně 35 000 000 objektů v kolekci, pokud pracujete s plnou kapacitou. Doporučujeme však, abyste nepřišli o souběžnou ztrátu domény selhání a upgradovací domény, která představuje přibližně 1/3 kapacity a snížila číslo přibližně na 23 000 000.
+Keeping in mind that each object must be stored three times (one primary and two replicas), you would have sufficient memory for approximately 35 million objects in your collection when operating at full capacity. However, we recommend being resilient to the simultaneous loss of a failure domain and an upgrade domain, which represents about 1/3 of capacity, and would reduce the number to roughly 23 million.
 
-Všimněte si, že tento výpočet také předpokládá:
+Note that this calculation also assumes:
 
-- Rozdělení dat mezi oddíly je zhruba rovnoměrné nebo že se metriky zatížení hlásí do clusteru Správce prostředků. Ve výchozím nastavení Service Fabric načítá rovnováhu na základě počtu replik. V předchozím příkladu by se do každého uzlu v clusteru vložily 10 primárních replik a 20 sekundárních replik. To funguje dobře pro zatížení, které je rovnoměrně distribuováno napříč oddíly. Pokud zatížení ještě není, musíte vykázat zatížení, aby Správce prostředků mohl zabalit menší repliky společně a umožnit větším replikám využívat více paměti na jednotlivých uzlech.
+- That the distribution of data across the partitions is roughly uniform or that you're reporting load metrics to the Cluster Resource Manager. By default, Service Fabric loads balance based on replica count. In the preceding example, that would put 10 primary replicas and 20 secondary replicas on each node in the cluster. That works well for load that is evenly distributed across the partitions. If load is not even, you must report load so that the Resource Manager can pack smaller replicas together and allow larger replicas to consume more memory on an individual node.
 
-- Tato spolehlivá služba je jediným jediným stavem ukládání v clusteru. Vzhledem k tomu, že je možné nasadit více služeb do clusteru, je nutné mít na vědomí prostředky, které musí každý z nich spouštět a spravovat jejich stav.
+- That the reliable service in question is the only one storing state in the cluster. Since you can deploy multiple services to a cluster, you need to be mindful of the resources that each needs to run and manage its state.
 
-- Samotný cluster se nezvětšuje ani nezmenšuje. Pokud přidáte více počítačů, Service Fabric bude znovu vyrovnávat vaše repliky, aby využila další kapacitu, až počet počítačů překročí počet oddílů ve vaší službě, protože jednotlivé repliky nemohou rozbírat počítače. Naopak pokud zmenšíte velikost clusteru odebráním počítačů, repliky se zabalí těsněji a mají méně celkovou kapacitu.
+- That the cluster itself is not growing or shrinking. If you add more machines, Service Fabric will rebalance your replicas to leverage the additional capacity until the number of machines surpasses the number of partitions in your service, since an individual replica cannot span machines. By contrast, if you reduce the size of the cluster by removing machines, your replicas are packed more tightly and have less overall capacity.
 
-### <a name="how-much-data-can-i-store-in-an-actor"></a>Kolik dat je možné uložit v objektu actor?
+### <a name="how-much-data-can-i-store-in-an-actor"></a>How much data can I store in an actor?
 
-Stejně jako u spolehlivých služeb je množství dat, které můžete ukládat ve službě objektu actor, omezené jenom z celkového místa na disku a paměti dostupné napříč uzly v clusteru. Jednotlivé objekty actor jsou však nejefektivnější, pokud jsou použity k zapouzdření malého množství stavu a přidružené obchodní logiky. V rámci obecného pravidla by měl mít jednotlivec actor stav, který se měří v kilobajtech.
+As with reliable services, the amount of data that you can store in an actor service is only limited by the total disk space and memory available across the nodes in your cluster. However, individual actors are most effective when they are used to encapsulate a small amount of state and associated business logic. As a general rule, an individual actor should have state that is measured in kilobytes.
 
-## <a name="other-questions"></a>Další dotazy
+## <a name="other-questions"></a>Other questions
 
-### <a name="how-does-service-fabric-relate-to-containers"></a>Jak se Service Fabric vztahují k kontejnerům?
+### <a name="how-does-service-fabric-relate-to-containers"></a>How does Service Fabric relate to containers?
 
-Kontejnery nabízejí jednoduchý způsob, jak zabalit služby a jejich závislosti tak, aby běžely konzistentně ve všech prostředích a mohly fungovat izolovaným způsobem na jednom počítači. Service Fabric nabízí způsob, jak nasadit a spravovat služby, včetně [služeb, které byly zabaleny do kontejneru](service-fabric-containers-overview.md).
+Containers offer a simple way to package services and their dependencies such that they run consistently in all environments and can operate in an isolated fashion on a single machine. Service Fabric offers a way to deploy and manage services, including [services that have been packaged in a container](service-fabric-containers-overview.md).
 
-### <a name="are-you-planning-to-open-source-service-fabric"></a>Plánujete otevření Service Fabric zdrojového kódu?
+### <a name="are-you-planning-to-open-source-service-fabric"></a>Are you planning to open-source Service Fabric?
 
-Máme Open Source součásti Service Fabric ([Reliable Services Framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [Reliable actors](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core Integration](https://github.com/Azure/service-fabric-aspnetcore)Library, [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)a [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) na GitHubu a přijměte komunitní příspěvky na tyto projekty. 
+We have open-sourced parts of Service Fabric ([reliable services framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [reliable actors framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core integration libraries](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer), and [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) on GitHub and accept community contributions to those projects. 
 
-[Nedávno jsme oznámili](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) , že plánujeme otevřít zdroj Service Fabric runtime. V tuto chvíli máme [Service Fabric](https://github.com/Microsoft/service-fabric/) nakládat na GitHubu pomocí nástrojů pro sestavení a testování pro Linux, což znamená, že můžete klonovat úložiště, sestavovat Service Fabric pro Linux, spouštět základní testy, otevírat problémy a odesílat žádosti o přijetí změn. Těžko pracujeme na tom, aby se prostředí Windows buildu migrovali i v rámci kompletního prostředí CI.
+We [recently announced](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) that we plan to open-source the Service Fabric runtime. At this point we have the [Service Fabric repo](https://github.com/Microsoft/service-fabric/) up on GitHub with Linux build and test tools, which means you can clone the repo, build Service Fabric for Linux, run basic tests, open issues, and submit pull requests. We’re working hard to get the Windows build environment migrated over as well, along with a complete CI environment.
 
-Další podrobnosti najdete na [blogu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/) .
+Follow the [Service Fabric blog](https://blogs.msdn.microsoft.com/azureservicefabric/) for more details as they're announced.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [základních Service Fabric konceptech](service-fabric-technical-overview.md) a [osvědčených postupech](service-fabric-best-practices-overview.md) – koncepty prostředků infrastruktury (Service-Fabric-Technical-Overview.MD) a [osvědčené postupy](service-fabric-best-practices-overview.md)
+Learn about [core Service Fabric concepts](service-fabric-technical-overview.md) and [best practices](service-fabric-best-practices-overview.md) ice Fabric concepts](service-fabric-technical-overview.md) and [best practices](service-fabric-best-practices-overview.md)

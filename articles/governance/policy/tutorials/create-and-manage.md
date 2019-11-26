@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Build policies to enforce compliance'
 description: In this tutorial, you use policies to enforce standards, control costs, maintain security, and impose enterprise wide design principles.
-ms.date: 02/04/2019
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: 38c41c94600da1f028c7857febc7de1eef2436ae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 75a1d892a88f2b5bbdbec2a1b8d525245bb1e86f
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216899"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482371"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Create and manage policies to enforce compliance
 
@@ -20,7 +20,11 @@ Pochopení způsobu, jakým se v Azure vytvářejí a spravují zásady, je důl
 > - Řešení problému s prostředkem nedodržujícím předpisy nebo zamítnutým prostředkem
 > - Implementace nové zásady v rámci celé organizace
 
-Pokud chcete přiřadit zásadu pro identifikaci aktuálního stavu dodržování předpisů u vašich existujících prostředků, postup najdete v článcích Rychlý start. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud chcete přiřadit zásadu pro identifikaci aktuálního stavu dodržování předpisů u vašich existujících prostředků, postup najdete v článcích Rychlý start.
+
+## <a name="prerequisites"></a>Předpoklady
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="assign-a-policy"></a>Přiřazení zásady
 
@@ -443,7 +447,7 @@ If you're done working with resources from this tutorial, use the following step
 
 1. Klikněte na řádek pravým tlačítkem nebo vyberte tři tečky na konci definice (nebo přiřazení) a pak vyberte **Odstranit definici** (nebo **Odstranit přiřazení**).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="review"></a>Revize
 
 V tomto kurzu jste úspěšně provedli následující úlohy:
 
@@ -452,6 +456,8 @@ V tomto kurzu jste úspěšně provedli následující úlohy:
 > - Vytvořili a přiřadili jste definici iniciativy pro sledování dodržování předpisů u několika prostředků.
 > - Vyřešili jste problém s prostředkem nedodržujícím předpisy nebo zamítnutým prostředkem.
 > - Implementovali jste novou zásadu v rámci celé organizace.
+
+## <a name="next-steps"></a>Další kroky
 
 Další informace o strukturách definic zásad najdete v tomto článku:
 

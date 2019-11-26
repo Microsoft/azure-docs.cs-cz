@@ -1,171 +1,171 @@
 ---
-title: Informace o tom, jak auditovat obsah virtuálních počítačů
-description: Přečtěte si, jak Azure Policy používá konfiguraci hosta k auditování nastavení v rámci počítače Azure.
+title: Learn to audit the contents of virtual machines
+description: Learn how Azure Policy uses the Guest Configuration agent to audit settings inside virtual machines.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: c01f6d02c15dbd7519bfafdc413d70a05498c7c4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f68bbc64ee8f0da02d213895a70e4c533b9a5f63
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279379"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463789"
 ---
-# <a name="understand-azure-policys-guest-configuration"></a>Porozumět konfiguraci hosta Azure Policy
+# <a name="understand-azure-policys-guest-configuration"></a>Understand Azure Policy's Guest Configuration
 
-Kromě auditování a [Oprava](../how-to/remediate-resources.md) prostředků Azure může Azure Policy auditovat nastavení v rámci počítače. Ověřování se provádí pomocí rozšíření Konfigurace hosta a prostřednictvím klienta. Toto rozšíření prostřednictvím klienta ověřuje nastavení, jako například:
+Beyond auditing and [remediating](../how-to/remediate-resources.md) Azure resources, Azure Policy can audit settings inside a machine. Ověřování se provádí pomocí rozšíření Konfigurace hosta a prostřednictvím klienta. Toto rozšíření prostřednictvím klienta ověřuje nastavení, jako například:
 
-- Konfigurace operačního systému
+- The configuration of the operating system
 - Konfigurace nebo přítomnost aplikací
 - Nastavení prostředí
 
 Konfigurace hosta Azure Policy momentálně jenom audituje nastavení uvnitř počítače. Neaplikuje konfigurace.
 
-## <a name="extension-and-client"></a>Rozšíření a klienta
+## <a name="extension-and-client"></a>Extension and client
 
-Pokud chcete auditovat nastavení v rámci počítače, je povolená [rozšíření virtuálního počítače](../../../virtual-machines/extensions/overview.md) . Rozšíření stahuje použitelné zásady přiřazení a odpovídající definici konfigurace.
+To audit settings inside a machine, a [virtual machine extension](../../../virtual-machines/extensions/overview.md) is enabled. The extension downloads applicable policy assignment and the corresponding configuration definition.
 
-### <a name="limits-set-on-the-extension"></a>Omezení nastavená pro rozšíření
+### <a name="limits-set-on-the-extension"></a>Limits set on the extension
 
-Chcete-li omezit rozšíření z vlivu na aplikace běžící v počítači, konfigurace hosta nemůže překročit více než 5% využití procesoru. Toto omezení existuje jak pro předdefinované, tak pro vlastní definice.
+To limit the extension from impacting applications running inside the machine, the Guest Configuration isn't allowed to exceed more than 5% of CPU utilization. This limitation exists for both built-in and custom definitions.
 
-## <a name="register-guest-configuration-resource-provider"></a>Registrace poskytovatele prostředků konfigurace hosta
+## <a name="register-guest-configuration-resource-provider"></a>Register Guest Configuration resource provider
 
-Před použitím konfigurace hosta, zaregistrujte poskytovatele prostředků. Můžete zaregistrovat prostřednictvím portálu nebo pomocí Powershellu. Poskytovatel prostředků je zaregistrován automaticky, pokud je přiřazení zásady konfigurace hostů provedeno prostřednictvím portálu.
+Before you can use Guest Configuration, you must register the resource provider. You can register through the portal or through PowerShell. The resource provider is registered automatically if assignment of a Guest Configuration policy is done through the portal.
 
-### <a name="registration---portal"></a>Registrace – portál
+### <a name="registration---portal"></a>Registration - Portal
 
-Registrace poskytovatele prostředků pro konfiguraci hostovaný na webu Azure portal, postupujte podle těchto kroků:
+To register the resource provider for Guest Configuration through the Azure portal, follow these steps:
 
-1. Spusťte na webu Azure portal a klikněte na **všechny služby**. Vyhledejte a vyberte **předplatná**.
+1. Launch the Azure portal and click on **All services**. Search for and select **Subscriptions**.
 
-1. Vyhledejte a klikněte na předplatné, které chcete povolit konfiguraci hosta pro.
+1. Find and click on the subscription that you want to enable Guest Configuration for.
 
-1. V levé nabídce **předplatné** klikněte na **poskytovatelů prostředků**.
+1. In the left menu of the **Subscription** page, click **Resource providers**.
 
-1. Filtrovat nebo můžete najít pomocí posuvníku **Microsoft.GuestConfiguration**, pak klikněte na tlačítko **zaregistrovat** na stejném řádku.
+1. Filter for or scroll until you locate **Microsoft.GuestConfiguration**, then click **Register** on the same row.
 
-### <a name="registration---powershell"></a>Registrace – PowerShell
+### <a name="registration---powershell"></a>Registration - PowerShell
 
-Zaregistrovat poskytovatele prostředků pro konfiguraci typu Host pomocí prostředí PowerShell, spusťte následující příkaz:
+To register the resource provider for Guest Configuration through PowerShell, run the following command:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 ```
 
-## <a name="validation-tools"></a>Nástroje pro ověření
+## <a name="validation-tools"></a>Validation tools
 
-V počítači používá klient konfigurace Host místní nástroje pro spuštění auditu.
+Inside the machine, the Guest Configuration client uses local tools to run the audit.
 
-V následující tabulce je seznam nástrojů pro místní použít na všech podporovaných operačních systémech:
+The following table shows a list of the local tools used on each supported operating system:
 
-|Operační systém|Nástroje pro ověření|Poznámky:|
+|Operační systém|Validation tool|Poznámky|
 |-|-|-|
-|Windows|[Konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby a Python instaluje rozšíření konfigurace hosta. |
+|Windows|[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby and Python are installed by the Guest Configuration extension. |
 
-### <a name="validation-frequency"></a>Frekvence ověřování
+### <a name="validation-frequency"></a>Validation frequency
 
-Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí přiřazení hostů se nastavení kontroluje v intervalu 15 minut. Výsledky se odešlou do poskytovatele prostředků konfigurace hosta hned po dokončení auditu. Když dojde k [aktivaci vyhodnocení](../how-to/get-compliance-data.md#evaluation-triggers) zásad, stav počítače se zapíše do poskytovatele prostředků konfigurace hosta. Tato aktualizace způsobí Azure Policy vyhodnocení vlastností Azure Resource Manager. Vyhodnocení Azure Policy na vyžádání načte nejnovější hodnotu z poskytovatele prostředků konfigurace hosta. Neaktivuje ale nové auditování konfigurace v rámci počítače.
+The Guest Configuration client checks for new content every 5 minutes. Once a guest assignment is received, the settings are checked on a 15-minute interval. Results are sent to the Guest Configuration resource provider as soon as the audit completes. When a policy [evaluation trigger](../how-to/get-compliance-data.md#evaluation-triggers) occurs, the state of the machine is written to the Guest Configuration resource provider. This update causes Azure Policy to evaluate the Azure Resource Manager properties. An on-demand Azure Policy evaluation retrieves the latest value from the Guest Configuration resource provider. However, it doesn't trigger a new audit of the configuration within the machine.
 
-## <a name="supported-client-types"></a>Podporované klientské typy
+## <a name="supported-client-types"></a>Supported client types
 
-Následující tabulka uvádí seznam podporovaný operační systém v imagích Azure:
+The following table shows a list of supported operating system on Azure images:
 
-|Vydavatel|Název|Verze|
+|Vydavatel|Name (Název)|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
-|credativ|Debian|8, 9|
+|Credativ|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
-|Microsoft|Klient Windows|Windows 10|
+|Microsoft|Klient Windows|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
-|SuSE|SLES|12 SP3|
+|Suse|SLES|12 SP3|
 
 > [!IMPORTANT]
-> Konfigurace hosta může auditovat uzly, na kterých běží podporovaný operační systém. Pokud chcete auditovat virtuální počítače, které používají vlastní image, je třeba duplikovat definici **DeployIfNotExists** a upravit část **if** tak, aby obsahovala vlastnosti obrázku.
+> Guest Configuration can audit nodes running a supported OS. If you would like to audit virtual machines that use a custom image, you need to duplicate the **DeployIfNotExists** definition and modify the **If** section to include your image properties.
 
-### <a name="unsupported-client-types"></a>Nepodporované klientské typy
+### <a name="unsupported-client-types"></a>Unsupported client types
 
-Windows Server nano Server se v žádné verzi nepodporuje.
+Windows Server Nano Server isn't supported in any version.
 
-## <a name="guest-configuration-extension-network-requirements"></a>Síťové požadavky rozšíření konfigurace hosta
+## <a name="guest-configuration-extension-network-requirements"></a>Guest Configuration Extension network requirements
 
-Aby počítače komunikovaly s poskytovatelem prostředků konfigurace hosta v Azure, vyžadují odchozí přístup k datacentrům Azure na portu **443**. Pokud používáte privátní virtuální síť v Azure, která neumožňuje odchozí přenosy, nakonfigurujte výjimky s pravidly [skupiny zabezpečení sítě](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . Značka služby v tuto chvíli pro Azure Policy konfiguraci hostů neexistuje.
+To communicate with the Guest Configuration resource provider in Azure, machines require outbound access to Azure datacenters on port **443**. If you're using a private virtual network in Azure that doesn't allow outbound traffic, configure exceptions with [Network Security Group](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) rules. A service tag doesn't currently exist for Azure Policy Guest Configuration.
 
-U seznamů IP adres můžete stáhnout [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se aktualizuje týdně a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahu IP adres. V oblastech, ve kterých jsou nasazené vaše virtuální počítače, stačí jenom udělit odchozí přístup k IP adresám.
-
-> [!NOTE]
-> Soubor XML IP adresy datacentra Azure obsahuje seznam rozsahů IP adres, které se používají v datových centrech Microsoft Azure. Soubor zahrnuje výpočetní prostředky, SQL a rozsahy úložiště. Aktualizovaný soubor je zveřejněný týdně. Tento soubor odráží aktuálně nasazené rozsahy a všechny nadcházející změny v rozsahu IP adres. Nové rozsahy, které se zobrazí v souboru, se v datových centrech nepoužijí aspoň na jeden týden. Každý týden je vhodné stáhnout nový soubor XML. Pak aktualizujte svůj web tak, aby správně identifikoval služby běžící v Azure. Uživatelé Azure ExpressRoute by si měli všimnout, že se tento soubor používá k aktualizaci inzerce protokolu BGP (Border Gateway Protocol) v Azure Space v první týden v měsíci.
-
-## <a name="guest-configuration-definition-requirements"></a>Požadavky na konfiguraci hosta definice
-
-Každý audit spouštěný pomocí konfigurace hosta vyžaduje dvě definice zásad, definici **DeployIfNotExists** a definici **AuditIfNotExists** . Definice **DeployIfNotExists** slouží k přípravě počítače s agentem konfigurace hosta a dalšími komponentami pro podporu [ověřovacích nástrojů](#validation-tools).
-
-**DeployIfNotExists** definici zásad ověří a řeší následující položky:
-
-- Ověřte, že počítač má přiřazenou konfiguraci k vyhodnocení. Pokud aktuálně není k dispozici žádné přiřazení, načtěte přiřazení a připravte počítač podle:
-  - Ověřování na počítači pomocí [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md)
-  - Instalace nejnovější verze **Microsoft.GuestConfiguration** rozšíření
-  - Instalace [ověřovacích nástrojů](#validation-tools) a závislostí, v případě potřeby
-
-Pokud přiřazení **DeployIfNotExists** nedodržuje předpisy, lze použít [úlohu nápravy](../how-to/remediate-resources.md#create-a-remediation-task) .
-
-Jakmile je přiřazení **DeployIfNotExists** kompatibilní, přiřazení zásad **AuditIfNotExists** pomocí místních ověřovacích nástrojů určí, jestli je přiřazení konfigurace kompatibilní nebo nekompatibilní. Nástroj ověření poskytuje výsledky klientovi Configuration hosta. Klient předává výsledky hosta rozšíření, které zpřístupní je prostřednictvím poskytovatele prostředků konfigurace hosta.
-
-Služba Azure Policy používá poskytovatele prostředků hosta konfigurace **complianceStatus** vlastností na sestavu dodržování předpisů v **dodržování předpisů** uzlu. Další informace najdete v tématu [získávají data dodržování předpisů](../how-to/get-compliance-data.md).
+For IP address lists, you can download [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653). This file is updated weekly, and has the currently deployed ranges and any upcoming changes to the IP ranges. You only need to allow outbound access to the IPs in the regions where your VMs are deployed.
 
 > [!NOTE]
-> Zásady **DeployIfNotExists** se vyžadují, aby zásady **AuditIfNotExists** vracely výsledky. Bez **DeployIfNotExists**se v zásadách **AuditIfNotExists** zobrazuje "0 z 0" prostředků jako stav.
+> The Azure Datacenter IP address XML file lists the IP address ranges that are used in the Microsoft Azure datacenters. The file includes compute, SQL, and storage ranges. An updated file is posted weekly. The file reflects the currently deployed ranges and any upcoming changes to the IP ranges. New ranges that appear in the file aren't used in the datacenters for at least one week. It's a good idea to download the new XML file every week. Then, update your site to correctly identify services running in Azure. Azure ExpressRoute users should note that this file is used to update the Border Gateway Protocol (BGP) advertisement of Azure space in the first week of each month.
 
-Všechny integrované zásady pro konfiguraci hosta jsou součástí iniciativy do definice pro použití v přiřazení skupiny. Integrovaná iniciativa s názvem _\[Preview\]: Auditovat nastavení zabezpečení hesla v počítačích se systémy Linux a Windows_ obsahuje 18 zásad. Obsahuje šest **DeployIfNotExists** a **AuditIfNotExists** dvojice pro Windows a tři páry pro Linux. Logika [definice zásad](definition-structure.md#policy-rule) ověřuje, zda je vyhodnocen pouze cílový operační systém.
+## <a name="guest-configuration-definition-requirements"></a>Guest Configuration definition requirements
 
-#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Auditování nastavení operačního systému po oborových plánech
+Each audit run by Guest Configuration requires two policy definitions, a **DeployIfNotExists** definition and an **AuditIfNotExists** definition. The **DeployIfNotExists** definition is used to prepare the machine with the Guest Configuration agent and other components to support the [validation tools](#validation-tools).
 
-Jedna z iniciativ, které jsou k dispozici v Azure Policy, poskytuje možnost auditování nastavení operačního systému v rámci virtuálních počítačů, které jsou uvedené na základě směrného plánu od Microsoftu. Definice, _\[Preview\]: Auditovat virtuální počítače s Windows, které neodpovídají nastavení základní hodnoty zabezpečení Azure,_ zahrnuje úplnou sadu pravidel auditu na základě nastavení ze služby Active Directory Zásady skupiny.
+The **DeployIfNotExists** policy definition validates and corrects the following items:
 
-Většina nastavení je k dispozici jako parametry. Tato funkce umožňuje přizpůsobit, co je auditováno pro vyrovnání zásad podle požadavků vaší organizace, nebo k namapování zásad na informace třetích stran, jako jsou například oborové zákonné standardy.
+- Validate the machine has been assigned a configuration to evaluate. If no assignment is currently present, get the assignment and prepare the machine by:
+  - Authenticating to the machine using a [managed identity](../../../active-directory/managed-identities-azure-resources/overview.md)
+  - Installing the latest version of the **Microsoft.GuestConfiguration** extension
+  - Installing [validation tools](#validation-tools) and dependencies, if needed
 
-Některé parametry podporují rozsah celočíselných hodnot. Například parametr maximální stáří hesla lze nastavit pomocí operátoru rozsahu, který umožní flexibilitu vlastníkům počítačů. Mohli byste auditovat, že platné Zásady skupiny nastavení, které vyžaduje, aby uživatelé změnili hesla, nesmí být delší než 70 dní, ale neměla by být kratší než jeden den. Jak je popsáno v části info-bubline pro parametr, pokud chcete, aby tyto obchodní zásady byly efektivní hodnotou auditu, nastavte hodnotu na 1, 70.
+If the **DeployIfNotExists** assignment is Non-compliant, a [remediation task](../how-to/remediate-resources.md#create-a-remediation-task) can be used.
 
-Pokud přiřadíte zásadu pomocí šablony nasazení Azure Resource Manager, můžete použít soubor parametrů ke správě těchto nastavení ze správy zdrojového kódu. Pomocí nástroje, jako je třeba Git, můžete spravovat změny zásad auditu s komentáři u jednotlivých dokumentů vrácení se změnami, protože přiřazení by mělo být výjimky na očekávanou hodnotu.
+Once the **DeployIfNotExists** assignment is Compliant, the **AuditIfNotExists** policy assignment uses the local validation tools to determine if the configuration assignment is Compliant or Non-compliant. The validation tool provides the results to the Guest Configuration client. The client forwards the results to the Guest Extension, which makes them available through the Guest Configuration resource provider.
 
-#### <a name="applying-configurations-using-guest-configuration"></a>Použití konfigurace pomocí konfigurace hosta
+Azure Policy uses the Guest Configuration resource providers **complianceStatus** property to report compliance in the **Compliance** node. For more information, see [getting compliance data](../how-to/get-compliance-data.md).
 
-Nejnovější funkce Azure Policy konfiguruje nastavení v počítačích. Definice _nastaví časové pásmo na počítačích s Windows_ a provede změny v počítači konfigurací časového pásma.
+> [!NOTE]
+> The **DeployIfNotExists** policy is required for the **AuditIfNotExists** policy to return results. Without the **DeployIfNotExists**, the **AuditIfNotExists** policy shows "0 of 0" resources as status.
 
-Při přiřazování definic, které začínají na _Konfigurovat_, musíte také přiřadit _předpoklady nasazení definice a povolit zásadu konfigurace hosta na virtuálních počítačích s Windows_. V případě, že se rozhodnete, můžete tyto definice kombinovat v iniciativě.
+All built-in policies for Guest Configuration are included in an initiative to group the definitions for use in assignments. The built-in initiative named _\[Preview\]: Audit Password security settings inside Linux and Windows machines_ contains 18 policies. There are six **DeployIfNotExists** and **AuditIfNotExists** pairs for Windows and three pairs for Linux. The [policy definition](definition-structure.md#policy-rule) logic validates that only the target operating system is evaluated.
 
-#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Přiřazování zásad do počítačů mimo Azure
+#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Auditing operating system settings following industry baselines
 
-Zásady auditu, které jsou k dispozici pro konfiguraci hosta, zahrnují typ prostředku **Microsoft. HybridCompute/počítače** . Všechny počítače připojené ke [službě Azure ARC pro servery](../../../azure-arc/servers/overview.md) , které jsou v oboru přiřazení zásad, jsou automaticky zahrnuté.
+One of the initiatives available in Azure Policy provides the ability to audit operating system settings inside virtual machines following a "baseline" from Microsoft. The definition, _\[Preview\]: Audit Windows VMs that do not match Azure security baseline settings_ includes a complete set of audit rules based on settings from Active Directory Group Policy.
 
-### <a name="multiple-assignments"></a>Více přiřazení
+Most of the settings are available as parameters. This functionality allows you to customize what is audited to align the policy with your organizational requirements or to map the policy to third party information such as industry regulatory standards.
 
-Zásady konfigurace hosta momentálně podporují přiřazování stejného přiřazení hostů jenom jednou pro každý počítač, a to i v případě, že přiřazení zásady používá jiné parametry.
+Some parameters support an integer value range. For example, the Maximum Password Age parameter can be set using a range operator to give flexibility to machine owners. You could audit that the effective Group Policy setting requiring users to change their passwords should be no more than 70 days, but shouldn't be less than one day. As described in the info-bubble for the parameter, to make this business policy the effective audit value, set the value to "1,70".
 
-## <a name="built-in-resource-modules"></a>Předdefinované moduly prostředků
+If you assign the policy using an Azure Resource Manager deployment template, you can use a parameters file to manage these settings from source control. Using a tool such as Git to manage changes to Audit policies with comments at each check-in documents evidence as to why an assignment should be an exception to the expected value.
 
-Při instalaci rozšíření konfigurace hosta je modul PowerShellu GuestConfiguration zahrnutý v nejnovější verzi modulů prostředků DSC. Tento modul se dá stáhnout z Galerie prostředí PowerShell pomocí odkazu ruční stažení ze stránky modulu [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). Formát souboru. nupkg se dá přejmenovat na. zip, aby se dal dekomprimovat a zkontrolovat.
+#### <a name="applying-configurations-using-guest-configuration"></a>Applying configurations using Guest Configuration
 
-## <a name="client-log-files"></a>Soubory protokolů klienta
+The latest feature of Azure Policy configures settings inside machines. The definition _Configure the time zone on Windows machines_ makes changes to the machine by configuring the time zone.
 
-Rozšíření konfigurace hosta zapisuje soubory protokolu do následujících umístění:
+When assigning definitions that begin with _Configure_, you must also assign the definition _Deploy prerequisites to enable Guest Configuration Policy on Windows VMs_. You can combine these definitions in an initiative if you choose.
+
+#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Assigning policies to machines outside of Azure
+
+The Audit policies available for Guest Configuration include the **Microsoft.HybridCompute/machines** resource type. Any machines onboarded to [Azure Arc for Servers](../../../azure-arc/servers/overview.md) that are in the scope of the policy assignment are automatically included.
+
+### <a name="multiple-assignments"></a>Multiple assignments
+
+Guest Configuration policies currently only support assigning the same Guest Assignment once per machine, even if the Policy assignment uses different parameters.
+
+## <a name="built-in-resource-modules"></a>Built-in resource modules
+
+When installing the Guest Configuration extension, the 'GuestConfiguration' PowerShell module is included with the latest version of DSC resource modules. This module can be downloaded from the PowerShell Gallery by using the 'Manual Download' link from the module page [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). The '.nupkg' file format can be renamed to '.zip' to uncompress and review.
+
+## <a name="client-log-files"></a>Client log files
+
+The Guest Configuration extension writes log files to the following locations:
 
 Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
 
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-Kde `<version>` odkazuje na aktuální číslo verze.
+Where `<version>` refers to the current version number.
 
-### <a name="collecting-logs-remotely"></a>Vzdálené shromažďování protokolů
+### <a name="collecting-logs-remotely"></a>Collecting logs remotely
 
-Prvním krokem při řešení potíží s konfiguracemi konfigurace hostů nebo moduly by měly být používat rutinu `Test-GuestConfigurationPackage` podle kroků v části [test konfiguračního balíčku hosta](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).
-Pokud to neproběhne úspěšně, může shromažďování protokolů klienta pomáhat s diagnostikou problémů.
+The first step in troubleshooting Guest Configuration configurations or modules should be to use the `Test-GuestConfigurationPackage` cmdlet following the steps in [Test a Guest Configuration package](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).
+If that isn't successful, collecting client logs can help diagnose issues.
 
 #### <a name="windows"></a>Windows
 
-Pokud chcete k zachycení informací ze souborů protokolů v počítačích s Windows použít funkci příkazu spuštění virtuálního počítače Azure, může být užitečné následující ukázkový skript PowerShellu. Další informace najdete v tématu [spuštění skriptů PowerShellu na virtuálním počítači s Windows pomocí příkazu Spustit](../../../virtual-machines/windows/run-command.md).
+To use the Azure VM Run Command capability to capture information from log files in Windows machines, the following example PowerShell script can be helpful. For more information, see [Run PowerShell scripts in your Windows VM with Run Command](../../../virtual-machines/windows/run-command.md).
 
 ```powershell
 $linesToIncludeBeforeMatch = 0
@@ -176,7 +176,7 @@ Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCM
 
 #### <a name="linux"></a>Linux
 
-Pokud chcete k zachycení informací ze souborů protokolů v počítačích se systémem Linux použít příkaz spuštění virtuálního počítače Azure, může být užitečný následující ukázkový skript bash. Další informace najdete v tématu [spuštění skriptů prostředí ve virtuálním počítači se systémem Linux pomocí příkazu Run](../../../virtual-machines/linux/run-command.md) .
+To use the Azure VM Run Command capability to capture information from log files in Linux machines, the following example Bash script can be helpful. For more information, see [Run shell scripts in your Linux VM with Run Command](../../../virtual-machines/linux/run-command.md)
 
 ```Bash
 linesToIncludeBeforeMatch=0
@@ -185,19 +185,19 @@ latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfigurati
 egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
 ```
 
-## <a name="guest-configuration-samples"></a>Ukázky konfigurace hosta
+## <a name="guest-configuration-samples"></a>Guest Configuration samples
 
-Ukázky konfigurace hosta zásad jsou k dispozici v následujících umístěních:
+Samples for Policy Guest Configuration are available in the following locations:
 
-- [Rejstřík ukázek – konfigurace hostů](../samples/index.md#guest-configuration)
-- [Azure Policy Samples – úložiště GitHub](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
+- [Samples index - Guest Configuration](../samples/index.md#guest-configuration)
+- [Azure Policy samples GitHub repo](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
+- Review examples at [Azure Policy samples](../samples/index.md).
 - Projděte si [strukturu definic Azure Policy](definition-structure.md).
 - Projděte si [Vysvětlení efektů zásad](effects.md).
-- Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
-- Přečtěte si, jak [získat data o dodržování předpisů](../how-to/get-compliance-data.md).
-- Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).
-- Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).
+- Understand how to [programmatically create policies](../how-to/programmatically-create.md).
+- Learn how to [get compliance data](../how-to/get-compliance-data.md).
+- Learn how to [remediate non-compliant resources](../how-to/remediate-resources.md).
+- Review what a management group is with [Organize your resources with Azure management groups](../../management-groups/overview.md).

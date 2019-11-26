@@ -1,16 +1,16 @@
 ---
 title: Přehled zásad Azure
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
-ms.date: 11/21/2019
+ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: 52d8026d81261f5f8207e235ab8d2119be998dac
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: db6a7c592213b0ef8a17466300c37c859e96476b
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321791"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484010"
 ---
-# <a name="overview-of-the-azure-policy-service"></a>Overview of the Azure Policy service
+# <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
 Governance validates that your organization can achieve its goals through effective and efficient use of IT. It meets this need by creating clarity between business goals and IT projects.
 
@@ -147,5 +147,3 @@ Získali jste přehled o službě Azure Policy a některých klíčových koncep
 - [Assign a policy definition using the portal](./assign-policy-portal.md).
 - [Assign a policy definition using the Azure CLI](./assign-policy-azurecli.md).
 - [Assign a policy definition using PowerShell](./assign-policy-powershell.md).
-- Review what a management group is with [Organize your resources with Azure management groups](../management-groups/overview.md).
-- View [Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) on Channel 9.

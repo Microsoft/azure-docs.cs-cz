@@ -1,6 +1,6 @@
 ---
-title: Webová aplikace, která přihlašuje uživatele (Přesun do produkčního prostředí) – Microsoft Identity Platform
-description: Naučte se, jak vytvořit webovou aplikaci, která přihlašuje uživatele (přesunout do produkčního prostředí).
+title: Web app that signs in users (move to production) - Microsoft identity platform
+description: Learn how to build a web app that signs in users (move to production)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,38 +15,46 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd6717c132d32d54c16e7678695a09e35181a057
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: efcc7ed4f80d0e3e9750d19ff95d010052a08b87
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086552"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481891"
 ---
-# <a name="web-app-that-signs-in-users---move-to-production"></a>Webová aplikace, která přihlašuje uživatele – přesune se do produkčního prostředí
+# <a name="web-app-that-signs-in-users-move-to-production"></a>Web app that signs in users: Move to production
 
-Když teď víte, jak získat token pro volání webových rozhraní API, přečtěte si, jak ho přesunout do produkčního prostředí.
+Now that you know how to get a token to call web APIs, learn how to move it to production.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-### <a name="calling-web-apis-scenario"></a>Scénář volání webových rozhraní API
+### <a name="scenario-for-calling-web-apis"></a>Scenario for calling web APIs
 
-Jakmile se vaše webová aplikace přihlásí uživatelům, může volat webová rozhraní API jménem přihlášených uživatelů. Volání webových rozhraní API z webové aplikace je objektem následujícího scénáře:
+After your web app signs in users, it can call web APIs on behalf of the signed-in users. Calling web APIs from the web app is the object of the following scenario:
 
 > [!div class="nextstepaction"]
 > [Webová aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive---aspnet-core-web-app-tutorial"></a>Kurz pro rozsáhlou podrobně-ASP.NET Core Web App
+### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Deep dive: ASP.NET Core web app tutorial
 
-Přečtěte si o dalších způsobech přihlašování uživatelů pomocí ASP.NET Core kurzu: [MS-identity-aspnetcore-WebApp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial). Tato ukázka je postupný kurz s kódem připraveným pro produkci webové aplikace, včetně postupu přidání přihlášení pomocí účtů v nástroji:
+Learn about other ways to sign in users with this ASP.NET Core tutorial: 
 
-- vaše organizace,
-- více organizací,
-- pracovní nebo školní účty nebo osobní účet Microsoft,
-- pomocí [Azure AD B2C](https://aka.ms/aadb2c),
-- nebo v národních cloudech.
+> [!div class="nextstepaction"]
+> [Enable your web apps to sign in users and call APIs with the Microsoft identity platform for developers](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
 
-### <a name="sample-code---java-web-app"></a>Ukázka kódu – webová aplikace Java
+This progressive tutorial has production-ready code for a web app, including how to add sign-in with accounts in:
 
-Přečtěte si další informace o webové aplikaci Java z ukázky na GitHubu: [Webová aplikace Java, která přihlašuje uživatele pomocí platformy a volání Microsoft identity Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+- Your organization
+- Multiple organizations
+- Work or school accounts, or personal Microsoft accounts
+- [Azure AD B2C](https://aka.ms/aadb2c)
+- National clouds
+
+### <a name="sample-code-java-web-app"></a>Sample code: Java web app
+
+Learn more about the Java web app from this sample on GitHub: 
+
+> [!div class="nextstepaction"]
+> [A Java Web application that signs in users with the Microsoft identity platform and calls Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)

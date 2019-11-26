@@ -1,6 +1,6 @@
 ---
-title: Analyzujte své médium pomocí Azure Portal | Microsoft Docs
-description: Toto téma popisuje, jak zpracovat média pomocí Media Analyticsch procesorů médií (MPs) pomocí Azure Portal.
+title: Analyze your media using the Azure portal | Microsoft Docs
+description: This topic discusses how to process your media with Media Analytics media processors (MPs) using the Azure portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,135 +14,131 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 26a951ffaf0253371ffe69c6df798120f0464082
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881899"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462615"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Analýza médií s využitím webu Azure Portal 
 
 > [!IMPORTANT]
-> Prohlédněte si [plány vyřazení](media-services-analytics-overview.md#retirement-plans) některých multimediálních procesorů.
+> Review the [retirement plans](media-services-analytics-overview.md#retirement-plans) of some media processors.
 
 ## <a name="overview"></a>Přehled
-Azure Media Services Analytics je kolekce funkcí pro řeč a vize (na úrovni podniku, dodržování předpisů, zabezpečení a globální dosah), která organizacím a podnikům umožňuje odvodit užitečné poznatky z jejich videosouborů. Podrobnější přehled Azure Media Services Analytics najdete v [tomto](media-services-analytics-overview.md) tématu. 
+Azure Media Services Analytics is a collection of speech and vision components (at enterprise scale, compliance, security and global reach) that make it easier for organizations and enterprises to derive actionable insights from their video files. For more detailed overview of Azure Media Services Analytics see [this](media-services-analytics-overview.md) topic. 
 
-Toto téma popisuje, jak zpracovat média pomocí Media Analyticsch procesorů médií (MPs) pomocí Azure Portal. Media Analytics soubory MP4 nebo soubory JSON sady MPs. Pokud procesor médií vytvořil soubor MP4, budete ho postupně stahovat. Pokud procesor médií vytvořil soubor JSON, stáhnete ho z úložiště objektů BLOB v Azure. 
+This topic discusses how to process your media with Media Analytics media processors (MPs) using the Azure portal. Media Analytics MPs produce MP4 files or JSON files. If a media processor produced an MP4 file, you progressively download the file. If a media processor produced a JSON file, you download the file from the Azure blob storage. 
 
-## <a name="choose-an-asset-that-you-want-to-analyze"></a>Vyberte Asset, který chcete analyzovat.
+## <a name="choose-an-asset-that-you-want-to-analyze"></a>Choose an asset that you want to analyze
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
 2. V okně **Nastavení** vyberte **Assety**.  
    
     ![Analýza videí](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
-3. Vyberte Asset, který chcete analyzovat, a stiskněte tlačítko **analyzovat** .
+3. Select the asset that you would like to analyze and press the **Analyze** button.
    
     ![Analýza videí](./media/media-services-portal-analyze/media-services-portal-analyze002.png)
-4. V okně **zpracovat prostředek média pomocí Media Analytics** vyberte procesor. 
+4. In the **Process media asset with  Media Analytics** window, select the processor. 
    
-    Zbytek článku vysvětluje, proč a jak používat jednotlivé procesory. 
-5. Stisknutím tlačítka **vytvořit** spusťte úlohu.
+    The rest of the article explains why and how to use each processor. 
+5. Press **Create** to the start a job.
 
 ## <a name="azure-media-indexer"></a>Azure Media Indexer
-Procesor **Azure Media Indexer** médií umožňuje vytvářet soubory médií a obsah prohledávatelné a také generovat skryté titulky. V této části jsou uvedeny některé podrobnosti o možnostech, které pro tuto sadu MP zadáte.
+The **Azure Media Indexer** media processor enables you to make media files and content searchable, as well as generate closed captioning tracks. This section gives some details about options that you specify for this MP.
 
 ![Analýza videí](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
 
 ### <a name="language"></a>Jazyk
-Přirozený jazyk, který se má rozpoznat v multimediálním souboru Například angličtina nebo španělština. 
+The natural language to be recognized in the multimedia file. For example, English or Spanish. 
 
-### <a name="captions"></a>Titulky
-Můžete zvolit formát titulku, který se vygeneruje z vašeho obsahu. Úloha indexování může generovat soubory titulků v následujících formátech:  
-
-* **Sami**
+### <a name="captions"></a>Captions
+You can choose a caption format that will be generated from your content. An indexing job can generate closed caption files in the following formats:  
+ 
 * **TTML**
 * **WebVTT**
 
-Soubory skrytého titulku (CC) v těchto formátech lze použít k zpřístupnění zvukových a videosouborů uživatelům s postižením sluchu.
-
-### <a name="aib-file"></a>Soubor AIB
-Tuto možnost vyberte, pokud chcete vygenerovat soubor objektu BLOB zvukového indexu pro použití s vlastním SQL Server IFilter. Další informace najdete v [tomto](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) blogu.
+Closed Caption (CC) files in these formats can be used to make audio and video files accessible to people with hearing disability.
 
 ### <a name="keywords"></a>Klíčová slova
-Tuto možnost vyberte, pokud chcete vygenerovat soubor XML s klíčovými slovy. Tento soubor obsahuje klíčová slova extrahovaná z obsahu řeči s informacemi o četnosti a posunu.
+Select this option if you would like to generate a keywords XML file. This file contains keywords extracted from the speech content, with frequency and offset information.
 
 ### <a name="job-name"></a>Název úlohy
-Popisný název, který vám umožní identifikovat úlohu. [Tento](media-services-portal-check-job-progress.md) článek popisuje, jak můžete monitorovat průběh úlohy. 
+A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
 
 ### <a name="output-file"></a>Výstupní soubor
-Popisný název, který vám umožní identifikovat výstupní obsah. 
+A friendly name that lets you identify the output content. 
 
 ### <a name="speed"></a>Rychlost
-Zadejte rychlost, s jakou se má zrychlit vstupní video. Výstupem je stabilizovaná a časově časová verze vstupního videa.
+Specify the speed with which to speed up the input video. The output is a stabilized and time-lapsed rendition of the input video.
 
 ### <a name="job-name"></a>Název úlohy
-Popisný název, který vám umožní identifikovat úlohu. [Tento](media-services-portal-check-job-progress.md) článek popisuje, jak můžete monitorovat průběh úlohy. 
+A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
 
 ### <a name="output-file"></a>Výstupní soubor
-Popisný název, který vám umožní identifikovat výstupní obsah. 
+A friendly name that lets you identify the output content. 
 
 ## <a name="azure-media-face-detector"></a>Azure Media Face Detector
-Procesor **Azure Media Face Detector** Media (MP) umožňuje počítat, sledovat pohyby a dokonce i vyhodnocovat podíl a reakci v cílové skupině prostřednictvím výrazů obličeje. Tato služba obsahuje dvě funkce: 
+The **Azure Media Face Detector** media processor (MP) enables you to count, track movements, and even gauge audience participation and reaction via facial expressions. This service contains two features: 
 
-* **Rozpoznávání tváře**
+* **Face detection**
   
-    Detekce tváře vyhledává a sleduje lidské obličeje ve videu. Je možné detekovat více plošek a následně je sledovat při jejich přesunu s metadaty pro čas a umístění vrácenými v souboru JSON. Během sledování se pokusí dát stejnému snímku stejné ID, zatímco se osoba pohybuje na obrazovce, a to i v případě, že jsou zablokované nebo stručně opouští rámeček.
+    Face detection finds and tracks human faces within a video. Multiple faces can be detected and subsequently be tracked as they move around, with the time and location metadata returned in a JSON file. During tracking, it will attempt to give a consistent ID to the same face while the person is moving around on screen, even if they are obstructed or briefly leave the frame.
   
   > [!NOTE]
-  > Tato služba neprovádí rozpoznávání obličeje. Jednotlivá osoba, která opustí rámec nebo se může zablokovat příliš dlouho, bude při návratu na ni předána novému ID.
+  > This services does not perform facial recognition. An individual who leaves the frame or becomes obstructed for too long will be given a new ID when they return.
   > 
   > 
-* **Detekce emoce**
+* **Emotion detection**
   
-    Detekce emoce je volitelná součást procesoru Rozpoznávání tvářech médií, která vrací analýzu více atributů emocionálních ze zjištěných ploch, včetně štěstí, smutek, obav, hněv a dalších. 
+    Emotion Detection is an optional component of the Face Detection Media Processor that returns analysis on multiple emotional attributes from the faces detected, including happiness, sadness, fear, anger, and more. 
 
 ![Analýza videí](./media/media-services-portal-analyze/media-services-portal-analyze005.png)
 
-### <a name="detection-mode"></a>Režim detekce
-Procesor může použít jeden z následujících režimů:
+### <a name="detection-mode"></a>Detection mode
+One of the following modes can be used by the processor:
 
-* rozpoznávání tváře
-* detekce emoce podle obličeje
-* zjištění agregované emoce
+* face detection
+* per face emotion detection
+* aggregate emotion detection
 
 ### <a name="job-name"></a>Název úlohy
-Popisný název, který vám umožní identifikovat úlohu. [Tento](media-services-portal-check-job-progress.md) článek popisuje, jak můžete monitorovat průběh úlohy. 
+A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
 
 ### <a name="output-file"></a>Výstupní soubor
-Popisný název, který vám umožní identifikovat výstupní obsah. 
+A friendly name that lets you identify the output content. 
 
 ## <a name="azure-media-motion-detector"></a>Azure Media Motion Detector
-Procesor **Azure Media Motion Detector** Media (MP) umožňuje efektivně identifikovat oddíly zájmu v jiném dlouhodobém a nenáročném videu. Detekce pohybu se dá použít ve statických záběrech fotoaparátu k identifikaci částí videa, kde dochází k pohybu. Vygeneruje soubor JSON obsahující metadata s časovými razítky a ohraničující oblastí, kde došlo k události.
+The **Azure Media Motion Detector** media processor (MP) enables you to efficiently identify sections of interest within an otherwise long and uneventful video. Motion detection can be used on static camera footage to identify sections of the video where motion occurs. It generates a JSON file containing a metadata with timestamps and the bounding region where the event occurred.
 
-Tato technologie je zaměřená na kanály videa o zabezpečení, takže je možné kategorizovat pohyb do relevantních událostí a falešně pozitivních změn, jako jsou například stíny a osvětlení. To vám umožní vygenerovat výstrahy zabezpečení z kanálů kamery, aniž by byly zasílány proti spamu s nepodstatnými nepodstatnými událostmi, a současně může extrahovat moment zájmu z extrémně dlouhých videí o monitorování.
+Targeted towards security video feeds, this technology is able to categorize motion into relevant events and false positives such as shadows and lighting changes. This allows you to generate security alerts from camera feeds without being spammed with endless irrelevant events, while being able to extract moments of interest from extremely long surveillance videos.
 
 ![Analýza videí](./media/media-services-portal-analyze/media-services-portal-analyze006.png)
 
 ## <a name="azure-media-video-thumbnails"></a>Azure Media Video Thumbnails
-Tento procesor vám může přispět k vytváření souhrnů dlouhých videí tím, že automaticky vybere zajímavé fragmenty ze zdrojového videa. To je užitečné v případě, že chcete poskytnout rychlý přehled toho, co na dlouhém videu očekáváte. Podrobné informace a příklady najdete v tématu [použití Azure Media Video Thumbnails k vytvoření shrnutí videa](media-services-video-summarization.md) .
+This processor can help you create summaries of long videos by automatically selecting interesting snippets from the source video. This is useful when you want to provide a quick overview of what to expect in a long video. For detailed information and examples, see [Use Azure Media Video Thumbnails to Create a Video Summarization](media-services-video-summarization.md)
 
 ![Analýza videí](./media/media-services-portal-analyze/media-services-portal-analyze008.png)
 
 ### <a name="job-name"></a>Název úlohy
-Popisný název, který vám umožní identifikovat úlohu. [Tento](media-services-portal-check-job-progress.md) článek popisuje, jak můžete monitorovat průběh úlohy. 
+A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
 
 ### <a name="output-file"></a>Výstupní soubor
-Popisný název, který vám umožní identifikovat výstupní obsah. 
+A friendly name that lets you identify the output content. 
 
 ## <a name="azure-media-content-moderator"></a>Azure Media Content Moderator
-Tento procesor pomáhá detekovat potenciální obsah pro dospělé a pikantní ve videích. Procesor automaticky detekuje snímky a klíčové snímky ve videu. Vyhodnotí klíčové snímky pro možný obsah pro dospělé nebo pikantní a navrhne kontroly na základě výchozích prahových hodnot. Podrobné informace a příklady najdete v tématu [použití Azure Media Content moderator pro střední videa](media-services-content-moderation.md) .
+This processor helps you detect potential adult and racy content in videos. The processor automatically detects shots and keyframes in the video. It scores the keyframes for possible adult or racy content, and suggests reviews based on default thresholds. For detailed information and examples, see [Use Azure Media Content Moderator to moderate videos](media-services-content-moderation.md)
 
-![Střední videa](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
+![Moderate videos](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
 ### <a name="version"></a>Version 
-Použijte "2,0".
+Use "2.0".
 
 ### <a name="mode"></a>Režim
-Verze 2,0 ignoruje nastavení `Mode`.
+The 2.0 version ignore the `Mode` setting.
 
 ## <a name="next-steps"></a>Další kroky
-Zobrazení Media Servicesch cest výuky.
+View Media Services learning paths.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

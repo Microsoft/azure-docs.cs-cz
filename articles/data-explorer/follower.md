@@ -1,70 +1,73 @@
 ---
-title: K připojení databází v Azure Průzkumník dat použít funkci následovat databáze.
-description: Přečtěte si informace o tom, jak připojit databáze v Azure Průzkumník dat pomocí funkce databáze následného.
+title: Use follower database feature to attach databases in Azure Data Explorer
+description: Learn about how to attach databases in Azure Data Explorer using the follower database feature.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 2306b6cbdd347e3be9921b196ae06385ef5ca90a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 61cfcfc41a1d9caeaded475511dd69ebc48756e2
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083194"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462022"
 ---
-# <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>K připojení databází v Azure Průzkumník dat použít databázi sledování
+# <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Use follower database to attach databases in Azure Data Explorer
 
-Funkce **Database** by vám umožní připojit k vašemu clusteru Azure Průzkumník dat databázi umístěnou v jiném clusteru. **Databáze následného zpracování** je připojena v režimu jen *pro čtení* , což umožňuje zobrazit data a spouštět dotazy na data, která byla ingestovaná do **databáze vedoucího**procesu. Databáze sledování synchronizuje změny v databázích vedoucích. Z důvodu synchronizace je k dispozici prodleva mezi několika sekundami v dostupnosti dat. Délka časového prodlevy závisí na celkové velikosti metadat vedoucí databáze. Databáze vedoucí a následný používá stejný účet úložiště k načtení dat. Úložiště vlastní vedoucí databáze. Databáze následného zobrazení dat, aniž by je musela ingestovat. Vzhledem k tomu, že připojená databáze je databáze jen pro čtení, není možné upravovat data, tabulky a zásady v databázi s výjimkou [zásad ukládání do mezipaměti](#configure-caching-policy), [objektů zabezpečení](#manage-principals)a [oprávnění](#manage-permissions). Připojené databáze nejde odstranit. Musí být odpojeni vedoucím nebo následným a pouze potom je možné je odstranit. 
+The **follower database** feature allows you to attach a database located in a different cluster to your Azure Data Explorer cluster. The **follower database** is attached in *read-only* mode, making it possible to view the data and run queries on the data that was ingested into the **leader database**. The follower database synchronizes changes in the leader databases. Due to the synchronization, there's a data lag of a few seconds to a few minutes in data availability. The length of the time lag depends on the overall size of the leader database metadata. The leader and follower databases use the same storage account to fetch the data. The storage is owned by the leader database. The follower database views the data without needing to ingest it. Since the attached database is a read-only database, the data, tables, and policies in the database can't be modified except for [caching policy](#configure-caching-policy), [principals](#manage-principals), and [permissions](#manage-permissions). Attached databases can't be deleted. They must be detached by the leader or follower and only then they can be deleted. 
 
-Připojení databáze k jinému clusteru pomocí schopnosti sledování se používá jako infrastruktura pro sdílení dat mezi organizacemi a týmy. Tato funkce je užitečná pro oddělení výpočetních prostředků k ochraně produkčního prostředí před neprodukčními případy použití. K přidružení nákladů na cluster Azure Průzkumník dat ke straně, která spouští dotazy na data, se dá použít i následný.
+Attaching a database to a different cluster using the follower capability is used as the infrastructure to share data between organizations and teams. The feature is useful to segregate compute resources to protect a production environment from non-production use cases. Follower can also be used to associate the cost of Azure Data Explorer cluster to the party that runs queries on the data.
 
-## <a name="which-databases-are-followed"></a>Které databáze jsou následovány?
+## <a name="which-databases-are-followed"></a>Which databases are followed?
 
-* Cluster může splňovat jednu databázi, několik databází nebo všechny databáze vedoucího clusteru. 
-* Jeden cluster může následovat po databázích z více vedoucích clusterů. 
-* Cluster může obsahovat i databáze a vedoucí databáze pro následnou instalaci.
+* A cluster can follow one database, several databases, or all databases of a leader cluster. 
+* A single cluster can follow databases from multiple leader clusters. 
+* A cluster can contain both follower databases and leader databases
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-1. [Vytvořte cluster a databázi](/azure/data-explorer/create-cluster-database-portal) pro vedoucího a následného.
-1. Ingestování [dat](/azure/data-explorer/ingest-sample-data) do vedoucí databáze pomocí jedné z různých metod popsaných v tématu [Přehled](/azure/data-explorer/ingest-data-overview)ingestování.
+1. [Create cluster and DB](/azure/data-explorer/create-cluster-database-portal) for the leader and follower.
+1. [Ingest data](/azure/data-explorer/ingest-sample-data) to leader database using one of various methods discussed in [ingestion overview](/azure/data-explorer/ingest-data-overview).
 
 ## <a name="attach-a-database"></a>Připojení databáze
 
-Existují různé metody, které můžete použít k připojení databáze. V tomto článku se podíváme na připojení databáze pomocí C# šablony nebo Azure Resource Manager. Aby bylo možné připojit databázi, je nutné mít oprávnění k zadanému clusteru vedoucího a následnému clusteru. Další informace o oprávněních najdete v tématu [Správa oprávnění](#manage-permissions).
+There are various methods you can use to attach a database. In this article, we discuss attaching a database using C# or an Azure Resource Manager template. To attach a database, you must have permissions on the leader cluster and the follower cluster. For more information about permissions, see [manage permissions](#manage-permissions).
 
-### <a name="attach-a-database-using-c"></a>Připojení databáze pomocíC#
+### <a name="attach-a-database-using-c"></a>Attach a database using C#
 
-**Potřebný balíčky NuGet**
+**Needed NuGets**
 
-* Nainstalujte [Microsoft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Nainstalujte [Microsoft. REST. ClientRuntime. Azure. Authentication pro ověřování](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
+* Install [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Install [Microsoft.Rest.ClientRuntime.Azure.Authentication for authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
 
 
 ```Csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "xxxxxxxxxxxxxx";//Client secret
-var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var resourceManagementClient = new ResourceManagementClient(serviceCreds);
+var resourceManagementClient = new KustoManagementClient(serviceCreds){
+    SubscriptionId = followerSubscriptionId
+};
 
-var leaderResourceGroupName = "testrg";
 var followerResourceGroupName = "followerResouceGroup";
+var leaderResourceGroup = "leaderResouceGroup";
 var leaderClusterName = "leader";
 var followerClusterName = "follower";
 var attachedDatabaseConfigurationName = "adc";
-var databaseName = "db" // Can be specific database name or * for all databases
+var databaseName = "db"; // Can be specific database name or * for all databases
 var defaultPrincipalsModificationKind = "Union"; 
 var location = "North Central US";
 
 AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new AttachedDatabaseConfiguration()
 {
-    ClusterResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}",
+    ClusterResourceId = $"/subscriptions/{leaderSubscriptionId}/resourceGroups/{leaderResourceGroup}/providers/Microsoft.Kusto/Clusters/{leaderClusterName}",
     DatabaseName = databaseName,
     DefaultPrincipalsModificationKind = defaultPrincipalsModificationKind,
     Location = location
@@ -73,9 +76,9 @@ AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new Atta
 var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
 ```
 
-### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Připojení databáze pomocí šablony Azure Resource Manager
+### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Attach a database using an Azure Resource Manager template
 
-V této části se dozvíte, jak připojit databázi pomocí [Azure Resource Manager šablony](../azure-resource-manager/resource-group-overview.md). 
+In this section, you learn how to attach a database by using an [Azure Resource Manager template](../azure-resource-manager/resource-group-overview.md). 
 
 ```json
 {
@@ -158,50 +161,53 @@ V této části se dozvíte, jak připojit databázi pomocí [Azure Resource Man
 
 ### <a name="deploy-the-template"></a>Nasazení šablony 
 
-Šablonu Azure Resource Manager můžete nasadit [pomocí Azure Portal](https://portal.azure.com) nebo pomocí PowerShellu.
+You can deploy the Azure Resource Manager template by [using the Azure portal](https://portal.azure.com) or using powershell.
 
-   ![nasazení šablony](media/follower/template-deployment.png)
+   ![template deployment](media/follower/template-deployment.png)
 
 
 |**Nastavení**  |**Popis**  |
 |---------|---------|
-|Název clusteru sledování     |  Název clusteru následných       |
-|Název připojených konfigurací databáze    |    Název objektu připojené konfigurace databáze. Název musí být na úrovni clusteru jedinečný.     |
-|Název databáze     |      Název databáze, která se má dodržovat Pokud chcete sledovat všechny databáze vedoucího vedoucího, použijte znak *.   |
-|ID prostředku clusteru vedoucího procesu    |   ID prostředku vedoucího clusteru      |
-|Výchozí typ změny objektů zabezpečení    |   Výchozí typ změny objektu zabezpečení. Může být `Union`, `Replace` nebo `None`. Další informace o výchozím typu změny objektu zabezpečení naleznete v tématu [hlavní ovládací prvek typu změny](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
-|Umístění   |   Umístění všech prostředků. Vedoucí a následný musí být ve stejném umístění.       |
+|Follower Cluster Name     |  The name of the follower cluster       |
+|Attached Database Configurations Name    |    The name of the attached database configurations object. The name must be unique at the cluster level.     |
+|Název databáze     |      The name of the database to be followed. If you want to follow all the leader's databases, use '*'.   |
+|Leader Cluster Resource ID    |   The resource ID of the leader cluster.      |
+|Default Principals Modification Kind    |   The default principal modification kind. Can be `Union`, `Replace` or `None`. For more information about default principal modification kind, see [principal modification kind control command](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
+|Umístění   |   The location of all the resources. The leader and the follower must be in the same location.       |
  
-### <a name="verify-that-the-database-was-successfully-attached"></a>Ověření úspěšného připojení databáze
+### <a name="verify-that-the-database-was-successfully-attached"></a>Verify that the database was successfully attached
 
-Chcete-li ověřit, zda byla databáze úspěšně připojena, vyhledejte v [Azure Portal](https://portal.azure.com)připojené databáze. 
+To verify that the database was successfully attached, find your attached databases in the [Azure portal](https://portal.azure.com). 
 
-1. Přejděte do clusteru sledování a vyberte **databáze** .
-1. V seznamu databází vyhledejte nové databáze jen pro čtení.
+1. Navigate to the follower cluster and select **Databases**
+1. Search for new Read-only databases in the database list.
 
-    ![Databáze následného sledování jen pro čtení](media/follower/read-only-follower-database.png)
+    ![Read-only follower database](media/follower/read-only-follower-database.png)
 
-Další možností:
+Alternatively:
 
-1. Přejděte do clusteru vedoucího a vyberte **databáze** .
-2. Ověřte, že jsou příslušné databáze označené jako **sdílené s ostatními** > **Ano** .
+1. Navigate to the leader cluster and select **Databases**
+2. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
 
-    ![Čtení a zápis připojených databází](media/follower/read-write-databases-shared.png)
+    ![Read and write attached databases](media/follower/read-write-databases-shared.png)
 
-## <a name="detach-the-follower-database-using-c"></a>Odpojení databáze následného použitíC# 
+## <a name="detach-the-follower-database-using-c"></a>Detach the follower database using C# 
 
-### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Odpojení připojené databáze od následného nástroje od clusteru následných
+### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Detach the attached follower database from the follower cluster
 
-Cluster následného připojení může odpojit všechny připojené databáze následujícím způsobem:
+Follower cluster can detach any attached database as follows:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "xxxxxxxxxxxxxx";//Client secret
-var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var resourceManagementClient = new ResourceManagementClient(serviceCreds);
+var resourceManagementClient = new KustoManagementClient(serviceCreds){
+    SubscriptionId = followerSubscriptionId
+};
 
 var followerResourceGroupName = "testrg";
 //The cluster and database that are created as part of the prerequisites
@@ -211,18 +217,21 @@ var attachedDatabaseConfigurationsName = "adc";
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
 
-### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Odpojení připojené databáze následného procesu od vedoucího clusteru
+### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Detach the attached follower database from the leader cluster
 
-Cluster vedoucího procesu může odpojit jakoukoli připojenou databázi následujícím způsobem:
+The leader cluster can detach any attached database as follows:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "xxxxxxxxxxxxxx";//Client secret
-var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var resourceManagementClient = new ResourceManagementClient(serviceCreds);
+var resourceManagementClient = new KustoManagementClient(serviceCreds){
+    SubscriptionId = leaderSubscriptionId
+};
 
 var leaderResourceGroupName = "testrg";
 var followerResourceGroupName = "followerResouceGroup";
@@ -232,42 +241,42 @@ var followerClusterName = "follower";
 var followerDatabaseDefinition = new FollowerDatabaseDefinition()
     {
         AttachedDatabaseConfigurationName = "adc",
-        ClusterResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
+        ClusterResourceId = $"/subscriptions/{followerSubscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
     };
 
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
 
-## <a name="manage-principals-permissions-and-caching-policy"></a>Správa objektů zabezpečení, oprávnění a zásad ukládání do mezipaměti
+## <a name="manage-principals-permissions-and-caching-policy"></a>Manage principals, permissions, and caching policy
 
-### <a name="manage-principals"></a>Spravovat objekty zabezpečení
+### <a name="manage-principals"></a>Manage principals
 
-Při připojování databáze zadejte **výchozí druh úprav objektu zabezpečení**. Ve výchozím nastavení je zachovává kolekce databáze vedoucích [autorizovaných objektů zabezpečení](/azure/kusto/management/access-control/index#authorization) .
+When attaching a database, specify the **"default principals modification kind"** . The default is keeping the leader database collection of [authorized principals](/azure/kusto/management/access-control/index#authorization)
 
-|**Plnění** |**Popis**  |
+|**Kind** |**Popis**  |
 |---------|---------|
-|**Sjednocovací**     |   Připojené objekty databáze budou vždycky zahrnovat původní objekty zabezpečení databáze a další nové objekty zabezpečení přidané do databáze následného objektu.      |
-|**nahradit**   |    Žádná dědičnost objektů zabezpečení z původní databáze. Pro připojenou databázi je nutné vytvořit nové objekty zabezpečení. K dědění objektu blokování je nutné přidat alespoň jeden objekt zabezpečení.     |
-|**Žádné**   |   Připojené objekty zabezpečení databáze obsahují pouze objekty zabezpečení původní databáze bez dalších objektů zabezpečení.      |
+|**Union**     |   The attached database principals will always include the original database principals plus additional new principals added to the follower database.      |
+|**Replace**   |    No inheritance of principals from the original database. New principals must be created for the attached database.     |
+|**None**   |   The attached database principals include only the principals of the original database with no additional principals.      |
 
-Další informace o použití příkazů pro řízení ke konfiguraci autorizovaných objektů zabezpečení najdete v tématu [Řídicí příkazy pro správu clusteru následného](/azure/kusto/management/cluster-follower)řízení.
+For more information about using control commands to configure the authorized principals, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).
 
-### <a name="manage-permissions"></a>Spravovat oprávnění
+### <a name="manage-permissions"></a>Manage permissions
 
-Správa oprávnění databáze jen pro čtení je stejná jako u všech typů databáze. Viz téma [Správa oprávnění v Azure Portal](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
+Managing read-only database permission is the same as for all database types. See [manage permissions in the Azure portal](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
 
-### <a name="configure-caching-policy"></a>Konfigurace zásad ukládání do mezipaměti
+### <a name="configure-caching-policy"></a>Configure caching policy
 
-Správce databáze následného řízení může upravit [zásady ukládání do mezipaměti](/azure/kusto/management/cache-policy) připojené databáze nebo jakékoli její tabulky v hostitelském clusteru. Ve výchozím nastavení je zachovává kolekce databází vedoucí databáze a zásad ukládání do mezipaměti na úrovni tabulky. Můžete mít například 30denní zásadu pro ukládání do mezipaměti v databázi vedoucího pro spouštění měsíčních sestav a tři dny pro ukládání do mezipaměti v databázi sledování a dotazovat se pouze na poslední data pro řešení potíží. Další informace o použití příkazů pro řízení pro konfiguraci zásad ukládání do mezipaměti v databázi a tabulce následného řízení najdete v tématu [Řídicí příkazy pro správu clusteru následných](/azure/kusto/management/cluster-follower).
+The follower database administrator can modify the [caching policy](/azure/kusto/management/cache-policy) of the attached database or any of its tables on the hosting cluster. The default is keeping the leader database collection of database and table-level caching policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).
 
 ## <a name="limitations"></a>Omezení
 
-* Následný a vedoucí cluster musí být ve stejné oblasti.
-* Ingestování [streamování](/azure/data-explorer/ingest-data-streaming) se nedá použít na databázi, která se právě sleduje.
-* Než odpojíte databázi, která je připojená k jinému clusteru, nemůžete ji odstranit.
-* Nemůžete odstranit cluster, který má databázi připojenou k jinému clusteru, než ho odpojíte.
-* Nelze zastavit cluster, který má připojené následné nebo vedoucí databáze. 
+* The follower and the leader clusters must be in the same region.
+* [Streaming ingestion](/azure/data-explorer/ingest-data-streaming) can't be used on a database that is being followed.
+* You can't delete a database that is attached to a different cluster before detaching it.
+* You can't delete a cluster that has a database attached to a different cluster before detaching it.
+* You can't stop a cluster that has attached follower or leader database(s). 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o konfiguraci následného clusteru najdete v tématu [Řídicí příkazy pro správu clusteru následného](/azure/kusto/management/cluster-follower).
+* For information about follower cluster configuration, see [Control commands for managing a follower cluster](/azure/kusto/management/cluster-follower).

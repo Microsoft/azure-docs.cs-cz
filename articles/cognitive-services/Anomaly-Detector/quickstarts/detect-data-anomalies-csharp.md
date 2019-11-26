@@ -1,117 +1,110 @@
 ---
-title: 'Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomáliíC#'
+title: 'Quickstart: Detect anomalies in your time series data using the Anomaly Detector REST API and C#'
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API pro detekci anomálií použijte k detekci anomálií v datové řadě buď jako dávku, nebo na streamovaná data.
+description: Use the Anomaly Detector API to detect abnormalities in your data series either as a batch or on streaming data.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 10/14/2019
+ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 222fb5d37065bc40e9c96a9ff3487a7ea8ad0570
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 76308e2167cbedae9572f1fb5037dfb394ce4b17
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554775"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483416"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomáliíC# 
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Quickstart: Detect anomalies in your time series data using the Anomaly Detector REST API and C# 
 
-Tento rychlý Start vám umožní začít používat dva režimy zjišťování rozhraní API pro detekci anomálií ke zjištění anomálií v datech časových řad. Tato C# aplikace posílá dvě požadavky rozhraní API obsahující data časových řad ve formátu JSON a získá odpovědi.
+Use this quickstart to start using the Anomaly Detector API's two detection modes to detect anomalies in your time series data. This C# application sends two API requests containing JSON-formatted time series data, and gets the responses.
 
-| Požadavek rozhraní API                                        | Výstup aplikace                                                                                                                         |
-|----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| Zjištění anomálií jako dávky                        | Odpověď JSON obsahující stav anomálie (a další data) pro každý datový bod v datech časové řady a pozice všech zjištěných anomálií. |
-| Zjistit stav anomálií nejnovějšího datového bodu | Odpověď JSON obsahující stav anomálie (a další data) pro poslední datový bod v datech časové řady.                                                                                                                                         |
+| API request                                        | Application output                                                                                                                                         |
+|----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Detect anomalies as a batch                        | The JSON response containing the anomaly status (and other data) for each data point in the time series data, and the positions of any detected anomalies. |
+| Detect the anomaly status of the latest data point | The JSON response containing the anomaly status (and other data) for the latest data point in the time series data.                                        |
 
- I když je tato aplikace napsaná v C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+ While this application is written in C#, the API is a RESTful web service compatible with most programming languages. You can find the source code for this quickstart on [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs).
 
 ## <a name="prerequisites"></a>Předpoklady
 
-- Libovolná edice sady [Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/),
-
-- Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet. Postup instalace Newtonsoft. JSON jako balíčku NuGet v aplikaci Visual Studio:
+- Any edition of [Visual Studio 2017 or later](https://visualstudio.microsoft.com/downloads/),
+- An Anomaly detector key and endpoint
+- Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet. To install Newtonsoft.Json as a NuGet package in Visual Studio:
     
-    1. Klikněte pravým tlačítkem na projekt v **Průzkumník řešení**.
-    2. Vyberte **Spravovat balíčky NuGet**.
-    3. Vyhledejte *Newtonsoft. JSON* a nainstalujte balíček.
+    1. Right click your project in **Solution Explorer**.
+    2. Select **Manage NuGet Packages**.
+    3. Search for *Newtonsoft.Json* and install the package.
 
-- Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
+- If you're using Linux/MacOS, this application can be run by using [Mono](https://www.mono-project.com/).
 
-- Soubor JSON, který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
+- A JSON file containing time series data points. The example data for this quickstart can be found on [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 
-### <a name="create-an-anomaly-detector-resource"></a>Vytvoření prostředku detektoru anomálií
+### <a name="create-an-anomaly-detector-resource"></a>Create an Anomaly Detector resource
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
 ## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
-1. V aplikaci Visual Studio vytvořte nové řešení konzoly a přidejte následující balíčky. 
+1. In Visual Studio, create a new console solution and add the following packages. 
 
     [!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=usingStatements)]
 
 
-2. Vytvořte proměnné pro svůj klíč předplatného a koncový bod. Níže jsou uvedeny identifikátory URI, které lze použít pro detekci anomálií. Ty se připojí ke koncovému bodu služby později a vytvoří adresy URL žádostí o rozhraní API.
+2. Create variables for your subscription key and your endpoint. Below are the URIs you can use for anomaly detection. These will be appended to your service endpoint later to create the API request URLs.
 
-    |Metoda detekce  |IDENTIFIKÁTOR URI  |
-    |---------|---------|
-    |Zjišťování dávky    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |Zjišťování nejnovějšího datového bodu     | `/anomalydetector/v1.0/timeseries/last/detect`        |
-    
+    | Detection method                   | URI                                              |
+    |------------------------------------|--------------------------------------------------|
+    | Batch detection                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
+    | Detection on the latest data point | `/anomalydetector/v1.0/timeseries/last/detect`   |
+        
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
-## <a name="create-a-function-to-send-requests"></a>Vytvoření funkce pro odesílání požadavků
+## <a name="create-a-function-to-send-requests"></a>Create a function to send requests
 
-1. Vytvořte novou asynchronní funkci nazvanou `Request`, která přebírá proměnné vytvořené výše.
+1. Create a new async function called `Request` that takes the variables created above.
 
-2. Nastavte informace o protokolu zabezpečení klienta a hlavičce pomocí objektu `HttpClient`. Nezapomeňte přidat klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key`. Pak pro požadavek vytvořte objekt `StringContent`.
+2. Set the client's security protocol and header information using an `HttpClient` object. Be sure to add your subscription key to the `Ocp-Apim-Subscription-Key` header. Then create a `StringContent` object for the request.
 
-3. Odešlete žádost pomocí `PostAsync()` a potom odpověď vraťte.
+3. Send the request with `PostAsync()`, and then return the response.
 
     [!code-csharp[Request method](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=requestMethod)]
 
-## <a name="detect-anomalies-as-a-batch"></a>Zjištění anomálií jako dávky
+## <a name="detect-anomalies-as-a-batch"></a>Detect anomalies as a batch
 
-1. Vytvořte novou funkci nazvanou `detectAnomaliesBatch()`. Sestavte požadavek a odešlete ho voláním funkce `Request()` s vaším koncovým bodem, klíčem předplatného, adresou URL pro detekci anomálií služby Batch a daty časových řad.
+1. Create a new function called `detectAnomaliesBatch()`. Construct the request and send it by calling the `Request()` function with your endpoint, subscription key, the URL for batch anomaly detection, and the time series data.
 
-2. Deserializovat objekt JSON a zapsat ho do konzoly.
+2. Deserialize the JSON object, and write it to the console.
 
-3. Pokud odpověď obsahuje `code` pole, vytiskněte kód chyby a chybovou zprávu. 
+3. If the response contains `code` field, print the error code and error message. 
 
-4. V opačném případě najděte pozice anomálií v datové sadě. Pole odpovědi `isAnomaly` obsahuje pole logických hodnot, z nichž každý označuje, zda je datový bod anomálií. Převeďte tuto hodnotu na pole řetězců s funkcí `ToObject<bool[]>()` objektu Response. Iterujte v poli a vytiskněte index všech `true`ch hodnot. Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
+4. Otherwise, find the positions of anomalies in the data set. The response's `isAnomaly` field contains an array of boolean values, each of which indicates whether a data point is an anomaly. Convert this to a string array with the response object's `ToObject<bool[]>()` function. Iterate through the array, and print the index of any `true` values. These values correspond to the index of anomalous data points, if any were found.
 
     [!code-csharp[Detect anomalies batch](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesBatch)]
 
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Zjistit stav anomálií nejnovějšího datového bodu
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Detect the anomaly status of the latest data point
 
-1. Vytvořte novou funkci nazvanou `detectAnomaliesLatest()`. Sestavte požadavek a odešlete ho voláním funkce `Request()` s vaším koncovým bodem, klíčem předplatného, adresou URL pro detekci anomálií posledního bodu a daty časové řady.
+1. Create a new function called `detectAnomaliesLatest()`. Construct the request and send it by calling the `Request()` function with your endpoint, subscription key, the URL for latest point anomaly detection, and the time series data.
 
-2. Deserializovat objekt JSON a zapsat ho do konzoly.
+2. Deserialize the JSON object, and write it to the console.
 
-[!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
+    [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
+ 
+## <a name="load-your-time-series-data-and-send-the-request"></a>Load your time series data and send the request
 
-## <a name="load-your-time-series-data-and-send-the-request"></a>Načtěte data časové řady a odešlete žádost.
+1. In the main method of your application, load your JSON time series data with `File.ReadAllText()`. 
 
-1. V metodě Main vaší aplikace načtěte data časové řady JSON pomocí `File.ReadAllText()`. 
-
-2. Zavolejte funkce detekce anomálií vytvořené výše. Pomocí `System.Console.ReadKey()` nechejte okno konzoly otevřené po spuštění aplikace.
+2. Call the anomaly detection functions created above. Use `System.Console.ReadKey()` to keep the console window open after running the application.
 
     [!code-csharp[Main method](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=main)]
 
 ### <a name="example-response"></a>Příklad odpovědi
 
-Ve formátu JSON se vrátí úspěšná odpověď. Kliknutím na následující odkazy zobrazíte odpověď JSON na GitHubu:
-* [Příklad odpovědi na zjišťování dávky](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
-* [Příklad odpovědi na nejnovější zjištění bodu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+A successful response is returned in JSON format. Click the links below to view the JSON response on GitHub:
+* [Example batch detection response](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
+* [Example latest point detection response](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
-## <a name="next-steps"></a>Další kroky
-
-> [!div class="nextstepaction"]
->[Detekce anomálií streamování pomocí Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)
-
-* Co je rozhraní API pro detekci [anomálií?](../overview.md)
-* [Osvědčené postupy](../concepts/anomaly-detection-best-practices.md) při použití rozhraní API detektoru anomálií
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs).
+[!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

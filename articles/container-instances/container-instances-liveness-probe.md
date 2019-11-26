@@ -1,31 +1,26 @@
 ---
-title: Konfigurace sond živého provozu v Azure Container Instances
-description: Naučte se konfigurovat sondy živého provozu pro restartování poškozených kontejnerů v Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Set up liveness probe on container instance
+description: Learn how to configure liveness probes to restart unhealthy containers in Azure Container Instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: danlep
-ms.openlocfilehash: 7f9696e9803e9ab168c59b6c5e7413a4f754a6ae
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904431"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481677"
 ---
 # <a name="configure-liveness-probes"></a>Konfigurace testů aktivity
 
-Kontejnerové aplikace mohou běžet po delší dobu, což vede k nefunkčním stavům, které může být nutné opravit restartováním kontejneru. Azure Container Instances podporuje sondy živého provozu, abyste mohli své kontejnery v rámci skupiny kontejnerů nakonfigurovat tak, aby se restartovaly, pokud nefungují kritické funkce. Sonda živého chování se chová jako [test živého Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
+Containerized applications may run for extended periods of time, resulting in broken states that may need to be repaired by restarting the container. Azure Container Instances supports liveness probes so that you can configure your containers within your container group to restart if critical functionality is not working. The liveness probe behaves like a [Kubernetes liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
 
-Tento článek vysvětluje, jak nasadit skupinu kontejnerů, která zahrnuje test živého provozu, který demonstruje automatické restartování simulovaného kontejneru, který není v pořádku.
+This article explains how to deploy a container group that includes a liveness probe, demonstrating the automatic restart of a simulated unhealthy container.
 
-Azure Container Instances taky podporuje [testy připravenosti](container-instances-readiness-probe.md), které můžete nakonfigurovat tak, aby se zajistilo, že provoz dosáhne kontejneru jenom v případě, že je připravený.
+Azure Container Instances also supports [readiness probes](container-instances-readiness-probe.md), which you can configure to ensure that traffic reaches a container only when it's ready for it.
 
-## <a name="yaml-deployment"></a>Nasazení YAML
+## <a name="yaml-deployment"></a>YAML deployment
 
-Vytvořte `liveness-probe.yaml` soubor s následujícím fragmentem kódu. Tento soubor definuje skupinu kontejnerů, která se skládá z kontejneru NGNIX, který se nakonec stává stavem není v pořádku.
+Create a `liveness-probe.yaml` file with the following snippet. This file defines a container group that consists of an NGNIX container that eventually becomes unhealthy.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -57,53 +52,53 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Spuštěním následujícího příkazu Nasaďte tuto skupinu kontejnerů s výše uvedenou konfigurací YAML:
+Run the following command to deploy this container group with the above YAML configuration:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name livenesstest -f liveness-probe.yaml
 ```
 
-### <a name="start-command"></a>Spustit příkaz
+### <a name="start-command"></a>Start command
 
-Nasazení definuje počáteční příkaz, který se spustí při prvním spuštění kontejneru definovaného vlastností `command`, který přijímá pole řetězců. V tomto příkladu spustí relaci bash a vytvoří soubor s názvem `healthy` v rámci `/tmp` adresáře předáním tohoto příkazu:
+The deployment defines a starting command to be run when the container first starts running, defined by the `command` property, which accepts an array of strings. In this example, it will start a bash session and create a file called `healthy` within the `/tmp` directory by passing this command:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
- Po 30 sekundách se pak tento soubor před odstraněním dokončí a pak přejde do režimu spánku po dobu 10 minut.
+ It will then sleep for 30 seconds before deleting the file, then enters a 10-minute sleep.
 
-### <a name="liveness-command"></a>Živý příkaz
+### <a name="liveness-command"></a>Liveness command
 
-Toto nasazení definuje `livenessProbe`, který podporuje příkaz `exec` živý, který funguje jako aktivní kontrolu. Pokud se tento příkaz ukončí s nenulovou hodnotou, kontejner se ukončí a restartuje a signalizace `healthy` soubor se nepovedlo najít. Pokud se tento příkaz ukončí úspěšně s ukončovacím kódem 0, nebude provedena žádná akce.
+This deployment defines a `livenessProbe` that supports an `exec` liveness command that acts as the liveness check. If this command exits with a non-zero value, the container will be killed and restarted, signaling the `healthy` file could not be found. If this command exits successfully with exit code 0, no action will be taken.
 
-Vlastnost `periodSeconds` určuje, že se má příkaz pro živý provoz provádět každých 5 sekund.
+The `periodSeconds` property designates the liveness command should execute every 5 seconds.
 
-## <a name="verify-liveness-output"></a>Ověřit výstup živého provozu
+## <a name="verify-liveness-output"></a>Verify liveness output
 
-Během prvních 30 sekund existuje `healthy` soubor vytvořený pomocí spouštěcího příkazu. Když příkaz pro živou kontrolu existence souboru `healthy`, vrátí stavový kód nulu a signalizaci úspěšné, takže nedojde k restartování.
+Within the first 30 seconds, the `healthy` file created by the start command exists. When the liveness command checks for the `healthy` file's existence, the status code returns a zero, signaling success, so no restarting occurs.
 
-Po 30 sekundách se `cat /tmp/healthy` začnou zdařit, což způsobí, že dojde k chybám, které způsobují události v pořádku a usmrcování.
+After 30 seconds, the `cat /tmp/healthy` will begin to fail, causing unhealthy and killing events to occur.
 
-Tyto události se dají zobrazit z Azure Portal nebo pomocí Azure CLI.
+These events can be viewed from the Azure portal or Azure CLI.
 
-![Událost chybného portálu][portal-unhealthy]
+![Portal unhealthy event][portal-unhealthy]
 
-Zobrazením událostí v Azure Portal se události typu `Unhealthy` aktivují při selhání příkazu živého provozu. Následná událost bude typu `Killing`a signalizuje odstranění kontejneru, aby bylo možné začít restart. Počet restartování pro kontejner se zvýší pokaždé, když dojde k této události.
+By viewing the events in the Azure portal, events of type `Unhealthy` will be triggered upon the liveness command failing. The subsequent event will be of type `Killing`, signifying a container deletion so a restart can begin. The restart count for the container increments each time this event  occurs.
 
-Restarty jsou dokončeny na místě, takže se zachovají prostředky jako veřejné IP adresy a obsah specifický pro uzel.
+Restarts are completed in-place so resources like public IP addresses and node-specific contents will be preserved.
 
-![Čítač restartování portálu][portal-restart]
+![Portal restart counter][portal-restart]
 
-Pokud se test živého provozu nepřetržitě nezdaří a aktivuje se příliš mnoho restartování, váš kontejner vstoupí v případě exponenciálního zpoždění zpět.
+If the liveness probe continuously fails and triggers too many restarts, your container will enter an exponential back off delay.
 
-## <a name="liveness-probes-and-restart-policies"></a>Provozní sondy a zásady restartování
+## <a name="liveness-probes-and-restart-policies"></a>Liveness probes and restart policies
 
-Zásady restartování nahrazují chování při restartování aktivované sondami živého provozu. Pokud například nastavíte `restartPolicy = Never` *a* sondu živého provozu, skupina kontejnerů se nerestartuje z důvodu neúspěšné kontroly živých. Skupina kontejnerů místo toho bude vyhovovat zásadám restartování `Never`skupiny kontejnerů.
+Restart policies supersede the restart behavior triggered by liveness probes. For example, if you set a `restartPolicy = Never` *and* a liveness probe, the container group will not restart because of a failed liveness check. The container group will instead adhere to the container group's restart policy of `Never`.
 
 ## <a name="next-steps"></a>Další kroky
 
-Scénáře založené na úlohách můžou vyžadovat test živého provozu, aby se povolilo automatické restartování, pokud funkce bez problémů nefunguje správně. Další informace o spuštění kontejnerů založených na úlohách najdete v tématu [spuštění kontejnerových úloh v Azure Container Instances](container-instances-restart-policy.md).
+Task-based scenarios may require a liveness probe to enable automatic restarts if a pre-requisite function is not working properly. For more information about running task-based containers, see [Run containerized tasks in Azure Container Instances](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-unhealthy]: ./media/container-instances-liveness-probe/unhealthy-killing.png

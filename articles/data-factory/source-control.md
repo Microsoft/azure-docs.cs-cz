@@ -1,6 +1,6 @@
 ---
-title: Správa zdrojového kódu v Azure Data Factory
-description: Informace o tom, jak nakonfigurovat správu zdrojového kódu v Azure Data Factory
+title: Source control in Azure Data Factory
+description: Learn how to configure source control in Azure Data Factory
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,181 +12,181 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 5f497bd06868d586f8378cb81e870a750b8a1670
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 264c60c719ffdd94664ae3a85fc67894d14f394d
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122893"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484451"
 ---
-# <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
+# <a name="source-control-in-azure-data-factory"></a>Source control in Azure Data Factory
 
-Prostředí uživatelského rozhraní Azure Data Factory (UX) má k dispozici dvě prostředí pro tvorbu vizuálů:
+The Azure Data Factory user interface experience (UX) has two experiences available for visual authoring:
 
-- Přímý autor pomocí Data Factory služby
-- Vytváření Azure Repos integrace Gitu nebo GitHubu
-
-> [!NOTE]
-> V cloudu Azure Government se podporuje jenom vytváření obsahu přímo s Data Factory službou.
-
-## <a name="author-directly-with-the-data-factory-service"></a>Přímý autor pomocí Data Factory služby
-
-Při vytváření přímo ve službě Data Factory je jediným způsobem, jak uložit změny, prostřednictvím tlačítka **publikovat vše** . Po kliknutí budou všechny změny, které jste provedli, publikovány přímo ve službě Data Factory. 
-
-![Režim publikování](media/author-visually/data-factory-publish.png)
-
-Vytváření přímo pomocí služby Data Factory má následující omezení:
-
-- Služba Data Factory nezahrnuje úložiště pro ukládání entit JSON pro vaše změny.
-- Služba Data Factory není optimalizovaná pro spolupráci nebo správu verzí.
+- Author directly with the Data Factory service
+- Author with Azure Repos Git or GitHub integration
 
 > [!NOTE]
-> Při konfiguraci úložiště Git je v uživatelském prostředí Azure Data Factory zakázáno vytváření obsahu přímo pomocí služby Data Factory. Změny se dají provádět přímo v rámci služby prostřednictvím PowerShellu nebo sady SDK.
+> Only authoring directly with the Data Factory service is supported in the Azure Government Cloud.
 
-## <a name="author-with-azure-repos-git-integration"></a>Vytváření Azure Repos integrace Gitu
+## <a name="author-directly-with-the-data-factory-service"></a>Author directly with the Data Factory service
 
-Vytváření vizuálního obsahu pomocí Azure Repos integrace Gitu podporuje správu zdrojového kódu a spolupráci pro práci na kanálech služby Data Factory. Datovou továrnu můžete přidružit k Azure Repos úložiště organizace Git pro správu zdrojového kódu, spolupráci, správu verzí atd. Jediná Azure Repos organizace Git může mít víc úložišť, ale Azure Repos úložiště Git se dá přidružit jenom k jednomu objektu pro vytváření dat. Pokud nemáte Azure Repos organizaci nebo úložiště, vytvořte prostředky podle [těchto pokynů](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) .
+While authoring directly with the Data Factory service, the only way to save changes is via the **Publish All** button. Once clicked, all changes that you made are published directly to the Data Factory service. 
+
+![Publish mode](media/author-visually/data-factory-publish.png)
+
+Authoring directly with the Data Factory service has the following limitations:
+
+- The Data Factory service doesn't include a repository for storing the JSON entities for your changes.
+- The Data Factory service isn't optimized for collaboration or version control.
 
 > [!NOTE]
-> Skripty a datové soubory můžete ukládat do Azure Repos úložiště Git. Soubory však budete muset odeslat ručně, aby bylo možné Azure Storage. Kanál Data Factory neodesílá automaticky do Azure Storage soubory skriptu nebo datových souborů uložených v úložišti Git Azure Repos.
+> Authoring directly with the Data Factory service is disabled in the Azure Data Factory UX when a Git repository is configured. Changes can be made directly to the service via PowerShell or an SDK.
 
-### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>Konfigurace Azure Repos úložiště Git pomocí Azure Data Factory
+## <a name="author-with-azure-repos-git-integration"></a>Author with Azure Repos Git integration
 
-Pomocí dvou metod můžete nakonfigurovat Azure Repos úložiště Git s datovou továrnou.
+Visual authoring with Azure Repos Git integration supports source control and collaboration for work on your data factory pipelines. You can associate a data factory with an Azure Repos Git organization repository for source control, collaboration, versioning, and so on. A single Azure Repos Git organization can have multiple repositories, but an Azure Repos Git repository can be associated with only one data factory. If you don't have an Azure Repos organization or repository, follow [these instructions](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) to create your resources.
 
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Konfigurační Metoda 1: Azure Data Factory domovské stránky
+> [!NOTE]
+> You can store script and data files in an Azure Repos Git repository. However, you have to upload the files manually to Azure Storage. A Data Factory pipeline does not automatically upload script or data files stored in an Azure Repos Git repository to Azure Storage.
 
-Na domovské stránce Azure Data Factory vyberte **nastavit úložiště kódu**.
+### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>Configure an Azure Repos Git repository with Azure Data Factory
 
-![Konfigurace úložiště kódu Azure Repos](media/author-visually/configure-repo.png)
+You can configure an Azure Repos Git repository with a data factory through two methods.
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Konfigurační Metoda 2: plátno pro vytváření uživatelského rozhraní
-Na plátně pro vytváření Azure Data Factory UX vyberte **Data Factory** rozevírací nabídku a pak vyberte **nastavit úložiště kódu**.
+#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Configuration method 1: Azure Data Factory home page
 
-![Konfigurace nastavení úložiště kódu pro vytváření uživatelského rozhraní](media/author-visually/configure-repo-2.png)
+On the Azure Data Factory home page, select **Set up Code Repository**.
 
-Obě metody otevřou podokno konfigurace nastavení úložiště.
+![Configure an Azure Repos code repository](media/author-visually/configure-repo.png)
 
-![Konfigurace nastavení úložiště kódu](media/author-visually/repo-settings.png)
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>Configuration method 2: UX authoring canvas
+In the Azure Data Factory UX authoring canvas, select the **Data Factory** drop-down menu, and then select **Set up Code Repository**.
 
-Podokno konfigurace zobrazuje následující Azure Repos nastavení úložiště kódu:
+![Configure the code repository settings for UX authoring](media/author-visually/configure-repo-2.png)
+
+Both methods open the repository settings configuration pane.
+
+![Configure the code repository settings](media/author-visually/repo-settings.png)
+
+The configuration pane shows the following Azure Repos code repository settings:
 
 | Nastavení | Popis | Hodnota |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu Azure Repos.<br/> | Azure DevOps Git nebo GitHub |
-| **Azure Active Directory** | Název vašeho tenanta Azure AD. | `<your tenant name>` |
-| **Azure Repos organizace** | Název vaší Azure Repos organizace Název vaší Azure Repos organizace můžete najít `https://{organization name}.visualstudio.com`. K vašemu [Azure Repos organizaci](https://www.visualstudio.com/team-services/git/) se můžete přihlásit, abyste měli přístup k profilu sady Visual Studio a viděli vaše úložiště a projekty. | `<your organization name>` |
-| **ProjectName** | Název projektu Azure Repos. Název projektu Azure Repos můžete najít `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
-| **Úložiště** | Váš Azure Repos název úložiště kódu. Azure Repos projekty obsahují úložiště Git pro správu zdrojového kódu při zvětšování projektu. Můžete vytvořit nové úložiště nebo použít existující úložiště, které už je v projektu. | `<your Azure Repos code repository name>` |
-| **Větev pro spolupráci** | Vaše větev Azure Repos spolupráci, která se používá k publikování. Ve výchozím nastavení je to `master`. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch name>` |
-| **Kořenová složka** | Kořenová složka ve větvi Azure Repos spolupráci. | `<your root folder name>` |
-| **Importovat stávající prostředky Data Factory do úložiště** | Určuje, jestli se mají importovat stávající prostředky služby Data Factory z **plátna pro vytváření** uživatelského rozhraní, do úložiště Git Azure Repos. Zaškrtněte políčko pro import prostředků datové továrny do přidruženého úložiště Git ve formátu JSON. Tato akce exportuje jednotlivé prostředky jednotlivě (tj. propojené služby a datové sady jsou exportovány do samostatných JSON). Pokud toto políčko není zaškrtnuté, existující prostředky se neimportují. | Vybráno (výchozí) |
-| **Vytvořit větev pro import prostředku** | Určuje, do které větve se importují prostředky služby Data Factory (kanály, datové sady, propojené služby atd.). Prostředky můžete importovat do jedné z následujících větví: a. Spolupráci b. Vytvořte novou c. Použít existující |  |
+| **Repository Type** | The type of the Azure Repos code repository.<br/> | Azure DevOps Git or GitHub |
+| **Azure Active Directory** | Your Azure AD tenant name. | `<your tenant name>` |
+| **Azure Repos Organization** | Your Azure Repos organization name. You can locate your Azure Repos organization name at `https://{organization name}.visualstudio.com`. You can [sign in to your Azure Repos organization](https://www.visualstudio.com/team-services/git/) to access your Visual Studio profile and see your repositories and projects. | `<your organization name>` |
+| **ProjectName** | Your Azure Repos project name. You can locate your Azure Repos project name at `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
+| **RepositoryName** | Your Azure Repos code repository name. Azure Repos projects contain Git repositories to manage your source code as your project grows. You can create a new repository or use an existing repository that's already in your project. | `<your Azure Repos code repository name>` |
+| **Collaboration branch** | Your Azure Repos collaboration branch that is used for publishing. By default, it’s `master`. Change this setting in case you want to publish resources from another branch. | `<your collaboration branch name>` |
+| **Root folder** | Your root folder in your Azure Repos collaboration branch. | `<your root folder name>` |
+| **Import existing Data Factory resources to repository** | Specifies whether to import existing data factory resources from the UX **Authoring canvas** into an Azure Repos Git repository. Select the box to import your data factory resources into the associated Git repository in JSON format. This action exports each resource individually (that is, the linked services and datasets are exported into separate JSONs). When this box isn't selected, the existing resources aren't imported. | Selected (default) |
+| **Branch to import resource into** | Specifies into which branch the data factory resources (pipelines, datasets, linked services etc.) are imported. You can import resources into one of the following branches: a. Collaboration b. Create new c. Use Existing |  |
 
 > [!NOTE]
-> Pokud používáte Microsoft Edge a v rozevíracím seznamu účtu Azure DevOps nevidíte žádné hodnoty, přidejte do seznamu důvěryhodných webů protokol https://*. VisualStudio. com.
+> If you are using Microsoft Edge and do not see any values in your Azure DevOps Account dropdown, add https://*.visualstudio.com to the trusted sites list.
 
-### <a name="use-a-different-azure-active-directory-tenant"></a>Použít jiného tenanta Azure Active Directory
+### <a name="use-a-different-azure-active-directory-tenant"></a>Use a different Azure Active Directory tenant
 
-Úložiště Git v Azure Repos můžete vytvořit v jiném tenantovi Azure Active Directory. Pokud chcete zadat jiného tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte.
+Úložiště Git v Azure Repos můžete vytvořit v jiném tenantovi Azure Active Directory. To specify a different Azure AD tenant, you have to have administrator permissions for the Azure subscription that you're using.
 
-### <a name="use-your-personal-microsoft-account"></a>Použití osobních účet Microsoft
+### <a name="use-your-personal-microsoft-account"></a>Use your personal Microsoft account
 
-Pokud chcete použít osobní účet Microsoft pro integraci Gitu, můžete své osobní úložiště Azure propojit se službou Active Directory vaší organizace.
+To use a personal Microsoft account for Git integration, you can link your personal Azure Repo to your organization's Active Directory.
 
-1. Přidejte osobní účet Microsoft do služby Active Directory vaší organizace jako hosta. Další informace najdete v tématu [přidání Azure Active Directory uživatelů spolupráce B2B v Azure Portal](../active-directory/b2b/add-users-administrator.md).
+1. Add your personal Microsoft account to your organization's Active Directory as a guest. For more info, see [Add Azure Active Directory B2B collaboration users in the Azure portal](../active-directory/b2b/add-users-administrator.md).
 
-2. Přihlaste se k Azure Portal pomocí osobního účet Microsoft. Pak přejděte do služby Active Directory vaší organizace.
+2. Log in to the Azure portal with your personal Microsoft account. Then switch to your organization's Active Directory.
 
-3. Přejděte do části Azure DevOps, kde se teď zobrazuje vaše osobní úložiště. Vyberte úložiště a připojte se ke službě Active Directory.
+3. Go to the Azure DevOps section, where you now see your personal repo. Select the repo and connect with Active Directory.
 
-Po provedení těchto kroků konfigurace bude osobní úložiště k dispozici při nastavení integrace Gitu v uživatelském rozhraní Data Factory.
+After these configuration steps, your personal repo is available when you set up Git integration in the Data Factory UI.
 
-Další informace o připojení Azure Repos ke službě Active Directory vaší organizace najdete v tématu věnovaném [připojení organizace Azure DevOps k Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
+For more info about connecting Azure Repos to your organization's Active Directory, see [Connect your Azure DevOps organization to Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
 
-## <a name="author-with-github-integration"></a>Vytváření s integrací GitHubu
+## <a name="author-with-github-integration"></a>Author with GitHub integration
 
-Vytváření vizuálů pomocí integrace GitHubu podporuje správu zdrojového kódu a spolupráci pro práci na kanálech služby Data Factory. Datovou továrnu můžete přidružit k úložišti účtů GitHub pro správu zdrojového kódu, spolupráci, správu verzí. Jeden účet GitHub může mít několik úložišť, ale úložiště GitHubu je možné přidružit pouze k jednomu objektu pro vytváření dat. Pokud nemáte účet GitHub nebo úložiště, postupujte podle [těchto pokynů](https://github.com/join) vytvořte prostředky.
+Visual authoring with GitHub integration supports source control and collaboration for work on your data factory pipelines. You can associate a data factory with a GitHub account repository for source control, collaboration, versioning. A single GitHub account can have multiple repositories, but a GitHub repository can be associated with only one data factory. If you don't have a GitHub account or repository, follow [these instructions](https://github.com/join) to create your resources.
 
-Integrace GitHubu s Data Factory podporuje veřejné GitHub (tj. [https://github.com](https://github.com)) i GitHub Enterprise. Pokud máte oprávnění ke čtení a zápisu do úložiště v GitHubu, můžete použít veřejné i soukromé úložiště GitHub s Data Factory.
+The GitHub integration with Data Factory supports both public GitHub (that is, [https://github.com](https://github.com)) and GitHub Enterprise. You can use both public and private GitHub repositories with Data Factory as long you have read and write permission to the repository in GitHub.
 
-Abyste mohli nakonfigurovat úložiště GitHubu, musíte mít oprávnění správce pro předplatné Azure, které používáte.
+To configure a GitHub repo, you must have administrator permissions for the Azure subscription that you're using.
 
-Po devět minut Úvod a ukázku této funkce se podívejte na toto video:
+For a nine-minute introduction and demonstration of this feature, watch the following video:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
 
-### <a name="configure-a-github-repository-with-azure-data-factory"></a>Konfigurace úložiště GitHub pomocí Azure Data Factory
+### <a name="configure-a-github-repository-with-azure-data-factory"></a>Configure a GitHub repository with Azure Data Factory
 
-Úložiště GitHub s datovou továrnou můžete nakonfigurovat dvěma způsoby.
+You can configure a GitHub repository with a data factory through two methods.
 
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Konfigurační Metoda 1: Azure Data Factory domovské stránky
+#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Configuration method 1: Azure Data Factory home page
 
-Na domovské stránce Azure Data Factory vyberte **nastavit úložiště kódu**.
+On the Azure Data Factory home page, select **Set up Code Repository**.
 
-![Konfigurace úložiště kódu Azure Repos](media/author-visually/configure-repo.png)
+![Configure an Azure Repos code repository](media/author-visually/configure-repo.png)
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Konfigurační Metoda 2: plátno pro vytváření uživatelského rozhraní
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>Configuration method 2: UX authoring canvas
 
-Na plátně pro vytváření Azure Data Factory UX vyberte **Data Factory** rozevírací nabídku a pak vyberte **nastavit úložiště kódu**.
+In the Azure Data Factory UX authoring canvas, select the **Data Factory** drop-down menu, and then select **Set up Code Repository**.
 
-![Konfigurace nastavení úložiště kódu pro vytváření uživatelského rozhraní](media/author-visually/configure-repo-2.png)
+![Configure the code repository settings for UX authoring](media/author-visually/configure-repo-2.png)
 
-Obě metody otevřou podokno konfigurace nastavení úložiště.
+Both methods open the repository settings configuration pane.
 
-![Nastavení úložiště GitHub](media/author-visually/github-integration-image2.png)
+![GitHub repository settings](media/author-visually/github-integration-image2.png)
 
-V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub:
+The configuration pane shows the following GitHub repository settings:
 
 | **Nastavení** | **Popis**  | **Hodnota**  |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHub |
-| **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
-| **Adresa URL GitHubu Enterprise** | Kořenová adresa URL webu GitHub Enterprise Příklad: https://github.mydomain.com. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
-| **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v protokolu https:\//GitHub.com/{account Name}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |
-| **Název úložiště**  | Název vašeho úložiště kódu GitHubu Účty GitHubu obsahují úložiště Git pro správu zdrojového kódu. Můžete vytvořit nové úložiště nebo použít existující úložiště, které už máte ve svém účtu. | `<your repository name>` |
-| **Větev pro spolupráci** | Vaše větev pro spolupráci GitHubu, která se používá k publikování. Ve výchozím nastavení se jedná o hlavní server. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch>` |
-| **Kořenová složka** | Kořenová složka ve větvi spolupráce na GitHubu. |`<your root folder name>` |
-| **Importovat stávající prostředky Data Factory do úložiště** | Určuje, jestli se mají importovat stávající prostředky služby Data Factory z plátna pro vytváření uživatelského rozhraní do úložiště GitHubu. Zaškrtněte políčko pro import prostředků datové továrny do přidruženého úložiště Git ve formátu JSON. Tato akce exportuje jednotlivé prostředky jednotlivě (tj. propojené služby a datové sady jsou exportovány do samostatných JSON). Pokud toto políčko není zaškrtnuté, existující prostředky se neimportují. | Vybráno (výchozí) |
-| **Vytvořit větev pro import prostředku** | Určuje, do které větve se importují prostředky služby Data Factory (kanály, datové sady, propojené služby atd.). Prostředky můžete importovat do jedné z následujících větví: a. Spolupráci b. Vytvořte novou c. Použít existující |  |
+| **Repository Type** | The type of the Azure Repos code repository. | GitHubu |
+| **Use GitHub Enterprise** | Checkbox to select GitHub Enterprise | unselected (default) |
+| **GitHub Enterprise URL** | The GitHub Enterprise root URL. Například: https://github.mydomain.com. Required only if **Use GitHub Enterprise** is selected | `<your GitHub enterprise url>` |                                                           
+| **GitHub account** | Your GitHub account name. This name can be found from https:\//github.com/{account name}/{repository name}. Navigating to this page prompts you to enter GitHub OAuth credentials to your GitHub account. | `<your GitHub account name>` |
+| **Repository Name**  | Your GitHub code repository name. GitHub accounts contain Git repositories to manage your source code. You can create a new repository or use an existing repository that's already in your account. | `<your repository name>` |
+| **Collaboration branch** | Your GitHub collaboration branch that is used for publishing. By default, its master. Change this setting in case you want to publish resources from another branch. | `<your collaboration branch>` |
+| **Root folder** | Your root folder in your GitHub collaboration branch. |`<your root folder name>` |
+| **Import existing Data Factory resources to repository** | Specifies whether to import existing data factory resources from the UX authoring canvas into a GitHub repository. Select the box to import your data factory resources into the associated Git repository in JSON format. This action exports each resource individually (that is, the linked services and datasets are exported into separate JSONs). When this box isn't selected, the existing resources aren't imported. | Selected (default) |
+| **Branch to import resource into** | Specifies into which branch the data factory resources (pipelines, datasets, linked services etc.) are imported. You can import resources into one of the following branches: a. Collaboration b. Create new c. Use Existing |  |
 
-### <a name="known-github-limitations"></a>Známá omezení GitHubu
+### <a name="known-github-limitations"></a>Known GitHub limitations
 
-- Skripty a datové soubory můžete ukládat do úložiště GitHub. Soubory však budete muset odeslat ručně, aby bylo možné Azure Storage. Kanál Data Factory neodesílá automaticky do Azure Storage skript nebo datové soubory uložené v úložišti GitHubu.
+- You can store script and data files in a GitHub repository. However, you have to upload the files manually to Azure Storage. A Data Factory pipeline does not automatically upload script or data files stored in a GitHub repository to Azure Storage.
 
-- GitHub Enterprise s verzí starší než 2.14.0 nefunguje v prohlížeči Microsoft Edge.
+- GitHub Enterprise with a version older than 2.14.0 doesn't work in the Microsoft Edge browser.
 
-- Integrace GitHubu s nástroji Data Factoryho vizuálního vytváření funguje jenom v všeobecně dostupné verzi Data Factory.
+- GitHub integration with the Data Factory visual authoring tools only works in the generally available version of Data Factory.
 
-## <a name="switch-to-a-different-git-repo"></a>Přepnout na jiné úložiště Git
+## <a name="switch-to-a-different-git-repo"></a>Switch to a different Git repo
 
-Pokud chcete přepnout na jiné úložiště Git, klikněte na ikonu **Nastavení úložiště Git** v pravém horním rohu stránky přehled Data Factory. Pokud ikonu nevidíte, vymažte místní mezipaměť prohlížeče. Výběrem ikony odeberte přidružení s aktuálním úložištěm.
+To switch to a different Git repo, click the **Git Repo Settings** icon in the upper right corner of the Data Factory overview page. If you can’t see the icon, clear your local browser cache. Select the icon to remove the association with the current repo.
 
-![Ikona Git](media/author-visually/remove-repo.png)
+![Git icon](media/author-visually/remove-repo.png)
 
-Jakmile se zobrazí podokno nastavení úložiště, vyberte **Odebrat Git**. Zadejte název datové továrny a kliknutím na **Potvrdit** odeberte úložiště Git přidružené k vaší datové továrně.
+Once the Repository Settings pane appears, select **Remove Git**. Enter your data factory name and click **confirm** to remove the Git repository associated with your data factory.
 
-![Odebere přidružení k aktuálnímu úložišti Git.](media/author-visually/remove-repo2.png)
+![Remove the association with the current Git repo](media/author-visually/remove-repo2.png)
 
-Po odebrání přidružení s aktuálním úložištěm můžete nakonfigurovat nastavení Gitu tak, aby používalo jiné úložiště, a pak do nového úložiště importovat existující Data Factory prostředky. 
+After you remove the association with the current repo, you can configure your Git settings to use a different repo and then import existing Data Factory resources to the new repo. 
 
 ## <a name="version-control"></a>Správa verzí
 
-Systémy správy verzí (označované také jako _Správa zdrojového_kódu) umožňují vývojářům spolupracovat na kódu a sledovat změny, které jsou provedeny v základu kódu. Správa zdrojového kódu je důležitým nástrojem pro projekty s více vývojáři.
+Version control systems (also known as _source control_) let developers collaborate on code and track changes that are made to the code base. Source control is an essential tool for multi-developer projects.
 
-### <a name="creating-feature-branches"></a>Vytváření větví funkcí
+### <a name="creating-feature-branches"></a>Creating feature branches
 
-Každé Azure Repos úložiště Git, které je přidružené k datové továrně, má větev pro spolupráci. (`master` je výchozí branou pro spolupráci). Uživatelé můžou také vytvářet větve funkcí kliknutím na **+ Nová větev** v rozevíracím seznamu větev. Jakmile se zobrazí podokno nová větev, zadejte název vaší větve funkce.
+Each Azure Repos Git repository that's associated with a data factory has a collaboration branch. (`master` is the default collaboration branch). Users can also create feature branches by clicking **+ New Branch** in the branch dropdown. Once the new branch pane appears, enter the name of your feature branch.
 
-![Vytvořit novou větev](media/author-visually/new-branch.png)
+![Create a new branch](media/author-visually/new-branch.png)
 
-Až budete připraveni sloučit změny z větve funkcí do vaší větve pro spolupráci, klikněte na rozevírací seznam větev a vyberte **vytvořit žádost o získání dat**. Tato akce vás provede Azure Repos Git, kde můžete vyvolávat žádosti o přijetí změn, provádět revize kódu a sloučit změny ve větvi pro spolupráci. (výchozí nastavení je`master`). Do služby Data Factory se povoluje pouze publikování z vaší větve pro spolupráci. 
+When you are ready to merge the changes from your feature branch to your collaboration branch, click on the branch dropdown and select **Create pull request**. This action takes you to Azure Repos Git where you can raise pull requests, do code reviews, and merge changes to your collaboration branch. (`master` is the default). You are only allowed to publish to the Data Factory service from your collaboration branch. 
 
-![Vytvořit novou žádost o získání dat](media/author-visually/create-pull-request.png)
+![Create a new pull request](media/author-visually/create-pull-request.png)
 
-### <a name="configure-publishing-settings"></a>Konfigurovat nastavení publikování
+### <a name="configure-publishing-settings"></a>Configure publishing settings
 
-Postup konfigurace větve publikovat – to znamená, že větev, ve které Správce prostředků šablony jsou uloženy – přidejte `publish_config.json` soubor do kořenové složky ve větvi pro spolupráci. Data Factory přečte tento soubor, vyhledá pole `publishBranch`a vytvoří novou větev (Pokud ještě neexistuje) s poskytnutou hodnotou. Pak uloží všechny šablony Správce prostředků do zadaného umístění. Příklad:
+To configure the publish branch - that is, the branch where Resource Manager templates are saved - add a `publish_config.json` file to the root folder in the collaboration branch. Data Factory reads this file, looks for the field `publishBranch`, and creates a new branch (if it doesn't already exist) with the value provided. Then it saves all Resource Manager templates to the specified location. Například:
 
 ```json
 {
@@ -194,69 +194,69 @@ Postup konfigurace větve publikovat – to znamená, že větev, ve které Spr�
 }
 ```
 
-Když zadáte novou větev publikování, Data Factory neodstraní předchozí větev publikování. Pokud chcete odebrat předchozí větev publikování, odstraňte ji ručně.
+When you specify a new publish branch, Data Factory doesn't delete the previous publish branch. If you want to remove the previous publish branch, delete it manually.
 
 > [!NOTE]
-> Data Factory přečte soubor `publish_config.json` pouze při načtení objektu pro vytváření. Pokud už máte v portálu načtenou továrnu, aktualizujte prohlížeč, aby se změny projevily.
+> Data Factory only reads the `publish_config.json` file when it loads the factory. If you already have the factory loaded in the portal, refresh the browser to make your changes take effect.
 
-### <a name="publish-code-changes"></a>Publikování změn kódu
+### <a name="publish-code-changes"></a>Publish code changes
 
-Po sloučení změn do větve pro spolupráci (`master` výchozí nastavení) klikněte na **publikovat** , aby se změny kódu v hlavní větvi publikovaly ručně do služby Data Factory.
+After you have merged changes to the collaboration branch (`master` is the default), click **Publish** to manually publish your code changes in the master branch to the Data Factory service.
 
-![Publikování změn ve službě Data Factory](media/author-visually/publish-changes.png)
+![Publish changes to the Data Factory service](media/author-visually/publish-changes.png)
 
-Otevře se boční podokno, kde ověříte, že je větev publikování a nedokončené změny správná. Po ověření změn potvrďte publikování kliknutím na tlačítko **OK** .
+A side pane will open where you confirm that the publish branch and pending changes are correct. Once you verify your changes, click **OK** to confirm the publish.
 
-![Potvrďte správnou větev publikování.](media/author-visually/configure-publish-branch.png)
+![Confirm the correct publish branch](media/author-visually/configure-publish-branch.png)
 
 > [!IMPORTANT]
-> Hlavní větev není zástupcem toho, co je ve službě Data Factory nasazené. Hlavní větev *musí* být publikovaná ručně ve službě Data Factory.
+> The master branch is not representative of what's deployed in the Data Factory service. The master branch *must* be published manually to the Data Factory service.
 
-## <a name="advantages-of-git-integration"></a>Výhody integrace Gitu
+## <a name="advantages-of-git-integration"></a>Advantages of Git integration
 
--   **Správa zdrojového kódu**. Vzhledem k tomu, že se vaše úlohy datové továrny stanou rozhodující, byste měli svůj objekt pro vytváření integrovat do Gitu a využít přitom několik výhod správy zdrojového kódu, jako jsou tyto:
-    -   Schopnost sledovat nebo auditovat změny.
-    -   Možnost vrátit změny, které zavedly chyby.
--   **Částečně ukládá**. Při provádění velkého množství změn ve vaší továrně budete vědět, že v běžném PROVOZNÍm režimu nemůžete uložit změny jako koncept, protože nejste připraveni, nebo nechcete přijít o změny pro případ, že dojde k chybě počítače. S integrací Gitu můžete pokračovat v ukládání změn přírůstkově a publikovat do továrny jenom v případě, že jste připraveni. Git funguje jako pracovní místo pro vaši práci, dokud neotestujete své změny do vaší spokojenosti.
--   **Spolupráce a řízení**. Pokud máte více členů týmu, kteří se účastní stejného objektu pro vytváření, možná budete chtít, aby vaše ostatními týmu vzájemně spolupracovaly prostřednictvím procesu revize kódu. Můžete také nastavit továrnu tak, že ne každý přispěvatel do továrny má oprávnění k nasazení do továrny. Členové týmu mohou provádět změny pouze přes Git, ale pouze někteří lidé v týmu mohou publikovat změny v továrně.
--   **Zobrazení rozdílů**. V režimu Git se zobrazí Skvělé rozdíly v datové části, která se chystá publikovat do továrny. V tomto rozdílovém zobrazení se zobrazí všechny prostředky a entity, které se od posledního publikování do vaší továrny změnily nebo přidaly nebo odstranily. Na základě těchto rozdílů můžete buď pokračovat v publikování, nebo se vrátit zpět a ověřit změny a pak se později vrátit.
--   **Lepší CI/CD**. Pokud používáte režim Git, můžete nakonfigurovat svůj kanál pro vydávání verzí tak, aby se automaticky aktivoval, jakmile se ve vývojářské továrně provede nějaké změny. Také se dostanete k přizpůsobení vlastností ve vaší továrně, které jsou k dispozici jako parametry v šabloně Správce prostředků. Může být užitečné zachovat jenom požadovanou sadu vlastností jako parametry a mít vše dalšího pevně kódovaného kódu.
--   **Lepší výkon**. Průměrná továrna se v režimu Git zrychlí rychleji než v normálním ŽIVÉm režimu, protože se tyto prostředky stahují přes Git.
+-   **Source Control**. As your data factory workloads become crucial, you would want to integrate your factory with Git to leverage several source control benefits like the following:
+    -   Ability to track/audit changes.
+    -   Ability to revert changes that introduced bugs.
+-   **Partial Saves**. As you make a lot of changes in your factory, you will realize that in the regular LIVE mode, you can't save your changes as draft, because you are not ready, or you don’t want to lose your changes in case your computer crashes. With Git integration, you can continue saving your changes incrementally, and publish to the factory only when you are ready. Git acts as a staging place for your work, until you have tested your changes to your satisfaction.
+-   **Collaboration and Control**. If you have multiple team members participating to the same factory, you may want to let your teammates collaborate with each other via a code review process. You can also set up your factory such that not every contributor to the factory has permission to deploy to the factory. Team members may just be allowed to make changes via Git, but only certain people in the team are allowed to "Publish" the changes to the factory.
+-   **Showing diffs**. In Git mode, you get to see a nice diff of the payload that’s about to get published to the factory. This diff shows you all resources/entities that got modified/added/deleted since the last time you published to your factory. Based on this diff, you can either continue further with publishing, or go back and check your changes, and then come back later.
+-   **Better CI/CD**. If you are using Git mode, you can configure your release pipeline to trigger automatically as soon as there are any changes made in the dev factory. You also get to customize the properties in your factory that are available as parameters in the Resource Manager template. It can be useful to keep only the required set of properties as parameters, and have everything else hard coded.
+-   **Better Performance**. An average factory loads ten times faster in Git mode than in regular LIVE mode, because the resources are downloaded via Git.
 
-## <a name="best-practices-for-git-integration"></a>Osvědčené postupy pro integraci Git
+## <a name="best-practices-for-git-integration"></a>Best practices for Git integration
 
 ### <a name="permissions"></a>Oprávnění
 
-Obvykle nechcete, aby každý člen týmu měl oprávnění k aktualizaci objektu pro vytváření. Doporučuje se následující nastavení oprávnění:
+Typically you don’t want every team member to have permissions to update the factory. The following permissions settings are recommended:
 
-*   Všichni členové týmu by měli mít oprávnění ke čtení objektu pro vytváření dat.
-*   K publikování do továrny by měla být povolena pouze vybraná sada osob. Aby to bylo možné, musí mít v továrně roli **přispěvatel Data Factory** . Další informace o oprávněních najdete v tématu [role a oprávnění pro Azure Data Factory](concepts-roles-permissions.md).
+*   All team members should have read permissions to the data factory.
+*   Only a select set of people should be allowed to publish to the factory. To do so, they must have the **Data Factory contributor** role on the factory. For more information on permissions, see [Roles and permissions for Azure Data Factory](concepts-roles-permissions.md).
    
-doporučuje se, abyste nepovolili přímá vrácení se změnami do větve pro spolupráci. Toto omezení může zabránit chybám, protože každé vrácení se změnami projde procesem žádosti o přijetí změn.
+It's recommended to not allow direct check-ins to the collaboration branch. This restriction can help prevent bugs as every check-in will go through a pull request review process described in [Creating feature branches](source-control.md#creating-feature-branches).
 
-### <a name="using-passwords-from-azure-key-vault"></a>Používání hesel z Azure Key Vault
+### <a name="using-passwords-from-azure-key-vault"></a>Using passwords from Azure Key Vault
 
-doporučuje se použít Azure Key Vault k uložení připojovacích řetězců nebo hesel pro Data Factory propojené služby. Z bezpečnostních důvodů neuložíme v Gitu žádné tajné informace, takže jakékoli změny propojených služeb se hned publikují do služby Azure Data Factory.
+its recommended to use Azure Key Vault to store any connection strings or passwords for Data Factory Linked Services. For security reasons, we don’t store any such secret information in Git, so any changes to Linked Services are published immediately to the Azure Data Factory service.
 
-Použití Key Vault také usnadňuje průběžnou integraci a nasazování, protože tyto tajné klíče nebude nutné zadávat během Správce prostředkůho nasazení šablony.
+Using Key Vault also makes continuous integration and deployment easier as you will not have to provide these secrets during Resource Manager template deployment.
 
-## <a name="troubleshooting-git-integration"></a>Řešení potíží s integrací Gitu
+## <a name="troubleshooting-git-integration"></a>Troubleshooting Git integration
 
-### <a name="stale-publish-branch"></a>Zastaralá větev publikování
+### <a name="stale-publish-branch"></a>Stale publish branch
 
-Pokud větev publikování není synchronizovaná s hlavní větví a obsahuje zastaralé prostředky navzdory nedávnému publikování, zkuste provést následující kroky:
+If the publish branch is out of sync with the master branch and contains out-of-date resources despite a recent publish, try following these steps:
 
-1. Odebrat aktuální úložiště Git
-1. Překonfigurujte Git se stejnými nastaveními, ale ujistěte se, že je vybraná možnost **importovat existující data Factory prostředky do úložiště** , a zvolit **nové větve** .
-1. Odstranit všechny prostředky z vaší větve pro spolupráci
-1. Vytvoření žádosti o přijetí změn, která sloučí změny do větve pro spolupráci 
+1. Remove your current Git repository
+1. Reconfigure Git with the same settings, but make sure **Import existing Data Factory resources to repository** is selected and choose **New branch**
+1. Delete all resources from your collaboration branch
+1. Create a pull request to merge the changes to the collaboration branch 
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
-Vyberte **zpětnou vazbu** pro komentář k funkcím nebo upozorněte společnost Microsoft na problémy s nástrojem:
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+Select **Feedback** to comment about features or to notify Microsoft about issues with the tool:
 
 ![Váš názor](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o monitorování a správě kanálů najdete v tématu [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md).
-* Chcete-li implementovat průběžnou integraci a nasazování, přečtěte si téma [průběžná integrace a doručování (CI/CD) v Azure Data Factory](continuous-integration-deployment.md).
+* To learn more about monitoring and managing pipelines, see [Monitor and manage pipelines programmatically](monitor-programmatically.md).
+* To implement continuous integration and deployment, see [Continuous integration and delivery (CI/CD) in Azure Data Factory](continuous-integration-deployment.md).

@@ -1,27 +1,29 @@
 ---
 title: 'Quickstart: New policy assignment with portal'
 description: In this quickstart, you use Azure portal to create an Azure Policy assignment to identify non-compliant resources.
-ms.date: 12/06/2018
+ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 737faafa65afb87640f7f69b02093c058bd77424
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ac876b546ea3bda7541db61e0ab68842a3845541
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216814"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482321"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Quickstart: Create a policy assignment to identify non-compliant resources
 
 Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků.
 Tento rychlý start vás provede procesem vytvoření přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky.
 
-Na konci tohoto procesu úspěšně identifikujete virtuální počítače, které nepoužívají spravované disky. *Neodpovídají* přiřazení zásad.
+Na konci tohoto procesu úspěšně identifikujete virtuální počítače, které nepoužívají spravované disky. _Neodpovídají_ přiřazení zásad.
+
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásady
 
-In this quickstart, you create a policy assignment and assign the *Audit VMs that do not use managed disks* policy definition.
+In this quickstart, you create a policy assignment and assign the _Audit VMs that do not use managed disks_ policy definition.
 
 1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
@@ -49,11 +51,11 @@ In this quickstart, you create a policy assignment and assign the *Audit VMs tha
 
    For a partial list of available built-in policies, see [Azure Policy samples](./samples/index.md).
 
-1. Prohledejte seznam definic zásad a najděte definici *Audit virtuálních počítačů, které nepoužívají spravované disky*. Klikněte na tuto zásadu a potom na **Vybrat**.
+1. Prohledejte seznam definic zásad a najděte definici _Audit virtuálních počítačů, které nepoužívají spravované disky_. Klikněte na tuto zásadu a potom na **Vybrat**.
 
    ![Vyhledání správné definice zásady](./media/assign-policy-portal/select-available-definition.png)
 
-1. Do pole **Název přiřazení** se automaticky vyplní název vybrané zásady, který však můžete změnit. Pro účely tohoto příkladu ponechte *Audit virtuálních počítačů, které nepoužívají spravované disky*. Volitelně můžete přidat také **Popis**. Popis obsahuje podrobnosti o tomto přiřazení zásady.
+1. Do pole **Název přiřazení** se automaticky vyplní název vybrané zásady, který však můžete změnit. Pro účely tohoto příkladu ponechte _Audit virtuálních počítačů, které nepoužívají spravované disky_. Volitelně můžete přidat také **Popis**. Popis obsahuje podrobnosti o tomto přiřazení zásady.
    Pole **Přiřadil** se automaticky vyplní podle toho, kdo je přihlášený. Toto pole je volitelné, takže do něj můžete zadávat vlastní hodnoty.
 
 1. Políčko **Vytvořit spravovanou identitu** ponechte nezaškrtnuté. This box _must_ be checked when the policy or initiative includes a policy with the [deployIfNotExists](./concepts/effects.md#deployifnotexists) effect. As the policy used for this quickstart doesn't, leave it blank. Další informace najdete v tématech věnovaných [spravovaným identitám](../../active-directory/managed-identities-azure-resources/overview.md) a [principu fungování zabezpečení náprav](./how-to/remediate-resources.md#how-remediation-security-works).
@@ -88,7 +90,7 @@ To remove the assignment created, follow these steps:
 
 1. Na levé straně stránky služby Azure Policy vyberte **Dodržování předpisů** (nebo **Přiřazení**) a vyhledejte přiřazení zásady **Audit virtuálních počítačů, které nepoužívají spravované disky**, které jste vytvořili.
 
-1. Klikněte pravým tlačítkem na přiřazení zásady **Audit virtuálních počítačů, které nepoužívají spravované disky** a vyberte **Odstranit přiřazení**.
+1. Right-click the **Audit VMs that do not use managed disks** policy assignment and select **Delete assignment**.
 
    ![Delete an assignment from the Compliance page](./media/assign-policy-portal/delete-assignment.png)
 

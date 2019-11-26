@@ -1,16 +1,16 @@
 ---
-title: Ukázka-vynutilo vzor shody značek
-description: Tato definice ukázkové zásady vyžaduje, aby prostředky splňovaly vzor shody pro hodnotu značky.
+title: Sample - Enforce tag match pattern
+description: This sample policy definition requires that resources meet the match pattern for tag value for a specific date format.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: e56d5d401f525f94bce4567204a7f18074fb1a90
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a2d5f85f02a2197e9e213b7e9fd7dfec7adc7813
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076294"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463357"
 ---
-# <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>Ukázka – vynutilit vzor shody značek pro hodnoty značek
+# <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>Sample - Enforce tag match pattern for tag values
 
 Vyžaduje, aby hodnota značky splňovala vzor match. Zadejte v pravidle zásad povolený vzor.
 
@@ -24,9 +24,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![nasazení ukázky zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-tag-match-pattern%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-tag-match-pattern%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
+## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -45,7 +45,7 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'enforce-tag-match-pattern' --display-name 'E
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-tag-match-pattern"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

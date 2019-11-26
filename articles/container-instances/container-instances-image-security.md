@@ -1,143 +1,138 @@
 ---
-title: Azure Container Instances hlediska zabezpečení
-description: Doporučení pro zabezpečení imagí a tajných klíčů pro Azure Container Instances a obecné požadavky na zabezpečení pro jakoukoli platformu kontejneru
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Security for container instances
+description: Recommendations to secure images and secrets for Azure Container Instances, and general security considerations for any container platform
 ms.topic: article
 ms.date: 04/29/2019
-ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 618d3a901698e46760d970f6d4fbc4157c5d2ea3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b25cb4178ba211ff819ba512c9820165e0efbbf1
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325919"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481692"
 ---
-# <a name="security-considerations-for-azure-container-instances"></a>Požadavky na zabezpečení pro Azure Container Instances
+# <a name="security-considerations-for-azure-container-instances"></a>Security considerations for Azure Container Instances
 
-Tento článek představuje požadavky na zabezpečení při použití Azure Container Instances ke spouštění kontejnerových aplikací. Témata:
+This article introduces security considerations for using Azure Container Instances to run container apps. Témata:
 
 > [!div class="checklist"]
-> * **Doporučení zabezpečení** pro správu imagí a tajných kódů pro Azure Container Instances
-> * **Předpoklady pro ekosystém kontejneru** v celém životním cyklu kontejneru pro libovolnou platformu kontejneru
+> * **Security recommendations** for managing images and secrets for Azure Container Instances
+> * **Considerations for the container ecosystem**  throughout the container lifecycle, for any container platform
 
-## <a name="security-recommendations-for-azure-container-instances"></a>Doporučení zabezpečení pro Azure Container Instances
+## <a name="security-recommendations-for-azure-container-instances"></a>Security recommendations for Azure Container Instances
 
-### <a name="use-a-private-registry"></a>Použití privátního registru
+### <a name="use-a-private-registry"></a>Use a private registry
 
-Kontejnery se vytváří z imagí uložených v jednom nebo několika úložištích. Tato úložiště můžou patřit do veřejného registru, jako je [Docker Hub](https://hub.docker.com)nebo do privátního registru. Příkladem privátního registru je [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), který je možné nainstalovat místně nebo ve virtuálním privátním cloudu. Můžete také použít cloudové služby privátních kontejnerů registru, včetně [Azure Container Registry](../container-registry/container-registry-intro.md). 
+Kontejnery se vytváří z imagí uložených v jednom nebo několika úložištích. These repositories can belong to a public registry, like [Docker Hub](https://hub.docker.com), or to a private registry. Příkladem privátního registru je [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), který je možné nainstalovat místně nebo ve virtuálním privátním cloudu. You can also use cloud-based private container registry services, including [Azure Container Registry](../container-registry/container-registry-intro.md). 
 
-Veřejně dostupná image kontejneru nezaručuje zabezpečení. Image kontejneru se skládají z více softwarových vrstev a každá vrstva softwaru může mít ohrožení zabezpečení. Aby se snížila hrozba útoků, měli byste ukládat a načítat image z privátního registru, jako je Azure Container Registry nebo Docker Trusted Registry. Kromě poskytování spravovaného privátního registru Azure Container Registry podporuje [ověřování založené na instančních objektech](../container-registry/container-registry-authentication.md) prostřednictvím Azure Active Directory pro toky základního ověřování. Toto ověřování zahrnuje přístup na základě rolí pro oprávnění ke čtení (vyžádání obsahu), zápis (push) a vlastníka.
+A publicly available container image does not guarantee security. Container images consist of multiple software layers, and each software layer might have vulnerabilities. To help reduce the threat of attacks, you should store and retrieve images from a private registry, such as Azure Container Registry or Docker Trusted Registry. In addition to providing a managed private registry, Azure Container Registry supports [service principal-based authentication](../container-registry/container-registry-authentication.md) through Azure Active Directory for basic authentication flows. This authentication includes role-based access for read-only (pull), write (push), and owner permissions.
 
-### <a name="monitor-and-scan-container-images"></a>Monitorování a skenování imagí kontejneru
+### <a name="monitor-and-scan-container-images"></a>Monitor and scan container images
 
-Řešení pro monitorování a kontrolu zabezpečení, jako je [TwistLock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) a [azurová zabezpečení](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) , jsou dostupná prostřednictvím Azure Marketplace. Můžete je použít ke skenování imagí kontejneru v privátním registru a identifikaci potenciálních ohrožení zabezpečení. Je důležité porozumět hloubkám kontroly, které nabízí různá řešení. 
+Security monitoring and scanning solutions such as [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) and [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) are available through the Azure Marketplace. You can use them to scan container images in a private registry and identify potential vulnerabilities. It’s important to understand the depth of scanning that the different solutions provide. 
 
-### <a name="protect-credentials"></a>Ochrana přihlašovacích údajů
+### <a name="protect-credentials"></a>Protect credentials
 
-Kontejnery se můžou rozdělit mezi několik clusterů a oblastí Azure. Proto je nutné zabezpečit pověření požadovaná pro přihlášení nebo přístup k rozhraní API, jako jsou hesla nebo tokeny. Ujistěte se, že k těmto kontejnerům mají přístup pouze uživatelé s oprávněním k přenosu a v klidovém provozu. Vytvořte inventář všech tajných kódů přihlašovacích údajů a pak vývojářům vyžadovat, aby používali nově vytvořené nástroje pro správu tajných klíčů, které jsou navržené pro kontejnery.  Ujistěte se, že vaše řešení zahrnuje šifrované databáze, šifrování TLS pro tajná data při přenosu a [řízení přístupu na základě role](../role-based-access-control/overview.md)s minimálním oprávněním. [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) je cloudová služba, která chrání šifrovací klíče a tajné kódy (například certifikáty, připojovací řetězce a hesla) pro kontejnerové aplikace. Vzhledem k tomu, že tato data jsou citlivá a důležitá pro podnikání, zabezpečený přístup k vašim trezorům klíčů, aby k nim měli přístup jenom autorizovaní aplikace a uživatelé.
+Containers can spread across several clusters and Azure regions. So, you must secure credentials required for logins or API access, such as passwords or tokens. Ensure that only privileged users can access those containers in transit and at rest. Inventory all credential secrets, and then require developers to use emerging secrets-management tools that are designed for container platforms.  Make sure that your solution includes encrypted databases, TLS encryption for secrets data in transit, and least-privilege [role-based access control](../role-based-access-control/overview.md). [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) is a cloud service that safeguards encryption keys and secrets (such as certificates, connection strings, and passwords) for containerized applications. Because this data is sensitive and business critical, secure access to your key vaults so that only authorized applications and users can access them.
 
-## <a name="considerations-for-the-container-ecosystem"></a>Předpoklady pro ekosystém kontejnerů
+## <a name="considerations-for-the-container-ecosystem"></a>Considerations for the container ecosystem
 
-Následující bezpečnostní opatření, která jsou dobře implementované a efektivně spravovaná, vám můžou přispět k zabezpečení a ochraně vašeho ekosystému kontejnerů. Tato opatření platí v celém životním cyklu kontejneru, od vývoje prostřednictvím produkčního nasazení a na celou řadu orchestrací kontejnerů, hostitelů a platforem. 
+The following security measures, implemented well and managed effectively, can help you secure and protect your container ecosystem. These measures apply throughout the container lifecycle, from development through production deployment, and to a range of container orchestrators, hosts, and platforms. 
 
-### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>Použití správy ohrožení zabezpečení v rámci životního cyklu vývoje kontejneru 
+### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>Use vulnerability management as part of your container development lifecycle 
 
-Díky efektivní správě ohrožení zabezpečení v průběhu životního cyklu vývoje kontejneru vylepšíte lichá, že identifikujete a řešíte bezpečnostní otázky před tím, než se stanou závažnějšími problémy. 
+By using effective vulnerability management throughout the container development lifecycle, you improve the odds that you identify and resolve security concerns before they become a more serious problem. 
 
-### <a name="scan-for-vulnerabilities"></a>Vyhledat ohrožení zabezpečení 
+### <a name="scan-for-vulnerabilities"></a>Scan for vulnerabilities 
 
-Neustále se objevují nové chyby zabezpečení, takže vyhledávání a identifikaci chyb zabezpečení je nepřetržitý proces. Zahrňte kontrolu ohrožení zabezpečení v celém životním cyklu kontejneru:
+New vulnerabilities are discovered all the time, so scanning for and identifying vulnerabilities is a continuous process. Incorporate vulnerability scanning throughout the container lifecycle:
 
-* Jako poslední kontrolu vývojového kanálu byste měli před vložením imagí do veřejného nebo privátního registru provést kontrolu v kontejnerech. 
-* Pokračujte v prohledávání imagí kontejnerů v registru tak, aby bylo možné identifikovat případné chyby, které byly při vývoji nějakým způsobem nezjištěny, a řešit nově zjištěná ohrožení zabezpečení, která mohou existovat v kódu používaném v obrázcích kontejneru.  
+* As a final check in your development pipeline, you should perform a vulnerability scan on containers before pushing the images to a public or private registry. 
+* Continue to scan container images in the registry both to identify any flaws that were somehow missed during development and to address any newly discovered vulnerabilities that might exist in the code used in the container images.  
 
-### <a name="map-image-vulnerabilities-to-running-containers"></a>Mapování slabých kopií obrazu na spuštěné kontejnery 
+### <a name="map-image-vulnerabilities-to-running-containers"></a>Map image vulnerabilities to running containers 
 
-Je potřeba, abyste nastavili mapování chyb zabezpečení identifikovaných v imagích kontejneru na spouštění kontejnerů, což znamená, že problémy se zabezpečením se dají zmírnit nebo vyřešit.  
+You need to have a means of mapping vulnerabilities identified in container images to running containers, so security issues can be mitigated or resolved.  
 
-### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Zajistěte, aby se ve vašem prostředí používaly jenom schválené image. 
+### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Ensure that only approved images are used in your environment 
 
-V ekosystému kontejnerů je dostatek změn a nestálosti, aniž by bylo povoleno také použití neznámých kontejnerů. Povolte pouze schválené image kontejneru. Máte k dispozici nástroje a procesy pro monitorování a zabránění použití neschválených imagí kontejneru. 
+There’s enough change and volatility in a container ecosystem without allowing unknown containers as well. Allow only approved container images. Have tools and processes in place to monitor for and prevent the use of unapproved container images. 
 
-Účinný způsob, jak omezit plochu pro útok a zabránit vývojářům v provádění kritických chyb zabezpečení, je řízení toku imagí kontejnerů do vývojového prostředí. Můžete například schválit jedno rozdělení Linux jako základní bitovou kopii, pokud jde o jednu z nich (Alpine nebo CoreOS namísto Ubuntu), aby se minimalizovala plocha potenciálních útoků. 
+An effective way of reducing the attack surface and preventing developers from making critical security mistakes is to control the flow of container images into your development environment. For example, you might sanction a single Linux distribution as a base image, preferably one that is lean (Alpine or CoreOS rather than Ubuntu), to minimize the surface for potential attacks. 
 
-Podepisování obrázku nebo otisky prstů můžou poskytovat řetězec odolnosti, který umožňuje ověřit integritu kontejnerů. Azure Container Registry například podporuje model [vztahu důvěryhodnosti obsahu](https://docs.docker.com/engine/security/trust/content_trust) Docker, který umožňuje vydavatelům imagí podepisovat obrázky, které jsou vloženy do registru, a uživatele s obrázkem, který načte pouze podepsané obrázky.
+Image signing or fingerprinting can provide a chain of custody that enables you to verify the integrity of the containers. For example, Azure Container Registry supports Docker's [content trust](https://docs.docker.com/engine/security/trust/content_trust) model, which allows image publishers to sign images that are pushed to a registry, and image consumers to pull only signed images.
 
-### <a name="permit-only-approved-registries"></a>Povolit pouze schválené Registry 
+### <a name="permit-only-approved-registries"></a>Permit only approved registries 
 
-Rozšíření zajišťující, že vaše prostředí používá pouze schválené image, je povolit pouze použití schválených registrů kontejnerů. Vyžadování schváleného kontejneru kontejnerů snižuje riziko rizika tím, že omezuje potenciál na zavedení neznámých chyb zabezpečení nebo problémů se zabezpečením. 
+An extension of ensuring that your environment uses only approved images is to permit only the use of approved container registries. Requiring the use of approved container registries reduces your exposure to risk by limiting the potential for the introduction of unknown vulnerabilities or security issues. 
 
-### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>Zajištění integrity imagí v průběhu životního cyklu 
+### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>Ensure the integrity of images throughout the lifecycle 
 
-Součástí správy zabezpečení v rámci životního cyklu kontejneru je zajištění integrity imagí kontejneru v registru a jejich změny nebo nasazení do produkčního prostředí. 
+Part of managing security throughout the container lifecycle is to ensure the integrity of the container images in the registry and as they are altered or deployed into production. 
 
-* Image s chybami zabezpečení, dokonce i méně závažná, by neměly mít povoleno spouštění v produkčním prostředí. V ideálním případě by měly být všechny image nasazené v produkčním prostředí uložené v privátním registru, který je přístupný pro výběr několika málo. Udržujte si malý počet produkčních imagí, abyste se ujistili, že je možné je efektivně spravovat.
+* Images with vulnerabilities, even minor, should not be allowed to run in a production environment. Ideally, all images deployed in production should be saved in a private registry accessible to a select few. Keep the number of production images small to ensure that they can be managed effectively.
 
-* Vzhledem k tomu, že je obtížné určit původ softwaru z veřejně dostupné image kontejneru, sestavte image ze zdroje, abyste zajistili znalosti původu vrstvy. Když se objeví ohrožení zabezpečení v imagi kontejneru, kterou jste si sami sestavili, můžete rychleji najít řešení. U veřejné image by zákazníci museli najít kořen veřejné image, aby ji opravili nebo získali další zabezpečenou Image od vydavatele. 
+* Because it’s hard to pinpoint the origin of software from a publicly available container image, build images from the source to ensure knowledge of the origin of the layer. Když se objeví ohrožení zabezpečení v imagi kontejneru, kterou jste si sami sestavili, můžete rychleji najít řešení. With a public image, customers would need to find the root of a public image to fix it or get another secure image from the publisher. 
 
-* Důkladná naskenovaná image nasazená v produkčním prostředí není zaručená, že se po celou dobu životnosti aplikace bude považovat za neaktuální. Může docházet k hlášení ohrožení zabezpečení pro vrstvy image, která dříve nebyla známa nebo se objevila až po nasazení do produkčního prostředí. 
+* A thoroughly scanned image deployed in production is not guaranteed to be up-to-date for the lifetime of the application. Může docházet k hlášení ohrožení zabezpečení pro vrstvy image, která dříve nebyla známa nebo se objevila až po nasazení do produkčního prostředí. 
 
-  Pravidelně auditujte image nasazené v produkčním prostředí, které identifikují image, které jsou zastaralé nebo nejsou v průběhu času aktualizované. K aktualizaci imagí kontejneru bez výpadků můžete použít metodologie nasazení s modrou zelenou a přístupným upgradem. Image můžete kontrolovat pomocí nástrojů popsaných v předchozí části. 
+  Periodically audit images deployed in production to identify images that are out of date or have not been updated in a while. You might use blue-green deployment methodologies and rolling upgrade mechanisms to update container images without downtime. You can scan images by using tools described in the preceding section. 
 
-* Pomocí kanálu průběžné integrace (CI) s integrovaným kontrolou zabezpečení Sestavte zabezpečené image a nahrajte je do privátního registru. Zjišťování ohrožení zabezpečení integrované v řešení průběžné integrace zajišťuje, že se image, které projdou všemi testy, nasdílí do privátního registru, ze kterého se nasazují produkční úlohy. 
+* Use a continuous integration (CI) pipeline with integrated security scanning to build secure images and push them to your private registry. Zjišťování ohrožení zabezpečení integrované v řešení průběžné integrace zajišťuje, že se image, které projdou všemi testy, nasdílí do privátního registru, ze kterého se nasazují produkční úlohy. 
 
-  Selhání kanálu CI zajišťuje, že se neobsahují ohrožené image do privátního registru, který se používá pro nasazení produkčních úloh. Také automatizuje kontrolu zabezpečení obrazu, pokud je k dispozici velký počet imagí. Jinak může být ruční auditování imagí za účelem zjišťování ohrožení zabezpečení zdlouhavé a náchylné k chybám. 
+  A CI pipeline failure ensures that vulnerable images are not pushed to the private registry that’s used for production workload deployments. It also automates image security scanning if there’s a significant number of images. Jinak může být ruční auditování imagí za účelem zjišťování ohrožení zabezpečení zdlouhavé a náchylné k chybám. 
 
-### <a name="enforce-least-privileges-in-runtime"></a>Vyhovět minimálním oprávněním v modulu runtime 
+### <a name="enforce-least-privileges-in-runtime"></a>Enforce least privileges in runtime 
 
-Princip nejnižších oprávnění je základní osvědčený postup zabezpečení, který platí i pro kontejnery. Pokud dojde k zneužití ohrožení zabezpečení, obecně mu poskytne přístup a oprávnění útočníka se rovnají tomu, že ohrožená aplikace nebo proces. Zajištění toho, aby kontejnery pracovaly s nejnižšími oprávněními a přístup nutný k tomu, aby bylo možné dokončit úlohu, snižuje riziko ohrožení. 
+The concept of least privileges is a basic security best practice that also applies to containers. When a vulnerability is exploited, it generally gives the attacker access and privileges equal to those of the compromised application or process. Ensuring that containers operate with the lowest privileges and access required to get the job done reduces your exposure to risk. 
 
-### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>Zmenšení prostoru pro útok na kontejner odebráním nepotřebných oprávnění 
+### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>Reduce the container attack surface by removing unneeded privileges 
 
-Potenciální plochu útoku můžete také minimalizovat odebráním nevyužitých nebo zbytečných procesů nebo oprávnění z modulu runtime kontejneru. Privilegované kontejnery jsou spouštěny jako kořenové. Pokud uživatel se zlými úmysly nebo úlohami řídí v privilegovaném kontejneru, bude kontejner v tomto systému spuštěn jako kořenový.
+You can also minimize the potential attack surface by removing any unused or unnecessary processes or privileges from the container runtime. Privileged containers run as root. If a malicious user or workload escapes in a privileged container, the container will then run as root on that system.
 
-### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Soubory seznamu povolených a spustitelné soubory, ke kterým má kontejner povolený přístup nebo spuštění 
+### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Whitelist files and executables that the container is allowed to access or run 
 
-Snížení počtu proměnných nebo neznámých vám pomůže udržet stabilní a spolehlivé prostředí. Omezením kontejnerů tak, aby mohly přistupovat k souborům, které mají přístup k předschváleným nebo povoleným souborům a spustitelným souborům, je prověřená metoda, která omezuje expozici rizik  
+Reducing the number of variables or unknowns helps you maintain a stable, reliable environment. Limiting containers so they can access or run only preapproved or whitelisted files and executables is a proven method of limiting exposure to risk.  
 
-Je mnohem jednodušší spravovat seznam povolených procesů, když je implementován od začátku. Seznam povolených funkcí poskytuje míru řízení a správy, jak se dozvíte, jaké soubory a spustitelné soubory jsou nutné, aby aplikace správně fungovala. 
+It’s a lot easier to manage a whitelist when it’s implemented from the beginning. A whitelist provides a measure of control and manageability as you learn what files and executables are required for the application to function correctly. 
 
-Seznam povolených možností nejen omezuje plochu útoku, ale může také poskytovat základní údaje pro anomálie a zabránit použití scénářů "s vysokou úrovní" a užitečných kontejnerů. 
+A whitelist not only reduces the attack surface but can also provide a baseline for anomalies and prevent the use cases of the "noisy neighbor" and container breakout scenarios. 
 
-### <a name="enforce-network-segmentation-on-running-containers"></a>Vymáhat segmentaci sítě pro spuštěné kontejnery  
+### <a name="enforce-network-segmentation-on-running-containers"></a>Enforce network segmentation on running containers  
 
-Aby se chránily kontejnery v jedné podsíti před bezpečnostními riziky v jiné podsíti, udržujte segmentaci sítě (nebo nano-segmentace) nebo oddělení mezi běžícími kontejnery. Údržba segmentace sítě může být také nutná pro používání kontejnerů v oborech, které jsou nezbytné pro splnění požadavků dodržování předpisů.  
+To help protect containers in one subnet from security risks in another subnet, maintain network segmentation (or nano-segmentation) or segregation between running containers. Maintaining network segmentation may also be necessary for using containers in industries that are required to meet compliance mandates.  
 
-Například partnerský nástroj [azurová](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) poskytuje automatizovaný přístup pro segmentaci nano. Azurová sleduje síťové aktivity kontejneru v modulu runtime. Identifikuje všechna příchozí a odchozí síťová připojení k jiným kontejnerům, službám, IP adresám a veřejnému Internetu. Nano – segmentace se automaticky vytvoří na základě monitorovaného provozu. 
+For example, the partner tool [Aqua](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) provides an automated approach for nano-segmentation. Aqua monitors container network activities in runtime. It identifies all inbound and outbound network connections to/from other containers, services, IP addresses, and the public internet. Nano-segmentation is automatically created based on monitored traffic. 
 
-### <a name="monitor-container-activity-and-user-access"></a>Monitorovat aktivitu kontejneru a přístup uživatelů 
+### <a name="monitor-container-activity-and-user-access"></a>Monitor container activity and user access 
 
-Stejně jako u jakéhokoli IT prostředí byste měli konzistentně sledovat činnost a uživatelský přístup k ekosystému kontejnerů, abyste mohli rychle identifikovat podezřelé nebo škodlivé aktivity. Azure poskytuje řešení pro monitorování kontejnerů, včetně:
+As with any IT environment, you should consistently monitor activity and user access to your container ecosystem to quickly identify any suspicious or malicious activity. Azure provides container monitoring solutions including:
 
-* [Azure monitor pro kontejnery](../azure-monitor/insights/container-insights-overview.md) pro monitorování výkonu úloh nasazených do prostředí Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Azure Monitor pro kontejnery vám poskytne přehled o výkonu shromažďováním paměti a procesoru metriky z řadiče, uzly a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. 
+* [Azure Monitor for containers](../azure-monitor/insights/container-insights-overview.md) to monitor the performance of your workloads deployed to Kubernetes environments hosted on Azure Kubernetes Service (AKS). Azure Monitor for containers gives you performance visibility by collecting memory and processor metrics from controllers, nodes, and containers that are available in Kubernetes through the Metrics API. 
 
-* [Řešení Azure Container monitoring](../azure-monitor/insights/containers.md) vám pomůže zobrazit a spravovat další hostitele kontejnerů Docker a Windows v jednom umístění. Příklad:
+* The [Azure Container Monitoring solution](../azure-monitor/insights/containers.md) helps you view and manage other Docker and Windows container hosts in a single location. Například:
 
-  * Zobrazí podrobné informace o auditu, které zobrazují příkazy používané s kontejnery. 
-  * Řešení potíží s kontejnery zobrazením a prohledáváním centralizovaných protokolů bez nutnosti vzdáleného zobrazení hostitelů Docker nebo Windows.  
-  * Najděte kontejnery, které mohou být v hostiteli na vysokou úroveň a spotřebovávají nadměrné prostředky.
-  * Zobrazit centralizované informace o využití procesoru, paměti, úložiště a sítě a informace o výkonu pro kontejnery.  
+  * View detailed audit information that shows commands used with containers. 
+  * Troubleshoot containers by viewing and searching centralized logs without having to remotely view Docker or Windows hosts.  
+  * Find containers that may be noisy and consuming excess resources on a host.
+  * View centralized CPU, memory, storage, and network usage and performance information for containers.  
 
-  Řešení podporuje orchestrace kontejnerů včetně Docker Swarm, DC/OS, nespravovaných Kubernetes, Service Fabric a Red Hat OpenShift. 
+  The solution supports container orchestrators including Docker Swarm, DC/OS, unmanaged Kubernetes, Service Fabric, and Red Hat OpenShift. 
 
-### <a name="monitor-container-resource-activity"></a>Monitorování aktivity prostředku kontejneru 
+### <a name="monitor-container-resource-activity"></a>Monitor container resource activity 
 
-Monitorujte své aktivity prostředků, jako jsou soubory, sítě a další prostředky, ke kterým přistupují vaše kontejnery. Sledování aktivity a spotřeby prostředků je užitečné jak pro monitorování výkonu, tak jako bezpečnostní opatření. 
+Monitor your resource activity, like files, network, and other resources that your containers access. Monitoring resource activity and consumption is useful both for performance monitoring and as a security measure. 
 
-[Azure monitor](../azure-monitor/overview.md) umožňuje základní monitorování služeb Azure tím, že umožňuje shromažďování metrik, protokolů aktivit a diagnostických protokolů. Pomocí protokolu aktivit lze například zjistit, kdy se nové prostředky vytvořily nebo změnily. 
+[Azure Monitor](../azure-monitor/overview.md) enables core monitoring for Azure services by allowing the collection of metrics, activity logs, and diagnostic logs. Pomocí protokolu aktivit lze například zjistit, kdy se nové prostředky vytvořily nebo změnily. 
 
-Jsou dostupné metriky, které poskytují statistiky o výkonu různých prostředků a dokonce i operačního systému ve virtuálním počítači. Tato data můžete na webu Azure Portal zobrazit pomocí některého z průzkumníků a na základě těchto metrik můžete vytvářet upozornění. Azure Monitor poskytuje nejrychlejší kanál metrik (5 minut dolů na 1 minutu), takže byste ho měli používat pro časově kritické výstrahy a oznámení. 
+Jsou dostupné metriky, které poskytují statistiky o výkonu různých prostředků a dokonce i operačního systému ve virtuálním počítači. Tato data můžete na webu Azure Portal zobrazit pomocí některého z průzkumníků a na základě těchto metrik můžete vytvářet upozornění. Azure Monitor provides the fastest metrics pipeline (5 minutes down to 1 minute), so you should use it for time-critical alerts and notifications. 
 
-### <a name="log-all-container-administrative-user-access-for-auditing"></a>Protokolovat všechny přístupy správce kontejneru k auditování 
+### <a name="log-all-container-administrative-user-access-for-auditing"></a>Log all container administrative user access for auditing 
 
-Udržujte přesnou auditový záznam o přístupu pro správu k ekosystému kontejnerů, registru kontejnerů a imagí kontejnerů. Tyto protokoly mohou být nezbytné pro účely auditování a budou užitečné jako forenzní legitimace po jakémkoli incidentu zabezpečení. K dosažení tohoto účelu můžete použít [Řešení Azure Container monitoring](../azure-monitor/insights/containers.md) . 
+Maintain an accurate audit trail of administrative access to your container ecosystem, container registry, and container images. These logs might be necessary for auditing purposes and will be useful as forensic evidence after any security incident. You can use the [Azure Container Monitoring solution](../azure-monitor/insights/containers.md) to achieve this purpose. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o správě chyb zabezpečení kontejnerů pomocí řešení z [TwistLock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) a [azurová Security](https://www.aquasec.com/solutions/azure-container-security/).
+* Learn more about managing container vulnerabilities with solutions from [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) and [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/).
 
-* Přečtěte si další informace o [zabezpečení kontejneru v Azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).
+* Learn more about [container security in Azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).
