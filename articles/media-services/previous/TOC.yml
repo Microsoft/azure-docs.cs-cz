@@ -266,18 +266,6 @@
           href: media-services-dotnet-long-operations.md
         - name: Specifikace živého ingestování fragmentovaného MP4
           href: ../media-services-fmp4-live-ingest-overview.md
-        - name: Začínáme
-          href: media-services-azure-media-clipper-getting-started.md
-        - name: Načtení videa
-          href: media-services-azure-media-clipper-load-assets.md
-        - name: Konfigurace klávesových zkratek
-          href: media-services-azure-media-clipper-keyboard-shortcuts.md
-        - name: Konfigurace lokalizace
-          href: media-services-azure-media-clipper-localization.md
-        - name: Odesílání úloh oříznutí
-          href: media-services-azure-media-clipper-submit-job.md
-        - name: portál Azure
-          href: media-services-azure-media-clipper-portal.md
     - name: Ochrana obsahu
       href: media-services-content-protection-overview.md
       items:

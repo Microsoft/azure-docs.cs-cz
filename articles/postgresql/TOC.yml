@@ -175,6 +175,10 @@
   items:
     - name: Jeden server
       items:
+        - name: Správa serveru
+          items:
+            - name: portál Azure
+              href: howto-create-manage-server-portal.md
         - name: Authentication
           items:
             - name: Vytvoření uživatelů
