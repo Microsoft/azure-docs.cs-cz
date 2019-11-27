@@ -80,7 +80,7 @@ Každá vlastnost uloženého hledání je popsána v následující tabulce.
 > [!NOTE]
 > V dotazu může být nutné použít řídicí znaky, pokud obsahuje znaky, které by mohly být interpretovány jako JSON. Například pokud byl dotaz **AzureActivity | Operace: "Microsoft. COMPUTE/virtualMachines/Write"** , měl by se zapsat do souboru řešení jako **AzureActivity | Operace:/\"Microsoft. COMPUTE/virtualMachines/Write\"** .
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 [Výstrahy protokolu Azure](../../azure-monitor/platform/alerts-unified-log.md) se vytvářejí pomocí pravidel upozornění Azure, která v pravidelných intervalech spouštějí zadané dotazy protokolu. Pokud výsledky dotazu odpovídají zadaným kritériím, vytvoří se záznam výstrahy a jednou nebo více akcí se spustí pomocí [skupin akcí](../../azure-monitor/platform/action-groups.md).
 
 Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Když se pracovní prostor a jeho výstrahy rozšíří na Azure, můžete načíst nebo přidat akce pomocí [šablony Azure Resource Manager skupiny akcí](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).

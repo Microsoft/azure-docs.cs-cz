@@ -1,7 +1,7 @@
 ---
-title: Quickstart - Send a query to the API in Python - Bing Local Business Search
+title: Rychlý Start – odeslání dotazu do rozhraní API v Pythonu – vyhledávání místních obchodů Bingu
 titleSuffix: Azure Cognitive Services
-description: Use this article to start using the Bing Local Business Search API in Python.
+description: Tento článek vám umožní začít používat rozhraní API Bingu pro vyhledávání místních obchodních aplikací v Pythonu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,26 +17,26 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326674"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Quickstart: Send a query to the Bing Local Business Search API in Python
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních hledání v Pythonu
 
-Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service. While this simple application is written in Python, the API is a RESTful Web service compatible with any programming language capable of making HTTP requests and parsing JSON.
+Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure. I když je tato jednoduchá aplikace napsaná v Pythonu, je rozhraní API webovou službou RESTful, která je kompatibilní s jakýmkoli programovacím jazykem schopným vytvářet požadavky HTTP a analyzovat JSON.
 
-This example application gets local response data from the API for the search query `hotel in Bellevue`.
+Tato ukázková aplikace získá data místní odpovědi z rozhraní API pro vyhledávací dotaz `hotel in Bellevue`.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Python](https://www.python.org/) 2.x or 3.x
+* [Python](https://www.python.org/) 2. x nebo 3. x
  
-You must have a [Cognitive Services API account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) with Bing APIs. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Use the access key provided by the free trial.  See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Použijte přístupový klíč, který je k dispozici v bezplatné zkušební verzi.  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-## <a name="run-the-complete-application"></a>Run the complete application
+## <a name="run-the-complete-application"></a>Spuštění úplné aplikace
 
-The following code gets localized results. Implementuje se v následujících krocích:
+Následující kód získá lokalizované výsledky. Implementuje se v následujících krocích:
 1. Deklarujte proměnné, které za použití hostitele a cesty určují koncový bod.
-2. Specify the query parameter. 
-3. Define the Search function that creates the request and adds the Ocp-Apim-Subscription-Key header.
-4. Set the Ocp-Apim-Subscription-Key header. 
-5. Make the connection and send the request.
+2. Zadejte parametr dotazu. 
+3. Zadejte vyhledávací funkci, která vytvoří požadavek a přidá hlavičku OCP-APIM-Subscription-Key.
+4. Nastavte hlavičku OCP-APIM-Subscription-Key. 
+5. Vytvořte připojení a odešlete žádost.
 6. Zobrazte výsledky ve formátu JSON.
 
 Následuje celý kód pro tuto ukázku:
@@ -68,6 +68,6 @@ print (json.dumps(json.loads(result), indent=4))
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- [Local Business Search Java Quickstart](local-search-java-quickstart.md)
-- [Local Business Search C# Quickstart](local-quickstart.md)
-- [Local Business Search Node Quickstart](local-search-node-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v jazyce Java](local-search-java-quickstart.md)
+- [Rychlý start hledání C# místních obchodních obchodů](local-quickstart.md)
+- [Rychlý Start uzlu místního hledání firmy](local-search-node-quickstart.md)

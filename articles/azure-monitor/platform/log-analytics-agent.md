@@ -40,7 +40,7 @@ Pokud používáte System Center Operations Manager 2012 R2 nebo novější:
 * Počítače se systémem Linux vykazující skupinu pro správu musí být nakonfigurovány tak, aby nahlásily přímo do Log Analytics pracovního prostoru. Pokud již počítače se systémem Linux hlásí přímo do pracovního prostoru a chcete je monitorovat pomocí Operations Manager, postupujte podle těchto kroků a [nahlaste se skupině pro správu Operations Manager](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group).
 * Log Analytics agenta pro Windows můžete nainstalovat do počítače s Windows a podávat ho do obou Operations Manager integrovaných v pracovním prostoru a v jiném pracovním prostoru.
 
-Agent pro Linux a Windows není dostupný jenom pro připojení k Azure Monitor, podporuje taky Azure Automation k hostování role Hybrid Runbook Worker a dalších služeb, jako je [Change Tracking](../../automation/change-tracking.md), [Update Management](../../automation/automation-update-management.md)a [Azure Security Center](../../security-center/security-center-intro.md). Další informace o roli pracovního procesu Hybrid Runbook Worker, naleznete v tématu [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+Agent pro Linux a Windows není dostupný jenom pro připojení k Azure Monitor, podporuje taky Azure Automation k hostování role Hybrid Runbook Worker a dalších služeb, jako je [Change Tracking](../../automation/change-tracking.md), [Update Management](../../automation/automation-update-management.md)a [Azure Security Center](../../security-center/security-center-intro.md). Další informace o Hybrid Runbook Worker roli najdete v tématu [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
 
@@ -60,7 +60,7 @@ Tato část obsahuje podrobnosti o podporovaných distribucích systému Linux.
 Počínaje verzí vydanou po. srpna 2018, provádíme následující změny k náš model podpory:  
 
 * Pouze server, které jsou podporovány verze, ne klienta.  
-* Nové verze [distribucích schválených pro Azure Linux](../../virtual-machines/linux/endorsed-distros.md) se podporují vždycky.  
+* Nové verze [Azure Linux schválené distribuce](../../virtual-machines/linux/endorsed-distros.md) se vždycky podporují.  
 * Všechny dílčí verze se podporují pro všechny hlavní verze uvedené.
 * Verze, které uplynuly od výrobce datum ukončení podpory nejsou podporovány.  
 * Nová verze AMI nejsou podporovány.  
@@ -98,7 +98,7 @@ V následující tabulce jsou vysvětlené balíčky požadované pro podporovan
 
 ## <a name="tls-12-protocol"></a>Protokol TLS 1.2
 
-Aby se zajistilo zabezpečení přenášených dat do protokolů Azure Monitor, důrazně doporučujeme nakonfigurovat agenta tak, aby používal minimálně protokol TLS (Transport Layer Security) 1,2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**.  Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+Aby se zajistilo zabezpečení přenášených dat do protokolů Azure Monitor, důrazně doporučujeme nakonfigurovat agenta tak, aby používal minimálně protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje**se.  Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="network-firewall-requirements"></a>Požadavky na bránu firewall sítě
 
@@ -114,9 +114,9 @@ Informace o bráně firewall požadované pro Azure Government najdete v tématu
 
 Pokud plánujete použít Azure Automation Hybrid Runbook Worker k připojení a registraci ve službě Automation pro použití sad Runbook nebo řešení správy ve vašem prostředí, musí mít přístup k číslu portu a adresám URL popsaným v tématu [Konfigurace sítě pro Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
-Agent systému Windows a Linux podporuje komunikaci buď prostřednictvím proxy server, nebo Log Analytics bránu, aby Azure Monitor pomocí protokolu HTTPS.  Jsou podporovány anonymní i základní ověřování (uživatelské jméno/heslo).  Pro připojení přímo ke službě Windows agenta konfiguraci proxy serveru zadané během instalace nebo [po nasazení](agent-manage.md#update-proxy-settings) v Ovládacích panelech nebo pomocí Powershellu.  
+Agent systému Windows a Linux podporuje komunikaci buď prostřednictvím proxy server, nebo Log Analytics bránu, aby Azure Monitor pomocí protokolu HTTPS.  Jsou podporovány anonymní i základní ověřování (uživatelské jméno/heslo).  Pro agenta Windows připojeného přímo ke službě je konfigurace proxy serveru určena během instalace nebo [po nasazení](agent-manage.md#update-proxy-settings) z ovládacích panelů nebo pomocí PowerShellu.  
 
-Pro linuxového agenta proxy serveru zadané během instalace nebo [po instalaci](agent-manage.md#update-proxy-settings) úpravou konfiguračního souboru proxy.conf.  Hodnota konfigurace proxy agenta systému Linux má následující syntaxi:
+V případě agenta pro Linux je proxy server zadáno během instalace nebo [po instalaci](agent-manage.md#update-proxy-settings) úpravou konfiguračního souboru proxy. conf.  Hodnota konfigurace proxy agenta systému Linux má následující syntaxi:
 
 `[protocol://][user:password@]proxyhost[:port]`
 
@@ -125,7 +125,7 @@ Pro linuxového agenta proxy serveru zadané během instalace nebo [po instalaci
 
 |Vlastnost| Popis |
 |--------|-------------|
-|Protocol (Protokol) | https |
+|Protocol (Protokol) | protokol HTTPS |
 |uživatel | Volitelné uživatelské jméno pro ověřování proxy serveru |
 |heslo | Volitelné heslo pro ověření proxy serverem |
 |proxyhost | Adresa nebo plně kvalifikovaný název domény proxy serveru/Log Analytics gateway |
@@ -134,7 +134,7 @@ Pro linuxového agenta proxy serveru zadané během instalace nebo [po instalaci
 Příklad: `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> Pokud používáte speciální znaky, jako "\@" své heslo, obdržíte chybu připojení proxy server vzhledem k tomu, že hodnota je analyzovat.  Chcete-li tento problém obejít, kódování heslo v adrese URL, pomocí nástroje, jako například [URLDecode](https://www.urldecoder.org/).  
+> Pokud v hesle použijete speciální znaky, jako je například "\@", obdržíte chybu připojení k proxy, protože je nesprávně analyzována hodnota.  Pokud chcete tento problém obejít, zakódovat heslo v adrese URL pomocí nástroje, jako je [URLDecode](https://www.urldecoder.org/).  
 
 ## <a name="install-and-configure-agent"></a>Instalace a konfigurace agenta
 
@@ -142,15 +142,15 @@ Propojení počítačů v rámci předplatného Azure nebo hybridního prostřed
 
 |Zdroj | Metoda | Popis|
 |-------|-------------|-------------|
-|Virtuální počítač Azure| -Log Analytics virtuálního počítače rozšíření pro [Windows](../../virtual-machines/extensions/oms-windows.md) nebo [Linux](../../virtual-machines/extensions/oms-linux.md) pomocí rozhraní příkazového řádku Azure nebo pomocí šablony Azure Resource Manageru<br>- [ručně z Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>[Automatické zřizování - Azure Security Center](../../security-center/security-center-enable-data-collection.md)| – Rozšíření nainstaluje agenta Log Analytics na virtuální počítače Azure a zaregistruje je do existujícího pracovního prostoru Azure Monitor.<br>– Azure Security Center můžou zřídit agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených, pokud ji povolíte pro monitorování ohrožení zabezpečení a hrozeb. Pokud je povoleno, budou zřízeny všechny nové nebo existující virtuální počítače bez nainstalovaného agenta.|
-| Hybridní počítač s Windows|- [Ruční instalace](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Šablony Resource Manageru pomocí služby Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Nainstalujte Microsoft Monitoring agent z příkazového řádku nebo pomocí automatizovaného metody jako je Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications), nebo pomocí šablony Azure Resource Manageru, pokud jste nasadili Microsoft Azure Stack ve vašem datovém centru.| 
+|Virtuální počítač Azure| – Log Analytics rozšíření virtuálního počítače pro [Windows](../../virtual-machines/extensions/oms-windows.md) nebo [Linux](../../virtual-machines/extensions/oms-linux.md) pomocí Azure CLI nebo šablony Azure Resource Manager<br>- [ručně z Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>[Automatické zřizování - Azure Security Center](../../security-center/security-center-enable-data-collection.md)| – Rozšíření nainstaluje agenta Log Analytics na virtuální počítače Azure a zaregistruje je do existujícího pracovního prostoru Azure Monitor.<br>– Azure Security Center můžou zřídit agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených, pokud ji povolíte pro monitorování ohrožení zabezpečení a hrozeb. Pokud je povoleno, budou zřízeny všechny nové nebo existující virtuální počítače bez nainstalovaného agenta.|
+| Hybridní počítač s Windows|- [Ruční instalace](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>[šablona - správce prostředků s Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Nainstalujte agenta Microsoft Monitoring Agent z příkazového řádku nebo pomocí automatizované metody, jako je například Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications)nebo se šablonou Azure Resource Manager, pokud jste nasadili Microsoft Azure Stack ve svém datovém centru.| 
 | Hybridní počítač s Linuxem| [Ruční instalace](../../azure-monitor/learn/quick-collect-linux-computer.md)|Instalace agenta pro Linux volání skript obálky hostovaná na Githubu. | 
-| System Center Operations Manager|[Integrace Operations Manageru s Log Analytics](../../azure-monitor/platform/om-agents.md) | Umožňuje konfigurovat integraci mezi protokoly Operations Manager a Azure Monitor a předávat shromážděná data z počítačů s Windows, která se vytvářejí do skupiny pro správu.|  
+| System Center Operations Manager|[Integrace Operations Manager s Log Analytics](../../azure-monitor/platform/om-agents.md) | Umožňuje konfigurovat integraci mezi protokoly Operations Manager a Azure Monitor a předávat shromážděná data z počítačů s Windows, která se vytvářejí do skupiny pro správu.|  
 
 ## <a name="next-steps"></a>Další kroky
 
-* Kontrola [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) pochopit zdroje dat dostupné pro shromažďování dat ze systému Windows nebo Linux. 
+* Projděte si [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) , abyste porozuměli zdrojům dat, které jsou k dispozici pro shromažďování dat ze systému Windows nebo Linux. 
 
-* Další informace o [protokolu dotazy](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Přečtěte si o [dotazech protokolů](../../azure-monitor/log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení. 
 
-* Další informace o [řešení monitorování](../../azure-monitor/insights/solutions.md) , které doplňují do Azure monitoru a také shromažďovat data do pracovního prostoru Log Analytics.
+* Přečtěte si o [řešeních monitorování](../../azure-monitor/insights/solutions.md) , která přidávají funkce pro Azure monitor a také shromažďovat data do pracovního prostoru Log Analytics.

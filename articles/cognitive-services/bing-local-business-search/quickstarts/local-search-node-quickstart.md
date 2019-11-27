@@ -1,7 +1,7 @@
 ---
-title: Quickstart - Send a query to the API using Node.js - Bing Local Business Search
+title: Rychlý Start – odeslání dotazu do rozhraní API pomocí Node. js – vyhledávání v místních obchodech Bingu
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service.
+description: Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,28 +17,28 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326688"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Quickstart: Send a query to the Bing Local Business Search API using Node.js
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání v místním obchodu pomocí Node. js
 
-Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service. While this simple application is written in Node.js, the API is a RESTful Web service compatible with any programming language capable of making HTTP requests and parsing JSON.
+Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure. I když je tato jednoduchá aplikace napsaná v Node. js, je rozhraní API webová služba RESTful kompatibilní s jakýmkoli programovacím jazykem schopným vytvářet požadavky HTTP a analyzovat JSON.
 
-This example application gets local response data from the API for the search query `hotel in Bellevue`.
+Tato ukázková aplikace získá data místní odpovědi z rozhraní API pro vyhledávací dotaz `hotel in Bellevue`.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Nejnovější verze [Node.js](https://nodejs.org/en/download/)
+* Nejnovější verze [Node.js](https://nodejs.org/en/download/).
 
-* The [JavaScript Request Library](https://github.com/request/request)
+* [Knihovna požadavků JavaScriptu](https://github.com/request/request)
 
-You must have a [Cognitive Services API account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) with Bing APIs. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Use the access key provided by the free trial.  See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Použijte přístupový klíč, který je k dispozici v bezplatné zkušební verzi.  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="code-scenario"></a>Scénář kódu
 
-The following code gets defines and sends the request. Implementuje se v následujících krocích:
+Následující kód získá definici a odešle požadavek. Implementuje se v následujících krocích:
 
 1. Deklarujte proměnné, které za použití hostitele a cesty určují koncový bod.
-2. Specify the query, and add the query parameter.
+2. Zadejte dotaz a přidejte parametr dotazu.
 3. Vytvořte pro odpověď funkci obslužné rutiny.
-4. Define the Search function that creates the request and adds the Ocp-Apim-Subscription-Key header.
+4. Zadejte vyhledávací funkci, která vytvoří požadavek a přidá hlavičku OCP-APIM-Subscription-Key.
 5. Spusťte funkci vyhledávání.
 
 Následuje celý kód pro tuto ukázku:
@@ -94,6 +94,6 @@ Search();
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Local Business Search quickstart](local-quickstart.md)
-* [Local Business Search Java quickstart](local-search-java-quickstart.md)
-* [Local Business Search Python quickstart](local-search-python-quickstart.md)
+* [Rychlý start hledání místních obchodních obchodů](local-quickstart.md)
+* [Rychlý Start pro místní vyhledávání v jazyce Java](local-search-java-quickstart.md)
+* [Rychlý Start pro místní vyhledávání v Pythonu](local-search-python-quickstart.md)

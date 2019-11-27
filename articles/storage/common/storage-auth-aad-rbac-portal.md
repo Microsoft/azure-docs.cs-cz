@@ -1,6 +1,6 @@
 ---
-title: Use the Azure portal to manage Azure AD access rights to blob and queue data with RBAC - Azure Storage | Microsoft Docs
-description: Use role-based access control (RBAC) from the Azure portal to assign access to containers and queues to security principals. Azure Storage supports built-in and custom RBAC roles for authentication via Azure AD.
+title: Použití Azure Portal ke správě přístupových práv služby Azure AD k datům objektů BLOB a front pomocí RBAC-Azure Storage | Microsoft Docs
+description: Pomocí řízení přístupu na základě role (RBAC) z Azure Portal přiřaďte přístup kontejnerům a frontám k objektům zabezpečení. Azure Storage podporuje integrované a vlastní role RBAC pro ověřování prostřednictvím služby Azure AD.
 services: storage
 author: tamram
 ms.service: storage
@@ -16,89 +16,89 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421996"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Grant access to Azure blob and queue data with RBAC in the Azure portal
+# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Udělte přístup k datům služby Azure Blob a Queue data do fronty pomocí RBAC v Azure Portal
 
-Azure Active Directory (Azure AD) authorizes access rights to secured resources through [role-based access control (RBAC)](../../role-based-access-control/overview.md). Azure Storage defines a set of built-in RBAC roles that encompass common sets of permissions used to access blob or queue data. 
+Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Azure Storage definuje sadu předdefinovaných rolí RBAC, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB nebo front. 
 
-When an RBAC role is assigned to an Azure AD security principal, Azure grants access to those resources for that security principal. Access can be scoped to the level of the subscription, the resource group, the storage account, or an individual container or queue. An Azure AD security principal may be a user, a group, an application service principal, or a [managed identity for Azure resources](../../active-directory/managed-identities-azure-resources/overview.md).
+Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezený na úrovni předplatného, skupiny prostředků, účtu úložiště nebo jednotlivého kontejneru nebo fronty. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo [spravovanou identitou pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-This article describes how to use the Azure portal to assign RBAC roles. The Azure portal provides a simple interface for assigning RBAC roles and managing access to your storage resources. You can also assign RBAC roles for blob and queue resources using Azure command-line tools or the Azure Storage management APIs. For more information about RBAC roles for storage resources, see [Authenticate access to Azure blobs and queues using Azure Active Directory](storage-auth-aad.md). 
+Tento článek popisuje, jak použít Azure Portal k přiřazení rolí RBAC. Azure Portal poskytuje jednoduché rozhraní pro přiřazování rolí RBAC a správu přístupu k prostředkům úložiště. Pomocí nástrojů příkazového řádku Azure nebo rozhraní API pro správu Azure Storage taky můžete přiřadit role RBAC pro prostředky BLOB a Queue. Další informace o rolích RBAC pro prostředky úložiště najdete v tématu [ověření přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](storage-auth-aad.md). 
 
-## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC roles for blobs and queues
+## <a name="rbac-roles-for-blobs-and-queues"></a>Role RBAC pro objekty BLOB a fronty
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Determine resource scope 
+## <a name="determine-resource-scope"></a>Určení oboru prostředků 
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="assign-rbac-roles-using-the-azure-portal"></a>Assign RBAC roles using the Azure portal
+## <a name="assign-rbac-roles-using-the-azure-portal"></a>Přiřazení rolí RBAC pomocí Azure Portal
 
-After you have determined the appropriate scope for a role assignment, navigate to that resource in the Azure portal. Display the **Access Control (IAM)** settings for the resource, and follow these instructions to manage role assignments:
+Po určení vhodného oboru pro přiřazení role přejděte k tomuto prostředku v Azure Portal. Zobrazit nastavení **Access Control (IAM)** prostředku a podle těchto pokynů můžete spravovat přiřazení rolí:
 
-1. Assign the appropriate Azure Storage RBAC role to grant access to an Azure AD security principal.
+1. Přiřaďte příslušnou Azure Storage roli RBAC pro udělení přístupu k objektu zabezpečení služby Azure AD.
 
-1. Assign the Azure Resource Manager [Reader](../../role-based-access-control/built-in-roles.md#reader) role to users who need to access containers or queues via the Azure portal using their Azure AD credentials. 
+1. Přiřaďte roli Azure Resource Manager [Reader](../../role-based-access-control/built-in-roles.md#reader) uživatelům, kteří potřebují přistupovat k kontejnerům nebo frontám prostřednictvím Azure Portal pomocí svých přihlašovacích údajů Azure AD. 
 
-The following sections describe each of these steps in more detail.
+Následující části popisují všechny tyto kroky podrobněji.
 
 > [!NOTE]
-> As an owner of your Azure Storage account, you are not automatically assigned permissions to access data. You must explicitly assign yourself an RBAC role for Azure Storage. You can assign it at the level of your subscription, resource group, storage account, or a container or queue.
+> Jako vlastník účtu služby Azure Storage nejsou automaticky přiřadit oprávnění pro přístup k datům. Je nutné explicitně přiřadit sami roli RBAC pro Azure Storage. Můžete ji přiřadit na úrovni předplatného, skupiny prostředků, účtu úložiště nebo kontejneru nebo fronty.
 > 
-> You cannot assign a role scoped to a container or queue if your storage account has a hierarchical namespace enabled.
+> Pokud má váš účet úložiště povolený hierarchický obor názvů, nemůžete přiřadit obor rolí k kontejneru nebo frontě.
 
-### <a name="assign-a-built-in-rbac-role"></a>Assign a built-in RBAC role
+### <a name="assign-a-built-in-rbac-role"></a>Přiřazení předdefinované role RBAC
 
-Before you assign a role to a security principal, be sure to consider the scope of the permissions you are granting. Review the [Determine resource scope](#determine-resource-scope) section to decide the appropriate scope.
+Předtím, než přiřadíte roli objektu zabezpečení, nezapomeňte zvážit rozsah oprávnění, která udělujete. Projděte si část [určení rozsahu prostředků](#determine-resource-scope) a určete příslušný obor.
 
-The procedure shown here assigns a role scoped to a container, but you can follow the same steps to assign a role scoped to a queue: 
+Procedura zobrazená tady přiřadí obor role na kontejner, ale stejný postup můžete použít k přiřazení rozsahu role k frontě: 
 
-1. In the [Azure portal](https://portal.azure.com), go to your storage account and display the **Overview** for the account.
-1. Under Services, select **Blobs**. 
-1. Locate the container for which you want to assign a role, and display the container's settings. 
-1. Select **Access control (IAM)** to display access control settings for the container. Select the **Role assignments** tab to see the list of role assignments.
+1. V [Azure Portal](https://portal.azure.com)přejdete na svůj účet úložiště a zobrazíte **Přehled** tohoto účtu.
+1. V části služby vyberte **objekty blob**. 
+1. Vyhledejte kontejner, pro který chcete přiřadit roli, a zobrazte nastavení kontejneru. 
+1. Vyberte **řízení přístupu (IAM)** a zobrazte nastavení řízení přístupu pro kontejner. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
 
-    ![Screenshot showing container access control settings](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
+    ![Snímek obrazovky zobrazující nastavení řízení přístupu k kontejneru](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
 
-1. Click the **Add role assignment** button to add a new role.
-1. In the **Add role assignment** window, select the Azure Storage role that you want to assign. Then search to locate the security principal to which you want to assign that role.
+1. Kliknutím na tlačítko **Přidat přiřazení role** přidejte novou roli.
+1. V okně **Přidat přiřazení role** vyberte roli Azure Storage, kterou chcete přiřadit. Pak vyhledejte objekt zabezpečení, ke kterému chcete přiřadit tuto roli.
 
-    ![Screenshot showing how to assign an RBAC role](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
+    ![Snímek obrazovky ukazující, jak přiřadit roli RBAC](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
 
-1. Klikněte na **Uložit**. The identity to whom you assigned the role appears listed under that role. For example, the following image shows that the user added now has read permissions to data in the container named *sample-container*.
+1. Klikněte na možnost **Uložit**. Identita, ke které jste přiřadili roli, se zobrazí v seznamu v rámci této role. Například následující obrázek ukazuje, že uživatel přidaný teď má oprávnění číst pro data v kontejneru s názvem *Sample-Container*.
 
-    ![Screenshot showing list of users assigned to a role](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
+    ![Snímek obrazovky zobrazující seznam uživatelů přiřazených k roli](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
-You can follow similar steps to assign a role scoped to the storage account, resource group, or subscription.
+Podle podobných kroků můžete přiřadit obor role k účtu úložiště, skupině prostředků nebo předplatnému.
 
-### <a name="assign-the-reader-role-for-portal-access"></a>Assign the Reader role for portal access
+### <a name="assign-the-reader-role-for-portal-access"></a>Přiřazení role čtenáře pro přístup k portálu
 
-When you assign a built-in or custom role for Azure Storage to a security principal, you are granting permissions to that security principal to perform operations on data in your storage account. The built-in **Data Reader** roles provide read permissions for the data in a container or queue, while the built-in **Data Contributor** roles provide read, write, and delete permissions to a container or queue. Permissions are scoped to the specified resource.  
+Když přiřadíte předdefinovanou nebo vlastní roli pro Azure Storage objektu zabezpečení, udělujete tomuto objektu zabezpečení oprávnění k provádění operací s daty v účtu úložiště. Předdefinované role **čtecího modulu dat** poskytují oprávnění ke čtení pro data v kontejneru nebo frontě, zatímco předdefinované role **přispěvatele dat** poskytují oprávnění ke čtení, zápisu a odstraňování kontejneru nebo fronty. Oprávnění jsou vymezena na zadaný prostředek.  
 
-For example, if you assign the **Storage Blob Data Contributor** role to user Mary at the level of a container named **sample-container**, then Mary is granted read, write, and delete access to all of the blobs in that container.
+Pokud například přiřadíte roli **Přispěvatel dat objektů BLOB úložiště** k uživateli Marie na úrovni kontejneru s názvem **Sample-Container**, pak je Marie udělen přístup pro čtení, zápis a odstranění ke všem objektům blob v tomto kontejneru.
 
-However, if Mary wants to view a blob in the Azure portal, then the **Storage Blob Data Contributor** role by itself will not provide sufficient permissions to navigate through the portal to the blob in order to view it. Additional Azure AD permissions are required to navigate through the portal and view the other resources that are visible there.
+Pokud chce ale Marie zobrazit objekt BLOB v Azure Portal, neposkytne role **Přispěvatel dat objektu BLOB úložiště** dostatečná oprávnění k procházení portálu na objekt blob, aby ho bylo možné zobrazit. K procházení portálu a zobrazení dalších prostředků, které jsou tam viditelné, se vyžadují další oprávnění služby Azure AD.
 
-If your users need to be able to access blobs in the Azure portal, then assign them an additional RBAC role, the [Reader](../../role-based-access-control/built-in-roles.md#reader) role, to those users, at the level of the storage account or above. The **Reader** role is an Azure Resource Manager role that permits users to view storage account resources, but not modify them. It does not provide read permissions to data in Azure Storage, but only to account management resources.
+Pokud uživatelé potřebují mít přístup k objektům blob v Azure Portal, přiřaďte jim další roli RBAC, roli [čtenáře](../../role-based-access-control/built-in-roles.md#reader) , těmto uživatelům, na úrovni účtu úložiště nebo výše. Role **Čtenář** je Azure Resource Manager role, která umožňuje uživatelům zobrazovat prostředky účtu úložiště, ale nemění je. Neposkytuje oprávnění ke čtení pro data v Azure Storage, ale pouze k prostředkům správy účtu.
 
-Follow these steps to assign the **Reader** role so that a user can access blobs from the Azure portal. In this example, the assignment is scoped to the storage account:
+Pomocí těchto kroků přiřaďte roli **Čtenář** , aby uživatel mohl získat přístup k objektům blob z Azure Portal. V tomto příkladu je přiřazení vymezené pro účet úložiště:
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your storage account.
-1. Select **Access control (IAM)** to display the access control settings for the storage account. Select the **Role assignments** tab to see the list of role assignments.
-1. In the **Add role assignment** window, select the **Reader** role. 
-1. From the **Assign access to** field, select **Azure AD user, group, or service principal**.
-1. Search to locate the security principal to which you want to assign the role.
-1. Save the role assignment.
+1. V [Azure Portal](https://portal.azure.com)přejděte do svého účtu úložiště.
+1. Vyberte **řízení přístupu (IAM)** a zobrazte nastavení řízení přístupu pro účet úložiště. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
+1. V okně **Přidat přiřazení role** vyberte roli **Čtenář** . 
+1. V poli **přiřadit přístup k** vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**.
+1. Vyhledejte objekt zabezpečení, ke kterému chcete přiřadit roli.
+1. Uložte přiřazení role.
 
 > [!NOTE]
-> Assigning the Reader role is necessary only for users who need to access blobs or queues using the Azure portal. 
+> Přiřazení role čtenáře je nezbytné jenom pro uživatele, kteří potřebují přístup k objektům blob nebo frontám pomocí Azure Portal. 
 
 ## <a name="next-steps"></a>Další kroky
 
-- For more information about RBAC roles for storage resources, see [Authenticate access to Azure blobs and queues using Azure Active Directory](storage-auth-aad.md). 
-- To learn more about RBAC, see [What is role-based access control (RBAC)?](../../role-based-access-control/overview.md).
-- To learn how to assign and manage RBAC role assignments with Azure PowerShell, Azure CLI, or the REST API, see these articles:
-    - [Manage role-based access control (RBAC) with Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-    - [Manage role-based access control (RBAC) with Azure CLI](../../role-based-access-control/role-assignments-cli.md)
-    - [Manage role-based access control (RBAC) with the REST API](../../role-based-access-control/role-assignments-rest.md)
-- To learn how to authorize access to containers and queues from within your storage applications, see [Use Azure AD with Azure Storage applications](storage-auth-aad-app.md).
+- Další informace o rolích RBAC pro prostředky úložiště najdete v tématu [ověření přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](storage-auth-aad.md). 
+- Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role (RBAC)?](../../role-based-access-control/overview.md).
+- Další informace o tom, jak přiřadit a spravovat přiřazení rolí RBAC pomocí Azure PowerShell, Azure CLI nebo REST API, najdete v těchto článcích:
+    - [Správa řízení přístupu na základě role (RBAC) pomocí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+    - [Správa řízení přístupu na základě role (RBAC) pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+    - [Správa řízení přístupu na základě role (RBAC) pomocí REST API](../../role-based-access-control/role-assignments-rest.md)
+- Informace o tom, jak autorizovat přístup k kontejnerům a frontám v rámci aplikací úložiště, najdete v tématu [použití Azure AD s Azure Storage aplikacemi](storage-auth-aad-app.md).

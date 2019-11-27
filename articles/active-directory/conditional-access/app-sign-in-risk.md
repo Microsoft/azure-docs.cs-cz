@@ -1,6 +1,6 @@
 ---
-title: Use risk detections with Azure Active Directory Conditional Access
-description: In this quickstart, you learn how you can configure an Azure Active Directory (Azure AD) Conditional Access policy to block sign-ins based on session risks.
+title: Použití zjišťování rizik pomocí podmíněného přístupu Azure Active Directory
+description: V tomto rychlém startu se dozvíte, jak můžete nakonfigurovat zásady podmíněného přístupu Azure Active Directory (Azure AD) pro blokování přihlášení na základě rizik relace.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,164 +18,164 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381072"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Quickstart: Block access when a session risk is detected with Azure Active Directory Conditional Access  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Rychlý Start: blokování přístupu při zjištění rizika relace s Azure Active Directory podmíněný přístup  
 
-To keep your environment protected, you might want to block suspicious users from sign-in. [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyzes each sign-in and calculates the likelihood that a sign-in attempt was not performed by the legitimate owner of a user account. The likelihood (low, medium, high) is indicated in form of a calculated value called [sign-in risk levels](conditions.md#sign-in-risk). By setting the sign-in risk condition, you can configure a Conditional Access policy to respond to specific sign-in risk levels.
+Aby se zajistilo, že se vaše prostředí chrání, možná budete chtít zablokovat podezřelé uživatele od přihlášení. [Služba Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyzuje každé přihlášení a vypočítává pravděpodobnost, že oprávněný vlastník uživatelského účtu neudělal pokus o přihlášení. Pravděpodobnost (nízká, střední, vysoká) je uvedena ve formě počítané hodnoty s názvem [úrovně rizika přihlášení](conditions.md#sign-in-risk). Nastavením rizikové podmínky přihlášení můžete nakonfigurovat zásady podmíněného přístupu, které budou reagovat na konkrétní úrovně rizika přihlašování.
 
-This quickstart shows how to configure a [Conditional Access policy](../active-directory-conditional-access-azure-portal.md) that blocks a sign-in when a configured sign-in risk level has been detected.
+V tomto rychlém startu se dozvíte, jak nakonfigurovat [zásady podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) , které blokují přihlášení, když se zjistí nakonfigurovaná úroveň rizika přihlašování.
 
 ![Vytvoření zásad](./media/app-sign-in-risk/1000.png)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení scénáře v tomto kurzu budete potřebovat:
 
-- **Access to an Azure AD Premium P2 edition** - While Conditional Access is an Azure AD Premium P1 capability, you need a P2 edition because the scenario in this quickstart requires Identity Protection.
-- **Identity Protection** - The scenario in this quickstart requires Identity Protection to be enabled. If you don't know how to enable Identity Protection, see [Enabling Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md).
-- **Tor Browser** - The [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) is designed to help you preserve your privacy online. Identity Protection detects a sign-in from a Tor Browser as sign-ins from anonymous IP addresses, which have a medium risk level. For more information, see [Azure Active Directory risk detections](../reports-monitoring/concept-risk-events.md).  
-- **A test account called Alain Charon** - If you don't know how to create a test account, see [Add cloud-based users](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Přístup k edici Azure AD Premium P2** – zatímco podmíněný přístup je schopnost Azure AD Premium P1, potřebujete edici P2, protože scénář v tomto rychlém startu vyžaduje ochranu identity.
+- **Identity Protection** – scénář v tomto rychlém startu vyžaduje, aby byla povolená ochrana identity. Pokud si nejste jisti, jak povolit ochranu identity, přečtěte si téma [povolení Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md).
+- **Webový prohlížeč** – [prohlížeč pro mandát](https://www.torproject.org/projects/torbrowser.html.en) vám umožňuje zachovat ochranu osobních údajů online. Identity Protection detekuje přihlášení z prohlížeče mandátu jako přihlášení z anonymních IP adres, které mají střední úroveň rizika. Další informace najdete v tématu [Azure Active Directory detekci rizik](../reports-monitoring/concept-risk-events.md).  
+- **Testovací účet s názvem Alain Charon** – Pokud nevíte, jak vytvořit testovací účet, podívejte se na téma [Přidání cloudových uživatelů](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
-## <a name="test-your-sign-in"></a>Test your sign-in
+## <a name="test-your-sign-in"></a>Otestování přihlášení
 
-The goal of this step is to make sure that your test account can access your tenant using the Tor Browser.
+Cílem tohoto kroku je zajistit, že váš testovací účet bude mít přístup k vašemu tenantovi pomocí prohlížeče systému.
 
-**To test your sign-in:**
+**Testování přihlášení:**
 
-1. Sign in to your [Azure portal](https://portal.azure.com) as **Alain Charon**.
+1. Přihlaste se k vašemu [Azure Portal](https://portal.azure.com) jako **Alain Charon**.
 1. Odhlaste se.
 
-## <a name="create-your-conditional-access-policy"></a>Create your Conditional Access policy
+## <a name="create-your-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
-The scenario in this quickstart uses a sign-in from a Tor Browser to generate a detected **Sign-ins from anonymous IP addresses** risk detection. The risk level of this risk detection is medium. To respond to this risk detection, you set the sign-in risk condition to medium. In a production environment, you should set the sign-in risk condition either to high or to medium and high.
+Scénář v tomto rychlém startu používá k vygenerování zjištěných **přihlášení ze zjišťování rizik anonymních IP adres** přihlášení z prohlížeče pro mandát. Úroveň rizika tohoto zjišťování rizik je střední. Pokud chcete reagovat na toto zjištění rizika, nastavte rizikové podmínky přihlášení na hodnotu Střední. V produkčním prostředí byste měli nastavit rizikové podmínky přihlášení buď na vysoká, tak na střední a vysokou.
 
-This section shows how to create the required Conditional Access policy. In your policy, set:
+V této části se dozvíte, jak vytvořit požadované zásady podmíněného přístupu. V zásadách nastavte:
 
 | Nastavení | Hodnota |
 | --- | --- |
 | Uživatelé a skupiny | Alain Charon  |
-| Cloud apps | All cloud apps |
-| Sign-in risk | Střední |
-| Grant | Block access |
+| Cloudové aplikace | Všechny cloudové aplikace |
+| Riziko přihlášení | Střední |
+| Udělit | Blokovat přístup |
 
 ![Vytvoření zásad](./media/app-sign-in-risk/130.png)
 
-**To configure your Conditional Access policy:**
+**Konfigurace zásad podmíněného přístupu:**
 
-1. Sign in to your [Azure portal](https://portal.azure.com) as global administrator, security administrator, or a Conditional Access administrator.
-1. In the Azure portal, on the left navbar, click **Azure Active Directory**.
+1. Přihlaste se ke svému [Azure Portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. V Azure Portal klikněte v levém navigačním panelu na možnost **Azure Active Directory**.
 
    ![Azure Active Directory](./media/app-sign-in-risk/02.png)
 
-1. On the **Azure Active Directory** page, in the **Security** section, click **Conditional Access**.
+1. Na stránce **Azure Active Directory** v části **zabezpečení** klikněte na **podmíněný přístup**.
 
    ![Podmíněný přístup](./media/app-sign-in-risk/03.png)
 
-1. On the **Conditional Access** page, in the toolbar on the top, click **Add**.
+1. Na stránce **podmíněný přístup** klikněte na panelu nástrojů v horní části na **Přidat**.
 
-   ![Name (Název)](./media/app-sign-in-risk/108.png)
+   ![Název](./media/app-sign-in-risk/108.png)
 
-1. On the **New** page, in the **Name** textbox, type **Block access for medium risk level**.
+1. Na **nové** stránce zadejte do textového pole **název** **blokový přístup pro úroveň střední rizikovost**.
 
-   ![Name (Název)](./media/app-sign-in-risk/104.png)
+   ![Název](./media/app-sign-in-risk/104.png)
 
-1. In the **Assignment** section, click **Users and groups**.
+1. V části **přiřazení** klikněte na **Uživatelé a skupiny**.
 
    ![Uživatelé a skupiny](./media/app-sign-in-risk/06.png)
 
-1. On the **Users and groups** page:
+1. Na stránce **Uživatelé a skupiny** :
 
    ![Podmíněný přístup](./media/app-sign-in-risk/107.png)
 
-   1. Click **Select users and groups**, and then select **Users and groups**.
+   1. Klikněte na **Vybrat uživatele a skupiny**a pak vyberte **Uživatelé a skupiny**.
    1. Klikněte na **Vybrat**.
-   1. On the **Select** page, select **Alain Charon**, and then click **Select**.
-   1. On the **Users and groups** page, click **Done**.
-1. Click **Cloud apps**.
+   1. Na stránce **Vybrat** vyberte **Alain Charon**a pak klikněte na **Vybrat**.
+   1. Na stránce **Uživatelé a skupiny** klikněte na **Hotovo**.
+1. Klikněte na **cloudové aplikace**.
 
-   ![Cloud apps](./media/app-sign-in-risk/08.png)
+   ![Cloudové aplikace](./media/app-sign-in-risk/08.png)
 
-1. On the **Cloud apps** page:
+1. Na stránce **cloudové aplikace** :
 
    ![Podmíněný přístup](./media/app-sign-in-risk/109.png)
 
-   1. Click **All cloud apps**.
+   1. Klikněte na **všechny cloudové aplikace**.
    1. Klikněte na **Done** (Hotovo).
-1. Click **Conditions**.
+1. Klikněte na možnost **podmínky**.
 
-   ![Access controls](./media/app-sign-in-risk/19.png)
+   ![Řízení přístupu](./media/app-sign-in-risk/19.png)
 
-1. On the **Conditions** page:
+1. Na stránce **podmínky** :
 
-   ![Sign-in risk level](./media/app-sign-in-risk/21.png)
+   ![Úroveň rizika přihlašování](./media/app-sign-in-risk/21.png)
 
-   1. Click **Sign-in risk**.
-   1. As **Configure**, click **Yes**.
-   1. As sign-in risk level, select **Medium**.
+   1. Klikněte na možnost **riziko přihlášení**.
+   1. Jako **Konfigurace**klikněte na **Ano**.
+   1. Jako úroveň rizika přihlašování vyberte **střední**.
    1. Klikněte na **Vybrat**.
-   1. On the **Conditions** page, click **Done**.
-1. In the **Access controls** section, click **Grant**.
+   1. Na stránce **podmínky** klikněte na **Hotovo**.
+1. V části **řízení přístupu** klikněte na **udělit**.
 
-   ![Access controls](./media/app-sign-in-risk/10.png)
+   ![Řízení přístupu](./media/app-sign-in-risk/10.png)
 
-1. On the **Grant** page:
+1. Na stránce **udělení** :
 
    ![Podmíněný přístup](./media/app-sign-in-risk/105.png)
 
-   1. Select **Block access**.
+   1. Vyberte **blokovat přístup**.
    1. Klikněte na **Vybrat**.
-1. In the **Enable policy** section, click **On**.
+1. V části **Povolit zásady** klikněte **na zapnuto**.
 
-   ![Enable policy](./media/app-sign-in-risk/18.png)
+   ![Povolení zásady](./media/app-sign-in-risk/18.png)
 
 1. Klikněte na **Vytvořit**.
 
-## <a name="evaluate-a-simulated-sign-in"></a>Evaluate a simulated sign-in
+## <a name="evaluate-a-simulated-sign-in"></a>Vyhodnotit simulované přihlašování
 
-Now that you have configured your Conditional Access policy, you probably want to know whether it works as expected. As a first step, use the Conditional Access **what if policy tool** to simulate a sign-in of your test user. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace.  
+Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravděpodobně chtít zjistit, jestli funguje podle očekávání. Jako první krok použijte **Nástroj zásady** podmíněného přístupu, který je v případě, že chcete simulovat přihlášení testovacího uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace.  
 
-When you run the **what if policy tool** for this scenario, the **Block access for medium risk level** should be listed under **Policies that will apply**.
+Pokud pro tento scénář spustíte **Nástroj citlivostní** zpracování, měla by být **úroveň přístupu blok pro střední riziko** uvedená v části **zásady, které budou platit**.
 
 ![Uživatel](./media/app-sign-in-risk/117.png)
 
-**To evaluate your Conditional Access policy:**
+**Vyhodnocení zásad podmíněného přístupu:**
 
-1. On the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page, in the menu on the top, click **What If**.  
+1. Na stránce [zásady podmíněného přístupu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) klikněte v nabídce v horní části na **What If**.  
 
    ![What If](./media/app-sign-in-risk/14.png)
 
-1. Click **User**, select **Alan Charon** on the **Users** page, and then click **Select**.
+1. Klikněte na **uživatel**, na stránce **Uživatelé** vyberte **Jakub Charon** a pak klikněte na **Vybrat**.
 
    ![Uživatel](./media/app-sign-in-risk/116.png)
 
-1. As **Sign-in risk**, select **Medium**.
+1. Jako **riziko přihlášení**vyberte **střední**.
 
    ![Uživatel](./media/app-sign-in-risk/119.png)
 
-1. Click **What If**.
+1. Klikněte na **What If**.
 
-## <a name="test-your-conditional-access-policy"></a>Test your Conditional Access policy
+## <a name="test-your-conditional-access-policy"></a>Testování zásad podmíněného přístupu
 
-In the previous section, you have learned how to evaluate a simulated sign-in. In addition to a simulation, you should also test your Conditional Access policy to make sure that it works as expected.
+V předchozí části jste se dozvěděli, jak vyhodnotit simulované přihlašování. Kromě simulace byste měli také otestovat zásady podmíněného přístupu, abyste se ujistili, že funguje podle očekávání.
 
-To test your policy, try to sign-in to your [Azure portal](https://portal.azure.com) as **Alan Charon** using the Tor Browser. Your sign-in attempt should be blocked by your Conditional Access policy.
+Pokud chcete zásady otestovat, zkuste se k vašemu [Azure Portal](https://portal.azure.com) přihlašovat jako **Jakub Charon** pomocí prohlížeče pro prostředí. Váš pokus o přihlášení by měl blokovat vaše zásada podmíněného přístupu.
 
-![Multi-Factor Authentication](./media/app-sign-in-risk/118.png)
+![Vícefaktorové ověřování](./media/app-sign-in-risk/118.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-When no longer needed, delete the test user, the Tor Browser, and the Conditional Access policy:
+Pokud už je nepotřebujete, odstraňte testovacího uživatele, prohlížeč pro mandát a zásadu podmíněného přístupu:
 
-- If you don't know how to delete an Azure AD user, see [Delete users from Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-- To delete your policy, select your policy, and then click **Delete** in the quick access toolbar.
+- Pokud nevíte, jak odstranit uživatele Azure AD, přečtěte si téma [odstranění uživatelů ze služby Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
+- Pokud chcete zásadu odstranit, vyberte zásadu a pak na panelu nástrojů Rychlý přístup klikněte na **Odstranit** .
 
-   ![Multi-Factor Authentication](./media/app-sign-in-risk/33.png)
+   ![Vícefaktorové ověřování](./media/app-sign-in-risk/33.png)
 
-- For instructions to remove the Tor Browser, see [Uninstalling](https://tb-manual.torproject.org/uninstalling/).
+- Pokyny k odebrání prohlížeče pro mandát najdete v tématu věnovaném [odinstalaci](https://tb-manual.torproject.org/uninstalling/).
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Require terms of use to be accepted](require-tou.md)
-> [Require MFA for specific apps](app-based-mfa.md)
+> [Vyžadovat, aby byly podmínkami použití přijaty](require-tou.md)
+> [vyžadovat MFA pro konkrétní aplikace](app-based-mfa.md)

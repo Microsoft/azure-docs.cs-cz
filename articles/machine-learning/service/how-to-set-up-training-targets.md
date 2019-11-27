@@ -76,7 +76,7 @@ I když kanály ML můžou prosazovat modely, můžou také připravit data pře
 Pro konfiguraci těchto výpočetních cílů použijte následující části:
 
 * [Místní počítač](#local)
-* [Azure Machine Learning Compute](#amlcompute)
+* [Azure Machine Learning COMPUTE](#amlcompute)
 * [Vzdálené virtuální počítače](#vm)
 * [Azure HDInsight](#hdinsight)
 
@@ -91,7 +91,7 @@ Pro konfiguraci těchto výpočetních cílů použijte následující části:
 
 Teď, když jste připojili výpočetní prostředky a nakonfigurovali svůj běh, je dalším krokem [odeslání školicího běhu](#submit).
 
-### <a id="amlcompute"></a>Azure Machine Learning Compute
+### <a id="amlcompute"></a>Azure Machine Learning COMPUTE
 
 Azure Machine Learning COMPUTE je spravovaná a výpočetní infrastruktura, která umožňuje uživateli snadno vytvořit výpočetní výkon s jedním uzlem nebo několika uzly. Výpočetní prostředí se vytvoří v rámci vaší oblasti pracovního prostoru jako prostředek, který se dá sdílet s ostatními uživateli v pracovním prostoru. Výpočetní výkon se při odeslání úlohy automaticky škáluje a dá se umístit do Azure Virtual Network. Výpočetní výkon se spouští v kontejnerovém prostředí a zabalí závislosti vašich modelů v [kontejneru Docker](https://www.docker.com/why-docker).
 
@@ -346,8 +346,8 @@ Podle výše popsaného postupu zobrazte seznam cílů výpočtů. Pak pomocí n
     > [!NOTE]
     > Microsoft doporučuje používat klíče SSH, které jsou bezpečnější než hesla. Hesla jsou zranitelná proti útokům hrubou silou. Klíče SSH spoléhají na kryptografické signatury. Informace o tom, jak vytvořit klíče SSH pro použití s Azure Virtual Machines, najdete v následujících dokumentech:
     >
-    > * [Vytvoření a použití klíčů SSH v Linuxu nebo macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Vytvoření a používání klíčů SSH na Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [Vytvoření a použití klíčů SSH v systému Linux nebo macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [Vytvoření a použití klíčů SSH ve Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
 1. Vyberte __připojit__. 
 1. Pokud chcete zobrazit stav operace připojení, vyberte ze seznamu cíl služby Compute.
@@ -504,8 +504,8 @@ Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště
 ## <a name="notebook-examples"></a>Příklady poznámkových bloků
 
 Příklady školení s různými cíli výpočtů najdete v těchto poznámkových blocích:
-* [postupy-k-použití azureml a školení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [kurzy/img – klasifikace – část 1 – training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [postupy – použití – AzureML/školení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [kurzy/img-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

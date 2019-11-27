@@ -78,7 +78,7 @@ V dialogovém okně **Konfigurovat plán hostování** použijte Tato nastavení
 |-|-|-|
 |Plán služby App Service| MySharingServicePlan | Název plánu služby App Service. |
 | Umístění | Západní USA | Datacentrum, které je hostitelem webové aplikace. |
-| Velikost | Zdarma | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , která určuje funkce hostování. |
+| Velikost | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , která určuje funkce hostování. |
 
 Vyberte **OK**.
 

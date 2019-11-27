@@ -161,7 +161,7 @@ Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | K
 | | | Muž |"Microsoft Server řeči převod textu na řeč hlasové (pt-BR, ADAM, Apollo)" | pt-BR-Daniel-Apollo
 `pt-PT` | Portugalština (Portugalsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-PT, HeliaRUS)" | pt-PT-HeliaRUS
 `ro-RO` | Rumunština | Muž | "Microsoft serveru řeči Text na řeč hlas (ro-RO, Andrei)" | "RO-RO-Andrei"
-`ru-RU` |ruština| Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Irina, Apollo)" | ru-RU-Irina-Apollo "
+`ru-RU` |Ruština| Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Irina, Apollo)" | ru-RU-Irina-Apollo "
 | | | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Pavel, Apollo)" | ru-RU-Pavel-Apollo "
 | | | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, EkaterinaRUS)" | ru-RU – EkaterinaRUS
 `sk-SK` | Slovenština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sk-SK, Filip)" | "SK-SK-Filip"
@@ -182,7 +182,7 @@ Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | K
 | | | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
 | | | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
 
-&dagger; *ar – třeba podporuje moderní standardní Arabština (MSA).*
+&dagger; *ar-eg podporuje moderní arabštinu Standard (MSA).*
 
 > [!NOTE]
 > V požadavcích na Shrnutí řeči můžete použít buď úplné mapování názvu služby, nebo krátký název hlasu.
@@ -196,7 +196,7 @@ Vlastní nastavení hlasu je k dispozici pro `de-DE`, `en-GB`, `en-IN`, `en-US`,
 
 ## <a name="speech-translation"></a>Překlad řeči
 
-**Překlad řeči** rozhraní API podporuje různé jazyky pro překlad řeči řeči a rozpoznávání řeči na text. Zdrojový jazyk musí být vždy z tabulky jazyka Speech-to-text. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text. Může překládat příchozí řeči do více než [60 jazyků](https://www.microsoft.com/translator/business/languages/). K dispozici je podmnožina jazyků pro [syntézu řeči](language-support.md#text-languages).
+Rozhraní API pro **Překlad** řeči podporuje různé jazyky pro překlad hlasu na řeč a převod řeči na text. Zdrojový jazyk musí být vždy z tabulky jazyka Speech-to-text. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text. Příchozí řeč můžete přeložit do více než [60 jazyků](https://www.microsoft.com/translator/business/languages/). K dispozici je podmnožina jazyků pro [syntézu řeči](language-support.md#text-languages).
 
 ### <a name="text-languages"></a>Text jazyky
 
@@ -246,7 +246,7 @@ Vlastní nastavení hlasu je k dispozici pro `de-DE`, `en-GB`, `en-IN`, `en-US`,
 | Portugalština      | `pt`          |
 | Queretaro Otomi      | `otq`          |
 | Rumunština      | `ro`          |
-| ruština      | `ru`          |
+| Ruština      | `ru`          |
 | Samoan      | `sm`          |
 | Srbština (cyrilice)      | `sr-Cyrl`          |
 | Srbština (latinka)      | `sr-Latn`          |
@@ -270,4 +270,4 @@ Vlastní nastavení hlasu je k dispozici pro `de-DE`, `en-GB`, `en-IN`, `en-US`,
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání zkušebního předplatného služeb Speech Services](https://azure.microsoft.com/try/cognitive-services/)
-* [Zjistěte, jak rozpoznávat řeč v jazyce C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)
+* [Podívejte se, jak rozpoznávat řeč vC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

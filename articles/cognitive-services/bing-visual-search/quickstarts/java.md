@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Get image insights using the REST API and Java - Bing Visual Search'
+title: 'Rychlý Start: Získání přehledů obrázků pomocí REST API a Java-Vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
+description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat přehled o něm.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -17,11 +17,11 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383600"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Java
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Rychlý Start: Získání přehledů obrázků pomocí Vizuální vyhledávání Bingu REST API a Java
 
-Use this quickstart to make your first call to the Bing Visual Search API and view the results. This Java application uploads an image to the API and displays the information it returns. Though this application is written in Java, the API is a RESTful Web service compatible with most programming languages.
+V tomto rychlém startu můžete provést první volání rozhraní API pro vizuální vyhledávání Bingu a zobrazit výsledky. Tato aplikace Java nahraje obrázek do rozhraní API a zobrazí informace, které vrátí. I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-When you upload a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and you can set the `filename` parameter to any string. The contents of the form include the binary data of the image. The maximum image size you can upload is 1 MB.
+Když nahrajete místní obrázek, data formuláře musí zahrnovat hlavičku `Content-Disposition`. Je nutné nastavit jeho parametr `name` na hodnotu "image" a můžete nastavit parametr `filename` na libovolný řetězec. Obsah formuláře zahrnuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -32,17 +32,17 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* The [Java Development Kit (JDK) 7 or 8](https://aka.ms/azure-jdks)
-* The [Gson Java library](https://github.com/google/gson)
+* [Java Development Kit (JDK) 7 nebo 8](https://aka.ms/azure-jdks)
+* [Knihovna Java gson](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Create a new Java project in your favorite IDE or editor, and import the following libraries:
+1. V oblíbených IDE nebo editoru vytvořte nový projekt Java a importujte následující knihovny:
 
     ```java
     import java.util.*;
@@ -63,7 +63,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. Create variables for your API endpoint, subscription key, and the path to your image:
+2. Vytvořte proměnné pro svůj koncový bod rozhraní API, klíč předplatného a cestu k imagi:
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -71,9 +71,9 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     static String imagePath = "path-to-your-image";
     ```
 
-## <a name="create-the-json-parser"></a>Create the JSON parser
+## <a name="create-the-json-parser"></a>Vytvoření analyzátoru JSON
 
-Create a method to make the JSON response from the API more readable using `JsonParser`:
+Vytvořte metodu, aby odpověď JSON z rozhraní API byla čitelnější pomocí `JsonParser`:
 
     ```java
     public static String prettify(String json_text) {
@@ -86,13 +86,13 @@ Create a method to make the JSON response from the API more readable using `Json
 
 ## <a name="construct-the-search-request-and-query"></a>Sestavení žádosti o vyhledávání a dotazu
 
-1. In the main method of your application, create an HTTP client using `HttpClientBuilder.create().build();`:
+1. V metodě Main aplikace vytvořte klienta HTTP pomocí `HttpClientBuilder.create().build();`:
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Create an `HttpEntity` object to upload your image to the API:
+2. Vytvořte objekt `HttpEntity` pro nahrání image do rozhraní API:
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -101,7 +101,7 @@ Create a method to make the JSON response from the API more readable using `Json
         .build();
     ```
 
-3. Create an `httpPost` object with your endpoint, and set the header to use your subscription key:
+3. Vytvořte objekt `httpPost` s vaším koncovým bodem a nastavte hlavičku pro použití klíče předplatného:
 
     ```java
     HttpPost httpPost = new HttpPost(endpoint);
@@ -111,14 +111,14 @@ Create a method to make the JSON response from the API more readable using `Json
 
 ## <a name="receive-and-process-the-json-response"></a>Příjem a zpracování odpovědi JSON
 
-1. Use the `HttpClient.execute()` method to send a request to the API, and store the response in an `InputStream` object:
+1. Použijte metodu `HttpClient.execute()` k odeslání požadavku do rozhraní API a uložte odpověď do objektu `InputStream`:
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. Store the JSON string, and print the response:
+2. Uložte řetězec JSON a vytiskněte odpověď:
 
 ```java
 String json = new Scanner(stream).useDelimiter("\\A").next();
@@ -129,4 +129,4 @@ System.out.println(prettify(json));
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)
+> [Vytvoření webové aplikace Vizuální vyhledávání jednostránkového stránkování](../tutorial-bing-visual-search-single-page-app.md)

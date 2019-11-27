@@ -1,6 +1,6 @@
 ---
-title: VPN with Azure MFA using the NPS extension - Azure Active Directory
-description: Integrate your VPN infrastructure with Azure MFA by using the Network Policy Server extension for Microsoft Azure.
+title: VPN s Azure MFA pomocí rozšíření NPS – Azure Active Directory
+description: Integrujte svoji infrastrukturu VPN pomocí Azure MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Microsoft Azure.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,441 +18,441 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74404691"
 ---
-# <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrate your VPN infrastructure with Azure MFA by using the Network Policy Server extension for Azure
+# <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrujte svoji infrastrukturu VPN s Azure MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Azure.
 
-The Network Policy Server (NPS) extension for Azure allows organizations to safeguard Remote Authentication Dial-In User Service (RADIUS) client authentication using cloud-based [Azure Multi-Factor Authentication (MFA)](howto-mfaserver-nps-rdg.md), which provides two-step verification.
+Rozšíření serveru NPS (Network Policy Server) pro Azure umožňuje organizacím chránit ověřování klienta protokol RADIUS (Remote Authentication Dial-In User Service) (RADIUS) pomocí cloudové služby [Azure Multi-Factor Authentication (MFA)](howto-mfaserver-nps-rdg.md), která poskytuje dvoustupňové ověřování.
 
-This article provides instructions for integrating NPS infrastructure with MFA by using the NPS extension for Azure. This process enables secure two-step verification for users who attempt to connect to your network by using a VPN.
+Tento článek poskytuje pokyny pro integraci infrastruktury serveru NPS s MFA pomocí rozšíření NPS pro Azure. Tento proces umožňuje zabezpečené Dvoustupňové ověřování pro uživatele, kteří se pokoušejí připojit k síti pomocí sítě VPN.
 
-Network Policy and Access Services gives organizations the ability to:
+Služba Síťové zásady a přístup poskytuje organizacím možnost:
 
-* Assign a central location for the management and control of network requests to specify:
+* Přiřaďte centrální umístění pro správu a řízení síťových požadavků a určete:
 
-  * Who can connect
+  * Kdo se může připojit
 
-  * What times of day connections are allowed
+  * Jaká je doba připojení ke dni, která jsou povolena
 
-  * The duration of connections
+  * Doba trvání připojení
 
-  * The level of security that clients must use to connect
+  * Úroveň zabezpečení, kterou klienti musí používat pro připojení
 
-    Rather than specify policies on each VPN or Remote Desktop Gateway server, do so after they're in a central location. The RADIUS protocol is used to provide centralized Authentication, Authorization, and Accounting (AAA).
+    Místo zadání zásad na každém serveru VPN nebo Brána vzdálené plochy tak, aby byly v centrálním umístění. Protokol RADIUS slouží k poskytování centralizovaného ověřování, autorizace a monitorování účtů (AAA).
 
-* Establish and enforce Network Access Protection (NAP) client health policies that determine whether devices are granted unrestricted or restricted access to network resources.
+* Vytvořit a vynucovat zásady stavu klienta ochrany NAP (Network Access), které určují, jestli zařízení jsou udělena neomezeného nebo omezeného přístupu k síťovým prostředkům.
 
-* Provide a way to enforce authentication and authorization for access to 802.1x-capable wireless access points and Ethernet switches.
-  For more information, see [Network Policy Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top).
+* Poskytněte způsob, jak vymáhat ověřování a autorizaci pro přístup k bezdrátovým přístupovým bodům 802.1 x a přepínačům sítě Ethernet.
+  Další informace najdete v tématu [Server NPS (Network Policy Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)).
 
-To enhance security and provide a high level of compliance, organizations can integrate NPS with Azure Multi-Factor Authentication to ensure that users use two-step verification to connect to the virtual port on the VPN server. For users to be granted access, they must provide their username and password combination and other information that they control. This information must be trusted and not easily duplicated. It can include a cell phone number, a landline number, or an application on a mobile device.
+Z důvodu zvýšení zabezpečení a zajištění vysoké úrovně dodržování předpisů mohou organizace integrovat server NPS se službou Azure Multi-Factor Authentication, aby uživatelé mohli pomocí dvoustupňového ověřování připojit k virtuálnímu portu na serveru VPN dva kroky. Aby mohli uživatelé udělit přístup, musí poskytnout kombinaci uživatelského jména a hesla a další informace, které řídí. Tyto informace musí být důvěryhodné a nelze je snadno duplikovat. Může obsahovat číslo mobilního telefonu, pevné číslo nebo aplikaci na mobilním zařízení.
 
-Prior to the availability of the NPS extension for Azure, customers who wanted to implement two-step verification for integrated NPS and MFA environments had to configure and maintain a separate MFA server in an on-premises environment. This type of authentication is offered by Remote Desktop Gateway and Azure Multi-Factor Authentication Server using RADIUS.
+Před dostupností rozšíření serveru NPS pro Azure museli zákazníci, kteří chtěli implementovat dvoustupňové ověřování pro integrovaná prostředí NPS a MFA, nakonfigurovat a udržovat samostatný server MFA v místním prostředí. Tento typ ověřování nabízí Brána vzdálené plochy a Azure Multi-Factor Authentication Server pomocí protokolu RADIUS.
 
-With the NPS extension for Azure, organizations can secure RADIUS client authentication by deploying either an on-premises based MFA solution or a cloud-based MFA solution.
+Díky rozšíření serveru NPS pro Azure můžou organizace zabezpečit ověřování klientů RADIUS nasazením řešení MFA založeného na místním prostředí nebo cloudového řešení MFA.
 
-## <a name="authentication-flow"></a>Authentication flow
+## <a name="authentication-flow"></a>Tok ověřování
 
-When users connect to a virtual port on a VPN server, they must first authenticate by using a variety of protocols. The protocols allow the use of a combination of user name and password and certificate-based authentication methods.
+Když se uživatelé připojí k virtuálnímu portu na serveru VPN, musí se nejdřív ověřit pomocí různých protokolů. Protokoly umožňují použití kombinace uživatelského jména a hesla a metod ověřování na základě certifikátů.
 
-In addition to authenticating and verifying their identity, users must have the appropriate dial-in permissions. In simple implementations, dial-in permissions that allow access are set directly on the Active Directory user objects.
+Kromě ověřování a ověření identity musí mít uživatelé příslušná oprávnění k telefonickému přihlášení. V jednoduchých implementacích se oprávnění k telefonickému přístupu, která povolují přístup, nastaví přímo na objekty uživatele služby Active Directory.
 
-![Dial-in tab in Active Directory Users and Computers user properties](./media/howto-mfa-nps-extension-vpn/image1.png)
+![Karta Telefonické připojení ve vlastnostech uživatelů a počítačů služby Active Directory](./media/howto-mfa-nps-extension-vpn/image1.png)
 
-In simple implementations, each VPN server grants or denies access based on policies that are defined on each local VPN server.
+V jednoduchých implementacích každý server VPN uděluje nebo odmítá přístup na základě zásad, které jsou definovány na jednotlivých místních serverech VPN.
 
-In larger and more scalable implementations, the policies that grant or deny VPN access are centralized on RADIUS servers. In these cases, the VPN server acts as an access server (RADIUS client) that forwards connection requests and account messages to a RADIUS server. To connect to the virtual port on the VPN server, users must be authenticated and meet the conditions that are defined centrally on RADIUS servers.
+V rámci větších a více škálovatelných implementací jsou zásady, které udělují nebo zamítají přístup k síti VPN, centralizované na serverech RADIUS. V těchto případech server VPN funguje jako server pro přístup (klient RADIUS), který přepošle požadavky na připojení a zprávy účtů na server RADIUS. Chcete-li se připojit k virtuálnímu portu na serveru VPN, musí být uživatelé ověřeni a splňovat podmínky definované centrálně na serverech RADIUS.
 
-When the NPS extension for Azure is integrated with the NPS, a successful authentication flow results, as follows:
+Když je rozšíření NPS pro Azure integrované s NPS, výsledky toku úspěšného ověření jsou následující:
 
-1. The VPN server receives an authentication request from a VPN user that includes the username and password for connecting to a resource, such as a Remote Desktop session.
-2. Acting as a RADIUS client, the VPN server converts the request to a RADIUS *Access-Request* message and sends it (with an encrypted password) to the RADIUS server where the NPS extension is installed.
-3. The username and password combination is verified in Active Directory. If either the username or password is incorrect, the RADIUS Server sends an *Access-Reject* message.
-4. If all conditions, as specified in the NPS Connection Request and Network Policies, are met (for example, time of day or group membership restrictions), the NPS extension triggers a request for secondary authentication with Azure Multi-Factor Authentication.
-5. Azure Multi-Factor Authentication communicates with Azure Active Directory, retrieves the user’s details, and performs the secondary authentication by using the method that's configured by the user (cell phone call, text message, or mobile app).
-6. When the MFA challenge is successful, Azure Multi-Factor Authentication communicates the result to the NPS extension.
-7. After the connection attempt is both authenticated and authorized, the NPS where the extension is installed sends a RADIUS *Access-Accept* message to the VPN server (RADIUS client).
-8. The user is granted access to the virtual port on the VPN server and establishes an encrypted VPN tunnel.
+1. Server VPN obdrží požadavek na ověření od uživatele sítě VPN, který obsahuje uživatelské jméno a heslo pro připojení k prostředku, jako je například relace vzdálené plochy.
+2. Vystupuje jako klient RADIUS, server VPN převede požadavek na zprávu s *požadavkem na přístup* k protokolu RADIUS a pošle ji (se zašifrovaným heslem) na server RADIUS, na kterém je nainstalované rozšíření NPS.
+3. Kombinace uživatelského jména a hesla se ověřuje ve službě Active Directory. Pokud uživatelské jméno nebo heslo nejsou správné, server RADIUS pošle zprávu o odepření *přístupu* .
+4. Pokud jsou splněné všechny podmínky, jak je uvedeno v žádosti o připojení NPS a zásady sítě (například v případě omezení počtu dnů nebo členství ve skupinách), rozšíření serveru NPS vyvolá požadavek na sekundární ověřování pomocí Azure Multi-Factor Authentication.
+5. Azure Multi-Factor Authentication komunikuje s Azure Active Directory, načte podrobnosti o uživateli a provede sekundární ověřování pomocí metody, která je nakonfigurovaná uživatelem (volání mobilního telefonu, textové zprávy nebo mobilní aplikace).
+6. Po úspěšném ověření MFA Azure Multi-Factor Authentication sdělí výsledek rozšíření serveru NPS.
+7. Jakmile je pokus o připojení ověřen i autorizován, server NPS, ve kterém je rozšíření nainstalováno, odesílá zprávu RADIUS *Access-Accept* na server VPN (klient RADIUS).
+8. Uživateli je udělen přístup k virtuálnímu portu na serveru VPN a vytvoří šifrované tunelové propojení VPN.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-This section details the prerequisites that must be completed before you can integrate MFA with the VPN. Before you begin, you must have the following prerequisites in place:
+Tato část podrobně popisuje požadavky, které je třeba provést před integrací vícefaktorového ověřování pomocí sítě VPN. Než začnete, musíte mít splněné následující předpoklady:
 
-* VPN infrastructure
-* Network Policy and Access Services role
-* Azure Multi-Factor Authentication license
-* Windows Server software
+* Infrastruktura sítě VPN
+* Role služby síťové zásady a přístup
+* Licence pro Azure Multi-Factor Authentication
+* Software Windows serveru
 * Knihovny
-* Azure Active Directory (Azure AD) synced with on-premises Active Directory
-* Azure Active Directory GUID ID
+* Služba Azure Active Directory (Azure AD) synchronizovaná s místní službou Active Directory
+* Identifikátor GUID služby Azure Active Directory
 
-### <a name="vpn-infrastructure"></a>VPN infrastructure
+### <a name="vpn-infrastructure"></a>Infrastruktura sítě VPN
 
-This article assumes that you have a working VPN infrastructure that uses Microsoft Windows Server 2016 and that your VPN server is currently not configured to forward connection requests to a RADIUS server. In the article, you configure the VPN infrastructure to use a central RADIUS server.
+V tomto článku se předpokládá, že máte funkční infrastrukturu VPN, která používá Microsoft Windows Server 2016 a že váš server VPN není momentálně nakonfigurovaný pro přeposílání požadavků na připojení na server RADIUS. V tomto článku nakonfigurujete infrastrukturu VPN tak, aby používala centrální server RADIUS.
 
-If you do not have a working VPN infrastructure in place, you can quickly create one by following the guidance in numerous VPN setup tutorials that you can find on the Microsoft and third-party sites.
+Pokud nemáte funkční infrastrukturu sítě VPN, můžete ji rychle vytvořit podle pokynů v části spousta kurzů pro nastavení sítě VPN, které najdete na webech Microsoftu a třetích stran.
 
-### <a name="the-network-policy-and-access-services-role"></a>The Network Policy and Access Services role
+### <a name="the-network-policy-and-access-services-role"></a>Role služby síťové zásady a přístup
 
-Network Policy and Access Services provides the RADIUS server and client functionality. This article assumes that you have installed the Network Policy and Access Services role on a member server or domain controller in your environment. In this guide, you configure RADIUS for a VPN configuration. Install the Network Policy and Access Services role on a server *other than* your VPN server.
+Služba Síťové zásady a přístup poskytuje funkce serveru a klienta protokolu RADIUS. V tomto článku se předpokládá, že jste nainstalovali roli služby síťové zásady a přístup na členský server nebo řadič domény ve vašem prostředí. V této příručce nakonfigurujete protokol RADIUS pro konfiguraci sítě VPN. Nainstalujte roli služby síťové zásady a přístup na jiném serveru, *než* je server VPN.
 
-For information about installing the Network Policy and Access Services role service Windows Server 2012 or later, see [Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx). NAP is deprecated in Windows Server 2016. For a description of best practices for NPS, including the recommendation to install NPS on a domain controller, see [Best practices for NPS](https://technet.microsoft.com/library/cc771746).
+Informace o instalaci služby role Síťové zásady a přístup k Windows Serveru 2012 nebo novějšímu najdete v tématu [instalace serveru zásad stavu NAP](https://technet.microsoft.com/library/dd296890.aspx). Architektura NAP je v systému Windows Server 2016 zastaralá. Popis osvědčených postupů pro server NPS, včetně doporučení k instalaci NPS na řadič domény, najdete v tématu [osvědčené postupy pro server NPS](https://technet.microsoft.com/library/cc771746).
 
-### <a name="azure-mfa-license"></a>Azure MFA License
+### <a name="azure-mfa-license"></a>Licence Azure MFA
 
-A license is required for Azure Multi-Factor Authentication, and it is available through an Azure AD Premium, Enterprise Mobility + Security, or a Multi-Factor Authentication stand-alone license. Consumption-based licenses for Azure MFA such as per user or per authentication licenses are not compatible with the NPS extension. For more information, see [How to get Azure Multi-Factor Authentication](concept-mfa-licensing.md). For testing purposes, you can use a trial subscription.
+Pro Azure Multi-Factor Authentication se vyžaduje licence, která je dostupná prostřednictvím Azure AD Premium, Enterprise Mobility + Security nebo samostatné licence Multi-Factor Authentication. Licence založené na spotřebě pro Azure MFA, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS. Další informace najdete v tématu [Jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md). Pro účely testování můžete použít zkušební verzi předplatného.
 
-### <a name="windows-server-software"></a>Windows Server software
+### <a name="windows-server-software"></a>Software Windows serveru
 
-The NPS extension requires Windows Server 2008 R2 SP1 or later, with the Network Policy and Access Services role installed. All the steps in this guide were performed with Windows Server 2016.
+Rozšíření serveru NPS vyžaduje systém Windows Server 2008 R2 SP1 nebo novější s nainstalovanou rolí Network Policy and Access Services. Všechny kroky v této příručce byly provedeny s Windows serverem 2016.
 
 ### <a name="libraries"></a>Knihovny
 
-The following libraries are installed automatically with the NPS extension:
+Následující knihovny se instalují automaticky s rozšířením NPS:
 
--   [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
--   [Microsoft Azure Active Directory Module for Windows PowerShell version 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
+-   [Visual C++ Redistributable balíčky pro Visual Studio 2013 (x64)](https://www.microsoft.com/download/details.aspx?id=40784)
+-   [1.1.166.0 verze Modul Microsoft Azure Active Directory pro Windows PowerShell](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
 
-If the Microsoft Azure Active Directory PowerShell Module is not already present, it is installed with a configuration script that you run as part of the setup process. There is no need to install the module ahead of time if it is not already installed.
+Pokud modul prostředí PowerShell Microsoft Azure Active Directory ještě neexistuje, nainstaluje se pomocí konfiguračního skriptu, který spustíte jako součást procesu instalace. Není potřeba modul instalovat předem, pokud ještě není nainstalovaný.
 
-### <a name="azure-active-directory-synced-with-on-premises-active-directory"></a>Azure Active Directory synced with on-premises Active Directory
+### <a name="azure-active-directory-synced-with-on-premises-active-directory"></a>Azure Active Directory synchronizované s místní službou Active Directory
 
-To use the NPS extension, on-premises users must be synced with Azure Active Directory and enabled for MFA. This guide assumes that on-premises users are synced with Azure Active Directory via Azure AD Connect. Instructions for enabling users for MFA are provided below.
+Chcete-li použít rozšíření serveru NPS, musí být místní uživatelé synchronizováni s Azure Active Directory a povoleny pro MFA. V tomto průvodci se předpokládá, že místní uživatelé se synchronizují s Azure Active Directory přes Azure AD Connect. Pokyny pro povolení uživatelů MFA jsou uvedené níže.
 
-For information about Azure AD Connect, see [Integrate your on-premises directories with Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
+Informace o Azure AD Connect najdete v tématu [Integrace místních adresářů s Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
-### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
+### <a name="azure-active-directory-guid-id"></a>Identifikátor GUID služby Azure Active Directory
 
-To install the NPS extension, you need to know the GUID of the Azure Active Directory. Instructions for finding the GUID of the Azure Active Directory are provided in the next section.
+Chcete-li nainstalovat rozšíření serveru NPS, je nutné znát identifikátor GUID Azure Active Directory. Pokyny pro vyhledání identifikátoru GUID Azure Active Directory jsou uvedené v další části.
 
-## <a name="configure-radius-for-vpn-connections"></a>Configure RADIUS for VPN connections
+## <a name="configure-radius-for-vpn-connections"></a>Konfigurace protokolu RADIUS pro připojení VPN
 
-If you have installed the NPS role on a member server, you need to configure it to authenticate and authorize the VPN client that requests VPN connections. 
+Pokud jste nainstalovali roli NPS na členský server, je nutné ji nakonfigurovat pro ověřování a autorizaci klienta VPN, který požaduje připojení VPN. 
 
-This section assumes that you have installed the Network Policy and Access Services role but have not configured it for use in your infrastructure.
+V této části se předpokládá, že jste nainstalovali roli služby síťové zásady a přístup, ale nenakonfigurovali jste ji pro použití ve vaší infrastruktuře.
 
 > [!NOTE]
-> If you already have a working VPN server that uses a centralized RADIUS server for authentication, you can skip this section.
+> Pokud již máte funkční server VPN, který používá centralizovaný server RADIUS pro ověřování, můžete tuto část přeskočit.
 >
 
-### <a name="register-server-in-active-directory"></a>Register Server in Active Directory
+### <a name="register-server-in-active-directory"></a>Registrace serveru ve službě Active Directory
 
-To function properly in this scenario, the NPS server must be registered in Active Directory.
+Aby bylo možné v tomto scénáři správně fungovat, musí být server NPS zaregistrován ve službě Active Directory.
 
-1. Open Server Manager.
+1. Otevřete Správce serveru.
 
-2. In Server Manager, select **Tools**, and then select **Network Policy Server**.
+2. V Správce serveru vyberte **nástroje**a pak vyberte **Server NPS (Network Policy Server**).
 
-3. In the Network Policy Server console, right-click **NPS (Local)** , and then select **Register server in Active Directory**. Select **OK** two times.
+3. V konzole serveru NPS (Network Policy Server) klikněte pravým tlačítkem na **NPS (místní)** a pak vyberte **zaregistrovat server ve službě Active Directory**. Dvakrát vyberte **OK** .
 
-    ![Register server in Active Directory menu option](./media/howto-mfa-nps-extension-vpn/image2.png)
+    ![Možnost registrace serveru v nabídce služby Active Directory](./media/howto-mfa-nps-extension-vpn/image2.png)
 
-4. Leave the console open for the next procedure.
+4. Nechte konzolu otevřený pro další postup.
 
-### <a name="use-wizard-to-configure-the-radius-server"></a>Use wizard to configure the RADIUS server
+### <a name="use-wizard-to-configure-the-radius-server"></a>Použití Průvodce ke konfiguraci serveru RADIUS
 
-You can use a standard (wizard-based) or advanced configuration option to configure the RADIUS server. This section assumes that you're using the wizard-based standard configuration option.
+Ke konfiguraci serveru RADIUS můžete použít standardní možnost (založenou na průvodci) nebo pokročilou konfiguraci. V této části se předpokládá, že používáte možnost standardní konfigurace na základě průvodce.
 
-1. In the Network Policy Server console, select **NPS (Local)** .
+1. V konzole serveru NPS (Network Policy Server **) vyberte NPS (místní)** .
 
-2. Under **Standard Configuration**, select **RADIUS Server for Dial-Up or VPN Connections**, and then select **Configure VPN or Dial-Up**.
+2. V části **standardní konfigurace**vyberte možnost **server RADIUS pro telefonické připojení nebo připojení VPN**a pak vyberte **Konfigurovat síť VPN nebo telefonické připojení**.
 
-    ![Configure RADIUS Server for Dial-Up or VPN Connections](./media/howto-mfa-nps-extension-vpn/image3.png)
+    ![Konfigurace serveru RADIUS pro vytáčená nebo VPN připojení](./media/howto-mfa-nps-extension-vpn/image3.png)
 
-3. In the **Select Dial-up or Virtual Private Network Connections Type** window, select **Virtual Private Network Connections**, and then select **Next**.
+3. V okně **Vyberte telefonické připojení nebo typ připojení k virtuální privátní síti** vyberte připojení k **virtuální privátní síti**a pak vyberte **Další**.
 
-    ![Configure Virtual private network connections](./media/howto-mfa-nps-extension-vpn/image4.png)
+    ![Konfigurace připojení virtuální privátní sítě](./media/howto-mfa-nps-extension-vpn/image4.png)
 
-4. In the **Specify Dial-Up or VPN Server** window, select **Add**.
+4. V okně **Zadejte server telefonického připojení nebo VPN** vyberte **Přidat**.
 
-5. In the **New RADIUS client** window, provide a friendly name, enter the resolvable name or IP address of the VPN server, and then enter a shared secret password. Make the shared secret password long and complex. Record it, because you'll need it in the next section.
+5. V okně **nové klientské okno protokolu RADIUS** zadejte popisný název, zadejte název nebo IP adresu serveru VPN, který chcete přeložit, a potom zadejte heslo sdíleného tajného klíče. Heslo sdíleného tajného klíče nastavte na dlouhé a složité. Poznamenejte si ho, protože ho budete potřebovat v další části.
 
-    ![Create a New RADIUS client window](./media/howto-mfa-nps-extension-vpn/image5.png)
+    ![Vytvořit nové okno klienta protokolu RADIUS](./media/howto-mfa-nps-extension-vpn/image5.png)
 
-6. Select **OK**, and then select **Next**.
+6. Vyberte **OK**a pak vyberte **Další**.
 
-7. In the **Configure Authentication Methods** window, accept the default selection (**Microsoft Encrypted Authentication version 2 [MS-CHAPv2])** or choose another option, and select **Next**.
+7. V okně **konfigurovat metody ověřování** přijměte výchozí výběr (**Microsoft Encrypted Authentication Version 2 [MS-CHAPv2])** nebo zvolte jinou možnost a vyberte **Další**.
 
     > [!NOTE]
-    > If you configure Extensible Authentication Protocol (EAP), you must use either Microsoft Challenge-Handshake Authentication Protocol (CHAPv2) or Protected Extensible Authentication Protocol (PEAP). No other EAP is supported.
+    > Pokud nakonfigurujete protokol EAP (Extensible Authentication Protocol), musíte použít protokol PEAP (Microsoft Challenge-Handshake Authentication Protocol) nebo protokol PEAP (Protected Extensible Authentication Protocol). Žádný jiný protokol EAP není podporován.
 
-8. In the **Specify User Groups** window, select **Add**, and then select an appropriate group. If no group exists, leave the selection blank to grant access to all users.
+8. V okně **Zadejte skupiny uživatelů** vyberte **Přidat**a potom vyberte příslušnou skupinu. Pokud žádná skupina neexistuje, ponechte výběr prázdnou pro udělení přístupu všem uživatelům.
 
-    ![Specify User Groups window to allow or deny access](./media/howto-mfa-nps-extension-vpn/image7.png)
+    ![Zadání okna skupin uživatelů pro povolení nebo odepření přístupu](./media/howto-mfa-nps-extension-vpn/image7.png)
 
-9. Vyberte **Další**.
+9. Vyberte **Next** (Další).
 
-10. In the **Specify IP Filters** window, select **Next**.
+10. V okně **zadat filtry IP** vyberte **Další**.
 
-11. In the **Specify Encryption Settings** window, accept the default settings, and then select **Next**.
+11. V okně **zadat nastavení šifrování** přijměte výchozí nastavení a pak vyberte **Další**.
 
-    ![The Specify Encryption Settings window](./media/howto-mfa-nps-extension-vpn/image8.png)
+    ![Okno zadat nastavení šifrování](./media/howto-mfa-nps-extension-vpn/image8.png)
 
-12. In the **Specify a Realm Name** window, leave the realm name blank, accept the default setting, and then select **Next**.
+12. V okně **Zadejte název sféry** ponechejte pole název sféry prázdné, přijměte výchozí nastavení a pak vyberte **Další**.
 
-    ![The Specify a Realm Name window](./media/howto-mfa-nps-extension-vpn/image9.png)
+    ![Okno zadat název sféry](./media/howto-mfa-nps-extension-vpn/image9.png)
 
-13. In the **Completing New Dial-up or Virtual Private Network Connections and RADIUS clients** window, select **Finish**.
+13. V okně **dokončení nového telefonického připojení nebo připojení k virtuální privátní síti a klientů RADIUS** vyberte **Dokončit**.
 
-    ![Completed configuration window](./media/howto-mfa-nps-extension-vpn/image10.png)
+    ![Okno Konfigurace dokončeno](./media/howto-mfa-nps-extension-vpn/image10.png)
 
-### <a name="verify-the-radius-configuration"></a>Verify the RADIUS configuration
+### <a name="verify-the-radius-configuration"></a>Ověření konfigurace protokolu RADIUS
 
-This section details the configuration you created by using the wizard.
+Tato část podrobně popisuje konfiguraci, kterou jste vytvořili pomocí průvodce.
 
-1. On the Network Policy Server, in the NPS (local) console, expand **RADIUS Clients**, and then select **RADIUS Clients**.
+1. Na serveru NPS (Network Policy Server) rozbalte v konzole NPS (místní) možnost **Klienti RADIUS**a pak vyberte **Klienti RADIUS**.
 
-2. In the details pane, right-click the RADIUS client that you created, and then select **Properties**. The properties of your RADIUS client (the VPN server) should be like those shown here:
+2. V podokně podrobností klikněte pravým tlačítkem na klienta RADIUS, který jste vytvořili, a pak vyberte **vlastnosti**. Vlastnosti vašeho klienta protokolu RADIUS (server VPN) by měly vypadat jako ty, které jsou tady uvedené:
 
-    ![Verify the VPN properties and configuration](./media/howto-mfa-nps-extension-vpn/image11.png)
+    ![Ověření vlastností a konfigurace sítě VPN](./media/howto-mfa-nps-extension-vpn/image11.png)
 
-3. Select **Cancel**.
+3. Vyberte **Zrušit**.
 
-4. On the Network Policy Server, in the NPS (local) console, expand **Policies**, and then select **Connection Request Policies**. The VPN Connections policy is displayed as shown in the following image:
+4. Na serveru NPS (Network Policy Server) rozbalte v konzole NPS (místní) **zásady**a vyberte **zásady vyžádání nového připojení**. Zobrazí se zásada připojení VPN, jak je znázorněno na následujícím obrázku:
 
-    ![Connection request policy showing VPN connection policy](./media/howto-mfa-nps-extension-vpn/image12.png)
+    ![Zásady vyžádání nového připojení, které zobrazují zásady připojení k síti VPN](./media/howto-mfa-nps-extension-vpn/image12.png)
 
-5. Under **Policies**, select **Network Policies**. You should see a Virtual Private Network (VPN) Connections policy that resembles the policy shown in the following image:
+5. V části **zásady**vyberte **zásady sítě**. Měla by se zobrazit zásada připojení virtuální privátní sítě (VPN), která se podobá zásadám uvedeným na následujícím obrázku:
 
-    ![Network Policies showing Virtual Private Network Connections policy](./media/howto-mfa-nps-extension-vpn/image13.png)
+    ![Zásady sítě ukazující zásadu připojení k virtuální privátní síti](./media/howto-mfa-nps-extension-vpn/image13.png)
 
-## <a name="configure-your-vpn-server-to-use-radius-authentication"></a>Configure your VPN server to use RADIUS authentication
+## <a name="configure-your-vpn-server-to-use-radius-authentication"></a>Konfigurace serveru VPN pro použití ověřování RADIUS
 
-In this section, you configure your VPN server to use RADIUS authentication. The instructions assume that you have a working configuration of a VPN server but have not configured it to use RADIUS authentication. After you configure the VPN server, confirm that your configuration is working as expected.
+V této části nakonfigurujete server VPN tak, aby používal ověřování pomocí protokolu RADIUS. V pokynech se předpokládá, že máte funkční konfiguraci serveru VPN, ale nenakonfigurovali jste ho, aby používal ověřování pomocí protokolu RADIUS. Po nakonfigurování serveru VPN ověřte, že konfigurace funguje podle očekávání.
 
 > [!NOTE]
-> If you already have a working VPN server configuration that uses RADIUS authentication, you can skip this section.
+> Pokud už máte funkční konfiguraci serveru VPN, která používá ověřování pomocí protokolu RADIUS, můžete tuto část přeskočit.
 >
 
-### <a name="configure-authentication-provider"></a>Configure authentication provider
+### <a name="configure-authentication-provider"></a>Konfigurace zprostředkovatele ověřování
 
-1. On the VPN server, open Server Manager.
+1. Na serveru VPN otevřete Správce serveru.
 
-2. In Server Manager, select **Tools**, and then select **Routing and Remote Access**.
+2. V Správce serveru vyberte **nástroje**a pak vyberte **Směrování a vzdálený přístup**.
 
-3. In the **Routing and Remote Access** window, right-click **\<server name> (local)** , and then select **Properties**.
+3. V okně **Směrování a vzdálený přístup** klikněte pravým tlačítkem na **\<název serveru > (místní)** a pak vyberte **vlastnosti**.
 
-4. In the **\<server name> (local) Properties** window, select the **Security** tab.
+4. V okně **\<název serveru > (místní) vlastnosti** vyberte kartu **zabezpečení** .
 
-5. On the **Security** tab, under **Authentication provider**, select **RADIUS Authentication**, and then select **Configure**.
+5. Na kartě **zabezpečení** v části **Zprostředkovatel ověřování**vyberte **ověřování RADIUS**a pak vyberte **Konfigurovat**.
 
-    ![Configure RADIUS Authentication provider](./media/howto-mfa-nps-extension-vpn/image15.png)
+    ![Konfigurace zprostředkovatele ověřování RADIUS](./media/howto-mfa-nps-extension-vpn/image15.png)
 
-6. In the **RADIUS Authentication** window, select **Add**.
+6. V okně **ověřování pomocí protokolu RADIUS** vyberte **Přidat**.
 
-7. In the **Add RADIUS Server** window, do the following:
+7. V okně **Přidat server protokolu RADIUS** proveďte tyto kroky:
 
-    a. In the **Server name** box, enter the name or IP address of the RADIUS server that you configured in the previous section.
+    a. Do pole **název serveru** zadejte název nebo IP adresu serveru RADIUS, který jste nakonfigurovali v předchozí části.
 
-    b. For the **Shared secret**, select **Change**, and then enter the shared secret password that you created and recorded earlier.
+    b. Pro **sdílený tajný klíč**vyberte **změnit**a potom zadejte heslo sdíleného tajného klíče, které jste vytvořili a nahráli dříve.
 
-    c. In the **Time-out (seconds)** box, enter a value of **30**.  
-    The timeout value is necessary to allow enough time to complete the second authentication factor.
+    c. V poli **časový limit (sekundy)** zadejte hodnotu **30**.  
+    Hodnota časového limitu je nutná k tomu, aby byl dostatek času na dokončení druhého faktoru ověřování.
 
-    ![Add RADIUS Server window configuring the Time-out](./media/howto-mfa-nps-extension-vpn/image16.png)
+    ![Nastavení časového limitu pro přidání okna serveru RADIUS](./media/howto-mfa-nps-extension-vpn/image16.png)
 
 8. Vyberte **OK**.
 
-### <a name="test-vpn-connectivity"></a>Test VPN connectivity
+### <a name="test-vpn-connectivity"></a>Testovat připojení VPN
 
-In this section, you confirm that the VPN client is authenticated and authorized by the RADIUS server when you attempt to connect to the VPN virtual port. The instructions assume that you are using Windows 10 as a VPN client.
+V této části ověříte, že je klient VPN ověřený a autorizovaný serverem RADIUS při pokusu o připojení k virtuálnímu portu VPN. V těchto pokynech se předpokládá, že používáte Windows 10 jako klienta VPN.
 
 > [!NOTE]
-> If you already configured a VPN client to connect to the VPN server and have saved the settings, you can skip the steps related to configuring and saving a VPN connection object.
+> Pokud jste už nakonfigurovali klienta VPN pro připojení k serveru VPN a uložili nastavení, můžete přeskočit postup týkající se konfigurace a uložení objektu připojení VPN.
 >
 
-1. On your VPN client computer, select the **Start** button, and then select the **Settings** button.
+1. V klientském počítači VPN vyberte tlačítko **Start** a pak klikněte na tlačítko **Nastavení** .
 
-2. In the **Windows Settings** window, select **Network & Internet**.
+2. V okně **nastavení systému Windows** vyberte **síť & Internet**.
 
-3. Select **VPN**.
+3. Vyberte **VPN**.
 
-4. Select **Add a VPN connection**.
+4. Vyberte **Přidat připojení VPN**.
 
-5. In the **Add a VPN connection** window, in the **VPN provider** box, select **Windows (built-in)** , complete the remaining fields, as appropriate, and then select **Save**.
+5. V okně **Přidat připojení VPN** v poli **Poskytovatel sítě VPN** vyberte možnost **Windows (předdefinované)** , podle potřeby vyplňte zbývající pole a pak vyberte **Uložit**.
 
-    ![The "Add a VPN connection" window](./media/howto-mfa-nps-extension-vpn/image17.png)
+    ![Okno Přidat připojení k síti VPN](./media/howto-mfa-nps-extension-vpn/image17.png)
 
-6. Go to **Control Panel**, and then select **Network and Sharing Center**.
+6. V **Ovládacích panelech**vyberte položku **Centrum síťových a sdílení**.
 
-7. Select **Change adapter settings**.
+7. Vyberte **změnit nastavení adaptéru**.
 
-    ![Network and Sharing Center - Change adapter settings](./media/howto-mfa-nps-extension-vpn/image18.png)
+    ![Centrum síťových a sdílení – Změna nastavení adaptéru](./media/howto-mfa-nps-extension-vpn/image18.png)
 
-8. Right-click the VPN network connection, and then select **Properties**.
+8. Klikněte pravým tlačítkem na připojení k síti VPN a pak vyberte **vlastnosti**.
 
-9. In the VPN properties window, select the **Security** tab.
+9. V okně Vlastnosti sítě VPN vyberte kartu **zabezpečení** .
 
-10. On the **Security** tab, ensure that only **Microsoft CHAP Version 2 (MS-CHAP v2)** is selected, and then select **OK**.
+10. Na kartě **zabezpečení** zajistěte, aby byla vybrána pouze **Microsoft CHAP verze 2 (MS-CHAP v2)** , a pak vyberte **OK**.
 
-    ![The "Allow  these protocols" option](./media/howto-mfa-nps-extension-vpn/image20.png)
+    ![Možnost "Povolte tyto protokoly"](./media/howto-mfa-nps-extension-vpn/image20.png)
 
-11. Right-click the VPN connection, and then select **Connect**.
+11. Klikněte pravým tlačítkem na připojení k síti VPN a pak vyberte **připojit**.
 
-12. In the **Settings** window, select **Connect**.  
-    A successful connection appears in the Security log, on the RADIUS server, as Event ID 6272, as shown here:
+12. V okně **Nastavení** vyberte **připojit**.  
+    Úspěšné připojení se zobrazí v protokolu zabezpečení na serveru RADIUS jako událost s ID 6272, jak je znázorněno zde:
 
-    ![Event Properties window showing a successful connection](./media/howto-mfa-nps-extension-vpn/image21.png)
+    ![Událost okno Vlastnosti zobrazuje úspěšné připojení.](./media/howto-mfa-nps-extension-vpn/image21.png)
 
-## <a name="troubleshooting-radius"></a>Troubleshooting RADIUS
+## <a name="troubleshooting-radius"></a>Řešení potíží s protokolem RADIUS
 
-Assume that your VPN configuration was working before you configured the VPN server to use a centralized RADIUS server for authentication and authorization. If the configuration was working, it is likely that the issue is caused by a misconfiguration of the RADIUS server or the use of an invalid username or password. For example, if you use the alternate UPN suffix in the username, the sign-in attempt might fail. Use the same account name for best results.
+Předpokládejme, že vaše konfigurace sítě VPN fungovala předtím, než server VPN nakonfigurujete k použití centralizovaného serveru RADIUS pro ověřování a autorizaci. Pokud konfigurace fungovala, je pravděpodobně příčinou problému Chybná konfigurace serveru RADIUS nebo použití neplatného uživatelského jména nebo hesla. Pokud například použijete alternativní příponu UPN v uživatelském jménu, pokus o přihlášení může selhat. Pro dosažení nejlepších výsledků použijte stejný název účtu.
 
-To troubleshoot these issues, an ideal place to start is to examine the Security event logs on the RADIUS server. To save time searching for events, you can use the role-based Network Policy and Access Server custom view in Event Viewer, as shown here. "Event ID 6273" indicates events where the NPS denied access to a user.
+Aby bylo možné tyto problémy vyřešit, je ideálním místem, kde začít, je prozkoumávat protokoly událostí zabezpečení na serveru protokolu RADIUS. Pokud chcete ušetřit čas při hledání událostí, můžete použít vlastní zobrazení na serveru na základě rolí a přístup v Prohlížeč událostí, jak je znázorněno zde. "ID události 6273" označuje události, u kterých server NPS odepřel přístup k uživateli.
 
-![Event Viewer showing NPAS events](./media/howto-mfa-nps-extension-vpn/image22.png)
+![Prohlížeč událostí zobrazení událostí NPAS](./media/howto-mfa-nps-extension-vpn/image22.png)
 
-## <a name="configure-multi-factor-authentication"></a>Configure Multi-Factor Authentication
+## <a name="configure-multi-factor-authentication"></a>Konfigurace ověřování službou Multi-Factor Authentication
 
-For assistance configuring users for Multi-Factor Authentication see the articles [Planning a cloud-based Azure Multi-Factor Authentication deployment](howto-mfa-getstarted.md#create-conditional-access-policy) and [Set up my account for two-step verification](../user-help/multi-factor-authentication-end-user-first-time.md)
+Pomoc s konfigurací uživatelů pro Multi-Factor Authentication najdete v článcích [plánování cloudového nasazení Azure Multi-Factor Authentication](howto-mfa-getstarted.md#create-conditional-access-policy) a [Nastavení účtu pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-first-time.md) .
 
-## <a name="install-and-configure-the-nps-extension"></a>Install and configure the NPS extension
+## <a name="install-and-configure-the-nps-extension"></a>Instalace a konfigurace rozšíření serveru NPS
 
-This section provides instructions for configuring VPN to use MFA for client authentication with the VPN server.
+V této části najdete pokyny pro konfiguraci sítě VPN pro použití VÍCEFAKTOROVÉHO ověřování klientů pomocí serveru VPN.
 
-After you install and configure the NPS extension, all RADIUS-based client authentication that is processed by this server is required to use MFA. If all your VPN users are not enrolled in Azure Multi-Factor Authentication, you can do either of the following:
+Až nainstalujete a nakonfigurujete rozšíření serveru NPS, bude pro použití VÍCEFAKTOROVÉHO ověřování potřeba všechna ověření klienta na základě protokolu RADIUS, která jsou zpracována tímto serverem. Pokud všichni uživatelé VPN nejsou zaregistrovaní v Azure Multi-Factor Authentication, můžete provést jednu z následujících akcí:
 
-* Set up another RADIUS server to authenticate users who are not configured to use MFA.
+* Nastavte jiný server RADIUS pro ověřování uživatelů, kteří nejsou nakonfigurovaní pro použití vícefaktorového ověřování.
 
-* Create a registry entry that allows challenged users to provide a second authentication factor if they are enrolled in Azure Multi-Factor Authentication.
+* Vytvořte položku registru, která umožní napadeným uživatelům poskytnout druhý faktor ověřování, pokud jsou zaregistrované v Azure Multi-Factor Authentication.
 
-Create a new string value named _REQUIRE_USER_MATCH in HKLM\SOFTWARE\Microsoft\AzureMfa_, and set the value to *True* or *False*.
+Vytvořte novou řetězcovou hodnotu s názvem _REQUIRE_USER_MATCH v HKLM\SOFTWARE\Microsoft\AzureMfa_a nastavte hodnotu na *true* nebo *false*.
 
-![The "Require User Match" setting](./media/howto-mfa-nps-extension-vpn/image34.png)
+![Nastavení "vyžadovat shod uživatele"](./media/howto-mfa-nps-extension-vpn/image34.png)
 
-If the value is set to *True* or is blank, all authentication requests are subject to an MFA challenge. If the value is set to *False*, MFA challenges are issued only to users who are enrolled in Azure Multi-Factor Authentication. Use the *False* setting only in testing or in production environments during an onboarding period.
+Pokud je hodnota nastavená na *true* nebo je prázdná, budou se všechny žádosti o ověření vztahovat na výzvu MFA. Pokud je hodnota nastavená na *false*, budou se problémy MFA vydávat jenom uživatelům, kteří jsou zaregistrovaní v Azure Multi-Factor Authentication. Použijte nastavení *false* pouze při testování nebo v produkčním prostředí během období připojování.
 
-### <a name="obtain-the-azure-active-directory-guid-id"></a>Obtain the Azure Active Directory GUID ID
+### <a name="obtain-the-azure-active-directory-guid-id"></a>Získat ID Azure Active Directory identifikátor GUID
 
-As part of the configuration of the NPS extension, you must supply administrator credentials and the ID of your Azure AD tenant. Obtain the ID by doing the following:
+V rámci konfigurace rozšíření serveru NPS musíte zadat přihlašovací údaje správce a ID vašeho tenanta Azure AD. Získejte ID následujícím způsobem:
 
-1. Sign in to the [Azure portal](https://portal.azure.com) as the global administrator of the Azure tenant.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce tenanta Azure.
 
-2. In the left pane, select the **Azure Active Directory** button.
+2. V levém podokně vyberte tlačítko **Azure Active Directory** .
 
 3. Vyberte **Vlastnosti**.
 
-4. To copy your Azure AD ID, select the **Copy** button.
+4. Pokud chcete zkopírovat ID služby Azure AD, vyberte tlačítko **Kopírovat** .
 
-    ![Azure AD Directory ID in the Azure portal](./media/howto-mfa-nps-extension-vpn/image35.png)
+    ![ID adresáře Azure AD v Azure Portal](./media/howto-mfa-nps-extension-vpn/image35.png)
 
-### <a name="install-the-nps-extension"></a>Install the NPS extension
+### <a name="install-the-nps-extension"></a>Instalace rozšíření serveru NPS
 
-The NPS extension must be installed on a server that has the Network Policy and Access Services role installed and that functions as the RADIUS server in your design. Do *not* install the NPS extension on your VPN server.
+Rozšíření serveru NPS musí být nainstalováno na serveru, který má nainstalovanou roli síťové zásady a přístup a který funguje jako server RADIUS v návrhu. Neinstalujte *na* server VPN rozšíření serveru NPS.
 
-1. Download the NPS extension from [Microsoft Download Center](https://aka.ms/npsmfa).
+1. Stáhněte si rozšíření serveru NPS z [webu Microsoft Download Center](https://aka.ms/npsmfa).
 
-2. Copy the setup executable file (*NpsExtnForAzureMfaInstaller.exe*) to the NPS server.
+2. Zkopírujte spustitelný soubor instalačního programu (*NpsExtnForAzureMfaInstaller. exe*) na server NPS.
 
-3. On the NPS server, double-click **NpsExtnForAzureMfaInstaller.exe** and, if you are prompted, select **Run**.
+3. Na serveru NPS poklikejte na **NpsExtnForAzureMfaInstaller. exe** a pokud se zobrazí výzva, vyberte **Spustit**.
 
-4. In the **NPS Extension For Azure MFA Setup** window, review the software license terms, select the **I agree to the license terms and conditions** check box, and then select **Install**.
+4. V okně **rozšíření serveru NPS pro instalaci Azure MFA** si přečtěte licenční podmínky pro software, zaškrtněte políčko Souhlasím **s licenčními podmínkami a ujednání** a pak vyberte **nainstalovat**.
 
-    ![The "NPS Extension for Azure MFA Setup" window](./media/howto-mfa-nps-extension-vpn/image36.png)
+    ![Okno pro nastavení rozšíření NPS pro Azure MFA](./media/howto-mfa-nps-extension-vpn/image36.png)
 
-5. In the **NPS Extension For Azure MFA Setup** window, select **Close**.  
+5. V okně **rozšíření NPS pro instalaci Azure MFA** vyberte **Zavřít**.  
 
-    ![The "Setup Successful" confirmation window](./media/howto-mfa-nps-extension-vpn/image37.png)
+    ![Potvrzovací okno "nastavení bylo úspěšné"](./media/howto-mfa-nps-extension-vpn/image37.png)
 
-### <a name="configure-certificates-for-use-with-the-nps-extension-by-using-a-powershell-script"></a>Configure certificates for use with the NPS extension by using a PowerShell script
+### <a name="configure-certificates-for-use-with-the-nps-extension-by-using-a-powershell-script"></a>Konfigurace certifikátů pro použití s rozšířením NPS pomocí skriptu PowerShellu
 
-To ensure secure communications and assurance, configure certificates for use by the NPS extension. The NPS components include a Windows PowerShell script that configures a self-signed certificate for use with NPS.
+Aby bylo zajištěno zabezpečení komunikace a záruky, nakonfigurujte certifikáty pro použití v rozšíření serveru NPS. Server NPS součásti zahrnují skript prostředí Windows PowerShell, který se nakonfiguruje certifikát podepsaný svým držitelem pro použití se serverem NPS.
 
-The script performs the following actions:
+Skript provede následující akce:
 
-* Creates a self-signed certificate.
-* Associates the public key of the certificate to the service principal on Azure AD.
-* Stores the certificate in the local machine store.
-* Grants the network user access to the certificate’s private key.
-* Restarts the NPS service.
+* Vytvoří certifikát podepsaný svým držitelem.
+* Přidruží veřejný klíč certifikátu k instančnímu objektu ve službě Azure AD.
+* Uloží certifikát do úložiště místního počítače.
+* Udělí síťovému uživateli přístup k privátnímu klíči certifikátu.
+* Restartuje službu NPS.
 
-If you want to use your own certificates, you must associate the public key of your certificate with the service principal on Azure AD, and so on.
+Pokud chcete používat vlastní certifikáty, musíte k instančnímu objektu ve službě Azure AD přidružit veřejný klíč certifikátu a tak dále.
 
-To use the script, provide the extension with your Azure Active Directory administrative credentials and the Azure Active Directory tenant ID that you copied earlier. Run the script on each NPS server where you install the NPS extension.
+Chcete-li použít skript, zadejte rozšíření s přihlašovacími údaji správce Azure Active Directory a Azure Active Directory ID tenanta, které jste zkopírovali dříve. Spusťte skript na každém serveru NPS, na který nainstalujete rozšíření serveru NPS.
 
-1. Run Windows PowerShell as an administrator.
+1. Spusťte prostředí Windows PowerShell jako správce.
 
-2. At the PowerShell command prompt, enter **cd "c:\Program Files\Microsoft\AzureMfa\Config"** , and then select Enter.
+2. Na příkazovém řádku PowerShellu zadejte **CD "C:\Program Files\Microsoft\AzureMfa\Config"** a pak vyberte Enter.
 
-3. At the next command prompt, enter **.\AzureMfaNpsExtnConfigSetup.ps1**, and then select Enter. The script checks to see whether the Azure AD PowerShell module is installed. If it is not installed, the script installs the module for you.
+3. Na dalším příkazovém řádku zadejte **.\AzureMfaNpsExtnConfigSetup.ps1**a pak vyberte Enter. Skript zkontroluje, jestli je nainstalovaný modul Azure AD PowerShell. Pokud není nainstalovaný, skript nainstaluje modul za vás.
 
-    ![Running the AzureMfsNpsExtnConfigSetup.ps1 configuration script](./media/howto-mfa-nps-extension-vpn/image38.png)
+    ![Spuštění konfiguračního skriptu AzureMfsNpsExtnConfigSetup. ps1](./media/howto-mfa-nps-extension-vpn/image38.png)
 
-    After the script verifies the installation of the PowerShell module, it displays the Azure Active Directory PowerShell module sign-in window.
+    Když skript ověří instalaci modulu PowerShellu, zobrazí se okno pro přihlášení modulu PowerShellu Azure Active Directory.
 
-4. Enter your Azure AD administrator credentials and password, and then select **Sign in**.
+4. Zadejte svoje přihlašovací údaje a heslo správce Azure AD a pak vyberte **Přihlásit**se.
 
-    ![Authenticate to Azure AD PowerShell](./media/howto-mfa-nps-extension-vpn/image39.png)
+    ![Ověření ve službě Azure AD PowerShell](./media/howto-mfa-nps-extension-vpn/image39.png)
 
-5. At the command prompt, paste the tenant ID that you copied earlier, and then select Enter.
+5. Na příkazovém řádku Vložte ID tenanta, které jste zkopírovali dříve, a pak vyberte zadat.
 
-    ![Input the Azure AD Directory ID copied before](./media/howto-mfa-nps-extension-vpn/image40.png)
+    ![Zadejte ID adresáře služby Azure AD, které jste zkopírovali dříve.](./media/howto-mfa-nps-extension-vpn/image40.png)
 
-    The script creates a self-signed certificate and performs other configuration changes. The output is like that in the following image:
+    Tento skript vytvoří certifikát podepsaný svým držitelem a provede další změny v konfiguraci. Výstup je podobný jako na následujícím obrázku:
 
-    ![PowerShell window showing Self-signed certificate](./media/howto-mfa-nps-extension-vpn/image41.png)
+    ![Okno PowerShellu zobrazující certifikát podepsaný svým držitelem](./media/howto-mfa-nps-extension-vpn/image41.png)
 
-6. Reboot the server.
+6. Restartujte server.
 
 ### <a name="verify-the-configuration"></a>Ověření konfigurace
 
-To verify the configuration, you must establish a new VPN connection with the VPN server. After you've successfully entered your credentials for primary authentication, the VPN connection waits for the secondary authentication to succeed before the connection is established, as shown below.
+Chcete-li ověřit konfiguraci, je nutné vytvořit nové připojení k síti VPN se serverem VPN. Po úspěšném zadání přihlašovacích údajů pro primární ověřování bude připojení VPN čekat, než se sekundární ověřování dokončí, než se naváže připojení, jak je znázorněno níže.
 
-![The Windows Settings VPN window](./media/howto-mfa-nps-extension-vpn/image42.png)
+![Okno nastavení Windows VPN](./media/howto-mfa-nps-extension-vpn/image42.png)
 
-If you successfully authenticate with the secondary verification method that you previously configured in Azure MFA, you are connected to the resource. However, if the secondary authentication is unsuccessful, you are denied access to the resource.
+Pokud úspěšně ověříte sekundární metodou ověření, kterou jste předtím nakonfigurovali v Azure MFA, budete připojeni k prostředku. Pokud se ale sekundární ověřování nezdařilo, budete mít přístup k prostředku odepřený.
 
-In the following example, the Microsoft Authenticator app on a Windows Phone provides the secondary authentication:
+V následujícím příkladu aplikace Microsoft Authenticator v Windows Phone poskytuje sekundární ověřování:
 
-![Example MFA prompt on Windows Phone](./media/howto-mfa-nps-extension-vpn/image43.png)
+![Příklad výzvy MFA na Windows Phone](./media/howto-mfa-nps-extension-vpn/image43.png)
 
-After you've successfully authenticated by using the secondary method, you are granted access to the virtual port on the VPN server. Because you were required to use a secondary authentication method by using a mobile app on a trusted device, the sign-in process is more secure than if it were using only a username and password combination.
+Po úspěšném ověření pomocí sekundární metody získáte přístup k virtuálnímu portu na serveru VPN. Vzhledem k tomu, že jste museli použít sekundární metodu ověřování pomocí mobilní aplikace na důvěryhodném zařízení, je proces přihlášení bezpečnější, než kdyby používal jenom kombinaci uživatelského jména a hesla.
 
-### <a name="view-event-viewer-logs-for-successful-sign-in-events"></a>View Event Viewer logs for successful sign-in events
+### <a name="view-event-viewer-logs-for-successful-sign-in-events"></a>Zobrazit protokoly Prohlížeč událostí pro úspěšné události přihlášení
 
-To view successful sign-in events in the Windows Event Viewer logs query the Windows Security log, on the NPS server, by entering the following PowerShell command:
-
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
-
-![PowerShell security Event Viewer](./media/howto-mfa-nps-extension-vpn/image44.png)
-
-You can also view the security log or the Network Policy and Access Services custom view, as shown here:
-
-![Example Network Policy Server log](./media/howto-mfa-nps-extension-vpn/image45.png)
-
-On the server where you installed the NPS extension for Azure Multi-Factor Authentication, you can find Event Viewer application logs that are specific to the extension at *Application and Services Logs\Microsoft\AzureMfa*.
+Pokud chcete zobrazit úspěšné události přihlášení v protokolech Windows Prohlížeč událostí, zadejte na server NPS dotaz na protokol zabezpečení systému Windows, a to tak, že zadáte následující příkaz prostředí PowerShell:
 
     `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
 
-![Example Event Viewer AuthZ logs pane](./media/howto-mfa-nps-extension-vpn/image46.png)
+![Prohlížeč událostí zabezpečení PowerShellu](./media/howto-mfa-nps-extension-vpn/image44.png)
 
-## <a name="troubleshooting-guide"></a>Průvodce řešením potíží
+Můžete také zobrazit protokol zabezpečení nebo vlastní zobrazení služby síťové zásady a přístup, jak je znázorněno zde:
 
-If the configuration is not working as expected, begin troubleshooting by verifying that the user is configured to use MFA. Have the user connect to the [Azure portal](https://portal.azure.com). If the user is prompted for secondary authentication and can successfully authenticate, you can eliminate an incorrect configuration of MFA as an issue.
+![Příklad protokolu serveru NPS (Network Policy Server)](./media/howto-mfa-nps-extension-vpn/image45.png)
 
-If MFA is working for the user, review the relevant Event Viewer logs. The logs include the security event, Gateway operational, and Azure Multi-Factor Authentication logs that are discussed in the previous section.
+Na serveru, na který jste nainstalovali rozšíření serveru NPS pro Azure Multi-Factor Authentication, najdete Prohlížeč událostí protokoly aplikací, které jsou specifické pro rozšíření na stránce *Application and Services Logs\Microsoft\AzureMfa*.
 
-An example of a security log that displays a failed sign-in event (event ID 6273) is shown here:
+    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
 
-![Security log showing a failed sign-in event](./media/howto-mfa-nps-extension-vpn/image47.png)
+![Příklad Prohlížeč událostí podokně protokolu AuthZ](./media/howto-mfa-nps-extension-vpn/image46.png)
 
-A related event from the Azure Multi-Factor Authentication log is shown here:
+## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
-![Azure Multi-Factor Authentication logs](./media/howto-mfa-nps-extension-vpn/image48.png)
+Pokud konfigurace nefunguje podle očekávání, začněte s řešením potíží tím, že ověříte, jestli je uživatel nakonfigurovaný pro použití vícefaktorového ověřování. Připojte se k [Azure Portal](https://portal.azure.com)uživatele. Pokud se uživateli zobrazí výzva k zadání sekundárního ověřování a je možné ho úspěšně ověřit, můžete jako problém eliminovat neplatnou konfiguraci VÍCEFAKTOROVÉHO ověřování.
 
-To do advanced troubleshooting, consult the NPS database format log files where the NPS service is installed. The log files are created in the _%SystemRoot%\System32\Logs_ folder as comma-delimited text files. For a description of the log files, see [Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx).
+Pokud pro uživatele ověřování MFA funguje, zkontrolujte příslušné protokoly Prohlížeč událostí. Protokoly zahrnují události zabezpečení, provozní provoz brány a protokoly služby Azure Multi-Factor Authentication, které jsou popsány v předchozí části.
 
-The entries in these log files are difficult to interpret unless you export them to a spreadsheet or a database. You can find many Internet Authentication Service (IAS) parsing tools online to assist you in interpreting the log files. The output of one such downloadable [shareware application](https://www.deepsoftware.com/iasviewer) is shown here:
+Příklad protokolu zabezpečení, který zobrazuje neúspěšné události přihlášení (ID události 6273), je uveden zde:
 
-![Sample Shareware app IAS parser](./media/howto-mfa-nps-extension-vpn/image49.png)
+![Protokol zabezpečení zobrazující událost neúspěšného přihlášení](./media/howto-mfa-nps-extension-vpn/image47.png)
 
-To do additional troubleshooting, you can use a protocol analyzer such as Wireshark or [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx). The following image from Wireshark shows the RADIUS messages between the VPN server and the NPS.
+Související událost z protokolu Azure Multi-Factor Authentication se tady zobrazuje:
 
-![Microsoft Message Analyzer showing filtered traffic](./media/howto-mfa-nps-extension-vpn/image50.png)
+![Protokoly Multi-Factor Authentication Azure](./media/howto-mfa-nps-extension-vpn/image48.png)
 
-For more information, see [Integrate your existing NPS infrastructure with Azure Multi-Factor Authentication](howto-mfa-nps-extension.md).
+Chcete-li provést pokročilé řešení potíží, Projděte si soubory protokolu ve formátu databáze NPS, kde je nainstalována služba NPS. Soubory protokolu se vytvoří ve složce _%systemroot%\System32\Logs_ jako textové soubory oddělené čárkami. Popis souborů protokolu najdete v tématu [Interpretace souborů protokolu ve formátu databáze NPS](https://technet.microsoft.com/library/cc771748.aspx).
+
+Položky v těchto souborech protokolu je obtížné interpretovat, pokud je neexportujete do tabulky nebo databáze. Mnoho analytických nástrojů služby ověřování v Internetu (IAS) můžete najít online, abyste vám pomohli interpretovat soubory protokolů. Výstup jedné takové aplikace ke stažení [shareware](https://www.deepsoftware.com/iasviewer) se zobrazí zde:
+
+![Ukázka analyzátoru služby IAS pro shareware App](./media/howto-mfa-nps-extension-vpn/image49.png)
+
+Chcete-li provést další řešení potíží, můžete použít analyzátor protokolů, například Wireshark nebo [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx). Následující obrázek z nástroje Wireshark zobrazuje zprávy protokolu RADIUS mezi serverem VPN a serverem NPS.
+
+![Microsoft Message Analyzer zobrazující filtrovaný provoz](./media/howto-mfa-nps-extension-vpn/image50.png)
+
+Další informace najdete v tématu [integrace stávající infrastruktury serveru NPS do Azure Multi-Factor Authentication](howto-mfa-nps-extension.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Get Azure Multi-Factor Authentication](concept-mfa-licensing.md)
+[Získat Multi-Factor Authentication Azure](concept-mfa-licensing.md)
 
 [Brána vzdálené plochy Azure Multi-Factor Authentication Server pomocí protokolu RADIUS](howto-mfaserver-nps-rdg.md)
 

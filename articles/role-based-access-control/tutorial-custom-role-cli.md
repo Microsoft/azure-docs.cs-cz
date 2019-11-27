@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create a custom role for Azure resources using Azure CLI
-description: Get started creating a custom role for Azure resources using Azure CLI in this tutorial.
+title: Kurz – vytvoření vlastní role pro prostředky Azure pomocí Azure CLI
+description: Začínáme s vytvářením vlastní role pro prostředky Azure pomocí Azure CLI v tomto kurzu.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -20,9 +20,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419598"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Tutorial: Create a custom role for Azure resources using Azure CLI
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI
 
-If the [built-in roles for Azure resources](built-in-roles.md) don't meet the specific needs of your organization, you can create your own custom roles. V tomto kurzu pomocí Azure CLI vytvoříte vlastní roli Čtenář lístků podpory. The custom role allows the user to view everything in the management plane of a subscription and also open support tickets.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. V tomto kurzu pomocí Azure CLI vytvoříte vlastní roli Čtenář lístků podpory. Vlastní role uživateli umožňuje zobrazit vše v rovině správy předplatného a také otevřít lístky podpory.
 
 V tomto kurzu se naučíte:
 
@@ -34,12 +34,12 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
 - Oprávnění k vytváření vlastních rolí, například [Vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator)
-- [Azure Cloud Shell](../cloud-shell/overview.md) or [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure Cloud Shell](../cloud-shell/overview.md) nebo [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="sign-in-to-azure-cli"></a>Přihlášení k Azure CLI
 
@@ -51,7 +51,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít se šablonou J
 
 1. Projděte si seznam operací pro [poskytovatele prostředků Microsoft.Support](resource-provider-operations.md#microsoftsupport). Je užitečné znát operace, které máte k dispozici k vytváření oprávnění.
 
-    | Operace | Popis |
+    | Funkce | Popis |
     | --- | --- |
     | Microsoft.Support/register/action | Registruje poskytovatele prostředků podpory. |
     | Microsoft.Support/supportTickets/read | Umožňuje získat podrobnosti lístku podpory (včetně stavu, závažnosti, podrobností kontaktu a komunikací) nebo seznam lístků podpory pro všechna předplatná. |
@@ -61,7 +61,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít se šablonou J
 
 1. Otevřete soubor ReaderSupportRole.json v editoru a přidejte do něj následující JSON.
 
-    For information about the different properties, see [Custom roles for Azure resources](custom-roles.md).
+    Informace o různých vlastnostech najdete v tématu [vlastní role pro prostředky Azure](custom-roles.md).
 
     ```json
     {

@@ -1,7 +1,7 @@
 ---
-title: Install and run containers - FACE API
+title: Instalace a spuštění kontejnerů – rozhraní API pro rozpoznávání tváře
 titleSuffix: Azure Cognitive Services
-description: This article shows you how to download, install, and run containers for Face in this walkthrough tutorial.
+description: V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejnery pro tvář v tomto výukovém kurzu.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -18,73 +18,73 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327043"
 ---
-# <a name="install-and-run-face-containers-preview"></a>Install and run Face containers (Preview)
+# <a name="install-and-run-face-containers-preview"></a>Instalace a spuštění kontejnerů obličeje (Preview)
 
-Azure Cognitive Services Face provides a standardized Linux container for Docker that detects human faces in images. It also identifies attributes, which include face landmarks such as noses and eyes, gender, age, and other machine-predicted facial features. In addition to detection, Face can check if two faces in the same image or different images are the same by using a confidence score. Face also can compare faces against a database to see if a similar-looking or identical face already exists. It also can organize similar faces into groups by using shared visual traits.
+Azure Cognitive Services Face poskytuje standardizovaný kontejner pro Linux pro Docker, který detekuje lidské obličeje na obrázcích. Také identifikuje atributy, které zahrnují orientační orientační prvky, jako jsou například nos a oči, pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli dvě plošky ve stejné imagi nebo v různých imagích jsou stejné pomocí skóre spolehlivosti. Ploška také může porovnat plošky s databází a zjistit, zda již existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-You must meet the following prerequisites before you use the Face API containers.
+Než začnete používat kontejnery Face API, musíte splnit následující předpoklady.
 
 |Požaduje se|Účel|
 |--|--|
-|Docker Engine| The Docker Engine must be installed on a [host computer](#the-host-computer). Docker provides packages that configure the Docker environment on [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), and [Linux](https://docs.docker.com/engine/installation/#supported-platforms). For a primer on Docker and container basics, see the [Docker overview](https://docs.docker.com/engine/docker-overview/).<br><br> Docker must be configured to allow the containers to connect with and send billing data to Azure. <br><br> On Windows, Docker also must be configured to support Linux containers.<br><br>|
-|Familiarity with Docker | You need a basic understanding of Docker concepts, such as registries, repositories, containers, and container images. You also need knowledge of basic `docker` commands.| 
-|Face resource |To use the container, you must have:<br><br>An Azure **Face** resource and the associated API key and the endpoint URI. Both values are available on the **Overview** and **Keys** pages for the resource. They're required to start the container.<br><br>**{API_KEY}** : One of the two available resource keys on the **Keys** page<br><br>**{ENDPOINT_URI}** : The endpoint as provided on the **Overview** page
+|Modul Docker| Modul Docker musí být nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Informace o úvodu k Docker a kontejneru najdete v tématu [Přehled Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> V systému Windows musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
+|Znalost pomocí Docker | Potřebujete základní porozumění konceptům Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů. Potřebujete také znalosti základních příkazů `docker`.| 
+|Prostředek pro tvář |Chcete-li použít kontejner, je nutné mít:<br><br>Prostředek Azure **Face** a přidružený klíč rozhraní API a identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách **Přehled** a **klíče** pro daný prostředek. Jsou nutné ke spuštění kontejneru.<br><br>**{API_KEY}** : jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : koncový bod uvedený na stránce **Přehled**
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Request access to the private container registry
+## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k registru kontejneru soukromého
 
 [!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
-### <a name="the-host-computer"></a>The host computer
+### <a name="the-host-computer"></a>Hostitelský počítač
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="container-requirements-and-recommendations"></a>Container requirements and recommendations
+### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
-The following table describes the minimum and recommended CPU cores and memory to allocate for each Face API container.
+V následující tabulce jsou popsány minimální a doporučené PROCESORy a paměťová jádra, která se mají přidělit pro každý Face API kontejner.
 
 | Kontejner | Minimální | Doporučené | Transakce za sekundu<br>(Minimum, maximum)|
 |-----------|---------|-------------|--|
-|Tvář | 1 core, 2-GB memory | 1 core, 4-GB memory |10, 20|
+|Tvář | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |10, 20|
 
-* Each core must be at least 2.6 GHz or faster.
-* Transactions per second (TPS).
+* Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
+* Transakcí za sekundu (TPS).
 
-Core and memory correspond to the `--cpus` and `--memory` settings, which are used as part of the `docker run` command.
+Základní a paměť odpovídají nastavení `--cpus` a `--memory`, které se používají jako součást příkazu `docker run`.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Get the container image with docker pull
+## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí docker pull
 
-Container images for the Face API are available. 
+K dispozici jsou image kontejneru pro Face API. 
 
-| Kontejner | Repository |
+| Kontejner | Úložiště |
 |-----------|------------|
 | Tvář | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-face-container"></a>Docker pull for the Face container
+### <a name="docker-pull-for-the-face-container"></a>Získání Docker pro kontejner obličeje
 
 ```
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 ```
 
-## <a name="use-the-container"></a>Use the container
+## <a name="use-the-container"></a>Použití kontejneru
 
-After the container is on the [host computer](#the-host-computer), use the following process to work with the container.
+Po dokončení kontejneru v [hostitelském počítači](#the-host-computer)použijte následující postup pro práci s kontejnerem.
 
-1. [Run the container](#run-the-container-with-docker-run) with the required billing settings. More [examples](./face-resource-container-config.md#example-docker-run-commands) of the `docker run` command are available. 
-1. [Query the container's prediction endpoint](#query-the-containers-prediction-endpoint). 
+1. [Spusťte kontejner](#run-the-container-with-docker-run) s požadovaným nastavením fakturace. K dispozici jsou další [příklady](./face-resource-container-config.md#example-docker-run-commands) `docker run` příkazu. 
+1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint) 
 
-## <a name="run-the-container-with-docker-run"></a>Run the container with docker run
+## <a name="run-the-container-with-docker-run"></a>Spuštění kontejneru pomocí Docker run
 
-Use the [docker run](https://docs.docker.com/engine/reference/commandline/run/) command to run the container. Refer to [gathering required parameters](#gathering-required-parameters) for details on how to get the `{ENDPOINT_URI}` and `{API_KEY}` values.
+Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat `{ENDPOINT_URI}` a `{API_KEY}` hodnoty, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) .
 
-[Examples](face-resource-container-config.md#example-docker-run-commands) of the `docker run` command are available.
+K dispozici jsou [příklady](face-resource-container-config.md#example-docker-run-commands) `docker run` příkazu.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -94,49 +94,49 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-This command:
+Tento příkaz:
 
-* Runs a face container from the container image.
-* Allocates one CPU core and 4 GB of memory.
-* Exposes TCP port 5000 and allocates a pseudo TTY for the container.
-* Automatically removes the container after it exits. The container image is still available on the host computer. 
+* Spustí kontejner obličeje z image kontejneru.
+* Přidělí jeden procesor a 4 GB paměti.
+* Zveřejňuje port TCP 5000 a přiděluje pseudo TTY pro kontejner.
+* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači. 
 
-More [examples](./face-resource-container-config.md#example-docker-run-commands) of the `docker run` command are available. 
+K dispozici jsou další [příklady](./face-resource-container-config.md#example-docker-run-commands) `docker run` příkazu. 
 
 > [!IMPORTANT]
-> The `Eula`, `Billing`, and `ApiKey` options must be specified to run the container or the container won't start. For more information, see [Billing](#billing).
+> Možnosti `Eula`, `Billing`a `ApiKey` je nutné zadat pro spuštění kontejneru nebo se kontejner nespustí. Další informace najdete v tématu [fakturace](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
 
-## <a name="query-the-containers-prediction-endpoint"></a>Query the container's prediction endpoint
+## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
 
-The container provides REST-based query prediction endpoint APIs. 
+Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST. 
 
-Use the host, `http://localhost:5000`, for container APIs.
+Pro rozhraní API kontejneru použijte hostitele, `http://localhost:5000`.
 
 
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Stop the container
+## <a name="stop-the-container"></a>Zastavení kontejneru
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-If you run the container with an output [mount](./face-resource-container-config.md#mount-settings) and logging is enabled, the container generates log files that are helpful to troubleshoot issues that happen while you start or run the container.
+Pokud spouštíte kontejner s výstupním [připojením](./face-resource-container-config.md#mount-settings) a je povoleno protokolování, kontejner generuje soubory protokolu, které jsou užitečné k řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 
-The Face API containers send billing information to Azure by using a Face API resource on your Azure account. 
+Kontejnery Face API odesílají informace o fakturaci do Azure pomocí prostředku Face API na účtu Azure. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-For more information about these options, see [Configure containers](./face-resource-container-config.md).
+Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](./face-resource-container-config.md).
 
 <!--blogs/samples/video coures -->
 
@@ -144,19 +144,19 @@ For more information about these options, see [Configure containers](./face-reso
 
 ## <a name="summary"></a>Souhrn
 
-In this article, you learned concepts and workflow for how to download, install, and run Face API containers. Souhrn:
+V tomto článku jste zjistili koncepty a pracovní postupy, jak stahovat, instalovat a spouštět kontejnery Face API. Souhrn:
 
-* Container images are downloaded from the Azure Container Registry.
-* Container images run in Docker.
-* You can use either the REST API or the SDK to call operations in Face API containers by specifying the host URI of the container.
-* You must specify billing information when you instantiate a container.
+* Image kontejneru se stáhnou z Azure Container Registry.
+* Spuštění imagí kontejnerů v Dockeru.
+* Pomocí REST API nebo sady SDK můžete volat operace v kontejnerech Face API tím, že zadáte identifikátor URI hostitele kontejneru.
+* Při vytváření instance kontejneru je nutné zadat informace o fakturaci.
 
 > [!IMPORTANT]
-> Cognitive Services containers aren't licensed to run without being connected to Azure for metering. Customers must enable the containers to communicate billing information with the metering service at all times. Cognitive Services containers don't send customer data, such as the image or text that's being analyzed, to Microsoft.
+> U Cognitive Servicesch kontejnerů nejsou licencovány ke spuštění bez připojení k Azure pro měření. Zákazníci musí kontejnery povolit, aby ve všech časech komunikovaly fakturační údaje se službou měření. Kontejnery Cognitive Services neodesílají zákaznická data, jako je například analyzovaný obrázek nebo text, do společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další kroky
 
-* For configuration settings, see [Configure containers](face-resource-container-config.md).
-* To learn more about how to detect and identify faces, see [Face overview](Overview.md).
-* For information about the methods supported by the container, see the [Face API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
-* To use more Cognitive Services containers, see [Cognitive Services containers](../cognitive-services-container-support.md).
+* Nastavení konfigurace najdete v tématu [konfigurace kontejnerů](face-resource-container-config.md).
+* Další informace o tom, jak detekovat a identifikovat plošky, najdete v tématu [Přehled obličeje](Overview.md).
+* Informace o metodách podporovaných kontejnerem naleznete v [Face API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+* Chcete-li použít více Cognitive Services kontejnerů, přečtěte si téma [Cognitive Services kontejnery](../cognitive-services-container-support.md).

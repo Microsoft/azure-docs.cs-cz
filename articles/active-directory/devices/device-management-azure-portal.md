@@ -1,6 +1,6 @@
 ---
-title: How to manage devices using the Azure portal | Microsoft Docs
-description: Learn how to use the Azure portal to manage devices.
+title: Správa zařízení pomocí Azure Portal | Microsoft Docs
+description: Naučte se používat Azure Portal ke správě zařízení.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -18,189 +18,189 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420603"
 ---
-# <a name="manage-device-identities-using-the-azure-portal"></a>Manage device identities using the Azure portal
+# <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení pomocí Azure Portal
 
-With device identity management in Azure Active Directory (Azure AD), you can ensure that your users are accessing your resources from devices that meet your standards for security and compliance.
+Správa identit zařízení v Azure Active Directory (Azure AD) vám umožní zajistit, aby vaši uživatelé měli přístup k vašim prostředkům ze zařízení, která splňují vaše standardy pro zabezpečení a dodržování předpisů.
 
 Tento článek:
 
-- Assumes that you are familiar with the [introduction to device identity management in Azure Active Directory](overview.md)
-- Provides you with information about managing your device identities using the Azure AD portal
+- Předpokládá, že jste obeznámeni se [seznámkou se správou identit zařízení v Azure Active Directory](overview.md) .
+- Poskytuje informace o správě identit zařízení pomocí portálu Azure AD.
 
 ## <a name="manage-device-identities"></a>Správa identit zařízení
 
-The Azure AD portal provides you with a central place to manage your device identities. You can get to this place by either using a [direct link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) or by following these manual steps:
+Portál Azure AD poskytuje centrální místo pro správu identit zařízení. K tomuto umístění se můžete dostat buď pomocí [přímého odkazu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) , nebo pomocí těchto ručních kroků:
 
-1. Sign in to the [Azure portal](https://portal.azure.com) as administrator.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
 
-2. Search for and select **Azure Active Directory** or select it from the **Home** page.
+2. Vyhledejte a vyberte **Azure Active Directory** nebo ho vyberte z **domovské** stránky.
 
-3. In the **Manage** section, click **Devices**.
+3. V části **Spravovat** klikněte na **zařízení**.
 
-   ![Configure device settings](./media/device-management-azure-portal/74.png)
+   ![Konfigurovat nastavení zařízení](./media/device-management-azure-portal/74.png)
 
-The **Devices** page enables you to:
+Stránka **zařízení** vám umožní:
 
-- Configure your device settings
-- Locate devices
-- Perform device identity management tasks
-- Review device-related audit logs  
+- Konfigurace nastavení zařízení
+- Najít zařízení
+- Provádění úloh správy identit zařízení
+- Kontrola protokolů auditu souvisejících se zařízením  
   
-## <a name="configure-device-settings"></a>Configure device settings
+## <a name="configure-device-settings"></a>Konfigurovat nastavení zařízení
 
-To manage your device identities using the Azure AD portal, your devices need to be either [registered or joined](overview.md) to Azure AD. As an administrator, you can fine-tune the process of registering and joining devices by configuring the device settings.
+Aby bylo možné spravovat identity zařízení pomocí portálu Azure AD, musí být vaše zařízení buď [zaregistrovaná, nebo připojená](overview.md) k Azure AD. Jako správce můžete doladit proces registrace a připojení zařízení konfigurací nastavení zařízení.
 
-![Configure device settings](./media/device-management-azure-portal/22.png)
+![Konfigurovat nastavení zařízení](./media/device-management-azure-portal/22.png)
 
-The device settings page enables you to configure:
+Stránka nastavení zařízení vám umožní nakonfigurovat tyto možnosti:
 
-![Manage an Intune device](./media/device-management-azure-portal/21.png)
+![Správa zařízení v Intune](./media/device-management-azure-portal/21.png)
 
-- **Users may join devices to Azure AD** - This setting enables you to select the users who can register their devices as Azure AD joined devices. The default is **All**.
-
-> [!NOTE]
-> **Users may join devices to Azure AD** setting is only applicable to Azure AD join on Windows 10.
-
-- **Additional local administrators on Azure AD joined devices** - You can select the users that are granted local administrator rights on a device. Users added here are added to the *Device Administrators* role in Azure AD. Global administrators in Azure AD and device owners are granted local administrator rights by default. This option is a premium edition capability available through products such as Azure AD Premium or the Enterprise Mobility Suite (EMS).
-- **Users may register their devices with Azure AD** - You need to configure this setting to allow Windows 10 personal, iOS, Android, and macOs devices to be registered with Azure AD. If you select **None**, devices are not allowed to register with Azure AD. Enrollment with Microsoft Intune or Mobile Device Management (MDM) for Office 365 requires registration. If you have configured either of these services, **ALL** is selected and **NONE** is not available.
-- **Require Multi-Factor Auth to join devices** - You can choose whether users are required to provide an additional authentication factor to join their device to Azure AD. The default is **No**. We recommend requiring multi-factor authentication when registering a device. Before you enable multi-factor authentication for this service, you must ensure that multi-factor authentication is configured for the users that register their devices. For more information on different Azure multi-factor authentication services, see [getting started with Azure multi-factor authentication](../authentication/concept-mfa-whichversion.md). 
+- **Uživatelé můžou připojovat zařízení do Azure AD** – toto nastavení umožňuje vybrat uživatele, kteří můžou svá zařízení zaregistrovat jako zařízení připojená k Azure AD. Výchozí hodnota je **All**.
 
 > [!NOTE]
-> **Require Multi-Factor Auth to join devices** setting applies to devices that are either Azure AD joined or Azure AD registered. This setting does not apply to hybrid Azure AD joined devices.
+> **Uživatelé můžou připojovat zařízení k nastavení Azure AD** jenom pro službu Azure AD JOIN ve Windows 10.
 
-- **Maximum number of devices** - This setting enables you to select the maximum number of Azure AD joined or Azure AD registered devices that a user can have in Azure AD. If a user reaches this quota, they are not be able to add additional devices until one or more of the existing devices are removed. The default value is **20**.
+- **Další místní správci na zařízeních připojených k Azure AD** – můžete vybrat uživatele, kterým se v zařízení udělují oprávnění místního správce. Sem přidaní uživatelé se přidají do role *Správci zařízení* v Azure AD. Globální správci ve službě Azure AD a vlastníci zařízení mají ve výchozím nastavení udělena práva místního správce. Tato možnost je funkce Premium Edition, která je dostupná prostřednictvím produktů, jako je Azure AD Premium nebo sada Enterprise Mobility Suite (EMS).
+- **Uživatelé mohou zaregistrovat svá zařízení ve službě Azure AD** – je třeba nakonfigurovat toto nastavení tak, aby bylo možné zaregistrovat zařízení s Windows 10 osobní, iOS, Androidem a macOs, která budou registrována ve službě Azure AD. Pokud vyberete možnost **žádné**, zařízení se nemůžou registrovat v Azure AD. Registrace pomocí Microsoft Intune nebo správy mobilních zařízení (MDM) pro Office 365 vyžaduje registraci. Pokud jste nakonfigurovali některou z těchto služeb, je vybraná možnost **vše** a **žádná** není k dispozici.
+- **Vyžadovat vícefaktorové ověřování pro připojení zařízení** – můžete si vybrat, jestli uživatelé musí poskytovat dodatečný ověřovací faktor k připojení zařízení k Azure AD. Výchozí hodnota je **ne**. Při registraci zařízení doporučujeme vyžadovat službu Multi-Factor Authentication. Než povolíte službu Multi-Factor Authentication pro tuto službu, musíte zajistit, aby bylo pro uživatele, kteří registrují svá zařízení, nakonfigurované vícefaktorové ověřování. Další informace o různých službách Azure Multi-Factor Authentication najdete v tématu [Začínáme se službou Azure Multi-Factor Authentication](../authentication/concept-mfa-whichversion.md). 
 
 > [!NOTE]
-> **Maximum number of devices** setting applies to devices that are either Azure AD joined or Azure AD registered. This setting does not apply to hybrid Azure AD joined devices.
+> **Vyžadovat použití vícefaktorového ověřování pro připojení zařízení** se vztahuje na zařízení, která jsou buď připojená k Azure AD, nebo v případě registrace Azure AD. Toto nastavení se nevztahuje na zařízení připojená k hybridní službě Azure AD.
 
-- **Users may sync settings and app data across devices** - By default, this setting is set to **NONE**. Selecting specific users or groups or ALL allows the user’s settings and app data to sync across their Windows 10 devices. Learn more on how sync works in Windows 10.
-This option is a premium capability available through products such as Azure AD Premium or the Enterprise Mobility Suite (EMS).
+- **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet připojených zařízení Azure AD nebo zařízení s registrovanými službou Azure AD, která může uživatel mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, nebude moct přidávat další zařízení, dokud nebudou odebrána některá z existujících zařízení. Výchozí hodnota je **20**.
 
-## <a name="locate-devices"></a>Locate devices
+> [!NOTE]
+> Nastavení **maximální počet zařízení** se vztahuje na zařízení, která jsou buď připojená ke službě Azure AD, nebo v zaregistrovaných Azure AD. Toto nastavení se nevztahuje na zařízení připojená k hybridní službě Azure AD.
 
-You have two options to locate registered and joined devices:
+- **Uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními** – ve výchozím nastavení je toto nastavení nastaveno na **žádné**. Když vyberete konkrétní uživatele nebo skupiny, umožníte synchronizaci dat uživatelů a aplikací v zařízeních s Windows 10. Přečtěte si další informace o tom, jak synchronizace funguje ve Windows 10.
+Tato možnost je prémiová funkce dostupná prostřednictvím produktů, jako je Azure AD Premium nebo sada Enterprise Mobility Suite (EMS).
 
-- **All devices** in the **Manage** section of the **Devices** page  
+## <a name="locate-devices"></a>Najít zařízení
 
-   ![All devices](./media/device-management-azure-portal/41.png)
+Máte dvě možnosti, jak vyhledat registrovaná a připojená zařízení:
 
-- **Devices** in the **Manage** section of a **User** page
+- **Všechna zařízení** v části **Spravovat** na stránce **zařízení**  
 
-   ![All devices](./media/device-management-azure-portal/43.png)
+   ![Všechna zařízení](./media/device-management-azure-portal/41.png)
 
-With both options, you can get to a view that:
+- **Zařízení** v části **Spravovat** na stránce **uživatele**
 
-- Enables you to search for devices using the display name or device ID as filter.
-- Provides you with detailed overview of registered and joined devices
-- Enables you to perform common device management tasks
+   ![Všechna zařízení](./media/device-management-azure-portal/43.png)
 
-![All devices](./media/device-management-azure-portal/51.png)
+Pomocí obou možností se můžete dostat k zobrazení, které:
+
+- Umožňuje hledat zařízení pomocí zobrazovaného jména nebo ID zařízení jako filtru.
+- Poskytuje podrobný přehled registrovaných a připojených zařízení.
+- Umožňuje provádět běžné úlohy správy zařízení.
+
+![Všechna zařízení](./media/device-management-azure-portal/51.png)
 
 >[!TIP]
 >
->* If you see a device that is "Hybrid Azure AD joined" with a state "Pending" under the REGISTERED column, it indicates that the device has been synchronized from Azure AD connect and is waiting to complete registration from the client. Read more on how to [plan your Hybrid Azure AD join implementation](hybrid-azuread-join-plan.md). Additional information can be found in the article, [Devices frequently asked questions](faq.md).
+>* Pokud se v zaregistrovaném sloupci zobrazí zařízení, které je připojené k hybridní službě Azure AD se stavem "čeká", znamená to, že zařízení bylo synchronizované z Azure AD Connect a čeká na dokončení registrace z klienta. Přečtěte si další informace o [Naplánování hybridní implementace služby Azure AD JOIN](hybrid-azuread-join-plan.md). Další informace najdete v článku o [nejčastějších](faq.md)dotazech k zařízení.
 >
->   ![Pending devices](./media/device-management-azure-portal/75.png)
+>   ![Zařízení čekají](./media/device-management-azure-portal/75.png)
 >
->* For some iOS devices, the device names containing apostrophes can potentially use different characters that look like apostrophes. So searching for such devices is a little tricky - if you are not seeing search results correctly, ensure that the search string contains matching apostrophe character.
+>* U některých zařízení s iOS můžou názvy zařízení, které obsahují apostrofy, potenciálně používat různé znaky, které vypadají jako apostrofy. Takže hledání těchto zařízení je trochu obtížné – Pokud nevidíte výsledky hledání správně, ujistěte se, že hledaný řetězec obsahuje znak, který se shoduje s apostrofem.
 
-## <a name="device-identity-management-tasks"></a>Device identity management tasks
+## <a name="device-identity-management-tasks"></a>Úlohy správy identit zařízení
 
-As a global administrator or cloud device administrator, you can manage the registered or joined devices. Intune Service administrators can:
+Jako globální správce nebo správce cloudového zařízení můžete spravovat registrovaná nebo připojená zařízení. Správci služby Intune můžou:
 
-- Update devices  - Examples are daily operations such as enabling/disabling devices
-- Delete devices – When a device is retired and should be deleted in Azure AD
+- Aktualizace zařízení – příklady jsou každodenní operace, jako je povolování nebo zakazování zařízení.
+- Odstranění zařízení – při vyřazení zařízení z provozu a jeho odstranění ve službě Azure AD
 
-This section provides you with information about common device identity management tasks.
+V této části najdete informace o běžných úlohách správy identit zařízení.
 
-### <a name="manage-an-intune-device"></a>Manage an Intune device
+### <a name="manage-an-intune-device"></a>Správa zařízení v Intune
 
-If you are an Intune administrator, you can manage devices marked as **Microsoft Intune**. If the device is not enrolled with Microsoft Intune the "Manage" option will be greyed out.
+Pokud jste správce Intune, můžete zařízení s označením **Microsoft Intune**spravovat. Pokud zařízení není zaregistrované v Microsoft Intune možnost spravovat bude šedá.
 
-![Manage an Intune device](./media/device-management-azure-portal/31.png)
+![Správa zařízení v Intune](./media/device-management-azure-portal/31.png)
 
-### <a name="enable--disable-an-azure-ad-device"></a>Enable / disable an Azure AD device
+### <a name="enable--disable-an-azure-ad-device"></a>Povolení nebo zakázání zařízení Azure AD
 
-To enable / disable a device, you have two options:
+Pokud chcete zařízení povolit nebo zakázat, máte dvě možnosti:
 
-- The tasks menu ("...") on the **All devices** page
+- Nabídka úkoly ("...") na stránce **všechna zařízení**
 
-   ![Manage an Intune device](./media/device-management-azure-portal/71.png)
+   ![Správa zařízení v Intune](./media/device-management-azure-portal/71.png)
 
-- The toolbar on the **Devices** page
+- Panel nástrojů na stránce **zařízení**
 
-   ![Manage an Intune device](./media/device-management-azure-portal/32.png)
+   ![Správa zařízení v Intune](./media/device-management-azure-portal/32.png)
 
-**Remarks:**
+**Mark**
 
-- You need to be a global administrator or cloud device administrator in Azure AD to enable / disable a device. 
-- Disabling a device prevents a device from successfully authenticating with Azure AD, thereby preventing the device from accessing your Azure AD resources that are guarded by device CA or using your WH4B credentials.
-- Disabling the device will revoke both the Primary Refresh Token (PRT) and any Refresh Tokens (RT) on the device.
+- Aby bylo možné zařízení povolit nebo zakázat, musíte být ve službě Azure AD globálním správcem nebo správcem cloudového zařízení. 
+- Vypnutí zařízení brání úspěšnému ověření zařízení ve službě Azure AD, takže zařízení nebude mít přístup k prostředkům služby Azure AD, které jsou chráněné pomocí certifikační autority zařízení nebo pomocí přihlašovacích údajů WH4B.
+- Zakázáním zařízení se na zařízení odvolá primární obnovovací token (PRT) a všechny obnovovací tokeny (RT).
 
-### <a name="delete-an-azure-ad-device"></a>Delete an Azure AD device
+### <a name="delete-an-azure-ad-device"></a>Odstranění zařízení Azure AD
 
-To delete a device, you have two options:
+Pokud chcete odstranit zařízení, máte dvě možnosti:
 
-- The tasks menu ("...") on the **All devices** page
+- Nabídka úkoly ("...") na stránce **všechna zařízení**
 
-   ![Manage an Intune device](./media/device-management-azure-portal/72.png)
+   ![Správa zařízení v Intune](./media/device-management-azure-portal/72.png)
 
-- The toolbar on the **Devices** page
+- Panel nástrojů na stránce **zařízení**
 
-   ![Delete a device](./media/device-management-azure-portal/34.png)
+   ![Odstranění zařízení](./media/device-management-azure-portal/34.png)
 
-**Remarks:**
+**Mark**
 
-- You need to be a global administrator or an Intune administrator in Azure AD to delete a device.
-- Deleting a device:
-   - Prevents a device from accessing your Azure AD resources.
-   - Removes all details that are attached to the device, for example, BitLocker keys for Windows devices.  
-   - Represents a non-recoverable activity and is not recommended unless it is required.
+- Aby bylo možné odstranit zařízení, musíte být globálním správcem nebo správcem služby Intune ve službě Azure AD.
+- Odstraňování zařízení:
+   - Zabrání zařízení v přístupu k prostředkům služby Azure AD.
+   - Odebere všechny podrobnosti, které jsou připojené k zařízení, například klíče BitLockeru pro zařízení s Windows.  
+   - Představuje neobnovitelná aktivitu a nedoporučuje se, pokud to není nutné.
 
-If a device is managed by another management authority (for example, Microsoft Intune), make sure that the device has been wiped / retired before deleting the device in Azure AD. Review how to [manage stale devices](device-management-azure-portal.md) before deleting any devices.
+Pokud je zařízení spravované jinou autoritou pro správu (například Microsoft Intune), ujistěte se, že zařízení bylo smazáno/vyřazeno před odstraněním zařízení v Azure AD. Před odstraněním všech zařízení si přečtěte, jak [Spravovat zastaralá zařízení](device-management-azure-portal.md) .
 
-### <a name="view-or-copy-device-id"></a>View or copy device ID
+### <a name="view-or-copy-device-id"></a>Zobrazení nebo kopírování ID zařízení
 
-You can use a device ID to verify the device ID details on the device or using PowerShell during troubleshooting. To access the copy option, click the device.
+ID zařízení můžete použít k ověření podrobností ID zařízení v zařízení nebo při řešení potíží pomocí prostředí PowerShell. Pokud chcete získat přístup k možnosti kopírování, klikněte na zařízení.
 
-![View a device ID](./media/device-management-azure-portal/35.png)
+![Zobrazit ID zařízení](./media/device-management-azure-portal/35.png)
   
-### <a name="view-or-copy-bitlocker-keys"></a>View or copy BitLocker keys
+### <a name="view-or-copy-bitlocker-keys"></a>Zobrazení nebo kopírování klíčů nástroje BitLocker
 
-You can view and copy the BitLocker keys to help users to recover their encrypted drive. These keys are only available for Windows devices that are encrypted and have their keys stored in Azure AD. You can copy these keys when accessing details of the device.
+Můžete zobrazit a zkopírovat klíče nástroje BitLocker, které uživatelům pomůžou obnovit zašifrovanou jednotku. Tyto klíče jsou k dispozici pouze pro zařízení s Windows, která jsou zašifrovaná a mají své klíče uložené v Azure AD. Tyto klíče můžete zkopírovat při přístupu k podrobnostem o zařízení.
 
-![View BitLocker keys](./media/device-management-azure-portal/36.png)
+![Zobrazit klíče BitLockeru](./media/device-management-azure-portal/36.png)
 
-To view or copy the BitLocker keys, you need to be either the owner of the device, or a user that has at least one of the following roles assigned:
+Chcete-li zobrazit nebo zkopírovat klíče nástroje BitLocker, musíte být buď vlastníkem zařízení, nebo uživatelem, který má přiřazenu alespoň jednu z následujících rolí:
 
-- Cloud Device Administrator
+- Správce cloudového zařízení
 - Globální správce
-- Helpdesk Administrator
+- Správce helpdesku
 - Správce služby Intune
-- Security Administrator
-- Security Reader
+- Správce zabezpečení
+- Čtecí modul zabezpečení
 
 > [!NOTE]
-> Hybrid Azure AD Joined Windows 10 devices do not have an owner. So, if you are looking for a device by owner and didn't find it, search by the device ID.
+> Hybridní zařízení s Windows 10 připojená k Azure AD nemají vlastníka. Takže pokud hledáte zařízení podle vlastníka a nenalezli jste ho, vyhledejte ID zařízení.
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-Device activities are available through the activity logs. These logs include activities triggered by the device registration service and by users:
+Aktivity zařízení jsou k dispozici prostřednictvím protokolů aktivit. Tyto protokoly zahrnují aktivity aktivované službou Device Registration Service a uživateli:
 
-- Device creation and adding owners / users on the device
-- Changes to device settings
-- Device operations such as deleting or updating a device
+- Vytvoření zařízení a přidání vlastníků/uživatelů na zařízení
+- Změny nastavení zařízení
+- Operace zařízení, jako je například odstranění nebo aktualizace zařízení
 
-Your entry point to the auditing data is **Audit logs** in the **Activity** section of the **Devices** page.
+Vstupním bodem pro data auditování jsou **protokoly auditu** v části **aktivita** stránky **zařízení** .
 
 ![Protokoly auditu](./media/device-management-azure-portal/61.png)
 
 Protokol auditu má výchozí zobrazení seznamu, které obsahuje následující položky:
 
-- The date and time of the occurrence
-- The targets
-- The initiator / actor (who) of an activity
-- The activity (what)
+- Datum a čas výskytu
+- Cíle
+- Iniciátor/actor (kdo) aktivity
+- Aktivita (co)
 
 ![Protokoly auditu](./media/device-management-azure-portal/63.png)
 
@@ -214,13 +214,13 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 - Typ prostředku aktivity
 - Aktivita
 - Rozsah dat
-- Výběr cílového umístění
-- Initiated By (Actor)
+- Cíl
+- Iniciované uživatelem (actor)
 
-In addition to the filters, you can search for specific entries.
+Kromě filtrů můžete vyhledat konkrétní položky.
 
 ![Protokoly auditu](./media/device-management-azure-portal/65.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-[How to manage stale devices in Azure AD](manage-stale-devices.md)
+[Jak spravovat zastaralá zařízení ve službě Azure AD](manage-stale-devices.md)

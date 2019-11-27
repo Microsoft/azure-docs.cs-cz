@@ -1,20 +1,14 @@
 ---
-title: Použití spravované identity s Azure Container Instances
-description: Naučte se používat spravovanou identitu k ověřování s ostatními službami Azure z Azure Container Instances.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Povolit spravovanou identitu ve skupině kontejnerů
+description: Naučte se, jak v Azure Container Instances povolit spravovanou identitu, která se dá ověřit u jiných služeb Azure.
 ms.topic: article
 ms.date: 10/22/2018
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: 773650e5e5e85d4a5fca0b3755f3730921cc5f2e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b5546e8c4b512b584a57e8e4c2ff46c52ab856a0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325928"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533685"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Použití spravovaných identit s Azure Container Instances
 
@@ -54,7 +48,7 @@ Azure Container Instances podporuje oba typy spravovaných identit Azure: přiř
 
 Aby bylo možné používat spravovanou identitu, musí nejdřív být identitě udělen přístup k jednomu nebo několika prostředkům služby Azure (například k webové aplikaci, Key Vault nebo účtu úložiště) v předplatném. Pokud chcete získat přístup k prostředkům Azure ze spuštěného kontejneru, váš kód musí získat *přístupový token* z koncového bodu Azure AD. Potom váš kód odešle přístupový token při volání služby, která podporuje ověřování Azure AD. 
 
-Použití spravované identity v běžícím kontejneru je v podstatě totéž jako použití identity na virtuálním počítači Azure. Podívejte se na pokyny k VIRTUÁLNÍm [](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)počítačům pro použití tokenu, [Azure POWERSHELL nebo Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)nebo [sad Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md).
+Použití spravované identity v běžícím kontejneru je v podstatě totéž jako použití identity na virtuálním počítači Azure. Podívejte se na pokyny k VIRTUÁLNÍm počítačům pro použití [tokenu](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md), [Azure POWERSHELL nebo Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)nebo [sad Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -84,7 +78,7 @@ az keyvault secret set --name SampleSecret --value "Hello Container Instances!" 
 
 Pokračujte následujícími příklady pro přístup k Key Vault s použitím spravované identity přiřazené uživatelem nebo systémem v Azure Container Instances.
 
-## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Příklad 1: Pro přístup k Azure Key Vault použít uživatelem přiřazenou identitu
+## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Příklad 1: použití identity přiřazené uživatelem pro přístup k Azure Key Vault
 
 ### <a name="create-an-identity"></a>Vytvoření identity
 
@@ -106,7 +100,7 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myACIId --
 
 ### <a name="enable-a-user-assigned-identity-on-a-container-group"></a>Povolení uživatelsky přiřazené identity ve skupině kontejnerů
 
-Spuštěním následujícího příkazu [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) vytvořte instanci kontejneru založenou na Ubuntu serveru. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete použít k interaktivnímu přístupu k ostatním službám Azure. `--assign-identity` Parametr předá uživatelem přiřazenou spravovanou identitu do skupiny. Dlouho běžící příkaz udržuje kontejner spuštěný. Tento příklad používá stejnou skupinu prostředků, která se používá k vytvoření Key Vault, ale můžete zadat jiný.
+Spuštěním následujícího příkazu [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) vytvořte instanci kontejneru založenou na Ubuntu serveru. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete použít k interaktivnímu přístupu k ostatním službám Azure. Parametr `--assign-identity` předá uživatelem přiřazenou spravovanou identitu do skupiny. Dlouho běžící příkaz udržuje kontejner spuštěný. Tento příklad používá stejnou skupinu prostředků, která se používá k vytvoření Key Vault, ale můžete zadat jiný.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image microsoft/azure-cli --assign-identity $resourceID --command-line "tail -f /dev/null"
@@ -118,7 +112,7 @@ Během několika sekund byste měli dostat odpověď z rozhraní příkazového 
 az container show --resource-group myResourceGroup --name mycontainer
 ```
 
-`identity` Oddíl ve výstupu vypadá podobně jako v následujícím příkladu, který zobrazuje identitu nastavenou ve skupině kontejnerů. V `principalID` části`userAssignedIdentities` je instanční objekt identity, kterou jste vytvořili v Azure Active Directory:
+Oddíl `identity` ve výstupu vypadá podobně jako v následujícím příkladu, který zobrazuje identitu nastavenou ve skupině kontejnerů. `principalID` v části `userAssignedIdentities` je instanční objekt identity, kterou jste vytvořili v Azure Active Directory:
 
 ```console
 ...
@@ -183,11 +177,11 @@ Odpověď vypadá podobně jako v následujícím příkladu, který zobrazuje t
 {"value":"Hello Container Instances!","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
 ```
 
-## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Příklad 2: Pro přístup k Azure Key Vault použít identitu přiřazenou systémem
+## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Příklad 2: použití identity přiřazené systémem pro přístup k Azure Key Vault
 
 ### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>Povolení identity přiřazené systémem ve skupině kontejnerů
 
-Spuštěním následujícího příkazu [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) vytvořte instanci kontejneru založenou na Ubuntu serveru. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete použít k interaktivnímu přístupu k ostatním službám Azure. `--assign-identity` Parametr bez další hodnoty umožňuje pro skupinu spravovanou identitu přiřazenou systémem. Dlouho běžící příkaz udržuje kontejner spuštěný. Tento příklad používá stejnou skupinu prostředků, která se používá k vytvoření Key Vault, ale můžete zadat jiný.
+Spuštěním následujícího příkazu [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) vytvořte instanci kontejneru založenou na Ubuntu serveru. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete použít k interaktivnímu přístupu k ostatním službám Azure. Parametr `--assign-identity` bez další hodnoty umožňuje ve skupině spravovanou identitu přiřazenou systémem. Dlouho běžící příkaz udržuje kontejner spuštěný. Tento příklad používá stejnou skupinu prostředků, která se používá k vytvoření Key Vault, ale můžete zadat jiný.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image microsoft/azure-cli --assign-identity --command-line "tail -f /dev/null"
@@ -199,7 +193,7 @@ Během několika sekund byste měli dostat odpověď z rozhraní příkazového 
 az container show --resource-group myResourceGroup --name mycontainer
 ```
 
-`identity` Oddíl ve výstupu vypadá podobně jako v následujícím příkladu, který ukazuje, že se v Azure Active Directory vytvoří identita přiřazená systémem:
+Část `identity` ve výstupu vypadá podobně jako v následujícím příkladu, který ukazuje, že se v Azure Active Directory vytvoří identita přiřazená systémem:
 
 ```console
 ...
@@ -267,7 +261,7 @@ Odpověď vypadá podobně jako v následujícím příkladu, který zobrazuje t
 
 ## <a name="enable-managed-identity-using-resource-manager-template"></a>Povolení spravované identity pomocí šablony Správce prostředků
 
-Chcete-li povolit spravovanou identitu ve skupině kontejnerů pomocí [šablony Správce prostředků](container-instances-multi-container-group.md), nastavte `identity` vlastnost `Microsoft.ContainerInstance/containerGroups` objektu `ContainerGroupIdentity` objektem. Následující fragmenty kódu ukazují `identity` vlastnost nakonfigurovanou pro různé scénáře. Viz [odkaz na šablonu správce prostředků](/azure/templates/microsoft.containerinstance/containergroups). `apiVersion` Zadejte .`2018-10-01`
+Pokud chcete ve skupině kontejnerů povolit spravovanou identitu pomocí [šablony Správce prostředků](container-instances-multi-container-group.md), nastavte vlastnost `identity` objektu `Microsoft.ContainerInstance/containerGroups` s objektem `ContainerGroupIdentity`. Následující fragmenty kódu ukazují vlastnost `identity` nakonfigurovaná pro různé scénáře. Viz [odkaz na šablonu správce prostředků](/azure/templates/microsoft.containerinstance/containergroups). Zadejte `apiVersion` `2018-10-01`.
 
 ### <a name="user-assigned-identity"></a>Identita přiřazená uživatelem
 
@@ -315,7 +309,7 @@ Ve skupině kontejnerů můžete povolit identitu přiřazenou systémem i jednu
 ## <a name="enable-managed-identity-using-yaml-file"></a>Povolení spravované identity pomocí souboru YAML
 
 Pokud chcete ve skupině kontejnerů nasazenou pomocí [souboru YAML](container-instances-multi-container-yaml.md)povolit spravovanou identitu, zahrňte následující YAML.
-`apiVersion` Zadejte .`2018-10-01`
+Zadejte `apiVersion` `2018-10-01`.
 
 ### <a name="user-assigned-identity"></a>Identita přiřazená uživatelem
 
@@ -352,7 +346,7 @@ identity:
    {'myResourceID1':{}}
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste se seznámili se spravovanými identitami v Azure Container Instances a postupy:
 

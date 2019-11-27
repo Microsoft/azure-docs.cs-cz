@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9caadddf281c6df29f6e36057c7b28abcef0e1c4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d691759f1075a08ad13ec1199eb8af7fd634f5a1
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112520"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534478"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
@@ -216,7 +216,7 @@ Funkce bezplatné úrovně a verze Preview neposkytují [smlouvy o úrovni služ
 
 + Umožňuje, aby metriky sestavily dotazy a shromažďovat data o vzorech používání (dotazy během pracovní doby, indexování v době mimo špičku). Tato data slouží k informování o rozhodnutích zajišťování služeb. I když to není praktické při hodinovém nebo denním tempo, můžete dynamicky upravovat oddíly a prostředky, aby se na svazcích dotazů vešly plánované změny. Můžete také přizpůsobit neplánované, ale trvalé změny, pokud úrovně dostatečně dostatečně dostatečně neopravňují k zajištění, aby bylo možné provádět akce.
 
-+ Mějte na paměti, že jediným nevýhodoum zajišťováním je, že pokud jsou skutečné požadavky větší než vaše předpovědi, možná budete muset odtrhnout službu. Aby nedošlo k přerušení služeb, vytvořte novou službu ve stejném předplatném na vyšší úrovni a spusťte ji vedle sebe, dokud všechny aplikace a požadavky necílí na nový koncový bod.
++ Mějte na paměti, že jediným nevýhodoum zajišťováním je, že pokud jsou skutečné požadavky větší než vaše předpovědi, možná budete muset odtrhnout službu. Chcete-li se vyhnout přerušení služby, vytvořte novou službu v rozhraní na vyšší úrovni a spusťte ji vedle sebe, dokud všechny aplikace a požadavky necílí na nový koncový bod.
 
 ## <a name="next-steps"></a>Další kroky
 

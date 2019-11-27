@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create a custom role for Azure resources using Azure PowerShell
-description: Get started creating a custom role for Azure resources using Azure PowerShell in this tutorial.
+title: Kurz – vytvoření vlastní role pro prostředky Azure pomocí Azure PowerShell
+description: Začněte vytvářet vlastní role pro prostředky Azure pomocí Azure PowerShell v tomto kurzu.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -20,9 +20,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419746"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Tutorial: Create a custom role for Azure resources using Azure PowerShell
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure PowerShell
 
-If the [built-in roles for Azure resources](built-in-roles.md) don't meet the specific needs of your organization, you can create your own custom roles. V tomto kurzu pomocí Azure PowerShellu vytvoříte vlastní roli Čtenář lístků podpory. The custom role allows the user to view everything in the management plane of a subscription and also open support tickets.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. V tomto kurzu pomocí Azure PowerShellu vytvoříte vlastní roli Čtenář lístků podpory. Vlastní role uživateli umožňuje zobrazit vše v rovině správy předplatného a také otevřít lístky podpory.
 
 V tomto kurzu se naučíte:
 
@@ -36,12 +36,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
 - Oprávnění k vytváření vlastních rolí, například [Vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator)
-- [Azure Cloud Shell](../cloud-shell/overview.md) or [Azure PowerShell](/powershell/azure/install-az-ps)
+- [Azure Cloud Shell](../cloud-shell/overview.md) nebo [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="sign-in-to-azure-powershell"></a>Přihlášení k Azure PowerShellu
 
@@ -51,7 +51,7 @@ Přihlaste se k [Azure PowerShellu](/powershell/azure/authenticate-azureps).
 
 Nejjednodušší způsob, jak vytvořit vlastní roli, je začít s předdefinovanou rolí, upravit ji a pak vytvořit novou roli.
 
-1. In PowerShell, use the [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) command to get the list of operations for the Microsoft.Support resource provider. Je užitečné znát operace, které máte k dispozici k vytváření oprávnění. Seznam všech operací najdete také v tématu [Operace poskytovatele prostředků Azure Resource Manageru](resource-provider-operations.md#microsoftsupport).
+1. V PowerShellu použijte k získání seznamu operací pro poskytovatele prostředků Microsoft. support příkaz [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) . Je užitečné znát operace, které máte k dispozici k vytváření oprávnění. Seznam všech operací najdete také v tématu [Operace poskytovatele prostředků Azure Resource Manageru](resource-provider-operations.md#microsoftsupport).
 
     ```azurepowershell
     Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize
@@ -65,7 +65,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít s předdefinov
     Microsoft.Support/supportTickets/write Creates or Updates a Support Ticket. You can create a Support Tic...
     ```
 
-1. Use the [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) command to output the [Reader](built-in-roles.md#reader) role in JSON format.
+1. Použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) pro výstup role [Čtenář](built-in-roles.md#reader) ve formátu JSON.
 
     ```azurepowershell
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json
@@ -93,9 +93,9 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít s předdefinov
     }
     ```
     
-1. Upravte soubor JSON a do vlastnosti `Actions` přidejte operaci `"Microsoft.Support/*"`. Nezapomeňte vložit čárku za operaci čtení. Tato akce umožní uživateli vytvářet lístky podpory.
+1. Upravte soubor JSON a do vlastnosti `"Microsoft.Support/*"` přidejte operaci `Actions`. Nezapomeňte vložit čárku za operaci čtení. Tato akce umožní uživateli vytvářet lístky podpory.
 
-1. Get the ID of your subscription using the [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) command.
+1. Pomocí příkazu [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) Získejte ID vašeho předplatného.
 
     ```azurepowershell
     Get-AzSubscription
@@ -129,7 +129,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít s předdefinov
     }
     ```
     
-1. To create the new custom role, use the [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) command and specify the JSON role definition file.
+1. Chcete-li vytvořit novou vlastní roli, použijte příkaz [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) a zadejte soubor definice role JSON.
 
     ```azurepowershell
     New-AzRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole.json"
@@ -151,7 +151,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít s předdefinov
 
 ## <a name="list-custom-roles"></a>Výpis vlastních rolí
 
-- To list all your custom roles, use the [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) command.
+- Pokud chcete zobrazit seznam všech vlastních rolí, použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) .
 
     ```azurepowershell
     Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
@@ -171,7 +171,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít s předdefinov
 
 Pokud chcete aktualizovat vlastní roli, můžete aktualizovat soubor JSON nebo použít objekt `PSRoleDefinition`.
 
-1. To update the JSON file, use the [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) command to output the custom role in JSON format.
+1. Pokud chcete soubor JSON aktualizovat, použijte k výstupu vlastní role ve formátu JSON příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) .
 
     ```azurepowershell
     Get-AzRoleDefinition -Name "Reader Support Tickets" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole2.json
@@ -203,7 +203,7 @@ Pokud chcete aktualizovat vlastní roli, můžete aktualizovat soubor JSON nebo 
     }
     ```
         
-1. To update the custom role, use the [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) command and specify the updated JSON file.
+1. K aktualizaci vlastní role použijte příkaz [set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) a zadejte aktualizovaný soubor JSON.
 
     ```azurepowershell
     Set-AzRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole2.json"
@@ -221,7 +221,7 @@ Pokud chcete aktualizovat vlastní roli, můžete aktualizovat soubor JSON nebo 
     AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000}
     ```
 
-1. To use the `PSRoleDefintion` object to update your custom role, first use the [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) command to get the role.
+1. Pokud chcete k aktualizaci vlastní role použít objekt `PSRoleDefintion`, nejdřív použijte k získání role příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) .
 
     ```azurepowershell
     $role = Get-AzRoleDefinition "Reader Support Tickets"
@@ -233,7 +233,7 @@ Pokud chcete aktualizovat vlastní roli, můžete aktualizovat soubor JSON nebo 
     $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*/read")
     ```
 
-1. Use the [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) to update the role.
+1. K aktualizaci role použijte [příkaz set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) .
 
     ```azurepowershell
     Set-AzRoleDefinition -Role $role
@@ -254,13 +254,13 @@ Pokud chcete aktualizovat vlastní roli, můžete aktualizovat soubor JSON nebo 
     
 ## <a name="delete-a-custom-role"></a>Odstranění vlastní role
 
-1. Use the [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) command to get the ID of the custom role.
+1. K získání ID vlastní role použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) .
 
     ```azurepowershell
     Get-AzRoleDefinition "Reader Support Tickets"
     ```
 
-1. Use the [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) command and specify the role ID to delete the custom role.
+1. K odstranění vlastní role použijte příkaz [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) a zadejte ID role.
 
     ```azurepowershell
     Remove-AzRoleDefinition -Id "22222222-2222-2222-2222-222222222222"

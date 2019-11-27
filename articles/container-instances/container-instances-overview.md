@@ -1,22 +1,17 @@
 ---
-title: Co je Azure Container Instances?
+title: Kontejnery bez serveru v Azure
 description: Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob, jak spouštět izolované kontejnery v Azure, aniž by bylo nutné spravovat virtuální počítače a bez nutnosti přijmout Orchestrator vyšší úrovně.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: overview
 ms.date: 04/25/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a07eda709c813e68bc3e4f08b6aab3f93dec65a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325744"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533546"
 ---
-# <a name="what-is-azure-container-instances"></a>Co je Azure Container Instances?
+# <a name="what-is-azure-container-instances"></a>Co je služba Azure Container Instances?
 
 Kontejnery se stávají upřednostňovaným způsobem balení, nasazování a správy cloudových aplikací. Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob spouštění kontejneru v Azure. Není přitom nutné spravovat žádné virtuální počítače nebo využívat služby vyšší úrovně.
 
@@ -53,8 +48,8 @@ Některé funkce jsou aktuálně omezené na kontejnery Linux:
 * Více kontejnerů na skupinu kontejnerů
 * Připojení svazku ([soubory Azure](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [gitrepo nepodporují](container-instances-volume-gitrepo.md), [tajný kód](container-instances-volume-secret.md))
 * [Metriky využití prostředků](container-instances-monitor.md) pomocí Azure monitor
-* [Nasazení virtuální sítě](container-instances-vnet.md) Tisk
-* [Zdroje GPU](container-instances-gpu.md) Tisk
+* [Nasazení virtuální sítě](container-instances-vnet.md) (Preview)
+* [Prostředky GPU](container-instances-gpu.md) (Preview)
 
 Pro nasazení kontejnerů Windows používejte image založené na běžných [bitových kopiích Windows Base](container-instances-faq.md#what-windows-base-os-images-are-supported).
 

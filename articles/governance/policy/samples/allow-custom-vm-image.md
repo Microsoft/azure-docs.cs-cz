@@ -1,6 +1,6 @@
 ---
-title: Sample - Allow custom VM image from resource group
-description: This sample policy definition requires that custom images come from an approved resource group defined in a parameter.
+title: Ukázka – povolení vlastní image virtuálního počítače ze skupiny prostředků
+description: Tato ukázková definice zásad vyžaduje, aby vlastní image pocházely ze schválené skupiny prostředků definované v parametru.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 788098998bb5a1f268203e8e37fd671bdfbd6425
@@ -10,7 +10,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463775"
 ---
-# <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>Sample - Allow custom VM image from a resource group
+# <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>Ukázka – povolení vlastní image virtuálního počítače ze skupiny prostředků
 
 Tato ukázková zásada vyžaduje, aby vlastní image pocházely ze schválené skupiny prostředků. Zadejte název schválené skupiny prostředků.
 
@@ -24,9 +24,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fcustom-image-from-rg%2Fazurepolicy.json)
+[![nasazení ukázky zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fcustom-image-from-rg%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'custom-image-from-rg' --display-name 'Allow 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "custom-image-from-rg"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

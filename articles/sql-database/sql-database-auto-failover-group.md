@@ -1,6 +1,6 @@
 ---
 title: Skupiny převzetí služeb při selhání
-description: Auto-failover groups is a SQL Database feature that allows you to manage replication and automatic / coordinated failover of a group of databases on a SQL Database server or all databases in managed instance.
+description: Skupiny automatického převzetí služeb při selhání je funkce SQL Database, která umožňuje spravovat replikaci a automatické nebo koordinované převzetí služeb při selhání skupiny databází na serveru SQL Database nebo ve všech databázích ve spravované instanci.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -18,399 +18,399 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421385"
 ---
-# <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Use auto-failover groups to enable transparent and coordinated failover of multiple databases
+# <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
-Auto-failover groups is a SQL Database feature that allows you to manage replication and failover of a group of databases on a SQL Database server or all databases in a managed instance to another region. It is a declarative abstraction on top of the existing [active geo-replication](sql-database-active-geo-replication.md) feature, designed to simplify deployment and management of geo-replicated databases at scale. You can initiate failover manually or you can delegate it to the SQL Database service based on a user-defined policy. The latter option allows you to automatically recover multiple related databases in a secondary region after a catastrophic failure or other unplanned event that results in full or partial loss of the SQL Database service’s availability in the primary region. A failover group can include one or multiple databases, typically used by the same application. Additionally, you can use the readable secondary databases to offload read-only query workloads. Because auto-failover groups involve multiple databases, these databases must be configured on the primary server. Auto-failover groups support replication of all databases in the group to only one secondary server in a different region.
+Skupiny s automatickým převzetím služeb při selhání je funkce SQL Database, která umožňuje spravovat replikaci a převzetí služeb při selhání skupiny databází na serveru SQL Database nebo všech databázích ve spravované instanci do jiné oblasti. Jedná se o deklarativní abstrakci nad stávající [aktivní geografickou replikací](sql-database-active-geo-replication.md) , která je navržená tak, aby zjednodušila nasazení a správu geograficky replikovaných databází se škálováním. Převzetí služeb při selhání můžete iniciovat ručně nebo je můžete delegovat na službu SQL Database na základě uživatelsky definované zásady. Druhá možnost umožňuje automaticky obnovit více souvisejících databází v sekundární oblasti po závažných chybách nebo jiné neplánované události, které mají za následek úplnou nebo částečnou ztrátu dostupnosti služby SQL Database v primární oblasti. Skupina převzetí služeb při selhání může zahrnovat jednu nebo více databází, které obvykle používá stejná aplikace. Kromě toho můžete použít čitelné sekundární databáze pro přesměrování zatížení dotazů jen pro čtení. Vzhledem k tomu, že skupiny s automatickým převzetím služeb při selhání zahrnují více databází, je nutné tyto databáze nakonfigurovat na primárním serveru Skupiny s automatickým převzetím služeb při selhání podporují replikaci všech databází ve skupině jenom na jeden sekundární server v jiné oblasti.
 
 > [!NOTE]
-> When working with single or pooled databases on a SQL Database server and you want multiple secondaries in the same or different regions, use [active geo-replication](sql-database-active-geo-replication.md). 
+> Když pracujete s jednou nebo ve fondu databází na serveru SQL Database a chcete více sekundárních umístění ve stejné nebo jiné oblasti, použijte [aktivní geografickou replikaci](sql-database-active-geo-replication.md). 
 
-When you are using auto-failover groups with automatic failover policy, any outage that impacts one or several of the databases in the group results in automatic failover. Typically these are incidents that cannot be self-mitigated by the built-in automatic high availability operations. The examples of failover triggers include an incident caused by a SQL tenant ring or control ring being down due to an OS kernel memory leak on several compute nodes, or an incident caused by one or more tenant rings being down because a wrong network cable was cut during routine hardware decommissioning.  For more information, see [SQL Database High Availability](sql-database-high-availability.md).
+Pokud používáte skupiny s automatickým převzetím služeb při selhání se zásadami automatického převzetí služeb při selhání, jakékoli výpadky, které mají vliv na jednu nebo několik databází ve skupině, mají za následek automatické převzetí Typicky se jedná o incidenty, které se nedají samy zmírnit pomocí integrovaných automatických operací s vysokou dostupností. Mezi příklady triggerů převzetí služeb při selhání patří incident, který je způsobený vyzváněním nebo řídicím kanálem klienta SQL z důvodu nevracení paměti jádra operačního systému na několika výpočetních uzlech, nebo incidentu, který vychází z jednoho nebo více okruhů klientů, je mimo provoz, protože během ro byl vyjmut chybný síťový kabel utine vyřazení hardwaru z provozu.  Další informace najdete v tématu [SQL Database vysoké dostupnosti](sql-database-high-availability.md).
 
-In addition, auto-failover groups provide read-write and read-only listener end-points that remain unchanged during failovers. Whether you use manual or automatic failover activation, failover switches all secondary databases in the group to primary. After the database failover is completed, the DNS record is automatically updated to redirect the endpoints to the new region. For the specific RPO and RTO data, see [Overview of Business Continuity](sql-database-business-continuity.md).
+Skupiny s automatickým převzetím služeb při selhání poskytují koncové body naslouchacího procesu pro čtení i zápis a jen pro čtení, které během převzetí služeb při selhání zůstanou beze změny. Bez ohledu na to, jestli používáte ruční nebo automatickou aktivaci při selhání, převzetí služeb při selhání přepne všechny sekundární databáze ve skupině na primární. Po převzetí služeb při selhání databáze je záznam DNS automaticky aktualizován pro přesměrování koncových bodů do nové oblasti. Konkrétní data RPO a RTO najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).
 
-When you are using auto-failover groups with automatic failover policy, any outage that impacts databases in the SQL Database server or managed instance results in automatic failover. You can manage auto-failover group using:
+Pokud používáte skupiny s automatickým převzetím služeb při selhání se zásadami automatického převzetí služeb při selhání, dojde při jakémkoli výpadku, který ovlivňuje databáze na serveru SQL Database nebo spravované instanci, na automatické převzetí Skupinu automatického převzetí služeb při selhání můžete spravovat pomocí:
 
 - [Azure Portal](sql-database-implement-geo-distributed-database.md)
-- [PowerShell: Failover Group](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- [REST API: Failover group](https://docs.microsoft.com/rest/api/sql/failovergroups).
+- [PowerShell: Skupina převzetí služeb při selhání](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+- [REST API: Skupina převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups).
 
-After failover, ensure the authentication requirements for your server and database are configured on the new primary. For details, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md).
+Po převzetí služeb při selhání zajistěte, aby byly požadavky na ověřování pro server a databázi nakonfigurovány na novém primárním serveru. Podrobnosti najdete v tématu [SQL Database Security po zotavení po havárii](sql-database-geo-replication-security-config.md).
 
-To achieve real business continuity, adding database redundancy between datacenters is only part of the solution. Recovering an application (service) end-to-end after a catastrophic failure requires recovery of all components that constitute the service and any dependent services. Examples of these components include the client software (for example, a browser with a custom JavaScript), web front ends, storage, and DNS. It is critical that all components are resilient to the same failures and become available within the recovery time objective (RTO) of your application. Therefore, you need to identify all dependent services and understand the guarantees and capabilities they provide. Then, you must take adequate steps to ensure that your service functions during the failover of the services on which it depends. For more information about designing solutions for disaster recovery, see [Designing Cloud Solutions for Disaster Recovery Using active geo-replication](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance databáze mezi datacentry je pouze součástí řešení. Kompletní obnovení aplikace (služby) po závažných chybách vyžaduje obnovení všech součástí, které tvoří službu a všechny závislé služby. Mezi tyto komponenty patří klientský software (například prohlížeč s vlastním JavaScriptem), webové front-endy, úložiště a DNS. Je velmi důležité, aby všechny součásti byly odolné vůči stejnou selhání a byly k dispozici v rámci plánované doby obnovení (RTO) vaší aplikace. Proto je potřeba identifikovat všechny závislé služby a porozumět zárukám a funkcím, které poskytují. Pak musíte provést vhodné kroky, abyste zajistili, že vaše služba funguje při převzetí služeb při selhání služeb, na kterých závisí. Další informace o návrhu řešení pro zotavení po havárii najdete v tématu [navrhování cloudových řešení pro zotavení po havárii pomocí aktivní geografické replikace](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
-## <a name="auto-failover-group-terminology-and-capabilities"></a>Auto-failover group terminology and capabilities
+## <a name="auto-failover-group-terminology-and-capabilities"></a>Terminologie a možnosti skupin pro automatické převzetí služeb při selhání
 
-- **Failover group (FOG)**
+- **Skupina převzetí služeb při selhání (MLHOVé)**
 
-  A failover group is a named group of databases managed by a single SQL Database server or within a single managed instance that can fail over as a unit to another region in case all or some primary databases become unavailable due to an outage in the primary region. When created for managed instances, a failover group contains all user databases in the instance and therefore only one failover group can be configured on an instance.
+  Skupina převzetí služeb při selhání je pojmenovaná skupina databází spravovaná jedním SQL Database serverem nebo v rámci jedné spravované instance, která může převzít služby při selhání jako jednotka v jiné oblasti v případě výpadku v primární oblasti, nebo když některé primární databáze nebudou k dispozici. Při vytvoření pro spravované instance obsahuje skupina převzetí služeb při selhání všechny uživatelské databáze v instanci, a proto lze v instanci nakonfigurovat pouze jednu skupinu převzetí služeb při selhání.
   
   > [!IMPORTANT]
-  > The name of the failover group must be globally unique within the `.database.windows.net` domain.
+  > Název skupiny převzetí služeb při selhání musí být globálně jedinečný v rámci `.database.windows.net` domény.
 
-- **SQL Database servers**
+- **SQL Database servery**
 
-     With SQL Database servers, some or all of the user databases on a single SQL Database server can be placed in a failover group. Also, a SQL Database server supports multiple failover groups on a single SQL Database server.
+     U SQL Databasech serverů je možné do skupiny převzetí služeb při selhání umístit některé nebo všechny uživatelské databáze na jednom serveru SQL Database. SQL Database Server navíc podporuje více skupin převzetí služeb při selhání na jednom serveru SQL Database.
 
-- **Primary**
+- **Primární**
 
-  The SQL Database server or managed instance that hosts the primary databases in the failover group.
+  Server SQL Database nebo spravovaná instance hostující primární databáze ve skupině převzetí služeb při selhání.
 
-- **Secondary**
+- **Sekundární**
 
-  The SQL Database server or managed instance that hosts the secondary databases in the failover group. The secondary cannot be in the same region as the primary.
+  Server SQL Database nebo spravovaná instance hostující sekundární databáze ve skupině převzetí služeb při selhání. Sekundární nemůže být ve stejné oblasti jako primární.
 
-- **Adding single databases to failover group**
+- **Přidávání samostatných databází do skupiny převzetí služeb při selhání**
 
-  You can put several single databases on the same SQL Database server into the same failover group. If you add a single database to the failover group, it automatically creates a secondary database using the same edition and compute size on secondary server.  You specified that server when the failover group was created. If you add a database that already has a secondary database in the secondary server, that geo-replication link is inherited by the group. When you add a database that already has a secondary database in a server that is not part of the failover group, a new secondary is created in the secondary server.
+  Do stejné skupiny převzetí služeb při selhání můžete umístit několik samostatných databází na stejném SQL Databaseovém serveru. Pokud přidáte do skupiny převzetí služeb při selhání jednu databázi, automaticky vytvoří sekundární databázi pomocí stejné edice a výpočetní velikosti na sekundárním serveru.  Tento server jste zadali při vytvoření skupiny převzetí služeb při selhání. Pokud přidáváte databázi, která už má sekundární databázi na sekundárním serveru, toto propojení geografické replikace je zděděné skupinou. Když přidáváte databázi, která už má sekundární databázi na serveru, který není součástí skupiny převzetí služeb při selhání, vytvoří se na sekundárním serveru nový sekundární objekt.
 
   > [!IMPORTANT]
-  > Make sure that the secondary server doesn't have a database with the same name unless it is an existing secondary database. In failover groups for managed instance all user databases are replicated. You cannot pick a subset of user databases for replication in the failover group.
+  > Ujistěte se, že sekundární server nemá databázi se stejným názvem, pokud se nejedná o existující sekundární databázi. Ve skupinách převzetí služeb při selhání pro spravovanou instanci se replikují všechny uživatelské databáze. V této skupině převzetí služeb při selhání nelze vybrat podmnožinu uživatelských databází pro replikaci.
 
-- **Adding databases in elastic pool to failover group**
+- **Přidání databází do elastického fondu do skupiny převzetí služeb při selhání**
 
-  You can put all or several databases within an elastic pool into the same failover group. If the primary database is in an elastic pool, the secondary is automatically created in the elastic pool with the same name (secondary pool). You must ensure that the secondary server contains an elastic pool with the same exact name and enough free capacity to host the secondary databases that will be created by the failover group. If you add a database in the pool that already has a secondary database in the secondary pool, that geo-replication link is inherited by the group. When you add a database that already has a secondary database in a server that is not part of the failover group, a new secondary is created in the secondary pool.
+  Do jedné skupiny převzetí služeb při selhání můžete umístit všechny nebo několik databází v rámci elastického fondu. Pokud je primární databáze v elastickém fondu, sekundární se automaticky vytvoří v elastickém fondu se stejným názvem (sekundární fond). Je nutné zajistit, aby sekundární server obsahoval elastický fond se stejným přesným názvem a dostatek volné kapacity pro hostování sekundárních databází, které budou vytvořeny skupinou převzetí služeb při selhání. Pokud přidáte databázi do fondu, který již má sekundární databázi v sekundárním fondu, bude tento odkaz geografická replikace zděděn skupinou. Když přidáváte databázi, která už má sekundární databázi na serveru, který není součástí skupiny převzetí služeb při selhání, vytvoří se v sekundárním fondu nový sekundární objekt.
   
 - **Zóna DNS**
 
-  A unique ID that is automatically generated when a new instance is created. A multi-domain (SAN) certificate for this instance is provisioned to authenticate the client connections to any instance in the same DNS zone. The two managed instances in the same failover group must share the DNS zone.
+  Jedinečné ID, které se automaticky vygeneruje při vytvoření nové instance. Pro tuto instanci se zřídí certifikát s více doménami (SAN) pro ověřování připojení klientů k jakékoli instanci ve stejné zóně DNS. Tyto dvě spravované instance ve stejné skupině převzetí služeb při selhání musí sdílet zónu DNS.
   
   > [!NOTE]
-  > A DNS zone ID is not required for failover groups created for SQL Database servers.
+  > Pro skupiny převzetí služeb při selhání vytvořené pro SQL Database servery se nevyžaduje ID zóny DNS.
 
-- **Failover group read-write listener**
+- **Naslouchací proces pro čtení a zápis skupiny převzetí služeb při selhání**
 
-  A DNS CNAME record that points to the current primary's URL. It is created automatically when the failover group is created and allows the read-write SQL workload to transparently reconnect to the primary database when the primary changes after failover. When the failover group is created on a SQL Database server, the DNS CNAME record for the listener URL is formed as `<fog-name>.database.windows.net`. When the failover group is created on a managed instance, the DNS CNAME record for the listener URL is formed as `<fog-name>.zone_id.database.windows.net`.
+  Záznam DNS CNAME, který odkazuje na aktuální primární adresu URL. Automaticky se vytvoří při vytvoření skupiny převzetí služeb při selhání a umožňuje, aby se při převzetí služeb při selhání znovu znovu připojila úloha SQL pro čtení i zápis k primární databázi. Když je na serveru SQL Database vytvořená skupina převzetí služeb při selhání, záznam CNAME DNS pro adresu URL naslouchacího procesu se vytvoří jako `<fog-name>.database.windows.net`. Pokud je skupina převzetí služeb při selhání vytvořena na spravované instanci, záznam CNAME DNS pro adresu URL naslouchacího procesu se vytvoří jako `<fog-name>.zone_id.database.windows.net`.
 
-- **Failover group read-only listener**
+- **Skupina převzetí služeb při selhání – naslouchací proces jen pro čtení**
 
-  A DNS CNAME record formed that points to the read-only listener that points to the secondary's URL. It is created automatically when the failover group is created and allows the read-only SQL workload to transparently connect to the secondary using the specified load-balancing rules. When the failover group is created on a SQL Database server, the DNS CNAME record for the listener URL is formed as `<fog-name>.secondary.database.windows.net`. When the failover group is created on a managed instance, the DNS CNAME record for the listener URL is formed as `<fog-name>.zone_id.secondary.database.windows.net`.
+  Záznam CNAME DNS vytvořený, který odkazuje na naslouchací proces jen pro čtení, který odkazuje na adresu URL sekundárního objektu. Automaticky se vytvoří při vytvoření skupiny převzetí služeb při selhání a umožňuje úlohy SQL, která je jen pro čtení, k sekundárnímu připojení k sekundárnímu pomocí zadaných pravidel vyrovnávání zatížení. Když je na serveru SQL Database vytvořená skupina převzetí služeb při selhání, záznam CNAME DNS pro adresu URL naslouchacího procesu se vytvoří jako `<fog-name>.secondary.database.windows.net`. Pokud je skupina převzetí služeb při selhání vytvořena na spravované instanci, záznam CNAME DNS pro adresu URL naslouchacího procesu se vytvoří jako `<fog-name>.zone_id.secondary.database.windows.net`.
 
-- **Automatic failover policy**
+- **Zásady automatického převzetí služeb při selhání**
 
-  By default, a failover group is configured with an automatic failover policy. The SQL Database service triggers failover after the failure is detected and the grace period has expired. The system must verify that the outage cannot be mitigated by the built-in [high availability infrastructure of the SQL Database service](sql-database-high-availability.md) due to the scale of the impact. If you want to control the failover workflow from the application, you can turn off automatic failover.
+  Ve výchozím nastavení je skupina převzetí služeb při selhání nakonfigurovaná se zásadami automatického převzetí služeb při selhání. Služba SQL Database aktivuje převzetí služeb při selhání po zjištění selhání a vypršení lhůty. Systém musí ověřit, jestli se výpadek nedá zmírnit vestavěnou [infrastrukturou vysoké dostupnosti služby SQL Database](sql-database-high-availability.md) z důvodu rozsahu dopadu. Pokud chcete řídit pracovní postup převzetí služeb při selhání z aplikace, můžete automatické převzetí služeb při selhání vypnout.
   
   > [!NOTE]
-  > Because verification of the scale of the outage and how quickly it can be mitigated involves human actions by the operations team, the grace period cannot be set below one hour.  This  limitation applies to all databases in the failover group regardless of their data synchronization state. 
+  > Vzhledem k tomu, že ověřování škály výpadku a jak rychle se dá zmírnit, zahrnuje lidské akce tým provozu, období odkladu nelze nastavit pod jednu hodinu.  Toto omezení se vztahuje na všechny databáze ve skupině převzetí služeb při selhání bez ohledu na stav synchronizace dat. 
 
-- **Read-only failover policy**
+- **Zásada převzetí služeb při selhání jen pro čtení**
 
-  By default, the failover of the read-only listener is disabled. It ensures that the performance of the primary is not impacted when the secondary is offline. However, it also means the read-only sessions will not be able to connect until the secondary is recovered. If you cannot tolerate downtime for the read-only sessions and are OK to temporarily use the primary for both read-only and read-write traffic at the expense of the potential performance degradation of the primary, you can enable failover for the read-only listener by configuring the `AllowReadOnlyFailoverToPrimary` property. In that case, the read-only traffic will be automatically redirected to the primary if the secondary is not available.
+  Ve výchozím nastavení je převzetí služeb při selhání naslouchacího procesu jen pro čtení zakázané. Zajišťuje, že výkon primárního z těchto primárních není ovlivněný, když je sekundární objekt v režimu offline. Ale také to znamená, že relace jen pro čtení se nebudou moci připojit až po obnovení sekundárního zařízení. Pokud nemůžete tolerovat výpadky v relacích jen pro čtení a jsou v pořádku, aby byly primární pro provoz jen pro čtení i pro čtení i zápis na úkor možného snížení výkonu primární služby, můžete povolit převzetí služeb při selhání pro naslouchací proces jen pro čtení. konfigurací vlastnosti `AllowReadOnlyFailoverToPrimary`. V takovém případě bude přenos, který je jen pro čtení, automaticky přesměrován na primární, pokud není k dispozici sekundární.
 
-- **Planned failover**
+- **Plánované převzetí služeb při selhání**
 
-   Planned failover performs full synchronization between primary and secondary databases before the secondary switches to the primary role. This guarantees no data loss. Planned failover is used in the following scenarios:
+   Plánované převzetí služeb při selhání provede úplnou synchronizaci mezi primárními a sekundárními databázemi před sekundárním přepnutím do primární role. To zaručuje, že nedojde ke ztrátě dat. Plánované převzetí služeb při selhání se používá v následujících scénářích:
 
-  - Perform disaster recovery (DR) drills in production when the data loss is not acceptable
-  - Relocate the databases to a different region
-  - Return the databases to the primary region after the outage has been mitigated (failback).
+  - Podrobná cvičení zotavení po havárii (DR) v produkčním prostředí, když je ztráta dat nepřijatelná
+  - Přemístit databáze do jiné oblasti
+  - Po omezení výpadku (navrácení služeb po obnovení) Vraťte databáze do primární oblasti.
 
-- **Unplanned failover**
+- **Neplánované převzetí služeb při selhání**
 
-   Unplanned or forced failover immediately switches the secondary to the primary role without any synchronization with the primary. This operation will result in data loss. Unplanned failover is used as a recovery method during outages when the primary is not accessible. When the original primary is back online, it will automatically reconnect without synchronization and become a new secondary.
+   Neplánované nebo vynucené převzetí služeb při selhání okamžitě přepne sekundární roli do primární role bez jakékoli synchronizace s primární. Výsledkem této operace bude ztráta dat. Neplánované převzetí služeb při selhání se používá jako metoda obnovení během výpadků, pokud není primární přístup k primárnímu přístupu. Když je původní primární databáze zpátky online, automaticky se znovu připojí bez synchronizace a stane se novou sekundární.
 
-- **Manual failover**
+- **Ruční převzetí služeb při selhání**
 
-  You can initiate failover manually at any time regardless of the automatic failover configuration. If automatic failover policy is not configured, manual failover is required to recover databases in the failover group to the secondary. You can initiate forced or friendly failover (with full data synchronization). The latter could be used to relocate the primary to the secondary region. When failover is completed, the DNS records are automatically updated to ensure connectivity to the new primary
+  Převzetí služeb při selhání můžete kdykoli iniciovat ručně bez ohledu na konfiguraci automatického převzetí služeb při selhání. Pokud nejsou nakonfigurovány Zásady automatického převzetí služeb při selhání, je nutné ruční převzetí služeb při selhání pro obnovení databází ve skupině převzetí služeb při selhání na sekundární. Můžete iniciovat vynucené nebo popisné převzetí služeb při selhání (s úplnou synchronizací dat). Druhá by mohla být použita k přemístění primární do sekundární oblasti. Po dokončení převzetí služeb při selhání se záznamy DNS automaticky aktualizují, aby se zajistilo připojení k nové primární
 
-- **Grace period with data loss**
+- **Období odkladu s ztrátou dat**
 
-  Because the primary and secondary databases are synchronized using asynchronous replication, the failover may result in data loss. You can customize the automatic failover policy to reflect your application’s tolerance to data loss. By configuring `GracePeriodWithDataLossHours`, you can control how long the system waits before initiating the failover that is likely to result data loss.
+  Vzhledem k tomu, že primární a sekundární databáze jsou synchronizovány pomocí asynchronní replikace, může převzetí služeb při selhání dojít ke ztrátě dat. Zásady automatického převzetí služeb při selhání můžete přizpůsobit tak, aby odrážely odolnost vaší aplikace proti ztrátě dat. Konfigurací `GracePeriodWithDataLossHours`můžete určit, jak dlouho systém počká, než se iniciuje převzetí služeb při selhání, které pravděpodobně bude mít za následek ztrátu dat.
 
-- **Multiple failover groups**
+- **Několik skupin převzetí služeb při selhání**
 
-  You can configure multiple failover groups for the same pair of servers to control the scale of failovers. Each group fails over independently. If your multi-tenant application uses elastic pools, you can use this capability to mix primary and secondary databases in each pool. This way you can reduce the impact of an outage to only half of the tenants.
+  Můžete nakonfigurovat více skupin převzetí služeb při selhání pro stejnou dvojici serverů pro řízení škálování převzetí služeb při selhání. U každé skupiny dojde k selhání nezávisle. Pokud vaše aplikace pro více tenantů používá elastické fondy, můžete tuto možnost využít ke smíchání primárních a sekundárních databází v jednotlivých fondech. Tímto způsobem můžete snížit dopad výpadku jenom na polovinu klientů.
 
   > [!NOTE]
-  > Managed Instance does not support multiple failover groups.
+  > Spravovaná instance nepodporuje více skupin převzetí služeb při selhání.
   
 ## <a name="permissions"></a>Oprávnění
 
-Permissions for a failover group are managed via [role-based access control (RBAC)](../role-based-access-control/overview.md). The [SQL Server Contributor](../role-based-access-control/built-in-roles.md#sql-server-contributor) role has all the necessary permissions to manage failover groups.
+Oprávnění pro skupinu převzetí služeb při selhání se spravují prostřednictvím [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md). Role [přispěvatel SQL Server](../role-based-access-control/built-in-roles.md#sql-server-contributor) má všechna potřebná oprávnění ke správě skupin převzetí služeb při selhání.
 
-### <a name="create-failover-group"></a>Create failover group
+### <a name="create-failover-group"></a>Vytvořit skupinu převzetí služeb při selhání
 
-To create a failover group, you need RBAC write access to both the primary and secondary servers, and to all databases in the failover group. For a managed instance, you need RBAC write access to both the primary and secondary managed instance, but permissions on individual databases are not relevant since individual managed instance databases cannot be added to or removed from a failover group. 
+Chcete-li vytvořit skupinu převzetí služeb při selhání, budete potřebovat přístup k zápisu RBAC na primární i sekundární server a do všech databází ve skupině převzetí služeb při selhání. Pro spravovanou instanci potřebujete přístup pro zápis RBAC do primární i sekundární spravované instance, ale oprávnění pro jednotlivé databáze nejsou relevantní, protože jednotlivé databáze spravované instance nelze do skupiny převzetí služeb při selhání přidávat ani je z ní odebírat. 
 
-### <a name="update-a-failover-group"></a>Update a failover group
+### <a name="update-a-failover-group"></a>Aktualizace skupiny převzetí služeb při selhání
 
-To update a failover group, you need RBAC write access to the failover group, and all databases on the current primary server or managed instance.  
+Chcete-li aktualizovat skupinu převzetí služeb při selhání, budete potřebovat přístup pro zápis RBAC do skupiny převzetí služeb při selhání a všechny databáze na aktuálním primárním serveru nebo spravované instanci.  
 
-### <a name="failover-a-failover-group"></a>Failover a failover group
+### <a name="failover-a-failover-group"></a>Převzetí služeb při selhání skupiny
 
-To fail over a failover group, you need RBAC write access to the failover group on the new primary server or managed instance.
+Pokud chcete převzít služby při selhání skupiny převzetí služeb při selhání, budete potřebovat přístup k zápisu RBAC do skupiny převzetí služeb při selhání na novém primárním serveru nebo spravované instanci.
 
-## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Best practices of using failover groups with single databases and elastic pools
+## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Osvědčené postupy použití skupin převzetí služeb při selhání s izolovanými databázemi a elastickými fondy
 
-The auto-failover group must be configured on the primary SQL Database server and will connect it to the secondary SQL Database server in a different Azure region. The groups can include all or some databases in these servers. The following diagram illustrates a typical configuration of a geo-redundant cloud application using multiple databases and auto-failover group.
+Skupina automatického převzetí služeb při selhání musí být nakonfigurovaná na primárním SQL Databasem serveru a bude připojena k sekundárnímu SQL Database serveru v jiné oblasti Azure. Skupiny mohou obsahovat všechny nebo některé databáze na těchto serverech. Následující diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace s využitím více databází a skupiny s automatickým převzetím služeb při selhání.
 
-![auto failover](./media/sql-database-auto-failover-group/auto-failover-group.png)
+![automatické převzetí služeb při selhání](./media/sql-database-auto-failover-group/auto-failover-group.png)
 
 > [!NOTE]
-> See [Add single database to a failover group](sql-database-single-database-failover-group-tutorial.md) for a detailed step-by-step tutorial adding a single database to a failover group.
+> Podrobný kurz přidání izolované databáze do skupiny převzetí služeb při selhání najdete v tématu [Přidání izolované databáze do skupiny převzetí služeb při selhání](sql-database-single-database-failover-group-tutorial.md) .
 
-When designing a service with business continuity in mind, follow these general guidelines:
+Při navrhování služby s ohledem na provozní kontinuitu se řiďte těmito obecnými pokyny:
 
-- **Use one or several failover groups to manage failover of multiple databases**
+- **Použití jedné nebo několika skupin převzetí služeb při selhání pro správu převzetí služeb při selhání více databází**
 
-  One or many failover groups can be created between two servers in different regions (primary and secondary servers). Each group can include one or several databases that are recovered as a unit in case all or some primary databases become unavailable due to an outage in the primary region. The failover group creates geo-secondary database with the same service objective as the primary. If you add an existing geo-replication relationship to the failover group, make sure the geo-secondary is configured with the same service tier and compute size as the primary.
+  Jednu nebo více skupin s podporou převzetí služeb při selhání je možné vytvořit mezi dvěma servery v různých oblastech (primární a sekundární servery). Každá skupina může zahrnovat jednu nebo několik databází, které jsou obnoveny jako jednotka v případě výpadku v primární oblasti, nebo některé primární databáze nebudou k dispozici. Skupina převzetí služeb při selhání vytvoří geograficky sekundární databázi se stejným cílem služby jako primární. Pokud přidáte existující relaci geografické replikace do skupiny převzetí služeb při selhání, ujistěte se, že je geograficky sekundární nakonfigurovaná se stejnou úrovní služeb a výpočetní velikostí jako primární.
   
   > [!IMPORTANT]
-  > Creating failover groups between two servers in different subscriptions is not currently supported for single databases and elastic pools. If you move the primary or secondary server to a different subscription after the failover group has been created, it could result in failures of the failover requests and other operations.
+  > Vytváření skupin převzetí služeb při selhání mezi dvěma servery v různých předplatných se v současné době nepodporuje u izolovaných databází a elastických fondů. Pokud primární nebo sekundární server přesunete do jiného předplatného po vytvoření skupiny převzetí služeb při selhání, může dojít k selhání požadavků na převzetí služeb při selhání a dalších operací.
 
-- **Use read-write listener for OLTP workload**
+- **Použití naslouchacího procesu pro čtení i zápis pro úlohu OLTP**
 
-  When performing OLTP operations, use `<fog-name>.database.windows.net` as the server URL and the connections are automatically directed to the primary. This URL does not change after the failover. Note the failover involves updating the DNS record so the client connections are redirected to the new primary only after the client DNS cache is refreshed.
+  Při provádění operací OLTP použijte jako adresu URL serveru `<fog-name>.database.windows.net` a připojení se automaticky přesměrují na primární. Tato adresa URL se po převzetí služeb při selhání nemění. Všimněte si, že při převzetí služeb při selhání je potřeba aktualizovat záznam DNS, aby se připojení klientů přesměrovala na nové primární až po aktualizaci mezipaměti DNS klienta.
 
-- **Use read-only listener for read-only workload**
+- **Použití naslouchacího procesu jen pro čtení pro úlohu jen pro čtení**
 
-  If you have a logically isolated read-only workload that is tolerant to certain staleness of data, you can use the secondary database in the application. For read-only sessions, use `<fog-name>.secondary.database.windows.net` as the server URL and the connection is automatically directed to the secondary. It is also recommended that you indicate in connection string read intent by using `ApplicationIntent=ReadOnly`. If you want to ensure that the read-only workload can reconnect after failover or in case the secondary server goes offline, make sure to configure the `AllowReadOnlyFailoverToPrimary` property of the failover policy.
+  Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. V případě relací jen pro čtení použijte jako adresu URL serveru `<fog-name>.secondary.database.windows.net` a připojení se automaticky přesměruje na sekundární. Je také vhodné určit v úmyslu přečíst si v připojovacím řetězci pomocí `ApplicationIntent=ReadOnly`. Pokud chcete zajistit, že se po převzetí služeb při selhání může znovu připojit úloha jen pro čtení, nebo pokud sekundární server přejde do režimu offline, ujistěte se, že jste nakonfigurovali vlastnost `AllowReadOnlyFailoverToPrimary` zásady převzetí služeb při selhání.
 
-- **Be prepared for perf degradation**
+- **Připravte se na snížení výkonu.**
 
-  SQL failover decision is independent from the rest of the application or other services used. The application may be “mixed” with some components in one region and some in another. To avoid the degradation, ensure the redundant application deployment in the DR region and follow these [network security guidelines](#failover-groups-and-network-security).
+  Rozhodnutí převzetí služeb při selhání SQL je nezávislé na zbývající části aplikace nebo jiných používaných služeb. Aplikace může být smíšená s některými součástmi v jedné oblasti a v jiné. Chcete-li se vyhnout degradování, zajistěte redundantní nasazení aplikace v oblasti zotavení po havárii a postupujte podle [pokynů pro zabezpečení sítě](#failover-groups-and-network-security).
 
   > [!NOTE]
-  > The application in the DR region does not have to use a different connection string.  
+  > Aplikace v oblasti DR nemusí používat jiný připojovací řetězec.  
 
-- **Prepare for data loss**
+- **Příprava na ztrátu dat**
 
-  If an outage is detected, SQL waits for the period you specified by `GracePeriodWithDataLossHours`. The default value is 1 hour. If you cannot afford data loss, make sure to set `GracePeriodWithDataLossHours` to a sufficiently large number, such as 24 hours. Use manual group failover to fail back from the secondary to the primary.
+  Pokud se zjistí výpadek, SQL počká na období zadané v `GracePeriodWithDataLossHours`. Výchozí hodnota je 1 hodina. Pokud nemůžete zaručit ztrátu dat, nezapomeňte nastavit `GracePeriodWithDataLossHours` na dostatečně velké číslo, například 24 hodin. K navrácení služeb po obnovení ze sekundárního na primární se používá ruční převzetí služeb při selhání pomocí skupiny.
 
   > [!IMPORTANT]
-  > Elastic pools with 800 or fewer DTUs and more than 250 databases using geo-replication may encounter issues including longer planned failovers and degraded performance.  These issues are more likely to occur for write intensive workloads, when geo-replication endpoints are widely separated by geography, or when multiple secondary endpoints are used for each database.  Symptoms of these issues are indicated when the geo-replication lag increases over time.  This lag can be monitored using [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  If these issues occur, then mitigations include increasing the number of pool DTUs, or reducing the number of geo-replicated databases in the same pool.
+  > Elastické fondy s 800 nebo méně DTU a více než 250 databází pomocí geografické replikace můžou narazit na problémy, včetně delšího plánovaného převzetí služeb při selhání a sníženého výkonu.  Tyto problémy se budou pravděpodobněji vyskytnout pro úlohy náročné na zápis, když jsou koncové body geografické replikace široce oddělené geograficky nebo pokud se pro každou databázi používá více sekundárních koncových bodů.  Příznaky těchto problémů jsou uvedené v případě, že se prodleva geografické replikace v průběhu času zvyšuje.  Tato prodleva se dá monitorovat pomocí [Sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Pokud dojde k těmto potížím, bude zmírnění rizik zahrnovat zvýšení počtu DTU fondů nebo snížení počtu geograficky replikovaných databází ve stejném fondu.
 
-## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Best practices of using failover groups with managed instances
+## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Osvědčené postupy použití skupin převzetí služeb při selhání se spravovanými instancemi
 
-The auto-failover group must be configured on the primary instance and will connect it to the secondary instance in a different Azure region.  All databases in the instance will be replicated to the secondary instance.
+Skupina automatického převzetí služeb při selhání musí být nakonfigurovaná na primární instanci a bude připojena k sekundární instanci v jiné oblasti Azure.  Všechny databáze v instanci budou replikovány do sekundární instance.
 
-The following diagram illustrates a typical configuration of a geo-redundant cloud application using managed instance and auto-failover group.
+Následující diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace pomocí spravované instance a skupiny automatického převzetí služeb při selhání.
 
-![auto failover](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
+![automatické převzetí služeb při selhání](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
 > [!NOTE]
-> See [Add managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md) for a detailed step-by-step tutorial adding a managed instance to use failover group.
+> Podrobný kurz přidávání spravované instance do [skupiny převzetí služeb při selhání najdete v tématu Přidání spravované instance](sql-database-managed-instance-failover-group-tutorial.md) pro použití skupiny převzetí služeb při selhání.
 
-If your application uses managed instance as the data tier, follow these general guidelines when designing for business continuity:
+Pokud vaše aplikace používá spravovanou instanci jako datovou vrstvu, postupujte při navrhování provozní kontinuity podle těchto obecných pokynů:
 
-- **Create the secondary instance in the same DNS zone as the primary instance**
+- **Vytvoření sekundární instance ve stejné zóně DNS jako primární instance**
 
-  To ensure non-interrupted connectivity to the primary instance after failover both the primary and secondary instances must be in the same DNS zone. It will guarantee that the same multi-domain (SAN) certificate can be used to authenticate the client connections to either of the two instances in the failover group. When your application is ready for production deployment, create a secondary instance in a different region and make sure it shares the DNS zone with the primary instance. You can do it by specifying a `DNS Zone Partner` optional parameter using the Azure portal, PowerShell, or the REST API.
+  Pro zajištění nepřerušeného připojení k primární instanci po převzetí služeb při selhání musí být primární i sekundární instance ve stejné zóně DNS. Zaručujeme, že stejný certifikát s více doménami (SAN) se dá použít k ověření připojení klientů ke kterékoli z těchto dvou instancí ve skupině převzetí služeb při selhání. Když je vaše aplikace připravená na produkční nasazení, vytvořte sekundární instanci v jiné oblasti a ujistěte se, že se zóna DNS sdílí s primární instancí. Můžete to provést zadáním `DNS Zone Partner` volitelného parametru pomocí Azure Portal, PowerShellu nebo REST API.
 
 > [!IMPORTANT]
-> First instance created in the subnet determines DNS zone for all subsequent instances in the same subnet. This means that two instances from the same subnet cannot belong to different DNS zones.
+> První instance vytvořená v podsíti Určuje zónu DNS pro všechny následné instance ve stejné podsíti. To znamená, že dvě instance ze stejné podsítě nemohou patřit do různých zón DNS.
 
-  For more information about creating the secondary instance in the same DNS zone as the primary instance, see [Create a secondary managed instance](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
+  Další informace o vytvoření sekundární instance ve stejné zóně DNS jako primární instance najdete v tématu [vytvoření sekundární spravované instance](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
-- **Enable replication traffic between two instances**
+- **Povolení provozu replikace mezi dvěma instancemi**
 
-  Because each instance is isolated in its own VNet, two-directional traffic between these VNets must be allowed. See [Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+  Vzhledem k tomu, že každá instance je izolovaná ve své vlastní virtuální síti, musí být povolen obousměrný provoz mezi těmito virtuální sítě. Viz [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-- **Create a failover group between managed instances in different subscriptions**
+- **Vytvoření skupiny převzetí služeb při selhání mezi spravovanými instancemi v různých předplatných**
 
-  You can create a failover group between managed instances in two different subscriptions. When using PowerShell API you can do it by  specifying the `PartnerSubscriptionId` parameter for the secondary instance. When using REST API, each instance ID included in the `properties.managedInstancePairs` parameter can have its own subscriptionID.
+  Skupinu převzetí služeb při selhání můžete vytvořit mezi spravovanými instancemi ve dvou různých předplatných. Pokud používáte rozhraní PowerShell API, můžete to udělat zadáním parametru `PartnerSubscriptionId` pro sekundární instanci. Při použití REST API může mít každé ID instance obsažené v parametru `properties.managedInstancePairs` vlastní subscriptionID.
   
   > [!IMPORTANT]
-  > Azure Portal does not support failover groups across different subscriptions.
+  > Azure Portal nepodporuje skupiny převzetí služeb při selhání v různých předplatných.
 
-- **Configure a failover group to manage failover of entire instance**
+- **Konfigurace skupiny převzetí služeb při selhání pro správu převzetí služeb při selhání celé instance**
 
-  The failover group will manage the failover of all the databases in the instance. When a group is created, each database in the instance will be automatically geo-replicated to the secondary instance. You cannot use failover groups to initiate a partial failover of a subset of the databases.
+  Skupina převzetí služeb při selhání bude spravovat převzetí služeb při selhání všech databází v instanci. Při vytvoření skupiny se všechny databáze v instanci automaticky geograficky replikují do sekundární instance. Skupiny převzetí služeb při selhání nelze použít k zahájení částečného převzetí služeb při selhání podmnožiny databází.
 
   > [!IMPORTANT]
-  > If a database is removed from the primary instance, it will also be dropped automatically on the geo secondary instance.
+  > Pokud je databáze odebrána z primární instance, bude také automaticky odstraněna na geografickou sekundární instanci.
 
-- **Use read-write listener for OLTP workload**
+- **Použití naslouchacího procesu pro čtení i zápis pro úlohu OLTP**
 
-  When performing OLTP operations, use `<fog-name>.zone_id.database.windows.net` as the server URL and the connections are automatically directed to the primary. This URL does not change after the failover. The failover involves updating the DNS record, so the client connections are redirected to the new primary only after the client DNS cache is refreshed. Because the secondary instance shares the DNS zone with the primary, the client application will be able to reconnect to it using the same SAN certificate.
+  Při provádění operací OLTP použijte jako adresu URL serveru `<fog-name>.zone_id.database.windows.net` a připojení se automaticky přesměrují na primární. Tato adresa URL se po převzetí služeb při selhání nemění. Převzetí služeb při selhání zahrnuje aktualizaci záznamu DNS, takže připojení klientů se přesměrují na nový primární až po aktualizaci mezipaměti DNS klienta. Vzhledem k tomu, že sekundární instance sdílí zónu DNS s primárním objektem, klientská aplikace se k ní bude moci znovu připojit pomocí stejného certifikátu sítě SAN.
 
-- **Connect directly to geo-replicated secondary for read-only queries**
+- **Přímé připojení k geograficky replikovaným sekundárním dotazům jen pro čtení**
 
-  If you have a logically isolated read-only workload that is tolerant to certain staleness of data, you can use the secondary database in the application. To connect directly to the geo-replicated secondary, use `server.secondary.zone_id.database.windows.net` as the server URL and the connection is made directly to the geo-replicated secondary.
+  Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. Pokud se chcete připojit přímo k geograficky replikovanému sekundárnímu, použijte `server.secondary.zone_id.database.windows.net` jako adresu URL serveru a připojení se provede přímo na geograficky replikovanou sekundární hodnotu.
 
   > [!NOTE]
-  > In certain service tiers, Azure SQL Database supports the use of [read-only replicas](sql-database-read-scale-out.md) to load balance read-only query workloads using the capacity of one read-only replica and using the `ApplicationIntent=ReadOnly` parameter in the connection string. When you have configured a geo-replicated secondary, you can use this capability to connect to either a read-only replica in the primary location or in the geo-replicated location.
-  > - To connect to a read-only replica in the primary location, use `<fog-name>.zone_id.database.windows.net`.
-  > - To connect to a read-only replica in the secondary location, use `<fog-name>.secondary.zone_id.database.windows.net`.
+  > V některých úrovních služby Azure SQL Database podporuje použití [replik jen pro čtení](sql-database-read-scale-out.md) k vyrovnávání zatížení úloh dotazů jen pro čtení pomocí kapacity jedné repliky jen pro čtení a použitím parametru `ApplicationIntent=ReadOnly` v připojovacím řetězci. Když jste nakonfigurovali geograficky replikovanou sekundární položku, můžete tuto možnost použít k připojení k replice jen pro čtení v primárním umístění nebo v geograficky replikovaném umístění.
+  > - Pokud se chcete připojit k replice jen pro čtení v primárním umístění, použijte `<fog-name>.zone_id.database.windows.net`.
+  > - Pokud se chcete připojit k replice jen pro čtení v sekundárním umístění, použijte `<fog-name>.secondary.zone_id.database.windows.net`.
 
-- **Be prepared for perf degradation**
+- **Připravte se na snížení výkonu.**
 
-  SQL failover decision is independent from the rest of the application or other services used. The application may be “mixed” with some components in one region and some in another. To avoid the degradation, ensure the redundant application deployment in the DR region and follow these [network security guidelines](#failover-groups-and-network-security).
+  Rozhodnutí převzetí služeb při selhání SQL je nezávislé na zbývající části aplikace nebo jiných používaných služeb. Aplikace může být smíšená s některými součástmi v jedné oblasti a v jiné. Chcete-li se vyhnout degradování, zajistěte redundantní nasazení aplikace v oblasti zotavení po havárii a postupujte podle [pokynů pro zabezpečení sítě](#failover-groups-and-network-security).
 
-- **Prepare for data loss**
+- **Příprava na ztrátu dat**
 
-  If an outage is detected, SQL automatically triggers read-write failover if there is zero data loss to the best of our knowledge. Otherwise, it waits for the period you specified by `GracePeriodWithDataLossHours`. If you specified `GracePeriodWithDataLossHours`, be prepared for data loss. In general, during outages, Azure favors availability. If you cannot afford data loss, make sure to set GracePeriodWithDataLossHours to a sufficiently large number, such as 24 hours.
+  Pokud dojde k výpadku, SQL automaticky aktivuje převzetí služeb při selhání pro čtení a zápis, pokud dojde ke ztrátě dat na základě našeho vědomí. V opačném případě počká na období určené `GracePeriodWithDataLossHours`. Pokud jste zadali `GracePeriodWithDataLossHours`, připravte se na ztrátu dat. Obecně platí, že při výpadkech Azure upřednostňuje dostupnost. Pokud nemůžete zaručit ztrátu dat, nezapomeňte nastavit GracePeriodWithDataLossHours na dostatečně velké číslo, například 24 hodin.
 
-  The DNS update of the read-write listener will happen immediately after the failover is initiated. This operation will not result in data loss. However, the process of switching database roles can take up to 5 minutes under normal conditions. Until it is completed, some databases in the new primary instance will still be read-only. If failover is initiated using PowerShell, the entire operation is synchronous. If it is initiated using the Azure portal, the UI will indicate completion status. If it is initiated using the REST API, use standard Azure Resource Manager’s polling mechanism to monitor for completion.
+  Aktualizace DNS naslouchacího procesu pro čtení a zápis proběhne hned po zahájení převzetí služeb při selhání. Tato operace nebude mít za následek ztrátu dat. Proces přepínání databázových rolí však může za normálních podmínek trvat až 5 minut. Až do dokončení, budou některé databáze v nové primární instanci pořád jen pro čtení. Pokud se převzetí služeb při selhání iniciuje pomocí PowerShellu, bude celá operace synchronní. Pokud je inicializována pomocí Azure Portal, uživatelské rozhraní bude označovat stav dokončení. Pokud je iniciována pomocí REST API, použijte mechanismus dotazování standardní Azure Resource Manager ke sledování dokončení.
 
   > [!IMPORTANT]
-  > Use manual group failover to move primaries back to the original location. When the outage that caused the failover is mitigated, you can move your primary databases to the original location. To do that you should initiate the manual failover of the group.
+  > Ruční převzetí služeb při selhání můžete použít k přesunu primárních souborů zpátky do původního umístění. Pokud dojde ke zmírnění výpadku, který způsobil převzetí služeb při selhání, můžete primární databáze přesunout do původního umístění. K tomu je potřeba zahájit ruční převzetí služeb při selhání skupiny.
 
-- **Acknowledge known limitations of failover groups**
+- **Potvrzení známých omezení skupin převzetí služeb při selhání**
 
-  Database rename is not supported for instances in failover group. You will need to temporarily delete failover group to be able to rename a database.
+  Přejmenování databáze není u instancí ve skupině převzetí služeb při selhání podporováno. Aby bylo možné databázi přejmenovat, budete muset dočasně odstranit skupinu převzetí služeb při selhání.
 
-## <a name="failover-groups-and-network-security"></a>Failover groups and network security
+## <a name="failover-groups-and-network-security"></a>Skupiny převzetí služeb při selhání a zabezpečení sítě
 
-For some applications the security rules require that the network access to the data tier is restricted to a specific component or components such as a VM, web service etc. This requirement presents some challenges for business continuity design and the use of the failover groups. Consider the following options when implementing such restricted access.
+U některých aplikací pravidla zabezpečení vyžadují, aby byl síťový přístup k datové vrstvě omezený na určitou součást nebo součásti, jako je například virtuální počítač, Webová služba atd. Tento požadavek představuje některé problémy s návrhem kontinuity podnikových aplikací a používání skupin převzetí služeb při selhání. Při implementaci takového omezeného přístupu Vezměte v úvahu následující možnosti.
 
-### <a name="using-failover-groups-and-virtual-network-rules"></a>Using failover groups and virtual network rules
+### <a name="using-failover-groups-and-virtual-network-rules"></a>Používání skupin převzetí služeb při selhání a pravidel virtuální sítě
 
-If you are using [Virtual Network service endpoints and rules](sql-database-vnet-service-endpoint-rule-overview.md) to restrict access to your SQL database, be aware that Each Virtual Network service endpoint applies to only one Azure region. The endpoint does not enable other regions to accept communication from the subnet. Therefore, only the client applications deployed in the same region can connect to the primary database. Since the failover results in the SQL client sessions being rerouted to a server in a different (secondary) region, these sessions will fail if originated from a client outside of that region. For that reason, the automatic failover policy cannot be enabled if the participating servers are included in the Virtual Network rules. To support manual failover, follow these steps:
+Pokud používáte [Virtual Network koncových bodů a pravidel služby](sql-database-vnet-service-endpoint-rule-overview.md) pro omezení přístupu k vaší databázi SQL, pamatujte, že každý koncový bod služby Virtual Network se vztahuje jenom na jednu oblast Azure. Koncový bod nepovoluje, aby komunikace z podsítě přijímala jiné oblasti. Proto se k primární databázi mohou připojit pouze klientské aplikace nasazené ve stejné oblasti. Vzhledem k tomu, že dojde k převzetí služeb při selhání v relacích klienta SQL, které jsou přesměrovány na server v jiné (sekundární) oblasti, tyto relace selžou, pokud pocházejí z klienta mimo tuto oblast. Z tohoto důvodu není možné povolit zásady automatického převzetí služeb při selhání, pokud jsou zúčastněné servery zahrnuté v pravidlech Virtual Network. Pokud chcete podporovat ruční převzetí služeb při selhání, postupujte podle těchto kroků:
 
-1. Provision the redundant copies of the front-end components of your application (web service, virtual machines etc.) in the secondary region
-2. Configure the [virtual network rules](sql-database-vnet-service-endpoint-rule-overview.md) individually for primary and secondary server
-3. Enable the [front-end failover using a Traffic manager configuration](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
-4. Initiate manual failover when the outage is detected. This option is optimized for the applications that require consistent latency between the front-end and the data tier and supports recovery when either front end, data tier or both are impacted by the outage.
+1. Zřízení redundantních kopií front-endové komponenty aplikace (webová služba, virtuální počítače atd.) v sekundární oblasti
+2. Konfigurovat [pravidla virtuální sítě](sql-database-vnet-service-endpoint-rule-overview.md) jednotlivě pro primární a sekundární server
+3. Povolení [převzetí služeb při selhání front-endu pomocí konfigurace Traffic Manageru](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
+4. Iniciujte ruční převzetí služeb při selhání při zjištění výpadku. Tato možnost je optimalizovaná pro aplikace, které vyžadují konzistentní latenci mezi front-end a datovou vrstvou, a podporuje obnovení, pokud je vliv na front-end, datovou vrstvu nebo obojí.
 
 > [!NOTE]
-> If you are using the **read-only listener** to load-balance a read-only workload, make sure that this workload is executed in a VM or other resource in the secondary region so it can connect to the secondary database.
+> Pokud k vyrovnávání zatížení úlohy jen pro čtení používáte **naslouchací proces jen pro čtení** , ujistěte se, že je tato úloha spuštěná na virtuálním počítači nebo jiném prostředku v sekundární oblasti, aby se mohla připojit k sekundární databázi.
 
-### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Using failover groups and SQL database firewall rules
+### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Používání skupin převzetí služeb při selhání a pravidel brány firewall pro SQL Database
 
-If your business continuity plan requires failover using groups with automatic failover, you can restrict access to your SQL database using the traditional firewall rules. To support automatic failover, follow these steps:
+Pokud váš plán provozní kontinuity vyžaduje převzetí služeb při selhání pomocí skupin s automatickým převzetím služeb při selhání, můžete omezit přístup k databázi SQL pomocí tradičních pravidel brány firewall. K podpoře automatického převzetí služeb při selhání použijte následující postup:
 
-1. [Create a public IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [Create a public load balancer](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) and assign the public IP to it.
-3. [Create a virtual network and the virtual machines](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) for your front-end components
-4. [Create network security group](../virtual-network/security-overview.md) and configure inbound connections.
-5. Ensure that the outbound connections are open to Azure SQL database by using ‘Sql’ [service tag](../virtual-network/security-overview.md#service-tags).
-6. Create a [SQL database firewall rule](sql-database-firewall-configure.md) to allow inbound traffic from the public IP address you create in step 1.
+1. [Vytvoření veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
+2. [Vytvořte veřejný Nástroj pro vyrovnávání zatížení](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) a přiřaďte k němu veřejnou IP adresu.
+3. [Vytvoření virtuální sítě a virtuálních počítačů](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) pro součásti front-endu
+4. [Vytvořte skupinu zabezpečení sítě](../virtual-network/security-overview.md) a nakonfigurujte příchozí připojení.
+5. Zajistěte, aby se odchozí připojení otevírala ve službě Azure SQL Database pomocí [značky služby](../virtual-network/security-overview.md#service-tags)SQL.
+6. Vytvořte [pravidlo brány firewall služby SQL Database](sql-database-firewall-configure.md) , které povolí příchozí provoz z veřejné IP adresy, kterou jste vytvořili v kroku 1.
 
-For more information about on how to configure outbound access and what IP to use in the firewall rules, see [Load balancer outbound connections](../load-balancer/load-balancer-outbound-connections.md).
+Další informace o tom, jak nakonfigurovat odchozí přístup a jaká IP adresa se má použít v pravidlech brány firewall, najdete v tématu [odchozí připojení nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-outbound-connections.md).
 
-The above configuration will ensure that the automatic failover will not block connections from the front-end components and assumes that the application can tolerate the longer latency between the front end and the data tier.
+Výše uvedená konfigurace zajistí, že automatické převzetí služeb při selhání nebude blokovat připojení z front-endové komponenty a předpokládá, že aplikace dokáže tolerovat delší latenci mezi front-end a datovou vrstvou.
 
 > [!IMPORTANT]
-> To guarantee business continuity for regional outages you must ensure geographic redundancy for both front-end components and the databases.
+> Pro zajištění kontinuity podnikových důvodů pro regionální výpadky musíte zajistit geografickou redundanci pro front-end komponenty i databáze.
 
-## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Enabling geo-replication between managed instances and their VNets
+## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Povolení geografické replikace mezi spravovanými instancemi a jejich virtuální sítě
 
-When you set up a failover group between primary and secondary managed instances in two different regions, each instance is isolated using an independent virtual network. To allow replication traffic between these VNets ensure these prerequisites are met:
+Při nastavování skupiny převzetí služeb při selhání mezi primárními a sekundárními spravovanými instancemi ve dvou různých oblastech se každá instance izoluje pomocí nezávislé virtuální sítě. Pokud chcete zajistit, aby provoz replikace mezi těmito virtuální sítěmi splňoval tyto požadavky:
 
-1. The two managed instances need to be in different Azure regions.
-1. The two managed instances need to be the same service tier, and have the same storage size.
-1. Your secondary managed instance must be empty (no user databases).
-1. The virtual networks used by the managed instances need to be connected through a [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) or Express Route. When two virtual networks connect through an on-premises network, ensure there is no firewall rule blocking ports 5022, and 11000-11999. Global VNet Peering is not supported.
-1. The two managed instance VNets cannot have overlapping IP addresses.
-1. You need to set up your Network Security Groups (NSG) such that ports 5022 and the range 11000~12000 are open inbound and outbound for connections from the other managed instanced subnet. This is to allow replication traffic between the instances
+1. Tyto dvě spravované instance se musí nacházet v různých oblastech Azure.
+1. Tyto dvě spravované instance musí být stejné úrovně služby a měly by mít stejnou velikost úložiště.
+1. Vaše sekundární spravovaná instance musí být prázdná (žádné uživatelské databáze).
+1. Virtuální sítě používané spravovanými instancemi musí být připojené pomocí [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo Express Route. Pokud se dvě virtuální sítě připojují prostřednictvím místní sítě, ujistěte se, že neexistuje žádné pravidlo brány firewall blokující porty 5022 a 11000-11999. Globální partnerský vztah virtuálních sítí se nepodporuje.
+1. U dvou spravovaných instancí virtuální sítě nejde překrývání IP adres.
+1. Musíte nastavit skupiny zabezpečení sítě (NSG) tak, aby porty 5022 a rozsah 11000 ~ 12000 byly otevřené příchozí a odchozí pro připojení z jiné spravované instance podsítě. To umožňuje provoz replikace mezi instancemi.
 
    > [!IMPORTANT]
-   > Misconfigured NSG security rules leads to stuck database copy operations.
+   > Nesprávně nakonfigurovaná pravidla zabezpečení NSG vede k zablokování operací kopírování databáze.
 
-1. The secondary instance is configured with the correct DNS zone ID. DNS zone is a property of a managed instance and virtual cluster, and its ID is included in the host name address. The zone ID is generated as a random string when the first managed instance is created in each VNet and the same ID is assigned to all other instances in the same subnet. Once assigned, the DNS zone cannot be modified. Managed instances included in the same failover group must share the DNS zone. You accomplish this by passing the primary instance's zone ID as the value of DnsZonePartner parameter when creating the secondary instance. 
+1. Sekundární instance je nakonfigurovaná se správným ID zóny DNS. Zóna DNS je vlastnost spravované instance a virtuálního clusteru a její ID je obsaženo v adrese názvu hostitele. ID zóny se generuje jako náhodný řetězec, když se v každé virtuální síti vytvoří první spravovaná instance a stejné ID se přiřadí ke všem ostatním instancím ve stejné podsíti. Po přiřazení se zóna DNS nedá změnit. Spravované instance zahrnuté do stejné skupiny převzetí služeb při selhání musí sdílet zónu DNS. Toho dosáhnete tak, že při vytváření sekundární instance předáte ID zóny primární instance jako hodnotu parametru DnsZonePartner. 
 
    > [!NOTE]
-   > For a detailed tutorial on configuring failover groups with managed instance, see [add a managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md).
+   > Podrobný kurz týkající se konfigurace skupin převzetí služeb při selhání pomocí spravované instance najdete v tématu [Přidání spravované instance do skupiny převzetí služeb při selhání](sql-database-managed-instance-failover-group-tutorial.md).
 
-## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrading or downgrading a primary database
+## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade nebo downgrade primární databáze
 
-You can upgrade or downgrade a primary database to a different compute size (within the same service tier, not between General Purpose and Business Critical) without disconnecting any secondary databases. When upgrading, we recommend that you upgrade all of the secondary databases first, and then upgrade the primary. When downgrading, reverse the order: downgrade the primary first, and then downgrade all of the secondary databases. When you upgrade or downgrade the database to a different service tier, this recommendation is enforced.
+Primární databázi můžete upgradovat nebo downgradovat na jinou výpočetní velikost (v rámci stejné úrovně služby, ne mezi Pro obecné účely a Pro důležité obchodní informace), aniž byste museli odpojit sekundární databáze. Při upgradu doporučujeme nejdřív upgradovat všechny sekundární databáze a potom upgradovat primární. Když se downgrade, obrátí se pořadí: nejprve nastavte downgrade primární databáze a pak vytvořte downgrade všech sekundárních databází. Když provedete upgrade nebo downgrade databáze na jinou úroveň služby, toto doporučení se vynutilo.
 
-This sequence is recommended specifically to avoid the problem where the secondary at a lower SKU gets overloaded and must be re-seeded during an upgrade or downgrade process. You could also avoid the problem by making the primary read-only, at the expense of impacting all read-write workloads against the primary.
-
-> [!NOTE]
-> If you created secondary database as part of the failover group configuration it is not recommended to downgrade the secondary database. This is to ensure your data tier has sufficient capacity to process your regular workload after failover is activated.
-
-## <a name="preventing-the-loss-of-critical-data"></a>Preventing the loss of critical data
-
-Due to the high latency of wide area networks, continuous copy uses an asynchronous replication mechanism. Asynchronous replication makes some data loss unavoidable if a failure occurs. However, some applications may require no data loss. To protect these critical updates, an application developer can call the [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) system procedure immediately after committing the transaction. Calling `sp_wait_for_database_copy_sync` blocks the calling thread until the last committed transaction has been transmitted to the secondary database. However, it does not wait for the transmitted transactions to be replayed and committed on the secondary. `sp_wait_for_database_copy_sync` is scoped to a specific continuous copy link. Any user with the connection rights to the primary database can call this procedure.
+Tato sekvence se doporučuje výslovně vyhnout problému, při kterém se sekundární položka u menší skladové položky (SKU) přetěžuje a že se musí znovu naplnit během upgradu nebo procesu downgrade. Můžete se taky vyhnout problému tím, že nastavíte primární jen pro čtení, na úkor všech úloh, které mají vliv na čtení a zápis na primární úrovni.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync` prevents data loss after failover, but does not guarantee full synchronization for read access. The delay caused by a `sp_wait_for_database_copy_sync` procedure call can be significant and depends on the size of the transaction log at the time of the call.
+> Pokud jste sekundární databázi vytvořili jako součást konfigurace skupiny převzetí služeb při selhání, nedoporučuje se ji převést na downgrade sekundární databáze. Tím zajistíte, že vaše datová úroveň má dostatečnou kapacitu pro zpracování pravidelného zatížení po aktivaci převzetí služeb při selhání.
 
-## <a name="failover-groups-and-point-in-time-restore"></a>Failover groups and point-in-time restore
+## <a name="preventing-the-loss-of-critical-data"></a>Zabránění ztrátě důležitých dat
 
-For information about using point-in-time restore with failover groups, see [Point in Time Recovery (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
+V důsledku vysoké latence sítí WAN používá průběžné kopírování mechanismus asynchronní replikace. Asynchronní replikace způsobuje nenevyhnutelnou ztrátu dat, pokud dojde k selhání. Některé aplikace ale nemusí vyžadovat žádnou ztrátu dat. Pro ochranu těchto důležitých aktualizací může vývojář aplikace volat [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) systémové procedury ihned po potvrzení transakce. Volání `sp_wait_for_database_copy_sync` blokuje volající vlákno, dokud se poslední potvrzená transakce nepřenesla do sekundární databáze. Nečeká ale na přenesení transakcí a jejich potvrzení na sekundárním počítači. `sp_wait_for_database_copy_sync` má obor na konkrétní odkaz průběžné kopírování. Tento postup může volat každý uživatel s právy pro připojení k primární databázi.
 
-## <a name="programmatically-managing-failover-groups"></a>Programmatically managing failover groups
+> [!NOTE]
+> `sp_wait_for_database_copy_sync` zabrání ztrátě dat po převzetí služeb při selhání, ale nezaručuje úplnou synchronizaci pro přístup pro čtení. Zpoždění způsobené voláním procedury `sp_wait_for_database_copy_sync` může být významné a závisí na velikosti transakčního protokolu v době volání.
 
-As discussed previously, auto-failover groups and active geo-replication can also be managed programmatically using Azure PowerShell and the REST API. The following tables describe the set of commands available. Active geo-replication includes a set of Azure Resource Manager APIs for management, including the [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) and [Azure PowerShell cmdlets](https://docs.microsoft.com/powershell/azure/overview). These APIs require the use of resource groups and support role-based security (RBAC). For more information on how to implement access roles, see [Azure Role-Based Access Control](../role-based-access-control/overview.md).
+## <a name="failover-groups-and-point-in-time-restore"></a>Skupiny převzetí služeb při selhání a obnovení k bodu v čase
+
+Informace o použití obnovení k časovému okamžiku se skupinami převzetí služeb při selhání najdete v tématu [Obnovení bodu v čase (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
+
+## <a name="programmatically-managing-failover-groups"></a>Programová správa skupin převzetí služeb při selhání
+
+Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při selhání a aktivní geografická replikace je také možné spravovat programově pomocí Azure PowerShell a REST API. V následujících tabulkách jsou popsány sady příkazů, které jsou k dispozici. Aktivní geografická replikace obsahuje sadu Azure Resource Manager rozhraní API pro správu, včetně rutin [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). Tato rozhraní API vyžadují použití skupin prostředků a podporují zabezpečení na základě rolí (RBAC). Další informace o tom, jak implementovat role přístupu, najdete v tématu [Access Control na základě rolí v Azure](../role-based-access-control/overview.md).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Manage SQL database failover with single databases and elastic pools
+### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Správa převzetí služeb při selhání SQL Database s izolovanými databázemi a elastickými fondy
 
 | Rutina | Popis |
 | --- | --- |
-| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |This command creates a failover group and registers it on both primary and secondary servers|
-| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Removes the failover group from the server and deletes all secondary databases included the group |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Retrieves the failover group configuration |
-| [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Modifies the configuration of the failover group |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Triggers failover of the failover group to the secondary server |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Adds one or more databases to an Azure SQL Database failover group|
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
+| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Odebere skupinu převzetí služeb při selhání ze serveru a odstraní všechny sekundární databáze zahrnuté do skupiny. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Načte konfiguraci skupiny převzetí služeb při selhání. |
+| [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání. |
+| [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Přidá jednu nebo více databází do skupiny Azure SQL Database převzetí služeb při selhání.|
 
-### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Manage SQL database failover groups with managed instances
+### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Správa skupin převzetí služeb při selhání SQL Database se spravovanými instancemi
 
 | Rutina | Popis |
 | --- | --- |
-| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |This command creates a failover group and registers it on both primary and secondary servers|
-| [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Modifies the configuration of the failover group|
-| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Retrieves the failover group configuration|
-| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Triggers failover of the failover group to the secondary server|
-| [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Removes a failover group|
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
+| [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání.|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Načte konfiguraci skupiny převzetí služeb při selhání.|
+| [Switch – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server.|
+| [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Odebere skupinu převzetí služeb při selhání.|
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Manage SQL database failover with single databases and elastic pools
+### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Správa převzetí služeb při selhání SQL Database s izolovanými databázemi a elastickými fondy
 
 | Příkaz | Popis |
 | --- | --- |
-| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |This command creates a failover group and registers it on both primary and secondary servers|
-| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Removes the failover group from the server and deletes all secondary databases included the group |
-| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Retrieves the failover group configuration |
-| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Modifies the configuration of the failover group and/or adds one or more databases to an Azure SQL Database failover group|
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Triggers failover of the failover group to the secondary server |
+| [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
+| [AZ SQL Failover-Group DELETE](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Odebere skupinu převzetí služeb při selhání ze serveru a odstraní všechny sekundární databáze zahrnuté do skupiny. |
+| [AZ SQL Failover-Group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Načte konfiguraci skupiny převzetí služeb při selhání. |
+| [AZ SQL Failover-Group Update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Upraví konfiguraci skupiny převzetí služeb při selhání nebo přidá jednu nebo více databází do skupiny převzetí služeb při selhání Azure SQL Database.|
+| [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server. |
 
-### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Manage SQL database failover groups with managed instances
+### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Správa skupin převzetí služeb při selhání SQL Database se spravovanými instancemi
 
 | Příkaz | Popis |
 | --- | --- |
-| [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | This command creates a failover group and registers it on both primary and secondary servers|
-| [az sql instance-failover-group update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | Modifies the configuration of the failover group|
-| [az sql instance-failover-group show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | Retrieves the failover group configuration|
-| [az sql instance-failover-group set-primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | Triggers failover of the failover group to the secondary server|
-| [az sql instance-failover-group delete](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-delete) | Removes a failover group |
+| [AZ SQL instance-Failover-Group Create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
+| [AZ SQL instance-převzetí služeb při selhání – aktualizace skupiny](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | Upraví konfiguraci skupiny převzetí služeb při selhání.|
+| [AZ SQL instance-Failover-Group show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | Načte konfiguraci skupiny převzetí služeb při selhání.|
+| [AZ SQL instance-převzetí služeb při selhání-sada skupin – primární](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server.|
+| [AZ SQL instance-Failover-Group DELETE](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-delete) | Odebere skupinu převzetí služeb při selhání. |
 
 * * *
 
 > [!IMPORTANT]
-> For a sample script, see [Configure and failover a failover group for a single database](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
+> Vzorový skript najdete v tématu [Konfigurace a převzetí služeb při selhání pro skupinu převzetí služeb při selhání pro jednu databázi](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Manage SQL database failover groups with single and pooled databases
+### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Správa skupin převzetí služeb při selhání databáze SQL pomocí jedné a sdružené databáze
 
-| API | Popis |
+| Rozhraní API | Popis |
 | --- | --- |
-| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Creates or updates a failover group |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Removes the failover group from the server |
-| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Fails over from the current primary server to this server. |
-| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |ails over from the current primary server to this server. This operation might result in data loss. |
-| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Gets a failover group. |
-| [List Failover Groups By Server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Lists the failover groups in a server. |
-| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Updates a failover group. |
+| [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání. |
+| [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
+| [Převzetí služeb při selhání (plánováno)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Převezme služby při selhání z aktuálního primárního serveru na tento server. |
+| [Vynucené převzetí služeb při selhání umožňuje ztrátu dat](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |ails z aktuálního primárního serveru na tento server. Tato operace může způsobit ztrátu dat. |
+| [Získat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Načte skupinu převzetí služeb při selhání. |
+| [Vypsat skupiny převzetí služeb při selhání podle serveru](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Vypíše skupiny převzetí služeb při selhání na serveru. |
+| [Aktualizace skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualizuje skupinu převzetí služeb při selhání. |
 
-### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: Manage failover groups with Managed Instances
+### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: Správa skupin převzetí služeb při selhání se spravovanými instancemi
 
-| API | Popis |
+| Rozhraní API | Popis |
 | --- | --- |
-| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Creates or updates a failover group |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Removes the failover group from the server |
-| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Fails over from the current primary server to this server. |
-| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |ails over from the current primary server to this server. This operation might result in data loss. |
-| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Gets a failover group. |
-| [List Failover Groups - List By Location](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Lists the failover groups in a location. |
+| [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání. |
+| [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
+| [Převzetí služeb při selhání (plánováno)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Převezme služby při selhání z aktuálního primárního serveru na tento server. |
+| [Vynucené převzetí služeb při selhání umožňuje ztrátu dat](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |ails z aktuálního primárního serveru na tento server. Tato operace může způsobit ztrátu dat. |
+| [Získat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Načte skupinu převzetí služeb při selhání. |
+| [Seznam skupin převzetí služeb při selhání – seznam podle umístění](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Vypíše skupiny převzetí služeb při selhání v umístění. |
 
 ## <a name="next-steps"></a>Další kroky
 
-- For detailed tutorials, see
-    - [Add single database to a failover group](sql-database-single-database-failover-group-tutorial.md)
-    - [Add elastic pool to a failover group](sql-database-elastic-pool-failover-group-tutorial.md)
-    - [Add a managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md)
-- For sample scripts, see:
-  - [Use PowerShell to configure active geo-replication for a single database in Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-  - [Use PowerShell to configure active geo-replication for a pooled database in Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-  - [Use PowerShell to add an Azure SQL Database single database to a failover group](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
-- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md).
-- To learn about using automated backups for recovery, see [Restore a database from the service-initiated backups](sql-database-recovery-using-backups.md).
-- To learn about authentication requirements for a new primary server and database, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md).
+- Podrobné pokyny najdete v tématu.
+    - [Přidání jedné databáze do skupiny převzetí služeb při selhání](sql-database-single-database-failover-group-tutorial.md)
+    - [Přidat elastický fond do skupiny převzetí služeb při selhání](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [Přidání spravované instance do skupiny převzetí služeb při selhání](sql-database-managed-instance-failover-group-tutorial.md)
+- Ukázkové skripty najdete v těchto tématech:
+  - [Konfigurace aktivní geografické replikace pro izolovanou databázi v Azure SQL Database pomocí PowerShellu](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+  - [Použití PowerShellu ke konfiguraci aktivní geografické replikace pro databázi ve fondu v Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+  - [Přidání jedné databáze Azure SQL Database do skupiny převzetí služeb při selhání pomocí PowerShellu](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+- Přehled provozní kontinuity a scénářů najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md) .
+- Další informace o Azure SQL Database automatizovaných zálohách najdete v tématu [SQL Database automatizované zálohy](sql-database-automated-backups.md).
+- Další informace o použití automatizovaných záloh pro obnovení najdete v tématu [obnovení databáze ze zálohy iniciované službou](sql-database-recovery-using-backups.md).
+- Další informace o požadavcích na ověřování nového primárního serveru a databáze najdete v článku [SQL Database zabezpečení po zotavení po havárii](sql-database-geo-replication-security-config.md).

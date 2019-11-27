@@ -1,6 +1,6 @@
 ---
-title: Managed identities in Azure HDInsight
-description: Provides an overview of the implementation of managed identities in Azure HDInsight.
+title: Spravované identity ve službě Azure HDInsight
+description: Poskytuje přehled implementace spravovaných identit ve službě Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -15,35 +15,35 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327372"
 ---
-# <a name="managed-identities-in-azure-hdinsight"></a>Managed identities in Azure HDInsight
+# <a name="managed-identities-in-azure-hdinsight"></a>Spravované identity ve službě Azure HDInsight
 
-A managed identity is an identity registered in Azure Active Directory (Azure AD) whose credentials are managed by Azure. With managed identities, you don't need to register service principals in Azure AD, or maintain credentials such as certificates.
+Spravovaná identita je identita registrovaná v Azure Active Directory (Azure AD), jejíž přihlašovací údaje jsou spravované v Azure. U spravovaných identit nemusíte registrovat instanční objekty ve službě Azure AD ani uchovávat přihlašovací údaje, jako jsou certifikáty.
 
-Managed identities can be used in Azure HDInsight to allow your clusters to access Azure AD domain services, access Azure Key Vault, or access files in Azure Data Lake Storage Gen2.
+Spravované identity se dají použít ve službě Azure HDInsight, aby mohly vaše clustery přistupovat ke službám Azure AD Domain Services, přistupovat k Azure Key Vault nebo přistupovat k souborům v Azure Data Lake Storage Gen2.
 
-There are two types of managed identities: user-assigned and system-assigned. Azure HDInsight uses user-assigned managed identities. A user-assigned managed identity is created as a standalone Azure resource, which you can then assign to one or more Azure service instances. In contrast, a system-assigned managed identity is created in Azure AD and then enabled directly on a particular Azure service instance automatically. The life of that system-assigned managed identity is then tied to the life of the service instance that it's enabled on.
+Existují dva typy spravovaných identit: přiřazeno uživatelem a systémem. Azure HDInsight používá spravované identity přiřazené uživatelem. Spravovaná identita přiřazená uživatelem se vytvoří jako samostatný prostředek Azure, který pak můžete přiřadit k jedné nebo více instancím služby Azure. Naproti tomu spravovaná identita přiřazená systémem se vytvoří ve službě Azure AD a pak se automaticky povolí přímo na konkrétní instanci služby Azure. Životnost této spravované identity přiřazené systémem je pak svázána s životností instance služby, na které je povolena.
 
-## <a name="hdinsight-managed-identity-implementation"></a>HDInsight managed identity implementation
+## <a name="hdinsight-managed-identity-implementation"></a>Implementace spravované identity HDInsight
 
-In Azure HDInsight, managed identities are provisioned on each node of the cluster. These identity components, however, are only usable by the HDInsight service. There's currently no supported method for you to generate access tokens using the managed identities installed on HDInsight cluster nodes. For some Azure services, managed identities are implemented with an endpoint that you can use to acquire access tokens for interacting with other Azure services on your own.
+Ve službě Azure HDInsight se spravované identity zřídí v každém uzlu clusteru. Tyto součásti identity se ale dá použít jenom ve službě HDInsight. V tuto chvíli není k dispozici žádná podporovaná metoda pro vygenerování přístupových tokenů pomocí spravovaných identit, které jsou nainstalované na uzlech clusteru HDInsight. U některých služeb Azure se spravované identity implementují s koncovým bodem, který můžete použít k získání přístupových tokenů pro interakci s ostatními službami Azure sami.
 
-## <a name="create-a-managed-identity"></a>Create a managed identity
+## <a name="create-a-managed-identity"></a>Vytvoření spravované identity
 
-Managed identities can be created with any of the following methods:
+Spravované identity lze vytvořit pomocí kterékoli z následujících metod:
 
 * [Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
 * [Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)
 * [Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 
-The remaining steps for configuring the managed identity depend on the scenario where it will be used.
+Zbývající kroky konfigurace spravované identity závisí na scénáři, kde se bude používat.
 
-## <a name="managed-identity-scenarios-in-azure-hdinsight"></a>Managed identity scenarios in Azure HDInsight
+## <a name="managed-identity-scenarios-in-azure-hdinsight"></a>Scénáře spravované identity ve službě Azure HDInsight
 
-Managed identities are used in Azure HDInsight in multiple scenarios. See the related documents for detailed setup and configuration instructions:
+Spravované identity se používají ve službě Azure HDInsight ve více scénářích. Podrobné pokyny k instalaci a konfiguraci najdete v souvisejících dokumentech:
 
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
-* [Enterprise Security Package](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
+* [Balíček zabezpečení podniku](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Kafka Bring Your Own Key (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Quick container image build
+title: Kurz – rychlé sestavení imagí kontejneru
 description: V tomto kurzu zjistíte, jak sestavit image kontejneru Dockeru v Azure pomocí Azure Container Registry Tasks (ACR Tasks) a pak ji nasadit do služby Azure Container Instances.
 ms.topic: tutorial
 ms.date: 09/24/2018
@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456052"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Build and deploy container images in the cloud with Azure Container Registry Tasks
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úloh
 
 **ACR Tasks** je sada funkcí ve službě Azure Container Registry, která poskytuje zjednodušená a efektivní sestavení imagí kontejnerů Dockeru v Azure. V tomto článku se dozvíte, jak používat funkci *rychlé úlohy* služby ACR Tasks.
 
@@ -26,13 +26,13 @@ V tomto kurzu, který je první částí série, se naučíte:
 > * Sestavit image kontejneru v Azure
 > * Nasazení kontejneru do služby Azure Container Instances
 
-V následujících kurzech se naučíte použít ACR Tasks k automatizovanému sestavení imagu kontejneru při potvrzení kódu a aktualizaci základní image. ACR Tasks can also run [multi-step tasks](container-registry-tasks-multi-step.md), using a YAML file to define steps to build, push, and optionally test multiple containers.
+V následujících kurzech se naučíte použít ACR Tasks k automatizovanému sestavení imagu kontejneru při potvrzení kódu a aktualizaci základní image. ACR úlohy mohou také spouštět [úlohy s více kroky](container-registry-tasks-multi-step.md), pomocí souboru YAML k definování kroků pro sestavení, vložení a volitelně testování více kontejnerů.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-If you'd like to use the Azure CLI locally, you must have Azure CLI version **2.0.46** or later installed and logged in with [az login][az-login]. Verzi zjistíte spuštěním příkazu `az --version`. If you need to install or upgrade the CLI, see [Install Azure CLI][azure-cli].
+Pokud chcete rozhraní příkazového řádku Azure používat místně, musíte mít nainstalovanou verzi Azure CLI **2.0.46** nebo novější a přihlášeni pomocí [AZ Login][az-login]. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI][azure-cli].
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="github-account"></a>Účet GitHub
 
@@ -70,7 +70,7 @@ Příkazy v této sérii kurzů jsou formátované pro prostředí Bash. Pokud b
 
 Když teď máte zdrojový kód ve svém počítači, postupujte podle těchto kroků k vytvoření registru kontejneru a sestavení image kontejneru pomocí ACR Tasks.
 
-Aby bylo spouštění ukázkových souborů jednodušší, používají kurzy v této sérii proměnné prostředí shell. Spuštěním následujícího příkazu nastavte proměnnou `ACR_NAME`. **\<registry-name\>** nahraďte jedinečným názvem nového registru kontejneru. The registry name must be unique within Azure, contain only lower case letters, and contain 5-50 alphanumeric characters. Další prostředky, které v tomto kurzu vytvoříte, jsou založené na tomto názvu. Proto byste měli změnit jenom tuto první proměnnou.
+Aby bylo spouštění ukázkových souborů jednodušší, používají kurzy v této sérii proměnné prostředí shell. Spuštěním následujícího příkazu nastavte proměnnou `ACR_NAME`. **\<registry-name\>** nahraďte jedinečným názvem nového registru kontejneru. Název registru musí být v rámci Azure jedinečný, obsahovat pouze malá písmena a musí obsahovat 5-50 alfanumerických znaků. Další prostředky, které v tomto kurzu vytvoříte, jsou založené na tomto názvu. Proto byste měli změnit jenom tuto první proměnnou.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>
@@ -85,13 +85,13 @@ az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-Když teď máte registr, pomocí ACR Tasks sestavte image kontejneru ze vzorového kódu. Execute the [az acr build][az-acr-build] command to perform a *quick task*:
+Když teď máte registr, pomocí ACR Tasks sestavte image kontejneru ze vzorového kódu. Spuštěním příkazu [AZ ACR Build][az-acr-build] proveďte *rychlou úlohu*:
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 ```
 
-Output from the [az acr build][az-acr-build] command is similar to the following. Můžete si zobrazit nahrání zdrojového kódu („obsahu“) do Azure a podrobnosti operace `docker build`, kterou úloha ACR spouští v cloudu. Vzhledem k tomu, že úlohy ACR používají k sestavení imagí `docker build`, můžete začít okamžitě používat ACR Tasks, aniž by se vyžadovaly změny souborů Dockerfile.
+Výstup z příkazu [AZ ACR Build][az-acr-build] je podobný následujícímu. Můžete si zobrazit nahrání zdrojového kódu („obsahu“) do Azure a podrobnosti operace `docker build`, kterou úloha ACR spouští v cloudu. Vzhledem k tomu, že úlohy ACR používají k sestavení imagí `docker build`, můžete začít okamžitě používat ACR Tasks, aniž by se vyžadovaly změny souborů Dockerfile.
 
 ```console
 $ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -171,7 +171,7 @@ V této části vytvoříte Azure Key Vault a instanční objekt a pak pomocí p
 
 ### <a name="configure-registry-authentication"></a>Konfigurace ověřování registru
 
-All production scenarios should use [service principals][service-principal-auth] to access an Azure container registry. Instanční objekty vám umožní poskytnout řízení přístupu k vašim imagím kontejnerů na základě role. Můžete například nakonfigurovat instanční objekt s přístupem k registru pouze ke čtení.
+Všechny produkční scénáře by měly používat [instanční objekty][service-principal-auth] pro přístup ke službě Azure Container Registry. Instanční objekty vám umožní poskytnout řízení přístupu k vašim imagím kontejnerů na základě role. Můžete například nakonfigurovat instanční objekt s přístupem k registru pouze ke čtení.
 
 #### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
 
@@ -187,7 +187,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 Teď je potřeba vytvořit instanční objekt a uložit jeho přihlašovací údaje do trezoru klíčů.
 
-Use the [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] command to create the service principal, and [az keyvault secret set][az-keyvault-secret-set] to store the service principal's **password** in the vault:
+Pomocí příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] vytvořte instanční objekt a [vyaz heslo tajného klíče trezoru][az-keyvault-secret-set] klíčů, aby se uložilo **heslo** objektu služby v trezoru:
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)
@@ -202,7 +202,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-The `--role` argument in the preceding command configures the service principal with the *acrpull* role, which grants it pull-only access to the registry. To grant both push and pull access, change the `--role` argument to *acrpush*.
+Argument `--role` v předchozím příkazu nakonfiguruje instanční objekt pomocí role *acrpull* , která mu udělí přístup jenom pro získání přístupu k registru. Chcete-li udělit přístup push i Pull, změňte argument `--role` na *acrpush*.
 
 V dalším kroku uložte *appId* instančního objektu v trezoru. Jedná se o **uživatelské jméno**, které předáte službě Azure Container Registry pro ověření:
 
@@ -225,7 +225,7 @@ Teď můžete na tyto tajné kódy odkazovat názvem, když vy nebo vaše aplika
 
 Když teď jsou přihlašovací údaje instančního objektu uložené jako tajné kódy služby Azure Key Vault, mohou je vaše aplikace a služby používat pro přístup k vašemu privátnímu registru.
 
-Execute the following [az container create][az-container-create] command to deploy a container instance. Příkaz používá k ověření u registru kontejneru přihlašovací údaje instančního objektu uložené ve službě Azure Key Vault.
+Spusťte následující příkaz [AZ Container Create][az-container-create] a nasaďte instanci kontejneru. Příkaz používá k ověření u registru kontejneru přihlašovací údaje instančního objektu uložené ve službě Azure Key Vault.
 
 ```azurecli-interactive
 az container create \
@@ -262,7 +262,7 @@ Poznamenejte si tento plně kvalifikovaný název domény kontejneru, použijete
 
 ### <a name="verify-the-deployment"></a>Ověření nasazení
 
-To watch the startup process of the container, use the [az container attach][az-container-attach] command:
+Chcete-li sledovat proces spuštění kontejneru, použijte příkaz [AZ Container Attach][az-container-attach] :
 
 ```azurecli-interactive
 az container attach --resource-group $RES_GROUP --name acr-tasks
@@ -290,7 +290,7 @@ Pokud chcete konzolu od kontejneru odpojit, stiskněte `Control+C`.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Stop the container instance with the [az container delete][az-container-delete] command:
+Zastavte instanci kontejneru pomocí příkazu [AZ Container Delete][az-container-delete] :
 
 ```azurecli-interactive
 az container delete --resource-group $RES_GROUP --name acr-tasks

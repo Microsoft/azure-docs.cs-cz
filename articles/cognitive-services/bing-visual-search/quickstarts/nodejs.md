@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Get image insights using the REST API and Node.js - Bing Visual Search'
+title: 'Rychlý Start: Získání přehledů obrázků pomocí REST API a Node. js – Vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Learn how to upload an image to the Bing Visual Search API and get insights about it.
+description: Přečtěte si, jak nahrát obrázek do rozhraní API pro vizuální vyhledávání Bingu a získat přehled o něm.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -17,11 +17,11 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383190"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Node.js
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Rychlý Start: Získání přehledů imagí pomocí Vizuální vyhledávání Bingu REST API a Node. js
 
-Use this quickstart to make your first call to the Bing Visual Search API and view the search results. This simple JavaScript application uploads an image to the API, and displays the information returned about it. While this application is written in JavaScript, the API is a RESTful Web service compatible with most programming languages.
+V tomto rychlém startu můžete provést první volání rozhraní API pro vizuální vyhledávání Bingu a zobrazit výsledky hledání. Tato jednoduchá aplikace JavaScriptu nahraje obrázek do rozhraní API a zobrazí vrácené informace. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-When uploading a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and the `filename` parameter can be set to any string. The contents of the form include the binary data of the image. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
+Při nahrávání místní image musí data formuláře obsahovat hlavičku `Content-Disposition`. Je nutné nastavit jeho parametr `name` na hodnotu "image" a parametr `filename` lze nastavit na libovolný řetězec. Obsah formuláře zahrnuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -32,17 +32,17 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/en/download/)
-* The Request module for JavaScript. You can use `npm install request` command to install the module.
-* The form-data module. You can use the `npm install form-data` command to install the module. 
+* Modul žádosti pro JavaScript K instalaci modulu můžete použít příkaz `npm install request`.
+* Modul dat formuláře. K instalaci modulu můžete použít příkaz `npm install form-data`. 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="initialize-the-application"></a>Initialize the application
+## <a name="initialize-the-application"></a>Inicializace aplikace
 
-1. Create a JavaScript file in your favorite IDE or editor, and set the following requirements:
+1. V oblíbených IDE nebo editoru vytvořte soubor JavaScriptu a nastavte následující požadavky:
 
     ```javascript
     var request = require('request');
@@ -50,7 +50,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var fs = require('fs');
     ```
 
-2. Create variables for your API endpoint, subscription key, and the path to your image:
+2. Vytvořte proměnné pro svůj koncový bod rozhraní API, klíč předplatného a cestu k imagi:
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -58,7 +58,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var imagePath = "path-to-your-image";
     ```
 
-3. Create a function named `requestCallback()` to print the response from the API:
+3. Vytvořte funkci s názvem `requestCallback()` pro tisk odpovědi z rozhraní API:
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -66,16 +66,16 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     }
     ```
 
-## <a name="construct-and-send-the-search-request"></a>Construct and send the search request
+## <a name="construct-and-send-the-search-request"></a>Sestavit a odeslat požadavek hledání
 
-1. Create a new **FormData** object using `FormData()`, and append your image path to it, using `fs.createReadStream()`:
+1. Vytvořte nový objekt **FormData** pomocí `FormData()`a přidejte do něj cestu k imagi pomocí `fs.createReadStream()`:
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. Use the request library to upload the image, and call `requestCallback()` to print the response. Be sure to add your subscription key to the request header:
+2. Použijte knihovnu požadavků k nahrání obrázku a zavolejte `requestCallback()` k vytištění odpovědi. Nezapomeňte do hlavičky žádosti přidat svůj klíč předplatného:
 
     ```javascript
     form.getLength(function(err, length){
@@ -91,4 +91,4 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)
+> [Vytvoření webové aplikace Vizuální vyhledávání jednostránkového stránkování](../tutorial-bing-visual-search-single-page-app.md)

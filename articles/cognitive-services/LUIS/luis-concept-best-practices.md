@@ -38,13 +38,13 @@ Následující seznam obsahuje osvědčené postupy pro aplikace LUIS:
 
 |Správný postup|Chybný postup|
 |--|--|
-|[Definování různých záměrů](#do-define-distinct-intents)<br>[Přidat popisovače do záměrů](#do-add-descriptors-to-intents) |[Přidání projevů mnoho příklad pro příkazy](#dont-add-many-example-utterances-to-intents)<br>[Použití několika nebo jednoduchých entit](#dont-use-few-or-simple-entities) |
-|[Vyhledá sladkost místo mezi příliš obecná a moc specifické pro každý záměr](#do-find-sweet-spot-for-intents)|[Používat službu LUIS jako platforma pro školení](#dont-use-luis-as-a-training-platform)|
-|[Opakované sestavení aplikace s použitím verzí](#do-build-your-app-iteratively-with-versions)<br>[Sestavení entit pro rozložení modelu](#do-build-for-model-decomposition)|[Přidání projevů mnoho příklad stejný formát ignoruje dalších formátů](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
-|[Přidat vzory v pozdějších iteracích](#do-add-patterns-in-later-iterations)|[Kombinace definici záměry a entity](#dont-mix-the-definition-of-intents-and-entities)|
-|[Vyvážení projevy napříč všemi záměry](#balance-your-utterances-across-all-intents) s výjimkou záměru None.<br>[Přidání projevů příklad na hodnotu None záměru](#do-add-example-utterances-to-none-intent)|[Vytvoření popisovačů se všemi možnými hodnotami](#dont-create-descriptors-with-all-the-possible-values)|
-|[Využijte funkci navrhnout pro aktivní učení](#do-leverage-the-suggest-feature-for-active-learning)|[Přidat příliš mnoho vzorů](#dont-add-many-patterns)|
-|[Sledování výkonu aplikace pomocí dávkového testování](#do-monitor-the-performance-of-your-app)|[Trénování a publikování s každou utterance jeden příklad přidá](#dont-train-and-publish-with-every-single-example-utterance)|
+|[Definovat jedinečné záměry](#do-define-distinct-intents)<br>[Přidat popisovače do záměrů](#do-add-descriptors-to-intents) |[Přidejte spoustu příkladů projevy k záměrům](#dont-add-many-example-utterances-to-intents)<br>[Použití několika nebo jednoduchých entit](#dont-use-few-or-simple-entities) |
+|[Najděte sladkou skvrnu mezi příliš obecným a příliš specifickou pro každý záměr.](#do-find-sweet-spot-for-intents)|[Použití LUIS jako školicí platformy](#dont-use-luis-as-a-training-platform)|
+|[Opakované sestavení aplikace s použitím verzí](#do-build-your-app-iteratively-with-versions)<br>[Sestavení entit pro rozložení modelu](#do-build-for-model-decomposition)|[Přidejte spoustu příkladů projevy stejného formátu a ignorujte jiné formáty.](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[Přidat vzory v pozdějších iteracích](#do-add-patterns-in-later-iterations)|[Kombinace definice záměrů a entit](#dont-mix-the-definition-of-intents-and-entities)|
+|[Vyvážení projevy napříč všemi záměry](#balance-your-utterances-across-all-intents) s výjimkou záměru None.<br>[Přidat příklad projevy k žádnému záměru](#do-add-example-utterances-to-none-intent)|[Vytvoření popisovačů se všemi možnými hodnotami](#dont-create-descriptors-with-all-the-possible-values)|
+|[Využijte funkci navrhnout pro aktivní učení.](#do-leverage-the-suggest-feature-for-active-learning)|[Přidat příliš mnoho vzorů](#dont-add-many-patterns)|
+|[Sledování výkonu aplikace pomocí dávkového testování](#do-monitor-the-performance-of-your-app)|[Školení a publikování s každým jedním příkladem utterance přidání](#dont-train-and-publish-with-every-single-example-utterance)|
 
 ## <a name="do-define-distinct-intents"></a>Definování různých záměrů
 Zkontrolujte, zda že slovník pro každý záměr je jenom pro tohoto záměru a nesmí se překrývat s jinou záměr. Například pokud chcete mít aplikaci, která zpracovává cestovní mechanismy, jako jsou letecké lety a hotely, můžete se rozhodnout, že tyto oblasti budou mít samostatné záměry nebo stejný záměr s entitami pro konkrétní data v rámci utterance.
@@ -141,7 +141,7 @@ Tento záměr je záložním záměrem, který označuje všechno mimo vaši apl
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Využijte funkci navrhnout pro aktivní učení
 
-Použití [aktivně učit](luis-how-to-review-endpoint-utterances.md)společnosti **zkontrolujte koncový bod projevy** v pravidelných intervalech, nepřidávat další příklad projevy na záměry. Protože aplikace neustále přijímá projevy koncový bod, je tento seznam rozrůstá a změna.
+**Projevy** pravidelně pomocí [aktivního vzdělávacího bodu služby Active Learning](luis-how-to-review-endpoint-utterances.md)místo přidání dalších příkladů projevy k záměrům. Protože aplikace neustále přijímá projevy koncový bod, je tento seznam rozrůstá a změna.
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Monitorování výkonu vaší aplikace
 
@@ -175,7 +175,7 @@ Druhý sloupec používá různé příkazy (nákup, rezervace, knihy), jiné mn
 
 Vytvoření záměru pro jakoukoliv akci, že bude trvat svého robota. Pomocí entit jako parametry, které umožňují tuto akci. 
 
-V případě robota, který bude v leteckém letu, vytvořte **BookFlight** záměr. Nevytvářejte záměru pro každý letecká společnost nebo každý cíl. Pomocí těchto částí dat jako [entity](luis-concept-entity-types.md) a označte je v příkladu projevy. 
+V případě robota, který bude v leteckém letu, vytvořte **BookFlight** záměr. Nevytvářejte záměru pro každý letecká společnost nebo každý cíl. Tyto části dat používejte jako [entity](luis-concept-entity-types.md) a označte je v příkladech projevy. 
 
 ## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Nevytvářejte popisovače se všemi možnými hodnotami.
 
@@ -183,7 +183,7 @@ V [seznamech frází](luis-concept-feature.md) popisovače zadejte několik př�
 
 ## <a name="dont-add-many-patterns"></a>Nepřidávejte mnoho vzorů
 
-Nepřidávejte příliš mnoho [vzory](luis-concept-patterns.md). Služba LUIS je určená další rychle s méně příklady. Nechcete zbytečně přetížení systému.
+Nepřidávejte příliš mnoho [vzorů](luis-concept-patterns.md). Služba LUIS je určená další rychle s méně příklady. Nechcete zbytečně přetížení systému.
 
 ## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Nemáte trénování a publikování s každou utterance jeden příklad
 
@@ -191,4 +191,4 @@ Přidání projevů 10 až 15 před trénování a publikování. Který můžet
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak [plánování aplikace](luis-how-plan-your-app.md) ve vaší aplikaci LUIS.
+* Naučte se, jak [naplánovat aplikaci](luis-how-plan-your-app.md) v aplikaci Luis.

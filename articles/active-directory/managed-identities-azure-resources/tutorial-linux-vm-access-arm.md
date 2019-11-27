@@ -1,5 +1,5 @@
 ---
-title: Quickstart`:` Use a managed identity to access Azure Resource Manager - Azure AD
+title: Rychlý Start`:` použití spravované identity pro přístup k Azure Resource Manager – Azure AD
 description: Tento rychlý start vás provede používáním spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
@@ -32,7 +32,7 @@ V tomto rychlém startu se dozvíte, jak pomocí identity přiřazené systémem
 > * Udělení přístupu virtuálnímu počítači ke skupině prostředků v Azure Resource Manageru 
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k volání Azure Resource Manageru 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -48,7 +48,7 @@ Když použijete spravované identity pro prostředky Azure, může kód získat
 6. Potom zkontrolujte, že je v rozevíracím seznamu **Předplatné** uvedené správné předplatné. A ve **skupině prostředků** vyberte **Všechny skupiny prostředků**.
 7. Nakonec **vyberte** v rozevíracím seznamu svůj linuxový virtuální počítač a klikněte na **Uložit**.
 
-    ![Alternativní text k obrázku](media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
+    ![Text k alternativnímu obrázku](media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-resource-manager"></a>Získání přístupového tokenu pomocí spravované identity přiřazené systémem virtuálního počítače a jeho použití k volání Resource Manageru 
 
@@ -56,16 +56,16 @@ K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte 
 
 1. Na portálu přejděte ke svému linuxovému virtuálnímu počítači a v části **Přehled** klikněte na **Připojit**.  
 2. **Připojte** se vybraným klientem SSH k virtuálnímu počítači. 
-3. In the terminal window, using `curl`, make a request to the local managed identities for Azure resources endpoint to get an access token for Azure Resource Manager.  
+3. V okně terminálu pomocí `curl`vytvořte požadavek na koncový bod místních spravovaných identit pro prostředky Azure, abyste získali přístupový token pro Azure Resource Manager.  
  
-    The `curl` request for the access token is below.  
+    Níže je uvedená žádost o přístupový token `curl`.  
     
     ```bash
     curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -H Metadata:true   
     ```
     
     > [!NOTE]
-    > Hodnota parametru „resource“ musí přesně odpovídat hodnotě, kterou očekává Azure AD.  In the case of the Resource Manager resource ID, you must include the trailing slash on the URI. 
+    > Hodnota parametru „resource“ musí přesně odpovídat hodnotě, kterou očekává Azure AD.  V případě ID prostředku Správce prostředků musíte do identifikátoru URI zahrnout koncové lomítko. 
     
     V odpovědi je přístupový token, který potřebujete pro přístup k Azure Resource Manageru. 
     
@@ -81,7 +81,7 @@ K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte 
     "token_type":"Bearer"} 
     ```
     
-    Přístupový token můžete použít pro přístup k Azure Resource Manageru, například ke čtení podrobností o skupině prostředků, ke které jste virtuálnímu počítači udělili přístup. Replace the values of \<SUBSCRIPTION ID\>, \<RESOURCE GROUP\>, and \<ACCESS TOKEN\> with the ones you created earlier. 
+    Přístupový token můžete použít pro přístup k Azure Resource Manageru, například ke čtení podrobností o skupině prostředků, ke které jste virtuálnímu počítači udělili přístup. Hodnoty \<ID předplatného\>, \<skupinu prostředků\>a \<PŘÍSTUPového TOKENu nahraďte těmi, které jste vytvořili dříve.\> 
     
     > [!NOTE]
     > V adrese URL se rozlišují velká a malá písmena. Proto zkontrolujte, jestli používáte přesně stejná velká a malá písmena jako při pojmenování skupiny prostředků. Zkontrolujte také velké G ve výrazu „resourceGroup“.  
@@ -97,8 +97,8 @@ K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se dozvěděli, jak pomocí spravované identity přiřazené systémem získat přístup k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru najdete tady:
+V tomto rychlém startu jste se dozvěděli, jak pomocí spravované identity přiřazené systémem získat přístup k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
->[Create, list or delete a user-assigned managed identity using Azure PowerShell](how-to-manage-ua-identity-powershell.md)
+>[vytvořit, vypsat nebo odstranit spravovanou identitu přiřazenou uživatelem pomocí Azure PowerShell](how-to-manage-ua-identity-powershell.md)

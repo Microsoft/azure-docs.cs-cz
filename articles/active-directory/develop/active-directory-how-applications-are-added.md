@@ -14,26 +14,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/04/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: elisol, lenalepa
+ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6d2efdcf03b829b43f797ddb7ca32bb6d120609e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803451"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533003"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do Azure AD
 
-Ve službě Azure AD existují dvě reprezentace aplikací: 
+Ve službě Azure AD existují dvě reprezentace aplikací:
+
 * [Aplikační objekty](app-objects-and-service-principals.md#application-object) – i když existují [výjimky](#notes-and-exceptions), objekty aplikace lze považovat za definici aplikace.
 * [Instanční objekty](app-objects-and-service-principals.md#service-principal-object) – lze považovat za instanci aplikace. Instanční objekty obecně odkazují na objekt aplikace a jeden objekt aplikace může být odkazován více instančními objekty v adresáři.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Co jsou objekty aplikace a odkud pocházejí?
+
 Můžete spravovat [objekty aplikace](app-objects-and-service-principals.md#application-object) v Azure Portal prostřednictvím možností [Registrace aplikací](https://aka.ms/appregistrations) . Aplikační objekty popisují aplikaci do služby Azure AD a je možné ji považovat za definici aplikace, což službě umožňuje zjistit, jak vydávat tokeny aplikaci na základě jejího nastavení. Objekt aplikace bude existovat pouze v domovském adresáři, i v případě, že se jedná o víceklientské aplikace podporující instanční objekty v jiných adresářích. Objekt aplikace může obsahovat některé z následujících (a také další informace, které zde nejsou zmíněny):
+
 * Název, logo a Vydavatel
 * Identifikátory URI pro přesměrování
 * Tajné kódy (symetrické a/nebo asymetrické klíče používané k ověření aplikace)
@@ -45,13 +48,15 @@ Můžete spravovat [objekty aplikace](app-objects-and-service-principals.md#appl
 * Metadata a konfigurace proxy serveru
 
 Aplikační objekty lze vytvořit pomocí několika cest, včetně:
+
 * Registrace aplikací v Azure Portal
 * Vytvoření nové aplikace pomocí sady Visual Studio a její konfigurace pro použití ověřování Azure AD
 * Když správce přidá aplikaci z Galerie aplikací (tím se vytvoří také instanční objekt)
-* Vytvoření nové aplikace pomocí rozhraní Microsoft Graph API, Graph API Azure AD nebo PowerShellu
+* Vytvoření nové aplikace pomocí rozhraní Microsoft Graph API nebo PowerShellu
 * Mnoho dalších, včetně různých vývojářských prostředí v Azure a v Průzkumníkovi rozhraní API napříč centry pro vývojáře
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Co jsou instanční objekty a odkud přicházejí z provozu?
+
 [Objekty služby](app-objects-and-service-principals.md#service-principal-object) v Azure Portal můžete spravovat prostřednictvím prostředí [podnikových aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) . Instanční objekty se řídí aplikací připojujícími se k Azure AD a je možné ji považovat za instanci aplikace ve vašem adresáři. V případě jakékoli aplikace může mít maximálně jeden aplikační objekt (který je zaregistrován v "domovském" adresáři) a jeden nebo více instančních objektů, které představují instance aplikace v každém adresáři, v němž funguje. 
 
 Instanční objekt může zahrnovat:
@@ -122,7 +127,7 @@ Do Azure AD se přidají aplikace, které budou využívat jednu nebo víc služ
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Kdo má oprávnění přidávat aplikace do své instance Azure AD?
 
-I když existují některé úkoly, které mohou provádět pouze globální správci (například přidávání aplikací z Galerie aplikací a konfigurace aplikace pro použití proxy aplikací), ve výchozím nastavení mají všichni uživatelé v adresáři práva k registraci aplikačních objektů, které vyvíjí a připravují aplikace, které sdílí, a poskytují přístup k datům organizace prostřednictvím souhlasu. Pokud je osoba prvním uživatelem v adresáři pro přihlášení k aplikaci a udělení souhlasu, která vytvoří instanční objekt ve vašem tenantovi; v opačném případě se informace o udělení souhlasu uloží na existující instanční objekt.
+I když existují některé úlohy, které můžou provádět jenom globální správci (například přidávají aplikace z Galerie aplikací a konfigurovat aplikaci pro používání proxy aplikací), ve výchozím nastavení mají všichni uživatelé ve vašem adresáři práva k registraci aplikačních objektů, které vyvíjí a připravují aplikace, které sdílí nebo poskytují přístup k datům organizace prostřednictvím souhlasu. Pokud je osoba prvním uživatelem v adresáři pro přihlášení k aplikaci a udělení souhlasu, která vytvoří instanční objekt ve vašem tenantovi; v opačném případě se informace o udělení souhlasu uloží na existující instanční objekt.
 
 Umožnění, aby se uživatelé mohli registrovat a odsouhlasit s aplikacemi, se můžou na začátku zvuk, ale pamatujte na toto:
 

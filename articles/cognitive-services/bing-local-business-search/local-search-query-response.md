@@ -1,7 +1,7 @@
 ---
-title: Sending and using API queries and responses - Bing Local Business Search
+title: Posílání a používání dotazů a odpovědí rozhraní API – vyhledávání v místních firmách Bingu
 titleSuffix: Azure Cognitive Services
-description: Use this article to learn how to send and use search queries with the Bing Local Business Search API.
+description: V tomto článku se dozvíte, jak odesílat a používat vyhledávací dotazy pomocí rozhraní API Bingu pro vyhledávání v místním obchodu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,27 +17,27 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326723"
 ---
-# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Sending and using Bing Local Business Search API queries and responses
+# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Odesílání a používání dotazů a odpovědí v rozhraní API Bingu pro vyhledávání místních obchodních hledání
 
-You can get local results from the Bing Local Business Search API by sending a search query to its endpoint and including the `Ocp-Apim-Subscription-Key` header, which is required. Along with available [headers](local-search-reference.md#headers) and [parameters](local-search-reference.md#query-parameters), Searches can be customized by specifying [geographic boundaries](specify-geographic-search.md) for the area to be searched, and the [categories](local-search-query-response.md) of places returned.
+Místní výsledky můžete získat z rozhraní API pro místní vyhledávání Bingu, a to tak, že odešlete vyhledávací dotaz na jeho koncový bod a zahrnete do něj hlavičku `Ocp-Apim-Subscription-Key`, která je povinná. Spolu s dostupnými [hlavičkami](local-search-reference.md#headers) a [parametry](local-search-reference.md#query-parameters)můžete vyhledávat pomocí [geografických hranic](specify-geographic-search.md) pro oblast, která má být prohledána, a [kategorií](local-search-query-response.md) vrácených míst.
 
-## <a name="creating-a-request"></a>Creating a request
+## <a name="creating-a-request"></a>Vytvoření žádosti
 
-To send a request to the Bing Local Business Search API, append a search term to the `q=` parameter before adding it to the API endpoint, and including the `Ocp-Apim-Subscription-Key` header. Například:
+Pokud chcete odeslat žádost do rozhraní API služby Bing pro vyhledávání v místním obchodu, přidejte před jeho přidáním do koncového bodu rozhraní API hledaný `q=` termín, včetně hlavičky `Ocp-Apim-Subscription-Key`. Příklad:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
-The full request URL syntax is shown below. See the Bing Local Business Search API [quickstarts](quickstarts/local-quickstart.md), and reference content for [headers](local-search-reference.md#headers) and [parameters](local-search-reference.md#query-parameters) for more information on sending requests. 
+Úplná syntaxe adresy URL požadavku je uvedena níže. Další informace o odesílání požadavků najdete v tématu [rychlý Start](quickstarts/local-quickstart.md)k rozhraní API Bingu pro vyhledávání místních obchodních funkcí a referenční obsah pro [záhlaví](local-search-reference.md#headers) a [parametry](local-search-reference.md#query-parameters) . 
 
-For information on local search categories, see [Search categories for the Bing Local Business Search API](local-categories.md).
+Informace o místních kategoriích vyhledávání najdete v tématu [kategorie hledání pro rozhraní API Bingu pro vyhledávání místních obchodních aplikací](local-categories.md).
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localCategories][&cc][&mkt][&safesearch][&setlang][&count][&first][&localCircularView][&localMapView]
 ```
 
-## <a name="using-responses"></a>Using responses
+## <a name="using-responses"></a>Použití odpovědí
 
-JSON responses from the Bing Local Business Search API contain a `SearchResponse` object. The API will return relevant search results in the `places` field. if no results are found, the `places` field will not be included in the response.
+Odpovědi JSON z rozhraní API služby Bing pro vyhledávání v místním obchodu obsahují objekt `SearchResponse`. Rozhraní API vrátí relevantní výsledky hledání v poli `places`. Pokud nejsou nalezeny žádné výsledky, pole `places` nebude zahrnuto do odpovědi.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -52,29 +52,29 @@ JSON responses from the Bing Local Business Search API contain a `SearchResponse
 . . . 
 ```
 
-### <a name="search-result-attributes"></a>Search result attributes
+### <a name="search-result-attributes"></a>Atributy výsledků hledání
 
-The JSON results returned by the API include the following attributes:
+Výsledky JSON vracené rozhraním API obsahují tyto atributy:
 
 * _type
-* address
+* adresáře
 * entityPresentationInfo
 * geo
 * id
 * jméno
 * routeablePoint
-* telephone
+* Link
 * url
 
-For general information about headers, parameters, market codes, response objects, errors, etc., see the [Bing Local Search API v7](local-search-reference.md) reference.
+Obecné informace o hlavičkách, parametrech, kódech trhu, objektech odpovědí, chybách atd. najdete v referenčních informacích k [rozhraní API Bingu pro vyhledávání v7](local-search-reference.md) .
 
 > [!NOTE]
-> You, or a third party on your behalf, may not use, retain, store, cache, share, or distribute any data from the Local Search API for the purpose of testing, developing, training, distributing or making available any non-Microsoft service or feature. 
+> Vy nebo třetí strana vaším jménem nesmíte k testování, vývoji, školení, distribuci nebo zpřístupnění jakékoli služby nebo funkce od Microsoftu používat, uchovávat, ukládat, ukládat do mezipaměti, sdílet ani distribuovat žádná data z rozhraní API místního vyhledávání. 
 
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
-The following JSON response includes search results specified by the query `?q=restaurant+in+Bellevue`.
+Následující odpověď JSON zahrnuje výsledky hledání zadané `?q=restaurant+in+Bellevue`dotazu.
 
 ```json
 Vary: Accept-Encoding
@@ -147,7 +147,7 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Local Business Search quickstart](quickstarts/local-quickstart.md)
-- [Local Business Search Java quickstart](quickstarts/local-search-java-quickstart.md)
-- [Local Business Search Node quickstart](quickstarts/local-search-node-quickstart.md)
-- [Local Business Search Python quickstart](quickstarts/local-search-python-quickstart.md)
+- [Rychlý start hledání místních obchodních obchodů](quickstarts/local-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v jazyce Java](quickstarts/local-search-java-quickstart.md)
+- [Rychlý Start uzlu místního hledání firmy](quickstarts/local-search-node-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v Pythonu](quickstarts/local-search-python-quickstart.md)

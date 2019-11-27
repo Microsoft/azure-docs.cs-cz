@@ -1,6 +1,6 @@
 ---
-title: Sample - Allowed ExpressRoute SKUs
-description: This sample policy definition requires that ExpressRoute use an approved SKU defined in a parameter.
+title: Ukázka – povolení ExpressRoute SKU
+description: Tato ukázková definice zásad vyžaduje, aby ExpressRoute používal schválenou skladovou jednotku definovanou v parametru.
 ms.date: 01/29/2019
 ms.topic: sample
 ms.openlocfilehash: e4bd9dfe9c9851f80fe7e6f7b93a1c251e163bf7
@@ -10,9 +10,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463728"
 ---
-# <a name="sample---allowed-expressroute-skus"></a>Sample - Allowed ExpressRoute SKUs
+# <a name="sample---allowed-expressroute-skus"></a>Ukázka – povolení ExpressRoute SKU
 
-Tato zásada vyžaduje, aby okruhy Express Route používaly schválené skladové položky. Zadejte pole povolených skladových položek.
+Tato zásada vyžaduje, aby okruhy Express Route používaly schválené skladové položky. Zadáte pole povolených skladových položek.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,9 +24,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fexpress-route-skus%2Fazurepolicy.json)
+[![nasazení ukázky zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fexpress-route-skus%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -45,7 +45,7 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'express-route-skus' --display-name 'Allowed 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "express-route-skus"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

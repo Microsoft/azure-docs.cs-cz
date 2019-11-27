@@ -1,6 +1,6 @@
 ---
-title: Smart contract integration patterns - Azure Blockchain Workbench
-description: Overview of smart contract integration patterns in Azure Blockchain Workbench Preview.
+title: Vzory integrace inteligentních kontraktů – Azure blockchain Workbench
+description: Přehled způsobů integrace inteligentních kontraktů ve službě Azure blockchain Workbench Preview.
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
@@ -13,226 +13,226 @@ ms.locfileid: "74325967"
 ---
 # <a name="smart-contract-integration-patterns"></a>Vzory integrace inteligentních kontraktů
 
-Smart contracts often represent a business workflow that needs to integrate with external systems and devices.
+Inteligentní kontrakty často reprezentují obchodní pracovní postup, který je potřeba integrovat s externími systémy a zařízeními.
 
-The requirements of these workflows include a need to initiate transactions on a distributed ledger that include data from an external system, service, or device. They also need to have external systems react to events originating from smart contracts on a distributed ledger.
+Požadavky těchto pracovních postupů zahrnují nutnost iniciovat transakce v distribuované hlavní knize, které obsahují data z externího systému, služby nebo zařízení. Také potřebují, aby externí systémy reagovaly na události pocházející z inteligentních smluv v distribuované účetní knize.
 
-The REST API and messaging integration sends transactions from external systems to smart contracts included in an Azure Blockchain Workbench application. It also sends event notifications to external systems based on changes that take place within an application.
+Integrace REST API a zasílání zpráv odesílá transakce z externích systémů do inteligentních kontraktů, které jsou součástí aplikace Azure blockchain Workbench. Odesílá také oznámení o událostech externím systémům na základě změn, které probíhají v rámci aplikace.
 
-For data integration scenarios, Azure Blockchain Workbench includes a set of database views that merge a combination of transactional data from the blockchain and meta-data about applications and smart contracts.
+V případě scénářů integrace dat zahrnuje Azure blockchain Workbench sadu databázových zobrazení, která sloučí kombinaci transakčních dat z blockchain a meta data o aplikacích a inteligentních kontraktech.
 
-In addition, some scenarios, such as those related to supply chain or media, may also require the integration of documents. While Azure Blockchain Workbench does not provide API calls for handling documents directly, documents can be incorporated into a blockchain application. This section also includes that pattern.
+Kromě toho můžou některé scénáře, jako jsou třeba ty, které souvisejí s dodavatelským řetězcem nebo médiem, vyžadovat i integraci dokumentů. I když Azure blockchain Workbench neposkytuje volání rozhraní API pro zpracování dokumentů přímo, můžou se dokumenty začlenit do aplikace blockchain. Tato část také obsahuje tento model.
 
-This section includes the patterns identified for implementing each of these types of integrations in your end to end solutions.
+Tato část obsahuje vzory identifikované pro implementaci každého z těchto typů integrací v rámci kompletních řešení.
 
-## <a name="rest-api-based-integration"></a>REST API-based integration
+## <a name="rest-api-based-integration"></a>Integrace na základě REST API
 
-Capabilities within the Azure Blockchain Workbench generated web application are exposed via the REST API. Capabilities include Azure Blockchain Workbench uploading, configuration and administration of applications, sending transactions to a distributed ledger, and the querying of application metadata and ledger data.
+Možnosti v rámci webové aplikace vygenerované službou Azure blockchain Workbench jsou zpřístupněny prostřednictvím REST API. Mezi možnosti patří nahrávání, konfigurace a Správa aplikací, odesílání transakcí do distribuované knihy a dotazování na metadata aplikace a data hlavní knihy.
 
-The REST API is primarily used for interactive clients such as web, mobile, and bot applications.
+REST API se primárně používá pro interaktivní klienty, jako jsou webové, mobilní a robotské aplikace.
 
-This section looks at patterns focused on the aspects of the REST API that send transactions to a distributed ledger and patterns that query data about transactions from Azure Blockchain Workbench's *off chain* SQL database.
+V této části se dozvíte, jaké jsou vzory zaměřené na aspekty REST API, které odesílají transakce do distribuované účetní knihy a vzory, které dotazují data o transakcích z Azure blockchain Workbench z netransakčního *řetězu* SQL Database.
 
-### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Sending transactions to a distributed ledger from an external system
+### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Posílání transakcí do distribuované hlavní knihy z externího systému
 
-The Azure Blockchain Workbench REST API sends authenticated requests to execute transactions on a distributed ledger.
+REST API Azure blockchain Workbench odesílá ověřené požadavky na provádění transakcí v distribuované účetní knize.
 
-![Sending transactions to a distributed ledger](./media/integration-patterns/send-transactions-ledger.png)
+![Odesílání transakcí do distribuované knihy](./media/integration-patterns/send-transactions-ledger.png)
 
-Executing transactions occurs using the process depicted previously, where:
+K provádění transakcí dojde pomocí dříve popsaného procesu, kde:
 
--   The external application authenticates to the Azure Active Directory provisioned as part of the Azure Blockchain Workbench deployment.
--   Authorized users receive a bearer token that can be sent with requests to the API.
--   External applications make calls to the REST API using the bearer token.
--   The REST API packages the request as a message and sends it to the Service Bus. From here it is retrieved, signed, and sent to the appropriate distributed ledger.
--   The REST API makes a request to the Azure Blockchain Workbench SQL DB to record the request and establish the current provisioning status.
--   The SQL DB returns the provisioning status and the API call returns the ID to the external application that called it.
+-   Externí aplikace se ověří Azure Active Directory zřízené jako součást nasazení Azure blockchain Workbench.
+-   Autorizovaní uživatelé obdrží nosný token, který se dá odeslat s požadavky do rozhraní API.
+-   Externí aplikace volají REST API pomocí nosných tokenů.
+-   REST API zabalí požadavek jako zprávu a odešle ji do Service Bus. Odtud se načte, podepíše a odešle do příslušné distribuované účetní knihy.
+-   REST API vytvoří požadavek na databázi SQL Azure blockchain Workbench pro záznam požadavku a určení aktuálního stavu zřizování.
+-   SQL DB vrátí stav zřizování a volání rozhraní API vrátí ID k externí aplikaci, která ji volala.
 
-### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>Querying Blockchain Workbench metadata and distributed ledger transactions
+### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>Dotazování na metadata blockchain Workbench a transakce distribuované hlavní knihy
 
-The Azure Blockchain Workbench REST API sends authenticated requests to query details related to smart contract execution on a distributed ledger.
+REST API Azure blockchain Workbench odesílá ověřené požadavky na dotazy týkající se provádění inteligentních kontraktů v distribuované účetní knize.
 
-![Querying metadata](./media/integration-patterns/querying-metadata.png)
+![Dotazování na metadata](./media/integration-patterns/querying-metadata.png)
 
-Querying occurs using the process depicted previously, where:
+Dotazování proběhne pomocí dříve popsaného procesu, kde:
 
-1. The external application authenticates to the Azure Active Directory provisioned as part of the Azure Blockchain Workbench deployment.
-2. Authorized users receive a bearer token that can be sent with requests to the API.
-3. External applications make calls to the REST API using the bearer token.
-4. The REST API queries the data for the request from the SQL DB and returns it to the client.
+1. Externí aplikace se ověří Azure Active Directory zřízené jako součást nasazení Azure blockchain Workbench.
+2. Autorizovaní uživatelé obdrží nosný token, který se dá odeslat s požadavky do rozhraní API.
+3. Externí aplikace volají REST API pomocí nosných tokenů.
+4. REST API se dotazuje na data žádosti z databáze SQL a vrátí je klientovi.
 
-## <a name="messaging-integration"></a>Messaging integration
+## <a name="messaging-integration"></a>Integrace zasílání zpráv
 
-Messaging integration facilitates interaction with systems, services, and devices where an interactive sign-in is not possible or desirable. Messaging integration focuses on two types of messages: messages requesting transactions be executed on a distributed ledger, and events exposed by that ledger when transactions have taken place.
+Integrace zasílání zpráv usnadňuje interakci se systémy, službami a zařízeními, kde interaktivní přihlášení není možné nebo žádoucí. Integrace zasílání zpráv se zaměřuje na dva typy zpráv: zprávy požadující transakce spouštěné v distribuované účetní knize a události vystavené touto hlavní knihou v době, kdy byly provedeny transakce.
 
-Messaging integration focuses on the execution and monitoring of transactions related to user creation, contract creation, and execution of transactions on contracts and is primarily used by *headless* back-end systems.
+Integrace zasílání zpráv se zaměřuje na provádění a monitorování transakcí souvisejících s vytvořením uživatele, vytvořením smlouvy a prováděním transakcí ve smlouvách a primárně se používá *v bezsystémovém back-* Endu.
 
-This section looks at patterns focused on the aspects of the message-based API that send transactions to a distributed ledger and patterns that represent event messages exposed by the underlying distributed ledger.
+Tato část se zabývá vzory, které se zaměřují na aspekty rozhraní API založeného na zprávách, které odesílají transakce do distribuované hlavní knihy a vzory, které reprezentují zprávy událostí vystavené základní distribuovanou knihou.
 
-### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>One-way event delivery from a smart contract to an event consumer 
+### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>Jednosměrné doručování událostí z inteligentní smlouvy na příjemce události 
 
-In this scenario, an event occurs within a smart contract, for example, a state change or the execution of a specific type of transaction. This event is broadcast via an Event Grid to downstream consumers, and those consumers then take appropriate actions.
+V tomto scénáři dojde k události v rámci inteligentní smlouvy, například změny stavu nebo provedení konkrétního typu transakce. Tato událost je vysílána prostřednictvím Event Grid příjemcům pro příjem dat a uživatelé pak přijmou příslušné akce.
 
-An example of this scenario is that when a transaction occurs, a consumer would be alerted and could take action, such as recording the information in a SQL DB or the Common Data Service. This scenario is the same pattern that Workbench follows to populate its *off chain* SQL DB.
+Příkladem tohoto scénáře je, že když dojde k transakci, příjemce se upozorní a může provést akci, jako je například záznam informací v databázi SQL nebo Common Data Service. Tento scénář je stejný jako ten, který slouží k naplnění svého *řetězce* SQL DB v aplikaci Workbench.
 
-Another would be if a smart contract transitions to a particular state, for example when a contract goes into an *OutOfCompliance*. When this state change happens, it could trigger an alert to be sent to an administrator's mobile phone.
+Další by byl v případě, že se inteligentní kontrakt změní na určitý stav, například když kontrakt přejde do *OutOfCompliance*. Když dojde ke změně stavu, může se spustit výstraha, která se pošle na mobilní telefon správce.
 
-![One-way event delivery](./media/integration-patterns/one-way-event-delivery.png)
+![Jednosměrné doručování událostí](./media/integration-patterns/one-way-event-delivery.png)
 
-This scenario occurs using the process depicted previously, where:
+K tomuto scénáři dochází pomocí dříve popsaného procesu, kde:
 
--   The smart contract transitions to a new state and sends an event to the ledger.
--   The ledger receives and delivers the event to Azure Blockchain Workbench.
--   Azure Blockchain Workbench is subscribed to events from the ledger and receives the event.
--   Azure Blockchain Workbench publishes the event to subscribers on the Event Grid.
--   External systems are subscribed to the Event Grid, consume the message, and take the appropriate actions.
+-   Inteligentní kontrakt přejde do nového stavu a odešle událost do hlavní knihy.
+-   Tato kniha obdrží a doručuje událost do Azure blockchain Workbench.
+-   Azure blockchain Workbench se přihlásí k odběru událostí z hlavní knihy a přijme událost.
+-   Azure blockchain Workbench publikuje událost pro předplatitele na Event Grid.
+-   Externím systémům se přihlásí k odběru Event Grid, vybírají zprávu a provede příslušné akce.
 
-## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>One-way event delivery of a message from an external system to a smart contract
+## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>Jednosměrné doručování zpráv z externího systému do inteligentního kontraktu
 
-There is also a scenario that flows from the opposite direction. In this case, an event is generated by a sensor or an external system and the data from that event should be sent to a smart contract.
+Existuje také scénář, který se bude natékat od opačného směru. V takovém případě se událost generuje pomocí senzoru nebo externího systému a data z této události by se měla odeslat do inteligentní smlouvy.
 
-A common example is the delivery of data from financial markets, for example, prices of commodities, stock, or bonds, to a smart contract.
+Běžným příkladem je doručování dat z finančních trhů, například ceny komodit, akcií nebo dluhopisů do inteligentní smlouvy.
 
-### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Direct delivery of an Azure Blockchain Workbench in the expected format
+### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Přímé doručování Azure blockchain Workbench v očekávaném formátu
 
-Some applications are built to integrate with Azure Blockchain Workbench and directly generates and send messages in the expected formats.
+Některé aplikace jsou sestavené pro integraci s Azure blockchain Workbench a přímo generují a odesílají zprávy v očekávaných formátech.
 
-![Direct delivery](./media/integration-patterns/direct-delivery.png)
+![Přímé doručování](./media/integration-patterns/direct-delivery.png)
 
-This delivery occurs using the process depicted previously, where:
+K tomuto doručení dochází pomocí dříve popsaného procesu, kde:
 
--   An event occurs in an external system that triggers the creation of a message for Azure Blockchain Workbench.
--   The external system has code written to create this message in a known format and sends it directly to the Service Bus.
--   Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
--   Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific contract.
--   Upon receipt of the message, the contract transitions to a new state.
+-   K události dochází v externím systému, který aktivuje vytvoření zprávy pro Azure blockchain Workbench.
+-   Externí systém obsahuje kód napsaný pro vytvoření této zprávy ve známém formátu a pošle je přímo do Service Bus.
+-   Azure blockchain Workbench se přihlašuje k odběru událostí z Service Bus a zprávu načte.
+-   Azure blockchain Workbench inicializuje volání do hlavní knihy a odesílá data z externího systému do konkrétní smlouvy.
+-   Po přijetí zprávy se kontrakt přejde do nového stavu.
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Delivery of a message in a format unknown to Azure Blockchain Workbench
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Doručení zprávy ve formátu, který není známý pro Azure blockchain Workbench
 
-Some systems cannot be modified to deliver messages in the standard formats used by Azure Blockchain Workbench. In these cases, existing mechanisms and message formats from these systems can often be used. Specifically, the native message types of these systems can be transformed using Logic Apps, Azure Functions, or other custom code to map to one of the standard messaging formats expected.
+Některé systémy není možné upravovat, aby bylo možné doručovat zprávy ve standardních formátech používaných službou Azure blockchain Workbench. V těchto případech je možné často použít stávající mechanismy a formáty zpráv z těchto systémů. Konkrétně typy nativních zpráv těchto systémů lze transformovat pomocí Logic Apps, Azure Functions nebo jiného vlastního kódu pro mapování na jeden ze standardních formátů pro zasílání zpráv, které jsou očekávány.
 
-![Unknown message format](./media/integration-patterns/unknown-message-format.png)
+![Neznámý formát zprávy](./media/integration-patterns/unknown-message-format.png)
 
-This occurs using the process depicted previously, where:
+K tomu dochází v dříve použitém procesu, kde:
 
--   An event occurs in an external system that triggers the creation of a message.
--   A Logic App or custom code is used to receive that message and transform it to a standard Azure Blockchain Workbench formatted message.
--   The Logic App sends the transformed message directly to the Service Bus.
--   Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
--   Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific function on the contract.
--   The function executes and typically modifies the state. The change of state moves forward the business workflow reflected in the smart contract, enabling other functions to now be executed as appropriate.
+-   K události dojde v externím systému, který spustí vytvoření zprávy.
+-   Aplikace logiky nebo vlastní kód slouží k přijetí této zprávy a jejich transformaci na standardní formátovanou zprávu ve formátu Azure blockchain Workbench.
+-   Aplikace logiky pošle transformované zprávy přímo do Service Bus.
+-   Azure blockchain Workbench se přihlašuje k odběru událostí z Service Bus a zprávu načte.
+-   Azure blockchain Workbench inicializuje volání do hlavní knihy a odesílá data z externího systému do konkrétní funkce v kontraktu.
+-   Funkce se spustí a obvykle upraví stav. Změna stavu přesune směrem nahoru pracovní postup, který se projeví v rámci inteligentního kontraktu, takže se teď v případě potřeby spustí další funkce.
 
-### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Transitioning control to an external process and await completion
+### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Přechod řízení na externí proces a čekání na dokončení
 
-There are scenarios where a smart contract must stop internal execution and hand off to an external process. That external process would then complete, send a message to the smart contract, and execution would then continue within the smart contract.
+Existují situace, kdy je nutné, aby inteligentní kontrakt zastavil interní spuštění a předání externímu procesu. Tento externí proces se pak dokončí, pošle zprávu na inteligentní kontrakt a provádění by pak pokračovalo v rámci inteligentní smlouvy.
 
-#### <a name="transition-to-the-external-process"></a>Transition to the external process
+#### <a name="transition-to-the-external-process"></a>Přechod k externímu procesu
 
-This pattern is typically implemented using the following approach:
+Tento model je obvykle implementován pomocí následujícího přístupu:
 
--   The smart contract transitions to a specific state. In this state, either no or a limited number of functions can be executed until an external system takes a desired action.
--   The change of state is surfaced as an event to a downstream consumer.
--   The downstream consumer receives the event and triggers external code execution.
+-   Inteligentní kontrakt přejde do určitého stavu. V tomto stavu je možné provést buď žádné, nebo omezené množství funkcí, dokud externí systém neprovede požadovanou akci.
+-   Změna stavu je proplochá jako událost příjemci pro příjem dat.
+-   Klient pro příjem dat obdrží událost a aktivuje provádění externího kódu.
 
-![Transition control to external process](./media/integration-patterns/transition-external-process.png)
+![Převést ovládací prvek na externí proces](./media/integration-patterns/transition-external-process.png)
 
-#### <a name="return-of-control-from-the-smart-contract"></a>Return of control from the smart contract
+#### <a name="return-of-control-from-the-smart-contract"></a>Vrácení ovládacího prvku z inteligentního kontraktu
 
-Depending on the ability to customize the external system, it may or may not be able to deliver messages in one of the standard formats that Azure Blockchain Workbench expects. Based on the external systems ability to generate one of these messages determine which of the following two return paths is taken.
+V závislosti na možnosti přizpůsobení externího systému může nebo nemusí být možné doručovat zprávy v jednom ze standardních formátů, které očekává Azure blockchain Workbench. Na základě možnosti externích systémů, jak vygenerovat jednu z těchto zpráv, určete, která z následujících dvou návratových cest bude provedena.
 
-##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Direct delivery of an Azure Blockchain Workbench in the expected format
+##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Přímé doručování Azure blockchain Workbench v očekávaném formátu
 
 ![](./media/integration-patterns/direct-delivery.png)
 
-In this model, the communication to the contract and subsequent state change occurs following the previous process where -
+V tomto modelu se komunikace se smlouvou a následnou stavovou změnou probíhá po předchozím procesu –
 
--   Upon reaching the completion or a specific milestone in the external code execution, an event is sent to the Service Bus connected to Azure Blockchain Workbench.
+-   Po dosažení dokončení nebo konkrétního milníku v rámci externího spuštění kódu se do Service Bus připojeného k Azure blockchain Workbench pošle událost.
 
--   For systems that can't be directly adapted to write a message that conforms to the expectations of the API, it is transformed.
+-   Pro systémy, které není možné přímo přizpůsobovat pro zápis zprávy, která odpovídá očekávání rozhraní API, se transformuje.
 
--   The content of the message is packaged up and sent to a specific function on the smart contract. This delivery is done on behalf of the user associated with the external system.
+-   Obsah zprávy se zabalí a odešle do konkrétní funkce v rámci inteligentního kontraktu. Toto doručení se provádí jménem uživatele, který je přidružený k externímu systému.
 
--   The function executes and typically modifies the state. The change of state moves forward the business workflow reflected in the smart contract, enabling other functions to now be executed as appropriate.
+-   Funkce se spustí a obvykle upraví stav. Změna stavu přesune směrem nahoru pracovní postup, který se projeví v rámci inteligentního kontraktu, takže se teď v případě potřeby spustí další funkce.
 
 ### 
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Delivery of a message in a format unknown to Azure Blockchain Workbench
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Doručení zprávy ve formátu, který není známý pro Azure blockchain Workbench
 
-![Unknown message format](./media/integration-patterns/unknown-message-format.png)
+![Neznámý formát zprávy](./media/integration-patterns/unknown-message-format.png)
 
-In this model where a message in a standard format cannot be sent directly, the communication to the contract and subsequent state change occurs following the previous process where:
+V tomto modelu, kde nelze odeslat zprávu ve standardním formátu, se komunikace se smlouvou a následnou stavovou změnou probíhá po předchozím procesu:
 
-1.  Upon reaching the completion or a specific milestone in the external code execution, an event is sent to the Service Bus connected to Azure Blockchain Workbench.
-2.  A Logic App or custom code is used to receive that message and transform it to a standard Azure Blockchain Workbench formatted message.
-3.  The Logic App sends the transformed message directly to the Service Bus.
-4.  Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
-5.  Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific contract.
-6. The content of the message is packaged up and sent to a specific function on the smart contract. This delivery is done on behalf of the user associated with the external system.
-7.  The function executes and typically modifies the state. The change of state moves forward the business workflow reflected in the smart contract, enabling other functions to now be executed as appropriate.
+1.  Po dosažení dokončení nebo konkrétního milníku v rámci externího spuštění kódu se do Service Bus připojeného k Azure blockchain Workbench pošle událost.
+2.  Aplikace logiky nebo vlastní kód slouží k přijetí této zprávy a jejich transformaci na standardní formátovanou zprávu ve formátu Azure blockchain Workbench.
+3.  Aplikace logiky pošle transformované zprávy přímo do Service Bus.
+4.  Azure blockchain Workbench se přihlašuje k odběru událostí z Service Bus a zprávu načte.
+5.  Azure blockchain Workbench inicializuje volání do hlavní knihy a odesílá data z externího systému do konkrétní smlouvy.
+6. Obsah zprávy se zabalí a odešle do konkrétní funkce v rámci inteligentního kontraktu. Toto doručení se provádí jménem uživatele, který je přidružený k externímu systému.
+7.  Funkce se spustí a obvykle upraví stav. Změna stavu přesune směrem nahoru pracovní postup, který se projeví v rámci inteligentního kontraktu, takže se teď v případě potřeby spustí další funkce.
 
-## <a name="iot-integration"></a>IoT integration
+## <a name="iot-integration"></a>Integrace IoT
 
-A common integration scenario is the inclusion of telemetry data retrieved from sensors in a smart contract. Based on data delivered by sensors, smart contracts could take informed actions and alter the state of the contract.
+Běžný scénář integrace je zahrnutí dat telemetrie získaných ze senzorů v rámci inteligentních kontraktů. V závislosti na datech dodaných senzory mohou chytré smlouvy přijmout informovaná opatření a měnit stav smlouvy.
 
-For example, if a truck delivering medicine had its temperature soar to 110 degrees, it may impact the effectiveness of the medicine and may cause a public safety issue if not detected and removed from the supply chain. If a driver accelerated their car to 100 miles per hour, the resulting sensor information could trigger a cancellation of insurance by their insurance provider. If the car was a rental car, GPS data could indicate when the driver went outside a geography covered by their rental agreement and charge a penalty.
+Pokud například nákladní automobil, který dodává lékařství, dosáhl teploty společnosti do 110 stupňů, může to mít dopad na účinnost lékařství a může způsobit potíže s veřejným zabezpečením, pokud se nezjistí a odebere z dodavatelského řetězce. Pokud ovladač zrychluje své auto na 100 mil za hodinu, mohou výsledné informace snímače aktivovat zrušení pojištění jejich poskytovatelem pojištění. Pokud byl automobil půjčovnou auta, data GPS by mohla indikovat, že řidič přešel mimo zeměpisnou smlouvu, na kterou se vztahuje Smlouva o pronájmu, a účtuje pokutu.
 
-The challenge is that these sensors can be delivering data on a constant basis and it is not appropriate to send all of this data to a smart contract. A typical approach is to limit the number of messages sent to the blockchain while delivering all messages to a secondary store. For example, deliver messages received at only fixed interval, for example, once per hour, and when a contained value falls outside of an agreed upon range for a smart contract. Checking values that fall outside of tolerances, ensures that the data relevant to the contracts business logic is received and executed. Checking the value at the interval confirms that the sensor is still reporting. All data is sent to a secondary reporting store to enable broader reporting, analytics, and machine learning. For example, while getting sensor readings for GPS may not be required every minute for a smart contract, they could provide interesting data to be used in reports or mapping routes.
+Důvodem je, že tyto senzory můžou data doručovat na konstantu a není vhodné posílat všechna tato data do inteligentní smlouvy. Typickým přístupem je omezení počtu zpráv odeslaných do blockchain při doručování všech zpráv do sekundárního úložiště. Například doručení zpráv, které jsou přijímány pouze v pevně stanoveném intervalu, například jednou za hodinu, a v případě, že obsažená hodnota spadá mimo dohodnutý rozsah pro inteligentní kontrakt. Kontrola hodnot, které spadají mimo toleranci, zajišťuje, že budou přijata a provedena data relevantní pro obchodní logiku. Kontrola hodnoty v intervalu potvrdí, že senzor stále hlásí. Všechna data se odesílají do sekundárního úložiště pro vytváření sestav, která umožňují širší tvorbu sestav, analýz a strojového učení. Například při získávání čtecího senzoru pro GPS nemusí být každá minuta pro inteligentní kontrakt vyžadována, může poskytnout zajímavá data, která se mají použít v sestavách nebo mapování tras.
 
-On the Azure platform, integration with devices is typically done with IoT Hub. IoT Hub provides routing of messages based on content, and enables the type of functionality described previously.
+Integrace se zařízeními na platformě Azure se obvykle provádí s IoT Hub. IoT Hub poskytuje směrování zpráv na základě obsahu a umožňuje typ dříve popsaných funkcí.
 
-![IoT messages](./media/integration-patterns/iot.png)
+![Zprávy IoT](./media/integration-patterns/iot.png)
 
-The process depicts a pattern:
+Tento proces znázorňuje vzor:
 
--   A device communicates directly or via a field gateway to IoT Hub.
--   IoT Hub receives the messages and evaluates the messages against routes established that check the content of the message, for example. *Does the sensor report a temperature greater than 50 degrees?*
--   The IoT Hub sends messages that meet the criteria to a defined Service Bus for the route.
--   A Logic App or other code listens to the Service Bus that IoT Hub has established for the route.
--   The Logic App or other code retrieves and transform the message to a known format.
--   The transformed message, now in a standard format, is sent to the Service Bus for Azure Blockchain Workbench.
--   Azure Blockchain Workbench is subscribed to events from the Service Bus and retrieves the message.
--   Azure Blockchain Workbench initiates a call to the ledger, sending data from the external system to a specific contract.
--   Upon receipt of the message, the contract evaluates the data and may change the state based on the outcome of that evaluation, for example, for a high temperature, change the state to *Out of Compliance*.
+-   Zařízení komunikuje přímo nebo přes bránu pole IoT Hub.
+-   IoT Hub přijímá zprávy a vyhodnocuje zprávy proti vytvořeným trasám, které kontrolují obsah zprávy, například. *Hlásí senzor teplotu větší než 50 stupňů?*
+-   IoT Hub odesílá zprávy, které splňují kritéria, pro definovanou Service Bus trasy.
+-   Aplikace logiky nebo jiný kód naslouchá Service Bus, který IoT Hub pro trasu vytvořil.
+-   Aplikace logiky nebo jiný kód načte a transformuje zprávu do známého formátu.
+-   Transformovaná zpráva se teď ve standardním formátu pošle do Service Bus pro Azure blockchain Workbench.
+-   Azure blockchain Workbench se přihlašuje k odběru událostí z Service Bus a zprávu načte.
+-   Azure blockchain Workbench inicializuje volání do hlavní knihy a odesílá data z externího systému do konkrétní smlouvy.
+-   Po přijetí zprávy kontrakt vyhodnotí data a může změnit stav na základě výsledku tohoto vyhodnocení, například pro vysokou teplotu, změnit stav na *nedodržení předpisů*.
 
 ## <a name="data-integration"></a>Integrace dat
 
-In addition to REST and message-based API, Azure Blockchain Workbench also provides access to a SQL DB populated with application and contract meta-data as well as transactional data from distributed ledgers.
+Kromě REST a rozhraní API založeného na zprávách poskytuje Azure blockchain Workbench také přístup k SQL DB naplněný metadaty aplikace a kontraktu a také transakční data z distribuovaných knih.
 
 ![Integrace dat](./media/integration-patterns/data-integration.png)
 
-The data integration is well known:
+Integrace dat je dobře známá:
 
--   Azure Blockchain Workbench stores metadata about applications, workflows, contracts, and transactions as part of its normal operating behavior.
--   External systems or tools provide one or more dialogs to facilitate the collection of information about the database, such as database server name, database name, type of authentication, login credentials, and which database views to utilize.
--   Queries are written against SQL database views to facilitate downstream consumption by external systems, services, reporting, developer tools, and enterprise productivity tools.
+-   Azure blockchain Workbench ukládá v rámci normálního provozního chování metadata o aplikacích, pracovních postupech, kontraktech a transakcích.
+-   Externí systémy nebo nástroje poskytují jednu nebo více dialogových oken, které usnadňují shromažďování informací o databázi, jako je název databázového serveru, název databáze, typ ověřování, přihlašovací údaje a informace o tom, která zobrazení databáze se mají využít.
+-   Dotazy se zapisují do zobrazení SQL Database a usnadňují tak příjem dat z externích systémů, služeb, sestav, vývojářských nástrojů a podnikových kancelářských nástrojů.
 
-## <a name="storage-integration"></a>Storage integration
+## <a name="storage-integration"></a>Integrace úložiště
 
-Many scenarios may require the need to incorporate attestable files. For multiple reasons, it is inappropriate to put files on a blockchain. Instead, a common approach is to perform a cryptographic hash (for example, SHA-256)  against a file and share that hash on a distributed ledger. Performing the hash again at any future time should return the same result. If the file is modified, even if just one pixel is modified in an image, the hash returns a different value.
+Řada scénářů může vyžadovat, abyste museli začlenit ověřené soubory. Z několika důvodů je nevhodné vkládat soubory do blockchain. Běžným přístupem je místo toho provést kryptografickou hodnotu hash (například SHA-256) proti souboru a sdílet tuto hodnotu hash v distribuované účetní knize. Opětovné provádění algoritmu hash v jakékoli budoucí době by mělo vracet stejný výsledek. Pokud je soubor upravený, i když se v obrázku změní jenom jeden pixel, hodnota hash vrátí jinou hodnotu.
 
-![Storage integration](./media/integration-patterns/storage-integration.png)
+![Integrace úložiště](./media/integration-patterns/storage-integration.png)
 
-The pattern can be implemented where:
+Vzor lze implementovat tam, kde:
 
--   An external system persists a file in a storage mechanism, such as Azure Storage.
--   A hash is generated with the file or the file and associated metadata such as an identifier for the owner, the URL where the file is located, etc.
--   The hash and any metadata is sent to a function on a smart contract, such as *FileAdded*
--   In future, the file and meta-data can be hashed again and compared against the values stored on the ledger.
+-   Externí systém uchovává soubor v úložném mechanismu, například Azure Storage.
+-   Hodnota hash se vygeneruje se souborem nebo souborem a přidruženými metadaty, jako je například identifikátor vlastníka, adresa URL, kde je soubor umístěný atd.
+-   Hodnota hash a jakákoli metadata se odešlou do funkce v rámci inteligentních kontraktů, jako je *Přidání* .
+-   V budoucnu může být soubor a meta data znovu hash a porovnána s hodnotami uloženými v hlavní knize.
 
-## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>Prerequisites for implementing integration patterns using the REST and message APIs
+## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>Předpoklady pro implementaci integračních vzorů pomocí rozhraní REST a zpráv API
 
-To facilitate the ability for an external system or device to interact with the smart contract using either the REST or message API, the following must occur -
+Aby bylo možné zajistit, aby externí systém nebo zařízení mohl komunikovat s inteligentními kontrakty pomocí rozhraní REST API nebo služby Message API, musí dojít k následujícímu:
 
-1. In the Azure Active Directory for the consortium, an account is created that represents the external system or device.
-2. One or more appropriate smart contracts for your Azure Blockchain Workbench application have functions defined to accept the events from your external system or device.
-3. The application configuration file for your smart contract contains the role, which the system or device is assigned.
-4. The application configuration file for your smart contract identifies in which states this function is called by the defined role.
-5. The Application configuration file and its smart contracts are uploaded to Azure Blockchain Workbench.
+1. V Azure Active Directory pro konsorcium je vytvořen účet, který představuje externí systém nebo zařízení.
+2. Jedna nebo víc odpovídajících inteligentních kontraktů pro vaši aplikaci Azure blockchain Workbench má funkce definované tak, aby přijímala události z externího systému nebo zařízení.
+3. Konfigurační soubor aplikace pro Vaši čipovou smlouvu obsahuje roli, ke které je systém nebo zařízení přiřazeno.
+4. Konfigurační soubor aplikace pro vaši inteligentní kontrakt identifikuje, v jakém stavu je tato funkce volána definovanou rolí.
+5. Konfigurační soubor aplikace a jeho inteligentní kontrakty se nahrají do Azure blockchain Workbench.
 
-Once the application is uploaded, the Azure Active Directory account for the external system is assigned to the contract and the associated role.
+Po nahrání aplikace se k kontraktu a přidružené roli přiřadí účet Azure Active Directory pro externí systém.
 
-## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>Testing External System Integration Flows Prior to Writing Integration Code 
+## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>Testování toků integrace externích systémů před zápisem kódu pro integraci 
 
-Integrating with external systems is a key requirement of many scenarios. It is desirable to be able to validate smart contract design prior or in parallel to the development of code to integrate with external systems.
+Integrace s externími systémy je klíčovým požadavkem mnoha scénářů. Před vývojem kódu pro integraci s externími systémy je žádoucí, aby bylo možné ověřit návrh inteligentních kontraktů předem nebo paralelně.
 
-The use of Azure Active Directory (Azure AD) can greatly accelerate developer productivity and time to value. Specifically, the code integration with an external system may take a non-trivial amount of time. By using Azure AD and the auto-generation of UX by Azure Blockchain Workbench, you can allow developers to sign in to Blockchain Workbench as the external system and populate values from the external system via the UX. You can rapidly develop and validate ideas in a proof of concept environment before integration code is written for the external systems.
+Použití Azure Active Directory (Azure AD) může výrazně zrychlit produktivitu vývojářů a dobu jejich využití. Konkrétně integrace kódu s externím systémem může trvat netriviální množství času. Pomocí Azure AD a automatické generace uživatelského prostředí pomocí Azure blockchain Workbench můžete vývojářům dovolit, aby se přihlásili do aplikace blockchain Workbench jako externí systém a naplnili hodnoty z externího systému prostřednictvím uživatelského rozhraní. Před zápisem kódu Integration Code pro externí systémy můžete nápady rychle vyvíjet a ověřovat v prostředí pro kontrolu konceptu.

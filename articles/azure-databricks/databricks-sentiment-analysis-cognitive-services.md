@@ -180,7 +180,7 @@ V tomto kurzu použijete [rozhraní API služby Azure Cognitive Services analýz
 
      Vyberte **Vytvořit**.
 
-5. Po vytvoření účtu se z **přehled** kartu, vyberte možnost **zobrazení přístupových klíčů**.
+5. Po vytvoření účtu vyberte na kartě **Přehled** možnost **Zobrazit přístupové klíče**.
 
     ![Zobrazit přístupové klíče](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "Zobrazit přístupové klíče")
 
@@ -622,7 +622,7 @@ Po dokončení tohoto kurzu můžete cluster ukončit. Pokud to chcete udělat, 
 
 ![Zastavení clusteru datacihly](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Zastavení clusteru datacihly")
 
-Pokud se cluster automaticky zastaví neukončíte ručně, k dispozici, jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
+Pokud cluster neukončíte ručně, zastaví se automaticky a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_\_ minut při nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak pomocí Azure Databricks streamovat data do služby Azure Event Hubs a pak streamovaná data v reálném čase číst ze služby Event Hubs. Naučili jste se tyto postupy:

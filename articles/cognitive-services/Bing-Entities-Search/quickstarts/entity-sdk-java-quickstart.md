@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for entities with the SDK for Java - Bing Entity Search'
+title: 'Rychlý Start: hledání entit pomocí sady SDK pro jazyk Java – Vyhledávání entit Bingu'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for entities with the Bing Entity Search SDK for Java
+description: V tomto rychlém startu můžete vyhledat entity pomocí sady Vyhledávání entit Bingu SDK pro jazyk Java.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,15 +17,15 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327140"
 ---
-# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Quickstart: Send a search request with the Bing Entity Search SDK for Java
+# <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Rychlý Start: odeslání žádosti o vyhledávání pomocí sady Vyhledávání entit Bingu SDK pro jazyk Java
 
-Use this quickstart to begin searching for entities with the Bing Entity Search SDK for Java. While Bing Entity Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
+V tomto rychlém startu můžete začít vyhledávat entity pomocí sady Vyhledávání entit Bingu SDK pro jazyk Java. I když Vyhledávání entit Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* The [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* [Sada Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 
-* The Bing Entity Search SDK for Java
+* Sada Vyhledávání entit Bingu SDK pro jazyk Java
 
 Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí systému Maven, Gradle nebo jiného systému správy závislostí. Soubor POM Mavenu vyžaduje deklaraci:
 
@@ -59,15 +59,15 @@ Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí syst
     import java.util.List;
     ```
 
-2. Create a variable for your subscription key
+2. Vytvoření proměnné pro klíč předplatného
 
     ```java
     String subscriptionKey = "your-key-here"
     ```
 
-## <a name="create-a-search-client"></a>Create a search client
+## <a name="create-a-search-client"></a>Vytvoření vyhledávacího klienta
 
-1. Implement the `dominantEntityLookup` client, which requires your API endpoint, and an instance of the `ServiceClientCredentials` class.
+1. Implementujte klienta `dominantEntityLookup`, který vyžaduje koncový bod rozhraní API a instanci `ServiceClientCredentials` třídy.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -78,9 +78,9 @@ Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí syst
     )};
     ```
 
-    To implement the `ServiceClientCredentials`, follow these steps:
+    K implementaci `ServiceClientCredentials`použijte následující postup:
 
-   1. override the `applyCredentialsFilter()` function, with a `OkHttpClient.Builder` object as a parameter. 
+   1. Přepište funkci `applyCredentialsFilter()` s objektem `OkHttpClient.Builder` jako parametr. 
         
        ```java
        //...
@@ -92,7 +92,7 @@ Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí syst
        //...
        ```
     
-   2. Within `applyCredentialsFilter()`, call `builder.addNetworkInterceptor()`. Create a new `Interceptor` object, and override its `intercept()` method to take a `Chain` interceptor object.
+   2. V rámci `applyCredentialsFilter()`volejte `builder.addNetworkInterceptor()`. Vytvořte nový objekt `Interceptor` a přepište jeho `intercept()` metodu pro převzetí `Chain`ho objektu zachytávací.
 
        ```java
        //...
@@ -106,7 +106,7 @@ Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí syst
        ///...
        ```
 
-   3. Within the `intercept` function, create variables for your request. Use `Request.Builder()` to build your request. Add your subscription key to the `Ocp-Apim-Subscription-Key` header, and return `chain.proceed()` on the request object.
+   3. V rámci funkce `intercept` vytvořte proměnné pro svůj požadavek. K sestavení vaší žádosti použijte `Request.Builder()`. Přidejte klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key` a vraťte `chain.proceed()` objektu Request.
             
        ```java
        //...
@@ -120,9 +120,9 @@ Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí syst
        }
        //...
        ```
-      ## <a name="send-a-request-and-receive-a-response"></a>Send a request and receive a response
+      ## <a name="send-a-request-and-receive-a-response"></a>Odeslat žádost a přijmout odpověď
 
-1. Create a new instance of the search client with your subscription key. use `client.entities().search()` to send a search request for the search query `satya nadella`, and get a response. 
+1. Vytvořte novou instanci klienta Search s vaším klíčem předplatného. k odeslání žádosti o vyhledávání `satya nadella`vyhledávacího dotazu použijte `client.entities().search()` a získejte odpověď. 
     
     ```java
     EntitySearchAPIImpl client = getClient(subscriptionKey);
@@ -130,7 +130,7 @@ Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí syst
             "satya nadella", null, null, null, null, null, null, "en-us", null, null, SafeSearch.STRICT, null);
     ```
 
-1. If any entities were returned, convert them into a list. Iterate through them, and print the dominant entity.
+1. Pokud byly vráceny nějaké entity, převeďte je na seznam. Iterujte je prostřednictvím nich a vytiskněte dominantní entitu.
 
     ```java
     if (entityData.entities().value().size() > 0){
@@ -150,6 +150,6 @@ Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí syst
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
+> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
+* [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )

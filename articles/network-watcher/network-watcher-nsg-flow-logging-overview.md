@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 373a3a66044f996edee904c0073dcb0deb58a85b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 490f2e7bb394d6593e51438c1e484a4677c963a3
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277986"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539345"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
@@ -87,6 +87,12 @@ Pro pokračování ve stavech *C* a koncových *E* toků jsou počty bajtů a pa
 Níže uvedený text je příkladem protokolu toku. Jak vidíte, existuje více záznamů, které následují seznam vlastností popsaný v předchozí části.
 
 ## <a name="nsg-flow-logging-considerations"></a>NSG Flow – požadavky na protokolování
+
+**Požadavky na účet úložiště**: 
+
+1. Umístění: použitý účet úložiště musí být ve stejné oblasti jako NSG.
+2. Žádná brána firewall: protokoly NSG Flow se nepřipojily jako [Důvěryhodná služba Microsoftu pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services). Přečtěte si téma [návody zakázání brány firewall na mém účtu úložiště?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) pro vypnutí brány firewall. 
+3. Žádné koncové body služby: kvůli aktuálnímu omezení se protokoly můžou přímo vysílat jenom do účtů úložiště, nikoli prostřednictvím koncových bodů služby. Nápovědu k odebrání stávajících koncových bodů služby najdete v tématu [návody použití protokolů toku NSG s koncovými body služby?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) .
 
 **Povolit protokolování toku NSG na všech skupin zabezpečení sítě připojených k prostředku**: protokolování toků v Azure je nakonfigurované na prostředku NSG. Tok bude přidružen pouze k jednomu NSG pravidlu. Ve scénářích, kdy je využíváno více skupin zabezpečení sítě, doporučujeme, aby bylo povoleno protokolování NSG Flow na všech skupin zabezpečení sítě použilicích podsíť prostředku nebo síťové rozhraní, aby se zajistilo, že bude zaznamenáván veškerý provoz. Další informace o skupinách zabezpečení sítě najdete v tématu [o vyhodnocení provozu](../virtual-network/security-overview.md#how-traffic-is-evaluated) . 
 

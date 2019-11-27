@@ -1,5 +1,5 @@
 ---
-title: Azure MFA Server and Active Directory - Azure Active Directory
+title: Azure MFA Server a služba Active Directory – Azure Active Directory
 description: Postup integrace Azure Multi-Factor Authentication Serveru se službou Active Directory pro synchronizaci adresářů.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -24,16 +24,16 @@ ms.locfileid: "74404233"
 Pro integraci se službou Active Directory nebo jiným adresářem LDAP použijte část Azure MFA Serveru Integrace adresáře. Můžete nastavit atributy podle schématu adresáře a zapnout automatickou synchronizaci uživatelů.
 
 > [!IMPORTANT]
-> As of July 1, 2019, Microsoft will no longer offer MFA Server for new deployments. New customers who would like to require multi-factor authentication from their users should use cloud-based Azure Multi-Factor Authentication. Existing customers who have activated MFA Server prior to July 1 will be able to download the latest version, future updates and generate activation credentials as usual.
+> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 ## <a name="settings"></a>Nastavení
 
 Ve výchozím nastavení je Azure Multi-Factor Authentication (MFA) Server nakonfigurován pro import nebo synchronizaci uživatelů ze služby Active Directory.  Karta Integrace adresáře vám umožní potlačit výchozí chování a vytvořit vazbu na jiný adresář LDAP, adresář ADAM, nebo konkrétní ovladač domény služby Active Directory.  Taky umožňuje použití Ověřování pomocí protokolu LDAP na proxy serveru LDAP nebo pro Vázání protokolu LDAP jako cíl pro RADIUS, předběžné ověření pro Ověřování IIS nebo pro primární ověření pro portál User Portal.  V následující tabulce jsou popsaná jednotlivá nastavení.
 
-![Edit LDAP configuration in MFA Server](./media/howto-mfaserver-dir-ad/dirint.png)
+![Upravit konfiguraci LDAP na serveru MFA](./media/howto-mfaserver-dir-ad/dirint.png)
 
 > [!NOTE]
-> Directory integration is not guaranteed to work with directories other than Active Directory Domain Services.
+> Integrace adresáře není zaručena pracovat s jinými adresáři než Active Directory Domain Services.
 
 | Funkce | Popis |
 | --- | --- |
@@ -60,7 +60,7 @@ V následující tabulce jsou popsaná nastavení konfigurace LDAP.
 
 Filtry vám umožní nastavit kritéria pro kvalifikování záznamů při prohledávání adresáře.  Nastavením filtru můžete upřesnit rozsah objektů, které chcete synchronizovat.  
 
-![Configure directory filtering in MFA Server](./media/howto-mfaserver-dir-ad/dirint2.png)
+![Konfigurace filtrování adresářů na serveru MFA](./media/howto-mfaserver-dir-ad/dirint2.png)
 
 Azure Multi-Factor Authentication má tyto tři možnosti filtru:
 
@@ -70,24 +70,24 @@ Azure Multi-Factor Authentication má tyto tři možnosti filtru:
 
 ## <a name="attributes"></a>Atributy
 
-Atributy můžete podle potřeby upravit pro konkrétní adresář.  To vám umožní přidat vlastní atributy a nastavit synchronizaci pouze na atributy, které potřebujete. Use the name of the attribute as defined in the directory schema for the value of each attribute field. Následující tabulka poskytuje další informace k jednotlivým funkcím.
+Atributy můžete podle potřeby upravit pro konkrétní adresář.  To vám umožní přidat vlastní atributy a nastavit synchronizaci pouze na atributy, které potřebujete. Pro hodnotu každého pole atributu použijte název atributu definovaný ve schématu adresáře. Následující tabulka poskytuje další informace k jednotlivým funkcím.
 
 Atributy můžete zadat ručně a nemusí se shodovat s atributem v seznamu atributů.
 
-![Customize directory integration attributes in MFA Server](./media/howto-mfaserver-dir-ad/dirint3.png)
+![Přizpůsobení atributů integrace adresáře na serveru MFA](./media/howto-mfaserver-dir-ad/dirint3.png)
 
 | Funkce | Popis |
 | --- | --- |
 | Jedinečný identifikátor |Zadejte název atributu, který slouží jako jedinečný identifikátor kontejneru, skupiny zabezpečení a záznamů uživatele.  V Active Directory je to obvykle objectGUID. V jiných implementacích LDAP se může používat entryUUID nebo něco podobného.  Výchozí hodnota je objectGUID. |
 | Typ jedinečného identifikátoru |Vyberte typ atributu jedinečného identifikátoru.  V Active Directory má atribut objectGUID typ GUID. V jiných implementacích LDAP se může používat typ Pole bajtů ASCII nebo Řetězec.  Výchozí hodnota je GUID. <br><br>Je důležité tento typ nastavit správně, protože na synchronizační položky se odkazuje pomocí jejich jedinečného identifikátoru. Typ jedinečného identifikátoru se používá pro přímé vyhledání objektu v adresáři.  Pokud se typ nastaví na Řetězec, když adresář ve skutečnosti ukládá hodnotu jako pole znaků ASCII, nebude synchronizace fungovat správně. |
-| Rozlišující název |Zadejte název atributu, který obsahuje rozlišující název pro každý záznam.  V Active Directory je to obvykle distinguishedName. V jiných implementacích LDAP se může používat entryDN nebo něco podobného.  Výchozí hodnota je distinguishedName. <br><br>If an attribute containing just the distinguished name doesn't exist, the ads path attribute may be used.  Část cesty „LDAP://\<server\>/“ se automaticky odstraní a zůstane jen rozlišující název objektu. |
+| Rozlišující název |Zadejte název atributu, který obsahuje rozlišující název pro každý záznam.  V Active Directory je to obvykle distinguishedName. V jiných implementacích LDAP se může používat entryDN nebo něco podobného.  Výchozí hodnota je distinguishedName. <br><br>Pokud atribut obsahující pouze rozlišující název neexistuje, může být použit atribut cesty reklamy.  Část cesty „LDAP://\<server\>/“ se automaticky odstraní a zůstane jen rozlišující název objektu. |
 | Název kontejneru |Zadejte název atributu, který v záznamu kontejneru obsahuje název.  Hodnota tohoto atributu se zobrazí v Hierarchii kontejneru při importu z Active Directory nebo při přidávání synchronizačních položek.  Výchozí hodnota je name. <br><br>Pokud různé kontejnery používají pro své názvy různé atributy, použijte k oddělení několika atributů názvu kontejneru středník.  Pro zobrazení názvu objektu kontejneru se použije první atribut názvu kontejneru, který se v něm najde. |
 | Název skupiny zabezpečení |Zadejte název atributu, který v záznamu skupiny zabezpečení obsahuje název.  Hodnota tohoto atributu se zobrazí v seznamu Skupiny zabezpečení při importu z Active Directory nebo při přidávání synchronizačních položek.  Výchozí hodnota je name. |
 | Uživatelské jméno |Zadejte název atributu, který v záznamu uživatele obsahuje uživatelské jméno.  Hodnota tohoto atributu se použije jako uživatelské jméno pro Multi-Factor Auth Server.  Můžete zadat i druhý, záložní atribut.  Druhý atribut se použije pouze v případě, že první atribut neobsahuje hodnotu pro uživatele.  Výchozí hodnoty jsou userPrincipalName a sAMAccountName. |
 | Jméno |Zadejte název atributu, který v záznamu uživatele obsahuje jméno.  Výchozí hodnota je givenName. |
 | Příjmení |Zadejte název atributu, který v záznamu uživatele obsahuje příjmení.  Výchozí hodnota je sn. |
 | E-mailová adresa |Zadejte název atributu, který v záznamu uživatele obsahuje e-mailovou adresu.  Na e-mailovou adresu se uživateli pošle uvítací e-mail a budou se posílat e-maily s aktualitami.  Výchozí hodnota je mail. |
-| Uživatelská skupina |Zadejte název atributu, který v záznamu uživatele obsahuje uživatelskou skupinu.  Uživatelská skupina se může použít pro filtrování uživatelů v agentovi a v sestavách v Portálu pro správu Multi-Factor Auth Serveru. |
+| Skupina uživatelů |Zadejte název atributu, který v záznamu uživatele obsahuje uživatelskou skupinu.  Uživatelská skupina se může použít pro filtrování uživatelů v agentovi a v sestavách v Portálu pro správu Multi-Factor Auth Serveru. |
 | Popis |Zadejte název atributu, který v záznamu uživatele obsahuje popis.  Popis se používá jen pro vyhledávání.  Výchozí hodnota je description. |
 | Jazyk telefonního hovoru |Zadejte název atributu, který obsahuje krátký název jazyka pro hlasové hovory s uživatelem. |
 | Jazyk textové zprávy |Zadejte název atributu, který obsahuje krátký název jazyka pro SMS zprávy posílané uživateli. |
@@ -95,17 +95,17 @@ Atributy můžete zadat ručně a nemusí se shodovat s atributem v seznamu atri
 | Jazyk tokenu OATH |Zadejte název atributu, který obsahuje krátký název jazyka pro textové zprávy tokenu OATH pro uživatele. |
 | Telefon do zaměstnání |Zadejte název atributu, který v záznamu uživatele obsahuje telefonní číslo do zaměstnání.  Výchozí hodnota je telephoneNumber. |
 | Telefon domů |Zadejte název atributu, který v záznamu uživatele obsahuje telefonní číslo domů.  Výchozí hodnota je homePhone. |
-| Pager |Zadejte název atributu, který v záznamu uživatele obsahuje číslo pageru.  Výchozí hodnota je pager. |
+| Stránkování |Zadejte název atributu, který v záznamu uživatele obsahuje číslo pageru.  Výchozí hodnota je pager. |
 | Mobilní telefon |Zadejte název atributu, který v záznamu uživatele obsahuje číslo na mobilní telefon.  Výchozí hodnota je mobile. |
 | Fax |Zadejte název atributu, který v záznamu uživatele obsahuje číslo faxu.  Výchozí hodnota je facsimileTelephoneNumber. |
 | IP telefon |Zadejte název atributu, který v záznamu uživatele obsahuje číslo IP telefonu.  Výchozí hodnota je ipPhone. |
 | Vlastní |Zadejte název atributu, který v záznamu uživatele obsahuje vlastní číslo telefonu.  Výchozí hodnota je prázdná. |
-| Přípona |Zadejte název atributu, který v záznamu uživatele obsahuje linku telefonního čísla.  Hodnota pole Linka se použije jako linka jen pro primární telefonní číslo.  Výchozí hodnota je prázdná. <br><br>Pokud atribut Linka není zadaný, můžete linky zadat v rámci atributu telefon. V takovém případě před linku zadejte znak „x“, aby se mohla správně parsovat.  Například hodnota 555-123-4567 x890 by znamenala telefonní číslo 555-123-4567 a linku 890. |
+| Linka |Zadejte název atributu, který v záznamu uživatele obsahuje linku telefonního čísla.  Hodnota pole Linka se použije jako linka jen pro primární telefonní číslo.  Výchozí hodnota je prázdná. <br><br>Pokud atribut Linka není zadaný, můžete linky zadat v rámci atributu telefon. V takovém případě před linku zadejte znak „x“, aby se mohla správně parsovat.  Například hodnota 555-123-4567 x890 by znamenala telefonní číslo 555-123-4567 a linku 890. |
 | Tlačítko Obnovit výchozí |Pokud kliknete na **Obnovit výchozí**, všechny atributy se obnoví na výchozí hodnoty.  Výchozí hodnoty by měly fungovat s normální službou Active Directory nebo schématem ADAM. |
 
-To edit attributes, click **Edit** on the Attributes tab.  This brings up a window where you can edit the attributes. Výběrem **...** vedle libovolného atributu otevřete okno, kde můžete zvolit, jaké atributy se mají zobrazit.
+Chcete-li upravit atributy, klikněte na tlačítko **Upravit** na kartě atributy.  Tím se zobrazí okno, kde můžete atributy upravit. Výběrem **...** vedle libovolného atributu otevřete okno, kde můžete zvolit, jaké atributy se mají zobrazit.
 
-![Edit directory attribute mapping in MFA Server](./media/howto-mfaserver-dir-ad/dirint4.png)
+![Upravit mapování atributů adresáře na MFA serveru](./media/howto-mfaserver-dir-ad/dirint4.png)
 
 ## <a name="synchronization"></a>Synchronizace
 
@@ -117,7 +117,7 @@ Služba Multi-Factor Auth ADSync používá rozšíření serveru DirSync LDAP o
 
 Pokud adresář LDAP podporuje ovládací prvek DirSync a je pro něj nakonfigurován, pak bude dotazování na uživatele a skupinu zabezpečení fungovat stejně, jako to funguje se službou Active Directory.  Pokud adresář LDAP ovládací prvek DirSync nepodporuje, pak se při každém cyklu provede úplná synchronizace.
 
-![Synchronization of directory objects to MFA Server](./media/howto-mfaserver-dir-ad/dirint5.png)
+![Synchronizace objektů adresáře do serveru MFA](./media/howto-mfaserver-dir-ad/dirint5.png)
 
 Následující tabulka obsahuje další informace k jednotlivým nastavením na kartě Synchronizace.
 
@@ -143,8 +143,8 @@ Tlačítka Přesunout nahoru a Přesunout dolů umožňují správci změnit po�
 > [!TIP]
 > Po odebrání synchronizačních položek by se měla provést úplná synchronizace.  Po změně pořadí synchronizačních položek by se měla provést úplná synchronizace.  Úplnou synchronizaci můžete provést kliknutím na **Synchronizovat nyní**.
 
-## <a name="multi-factor-authentication-servers"></a>Multi-Factor Authentication servers
+## <a name="multi-factor-authentication-servers"></a>Multi-Factor Authentication servery
 
-Additional Multi-Factor Authentication servers may be set up to serve as a backup RADIUS proxy, LDAP proxy, or for IIS Authentication. Konfigurace synchronizace se sdílí mezi všemi agenty. However, only one of these agents may have the Multi-Factor Authentication server service running. This tab allows you to select the Multi-Factor Authentication server that should be enabled for synchronization.
+Další Multi-Factor Authentication servery je možné nastavit tak, aby sloužily jako záložní proxy server RADIUS, proxy server LDAP nebo ověřování služby IIS. Konfigurace synchronizace se sdílí mezi všemi agenty. Služba Multi-Factor Authentication Server je však možné spustit pouze v jednom z těchto agentů. Na této kartě můžete vybrat server Multi-Factor Authentication, který se má povolit pro synchronizaci.
 
-![Related Multi-Factor Authentication Servers](./media/howto-mfaserver-dir-ad/dirint6.png)
+![Související Multi-Factor Authentication servery](./media/howto-mfaserver-dir-ad/dirint6.png)

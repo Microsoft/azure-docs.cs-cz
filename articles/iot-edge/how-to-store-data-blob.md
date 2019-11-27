@@ -1,6 +1,6 @@
 ---
-title: Store block blobs on devices - Azure IoT Edge | Microsoft Docs
-description: Understand tiering and time-to-live features, see supported blob storage operations, and connect to your blob storage account.
+title: Store objekty BLOB bloku v zařízeních – Azure IoT Edge | Dokumentace Microsoftu
+description: Seznamte se s funkcemi pro zpracování vrstev a času na živé prostředí, najdete v tématu podporované operace služby Blob Storage a připojte se k účtu úložiště objektů BLOB.
 author: arduppal
 manager: mchad
 ms.author: arduppal
@@ -16,95 +16,95 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456774"
 ---
-# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Store data at the edge with Azure Blob Storage on IoT Edge
+# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Ukládání dat na hraničních zařízeních pomocí Azure Blob Storage v IoT Edge
 
-Azure Blob Storage on IoT Edge provides a [block blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) storage solution at the edge. A blob storage module on your IoT Edge device behaves like an Azure block blob service, except the block blobs are stored locally on your IoT Edge device. You can access your blobs using the same Azure storage SDK methods or block blob API calls that you're already used to. This article explains the concepts related to Azure Blob Storage on IoT Edge container that runs a blob service on your IoT Edge device.
+Azure Blob Storage v IoT Edge poskytuje na hranici řešení úložiště [objektů blob bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) . Modul BLOB Storage v zařízení IoT Edge se chová jako služba Azure Block BLOB Service, s výjimkou toho, že objekty blob bloku se ukládají místně na vaše IoT Edge zařízení. Získat přístup pomocí stejných metod, sady SDK služby Azure storage BLOB nebo blokovat volání rozhraní API objektů blob, které jste už zvyklí. V tomto článku se dozvíte o konceptech souvisejících s Azure Blob Storage v kontejneru IoT Edge, na kterém běží služba blob na zařízení IoT Edge.
 
-This module is useful in scenarios:
-* where data needs to be stored locally until it can be processed or transferred to the cloud. This data can be videos, images, finance data, hospital data, or any other unstructured data.
-* when devices are located in a place with limited connectivity.
-* when you want to efficiently process the data locally to get low latency access to the data, such that you can respond to emergencies as quickly as possible.
-* when you want to reduce bandwidth costs and avoid transferring terabytes of data to the cloud. You can process the data locally and send only the processed data to the cloud.
+Tento modul je užitečný ve scénářích:
+* kde je potřeba ukládat data místně, dokud je nebudete moct zpracovat nebo přenést do cloudu. Tato data můžou být videa, obrázky, finanční údaje, ústavní data nebo jiná nestrukturovaná data.
+* zařízení se nachází na místě s omezeným připojením.
+* Pokud chcete efektivně zpracovávat data místně, abyste získali přístup k datům s nízkou latencí, můžete tak rychle reagovat na naléhavé situace.
+* Když chcete snížit náklady na šířku pásma a vyhnout se přenosu terabajtů dat do cloudu. Data můžete zpracovávat místně a odesílat do cloudu jenom zpracovaná data.
 
-Watch the video for quick introduction
+Podívejte se na video s rychlým Úvodem
 > [!VIDEO https://www.youtube.com/embed/xbwgMNGB_3Y]
 
-This module comes with **deviceToCloudUpload** and **deviceAutoDelete** features.
+Tento modul se dodává s funkcemi **deviceToCloudUpload** a **deviceAutoDelete** .
 
-**deviceToCloudUpload** is a configurable functionality. This function automatically uploads the data from your local blob storage to Azure with intermittent internet connectivity support. It allows you to:
+**deviceToCloudUpload** je konfigurovatelná funkce. Tato funkce automaticky nahraje data z místního úložiště objektů blob do Azure s možností občasné podpory připojení k Internetu. Umožňuje:
 
-- Turn ON/OFF the deviceToCloudUpload feature.
-- Choose the order in which the data is copied to Azure like NewestFirst or OldestFirst.
-- Specify the Azure Storage account to which you want your data uploaded.
-- Specify the containers you want to upload to Azure. This module allows you to specify both source and target container names.
-- Choose the ability to delete the blobs immediately, after upload to cloud storage is finished
-- Do full blob upload (using `Put Blob` operation) and block level upload (using `Put Block` and `Put Block List` operations).
+- Zapněte nebo vypněte funkci deviceToCloudUpload.
+- Vyberte pořadí, ve kterém se data zkopírují do Azure, jako je NewestFirst nebo OldestFirst.
+- Zadejte účet Azure Storage, na který chcete data nahrála.
+- Zadejte kontejnery, které chcete nahrát do Azure. Tento modul umožňuje zadat název zdrojového i cílového kontejneru.
+- Volba možnosti Odstranit objekty blob hned po dokončení nahrávání do cloudového úložiště
+- Proveďte úplné nahrání objektu BLOB (pomocí operace `Put Blob`) a nahrávání na úrovni bloku (pomocí operací `Put Block` a `Put Block List`).
 
-This module uses block level upload, when your blob consists of blocks. Here are some of the common scenarios:
+Tento modul používá nahrávání na úrovni bloku, když se objekt BLOB skládá z bloků. Tady jsou některé z běžných scénářů:
 
-- Your application updates some blocks of a previously uploaded blob, this module uploads only the updated blocks and not the whole blob.
-- The module is uploading blob and internet connection goes away, when the connectivity is back again it uploads only the remaining blocks and not the whole blob.
+- Vaše aplikace aktualizuje některé bloky dříve nahraného objektu blob, tento modul nahraje pouze aktualizované bloky, nikoli celý objekt BLOB.
+- Modul odesílá objekt BLOB a připojení k Internetu se ukončí, když se znovu nahrává, nahraje jenom zbývající bloky a ne celý objekt BLOB.
 
-If an unexpected process termination (like power failure) happens during a blob upload, all blocks that were due for the upload will be uploaded again once the module comes back online.
+Pokud během nahrávání objektu BLOB dojde k neočekávanému ukončení procesu (například výpadek napájení), všechny bloky, které byly v důsledku nahrávání, se nahrají znovu, až se modul vrátí do režimu online.
 
-**deviceAutoDelete** is a configurable functionality. This function automatically deletes your blobs from the local storage when the specified duration (measured in minutes) expires. It allows you to:
+**deviceAutoDelete** je konfigurovatelná funkce. Tato funkce automaticky odstraní objekty BLOB z místního úložiště po uplynutí zadané doby trvání (měřeno v minutách). Umožňuje:
 
-- Turn ON/OFF the deviceAutoDelete feature.
-- Specify the time in minutes (deleteAfterMinutes) after which the blobs will be automatically deleted.
-- Choose the ability to retain the blob while it's uploading if the deleteAfterMinutes value expires.
+- Zapněte nebo vypněte funkci deviceAutoDelete.
+- Zadejte dobu v minutách (deleteAfterMinutes), po jejímž uplynutí budou objekty blob automaticky odstraněny.
+- Vyberte možnost zachovat objekt BLOB při jeho nahrávání, pokud hodnota deleteAfterMinutes vyprší.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Zařízení Azure IoT Edge:
 
-- You can use your development machine or a virtual machine as an IoT Edge device by following the steps in the quickstart for [Linux](quickstart-linux.md) or [Windows devices](quickstart.md).
+- Pomocí postupu v rychlém startu pro zařízení se systémem [Linux](quickstart-linux.md) nebo [Windows](quickstart.md)můžete použít vývojový počítač nebo virtuální počítač jako zařízení IoT Edge.
 
-- Refer to [Azure IoT Edge supported systems](support.md#operating-systems) for a list of supported operating systems and architectures. The Azure Blob Storage on IoT Edge module supports following architectures:
+- Seznam podporovaných operačních systémů a architektur najdete v tématu [Azure IoT Edge podporované systémy](support.md#operating-systems) . Modul Azure Blob Storage on IoT Edge podporuje následující architektury:
     - Windows AMD64
     - Linux AMD64
     - Linux ARM32
-    - Linux ARM64 (preview)
+    - Linux ARM64 (Preview)
 
 Cloudové prostředky:
 
 [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Standard v Azure.
 
-## <a name="devicetocloudupload-and-deviceautodelete-properties"></a>deviceToCloudUpload and deviceAutoDelete properties
+## <a name="devicetocloudupload-and-deviceautodelete-properties"></a>vlastnosti deviceToCloudUpload a deviceAutoDelete
 
-Use the module's desired properties to set **deviceToCloudUploadProperties** and **deviceAutoDeleteProperties**. Desired properties can be set during deployment or changed later by editing the module twin without the need to redeploy. We recommend checking the "Module Twin" for `reported configuration` and `configurationValidation` to make sure values are correctly propagated.
+Pomocí požadovaných vlastností modulu nastavte **deviceToCloudUploadProperties** a **deviceAutoDeleteProperties**. Požadované vlastnosti lze nastavit nebo později změnit úpravou modulu bez nutnosti opětovného nasazení. Doporučujeme, abyste u `reported configuration` a `configurationValidation` zkontrolovali, jestli jsou hodnoty správně šířené.
 
 ### <a name="devicetoclouduploadproperties"></a>deviceToCloudUploadProperties
 
-The name of this setting is `deviceToCloudUploadProperties`. If you are using the IoT Edge simulator, set the values to the related environment variables for these properties, which you can find in the explanation section.
+Název tohoto nastavení je `deviceToCloudUploadProperties`. Pokud používáte simulátor IoT Edge, nastavte hodnoty na související proměnné prostředí pro tyto vlastnosti, které najdete v části vysvětlení.
 
 | Vlastnost | Možné hodnoty | Vysvětlení |
 | ----- | ----- | ---- |
-| uploadOn | true, false | Set to `false` by default. If you want to turn the feature on, set this field to `true`. <br><br> Environment variable: `deviceToCloudUploadProperties__uploadOn={false,true}` |
-| uploadOrder | NewestFirst, OldestFirst | Allows you to choose the order in which the data is copied to Azure. Set to `OldestFirst` by default. The order is determined by last modified time of Blob. <br><br> Environment variable: `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` is a connection string that allows you to specify the storage account to which you want your data uploaded. Specify `Azure Storage Account Name`, `Azure Storage Account Key`, `End point suffix`. Add appropriate EndpointSuffix of Azure where data will be uploaded, it varies for Global Azure, Government Azure, and Microsoft Azure Stack. <br><br> You can choose to specify Azure Storage SAS connection string here. But you have to update this property when it expires. <br><br> Environment variable: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
-| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Allows you to specify the container names you want to upload to Azure. This module allows you to specify both source and target container names. If you don't specify the target container name, it will automatically assign the container name as `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. You can create template strings for target container name, check out the possible values column. <br>* %h -> IoT Hub Name (3-50 characters). <br>* %d -> IoT Edge Device ID (1 to 129 characters). <br>* %m -> Module Name (1 to 64 characters). <br>* %c -> Source Container Name (3 to 63 characters). <br><br>Maximum size of the container name is 63 characters, while automatically assigning the target container name if the size of container exceeds 63 characters it will trim each section (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) to 15 characters. <br><br> Environment variable: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
-| deleteAfterUpload | true, false | Set to `false` by default. When it is set to `true`, it will automatically delete the data when upload to cloud storage is finished. <br><br> Environment variable: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
+| uploadOn | true, false | Nastavit na `false` ve výchozím nastavení. Pokud chcete funkci zapnout, nastavte toto pole na `true`. <br><br> Proměnná prostředí: `deviceToCloudUploadProperties__uploadOn={false,true}` |
+| uploadOrder | NewestFirst, OldestFirst | Umožňuje zvolit pořadí, ve kterém se data zkopírují do Azure. Nastavit na `OldestFirst` ve výchozím nastavení. Pořadí je určeno časem poslední změny v objektu BLOB. <br><br> Proměnná prostředí: `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` je připojovací řetězec, který umožňuje určit účet úložiště, na který chcete data nahrát. Zadejte `Azure Storage Account Name`, `Azure Storage Account Key``End point suffix`. Přidejte odpovídající EndpointSuffix z Azure, kam se budou data nahrávat, se liší pro globální Azure, státní správu Azure a Microsoft Azure Stack. <br><br> Sem můžete zadat připojovací řetězec SAS Azure Storage. Ale po vypršení platnosti musíte tuto vlastnost aktualizovat. <br><br> Proměnná prostředí: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Umožňuje zadat názvy kontejnerů, které chcete nahrát do Azure. Tento modul umožňuje zadat název zdrojového i cílového kontejneru. Pokud nezadáte název cílového kontejneru, automaticky se mu přiřadí název kontejneru jako `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Můžete vytvořit řetězce šablon pro název cílového kontejneru, podívejte se do sloupce možné hodnoty. <br>*% h-> IoT Hub název (3-50 znaků). <br>*% d – > IoT Edge ID zařízení (1 až 129 znaků). <br>*% m-> název modulu (1 až 64 znaků). <br>*% c-> název zdrojového kontejneru (3 až 63 znaků). <br><br>Maximální velikost názvu kontejneru je 63 znaků a při automatickém přiřazování názvu cílového kontejneru, pokud velikost kontejneru překročí 63 znaků, se všechny oddíly (IoTHubName, IotEdgeDeviceID, Module, SourceContainerName) oříznou na 15. písmena. <br><br> Proměnná prostředí: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
+| deleteAfterUpload | true, false | Nastavit na `false` ve výchozím nastavení. Pokud je nastavená na `true`, budou data po dokončení nahrávání do cloudového úložiště automaticky odstraňovat. <br><br> Proměnná prostředí: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
 
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
-The name of this setting is `deviceAutoDeleteProperties`. If you are using the IoT Edge simulator, set the values to the related environment variables for these properties, which you can find in the explanation section.
+Název tohoto nastavení je `deviceAutoDeleteProperties`. Pokud používáte simulátor IoT Edge, nastavte hodnoty na související proměnné prostředí pro tyto vlastnosti, které najdete v části vysvětlení.
 
 | Vlastnost | Možné hodnoty | Vysvětlení |
 | ----- | ----- | ---- |
-| deleteOn | true, false | Set to `false` by default. If you want to turn the feature on, set this field to `true`. <br><br> Environment variable: `deviceAutoDeleteProperties__deleteOn={false,true}` |
-| deleteAfterMinutes | `<minutes>` | Specify the time in minutes. The module will automatically delete your blobs from local storage when this value expires. <br><br> Environment variable: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| retainWhileUploading | true, false | By default it is set to `true`, and it will retain the blob while it is uploading to cloud storage if deleteAfterMinutes expires. You can set it to `false` and it will delete the data as soon as deleteAfterMinutes expires. Note: For this property to work uploadOn should be set to true. <br><br> Environment variable: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
+| deleteOn | true, false | Nastavit na `false` ve výchozím nastavení. Pokud chcete funkci zapnout, nastavte toto pole na `true`. <br><br> Proměnná prostředí: `deviceAutoDeleteProperties__deleteOn={false,true}` |
+| deleteAfterMinutes | `<minutes>` | Zadejte čas v minutách. Modul automaticky odstraní objekty BLOB z místního úložiště, jakmile vyprší platnost této hodnoty. <br><br> Proměnná prostředí: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| retainWhileUploading | true, false | Ve výchozím nastavení je nastavená na `true`a při vypršení platnosti deleteAfterMinutes zachová objekt BLOB během nahrávání do cloudového úložiště. Můžete ho nastavit na `false` a tato data budou odstraněna, jakmile vyprší platnost deleteAfterMinutes. Poznámka: aby tato vlastnost fungovala uploadOn, měla by být nastavená na true. <br><br> Proměnná prostředí: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
-## <a name="using-smb-share-as-your-local-storage"></a>Using SMB share as your local storage
-You can provide SMB share as your local storage path, when you deploy Windows container of this module on Windows host.
+## <a name="using-smb-share-as-your-local-storage"></a>Použití sdílené složky SMB jako místního úložiště
+Pokud nasadíte kontejner Windows tohoto modulu na hostitele Windows, můžete jako cestu k místnímu úložišti zadat sdílenou složku SMB.
 
-Make sure the SMB share and IoT device are in mutually trusted domains.
+Ujistěte se, že sdílená složka SMB a zařízení IoT jsou ve vzájemně důvěryhodných doménách.
 
-You can run `New-SmbGlobalMapping` PowerShell command to map the SMB share locally on the IoT device running Windows.
+Můžete spustit příkaz `New-SmbGlobalMapping` PowerShellu pro místní mapování sdílené složky SMB na zařízení IoT s Windows.
 
-Below are the configuration steps:
+Níže jsou uvedené kroky konfigurace:
 ```PowerShell
 $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
@@ -113,18 +113,18 @@ Příklad: <br>
 `$creds = Get-Credential` <br>
 `New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: `
 
-This command will use the credentials to authenticate with the remote SMB server. Then, map the remote share path to G: drive letter (can be any other available drive letter). The IoT device now have the data volume mapped to a path on the G: drive. 
+Tento příkaz použije přihlašovací údaje k ověření u vzdáleného serveru SMB. Pak namapujte cestu vzdálené sdílené složky na G: písmeno jednotky (může to být jakékoli jiné dostupné písmeno jednotky). Zařízení IoT teď má datový svazek namapovaný na cestu na jednotce G:. 
 
-Make sure the user in IoT device can read/write to the remote SMB share.
+Zajistěte, aby uživatel v zařízení IoT mohl číst a zapisovat do vzdálené sdílené složky protokolu SMB.
 
-For your deployment the value of `<storage mount>` can be **G:/ContainerData:C:/BlobRoot**. 
+Pro nasazení může být hodnota `<storage mount>` **G:/ContainerData: C:/BlobRoot**. 
 
-## <a name="granting-directory-access-to-container-user-on-linux"></a>Granting directory access to container user on Linux
-If you have used [volume mount](https://docs.docker.com/storage/volumes/) for storage in your create options for Linux containers then you don't have to do any extra steps, but if you used [bind mount](https://docs.docker.com/storage/bind-mounts/) then these steps are required to run the service correctly.
+## <a name="granting-directory-access-to-container-user-on-linux"></a>Udělení přístupu k adresáři uživateli kontejneru v systému Linux
+Pokud jste v možnostech vytváření pro kontejnery pro Linux používali [připojení svazku](https://docs.docker.com/storage/volumes/) pro úložiště, nemusíte provádět žádné další kroky, ale pokud jste použili [připojení k vazbě](https://docs.docker.com/storage/bind-mounts/) , jsou tyto kroky nezbytné ke správnému spuštění služby.
 
-Following the principle of least privilege to limit the access rights for users to bare minimum permissions they need to perform their work, this module includes a user (name: absie, ID: 11000) and a user group (name: absie, ID: 11000). If the container is started as **root** (default user is **root**), our service will be started as the low-privilege **absie** user. 
+V rámci principu minimálního oprávnění pro omezení oprávnění k přístupu pro uživatele, aby nedošlo k minimálnímu množství oprávnění, které potřebují k provedení své práce, obsahuje tento modul uživatele (název: absie, ID: 11000) a skupinu uživatelů (název: absie, ID: 11000). Pokud je kontejner spuštěný jako **kořen** (výchozí uživatel je **kořenový**), bude naše služba spuštěná jako uživatel s nízkými oprávněními **absie** . 
 
-This behavior makes configuration of the permissions on host path binds crucial for the service to work correctly, otherwise the service will crash with access denied errors. The path that is used in directory binding needs to be accessible by the container user (example: absie 11000). You can grant the container user access to the directory by executing the commands below on the host:
+Díky tomuto chování se konfigurace oprávnění v cestě hostitele váže pro správné fungování služby, jinak služba nebude fungovat s chybami odepření přístupu. Cesta, která se používá ve vazbě adresáře, musí být přístupná uživatelem kontejneru (například: absie 11000). Uživateli kontejneru můžete udělit přístup k adresáři spuštěním příkazů níže na hostiteli:
 
 ```terminal
 sudo chown -R 11000:11000 <blob-dir> 
@@ -136,148 +136,148 @@ Příklad:<br>
 `sudo chmod -R 700 /srv/containerdata `
 
 
-If you need to run the service as a user other than **absie**, you can specify your custom user ID in createOptions under "User" property in your deployment manifest. In such case you need to use default or root group ID `0`.
+Pokud potřebujete službu spustit jako jiný uživatel než **absie**, můžete v manifestu nasazení zadat vlastní ID uživatele v createOptions pod vlastností "User". V takovém případě je nutné použít výchozí ID nebo ID kořenové skupiny `0`.
 
 ```json
 "createOptions": { 
   "User": "<custom user ID>:0" 
 } 
 ```
-Now, grant the container user access to the directory
+Nyní Udělte uživateli kontejneru přístup k adresáři.
 ```terminal
 sudo chown -R <user ID>:<group ID> <blob-dir> 
 sudo chmod -R 700 <blob-dir> 
 ```
 
-## <a name="configure-log-files"></a>Configure log files
+## <a name="configure-log-files"></a>Konfigurace souborů protokolu
 
-For information on configuring log files for your module, see these [production best practices](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics).
+Informace o konfiguraci souborů protokolu pro váš modul najdete v tématu věnovaném [osvědčeným postupům pro produkční](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics)prostředí.
 
-## <a name="connect-to-your-blob-storage-module"></a>Connect to your blob storage module
+## <a name="connect-to-your-blob-storage-module"></a>Připojení k modulu úložiště objektů blob
 
-You can use the account name and account key that you configured for your module to access the blob storage on your IoT Edge device.
+Můžete použít název účtu a klíč účtu, že jste nakonfigurovali pro modul pro přístup k úložišti objektů blob na vašem zařízení IoT Edge.
 
-Specify your IoT Edge device as the blob endpoint for any storage requests that you make to it. You can [Create a connection string for an explicit storage endpoint](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) using the IoT Edge device information and the account name that you configured.
+Zadejte zařízení IoT Edge jako koncový bod objektu blob pro jakékoli úložiště požadavků, které můžete provádět. [Připojovací řetězec pro explicitní koncový bod úložiště můžete vytvořit](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) pomocí IoT Edge informací o zařízení a názvu účtu, který jste nakonfigurovali.
 
-- For modules that are deployed on the same device as where the Azure Blob Storage on IoT Edge module is running, the blob endpoint is: `http://<module name>:11002/<account name>`.
-- For modules or applications running on a different device, you have to choose the right endpoint for your network. Depending on your network setup, choose an endpoint format such that the data traffic from your external module or application can reach the device running the Azure Blob Storage on IoT Edge module. The blob endpoint for this scenario is one of:
+- U modulů, které jsou nasazené na stejném zařízení, jako je spuštěná služba Azure Blob Storage v IoT Edge modulu, je koncový bod objektu BLOB: `http://<module name>:11002/<account name>`.
+- Pro moduly nebo aplikace běžící na jiném zařízení musíte zvolit správný koncový bod pro vaši síť. V závislosti na nastavení sítě vyberte formát koncového bodu tak, aby přenos dat z externího modulu nebo aplikace mohl kontaktovat zařízení, na kterém běží Azure Blob Storage v modulu IoT Edge. Koncový bod objektu BLOB pro tento scénář je jedním z těchto:
   - `http://<device IP >:11002/<account name>`
   - `http://<IoT Edge device hostname>:11002/<account name>`
   - `http://<fully qualified domain name>:11002/<account name>`
 
-## <a name="azure-blob-storage-quickstart-samples"></a>Azure Blob Storage quickstart samples
+## <a name="azure-blob-storage-quickstart-samples"></a>Ukázky pro rychlý Start pro Azure Blob Storage
 
-The Azure Blob Storage documentation includes quickstart sample code in several languages. You can run these samples to test Azure Blob Storage on IoT Edge by changing the blob endpoint to connect to your local blob storage module.
+Dokumentace k Azure Blob Storage obsahuje ukázkový kód pro rychlý Start v několika jazycích. Tyto ukázky můžete použít k otestování Azure Blob Storage na IoT Edge změnou koncového bodu objektu BLOB tak, aby se připojil k vašemu místnímu modulu úložiště objektů BLOB.
 
-The following quickstart samples use languages that are also supported by IoT Edge, so you could deploy them as IoT Edge modules alongside the blob storage module:
+Následující ukázky pro rychlý Start používají jazyky, které jsou podporované také nástrojem IoT Edge, takže je můžete nasadit jako IoT Edge moduly společně s modulem úložiště objektů BLOB:
 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-    - We have a known issue while using this SDK because this version of the module does not return blob creation time. Hence few methods like list blobs does not work. As a workaround set explicitly API version on the blob client to '2017-04-17'. <br>Example:  `block_blob_service._X_MS_VERSION = '2017-04-17'`
+    - Při použití této sady SDK máme známý problém, protože tato verze modulu nevrací čas vytvoření objektu BLOB. Proto některé metody, jako jsou objekty blob seznamu, nefungují. Jako alternativní řešení nastavila explicitně verzi rozhraní API u klienta objektů blob na hodnotu 2017-04-17. <br>Příklad: `block_blob_service._X_MS_VERSION = '2017-04-17'`
 - [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
 - [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
 - [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
 - [Go](../storage/blobs/storage-quickstart-blobs-go.md)
 - [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
 
-## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Connect to your local storage with Azure Storage Explorer
+## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Připojte se k místnímu úložišti pomocí Průzkumník služby Azure Storage
 
-You can use [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) to connect to your local storage account.
+Pomocí [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) se můžete připojit k místnímu účtu úložiště.
 
-1. Download and install Azure Storage Explorer
+1. Stažení a instalace Průzkumník služby Azure Storage
 
-1. Connect to Azure Storage using a connection string
+1. Připojení k Azure Storage pomocí připojovacího řetězce
 
-1. Provide connection string: `DefaultEndpointsProtocol=http;BlobEndpoint=http://<host device name>:11002/<your local account name>;AccountName=<your local account name>;AccountKey=<your local account key>;`
+1. Zadejte připojovací řetězec: `DefaultEndpointsProtocol=http;BlobEndpoint=http://<host device name>:11002/<your local account name>;AccountName=<your local account name>;AccountKey=<your local account key>;`
 
-1. Go through the steps to connect.
+1. Projděte si postup, kterým se připojíte.
 
-1. Create container inside your local storage account
+1. Vytvoření kontejneru v účtu místního úložiště
 
-1. Start uploading files as Block blobs.
+1. Začněte nahrávat soubory jako objekty blob bloku.
    > [!NOTE]
-   > This module does not support Page blobs.
+   > Tento modul nepodporuje objekty blob stránky.
 
-1. You can choose to connect your Azure storage accounts in Storage Explorer, too. This configuration gives you a single view for both your local storage account and Azure storage account
+1. Můžete také připojit účty úložiště Azure v Průzkumník služby Storage. Tato konfigurace poskytuje jedno zobrazení pro účet místního úložiště i pro účet Azure Storage.
 
-## <a name="supported-storage-operations"></a>Supported storage operations
+## <a name="supported-storage-operations"></a>Operace úložiště podporuje
 
-Blob storage modules on IoT Edge use the Azure Storage SDKs, and are consistent with the 2017-04-17 version of the Azure Storage API for block blob endpoints. 
+Moduly BLOB Storage v IoT Edge používají sady Azure Storage SDK a jsou konzistentní s verzí 2017-04-17 rozhraní API Azure Storage pro koncové body objektů blob bloku. 
 
-Because not all Azure Blob Storage operations are supported by Azure Blob Storage on IoT Edge, this section lists the status of each.
+Vzhledem k tomu, že služba Azure Blob Storage v IoT Edge nepodporuje všechny operace Azure Blob Storage, v této části je uveden seznam jejich stavů.
 
 ### <a name="account"></a>Účet
 
-Supported:
+Podporovány:
 
 - Výpis kontejnerů
 
-Unsupported:
+Nepodporovaný:
 
-- Get and set blob service properties
-- Preflight blob request
-- Get blob service stats
-- Get account information
+- Získání a nastavení vlastností služby blob
+- Žádost o předběžné objektů blob
+- Získání statistiky služby blob
+- Získejte informace o účtu
 
 ### <a name="containers"></a>Containers
 
-Supported:
+Podporovány:
 
-- Create and delete container
-- Get container properties and metadata
+- Vytvoření a odstranění kontejneru
+- Získání kontejneru vlastností a metadat
 - Výpis objektů blob
-- Get and set container ACL
-- Set container metadata
+- Získání a nastavení ACL kontejneru
+- Metadata kontejneru sady
 
-Unsupported:
+Nepodporovaný:
 
-- Lease container
+- Zapůjčení kontejneru
 
-### <a name="blobs"></a>Bloby
+### <a name="blobs"></a>Objekty blob
 
-Supported:
+Podporovány:
 
-- Put, get, and delete blob
-- Get and set blob properties
-- Get and set blob metadata
+- Vložit, získání a odstranění objektu blob
+- GET a set vlastnosti objektu blob
+- Získání a nastavení metadata objektu blob
 
-Unsupported:
+Nepodporovaný:
 
-- Lease blob
-- Snapshot blob
-- Copy and abort copy blob
-- Undelete blob
-- Set blob tier
+- Zapůjčení objektu blob
+- Vytvoření snímku objektu blob
+- Zkopírujte a přerušení objekt blob kopírování
+- Obnovit objekt blob
+- Nastavení úrovně objektu blob
 
 ### <a name="block-blobs"></a>Objekty blob bloku
 
-Supported:
+Podporovány:
 
-- Put block
-- Put and get block list
+- Blok vložení
+- Uvést a získat seznam blokovaných položek
 
-Unsupported:
+Nepodporovaný:
 
-- Put block from URL
+- Vložit blok z adresy URL
 
-## <a name="event-grid-on-iot-edge-integration"></a>Event Grid on IoT Edge Integration
+## <a name="event-grid-on-iot-edge-integration"></a>Event Grid při integraci IoT Edge
 > [!CAUTION]
-> The integration with Event Grid on IoT Edge is in preview
+> Integrace s Event Grid v IoT Edge je ve verzi Preview.
 
-This Azure Blob Storage on IoT Edge module now provides integration with Event Grid on IoT Edge. For detailed information on this integration, see the [tutorial to deploy the modules, publish events and verify event delivery](../event-grid/edge/react-blob-storage-events-locally.md).
+Tento Blob Storage Azure v modulu IoT Edge nyní poskytuje integraci s Event Grid IoT Edge. Podrobné informace o této integraci najdete v [kurzu nasazení modulů, publikování událostí a ověření doručení událostí](../event-grid/edge/react-blob-storage-events-locally.md).
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-Here are the [release notes in docker hub](https://hub.docker.com/_/microsoft-azure-blob-storage) for this module
+Tady jsou [poznámky k verzi v Docker Hub](https://hub.docker.com/_/microsoft-azure-blob-storage) pro tento modul.
 
 ## <a name="feedback"></a>Váš názor
 
-Your feedback is important to us to make this module and its features useful and easy to use. Please share your feedback and let us know how we can improve.
+Váš názor je důležitý pro to, abychom tento modul a jeho funkce byly užitečné a snadno použitelné. Sdílejte prosím svůj názor a dejte nám vědět, jak můžeme vylepšit.
 
-You can reach us at absiotfeedback@microsoft.com
+Můžete nás kontaktovat na absiotfeedback@microsoft.com
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn how to [Deploy Azure Blob Storage on IoT Edge](how-to-deploy-blob.md)
+Přečtěte si, jak [nasadit Azure Blob Storage v IoT Edge](how-to-deploy-blob.md)
 
-Stay up-to-date with recent updates and announcement in the [Azure Blob Storage on IoT Edge blog](https://aka.ms/abs-iot-blogpost)
+Udržujte si přehled o nejnovějších aktualizacích a oznámeních ve [službě Azure Blob Storage na blogu IoT Edge](https://aka.ms/abs-iot-blogpost)

@@ -1,6 +1,6 @@
 ---
-title: Conditional Access require managed device - Azure Active Directory
-description: Learn how to configure Azure Active Directory (Azure AD) device-based Conditional Access policies that require managed devices for cloud app access.
+title: Podmíněný přístup vyžaduje spravované zařízení – Azure Active Directory
+description: Naučte se konfigurovat zásady podmíněného přístupu na základě zařízení Azure Active Directory (Azure AD), které vyžadují spravovaná zařízení pro cloudovou aplikaci přístup.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,82 +18,82 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452393"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>How To: Require managed devices for cloud app access with Conditional Access
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování spravovaných zařízení pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
-In a mobile-first, cloud-first world, Azure Active Directory (Azure AD) enables single sign-on to apps, and services from anywhere. Authorized users can access your cloud apps from a broad range of devices including mobile and also personal devices. However, many environments have at least a few apps that should only be accessed by devices that meet your standards for security and compliance. These devices are also known as managed devices. 
+V cloudu, který je mobilní a celosvětový, Azure Active Directory (Azure AD) umožňuje jednotné přihlašování k aplikacím a službám odkudkoli. Autorizovaní uživatelé mají přístup k vašim cloudovým aplikacím z široké škály zařízení, včetně mobilních a i osobních zařízení. Mnoho prostředí však má alespoň několik aplikací, které by měly být k dispozici pouze pro zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. Tato zařízení se také označují jako spravovaná zařízení. 
 
-This article explains how you can configure Conditional Access policies that require managed devices to access certain cloud apps in your environment. 
+Tento článek vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu, které vyžadují spravovaná zařízení pro přístup k určitým cloudovým aplikacím ve vašem prostředí. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Requiring managed devices for cloud app access ties **Azure AD Conditional Access** and **Azure AD device management** together. If you are not familiar with one of these areas yet, you should read the following topics, first:
+Vyžadování spravovaných zařízení pro cloudový přístup k Azure AD je spojeno s **podmíněným přístupem** a **správou zařízení Azure AD** . Pokud jste ještě neseznámili s jednou z těchto oblastí, měli byste si nejdřív přečíst následující témata:
 
-- **[Conditional Access in Azure Active Directory](../active-directory-conditional-access-azure-portal.md)** - This article provides you with a conceptual overview of Conditional Access and the related terminology.
-- **[Introduction to device management in Azure Active Directory](../devices/overview.md)** - This article gives you an overview of the various options you have to get devices under organizational control. 
+- **[Podmíněný přístup v Azure Active Directory](../active-directory-conditional-access-azure-portal.md)** – Tento článek poskytuje koncepční přehled podmíněného přístupu a související terminologie.
+- **[Seznámení se správou zařízení v Azure Active Directory](../devices/overview.md)** – Tento článek poskytuje přehled různých možností, které je třeba získat v rámci organizačního řízení. 
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-Mastering the balance between security and productivity is a challenge. The proliferation of supported devices to access your cloud resources helps to improve the productivity of your users. On the flip side, you probably don't want certain resources in your environment to be accessed by devices with an unknown protection level. For the affected resources, you should require that users can only access them using a managed device. 
+Hlavní vyvážení mezi zabezpečením a produktivitou je výzvou. Rozšíření podporovaných zařízení pro přístup k vašim cloudovým prostředkům pomáhá zlepšit produktivitu vašich uživatelů. Na překlopení nebudete pravděpodobně chtít, aby zařízení s neznámou úrovní ochrany měla k některým prostředkům ve vašem prostředí. U ovlivněných prostředků byste měli vyžadovat, aby k nim uživatelé měli přístup jenom pomocí spravovaného zařízení. 
 
-With Azure AD Conditional Access, you can address this requirement with a single policy that grants access:
+Pomocí podmíněného přístupu Azure AD můžete tento požadavek vyřešit pomocí jediné zásady, která udělí přístup:
 
-- To selected cloud apps
-- For selected users and groups
-- Requiring a managed device
+- Pro vybrané cloudové aplikace
+- Pro vybrané uživatele a skupiny
+- Vyžadování spravovaného zařízení
 
-## <a name="managed-devices"></a>Managed devices  
+## <a name="managed-devices"></a>Spravovaná zařízení  
 
-In simple terms, managed devices are devices that are under *some sort* of organizational control. In Azure AD, the prerequisite for a managed device is that it has been registered with Azure AD. Registering a device creates an identity for the device in form of a device object. This object is used by Azure to track status information about a device. As an Azure AD administrator, you can already use this object to toggle (enable/disable) the state of a device.
+V jednoduchých výrazech jsou spravovaná zařízení zařízení, která jsou v rámci *určitého uspořádání* organizačního řízení. V Azure AD je předpokladem pro spravované zařízení, že je zaregistrovaný ve službě Azure AD. Registrace zařízení vytvoří identitu pro zařízení ve formě objektu zařízení. Tento objekt používá Azure ke sledování informací o stavu zařízení. Jako správce Azure AD už můžete tento objekt použít k přepínání (povolení nebo zakázání) stavu zařízení.
   
-![Device-based conditions](./media/require-managed-devices/32.png)
+![Podmínky založené na zařízení](./media/require-managed-devices/32.png)
 
-To get a device registered with Azure AD, you have three options: 
+Pokud chcete získat zařízení zaregistrované ve službě Azure AD, máte tři možnosti: 
 
-- **Azure AD registered devices** - to get a personal device registered with Azure AD
-- **Azure AD joined devices** - to get an organizational Windows 10 device that is not joined to an on-premises AD registered with Azure AD. 
-- **Hybrid Azure AD joined devices** - to get a Windows 10 or supported down-level device that is joined to an on-premises AD registered with Azure AD.
+- **Zařízení registrovaná v Azure AD** – k získání osobního zařízení zaregistrovaného ve službě Azure AD
+- **Zařízení připojená k Azure AD** – k získání firemního zařízení s Windows 10, které není připojené k místní službě AD zaregistrovanou ve službě Azure AD. 
+- **Hybridní zařízení připojená k Azure AD** – Pokud chcete získat Windows 10 nebo podporovaná zařízení nižší úrovně, která jsou připojená k místní službě AD zaregistrovanou ve službě Azure AD.
 
-These three options are discussed in the article [What is a device identity?](../devices/overview.md)
+Tyto tři možnosti jsou popsány v článku [co je identita zařízení?](../devices/overview.md)
 
-To become a managed device, a registered device must be either a **Hybrid Azure AD joined device** or a **device that has been marked as compliant**.  
+Aby se stala spravované zařízení, musí se jednat o zařízení připojené k **hybridní službě Azure AD** nebo o **zařízení, které je označené jako vyhovující**.  
 
-![Device-based conditions](./media/require-managed-devices/47.png)
+![Podmínky založené na zařízení](./media/require-managed-devices/47.png)
  
-## <a name="require-hybrid-azure-ad-joined-devices"></a>Require Hybrid Azure AD joined devices
+## <a name="require-hybrid-azure-ad-joined-devices"></a>Vyžadovat zařízení připojená k hybridní službě Azure AD
 
-In your Conditional Access policy, you can select **Require Hybrid Azure AD joined device** to state that the selected cloud apps can only be accessed using a managed device. 
+V rámci zásad podmíněného přístupu můžete vybrat **vyžadovat zařízení připojené k hybridní službě Azure AD** , ke kterému se mají přístup k vybraným cloudovým aplikacím přistupovat jenom pomocí spravovaného zařízení. 
 
-![Device-based conditions](./media/require-managed-devices/10.png)
+![Podmínky založené na zařízení](./media/require-managed-devices/10.png)
 
-This setting only applies to Windows 10 or down-level devices such as Windows 7 or Windows 8 that are joined to an on-premises AD. You can only register these devices with Azure AD using a Hybrid Azure AD join, which is an [automated process](../devices/hybrid-azuread-join-plan.md) to get a Windows 10 device registered. 
+Toto nastavení platí jenom pro zařízení s Windows 10 nebo nižší úrovně, jako je Windows 7 nebo Windows 8, která jsou připojená k místní službě AD. Tato zařízení můžete zaregistrovat jenom ve službě Azure AD s využitím hybridního připojení k Azure AD, což je [automatizovaný proces](../devices/hybrid-azuread-join-plan.md) získání registrovaného zařízení s Windows 10. 
 
-![Device-based conditions](./media/require-managed-devices/45.png)
+![Podmínky založené na zařízení](./media/require-managed-devices/45.png)
 
-What makes a Hybrid Azure AD joined device a managed device?  For devices that are joined to an on-premises AD, it is assumed that the control over these devices is enforced using management solutions such as **System Center Configuration Manager (SCCM)** or **group policy (GP)** to manage them. Because there is no method for Azure AD to determine whether any of these methods has been applied to a device, requiring a hybrid Azure AD joined device is a relatively weak mechanism to require a managed device. It is up to you as an administrator to judge whether the methods that are applied to your on-premises domain-joined devices are strong enough to constitute a managed device if such a device is also a Hybrid Azure AD joined device.
+K čemu zařízení připojené k hybridní službě Azure AD využívá spravované zařízení?  U zařízení, která jsou připojená k místní službě AD, se předpokládá, že se ovládací prvek u těchto zařízení vynutil pomocí řešení pro správu, jako je například **System Center Configuration Manager (SCCM)** nebo **Zásady skupiny (GP)** , abyste je mohli spravovat. Vzhledem k tomu, že neexistuje žádná metoda pro Azure AD, která by mohla zjistit, jestli se některá z těchto metod v zařízení nepoužívala, je nutné, aby zařízení připojené k hybridní službě Azure AD mělo poměrně slabý mechanismus pro vyžadování spravovaného zařízení. Je to na vás jako správce, aby bylo možné posoudit, jestli jsou metody, které se vztahují na vaše místní zařízení připojená k doméně, dostatečně silné, aby představovaly spravované zařízení, pokud takové zařízení je také hybridní zařízení připojené k Azure AD.
 
-## <a name="require-device-to-be-marked-as-compliant"></a>Require device to be marked as compliant
+## <a name="require-device-to-be-marked-as-compliant"></a>Vyžadovat, aby zařízení bylo označené jako vyhovující
 
-The option to *require a device to be marked as compliant* is the strongest form to request a managed device.
+Možnost vyžadovat, *aby zařízení byla označena jako vyhovující předpisům* , je nejsilnějším formulářem pro vyžádání spravovaného zařízení.
 
-![Device-based conditions](./media/require-managed-devices/11.png)
+![Podmínky založené na zařízení](./media/require-managed-devices/11.png)
 
-This option requires a device to be registered with Azure AD, and also to be marked as compliant by:
+Tato možnost vyžaduje, aby zařízení bylo zaregistrované ve službě Azure AD a taky bylo označeno jako vyhovující tomuto:
          
 - Intune
-- A third-party mobile device management (MDM) system that manages Windows 10 devices via Azure AD integration. Third-party MDM systems for device OS types other than Windows 10 are not supported.
+- Systém správy mobilních zařízení (MDM) třetí strany, který spravuje zařízení s Windows 10 prostřednictvím integrace služby Azure AD. Systémy MDM třetích stran pro jiné typy operačních systémů zařízení, než je Windows 10, se nepodporují.
  
-![Device-based conditions](./media/require-managed-devices/46.png)
+![Podmínky založené na zařízení](./media/require-managed-devices/46.png)
 
-For a device that is marked as compliant, you can assume that: 
+U zařízení, které je označeno jako vyhovující, můžete předpokládat, že: 
 
-- The mobile devices your workforce uses to access company data are managed
-- Mobile apps your workforce uses are managed
-- Your company information is protected by helping to control the way your workforce accesses and shares it
-- The device and its apps are compliant with company security requirements
+- Mobilní zařízení, která vaši zaměstnanci používají pro přístup k firemním datům, se spravují.
+- Mobilní aplikace, které vaše zaměstnanci používají, se spravují.
+- Vaše firemní informace jsou chráněné tím, že pomáhají řídit způsob, jakým vaše zaměstnanci přistupují a sdílí je.
+- Zařízení a jeho aplikace vyhovují požadavkům na zabezpečení společnosti.
 
 > [!NOTE]
-> If you configure a policy to require compliant devices users may be prompted on Mac, iOS, and Android to select a device certificate during policy evaluation. This is a known behavior.
+> Pokud nakonfigurujete zásadu, která bude vyžadovat vyhovující zařízení, můžou se uživatelé na Macu, iOS a Androidu zobrazit výzva k výběru certifikátu zařízení během hodnocení zásad. Toto chování je známé.
 
 ## <a name="next-steps"></a>Další kroky
 
-Before configuring a device-based Conditional Access policy in your environment, you should take a look at the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+Před konfigurací zásad podmíněného přístupu na základě zařízení ve vašem prostředí byste se měli podívat na [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

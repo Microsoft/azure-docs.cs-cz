@@ -123,7 +123,7 @@ Na stránce **přiřazení hosta** se zobrazí všechny dostupné podrobnosti o 
 
 ![Zobrazit podrobnosti o kompatibilitě](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Azure Powershell
 
 Podrobnosti o kompatibilitě můžete zobrazit také z Azure PowerShell. Nejdřív se ujistěte, že máte nainstalovaný konfigurační modul hosta.
 

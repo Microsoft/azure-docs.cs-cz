@@ -1,6 +1,6 @@
 ---
-title: YAML reference - ACR Tasks
-description: Reference for defining tasks in YAML for ACR Tasks, including task properties, step types, step properties, and built-in variables.
+title: YAML reference – úlohy ACR
+description: Referenční informace k definování úkolů v YAML pro úlohy ACR, včetně vlastností úloh, typů kroků, vlastností kroku a integrovaných proměnných.
 ms.topic: article
 ms.date: 10/23/2019
 ms.openlocfilehash: a27f55d08a7ed5d7bf3360030eabefc4b7720b82
@@ -10,33 +10,33 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454646"
 ---
-# <a name="acr-tasks-reference-yaml"></a>ACR Tasks reference: YAML
+# <a name="acr-tasks-reference-yaml"></a>Odkazy na úlohy ACR: YAML
 
-Multi-step task definition in ACR Tasks provides a container-centric compute primitive focused on building, testing, and patching containers. This article covers the commands, parameters, properties, and syntax for the YAML files that define your multi-step tasks.
+Definice více kroků v úlohách ACR poskytuje primitivní výpočetní prostředí zaměřené na kontejnery zaměřené na vytváření, testování a opravy kontejnerů. Tento článek se zabývá příkazy, parametry, vlastnostmi a syntaxí souborů YAML, které definují úlohy s více kroky.
 
-This article contains reference for creating multi-step task YAML files for ACR Tasks. If you'd like an introduction to ACR Tasks, see the [ACR Tasks overview](container-registry-tasks-overview.md).
+Tento článek obsahuje referenční informace k vytváření YAML souborů úloh s více kroky pro úlohy ACR. Pokud se chcete seznámit s ACR úkoly, přečtěte si téma [Přehled úloh ACR](container-registry-tasks-overview.md).
 
-## <a name="acr-taskyaml-file-format"></a>acr-task.yaml file format
+## <a name="acr-taskyaml-file-format"></a>ACR-Task. yaml – formát souboru
 
-ACR Tasks supports multi-step task declaration in standard YAML syntax. You define a task's steps in a YAML file. You can then run the task manually by passing the file to the [az acr run][az-acr-run] command. Or, use the file to create a task with [az acr task create][az-acr-task-create] that's triggered automatically on a Git commit or base image update. Although this article refers to `acr-task.yaml` as the file containing the steps, ACR Tasks supports any valid filename with a [supported extension](#supported-task-filename-extensions).
+Úlohy ACR podporují deklaraci úlohy ve více krocích ve standardní syntaxi YAML. Kroky úkolu definujete v souboru YAML. Tuto úlohu pak můžete spustit ručně tak, že soubor předáte do příkazu [AZ ACR Run][az-acr-run] . Nebo pomocí souboru vytvořte úlohu s příkazem [AZ ACR Task Create][az-acr-task-create] , který se automaticky aktivuje na základě potvrzení Git nebo aktualizaci základní image. I když tento článek obsahuje `acr-task.yaml` jako soubor obsahující kroky, úlohy ACR podporují libovolný platný název souboru s [podporovanou příponou](#supported-task-filename-extensions).
 
-The top-level `acr-task.yaml` primitives are **task properties**, **step types**, and **step properties**:
+`acr-task.yaml` primitivních hodnot na nejvyšší úrovni jsou **Vlastnosti úlohy**, **typy kroků**a **Vlastnosti kroku**:
 
-* [Task properties](#task-properties) apply to all steps throughout task execution. There are several global task properties, including:
+* [Vlastnosti úlohy](#task-properties) se vztahují na všechny kroky v průběhu provádění úlohy. Existuje několik globálních vlastností úlohy, včetně:
   * `version`
   * `stepTimeout`
   * `workingDirectory`
-* [Task step types](#task-step-types) represent the types of actions that can be performed in a task. There are three step types:
+* [Typy kroků úlohy](#task-step-types) reprezentují typy akcí, které lze provést v rámci úlohy. Existují tři typy kroků:
   * `build`
   * `push`
   * `cmd`
-* [Task step properties](#task-step-properties) are parameters that apply to an individual step. There are several step properties, including:
+* [Vlastnosti kroku úlohy](#task-step-properties) jsou parametry, které platí pro jednotlivé kroky. K dispozici je několik vlastností kroku, včetně:
   * `startDelay`
   * `timeout`
   * `when`
-  * ...and many more.
+  * ... a spousta dalších.
 
-The base format of an `acr-task.yaml` file, including some common step properties, follows. While not an exhaustive representation of all available step properties or step type usage, it provides a quick overview of the basic file format.
+Základní formát souboru `acr-task.yaml`, včetně některých běžných vlastností kroku, je následující. I když není vyčerpávající reprezentace všech dostupných vlastností kroku nebo použití typu kroku, poskytuje rychlý přehled základního formátu souborů.
 
 ```yml
 version: # acr-task.yaml format version.
@@ -49,78 +49,78 @@ steps: # A collection of image or container actions.
     startDelay: # Step property that specifies the number of seconds to wait before starting execution.
 ```
 
-### <a name="supported-task-filename-extensions"></a>Supported task filename extensions
+### <a name="supported-task-filename-extensions"></a>Podporovaná rozšíření názvu souboru úlohy
 
-ACR Tasks has reserved several filename extensions, including `.yaml`, that it will process as a task file. Any extension *not* in the following list is considered by ACR Tasks to be a Dockerfile: .yaml, .yml, .toml, .json, .sh, .bash, .zsh, .ps1, .ps, .cmd, .bat, .ts, .js, .php, .py, .rb, .lua
+ACR úlohy rezervovaly několik přípon názvů souborů, včetně `.yaml`, které zpracuje jako soubor úlohy. Jakékoli rozšíření, které *není* v následujícím seznamu, je považováno za ACR úlohy souboru Dockerfile:. yaml,. yml,. toml,. JSON,. sh,. bash,. zsh,. ps1,. PS,. cmd,. bat,. TS,. js,. php,. py,.
 
-YAML is the only file format currently supported by ACR Tasks. The other filename extensions are reserved for possible future support.
+YAML je jediný formát souboru, který je aktuálně podporován úlohami ACR. Ostatní přípony názvů souborů jsou vyhrazené pro možnou budoucí podporu.
 
-## <a name="run-the-sample-tasks"></a>Run the sample tasks
+## <a name="run-the-sample-tasks"></a>Spuštění ukázkových úloh
 
-There are several sample task files referenced in the following sections of this article. The sample tasks are in a public GitHub repository, [Azure-Samples/acr-tasks][acr-tasks]. You can run them with the Azure CLI command [az acr run][az-acr-run]. The sample commands are similar to:
+V následujících částech tohoto článku je odkazováno na několik ukázkových souborů úloh. Ukázkové úlohy jsou ve veřejném úložišti GitHubu, [Azure-Samples/ACR-Tasks][acr-tasks]. Můžete je spustit pomocí příkazu Azure CLI [AZ ACR Run][az-acr-run]. Ukázkové příkazy jsou podobné následujícímu:
 
 ```azurecli
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-The formatting of the sample commands assumes you've configured a default registry in the Azure CLI, so they omit the `--registry` parameter. To configure a default registry, use the [az configure][az-configure] command with the `--defaults` parameter, which accepts an `acr=REGISTRY_NAME` value.
+Formátování ukázkových příkazů předpokládá, že jste nakonfigurovali výchozí registr v rozhraní příkazového řádku Azure CLI, takže vynechá parametr `--registry`. Pokud chcete nakonfigurovat výchozí registr, použijte příkaz [AZ Configure][az-configure] s parametrem `--defaults`, který přijímá hodnotu `acr=REGISTRY_NAME`.
 
-For example, to configure the Azure CLI with a default registry named "myregistry":
+Pokud třeba chcete nakonfigurovat Azure CLI s výchozím registrem s názvem "myregistry":
 
 ```azurecli
 az configure --defaults acr=myregistry
 ```
 
-## <a name="task-properties"></a>Task properties
+## <a name="task-properties"></a>Vlastnosti úlohy
 
-Task properties typically appear at the top of an `acr-task.yaml` file, and are global properties that apply throughout the full execution of the task steps. Some of these global properties can be overridden within an individual step.
+Vlastnosti úlohy se obvykle zobrazují v horní části souboru `acr-task.yaml` a jsou globální vlastnosti, které se uplatňují v celém plném provedení kroků úkolu. Některé z těchto globálních vlastností lze přepsat v rámci jednotlivého kroku.
 
-| Vlastnost | Typ | Volitelné | Popis | Override supported | Výchozí hodnota |
+| Vlastnost | Typ | volitelná, | Popis | Přepsání podporováno | Výchozí hodnota |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | Ano | The version of the `acr-task.yaml` file as parsed by the ACR Tasks service. While ACR Tasks strives to maintain backward compatibility, this value allows ACR Tasks to maintain compatibility within a defined version. If unspecified, defaults to the latest version. | Ne | Žádné |
-| `stepTimeout` | int (seconds) | Ano | The maximum number of seconds a step can run. If the property is specified on a task, it sets the default `timeout` property of all the steps. If the `timeout` property is specified on a step, it overrides the property provided by the task. | Ano | 600 (10 minutes) |
-| `workingDirectory` | string | Ano | The working directory of the container during runtime. If the property is specified on a task, it sets the default `workingDirectory` property of all the steps. If specified on a step, it overrides the property provided by the task. | Ano | `$HOME` |
-| `env` | [string, string, ...] | Ano |  Array of strings in `key=value` format that define the environment variables for the task. If the property is specified on a task, it sets the default `env` property of all the steps. If specified on a step, it overrides any environment variables inherited from the task. | Žádné |
-| `secrets` | [secret, secret, ...] | Ano | Array of [secret](#secret) objects. | Žádné |
-| `networks` | [network, network, ...] | Ano | Array of [network](#network) objects. | Žádné |
+| `version` | řetězec | Ano | Verze `acr-task.yaml` souboru, jak je analyzována službou úlohy ACR. I když se ACR úlohy snaží zachovat zpětnou kompatibilitu, tato hodnota umožňuje úlohám ACR zachovat kompatibilitu v rámci definované verze. Pokud tento parametr nezadáte, použije se výchozí verze na nejnovější verzi. | Ne | Žádné |
+| `stepTimeout` | int (sekundy) | Ano | Maximální počet sekund, po které může být krok spuštěn. Pokud je vlastnost určena pro úlohu, nastaví výchozí vlastnost `timeout` všech kroků. Pokud je vlastnost `timeout` v kroku určena, Přepisuje vlastnost poskytnutou úlohou. | Ano | 600 (10 minut) |
+| `workingDirectory` | řetězec | Ano | Pracovní adresář kontejneru během běhu. Pokud je vlastnost určena pro úlohu, nastaví výchozí vlastnost `workingDirectory` všech kroků. Pokud je zadáno v kroku, přepíše vlastnost poskytnutou úlohou. | Ano | `$HOME` |
+| `env` | [řetězec, řetězec,...] | Ano |  Pole řetězců ve formátu `key=value`, které definují proměnné prostředí pro úlohu. Pokud je vlastnost určena pro úlohu, nastaví výchozí vlastnost `env` všech kroků. V případě zadání v kroku přepíše všechny proměnné prostředí zděděné z úlohy. | Žádné |
+| `secrets` | [tajný klíč, tajný kód,...] | Ano | Pole [tajných](#secret) objektů. | Žádné |
+| `networks` | [síť, síť,...] | Ano | Pole [síťových](#network) objektů. | Žádné |
 
-### <a name="secret"></a>Tajný kód
+### <a name="secret"></a>secret
 
-The secret object has the following properties.
+Objekt tajného kódu má následující vlastnosti.
 
-| Vlastnost | Typ | Volitelné | Popis | Výchozí hodnota |
+| Vlastnost | Typ | volitelná, | Popis | Výchozí hodnota |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | string | Ne | The identifier of the secret. | Žádné |
-| `keyvault` | string | Ano | The Azure Key Vault Secret URL. | Žádné |
-| `clientID` | string | Ano | The client ID of the [user-assigned managed identity](container-registry-tasks-authentication-managed-identity.md) for Azure resources. | Žádné |
+| `id` | řetězec | Ne | Identifikátor tajného klíče | Žádné |
+| `keyvault` | řetězec | Ano | Adresa URL Azure Key Vault tajného klíče | Žádné |
+| `clientID` | řetězec | Ano | ID klienta [spravované identity přiřazené uživatelem](container-registry-tasks-authentication-managed-identity.md) pro prostředky Azure. | Žádné |
 
-### <a name="network"></a>network
+### <a name="network"></a>Sítě
 
-The network object has the following properties.
+Objekt sítě má následující vlastnosti.
 
-| Vlastnost | Typ | Volitelné | Popis | Výchozí hodnota |
+| Vlastnost | Typ | volitelná, | Popis | Výchozí hodnota |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | string | Ne | The name of the network. | Žádné |
-| `driver` | string | Ano | The driver to manage the network. | Žádné |
-| `ipv6` | bool | Ano | Whether IPv6 networking is enabled. | `false` |
-| `skipCreation` | bool | Ano | Whether to skip network creation. | `false` |
-| `isDefault` | bool | Ano | Whether the network is a default network provided with Azure Container Registry | `false` |
+| `name` | řetězec | Ne | Název sítě. | Žádné |
+| `driver` | řetězec | Ano | Ovladač pro správu sítě. | Žádné |
+| `ipv6` | bool | Ano | Zda je povolená síť s protokolem IPv6. | `false` |
+| `skipCreation` | bool | Ano | Zda se má přeskočit vytváření sítě. | `false` |
+| `isDefault` | bool | Ano | Zda je síť výchozí sítí poskytovanou pomocí Azure Container Registry | `false` |
 
-## <a name="task-step-types"></a>Task step types
+## <a name="task-step-types"></a>Typy kroků úlohy
 
-ACR Tasks supports three step types. Each step type supports several properties, detailed in the section for each step type.
+Úlohy ACR podporují tři typy kroků. Každý typ kroku podporuje několik vlastností, které jsou popsány v části pro každý typ kroku.
 
-| Step type | Popis |
+| Typ kroku | Popis |
 | --------- | ----------- |
-| [`build`](#build) | Builds a container image using familiar `docker build` syntax. |
-| [`push`](#push) | Executes a `docker push` of newly built or retagged images to a container registry. Azure Container Registry, other private registries, and the public Docker Hub are supported. |
-| [`cmd`](#cmd) | Runs a container as a command, with parameters passed to the container's `[ENTRYPOINT]`. The `cmd` step type supports parameters like `env`, `detach`, and other familiar `docker run` command options, enabling unit and functional testing with concurrent container execution. |
+| [`build`](#build) | Vytvoří Image kontejneru pomocí známé `docker build` syntaxe. |
+| [`push`](#push) | Spustí `docker push` nově vytvořených nebo přetagovaných imagí do registru kontejneru. Podporují se Azure Container Registry, jiné privátní registry a veřejné centrum Docker. |
+| [`cmd`](#cmd) | Spustí kontejner jako příkaz s parametry předanými `[ENTRYPOINT]`kontejneru. Typ kroku `cmd` podporuje parametry jako `env`, `detach`a další známé `docker run` možnosti příkazu, povolení jednotky a funkční testování pomocí souběžného spouštění kontejnerů. |
 
-## <a name="build"></a>build
+## <a name="build"></a>budování
 
-Build a container image. The `build` step type represents a multi-tenant, secure means of running `docker build` in the cloud as a first-class primitive.
+Sestavte image kontejneru. Typ kroku `build` představuje více tenantů, zabezpečených způsobů spouštění `docker build` v cloudu jako primitivní základní třídy.
 
-### <a name="syntax-build"></a>Syntax: build
+### <a name="syntax-build"></a>Syntaxe: Build
 
 ```yml
 version: v1.1.0
@@ -129,44 +129,44 @@ steps:
     [property]: [value]
 ```
 
-The `build` step type supports the parameters in the following table. The `build` step type also supports all build options of the [docker build](https://docs.docker.com/engine/reference/commandline/build/) command, such as `--build-arg` to set build-time variables.
+Typ kroku `build` podporuje parametry v následující tabulce. `build` typ kroku podporuje také všechny možnosti sestavení příkazu [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) , jako je například `--build-arg` pro nastavení proměnných doby sestavení.
 
-| Parametr | Popis | Volitelné |
+| Parametr | Popis | volitelná, |
 | --------- | ----------- | :-------: |
-| `-t` &#124; `--image` | Defines the fully qualified `image:tag` of the built image.<br /><br />As images may be used for inner task validations, such as functional tests, not all images require `push` to a registry. However, to instance an image within a Task execution, the image does need a name to reference.<br /><br />Unlike `az acr build`, running ACR Tasks doesn't provide default push behavior. With ACR Tasks, the default scenario assumes the ability to build, validate, then push an image. See [push](#push) for how to optionally push built images. | Ano |
-| `-f` &#124; `--file` | Specifies the Dockerfile passed to `docker build`. If not specified, the default Dockerfile in the root of the context is assumed. To specify a Dockerfile, pass the filename relative to the root of the context. | Ano |
-| `context` | The root directory passed to `docker build`. The root directory of each task is set to a shared [workingDirectory](#task-step-properties), and includes the root of the associated Git cloned directory. | Ne |
+| `-t` &#124; `--image` | Definuje plně kvalifikovaný `image:tag` sestavené image.<br /><br />V případě, že je možné použít obrázky pro ověření vnitřních úkolů, jako jsou funkční testy, nemusí všechny bitové kopie `push` do registru. Chcete-li však vytvořit instanci obrázku v rámci provádění úlohy, obrázek bude potřebovat název, který bude odkazovat.<br /><br />Na rozdíl od `az acr build`neposkytují spuštěné úlohy ACR výchozí nabízené chování. U úloh ACR předpokládá výchozí scénář možnost sestavit, ověřit a potom vložit obrázek. Postup, jak volitelně vydávat sestavené image, najdete v tématu věnovaném [vložení](#push) . | Ano |
+| `-f` &#124; `--file` | Určuje souboru Dockerfile předaný do `docker build`. Pokud není zadán, předpokládá se výchozí souboru Dockerfile v kořenovém adresáři kontextu. Chcete-li zadat souboru Dockerfile, předejte název souboru relativně ke kořenu kontextu. | Ano |
+| `context` | Kořenový adresář předaný do `docker build`. Kořenový adresář každého úkolu je nastaven na sdílenou [WorkingDirectory](#task-step-properties)a zahrnuje kořen přidruženého klonovaného adresáře Git. | Ne |
 
-### <a name="properties-build"></a>Properties: build
+### <a name="properties-build"></a>Vlastnosti: sestavení
 
-The `build` step type supports the following properties. Find details of these properties in the [Task step properties](#task-step-properties) section of this article.
+Typ kroku `build` podporuje následující vlastnosti. Podrobnosti o těchto vlastnostech najdete v části [Vlastnosti kroku úlohy](#task-step-properties) v tomto článku.
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | bool | Volitelné |
-| `disableWorkingDirectoryOverride` | bool | Volitelné |
-| `entryPoint` | string | Volitelné |
-| `env` | [string, string, ...] | Volitelné |
-| `expose` | [string, string, ...] | Volitelné |
-| `id` | string | Volitelné |
-| `ignoreErrors` | bool | Volitelné |
-| `isolation` | string | Volitelné |
-| `keep` | bool | Volitelné |
-| `network` | object | Volitelné |
-| `ports` | [string, string, ...] | Volitelné |
-| `pull` | bool | Volitelné |
-| `repeat` | int | Volitelné |
-| `retries` | int | Volitelné |
-| `retryDelay` | int (seconds) | Volitelné |
-| `secret` | object | Volitelné |
-| `startDelay` | int (seconds) | Volitelné |
-| `timeout` | int (seconds) | Volitelné |
-| `when` | [string, string, ...] | Volitelné |
-| `workingDirectory` | string | Volitelné |
+| `detach` | bool | volitelná, |
+| `disableWorkingDirectoryOverride` | bool | volitelná, |
+| `entryPoint` | řetězec | volitelná, |
+| `env` | [řetězec, řetězec,...] | volitelná, |
+| `expose` | [řetězec, řetězec,...] | volitelná, |
+| `id` | řetězec | volitelná, |
+| `ignoreErrors` | bool | volitelná, |
+| `isolation` | řetězec | volitelná, |
+| `keep` | bool | volitelná, |
+| `network` | object | volitelná, |
+| `ports` | [řetězec, řetězec,...] | volitelná, |
+| `pull` | bool | volitelná, |
+| `repeat` | int | volitelná, |
+| `retries` | int | volitelná, |
+| `retryDelay` | int (sekundy) | volitelná, |
+| `secret` | object | volitelná, |
+| `startDelay` | int (sekundy) | volitelná, |
+| `timeout` | int (sekundy) | volitelná, |
+| `when` | [řetězec, řetězec,...] | volitelná, |
+| `workingDirectory` | řetězec | volitelná, |
 
-### <a name="examples-build"></a>Examples: build
+### <a name="examples-build"></a>Příklady: sestavení
 
-#### <a name="build-image---context-in-root"></a>Build image - context in root
+#### <a name="build-image---context-in-root"></a>Image sestavení – kontext v kořenovém adresáři
 
 ```azurecli
 az acr run -f build-hello-world.yaml https://github.com/AzureCR/acr-tasks-sample.git
@@ -175,7 +175,7 @@ az acr run -f build-hello-world.yaml https://github.com/AzureCR/acr-tasks-sample
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml -->
 [!code-yml[task](~/acr-tasks/build-hello-world.yaml)]
 
-#### <a name="build-image---context-in-subdirectory"></a>Build image - context in subdirectory
+#### <a name="build-image---context-in-subdirectory"></a>Sestavit image – kontext v podadresáři
 
 ```yml
 version: v1.1.0
@@ -183,13 +183,13 @@ steps:
   - build: -t $Registry/hello-world -f hello-world.dockerfile ./subDirectory
 ```
 
-## <a name="push"></a>push
+## <a name="push"></a>replik
 
-Push one or more built or retagged images to a container registry. Supports pushing to private registries like Azure Container Registry, or to the public Docker Hub.
+Nahrajte jednu nebo více sestavených nebo přetagovaných imagí do registru kontejneru. Podporuje doručování do privátních registrů, jako je Azure Container Registry, nebo do veřejného centra Docker.
 
-### <a name="syntax-push"></a>Syntax: push
+### <a name="syntax-push"></a>Syntaxe: push
 
-The `push` step type supports a collection of images. YAML collection syntax supports inline and nested formats. Pushing a single image is typically represented using inline syntax:
+Typ kroku `push` podporuje kolekci imagí. Syntaxe kolekce YAML podporuje vložené a vnořené formáty. Vložení jednoho obrázku je obvykle znázorněno pomocí vložené syntaxe:
 
 ```yml
 version: v1.1.0
@@ -198,7 +198,7 @@ steps:
   - push: ["$Registry/hello-world:$ID"]
 ```
 
-For increased readability, use nested syntax when pushing multiple images:
+Pro lepší čitelnost použijte při nahrávání více imagí vnořenou syntaxi:
 
 ```yml
 version: v1.1.0
@@ -209,22 +209,22 @@ steps:
     - $Registry/hello-world:latest
 ```
 
-### <a name="properties-push"></a>Properties: push
+### <a name="properties-push"></a>Vlastnosti: push
 
-The `push` step type supports the following properties. Find details of these properties in the [Task step properties](#task-step-properties) section of this article.
+Typ kroku `push` podporuje následující vlastnosti. Podrobnosti o těchto vlastnostech najdete v části [Vlastnosti kroku úlohy](#task-step-properties) v tomto článku.
 
 | | | |
 | -------- | ---- | -------- |
-| `env` | [string, string, ...] | Volitelné |
-| `id` | string | Volitelné |
-| `ignoreErrors` | bool | Volitelné |
-| `startDelay` | int (seconds) | Volitelné |
-| `timeout` | int (seconds) | Volitelné |
-| `when` | [string, string, ...] | Volitelné |
+| `env` | [řetězec, řetězec,...] | volitelná, |
+| `id` | řetězec | volitelná, |
+| `ignoreErrors` | bool | volitelná, |
+| `startDelay` | int (sekundy) | volitelná, |
+| `timeout` | int (sekundy) | volitelná, |
+| `when` | [řetězec, řetězec,...] | volitelná, |
 
-### <a name="examples-push"></a>Examples: push
+### <a name="examples-push"></a>Příklady: push
 
-#### <a name="push-multiple-images"></a>Push multiple images
+#### <a name="push-multiple-images"></a>Odeslat více obrázků
 
 ```azurecli
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -233,7 +233,7 @@ az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-t
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml -->
 [!code-yml[task](~/acr-tasks/build-push-hello-world.yaml)]
 
-#### <a name="build-push-and-run"></a>Build, push, and run
+#### <a name="build-push-and-run"></a>Sestavení, vložení a spuštění
 
 ```azurecli
 az acr run -f build-run-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -244,9 +244,9 @@ az acr run -f build-run-hello-world.yaml https://github.com/Azure-Samples/acr-ta
 
 ## <a name="cmd"></a>cmd
 
-The `cmd` step type runs a container.
+Typ kroku `cmd` spouští kontejner.
 
-### <a name="syntax-cmd"></a>Syntax: cmd
+### <a name="syntax-cmd"></a>Syntaxe: cmd
 
 ```yml
 version: v1.1.0
@@ -254,40 +254,40 @@ steps:
   - [cmd]: [containerImage]:[tag (optional)] [cmdParameters to the image]
 ```
 
-### <a name="properties-cmd"></a>Properties: cmd
+### <a name="properties-cmd"></a>Vlastnosti: cmd
 
-The `cmd` step type supports the following properties:
+Typ kroku `cmd` podporuje následující vlastnosti:
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | bool | Volitelné |
-| `disableWorkingDirectoryOverride` | bool | Volitelné |
-| `entryPoint` | string | Volitelné |
-| `env` | [string, string, ...] | Volitelné |
-| `expose` | [string, string, ...] | Volitelné |
-| `id` | string | Volitelné |
-| `ignoreErrors` | bool | Volitelné |
-| `isolation` | string | Volitelné |
-| `keep` | bool | Volitelné |
-| `network` | object | Volitelné |
-| `ports` | [string, string, ...] | Volitelné |
-| `pull` | bool | Volitelné |
-| `repeat` | int | Volitelné |
-| `retries` | int | Volitelné |
-| `retryDelay` | int (seconds) | Volitelné |
-| `secret` | object | Volitelné |
-| `startDelay` | int (seconds) | Volitelné |
-| `timeout` | int (seconds) | Volitelné |
-| `when` | [string, string, ...] | Volitelné |
-| `workingDirectory` | string | Volitelné |
+| `detach` | bool | volitelná, |
+| `disableWorkingDirectoryOverride` | bool | volitelná, |
+| `entryPoint` | řetězec | volitelná, |
+| `env` | [řetězec, řetězec,...] | volitelná, |
+| `expose` | [řetězec, řetězec,...] | volitelná, |
+| `id` | řetězec | volitelná, |
+| `ignoreErrors` | bool | volitelná, |
+| `isolation` | řetězec | volitelná, |
+| `keep` | bool | volitelná, |
+| `network` | object | volitelná, |
+| `ports` | [řetězec, řetězec,...] | volitelná, |
+| `pull` | bool | volitelná, |
+| `repeat` | int | volitelná, |
+| `retries` | int | volitelná, |
+| `retryDelay` | int (sekundy) | volitelná, |
+| `secret` | object | volitelná, |
+| `startDelay` | int (sekundy) | volitelná, |
+| `timeout` | int (sekundy) | volitelná, |
+| `when` | [řetězec, řetězec,...] | volitelná, |
+| `workingDirectory` | řetězec | volitelná, |
 
-You can find details of these properties in the [Task step properties](#task-step-properties) section of this article.
+Podrobnosti o těchto vlastnostech najdete v části [Vlastnosti kroku úlohy](#task-step-properties) v tomto článku.
 
-### <a name="examples-cmd"></a>Examples: cmd
+### <a name="examples-cmd"></a>Příklady: cmd
 
-#### <a name="run-hello-world-image"></a>Run hello-world image
+#### <a name="run-hello-world-image"></a>Spustit obrázek Hello-World
 
-This command executes the `hello-world.yaml` task file, which references the [hello-world](https://hub.docker.com/_/hello-world/) image on Docker Hub.
+Tento příkaz spustí soubor úlohy `hello-world.yaml`, který odkazuje na obrázek [Hello-World](https://hub.docker.com/_/hello-world/) v Docker Hub.
 
 ```azurecli
 az acr run -f hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -296,9 +296,9 @@ az acr run -f hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.yaml -->
 [!code-yml[task](~/acr-tasks/hello-world.yaml)]
 
-#### <a name="run-bash-image-and-echo-hello-world"></a>Run bash image and echo "hello world"
+#### <a name="run-bash-image-and-echo-hello-world"></a>Spustit image bash a echo "Hello World"
 
-This command executes the `bash-echo.yaml` task file, which references the [bash](https://hub.docker.com/_/bash/) image on Docker Hub.
+Tento příkaz spustí soubor úlohy `bash-echo.yaml`, který odkazuje na Image [bash](https://hub.docker.com/_/bash/) v Docker Hub.
 
 ```azurecli
 az acr run -f bash-echo.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -307,11 +307,11 @@ az acr run -f bash-echo.yaml https://github.com/Azure-Samples/acr-tasks.git
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml -->
 [!code-yml[task](~/acr-tasks/bash-echo.yaml)]
 
-#### <a name="run-specific-bash-image-tag"></a>Run specific bash image tag
+#### <a name="run-specific-bash-image-tag"></a>Spustit konkrétní značku image bash
 
-To run a specific image version, specify the tag in the `cmd`.
+Chcete-li spustit konkrétní verzi bitové kopie, zadejte značku v `cmd`.
 
-This command executes the `bash-echo-3.yaml` task file, which references the [bash:3.0](https://hub.docker.com/_/bash/) image on Docker Hub.
+Tento příkaz spustí soubor úlohy `bash-echo-3.yaml`, který odkazuje na Image [bash: 3.0](https://hub.docker.com/_/bash/) v Docker Hub.
 
 ```azurecli
 az acr run -f bash-echo-3.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -320,9 +320,9 @@ az acr run -f bash-echo-3.yaml https://github.com/Azure-Samples/acr-tasks.git
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo-3.yaml -->
 [!code-yml[task](~/acr-tasks/bash-echo-3.yaml)]
 
-#### <a name="run-custom-images"></a>Run custom images
+#### <a name="run-custom-images"></a>Spuštění vlastních imagí
 
-The `cmd` step type references images using the standard `docker run` format. Images not prefaced with a registry are assumed to originate from docker.io. The previous example could equally be represented as:
+Typ kroku `cmd` odkazuje na obrázky pomocí formátu standardního `docker run`. Pro image, které nejsou v registru, se předpokládá, že pocházejí z docker.io. Předchozí příklad může být stejně reprezentován jako:
 
 ```yml
 version: v1.1.0
@@ -330,9 +330,9 @@ steps:
   - cmd: docker.io/bash:3.0 echo hello world
 ```
 
-By using the standard `docker run` image reference convention, `cmd` can run images from any private registry or the public Docker Hub. If you're referencing images in the same registry in which ACR Task is executing, you don't need to specify any registry credentials.
+Pomocí standardní konvence referenčních imagí `docker run` image `cmd` můžou spouštět image z libovolného privátního registru nebo veřejného centra Docker. Pokud odkazujete na Image ve stejném registru, ve kterém je spuštěný úkol ACR, nemusíte zadávat žádné přihlašovací údaje registru.
 
-* Run an image that's from an Azure container registry. The following example assumes you have a registry named `myregistry`, and a custom image `myimage:mytag`.
+* Spustí image z Azure Container Registry. Následující příklad předpokládá, že máte registr s názvem `myregistry`a vlastní image `myimage:mytag`.
 
     ```yml
     version: v1.1.0
@@ -340,11 +340,11 @@ By using the standard `docker run` image reference convention, `cmd` can run ima
         - cmd: myregistry.azurecr.io/myimage:mytag
     ```
 
-* Generalize the registry reference with a Run variable or alias
+* Generalize reference registru pomocí proměnné Run nebo aliasu
 
-    Instead of hard-coding your registry name in an `acr-task.yaml` file, you can make it more portable by using a [Run variable](#run-variables) or [alias](#aliases). The `Run.Registry` variable or `$Registry` alias expands at runtime to the name of the registry in which the task is executing.
+    Místo hardwarového kódování názvu registru v souboru `acr-task.yaml` můžete zvýšit jeho přenos pomocí [proměnné Run](#run-variables) nebo [aliasu](#aliases). Proměnná `Run.Registry` nebo alias `$Registry` se rozbalí za běhu do názvu registru, ve kterém je úloha spuštěná.
 
-    For example, to generalize the preceding task so that it works in any Azure container registry, reference the $Registry variable in the image name:
+    Chcete-li například zobecnit předchozí úlohu, aby fungovala v jakémkoli registru služby Azure Container Registry, odkazujte na $Registry proměnnou v názvu bitové kopie:
 
     ```yml
     version: v1.1.0
@@ -352,40 +352,40 @@ By using the standard `docker run` image reference convention, `cmd` can run ima
       - cmd: $Registry/myimage:mytag
     ```
 
-## <a name="task-step-properties"></a>Task step properties
+## <a name="task-step-properties"></a>Vlastnosti kroku úlohy
 
-Each step type supports several properties appropriate for its type. The following table defines all of the available step properties. Not all step types support all properties. To see which of these properties are available for each step type, see the [cmd](#cmd), [build](#build), and [push](#push) step type reference sections.
+Každý typ kroku podporuje několik vlastností vhodných pro svůj typ. Následující tabulka definuje všechny dostupné vlastnosti kroku. Ne všechny typy kroků podporují všechny vlastnosti. Chcete-li zjistit, které z těchto vlastností jsou k dispozici pro každý typ kroku, přečtěte si referenční oddíly typu [cmd](#cmd), [Build](#build)a [push](#push) Step.
 
-| Vlastnost | Typ | Volitelné | Popis | Výchozí hodnota |
+| Vlastnost | Typ | volitelná, | Popis | Výchozí hodnota |
 | -------- | ---- | -------- | ----------- | ------- |
-| `detach` | bool | Ano | Whether the container should be detached when running. | `false` |
-| `disableWorkingDirectoryOverride` | bool | Ano | Whether to disable `workingDirectory` override functionality. Use this in combination with `workingDirectory` to have complete control over the container's working directory. | `false` |
-| `entryPoint` | string | Ano | Overrides the `[ENTRYPOINT]` of a step's container. | Žádné |
-| `env` | [string, string, ...] | Ano | Array of strings in `key=value` format that define the environment variables for the step. | Žádné |
-| `expose` | [string, string, ...] | Ano | Array of ports that are exposed from the container. |  Žádné |
-| [`id`](#example-id) | string | Ano | Uniquely identifies the step within the task. Other steps in the task can reference a step's `id`, such as for dependency checking with `when`.<br /><br />The `id` is also the running container's name. Processes running in other containers in the task can refer to the `id` as its DNS host name, or for accessing it with docker logs [id], for example. | `acb_step_%d`, where `%d` is the 0-based index of the step top-down in the YAML file |
-| `ignoreErrors` | bool | Ano | Whether to mark the step as successful regardless of whether an error occurred during container execution. | `false` |
-| `isolation` | string | Ano | The isolation level of the container. | `default` |
-| `keep` | bool | Ano | Whether the step's container should be kept after execution. | `false` |
-| `network` | object | Ano | Identifies a network in which the container runs. | Žádné |
-| `ports` | [string, string, ...] | Ano | Array of ports that are published from the container to the host. |  Žádné |
-| `pull` | bool | Ano | Whether to force a pull of the container before executing it to prevent any caching behavior. | `false` |
-| `privileged` | bool | Ano | Whether to run the container in privileged mode. | `false` |
-| `repeat` | int | Ano | The number of retries to repeat the execution of a container. | 0 |
-| `retries` | int | Ano | The number of retries to attempt if a container fails its execution. A retry is only attempted if a container's exit code is non-zero. | 0 |
-| `retryDelay` | int (seconds) | Ano | The delay in seconds between retries of a container's execution. | 0 |
-| `secret` | object | Ano | Identifies an Azure Key Vault secret or [managed identity for Azure resources](container-registry-tasks-authentication-managed-identity.md). | Žádné |
-| `startDelay` | int (seconds) | Ano | Number of seconds to delay a container's execution. | 0 |
-| `timeout` | int (seconds) | Ano | Maximum number of seconds a step may execute before being terminated. | 600 |
-| [`when`](#example-when) | [string, string, ...] | Ano | Configures a step's dependency on one or more other steps within the task. | Žádné |
-| `user` | string | Ano | The user name or UID of a container | Žádné |
-| `workingDirectory` | string | Ano | Sets the working directory for a step. By default, ACR Tasks creates a root directory as the working directory. However, if your build has several steps, earlier steps can share artifacts with later steps by specifying the same working directory. | `$HOME` |
+| `detach` | bool | Ano | Určuje, zda má být při spuštění odpojen kontejner. | `false` |
+| `disableWorkingDirectoryOverride` | bool | Ano | Určuje, zda se má zakázat funkce přepsání `workingDirectory`. Toto použijte v kombinaci s `workingDirectory`, abyste měli úplnou kontrolu nad pracovním adresářem kontejneru. | `false` |
+| `entryPoint` | řetězec | Ano | Přepíše `[ENTRYPOINT]` kontejneru kroku. | Žádné |
+| `env` | [řetězec, řetězec,...] | Ano | Pole řetězců ve formátu `key=value` definující proměnné prostředí pro krok | Žádné |
+| `expose` | [řetězec, řetězec,...] | Ano | Pole portů, které jsou zpřístupněny z kontejneru. |  Žádné |
+| [`id`](#example-id) | řetězec | Ano | Jednoznačně identifikuje krok v rámci úkolu. Další kroky v úloze můžou odkazovat na `id`kroku, například pro kontrolu závislosti s `when`.<br /><br />`id` je také název běžícího kontejneru. Procesy běžící v jiných kontejnerech v úloze můžou jako název hostitele DNS odkazovat na `id`, nebo pro přístup k němu pomocí protokolů Docker [ID]. | `acb_step_%d`, kde `%d` je index na základě 0 v horní části kroku v souboru YAML |
+| `ignoreErrors` | bool | Ano | Určuje, zda má být krok označen jako úspěšný bez ohledu na to, zda při provádění kontejneru došlo k chybě. | `false` |
+| `isolation` | řetězec | Ano | Úroveň izolace kontejneru. | `default` |
+| `keep` | bool | Ano | Určuje, zda má být kontejner kroku po provedení uchováván. | `false` |
+| `network` | object | Ano | Identifikuje síť, ve které se kontejner spouští. | Žádné |
+| `ports` | [řetězec, řetězec,...] | Ano | Pole portů, které jsou publikovány z kontejneru pro hostitele. |  Žádné |
+| `pull` | bool | Ano | Určuje, zda má být před spuštěním kontejneru vynutit stažení, aby nedocházelo k chování ukládání do mezipaměti. | `false` |
+| `privileged` | bool | Ano | Určuje, zda má být kontejner spuštěn v privilegovaném režimu. | `false` |
+| `repeat` | int | Ano | Počet opakovaných pokusů o opakování provádění kontejneru. | 0 |
+| `retries` | int | Ano | Počet opakovaných pokusů o pokus o vykonání kontejneru, pokud kontejner neprojde. Opakování se pokusí pouze v případě, že ukončovací kód kontejneru je nenulový. | 0 |
+| `retryDelay` | int (sekundy) | Ano | Zpoždění v sekundách mezi opakovanými pokusy o spuštění kontejneru. | 0 |
+| `secret` | object | Ano | Identifikuje Azure Key Vault tajný klíč nebo [spravovanou identitu pro prostředky Azure](container-registry-tasks-authentication-managed-identity.md). | Žádné |
+| `startDelay` | int (sekundy) | Ano | Počet sekund, po který se má zpozdit spuštění kontejneru | 0 |
+| `timeout` | int (sekundy) | Ano | Maximální počet sekund, po které může krok běžet, než se ukončí. | 600 |
+| [`when`](#example-when) | [řetězec, řetězec,...] | Ano | Nakonfiguruje závislost kroku na jednom nebo několika dalších krocích v rámci úlohy. | Žádné |
+| `user` | řetězec | Ano | Uživatelské jméno nebo UID kontejneru | Žádné |
+| `workingDirectory` | řetězec | Ano | Nastaví pracovní adresář pro krok. Ve výchozím nastavení ACR úlohy vytvoří kořenový adresář jako pracovní adresář. Nicméně pokud má sestavení několik kroků, předchozí kroky mohou sdílet artefakty s pozdějšími kroky zadáním stejného pracovního adresáře. | `$HOME` |
 
-### <a name="examples-task-step-properties"></a>Examples: Task step properties
+### <a name="examples-task-step-properties"></a>Příklady: vlastnosti kroku úlohy
 
-#### <a name="example-id"></a>Example: id
+#### <a name="example-id"></a>Příklad: ID
 
-Build two images, instancing a functional test image. Each step is identified by a unique `id` which other steps in the task reference in their `when` property.
+Sestavení dvou imagí, vytváření instancí bitové kopie funkčního testu. Každý krok je identifikován jedinečným `id` které další kroky v odkazu na úkol v jejich vlastnosti `when`.
 
 ```azurecli
 az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -394,16 +394,16 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel-dependent.yaml -->
 [!code-yml[task](~/acr-tasks/when-parallel-dependent.yaml)]
 
-#### <a name="example-when"></a>Example: when
+#### <a name="example-when"></a>Příklad: when
 
-The `when` property specifies a step's dependency on other steps within the task. It supports two parameter values:
+Vlastnost `when` určuje závislost kroku na dalších krocích v rámci úlohy. Podporuje dvě hodnoty parametrů:
 
-* `when: ["-"]` - Indicates no dependency on other steps. A step specifying `when: ["-"]` will begin execution immediately, and enables concurrent step execution.
-* `when: ["id1", "id2"]` - Indicates the step is dependent upon steps with `id` "id1" and `id` "id2". This step won't be executed until both "id1" and "id2" steps complete.
+* `when: ["-"]` – neurčuje žádnou závislost na jiných krocích. Krok určující `when: ["-"]` spustí spuštění okamžitě a umožní souběžné provádění kroků.
+* `when: ["id1", "id2"]` – určuje, že krok je závislý na krocích s `id` "id1" a `id` "ID 2". Tento krok se neprovede až po dokončení obou kroků "id1" a "ID 2".
 
-If `when` isn't specified in a step, that step is dependent on completion of the previous step in the `acr-task.yaml` file.
+Pokud v kroku není zadán `when`, je tento krok závislý na dokončení předchozího kroku v souboru `acr-task.yaml`.
 
-Sequential step execution without `when`:
+Sekvenční provádění kroků bez `when`:
 
 ```azurecli
 az acr run -f when-sequential-default.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -412,7 +412,7 @@ az acr run -f when-sequential-default.yaml https://github.com/Azure-Samples/acr-
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-sequential-default.yaml -->
 [!code-yml[task](~/acr-tasks/when-sequential-default.yaml)]
 
-Sequential step execution with `when`:
+Spuštění sekvenčního kroku s `when`:
 
 ```azurecli
 az acr run -f when-sequential-id.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -421,7 +421,7 @@ az acr run -f when-sequential-id.yaml https://github.com/Azure-Samples/acr-tasks
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-sequential-id.yaml -->
 [!code-yml[task](~/acr-tasks/when-sequential-id.yaml)]
 
-Parallel images build:
+Sestavení paralelních imagí:
 
 ```azurecli
 az acr run -f when-parallel.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -430,7 +430,7 @@ az acr run -f when-parallel.yaml https://github.com/Azure-Samples/acr-tasks.git
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml -->
 [!code-yml[task](~/acr-tasks/when-parallel.yaml)]
 
-Parallel image build and dependent testing:
+Sestavení paralelní image a závislé testování:
 
 ```azurecli
 az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -439,9 +439,9 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel-dependent.yaml -->
 [!code-yml[task](~/acr-tasks/when-parallel-dependent.yaml)]
 
-## <a name="run-variables"></a>Run variables
+## <a name="run-variables"></a>Spustit proměnné
 
-ACR Tasks includes a default set of variables that are available to task steps when they execute. These variables can be accessed by using the format `{{.Run.VariableName}}`, where `VariableName` is one of the following:
+ACR úlohy obsahují výchozí sadu proměnných, které jsou k dispozici pro kroky úlohy při jejich spuštění. K těmto proměnným je možné přistupovat pomocí `{{.Run.VariableName}}`formátu, kde `VariableName` je jedna z následujících:
 
 * `Run.ID`
 * `Run.SharedVolume`
@@ -454,13 +454,13 @@ ACR Tasks includes a default set of variables that are available to task steps w
 * `Run.Branch`
 * `Run.TaskName`
 
-The variable names are generally self-explanatory. Details follows for commonly used variables. As of YAML version `v1.1.0`, you can use an abbreviated, predefined [task alias](#aliases) in place of most run variables. For example, in place of `{{.Run.Registry}}`, use the `$Registry` alias.
+Názvy proměnných jsou všeobecně vysvětlivekné. Podrobnosti se řídí pro běžně používané proměnné. Od verze YAML `v1.1.0`můžete místo většiny proměnných spuštění použít zkrácený, předdefinovaný [alias úkolu](#aliases) . Například místo `{{.Run.Registry}}`použijte alias `$Registry`.
 
 ### <a name="runid"></a>Run.ID
 
-Each Run, through `az acr run`, or trigger based execution of tasks created through `az acr task create`, has a unique ID. The ID represents the Run currently being executed.
+Každé spuštění, prostřednictvím `az acr run`nebo spuštění úloh, které jsou vytvořené prostřednictvím `az acr task create`, má jedinečné ID. ID představuje aktuálně prováděné spuštění.
 
-Typically used for a uniquely tagging an image:
+Obvykle se používá pro jedinečnou tagování obrázku:
 
 ```yml
 version: v1.1.0
@@ -468,9 +468,9 @@ steps:
     - build: -t $Registry/hello-world:$ID .
 ```
 
-### <a name="runregistry"></a>Run.Registry
+### <a name="runregistry"></a>Spustit. Registry
 
-The fully qualified server name of the registry. Typically used to generically reference the registry where the task is being run.
+Plně kvalifikovaný název serveru registru. Obvykle se běžně používá pro obecné odkazy na registr, ve kterém se úloha spouští.
 
 ```yml
 version: v1.1.0
@@ -478,9 +478,9 @@ steps:
   - build: -t $Registry/hello-world:$ID .
 ```
 
-### <a name="runregistryname"></a>Run.RegistryName
+### <a name="runregistryname"></a>Run. Registry
 
-The name of the container registry. Typically used in task steps that don't require a fully qualified server name, for example, `cmd` steps that run Azure CLI commands on registries.
+Název registru kontejneru. Obvykle se používá v krocích úloh, které nevyžadují plně kvalifikovaný název serveru, například `cmd` kroky, které spouštějí příkazy rozhraní příkazového řádku Azure CLI v registrech.
 
 ```yml
 version 1.1.0
@@ -490,31 +490,31 @@ steps:
 - cmd: az acr repository list --name $RegistryName
 ```
 
-### <a name="rundate"></a>Run.Date
+### <a name="rundate"></a>Spustit. datum
 
-The current UTC time the run began.
+Aktuální čas UTC zahájení běhu.
 
-### <a name="runcommit"></a>Run.Commit
+### <a name="runcommit"></a>Spustit. potvrdit
 
-For a task triggered by a commit to a GitHub repository, the commit identifier.
+V případě úlohy aktivované potvrzením do úložiště GitHub je identifikátor potvrzení.
 
-### <a name="runbranch"></a>Run.Branch
+### <a name="runbranch"></a>Spustit. větev
 
-For a task triggered by a commit to a GitHub repository, the branch name.
+V případě úlohy aktivované potvrzením do úložiště GitHub se jedná o název větve.
 
 ## <a name="aliases"></a>Aliasy
 
-As of `v1.1.0`, ACR Tasks supports aliases that are available to task steps when they execute. Aliases are similar in concept to aliases (command shortcuts) supported in bash and some other command shells. 
+Od `v1.1.0`úlohy ACR podporují aliasy, které jsou k dispozici pro kroky úlohy při jejich spuštění. Aliasy jsou podobné v konceptu aliasů (příkazy Command Shortcuts) podporovaných v bash a některých dalších příkazových prostředích. 
 
-With an alias, you can launch any command or group of commands (including options and filenames) by entering a single word.
+S aliasem můžete spustit libovolný příkaz nebo skupinu příkazů (včetně možností a názvů souborů) zadáním jediného slova.
 
-ACR Tasks supports several predefined aliases and also custom aliases you create.
+Úlohy ACR podporují několik předdefinovaných aliasů a také vlastní aliasy, které vytvoříte.
 
-### <a name="predefined-aliases"></a>Predefined aliases
+### <a name="predefined-aliases"></a>Předdefinované aliasy
 
-The following task aliases are available to use in place of [run variables](#run-variables):
+K dispozici jsou následující aliasy úloh, které lze použít místo [proměnných spuštění](#run-variables):
 
-| Alias | Run variable |
+| Alias | Spustit proměnnou |
 | ----- | ------------ |
 | `ID` | `Run.ID` |
 | `SharedVolume` | `Run.SharedVolume` |
@@ -526,7 +526,7 @@ The following task aliases are available to use in place of [run variables](#run
 | `Commit` | `Run.Commit` |
 | `Branch` | `Run.Branch` |
 
-In task steps, precede an alias with the `$` directive, as in this example:
+V části kroky úkolu předcházíte alias s direktivou `$`, jako v tomto příkladu:
 
 ```yaml
 version: v1.1.0
@@ -534,18 +534,18 @@ steps:
   - build: -t $Registry/hello-world:$ID -f hello-world.dockerfile .
 ```
 
-### <a name="image-aliases"></a>Image aliases
+### <a name="image-aliases"></a>Aliasy obrázků
 
-Each of the following aliases points to a stable image in Microsoft Container Registry (MCR). You can refer to each of them in the `cmd` section of a Task file without using a directive.
+Každý z následujících aliasů odkazuje na stabilní obrázek v Microsoft Container Registry (MCR). Na každý z nich můžete odkazovat v části `cmd` v souboru úlohy bez použití direktivy.
 
-| Alias | Obrázek |
+| Alias | Image |
 | ----- | ----- |
 | `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
 | `az` | `mcr.microsoft.com/acr/azure-cli:d0725bc` |
 | `bash` | `mcr.microsoft.com/acr/bash:d0725bc` |
 | `curl` | `mcr.microsoft.com/acr/curl:d0725bc` |
 
-The following example task uses several aliases to [purge](container-registry-auto-purge.md) image tags older than 7 days in the repo `samples/hello-world` in the run registry:
+Následující příklad úlohy používá několik aliasů k [vyprázdnění](container-registry-auto-purge.md) značek obrázků starších než 7 dní v úložišti `samples/hello-world` v registru Run:
 
 ```yaml
 version: v1.1.0
@@ -554,9 +554,9 @@ steps:
   - cmd: acr purge --registry $RegistryName --filter samples/hello-world:.* --ago 7d
 ```
 
-### <a name="custom-alias"></a>Custom alias
+### <a name="custom-alias"></a>Vlastní alias
 
-Define a custom alias in your YAML file and use it as shown in the following example. An alias can contain only alphanumeric characters. The default directive to expand an alias is the `$` character.
+V souboru YAML definujte vlastní alias a použijte ho tak, jak je znázorněno v následujícím příkladu. Alias může obsahovat pouze alfanumerické znaky. Výchozí direktivou pro rozšíření alias je `$` znak.
 
 ```yml
 version: v1.1.0
@@ -567,7 +567,7 @@ steps:
   - build: -t $Registry/$repo/hello-world:$ID -f Dockerfile .
 ```
 
-You can link to a remote or local YAML file for custom alias definitions. The following example links to a YAML file in Azure blob storage:
+Pro vlastní definice aliasů můžete propojit se vzdáleným nebo místním souborem YAML. Následující příklad odkazuje na soubor YAML v úložišti objektů BLOB v Azure:
 
 ```yml
 version: v1.1.0
@@ -579,9 +579,9 @@ alias:
 
 ## <a name="next-steps"></a>Další kroky
 
-For an overview of multi-step tasks, see the [Run multi-step build, test, and patch tasks in ACR Tasks](container-registry-tasks-multi-step.md).
+Přehled úloh s více kroky najdete [v tématu spuštění více kroků při sestavování, testování a oprav úloh v ACR úlohách](container-registry-tasks-multi-step.md).
 
-For single-step builds, see the [ACR Tasks overview](container-registry-tasks-overview.md).
+Informace o sestaveních s jedním krokem najdete v tématu [Přehled úloh ACR](container-registry-tasks-overview.md).
 
 
 

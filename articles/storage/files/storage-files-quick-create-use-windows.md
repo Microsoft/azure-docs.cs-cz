@@ -22,7 +22,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlásit se na [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 

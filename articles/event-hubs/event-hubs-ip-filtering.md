@@ -34,7 +34,7 @@ Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pra
 
 ## <a name="default-setting"></a>Výchozí nastavení
 
-Ve výchozím nastavení **filtr IP** mřížky na portálu pro službu Event Hubs je prázdný. Toto výchozí nastavení znamená, že vaše Centrum událostí přijme připojení z libovolné IP adresy. Toto výchozí nastavení je ekvivalentní pravidlo, které přijímá tento rozsah IP adres 0.0.0.0/0.
+Ve výchozím nastavení je mřížka **filtru IP** na portálu pro Event Hubs prázdná. Toto výchozí nastavení znamená, že vaše Centrum událostí přijme připojení z libovolné IP adresy. Toto výchozí nastavení je ekvivalentní pravidlo, které přijímá tento rozsah IP adres 0.0.0.0/0.
 
 ## <a name="ip-filter-rule-evaluation"></a>Vyhodnocení pravidla filtru IP
 
@@ -64,7 +64,7 @@ Následující šablony Resource Manageru umožňuje přidání pravidlo filtru 
 
 Parametry šablony:
 
-- **ipMask** je jedna IPv4 adresa nebo blok IP adres v zápisu CIDR. Například v CIDR notation 70.37.104.0/24 představuje 256 adresy IPv4 z 70.37.104.0 70.37.104.255 s 24 označující počet bitů významné předpona pro rozsah.
+- **ipMask** je jedna adresa IPv4 nebo blok IP adres v zápisu CIDR. Například v CIDR notation 70.37.104.0/24 představuje 256 adresy IPv4 z 70.37.104.0 70.37.104.255 s 24 označující počet bitů významné předpona pro rozsah.
 
 > [!NOTE]
 > I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.

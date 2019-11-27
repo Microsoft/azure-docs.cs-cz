@@ -45,6 +45,6 @@ Pokyny k implementaci najdete v tématu [povolení synchronizace usertype](../hy
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Active Directory spolupráce B2B pro hybridní organizace](hybrid-organizations.md)
-- [Uživatelům udělit B2B v Azure AD přístup k místním aplikacím](hybrid-cloud-to-on-premises.md)
+- [Udělení přístupu k místním aplikacím uživatelům B2B v Azure AD](hybrid-cloud-to-on-premises.md)
 - Přehled Azure AD Connect najdete v tématu [Integrace místních adresářů s Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 

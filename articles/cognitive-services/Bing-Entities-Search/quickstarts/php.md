@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Send a search request to the REST API using PHP - Bing Entity Search'
+title: 'Rychlý Start: odeslání žádosti o vyhledávání do REST API pomocí PHP-Vyhledávání entit Bingu'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send a request to the Bing Entity Search REST API using PHP, and receive a JSON response.
+description: Pomocí tohoto rychlého startu můžete odeslat požadavek do Vyhledávání entit Bingu REST API pomocí PHP a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,13 +17,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74323585"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Quickstart: Send a search request to the Bing Entity Search REST API using PHP
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí PHP
 
-Use this quickstart to make your first call to the Bing Entity Search API and view the JSON response. This simple PHP application sends a news search query to the API, and displays the response. 
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace PHP pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď. 
 
-While this application is written in PHP, the API is a RESTful Web service compatible with most programming languages.
+I když je tato aplikace napsaná v PHP, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [PHP 5.6.x](https://php.net/downloads.php) nebo novější
 
@@ -31,7 +31,7 @@ While this application is written in PHP, the API is a RESTful Web service compa
 
 ## <a name="search-entities"></a>Vyhledávání entit
 
-Tuto aplikaci spustíte následujícím postupem.
+Pokud chcete tuto aplikaci spustit, postupujte následujícím způsobem.
 
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 2. Přidejte níže uvedený kód.
@@ -150,7 +150,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
+> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
-* [Bing Entity Search API Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

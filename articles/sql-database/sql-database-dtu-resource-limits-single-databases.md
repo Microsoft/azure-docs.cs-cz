@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 75611dd36196c722254d694e9753deb982e2570d
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811287"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539324"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu DTU
 
@@ -38,10 +38,16 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | Maximální počet DTU | 5 |
 | Zahrnuté úložiště (GB) | 2 |
 | Maximální počet možností úložiště (GB) | 2 |
-| Maximální úložiště OLTP v paměti (GB) |Není dostupné. |
+| Maximální úložiště OLTP v paměti (GB) |neuvedeno |
 | Maximální počet souběžných pracovních procesů (požadavků) | 30 |
 | Maximální počet souběžných relací | 300 |
 |||
+
+> [!IMPORTANT]
+> Úroveň služeb Basic poskytuje méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služby S3 nebo vyšší. 
+>
+>V souvislosti s úložištěm dat je vrstva základní služby umístěna do objektů blob stránky úrovně Standard. Objekty blob stránky úrovně Standard využívají úložná média založená na pevných discích (HDD) a jsou nejvhodnější pro vývoj, testování a jiné zřídka používané úlohy, které jsou méně citlivé na variabilitu výkonu.
+>
 
 ### <a name="standard-service-tier"></a>Úroveň služby Standard
 
@@ -50,10 +56,16 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | Maximální počet DTU | 10 | 20 | 50 | 100 |
 | Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 |
 | Maximální počet možností úložiště (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Maximální úložiště OLTP v paměti (GB) | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. |
+| Maximální úložiště OLTP v paměti (GB) | neuvedeno | neuvedeno | neuvedeno | neuvedeno |
 | Maximální počet souběžných pracovních procesů (požadavků)| 60 | 90 | 120 | 200 |
 | Maximální počet souběžných relací |600 | 900 | 1200 | 2400 |
 ||||||
+
+> [!IMPORTANT]
+> Úrovně Standard S0, S1 a S2 poskytují méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služby S3 nebo vyšší. 
+>
+>V souvislosti s úložištěm dat jsou standardní úrovně služby S0 a S1 umístěné na standardních objektech blob stránky. Objekty blob stránky úrovně Standard využívají úložná média založená na pevných discích (HDD) a jsou nejvhodnější pro vývoj, testování a jiné zřídka používané úlohy, které jsou méně citlivé na variabilitu výkonu.
+>
 
 ### <a name="standard-service-tier-continued"></a>Úroveň služby úrovně Standard (pokračování)
 
@@ -62,7 +74,7 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | Maximální počet DTU | 200 | 400 | 800 | 1600 | 3000 |
 | Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximální počet možností úložiště (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Maximální úložiště OLTP v paměti (GB) | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. |Není dostupné. |
+| Maximální úložiště OLTP v paměti (GB) | neuvedeno | neuvedeno | neuvedeno | neuvedeno |neuvedeno |
 | Maximální počet souběžných pracovních procesů (požadavků)| 400 | 800 | 1600 | 3200 |6000 |
 | Maximální počet souběžných relací |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||

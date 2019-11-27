@@ -1,23 +1,18 @@
 ---
-title: Použití počátečního příkazového řádku v Azure Container Instances
-description: Přepsat parametr entryPoint nakonfigurovaný v imagi kontejneru při nasazení instance kontejneru Azure
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Přepsat parametr entryPoint v instanci kontejneru
+description: Nastavení příkazového řádku pro přepsání vstupního bodu v imagi kontejneru při nasazení instance kontejneru Azure
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 40d946db48a65452d2da529098c07d0d0c60d472
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619659"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533408"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Nastavení příkazového řádku v instanci kontejneru pro přepsání výchozí operace příkazového řádku
 
-Když vytváříte instanci kontejneru, můžete volitelně zadat příkaz pro přepsání výchozích instrukcí příkazového řádku vloženými do image kontejneru. Toto chování je podobné `--entrypoint` jako argument příkazového řádku pro. `docker run`
+Když vytváříte instanci kontejneru, můžete volitelně zadat příkaz pro přepsání výchozích instrukcí příkazového řádku vloženými do image kontejneru. Toto chování je podobné jako `--entrypoint` argument příkazového řádku pro `docker run`.
 
 Podobně jako při nastavení [proměnných prostředí](container-instances-environment-variables.md) pro instance kontejnerů je zadání počátečního příkazového řádku užitečné pro dávkové úlohy, které je potřeba k dynamické přípravě každého kontejneru s konfigurací specifickou pro úlohy.
 
@@ -37,7 +32,7 @@ Podobně jako při nastavení [proměnných prostředí](container-instances-env
 
 * V závislosti na konfiguraci kontejneru možná budete muset nastavit úplnou cestu ke spustitelnému souboru nebo argumentům příkazového řádku.
 
-* Nastavte vhodné [zásady restartování](container-instances-restart-policy.md) pro instanci kontejneru v závislosti na tom, zda příkazový řádek určuje dlouhodobě běžící úlohu nebo úlohu spuštění jednou. Například zásada restartování systému `Never` nebo `OnFailure` se doporučuje pro úlohu spuštění jednou. 
+* Nastavte vhodné [zásady restartování](container-instances-restart-policy.md) pro instanci kontejneru v závislosti na tom, zda příkazový řádek určuje dlouhodobě běžící úlohu nebo úlohu spuštění jednou. Například zásada restartování `Never` nebo `OnFailure` se doporučuje pro úlohu spuštění jednou. 
 
 * Pokud potřebujete informace o výchozí sadě EntryPoint v imagi kontejneru, použijte příkaz [Docker image prověřit](https://docs.docker.com/engine/reference/commandline/image_inspect/) .
 
@@ -45,13 +40,13 @@ Podobně jako při nastavení [proměnných prostředí](container-instances-env
 
 Syntaxe příkazového řádku se liší v závislosti na rozhraní API nebo nástroji Azure, které jste použili k vytvoření instancí. Pokud zadáte prostředí prostředí, sledujte také konvence syntaxe příkazu Shell.
 
-* [AZ Container Create][az-container-create] Command: Předejte řetězec s `--command-line` parametrem. Příklad: `--command-line "python myscript.py arg1 arg2"`).
+* [AZ Container Create][az-container-create] Command: předejte řetězec s parametrem `--command-line`. Příklad: `--command-line "python myscript.py arg1 arg2"`).
 
-* [New-AzureRmContainerGroup][new-azurermcontainergroup] Rutina Azure PowerShell: Předejte řetězec s `-Command` parametrem. Příklad: `-Command "echo hello"`.
+* [New-AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell rutina: předejte řetězec s parametrem `-Command`. Příklad: `-Command "echo hello"`.
 
-* Azure Portal: V vlastnosti **přepsání příkazu** konfigurace kontejneru Zadejte čárkami oddělený seznam řetězců bez uvozovek. Příklad: `python, myscript.py, arg1, arg2`). 
+* Azure Portal: v vlastnosti **přepsání příkazu** konfigurace kontejneru Zadejte čárkami oddělený seznam řetězců bez uvozovek. Příklad: `python, myscript.py, arg1, arg2`). 
 
-* Správce prostředků šablonu nebo soubor YAML nebo jednu ze sad Azure SDK: Zadejte vlastnost příkazového řádku jako pole řetězců. Příklad: pole `["python", "myscript.py", "arg1", "arg2"]` JSON v šabloně správce prostředků. 
+* Správce prostředků šablonu nebo soubor YAML nebo jednu ze sad Azure SDK: zadejte vlastnost příkazového řádku jako pole řetězců. Příklad: pole JSON `["python", "myscript.py", "arg1", "arg2"]` v šabloně Správce prostředků. 
 
   Pokud jste obeznámeni se syntaxí [souboru Dockerfile](https://docs.docker.com/engine/reference/builder/) , je tento formát podobný jako ve formě *exec* instrukce cmd.
 
@@ -59,8 +54,8 @@ Syntaxe příkazového řádku se liší v závislosti na rozhraní API nebo ná
 
 |    |  Azure CLI   | Portál | Šablona | 
 | ---- | ---- | --- | --- |
-| Jeden příkaz | `--command-line "python myscript.py arg1 arg2"` | **Přepsání příkazu**:`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| Více příkazů | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Přepsání příkazu**:`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| Jeden příkaz | `--command-line "python myscript.py arg1 arg2"` | **Přepsání příkazu**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| Více příkazů | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Přepsání příkazu**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Příklad rozhraní příkazového řádku Azure
 

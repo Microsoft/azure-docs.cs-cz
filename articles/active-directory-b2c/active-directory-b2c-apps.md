@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b0472b10de3641f1575f7f9a5c223ab5032f0e16
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 5643f1df6cefa9ca6c60453939be533b2c00eaf4
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066147"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533080"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
 
@@ -64,8 +64,8 @@ V rámci webové aplikace má každé spuštění [zásady](active-directory-b2c
 2. Webová aplikace přesměruje uživatele na Azure AD B2C, což znamená, že se má zásada spustit.
 3. Uživatel dokončí zásadu.
 4. Azure AD B2C vrátí `id_token` do prohlížeče.
-5. `id_token` Je zveřejněn do identifikátoru URI přesměrování.
-6. `id_token` Je ověřen a je nastaven soubor cookie relace.
+5. `id_token` se publikuje do identifikátoru URI přesměrování.
+6. `id_token` je ověřen a je nastaven soubor cookie relace.
 7. Uživateli se vrátí zabezpečená stránka.
 
 Ověření `id_token` pomocí veřejného podpisového klíče přijatého z Azure AD je dostačující k ověření identity uživatele. Tento proces také nastaví soubor cookie relace, který se dá použít k identifikaci uživatele na dalších požadavcích na stránku.
@@ -91,12 +91,12 @@ Webové rozhraní API pak může pomocí tokenu ověřit identitu volajícího a
 Webové rozhraní API může přijímat tokeny z mnoha typů klientů, včetně webových aplikací, desktopových a mobilních aplikací, aplikací s jednou stránkou, démonů na straně serveru a dalších webových rozhraní API. Tady je příklad kompletního toku webové aplikace, která volá webové rozhraní API:
 
 1. Webová aplikace provede zásadu a uživatel dokončí činnost koncového uživatele.
-2. Azure AD B2C vrátí (OpenID Connect) `id_token` a autorizační kód do prohlížeče.
-3. Prohlížeč odešle `id_token` autorizační kód do identifikátoru URI pro přesměrování.
+2. Azure AD B2C vrátí `id_token` (OpenID Connect) a autorizační kód do prohlížeče.
+3. Prohlížeč odešle `id_token` a autorizační kód do identifikátoru URI přesměrování.
 4. Webový server ověří `id_token` a nastaví soubor cookie relace.
-5. Webový server si vyžádá Azure AD B2C pro `access_token` poskytnutím autorizačního kódu, ID klienta aplikace a přihlašovacích údajů klienta.
-6. `access_token` A`refresh_token` se vrátí na webový server.
-7. Webové rozhraní API se volá `access_token` v autorizační hlavičce.
+5. Webový server vyžádá Azure AD B2C pro `access_token` poskytnutím autorizačního kódu, ID klienta aplikace a přihlašovacích údajů klienta.
+6. `access_token` a `refresh_token` se vrátí na webový server.
+7. Webové rozhraní API se volá s `access_token` v autorizační hlavičce.
 8. Webové rozhraní API ověřuje token.
 9. Zabezpečená data se vrátí do webové aplikace.
 
@@ -108,7 +108,7 @@ Chcete-li zjistit, jak zabezpečit webové rozhraní API pomocí Azure AD B2C, p
 
 Aplikace, které jsou nainstalované na zařízeních, například mobilní a desktopové aplikace, často potřebují přístup k back-endové službě nebo k webovým rozhraním API jménem uživatele. Do nativních aplikací můžete přidat přizpůsobené prostředí pro správu identit a bezpečně volat back-endové služby pomocí Azure AD B2C a [toku autorizačního kódu OAuth 2,0](active-directory-b2c-reference-oauth-code.md).
 
-V tomto toku aplikace spustí [zásady](active-directory-b2c-reference-policies.md) a přijme `authorization_code` službu Azure AD poté, co uživatel dokončí zásadu. `authorization_code` Představuje oprávnění aplikace pro volání back-endové služby jménem uživatele, který je aktuálně přihlášený. Aplikace pak může vyměnit na `authorization_code` pozadí `access_token` pro a `refresh_token`.  Aplikace může použít `access_token` k ověření pro back-endové webové rozhraní API v požadavcích http. Může také použít `refresh_token` k získání nového `access_token` po vypršení platnosti toho starého.
+V tomto toku aplikace spouští [zásady](active-directory-b2c-reference-policies.md) a přijímá `authorization_code` ze služby Azure AD poté, co uživatel dokončí zásadu. `authorization_code` představuje oprávnění aplikace pro volání back-endové služby jménem uživatele, který je aktuálně přihlášený. Aplikace pak může na pozadí vyměňovat `authorization_code` pro `access_token` a `refresh_token`.  Aplikace může použít `access_token` k ověření pro back-endové webové rozhraní API v požadavcích HTTP. Může také použít `refresh_token` k získání nového `access_token` po vypršení platnosti toho starého.
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
@@ -124,7 +124,7 @@ Pokud chcete nastavit tok přihlašovacích údajů klienta, přečtěte si tém
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Řetězení webových rozhraní API (tok on-behalf-of)
 
-Mnoho architektur zahrnuje webové rozhraní API, které potřebuje volat podřízené webové rozhraní API, přičemž obě jsou zabezpečené pomocí Azure AD B2C. Tento scénář je běžný u nativních klientů, které mají back-end webového rozhraní API, a volá online službu Microsoftu, jako je například Azure AD Graph API.
+Mnoho architektur zahrnuje webové rozhraní API, které potřebuje volat podřízené webové rozhraní API, přičemž obě jsou zabezpečené pomocí Azure AD B2C. Tento scénář je běžný u nativních klientů, které mají back-end webového rozhraní API, a volá online službu Microsoftu, jako je Microsoft Graph API nebo Azure AD Graph API.
 
 Tento scénář zřetězených webových rozhraní API může být podporován pomocí udělení přihlašovacích údajů nosiče OAuth 2.0 JWT, označovaného také jako tok on-behalf-of.  Nicméně tok on-behalf-of není v současné době v Azure AD B2C implementován.
 
@@ -139,6 +139,6 @@ Pokud aplikaci Azure AD B2C upravíte mimo Azure Portal, stane se chybnou aplika
 
 Pokud chcete aplikaci odstranit, použijte portál pro [registraci aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a odstraňte aplikaci. Aby byla aplikace viditelná, musíte být vlastníkem aplikace (nestačí být pouze správcem tenanta).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o předdefinovaných zásadách poskytovaných [uživatelskými toky v Azure Active Directory B2C](active-directory-b2c-reference-policies.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 58824b13cfac264c051de6bea45d2dab3aae8fae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: dd2ae2159c43da6a049d67cae739f111eba682c9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068108"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534455"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Čas synchronizace pro virtuální počítače s Windows v Azure
 
@@ -38,7 +38,7 @@ Přesnost na hodiny počítače je měřená v tom, jak je čas počítače v ho
 
 Hostitelé Azure se synchronizují s interními servery Microsoftu, které přijímají čas od zařízení vrstvy 1 vlastněných společností Microsoft a s anténami GPS. Virtuální počítače v Azure můžou buď záviset na svém hostiteli, aby předávali přesný čas (*čas hostitele*) na virtuálním počítači nebo aby se virtuální počítač mohl dostat přímo na časový server, nebo kombinaci obou. 
 
-Interakce virtuálních počítačů s hostitelem může také ovlivnit hodiny. Během [údržby paměti](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)se virtuální počítače pozastaví po dobu až 30 sekund. Například před zahájením údržby se hodiny na virtuálním počítači zobrazí 10:00:00 a trvá 28 sekund. Po obnovení virtuálního počítače se v hodinách na VIRTUÁLNÍm počítači stále zobrazuje 10:00:00, což bude 28 sekund vypnuto. Za tímto účelem služba VMICTimeSync monitoruje, co se děje na hostiteli, a vyzývá k tomu, aby se změny projevily na virtuálních počítačích, které se mají kompenzovat.
+Interakce virtuálních počítačů s hostitelem může také ovlivnit hodiny. Během [údržby paměti](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)se virtuální počítače pozastaví po dobu až 30 sekund. Například před zahájením údržby se hodiny na virtuálním počítači zobrazí 10:00:00 a trvá 28 sekund. Po obnovení virtuálního počítače se v hodinách na VIRTUÁLNÍm počítači stále zobrazuje 10:00:00, což bude 28 sekund vypnuto. Za tímto účelem služba VMICTimeSync monitoruje, co se děje na hostiteli, a vyzývá k tomu, aby se změny projevily na virtuálních počítačích, které se mají kompenzovat.
 
 Služba VMICTimeSync funguje buď v režimu vzorkování, nebo v režimu synchronizace a bude mít vliv pouze na hodiny posunuté. V ukázkovém režimu, který vyžaduje, aby byl spuštěný W32Time, služba VMICTimeSync dotazuje hostitele každých 5 sekund a poskytuje časové ukázky pro službu W32Time. Přibližně každých 30 sekund služba W32Time bere nejnovější časový vzor a používá ho k ovlivnění času hosta. Režim synchronizace se aktivuje, pokud byl host obnovený, nebo pokud se hodiny hosta posunou více než 5 sekund za hodinami hostitele. V případech, kdy je služba W32Time správně spuštěná, by neměla nikdy nastat druhý případ.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Deploy a preview environment and spatial graph - Azure Digital Twins| Microsoft Docs'
-description: Learn how to deploy your instance of Azure Digital Twins and configure your spatial resources by using the steps in this tutorial.
+title: 'Kurz: nasazení prostředí Preview a prostorového grafu – digitální vlákna Azure | Microsoft Docs'
+description: Zjistěte, jak nasadit instanci služby Azure digitální dvojče a nakonfigurovat prostředky prostorových pomocí kroků v tomto kurzu.
 services: digital-twins
 ms.author: alinast
 author: alinamstanciu
@@ -16,76 +16,76 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383029"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Tutorial: Deploy Azure Digital Twins Preview and configure a spatial graph
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Kurz: nasazení digitálních vláken Azure ve verzi Preview a konfigurace prostorového grafu
 
-You can use the Azure Digital Twins Preview service to bring together people, places, and devices in a coherent spatial system. This series of tutorials demonstrates how to use Azure Digital Twins to detect room occupancy with optimal conditions of temperature and air quality. 
+Službu Azure Digital Replaces ve verzi Preview můžete použít k spojování osob, míst a zařízení v souvislém prostorovém systému. Tato série kurzů ukazuje, jak použít k detekci obsazení místa s optimálních podmínek jakosti teplotu a air digitální dvojče Azure. 
 
-These tutorials will walk you through a .NET console application to build a scenario of an office building. The building has multiple floors and rooms within each floor. The rooms contain devices with attached sensors that detect motion, ambient temperature, and air quality. 
+Tyto kurzy vás provedou konzolovou aplikaci .NET pro vytváření scénáři kancelářskou budovu. Sestavování má více podlahy a místnosti v rámci každý floor. Místnostech obsahovat zařízení připojených senzorů, které detekce pohybu, okolní teploty a vzduchu kvality. 
 
-You'll learn how to replicate the physical areas and entities in the building as digital objects by using the Azure Digital Twins service. You'll simulate device events by using another console application. Then, you'll learn how to monitor the events that come from these physical areas and entities in near real time. 
+Se dozvíte, jak pomocí služby Azure digitální dvojče replikovat fyzické oblasti a entity v budově jako digitální objekty. Události zařízení budete simulovat pomocí jiného konzolové aplikace. Poté se dozvíte, jak monitorovat události, které pocházejí z těchto fyzických oblasti a entity téměř v reálném čase. 
 
-Správce kanceláře může s využitím těchto informací pomáhat zaměstnancům pracujícím v budově s rezervací zasedacích místností s optimálními podmínkami. An office facilities manager can use your setup to get usage trends of the rooms, and to monitor working conditions for maintenance purposes.
+Správce kanceláře může s využitím těchto informací pomáhat zaměstnancům pracujícím v budově s rezervací zasedacích místností s optimálními podmínkami. Správce zařízení sady office můžete použít nastavení trendy využití místností a sledovat práci podmínky pro účely údržby.
 
 V prvním kurzu této série získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Deploy Digital Twins.
-> * Grant permissions to your app.
-> * Modify a Digital Twins sample app.
-> * Provision your building.
+> * Nasazení digitální dvojče.
+> * Udělení oprávnění pro vaši aplikaci.
+> * Upravte digitální dvojče ukázkovou aplikaci.
+> * Zřízení vašeho sestavení.
 
 V těchto kurzech se za účelem podrobnějšího pokrytí konceptů používají a upravují stejné ukázky jako v [rychlém startu věnovaném zjištění dostupných místností](quickstart-view-occupancy-dotnet.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud nemáte účet Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- The .NET Core SDK. The Azure Digital Twins samples used in these tutorials are written in C#. Make sure to install [.NET Core SDK version 2.1.403 or later](https://www.microsoft.com/net/download) on your development machine to build and run the sample. Check that the right version is installed on your machine by running `dotnet --version` in a command window.
+- .NET Core SDK. Ukázky Azure digitální dvojče použité v těchto kurzech jsou napsané v C#. Nezapomeňte ve vývojovém počítači nainstalovat [.NET Core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) a sestavte a spusťte ukázku. Ověřte, že je ve vašem počítači nainstalovaná správná verze spuštěním `dotnet --version` v příkazovém okně.
 
 - [Visual Studio Code](https://code.visualstudio.com/) pro zkoumání vzorového kódu. 
 
 ## <a name="deploy-digital-twins"></a>Nasazení služby Digital Twins
 
-Use the steps in this section to create a new instance of the Azure Digital Twins service. Only one instance can be created per subscription. Skip to the next section if you already have one running. 
+Chcete-li vytvořit novou instanci služby Azure digitální dvojče postupujte podle kroků v této části. Je možné vytvořit pouze jednu instanci na jedno předplatné. Pokud už máte jedno spuštěné, přejděte k další části. 
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
 ## <a name="grant-permissions-to-your-app"></a>Udělení oprávnění pro aplikaci
 
-Digital Twins uses [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) to control [read/write access](../active-directory/develop/v1-permissions-and-consent.md) to the service. Any application that needs to connect with your Digital Twins instance must be registered with Azure AD. Postup v této části ukazuje, jak zaregistrovat ukázkovou aplikaci.
+Digitální vlákna využívají [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) k řízení [přístupu pro čtení a zápis](../active-directory/develop/v1-permissions-and-consent.md) ke službě. Všechny aplikace, které potřebuje pro připojení k vaší instanci digitální dvojče musí být zaregistrovaná s Azure AD. Postup v této části ukazuje, jak zaregistrovat ukázkovou aplikaci.
 
-If you already have an app registration, you can reuse it for your sample. Projděte si však tuto část a ujistěte se, že je vaše registrace aplikace správně nakonfigurovaná.
+Pokud už máte registrace aplikace, můžete znovu použít pro vaši ukázku. Projděte si však tuto část a ujistěte se, že je vaše registrace aplikace správně nakonfigurovaná.
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-permissions.md)]
 
-## <a name="configure-the-digital-twins-sample"></a>Configure the Digital Twins sample
+## <a name="configure-the-digital-twins-sample"></a>Konfigurace digitální dvojče ukázky
 
-This section walks you through an Azure Digital Twins application that communicates with the [Digital Twins REST APIs](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index). 
+V této části se seznámíte s aplikací digitálních vláken Azure, která komunikuje s [rozhraními REST API pro digitální vlákna](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index). 
 
 ### <a name="download-the-sample"></a>Stažení ukázky
 
 Pokud už máte stažené ukázky pro [rychlý start věnovaný zjištění dostupných místností](quickstart-view-occupancy-dotnet.md), můžete tyto kroky přeskočit.
 
-1. Download the [Digital Twins .NET samples](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip).
-2. Extract the contents of the zip folder on your machine.
+1. Stáhněte si [ukázky digitálních vláken .NET](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip).
+2. Extrahujte obsah složky zip na svém počítači.
 
 ### <a name="explore-the-sample"></a>Zkoumání ukázky
 
-In the extracted sample folder, open the file **digital-twins-samples-csharp\digital-twins-samples.code-workspace** in Visual Studio Code. Obsahuje dva projekty:
+V části extrahovaná ukázková složka otevřete soubor **Digital-Twins-Samples-csharp\digital-Twins-Samples.Code-Workspace** v Visual Studio Code. Obsahuje dva projekty:
 
-* You can use the provisioning sample **occupancy-quickstart** to configure and provision a [spatial intelligence graph](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). This graph is the digitized image of your physical spaces and the resources in them. It uses an [object model](concepts-objectmodel-spatialgraph.md#digital-twins-object-models), which defines objects for a smart building. For a complete list of Digital Twins objects and REST APIs, visit [this REST API documentation](https://docs.westcentralus.azuresmartspaces.net/management/swagger) or the Management API URL that was created for [your instance](#deploy-digital-twins).
+* K nakonfigurování a zřízení [grafu prostorové logiky](concepts-objectmodel-spatialgraph.md#digital-twins-object-models)můžete použít ukázku zřizování **– rychlý Start** . Tento graf je digitalizovaná obrázek prostory vaší fyzické a prostředky v nich. Používá [objektový model](concepts-objectmodel-spatialgraph.md#digital-twins-object-models), který definuje objekty pro inteligentní sestavení. Úplný seznam digitálních objektů a rozhraní REST API najdete v [této dokumentaci REST API](https://docs.westcentralus.azuresmartspaces.net/management/swagger) nebo v adrese URL rozhraní API pro správu, která byla vytvořena pro [vaši instanci](#deploy-digital-twins).
 
-   To explore the sample to see how it communicates with your Digital Twins instance, you can start with the **src\actions** folder. The files in this folder implement the commands that you'll use in these tutorials:
-    - The **provisionSample.cs** file shows how to provision your spatial graph.
-    - The **getSpaces.cs** file gets information about the provisioned spaces.
-    - The **getAvailableAndFreshSpaces.cs** file gets the results of a custom function called a user-defined function.
-    - The **createEndpoints.cs** file creates endpoints to interact with other services.
+   Pokud chcete prozkoumat ukázku a zjistit, jak komunikuje s instancí digitálního vlákna, můžete začít se složkou **src\actions** . Soubory v této složce implementovat příkazy, které použijete v následujících kurzech:
+    - Soubor **provisionSample.cs** ukazuje, jak zřídit prostorový graf.
+    - Soubor **getSpaces.cs** získává informace o zřízených prostorech.
+    - Soubor **getAvailableAndFreshSpaces.cs** získá výsledky vlastní funkce označované jako uživatelsky definovaná funkce.
+    - Soubor **createEndpoints.cs** vytvoří koncové body pro interakci s ostatními službami.
 
-* The simulation sample **device-connectivity** simulates sensor data and sends it to the IoT hub that's provisioned for your Digital Twins instance. You'll use this sample in [the next tutorial after you provision your spatial graph](tutorial-facilities-udf.md#simulate-sensor-data). The sensor and device identifiers that you use to configure this sample should be the same as what you'll use to provision your graph.
+* Ukázka simulace **zařízení – připojení** simuluje data senzorů a odesílá je do služby IoT Hub zřízené pro instanci digitálního vlákna. Tuto ukázku použijete v [dalším kurzu po zřízení prostorového grafu](tutorial-facilities-udf.md#simulate-sensor-data). Identifikátory ze senzorů a zařízení, které můžete použít ke konfiguraci této ukázce by měl být stejný jako budete používat ke zřízení grafu.
 
 ### <a name="configure-the-provisioning-sample"></a>Konfigurace ukázky zřizování
 
-1. Open a command window and go to the downloaded sample. Spusťte následující příkaz:
+1. Otevřete okno příkazového řádku a přejděte na staženou ukázku. Spusťte následující příkaz:
 
     ```cmd/sh
     cd occupancy-quickstart/src
@@ -97,22 +97,22 @@ In the extracted sample folder, open the file **digital-twins-samples-csharp\dig
     dotnet restore
     ```
 
-1. In Visual Studio Code, open the [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) file in the **occupancy-quickstart** project. Update the following values:
-   * **ClientId**: Enter the application ID of your Azure AD app registration. You noted this ID in the section where you [set app permissions](#grant-permissions-to-your-app).
-   * **Tenant**: Enter the directory ID of your [Azure AD tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). You also noted this ID in the section where you [set app permissions](#grant-permissions-to-your-app).
-   * **BaseUrl:** Zadejte adresu URL vaší instance služby Digital Twins. To get this URL, replace the placeholders in this URL with values for your instance: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. You can also get this URL by modifying the Management API URL from [the deployment section](#deploy-digital-twins). Replace **swagger/** with **api/v1.0/** .
+1. V Visual Studio Code otevřete soubor [appSettings. JSON](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) v projektu pro **rychlý Start pro obsazení** . Aktualizací následujících hodnot:
+   * **ClientID**: Zadejte ID aplikace pro registraci vaší aplikace služby Azure AD. Toto ID jste si poznamenali v části, kde jste [nastavili oprávnění aplikace](#grant-permissions-to-your-app).
+   * **Tenant**: Zadejte ID adresáře vašeho [tenanta Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Toto ID jste si také poznamenali v části, kde jste [nastavili oprávnění aplikace](#grant-permissions-to-your-app).
+   * **BaseUrl:** Zadejte adresu URL vaší instance služby Digital Twins. Chcete-li získat tuto adresu URL, nahraďte zástupné symboly v této adrese URL hodnotami pro vaši instanci: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Tuto adresu URL můžete získat také změnou adresy URL rozhraní API pro správu v [části nasazení](#deploy-digital-twins). Nahraďte **Swagger/** **rozhraním API/v 1.0/** .
 
-1. See a list of Digital Twins features that you can explore by using the sample. Spusťte následující příkaz:
+1. Podívejte se do seznamu digitální dvojče funkce, které můžete prozkoumat pomocí ukázky. Spusťte následující příkaz:
 
     ```cmd/sh
     dotnet run
     ```
 
-## <a name="understand-the-provisioning-process"></a>Understand the provisioning process
+## <a name="understand-the-provisioning-process"></a>Vysvětlení procesu zřizování
 
 Tato část ukazuje, jak ukázka zřizuje prostorový graf budovy.
 
-In Visual Studio Code, browse to the **occupancy-quickstart\src\actions** folder and open the file **provisionSample.cs**. Všimněte si následující funkce:
+V Visual Studio Code přejděte do složky **Occupancy-quickstart\src\actions** a otevřete soubor **provisionSample.cs**. Všimněte si následující funkce:
 
 ```csharp
 public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(HttpClient httpClient, ILogger logger)
@@ -132,51 +132,51 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 ```
 
-This function uses [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) in the same folder. Open this file, and note the hierarchy of an office building: *Venue*, *Floor*, *Area*, and *Rooms*. Každý z těchto fyzických prostorů může obsahovat *zařízení* a *senzory*. Each entry has a predefined `type`&mdash;for example, Floor, Room.
+Tato funkce používá [provisionSample. yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) ve stejné složce. Otevřete tento soubor a podívejte se na hierarchii kancelář budovy: *místo*, *podlahová*plocha, *oblast*a *místnosti*. Každý z těchto fyzických prostorů může obsahovat *zařízení* a *senzory*. Každá položka má předdefinovanou `type`&mdash;například podlahová, pokojová.
 
-The sample **yaml** file shows a spatial graph that uses the `Default` Digital Twins object model. This model provides generic names for most types. Generic names are sufficient for a building. Examples are Temperature for SensorDataType, and Map for SpaceBlobType. An example space type is Room with subtypes FocusRoom, ConferenceRoom, and so on. 
+Vzorový soubor **YAML** zobrazuje prostorový graf, který používá model objektu `Default` Digital revlákened. Tento model poskytuje obecné názvy pro většinu typů. Obecné názvy jsou dostačující pro budovy. Příklady jsou teploty SensorDataType a mapování pro SpaceBlobType. Typ místa příklad je místnosti s podtypy FocusRoom ConferenceRoom a tak dále. 
 
-Kdybyste potřebovali vytvořit prostorový graf pro jiný typ místa, například pro továrnu, pravděpodobně byste potřebovali jiný objektový model. You can find out which models are available to use by running the command `dotnet run GetOntologies` on the command line for the provisioning sample. 
+Kdybyste potřebovali vytvořit prostorový graf pro jiný typ místa, například pro továrnu, pravděpodobně byste potřebovali jiný objektový model. Modely, které je možné použít, zjistíte spuštěním příkazu `dotnet run GetOntologies` na příkazovém řádku pro ukázku zřizování. 
 
-For more information on spatial graphs and object models, read [Understanding Digital Twins object models and spatial intelligence graph](concepts-objectmodel-spatialgraph.md).
+Další informace o prostorových grafech a objektových modelech najdete v tématu [Principy digitálních objektů a grafů prostorové logiky](concepts-objectmodel-spatialgraph.md).
 
-### <a name="modify-the-sample-spatial-graph"></a>Modify the sample spatial graph
+### <a name="modify-the-sample-spatial-graph"></a>Upravit ukázkové prostorových grafu
 
-The **provisionSample.yaml** file contains the following nodes:
+Soubor **provisionSample. yaml** obsahuje následující uzly:
 
-- **resources**: The `resources` node creates an Azure IoT Hub resource to communicate with the devices in your setup. An IoT hub at the root node of your graph can communicate with all the devices and sensors in your graph.  
+- **prostředky**: uzel `resources` vytvoří prostředek Azure IoT Hub ke komunikaci se zařízeními v instalaci. Služby IoT hub v kořenovém uzlu grafu může komunikovat s všech zařízení a senzorů v grafu.  
 
-- **spaces:** V objektovém modelu služby Digital Twins představuje uzel `spaces` fyzická umístění. Each space has a `Type`&mdash;for example, Region, Venue, or Customer&mdash;and a friendly `Name`. Spaces can belong to other spaces, creating a hierarchical structure. The provisionSample.yaml file has a spatial graph of an imaginary building. Note the logical nesting of spaces of type `Floor` within `Venue`, `Area` in a floor, and `Room` nodes in an area. 
+- **spaces:** V objektovém modelu služby Digital Twins představuje uzel `spaces` fyzická umístění. Každé místo má `Type`&mdash;například, oblast, místo nebo&mdash;zákazníka a uživatelsky přívětivé `Name`. Mezery může patřit do jiné prostory vytváření hierarchickou strukturu. Soubor provisionSample.yaml obsahuje prostorový graf imaginární budovy. Všimněte si logických vnořených mezer typu `Floor` v rámci `Venue`, `Area` v podlaze a `Room` uzlech v oblasti. 
 
-- **devices:** Prostory můžou obsahovat zařízení (`devices`), což jsou fyzické nebo virtuální entity, které spravují několik senzorů. For example, a device might be a user’s phone, a Raspberry Pi sensor pod, or a gateway. V imaginární budově v naší ukázce si všimněte, že místnost **Focus Room** obsahuje zařízení **Raspberry Pi 3 A1**. Jednotlivé uzly zařízení jsou identifikované jedinečnou hodnotou `hardwareId` (ID hardwaru), která je v této ukázce pevně zakódovaná. Pokud chcete tuto ukázku nakonfigurovat pro skutečný provoz v produkčním prostředí, nahraďte tyto hodnoty odpovídajícími hodnotami z vašeho systému.  
+- **devices:** Prostory můžou obsahovat zařízení (`devices`), což jsou fyzické nebo virtuální entity, které spravují několik senzorů. Zařízení může být například telefonu uživatele, pod senzor Raspberry Pi nebo brány. V imaginární budově v naší ukázce si všimněte, že místnost **Focus Room** obsahuje zařízení **Raspberry Pi 3 A1**. Jednotlivé uzly zařízení jsou identifikované jedinečnou hodnotou `hardwareId` (ID hardwaru), která je v této ukázce pevně zakódovaná. Pokud chcete tuto ukázku nakonfigurovat pro skutečný provoz v produkčním prostředí, nahraďte tyto hodnoty odpovídajícími hodnotami z vašeho systému.  
 
-- **sensors**: A device can contain multiple `sensors`. They can detect and record physical changes like temperature, motion, and battery level. Each sensor node is uniquely identified by a `hardwareId`, hardcoded here. For an actual application, replace these by using the unique identifiers of the sensors in your setup. The provisionSample.yaml file has two sensors to record *Motion* and *CarbonDioxide*. Přidejte další senzor, který bude zaznamenávat teplotu (*Temperature*), a to přidáním následujících řádků pod řádky senzoru CarbonDioxide. Note that these are provided in provisionSample.yaml as commented-out lines. You can uncomment them by removing the `#` character in the front of each line. 
+- **senzory**: zařízení může obsahovat více `sensors`. Dokáže detekovat a teploty, pohybu a stav baterie, jako jsou fyzické změny záznamu. Každý uzel senzoru je jednoznačně identifikovaný hodnotou `hardwareId` (ID hardwaru), která je zde pevně zakódovaná. Pro aplikace skutečný nahraďte tyto pomocí jedinečných identifikátorů pro čidel v nastavení aplikace. Soubor provisionSample. yaml má dva senzory k záznamu *pohybu* a *CarbonDioxide*. Přidejte další senzor, který bude zaznamenávat teplotu (*Temperature*), a to přidáním následujících řádků pod řádky senzoru CarbonDioxide. Všimněte si, že tyto jsou k dispozici v provisionSample.yaml jako komentovaná řádky. Můžete je odkomentovat odebráním znaku `#` před každým řádkem. 
 
     ```yaml
             - dataType: Temperature
               hardwareId: SAMPLE_SENSOR_TEMPERATURE
     ```
     > [!NOTE]
-    > Make sure the `dataType` and `hardwareId` keys align with the statements above this snippet. Také se ujistěte, že váš editor nenahrazuje mezery tabulátorem. 
+    > Zajistěte, aby byly klíče `dataType` a `hardwareId` zarovnané s příkazy nad tento fragment kódu. Také se ujistěte, že váš editor nenahrazuje mezery tabulátorem. 
 
-Save and close the provisionSample.yaml file. In the next tutorial, you'll add more information to this file, and then provision your Azure Digital Twins sample building.
+Uložte a zavřete soubor provisionSample.yaml. V dalším kurzu budete do tohoto souboru přidejte další informace a pak zřízení budovy ukázka digitální dvojče Azure.
 
 > [!TIP]
-> You can view and modify your spatial graph using the [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer).
+> Prostorový graf můžete zobrazit a upravit pomocí [prohlížeče grafu digitálních vláken Azure](https://github.com/Azure/azure-digital-twins-graph-viewer).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you want to stop exploring Azure Digital Twins at this point, feel free to delete resources created in this tutorial:
+Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez obav odstraňte prostředky vytvořené v tomto kurzu:
 
-1. From the left menu in the [Azure portal](https://portal.azure.com), select **All resources**, select your Digital Twins resource group, and select **Delete**.
+1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků vaše digitální vlákna a vyberte **Odstranit**.
 
     > [!TIP]
-    > If you experienced trouble deleting your Digital Twins instance, a service update has been rolled out with the fix. Please retry deleting your instance.
+    > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
 
-1. If necessary, delete the sample application on your work machine.
+1. V případě potřeby odstraňte ukázkovou aplikaci na svém počítači práce.
 
 ## <a name="next-steps"></a>Další kroky
 
-To learn how to implement a custom logic to monitor conditions in your sample building, go to the next tutorial in the series: 
+Chcete-li zjistěte, jak implementovat vlastní logiku monitorování podmínek ve vaší ukázce sestavování, přejděte na další kurz v této sérii: 
 > [!div class="nextstepaction"]
 > [Kurz: Zřízení budovy a monitorování pracovních podmínek](tutorial-facilities-udf.md)

@@ -1,6 +1,6 @@
 ---
-title: Deploy modules from Azure portal - Azure IoT Edge | Microsoft Docs
-description: Use the Azure portal to deploy modules to an IoT Edge device
+title: Nasadit moduly z webu Azure portal – Azure IoT Edge | Dokumentace Microsoftu
+description: Pomocí webu Azure portal můžete nasadit moduly do zařízení IoT Edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -16,96 +16,96 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457423"
 ---
-# <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Deploy Azure IoT Edge modules from the Azure portal
+# <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Nasadit moduly Azure IoT Edge z portálu Azure portal
 
-Once you create IoT Edge modules with your business logic, you want to deploy them to your devices to operate at the edge. If you have multiple modules that work together to collect and process data, you can deploy them all at once and declare the routing rules that connect them.
+Po vytvoření IoT Edge modulů s obchodní logikou, budete chtít nasadit do zařízení pracovat na hraničních zařízeních. Pokud máte více modulů, které vzájemně spolupracují ke shromáždění a zpracování dat, můžete je nasadit všechny najednou a deklarovat pravidla směrování, které je propojují.
 
-This article shows how the Azure portal guides you through creating a deployment manifest and pushing the deployment to an IoT Edge device. For information about creating a deployment that targets multiple devices based on their shared tags, see [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md)
+Tento článek popisuje, jak na webu Azure portal vás provede vytvořením manifest nasazení a doručením (push) nasazení do zařízení IoT Edge. Informace o vytvoření nasazení, které cílí na více zařízení na základě jejich sdílených značek, najdete v tématu [nasazení a sledování IoT Edgech modulů ve velkém měřítku](how-to-deploy-monitor.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* An [IoT hub](../iot-hub/iot-hub-create-through-portal.md) in your Azure subscription.
-* An [IoT Edge device](how-to-register-device.md#register-in-the-azure-portal) with the IoT Edge runtime installed.
+* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
+* [IoT Edge zařízení](how-to-register-device.md#register-in-the-azure-portal) s nainstalovaným modulem runtime IoT Edge.
 
-## <a name="select-your-device"></a>Select your device
+## <a name="select-your-device"></a>Vyberte zařízení
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and navigate to your IoT hub.
-1. Select **IoT Edge** from the menu.
-1. Click on the ID of the target device from the list of devices.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do služby IoT Hub.
+1. V nabídce vyberte **IoT Edge** .
+1. Kliknutím na ID cílové zařízení ze seznamu zařízení.
 1. Vyberte **Nastavit moduly**.
 
-## <a name="configure-a-deployment-manifest"></a>Configure a deployment manifest
+## <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-A deployment manifest is a JSON document that describes which modules to deploy, how data flows between the modules, and desired properties of the module twins. For more information about how deployment manifests work and how to create them, see [Understand how IoT Edge modules can be used, configured, and reused](module-composition.md).
+Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Další informace o tom, jak manifesty nasazení fungují a jak je vytvořit, najdete v tématu [Vysvětlení způsobu použití, konfigurace a](module-composition.md)opětovného použití modulů IoT Edge.
 
-The Azure portal has a wizard that walks you through creating the deployment manifest, instead of building the JSON document manually. It has three steps: **Add modules**, **Specify routes**, and **Review deployment**.
+Na webu Azure portal obsahuje průvodce, který vás provede vytvořením manifest nasazení místo ruční vytváření dokumentů JSON. Má tři kroky: **přidat moduly**, **zadat trasy**a **zkontrolovat nasazení**.
 
-### <a name="add-modules"></a>Add modules
+### <a name="add-modules"></a>Přidat moduly
 
-1. In the **Container Registry Settings** section of the page, provide the credentials to access any private container registries that contain your module images.
+1. V části **nastavení Container Registry** na stránce zadejte přihlašovací údaje pro přístup k jakýmkoli soukromým kontejnerům, které obsahují image modulu.
 
-1. In the **Deployment Modules** section of the page, select **Add**.
+1. V části **moduly nasazení** na stránce vyberte **Přidat**.
 
-1. Look at the types of modules from the drop-down list:
+1. Podívejte se na typy moduly z rozevíracího seznamu:
 
-   * **IoT Edge Module** - the default option.
-   * **Azure Stream Analytics Module** - only modules generated from an Azure Stream Analytics workload.
-   * **Azure Machine Learning Module** - only model images generated from an Azure Machine Learning workspace.
+   * **IoT Edge modul** – výchozí možnost.
+   * **Azure Stream Analytics** moduly pouze modulu generované z úlohy Azure Stream Analytics.
+   * **Azure Machine Learning** pouze image modelů, které jsou vygenerovány z pracovního prostoru Azure Machine Learning.
 
-1. Select the **IoT Edge Module**.
+1. Vyberte **modul IoT Edge**.
 
-1. Provide a name for the module, then specify the container image. Například:
+1. Zadejte název modulu a pak zadejte image kontejneru. Příklad:
 
-   * **Name** - SimulatedTemperatureSensor
-   * **Image URI** - mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
+   * **Název** – SimulatedTemperatureSensor
+   * **Identifikátor URI image** – MCR.Microsoft.com/azureiotedge-Simulated-Temperature-Sensor:1.0
 
-1. Fill out the optional fields if necessary. For more information about container create options, restart policy, and desired status see [EdgeAgent desired properties](module-edgeagent-edgehub.md#edgeagent-desired-properties). For more information about the module twin see [Define or update desired properties](module-composition.md#define-or-update-desired-properties).
+1. V případě potřeby zadejte volitelná pole. Další informace o možnostech vytvoření kontejneru, zásadách restartování a požadovaném stavu najdete v tématu [EdgeAgent požadované vlastnosti](module-edgeagent-edgehub.md#edgeagent-desired-properties). Další informace o tomto modulu najdete v tématu [definice nebo aktualizace požadovaných vlastností](module-composition.md#define-or-update-desired-properties).
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
-1. Repeat steps 2-6 to add additional modules to your deployment.
+1. Opakujte kroky 2 až 6 pro přidání dalších modulů k nasazení.
 
-1. Select **Next** to continue to the routes section.
+1. Kliknutím na tlačítko **Další** pokračujte v části trasy.
 
-### <a name="specify-routes"></a>Specify routes
+### <a name="specify-routes"></a>Zadejte trasy
 
-By default the wizard gives you a route called **route** and defined as **FROM /* INTO $upstream**, which means that any messages output by any modules are sent to your IoT hub.  
+Ve výchozím nastavení průvodce poskytuje trasu nazvanou **Route** a definovanou jako **FROM/* into $upstream * *, což znamená, že všechny zprávy ve službě IoT Hub budou odesílány do výstupů všech modulů.  
 
-Add or update the routes with information from [Declare routes](module-composition.md#declare-routes), then select **Next** to continue to the review section.
+Přidejte nebo aktualizujte trasy s informacemi z [deklarace směrování](module-composition.md#declare-routes)a pak výběrem **Další** pokračujte do části přezkoumání.
 
-### <a name="review-deployment"></a>Review deployment
+### <a name="review-deployment"></a>Zkontrolujte nasazení
 
-The review section shows you the JSON deployment manifest that was created based on your selections in the previous two sections. Note that there are two modules declared that you didn't add: **$edgeAgent** and **$edgeHub**. These two modules make up the [IoT Edge runtime](iot-edge-runtime.md) and are required defaults in every deployment.
+Zkontrolujte část pořady, kterou jste nasazení JSON manifestu byl vytvořen na základě vašeho výběru v předchozích dvou částech. Všimněte si, že jsou deklarovány dva moduly, které jste nepřidali: **$edgeAgent** a **$edgeHub**. Tyto dva moduly tvoří [modul runtime IoT Edge](iot-edge-runtime.md) a jsou požadované výchozí hodnoty v každém nasazení.
 
-Review your deployment information, then select **Submit**.
+Zkontrolujte informace o svém nasazení a pak vyberte **Odeslat**.
 
-## <a name="view-modules-on-your-device"></a>View modules on your device
+## <a name="view-modules-on-your-device"></a>Zobrazení modulů ve vašem zařízení
 
-Once you've deployed modules to your device, you can view all of them in the **Device details** page of the portal. This page displays the name of each deployed module, as well as useful information like the deployment status and exit code.
+Až nasadíte moduly do svého zařízení, můžete je zobrazit na stránce **Podrobnosti o zařízení** na portálu. Tato stránka zobrazuje název každé nasazené modulu, stejně jako užitečné informace, jako je nasazení stavu a ukončovací kód.
 
-## <a name="deploy-modules-from-azure-marketplace"></a>Deploy modules from Azure Marketplace
+## <a name="deploy-modules-from-azure-marketplace"></a>Nasadit moduly z Azure Marketplace
 
-Azure Marketplace is an online applications and services marketplace where you can browse through a wide range of enterprise applications and solutions that are certified and optimized to run on Azure, including [IoT Edge modules](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Azure Marketplace can also be accessed through the Azure portal under **Create a Resource**.
+Azure Marketplace je tržiště aplikací a služeb online, kde můžete procházet široké spektrum podnikových aplikací a řešení, která jsou certifikovaná a optimalizovaná pro spouštění v Azure, včetně [modulů IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). K Azure Marketplace lze také přistupovat prostřednictvím Azure Portal v části **vytvoření prostředku**.
 
-You can install an IoT Edge module from either Azure Marketplace or the Azure portal:
+IoT Edge modul můžete nainstalovat buď z Azure Marketplace nebo Azure Portal:
 
-1. Find a module and begin the deployment process.
+1. Vyhledejte modul a zahajte proces nasazení.
 
-   * Azure portal: Find a module and select **Create**.
+   * Azure Portal: Najděte modul a vyberte **vytvořit**.
 
    * Azure Marketplace:
 
-     1. Find a module and select **Get it now**.
-     1. Acknowledge the provider's terms of use and privacy policy by selecting **Continue**.
+     1. Najděte modul a vyberte **získat**.
+     1. Kliknutím na **pokračovat**potvrďte podmínkami použití a zásady ochrany osobních údajů poskytovatele.
 
-1. Choose your subscription and the IoT Hub to which the target device is attached.
+1. Vyberte své předplatné a IoT Hub, ke kterému je cílové zařízení připojené.
 
-1. Choose **Deploy to a device**.
+1. Vyberte **nasadit do zařízení**.
 
-1. Enter the name of the device or select **Find Device** to browse among the devices registered with the hub.
+1. Zadejte název zařízení nebo vyberte **Najít zařízení** , která chcete procházet mezi zařízeními zaregistrovanými v centru.
 
-1. Select **Create** to continue the standard process of configuring a deployment manifest, including adding other modules if desired. Details for the new module such as image URI, create options, and desired properties are predefined but can be changed.
+1. Vyberte **vytvořit** , pokud chcete pokračovat v standardním procesu konfigurace manifestu nasazení, včetně přidání dalších modulů, pokud je to potřeba. Podrobnosti o novém modulu, jako je identifikátor URI obrázku, možnosti vytvoření a požadované vlastnosti, jsou předdefinovány, ale lze je změnit.
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn how to [Deploy and monitor IoT Edge modules at scale](how-to-deploy-monitor.md)
+Naučte se [nasazovat a monitorovat IoT Edge moduly ve velkém měřítku](how-to-deploy-monitor.md) .

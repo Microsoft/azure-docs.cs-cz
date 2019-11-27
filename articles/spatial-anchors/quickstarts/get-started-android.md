@@ -80,7 +80,7 @@ Dalším krokem je konfigurace aplikace tak, aby používala identifikátor úč
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-Otevřít `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
+Otevřete `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
 Vyhledejte pole `SpatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
 
@@ -88,7 +88,7 @@ Vyhledejte pole `SpatialAnchorsAccountId` a nahraďte `Set me` identifikátorem 
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
-Otevřít `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
+Otevřete `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
 Vyhledejte pole `SpatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
 

@@ -1,6 +1,6 @@
 ---
-title: Sample - Require encryption for Data Lake Store
-description: This sample policy definition requires the encryption state on Data Lake Store accounts to be enabled.
+title: Ukázka – vyžaduje šifrování pro Data Lake Store
+description: Tato ukázková definice zásad vyžaduje, aby byl povolený stav šifrování u účtů Data Lake Store.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 5b29caa7fa8b9169b8c2164975f9cdb2663c5cef
@@ -10,7 +10,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463640"
 ---
-# <a name="sample---require-data-lake-store-encryption"></a>Sample - Require Data Lake Store encryption
+# <a name="sample---require-data-lake-store-encryption"></a>Ukázka – vyžaduje šifrování Data Lake Store.
 
 Tyto integrované zásady odmítají účty Data Lake Store, které nemají povolené šifrování.
 
@@ -44,7 +44,7 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 Při přiřazování zásad vyberte z dostupných integrovaných definic **Vynucení šifrování v účtech DataLakeStore**.
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -62,7 +62,7 @@ Pokud chcete odebrat přiřazení zásad, spusťte následující příkaz.
 Remove-AzPolicyAssignment -Name "Data Lake Store encryption" -Scope <scope>
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -70,7 +70,7 @@ Remove-AzPolicyAssignment -Name "Data Lake Store encryption" -Scope <scope>
 az policy assignment create --scope <scope> --name "Data Lake Store encryption" --policy a7ff3161-0087-490a-9ad9-ad6217f4f43a
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
 
 Pokud chcete odebrat přiřazení zásad, spusťte následující příkaz.
 

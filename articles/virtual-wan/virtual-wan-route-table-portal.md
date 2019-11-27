@@ -1,6 +1,6 @@
 ---
-title: 'Virtual WAN: Create virtual hub route table to NVA: Azure portal'
-description: Virtual WAN virtual hub route table to steer traffic to a network virtual appliance using the portal.
+title: 'Virtuální síť WAN: vytvoření tabulky směrování virtuálního rozbočovače do síťové virtuální zařízení: Azure Portal'
+description: Tabulka směrování virtuálních rozbočovačů sítě WAN pro řízení provozu do síťového virtuálního zařízení pomocí portálu.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,88 +8,88 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 3aa5660e5b777364ef9d684debe7e06f42acee6e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482024"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534140"
 ---
-# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Create a Virtual WAN hub route table for NVAs: Azure portal
+# <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Vytvoření směrovací tabulky pro virtuální síť WAN pro síťová virtuální zařízení: Azure Portal
 
-This article shows you how to steer traffic from a branch (on-premises site) connected to the Virtual WAN hub to a Spoke Vnet via a Network Virtual Appliance (NVA).
+V tomto článku se dozvíte, jak řídit provoz z větve (místní lokalita) připojených k virtuální síti WAN přes virtuální síť rozbočovače prostřednictvím síťového virtuálního zařízení (síťové virtuální zařízení).
 
-![Diagram virtuální sítě WAN](./media/virtual-wan-route-table/vwanroute.png)
+![Diagram služby Virtual WAN](./media/virtual-wan-route-table/vwanroute.png)
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Verify that you have met the following criteria:
+Ověřte, že splňujete následující kritéria:
 
-*  You have a Network Virtual Appliance (NVA). A Network Virtual Appliance is a third-party software of your choice that is typically provisioned from Azure Marketplace in a virtual network.
+*  Máte síťové virtuální zařízení (síťové virtuální zařízení). Síťové virtuální zařízení je software od jiného výrobce, který je obvykle zřízený z Azure Marketplace ve virtuální síti.
 
-    * A private IP address must be assigned to the NVA network interface.
+    * Privátní IP adresa musí být přiřazena k síťové virtuální zařízení síťovému rozhraní.
 
-    * The NVA is not deployed in the virtual hub. It must be deployed in a separate VNet.
+    * SÍŤOVÉ virtuální zařízení není nasazený ve virtuálním centru. Musí být nasazené v samostatné virtuální síti.
 
-    *  The NVA VNet may have one or many virtual networks connected to it. In this article, we refer to the NVA VNet as an 'indirect spoke VNet'. These VNets can be connected to the NVA VNet by using VNet peering. The Vnet Peering links are depicted by black arrows in the above figure.
-*  You have created 2 VNets. They will be used as spoke VNets.
+    *  Virtuální síť síťové virtuální zařízení může mít připojenou jednu nebo více virtuálních sítí. V tomto článku odkazujeme na virtuální síť síťové virtuální zařízení jako "nepřímá virtuální síť rozbočovače". Tyto virtuální sítě můžou být připojené k virtuální síti síťové virtuální zařízení pomocí partnerského vztahu virtuálních sítí. Odkazy partnerských vztahů virtuálních sítí jsou znázorněny pomocí černých šipek na výše uvedeném obrázku mezi virtuální sítí VNET 1, VNet 2 a síťové virtuální zařízení.
+*  Vytvořili jste 2 virtuální sítě. Budou použity jako paprskový virtuální sítě.
 
-    * For this exercise, the VNet spoke address spaces are: VNet1: 10.0.2.0/24 and VNet2: 10.0.3.0/24. If you need information on how to create a VNet, see [Create a virtual network](../virtual-network/quick-create-portal.md).
+    * Pro toto cvičení jsou adresní prostory virtuálních sítí ve virtuální síti: VNet1:10.0.2.0/24 a VNet2:10.0.3.0/24. Pokud potřebujete informace o tom, jak vytvořit virtuální síť, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/quick-create-portal.md).
 
-    * Ensure there are no virtual network gateways in any of the VNets.
-    * For this configuration, these VNets do not require a gateway subnet.
+    * Zajistěte, aby v žádném z virtuální sítě neexistovaly žádné brány virtuální sítě.
+    * Pro tuto konfiguraci tyto virtuální sítě nevyžadují podsíť brány.
 
-## <a name="signin"></a>1. Sign in
+## <a name="signin"></a>1. přihlášení
 
 V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
 
-## <a name="vwan"></a>2. Create a virtual WAN
+## <a name="vwan"></a>2. vytvoření virtuální sítě WAN
 
-Create a virtual WAN. For the purposes of this exercise, you can use the following values:
+Vytvořte virtuální síť WAN. Pro účely tohoto cvičení můžete použít následující hodnoty:
 
-* **Virtual WAN name:** myVirtualWAN
-* **Resource group:** testRG
-* **Location:** West US
+* **Název virtuální sítě WAN:** myVirtualWAN
+* **Skupina prostředků:** testRG
+* **Umístění:** Západní USA
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="hub"></a>3. Create a hub
+## <a name="hub"></a>3. vytvoření centra
 
-Create the hub. For the purposes of this exercise, you can use the following values:
+Vytvořte centrum. Pro účely tohoto cvičení můžete použít následující hodnoty:
 
-* **Location:** West US
-* **Name:** westushub
-* **Hub private address space:** 10.0.1.0/24
+* **Umístění:** Západní USA
+* **Název:** westushub
+* **Privátní adresní prostor centra:** 10.0.1.0/24
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="route"></a>4. Create and apply a hub route table
+## <a name="route"></a>4. vytvoření a použití tabulky směrování centra
 
-Update the hub with a hub route table. For the purposes of this exercise, you can use the following values:
+Aktualizujte centrum s tabulkou směrování na rozbočovači. Pro účely tohoto cvičení můžete použít následující hodnoty:
 
-* **Indirect spoke VNet address spaces:** (VNet1 and VNet2) 10.0.2.0/24 and 10.0.3.0/24
-* **DMZ NVA network interface private IP address:** 10.0.4.5
+* **Adresní prostory nepřímých propojení paprsků:** (VNet1 a VNet2) 10.0.2.0/24 a 10.0.3.0/24
+* **Privátní IP adresa síťového rozhraní DMZ síťové virtuální zařízení:** 10.0.4.5
 
-1. Navigate to your virtual WAN.
-2. Click the hub for which you want to create a route table.
-3. Click the **...** , and then click **Edit virtual hub**.
-4. On the **Edit virtual hub** page, scroll down and select the checkbox **Use table for routing**.
-5. In the **If destination prefix is** column, add the address spaces. In the **Send to next hop** column, add the DMZ NVA network interface private IP address.
-6. Click **Confirm** to update the hub resource with the route table settings.
+1. Přejděte k virtuální síti WAN.
+2. Klikněte na centrum, pro které chcete vytvořit směrovací tabulku.
+3. Klikněte na **...** a pak klikněte na **Upravit virtuální rozbočovač**.
+4. Na stránce **Upravit virtuální rozbočovač** přejděte dolů a zaškrtněte políčko **použít tabulku pro směrování**.
+5. Do sloupce **předpona cílového umístění** přidejte adresní prostory. Do sloupce **Odeslat do dalšího směrování** přidejte privátní IP adresu síťového rozhraní DMZ síťové virtuální zařízení.
+6. Kliknutím na **Potvrdit** aktualizujte prostředek centra pomocí nastavení směrovací tabulky.
 
-## <a name="connections"></a>5. Create the VNet connections
+## <a name="connections"></a>5. vytvoření připojení virtuální sítě
 
-Create a connection from each indirect spoke VNet (VNet1 and VNet2) to the hub. Then, create a connection from the NVA VNet to the hub. These Vnet Connections are dipicted by blue arrows in the figure above. 
+Vytvořte připojení k virtuální síti z každé nepřímo virtuální sítě rozbočovače (VNet1 a VNet2) do centra. Tato připojení k virtuální síti jsou znázorněna modrou šipkou na výše uvedeném obrázku. Pak vytvořte připojení virtuální sítě z virtuální sítě síťové virtuální zařízení do centra (černá šipka na obrázku). 
 
- For this step, you can use the following values:
+ Pro tento krok můžete použít následující hodnoty:
 
-| VNet name| Název připojení|
+| Název virtuální sítě| Název připojení|
 | --- | --- |
 | VNet1 | testconnection1 |
 | VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-Repeat the following procedure for each VNet that you want to connect.
+Pro každou virtuální síť, ke které se chcete připojit, zopakujte následující postup.
 
 1. Na stránce vaší virtuální sítě WAN klikněte na **Připojení k virtuální síti**.
 2. Na stránce připojení k virtuální síti klikněte na **+Add connection** (Přidat připojení).
@@ -99,7 +99,7 @@ Repeat the following procedure for each VNet that you want to connect.
     * **Hubs** (Rozbočovače) – vyberte rozbočovač, který chcete k tomuto připojení přidružit.
     * **Subscription** (Předplatné) – ověřte předplatné.
     * **Virtual network** (Virtuální síť) – vyberte virtuální síť, kterou chcete připojit k tomuto rozbočovači. Virtuální síť nesmí mít existující bránu virtuální sítě.
-4. Click **OK** to create the connection.
+4. Kliknutím na tlačítko **OK** vytvořte připojení.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: kumud
-ms.openlocfilehash: edc4cc32cd358bd37fdab46e323c59ec207b2d5a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: cdfcf6b379feb5cc71c173275601ce9c55d57d12
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293478"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539246"
 ---
 # <a name="read-nsg-flow-logs"></a>Čtení protokolů toku NSG
 
@@ -33,7 +33,7 @@ Protokoly toku NSG se ukládají v účtu úložiště v objektech [blob bloku](
 
 V následujícím scénáři máte ukázkový protokol toku, který je uložený v účtu úložiště. Naučíte se, jak selektivně číst nejnovější události v protokolech toku NSG. V tomto článku používáte PowerShell, ale koncepty popsané v článku nejsou omezené na programovací jazyk a platí pro všechny jazyky, které rozhraní API pro Azure Storage podporuje.
 
-## <a name="setup"></a>Instalace
+## <a name="setup"></a>Nastavení
 
 Než začnete, musíte mít povolené protokolování toku skupin zabezpečení sítě v jedné nebo několika skupinách zabezpečení sítě ve vašem účtu. Pokyny k povolení protokolů toku zabezpečení sítě najdete v následujícím článku: [Úvod do protokolování toku pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
 
@@ -85,7 +85,7 @@ function Get-NSGFlowLogBlockList  {
     )
     process {
         # Stores the block list in a variable from the block blob.
-        $blockList = $CloudBlockBlob.DownloadBlockList()
+        $blockList = $CloudBlockBlob.DownloadBlockListAsync()
 
         # Return the Block List
         $blockList
@@ -116,7 +116,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>Čtení objektu blob bloku
 
-Dál je potřeba načíst proměnnou `$blocklist`, aby se data načetla. V tomto příkladu procházíme seznamu blokovaných, přečetli jsme z každého bloku bajty a vyplníte je v poli. K načtení dat použijte metodu [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) .
+Dále potřebujete načíst proměnnou `$blocklist` pro načtení dat. V tomto příkladu procházíme seznamu blokovaných, přečetli jsme z každého bloku bajty a vyplníte je v poli. K načtení dat použijte metodu [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) .
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {
@@ -142,7 +142,7 @@ function Get-NSGFlowLogReadBlock  {
         $downloadArray = New-Object -TypeName byte[] -ArgumentList $maxvalue
 
         # Download the data into the ByteArray, starting with the current index, for the number of bytes in the current block. Index is increased by 3 when reading to remove preceding comma.
-        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length-1)) | Out-Null
+        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length)) | Out-Null
 
         # Increment the index by adding the current block length to the previous index
         $index = $index + $blockList[$i].Length
@@ -160,7 +160,7 @@ function Get-NSGFlowLogReadBlock  {
 $valuearray = Get-NSGFlowLogReadBlock -blockList $blockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Pole `$valuearray` nyní obsahuje hodnotu řetězce každého bloku. Chcete-li ověřit položku, Získejte druhý k poslední hodnotě z pole spuštěním `$valuearray[$valuearray.Length-2]`. Poslední hodnotu nechcete, protože se jedná o pravou závorku.
+Nyní `$valuearray` pole obsahuje hodnotu řetězce každého bloku. Chcete-li ověřit položku, Získejte druhý k poslední hodnotě z pole spuštěním `$valuearray[$valuearray.Length-2]`. Poslední hodnotu nechcete, protože se jedná o pravou závorku.
 
 Výsledky této hodnoty jsou uvedeny v následujícím příkladu:
 

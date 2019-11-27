@@ -1,5 +1,5 @@
 ---
-title: Two-step verification Azure MFA and ADFS - Azure Active Directory
+title: Dvoustupňové ověřování Azure MFA a ADFS-Azure Active Directory
 description: Toto je stránka vícefaktorového ověřování Azure, která popisuje, jak začít s vícefaktorovým ověřováním Azure a službami AD FS.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -22,7 +22,7 @@ ms.locfileid: "74381164"
 
 <center>
 
-![Azure MFA and ADFS getting started](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
+![Azure MFA a ADFS Začínáme](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 Pokud má vaše organizace federované místní služby Active Directory s Azure Active Directory využívající službu AD FS, jsou k dispozici následující 2 možnosti používání ověřování Azure Multi-Factor Authentication.
 

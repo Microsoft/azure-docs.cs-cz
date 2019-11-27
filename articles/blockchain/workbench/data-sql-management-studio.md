@@ -1,5 +1,5 @@
 ---
-title: Query Azure Blockchain Workbench data using SQL Server Management Studio
+title: Dotazování dat Azure blockchain Workbench pomocí SQL Server Management Studio
 description: Zjistěte, jak se připojit k databázi SQL Database služby Azure Blockchain Workbench z aplikace SQL Server Management Studio.
 ms.date: 11/20/2019
 ms.topic: article
@@ -14,9 +14,9 @@ ms.locfileid: "74326041"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Použití dat služby Azure Blockchain Workbench v aplikaci SQL Server Management Studio
 
-Microsoft SQL Server Management Studio provides the ability to rapidly write and test queries against Azure Blockchain Workbench's SQL DB. This section contains a step-by-step walkthrough of how to connect to Azure Blockchain Workbench's SQL Database from within SQL Server Management Studio.
+Microsoft SQL Server Management Studio poskytuje možnost rychlého psaní a testování dotazů na databázi SQL Azure blockchain Workbench. V této části najdete podrobný návod k tomu, jak se připojit k SQL Database Azure blockchain Workbench z SQL Server Management Studio.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Stáhnout aplikaci [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
@@ -38,7 +38,7 @@ Microsoft SQL Server Management Studio provides the ability to rapidly write and
       ![Seznam databází](./media/data-sql-management-studio/db-list.png)
 
 5. Pokud chcete zobrazit data související s libovolným zobrazením databáze, můžete pomocí následujících kroků automaticky vygenerovat a vybrat příkaz.
-6. Right-click any of the database views in the Object Explorer.
+6. Klikněte pravým tlačítkem na libovolné zobrazení databáze v Průzkumník objektů.
 7. Vyberte **Script View as** (Zobrazit skript jako).
 8. Zvolte **SELECT to** (VYBRAT do).
 9. Vyberte **New Query Editor Window** (Nové okno Editoru dotazů).

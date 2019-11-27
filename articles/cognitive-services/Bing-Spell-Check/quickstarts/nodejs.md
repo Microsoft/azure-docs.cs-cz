@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Check spelling with the REST API and Node.js - Bing Spell Check'
+title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a Node. js – Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Get started using the Bing Spell Check REST API to check spelling and grammar.
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,20 +17,20 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378823"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Quickstart: Check spelling with the Bing Spell Check REST API and Node.js
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Node. js
 
-Use this quickstart to make your first call to the Bing Spell Check REST API. This simple Node application sends a request to the API and returns a list of words it didn't recognize, followed by suggested corrections. While this application is written in Node.js, the API is a RESTful Web service compatible with most programming languages. The source code for this application is available on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace uzlů pošle požadavek do rozhraní API a vrátí seznam slov, která nerozpoznala, a potom doporučované opravy. I když je tato aplikace napsaná v Node. js, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Node.js 6](https://nodejs.org/en/download/) or later.
+* [Node. js 6](https://nodejs.org/en/download/) nebo novější.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Create a new JavaScript file in your favorite IDE or editor. Set the strictness, and require `https`. Then create variables for your API endpoint's host, path, and your subscription key.
+1. Vytvořte nový soubor JavaScriptu v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru. Nastavte striktní a vyžadovat `https`. Pak vytvořte proměnné pro hostitele, cestu a klíč předplatného koncového bodu rozhraní API.
 
     ```javascript
     'use strict';
@@ -41,7 +41,7 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Create variables for your search parameters and the text you want to check. Append your market code after `mkt=`. The market code is the country you make the request from. Also, append your spell-check mode after `&mode=`. Mode is either `proof` (catches most spelling/grammar errors) or `spell` (catches most spelling but not as many grammar errors).
+2. Vytvořte proměnné pro parametry vyhledávání a text, který chcete kontrolovat. Po `mkt=`přidejte svůj kód na trhu. Kód na trhu je země, ze které provedete požadavek. Také po `&mode=`připojit režim kontroly pravopisu. Režim je buď `proof` (catch nejvíc pravopis/gramatické chyby) nebo `spell` (zachycuje většinu pravopisů, ale ne tolik gramatických chyb).
 
     ```javascript
     let mkt = "en-US";
@@ -50,9 +50,9 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     let query_string = "?mkt=" + mkt + "&mode=" + mode;
     ```
 
-## <a name="create-the-request-parameters"></a>Create the request parameters
+## <a name="create-the-request-parameters"></a>Vytvoření parametrů žádosti
 
-Create your request parameters by creating a new object with a `POST` method. Add your path by appending your endpoint path, and query string. Add your subscription key to the `Ocp-Apim-Subscription-Key` header.
+Vytvořte parametry žádosti vytvořením nového objektu s `POST` metodou. Přidejte cestu tak, že připojíte cestu ke koncovému bodu a řetězec dotazu. Do hlavičky `Ocp-Apim-Subscription-Key` přidejte svůj klíč předplatného.
 
 ```javascript
 let request_params = {
@@ -69,7 +69,7 @@ let request_params = {
 
 ## <a name="create-a-response-handler"></a>Vytvoření obslužné rutiny odpovědi
 
-Create a function called `response_handler` to take the JSON response from the API, and print it. Create a variable for the response body. Append the response when a `data` flag is received, using `response.on()`. When a `end` flag is received, print the JSON body to the console.
+Vytvořte funkci nazvanou `response_handler`, která z rozhraní API převezme odpověď JSON a vytiskne ji. Vytvořte proměnnou pro tělo odpovědi. Připojí odpověď, když se přijme příznak `data`, a to pomocí `response.on()`. Když se přijme příznak `end`, vytiskněte tělo JSON do konzoly.
 
 ```javascript
 let response_handler = function (response) {
@@ -87,9 +87,9 @@ let response_handler = function (response) {
 };
 ```
 
-## <a name="send-the-request"></a>Send the request
+## <a name="send-the-request"></a>Odeslat žádost
 
-Call the API using `https.request()` with your request parameters, and response handler. Write your text to the API, and end the request afterwards.
+Zavolejte rozhraní API pomocí `https.request()` s parametry žádosti a obslužnou rutinou odpovědi. Napište svůj text do rozhraní API a potom tento požadavek ukončete.
 
 ```javascript
 let req = https.request (request_params, response_handler);
@@ -97,7 +97,7 @@ req.write ("text=" + text);
 req.end ();
 ```
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
@@ -142,7 +142,7 @@ req.end ();
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Create a single page web-app](../tutorials/spellcheck.md)
+> [Vytvoření webové aplikace na jedné stránce](../tutorials/spellcheck.md)
 
-- [What is the Bing Spell Check API?](../overview.md)
+- [Co je rozhraní API Bingu pro kontrolu pravopisu?](../overview.md)
 - [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

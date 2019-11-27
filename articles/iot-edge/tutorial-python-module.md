@@ -1,5 +1,5 @@
 ---
-title: Create custom Python module - Azure IoT Edge | Microsoft Docs
+title: Vytvoření vlastního modulu Pythonu – Azure IoT Edge | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak vytvořit modul IoT Edge s kódem v jazyce Python a jak ho nasadit na hraniční zařízení.
 services: iot-edge
 author: shizn
@@ -17,11 +17,11 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457615"
 ---
-# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Tutorial: Develop and deploy a Python IoT Edge module for Linux devices
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení modulu Python IoT Edge pro zařízení se systémem Linux
 
-Use Visual Studio Code to develop C code and deploy it to a Linux device running Azure IoT Edge. 
+Pomocí Visual Studio Code můžete vyvíjet kód v jazyce C a nasazovat ho do zařízení se systémem Linux se spuštěným Azure IoT Edge. 
 
-Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. This tutorial walks you through creating and deploying an IoT Edge module that filters sensor data on the IoT Edge device that you set up in the quickstart. V tomto kurzu se naučíte:    
+Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede vytvořením a nasazením modulu IoT Edge, který filtruje data ze senzorů na zařízení IoT Edge, které jste nastavili v rychlém startu. V tomto kurzu se naučíte:    
 
 > [!div class="checklist"]
 > * Používat Visual Studio Code k vytvoření modulu IoT Edge Python.
@@ -35,30 +35,30 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> The following guide is for the V1 Python SDK, which has since been deprecated. We are currently working to make this guide V2 compatible. Please watch this space for updates.
+> Následující příručka je určena pro sadu SDK V1 Python, která je od té doby zastaralá. V současné době pracujeme na tom, aby tato příručka byla kompatibilní s 2. Podívejte se prosím na tento prostor na aktualizace.
 
-## <a name="solution-scope"></a>Solution scope
+## <a name="solution-scope"></a>Obor řešení
 
-This tutorial demonstrates how to develop a module in **Python** using **Visual Studio Code**, and how to deploy it to a **Linux device**. IoT Edge does not support Python modules for Windows devices. 
+Tento kurz ukazuje, jak vytvořit modul v **Pythonu** pomocí **Visual Studio Code**a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly Pythonu pro zařízení s Windows. 
 
-Use the following table to understand your options for developing and deploying Python modules to Linux: 
+Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modulů Pythonu pro Linux: 
 
 | Python | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
-| **Linux AMD64** | ![Use VS Code for Python modules on Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
-| **Linux ARM32** | ![Use VS Code for Python modules on Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
+| **Linux AMD64** | ![Použití VS Code pro moduly Pythonu v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
+| **Linux ARM32** | ![Použití VS Code pro moduly Pythonu na platformě Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Before beginning this tutorial, you should have gone through the previous tutorial to set up your development environment for Linux container development: [Develop IoT Edge modules for Linux devices](tutorial-develop-for-linux.md). By completing either of those tutorials, you should have the following prerequisites in place: 
+Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení některého z těchto kurzů byste měli mít následující požadavky: 
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* A [Linux device running Azure IoT Edge](quickstart-linux.md)
-* A container registry, like [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
-* [Visual Studio Code](https://code.visualstudio.com/) configured with the [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* [Docker CE](https://docs.docker.com/install/) configured to run Linux containers.
+* [Zařízení se systémem Linux se spuštěným Azure IoT Edge](quickstart-linux.md)
+* Registr kontejneru, například [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+* [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.
 
-To develop an IoT Edge module in Python, install the following additional prerequisites on your development machine: 
+Pokud chcete vytvořit modul IoT Edge v Pythonu, nainstalujte na svém vývojovém počítači následující další požadavky: 
 
 * [Rozšíření Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) pro Visual Studio Code. 
 * [Python](https://www.python.org/downloads/).
@@ -67,12 +67,12 @@ To develop an IoT Edge module in Python, install the following additional prereq
 >[!Note]
 >Ujistěte se, že se vaše složka `bin` nachází v cestě pro vaši platformu. Obvykle je to `~/.local/` pro UNIX a macOS nebo `%APPDATA%\Python` ve Windows.
 
-## <a name="create-a-module-project"></a>Create a module project
-The following steps create an IoT Edge Python module by using Visual Studio Code and the Azure IoT Tools.
+## <a name="create-a-module-project"></a>Vytvořit projekt modulu
+Následující postup slouží k vytvoření modulu IoT Edge Pythonu pomocí Visual Studio Code a nástrojů Azure IoT.
 
 ### <a name="create-a-new-project"></a>Vytvoření nového projektu
 
-Use the VS Code to create a Python solution template that you can build on top of. 
+Použijte VS Code k vytvoření šablony řešení Python, kterou můžete vytvořit nad. 
 
 1. Ve Visual Studio Code vyberte **Zobrazit** > **Terminál**, aby se otevřel integrovaný terminál VS Code.
 
@@ -80,15 +80,15 @@ Use the VS Code to create a Python solution template that you can build on top o
 
 1. Na paletě příkazů zadejte a spusťte příkaz **Azure: Sign in** (Azure: Přihlásit se) a postupujte podle pokynů pro přihlášení k účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
 
-1. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Follow the prompts and provide the following information to create your solution:
+1. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Postupujte podle zobrazených výzev a poskytněte následující informace pro vytvoření řešení:
 
    | Pole | Hodnota |
    | ----- | ----- |
    | Vyberte složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
-   | Zadejte název řešení | Enter a descriptive name for your solution or accept the default **EdgeSolution**. |
+   | Zadejte název řešení | Zadejte popisný název vašeho řešení nebo přijměte výchozí **EdgeSolution**. |
    | Vyberte šablonu modulu | Zvolte **Modul Python**. |
    | Zadejte název modulu | Pojmenujte modul **PythonModule**. |
-   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Your container image is prepopulated from the name you provided in the last step. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br>The final image repository looks like \<registry name\>.azurecr.io/pythonmodule. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br>Konečné úložiště imagí vypadá jako \<název registru\>. azurecr.io/pythonmodule. |
  
    ![Zadání úložiště imagí Dockeru](./media/tutorial-python-module/repository.png)
 
@@ -101,17 +101,17 @@ V souboru prostředí jsou uložené přihlašovací údaje pro kontejner úlož
 2. Aktualizujte pole hodnotami **uživatelské jméno** a **heslo**, které jste zkopírovali z registru kontejneru Azure. 
 3. Uložte soubor .env. 
 
-### <a name="select-your-target-architecture"></a>Select your target architecture
+### <a name="select-your-target-architecture"></a>Vyberte cílovou architekturu.
 
-Currently, Visual Studio Code can develop C modules for Linux AMD64 and Linux ARM32v7 devices. You need to select which architecture you're targeting with each solution, because the container is built and run differently for each architecture type. The default is Linux AMD64. 
+V současné době Visual Studio Code může vyvíjet moduly C pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64. 
 
-1. Open the command palette and search for **Azure IoT Edge: Set Default Target Platform for Edge Solution**, or select the shortcut icon in the side bar at the bottom of the window. 
+1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna. 
 
-2. In the command palette, select the target architecture from the list of options. For this tutorial, we're using an Ubuntu virtual machine as the IoT Edge device, so will keep the default **amd64**. 
+2. V paletě příkazů vyberte v seznamu možností cílovou architekturu. Pro tento kurz používáme virtuální počítač s Ubuntu jako zařízení IoT Edge, takže se zachová výchozí hodnota **amd64**. 
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-Each template includes sample code, which takes simulated sensor data from the **SimulatedTemperatureSensor** module and routes it to the IoT hub. V této části přidáte kód, který rozbalí **PythonModule** k analýze zpráv před jejich odesláním. 
+Každá šablona obsahuje vzorový kód, který přijímá Simulovaná data senzorů z modulu **SimulatedTemperatureSensor** a směruje je do služby IoT Hub. V této části přidáte kód, který rozbalí **PythonModule** k analýze zpráv před jejich odesláním. 
 
 1. V průzkumníku VS Code otevřete **modules** > **PythonModule** > **main.py**.
 
@@ -130,7 +130,7 @@ Each template includes sample code, which takes simulated sensor data from the *
     RECEIVED_MESSAGES = 0
     ```
 
-4. Replace the **input1_listener** function with the following code:
+4. Nahraďte funkci **input1_listener** následujícím kódem:
 
     ```python
         # Define behavior for receiving an input message on input1
@@ -173,7 +173,7 @@ Each template includes sample code, which takes simulated sensor data from the *
                     print ( "Unexpected error in twin_patch_listener: %s" % ex )
     ```
 
-5. Update the **listeners** to also listen twin updates.
+5. Aktualizujte **naslouchací procesy** tak, aby naslouchaly i aktualizace.
 
     ```python
         # Schedule task for C2D Listener
@@ -182,7 +182,7 @@ Each template includes sample code, which takes simulated sensor data from the *
         print ( "The sample is now waiting for messages. ")
     ```
 
-6. Save the main.py file.
+6. Uložte soubor main.py.
 
 7. V průzkumníku VS Code otevřete soubor **deployment.template.json** v pracovním prostoru řešení IoT Edge. 
 
@@ -196,42 +196,42 @@ Each template includes sample code, which takes simulated sensor data from the *
        }
    ```
 
-   ![Add module twin to deployment template](./media/tutorial-python-module/module-twin.png)
+   ![Dvojče zařízení přidat do šablony nasazení](./media/tutorial-python-module/module-twin.png)
 
-10. Save the deployment.template.json file.
+10. Uložte soubor Deployment. template. JSON.
 
-## <a name="build-and-push-your-module"></a>Build and push your module
+## <a name="build-and-push-your-module"></a>Sestavení a vložení modulu
 
-In the previous section, you created an IoT Edge solution and added code to the PythonModule that will filter out messages where the reported machine temperature is within the acceptable limits. Teď je potřeba sestavit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
+V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do PythonModule, který odfiltruje zprávy, kde je hlášená teplota počítače v přípustných mezích. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
 1. Výběrem **View** (Zobrazit) > **Terminal** (Terminál) otevřete integrovaný terminál VS Code.
 
-1. Sign in to Docker by entering the following command in the terminal. Sign in with the username, password, and login server from your Azure container registry. You can retrieve these values from the **Access keys** section of your registry in the Azure portal.
+1. Přihlaste se k Docker zadáním následujícího příkazu v terminálu. Přihlaste se pomocí uživatelského jména, hesla a přihlašovacího serveru ze služby Azure Container Registry. Tyto hodnoty můžete načíst z oddílu **přístupové klíče** v registru v Azure Portal.
      
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   You may receive a security warning recommending the use of `--password-stdin`. While that best practice is recommended for production scenarios, it's outside the scope of this tutorial. For more information, see the [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) reference.
+   Může se zobrazit upozornění zabezpečení, které doporučuje použití `--password-stdin`. I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu přihlašovací Reference k [Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 2. V průzkumníku VS Code klikněte pravým tlačítkem na soubor **deployment.template.json** a vyberte **Build and Push IoT Edge solution** (Vytvořit a odeslat řešení IoT Edge).
 
-   The build and push command starts three operations. First, it creates a new folder in the solution called **config** that holds the full deployment manifest, built out of information in the deployment template and other solution files. Second, it runs `docker build` to build the container image based on the appropriate dockerfile for your target architecture. Then, it runs `docker push` to push the image repository to your container registry.
+   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, a vyplní informace v šabloně nasazení a dalších souborech řešení. Za druhé spustí `docker build` k sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí `docker push` a nahrajte úložiště imagí do svého registru kontejneru.
 
 
-## <a name="deploy-modules-to-device"></a>Deploy modules to device
+## <a name="deploy-modules-to-device"></a>Nasadit moduly do zařízení
 
-Use the Visual Studio Code explorer and the Azure IoT Tools extension to deploy the module project to your IoT Edge device. You already have a deployment manifest prepared for your scenario, the **deployment.json** file in the config folder. Teď stačí jen vybrat zařízení, na které se nasazení provede.
+K nasazení projektu modulu do zařízení IoT Edge použijte Průzkumníka Visual Studio Code a rozšíření Azure IoT Tools. Již máte připravený manifest nasazení pro váš scénář, soubor **Deployment. JSON** ve složce config. Teď stačí jen vybrat zařízení, na které se nasazení provede.
 
-Make sure that your IoT Edge device is up and running.
+Ujistěte se, že je zařízení IoT Edge spuštěné.
 
-1. In the Visual Studio Code explorer, expand the **Azure IoT Hub Devices** section to see your list of IoT devices.
+1. V Průzkumníkovi Visual Studio Code rozbalte část **zařízení Azure IoT Hub** a podívejte se na seznam zařízení IoT.
 
 2. Klikněte pravým tlačítkem na název vašeho zařízení IoT Edge a pak vyberte **Create Deployment for Single Device** (Vytvořit nasazení pro jedno zařízení).
 
 3. Vyberte ve složce **config** soubor **deployment.json** a klikněte na **Select Edge Deployment Manifest** (Vybrat manifest nasazení Edge). Nepoužívejte soubor deployment.template.json.
 
-4. Klikněte na tlačítko pro obnovení. You should see the new **PythonModule** running along with the **SimulatedTemperatureSensor** module and the **$edgeAgent** and **$edgeHub**. 
+4. Klikněte na tlačítko pro obnovení. Měl by se zobrazit nový **PythonModule** spuštěný spolu s modulem **SimulatedTemperatureSensor** a **$edgeAgent** a **$edgeHub**. 
 
 ## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 
@@ -239,37 +239,37 @@ Po použití manifestu nasazení pro zařízení IoT Edge začne modul runtime I
 
 Stav zařízení IoT Edge můžete zobrazit v části **Zařízení Azure IoT Hub** v průzkumníku Visual Studio Code. Rozbalením podrobností o zařízení zobrazíte seznam nasazených a spuštěných modulů.
 
-1. In the Visual Studio Code explorer, right-click the name of your IoT Edge device and select **Start Monitoring Built-in Event Endpoint**.
+1. V Průzkumníku Visual Studio Code klikněte pravým tlačítkem myši na název vašeho zařízení IoT Edge a vyberte možnost **Spustit sledování integrovaného koncového bodu události**.
 
-2. View the messages arriving at your IoT Hub. It may take a while for the messages to arrive, because the IoT Edge device has to receive its new deployment and start all the modules. Then, the changes we made to the PythonModule code wait until the machine temperature reaches 25 degrees before sending messages. It also adds the message type **Alert** to any messages that reach that temperature threshold. 
+2. Zobrazení zpráv přicházejících do IoT Hub. Doručení zpráv může chvíli trvat, protože IoT Edge zařízení musí přijmout nové nasazení a spustit všechny moduly. Změny, které jsme provedli v kódu PythonModule, čekají, dokud teplota počítače nedosáhne 25 stupňů před odesláním zpráv. Přidá také **výstrahu** typu zpráva pro všechny zprávy, které dosáhnou prahové hodnoty teploty. 
 
-## <a name="edit-the-module-twin"></a>Edit the module twin
+## <a name="edit-the-module-twin"></a>Upravit nevlákenný modul
 
-We used the PythonModule module twin in the deployment manifest to set the temperature threshold at 25 degrees. You can use the module twin to change the functionality without having to update the module code.
+V manifestu nasazení jsme použili vláken Module PythonModule, které nastaví prahovou hodnotu teploty na 25 stupních. Chcete-li změnit funkčnost, aniž byste museli aktualizovat kód modulu, můžete použít vlákna modulu.
 
-1. In Visual Studio Code, expand the details under your IoT Edge device to see the running modules. 
+1. V Visual Studio Code rozbalte podrobnosti pod zařízením IoT Edge a podívejte se na běžící moduly. 
 
-2. Right-click **PythonModule** and select **Edit module twin**. 
+2. Klikněte pravým tlačítkem na **PythonModule** a vyberte **Upravit modul s dvojitou**čárkou. 
 
-3. Find **TemperatureThreshold** in the desired properties. Change its value to a new temperature 5 degrees to 10 degrees higher than the latest reported temperature. 
+3. V požadovaných vlastnostech vyhledejte **TemperatureThreshold** . Změňte jeho hodnotu na novou teplotu 5 stupňů na 10 stupňů vyšší než při nejnovější hlášené teplotě. 
 
-4. Save the module twin file.
+4. Uložte modul s dvojitým pracovním souborem.
 
-5. Right-click anywhere in the module twin editing pane and select **Update module twin**. 
+5. Klikněte pravým tlačítkem na libovolné místo v podoknì s dvojitou úpravou modulu a vyberte **aktualizovat modul vlákna**. 
 
-6. Monitor the incoming device-to-cloud messages. You should see the messages stop until the new temperature threshold is reached. 
+6. Umožňuje monitorovat příchozí zprávy ze zařízení do cloudu. Měli byste vidět, že se zprávy zastavily, dokud se nedosáhne nové prahové hodnoty teploty. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 
 Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete si vytvořené prostředky a konfigurace uschovat a znovu je použít. Také můžete dál používat stejné zařízení IoT Edge jako testovací zařízení. 
 
-Otherwise, you can delete the local configurations and the Azure resources that you used in this article to avoid charges. 
+V opačném případě můžete odstranit místní konfigurace a prostředky Azure, které jste použili v tomto článku, abyste se vyhnuli poplatkům. 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili modul IoT Edge obsahující kód pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. When you're ready to build your own modules, you can learn more about [developing your own IoT Edge modules](module-development.md) or how to [develop modules with Visual Studio Code](how-to-vs-code-develop-module.md). You can continue on to the next tutorials to learn how Azure IoT Edge can help you deploy Azure cloud services to process and analyze data at the edge.
+V tomto kurzu jste vytvořili modul IoT Edge obsahující kód pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji vlastních modulů IoT Edge](module-development.md) nebo o [vývoji modulů pomocí Visual Studio Code](how-to-vs-code-develop-module.md). V dalších kurzech můžete pokračovat a zjistit, jak vám Azure IoT Edge může pomáhat s nasazením cloudových služeb Azure pro zpracování a analýzu dat na hraničních zařízeních.
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)

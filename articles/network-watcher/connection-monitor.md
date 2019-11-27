@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Monitor network communication using the Azure portal
-description: In this tutorial, learn how to monitor network communication between two virtual machines with Azure Network Watcher's connection monitor capability.
+title: Kurz – monitorování síťové komunikace pomocí Azure Portal
+description: V tomto kurzu se naučíte monitorovat síťovou komunikaci mezi dvěma virtuálními počítači a schopností monitorování připojení k Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlásit se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-vms"></a>Vytvoření virtuálních počítačů
 
@@ -51,7 +51,7 @@ Vytvořte dva virtuální počítače.
 
     |Nastavení|Hodnota|
     |---|---|
-    |Name (Název)|myVm1|
+    |Název|myVm1|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
@@ -73,11 +73,11 @@ Proveďte znovu kroky uvedené v části [Vytvoření prvního virtuálního po�
 
 |Krok|Nastavení|Hodnota|
 |---|---|---|
-| 1\. místo | Select a version of **Ubuntu Server** |                                                                         |
-| 3 | Name (Název)                                  | myVm2                                                                   |
+| 1 | Vybrat verzi **serveru Ubuntu** |                                                                         |
+| 3 | Název                                  | myVm2                                                                   |
 | 3 | Typ ověřování                   | Vložte váš veřejný klíč SSH nebo vyberte **Heslo** a zadejte heslo. |
 | 3 | Skupina prostředků                        | Vyberte **Použít existující** a pak vyberte **myResourceGroup**.                 |
-| 6 | Rozšíření                            | **Network Watcher Agent for Linux**                                             |
+| 6 | Rozšíření                            | **Agent Network Watcher pro Linux**                                             |
 
 Nasazení virtuálního počítače trvá několik minut. Než budete pokračovat ve zbývajících krocích, počkejte, až virtuální počítač dokončí nasazování.
 
@@ -86,17 +86,17 @@ Nasazení virtuálního počítače trvá několik minut. Než budete pokračova
 Vytvořte monitorování připojení pro monitorování komunikace přes port TCP 22 z *myVm1* do *myVm2*.
 
 1. Na levé straně portálu vyberte **Všechny služby**.
-2. Do pole **Filtr** začněte psát *network watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
+2. Do pole *Filtr* začněte psát **network watcher**. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 3. V části **MONITOROVÁNÍ** vyberte **Monitorování připojení**.
 4. Vyberte **+ Přidat**.
 5. Zadejte nebo vyberte informace o připojení, které chcete monitorovat, a pak vyberte **Přidat**. V příkladu na následujícím obrázku se monitoruje připojení z virtuálního počítače *myVm1* do virtuálního počítače *myVm2* přes port 22:
 
     | Nastavení                  | Hodnota               |
     | ---------                | ---------           |
-    | Name (Název)                     | myVm1-myVm2(22)     |
+    | Název                     | myVm1-myVm2(22)     |
     | Zdroj                   |                     |
     | Virtuální počítač          | myVm1               |
-    | Cíl              |                     |
+    | Destination              |                     |
     | Vyberte virtuální počítač |                     |
     | Virtuální počítač          | myVm2               |
     | Port                     | 22                  |
@@ -150,9 +150,9 @@ Azure ve výchozím nastavení umožňuje komunikaci mezi virtuálními počíta
     | Nastavení                 | Hodnota          |
     | ---                     | ---            |
     | Rozsahy cílových portů | 22             |
-    | Akce                  | Zamítnout           |
-    | Priorita                | 100            |
-    | Name (Název)                    | DenySshInbound |
+    | Akce                  | Odepřít           |
+    | Priority                | 100            |
+    | Název                    | DenySshInbound |
 
 5. Monitorování připojení provádí testování v intervalech 60 sekund, a proto počkejte několik minut a pak na levé straně portálu vyberte **Network Watcher**, pak **Monitorování připojení** a pak znovu vyberte monitorování **myVm1-myVm2(22)** . Výsledky se teď liší, jak můžete vidět na následujícím obrázku:
 
@@ -168,9 +168,9 @@ Azure ve výchozím nastavení umožňuje komunikaci mezi virtuálními počíta
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
 
-1. Do pole **Hledat** v horní části portálu zadejte *myResourceGroup*. Jakmile se ve výsledcích hledání zobrazí skupina prostředků **myResourceGroup**, vyberte ji.
+1. Do pole *Hledat* v horní části portálu zadejte **myResourceGroup**. Jakmile se ve výsledcích hledání zobrazí skupina prostředků **myResourceGroup**, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
-3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *myResourceGroup* a vyberte **Odstranit**.
+3. V části *ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ* zadejte **myResourceGroup** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

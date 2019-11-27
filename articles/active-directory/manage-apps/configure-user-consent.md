@@ -55,7 +55,7 @@ Udělení souhlasu správce při registraci aplikace:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
 2. Přejděte do okna **Registrace aplikací** .
 3. Vyberte aplikaci pro souhlas.
-4. Vyberte **oprávnění k rozhraní API**.
+4. Vyberte **oprávnění rozhraní API**.
 5. Klikněte na **udělit souhlas správce**.
 
 

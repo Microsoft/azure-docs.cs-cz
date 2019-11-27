@@ -1,10 +1,10 @@
 ---
-title: 'Create a Kubernetes dev space: Visual Studio Code & Node.js'
+title: 'Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code & Node. js'
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 ms.openlocfilehash: 32ff7554ca599b7d50a4c815083b97eda8b4e57e
 ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
@@ -12,7 +12,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327307"
 ---
-# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Create a Kubernetes dev space: Visual Studio Code and Node.js with Azure Dev Spaces
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Vytvoření Kubernetes vývojového prostoru: Visual Studio Code a Node. js s Azure Dev Spaces
 
 V tomto průvodci se naučíte:
 
@@ -21,7 +21,7 @@ V tomto průvodci se naučíte:
 - Produktivně vyvíjet a testovat kód v týmovém prostředí
 
 > [!Note]
-> **If you get stuck** at any time, see the [Troubleshooting](troubleshooting.md) section.
+> **Pokud se vám pozastavila** kdykoli, přečtěte si část [Poradce při potížích](troubleshooting.md) .
 
 ## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostoru se ukládá do cloudu, aby ji šlo sdílet s ostatními uživateli. Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -51,7 +51,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Vytvoření clusteru Kubernetes s podporou Azure Dev Spaces
 
-At the command prompt, create the resource group in a [region that supports Azure Dev Spaces][supported-regions].
+V příkazovém řádku vytvořte skupinu prostředků v [oblasti, která podporuje Azure dev Spaces][supported-regions].
 
 ```cmd
 az group create --name MyResourceGroup --location <region>
@@ -74,7 +74,7 @@ Zadejte následující příkaz Azure CLI se skupinou prostředků, která obsah
    ```
 
 > [!IMPORTANT]
-> The Azure Dev Spaces configuration process will remove the `azds` namespace in the cluster, if it exists.
+> Proces konfigurace Azure Dev Spaces odstraní obor názvů `azds` v clusteru, pokud existuje.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>Získání ladění Kubernetes pro VS Code
 Výkonné funkce, jako je ladění Kubernetes, jsou prostřednictvím editoru VS Code k dispozici vývojářům .NET Core a Node.js.
@@ -89,7 +89,7 @@ V této části vytvoříte webovou aplikaci Node.js a spustíte ji v kontejneru
 ### <a name="create-a-nodejs-web-app"></a>Vytvoření webové aplikace v Node.js
 Stáhněte si kód z GitHubu. Přejděte na https://github.com/Azure/dev-spaces a vyberte **Clone or Download** (Klonovat nebo stáhnout). Úložiště GitHub se stáhne do vašeho místního prostředí. Kód tohoto průvodce je tady: `samples/nodejs/getting-started/webfrontend`.
 
-## <a name="prepare-code-for-docker-and-kubernetes-development"></a>Prepare code for Docker and Kubernetes development
+## <a name="prepare-code-for-docker-and-kubernetes-development"></a>Příprava kódu pro vývoj Docker a Kubernetes
 Zatím máte základní webovou aplikaci, kterou můžete spustit místně. Teď ji vytvořením prostředků, které definují kontejner aplikace a způsob nasazení do Kubernetes, kontejnerizujete. Tento úkol snadno provedete v Azure Dev Spaces: 
 
 1. Spusťte VS Code a otevřete složku `webfrontend`. (Případné výchozí výzvy ohledně přidání prostředků ladění nebo obnovení projektu můžete ignorovat.)
@@ -106,7 +106,7 @@ Příkaz Azure CLI `azds prep` vygeneruje prostředky Dockeru a Kubernetes s vý
 
 Celému obsahu těchto souborů prozatím rozumět nemusíte. Stojí však za zmínku, že **stejné prostředky konfigurace jako kódu pro Kubernetes a Docker můžete používat v různých fázích od vývoje až po produkci, takže si napříč různými prostředími zajistíte lepší konzistentnost**.
  
-Příkaz `prep` také vygeneruje soubor s názvem `./azds.yaml`, což je konfigurační soubor pro Azure Dev Spaces. Doplňuje artefakty Dockeru a Kubernetes další konfigurací, která v Azure zapne iterativní vývojové prostředí.
+Příkaz `./azds.yaml` také vygeneruje soubor s názvem `prep`, což je konfigurační soubor pro Azure Dev Spaces. Doplňuje artefakty Dockeru a Kubernetes další konfigurací, která v Azure zapne iterativní vývojové prostředí.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Sestavení a spuštění kódu v Kubernetes
 Teď spustíme náš kód! V okně terminálu spusťte tento příkaz z **kořenové složky kódu** webfrontend:
@@ -134,17 +134,17 @@ Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890a
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Identify the public URL for the service in the output from the `up` command. It ends in `.azds.io`. In the above example, the public URL is `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+Identifikujte veřejnou adresu URL pro službu ve výstupu příkazu `up`. Končí `.azds.io`. Ve výše uvedeném příkladu je veřejná adresa URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
 
-To see your web app, open the public URL in a browser. Also, notice `stdout` and `stderr` output is streamed to the *azds trace* terminal window as you interact with your web app. You'll also see tracking information for HTTP requests as they go through the system. This makes it easier for you to track complex multi-service calls during development. The instrumentation added by Dev Spaces provides this request tracking.
+Webovou aplikaci zobrazíte otevřením veřejné adresy URL v prohlížeči. Všimněte si také, že `stdout` a `stderr` výstup se streamuje do okna *azds Trace* Terminal při interakci s webovou aplikací. V případě, že procházejí systémem, uvidíte také informace o sledování požadavků HTTP. Díky tomu je snazší sledovat komplexní volání více služeb během vývoje. Toto sledování požadavků poskytuje instrumentace, kterou přidávají vývojové prostory.
 
 > [!Note]
-> In addition to the public URL, you can use the alternative `http://localhost:<portnumber>` URL that is displayed in the console output. If you use the localhost URL, it may seem like the container is running locally, but actually it is running in Azure. Azure Dev Spaces uses Kubernetes *port-forward* functionality to map the localhost port to the container running in AKS. This facilitates interacting with the service from your local machine.
+> Kromě veřejné adresy URL můžete použít alternativní `http://localhost:<portnumber>` URL, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný místně, ale ve skutečnosti běží v Azure. Azure Dev Spaces používá k namapování portu localhost na kontejner spuštěný v AKS funkci Kubernetes pro *přeposílání portů* . To usnadňuje interakci se službou z místního počítače.
 
 ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
 Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
 
-1. Najděte soubor `./public/index.html` a upravte kód HTML. For example, change the page's background color to a shade of blue [on line 15](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L15):
+1. Najděte soubor `./public/index.html` a upravte kód HTML. Například změňte barvu pozadí stránky na odstín modré [na řádku 15](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L15):
 
     ```html
     <body style="background-color: #95B9C7; margin-left:10px; margin-right:10px;">
@@ -160,7 +160,7 @@ Otevřete webovou aplikaci na mobilním zařízení s použitím veřejné adres
 
 Pokud chcete problém opravit, přidejte metaznačku `viewport`:
 1. Otevřete soubor `./public/index.html`.
-1. Add a `viewport` meta tag in the existing `head` element that starts [on line 6](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6):
+1. V existujícím elementu `head`, který začíná [na řádku 6](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6), přidejte `viewport` meta Značka:
 
     ```html
     <head>
@@ -177,7 +177,7 @@ Z tohoto příkladu jasně vyplývá, že některé potíže nezjistíte, dokud 
 ### <a name="update-a-code-file"></a>Aktualizace souboru s kódem
 Aktualizace souborů s kódem na straně serveru je pracnější, protože aplikaci Node.js je potřeba restartovat.
 
-1. V okně terminálu stiskněte `Ctrl+C` (kvůli zastavení `azds up`).
+1. V okně terminálu stiskněte `Ctrl+C`, abyste zastavili `azds up`.
 1. Otevřete soubor s kódem nazvaný `server.js` a změňte úvodní zprávu služby: 
 
     ```javascript
@@ -224,11 +224,11 @@ Když chcete v prostředí Kubernetes ladit kód, stiskněte **F5**.
 Podobně jako při příkazu `up` se na začátku ladění synchronizuje kód s vývojovým prostředím a sestaví se kontejner, který se nasadí v Kubernetes. Tentokrát se ale ladicí program připojí ke vzdálenému kontejneru.
 
 > [!Tip]
-> The VS Code status bar will turn orange, indicating that the debugger is attached. It will also display a clickable URL, which you can use to quickly open your site.
+> Stavový řádek VS Code změní oranžová, což znamená, že ladicí program je připojen. Zobrazí se také adresa URL pro kliknutí, kterou můžete použít k rychlému otevření webu.
 
 ![](media/common/vscode-status-bar-url.png)
 
-Set a breakpoint in a server-side code file, for example within the `app.get('/api'...` on [line 13 of `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13). 
+Nastavte zarážku v souboru kódu na straně serveru, například v rámci `app.get('/api'...` na [řádku 13 `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13). 
 
     ```javascript
     app.get('/api', function (req, res) {
@@ -236,12 +236,12 @@ Set a breakpoint in a server-side code file, for example within the `app.get('/a
     });
     ```
 
-Refresh the browser page, or press the *Say It Again* button, and you should hit the breakpoint and be able to step through code.
+Aktualizujte stránku prohlížeče, nebo stiskněte tlačítko *řekněte ho znovu* a měli byste se dostat ke zarážce a být schopni krokovat kód.
 
-Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., úplně stejně jako při lokálním spuštění kódu.
+Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., stejně jako při lokálním spuštění kódu.
 
 ### <a name="edit-code-and-refresh-the-debug-session"></a>Úprava kódu a aktualizace ladicí relace
-With the debugger active, make a code edit; for example, modify the hello message on [line 13 of `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) again:
+S aktivním ladicím programem udělejte úpravu kódu; například upravte zprávu Hello na [řádku 13 `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) znovu:
 
 ```javascript
 app.get('/api', function (req, res) {
@@ -249,7 +249,7 @@ app.get('/api', function (req, res) {
 });
 ```
 
-Save the file, and in the **Debug actions pane**, click the **Restart** button. 
+Uložte soubor a v **podokně akce ladění**klikněte na tlačítko **restartovat** . 
 
 ![](media/common/debug-action-refresh.png)
 
@@ -277,7 +277,7 @@ Při této konfiguraci kontejner spustí *nodemon*. Po úpravě kódu na straně
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Learn about multi-service development](multi-service-nodejs.md)
+> [Další informace o vývoji více služeb](multi-service-nodejs.md)
 
 
 [supported-regions]: about.md#supported-regions-and-configurations

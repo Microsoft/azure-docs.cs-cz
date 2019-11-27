@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Extract image details with the REST API and C# - Bing Image Search'
+title: 'Kurz: extrakce podrobností obrázku pomocí REST API a C# -vyhledávání obrázků Bingu'
 titleSuffix: Azure Cognitive Services
 description: Pomocí informací v tomto článku vytvořte aplikaci v jazyce C#, která extrahuje podrobnosti o obrázku pomocí rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
@@ -34,9 +34,9 @@ Tento kurz vysvětluje následující postupy:
 
 Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Any edition of [Visual studio 2017 or later](https://visualstudio.microsoft.com/downloads/).
+* Libovolná edice sady [Visual studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -77,7 +77,7 @@ client.Headers["ContentType"] = "multipart/form-data";
 
 ## <a name="upload-the-image-and-display-the-results"></a>Odeslání obrázku a zobrazení výsledků
 
-Metoda `UpLoadFile()` třídy `WebClient` formátuje data pro požadavek `POST`, včetně formátování `RequestStream` a volání `HttpWebRequest`.
+Metoda `WebClient` třídy `UpLoadFile()` formátuje data pro požadavek `POST`, včetně formátování `RequestStream` a volání `HttpWebRequest`.
 
 Volejte `WebClient.UpLoadFile()` s koncovým bodem `/details` a souborem obrázku, který chcete nahrát. Pomocí odpovědi JSON inicializujte instanci struktury `SearchResult` a uložte odpověď.
 
@@ -98,7 +98,7 @@ Tato odpověď JSON pak může být vytištěna v konzole.
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>Použití tokenu přehledu obrázků v požadavku
 
-Pokud chcete použít token `ImageInsightsToken` vrácený s výsledky požadavku `POST`, můžete ho přidat do požadavku `GET`. Například:
+Pokud chcete použít token `ImageInsightsToken` vrácený s výsledky požadavku `POST`, můžete ho přidat do požadavku `GET`. Příklad:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2
@@ -111,6 +111,6 @@ Pokud obrázek obsahuje identifikovatelné osoby nebo místa, tento požadavek o
 > [!div class="nextstepaction"]
 > [Zobrazení obrázků a možnosti vyhledávání v jednostránkové webové aplikaci ](tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

@@ -1,6 +1,6 @@
 ---
-title: How to use reference Swagger documentation - Azure Digital Twins | Microsoft Docs
-description: Understanding how to use Azure Digital Twins Swagger reference documentation.
+title: Jak používat referenční dokumentaci k Swagger – digitální vlákna Azure | Microsoft Docs
+description: Pochopíte, jak používat referenční dokumentaci Swagger pro Azure Digital.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -16,118 +16,118 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456978"
 ---
-# <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger reference documentation
+# <a name="azure-digital-twins-swagger-reference-documentation"></a>Referenční dokumentace k sadě Swagger pro Azure Digital revlákens
 
-Each provisioned Azure Digital Twins instance includes its own automatically generated Swagger reference documentation.
+Každá zřízená instance digitálních vláken Azure obsahuje svou vlastní automaticky generovanou dokumentaci k Swagger.
 
-[Swagger](https://swagger.io/), or [OpenAPI](https://www.openapis.org/), unites complex API information into an interactive and language-agnostic reference resource. Swagger provides critical reference material about which JSON payloads, HTTP methods, and specific endpoints to use to perform operations against an API.
+[Swagger](https://swagger.io/)nebo [openapi](https://www.openapis.org/)JEDNOTKÁM komplexního rozhraní API v interaktivním a jazykovém nezávislá referenčním prostředku. Swagger poskytuje důležité referenční materiály, které se týkají datových částí JSON, metod HTTP a konkrétních koncových bodů, které se mají použít k provádění operací s rozhraním API.
 
-## <a name="swagger-summary"></a>Swagger summary
+## <a name="swagger-summary"></a>Shrnutí Swagger
 
-Swagger provides an interactive summary of your API, which includes:
+Swagger poskytuje interaktivní souhrn vašich rozhraní API, včetně:
 
-* API and object model information.
-* REST API endpoints that specify the required request payloads, headers, parameters, context paths, and HTTP methods.
-* Testing of API functionalities.
-* Example response information used to validate and confirm HTTP responses.
-* Error code information.
+* Informace o rozhraní API a objektovém modelu
+* REST API koncové body, které určují požadovanou datovou část požadavku, záhlaví, parametry, cesty kontextu a metody HTTP.
+* Testování funkcí rozhraní API.
+* Příklad informací o odpovědi, které slouží k ověření a potvrzení odpovědí HTTP.
+* Informace o kódu chyby.
 
-Swagger is a convenient tool to assist with development and testing calls made to the Azure Digital Twins Management APIs.
+Swagger je pohodlný nástroj, který vám pomůže s vývojem a testováním volání rozhraní API pro správu digitálních vláken Azure.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Referenční materiál
 
-The automatically generated Swagger reference material supplies a quick overview of important concepts, available Management API endpoints, and a description of each object model to assist development and testing.
+Automaticky vygenerovaný referenční materiál Swagger poskytuje rychlý přehled o důležitých konceptech, dostupných koncových bodech rozhraní API pro správu a popis jednotlivých objektových modelů, které pomáhají při vývoji a testování.
 
-A concise summary describes the API.
+Stručné shrnutí popisují rozhraní API.
 
-[![Swagger summary and API overview information](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[informace o ![Shrnutí Swagger a Přehled rozhraní API](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
-Management API object models are also listed.
+Jsou uvedeny také modely objektů rozhraní API pro správu.
 
-[![Swagger models listed at bottom of Swagger UI](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[![modely Swagger uvedené na konci uživatelského rozhraní Swagger](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
-You can select each listed object model for a more detailed summary of key attributes.
+Každý uvedený objektový model můžete vybrat pro podrobnější souhrn klíčových atributů.
 
-[![Swagger models expanded to see contents of models](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![rozbalené modely Swagger pro zobrazení obsahu modelů](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
-The generated Swagger object models are convenient to see all available Azure Digital Twins [objects and APIs](./concepts-objectmodel-spatialgraph.md). Developers can use this resource when they build solutions on Azure Digital Twins.
+Vygenerované objektové modely Swagger jsou vhodné k zobrazení všech dostupných [objektů a rozhraní API](./concepts-objectmodel-spatialgraph.md)pro Azure Digital revlákens. Vývojáři můžou tento prostředek použít při vytváření řešení pro digitální vlákna Azure.
 
-## <a name="endpoint-summary"></a>Endpoint summary
+## <a name="endpoint-summary"></a>Souhrn koncového bodu
 
-Swagger also provides a thorough overview of all endpoints that compose the Management APIs.
+Swagger také poskytuje podrobný přehled všech koncových bodů, které tvoří rozhraní API pro správu.
 
-Each listed endpoint also includes the required request information, such as the:
+Každý uvedený koncový bod obsahuje také požadované informace o požadavku, například:
 
-* Required parameters.
-* Required parameter data types.
-* HTTP method to access the resource.
+* Požadované parametry.
+* Požadované datové typy parametrů.
+* Metoda HTTP pro přístup k prostředku.
 
-[![Swagger endpoints displayed in Swagger UI](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
+[![koncových bodů Swagger zobrazených v uživatelském rozhraní Swagger](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
-To see a more detailed overview, select each resource.
+Pokud chcete zobrazit podrobnější přehled, vyberte jednotlivé prostředky.
 
-## <a name="use-swagger-to-test-endpoints"></a>Use Swagger to test endpoints
+## <a name="use-swagger-to-test-endpoints"></a>Použití Swagger k testování koncových bodů
 
-One of the powerful functionalities Swagger provides is the ability to test an API endpoint directly through the documentation UI.
+Jednou z výkonných funkcí Swagger je schopnost otestovat koncový bod rozhraní API přímo prostřednictvím uživatelského rozhraní dokumentace.
 
-After you select a specific endpoint, you see **Try it out**.
+Po výběru konkrétního koncového bodu se zobrazí výzva **vyzkoušet si ho**.
 
-[![Swagger Try it out button](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[![tlačítko vyzkoušet Swagger](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
-Expand that section to bring up input fields for each required and optional parameter. Enter the correct values, and select **Execute**.
+Rozbalením této části zobrazíte vstupní pole pro každý povinný a volitelný parametr. Zadejte správné hodnoty a vyberte **provést**.
 
-[![Swagger Try it out result example](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[Ukázka výsledku vyzkoušení ![Swagger](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
-After you execute the test, you can validate the response data.
+Po provedení testu můžete ověřit data odpovědi.
 
-## <a name="swagger-response-data"></a>Swagger response data
+## <a name="swagger-response-data"></a>Data odpovědi Swagger
 
-Each listed endpoint also includes response body data to validate your development and tests. These examples include the status codes and JSON you want to see for successful HTTP requests.
+Každý uvedený koncový bod obsahuje také data textu odpovědi pro ověření vývoje a testů. Tyto příklady zahrnují stavové kódy a JSON, které chcete zobrazit pro úspěšné požadavky HTTP.
 
-[![Swagger JSON response example](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
+[Příklad odpovědi JSON pro ![v Swagger](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
-The examples also include error codes to help debug or improve failing tests.
+Příklady také obsahují chybové kódy, které vám pomůžou ladit nebo vylepšit selhání testů.
 
-## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 authorization
+## <a name="swagger-oauth-20-authorization"></a>Autorizace pro Swagger 2,0 OAuth
 
 > [!NOTE]
-> * The user principal that created the Azure Digital Twins resource will have a Space Administrator role assignment and will be able to create additional role assignments for other users. Such users and their roles can be authorized to call the APIs.
+> * Objekt zabezpečení uživatele, který vytvořil prostředek digitálních vláken Azure, bude mít přiřazenou roli správce prostoru a bude moct vytvořit další přiřazení rolí pro ostatní uživatele. Tito uživatelé a jejich role mohou být autorizováni pro volání rozhraní API.
 
-1. Follow the steps in [this quickstart](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) to create and configure an Azure AD application. Alternatively, you can reuse an existing app registration.
+1. Pokud chcete vytvořit a nakonfigurovat aplikaci Azure AD, postupujte podle kroků v [tomto rychlém](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) startu. Alternativně můžete znovu použít stávající registraci aplikace.
 
-1. Add the following **Redirect url** to your Azure AD app registration:
+1. Do registrace aplikace Azure AD přidejte následující **adresu URL pro přesměrování** :
 
-    [![Register Swagger redirect url in AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
+    [![zaregistrovat adresu URL pro přesměrování Swagger v AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Name (Název)  | Nahradit hodnotou | Příklad: |
+    | Název  | Nahradit hodnotou | Příklad |
     |---------|---------|---------|
-    | YOUR_SWAGGER_URL | Your Management REST API documentation URL found in the portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
+    | YOUR_SWAGGER_URL | Adresa URL vašeho REST API pro správu se našla na portálu.  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Copy the **Client ID** of your Azure AD app.
+1. Zkopírujte **ID klienta** vaší aplikace služby Azure AD.
 
-After completing the Azure Active Directory registration:
+Po dokončení registrace Azure Active Directory:
 
-1. Select the **Authorize** button on your swagger page.
+1. Na stránce Swagger vyberte tlačítko **autorizovat** .
 
-    [![Select the Swagger authorize button](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![vyberte tlačítko pro autorizaci Swagger.](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-1. Paste the application ID into the **client_id** field.
+1. Vložte ID aplikace do pole **client_id** .
 
-    [![Swagger client_id field](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
+    [![pole client_id Swagger](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-1. You will then be redirected to the following success modal.
+1. Pak budete přesměrováni na následující modální pole úspěch.
 
-    [![Swagger redirect modal](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
+    [![modálního přesměrování Swagger](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
-To learn more about interactively testing requests protected by OAuth 2.0, see the [official documentation](https://swagger.io/docs/specification/authentication/oauth2/).
+Další informace o interaktivním testování žádostí chráněných přes OAuth 2,0 najdete v [oficiální dokumentaci](https://swagger.io/docs/specification/authentication/oauth2/).
 
 ## <a name="next-steps"></a>Další kroky
 
-- To read more about Azure Digital Twins object models and the spatial intelligence graph, read [Understand Azure Digital Twins object models](./concepts-objectmodel-spatialgraph.md).
+- Pokud si chcete přečíst další informace o objektových modelech digitálních vláken Azure a grafu prostorové logiky, přečtěte si téma [informace o objektových modelech digitálních vláken Azure](./concepts-objectmodel-spatialgraph.md).
 
-- To learn how to authenticate with your Management API, read [Authenticate with APIs](./security-authenticating-apis.md).
+- Pokud se chcete dozvědět, jak ověřit pomocí rozhraní API pro správu, přečtěte si téma [ověřování pomocí rozhraní API](./security-authenticating-apis.md).

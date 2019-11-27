@@ -99,7 +99,7 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
     | Adresa URL ověření | Použijte **autorizační adresu URL** z **kroku 2** . |
     | ID klienta | Použijte **ID aplikace** pro aplikaci Azure Active Directory, která se vytvořila nebo znovu použila z předchozí části. |
     | Rozsah | Ponechte prázdné |
-    | Stav | Ponechte prázdné |
+    | State | Ponechte prázdné |
     | Ověřování klienta | `Send as Basic Auth header` |
 
 1. Klient by teď měl vypadat takto:

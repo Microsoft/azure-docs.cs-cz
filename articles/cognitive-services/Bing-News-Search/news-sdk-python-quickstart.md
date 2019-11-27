@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Perform a news search using the SDK for Python - Bing News Search'
+title: 'Rychlý Start: provedení hledání zpráv pomocí sady SDK pro Python – Vyhledávání zpráv Bingu'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for news using the Bing News Search SDK for Python, and process the response.
+description: Pomocí tohoto rychlého startu můžete vyhledat zprávy pomocí sady SDK Vyhledávání zpráv Bingu SDK pro Python a zpracovat odpověď.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,21 +18,21 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379060"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Quickstart: Perform a news search with the Bing News Search SDK for Python
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Rychlý Start: provedení zprávy s Vyhledávání zpráv Bingu SDK pro Python
 
-Use this quickstart to begin searching for news with the Bing News Search SDK for Python. While Bing News Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py).
+V tomto rychlém startu můžete začít hledat zprávy s Vyhledávání zpráv Bingu SDK pro Python. I když Vyhledávání zpráv Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Python](https://www.python.org/) 2.x or 3.x
+* [Python](https://www.python.org/) 2. x nebo 3. x
 
-It is recommended to use a [virtual environment](https://docs.python.org/3/tutorial/venv.html) for your python development. You can install and initialize the virtual environment with the [venv module](https://pypi.python.org/pypi/virtualenv). You must install a virtualenv for Python 2.7. You can create a virtual environment with:
+Doporučuje se použít [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html) pro vývoj v Pythonu. Virtuální prostředí můžete nainstalovat a inicializovat pomocí [modulu venv](https://pypi.python.org/pypi/virtualenv). Je nutné nainstalovat virtualenv pro Python 2,7. Virtuální prostředí můžete vytvořit pomocí:
 
 ```console
 python -m venv mytestenv
 ```
 
-You can install the Bing News Search SDK dependencies with this command:
+Pomocí tohoto příkazu můžete nainstalovat Vyhledávání zpráv Bingu závislosti sady SDK:
     
 ```console
 python -m pip install azure-cognitiveservices-search-newssearch
@@ -42,7 +42,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Create a new Python file in your favorite IDE or editor, and import the following libraries. Create a variable for your subscription key, and your search term.
+1. V oblíbených IDE nebo editoru vytvořte nový soubor Pythonu a naimportujte následující knihovny. Vytvořte proměnnou pro svůj klíč předplatného a hledaný výraz.
 
     ```python
     from azure.cognitiveservices.search.newssearch import NewsSearchAPI
@@ -51,7 +51,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
     search_term = "Quantum Computing"
     ```
 
-## <a name="initialize-the-client-and-send-a-request"></a>Initialize the client and send a request
+## <a name="initialize-the-client-and-send-a-request"></a>Inicializace klienta a odeslání žádosti
 
 1. Vytvořte instanci `CognitiveServicesCredentials`. Vytvořte instanci klienta:
     
@@ -59,15 +59,15 @@ python -m pip install azure-cognitiveservices-search-newssearch
     client = NewsSearchAPI(CognitiveServicesCredentials(subscription_key))
     ```
 
-2. Send a search query to the News Search API, store the response.
+2. Odešlete vyhledávací dotaz do rozhraní Vyhledávání zpráv API, uložte odpověď.
 
     ```python
     news_result = client.news.search(query=search_term, market="en-us", count=10)
     ```
 
-## <a name="parse-the-response"></a>Parse the response
+## <a name="parse-the-response"></a>Analyzovat odpověď
 
-If any search results are found, print the first webpage result:
+Pokud se najde nějaké výsledky hledání, vytiskněte první výsledek webové stránky:
 
 ```python
 if news_result.value:

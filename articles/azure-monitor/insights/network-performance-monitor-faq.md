@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832006"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538191"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -183,6 +183,8 @@ Segment směrování nemusí reagovat na traceroute v jednom nebo několika nás
 * Směrovače byly nakonfigurovány tak, aby neodhalily svoji identitu.
 * Síťová zařízení nepovolují ICMP_TTL_EXCEEDED provoz.
 * Brána firewall blokuje ICMP_TTL_EXCEEDED reakci ze síťového zařízení.
+
+Když některý z koncových bodů leží v Azure, traceroute zobrazí neidentifikovaný segment směrování, protože Azure ndrastructure neodhaluje identitu pro traceroute. 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Zobrazují se upozornění na špatné testy, ale v grafu ztrát a latence se nezobrazuje vysoké hodnoty NPM. Návody zjistit, co není v pořádku?
 NPM vygeneruje výstrahu v případě, že koncová latence mezi zdrojem a cílem překračuje prahovou hodnotu pro libovolnou cestu mezi nimi. Některé sítě mají více cest připojujících se ke stejnému zdroji a cíli. NPM vyvolá výstrahu, že některá cesta není v pořádku. Ztráta a latence zaznamenané v grafech jsou průměrnou hodnotou všech cest, takže se nemusí zobrazit přesnou hodnotu jedné cesty. Chcete-li zjistit, kde došlo k porušení prahové hodnoty, vyhledejte ve výstraze sloupec "podtyp". Pokud je problém způsoben cestou, hodnota podtypu bude Síťovácesta (pro testy sledování výkonu), EndpointPath (pro testy monitorování dostupnosti služby) a ExpressRoutePath (pro testy ExpressRotue monitor). 

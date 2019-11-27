@@ -1,6 +1,6 @@
 ---
-title: Import SQL BACPAC files with templates
-description: Learn how to use SQL Database extension to import SQL BACPAC files with Azure Resource Manager templates.
+title: Import souborů SQL BACPAC pomocí šablon
+description: Naučte se používat rozšíření SQL Database k importu souborů SQL BACPAC pomocí šablon Azure Resource Manager.
 author: mumian
 ms.date: 11/21/2019
 ms.topic: tutorial
@@ -14,7 +14,7 @@ ms.locfileid: "74422161"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Kurz: Import souborů SQL BACPAC pomocí šablon Azure Resource Manageru
 
-Learn how to use Azure SQL Database extensions to import a BACPAC file with Azure Resource Manager templates. Deployment artifacts are any files, in addition to the main template files that are needed to complete a deployment. The BACPAC file is an artifact. In this tutorial, you create a template to deploy an Azure SQL Server, a SQL Database, and import a BACPAC file. Informace o nasazování rozšíření virtuálních počítačů Azure pomocí šablon Azure Resource Manageru najdete v [kurzu nasazování rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru](./resource-manager-tutorial-deploy-vm-extensions.md).
+Naučte se používat rozšíření Azure SQL Database k importu souboru BACPAC pomocí šablon Azure Resource Manager. Artefakty nasazení jsou kromě hlavních souborů šablon, které jsou potřeba k dokončení nasazení, také všechny soubory. Soubor BACPAC je artefakt. V tomto kurzu vytvoříte šablonu pro nasazení SQL Server Azure, SQL Database a importu souboru BACPAC. Informace o nasazování rozšíření virtuálních počítačů Azure pomocí šablon Azure Resource Manageru najdete v [kurzu nasazování rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru](./resource-manager-tutorial-deploy-vm-extensions.md).
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -27,11 +27,11 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Pokud [chcete vytvořit Azure Resource Manager šablony](./resource-manager-tools-vs-code.md), přečtěte si téma použití Visual Studio Code.
 * Pro zlepšení zabezpečení použijte pro účet správce SQL Serveru vygenerované heslo. Tady ukázka generování hesla:
 
     ```azurecli-interactive
@@ -42,19 +42,19 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="prepare-a-bacpac-file"></a>Příprava souboru BACPAC
 
-A BACPAC file is shared in [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Pokud chcete vytvořit vlastní, přečtěte si téma [Export databáze Azure SQL do souboru BACPAC](../sql-database/sql-database-export.md). Pokud se rozhodnete soubor publikovat do vlastního umístění, v pozdější části kurzu budete muset šablonu aktualizovat.
+Soubor BACPAC se sdílí na [GitHubu](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Pokud chcete vytvořit vlastní, přečtěte si téma [Export databáze Azure SQL do souboru BACPAC](../sql-database/sql-database-export.md). Pokud se rozhodnete soubor publikovat do vlastního umístění, v pozdější části kurzu budete muset šablonu aktualizovat.
 
-The BACPAC file must be stored in an Azure Storage account before it can be imported using Resource Manager template.
+Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importovat pomocí šablony Správce prostředků.
 
-1. Open the [Cloud shell](https://shell.azure.com).
-1. Select **Upload/Download files**, and then select **Upload**.
-1. Specify the following URL and then select **Open**.
+1. Otevřete [Cloud Shell](https://shell.azure.com).
+1. Vyberte **Odeslat/stáhnout soubory**a pak vyberte **nahrát**.
+1. Zadejte následující adresu URL a pak vyberte **otevřít**.
 
     ```url
     https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac
     ```
 
-1. Copy and paste the following PowerShell script into the shell window.
+1. Zkopírujte následující skript prostředí PowerShell a vložte ho do okna prostředí.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -86,11 +86,11 @@ The BACPAC file must be stored in an Azure Storage account before it can be impo
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. Write down storage account key and the BACPAC file URL. You need these values when you deploy the template.
+1. Zapište klíč účtu úložiště a adresu URL souboru BACPAC. Tyto hodnoty budete potřebovat při nasazení šablony.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
-The template used in this tutorial is stored in [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
+Šablona použitá v tomto kurzu je uložená na [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
 
 1. V nástroji Visual Studio Code vyberte **File** (Soubor) >**Open File** (Otevřít soubor).
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
@@ -112,7 +112,7 @@ The template used in this tutorial is stored in [GitHub](https://raw.githubuserc
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
-1. Add two more parameters at the end of the **parameters** section to set the storage account key and the BACPAC URL:
+1. Pokud chcete nastavit klíč účtu úložiště a adresu URL BACPAC, přidejte na konec oddílu **Parameters** další dva parametry:
 
     ```json
     "storageAccountKey": {
@@ -129,13 +129,13 @@ The template used in this tutorial is stored in [GitHub](https://raw.githubuserc
     }
     ```
 
-    Add a comma after **adminPassword**. To format the JSON file from VS Code, press **[SHIFT]+[ALT]+F**.
+    Za **adminPassword**vložte čárku. K naformátování souboru JSON z VS Code stiskněte **[SHIFT] + [ALT] + F**.
 
-    See [Prepare a BACPAC file](#prepare-a-bacpac-file) about getting these two values.
+    Viz [Příprava souboru BacPac](#prepare-a-bacpac-file) o získání těchto dvou hodnot.
 
-1. Add two additional resources to the template.
+1. Přidejte do šablony dva další prostředky.
 
-    * To allow the SQL database extension to import BACPAC files, you need to allow traffic from Azure services. Add the following firewall rule definition under the SQL server definition:
+    * Pokud chcete, aby rozšíření SQL Database naimportovalo soubory BACPAC, je potřeba, abyste povolili provoz ze služeb Azure. Do definice SQL serveru přidejte následující definici pravidla brány firewall:
 
         ```json
         {
@@ -187,10 +187,10 @@ The template used in this tutorial is stored in [GitHub](https://raw.githubuserc
         Vysvětlení definice prostředku najdete v [referenčních informacích k rozšíření služby SQL Database](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). Tady je několik důležitých elementů:
 
         * **dependsOn:** Prostředek rozšíření se musí vytvořit po vytvoření databáze SQL.
-        * **storageKeyType**: Specify the type of the storage key to use. Hodnota může být `StorageAccessKey` nebo `SharedAccessKey`. Use `StorageAccessKey` in this tutorial.
-        * **storageKey**: Specify the key for the storage account where the BACPAC file is stored. If storage key type is SharedAccessKey, it must be preceded with a "?"
-        * **storageUri**: Specify the URL of the BACPAC file stored in a storage account.
-        * **administratorLoginPassword:** Heslo správce SQL. Use a generated password. Viz [Požadavky](#prerequisites).
+        * **storageKeyType**: zadejte typ klíče úložiště, který se má použít. Hodnota může být `StorageAccessKey` nebo `SharedAccessKey`. V tomto kurzu použijte `StorageAccessKey`.
+        * **storageKey**: Zadejte klíč pro účet úložiště, ve kterém je uložený soubor BacPac. Pokud je typ klíče úložiště SharedAccessKey, musí předcházet "?".
+        * **storageUri**: zadejte adresu URL souboru BacPac uloženého v účtu úložiště.
+        * **administratorLoginPassword:** Heslo správce SQL. Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -219,13 +219,13 @@ New-AzResourceGroupDeployment `
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-Consider using the same project name as you used when you prepared the bacpac file, so that all the resources are stored within the same resource group.  It is easier for managing resource, such as cleaning up the resources. If you use the same project name, you can either remove the **New-AzResourceGroup** command from the script, or answer y or n when you are asked whether you want to update the existing resource group.
+Zvažte použití stejného názvu projektu, jako jste použili při přípravě souboru BacPac, takže všechny prostředky budou uloženy ve stejné skupině prostředků.  Správa prostředků je jednodušší, jako je třeba vyčištění prostředků. Pokud použijete stejný název projektu, můžete buď ze skriptu odebrat příkaz **New-AzResourceGroup** , nebo odpovědět na y nebo n, když se zobrazí dotaz, zda chcete aktualizovat existující skupinu prostředků.
 
-Use a generated password. Viz [Požadavky](#prerequisites).
+Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-To access the SQL server from your client computer, you need to add an additional firewall rule. For more information, see [Create and manage IP firewall rules](../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules).
+Chcete-li získat přístup k SQL serveru z klientského počítače, je nutné přidat další pravidlo brány firewall. Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules).
 
 Na portálu vyberte databázi SQL z nově nasazené skupiny prostředků. Vyberte **Editor dotazů (Preview)** a zadejte přihlašovací údaje správce. Měly by se zobrazit dvě tabulky importované do databáze:
 
@@ -242,7 +242,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nasadili SQL Server a službu SQL Database a importovali jste soubor BACPAC. The BACPAC file is stored in an Azure storage account. Anybody with the URL can access the file. To learn how to secure the BACPAC file (artifact), see
+V tomto kurzu jste nasadili SQL Server a službu SQL Database a importovali jste soubor BACPAC. Soubor BACPAC je uložený v účtu úložiště Azure. Kdokoli s adresou URL může získat přístup k souboru. Informace o tom, jak zabezpečit soubor BACPAC (artefakt), najdete v tématu.
 
 > [!div class="nextstepaction"]
-> [Secure the artifacts](./resource-manager-tutorial-secure-artifacts.md)
+> [Zabezpečit artefakty](./resource-manager-tutorial-secure-artifacts.md)

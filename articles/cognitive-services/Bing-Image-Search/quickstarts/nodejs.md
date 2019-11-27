@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for images REST API and Node.js - Bing Image Search'
+title: 'Rychlý Start: hledání imagí REST API a Node. js – Vyhledávání obrázků Bingu'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send image search requests to the Bing Image Search REST API using JavaScript, and receive JSON responses.
+description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání obrázků do Vyhledávání obrázků Bingu REST API pomocí JavaScriptu a přijímat odpovědi JSON.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -19,20 +19,20 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327077"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Quickstart: Search for images using the Bing Image Search REST API and Node.js
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API a Node. js
 
-Use this quickstart to start sending search requests to the Bing Image Search API. This JavaScript application sends a search query to the API, and displays the URL of the first image in the results. While this application is written in Javascript, the API is a RESTful web service compatible with most programming languages.
+V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání rozhraní API Bingu pro vyhledávání obrázků. Tato aplikace JavaScriptu pošle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) s dalším zpracováním chyb a poznámkami.
+Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) s dalším ošetřením chyb a poznámkami.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Nejnovější verze [Node.js](https://nodejs.org/en/download/)
+* Nejnovější verze [Node.js](https://nodejs.org/en/download/).
 
-* The [JavaScript Request Library](https://github.com/request/request)  
+* [Knihovna požadavků JavaScriptu](https://github.com/request/request)  
   [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
@@ -53,7 +53,7 @@ See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.
 
 ## <a name="construct-the-search-request-and-query"></a>Sestavení žádosti o vyhledávání a dotazu
 
-1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro požadavek rozhraní API. Your search term must be URL-encoded before being sent to the API.
+1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro žádost rozhraní API. Před odesláním do rozhraní API musí být hledaný výraz zakódovaný pomocí adresy URL.
 
     ```javascript
     let request_params = {
@@ -74,7 +74,7 @@ See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.
 
 ## <a name="handle-and-parse-the-response"></a>Zpracování a parsování odpovědi
 
-1. Definujte funkci s názvem `response_handler`, která jako parametr přijímá volání protokolu HTTP `response`. Do the following steps within this function:
+1. Definujte funkci s názvem `response_handler`, která jako parametr přijímá volání protokolu HTTP `response`. V rámci této funkce proveďte následující kroky:
 
     1. Definujte proměnnou, která bude obsahovat text odpovědi JSON.  
         ```javascript
@@ -90,7 +90,7 @@ See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.
         });
         ```
 
-    3. When an **end** flag is signaled, get the first result from the JSON response. Print the URL for the first image, along with the total number of returned images.
+    3. Když je příznak **ukončení** signálem, získá první výsledek z odpovědi JSON. Vytiskne adresu URL prvního obrázku spolu s celkovým počtem vrácených imagí.
 
         ```javascript
         response.on('end', function () {
@@ -101,7 +101,7 @@ See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.
          });
         ```
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
@@ -152,13 +152,13 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Create a single-page app](../tutorial-bing-image-search-single-page-app.md)
+> [Vytvoření jednostránkové aplikace](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 * [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* [Pricing details](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) for the Bing Search APIs. 
-* [Získat zdarma přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro rozhraní API pro vyhledávání Bingu. 
+* [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

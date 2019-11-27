@@ -1,6 +1,6 @@
 ---
-title: Update an existing assignment from the portal
-description: Learn about the mechanism for updating an existing blueprint assignment from the portal in Azure Blueprints.
+title: Aktualizace existujícího přiřazení z portálu
+description: Přečtěte si o mechanismu Aktualizace existujícího přiřazení podrobného plánu z portálu v Azure Modrotiskys.
 ms.date: 11/21/2019
 ms.topic: conceptual
 ms.openlocfilehash: b4cf03d88103b85bc00dbd815816ead2740f2093
@@ -10,58 +10,58 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406381"
 ---
-# <a name="how-to-update-an-existing-blueprint-assignment"></a>How to update an existing blueprint assignment
+# <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 
-When a blueprint is assigned, the assignment can be updated. There are several reasons for updating an existing assignment, including:
+Při přiřazení podrobného plánu se přiřazení dá aktualizovat. Existuje několik důvodů Aktualizace existujícího přiřazení, včetně:
 
-- Add or remove [resource locking](../concepts/resource-locking.md)
-- Change the value of [dynamic parameters](../concepts/parameters.md#dynamic-parameters)
-- Upgrade the assignment to a newer **Published** version of the blueprint
+- Přidat nebo odebrat [uzamykání prostředků](../concepts/resource-locking.md)
+- Změna hodnoty [dynamických parametrů](../concepts/parameters.md#dynamic-parameters)
+- Upgradujte přiřazení na novější **publikovanou** verzi podrobného plánu.
 
-## <a name="updating-assignments"></a>Updating assignments
+## <a name="updating-assignments"></a>Aktualizace přiřazení
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select **Assigned blueprints** from the page on the left.
+1. Na levé straně vyberte **přiřazené plány** .
 
-1. In the list of blueprints, left-click the blueprint assignment. Then click the **Update assignment** button OR right-click the blueprint assignment and select **Update assignment**.
+1. V seznamu modrotisky klikněte levým na přiřazení podrobného plánu. Pak klikněte na tlačítko **Aktualizovat přiřazení** nebo klikněte pravým tlačítkem na přiřazení podrobného plánu a vyberte **Aktualizovat přiřazení**.
 
-   ![Update an existing blueprint assignment](../media/update-existing-assignments/update-assignment.png)
+   ![Aktualizuje existující přiřazení podrobného plánu.](../media/update-existing-assignments/update-assignment.png)
 
-1. The **Assign blueprint** page will load pre-filled with all values from the original assignment.
-   You can change the **blueprint definition version**, the **Lock Assignment** state, and any of the dynamic parameters that exist on the blueprint definition. Click **Assign** when done making changes.
+1. Stránka **přiřadit podrobný plán** načte předem vyplněnou všechny hodnoty z původního přiřazení.
+   Můžete změnit **verzi definice**podrobného plánu, stav **přiřazení zámku** a všechny dynamické parametry, které existují v definici podrobného plánu. Až provedete změny, klikněte na **přiřadit** .
 
-1. On the updated assignment details page, see the new status. In this example, we added **Locking** to the assignment.
+1. Na stránce aktualizované Podrobnosti přiřazení se podívejte na nový stav. V tomto příkladu jsme přidali **uzamykání** k přiřazení.
 
-   ![Updated an existing blueprint assignment - lock mode changed](../media/update-existing-assignments/updated-assignment.png)
+   ![Aktualizace existujícího přiřazení podrobného plánu – změna režimu zámku](../media/update-existing-assignments/updated-assignment.png)
 
-1. Explore details about other **Assignment operations** using the drop-down. The table of **Managed resources** updates by selected assignment operation.
+1. Prozkoumejte podrobnosti o dalších **operacích přiřazení** pomocí rozevíracího seznamu. Tabulka s aktualizacemi **spravovaných prostředků** podle vybrané operace přiřazení
 
-   ![Assignment operations of a blueprint assignment](../media/update-existing-assignments/assignment-operations.png)
+   ![Operace přiřazení přiřazení podrobného plánu](../media/update-existing-assignments/assignment-operations.png)
 
-## <a name="rules-for-updating-assignments"></a>Rules for updating assignments
+## <a name="rules-for-updating-assignments"></a>Pravidla aktualizace přiřazení
 
-The deployment of the updated assignments follows a few important rules. These rules determine what happens to already deployed resources. The requested change and the type of artifact resource being deployed or updated determine which actions are taken.
+Nasazení aktualizovaných přiřazení následuje několik důležitých pravidel. Tato pravidla určují, co se stane s již nasazenými prostředky. Požadovaná změna a typ prostředku artefaktu, který se nasazuje nebo aktualizuje, určují, které akce se mají vzít.
 
 - Přiřazení rolí
-  - If the role or the role assignee (user, group, or app) changes, a new role assignment is created. Role assignments previously deployed are left in place.
+  - Pokud se změní role nebo zmocněnec role (uživatel, skupina nebo aplikace), vytvoří se nové přiřazení role. Přiřazení rolí, které už byly nasazené, jsou ponechány na svém místě.
 - Přiřazení zásad
-  - If the parameters of the policy assignment are changed, the existing assignment is updated.
-  - If the definition of the policy assignment is changed, a new policy assignment is created.
-    Policy assignments previously deployed are left in place.
-  - If the policy assignment artifact is removed from the blueprint, deployed policy assignments are left in place.
+  - Pokud se změní parametry přiřazení zásady, existující přiřazení se aktualizuje.
+  - Pokud se změní definice přiřazení zásady, vytvoří se nové přiřazení zásady.
+    Přiřazení zásad nasazené dříve jsou ponechány na svém místě.
+  - Pokud se artefakt přiřazení zásad odebere z podrobného plánu, nasadí se nasazená přiřazení zásad.
 - Šablony Azure Resource Manageru
-  - The template is processed through Resource Manager as a **PUT**. As each resource type handles this action differently, review the documentation for each included resource to determine the impact of this action when run by Blueprints.
+  - Šablona je zpracována prostřednictvím Správce prostředků jako **Put**. Vzhledem k tomu, že každý typ prostředku zpracovává tuto akci odlišně, prostudujte si dokumentaci ke všem zahrnutým prostředkům, abyste zjistili dopad této akce při spuštění pomocí modrotisky.
 
-## <a name="possible-errors-on-updating-assignments"></a>Possible errors on updating assignments
+## <a name="possible-errors-on-updating-assignments"></a>Možné chyby při aktualizaci přiřazení
 
-When updating assignments, it's possible to make changes that break when executed. An example is changing the location of a resource group after it has already been deployed. Any change that are supported by [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) can be made, but any change that would result in an error through Azure Resource Manager will also result in the failure of the assignment.
+Při aktualizaci přiřazení je možné provést změny, které se při spuštění přeruší. Příkladem je změna umístění skupiny prostředků poté, co již byla nasazena. Všechny změny, které jsou podporovány nástrojem [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) , mohou být provedeny, ale všechny změny, které by způsobily chybu prostřednictvím Azure Resource Manager, budou také mít za následek selhání přiřazení.
 
-There's no limit on how many times an assignment can be updated. If an error occurs, determine the error and make another update to the assignment.  Example error scenarios:
+Neexistuje žádné omezení počtu, kolikrát může být přiřazení aktualizováno. Pokud dojde k chybě, určete chybu a proveďte další aktualizaci přiřazení.  Příklady scénářů chyb:
 
-- A bad parameter
-- An already existing object
-- A change not supported by Azure Resource Manager
+- Chybný parametr
+- Již existující objekt
+- Změna není podporována nástrojem Azure Resource Manager
 
 ## <a name="next-steps"></a>Další kroky
 

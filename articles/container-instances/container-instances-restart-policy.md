@@ -1,19 +1,14 @@
 ---
-title: Použití zásad restartování u kontejnerových úloh v Azure Container Instances
+title: Zásady restartování pro úlohy běhu
 description: Naučte se používat Azure Container Instances k provádění úloh, které se spouštějí do dokončení, například v úlohách sestavení, testování nebo vykreslování imagí.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 4fe5d9a20249a17030e0ccfa34f6a4f183be0d82
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f814b1c99827c07f8dadfb0cfd80c87a93377cdc
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325684"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533464"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Spuštění kontejnerových úloh pomocí zásad restartování
 
@@ -35,7 +30,7 @@ Při vytváření [skupiny kontejnerů](container-instances-container-groups.md)
 
 ## <a name="specify-a-restart-policy"></a>Zadat zásady restartování
 
-Způsob, jakým určíte zásady restartování, závisí na tom, jak vytváříte instance kontejnerů, například pomocí rutin Azure CLI, Azure PowerShell rutin nebo v Azure Portal. V Azure CLI zadejte `--restart-policy` parametr při volání [AZ Container Create][az-container-create].
+Způsob, jakým určíte zásady restartování, závisí na tom, jak vytváříte instance kontejnerů, například pomocí rutin Azure CLI, Azure PowerShell rutin nebo v Azure Portal. V Azure CLI zadejte parametr `--restart-policy` při volání [AZ Container Create][az-container-create].
 
 ```azurecli-interactive
 az container create \
@@ -47,7 +42,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Příklad spuštění do dokončení
 
-Chcete-li zobrazit zásady restartování v akci, vytvořte instanci kontejneru z image Microsoft [ACI-WORDCOUNT][aci-wordcount-image] a určete `OnFailure` zásady restartování. V tomto ukázkovém kontejneru se spustí skript Pythonu, který ve výchozím nastavení analyzuje text [Hamletu](http://shakespeare.mit.edu/hamlet/full.html)Shakespeare, zapisuje 10 nejčastějších slov do stdout a pak se ukončí.
+Chcete-li zobrazit zásady restartování v akci, vytvořte instanci kontejneru z image Microsoft [ACI-WORDCOUNT][aci-wordcount-image] a určete zásadu restartování `OnFailure`. V tomto ukázkovém kontejneru se spustí skript Pythonu, který ve výchozím nastavení analyzuje text [Hamletu](http://shakespeare.mit.edu/hamlet/full.html)Shakespeare, zapisuje 10 nejčastějších slov do stdout a pak se ukončí.
 
 Spusťte vzorový kontejner pomocí následujícího příkazu [AZ Container Create][az-container-create] :
 
@@ -59,7 +54,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure Container Instances spustí kontejner a pak ho zastaví, když se jeho aplikace (nebo skript, v tomto případě) ukončí. Když Azure Container Instances zastaví kontejner, jehož zásada restartování je `Never` nebo `OnFailure`, stav kontejneru je nastaven na ukončeno . Stav kontejneru můžete zjistit pomocí příkazu [AZ Container show][az-container-show] :
+Azure Container Instances spustí kontejner a pak ho zastaví, když se jeho aplikace (nebo skript, v tomto případě) ukončí. Když Azure Container Instances zastaví kontejner, jehož zásada restartování je `Never` nebo `OnFailure`, stav kontejneru se nastaví na **ukončeno**. Stav kontejneru můžete zjistit pomocí příkazu [AZ Container show][az-container-show] :
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query containers[0].instanceView.currentState.state
@@ -71,7 +66,7 @@ Příklad výstupu:
 "Terminated"
 ```
 
-Jakmile se stav ukázkového kontejneru zobrazí jako ukončeno, můžete zobrazit jeho výstup jeho úkolů zobrazením protokolů kontejnerů. Spuštěním příkazu [AZ Container logs][az-container-logs] zobrazíte výstup skriptu:
+Jakmile se stav ukázkového kontejneru zobrazí jako *ukončeno*, můžete zobrazit jeho výstup jeho úkolů zobrazením protokolů kontejnerů. Spuštěním příkazu [AZ Container logs][az-container-logs] zobrazíte výstup skriptu:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -94,7 +89,7 @@ Výstup:
 
 Tento příklad ukazuje výstup, který skript odeslal do STDOUT. Vaše kontejnerové úlohy však mohou místo toho zapsat výstup do trvalého úložiště pro pozdější načtení. Například do [sdílené složky Azure](container-instances-mounting-azure-files-volume.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Scénáře založené na úlohách, například dávkové zpracování velké datové sady s několika kontejnery, mohou využívat vlastní [proměnné prostředí](container-instances-environment-variables.md) nebo [příkazové řádky](container-instances-start-command.md) za běhu.
 

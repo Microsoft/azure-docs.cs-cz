@@ -1,19 +1,14 @@
 ---
-title: Připojení svazku emptyDir v Azure Container Instances
+title: Připojit svazek emptyDir ke skupině kontejnerů
 description: Naučte se připojit svazek emptyDir ke sdílení dat mezi kontejnery ve skupině kontejnerů v Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
-ms.author: danlep
-ms.openlocfilehash: 0dbe26ff1e00e1912cfd63e8383695ca794dd037
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0440bcc490b766c12b2117d2453557707df2a1c4
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325451"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533237"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Připojení svazku emptyDir v Azure Container Instances
 
@@ -38,7 +33,7 @@ Data ve svazku *emptyDir* jsou trvalá prostřednictvím havárií kontejneru. U
 
 Chcete-li připojit svazek emptyDir v instanci kontejneru, je nutné nasadit pomocí [šablony Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups).
 
-Nejdřív naplňte `volumes` pole do části skupina `properties` kontejnerů v šabloně. Dále pro každý kontejner ve skupině kontejnerů, do kterého chcete připojit svazek *emptyDir* , `volumeMounts` vyplňte pole v `properties` části definice kontejneru.
+Nejdřív naplňte pole `volumes` do části `properties` skupiny kontejnerů v šabloně. Pak u každého kontejneru ve skupině kontejnerů, do které chcete připojit svazek *emptyDir* , naplňte pole `volumeMounts` v části `properties` definice kontejneru.
 
 Například následující šablona Správce prostředků vytvoří skupinu kontejnerů skládající se ze dvou kontejnerů, z nichž každý je připojen ke svazku *emptyDir* :
 
@@ -47,10 +42,10 @@ Například následující šablona Správce prostředků vytvoří skupinu kont
 
 Příklad nasazení instance kontejneru s Azure Resource Manager šablonou najdete v tématu [nasazení skupin více kontejnerů v Azure Container Instances](container-instances-multi-container-group.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se připojit další typy svazků v Azure Container Instances:
 
-* [Připojit sdílenou složku Azure v Azure kontejner instancí](container-instances-volume-azure-files.md)
+* [Připojení sdílené složky ve službě Azure Container Instances](container-instances-volume-azure-files.md)
 * [Připojení svazku Gitrepo nepodporují v Azure Container Instances](container-instances-volume-gitrepo.md)
-* [Připojení tajný svazku v Azure kontejner instancí](container-instances-volume-secret.md)
+* [Připojit tajný svazek v Azure Container Instances](container-instances-volume-secret.md)

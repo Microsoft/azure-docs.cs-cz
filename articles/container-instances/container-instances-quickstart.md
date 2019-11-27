@@ -1,23 +1,18 @@
 ---
-title: 'Rychlý Start: nasazení kontejneru Docker do Azure Container Instances – Azure CLI'
+title: Rychlý Start – nasazení kontejneru Docker do instance kontejneru – Azure CLI
 description: V tomto rychlém startu použijete rozhraní příkazového řádku Azure CLI k rychlému nasazení kontejnerové webové aplikace, která běží v izolované instanci kontejneru Azure.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
-ms.author: danlep
 ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-ms.openlocfilehash: 65c067792499017a7e00fdbb6199e591981683f8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ab079c7ad5d741d5a569e042ae8939cbeeff203b
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429192"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533583"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí rozhraní příkazového řádku Azure
 
@@ -45,11 +40,11 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru pomocí Azure CLI, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Docker do příkazu [AZ Container Create][az-container-create] . V tomto rychlém startu použijete veřejný obrázek `mcr.microsoft.com/azuredocs/aci-helloworld`. Tento obrázek zabalí malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML.
+Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru pomocí Azure CLI, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Docker do příkazu [AZ Container Create][az-container-create] . V tomto rychlém startu použijete obrázek veřejné `mcr.microsoft.com/azuredocs/aci-helloworld`. Tento obrázek zabalí malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML.
 
 Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s označením názvu DNS, aby byla webová aplikace veřejně dosažitelná.
 
-Spusťte příkaz podobný následujícímu jako při spuštění instance kontejneru. Nastavte hodnotu `--dns-name-label`, která je jedinečná v rámci oblasti Azure, ve které vytvoříte instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
+Spusťte příkaz podobný následujícímu jako při spuštění instance kontejneru. Nastavte hodnotu `--dns-name-label` jedinečnou v rámci oblasti Azure, ve které vytvoříte instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
@@ -150,7 +145,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili službu Azure Container instance pomocí veřejné image Microsoft. Pokud si chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
+V tomto rychlém startu jste vytvořili službu Azure Container instance pomocí veřejné image Microsoft. Pokud chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Kurz služby Azure Container Instances](./container-instances-tutorial-prepare-app.md)

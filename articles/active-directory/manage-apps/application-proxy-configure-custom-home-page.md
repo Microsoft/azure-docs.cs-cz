@@ -37,7 +37,7 @@ Tady je jeden scénář, který vysvětluje, proč vaše společnost nastavila v
 - Místo toho chcete nastavit `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` jako adresu URL domovské stránky, takže externí uživatel uvidí přihlašovací stránku jako první.
 
 > [!NOTE]
-> Když poskytnete uživatelům přístup k publikovaným aplikacím, aplikace se zobrazují v [přístupový Panel Azure AD](../user-help/my-apps-portal-end-user-access.md) a [Spouštěči aplikací Office 365](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
+> Když uživatelům udělíte přístup k publikovaným aplikacím, zobrazí se tyto aplikace na [přístupovém panelu Azure AD](../user-help/my-apps-portal-end-user-access.md) a ve [Spouštěči aplikací pro Office 365](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -85,7 +85,7 @@ Chcete-li nainstalovat balíček, postupujte takto:
    Install-Module -Name AzureAD
    ```
 
-    Pokud příkaz spouštíte jako bez oprávnění správce, použijte `-scope currentuser` možnost.
+    Pokud příkaz spouštíte jako správce bez správce, použijte možnost `-scope currentuser`.
 
 1. Během instalace vyberte **Y** pro instalaci dvou balíčků z NuGet.org. Oba balíčky jsou povinné.
 
@@ -147,7 +147,7 @@ Vytvořte adresu URL domovské stránky a aktualizujte aplikaci s touto hodnotou
    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
    ```
 
-1. Adresa URL domovské stránky nastavena na hodnotu, která chcete. Hodnota musí být cesta subdoménu publikované aplikace. Například, pokud se změní adresa URL domovské stránky z `https://sharepoint-iddemo.msappproxy.net/` k `https://sharepoint-iddemo.msappproxy.net/hybrid/`, uživatelům aplikace přejít přímo na domovské stránce vlastní.
+1. Adresa URL domovské stránky nastavena na hodnotu, která chcete. Hodnota musí být cesta subdoménu publikované aplikace. Pokud například změníte adresu URL domovské stránky z `https://sharepoint-iddemo.msappproxy.net/` na `https://sharepoint-iddemo.msappproxy.net/hybrid/`, uživatelé aplikace přejdou přímo na vlastní domovskou stránku.
 
    ```powershell
    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
@@ -180,5 +180,5 @@ Vytvořte adresu URL domovské stránky a aktualizujte aplikaci s touto hodnotou
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolit vzdálený přístup k Sharepointu pomocí Azure AD Application Proxy](application-proxy-integrate-with-sharepoint-server.md)
+- [Povolení vzdáleného přístupu k SharePointu pomocí Azure Proxy aplikací služby AD](application-proxy-integrate-with-sharepoint-server.md)
 - [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md)

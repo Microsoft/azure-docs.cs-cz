@@ -14,9 +14,9 @@ ms.locfileid: "74277686"
 
 Zajímavé práce v poznámkovém bloku Jupyter vyžaduje data. Data, je ve skutečnosti lifeblood poznámkových bloků.
 
-Můžete si určitě [importovat datové soubory do projektu](work-with-project-data-files.md)i pomocí příkazů, jako jsou `curl` z v rámci poznámkového bloku pro stažení souboru přímo. Je pravděpodobné, ale, že je nutné pracovat s mnohem rozsáhlejší data, která je k dispozici z jiných souborů zdrojů, jako je rozhraní REST API, relačních databází a cloudového úložiště, jako jsou tabulky Azure.
+V případě potřeby můžete [importovat datové soubory do projektu](work-with-project-data-files.md), a to i pomocí příkazů, jako je `curl` z poznámkového bloku pro stažení souboru přímo. Je pravděpodobné, ale, že je nutné pracovat s mnohem rozsáhlejší data, která je k dispozici z jiných souborů zdrojů, jako je rozhraní REST API, relačních databází a cloudového úložiště, jako jsou tabulky Azure.
 
-Tento článek stručně popisuje tyto různé možnosti. Protože přístup k datům je nejlepší vidět v akci, můžete najít spustitelný kód [ukázky poznámkových bloků Azure – přístup k vašim datům](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
+Tento článek stručně popisuje tyto různé možnosti. Vzhledem k tomu, že se přístup k datům nejlépe zobrazuje v akci, najdete spustitelný kód v [ukázkách Azure Notebooks – přístup k datům](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
@@ -43,7 +43,7 @@ if response.status_code == 200:
 
 Databáze systému SQL Server můžete přistupovat pomocí pomoc pyodbc nebo pymssql knihoven.
 
-[Použití Pythonu k dotazování Azure SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) obsahuje pokyny týkající se vytvoření databáze obsahující AdventureWorks data a ukazuje, jak zadávat dotazy na data. Stejný kód je zobrazena ve vzorku poznámkového bloku pro účely tohoto článku.
+[Použití Pythonu k dotazování databáze SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) vám poskytne pokyny k vytvoření databáze obsahující data AdventureWorks a ukazuje, jak tato data dotazovat. Stejný kód je zobrazena ve vzorku poznámkového bloku pro účely tohoto článku.
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -54,27 +54,27 @@ Azure Storage nabízí několik různých typů nerelační úložiště, v záv
 
 Poznámkový blok ukázka ukazuje práci s tabulkami a objekty BLOB, jak povolit přístup jen pro čtení k objektům BLOB pomocí sdíleného přístupového podpisu.
 
-## <a name="azure-cosmos-db"></a>Databáze Azure Cosmos
+## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
 Azure Cosmos DB zajišťující NoSQL s dvojicí plně indexovaných dokumentů JSON). Následující články poskytují celou řadou způsobů, jak pracovat s Cosmos DB z Pythonu:
 
-- [Sestavení rozhraní SQL API aplikací s využitím Pythonu](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
+- [Vytvoření aplikace API SQL pomocí Pythonu](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
 - [Sestavení aplikace v baňce s rozhraním API Azure Cosmos DB pro MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
-- [Vytvoření databáze grafů pomocí Pythonu a rozhraní Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [Sestavení aplikace Cassandra pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [Sestavení aplikace Table API pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [Vytvoření databáze grafu pomocí Pythonu a rozhraní Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
+- [Vytvoření aplikace Cassandra pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [Vytvoření aplikace rozhraní API pro tabulky pomocí Pythonu a Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
-Při práci se službou Cosmos DB, můžete použít [azure-cosmos DB table](https://pypi.org/project/azure-cosmosdb-table/) knihovny.
+Při práci s Cosmos DB můžete použít knihovnu [Azure-cosmosdb-Table](https://pypi.org/project/azure-cosmosdb-table/) .
 
 ## <a name="other-azure-databases"></a>Ostatní databáze Azure
 
 Azure nabízí celou řadu jiných typů databází, které můžete použít. Následující články poskytují pokyny pro přístup k těmto databázím z Pythonu:
 
-- [Azure Database for PostgreSQL: použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [Rychlý start: Použití Azure Redis Cache s Pythonem](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Azure Database for MySQL: použití Pythonu k připojení a dotazování dat](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure Database for PostgreSQL: použití Pythonu pro připojení a dotazování dat](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Rychlý Start: použití Azure Redis Cache s Pythonem](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
+- [Azure Database for MySQL: použití Pythonu pro připojení a dotazování dat](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
-  - [Průvodce kopírováním pro službu Azure Data Factory](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
+  - [Průvodce kopírováním pro Azure Data Factory](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>Další kroky
 

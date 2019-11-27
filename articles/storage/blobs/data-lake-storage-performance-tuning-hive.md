@@ -1,6 +1,6 @@
 ---
-title: 'Tune performance: Hive, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
-description: Azure Data Lake Storage Gen2 Hive Performance Tuning Guidelines.
+title: 'Ladění výkonu: podregistr, & HDInsight Azure Data Lake Storage Gen2 | Microsoft Docs'
+description: Pokyny pro optimalizaci výkonu Azure Data Lake Storage Gen2 registru.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,63 +15,63 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327584"
 ---
-# <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Tune performance: Hive, HDInsight & Azure Data Lake Storage Gen2
+# <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: podregistr, & HDInsight Azure Data Lake Storage Gen2
 
-The default settings have been set to provide good performance across many different use cases.  For I/O intensive queries, Hive can be tuned to get better performance with Azure Data Lake Storage Gen2.  
+Výchozí nastavení byla nastavena tak, aby poskytovala dobrý výkon v mnoha různých případech použití.  U dotazů náročných na vstupně-výstupní operace může být podregistr vyladěn, aby bylo možné dosáhnout vyššího výkonu Azure Data Lake Storage Gen2.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **A Data Lake Storage Gen2 account**. For instructions on how to create one, see [Quickstart: Create an Azure Data Lake Storage Gen2 storage account](data-lake-storage-quickstart-create-account.md)
-* **Azure HDInsight cluster** with access to a Data Lake Storage Gen2 account. See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
-* **Running Hive on HDInsight**.  To learn about running Hive jobs on HDInsight, see [Use Hive on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
-* **Performance tuning guidelines on Data Lake Storage Gen2**.  For general performance concepts, see [Data Lake Storage Gen2 Performance Tuning Guidance](data-lake-storage-performance-tuning-guidance.md)
+* **Účet Data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2.](data-lake-storage-quickstart-create-account.md)
+* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen2. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) .
+* **Spuštění podregistru v HDInsight**.  Další informace o spouštění úloh podregistru v HDInsight najdete v tématu [použití podregistru v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive) .
+* **Pokyny k ladění výkonu na data Lake Storage Gen2**.  Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen2 pokyny k ladění výkonu](data-lake-storage-performance-tuning-guidance.md) .
 
 ## <a name="parameters"></a>Parametry
 
-Here are the most important settings to tune for improved Data Lake Storage Gen2 performance:
+Tady je nejdůležitější nastavení pro optimalizaci pro zlepšení výkonu Data Lake Storage Gen2:
 
-* **hive.tez.container.size** – the amount of memory used by each tasks
+* **podregistr. TEZ. Container. Size** – množství paměti využité jednotlivými úkoly
 
-* **tez.grouping.min-size** – minimum size of each mapper
+* **TEZ. Grouping. min-Size** – minimální velikost každého mapování
 
-* **tez.grouping.max-size** – maximum size of each mapper
+* **TEZ. Grouping. Max-Size** – maximální velikost každého mapování
 
-* **hive.exec.reducer.bytes.per.reducer** – size of each reducer
+* **podregistr. Exec. snižoval. bytes. per.** – velikost každého zmenšení
 
-**hive.tez.container.size** - The container size determines how much memory is available for each task.  This is the main input for controlling the concurrency in Hive.  
+**podregistr. TEZ. Container. Size** – velikost kontejneru určuje, kolik paměti je k dispozici pro každý úkol.  Toto je hlavní vstup pro řízení souběžnosti v podregistru.  
 
-**tez.grouping.min-size** – This parameter allows you to set the minimum size of each mapper.  If the number of mappers that Tez chooses is smaller than the value of this parameter, then Tez will use the value set here.
+**TEZ. Grouping. min-Size** – tento parametr umožňuje nastavit minimální velikost každého mapovače.  Pokud počet mapovačů, které tez zvolí, je menší než hodnota tohoto parametru, pak tez použije nastavenou hodnotu.
 
-**tez.grouping.max-size** – The parameter allows you to set the maximum size of each mapper.  If the number of mappers that Tez chooses is larger than the value of this parameter, then Tez will use the value set here.
+**TEZ. Grouping. Max-Size** – parametr umožňuje nastavit maximální velikost každého mapovače.  Pokud počet mapovačů, které tez zvolí, je větší než hodnota tohoto parametru, pak tez použije nastavenou hodnotu.
 
-**hive.exec.reducer.bytes.per.reducer** – This parameter sets the size of each reducer.  By default, each reducer is 256MB.  
+**podregistr. Exec. snižoval. bytes. per. snižoval** – tento parametr nastavuje velikost každého zmenšení.  Ve výchozím nastavení má každý zpomalení 256 MB.  
 
-## <a name="guidance"></a>Pokyny
+## <a name="guidance"></a>Doprovodné materiály
 
-**Set hive.exec.reducer.bytes.per.reducer** – The default value works well when the data is uncompressed.  For data that is compressed, you should reduce the size of the reducer.  
+**Nastavit podregistr. Exec. snižovalo. bytes. per.** – výchozí hodnota je vhodná, když jsou data nekomprimovaná.  Pro komprimovaná data byste měli zmenšit velikost zmenšení.  
 
-**Set hive.tez.container.size** – In each node, memory is specified by yarn.nodemanager.resource.memory-mb and should be correctly set on HDI cluster by default.  For additional information on setting the appropriate memory in YARN, see this [post](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
+**Nastavení podregistru. TEZ. Container. Size** – v každém uzlu je paměť určena pomocí příze. NodeManager. Resource. Memory-MB a měla by být ve výchozím nastavení správně nastavena v clusteru HDI.  Další informace o nastavení vhodné paměti v PŘÍZi najdete v tomto [příspěvku](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
 
-I/O intensive workloads can benefit from more parallelism by decreasing the Tez container size. This gives the user more containers which increases concurrency.  However, some Hive queries require a significant amount of memory (e.g. MapJoin).  If the task does not have enough memory, you will get an out of memory exception during runtime.  If you receive out of memory exceptions, then you should increase the memory.   
+Úlohy náročné na vstupně-výstupní operace můžou těžit z více paralelismu díky snížení velikosti kontejneru TEZ. Tím se uživateli poskytne více kontejnerů, které zvyšují souběžnost.  Některé dotazy podregistru ale vyžadují značné množství paměti (např. MapJoin).  Pokud úloha nemá dostatek paměti, během běhu se zobrazí výjimka z důvodu nedostatku paměti.  Pokud se dostanou výjimky z paměti, měli byste zvětšit paměť.   
 
-The concurrent number of tasks running or parallelism will be bounded by the total YARN memory.  The number of YARN containers will dictate how many concurrent tasks can run.  To find the YARN memory per node, you can go to Ambari.  Navigate to YARN and view the Configs tab.  The YARN memory is displayed in this window.  
+Souběžný počet probíhajících úloh nebo paralelismu bude svázán s celkovou pamětí PŘÍZe.  Počet kontejnerů PŘÍZe určí, kolik souběžných úloh může být spuštěno.  Pro nalezení paměti PŘÍZe na uzel můžete přejít na Ambari.  Přejděte na PŘÍZe a zobrazte kartu konfigurace.  V tomto okně se zobrazí paměť PŘÍZe.  
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size
-The key to improving performance using Data Lake Storage Gen2 is to increase the concurrency as much as possible.  Tez automatically calculates the number of tasks that should be created so you do not need to set it.   
+Klíčem ke zvýšení výkonu pomocí Data Lake Storage Gen2 je co nejvíc zvýšit souběžnost.  Tez automaticky vypočítá počet úloh, které by se měly vytvořit, takže je nemusíte nastavovat.   
 
-## <a name="example-calculation"></a>Example calculation
+## <a name="example-calculation"></a>Příklad výpočtu
 
-Let's say you have an 8 node D14 cluster.  
+Řekněme, že máte cluster D14 s 8 uzly.  
 
     Total YARN memory = nodes * YARN memory per node
     Total YARN memory = 8 nodes * 96GB = 768GB
     # of YARN containers = 768GB / 3072MB = 256
 
-## <a name="further-information-on-hive-tuning"></a>Further information on Hive tuning
+## <a name="further-information-on-hive-tuning"></a>Další informace o optimalizaci podregistru
 
-Here are a few blogs that will help tune your Hive queries:
-* [Optimize Hive queries for Hadoop in HDInsight](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
-* [Troubleshooting Hive query performance](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
-* [Ignite talk on optimize Hive on HDInsight](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)
+Tady je několik blogů, které vám pomůžou při optimalizaci dotazů na podregistr:
+* [Optimalizace dotazů na podregistr pro Hadoop v HDInsight](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
+* [Řešení potíží s výkonem dotazů na podregistr](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
+* [Ignite hovořit o optimalizaci podregistru v HDInsight](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

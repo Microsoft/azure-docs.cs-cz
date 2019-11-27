@@ -1,6 +1,6 @@
 ---
-title: Sample - Use approved subnet for VM NICs
-description: This sample policy definition requires that network interfaces use an approved subnet defined in a parameter.
+title: Ukázka – použití schválené podsítě pro síťové adaptéry virtuálních počítačů
+description: Tato ukázková definice zásad vyžaduje, aby síťová rozhraní používala schválenou podsíť definovanou v parametru.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: c78b14b49efe663d5693c64d8fd9ac38b6aa2a62
@@ -10,7 +10,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463125"
 ---
-# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Sample - Use approved subnet for VM network interfaces
+# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Ukázka-použití schválené podsítě pro síťová rozhraní virtuálních počítačů
 
 Tato zásada vyžaduje, aby síťová rozhraní používala schválenou podsíť. Zadejte ID schválené podsítě.
 
@@ -24,9 +24,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-subnet%2Fazurepolicy.json)
+[![nasazení ukázky zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-subnet%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'vm-creation-in-approved-subnet' --display-na
 az policy assignment create --name <assignmentname> --scope <scope> --policy "vm-creation-in-approved-subnet"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

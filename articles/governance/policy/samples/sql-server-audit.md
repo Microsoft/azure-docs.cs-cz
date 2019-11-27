@@ -1,6 +1,6 @@
 ---
-title: Sample - Audit SQL Server audit settings
-description: This sample policy definition audits the SQL server audit settings defined in a parameter with auditIfNotExists.
+title: Ukázka-audit SQL Server nastavení auditu
+description: Tato ukázková definice zásad Audituje nastavení auditování SQL serveru definovaná v parametru pomocí auditIfNotExists.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 7eba24c0916297dba0649024874aed7ba0fac2f6
@@ -10,7 +10,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463109"
 ---
-# <a name="sample---audit-sql-server-audit-settings"></a>Sample - Audit SQL server audit settings
+# <a name="sample---audit-sql-server-audit-settings"></a>Ukázka – auditovat nastavení auditu SQL serveru
 
 Tyto integrované zásady auditují server SQL podle toho, jestli jsou povolená nastavení auditování.
 
@@ -56,7 +56,7 @@ Předejte hodnotu parametru v následujícím formátu:
 
 Při přiřazování zásad vyberte z dostupných integrovaných definic **Auditování nastavení auditování na úrovni SQL Serveru**.
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -82,7 +82,7 @@ Remove-AzPolicyAssignment -Name "SQL Audit audit" -Scope <scope>
 az policy assignment create --scope <scope> --name "SQL Audit audit" --policy a6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9 --params '{"setting": {"value":"enabled"}}'
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
 
 Pokud chcete odebrat přiřazení zásad, spusťte následující příkaz.
 

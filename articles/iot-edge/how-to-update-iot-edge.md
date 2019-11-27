@@ -1,6 +1,6 @@
 ---
-title: Update IoT Edge version on devices - Azure IoT Edge | Microsoft Docs
-description: How to update IoT Edge devices to run the latest versions of the security daemon and the IoT Edge runtime
+title: Aktualizace verze IoT Edge na zařízení – Azure IoT Edge | Dokumentace Microsoftu
+description: Jak aktualizovat zařízení IoT Edge spustit nejnovější verze démona zabezpečení a modul runtime IoT Edge
 keywords: ''
 author: kgremban
 manager: philmea
@@ -16,82 +16,82 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456541"
 ---
-# <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Update the IoT Edge security daemon and runtime
+# <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace zabezpečení démon IoT Edge a modulu runtime
 
-As the IoT Edge service releases new versions, you'll want to update your IoT Edge devices for the latest features and security improvements. This article provides information about how to update your IoT Edge devices when a new version is available. 
+Jelikož služba IoT Edge uvolní nové verze, budete chtít aktualizovat IoT Edge zařízení o nejnovější funkce a vylepšení zabezpečení. Tento článek obsahuje informace o tom, jak aktualizovat zařízení IoT Edge, když je dostupná nová verze. 
 
-Two components of an IoT Edge device need to be updated if you want to move to a newer version. The first is the security daemon, which runs on the device and starts the runtime modules when the device starts. Currently, the security daemon can only be updated from the device itself. The second component is the runtime, made up of the IoT Edge hub and IoT Edge agent modules. Depending on how you structure your deployment, the runtime can be updated from the device or remotely. 
+Dvě součásti zařízení IoT Edge je potřeba aktualizovat, pokud chcete přejít na novější verzi. První je démon zabezpečení, který běží na zařízení a spouští moduly runtime při spuštění zařízení. Proces démon zabezpečení v současné době je možné pouze aktualizovat ze samotného zařízení. Druhá součást je modul runtime, který se skládá z modulů IoT Edge hub a agentů IoT Edge. V závislosti na tom, jak strukturovat vaše nasazení modul runtime aktualizovat ze zařízení nebo vzdáleně. 
 
-To find the latest version of Azure IoT Edge, see [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
+Pokud chcete najít nejnovější verzi Azure IoT Edge, přečtěte si téma [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
 
-## <a name="update-the-security-daemon"></a>Update the security daemon
+## <a name="update-the-security-daemon"></a>Aktualizace zabezpečení démona
 
-The IoT Edge security daemon is a native component that needs to be updated using the package manager on the IoT Edge device. 
+Démon zabezpečení IoT Edge je nativní součást, kterou je potřeba aktualizovat pomocí Správce balíčků na zařízení IoT Edge. 
 
-Check the version of the security daemon running on your device by using the command `iotedge version`. 
+Pomocí příkazu `iotedge version`ověřte verzi démona zabezpečení spuštěnou na vašem zařízení. 
 
-### <a name="linux-devices"></a>Linux devices
+### <a name="linux-devices"></a>Linux zařízení
 
-On Linux x64 devices, use apt-get or your appropriate package manager to update the security daemon. 
+V zařízeních se systémem Linux x64 pomocí apt-get nebo odpovídajícího správce balíčků aktualizujte démona zabezpečení. 
 
 ```bash
 apt-get update
 apt-get install libiothsm iotedge
 ```
 
-On Linux ARM32 devices, use the steps in [Install Azure IoT Edge runtime on Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) to install the latest version of the security daemon. 
+Na zařízeních se systémem Linux ARM32 nainstalujte nejnovější verzi démona zabezpečení pomocí postupu v části [Instalace modulu runtime Azure IoT Edge v systému Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) . 
 
-### <a name="windows-devices"></a>Windows devices
+### <a name="windows-devices"></a>Zařízení Windows
 
-On Windows devices, use the PowerShell script to update the security daemon. The script automatically pulls the latest version of the security daemon. 
+Na zařízeních s Windows aktualizujte démona zabezpečení pomocí skriptu PowerShellu. Skript automaticky vyžádá nejnovější verzi démona zabezpečení. 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
 ```
 
-Running the Update-IoTEdge command removes the security daemon from your device, along with the two runtime container images. The config.yaml file is kept on the device, as well as data from the Moby container engine (if you're using Windows containers). Keeping the configuration information means that you don't have to provide the connection string or Device Provisioning Service information for your device again during the update process. 
+Spuštění příkazu Update-IoTEdge odebere z vašeho zařízení démona zabezpečení společně se dvěma bitovými kopiemi kontejnerů modulu runtime. Soubor config. yaml se uchovává v zařízení a také data z modulu kontejneru Moby (Pokud používáte kontejnery Windows). Udržování informací o konfiguraci znamená, že v průběhu procesu aktualizace nemusíte znovu zadávat informace o připojovacím řetězci nebo službě Device Provisioning pro vaše zařízení. 
 
-If you want to install a specific version of the security daemon, download the appropriate Microsoft-Azure-IoTEdge.cab file from [IoT Edge releases](https://github.com/Azure/azure-iotedge/releases). Then, use the `-OfflineInstallationPath` parameter to point to the file location. For more information, see [Offline installation](how-to-install-iot-edge-windows.md#offline-installation).
+Pokud chcete nainstalovat určitou verzi démona zabezpečení, Stáhněte si příslušný soubor Microsoft-Azure-IoTEdge. cab z [IoT Edge vydání](https://github.com/Azure/azure-iotedge/releases). Pak použijte parametr `-OfflineInstallationPath`, aby odkazoval na umístění souboru. Další informace najdete v tématu [instalace offline](how-to-install-iot-edge-windows.md#offline-installation).
 
-## <a name="update-the-runtime-containers"></a>Update the runtime containers
+## <a name="update-the-runtime-containers"></a>Aktualizovat kontejnerů modulu runtime
 
-The way that you update the IoT Edge agent and IoT Edge hub containers depends on whether you use rolling tags (like 1.0) or specific tags (like 1.0.7) in your deployment. 
+Způsob aktualizace IoT Edge agentů a kontejnerů centra IoT Edge závisí na tom, zda používáte ve svém nasazení valení značky (například 1,0) nebo konkrétní značky (například 1.0.7). 
 
-Check the version of the IoT Edge agent and IoT Edge hub modules currently on your device using the commands `iotedge logs edgeAgent` or `iotedge logs edgeHub`. 
+Pomocí příkazů `iotedge logs edgeAgent` nebo `iotedge logs edgeHub`vyhledejte verzi IoT Edge agenta a IoT Edgech modulů centra, které jsou aktuálně na vašem zařízení. 
 
-  ![Find container version in logs](./media/how-to-update-iot-edge/container-version.png)
+  ![Kontejner verzi naleznete v protokolech](./media/how-to-update-iot-edge/container-version.png)
 
-### <a name="understand-iot-edge-tags"></a>Understand IoT Edge tags
+### <a name="understand-iot-edge-tags"></a>Vysvětlení značky IoT Edge
 
-The IoT Edge agent and IoT Edge hub images are tagged with the IoT Edge version that they are associated with. There are two different ways to use tags with the runtime images: 
+IoT Edge agent a image centra IoT Edge jsou označené verzí IoT Edge, ke které jsou přidružené. Existují dva různé způsoby použití značky pomocí bitové kopie modulu runtime: 
 
-* **Rolling tags** - Use only the first two values of the version number to get the latest image that matches those digits. For example, 1.0 is updated whenever there's a new release to point to the latest 1.0.x version. If the container runtime on your IoT Edge device pulls the image again, the runtime modules are updated to the latest version. This approach is suggested for development purposes. Deployments from the Azure portal default to rolling tags. 
-* **Specific tags** - Use all three values of the version number to explicitly set the image version. For example, 1.0.7 won't change after its initial release. You can declare a new version number in the deployment manifest when you're ready to update. This approach is suggested for production purposes.
+* **Válcování značek** – použijte pouze první dvě hodnoty čísla verze, abyste získali nejnovější obrázek, který se shoduje s těmito číslicemi. 1\.0 je třeba aktualizovat vždycky, když je nová verze tak, aby odkazoval na nejnovější verzi 1.0.x. Pokud modul runtime kontejneru na vašem zařízení IoT Edge znovu stáhne bitovou kopii, moduly runtime jsou aktualizovány na nejnovější verzi. Tento přístup je určeno pro účely vývoje. Nasazení z portálu Azure výchozí značky se zajištěním provozu. 
+* **Konkrétní značky** – k explicitnímu nastavení verze image použijte všechny tři hodnoty čísla verze. Například 1.0.7 se po počáteční verzi nemění. Jakmile budete připraveni k aktualizaci je možné deklarovat nové číslo verze v manifestu nasazení. Tento přístup doporučuje pro produkční účely.
 
-### <a name="update-a-rolling-tag-image"></a>Update a rolling tag image
+### <a name="update-a-rolling-tag-image"></a>Aktualizovat bitovou kopii postupné značky
 
-If you use rolling tags in your deployment (for example, mcr.microsoft.com/azureiotedge-hub:**1.0**) then you need to force the container runtime on your device to pull the latest version of the image. 
+Pokud ve svém nasazení používáte přístupné značky (například mcr.microsoft.com/azureiotedge-hub:**1,0**), musíte vynutit modul runtime kontejneru v zařízení, aby využíval nejnovější verzi image. 
 
-Delete the local version of the image from your IoT Edge device. On Windows machines, uninstalling the security daemon also removes the runtime images, so you don't need to take this step again. 
+Odstraňte místní verzi image ze zařízení IoT Edge. V počítačích se systémem Windows odinstalování démona zabezpečení také odstraní image za běhu, takže tento krok nemusíte znovu provádět. 
 
 ```bash
 docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
 docker rmi mcr.microsoft.com/azureiotedge-agent:1.0
 ```
 
-You may need to use the force `-f` flag to remove the images. 
+K odebrání imagí možná budete muset použít příznak vynucení `-f`. 
 
-The IoT Edge service will pull the latest versions of the runtime images and automatically start them on your device again. 
+Služba IoT Edge o přijetí změn nejnovější verze modulu runtime obrázků a automaticky je znovu spusťte ve vašem zařízení. 
 
-### <a name="update-a-specific-tag-image"></a>Update a specific tag image
+### <a name="update-a-specific-tag-image"></a>Aktualizace image s konkrétní značkou
 
-If you use specific tags in your deployment (for example, mcr.microsoft.com/azureiotedge-hub:**1.0.7**) then all you need to do is update the tag in your deployment manifest and apply the changes to your device. 
+Použijete-li v nasazení konkrétní značky (například mcr.microsoft.com/azureiotedge-hub:**1.0.7**), je nutné provést aktualizaci značky v manifestu nasazení a použít změny v zařízení. 
 
-In the Azure portal, the runtime deployment images are declared in the **Configure advanced Edge Runtime settings** section. 
+V Azure Portal jsou bitové kopie nasazení modulu runtime deklarovány v sekci **nastavení modulu runtime konfigurace pokročilého Edge** . 
 
-![Configure advanced edge runtime settings](./media/how-to-update-iot-edge/configure-runtime.png)
+![Konfigurace pokročilých nastavení modulu runtime Edge](./media/how-to-update-iot-edge/configure-runtime.png)
 
-In a JSON deployment manifest, update the module images in the **systemModules** section. 
+V manifestu nasazení JSON aktualizujte image modulu v oddílu **systemModules** . 
 
 ```json
 "systemModules": {
@@ -114,19 +114,19 @@ In a JSON deployment manifest, update the module images in the **systemModules**
 },
 ```
 
-## <a name="update-to-a-release-candidate-version"></a>Update to a release candidate version
+## <a name="update-to-a-release-candidate-version"></a>Aktualizace na verzi Release Candidate
 
-Azure IoT Edge regularly releases new versions of the IoT Edge service. Before each stable release, there is one or more release candidate (RC) versions. RC versions include all the planned features for the release, but are still going through the testing and validation processes required for a stable release. If you want to test a new feature early, you can install the RC version and provide feedback through GitHub. 
+Azure IoT Edge pravidelně uvolňuje nové verze služby IoT Edge. Před každou stabilní verzí je k dispozici nejméně jedna verze Release Candidate (RC). Verze RC obsahují všechny plánované funkce pro vydání, ale stále procházejí procesy testování a ověření vyžadované pro stabilní vydání. Pokud chcete novou funkci otestovat brzy, můžete nainstalovat verzi RC a poskytnout zpětnou vazbu prostřednictvím GitHubu. 
 
-Release candidate versions follow the same numbering convention of releases, but have **-rc** plus an incremental number appended to the end. You can see the release candidates in the same list of [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases) as the stable versions. For example, find **1.0.7-rc1** and **1.0.7-rc2**, the two release candidates that came before **1.0.7**. You can also see that RC versions are marked with **pre-release** labels. 
+Verze kandidáta Release mají stejnou konvenci číslování verzí, ale mají **-RC** plus přírůstkové číslo připojené ke konci. Kandidáty na vydání verze si můžete prohlédnout ve stejném seznamu [Azure IoT Edge vydání](https://github.com/Azure/azure-iotedge/releases) jako stabilní verze. Například vyhledejte **1.0.7-RC1** a **1.0.7-RC2**, které byly vydány před **1.0.7**. Můžete si také prohlédnout, že verze RC jsou označeny pomocí popisků **před vydáním** . 
 
-As previews, release candidate versions aren't included as the latest version that the regular installers target. Instead, you need to manually target the assets for the RC version that you want to test. Depending on your IoT Edge device operating system, use the following sections to update IoT Edge to a specific version:
+Ve verzi Preview jsou Release Candidate verze nezahrnuté jako nejnovější verze, které jsou určené pro běžné instalační programy. Místo toho je nutné ručně cílit prostředky na verzi RC, kterou chcete testovat. V závislosti na operačním systému IoT Edge zařízení aktualizujte IoT Edge na konkrétní verzi pomocí následujících částí:
 
 * [Linux](how-to-install-iot-edge-linux.md#install-a-specific-runtime-version)
 * [Windows](how-to-install-iot-edge-windows.md#offline-installation)
 
 ## <a name="next-steps"></a>Další kroky
 
-View the latest [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
+Prohlédněte si nejnovější [verze Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
 
-Stay up-to-date with recent updates and announcement in the [Internet of Things blog](https://azure.microsoft.com/blog/topics/internet-of-things/) 
+Udržujte si přehled o nejnovějších aktualizacích a oznámeních na [blogu Internet věcí](https://azure.microsoft.com/blog/topics/internet-of-things/) 

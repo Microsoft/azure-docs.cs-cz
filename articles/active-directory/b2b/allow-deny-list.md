@@ -49,7 +49,7 @@ Přidání seznamu odepření:
 
    ![Zobrazí možnost Odepřít u přidaných domén.](./media/allow-deny-list/DenyListSettings.png)
  
-6. Jakmile budete hotovi, klikněte na tlačítko **Uložit**.
+6. Až skončíte, klikněte na **Uložit**.
 
 Pokud se po nastavení zásady pokusíte pozvat uživatele z Blokované domény, zobrazí se zpráva s informací o tom, že je doména uživatele v tuto chvíli zablokovaná vašimi zásadami pro pozvánky.
  
@@ -70,7 +70,7 @@ Chcete-li přidat seznam povolených:
 
    ![Zobrazí možnost Allow s přidanými doménami.](./media/allow-deny-list/AllowListSettings.png)
  
-6. Jakmile budete hotovi, klikněte na tlačítko **Uložit**.
+6. Až skončíte, klikněte na **Uložit**.
 
 Pokud se po nastavení zásady pokusíte pozvat uživatele z domény, která není v seznamu povolených, zobrazí se zpráva s informací o tom, že je doména uživatele v tuto chvíli zablokovaná vašimi zásadami pro pozvánky.
 

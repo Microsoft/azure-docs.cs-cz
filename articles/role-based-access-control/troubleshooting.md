@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot RBAC for Azure resources | Microsoft Docs
-description: Troubleshoot issues with role-based access control (RBAC) for Azure resources.
+title: Řešení potíží s RBAC pro prostředky Azure | Microsoft Docs
+description: Řešení potíží s řízením přístupu na základě role (RBAC) pro prostředky Azure.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -22,45 +22,45 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456827"
 ---
-# <a name="troubleshoot-rbac-for-azure-resources"></a>Troubleshoot RBAC for Azure resources
+# <a name="troubleshoot-rbac-for-azure-resources"></a>Řešení potíží s RBAC pro prostředky Azure
 
-This article answers common questions about role-based access control (RBAC) for Azure resources, so that you know what to expect when using the roles in the Azure portal and can troubleshoot access problems.
+Tento článek obsahuje odpovědi na běžné dotazy týkající se řízení přístupu na základě role (RBAC) pro prostředky Azure, takže víte, co očekávat při používání rolí v Azure Portal a který může řešit problémy s přístupem.
 
 ## <a name="problems-with-rbac-role-assignments"></a>Potíže s přiřazováním rolí RBAC
 
-- If you are unable to add a role assignment in the Azure portal on **Access control (IAM)** because the **Add** > **Add role assignment** option is disabled or because you get the permissions error "The client with object id does not have authorization to perform action", check that you are currently signed in with a user that is assigned a role that has the `Microsoft.Authorization/roleAssignments/write` permission such as [Owner](built-in-roles.md#owner) or [User Access Administrator](built-in-roles.md#user-access-administrator) at the scope you are trying to assign the role.
-- If you get the error message "No more role assignments can be created (code: RoleAssignmentLimitExceeded)" when you try to assign a role, try to reduce the number of role assignments by assigning roles to groups instead. Azure podporuje až **2 000** přiřazení rolí na jedno předplatné. This role assignments limit is fixed and cannot be increased.
+- Pokud nemůžete přidat přiřazení role v Azure Portal na **řízení přístupu (IAM)** , protože možnost **Přidat** > **Přidat přiřazení role** je zakázaná nebo se zobrazí chyba oprávnění "klient s ID objektu nemá autorizaci k provedení akce", ověřte, že jste aktuálně přihlášení pomocí uživatele, kterému je přiřazena role s oprávněním `Microsoft.Authorization/roleAssignments/write`, jako je [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) v oboru, ke kterému se pokoušíte přiřadit roli.
+- Pokud se zobrazí chybová zpráva "při pokusu o přiřazení role nemůžete vytvořit další přiřazení rolí (Code: RoleAssignmentLimitExceeded)", zkuste omezit počet přiřazení rolí přiřazením rolí do skupin. Azure podporuje až **2 000** přiřazení rolí na jedno předplatné. Toto omezení přiřazení rolí je pevně nastavené a nelze ho zvýšit.
 
 ## <a name="problems-with-custom-roles"></a>Potíže s vlastními rolemi
 
-- If you need steps for how to create a custom role, see the custom role tutorials using [Azure PowerShell](tutorial-custom-role-powershell.md) or [Azure CLI](tutorial-custom-role-cli.md).
-- If you are unable to update an existing custom role, check that you are currently signed in with a user that is assigned a role that has the `Microsoft.Authorization/roleDefinition/write` permission such as [Owner](built-in-roles.md#owner) or [User Access Administrator](built-in-roles.md#user-access-administrator).
-- If you are unable to delete a custom role and get the error message "There are existing role assignments referencing role (code: RoleDefinitionHasAssignments)", then there are role assignments still using the custom role. Odeberte tato přiřazení rolí a zkuste vlastní roli odstranit znovu.
-- Pokud se při pokusu o vytvoření nové vlastní role zobrazí chybová zpráva Došlo k překročení limitu definic rolí. No more role definitions can be created (code: RoleDefinitionLimitExceeded)" when you try to create a new custom role, delete any custom roles that aren't being used. Azure supports up to **5000** custom roles in a tenant. (V případě specializovaných cloudů, jako je Azure Government, Azure Germany a Azure China 21Vianet, platí omezení 2 000 vlastních rolí.)
-- If you get an error similar to "The client has permission to perform action 'Microsoft.Authorization/roleDefinitions/write' on scope '/subscriptions/{subscriptionid}', however the linked subscription was not found" when you try to update a custom role, check whether one or more [assignable scopes](role-definitions.md#assignablescopes) have been deleted in the tenant. Pokud se obor odstranil, vytvořte lístek podpory, protože v současné době není k dispozici žádné samoobslužné řešení.
+- Pokud potřebujete postup, jak vytvořit vlastní roli, přečtěte si kurzy k vlastním rolím pomocí [Azure PowerShell](tutorial-custom-role-powershell.md) nebo [Azure CLI](tutorial-custom-role-cli.md).
+- Pokud nemůžete aktualizovat existující vlastní roli, ověřte, že jste aktuálně přihlášeni jako uživatel, kterému je přiřazena role s oprávněním `Microsoft.Authorization/roleDefinition/write`, jako je [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatele](built-in-roles.md#user-access-administrator).
+- Pokud nemůžete odstranit vlastní roli a získat chybovou zprávu "existují existující přiřazení rolí odkazujících na roli" (kód: RoleDefinitionHasAssignments) ", pak stále existují přiřazení rolí s vlastní rolí. Odeberte tato přiřazení rolí a zkuste vlastní roli odstranit znovu.
+- Pokud se při pokusu o vytvoření nové vlastní role zobrazí chybová zpráva Došlo k překročení limitu definic rolí. Při pokusu o vytvoření nové vlastní role se nedají vytvářet žádné další definice rolí (kód: RoleDefinitionLimitExceeded). Odstraňte všechny vlastní role, které se nepoužívají. Azure podporuje v tenantovi až **5000** vlastních rolí. (V případě specializovaných cloudů, jako je Azure Government, Azure Germany a Azure China 21Vianet, platí omezení 2 000 vlastních rolí.)
+- Pokud se zobrazí chybová zpráva podobná "klient má oprávnění k provedení akce" Microsoft. Authorization/roleDefinitions/Write "v oboru"/Subscriptions/{SubscriptionId} ", ale propojený odběr nebyl nalezen" při pokusu o aktualizaci vlastní role ověřte, zda byl jeden nebo více přizpůsobených [oborů](role-definitions.md#assignablescopes) odstraněn v tenantovi. Pokud se obor odstranil, vytvořte lístek podpory, protože v současné době není k dispozici žádné samoobslužné řešení.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Obnovení RBAC při přesouvání předplatných mezi tenanty
 
-- If you need steps for how to transfer a subscription to a different Azure AD tenant, see [Transfer ownership of an Azure subscription to another account](../billing/billing-subscription-transfer.md).
-- Když převedete předplatné do jiného tenanta Azure AD, všechna přiřazení rolí se odstraní ze zdrojového tenanta Azure AD a nedojde k jejich migraci do cílového tenanta Azure AD. Přiřazení rolí je potřeba v cílovém tenantovi znovu vytvořit. You also have to manually recreate managed identities for Azure resources. For more information, see [FAQs and known issues with managed identities](../active-directory/managed-identities-azure-resources/known-issues.md).
-- If you are an Azure AD Global Administrator and you don't have access to a subscription after it was moved between tenants, use the **Access management for Azure resources** toggle to temporarily [elevate your access](elevate-access-global-admin.md) to get access to the subscription.
+- Pokud potřebujete postup, jak přenést předplatné do jiného tenanta Azure AD, přečtěte si téma [přenos vlastnictví předplatného Azure na jiný účet](../billing/billing-subscription-transfer.md).
+- Když převedete předplatné do jiného tenanta Azure AD, všechna přiřazení rolí se odstraní ze zdrojového tenanta Azure AD a nedojde k jejich migraci do cílového tenanta Azure AD. Přiřazení rolí je potřeba v cílovém tenantovi znovu vytvořit. Je také nutné ručně znovu vytvořit spravované identity pro prostředky Azure. Další informace najdete v tématu [Nejčastější dotazy a známé problémy se spravovanými identitami](../active-directory/managed-identities-azure-resources/known-issues.md).
+- Pokud jste globálním správcem služby Azure AD a nemáte přístup k předplatnému po jeho přesunutí mezi klienty, použijte přepínač **Správa přístupu pro prostředky Azure** , abyste dočasně nastavili přístup [k](elevate-access-global-admin.md) předplatnému, abyste získali přístup k předplatnému.
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Problémy se správci služeb nebo spolusprávci
 
-- If you are having issues with Service administrator or Co-administrators, see [Add or change Azure subscription administrators](../billing/billing-add-change-azure-subscription-administrator.md) and [Classic subscription administrator roles, Azure RBAC roles, and Azure AD administrator roles](rbac-and-directory-admin-roles.md).
+- Pokud máte problémy se správcem a spolusprávci služeb, přečtěte si téma [Přidání nebo změna správců předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md) a [role správce pro klasický odběr, role Azure RBAC a role správce Azure AD](rbac-and-directory-admin-roles.md).
 
-## <a name="access-denied-or-permission-errors"></a>Access denied or permission errors
+## <a name="access-denied-or-permission-errors"></a>Odepřený přístup nebo chyby oprávnění
 
-- If you get the permissions error "The client with object id does not have authorization to perform action over scope (code: AuthorizationFailed)" when you try to create a resource, check that you are currently signed in with a user that is assigned a role that has write permission to the resource at the selected scope. Pokud například chcete spravovat virtuální počítače ve skupině prostředků, měli byste mít roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) pro danou skupinu prostředků (nebo nadřazený obor). Seznam oprávnění jednotlivých předdefinovaných rolí najdete v tématu [Předdefinované role pro prostředky Azure](built-in-roles.md).
-- If you get the permissions error "You don't have permission to create a support request" when you try to create or update a support ticket, check that you are currently signed in with a user that is assigned a role that has the `Microsoft.Support/supportTickets/write` permission, such as [Support Request Contributor](built-in-roles.md#support-request-contributor).
+- Pokud se zobrazí chyba oprávnění "klient s ID objektu nemá autorizaci k provedení akce nad oborem (kód: AuthorizationFailed)" při pokusu o vytvoření prostředku ověřte, zda jste aktuálně přihlášeni pomocí uživatele, kterému je přiřazena role s oprávněním k zápisu. oprávnění k prostředku ve vybraném oboru. Pokud například chcete spravovat virtuální počítače ve skupině prostředků, měli byste mít roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) pro danou skupinu prostředků (nebo nadřazený obor). Seznam oprávnění jednotlivých předdefinovaných rolí najdete v tématu [Předdefinované role pro prostředky Azure](built-in-roles.md).
+- Pokud se zobrazí chyba oprávnění "nemáte oprávnění k vytvoření žádosti o podporu" při pokusu o vytvoření nebo aktualizaci lístku podpory, ověřte, že jste aktuálně přihlášeni jako uživatel, kterému je přiřazena role s oprávněním `Microsoft.Support/supportTickets/write`, jako je například [Přispěvatel žádostí o podporu](built-in-roles.md#support-request-contributor).
 
-## <a name="role-assignments-with-unknown-security-principal"></a>Role assignments with Unknown security principal
+## <a name="role-assignments-with-unknown-security-principal"></a>Přiřazení rolí s neznámým objektem zabezpečení
 
-If you assign a role to a security principal (user, group, service principal, or managed identity) and then you later delete that security principal without removing the role assignment, the security principal type for the role assignment will be listed as **Unknown**. The following screenshot shows an example in the Azure portal. The security principal name is listed as **Identity deleted** and **Identity no longer exists**. 
+Pokud přiřadíte roli objektu zabezpečení (uživatele, skupiny, instančnímu objektu nebo spravované identitě) a později odstraníte tento objekt zabezpečení bez odebrání přiřazení role, bude typ objektu zabezpečení pro přiřazení role uveden jako **Neznámý**. Následující snímek obrazovky ukazuje příklad v Azure Portal. Hlavní název zabezpečení je uvedený jako **identita se odstranila** a **Identita už neexistuje**. 
 
-![Web app resource group](./media/troubleshooting/unknown-security-principal.png)
+![Skupina prostředků webové aplikace](./media/troubleshooting/unknown-security-principal.png)
 
-If you list this role assignment using Azure PowerShell, you will see an empty `DisplayName` and an `ObjectType` set to Unknown. For example, [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) returns a role assignment that is similar to the following:
+Pokud toto přiřazení role vypíšete pomocí Azure PowerShell, zobrazí se prázdná `DisplayName` a `ObjectType` je nastavená na neznámý. Například [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) vrátí přiřazení role, které je podobné následujícímu:
 
 ```azurepowershell
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -74,7 +74,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Similarly, if you list this role assignment using Azure CLI, you will see an empty `principalName`. For example, [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) returns a role assignment that is similar to the following:
+Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, zobrazí se prázdná `principalName`. Například [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list) vrátí přiřazení role, které je podobné následujícímu:
 
 ```azurecli
 {
@@ -90,9 +90,9 @@ Similarly, if you list this role assignment using Azure CLI, you will see an emp
 }
 ```
 
-It isn't a problem to leave these role assignments, but you can remove them using steps that are similar to other role assignments. For information about how to remove role assignments, see [Azure portal](role-assignments-portal.md#remove-role-assignments), [Azure PowerShell](role-assignments-powershell.md#remove-access), or [Azure CLI](role-assignments-cli.md#remove-access)
+Nejedná se o problém s ponechání těchto přiřazení rolí, ale můžete je odebrat pomocí kroků, které jsou podobné jiným přiřazením rolí. Informace o tom, jak odebrat přiřazení rolí, najdete v tématu [Azure Portal](role-assignments-portal.md#remove-role-assignments), [Azure POWERSHELL](role-assignments-powershell.md#remove-access)nebo [Azure CLI](role-assignments-cli.md#remove-access) .
 
-In PowerShell, if you try to remove the role assignments using the object ID and role definition name, and more than one role assignment matches your parameters, you will get the error message: "The provided information does not map to a role assignment". The following shows an example of the error message:
+Pokud se v prostředí PowerShell pokusíte odstranit přiřazení rolí pomocí ID objektu a definice role a na základě parametrů se shoduje více než jedno přiřazení role, zobrazí se chybová zpráva: "zadané informace nejsou namapovány na přiřazení role". V následujícím příkladu vidíte příklad chybové zprávy:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
@@ -105,87 +105,87 @@ At line:1 char:1
 + FullyQualifiedErrorId : Microsoft.Azure.Commands.Resources.RemoveAzureRoleAssignmentCommand
 ```
 
-If you get this error message, make sure you also specify the `-Scope` or `-ResourceGroupName` parameters.
+Pokud se zobrazí tato chybová zpráva, ujistěte se, že jste zadali také parametry `-Scope` nebo `-ResourceGroupName`.
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="rbac-changes-are-not-being-detected"></a>RBAC changes are not being detected
+## <a name="rbac-changes-are-not-being-detected"></a>Nezjišťují se změny RBAC.
 
-Azure Resource Manager sometimes caches configurations and data to improve performance. When creating or deleting role assignments, it can take up to 30 minutes for changes to take effect. If you are using the Azure portal, Azure PowerShell, or Azure CLI, you can force a refresh of your role assignment changes by signing out and signing in. If you are making role assignment changes with REST API calls, you can force a refresh by refreshing your access token.
+Azure Resource Manager někdy ukládá do mezipaměti konfigurace a data pro zlepšení výkonu. Při vytváření nebo odstraňování přiřazení rolí může trvat až 30 minut, než se změny projeví. Pokud používáte Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure, můžete vynutit aktualizaci změn přiřazení role odhlášením a přihlášením. Pokud provádíte změny přiřazení rolí pomocí REST API volání, můžete vynutit aktualizaci pomocí aktualizace přístupového tokenu.
 
-## <a name="web-app-features-that-require-write-access"></a>Web app features that require write access
+## <a name="web-app-features-that-require-write-access"></a>Funkce webové aplikace, které vyžadují přístup pro zápis
 
-If you grant a user read-only access to a single web app, some features are disabled that you might not expect. The following management capabilities require **write** access to a web app (either Contributor or Owner), and aren't available in any read-only scenario.
+Pokud uživateli udělíte přístup jen pro čtení k jedné webové aplikaci, některé funkce jsou zakázané, které nemůžete očekávat. Následující funkce správy vyžadují přístup pro **zápis** do webové aplikace (přispěvatel nebo vlastník) a nejsou k dispozici ve scénáři jen pro čtení.
 
-* Commands (like start, stop, etc.)
-* Changing settings like general configuration, scale settings, backup settings, and monitoring settings
-* Accessing publishing credentials and other secrets like app settings and connection strings
-* Streaming logs
-* Diagnostic logs configuration
-* Console (command prompt)
-* Active and recent deployments (for local git continuous deployment)
-* Estimated spend
-* Web tests
-* Virtual network (only visible to a reader if a virtual network has previously been configured by a user with write access).
+* Příkazy (například Start, stop atd.)
+* Změna nastavení, jako je Obecná konfigurace, nastavení škálování, nastavení zálohování a nastavení monitorování
+* Přístup k přihlašovacím údajům pro publikování a dalším tajným klíčům, jako je nastavení aplikace
+* Protokoly streamování
+* Konfigurace diagnostických protokolů
+* Konzola (příkazový řádek)
+* Aktivní a poslední nasazení (pro místní průběžné nasazování Git)
+* Odhadované výdaje
+* Webové testy
+* Virtuální síť (viditelná jenom pro čtenáře, pokud je virtuální síť dřív nakonfigurovaná uživatelem s přístupem pro zápis).
 
-If you can't access any of these tiles, you need to ask your administrator for Contributor access to the web app.
+Pokud nemůžete získat přístup k žádné z těchto dlaždic, musíte požádat správce o přístup k webové aplikaci přes přispěvatele.
 
-## <a name="web-app-resources-that-require-write-access"></a>Web app resources that require write access
+## <a name="web-app-resources-that-require-write-access"></a>Prostředky webové aplikace, které vyžadují přístup pro zápis
 
-Web apps are complicated by the presence of a few different resources that interplay. Here is a typical resource group with a couple of websites:
+Webové aplikace jsou komplikované o přítomnost několika různých prostředků, které souhře. Tady je typickou skupinou prostředků s několika weby:
 
-![Web app resource group](./media/troubleshooting/website-resource-model.png)
+![Skupina prostředků webové aplikace](./media/troubleshooting/website-resource-model.png)
 
-As a result, if you grant someone access to just the web app, much of the functionality on the website blade in the Azure portal is disabled.
+Výsledkem je, že pokud udělíte někomu přístup jenom k webové aplikaci, je většina funkcí v okně webu v Azure Portal zakázaná.
 
-These items require **write** access to the **App Service plan** that corresponds to your website:  
+Tyto položky vyžadují přístup pro **zápis** do **plánu App Service** , který odpovídá vašemu webu:  
 
-* Viewing the web app's pricing tier (Free or Standard)  
-* Scale configuration (number of instances, virtual machine size, autoscale settings)  
-* Quotas (storage, bandwidth, CPU)  
+* Zobrazení cenové úrovně webové aplikace (zdarma nebo Standard)  
+* Konfigurace škálování (počet instancí, velikost virtuálního počítače, nastavení automatického škálování)  
+* Kvóty (úložiště, Šířka pásma, CPU)  
 
-These items require **write** access to the whole **Resource group** that contains your website:  
+Tyto položky vyžadují přístup pro **zápis** do celé **skupiny prostředků** , která obsahuje váš web:  
 
-* SSL Certificates and bindings (SSL certificates can be shared between sites in the same resource group and geo-location)  
+* Certifikáty a vazby SSL (certifikáty SSL se dají sdílet mezi lokalitami ve stejné skupině prostředků a geografickým umístěním)  
 * Pravidla upozornění  
-* Autoscale settings  
-* Application insights components  
-* Web tests  
+* Nastavení automatického škálování  
+* Součásti Application Insights  
+* Webové testy  
 
-## <a name="virtual-machine-features-that-require-write-access"></a>Virtual machine features that require write access
+## <a name="virtual-machine-features-that-require-write-access"></a>Funkce virtuálních počítačů, které vyžadují přístup pro zápis
 
-Similar to web apps, some features on the virtual machine blade require write access to the virtual machine, or to other resources in the resource group.
+Podobně jako u Web Apps vyžadují některé funkce v okně virtuálního počítače přístup pro zápis k virtuálnímu počítači nebo jiným prostředkům ve skupině prostředků.
 
-Virtual machines are related to Domain names, virtual networks, storage accounts, and alert rules.
+Virtuální počítače se týkají názvů domén, virtuálních sítí, účtů úložiště a pravidel výstrah.
 
-These items require **write** access to the **Virtual machine**:
+Tyto položky vyžadují pro **virtuální počítač**přístup pro **zápis** :
 
 * Koncové body  
 * IP adresy  
 * Disky  
 * Rozšíření  
 
-These require **write** access to both the **Virtual machine**, and the **Resource group** (along with the Domain name) that it is in:  
+Tyto požadavky vyžadují přístup pro **zápis** k **virtuálnímu počítači**a **skupině prostředků** (spolu s názvem domény), ve kterém se nachází:  
 
 * Skupina dostupnosti  
-* Load balanced set  
+* Sada s vyrovnáváním zatížení  
 * Pravidla upozornění  
 
-If you can't access any of these tiles, ask your administrator for Contributor access to the Resource group.
+Pokud nemůžete získat přístup k žádné z těchto dlaždic, požádejte správce, aby přístup přispěvatele k této skupině prostředků.
 
-## <a name="azure-functions-and-write-access"></a>Azure Functions and write access
+## <a name="azure-functions-and-write-access"></a>Azure Functions a přístup pro zápis
 
-Some features of [Azure Functions](../azure-functions/functions-overview.md) require write access. For example, if a user is assigned the [Reader](built-in-roles.md#reader) role, they will not be able to view the functions within a function app. The portal will display **(No access)** .
+Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vyžadují přístup pro zápis. Například pokud je uživateli přiřazena role [čtenáře](built-in-roles.md#reader) , nebude moci zobrazit funkce v rámci aplikace Function App. Portál se zobrazí **(bez přístupu)** .
 
-![Function apps no access](./media/troubleshooting/functionapps-noaccess.png)
+![Aplikace Function App bez přístupu](./media/troubleshooting/functionapps-noaccess.png)
 
-A reader can click the **Platform features** tab and then click **All settings** to view some settings related to a function app (similar to a web app), but they can't modify any of these settings. To access these features, you will need the [Contributor](built-in-roles.md#contributor) role.
+Čtenář může kliknout na kartu **funkce platformy** a potom kliknout na **všechna nastavení** a zobrazit některá nastavení týkající se aplikace Function App (podobně jako u webové aplikace), ale nemůžou upravovat žádná z těchto nastavení. Pro přístup k těmto funkcím budete potřebovat roli [Přispěvatel](built-in-roles.md#contributor) .
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Troubleshoot for guest users](role-assignments-external-users.md#troubleshoot)
+- [Řešení potíží pro uživatele typu Host](role-assignments-external-users.md#troubleshoot)
 - [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)
-- [View activity logs for RBAC changes to Azure resources](change-history-report.md)
+- [Zobrazení protokolů aktivit pro změny RBAC v prostředcích Azure](change-history-report.md)
 

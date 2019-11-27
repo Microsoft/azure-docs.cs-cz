@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18f3ed9cb2ef0f700e33e8b643b5e7d167d656a5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112723"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533971"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indexování objektů BLOB JSON pomocí indexeru objektů BLOB v Azure Kognitivní hledání
 
@@ -33,7 +33,7 @@ Objekty blob JSON ve službě Azure Blob Storage jsou typicky jedním dokumentem
 
 Nejjednodušší způsob indexování dokumentů JSON je použití Průvodce v [Azure Portal](https://portal.azure.com/). Díky analýze metadat v kontejneru objektů BLOB v Azure může průvodce [**importem dat**](search-import-data-portal.md) vytvořit výchozí index, mapovat zdrojová pole na pole cílového indexu a načíst index v rámci jedné operace. V závislosti na velikosti a složitosti zdrojových dat můžete mít během několika minut provozní fulltextový index vyhledávání.
 
-Doporučujeme použít stejné předplatné Azure pro Azure Kognitivní hledání i úložiště Azure, pokud jde o stejnou oblast.
+Pro Azure Kognitivní hledání i Azure Storage doporučujeme použít pro nižší latenci stejnou oblast nebo umístění a vyhnout se tak poplatkům za šířku pásma.
 
 ### <a name="1---prepare-source-data"></a>1\. Příprava zdrojových dat
 
@@ -110,7 +110,7 @@ Na konci této části si můžete prohlédnout [ukázkový kód REST](#rest-exa
 
 Pro indexování JSON založené na kódu použijte příkaz [post](search-get-started-postman.md) a REST API k vytvoření těchto objektů:
 
-+ [index](https://docs.microsoft.com/rest/api/searchservice/create-index)
++ [indexovacím](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
 + [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
@@ -271,10 +271,10 @@ Vytvoření indexeru na Azure Kognitivní hledání aktivuje import dat. Spustí
 
 Sada .NET SDK má úplnou paritu s REST API. Doporučujeme, abyste si přečtěte předchozí část REST API, kde se dozvíte o konceptech, pracovních postupech a požadavcích. Pak se můžete podívat na následující referenční dokumentaci rozhraní .NET API a implementovat indexer JSON ve spravovaném kódu.
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [Microsoft. Azure. Search. Models. DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [Microsoft. Azure. Search. Models. DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [Microsoft. Azure. Search. Models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [Microsoft. Azure. Search. Models. indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="parsing-modes"></a>
 

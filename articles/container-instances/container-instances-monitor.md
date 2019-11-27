@@ -1,19 +1,14 @@
 ---
-title: Monitorování kontejnerů ve službě Azure Container Instances
+title: Monitorovat instance kontejnerů
 description: Jak monitorovat spotřebu výpočetních prostředků, jako je CPU a paměť, v kontejnerech v Azure Container Instances.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/24/2019
-ms.author: danlep
-ms.openlocfilehash: a26789bb41fb3fb1e7dec376b7e187f45745ea65
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: bd86161bc7840be599eb5ee9a20f6dbf143f5f22
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172256"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533653"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Monitorování prostředků kontejneru ve službě Azure Container Instances
 
@@ -81,7 +76,7 @@ Timestamp            Name       Average
 2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-Změňte hodnotu `--metric` parametru v příkazu, aby se získaly další [podporované metriky][supported-metrics]. Pomocí následujícího příkazu můžete například získat metriky využití **paměti** . 
+Chcete-li získat další [podporované metriky][supported-metrics], změňte hodnotu parametru `--metric` v příkazu. Pomocí následujícího příkazu můžete například získat metriky využití **paměti** . 
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
@@ -102,7 +97,7 @@ Timestamp            Name          Average
 2019-04-23 23:10:00  Memory Usage  8093696.0
 ```
 
-Pro skupinu `containerName` s více kontejnery se dá dimenze přidat pro návratovou metriku na kontejner.
+Pro skupinu s více kontejnery je možné přidat dimenzi `containerName` pro návrat metrik na kontejner.
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
@@ -135,11 +130,11 @@ Timestamp            Name          Containername             Average
 2019-04-23 23:10:00  Memory Usage  aci-tutorial-sidecar  847872.0
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o monitorování Azure najdete v [přehledu monitorování Azure][azure-monitoring].
 
-Naučte se vytvářet [Upozornění][metric-alert] na metriky a dostávat upozornění, když metrika Azure Container Instances překračuje prahovou hodnotu.
+Naučte se vytvářet [Upozornění na metriky][metric-alert] a dostávat upozornění, když metrika Azure Container Instances překračuje prahovou hodnotu.
 
 <!-- IMAGES -->
 [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png

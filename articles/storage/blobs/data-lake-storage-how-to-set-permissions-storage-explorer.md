@@ -1,6 +1,6 @@
 ---
-title: 'Azure Storage Explorer: Manage access in Azure Data Lake Storage Gen2'
-description: In this how to, you learn how to set permissions with Azure Storage Explorer on files and directories inside your Azure Data Lake Storage Gen2 capable storage account.
+title: 'Průzkumník služby Azure Storage: Správa přístupu v Azure Data Lake Storage Gen2'
+description: V tomto postupu se naučíte, jak nastavit oprávnění Průzkumník služby Azure Storage u souborů a adresářů v rámci vašeho účtu úložiště s možností Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,54 +15,54 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327972"
 ---
-# <a name="use-azure-storage-explorer-to-manage-access-in-azure-data-lake-storage-gen2"></a>Use Azure Storage Explorer to manage access in Azure Data Lake Storage Gen2
+# <a name="use-azure-storage-explorer-to-manage-access-in-azure-data-lake-storage-gen2"></a>Správa přístupu v Azure Data Lake Storage Gen2 pomocí Průzkumník služby Azure Storage
 
-Files stored in Azure Data Lake Storage Gen2 support fine grained permissions and access control list (ACL) management. Together, fine grained permissions and ACL management allow you to manage access to your data at a very granular level.
+Soubory uložené v Azure Data Lake Storage Gen2 podporují jemně odstupňovaná oprávnění a správu seznamu řízení přístupu (ACL). Jemně odstupňovaná oprávnění a Správa ACL umožňují spravovat přístup k datům na velmi podrobné úrovni.
 
-In this article, you learn how to use Azure Storage Explorer to:
+V tomto článku se naučíte, jak použít Průzkumník služby Azure Storage k těmto akcím:
 
 > [!div class="checklist"]
-> * Set file level permissions
-> * Set directory level permissions
-> * Add users or groups to an access control list
+> * Nastavit oprávnění na úrovni souboru
+> * Nastavení oprávnění na úrovni adresáře
+> * Přidání uživatelů nebo skupin do seznamu řízení přístupu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-In order to best depict the process, we require that you complete our [Azure Storage Explorer quickstart](data-lake-storage-Explorer.md). This ensures your storage account will be in the most appropriate state (container created and data uploaded to it).
+Aby bylo možné tento proces nejlépe vymezit, je potřeba, abyste dokončili náš [Průzkumník služby Azure Storage rychlý Start](data-lake-storage-Explorer.md). Tím se zajistí, že váš účet úložiště bude v nejvhodnějším stavu (vytvoří se kontejner a data se do něj nahrají).
 
 ## <a name="managing-access"></a>Správa přístupu
 
-You can set permissions at the root of your container. To do so, you must be logged into Azure Storage Explorer with your individual account with rights to do so (as opposed to with a connection string). Right-click your container and select **Manage Permissions**, bringing up the **Manage Permission** dialog box.
+Oprávnění můžete nastavit v kořenu vašeho kontejneru. Abyste to mohli udělat, musíte být přihlášeni k Průzkumník služby Azure Storage s vaším individuálním účtem s právy k tomu, aby to bylo možné (na rozdíl od připojovacího řetězce). Klikněte pravým tlačítkem na svůj kontejner a vyberte **Spravovat oprávnění**a v dialogovém okně **Spravovat oprávnění** .
 
-![Microsoft Azure Storage Explorer - Manage directory access](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+![Průzkumník služby Microsoft Azure Storage – Správa přístupu k adresáři](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 
-The **Manage Permission** dialog box allows you to manage permissions for owner and the owners group. It also allows you to add new users and groups to the access control list for whom you can then manage permissions.
+Dialog **Spravovat oprávnění** umožňuje spravovat oprávnění pro vlastníka a skupinu vlastníci. Umožňuje také přidat nové uživatele a skupiny do seznamu řízení přístupu, pro který pak můžete spravovat oprávnění.
 
-To add a new user or group to the access control list, select the **Add user or group** field.
+Chcete-li přidat nového uživatele nebo skupinu do seznamu řízení přístupu, vyberte pole **Přidat uživatele nebo skupinu** .
 
-Enter the corresponding Azure Active Directory (AAD) entry you wish to add to the list and then select **Add**.
+Zadejte odpovídající položku Azure Active Directory (AAD), kterou chcete přidat do seznamu, a pak vyberte **Přidat**.
 
-The user or group will now appear in the **Users and groups:** field, allowing you to begin managing their permissions.
+Uživatel nebo skupina se nyní zobrazí v poli **Uživatelé a skupiny:** , což vám umožní začít spravovat jejich oprávnění.
 
 > [!NOTE]
-> It is a best practice, and recommended, to create a security group in AAD and maintain permissions on the group rather than individual users. For details on this recommendation, as well as other best practices, see [best practices for Data Lake Storage Gen2](data-lake-storage-best-practices.md).
+> Osvědčeným postupem je a doporučujeme vytvořit v AAD skupinu zabezpečení a zachovat oprávnění pro skupinu, nikoli jednotlivé uživatele. Podrobnosti o tomto doporučení a další osvědčené postupy najdete v tématu [osvědčené postupy pro data Lake Storage Gen2](data-lake-storage-best-practices.md).
 
-There are two categories of permissions you can assign: access ACLs and default ACLs.
+Existují dvě kategorie oprávnění, které můžete přiřadit: přístup k ACL a výchozí seznamy ACL.
 
-* **Access**: Access ACLs control access to an object. Files and directories both have access ACLs.
+* **Přístup**: přístup k ovládacímu prvku ACL přístup k objektu. Přístupové seznamy ACL mají přístup k souborům a adresářům.
 
-* **Default**: A template of ACLs associated with a directory that determines the access ACLs for any child items that are created under that directory. Files do not have default ACLs.
+* **Výchozí**: Šablona seznamů ACL přidružených k adresáři, které určují přístupové seznamy ACL pro všechny podřízené položky, které jsou vytvořeny v tomto adresáři. Soubory nemají výchozí seznamy ACL.
 
-Within both of these categories, there are three permissions you can then assign on files or directories: **Read**, **Write**, and **Execute**.
+V obou těchto kategoriích máte tři oprávnění, která pak můžete přiřadit k souborům nebo adresářům: **čtení**, **zápis**a **spouštění**.
 
 >[!NOTE]
-> Making selections here will not set permissions on any currently existing item inside the directory. You must go to each individual item and set the permissions manually, if the file already exists.
+> Výběrem těchto možností se nenastaví oprávnění k žádným aktuálně existujícím položkám v adresáři. Je nutné přejít na každou jednotlivou položku a nastavit oprávnění ručně, pokud soubor již existuje.
 
-You can manage permissions on individual directories, as well as individual files, which are what allows you fine grained access control. The process for managing permissions for both directories and files is the same as described above. Right-click the file or directory you wish to manage permissions on and follow the same process.
+Můžete spravovat oprávnění pro jednotlivé adresáře a také jednotlivé soubory, což vám umožní jemně odstupňované řízení přístupu. Proces pro správu oprávnění pro adresáře i soubory je stejný, jak je popsáno výše. Klikněte pravým tlačítkem na soubor nebo adresář, u kterého chcete spravovat oprávnění, a postupujte podle stejného procesu.
 
 ## <a name="next-steps"></a>Další kroky
 
-In this how-to, you learned how to set permissions on files and directories using **Azure Storage Explorer**. To learn more about ACLs, including default ACLs, access ACLs, their behavior, and their corresponding permissions, continue to our conceptual article on the subject.
+V tomto postupu jste zjistili, jak nastavit oprávnění k souborům a adresářům pomocí **Průzkumník služby Azure Storage**. Další informace o seznamech ACL, včetně výchozích seznamů ACL, přístupových seznamů ACL, jejich chování a jejich odpovídajících oprávnění, najdete v našem článku o předmětu.
 
 > [!div class="nextstepaction"]
 > [Řízení přístupu ve službě Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)

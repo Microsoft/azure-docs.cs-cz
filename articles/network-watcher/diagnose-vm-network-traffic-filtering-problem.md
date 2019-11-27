@@ -83,7 +83,7 @@ Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení 
     | Virtuální počítač   | Vyberte myVm.                                                                                       |
     | Síťové rozhraní | myVm – název síťového rozhraní, které web Azure Portal vytvořil, když jste vytvořili virtuální počítač, je jiný. |
     | Protocol (Protokol)          | TCP                                                                                               |
-    | Směr         | Odchozí                                                                                          |
+    | Direction         | Odchozí                                                                                          |
     | Místní IP adresa  | 10.0.0.4                                                                                          |
     | Místní port      | 60000                                                                                                |
     | Vzdálená IP adresa | 13.107.21.200 – jedna z adres pro > < www. Bing. com.                                             |

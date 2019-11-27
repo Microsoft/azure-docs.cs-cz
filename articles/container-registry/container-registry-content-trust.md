@@ -1,6 +1,6 @@
 ---
-title: Manage signed images
-description: Learn how to enable content trust for your Azure container registry, and push and pull signed images.
+title: Správa podepsaných imagí
+description: Naučte se, jak povolit důvěryhodnost obsahu pro službu Azure Container Registry, a nahrajte a vyžádat si podepsané image.
 ms.topic: article
 ms.date: 09/06/2019
 ms.openlocfilehash: 0418b13c352dc3b81d34501e7e76be6c54615a83
@@ -12,10 +12,10 @@ ms.locfileid: "74456453"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Důvěryhodnost obsahu ve službě Azure Container Registry
 
-Azure Container Registry implements Docker's [content trust][docker-content-trust] model, enabling pushing and pulling of signed images. This article gets you started enabling content trust in your container registries.
+Azure Container Registry implementuje model [vztahu důvěryhodnosti obsahu][docker-content-trust] Docker, který umožňuje vkládání a přijímání podepsaných imagí. Tento článek vám pomůže začít s povolením vztahu důvěryhodnosti obsahu v registrech kontejnerů.
 
 > [!NOTE]
-> Content trust is a feature of the [Premium SKU](container-registry-skus.md) of Azure Container Registry.
+> Vztah důvěryhodnosti obsahu je funkce Azure Container Registry [SKU úrovně Premium](container-registry-skus.md) .
 
 ## <a name="how-content-trust-works"></a>Princip fungování důvěryhodnosti obsahu
 
@@ -29,16 +29,16 @@ Důvěryhodnost obsahu pracuje se **značkami** v úložišti. Úložiště imag
 
 ### <a name="signing-keys"></a>Podpisové klíče
 
-Důvěryhodnost obsahu se spravuje prostřednictvím používání sady kryptografických podpisových klíčů. Tyto klíče jsou přidružené ke konkrétnímu úložišti v registru. Klienti Dockeru a váš registr při správě důvěryhodnosti značek v úložišti používají několik typů podpisových klíčů. Pokud povolíte důvěryhodnost obsahu a integrujete ji do svého kanálu publikování a využívání kontejnerů, musíte tyto klíče pečlivě spravovat. For more information, see [Key management](#key-management) later in this article and [Manage keys for content trust][docker-manage-keys] in the Docker documentation.
+Důvěryhodnost obsahu se spravuje prostřednictvím používání sady kryptografických podpisových klíčů. Tyto klíče jsou přidružené ke konkrétnímu úložišti v registru. Klienti Dockeru a váš registr při správě důvěryhodnosti značek v úložišti používají několik typů podpisových klíčů. Pokud povolíte důvěryhodnost obsahu a integrujete ji do svého kanálu publikování a využívání kontejnerů, musíte tyto klíče pečlivě spravovat. Další informace najdete v tématu [Správa klíčů](#key-management) dále v tomto článku a [Správa klíčů pro důvěryhodnost obsahu][docker-manage-keys] v dokumentaci k Docker.
 
 > [!TIP]
-> Toto byl velmi obecný přehled modelu důvěryhodnosti obsahu Dockeru. For an in-depth discussion of content trust, see [Content trust in Docker][docker-content-trust].
+> Toto byl velmi obecný přehled modelu důvěryhodnosti obsahu Dockeru. Podrobné informace o vztahu důvěryhodnosti obsahu najdete v tématu [důvěryhodnost obsahu v Docker][docker-content-trust].
 
 ## <a name="enable-registry-content-trust"></a>Povolení důvěryhodnosti obsahu u registru
 
 Prvním krokem je povolení důvěryhodnosti obsahu na úrovni registru. Jakmile povolíte důvěryhodnost obsahu, klienti (uživatelé nebo služby) budou do vašeho registru moct odesílat podepsané image. Po povolení důvěryhodnosti obsahu v registru nedojde k omezení možnosti využívat registr pouze na zákazníky s povolenou důvěryhodností obsahu. Příjemci bez povolené důvěryhodnosti obsahu můžou váš registr normálně využívat i nadále. Příjemcům, kteří ve svých klientech povolili důvěryhodnost obsahu, se však zobrazí *pouze* podepsané image ve vašem registru.
 
-Pokud chcete pro svůj registr povolit důvěryhodnost obsahu, nejprve přejděte do tohoto registru na webu Azure Portal. Under **Policies**, select **Content Trust** > **Enabled** > **Save**. You can also use the [az acr config content-trust update][az-acr-config-content-trust-update] command in the Azure CLI.
+Pokud chcete pro svůj registr povolit důvěryhodnost obsahu, nejprve přejděte do tohoto registru na webu Azure Portal. V části **zásady**vyberte ** > ** **Povolit** > **Uložit**. V Azure CLI taky můžete použít příkaz [AZ ACR config Content-Trust Update][az-acr-config-content-trust-update] .
 
 ![Povolení důvěryhodnosti obsahu pro registr na webu Azure Portal][content-trust-01-portal]
 
@@ -69,16 +69,16 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 ## <a name="grant-image-signing-permissions"></a>Udělení oprávnění k podepisování imagí
 
-Do vašeho registru můžou odesílat důvěryhodné image pouze uživatelé nebo systémy, kterým k tomu udělíte oprávnění. Pokud chcete uživateli (nebo systému prostřednictvím instančního objektu) udělit oprávnění k odesílání důvěryhodných imagí, udělte příslušné identitě Azure Active Directory roli `AcrImageSigner`. This is in addition to the `AcrPush` (or equivalent) role required for pushing images to the registry. For details, see [Azure Container Registry roles and permissions](container-registry-roles.md).
+Do vašeho registru můžou odesílat důvěryhodné image pouze uživatelé nebo systémy, kterým k tomu udělíte oprávnění. Pokud chcete uživateli (nebo systému prostřednictvím instančního objektu) udělit oprávnění k odesílání důvěryhodných imagí, udělte příslušné identitě Azure Active Directory roli `AcrImageSigner`. To je kromě role `AcrPush` (nebo ekvivalentní), která je nutná pro vkládání imagí do registru. Podrobnosti najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md).
 
 > [!NOTE]
-> You can't grant trusted image push permission to the [admin account](container-registry-authentication.md#admin-account) of an Azure container registry.
+> [Účtu správce](container-registry-authentication.md#admin-account) služby Azure Container Registry nemůžete udělit oprávnění k odesílání důvěryhodných imagí.
 
 Následují podrobnosti o udělení role `AcrImageSigner` na webu Azure Portal a v Azure CLI.
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>portál Azure
 
-Navigate to your registry in the Azure portal, then select **Access control (IAM)**  > **Add role assignment**. Under **Add role assignment**, select `AcrImageSigner` under **Role**, then **Select** one or more users or service principals, then **Save**.
+Přejděte do registru v Azure Portal a pak vyberte **řízení přístupu (IAM)**  > **Přidat přiřazení role**. V části **Přidat přiřazení role**vyberte v části **role**`AcrImageSigner` a pak **Vyberte** jednoho nebo více uživatelů nebo instančních objektů a pak klikněte na **Uložit**.
 
 V tomto příkladu se role `AcrImageSigner` přiřadila dvěma entitám: instančnímu objektu service-principal a uživateli Azure User.
 
@@ -112,7 +112,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 Hodnota `<service principal ID>` může být **ID aplikace**, **ID objektu** nebo jeden z **hlavních názvů služby** instančního objektu. Další informace o práci s instančními objekty a službou Azure Container Registry najdete v tématu [Ověřování ve službě Azure Container Registry pomocí instančních objektů](container-registry-auth-service-principal.md).
 
 > [!IMPORTANT]
-> After any role changes, run `az acr login` to refresh the local identity token for the Azure CLI so that the new roles can take effect. For information about verifying roles for an identity, see [Manage access to Azure resources using RBAC and Azure CLI](../role-based-access-control/role-assignments-cli.md) and [Troubleshoot RBAC for Azure resources](../role-based-access-control/troubleshooting.md).
+> Po změně jakékoli role spusťte `az acr login` a aktualizujte místní token identity pro rozhraní příkazového řádku Azure CLI tak, aby se nové role projevily. Informace o ověřování rolí pro identitu najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md) a [řešení potíží s funkcí RBAC pro prostředky Azure](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Odeslání důvěryhodné image
 
@@ -142,7 +142,7 @@ Po prvním spuštění příkazu `docker push` s povolenou důvěryhodností obs
 
 ## <a name="pull-a-trusted-image"></a>Stažení důvěryhodné image
 
-Pokud chcete stáhnout důvěryhodnou image, povolte důvěryhodnost obsahu a jako obvykle spusťte příkaz `docker pull`. To pull trusted images, the `AcrPull` role is enough for normal users. No additional roles like an `AcrImageSigner` role are required. Příjemci s povolenou důvěryhodností obsahu můžou stahovat pouze image s podepsanou značkou. Tady je příklad stažení podepsané značky:
+Pokud chcete stáhnout důvěryhodnou image, povolte důvěryhodnost obsahu a jako obvykle spusťte příkaz `docker pull`. Pro získání důvěryhodných imagí je `AcrPull` role pro normální uživatele dostatečná. Nevyžadují se žádné další role, jako je `AcrImageSigner` role. Příjemci s povolenou důvěryhodností obsahu můžou stahovat pouze image s podepsanou značkou. Tady je příklad stažení podepsané značky:
 
 ```console
 $ docker pull myregistry.azurecr.io/myimage:signed
@@ -163,7 +163,7 @@ No valid trust data for unsigned
 
 ### <a name="behind-the-scenes"></a>Informace pro pokročilé uživatele
 
-When you run `docker pull`, the Docker client uses the same library as in the [Notary CLI][docker-notary-cli] to request the tag-to-SHA-256 digest mapping for the tag you're pulling. Po ověření podpisů u dat důvěryhodnosti klient předá modulu Docker pokyn ke „stažení podle hodnoty hash“. Během stahování modul použije adresu obsahu v podobě kontrolního součtu SHA-256 k vyžádání a ověření manifestu image z registru kontejneru Azure.
+Když spustíte `docker pull`, klient Docker použije stejnou knihovnu jako v rámci [notář CLI][docker-notary-cli] a požádá o mapování Digest s označením na SHA-256 pro značku, kterou nahráváte. Po ověření podpisů u dat důvěryhodnosti klient předá modulu Docker pokyn ke „stažení podle hodnoty hash“. Během stahování modul použije adresu obsahu v podobě kontrolního součtu SHA-256 k vyžádání a ověření manifestu image z registru kontejneru Azure.
 
 ## <a name="key-management"></a>Správa klíčů
 
@@ -173,13 +173,13 @@ Jak je uvedeno ve výstupu příkazu `docker push` při odeslání první důvě
 ~/.docker/trust/private
 ```
 
-Back up your root and repository keys by compressing them in an archive and storing it in a secure location. Příklad v prostředí Bash:
+Svůj kořenový klíč a klíče úložiště zálohujte tak, že je zkomprimujete v archivu a uložíte je na bezpečném místě. Příklad v prostředí Bash:
 
 ```bash
 umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; umask 022
 ```
 
-Kromě místně vygenerovaného kořenového klíče a klíče úložiště služba Azure Container Registry při odeslání důvěryhodné image vygeneruje a uloží několik dalších klíčů. For a detailed discussion of the various keys in Docker's content trust implementation, including additional management guidance, see [Manage keys for content trust][docker-manage-keys] in the Docker documentation.
+Kromě místně vygenerovaného kořenového klíče a klíče úložiště služba Azure Container Registry při odeslání důvěryhodné image vygeneruje a uloží několik dalších klíčů. Podrobné informace o různých klíčích v implementaci vztahu důvěryhodnosti obsahu Docker, včetně dalších pokynů pro správu, najdete v tématu [Správa klíčů pro vztah důvěryhodnosti obsahu][docker-manage-keys] v dokumentaci k Docker.
 
 ### <a name="lost-root-key"></a>Ztracený kořenový klíč
 
@@ -188,15 +188,15 @@ Pokud ztratíte přístup ke svému kořenovému klíči, ztratíte tím příst
 > [!WARNING]
 > Zakázáním a opětovným povolením důvěryhodnosti obsahu v registru se **odstraní veškerá data důvěryhodnosti pro všechny podepsané značky ve všech úložištích ve vašem registru**. Tato akce je nevratná – Azure Container Registry nemůže odstraněná data důvěryhodnosti obnovit. Samotné image se zákazem důvěryhodnosti obsahu neodstraní.
 
-Pokud chcete pro svůj registr zakázat důvěryhodnost obsahu, přejděte do tohoto registru na webu Azure Portal. Under **Policies**, select **Content Trust** > **Disabled** > **Save**. Zobrazí se upozornění na ztrátu všech podpisů v registru. Výběrem **OK** trvale odstraníte všechny podpisy ve vašem registru.
+Pokud chcete pro svůj registr zakázat důvěryhodnost obsahu, přejděte do tohoto registru na webu Azure Portal. V části **zásady**vyberte možnost **důvěryhodnost obsahu** > **zakázáno** > **Uložit**. Zobrazí se upozornění na ztrátu všech podpisů v registru. Výběrem **OK** trvale odstraníte všechny podpisy ve vašem registru.
 
 ![Zakázání důvěryhodnosti obsahu pro registr na webu Azure Portal][content-trust-03-portal]
 
 ## <a name="next-steps"></a>Další kroky
 
-* See [Content trust in Docker][docker-content-trust] for additional information about content trust. Přestože se tento článek zabýval několika klíčovými body, důvěryhodnost obsahu je rozsáhlé téma, kterému se podrobněji věnuje dokumentace k Dockeru.
+* Další informace o vztahu důvěryhodnosti obsahu najdete [v části důvěryhodnost obsahu v Docker][docker-content-trust] . Přestože se tento článek zabýval několika klíčovými body, důvěryhodnost obsahu je rozsáhlé téma, kterému se podrobněji věnuje dokumentace k Dockeru.
 
-* See the [Azure Pipelines](/azure/devops/pipelines/build/content-trust) documentation for an example of using content trust when you build and push a Docker image.
+* Příklad použití vztahu důvěryhodnosti obsahu při sestavování a vložení image Docker najdete v dokumentaci k [Azure Pipelines](/azure/devops/pipelines/build/content-trust) .
 
 <!-- IMAGES> -->
 [content-trust-01-portal]: ./media/container-registry-content-trust/content-trust-01-portal.png

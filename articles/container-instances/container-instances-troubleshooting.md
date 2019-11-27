@@ -1,20 +1,15 @@
 ---
-title: Řešení potíží s Azure Container Instances
+title: Řešení běžných potíží
 description: Naučte se řešit běžné problémy při nasazení, spuštění nebo správě Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 09/25/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8b102f31fe25b9c45d85a2dae269fce64be10a5d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147834"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533395"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných problémů v Azure Container Instances
 
@@ -33,7 +28,7 @@ Při definování specifikace kontejneru vyžadují některé parametry dodržov
 | Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Porty kontejneru | Mezi 1 a 65535 |Integer |Celé číslo od 1 do 65535 |`<port-number>` |`443` |
 | Popisek názvu DNS | 5-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`frontend-site1` |
-| Proměnná prostředí | 1-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a podtržítka (_) kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`MY_VARIABLE` |
+| Proměnná prostředí | 1–63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a podtržítka (_) kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`MY_VARIABLE` |
 | Název svazku | 5-63 |Malá a velká písmena se nerozlišují. |Malá písmena a číslice a pomlčky kdekoli kromě prvního nebo posledního znaku. Nemůže obsahovat dvě po sobě jdoucí spojovníky. |`<name>` |`batch-output-volume` |
 
 ### <a name="os-version-of-image-not-supported"></a>Verze operačního systému image není podporovaná.

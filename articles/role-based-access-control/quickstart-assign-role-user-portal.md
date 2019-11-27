@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Grant a user access to Azure resources using RBAC and the Azure portal
-description: In this tutorial, learn how to grant a user access to Azure resources using role-based access control (RBAC) in the Azure portal.
+title: Kurz – udělení přístupu uživatelům k prostředkům Azure pomocí RBAC a Azure Portal
+description: V tomto kurzu se dozvíte, jak udělit uživateli přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) v Azure Portal.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -20,14 +20,14 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419661"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Tutorial: Grant a user access to Azure resources using RBAC and the Azure portal
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure Portal
 
-[Role-based access control (RBAC)](overview.md) is the way that you manage access to Azure resources. In this tutorial, you grant a user access to create and manage virtual machines in a resource group.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. V tomto kurzu udělíte uživateli přístup k vytváření a správě virtuálních počítačů ve skupině prostředků.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Grant access for a user at a resource group scope
+> * Udělení přístupu pro uživatele v oboru skupiny prostředků
 > * Odebrání přístupu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -38,19 +38,19 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-1. In the navigation list, click **Resource groups**.
+1. V navigačním seznamu klikněte na **skupiny prostředků**.
 
-1. Click **Add** to open the **Resource group** blade.
+1. Kliknutím na **Přidat** otevřete okno **Skupina prostředků** .
 
    ![Přidání nové skupiny prostředků](./media/quickstart-assign-role-user-portal/resource-group.png)
 
-1. For **Resource group name**, enter **rbac-resource-group**.
+1. Jako **název skupiny prostředků**zadejte **RBAC-Resource-Group**.
 
 1. Vyberte předplatné a umístění.
 
-1. Click **Create** to create the resource group.
+1. Kliknutím na **vytvořit** vytvořte skupinu prostředků.
 
-1. Click **Refresh** to refresh the list of resource groups.
+1. Kliknutím na **aktualizovat** aktualizujte seznam skupin prostředků.
 
    Nová skupina prostředků se zobrazí v seznamu skupin prostředků.
 
@@ -60,29 +60,29 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 V RBAC se přístup uděluje vytvořením přiřazení role.
 
-1. In the list of **Resource groups**, click the new **rbac-resource-group** resource group.
+1. V seznamu **skupin prostředků**klikněte na novou skupinu prostředků **RBAC-Resource-Group** .
 
 1. Klikněte na **Řízení přístupu (IAM)** .
 
-1. Click the **Role assignments** tab to see the current list of role assignments.
+1. Kliknutím na kartu **přiřazení rolí** zobrazíte aktuální seznam přiřazení rolí.
 
    ![Okno Řízení přístupu (IAM) pro skupinu prostředků](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1. Click **Add** > **Add role assignment** to open the Add role assignment pane.
+1. Kliknutím na **přidat** > **Přidat přiřazení role** otevřete podokno přidat přiřazení role.
 
-   If you don't have permissions to assign roles, the Add role assignment option will be disabled.
+   Pokud nemáte oprávnění k přiřazování rolí, bude možnost přidat přiřazení role zakázaná.
 
-   ![Add menu](./media/role-assignments-portal/add-menu.png)
+   ![Přidat nabídku](./media/role-assignments-portal/add-menu.png)
 
-   ![Add role assignment pane](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
+   ![Přidat podokno přiřazení role](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
 1. V rozevíracím seznamu **Role** vyberte **Přispěvatel virtuálních počítačů**.
 
 1. V seznamu **Vybrat** vyberte sebe nebo jiného uživatele.
 
-1. Click **Save** to create the role assignment.
+1. Kliknutím na **Uložit** vytvořte přiřazení role.
 
-   After a few moments, the user is assigned the Virtual Machine Contributor role at the rbac-resource-group resource group scope.
+   Po chvíli se uživateli přiřadí role Přispěvatel virtuálního počítače v oboru skupin prostředků RBAC-Resource-Group.
 
    ![Přiřazení role Přispěvatel virtuálních počítačů](./media/quickstart-assign-role-user-portal/vm-contributor-assignment.png)
 
@@ -90,29 +90,29 @@ V RBAC se přístup uděluje vytvořením přiřazení role.
 
 V RBAC se přístup odebírá odebrání přiřazení role.
 
-1. In the list of role assignments, add a checkmark next to the user with the Virtual Machine Contributor role.
+1. V seznamu přiřazení rolí přidejte značku zaškrtnutí vedle uživatele s rolí Přispěvatel virtuálních počítačů.
 
-1. Click **Remove**.
+1. Klikněte na **Odebrat**.
 
    ![Zpráva Odebrání přiřazení role](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
-1. In the remove role assignment message that appears, click **Yes**.
+1. Ve zprávě odebrat přiřazení role, která se zobrazí, klikněte na **Ano**.
 
 ## <a name="clean-up"></a>Vyčištění
 
-1. In the navigation list, click **Resource groups**.
+1. V navigačním seznamu klikněte na **skupiny prostředků**.
 
-1. Click **rbac-resource-group** to open the resource group.
+1. Kliknutím na **RBAC-Resource-Group** otevřete skupinu prostředků.
 
-1. Click **Delete resource group** to delete the resource group.
+1. Odstraňte skupinu prostředků kliknutím na **Odstranit skupinu prostředků** .
 
    ![Odstranění skupiny prostředků](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
 
-1. On the **Are you sure you want to delete** blade, type the resource group name: **rbac-resource-group**.
+1. V okně jste si jisti, že **chcete odstranit** okno, zadejte název skupiny prostředků: **RBAC-Resource-Group**.
 
-1. Click **Delete** to delete the resource group.
+1. Kliknutím na **Odstranit** odstraňte skupinu prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Tutorial: Grant a user access to Azure resources using RBAC and Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure PowerShell](tutorial-role-assignments-user-powershell.md)
