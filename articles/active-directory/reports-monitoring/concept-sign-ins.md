@@ -26,78 +26,78 @@ ms.locfileid: "74232145"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
-The reporting architecture in Azure Active Directory (Azure AD) consists of the following components:
+Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) se skládá z následujících součástí:
 
 - **Aktivita** 
-    - **Sign-ins** – Information about the usage of managed applications and user sign-in activities.
-    - **Audit logs** - [Audit logs](concept-audit-logs.md) provide system activity information about users and group management, managed applications, and directory activities.
+    - **Přihlášení** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
+    - **Protokoly auditu** - [protokoly auditu](concept-audit-logs.md) poskytují informace o činnosti systému týkající se správy uživatelů a skupin, spravovaných aplikací a aktivit adresáře.
 - **Zabezpečení** 
-    - **Risky sign-ins** - A [risky sign-in](concept-risky-sign-ins.md) is an indicator for a sign-in attempt by someone who isn't the legitimate owner of a user account.
-    - **Users flagged for risk** - A [risky user](concept-user-at-risk.md) is an indicator for a user account that might have been compromised.
+    - **Riziková přihlášení** – [rizikové přihlášení](concept-risky-sign-ins.md) je indikátorem pokusu o přihlášení někoho, kdo není legitimním vlastníkem uživatelského účtu.
+    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
 
-This article gives you an overview of the sign-ins report.
+Tento článek obsahuje přehled sestavy přihlášení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
-* Users in the Security Administrator, Security Reader, Global Reader, and Report Reader roles
-* Global Administrators
+* Uživatelé v rolích správce zabezpečení, čtecí modul zabezpečení, globální čtenář a čtecí modul sestav
+* Globální správci
 * Každý uživatel (bez oprávnění správce) může přistupovat k vlastnímu přihlašování. 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaká licence Azure AD je potřeba pro přístup k přihlašovací aktivitě?
 
-* Your tenant must have an Azure AD Premium license associated with it to see the all up sign-in activity report. See [Getting started with Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) to upgrade your Azure Active Directory edition. It will take a couple of days for the data to show up in the reports after you upgrade to a premium license with no data activities before the upgrade.
+* K vaší straně klienta musí být přidružená licence Azure AD Premium, aby bylo možné zobrazit sestavu všech aktivit přihlašování. Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) . Bude trvat několik dní, než se data zobrazí v sestavách po upgradu na licenci Premium bez jakýchkoli aktivit dat před upgradem.
 
-## <a name="sign-ins-report"></a>Sign-ins report
+## <a name="sign-ins-report"></a>Sestava přihlášení
 
-The user sign-ins report provides answers to the following questions:
+Sestava přihlášení uživatelů poskytuje odpovědi na následující otázky:
 
 * Jaký je vzorec přihlašování uživatele?
 * Kolik uživatelů se přihlásilo za týden?
 * Jaký je stav těchto přihlášení?
 
-Start with [Azure portal](https://portal.azure.com). To access the sign-ins report select **Sign-ins**, continue to the **Monitoring.** It may take up to two hours for some sign-in records to show up in the portal.
+Začněte s [Azure Portal](https://portal.azure.com). Pokud chcete získat přístup k sestavě přihlášení, vyberte **přihlášení**a pokračujte **monitorováním.** Může trvat až dvě hodiny, než se některé záznamy přihlášení zobrazí na portálu.
 
-![Sign-in activity](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Aktivita přihlášení")
 
 > [!IMPORTANT]
-> The sign-ins report only displays the **interactive** sign-ins, that is, sign-ins where a user manually signs in using their username and password. Non-interactive sign-ins, such as service-to-service authentication, are not displayed in the sign-ins report. 
+> Sestava přihlášení zobrazí pouze **interaktivní** přihlášení, tedy přihlášení, kde se uživatel ručně přihlásí pomocí uživatelského jména a hesla. Neinteraktivní přihlášení, jako je ověřování služby-služba, se v sestavě přihlášení nezobrazí. 
 
 Protokol přihlášení má výchozí zobrazení seznamu, které obsahuje následující položky:
 
 - Datum přihlášení
 - Související uživatel
-- The application the user has signed in to
+- Aplikace, ke které se uživatel přihlásil
 - Stav přihlášení
 - Stav detekce rizik
 - Stav požadavku na vícefaktorové ověřování (MFA)
 
-![Sign-in activity](./media/concept-sign-ins/sign-in-activity.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/sign-in-activity.png "Aktivita přihlášení")
 
 Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
-![Sign-in activity](./media/concept-sign-ins/19.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/19.png "Aktivita přihlášení")
 
-Displays additional fields or remove fields that are already displayed.
+Zobrazí další pole nebo odebrat již zobrazená pole.
 
-![Sign-in activity](./media/concept-sign-ins/02.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/02.png "Aktivita přihlášení")
 
-Select an item in the list view to get more detailed information.
+Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Sign-in activity](./media/concept-sign-ins/basic-sign-in.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/basic-sign-in.png "Aktivita přihlášení")
 
 > [!NOTE]
-> Customers can now troubleshoot Conditional Access policies through all sign-in reports. By clicking on the **Conditional Access** tab for a sign-in record, customers can review the Conditional Access status and dive into the details of the policies that applied to the sign-in and the result for each policy.
-> For more information, see the [Frequently asked questions about CA information in all sign-ins](reports-faq.md#conditional-access).
+> Zákazníci teď můžou řešit zásady podmíněného přístupu prostřednictvím všech sestav přihlášení. Kliknutím na kartu **podmíněný přístup** pro záznam pro přihlášení mohou zákazníci zkontrolovat stav podmíněného přístupu a podrobně do podrobností o zásadách, které se vztahují k přihlašování a výsledku pro jednotlivé zásady.
+> Další informace najdete v [nejčastějších dotazech k informacím o certifikační autoritě ve všech přihlášeních](reports-faq.md#conditional-access).
 
 
 
 ## <a name="filter-sign-in-activities"></a>Filtrování aktivit přihlašování
 
-First, narrowing down the reported data to a level that works for you. Second, filter sign-ins data using date field as default filter. Azure AD provides you with a broad range of additional filters you can set.
+Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyhovovat. Za druhé filtrujte data přihlášení pomocí pole data jako výchozí filtr. Azure AD poskytuje širokou škálu dalších filtrů, které můžete nastavit.
 
-![Sign-in activity](./media/concept-sign-ins/04.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/04.png "Aktivita přihlášení")
 
 Filtr **Uživatel** umožňuje určit jméno nebo hlavní název uživatele (UPN) pro uživatele, o kterého vám jde.
 
@@ -105,21 +105,21 @@ Filtr **Aplikace** umožňuje určit název aplikace, o kterou vám jde.
 
 Filtr **Stav přihlášení** umožňuje vybrat jednu z následujících možností:
 
-- Všechno
+- Vše
 - Úspěch
 - Selhání
 
-The **Conditional Access** filter enables you to select the CA policy status for the sign-in:
+Filtr **podmíněného přístupu** umožňuje vybrat stav zásad certifikační autority pro přihlášení:
 
-- Všechno
-- Not Applied
+- Vše
+- Nepoužito
 - Úspěch
 - Selhání
 
 Filtr **Datum** umožňuje definovat časový rámec pro vracená data.  
-Možné hodnoty:
+Možné hodnoty jsou:
 
-- One month
+- Jeden měsíc
 - 7 dní
 - 24 hodin
 - Vlastní časový interval
@@ -127,52 +127,52 @@ Možné hodnoty:
 Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a koncový čas.
 
 Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se automaticky přidají do seznamu filtrů. Například přidáním pole **Klientská aplikace** do vašeho seznamu získáte také další možnost filtru, která vám umožní nastavit následující filtry:  
-![Sign-in activity](./media/concept-sign-ins/12.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/12.png "Aktivita přihlášení")
 
-- **Browser**  
-    This filter shows all events where sign-in attempts were attempted using browser flows.
-- **Exchange ActiveSync (supported)**  
-    This filter shows all sign-in attempts where the Exchange ActiveSync (EAS) protocol has been attempted from supported platforms like iOS, Android, and Windows Phone.
-- **Exchange ActiveSync (unsupported)**  
-    This filter shows all sign-in attempts where the EAS protocol has been attempted from unsupported platforms like, Linux distros.
-- **Mobile Apps and Desktop clients** The filter shows all sign-in attempts that were not using browser flows. For example, mobile apps from any platform using any protocol or from Desktop client apps like Office on Windows or MacOS.
+- **Prohlížeee**  
+    Tento filtr zobrazuje všechny události, u kterých došlo k pokusu o přihlášení pomocí toků prohlížeče.
+- **Exchange ActiveSync (podporováno)**  
+    Tento filtr zobrazuje všechny pokusy o přihlášení, u kterých došlo k pokusu o spuštění protokolu Exchange ActiveSync (EAS) z podporovaných platforem, jako je iOS, Android a Windows Phone.
+- **Exchange ActiveSync (nepodporované)**  
+    Tento filtr zobrazuje všechny pokusy o přihlášení, u kterých došlo k pokusu o spuštění protokolu EAS z nepodporovaných platforem, jako je Linux distribuce.
+- **Klienti Mobile Apps a desktopových klientů** Filtr zobrazuje všechny pokusy o přihlášení, které nepoužívaly toky prohlížeče. Například mobilní aplikace z jakékoli platformy pomocí libovolného protokolu nebo klientských aplikací klasické pracovní plochy, jako je Office ve Windows nebo MacOS.
   
-- **Other clients**
-    - **IMAP**  
-        A legacy mail client using IMAP to retrieve email.
+- **Ostatní klienti**
+    - **BÝVAJÍ**  
+        Starší verze poštovního klienta, který používá IMAP k načtení e-mailu.
     - **MAPI**  
-        Office 2013, where ADAL is enabled and it is using MAPI.
-    - **Old Office clients**  
-        Office 2013 in its default configuration where ADAL is not enabled and it is using MAPI, or Office 2016 where ADAL has been disabled.
-    - **POP**  
-        A legacy mail client using POP3 to retrieve email.
+        Office 2013, kde je povolena ADAL a používá rozhraní MAPI.
+    - **Stará klienti Office**  
+        Sada Office 2013 v její výchozí konfiguraci, kde není povolená knihovna ADAL a kterou používá rozhraní MAPI, nebo Office 2016, kde je ADAL zakázaná
+    - **VÝSTRAH**  
+        Starší verze poštovního klienta pomocí protokolu POP3 k načtení e-mailu.
     - **SMTP**  
-        A legacy mail client using SMTP to send email.
+        Starší verze poštovního klienta pomocí protokolu SMTP k odeslání e-mailu.
 
 ## <a name="download-sign-in-activities"></a>Stažení aktivit přihlašování
 
-Click the **Download** option to create a CSV or JSON file of the most recent 250,000 records. Start with [download the sign-ins data](quickstart-download-sign-in-report.md) if you want to work with it outside the Azure portal.  
+Klikněte na možnost **Stáhnout** a vytvořte soubor CSV nebo soubor JSON s nejnovějšími záznamy 250 000. Začněte [stažením přihlašovacích údajů](quickstart-download-sign-in-report.md) , pokud chcete s ní pracovat mimo Azure Portal.  
 
 ![Stáhnout](./media/concept-sign-ins/71.png "Ke stažení")
 
 > [!IMPORTANT]
-> The number of records you can download is constrained by the [Azure Active Directory report retention policies](reference-reports-data-retention.md).  
+> Počet záznamů, které si můžete stáhnout, je omezený o [Azure Active Directory zásady uchovávání sestav](reference-reports-data-retention.md).  
 
 
-## <a name="sign-ins-data-shortcuts"></a>Sign-ins data shortcuts
+## <a name="sign-ins-data-shortcuts"></a>Zástupci dat přihlášení
 
-Azure AD and the Azure portal both provide you with additional entry points to sign-ins data:
+Azure AD a Azure Portal poskytují další vstupní body pro data přihlášení:
 
-- The Identity security protection overview
+- Přehled ochrany zabezpečení identity
 - Uživatelé
 - Skupiny
 - Podnikové aplikace
 
-### <a name="users-sign-ins-data-in-identity-security-protection"></a>Users sign-ins data in Identity security protection
+### <a name="users-sign-ins-data-in-identity-security-protection"></a>Data přihlášení uživatelů v ochraně zabezpečení identity
 
-The user sign-in graph in the **Identity security protection** overview page shows weekly aggregations of sign-ins. The default for the time period is 30 days.
+Graf přihlašování uživatelů na stránce Přehled **ochrany zabezpečení identity** zobrazuje týdenní agregace přihlášení. Výchozí hodnota pro časové období je 30 dní.
 
-![Sign-in activity](./media/concept-sign-ins/06.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/06.png "Aktivita přihlášení")
 
 Když v grafu přihlašování kliknete na konkrétní den, zobrazí se přehled aktivit přihlašování pro tento den.
 
@@ -193,32 +193,32 @@ Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
 - Klient
 - Umístění
 - IP adresa
-- Datum
+- Date
 - Vyžaduje se MFA
 - Stav přihlášení
 
 > [!NOTE]
-> IP addresses are issued in such a way that there is no definitive connection between an IP address and where the computer with that address is physically located. Mapping IP addresses is complicated by the fact that mobile providers and VPNs issue IP addresses from central pools that are often very far from where the client device is actually used. Currently in Azure AD reports, converting IP address to a physical location is a best effort based on traces, registry data, reverse look ups and other information.
+> IP adresy se vydávají takovým způsobem, že mezi IP adresou neexistuje konečné připojení a kde je počítač s touto adresou fyzicky umístěný. Mapování IP adres je složité, protože mobilní poskytovatelé a sítě VPN vydávají IP adresy z centrálních fondů, které jsou často příliš daleko od místa, kde je klientské zařízení skutečně použito. V současné době se v sestavách Azure AD převádějí IP adresa na fyzické místo, což je nejlepší úsilí na základě trasování, dat registru, zpětného vyhledávání a dalších informací.
 
 Na stránce **Uživatelé** zobrazíte úplný přehled všech přihlášení uživatelů kliknutím na **Přihlášení** v části **Aktivita**.
 
-![Sign-in activity](./media/concept-sign-ins/08.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/08.png "Aktivita přihlášení")
 
 ## <a name="usage-of-managed-applications"></a>Použití spravovaných aplikací
 
 S použitím zobrazení dat přihlašování zaměřeného na aplikace můžete odpovídat na otázky tohoto typu:
 
 * Kdo používá mé aplikace?
-* What are the top three applications in your organization?
-* How is my newest application doing?
+* Jaké jsou tři hlavní aplikace ve vaší organizaci?
+* Jak funguje moje nejnovější aplikace?
 
-The entry point to this data is the top three applications in your organization. The data is contained within the last 30 days report in the **Overview** section under **Enterprise applications**.
+Vstupním bodem k těmto datům jsou tři hlavní aplikace ve vaší organizaci. Data jsou obsažena v posledních 30 dnech sestavy v části **Přehled** v části **podnikové aplikace**.
 
-![Sign-in activity](./media/concept-sign-ins/10.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/10.png "Aktivita přihlášení")
 
-The app-usage graphs weekly aggregations of sign-ins for your top three applications in a given time period. Výchozí časové období je 30 dnů.
+Grafy využití aplikace týdenní agregovaná přihlášení k vašim horním třem aplikacím v daném časovém období. Výchozí časové období je 30 dnů.
 
-![Sign-in activity](./media/concept-sign-ins/graph-chart.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/graph-chart.png "Aktivita přihlášení")
 
 Pokud chcete, můžete se zaměřit na konkrétní aplikaci.
 
@@ -228,15 +228,15 @@ Když v grafu využívání aplikací kliknete na konkrétní den, zobrazí se p
 
 Možnost **Přihlášení** poskytuje úplný přehled o všech událostech přihlašování pro vaše aplikace.
 
-## <a name="office-365-activity-logs"></a>Office 365 activity logs
+## <a name="office-365-activity-logs"></a>Protokoly aktivit Office 365
 
-You can view Office 365 activity logs from the [Microsoft 365 admin center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Consider the point  that, Office 365 activity and Azure AD activity logs share a significant number of the directory resources. Only the Microsoft 365 admin center provides a full view of the Office 365 activity logs. 
+Protokoly aktivit Office 365 můžete zobrazit v centru pro [správu Microsoft 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Vezměte v úvahu bod, který znamená, že aktivita Office 365 a protokoly aktivit služby Azure AD sdílejí velký počet prostředků adresáře. Úplné zobrazení protokolů aktivit Office 365 nabízí jenom centrum pro správu Microsoft 365. 
 
-You can also access the Office 365 activity logs programmatically by using the [Office 365 Management APIs](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
+Přístup k protokolům aktivit Office 365 můžete také programově pomocí [rozhraní API pro správu sady office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Sign-in activity report error codes](reference-sign-ins-error-codes.md)
-* [Azure AD data retention policies](reference-reports-data-retention.md)
-* [Azure AD report latencies](reference-reports-latencies.md)
+* [Kódy chyb sestav aktivit přihlašování](reference-sign-ins-error-codes.md)
+* [Zásady uchovávání dat v Azure AD](reference-reports-data-retention.md)
+* [Latence sestav Azure AD](reference-reports-latencies.md)
 

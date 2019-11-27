@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 376a0778e581b17462fb632d7e49f4762f54b83e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
-ms.translationtype: HT
+ms.openlocfilehash: 6555e61bab4ee668578b50cd27860fde1909c4dd
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456749"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546902"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Rychlý Start: Azure Key Vault klientskou knihovnu pro Node. js (v4)
 
@@ -27,7 +27,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 
 [Referenční dokumentace k rozhraní API](/javascript/api/overview/azure/key-vault?view=azure-node-latest) |  | balíček [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) [(npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Aktuální [Node. js](https://nodejs.org) pro váš operační systém.
@@ -257,9 +257,7 @@ main()
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Trezor klíčů, uložili tajný klíč a získali tento tajný klíč. 
-
-Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
+V tomto rychlém startu jste vytvořili Trezor klíčů, uložili tajný klíč a získali tento tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](key-vault-overview.md)
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](key-vault-developers-guide.md) .

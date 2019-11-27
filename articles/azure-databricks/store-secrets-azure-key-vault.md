@@ -26,13 +26,13 @@ V tomto kurzu se naučíte:
 > * Vytvoření pracovního prostoru Azure Databricks a přidání oboru tajného klíče
 > * Přístup k kontejneru objektů BLOB z Azure Databricks
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 > [!Note]
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
@@ -68,7 +68,7 @@ Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
    ![Vytvoření vyhledávacího pole prostředku Azure](./media/store-secrets-azure-key-vault/find-key-vault-resource.png)
 
-2. Prostředek Key Vault je automaticky vybrán. Vyberte **Vytvořit**.
+2. Prostředek Key Vault je automaticky vybrán. Vyberte **Create** (Vytvořit).
 
    ![Vytvoření prostředku Key Vault](./media/store-secrets-azure-key-vault/create-key-vault-resource.png)
 
@@ -76,7 +76,7 @@ Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
    |Vlastnost|Popis|
    |--------|-----------|
-   |Název|Jedinečný název vašeho trezoru klíčů.|
+   |Name (Název)|Jedinečný název vašeho trezoru klíčů.|
    |Předplatné|Vyberte předplatné.|
    |Skupina prostředků|Vyberte skupinu prostředků nebo vytvořte novou.|
    |Umístění|Zvolte umístění.|
@@ -93,8 +93,8 @@ Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
    |Vlastnost|Hodnota|
    |--------|-----------|
-   |Možnosti nahrání|Ruční|
-   |Název|Popisný název klíče účtu úložiště|
+   |Možnosti nahrání|Manual|
+   |Name (Název)|Popisný název klíče účtu úložiště|
    |Hodnota|klíč1 z vašeho účtu úložiště.|
 
    ![Vlastnosti nového tajného klíče trezoru klíčů](./media/store-secrets-azure-key-vault/create-storage-secret.png)
@@ -121,7 +121,7 @@ Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
    ![Vlastnosti pracovního prostoru datacihly](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
-   Vyberte **Vytvořit**.
+   Vyberte **Create** (Vytvořit).
 
 3. Přejděte k nově vytvořenému prostředku Azure Databricks v Azure Portal a vyberte **Spustit pracovní prostor**.
 

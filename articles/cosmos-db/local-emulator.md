@@ -41,7 +41,7 @@ Vzhledem k tomu, že emulátor Azure Cosmos poskytuje emulované prostředí bě
 * Protože vaše kopie emulátoru Azure Cosmos nemusí být vždycky aktuální s nejnovějšími změnami ve službě Azure Cosmos DB, měli byste se podívat na [Azure Cosmos DB Capacity Planneru](https://www.documentdb.com/capacityplanner) a přesně odhadnout, jaké jsou požadavky vaší aplikace v produkční propustnosti (ru).
 * Při použití emulátoru Azure Cosmos ve výchozím nastavení můžete vytvořit až 25 kontejnerů s pevnou velikostí (podporované jenom pomocí sad SDK pro Azure Cosmos DB) nebo 5 neomezených kontejnerů pomocí emulátoru Azure Cosmos. Další informace o změně této hodnoty najdete v části [Nastavení hodnoty PartitionCount](#set-partitioncount).
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 Emulátor Azure Cosmos má následující požadavky na hardware a software:
 
@@ -147,7 +147,7 @@ table.CreateIfNotExists();
 table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowKey")));
 ```
 
-### <a name="cassandra-api"></a>Rozhraní Cassandra API
+### <a name="cassandra-api"></a>Rozhraní API Cassandra
 
 Spusťte emulátor z příkazového řádku správce s názvem "/EnableCassandraEndpoint". Případně můžete také nastavit proměnnou prostředí `AZURE_COSMOS_EMULATOR_CASSANDRA_ENDPOINT=true`.
 
@@ -245,11 +245,11 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
 |DataPath | Určuje cestu, do které chcete uložit datové soubory. Výchozí hodnota je%LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<cesta k datům\> | \<cesta k datům\>: přístupná cesta |
 |Port | Určuje číslo portu pro emulátor. Výchozí hodnota je 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>: číslo jednoho portu |
 | ComputePort | Určuje číslo portu, které se má použít pro službu COMPUTE Interop Gateway. Port testu koncového bodu HTTP brány se počítá jako ComputePort + 79. Proto musí být ComputePort a ComputePort + 79 otevřené a dostupné. Výchozí hodnoty jsou 8900, 8979. | CosmosDB. emulátor. exe/ComputePort = \<ComputePort\> | \<computeport\>: jedno číslo portu |
-| EnableMongoDbEndpoint | Povolí rozhraní MongoDB API. | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
+| EnableMongoDbEndpoint | Povolí rozhraní MongoDB API. | CosmosDB. emulátor. exe/EnableMongoDbEndpoint | |
 | MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB. emulátor. exe/MongoPort = \<MongoPort\>|\<mongo port\>: číslo jednoho portu|
 | EnableCassandraEndpoint | Povolí rozhraní API Cassandra | CosmosDB. emulátor. exe/EnableCassandraEndpoint | |
 | CassandraPort | Určuje číslo portu, který se má použít pro koncový bod Cassandra. Výchozí hodnota je 10350. | CosmosDB. emulátor. exe/CassandraPort = \<CassandraPort\> | \<cassandraport\>: jedno číslo portu |
-| EnableGremlinEndpoint | Povolí rozhraní Gremlin API. | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
+| EnableGremlinEndpoint | Povolí rozhraní Gremlin API. | CosmosDB. emulátor. exe/EnableGremlinEndpoint | |
 | GremlinPort | Číslo portu, které se má použít pro koncový bod Gremlin Výchozí hodnota je 8901. | CosmosDB. emulátor. exe/GremlinPort =\<port\> | \<port\>: číslo jednoho portu |
 |EnableTableEndpoint | Povolí Azure rozhraní API pro tabulky | CosmosDB. emulátor. exe/EnableTableEndpoint | |
 |TablePort | Číslo portu, které se má použít pro koncový bod tabulky Azure Výchozí hodnota je 8902. | CosmosDB. emulátor. exe/TablePort =\<port\> | \<port\>: číslo jednoho portu|
@@ -257,7 +257,7 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
 | ResetDataPath | Rekurzivně odstraní všechny soubory v zadané cestě. Pokud cestu nezadáte, použije se výchozí hodnota%LOCALAPPDATA%\CosmosDbEmulator. | CosmosDB. emulátor. exe/ResetDataPath =\<cesta > | \<cesta\>: cesta k souboru  |
 | StartTraces  |  Spusťte shromažďování protokolů trasování ladění. | CosmosDB. emulátor. exe/StartTraces | |
 | StopTraces     | Zastavte shromažďování protokolů trasování ladění. | CosmosDB. emulátor. exe/StopTraces  | |
-|FailOnSslCertificateNameMismatch | Ve výchozím nastavení emulátor znovu vygeneruje svůj certifikát SSL podepsaný svým držitelem, pokud síť SAN s certifikátem nezahrnuje název domény hostitele emulátoru, místní adresu IPv4, localhost a adresu 127.0.0.1. Tato možnost způsobí, že emulátor při spuštění selže. Pak použijte možnost/GenCert a vytvořte a nainstalujte nový certifikát SSL podepsaný svým držitelem. | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
+|FailOnSslCertificateNameMismatch | Ve výchozím nastavení emulátor znovu vygeneruje svůj certifikát SSL podepsaný svým držitelem, pokud síť SAN s certifikátem nezahrnuje název domény hostitele emulátoru, místní adresu IPv4, localhost a adresu 127.0.0.1. Tato možnost způsobí, že emulátor při spuštění selže. Pak použijte možnost/GenCert a vytvořte a nainstalujte nový certifikát SSL podepsaný svým držitelem. | CosmosDB. emulátor. exe/FailOnSslCertificateNameMismatch  | |
 | GenCert | Vygenerujte a nainstalujte nový certifikát SSL podepsaný svým držitelem. Volitelně můžete zahrnout čárkami oddělený seznam dalších názvů DNS pro přístup k emulátoru přes síť. | CosmosDB. emulátor. exe/GenCert =\<DNS-Names\> |\<názvů DNS\>: volitelný čárkami oddělený seznam dalších názvů DNS  |
 | DirectPorts |Určuje porty, které chcete použít pro přímé připojení. Výchozí hodnoty jsou 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<přímé porty\> | \<přímé porty\>: seznam 4 portů oddělených čárkami |
 | Klíč |Autorizační klíč pro emulátor. Klíč musí být 64bajtový vektor s kódováním base-64. | CosmosDB.Emulator.exe /Key:\<klíč\> | \<klíč\>: klíč musí být 64bajtový vektor s kódováním base-64.|

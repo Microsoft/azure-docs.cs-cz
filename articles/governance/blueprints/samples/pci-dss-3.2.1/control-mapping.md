@@ -30,8 +30,8 @@ Tento podrobný plán vám pomůže se správou a řízením sítí tím, že p�
 
 Tento podrobný plán vám pomůže vyhovět zásadám pomocí ovládacích prvků cryptograph přiřazením definicí [Azure Policy](../../../policy/overview.md) , které vynutily konkrétní ovládací prvky cryptograph a auditují použití slabého kryptografického nastavení. Porozumět tomu, kde vaše prostředky Azure můžou mít neoptimální Kryptografické konfigurace, můžou podniknout nápravné akce, které zajistí konfiguraci prostředků v souladu s vašimi zásadami zabezpečení informací. Konkrétně zásady přiřazené tímto plánem vyžadují transparentní šifrování dat v databázích SQL. Auditovat chybějící šifrování u účtů úložiště a proměnných účtu Automation. K dispozici jsou také zásady, které řeší nezabezpečená připojení k účtům úložiště, aplikacím funkcí, WebApp, API Apps a Redis Cache a auditují nešifrované Service Fabric komunikace.
 
-- Funkce aplikace by měla být přístupná jen přes HTTPS
-- Webová aplikace by měla být přístupná jen přes HTTPS
+- Function App by měl být přístupný jenom přes HTTPS
+- Webová aplikace by měla být přístupná jen přes protokol HTTPS
 - Aplikace API by měla být přístupná jen přes protokol HTTPS
 - Je třeba povolit transparentní šifrování dat databází SQL.
 - Na virtuálních počítačích by se mělo použít šifrování disku

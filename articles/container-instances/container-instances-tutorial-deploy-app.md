@@ -15,7 +15,7 @@ ms.locfileid: "74533350"
 
 Toto je poslední kurz třídílné série. V předchozích částech série se [vytvářela image kontejneru](container-instances-tutorial-prepare-app.md) a [odesílala se do služby Azure Container Registry](container-instances-tutorial-prepare-acr.md). Tento článek sérii uzavírá nasazením kontejneru do služby Azure Container Instances.
 
-V tomto kurzu jste:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nasadit kontejner ze služby Azure Container Registry do služby Azure Container Instances
@@ -70,7 +70,7 @@ Po úspěšném nasazení Zobrazte plně kvalifikovaný název domény kontejner
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Příklad:
+Například:
 ```console
 $ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 "aci-demo.eastus.azurecontainer.io"

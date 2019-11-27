@@ -33,7 +33,7 @@ Tato ukázka vytvoří aplikaci funkcí Azure a přidá do nastavení aplikace p
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků s umístěním. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Vytvoření účtu úložiště |

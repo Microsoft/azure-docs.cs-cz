@@ -349,7 +349,7 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že webové aplikace budou přístupné jenom přes zabezpečená připojení.
 
-- Webová aplikace by měla být přístupná jen přes HTTPS
+- Webová aplikace by měla být přístupná jen přes protokol HTTPS
 
 ## <a name="next-steps"></a>Další kroky
 

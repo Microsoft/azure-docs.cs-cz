@@ -28,7 +28,7 @@ Získáte informace o těchto tématech:
 > [!IMPORTANT]
 > PowerShell pro Azure Functions je momentálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Požadavky na instalaci a použití Visual Studio Code s Azure Functions v operačním systému najdete [v tématu Vytvoření první funkce PowerShellu v Azure](../azure-functions/functions-create-first-function-powershell.md#prerequisites) .
 

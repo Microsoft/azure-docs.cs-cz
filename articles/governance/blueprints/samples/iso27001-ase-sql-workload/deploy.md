@@ -111,12 +111,12 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
 |Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|Log Analytics skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-log-rg`, aby se skupina prostředků jedinečná.|
+|Log Analytics skupina prostředků|Skupina prostředků|Name (Název)|**Uzamkl** – zřetězí **název organizace** s `-workload-log-rg`, aby se skupina prostředků jedinečná.|
 |Log Analytics skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
-|Šablona Log Analytics|Šablona Resource Manageru|Úroveň služeb|Nastaví úroveň pracovního prostoru Log Analytics. Výchozí hodnota je _PerNode_.|
+|Šablona Log Analytics|Šablona Resource Manageru|Úroveň služby|Nastaví úroveň pracovního prostoru Log Analytics. Výchozí hodnota je _PerNode_.|
 |Šablona Log Analytics|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona Log Analytics|Šablona Resource Manageru|Umístění|Oblast, která se používá k vytvoření pracovního prostoru Log Analytics. Výchozí hodnota je _západní USA 2_.|
-|Skupina síťových prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-net-rg`, aby se skupina prostředků jedinečná.|
+|Skupina síťových prostředků|Skupina prostředků|Name (Název)|**Uzamkl** – zřetězí **název organizace** s `-workload-net-rg`, aby se skupina prostředků jedinečná.|
 |Skupina síťových prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona skupiny zabezpečení sítě|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Privátní IP adresa brány Azure firewall|Nakonfiguruje privátní IP adresu [brány firewall Azure](../../../../firewall/overview.md). By měl být součástí zápisu CIDR definovaného v _ISO 27001:_ parametr artefaktu sdílených služeb **Azure firewall předpony adresy podsítě**. Výchozí hodnota je _10.0.4.4_.|
@@ -124,13 +124,13 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Předpona Virtual Network adresy|Zápis CIDR pro virtuální síť. Výchozí hodnota je _10.1.0.0/16_.|
 |Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Výchozí předpona adresy podsítě|Zápis CIDR pro výchozí podsíť virtuální sítě. Výchozí hodnota je _10.1.0.0/16_.|
 |Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Přidá IP adresu|IP adresa prvního přidání virtuálního počítače Tato hodnota se používá jako vlastní virtuální síť DNS.|
-|Key Vault skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-kv-rg`, aby se skupina prostředků jedinečná.|
+|Key Vault skupina prostředků|Skupina prostředků|Name (Název)|**Uzamkl** – zřetězí **název organizace** s `-workload-kv-rg`, aby se skupina prostředků jedinečná.|
 |Key Vault skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona Key Vault|Šablona Resource Manageru|ID objektu AAD|Identifikátor objektu AAD účtu, který vyžaduje přístup k instanci Key Vault. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ vyberte ikonu "kliknutím ke kopírování" vedle _ID objektu_.|
 |Šablona Key Vault|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona Key Vault|Šablona Resource Manageru|SKU Key Vault|Určuje SKLADOVOU položku Key Vault, která je vytvořena. Výchozí hodnota je _Premium_.|
 |Šablona Key Vault|Šablona Resource Manageru|Uživatelské jméno správce SQL Server Azure|Uživatelské jméno použité pro přístup k Azure SQL Server. Musí odpovídat stejné hodnotě vlastnosti v **šabloně Azure SQL Database**. Výchozí hodnota je _SQL-Admin-User_.|
-|Azure SQL Database skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-azsql-rg`, aby se skupina prostředků jedinečná.|
+|Azure SQL Database skupina prostředků|Skupina prostředků|Name (Název)|**Uzamkl** – zřetězí **název organizace** s `-workload-azsql-rg`, aby se skupina prostředků jedinečná.|
 |Azure SQL Database skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona Azure SQL Database|Šablona Resource Manageru|Uživatelské jméno správce SQL Server Azure|Uživatelské jméno pro Azure SQL Server. Musí odpovídat stejné hodnotě vlastnosti v **šabloně Key Vault**. Výchozí hodnota je _SQL-Admin-User_.|
 |Šablona Azure SQL Database|Šablona Resource Manageru|Heslo správce Azure SQL Server (ID prostředku Key Vault)|ID prostředku Key Vault. Použijte "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" a nahraďte `{subscriptionId}` IDENTIFIKÁTORem vašeho předplatného a `{orgName}` s parametrem **název organizace** podrobný plán.|
@@ -138,7 +138,7 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Šablona Azure SQL Database|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona Azure SQL Database|Šablona Resource Manageru|ID objektu Správce AAD|ID objektu AAD uživatele, který se přiřadí jako správce služby Active Directory. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ vyberte ikonu "kliknutím ke kopírování" vedle _ID objektu_.|
 |Šablona Azure SQL Database|Šablona Resource Manageru|Přihlášení správce AAD|V současné době se účty Microsoft (například live.com nebo outlook.com) nedají nastavit jako správci. Pouze uživatelé a skupiny zabezpečení v rámci vaší organizace lze nastavit jako správce. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ zkopírujte _uživatelské jméno_.|
-|App Service Environment skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-ase-rg`, aby se skupina prostředků jedinečná.|
+|App Service Environment skupina prostředků|Skupina prostředků|Name (Název)|**Uzamkl** – zřetězí **název organizace** s `-workload-ase-rg`, aby se skupina prostředků jedinečná.|
 |App Service Environment skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona App Service Environment|Šablona Resource Manageru|Název domény|Název adresáře služby Active Directory vytvořeného ukázkou. Výchozí hodnota je _contoso.com_.|
 |Šablona App Service Environment|Šablona Resource Manageru|Umístění pomocného mechanismu|App Service Environment umístění. Výchozí hodnota je _západní USA 2_.|

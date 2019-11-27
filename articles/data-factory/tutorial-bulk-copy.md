@@ -36,14 +36,14 @@ Tento kurz používá prostředí Azure PowerShell. Další informace o vytvoře
 ## <a name="end-to-end-workflow"></a>Ucelený pracovní postup
 V tomto scénáři máme několik tabulek v Azure SQL Database, které chceme zkopírovat do služby SQL Data Warehouse. Tady je logická posloupnost kroků tohoto pracovního postupu, které se provádějí v kanálech:
 
-![Pracovní postup](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
+![Pracovní postupy](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
 
 * První kanál vyhledá seznam tabulek, které je potřeba zkopírovat do úložišť dat jímky.  Další možností je udržovat tabulku metadat se seznamem všech tabulek, které je potřeba zkopírovat do úložišť dat jímky. Kanál potom aktivuje jiný kanál, který postupně prochází všechny tabulky v databázi a provádí operaci kopírování dat.
 * Tento druhý kanál provádí vlastní kopírování. Jako parametr používá seznam tabulek. Každá tabulka v tomto seznamu se zkopíruje z Azure SQL Database do příslušné tabulky ve službě SQL Data Warehouse pomocí [fázovaného kopírování prostřednictvím Blob Storage a PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) pro zajištění nejlepšího výkonu. V tomto příkladu první kanál předá seznam tabulek jako hodnotu parametru. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -144,7 +144,7 @@ V tomto kurzu vytvoříte tři propojené služby pro zdrojový, objekt blob, ob
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureSqlDatabaseLinkedService
@@ -181,7 +181,7 @@ V tomto kurzu vytvoříte tři propojené služby pro zdrojový, objekt blob, ob
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureSqlDWLinkedService
@@ -197,7 +197,7 @@ V tomto kurzu použijete Azure Blob Storage jako dočasné pracovní oblast, aby
 1. Ve složce **C:\ADFv2TutorialBulkCopy** vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** s následujícím obsahem:
 
     > [!IMPORTANT]
-    > Než soubor uložíte, položky &lt;accountName&gt; a &lt;accountKey&gt; nahraďte názvem svého účtu úložiště Azure a jeho klíčem.
+    > Než soubor uložíte, položky &lt;accountName&gt; a &lt;accountKey&gt; nahraďte názvem svého účtu Azure Storage a jeho klíčem.
 
     ```json
     {
@@ -220,7 +220,7 @@ V tomto kurzu použijete Azure Blob Storage jako dočasné pracovní oblast, aby
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureStorageLinkedService
@@ -259,7 +259,7 @@ V tomto kurzu vytvoříte zdrojovou datovou sadu a datovou sadu jímky, které u
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     DatasetName       : AzureSqlDatabaseDataset
@@ -303,7 +303,7 @@ V tomto kurzu vytvoříte zdrojovou datovou sadu a datovou sadu jímky, které u
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     DatasetName       : AzureSqlDWDataset
@@ -395,7 +395,7 @@ Tento kanál jako parametr používá seznam tabulek. Data ze všech tabulek v t
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     PipelineName      : IterateAndCopySQLTables
@@ -471,7 +471,7 @@ Tento kanál provádí dva kroky:
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     PipelineName      : GetTableListAndTriggerCopyData
@@ -513,7 +513,7 @@ Tento kanál provádí dva kroky:
     $result
     ```
 
-    Zde je výstup tohoto ukázkového spuštění:
+    Tady je výstup tohoto ukázkového spuštění:
 
     ```json
     Pipeline run details:
@@ -566,7 +566,7 @@ Tento kanál provádí dva kroky:
     ($result | Where-Object {$_.ActivityName -eq "TriggerCopy"}).Output.ToString()
     ```
 
-    Zde je výstup tohoto ukázkového spuštění:
+    Tady je výstup tohoto ukázkového spuštění:
 
     ```json
     {

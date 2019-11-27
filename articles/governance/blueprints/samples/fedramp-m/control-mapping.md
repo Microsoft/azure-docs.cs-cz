@@ -63,14 +63,14 @@ Jenom jeden vlastník předplatného Azure nepovoluje redundanci správy. I kdy�
 
 ## <a name="ac-17-1-remote-access--automated-monitoring--control"></a>AC-17 (1) vzdálený přístup | Automatizované monitorování a řízení
 
-Tento podrobný plán vám pomůže s monitorováním a řízením vzdáleného přístupu přiřazením [Azure Policy](../../../policy/overview.md) definic pro monitorování, že vzdálené ladění pro Azure App Service aplikace je vypnuté a definice zásad, které auditují virtuální počítače Linux, které umožňují vzdálené připojení z účtů bez hesel. Tento podrobný plán také přiřadí definici Azure Policy, která vám pomůže monitorovat neomezený přístup k účtům úložiště. Monitorování těchto indikátorů vám umožní zajistit, aby metody vzdáleného přístupu dodržovaly vaše zásady zabezpečení.
+Tento podrobný plán vám pomůže s monitorováním a řízením vzdáleného přístupu tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) pro monitorování, že vzdálené ladění pro Azure App Service aplikace je vypnuté a definice zásad, které auditují virtuální počítače se systémem Linux, které umožňují vzdálená připojení z účtů bez hesel. Tento podrobný plán také přiřadí definici Azure Policy, která vám pomůže monitorovat neomezený přístup k účtům úložiště. Monitorování těchto indikátorů vám umožní zajistit, aby metody vzdáleného přístupu dodržovaly vaše zásady zabezpečení.
 
 - \[Preview\]: Auditovat virtuální počítače Linux, které umožňují vzdálená připojení z účtů bez hesel
 - \[Preview\]: nasazení požadavků pro auditování virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
 - Auditování neomezeného síťového přístupu k účtům úložiště
 - Pro aplikaci API by mělo být vypnuto vzdálené ladění.
 - Vzdálené ladění by mělo být pro Function App vypnuté.
-- Vzdálené ladění by měl být vypnuté pro webovou aplikaci
+- Vzdálené ladění by mělo být pro webovou aplikaci vypnuté.
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>Reakce AU-5 na selhání zpracování auditu
 
@@ -212,10 +212,10 @@ Tento podrobný plán vám pomůže chránit důvěrnou a integritu odesílanýc
 - Aplikace API by měla být přístupná jen přes protokol HTTPS
 - Auditovat webové servery systému Windows, které nepoužívají protokoly zabezpečených komunikací
 - Nasaďte požadavky na auditovat webové servery Windows, které nepoužívají protokoly zabezpečené komunikace.
-- Funkce aplikace by měla být přístupná jen přes HTTPS
+- Function App by měl být přístupný jenom přes HTTPS
 - Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.
 - Zabezpečený přenos do účtů úložiště by měl být povolený.
-- Webová aplikace by měla být přístupná jen přes HTTPS
+- Webová aplikace by měla být přístupná jen přes protokol HTTPS
 
 ## <a name="sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>SC-28 (1) Ochrana informací v klidovém znění | Kryptografická ochrana
 
@@ -231,7 +231,7 @@ Tento podrobný plán vám pomůže vyhovět zásadám používání ovládacíc
 
 ## <a name="si-2-flaw-remediation"></a>Náprava – 2 chyba
 
-Tento podrobný plán vám pomůže spravovat chyby v systému tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které monitorují chybějící aktualizace systému, ohrožení zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure Security. Centre. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase. V tomto podrobném plánu se taky přiřadí definice zásady, která zajišťuje opravy operačního systému pro sady škálování virtuálních počítačů.
+Tento podrobný plán vám pomůže spravovat chyby v systému tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které monitorují chybějící aktualizace systému, chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase. V tomto podrobném plánu se taky přiřadí definice zásady, která zajišťuje opravy operačního systému pro sady škálování virtuálních počítačů.
 
 - Vyžadovat automatické opravy imagí operačního systému na Virtual Machine Scale Sets
 - Musí být nainstalované aktualizace systému ve virtuálních počítačích Virtual Machine Scale Sets.
@@ -243,7 +243,7 @@ Tento podrobný plán vám pomůže spravovat chyby v systému tím, že přiřa
 
 ## <a name="si-3-malicious-code-protection"></a>Ochrana proti škodlivým kódem SI od-3
 
-Tento podrobný plán vám pomůže spravovat ochranu koncových bodů včetně ochrany škodlivých kódů tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které monitorují chybějící Endpoint Protection na virtuálních počítačích v Azure Security Center a vynutila Microsoft. antimalwarové řešení na virtuálních počítačích s Windows
+Tento podrobný plán vám pomůže spravovat ochranu koncových bodů včetně ochrany škodlivých kódů tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které monitorují chybějící Endpoint Protection na virtuálních počítačích v Azure Security Center a vynutila řešení Microsoft Antimalware na virtuálních počítačích s Windows.
 
 - Nasadit výchozí rozšíření Microsoft IaaSAntimalware pro Windows Server
 - Řešení ochrany koncových bodů by se mělo nainstalovat na Virtual Machine Scale Sets.

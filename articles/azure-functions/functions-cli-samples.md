@@ -31,7 +31,7 @@ Následující tabulka obsahuje odkazy na skripty Bash pro službu Azure Functio
 | [Vytvoření aplikace funkcí a připojení k účtu úložiště](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Vytvoří aplikaci funkcí a připojí ji k účtu úložiště. |
 | [Vytvoření aplikace funkcí a připojení ke službě Azure Cosmos DB](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Vytvoří aplikaci funkcí a připojí ji ke službě Azure Cosmos DB. |
 
-| Průběžné nasazování | Popis|
+| Nepřetržité nasazování | Popis|
 |---|---|
 | [Nasazení z GitHubu](scripts/functions-cli-create-function-app-github-continuous.md) | Vytvoří aplikaci funkcí, která se nasadí z úložiště GitHub.  |
 | [Nasazení z Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Vytvořte aplikaci funkcí, která nasazuje z úložiště Azure DevOps.  |

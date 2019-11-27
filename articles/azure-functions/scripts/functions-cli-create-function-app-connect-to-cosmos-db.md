@@ -33,10 +33,10 @@ Tato ukázka vytvoří aplikaci funkcí Azure a přidá do nastavení aplikace k
 
 Tento skript používá následující příkazy: Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků s umístěním. |
-| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Vytvoření účtu úložiště |
+| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | vytvořit účet úložiště |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu Consumption](../functions-scale.md#consumption-plan) bez serveru. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Vytvoří účet databáze Azure Cosmos DB. |
 | [AZ cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| Získá připojení k databázovému účtu. |

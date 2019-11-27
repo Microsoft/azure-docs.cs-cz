@@ -164,7 +164,7 @@ Chcete-li ověřit, zda je obrázek, který jste právě vložili, skutečně ve
 az acr repository list --name <acrName> --output table
 ```
 
-Příklad:
+Například:
 
 ```console
 $ az acr repository list --name mycontainerregistry082 --output table

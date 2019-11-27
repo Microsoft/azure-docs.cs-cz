@@ -43,11 +43,11 @@ Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace 
 
 **Úložiště souborů**
 
-| Konektory/metadata | itemName<br>(soubor/složka) | itemType<br>(soubor/složka) | size<br>souborů | vytvářejí<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>složky |contentMD5<br>souborů | structure<br/>souborů | Sloupců<br>souborů | neexistuje<br>(soubor/složka) |
+| Konektory/metadata | ItemName<br>(soubor/složka) | ItemType<br>(soubor/složka) | hodnota<br>souborů | vytvářejí<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>složky |contentMD5<br>souborů | strukturované<br/>souborů | Sloupců<br>souborů | neexistuje<br>(soubor/složka) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Úložiště Google Cloud](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Úložiště Google Cloud](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -62,7 +62,7 @@ Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace 
 
 **Relační databáze**
 
-| Konektory/metadata | structure | Sloupců | neexistuje |
+| Konektory/metadata | strukturované | Sloupců | neexistuje |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Spravovaná instance Azure SQL Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -75,14 +75,14 @@ Můžete zadat následující typy metadat v seznamu pole získat aktivitu metad
 
 | Typ metadat | Popis |
 |:--- |:--- |
-| itemName | Název souboru nebo složky |
-| itemType | Typ souboru nebo složky Vrácená hodnota je `File` nebo `Folder`. |
-| size | Velikost souboru (v bajtech) Platí pouze pro soubory. |
+| ItemName | Název souboru nebo složky |
+| ItemType | Typ souboru nebo složky Vrácená hodnota je `File` nebo `Folder`. |
+| hodnota | Velikost souboru (v bajtech) Platí pouze pro soubory. |
 | vytvářejí | Datum a čas vytvoření souboru nebo složky. |
 | lastModified | Datum a čas poslední změny souboru nebo složky |
 | childItems | Seznam podsložek a souborů v dané složce. Platí pouze pro složky. Vrácená hodnota je seznam názvů a typů jednotlivých podřízených položek. |
 | contentMD5 | Algoritmus MD5 souboru Platí pouze pro soubory. |
-| structure | Datová struktura tabulky souborů nebo relačních databází. Vrácená hodnota je seznam názvů sloupců a typů sloupců. |
+| strukturované | Datová struktura tabulky souborů nebo relačních databází. Vrácená hodnota je seznam názvů sloupců a typů sloupců. |
 | Sloupců | Počet sloupců v souboru nebo relační tabulce |
 | neexistuje| Zda existuje soubor, složka nebo tabulka. Všimněte si, že pokud je `exists` zadán v seznamu pole získat metadata, aktivita nebude úspěšná, i když soubor, složka nebo tabulka neexistují. Místo toho se ve výstupu vrátí `exists: false`. |
 

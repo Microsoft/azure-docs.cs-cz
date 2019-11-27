@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte toky uživatelů](tutorial-create-user-flows.md) a povolte ve své aplikaci uživatelské prostředí.
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s pracovními procesy pro vývoj **desktopových** aplikací pro .NET a **ASP.NET a web** .
@@ -60,7 +60,7 @@ Chcete-li aktualizovat aplikaci pro práci s vaším klientem Azure AD B2C a vyv
     private static readonly string ClientId = "{application-ID}";
     ```
 
-3. Aktualizujte proměnné názvu zásad pomocí názvů toků uživatelů, které jste vytvořili v rámci požadavků. Příklad:
+3. Aktualizujte proměnné názvu zásad pomocí názvů toků uživatelů, které jste vytvořili v rámci požadavků. Například:
 
     ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";

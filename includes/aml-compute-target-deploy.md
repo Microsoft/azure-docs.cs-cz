@@ -28,6 +28,6 @@ ms.locfileid: "74549374"
 | [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | Prostřednictvím IoT Edge |  &nbsp; | Ano | Nasaďte a zajišťovat modely ML na zařízeních IoT. |
 
 > [!NOTE]
-> I když výpočetní prostředky, jako jsou místní, Azure Machine Learning výpočetní instance a Azure Machine Learning výpočetní clustery, podporují GPU pro školení a experimentování a __při nasazení jako webové služby__ na platformě Azure se používá GPU Služba Kubernetes
+> I když výpočetní cíle, jako je místní, Azure Machine Learning výpočetní instance a Azure Machine Learning výpočetní clustery, podporují GPU pro školení a experimentování a __při nasazení jako webové služby v případě__ , že je tato služba dostupná jenom ve službě Azure Kubernetes, se používá GPU pro odvození.
 >
 > Použití GPU pro odvození __při vyhodnocování s kanálem strojového učení__ je podporované jenom v Azure Machine Learning Compute.
