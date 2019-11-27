@@ -76,7 +76,7 @@ Ve vašem adresáři se u **pozvánky hosta přijala** hodnota **Ano**. Pokud by
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-- [Přidat uživatele spolupráce Azure Active Directory B2B na webu Azure Portal](add-users-administrator.md)
+- [Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal](add-users-administrator.md)
 - [Jak pracovníci s informacemi přidávají uživatelům spolupráci B2B k Azure Active Directory?](add-users-information-worker.md)
 - [Přidání uživatelů spolupráce v B2B Azure Active Directory pomocí PowerShellu](customize-invitation-api.md#powershell)
 - [Opuštění organizace jako uživatel typu Host](leave-the-organization.md)

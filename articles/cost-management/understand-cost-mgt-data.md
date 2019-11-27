@@ -1,6 +1,6 @@
 ---
-title: Understand Azure Cost Management data | Microsoft Docs
-description: This article helps you better understand data that's included in Azure Cost Management and how frequently it's processed, collected, shown, and closed.
+title: Pochopení Azure Cost Management dat | Microsoft Docs
+description: Tento článek vám pomůže lépe porozumět datům, která jsou součástí Azure Cost Management a jak často je zpracovává, shromažďuje, zobrazuje a uzavřel.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -19,135 +19,135 @@ ms.locfileid: "74229750"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
-This article helps you better understand Azure cost and usage data that's included in Azure Cost Management. It explains how frequently data is processed, collected, shown, and closed. You're billed for Azure usage monthly. Although billing cycles are monthly periods, cycle start and end dates vary by subscription type. How often Cost Management receives usage data varies based on different factors. Such factors include how long it takes to process the data and how frequently Azure services emit usage to the billing system.
+Tento článek vám pomůže lépe porozumět nákladům a datům o využití Azure, které jsou součástí Azure Cost Management. Vysvětluje, jak často se data zpracovávají, shromažďují, zobrazují a uzavřela. Účtují se za využití Azure za měsíc. I když fakturační cykly jsou měsíční období, počáteční a koncové datum cyklu se liší podle typu předplatného. Jak často Cost Management přijímat data o využití se liší v závislosti na různých faktorech. Tyto faktory zahrnují, jak dlouho trvá zpracování dat a jak často služby Azure emitují využití do fakturačního systému.
 
-Cost Management includes all usage and purchases, including reservations and third-party offerings for Enterprise Agreement (EA) accounts. Microsoft Customer Agreement accounts and individual subscriptions with pay-as-you-go rates  only include usage from Azure and Marketplace services. Support and other costs are not included. Costs are estimated until an invoice is generated and do not factor in credits.
+Cost Management zahrnuje veškeré využití a nákupy, včetně rezervací a nabídek třetích stran pro účty smlouva Enterprise (EA). Účty zákaznické smlouvy Microsoftu a jednotlivé předplatné s tarify průběžných plateb zahrnují jenom využití ze služeb Azure a Marketplace. Není zahrnutá podpora a další náklady. Náklady jsou odhadované, dokud se nevygeneruje faktura a nebere v kreditech žádný faktor.
 
-## <a name="supported-microsoft-azure-offers"></a>Supported Microsoft Azure offers
+## <a name="supported-microsoft-azure-offers"></a>Podporované nabídky Microsoft Azure
 
-The following information shows the currently supported [Microsoft Azure offers](https://azure.microsoft.com/support/legal/offer-details/) in Azure Cost Management. An Azure offer is the type of the Azure subscription that you have. Data is available in Cost Management starting on the **Data available from** date. If a subscription changes offers, costs before the offer change date will not be available.
+Následující informace zobrazují aktuálně podporované [Microsoft Azure nabídky](https://azure.microsoft.com/support/legal/offer-details/) v Azure cost management. Nabídka Azure je typ předplatného Azure, které máte. Data jsou k dispozici v Cost Management od **data k dispozici** . Pokud se změní předplatné, nebudou k dispozici náklady ještě před datem změny nabídky.
 
-| **Kategorie**  | **Offer name** | **Quota ID** | **Offer number** | **Data available from** |
+| **Kategorie**  | **Název nabídky** | **ID kvóty** | **Číslo nabídky** | **Data dostupná z** |
 | --- | --- | --- | --- | --- |
-| **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | May 2014<sup>1</sup> |
-| **Enterprise Agreement (EA)** | Enterprise pro vývoj/testování                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | May 2014<sup>1</sup> |
-| **Enterprise Agreement (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | May 2014<sup>1</sup> |
-| **Smlouva se zákazníkem Microsoftu** | [Microsoft Azure Plan](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | Nevztahuje se | March 2019<sup>3</sup> |
-| **Smlouva se zákazníkem Microsoftu** | [Microsoft Azure Plan for Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | Nevztahuje se | March 2019<sup>3</sup> |
-| **Microsoft Customer Agreement supported by partners** | Plán Microsoft Azure | CSP_2015-05-01, CSP_MG_2017-12-01, and CSPDEVTEST_2018-05-01<br><br>The quota ID is reused for Microsoft Customer Agreement and legacy CSP subscriptions. Currently, only Microsoft Customer Agreement subscriptions are supported. | Nevztahuje se | Říjen 2019 |
-| **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | October 2, 2018<sup>2</sup> |
-| **Průběžné platby** | [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | October 2, 2018<sup>2</sup> |
-| **Průběžné platby** | [Průběžné platby dle aktuálního využití pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | October 2, 2018<sup>2</sup> |
-| **Průběžné platby** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)      | MPN_2014-09-01 | MS-AZR-0025P | October 2, 2018<sup>2</sup> |
-| **Průběžné platby** | [Free Trial](https://azure.microsoft.com/offers/ms-azr-0044p)<sup>4</sup>         | FreeTrial_2014-09-01 | MS-AZR-0044P | October 2, 2018<sup>2</sup> |
-| **Průběžné platby** | [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p)<sup>4</sup>      | AzureInOpen_2014-09-01 | MS-AZR-0111P | October 2, 2018<sup>2</sup> |
-| **Průběžné platby** | Azure Pass<sup>4</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P, MS-AZR-0122P - MS-AZR-0125P, MS-AZR-0128P - MS-AZR-0130P | October 2, 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)<sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | October 2, 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | October 2, 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | October 2, 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | October 2, 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | October 2, 2018<sup>2</sup> |
+| **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | Květen 2014<sup>1</sup> |
+| **Smlouva Enterprise (EA)** | Enterprise pro vývoj/testování                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | Květen 2014<sup>1</sup> |
+| **Smlouva Enterprise (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | Květen 2014<sup>1</sup> |
+| **Smlouva se zákazníkem Microsoftu** | [Plán Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | neuvedeno | Březen 2019<sup>3</sup> |
+| **Smlouva se zákazníkem Microsoftu** | [Microsoft Azure plán pro vývoj a testování](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | neuvedeno | Březen 2019<sup>3</sup> |
+| **Smlouva o zákaznících Microsoftu podporovaná partnery** | Plán Microsoft Azure | CSP_2015-05-01, CSP_MG_2017-12-01 a CSPDEVTEST_2018-05-01<br><br>ID kvóty se znovu použije pro zákaznickou smlouvu Microsoftu a starší verze CSP. V současné době se podporují jenom předplatná Zákaznická smlouva od Microsoftu. | neuvedeno | Říjen 2019 |
+| **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | [Průběžné platby dle aktuálního využití pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)      | MPN_2014-09-01 | MS-AZR-0025P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | [Bezplatná zkušební verze](https://azure.microsoft.com/offers/ms-azr-0044p)<sup>4</sup>         | FreeTrial_2014-09-01 | MS-AZR-0044P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | [Systém Azure v rámci licenčního programu Open](https://azure.microsoft.com/offers/ms-azr-0111p)<sup>4</sup>      | AzureInOpen_2014-09-01 | MS-AZR-0111P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | Azure Pass<sup>4</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P, MS-AZR-0122P - MS-AZR-0125P, MS-AZR-0128P - MS-AZR-0130P | 2\. října 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)<sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | 2\. října 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2\. října 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | 2\. října 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2\. října 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2\. října 2018<sup>2</sup> |
 
-_<sup>**1**</sup> For data before May 2014, visit the [Azure Enterprise portal](https://ea.azure.com)._
+_<sup>**1**</sup> pro data před 1. května 2014 navštivte [portál Azure Enterprise](https://ea.azure.com)._
 
-_<sup>**2**</sup> For data before October 2, 2018, visit the [Azure Account Center](https://account.azure.com/subscriptions)._
+_<sup>**2**</sup> pro data do 2. října 2018 navštivte [centrum účtů Azure](https://account.azure.com/subscriptions)._
 
-_<sup>**3**</sup> Microsoft Customer Agreements started in March 2019 and do not have any historical data before this point._
+_<sup>**3**</sup> smlouvy o zákaznících Microsoftu zahájené v březnu 2019 a neobsahují historická data před tímto bodem._
 
-_<sup>**4**</sup> Historical data for credit-based and pay-in-advance subscriptions might not match your invoice. See [Historical data may not match invoice](#historical-data-might-not-match-invoice) below._
+_<sup>**4**</sup> historická data pro předplatná založená na kreditech a platbách předem nemusí odpovídat vaší faktuře. Zobrazit [historická data nemusí odpovídat](#historical-data-might-not-match-invoice) níže uvedené faktuře._
 
-The following offers are not supported yet:
+Následující nabídky ještě nejsou podporované:
 
-| Kategorie  | **Offer name** | **Quota ID** | **Offer number** |
+| Kategorie  | **Název nabídky** | **ID kvóty** | **Číslo nabídky** |
 | --- | --- | --- | --- |
-| **Azure Germany** | [Azure Germany Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-de-0003p) | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
+| **Azure Německo** | [Azure Německo – průběžné platby](https://azure.microsoft.com/offers/ms-azr-de-0003p) | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
 | **Azure Government** | Azure Government s průběžnými platbami | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
-| **Cloud Solution Provider (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
-| **Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
-| **Cloud Solution Provider (CSP)** | Azure Germany v CSP pro Microsoft Cloud Germany   | CSP_2015-05-01 | MS-AZR-DE-0145P |
-| **Průběžné platby**                 | Azure for Students Starter | DreamSpark_2015-02-01 | MS-AZR-0144P |
-| **Průběžné platby** | [Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p)<sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
+| **Poskytovatel Cloud Solution Provider (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
+| **Poskytovatel Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
+| **Poskytovatel Cloud Solution Provider (CSP)** | Azure Germany v CSP pro Microsoft Cloud Germany   | CSP_2015-05-01 | MS-AZR-DE-0145P |
+| **Průběžné platby**                 | Azure for Students Starter | DreamSpark_2015 – 02 – 01 | MS-AZR-0144P |
+| **Průběžné platby** | [Azure pro studenty](https://azure.microsoft.com/offers/ms-azr-0170p)<sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
 | **Průběžné platby**                 | [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
 | **Plány podpory** | Standard Support                    | Default_2014-09-01 | MS-AZR-0041P |
-| **Plány podpory** | Professional Direct support         | Default_2014-09-01 | MS-AZR-0042P |
-| **Plány podpory** | Developer support                   | Default_2014-09-01 | MS-AZR-0043P |
-| **Plány podpory** | Germany support plan                | Default_2014-09-01 | MS-AZR-DE-0043P |
+| **Plány podpory** | Podpora Professional Direct         | Default_2014-09-01 | MS-AZR-0042P |
+| **Plány podpory** | Podpora pro vývojáře                   | Default_2014-09-01 | MS-AZR-0043P |
+| **Plány podpory** | Plán podpory pro Německo                | Default_2014-09-01 | MS-AZR-DE-0043P |
 | **Plány podpory** | Azure Government Standard Support   | Default_2014-09-01 | MS-AZR-USGOV-0041P |
-| **Plány podpory** | Azure Government Pro-Direct Support | Default_2014-09-01 | MS-AZR-USGOV-0042P |
+| **Plány podpory** | Azure Government pro – Direct support | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **Plány podpory** | Azure Government Developer Support  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-## <a name="determine-your-offer-type"></a>Determine your offer type
-If you don't see data for a subscription and you want to determine if your subscription falls under the supported offers, you can validate that your subscription is supported. To validate that an Azure subscription is supported, sign-in to the [Azure portal](https://portal.azure.com). Then select **All Services** in the left menu pane. In the list of services, select **Subscriptions**. In the subscription list menu, click on the subscription that you want to verify. Your subscription is shown on the Overview tab and you can see the **Offer** and **Offer ID**. Příklad ukazuje následující obrázek.
+## <a name="determine-your-offer-type"></a>Určení typu nabídky
+Pokud nevidíte data pro předplatné a chcete zjistit, jestli vaše předplatné spadá do podporovaných nabídek, můžete ověřit, jestli je vaše předplatné podporované. Pokud chcete ověřit, jestli je předplatné Azure podporované, přihlaste se k [Azure Portal](https://portal.azure.com). Pak v levém podokně nabídky vyberte **všechny služby** . V seznamu služeb vyberte **předplatná**. V nabídce seznam předplatných klikněte na odběr, který chcete ověřit. Vaše předplatné se zobrazí na kartě Přehled, kde můžete zobrazit **nabídku** a **ID nabídky**. Příklad ukazuje následující obrázek.
 
-![Example of the Subscription Overview tab showing Offer and Offer ID](./media/understand-cost-mgt-data/offer-and-offer-id.png)
+![Příklad karty Přehled předplatného zobrazující nabídku a ID nabídky](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 
-## <a name="costs-included-in-cost-management"></a>Costs included in Cost Management
+## <a name="costs-included-in-cost-management"></a>Náklady zahrnuté v Cost Management
 
-The following tables show data that's included or isn't in Cost Management. All costs are estimated until an invoice is generated. Costs shown do not include free and prepaid credits.
+V následujících tabulkách jsou uvedena data, která jsou součástí Cost Management. Všechny náklady jsou odhadované až do vygenerování faktury. Uvedené náklady nezahrnují bezplatné a předem placené kredity.
 
-**Cost and usage data**
+**Náklady a data o využití**
 
-| **Included** | **Not included** |
+| **Obsaženy** | **Nezahrnuto** |
 | --- | --- |
-| Azure service usage<sup>5</sup>        | Support charges - For more information, see [Invoice terms explained](../billing/billing-understand-your-invoice.md). |
-| Marketplace offering usage<sup>6</sup> | Taxes - For more information, see [Invoice terms explained](../billing/billing-understand-your-invoice.md). |
-| Marketplace purchases<sup>6</sup>      | Credits - For more information, see [Invoice terms explained](../billing/billing-understand-your-invoice.md). |
-| Reservation purchases<sup>7</sup>      |  |
-| Amortization of reservation purchases<sup>7</sup>      |  |
+| Využití služby Azure<sup>5</sup>        | Poplatky za podporu – Další informace najdete v tématu [vysvětlení podmínek faktury](../billing/billing-understand-your-invoice.md). |
+| Marketplace – využití nabídky<sup>6</sup> | Daně – Další informace najdete v tématu [vysvětlení podmínek faktury](../billing/billing-understand-your-invoice.md). |
+| Nákupy na Marketplace<sup>6</sup>      | Kredity – Další informace najdete v tématu [vysvětlení podmínek faktury](../billing/billing-understand-your-invoice.md). |
+| Nákupy na rezervované<sup>7</sup>      |  |
+| Amortizace nákupních rezervací<sup>7</sup>      |  |
 
-_<sup>**5**</sup> Azure service usage is based on reservation and negotiated prices._
+_<sup>**5**</sup> využití služeb Azure je založené na rezervacích a sjednaných cenách._
 
-_<sup>**6**</sup> Marketplace purchases are not available for Pay-As-You-Go, MSDN, and Visual Studio offers at this time._
+_<sup>**6**</sup> nákupů na tržišti není v tuto chvíli k dispozici pro nabídky s průběžnými platbami, MSDN a Visual Studio._
 
-_<sup>**7**</sup> Reservation purchases are only available for Enterprise Agreement (EA) accounts at this time._
+_<sup>**7**</sup> nákupy rezervací jsou v tuto chvíli dostupné jenom pro účty smlouva Enterprise (EA)._
 
-**Metadata**
+**Mezipaměť**
 
-| **Included** | **Not included** |
+| **Obsaženy** | **Nezahrnuto** |
 | --- | --- |
-| Resource tags<sup>8</sup> | Resource group tags |
+| Značky prostředků<sup>8</sup> | Značky skupiny prostředků |
 
-_<sup>**8**</sup> Resource tags are applied as usage is emitted from each service and aren't available retroactively to historical usage._
+_<sup>**8**</sup> značek prostředků se používá, protože použití je emitováno z každé služby a není dostupné zpětně k historickému využití._
 
-## <a name="rated-usage-data-refresh-schedule"></a>Rated usage data refresh schedule
+## <a name="rated-usage-data-refresh-schedule"></a>Plán aktualizace dat o hodnocení využití
 
-Cost and usage data is available in Cost Management + Billing in the Azure portal and [supporting APIs](index.yml). Keep the following points in mind as you review costs:
+Data o nákladech a využití jsou dostupná ve službě Cost Management + fakturace v Azure Portal a v [podpůrných rozhraních API](index.yml). Při kontrole nákladů mějte na paměti následující body:
 
-- Estimated charges for the current billing period are updated six times per day.
-- Estimated charges for the current billing period can change as you incur more usage.
-- Each update is cumulative and includes all the line items and information from the previous update.
-- Azure finalizes or _closes_ the current billing period up to 72 hours (three calendar days) after the billing period ends.
+- Odhadované poplatky za aktuální fakturační období se aktualizují po dobu šesti dní za den.
+- Odhadované poplatky za aktuální fakturační období se můžou změnit, protože se vám bude účtovat víc využívání.
+- Každá aktualizace je kumulativní a obsahuje všechny položky řádku a informace z předchozí aktualizace.
+- Azure dokončí nebo _uzavře_ aktuální fakturační období až do 72 hodin (tři kalendářní dny) po skončení fakturačního období.
 
-The following examples illustrate how billing periods could end.
+Následující příklady znázorňují způsob, jakým mohou být fakturační období ukončeny.
 
-Enterprise Agreement (EA) subscriptions – If the billing month ends on March 31, estimated charges are updated up to 72 hours later. In this example, by midnight (UTC) April 4.
+Předplatná smlouva Enterprise (EA) – Pokud se fakturační měsíc končí 31. března, odhadované poplatky se aktualizují až 72 hodin později. V tomto příkladu podle půlnoci (UTC) 4. dubna.
 
-Pay-as-you-go subscriptions – If the billing month ends on May 15, then the estimated charges might get updated up to 72 hours later. In this example, by midnight (UTC) May 19.
+Předplatná s průběžnými platbami – Pokud se fakturační měsíc ukončí 15. května, odhadované poplatky se můžou aktualizovat až 72 hodin později. V tomto příkladu může půlnoc (UTC) 19.
 
-### <a name="rerated-data"></a>Rerated data
+### <a name="rerated-data"></a>Přehodnocená data
 
-Whether you use the [Cost Management APIs](index.yml), Power BI, or the Azure portal to retrieve data, expect the current billing period's charges to get rerated, and consequently change, until the invoice is closed.
+Bez ohledu na to, jestli k načtení dat používáte [rozhraní api Cost Management](index.yml)Power BI nebo Azure Portal, můžete očekávat, že se aktuální poplatky za fakturační období mají přepočítat a následně se změnit, dokud se faktura nezavře.
 
-## <a name="usage-data-update-frequency-varies"></a>Usage data update frequency varies
+## <a name="usage-data-update-frequency-varies"></a>Frekvence aktualizace dat využití se liší.
 
-The availability of your incurred usage data in Cost Management depends on a couple of factors, including:
+Dostupnost dat o využití v Cost Management závisí na několika faktorech, včetně:
 
-- How frequently Azure services (such as Storage, Compute, CDN, and SQL) emit usage.
-- The time taken to process the usage data through the rating engine and cost management pipelines.
+- Jak často služby Azure (například úložiště, výpočetní prostředky, CDN a SQL) generují využití.
+- Čas potřebný ke zpracování dat o využití prostřednictvím modulu hodnocení a kanálů pro správu nákladů.
 
-Some services emit usage more frequently than others. So, you might see data in Cost Management for some services sooner than other services that emit data less frequently. Typically, usage for services takes 8-24 hours to appear in Cost Management. Keep in mind that data for an open month gets refreshed as you incur more usage because updates are cumulative.
+Některé služby emitují využití častěji než jiné. Můžete tak zobrazit data v Cost Management pro některé služby dřív než jiné služby, které generují data méně často. K zobrazení v Cost Management obvykle trvá použití služeb 8-24 hodin. Mějte na paměti, že data pro otevřený měsíc se budou aktualizovat, protože budete mít větší využití, protože aktualizace jsou kumulativní.
 
-## <a name="historical-data-might-not-match-invoice"></a>Historical data might not match invoice
+## <a name="historical-data-might-not-match-invoice"></a>Historická data se nemusí shodovat s fakturou.
 
-Historical data for credit-based and pay-in-advance offers might not match your invoice. Some Azure pay-as-you-go, MSDN, and Visual Studio offers can have Azure credits and advanced payments applied to the invoice. However, the historical data shown in Cost Management is based on your estimated consumption charges only. Cost Management historical data doesn't include payments and credits. As a result, the historical data shown for the following offers may not match exactly with your invoice.
+Historická data pro nabídky na základě kreditu a platby se nemusí shodovat s vaší fakturou. Některé nabídky Azure s průběžnými platbami podle aktuálního využití, MSDN a Visual Studio můžou mít kredity Azure a na fakturu se vztahují rozšířené platby. Historická data uvedená v Cost Management však vycházejí jenom z odhadovaných poplatků za využití. Cost Management historická data nezahrnují platby a kredity. V důsledku toho historická data zobrazená pro následující nabídky nemusí přesně odpovídat vaší faktuře.
 
 - Azure for Students (MS-AZR-0170P)
-- Azure in Open (MS-AZR-0111P)
+- Systém Azure v rámci licenčního programu Open (MS-AZR-0111P)
 - Azure Pass (MS-AZR-0120P, MS-AZR-0123P, MS-AZR-0125P, MS-AZR-0128P, MS-AZR-0129P)
-- Free Trial (MS-AZR-0044P)
+- Bezplatná zkušební verze (MS-AZR-0044P)
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P, MS-AZR-0059P, MS-AZR-0060P, MS-AZR-0063P, MS-AZR-0064P)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-- If you haven't already completed the first quickstart for Cost Management, read it at [Start analyzing costs](quick-acm-cost-analysis.md).
+- Pokud jste ještě nedokončili první rychlý Start pro Cost Management, přečtěte si ho v části [zahájení analýzy nákladů](quick-acm-cost-analysis.md).

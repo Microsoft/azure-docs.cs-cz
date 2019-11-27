@@ -43,7 +43,7 @@ Výsledkem je privátní a izolované relaci mezi úlohami, které jsou vázány
 > - Azure Functions
 
 > [!IMPORTANT]
-> Virtuální sítě jsou podporovány v **standardní** a **vyhrazené** úrovně služby Event Hubs. Není podporována v úrovni basic.
+> Virtuální sítě jsou podporovány ve **standardních** a **vyhrazených** úrovních Event Hubs. Není podporována v úrovni basic.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Pokročilé zabezpečení scénáře povolené ve integrace virtuální sítě 
 
@@ -55,9 +55,9 @@ To znamená, že zabezpečení citlivých Cloudová řešení nejen získat př�
 
 ## <a name="bind-event-hubs-to-virtual-networks"></a>Vytvoření vazby služby Event Hubs k virtuálním sítím
 
-*Pravidla virtuální sítě* jsou funkce zabezpečení brány firewall, která určuje, zda váš obor názvů Azure Event Hubs akceptuje připojení z konkrétní virtuální síť podsíť.
+*Pravidla virtuální sítě* jsou funkcí zabezpečení brány firewall, která určuje, jestli váš obor názvů Azure Event Hubs akceptuje připojení z konkrétní podsítě virtuální sítě.
 
-Obor názvů služby Event Hubs vazba k virtuální síti je dvoustupňový proces. Nejprve musíte vytvořit **koncový bod služby Virtual Network** v podsíti Virtual Network a povolit ho pro "Microsoft. EventHub", jak je vysvětleno v tématu [Přehled koncového bodu služby][vnet-sep]. Po přidání koncového bodu služby, můžete vytvořit vazbu oboru názvů Event Hubs přes *pravidlo virtuální sítě*.
+Obor názvů služby Event Hubs vazba k virtuální síti je dvoustupňový proces. Nejprve musíte vytvořit **koncový bod služby Virtual Network** v podsíti Virtual Network a povolit ho pro "Microsoft. EventHub", jak je vysvětleno v tématu [Přehled koncového bodu služby][vnet-sep]. Po přidání koncového bodu služby navážete obor názvů Event Hubs s *pravidlem virtuální sítě*.
 
 Pravidlo virtuální sítě je přidružení oboru názvů Event Hubs k podsíti virtuální sítě. Přestože existuje pravidlo, všechny úlohy, které jsou vázány na podsíť je udělen přístup k oboru názvů Event Hubs. Event Hubs samostatně nikdy vytvoří odchozí připojení, není potřeba získat přístup a je proto nikdy udělen přístup k vaší podsítě tím, že toto pravidlo.
 
@@ -67,9 +67,9 @@ Následující šablony Resource Manageru umožňuje do existujícího oboru ná
 
 Parametry šablony:
 
-* **namespaceName**: obor názvů Event Hubs.
-* **vnetRuleName**: název pravidla virtuální sítě má být vytvořen.
-* **virtualNetworkingSubnetId**: plně kvalifikovanou cestu Resource Manageru pro podsíť virtuální sítě, například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
+* **obor názvů**: Event Hubs obor názvů.
+* **vnetRuleName**: název pro pravidlo Virtual Network, které se má vytvořit.
+* **virtualNetworkingSubnetId**: plně kvalifikovaná cesta správce prostředků pro podsíť virtuální sítě; například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
 
 > [!NOTE]
 > I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.

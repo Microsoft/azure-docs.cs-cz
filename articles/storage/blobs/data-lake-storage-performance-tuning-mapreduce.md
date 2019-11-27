@@ -1,6 +1,6 @@
 ---
-title: 'Tune performance: MapReduce, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
-description: Azure Data Lake Storage Gen2 MapReduce Performance Tuning Guidelines
+title: 'Ladění výkonu: MapReduce, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
+description: Pokyny k ladění výkonu Azure Data Lake Storage Gen2 MapReduce
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -15,97 +15,97 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327926"
 ---
-# <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Tune performance: MapReduce, HDInsight & Azure Data Lake Storage Gen2
+# <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: MapReduce, HDInsight & Azure Data Lake Storage Gen2
 
-Understand the factors that you should consider when you tune the performance of Map Reduce jobs. This article covers a range of performance tuning guidelines.
+Seznamte se s faktory, které byste měli zvážit při ladění výkonu mapy omezení úloh. Tento článek popisuje řadu pokynů pro ladění výkonu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **An Azure Data Lake Storage Gen2 account**. For instructions on how to create one, see [Quickstart: Create an Azure Data Lake Storage Gen2 storage account](data-lake-storage-quickstart-create-account.md).
-* **Azure HDInsight cluster** with access to a Data Lake Storage Gen2 account. See [Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
-* **Using MapReduce on HDInsight**.  For more information, see [Use MapReduce in Hadoop on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
-* **Performance tuning guidelines on Data Lake Storage Gen2**.  For general performance concepts, see [Data Lake Storage Gen2 Performance Tuning Guidance](data-lake-storage-performance-tuning-guidance.md)
+* **Účet Azure Data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
+* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen2. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) .
+* **Použití MapReduce ve službě HDInsight**.  Další informace najdete v tématu [použití MapReduce v Hadoop ve službě HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce) .
+* **Pokyny k ladění výkonu na data Lake Storage Gen2**.  Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen2 pokyny k ladění výkonu](data-lake-storage-performance-tuning-guidance.md) .
 
 ## <a name="parameters"></a>Parametry
 
-When running MapReduce jobs, here are the parameters that you can configure to increase performance on Data Lake Storage Gen2:
+Když spouštíte úlohy MapReduce, tady jsou parametry, které můžete nakonfigurovat, aby se zvýšil výkon Data Lake Storage Gen2:
 
-* **Mapreduce.map.memory.mb** – The amount of memory to allocate to each mapper
-* **Mapreduce.job.maps** – The number of map tasks per job
-* **Mapreduce.reduce.memory.mb** – The amount of memory to allocate to each reducer
-* **Mapreduce.job.reduces** – The number of reduce tasks per job
+* **MapReduce. map. Memory. MB** – množství paměti, které se má přidělit každému mapovači
+* **MapReduce. job. Maps** – počet úloh mapy na úlohu
+* **MapReduce. zmenšení. Memory. MB** – množství paměti, které se má přidělit každému snížení
+* **MapReduce. job. redukujes** – počet úloh s omezením na úlohu
 
-**Mapreduce.map.memory / Mapreduce.reduce.memory** This number should be adjusted based on how much memory is needed for the map and/or reduce task.  The default values of mapreduce.map.memory and mapreduce.reduce.memory can be viewed in Ambari via the Yarn configuration.  In Ambari, navigate to YARN and view the Configs tab.  The YARN memory will be displayed.  
+**MapReduce. map. Memory/MapReduce. zmenšení. Memory** Toto číslo by mělo být upraveno na základě toho, kolik paměti je potřeba pro mapu nebo zmenšení úlohy.  Výchozí hodnoty MapReduce. map. Memory a MapReduce. zmenšení. paměť lze zobrazit v Ambari prostřednictvím konfigurace příze.  V Ambari přejděte do PŘÍZe a zobrazte kartu konfigurace.  Zobrazí se paměť PŘÍZe.  
 
-**Mapreduce.job.maps / Mapreduce.job.reduces** This will determine the maximum number of mappers or reducers to be created.  The number of splits will determine how many mappers will be created for the MapReduce job.  Therefore, you may get less mappers than you requested if there are less splits than the number of mappers requested.       
+**MapReduce. job. map/MapReduce. job. redukuje** Tím se určí maximální počet mapovačů nebo reduktorůů, které se mají vytvořit.  Počet rozdělení určuje, kolik mapovačů se vytvoří pro úlohu MapReduce.  Proto můžete získat méně mapovačů, než kolik požadujete, pokud je méně rozděleno, než je počet požadovaných mapovačů.       
 
-## <a name="guidance"></a>Pokyny
+## <a name="guidance"></a>Doprovodné materiály
 
 > [!NOTE]
-> The guidance in this document assumes that your application is the only application running on your cluster.
+> Pokyny v tomto dokumentu předpokládají, že vaše aplikace je jediná aplikace spuštěná v clusteru.
 
-**Step 1: Determine number of jobs running**
+**Krok 1: určení počtu spuštěných úloh**
 
-By default, MapReduce will use the entire cluster for your job.  You can use less of the cluster by using less mappers than there are available containers.        
+Ve výchozím nastavení bude MapReduce používat celý cluster pro vaši úlohu.  Méně než tento cluster můžete použít k menšímu počtu mapovačů, než je dostupných kontejnerů.        
 
-**Step 2: Set mapreduce.map.memory/mapreduce.reduce.memory**
+**Krok 2: nastavte MapReduce. map. Memory/MapReduce. zmenšení. Memory**
 
-The size of the memory for map and reduce tasks will be dependent on your specific job.  You can reduce the memory size if you want to increase concurrency.  The number of concurrently running tasks depends on the number of containers.  By decreasing the amount of memory per mapper or reducer, more containers can be created, which enable more mappers or reducers to run concurrently.  Decreasing the amount of memory too much may cause some processes to run out of memory.  If you get a heap error when running your job, you should increase the memory per mapper or reducer.  You should consider that adding more containers will add extra overhead for each additional container, which can potentially degrade performance.  Another alternative is to get more memory by using a cluster that has higher amounts of memory or increasing the number of nodes in your cluster.  More memory will enable more containers to be used, which means more concurrency.  
+Velikost paměti pro mapu a omezení úloh bude závislá na konkrétní úloze.  Velikost paměti můžete snížit, pokud chcete zvýšit souběžnost.  Počet souběžně spuštěných úloh závisí na počtu kontejnerů.  Tím, že se zmenší množství paměti na jedno nebo více kontejnerů, je možné vytvořit více kontejnerů, které umožní souběžně běžet více mapovačů nebo reduktorů.  Zmenšení množství paměti může způsobit nedostatek paměti z některých procesů.  Pokud při spuštění úlohy dojde k chybě haldy, měli byste zvětšit paměť na Mapovač nebo na zmenšení.  Měli byste zvážit, že přidání dalších kontejnerů přidá další režii pro každý další kontejner, což může způsobit snížení výkonu.  Další možností je získat více paměti pomocí clusteru s větším množstvím paměti nebo zvýšením počtu uzlů v clusteru.  Více paměti umožní použít více kontejnerů, což znamená více souběžnosti.  
 
-**Step 3: Determine Total YARN memory**
+**Krok 3: určení celkové paměti PŘÍZe**
 
-To tune mapreduce.job.maps/mapreduce.job.reduces, you should consider the amount of total YARN memory available for use.  This information is available in Ambari.  Navigate to YARN and view the Configs tab.  The YARN memory is displayed in this window.  You should multiply the YARN memory with the number of nodes in your cluster to get the total YARN memory.
+Pro účely ladění MapReduce. job. map/MapReduce. job. redukuje byste měli zvážit množství celkové dostupné paměti PŘÍZe k použití.  Tyto informace jsou k dispozici v Ambari.  Přejděte na PŘÍZe a zobrazte kartu konfigurace.  V tomto okně se zobrazí paměť PŘÍZe.  Paměť PŘÍZe byste měli vynásobit počtem uzlů v clusteru, aby se získala celková paměť PŘÍZe.
 
     Total YARN memory = nodes * YARN memory per node
 
-If you are using an empty cluster, then memory can be the total YARN memory for your cluster.  If other applications are using memory, then you can choose to only use a portion of your cluster’s memory by reducing the number of mappers or reducers to the number of containers you want to use.  
+Pokud používáte prázdný cluster, může být paměť celkovou paměti PŘÍZí pro váš cluster.  Pokud jiné aplikace používají paměť, můžete zvolit, že se má použít jenom část paměti clusteru, a to snížením počtu mapovačů nebo reduktorů počtu kontejnerů, které chcete použít.  
 
-**Step 4: Calculate number of YARN containers**
+**Krok 4: výpočet počtu kontejnerů PŘÍZe**
 
-YARN containers dictate the amount of concurrency available for the job.  Take total YARN memory and divide that by mapreduce.map.memory.  
+Kontejnery PŘÍZe určují množství souběžnosti, které je k dispozici pro úlohu.  Využijte celkovou paměť PŘÍZe a rozdělte ji pomocí MapReduce. map. Memory.  
 
     # of YARN containers = total YARN memory / mapreduce.map.memory
 
-**Step 5: Set mapreduce.job.maps/mapreduce.job.reduces**
+**Krok 5: nastavte MapReduce. job. Maps/MapReduce. job. redukujes**
 
-Set mapreduce.job.maps/mapreduce.job.reduces to at least the number of available containers.  You can experiment further by increasing the number of mappers and reducers to see if you get better performance.  Keep in mind that more mappers will have additional overhead so having too many mappers may degrade performance.  
+Nastavte MapReduce. job. Maps/MapReduce. job. zmenšuje alespoň na počet dostupných kontejnerů.  Můžete ještě experimentovat zvýšením počtu mapovačů a reduktorů, abyste viděli, jestli získáte lepší výkon.  Mějte na paměti, že další mapovače budou mít další režii, takže příliš mnoho mapovačů může snížit výkon.  
 
-CPU scheduling and CPU isolation are turned off by default so the number of YARN containers is constrained by memory.
+Plánování procesoru a izolace procesoru jsou ve výchozím nastavení vypnuté, takže počet kontejnerů PŘÍZ je omezený pamětí.
 
-## <a name="example-calculation"></a>Example calculation
+## <a name="example-calculation"></a>Příklad výpočtu
 
-Let’s assume that we have a cluster composed of 8 D14 nodes, and we want to run an I/O intensive job.  Here are the calculations you should do:
+Předpokládejme, že máme cluster tvořený 8 D14 uzly a chceme spustit úlohu náročné na vstupně-výstupní operace.  Tady jsou výpočty, které byste měli provést:
 
-**Step 1: Determine number of jobs running**
+**Krok 1: určení počtu spuštěných úloh**
 
-In this example, let's assume that our job is the only job that is running.  
+V tomto příkladu předpokládáme, že naše úloha je jedinou úlohou, která je spuštěná.  
 
-**Step 2: Set mapreduce.map.memory/mapreduce.reduce.memory**
+**Krok 2: nastavte MapReduce. map. Memory/MapReduce. zmenšení. Memory**
 
-In this example, we are running an I/O intensive job and decide that 3GB of memory for map tasks will be sufficient.
+V tomto příkladu je spuštěná úloha náročné na vstupně-výstupní operace a rozhodnete, že povolenou paměti pro úlohy mapy budou dostačující.
 
     mapreduce.map.memory = 3GB
 
-**Step 3: Determine Total YARN memory**
+**Krok 3: určení celkové paměti PŘÍZe**
 
     Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
-**Step 4: Calculate # of YARN containers**
+**Krok 4: výpočet počtu kontejnerů PŘÍZe**
 
     # of YARN containers = 768GB of available memory / 3 GB of memory =   256
 
-**Step 5: Set mapreduce.job.maps/mapreduce.job.reduces**
+**Krok 5: nastavte MapReduce. job. Maps/MapReduce. job. redukujes**
 
     mapreduce.map.jobs = 256
 
-## <a name="examples-to-run"></a>Examples to run
+## <a name="examples-to-run"></a>Příklady spuštění
 
-To demonstrate how MapReduce runs on Data Lake Storage Gen2, below is some sample code that was run on a cluster with the following settings:
+Ukázka, jak MapReduce běží na Data Lake Storage Gen2 níže je ukázkový kód, který byl spuštěn v clusteru s následujícím nastavením:
 
-* 16 node D14v2
-* Hadoop cluster running HDI 3.6
+* D14v2 se 16 uzly
+* Cluster Hadoop se systémem HDI 3,6
 
-For a starting point, here are some example commands to run MapReduce Teragen, Terasort, and Teravalidate.  You can adjust these commands based on your resources.
+Tady je několik ukázkových příkazů pro výchozí bod, které spouští MapReduce Teragen, Terasort a Teravalidate.  Tyto příkazy můžete upravit v závislosti na svých prostředcích.
 
 **Teragen**
 

@@ -47,7 +47,7 @@ Podrobnosti o implementaci najdete v tématu [přidělení místně spravovanýc
  
 ## <a name="next-steps"></a>Další kroky
 
-- [Uživatelům udělit B2B v Azure AD přístup k místním aplikacím](hybrid-cloud-to-on-premises.md)
+- [Udělení přístupu k místním aplikacím uživatelům B2B v Azure AD](hybrid-cloud-to-on-premises.md)
 - [Přidělte místně spravované partnerské účty přístup k prostředkům cloudu pomocí spolupráce Azure AD B2B.](hybrid-on-premises-to-cloud.md)
 
 

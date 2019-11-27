@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlásit se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 

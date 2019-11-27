@@ -50,7 +50,7 @@ Vzor je primárně určen pro lepší předpověď záměrů a rolí. _Vzor. Ka�
 Neočekává se, že se lepší předpověď entity zobrazí, pokud sbalíte více projevy do jediného vzoru. Aby bylo možné jednoduché entity aktivovat, je nutné přidat projevy nebo použít entity seznamu jinak se váš vzor neaktivuje.
 
 ## <a name="patterns-use-entity-roles"></a>Vzory použít entitu role
-Pokud souvisí kontextově dva nebo více entit ve vzorku, použijte vzory entity [role](luis-concept-roles.md) extrahovat kontextové informace o entitách.  
+Pokud jsou dvě nebo více entit ve vzorci kontextově závislé, vzory používají [role](luis-concept-roles.md) entit k extrakci kontextových informací o entitách.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Predikce skóre a bez nich vzory
 Zadaný dostatek příklad projevy, LUIS bylo by možné zvýšit důvěru předpovědi vzorů. Vzory zvýšení skóre spolehlivosti aniž by musel zadávat tolik projevy.  
@@ -62,9 +62,9 @@ Vzor je nalezena shoda podle nejprve zjišťování entit v modelu a ověření 
 Můžete vytvořit aplikaci s záměry, které nemají žádný vzorový projevy, pokud existuje vzor pro každý záměr. V případě aplikace jenom se vzorkem by neměl vzor obsahovat entity, které se naučily počítačem, protože to vyžaduje příklad projevy. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
-Přečtěte si [osvědčené postupy](luis-concept-best-practices.md).
+Seznamte se s [osvědčenými postupy](luis-concept-best-practices.md).
 
-## <a name="pattern-syntax"></a>Syntaxe vzoru
+## <a name="pattern-syntax"></a>Vzor syntaxe
 
 Přečtěte si syntaxi vzorů z [odkazu syntaxe vzoru](reference-pattern-syntax.md). 
 
@@ -77,4 +77,4 @@ Další informace o vzorcích:
 * [Syntaxe vzorů](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]
-> [Zjistěte, jak implementovat vzory v tomto kurzu](luis-tutorial-pattern.md)
+> [Naučte se implementovat vzory v tomto kurzu.](luis-tutorial-pattern.md)

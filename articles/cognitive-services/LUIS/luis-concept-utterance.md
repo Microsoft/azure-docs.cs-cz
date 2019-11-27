@@ -140,14 +140,14 @@ Projděte si [osvědčené postupy](luis-concept-best-practices.md) a použijte 
 
 Pokud volba slovo nebo slovo uspořádání je stejný, ale není to samé, není popisek s entitou. 
 
-Následující projevy, slovo `fair` je homograf. Je napsána stejný, ale má odlišný význam:
+V následujícím projevy je slovo `fair` homograf. Je napsána stejný, ale má odlišný význam:
 
 |Promluva|
 |--|
 |Jaký druh county veletrhů se dějí v Seattlu toto léto?|
 |Je aktuální hodnocení ke kontrole Seattle přiměřená?|
 
-Pokud byste chtěli entity událost najít všechna data událostí, popisek slovo `fair` v první utterance, ale nikoli do druhého.
+Pokud jste chtěli, aby entita události vyhledala všechna data události, označte slovo `fair` v prvním utterance, ale ne za sekundu.
 
 
 ## <a name="next-steps"></a>Další kroky

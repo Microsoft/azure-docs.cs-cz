@@ -1,6 +1,6 @@
 ---
-title: Custom orchestration status in Durable Functions - Azure
-description: Learn how to configure and use custom orchestration status for Durable Functions.
+title: Stav vlastní orchestrace v Durable Functions – Azure
+description: Naučte se konfigurovat a používat vlastní stav orchestrace pro Durable Functions.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
@@ -11,18 +11,18 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232953"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Custom orchestration status in Durable Functions (Azure Functions)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní orchestrace v Durable Functions (Azure Functions)
 
-Custom orchestration status lets you set a custom status value for your orchestrator function. This status is provided via the HTTP GetStatus API or the `DurableOrchestrationClient.GetStatusAsync` API.
+Vlastní stav orchestrace umožňuje nastavit vlastní hodnotu stavu pro funkci Orchestrator. Tento stav je k dispozici prostřednictvím rozhraní API GetStatus protokolu HTTP getstav nebo rozhraní `DurableOrchestrationClient.GetStatusAsync` API.
 
-## <a name="sample-use-cases"></a>Sample use cases
+## <a name="sample-use-cases"></a>Příklady případů použití
 
 > [!NOTE]
-> The following samples show how to use custom status feature in C# and JavaScript. The C# examples are written for Durable Functions 2.x and are not compatible with Durable Functions 1.x. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Následující ukázky ukazují, jak používat vlastní stav funkce v C# a JavaScriptu. C# Příklady jsou napsány pro Durable Functions 2. x a nejsou kompatibilní s Durable Functions 1. x. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="visualize-progress"></a>Visualize progress
+### <a name="visualize-progress"></a>Vizualizace průběhu
 
-Clients can poll the status end point and display a progress UI that visualizes the current execution stage. The following sample demonstrates progress sharing:
+Klienti mohou dotazovat koncový bod stavu a zobrazit uživatelské rozhraní průběhu, které vizualizuje aktuální fázi provádění. Následující příklad znázorňuje sdílení průběhu:
 
 #### <a name="c"></a>C#
 
@@ -51,7 +51,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -77,7 +77,7 @@ module.exports = async function(context, name) {
 };
 ```
 
-And then the client will receive the output of the orchestration only when `CustomStatus` field is set to "London":
+A pak klient obdrží výstup orchestrace pouze tehdy, když je `CustomStatus` pole nastaveno na London:
 
 #### <a name="c"></a>C#
 
@@ -112,7 +112,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -142,11 +142,11 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> In JavaScript, the `customStatus` field will be set when the next `yield` or `return` action is scheduled.
+> V jazyce JavaScript se pole `customStatus` nastaví při plánování další `yield` nebo `return` akce.
 
-### <a name="output-customization"></a>Output customization
+### <a name="output-customization"></a>Vlastní nastavení výstupu
 
-Another interesting scenario is segmenting users by returning customized output based on unique characteristics or interactions. With the help of custom orchestration status, the client-side code will stay generic. All main modifications will happen on the server side as shown in the following sample:
+Dalším zajímavým scénářem je segmentování uživatelů tím, že vrací přizpůsobený výstup na základě jedinečných vlastností nebo interakcí. Pomocí vlastního stavu orchestrace zůstane kód na straně klienta obecný. Všechny hlavní úpravy se projeví na straně serveru, jak je znázorněno v následující ukázce:
 
 #### <a name="c"></a>C#
 
@@ -186,7 +186,7 @@ public static void Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -219,9 +219,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-### <a name="instruction-specification"></a>Instruction specification
+### <a name="instruction-specification"></a>Specifikace instrukce
 
-The orchestrator can provide unique instructions to the clients via the custom state. The custom status instructions will be mapped to the steps in the orchestration code:
+Nástroj Orchestrator může poskytovat jedinečné pokyny pro klienty prostřednictvím vlastního stavu. Vlastní pokyny ke stavu budou mapovány na kroky v kódu orchestrace:
 
 #### <a name="c"></a>C#
 
@@ -251,7 +251,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -280,7 +280,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="sample"></a>Ukázka
 
-In the following sample, the custom status is set first;
+V následující ukázce je nastaven vlastní stav jako první.
 
 ### <a name="c"></a>C#
 
@@ -297,7 +297,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -313,13 +313,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-While the orchestration is running, external clients can fetch this custom status:
+I když je orchestrace spuštěná, externí klienti mohou načíst tento vlastní stav:
 
 ```http
 GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
-Clients will get the following response:
+Klienti získají následující odpověď:
 
 ```json
 {
@@ -333,9 +333,9 @@ Clients will get the following response:
 ```
 
 > [!WARNING]
-> The custom status payload is limited to 16 KB of UTF-16 JSON text because it needs to be able to fit in an Azure Table Storage column. We recommend you use external storage if you need a larger payload.
+> Vlastní datová část stavu je omezená na 16 KB textu JSON ve formátu UTF-16, protože musí být schopná se umístit do sloupce Azure Table Storage. Pokud potřebujete větší datovou část, doporučujeme použít externí úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Learn about durable timers](durable-functions-timers.md)
+> [Další informace o trvalých časovačích](durable-functions-timers.md)

@@ -14,9 +14,9 @@ ms.locfileid: "74325429"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Kurz: Vytvoření propojených šablon Azure Resource Manageru
 
-Zjistěte, jak vytvořit propojené šablony Azure Resource Manageru. Použitím propojených šablon, může mít jednu šablonu vyvolávající jinou šablonu. Je to velmi vhodné pro modulační šablony. In this tutorial, you use the same template used in [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md), which creates a virtual machine, a virtual network, and other dependent resource including a storage account. You separate the storage account resource creation to a linked template.
+Zjistěte, jak vytvořit propojené šablony Azure Resource Manageru. Použitím propojených šablon, může mít jednu šablonu vyvolávající jinou šablonu. Je to velmi vhodné pro modulační šablony. V tomto kurzu použijete stejnou šablonu, která se používá v [kurzu: vytváření Azure Resource Manager šablon se závislými prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md), které vytvoří virtuální počítač, virtuální síť a další závislý prostředek, včetně účtu úložiště. Můžete oddělit vytvoření prostředků účtu úložiště na propojenou šablonu.
 
-Calling a linked template is like making a function call.  You also learn how to pass parameter values to the linked template, and how to get "return values" from the linked template.
+Volání propojené šablony je jako volání funkce.  Naučíte se také, jak předat hodnoty parametrů do propojené šablony a jak z propojené šablony získat návratové hodnoty.
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -27,19 +27,19 @@ Tento kurz se zabývá následujícími úkony:
 > * Propojení propojené šablony
 > * Konfigurace závislostí
 > * Nasazení šablony
-> * Additional practices
+> * Další postupy
 
-For more information, see [Use linked and nested templates when deploying Azure resources](./resource-group-linked-templates.md).
+Další informace najdete v tématu [použití propojených a vnořených šablon při nasazování prostředků Azure](./resource-group-linked-templates.md).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Pokud [chcete vytvořit Azure Resource Manager šablony](./resource-manager-tools-vs-code.md), přečtěte si téma použití Visual Studio Code.
 * Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Tady ukázka generování hesla:
 
     ```azurecli-interactive
@@ -49,7 +49,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
-Šablony pro rychlý start Azure slouží jako úložiště šablon Resource Manageru. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows). This is the same template used in [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Uložte dvě kopie stejné šablony, které budou použity jako:
+Šablony pro rychlý start Azure slouží jako úložiště šablon Resource Manageru. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows). Jedná se o šablonu, která se používá v [kurzu: vytváření Azure Resource Manager šablon se závislými prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Uložte dvě kopie stejné šablony, které budou použity jako:
 
 * **Hlavní šablona**: vytvoří se všechny prostředky s výjimkou účtu úložiště.
 * **Propojená šablona**: vytvoří účet úložiště.
@@ -69,18 +69,18 @@ K dokončení tohoto článku potřebujete:
    * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
    * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
-     It is helpful to get some basic understanding of the template schema before customizing the template.
+     Před přizpůsobením šablony je užitečné získat základní porozumění schématu šablony.
 5. Vyberte **File** (Soubor) >**Save As** (Uložit jako) a soubor uložte na místní počítač pod názvem **azuredeploy.json**.
 6. Zvolte **Soubor**>**Uložit jako** a vytvořte jinou kopii souboru s názvem **linkedTemplate.json**.
 
 ## <a name="create-the-linked-template"></a>Vytvoření propojené šablony
 
-Propojená šablona vytvoří účet úložiště. The linked template can be used as a standalone template to create a storage account. In this tutorial, the linked template takes two parameters, and passes a value back to the main template. This "return" value is defined in the `outputs` element.
+Propojená šablona vytvoří účet úložiště. Odkazovaná šablona se dá použít jako samostatná šablona k vytvoření účtu úložiště. V tomto kurzu propojená šablona používá dva parametry a předává hodnotu zpět do hlavní šablony. Tato "návratová" hodnota je definována v elementu `outputs`.
 
-1. Open **linkedTemplate.json** in Visual Studio Code if the file is not opened.
+1. Otevřete **linkedTemplate. JSON** v Visual Studio Code, pokud soubor není otevřený.
 2. Proveďte následující změny:
 
-    * Remove all the parameters other than **location**.
+    * Odeberte všechny parametry jiné než **umístění**.
     * Přidejte parametr s názvem **storageAccountName**.
         ```json
         "storageAccountName":{
@@ -90,11 +90,11 @@ Propojená šablona vytvoří účet úložiště. The linked template can be us
           }
         },
         ```
-        The storage account name and location are passed from the main template to the linked template as parameters.
+        Název a umístění účtu úložiště se předávají z hlavní šablony do propojené šablony jako parametry.
 
-    * Remove the **variables** element, and all the variable definitions.
-    * Remove all the resources other than the storage account. Odeberete celkem čtyři prostředky.
-    * Update the value of the **name** element of the storage account resource to:
+    * Odeberte element **Variables** a všechny definice proměnných.
+    * Odeberte všechny prostředky kromě účtu úložiště. Odeberete celkem čtyři prostředky.
+    * Aktualizujte hodnotu prvku **název** prostředku účtu úložiště na:
 
         ```json
           "name": "[parameters('storageAccountName')]",
@@ -158,10 +158,10 @@ Propojená šablona vytvoří účet úložiště. The linked template can be us
 
 ## <a name="upload-the-linked-template"></a>Odeslání propojené šablony
 
-The main template and the linked template need to be accessible from where you run the deployment. In this tutorial, you use the Cloud shell deployment method as you used in [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Hlavní šablona (azuredeploy.json) je odeslána do prostředí. The linked template (linkedTemplate.json) must be shared somewhere securely. The following PowerShell script creates an Azure Storage account, uploads the template to the Storage account, and then generates a SAS token to grant limited access to the template file. To simplify the tutorial, the script downloads a completed linked template from a Github repository. If you want to use the linked template you created, you can use the [Cloud shell](https://shell.azure.com) to upload your linked template, and then modify the script to use your own linked template.
+Hlavní šablony a propojené šablony musí být přístupné ze kterého spouštíte nasazení. V tomto kurzu použijete metodu nasazení Cloud Shell, jakou jste použili v [kurzu: vytváření Azure Resource Manager šablon se závislými prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Hlavní šablona (azuredeploy.json) je odeslána do prostředí. Propojená šablona (linkedTemplate.json) musí být někde bezpečně sdílet. Následující skript PowerShell vytvoří účet Azure Storage, nahraje šablonu do účtu úložiště a pak vygeneruje token SAS pro udělení omezeného přístupu k souboru šablony. Pro zjednodušení tohoto kurzu skript stáhne dokončenou propojenou šablonu z úložiště GitHub. Pokud chcete použít propojenou šablonu, kterou jste vytvořili, můžete k nahrání propojené šablony použít [Cloud Shell](https://shell.azure.com) a pak změnit skript tak, aby používal vlastní propojenou šablonu.
 
 > [!NOTE]
-> The script limits the SAS token to be used within eight hours. If you need more time to complete this tutorial, increase the expiry time.
+> Skript omezuje token SAS pro použití v rámci osm hodin. Pokud potřebujete více času k dokončení tohoto kurzu, zvýšit čas vypršení platnosti.
 
 ```azurepowershell-interactive
 $projectNamePrefix = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -213,20 +213,20 @@ echo "Resource Group Name: $resourceGroupName"
 echo "Linked template URI with SAS token: $templateURI"
 ```
 
-1. Select the **Try It** green button to open the Azure cloud shell pane.
-2. Select **Copy** to copy the PowerShell script.
-3. Right-click anywhere inside the shell pane (the navy blue part), and then select **Paste**.
-4. Make a note of the two values (Resource Group Name and Linked template URI) at the end of the shell pane. Tyto hodnoty budete potřebovat v pozdější části kurzu.
-5. Select **Exit focus mode** to close the shell pane.
+1. Vyberte tlačítko **vyzkoušet** zeleně a otevřete podokno Cloud Shell Azure.
+2. Vyberte **Kopírovat** a zkopírujte skript prostředí PowerShell.
+3. Klikněte pravým tlačítkem myši kamkoli do podokna prostředí (námořnická modrá Blue part) a pak vyberte **Vložit**.
+4. Poznamenejte si tyto dvě hodnoty (název skupiny prostředků a propojenou šablonu identifikátoru URI) na konci podokně prostředí. Tyto hodnoty budete potřebovat v pozdější části kurzu.
+5. Chcete-li zavřít podokno prostředí, vyberte možnost **ukončit detailní režim** .
 
-In practice, you generate a SAS token when you deploy the main template, and give the SAS token expiry a smaller window to make it more secure. For more information, see [Provide SAS token during deployment](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
+V praxi vygenerování tokenu SAS při nasazování hlavní šablonu a poskytnout menší okno kvůli většímu zabezpečení vypršení platnosti tokenu SAS. Další informace najdete v tématu [poskytnutí tokenu SAS během nasazování](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="call-the-linked-template"></a>Vyvolání propojené šablony
 
 Hlavní šablona se nazývá azuredeploy.json.
 
-1. Open **azuredeploy.json** in Visual Studio Code if it is not opened.
-2. Delete the storage account resource definition from the template:
+1. Otevřete **azuredeploy. JSON** v Visual Studio Code, pokud není otevřený.
+2. Odstraňte definici prostředků účtu úložiště ze šablony:
 
     ```json
     {
@@ -266,14 +266,14 @@ Hlavní šablona se nazývá azuredeploy.json.
     * Prostředek `Microsoft.Resources/deployments` v hlavní šabloně je použit k propojení s ostatními šablonami.
     * Prostředek `deployments` se nazývá `linkedTemplate`. Tento název se používá pro [konfiguraci závislostí](#configure-dependency).
     * Můžete použít pouze [přírůstkový](./deployment-modes.md) režim nasazení při vyvolání propojených šablon.
-    * `templateLink/uri` obsahuje propojenou šablonu identifikátoru URI. Update the value to the URI you get when you upload the linked template (the one with a SAS token).
+    * `templateLink/uri` obsahuje propojenou šablonu identifikátoru URI. Aktualizujte hodnotu k identifikátoru URI při odeslání propojené šablony (jeden s tokenem SAS).
     * K předání hodnot z hlavní šablony do propojené šablony použijte `parameters`.
-4. Make sure you have updated the value of the `uri` element to the value you got when you upload the linked template (the one with a SAS token). In practice, you want to supply the URI with a parameter.
-5. Save the revised template
+4. Ujistěte se, že jste aktualizovali hodnotu `uri` elementu na hodnotu, kterou jste získali při nahrávání propojené šablony (s tokenem SAS). V praxi budete chtít zadat identifikátor URI s parametrem.
+5. Uložte upravený šablonu
 
 ## <a name="configure-dependency"></a>Konfigurace závislostí
 
-Recall from [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md), the virtual machine resource depends on the storage account:
+Odvolání z [kurzu: vytváření Azure Resource Managerch šablon se závislými prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md)– prostředek virtuálního počítače závisí na účtu úložiště:
 
 ![Diagram závislostí šablon Azure Resource Manageru](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
@@ -298,12 +298,12 @@ Protože účet úložiště je teď definovaný v propojené šabloně, je nutn
     ![Konfigurace závislostí propojených šablon Azure Resource Manageru](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
 
     *linkedTemplate* je název prostředku nasazení.
-3. Update **properties/diagnosticsProfile/bootDiagnostics/storageUri** as shown in the previous screenshot.
-4. Save the revised template.
+3. Aktualizujte **vlastnosti/diagnosticsProfile/bootDiagnostics/storageUri** , jak je znázorněno na předchozím snímku obrazovky.
+4. Revidovaná šablonu uložte.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Informace o procesu nasazení najdete v části [Nasazení šablony](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Use the same resource group name as the storage account for storing the linked template. It makes it easier to clean up resources in the next section. Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Viz [Požadavky](#prerequisites).
+Informace o procesu nasazení najdete v části [Nasazení šablony](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Použijte stejný název skupiny prostředků jako účet úložiště pro ukládání propojené šablony. To usnadňuje vyčištění prostředků v další části. Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Viz [Požadavky](#prerequisites).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -314,16 +314,16 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
-## <a name="additional-practice"></a>Additional practice
+## <a name="additional-practice"></a>Další postup
 
-To improve the project, make the following additional changes to the completed project:
+Ke zlepšení projekt, proveďte následující další změny do dokončení projektu:
 
-1. Modify the main template (azuredeploy.json) so that it takes the linked template URI value via a parameter.
-2. Instead of generating a SAS token when you upload the linked template, generate the token when you deploy the main template. For more information, see [Provide SAS token during deployment](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
+1. Hlavní šablony (azuredeploy.json) upravte, aby přebírá hodnotu identifikátoru URI propojenou šablonu prostřednictvím parametru.
+2. Místo aby generovala tokenu SAS, když nahrajete propojené šablony, vygenerujte token při nasazení hlavní šablony. Další informace najdete v tématu [poskytnutí tokenu SAS během nasazování](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="next-steps"></a>Další kroky
 
-In this tutorial, you modularized a template into a main template and a linked template. To learn how to use virtual machine extensions to perform post deployment tasks, see:
+V tomto kurzu jste modulární šablonu do hlavní šablony a propojenou šablonu. Další informace o použití rozšíření virtuálních počítačů provést úkoly po nasazení, najdete v tématech:
 
 > [!div class="nextstepaction"]
 > [Nasazování rozšíření virtuálních počítačů](./resource-manager-tutorial-deploy-vm-extensions.md)

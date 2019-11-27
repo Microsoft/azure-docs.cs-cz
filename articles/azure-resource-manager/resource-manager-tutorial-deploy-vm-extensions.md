@@ -1,5 +1,5 @@
 ---
-title: Deploy VM extensions with template
+title: Nasazení rozšíření virtuálních počítačů pomocí šablony
 description: Zjistěte, jak nasazovat rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru.
 author: mumian
 ms.date: 11/13/2018
@@ -14,7 +14,7 @@ ms.locfileid: "74325380"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Kurz: Nasazování rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru
 
-Zjistěte, jak pomocí [rozšíření virtuálních počítačů Azure](../virtual-machines/extensions/features-windows.md) provádět na virtuálních počítačích Azure úlohy konfigurace a automatizace po nasazení. Pro použití s virtuálními počítači Azure je k dispozici řada různých rozšíření virtuálních počítačů. In this tutorial, you deploy a Custom Script extension from an Azure Resource Manager template to run a PowerShell script on a Windows VM.  Tento skript na virtuálním počítači nainstaluje webový server.
+Zjistěte, jak pomocí [rozšíření virtuálních počítačů Azure](../virtual-machines/extensions/features-windows.md) provádět na virtuálních počítačích Azure úlohy konfigurace a automatizace po nasazení. Pro použití s virtuálními počítači Azure je k dispozici řada různých rozšíření virtuálních počítačů. V tomto kurzu nasadíte rozšíření vlastních skriptů z Azure Resource Manager šablony pro spuštění skriptu PowerShellu na virtuálním počítači s Windows.  Tento skript na virtuálním počítači nainstaluje webový server.
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -27,48 +27,48 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Pokud [chcete vytvořit Azure Resource Manager šablony](./resource-manager-tools-vs-code.md), přečtěte si téma použití Visual Studio Code.
 * Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Tady ukázka generování hesla:
 
     ```azurecli-interactive
     openssl rand -base64 32
     ```
 
-    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v [kurzu integrace služby Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md). We also recommend that you update your password every three months.
+    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v [kurzu integrace služby Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md). Doporučujeme vám také aktualizovat heslo každé tři měsíce.
 
 ## <a name="prepare-a-powershell-script"></a>Příprava skriptu PowerShellu
 
-A PowerShell script with the following content is shared from [Github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1):
+Z [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)se sdílí skript prostředí PowerShell s následujícím obsahem:
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-If you choose to publish the file to your own location, you must update the `fileUri` element in the template later in the tutorial.
+Pokud se rozhodnete publikovat soubor ve svém vlastním umístění, musíte aktualizovat element `fileUri` v šabloně později v tomto kurzu.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony rychlého startu
 
-Azure Quickstart Templates is a repository for Resource Manager templates. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
+Šablony pro rychlý Start Azure jsou úložiště pro šablony Správce prostředků. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
 
-1. In Visual Studio Code, select **File** > **Open File**.
-1. In the **File name** box, paste the following URL: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+1. V Visual Studio Code vyberte **soubor** > **otevřít soubor**.
+1. Do pole **název souboru** vložte následující adresu URL: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
 
-1. To open the file, select **Open**.
-    The template defines five resources:
+1. Chcete-li otevřít soubor, vyberte možnost **otevřít**.
+    Šablona definuje pět prostředků:
 
-   * **Microsoft.Storage/storageAccounts**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * **Microsoft.Network/publicIPAddresses**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * **Microsoft.Network/virtualNetworks**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * **Microsoft.Network/networkInterfaces**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * **Microsoft.Compute/virtualMachines**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * **Microsoft. Storage/storageAccounts**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * **Microsoft. Network/publicIPAddresses**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * **Microsoft. Network/virtualNetworks**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * **Microsoft. Network/networkInterfaces**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * **Microsoft. COMPUTE/virtualMachines**. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
-     It's helpful to get some basic understanding of the template before you customize it.
+     Před přizpůsobením šablony je užitečné získat základní informace o této šabloně.
 
-1. Save a copy of the file to your local computer with the name *azuredeploy.json* by selecting **File** > **Save As**.
+1. Uložte kopii souboru do místního počítače s názvem *azuredeploy. JSON* , a to tak, že vyberete **soubor** > **Uložit jako**.
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
@@ -98,37 +98,37 @@ Ke stávající šabloně s následujícím obsahem přidejte prostředek rozš�
 }
 ```
 
-For more information about this resource definition, see the [extension reference](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). Tady je několik důležitých elementů:
+Další informace o této definici prostředků najdete v odkazu na [rozšíření](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). Tady je několik důležitých elementů:
 
-* **name:** Vzhledem k tomu, že prostředek rozšíření je podřízeným prostředkem objektu virtuálního počítače, musí název obsahovat předponu virtuálního počítače. See [Set name and type for child resources](child-resource-name-type.md).
-* **dependsOn**: Create the extension resource after you've created the virtual machine.
-* **fileUris**: The locations where the script files are stored. If you choose not to use the provided location, you need to update the values.
-* **commandToExecute**: This command invokes the script.
+* **name:** Vzhledem k tomu, že prostředek rozšíření je podřízeným prostředkem objektu virtuálního počítače, musí název obsahovat předponu virtuálního počítače. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md).
+* **dependsOn**: po vytvoření virtuálního počítače vytvořte prostředek rozšíření.
+* **identifikátory URI**: umístění, kde jsou uloženy soubory skriptu. Pokud se rozhodnete, že nepoužijete zadané umístění, je nutné aktualizovat hodnoty.
+* **commandToExecute**: Tento příkaz vyvolá skript.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-For the deployment procedure, see the "Deploy the template" section of [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). We recommended that you use a generated password for the virtual machine administrator account. See this article's [Prerequisites](#prerequisites) section.
+Postup nasazení najdete v části "nasazení šablony" v tématu [kurz: vytvoření šablon Azure Resource Manager se závislými prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Doporučujeme použít vygenerované heslo pro účet správce virtuálního počítače. Viz část [požadavky](#prerequisites) tohoto článku.
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. In the Azure portal, select the VM.
-1. In the VM overview, copy the IP address by selecting **Click to copy**, and then paste it in a browser tab. The default Internet Information Services (IIS) welcome page opens:
+1. V Azure Portal vyberte virtuální počítač.
+1. V přehledu virtuálních počítačů zkopírujte IP adresu tak, že **kliknete na tlačítko Kopírovat**a pak ho vložíte na kartu prohlížeče. Otevře se výchozí úvodní stránka Internetová informační služba (IIS):
 
-![The Internet Information Services welcome page](./media/resource-manager-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
+![Úvodní stránka Internetová informační služba](./media/resource-manager-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-When you no longer need the Azure resources you deployed, clean them up by deleting the resource group.
+Pokud už prostředky Azure, které jste nasadili, nepotřebujete, vyčistěte je tak, že odstraníte skupinu prostředků.
 
-1. In the Azure portal, in the left pane, select **Resource group**.
-2. In the **Filter by name** box, enter the resource group name.
+1. V Azure Portal v levém podokně vyberte **skupinu prostředků**.
+2. Do pole **filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.
-    Six resources are displayed in the resource group.
-4. In the top menu, select **Delete resource group**.
+    Ve skupině prostředků se zobrazí šest prostředků.
+4. V horní nabídce vyberte **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nasadili virtuální počítač a rozšíření virtuálního počítače. Toto rozšíření na virtuální počítač nainstalovalo webový server služby IIS. To learn how to use the Azure SQL Database extension to import a BACPAC file, see:
+V tomto kurzu jste nasadili virtuální počítač a rozšíření virtuálního počítače. Toto rozšíření na virtuální počítač nainstalovalo webový server služby IIS. Informace o použití rozšíření Azure SQL Database k importu souboru BACPAC naleznete v tématu:
 
 > [!div class="nextstepaction"]
-> [Deploy SQL extensions](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)
+> [Nasazení rozšíření SQL](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)

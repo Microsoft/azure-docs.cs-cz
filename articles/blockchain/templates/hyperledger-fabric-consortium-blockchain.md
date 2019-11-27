@@ -1,6 +1,6 @@
 ---
-title: Deploy Hyperledger Fabric Consortium solution template on Azure
-description: How to deploy and configure the Hyperledger Fabric consortium network solution template on Azure
+title: Nasazení šablony řešení konsorcia prostředků infrastruktury pro hlavní knihu v Azure
+description: Nasazení a konfigurace šablony řešení sítě konsorcia prostředků infrastruktury pro hlavní knihu v Azure
 ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: caleteet
@@ -11,132 +11,132 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325130"
 ---
-# <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric consortium network
+# <a name="hyperledger-fabric-consortium-network"></a>Síť konsorcia infrastruktury pro hlavní knihu
 
-You can use the Hyperledger Fabric consortium solution template to deploy and configure a Hyperledger Fabric consortium network on Azure.
+K nasazení a konfiguraci sítě konsorcia prostředků infrastruktury hlavní knihy v Azure můžete použít šablonu řešení v rámci hlavní knihy.
 
 Po přečtení tohoto článku:
 
-- Obtain working knowledge of blockchain, Hyperledger Fabric, and more complicated consortium network architectures
-- Learn how to deploy and configure a Hyperledger Fabric consortium network from within the Azure portal
+- Získejte praktické znalosti o blockchain, prostředcích infrastruktury hlavní knihy a složitějších architekturách sítě konsorcia.
+- Přečtěte si, jak nasadit a nakonfigurovat síť konsorcia infrastruktury pro hlavní knihu v rámci Azure Portal
 
-## <a name="about-blockchain"></a>About blockchain
+## <a name="about-blockchain"></a>O blockchain
 
-If you are new to the blockchain community, this solution template is a great opportunity to learn about the technology in an easy and configurable manner on Azure. Blockchain is the underlying technology behind Bitcoin; however, it is much more than just an enabler for a virtual currency. It is a composite of existing database, distributed system, and cryptographic technologies that enables secure multi-party computation with guarantees around immutability, verifiability, auditability, and resiliency to attack. Different protocols employ different mechanisms to provide these attributes. [Hyperledger Fabric](https://github.com/hyperledger/fabric) is one such protocol.
+Pokud s komunitou blockchain začínáte, je tato šablona řešení skvělou příležitostí k tomu, abyste se seznámili s technologií v Azure snadno a konfigurovatelným způsobem. Blockchain je základní technologie za Bitcoin; je však mnohem více než pouze aktivátor pro virtuální měnu. Je to složený ze stávajících databází, distribuovaných systémů a kryptografických technologií, které umožňují zabezpečený výpočet více stran Díky zárukám týkajícím se neměnnosti, ověřování, auditování a odolnosti proti útokům. Různé protokoly využívají různé mechanismy pro poskytování těchto atributů. [Prostředek infrastruktury hlavní knihy](https://github.com/hyperledger/fabric) je jeden takový protokol.
 
-## <a name="consortium-architecture-on-azure"></a>Consortium architecture on Azure
+## <a name="consortium-architecture-on-azure"></a>Architektura konsorcia v Azure
 
-To enable Hyperledger Fabric in Azure, there are two primary deployment types that are supported. These deployments are designed to accommodate different topologies, based on desired target.
+Pokud chcete povolit prostředky infrastruktury hlavní knihy v Azure, existují dva typy primárních nasazení, které jsou podporované. Tato nasazení jsou navržena tak, aby vyhovovala různým topologiím na základě požadovaného cíle.
 
-- **Single virtual machine, developer server** - This deployment type is designed as a development environment used to build and test solutions built on Hyperledger Fabric.
-- **Multiple virtual machines, scale out deployment** - This deployment type is designed for environments that model a consortium of different participants leveraging a shared environment.
+- **Jeden virtuální počítač, server pro vývojáře** – tento typ nasazení je navržen jako vývojové prostředí, které se používá k vytváření a testování řešení založených na prostředcích infrastruktury hlavní knihy.
+- **Několik virtuálních počítačů, nasazení škálované na více** instancí – tento typ nasazení je navržený pro prostředí, která modelují konsorcium různých účastníků využívajících sdílené prostředí.
 
-In either deployment, the building blocks that are make the core of Hyperledger Fabric are the same.  The differences in the deployments are how these components are scaled out.
+V obou nasazeních jsou stavební bloky, které tvoří jádro infrastruktury hlavní knihy, stejné.  Rozdíly v nasazeních představují způsob horizontálního navýšení kapacity těchto komponent.
 
-- **CA nodes**: A node running Certificate Authority that is used to generate certificates that are used for identities in the network.
-- **Orderer nodes**: A node running the communication service implementing a delivery guarantee, such as total order broadcast or atomic transactions.
-- **Peer nodes**: A node that commits transactions and maintains the state and a copy of the distributed ledger.
-- **CouchDB nodes**: A node that can run the CouchDB service that can hold the state database and provide rich querying of chaincode data, expanding from simple key/value to JSON type storage.
+- **Uzly CA**: uzel, na kterém je spuštěná certifikační autorita, která se používá ke generování certifikátů používaných pro identity v síti.
+- **Uzly**: uzel, na kterém je spuštěná komunikační služba implementující záruku doručení, jako je například celkové všesměrové vysílání objednávky nebo atomické transakce.
+- **Partnerské uzly**: uzel, který potvrdí transakce a udržuje stav a kopii distribuované hlavní knihy.
+- **Uzly CouchDB**: uzel, který může spustit službu CouchDB, která může uchovávat databázi stavu a poskytovat bohatou dotazování na data chaincode, která se šíří z jednoduchého klíče/hodnoty do úložiště typu JSON.
 
-### <a name="single-virtual-machine-architecture"></a>Single virtual machine architecture
+### <a name="single-virtual-machine-architecture"></a>Architektura jediného virtuálního počítače
 
-As mentioned previously the single virtual machine architecture is built for developers to have a low footprint server that is used to develop applications. All containers shown are running in a single virtual machine. The ordering service is using [SOLO](https://github.com/hyperledger/fabric/tree/master/orderer) for this configuration. This configuration is *not* a fault tolerant ordering service, but is designed to be lightweight for development purposes.
+Jak už bylo zmíněno dříve, pro vývojáře je k dispozici jenom jedna architektura virtuálního počítače, která bude sloužit k vývoji aplikací. Všechny zobrazené kontejnery jsou spuštěny na jednom virtuálním počítači. Služba objednávání používá pro tuto konfiguraci [samostatné](https://github.com/hyperledger/fabric/tree/master/orderer) . Tato *konfigurace není* objednaná služba řazení odolná proti chybám, ale je navržená tak, aby byla pro účely vývoje odlehčená.
 
-![Single Virtual Machine architecture](./media/hyperledger-fabric-consortium-blockchain/hlf-single-arch.png)
+![Architektura jediného virtuálního počítače](./media/hyperledger-fabric-consortium-blockchain/hlf-single-arch.png)
 
-### <a name="multiple-virtual-machine-architecture"></a>Multiple virtual machine architecture
+### <a name="multiple-virtual-machine-architecture"></a>Několik architektur virtuálních počítačů
 
-The multiple virtual machine, scale-out architecture, is built with high availability and scaling of each component at the core. This architecture is much more suitable for production grade deployments.
+Několik virtuálních počítačů, architektura škálování na více instancí, je postavená na úrovni vysoké dostupnosti a škálování každé komponenty v jádru. Tato architektura je pro nasazení produkčních prostředí mnohem vhodnější.
 
-![Multiple virtual machine architecture](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
+![Několik architektur virtuálních počítačů](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
 
 ## <a name="getting-started"></a>Začínáme
 
-To begin, you need an Azure subscription that can support deploying several virtual machines and standard storage accounts. If you do not have an Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/).
+Začněte tím, že budete potřebovat předplatné Azure, které může podporovat nasazení několika virtuálních počítačů a standardních účtů úložiště. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-Once you have a subscription, go to the [Azure portal](https://portal.azure.com). Select **Create a resource > Blockchain > Hyperledger Fabric Consortium**.
+Jakmile budete mít předplatné, pokračujte na [Azure Portal](https://portal.azure.com). Vyberte **vytvořit prostředek > Blockchain > konsorcium prostředků infrastruktury pro hlavní knihu**.
 
-![Hyperledger Fabric Single Member Blockchain Marketplace template](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
+![Šablona blockchain na webu pro jeden člen pro hlavní knihu prostředků](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
 
 ## <a name="deployment"></a>Nasazení
 
-In the **Hyperledger Fabric Consortium** template, select **Create**.
+V šabloně **sdružení prostředků infrastruktury pro hlavní kniha** vyberte **vytvořit**.
 
-The template deployment will walk you through configuring the multi-node [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) network. The deployment flow is divided into four steps: Basics, Consortium Network Settings, Fabric configuration, and Optional components.
+Nasazení šablony vás provede konfigurací sítě s více uzly v [hlavní knize 1,3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) . Tok nasazení je rozdělen do čtyř kroků: základy, nastavení sítě konsorcia, konfigurace prostředků infrastruktury a volitelné součásti.
 
 ### <a name="basics"></a>Základy
 
-In **Basics**, specify values for standard parameters for any deployment. Such as, subscription, resource group, and basic virtual machine properties.
+V nástroji **základy**zadejte hodnoty pro standardní parametry pro jakékoli nasazení. Například vlastnosti, předplatné, skupina prostředků a základní vlastnosti virtuálního počítače.
 
 ![Základy](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
 | Název parametru | Popis | Povolené hodnoty |
 |---|---|---|
-**Resource prefix** | Name prefix for resources provisioned as part of the deployment |6 characters or less |
-**Uživatelské jméno** | The user name of the administrator for each of the virtual machines deployed for this member |1 - 64 characters |
-**Authentication type** | The method to authenticate to the virtual machine |Password or SSH public key|
-**Password (Authentication type = Password)** |The password for the administrator account for each of the virtual machines deployed. The password must contain three of the following character types: 1 upper case character, 1 lower case character, 1 number, and 1 special character<br /><br />While all VMs initially have the same password, you can change the password after provisioning|12 - 72 characters|
-**SSH key (Authentication type = SSH public key)** |The secure shell key used for remote login ||
-**Předplatné** |The subscription to which to deploy ||
-**Skupina prostředků** |The resource group to which to deploy the consortium network ||
-**Umístění** |The Azure region to which to deploy the first member in ||
+**Předpona prostředku** | Předpona názvu pro prostředky zřízené v rámci nasazení |6 znaků nebo méně |
+**Uživatelské jméno** | Uživatelské jméno správce pro každý virtuální počítač nasazený pro tohoto člena |1-64 znaků |
+**Typ ověřování** | Metoda, která se má ověřit pro virtuální počítač |Heslo nebo veřejný klíč SSH|
+**Heslo (typ ověřování = heslo)** |Heslo pro účet správce pro každý nasazený virtuální počítač. Heslo musí obsahovat tři z následujících typů znaků: 1 velké písmeno, 1 malé písmeno, 1 číslo a 1 speciální znak.<br /><br />Všechny virtuální počítače mají zpočátku stejné heslo, ale po zřízení můžete heslo změnit.|12-72 znaků|
+**Klíč SSH (typ ověřování = veřejný klíč SSH)** |Klíč zabezpečeného prostředí používaný pro vzdálené přihlášení ||
+**Předplatné** |Předplatné, ke kterému se má nasadit ||
+**Skupina prostředků** |Skupina prostředků, do které se má nasadit síť konsorcia ||
+**Umístění** |Oblast Azure, do které se má první člen nasadit ||
 
 Vyberte **OK**.
 
-### <a name="consortium-network-settings"></a>Consortium Network Settings
+### <a name="consortium-network-settings"></a>Nastavení sítě konsorcia
 
-In **Network settings**, specify inputs for creating or joining an existing consortium network and configure your organization settings.
+V **nastavení sítě**zadejte vstupy pro vytvoření nebo připojení existující sítě konsorcia a nakonfigurujte nastavení vaší organizace.
 
-![Consortium Network Settings](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
+![Nastavení sítě konsorcia](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
 
 | Název parametru | Popis | Povolené hodnoty |
 |---|---|---|
-**Konfigurace sítě** |You can choose to create a new network or join an existing one. If you choose *Join existing*, you need to provide additional values. |New network <br/> Join existing |
-**HLF CA password** |A password used for the certificates generated by the certificate authorities that are created as part of the deployment. The password must contain three of the following character types: 1 upper case character, 1 lower case character, 1 number, and 1 special character.<br /><br />While all virtual machines initially have the same password, you can change the password after provisioning.|1 - 25 characters |
-**Organization setup** |You can customize your Organization's name and certificate or have default values to be used.|Výchozí <br/> Rozšířený |
-**VPN network settings** | Provision a VPN tunnel gateway for accessing the VMs | Ano <br/> Ne |
+**Konfigurace sítě** |Můžete zvolit vytvoření nové sítě nebo připojení k existující síti. Pokud zvolíte *připojit k existujícímu*, budete muset zadat další hodnoty. |Nová síť <br/> Připojit se k existujícímu |
+**Heslo pro certifikační autoritu HLF** |Heslo používané pro certifikáty vygenerované certifikačními autoritami, které jsou vytvořeny jako součást nasazení. Heslo musí obsahovat tři z následujících typů znaků: 1 velké písmeno, 1 znak malého písmena, 1 číslice a 1 speciální znak.<br /><br />I když všechny virtuální počítače mají stejné heslo, můžete po zřízení změnit heslo.|1-25 znaků |
+**Nastavení organizace** |Můžete přizpůsobit název a certifikát vaší organizace nebo použít výchozí hodnoty.|Výchozí <br/> Upřesňující |
+**Nastavení sítě VPN** | Zřízení brány tunelového připojení VPN pro přístup k virtuálním počítačům | Ano <br/> Ne |
 
 Vyberte **OK**.
 
-### <a name="fabric-specific-settings"></a>Fabric-specific settings
+### <a name="fabric-specific-settings"></a>Nastavení specifické pro prostředek infrastruktury
 
-In **Fabric configuration**, you configure network size and performance, and specify inputs for the availability of the network. Such as, number orderer and peer nodes, persistence engine used by each node, and the VM size.
+V části **Konfigurace prostředků infrastruktury**můžete nakonfigurovat velikost a výkon sítě a zadat vstupy pro dostupnost sítě. Jako je například pořadí čísel a rovnocenných uzlů, modul trvalosti používaný každým uzlem a velikost virtuálního počítače.
 
-![Fabric settings](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
-
-| Název parametru | Popis | Povolené hodnoty |
-|---|---|---|
-**Scale type** |The deployment type of either a single virtual machine with multiple containers or multiple virtual machines in a scale-out model.|Single VM or Multi VM |
-**VM Disk type** |The type of storage backing each of the deployed nodes. <br/> To learn more about the available disk types, visit [select a disk type](../../virtual-machines/windows/disks-types.md).|SSD úrovně Standard <br/> Premium SSD |
-
-### <a name="multiple-vm-deployment-additional-settings"></a>Multiple VM deployment (additional settings)
-
-![Fabric settings for multiple vm deployments](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
+![Nastavení prostředků infrastruktury](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
 
 | Název parametru | Popis | Povolené hodnoty |
 |---|---|---|
-**Number of orderer nodes** |The number of nodes that order (organize) transactions into a block. <br />For additional details on the ordering service, visit the Hyperledger [documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1-4 |
-**Orderer node virtual machine size** |The virtual machine size used for orderer nodes in the network|Standard Bs,<br />Standard Ds,<br />Standard FS |
-**Number of peer nodes** | Nodes that are owned by consortium members that execute transactions and maintain the state and a copy of the ledger.<br />For additional details on the ordering service, visit the Hyperledger [documentation](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1-4 |
-**Node state persistence** |The persistence engine used by the peer nodes. You can configure this engine per peer node. See details below for multiple peer nodes.|CouchDB <br />LevelDB |
-**Peer node virtual machine size** |The virtual machine size used for all nodes in the network|Standard Bs,<br />Standard Ds,<br />Standard FS |
+**Typ škálování** |Typ nasazení buď jednoho virtuálního počítače s několika kontejnery, nebo několika virtuálních počítačů v modelu škálování na více instancí.|Jeden virtuální počítač nebo virtuální počítač s více virtuálními počítači |
+**Typ disku virtuálního počítače** |Typ úložiště, který zálohuje všechny nasazené uzly. <br/> Další informace o dostupných typech disků najdete v části [Výběr typu disku](../../virtual-machines/windows/disks-types.md).|SSD úrovně Standard <br/> Premium SSD |
 
-### <a name="multiple-peer-node-configuration"></a>Multiple peer node configuration
+### <a name="multiple-vm-deployment-additional-settings"></a>Nasazení více virtuálních počítačů (další nastavení)
 
-This template allows you to pick your persistence engine per peer node. For example, if you have three peer nodes you can use CouchDB on one and LevelDB on the other two.
+![Nastavení prostředků infrastruktury pro nasazení s několika virtuálními počítači](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
 
-![Multiple peer node configuration](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
+| Název parametru | Popis | Povolené hodnoty |
+|---|---|---|
+**Počet uzlů pořadí** |Počet uzlů, které řadí (organizují) transakce do bloku. <br />Další podrobnosti o službě řazení najdete v [dokumentaci k](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) hlavní knize. |1 – 4 |
+**Velikost virtuálního počítače uzlu pořadí** |Velikost virtuálního počítače používaná pro uzly pořadí v síti|BS úrovně Standard,<br />Služba DS úrovně Standard,<br />Standard FS |
+**Počet partnerských uzlů** | Uzly vlastněné členy konsorcia, které spouštějí transakce a udržují stav a kopii hlavní knihy.<br />Další podrobnosti o službě řazení najdete v [dokumentaci k](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html)hlavní knize.|1 – 4 |
+**Trvalost stavu uzlu** |Modul trvalosti používaný partnerskými uzly. Tento modul můžete nakonfigurovat na jeden partnerský uzel. Další podrobnosti najdete v podrobnostech o několika partnerských uzlech.|CouchDB <br />LevelDB |
+**Velikost virtuálního počítače rovnocenného uzlu** |Velikost virtuálního počítače použitá pro všechny uzly v síti|BS úrovně Standard,<br />Služba DS úrovně Standard,<br />Standard FS |
+
+### <a name="multiple-peer-node-configuration"></a>Konfigurace více rovnocenných uzlů
+
+Tato šablona vám umožní vybrat si modul trvalosti na partnerský uzel. Například pokud máte tři rovnocenné uzly, můžete použít CouchDB v jedné a LevelDB na druhé straně.
+
+![Konfigurace více rovnocenných uzlů](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
 
 Vyberte **OK**.
 
 ### <a name="deploy"></a>Nasazení
 
-In **Summary**, review the inputs specified and to run basic pre-deployment validation.
+V části **Souhrn**zkontrolujte zadané vstupy a spusťte základní ověřování před nasazením.
 
 ![Souhrn](./media/hyperledger-fabric-consortium-blockchain/summary.png)
 
-Review legal and privacy terms and select **Purchase** to deploy. Depending on the number of VMs being provisioned, deployment time can vary from a few minutes to tens of minutes.
+Přečtěte si právní a osobní údaje a vyberte **koupit** k nasazení. V závislosti na počtu zřízených virtuálních počítačů se může čas nasazení v několika minutách lišit až na desítky minut.
 
 ## <a name="next-steps"></a>Další kroky
 
-You are now ready to focus on application and chaincode development against your Hyperledger consortium blockchain network.
+Nyní jste připraveni se soustředit na vývoj aplikací a chaincode ve vaší blockchain síti pro konsorcium hlavní knihy.

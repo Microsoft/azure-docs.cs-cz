@@ -57,7 +57,7 @@ Je **vyžadováno přiřazení uživatele?** možnost:
 - Pokud je tato možnost nastavená na hodnotu Ano, uživatelé musí být nejprve přiřazeni k této aplikaci, aby k nim měli přístup.
 - Pokud je tato možnost nastavená na ne, pak se udělí všem uživatelům, kteří mají přímý odkaz na adresu URL nebo URL aplikace, získají přístup.
 - Nemá vliv na to, zda se aplikace zobrazuje na panelu přístupu aplikace. Chcete-li zobrazit aplikaci na přístupovém panelu, musíte aplikaci přiřadit vhodného uživatele nebo skupinu.
-- Jenom aplikace s cloudovým aplikacím, které jsou nakonfigurované pro jednotné přihlašování SAML, aplikace proxy aplikací, které používají Azure Active Directory předběžné ověřování nebo aplikace sestavené přímo na platformě aplikace Azure AD používající OAuth 2,0/ OpenID připojit ověřování poté, co uživatel nebo správce souhlasí s touto aplikací. Viz [jednotné přihlašování pro aplikace](what-is-single-sign-on.md). Viz téma [Konfigurace způsobu, jakým koncoví uživatelé přisouhlasí k aplikaci](configure-user-consent.md).
+- Funguje jenom s cloudovým aplikacím, které jsou nakonfigurované pro jednotné přihlašování SAML, aplikace proxy aplikací, které používají Azure Active Directory předběžné ověřování nebo aplikace sestavené přímo na aplikační platformě Azure AD, které používají ověřování OAuth 2,0/OpenID Connect po tom, co uživatel nebo správce souhlasil s touto aplikací. Viz [jednotné přihlašování pro aplikace](what-is-single-sign-on.md). Viz téma [Konfigurace způsobu, jakým koncoví uživatelé přisouhlasí k aplikaci](configure-user-consent.md).
 - Tato možnost nemá žádný vliv, pokud je aplikace nakonfigurovaná pro jiné režimy jednotného přihlašování.
 
 ## <a name="assign-a-user-to-an-app---powershell"></a>Přiřazení uživatele k aplikaci – PowerShell

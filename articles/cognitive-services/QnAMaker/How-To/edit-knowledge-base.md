@@ -1,7 +1,7 @@
 ---
-title: Edit a knowledge base - QnA Maker
+title: Úprava znalostní báze – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker allows you to manage the content of your knowledge base by providing an easy-to-use editing experience.
+description: Nástroj QnA Maker umožňuje spravovat obsah znalostní báze tím, že poskytuje editační rozhraní snadným ovládáním.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,92 +18,92 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326802"
 ---
-# <a name="edit-a-knowledge-base-in-qna-maker"></a>Edit a knowledge base in QnA Maker
+# <a name="edit-a-knowledge-base-in-qna-maker"></a>Úprava znalostní báze v nástroje QnA Maker
 
-QnA Maker allows you to manage the content of your knowledge base by providing an easy-to-use editing experience.
+Nástroj QnA Maker umožňuje spravovat obsah znalostní báze tím, že poskytuje editační rozhraní snadným ovládáním.
 
 <a name="add-datasource"></a>
 
-## <a name="edit-your-knowledge-base-content"></a>Edit your knowledge base content
+## <a name="edit-your-knowledge-base-content"></a>Upravit obsah znalostní báze
 
-1.  Select **My knowledge bases** in the top navigation bar. 
+1.  V horním navigačním panelu vyberte **Moje znalostní** báze. 
 
-    You can see all the services you created or shared with you sorted in the descending order of the **last modified** date.
+    Všechny služby, které jste vytvořili nebo sdíleli s vámi, můžete zobrazit v sestupném pořadí podle data **Poslední úpravy** .
 
-    ![My Knowledge Bases](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    ![Moje znalostních bází](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
-1. Select a particular knowledge base to make edits to it.
+1. Vyberte konkrétní znalostní bázi, provádět úpravy.
  
-1. Select **Settings**. Here you can edit mandatory field Service Name.
+1. Vyberte **Nastavení**. Tady můžete upravit povinného pole název služby.
   
     |Cíl|Akce|
     |--|--|
-    |Add URL|You can add new URLs to add new FAQ content to Knowledge base by clicking **Manage knowledge base -> '+ Add URL'** link.|
-    |Delete URL|You can delete existing URLs by selecting the delete icon, the trash can.|
-    |Refresh content|If you want your knowledge base to crawl the latest content of existing URLs, select the **Refresh** checkbox. This will update the knowledge base with latest URL content once. This is not setting a regular schedule of updates.|
-    |Add file|You can add a supported file document to be part of a knowledge base, by selecting **Manage knowledge base**, then selecting **+ Add File**|
-    |Import|You can also import any existing knowledge base by selecting **Ímport Knowledge base** button. |
-    |Aktualizovat|Updating of knowledge base depends on **management pricing tier** used while creating QnA Maker service associated with your knowledge base. You can also update the management tier from Azure portal if required.
+    |Přidat adresu URL|Kliknutím na **Spravovat znalostní bázi > + přidat adresu URL** můžete přidat nové adresy URL a přidat tak nový obsah nejčastějších dotazů do znalostní báze.|
+    |Odstranit adresu URL|Existující adresy URL můžete odstranit tak, že vyberete ikonu odstranit, můžete do koše.|
+    |Aktualizovat obsah|Pokud chcete, aby znalostní báze procházela nejnovější obsah existujících adres URL, zaškrtněte políčko **aktualizovat** . Tím se aktualizuje znalostní báze s nejnovějším obsahem adresy URL. Tato možnost nenastavuje pravidelný plán aktualizací.|
+    |Přidat soubor|Podporovaný dokument, který je součástí znalostní báze, můžete přidat tak, že vyberete **Spravovat znalostní bázi**a pak vyberete **+ Přidat soubor** .|
+    |Import|Stávající znalostní bázi můžete také importovat tak, že vyberete tlačítko **znalostní báze Ímport Knowledge Base** . |
+    |Aktualizace|Aktualizace znalostní báze závisí na **cenové úrovni správy** používané při vytváření QnA maker služby přidružené k vaší znalostní bázi. V případě potřeby můžete také aktualizovat úroveň správy z webu Azure portal.
 
-1. Once you are done making changes to the knowledge base, select **Save and train** in the top right corner of the page in order to persist the changes.    
+1. Až provedete změny ve znalostní bázi, vyberte **Uložit a vytvořit vlak** v pravém horním rohu stránky, aby se změny zachovaly.    
 
-    ![Save and Train](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+    ![Uložit a jejich trénování](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
     >[!CAUTION]
-    >If you leave the page before selecting **Save and train**, all changes will be lost.
+    >Pokud ponecháte stránku před výběrem možnosti **Uložit a výuka**, ztratí se všechny změny.
 
 ## <a name="add-a-qna-pair"></a>Přidání páru otázky a odpovědi
 
-On the **EDIT** page, select **Add QnA pair** to add a new row to the knowledge base table.
+Na stránce **Upravit** vyberte **Přidat dvojici QnA** a přidejte nový řádek do tabulky znalostní báze.
 
-![Add QnA pair](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+![Přidat dvojici QnA](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
-## <a name="delete-a-qna-pair"></a>Delete a QnA pair
+## <a name="delete-a-qna-pair"></a>Odstranit pár QnA
 
-To delete a QnA, click the **delete** icon on the far right of the QnA row. This is a permanent operation. It can't be undone. Consider exporting your KB from the **Publish** page before deleting pairs. 
+Pokud chcete odstranit QnA, klikněte na ikonu **Odstranit** na pravé straně řádku QnA. Toto je nevratná operace. Nedá se vrátit zpět. Než budete páry odstranit, zvažte možnost exportovat si KB ze stránky **publikování** . 
 
-![Delete QnA pair](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+![Odstranit QnA pár](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-## <a name="add-alternate-questions"></a>Add alternate questions
+## <a name="add-alternate-questions"></a>Přidat alternativní otázky
 
-Add alternate questions to an existing QnA pair to improve the likelihood of a match to a user query.
+Přidáte alternativní dotazy na existující dvojice QnA ke zlepšení pravděpodobnost, že shoda pro uživatelský dotaz.
 
-![Add Alternate Questions](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
+![Přidat alternativní otázky](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
-## <a name="add-metadata"></a>Add metadata
+## <a name="add-metadata"></a>Přidání metadat
 
-Add metadata pairs by first selecting **View options**, then selecting **Show metadata**. This displays the metadata column. Next, select the **+** sign to add a metadata pair. This pair consists of one key and one value.
+Přidejte páry metadat tak, že nejprve vyberete **Možnosti zobrazení**a pak vyberete **zobrazit metadata**. Tím se zobrazí sloupec metadata. Pak vyberte znaménko **+** a přidejte dvojici metadat. Tento pár se skládá z jednoho klíče a jedné hodnoty.
 
-![Add Metadata](../media/qnamaker-how-to-edit-kb/add-metadata.png)
+![Přidání metadat](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
 > [!TIP]
-> Make sure to periodically Save and train the knowledge base after making edits to avoid losing changes.
+> Ujistěte se, že pravidelně ukládat a trénování znalostní báze po provedení úprav, abyste se vyhnuli ztrátě změny.
 
-## <a name="manage-large-knowledge-bases"></a>Manage large knowledge bases
+## <a name="manage-large-knowledge-bases"></a>Správa velkých znalostních bází
 
-* **Data source groups**: The QnAs are grouped by the data source from which they were extracted. You can expand or collapse the data source.
+* **Skupiny zdrojů dat**: QnAs jsou seskupeny podle zdroje dat, ze kterého byly extrahovány. Můžete rozbalit nebo sbalit zdroj dat.
 
-    ![Use the QnA Maker data source bar to collapse and expand data source questions and answers](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+    ![Pro sbalení a rozbalení otázek a odpovědí zdrojů dat použijte panel zdroje dat QnA Maker.](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Search knowledge base**: You can search the knowledge base by typing in the text box at the top of the Knowledge Base table. Click enter to search on the question, answer, or metadata content. Click on the X icon to remove the search filter.
+* **Hledání ve znalostní bázi**: znalostní báze můžete vyhledat zadáním do textového pole v horní části tabulky znalostní báze. Chcete-li vyhledat obsah dotaz, odpověď nebo metadata, klikněte na enter. Klikněte na ikonu X odebrat vyhledávací filtr.
 
-    ![Use the QnA Maker search box above the questions and answers to reduce the view to only filter-matching items](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Pomocí vyhledávacího pole QnA Maker nad dotazy a odpovědi zmenšíte zobrazení jenom na položky, které odpovídají filtrům.](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **Pagination**: Quickly move through data sources to manage large knowledge bases
+* **Stránkování**: rychlé přesunutí ze zdrojů dat za účelem správy rozsáhlých základů znalostní báze
 
-    ![Use the QnA Maker pagination features above the questions and answers to move through pages of questions and answers](../media/qnamaker-how-to-edit-kb/pagination.png)
+    ![Procházení stránek otázek a odpovědí pomocí funkcí QnA Maker stránkování nad rámec otázek a odpovědí](../media/qnamaker-how-to-edit-kb/pagination.png)
 
-## <a name="delete-knowledge-bases"></a>Delete knowledge bases
+## <a name="delete-knowledge-bases"></a>Odstranit znalostních bází
 
-Deleting a knowledge base (KB) is a permanent operation. It can't be undone. Before deleting a knowledge base, you should export the knowledge base from the **Settings** page of the QnA Maker portal. 
+Odstraňuje se znalostní bázi (KB) je nevratná operace. Nedá se vrátit zpět. Před odstraněním znalostní báze byste měli znalostní bázi exportovat ze stránky **Nastavení** na portálu QnA maker. 
 
-If you share your KB with [collaborators](collaborate-knowledge-base.md) then delete it, everyone loses access to the KB. 
+Pokud sdílíte své prostředí s [spolupracovníky](collaborate-knowledge-base.md) a potom je odstraníte, všichni ztratí přístup k KB. 
 
 ## <a name="delete-azure-resources"></a>Odstranění prostředků Azure 
 
-If you delete any of the Azure resources used for your QnA Maker knowledge bases, the knowledge bases will no longer function. Before deleting any resources, make sure you export your knowledge bases from the **Settings** page. 
+Pokud odstraníte všechny prostředky Azure používané pro vaše nástroje QnA Maker znalostních bází, znalostních bází nebude fungovat. Před odstraněním jakýchkoli prostředků se ujistěte, že vaše znalostní báze vyexportujete ze stránky **Nastavení** . 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Collaborate on a knowledge base](./collaborate-knowledge-base.md)
+> [Spolupráce na znalostní bázi](./collaborate-knowledge-base.md)

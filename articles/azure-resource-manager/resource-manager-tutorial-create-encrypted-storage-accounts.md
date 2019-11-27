@@ -1,6 +1,6 @@
 ---
 title: Využití referenčních informací k šablonám
-description: Utilize the Azure Resource Manager template reference to create a template for deploying an encrypted storage account.
+description: Využijte odkaz na šablonu Azure Resource Manageru k vytvoření šablony pro nasazení zašifrovaném účtu úložiště.
 author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
@@ -13,13 +13,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326481"
 ---
-# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Tutorial: Utilize the Azure Resource Manager template reference
+# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Kurz: Využít odkaz na šablonu Azure Resource Manageru
 
 Zjistěte, jak vyhledat informace o schématu šablony a jak pomocí těchto informací vytvářet šablony Azure Resource Manageru.
 
 V tomto kurzu použijete základní šablonu Azure pro rychlý start. Pomocí referenční dokumentace k šablonám tuto šablonu přizpůsobíte tak, abyste s její pomocí vytvořili šifrovaný účet služby Storage.
 
-![Resource Manager template reference deploy encrypted storage account](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
+![Odkaz na šablonu Správce prostředků nasazení šifrovaného účtu úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -32,11 +32,11 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. Pokud [chcete vytvořit Azure Resource Manager šablony](./resource-manager-tools-vs-code.md), přečtěte si téma použití Visual Studio Code.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
@@ -70,13 +70,13 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="find-the-template-reference"></a>Vyhledání referenčních informací k šablonám
 
-1. Browse to [Azure Template reference](https://docs.microsoft.com/azure/templates/).
-2. In the **Filter by title** box, enter **storage accounts**.
-3. Select **Reference/Template reference/Storage/&lt;Version>/Storage Accounts** as shown in the following screenshot:
+1. Přejděte na [odkaz šablony Azure](https://docs.microsoft.com/azure/templates/).
+2. Do pole **filtrovat podle názvu** zadejte **účty úložiště**.
+3. Vyberte odkaz **/šablonu Referenční dokumentace/úložiště/&lt;verze > účty/Storage** , jak je znázorněno na následujícím snímku obrazovky:
 
     ![Odkaz šablony Azure Resource Manageru na účet úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
-    If you don't know which version to choose, use the latest version.
+    Pokud si nejste jisti, která verze se má vybrat, používali nejnovější verzi.
 
 4. Vyhledejte informace o definici týkající se šifrování.
 

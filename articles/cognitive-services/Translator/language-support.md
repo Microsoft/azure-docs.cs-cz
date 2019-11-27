@@ -88,7 +88,7 @@ Translator Text API podporuje překlady textu na text v následujících jazycí
 |Portugalština|    `pt`    |Neuronové k dispozici|  Neurální|
 |Queretaro Otomi|   `otq`   |Pouze statistické|  Ložený|
 |Rumunština|  `ro`    |Neuronové k dispozici|  Neurální|
-|ruština|   `ru`    |Neuronové k dispozici|  Neurální|
+|Ruština|   `ru`    |Neuronové k dispozici|  Neurální|
 |Samoan|    `sm`    |Pouze statistické|  Ložený|
 |Srbština (cyrilice)|    `sr-Cyrl`   |Pouze statistické|  Ložený|
 |Srbština (latinka)|   `sr-Latn`   |Pouze statistické   |Ložený|
@@ -124,11 +124,11 @@ Metoda přepisu podporuje následující jazyky. V "do/z", "<-->" označuje, že
 | Hebrejština | `he` | Hebrejská `Hebr` | <--> | `Latn` latinky |
 | Hindština | `hi` | `Deva` Dévanágarí | <--> | `Latn` latinky |
 | Japonština | `ja` | Japonské `Jpan` | <--> | `Latn` latinky |
-| Kannada | `kn` | Kannada `Knda` | --> | `Latn` latinky |
+| Kannada | `kn` | Kannadské `Knda` | --> | `Latn` latinky |
 | Malajálamština | `ml` | Malajalámština `Mlym` | --> | `Latn` latinky |
 | Maráthština | `mr` | `Deva` Dévanágarí | --> | `Latn` latinky |
-| Oriya | `or` | Oriya `Orya` | <--> | `Latn` latinky |
-| Paňdžábština | `pa` | Gurmukhi `Guru`  | <--> | `Latn` latinky  |
+| Oriya | `or` | Uríské `Orya` | <--> | `Latn` latinky |
+| Paňdžábština | `pa` | Gurmukhí `Guru`  | <--> | `Latn` latinky  |
 | Srbština (cyrilice) | `sr-Cyrl` | `Cyrl` v cyrilici  | --> | `Latn` latinky |
 | Srbština (latinka) | `sr-Latn` | `Latn` latinky | --> | `Cyrl` v cyrilici|
 | Tamilština | `ta` | Kanadské `Taml` | --> | `Latn` latinky |
@@ -178,7 +178,7 @@ Slovník podporuje následující jazyky pro nebo z angličtiny pomocí vyhledá
 | polština      | `pl`          |
 | Portugalština      | `pt`          |
 | Rumunština      | `ro`          |
-| ruština      | `ru`          |
+| Ruština      | `ru`          |
 | Srbština (latinka)      | `sr-Latn`          |
 | Slovenština     | `sk`          |
 | Slovinština      | `sl`          |
@@ -244,7 +244,7 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | polština      | `pl`          |
 | Portugalština      | `pt`          |
 | Rumunština      | `ro`          |
-| ruština      | `ru`          |
+| Ruština      | `ru`          |
 |Samoan|    `sm`    |
 | Srbština (latinka)      | `sr-Latn`          |
 | Slovenština     | `sk`          |

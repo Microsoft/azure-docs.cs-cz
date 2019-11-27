@@ -1,6 +1,6 @@
 ---
-title: Migrate Conditional Access policies - Azure Active Directory
-description: Learn what you need to know to migrate classic policies in the Azure portal.
+title: Migrace zásad podmíněného přístupu – Azure Active Directory
+description: Zjistěte, co potřebujete vědět o migraci klasických zásad v Azure Portal.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,119 +18,119 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380542"
 ---
-# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>What is a policy migration in Azure Active Directory Conditional Access? 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Co je migrace zásad v Azure Active Directory podmíněný přístup? 
 
-[Conditional Access](../active-directory-conditional-access-azure-portal.md) is a capability of Azure Active directory (Azure AD) that enables you to control how authorized users access your cloud apps. While the purpose is still the same, the release of the new Azure portal has introduced significant improvements to how Conditional Access works.
+[Podmíněný přístup](../active-directory-conditional-access-azure-portal.md) je schopnost Azure Active Directory (Azure AD), která umožňuje řídit, jak autorizovaným uživatelům přistupují k vašim cloudovým aplikacím. I když je účel stále stejný, vydaná verze nového Azure Portal zavedla významná vylepšení, jak podmíněný přístup funguje.
 
-Consider migrating the policies you have not created in the Azure portal because:
+Zvažte možnost Migrace zásad, které jste nevytvořili v Azure Portal z těchto důvodů:
 
-- You can now address scenarios you could not handle before.
-- You can reduce the number of policies you have to manage by consolidating them.   
-- You can manage all your Conditional Access policies in one central location.
-- The Azure classic portal will be retired.   
+- Nyní můžete řešit scénáře, které jste předtím nemohli zpracovat.
+- Počet zásad, které budete muset spravovat, můžete snížit tak, že je konsolidujete.   
+- Všechny zásady podmíněného přístupu můžete spravovat v jednom centrálním umístění.
+- Portál Azure Classic bude vyřazený.   
 
-This article explains what you need to know to migrate your existing Conditional Access policies to the new framework.
+Tento článek vysvětluje, co potřebujete znát, abyste mohli migrovat stávající zásady podmíněného přístupu do nové architektury.
  
-## <a name="classic-policies"></a>Classic policies
+## <a name="classic-policies"></a>Klasické zásady
 
-In the [Azure portal](https://portal.azure.com), the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page is your entry point to your Conditional Access policies. However, in your environment, you might also have Conditional Access policies you have not created using this page. These policies are known as *classic policies*. Classic policies are Conditional Access policies, you have created in:
+Na stránce [Azure Portal](https://portal.azure.com)je stránka [podmíněného přístupu-policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) vaším vstupním bodem pro zásady podmíněného přístupu. Ve vašem prostředí ale taky můžete mít zásady podmíněného přístupu, které jste nevytvořili pomocí této stránky. Tyto zásady se označují jako *klasické zásady*. Klasické zásady jsou zásady podmíněného přístupu, které jste vytvořili v:
 
-- The Azure classic portal
-- The Intune classic portal
-- The Intune App Protection portal
+- Portál Azure Classic
+- Klasický portál Intune
+- Portál Intune App Protection
 
-On the **Conditional Access** page, you can access your classic policies by clicking [**Classic policies (preview)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) in the **Manage** section. 
+Na stránce **podmíněný přístup** můžete získat přístup k klasickým zásadám kliknutím na [**klasické zásady (Preview)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) v části **Správa** . 
 
 ![Azure Active Directory](./media/policy-migration/71.png)
 
-The **Classic policies** view provides you with an option to:
+Zobrazení **klasických zásad** nabízí možnost:
 
-- Filter your classic policies.
+- Filtrování klasických zásad.
  
    ![Azure Active Directory](./media/policy-migration/72.png)
 
-- Disable classic policies.
+- Zakáže klasické zásady.
 
    ![Azure Active Directory](./media/policy-migration/73.png)
    
-- Review the settings of a classic policy (and to disable it).
+- Zkontrolujte nastavení klasických zásad (a zakažte je).
 
    ![Azure Active Directory](./media/policy-migration/74.png)
 
-If you have disabled a classic policy, you can't revert this step anymore. This is why you can modify the group membership in a classic policy using the **Details** view. 
+Pokud jste zakázali klasické zásady, nemůžete tento krok již vrátit zpět. To je důvod, proč můžete členství ve skupině upravit v klasických zásadách pomocí zobrazení **podrobností** . 
 
 ![Azure Active Directory](./media/policy-migration/75.png)
 
-By either changing the selected groups or by excluding specific groups, you can test the effect of a disabled classic policy for a few test users before disabling the policy for all included users and groups. 
+Změnou vybraných skupin nebo vyloučením konkrétních skupin můžete otestovat efekt zakázané klasické zásady pro několik testovacích uživatelů ještě před tím, než zakážete zásady pro všechny zahrnuté uživatele a skupiny. 
 
-## <a name="azure-ad-conditional-access-policies"></a>Azure AD Conditional Access policies
+## <a name="azure-ad-conditional-access-policies"></a>Zásady podmíněného přístupu Azure AD
 
-With Conditional Access in the Azure portal, you can manage all your policies in one central location. Because the implementation of how Conditional Access has changed, you should familiarize yourself with the basic concepts before migrating your classic policies.
+Pomocí podmíněného přístupu v Azure Portal můžete spravovat všechny zásady v jednom centrálním umístění. Vzhledem k tomu, že implementace podmíněného přístupu se změnila, měli byste se před migrací klasických zásad seznámit se základními koncepty.
 
-Přečtěte si:
+Další informace:
 
-- [What is Conditional Access in Azure Active Directory](../active-directory-conditional-access-azure-portal.md) to learn about the basic concepts and the terminology.
-- [Best practices for Conditional Access in Azure Active Directory](best-practices.md) to get some guidance on deploying Conditional Access in your organization.
-- [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md) to familiarize yourself with the user interface in the Azure portal.
+- [Princip podmíněného přístupu v Azure Active Directory](../active-directory-conditional-access-azure-portal.md) k získání informací o základních konceptech a terminologii.
+- [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md) k získání některých pokynů k nasazení podmíněného přístupu ve vaší organizaci.
+- [Vyžadovat MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md) , abyste se seznámili s uživatelským rozhraním Azure Portal.
  
 ## <a name="migration-considerations"></a>Požadavky na migraci
 
-In this article, Azure AD Conditional Access policies are also referred to as *new policies*.
-Your classic policies continue to work side by side with your new policies until you disable or delete them. 
+V tomto článku se jako *nové zásady*označují taky zásady podmíněného přístupu Azure AD.
+Vaše klasické zásady budou dál fungovat s novými zásadami, dokud je nezakážete nebo neodstraníte. 
 
-The following aspects are important in the context of a policy consolidation:
+V souvislosti s konsolidací zásad jsou důležité tyto aspekty:
 
-- While classic policies are tied to a specific cloud app, you can select as many cloud apps as you need to in a new policy.
-- Controls of a classic policy and a new policy for a cloud app require all controls (*AND*) to be fulfilled. 
-- In a new policy, you can:
-   - Combine multiple conditions if required by your scenario. 
-   - Select several grant requirements as access control and combine them with a logical *OR* (require one of the selected controls) or with a logical *AND* (require all of the selected controls).
+- I když jsou klasické zásady vázané na určitou cloudovou aplikaci, můžete v nové zásadě vybrat tolik cloudových aplikací, kolik potřebujete.
+- Ovládací prvky klasické zásady a nové zásady pro cloudovou aplikaci vyžadují splnění všech ovládacích prvků (*a*). 
+- V nové zásadě můžete:
+   - Pokud to váš scénář vyžaduje, kombinovat více podmínek. 
+   - Vyberte několik požadavků grantu jako řízení přístupu a Zkombinujte je s logickým operátorem *or* (vyžadovat jeden z vybraných ovládacích prvků) nebo s logickým operátorem *and* (vyžadovat všechny vybrané ovládací prvky).
 
    ![Azure Active Directory](./media/policy-migration/25.png)
 
-### <a name="office-365-exchange-online"></a>Office 365 Exchange online
+### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
 
-If you want to migrate classic policies for **Office 365 Exchange online** that include **Exchange Active Sync** as client apps condition, you might not be able to consolidate them into one new policy. 
+Pokud chcete migrovat klasické zásady pro **Office 365 Exchange Online** , které zahrnují **Exchange Active Sync** jako podmínku klientské aplikace, možná je nebudete moct sloučit do jedné nové zásady. 
 
-This is, for example, the case if you want to support all client app types. In a new policy that has **Exchange Active Sync** as client apps condition, you can't select other client apps.
+Jedná se například o případ, kdy chcete podporovat všechny typy klientských aplikací. V nové zásadě, která má **Exchange Active Sync** jako podmínku klientské aplikace, nemůžete vybrat další klientské aplikace.
 
 ![Azure Active Directory](./media/policy-migration/64.png)
 
-A consolidation into one new policy is also not possible if your classic policies contain several conditions. A new policy that has **Exchange Active Sync** as client apps condition configured does not support other conditions:   
+Sloučení do jedné nové zásady není možné ani v případě, že klasické zásady obsahují několik podmínek. Nová zásada, která má nakonfigurovaný stav **Exchange Active Sync** jako klientské aplikace, nepodporuje další podmínky:   
 
 ![Azure Active Directory](./media/policy-migration/08.png)
 
-If you have a new policy that has **Exchange Active Sync** as client apps condition configured, you need to make sure that all other conditions are not configured. 
+Pokud máte novou zásadu, která má nakonfigurované podmínky **Exchange Active Sync** jako klientské aplikace, musíte se ujistit, že nejsou nakonfigurované žádné další podmínky. 
 
 ![Azure Active Directory](./media/policy-migration/16.png)
  
-[App-based](technical-reference.md#approved-client-app-requirement) classic policies for Office 365 Exchange Online that include **Exchange Active Sync** as client apps condition allow **supported** and **unsupported** [device platforms](technical-reference.md#device-platform-condition). While you can't configure individual device platforms in a related new policy, you can limit the support to [supported device platforms](technical-reference.md#device-platform-condition) only. 
+Klasické zásady [založené na](technical-reference.md#approved-client-app-requirement) aplikacích pro Office 365 Exchange Online, které zahrnují **Exchange Active Sync** jako stav klientských aplikací, umožňují použití **podporovaných** a **nepodporovaných** [platforem zařízení](technical-reference.md#device-platform-condition). I když v souvisejících nových zásadách nemůžete konfigurovat jednotlivé platformy zařízení, můžete omezit podporu jenom na [podporované platformy zařízení](technical-reference.md#device-platform-condition) . 
 
 ![Azure Active Directory](./media/policy-migration/65.png)
 
-You can consolidate multiple classic policies that include **Exchange Active Sync** as client apps condition if they have:
+Můžete konsolidovat více klasických zásad, které zahrnují **Exchange Active Sync** jako podmínku klientské aplikace, pokud mají:
 
-- Only **Exchange Active Sync** as condition 
-- Several requirements for granting access configured
+- Pouze **Exchange Active Sync** jako podmínka 
+- Několik požadavků pro udělení přístupu je nakonfigurované.
 
-One common scenario is the consolidation of:
+Jedním z běžných scénářů je konsolidace:
 
-- A device-based classic policy from the Azure classic portal 
-- An app-based classic policy in the Intune app protection portal 
+- Klasické zásady na základě zařízení z portálu Azure Classic 
+- Klasické zásady na základě aplikace na portálu Intune App Protection 
  
-In this case, you can consolidate your classic policies into one new policy that has both requirements selected.
+V takovém případě můžete své klasické zásady konsolidovat do jedné nové zásady, která má obě požadavky vybrány.
 
 ![Azure Active Directory](./media/policy-migration/62.png)
 
-### <a name="device-platforms"></a>Device platforms
+### <a name="device-platforms"></a>Platformy zařízení
 
-Classic policies with [app-based controls](technical-reference.md#approved-client-app-requirement) are pre-configured with iOS and Android as the [device platform condition](technical-reference.md#device-platform-condition). 
+Klasické zásady s [ovládacími prvky založenými na aplikaci](technical-reference.md#approved-client-app-requirement) jsou předem nakonfigurované s iOS a Androidem jako s [podmínkou platformy zařízení](technical-reference.md#device-platform-condition). 
 
-In a new policy, you need to select the [device platforms](technical-reference.md#device-platform-condition) you want to support individually.
+V nové zásadě musíte vybrat [platformy zařízení](technical-reference.md#device-platform-condition) , které chcete podporovat samostatně.
 
 ![Azure Active Directory](./media/policy-migration/41.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md). 
+- Pokud chcete zjistit, jak nakonfigurovat zásady podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md).
+- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 

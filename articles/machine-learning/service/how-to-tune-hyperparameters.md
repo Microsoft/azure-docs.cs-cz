@@ -50,11 +50,11 @@ Každý parametr může být buď diskrétní, nebo souvislý a má distribuci h
 
 #### <a name="discrete-hyperparameters"></a>Diskrétní hyperparameters 
 
-Diskrétní hyperparameters jsou zadané jako `choice` mezi jednotlivých hodnot. `choice` může být:
+Diskrétní parametry jsou zadány jako `choice` mezi diskrétními hodnotami. `choice` může být:
 
 * jeden nebo více hodnot oddělených čárkami
-* A `range` objektu
-* všechny libovolného `list` objektu
+* objekt `range`
+* libovolný objekt `list`
 
 
 ```Python
@@ -64,23 +64,23 @@ Diskrétní hyperparameters jsou zadané jako `choice` mezi jednotlivých hodnot
     }
 ```
 
-V takovém případě `batch_size` provede na jednu z hodnot [16, 32, 64, 128] a `number_of_hidden_layers` provede na jednu z hodnot [1, 2, 3, 4].
+V takovém případě `batch_size` převezme jednu z hodnot [16, 32, 64, 128] a `number_of_hidden_layers` jednu z hodnot [1, 2, 3, 4].
 
 Pokročilé diskrétní hyperparameters také lze pomocí distribuci. Podporují se následující distribuce:
 
-* `quniform(low, high, q)` -Vrací hodnotu, jako je kruhové (uniform (dolní, horní) / q) * q
-* `qloguniform(low, high, q)` -Vrací hodnotu, jako je kruhové (exp (uniform (dolní, horní)) / q) * q
-* `qnormal(mu, sigma, q)` -Vrací hodnotu, jako je kruhové (normální (mu, sigma) / q) * q
-* `qlognormal(mu, sigma, q)` -Vrací hodnotu, jako je kruhové (exp (normální (mu, sigma)) / q) * q
+* `quniform(low, high, q)` – vrátí hodnotu, jako je například Round (Uniform (nízká, vysoká)/q) * q
+* `qloguniform(low, high, q)` – vrátí hodnotu, jako je například Round (EXP (Uniform (nízká, High))/q) * q
+* `qnormal(mu, sigma, q)` – vrátí hodnotu, jako je například Round (Normal (mu, Sigma)/q) * q
+* `qlognormal(mu, sigma, q)` – vrátí hodnotu, jako je například Round (EXP (normální (mu, Sigma))/q) * q
 
 #### <a name="continuous-hyperparameters"></a>Průběžné hyperparameters 
 
 Průběžné hyperparameters jsou zadané jako distribuční průběžné rozsahu hodnot. Podporované distribuce patří:
 
-* `uniform(low, high)` -Vrací hodnotu, které jsou rovnoměrně rozloženy mezi nízká a vysoká
-* `loguniform(low, high)` -Vrací hodnotu vykreslena podle funkce exp (uniform (dolní, horní)) tak, aby rovnoměrně logaritmus návratová hodnota
-* `normal(mu, sigma)` -Vrátí skutečnou hodnotu, která je obvykle distribuován spolu s střední sigma jednotku zasílání zpráv a směrodatné odchylky
-* `lognormal(mu, sigma)` -Vrací hodnotu tak, aby logaritmus návratová hodnota je obvykle distribuován vykreslena podle funkce exp (normální (mu, sigma))
+* `uniform(low, high)` – vrátí hodnotu rovnoměrně distribuovanou mezi dolní a vysokou hodnotou.
+* `loguniform(low, high)` – vrátí hodnotu vykreslenou podle EXP (Uniform (Low, High)), aby byl logaritmus návratové hodnoty stejnoměrně distribuován.
+* `normal(mu, sigma)` – vrátí reálnou hodnotu, která je normálně distribuována se středníky a směrodatnou odchylkou Sigma.
+* `lognormal(mu, sigma)` – vrátí hodnotu vykreslenou podle hodnoty EXP (Normal (mu, Sigma)), aby byl logaritmus návratové hodnoty obvykle distribuován.
 
 Příklad definice místo parametru:
 
@@ -91,7 +91,7 @@ Příklad definice místo parametru:
     }
 ```
 
-Tento kód definuje prostoru pro hledání se dvěma parametry - `learning_rate` a `keep_probability`. `learning_rate` je normální rozdělení dat s střední hodnotu 10 a směrodatné odchylky 3. `keep_probability` má rovnoměrné rozdělení s minimální hodnotou 0,05 a maximální hodnota 0,1.
+Tento kód definuje prostor pro hledání se dvěma parametry-`learning_rate` a `keep_probability`. `learning_rate` má normální rozdělení s střední hodnotou 10 a směrodatnou odchylkou 3. `keep_probability` má jednotnou distribuci s minimální hodnotou 0,05 a maximální hodnotou 0,1.
 
 ### <a name="sampling-the-hyperparameter-space"></a>Vzorkování hyperparameter místa
 
@@ -119,7 +119,7 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>Vzorkování mřížky
 
-[Vzorkování mřížky](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) provede jednoduchou mřížku pro vyhledávání všech vhodných hodnot v definovaném prostoru hledání. Lze použít pouze s hyperparameters zadat pomocí `choice`. Celkem šest vzorků, které se má například následujícím prostoru:
+[Vzorkování mřížky](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) provede jednoduchou mřížku pro vyhledávání všech vhodných hodnot v definovaném prostoru hledání. Dá se použít jenom s parametry určenými pomocí `choice`. Celkem šest vzorků, které se má například následujícím prostoru:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -148,7 +148,7 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> Vzorkování Bayesova nepodporuje žádnou zásadu předčasné ukončení (viz [zadejte zásadu předčasné ukončení](#specify-early-termination-policy)). Při použití parametru vzorkování Bayesova, nastavte `early_termination_policy = None`, nebo nechte `early_termination_policy` parametru.
+> Bayesovského rozhodování vzorkování nepodporuje žádné zásady prvotního ukončení (viz [určení zásady prvotního ukončení](#specify-early-termination-policy)). Při použití vzorkování parametrů bayesovského rozhodování nastavte `early_termination_policy = None`nebo ponechte parametr `early_termination_policy`.
 
 <a name='specify-primary-metric-to-optimize'/>
 
@@ -156,8 +156,8 @@ param_sampling = BayesianParameterSampling( {
 
 Určete [primární metriku](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py) , kterou má experiment pro ladění parametrů optimalizovat. Každé spuštění školení se vyhodnocuje pro primární metriku. Nedostatečný výkon spuštění (kde primární metriku nesplňuje kritéria stanovená zásadou předčasné ukončení) bude ukončena. Kromě primární název metriky cíle optimalizace - také určit, jestli se má Maximalizace nebo minimalizace primární metriku.
 
-* `primary_metric_name`: Název primární metriky pro optimalizaci. Název primárního metriky musí přesně shodovat s názvem metrika zapsané podle cvičný skript. Zobrazit [protokolu metriky pro hyperparametrů](#log-metrics-for-hyperparameter-tuning).
-* `primary_metric_goal`: To může být buď `PrimaryMetricGoal.MAXIMIZE` nebo `PrimaryMetricGoal.MINIMIZE` a určuje, zda bude primární metriku maximalizované nebo minimalizovaná při vyhodnocování spuštění. 
+* `primary_metric_name`: název primární metriky, která se má optimalizovat. Název primárního metriky musí přesně shodovat s názvem metrika zapsané podle cvičný skript. Další informace najdete v tématu [metriky protokolu pro ladění](#log-metrics-for-hyperparameter-tuning)předaných parametrů.
+* `primary_metric_goal`: může být buď `PrimaryMetricGoal.MAXIMIZE` nebo `PrimaryMetricGoal.MINIMIZE`, a určuje, zda bude primární metrika při vyhodnocování běhu maximalizována nebo minimalizována. 
 
 ```Python
 primary_metric_name="accuracy",
@@ -180,7 +180,7 @@ run_logger = Run.get_context()
 run_logger.log("accuracy", float(val_accuracy))
 ```
 
-Vypočítá cvičný skript `val_accuracy` a zaznamená jako "přesnost", který se používá jako primární metriku. Metrika se protokoluje pokaždé, když se přijme hyperparameter ladění služby. Záleží model pro vývojáře a zjistěte, jak často chcete nahlásit tuto metriku.
+Školicí skript vypočítá `val_accuracy` a zaznamená ho jako přesnost, která se používá jako primární metrika. Metrika se protokoluje pokaždé, když se přijme hyperparameter ladění služby. Záleží model pro vývojáře a zjistěte, jak často chcete nahlásit tuto metriku.
 
 <a name='specify-early-termination-policy'/>
 
@@ -190,8 +190,8 @@ Ukončete nedostatečný výkon spuštění automaticky k zásadám předčasné
 
 Při použití zásady předčasné ukončení, můžete nakonfigurovat, které řídí, kdy se použije zásada na následující parametry:
 
-* `evaluation_interval`: frekvence k uplatnění zásad. Pokaždé, když cvičný skript protokoluje primární metrika se počítá jako jeden interval. Proto `evaluation_interval` 1 uplatní zásady pokaždé, když se skript školení hlásí primární metriku. `evaluation_interval` 2 se dané zásady používaly jiné pokaždé cvičný skript hlásí primární metriku. Pokud není zadán, `evaluation_interval` je standardně nastavená na hodnotu 1.
-* `delay_evaluation`: zpoždění první vyhodnocení zásad pro zadaný počet intervalů o délce. Je volitelný parametr, který umožňuje všechny konfigurace spuštění pro počáteční minimální počet intervalů, jak se vyhnout předčasné ukončení školení, které běží. Je-li zadána, se zásady vztahují každých několik evaluation_interval, který je větší než nebo rovna hodnotě delay_evaluation.
+* `evaluation_interval`: frekvence použití zásad. Pokaždé, když cvičný skript protokoluje primární metrika se počítá jako jeden interval. Proto `evaluation_interval` 1 použije zásadu pokaždé, když skript školení ohlásí primární metriku. `evaluation_interval` 2 budou zásadu používat pokaždé, když skript pro školení nahlásí primární metriku. Pokud tento parametr nezadáte, `evaluation_interval` ve výchozím nastavení nastaveno na hodnotu 1.
+* `delay_evaluation`: zpoždění prvního vyhodnocení zásad pro zadaný počet intervalů. Je volitelný parametr, který umožňuje všechny konfigurace spuštění pro počáteční minimální počet intervalů, jak se vyhnout předčasné ukončení školení, které běží. Je-li zadána, se zásady vztahují každých několik evaluation_interval, který je větší než nebo rovna hodnotě delay_evaluation.
 
 Azure Machine Learning podporuje následující zásady prvotního ukončení.
 
@@ -199,11 +199,11 @@ Azure Machine Learning podporuje následující zásady prvotního ukončení.
 
 [Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#definition) je zásada ukončení založená na rozsahu časové rezervy/rezervy a intervalu vyhodnocení. Zásady se již v rané fázi ukončí všechny běhy, kde primární metriky není v rámci zadaný slackový faktor / slacku velikost s ohledem na nejvýkonnější školení spuštění. Trvá následující parametry konfigurace:
 
-* `slack_factor` nebo `slack_amount`: slack povolené s ohledem na nejvýkonnější školení spustit. `slack_factor` Určuje povolené slack jako poměr. `slack_amount` Určuje povolené slack jako absolutní hodnota, namísto poměr.
+* `slack_factor` nebo `slack_amount`: časová rezerva povolená s ohledem na nejlepší provádění školicích běhů. `slack_factor` určuje povolenou časovou rezervu jako poměr. `slack_amount` určuje povolenou časovou rezervu jako absolutní hodnotu namísto poměru.
 
-    Představte si třeba Bandit zásady se použijí v intervalu 10. Předpokládejme, že nejlepší provádění spustit v intervalu 10 hlášené primární metriku 0,8 s cílem pro maximalizaci primární metriky. Pokud zásada nebyla zadána s `slack_factor` 0,2, spustí všechny školení, jehož nejlepší metriky v intervalu 10 je menší než 0.66 (0,8 / (1 +`slack_factor`)) bude ukončena. Pokud místo toho se zadaným zásady `slack_amount` 0,2, spustí všechny školení, jehož nejlepší metriky v intervalu 10 je menší než 0.6 (0,8 - `slack_amount`) bude ukončena.
-* `evaluation_interval`: frekvence pro použití zásady (nepovinný parametr).
-* `delay_evaluation`: zpoždění první vyhodnocení zásad pro zadaný počet intervalů (nepovinný parametr).
+    Představte si třeba Bandit zásady se použijí v intervalu 10. Předpokládejme, že nejlepší provádění spustit v intervalu 10 hlášené primární metriku 0,8 s cílem pro maximalizaci primární metriky. Pokud se zásada zadala s `slack_factor` 0,2, budou všechny školicí běhy, jejichž nejlepší metrika v intervalu 10 je nižší než 0,66 (0,8/(1 +`slack_factor`)), budou ukončeny. Pokud se místo toho zásada zadala s `slack_amount` 0,2, všechny školicí běhy, jejichž nejlepší metrika v intervalu 10 je menší než 0,6 (0,8-`slack_amount`), se ukončí.
+* `evaluation_interval`: frekvence použití zásad (volitelného parametru).
+* `delay_evaluation`: zpoždění prvního vyhodnocení zásad pro zadaný počet intervalů (volitelný parametr).
 
 
 ```Python
@@ -216,8 +216,8 @@ V tomto příkladu předčasné ukončení zásady se použijí na každý inter
 ### <a name="median-stopping-policy"></a>Střední zastavení zásad
 
 [Medián při zastavení](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py) je zásada předčasného ukončení založená na běžících průměrech primárních metrik, které běhy oznámily. Tato zásada vypočítá spuštěné průměry přes všechny tréninkových spuštění a ukončí spuštění, jehož výkon je horší než medián spuštěné průměry. Tyto zásady mají následující parametry konfigurace:
-* `evaluation_interval`: frekvence pro použití zásady (nepovinný parametr).
-* `delay_evaluation`: zpoždění první vyhodnocení zásad pro zadaný počet intervalů (nepovinný parametr).
+* `evaluation_interval`: frekvence použití zásad (volitelného parametru).
+* `delay_evaluation`: zpoždění prvního vyhodnocení zásad pro zadaný počet intervalů (volitelný parametr).
 
 
 ```Python
@@ -231,9 +231,9 @@ V tomto příkladu předčasné ukončení zásad se použije na každý interva
 
 [Zkrácené výběr](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py) zruší v každém intervalu vyhodnocení dané procento nejnižší prováděné běhy. Spuštění porovnání na základě jejich výkonu na primární metriku a nejnižší X % budou ukončeny. Trvá následující parametry konfigurace:
 
-* `truncation_percentage`: spustí procento nejnižší provádění ukončení v každém intervalu hodnocení. Zadejte celočíselnou hodnotu mezi 1 a 99.
-* `evaluation_interval`: frekvence pro použití zásady (nepovinný parametr).
-* `delay_evaluation`: zpoždění první vyhodnocení zásad pro zadaný počet intervalů (nepovinný parametr).
+* `truncation_percentage`: procento nejnižších spuštění, které se má ukončit v každém intervalu vyhodnocení. Zadejte celočíselnou hodnotu mezi 1 a 99.
+* `evaluation_interval`: frekvence použití zásad (volitelného parametru).
+* `delay_evaluation`: zpoždění prvního vyhodnocení zásad pro zadaný počet intervalů (volitelný parametr).
 
 
 ```Python
@@ -257,22 +257,22 @@ Pokud není zadána žádná zásada, bude služba ladění u parametrů nastave
 
 ### <a name="picking-an-early-termination-policy"></a>Vybírání zásad prvotního ukončení
 
-* Pokud hledáte konzervativní zásady, které nabízí úspory, bez ukončení slibně úlohy, můžete použít zásady zastavení Medián s `evaluation_interval` 1 a `delay_evaluation` 5. Toto jsou konzervativní nastavení, které můžou zajisti přibližně 25 % – 35 % levnější bez ztráty na primární metriku (podle našich data pro vyhodnocení).
+* Pokud hledáte konzervativní zásadu, která poskytuje úspory bez ukončení slíbených úloh, můžete použít medián pro zastavení zásad `evaluation_interval` 1 a `delay_evaluation` 5. Toto jsou konzervativní nastavení, které můžou zajisti přibližně 25 % – 35 % levnější bez ztráty na primární metriku (podle našich data pro vyhodnocení).
 * Pokud hledáte výkonnější úspory od předčasného ukončení, můžete buď použít zásady Bandit s přísnější (menší) povolenou časovou rezervou, nebo zkrátit výběr, s větším procentem zkrácení.
 
 ## <a name="allocate-resources"></a>Přidělit prostředky
 
 Řízení rozpočtu prostředků pro váš hyperparameter ladění tak, že zadáte maximální celkový počet tréninkových spuštění experimentu.  Volitelně můžete zadejte maximální dobu trvání vaše hyperparameter ladění experimentu.
 
-* `max_total_runs`: Maximální počet tréninkových spuštění, které budou vytvořeny. Horní mez – může mít méně spuštění, například místo hyperparameter je však konečný a má menší počet vzorků. Musí být číslo v rozsahu od 1 do 1000.
-* `max_duration_minutes`: Maximální dobu v minutách hyperparameter ladění experimentu. Parametr je nepovinný a pokud jsou k dispozici, se automaticky zruší všechny běhy, které by být spuštěny po této hodnotě duration.
+* `max_total_runs`: maximální celkový počet běhů cvičení, které se vytvoří. Horní mez – může mít méně spuštění, například místo hyperparameter je však konečný a má menší počet vzorků. Musí být číslo v rozsahu od 1 do 1000.
+* `max_duration_minutes`: maximální doba v minutách experimentu ladění parametrů. Parametr je nepovinný a pokud jsou k dispozici, se automaticky zruší všechny běhy, které by být spuštěny po této hodnotě duration.
 
 >[!NOTE] 
->Pokud mají oba `max_total_runs` a `max_duration_minutes` zadávají hyperparameter ladění experiment ukončí po dosažení první z těchto dvou prahové hodnoty.
+>Pokud jsou zadány `max_total_runs` i `max_duration_minutes`, experiment ladění s parametrem se ukončí při dosažení prvního z těchto dvou mezních hodnot.
 
 Kromě toho určete, že maximální počet školení spustí spustit souběžně během vaší hyperparameter optimalizace pro hledání.
 
-* `max_concurrent_runs`: Maximální počet spuštění spustit současně v kterémkoli daném okamžiku. Je-li žádný zadán, všechny `max_total_runs` spustí paralelně. Je-li zadána, musí být číslo mezi 1 a 100.
+* `max_concurrent_runs`: maximální počet spuštění souběžně v daném okamžiku. Pokud není zadaný, spustí se souběžně všechny `max_total_runs`. Je-li zadána, musí být číslo mezi 1 a 100.
 
 >[!NOTE] 
 >Počet souběžných spuštění jsou závislé na dostupné v cílové zadaný výpočetní prostředky. Proto je potřeba zajistit, že cílové výpočetní prostředí nemá k dispozici prostředky požadované rozhraní Concurrency.
@@ -288,7 +288,7 @@ Tento kód nakonfiguruje experiment vyladěním parametrů, aby používal maxim
 
 ## <a name="configure-experiment"></a>Konfigurace testu
 
-[Nakonfigurujte experiment s optimalizací parametrů](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) pomocí definovaného prostoru pro hledání parametrů, zásad prvotního ukončení, primární metriky a přidělení prostředků z výše uvedených částí. Kromě toho poskytují `estimator` vzorky hyperparameters, která bude volána. `estimator` Popisuje cvičný skript spustíte, zdroje na jednu úlohu (jeden nebo více grafickými procesory) a cílové výpočetní prostředí používat. Protože souběžnost pro vaše hyperparameter ladění experiment jsou závislé na prostředcích, které jsou k dispozici, aby se cílového výpočetního prostředí v `estimator` má dostatek prostředků pro požadovanou souběžnosti. (Další informace o odhady, naleznete v tématu [trénování modelů](how-to-train-ml-models.md).)
+[Nakonfigurujte experiment s optimalizací parametrů](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) pomocí definovaného prostoru pro hledání parametrů, zásad prvotního ukončení, primární metriky a přidělení prostředků z výše uvedených částí. Kromě toho zadejte `estimator`, který se bude volat pomocí ukázkových parametrů. `estimator` popisuje školicí skript, který spustíte, prostředky na úlohu (jeden nebo více GPU) a výpočetní cíl, který se má použít. Vzhledem k tomu, že je souběžnost pro experimenty s optimalizací parametrů na dostupných prostředcích ověřovaný, ujistěte se, že cílový výpočetní cíl zadaný v `estimator` má dostatek prostředků pro požadovanou souběžnost. (Další informace o odhady najdete v tématu [výuka modelů](how-to-train-ml-models.md).)
 
 Konfigurovat vaše hyperparameter ladění testu:
 
@@ -376,7 +376,7 @@ Kromě toho můžete vizuálně identifikovat korelace mezi výkonem a hodnoty j
 
 [![paralelních souřadnic ladění parametrů](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
-Můžete vizualizovat váš hyperparameter ladění spuštění portálu Azure web. Další informace o tom, jak zobrazit experimentu na webovém portálu najdete v tématu [jak sledovat experimenty](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
+Můžete vizualizovat váš hyperparameter ladění spuštění portálu Azure web. Další informace o tom, jak zobrazit experiment na webovém portálu, najdete v tématu [jak sledovat experimenty](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
 
 ## <a name="find-the-best-model"></a>Vyhledání nejvhodnějšího modelu
 
@@ -396,10 +396,10 @@ print('\n batch size:',parameter_values[7])
 
 ## <a name="sample-notebook"></a>Ukázka poznámkového bloku
 Další informace najdete v poznámkách k vlakovým parametrům-* v této složce:
-* [How-to-use-azureml/Training-with-Deep-Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
+* [Postupy: použití-AzureML/školení – s využitím hloubkového učení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Další kroky
-* [Sledovat experimentu](how-to-track-experiments.md)
-* [Nasazení trénovaného modelu](how-to-deploy-and-where.md)
+* [Sledování experimentu](how-to-track-experiments.md)
+* [Nasazení trained model](how-to-deploy-and-where.md)

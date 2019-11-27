@@ -46,7 +46,7 @@ Následující obrázek ukazuje, jak: ![visulize-data](./media/resource-known-is
 
 ## <a name="sdk-installation-issues"></a>Problémy při instalaci sady SDK
 
-**Chybová zpráva: "PyYAML" nelze odinstalovat.**
+**Chybová zpráva: Nejde odinstalovat ' PyYAML '.**
 
 Azure Machine Learning SDK pro Python: PyYAML je projekt distutils nainstalované. Proto nemůžeme přesně určit, které soubory do ní patří, pokud dojde k částečné odinstalaci. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
 
@@ -76,7 +76,7 @@ Pokud zjistíte `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died 
 
 ## <a name="fpgas"></a>FPGA
 
-Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro FPGA kvótu. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvóty: https://aka.ms/aml-real-time-ai
+Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro FPGA kvótu. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvótu: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Automatizované strojové učení
 
@@ -112,7 +112,7 @@ Problémy s Databricks a Azure Machine Learning.
 
 ### <a name="failure-when-installing-packages"></a>Chyba při instalaci balíčků
 
-Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, jako například `psutil`, může způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
+Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, například `psutil`, můžou způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -178,7 +178,7 @@ Některé z těchto akcí se zobrazí v oblasti __aktivity__ pracovního prostor
 
 ## <a name="resource-quotas"></a>Kvóty prostředků
 
-Další informace o [kvóty prostředků](how-to-manage-quotas.md) můžete setkat při práci se službou Azure Machine Learning.
+Přečtěte si o [kvótách prostředků](how-to-manage-quotas.md) , se kterými se můžete setkat při práci s Azure Machine Learning.
 
 ## <a name="authentication-errors"></a>Chyby ověřování
 

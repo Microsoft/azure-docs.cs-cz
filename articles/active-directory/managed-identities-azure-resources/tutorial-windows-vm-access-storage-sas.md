@@ -1,6 +1,6 @@
 ---
-title: Tutorial`:` Use managed identity to access Azure Storage using SAS credential - Azure AD
-description: A tutorial that shows you how to use a Windows VM system-assigned managed identity to access Azure Storage, using a SAS credential instead of a storage account access key.
+title: Kurz`:` použití spravované identity pro přístup k Azure Storage pomocí pověření SAS – Azure AD
+description: V tomto kurzu se dozvíte, jak používat spravovanou identitu přiřazenou systémem Windows VM k přístupu k Azure Storage pomocí přihlašovacích údajů SAS místo přístupového klíče účtu úložiště.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -22,20 +22,20 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232159"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Tutorial: Use a Windows VM system-assigned managed identity to access Azure Storage via a SAS credential
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: použití spravované identity přiřazené systémem Windows VM pro přístup k Azure Storage prostřednictvím přihlašovacích údajů SAS
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-This tutorial shows you how to use a system-assigned identity for a Windows virtual machine (VM) to obtain a storage Shared Access Signature (SAS) credential. Konkrétně se bude jednat o [pověření SAS služby](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
+V tomto kurzu se dozvíte, jak používat identitu přiřazenou systémem pro virtuální počítač s Windows a získat přihlašovací údaje pro sdílený přístupový podpis (SAS) úložiště. Konkrétně se bude jednat o [pověření SAS služby](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
 
-A Service SAS provides the ability to grant limited access to objects in a storage account, for limited time and a specific service (in our case, the blob service), without exposing an account access key. Pověření SAS můžete použít obvyklým způsobem při operacích s úložištěm, třeba při použití sady SDK služby Storage. For this tutorial, we demonstrate uploading and downloading a blob using Azure Storage PowerShell. V tomto kurzu se naučíte:
+SAS služby poskytuje možnost udělit omezený přístup k objektům v účtu úložiště, a to po dobu omezeného času a konkrétní služby (v našem případě u služby BLOB Service) bez odhalení přístupového klíče účtu. Pověření SAS můžete použít obvyklým způsobem při operacích s úložištěm, třeba při použití sady SDK služby Storage. Pro účely tohoto kurzu předvádíme nahrání a stažení objektu BLOB pomocí Azure Storage PowerShellu. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * vytvořit účet úložiště
 > * Udělení přístupu k SAS účtu úložiště v Resource Manageru pro virtuální počítač 
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k načtení SAS z Resource Manageru 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -43,7 +43,7 @@ A Service SAS provides the ability to grant limited access to objects in a stora
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
-Teď vytvoříte účet úložiště (pokud ho ještě nemáte). You can also skip this step and grant your VM's system-assigned managed identity access to the SAS credential of an existing storage account. 
+Teď vytvoříte účet úložiště (pokud ho ještě nemáte). Tento krok můžete také přeskočit a udělit spravované identitě přidělené systémem vašeho virtuálního počítače k přihlašovacím údajům SAS existujícího účtu úložiště. 
 
 1. V levém horním rohu na webu Azure Portal klikněte na tlačítko pro **vytvoření nové služby**.
 2. Klikněte na **Úložiště** a potom na **Účet úložiště**. Zobrazí se nový panel Vytvořit účet úložiště.
@@ -58,7 +58,7 @@ Teď vytvoříte účet úložiště (pokud ho ještě nemáte). You can also sk
 
 Později nahrajeme a stáhneme soubor do nového účtu úložiště. Soubory vyžadují úložiště objektů blob. Proto potřebujeme vytvořit kontejner objektů blob, do kterého soubor uložíme.
 
-1. Vraťte se k nově vytvořenému účtu úložiště.
+1. Přejděte zpět k nově vytvořenému účtu úložiště.
 2. Na panelu vlevo pod položkou Blob service klikněte na odkaz **Kontejnery**.
 3. Když nahoře na stránce kliknete na **+ Kontejner**, vysune se panel Nový kontejner.
 4. Pojmenujte kontejner, vyberte úroveň přístupu a klikněte na **OK**. Zadaný název použijeme v další části tohoto kurzu. 
@@ -67,17 +67,17 @@ Později nahrajeme a stáhneme soubor do nového účtu úložiště. Soubory vy
 
 ## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>Udělení přístupu k použití SAS úložiště spravované identitě přiřazené systémem virtuálního počítače 
 
-Azure Storage nativně nepodporuje ověřování Azure AD.  However, you can use a managed identity to retrieve a storage SAS from Resource Manager, then use the SAS to access storage.  V tomto kroku udělíte spravované identitě přiřazené systémem virtuálního počítače přístup k SAS účtu úložiště.   
+Azure Storage nativně nepodporuje ověřování Azure AD.  Spravovanou identitu ale můžete použít k načtení SAS úložiště z Správce prostředků a potom k přístupu k úložišti použít SAS.  V tomto kroku udělíte spravované identitě přiřazené systémem virtuálního počítače přístup k SAS účtu úložiště.   
 
-1. Vraťte se k nově vytvořenému účtu úložiště.   
+1. Přejděte zpět k nově vytvořenému účtu úložiště.   
 2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)** .  
-3. Click **+ Add role assignment** on top of the page to add a new role assignment for your VM
+3. Kliknutím na **+ Přidat přiřazení role** v horní části stránky přidejte nové přiřazení role pro virtuální počítač.
 4. Na pravé straně stránky nastavte položku **Role** na Přispěvatel účtů úložiště.  
 5. V dalším rozevíracím seznamu **Přiřadit přístup k** nastavte prostředek na Virtuální počítač.  
 6. Potom se ujistěte, že v rozevíracím seznamu **Předplatné** je správné předplatné, a nastavte **Skupinu prostředků** na Všechny skupiny prostředků.  
 7. Nakonec **vyberte** v rozevíracím seznamu svůj virtuální počítač s Windows a klikněte na **Uložit**. 
 
-    ![Alternativní text k obrázku](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
+    ![Text k alternativnímu obrázku](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k volání Azure Resource Manageru 
 
@@ -110,7 +110,7 @@ V této části budete muset používat rutiny prostředí PowerShell pro Azure 
 
 ## <a name="get-a-sas-credential-from-azure-resource-manager-to-make-storage-calls"></a>Získání pověření SAS z Azure Resource Manageru kvůli volání úložiště 
 
-Now use PowerShell to call Resource Manager using the access token we retrieved in the previous section, to create a storage SAS credential. Once we have the SAS credential, we can call storage operations.
+Nyní pomocí prostředí PowerShell zavolejte Správce prostředků pomocí přístupového tokenu, který jste získali v předchozí části, a vytvořte tak přihlašovací údaje SAS úložiště. Jakmile máme přihlašovací údaje SAS, můžeme volat operace úložiště.
 
 V tomto požadavku použijeme k vytvoření pověření SAS následující parametry požadavku HTTP:
 
@@ -126,7 +126,7 @@ V tomto požadavku použijeme k vytvoření pověření SAS následující param
 
 Tato parametry se zahrnou do textu požadavku POST na pověření SAS. Další informace o parametrech pro vytvoření pověření SAS najdete v [referenčních informacích k REST pro výpis SAS služby](/rest/api/storagerp/storageaccounts/listservicesas).
 
-First, convert the parameters to JSON, then call the storage `listServiceSas` endpoint to create the SAS credential:
+Nejprve převeďte parametry na JSON a potom zavolejte `listServiceSas` koncový bod úložiště a vytvořte přihlašovací údaje SAS:
 
 ```powershell
 $params = @{canonicalizedResource="/blob/<STORAGE-ACCOUNT-NAME>/<CONTAINER-NAME>";signedResource="c";signedPermission="rcw";signedProtocol="https";signedExpiry="2017-09-23T00:00:00Z"}
@@ -139,21 +139,21 @@ $sasResponse = Invoke-WebRequest -Uri https://management.azure.com/subscriptions
 > [!NOTE] 
 > V adrese URL se rozlišují velká a malá písmena. Proto zkontrolujte, jestli používáte přesně stejná velká a malá písmena, jaká jste použili při pojmenování skupiny prostředků, a zkontrolujte také velké G ve výrazu „resourceGroup“. 
 
-Now we can extract the SAS credential from the response:
+Teď můžeme z odpovědi extrahovat přihlašovací údaje SAS:
 
 ```powershell
 $sasContent = $sasResponse.Content | ConvertFrom-Json
 $sasCred = $sasContent.serviceSasToken
 ```
 
-If you inspect the SAS cred you'll see something like this:
+Pokud provedete kontrolu přihlašovacích údajů SAS, uvidíte něco podobného:
 
 ```powershell
 PS C:\> $sasCred
 sv=2015-04-05&sr=c&spr=https&se=2017-09-23T00%3A00%3A00Z&sp=rcw&sig=JVhIWG48nmxqhTIuN0uiFBppdzhwHdehdYan1W%2F4O0E%3D
 ```
 
-Dále vytvoříme soubor s názvem test.txt. Then use the SAS credential to authenticate with the `New-AzStorageContent` cmdlet, upload the file to our blob container, then download the file.
+Dále vytvoříme soubor s názvem test.txt. Pak použijte přihlašovací údaje SAS k ověření pomocí rutiny `New-AzStorageContent`, nahrajte soubor do našeho kontejneru objektů BLOB a pak Stáhněte soubor.
 
 ```bash
 echo "This is a test text file." > test.txt
@@ -202,7 +202,7 @@ Name              : testblob
 
 ## <a name="next-steps"></a>Další kroky
 
-In this tutorial, you learned how to use a Windows VM's system-assigned managed identity to access Azure Storage using a SAS credential.  Další informace o SAS služby Azure Storage najdete tady:
+V tomto kurzu jste zjistili, jak používat spravovanou identitu přiřazenou systémem Windows VM k přístupu k Azure Storage pomocí přihlašovacích údajů SAS.  Další informace o SAS služby Azure Storage najdete tady:
 
 > [!div class="nextstepaction"]
 >[Použití sdílených přístupových podpisů (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)

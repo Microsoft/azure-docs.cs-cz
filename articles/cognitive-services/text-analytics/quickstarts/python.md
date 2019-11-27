@@ -26,7 +26,7 @@ V tomto rychlém startu můžete začít s analýzou jazyka pomocí Analýza tex
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Python 3.x](https://python.org)
+* [Python 3. x](https://python.org)
 
 * Knihovna žádostí Pythonu
     
@@ -461,7 +461,7 @@ pprint(entities)
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Viz také: 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

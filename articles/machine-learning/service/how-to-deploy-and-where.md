@@ -194,7 +194,7 @@ Skript obsahuje dvě funkce, které načítají a spouštějí model:
 
 * `init()`: Tato funkce obvykle načte model do globálního objektu. Tato funkce se spustí jenom jednou, když se spustí kontejner Docker pro vaši webovou službu.
 
-* `run(input_data)`: Tato funkce využívá model k predikci hodnoty založené na vstupní data. Vstupy a výstupy běhu obvykle používají JSON pro serializaci a deserializaci. Můžete také pracovat s nezpracovanými binárními daty. Data je možné transformovat před jejich odesláním do modelu nebo před vrácením do klienta.
+* `run(input_data)`: Tato funkce používá model k předpovědi hodnoty založené na vstupních datech. Vstupy a výstupy běhu obvykle používají JSON pro serializaci a deserializaci. Můžete také pracovat s nezpracovanými binárními daty. Data je možné transformovat před jejich odesláním do modelu nebo před vrácením do klienta.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Vyhledání souborů modelu ve vstupním skriptu
 
@@ -528,7 +528,7 @@ Je také možné, že budete muset vytvořit výpočetní prostředek, pokud nap
 
 Následující tabulka uvádí příklad vytvoření konfigurace nasazení pro každý cíl služby Compute:
 
-| Cílový výpočetní objekt | Příklad konfigurace nasazení |
+| Cílové výpočetní prostředí | Příklad konfigurace nasazení |
 | ----- | ----- |
 | Místní | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
@@ -1070,7 +1070,7 @@ docker kill mycontainer
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()`.
-Chcete-li odstranit registrovaný model, použijte `model.delete()`.
+K odstranění registrovaného modelu použijte `model.delete()`.
 
 Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
@@ -1078,7 +1078,7 @@ Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs
 
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
-* [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
+* [Zabezpečené Azure Machine Learning webové služby pomocí protokolu SSL](how-to-secure-web-service.md)
 * [Využití modelu Azure Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)

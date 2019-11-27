@@ -80,7 +80,7 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | pt-PT      | Portugalština (Portugalsko)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | PA – v      | Paňdžábština                 |       |       |         |     ✓    |                   |                |
 | ro RO      | Rumunština               |       |    ✓    |         |     ✓    |         ✓         |                |
-| ru-RU      | ruština                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| ru-RU      | Ruština                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | sr-Cyrl-RS | Srbština (cyrilice)     |       |   SR-RS  |         |    SR-RS     |                   |                |
 | SR-Latn-RS | Srbština (latinka)        |       |       |         |     SR-Latn    |                   |                |
 | sk-SK      | Slovenština             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |

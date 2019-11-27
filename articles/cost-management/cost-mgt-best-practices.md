@@ -1,6 +1,6 @@
 ---
-title: Optimize your cloud investment with Azure Cost Management | Microsoft Docs
-description: This article helps get the most value out of your cloud investments, reduce your costs, and evaluate where your money is being spent.
+title: Optimalizovat vaše cloudové investice ve službě Azure Cost Management | Dokumentace Microsoftu
+description: Tento článek pomáhá využít na maximum ze svých investic do cloudu, snížení nákladů a vyhodnotit, kde je využita vaše peníze.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,179 +17,179 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219119"
 ---
-# <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>How to optimize your cloud investment with Azure Cost Management
+# <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat vaše cloudové investice ve službě Azure Cost Management
 
-Azure Cost Management gives you the tools to plan for, analyze and reduce your spending to maximize your cloud investment. This document provides you with a methodical approach to cost management and highlights the tools available to you as you address your organization’s cost challenges. Azure makes it easy to build and deploy cloud solutions. However, it's important that those solutions are optimized to minimize the cost to your organization. Following the principles outlined in this document and using our tools will help to make sure your organization is prepared for success.
+Azure Cost Management poskytuje nástroje pro plánování, analyzovat a omezit útratu k maximalizaci vaší investice do cloudu. Tento dokument vám poskytne metodický přístup do služby cost management a zvýrazní nástroje, které jsou k dispozici, protože řeší problémy náklady na vaší organizace. Azure usnadňuje sestavování a nasazování cloudových řešení. Je ale důležité, že těchto řešení jsou optimalizována pro minimalizaci nákladů pro vaši organizaci. Následující zásady uvedené v tomto dokumentu a používání, že naše nástroje pomůže zajistit, že vaše organizace je připraven k dosažení úspěchu.
 
 ## <a name="methodology"></a>Metodologie
 
-Cost management is an organizational problem and should be an ongoing practice that begins before you spend money on cloud resources. To successfully implement cost management and optimize costs, your organization must:
+Služba Cost management je organizační problému a musí být probíhající praxe, která začíná před cloudové prostředky můžete utratit peníze. K úspěšné implementaci správy nákladů a optimalizovat náklady, musí vaše organizace:
 
-- Be prepared with the proper tools for success
-- Be accountable for costs
-- Take appropriate action to optimize spending
+- Provést přípravu pomocí správných nástrojů k dosažení úspěchu
+- Za náklady
+- Přijmout vhodná opatření k optimalizaci výdajů
 
-Three key groups, outlined below, must be aligned in your organization to make sure that you successfully manage costs.
+Tři klíčové skupiny uvedené dále, musí být zarovnány ve vaší organizaci, abyste měli jistotu, že jste úspěšně Správa nákladů.
 
-- **Finance** - People responsible for approving budget requests across the organization based on cloud spending forecasts. They pay the corresponding bill and assign costs to various teams to drive accountability.
-- **Managers** - Business decision makers in an organization that need to understand cloud spending to find the best spending results.
-- **App teams** - Engineers managing cloud resources on a day-to-day basis, developing services to meet the organization's needs. These teams need the flexibility to deliver the most value in their defined budgets.
+- **Finance** – osoby zodpovědné za schvalování rozpočtových žádostí napříč organizací na základě prognóz cloudových výdajů. Jejich platit odpovídající faktury a náklady na přiřadit různé týmy tak podpořit přebírání odpovědnosti.
+- **Manažeři** – tvůrci obchodních rozhodnutí v organizaci, kteří potřebují pochopit cloudové útraty a najít nejlepší výsledky útraty.
+- **Týmy aplikací** – technici spravující cloudové prostředky na každodenní bázi, což vyvíjejí služby pro splnění potřeb organizace. Tyto týmy potřebují flexibilně dodávat v jejich definované rozpočet na maximum.
 
-### <a name="key-principles"></a>Key principles
+### <a name="key-principles"></a>Klíč zásad
 
-Use the principles outlined below to position your organization for success in cloud cost management.
+Použijte zásady uvedené níže na pozici vaší organizaci k dosažení úspěchu v cloudu, Správa nákladů.
 
 #### <a name="planning"></a>Plánování
 
-Comprehensive, up-front planning allows you to tailor cloud usage to your specific business requirements. Ask yourself:
+Komplexní, počáteční plánování umožňuje přizpůsobit využití cloudu pro vaše konkrétní požadavky. Položte si otázku:
 
-- What business problem am I solving?
-- What usage patterns do I expect from my resources?
+- Jaký problém obchodní jsem řešení?
+- Jaké vzorce používání očekávat od Moje prostředky?
 
-Your answers will help you select the offerings that are right for you. They determine the infrastructure to use and how it's used to maximize your Azure efficiency.
+Vaše odpovědi vám pomůže vybrat nabídek, které jsou pro vás nejvhodnější. Určují infrastrukturu k použití a jak se používá pro maximalizaci efektivity Azure.
 
-#### <a name="visibility"></a>Visibility
+#### <a name="visibility"></a>Viditelnost
 
-When structured well, Cost Management helps you to inform people about the Azure costs they're responsible for or for the money they spend. Azure has services designed to give you insight into *where* your money is spent. Take advantage of these tools. They can help you find resources that are underused, remove waste, and maximize cost-saving opportunities.
+Když dobře strukturovaných, Cost Management pomáhá uživatelům poskytnout informace o nákladech na Azure, které jsou odpovědné za nebo za peníze, kterou lidé tráví. Azure má služby navržené tak, aby vám poskytly přehled o *tom, kde* se peníze stráví. Využijte výhod těchto nástrojů. Pomohou vám najít prostředky, které jsou nedostatečný, odeberte plýtvání a maximalizovat možnosti úspory nákladů.
 
-#### <a name="accountability"></a>Accountability
+#### <a name="accountability"></a>Odpovědnosti
 
-Attribute costs in your organization to make sure that people responsible are accountable for their team's spending. To fully understand your organization's Azure spending, you should organize your resources to maximize insight into cost attribution. Good organization helps to manage and reduce costs and hold people accountable for efficient spending in your organization.
+Atribut nákladů ve vaší organizaci, abyste měli jistotu, že zodpovědný zodpovídají za jejich tým útraty. Abyste úplně pochopili útraty Azure vaší organizace, by měl uspořádání prostředků pro maximalizaci přehled o přidělení nákladů. Dobré organizaci pomáhá spravovat a snížit náklady a uložení uživatelé zodpovídají za účinné útraty ve vaší organizaci.
 
 #### <a name="optimization"></a>Optimalizace
 
-Act to reduce your spending. Make the most of it based on the findings gathered through planning and increasing cost visibility. You might consider purchase and licensing optimizations along with infrastructure deployment changes that are discussed in detail later in this document.
+Slouží ke snížení vaší útraty. Využijte naplno na poznatky získané pomocí plánování a zvýší viditelnost náklady na základě. Můžete zvážit nákupu a licencování optimalizace spolu s změny nasazení infrastruktury, které jsou detailně popsány dále v tomto dokumentu.
 
-#### <a name="iteration"></a>Iteration
+#### <a name="iteration"></a>Iterace
 
-Everyone in your organization must engage in the cost management lifecycle. They need to stay involved on an ongoing basis to optimize costs. Be rigorous about this iterative process and make it a key tenet of responsible cloud governance in your organization.
+Všichni uživatelé v organizaci musíte zapojit do životního cyklu správy nákladů. Potřebují k zajištění zahrnutých průběžně provádět pro zajištění optimalizace nákladů. Být přísné o tento iterativní proces a nastavte ji klíčovým principem zásad správného řízení zodpovědná cloudu ve vaší organizaci.
 
-![Key principles diagram showing visibility, accountability, and optimization](./media/cost-mgt-best-practices/principles.png)
+![Základních principů obsažených diagram zobrazující viditelnost, zodpovědnost a optimalizace](./media/cost-mgt-best-practices/principles.png)
 
-## <a name="plan-with-cost-in-mind"></a>Plan with cost in mind
+## <a name="plan-with-cost-in-mind"></a>Plánování nákladů v paměti
 
-Before you deploy cloud resources, assess the following items:
+Před nasazením cloudové prostředky, zhodnoťte následující položky:
 
-- The Azure offer that best meets your needs
-- The resources you plan to use
-- How much they might cost
+- Nabídka Azure, která nejlépe vyhovuje vašim potřebám
+- Prostředky, které plánujete použít
+- Kolik může stát
 
-Azure provides tools to assist you in the assessment process. The tools can give you a good idea of the investment required to enable your workloads. Then you can select the best configuration for your situation.
+Azure poskytuje nástroje, které vám pomohou při posouzení procesu. Nástroje vám může poskytnout představu o investici vyžadovaného k povolení úloh. Pak můžete vybrat optimální konfiguraci pro konkrétní situaci.
 
-### <a name="azure-onboarding-options"></a>Azure onboarding options
+### <a name="azure-onboarding-options"></a>Možnosti registrace Azure
 
-The first step in maximizing your experience within Cost Management is to investigate and decide which Azure offer is best for you. Think about how you plan to use Azure in the future. Also consider how you want your billing model configured. Consider the following questions when making your decision:
+Prvním krokem při maximalizaci prostředí v rámci Cost Management je pro prozkoumání a rozhodnout, která nabídka Azure je pro vás nejvhodnější. Představte si, jak máte v úmyslu používat Azure v budoucnu. Zvažte také, jak mají být váš model fakturace nakonfigurované. Při rozhodování, zvažte následující otázky:
 
-- How long do I plan to use Azure? Am I testing, or do I plan to build longer-term infrastructure?
-- How do I want to pay for Azure? Should I prepay for a reduced price or get invoiced at the end of the month?
+- Jak dlouho je plánujete používat Azure? Testují můžu, nebo kteří plánují k vytvoření dlouhodobější infrastruktury?
+- Jak je chcete platit za Azure? By měl můžu předem za sníženou cenu nebo získat fakturovány na konci měsíce?
 
-To learn more about the various options, visit [How to buy Azure](https://azure.microsoft.com/pricing/purchase-options/). Several of the most common billing models are identified below.
+Další informace o různých možnostech najdete v článku [Jak koupit Azure](https://azure.microsoft.com/pricing/purchase-options/). Níže jsou uvedené některé z nejběžnějších modely fakturace.
 
 #### <a name="freehttpsazuremicrosoftcomfree"></a>[Free](https://azure.microsoft.com/free/)
 
-- 12 měsíců oblíbených bezplatných služeb
-- $200 in credit to explore services for 30 days
-- 25+ services are always free
+- 12 měsíců oblíbených služeb zdarma
+- 200 USD v kreditech, které prozkoumání služeb po dobu 30 dnů
+- více než 25 služeb jsou vždycky zdarma
 
-#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Pay as you go](https://azure.microsoft.com/offers/ms-azr-0003p)
+#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p)
 
 - Bez minimálních částek a závazků
-- Konkurenceschopné ceny
-- Platíte jenom za to, co používáte
+- Výhodné ceny
+- Platíte jenom za to, co využijete
 - Možnost kdykoli zrušit
 
 #### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[Smlouva Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-- Options for up-front monetary commitments
-- Access to reduced Azure pricing
+- Možnosti pro počáteční peněžní závazky
+- Přístup k nižší ceny Azure
 
-## <a name="estimate-the-cost-of-your-solution"></a>Estimate the cost of your solution
+## <a name="estimate-the-cost-of-your-solution"></a>Odhad nákladů na řešení
 
-Before you deploy any infrastructure, assess how much your solution will cost. The assessment will help you create a budget for your organization for the workload, up-front. Then you can use a budget over time to benchmark the validity of your initial estimation. And you can compare it with the actual cost of your deployed solution.
+Před nasazením jakékoli infrastruktury posuďte, kolik vaše řešení bude nákladů. Posouzení vám pomůžou vytvořit rozpočtu vaší organizace pro pracovní vytížení, počáteční. Pak můžete použít rozpočtu v čase do testu výkonnosti platnosti počáteční odhad. A porovnejte ji s skutečné náklady na nasazené řešení.
 
 ### <a name="azure-pricing-calculator"></a>Cenová kalkulačka Azure
 
-The Azure pricing calculator allows you to mix and match different combinations of Azure services to see an estimate of the costs. You can implement your solution using different ways in Azure - each might influence your overall spending. Thinking early about all of the infrastructure needs of your cloud deployment helps you use the tool most effectively. It can help you get a solid estimate of your estimated spending in Azure.
+Cenovou kalkulačku Azure umožňuje kombinovat a párovat různé kombinace služeb Azure, pokud chcete zobrazit odhad nákladů. Můžete implementovat řešení pomocí různých způsobů, jak v Azure – každý by mohly ovlivnit vaše celkové výdaje. Přemýšlení o všech požadavků na infrastrukturu na vaším cloudovým nasazením již v rané fázi vám pomůže používat nástroj nejefektivněji. Pomůže vám zjistit solid odhad vaší odhad útraty v Azure.
 
-For more information, see the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator).
+Další informace najdete v [cenové kalkulačkě Azure](https://azure.microsoft.com/pricing/calculator).
 
 ### <a name="azure-migrate"></a>Azure Migrate
 
-Azure Migrate is a service that assesses your organization's current workloads in on-premises datacenters. It gives you insight into what you might need from an Azure replacement solution. First, Migrate analyzes your on-premises machines to determine whether migration is feasible. Then, it recommends VM sizing in Azure to maximize performance. Finally, it also creates a cost estimate for an Azure-based solution.
+Azure Migrate je služba, která posuzuje aktuální úlohy vaší organizace v místních datových centrech. Poskytuje přehled o tom, co potřebujete z Azure náhradní řešení. Nejprve analyzuje migrace vašich místních počítačů k určení, zda migrace je to možné. Potom doporučené velikosti virtuálních počítačů v Azure pro zajištění maximálního výkonu. Nakonec se vytvoří také odhad nákladů pro řešení založené na Azure.
 
-For more information, see [Azure Migrate](../migrate/migrate-overview.md).
+Další informace najdete v tématu [Azure Migrate](../migrate/migrate-overview.md).
 
-## <a name="analyze-and-manage-your-costs"></a>Analyze and manage your costs
+## <a name="analyze-and-manage-your-costs"></a>Analýza a Správa nákladů
 
-Keep informed about how your organization's costs evolve over time. Use the following techniques to properly understand and manage your spending.
+Udržujte si přehled o jak v čase vyvíjí vaše organizace náklady. Pomocí následujících postupů správně pochopit a spravovat svoji útratu.
 
-### <a name="organize-and-tag-your-resources"></a>Organize and tag your resources
+### <a name="organize-and-tag-your-resources"></a>Uspořádání a označení prostředků
 
-Organize your resources with cost in mind. As you create subscriptions and resource groups, think about the teams that are responsible for associated costs. Make sure your reporting keeps your organization in mind. Subscriptions and resource groups provide good buckets to organize and attribute spending across your organization. Tags provide a good way to attribute cost. You can use tags as a filter. And you can use them to group by when you analyze data and investigate costs. Enterprise Agreement customers can also create departments and place subscriptions under them. Cost-based organization in Azure helps keep the relevant people in your organization accountable for reducing their team's spending.
+Uspořádání prostředků s náklady na paměti. Při vytváření skupiny prostředků a předplatná, představte si týmy, které jsou zodpovědné za související náklady. Ujistěte se, že sestav udržuje vaše organizace v úvahu. Skupiny prostředků a předplatná poskytují dobrou intervalů k uspořádání a atribut útraty napříč vaší organizací. Značky poskytují dobrý způsob, jak atribut náklady. Značky můžete použít jako filtr. A můžete je seskupit podle při analýze dat a prozkoumat náklady. Zákazníci se smlouvou Enterprise můžete také vytvořit oddělení a umístit předplatná pod nimi. Náklady na základě organizace v Azure pomáhá zachovat relevantní osoby ve vaší organizaci accountable pro snížení jejich tým útraty.
 
-### <a name="use-cost-analysis"></a>Use cost analysis
+### <a name="use-cost-analysis"></a>Použití analýzy nákladů
 
-Cost analysis allows you to analyze your organizational costs in-depth by slicing and dicing your costs using standard resource properties. Consider the following common questions as a guide for your analysis. Answering these questions on a regular basis will help you stay more informed and enable more cost-conscious decisions.
+Analýza nákladů vám umožní analyzovat vaše organizace náklady na podrobné podle segmentování a analyzování náklady na používání vlastností standardních prostředků. Vezměte v úvahu následující běžné otázky a jako vodítko pro analýzu. Odpovědi na tyto otázky v pravidelných intervalech, pomůže vám Udržujte si přehled více a povolit další rozhodnutí hledí na cenu.
 
-- **Estimated costs for the current month** – How much have I incurred so far this month? Will I stay under my budget?
-- **Investigate anomalies** – Do routine checks to make sure that costs stay within a reasonable range of normal usage. Jaké jsou trendy? Are there any outliers?
-- **Invoice reconciliation** - Is my latest invoiced cost more than the previous month? How did spending habits change month-over-month?
-- **Internal chargeback** - Now that I know how much I'm being charged, how should those charges be broken down for my organization?
+- **Odhadované náklady na aktuální měsíc** – kolik jsem zatím v tomto měsíci vynaložen? Bude Moje rozpočtu dodrželi?
+- **Prozkoumejte anomálie** – provede rutinní kontroly, aby se zajistilo, že náklady zůstanou v rozumném rozsahu normálního využití. Co jsou trendy? Existují jakékoli odlehlé hodnoty?
+- **Odsouhlasení faktury** – moje nejnovější fakturované náklady jsou delší než předchozí měsíc? Jak útraty návyky změnila měsíce na měsíc?
+- **Interní vrácení peněz** – teď, když zjistím, kolik jsem se účtuje, jak se mají tyto poplatky rozdělit pro moji organizaci?
 
-For more information, see [cost analysis](quick-acm-cost-analysis.md).
+Další informace najdete v tématu [Analýza nákladů](quick-acm-cost-analysis.md).
 
-### <a name="export-billing-data-on-a-schedule"></a>Export billing data on a schedule
+### <a name="export-billing-data-on-a-schedule"></a>Export fakturačních dat podle plánu
 
-Do you need to import your billing data into an external system, like a dashboard or financial system? Set up automated exports to Azure Storage and avoid manually downloading files every month. You can then easily set up automatic integrations with other systems to keep your billing data in sync.
+Je potřeba pro import vašich fakturačních dat do externího systému, jako je řídicí panel nebo finanční systému? Nastavit automatizované exporty do služby Azure Storage a vyhněte se každý měsíc ručního stahování souborů. Můžete pak snadno nastavit automatické integrace s jinými systémy pro synchronizaci vašich fakturačních dat.
 
-For more information about exporting billing data, see [Create and manage exported data](tutorial-export-acm-data.md).
+Další informace o exportu fakturačních údajů najdete v tématu [Vytvoření a Správa exportovaných dat](tutorial-export-acm-data.md).
 
-### <a name="create-budgets"></a>Create budgets
+### <a name="create-budgets"></a>Vytvoření rozpočtů
 
-After you've identified and analyzed your spending patterns, it's important to begin setting limits for yourself and your teams. Azure budgets give you the ability to set either a cost or usage-based budget with many thresholds and alerts. Make sure to review the budgets that you create regularly to see your budget burn-down progress and make changes as needed. Azure budgets also allow you to configure an automation trigger when a given budget threshold is reached. For example, you can configure your service to shut down VMs. Or you can move your infrastructure to a different pricing tier in response to a budget trigger.
+Po identifikovat a analyzovat vaše útraty postupy, je důležité začít nastavení omezení pro vás a vašich týmů. Azure rozpočty poskytují možnost nastavit náklady nebo podle využití rozpočtu s mnoha prahové hodnoty a výstrahy. Nezapomeňte zkontrolovat rozpočty, které vytvoříte pravidelně sledujte své pokroky vypalování dolů rozpočtu a provést změny podle potřeby. Azure rozpočty také umožňují konfigurovat aktivační událost automatizace při dosažení prahové hodnoty daného rozpočtu. Můžete například nakonfigurovat svoji službu pro vypnutí virtuálních počítačů. Nebo infrastrukturu můžete přesunout do jiné cenové úrovni v reakci na aktivační událost rozpočtu.
 
-For more information, see [Azure Budgets](tutorial-acm-create-budgets.md).
+Další informace najdete v tématu [rozpočty Azure](tutorial-acm-create-budgets.md).
 
-For more information about budget-based automation, see [Budget Based Automation](../billing/billing-cost-management-budget-scenario.md).
+Další informace o automatizaci na základě rozpočtu naleznete v tématu [Automatizace založená na rozpočtu](../billing/billing-cost-management-budget-scenario.md).
 
-## <a name="act-to-optimize"></a>Act to optimize
-Use the following ways to optimize spending.
+## <a name="act-to-optimize"></a>Jednejte a optimalizace
+Použijte tyto způsoby optimalizovat výdaje.
 
-### <a name="cut-out-waste"></a>Cut out waste
+### <a name="cut-out-waste"></a>Vystřihněte plýtvání
 
-Po nasazení infrastruktury do Azure je důležité se ujistit, jestli se používá. Nejjednodušší způsob, jak okamžitě začít šetřit, je zkontrolovat vaše prostředky a odebrat ty, které se nepoužívají. From there, you should determine if your resources are being used as efficiently as possible.
+Po nasazení infrastruktury v Azure, je důležité zajistit, aby že se používá. Nejjednodušší způsob, jak začít, ukládají se okamžitě je ke kontrole vašich prostředků a odeberte všechny, které nejsou používány. Tady byste měli určit, pokud vaše prostředky se používají jako efektivně.
 
 #### <a name="azure-advisor"></a>Azure Advisor
 
-Azure Advisor is a service that, among other things, identifies virtual machines with low utilization from a CPU or network usage standpoint. From there, you can decide to either shut down or resize the machine based on the estimated cost to continue running the machines. Advisor also provides recommendations for reserved instance purchases. The recommendations are based on your last 30 days of virtual machine usage. When acted on, the recommendations can help you reduce your spending.
+Azure Advisor je služba, která, mimo jiné identifikuje virtuální počítače s nízkou úrovní využití z hlediska využití procesoru nebo sítě. Odtud můžete vypnout nebo změnit velikost počítače podle odhadované náklady na provoz bude moct být spuštěná na počítačích. Advisor také poskytuje doporučení k nákupu rezervovaných instancí. Doporučení jsou založené na vašich za posledních 30 dní využití virtuálních počítačů. Pokud datová služba vykoná, doporučení můžete vám pomůže snížit svoji útratu.
 
-For more information, see [Azure Advisor](../advisor/advisor-overview.md).
+Další informace najdete v tématu [Azure Advisor](../advisor/advisor-overview.md).
 
-### <a name="size-your-vms-properly"></a>Size your VMs properly
+### <a name="size-your-vms-properly"></a>Správné velikosti virtuálních počítačů
 
-VM sizing has a significant impact on your overall Azure cost. The number of VMs needed in Azure might not equate to what you currently have deployed in an on-premises datacenter. Make sure your choose the right size for the workloads that you plan to run.
+Velikosti virtuálních počítačů má významný dopad na celkové Azure nákladů. Počet virtuálních počítačů, je potřeba v Azure nemusí odpovídá aktuálně nasazené v místním datovém centru. Ujistěte se, že váš výběr správné velikosti pro úlohy, které chcete spustit.
 
-For more information, see [Azure IaaS: proper sizing and cost](https://azure.microsoft.com/resources/videos/azurecon-2015-azure-iaas-proper-sizing-and-cost/).
+Další informace najdete v tématu [Azure IaaS: správné určení velikosti a nákladů](https://azure.microsoft.com/resources/videos/azurecon-2015-azure-iaas-proper-sizing-and-cost/).
 
-### <a name="use-purchase-discounts"></a>Use purchase discounts
+### <a name="use-purchase-discounts"></a>Použití slevy nákupu
 
-Azure has many discounts that your organization should take advantage of to save money.
+Azure nabízí mnoho slevy, které vaše organizace by měly využít výhod ještě ušetříte peníze.
 
-#### <a name="azure-reservations"></a>Rezervace Azure
+#### <a name="azure-reservations"></a>Azure rezervace
 
-Azure Reservations allow you to prepay for one-year or three-years of virtual machine or SQL Database compute capacity. Pre-paying will allow you to get a discount on the resources you use. Azure reservations can significantly reduce your virtual machine or SQL database compute costs — up to 72 percent on pay-as-you-go prices with one-year or three-year upfront commitment. Rezervace poskytují slevu z faktury a neovlivňují běhový stav virtuálních počítačů nebo databází SQL.
+Azure rezervace umožňují Předplatíte jeden rok nebo tři roky virtuální počítač nebo databázi SQL výpočetní kapacitu. Platíte předem vám umožní získat slevu na prostředky, které používáte. Azure rezervace může výrazně snížit náklady na výpočetní výkon databáze SQL vaší virtuálního počítače – až 72 procent u průběžných plateb s jeden rok nebo tři roky předem k ničemu zavázat. rezervace poskytovat fakturační slevy a neovlivní jejich běhový stav virtuálního počítače nebo databáze SQL.
 
-For more information, see [What are Azure Reservations?](../billing/billing-save-compute-costs-reservations.md).
+Další informace najdete v tématu [co je Azure reservations?](../billing/billing-save-compute-costs-reservations.md).
 
-#### <a name="use-azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
+#### <a name="use-azure-hybrid-benefit"></a>Použít zvýhodněné hybridní využití Azure
 
-If you already have Windows Server or SQL Server licenses in your on-premises deployments, you can use the Azure Hybrid Benefit program to save in Azure. V případě systému Windows Server každá licence pokrývá náklady na operační systém (až na dvou virtuálních počítačích) a platíte jenom základní výpočetní náklady. Stávající licence na SQL Server můžete využít k ušetření až 55 procent nákladů u databází SQL založených na virtuálních jádrech. Mezi možnosti patří SQL Server v Azure Virtual Machines a služba SSIS (SQL Server Integration Services).
+Pokud již máte licence Windows serveru nebo SQL Server v místních nasazení, můžete program zvýhodněné hybridní využití Azure pro uložení v Azure. S využitím Windows serveru každá licence pokrývá náklady na operační systém (až dva virtuální počítače) a platíte jenom základní výpočetní náklady. Můžete použít stávající licence SQL serveru a ušetřete až 55 procent na založený na virtuálních jádrech možnosti služby SQL Database. mezi možnosti patří SQL Server v Azure Virtual Machines a služby SQL Server Integration Services.
 
-For more information, see [Azure Hybrid Benefit savings calculator](https://azure.microsoft.com/pricing/hybrid-benefit/).
+Další informace najdete v tématu [zvýhodněné hybridní využití Azure Kalkulačka úspory](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-### <a name="other-resources"></a>Další zdroje informací
+### <a name="other-resources"></a>Další prostředky
 
-Azure also has a service that allows you to build services that take advantage of surplus capacity in Azure for reduced rates. For more information, see [Use low priority VMs with Batch](../batch/batch-low-pri-vms.md).
+Azure má také služba, která umožňuje vytvářet služby, které využívají nadbytečnou kapacitu v Azure pro nižší sazby. Další informace najdete v tématu [použití virtuálních počítačů s nízkou prioritou ve službě Batch](../batch/batch-low-pri-vms.md).
 
 ## <a name="next-steps"></a>Další kroky
-- If you're new to Cost Management, read [What is Azure Cost Management?](overview-cost-mgt.md) to learn how it helps monitor and control Azure spending and to optimize resource use.
+- Pokud Cost Management, přečtěte si téma [co je Azure cost management?](overview-cost-mgt.md) , kde se dozvíte, jak pomáhá monitorovat a řídit výdaje na Azure a optimalizovat využití prostředků.

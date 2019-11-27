@@ -1,6 +1,6 @@
 ---
-title: Use a static IP address with the Azure Kubernetes Service (AKS) load balancer
-description: Learn how to create and use a static IP address with the Azure Kubernetes Service (AKS) load balancer.
+title: Použití statické IP adresy se službou Azure Kubernetes Service (AKS) pro vyrovnávání zatížení
+description: Naučte se, jak vytvořit a používat statickou IP adresu pomocí nástroje pro vyrovnávání zatížení AKS (Azure Kubernetes Service).
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -14,23 +14,23 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325441"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Use a static public IP address with the Azure Kubernetes Service (AKS) load balancer
+# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Použití statické veřejné IP adresy se službou Azure Kubernetes Service (AKS) pro vyrovnávání zatížení
 
-By default, the public IP address assigned to a load balancer resource created by an AKS cluster is only valid for the lifespan of that resource. If you delete the Kubernetes service, the associated load balancer and IP address are also deleted. If you want to assign a specific IP address or retain an IP address for redeployed Kubernetes services, you can create and use a static public IP address.
+Ve výchozím nastavení je veřejná IP adresa přiřazená k prostředku nástroje pro vyrovnávání zatížení vytvořenému clusterem AKS platná jenom pro životnost tohoto prostředku. Při odstranění služby Kubernetes se odstraní také přidružená služba Vyrovnávání zatížení a IP adresa. Pokud chcete přiřadit konkrétní IP adresu nebo ponechat IP adresu pro znovu nasazené služby Kubernetes, můžete vytvořit a používat statickou veřejnou IP adresu.
 
-This article shows you how to create a static public IP address and assign it to your Kubernetes service.
+V tomto článku se dozvíte, jak vytvořit statickou veřejnou IP adresu a přiřadit ji ke službě Kubernetes.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-This article assumes that you have an existing AKS cluster. If you need an AKS cluster, see the AKS quickstart [using the Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-You also need the Azure CLI version 2.0.59 or later installed and configured. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
-This article covers using a *Standard* SKU IP with a *Standard* SKU load balancer. For more information, see [IP address types and allocation methods in Azure][ip-sku].
+Tento článek se věnuje použití *standardní* IP adresy SKU s nástrojem pro vyrovnávání zatížení *Standard* SKU. Další informace najdete v tématu [typy IP adres a metody přidělování v Azure][ip-sku].
 
-## <a name="create-a-static-ip-address"></a>Create a static IP address
+## <a name="create-a-static-ip-address"></a>Vytvořit statickou IP adresu
 
-Create a static public IP address with the [az network public ip create][az-network-public-ip-create] command. The following creates a static IP resource named *myAKSPublicIP* in the *myResourceGroup* resource group:
+Pomocí příkazu [AZ Network Public IP Create][az-network-public-ip-create] vytvořte STATICKOU veřejnou IP adresu. V následujícím seznamu se vytvoří prostředek statických IP adres s názvem *myAKSPublicIP* ve skupině prostředků *myResourceGroup* :
 
 ```azurecli-interactive
 az network public-ip create \
@@ -41,9 +41,9 @@ az network public-ip create \
 ```
 
 > [!NOTE]
-> If you are using a *Basic* SKU load balancer in your AKS cluster, use *Basic* for the *sku* parameter when defining a public IP. Only *Basic* SKU IPs work with the *Basic* SKU load balancer and only *Standard* SKU IPs work with *Standard* SKU load balancers. 
+> Pokud používáte nástroj pro vyrovnávání zatížení *Basic* SKU v clusteru AKS, použijte při definování veřejné IP adresy hodnotu *Basic* pro parametr *SKU* . Pouze *základní* IP adresy SKU pracují s nástrojem pro vyrovnávání zatížení *Basic* SKU a pouze *standardní* IP adresa SKU fungují s nástroji pro vyrovnávání zatížení *standardních* SKU. 
 
-The IP address is displayed, as shown in the following condensed example output:
+Zobrazí se IP adresa, jak je znázorněno v následujícím zhuštěném příkladu výstupu:
 
 ```json
 {
@@ -55,7 +55,7 @@ The IP address is displayed, as shown in the following condensed example output:
 }
 ```
 
-You can later get the public IP address using the [az network public-ip list][az-network-public-ip-list] command. Specify the name of the node resource group and public IP address you created, and query for the *ipAddress* as shown in the following example:
+Veřejnou IP adresu můžete získat později pomocí příkazu [AZ Network Public-IP list][az-network-public-ip-list] . Zadejte název skupiny prostředků uzlu a veřejnou IP adresu, kterou jste vytvořili, a dotaz na adresu *ipAddress* , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
@@ -63,9 +63,9 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 40.121.183.52
 ```
 
-## <a name="create-a-service-using-the-static-ip-address"></a>Create a service using the static IP address
+## <a name="create-a-service-using-the-static-ip-address"></a>Vytvoření služby pomocí statické IP adresy
 
-Before creating a service, ensure the service principal used by the AKS cluster has delegated permissions to the other resource group. Například:
+Než začnete vytvářet službu, ujistěte se, že instanční objekt používaný clusterem AKS má delegovaná oprávnění k jiné skupině prostředků. Příklad:
 
 ```azurecli-interactive
 az role assignment create \
@@ -74,7 +74,7 @@ az role assignment create \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-To create a *LoadBalancer* service with the static public IP address, add the `loadBalancerIP` property and the value of the static public IP address to the YAML manifest. Create a file named `load-balancer-service.yaml` and copy in the following YAML. Provide your own public IP address created in the previous step. The following example also sets the annotation to the resource group named *myResourceGroup*. Provide your own resource group name.
+Chcete-li vytvořit službu *Vyrovnávání zatížení* se STATICKOU veřejnou IP adresou, přidejte do manifestu YAML vlastnost `loadBalancerIP` a hodnotu statické veřejné IP adresy. Vytvořte soubor s názvem `load-balancer-service.yaml` a zkopírujte následující YAML. Zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku. Následující příklad také nastaví anotaci na skupinu prostředků s názvem *myResourceGroup*. Zadejte název vlastní skupiny prostředků.
 
 ```yaml
 apiVersion: v1
@@ -92,7 +92,7 @@ spec:
     app: azure-load-balancer
 ```
 
-Create the service and deployment with the `kubectl apply` command.
+Pomocí příkazu `kubectl apply` vytvořte službu a nasazení.
 
 ```console
 kubectl apply -f load-balancer-service.yaml
@@ -100,13 +100,13 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-If the static IP address defined in the *loadBalancerIP* property of the Kubernetes service manifest does not exist, or has not been created in the node resource group and no additional delegations configured, the load balancer service creation fails. To troubleshoot, review the service creation events with the [kubectl describe][kubectl-describe] command. Provide the name of the service as specified in the YAML manifest, as shown in the following example:
+Pokud statická IP adresa definovaná ve vlastnosti *loadBalancerIP* manifestu služby Kubernetes neexistuje nebo se nevytvořila v rámci skupiny prostředků uzlu a nejsou nakonfigurované žádné další delegování, vytvoření služby Vyrovnávání zatížení se nepovede. Pokud chcete řešit potíže, Projděte si události vytvoření služby pomocí příkazu [kubectl popsat][kubectl-describe] . Zadejte název služby, jak je uvedeno v manifestu YAML, jak je znázorněno v následujícím příkladu:
 
 ```console
 kubectl describe service azure-load-balancer
 ```
 
-Information about the Kubernetes service resource is displayed. The *Events* at the end of the following example output indicate that the *user supplied IP Address was not found*. In these scenarios, verify that you have created the static public IP address in the node resource group and that the IP address specified in the Kubernetes service manifest is correct.
+Zobrazí se informace o prostředku služby Kubernetes. *Události* na konci následujícího ukázkového výstupu označují, že se *nenašla IP adresa zadaná uživatelem*. V těchto scénářích ověřte, že jste ve skupině prostředků uzlu vytvořili statickou veřejnou IP adresu a že IP adresa zadaná v manifestu služby Kubernetes je správná.
 
 ```
 Name:                     azure-load-balancer
@@ -132,7 +132,7 @@ Events:
 
 ## <a name="next-steps"></a>Další kroky
 
-For additional control over the network traffic to your applications, you may want to instead [create an ingress controller][aks-ingress-basic]. You can also [create an ingress controller with a static public IP address][aks-static-ingress].
+Pro lepší kontrolu nad síťovým přenosem do aplikací můžete místo toho [vytvořit kontroler příchozího][aks-ingress-basic]přenosu dat. Můžete také [vytvořit kontroler příchozího přenosu dat se statickou veřejnou IP adresou][aks-static-ingress].
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

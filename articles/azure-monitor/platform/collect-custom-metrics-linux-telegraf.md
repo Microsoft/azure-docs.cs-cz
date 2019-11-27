@@ -29,7 +29,7 @@ Pomocí Azure Monitor můžete shromažďovat vlastní metriky prostřednictvím
 
 V tomto kurzu nasadíme virtuální počítač Linux, na kterém běží operační systém Ubuntu 16,04 LTS. Agent telegraf se podporuje pro většinu operačních systémů Linux. Balíčky Debian i ot./min. jsou k dispozici společně s nebalenými binárními soubory Linux na [portálu pro stažení InfluxData](https://portal.influxdata.com/downloads). Další pokyny k instalaci a možnosti najdete v této [příručce k instalaci telegraf](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Přihlásit se na [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 Vytvořte nový virtuální počítač pro Linux: 
 
@@ -106,7 +106,7 @@ Agent nyní bude shromažďovat metriky ze všech zadaných vstupních modulů p
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Vykreslení metriky telegraf v Azure Portal 
 
-1. Otevřete web [Azure Portal](https://portal.azure.com). 
+1. Otevřete [portál Azure](https://portal.azure.com). 
 
 1. Přejděte na kartu nové **monitorování** . Pak vyberte **metriky**.  
 

@@ -186,7 +186,7 @@ V pozdější části kurzu nasadíte uvedení. K provedení akcí nasazení (na
 
 Je potřeba vytvořit spravovanou identitu přiřazenou uživatelem a nakonfigurovat řízení přístupu pro vaše předplatné.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 2. Vytvořte [spravovanou identitu přiřazenou uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. V levé nabídce portálu vyberte **Předplatná** a pak vyberte své předplatné.
 4. Vyberte **řízení přístupu (IAM)** a pak vyberte **Přidat přiřazení role**.
@@ -308,7 +308,7 @@ Vytvoříte soubor parametrů, který se použije pro šablonu uvedení.
     * **azureResourceLocation**: zadejte umístění Azure.
     * **artifactSourceSASLocation:** Zadejte identifikátor URI SAS kořenového adresáře (kontejner objektů blob), ve kterém jsou uložené soubory šablon a parametrů jednotek služeb pro účely nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
     * **binaryArtifactRoot:** Pokud nezměníte strukturu složek artefaktů, použijte pro účely tohoto kurzu **binaries/1.0.0.0**.
-    * **managedIdentityID:** Zadejte ID spravované identity přiřazené uživatelem. Viz [Vytvoření spravované identity přiřazené uživatelem](#create-the-user-assigned-managed-identity). Syntaxe je následující:
+    * **managedIdentityID:** Zadejte ID spravované identity přiřazené uživatelem. Viz [Vytvoření spravované identity přiřazené uživatelem](#create-the-user-assigned-managed-identity). Syntaxe je:
 
         ```
         "/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userassignedidentities/<ManagedIdentityName>"
@@ -427,7 +427,7 @@ K nasazení šablon je možné použít Azure PowerShell.
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [portál Azure](https://portal.azure.com).
 2. Přejděte k nově vytvořeným webovým aplikacím v nových skupinách prostředků vytvořených nasazením uvedení.
 3. Otevřete webovou aplikaci ve webovém prohlížeči. Zkontrolujte umístění a verzi souboru index.html.
 

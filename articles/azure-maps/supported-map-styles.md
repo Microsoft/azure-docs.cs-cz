@@ -1,6 +1,6 @@
 ---
-title: Supported map styles in Azure Maps| Microsoft Docs
-description: Map styles supported by Azure Maps
+title: Podporované styly mapy v Azure Maps | Microsoft Docs
+description: Styly mapy podporované Azure Maps
 author: walsehgal
 ms.author: v-musehg
 ms.date: 05/06/2019
@@ -15,94 +15,94 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325400"
 ---
-# <a name="azure-maps-supported-map-styles"></a>Azure Maps supported map styles
-Azure Maps supports several different built-in map styles as described below.
+# <a name="azure-maps-supported-map-styles"></a>Azure Maps podporované styly mapy
+Azure Maps podporuje několik různých vestavěných stylů mapy, jak je popsáno níže.
 
-## <a name="road"></a>road
-A **road** map is a standard map that displays roads, natural and artificial features along with the labels for those features.
+## <a name="road"></a>silniční
+Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé funkce spolu s popisky pro tyto funkce.
 
-![road](./media/supported-map-styles/road.png)
+![silniční](./media/supported-map-styles/road.png)
 
-**Applicable APIs:**
-* [Map image](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Map tile](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Web SDK map control
-* Android map control
+**Platná rozhraní API:**
+* [Obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
-## <a name="blank-and-blank_accessible"></a>blank and blank_accessible
+## <a name="blank-and-blank_accessible"></a>prázdné a blank_accessible
 
-The **blank** and **blank_accessible** map styles provide a blank canvas on which to visualize data on. The **blank_accessible** style will continue to provide screen reader updates with location details of where the map is located, even though the base map is not displayed.
+**Prázdné** a **blank_accessible** styly mapy poskytují prázdné plátno, na kterém se data vizualizují. Styl **blank_accessible** bude dál poskytovat aktualizace čtečky obrazovky s podrobnostmi o umístění, kde se mapa nachází, i když základní mapa není zobrazená.
 
 > [!Note]
-> In the web SDK you can change the background color of the map by setting the CSS `background-color` style of map DIV element.
+> V sadě web SDK můžete změnit barvu pozadí mapy nastavením stylu CSS `background-color` stylu elementu DIV mapy.
 
-**Applicable APIs:**
-* Web SDK map control
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
 
-## <a name="satellite"></a>satellite 
-The **satellite** style is a combination of satellite and aerial imagery.
+## <a name="satellite"></a>satelitní 
+**Satelitní** styl je kombinací satelitních a leteckých snímků.
 
-![satellite](./media/supported-map-styles/satellite.png)
+![satelitní](./media/supported-map-styles/satellite.png)
 
-**Applicable APIs:**
-* [Satellite tile](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
-* Web SDK map control
-* Android map control
+**Platná rozhraní API:**
+* [Satelitní dlaždice](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
-This map style is a hybrid of roads and labels overlaid on top of satellite and aerial imagery.
+Tento styl mapy je hybridem cest a popisků, které se překrývají na družicovém a leteckém mikrosnímků.
 
 ![satellite_road_labels](./media/supported-map-styles/satellite_road_labels.png)
 
-**Applicable APIs:**
-* Web SDK map control
-* Android map control
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 ## <a name="grayscale_dark"></a>grayscale_dark
-**grayscale dark** is a dark version of the road map style.
+**tmavě šedá** je tmavá verze stylu mapy cest.
 
 ![gray_scale](./media/supported-map-styles/grayscale_dark.png)
 
-**Applicable APIs:**
-* [Map image](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Map tile](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Web SDK map control 
-* Android map control
+**Platná rozhraní API:**
+* [Obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Mapový ovládací prvek sady web SDK 
+* Ovládací prvek mapy pro Android
 
 
 ## <a name="grayscale_light"></a>grayscale_light
-**grayscale light** is a light version of the road map style.
+**šedé světlo** je světlá verze stylu mapy cest.
 
-![grayscale light](./media/supported-map-styles/grayscale_light.png)
+![světlo stupňů šedé](./media/supported-map-styles/grayscale_light.png)
 
-**Applicable APIs:**
-* Web SDK map control
-* Android map control
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 
-## <a name="night"></a>night
-**night** is a dark version of the road map style with colored roads and symbols.
+## <a name="night"></a>veletrh
+**noční** je tmavá verze stylu mapy cest s barevnými cestami a symboly.
 
-![night](./media/supported-map-styles/night.png)
+![veletrh](./media/supported-map-styles/night.png)
 
-**Applicable APIs:**
-* Web SDK map control
-* Android map control
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
-**road shaded relief** is an Azure Maps main style completed with contours of the Earth.
+**odlehčené vybarvené z provozu** je Azure Maps hlavní styl dokončený pomocí kokolace země.
 
-![shaded relief](./media/supported-map-styles/shaded-relief.png)
+![vybarvený reliéf](./media/supported-map-styles/shaded-relief.png)
 
-**Applicable APIs:**
-* [Map tile](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Web SDK map control
-* Android map control
+**Platná rozhraní API:**
+* [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn about how to set a map style in Azure Maps:
+Přečtěte si, jak nastavit styl mapy v Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Choose a map style](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
+> [Zvolit styl mapy](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

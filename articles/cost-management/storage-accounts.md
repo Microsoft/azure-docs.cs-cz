@@ -1,6 +1,6 @@
 ---
-title: Configure storage accounts for Cloudyn in Azure | Microsoft Docs
-description: This article describes how you configure Azure storage accounts and AWS storage buckets for Cloudyn.
+title: Konfigurace účtů úložiště pro Cloudyn v Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nakonfigurovat účty úložiště Azure a kontejnery úložiště AWS pro Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,55 +17,55 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229930"
 ---
-# <a name="configure-storage-accounts-for-cloudyn"></a>Configure storage accounts for Cloudyn
+# <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurace účtů úložiště pro Cloudyn
 
 <!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
-You can save Cloudyn reports in the Cloudyn portal, Azure storage, or AWS storage buckets. Saving your reports to the Cloudyn portal is free of charge. However, saving your reports to your cloud service provider's storage is optional and incurs additional cost. This article helps you configure Azure storage accounts and Amazon Web Services (AWS) storage buckets to store your reports.
+Cloudyn sestavy můžete uložit na portálu Cloudyn, Azure storage nebo kontejnery úložiště AWS. Ukládání sestav na portálu Cloudyn je zdarma. Ale ukládání sestav do poskytovatele cloudových služeb úložiště je volitelná a má za následek další poplatky. Tento článek vám pomůže nakonfigurovat účty úložiště Azure a kontejnery úložiště Amazon Web Services (AWS) pro uložení sestavy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-You must have either an Azure storage account or an Amazon storage bucket.
+Musíte mít účet úložiště Azure nebo kontejneru úložiště Amazon.
 
-If you don't have an Azure storage account, you need to create one. For more information about creating an Azure storage account, see [Create a storage account](../storage/common/storage-quickstart-create-account.md).
+Pokud nemáte účet úložiště Azure, musíte ho vytvořit. Další informace o vytvoření účtu úložiště Azure najdete v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
 
-If you don't have an AWS simple storage service (S3) bucket, you need to create one. For more information about creating an S3 bucket, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
+Pokud nemáte k dispozici AWS kbelíku simple storage service (S3), musíte ji vytvořit. Další informace o vytváření intervalu S3 najdete v tématu [Vytvoření sady](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-## <a name="configure-your-azure-storage-account"></a>Configure your Azure storage account
+## <a name="configure-your-azure-storage-account"></a>Konfigurace účtu služby Azure storage
 
-Configuring you Azure storage for use by Cloudyn is straightforward. Gather details about the storage account and copy them in the Cloudyn portal.
+Konfigurace je úložiště Azure pro použití u Cloudyn je jednoduché. Shromážděte informace o účtu úložiště a zkopírujte je na portálu Cloudyn.
 
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
-2. Click **All Services**, select **Storage accounts**, scroll to the storage account that you want to use, and then select the account.
-3. On your storage account page under **Settings**, click **Access Keys**.
-4. Copy your **Storage account name** and **Connection string** under key1.  
-   ![Copy storage account name and connection string](./media/storage-accounts/azure-storage-access-keys.png)  
+2. Klikněte na **všechny služby**, vyberte **účty úložiště**, přejděte k účtu úložiště, který chcete použít, a pak vyberte účet.
+3. Na stránce účtu úložiště v části **Nastavení**klikněte na **přístupové klíče**.
+4. Do klíč1 zkopírujte **název svého účtu úložiště** a **připojovací řetězec** .  
+   ![kopírovat název účtu úložiště a připojovací řetězec](./media/storage-accounts/azure-storage-access-keys.png)  
 5. Portál Cloudyn můžete otevřít z webu Azure Portal nebo můžete přejít na adresu https://azure.cloudyn.com a přihlásit se.
-6. Click the cog symbol and then select **Reports Storage Management**.
-7. Click **Add new +** and ensure that Microsoft Azure is selected. Paste your Azure storage account name in the **Name** area. Paste your **connection string** in the corresponding area. Enter a container name and then click **Save**.  
-   ![Paste Azure storage account name and connection string in the Add a new report storage box](./media/storage-accounts/azure-cloudyn-storage.png)
+6. Klikněte na symbol ozubeného kola a pak vyberte **Správa úložiště sestav**.
+7. Klikněte na **Přidat nové +** a ujistěte se, že je vybraná možnost Microsoft Azure. Do oblasti **název** vložte název svého účtu služby Azure Storage. Vložte **připojovací řetězec** do odpovídající oblasti. Zadejte název kontejneru a pak klikněte na **Uložit**.  
+   ![do pole přidat nové úložiště sestavy vložte název účtu úložiště Azure a připojovací řetězec](./media/storage-accounts/azure-cloudyn-storage.png)
 
-   Your new Azure report storage entry appears in the storage account list.  
-    ![New Azure report storage entry in list](./media/storage-accounts/azure-storage-entry.png)
+   Vaše nové úložiště položka Azure sestavy se zobrazí v seznamu účtů úložiště.  
+    ![Nová položka úložiště Azure sestavy v seznamu](./media/storage-accounts/azure-storage-entry.png)
 
 
-You can now save reports to Azure storage. In any report, click **Actions** and then select **Schedule report**. Name the report and then either add your own URL or use the automatically created URL. Select  **Save to storage**  and then select the storage account. Enter a prefix that gets appended to the report file name. Select either CSV or JSON file format and then save the report.
+Sestavy můžete uložit do služby Azure storage. V libovolné sestavě klikněte na **Akce** a pak vyberte **naplánovat sestavu**. Název sestavy a pak přidejte vlastní adresu URL nebo použít automaticky vytvořený adresu URL. Vyberte **Uložit do úložiště** a pak vyberte účet úložiště. Zadejte předponu, která získá připojeným k názvu souboru sestavy. Vyberte formát souboru CSV nebo JSON a uložte sestavu.
 
-## <a name="configure-an-aws-storage-bucket"></a>Configure an AWS storage bucket
+## <a name="configure-an-aws-storage-bucket"></a>Konfigurace kontejneru úložiště AWS
 
-The Cloudyn uses existing AWS credentials: User or Role, to save the reports to your bucket. To test the access, Cloudyn tries to save a small text file to the bucket with the file name _check-bucket-permission.txt_.
+Cloudyn používá existující přihlašovací údaje AWS: uživatel nebo Role, ukládání sestav do vašeho kontejneru. Chcete-li otestovat přístup, Cloudyn se pokusí uložit malý textový soubor do kontejneru s názvem souboru _check-Bucket-Permission. txt_.
 
-You provide the Cloudyn role or user with the PutObject permission to your bucket. Then, use an existing bucket or create a new one to save reports. Finally, decide how to manage the storage class, set lifecycle rules, or remove any unnecessary files.
+Poskytnete Cloudyn role nebo uživatele s oprávněním umístit objekt do vašeho kontejneru. Potom použijte existující sady nebo vytvořit nový pro uložení sestavy. Nakonec se rozhodněte, jak spravovat třídy úložiště, nastavení životního cyklu pravidla nebo odeberte všechny nepotřebné soubory.
 
-###  <a name="assign-permissions-to-your-aws-user-or-role"></a>Assign permissions to your AWS user or role
+###  <a name="assign-permissions-to-your-aws-user-or-role"></a>Přiřadit oprávnění uživatele AWS nebo role
 
-When you create a new policy, you provide the exact permissions needed to save a report to a S3 bucket.
+Když vytvoříte novou zásadu, je třeba zadat přesné oprávnění potřebná k uložení sestavy do sady S3.
 
-1. Sign in to the AWS console and select **Services**.
-2. Select **IAM** from the list of services.
-3. Select **Policies** on the left side of the console and then click **Create Policy**.
-4. Click the **JSON** tab.
-5. The following policy allows you to save a report to a S3 bucket. Copy and paste the following policy example to the **JSON** tab. Replace &lt;bucketname&gt; with your bucket name.
+1. Přihlaste se ke konzole AWS a vyberte **služby**.
+2. V seznamu služeb vyberte **IAM** .
+3. Na levé straně konzoly vyberte **zásady** a pak klikněte na **vytvořit zásadu**.
+4. Klikněte na kartu **JSON** .
+5. Tyto zásady můžete uložit sestavu do sady S3. Zkopírujte a vložte následující příklad zásad na kartu **JSON** . nahraďte &lt;název sady&gt; názvem svého intervalu.
 
    ```json
    {
@@ -85,42 +85,42 @@ When you create a new policy, you provide the exact permissions needed to save a
    }
    ```
 
-6. Click **Review policy**.  
-    ![AWS JSON policy showing example information](./media/storage-accounts/aws-policy.png)  
-7. On the Review policy page, type a name for your policy. For example, _CloudynSaveReport2S3_.
-8. Click **Create policy**.
+6. Klikněte na **zkontrolovat zásadu**.  
+    ![zásady JSON AWS zobrazující informace o příkladech](./media/storage-accounts/aws-policy.png)  
+7. Na stránce zkontrolovat zásady zadejte název zásady. Například _CloudynSaveReport2S3_.
+8. Klikněte na **vytvořit zásadu**.
 
-### <a name="attach-the-policy-to-a-cloudyn-role-or-user-in-your-account"></a>Attach the policy to a Cloudyn role or user in your account
+### <a name="attach-the-policy-to-a-cloudyn-role-or-user-in-your-account"></a>Připojit zásady Cloudyn role nebo uživatele ve vašem účtu
 
-To attach the new policy, you open the AWS console and edit the Cloudyn role or user.
+Pro připojení nové zásady, otevřete konzoly AWS a upravte Cloudyn role nebo uživatele.
 
-1. Sign in to the AWS console and select **Services**, then select **IAM** from the list of services.
-2. Select either **Roles** or **Users** from the left side of the console.
+1. Přihlaste se ke konzole AWS a vyberte **služby**a v seznamu služeb vyberte **IAM** .
+2. Na levé straně konzoly vyberte **role** nebo **uživatele** .
 
-**For roles:**
+**Pro role:**
 
-  1. Click your Cloudyn role name.
-  2. On the **Permissions** tab, click **Attach Policy**.
-  3. Search for the policy that you created and select it, then click **Attach Policy**.
-    ![Example policy attached to your Cloudyn role](./media/storage-accounts/aws-attach-policy-role.png)
+  1. Klikněte na název role Cloudyn.
+  2. Na kartě **oprávnění** klikněte na **připojit zásadu**.
+  3. Vyhledejte zásadu, kterou jste vytvořili, vyberte ji a pak klikněte na **připojit zásadu**.
+    ![ukázkové zásady připojené k vaší roli Cloudyn](./media/storage-accounts/aws-attach-policy-role.png)
 
-**For users:**
+**Pro uživatele:**
 
-1. Select the Cloudyn User.
-2. On the **Permissions** tab, click **Add permissions**.
-3. In the **Grant Permission** section, select **Attach existing policies directly**.
-4. Search for the policy that you created and select it, then click **Next: Review**.
-5. On the Add permissions to role name page, click **Add permissions**.  
-    ![Example policy attached to your Cloudyn user](./media/storage-accounts/aws-attach-policy-user.png)
+1. Vyberte uživatele, Cloudyn.
+2. Na kartě **oprávnění** klikněte na **Přidat oprávnění**.
+3. V části **udělení oprávnění** vyberte **připojit existující zásady přímo**.
+4. Vyhledejte zásadu, kterou jste vytvořili, vyberte ji a pak klikněte na **Další: zkontrolovat**.
+5. Na stránce Přidat oprávnění k názvu role klikněte na **Přidat oprávnění**.  
+    ![ukázkové zásady připojené k vašemu uživateli Cloudyn](./media/storage-accounts/aws-attach-policy-user.png)
 
 
-### <a name="optional-set-permission-with-bucket-policy"></a>Optional: Set permission with bucket policy
+### <a name="optional-set-permission-with-bucket-policy"></a>Volitelné: Nastavte oprávnění pomocí sady zásad
 
-You can also set permission to create reports on your S3 bucket using a bucket policy. In the classic S3 view:
+Můžete také nastavit oprávnění k vytváření sestav s vaší sady S3 pomocí sady zásad. V klasickém zobrazení S3:
 
-1. Create or select an existing bucket.
-2. Select the **Permissions** tab and then click **Bucket policy**.
-3. Copy and paste the following policy sample. Replace &lt;bucket\_name&gt; and &lt;Cloudyn\_principle&gt; with the ARN of your bucket. Replace the ARN of either the role or user used by Cloudyn.
+1. Vytvořte nebo vyberte existující sady.
+2. Vyberte kartu **oprávnění** a pak klikněte na **zásady sad**.
+3. Zkopírujte a vložte následující ukázkové zásady. Nahraďte &lt;,\_název&gt; a &lt;Cloudyn\_hlavní&gt; s ARN vašeho intervalu. Nahraďte ARN role nebo uživatele používají Cloudyn.
 
    ```
    {
@@ -144,23 +144,23 @@ You can also set permission to create reports on your S3 bucket using a bucket p
    }
    ```
 
-4. In the Bucket policy editor, click **Save**.
+4. V editoru zásad sad klikněte na **Uložit**.
 
-### <a name="add-aws-report-storage-to-cloudyn"></a>Add AWS report storage to Cloudyn
+### <a name="add-aws-report-storage-to-cloudyn"></a>Přidání úložiště AWS sestavy do Cloudyn
 
 1. Portál Cloudyn můžete otevřít z webu Azure Portal nebo můžete přejít na adresu https://azure.cloudyn.com a přihlásit se.
-2. Click the cog symbol and then select **Reports Storage Management**.
-3. Click **Add new +** and ensure that AWS is selected.
-4. Select an account and storage bucket. The name of the AWS storage bucket is automatically filled-in.  
-    ![Example information in the Add a new report storage box](./media/storage-accounts/aws-cloudyn-storage.png)  
-5. Click **Save** and then click **Ok**.
+2. Klikněte na symbol ozubeného kola a pak vyberte **Správa úložiště sestav**.
+3. Klikněte na **Přidat nové +** a ujistěte se, že je vybraná možnost AWS.
+4. Vyberte účet a úložiště kontejneru. Název kontejneru úložiště AWS je automaticky vyplněné.  
+    ![Informace z příkladu v přidat nová pole úložiště sestavy](./media/storage-accounts/aws-cloudyn-storage.png)  
+5. Klikněte na **Uložit** a pak na **OK**.
 
-    Your new AWS report storage entry appears in the storage account list.  
-    ![New AWS report storage entry show in storage account list](./media/storage-accounts/aws-storage-entry.png)
+    Vaše nová položka sestavy úložiště AWS se zobrazí v seznamu účtů úložiště.  
+    ![Nové AWS sestavě úložiště položky zobrazit v seznamu účtů úložiště](./media/storage-accounts/aws-storage-entry.png)
 
 
-You can now save reports to Azure storage. In any report, click **Actions**  and then select **Schedule report**. Name the report and then either add your own URL or use the automatically created URL. Select  **Save to storage**  and then select the storage account. Enter a prefix that gets appended to the report file name. Select either CSV or JSON file format and then save the report.
+Sestavy můžete uložit do služby Azure storage. V libovolné sestavě klikněte na **Akce** a pak vyberte **naplánovat sestavu**. Název sestavy a pak přidejte vlastní adresu URL nebo použít automaticky vytvořený adresu URL. Vyberte **Uložit do úložiště** a pak vyberte účet úložiště. Zadejte předponu, která získá připojeným k názvu souboru sestavy. Vyberte formát souboru CSV nebo JSON a uložte sestavu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Review [Understanding Cloudyn reports](understanding-cost-reports.md) to learn about the basic structure and functions of Cloudyn reports.
+- Informace o základní struktuře a funkcích sestav Cloudyn najdete v části [Principy sestav Cloudyn](understanding-cost-reports.md) .

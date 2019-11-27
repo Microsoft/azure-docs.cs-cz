@@ -91,7 +91,7 @@ Dalším krokem je konfigurace aplikace tak, aby používala identifikátor úč
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
-Otevřít `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
+Otevřete `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
 Vyhledejte pole `spatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
 
@@ -99,7 +99,7 @@ Vyhledejte pole `spatialAnchorsAccountId` a nahraďte `Set me` identifikátorem 
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
-Otevřít `iOS/Objective-C/SampleObjC/BaseViewController.m`.
+Otevřete `iOS/Objective-C/SampleObjC/BaseViewController.m`.
 
 Vyhledejte pole `SpatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
 

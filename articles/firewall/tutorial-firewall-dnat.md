@@ -52,7 +52,7 @@ Nejprve vytvořte virtuální sítě a pak mezi nimi vytvořte partnerský vztah
 
 1. Na domovské stránce webu Azure Portal klikněte na **Všechny služby**.
 2. V části **Sítě** klikněte na **Virtuální sítě**.
-3. Klikněte na tlačítko **přidat**.
+3. Klikněte na **Přidat**.
 4. Jako **Název** zadejte **VN-Hub**.
 5. V části **Adresní prostor** zadejte **10.0.0.0/16**.
 6. V části **Předplatné** vyberte své předplatné.
@@ -71,7 +71,7 @@ Nejprve vytvořte virtuální sítě a pak mezi nimi vytvořte partnerský vztah
 
 1. Na domovské stránce webu Azure Portal klikněte na **Všechny služby**.
 2. V části **Sítě** klikněte na **Virtuální sítě**.
-3. Klikněte na tlačítko **přidat**.
+3. Klikněte na **Přidat**.
 4. Jako **Název** zadejte **VN-Spoke**.
 5. Jako **Adresní prostor** zadejte **192.168.0.0/16**.
 6. V části **Předplatné** vyberte své předplatné.
@@ -91,7 +91,7 @@ Teď mezi dvěma virtuálními sítěmi vytvořte partnerský vztah.
 
 1. Klikněte na virtuální síť **VN-Hub**.
 2. V části **Nastavení** klikněte na **Partnerské vztahy**.
-3. Klikněte na tlačítko **přidat**.
+3. Klikněte na **Přidat**.
 4. Jako název zadejte **Peer-HubSpoke**.
 5. Jako virtuální síť vyberte **VN-Spoke**.
 6. Klikněte na tlačítko **OK**.
@@ -100,7 +100,7 @@ Teď mezi dvěma virtuálními sítěmi vytvořte partnerský vztah.
 
 1. Klikněte na virtuální síť **VN-Spoke**.
 2. V části **Nastavení** klikněte na **Partnerské vztahy**.
-3. Klikněte na tlačítko **přidat**.
+3. Klikněte na **Přidat**.
 4. Jako název zadejte **Peer-SpokeHub**.
 5. Jako virtuální síť vyberte **VN-Hub**.
 6. Klikněte na **Povolit přesměrovaný provoz**.
@@ -171,7 +171,7 @@ U podsítě **SN-Workload** nakonfigurujete výchozí trasu v odchozím směru, 
 
 1. Na domovské stránce webu Azure Portal klikněte na **Všechny služby**.
 2. V části **Sítě** klikněte na **Směrovací tabulky**.
-3. Klikněte na tlačítko **přidat**.
+3. Klikněte na **Přidat**.
 4. Jako **Název** zadejte **RT-FWroute**.
 5. V části **Předplatné** vyberte své předplatné.
 6. V části **Skupina prostředků** vyberte **Použít existující** a pak vyberte **RG-DNAT-Test**.
@@ -205,7 +205,7 @@ U podsítě **SN-Workload** nakonfigurujete výchozí trasu v odchozím směru, 
 10. Do pole **Cílové porty** zadejte **3389**. 
 11. Do pole **Přeložená adresa** zadejte privátní IP adresu virtuálního počítače Srv-Workload. 
 12. Do pole **Přeložený port** zadejte **3389**. 
-13. Klikněte na tlačítko **přidat**. 
+13. Klikněte na **Přidat**. 
 
 ## <a name="test-the-firewall"></a>Otestovat bránu firewall
 

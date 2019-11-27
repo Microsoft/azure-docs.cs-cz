@@ -36,10 +36,10 @@ Proxy aplikací je funkce služby Azure AD, která uživatelům umožňuje pří
 
 Proxy aplikace funguje s:
 
-* Webové aplikace, které používají [integrované ověřování Windows](application-proxy-configure-single-sign-on-with-kcd.md) pro ověřování  
-* Webové aplikace, které používají založené na formulářích nebo [založeným na hlavičkách](application-proxy-configure-single-sign-on-with-ping-access.md) přístup  
+* Webové aplikace, které pro ověřování používají [integrované ověřování systému Windows](application-proxy-configure-single-sign-on-with-kcd.md)  
+* Webové aplikace, které používají formulář nebo přístup [na základě hlaviček](application-proxy-configure-single-sign-on-with-ping-access.md)  
 * Webové rozhraní API, která chcete k tomu, aby bohaté aplikace na různých zařízeních  
-* Aplikací hostovaných za službou [Brána vzdálené plochy](application-proxy-integrate-with-remote-desktop-services.md)  
+* Aplikace hostované za [Brána vzdálené plochy](application-proxy-integrate-with-remote-desktop-services.md)  
 * Bohaté klientských aplikací, které jsou integrovány s Active Directory Authentication Library (ADAL)
 
 Proxy aplikace podporuje jednotné přihlašování. Další informace o podporovaných metodách najdete v tématu [Výběr metody jednotného přihlašování](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
@@ -59,12 +59,12 @@ Následující diagram ukazuje, jak služba Azure AD a proxy aplikací společn�
 5. Konektor odešle požadavek na místní aplikace.  
 6. Odpověď je odeslána prostřednictvím konektoru a služby proxy aplikací k uživateli.
 
-| Komponenta | Popis |
+| Součást | Popis |
 | --------- | ----------- |
 | Koncový bod  | Koncový bod je adresa URL nebo [portál pro koncové uživatele](end-user-experiences.md). Uživatelé mohli spojit aplikace během mimo vaši síť díky přístupu do externí adresu URL. Uživatelé ve vaší síti přístup k aplikaci pomocí adresy URL nebo portálu pro koncové uživatele. Uživatelé přejít na jednu z těchto koncových bodů, ověřování ve službě Azure AD a pak se směrují prostřednictvím konektoru pro místní aplikace.|
 | Azure AD | Azure AD provádí ověřování pomocí adresáře tenanta, který je uložený v cloudu. |
 | Služba proxy aplikací | Tato služba proxy aplikací běží v cloudu jako součást služby Azure AD. Předá přihlašovací token od uživatele k konektoru proxy aplikací. Proxy aplikace přepošle všechny dostupné hlavičky na žádosti a nastaví hlavičky podle jejího protokolu na IP adresu klienta. Pokud příchozí požadavek na proxy již má tuto hlavičku, adresa IP klienta se přidá na konec seznamu odděleného čárkami, který je hodnotou záhlaví.|
-| Konektor proxy aplikací | Konektor je jednoduchý agent, který běží na Windows serveru ve vaší síti. Konektor spravuje komunikaci mezi službou proxy aplikací v cloudu a místní aplikací. Konektor používá pouze odchozí připojení, takže nemusíte otevírat žádné příchozí porty ani nic vkládat do DMZ. Konektory jsou bezstavové a aktivního získávání informací z cloudu podle potřeby. Další informace o konektorech, jako je způsob jejich – nástroj pro vyrovnávání zatížení a ověření naleznete v tématu [pochopit Azure AD Application Proxy konektory](application-proxy-connectors.md).|
+| Konektor proxy aplikací | Konektor je jednoduchý agent, který běží na Windows serveru ve vaší síti. Konektor spravuje komunikaci mezi službou proxy aplikací v cloudu a místní aplikací. Konektor používá pouze odchozí připojení, takže nemusíte otevírat žádné příchozí porty ani nic vkládat do DMZ. Konektory jsou bezstavové a aktivního získávání informací z cloudu podle potřeby. Další informace o konektorech, jako je například vyrovnávání zatížení a ověřování, najdete v tématu [vysvětlení konektorů Azure proxy aplikací služby AD](application-proxy-connectors.md).|
 | Služba Active Directory (AD) | Služba Active Directory pracuje místně a provádí ověřování pro doménové účty. Pokud je nakonfigurováno jednotné přihlašování, konektor komunikuje se službou AD za účelem provedení dalšího vyžadovaného ověřování.
 | Místní aplikace | Nakonec může uživatel získat přístup k místní aplikaci. 
 

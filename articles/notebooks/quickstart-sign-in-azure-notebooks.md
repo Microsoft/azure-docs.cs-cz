@@ -16,11 +16,11 @@ I když se vždy zobrazí poznámkových bloků Azure bez přihlášení, musít
 
 ## <a name="sign-in"></a>Přihlášení
 
-1. Vyberte **přihlášení** nahoře napravo od [notebooks.azure.com](https://notebooks.azure.com/).
+1. V pravém horním rohu [Notebooks.Azure.com](https://notebooks.azure.com/)vyberte **Přihlásit** .
 
     ![Umístění příkazu Sign in na poznámkových bloků Azure](media/accounts/sign-in-command.png)
 
-1. Po zobrazení výzvy zadejte e-mailová adresa Account Microsoft nebo pracovní nebo školní účet a vyberte **Další**. Typy účtů jsou popsány v [uživatelského účtu pro poznámkových bloků Azure](azure-notebooks-user-account.md). Pokud nemáte Account Microsoft, nebo chcete, aby jeden výhradně k použití s poznámkových bloků Azure, vyberte **vytvořit**:
+1. Po zobrazení výzvy zadejte e-mailovou adresu účtu Microsoft nebo pracovní nebo školní účet a vyberte **Další**. Typy účtů jsou popsány v [uživatelském účtu pro Azure Notebooks](azure-notebooks-user-account.md). Pokud nemáte účet Microsoft nebo ho chcete použít přímo s Azure Notebooks, vyberte **vytvořit**:
 
     ![Vytvořit nový příkaz účtu Microsoft přihlásit příkazovém řádku](media/accounts/create-new-microsoft-account.png)
 
@@ -29,7 +29,7 @@ I když se vždy zobrazí poznámkových bloků Azure bez přihlášení, musít
 
 1. Zadejte svoje heslo po zobrazení výzvy.
 
-1. Pokud se přihlašujete poprvé, poznámkových bloků Azure vyzve k zadání oprávnění pro přístup k vašemu účtu. Vyberte **Ano** pokračovat:
+1. Pokud se přihlašujete poprvé, poznámkových bloků Azure vyzve k zadání oprávnění pro přístup k vašemu účtu. Pokračujte výběrem **Ano** :
 
     ![Účet oprávnění řádku](media/accounts/account-permission-prompt.png)
 
@@ -39,9 +39,9 @@ I když se vždy zobrazí poznámkových bloků Azure bez přihlášení, musít
 
     ![Vyzvat k zadání ID uživatele pro poznámkové bloky Azure](media/accounts/create-user-id.png)
 
-    Pokud vyberete **Ne, děkuji**, poznámkových bloků Azure nadále vyzve k zadání ID uživatele při každém přihlášení. Kdykoli v můžete také nastavit ID uživatele vašeho [profilu uživatele](azure-notebooks-user-profile.md).
+    Pokud vyberete **ne**, Azure Notebooks se při každém přihlášení nadále zobrazovat výzva k zadání ID uživatele. Vaše ID uživatele můžete také nastavit kdykoli v [profilu uživatele](azure-notebooks-user-profile.md).
 
-1. Po úspěšném přihlášení, poznámkových bloků Azure přejde na stránku veřejný profil, ve kterém můžete vybrat **úprava informací profilu** k vyplnění zbývající části vašich informací (Další informace najdete v tématu [profilu ID uživatele a](azure-notebooks-user-profile.md)):
+1. Po úspěšném přihlášení Azure Notebooks přejít na stránku veřejného profilu, na které můžete vybrat **Upravit informace o profilu** a vyplnit zbývající informace. (Další informace najdete v [profilu a ID uživatele](azure-notebooks-user-profile.md)):
 
     ![Počáteční zobrazení stránky profil poznámkových bloků Azure](media/accounts/profile-page-new.png)
 
@@ -50,11 +50,11 @@ I když se vždy zobrazí poznámkových bloků Azure bez přihlášení, musít
 
 ## <a name="sign-out"></a>Odhlásit se
 
-Odhlásit, vyberte své uživatelské jméno v pravém horním rohu stránky a pak vyberte **Odhlásit**:
+Pokud se chcete odhlásit, vyberte své uživatelské jméno v pravém horním rohu stránky a pak vyberte **Odhlásit**:
 
 ![Umístění odhlašování příkazu v poznámkových blocích Azure](media/accounts/sign-out-command.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Vytvoření a sdílení poznámkového bloku](quickstart-create-share-jupyter-notebook.md)
+> [Rychlý Start: vytvoření a sdílení poznámkového bloku](quickstart-create-share-jupyter-notebook.md)

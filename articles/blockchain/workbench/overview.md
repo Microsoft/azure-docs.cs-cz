@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Workbench Preview overview
-description: Overview of Azure Blockchain Workbench Preview and its capabilities.
+title: Přehled služby Azure blockchain Workbench Preview
+description: Přehled služby Azure blockchain Workbench Preview a jejích možností.
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
@@ -13,7 +13,7 @@ ms.locfileid: "74324548"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Co je Azure Blockchain Workbench?
 
-Azure Blockchain Workbench Preview is a collection of Azure services and capabilities designed to help you create and deploy blockchain applications to share business processes and data with other organizations. Azure Blockchain Workbench umožňuje generovat infrastrukturu potřebnou k sestavení blockchainových aplikací, která vývojářům umožňuje zaměřit se na vytváření obchodní logiky a tzv. „chytrých kontraktů“. Dále usnadňuje tvorbu blockchainových aplikací tím, že integruje různé služby a funkce Azure, které pomáhají automatizovat nejčastější úkoly při vývoji.
+Azure blockchain Workbench Preview je kolekce služeb a funkcí Azure, které vám pomůžou vytvářet a nasazovat aplikace blockchain pro sdílení obchodních procesů a dat s jinými organizacemi. Azure Blockchain Workbench umožňuje generovat infrastrukturu potřebnou k sestavení blockchainových aplikací, která vývojářům umožňuje zaměřit se na vytváření obchodní logiky a tzv. „chytrých kontraktů“. Dále usnadňuje tvorbu blockchainových aplikací tím, že integruje různé služby a funkce Azure, které pomáhají automatizovat nejčastější úkoly při vývoji.
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
@@ -43,7 +43,7 @@ U stávajících blockchainových protokolů jsou blockchainové identity vyjád
 
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Synchronizace zřetězených dat s nezřetězeným úložištěm
 
-Azure Blockchain Workbench usnadňuje analýzu blockchainových událostí a dat tím, že automaticky synchronizuje blockchainová data s nezřetězeným úložištěm. Místo extrahování dat přímo z blockchainu můžete vytvářet dotazy do nezřetězených databázových systémů, jako je SQL Server. Blockchain expertise is not required for end users who are doing data analysis tasks.
+Azure Blockchain Workbench usnadňuje analýzu blockchainových událostí a dat tím, že automaticky synchronizuje blockchainová data s nezřetězeným úložištěm. Místo extrahování dat přímo z blockchainu můžete vytvářet dotazy do nezřetězených databázových systémů, jako je SQL Server. Pro koncové uživatele, kteří provádějí úlohy analýzy dat, se blockchain odbornosti nevyžaduje.
 
 ## <a name="next-steps"></a>Další kroky
 

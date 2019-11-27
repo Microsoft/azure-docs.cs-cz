@@ -58,8 +58,8 @@ Pokud název domény ještě nemáte, kupte si ho od *registrátora názvu domé
 
 Existuje mnoho způsobů, jak získat certifikát SSL (digitální certifikát). Nejběžnější je koupit si ho od certifikační *autority* (CA). Bez ohledu na to, kde certifikát obdržíte, potřebujete následující soubory:
 
-* A **certifikát**. Certifikát musí obsahovat úplný řetěz certifikátů a musí být "PEM-encodeded".
-* A **klíč**. Klíč musí být také zakódovaný v PEM.
+* **Certifikát**. Certifikát musí obsahovat úplný řetěz certifikátů a musí být "PEM-encodeded".
+* **Klíč**. Klíč musí být také zakódovaný v PEM.
 
 Když vyžádáte certifikát, musíte zadat plně kvalifikovaný název domény adresy, kterou chcete používat pro webovou službu (například web\.contoso.com). Adresa, která je vyražena na certifikát a adresu, kterou používají klienti, je porovnána s cílem ověřit identitu webové služby. Pokud se tyto adresy neshodují, klient obdrží chybovou zprávu.
 

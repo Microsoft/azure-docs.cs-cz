@@ -1,6 +1,6 @@
 ---
-title: Task hubs in Durable Functions - Azure
-description: Learn what a task hub is in the Durable Functions extension for Azure Functions. Learn how to configure task hubs.
+title: Centra úloh v Durable Functions – Azure
+description: Zjistěte, co je centrum úloh v rozšíření Durable Functions pro Azure Functions. Naučte se konfigurovat centra úloh.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
@@ -12,32 +12,32 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232793"
 ---
-# <a name="task-hubs-in-durable-functions-azure-functions"></a>Task hubs in Durable Functions (Azure Functions)
+# <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra úloh v Durable Functions (Azure Functions)
 
-A *task hub* in [Durable Functions](durable-functions-overview.md) is a logical container for Azure Storage resources that are used for orchestrations. Orchestrator and activity functions can only interact with each other when they belong to the same task hub.
+*Centrum úloh* v [Durable Functions](durable-functions-overview.md) je logický kontejner pro Azure Storage prostředky, které se používají pro orchestrace. Funkce Orchestrator a Activity můžou vzájemně fungovat, když patří do stejného centra úloh.
 
-If multiple function apps share a storage account, each function app *must* be configured with a separate task hub name. A storage account can contain multiple task hubs. The following diagram illustrates one task hub per function app in shared and dedicated storage accounts.
+Pokud účet úložiště sdílí víc aplikací funkcí, *musí* být každá aplikace Function App nakonfigurovaná s názvem samostatného centra úloh. Účet úložiště může obsahovat několik Center úloh. Následující diagram znázorňuje jedno centrum úloh na aplikaci Function App ve sdílených a vyhrazených účtech úložiště.
 
-![Diagram showing shared and dedicated storage accounts.](./media/durable-functions-task-hubs/task-hubs-storage.png)
+![Diagram znázorňující sdílené a vyhrazené účty úložiště](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
-## <a name="azure-storage-resources"></a>Azure Storage resources
+## <a name="azure-storage-resources"></a>Prostředky Azure Storage
 
-A task hub consists of the following storage resources:
+Centrum úloh se skládá z následujících prostředků úložiště:
 
-* One or more control queues.
-* One work-item queue.
-* One history table.
-* One instances table.
-* One storage container containing one or more lease blobs.
-* A storage container containing large message payloads, if applicable.
+* Jedna nebo více front ovládacích prvků.
+* Jedna fronta pracovních položek.
+* Jedna tabulka historie.
+* Jedna instance tabulky
+* Jeden kontejner úložiště obsahující jeden nebo více objektů BLOB zapůjčení
+* Kontejner úložiště obsahující velkou datovou část zprávy (je-li k dispozici).
 
-All of these resources are created automatically in the default Azure Storage account when orchestrator, entity, or activity functions run or are scheduled to run. The [Performance and Scale](durable-functions-perf-and-scale.md) article explains how these resources are used.
+Všechny tyto prostředky se vytvoří automaticky ve výchozím účtu Azure Storage, když se spustí funkce Orchestrator, entita nebo aktivita, nebo se naplánuje jejich spuštění. Článek o [výkonu a škálování](durable-functions-perf-and-scale.md) vysvětluje, jak se tyto prostředky používají.
 
-## <a name="task-hub-names"></a>Task hub names
+## <a name="task-hub-names"></a>Názvy centra úloh
 
-Task hubs are identified by a name that is declared in the *host.json* file, as shown in the following example:
+Centra úloh jsou identifikována názvem, který je deklarován v souboru *Host. JSON* , jak je znázorněno v následujícím příkladu:
 
-### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
+### <a name="hostjson-functions-20"></a>Host. JSON (funkce 2,0)
 
 ```json
 {
@@ -50,7 +50,7 @@ Task hubs are identified by a name that is declared in the *host.json* file, as 
 }
 ```
 
-### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+### <a name="hostjson-functions-1x"></a>Host. JSON (funkce 1. x)
 
 ```json
 {
@@ -60,9 +60,9 @@ Task hubs are identified by a name that is declared in the *host.json* file, as 
 }
 ```
 
-Task hubs can also be configured using app settings, as shown in the following `host.json` example file:
+Centra úloh je také možné konfigurovat pomocí nastavení aplikace, jak je znázorněno v následujícím souboru `host.json` příkladu:
 
-### <a name="hostjson-functions-10"></a>host.json (Functions 1.0)
+### <a name="hostjson-functions-10"></a>Host. JSON (funkce 1,0)
 
 ```json
 {
@@ -72,7 +72,7 @@ Task hubs can also be configured using app settings, as shown in the following `
 }
 ```
 
-### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
+### <a name="hostjson-functions-20"></a>Host. JSON (funkce 2,0)
 
 ```json
 {
@@ -85,7 +85,7 @@ Task hubs can also be configured using app settings, as shown in the following `
 }
 ```
 
-The task hub name will be set to the value of the `MyTaskHub` app setting. The following `local.settings.json` demonstrates how to define the `MyTaskHub` setting as `samplehubname`:
+Název centra úloh se nastaví na hodnotu nastavení aplikace `MyTaskHub`. Následující `local.settings.json` ukazuje, jak definovat `MyTaskHub` nastavení jako `samplehubname`:
 
 ```json
 {
@@ -96,7 +96,7 @@ The task hub name will be set to the value of the `MyTaskHub` app setting. The f
 }
 ```
 
-The following code is a precompiled C# example of how to write a function that uses the [orchestration client binding](durable-functions-bindings.md#orchestration-client) to work with a task hub that is configured as an App Setting:
+Následující kód je předkompilovaný C# příklad, jak napsat funkci, která používá [vazbu klienta Orchestration](durable-functions-bindings.md#orchestration-client) pro práci s centrem úloh, které je nakonfigurováno jako nastavení aplikace:
 
 ### <a name="c"></a>C#
 
@@ -119,11 +119,11 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> The previous C# example is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Předchozí C# příklad je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 ### <a name="javascript"></a>JavaScript
 
-The task hub property in the `function.json` file is set via App Setting:
+Vlastnost centra úloh v souboru `function.json` se nastavuje prostřednictvím nastavení aplikace:
 
 ```json
 {
@@ -134,19 +134,19 @@ The task hub property in the `function.json` file is set via App Setting:
 }
 ```
 
-Task hub names must start with a letter and consist of only letters and numbers. If not specified, a default task hub name will be used as shown in the following table:
+Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud tento parametr nezadáte, použije se výchozí název centra úloh, jak je znázorněno v následující tabulce:
 
-| Durable extension version | Default task hub name |
+| Trvalá verze rozšíření | Výchozí název centra úloh |
 | - | - |
-| 2.x | When deployed in Azure, the task hub name is derived from the name of the _function app_. When running outside of Azure, the default task hub name is `TestHubName`. |
-| 1.x | The default task hub name for all environments is `DurableFunctionsHub`. |
+| 2.x | Při nasazení v Azure je název centra úloh odvozený od názvu _aplikace Function App_. Při spuštění mimo Azure se výchozí název centra úloh `TestHubName`. |
+| verze | Výchozí název centra úloh pro všechna prostředí se `DurableFunctionsHub`. |
 
-For more information about the differences between extension versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+Další informace o rozdílech mezi verzemi rozšíření naleznete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 > [!NOTE]
-> The name is what differentiates one task hub from another when there are multiple task hubs in a shared storage account. If you have multiple function apps sharing a shared storage account, you must explicitly configure different names for each task hub in the *host.json* files. Otherwise the multiple function apps will compete with each other for messages, which could result in undefined behavior, including orchestrations getting unexpectedly "stuck" in the `Pending` or `Running` state.
+> Název se odlišuje od jednoho centra úkolů v případě, že je ve sdíleném účtu úložiště víc Center úkolů. Pokud máte více aplikací Function App sdílejících sdílený účet úložiště, je nutné explicitně nakonfigurovat různé názvy pro každé centrum úloh v souborech *Host. JSON* . V opačném případě budou aplikace s více aplikacemi vzájemně soutěžit na zprávy, což by mohlo vést k nedefinovanému chování, včetně orchestrace neočekávaně zablokování ve `Pending` nebo `Running`m stavu.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Learn how to handle orchestration versioning](durable-functions-versioning.md)
+> [Naučte se zvládnout správu verzí orchestrace.](durable-functions-versioning.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Send a search request to the REST API using Ruby - Bing Entity Search'
+title: 'Rychlý Start: odeslání žádosti o vyhledávání do REST API pomocí Ruby-Vyhledávání entit Bingu'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send a request to the Bing Entity Search REST API using Ruby, and receive a JSON response.
+description: Pomocí tohoto rychlého startu můžete odeslat žádost do Vyhledávání entit Bingu REST API pomocí Ruby a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -19,19 +19,19 @@ ms.locfileid: "74323557"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Rychlý start pro rozhraní API Bingu pro vyhledávání entit s využitím Ruby
 
-Use this quickstart to make your first call to the Bing Entity Search API and view the JSON response. This simple Ruby application sends a news search query to the API, and displays the response. The source code for this application is available on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb).
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace v rámci Ruby pošle do rozhraní API dotaz pro hledání zpráv a zobrazí odpověď. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb).
 
 Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) or later.
+* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) nebo novější.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. In your favorite IDE or code editor, create a news Ruby file and import the following packages.
+1. V oblíbeném prostředí IDE nebo editoru kódu vytvořte soubor oznámení Ruby a importujte následující balíčky.
 
     ```ruby
     require 'net/https'
@@ -39,7 +39,7 @@ Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful k
     require 'json'
     ```
 
-2. Create variables for your API endpoint, News search URL, your subscription key, and a search query.
+2. Vytvořte proměnné pro svůj koncový bod rozhraní API, adresu URL pro vyhledávání zpráv, klíč předplatného a vyhledávací dotaz.
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -51,21 +51,21 @@ Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful k
 
 ## <a name="format-and-make-an-api-request"></a>Formátování a provedení požadavku rozhraní API
 
-1. Create the parameters string for your request by appending your market variable to the `?mkt=` parameter. Encode your query and append it to the `&q=` parameter. Combine your API host, path, and the parameters for your request, and cast them as a URI object.
+1. Vytvořte řetězec parametrů pro požadavek připojením proměnné na trhu k parametru `?mkt=`. Zakóduje dotaz a připojí ho k parametru `&q=`. Zkombinujte hostitele rozhraní API, cestu a parametry vaší žádosti a přetypujte je jako objekt identifikátoru URI.
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + CGI.escape(query)
     uri = URI (host + path + params)
     ```
 
-2. Use the variables from the last step to create the request. Add your subscription key to the `Ocp-Apim-Subscription-Key` header.
+2. K vytvoření žádosti použijte proměnné z posledního kroku. Do hlavičky `Ocp-Apim-Subscription-Key` přidejte svůj klíč předplatného.
 
     ```ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. Send the request, and print the response
+3. Odešlete požadavek a vytiskněte odpověď.
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -75,7 +75,7 @@ Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful k
     puts JSON::pretty_generate (JSON (response.body))
     ```
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -143,7 +143,7 @@ Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful k
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
+> [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API](../search-the-web.md)
-* [Bing Entity Search API Reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Co je rozhraní API Bingu pro vyhledávání entit](../search-the-web.md)
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

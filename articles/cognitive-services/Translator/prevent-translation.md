@@ -1,7 +1,7 @@
 ---
-title: Prevent content translation - Translator Text API
+title: Zabránit překladu obsahu – Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Prevent translation of content with the Translator Text API. The Translator Text API allows you to tag content so that it isn't translated.
+description: Zabraňte překladu obsahu pomocí Translator Text API. Translator Text API umožňuje označit obsah tak, aby nebyl přeložen.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -17,14 +17,14 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326760"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>How to prevent translation of content with the Translator Text API
+# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Jak zabránit překladu obsahu pomocí Translator Text API
 
-The Translator Text API allows you to tag content so that it isn't translated. For example, you may want to tag code, a brand name, or a word/phrase that doesn't make sense when localized.
+Translator Text API umožňuje označit obsah tak, aby nebyl přeložen. Například můžete chtít označit kód, název značky nebo slovo nebo frázi, které nedává smysl, pokud je lokalizováno.
 
-## <a name="methods-for-preventing-translation"></a>Methods for preventing translation
-1. Escape to a Twitter tag @somethingtopassthrough or #somethingtopassthrough. Un-escape after translation. This is the regular expression for valid twitter tags: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. A tag should start with a "@" sign, followed by a character and then followed by one or many characters, digits or underscore. It is recommended to keep tags short and the opening tag must be preceded by a space.
+## <a name="methods-for-preventing-translation"></a>Metody prevence překladu
+1. Řídicí znak na Twitteru @somethingtopassthrough nebo #somethingtopassthrough. Zrušit řídicí znak po překladu. Toto je regulární výraz pro platné značky Twitteru: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. Značka by měla začínat znakem "@", následovaným znakem a potom následováním jednoho nebo více znaků, číslic nebo podtržítka. Doporučuje se, aby značky byly krátké a před otevírací značkou musí být mezera.
 
-2. Tag your content with `notranslate`. It's by design that this works only when the input textType is set as HTML
+2. Označení obsahu pomocí `notranslate`. Je navržený tak, že funguje jenom v případě, že je vstupní textType nastavený jako HTML.
 
    Příklad:
 
@@ -38,13 +38,13 @@ The Translator Text API allows you to tag content so that it isn't translated. F
    <div>This will be translated. </div>
    ```
 
-3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
+3. Pomocí [dynamického slovníku](dynamic-dictionary.md) nařídíte konkrétní překlad.
 
-4. Don't pass the string to the Translator Text API for translation.
+4. Nepředávejte řetězec do Translator Text API pro překlad.
 
-5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
+5. Vlastní Překladatel: pomocí [slovníku ve vlastním překladateli](custom-translator/what-is-dictionary.md) můžete naepsat převod fráze s pravděpodobností 100%.
 
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Avoid translation in your Translator API call](reference/v3-0-translate.md)
+> [Zamezení překladu ve volání rozhraní API pro překladatele](reference/v3-0-translate.md)

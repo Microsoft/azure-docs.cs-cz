@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Blueprint sample to new environment'
-description: In this tutorial, you use a blueprint sample to create a blueprint definition that sets up two resource groups and configures a role assignment for each.
+title: 'Kurz: Ukázka podrobného plánu do nového prostředí'
+description: V tomto kurzu použijete ukázku podrobného plánu k vytvoření definice podrobného plánu, která nastaví dvě skupiny prostředků a nakonfiguruje přiřazení role pro každou z nich.
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
@@ -10,180 +10,180 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74321739"
 ---
-# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Create an environment from a blueprint sample
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Kurz: vytvoření prostředí z ukázky podrobného plánu
 
-Sample blueprints provide examples of what can be done using Azure Blueprints. Each is a sample with a specific intent or purpose, but doesn't create a complete environment by themselves. Each is intended as a starting place to explore using Azure Blueprints with various combinations of included artifacts, designs, and parameters.
+Ukázkové modrotisky obsahují příklady toho, co můžete udělat pomocí Azure modrotisky. Každá z nich je ukázkou s konkrétním záměrem nebo účelem, ale nevytváří celé prostředí sami. Každá z nich je určena jako počáteční místo pro zkoumání pomocí Azure modrotisky s různými kombinacemi zahrnutých artefaktů, návrhů a parametrů.
 
-The following tutorial uses the **Resource Groups with RBAC** blueprint sample to showcase different aspects of the Blueprints service. The following steps are covered:
+V následujícím kurzu se k předvedení různých aspektů služby modrotisky používá ukázka **skupiny prostředků s nástrojem RBAC** . details. Postup je popsaný v následujících krocích:
 
 > [!div class="checklist"]
-> - Create a new blueprint definition from the sample
-> - Mark your copy of the sample as **Published**
-> - Assign your copy of the blueprint to an existing subscription
-> - Inspect deployed resources for the assignment
-> - Unassign the blueprint to remove the locks
+> - Vytvořit novou definici podrobného plánu z ukázky
+> - Označení kopie ukázky jako **publikované**
+> - Přiřazení kopie podrobného plánu k existujícímu předplatnému
+> - Kontrola nasazených prostředků pro přiřazení
+> - Zrušení přiřazení podrobného plánu k odebrání zámků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To complete this tutorial, an Azure subscription is needed. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="create-blueprint-definition-from-sample"></a>Create blueprint definition from sample
+## <a name="create-blueprint-definition-from-sample"></a>Vytvořit definici podrobného plánu z ukázky
 
-First, implement the blueprint sample. Importing creates a new blueprint in your environment based on the sample.
+Nejdřív implementujte ukázku podrobného plánu. Import vytvoří ve svém prostředí nový podrobný plán založený na ukázce.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. From the **Getting started** page on the left, select the **Create** button under _Create a blueprint_.
+1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
-1. Find the **Resource Groups with RBAC** blueprint sample under _Other Samples_ and select **Use this sample**.
+1. V části _Další ukázky_ Najděte **skupiny prostředků s** ukázkovým plánem RBAC a vyberte **použít tuto ukázku**.
 
-1. Enter the _Basics_ of the blueprint sample:
+1. Zadejte _základy_ ukázky podrobného plánu:
 
-   - **Blueprint name**: Provide a name for your copy of the blueprint sample. For this tutorial, we'll use the name _two-rgs-with-role-assignments_.
-   - **Definition location**: Use the ellipsis and select the management group or subscription to save your copy of the sample to.
+   - **Název**podrobného plánu: zadejte název vaší kopie ukázky podrobného plánu. V tomto kurzu použijeme název _dvou-RGS-s přiřazení role_.
+   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu nebo předplatné, do které chcete kopii ukázky Uložit.
 
-1. Select the _Artifacts_ tab at the top of the page or **Next: Artifacts** at the bottom of the page.
+1. Vyberte kartu _artefakty_ v horní části stránky nebo **Další: artefakty** v dolní části stránky.
 
-1. Review the list of artifacts that make up the blueprint sample. This sample defines two resource groups, with display names of _ProdRG_ and _PreProdRG_. The final name and location of each resource group are set during blueprint assignment. The _ProdRG_ resource group is assigned the _Contributor_ role and the _PreProdRG_ resource group is assigned the _Owner_ and _Readers_ roles. The roles assigned in the definition are static, but user, app, or group that is assigned the role is set during blueprint assignment.
+1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Tato ukázka definuje dvě skupiny prostředků s zobrazovanými názvy _ProdRG_ a _PreProdRG_. Konečný název a umístění jednotlivých skupin prostředků se nastaví během přiřazení podrobného plánu. Skupině prostředků _ProdRG_ se přiřadí role _Přispěvatel_ a pro skupinu prostředků _PreProdRG_ se přiřazují role _vlastník_ a _čtenáři_ . Role přiřazené v definici jsou statické, ale uživatel, aplikace nebo skupina, které mají přiřazenou roli, se nastaví během přiřazení podrobného plánu.
 
-1. Select **Save Draft** when you've finished reviewing the blueprint sample.
+1. Po dokončení kontroly ukázkového plánu vyberte **Uložit koncept** .
 
-This step creates a copy of the sample blueprint definition in the selected management group or subscription. The saved blueprint definition is managed like any blueprint created from scratch. You may save the sample to your management group or subscription as many times as needed. However, each copy must be provided a unique name.
+Tento krok vytvoří kopii vzorové definice podrobného plánu ve vybrané skupině nebo předplatném pro správu. Uložená definice podrobného plánu se spravuje stejně jako každý podrobný plán vytvořený od začátku. Ukázku můžete uložit do vaší skupiny pro správu nebo předplatného tolikrát, kolikrát je potřeba. Pro každou kopii je však nutné zadat jedinečný název.
 
-Once the **Saving blueprint definition succeeded** portal notification appears, move to the next step.
+Po úspěšném zobrazení oznámení na portálu pro **uložení definice** podrobného plánu přejděte k dalšímu kroku.
 
-## <a name="publish-the-sample-copy"></a>Publish the sample copy
+## <a name="publish-the-sample-copy"></a>Publikovat ukázkovou kopii
 
-Your copy of the blueprint sample has now been created in your environment. It's created in **Draft** mode and must be **Published** before it can be assigned and deployed. The copy of the blueprint sample can be customized to your environment and needs. For this tutorial, we won't make any changes.
+Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu **konceptu** a musí být **publikována** před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit pro vaše prostředí a potřeby. Pro tento kurz nebudeme dělat žádné změny.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find the _two-rgs-with-role-assignments_ blueprint definition and then select it.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů vyhledejte definici podrobného plánu _přiřazení dvou RGS-s-role_ a pak ji vyberte.
 
-1. Select **Publish blueprint** at the top of the page. In the new pane on the right, provide **Version** as _1.0_ for your copy of the blueprint sample. This property is useful for if you make a modification later. Provide **Change notes** such as "First version published from the resource groups with RBAC blueprint sample." Then select **Publish** at the bottom of the page.
+1. V horní části stránky vyberte **publikovat podrobný plán** . V pravém podokně na pravé straně zadejte pro kopii ukázky podrobného plánu **verzi** jako _1,0_ . Tato vlastnost je užitečná, pokud uděláte změnu později. Zadejte **poznámky ke změnám** , jako je například "první verze publikovaná ze skupin prostředků s ukázkou podrobného plánu RBAC". Potom v dolní části stránky vyberte **publikovat** .
 
-This step makes it possible to assign the blueprint to a subscription. Once published, changes can still be made. Additional changes require publishing with a new **Version** value to track differences between different versions of the same blueprint definition.
+Tento krok umožňuje přiřadit podrobný plán k předplatnému. Po publikování můžou být změny pořád připravené. Další změny vyžadují publikování s novou hodnotou **verze** ke sledování rozdílů mezi různými verzemi stejné definice podrobného plánu.
 
-Once the **Publishing blueprint definition succeeded** portal notification appears, move to the next step.
+Po **úspěšném** zobrazení oznámení na portálu definice podrobného plánu publikování přejděte k dalšímu kroku.
 
-## <a name="assign-the-sample-copy"></a>Assign the sample copy
+## <a name="assign-the-sample-copy"></a>Přiřadit ukázkovou kopii
 
-Once the copy of the blueprint sample has been successfully **Published**, it can be assigned to a subscription within the management group it was saved to. This step is where parameters are provided to make each deployment of the copy of the blueprint sample unique.
+Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find the _two-rgs-with-role-assignments_ blueprint definition and then select it.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů vyhledejte definici podrobného plánu _přiřazení dvou RGS-s-role_ a pak ji vyberte.
 
-1. Select **Assign blueprint** at the top of the blueprint definition page.
+1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
 
-1. Provide the parameter values for the blueprint assignment:
+1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
    - Základy
 
-     - **Subscriptions**: Select one or more of the subscriptions that are in the management group you saved your copy of the blueprint sample to. If you select more than one subscription, an assignment will be created for each using the parameters entered.
-     - **Assignment name**: The name is pre-populated for you based on the name of the blueprint definition.
-     - **Location**: Select a region for the managed identity to be created in. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
-       For this tutorial, select _East US 2_.
-     - **Blueprint definition version**: Pick the **Published** version _1.0_ of your copy of the sample blueprint definition.
+     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení**: název je předem vyplněný na základě názvu definice podrobného plánu.
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
+       Pro tento kurz vyberte _východní USA 2_.
+     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi _1,0_ kopie definice ukázkového podrobného plánu.
 
-   - Lock Assignment
+   - Zamknout přiřazení
 
-     Select the _Read Only_ blueprint lock mode. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
+     Vyberte režim zámku _podrobného_ plánu. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
 
    - Spravovaná identita
 
-     Leave the default _System assigned_ option. For more information, see [managed identities](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Ponechte výchozí možnost _přiřazenou systému_ . Další informace najdete v tématu [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-   - Artifact parameters
+   - Parametry artefaktu
 
-     The parameters defined in this section apply to the artifact under which it's defined. These parameters are [dynamic parameters](../concepts/parameters.md#dynamic-parameters) since they're defined during the assignment of the blueprint. For each artifact, set the parameter value to what is defined in the **Value** column. For `{Your ID}`, select your Azure user account.
+     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Pro každý artefakt nastavte hodnotu parametru na to, co je definováno ve sloupci **hodnota** . V případě `{Your ID}`vyberte svůj uživatelský účet Azure.
 
-     |Artifact name|Artifact type|Název parametru|Hodnota|Popis|
+     |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
-     |ProdRG resource group|Skupina prostředků|Name (Název)|ProductionRG|Defines the name of the first resource group.|
-     |ProdRG resource group|Skupina prostředků|Umístění|Západní USA 2|Sets the location of the first resource group.|
-     |Přispěvatel|Přiřazení role|User or Group|{Your ID}|Defines which user or group to grant the _Contributor_ role assignment within the first resource group.|
-     |PreProdRG resource group|Skupina prostředků|Name (Název)|PreProductionRG|Defines the name of the second resource group.|
-     |PreProdRG resource group|Skupina prostředků|Umístění|Západní USA|Sets the location of the second resource group.|
-     |Vlastník|Přiřazení role|User or Group|{Your ID}|Defines which user or group to grant the _Owner_ role assignment within the second resource group.|
-     |Čtenáři|Přiřazení role|User or Group|{Your ID}|Defines which user or group to grant the _Readers_ role assignment within the second resource group.|
+     |Skupina prostředků ProdRG|Skupina prostředků|Název|ProductionRG|Definuje název první skupiny prostředků.|
+     |Skupina prostředků ProdRG|Skupina prostředků|Umístění|Západní USA 2|Nastaví umístění první skupiny prostředků.|
+     |Přispěvatel|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu, kterým chcete udělit přiřazení role _přispěvatele_ v rámci první skupiny prostředků.|
+     |Skupina prostředků PreProdRG|Skupina prostředků|Název|PreProductionRG|Definuje název druhé skupiny prostředků.|
+     |Skupina prostředků PreProdRG|Skupina prostředků|Umístění|Západní USA|Nastaví umístění druhé skupiny prostředků.|
+     |Vlastník|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu, kterým udělíte přiřazení role _vlastníka_ v rámci druhé skupiny prostředků.|
+     |Čtenáři|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu pro udělení přiřazení role _čtenáři_ v rámci druhé skupiny prostředků.|
 
-1. Once all parameters have been entered, select **Assign** at the bottom of the page.
+1. Po zadání všech parametrů vyberte v dolní části stránky **přiřadit** .
 
-This step deploys the defined resources and configures the selected **Lock Assignment**. Blueprint locks can take up to 30 minutes to apply.
+Tento krok nasadí definované prostředky a nakonfiguruje vybrané **přiřazení zámku**. Použití zámků podrobného plánu může trvat až 30 minut.
 
-Once the **Assigning blueprint definition succeeded** portal notification appears, move to the next step.
+Jakmile se zobrazí oznámení o **úspěšném přiřazení** na portál definice podrobného plánu, přejděte k dalšímu kroku.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>Inspect resources deployed by the assignment
+## <a name="inspect-resources-deployed-by-the-assignment"></a>Kontrola prostředků nasazených přiřazením
 
-The blueprint assignment creates and tracks the artifacts defined in the blueprint definition. We can see the status of the resources from the blueprint assignment page and by looking at the resources directly.
+Přiřazení podrobného plánu vytvoří a sleduje artefakty definované v definici podrobného plánu. Stav prostředků můžeme zobrazit na stránce přiřazení podrobného plánu a prohlížející si prostředky přímo.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select the **Assigned blueprints** page on the left. Use the filters to find the _Assignment-two-rgs-with-role-assignments_ blueprint assignment and then select it.
+1. Na levé straně vyberte stránku **přiřazené plány** . Použijte filtry k vyhledání přiřazení _podrobného plánu přiřazení-Two-RGS-with-role_ a pak ho vyberte.
 
-   From this page, we can see the assignment succeeded and the list of created resources along with their blueprint lock state. If the assignment is updated, the **Assignment operation** drop-down shows details about the deployment of each definition version. Each listed resource that was created can be clicked and opens that resources property page.
+   Z této stránky vidíte úspěšné přiřazení a seznam vytvořených prostředků spolu s jejich stavem zámku podrobného plánu. Pokud je přiřazení aktualizováno, rozevírací seznam **operace přiřazení** zobrazí podrobnosti o nasazení každé verze definice. Na každý vytvořený prostředek se dá kliknout a otevře se stránka vlastností Resources (prostředky).
 
-1. Select the **ProductionRG** resource group.
+1. Vyberte skupinu prostředků **ProductionRG** .
 
-   We see that the name of the resource group is **ProductionRG** and not the artifact display name _ProdRG_. This name matches the value set during the blueprint assignment.
+   Ukážeme, že název skupiny prostředků je **ProductionRG** , a ne zobrazovaný název artefaktu _ProdRG_. Tento název se shoduje s hodnotou nastavenou během přiřazení podrobného plánu.
 
-1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
+1. Na levé straně vyberte stránku **řízení přístupu (IAM)** a pak kartu **přiřazení rolí** .
 
-   Here we see that your account has been granted the _Contributor_ role on the scope of _This resource_. The _Assignment-two-rgs-with-role-assignments_ blueprint assignment has the _Owner_ role as it was used to create the resource group. These permissions are also used to manage resources with configured blueprint locks.
+   Tady vidíte, že váš účet měl přiřazenou roli _Přispěvatel_ v oboru _tohoto prostředku_. Přiřazení _podrobného plánu přiřazení (dvou-RGS-with-role_ ) má roli _Owner_ , protože se použila k vytvoření skupiny prostředků. Tato oprávnění slouží také ke správě prostředků s konfigurovanými zámky podrobného plánu.
 
-1. From the Azure portal breadcrumb, select **Assignment-two-rgs-with-role-assignments** to go back one page, then select the **PreProductionRG** resource group.
+1. Z Azure Portal s popisem cesty vyberte **přiřazení – dvě-RGS-s-role – přiřazení** se vrátí zpět jedna stránka a pak vyberte skupinu prostředků **PreProductionRG** .
 
-1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
+1. Na levé straně vyberte stránku **řízení přístupu (IAM)** a pak kartu **přiřazení rolí** .
 
-   Here we see that your account has been granted both the _Owner_ and _Reader_ roles, both on the scope of _This resource_. The blueprint assignment also has the _Owner_ role like the first resource group.
+   Tady vidíte, že váš účet měl v oboru _tohoto prostředku_udělena role _vlastník_ i _Čtenář_ . Přiřazení podrobného plánu má také roli _vlastníka_ jako první skupinu prostředků.
 
-1. Select the **Deny assignments** tab.
+1. Vyberte kartu **Odepřít přiřazení** .
 
-   The blueprint assignment created a [deny assignment](../../../role-based-access-control/deny-assignments.md) on the deployed resource group to enforce the _Read Only_ blueprint lock mode. The deny assignment prevents someone with appropriate rights on the _Role assignments_ tab from taking specific actions. The deny assignment affects _All principals_.
+   Přiřazení podrobného plánu vytvořilo [přiřazení odepřít](../../../role-based-access-control/deny-assignments.md) pro nasazenou skupinu prostředků, aby se vynutil režim zámku _podrobného plánu pro čtení_ . Přiřazení zamítnutí brání osobě s odpovídajícími právy na kartě _přiřazení rolí_ v tom, aby převzal konkrétní akce. Přiřazení zamítnutí má vliv na _všechny objekty zabezpečení_.
 
-1. Select the deny assignment, then select the **Denied Permissions** page on the left.
+1. Vyberte přiřazení odepřít a pak na levé straně vyberte stránku **Zamítnutá oprávnění** .
 
-   The deny assignment is preventing all operations with the **\*** and **Action** configuration, but allows read access by excluding **\*/read** via **NotActions**.
+   Přiřazení zamítnutí brání všem operacím s konfigurací **\*** a **Akce** , ale umožňuje přístup pro čtení vyloučením **\*/Read** prostřednictvím **NotActions**.
 
-1. From the Azure portal breadcrumb, select **PreProductionRG - Access control (IAM)** . Then select the **Overview** page on the left and then the **Delete resource group** button. Enter the name _PreProductionRG_ to confirm the delete and select **Delete** at the bottom of the pane.
+1. Z Azure Portal s popisem cesty vyberte **PreProductionRG-Access Control (IAM)** . Pak na levé straně vyberte stránku **Přehled** a pak klikněte na tlačítko **Odstranit skupinu prostředků** . Zadejte název _PreProductionRG_ a potvrďte odstranění a vyberte **Odstranit** v dolní části podokna.
 
-   The portal notification **Delete resource group PreProductionRG failed** is displayed. The error states that while your account has permission to delete the resource group, access is denied by the blueprint assignment. Remember that we selected the _Read Only_ blueprint lock mode during blueprint assignment. The blueprint lock prevents an account with permission, even _Owner_, from deleting the resource. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
+   Zobrazuje **se skupina prostředků odstranit** oznámení na portálu PreProductionRG. Chyba uvádí, že zatímco váš účet má oprávnění k odstranění skupiny prostředků, přístup je odepřen přiřazením podrobného plánu. Mějte na paměti, že při přiřazení podrobného plánu jsme vybrali režim zámku podrobný plán _pro čtení_ . Zámek podrobného plánu zabraňuje účtu s oprávněním, dokonce i _vlastníkem_, z odstranění prostředku. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
 
-These steps show that our resources were created as defined and the blueprint locks prevented unwanted deletion, even from an account with permission.
+Tyto kroky ukazují, že se naše prostředky vytvořily podle definice a zámky podrobného plánu zabraňují nechtěnému odstranění, a to i z účtu s oprávněním.
 
-## <a name="unassign-the-blueprint"></a>Unassign the blueprint
+## <a name="unassign-the-blueprint"></a>Zrušit přiřazení podrobného plánu
 
-The last step is to remove the assignment of the blueprint and the resources that it deployed.
-Removing the assignment doesn't remove the deployed artifacts.
+Posledním krokem je odebrání přiřazení podrobného plánu a prostředků, které byly nasazeny.
+Odebráním přiřazení nedojde k odebrání nasazených artefaktů.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select the **Assigned blueprints** page on the left. Use the filters to find the _Assignment-two-rgs-with-role-assignments_ blueprint assignment and then select it.
+1. Na levé straně vyberte stránku **přiřazené plány** . Použijte filtry k vyhledání přiřazení _podrobného plánu přiřazení-Two-RGS-with-role_ a pak ho vyberte.
 
-1. Select the **Unassign blueprint** button at the top of the page. Read the warning in the confirmation dialog, then select **OK**.
+1. V horní části stránky vyberte tlačítko zrušit **přiřazení** podrobného plánu. Přečtěte si upozornění v potvrzovacím dialogovém okně a pak vyberte **OK**.
 
-   With the blueprint assignment removed, the blueprint locks are also removed. The created resources can once again be deleted by an account with permissions.
+   Po odebrání přiřazení podrobného plánu jsou také odebrány zámky podrobného plánu. Vytvořené prostředky můžete znovu odstranit pomocí účtu s oprávněními.
 
-1. Select **Resource groups** from the Azure menu, then select **ProductionRG**.
+1. V nabídce Azure vyberte **skupiny prostředků** a pak vyberte **ProductionRG**.
 
-1. Select the **Access control (IAM)** page on the left and then the **Role assignments** tab.
+1. Na levé straně vyberte stránku **řízení přístupu (IAM)** a pak kartu **přiřazení rolí** .
 
-The security for each resource groups still has the deployed role assignments, but the blueprint assignment no longer has _Owner_ access.
+Zabezpečení pro každou skupinu prostředků má stále nasazená přiřazení rolí, ale přiřazení podrobného plánu už nemá přístup _vlastníka_ .
 
-Once the **Removing blueprint assignment succeeded** portal notification appears, move to the next step.
+Jakmile se zobrazí oznámení o **úspěšném odebrání přiřazení** podrobného plánu, přejděte k dalšímu kroku.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-When finished with this tutorial, delete the following resources:
+Po dokončení tohoto kurzu odstraňte následující prostředky:
 
-- Resource group _ProductionRG_
-- Resource group _PreProductionRG_
-- Blueprint definition _two-rgs-with-role-assignments_
+- _ProductionRG_ skupiny prostředků
+- _PreProductionRG_ skupiny prostředků
+- Definice _podrobného plánu 2 – RGS-s-role-přiřazení_
 
 ## <a name="next-steps"></a>Další kroky
 
-In this tutorial, you've learned how to create a new blueprint from a sample definition. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+V tomto kurzu jste se naučili, jak vytvořit nový podrobný plán z ukázkové definice. Další informace o plánech Azure najdete v článku o životním cyklu podrobného plánu.
 
 > [!div class="nextstepaction"]
-> [Learn about the blueprint lifecycle](../concepts/lifecycle.md)
+> [Další informace o životním cyklu podrobného plánu](../concepts/lifecycle.md)

@@ -12,7 +12,7 @@ ms.locfileid: "74277533"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Instalace balíčků z v rámci poznámkového bloku
 
-Přestože lze nakonfigurovat [prostředí pro poznámkový blok na úrovni projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), můžete chtít nainstalovat balíčky přímo v rámci jednotlivých poznámkového bloku.
+I když můžete nakonfigurovat [prostředí pro svůj Poznámkový blok na úrovni projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), můžete chtít nainstalovat balíčky přímo v jednotlivém poznámkovém bloku.
 
 Balíčky nainstalované z poznámkového bloku platí pouze pro aktuální relaci serveru. Instalace balíčků se jako trvalý, po vypnutí serveru.
 
@@ -26,7 +26,7 @@ Balíčky pythonu můžete nainstalovat pomocí pip nebo conda pomocí příkaz�
 !conda install <package_name> -y
 ```
 
-Pokud výstup příkazu znamená, že tento požadavek již není splněna, pak poznámkových bloků Azure mohou zahrnovat balíček ve výchozím nastavení. Balíček může se taky nainstalovat přes [krok instalace prostředí projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
+Pokud výstup příkazu znamená, že tento požadavek již není splněna, pak poznámkových bloků Azure mohou zahrnovat balíček ve výchozím nastavení. Balíček může být také nainstalovaný v [kroku nastavení prostředí projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
 
 ## <a name="r"></a>R
 
@@ -46,7 +46,7 @@ install_github('<user>/<repo>')
 
 ## <a name="f"></a>F#
 
-Balíčky v F# si můžete nainstalovat pomocí [nuget.org](https://www.nuget.org) voláním závislostí stáhnout správce z v rámci buňky kódu. Nejdřív načtěte stáhnout správce:
+Balíčky v F# nástroji je možné instalovat z [NuGet.org](https://www.nuget.org) voláním správce závislostí paket z buněk v kódu. Nejdřív načtěte stáhnout správce:
 
 ```fsharp
 #load "Paket.fsx"
@@ -73,5 +73,5 @@ open MathNet.Numerics
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Postupy: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
+- [Postupy: konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
 - [Postupy: zobrazení prezentace](present-jupyter-notebooks-slideshow.md)

@@ -99,5 +99,5 @@ Po dokončení těchto kroků, by vaše aplikace do provozu. Testování aplikac
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Jak Proxy aplikací Azure AD poskytuje jednotné přihlašování?](application-proxy-single-sign-on.md)
-- [Poradce při potížích s Proxy aplikací](application-proxy-troubleshoot.md)
+- [Jak Azure Proxy aplikací služby AD poskytuje jednotné přihlašování?](application-proxy-single-sign-on.md)
+- [Řešení potíží s proxy aplikací](application-proxy-troubleshoot.md)

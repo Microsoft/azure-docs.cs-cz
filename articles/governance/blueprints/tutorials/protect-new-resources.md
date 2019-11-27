@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Protect new resources with locks'
-description: In this tutorial, you use the Azure Blueprints resource locks options Read Only and Do Not Delete to protect newly deployed resources.
+title: 'Kurz: ochrana nových prostředků pomocí zámků'
+description: V tomto kurzu použijete možnosti zámků prostředků Azure modrotisky jen pro čtení a neodstraňujte je k ochraně nově nasazených prostředků.
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
@@ -10,53 +10,53 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327446"
 ---
-# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Protect new resources with Azure Blueprints resource locks
+# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Kurz: ochrana nových prostředků pomocí zámků prostředků Azure modrotisky
 
-With Azure Blueprints [resource locks](../concepts/resource-locking.md), you can protect newly deployed resources from being tampered with, even by an account with the _Owner_ role. You can add this protection in the blueprint definitions of resources created by a Resource Manager template artifact.
+Pomocí [zámků prostředků](../concepts/resource-locking.md)Azure modrotisky můžete chránit nově nasazené prostředky proti poškození, a to i pomocí účtu s rolí _vlastníka_ . Tuto ochranu můžete přidat v definicích podrobného plánu prostředků vytvořených artefaktem šablony Správce prostředků.
 
-In this tutorial, you'll complete these steps:
+V tomto kurzu provedete tyto kroky:
 
 > [!div class="checklist"]
-> - Create a blueprint definition
-> - Mark your blueprint definition as **Published**
-> - Assign your blueprint definition to an existing subscription
-> - Inspect the new resource group
-> - Unassign the blueprint to remove the locks
+> - Vytvořit definici podrobného plánu
+> - Označení definice podrobného plánu jako **publikované**
+> - Přiřazení definice podrobného plánu k existujícímu předplatnému
+> - Kontrola nové skupiny prostředků
+> - Zrušení přiřazení podrobného plánu k odebrání zámků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
-## <a name="create-a-blueprint-definition"></a>Create a blueprint definition
+## <a name="create-a-blueprint-definition"></a>Vytvořit definici podrobného plánu
 
-First, create the blueprint definition.
+Nejprve vytvořte definici podrobného plánu.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. On the **Getting started** page on the left, select **Create** under **Create a blueprint**.
+1. Na stránce **Začínáme** na levé straně vyberte **vytvořit** v části vytvořit podrobný **plán**.
 
-1. Find the **Blank Blueprint** blueprint sample at the top of the page. Select **Start with blank blueprint**.
+1. V horní části stránky vyhledejte ukázkový ukázkový **podrobný plán.** Vyberte možnost **začít s prázdným plánem**.
 
-1. Enter this information on the **Basics** tab:
+1. Na kartě **základy** zadejte tyto informace:
 
-   - **Blueprint name**: Provide a name for your copy of the blueprint sample. For this tutorial, we'll use the name **locked-storageaccount**.
-   - **Blueprint description**: Add a description for the blueprint definition. Use **For testing blueprint resource locking on deployed resources**.
-   - **Definition location**: Select the ellipsis button (...) and then select the management group or subscription to save your blueprint definition to.
+   - **Název**podrobného plánu: zadejte název vaší kopie ukázky podrobného plánu. V tomto kurzu použijeme název **uzamčený-storageaccount**.
+   - **Popis**podrobného plánu: přidejte popis definice podrobného plánu. Slouží **k testování uzamykání prostředků podrobného plánu u nasazených prostředků**.
+   - **Umístění definice**: vyberte tlačítko se třemi tečkami (...) a pak vyberte skupinu pro správu nebo předplatné, do které chcete uložit definici podrobného plánu.
 
-1. Select the **Artifacts** tab at the top of the page, or select **Next: Artifacts** at the bottom of the page.
+1. V horní části stránky vyberte kartu **artefakty** nebo vyberte **Další: artefakty** v dolní části stránky.
 
-1. Add a resource group at the subscription level:
-   1. Select the **Add artifact** row under **Subscription**.
-   1. Select **Resource Group** under **Artifact type**.
-   1. Set the **Artifact display name** to **RGtoLock**.
-   1. Leave the **Resource Group Name** and **Location** boxes blank, but make sure the check box is selected on each property to make them **dynamic parameters**.
-   1. Select **Add** to add the artifact to the blueprint.
+1. Přidat skupinu prostředků na úrovni předplatného:
+   1. V části **předplatné**vyberte řádek **Přidat artefakt** .
+   1. V části **Typ artefaktu**vyberte **Skupina prostředků** .
+   1. Nastavte **Zobrazovaný název artefaktu** na **RGtoLock**.
+   1. Pole **název skupiny prostředků** a **umístění** ponechte prázdné, ale ujistěte se, že je zaškrtnuté políčko u každé vlastnosti, aby byly **dynamické parametry**.
+   1. Vyberte **Přidat** a přidejte artefakt do podrobného plánu.
 
-1. Add a template under the resource group:
-   1. Select the **Add artifact** row under the **RGtoLock** entry.
-   1. Select **Azure Resource Manager template** under **Artifact type**, set **Artifact display name** to **StorageAccount**, and leave **Description** blank.
-   1. On the **Template** tab, paste the following Resource Manager template into the editor box.
-      After you paste in the template, select **Add** to add the artifact to the blueprint.
+1. Přidejte šablonu do skupiny prostředků:
+   1. V položce **RGtoLock** vyberte řádek **Přidat artefakt** .
+   1. V části **Typ artefaktu**vyberte **šablonu Azure Resource Manager** , nastavte **Zobrazovaný název artefaktu** na **StorageAccount**a nechejte **Popis** prázdný.
+   1. Na kartě **Šablona** vložte do pole Editor následující šablonu správce prostředků.
+      Po vložení do šablony vyberte **Přidat** a přidejte artefakt do podrobného plánu.
 
    ```json
    {
@@ -100,132 +100,132 @@ First, create the blueprint definition.
    }
    ```
 
-1. Select **Save Draft** at the bottom of the page.
+1. V dolní části stránky vyberte **Uložit koncept** .
 
-This step creates the blueprint definition in the selected management group or subscription.
+Tento krok vytvoří definici podrobného plánu ve vybrané skupině nebo předplatném pro správu.
 
-After the **Saving blueprint definition succeeded** portal notification appears, go to the next step.
+Po úspěšném zobrazení oznámení na portálu pro **uložení definice** podrobného plánu se dostanete k dalšímu kroku.
 
-## <a name="publish-the-blueprint-definition"></a>Publish the blueprint definition
+## <a name="publish-the-blueprint-definition"></a>Publikovat definici podrobného plánu
 
-Your blueprint definition has now been created in your environment. It's created in **Draft** mode and must be published before it can be assigned and deployed.
+Ve vašem prostředí se teď vytvořila vaše definice podrobného plánu. Je vytvořená v režimu **konceptu** a musí být publikována před tím, než bude možné ji přiřadit a nasadit.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find the **locked-storageaccount** blueprint definition, and then select it.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů vyhledejte definici **storageaccount podrobného** plánu a vyberte ji.
 
-1. Select **Publish blueprint** at the top of the page. In the new pane on the right, enter **1.0** as the **Version**. This property is useful if you make a change later. Enter **Change notes**, such as **First version published for locking blueprint deployed resources**. Then select **Publish** at the bottom of the page.
+1. V horní části stránky vyberte **publikovat podrobný plán** . V pravém podokně vpravo zadejte **1,0** jako **verzi**. Tato vlastnost je užitečná, pokud provedete změnu později. Zadejte **poznámky ke změnám**, jako je například **první verze publikovaná pro uzamykání prostředků nasazených v podrobném**plánu. Potom v dolní části stránky vyberte **publikovat** .
 
-This step makes it possible to assign the blueprint to a subscription. After the blueprint definition is published, you can still make changes. If you make changes, you need to publish the definition with a new version value to track differences between versions of the same blueprint definition.
+Tento krok umožňuje přiřadit podrobný plán k předplatnému. Po publikování definice podrobného plánu můžete provádět změny. Pokud provedete změny, je nutné publikovat definici s novou hodnotou verze ke sledování rozdílů mezi verzemi stejné definice podrobného plánu.
 
-After the **Publishing blueprint definition succeeded** portal notification appears, go to the next step.
+Po **úspěšném** zobrazení oznámení na portálu pro definici podrobného plánu publikování přejdete k dalšímu kroku.
 
-## <a name="assign-the-blueprint-definition"></a>Assign the blueprint definition
+## <a name="assign-the-blueprint-definition"></a>Přiřadit definici podrobného plánu
 
-After the blueprint definition is published, you can assign it to a subscription within the management group where you saved it. In this step, you provide parameters to make each deployment of the blueprint definition unique.
+Po publikování definice podrobného plánu ji můžete přiřadit k předplatnému v rámci skupiny pro správu, do které jste ji uložili. V tomto kroku zadáte parametry, které zajistí, aby každé nasazení definice podrobného plánu bylo jedinečné.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find the **locked-storageaccount** blueprint definition, and then select it.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů vyhledejte definici **storageaccount podrobného** plánu a vyberte ji.
 
-1. Select **Assign blueprint** at the top of the blueprint definition page.
+1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
 
-1. Provide the parameter values for the blueprint assignment:
+1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
    - **Základy**
 
-     - **Subscriptions**: Select one or more of the subscriptions that are in the management group where you saved your blueprint definition. If you select more than one subscription, an assignment will be created for each subscription, using the parameters you enter.
-     - **Assignment name**: The name is pre-populated based on the name of the blueprint definition. We want this assignment to represent locking the new resource group, so change the assignment name to **assignment-locked-storageaccount-TestingBPLocks**.
-     - **Location**: Select a region in which to create the managed identity. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
-       For this tutorial, select **East US 2**.
-     - **Blueprint definition version**: Select the published version **1.0** of the blueprint definition.
+     - **Předplatná**: vyberte jedno nebo více předplatných, které jsou ve skupině pro správu, do které jste uložili definici podrobného plánu. Pokud vyberete více než jedno předplatné, bude pro každé předplatné vytvořeno přiřazení, a to pomocí zadaných parametrů.
+     - **Název přiřazení**: název je předem vyplněný na základě názvu definice podrobného plánu. Chceme, aby toto přiřazení představovalo uzamykání nové skupiny prostředků, proto změňte název přiřazení na **přiřazení-Locked-storageaccount-TestingBPLocks**.
+     - **Umístění**: Vyberte oblast, ve které chcete vytvořit spravovanou identitu. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
+       Pro tento kurz vyberte **východní USA 2**.
+     - **Verze definice**podrobného plánu: vyberte publikovanou verzi **1,0** definice podrobného plánu.
 
-   - **Lock Assignment**
+   - **Zamknout přiřazení**
 
-     Select the **Read Only** blueprint lock mode. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
+     Vyberte režim zámku **podrobného** plánu. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
 
-   - **Managed Identity**
+   - **Spravovaná identita**
 
-     Use the default option: **System assigned**. For more information, see [managed identities](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Použijte výchozí možnost: **přiřazený systém**. Další informace najdete v tématu [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-   - **Artifact parameters**
+   - **Parametry artefaktu**
 
-     The parameters defined in this section apply to the artifact under which they're defined. These parameters are [dynamic parameters](../concepts/parameters.md#dynamic-parameters) because they're defined during the assignment of the blueprint. For each artifact, set the parameter value to what you see in the **Value** column.
+     Parametry definované v této části se vztahují na artefakt, ve kterém jsou definovány. Tyto parametry jsou [dynamické parametry](../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Pro každý artefakt nastavte hodnotu parametru tak, aby se zobrazila ve sloupci **hodnota** .
 
-     |Artifact name|Artifact type|Název parametru|Hodnota|Popis|
+     |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
-     |RGtoLock resource group|Skupina prostředků|Name (Název)|TestingBPLocks|Defines the name of the new resource group to apply blueprint locks to.|
-     |RGtoLock resource group|Skupina prostředků|Umístění|Západní USA 2|Defines the location of the new resource group to apply blueprint locks to.|
-     |StorageAccount|Šablona Resource Manageru|storageAccountType (StorageAccount)|Standard_GRS|The storage SKU. The default value is _Standard_LRS_.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Název|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|Západní USA 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |StorageAccount|Šablona Resource Manageru|storageAccountType (StorageAccount)|Standard_GRS|SKU úložiště. Výchozí hodnota je _Standard_LRS_.|
 
-1. After you've entered all parameters, select **Assign** at the bottom of the page.
+1. Po zadání všech parametrů vyberte **přiřadit** v dolní části stránky.
 
-This step deploys the defined resources and configures the selected **Lock Assignment**. It can take up to 30 minutes to apply blueprint locks.
+Tento krok nasadí definované prostředky a nakonfiguruje vybrané **přiřazení zámku**. Použít zámky podrobného plánu může trvat až 30 minut.
 
-After the **Assigning blueprint definition succeeded** portal notification appears, go to the next step.
+Až se zobrazí oznámení na portálu **přiřazení definice** podrobného plánu, přejít k dalšímu kroku.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>Inspect resources deployed by the assignment
+## <a name="inspect-resources-deployed-by-the-assignment"></a>Kontrola prostředků nasazených přiřazením
 
-The assignment creates the resource group _TestingBPLocks_ and the storage account deployed by the Resource Manager template artifact. The new resource group and the selected lock state are shown on the assignment details page.
+Přiřazením se vytvoří skupina prostředků _TestingBPLocks_ a účet úložiště nasazený artefaktem šablony Správce prostředků. Nová skupina prostředků a vybraný stav uzamčení se zobrazí na stránce Podrobnosti přiřazení.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select the **Assigned blueprints** page on the left. Use the filters to find the **assignment-locked-storageaccount-TestingBPLocks** blueprint assignment, and then select it.
+1. Na levé straně vyberte stránku **přiřazené plány** . Pomocí filtrů vyhledejte přiřazení **podrobného plánu přiřazení storageaccount-TestingBPLocks** a pak ho vyberte.
 
-   From this page, we can see that the assignment succeeded and that the resources were deployed with the new blueprint lock state. If the assignment is updated, the **Assignment operation** drop-down shows details about the deployment of each definition version. You can select the resource group to open the property page.
+   Na této stránce vidíte, že přiřazení bylo úspěšné a že se prostředky nasadily s novým stavem zámku podrobného plánu. Pokud je přiřazení aktualizováno, rozevírací seznam **operace přiřazení** zobrazí podrobnosti o nasazení každé verze definice. Můžete vybrat skupinu prostředků a otevřít stránku vlastností.
 
-1. Select the **TestingBPLocks** resource group.
+1. Vyberte skupinu prostředků **TestingBPLocks** .
 
-1. Select the **Access control (IAM)** page on the left. Then select the **Role assignments** tab.
+1. Na levé straně vyberte stránku **řízení přístupu (IAM)** . Pak vyberte kartu **přiřazení rolí** .
 
-   Here we see that the _assignment-locked-storageaccount-TestingBPLocks_ blueprint assignment has the _Owner_ role. It has this role because this role was used to deploy and lock the resource group.
+   Tady vidíte, že přiřazení role vlastníka pro přiřazení _storageaccount-Locked-TestingBPLocks_ má roli _Owner_ . Má tuto roli, protože tato role se použila k nasazení a uzamčení skupiny prostředků.
 
-1. Select the **Deny assignments** tab.
+1. Vyberte kartu **Odepřít přiřazení** .
 
-   The blueprint assignment created a [deny assignment](../../../role-based-access-control/deny-assignments.md) on the deployed resource group to enforce the **Read Only** blueprint lock mode. The deny assignment prevents someone with appropriate rights on the **Role assignments** tab from taking specific actions. The deny assignment affects _All principals_.
+   Přiřazení podrobného plánu vytvořilo [přiřazení odepřít](../../../role-based-access-control/deny-assignments.md) pro nasazenou skupinu prostředků, aby se vynutil režim zámku **podrobného plánu pro čtení** . Přiřazení zamítnutí brání osobě s odpovídajícími právy na kartě **přiřazení rolí** v tom, aby převzal konkrétní akce. Přiřazení zamítnutí má vliv na _všechny objekty zabezpečení_.
 
-   For information about excluding a principal from a deny assignment, see [blueprints resource locking](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
+   Informace o vyloučení objektu zabezpečení z přiřazení zamítnutí najdete v tématu [dezamykání prostředků modrotisky](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
 
-1. Select the deny assignment, and then select the **Denied Permissions** page on the left.
+1. Vyberte přiřazení odepřít a na levé straně vyberte stránku **Zamítnutá oprávnění** .
 
-   The deny assignment is preventing all operations with the **\*** and **Action** configuration, but it allows read access by excluding **\*/read** via **NotActions**.
+   Přiřazení zamítnutí brání všem operacím s konfigurací **\*** a **Akce** , ale umožňuje přístup pro čtení vyloučením **\*/Read** prostřednictvím **NotActions**.
 
-1. In the Azure portal breadcrumb, select **TestingBPLocks - Access control (IAM)** . Then select the **Overview** page on the left and then the **Delete resource group** button. Enter the name **TestingBPLocks** to confirm the delete and then select **Delete** at the bottom of the pane.
+1. V Azure Portal s popisem cesty vyberte **TestingBPLocks-Access Control (IAM)** . Pak na levé straně vyberte stránku **Přehled** a pak klikněte na tlačítko **Odstranit skupinu prostředků** . Zadáním názvu **TestingBPLocks** potvrďte odstranění a potom v dolní části podokna vyberte **Odstranit** .
 
-   The portal notification **Delete resource group TestingBPLocks failed** appears. The error states that although your account has permission to delete the resource group, access is denied by the blueprint assignment. Remember that we selected the **Read Only** blueprint lock mode during blueprint assignment. The blueprint lock prevents an account with permission, even _Owner_, from deleting the resource. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
+   Zobrazí se dialogové okno **Odstranit TestingBPLocks skupinu prostředků** oznámení o portálu. Chyba uvádí, že i když má váš účet oprávnění k odstranění skupiny prostředků, přístup je odepřen přiřazením podrobného plánu. Mějte na paměti, že při přiřazení podrobného plánu jsme vybrali režim zámku podrobný plán **pro čtení** . Zámek podrobného plánu zabraňuje účtu s oprávněním, dokonce i _vlastníkem_, z odstranění prostředku. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
 
-These steps show that our deployed resources are now protected with blueprint locks that prevent unwanted deletion, even from an account that has permission to delete the resources.
+Tyto kroky ukazují, že naše nasazené prostředky jsou teď chráněné pomocí zámků podrobného plánu, které brání nechtěnému odstranění, a to i z účtu, který má oprávnění k odstranění těchto prostředků.
 
-## <a name="unassign-the-blueprint"></a>Unassign the blueprint
+## <a name="unassign-the-blueprint"></a>Zrušit přiřazení podrobného plánu
 
-The last step is to remove the assignment of the blueprint definition. Removing the assignment doesn't remove the associated artifacts.
+Posledním krokem je odebrání přiřazení definice podrobného plánu. Odebráním přiřazení nedojde k odebrání přidružených artefaktů.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select the **Assigned blueprints** page on the left. Use the filters to find the **assignment-locked-storageaccount-TestingBPLocks** blueprint assignment, and then select it.
+1. Na levé straně vyberte stránku **přiřazené plány** . Pomocí filtrů vyhledejte přiřazení **podrobného plánu přiřazení storageaccount-TestingBPLocks** a pak ho vyberte.
 
-1. Select **Unassign blueprint** at the top of the page. Read the warning in the confirmation dialog box, and then select **OK**.
+1. V horní části stránky vyberte zrušit **přiřazení** podrobného plánu. Přečtěte si upozornění v potvrzovacím dialogovém okně a pak vyberte **OK**.
 
-   When the blueprint assignment is removed, the blueprint locks are also removed. The resources can once again be deleted by an account with appropriate permissions.
+   Když se odebere přiřazení podrobného plánu, odeberou se taky zámky podrobného plánu. Prostředky můžete znovu odstranit pomocí účtu s příslušnými oprávněními.
 
-1. Select **Resource groups** from the Azure menu, and then select **TestingBPLocks**.
+1. V nabídce Azure vyberte **skupiny prostředků** a pak vyberte **TestingBPLocks**.
 
-1. Select the **Access control (IAM)** page on the left and then select the **Role assignments** tab.
+1. Na levé straně vyberte stránku **řízení přístupu (IAM)** a pak vyberte kartu **přiřazení rolí** .
 
-The security for the resource group shows that the blueprint assignment no longer has _Owner_ access.
+Zabezpečení skupiny prostředků ukazuje na to, že přiřazení podrobného plánu už nemá přístup _vlastníka_ .
 
-After the **Removing blueprint assignment succeeded** portal notification appears, go to the next step.
+Až se zobrazí oznámení o **úspěšném odebrání přiřazení** podrobného plánu, pokračujte na další krok.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-When you're finished with this tutorial, delete these resources:
+Až skončíte s tímto kurzem, odstraňte tyto prostředky:
 
-- Resource group _TestingBPLocks_
-- Blueprint definition _locked-storageaccount_
+- _TestingBPLocks_ skupiny prostředků
+- Definice _podrobného plánu je zamčená – storageaccount_
 
 ## <a name="next-steps"></a>Další kroky
 
-In this tutorial, you've learned how to protect new resources deployed with Azure Blueprints. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+V tomto kurzu jste se seznámili s postupem ochrany nových prostředků nasazených pomocí Azure modrotisky. Další informace o plánech Azure najdete v článku o životním cyklu podrobného plánu.
 
 > [!div class="nextstepaction"]
-> [Learn about the blueprint lifecycle](../concepts/lifecycle.md)
+> [Další informace o životním cyklu podrobného plánu](../concepts/lifecycle.md)

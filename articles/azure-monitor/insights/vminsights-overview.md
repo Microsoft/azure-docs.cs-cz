@@ -22,7 +22,7 @@ Zahrnuje podporu pro monitorování výkonu a závislostí aplikací pro virtuá
 
 - **Předdefinované grafy výkonu trendů**: Zobrazit základní metriky výkonu z hostovaného operačního systému virtuálního počítače.
 
-- **Mapa závislostí**: zobrazí vzájemně propojených součástí virtuálního počítače z různých skupin prostředků a předplatných.  
+- **Mapa závislostí**: zobrazuje propojené komponenty s virtuálním počítačem z různých skupin prostředků a předplatných.  
 
 >[!NOTE]
 >Nedávno jsme [oznámili](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
@@ -38,7 +38,7 @@ Azure Monitor pro virtuální počítače může poskytovat předvídatelný vý
 
 ## <a name="data-usage"></a>Využití dat
 
-Při nasazení Azure Monitor pro virtuální počítače, data, která se shromažďují ve vašich virtuálních počítačů je ingestuje a uložené ve službě Azure Monitor. Shromážděná data o výkonu a závislostech se ukládají do Log Analyticsho pracovního prostoru. Na ceny, který je publikovaný na základě [stránce s cenami Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/), účtuje se pro monitorování Azure pro virtuální počítače:
+Při nasazení Azure Monitor pro virtuální počítače, data, která se shromažďují ve vašich virtuálních počítačů je ingestuje a uložené ve službě Azure Monitor. Shromážděná data o výkonu a závislostech se ukládají do Log Analyticsho pracovního prostoru. Na základě cen, které jsou publikovány na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/), se Azure monitor pro virtuální počítače účtuje takto:
 
 - Data, která má ingestují a ukládají.
 - Pravidla výstrah, které jsou vytvořeny.
@@ -48,4 +48,4 @@ Velikost protokolu se liší podle délky řetězců čítačů výkonu a může
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom požadavky a metody, které vám pomohou monitorovat virtuální počítače, projděte si [nasazení Azure Monitor pro virtuální počítače](vminsights-enable-overview.md).
+Pokud chcete pochopit požadavky a metody, které vám pomůžou monitorovat virtuální počítače, přečtěte si téma [nasazení Azure monitor pro virtuální počítače](vminsights-enable-overview.md).

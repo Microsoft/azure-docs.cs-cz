@@ -68,7 +68,7 @@ Pokud váš chat robot vyžaduje konkrétní LUIS skóre k označení důvěry v
 
 ## <a name="e-exponent-notation"></a>Zápis E (exponent)
 
-Predikce skóre, které můžete použít exponentu zápis _povolí, nebude_ vyšší než 0-1 v rozsahu, jako například `9.910309E-07`. Toto skóre je údaj o velmi **malé** číslo.
+Skóre předpovědi můžou použít notaci exponent, který se _zobrazuje_ nad rozsahem 0-1, například `9.910309E-07`. Toto skóre je označením velmi **malého** čísla.
 
 |Skóre zápis E |Skutečný výsledek|
 |--|--|
@@ -80,4 +80,4 @@ Predikce skóre, které můžete použít exponentu zápis _povolí, nebude_ vy�
 
 ## <a name="next-steps"></a>Další kroky
 
-Zobrazit [přidat entity](luis-how-to-add-entities.md) získat další informace o přidání entity do aplikace LUIS.
+Další informace o tom, jak přidat entity do aplikace LUIS, najdete v tématu věnovaném [Přidání entit](luis-how-to-add-entities.md) .

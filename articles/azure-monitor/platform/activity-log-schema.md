@@ -132,7 +132,7 @@ Tato kategorie obsahuje záznam všech operací vytvoření, aktualizace, odstra
 | properties |Sada dvojic `<Key, Value>` (to znamená slovníku) popisující podrobnosti události. |
 | status |Řetězec popisující stav operace. Mezi běžné hodnoty patří: spuštěno, probíhá, úspěšné, neúspěšné, aktivní, vyřešené. |
 | subStatus |Obvykle stavový kód HTTP odpovídajícího volání REST, ale může také zahrnovat další řetězce popisující dílčí stav, jako jsou tyto běžné hodnoty: OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijatý (Stavový kód HTTP: 202) bez obsahu (stav HTTP Kód: 204), chybný požadavek (kód stavu HTTP: 400), Nenalezeno (kód stavu HTTP: 404), konflikt (kód stavu HTTP: 409), interní chyba serveru (kód stavu http: 500), nedostupná služba (Stavový kód HTTP: 503), časový limit brány (kód stavu HTTP: 504). |
-| EventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
+| eventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
 | submissionTimestamp |Časové razítko, kdy se událost stala k dispozici pro dotazování |
 | subscriptionId |ID předplatného Azure. |
 
@@ -196,7 +196,7 @@ Tato kategorie obsahuje záznam všech incidentů služby Health Service, ke kte
 ```
 Dokumentaci k hodnotám ve vlastnostech najdete v článku o [oznámeních o stavu služby](./../../azure-monitor/platform/service-notifications.md) .
 
-## <a name="resource-health"></a>Stav prostředku
+## <a name="resource-health"></a>Stav prostředků
 Tato kategorie obsahuje záznam o všech událostech stavu prostředku, ke kterým došlo u vašich prostředků Azure. Příkladem typu události, kterou byste viděli v této kategorii, je stav "stav virtuálního počítače se změnil na nedostupný". Události stavu prostředků mohou představovat jeden ze čtyř stavů: k dispozici, nedostupné, degradované a neznámé. Události stavu prostředků je navíc možné kategorizovat jako iniciované platformou nebo uživatelem iniciované.
 
 ### <a name="sample-event"></a>Událost vzorku
@@ -264,7 +264,7 @@ Tato kategorie obsahuje záznam o všech událostech stavu prostředku, ke kter�
 | description |Statický textový popis události výstrahy. |
 | eventDataId |Jedinečný identifikátor události výstrahy. |
 | category | Always "ResourceHealth" |
-| EventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
+| eventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
 | úroveň |Úroveň události Jedna z následujících hodnot: "kritická", "Error", "Warning", "informativní" a "Verbose" |
 | operationId |Identifikátor GUID sdílený mezi událostmi, které odpovídají jedné operaci. |
 | operationName |Název operace |
@@ -368,7 +368,7 @@ Tato kategorie obsahuje záznam všech aktivací výstrah Azure. Příkladem typ
 | properties |Sada dvojic `<Key, Value>` (to znamená slovníku) popisující podrobnosti události. |
 | status |Řetězec popisující stav operace. Mezi běžné hodnoty patří: spuštěno, probíhá, úspěšné, neúspěšné, aktivní, vyřešené. |
 | subStatus | Pro výstrahy obvykle je null. |
-| EventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
+| eventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
 | submissionTimestamp |Časové razítko, kdy se událost stala k dispozici pro dotazování |
 | subscriptionId |ID předplatného Azure. |
 
@@ -482,7 +482,7 @@ Tato kategorie obsahuje záznam všech událostí souvisejících s provozem mod
 | properties.LastScaleActionTime | Časové razítko, kdy došlo k akci automatického škálování. |
 | status |Řetězec popisující stav operace. Mezi běžné hodnoty patří: spuštěno, probíhá, úspěšné, neúspěšné, aktivní, vyřešené. |
 | subStatus | Pro automatické škálování obvykle je null. |
-| EventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
+| eventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
 | submissionTimestamp |Časové razítko, kdy se událost stala k dispozici pro dotazování |
 | subscriptionId |ID předplatného Azure. |
 
@@ -570,7 +570,7 @@ Tato kategorie obsahuje záznam výstrahy vygenerované Azure Security Center. P
 | vlastnosti. Závažnost |Úroveň závažnosti. Možné hodnoty jsou "vysoká", "střední" nebo "nízká". |
 | status |Řetězec popisující stav operace. Mezi běžné hodnoty patří: spuštěno, probíhá, úspěšné, neúspěšné, aktivní, vyřešené. |
 | subStatus | Pro události zabezpečení obvykle je null. |
-| EventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
+| eventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
 | submissionTimestamp |Časové razítko, kdy se událost stala k dispozici pro dotazování |
 | subscriptionId |ID předplatného Azure. |
 
@@ -752,7 +752,7 @@ Tato kategorie obsahuje záznamy všech operací akcí prováděných pomocí [A
 | eventDataId | Jedinečný identifikátor události |
 | eventName | Buď "BeginRequest", nebo "EndRequest". "BeginRequest" se používá pro opožděné vyhodnocení auditIfNotExists a deployIfNotExists a když deployIfNotExists efekt spustí nasazení šablony. Všechny ostatní operace vrátí "EndRequest". |
 | category | Deklaruje událost protokolu aktivit jako patřící k zásadě. |
-| EventTimestamp | Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
+| eventTimestamp | Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
 | id | Jedinečný identifikátor události u konkrétního prostředku |
 | úroveň | Úroveň události Audit používá upozornění a zamítnutí používá chybu. Chyba auditIfNotExists nebo deployIfNotExists může vygenerovat upozornění nebo chybu v závislosti na závažnosti. Všechny ostatní události zásad používají "informativní". |
 | operationId | Identifikátor GUID sdílený mezi událostmi, které odpovídají jedné operaci. |
@@ -777,7 +777,7 @@ Když streamuje protokol aktivit Azure do účtu úložiště nebo Event Hubs ob
 
 | Vlastnost schématu diagnostických protokolů | Vlastnost schématu REST API protokolu aktivit | Poznámky: |
 | --- | --- | --- |
-| time | EventTimestamp |  |
+| time | eventTimestamp |  |
 | resourceId | resourceId | subscriptionId, ResourceType, resourceGroupName jsou všechny odvozeny od resourceId. |
 | operationName | operationName.value |  |
 | category | Součást názvu operace | Užitečných typu operace – "zapsat"/"odstranit"/"akci" |
@@ -788,7 +788,7 @@ Když streamuje protokol aktivit Azure do účtu úložiště nebo Event Hubs ob
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
 | identity | deklarace identity a vlastnosti autorizace |  |
-| Level | Level |  |
+| Úroveň | Úroveň |  |
 | location | neuvedeno | Umístění, kde byla událost zpracována. *Toto není umístění prostředku, ale místo, kde byla událost zpracována. Tato vlastnost bude v budoucí aktualizaci odebrána.* |
 | Vlastnosti | Properties. eventProperties |  |
 | properties.eventCategory | category | Pokud nejsou k dispozici vlastnosti. eventCategory, kategorie je "administrativní". |

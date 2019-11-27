@@ -34,13 +34,13 @@ V závislosti na typu diagnostických dat, která se shromažďují, Azure Diagn
 | Zdroj dat | Formát úložiště |
 | --- | --- |
 | Protokoly Azure |Table |
-| Protokoly IIS 7,0 |Blob |
+| Protokoly IIS 7,0 |Objekt blob |
 | Protokolů infrastruktury Azure Diagnostics |Table |
-| Protokoly trasování neúspěšných požadavků |Blob |
+| Protokoly trasování neúspěšných požadavků |Objekt blob |
 | Protokoly událostí Windows |Table |
 | Čítače výkonu |Table |
-| Výpisy stavu systému |Blob |
-| Vlastní protokoly chyb |Blob |
+| Výpisy stavu systému |Objekt blob |
+| Vlastní protokoly chyb |Objekt blob |
 
 ## <a name="transfer-diagnostic-data"></a>Přenos diagnostických dat
 V případě sady SDK 2,5 a novějších verzí může být požadavek na přenos diagnostických dat proveden prostřednictvím konfiguračního souboru. Diagnostická data můžete přenést v naplánovaných intervalech, jak je uvedeno v konfiguraci.

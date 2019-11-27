@@ -1,6 +1,6 @@
 ---
-title: Deprovision devices that were provisioned with Azure IoT Hub Device Provisioning Service
-description: How to deprovision devices that have been provisioned with Azure IoT Hub Device Provisioning Service
+title: Zrušení zřízení zařízení, která byla zřízená s Azure IoT Hub Device Provisioning Service
+description: Postup zrušení zřízení zařízení, která byla zřízená s Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 05/11/2018
@@ -14,56 +14,56 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229697"
 ---
-# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>How to deprovision devices that were previously auto-provisioned 
+# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena 
 
-You may find it necessary to deprovision devices that were previously auto-provisioned through the Device Provisioning Service. For example, a device may be sold or moved to a different IoT hub, or it may be lost, stolen, or otherwise compromised. 
+Možná bude nutné zrušit zřízení zařízení, která byla dříve automaticky zřízena prostřednictvím služby Device Provisioning. Zařízení se například může prodávat nebo přesouvat do jiného centra IoT nebo může být ztraceno, odcizeno nebo jinak ohroženo. 
 
-In general, deprovisioning a device involves two steps:
+Obecně platí, že zrušení zřízení zařízení se skládá ze dvou kroků:
 
-1. Disenroll the device from your provisioning service, to prevent future auto-provisioning. Depending on whether you want to revoke access temporarily or permanently, you may want to either disable or delete an enrollment entry. For devices that use X.509 attestation, you may want to disable/delete an entry in the hierarchy of your existing enrollment groups.  
+1. Zrušením registrace zařízení ze služby zřizování zabráníte budoucímu automatickému zřizování. V závislosti na tom, jestli chcete dočasně nebo trvale odvolat přístup, možná budete chtít zakázat nebo odstranit položku registrace. U zařízení, která používají ověření identity X. 509, můžete chtít zakázat nebo odstranit položku v hierarchii stávajících skupin pro registraci.  
  
-   - To learn how to disenroll a device, see [How to disenroll a device from Azure IoT Hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
-   - To learn how to disenroll a device programmatically using one of the provisioning service SDKs, see [Manage device enrollments with service SDKs](how-to-manage-enrollments-sdks.md).
+   - Informace o tom, jak zrušit registraci zařízení, najdete v tématu [Jak zrušit registraci zařízení z Azure IoT Hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
+   - Informace o tom, jak zrušit registraci zařízení pomocí jedné ze sad SDK služby zřizování, najdete v tématu [Správa registrace zařízení pomocí sad SDK služby](how-to-manage-enrollments-sdks.md).
 
-2. Deregister the device from your IoT Hub, to prevent future communications and data transfer. Again, you can temporarily disable or permanently delete the device's entry in the identity registry for the IoT Hub where it was provisioned. See [Disable devices](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) to learn more about disablement. See "Device Management / IoT Devices" for your IoT Hub resource, in the [Azure portal](https://portal.azure.com).
+2. Zrušte registraci zařízení od IoT Hub, abyste zabránili budoucí komunikaci a přenosu dat. Znovu můžete dočasně zakázat nebo trvale odstranit položku zařízení v registru identit pro IoT Hub, kde byla zřízena. Další informace o zakazování najdete v tématu [Zakázání zařízení](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) . Projděte si téma Správa zařízení/zařízení IoT pro váš prostředek IoT Hub v [Azure Portal](https://portal.azure.com).
 
-The exact steps you take to deprovision a device depend on its attestation mechanism and its applicable enrollment entry with your provisioning service. The following sections provide an overview of the process, based on the enrollment and attestation type.
+Přesný postup pro zrušení zřízení zařízení závisí na mechanismu ověřování a příslušné položce registrace ve vaší službě zřizování. Následující části obsahují přehled procesu na základě registrace a typu ověření identity.
 
-## <a name="individual-enrollments"></a>Individual enrollments
-Devices that use TPM attestation or X.509 attestation with a leaf certificate are provisioned through an individual enrollment entry. 
+## <a name="individual-enrollments"></a>Jednotlivé registrace
+Zařízení, která používají ověření identity pomocí čipu TPM nebo ověřování X. 509 s listovým certifikátem, se zřídí prostřednictvím jednotlivé položky registrace. 
 
-To deprovision a device that has an individual enrollment: 
+Zrušení zřízení zařízení, které má jednotlivou registraci: 
 
-1. Disenroll the device from your provisioning service:
+1. Zrušení registrace zařízení ze služby zřizování:
 
-   - For devices that use TPM attestation, delete the individual enrollment entry to permanently revoke the device's access to the provisioning service, or disable the entry to temporarily revoke its access. 
-   - For devices that use X.509 attestation, you can either delete or disable the entry. Be aware, though, if you delete an individual enrollment for a device that uses X.509 and an enabled enrollment group exists for a signing certificate in that device's certificate chain, the device can re-enroll. For such devices, it may be safer to disable the enrollment entry. Doing so prevents the device from re-enrolling, regardless of whether an enabled enrollment group exists for one of its signing certificates.
+   - U zařízení, která používají ověření identity pomocí čipu TPM, odstraňte jednotlivé položky registrace, abyste trvale odvolali přístup zařízení ke službě zřizování, nebo tuto položku zakážete pro dočasné odvolání přístupu. 
+   - U zařízení, která používají ověření identity X. 509, můžete položku buď odstranit, nebo zakázat. Mějte na paměti, že pokud odstraníte jednotlivou registraci pro zařízení, které používá X. 509 a povolenou skupinu registrací, existuje pro podpisový certifikát v řetězu certifikátů daného zařízení, může se zařízení znovu zaregistrovat. U takových zařízení může být bezpečnější zakázat položku registrace. Zabráníte tak opětovné registraci zařízení, a to bez ohledu na to, jestli povolená skupina pro registraci existuje pro jeden z jeho podpisových certifikátů.
 
-2. Disable or delete the device in the identity registry of the IoT hub that it was provisioned to. 
+2. Zakažte nebo odstraňte zařízení v registru identit ve službě IoT Hub, pro kterou byla zřízena. 
 
 
-## <a name="enrollment-groups"></a>Enrollment groups
-With X.509 attestation, devices can also be provisioned through an enrollment group. Enrollment groups are configured with a signing certificate, either an intermediate or root CA certificate, and control access to the provisioning service for devices with that certificate in their certificate chain. To learn more about enrollment groups and X.509 certificates with the provisioning service, see [X.509 certificates](concepts-security.md#x509-certificates). 
+## <a name="enrollment-groups"></a>Skupiny registrací
+Pomocí ověřování X. 509 se dají zařízení zřídit taky prostřednictvím skupiny pro registraci. Skupiny registrací se konfigurují pomocí podpisového certifikátu, buď zprostředkujícího, nebo kořenového certifikátu certifikační autority, a kontrolujte přístup ke službě zřizování pro zařízení s tímto certifikátem v řetězu certifikátů. Další informace o skupinách registrace a certifikátech X. 509 pomocí služby zřizování najdete v tématu [certifikáty x. 509](concepts-security.md#x509-certificates). 
 
-To see a list of devices that have been provisioned through an enrollment group, you can view the enrollment group's details. This is an easy way to understand which IoT hub each device has been provisioned to. To view the device list: 
+Chcete-li zobrazit seznam zařízení, která byla zřízena prostřednictvím skupiny registrací, můžete zobrazit podrobnosti skupiny registrací. Toto je jednoduchý způsob, jak pochopit, ke kterému IoT Hub je každé zařízení zřízené. Zobrazení seznamu zařízení: 
 
-1. Log in to the Azure portal and click **All resources** on the left-hand menu.
-2. Click your provisioning service in the list of resources.
-3. In your provisioning service, click **Manage enrollments**, then select **Enrollment Groups** tab.
-4. Click the enrollment group to open it.
+1. Přihlaste se k Azure Portal a klikněte na **všechny prostředky** v nabídce na levé straně.
+2. V seznamu prostředků klikněte na svou službu zřizování.
+3. Ve vaší službě zřizování klikněte na **Správa**registrací a pak vyberte kartu **skupiny** registrací.
+4. Kliknutím na skupinu pro zápis ji otevřete.
 
-   ![View enrollment group entry in the portal](./media/how-to-unprovision-devices/view-enrollment-group.png)
+   ![Zobrazit položku skupiny registrace na portálu](./media/how-to-unprovision-devices/view-enrollment-group.png)
 
-With enrollment groups, there are two scenarios to consider:
+Pomocí skupin registrací je možné zvážit dva scénáře:
 
-- To deprovision all of the devices that have been provisioned through an enrollment group:
-  1. Disable the enrollment group to blacklist its signing certificate. 
-  2. Use the list of provisioned devices for that enrollment group to disable or delete each device from the identity registry of its respective IoT hub. 
-  3. After disabling or deleting all devices from their respective IoT hubs, you can optionally delete the enrollment group. Be aware, though, that, if you delete the enrollment group and there is an enabled enrollment group for a signing certificate higher up in the certificate chain of one or more of the devices, those devices can re-enroll. 
+- Zrušení zřízení všech zařízení, která byla zřízena prostřednictvím skupiny pro registraci:
+  1. Zakažte skupinu registrací, která má zakázaný podpisový certifikát. 
+  2. Pomocí seznamu zřízených zařízení pro tuto skupinu registrací zakažte nebo odstraňte jednotlivá zařízení z registru identit příslušného centra IoT Hub. 
+  3. Po zakázání nebo odstranění všech zařízení ze svých příslušných hub IoT můžete případně odstranit skupinu registrací. Mějte ale na paměti, že pokud odstraníte skupinu registrací a v řetězu certifikátů jednoho nebo více zařízení je povolená skupina pro zápis podpisového certifikátu vyšší, můžou se tato zařízení znovu zaregistrovat. 
 
-- To deprovision a single device from an enrollment group:
-  1. Create a disabled individual enrollment for its leaf (device) certificate. This revokes access to the provisioning service for that device while still permitting access for other devices that have the enrollment group's signing certificate in their chain. Do not delete the disabled individual enrollment for the device. Doing so will allow the device to re-enroll through the enrollment group. 
-  2. Use the list of provisioned devices for that enrollment group to find the IoT hub that the device was provisioned to and disable or delete it from that hub's identity registry. 
+- Zrušení zřízení jednoho zařízení ze skupiny pro registraci:
+  1. Vytvořte zakázanou jednotlivou registraci pro svůj certifikát na listovém (zařízení). Tím odvoláte přístup ke službě zřizování pro toto zařízení a zároveň povolíte přístup pro jiná zařízení, která mají podpisový certifikát skupiny registrací ve svém řetězci. Neodstraňujte zakázanou jednotlivou registraci zařízení. Tím umožníte, aby se zařízení znovu zaregistrovalo prostřednictvím skupiny pro registraci. 
+  2. Pomocí seznamu zřízených zařízení pro tuto skupinu registrací vyhledejte IoT Hub, ke kterému se zařízení zřídilo, a zakažte nebo odstraňte z registru identit tohoto centra. 
   
   
 
