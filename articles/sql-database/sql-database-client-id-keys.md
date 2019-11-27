@@ -1,6 +1,6 @@
 ---
-title: Get values for app authentication
-description: Create a service principal for accessing SQL Database from code.
+title: Získat hodnoty pro ověřování aplikací
+description: Vytvoří instanční objekt pro přístup k SQL Database z kódu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -18,18 +18,18 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421321"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Get the required values for authenticating an application to access SQL Database from code
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Získání požadovaných hodnot pro ověření aplikace pro přístup k SQL Database z kódu
 
-To create and manage SQL Database from code you must register your app in the Azure Active Directory (AAD) domain  in the subscription where your Azure resources have been created.
+Pokud chcete vytvořit a spravovat SQL Database z kódu, musíte aplikaci zaregistrovat v doméně Azure Active Directory (AAD) v předplatném, ve kterém se vytvořily prostředky Azure.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Create a service principal to access resources from an application
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Vytvoření instančního objektu pro přístup k prostředkům z aplikace
 
-The following examples create the Active Directory (AD) application and the service principal that we need to authenticate our C# app. Skript vypíše hodnoty potřebné pro předchozí ukázku v jazyce C#. Podrobné informace najdete v tématu [Vytvoření instančního objektu pro přístup k prostředkům pomocí prostředí Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Následující příklady vytvoří aplikaci služby Active Directory (AD) a instanční objekt, který potřebujeme k ověření naší C# aplikace. Skript vypíše hodnoty potřebné pro předchozí ukázku v jazyce C#. Podrobné informace najdete v tématu [Vytvoření instančního objektu pro přístup k prostředkům pomocí prostředí Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> Modul Azure Resource Manager PowerShellu (RM) je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
 ```powershell
 # sign in to Azure
@@ -99,7 +99,7 @@ Write-Output "_applicationSecret:" $secret
 
 * * *
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-[Create a SQL database with C#](sql-database-get-started-csharp.md)  
-[Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md)
+[Vytvoření databáze SQL pomocíC#](sql-database-get-started-csharp.md)  
+[Připojení k SQL Database pomocí ověřování Azure Active Directory](sql-database-aad-authentication.md)

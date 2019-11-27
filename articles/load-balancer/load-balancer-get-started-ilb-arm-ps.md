@@ -1,5 +1,5 @@
 ---
-title: Create an Azure internal Load Balancer by using PowerShell
+title: Vytvoření Azure internal Load Balancer pomocí Powershellu
 titleSuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí modulu Azure PowerShellu a Azure Resource Manageru
 services: load-balancer
@@ -251,7 +251,7 @@ Po vytvoření virtuálního počítače přidejte síťové rozhraní.
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>Krok 1: Uložení prostředku nástroje pro vyrovnávání zatížení
 
-Uložte prostředek nástroje pro vyrovnávání zatížení do proměnné (pokud jste tak ještě neučinili). We're using the variable name **$lb**. For the attribute values in the script, use the names for the load balancer resources that were created in the previous steps.
+Uložte prostředek nástroje pro vyrovnávání zatížení do proměnné (pokud jste tak ještě neučinili). Používáme název proměnné **$lb**. Pro hodnoty atributu ve skriptu použijte názvy pro prostředky nástroje pro vyrovnávání zatížení, které byly vytvořeny v předchozích krocích.
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG

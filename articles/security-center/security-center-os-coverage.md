@@ -95,14 +95,14 @@ Azure Security Center podporují následující prostředky Azure PaaS:
 * Funkce
 * Cloudová služba
 * VNet
-* Subnet
+* Podsíť
 * NIC
 * NSG
 * Účet Batch
 * Účet Service Fabric
 * Účet Automation
 * Nástroj pro vyrovnávání zatížení
-* Hledat
+* Search
 * Názvový prostor služby Service Bus
 * Stream Analytics
 * Obor názvů centra událostí

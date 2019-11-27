@@ -13,10 +13,10 @@ ms.locfileid: "74224500"
 ---
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Azure Content Delivery Network profiles |25 |
-| Content Delivery Network endpoints per profile |25 |
-| Custom domains per endpoint |25 |
+| Profily Content Delivery Network Azure |25 |
+| Content Delivery Network koncové body na profil |25 |
+| Vlastní domény na koncový bod |25 |
 
-A Content Delivery Network subscription can contain one or more Content Delivery Network profiles. A Content Delivery Network profile can contain one or more Content Delivery Network endpoints. You might want to use multiple profiles to organize your Content Delivery Network endpoints by internet domain, web application, or some other criteria. 
+Předplatné Content Delivery Network může obsahovat jeden nebo více profilů Content Delivery Network. Profil Content Delivery Network může obsahovat jeden nebo více Content Delivery Networkch koncových bodů. Můžete chtít použít více profilů k uspořádání Content Delivery Networkch koncových bodů podle internetové domény, webové aplikace nebo jiných kritérií. 
 
 

@@ -1,6 +1,6 @@
 ---
-title: JavaScript developer reference for Azure Functions
-description: Understand how to develop functions by using JavaScript.
+title: Referenční dokumentace pro vývojáře JavaScriptu pro Azure Functions
+description: Naučte se vyvíjet funkce pomocí JavaScriptu.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 02/24/2019
@@ -11,19 +11,19 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226711"
 ---
-# <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript developer guide
+# <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
-This guide contains information about the intricacies of writing Azure Functions with JavaScript.
+Tato příručka obsahuje informace o složitými rozhraními psaní Azure Functions pomocí JavaScriptu.
 
-A JavaScript function is an exported `function` that executes when triggered ([triggers are configured in function.json](functions-triggers-bindings.md)). The first argument passed to every function is a `context` object, which is used for receiving and sending binding data, logging, and communicating with the runtime.
+Funkce JavaScriptu je exportovaný `function`, která se spustí, když se aktivuje ([triggery se konfigurují v Function. JSON](functions-triggers-bindings.md)). První argument předaný do každé funkce je objekt `context`, který se používá pro příjem a odesílání dat vazby, protokolování a komunikaci s modulem runtime.
 
-This article assumes that you have already read the [Azure Functions developer reference](functions-reference.md). Complete the Functions quickstart to create your first function, using [Visual Studio Code](functions-create-first-function-vs-code.md) or [in the portal](functions-create-first-azure-function.md).
+V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). Dokončete rychlý Start funkcí a vytvořte svoji první funkci pomocí [Visual Studio Code](functions-create-first-function-vs-code.md) nebo na [portálu](functions-create-first-azure-function.md).
 
-This article also supports [TypeScript app development](#typescript).
+Tento článek také podporuje [vývoj aplikací TypeScript](#typescript).
 
-## <a name="folder-structure"></a>Folder structure
+## <a name="folder-structure"></a>Struktura složek
 
-The required folder structure for a JavaScript project looks like the following. This default can be changed. For more information, see the [scriptFile](#using-scriptfile) section below.
+Požadovaná struktura složky pro projekt JavaScriptu vypadá následovně. Toto výchozí nastavení lze změnit. Další informace najdete v části [scriptFile](#using-scriptfile) níže.
 
 ```
 FunctionsProject
@@ -42,17 +42,17 @@ FunctionsProject
  | - extensions.csproj
 ```
 
-At the root of the project, there's a shared [host.json](functions-host-json.md) file that can be used to configure the function app. Each function has a folder with its own code file (.js) and binding configuration file (function.json). The name of `function.json`'s parent directory is always the name of your function.
+V kořenu projektu se nachází sdílený soubor [Host. JSON](functions-host-json.md) , který se dá použít ke konfiguraci aplikace Function App. Každá funkce má složku s vlastním souborem kódu (. js) a konfiguračním souborem vazby (Function. JSON). Název nadřazeného adresáře `function.json`je vždy název vaší funkce.
 
-The binding extensions required in [version 2.x](functions-versions.md) of the Functions runtime are defined in the `extensions.csproj` file, with the actual library files in the `bin` folder. When developing locally, you must [register binding extensions](./functions-bindings-register.md#extension-bundles). When developing functions in the Azure portal, this registration is done for you.
+Rozšíření vazby požadovaná ve [verzi 2. x](functions-versions.md) modulu runtime Functions jsou definována v souboru `extensions.csproj` se skutečnými soubory knihovny ve složce `bin`. Při vývoji místně je nutné [zaregistrovat rozšíření vazby](./functions-bindings-register.md#extension-bundles). Při vývoji funkcí v Azure Portal se tato registrace provede za vás.
 
-## <a name="exporting-a-function"></a>Exporting a function
+## <a name="exporting-a-function"></a>Export funkce
 
-JavaScript functions must be exported via [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports) (or [`exports`](https://nodejs.org/api/modules.html#modules_exports)). Your exported function should be a JavaScript function that executes when triggered.
+Funkce JavaScriptu musí být exportovány prostřednictvím [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports) (nebo [`exports`](https://nodejs.org/api/modules.html#modules_exports)). Vyexportovaná funkce by měla být funkce JavaScriptu, která se spustí, když se aktivuje.
 
-By default, the Functions runtime looks for your function in `index.js`, where `index.js` shares the same parent directory as its corresponding `function.json`. In the default case, your exported function should be the only export from its file or the export named `run` or `index`. To configure the file location and export name of your function, read about [configuring your function's entry point](functions-reference-node.md#configure-function-entry-point) below.
+Ve výchozím nastavení vyhledává modul runtime Functions vaši funkci v `index.js`, kde `index.js` sdílet stejný nadřazený adresář jako odpovídající `function.json`. Ve výchozím případě by vaše exportovaná funkce měla být jediným exportem z jeho souboru nebo export s názvem `run` nebo `index`. Chcete-li nakonfigurovat umístění souboru a název exportu funkce, přečtěte si informace o [konfiguraci vstupního bodu funkce](functions-reference-node.md#configure-function-entry-point) níže.
 
-Your exported function is passed a number of arguments on execution. The first argument it takes is always a `context` object. If your function is synchronous (doesn't return a Promise), you must pass the `context` object, as calling `context.done` is required for correct use.
+Vaše exportovaná funkce je předána počtem argumentů při provádění. První argument, který bude trvat, je vždy objekt `context`. Pokud je funkce synchronní (nevrací příslib), je nutné předat objekt `context`, protože volání `context.done` je vyžadováno pro správné použití.
 
 ```javascript
 // You should include context, other arguments are optional
@@ -62,10 +62,10 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-### <a name="exporting-an-async-function"></a>Exporting an async function
-When using the [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) declaration or plain JavaScript [Promises](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) in version 2.x of the Functions runtime, you do not need to explicitly call the [`context.done`](#contextdone-method) callback to signal that your function has completed. Your function completes when the exported async function/Promise completes. For functions targeting the version 1.x runtime, you must still call [`context.done`](#contextdone-method) when your code is done executing.
+### <a name="exporting-an-async-function"></a>Export asynchronní funkce
+Při použití deklarace [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) nebo prostého JavaScriptu [příslibů](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) ve verzi 2. x modulu runtime Functions není nutné explicitně volat [`context.done`](#contextdone-method) zpětného volání k signalizaci, že byla funkce dokončena. Vaše funkce se dokončí po dokončení exportované asynchronní funkce nebo příslib. U funkcí cílících na modul runtime verze 1. x je stále nutné volat [`context.done`](#contextdone-method) , když je váš kód proveden.
 
-The following example is a simple function that logs that it was triggered and immediately completes execution.
+Následující příklad představuje jednoduchou funkci, která protokoluje, že byla aktivována, a okamžitě dokončí provádění.
 
 ```javascript
 module.exports = async function (context) {
@@ -73,9 +73,9 @@ module.exports = async function (context) {
 };
 ```
 
-When exporting an async function, you can also configure an output binding to take the `return` value. This is recommended if you only have one output binding.
+Při exportu asynchronní funkce můžete také nakonfigurovat výstupní vazbu, aby se převzala hodnota `return`. To se doporučuje, pokud máte jenom jednu výstupní vazbu.
 
-To assign an output using `return`, change the `name` property to `$return` in `function.json`.
+Chcete-li přiřadit výstup pomocí `return`, změňte vlastnost `name` na `$return` v `function.json`.
 
 ```json
 {
@@ -85,7 +85,7 @@ To assign an output using `return`, change the `name` property to `$return` in `
 }
 ```
 
-In this case, your function should look like the following example:
+V takovém případě by měla funkce vypadat jako v následujícím příkladu:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -98,17 +98,17 @@ module.exports = async function (context, req) {
 ```
 
 ## <a name="bindings"></a>Vazby 
-In JavaScript, [bindings](functions-triggers-bindings.md) are configured and defined in a function's function.json. Functions interact with bindings a number of ways.
+V jazyce JavaScript jsou [vazby](functions-triggers-bindings.md) konfigurovány a definovány ve funkci Function. JSON. Funkce pracují s vazbami různými způsoby.
 
 ### <a name="inputs"></a>Vstupy
-Input are divided into two categories in Azure Functions: one is the trigger input and the other is the additional input. Trigger and other input bindings (bindings of `direction === "in"`) can be read by a function in three ways:
- - **_[Recommended]_ As parameters passed to your function.** They are passed to the function in the same order that they are defined in *function.json*. The `name` property defined in *function.json* does not need to match the name of your parameter, although it should.
+Vstup je rozdělen do dvou kategorií v Azure Functions: jeden je vstup triggeru a druhý je další vstup. Trigger a další vstupní vazby (vazby `direction === "in"`) mohou být čteny funkcí třemi způsoby:
+ - **_[Doporučeno]_ Jako parametry předané do vaší funkce.** Jsou předány funkci ve stejném pořadí, v jakém jsou definovány v *Function. JSON*. Vlastnost `name` definovaná v *Function. JSON* se nemusí shodovat s názvem vašeho parametru, i když by měla.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **As members of the [`context.bindings`](#contextbindings-property) object.** Each member is named by the `name` property defined in *function.json*.
+ - **Jako členové objektu [`context.bindings`](#contextbindings-property) .** Každý člen je pojmenován vlastností `name` definovanými v *Function. JSON*.
  
    ```javascript
    module.exports = async function(context) { 
@@ -118,7 +118,7 @@ Input are divided into two categories in Azure Functions: one is the trigger inp
    };
    ```
    
- - **As inputs using the JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) object.** This is essentially the same as passing inputs as parameters, but allows you to dynamically handle inputs.
+ - **Jako vstupy pomocí objektu JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) .** To je v podstatě totéž jako předání vstupů jako parametrů, ale umožňuje dynamicky zpracovávat vstupy.
  
    ```javascript
    module.exports = async function(context) { 
@@ -129,11 +129,11 @@ Input are divided into two categories in Azure Functions: one is the trigger inp
    ```
 
 ### <a name="outputs"></a>Výstupy
-Outputs (bindings of `direction === "out"`) can be written to by a function in a number of ways. In all cases, the `name` property of the binding as defined in *function.json* corresponds to the name of the object member written to in your function. 
+Výstupy (vazby `direction === "out"`) mohou být do funkce zapisovány řadou způsobů. Ve všech případech odpovídá vlastnost `name` vazby podle definice v *Function. JSON* název členu objektu zapsaného do funkce. 
 
-You can assign data to output bindings in one of the following ways (don't combine these methods):
+Do výstupních vazeb můžete přiřadit data jedním z následujících způsobů (tyto metody nekombinovat):
 
-- **_[Recommended for multiple outputs]_ Returning an object.** If you are using an async/Promise returning function, you can return an object with assigned output data. In the example below, the output bindings are named "httpResponse" and "queueOutput" in *function.json*.
+- **_[Doporučeno pro více výstupů]_ Vrácení objektu.** Pokud používáte funkci vracející asynchronní nebo příslib, můžete vrátit objekt s přiřazenými výstupními daty. V následujícím příkladu jsou výstupní vazby pojmenovány "httpResponse" a "queueOutput" v *Function. JSON*.
 
   ```javascript
   module.exports = async function(context) {
@@ -147,9 +147,9 @@ You can assign data to output bindings in one of the following ways (don't combi
   };
   ```
 
-  If you are using a synchronous function, you can return this object using [`context.done`](#contextdone-method) (see example).
-- **_[Recommended for single output]_ Returning a value directly and using the $return binding name.** This only works for async/Promise returning functions. See example in [exporting an async function](#exporting-an-async-function). 
-- **Assigning values to `context.bindings`** You can assign values directly to context.bindings.
+  Používáte-li synchronní funkci, můžete tento objekt vrátit pomocí [`context.done`](#contextdone-method) (viz příklad).
+- **_[Doporučeno pro jeden výstup]_ Vrácení hodnoty přímo a pomocí názvu $return vazby.** To funguje jenom pro funkce asynchronního nebo příslibu. Viz příklad při [Exportování asynchronní funkce](#exporting-an-async-function). 
+- **Přiřazování hodnot `context.bindings`** Hodnoty můžete přiřadit přímo kontextu. Bindings.
 
   ```javascript
   module.exports = async function(context) {
@@ -162,9 +162,9 @@ You can assign data to output bindings in one of the following ways (don't combi
   };
   ```
 
-### <a name="bindings-data-type"></a>Bindings data type
+### <a name="bindings-data-type"></a>Datový typ vazeb
 
-To define the data type for an input binding, use the `dataType` property in the binding definition. For example, to read the content of an HTTP request in binary format, use the type `binary`:
+Chcete-li definovat datový typ pro vstupní vazbu, použijte vlastnost `dataType` v definici vazby. Chcete-li například číst obsah požadavku HTTP v binárním formátu, použijte typ `binary`:
 
 ```json
 {
@@ -175,12 +175,12 @@ To define the data type for an input binding, use the `dataType` property in the
 }
 ```
 
-Options for `dataType` are: `binary`, `stream`, and `string`.
+Možnosti pro `dataType` jsou: `binary`, `stream`a `string`.
 
-## <a name="context-object"></a>context object
-The runtime uses a `context` object to pass data to and from your function and to let you communicate with the runtime. The context object can be used for reading and setting data from bindings, writing logs, and using the `context.done` callback when your exported function is synchronous.
+## <a name="context-object"></a>kontextový objekt
+Modul runtime používá objekt `context` k předání dat do a z vaší funkce a k umožnění komunikace s modulem runtime. Kontextový objekt lze použít pro čtení a nastavení dat z vazeb, zápis protokolů a použití zpětného volání `context.done`, pokud je vaše exportovaná funkce synchronní.
 
-The `context` object is always the first parameter to a function. It should be included because it has important methods such as `context.done` and `context.log`. You can name the object whatever you would like (for example, `ctx` or `c`).
+Objekt `context` je vždy prvním parametrem funkce. Měla by být zahrnutá, protože obsahuje důležité metody, například `context.done` a `context.log`. Objekt můžete pojmenovat libovolným způsobem, například `ctx` nebo `c`).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -190,15 +190,15 @@ module.exports = function(ctx) {
 };
 ```
 
-### <a name="contextbindings-property"></a>context.bindings property
+### <a name="contextbindings-property"></a>Context. Bindings – vlastnost
 
 ```js
 context.bindings
 ```
 
-Returns a named object that is used to read or assign binding data. Input and trigger binding data can be accessed by reading properties on `context.bindings`. Output binding data can be assigned by adding data to `context.bindings`
+Vrátí pojmenovaný objekt, který se používá ke čtení nebo přiřazení dat vazby. Data vazby vstupu a triggeru se dají použít při čtení vlastností na `context.bindings`. Data výstupní vazby je možné přiřadit přidáním dat do `context.bindings`
 
-For example, the following binding definitions in your function.json let you access the contents of a queue from `context.bindings.myInput` and assign outputs to a queue using `context.bindings.myOutput`.
+Například následující definice vazeb ve funkci Function. JSON vám umožní přístup k obsahu fronty z `context.bindings.myInput` a přiřazení výstupů do fronty pomocí `context.bindings.myOutput`.
 
 ```json
 {
@@ -224,27 +224,27 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
-You can choose to define output binding data using the `context.done` method instead of the `context.binding` object (see below).
+Můžete zvolit, aby se data o výstupní vazbě definovala pomocí metody `context.done` místo objektu `context.binding` (viz níže).
 
-### <a name="contextbindingdata-property"></a>context.bindingData property
+### <a name="contextbindingdata-property"></a>Context. bindingData – vlastnost
 
 ```js
 context.bindingData
 ```
 
-Returns a named object that contains trigger metadata and function invocation data (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). For an example of trigger metadata, see this [event hubs example](functions-bindings-event-hubs.md#trigger---javascript-example).
+Vrátí pojmenovaný objekt, který obsahuje metadata triggeru a data vyvolání funkce (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Příklad metadat triggeru najdete v tomto [příkladu centra událostí](functions-bindings-event-hubs.md#trigger---javascript-example).
 
-### <a name="contextdone-method"></a>context.done method
+### <a name="contextdone-method"></a>Context. hotový – metoda
 
 ```js
 context.done([err],[propertyBag])
 ```
 
-Lets the runtime know that your code has completed. When your function uses the [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) declaration, you do not need to use `context.done()`. The `context.done` callback is implicitly called. Async functions are available in Node 8 or a later version, which requires version 2.x of the Functions runtime.
+Umožňuje modulu runtime zjistit, že váš kód byl dokončen. Pokud funkce používá deklaraci [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) , nemusíte používat `context.done()`. Zpětné volání `context.done` je implicitně voláno. Asynchronní funkce jsou k dispozici v uzlu 8 nebo novější verzi, která vyžaduje verzi 2. x modulu runtime Functions.
 
-If your function is not an async function, **you must call** `context.done` to inform the runtime that your function is complete. The execution times out if it is missing.
+Pokud funkce není asynchronní funkcí, je **nutné volat** `context.done`, aby bylo možné informovat modul runtime o dokončení funkce. Vypršel časový limit spuštění, pokud chybí.
 
-The `context.done` method allows you to pass back both a user-defined error to the runtime and a JSON object containing output binding data. Properties passed to `context.done` overwrite anything set on the `context.bindings` object.
+Metoda `context.done` umožňuje předat zpět do modulu runtime chybu definovanou uživatelem a objekt JSON obsahující výstupní data vazby. Vlastnosti předané `context.done` přepsat vše nastavené u objektu `context.bindings`.
 
 ```javascript
 // Even though we set myOutput to have:
@@ -256,73 +256,73 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 //  -> text: 'hello there, world', noNumber: true
 ```
 
-### <a name="contextlog-method"></a>context.log method  
+### <a name="contextlog-method"></a>Context. log – metoda  
 
 ```js
 context.log(message)
 ```
 
-Allows you to write to the streaming function logs at the default trace level. On `context.log`, additional logging methods are available that let you write function logs at other trace levels:
+Umožňuje zapisovat do protokolů funkcí streamování na výchozí úrovni trasování. V `context.log`jsou k dispozici další metody protokolování, které umožňují psát protokoly funkcí na jiných úrovních trasování:
 
 
 | Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
-| **error(_message_)**   | Writes to error level logging, or lower.   |
-| **warn(_message_)**    | Writes to warning level logging, or lower. |
-| **info(_message_)**    | Writes to info level logging, or lower.    |
-| **verbose(_message_)** | Writes to verbose level logging.           |
+| **Chyba (_zpráva_)**   | Zapisuje do protokolování na úrovni chyb nebo snižuje.   |
+| **upozornit (_zpráva_)**    | Zapíše do protokolování na úrovni upozornění nebo sníží. |
+| **informace (_zpráva_)**    | Provede zápis do protokolování na úrovni informací nebo nižší.    |
+| **verbose (_zpráva_)** | Zapisuje do protokolování na úrovni podrobností.           |
 
-The following example writes a log at the warning trace level:
+Následující příklad zapíše protokol na úrovni trasování upozornění:
 
 ```javascript
 context.log.warn("Something has happened."); 
 ```
 
-You can [configure the trace-level threshold for logging](#configure-the-trace-level-for-console-logging) in the host.json file. For more information on writing logs, see [writing trace outputs](#writing-trace-output-to-the-console) below.
+[Prahovou hodnotu na úrovni trasování můžete nakonfigurovat pro protokolování](#configure-the-trace-level-for-console-logging) v souboru Host. JSON. Další informace o zápisu protokolů najdete v tématu [zápis výstupů trasování](#writing-trace-output-to-the-console) níže.
 
-Read [monitoring Azure Functions](functions-monitoring.md) to learn more about viewing and querying function logs.
+Přečtěte si [Azure Functions monitorování](functions-monitoring.md) , kde najdete další informace o zobrazení a dotazování protokolů funkcí.
 
-## <a name="writing-trace-output-to-the-console"></a>Writing trace output to the console 
+## <a name="writing-trace-output-to-the-console"></a>Zápis výstupu trasování do konzoly 
 
-In Functions, you use the `context.log` methods to write trace output to the console. In Functions v2.x, trace outputs using `console.log` are captured at the Function App level. This means that outputs from `console.log` are not tied to a specific function invocation and aren't displayed in a specific function's logs. They do, however, propagate to Application Insights. In Functions v1.x, you cannot use `console.log` to write to the console.
+Ve funkcích použijte metody `context.log` k zápisu výstupu trasování do konzoly. Ve funkcích v2. x jsou výstupy trasování pomocí `console.log` zachyceny na úrovni Function App. To znamená, že výstupy z `console.log` nejsou vázány na konkrétní vyvolání funkce a nejsou zobrazeny v protokolech konkrétní funkce. Nicméně se šíří na Application Insights. Ve funkcích v1. x nemůžete použít `console.log` k zápisu do konzoly.
 
-When you call `context.log()`, your message is written to the console at the default trace level, which is the _info_ trace level. The following code writes to the console at the info trace level:
+Když zavoláte `context.log()`, zpráva se zapíše do konzoly na výchozí úrovni trasování, která je úrovní trasování _informací_ . Následující kód zapisuje do konzoly na úrovni trasování informací:
 
 ```javascript
 context.log({hello: 'world'});  
 ```
 
-This code is equivalent to the code above:
+Tento kód je ekvivalentní k výše uvedenému kódu:
 
 ```javascript
 context.log.info({hello: 'world'});  
 ```
 
-This code writes to the console at the error level:
+Tento kód zapisuje do konzoly na úrovni chyby:
 
 ```javascript
 context.log.error("An error has occurred.");  
 ```
 
-Because _error_ is the highest trace level, this trace is written to the output at all trace levels as long as logging is enabled.
+Vzhledem k tomu, že _Chyba_ je nejvyšší úroveň trasování, toto trasování se zapisuje do výstupu na všech úrovních trasování, pokud je povoleno protokolování.
 
-All `context.log` methods support the same parameter format that's supported by the Node.js [util.format method](https://nodejs.org/api/util.html#util_util_format_format). Consider the following code, which writes function logs by using the default trace level:
+Všechny metody `context.log` podporují stejný formát parametru, který je podporován metodou Node. js [util. Format](https://nodejs.org/api/util.html#util_util_format_format). Vezměte v úvahu následující kód, který zapisuje protokoly funkcí pomocí výchozí úrovně trasování:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
 context.log('Request Headers = ' + JSON.stringify(req.headers));
 ```
 
-You can also write the same code in the following format:
+Stejný kód můžete také napsat v následujícím formátu:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>Configure the trace level for console logging
+### <a name="configure-the-trace-level-for-console-logging"></a>Konfigurace úrovně trasování pro protokolování konzoly
 
-Functions 1.x lets you define the threshold trace level for writing to the console, which makes it easy to control the way traces are written to the console from your function. To set the threshold for all traces written to the console, use the `tracing.consoleLevel` property in the host.json file. This setting applies to all functions in your function app. The following example sets the trace threshold to enable verbose logging:
+Funkce 1. x umožňuje definovat prahovou úroveň trasování pro zápis do konzoly, která usnadňuje řízení způsobu zápisu trasování do konzoly z vaší funkce. Chcete-li nastavit prahovou hodnotu pro všechna trasování zapsaná do konzoly, použijte vlastnost `tracing.consoleLevel` v souboru Host. JSON. Toto nastavení platí pro všechny funkce aplikace Function App. Následující příklad nastaví prahovou hodnotu trasování pro povolení podrobného protokolování:
 
 ```json
 {
@@ -332,43 +332,43 @@ Functions 1.x lets you define the threshold trace level for writing to the conso
 }  
 ```
 
-Values of **consoleLevel** correspond to the names of the `context.log` methods. To disable all trace logging to the console, set **consoleLevel** to _off_. For more information, see [host.json reference](functions-host-json-v1.md).
+Hodnoty **consoleLevel** odpovídají názvům metod `context.log`. Chcete-li zakázat veškeré protokolování trasování do konzoly, nastavte **consoleLevel** na _off_. Další informace naleznete v tématu [reference Host. JSON](functions-host-json-v1.md).
 
-## <a name="http-triggers-and-bindings"></a>HTTP triggers and bindings
+## <a name="http-triggers-and-bindings"></a>Aktivační události a vazby HTTP
 
-HTTP and webhook triggers and HTTP output bindings use request and response objects to represent the HTTP messaging.  
+Aktivační události HTTP a Webhooku a výstupní vazby HTTP používají objekty žádosti a odpovědi, které reprezentují zprávy HTTP.  
 
-### <a name="request-object"></a>Request object
+### <a name="request-object"></a>Request – objekt
 
-The `context.req` (request) object has the following properties:
+Objekt `context.req` (Request) má následující vlastnosti:
 
 | Vlastnost      | Popis                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _body_        | An object that contains the body of the request.               |
-| _headers_     | An object that contains the request headers.                   |
-| _method_      | The HTTP method of the request.                                |
-| _originalUrl_ | The URL of the request.                                        |
-| _params_      | An object that contains the routing parameters of the request. |
-| _query_       | An object that contains the query parameters.                  |
-| _rawBody_     | The body of the message as a string.                           |
+| _těles_        | Objekt, který obsahuje tělo žádosti.               |
+| _záhlaví_     | Objekt, který obsahuje hlavičky požadavku.                   |
+| _Metoda_      | Metoda HTTP požadavku.                                |
+| _originalUrl_ | Adresa URL požadavku.                                        |
+| _params_      | Objekt, který obsahuje parametry směrování požadavku. |
+| _zadávání_       | Objekt, který obsahuje parametry dotazu.                  |
+| _rawBody_     | Tělo zprávy jako řetězec.                           |
 
 
 ### <a name="response-object"></a>Objekt odpovědi
 
-The `context.res` (response) object has the following properties:
+Objekt `context.res` (Response) má následující vlastnosti:
 
 | Vlastnost  | Popis                                               |
 | --------- | --------------------------------------------------------- |
-| _body_    | An object that contains the body of the response.         |
-| _headers_ | An object that contains the response headers.             |
-| _isRaw_   | Indicates that formatting is skipped for the response.    |
-| _status_  | The HTTP status code of the response.                     |
+| _těles_    | Objekt, který obsahuje tělo odpovědi.         |
+| _záhlaví_ | Objekt, který obsahuje hlavičky odpovědi.             |
+| _isRaw_   | Indikuje, že pro odpověď se přeskočilo formátování.    |
+| _stav_  | Stavový kód protokolu HTTP odpovědi.                     |
 
-### <a name="accessing-the-request-and-response"></a>Accessing the request and response 
+### <a name="accessing-the-request-and-response"></a>Přístup k žádosti a odpovědi 
 
-When you work with HTTP triggers, you can access the HTTP request and response objects in a number of ways:
+Když pracujete s triggery HTTP, můžete získat přístup k objektům požadavků HTTP a odpovědí několika způsoby:
 
-+ **From `req` and `res` properties on the `context` object.** In this way, you can use the conventional pattern to access HTTP data from the context object, instead of having to use the full `context.bindings.name` pattern. The following example shows how to access the `req` and `res` objects on the `context`:
++ **Z vlastností `req` a `res` objektu `context`.** Tímto způsobem můžete použít vzor konvenční pro přístup k datům HTTP z objektu Context namísto použití kompletního vzoru `context.bindings.name`. Následující příklad ukazuje, jak získat přístup k objektům `req` a `res` na `context`:
 
     ```javascript
     // You can access your http request off the context ...
@@ -377,7 +377,7 @@ When you work with HTTP triggers, you can access the HTTP request and response o
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ **From the named input and output bindings.** In this way, the HTTP trigger and bindings work the same as any other binding. The following example sets the response object by using a named `response` binding: 
++ **Z pojmenované vstupní a výstupní vazby.** Tímto způsobem fungují triggery a vazby HTTP stejně jako jakékoli jiné vazby. Následující příklad nastaví objekt Response pomocí pojmenované `response` vazby: 
 
     ```json
     {
@@ -389,9 +389,9 @@ When you work with HTTP triggers, you can access the HTTP request and response o
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Response only]_ By calling `context.res.send(body?: any)`.** An HTTP response is created with input `body` as the response body. `context.done()` is implicitly called.
++ **_[Pouze odpověď]_ Voláním `context.res.send(body?: any)`.** Je vytvořena odpověď HTTP se vstupní `body` jako tělo odpovědi. `context.done()` se implicitně volá.
 
-+ **_[Response only]_ By calling `context.done()`.** A special type of HTTP binding returns the response that is passed to the `context.done()` method. The following HTTP output binding defines a `$return` output parameter:
++ **_[Pouze odpověď]_ Voláním `context.done()`.** Speciální typ vazby HTTP vrátí odpověď, která je předána metodě `context.done()`. Následující výstupní vazba protokolu HTTP definuje výstupní parametr `$return`:
 
     ```json
     {
@@ -406,19 +406,19 @@ When you work with HTTP triggers, you can access the HTTP request and response o
     context.done(null, res);   
     ```  
 
-## <a name="node-version"></a>Node version
+## <a name="node-version"></a>Verze uzlu
 
-The following table shows the Node.js version used by each major version of the Functions runtime:
+Následující tabulka ukazuje verzi Node. js, kterou používá každá hlavní verze běhového modulu Functions:
 
-| Functions version | Node.js version | 
+| Verze funkcí | Verze Node. js | 
 |---|---|
-| 1.x | 6.11.2 (locked by the runtime) |
-| 2.x  | _Active LTS_ and _Maintenance LTS_ Node.js versions (~10 recommended). Target the version in Azure by setting the WEBSITE_NODE_DEFAULT_VERSION [app setting](functions-how-to-use-azure-function-app-settings.md#settings) to `~10`.|
+| verze | 6.11.2 (uzamčeno modulem runtime) |
+| 2.x  | _Aktivní LTS_ a _Údržba LTS_ verze Node. js (nedoporučuje se 10). Cílovou verzi v Azure můžete nastavit tak, že nastavíte [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) WEBSITE_NODE_DEFAULT_VERSION na `~10`.|
 
-You can see the current version that the runtime is using by checking the above app setting or by printing `process.version` from any function.
+Aktuální verzi, kterou používá modul runtime, můžete zobrazit zkontrolováním výše uvedeného nastavení aplikace nebo tiskem `process.version` z jakékoli funkce.
 
 ## <a name="dependency-management"></a>Správa závislostí
-In order to use community libraries in your JavaScript code, as is shown in the below example, you need to ensure that all dependencies are installed on your Function App in Azure.
+Aby bylo možné používat knihovny komunity v kódu JavaScriptu, jak je znázorněno v následujícím příkladu, je nutné zajistit, aby všechny závislosti byly nainstalovány v Function App v Azure.
 
 ```javascript
 // Import the underscore.js library
@@ -432,32 +432,32 @@ module.exports = function(context) {
 ```
 
 > [!NOTE]
-> You should define a `package.json` file at the root of your Function App. Defining the file lets all functions in the app share the same cached packages, which gives the best performance. If a version conflict arises, you can resolve it by adding a `package.json` file in the folder of a specific function.  
+> `package.json` soubor byste měli definovat v kořenu Function App. Definování souboru umožňuje všem funkcím v aplikaci sdílet stejné balíčky v mezipaměti, což poskytuje nejlepší výkon. Pokud dojde ke konfliktu verze, můžete ho vyřešit přidáním souboru `package.json` do složky konkrétní funkce.  
 
-When deploying Function Apps from source control, any `package.json` file present in your repo, will trigger an `npm install` in its folder during deployment. But when deploying via the Portal or CLI, you will have to manually install the packages.
+Při nasazování aplikací Function App ze správy zdrojového kódu budou všechny `package.json` souboru v úložišti aktivovat `npm install` ve složce během nasazování. Ale při nasazení prostřednictvím portálu nebo rozhraní příkazového řádku budete muset balíčky nainstalovat ručně.
 
-There are two ways to install packages on your Function App: 
+Existují dva způsoby, jak nainstalovat balíčky do Function App: 
 
-### <a name="deploying-with-dependencies"></a>Deploying with Dependencies
-1. Install all requisite packages locally by running `npm install`.
+### <a name="deploying-with-dependencies"></a>Nasazení pomocí závislostí
+1. Všechny požadované balíčky nainstalujte místně spuštěním `npm install`.
 
-2. Deploy your code, and ensure that the `node_modules` folder is included in the deployment. 
+2. Nasaďte kód a ujistěte se, že je do nasazení zahrnutá složka `node_modules`. 
 
 
-### <a name="using-kudu"></a>Using Kudu
+### <a name="using-kudu"></a>Použití Kudu
 1. Přejděte do části `https://<function_app_name>.scm.azurewebsites.net` (Soubor > Nový > Jiné).
 
-2. Click **Debug Console** > **CMD**.
+2. Klikněte na **ladit konzolu** > **cmd**.
 
-3. Go to `D:\home\site\wwwroot`, and then drag your package.json file to the **wwwroot** folder at the top half of the page.  
-    You can upload files to your function app in other ways also. For more information, see [How to update function app files](functions-reference.md#fileupdate). 
+3. Přejít na `D:\home\site\wwwroot`a pak soubor Package. JSON přetáhněte do složky **wwwroot** v horní polovině stránky.  
+    Soubory můžete do aplikace Function App nahrávat i jiným způsobem. Další informace najdete v tématu [Postup aktualizace souborů aplikace Function App](functions-reference.md#fileupdate). 
 
-4. After the package.json file is uploaded, run the `npm install` command in the **Kudu remote execution console**.  
-    This action downloads the packages indicated in the package.json file and restarts the function app.
+4. Po nahrání souboru Package. JSON spusťte příkaz `npm install` v **konzole vzdáleného spuštění Kudu**.  
+    Tato akce stáhne balíčky uvedené v souboru Package. JSON a restartuje aplikaci Function App.
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-In Functions, [app settings](functions-app-settings.md), such as service connection strings, are exposed as environment variables during execution. You can access these settings using `process.env`, as shown here in the second and third calls to `context.log()` where we log the `AzureWebJobsStorage` and `WEBSITE_SITE_NAME` environment variables:
+V funkcích jsou [nastavení aplikace](functions-app-settings.md), jako jsou například připojovací řetězce služby, vystavena jako proměnné prostředí během provádění. K těmto nastavením můžete přistupovat pomocí `process.env`, jak je znázorněno v druhé a třetí volání `context.log()`, kde se zaprotokolují proměnné prostředí `AzureWebJobsStorage` a `WEBSITE_SITE_NAME`:
 
 ```javascript
 module.exports = async function (context, myTimer) {
@@ -471,17 +471,17 @@ module.exports = async function (context, myTimer) {
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-When running locally, app settings are read from the [local.settings.json](functions-run-local.md#local-settings-file) project file.
+Při místním spuštění se nastavení aplikace čtou ze souboru [Local. Settings. JSON](functions-run-local.md#local-settings-file) projektu.
 
-## <a name="configure-function-entry-point"></a>Configure function entry point
+## <a name="configure-function-entry-point"></a>Konfigurovat vstupní bod funkce
 
-The `function.json` properties `scriptFile` and `entryPoint` can be used to configure the location and name of your exported function. These properties can be important when your JavaScript is transpiled.
+Vlastnosti `function.json` `scriptFile` a `entryPoint` lze použít ke konfiguraci umístění a názvu exportované funkce. Tyto vlastnosti mohou být důležité při překládání JavaScriptu.
 
-### <a name="using-scriptfile"></a>Using `scriptFile`
+### <a name="using-scriptfile"></a>Použití `scriptFile`
 
-By default, a JavaScript function is executed from `index.js`, a file that shares the same parent directory as its corresponding `function.json`.
+Ve výchozím nastavení je funkce JavaScriptu spouštěna z `index.js`, soubor, který sdílí stejný nadřazený adresář jako odpovídající `function.json`.
 
-`scriptFile` can be used to get a folder structure that looks like the following example:
+`scriptFile` lze použít k získání struktury složky, která vypadá jako v následujícím příkladu:
 
 ```
 FunctionApp
@@ -495,7 +495,7 @@ FunctionApp
  | - package.json
 ```
 
-The `function.json` for `myNodeFunction` should include a `scriptFile` property pointing to the file with the exported function to run.
+`function.json` pro `myNodeFunction` by měla zahrnovat vlastnost `scriptFile` ukazující na soubor s exportovanou funkcí, která se má spustit.
 
 ```json
 {
@@ -506,11 +506,11 @@ The `function.json` for `myNodeFunction` should include a `scriptFile` property 
 }
 ```
 
-### <a name="using-entrypoint"></a>Using `entryPoint`
+### <a name="using-entrypoint"></a>Použití `entryPoint`
 
-In `scriptFile` (or `index.js`), a function must be exported using `module.exports` in order to be found and run. By default, the function that executes when triggered is the only export from that file, the export named `run`, or the export named `index`.
+V `scriptFile` (nebo `index.js`) se musí funkce exportovat pomocí `module.exports`, aby se daly vyhledat a spustit. Ve výchozím nastavení je funkce, která se spustí, když se aktivuje, jediný export z tohoto souboru, export s názvem `run`nebo export s názvem `index`.
 
-This can be configured using `entryPoint` in `function.json`, as in the following example:
+Dá se nakonfigurovat pomocí `entryPoint` v `function.json`, jako v následujícím příkladu:
 
 ```json
 {
@@ -521,7 +521,7 @@ This can be configured using `entryPoint` in `function.json`, as in the followin
 }
 ```
 
-In Functions v2.x, which supports the `this` parameter in user functions, the function code could then be as in the following example:
+Ve Functions v2. x, který podporuje parametr `this` v uživatelských funkcích může být kód funkce poté jako v následujícím příkladu:
 
 ```javascript
 class MyObj {
@@ -539,63 +539,63 @@ const myObj = new MyObj();
 module.exports = myObj;
 ```
 
-In this example, it is important to note that although an object is being exported, there are no guarantees for preserving state between executions.
+V tomto příkladu je důležité si uvědomit, že i když je objekt exportován, neexistují žádné záruky pro zachování stavu mezi prováděními.
 
-## <a name="local-debugging"></a>Local Debugging
+## <a name="local-debugging"></a>Místní ladění
 
-When started with the `--inspect` parameter, a Node.js process listens for a debugging client on the specified port. In Azure Functions 2.x, you can specify arguments to pass into the Node.js process that runs your code by adding the environment variable or App Setting `languageWorkers:node:arguments = <args>`. 
+Když je spuštěn s parametrem `--inspect`, proces Node. js naslouchá klientovi ladění na zadaném portu. V Azure Functions 2. x můžete zadat argumenty pro předání procesu Node. js, který spouští váš kód, přidáním proměnné prostředí nebo nastavení aplikace `languageWorkers:node:arguments = <args>`. 
 
-To debug locally, add `"languageWorkers:node:arguments": "--inspect=5858"` under `Values` in your [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) file and attach a debugger to port 5858.
+Chcete-li ladit místně, přidejte `"languageWorkers:node:arguments": "--inspect=5858"` v části `Values` v souboru [Local. Settings. JSON](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) a připojte ladicí program k portu 5858.
 
-When debugging using VS Code, the `--inspect` parameter is automatically added using the `port` value in the project's launch.json file.
+Při ladění pomocí VS Code je `--inspect` parametr automaticky přidán pomocí `port` hodnoty v souboru Launch. JSON projektu.
 
-In version 1.x, setting `languageWorkers:node:arguments` will not work. The debug port can be selected with the [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) parameter on Azure Functions Core Tools.
+Ve verzi 1. x nastavení `languageWorkers:node:arguments` nebude fungovat. Port pro ladění můžete vybrat s parametrem [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) v Azure Functions Core Tools.
 
 ## <a name="typescript"></a>TypeScript
 
-When you target version 2.x of the Functions runtime, both [Azure Functions for Visual Studio Code](functions-create-first-function-vs-code.md) and the [Azure Functions Core Tools](functions-run-local.md) let you create function apps using a template that support TypeScript function app projects. The template generates `package.json` and `tsconfig.json` project files that make it easier to transpile, run, and publish JavaScript functions from TypeScript code with these tools.
+Když cílíte na verzi 2. x modulu runtime Functions, [Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md) a [Azure Functions Core Tools](functions-run-local.md) vám umožní vytvářet aplikace funkcí pomocí šablony, která podporuje projekty aplikace funkcí TypeScript. Šablona generuje `package.json` a `tsconfig.json` soubory projektu, které usnadňují přepráci, spouštění a publikování funkcí jazyka JavaScript z kódu TypeScript pomocí těchto nástrojů.
 
-A generated `.funcignore` file is used to indicate which files are excluded when a project is published to Azure.  
+Vygenerovaný `.funcignore` soubor se používá k určení, které soubory jsou vyloučeny při publikování projektu do Azure.  
 
-TypeScript files (.ts) are transpiled into JavaScript files (.js) in the `dist` output directory. TypeScript templates use the [`scriptFile` parameter](#using-scriptfile) in `function.json` to indicate the location of the corresponding .js file in the `dist` folder. The output location is set by the template by using `outDir` parameter in the `tsconfig.json` file. If you change this setting or the name of the folder, the runtime is not able to find the code to run.
+Soubory TypeScript (. TS) se přecházejí do souborů JavaScriptu (. js) ve výstupním adresáři `dist`. Šablony TypeScript používají [parametr`scriptFile`](#using-scriptfile) v `function.json` k označení umístění odpovídajícího souboru. js ve složce `dist`. Umístění výstupu je nastaveno šablonou pomocí parametru `outDir` v souboru `tsconfig.json`. Pokud změníte toto nastavení nebo název složky, modul runtime nemůže najít kód, který se má spustit.
 
 > [!NOTE]
-> Experimental support for TypeScript exists version 1.x of the Functions runtime. The experimental version transpiles TypeScript files into JavaScript files when the function is invoked. In version 2.x, this experimental support has been superseded by the tool-driven method that does transpilation before the host is initialized and during the deployment process.
+> Experimentální podpora TypeScript existuje verze 1. x modulu runtime Functions. Experimentální verze přechází soubory TypeScript do souborů JavaScriptu při vyvolání funkce. Ve verzi 2. x byla tato experimentální podpora nahrazena metodou založenou na nástroji, která se transpilation před inicializací hostitele a během procesu nasazení.
 
-The way that you locally develop and deploy from a TypeScript project depends on your development tool.
+Způsob, jakým místně vyvíjíte a nasazujete z projektu TypeScript, závisí na vašem vývojovém nástroji.
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-The [Azure Functions for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) extension lets you develop your functions using TypeScript. The Core Tools is a requirement of the Azure Functions extension.
+[Azure Functions for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) Extension umožňuje vyvíjet funkce pomocí TypeScript. Základní nástroje jsou požadavkem rozšíření Azure Functions.
 
-To create a TypeScript function app in Visual Studio Code, choose `TypeScript` as your language when you create a function app.
+Pokud chcete vytvořit aplikaci funkcí TypeScript v Visual Studio Code, vyberte při vytváření aplikace Function App `TypeScript` jako svůj jazyk.
 
-When you press **F5** to run the app locally, transpilation is done before the host (func.exe) is initialized. 
+Když stisknete klávesu **F5** ke spuštění aplikace místně, transpilation se provede před inicializací hostitele (Func. exe). 
 
-When you deploy your function app to Azure using the **Deploy to function app...** button, the Azure Functions extension first generates a production-ready build of JavaScript files from the TypeScript source files.
+Když nasadíte aplikaci Function App do Azure pomocí tlačítka **nasadit do aplikace Function App...** , Azure Functions rozšíření nejprve vygeneruje sestavení JavaScriptu připravené pro produkční soubory JavaScript ze zdrojových souborů TypeScriptu.
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-There are several ways in which a TypeScript project differs from a JavaScript project when using the Core Tools.
+Existuje několik způsobů, jak se projekt TypeScript při použití základních nástrojů liší od projektu jazyka JavaScript.
 
 #### <a name="create-project"></a>Vytvoření projektu
 
-To create a TypeScript function app project using Core Tools, you must specify the TypeScript language option when you create your function app. You can do this in one of the following ways:
+Chcete-li vytvořit projekt aplikace funkcí TypeScript pomocí základních nástrojů, je při vytváření aplikace Function App nutné zadat možnost jazyka TypeScript. Můžete to udělat jedním z následujících způsobů:
 
-- Run the `func init` command, select `node` as your language stack, and then select `typescript`.
+- Spusťte příkaz `func init`, jako zásobník jazyka vyberte `node` a vyberte `typescript`.
 
 - Spusťte příkaz `func init --worker-runtime typescript`.
 
-#### <a name="run-local"></a>Run local
+#### <a name="run-local"></a>Spustit místní
 
-To run your function app code locally using Core Tools, use the following commands instead of `func host start`: 
+Pokud chcete kód aplikace Function App spustit lokálně pomocí základních nástrojů, použijte následující příkazy místo `func host start`: 
 
 ```command
 npm install
 npm start
 ```
 
-The `npm start` command is equivalent to the following commands:
+Příkaz `npm start` je ekvivalentní k následujícím příkazům:
 
 - `npm run build`
 - `func extensions install`
@@ -604,40 +604,40 @@ The `npm start` command is equivalent to the following commands:
 
 #### <a name="publish-to-azure"></a>Publikování aplikací do Azure
 
-Before you use the [`func azure functionapp publish`] command to deploy to Azure, you create a production-ready build of JavaScript files from the TypeScript source files. 
+Předtím, než použijete příkaz [`func azure functionapp publish`] k nasazení do Azure, vytvoříte sestavení JavaScriptu připravené pro produkční soubory z zdrojových souborů TypeScriptu. 
 
-The following commands prepare and publish your TypeScript project using Core Tools: 
+Následující příkazy připraví a publikují projekt TypeScript pomocí základních nástrojů: 
 
 ```command
 npm run build:production 
 func azure functionapp publish <APP_NAME>
 ```
 
-In this command, replace `<APP_NAME>` with the name of your function app.
+V tomto příkazu nahraďte `<APP_NAME>` názvem vaší aplikace Function App.
 
-## <a name="considerations-for-javascript-functions"></a>Considerations for JavaScript functions
+## <a name="considerations-for-javascript-functions"></a>Pokyny pro funkce JavaScriptu
 
-When you work with JavaScript functions, be aware of the considerations in the following sections.
+Při práci s funkcemi JavaScriptu si pamatujte na informace v následujících oddílech.
 
-### <a name="choose-single-vcpu-app-service-plans"></a>Choose single-vCPU App Service plans
+### <a name="choose-single-vcpu-app-service-plans"></a>Výběr plánů s jednou vCPU App Service
 
-When you create a function app that uses the App Service plan, we recommend that you select a single-vCPU plan rather than a plan with multiple vCPUs. Today, Functions runs JavaScript functions more efficiently on single-vCPU VMs, and using larger VMs does not produce the expected performance improvements. When necessary, you can manually scale out by adding more single-vCPU VM instances, or you can enable autoscale. For more information, see [Scale instance count manually or automatically](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
+Když vytváříte aplikaci Function App, která používá plán App Service, doporučujeme místo plánu s více Vcpuy vybrat plán s jedním vCPU. V současné době fungují funkce JavaScript Functions efektivněji na virtuálních počítačích s jednou vCPU a použití větších virtuálních počítačů nevytváří očekávaná vylepšení výkonu. V případě potřeby můžete ruční horizontální navýšení kapacity rozšířit přidáním více instancí virtuálních počítačů s jedním vCPU nebo můžete povolit automatické škálování. Další informace najdete v tématu [Ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
 
-### <a name="cold-start"></a>Cold Start
+### <a name="cold-start"></a>Studený start
 
-When developing Azure Functions in the serverless hosting model, cold starts are a reality. *Cold start* refers to the fact that when your function app starts for the first time after a period of inactivity, it takes longer to start up. For JavaScript functions with large dependency trees in particular, cold start can be significant. To speed up the cold start process, [run your functions as a package file](run-functions-from-deployment-package.md) when possible. Many deployment methods use the run from package model by default, but if you're experiencing large cold starts and are not running this way, this change can offer a significant improvement.
+Při vývoji Azure Functions v modelu hostování bez serveru je to realita. *Studená Start* odkazuje na skutečnost, že při prvním spuštění aplikace Function po určité době nečinnosti trvá spuštění déle. Pro funkce JavaScriptu s velkými stromy závislostí se může jednat o významné spuštění. Chcete-li urychlit proces spuštění, [Spusťte své funkce jako soubor balíčku](run-functions-from-deployment-package.md) , pokud je to možné. Mnoho metod nasazení ve výchozím nastavení používá model Run z balíčků, ale pokud se setkáváte velkými studenými starty a neběží tímto způsobem, může tato změna nabízet významné vylepšení.
 
-### <a name="connection-limits"></a>Connection Limits
+### <a name="connection-limits"></a>Omezení připojení
 
-When you use a service-specific client in an Azure Functions application, don't create a new client with every function invocation. Instead, create a single, static client in the global scope. For more information, see [managing connections in Azure Functions](manage-connections.md).
+Když v Azure Functions aplikaci použijete klienta pro konkrétní služby, nevytvářejte nového klienta s každým voláním funkce. Místo toho vytvořte jednoho statického klienta v globálním oboru. Další informace najdete v tématu [Správa připojení v Azure Functions](manage-connections.md).
 
-### <a name="use-async-and-await"></a>Use `async` and `await`
+### <a name="use-async-and-await"></a>Použití `async` a `await`
 
-When writing Azure Functions in JavaScript, you should write code using the `async` and `await` keywords. Writing code using `async` and `await` instead of callbacks or `.then` and `.catch` with Promises helps avoid two common problems:
- - Throwing uncaught exceptions that [crash the Node.js process](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), potentially affecting the execution of other functions.
- - Unexpected behavior, such as missing logs from context.log, caused by asynchronous calls that are not properly awaited.
+Při psaní Azure Functions v JavaScriptu byste měli napsat kód pomocí klíčových slov `async` a `await`. Psaní kódu pomocí `async` a `await` namísto zpětných volání nebo `.then` a `.catch` s příslibů pomáhá vyhnout se dvěma běžným problémům:
+ - Vyvolává nezachycené výjimky, které způsobí [selhání procesu Node. js](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), což může mít vliv na spuštění dalších funkcí.
+ - Neočekávané chování, například chybějící protokoly z Context. log, způsobené asynchronními voláními, která nejsou správně očekávána.
 
-In the example below, the asynchronous method `fs.readFile` is invoked with an error-first callback function as its second parameter. This code causes both of the issues mentioned above. An exception that is not explicitly caught in the correct scope crashed the entire process (issue #1). Calling `context.done()` outside of the scope of the callback function means that the function invocation may end before the file is read (issue #2). In this example, calling `context.done()` too early results in missing log entries starting with `Data from file:`.
+V následujícím příkladu je asynchronní metoda `fs.readFile` vyvolána s funkcí zpětného volání při prvním pokusu jako jeho druhý parametr. Tento kód způsobuje oba problémy uvedené výše. Výjimka, která se explicitně nezachycuje ve správném rozsahu, nastala celý proces (problém #1). Volání `context.done()` mimo rozsah funkce zpětného volání znamená, že vyvolání funkce může skončit před čtením souboru (problémová #2). V tomto příkladu volání `context.done()` příliš včas v chybějících položkách protokolu začínajících na `Data from file:`.
 
 ```javascript
 // NOT RECOMMENDED PATTERN
@@ -658,9 +658,9 @@ module.exports = function (context) {
 }
 ```
 
-Using the `async` and `await` keywords helps avoid both of these errors. You should use the Node.js utility function [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) to turn error-first callback-style functions into awaitable functions.
+Použití klíčového slova `async` a `await` pomáhá zabránit oběma těmto chybám. Měli byste použít funkci nástroje Node. js [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) k zapnutí funkcí s možnostmi zpětného volání na základě chyb na funkce, které čekají na volání.
 
-In the example below, any unhandled exceptions thrown during the function execution only fail the individual invocation that raised an exception. The `await` keyword means that steps following `readFileAsync` only execute after `readFile` is complete. With `async` and `await`, you also don't need to call the `context.done()` callback.
+V následujícím příkladu všechny neošetřené výjimky vyvolané během provádění funkce selžou pouze jednotlivé vyvolání, které vyvolalo výjimku. Klíčové slovo `await` znamená, že po dokončení `readFile` `readFileAsync` spustit pouze následující kroky. Pomocí `async` a `await`není také nutné volat `context.done()` zpětné volání.
 
 ```javascript
 // Recommended pattern
@@ -683,10 +683,10 @@ module.exports = async function (context) {
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace najdete v následujících zdrojích:
 
 + [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 + [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
-+ [Azure Functions triggers and bindings](functions-triggers-bindings.md)
++ [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
 
-[`func azure functionapp publish`]: functions-run-local.md#project-file-deployment
+[' Func Azure functionapp Publish ']: functions-run-local.md#project-file-deployment

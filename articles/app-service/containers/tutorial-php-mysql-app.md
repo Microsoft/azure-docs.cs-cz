@@ -1,6 +1,6 @@
 ---
-title: PHP (Laravel) with MySQL on Linux - Azure App Service | Microsoft Docs
-description: Learn how to get a PHP app working in Azure App Service on Linux, with connection to a MySQL database in Azure. Laravel is used in the tutorial.
+title: PHP (Laravel) s MySQL v Linux – Azure App Service | Microsoft Docs
+description: Naučte se, jak získat aplikaci PHP fungující v Azure App Service v systému Linux s připojením k databázi MySQL v Azure. V tomto kurzu se používá Laravel.
 services: app-service\web
 author: cephalin
 manager: jeconnoc
@@ -18,13 +18,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481318"
 ---
-# <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Build a PHP and MySQL app in Azure App Service on Linux
+# <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Sestavení aplikace PHP a MySQL v Azure App Service v systému Linux
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service v Linuxu. To deploy to App Service on _Windows_, see [Build a PHP and MySQL app in Azure](../app-service-web-tutorial-php-mysql.md).
+> Tento článek nasadí aplikaci do služby App Service v Linuxu. Pokud chcete nasadit nástroj na App Service ve _Windows_, přečtěte si téma [Vytvoření aplikace v PHP a MySQL v Azure](../app-service-web-tutorial-php-mysql.md).
 >
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. This tutorial shows how to create a PHP app and connect it to a MySQL database. Po dokončení budete mít ve službě App Service v Linuxu spuštěnou aplikaci [Laravel](https://laravel.com/).
+[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. V tomto kurzu se dozvíte, jak vytvořit aplikaci v PHP a připojit ji k databázi MySQL. Po dokončení budete mít ve službě App Service v Linuxu spuštěnou aplikaci [Laravel](https://laravel.com/).
 
 ![Aplikace PHP spuštěná ve službě Azure App Service](./media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
@@ -40,9 +40,9 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat PHP 5.6.4 nebo novější](https://php.net/downloads.php)
@@ -161,7 +161,7 @@ V tomto kroku vytvoříte v [Azure Database for MySQL](/azure/mysql) databázi M
 
 Pomocí příkazu [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) vytvořte v Azure Database for MySQL server.
 
-In the following command, substitute a unique server name for the *\<mysql-server-name>* placeholder, a user name for the *\<admin-user>* , and a password for the *\<admin-password>*  placeholder. Název serveru se používá jako součást koncového bodu MySQL (`https://<mysql-server-name>.mysql.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure. For details on selecting MySQL DB SKU, please see [Create an Azure Database for MySQL server](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server).
+V následujícím příkazu nahraďte zástupný symbol jedinečným názvem serveru *\<MySQL-server-name >* , uživatelské jméno pro *>\<správce uživatele*a heslo pro zástupný symbol *\<správce-heslo >* . Název serveru se používá jako součást koncového bodu MySQL (`https://<mysql-server-name>.mysql.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure. Podrobnosti o výběru SKU databáze MySQL DB najdete v tématu [vytvoření serveru Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server).
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1
@@ -194,7 +194,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-n
 > Pravidlo brány firewall můžete dál omezit [použitím jenom odchozích IP adres, které vaše aplikace používá](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 >
 
-In the Cloud Shell, run the command again to allow access from your local computer by replacing *\<your-ip-address>* with [your local IPv4 IP address](https://www.whatsmyip.org/).
+V Cloud Shell znovu spusťte příkaz, aby se povolil přístup z místního počítače, a to tak, že nahradíte *\<> IP* adres s [místní IP adresou IPv4](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -202,7 +202,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql-ser
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Místní připojení k produkčnímu serveru MySQL
 
-V okně terminálu se připojte k serveru MySQL v Azure. Use the value you specified previously for _&lt;admin-user>_ and _&lt;mysql-server-name>_ . Po zobrazení výzvy k zadání hesla použijte heslo, které jste zadali při vytváření databáze v Azure.
+V okně terminálu se připojte k serveru MySQL v Azure. Použijte hodnotu, kterou jste předtím zadali pro _&lt;Správce->_ a _&lt;MySQL-server-name >_ . Po zobrazení výzvy k zadání hesla použijte heslo, které jste zadali při vytváření databáze v Azure.
 
 ```bash
 mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
@@ -239,7 +239,7 @@ V tomto kroku připojíte aplikaci PHP k databázi MySQL, kterou jste vytvořili
 
 ### <a name="configure-the-database-connection"></a>Konfigurace připojení k databázi
 
-V kořenovém adresáři úložiště vytvořte soubor _.env.production_ a zkopírujte do něj následující proměnné. Replace the placeholder _&lt;mysql-server-name>_ .
+V kořenovém adresáři úložiště vytvořte soubor _.env.production_ a zkopírujte do něj následující proměnné. Nahraďte zástupný symbol _&lt;MySQL-server-name >_ .
 
 ```txt
 APP_ENV=production
@@ -264,7 +264,7 @@ Uložte změny.
 
 Ve výchozím nastavení vynucuje Azure Database for MySQL od klientů připojení SSL. Pokud se chcete připojit ke své databázi MySQL v Azure, je potřeba použít certifikát [ _.pem_, který poskytuje Azure Database for MySQL](../../mysql/howto-configure-ssl.md).
 
-Otevřete soubor _config/database.php_ a do `connections.mysql` přidejte parametry _sslmode_ a _options_, jak je znázorněno v následujícím kódu.
+Otevřete soubor _config/database.php_ a do _přidejte parametry_sslmode_a_options`connections.mysql`, jak je znázorněno v následujícím kódu.
 
 ```php
 'mysql' => [
@@ -317,13 +317,13 @@ git commit -m "database.php updates"
 
 Vaše aplikace je připravená k nasazení.
 
-## <a name="deploy-to-azure"></a>Nasadit do Azure
+## <a name="deploy-to-azure"></a>Nasazení do Azure
 
 V tomto kroku nasadíte aplikaci PHP připojenou k MySQL do služby Azure App Service.
 
 Aplikace Laravel se spustí v adresáři _/public_. Výchozí image Dockeru s PHP pro službu App Service používá Apache a neumožňuje přizpůsobení `DocumentRoot` pro Laravel. Pomocí souboru `.htaccess` však můžete přepsat směrování všech požadavků do adresáře _/public_ místo kořenového adresáře. Kořenový adresář úložiště pro tyto účely již soubor `.htaccess` obsahuje. S tímto souborem je vaše aplikace Laravel připravená k nasazení.
 
-For more information, see [Change site root](configure-language-php.md#change-site-root).
+Další informace najdete v tématu [Změna kořene lokality](configure-language-php.md#change-site-root).
 
 ### <a name="configure-a-deployment-user"></a>Konfigurace uživatele nasazení
 
@@ -333,7 +333,7 @@ For more information, see [Change site root](configure-language-php.md#change-si
 
 [!INCLUDE [Create app service plan no h](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
+### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
@@ -341,13 +341,13 @@ For more information, see [Change site root](configure-language-php.md#change-si
 
 Ve službě App Service můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set).
 
-Následující příkaz nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Replace the placeholders _&lt;appname>_ and _&lt;mysql-server-name>_ .
+Následující příkaz nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné symboly _&lt;appname >_ a _&lt;MySQL-server-name >_ .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-You can use the PHP [getenv](https://php.net/manual/en/function.getenv.php) method to [access the app settings](configure-language-php.md#access-environment-variables). The Laravel code uses an [env](https://laravel.com/docs/5.4/helpers#method-env) wrapper over the PHP `getenv`. Například konfigurace MySQL v souboru _config/database.php_ vypadá podobně jako v následujícím kódu:
+K [přístupu k nastavení aplikace](configure-language-php.md#access-environment-variables)můžete použít metodu php [getenv](https://php.net/manual/en/function.getenv.php) . Laravel kód používá obálku [ENV](https://laravel.com/docs/5.4/helpers#method-env) na `getenv`php. Například konfigurace MySQL v souboru _config/database.php_ vypadá podobně jako v následujícím kódu:
 
 ```php
 'mysql' => [
@@ -370,13 +370,13 @@ Pomocí příkazu `php artisan` vygenerujte nový klíč aplikace, aniž byste h
 php artisan key:generate --show
 ```
 
-Set the application key in the App Service app by using the [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) command. Nahraďte zástupné texty _&lt;appname>_ and _&lt;outputofphpartisankey:generate>_ .
+Nastavte klíč aplikace v aplikaci App Service pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) . Nahraďte zástupné texty _&lt;appname>_ and _&lt;outputofphpartisankey:generate>_ .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
-`APP_DEBUG="true"` tells Laravel to return debugging information when the deployed app encounters errors. Při spouštění produkční aplikace ho nastavte na `false`, což je bezpečnější.
+`APP_DEBUG="true"` oznamuje, že Laravel vrátí ladicí informace, když nasazená aplikace zaznamená chyby. Při spouštění produkční aplikace ho nastavte na `false`, což je bezpečnější.
 
 ### <a name="push-to-azure-from-git"></a>Přenos z Gitu do Azure
 
@@ -413,13 +413,13 @@ remote: Running deployment command...
 > Můžete si všimnout, že proces nasazení na konci nainstaluje balíčky [Composer](https://getcomposer.org/). Služba App Service tyto automatizace nespouští při výchozím nasazení, takže toto ukázkové úložiště obsahuje v kořenovém adresáři tři další soubory, které je povolují:
 >
 > - `.deployment` – Tento soubor informuje službu App Service, že má jako vlastní skript nasazení spustit `bash deploy.sh`.
-> - `deploy.sh` – vlastní skript nasazení. Když se do souboru podíváte, zjistíte, že po příkazu `npm install` spouští příkaz `php composer.phar install`.
+> - `deploy.sh` – vlastní skript nasazení. Když se do souboru podíváte, zjistíte, že po příkazu `php composer.phar install` spouští příkaz `npm install`.
 > - `composer.phar` – správce balíčků Composer.
 >
-> Pomocí tohoto postupu můžete přidat do služby App Service libovolný krok nasazení z Gitu. For more information, see [Run Composer](configure-language-php.md#run-composer).
+> Pomocí tohoto postupu můžete přidat do služby App Service libovolný krok nasazení z Gitu. Další informace najdete v tématu [spuštění skladatele](configure-language-php.md#run-composer).
 >
 
-### <a name="browse-to-the-azure-app"></a>Browse to the Azure app
+### <a name="browse-to-the-azure-app"></a>Přejít k aplikaci Azure
 
 Přejděte na adresu `http://<app-name>.azurewebsites.net` a přidejte do seznamu několik úkolů.
 
@@ -563,7 +563,7 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-Once the `git push` is complete, navigate to the Azure app and test the new functionality.
+Po dokončení `git push` přejděte do aplikace Azure a otestujte nové funkce.
 
 ![Změny modelu a databáze publikované v Azure](media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
@@ -573,15 +573,15 @@ Pokud jste přidali nějaké úkoly, zůstanou v databázi. Aktualizace schémat
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="manage-the-azure-app"></a>Manage the Azure app
+## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 
-Go to the [Azure portal](https://portal.azure.com) to manage the app you created.
+Chcete-li spravovat aplikaci, kterou jste vytvořili, otevřete [Azure Portal](https://portal.azure.com) .
 
-From the left menu, click **App Services**, and then click the name of your Azure app.
+V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/tutorial-php-mysql-app/access-portal.png)
 
-You see your app's Overview page. Tady můžete provádět základní úkoly správy, jako je zastavení, spuštění, restartování, procházení a odstranění.
+Zobrazí se stránka s přehledem vaší aplikace. Tady můžete provádět základní úkoly správy, jako je zastavení, spuštění, restartování, procházení a odstranění.
 
 Levá nabídka obsahuje stránky pro konfiguraci vaší aplikace.
 
@@ -603,12 +603,12 @@ V tomto kurzu jste se naučili:
 > * Streamovat diagnostické protokoly z Azure
 > * Spravovat aplikaci na webu Azure Portal
 
-Advance to the next tutorial to learn how to map a custom DNS name to your app.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS na svou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Map custom DNS name to your app](../app-service-web-tutorial-custom-domain.md)
+> [Kurz: mapování vlastního názvu DNS na aplikaci](../app-service-web-tutorial-custom-domain.md)
 
-Or, check out other resources:
+Nebo si prohlédněte další zdroje informací:
 
 > [!div class="nextstepaction"]
-> [Configure PHP app](configure-language-php.md)
+> [Konfigurace aplikace PHP](configure-language-php.md)

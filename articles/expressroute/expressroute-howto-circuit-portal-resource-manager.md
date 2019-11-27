@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create and modify a circuit with ExpressRoute
-description: In this tutorial, learn how to create, provision, verify, update, delete, and deprovision an ExpressRoute circuit.
+title: Kurz – vytvoření a úprava okruhu pomocí ExpressRoute
+description: V tomto kurzu se dozvíte, jak vytvořit, zřídit, ověřit, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -14,151 +14,151 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423564"
 ---
-# <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Tutorial: Create and modify an ExpressRoute circuit
+# <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Kurz: vytvoření a úprava okruhu ExpressRoute
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Šablona Azure Resource Manageru](expressroute-howto-circuit-resource-manager-template.md)
-> * [Video - Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
 
-This article helps you create an ExpressRoute circuit using the Azure portal and the Azure Resource Manager deployment model. You can also check the status, update, delete, or deprovision a circuit.
+Tento článek vám pomůže vytvořit okruh ExpressRoute pomocí modelu nasazení Azure Resource Manageru a webu Azure portal. Můžete také zkontrolovat stav, aktualizovat, odstranit nebo zrušit zřízení okruhu.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Review the [prerequisites](expressroute-prerequisites.md) and [workflows](expressroute-workflows.md) before you begin configuration.
-* Ensure that you have access to the [Azure portal](https://portal.azure.com).
-* Ensure that you have permissions to create new networking resources. Contact your account administrator if you do not have the right permissions.
-* You can [view a video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit) before beginning in order to better understand the steps.
+* Než začnete s konfigurací, Projděte si [požadavky](expressroute-prerequisites.md) a [pracovní postupy](expressroute-workflows.md) .
+* Ujistěte se, že máte přístup k [Azure Portal](https://portal.azure.com).
+* Ujistěte se, že máte oprávnění k vytvoření nových síťových prostředků. Pokud nemáte správná oprávnění, obraťte se na svého správce účtu.
+* Než začnete tento postup lépe pochopit, můžete si [video prohlédnout](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit) .
 
-## <a name="create"></a>Create and provision an ExpressRoute circuit
+## <a name="create"></a>Vytvoření a zřízení okruhu ExpressRoute
 
-### <a name="1-sign-in-to-the-azure-portal"></a>1. Sign in to the Azure portal
+### <a name="1-sign-in-to-the-azure-portal"></a>1. Přihlaste se k Azure Portal
 
 V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
 
-### <a name="2-create-a-new-expressroute-circuit"></a>2. Create a new ExpressRoute circuit
+### <a name="2-create-a-new-expressroute-circuit"></a>2. Vytvořte nový okruh ExpressRoute.
 
 > [!IMPORTANT]
-> Your ExpressRoute circuit is billed from the moment a service key is issued. Ensure that you perform this operation when the connectivity provider is ready to provision the circuit.
+> Váš okruh ExpressRoute se účtují od okamžiku, kdy vydáním klíče služby. Ujistěte se provést tuto operaci, pokud poskytovatel připojení je připraveno ke zřízení okruhu.
 
-1. You can create an ExpressRoute circuit by selecting the option to create a new resource. Click **Create a resource** > **Networking** > **ExpressRoute**, as shown in the following image:
+1. Okruh ExpressRoute můžete vytvořit tak, že vyberete možnost vytvořit nový prostředek. Klikněte na **vytvořit prostředek** > **síť** > **ExpressRoute**, jak je znázorněno na následujícím obrázku:
 
    ![Vytvoření okruhu ExpressRoute](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
-2. After you click **ExpressRoute**, you'll see the **Create ExpressRoute circuit** page. When you're filling in the values on this page, make sure that you specify the correct SKU tier (Standard, or Premium) and data metering billing model (Unlimited or Metered).
+2. Po kliknutí na **ExpressRoute**se zobrazí stránka **vytvořit okruh ExpressRoute** . Při plnění hodnoty na této stránce Ujistěte se, že jste zadali správnou úroveň skladové položky (Standard nebo Premium) a data monitorování míry využívání model fakturace (neomezený počet nebo Metered).
 
-   ![Configure the SKU tier and data metering](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
+   ![Nakonfigurujte úroveň skladové položky a měření dat.](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
-   * **Tier** determines whether an ExpressRoute standard or an ExpressRoute premium add-on is enabled. You can specify **Standard** to get the standard SKU or **Premium** for the premium add-on.
-   * **Data metering** determines the billing type. You can specify **Metered** for a metered data plan and **Unlimited** for an unlimited data plan. Note that you can change the billing type from **Metered** to **Unlimited**.
-
-     > [!IMPORTANT]
-     > You can't change the type from **Unlimited** to **Metered**.
-
-   * **Peering Location** is the physical location where you are peering with Microsoft.
+   * **Úroveň** určuje, jestli je povolený ExpressRoute Standard nebo doplněk ExpressRoute Premium. Můžete zadat **Standard** pro získání standardní SKU nebo úrovně **Premium** pro doplněk Premium.
+   * **Měření dat** určuje typ fakturace. Můžete určit **měření** pro měřený datový tarif a **neomezený** pro neomezený datový tarif. Všimněte si, že můžete změnit typ fakturace z **měření** na **neomezeno**.
 
      > [!IMPORTANT]
-     > The Peering Location indicates the [physical location](expressroute-locations.md) where you are peering with Microsoft. This is **not** linked to "Location" property, which refers to the geography where the Azure Network Resource Provider is located. While they are not related, it is a good practice to choose a Network Resource Provider geographically close to the Peering Location of the circuit.
+     > Nemůžete změnit typ z **neomezené** na **měřený**.
 
-### <a name="3-view-the-circuits-and-properties"></a>3. View the circuits and properties
+   * **Umístění partnerského vztahu** je fyzické umístění, kde se s Microsoftem pracujete jako partnerský vztah.
 
-**View all the circuits**
+     > [!IMPORTANT]
+     > Umístění partnerského vztahu indikuje [fyzické umístění](expressroute-locations.md) , kde se s Microsoftem pracujete. Toto není **propojeno s vlastností** "umístění", která odkazuje na geografickou oblast, kde se nachází poskytovatel síťových prostředků Azure. Zatímco nesouvisí, je vhodné zvolit poskytovatel síťových prostředků geograficky v blízkosti umístění partnerského vztahu okruhu.
 
-You can view all the circuits that you created by selecting **All resources** on the left-side menu.
+### <a name="3-view-the-circuits-and-properties"></a>3. zobrazení okruhů a vlastností
 
-![View circuits](./media/expressroute-howto-circuit-portal-resource-manager/listresource.png)
+**Zobrazit všechny okruhy**
 
-**View the properties**
+Všechny okruhy, které jste vytvořili, můžete zobrazit tak, že vyberete **všechny prostředky** v nabídce vlevo.
 
-You can view the properties of the circuit by selecting it. On the **Overview** page for your circuit, the service key appears in the service key field. You must copy the service key for your circuit and pass it down to the service provider to complete the provisioning process. The circuit service key is specific to your circuit.
+![Zobrazení okruhy](./media/expressroute-howto-circuit-portal-resource-manager/listresource.png)
+
+**Zobrazit vlastnosti**
+
+Vlastnosti okruhu můžete zobrazit tak, že ho vyberete. Na stránce **Přehled** pro váš okruh se klíč služby zobrazí v poli klíč služby. Musíte zkopírovat klíč služby pro váš okruh a předat ji dolů poskytovatele služeb k dokončení procesu zřizování. Klíč služby okruhů je specifický pro váš okruh.
 
 ![Zobrazení vlastností](./media/expressroute-howto-circuit-portal-resource-manager/servicekey1.png)
 
-### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. Send the service key to your connectivity provider for provisioning
+### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. zaslat klíč služby poskytovateli připojení pro zřizování
 
-On this page, **Provider status** provides information on the current state of provisioning on the service-provider side. **Circuit status** provides the state on the Microsoft side. For more information about circuit provisioning states, see the [Workflows](expressroute-workflows.md#expressroute-circuit-provisioning-states) article.
+Na této stránce **stav poskytovatele** poskytuje informace o aktuálním stavu zřizování na straně poskytovatele služeb. **Stav okruhu** poskytuje stav na straně Microsoftu. Další informace o stavech zřizování okruhů najdete v článku [věnovaném pracovním](expressroute-workflows.md#expressroute-circuit-provisioning-states) postupům.
 
-When you create a new ExpressRoute circuit, the circuit is in the following state:
+Při vytváření nového okruhu ExpressRoute, je okruh v následujícím stavu:
 
-Provider status: Not provisioned<BR>
-Circuit status: Enabled
+Stav poskytovatele: není zajišťováno<BR>
+Stav okruhu: povoleno
 
-![Initiate provisioning process](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
+![Zahájení procesu zřizování](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
-The circuit changes to the following state when the connectivity provider is in the process of enabling it for you:
+Když probíhá proces jeho povolení pro vás poskytovatel připojení okruhu změní na následující stav:
 
-Provider status: Provisioning<BR>
-Circuit status: Enabled
+Stav poskytovatele: zřizování<BR>
+Stav okruhu: povoleno
 
-For you to be able to use an ExpressRoute circuit, it must be in the following state:
+Abyste mohli použít okruhu ExpressRoute musí být v následujícím stavu:
 
-Provider status: Provisioned<BR>
-Circuit status: Enabled
+Stav poskytovatele: zřízené<BR>
+Stav okruhu: povoleno
 
-### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Periodically check the status and the state of the circuit key
+### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. pravidelně kontroluje stav a stav klíče okruhu.
 
-You can view the properties of the circuit that you're interested in by selecting it. Check the **Provider status** and ensure that it has moved to **Provisioned** before you continue.
+Můžete zobrazit vlastnosti okruhu, který vás zajímá, vyberte ho. Než budete pokračovat, zkontrolujte **stav poskytovatele** a ujistěte se, že byl přesunut do stavu **zřizování** .
 
-![Circuit and provider status](./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png)
+![Stav okruhu a zprostředkovatele](./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png)
 
-### <a name="6-create-your-routing-configuration"></a>6. Create your routing configuration
+### <a name="6-create-your-routing-configuration"></a>6. Vytvořte konfiguraci směrování.
 
-For step-by-step instructions, refer to the [ExpressRoute circuit routing configuration](expressroute-howto-routing-portal-resource-manager.md) article to create and modify circuit peerings.
+Podrobné pokyny najdete v článku věnovaném [konfiguraci směrování okruhů ExpressRoute](expressroute-howto-routing-portal-resource-manager.md) k vytváření a úpravám partnerských vztahů okruhů.
 
 > [!IMPORTANT]
-> These instructions only apply to circuits that are created with service providers that offer layer 2 connectivity services. If you're using a service provider that offers managed layer 3 services (typically an IP VPN, like MPLS), your connectivity provider configures and manages routing for you.
+> Tyto pokyny platí jenom pro okruhy vytvořené s poskytovateli služeb, které nabízejí vrstvy 2 připojení služby. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle IP sítě VPN, např. MPLS), svého poskytovatele připojení, konfiguruje a spravuje směrování za vás.
 
-### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. Link a virtual network to an ExpressRoute circuit
+### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. propojení virtuální sítě k okruhu ExpressRoute
 
-Next, link a virtual network to your ExpressRoute circuit. Use the [Linking virtual networks to ExpressRoute circuits](expressroute-howto-linkvnet-arm.md) article when you work with the Resource Manager deployment model.
+V dalším kroku propojení virtuální sítě pro váš okruh ExpressRoute. Při práci s modelem nasazení Správce prostředků použijte [propojení virtuálních sítí s okruhy ExpressRoute](expressroute-howto-linkvnet-arm.md) .
 
-## <a name="status"></a>Getting the status of an ExpressRoute circuit
+## <a name="status"></a>Získání stavu okruhu ExpressRoute
 
-You can view the status of a circuit by selecting it and viewing the Overview page.
+Stav okruhu můžete zobrazit tak, že ji vyberete a zobrazení na stránce s přehledem.
 
-## <a name="modify"></a>Modifying an ExpressRoute circuit
+## <a name="modify"></a>Úprava okruhu ExpressRoute
 
-You can modify certain properties of an ExpressRoute circuit without impacting connectivity. You can modify the bandwidth, SKU, billing model and allow classic operations on the **Configuration** page. For information on limits and limitations, see the [ExpressRoute FAQ](expressroute-faqs.md).
+Můžete upravit některé vlastnosti okruhu ExpressRoute bez dopadu na připojení. Můžete upravit šířku pásma, SKU a model fakturace a na stránce **Konfigurace** povolte klasické operace. Informace o omezeních a omezeních najdete v tématu [ExpressRoute – Nejčastější dotazy](expressroute-faqs.md).
 
-You can perform the following tasks with no downtime:
+Můžete provádět následující úlohy došlo k výpadku:
 
-* Enable or disable an ExpressRoute Premium add-on for your ExpressRoute circuit.
-* Increase the bandwidth of your ExpressRoute circuit, provided there is capacity available on the port.
-
-  > [!IMPORTANT]
-  > Downgrading the bandwidth of a circuit is not supported.
-
-* Change the metering plan from *Metered Data* to *Unlimited Data*.
+* Povolit nebo zakázat doplněk ExpressRoute Premium pro váš okruh ExpressRoute.
+* Zvětšete šířku pásma okruhu ExpressRoute zadaný na portu je k dispozici kapacita.
 
   > [!IMPORTANT]
-  > Changing the metering plan from Unlimited Data to Metered Data is not supported.
+  > Šířku pásma okruhu downgradu není podporován.
 
-* You can enable and disable *Allow Classic Operations*.
+* Změňte plán měření z *měřených dat* na *neomezená data*.
+
   > [!IMPORTANT]
-  > You may have to recreate the ExpressRoute circuit if there is inadequate capacity on the existing port. You cannot upgrade the circuit if there is no additional capacity available at that location.
+  > Změna plánu měření z neomezená Data na měření podle objemu dat se nepodporuje.
+
+* Můžete povolit nebo zakázat *operace klasických operací*.
+  > [!IMPORTANT]
+  > Bude pravděpodobně nutné znovu vytvořit okruh ExpressRoute, pokud je nedostatečné kapacity na existující port. Pokud v tomto umístění není k dispozici žádné další kapacitu, nemůže upgradovat okruh.
   >
-  > Although you can seamlessly upgrade the bandwidth, you cannot reduce the bandwidth of an ExpressRoute circuit without disruption. Downgrading bandwidth requires you to deprovision the ExpressRoute circuit and then reprovision a new ExpressRoute circuit.
+  > I když můžete bez problémů upgradovat šířku pásma, nejde snížit šířku pásma okruhu ExpressRoute bez přerušení. Downgrade šířky pásma je potřeba zrušit zřízení okruhu ExpressRoute a pak znova nezajistíte nového okruhu ExpressRoute.
   >
-  > Disabling the Premium add-on operation can fail if you're using resources that are greater than what is permitted for the standard circuit.
+  > Zákaz operace doplněk Premium může selhat, pokud používáte prostředky, které jsou větší než co je povolený pro standardní okruh.
 
-To modify an ExpressRoute circuit, click **Configuration**.
+Chcete-li upravit okruh ExpressRoute, klikněte na položku **Konfigurace**.
 
-![Modify circuit](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
+![Úprava okruhu](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
 
-## <a name="delete"></a>Deprovisioning and deleting an ExpressRoute circuit
+## <a name="delete"></a>Zrušení zřízení a odstranění okruhu ExpressRoute
 
-You can delete your ExpressRoute circuit by selecting the **delete** icon. Všimněte si následujících informací:
+Okruh ExpressRoute můžete odstranit tak, že vyberete ikonu **Odstranit** . Všimněte si následujících informací:
 
-* Od okruhu ExpressRoute je potřeba odpojit všechny virtuální sítě. If this operation fails, check whether any virtual networks are linked to the circuit.
-* If the ExpressRoute circuit service provider provisioning state is **Provisioning** or **Provisioned** you must work with your service provider to deprovision the circuit on their side. We continue to reserve resources and bill you until the service provider completes deprovisioning the circuit and notifies us.
-* If the service provider has deprovisioned the circuit (the service provider provisioning state is set to **Not provisioned**), you can delete the circuit. Tím se zastaví účtování okruhu.
+* Od okruhu ExpressRoute je potřeba odpojit všechny virtuální sítě. Pokud tato operace se nezdaří, zkontrolujte, zda jsou propojeny žádné virtuální sítě k okruhu.
+* Pokud je stav zřizování poskytovatele služby okruhu ExpressRoute **zřizování** nebo **zřízené** , musíte s vaším poskytovatelem služeb spolupracovat a zrušit zřízení okruhu na jejich straně. Pokračujeme v rezervovat prostředky a účtovat až do dokončení zrušení zřízení okruhu a informuje nás poskytovatelem služeb.
+* Pokud poskytovatel služby zrušil zřízení okruhu (stav zřizování poskytovatele služeb je nastavený na **není zřízený**), můžete okruh odstranit. Tím se zastaví účtování okruhu.
 
 ## <a name="next-steps"></a>Další kroky
 
-After you create your circuit, continue with the following next steps:
+Po vytvoření váš okruh, pokračujte následující další kroky:
 
-* [Create and modify routing for your ExpressRoute circuit](expressroute-howto-routing-portal-resource-manager.md)
-* [Link your virtual network to your ExpressRoute circuit](expressroute-howto-linkvnet-arm.md)
+* [Vytvoření a úprava směrování pro okruh ExpressRoute](expressroute-howto-routing-portal-resource-manager.md)
+* [Propojení virtuální sítě s okruhem ExpressRoute](expressroute-howto-linkvnet-arm.md)

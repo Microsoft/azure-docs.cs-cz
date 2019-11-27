@@ -72,7 +72,7 @@ Aktivita řízení | Popis
 ---------------- | -----------
 [Připojit proměnnou](control-flow-append-variable-activity.md) | Přidejte hodnotu do existující proměnné pole.
 [Spustit kanál](control-flow-execute-pipeline-activity.md) | Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný kanál.
-[Filtr](control-flow-filter-activity.md) | Použití výrazu filtru na vstupní pole
+[Filtrovací](control-flow-filter-activity.md) | Použití výrazu filtru na vstupní pole
 [Pro každý](control-flow-for-each-activity.md) | Aktivita ForEach definuje ve vašem kanálu opakovaný tok řízení. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
 [Získat metadata](control-flow-get-metadata-activity.md) | Aktivita GetMetadata slouží k načtení metadat jakýchkoli dat ve službě Azure Data Factory.
 [Aktivita podmínky If](control-flow-if-condition-activity.md) | Podmínka If se dá použít k vytvoření větve na základě podmínky, která provádí vyhodnocení na hodnotu True nebo False. Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycích. Vyhodnotí sadu aktivit, když se podmínka vyhodnotí jako `true`, a jinou sadu aktivit, když se podmínka vyhodnotí jako `false`.
@@ -184,8 +184,8 @@ Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigura
 Název JSON | Popis | Povolené hodnoty | Požaduje se
 --------- | ----------- | -------------- | --------
 timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | Ne. Výchozí hodnota časového limitu je 7 dní.
-retry | Maximální počet opakovaných pokusů. | Celé číslo | Ne. Výchozí hodnota je 0.
-retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Celé číslo | Ne. Výchozí hodnota je 30 sekund.
+retry | Maximální počet opakovaných pokusů. | Integer | Ne. Výchozí hodnota je 0.
+retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Integer | Ne. Výchozí hodnota je 30 sekund.
 secureOutput | Při nastavení vlastnosti na true se výstup aktivity považuje za bezpečný, tzn. že se nezaznamená do monitorování. | Logická hodnota | Ne. Výchozí hodnota je false.
 
 ### <a name="control-activity"></a>Aktivita řízení

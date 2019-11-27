@@ -47,7 +47,7 @@ Kombinace služeb a oblastí Azure, které podporují Zóny dostupnosti:
 
 |                                 |Amerika |              |           |           | Evropa |              |          |              | Asie a Tichomoří |                 |
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|
-|          |Střední USA|Východní USA|Východní USA 2|Západní USA 2|Francie – střed|Severní Evropa|Velká Británie – jih|Západní Evropa|Japonsko – východ|Jihovýchodní Asie|
+|          |Střední USA|Východní USA|Východ USA 2|Západní USA 2|Francie – střed|Severní Evropa|Spojené království – jih|Západní Evropa|Japonsko – východ|Jihovýchodní Asie|
 | **Compute**                         |            |              |           |           |                |              |          |             |            |                |
 | Linux Virtual Machines          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Windows Virtual Machines        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
@@ -67,14 +67,14 @@ Kombinace služeb a oblastí Azure, které podporují Zóny dostupnosti:
 | Průzkumník dat Azure                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;        | &#10003;       |
 | SQL Database                    | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;Tisk      | &#10003;       |
 | Azure Cache for Redis           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
-| Databáze Azure Cosmos                    | &#10003;   |  &#10003;  |  &#10003; | &#10003; |       |     | &#10003; |  &#10003;   |            | &#10003;       |
+| Azure Cosmos DB                    | &#10003;   |  &#10003;  |  &#10003; | &#10003; |       |     | &#10003; |  &#10003;   |            | &#10003;       |
 | **Analýzy**                       |            |              |           |           |                |              |          |             |            |                |
 | Event Hubs                      | &#10003;   |   &#10003; | &#10003;  | &#10003;  | &#10003; | &#10003; | &#10003; | &#10003; | &#10003; | &#10003;       |
 | **Spolupráci**                     |            |              |           |           |                |              |          |             |            |                |
 | Service Bus (jenom úroveň Premium) | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 | Event Grid | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 | **Identita**                     |            |              |           |           |                |              |          |             |            |                |
-| Služba Azure AD Domain Services | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
+| Azure AD Domain Services | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |
 
 ## <a name="services-resiliency"></a>Odolnost služeb
 Všechny služby správy Azure jsou navržené tak, aby byly odolné proti selháním na úrovni jednotlivých oblastí. V případě selhání má jedna nebo více selhání zóny dostupnosti v rámci oblasti menší poloměr selhání v porovnání s selháním celé oblasti. Azure se může zotavit z neúspěšného selhání služeb správy v rámci oblasti nebo z jiné oblasti Azure. Azure provádí kritickou údržbu jedné zóny v čase v rámci určité oblasti, aby nedocházelo k chybám, které mají vliv na prostředky zákazníka nasazené napříč Zóny dostupnosti v rámci oblasti.

@@ -150,7 +150,7 @@ Pokud chcete použít rutiny Network Watcher PowerShellu, nahrajte do aplikace F
 
     ![Soubory PowerShellu][functions7]
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Chcete-li použít rutiny prostředí PowerShell, je nutné provést ověření. Ověřování nakonfigurujete v aplikaci Function App. Pokud chcete nakonfigurovat ověřování, musíte nakonfigurovat proměnné prostředí a nahrát do aplikace Function app soubor se zašifrovaným klíčem.
 
@@ -352,7 +352,7 @@ Přejít na existující virtuální počítač a pak přidat pravidlo výstrahy
   |**Pomocné**|Větší než| Podmínka, která se má použít při vyhodnocování metriky.|
   |**Mezí**|100| Hodnota metriky, která aktivuje výstrahu. Tato hodnota by měla být nastavená na platnou hodnotu pro vaše prostředí.|
   |**Hodin**|Za posledních pět minut| Určuje období, ve kterém se má hledat prahová hodnota metriky.|
-  |**Webhook**|[adresa URL Webhooku z aplikace Function app]| Adresa URL Webhooku z aplikace Function App, která byla vytvořena v předchozích krocích.|
+  |**Webhooku**|[adresa URL Webhooku z aplikace Function app]| Adresa URL Webhooku z aplikace Function App, která byla vytvořena v předchozích krocích.|
 
 > [!NOTE]
 > Metrika segmentů TCP není ve výchozím nastavení povolena. Další informace o tom, jak povolit další metriky, najdete v tématu [povolení monitorování a diagnostiky](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
@@ -370,7 +370,7 @@ Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu Začín
 Po stažení je vaše zachycení možné zobrazit pomocí libovolného nástroje, který může číst soubor **. Cap** . Následují odkazy na dva z těchto nástrojů:
 
 - [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
-- [WireShark](https://www.wireshark.org/)
+- [Nástroj](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>Další kroky
 

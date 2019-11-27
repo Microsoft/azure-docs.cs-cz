@@ -159,7 +159,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | DataTransferredInMB_s | Číslo |Data přenesená v MB pro tuto úlohu|
 | JobUniqueId_g |Text |Jedinečné ID pro identifikaci úlohy |
 | RecoveryJobDestination_s |Text | Cíl úlohy obnovení, kde se data obnovují |
-| RecoveryJobRPDateTime_s |Datum a čas | Datum a čas vytvoření bodu obnovení, který se má obnovit |
+| RecoveryJobRPDateTime_s |DateTime | Datum a čas vytvoření bodu obnovení, který se má obnovit |
 | RecoveryJobRPLocation_s |Text | Umístění, kam se uložil bod obnovení, který se má obnovit|
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
 | ResourceId |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services|
@@ -258,7 +258,7 @@ Tato tabulka poskytuje základní pole o chráněných kontejnerech. (Byl Protec
 | ProtectedContainerType_s |Text |Zda chráněný kontejner je server nebo kontejner |
 | ProtectedContainerProtectionState_s  |Text |Stav ochrany chráněného kontejneru |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Tato tabulka poskytuje podrobnosti o polích souvisejících s úložištěm.
 

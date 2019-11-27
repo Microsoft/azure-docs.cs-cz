@@ -1,6 +1,6 @@
 ---
-title: Troubleshooting degraded status on Azure Traffic Manager
-description: How to troubleshoot Traffic Manager profiles when it shows as degraded status.
+title: Řešení potíží se stavem snížené funkčnosti v Azure Traffic Manager
+description: Jak řešit potíže s profilem Traffic Manager, když se zobrazuje jako snížený stav.
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -19,36 +19,36 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227725"
 ---
-# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Troubleshooting degraded state on Azure Traffic Manager
+# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Řešení potíží s degradací stavu v Azure Traffic Manager
 
-This article describes how to troubleshoot an Azure Traffic Manager profile that is showing a degraded status. As a first step in troubleshooting a Azure Traffic Manager degraded state is to enable diagnostic logging.  Refer to [Enable diagnostic logs](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) for more information. For this scenario, consider that you have configured a Traffic Manager profile pointing to some of your cloudapp.net hosted services. If the health of your Traffic Manager displays a **Degraded** status, then the status of one or more endpoints may be **Degraded**:
+Tento článek popisuje, jak řešit potíže s profilem Azure Traffic Manager, který zobrazuje snížený stav. Jako první krok při řešení potíží se stavem degradování Azure Traffic Manager je povolit diagnostické protokolování.  Další informace najdete v tématu [Povolení diagnostických protokolů](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) . V tomto scénáři zvažte, že jste nakonfigurovali profil Traffic Manager, který odkazuje na některé z vašich hostovaných služeb cloudapp.net. Pokud stav Traffic Manager **zobrazuje snížený stav,** může být **snížen**stav jednoho nebo více koncových bodů:
 
-![degraded endpoint status](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
+![stav sníženého koncového bodu](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-If the health of your Traffic Manager displays an **Inactive** status, then both end points may be **Disabled**:
+Pokud stav Traffic Manager zobrazuje **neaktivní** stav, mohou být oba koncové body **zakázané**:
 
-![Inactive Traffic Manager status](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
+![Stav neaktivního Traffic Manager](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
-## <a name="understanding-traffic-manager-probes"></a>Understanding Traffic Manager probes
+## <a name="understanding-traffic-manager-probes"></a>Principy Traffic Manager sondy
 
-* Traffic Manager considers an endpoint to be ONLINE only when the probe receives an HTTP 200 response back from the probe path. If you application returns any other HTTP response code you should add that response code to [Expected status code ranges](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) of your Traffic Manager profile.
-* A 30x redirect response is treated as failure unless you have specified this as a valid response code in [Expected status code ranges](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) of your Traffic Manager profile. Traffic Manager does not probe the redirection target.
-* For HTTPs probes, certificate errors are ignored.
-* The actual content of the probe path doesn't matter, as long as a 200 is returned. Probing a URL to some static content like "/favicon.ico" is a common technique. Dynamic content, like the ASP pages, may not always return 200, even when the application is healthy.
-* A best practice is to set the probe path to something that has enough logic to determine that the site is up or down. In the previous example, by setting the path to "/favicon.ico", you are only testing that w3wp.exe is responding. This probe may not indicate that your web application is healthy. A better option would be to set a path to a something such as "/Probe.aspx" that has logic to determine the health of the site. For example, you could use performance counters to CPU utilization or measure the number of failed requests. Or you could attempt to access database resources or session state to make sure that the web application is working.
-* If all endpoints in a profile are degraded, then Traffic Manager treats all endpoints as healthy and routes traffic to all endpoints. This behavior ensures that problems with the probing mechanism do not result in a complete outage of your service.
+* Traffic Manager považuje koncový bod za ONLINE, jenom když sonda obdrží odpověď HTTP 200 z cesty testu. Pokud aplikace vrátí jakýkoli jiný kód odpovědi HTTP, měli byste tento kód odpovědi přidat do [rozsahů očekávaných stavových kódů](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) vašeho profilu Traffic Manager.
+* Odpověď přesměrování 30krát se považuje za neočekávanou, pokud jste ji nezadali jako platný kód odezvy v [rozsahu očekávaných stavových kódů](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) vašeho profilu Traffic Manager. Traffic Manager netestuje cíl přesměrování.
+* V případě sond protokolu HTTPs se chyby certifikátů ignorují.
+* Skutečný obsah cesty testu nezáleží na tom, dokud se vrátí 200. Běžným způsobem je zjišťování adresy URL pro nějaký statický obsah, jako je "/favicon.ico". Dynamický obsah, podobně jako stránky ASP, nemusí vždycky vracet 200, i když je aplikace v pořádku.
+* Osvědčeným postupem je nastavit cestu testu na něco, co má dostatek logiky pro zjištění, že je lokalita nahoru nebo dolů. V předchozím příkladu nastavením cesty na "/favicon.ico" otestujete pouze to, že W3wp. exe reaguje. Tato sonda nemusí znamenat, že vaše webová aplikace je v pořádku. Lepší možností je nastavit cestu k nějakému typu, například "/PROBE.aspx", který má logiku k určení stavu webu. Můžete například použít čítače výkonu k využití procesoru nebo změřit počet neúspěšných žádostí. Nebo se můžete pokusit o přístup k prostředkům databáze nebo stavu relace, abyste se ujistili, že webová aplikace funguje.
+* Pokud dojde ke zhoršení všech koncových bodů v profilu, Traffic Manager zachází se všemi koncovými body jako v pořádku a směruje provoz do všech koncových bodů. Tím zajistíte, že problémy s mechanismem zjišťování nevedou k úplnému výpadku vaší služby.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-To troubleshoot a probe failure, you need a tool that shows the HTTP status code return from the probe URL. There are many tools available that show you the raw HTTP response.
+Chcete-li vyřešit selhání sondy, potřebujete nástroj, který zobrazuje stavový kód HTTP vrácený z adresy URL testu. K dispozici je mnoho nástrojů, které ukazují nezpracované odpovědi HTTP.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [curl](https://curl.haxx.se/)
+* [Curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
-Also, you can use the Network tab of the F12 Debugging Tools in Internet Explorer to view the HTTP responses.
+K zobrazení odpovědí HTTP můžete také použít kartu síť v ladicích nástrojích F12 v Internet Exploreru.
 
-For this example we want to see the response from our probe URL: http:\//watestsdp2008r2.cloudapp.net:80/Probe. The following PowerShell example illustrates the problem.
+V tomto příkladu chceme zobrazit odpověď z naší adresy URL testu: http:\//watestsdp2008r2.cloudapp.net:80/Probe. Následující příklad prostředí PowerShell znázorňuje problém.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -60,9 +60,9 @@ Příklad výstupu:
     ---------- -----------------
            301 Moved Permanently
 
-Notice that we received a redirect response. As stated previously, any StatusCode other than 200 is considered a failure. Traffic Manager changes the endpoint status to Offline. To resolve the problem, check the website configuration to ensure that the proper StatusCode can be returned from the probe path. Reconfigure the Traffic Manager probe to point to a path that returns a 200.
+Všimněte si, že jsme dostali odpověď na přesměrování. Jak bylo uvedeno dříve, jakékoli StatusCode kromě 200 se považuje za selhání. Traffic Manager změní stav koncového bodu na offline. Pokud chcete tento problém vyřešit, zkontrolujte konfiguraci webu, abyste měli jistotu, že se dá z cesty testu vrátit správný StatusCode. Překonfigurujte Traffic Manager test tak, aby odkazoval na cestu, která vrací 200.
 
-If your probe is using the HTTPS protocol, you may need to disable certificate checking to avoid SSL/TLS errors during your test. The following PowerShell statements disable certificate validation for the current PowerShell session:
+Pokud vaše sonda používá protokol HTTPS, možná budete muset zakázat kontrolu certifikátů, aby se předešlo chybám SSL/TLS během testu. Následující příkazy PowerShellu zakazují ověření certifikátu pro aktuální relaci prostředí PowerShell:
 
 ```powershell
 add-type @"
@@ -81,9 +81,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 ## <a name="next-steps"></a>Další kroky
 
-[About Traffic Manager traffic routing methods](traffic-manager-routing-methods.md)
+[Informace o metodách směrování provozu Traffic Manager](traffic-manager-routing-methods.md)
 
-[What is Traffic Manager](traffic-manager-overview.md)
+[Co je Traffic Manager](traffic-manager-overview.md)
 
 [Cloud Services](https://go.microsoft.com/fwlink/?LinkId=314074)
 
@@ -91,6 +91,6 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Operace v Traffic Manageru (referenční informace k rozhraní API REST)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager Cmdlets][1]
+[Rutiny Azure Traffic Manager][1]
 
 [1]: https://docs.microsoft.com/powershell/module/az.trafficmanager

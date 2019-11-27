@@ -26,7 +26,7 @@ ms.locfileid: "74277776"
 
 Brány Virtual Network poskytují konektivitu mezi místními prostředky a dalšími virtuálními sítěmi v rámci Azure. Pro zajištění, aby nedošlo k přerušení komunikace, je důležité monitorovat brány a jejich připojení. Network Watcher poskytuje možnost řešení potíží s bránami a připojeními. Schopnost se dá volat prostřednictvím portálu, PowerShellu, rozhraní příkazového řádku Azure nebo REST API. Při volání Network Watcher diagnostikuje stav brány nebo připojení a vrátí příslušné výsledky. Požadavek je dlouhodobá transakce. Výsledky se vrátí po dokončení diagnostiky.
 
-![portál][2]
+![portal][2]
 
 ## <a name="results"></a>Výsledky
 
@@ -76,7 +76,7 @@ V následujících tabulkách jsou uvedeny různé typy chyb (ID z předchozího
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojené. |Ne|
 | ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
 | ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
-| Authentication | Neshoda předsdíleného klíče | Ano|
+| Ověřování | Neshoda předsdíleného klíče | Ano|
 | PeerReachability | Partnerská brána není dostupná. | Ano|
 | IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
 | WfpParse Error | Při analýze protokolu WFP došlo k chybě. |Ano|

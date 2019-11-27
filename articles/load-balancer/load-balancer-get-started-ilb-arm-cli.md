@@ -1,7 +1,7 @@
 ---
-title: Create an internal Basic Load Balancer - Azure CLI
+title: Vytvoření interní Load balancer úrovně Basic – Azure CLI
 titleSuffix: Azure Load Balancer
-description: In this article, learn how to create an internal load balancer using Azure CLI
+description: V tomto článku se dozvíte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí Azure CLI.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -41,7 +41,7 @@ Následující příklad vytvoří skupinu prostředků *myResourceGroupILB* v u
 ```
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) vytvořte virtuální síť *myVnet* s podsítí *mySubnet* ve skupině prostředků *myResourceGroup*.
+Pomocí příkazu *az network vnet create* vytvořte virtuální síť *myVnet* s podsítí *mySubnet* ve skupině prostředků [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \
@@ -60,7 +60,7 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 
 ### <a name="create-the-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-Create an internal Load Balancer with [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) named **myLoadBalancer** that includes a frontend IP configuration named **myFrontEnd**, a back-end pool named **myBackEndPool** that is associated with a private IP address **10.0.0.7.
+Vytvořte interní Load Balancer pomocí [AZ Network](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) Create s názvem **myLoadBalancer** , který obsahuje konfiguraci protokolu IP front-endu s názvem **myFrontEnd**, fondu back-end s názvem **myBackEndPool** , který je přidružený k privátní IP adrese * * 10.0.0.7.
 
 ```azurecli-interactive
   az network lb create \
@@ -87,7 +87,7 @@ Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje,
 
 ### <a name="create-the-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myHTTPRule* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool*, a to taky na portu 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu *az network lb rule create* vytvořte pravidlo nástroje pro vyrovnávání zatížení [myHTTPRule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool*, a to taky na portu 80. 
 
 ```azurecli-interactive
   az network lb rule create \

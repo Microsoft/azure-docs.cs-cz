@@ -1,6 +1,6 @@
 ---
-title: Manage DNS zones in Azure DNS - Azure CLI | Microsoft Docs
-description: You can manage DNS zones using Azure CLI. This article shows how to update, delete and create DNS zones on Azure DNS.
+title: Správa zón DNS v Azure DNS – Azure CLI | Microsoft Docs
+description: Můžete spravovat zóny DNS pomocí rozhraní příkazového řádku Azure CLI. Tento článek popisuje, jak aktualizovat, odstranit a vytvořit zóny DNS na Azure DNS.
 services: dns
 documentationcenter: na
 author: asudbring
@@ -20,7 +20,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211926"
 ---
-# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>How to manage DNS Zones in Azure DNS using the Azure CLI
+# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Správa Zóny DNS v Azure DNS pomocí Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-dnszones-portal.md)
@@ -28,11 +28,11 @@ ms.locfileid: "74211926"
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 
-This guide shows how to manage your DNS zones by using the cross-platform Azure CLI, which is available for Windows, Mac and Linux. You can also manage your DNS zones using [Azure PowerShell](dns-operations-dnszones.md) or the Azure portal.
+Tato příručka ukazuje, jak spravovat zóny DNS pomocí rozhraní příkazového řádku Azure CLI pro různé platformy, které je dostupné pro Windows, Mac a Linux. Zóny DNS můžete spravovat také pomocí [Azure PowerShell](dns-operations-dnszones.md) nebo Azure Portal.
 
-This guide specifically deals with Public DNS zones. For information on using Azure CLI to manage Private Zones in Azure DNS, see [Get started with Azure DNS Private Zones using Azure CLI](private-dns-getstarted-cli.md).
+V této příručce se konkrétně zabývá veřejné zóny DNS. Informace o použití rozhraní příkazového řádku Azure ke správě privátních zón v Azure DNS najdete v tématu Začínáme [s Azure DNS Private Zones pomocí Azure CLI](private-dns-getstarted-cli.md).
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -68,8 +68,8 @@ Zvolte předplatné Azure, které chcete použít.
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>Optional: To install/use Azure DNS Private Zones feature
-The Azure DNS Private Zone feature is available via an extension to the Azure CLI. Nainstalujte rozšíření Azure CLI dns. 
+### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>Volitelné: pro instalaci/použití funkce Azure DNS Private Zones
+Funkce privátní zóny Azure DNS je k dispozici prostřednictvím rozšíření Azure CLI. Nainstalujte rozšíření Azure CLI dns. 
 ```
 az extension add --name dns
 ``` 
@@ -86,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Získání nápovědy
 
-All Azure CLI commands relating to Azure DNS start with `az network dns`. Help is available for each command using the `--help` option (short form `-h`).  Například:
+Všechny příkazy rozhraní příkazového řádku Azure, které se týkají Azure DNS začínají `az network dns`. K dispozici je pro každý příkaz pomocí možnosti `--help` (krátký tvar `-h`).  Příklad:
 
 ```azurecli
 az network dns --help
@@ -98,25 +98,25 @@ az network dns zone create --help
 
 Zóna DNS se vytvoří příkazem `az network dns zone create`. Nápovědu získáte příkazem `az network dns zone create -h`.
 
-The following example creates a DNS zone called *contoso.com* in the resource group called *MyResourceGroup*:
+Následující příklad vytvoří zónu DNS s názvem *contoso.com* ve skupině prostředků s názvem *MyResourceGroup*:
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com
 ```
 
-### <a name="to-create-a-dns-zone-with-tags"></a>To create a DNS zone with tags
+### <a name="to-create-a-dns-zone-with-tags"></a>Vytvoření zóny DNS pomocí značek
 
-The following example shows how to create a DNS zone with two [Azure Resource Manager tags](dns-zones-records.md#tags), *project = demo* and *env = test*, by using the `--tags` parameter (short form `-t`):
+Následující příklad ukazuje, jak vytvořit zónu DNS se dvěma [Azure Resource Manager značkami](dns-zones-records.md#tags) *Project = demo* a *env = test*pomocí parametru `--tags` (krátký tvar `-t`):
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
 ```
 
-## <a name="get-a-dns-zone"></a>Get a DNS zone
+## <a name="get-a-dns-zone"></a>Získání zóny DNS
 
-To retrieve a DNS zone, use `az network dns zone show`. Nápovědu získáte příkazem `az network dns zone show --help`.
+K načtení zóny DNS použijte `az network dns zone show`. Nápovědu získáte příkazem `az network dns zone show --help`.
 
-The following example returns the DNS zone *contoso.com* and its associated data from resource group *MyResourceGroup*. 
+Následující příklad vrátí zónu DNS *contoso.com* a přidružená data ze skupiny prostředků *MyResourceGroup*. 
 
 ```azurecli
 az network dns zone show --resource-group myresourcegroup --name contoso.com
@@ -167,9 +167,9 @@ az network dns zone list
 
 Změny prostředku zóny DNS je možné provádět pomocí příkazu `az network dns zone update`. Nápovědu získáte příkazem `az network dns zone update --help`.
 
-Tento příkaz neaktualizuje žádné sady záznamů DNS v rámci zóny (viz [Správa záznamů DNS](dns-operations-recordsets-cli.md)). Slouží pouze k aktualizaci vlastností samotného prostředku zóny. These properties are currently limited to the [Azure Resource Manager 'tags'](dns-zones-records.md#tags) for the zone resource.
+Tento příkaz neaktualizuje žádné sady záznamů DNS v rámci zóny (viz [Správa záznamů DNS](dns-operations-recordsets-cli.md)). Slouží pouze k aktualizaci vlastností samotného prostředku zóny. Tyto vlastnosti jsou v současné době omezeny na [Azure Resource Manager značky](dns-zones-records.md#tags) pro prostředek zóny.
 
-The following example shows how to update the tags on a DNS zone. The existing tags are replaced by the value specified.
+Následující příklad ukazuje, jak aktualizovat značky v zóně DNS. Existující značky jsou nahrazené zadanou hodnotou.
 
 ```azurecli
 az network dns zone update --resource-group myresourcegroup --name contoso.com --set tags.team=support
@@ -186,7 +186,7 @@ Zóny DNS je možné odstranit pomocí příkazu `az network dns zone delete`. N
 
 Tento příkaz zobrazí výzvu k potvrzení. Volitelný přepínač `--yes` tuto výzvu potlačí.
 
-The following example shows how to delete the zone *contoso.com* from resource group *MyResourceGroup*.
+Následující příklad ukazuje, jak odstranit zónu *contoso.com* ze skupiny prostředků *MyResourceGroup*.
 
 ```azurecli
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
@@ -194,7 +194,7 @@ az network dns zone delete --resource-group myresourcegroup --name contoso.com
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn how to [manage record sets and records](dns-getstarted-create-recordset-cli.md) in your DNS zone.
+Naučte se [Spravovat sady záznamů a záznamy](dns-getstarted-create-recordset-cli.md) v zóně DNS.
 
-Learn how to [delegate your domain to Azure DNS](dns-domain-delegation.md).
+Přečtěte si, jak [delegovat doménu na Azure DNS](dns-domain-delegation.md).
 

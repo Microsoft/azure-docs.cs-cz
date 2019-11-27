@@ -15,7 +15,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260694"
 ---
-When you send template notifications, you only need to provide a set of properties. In this scenario, the set of properties contain the localized version of the current news.
+Když odesíláte oznámení šablon, stačí zadat sadu vlastností. V tomto scénáři sada vlastností obsahuje lokalizovanou verzi aktuálních zpráv.
 
 ```json
 {
@@ -25,9 +25,9 @@ When you send template notifications, you only need to provide a set of properti
 }
 ```
 
-### <a name="send-notifications-using-a-c-console-app"></a>Send notifications using a C# console app
+### <a name="send-notifications-using-a-c-console-app"></a>Odesílání oznámení pomocí C# konzolové aplikace
 
-This section shows how to send notifications using a console app. The code broadcasts notifications to both Windows Store and iOS devices. Změňte metodu `SendTemplateNotificationAsync` konzolové aplikace vytvořené dříve přidáním následujícího kódu:
+V této části se dozvíte, jak odesílat oznámení pomocí konzolové aplikace. Kód vysílá oznámení do zařízení se systémem Windows Store i iOS. Změňte metodu `SendTemplateNotificationAsync` konzolové aplikace vytvořené dříve přidáním následujícího kódu:
 
 ```csharp
 private static async void SendTemplateNotificationAsync()
@@ -66,11 +66,11 @@ private static async void SendTemplateNotificationAsync()
 }
 ```
 
-The SendTemplateNotificationAsync method delivers the localized piece of news to **all** your devices, irrespective of the platform. Your notification hub builds and delivers the correct native payload to all the devices subscribed to a specific tag.
+Metoda SendTemplateNotificationAsync zajišťuje lokalizované části zpráv pro **všechna** vaše zařízení bez ohledu na platformu. Vaše centrum oznámení sestaví a zajišťuje správnou nativní datovou část pro všechna zařízení, která se přihlásila ke konkrétní značce.
 
-### <a name="sending-notification-with-mobile-services"></a>Sending notification with Mobile Services
+### <a name="sending-notification-with-mobile-services"></a>Odesílání oznámení pomocí Mobile Services
 
-In your Mobile Services scheduler, use the following script:
+V Plánovači Mobile Services použijte následující skript:
 
 ```csharp
 var azure = require('azure');

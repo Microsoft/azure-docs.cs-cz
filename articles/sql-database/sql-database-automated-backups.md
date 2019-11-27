@@ -1,6 +1,6 @@
 ---
-title: automatic, geo-redundant backups
-description: SQL Database automatically creates a local database backup every few minutes and uses Azure read-access geo-redundant storage for geo-redundancy.
+title: automatické, geograficky redundantní zálohy
+description: SQL Database automaticky vytvoří zálohování místní databáze každých několik minut a používá geograficky redundantní úložiště s přístupem pro čtení z Azure pro geografickou redundanci.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -21,139 +21,139 @@ ms.locfileid: "74421416"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
-SQL Database automatically creates the database backups that are kept between 7 and 35 days, and uses Azure [read-access geo-redundant storage (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) to ensure that they are preserved even if the data center is unavailable. These backups are created automatically. Database backups are an essential part of any business continuity and disaster recovery strategy because they protect your data from accidental corruption or deletion. If your security rules require that your backups are available for an extended period of time (up to 10 years), you can configure a [long-term retention](sql-database-long-term-retention.md) on Singleton databases and Elastic pools.
+SQL Database automaticky vytvoří zálohy databáze udržované mezi 7 a 35 dny a pomocí [geograficky redundantního úložiště Azure s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) zajistí, že jsou zachovány i v případě, že datové centrum není k dispozici. Tyto zálohy jsou vytvořeny automaticky. Zálohy databází jsou důležitou součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii, protože chrání vaše data před náhodným poškozením nebo odstraněním. Pokud vaše pravidla zabezpečení vyžadují, aby byly zálohy dostupné po delší dobu (až 10 let), můžete nakonfigurovat [dlouhodobé uchovávání](sql-database-long-term-retention.md) pro databáze typu Singleton a elastické fondy.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="what-is-a-sql-database-backup"></a>What is a SQL Database backup
+## <a name="what-is-a-sql-database-backup"></a>Co je zálohování SQL Database
 
-SQL Database uses SQL Server technology to create [full backups](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) every week, [differential backups](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) every 12 hours, and [transaction log backups](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) every 5-10 minutes. The backups are stored in [RA-GRS storage blobs](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) that are replicated to a [paired data center](../best-practices-availability-paired-regions.md) for protection against a data center outage. When you restore a database, the service figures out which full, differential, and transaction log backups need to be restored.
+SQL Database používá technologii SQL Server k vytváření [úplných záloh](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) každý týden, [rozdílové zálohování](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) každých 12 hodin a [zálohování protokolů transakcí](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) každých 5-10 minut. Zálohy se ukládají v objektech [BLOB úložiště RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) , které se replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md) kvůli ochraně před výpadkem datového centra. Při obnovení databáze vyřadí služba vyčíslení úplného, rozdílového a zálohy protokolu transakcí, které je třeba obnovit.
 
-You can use these backups to:
+Tyto zálohy můžete použít k těmto akcím:
 
-- **Restore an existing database to a point-in-time in the past** within the retention period using the Azure portal, Azure PowerShell, Azure CLI, or REST API. In Single database and Elastic pools, this operation will create a new database in the same server as the original database. In Managed Instance, this operation can create a copy of the database or same or different Managed Instance under the same subscription.
-  - **[Change Backup Retention Period](#how-to-change-the-pitr-backup-retention-period)** between 7 to 35 days to configure your backup policy.
-  - **Change long-term retention policy up to 10 years** on Single Database and Elastic Pools using [the Azure portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) or [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell).
-- **Restore a deleted database to the time it was deleted** or anytime within the retention period. The deleted database can only be restored in the same logical server or Managed Instance where the original database was created.
-- **Restore a database to another geographical region**. Geo-restore allows you to recover from a geographic disaster when you cannot access your server and database. It creates a new database in any existing server anywhere in the world.
-- **Restore a database from a specific long-term backup** on Single Database or Elastic Pool if the database has been configured with a long-term retention policy (LTR). LTR allows you to restore an old version of the database using [the Azure portal](sql-database-long-term-backup-retention-configure.md#using-azure-portal) or [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell) to satisfy a compliance request or to run an old version of the application. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
-- To perform a restore, see [restore database from backups](sql-database-recovery-using-backups.md).
+- **Obnovte stávající databázi k určitému bodu v čase v minulosti** v rámci doby uchování pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. V izolovaných databázích a elastických fondech Tato operace vytvoří novou databázi na stejném serveru jako původní databázi. V rámci spravované instance Tato operace může vytvořit kopii databáze nebo stejné nebo jiné spravované instance v rámci stejného předplatného.
+  - **[Změňte dobu uchování zálohy](#how-to-change-the-pitr-backup-retention-period)** mezi 7 až 35 dny a nakonfigurujte zásady zálohování.
+  - **Změňte dlouhodobé zásady uchovávání** na izolovaná databáze a elastické fondy po dobu až 10 let pomocí [Azure Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) nebo [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell).
+- **Obnovení odstraněné databáze na čas, kdy byla odstraněna** nebo kdykoli v rámci doby uchování. Odstraněnou databázi lze obnovit pouze na stejném logickém serveru nebo ve spravované instanci, kde byla vytvořena původní databáze.
+- **Obnovte databázi do jiné geografické oblasti**. Geografické obnovení umožňuje obnovení z geografické havárie, když nemůžete získat přístup k serveru a databázi. Vytvoří novou databázi na jakémkoli existujícím serveru kdekoli na světě.
+- **Obnovte databázi z určité dlouhodobé zálohy** na Izolovaná databáze nebo elastický fond, pokud byla databáze nakonfigurovaná s použitím dlouhodobých zásad uchovávání informací (LTR). LTR umožňuje obnovit starou verzi databáze pomocí [Azure Portal](sql-database-long-term-backup-retention-configure.md#using-azure-portal) nebo [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell) , aby splňovala požadavek na dodržování předpisů nebo spustila starou verzi aplikace. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
+- Chcete-li provést obnovení, přečtěte si téma [obnovení databáze ze zálohy](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
-> In Azure storage, the term *replication* refers to copying files from one location to another. SQL's *database replication* refers to keeping multiple secondary databases synchronized with a primary database.
+> Termín *replikace* ve službě Azure Storage označuje kopírování souborů z jednoho umístění do druhého. *Replikace databáze* SQL odkazuje na udržování více sekundárních databází synchronizovaných s primární databází.
 
-You can try some of these operations using the following examples:
+Některé z těchto operací můžete vyzkoušet v následujících příkladech:
 
-| | Azure Portal | Azure PowerShell |
+| | Azure Portal | Azure Powershell |
 |---|---|---|
-| Change backup retention | [Single Database](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Managed Instance](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [Single Database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| Change Long-term backup retention | [Single database](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Managed Instance - N/A  | [Single Database](sql-database-long-term-backup-retention-configure.md)<br/>Managed Instance - N/A  |
-| Restore database from point-in-time | [Single database](sql-database-recovery-using-backups.md#point-in-time-restore) | [Single database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Obnovení odstraněné databáze | [Single database](sql-database-recovery-using-backups.md) | [Single database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| Restore database from Azure Blob Storage | Single database - N/A <br/>Managed Instance - N/A  | Single database - N/A <br/>[Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| Změna uchovávání záloh | [Izolovaná databáze](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Spravovaná instance](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| Změna dlouhodobého uchovávání záloh | [Samostatná databáze](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Izolovaná databáze](sql-database-long-term-backup-retention-configure.md)<br/>Spravovaná instance – není k dispozici  |
+| Obnovit databázi z bodu v čase | [Samostatná databáze](sql-database-recovery-using-backups.md#point-in-time-restore) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| Obnovení odstraněné databáze | [Samostatná databáze](sql-database-recovery-using-backups.md) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| Obnovení databáze z Azure Blob Storage | Izolovaná databáze – není k dispozici <br/>Spravovaná instance – není k dispozici  | Izolovaná databáze – není k dispozici <br/>[Spravovaná instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
-## <a name="how-long-are-backups-kept"></a>How long are backups kept
+## <a name="how-long-are-backups-kept"></a>Jak dlouho jsou zálohy uchovávány
 
-All Azure SQL databases (single, pooled, and managed instance databases) have a default backup retention period of  **seven** days. You can [change backup retention period up to 35 days](#how-to-change-the-pitr-backup-retention-period).
+Všechny databáze Azure SQL (jedna, sdružená a databáze spravované instance) mají výchozí dobu uchovávání záloh po dobu **sedmi** dnů. [Dobu uchování zálohy můžete změnit až na 35 dnů](#how-to-change-the-pitr-backup-retention-period).
 
-If you delete a database, SQL Database will keep the backups in the same way it would for an online database. For example, if you delete a Basic database that has a retention period of seven days, a backup that is four days old is saved for three more days.
+Pokud databázi odstraníte, SQL Database zachová zálohy stejným způsobem jako u online databáze. Pokud například odstraníte databázi Basic, která má dobu uchovávání 7 dní, záloha, která je starší než 4 dny, se uloží na tři dny.
 
-If you need to keep the backups for longer than the maximum retention period, you can modify the backup properties to add one or more long-term retention periods to your database. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
+Pokud potřebujete uchovat zálohy po dobu delší, než je maximální doba uchovávání, můžete upravit vlastnosti zálohy a přidat jednu nebo více dlouhodobých dob uchovávání do databáze. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
 > [!IMPORTANT]
-> If you delete the Azure SQL server that hosts SQL databases, all elastic pools and databases that belong to the server are also deleted and cannot be recovered. You cannot restore a deleted server. But if you configured long-term retention, the backups for the databases with LTR will not be deleted and these databases can be restored.
+> Pokud odstraníte server SQL Azure hostující databáze SQL, odstraní se také všechny elastické fondy a databáze patřící do serveru a nelze je obnovit. Odstraněný Server nelze obnovit. Pokud jste ale nakonfigurovali dlouhodobé uchovávání, zálohy pro databáze s LTR nebudou odstraněny a tyto databáze je možné obnovit.
 
-## <a name="how-often-do-backups-happen"></a>How often do backups happen
+## <a name="how-often-do-backups-happen"></a>Jak často dochází k zálohování
 
-### <a name="backups-for-point-in-time-restore"></a>Backups for point-in-time restore
+### <a name="backups-for-point-in-time-restore"></a>Zálohy pro obnovení k bodu v čase
 
-SQL Database supports self-service for point-in-time restore (PITR) by automatically creating full backup, differential backups, and transaction log backups. Full database backups are created weekly, differential database backups are generally created every 12 hours, and transaction log backups are generally created every 5 - 10 minutes, with the frequency based on the compute size and amount of database activity. The first full backup is scheduled immediately after a database is created. It usually completes within 30 minutes, but it can take longer when the database is of a significant size. For example, the initial backup can take longer on a restored database or a database copy. After the first full backup, all further backups are scheduled automatically and managed silently in the background. The exact timing of all database backups is determined by the SQL Database service as it balances the overall system workload. You cannot change or disable the backup jobs. 
+SQL Database podporuje samoobslužné obnovení (PITR) pomocí automatického vytváření úplných záloh, rozdílových záloh a záloh protokolů transakcí. Úplné zálohy databáze jsou vytvářeny týdně, rozdílové zálohy databáze jsou obvykle vytvářeny každých 12 hodin a zálohy protokolu transakcí jsou obvykle vytvářeny každých 5-10 minut, přičemž četnost je založena na výpočetní velikosti a množství aktivity databáze. První úplné zálohování je naplánováno ihned po vytvoření databáze. Obvykle se dokončí do 30 minut, ale může trvat déle, než databáze bude mít značnou velikost. Například počáteční záloha může trvat déle na obnovenou databázi nebo kopii databáze. Po prvním úplném zálohování se všechna další zálohování naplánují automaticky a budou spravovaná na pozadí. Přesné časování všech záloh databáze určuje služba SQL Database, protože vyrovnává celkovou úlohu systému. Úlohy zálohování nemůžete změnit ani zakázat. 
 
-The PITR backups are geo-redundant and protected by [Azure Storage cross-regional replication](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+Zálohy PITR jsou geograficky redundantní a chráněné [Azure Storage replikace mezi různými oblastmi](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) .
 
-For more information, see [Point-in-time restore](sql-database-recovery-using-backups.md#point-in-time-restore)
+Další informace najdete v tématu [obnovení k bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) .
 
-### <a name="backups-for-long-term-retention"></a>Backups for long-term retention
+### <a name="backups-for-long-term-retention"></a>Zálohy pro dlouhodobou dobu uchovávání
 
-Single and pooled databases offer the option of configuring long-term retention (LTR) of full backups for up to 10 years in Azure Blob storage. If LTR policy is enabled, the weekly full backups are automatically copied to a different RA-GRS storage container. To meet different compliance requirement, you can select different retention periods for weekly, monthly and/or yearly backups. The storage consumption depends on the selected frequency of backups and the retention period(s). You can use the [LTR pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=sql-database) to estimate the cost of LTR storage.
+Databáze typu Single a Pool nabízí možnost konfigurace dlouhodobého uchovávání (LTR) úplných záloh po dobu až 10 let v úložišti objektů BLOB v Azure. Pokud je povolená zásada LTR, týdenní úplné zálohy se automaticky zkopírují do jiného kontejneru úložiště RA-GRS. Pokud chcete splnit jiný požadavek na dodržování předpisů, můžete pro týdenní, měsíční nebo roční zálohy vybrat jinou dobu uchování. Spotřeba úložiště závisí na zvolené četnosti zálohování a na dobu uchování (e). Pomocí [cenové kalkulačky ltr](https://azure.microsoft.com/pricing/calculator/?service=sql-database) můžete odhadnout náklady na úložiště ltr.
 
-Like PITR, the LTR backups are geo-redundant and protected by [Azure Storage cross-regional replication](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
+Podobně jako PITR, zálohy LTR jsou geograficky redundantní a chráněné [Azure Storage replikace mezi různými oblastmi](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
 
-For more information, see [Long-term backup retention](sql-database-long-term-retention.md).
+Další informace najdete v tématu [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
 
-## <a name="storage-costs"></a>Náklady na úložiště
-For single databases and managed instances, a minimum backup storage amount equal to 100% of database size is provided at no extra charge. For elastic pools, a minimum backup storage amount equal to 100% of the allocated data storage for the pool is provided at no extra charge. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc. This additional consumption will depend on the workload and size of the individual databases.
+## <a name="storage-costs"></a>Cena za uložení
+U izolovaných databází a spravovaných instancí se minimální velikost záložního úložiště rovná 100% velikosti databáze poskytuje bez dalších poplatků. V případě elastických fondů se minimální hodnota úložiště zálohy rovná 100% přiděleného úložiště dat pro fond, a to bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc. Tato další spotřeba bude záviset na zatížení a velikosti jednotlivých databází.
 
-You can use Azure subscription cost analysis to determine your current spending on backup storage.
+Pomocí analýzy nákladů na předplatné Azure můžete zjistit aktuální výdaje na úložiště záloh.
 
-![Backup storage cost analysis](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
+![Analýza nákladů na úložiště zálohování](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
 
-If you go to your subscription and open Cost Analysis blade, you can select meter subcategory **mi pitr backup storage** to see your current backup cost and charge forecast. You can also include other meter subcategories such as **managed instance general purpose - storage** or **managed instance general purpose - compute gen5** to compare backup storage cost with other cost categories.
+Pokud přejdete do okna předplatné a otevřete okno Analýza nákladů, můžete vybrat podkategorii měřičů **Pitr Backup** , abyste viděli aktuální náklady na zálohování a prognózu nákladů. Můžete také zahrnout další podkategorie měřičů, jako je například **Managed instance pro obecné účely – úložiště** nebo **spravovaná instance pro obecné účely – COMPUTE Gen5** pro porovnání nákladů na úložiště zálohování s jinými kategoriemi nákladů.
 
 > [!Note]
-> You can [change retention period to 7 days](#change-pitr-backup-retention-period-using-azure-portal) to reduce the backup storage cost.
+> [Dobu uchování můžete změnit na 7 dní](#change-pitr-backup-retention-period-using-azure-portal) , abyste snížili náklady na úložiště zálohování.
 
-For more information about storage prices, see the [pricing](https://azure.microsoft.com/pricing/details/sql-database/single/) page. 
+Další informace o cenách za úložiště najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/sql-database/single/) . 
 
-## <a name="are-backups-encrypted"></a>Are backups encrypted
+## <a name="are-backups-encrypted"></a>Jsou zálohy zašifrované
 
-If your database is encrypted with TDE, the backups are automatically encrypted at rest, including LTR backups. When TDE is enabled for an Azure SQL database, backups are also encrypted. All new Azure SQL databases are configured with TDE enabled by default. For more information on TDE, see  [Transparent Data Encryption with Azure SQL Database](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Pokud je vaše databáze zašifrovaná pomocí TDE, zálohy se automaticky zašifrují v klidovém stavu, včetně záloh LTR. Když je u databáze SQL Azure povolené TDE, zálohují se taky zálohy. Ve výchozím nastavení jsou všechny nové databáze SQL Azure nakonfigurované s povoleným TDE. Další informace o TDE naleznete v tématu [transparentní šifrování dat with Azure SQL Database](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
-## <a name="how-does-microsoft-ensure-backup-integrity"></a>How does Microsoft ensure backup integrity
+## <a name="how-does-microsoft-ensure-backup-integrity"></a>Jak Microsoft zajišťuje integritu zálohování
 
-On an ongoing basis, the Azure SQL Database engineering team automatically tests the restore of automated database backups of databases placed in Logical servers and Elastic pools (this is not available in Managed Instance). Upon point-in-time restore, databases also receive integrity checks using DBCC CHECKDB.
+V nepřetržitém případě Azure SQL Database technický tým automaticky testuje obnovení automatizovaných záloh databáze databází umístěných na logických serverech a elastických fondech (není k dispozici ve spravované instanci). Při obnovení k bodu v čase získávají databáze také kontroly integrity pomocí příkazu DBCC CHECKDB.
 
-Managed Instance takes automatic initial backup with `CHECKSUM` of the databases restored using native `RESTORE` command or Data Migration Service once the migration is completed.
+Spravovaná instance provádí automatické počáteční zálohování s `CHECKSUM` databází obnovených pomocí nativního příkazu `RESTORE` nebo služby migrace dat po dokončení migrace.
 
-Any issues found during the integrity check will result in an alert to the engineering team. For more information about data integrity in Azure SQL Database, see [Data Integrity in Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
+Všechny problémy zjištěné během kontroly integrity budou mít za následek upozornění technickému týmu. Další informace o integritě dat v Azure SQL Database najdete v tématu [Integrita dat v Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
-## <a name="how-do-automated-backups-impact-compliance"></a>How do automated backups impact compliance
+## <a name="how-do-automated-backups-impact-compliance"></a>Jak automatizované zálohování ovlivňuje dodržování předpisů
 
-When you migrate your database from a DTU-based service tier with the default PITR retention of 35 days, to a vCore-based service tier, the PITR retention is preserved to ensure that your application's data recovery policy is not compromised. If the default retention doesn't meet your compliance requirements, you can change the PITR retention period using PowerShell or REST API. For more information, see [Change Backup Retention Period](#how-to-change-the-pitr-backup-retention-period).
+Při migraci databáze z úrovně služby založené na DTU s výchozím PITR uchování 35 dnů do úrovně služby založené na vCore se uchování PITR zachová, aby se zajistilo ohrožení zásad obnovení dat vaší aplikace. Pokud výchozí doba uchovávání nesplňuje požadavky na dodržování předpisů, můžete změnit dobu uchování PITR pomocí PowerShellu nebo REST API. Další informace najdete v tématu [Změna doby uchování zálohy](#how-to-change-the-pitr-backup-retention-period).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="how-to-change-the-pitr-backup-retention-period"></a>How to change the PITR backup retention period
+## <a name="how-to-change-the-pitr-backup-retention-period"></a>Jak změnit dobu uchovávání záloh PITR
 
-You can change the default PITR backup retention period using the Azure portal, PowerShell, or the REST API. The supported values are: 7, 14, 21, 28 or 35 days. The following examples illustrate how to change PITR retention to 28 days.
+Výchozí dobu uchovávání záloh PITR můžete změnit pomocí Azure Portal, PowerShellu nebo REST API. Podporované hodnoty jsou: 7, 14, 21, 28 nebo 35 dnů. Následující příklady ukazují, jak změnit PITR uchování na 28 dní.
 
 > [!WARNING]
-> If you reduce the current retention period, all existing backups older than the new retention period are no longer available. If you increase the current retention period, SQL Database will keep the existing backups until the longer retention period is reached.
+> Pokud zmenšíte aktuální dobu uchovávání, nebudou už všechny existující zálohy starší než nová doba uchování k dispozici. Pokud zvýšíte aktuální dobu uchovávání, SQL Database zachová stávající zálohy, dokud nedosáhnete delší doby uchovávání.
 
 > [!NOTE]
-> These APIs will only impact the PITR retention period. If you configured LTR for your database, it will not be impacted. For more information about how to change the LTR retention period(s), see [Long-term retention](sql-database-long-term-retention.md).
+> Tato rozhraní API budou mít vliv jenom na dobu uchovávání PITR. Pokud jste nakonfigurovali LTR pro vaši databázi, nebude to mít vliv na. Další informace o tom, jak změnit dobu uchování LTR, najdete v tématu [dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
-### <a name="change-pitr-backup-retention-period-using-azure-portal"></a>Change PITR backup retention period using Azure portal
+### <a name="change-pitr-backup-retention-period-using-azure-portal"></a>Změna doby uchovávání záloh PITR pomocí Azure Portal
 
-To change the PITR backup retention period using the Azure portal, navigate to the server object whose retention period you wish to change within the portal and then select the appropriate option based on which server object you're modifying.
+Pokud chcete změnit dobu uchovávání záloh PITR pomocí Azure Portal, přejděte na objekt serveru, jehož doba uchovávání dat chcete změnit na portálu, a pak vyberte vhodnou možnost podle toho, který objekt serveru upravujete.
 
-#### <a name="single-database--elastic-poolstabsingle-database"></a>[Single database & Elastic pools](#tab/single-database)
+#### <a name="single-database--elastic-poolstabsingle-database"></a>[Elastické fondy & jedné databáze](#tab/single-database)
 
-Change of PITR backup retention for single Azure SQL Databases is performed at the server level. Change made at the server level applies to databases on that server. To change PITR for Azure SQL Database server from Azure portal, navigate to the server overview blade, click on Manage Backups on the navigation menu, and then click on Configure retention at the navigation bar.
+Změna uchovávání PITR zálohování pro jednu databázi Azure SQL se provádí na úrovni serveru. Změny provedené na úrovni serveru se vztahují na databáze na tomto serveru. Chcete-li změnit PITR pro Azure SQL Database Server z Azure Portal, přejděte na okno Přehled serveru, klikněte na možnost spravovat zálohy v navigační nabídce a pak na navigačním panelu klikněte na možnost konfigurace uchovávání.
 
-![Change PITR Azure portal](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
+![Změnit Azure Portal PITR](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instancetabmanaged-instance"></a>[Managed Instance](#tab/managed-instance)
+#### <a name="managed-instancetabmanaged-instance"></a>[Spravovaná instance](#tab/managed-instance)
 
-Change of PITR backup retention for SQL Database managed instance is performed at an individual database level. To change PITR backup retention for an instance database from Azure portal, navigate to the individual database overview blade, and then click on Configure backup retention at the navigation bar.
+Změna uchovávání záloh PITR pro SQL Database spravovanou instanci se provádí na úrovni jednotlivých databází. Chcete-li změnit uchovávání záloh PITR pro databázi instance z Azure Portal, přejděte do okna Přehled individuální databáze a pak klikněte na možnost konfigurace uchovávání záloh na navigačním panelu.
 
-![Change PITR Azure portal](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
+![Změnit Azure Portal PITR](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
 
 ---
 
-### <a name="change-pitr-backup-retention-period-using-powershell"></a>Change PITR backup retention period using PowerShell
+### <a name="change-pitr-backup-retention-period-using-powershell"></a>Změna doby uchovávání záloh PITR pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 ```powershell
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
 
-### <a name="change-pitr-retention-period-using-rest-api"></a>Change PITR retention period using REST API
+### <a name="change-pitr-retention-period-using-rest-api"></a>Změna doby uchování PITR pomocí REST API
 
-#### <a name="sample-request"></a>Ukázková žádost
+#### <a name="sample-request"></a>Ukázkový požadavek
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
@@ -171,7 +171,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 #### <a name="sample-response"></a>Ukázková odezva
 
-Status code: 200
+Stavový kód: 200
 
 ```json
 {
@@ -184,12 +184,12 @@ Status code: 200
 }
 ```
 
-For more information, see [Backup Retention REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
+Další informace najdete v tématu [REST API uchovávání záloh](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Database backups are an essential part of any business continuity and disaster recovery strategy because they protect your data from accidental corruption or deletion. To learn about the other Azure SQL Database business continuity solutions, see [Business continuity overview](sql-database-business-continuity.md).
-- To restore to a point in time using the Azure portal, see [restore database to a point in time using the Azure portal](sql-database-recovery-using-backups.md).
-- To restore to a point in time using PowerShell, see [restore database to a point in time using PowerShell](scripts/sql-database-restore-database-powershell.md).
-- To configure, manage, and restore from long-term retention of automated backups in Azure Blob storage using the Azure portal, see [Manage long-term backup retention using the Azure portal](sql-database-long-term-backup-retention-configure.md).
-- To configure, manage, and restore from long-term retention of automated backups in Azure Blob storage using PowerShell, see [Manage long-term backup retention using PowerShell](sql-database-long-term-backup-retention-configure.md).
+- Zálohy databází jsou důležitou součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii, protože chrání vaše data před náhodným poškozením nebo odstraněním. Další informace o dalších Azure SQL Database řešení pro provozní kontinuitu najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).
+- Obnovení k určitému bodu v čase pomocí Azure Portal najdete v tématu [obnovení databáze k určitému bodu v čase pomocí Azure Portal](sql-database-recovery-using-backups.md).
+- Postup obnovení k určitému bodu v čase pomocí prostředí PowerShell najdete v tématu [obnovení databáze k určitému bodu v čase pomocí prostředí PowerShell](scripts/sql-database-restore-database-powershell.md).
+- Konfigurace, Správa a obnovení z dlouhodobého uchovávání automatizovaných záloh v úložišti objektů BLOB v Azure pomocí Azure Portal najdete v tématu [Správa dlouhodobého uchovávání záloh pomocí Azure Portal](sql-database-long-term-backup-retention-configure.md).
+- Informace o konfiguraci, správě a obnovení z dlouhodobého uchovávání automatizovaných záloh v úložišti objektů BLOB v Azure pomocí PowerShellu najdete v tématu [Správa dlouhodobého uchovávání záloh pomocí PowerShellu](sql-database-long-term-backup-retention-configure.md).

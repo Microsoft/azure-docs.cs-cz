@@ -1,5 +1,5 @@
 ---
-title: Create a function in Azure triggered by queue messages
+title: Vytvoření funkce v Azure aktivované zprávami ve frontě
 description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, kterou vyvolávají zprávy odeslané do fronty služby Azure Storage.
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: quickstart
@@ -18,7 +18,7 @@ Zjistěte, jak vytvořit funkci, která se aktivuje při odeslání zpráv do fr
 
 ![Zobrazte si zprávy v protokolech.](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Stáhnout a nainstalovat [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
@@ -108,7 +108,7 @@ Teď máte frontu úložiště a můžete funkci otestovat přidáním zprávy d
 
 Vytvořili jste funkci, která se spustí při přidání zprávy do fronty úložiště. Další informace o aktivačních událostech fronty úložiště najdete v tématu [Vazby front úložiště služby Azure Functions](functions-bindings-storage-queue.md).
 
-Now that you have a created your first function, let's add an output binding to the function that writes a message back to another queue.
+Teď, když máte vytvořenou první funkci, přidáme výstupní vazbu do funkce, která zapíše zprávu zpět do jiné fronty.
 
 > [!div class="nextstepaction"]
 > [Přidání zpráv do fronty Azure Storage pomocí funkcí](functions-integrate-storage-queue-output-binding.md)

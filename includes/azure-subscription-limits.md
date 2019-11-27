@@ -17,17 +17,17 @@ ms.locfileid: "74224480"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| vCPUs per [subscription](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10 000 |
-| [Coadministrators](../articles/billing-add-change-azure-subscription-administrator.md) per subscription |200 |200 |
-| [Storage accounts](../articles/storage/common/storage-create-storage-account.md) per subscription<sup>2</sup> |100 |100 |
+| vCPU na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10 000 |
+| [Spolusprávci](../articles/billing-add-change-azure-subscription-administrator.md) na předplatné |200 |200 |
+| [Účty úložiště](../articles/storage/common/storage-create-storage-account.md) na předplatné<sup>2</sup> |100 |100 |
 | [Cloudové služby](../articles/cloud-services/cloud-services-choose-me.md) na předplatné |20 |200 |
-| [Local networks](/previous-versions/azure/reference/jj157100(v=azure.100)) per subscription |10 |500 |
-| DNS servers per subscription |9 |100 |
-| Reserved IPs per subscription |20 |100 |
+| [Místní sítě](/previous-versions/azure/reference/jj157100(v=azure.100)) na předplatné |10 |500 |
+| Servery DNS na předplatné |9 |100 |
+| Rezervované IP adresy na předplatné |20 |100 |
 | [Skupiny vztahů](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na předplatné |256 |256 |
-| Subscription name length (characters) | 64 | 64 |
+| Délka názvu předplatného (ve znacích) | 64 | 64 |
 
-<sup>1</sup>Extra small instances count as one vCPU toward the vCPU limit despite using a partial CPU core.
+<sup>1</sup> Velmi malé instance se počítají jako jeden vCPU k vCPU limitu, i když se používá částečný procesor.
 
-<sup>2</sup>The storage account limit includes both Standard and Premium storage accounts. 
+<sup>2</sup> . Limit účtu úložiště zahrnuje účty úložiště úrovně Standard i Premium. 
 

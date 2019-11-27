@@ -1,6 +1,6 @@
 ---
 title: Synchronizace dat
-description: This overview introduces Azure SQL Data Sync
+description: Tento přehled zavádí synchronizace dat SQL Azure
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -18,227 +18,227 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422522"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Sync data across multiple cloud and on-premises databases with SQL Data Sync
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
-SQL Data Sync is a service built on Azure SQL Database that lets you synchronize the data you select bi-directionally across multiple SQL databases and SQL Server instances.
+Synchronizace dat SQL je služba založená na Azure SQL Database, která umožňuje synchronizovat data, která jste vybrali obousměrně napříč několika databázemi SQL a instance systému SQL Server.
 
 > [!IMPORTANT]
-> Azure SQL Data Sync does not support Azure SQL Database Managed Instance at this time.
+> Azure Synchronizace dat SQL v tuto chvíli nepodporuje spravovanou instanci Azure SQL Database.
 
-## <a name="when-to-use-data-sync"></a>When to use Data Sync
+## <a name="when-to-use-data-sync"></a>Kdy použít synchronizace dat
 
-Data Sync is useful in cases where data needs to be kept updated across several Azure SQL databases or SQL Server databases. Here are the main use cases for Data Sync:
+Synchronizace dat je užitečná v případech, kdy je potřeba aktualizovat data napříč několika databázemi SQL Azure nebo databázemi SQL Server. Tady jsou hlavní svědectví pro synchronizaci dat:
 
-- **Hybrid Data Synchronization:** With Data Sync, you can keep data synchronized between your on-premises databases and Azure SQL databases to enable hybrid applications. This capability may appeal to customers who are considering moving to the cloud and would like to put some of their application in Azure.
-- **Distributed Applications:** In many cases, it's beneficial to separate different workloads across different databases. For example, if you have a large production database, but you also need to run a reporting or analytics workload on this data, it's helpful to have a second database for this additional workload. This approach minimizes the performance impact on your production workload. You can use Data Sync to keep these two databases synchronized.
-- **Globally Distributed Applications:** Many businesses span several regions and even several countries/regions. To minimize network latency, it's best to have your data in a region close to you. With Data Sync, you can easily keep databases in regions around the world synchronized.
+- **Synchronizace hybridních dat:** Díky synchronizaci dat můžete udržovat data synchronizovaná mezi místními databázemi a databázemi SQL Azure a povolit tak hybridní aplikace. Tato funkce může odvolat zákazníkům, kteří jsou zvažujete Přesun do cloudu a chcete poskládali z jejich aplikace v Azure.
+- **Distribuované aplikace:** V mnoha případech je výhodné oddělit různé úlohy napříč různými databázemi. Například pokud máte velké provozní databáze, ale budete potřebovat ke spuštění úlohy vytváření sestav, nebo analýzy těchto dat, je užitečné mít druhý databáze pro tento další úlohy. Tento přístup minimalizuje dopad na výkon na vaše produkční úlohy. Synchronizace dat můžete ponechat tyto dvě databáze synchronizované.
+- **Globálně distribuované aplikace:** Řada firem zahrnuje několik oblastí a dokonce i několik zemí nebo oblastí. Kvůli minimalizaci latence sítě, je nejvhodnější pro vaše data v oblasti blízko vás. Pomocí synchronizace dat se snadnou vejdou databází v oblastech po celém světě synchronizované.
 
-Data Sync isn't the preferred solution for the following scenarios:
+Synchronizace dat není preferovaným řešením pro následující scénáře:
 
-| Scénář | Some recommended solutions |
+| Scénář | Některé doporučená řešení. |
 |----------|----------------------------|
-| Zotavení po havárii | [Azure geo-redundant backups](sql-database-automated-backups.md) |
-| Read Scale | [Use read-only replicas to load balance read-only query workloads (preview)](sql-database-read-scale-out.md) |
-| ETL (OLTP to OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) or [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| Migration from on-premises SQL Server to Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| Zotavení po havárii | [Geograficky redundantní zálohy Azure](sql-database-automated-backups.md) |
+| Škálování pro čtení | [Použití replik jen pro čtení k vyrovnávání zatížení úloh dotazů jen pro čtení (Preview)](sql-database-read-scale-out.md) |
+| ETL (OLTP na OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) nebo [služba SSIS (SQL Server Integration Services)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
+| Migrace z místního SQL serveru do Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
-## <a name="overview-of-sql-data-sync"></a>Overview of SQL Data Sync
+## <a name="overview-of-sql-data-sync"></a>Přehled Synchronizace dat SQL
 
-Data Sync is based around the concept of a Sync Group. A Sync Group is a group of databases that you want to synchronize.
+Synchronizace dat vychází kolem koncepce skupině synchronizace. Skupina synchronizace se skupinou databází, které se mají synchronizovat.
 
-Data Sync uses a hub and spoke topology to synchronize data. You define one of the databases in the sync group as the Hub Database. The rest of the databases are member databases. Sync occurs only between the Hub and individual members.
+Synchronizace dat používá k synchronizaci dat hvězdicové topologii. Definujte jedné z databází ve skupině synchronizace jako databáze centra. Zbytek databáze je databází člena. Synchronizace nastávají jenom mezi centra a jednotlivé členy.
 
-- The **Hub Database** must be an Azure SQL Database.
-- The **member databases** can be either SQL Databases, on-premises SQL Server databases, or SQL Server instances on Azure virtual machines.
-- The **Sync Database** contains the metadata and log for Data Sync. The Sync Database has to be an Azure SQL Database located in the same region as the Hub Database. The Sync Database is customer created and customer owned.
+- **Databáze centra** musí být Azure SQL Database.
+- **Členské databáze** můžou být databáze SQL, místní SQL Server databáze nebo instance SQL Server na virtuálních počítačích Azure.
+- **Synchronizovaná databáze** obsahuje metadata a protokol pro synchronizaci dat. Synchronizovaná databáze musí být Azure SQL Database nacházející se ve stejné oblasti jako databáze centra. Synchronizace databáze je zákazník vytvořil a vlastněné zákazníkem.
 
 > [!NOTE]
-> If you're using an on premises database as a member database, you have to [install and configure a local sync agent](sql-database-get-started-sql-data-sync.md#add-on-prem).
+> Pokud používáte místní databázi jako členskou databázi, je nutné [nainstalovat a nakonfigurovat místního agenta synchronizace](sql-database-get-started-sql-data-sync.md#add-on-prem).
 
-![Sync data between databases](media/sql-database-sync-data/sync-data-overview.png)
+![Synchronizace dat mezi databázemi](media/sql-database-sync-data/sync-data-overview.png)
 
-A Sync Group has the following properties:
+Skupina synchronizace má následující vlastnosti:
 
-- The **Sync Schema** describes which data is being synchronized.
-- The **Sync Direction** can be bi-directional or can flow in only one direction. That is, the Sync Direction can be *Hub to Member*, or *Member to Hub*, or both.
-- The **Sync Interval** describes how often synchronization occurs.
-- The **Conflict Resolution Policy** is a group level policy, which can be *Hub wins* or *Member wins*.
+- **Schéma synchronizace** popisuje, která data se synchronizují.
+- **Směr synchronizace** může být obousměrný nebo může tok pouze v jednom směru. To znamená, že směr synchronizace může být z *rozbočovače na člena*nebo z *člena do středu nebo do*obou.
+- **Interval synchronizace** popisuje, jak často dochází k synchronizaci.
+- **Zásada řešení konfliktů** je zásada na úrovni skupiny, kterou je možné vytvořit jako *rozbočovač WINS* nebo *Členové služby WINS*.
 
-## <a name="how-does-data-sync-work"></a>How does Data Sync work
+## <a name="how-does-data-sync-work"></a>Jak synchronizace dat funguje
 
-- **Tracking data changes:** Data Sync tracks changes using insert, update, and delete triggers. The changes are recorded in a side table in the user database. Note that BULK INSERT doesn't fire triggers by default. If FIRE_TRIGGERS isn't specified, no insert triggers execute. Add the FIRE_TRIGGERS option so Data Sync can track those inserts. 
-- **Synchronizing data:** Data Sync is designed in a Hub and Spoke model. The Hub syncs with each member individually. Changes from the Hub are downloaded to the member and then changes from the member are uploaded to the Hub.
-- **Resolving conflicts:** Data Sync provides two options for conflict resolution, *Hub wins* or *Member wins*.
-  - If you select *Hub wins*, the changes in the hub always overwrite changes in the member.
-  - If you select *Member wins*, the changes in the member overwrite changes in the hub. If there's more than one member, the final value depends on which member syncs first.
+- **Sledování změn dat:** Synchronizace dat sleduje změny pomocí aktivačních událostí vložení, aktualizace a odstranění. Změny se zaznamenávají v postranní tabulky v databázi uživatelů. Všimněte si, že BULK INSERT ve výchozím nastavení neaktivují triggery. Pokud není zadaný FIRE_TRIGGERS, nespustí se žádné triggery vložení. Přidáte možnost požadováno tak synchronizaci dat můžete sledovat tyto operace vložení. 
+- **Synchronizují se data:** Synchronizace dat je navržena v modelu hvězdicového a paprskového modelu. Centrum synchronizuje s každý člen jednotlivě. Změny z centra se stáhnou do člena a pak se nahrají změny od člena k rozbočovači.
+- **Řeší se konflikty:** Synchronizace dat poskytuje dvě možnosti pro řešení konfliktů, *centrum WINS* nebo *člena služby WINS*.
+  - Pokud vyberete možnost *centrum služby WINS*, změny v centru budou vždy přepisovat změny v členu.
+  - Pokud vyberete možnost *Členové serveru WINS*, změny ve členovi přepíšou změny v centru. Pokud existuje více než jednoho člena, konečná hodnota závisí na člen, který synchronizuje poprvé.
 
-## <a name="compare-data-sync-with-transactional-replication"></a>Compare Data Sync with Transactional Replication
+## <a name="compare-data-sync-with-transactional-replication"></a>Porovnání synchronizace dat s transakční replikací
 
 | | Synchronizace dat | Transakční replikace |
 |---|---|---|
-| Advantages | - Active-active support<br/>- Bi-directional between on-premises and Azure SQL Database | - Lower latency<br/>- Transactional consistency<br/>- Reuse existing topology after migration |
-| Disadvantages | - 5 min or more latency<br/>- No transactional consistency<br/>- Higher performance impact | - Can’t publish from Azure SQL Database single database or pooled database<br/>- High maintenance cost |
+| Výhody | – Aktivní – aktivní podpora<br/>– Obousměrné mezi místními a Azure SQL Database | – Nižší latence<br/>– Transakční konzistence<br/>-Opětovné použití existující topologie po migraci |
+| Nevýhody | – 5 min nebo větší latence<br/>-Žádná transakční konzistence<br/>– Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database izolované databáze nebo databáze ve fondu<br/>– Náklady vysoké údržby |
 
 ## <a name="get-started-with-sql-data-sync"></a>Začínáme se synchronizací dat SQL
 
-### <a name="set-up-data-sync-in-the-azure-portal"></a>Set up Data Sync in the Azure portal
+### <a name="set-up-data-sync-in-the-azure-portal"></a>Nastavení synchronizace dat na webu Azure Portal
 
 - [Nastavení Synchronizace dat SQL Azure](sql-database-get-started-sql-data-sync.md)
-- Data Sync Agent - [Data Sync Agent for Azure SQL Data Sync](sql-database-data-sync-agent.md)
+- Agent synchronizace dat – [Agent synchronizace dat pro Azure synchronizace dat SQL](sql-database-data-sync-agent.md)
 
-### <a name="set-up-data-sync-with-powershell"></a>Set up Data Sync with PowerShell
+### <a name="set-up-data-sync-with-powershell"></a>Nastavení synchronizace dat s využitím Powershellu
 
 - [Synchronizace mezi několika databázemi Azure SQL pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
 - [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
 
-### <a name="review-the-best-practices-for-data-sync"></a>Review the best practices for Data Sync
+### <a name="review-the-best-practices-for-data-sync"></a>Přečtěte si osvědčené postupy pro synchronizaci dat
 
 - [Osvědčené postupy pro Synchronizaci dat SQL Azure](sql-database-best-practices-data-sync.md)
 
-### <a name="did-something-go-wrong"></a>Did something go wrong
+### <a name="did-something-go-wrong"></a>Došlo k chybě.
 
 - [Řešení potíží se Synchronizací dat SQL Azure](sql-database-troubleshoot-data-sync.md)
 
-## <a name="consistency-and-performance"></a>Consistency and performance
+## <a name="consistency-and-performance"></a>Konzistencí a výkonem
 
 ### <a name="eventual-consistency"></a>Konečná konzistence
 
-Since Data Sync is trigger-based, transactional consistency isn't guaranteed. Microsoft guarantees that all changes are made eventually and that Data Sync doesn't cause data loss.
+Vzhledem k tomu, že synchronizace dat je založená na triggeru, není zaručena transakční konzistence. Společnost Microsoft zaručuje, že všechny změny budou provedeny nakonec a že synchronizace dat nezpůsobí ztrátu dat.
 
-### <a name="performance-impact"></a>Performance impact
+### <a name="performance-impact"></a>Dopad na výkon
 
-Data Sync uses insert, update, and delete triggers to track changes. It creates side tables in the user database for change tracking. These change tracking activities have an impact on your database workload. Assess your service tier and upgrade if needed.
+Synchronizace dat se používají vložení, aktualizace a odstranění aktivační události ke sledování změn. Vytvoří na straně tabulky v databázi uživatelů pro řešení change tracking. Tyto aktivity sledování změn mít vliv na vaše databázové úlohy. Vyhodnocení vaší úrovně služby a upgradovat v případě potřeby.
 
-Provisioning and deprovisioning during sync group creation, update, and deletion may also impact the database performance.
+Zřizování a rušení zřízení během vytváření skupiny synchronizace, aktualizace a odstranění může mít také vliv na výkon databáze.
 
-## <a name="sync-req-lim"></a> Requirements and limitations
+## <a name="sync-req-lim"></a>Požadavky a omezení
 
 ### <a name="general-requirements"></a>Obecné požadavky
 
-- Each table must have a primary key. Don't change the value of the primary key in any row. If you have to change a primary key value, delete the row and recreate it with the new primary key value.
+- Každá tabulka musí obsahovat primární klíč. Neměňte hodnotu primární klíč do libovolného řádku. Pokud budete muset změnit hodnotu primárního klíče, řádek odstranit a znovu ho vytvořte s novou hodnotu primárního klíče.
 
 > [!IMPORTANT]
-> Changing the value of an existing primary key will result in the following faulty behavior:
-> - Data between hub and member can be lost even though sync does not report any issue.
-> - Sync can fail because the tracking table has a non-existing row from source due to the primary key change.
+> Změna hodnoty existujícího primárního klíče bude mít za následek následující chybné chování:
+> - Data mezi centrem a členy mohou být ztracena, i když synchronizace neoznamuje žádné potíže.
+> - Synchronizace může selhat, protože tabulka sledování má neexistující řádek ze zdroje z důvodu změny primárního klíče.
 
 - Izolace snímku musí být povolená. Další informace najdete v tématu [Izolace snímku na SQL Serveru](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Obecná omezení
 
-- A table can't have an identity column that isn't the primary key.
-- A primary key can't have the following data types: sql_variant, binary, varbinary, image, xml.
-- Be cautious when you use the following data types as a primary key, because the supported precision is only to the second: time, datetime, datetime2, datetimeoffset.
-- The names of objects (databases, tables, and columns) can't contain the printable characters period (.), left square bracket ([), or right square bracket (]).
-- Azure Active Directory authentication isn't supported.
-- Tables with same name but different schema (for example, dbo.customers and sales.customers) aren't supported.
-- Columns with User Defined Data Types aren't supported
+- Tabulka nemůže mít sloupec identity, který není primárním klíčem.
+- Primární klíč nemůže mít následující datové typy: sql_variant, binary, varbinary, image, XML.
+- Buďte opatrní při použití těchto datových typů jako primární klíč, protože podporované přesnost je jenom na druhý: čas, datum a čas, datetime2, datetimeoffset.
+- Názvy objektů (databáze, tabulky a sloupce) nesmí obsahovat tečky tisknutelné znaky (.), levou hranatou závorku ([) nebo pravou hranatou závorku (]).
+- Ověřování Azure Active Directory se nepodporuje.
+- Tabulky se stejným názvem, ale různými schématy (například dbo. Customers a Sales. Customers), nejsou podporovány.
+- Sloupce s uživatelsky definovanými datovými typy nejsou podporované.
 
-#### <a name="unsupported-data-types"></a>Unsupported data types
+#### <a name="unsupported-data-types"></a>Nepodporované datové typy
 
 - FileStream
 - SQL/CLR UDT
-- XMLSchemaCollection (XML supported)
-- Cursor, RowVersion, Timestamp, Hierarchyid
+- Kolekci XMLSchemaCollection (XML podporováno)
+- Kurzor, RowVersion, časové razítko, Hierarchyid
 
-#### <a name="unsupported-column-types"></a>Unsupported column types
+#### <a name="unsupported-column-types"></a>Typy nepodporovanému sloupci
 
-Data Sync can't sync read-only or system-generated columns. Například:
+Synchronizace dat nelze synchronizovat jen pro čtení nebo systémem generované sloupce. Příklad:
 
-- Computed columns.
-- System-generated columns for temporal tables.
+- Vypočítané sloupce.
+- Systémem generovaných sloupce pro dočasné tabulky.
 
-#### <a name="limitations-on-service-and-database-dimensions"></a>Limitations on service and database dimensions
+#### <a name="limitations-on-service-and-database-dimensions"></a>Omezení týkající se služby a databáze dimenze
 
-| **Dimensions**                                                  | **Omezení**              | **Alternativní řešení**              |
+| **Použijí**                                                  | **Omezení**              | **Alternativní řešení**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
-| Maximum number of sync groups any database can belong to.       | 5                      |                             |
-| Maximum number of endpoints in a single sync group              | 30                     |                             |
-| Maximum number of on-premises endpoints in a single sync group. | 5                      | Create multiple sync groups |
-| Database, table, schema, and column names                       | 50 characters per name |                             |
-| Tables in a sync group                                          | 500                    | Create multiple sync groups |
-| Columns in a table in a sync group                              | 1 000                   |                             |
-| Data row size on a table                                        | 24 Mb                  |                             |
-| Minimum sync interval                                           | 5 minut              |                             |
+| Maximální počet skupin synchronizace všech databází může patřit do.       | 5                      |                             |
+| Maximální počet koncových bodů ve skupině jedním synchronizačním              | 30                     |                             |
+| Maximální počet místní koncové body ve skupině jedním synchronizačním. | 5                      | Vytvořte více skupin synchronizace |
+| Názvy databáze, tabulky, schéma a sloupce                       | 50 znaky na název |                             |
+| Tabulky ve skupině synchronizace                                          | 500                    | Vytvořte více skupin synchronizace |
+| Sloupce v tabulce v skupinu synchronizace                              | 1000                   |                             |
+| Velikost dat řádku v tabulce                                        | 24 Mb                  |                             |
+| Interval synchronizace minimální                                           | 5 minut              |                             |
 
 > [!NOTE]
-> There may be up to 30 endpoints in a single sync group if there is only one sync group. If there is more than one sync group, the total number of endpoints across all sync groups cannot exceed 30. If a database belongs to multiple sync groups, it is counted as multiple endpoints, not one.
+> Může existovat maximálně 30 koncové body ve skupině jedním synchronizačním dojde pouze jednu skupinu synchronizace. Pokud existuje více než jednu skupinu synchronizace, celkový počet koncových bodů ve všech skupinách synchronizace může mít maximálně 30. Pokud databáze náleží do několika skupin synchronizace, počítá se jako několik koncových bodů, není jednou.
 
-## <a name="faq-about-sql-data-sync"></a>FAQ about SQL Data Sync
+## <a name="faq-about-sql-data-sync"></a>Nejčastější dotazy týkající se synchronizace dat SQL
 
-### <a name="how-much-does-the-sql-data-sync-service-cost"></a>How much does the SQL Data Sync service cost
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Kolik stojí Služba Synchronizace dat SQL
 
-There's no charge for the SQL Data Sync service itself. However, you still collect data transfer charges for data movement in and out of your SQL Database instance. For more info, see [SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/).
+Za službu Synchronizace dat SQL sám se neúčtují žádné poplatky. Stále ale budete shromažďovat poplatky za přenos dat z SQL Database instance a z ní. Další informace najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
-### <a name="what-regions-support-data-sync"></a>What regions support Data Sync
+### <a name="what-regions-support-data-sync"></a>Které oblasti podporují synchronizaci dat
 
-SQL Data Sync is available in all regions.
+Synchronizace dat SQL je k dispozici ve všech oblastech.
 
-### <a name="is-a-sql-database-account-required"></a>Is a SQL Database account required
+### <a name="is-a-sql-database-account-required"></a>Je vyžadován účet SQL Database
 
-Ano. You must have a SQL Database account to host the Hub Database.
+Ano. Musíte mít účet databáze SQL k hostování databáze centra.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Can I use Data Sync to sync between SQL Server on-premises databases only
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Můžu použít synchronizaci dat pro synchronizaci mezi SQL Server jenom v místních databázích
 
-Not directly. You can sync between SQL Server on-premises databases indirectly, however, by creating a Hub database in Azure, and then adding the on-premises databases to the sync group.
+Ne přímo. Můžete synchronizovat mezi databází systému SQL Server v místním nepřímo, ale vytváří se Centrum databáze v Azure, a následným přidáním místních databází do skupiny synchronizace.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Can I use Data Sync to sync between SQL Databases that belong to different subscriptions
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Můžu použít synchronizaci dat pro synchronizaci mezi databázemi SQL, které patří do různých předplatných
 
-Ano. You can sync between SQL Databases that belong to resource groups owned by different subscriptions.
+Ano. Můžete synchronizovat mezi databázemi SQL, který patří do skupiny prostředků, které jsou vlastníkem různých předplatných.
 
-- If the subscriptions belong to the same tenant, and you have permission to all subscriptions, you can configure the sync group in the Azure portal.
-- Otherwise, you have to use PowerShell to add the sync members that belong to different subscriptions.
+- Pokud předplatná patří do stejného tenanta a máte oprávnění pro všechna předplatná, můžete nakonfigurovat skupinu synchronizace na portálu Azure portal.
+- V opačném případě budete muset pomocí prostředí PowerShell můžete přidat členy synchronizace, které patří do různých předplatných.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Can I use Data Sync to sync between SQL Databases that belong to different clouds (like Azure Public Cloud and Azure China 21Vianet)
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Můžu použít synchronizaci dat pro synchronizaci mezi databázemi SQL, které patří do různých cloudů (například veřejný cloud Azure a Azure Čína 21Vianet).
 
-Ano. You can sync between SQL Databases that belong to different clouds, you have to use PowerShell to add the sync members that belong to the different subscriptions.
+Ano. Můžete synchronizovat mezi databázemi SQL, do které patří do různých cloudů, je nutné použít prostředí PowerShell přidat členy synchronizace, které patří do různých předplatných.
 
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Can I use Data Sync to seed data from my production database to an empty database, and then sync them
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Můžu použít synchronizaci dat k osazení dat z mé provozní databáze do prázdné databáze a pak je synchronizovat
 
-Ano. Create the schema manually in the new database by scripting it from the original. After you create the schema, add the tables to a sync group to copy the data and keep it synced.
+Ano. Vytvoření schématu ručně v nové databázi pomocí skriptů z původní. Po vytvoření schématu tabulky přidáte do skupiny synchronizace pro kopírování dat a zachování jejich synchronizované.
 
-### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Should I use SQL Data Sync to back up and restore my databases
+### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Mám použít Synchronizace dat SQL k zálohování a obnovení mých databází
 
-It isn't recommended to use SQL Data Sync to create a backup of your data. You can't back up and restore to a specific point in time because SQL Data Sync synchronizations are not versioned. Furthermore, SQL Data Sync does not back up other SQL objects, such as stored procedures, and doesn't do the equivalent of a restore operation quickly.
+Nedoporučuje se používat Synchronizace dat SQL k vytvoření zálohy dat. Nemůžete zálohovat a obnovovat k určitému bodu v čase, protože synchronizace Synchronizace dat SQL nejsou ve verzi. Kromě toho Synchronizace dat SQL nezálohují jiné objekty SQL, například uložené procedury, a neprovádí operaci obnovení rychle.
 
-For one recommended backup technique, see [Copy an Azure SQL database](sql-database-copy.md).
+Jednu z doporučených postupů zálohování najdete v tématu [kopírování databáze SQL Azure](sql-database-copy.md).
 
-### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Can Data Sync sync encrypted tables and columns
+### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Může synchronizovat data synchronizace šifrovaných tabulek a sloupců
 
-- If a database uses Always Encrypted, you can sync only the tables and columns that are *not* encrypted. You can't sync the encrypted columns, because Data Sync can't decrypt the data.
-- If a column uses Column-Level Encryption (CLE), you can sync the column, as long as the row size is less than the maximum size of 24 Mb. Data Sync treats the column encrypted by key (CLE) as normal binary data. To decrypt the data on other sync members, you need to have the same certificate.
+- Pokud databáze používá Always Encrypted, můžete synchronizovat pouze ty tabulky a sloupce, které *nejsou šifrované.* Šifrované sloupce nelze synchronizovat, protože synchronizace dat nemůže data dešifrovat.
+- Pokud se sloupec používá šifrování sloupců (Vymazat), můžete synchronizovat sloupce, velikost řádku je menší než maximální velikost 24 Mb. Synchronizace dat zpracuje sloupec jako normální binární data zašifrovaná pomocí klíče (Vymazat). Dešifrovat data na ostatní členy synchronizace, musíte mít stejný certifikát.
 
-### <a name="is-collation-supported-in-sql-data-sync"></a>Is collation supported in SQL Data Sync
+### <a name="is-collation-supported-in-sql-data-sync"></a>Je kolace podporovaná v Synchronizace dat SQL
 
-Ano. SQL Data Sync supports collation in the following scenarios:
+Ano. Synchronizace dat SQL podporuje kolaci v následujících scénářích:
 
-- If the selected sync schema tables aren't already in your hub or member databases, then when you deploy the sync group, the service automatically creates the corresponding tables and columns with the collation settings selected in the empty destination databases.
-- If the tables to be synced already exist in both your hub and member databases, SQL Data Sync requires that the primary key columns have the same collation between hub and member databases to successfully deploy the sync group. There are no collation restrictions on columns other than the primary key columns.
+- Pokud vybrané tabulky schématu synchronizace ještě nejsou ve vašich hub nebo členských databázích, služba při nasazení skupiny synchronizace automaticky vytvoří odpovídající tabulky a sloupce s nastavením řazení vybraným v prázdných cílových databázích.
+- Pokud tabulky, které chcete synchronizovat, už existují v centra a členské databáze, synchronizaci dat SQL vyžaduje, primární klíč sloupců stejnou kolaci mezi databázemi centra a člen úspěšně nasadit skupinu synchronizace. Neexistují žádná omezení řazení pro sloupce kromě sloupce primárních klíčů.
 
-### <a name="is-federation-supported-in-sql-data-sync"></a>Is federation supported in SQL Data Sync
+### <a name="is-federation-supported-in-sql-data-sync"></a>Je ve Synchronizace dat SQL podporovaná federace
 
-Federation Root Database can be used in the SQL Data Sync Service without any limitation. You can't add the Federated Database endpoint to the current version of SQL Data Sync.
+Kořenová databáze federace je možné ve službě synchronizace dat SQL bez omezení. Nelze přidat koncový bod federované databáze do aktuální verze Synchronizace dat SQL.
 
 ## <a name="next-steps"></a>Další kroky
 
-### <a name="update-the-schema-of-a-synced-database"></a>Update the schema of a synced database
+### <a name="update-the-schema-of-a-synced-database"></a>Aktualizovat schéma synchronizace databáze
 
-Do you have to update the schema of a database in a sync group? Schema changes aren't automatically replicated. For some solutions, see the following articles:
+Budete muset aktualizovat schéma databáze ve skupině synchronizace? Změny schématu se nereplikují automaticky. Některá řešení najdete v následujících článcích:
 
-- [Automate the replication of schema changes in Azure SQL Data Sync](sql-database-update-sync-schema.md)
-- [Use PowerShell to update the sync schema in an existing sync group](scripts/sql-database-sync-update-schema.md)
+- [Automatizace replikace změn schématu v Azure Synchronizace dat SQL](sql-database-update-sync-schema.md)
+- [Použití PowerShellu k aktualizaci schématu synchronizace v existující skupině synchronizace](scripts/sql-database-sync-update-schema.md)
 
 ### <a name="monitor-and-troubleshoot"></a>Monitorování a odstraňování potíží
 
-Is SQL Data Sync doing as expected? To monitor activity and troubleshoot issues, see the following articles:
+Je Synchronizace dat SQL podle očekávání? Monitorování a řešení potíží, najdete v následujících článcích:
 
-- [Monitor Azure SQL Data Sync with Azure Monitor logs](sql-database-sync-monitor-oms.md)
+- [Monitorování Synchronizace dat SQL Azure pomocí protokolů Azure Monitor](sql-database-sync-monitor-oms.md)
 - [Řešení potíží se Synchronizací dat SQL Azure](sql-database-troubleshoot-data-sync.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Další informace o databázi SQL Database služby Azure
 
-For more info about SQL Database, see the following articles:
+Další informace o službě SQL Database najdete v následujících článcích:
 
 - [Přehled služby SQL Database](sql-database-technical-overview.md)
 - [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)

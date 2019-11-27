@@ -18,9 +18,9 @@ Zjistěte, jak vytvořit funkci aktivovanou při přidání nebo změně dat ve 
 
 ![Zobrazte si zprávy v protokolech.](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 + Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -53,11 +53,11 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 1. Do vyhledávacího pole zadejte `cosmos` a zvolte šablonu **Trigger Azure Cosmos DB**.
 
-1. If prompted, select **Install** to install the Azure Cosmos DB extension in the function app. Po úspěšném dokončení instalace vyberte **Pokračovat**.
+1. Pokud se zobrazí výzva, vyberte **instalovat** a nainstalujte Azure Cosmos DB rozšíření do aplikace Function App. Po úspěšném dokončení instalace vyberte **Pokračovat**.
 
     ![Instalace rozšíření vazby](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
-1. Nakonfigurujte novou aktivační událost s nastaveními uvedenými v tabulce pod obrázkem.
+1. Nakonfigurujte nový trigger s nastaveními uvedenými v tabulce pod obrázkem.
 
     ![Vytvoření funkce aktivované službou Azure Cosmos DB](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png)
 
@@ -75,7 +75,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
     Tato šablona funkce zapíše do protokolů počet dokumentů a ID prvního dokumentu.
 
-Potom se připojíte ke svému účtu služby Azure Cosmos DB a vytvoříte v databázi `Tasks` kolekci `Items`.
+Potom se připojíte ke svému účtu služby Azure Cosmos DB a vytvoříte v databázi `Items` kolekci `Tasks`.
 
 ## <a name="create-the-items-collection"></a>Vytvoření kolekce Items (Položky)
 

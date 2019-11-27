@@ -13,5 +13,5 @@ ms.locfileid: "74224510"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení | Poznámka |
 | --- | --- | --- | --- |
-| Azure Network Watcher | 1 per region | 1 per region | Network Watcher is created to enable access to the service. Only one instance of Network Watcher is required per subscription per region. |
-| Packet capture sessions |10,000 per region | 10 000 |Number of sessions only, not saved captures. |
+| Azure Network Watcher | 1 na oblast | 1 na oblast | Pro povolení přístupu ke službě se vytvoří Network Watcher. V každém předplatném na oblast se vyžaduje jenom jedna instance Network Watcher. |
+| Relace zachytávání paketů |10 000 na oblast | 10 000 |Počet pouze relací, neuložená zachycení. |

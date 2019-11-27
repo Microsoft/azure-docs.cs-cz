@@ -1,6 +1,6 @@
 ---
 title: Nasazení služby dělení a slučování
-description: Use the split-merge too to move data between sharded databases.
+description: K přesouvání dat mezi databázemi horizontálně dělené slouží také rozdělené sloučení.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -18,64 +18,64 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421027"
 ---
-# <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Deploy a split-merge service to move data between sharded databases
+# <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Nasazení služby dělení a slučování pro přesun dat mezi databázemi horizontálně dělené
 
-The split-merge tool lets you move data between sharded databases. See [Moving data between scaled-out cloud databases](sql-database-elastic-scale-overview-split-and-merge.md)
+Nástroj pro dělení a slučování umožňuje přesouvat data mezi databázemi horizontálně dělené. Viz [přesouvání dat mezi cloudové databáze s horizontálním](sql-database-elastic-scale-overview-split-and-merge.md) navýšení kapacity
 
-## <a name="download-the-split-merge-packages"></a>Download the Split-Merge packages
+## <a name="download-the-split-merge-packages"></a>Stáhnout balíčky pro dělení a slučování
 
-1. Download the latest NuGet version from [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget).
+1. Stáhněte si nejnovější verzi NuGet z [nugetu](https://docs.nuget.org/docs/start-here/installing-nuget).
 
-1. Open a command prompt and navigate to the directory where you downloaded nuget.exe. The download includes PowerShell commands.
+1. Otevřete příkazový řádek a přejděte do adresáře, kam jste stáhli NuGet. exe. Soubor ke stažení obsahuje příkazy prostředí PowerShell.
 
-1. Download the latest Split-Merge package into the current directory with the below command:
+1. Stáhněte si nejnovější balíček pro dělené sloučení do aktuálního adresáře pomocí příkazu níže:
 
    ```cmd
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-The files are placed in a directory named **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** where *x.x.xxx.x* reflects the version number. Find the split-merge Service files in the **content\splitmerge\service** sub-directory, and the Split-Merge PowerShell scripts (and required client dlls) in the **content\splitmerge\powershell** sub-directory.
+Soubory jsou umístěny v adresáři s názvem **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. x. x. xxx. x** , kde *x. x. xxx. x* odráží číslo verze. V podadresáři **content\splitmerge\service** vyhledejte soubory služby pro dělení a sloučení PowerShellu (a požadované klientské knihovny DLL) v podadresáři **content\splitmerge\powershell** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-1. Create an Azure SQL DB database that will be used as the split-merge status database. Přejděte na [Azure Portal](https://portal.azure.com). Create a new **SQL Database**. Give the database a name and create a new administrator and password. Be sure to record the name and password for later use.
+1. Vytvořte databázi Azure SQL DB, která bude použita jako databáze stavu rozdělení a sloučení. Přejděte na [portál Azure](https://portal.azure.com). Vytvoří nový **SQL Database**. Zadejte název databáze a vytvořte nového správce a heslo. Nezapomeňte si název a heslo zaznamenat pro pozdější použití.
 
-1. Ensure that your Azure SQL DB server allows Azure Services to connect to it. In the portal, in the **Firewall Settings**, ensure the **Allow access to Azure Services** setting is set to **On**. Click the "save" icon.
+1. Ujistěte se, že váš server Azure SQL DB umožňuje, aby se k němu připojovaly služby Azure. Na portálu v **nastavení brány firewall**ověřte, že nastavení **povolený přístup ke službám Azure** je nastavené na **zapnuto**. Klikněte na ikonu Uložit.
 
-1. Create an Azure Storage account for diagnostics output.
+1. Vytvořte účet Azure Storage pro výstup diagnostiky.
 
-1. Create an Azure Cloud Service for your Split-Merge service.
+1. Vytvořte cloudovou službu Azure pro vaši službu pro dělení a slučování.
 
-## <a name="configure-your-split-merge-service"></a>Configure your Split-Merge service
+## <a name="configure-your-split-merge-service"></a>Konfigurace služby pro dělení a slučování
 
-### <a name="split-merge-service-configuration"></a>Split-Merge service configuration
+### <a name="split-merge-service-configuration"></a>Konfigurace služby pro dělení a slučování
 
-1. In the folder into which you downloaded the Split-Merge assemblies, create a copy of the *ServiceConfiguration.Template.cscfg* file that shipped alongside *SplitMergeService.cspkg* and rename it *ServiceConfiguration.cscfg*.
+1. Ve složce, do které jste stáhli sestavení děleného sloučení, vytvořte kopii souboru *ServiceConfiguration. template. cscfg* , který byl dodán společně s *SplitMergeService. cspkg* a přejmenujte ho *ServiceConfiguration. cscfg*.
 
-1. Open *ServiceConfiguration.cscfg* in a text editor such as Visual Studio that validates inputs such as the format of certificate thumbprints.
+1. Otevřete *ServiceConfiguration. cscfg* v textovém editoru, jako je například Visual Studio, který ověřuje vstupy, jako je například formát kryptografických otisků certifikátů.
 
-1. Create a new database or choose an existing database to serve as the status database for Split-Merge operations and retrieve the connection string of that database.
+1. Vytvořte novou databázi nebo vyberte existující databázi, která bude sloužit jako stavová databáze pro operace dělení a slučování a načte připojovací řetězec této databáze.
 
    > [!IMPORTANT]
-   > At this time, the status database must use the Latin  collation (SQL\_Latin1\_General\_CP1\_CI\_AS). For more information, see [Windows Collation Name (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
+   > V tuto chvíli musí databáze stavu používat kolaci s latinkou (SQL\_latin1\_obecné\_CP1\_CI\_AS). Další informace najdete v tématu [název řazení Windows (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
 
-   With Azure SQL DB, the connection string typically is of the form:
+   V případě služby Azure SQL DB je připojovací řetězec typicky ve tvaru:
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-1. Enter this connection string in the *.cscfg* file in both the **SplitMergeWeb** and **SplitMergeWorker** role sections in the ElasticScaleMetadata setting.
+1. Tento připojovací řetězec zadejte v souboru *. cscfg* v částech role **SplitMergeWeb** a **SplitMergeWorker** v nastavení ElasticScaleMetadata.
 
-1. For the **SplitMergeWorker** role, enter a valid connection string to Azure storage for the **WorkerRoleSynchronizationStorageAccountConnectionString** setting.
+1. Pro roli **SplitMergeWorker** zadejte platný připojovací řetězec do služby Azure Storage pro nastavení **WorkerRoleSynchronizationStorageAccountConnectionString** .
 
 ### <a name="configure-security"></a>Konfigurace zabezpečení
 
-For detailed instructions to configure the security of the service, refer to the [Split-Merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
+Podrobné pokyny ke konfiguraci zabezpečení služby najdete v tématu [Konfigurace zabezpečení dělení](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-For the purposes of a simple test deployment for this tutorial, a minimal set of configuration steps will be performed to get the service up and running. These steps enable only the one machine/account executing them to communicate with the service.
+Pro účely jednoduchého testovacího nasazení pro účely tohoto kurzu se provede minimální sada kroků konfigurace, která zajistí zprovoznění služby. Tyto kroky umožňují, aby se ke službě komunikovaly jenom jeden počítač nebo účet, který je spouští.
 
 ### <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
-Create a new directory and from this directory execute the following command using a [Developer Command Prompt for Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) window:
+Vytvořte nový adresář a z tohoto adresáře spusťte pomocí okna [Developer Command Prompt pro aplikaci Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) následující příkaz:
 
    ```cmd
    makecert ^
@@ -86,46 +86,46 @@ Create a new directory and from this directory execute the following command usi
     -sv MyCert.pvk MyCert.cer
    ```
 
-You are asked for a password to protect the private key. Enter a strong password and confirm it. You are then prompted for the password to be used once more after that. Click **Yes** at the end to import it to the Trusted Certification Authorities Root store.
+Zobrazí se výzva k zadání hesla k ochraně privátního klíče. Zadejte silné heslo a potvrďte ho. Pak se zobrazí výzva k zadání hesla, které se bude používat ještě jednou. Kliknutím na **Ano** na konci ho naimportujete do kořenového úložiště důvěryhodné certifikační autority.
 
-### <a name="create-a-pfx-file"></a>Create a PFX file
+### <a name="create-a-pfx-file"></a>Vytvořit soubor PFX
 
-Execute the following command from the same window where makecert was executed; use the same password that you used to create the certificate:
+Spusťte následující příkaz ze stejného okna, ve kterém bylo provedeno Makecert; použijte stejné heslo, které jste použili k vytvoření certifikátu:
 
    ```cmd
    pvk2pfx -pvk MyCert.pvk -spc MyCert.cer -pfx MyCert.pfx -pi <password>
    ```
 
-### <a name="import-the-client-certificate-into-the-personal-store"></a>Import the client certificate into the personal store
+### <a name="import-the-client-certificate-into-the-personal-store"></a>Importovat klientský certifikát do osobního úložiště
 
-1. In Windows Explorer, double-click *MyCert.pfx*.
-2. In the **Certificate Import Wizard** select **Current User** and click **Next**.
-3. Confirm the file path and click **Next**.
-4. Type the password, leave **Include all extended properties** checked and click **Next**.
-5. Leave **Automatically select the certificate store[…]** checked and click **Next**.
-6. Click **Finish** and **OK**.
+1. V Průzkumníku Windows poklikejte na *mycert. pfx*.
+2. V **Průvodci importem certifikátu** vyberte **aktuální uživatel** a klikněte na **Další**.
+3. Potvrďte cestu k souboru a klikněte na tlačítko **Další**.
+4. Zadejte heslo, nechte zaškrtnuté políčko **Zahrnout všechny rozšířené vlastnosti** a klikněte na **Další**.
+5. Ponechte **automaticky vybrat úložiště certifikátů [...]** a klikněte na **Další**.
+6. Klikněte na **Dokončit** a pak na **OK**.
 
-### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Upload the PFX file to the cloud service
+### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Nahrání souboru PFX do cloudové služby
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
-2. Select **Cloud Services**.
-3. Select the cloud service you created above for the Split/Merge service.
-4. Click **Certificates** on the top menu.
-5. Click **Upload** in the bottom bar.
-6. Select the PFX file and enter the same password as above.
-7. Once completed, copy the certificate thumbprint from the new entry in the list.
+1. Přejděte na [portál Azure](https://portal.azure.com).
+2. Vyberte **Cloud Services**.
+3. Vyberte cloudovou službu, kterou jste vytvořili výše pro službu dělení a sloučení.
+4. V horní nabídce klikněte na **certifikáty** .
+5. Klikněte na **nahrát** na dolním panelu.
+6. Vyberte soubor PFX a zadejte stejné heslo jako výše.
+7. Po dokončení zkopírujte kryptografický otisk certifikátu z nové položky v seznamu.
 
-### <a name="update-the-service-configuration-file"></a>Update the service configuration file
+### <a name="update-the-service-configuration-file"></a>Aktualizace konfiguračního souboru služby
 
-Paste the certificate thumbprint copied above into the thumbprint/value attribute of these settings.
-For the worker role:
+Vložte miniaturu certifikátu zkopírovanou výše do atributu kryptografický otisk nebo hodnota tohoto nastavení.
+Pro roli pracovního procesu:
 
    ```xml
     <Setting name="DataEncryptionPrimaryCertificateThumbprint" value="" />
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
    ```
 
-For the web role:
+Pro webovou roli:
 
    ```xml
     <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
@@ -136,127 +136,127 @@ For the web role:
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
    ```
 
-Please note that for production deployments separate certificates should be used for the CA, for encryption, the Server certificate and client certificates. For detailed instructions on this, see [Security Configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
+Upozorňujeme, že pro produkční nasazení by se měly pro certifikační autoritu použít samostatné certifikáty pro šifrování, certifikát serveru a klientské certifikáty. Podrobné pokyny k tomuto postupu najdete v tématu [Konfigurace zabezpečení](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-## <a name="deploy-your-service"></a>Deploy your service
+## <a name="deploy-your-service"></a>Nasazení služby
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
-2. Select the cloud service that you created earlier.
+2. Vyberte cloudovou službu, kterou jste vytvořili dříve.
 3. Klikněte na **Přehled**.
-4. Choose the staging environment, then click **Upload**.
-5. In the dialog box, enter a deployment label. For both 'Package' and 'Configuration', click 'From Local' and choose the *SplitMergeService.cspkg* file and your cscfg file that you configured earlier.
-6. Ensure that the checkbox labeled **Deploy even if one or more roles contain a single instance** is checked.
-7. Hit the tick button in the bottom right to begin the deployment. Expect it to take a few minutes to complete.
+4. Zvolte testovací prostředí a pak klikněte na **nahrát**.
+5. V dialogovém okně zadejte popisek nasazení. Pro "balíček" i "konfigurace" klikněte na "z místního" a vyberte soubor *SplitMergeService. cspkg* a soubor. cscfg, který jste nakonfigurovali dříve.
+6. Zajistěte, aby se zaškrtávací políčko s názvem nasadit i v případě, že je zaškrtnuta **jedna nebo více rolí, které obsahují jednu instanci** .
+7. Spusťte nasazení kliknutím na tlačítko se značkou dole vpravo. Očekává se, že dokončení může trvat několik minut.
 
-## <a name="troubleshoot-the-deployment"></a>Troubleshoot the deployment
+## <a name="troubleshoot-the-deployment"></a>Řešení potíží s nasazením
 
-If your web role fails to come online, it is likely a problem with the security configuration. Check that the SSL is configured as described above.
+Pokud se webová role nepovede přejít do režimu online, je pravděpodobný problém s konfigurací zabezpečení. Ověřte, že je protokol SSL nakonfigurovaný jak je popsáno výše.
 
-If your worker role fails to come online, but your web role succeeds, it is most likely a problem connecting to the status database that you created earlier.
+Pokud se vaše role pracovního procesu nepodaří přejít do režimu online, ale vaše webová role bude úspěšná, pravděpodobně se jedná o problém s připojením k databázi stavu, kterou jste vytvořili dříve.
 
-- Make sure that the connection string in your cscfg is accurate.
-- Check that the server and database exist, and that the user id and password are correct.
-- For Azure SQL DB, the connection string should be of the form:
+- Ujistěte se, že je připojovací řetězec v poli cscfg přesný.
+- Ověřte, zda server a databáze existují a zda je správné ID uživatele a heslo.
+- V případě služby Azure SQL DB by měl být připojovací řetězec ve tvaru:
 
    `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<user>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-- Ensure that the server name does not begin with **https://** .
-- Ensure that your Azure SQL DB server allows Azure Services to connect to it. To do this, open your database in the portal and ensure that the **Allow access to Azure Services** setting is set to **On****.
+- Zajistěte, aby název serveru nezačínal na **https://** .
+- Ujistěte se, že váš server Azure SQL DB umožňuje, aby se k němu připojovaly služby Azure. Pokud to chcete provést, otevřete databázi na portálu a ujistěte se, že nastavení **Povolit přístup ke službám Azure** je nastaveno na * * zapnuto * * * *.
 
-## <a name="test-the-service-deployment"></a>Test the service deployment
+## <a name="test-the-service-deployment"></a>Testování nasazení služby
 
-### <a name="connect-with-a-web-browser"></a>Connect with a web browser
+### <a name="connect-with-a-web-browser"></a>Připojení pomocí webového prohlížeče
 
-Determine the web endpoint of your Split-Merge service. You can find this in the portal by going to the **Overview** of your cloud service and looking under **Site URL** on the right side. Replace **http://** with **https://** since the default security settings disable the HTTP endpoint. Load the page for this URL into your browser.
+Určete webový koncový bod služby pro dělení a slučování. Můžete to najít na portálu tak, že kliknete na **Přehled** cloudové služby a na pravé straně na **adrese URL webu** . Nahraďte **http://** hodnotou **https://** , protože výchozí nastavení zabezpečení zakáže koncový bod HTTP. Načte stránku pro tuto adresu URL do prohlížeče.
 
-### <a name="test-with-powershell-scripts"></a>Test with PowerShell scripts
+### <a name="test-with-powershell-scripts"></a>Testování pomocí skriptů PowerShellu
 
-The deployment and your environment can be tested by running the included sample PowerShell scripts.
+Nasazení a vaše prostředí je možné otestovat spuštěním zahrnutých ukázkových skriptů PowerShellu.
 
-The script files included are:
+K dispozici jsou tyto soubory skriptu:
 
-1. *SetupSampleSplitMergeEnvironment.ps1* - sets up a test data tier for Split/Merge (see table below for detailed description)
-2. *ExecuteSampleSplitMerge.ps1* - executes test operations on the test data tier (see table below for detailed description)
-3. *GetMappings.ps1* - top-level sample script that prints out the current state of the shard mappings.
-4. *ShardManagement.psm1*  - helper script that wraps the ShardManagement API
-5. *SqlDatabaseHelpers.psm1* - helper script for creating and managing SQL databases
+1. *SetupSampleSplitMergeEnvironment. ps1* – nastaví úroveň testovacích dat pro rozdělení a sloučení (podrobný popis najdete v tabulce níže).
+2. *ExecuteSampleSplitMerge. ps1* – provede operace testu na úrovni testovacích dat (podrobný popis najdete v tabulce níže).
+3. *Getmappings. ps1* -vzorový skript nejvyšší úrovně, který tiskne aktuální stav mapování horizontálních oddílů.
+4. Skript *ShardManagement. psm1* -Helper, který zabalí rozhraní ShardManagement API
+5. *SqlDatabaseHelpers. psm1* – Pomocný skript pro vytváření a správu databází SQL
    
    <table style="width:100%">
      <tr>
-       <th>PowerShell file</th>
+       <th>Soubor PowerShellu</th>
        <th>Kroky</th>
      </tr>
      <tr>
        <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
-       <td>1. Creates a shard map manager database</td>
+       <td>1. Vytvoří databázi správce mapy horizontálních oddílů.</td>
      </tr>
      <tr>
-       <td>2. Creates 2 shard databases.
+       <td>2. Vytvoří 2 databáze horizontálních oddílů.
      </tr>
      <tr>
-       <td>3. Creates a shard map for those databases (deletes any existing shard maps on those databases). </td>
+       <td>3. Vytvoří mapu horizontálních oddílů pro tyto databáze (odstraní všechny existující mapy horizontálních oddílů na těchto databázích). </td>
      </tr>
      <tr>
-       <td>4. Creates a small sample table in both the shards, and populates the table in one of the shards.</td>
+       <td>4. Vytvoří malou ukázkovou tabulku v horizontálních oddílů a naplní tabulku v jednom z horizontálních oddílů.</td>
      </tr>
      <tr>
-       <td>5. Declares the SchemaInfo for the sharded table.</td>
+       <td>5. Deklaruje SchemaInfo pro tabulku horizontálně dělené.</td>
      </tr>
    </table>
    <table style="width:100%">
      <tr>
-       <th>PowerShell file</th>
+       <th>Soubor PowerShellu</th>
        <th>Kroky</th>
      </tr>
    <tr>
        <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
-       <td>1. Sends a split request to the Split-Merge Service web frontend, which splits half the data from the first shard to the second shard.</td>
+       <td>1. Odešle požadavek na rozdělení na webový front-end Service, který rozdělí polovinu dat z prvního horizontálních oddílů do druhé horizontálních oddílů.</td>
      </tr>
      <tr>
-       <td>2. Polls the web frontend for the split request status and waits until the request completes.</td>
+       <td>2. Provede dotaz na webový front-end pro stav žádosti o rozdělení a počká, až se žádost dokončí.</td>
      </tr>
      <tr>
-       <td>3. Sends a merge request to the Split-Merge Service web frontend, which moves the data from the second shard back to the first shard.</td>
+       <td>3. Odešle požadavek sloučení na webový front-end služby, který přesune data z druhého horizontálních oddílů zpět na první horizontálních oddílů.</td>
      </tr>
      <tr>
-       <td>4. Polls the web frontend for the merge request status and waits until the request completes.</td>
+       <td>4. Provede dotaz na webový front-end pro stav žádosti o sloučení a počká, až se žádost dokončí.</td>
      </tr>
    </table>
    
-## <a name="use-powershell-to-verify-your-deployment"></a>Use PowerShell to verify your deployment
+## <a name="use-powershell-to-verify-your-deployment"></a>Použití PowerShellu k ověření nasazení
 
-1. Open a new PowerShell window and navigate to the directory where you downloaded the Split-Merge package, and then navigate into the “powershell” directory.
+1. Otevřete nové okno PowerShellu a přejděte do adresáře, do kterého jste stáhli balíček dělené sloučení, a pak přejděte do adresáře "PowerShell".
 
-2. Create an Azure SQL Database server (or choose an existing server) where the shard map manager and shards will be created.
+2. Vytvořte Azure SQL Database Server (nebo vyberte existující server), kde se vytvoří správce mapy horizontálních oddílů a horizontálních oddílů.
 
    > [!NOTE]
-   > The *SetupSampleSplitMergeEnvironment.ps1* script creates all these databases on the same server by default to keep the script simple. This is not a restriction of the Split-Merge Service itself.
+   > Skript *SetupSampleSplitMergeEnvironment. ps1* ve výchozím nastavení vytvoří všechny tyto databáze na stejném serveru, aby byl skript jednoduchý. Nejedná se o omezení samotné služby rozdělení a sloučení.
 
-   A SQL authentication login with read/write access to the DBs will be needed for the Split-Merge service to move data and update the shard map. Since the Split-Merge Service runs in the cloud, it does not currently support Integrated Authentication.
+   Přihlašovací jméno SQL ověřování s přístupem pro čtení i zápis pro databáze bude potřeba, aby služba dělení a slučování dat přesunula data a aktualizovala mapu horizontálních oddílů. Vzhledem k tomu, že služba dělení a slučování běží v cloudu, aktuálně nepodporuje integrované ověřování.
 
-   Make sure the Azure SQL server is configured to allow access from the IP address of the machine running these scripts. You can find this setting under the Azure SQL server / configuration / allowed IP addresses.
+   Ujistěte se, že je server SQL Azure nakonfigurovaný tak, aby povoloval přístup z IP adresy počítače, na kterém běží tyto skripty. Toto nastavení najdete v části Azure SQL Server/konfigurace/povolené IP adresy.
 
-3. Execute the *SetupSampleSplitMergeEnvironment.ps1* script to create the sample environment.
+3. Spusťte skript *SetupSampleSplitMergeEnvironment. ps1* pro vytvoření ukázkového prostředí.
 
-   Running this script will wipe out any existing shard map management data structures on the shard map manager database and the shards. It may be useful to rerun the script if you wish to re-initialize the shard map or shards.
+   Spuštěním tohoto skriptu dojde k vymazání všech stávajících datových struktur správy mapy horizontálních oddílů v databázi správce map horizontálních oddílů a v horizontálních oddílů. Pokud chcete znovu inicializovat mapu horizontálních oddílů nebo horizontálních oddílů, může být užitečné skript spustit znovu.
 
-   Sample command line:
+   Vzorový příkazový řádek:
 
    ```cmd
    .\SetupSampleSplitMergeEnvironment.ps1
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-4. Execute the Getmappings.ps1 script to view the mappings that currently exist in the sample environment.
+4. Spusťte skript getmappings. ps1, který zobrazí mapování, která aktuálně existují ve vzorovém prostředí.
 
    ```cmd
    .\GetMappings.ps1
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Execute the *ExecuteSampleSplitMerge.ps1* script to execute a split operation (moving half the data on the first shard to the second shard) and then a merge operation (moving the data back onto the first shard). If you configured SSL and left the http endpoint disabled, ensure that you use the https:// endpoint instead.
+5. Spusťte skript *ExecuteSampleSplitMerge. ps1* , který spustí operaci rozdělení (přesune polovinu dat na první horizontálních oddílů do druhé horizontálních oddílů) a pak operaci sloučení (přesun dat zpět do prvního horizontálních oddílů). Pokud jste nakonfigurovali protokol SSL a opustili jste koncový bod HTTP zakázaný, ujistěte se, že místo toho použijete koncový bod https://.
 
-   Sample command line:
+   Vzorový příkazový řádek:
 
    ```cmd
    .\ExecuteSampleSplitMerge.ps1
@@ -266,11 +266,11 @@ The script files included are:
     -CertificateThumbprint '0123456789abcdef0123456789abcdef01234567'
    ```
 
-   If you receive the below error, it is most likely a problem with your Web endpoint’s certificate. Try connecting to the Web endpoint with your favorite Web browser and check if there is a certificate error.
+   Pokud se zobrazí následující chyba, pravděpodobně došlo k potížím s certifikátem vašeho webového koncového bodu. Zkuste se připojit ke koncovému bodu webu pomocí oblíbeného webového prohlížeče a podívejte se, jestli došlo k chybě certifikátu.
 
      `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLSsecure channel.`
 
-   If it succeeded, the output should look like the below:
+   Pokud bylo úspěšné, výstup by měl vypadat jako v následujícím příkladu:
 
    ```output
    > .\ExecuteSampleSplitMerge.ps1 -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net' -SplitMergeServiceEndpoint 'http://mysplitmergeservice.cloudapp.net' -CertificateThumbprint 0123456789abcdef0123456789abcdef01234567
@@ -307,39 +307,39 @@ The script files included are:
    > 
    ```
 
-6. Experiment with other data types! All of these scripts take an optional -ShardKeyType parameter that allows you to specify the key type. The default is Int32, but you can also specify Int64, Guid, or Binary.
+6. Experimentujte s jinými datovými typy! Všechny tyto skripty pobírají volitelný parametr-ShardKeyType, který umožňuje zadat typ klíče. Výchozí hodnota je Int32, ale můžete také zadat Int64, GUID nebo Binary.
 
 ## <a name="create-requests"></a>Požadavky na vytvoření
 
-The service can be used either by using the web UI or by importing and using the SplitMerge.psm1 PowerShell module which will submit your requests through the web role.
+Službu lze použít buď pomocí webového uživatelského rozhraní, nebo importováním a použitím modulu PowerShellu SplitMerge. psm1, který odešle vaše požadavky prostřednictvím webové role.
 
-The service can move data in both sharded tables and reference tables. A sharded table has a sharding key column and has different row data on each shard. A reference table is not sharded so it contains the same row data on every shard. Reference tables are useful for data that does not change often and is used to JOIN with sharded tables in queries.
+Služba může přesouvat data v tabulkách horizontálně dělené a referenčních tabulkách. Tabulka horizontálně dělené má klíčový sloupec horizontálního dělení a má v každém horizontálních oddílů odlišná data řádků. Referenční tabulka není horizontálně dělené, takže obsahuje stejná data řádku pro každé horizontálních oddílů. Referenční tabulky jsou užitečné pro data, která se nemění často a slouží k připojení k horizontálně dělené tabulkám v dotazech.
 
-In order to perform a split-merge operation, you must declare the sharded tables and reference tables that you want to have moved. This is accomplished with the **SchemaInfo** API. This API is in the **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** namespace.
+Aby bylo možné provést operaci dělení na sloučení, je nutné deklarovat tabulky horizontálně dělené a referenční tabulky, které chcete přesunout. Toho se dá dosáhnout pomocí rozhraní **SchemaInfo** API. Toto rozhraní API je v oboru názvů **Microsoft. Azure. SqlDatabase. ElasticScale. ShardManagement. Schema** .
 
-1. For each sharded table, create a **ShardedTableInfo** object describing the table’s parent schema name (optional, defaults to “dbo”), the table name, and the column name in that table that contains the sharding key.
-2. For each reference table, create a **ReferenceTableInfo** object describing the table’s parent schema name (optional, defaults to “dbo”) and the table name.
-3. Add the above TableInfo objects to a new **SchemaInfo** object.
-4. Get a reference to a **ShardMapManager** object, and call **GetSchemaInfoCollection**.
-5. Add the **SchemaInfo** to the **SchemaInfoCollection**, providing the shard map name.
+1. Pro každou tabulku horizontálně dělené vytvořte objekt **ShardedTableInfo** popisující název nadřazeného schématu tabulky (volitelné, výchozí nastavení je "dbo"), název tabulky a název sloupce v tabulce, která obsahuje klíč horizontálního dělení.
+2. Pro každou referenční tabulku vytvořte objekt **ReferenceTableInfo** popisující název nadřazeného schématu tabulky (volitelné, výchozí nastavení je "dbo") a název tabulky.
+3. Přidejte výše uvedené objekty TableInfo do nového objektu **SchemaInfo** .
+4. Získejte odkaz na objekt **ShardMapManager** a zavolejte **GetSchemaInfoCollection**.
+5. Přidejte **SchemaInfo** do **SchemaInfoCollection**a poskytněte název mapy horizontálních oddílů.
 
-An example of this can be seen in the SetupSampleSplitMergeEnvironment.ps1 script.
+Příklad tohoto příkladu lze vidět ve skriptu SetupSampleSplitMergeEnvironment. ps1.
 
-The Split-Merge service does not create the target database (or schema for any tables in the database) for you. They must be pre-created before sending a request to the service.
+Služba rozdělení a sloučení nevytváří cílovou databázi (nebo schéma pro žádné tabulky v databázi) za vás. Před odesláním žádosti službě je nutné je předem vytvořit.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-You may see the below message when running the sample powershell scripts:
+Při spouštění ukázkových skriptů PowerShellu se může zobrazit následující zpráva:
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-This error means that your SSL certificate is not configured correctly. Please follow the instructions in section 'Connecting with a web browser'.
+Tato chyba znamená, že váš certifikát SSL není správně nakonfigurovaný. Postupujte prosím podle pokynů v části připojení k webovému prohlížeči.
 
-If you cannot submit requests you may see this:
+Pokud nemůžete odesílat žádosti, může se zobrazit tato:
 
    `[Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'.`
 
-In this case, check your configuration file, in particular the setting for **WorkerRoleSynchronizationStorageAccountConnectionString**. This error typically indicates that the worker role could not successfully initialize the metadata database on first use.
+V takovém případě Ověřte konfigurační soubor, konkrétně nastavení pro **WorkerRoleSynchronizationStorageAccountConnectionString**. Tato chyba obvykle indikuje, že role pracovního procesu nemohla úspěšně inicializovat databázi metadat při prvním použití.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

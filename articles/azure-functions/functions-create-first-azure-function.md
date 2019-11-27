@@ -1,5 +1,5 @@
 ---
-title: Create your first serverless function from the Azure portal
+title: Vytvoření první funkce bez serveru z Azure Portal
 description: Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí webu Azure Portal bez serveru.
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: quickstart
@@ -14,14 +14,14 @@ ms.locfileid: "74230828"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
 
-Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru](https://azure.microsoft.com/solutions/serverless/), aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. In this article, learn how to use Functions to create a "hello world" function in the Azure portal.
+Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru](https://azure.microsoft.com/solutions/serverless/), aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. V tomto článku se dozvíte, jak pomocí Functions vytvořit funkci Hello World v Azure Portal.
 
 ![Vytvoření aplikace Function App na webu Azure Portal](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> C# developers should consider [creating your first function in Visual Studio 2019](functions-create-your-first-function-visual-studio.md) instead of in the portal. 
+> C#Vývojáři by měli zvážit [Vytvoření první funkce v aplikaci Visual Studio 2019](functions-create-your-first-function-visual-studio.md) místo na portálu. 
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -39,7 +39,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 1. Rozbalte svoji novou aplikaci funkcí, vyberte tlačítko **+** vedle položky **Funkce**, zvolte **Na portálu** a potom **Pokračovat**.
 
-    ![Functions quickstart for choosing a platform.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![Rychlé spuštění funkcí pro výběr platformy.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
 1. Zvolte **Webhook + API** a potom vyberte **Vytvořit**.
 
@@ -73,7 +73,7 @@ Novou funkci můžete spustit odesláním požadavku HTTP.
 
 ## <a name="next-steps"></a>Další kroky
 
-You've created a function app with a simple HTTP triggered function.  
+Vytvořili jste aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP.  
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: Store unstructured data using Azure Cosmos DB and Functions
+title: Ukládání nestrukturovaných dat pomocí Azure Cosmos DB a funkcí
 description: Ukládání nestrukturovaných dat pomocí Azure Functions a databáze Cosmos DB
 ms.topic: quickstart
 ms.date: 10/01/2018
@@ -22,9 +22,9 @@ Ve službě Azure Functions poskytují vstupní a výstupní vazby deklarativní
 
 ![Cosmos DB](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-cosmosdb.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 

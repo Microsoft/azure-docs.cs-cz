@@ -1,6 +1,6 @@
 ---
-title: Use Cloudyn reports in Azure | Microsoft Docs
-description: This article describes the purpose of the Cloudyn reports that are included in the Cloudyn portal to help you effectively use them.
+title: Použití Cloudyn sestav v Azure | Dokumentace Microsoftu
+description: Tento článek popisuje účel sestavách Cloudyn, které jsou součástí portálu Cloudyn můžete efektivněji používat je.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,504 +17,504 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74218859"
 ---
-# <a name="reports-available-in-the-cloudyn-portal"></a>Reports available in the Cloudyn portal
+# <a name="reports-available-in-the-cloudyn-portal"></a>Sestavy jsou k dispozici na portálu Cloudyn
 
-This article describes the purpose of the Cloudyn reports that are included in the Cloudyn portal. It also describes how you can effectively use the reports. Most reports are intuitive and have a uniform look and feel. Most of the actions that you can do in one report, you can also do in other reports. For an overview about how to use Cloudyn reports, including how to customize and save or to schedule reports, see [Understanding cost reports](understanding-cost-reports.md).
+Tento článek popisuje účel sestavách Cloudyn, které jsou součástí portálu Cloudyn. Také popisuje, jak lze efektivně používat sestavy. Většina sestav jsou výsledkem je intuitivní a mít jednotný vzhled a chování. Většinu akcí, které vám pomůžou v jedné sestavě, můžete provést také v jiných sestavách. Přehled o tom, jak používat sestavy Cloudyn, včetně postupu přizpůsobení a uložení nebo plánování sestav, najdete v tématu [porozumění sestavám nákladů](understanding-cost-reports.md).
 
 Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Management je nativní řešení Azure pro správu nákladů. Umožní vám analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat optimalizační doporučení k úspoře peněz a reagovat na ně. Další informace najdete v tématu [Azure Cost Management](overview-cost-mgt.md).
 
-## <a name="report-types"></a>Report types
+## <a name="report-types"></a>Typy sestav
 
-There are three types of Cloudyn reports:
+Existují tři typy Cloudyn sestav:
 
-- Over-time reports. For example, the Cost Over Time report. Over-time reports show a time series of data over a selected interval with a predefined resolution and show a weekly resolution for last two months. You can use grouping and filtering to zoom in to various data points.
-  - Over-time reports can help you view trends and detect spikes or anomalies.
-- Analysis reports. For example, the Cost Analysis report. These reports show aggregated data over a period that you define and allow grouping and filtering on the data.
-  - Analysis reports can help you view spikes and determine anomaly root-causes and to show you a granular break-down of your data.
-- Tabular reports. You can view any report as a table, but some reports are viewed only as a table. These reports provide you detailed lists of items.
-  - Recommendations are tabular reports—there are no visualizations for recommendations. However, you can visualize recommendation results. For example, savings over time.
-  - Tabular reports are useful as lists of actions or for data export for further processing. For example, a chargeback report.
+- Útoky over-pass-the sestav. Například sestava Cost Over Time. Útoky over-pass-the sestav zobrazit časové řadě dat. v intervalu vybraného předdefinovaného řešení a zobrazit týdenní řešení po dobu posledních dvou měsíců. Přiblížit k různým datovým bodům, můžete použít seskupování a filtrování.
+  - Útoky over-pass-the sestav můžete zobrazit trendy a odhalte provozní špičky nebo anomálie.
+- Sestavy analýzy. Například sestava analýzy nákladů. Tyto sestavy zobrazit agregovaná data po dobu, definovat a Povolit seskupování a filtrování podle data.
+  - Analýza sestavy můžete zobrazit provozní špičky a určení příčiny anomálií a chcete-li zobrazit podrobné konec seznamu vaše data.
+- Tabulkové sestavy. Můžete zobrazit všechny sestavu jako tabulku, ale některé sestavy jsou zobrazeny pouze jako tabulku. Tyto sestavy poskytují podrobné seznamy položek.
+  - Doporučení jsou tabulkové sestavy – neexistují žádné vizualizace pro doporučení. Však můžete vizualizovat výsledky doporučení. Například úspory v čase.
+  - Tabulkové zprávy jsou užitečné jako seznam akcí, nebo pro export dat pro další zpracování. Například sestavy vrácení peněz.
 
-Cost reports show either _actual_ or _amortized_ costs.
+V sestavách nákladů se zobrazují buď _skutečné_ , nebo náklady na _amortizaci_ .
 
-Actual cost reports display the payments made during the selected time frame. For example, all one-time fees such as reserved instance (RI) purchases are shown in actual cost reports as spikes in cost.
+Skutečné náklady sestavy zobrazují platby během vybraného časového rámce. Například všechny jednorázové poplatky, jako je nákup rezervované instance (RI) jsou uvedeny v sestavách skutečných nákladů jako si poraďte se špičkami náklady.
 
-Amortized cost reports spread one-time fees over a period to which they apply. For example, one-time fees for RI purchases are spread over the reservation term and are not shown as a spike. The amortized view is the only way to see true trends and make cost projections.
+Sestavy amortizovaných nákladů rozprostřené jednorázové poplatky za období, na které se vztahují. Například jednorázové poplatky za nákup rezervované instance jsou rozdělené do období rezervace a nejsou zobrazeny jako prudký nárůst. Amortizované zobrazení je jediný způsob, jak zobrazit trendy true a provádět odhadu nákladů.
 
-In some cases, the amortization is presented as a separate report. Examples include the Cost Analysis and Amortized Cost Analysis reports. In other cases, amortization is a report policy such as the Cost Allocation and Cost Analysis reports.
+V některých případech se zobrazí amortizace jako samostatnou sestavu. Mezi příklady patří sestavy analýzy nákladů a analýza Amortizovaných nákladů. V ostatních případech je amortizace sestavu zásad, například sestavy přidělování nákladů a analýzy nákladů.
 
-You can schedule any report for periodic delivery. Cost reports allow setting a threshold, so they're useful for alerts.
+Můžete naplánovat jakoukoli sestavu pro pravidelné doručení. Sestavy nákladů povolit nastavení prahové hodnoty, aby byly užitečné pro výstrahy.
 
-## <a name="cost-analysis-vs-cost-allocation"></a>Cost analysis vs. cost allocation
+## <a name="cost-analysis-vs-cost-allocation"></a>Analýza nákladů oproti přidělení nákladů
 
-_Cost analysis_ reports display billing data from your cloud providers. Using the reports, you can group and drill into various data segments itemized from the billing file. The reports enable granular cost navigation across your cloud vendor's raw billing data.
+Sestavy _analýzy nákladů_ zobrazují fakturační data od poskytovatelů cloudu. Využití sestav, můžete seskupit a přejít k podrobnostem různých datových segmentech rozpis ze souboru fakturace. Sestavy povolení navigace detailní náklady napříč dodavatelem cloudu nezpracovaná fakturačních údajů.
 
-Some _cost analysis_ reports don't group costs by resource tags. And, tag-based billing information only appears in reports after you allocate costs by creating a cost model using [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+Některé sestavy _analýzy nákladů_ neseskupují náklady podle značek prostředků. A informace o fakturaci na základě značek se v sestavách zobrazí jenom po přidělení nákladů vytvořením nákladového modelu pomocí [přidělení nákladů 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-_Cost allocation_ reports are available after you create a cost model using [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). Cloudyn processes cost and billing data and _matches_ the data to the usage and tag data of your cloud accounts. To match the data, Cloudyn requires access to your usage data. If you have accounts that are missing credentials, they are labeled as _uncategorized resources_.
+Sestavy _přidělení nákladů_ jsou k dispozici po vytvoření nákladového modelu pomocí [přidělení nákladů 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). Cloudyn zpracovává nákladová a fakturační data a _odpovídá_ na data o využití a označení vašich cloudových účtů. Cloudyn tak, aby odpovídaly data, vyžaduje přístup k data o využití. Pokud máte účty, u kterých chybí přihlašovací údaje, budou označeny jako _Nezařazeno do kategorie prostředky_.
 
 ## <a name="dashboards"></a>Řídicí panely
 
-Dashboards in Cloudy provide a high-level view of reports. Dashboards are made up of widgets and each widget is essentially a report thumbnail. When you [customize reports](understanding-cost-reports.md#save-and-schedule-reports), you save them to My Reports and they're added to the dashboard. For more information about dashboards, see [View key cost metrics with dashboards](dashboards.md).
+Řídicí panely v Cloudy poskytují souhrnný přehled sestav. Řídicí panely jsou tvořené widgetů a u každé pomůcky máte je v podstatě miniaturu sestavy. Při [přizpůsobování sestav](understanding-cost-reports.md#save-and-schedule-reports)je uložíte do mé sestavy a přidají se na řídicí panel. Další informace o řídicích panelech najdete v tématu [zobrazení metrik nákladů na klíč s řídicími panely](dashboards.md).
 
-## <a name="budget-information-in-reports"></a>Budget information in reports
+## <a name="budget-information-in-reports"></a>Informace o rozpočtu v sestavách
 
-Many Cloudyn reports show budget information after you've manually created one. So reports won't show budget information until you create a budget. For more information, see [Budget Management settings](#budget-management-settings).
+Mnoho sestavách Cloudyn zobrazit rozpočtu informace po jedné ruční vytvoření. Aby sestavy nebudou zobrazovat informace rozpočtu, dokud nevytvoříte rozpočtu. Další informace najdete v tématu [Nastavení správy rozpočtu](#budget-management-settings).
 
-## <a name="reports-and-reporting-features"></a>Reports and reporting features
+## <a name="reports-and-reporting-features"></a>Sestavy a funkce generování sestav
 
-Cloudyn includes the following reports and reporting features.
+Cloudyn obsahuje následující sestavy a funkce pro vytváření sestav.
 
-### <a name="cost-navigator-report"></a>Cost Navigator report
+### <a name="cost-navigator-report"></a>Sestava nákladů Navigátor
 
-The Cost Navigator report is a quick way to view your billing consumption using a dashboard view. It has a subset of filters and basic views to immediately show a summarized view of organization's costs. Costs are shown by date. Because the report is intended as an initial view of your costs, it's not as flexible or as comprehensive as many other reports or custom dashboards that you create yourself.
+Sestava náklady na navigátor je rychlý způsob, jak zobrazit vaše fakturační využití v zobrazení řídicího panelu. Obsahuje podmnožinu filtry a okamžitě zobrazit souhrnné zobrazení náklady organizace na základní zobrazení. Náklady jsou uvedeny podle data. Vzhledem k tomu sestavy slouží jako počáteční přehled nákladů, není tak pružná nebo jako komplexní jako mnoho dalších sestavy nebo vlastních řídicích panelů, které jste sami vytvořili.
 
-By default, major views in the report show:
+Ve výchozím nastavení hlavní zobrazení v sestavě zobrazit:
 
-- Cost over time showing a work week bar chart view. You can change the **Date Range** to change date range bar chart.
-- Expenditures by service, using a pie chart.
-- Resource categorization by tags, using a pie chart.
-- Expenditures by cost entities, using a pie chart.
-- Cost total, per date in a list view.
-
-### <a name="cost-analysis-report"></a>Sestava analýzy nákladů
-
-The Cost Analysis report is a calculation of showback and chargeback, based on your policy. It aggregates your cloud consumption during a selected time frame, after having applied all allocation rules to your cost. For example, it calculates the costs by tags, reassigns the costs of untagged resources and optionally allocates the utilization of reserved instances.
-
-The policies set in [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in the Cost Analysis report and results are then combined with information from your cloud vendor's raw data.
-
-How is this report calculated? The Cloudyn service ensures allocation retains the integrity of each linked account by applying _account affinity_. Affinity ensures an account that doesn't use a specific service doesn't have any costs of this service allocated to it. The costs accrued in that account remain in that account and are not calculated by the allocation policies. For example, you might have five linked accounts. If only three of them use storage services, then the cost of storage services is only allocated across tags in the three accounts.
-
-Use the Cost Analysis report to:
-
-- Calculate your organization chargeback/showback
-- Categorize all your costs
-- Display an aggregated view of your entire deployment for a specific time frame.
-- View costs by tag categories based on policies created in the cost model.
-
-To use the Cost Analysis report:
-
-1. Select a date range.
-2. Add tags, as needed.
-3. Add groups.
-4. Choose a cost model that you created previously.
-
-### <a name="cost-over-time-report"></a>Sestava nákladů v průběhu času
-
-The Cost over Time report displays the results of cost allocation as time series. It allows you to observe trends and detect irregularities in your deployment. It essentially shows costs distributed over a defined period. The report includes your main cost contributors including ongoing costs and one-time reserved instance fees that are being spent during a selected time frame. Policies set in [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in this report.
-
-Use the Cost Over Time report to:
-
-- See changes over time and which influences change from one day (or date range) to the next.
-- Analyze costs over time for a specific instance.
-- Understand why there was a cost increase for a specific instance.
-
-To use the Cost Over Time report:
-
-1. Select a date range.
-2. Add tags, as needed.
-3. Add groups.
-4. Choose a cost model that you created previously.
-5. Select actual costs or amortized costs.
-6. Choose whether to apply allocation rules to view raw billing data view or to recalculated cost view.
-
-### <a name="actual-cost-analysis-report"></a>Actual Cost Analysis report
-
-The Actual Cost Analysis report shows provider costs with no modifications. It shows your main cost contributors, including ongoing costs and one-time fees.
-
-You can use the report to view cost information for your subscriptions. In the report, Azure subscriptions are shown as **account name** and **account number**. **Linked accounts** show AWS subscriptions. To view per subscription costs, a breakdown for each account, under **Groups**, select the type of subscription that you have.
-
-Use the Actual Cost Analysis report to:
-
-- Analyze and monitor raw provider costs spent during a specified time frame.
-- Schedule a threshold alert.
-- Analyze unmodified costs incurred by your accounts and entities.
-
-### <a name="actual-cost-over-time-report"></a>Actual Cost Over Time report
-
-The Actual Cost Over Time report is a standard cost analysis report distributing cost over a defined time resolution. The report displays spending over time to allow you to observe trends and detect spending irregularities. This report shows your main cost contributors including ongoing costs and one-time reserved instance fees that are being spent during a selected time frame.
-
-Use the Actual Cost Over Time report to:
-
-- See cost trends over time.
-- Find irregularities in cost.
-- Find all cost-related questions related to cloud providers.
-
-### <a name="amortized-cost-reports"></a>Amortized cost reports
-
-This set of amortized cost reports shows linearized non-usage based service fees, or one-time payable costs and spread their cost over time evenly during their lifespan. For example, one-time fees might include:
-
-- Annual support fees
-- Annual security component fees
-- Reserved Instances purchase fees
-- Some Azure Marketplace items
-
-In the billing file, one-time fees are characterized when the service consumption start and end dates (timestamp) have equal values. The Cloudyn service then recognizes them as one-time fees that are amortized. Other consumption-based services with on-demand usage costs are not amortized.
-
-Amortized cost reports include:
-
-- Amortized cost analysis
-- Amortized cost over time
+- Ceny za časová zobrazující pracovního týdne panelu zobrazení grafu. Můžete změnit **Rozsah kalendářních dat** , aby se změnil pruhový graf rozsahu kalendářních dat.
+- Výdaje podle služby, použití výsečového grafu.
+- Prostředek kategorizace podle značek, použití výsečového grafu.
+- Výdaje podle entit nákladů, použití výsečového grafu.
+- Náklady celkem podle data v zobrazení seznamu.
 
 ### <a name="cost-analysis-report"></a>Sestava analýzy nákladů
 
-The Cost Analysis report provides insight into your cloud consumption and spending during a selected time frame. The policies set in the [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in the Cost Analysis report.
+Sestava analýzy nákladů se počítají za metod showback a chargeback, na základě vašich zásad. Agreguje vaše využití cloudu během vybraného časového rámce, po použití všechna pravidla přidělování na vaše náklady. Například se vypočítá náklady podle značek, znovu přiřadí náklady na neoznačených prostředky a volitelně přiděluje využití rezervovaných instancí.
 
-How does Cloudyn calculate this report?
+Zásady nastavené v [přidělování nákladů 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) se používají v sestavě analýzy nákladů a výsledky se pak zkombinují s informacemi z nezpracovaných dat od dodavatele cloudu.
 
-Cloudyn ensures that allocation retains the integrity of each linked account by applying _account affinity_. Affinity ensures an account that doesn't use a specific service also doesn't have any costs of this service allocated to it. The costs accrued in that account remain in that account and aren't calculated by the allocation policies. For example, you might have five linked accounts. If only three of them use storage services, then the cost of storage services is only allocated across tags in the three accounts.
+Jak se počítá tuto sestavu? Služba Cloudyn zajišťuje, že přidělení zachovává integritu každého propojeného účtu tím, že použije _spřažení účtů_. Spřažení zajistí, že účet, který nepoužívá konkrétní služba nemá žádné náklady na tuto službu přiřazen. Náklady na operace účet zůstane v tomto účtu a nejsou vypočítaných zásady přidělování. Například může mít pět propojené účty. Pokud jenom tři z nich používat služby storage, náklady na úložiště služby je přidělena pouze ve mezi značky v tři účty.
 
-Use the Cost Analysis report to:
+Pomocí sestavy analýzy nákladů na:
 
-- Display an aggregated view of your entire deployment for a specific time frame.
-- View costs by tag categories based on policies created in the cost model.
+- Vypočítat vaší organizace vrácení peněz nebo kompletní přehled nákladů
+- Kategorizace všechny nákladů
+- Zobrazí souhrnný náhled na celé nasazení pro konkrétní časový rámec.
+- Zobrazení nákladů podle značky kategorií na základě zásad, které jsou vytvořené v modelu nákladů.
+
+Použití sestav Cost Analysis:
+
+1. Vyberte konkrétní období.
+2. Přidání značek, podle potřeby.
+3. Přidání skupin.
+4. Vyberte model nákladů, který jste vytvořili dříve.
 
 ### <a name="cost-over-time-report"></a>Sestava nákladů v průběhu času
 
-The Cost Over Time report displays spending over time so you can spot trends and notice irregularities in your deployment. It essentially shows costs distributed over a defined period. The report includes your main cost contributors including ongoing costs and one-time reserved instance fees that are being spent during a selected time frame. Policies set in [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) are used in this report.
+Náklady na čas sestavě zobrazí výsledky přidělování nákladů jako časové řady. Umožňuje sledovat trendy a detekovat nesrovnalosti ve vašem nasazení. V podstatě ukazuje náklady v průběhu za definované období. Zpráva obsahuje vaše náklady na hlavní přispěvatelé, včetně průběžných nákladů a poplatky za jednorázové rezervované instance, které se právě spotřebovávají během vybraného časového rámce. V této sestavě se používají zásady nastavené v [přidělení nákladů 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) .
 
-Use the Cost Over Time report to:
+Použití sestav Cost Over Time, abyste:
 
-- See changes over time and which influences change from one day (or date range) to the next.
-- Analyze costs over time for a specific instance.
-- Understand why there was a cost increase for a specific instance.
+- Podívejte se změny za dobu a které ovlivňuje změnit z jednoho dne (nebo rozsah dat) na další.
+- Analyzujte náklady v čase pro konkrétní instanci.
+- Pochopit, proč došlo zvýšení nákladů pro konkrétní instanci.
 
-### <a name="custom-charges-report"></a>Custom Charges report
+Použití sestav Cost Over Time:
 
-Enterprise and CSP users often find themselves providing added services to their external or internal customers, in addition to their own cloud resource consumption. You define custom charges for added services or discounts that are added to customer's billing or chargeback reports as custom line items.
+1. Vyberte konkrétní období.
+2. Přidání značek, podle potřeby.
+3. Přidání skupin.
+4. Vyberte model nákladů, který jste vytvořili dříve.
+5. Vyberte skutečné náklady nebo amortizované náklady.
+6. Zvolte, jestli se má použít pravidla přidělování na Zobrazit nezpracované fakturace zobrazení dat nebo k přepočítání zobrazení nákladů.
 
-Custom service charges reflect services that aren't normally shown in a bill. The custom charges that you create are then shown in Cost reports.
+### <a name="actual-cost-analysis-report"></a>Skutečné sestavu analýzy nákladů
 
-*Custom charges aren't custom pricing*. The list of custom charges doesn't show the different rates that you may be charging. For example, AWS billing charges are displayed just as they are charged.
+Analýza skutečných nákladů sestava obsahuje poskytovatele náklady bez možnosti úprav. Ukazuje náklady na hlavní přispěvatelů, včetně průběžných nákladů a jednorázové poplatky.
 
-To create a custom charge:
+Sestavy můžete zobrazit informace o nákladech pro vaše předplatná. V sestavě se předplatná Azure zobrazují jako **název účtu** a **číslo účtu**. **Propojené účty** ukazují AWS předplatná. Pokud chcete zobrazit náklady na předplatné, pro každý účet v části **skupiny**vyberte typ předplatného, které máte.
 
-1. In **Custom Charges**, click  **Add New**. The _Add New Custom Charge_ dialog box is displayed.
-2. In **Provider Name**, enter the name of the provider.
-3. In **Service Name**, enter the type of service.
-4. In **Description**, add a description for the custom charge.
-5. In **Type**, enter the select  **Percentage** and then in Services dropdown, select the services to include as custom charges in the cost reports.
-6. In **Payment**, select if the charge is a One-Time Fee or Recurring Fee. If the charge is a Recurring Fee, select Amortized if you want the charge to be amortized and select the number of months.
-7. In **Dates**, if a one-time fee is selected, in **Effective Date**, enter the date the charge is paid. If Recurring Fee is selected, enter the date range including start date and the end date for the charge.
-8. In the **Entities tree**, select the entities that you want to apply the charge to and then select **On**.
+Použijte sestavu Analýza skutečných nákladů na:
 
-_When charges are assigned to an entity, users can't change them. Charges that are added by an administrator to a parent entity are read-only._
+- Analyzovat a sledovat náklady nezpracovaná poskytovatele strávil během zadaného časového rámce.
+- Naplánujte prahová hodnota upozornění.
+- Analyzujte bez úprav náklady vzniklé v souvislosti s klienty a entity.
 
-To view custom charges:
+### <a name="actual-cost-over-time-report"></a>Skutečné náklady v čase sestavy
 
-Custom charges are shown in Cost reports. For example, open the Actual Cost Analysis report, then under **Extended Filters**, select **Standalone**. Then filter to show **Custom Charges**.
+Sestavy Actual Cost Over Time je náklady na standardní sestavy analýzy distribuce náklady za definované časové řešení. Sestava zobrazí za čas, aby bylo možné sledovat trendy a zjišťovat útraty nesrovnalosti. Tato sestava zobrazí hlavních nákladových přispěvatelů včetně průběžných nákladů a poplatky za jednorázové rezervované instance, které se právě spotřebovávají během vybraného časového rámce.
+
+Pomocí sestavy Actual Cost Over Time na:
+
+- Zobrazení trendy nákladů v průběhu času.
+- Najdete nesrovnalosti náklady.
+- Najdete všechny otázky související náklady související s poskytovateli cloudu.
+
+### <a name="amortized-cost-reports"></a>Sestavy amortizovaných nákladů
+
+Tato sada amortizované náklady sestavy zobrazuje lineárním bez využití na základě poplatků za služby nebo jednorázové závazků náklady a náklady na jejich rozloženy rovnoměrně dobu jejich životnosti. Například může zahrnovat jednorázové poplatky:
+
+- Roční poplatky za podporu
+- Roční poplatky komponentu zabezpečení
+- Poplatky za nákupy rezervovaných instancí
+- Některé položky Azure Marketplace
+
+V souboru fakturace jsou charakteristické jednorázové poplatky při používání služby počáteční a koncové datum (časové razítko) mají stejné hodnoty. Služba Cloudyn pak je pak rozezná jako jednorázové poplatky, které jsou amortizovaných. Nejsou amortizovaných jiné služby založenou na skutečné spotřebě s náklady na využití na vyžádání.
+
+Sestavy amortizovaných nákladů patří:
+
+- Analýza amortizovaných nákladů
+- Amortizované náklady za časová období
+
+### <a name="cost-analysis-report"></a>Sestava analýzy nákladů
+
+Sestava analýzy nákladů poskytuje pohled na vaše využití cloudu a výdaje během vybraného časového rámce. V sestavě analýza nákladů se používají zásady nastavené v části [přidělení nákladů 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) .
+
+Jak Cloudyn vypočítat tuto sestavu?
+
+Cloudyn zajišťuje, že přidělení zachovává integritu každého propojeného účtu tím, že použije _spřažení účtů_. Spřažení zajistí, že účet, který nepoužívá konkrétní službu také nemá žádné náklady na tuto službu přiřazen. Náklady na operace účet zůstane v tomto účtu a nejsou vypočítaných zásady přidělování. Například může mít pět propojené účty. Pokud jenom tři z nich používat služby storage, náklady na úložiště služby je přidělena pouze ve mezi značky v tři účty.
+
+Pomocí sestavy analýzy nákladů na:
+
+- Zobrazí souhrnný náhled na celé nasazení pro konkrétní časový rámec.
+- Zobrazení nákladů podle značky kategorií na základě zásad, které jsou vytvořené v modelu nákladů.
+
+### <a name="cost-over-time-report"></a>Sestava nákladů v průběhu času
+
+Sestava Cost Over Time zobrazí útraty v čase, která umožňují vysledovat trendy a Všimněte si, že nesrovnalosti ve vašem nasazení. V podstatě ukazuje náklady v průběhu za definované období. Zpráva obsahuje vaše náklady na hlavní přispěvatelé, včetně průběžných nákladů a poplatky za jednorázové rezervované instance, které se právě spotřebovávají během vybraného časového rámce. V této sestavě se používají zásady nastavené v [přidělení nákladů 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) .
+
+Použití sestav Cost Over Time, abyste:
+
+- Podívejte se změny za dobu a které ovlivňuje změnit z jednoho dne (nebo rozsah dat) na další.
+- Analyzujte náklady v čase pro konkrétní instanci.
+- Pochopit, proč došlo zvýšení nákladů pro konkrétní instanci.
+
+### <a name="custom-charges-report"></a>Vlastní sestavu poplatky
+
+Podniku a CSP uživatelé často dostat poskytuje přidání služby zákazníkům externí nebo interní kromě své vlastní využití prostředků cloudu. Můžete definovat vlastní poplatky za služby s přidanou ani slevy, které jsou přidány do sestav vrácení peněz jako vlastní položky řádku nebo fakturace zákazníka.
+
+Vlastní poplatků za služby zahrnují služby, které se ve vyúčtování služeb obvykle nezobrazují. Vlastní poplatky, které vytvoříte, se pak zobrazí v sestavách nákladů.
+
+*Vlastní poplatky nejsou vlastní ceny*. Seznam vlastních poplatky nezobrazí různé kurzy, vám může účtovat. Například AWS fakturační poplatky se zobrazí stejně jako se účtují.
+
+Pokud chcete vytvořit vlastní poplatky:
+
+1. V nabídce **vlastní poplatky**klikněte na **Přidat nový**. Zobrazí se dialogové okno _Přidat nový vlastní poplatek_ .
+2. Do pole **název poskytovatele**zadejte název poskytovatele.
+3. Do pole **název služby**zadejte typ služby.
+4. Do pole **Popis**zadejte popis vlastního poplatku.
+5. V poli **typ**zadejte **procento** výběru a potom v rozevíracím seznamu služby vyberte služby, které chcete zahrnout do sestav nákladů jako vlastní poplatky.
+6. V části **platba**vyberte, jestli je poplatek jednorázovým poplatkem nebo opakovaným poplatkem. Pokud platí se poplatek se opakuje, vyberte Amortized, pokud chcete náklady na být amortizovaných a vybrat počet měsíců.
+7. V části **data**v případě, že je vybrán jednorázový poplatek, zadejte do pole datum **účinnosti**datum, kdy je poplatek zaplacen. Pokud je vybrána opakované poplatek, zadejte rozsah dat, včetně počáteční datum a koncové datum pro příslušný poplatek.
+8. Ve **stromové struktuře entit**vyberte entity, u kterých chcete použít poplatek, a pak vyberte **zapnuto**.
+
+_Když se poplatky přiřazují k entitě, uživatelé je nemůžou měnit. Poplatky přidané správcem k nadřazené entitě jsou jen pro čtení._
+
+Chcete-li zobrazit vlastní poplatky:
+
+Vlastní poplatky se zobrazí v sestavách nákladů. Otevřete například sestavu skutečná analýza nákladů a potom v části **Rozšířené filtry**vyberte **samostatně**. Pak filtrováním zobrazíte **vlastní poplatky**.
 
 ### <a name="cost-allocation-360"></a>Cost Allocation 360
 
-You use Cost Allocation 360 to create custom cost allocation models to assign costs to consumed cloud resources. Many reports show information from custom cost models that you've created with custom cost models. And, some reports only show information after you've created a custom cost model with cost allocation.
+Cost Allocation 360 použijete k vytvoření vlastní nákladový model přidělování nákladů přiřadit využité cloudové prostředky. Mnoho sestav zobrazovat informace z vlastní nákladový model, které jste vytvořili pomocí vlastní nákladový model. A některé sestavy pouze zobrazit informace, až vytvoříte vlastní model nákladů s přidělováním nákladů.
 
-For more information about creating custom cost models, see [Tutorial: Manage costs by using Cloudyn](tutorial-manage-costs.md).
+Další informace o vytváření vlastních nákladových modelů najdete v tématu [kurz: Správa nákladů pomocí Cloudyn](tutorial-manage-costs.md).
 
-### <a name="cost-vs-budget-over-time-report"></a>Cost vs. Budget Over Time report
+### <a name="cost-vs-budget-over-time-report"></a>Sestava nákladů vs. rozpočet v průběhu času
 
-The Cost vs. Budget Over Time report allows you to compare the main cost contributors against your budget. The assigned budget appears in the report so that you can view your (over/under/par) budget consumption over time. Using Show/Hide Fields at the top of the report, you can select to view cost, budget, accumulated cost, and total budget.
+Sestava náklady vs. rozpočet v čase umožňuje porovnat hlavní přispěvatele nákladů s vaším rozpočtem. Přiřazené rozpočtu se zobrazí v sestavě tak, abyste mohli zobrazit vaše využití rozpočtu (nad nebo pod/pamětích) v čase. Pomocí Zobrazit/skrýt pole v horní části sestavy, můžete vybrat zobrazení nákladů, rozpočet, celkové náklady a celkový rozpočet.
 
-### <a name="current-month-projected-cost-report"></a>Current Month Projected Cost report
+### <a name="current-month-projected-cost-report"></a>Aktuální sestava plánovaných nákladů měsíc
 
-The Current Month Projected Cost report provides insight into your current month-to-date cost summary. This report displays your costs from the beginning of month, from the previous month, and the total projected cost for the current month. The current month projected cost is calculated as sum of the up-to-date monthly cost and a projection based on the cost monitored in the last 30 days.
+Sestava plánovaných nákladů pro aktuální měsíc poskytuje přehled o aktuální souhrnné náklady za měsíc k datu. Tato sestava zobrazuje náklady od začátku měsíce, od předchozí měsíc, a celkový počet plánované náklady pro aktuální měsíc. Aktuální měsíc plánované náklady se počítají jako součet aktuální měsíční náklady a projekci na základě nákladů monitorovat za posledních 30 dní.
 
-Use the Current Month Projected Cost report to:
+Sestava plánovaných nákladů pro aktuální měsíc použijte:
 
-- Project monthly costs by service
-- Project monthly costs by account
+- Projekt měsíční náklady podle služeb
+- Měsíční náklady na projektu podle účtu
 
-### <a name="annual-projected-cost-report"></a>Annual Projected Cost report
+### <a name="annual-projected-cost-report"></a>Sestava ročních plánovaných nákladů
 
-The Annual Projected Costs report allows you to view annual projected costs based on previous spending trends. It shows the next 12 months of overall projected costs. The projections are made using a trend function extrapolated over the next 12 months, based on the costs associated with the last 30 days of usage.
+Sestava roční plánované náklady můžete zobrazit roční plánované náklady podle předchozí výdajové trendy. Zobrazuje další 12 měsíců od celkové předpokládané náklady. Projekce jsou prováděna pomocí funkce trend extrapolovat během následujících 12 měsíců, podle nákladů spojených se za posledních 30 dní používání.
 
-### <a name="budget-management-settings"></a>Budget Management settings
+### <a name="budget-management-settings"></a>Nastavení Správa rozpočtu
 
-Budget Management allows you to set a budget for your fiscal year.
+Pomáhá při řízení rozpočtu umožňuje nastavit rozpočtu fiskálního roku.
 
-To add a budget to an entity:
+Chcete-li přidat rozpočtu na entitu:
 
-1. On the Budget Management page, under **Entities**, select the entity where you want to create the budget.
-2. In the budget year, select the year where you want to create the budget.
-3. In each month, set your budget and then and click **Save**.
+1. Na stránce Správa rozpočtu v části **entity**vyberte entitu, u které chcete vytvořit rozpočet.
+2. V roce rozpočtu vyberte v roce, ve kterém chcete vytvořit rozpočtu.
+3. V každém měsíci nastavte rozpočet a pak klikněte na **Uložit**.
 
-To import a file for the annual budget:
+Import souboru pro roční rozpočtu:
 
-1. Under **Actions**, select **Export** to download an empty CSV template to use as your basis for the budget.
-2. Fill in the CSV file with your budget entries and save it locally.
-3. Under **Actions**, select **Import**.
-4. Select your saved file and then click  **OK**.
+1. V části **Akce**vyberte **exportovat** a stáhněte prázdnou šablonu sdíleného svazku clusteru, kterou použijete jako základ pro rozpočet.
+2. Zadejte soubor CSV s položky vašeho rozpočtu a uloží do místního prostředí.
+3. V části **Akce**vyberte **importovat**.
+4. Vyberte uložený soubor a klikněte na tlačítko **OK**.
 
-To export your completed budget as a CSV file, under **Actions**, select **Export** to download the file.
+Pokud chcete exportovat dokončený rozpočet jako soubor CSV, vyberte v části **Akce**možnost **exportovat** a Stáhněte soubor.
 
-When completed, your budget is shown in Cost Analysis reports and in the Cost vs. Budget Over Time report. You can also schedule reports based on budget thresholds.
+Po dokončení se váš rozpočet zobrazuje v sestavách analýzy nákladů a v sestavě náklady vs. rozpočet v čase. Můžete také plánovat sestavy na základě prahových hodnot rozpočtu.
 
-### <a name="azure-resource-explorer-report"></a>Azure Resource Explorer report
+### <a name="azure-resource-explorer-report"></a>Sestava Průzkumníka prostředků Azure
 
-The Azure Resource Explorer report shows a bulk list of all the Azure resources available in Cloudyn. To effectively use the report, your Azure accounts should have extended metrics enabled. Extended metrics provide Cloudyn access to your Azure VMs. For more information, see [Add extended metrics for Azure virtual machines](azure-vm-extended-metrics.md).
+Azure Resource Exploreru sestava zobrazí seznam hromadně všechny prostředky Azure k dispozici ve službě Cloudyn. Efektivně používat sestavy, by měl mít účtů Azure rozšířené povolené metriky. Rozšířené metriky poskytovat přístup do Cloudyn virtuální počítače Azure. Další informace najdete v tématu [Přidání rozšířené metriky pro virtuální počítače Azure](azure-vm-extended-metrics.md).
 
-### <a name="azure-resources-over-time-report"></a>Azure Resources Over Time report
+### <a name="azure-resources-over-time-report"></a>Sestava Azure prostředků v čase
 
-The Azure Resources Over Time report shows a breakdown of all resources running over a specific period. To effectively use the report, your Azure accounts should have extended metrics enabled. Extended metrics provide Cloudyn access to your Azure VMs. For more information, see [Add extended metrics for Azure virtual machines](azure-vm-extended-metrics.md).
+Prostředky Azure v čase sestava obsahuje rozpis všech prostředků s konkrétní období. Efektivně používat sestavy, by měl mít účtů Azure rozšířené povolené metriky. Rozšířené metriky poskytovat přístup do Cloudyn virtuální počítače Azure. Další informace najdete v tématu [Přidání rozšířené metriky pro virtuální počítače Azure](azure-vm-extended-metrics.md).
 
-### <a name="instance-explorer-report"></a>Instance Explorer report
+### <a name="instance-explorer-report"></a>Sestava instance Průzkumníka
 
-The Instance Explorer report is used to view various metrics for assets of your virtual machines. You can drill-into specific instances to view information such as:
-- Instance running intervals
-- Life cycle in the selected period
-- CPU utilization
-- Network input
-- Output traffic
-- Active disks
+Sestava Instance Průzkumníka se používá k zobrazení různých metrik pro prostředky virtuálních počítačů. Můžete přejít k podrobnostem konkrétních instancí zobrazíte informace:
+- Instance spuštění intervaly
+- Životní cyklus ve vybraném období
+- Využití procesoru
+- Vstup sítě
+- Výstupní provoz
+- Aktivní disky
 
-The Instance Explorer report collects all running intervals within the defined date range and aggregates data accordingly. To view each of the running intervals during the date range, expand the instance. The cost of each instance is calculated for the date range selected based on AWS and Azure list prices. No discounts are applied. You can add additional fields to the report using Show/Hide Fields.
+Sestava Instance Explorer shromažďuje všechny spuštěné intervalech v rámci definované období a odpovídajícím způsobem agreguje data. Chcete-li zobrazit spuštěné intervaly během období, rozbalte instanci. Náklady na jednotlivých instancí se počítá pro rozsah vybrané na základě AWS a Azure ceny seznamu. Nevztahují žádné slevy. Můžete přidat další pole do sestavy pomocí Zobrazit/skrýt pole.
 
-Use Instance Explorer report to:
+Pomocí Průzkumníka Instance sestavy do:
 
-- Calculate the estimated cost per machine.
-- Create a full list, including aggregated running hours, of all machines that were active during a time range.
-- Create a list by cloud service provider or account.
-- View machines created or terminated during a time range.
-- View all currently stopped machines.
-- View the tags of each machine.
+- Výpočet odhadované náklady na počítač.
+- Vytvoří úplný seznam, včetně agregované spuštěné hodin, všech počítačů, které byly aktivní v časovém rozsahu.
+- Vytvoření seznamu poskytovatele cloudové služby nebo účet.
+- Zobrazit počítače vytvořen nebo byl ukončen během časového úseku.
+- Zobrazte všechny aktuálně zastavené počítače.
+- Zobrazte značky jednotlivých počítačů.
 
-### <a name="instances-over-time-report"></a>Instances Over Time report
+### <a name="instances-over-time-report"></a>Sestava instance v čase
 
-Using the Instances Over Time report, you can see the maximum number of machines that were active each during the selected time range. If the defined resolution is by week or month, results are the maximum number of machines active on any given day during that month. Select a date range to select the filters that you want displayed in the report.
+Pomocí funkce nahlásit instance v čase, zobrazí se maximální počet počítačů, které bylo aktivních každý během vybraného časového úseku. Pokud týden nebo měsíc je definovaný rozlišení, výsledky se maximální počet počítačů aktivní každý den v daném měsíci. Vyberte rozsah dat vyberte filtry, které chcete zobrazit v sestavě.
 
-### <a name="instance-utilization-over-time-report"></a>Instance Utilization Over Time report
+### <a name="instance-utilization-over-time-report"></a>Sestava využití v čase instance
 
-This report shows a breakdown of CPU or memory use over time for all your instances.
+Tato sestava uvádí rozpis využití procesoru nebo paměti v čase pro všechny vaše instance.
 
-### <a name="compute-power-cost-over-time-report"></a>Compute Power Cost Over Time report
+### <a name="compute-power-cost-over-time-report"></a>Výpočetní výkon Cost Over Time sestavy
 
-The Compute Power Over Time report provides a breakdown of compute power over a specified date range. Although other reports show the number of running machines or the runtime hours, this report shows Core hours, Compute unit hours, or GB RAM hours.
+Výpočetní výkon v čase sestava uvádí výčet výpočetní výkon za určité časové období. I když další sestavy zobrazit počet spuštěných počítače nebo hodin modulu runtime, tato sestava zobrazuje – základní hodiny hodin výpočetních jednotek a GB paměti RAM hodin.
 
-Use the report to:
+Sestavu, kterou chcete použijte:
 
-- Check compute power within a specified date range.
-- View compute times based on cost allocation models.
+- Zkontrolujte výpočetní výkon v rámci určité časové období.
+- Zobrazení výpočetní čas podle modelů přidělování nákladů.
 
-This report is linked to your [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) policies so results are shown based on the defined tagging and policies your selected cost policy. When you don't have a policy created, then results aren't shown.
+Tato sestava je propojená s vašimi zásadami pro [přidělování nákladů 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) , takže výsledky se zobrazují na základě definovaného označování a zásad, které jste vybrali pro zvolenou nákladovou zásadu. Pokud nemáte k dispozici zásady vytvořené, nejsou zobrazeny výsledky.
 
-### <a name="compute-power-average-cost-over-time-report"></a>Compute Power Average Cost Over Time report
+### <a name="compute-power-average-cost-over-time-report"></a>Sestava Power průměrné Cost Over Time COMPUTE
 
-You use the Compute Power Average Cost Over Time report to view more than just the cost of each running machine. The report shows your average cost per instance hour, core hour, compute unit hour, and GB RAM hour. The report provides insight into the efficiency of your deployment.
+Sestava výpočetní výkon průměrné Cost Over Time slouží k zobrazení více než jen náklady na každý počítač spuštěný. Tato sestava zobrazuje vaše průměrné náklady na hodiny instance, hodina jádra, hodinu výpočetní jednotky a hodina GB paměti RAM. Tato sestava poskytuje přehled o tom, efektivitu vašeho nasazení.
 
-This report is linked to your [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) policies so results are displayed based on the defined tagging and policies your selected cost policy. When you don't have a policy created, then results aren't shown.
+Tato sestava je propojená s vašimi zásadami pro [přidělování nákladů 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) , takže se výsledky zobrazují na základě definovaného označování a zásad, na které jste vybrali náklady. Pokud nemáte k dispozici zásady vytvořené, nejsou zobrazeny výsledky.
 
-### <a name="s3-cost-over-time-report"></a>S3 Cost Over Time report
+### <a name="s3-cost-over-time-report"></a>S3 Cost Over Time sestavy
 
-The S3 Cost Over Time report provides a breakdown of Amazon Simple Storage Service (S3) costs per bucket over time for a specified time frame. The report helps you find the buckets that are your main cost drivers and it shows you trends in your S3 usage and spending.
+S3 Cost Over Time sestava uvádí výčet Amazon Simple Storage Service (S3) nákladů na kbelík v čase pro zadaného časového rámce. Sestavy vám pomůže najít bloků, které jsou ovladače hlavní náklady a zobrazuje trendy ve vašich S3 využití a výdajů.
 
-### <a name="s3-distribution-of-cost-report"></a>S3 Distribution of Cost report
+### <a name="s3-distribution-of-cost-report"></a>Sestava S3 rozdělení nákladů
 
-Use the report to analyze your S3 cost for the last month by bucket and storage class. You can use the pie chart view to set the visibility threshold. Or, you can use the table view to see subtotals.
+Pomocí sestavy k analýze S3 náklady za poslední měsíc třídou kontejneru a úložiště. Zobrazení výsečového grafu můžete použít k nastavení prahová hodnota viditelnosti. Nebo můžete použít zobrazení tabulky pro mezisoučtů naleznete v tématu.
 
-### <a name="s3-bucket-properties-report"></a>S3 Bucket Properties report
+### <a name="s3-bucket-properties-report"></a>Sestava vlastností sady S3
 
-Use the report to view S3 bucket properties. You can use the pie chart view to set the visibility threshold. Or, you can use the table view to see subtotals.
+Chcete-li zobrazit vlastnosti kontejneru S3 pomocí sestavy. Zobrazení výsečového grafu můžete použít k nastavení prahová hodnota viditelnosti. Nebo můžete použít zobrazení tabulky pro mezisoučtů naleznete v tématu.
 
-### <a name="rds-instances-over-time-report"></a>RDS Instances Over Time report
+### <a name="rds-instances-over-time-report"></a>Sestavy licencí VP instance v čase
 
-Use the report to view a breakdown of all Amazon Relational Database Service (RDS) instances running during the specified period.
+Pomocí sestavy chcete-li zobrazit rozpis všech instancí Amazon Relational Database Service (RDS) během zadaného období.
 
-### <a name="rds-active-instances-report"></a>RDS Active Instances report
+### <a name="rds-active-instances-report"></a>Sestava aktivních instancích vzdálené plochy
 
-Use the report to analyze RDS active instances. In the report, expand the line item to view additional information.
+Pomocí sestavy k analýze aktivní instance vzdálené plochy. V sestavě rozbalte položku řádku zobrazíte další informace.
 
-### <a name="azure-reserved-instances-report"></a>Azure Reserved Instances report
+### <a name="azure-reserved-instances-report"></a>Sestava rezervované instance Azure
 
-The Azure Reserved Instances report provides you with a single view of all your Azure reserved instances. This report displays each purchase as is its own line item. The report also shows details about that purchase such as the account that purchased it, the type of purchase and instance type, days remaining and so on. You can show or hide report data using Show/Hide Fields.
+Sestavy Azure Reserved Instances vám poskytne ucelený přehled o všech Azure rezervovaných instancí. Tato sestava zobrazí každý nákup je vlastní položky na řádku. Sestava také zobrazuje podrobnosti o tento nákup, jako je například účet, který předplatné zakoupili, typ nákupu a typu instance, a tak dále zbývající počet dní. Můžete zobrazit nebo skrýt pomocí Zobrazit/skrýt pole data sestavy.
 
-Use the Azure Reserved Instances report to view:
+Sestava rezervované instance Azure slouží k zobrazení:
 
-- A list of all reservations by purchase date.
-- Time remaining until the RI expires.
-- One-time fees.
-- The account that purchased RIs, and when.
+- Seznam všech rezervací datu nákupu.
+- Dobu zbývající do vypršení platnosti rezervované instance.
+- Jednorázové poplatky.
+- Účet, který zakoupené rezervované instance, a kdy.
 
-### <a name="aws-reserved-instances-report"></a>AWS Reserved Instances report
+### <a name="aws-reserved-instances-report"></a>Rezervované instance AWS sestavy
 
-The AWS Reserved Instances report provides you with a single view of all AWS reserved instances. This report displays each purchase is its own line item and details about that purchase such as the account that purchased it, the type of purchase and instance type, days remaining and so on. You can show or hide report data using Show/Hide Fields.
+Sestava rezervované instance AWS poskytuje že ucelený přehled o všech AWS vám rezervované instance. Tato sestava že zobrazí každý nákup je vlastní položky na řádku a podrobnosti o tento nákup, jako je například účet, který předplatné zakoupili, typ nákupu a typu instance, a tak dále zbývající počet dní. Můžete zobrazit nebo skrýt pomocí Zobrazit/skrýt pole data sestavy.
 
-Use the AWS Reserved Instances report to view:
+Rezervované instance AWS sestava slouží k zobrazení:
 
-- A list of all reservations by purchase date.
-- Time remaining until the RI expires.
-- One-time fees.
-- Original purchase ID (reservation ID).
-- The account that purchased RIs and when.
+- Seznam všech rezervací datu nákupu.
+- Dobu zbývající do vypršení platnosti rezervované instance.
+- Jednorázové poplatky.
+- ID původního nákupu (ID rezervace).
+- Účet, který zakoupené rezervované instance a kdy.
 
-### <a name="ec2-ri-buying-recommendations-report"></a>EC2 RI Buying Recommendations report
+### <a name="ec2-ri-buying-recommendations-report"></a>Sestava doporučení k nákupu rezervovaných Instancí EC2
 
-The foundation of cloud resource consumption is the on-demand model, where resources incur cost only when used. There are no up-front commitments — you pay only for what you use, when you use it.
+Základ pro využití prostředků cloudu je model na vyžádání, ve kterém vám být naúčtovány prostředky náklady pouze při použití. Neexistují žádné předem dané závazky – platíte jenom za využité, když je používáte.
 
-AWS offers an alternative pricing model for its Elastic Compute Cloud (EC2) services — the reserved instance (RI). This pricing model guarantees users the capacity whenever they need it for the duration of the RI. The RI offers significant price discounts over on-demand pricing. In return, users make an upfront commitment for the use of a virtual instance. The commitment is bound to a specific family, size, availability zone (AZ), and operating system, over the period of commitment (one or three years). The RI allows AWS to efficiently plan future capacity, as well as to gain customer commitment to using its services.
+AWS nabízí alternativu cenový model pro jeho elastické cloudové výpočetní (EC2) služby – rezervované instance (RI). Tento cenový model zaručuje uživatelé kapacitu kdykoli to bude potřebovat po dobu trvání rezervované instance. Rezervované instance významné cen nabízí oproti cenám na vyžádání. Uživatelé provádět na oplátku počátečního závazku využívání služeb pro použití virtuální instance. Závazek je vázán na konkrétní rodina, velikost, zóna dostupnosti (AZ) a operačního systému, období závazku (jeden nebo tři roky). Rezervované instance umožňuje efektivně plánovat budoucí kapacity, a jde o získání závazku zákazníky pomocí svých služeb AWS.
 
-Three payment options for RIs, which are all-upfront:
+Tři možnosti platby pro rezervované instance, které jsou všechny předem:
 
-- Bulk sum at day 0, offering the highest discount
-- No upfront - in which the cost of RI is paid in monthly installments over the duration of the RI, offering the lowest discount
-- Partial upfront, in which ¼ - ½ of the price is paid up front, and the rest in monthly installments, with a discount rate that is lower, but close, to the all-upfront rate
+- Hromadné součet za den 0, nabízí nejvyšší slevu
+- Žádné předem – ve kterém náklady na rezervovanou Instanci platí v měsíčních splátek za celou dobu rezervované instance, nabízí nejnižší slevu
+- Částečné předem, ve které ¼ - ½ ceny platí ještě před zahájením a rest v měsíčních splátek s zvýhodněná sazba, která je nižší, ale zavřete, všechny předem rychlost
 
-Cloudyn evaluates the uptime of each machine for the last 30 days. Cloudyn recommends buying RIs when it is more cost-effective to run the machine with an RI at the current uptime level.
+Cloudyn vyhodnotí dobu provozu jednotlivých počítačů za posledních 30 dní. Cloudyn doporučuje nákup rezervované instance, pokud bude cenově výhodnější ke spuštění počítače s rezervovanou Instanci na aktuální úrovni doby provozu.
 
-The report shows the justification for its recommendations to save the most money over the year. The recommendations suggest replacing on-demand instances with RIs. You can purchase RIs directly from the report.
+Tato sestava zobrazuje zdůvodnění svá doporučení nejvíce ušetřit za rok. Doporučení navrhnout nahradíte rezervované instance na vyžádání. Rezervované instance si můžete zakoupit přímo od sestavy.
 
-Each tab opens as a full report. Notable sections in tabs include:
+Každá karta se otevře jako úplnou sestavu. Významné části karty patří:
 
-- **EC2 RI Purchase Impact** - This section provides a simulation of the difference between on-demand vs reserved instances. Click  **Zoom in**, to see the full EC2 RI Purchase Impact report with the filters already defined to your recommendation. This report shows the purchase impact of all potential RI purchases. You can adjust the expected average uptime to see the potential saving when you purchase EC2 Reserved Instances.
+- **EC2 dopad na nákup** rezervovaných instancí – Tato část poskytuje simulaci rozdílu mezi rezervovanými instancemi na vyžádání vs. Klikněte na tlačítko **přiblížit**, abyste zobrazili úplný EC2 sestavu dopadu nákupu na rezervované instance s filtry, které jsou již definovány pro vaše doporučení. Tato sestava zobrazuje dopad nákupu všech potenciálních nákupy rezervovaných Instancí. Můžete upravit očekávané průměrné doby provozu zobrazíte potenciál ukládání při nákupu rezervovaných instancí EC2.
 
-- **Saving Analysis** - This section provides the potential savings achieved and the month the savings are actualized when following Cloudyn recommendations. The actual savings and the percent saved are highlighted in red.
+- **Ukládání analýz** – Tato část poskytuje potenciální úspory a měsíc, ve kterém jsou úspory v rámci následujících doporučení Cloudyn k dispozici. Skutečné úspory a procento uložili se zvýrazní červeně.
 
-- **EC2 RI Type Comparison** - This section emphasizes the ROI highlights of Cloudyn's recommended deployment, including all relevant options. The results in this report assume that the machine is running at 100% uptime. Click **Zoom In**  to open the detailed report.
+- **Porovnání typu EC2** na úrovni rezervovaný – v této části se zvýrazňují nejvyšší návratnosti investic z doporučeného nasazení Cloudyn, včetně všech relevantních možností. Výsledky v této sestavě se předpokládá, že je počítač se spouští ve 100 % dostupnost. Kliknutím na tlačítko **přiblížit** otevřete podrobnou sestavu.
 
-- **Instances Over Time** - This section displays a breakdown of all instances associated with the recommendation, OnDemand, Reserved Instances, and Spot. Click  **Zoom In**  to open the detailed report.
-- **Breakeven Points** - This section displays a table of all the possible recommended deployments and the ROI and the month when the ROI occurs. Click  **Zoom In** to open the detailed report.
+- **Instance v průběhu času** – Tato část zobrazuje rozpis všech instancí přidružených k doporučení, OnDemand, rezervovaných instancí a místě. Kliknutím na tlačítko **přiblížit** otevřete podrobnou sestavu.
+- **Breakeven body** – v této části se zobrazuje tabulka všech možných doporučených nasazení a návratnost investic a měsíc, kdy dojde k návratnosti investic. Kliknutím na tlačítko **přiblížit** otevřete podrobnou sestavu.
 
-### <a name="ec2-reservations-over-time-report"></a>EC2 Reservations Over Time report
+### <a name="ec2-reservations-over-time-report"></a>Sestava EC2 rezervace v čase
 
-The EC2 Reservations Over Time report tracks the status of your usage of your purchased EC2 RIs. You can set the resolution of the report to hour, day, or week.
+Sestava čase rezervace EC2 sleduje stav využití zakoupených rezervovaných instancí EC2. Rozlišení sestavy můžete nastavit na hodinu, dne nebo týdne.
 
-Use the report to:
+Sestavu, kterou chcete použijte:
 
-- Display reservations purchased that are used and not used.
-- Drill in to the resolution by hour to see RI usage per hour.
+- Zobrazit koupit rezervace, které jsou používány a nepoužívá se.
+- Když přejdete k podrobnostem na řešení po hodinách zobrazíte využití rezervovaných Instancí za hodinu.
 
-### <a name="savings-over-time-report"></a>Savings Over Time report
+### <a name="savings-over-time-report"></a>Sestava úspory v čase
 
-Use the Savings Over Time report to view the savings achieved using reserved instances as well as spot instances. The report shows the ROI achieved over time resulting from RI purchases.
+Sestava průběhu čas slouží k zobrazení úspory dosažené, pomocí rezervované instance, jakož i spot instance. Tato sestava zobrazuje návratnost investic dosáhnout v čase vyplývající z nákupy rezervovaných Instancí.
 
-To view savings from RIs, group the results by **Price Model** and select **Reservation**. To view RI savings achieved by a specific account or instance type, add the relevant grouping and filter to the account or instance type.
+Chcete-li zobrazit úspory z části RIs, seskupte výsledky podle **cenového modelu** a vyberte možnost **rezervace**. Zobrazit RI úspory dosažené podle určitého účtu nebo instanci typu, přidejte k účtu nebo instance typu relevantní seskupování a filtrování.
 
-To see savings from Spot instance use, filter the **Price Model** to **Spot**. The default filter for this report is RI and Spot Instances.
+Chcete-li zobrazit úspory z instance bodu použití, vyfiltrujte **model cen** tak, aby byl **bodový**. Rezervované instance a Spot instance se jako výchozí filtr pro tuto sestavu.
 
-### <a name="rds-ri-buying-recommendations-report"></a>RDS RI Buying Recommendations report
+### <a name="rds-ri-buying-recommendations-report"></a>Sestava doporučení k nákupu rezervovaných Instancí vzdálené plochy
 
-RDS RI Buying Recommendations report recommends when to use RDS RIs instead of on-demand instances.
+Sestava doporučení k nákupu rezervovaných Instancí vzdálené plochy se doporučuje, abyste kdy použít rezervované instance RDS místo instance na vyžádání.
 
-Each tab opens as a full report. Notable sections in tabs include:
+Každá karta se otevře jako úplnou sestavu. Významné části karty patří:
 
-- **RDS RI Purchase Impact** - This section provides a simulation of the difference between on demand vs reserved instances. Click  **Zoom in** to see the full RDS RI Purchase Impact report with the filters already defined to your recommendation. This report allows you to see the purchase impact of all potential RI purchases.  You can adjust the expected average uptime and see the potential saving by purchasing RIs.
-- **Saving Analysis** – This section provides the potential savings achieved and the month the savings are actualized when following Cloudyn recommendations. The actual savings and the percent saved are highlighted in red.
+- **Dopad na nákup vzdálené plochy RDS** – Tato část poskytuje simulaci rozdílu mezi rezervovanými instancemi na vyžádání vs. Klikněte na tlačítko **přiblížit** . zobrazí se úplná sestava dopadu nákupu VP rezervovaný s filtry, které jsou už definované pro vaše doporučení. Tato sestava umožňuje zobrazit dopad nákupu všech potenciálních nákupy rezervovaných Instancí.  Můžete upravit očekávané průměrné doby provozu a zjistit potenciální ukládání nákupu rezervované instance.
+- **Ukládání analýz** – Tato část poskytuje potenciální úspory a měsíc, ve kterém jsou úspory v rámci následujících doporučení Cloudyn k dispozici. Skutečné úspory a procento uložili se zvýrazní červeně.
 
-- **RDS RI Type Comparison** - This section emphasizes the ROI highlights of the recommended deployment, including all relevant options. The results in this report assume that the machine is running at 100% uptime. Click **Zoom In** to open the detailed report for the selected machine.
-- **Instances Over Time** – This section displays a breakdown of all instances associated with the recommendation, OnDemand, Reserved Instances, and Spot. Click **Zoom In** to open the detailed report.
+- **Porovnání typu RDS** rezervované – v této části se zvýrazňují nejdůležitější nejdůležitější možnosti nasazení, včetně všech relevantních možností. Výsledky v této sestavě se předpokládá, že je počítač se spouští ve 100 % dostupnost. Kliknutím na tlačítko **přiblížit** otevřete podrobnou sestavu pro vybraný počítač.
+- **Instance v průběhu času – v** této části se zobrazuje rozpis všech instancí přidružených k doporučení, OnDemand, rezervovaných instancí a místě. Kliknutím na tlačítko **přiblížit** otevřete podrobnou sestavu.
 
-- **Breakeven Points** – This section displays a table of all the possible recommended deployments and the ROI and the month when the ROI occurs. Click **Zoom In** to open the detailed report.
+- **Breakeven body** – v této části se zobrazuje tabulka všech možných doporučených nasazení a návratnost investic a měsíc, kdy dojde k návratnosti investic. Kliknutím na tlačítko **přiblížit** otevřete podrobnou sestavu.
 
-### <a name="rds-reservations-over-time-report"></a>RDS Reservations Over Time report
+### <a name="rds-reservations-over-time-report"></a>Sestavy licencí VP rezervace v čase
 
-Use the RDS Reservation Over Time report to view a breakdown of both your used and unused reservations during the specified period.
+Pomocí vzdálené plochy rezervace v čase sestavy zobrazit rozpis vaše používaných a nevyužité rezervace během zadaného období.
 
-### <a name="reserved-instance-purchase-impact-report"></a>Reserved Instance Purchase Impact report
+### <a name="reserved-instance-purchase-impact-report"></a>Rezervované Instance dopadu nákupu sestavy
 
-The EC2 RI Purchase Impact report allows you to simulate reserved instance cost versus on-demand cost over time. It can help you make better purchasing decisions. Adjust the filters such as average runtime, term, platform, and others to make informed decisions when you consider RI purchases.
+Sestava dopadu nákupu rezervované instance EC2 umožňuje simulovat náklady na rezervovanou instanci a náklady na vyžádání v čase. Může pomoct při rozhodování lépe nákupu. Upravte filtry, např. Průměrná doba běhu, termín, platformy a ostatními a informovaně se rozhodovat při zvažování nákupy rezervovaných Instancí.
 
-### <a name="cost-effective-sizing-recommendations-report"></a>Cost-Effective Sizing Recommendations report
+### <a name="cost-effective-sizing-recommendations-report"></a>Nákladově efektivní doporučení velikosti sestav
 
-The Cost-Effective Sizing Recommendations report provides results for AWS and Azure. For AWS users, your RI purchases are taken into consideration and the results don't include machines running as RI's. This report provides a list of underutilized instances that are candidates to downsize. Recommendations are based on your usage and performance data from the last 30 days. In each recommendation is a list of candidates to downsize, the justification to downsize, and a link to view complete details and performance metrics of the instance. And when relevant recommendations advise changing to newer generation instance types.
+Sestava doporučení velikosti cenově efektivního obsahuje výsledky pro AWS a Azure. Pro uživatele AWS nákupy rezervovaných Instancí se berou v úvahu a výsledky nejsou zahrnuté počítače, které běží jako rezervované instance. Tato sestava obsahuje seznam instancí nedostatečně využité, které jsou kandidáty na downsize. Doporučení jsou založená na vaše data o využití a výkonu za posledních 30 dní. V každé doporučení je seznam kandidátů downsize, odůvodnění ke downsize a odkaz, chcete-li zobrazit podrobné informace a metriky výkonu instance. A když relevantní doporučení dokáží změnu typů instancí novější generace.
 
-You can't download the list of instance IDs that are recommended to downsize from this report. To download Instance IDs, use the All Sizing Recommendations report.
+Nelze stáhnout seznam instance ID, která se doporučuje, aby downsize z této sestavy. Pokud chcete stáhnout ID Instance, použijte sestavu všech doporučení velikosti.
 
-Consider the following downsizing example:
+Podívejte se na následující příklad downsizing:
 
-You have six m3.xlarge running instances. Cloudyn analysis shows that five of them have low CPU utilization. Consider downsizing them.
+Můžete mít šest m3.xlarge spuštěné instance. Cloudyn analýza ukazuje, že pět z nich mají nízké využití procesoru. Vezměte v úvahu downsizing je.
 
-In Cost Impact, the cost impact is calculated. In this example, by expanding the line item, you can see the current price for one m3.xlarge instance (Linux/Unix) costs $0.266 per hour and one m3.large instance (Linux/Unix) costs $0.133 per hour. So, the annual cost is $11,651 for five m3.xlarge instances running at 100% utilization. The annual cost is $5,825 for five m3.large instances running at 100% utilization. The potential savings are $5,825.
+V dopad náklady se počítá dopad náklady. V tomto příkladu tak, že rozbalíte položku řádku vidíte, že aktuální ceny pro jednu instanci m3.xlarge (Linux/Unix) stojí 0.266 $ za hodinu a náklady na instanci (Linux/Unix) jeden m3.large 0.133 $ za hodinu. Roční náklady tedy 11,651 pro pět instancí m3.xlarge spuštěné ve 100 % využití. Roční náklady jsou 5,825 pro pět instancí m3.large spuštěné ve 100 % využití. Potenciální úspory jsou 5,825 $.
 
-To view cost-effective sizing justifications, click + to expand the line item. In **Details**:
+K zobrazení justifications nákladově efektivního nastavení velikosti, klikněte na + rozbalte položky řádku. V **podrobnostech**:
 
-- The **Recommendation Justification** section displays the current deployment and the number of instances recommended to downsize.
-- The **Cost Impact** section displays the calculation used to determine potential savings.
-- The **Potential Annual Savings** section displays the potential annual savings when downsizing per Cloudyn's recommendation.
+- V části **odůvodnění doporučení** se zobrazuje aktuální nasazení a počet instancí doporučených pro klidnějších.
+- Část **dopad nákladů** zobrazuje výpočet, který se používá k určení potenciální úspory.
+- V části **možné roční úspory** se zobrazuje potenciální roční úspora při možnost doporučení na Cloudyn.
 
-### <a name="all-sizing-recommendations-report"></a>All Sizing Recommendations report
+### <a name="all-sizing-recommendations-report"></a>Všechny sestavy doporučení velikosti
 
-This report provides a list of underutilized instances that are candidates to downsize. The recommendations are based on your usage and performance data from the last 30 days. In each recommendation, you can view complete details and performance metrics of the instance.
+Tato sestava obsahuje seznam instancí nedostatečně využité, které jsou kandidáty na downsize. Doporučení jsou založené na datech využití a výkonu za posledních 30 dní. V jednotlivých doporučení uvidíte veškeré podrobnosti a metriky výkonu instance.
 
-If you've purchased AWS reserved instances, this report contains results for all running instances, including instances running as RIs.
+Pokud jste zakoupili AWS rezervované instance, tato sestava obsahuje výsledky pro všechny spuštěné instance, včetně instancí spuštěných jako rezervované instance.
 
-Use the All Sizing Recommendations report to:
+Použijte všechna doporučení velikosti sestavu do:
 
-- See a list of all your instances that are candidates to downsize.
-- Export a report list containing Instance Names and IDs.
+- Zobrazit seznam všech instancí, které jsou kandidáty na downsize.
+- Exportujte seznam sestav obsahující Instance názvy a identifikátory.
 
-To view recommendation details for a specific Instance, click **+** to expand the details. The Recommendation Details section provides an overview of the recommendation.
+Chcete-li zobrazit podrobnosti o doporučení pro určitou instanci, kliknutím na tlačítko **+** rozbalte podrobnosti. V části Podrobnosti o doporučení poskytuje přehled doporučení.
 
-The **Tags** section provides the list of the tag keys and values for the selected instance. Use Tags in the left pane to filter the section.
+V části **značky** najdete seznam klíčů a hodnot značek pro vybranou instanci. Použití značek k filtrování v části v levém podokně.
 
-The **CPU Utilization** section provides the CPU utilization for the instance over the last month, by day.
+Část **využití procesoru** poskytuje využití CPU pro instanci v průběhu posledního měsíce za den.
 
-Click the graph to drill down and open the Instance CPU Over Time Report to see a breakdown of the instances.
+Klikněte na graf tak, aby k podrobnostem a otevřete instanci procesoru nad čas sestavu pro zobrazení rozpisu instancí.
 
-- Use **Show/Hide Fields** to add or remove fields: Timestamp, Avg CPU, Min CPU, Max CPU.
-- Use **Date Range** to enter a date or date range and drill into a specific InstanceID.
-- Use **Extended Filters** to show all or a specific Instance ID
-- Click **Zoom in** to open the CPU Utilization Report
+- Použijte **pole Zobrazit/skrýt** pro přidání nebo odebrání polí: časové razítko, prům. CPU, minimální procesor, maximální využití procesoru.
+- Pomocí **rozsahu kalendářních dat** můžete zadat datum nebo rozsah dat a přejít k podrobnostem o konkrétní InstanceID.
+- Použijte **Rozšířené filtry** k zobrazení všech nebo konkrétního ID instance.
+- Kliknutím na tlačítko **přiblížit** otevřete sestavu využití CPU.
 
-If the instance hasn't been monitored for 30 days, incomplete data is shown.
+Pokud instance není sledována po dobu 30 dnů, zobrazí se neúplná data.
 
-The **Memory Utilization (GB)** section provides information about the memory utilized. For AWS users, memory metrics are not automatically available and need to be added per instance through AWS. AWS charges you to enable memory metrics for EC2 instances.
+Část **využití paměti (GB)** poskytuje informace o využité paměti. Pro uživatele AWS paměti metriky nejsou automaticky k dispozici a potřeba přidat na instanci prostřednictvím AWS. Poplatky za AWS, můžete k zapnutí metrik paměti pro instance EC2.
 
-The **Memory Utilization (%)** section displays the percent of memory used.
+V části **využití paměti (%)** se zobrazuje procento využité paměti.
 
-The **Network Input Traffic** section displays a snapshot over time of the network traffic, average, and maximum, for the selected instance. Hover over the lines to see the date and maximum traffic for that time. Click **Zoom In** to open the Network Input Traffic Report.
+Část **síťový vstup přenosů** zobrazuje snímek v čase provozu sítě, průměr a maximum pro vybranou instanci. Najeďte myší řádky se zobrazí datum a maximální provozu pro tento čas. Kliknutím na tlačítko **přiblížit** otevřete sestavu síťový vstupní provoz.
 
-The **Network Output Traffic** section displays a snapshot of the network output traffic for the selected instance. Hover over the lines to see the date and maximum traffic for that time. Click **Zoom In** to open the Network Output Traffic report.
+Část **síťový výstup přenosů** zobrazuje snímek výstupního provozu sítě pro vybranou instanci. Najeďte myší řádky se zobrazí datum a maximální provozu pro tento čas. Klikněte na tlačítko **přiblížit** a otevřete sestavu výstup síťového provozu.
 
-### <a name="instance-metrics-explorer-report"></a>Instance Metrics Explorer report
+### <a name="instance-metrics-explorer-report"></a>Sestava instance Průzkumník metrik
 
-The Instance Metrics Explorer report shows cross-cloud performance metrics per instance. Use the report to view instances that are over or under-utilized based on CPU, memory, and network metric thresholds.
+Průzkumník metrik Instance sestava zobrazuje metriky výkonu cloudu na jednu instanci. Použití sestav k zobrazení instance, které jsou nad nebo pod jiným podle procesoru, paměti a sítě prahové hodnoty metrik.
 
-To view cross-cloud performance per instance:
+Chcete-li zobrazit výkon cloudu na instanci:
 
-1. In **Date Range**, select a date range for which you want to view performance.
-2. In **Tags**, select any tags that you want to view.
-3. In **Filters**, select the filters you want to display in the report.
-4. In **Extended Filters**, adjust the report thresholds for:
-    - Avg CPU
-    - Max CPU
-    - Avg Memory
-    - Max Memory
-5. In **Extended Filters**, click **Show** and then select the type of instances to display.
+1. V **oblasti data**vyberte rozsah dat, pro který chcete zobrazit výkon.
+2. V **tagu**vyberte všechny značky, které chcete zobrazit.
+3. V části **filtry**vyberte filtry, které chcete zobrazit v sestavě.
+4. V **rozšířených filtrech**upravte prahové hodnoty sestavy pro:
+    - Průměrné využití procesoru
+    - Maximální počet procesorů
+    - Průměrná paměť
+    - Maximální velikost paměti
+5. V části **Rozšířené filtry**klikněte na tlačítko **Zobrazit** a vyberte typ instancí, které chcete zobrazit.
 
-To view a specific instance's metrics over time:
+Pokud chcete zobrazit konkrétní instanci metriky v čase:
 
-- Go to the Instance Metrics Explorer report and click **+** to view details.
+- Přejděte na instanci Průzkumník metrik sestavu a kliknutím na **+** zobrazte podrobnosti.
 
-### <a name="rds-sizing-recommendations-report"></a>RDS Sizing Recommendations report
+### <a name="rds-sizing-recommendations-report"></a>Sestava doporučení velikosti vzdálené plochy
 
-The RDS Sizing Recommendations report provides RDS sizing recommendations to optimize your cloud usage. It provides a list of underutilized instances that are candidates to downsize. Cloudyn recommendations are based on the usage and performance data of the last 30 days. You can filter recommendations by Account Name, Region, Instance Type, and Status.
+Sestava doporučení velikosti vzdálené plochy poskytuje vzdálené plochy pro změnu velikosti doporučení k optimalizaci využití cloudu. Poskytuje seznam nedostatečně využité instancí, které jsou kandidáty na downsize. Cloudyn doporučení jsou založená na data o využití a výkonu z posledních 30 dní. Můžete filtrovat podle názvu účtu, oblasti, typu Instance a stav doporučení.
 
-### <a name="sizing-threshold-manager-report"></a>Sizing Threshold Manager report
+### <a name="sizing-threshold-manager-report"></a>Správce prahová hodnota velikosti sestav
 
-Cloudyn's built-in sizing recommendations are calculated using a complex algorithm to provide accurate sizing suggestions. You can adjust the thresholds for downsizing recommendations.
+Doporučení integrované velikosti od Cloudyn vypočítají na základě komplexní algoritmus k pošlete nám návrhy, určení správné velikosti. Můžete upravit prahové hodnoty pro downsizing doporučení.
 
-To manually adjust threshold sizing recommendations:
+Chcete-li ručně upravit doporučení velikosti prahové hodnoty:
 
-1. In Sizing Threshold Manager, adjust the following thresholds as you like:
-    - Average CPU %
-    - Maximum CPU %
-    - Average Memory %
-    - Maximum Memory %
-3. Click **Apply** to save changes.
-4. Changes apply immediately to all your recommendations.
+1. Ve Správci prahová hodnota velikosti upravte následující prahové hodnoty, jak potřebujete:
+    - Průměrné využití procesoru %
+    - Maximální využití procesoru %
+    - Průměrná paměť %
+    - Maximální velikost paměti %
+3. Kliknutím na **použít** uložte změny.
+4. Změny se okamžitě použije pro všechna vaše doporučení.
 
-To restore default thresholds:
+Chcete-li obnovit výchozí prahové hodnoty:
 
-- In Sizing Threshold Manager, click **Restore Defaults**.
+- V nabídce Velikost správce prahové hodnoty klikněte na **Obnovit výchozí hodnoty**.
 
-### <a name="compute-instance-types-report"></a>Compute Instance Types report
+### <a name="compute-instance-types-report"></a>Výpočetní Instance typů sestav
 
-Use the Instance Types report to:
+Pomocí sestavy typy instancí na:
 
-- View instance types by Service, Family, API Name, and Name.
-- View details such as CPU, ECU, RAM, and Network.
+- Zobrazení typů instancí služby, rodina, název rozhraní API a název.
+- Zobrazit podrobnosti, jako je procesor, ECU, RAM a síť.
 
-You can use **Search** to find specific line items.
+Pomocí **vyhledávání** můžete najít konkrétní položky řádku.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Learn about how to use reports, including how to customize or save and schedule reports, see [Understanding cost reports](understanding-cost-reports.md).
-- Learn about the dashboards included in Cloudyn and about how to create your own custom dashboards, see [View key cost metrics with dashboards](dashboards.md).
+- Přečtěte si, jak používat sestavy, včetně postupu přizpůsobení nebo ukládání a plánování sestav, najdete v tématu [porozumění sestavám nákladů](understanding-cost-reports.md).
+- Přečtěte si o řídicích panelech, které jsou zahrnuté v Cloudyn, a o tom, jak vytvářet vlastní řídicí panely, najdete v tématu [zobrazení metriky klíčových nákladů pomocí řídicích panelů](dashboards.md).

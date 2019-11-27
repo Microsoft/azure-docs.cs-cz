@@ -37,7 +37,7 @@ ms.locfileid: "74306773"
 |**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní API pro změnu knihovny procesoru v informačním kanálu](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
 |**Začínáme**|[Začínáme s rozhraním .NET SDK Change feed Processor](change-feed.md)|
-|**Aktuální podporované architektury**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+|**Aktuální podporovaná architektura**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
 > Pokud používáte procesor Change feed, přečtěte si prosím nejnovější verzi 3. x sady [.NET SDK](change-feed-processor.md), která obsahuje kanál změn integrovaný do sady SDK. 
@@ -172,7 +172,7 @@ ms.locfileid: "74306773"
 
 ## <a name="release--retirement-dates"></a>Data vyřazení & vydání
 
-Microsoft bude poskytovat oznámení alespoň **12 měsíců** před vyřazením z provozu sady SDK ulehčení přechodu na verzi novější nebo podporované.
+Microsoft bude před vyřazením sady SDK do novější nebo podporované verze oznámení obsahovat alespoň **12 měsíců** .
 
 Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK. 
 
@@ -188,7 +188,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | [2.2.5](#2.2.5) |13. prosince 2018 |--- |
 | [2.2.4](#2.2.4) |29. listopadu 2018 |--- |
 | [2.2.3](#2.2.3) |19. listopadu 2018 |--- |
-| [2.2.2](#2.2.2) |31. října 2018 |--- |
+| [bodě](#2.2.2) |31. října 2018 |--- |
 | [2.2.1](#2.2.1) |24. října 2018 |--- |
 | [1.3.3](#1.3.3) |8\. května 2018 |--- |
 | [1.3.2](#1.3.2) |18. dubna 2018 |--- |
@@ -204,4 +204,4 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 ## <a name="see-also"></a>Viz také
 
-Další informace o službě Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby.
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .

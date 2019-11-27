@@ -1,6 +1,6 @@
 ---
-title: Integrate Azure DNS with your Azure resources - Azure DNS
-description: In this article, learn how to use Azure DNS along to provide DNS for your Azure resources.
+title: Integrace Azure DNS s prostředky Azure – Azure DNS
+description: V tomto článku se dozvíte, jak pomocí Azure DNS společně zadat DNS pro prostředky Azure.
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,158 +14,158 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74212424"
 ---
-# <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Use Azure DNS to provide custom domain settings for an Azure service
+# <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Použití Azure DNS k poskytnutí vlastní nastavení domény pro službu Azure
 
-Azure DNS provides DNS for a custom domain for any of your Azure resources that support custom domains or that have a fully qualified domain name (FQDN). An example is you have an Azure web app and you want your users to access it by either using contoso.com, or www\.contoso.com as an FQDN. This article walks you through configuring your Azure service with Azure DNS for using custom domains.
+Azure DNS poskytuje DNS pro vlastní doménu pro všechny prostředky Azure, které podporují vlastní domény nebo mají plně kvalifikovaný název domény (FQDN). Příkladem je webová aplikace Azure a chcete, aby k nim měli uživatelé přístup pomocí contoso.com nebo www\.contoso.com jako plně kvalifikovaný název domény. Tento článek vás provede konfigurací služby Azure pomocí Azure DNS pro použití vlastních domén.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-In order to use Azure DNS for your custom domain, you must first delegate your domain to Azure DNS. Visit [Delegate a domain to Azure DNS](./dns-delegate-domain-azure-dns.md) for instructions on how to configure your name servers for delegation. Once your domain is delegated to your Azure DNS zone, you are able to configure the DNS records needed.
+Aby bylo možné použít Azure DNS pro vlastní doménu, musíte nejprve delegovat doménu na Azure DNS. Pokyny ke konfiguraci názvových serverů pro delegování najdete v tématu [delegování domény a Azure DNS](./dns-delegate-domain-azure-dns.md) . Jakmile je vaše doména delegovaná do vaší zóny Azure DNS, budete moct nakonfigurovat potřebné záznamy DNS.
 
-You can configure a vanity or custom domain for [Azure Function Apps](#azure-function-app), [Public IP addresses](#public-ip-address), [App Service (Web Apps)](#app-service-web-apps), [Blob storage](#blob-storage), and [Azure CDN](#azure-cdn).
+Můžete nakonfigurovat individuální nebo vlastní doménu pro [aplikace funkcí Azure](#azure-function-app), [veřejné IP adresy](#public-ip-address), [App Service (Web Apps)](#app-service-web-apps), [úložiště objektů BLOB](#blob-storage)a [Azure CDN](#azure-cdn).
 
-## <a name="azure-function-app"></a>Azure Function App
+## <a name="azure-function-app"></a>Function App Azure
 
-To configure a custom domain for Azure function apps, a CNAME record is created as well as configuration on the function app itself.
+Pokud chcete nakonfigurovat vlastní doménu pro aplikace Azure Functions, vytvoří se záznam CNAME a taky se nakonfiguruje v samotné aplikaci Function App.
  
-Navigate to **Function App** and select your function app. Click **Platform features** and under **Networking** click **Custom domains**.
+Přejděte na **Function App** a vyberte svou aplikaci Function App. Klikněte na **funkce platformy** a v části **sítě** klikněte na **vlastní domény**.
 
-![function app blade](./media/dns-custom-domain/functionapp.png)
+![okno aplikace Function App](./media/dns-custom-domain/functionapp.png)
 
-Note the current url on the **Custom domains** blade, this address is used as the alias for the DNS record created.
+Všimněte si aktuální adresy URL v okně **vlastní domény** . Tato adresa se používá jako alias pro vytvořený záznam DNS.
 
-![custom domain blade](./media/dns-custom-domain/functionshostname.png)
+![okno vlastní doména](./media/dns-custom-domain/functionshostname.png)
 
-Navigate to your DNS Zone and click **+ Record set**. Fill out the following information on the **Add record set** blade and click **OK** to create it.
+Přejděte do zóny DNS a klikněte na **+ Sada záznamů**. V okně **Přidat sadu záznamů** zadejte následující informace a kliknutím na tlačítko **OK** ji vytvořte.
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Name (Název)     | myfunctionapp        | This value along with the domain name label is the FQDN for the custom domain name.        |
-|Typ     | CNAME        | Use a CNAME record is using an alias.        |
-|TTL     | 1\. místo        | 1 is used for 1 hour        |
-|TTL unit     | Hodin        | Hours are used as the time measurement         |
-|Alias     | adatumfunction.azurewebsites.net        | The DNS name you are creating the alias for, in this example it is the adatumfunction.azurewebsites.net DNS name provided by default to the function app.        |
+|Název     | myfunctionapp        | Tato hodnota spolu s popiskem názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
+|Typ     | CNAME        | Použití záznamu CNAME používá alias.        |
+|TTL     | 1        | 1 se používá po dobu 1 hodiny.        |
+|Jednotka TTL     | Hodiny        | Hodiny se používají jako časová měření.         |
+|Alias     | adatumfunction.azurewebsites.net        | Název DNS, pro který vytváříte alias, v tomto příkladu se jedná o název DNS adatumfunction.azurewebsites.net, který je ve výchozím nastavení zadaný pro aplikaci Function App.        |
 
-Navigate back to your function app, click **Platform features**, and under **Networking** click **Custom domains**, then under **Custom Hostnames** click **+ Add hostname**.
+Přejděte zpátky do aplikace Function App, klikněte na **funkce platformy**a v části **sítě** klikněte na **vlastní domény**a potom v části **vlastní názvy hostitelů** klikněte na **+ Přidat název hostitele**.
 
-On the **Add hostname** blade, enter the CNAME record in the **hostname** text field and click **Validate**. If the record is found, the **Add hostname** button appears. Click **Add hostname** to add the alias.
+V okně **Přidat název hostitele** zadejte záznam CNAME do textového pole **název hostitele** a klikněte na **ověřit**. Pokud se záznam najde, zobrazí se tlačítko **Přidat název hostitele** . Kliknutím na **Přidat název hostitele** přidejte alias.
 
-![function apps add host name blade](./media/dns-custom-domain/functionaddhostname.png)
+![okno aplikace Function app přidat název hostitele](./media/dns-custom-domain/functionaddhostname.png)
 
 ## <a name="public-ip-address"></a>Veřejná IP adresa
 
-To configure a custom domain for services that use a public IP address resource such as Application Gateway, Load Balancer, Cloud Service, Resource Manager VMs, and, Classic VMs, an A record is used.
+Pokud chcete nakonfigurovat vlastní doménu pro služby, které používají prostředky veřejné IP adresy, například Application Gateway, Load Balancer, cloudové služby, Správce prostředků virtuální počítače a klasické virtuální počítače, použije se záznam A.
 
-Navigate to **Networking** > **Public IP address**, select the Public IP resource and click **Configuration**. Notate the IP address shown.
+Přejděte do **sítě** > **veřejné IP adresy**, vyberte prostředek veřejné IP adresy a klikněte na **Konfigurace**. Setatete zobrazenou IP adresu.
 
-![public ip blade](./media/dns-custom-domain/publicip.png)
+![okno veřejné IP adresy](./media/dns-custom-domain/publicip.png)
 
-Navigate to your DNS Zone and click **+ Record set**. Fill out the following information on the **Add record set** blade and click **OK** to create it.
+Přejděte do zóny DNS a klikněte na **+ Sada záznamů**. V okně **Přidat sadu záznamů** zadejte následující informace a kliknutím na tlačítko **OK** ji vytvořte.
 
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Name (Název)     | mywebserver        | This value along with the domain name label is the FQDN for the custom domain name.        |
-|Typ     | A        | Use an A record as the resource is an IP address.        |
-|TTL     | 1\. místo        | 1 is used for 1 hour        |
-|TTL unit     | Hodin        | Hours are used as the time measurement         |
-|IP adresa     | `<your ip address>`       | The public IP address.|
+|Název     | mywebserver        | Tato hodnota spolu s popiskem názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
+|Typ     | A        | Použijte záznam A jako prostředek je IP adresa.        |
+|TTL     | 1        | 1 se používá po dobu 1 hodiny.        |
+|Jednotka TTL     | Hodiny        | Hodiny se používají jako časová měření.         |
+|IP adresa     | `<your ip address>`       | Veřejná IP adresa.|
 
-![create an A record](./media/dns-custom-domain/arecord.png)
+![Vytvoření záznamu A](./media/dns-custom-domain/arecord.png)
 
-Once the A record is created, run `nslookup` to validate the record resolves.
+Po vytvoření záznamu A spusťte `nslookup` k ověření, že se záznam vyřeší.
 
-![public ip dns lookup](./media/dns-custom-domain/publicipnslookup.png)
+![vyhledání DNS pro veřejnou IP adresu](./media/dns-custom-domain/publicipnslookup.png)
 
 ## <a name="app-service-web-apps"></a>App Service (Web Apps)
 
-The following steps take you through configuring a custom domain for an app service web app.
+Následující kroky vás provedou konfigurací vlastní domény pro webovou aplikaci App Service.
 
-Navigate to **App Service** and select the resource you are configuring a custom domain name, and click **Custom domains**.
+Přejděte na **App Service** a vyberte prostředek, pro který konfigurujete vlastní název domény, a klikněte na **vlastní domény**.
 
-Note the current url on the **Custom domains** blade, this address is used as the alias for the DNS record created.
+Všimněte si aktuální adresy URL v okně **vlastní domény** . Tato adresa se používá jako alias pro vytvořený záznam DNS.
 
-![custom domains blade](./media/dns-custom-domain/url.png)
+![okno vlastní domény](./media/dns-custom-domain/url.png)
 
-Navigate to your DNS Zone and click **+ Record set**. Fill out the following information on the **Add record set** blade and click **OK** to create it.
+Přejděte do zóny DNS a klikněte na **+ Sada záznamů**. V okně **Přidat sadu záznamů** zadejte následující informace a kliknutím na tlačítko **OK** ji vytvořte.
 
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Name (Název)     | mywebserver        | This value along with the domain name label is the FQDN for the custom domain name.        |
-|Typ     | CNAME        | Use a CNAME record is using an alias. If the resource used an IP address, an A record would be used.        |
-|TTL     | 1\. místo        | 1 is used for 1 hour        |
-|TTL unit     | Hodin        | Hours are used as the time measurement         |
-|Alias     | webserver.azurewebsites.net        | The DNS name you are creating the alias for, in this example it is the webserver.azurewebsites.net DNS name provided by default to the web app.        |
+|Název     | mywebserver        | Tato hodnota spolu s popiskem názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
+|Typ     | CNAME        | Použití záznamu CNAME používá alias. Pokud prostředek použil IP adresu, bude použit záznam A.        |
+|TTL     | 1        | 1 se používá po dobu 1 hodiny.        |
+|Jednotka TTL     | Hodiny        | Hodiny se používají jako časová měření.         |
+|Alias     | webserver.azurewebsites.net        | Název DNS, pro který vytváříte alias, v tomto příkladu se jedná o název DNS webserver.azurewebsites.net, který je ve výchozím nastavení zadaný pro webovou aplikaci.        |
 
 
-![create a CNAME record](./media/dns-custom-domain/createcnamerecord.png)
+![Vytvoření záznamu CNAME](./media/dns-custom-domain/createcnamerecord.png)
 
-Navigate back to the app service that is configured for the custom domain name. Click **Custom domains**, then click **Hostnames**. To add the CNAME record you created, click **+ Add hostname**.
+Přejděte zpátky do služby App Service, která je nakonfigurovaná pro vlastní název domény. Klikněte na **vlastní domény**a potom klikněte na **názvy hostitelů**. Chcete-li přidat záznam CNAME, který jste vytvořili, klikněte na **+ Přidat název hostitele**.
 
 ![Obrázek 1](./media/dns-custom-domain/figure1.png)
 
-Once the process is complete, run **nslookup** to validate name resolution is working.
+Po dokončení procesu spusťte příkaz **nslookup** a ověřte, jestli funguje překlad názvů.
 
 ![Obrázek 1](./media/dns-custom-domain/finalnslookup.png)
 
-To learn more about mapping a custom domain to App Service, visit [Map an existing custom DNS name to Azure Web Apps](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json).
+Další informace o mapování vlastní domény na App Service najdete v [Web Apps mapování existujícího vlastního názvu DNS na Azure](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json).
 
-To learn how to migrate an active DNS name, see [Migrate an active DNS name to Azure App Service](../app-service/manage-custom-dns-migrate-domain.md).
+Informace o tom, jak migrovat aktivní název DNS, najdete v tématu [migrace aktivního názvu DNS na Azure App Service](../app-service/manage-custom-dns-migrate-domain.md).
 
-If you need to purchase a custom domain, visit [Buy a custom domain name for Azure Web Apps](../app-service/manage-custom-dns-buy-domain.md) to learn more about App Service domains.
+Pokud potřebujete koupit vlastní doménu, přečtěte si téma [koupit si vlastní název domény pro Azure Web Apps](../app-service/manage-custom-dns-buy-domain.md) , kde najdete další informace o App Service doménách.
 
-## <a name="blob-storage"></a>Úložiště blobů
+## <a name="blob-storage"></a>Blob Storage
 
-The following steps take you through configuring a CNAME record for a blob storage account using the asverify method. This method ensures there is no downtime.
+Následující kroky vás provedou konfigurací záznamu CNAME pro účet úložiště objektů BLOB pomocí metody asverify. Tato metoda zajistí, že nedochází k výpadkům.
 
-Navigate to **Storage** > **Storage Accounts**, select your storage account, and click **Custom domain**. Notate the FQDN under step 2, this value is used to create the first CNAME record
+Přejděte do **úložiště** > **účty úložiště**, vyberte svůj účet úložiště a klikněte na **vlastní doména**. V části Krok 2 se zobrazí plně kvalifikovaný název domény. Tato hodnota se používá k vytvoření prvního záznamu CNAME.
 
-![blob storage custom domain](./media/dns-custom-domain/blobcustomdomain.png)
+![vlastní doména BLOB Storage](./media/dns-custom-domain/blobcustomdomain.png)
 
-Navigate to your DNS Zone and click **+ Record set**. Fill out the following information on the **Add record set** blade and click **OK** to create it.
+Přejděte do zóny DNS a klikněte na **+ Sada záznamů**. V okně **Přidat sadu záznamů** zadejte následující informace a kliknutím na tlačítko **OK** ji vytvořte.
 
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Name (Název)     | asverify.mystorageaccount        | This value along with the domain name label is the FQDN for the custom domain name.        |
-|Typ     | CNAME        | Use a CNAME record is using an alias.        |
-|TTL     | 1\. místo        | 1 is used for 1 hour        |
-|TTL unit     | Hodin        | Hours are used as the time measurement         |
-|Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | The DNS name you are creating the alias for, in this example it is the asverify.adatumfunctiona9ed.blob.core.windows.net DNS name provided by default to the storage account.        |
+|Název     | asverify.mystorageaccount        | Tato hodnota spolu s popiskem názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
+|Typ     | CNAME        | Použití záznamu CNAME používá alias.        |
+|TTL     | 1        | 1 se používá po dobu 1 hodiny.        |
+|Jednotka TTL     | Hodiny        | Hodiny se používají jako časová měření.         |
+|Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Název DNS, pro který vytváříte alias, v tomto příkladu se jedná o název DNS asverify.adatumfunctiona9ed.blob.core.windows.net, který se ve výchozím nastavení zadal pro účet úložiště.        |
 
-Navigate back to your storage account by clicking **Storage** > **Storage Accounts**, select your storage account and click **Custom domain**. Type in the alias you created without the asverify prefix in the text box, check **Use indirect CNAME validation, and click **Save**. Once this step is complete, return to your DNS zone and create a CNAME record without the asverify prefix.  After that point, you are safe to delete the CNAME record with the cdnverify prefix.
+Přejděte zpátky na svůj účet úložiště kliknutím na **úložiště** > **účty úložiště**, vyberte svůj účet úložiště a klikněte na **vlastní doména**. Do textového pole zadejte alias, který jste vytvořili bez předpony asverify, zaškrtněte * * použít nepřímé ověřování CNAME a klikněte na **Uložit**. Až se tento krok dokončí, vraťte se do zóny DNS a vytvořte záznam CNAME bez předpony asverify.  Po tomto okamžiku můžete bezpečně odstranit záznam CNAME s předponou cdnverify.
 
-![blob storage custom domain](./media/dns-custom-domain/indirectvalidate.png)
+![vlastní doména BLOB Storage](./media/dns-custom-domain/indirectvalidate.png)
 
-Validate DNS resolution by running `nslookup`
+Ověření překladu názvů DNS spuštěním `nslookup`
 
-To learn more about mapping a custom domain to a blob storage endpoint visit [Configure a custom domain name for your Blob storage endpoint](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json)
+Další informace o mapování vlastní domény na koncový bod služby Blob Storage najdete v téma [Konfigurace vlastního názvu domény pro koncový bod služby Blob Storage](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json) .
 
 ## <a name="azure-cdn"></a>Azure CDN
 
-The following steps take you through configuring a CNAME record for a CDN endpoint using the cdnverify method. This method ensures there is no downtime.
+Následující kroky vás provedou konfigurací záznamu CNAME pro koncový bod CDN pomocí metody cdnverify. Tato metoda zajistí, že nedochází k výpadkům.
 
-Navigate to **Networking** > **CDN Profiles**, select your CDN profile.
+Přejděte do **sítě** > **profily CDN**, vyberte svůj profil CDN.
 
-Select the endpoint you are working with and click **+ Custom domain**. Note the **Endpoint hostname** as this value is the record that the CNAME record points to.
+Vyberte koncový bod, se kterým pracujete, a klikněte na **+ vlastní doména**. Poznamenejte si **název hostitele koncového bodu** , protože tato hodnota je záznam, na který odkazuje záznam CNAME.
 
-![CDN custom domain](./media/dns-custom-domain/endpointcustomdomain.png)
+![Vlastní doména CDN](./media/dns-custom-domain/endpointcustomdomain.png)
 
-Navigate to your DNS Zone and click **+ Record set**. Fill out the following information on the **Add record set** blade and click **OK** to create it.
+Přejděte do zóny DNS a klikněte na **+ Sada záznamů**. V okně **Přidat sadu záznamů** zadejte následující informace a kliknutím na tlačítko **OK** ji vytvořte.
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Name (Název)     | cdnverify.mycdnendpoint        | This value along with the domain name label is the FQDN for the custom domain name.        |
-|Typ     | CNAME        | Use a CNAME record is using an alias.        |
-|TTL     | 1\. místo        | 1 is used for 1 hour        |
-|TTL unit     | Hodin        | Hours are used as the time measurement         |
-|Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | The DNS name you are creating the alias for, in this example it is the cdnverify.adatumcdnendpoint.azureedge.net DNS name provided by default to the storage account.        |
+|Název     | cdnverify.mycdnendpoint        | Tato hodnota spolu s popiskem názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
+|Typ     | CNAME        | Použití záznamu CNAME používá alias.        |
+|TTL     | 1        | 1 se používá po dobu 1 hodiny.        |
+|Jednotka TTL     | Hodiny        | Hodiny se používají jako časová měření.         |
+|Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Název DNS, pro který vytváříte alias, v tomto příkladu se jedná o název DNS cdnverify.adatumcdnendpoint.azureedge.net, který se ve výchozím nastavení zadal pro účet úložiště.        |
 
-Navigate back to your CDN endpoint by clicking **Networking** > **CDN Profiles**, and select your CDN profile. Click **+ Custom domain** and enter your CNAME record alias without the cdnverify prefix and click **Add**.
+Přejděte zpátky na koncový bod CDN kliknutím na **sítě** > **profily CDN**a vyberte svůj profil CDN. Klikněte na **+ vlastní doména** a zadejte alias záznamu CNAME bez předpony cdnverify a klikněte na **Přidat**.
 
-Once this step is complete, return to your DNS zone and create a CNAME record without the cdnverify prefix.  After that point, you are safe to delete the CNAME record with the cdnverify prefix. For more information on CDN and how to configure a custom domain without the intermediate registration step visit [Map Azure CDN content to a custom domain](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json).
+Až se tento krok dokončí, vraťte se do zóny DNS a vytvořte záznam CNAME bez předpony cdnverify.  Po tomto okamžiku můžete bezpečně odstranit záznam CNAME s předponou cdnverify. Další informace o CDN a o tom, jak nakonfigurovat vlastní doménu bez kroku zprostředkující registrace, najdete v tématu [mapování Azure CDN obsahu do vlastní domény](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json).
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn how to [configure reverse DNS for services hosted in Azure](dns-reverse-dns-for-azure-services.md).
+Naučte se [Konfigurovat reverzní DNS pro služby hostované v Azure](dns-reverse-dns-for-azure-services.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager support for Load Balancer
-description: In this article, use Azure PowerShell and templates with Azure Load Balancer
+title: Podpora Azure Resource Manager Load Balancer
+description: V tomto článku použijte Azure PowerShell a šablony s Azure Load Balancer
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -18,21 +18,21 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74215390"
 ---
-# <a name="azure-resource-manager-support-with-azure-load-balancer"></a>Azure Resource Manager support with Azure Load Balancer
+# <a name="azure-resource-manager-support-with-azure-load-balancer"></a>Podpora Azure Resource Manager s Azure Load Balancer
 
 
 
-Azure Resource Manager is the preferred management framework for services in Azure. Azure Load Balancer can be managed using Azure Resource Manager-based APIs and tools.
+Azure Resource Manager je upřednostňovaná architektura pro správu služeb v Azure. Azure Load Balancer můžete spravovat pomocí rozhraní API a nástrojů založených na Azure Resource Manager.
 
 ## <a name="concepts"></a>Koncepty
 
-With Resource Manager, Azure Load Balancer contains the following child resources:
+V Správce prostředků Azure Load Balancer obsahuje následující podřízené prostředky:
 
-* Front-end IP configuration – a load balancer can include one or more frontend IP addresses, otherwise known as a virtual IPs (VIPs). Tyto IP adresy slouží jako vstup pro přenos.
-* Back-end address pool – This pool is a collection of IP addresses associated with the virtual machine Network Interface Card (NIC) to which load is distributed.
-* Load-balancing rules – a rule property maps a given frontend IP and port combination to a set of back-end IP addresses and port combination. A single load balancer can have multiple load-balancing rules. Each rule is a combination of a frontend IP and port and back-end IP and port associated with VMs.
-* Probes – probes enable you to keep track of the health of VM instances. If a health probe fails, the VM instance is taken out of rotation automatically.
-* Inbound NAT rules – NAT rules defining the inbound traffic flowing through the frontend IP and distributed to the back-end IP.
+* Konfigurace front-endové IP adresy – Nástroj pro vyrovnávání zatížení může zahrnovat jednu nebo víc IP adres front-endu, jinak se říká virtuální IP adresa (VIP). Tyto IP adresy slouží jako vstup pro přenos.
+* Fond adres back-endu – tento fond je kolekcí IP adres přidružených k síťové kartě virtuálního počítače, do které je zatížení distribuováno.
+* Pravidla vyrovnávání zatížení – vlastnost pravidla mapuje danou kombinaci IP adresy a portu front-endu na sadu IP adres back-endu a kombinaci portů. Jeden nástroj pro vyrovnávání zatížení může mít několik pravidel vyrovnávání zatížení. Každé pravidlo je kombinací IP adresy front-endu a portu a back-endové IP adresy a portu přidružených k virtuálním počítačům.
+* Sondy – sondy umožňují sledovat stav instancí virtuálních počítačů. Pokud se sonda stavu nezdařila, instance virtuálního počítače se automaticky převezme z rotace.
+* Pravidla příchozího překladu adres (NAT) – pravidla překladu adres (NAT) definující příchozí přenos přes front-end IP adresu a distribuované do back-endové IP adresy.
 
 ![](./media/load-balancer-arm/load-balancer-arm.png)
 
@@ -40,41 +40,41 @@ With Resource Manager, Azure Load Balancer contains the following child resource
 
 Azure Resource Manager umožňuje zřizovat aplikace pomocí deklarativní šablony. S jednou šablonou můžete nasadit několik služeb společně s jejich závislostmi. Stejnou šablonu můžete použít k opakovanému nasazení aplikace během každé fáze životního cyklu této aplikace.
 
-Templates may include definitions for:
+Šablony mohou zahrnovat definice pro:
 * **Virtual Machines**
 * **Virtuální sítě**
 * **Skupiny dostupnosti**
-* **Network interfaces (NICs)**
+* **Síťová rozhraní (nic)**
 * **Účty úložiště**
 * **Nástroje pro vyrovnávání zatížení**
 * **Skupiny zabezpečení sítě**
-* **Public IPs.** 
+* **Veřejné IP adresy.** 
 
-With templates, you can create everything you need for a complex application. The template file can be checked into content management system for version control and collaboration.
+Pomocí šablon můžete vytvořit vše, co potřebujete pro složitou aplikaci. Soubor šablony lze zkontrolovat do systému správy obsahu pro správu verzí a spolupráci.
 
-[Learn more about templates](../azure-resource-manager/resource-manager-template-walkthrough.md)
+[Další informace o šablonách](../azure-resource-manager/resource-manager-template-walkthrough.md)
 
-[Learn more about Network Resources](../networking/networking-overview.md)
+[Další informace o síťových prostředcích](../networking/networking-overview.md)
 
-For Quickstart templates using Azure Load Balancer, see the [GitHub repository](https://github.com/Azure/azure-quickstart-templates) that hosts a set of community-generated templates.
+Informace o šablonách pro rychlý Start pomocí Azure Load Balancer najdete v [úložišti GitHub](https://github.com/Azure/azure-quickstart-templates) , které je hostitelem sady šablon generovaných komunitou.
 
-Examples of templates:
+Příklady šablon:
 
-* [2 VMs in a Load Balancer and load balancing rules](https://go.microsoft.com/fwlink/?LinkId=544799)
-* [2 VMs in a VNET with an Internal Load Balancer and load balancer rules](https://go.microsoft.com/fwlink/?LinkId=544800)
-* [2 VMs in a load balancer and configure NAT rules on the LB](https://go.microsoft.com/fwlink/?LinkId=544801)
+* [2 virtuální počítače v Load Balancer a pravidla vyrovnávání zatížení](https://go.microsoft.com/fwlink/?LinkId=544799)
+* [2 virtuální počítače ve virtuální síti s interními Load Balancer a pravidly nástroje pro vyrovnávání zatížení](https://go.microsoft.com/fwlink/?LinkId=544800)
+* [2 virtuální počítače v nástroji pro vyrovnávání zatížení a konfigurují pravidla překladu adres (NAT) na kg](https://go.microsoft.com/fwlink/?LinkId=544801)
 
-## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>Setting up Azure Load Balancer with a PowerShell or CLI
+## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>Nastavení Azure Load Balancer pomocí PowerShellu nebo rozhraní příkazového řádku
 
-Get started with Azure Resource Manager cmdlets, command-line tools, and REST APIs
+Začínáme s rutinami Azure Resource Manager, nástroji příkazového řádku a rozhraními REST API
 
-* [Azure Networking Cmdlets](https://docs.microsoft.com/powershell/module/az.network#networking) can be used to create a Load Balancer.
-* [How to create a load balancer using Azure Resource Manager](load-balancer-get-started-ilb-arm-ps.md)
-* [Using the Azure CLI with Azure Resource Management](../xplat-cli-azure-resource-manager.md)
-* [Load Balancer REST APIs](https://msdn.microsoft.com/library/azure/mt163651.aspx)
+* K vytvoření Load Balancer můžete použít [rutiny sítě Azure](https://docs.microsoft.com/powershell/module/az.network#networking) .
+* [Postup vytvoření nástroje pro vyrovnávání zatížení pomocí Azure Resource Manager](load-balancer-get-started-ilb-arm-ps.md)
+* [Použití Azure CLI se správou prostředků Azure](../xplat-cli-azure-resource-manager.md)
+* [Rozhraní REST API pro Load Balancer](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Get started creating an Internet facing load balancer](load-balancer-get-started-internet-arm-ps.md) and configure the type of [distribution mode](load-balancer-distribution-mode.md) for specific network traffic behavior.
+Začněte [vytvářet internetový nástroj pro vyrovnávání zatížení](load-balancer-get-started-internet-arm-ps.md) a nakonfigurujte typ [distribučního režimu](load-balancer-distribution-mode.md) pro konkrétní chování síťového provozu.
 
-Learn how to manage [idle TCP timeout settings for a load balancer](load-balancer-tcp-idle-timeout.md). These settings are important when your application needs to keep connections alive for servers behind a load balancer.
+Naučte se spravovat [Nastavení časových limitů TCP nečinných pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md). Tato nastavení jsou důležitá, pokud vaše aplikace potřebuje pro servery za nástrojem pro vyrovnávání zatížení zůstat připojení naživu.

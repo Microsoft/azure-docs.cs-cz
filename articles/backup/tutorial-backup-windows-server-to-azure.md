@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Back up Windows Server to Azure
+title: Kurz – zálohování Windows serveru do Azure
 description: Tento kurz podrobně popisuje zálohování místních Windows Serverů do trezoru služby Recovery Services.
 ms.topic: tutorial
 ms.date: 08/22/2018
@@ -19,7 +19,7 @@ Pomocí služby Azure Backup můžete chránit svůj Windows Server před poško
 >
 > * Stažení a nastavení agenta MARS
 > * Konfigurace časů zálohování a plánu uchovávání záloh serveru
-> * Perform an on-demand back up
+> * Provedení zálohování na vyžádání
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -33,13 +33,13 @@ Před zálohováním Windows Serveru musíte vytvořit místo pro uložení zál
 
    ![otevření trezoru služby Recovery Services](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
-2. V nabídce **Trezory Recovery Services** klikněte na **Přidat**.
+2. V nabídce **Trezory Služeb zotavení** klikněte na **Přidat**.
 
    ![zadání informací o trezoru](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
 3. V nabídce **Trezor služby Recovery Services**:
 
-    * Jako **Název** zadejte *myRecoveryServicesVault*.
+    * Jako *Název* zadejte **myRecoveryServicesVault**.
     * V části **Předplatné** se zobrazí ID aktuálního předplatného.
     * V části **Skupina prostředků** vyberte **Použít existující** a zvolte *myResourceGroup*. Pokud *myResourceGroup* neexistuje, vyberte **Vytvořit novou** a zadejte *myResourceGroup*.
     * V rozevírací nabídce **Umístění** zvolte *Západní Evropa*.
@@ -59,7 +59,7 @@ Agent služby Microsoft Azure Recovery Services (MARS) vytvoří přidružení m
 
 3. V nabídce **Cíl zálohování**:
 
-   * for **Where is your workload running?** , select **On-premises**
+   * pro **kde je spuštěná vaše úloha?** vyberte **místní** .
    * V části **Co chcete zálohovat?** vyberte **Soubory a složky** a **Stav systému**.
 
    ![zadání informací o trezoru](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
@@ -90,7 +90,7 @@ Agent služby Microsoft Azure Recovery Services (MARS) vytvoří přidružení m
 
 4. Po zobrazení výzvy zadejte šifrovací heslo pro šifrování záloh z Windows Serveru. Toto heslo uložte na bezpečném místě, protože ho Microsoft v případě ztráty nemůže obnovit.
 
-5. Klikněte na **Finish** (Dokončit).
+5. Klikněte na **Dokončit**.
 
 ## <a name="configure-backup-and-retention"></a>Konfigurace zálohování a uchovávání
 

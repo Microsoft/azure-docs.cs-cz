@@ -13,12 +13,12 @@ ms.locfileid: "74224450"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| Maximum number of trusted IP addresses or ranges</a> per subscription |0 |50 |
-| Remember my devices, number of days |14 |60 |
-| Maximum number of app passwords |0 |Bez omezení |
-| Povolit **X** pokusů během volání MFA |1\. místo |99 |
-| Two-way text message timeout seconds |60 |600 |
-| Výchozí jednorázové potlačení v sekundách |300 |1,800 |
-| Uzamknutí uživatelského účtu po **X** po sobě jdoucích odepřeních MFA |Not set |99 |
-| Resetování čítače uzamčení účtu po **X** minutách |Not set |9,999 |
-| Odemknutí účtu po **X** minutách |Not set |9,999 |
+| Maximální počet důvěryhodných IP adres nebo rozsahů</a> na předplatné |0 |50 |
+| Zapamatovat si moje zařízení, počet dní |14 |60 |
+| Maximální počet hesel aplikací |0 |Bez omezení |
+| Povolit **X** pokusů během volání MFA |1 |99 |
+| Počet sekund časového limitu obousměrné textové zprávy |60 |600 |
+| Výchozí jednorázové potlačení v sekundách |300 |1 800 |
+| Uzamknutí uživatelského účtu po **X** po sobě jdoucích odepřeních MFA |Nenastaveno |99 |
+| Resetování čítače uzamčení účtu po **X** minutách |Nenastaveno |9 999 |
+| Odemknutí účtu po **X** minutách |Nenastaveno |9 999 |

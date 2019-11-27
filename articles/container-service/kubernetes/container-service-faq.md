@@ -116,7 +116,7 @@ Další informace najdete v [Připojení ke clusteru služby Azure Container Ser
 
 V systému Windows existují známé problémy služby DNS, jejichž opravy jsou stále aktivně odebírány. Ujistěte se prosím, že používáte nejnovější aktualizovanou verzi služby ACS-Engine a Windows (s nainstalovanou [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) a [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) ), aby vaše prostředí mohlo využívat výhod. Jinak si přečtěte kroky pro zmírnění rizika v následující tabulce:
 
-| Příznak DNS | Alternativní řešení:  |
+| Příznak DNS | Alternativní řešení  |
 |-------------|-------------|
 |Když je kontejner úloh nestabilní a dojde u něj k chybě, vyčistí se obor názvů sítě. | Znovu nasaďte všechny ovlivněné služby. |
 | Přístup k virtuální IP adrese služby nefunguje. | Nakonfigurujte kontroler [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) tak, aby vždy udržoval spuštěný jeden normální (neprivilegovaný) pod. |

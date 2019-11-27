@@ -96,7 +96,7 @@ Služba Device Provisioning, stejně jako všechny služby Azure IoT, funguje na
 
 Pro operace služby podporuje služba Device Provisioning pouze připojení HTTPS.
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Oblasti
 Služba Device Provisioning je dostupná v mnoha oblastech. Aktualizovaný seznam stávajících a nově ohlášených oblastí pro všechny služby najdete na stránce [Oblasti Azure](https://azure.microsoft.com/regions/). Dostupnost služby Device Provisioning můžete zkontrolovat na stránce [Stav Azure](https://azure.microsoft.com/status/).
 
 > [!NOTE]

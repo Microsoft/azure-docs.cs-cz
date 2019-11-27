@@ -35,7 +35,7 @@ Při registraci vaší smlouvy nebo účtu Azure se ve službě Cloudyn vytvoři
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít účet Azure.
 - Musíte mít buď zaregistrovanou zkušební verzi, nebo placené předplatné Cloudyn.
@@ -47,7 +47,7 @@ I když vy už přístup správce máte, můžou ho potřebovat i další spolup
 Zadejte požadované informace o uživateli. **Přihlašovací ID** musí být platná e-mailová adresa. Vyberte možnost Allow User Management (Povolit správu uživatelů), aby mohl uživatel vytvářet a upravovat jiné uživatele. Povolením možnosti Allow Recipient Lists Management (Povolit správu seznamů příjemců) umožníte uživateli upravovat seznamy příjemců. Pokud vyberete možnost **Notify user by email** (Oznámit uživateli e-mailem), služba Cloudyn uživateli e-mailem zašle odkaz s přihlašovacími údaji. Při prvním přihlášeni si uživatel nastaví heslo.
 
 V části **User has admin access** (Uživatel má přístup správce) je vybraná kořenová entita vaší organizace. Nechte vybranou kořenovou entitu a uložte informace o uživateli. Výběrem kořenové entity dáte uživateli oprávnění správce nejen ke kořenové entitě v rámci stromu, ale také ke všem entitám zařazeným pod ní.  
-  ![Example showing admin access in the Add new user box](./media/tutorial-user-access/new-admin-access.png)
+  ![Příklad znázorňující přístup správce v poli Přidat nového uživatele](./media/tutorial-user-access/new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>Vytvoření uživatele s uživatelským přístupem
 Běžní uživatelé, které potřebují přístup k datům Cloudyn, jako jsou řídicí panely a sestavy, by měli mít k jejich zobrazení uživatelský přístup. Nového uživatele s uživatelským přístupem vytvoříte podobně jako předtím uživatele s přístupem správce, jenom s těmito rozdíly:
@@ -56,7 +56,7 @@ Běžní uživatelé, které potřebují přístup k datům Cloudyn, jako jsou �
 - V seznamu **User has user access** (Uživatel má uživatelský přístup) vyberte entity, ke kterým uživatel potřebuje mít přístup.
 - Podle potřeby můžete povolit přístup k určitým entitám také správci.
 
-![Example showing user access in the Add new user box](./media/tutorial-user-access/new-user-access.png)
+![Příklad zobrazující přístup uživatelů v poli Přidat nové uživatele](./media/tutorial-user-access/new-user-access.png)
 
 Pokud chcete zhlédnout výukové video o přidávání uživatelů, podívejte se na video [Adding Users to Cloudyn](https://youtu.be/Nzn7GLahx30) (Přidávání uživatelů do Cloudyn).
 
@@ -88,11 +88,11 @@ Při registraci smlouvy Azure nebo účtu ve službě Cloudyn proběhlo zkopíro
 
 Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte **Cloud Accounts** (Účty v cloudu). Začnete s jednou entitou (kořenovou entitou) a pod ní začnete vytvářet strom entit. Tady je příklad hierarchie entit, která se můžete po dokončení stromu podobat řadě organizací v oblasti IT:
 
-![Example of an entity tree shown on the Accounts Management page](./media/tutorial-user-access/entity-tree.png)
+![Příklad strom entit zobrazený na stránce Správa účtů](./media/tutorial-user-access/entity-tree.png)
 
 Vedle položky **Entities** (Entity) klikněte na **Add Entity** (Přidat entitu). Zadejte informace o osobě nebo oddělení, které chcete přidat. Pole **Full Name** (Celé jméno) a **Email** (E-mail) nemusejí odpovídat existujícím uživatelům. Pokud chcete zobrazit seznam úrovní přístupu, vyhledejte v nápovědě téma *Adding an entity* (Přidání entity).
 
-![Example showing entity name and access levels in the Add entity box](./media/tutorial-user-access/add-entity.png)
+![Příklad zobrazující entity úrovně název a přístup v okně Přidat entitu](./media/tutorial-user-access/add-entity.png)
 
 Po dokončení uložte entitu kliknutím na **Save** (Uložit).
 
@@ -110,7 +110,7 @@ Po dokončení uložte entitu kliknutím na **Save** (Uložit).
 
 Pokud chcete vytvořit hierarchii entit nákladů, musí mít účet s přístupem Enterprise nebo Enterprise + Cost allocation.
 
-Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte **Cloud Accounts** (Účty v cloudu). V levém podokně se zobrazí strom **Entities** (Entity). V případě potřeby rozbalte stromovou strukturu entit, abyste se mohli podívat na entitu, kterou chcete přidružit k účtu.  Účty poskytovatele cloudové služby jsou zobrazené na kartách v pravém podokně. Vyberte kartu a pak myší přetáhněte účet nebo předplatné na entitu. Pole **Move** (Přesunout) vás informuje, že účet se úspěšně přesunul. Klikněte na **OK**.
+Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte **Cloud Accounts** (Účty v cloudu). V levém podokně se zobrazí strom **Entities** (Entity). V případě potřeby rozbalte stromovou strukturu entit, abyste se mohli podívat na entitu, kterou chcete přidružit k účtu.  Účty poskytovatele cloudové služby jsou zobrazené na kartách v pravém podokně. Vyberte kartu a pak myší přetáhněte účet nebo předplatné na entitu. Pole **Move** (Přesunout) vás informuje, že účet se úspěšně přesunul. Klikněte na tlačítko **OK**.
 
 Entitě můžete také přidružit více účtů. Vyberte účty a pak klikněte na **Move**. V dialogovém okně Move Accounts (Přesunout účty) vyberte entitu, kam chcete přesunout účet, a potom klikněte na **Save** (Uložit). Pole Move Accounts vás požádá o ověření, že chcete účty přesunout. Klikněte na **Yes** (Ano) a potom na **OK**.
 

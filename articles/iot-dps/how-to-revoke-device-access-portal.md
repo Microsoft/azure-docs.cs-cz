@@ -1,6 +1,6 @@
 ---
-title: Disenroll device from Azure IoT Hub Device Provisioning Service
-description: How to disenroll a device to prevent provisioning through Azure IoT Hub Device Provisioning Service
+title: Rušení registrace zařízení z Azure IoT Hub Device Provisioning Service
+description: Jak zrušit registraci zařízení, aby se zabránilo zřizování prostřednictvím Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/05/2018
@@ -15,100 +15,100 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228767"
 ---
-# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>How to disenroll a device from Azure IoT Hub Device Provisioning Service
+# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Postup při rušení registrace zařízení z Azure IoT Hub Device Provisioning Service
 
-Proper management of device credentials is crucial for high-profile systems like IoT solutions. A best practice for such systems is to have a clear plan of how to revoke access for devices when their credentials, whether a shared access signatures (SAS) token or an X.509 certificate, might be compromised. 
+Správná Správa přihlašovacích údajů zařízení je zásadní pro systémy s vysokým profilem, jako jsou řešení IoT. Osvědčeným postupem pro tyto systémy je mít jasný plán, jak odvolat přístup k zařízením v případě, že dojde k ohrožení zabezpečení tokenu sdíleného přístupového podpisu (SAS) nebo certifikátu X. 509. 
 
-Enrollment in the Device Provisioning Service enables a device to be [auto-provisioned](concepts-auto-provisioning.md). A provisioned device is one that has been registered with IoT Hub, allowing it to receive its initial [device twin](~/articles/iot-hub/iot-hub-devguide-device-twins.md) state and begin reporting telemetry data. This article describes how to disenroll a device from your provisioning service instance, preventing it from being provisioned again in the future.
+Registrace ve službě Device Provisioning umožňuje [Automatické zřízení](concepts-auto-provisioning.md)zařízení. Zřízené zařízení je takové, které bylo zaregistrováno ve službě IoT Hub, což umožňuje, aby získalo [počáteční stav](~/articles/iot-hub/iot-hub-devguide-device-twins.md) a data telemetrie pro vytváření sestav. Tento článek popisuje, jak zrušit registraci zařízení z instance služby zřizování a zabránit tak jeho opětovnému zřízení v budoucnu.
 
 > [!NOTE] 
-> Be aware of the retry policy of devices that you revoke access for. For example, a device that has an infinite retry policy might continuously try to register with the provisioning service. That situation consumes service resources and possibly affects performance.
+> Uvědomte si zásady opakování zařízení, ke kterým odvoláte přístup. Například zařízení, které má zásady nekonečné opakování, se může neustále pokoušet zaregistrovat ve službě zřizování. Tato situace spotřebovává prostředky služby a může mít vliv na výkon.
 
-## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>Blacklist devices by using an individual enrollment entry
+## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>Zakázaná zařízení pomocí individuální položky registrace
 
-Individual enrollments apply to a single device and can use either X.509 certificates or SAS tokens (in a real or virtual TPM) as the attestation mechanism. (Devices that use SAS tokens as their attestation mechanism can be provisioned only through an individual enrollment.) To blacklist a device that has an individual enrollment, you can either disable or delete its enrollment entry. 
+Jednotlivé registrace se vztahují na jedno zařízení a můžou použít buď certifikáty X. 509, nebo tokeny SAS (ve skutečném nebo virtuálním čipu TPM) jako mechanismus ověřování. (Zařízení, která používají tokeny SAS jako mechanismus ověření identity, se dají zřídit jenom prostřednictvím individuální registrace.) Pokud chcete zařízení, které má individuální registraci, zakázané, můžete buď zakázat, nebo odstranit jeho položku registrace. 
 
-To temporarily blacklist the device by disabling its enrollment entry: 
+Pokud chcete zařízení dočasně zakázat zakázáním jeho registračního záznamu: 
 
-1. Sign in to the Azure portal and select **All resources** from the left menu.
-2. In the list of resources, select the provisioning service that you want to blacklist your device from.
-3. In your provisioning service, select **Manage enrollments**, and then select the **Individual Enrollments** tab.
-4. Select the enrollment entry for the device that you want to blacklist. 
+1. Přihlaste se k Azure Portal a v nabídce vlevo vyberte **všechny prostředky** .
+2. V seznamu prostředků vyberte službu zřizování, ze které má vaše zařízení zajišťovat zakázáno.
+3. V rámci služby zřizování vyberte možnost **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** .
+4. Vyberte položku registrace pro zařízení, které chcete zakázané. 
 
-    ![Select your individual enrollment](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
+    ![Vyberte svoji jednotlivou registraci.](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
 
-5. On your enrollment page, scroll to the bottom, and select **Disable** for the **Enable entry** switch, and then select **Save**.  
+5. Na stránce pro registraci se posuňte do dolní části a vyberte **Zakázat** pro přepínač **Povolit položku** a pak vyberte **Uložit**.  
 
-   ![Disable individual enrollment entry in the portal](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
+   ![Zakázat položku jednotlivé registrace na portálu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
 
-To permanently blacklist the device by deleting its enrollment entry:
+Postup trvalého zakázání zařízení odstraněním jeho registračního záznamu:
 
-1. Sign in to the Azure portal and select **All resources** from the left menu.
-2. In the list of resources, select the provisioning service that you want to blacklist your device from.
-3. In your provisioning service, select **Manage enrollments**, and then select the **Individual Enrollments** tab.
-4. Select the check box next to the enrollment entry for the device that you want to blacklist. 
-5. Select **Delete** at the top of the window, and then select **Yes** to confirm that you want to remove the enrollment. 
+1. Přihlaste se k Azure Portal a v nabídce vlevo vyberte **všechny prostředky** .
+2. V seznamu prostředků vyberte službu zřizování, ze které má vaše zařízení zajišťovat zakázáno.
+3. V rámci služby zřizování vyberte možnost **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** .
+4. Zaškrtněte políčko vedle položky registrace u zařízení, které chcete zakázané. 
+5. V horní části okna vyberte **Odstranit** a pak kliknutím na **Ano** potvrďte, že chcete registraci odebrat. 
 
-   ![Delete individual enrollment entry in the portal](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
+   ![Odstranit jednotlivou položku registrace na portálu](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
 
 
-After you finish the procedure, you should see your entry removed from the list of individual enrollments.  
+Po dokončení postupu byste měli vidět, že se vaše položka odebrala ze seznamu jednotlivých zápisů.  
 
-## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Blacklist an X.509 intermediate or root CA certificate by using an enrollment group
+## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>V rámci skupiny registrací je zakázaný certifikát X. 509 zprostředkující nebo kořenové certifikační autority.
 
-X.509 certificates are typically arranged in a certificate chain of trust. If a certificate at any stage in a chain becomes compromised, trust is broken. The certificate must be blacklisted to prevent Device Provisioning Service from provisioning devices downstream in any chain that contains that certificate. To learn more about X.509 certificates and how they are used with the provisioning service, see [X.509 certificates](./concepts-security.md#x509-certificates). 
+Certifikáty X. 509 jsou obvykle uspořádány v řetězu certifikátů důvěryhodnosti. Pokud dojde k ohrožení bezpečnosti certifikátu v jakékoli fázi v řetězci, je vztah důvěryhodnosti přerušený. Certifikát musí být zakázaný, aby se zabránilo službě Device Provisioning v jakémkoli řetězci, který tento certifikát obsahuje. Další informace o certifikátech X. 509 a o tom, jak se používají se službou zřizování, najdete v tématu [certifikáty x. 509](./concepts-security.md#x509-certificates). 
 
-An enrollment group is an entry for devices that share a common attestation mechanism of X.509 certificates signed by the same intermediate or root CA. The enrollment group entry is configured with the X.509 certificate associated with the intermediate or root CA. The entry is also configured with any configuration values, such as twin state and IoT hub connection, that are shared by devices with that certificate in their certificate chain. To blacklist the certificate, you can either disable or delete its enrollment group.
+Skupina registrací je záznam pro zařízení, která sdílejí běžný mechanismus ověřování certifikátů X. 509 podepsaných stejnou zprostředkující nebo kořenovou certifikační autoritou. Položka skupiny registrací je nakonfigurovaná s certifikátem X. 509 přidruženým k zprostředkující nebo kořenové certifikační autoritě. Tato položka je taky nakonfigurovaná s použitím hodnot konfigurace, jako je například zdvojený stav a připojení ke službě IoT Hub, které jsou sdíleny zařízeními s tímto certifikátem v řetězu certifikátů. Chcete-li certifikát zakázat, můžete buď zakázat nebo odstranit jeho skupinu registrací.
 
-To temporarily blacklist the certificate by disabling its enrollment group: 
+Dočasné zakázání certifikátu zakázáním jeho registrační skupiny: 
 
-1. Sign in to the Azure portal and select **All resources** from the left menu.
-2. In the list of resources, select the provisioning service that you want to blacklist the signing certificate from.
-3. In your provisioning service, select **Manage enrollments**, and then select the **Enrollment Groups** tab.
-4. Select the enrollment group using the certificate that you want to blacklist.
-5. Select **Disable** on the **Enable entry** switch, and then select **Save**.  
+1. Přihlaste se k Azure Portal a v nabídce vlevo vyberte **všechny prostředky** .
+2. V seznamu prostředků vyberte službu zřizování, ze které má být podpisový certifikát zakázaný.
+3. Ve vaší službě zřizování vyberte **spravovat registrace**a pak vyberte kartu **skupiny** registrací.
+4. Vyberte skupinu registrací pomocí certifikátu, který chcete použít jako zakázaný.
+5. V přepínači **Povolit položku** vyberte **Zakázat** a pak vyberte **Uložit**.  
 
-   ![Disable enrollment group entry in the portal](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
+   ![Zakázat zápis skupiny registrací na portálu](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
     
-To permanently blacklist the certificate by deleting its enrollment group:
+Postup při trvalém zakázání certifikátu odstraněním jeho registrační skupiny:
 
-1. Sign in to the Azure portal and select **All resources** from the left menu.
-2. In the list of resources, select the provisioning service that you want to blacklist your device from.
-3. In your provisioning service, select **Manage enrollments**, and then select the **Enrollment Groups** tab.
-4. Select the check box next to the enrollment group for the certificate that you want to blacklist. 
-5. Select **Delete** at the top of the window, and then select **Yes** to confirm that you want to remove the enrollment group. 
+1. Přihlaste se k Azure Portal a v nabídce vlevo vyberte **všechny prostředky** .
+2. V seznamu prostředků vyberte službu zřizování, ze které má vaše zařízení zajišťovat zakázáno.
+3. Ve vaší službě zřizování vyberte **spravovat registrace**a pak vyberte kartu **skupiny** registrací.
+4. Zaškrtněte políčko vedle skupiny registrací pro certifikát, který má být zakázaný. 
+5. V horní části okna vyberte **Odstranit** a pak kliknutím na **Ano** potvrďte, že chcete odebrat skupinu registrací. 
 
-   ![Delete enrollment group entry in the portal](./media/how-to-revoke-device-access-portal/delete-enrollment-group.png)
+   ![Odstranit položku registrační skupiny na portálu](./media/how-to-revoke-device-access-portal/delete-enrollment-group.png)
 
-After you finish the procedure, you should see your entry removed from the list of enrollment groups.  
+Po dokončení postupu byste měli vidět, že se vaše položka odebrala ze seznamu skupin pro zápis.  
 
 > [!NOTE]
-> If you delete an enrollment group for a certificate, devices that have the certificate in their certificate chain might still be able to enroll if an enabled enrollment group for the root certificate or another intermediate certificate higher up in their certificate chain exists.
+> Pokud odstraníte skupinu registrací pro certifikát, zařízení s certifikátem v řetězu certifikátů se můžou pořád zaregistrovat, pokud je povolená skupina registrace pro kořenový certifikát nebo jiný zprostředkující certifikát ve svém certifikátu vyšší. řetěz existuje.
 
-## <a name="blacklist-specific-devices-in-an-enrollment-group"></a>Blacklist specific devices in an enrollment group
+## <a name="blacklist-specific-devices-in-an-enrollment-group"></a>Zakázaná zařízení v rámci skupiny pro registraci
 
-Devices that implement the X.509 attestation mechanism use the device's certificate chain and private key to authenticate. When a device connects and authenticates with Device Provisioning Service, the service first looks for an individual enrollment that matches the device's credentials. The service then searches enrollment groups to determine whether the device can be provisioned. If the service finds a disabled individual enrollment for the device, it prevents the device from connecting. The service prevents the connection even if an enabled enrollment group for an intermediate or root CA in the device's certificate chain exists. 
+Zařízení, která implementují mechanismus ověřování X. 509, používají k ověření svůj řetěz certifikátů a privátní klíč zařízení. Když se zařízení připojí a ověří pomocí služby Device Provisioning, služba nejprve vyhledá jednotlivou registraci, která odpovídá přihlašovacím údajům daného zařízení. Služba pak vyhledá skupiny registrací a určí, jestli je možné zařízení zřídit. Pokud služba nalezne zakázanou jednotlivou registraci zařízení, zabrání v připojení zařízení. Služba brání připojení i v případě, že existuje povolená skupina registrace pro zprostředkující nebo kořenovou certifikační autoritu v řetězu certifikátů zařízení. 
 
-To blacklist an individual device in an enrollment group, follow these steps:
+Pokud chcete v rámci skupiny registrací použít samostatné zařízení, postupujte takto:
 
-1. Sign in to the Azure portal and select **All resources** from the left menu.
-2. From the list of resources, select the provisioning service that contains the enrollment group for the device that you want to blacklist.
-3. In your provisioning service, select **Manage enrollments**, and then select the **Individual Enrollments** tab.
-4. Select the **Add individual enrollment** button at the top. 
-5. On the **Add Enrollment** page, select **X.509** as the attestation **Mechanism** for the device.
+1. Přihlaste se k Azure Portal a v nabídce vlevo vyberte **všechny prostředky** .
+2. V seznamu prostředků vyberte službu zřizování, která obsahuje skupinu registrací pro zařízení, které chcete zakázané.
+3. V rámci služby zřizování vyberte možnost **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** .
+4. V horní části vyberte tlačítko **přidat jednotlivou registraci** . 
+5. Na stránce **Přidat registraci** jako **mechanismus** ověřování pro zařízení vyberte **X. 509** .
 
-    Upload the device certificate, and enter the device ID of the device to be blacklisted. For the certificate, use the signed end-entity certificate installed on the device. The device uses the signed end-entity certificate for authentication.
+    Nahrajte certifikát zařízení a zadejte ID zařízení, které se má zakázané. Pro certifikát použijte podepsaný certifikát koncové entity nainstalovaný na zařízení. Zařízení používá pro ověřování podepsaný certifikát koncové entity.
 
-    ![Set device properties for the blacklisted device](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
+    ![Nastavení vlastností zařízení pro zakázané zařízení](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
 
-6. Scroll to the bottom of the **Add Enrollment** page and select **Disable** on the **Enable entry** switch, and then select **Save**. 
+6. Posuňte se do dolní části stránky **Přidat registraci** a v přepínači **Povolit položku** vyberte **Zakázat** a pak vyberte **Uložit**. 
 
-    [![Use disabled individual enrollment entry to disable device from group enrollment, in the portal](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
+    [![použít zakázanou jednotlivou položku registrace k zakázání zařízení ze skupinového zápisu, na portálu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
-When you successfully create your enrollment, you should see your disabled device enrollment listed on the **Individual Enrollments** tab. 
+Po úspěšném vytvoření registrace byste měli vidět zakázaný zápis zařízení uvedený na kartě **jednotlivé registrace** . 
 
 ## <a name="next-steps"></a>Další kroky
 
-Disenrollment is also part of the larger deprovisioning process. Deprovisioning a device includes both disenrollment from the provisioning service, and deregistering from IoT hub. To learn about the full process, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
+Zrušení registrace je také součástí většího procesu rušení. Zrušení zřízení zařízení zahrnuje jak zrušit registraci ze služby zřizování, a zrušit registraci ze služby IoT Hub. Další informace o plném procesu najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) . 
 

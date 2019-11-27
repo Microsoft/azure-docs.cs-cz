@@ -1,6 +1,6 @@
 ---
 title: Správa dlouhodobého uchovávání záloh
-description: Learn how to store automated backups in the SQL Azure storage and then restore them
+description: Naučte se ukládat automatizované zálohy do úložiště SQL Azure a pak je obnovit.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -19,95 +19,95 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420800"
 ---
-# <a name="manage-azure-sql-database-long-term-backup-retention"></a>Manage Azure SQL Database long-term backup retention
+# <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa Azure SQL Database dlouhodobého uchovávání záloh
 
-In Azure SQL Database, you can configure a single or a pooled database with a [long-term backup retention](sql-database-long-term-retention.md) policy (LTR) to automatically retain the database backups in separate Azure Blob storage containers for up to 10 years. You can then recover a database using these backups using the Azure portal or PowerShell.
-
-> [!IMPORTANT]
-> [Azure SQL database managed instance](sql-database-managed-instance.md) does not currently support long-term backup retention.
-
-## <a name="using-azure-portal"></a>Použití webu Azure Portal
-
-The following sections show you how to use the Azure portal to configure the long-term retention, view backups in long-term retention, and restore backup from long-term retention.
-
-### <a name="configure-long-term-retention-policies"></a>Configure long-term retention policies
-
-You can configure SQL Database to [retain automated backups](sql-database-long-term-retention.md) for a period longer than the retention period for your service tier.
-
-1. In the Azure portal, select your SQL server and then click **Manage Backups**. On the **Configure policies** tab, select the checkbox for the database on which you want to set or modify long-term backup retention policies. If the checkbox next to the database is not selected, the changes for the policy will not apply to that database.  
-
-   ![manage backups link](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
-
-2. In the **Configure policies** pane, select if want to retain weekly, monthly or yearly backups and specify the retention period for each.
-
-   ![configure policies](./media/sql-database-long-term-retention/ltr-configure-policies.png)
-
-3. When complete, click **Apply**.
+V Azure SQL Database můžete nakonfigurovat jednu nebo sdruženou databázi s [dlouhodobou zásadou uchovávání záloh](sql-database-long-term-retention.md) (LTR) a automaticky tak uchovávat zálohy databáze v samostatných kontejnerech úložiště Azure Blob po dobu až 10 let. Pak můžete databázi pomocí těchto záloh obnovit pomocí Azure Portal nebo PowerShellu.
 
 > [!IMPORTANT]
-> When you enable a long-term backup retention policy, it may take up to 7 days for the first backup to become visible and available to restore. For details of the LTR backup cadance, see [long-term backup retention](sql-database-long-term-retention.md).
+> [Azure SQL Database Managed instance](sql-database-managed-instance.md) v současné době nepodporuje dlouhodobé uchovávání záloh.
 
-### <a name="view-backups-and-restore-from-a-backup"></a>View backups and restore from a backup
+## <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 
-View the backups that are retained for a specific database with a LTR policy, and restore from those backups.
+V následujících částech se dozvíte, jak použít Azure Portal ke konfiguraci dlouhodobého uchovávání, zobrazení záloh v dlouhodobém uchovávání a obnovení zálohy z dlouhodobého uchovávání.
 
-1. In the Azure portal, select your SQL server and then click **Manage Backups**. On the **Available backups** tab, select the database for which you want to see available backups.
+### <a name="configure-long-term-retention-policies"></a>Konfigurace dlouhodobých zásad uchovávání informací
 
-   ![select database](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
+Můžete nakonfigurovat SQL Database pro [uchovávání automatizovaných záloh](sql-database-long-term-retention.md) po dobu delší, než je doba uchování pro vaši úroveň služeb.
 
-1. In the **Available backups** pane, review the available backups.
+1. V Azure Portal vyberte svůj SQL Server a pak klikněte na **Spravovat zálohy**. Na kartě **Konfigurovat zásady** zaškrtněte políčko pro databázi, ve které chcete nastavit nebo upravit dlouhodobé zásady uchovávání záloh. Pokud není zaškrtnuté políčko vedle databáze, změny zásad se na tuto databázi nevztahují.  
 
-   ![view backups](./media/sql-database-long-term-retention/ltr-available-backups.png)
+   ![odkaz Správa zálohování](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-1. Select the backup from which you want to restore, and then specify the new database name.
+2. V podokně **Konfigurovat zásady** vyberte, pokud chcete uchovávat týdenní, měsíční nebo roční zálohy a určete dobu uchování pro každou z nich.
+
+   ![Konfigurace zásad](./media/sql-database-long-term-retention/ltr-configure-policies.png)
+
+3. Po dokončení klikněte na **použít**.
+
+> [!IMPORTANT]
+> Pokud povolíte dlouhodobé zásady uchovávání záloh, může trvat až 7 dní, než se první záloha zobrazí a bude dostupná pro obnovení. Podrobnosti o Cadance zálohování LTR najdete v tématu [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
+
+### <a name="view-backups-and-restore-from-a-backup"></a>Zobrazení záloh a obnovení ze zálohy
+
+Prohlédněte si zálohy, které jsou uchovány pro určitou databázi se zásadou LTR, a obnovte je z těchto záloh.
+
+1. V Azure Portal vyberte svůj SQL Server a pak klikněte na **Spravovat zálohy**. Na kartě **dostupné zálohy** vyberte databázi, pro kterou chcete zobrazit dostupné zálohy.
+
+   ![vybrat databázi](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
+
+1. V podokně **dostupné zálohy** zkontrolujte dostupné zálohy.
+
+   ![Zobrazit zálohy](./media/sql-database-long-term-retention/ltr-available-backups.png)
+
+1. Vyberte zálohu, ze které chcete obnovit, a pak zadejte název nové databáze.
 
    ![Obnovení](./media/sql-database-long-term-retention/ltr-restore.png)
 
-1. Click **OK** to restore your database from the backup in Azure SQL storage to the new database.
+1. Kliknutím na **OK** obnovte databázi ze zálohy ve službě Azure SQL Storage do nové databáze.
 
 1. Pokud chcete zobrazit stav úlohy obnovení, na panelu nástrojů klikněte na ikonu oznámení.
 
    ![průběh úlohy obnovení](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
-1. When the restore job is completed, open the **SQL databases** page to view the newly restored database.
+1. Po dokončení úlohy obnovení otevřete stránku **databáze SQL** a zobrazte nově obnovenou databázi.
 
 > [!NOTE]
 > Odtud se můžete pomocí aplikace SQL Server Management Studio připojit k obnovené databázi a provádět požadované úlohy, jako je například [extrakce části dat z obnovené databáze a zkopírování do existující databáze nebo odstranění existující databáze a přejmenování obnovené databáze na název existující databáze](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-## <a name="using-powershell"></a>Použití PowerShellu
+## <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
-The following sections show you how to use PowerShell to configure the long-term backup retention, view backups in Azure SQL storage, and restore from a backup in Azure SQL storage.
+V následujících částech se dozvíte, jak pomocí PowerShellu nakonfigurovat dlouhodobé uchovávání záloh, zobrazit zálohy ve službě Azure SQL Storage a obnovit je ze zálohy ve službě Azure SQL Storage.
 
-### <a name="rbac-roles-to-manage-long-term-retention"></a>RBAC roles to manage long-term retention
+### <a name="rbac-roles-to-manage-long-term-retention"></a>Role RBAC pro správu dlouhodobého uchovávání
 
-For **Get-AzSqlDatabaseLongTermRetentionBackup** and **Restore-AzSqlDatabase**, you will need to have one of the following roles:
+Pro **Get-AzSqlDatabaseLongTermRetentionBackup** a **Restore-AzSqlDatabase**budete muset mít jednu z následujících rolí:
 
-- Subscription Owner role or
-- SQL Server Contributor role or
-- Custom role with the following permissions:
+- Role vlastníka předplatného nebo
+- SQL Server role přispěvatele nebo
+- Vlastní role s následujícími oprávněními:
 
-   Microsoft.Sql/locations/longTermRetentionBackups/read  Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read  Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/read
+   Microsoft. SQL/Locations/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/ longTermRetentionBackups/číst
 
-For **Remove-AzSqlDatabaseLongTermRetentionBackup**, you will need to have one of the following roles:
+V případě funkce **Remove-AzSqlDatabaseLongTermRetentionBackup**budete muset mít jednu z následujících rolí:
 
-- Subscription Owner role or
-- Custom role with the following permission:
+- Role vlastníka předplatného nebo
+- Vlastní role s následujícím oprávněním:
 
    Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 
 > [!NOTE]
-> The SQL Server Contributor role does not have permission to delete LTR backups.
+> Role Přispěvatel SQL Server nemá oprávnění odstraňovat zálohy LTR.
 
-RBAC permissions could be granted in either *subscription* or *resource group* scope. However, to access LTR backups that belong to a dropped server, the permission must be granted in the *subscription* scope of that server.
+Oprávnění RBAC se mohla udělit buď v rámci *předplatného* , nebo v oboru *skupiny prostředků* . Pro přístup k zálohám LTR, které patří k vyřazenému serveru, ale musí být oprávnění uděleno v oboru *předplatného* daného serveru.
 
 - Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 
-### <a name="create-an-ltr-policy"></a>Create an LTR policy
+### <a name="create-an-ltr-policy"></a>Vytvoření zásady LTR
 
 ```powershell
 # get the SQL server
@@ -130,9 +130,9 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -Database
     -ResourceGroupName $resourceGroup -WeeklyRetention P12W -YearlyRetention P5Y -WeekOfYear 16
 ```
 
-### <a name="view-ltr-policies"></a>View LTR policies
+### <a name="view-ltr-policies"></a>Zobrazit zásady LTR
 
-This example shows how to list the LTR policies within a server
+Tento příklad ukazuje, jak zobrazit seznam zásad LTR v rámci serveru.
 
 ```powershell
 # get all LTR policies within a server
@@ -144,18 +144,18 @@ $ltrPolicies = Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serve
     -ResourceGroupName $resourceGroup -Current
 ```
 
-### <a name="clear-an-ltr-policy"></a>Clear an LTR policy
+### <a name="clear-an-ltr-policy"></a>Vymazat zásadu LTR
 
-This example shows how to clear an LTR policy from a database
+Tento příklad ukazuje, jak vymazat zásadu LTR z databáze.
 
 ```powershell
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName `
     -ResourceGroupName $resourceGroup -RemovePolicy
 ```
 
-### <a name="view-ltr-backups"></a>View LTR backups
+### <a name="view-ltr-backups"></a>Zobrazit zálohy LTR
 
-This example shows how to list the LTR backups within a server.
+Tento příklad ukazuje, jak zobrazit seznam záloh LTR v rámci serveru.
 
 ```powershell
 # get the list of all LTR backups in a specific Azure region
@@ -175,9 +175,9 @@ $ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Locatio
 $ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Location -ServerName $serverName -OnlyLatestPerDatabase
 ```
 
-### <a name="delete-ltr-backups"></a>Delete LTR backups
+### <a name="delete-ltr-backups"></a>Odstranit zálohy LTR
 
-This example shows how to delete an LTR backup from the list of backups.
+Tento příklad ukazuje, jak odstranit zálohu LTR ze seznamu záloh.
 
 ```powershell
 # remove the earliest backup
@@ -186,11 +186,11 @@ Remove-AzSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
 
 > [!IMPORTANT]
-> Deleting LTR backup is non-reversible. To delete an LTR backup after the server has been deleted you must have Subscription scope permission. You can set up notifications about each delete in Azure Monitor by filtering for operation ‘Deletes a long term retention backup’. The activity log contains information on who and when made the request. See [Create activity log alerts](../azure-monitor/platform/alerts-activity-log.md) for detailed instructions.
+> Odstranění zálohy LTR je nevratné. Pokud chcete odstranit zálohu LTR po odstranění serveru, musíte mít oprávnění k oboru předplatného. Můžete nastavit oznámení o každém odstranění v Azure Monitor filtrováním pro operaci odstraní zálohu pro dlouhodobé uchovávání. Protokol aktivit obsahuje informace o tom, kdo a kdy žádost odeslal. Podrobné pokyny najdete v tématu [vytvoření výstrah protokolu aktivit](../azure-monitor/platform/alerts-activity-log.md) .
 
-### <a name="restore-from-ltr-backups"></a>Restore from LTR backups
+### <a name="restore-from-ltr-backups"></a>Obnovení ze zálohy LTR
 
-This example shows how to restore from an LTR backup. Note, this interface did not change but the resource id parameter now requires the LTR backup resource id.
+Tento příklad ukazuje, jak obnovit ze zálohy LTR. Všimněte si, že toto rozhraní se nezměnilo, ale parametr ID prostředku teď vyžaduje ID záložního prostředku LTR.
 
 ```powershell
 # restore a specific LTR backup as an P1 database on the server $serverName of the resource group $resourceGroup
@@ -199,10 +199,10 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 ```
 
 > [!IMPORTANT]
-> To restore from an LTR backup after the server has been deleted, you must have permissions scoped to the server's subscription and that subscription must be active. You must also omit the optional -ResourceGroupName parameter.
+> Pro obnovení ze zálohy LTR po odstranění serveru musíte mít oprávnění oboru pro předplatné serveru a předplatné musí být aktivní. Je také nutné vynechat volitelný parametr-ResourceGroupName.
 
 > [!NOTE]
-> From here, you can connect to the restored database using SQL Server Management Studio to perform needed tasks, such as to extract a bit of data from the restored database to copy into the existing database or to delete the existing database and rename the restored database to the existing database name. See [point in time restore](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Odtud se můžete připojit k obnovené databázi pomocí SQL Server Management Studio a provést potřebné úkoly, jako je například extrakce dat z obnovené databáze pro zkopírování do existující databáze nebo odstranění existující databáze a přejmenování obnovené databáze k názvu existující databáze. Viz [Obnovení bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="next-steps"></a>Další kroky
 

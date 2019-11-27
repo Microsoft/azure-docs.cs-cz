@@ -15,161 +15,161 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74407093"
 ---
-## <a name="generate-the-certificate-signing-request-file"></a>Generate the certificate-signing request file
+## <a name="generate-the-certificate-signing-request-file"></a>Generování souboru žádosti o podepsání certifikátu
 
-The Apple Push Notification Service (APNs) uses certificates to authenticate your push notifications. Pokud chcete vytvořit nabízený certifikát pro odesílání a přijímání oznámení, postupujte podle těchto pokynů. Další informace o těchto konceptech najdete v oficiální dokumentaci ke službě [Apple Push Notification Service](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html).
+K ověření nabízených oznámení používá Apple Push Notification Service (APNs) certifikáty. Pokud chcete vytvořit nabízený certifikát pro odesílání a přijímání oznámení, postupujte podle těchto pokynů. Další informace o těchto konceptech najdete v oficiální dokumentaci ke službě [Apple Push Notification Service](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html).
 
-Generate the Certificate Signing Request (CSR) file, which Apple uses to generate a signed push certificate.
+Vygenerujte soubor žádosti o podepsání certifikátu (CSR), který Apple používá k vygenerování podepsaného nabízeného certifikátu.
 
-1. V Macu spusťte nástroj Keychain Access. It can be opened from the **Utilities** folder or the **Other** folder on the Launchpad.
+1. V Macu spusťte nástroj Keychain Access. Dá se otevřít ze složky **nástrojů** nebo **jiné** složky na hlavní straně.
 
-1. Select **Keychain Access**, expand **Certificate Assistant**, and then select **Request a Certificate from a Certificate Authority**.
+1. Vyberte možnost **přístup do řetězce klíčů**, rozbalte **Pomocníka s certifikátem**a pak vyberte **požádat o certifikát od certifikační autority**.
 
     ![Použití nástroje Keychain Access k vyžádání nového certifikátu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
 
-1. Select your **User Email Address**, enter your **Common Name** value, make sure that you specify **Saved to disk**, and then select **Continue**. Leave **CA Email Address** blank as it isn't required.
+1. Vyberte svou **e-mailovou adresu uživatele**, zadejte hodnotu pro **běžný název** , ujistěte se, že jste zadali možnost **uloženo na disk**a pak vyberte **pokračovat**. Ponechte **e-mailovou adresu CA** prázdnou, protože není potřeba.
 
     ![Požadované informace o certifikátu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-csr-info.png)
 
-1. Enter a name for the CSR file in **Save As**, select the location in **Where**, and then select **Save**.
+1. Do pole **Uložit jako**zadejte název souboru CSR, vyberte umístění, **kde**se nachází, a pak vyberte **Uložit**.
 
-    ![Choose a file name for the certificate](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
+    ![Vyberte název souboru certifikátu.](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-save-csr.png)
 
-    This action saves the CSR file in the selected location. The default location is **Desktop**. Zapamatujte si umístění tohoto souboru.
+    Tato akce uloží soubor CSR do vybraného umístění. Výchozí umístění je **Desktop**. Zapamatujte si umístění tohoto souboru.
 
-Next, register your app with Apple, enable push notifications, and upload the exported CSR to create a push certificate.
+Pak Zaregistrujte svoji aplikaci pomocí Apple, povolte nabízená oznámení a nahrajte exportovaný zástupce a vytvořte certifikát push.
 
 ## <a name="register-your-app-for-push-notifications"></a>Registrace aplikace pro nabízená oznámení
 
-To send push notifications to an iOS app, register your application with Apple, and also register for push notifications.  
+Pokud chcete odesílat nabízená oznámení do aplikace pro iOS, Zaregistrujte svoji aplikaci pomocí Apple a zaregistrujte se i pro nabízená oznámení.  
 
-1. If you haven't already registered your app, browse to the [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) at the Apple Developer Center. Sign in to the portal with your Apple ID, and select **Identifiers**. Then select **+** to register a new app.
+1. Pokud jste svou aplikaci ještě nezaregistrovali, přejděte na [portál pro zřizování iOS](https://go.microsoft.com/fwlink/p/?LinkId=272456) na webu Apple Developer Center. Přihlaste se k portálu pomocí Apple ID a vyberte **identifikátory**. Pak vyberte **+** k registraci nové aplikace.
 
     ![Stránka ID aplikací na portálu zřizování iOS](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
-2. On the **Register a New Identifier** screen, select the **App IDs** radio button. Potom vyberte **Pokračovat**.
+2. Na obrazovce **registrovat nový identifikátor** vyberte přepínač **ID aplikací** . Potom vyberte **Pokračovat**.
 
-    ![iOS Provisioning Portal register new ID page](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids-new.png)
+    ![Stránka pro zřizování iOS registrace – nové ID](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids-new.png)
 
-3. Update the following three values for your new app, and then select **Continue**:
+3. Aktualizujte následující tři hodnoty pro novou aplikaci a pak vyberte **pokračovat**:
 
-   * **Description**: Type a descriptive name for your app.
+   * **Popis**: zadejte popisný název vaší aplikace.
 
-   * **Bundle ID**: Enter a Bundle ID of the form **Organization Identifier.Product Name** as mentioned in the [App Distribution Guide](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). The *Organization Identifier* and *Product Name* values must match the organization identifier and product name you use when you create your Xcode project. In the following screenshot, the **NotificationHubs** value is used as an organization identifier and the **GetStarted** value is used as the product name. Make sure the **Bundle Identifier** value matches the value in your Xcode project, so that Xcode uses the correct publishing profile.
+   * **ID sady prostředků**: Zadejte ID sady prostředků **identifikátoru organizace. název produktu** , jak je uvedeno v [Průvodci distribucí aplikací](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). *Identifikátor organizace* a hodnoty *názvu produktu* se musí shodovat s identifikátorem organizace a názvem produktu, který použijete při vytváření projektu Xcode. Na následujícím snímku obrazovky se hodnota **NotificationHubs** používá jako identifikátor organizace a jako název produktu se používá hodnota **getstarted** . Ujistěte se, že hodnota **identifikátoru sady prostředků** odpovídá hodnotě v projektu Xcode, takže Xcode používá správný profil publikování.
 
-      ![iOS Provisioning Portal register app ID page](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-bundle.png)
+      ![Stránka ID aplikace registrace portálu pro zřizování iOS](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-bundle.png)
 
-   * **Push Notifications**: Check the **Push Notifications** option in the **Capabilities** section.
+   * **Nabízená oznámení**: v části **Možnosti** si přečtěte možnost **nabízená oznámení** .
 
       ![Formulář pro registraci nového ID aplikace](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-push.png)
 
-      This action generates your App ID and requests that you confirm the information. Select **Continue**, then select **Register** to confirm the new App ID.
+      Tato akce vygeneruje vaše ID aplikace a žádosti o potvrzení informací. Vyberte **pokračovat**a pak vyberte **zaregistrovat** a potvrďte nové ID aplikace.
 
-      ![Confirm new App ID](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-register.png)
+      ![Potvrdit nové ID aplikace](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-register.png)
 
-      After you select **Register**, you see the new App ID as a line item in the **Certificates, Identifiers & Profiles** page.
+      Po výběru položky **zaregistrovat**se na stránce **certifikáty, identifikátory & profily** zobrazí nové ID aplikace jako položka řádku.
 
-4. In the **Certificates, Identifiers & Profiles** page, under **Identifiers**, locate the App ID line item that you just created, and select its row to display the **Edit your App ID Configuration** screen.
+4. Na stránce **certifikáty, identifikátory & profily** v části **identifikátory**Najděte položku řádku ID aplikace, kterou jste právě vytvořili, a výběrem jejího řádku zobrazte obrazovku pro **úpravu konfigurace ID aplikace** .
 
-5. Scroll down to the checked **Push Notifications** option, and then select **Configure** to create the certificate.
+5. Přejděte dolů k možnosti zaškrtnutá **nabízená oznámení** a pak vyberte **Konfigurovat** a vytvořte certifikát.
 
     ![Úprava stránky ID aplikace](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-6. The **Apple Push Notification service SSL Certificates** window appears. Select the **Create Certificate** button under the **Development SSL Certificate** section.
+6. Zobrazí se okno **certifikáty SSL služby Apple Push Notification Service** . V části **vývojový certifikát protokolu SSL** vyberte tlačítko **vytvořit certifikát** .
 
     ![Tlačítko Vytvořit certifikát pro ID aplikace](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
-    The **Create a new Certificate** screen is displayed.
+    Zobrazí se obrazovka **vytvořit nový certifikát** .
 
     > [!NOTE]
     > Tento kurz používá vývojový certifikát. Stejný postup se používá při registraci produkčního certifikátu. Dejte pozor, abyste při odesílání oznámení používali stejný typ certifikátu.
 
-1. Select **Choose File**, browse to the location where you saved the CSR file from the first task, and then double-click the certificate name to load it. Potom vyberte **Pokračovat**.
+1. Vyberte **zvolit soubor**, přejděte do umístění, kam jste ULOŽILI soubor CSR z prvního úkolu, a potom dvakrát klikněte na název certifikátu a načtěte ho. Potom vyberte **Pokračovat**.
 
-1. After the portal creates the certificate, select the **Download** button. Save the certificate, and remember the location to which it's saved.
+1. Jakmile portál vytvoří certifikát, klikněte na tlačítko **Stáhnout** . Uložte certifikát a zapamatujte si umístění, do kterého se uložilo.
 
     ![Stránka pro stažení vygenerovaného certifikátu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
-    The certificate is downloaded and saved to your computer in your **Downloads** folder.
+    Certifikát se stáhne a uloží do vašeho počítače ve složce **stažené soubory** .
 
     ![Vyhledání souboru certifikátu ve složce stažených souborů](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
     > [!NOTE]
-    > By default, the downloaded development certificate is named **aps_development.cer**.
+    > Ve výchozím nastavení se stažený vývojový certifikát jmenuje **aps_development. cer**.
 
 1. Poklikejte na stažený nabízený certifikát **aps_development.cer**. Tato akce nainstaluje nový certifikát do Klíčenky, jak je znázorněno na následujícím obrázku:
 
     ![Seznam certifikátů nástroje Keychain Access zobrazující nový certifikát](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
-    > Although the name in your certificate might be different, the name will be prefixed with **Apple Development iOS Push Services**.
+    > I když se název v certifikátu může lišit, název bude předponou **Apple Development iOS push Services**.
 
-1. V nástroji Keychain Access, klikněte pravým tlačítkem na nový nabízený certifikát, který jste vytvořili v kategorii **Certifikáty**. Select **Export**, name the file, select the **.p12** format, and then select **Save**.
+1. V nástroji Keychain Access, klikněte pravým tlačítkem na nový nabízený certifikát, který jste vytvořili v kategorii **Certifikáty**. Vyberte **exportovat**, zadejte název souboru, vyberte formát **. p12** a pak vyberte **Uložit**.
 
     ![Export certifikátu ve formátu p12](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
-    You can choose to protect the certificate with a password, but this is optional. Click **OK** if you want to bypass password creation. Poznamenejte si název souboru a umístění exportovaného certifikátu .p12. They are used to enable authentication with APNs.
+    Můžete si vybrat, že chcete certifikát chránit heslem, ale to je volitelné. Pokud chcete obejít vytváření hesel, klikněte na **OK** . Poznamenejte si název souboru a umístění exportovaného certifikátu .p12. Používají se k povolení ověřování pomocí služby APNs.
 
     > [!NOTE]
-    > Your .p12 file name and location might be different than what is pictured in this tutorial.
+    > Název souboru. p12 a jeho umístění se mohou lišit od obrázku v tomto kurzu.
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Vytvoření zřizovacího profilu pro aplikaci
 
-1. Return to the [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456), select **Certificates, Identifiers & Profiles**, select **Profiles** from the left menu, and then select **+** to create a new profile. The **Register a New Provisioning Profile** screen appears.
+1. Vraťte se na [portál zřizování iOS](https://go.microsoft.com/fwlink/p/?LinkId=272456), vyberte **certifikáty, identifikátory & profily**, v levé nabídce vyberte **profily** a pak vyberte **+** a vytvořte nový profil. Zobrazí se obrazovka **registrovat nový profil pro zřizování** .
 
-1. Select **iOS App Development** under **Development** as the provisioning profile type, and then select **Continue**.
+1. Jako typ zřizovacího profilu vyberte **vývoj aplikací pro iOS** v části **vývoj** a pak vyberte **pokračovat**.
 
     ![Seznam zřizovacích profilů](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 
-1. Next, select the app ID you created from the **App ID** drop-down list, and select **Continue**.
+1. Potom v rozevíracím seznamu **ID aplikace** vyberte ID aplikace, které jste vytvořili, a vyberte **pokračovat**.
 
     ![Výběr ID aplikace](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-select-appid-for-provisioning.png)
 
-1. In the **Select certificates** window, select the development certificate that you use for code signing, and select **Continue**. This certificate isn't the push certificate you created. If one does not exist, you must create it. If a certificate does exist, skip to the next step. To create a development certificate if one does not exist:
+1. V okně **Vybrat certifikáty** vyberte vývojový certifikát, který používáte pro podepisování kódu, a vyberte **pokračovat**. Tento certifikát není certifikátem push, který jste vytvořili. Pokud jeden neexistuje, musíte ho vytvořit. Pokud certifikát existuje, přejděte k dalšímu kroku. Pokud neexistuje certifikát pro vývoj, vytvořte ho:
 
-    1. If you see **No Certificates are available**, select **Create Certificate**.
-    2. In the **Software** section, select **Apple Development**. Potom vyberte **Pokračovat**.
-    3. In the **Create a New Certificate** screen, select **Choose File**.
-    4. Browse to the **Certificate Signing Request** certificate you created earlier, select it, and then select **Open**.
+    1. Pokud vidíte, že **nejsou k dispozici žádné certifikáty**, vyberte **vytvořit certifikát**.
+    2. V části **software** vyberte možnost **vývoj pro Apple**. Potom vyberte **Pokračovat**.
+    3. Na obrazovce **vytvořit nový certifikát** vyberte **zvolit soubor**.
+    4. Přejděte na certifikát **žádosti o podepsání certifikátu** , který jste vytvořili dříve, vyberte ho a pak vyberte **otevřít**.
     5. Vyberte **Pokračovat**.
-    6. Download the development certificate, and remember the location to which it's saved.
+    6. Stáhněte si vývojový certifikát a zapamatujte si umístění, do kterého se uložilo.
 
-1. Return to the **Certificates, Identifiers & Profiles** page, select **Profiles** from the left menu, and then select **+** to create a new profile. The **Register a New Provisioning Profile** screen appears.
+1. Vraťte se na stránku **certifikáty, identifikátory & profily** , v nabídce vlevo vyberte **profily** a pak vyberte **+** k vytvoření nového profilu. Zobrazí se obrazovka **registrovat nový profil pro zřizování** .
 
-1. In the **Select certificates** window, select the development certificate that you just created. Potom vyberte **Pokračovat**.
+1. V okně **Vybrat certifikáty** vyberte vývojový certifikát, který jste právě vytvořili. Potom vyberte **Pokračovat**.
 
-1. Next, select the devices to use for testing, and select **Continue**.
+1. Potom vyberte zařízení, která chcete použít pro testování, a vyberte **pokračovat**.
 
-1. Finally, choose a name for the profile in **Provisioning Profile Name**, and select **Generate**.
+1. Nakonec zvolte název profilu v **názvu zřizovacího profilu**a vyberte **Generovat**.
 
     ![Volba názvu zřizovacího profilu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
 
-1. When the new provisioning profile is created, select **Download**. Remember the location to which it's saved.
+1. Po vytvoření nového zřizovacího profilu vyberte **Stáhnout**. Zapamatujte si umístění, do kterého se uložilo.
 
-1. Browse to the location of the provisioning profile, and then double-click it to install it on your Xcode development machine.
+1. Přejděte do umístění profilu pro zřizování a dvakrát na něj klikněte a nainstalujte ho do vývojového počítače s Xcode.
 
-## <a name="create-a-notification-hub"></a>Vytvoříte centrum oznámení.
+## <a name="create-a-notification-hub"></a>Vytvoření centra oznámení
 
-In this section, you create a notification hub and configure authentication with APNs by using the .p12 push certificate that you previously created. If you want to use a notification hub that you've already created, you can skip to step 5.
+V této části vytvoříte centrum oznámení a nakonfigurujete ověřování pomocí služby APN pomocí nabízeného certifikátu. p12 push Certificate, který jste vytvořili dříve. Pokud chcete použít Centrum oznámení, které jste už vytvořili, můžete přeskočit na krok 5.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
-## <a name="configure-your-notification-hub-with-apns-information"></a>Configure your notification hub with APNs information
+## <a name="configure-your-notification-hub-with-apns-information"></a>Konfigurace centra oznámení pomocí informací APNs
 
 1. V části **Notification Services** vyberte **Apple (APNS)** .
 
 1. Vyberte **Certifikát**.
 
-1. Select the file icon.
+1. Vyberte ikonu souboru.
 
-1. Select the .p12 file that you exported earlier, and then select **Open**.
+1. Vyberte soubor. p12, který jste dříve exportovali, a pak vyberte **otevřít**.
 
-1. If required, specify the correct password.
+1. V případě potřeby zadejte správné heslo.
 
-1. Vyberte režim **Izolovaný prostor**. **Produkční** režim použijte pouze v případě, že chcete zasílat nabízená oznámení uživatelům, kteří si zakoupili aplikaci z obchodu s aplikacemi.
+1. Vyberte režim **Sandbox**. **Produkční** režim použijte pouze v případě, že chcete zasílat nabízená oznámení uživatelům, kteří si zakoupili aplikaci z obchodu s aplikacemi.
 
     ![Konfigurace certifikační služby APNs na webu Azure Portal](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
-You've now configured your notification hub with APNs. You also have the connection strings to register your app and send push notifications.
+Nyní jste nakonfigurovali centrum oznámení pomocí služby APNs. Máte také připojovací řetězce k registraci aplikace a odesílání nabízených oznámení.

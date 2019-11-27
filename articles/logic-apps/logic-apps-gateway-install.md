@@ -1,6 +1,6 @@
 ---
-title: Install on-premises data gateway - Azure Logic Apps
-description: Before you can access data on premises from Azure Logic Apps, download and install the on-premises data gateway
+title: Instalace místní brány dat – Azure Logic Apps
+description: Než budete moct získat přístup k datům z Azure Logic Apps, Stáhněte a nainstalujte místní bránu dat.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -16,268 +16,268 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326379"
 ---
-# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Install on-premises data gateway for Azure Logic Apps
+# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
-Before you can [connect to on-premises data sources from Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md), download and install the [on-premises data gateway](https://aka.ms/on-premises-data-gateway-installer) on a local computer. The gateway works as a bridge that provides quick data transfer and encryption between data sources on premises and your logic apps. You can use the same gateway installation with other cloud services, such as Power BI, Power Automate, Power Apps, and Azure Analysis Services. For information about how to use the gateway with these services, see these articles:
+Než se budete moct [připojit k místním zdrojům dat z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md), Stáhněte a nainstalujte místní [bránu dat](https://aka.ms/on-premises-data-gateway-installer) do místního počítače. Brána funguje jako most, který poskytuje rychlý přenos dat a šifrování mezi zdroji dat místně a vašimi Logic Apps. Stejnou instalaci brány můžete použít i u jiných cloudových služeb, jako je Power BI, automatizace, Power Apps a Azure Analysis Services. Informace o tom, jak používat bránu s těmito službami, najdete v těchto článcích:
 
-* [Microsoft Power Automate on-premises data gateway](/power-automate/gateway-reference)
-* [Microsoft Power BI on-premises data gateway](/power-bi/service-gateway-onprem)
-* [Microsoft Power Apps on-premises data gateway](/powerapps/maker/canvas-apps/gateway-reference)
-* [Azure Analysis Services on-premises data gateway](../analysis-services/analysis-services-gateway.md)
+* [Microsoft Power Automatizujte místní bránu dat](/power-automate/gateway-reference)
+* [Místní brána dat Power BI Microsoftu](/power-bi/service-gateway-onprem)
+* [Místní brána dat Microsoft Power Apps](/powerapps/maker/canvas-apps/gateway-reference)
+* [Azure Analysis Services místní bránu dat](../analysis-services/analysis-services-gateway.md)
 
-This article shows how to download, install, and set up your on-premises data gateway so that you can access on-premises data sources from Azure Logic Apps. You can also learn more about [how the data gateway works](#gateway-cloud-service) later in this topic. For more information about the gateway, see [What is an on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
+Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu dat, abyste mohli přistupovat k místním zdrojům dat z Azure Logic Apps. Další informace o [tom, jak brána pro data funguje](#gateway-cloud-service) , najdete dál v tomto tématu. Další informace o bráně najdete v tématu [co je místní brána](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Účet a předplatné Azure. If you don't have an Azure account with a subscription, [sign up for a free Azure account](https://azure.microsoft.com/free/).
+* Účet a předplatné Azure. Pokud nemáte účet Azure s předplatným, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-  * Your Azure account must belong to a single [Azure Active Directory (Azure AD) tenant or directory](../active-directory/fundamentals/active-directory-whatis.md#terminology). You must use the same Azure account for installing and administering the gateway on your local computer.
+  * Váš účet Azure musí patřit do jednoho [Azure Active Directoryho tenanta nebo adresáře Azure AD](../active-directory/fundamentals/active-directory-whatis.md#terminology). Je nutné použít stejný účet Azure pro instalaci a správu brány na místním počítači.
 
-  * During gateway installation, you sign in with your Azure account, which links your gateway installation to your Azure account and only that account. Later, in the Azure portal, you must use the same Azure account and Azure AD tenant when you create an Azure gateway resource that registers and claims your gateway installation. In Azure Logic Apps, on-premises triggers and actions then use the gateway resource for connecting to on-premises data sources.
+  * Během instalace brány se přihlásíte pomocí účtu Azure, který propojí instalaci brány s vaším účtem Azure a jenom s tímto účtem. Později v Azure Portal musíte použít stejný účet Azure a tenanta Azure AD při vytváření prostředku brány Azure, který registruje a deklaruje instalaci brány. V Azure Logic Apps místní triggery a akce pak pomocí prostředku brány připojte k místním zdrojům dat.
 
     > [!NOTE]
-    > You can link only one gateway installation and one Azure gateway resource to each other. You can't link the same gateway installation to multiple Azure accounts or Azure gateway resources. However, an Azure account can link to multiple gateway installations and Azure gateway resources. In an on-premises trigger or action, you can select from your various Azure subscriptions, and then select an associated gateway resource.
+    > Můžete propojit jenom jednu instalaci brány a jeden prostředek brány Azure. Nemůžete propojit stejnou instalaci brány s více účty Azure nebo prostředky služby Azure Gateway. Účet Azure se ale může připojit k několika instalacím brány a prostředkům služby Azure Gateway. V místním triggeru nebo akci můžete vybrat z různých předplatných Azure a pak vybrat přidružený prostředek brány.
 
-  * You need to sign in with either a work account or school account, also known as an *organization* account, which looks like `username@contoso.com`. You can't use Azure B2B (guest) accounts or personal Microsoft accounts, such as @hotmail.com or @outlook.com.
+  * Musíte se přihlásit pomocí pracovního nebo školního účtu, kterému se říká účet *organizace* , který vypadá `username@contoso.com`. Nemůžete použít účty Azure B2B ani osobní účty Microsoft, například @hotmail.com nebo @outlook.com.
 
     > [!TIP]
-    > If you signed up for an Office 365 offering and didn't provide your work email address, your address might look like `username@domain.onmicrosoft.com`. Your account is stored within a tenant in an Azure Active Directory (Azure AD). In most cases, the User Principal Name (UPN) for your Azure AD account is the same as your email address.
+    > Pokud jste si zaregistrovali nabídku Office 365 a nezadali jste svoji pracovní e-mailovou adresu, může vaše adresa vypadat jako `username@domain.onmicrosoft.com`. Váš účet je uložený v rámci tenanta v Azure Active Directory (Azure AD). Ve většině případů je hlavní název uživatele (UPN) pro váš účet Azure AD stejný jako vaše e-mailová adresa.
     >
-    > To use a [Visual Studio Standard subscription](https://visualstudio.microsoft.com/vs/pricing/) that's linked to a Microsoft account, first [create a tenant in Azure AD](../active-directory/develop/quickstart-create-new-tenant.md) or use the default directory. Add a user with a password to the directory, and then give that user access to your Azure subscription. You can then sign in during gateway installation with this username and password.
+    > Pokud chcete použít [standardní předplatné sady Visual Studio](https://visualstudio.microsoft.com/vs/pricing/) , které je propojené s účet Microsoft, nejdřív [vytvořte tenanta ve službě Azure AD](../active-directory/develop/quickstart-create-new-tenant.md) nebo použijte výchozí adresář. Přidejte do adresáře uživatele s heslem a pak mu poskytněte přístup k vašemu předplatnému Azure. Pak se můžete přihlásit při instalaci brány pomocí tohoto uživatelského jména a hesla.
 
-* Here are requirements for your local computer:
+* Tady jsou požadavky na váš místní počítač:
 
-  **Minimum requirements**
+  **Minimální požadavky**
 
   * .NET Framework 4.7.2
-  * 64-bit version of Windows 7 or Windows Server 2008 R2 (or later)
+  * 64. bitová verze systému Windows 7 nebo Windows Server 2008 R2 (nebo novější)
 
-  **Recommended requirements**
+  **Doporučené požadavky**
 
-  * 8-core CPU
-  * 8 GB memory
-  * 64-bit version of Windows Server 2012 R2 or later
-  * Solid-state drive (SSD) storage for spooling
+  * PROCESOR s 8 jádry
+  * 8 GB paměti
+  * 64. bitová verze systému Windows Server 2012 R2 nebo novější
+  * Úložiště SSD (Solid-State Drive) pro zařazování
 
   > [!NOTE]
-  > The gateway doesn't support Windows Server Core.
+  > Brána nepodporuje jádro Windows serveru.
 
-* **Related considerations**
+* **Související otázky**
 
-  * Install the on-premises data gateway only on a local computer, not a domain controller. You don't have to install the gateway on the same computer as your data source. You need only one gateway for all your data sources, so you don't need to install the gateway for each data source.
+  * Místní bránu dat nainstalujte jenom v místním počítači, nikoli v řadiči domény. Bránu nemusíte instalovat na stejný počítač jako zdroj dat. Pro všechny zdroje dat potřebujete jenom jednu bránu, takže nemusíte bránu instalovat pro každý zdroj dat.
 
     > [!TIP]
-    > To minimize latency, you can install the gateway as close as possible to your data source, or on the same computer, assuming that you have permissions.
+    > Abyste minimalizovali latenci, můžete bránu nainstalovat co nejblíže zdroji dat nebo do stejného počítače, za předpokladu, že máte oprávnění.
 
-  * Install the gateway on a computer that's on a wired network, connected to the internet, always turned on, and doesn't go to sleep. Otherwise, the gateway can't run, and performance might suffer over a wireless network.
+  * Nainstalujte bránu na počítač, který je v kabelové síti, připojený k Internetu, vždycky zapnutý a nepřejde do režimu spánku. V opačném případě se brána nemůže spustit a výkon se může zpomalit v bezdrátové síti.
 
-  * If you plan to use Windows authentication, make sure that you install the gateway on a computer that's a member of the same Active Directory environment as your data sources.
+  * Pokud plánujete používat ověřování systému Windows, ujistěte se, že jste nainstalovali bránu do počítače, který je členem stejného prostředí služby Active Directory jako vaše zdroje dat.
 
-  * The region that you select for your gateway installation is the same location that you must select when you later create the Azure gateway resource for your logic app. By default, this region is the same location as your Azure AD tenant that manages your Azure account. However, you can change the location during gateway installation.
+  * Oblast, kterou vyberete pro instalaci brány, je stejné umístění, které musíte vybrat při pozdějším vytvoření prostředku brány Azure pro vaši aplikaci logiky. Ve výchozím nastavení se jedná o stejné umístění jako váš tenant služby Azure AD, který spravuje váš účet Azure. Umístění však můžete změnit během instalace brány.
 
-  * If you're updating your gateway installation to the latest version, uninstall your current gateway first for a cleaner experience.
+  * Pokud aktualizujete instalaci brány na nejnovější verzi, nejdřív odinstalujte svou aktuální bránu pro čisticí prostředí.
 
-  * The gateway has two modes: standard mode and personal mode, which applies only to Power BI. You can't have more than one gateway running in the same mode on the same computer.
+  * Brána má dva režimy: standardní režim a osobní režim, které platí jenom pro Power BI. Na stejném počítači nemůžete mít spuštěnou více než jednu bránu ve stejném režimu.
 
-  * Azure Logic Apps supports read and write operations through the gateway. However, these operations have [limits on their payload size](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+  * Azure Logic Apps podporuje operace čtení a zápisu prostřednictvím brány. Nicméně tyto operace mají [omezení velikosti datové části](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 
 ## <a name="install-data-gateway"></a>Instalace brány dat
 
-1. [Download and run the gateway installer on a local computer](https://aka.ms/on-premises-data-gateway-installer).
+1. [Stáhněte a spusťte instalační program brány na místním počítači](https://aka.ms/on-premises-data-gateway-installer).
 
-1. After the installer opens, select **Next**.
+1. Po otevření instalačního programu vyberte **Další**.
 
-   ![Intro screen for gateway installer](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![Úvodní obrazovka pro instalační program brány](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
-1. Select **On-premises data gateway (recommended)** , which is standard mode, and then select **Next**.
+1. Vyberte **místní bránu dat (doporučeno)** , což je standardní režim, a pak vyberte **Další**.
 
-   ![Select run mode for data gateway](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
+   ![Vyberte režim spuštění pro bránu dat.](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
-1. Review the minimum requirements, keep the default installation path, accept the terms of use, and then select **Install**.
+1. Zkontrolujte minimální požadavky, ponechte výchozí instalační cestu, přijměte podmínky použití a pak vyberte **nainstalovat**.
 
-   ![Review requirements and accept terms of use](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
+   ![Kontrola požadavků a přijetí podmínek použití](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
-1. After the gateway successfully installs, provide the email address for your Azure account, and then select **Sign in**, for example:
+1. Po úspěšné instalaci brány zadejte e-mailovou adresu účtu Azure a pak vyberte **Přihlásit**se, například:
 
-   ![Sign in with work or school account](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
+   ![Přihlaste se pomocí pracovního nebo školního účtu.](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-   Your gateway installation can link to only one Azure account.
+   Vaše instalace brány se může propojit jenom s jedním účtem Azure.
 
-1. Select **Register a new gateway on this computer** > **Next**. This step registers your gateway installation with the [gateway cloud service](#gateway-cloud-service).
+1. Vyberte možnost **zaregistrovat novou bránu na tomto počítači** > **Další**. Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
 
-   ![Register gateway on local computer](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
+   ![Registrovat bránu v místním počítači](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
-1. Provide this information for your gateway installation:
+1. Zadejte tyto informace pro instalaci brány:
 
-   * A gateway name that's unique across your Azure AD tenant
-   * The recovery key, which must have at least eight characters, that you want to use
-   * Confirmation for your recovery key
+   * Název brány, který je jedinečný v rámci vašeho tenanta Azure AD
+   * Obnovovací klíč, který musí obsahovat alespoň osm znaků, které chcete použít
+   * Potvrzení obnovovacího klíče
 
-   ![Provide information for gateway installation](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
+   ![Zadání informací pro instalaci brány](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
-   > Save and keep your recovery key in a safe place. You need this key if you ever want to change the location, move, recover, or take over a gateway installation.
+   > Uložte a zachovejte obnovovací klíč na bezpečném místě. Tento klíč budete potřebovat, pokud někdy chcete změnit umístění, přesunout, obnovit nebo převzít instalaci brány.
 
-   Note the option to **Add to an existing gateway cluster**, which you select when you install additional gateways for [high-availability scenarios](#high-availability).
+   Poznamenejte si možnost **Přidat existující cluster brány**, který vyberete při instalaci dalších bran pro [scénáře s vysokou dostupností](#high-availability).
 
-1. Check the region for the gateway cloud service and [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) that's used by your gateway installation. By default, this region is the same location as the Azure AD tenant for your Azure account.
+1. Ověřte oblast pro cloudovou službu brány a [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) , kterou používá instalace brány. Ve výchozím nastavení má tato oblast stejné umístění jako tenant Azure AD pro váš účet Azure.
 
-   ![Confirm region for gateway service and service bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
+   ![Potvrdit oblast pro službu brány a Service Bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
-1. To accept the default region, select **Configure**. However, if the default region isn't the one that's closest to you, you can change the region.
+1. Pokud chcete přijmout výchozí oblast, vyberte **Konfigurovat**. Pokud však výchozí oblast není ta, která je pro vás nejblíže, můžete změnit oblast.
 
-   *Why change the region for your gateway installation?*
+   *Proč změnit oblast pro instalaci brány?*
 
-   For example, to reduce latency, you might change your gateway's region to the same region as your logic app. Or, you might select the region closest to your on-premises data source. Your *gateway resource in Azure* and your logic app can have different locations.
+   Pokud například chcete snížit latenci, můžete změnit oblast brány na stejnou oblast jako aplikace logiky. Případně můžete vybrat oblast nejbližší k místnímu zdroji dat. Váš *prostředek brány v Azure* a aplikace logiky můžou mít různá umístění.
 
-   1. Next to the current region, select **Change Region**.
+   1. Vedle aktuální oblasti vyberte **změnit oblast**.
 
-      ![Change the current gateway region](./media/logic-apps-gateway-install/change-gateway-service-region.png)
+      ![Změna aktuální oblasti brány](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
-   1. On the next page, open the **Select Region** list, select the region you want, and select **Done**.
+   1. Na další stránce otevřete seznam **Vybrat oblast** , vyberte požadovanou oblast a vyberte **Hotovo**.
 
-      ![Select another region for gateway service](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![Vyberte jinou oblast pro službu brány](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-1. Review the information in the final confirmation window. This example uses the same account for Logic Apps, Power BI, Power Apps, and Power Automate, so the gateway is available for all these services. When you're ready, select **Close**.
+1. Přečtěte si informace v okně poslední potvrzení. V tomto příkladu se používá stejný účet jako Logic Apps, Power BI, Power Apps a automatizace, takže je tato brána dostupná pro všechny tyto služby. Až budete připraveni, vyberte **Zavřít**.
 
-   ![Confirm data gateway information](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![Potvrzení informací o bráně dat](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
-1. Now [create the Azure resource for your gateway installation](../logic-apps/logic-apps-gateway-connection.md).
+1. Nyní [vytvořte prostředek Azure pro instalaci brány](../logic-apps/logic-apps-gateway-connection.md).
 
-## <a name="check-or-adjust-communication-settings"></a>Check or adjust communication settings
+## <a name="check-or-adjust-communication-settings"></a>Kontrolovat nebo upravovat nastavení komunikace
 
-The on-premises data gateway depends on [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) for cloud connectivity and establishes the corresponding outbound connections to the gateway's associated Azure region. If your work environment requires that traffic goes through a proxy or firewall to access the internet, this restriction might prevent the on-premises data gateway from connecting to the gateway cloud service and Azure Service Bus. The gateway has several communication settings, which you can adjust. For more information, see these topics:
+Místní brána dat závisí na [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) pro cloudové připojení a stanovuje odpovídající odchozí připojení k příslušné oblasti Azure přidružené k bráně. Pokud vaše pracovní prostředí vyžaduje, aby provoz prochází přes proxy server nebo bránu firewall pro přístup k Internetu, může toto omezení zabránit místní bráně dat v připojení ke cloudové službě brány a Azure Service Bus. Brána má několik nastavení komunikace, která můžete upravit. Další informace najdete v těchto tématech:
 
-* [Adjust communication settings for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [Configure proxy settings for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [Úprava nastavení komunikace pro místní bránu dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
+* [Konfigurace nastavení proxy serveru pro místní bránu dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
-## <a name="high-availability-support"></a>High availability support
+## <a name="high-availability-support"></a>Podpora vysoké dostupnosti
 
-To avoid single points of failure for on-premises data access, you can have multiple gateway installations (standard mode only) with each on a different computer, and set them up as a cluster or group. That way, if the primary gateway is unavailable, data requests are routed to the second gateway, and so on. Because you can install only one standard gateway on a computer, you must install each additional gateway that's in the cluster on a different computer. All the connectors that work with the on-premises data gateway support high availability.
+Aby nedocházelo k jednomu bodu selhání pro místní přístup k datům, můžete mít k dispozici několik instalací brány (jenom standardní režim) s každou v jiném počítači a nastavit je jako cluster nebo skupina. Tímto způsobem, pokud je primární brána nedostupná, požadavky na data se směrují do druhé brány atd. Vzhledem k tomu, že na počítač můžete nainstalovat jenom jednu standardní bránu, musíte nainstalovat každou další bránu, která je v clusteru v jiném počítači. Všechny konektory, které pracují s místní bránou dat, podporují vysokou dostupnost.
 
-* You must already have at least one gateway installation with the same Azure account as the primary gateway and the recovery key for that installation.
+* Musíte už mít aspoň jednu instalaci brány se stejným účtem Azure jako primární bránu a obnovovací klíč pro tuto instalaci.
 
-* Your primary gateway must be running the gateway update from November 2017 or later.
+* V primární bráně musí být spuštěná aktualizace brány ze listopadu 2017 nebo novější.
 
-After you set up your primary gateway, when you go to install another gateway, select **Add to an existing gateway cluster**, select the primary gateway, which is the first gateway that you installed, and provide the recovery key for that gateway. For more information, see [High availability clusters for on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
+Po nastavení primární brány, když přejdete k instalaci jiné brány, vyberte **Přidat do existujícího clusteru brány**, vyberte primární bránu, která je první bránu, kterou jste nainstalovali, a zadejte pro tuto bránu obnovovací klíč. Další informace najdete v tématu [clustery s vysokou dostupností pro místní bránu dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
 
 <a name="update-gateway-installation"></a>
 
-## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Change location, migrate, restore, or take over existing gateway
+## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Změna umístění, migrace, obnovení nebo převzetí existující brány
 
-If you must change your gateway's location, move your gateway installation to a new computer, recover a damaged gateway, or take ownership for an existing gateway, you need the recovery key that was provided during gateway installation.
+Pokud musíte změnit umístění brány, přesunout instalaci brány do nového počítače, obnovit poškozenou bránu nebo převzít vlastnictví existující brány, budete potřebovat obnovovací klíč, který byl k dispozici při instalaci brány.
 
-1. Run the gateway installer on the computer that has the existing gateway. If you don't have the latest gateway installer, [download the latest gateway version](https://aka.ms/on-premises-data-gateway-installer).
+1. Spusťte instalační program brány na počítači, který má existující bránu. Pokud nemáte nejnovější instalační program brány, Stáhněte si [nejnovější verzi brány](https://aka.ms/on-premises-data-gateway-installer).
 
    > [!NOTE]
-   > Before you restore the gateway on the computer that has the original gateway installation, you must first uninstall the gateway on that computer. This action disconnects the original gateway.
-   > If you remove or delete a gateway cluster for any cloud service, you can't restore that cluster.
+   > Před obnovením brány na počítači, který má původní instalaci brány, musíte nejdřív odinstalovat bránu na tomto počítači. Tato akce odpojí původní bránu.
+   > Pokud odeberete nebo odstraníte cluster brány pro jakoukoli cloudovou službu, nemůžete tento cluster obnovit.
 
-1. After the installer opens, sign in with the same Azure account that was used to install the gateway.
+1. Po otevření instalačního programu se přihlaste pomocí stejného účtu Azure, který jste použili k instalaci brány.
 
-1. Select **Migrate, restore, or takeover an existing gateway** > **Next**, for example:
+1. Vyberte možnost **migrace, obnovení nebo převzetí existující brány** > **například**:
 
-   ![Select "Migrate, restore, or takeover an existing gateway"](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
+   ![Vyberte možnost migrace, obnovení nebo převzetí existující brány.](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
-1. Select from the available clusters and gateways, and enter the recovery key for the selected gateway, for example:
+1. Vyberte z dostupných clusterů a bran a zadejte obnovovací klíč pro vybranou bránu, například:
 
-   ![Select gateway and provide recovery key](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![Vybrat bránu a zadat obnovovací klíč](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-1. To change the region, select **Change Region**, and select the new region.
+1. Chcete-li změnit oblast, vyberte možnost **změnit oblast**a vyberte novou oblast.
 
-1. When you're ready, select **Configure** so that you can finish your task.
+1. Až budete připraveni, vyberte **Konfigurovat** , aby bylo možné dokončit úlohu.
 
-## <a name="tenant-level-administration"></a>Tenant-level administration
+## <a name="tenant-level-administration"></a>Správa na úrovni tenanta
 
-To get visibility into all the on-premises data gateways in an Azure AD tenant, global administrators in that tenant can sign in to the [Power Platform Admin center](https://powerplatform.microsoft.com) as a tenant administrator and select the **Data Gateways** option. For more information, see [Tenant-level administration for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
+Aby bylo možné získat přehled o všech místních branách dat v tenantovi Azure AD, můžou se globální správci v tomto tenantovi přihlašovat do centra pro [správu Power Platform](https://powerplatform.microsoft.com) jako správce tenanta a vybrat možnost **brány dat** . Další informace najdete v tématu [Správa na úrovni tenanta pro místní bránu dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
 
 <a name="restart-gateway"></a>
 
-## <a name="restart-gateway"></a>Restart gateway
+## <a name="restart-gateway"></a>Restartovat bránu
 
-By default, the gateway installation on your local computer runs as a Windows service account named "On-premises data gateway service". However, the gateway installation uses the `NT SERVICE\PBIEgwService` name for its "Log On As" account credentials and has "Log on as a service" permissions.
+Ve výchozím nastavení se instalace brány na místním počítači spouští jako účet služby systému Windows s názvem "místní služba brány dat". Instalace brány však používá `NT SERVICE\PBIEgwService` název přihlašovacích údajů k účtu "přihlásit se jako" a má oprávnění "přihlásit jako službu".
 
 > [!NOTE]
-> Your Windows service account differs from the account used for connecting to on-premises data sources and from the Azure account that you use when you sign in to cloud services.
+> Váš účet služby Windows se liší od účtu používaného pro připojení k místním zdrojům dat a z účtu Azure, který používáte při přihlašování ke cloudovým službám.
 
-Like any other Windows service, you can start and stop the gateway in various ways. For more information, see [Restart an on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
+Stejně jako u jakékoli jiné služby Windows můžete bránu spouštět a zastavovat různými způsoby. Další informace najdete v tématu [restart místní brány dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
 
 <a name="gateway-cloud-service"></a>
 
-## <a name="how-the-gateway-works"></a>How the gateway works
+## <a name="how-the-gateway-works"></a>Jak brána funguje
 
-Users in your organization can access on-premises data for which they already have authorized access. However, before these users can connect to your on-premises data source, you need to install and set up an on-premises data gateway. Usually, an admin is the person who installs and sets up a gateway. These actions might require Server Administrator permissions or special knowledge about your on-premises servers.
+Uživatelé ve vaší organizaci mají přístup k místním datům, ke kterým už mají autorizovaný přístup. Než se však tito uživatelé budou moci připojit k místnímu zdroji dat, je třeba nainstalovat a nastavit místní bránu dat. Správce je obvykle osoba, která instaluje a nastavuje bránu. Tyto akce můžou vyžadovat oprávnění správce serveru nebo speciální znalosti o vašich místních serverech.
 
-The gateway facilitates quick and secure communication behind-the-scenes-communication. This communication flows between a user in the cloud, the gateway cloud service, and your on-premises data source. The gateway cloud service encrypts and stores your data source credentials and gateway details. The service also routes queries and their results between the user, the gateway, and your on-premises data source.
+Brána usnadňuje rychlou a zabezpečenou komunikaci při komunikaci. Tato komunikace komunikuje mezi uživatelem v cloudu, cloudovou službou brány a vaším místním zdrojem dat. Cloudová služba brány šifruje a ukládá vaše přihlašovací údaje ke zdroji dat a podrobnosti o bráně. Služba také směruje dotazy a jejich výsledky mezi uživatelem, bránou a vaším místním zdrojem dat.
 
-The gateway works with firewalls and uses only outbound connections. All traffic originates as secure outbound traffic from the gateway agent. The gateway relays data from on-premises sources on encrypted channels through [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). This service bus creates a channel between the gateway and the calling service, but doesn't store any data. All data that travels through the gateway is encrypted.
+Brána pracuje s branami firewall a používá jenom odchozí připojení. Veškerý provoz vychází z agenta brány na zabezpečený odchozí provoz. Brána přenáší data z místních zdrojů do šifrovaných kanálů prostřednictvím [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). Tato služba Service Bus vytváří kanál mezi bránou a volající službou, ale neukládá žádná data. Všechna data, která jsou přenášena přes bránu, jsou zašifrovaná.
 
-![Architecture for on-premises data gateway](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
+![Architektura pro místní bránu dat](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
 > [!NOTE]
-> Depending on the cloud service, you might need to set up a data source for the gateway.
+> V závislosti na cloudové službě možná budete muset pro bránu nastavit zdroj dat.
 
-These steps describe what happens when you interact with an element that's connected to an on-premises data source:
+Tyto kroky popisují, co se stane, když budete pracovat s prvkem, který je připojený k místnímu zdroji dat:
 
-1. The cloud service creates a query, along with the encrypted credentials for the data source. The service then sends the query and credentials to the gateway queue for processing.
+1. Cloudová služba vytvoří dotaz společně se zašifrovanými přihlašovacími údaji pro zdroj dat. Služba pak odešle dotaz a přihlašovací údaje do fronty brány ke zpracování.
 
-1. The gateway cloud service analyzes the query and pushes the request to Azure Service Bus.
+1. Cloudová služba brány dotaz analyzuje a odešle požadavek do Azure Service Bus.
 
-1. Azure Service Bus sends the pending requests to the gateway.
+1. Azure Service Bus odesílá nedokončené žádosti do brány.
 
-1. The gateway gets the query, decrypts the credentials, and connects to one or more data sources with those credentials.
+1. Brána získá dotaz, dešifruje přihlašovací údaje a připojí se k jednomu nebo více zdrojům dat pomocí těchto přihlašovacích údajů.
 
-1. The gateway sends the query to the data source for running.
+1. Brána odešle dotaz do zdroje dat pro spuštění.
 
-1. The results are sent from the data source back to the gateway, and then to the gateway cloud service. The gateway cloud service then uses the results.
+1. Výsledky se odešlou ze zdroje dat zpátky do brány a potom do cloudové služby brány. Cloudová služba brány pak výsledky použije.
 
-### <a name="authentication-to-on-premises-data-sources"></a>Authentication to on-premises data sources
+### <a name="authentication-to-on-premises-data-sources"></a>Ověřování pro místní zdroje dat
 
-A stored credential is used to connect from the gateway to on-premises data sources. Regardless of the user, the gateway uses the stored credential to connect. There might be authentication exceptions for specific services, such as DirectQuery and LiveConnect for Analysis Services in Power BI.
+Uložené přihlašovací údaje se používají pro připojení z brány k místním zdrojům dat. Bez ohledu na uživatele brána použije k připojení uložené přihlašovací údaje. Existují výjimky ověřování pro konkrétní služby, jako je například DirectQuery a LiveConnect pro Analysis Services v Power BI.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
-Microsoft cloud services use [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) to authenticate users. An Azure AD tenant contains usernames and security groups. Typically, the email address that you use for sign-in is the same as the User Principal Name (UPN) for your account.
+Cloudové služby Microsoftu používají k ověřování uživatelů [službu Azure AD](../active-directory/fundamentals/active-directory-whatis.md) . Tenant Azure AD obsahuje uživatelská jména a skupiny zabezpečení. E-mailová adresa, kterou používáte pro přihlášení, je obvykle stejná jako hlavní název uživatele (UPN) pro váš účet.
 
-### <a name="what-is-my-upn"></a>What is my UPN?
+### <a name="what-is-my-upn"></a>Co je můj hlavní název uživatele?
 
-If you're not a domain admin, you might not know your UPN. To find the UPN for your account, run the `whoami /upn` command from your workstation. Although the result looks like an email address, the result is the UPN for your local domain account.
+Pokud nejste správcem domény, možná neznáte hlavní název uživatele (UPN). Pokud chcete najít hlavní název uživatele pro svůj účet, spusťte z pracovní stanice příkaz `whoami /upn`. I když výsledný výsledek vypadá jako e-mailová adresa, je výsledkem hlavní název uživatele (UPN) pro místní doménový účet.
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronize an on-premises Active Directory with Azure AD
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronizace místní služby Active Directory s Azure AD
 
-The UPN for your on-premises Active Directory accounts and Azure AD accounts must be the same. So, make sure that each on-premises Active Directory account matches your Azure AD account. The cloud services know only about accounts within Azure AD. So, you don't need to add an account to your on-premises Active Directory. If the account doesn't exist in Azure AD, you can't use that account.
+Hlavní název uživatele pro místní účty služby Active Directory a účty Azure AD musí být stejné. Ujistěte se, že každý místní účet Active Directory odpovídá vašemu účtu služby Azure AD. Cloudové služby znají jenom účty v rámci služby Azure AD. Nemusíte tedy přidávat účet do místní služby Active Directory. Pokud účet ve službě Azure AD neexistuje, nemůžete tento účet použít.
 
-Here are ways that you can match your on-premises Active Directory accounts with Azure AD.
+Tady jsou způsoby, jak můžete porovnat místní účty Active Directory se službou Azure AD.
 
-* Add accounts manually to Azure AD.
+* Přidejte účty do Azure AD ručně.
 
-  Create an account in the Azure portal or in the Microsoft 365 admin center. Make sure that the account name matches the UPN for the on-premises Active Directory account.
+  Vytvořte účet v Azure Portal nebo v centru pro správu Microsoft 365. Ujistěte se, že název účtu odpovídá hlavnímu názvu uživatele (UPN) místního účtu služby Active Directory.
 
-* Synchronize local accounts to your Azure AD tenant by using the Azure Active Directory Connect tool.
+* Synchronizujte místní účty s vaším klientem služby Azure AD pomocí nástroje Azure Active Directory Connect.
 
-  The Azure AD Connect tool provides options for directory synchronization and authentication setup. These options include password hash sync, pass-through authentication, and federation. If you're not a tenant admin or a local domain admin, contact your IT admin to get Azure AD Connect set up. Azure AD Connect ensures that your Azure AD UPN matches your local Active Directory UPN. This matching helps if you're using Analysis Services live connections with Power BI or single sign-on (SSO) capabilities.
+  Nástroj Azure AD Connect poskytuje možnosti pro synchronizaci adresářů a nastavení ověřování. Mezi tyto možnosti patří synchronizace hodnot hash hesel, předávací ověřování a federace. Pokud nejste správcem tenanta nebo místní správce domény, požádejte správce IT, aby vám nastavil Azure AD Connect. Azure AD Connect zajistí, že hlavní název uživatele služby Azure AD odpovídá vašemu místnímu hlavnímu názvu uživatele služby Active Directory. Tato shoda pomáhá při použití Analysis Services živých připojení s možnostmi Power BI nebo jednotného přihlašování (SSO).
 
   > [!NOTE]
-  > Synchronizing accounts with the Azure AD Connect tool creates new accounts in your Azure AD tenant.
+  > Synchronizace účtů pomocí nástroje Azure AD Connect vytvoří nové účty v tenantovi Azure AD.
 
 <a name="faq"></a>
 
-## <a name="faq-and-troubleshooting"></a>FAQ and troubleshooting
+## <a name="faq-and-troubleshooting"></a>Nejčastější dotazy a řešení potíží
 
-For more information, see these topics:
+Další informace najdete v těchto tématech:
 
 * [Nejčastější dotazy k místní bráně dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Troubleshoot the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Monitor and optimize gateway performance](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Řešení potíží s místní bránou dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Monitorování a optimalizace výkonu brány](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Connect to on-premises data from logic apps](../logic-apps/logic-apps-gateway-connection.md)
-* [Enterprise integration features](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* [Připojení k místním datům z Logic Apps](../logic-apps/logic-apps-gateway-connection.md)
+* [Funkce Enterprise Integration](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Konektory pro Azure Logic Apps](../connectors/apis-list.md)

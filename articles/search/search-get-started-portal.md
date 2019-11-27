@@ -1,7 +1,7 @@
 ---
-title: Create a search index in the Azure portal
+title: Vytvoření indexu vyhledávání v Azure Portal
 titleSuffix: Azure Cognitive Search
-description: In this portal quickstart, learn how to use the Import Data wizard to create, load, and query your first search index in Azure Cognitive Search.
+description: V tomto rychlém startu na portálu se dozvíte, jak pomocí Průvodce importem dat vytvořit, načíst a zadat dotaz na první index vyhledávání v Azure Kognitivní hledání.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -15,7 +15,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74407000"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Quickstart: Create an Azure Cognitive Search index in the Azure portal
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](search-get-started-portal.md)
 > * [C#](search-get-started-dotnet.md)
@@ -25,106 +25,106 @@ ms.locfileid: "74407000"
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-Use the portal's **Import data** wizard and **Search explorer** tools to quickly ramp up on concepts, and write interesting queries against an index within minutes.
+Pomocí průvodce **importem dat** z portálu a nástrojů **Průzkumník služby Search** můžete rychle rozpracovat s koncepty a psát zajímavé dotazy na index během několika minut.
 
-If the tools are too limiting, you can consider a [code-based introduction to programming Azure Cognitive Search in .NET](search-howto-dotnet-sdk.md) or use [Postman for making REST API calls](search-get-started-postman.md). 
+Pokud jsou nástroje příliš omezené, můžete zvážit [Úvod do programování Azure kognitivní hledání v rozhraní .NET](search-howto-dotnet-sdk.md) nebo použít [metodu post pro REST API volání](search-get-started-postman.md). 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-[Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart. 
+[Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
 ### <a name="check-for-space"></a>Kontrola místa
 
 Mnoho zákazníků začíná s bezplatnou službou. Tato verze je omezená na tři indexy, tři zdroje dat a tři indexery. Než začnete, ujistěte se, že máte místo pro další položky. V tomto kurzu se vytváří od každého objektu jeden.
 
-Sections on the service dashboard show how many indexes, indexers, and data sources you already have. 
+Oddíly na řídicím panelu služby ukazují, kolik indexů, indexerů a datových zdrojů už máte. 
 
-![Lists of indexes, indexers, and datasources](media/search-get-started-portal/tiles-indexers-datasources.png)
+![Seznam indexů, indexerů a zdrojů dat](media/search-get-started-portal/tiles-indexers-datasources.png)
 
 ## <a name="create-index"></a>Vytvoření indexu a načtení dat
 
 Vyhledávací dotazy provádějí iterace [*indexu*](search-what-is-an-index.md), který obsahuje data s možností vyhledávání, metadata a další konstrukce, které optimalizují určité chování vyhledávání.
 
-For this tutorial, we use a built-in sample dataset that can be crawled using an [*indexer*](search-indexer-overview.md) via the [**Import data** wizard](search-import-data-portal.md). Indexer je prohledávací modul pro určitý zdroj, který dokáže číst metadata a obsah z podporovaných zdrojů dat Azure. Normally, indexers are used programmatically, but in the portal, you can access them through the **Import data** wizard. 
+Pro tento kurz používáme vestavěnou ukázkovou datovou sadu, kterou lze procházet pomocí [*indexeru*](search-indexer-overview.md) prostřednictvím [Průvodce **importem dat** ](search-import-data-portal.md). Indexer je prohledávací modul pro určitý zdroj, který dokáže číst metadata a obsah z podporovaných zdrojů dat Azure. Obvykle se indexer používá programově, ale na portálu můžete k nim přistupovat pomocí průvodce **importem dat** . 
 
-### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Step 1 - Start the Import data wizard and create a data source
+### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Krok 1 – spuštění Průvodce importem dat a vytvoření zdroje dat
 
-1. On the Azure Cognitive Search service dashboard, click **Import data** on the command bar to create and populate a search index.
+1. Na řídicím panelu služby Azure Kognitivní hledání klikněte na panelu příkazů na **importovat data** a vytvořte a naplňte index vyhledávání.
 
    ![Příkaz pro import dat](media/search-get-started-portal/import-data-cmd.png)
 
-2. In the wizard, click **Connect to your data** > **Samples** > **hotels-sample**. This data source is built-in. If you were creating your own data source, you would need to specify a name, type, and connection information. Po vytvoření se z něj stane „existující zdroj dat“, který je možné využít v dalších operacích importu.
+2. V průvodci klikněte na **připojit k datům** > **ukázky** > **hotely-Sample**. Tento zdroj dat je integrovaný. Pokud jste vytvořili vlastní zdroj dat, budete muset zadat název, typ a informace o připojení. Po vytvoření se z něj stane „existující zdroj dat“, který je možné využít v dalších operacích importu.
 
    ![Výběr ukázkové datové sady](media/search-get-started-portal/import-datasource-sample.png)
 
-3. Continue to the next page.
+3. Pokračujte na další stránku.
 
-### <a name="step-2---skip-the-enrich-content-page"></a>Step 2 - Skip the "Enrich content" page
+### <a name="step-2---skip-the-enrich-content-page"></a>Krok 2 – přeskočení stránky "obohacení obsahu"
 
-The wizard supports the creation of an [AI enrichment pipeline](cognitive-search-concept-intro.md) for incorporating the Cognitive Services AI algorithms into indexing. 
+Průvodce podporuje vytvoření [kanálu rozšíření AI](cognitive-search-concept-intro.md) pro zahrnutí algoritmů Cognitive Services AI do indexování. 
 
-We'll skip this step for now, and move directly on to **Customize target index**.
+Tento krok prozatím přeskočíme a přejdete přímo na, abyste mohli **přizpůsobit cílový index**.
 
    ![Vynechání kroku kognitivních dovedností](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
-> You can step through an AI-indexing example in a [quickstart](cognitive-search-quickstart-blob.md) or [tutorial](cognitive-search-tutorial-blob.md).
+> Můžete si projít příkladem indexování AI v [rychlém](cognitive-search-quickstart-blob.md) startu nebo [kurzu](cognitive-search-tutorial-blob.md).
 
-### <a name="step-3---configure-index"></a>Step 3 - Configure index
+### <a name="step-3---configure-index"></a>Krok 3 – konfigurace indexu
 
-Typically, index creation is a code-based exercise, completed prior to loading data. However, as this tutorial indicates, the wizard can generate a basic index for any data source it can crawl. Index vyžaduje minimálně název a kolekci polí s jedním polem označeným jako klíč dokumentu, aby bylo možné dokument jednoznačně identifikovat. Additionally, you can specify language analyzers or suggesters if you want autocomplete or suggested queries.
+Vytvoření indexu je obvykle uplatněno na základě kódu, dokončeno před načtením dat. Jak však tento kurz indikuje, průvodce může vygenerovat základní index pro libovolný zdroj dat, který může procházet. Index vyžaduje minimálně název a kolekci polí s jedním polem označeným jako klíč dokumentu, aby bylo možné dokument jednoznačně identifikovat. Kromě toho můžete určit analyzátory jazyka nebo moduly pro návrhy, pokud požadujete automatické dokončování nebo navrhované dotazy.
 
 Pole mají datové typy a atributy. Zaškrtávací políčka v horní části jsou *atributy indexu*, které určují způsob použití pole.
 
-* **Retrievable** (Zobrazitelné) znamená, že se zobrazí v seznamu výsledků vyhledávání. You can mark individual fields as off limits for search results by clearing this checkbox, for example for fields used only in filter expressions.
-* **Key** is the unique document identifier. It's always a string, and it is required.
-* **Filterable**, **Sortable**, and **Facetable** determine whether fields are used in a filter, sort, or faceted navigation structure.
+* **Retrievable** (Zobrazitelné) znamená, že se zobrazí v seznamu výsledků vyhledávání. Můžete označit jednotlivá pole jako vypnutá omezení pro výsledky hledání zrušením zaškrtnutí tohoto políčka, například u polí používaných pouze ve výrazech filtru.
+* **Klíč** je jedinečný identifikátor dokumentu. Vždycky se jedná o řetězec, který je povinný.
+* **Filtrovatelné**, seřaditelné a **plošky** **určují, zda**jsou pole používána ve filtru, řazení nebo v navigační struktuře s omezujícími vlastnostmi.
 * **Searchable** (Prohledávatelné) znamená, že je pole součástí fulltextové vyhledávání. Řetězce je možné prohledávat. Číselná pole a logická pole jsou často označena jako neprohledávatelné.
 
-Storage requirements do not vary as a result of your selection. For example, if you set the **Retrievable** attribute on multiple fields, storage requirements do not go up.
+Požadavky na úložiště se neliší v důsledku vašeho výběru. Například pokud nastavíte **atribut získat** u více polí, požadavky na úložiště se nevrátí.
 
-Ve výchozím nastavení průvodce vyhledá ve zdroji dat jedinečné identifikátory jako základ pro klíčové pole. *Strings* are attributed as **Retrievable** and **Searchable**. *Integers* are attributed as **Retrievable**, **Filterable**, **Sortable**, and **Facetable**.
+Ve výchozím nastavení průvodce vyhledá ve zdroji dat jedinečné identifikátory jako základ pro klíčové pole. *Řetězce* jsou atributy s možností **získat a** **prohledávatelné**. *Celá čísla jsou typu* **s možnou**hodnotou, **filtrovatelné**, **seřaditelné**a **plošky**.
 
 1. Přijměte výchozí hodnoty. 
 
-   If you rerun the wizard a second time using an existing hotels data source, the index won't be configured with default attributes. You'll have to manually select attributes on future imports. 
+   Pokud průvodce znovu spustíte podruhé pomocí stávajícího zdroje dat hotelů, index nebude nakonfigurovaný s výchozími atributy. V budoucích importech bude nutné vybrat atributy ručně. 
 
-   ![Generated hotels index](media/search-get-started-portal/hotelsindex.png)
+   ![Index vygenerovaných hotelů](media/search-get-started-portal/hotelsindex.png)
 
-2. Continue to the next page.
+2. Pokračujte na další stránku.
 
 
-### <a name="step-4---configure-indexer"></a>Step 4 - Configure indexer
+### <a name="step-4---configure-indexer"></a>Krok 4 – Konfigurace indexeru
 
 Stále v **Průvodci importem dat** klikněte na **Indexer** > **Název** a zadejte název indexeru.
 
-Tento objekt definuje spustitelný proces. You could put it on recurring schedule, but for now use the default option to run the indexer once, immediately.
+Tento objekt definuje spustitelný proces. Můžete ji umístit do opakujícího se plánu, ale teď použijte výchozí možnost ke spuštění indexeru hned hned.
 
-Click **Submit** to create and simultaneously run the indexer.
+Kliknutím na **Odeslat** vytvořte a souběžně spusťte indexer.
 
-  ![hotels indexer](media/search-get-started-portal/hotels-indexer.png)
+  ![Indexer hotelů](media/search-get-started-portal/hotels-indexer.png)
 
-## <a name="monitor-progress"></a>Monitor progress
+## <a name="monitor-progress"></a>Průběh monitorování
 
-The wizard should take you to the Indexers list where you can monitor progress. For self-navigation, go to the Overview page and click **Indexers**.
+Průvodce by vás měl přenést do seznamu indexerů, kde můžete monitorovat průběh. V případě samoobslužné navigace přejděte na stránku Přehled a klikněte na **indexery**.
 
-It can take a few minutes for the portal to update the page, but you should see the newly created indexer in the list, with status indicating "in progress" or success, along with the number of documents indexed.
+Aby portál mohl aktualizovat stránku, může trvat několik minut, ale v seznamu byste měli vidět nově vytvořený indexer se stavem "probíhá" nebo "úspěch" spolu s počtem indexovaných dokumentů.
 
    ![Zpráva indexeru o průběhu](media/search-get-started-portal/indexers-inprogress.png)
 
 ## <a name="view-the-index"></a>Zobrazení indexu
 
-The main service page provides links to the resources created in your Azure Cognitive Search service.  To view the index you just created, click **Indexes** from the list of links. 
+Hlavní stránka služby poskytuje odkazy na prostředky vytvořené ve službě Azure Kognitivní hledání.  Pokud chcete zobrazit právě vytvořený index, klikněte na **indexy** ze seznamu odkazů. 
 
-Wait for the portal page to refresh. After a few minutes, you should see the index with a document count and storage size.
+Počkejte, až se stránka portálu aktualizuje. Po několika minutách by se měl zobrazit index s počtem dokumentů a velikostí úložiště.
 
-   ![Indexes list on the service dashboard](media/search-get-started-portal/indexes-list.png)
+   ![Seznam indexů na řídicím panelu služby](media/search-get-started-portal/indexes-list.png)
 
-From this list, you can click on the *hotels-sample* index that you just created, view the index schema. and optionally add new fields. 
+V tomto seznamu můžete kliknout na index s *ukázkami hotelů* , který jste právě vytvořili, a zobrazit schéma indexu. a volitelně můžete přidat nová pole. 
 
-The **Fields** tab shows the index schema. Scroll to the bottom of the list to enter a new field. In most cases, you cannot change existing fields. Existing fields have a physical representation in Azure Cognitive Search and are thus non-modifiable, not even in code. To fundamentally change an existing field, create a new index, dropping the original.
+Karta **pole** zobrazuje schéma indexu. Posuňte se do dolní části seznamu a zadejte nové pole. Ve většině případů nelze změnit existující pole. Existující pole mají v Azure Kognitivní hledání fyzickou reprezentaci, takže nejsou ani v kódu. Chcete-li v podstatě změnit existující pole, vytvořte nový index, který vyřadí původní.
 
    ![Ukázková definice indexu](media/search-get-started-portal/sample-index-def.png)
 
@@ -132,49 +132,49 @@ Kdykoli lze přidat další konstrukce, jako jsou bodovací profily a možnosti 
 
 Vyhraďte si chvilku na prostudování možností definice indexu, abyste dobře chápali, co všechno můžete při návrhu indexu upravovat, a co naopak ne. Možnosti zobrazené šedě naznačují, že se určitá hodnota nedá upravit nebo odstranit. 
 
-## <a name="query-index"></a> Query using Search explorer
+## <a name="query-index"></a>Dotaz pomocí Průzkumníka vyhledávání
 
 Teď už byste měli mít vyhledávací index, který je připravený na dotazování pomocí integrované stránky dotazů [**Průzkumník služby Hledání**](search-explorer.md). Ta obsahuje vyhledávací pole, ve kterém si můžete otestovat libovolné řetězce dotazů.
 
-**Search explorer** is only equipped to handle [REST API requests](https://docs.microsoft.com/rest/api/searchservice/search-documents), but it accepts syntax for both [simple query syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) and [full Lucene query parser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), plus all the search parameters available in [Search Document REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) operations.
+**Průzkumník služby Search** je vybaven pouze pro [zpracování požadavků REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents), ale přijímá syntaxi pro [jednoduchou syntaxi dotazu](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) i [úplný analyzátor dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)a navíc všechny parametry hledání dostupné ve [vyhledávacím dokumentu REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) Operations.
 
 > [!TIP]
-> The following steps are demonstrated at 6m08s into the [Azure Cognitive Search Overview video](https://channel9.msdn.com/Events/Connect/2016/138).
+> Následující kroky jsou popsané v 6m08s na video s [přehledem Azure kognitivní hledání](https://channel9.msdn.com/Events/Connect/2016/138).
 >
 
 1. Klikněte na **Průzkumník služby Search** na panelu příkazů.
 
    ![Příkaz průzkumníka služby Search](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. From the **Index** dropdown, choose  *hotels-sample-index*. Click the **API Version** dropdown, to see which REST APIs are available. For the queries below, use the generally available version (2019-05-06).
+2. V rozevíracím seznamu **index** vyberte *hotely-Sample-index*. Klikněte na rozevírací seznam **verze rozhraní API** , abyste viděli, která rozhraní REST API jsou k dispozici. Pro následující dotazy použijte všeobecně dostupnou verzi (2019-05-06).
 
    ![Příkazy rozhraní API a index](media/search-get-started-portal/search-explorer-changeindex.png)
 
-3. In the search bar, paste in the query strings below and click **Search**.
+3. Do panelu hledání vložte následující řetězce dotazu a klikněte na tlačítko **Hledat**.
 
-   ![Query string and search button](media/search-get-started-portal/search-explorer-query-string-example.png)
+   ![Řetězec dotazu a tlačítko Hledat](media/search-get-started-portal/search-explorer-query-string-example.png)
 
-## <a name="example-queries"></a>Example queries
+## <a name="example-queries"></a>Příklady dotazů
 
-You can enter terms and phrases, similar to what you might do in a Bing or Google search, or fully-specified query expressions. Results are returned as verbose JSON documents.
+Můžete zadat podmínky a fráze, podobně jako na to, co můžete dělat v Bingu nebo Google Search, nebo plně určené výrazy dotazu. Výsledky se vrátí jako podrobné dokumenty JSON.
 
 ### <a name="simple-query-with-top-n-results"></a>Jednoduchý dotaz s horními N výsledky
 
-#### <a name="example-string-query-searchspa"></a>Example (string query): `search=spa`
+#### <a name="example-string-query-searchspa"></a>Příklad (dotaz na řetězec): `search=spa`
 
-* The **search** parameter is used to input a keyword search for full text search, in this case, returning hotel data for those containing *spa* in any searchable field in the document.
+* Parametr **Search** se používá k zadání klíčového slova pro fulltextové vyhledávání. v tomto případě vrátí data hotelu pro ty, které obsahují *Spa* , do libovolného vyhledávacího pole v dokumentu.
 
-* **Průzkumník služby Search** vrátí výsledky ve formátu JSON, který je podrobný a těžko čitelný, pokud mají dokumenty kompaktní strukturu. This is intentional; visibility into the entire document is important for development purposes, especially during testing. Pokud chcete uživatelské prostředí zlepšit, je potřeba napsat kód, který [zpracuje výsledky hledání](search-pagination-page-layout.md) a vybere z nich důležité elementy.
+* **Průzkumník služby Search** vrátí výsledky ve formátu JSON, který je podrobný a těžko čitelný, pokud mají dokumenty kompaktní strukturu. To je úmyslné; viditelnost celého dokumentu je důležitá pro účely vývoje, zejména při testování. Pokud chcete uživatelské prostředí zlepšit, je potřeba napsat kód, který [zpracuje výsledky hledání](search-pagination-page-layout.md) a vybere z nich důležité elementy.
 
-* Dokumenty se skládají ze všech polí, která mají v indexu označení Zobrazitelné. To view index attributes in the portal, click *hotels-sample* in the **Indexes** list.
+* Dokumenty se skládají ze všech polí, která mají v indexu označení Zobrazitelné. Chcete-li zobrazit atributy indexu na portálu, klikněte na možnost *hotely – ukázka* v seznamu **indexy** .
 
-#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Example (parameterized query): `search=spa&$count=true&$top=10`
+#### <a name="example-parameterized-query-searchspacounttruetop10"></a>Příklad (parametrizovaný dotaz): `search=spa&$count=true&$top=10`
 
 * Symbol **&** slouží k připojení parametrů vyhledávání, které lze zadat v libovolném pořadí.
 
-* The **$count=true** parameter returns the total count of all documents returned. Tato hodnota se zobrazí v horní části výsledků hledání. Monitorováním změn hlášených parametrem **$count=true** můžete ověřovat filtrovací dotazy. Menší počet výsledků naznačuje, že filtr funguje.
+* Parametr **$Count = true** vrátí celkový počet všech vrácených dokumentů. Tato hodnota se zobrazí v horní části výsledků hledání. Monitorováním změn hlášených parametrem **$count=true** můžete ověřovat filtrovací dotazy. Menší počet výsledků naznačuje, že filtr funguje.
 
-* The **$top=10** returns the highest ranked 10 documents out of the total. By default, Azure Cognitive Search returns the first 50 best matches. Pomocí parametru **$top** můžete tento počet navýšit nebo snížit.
+* **$Top = 10** vrátí nejvyšší seřazený 10 dokumentů z celkového počtu. Ve výchozím nastavení Azure Kognitivní hledání vrátí prvních 50 nejlepších shod. Pomocí parametru **$top** můžete tento počet navýšit nebo snížit.
 
 ### <a name="filter-query"></a>Filtrování dotazu
 
@@ -182,7 +182,7 @@ Filtry se do požadavků hledání zahrnou po připojení parametru **$filter**.
 
 #### <a name="example-filtered-searchbeachfilterrating-gt-4"></a>Příklad (filtrovaný): `search=beach&$filter=Rating gt 4`
 
-* Parametr **$filter** vrací výsledky odpovídající kritériím, která jste zadali. In this case, ratings greater than 4.
+* Parametr **$filter** vrací výsledky odpovídající kritériím, která jste zadali. V tomto případě hodnocení větší než 4.
 
 * Syntaxe parametru Filter je založená na konstruktech jazyka OData. Další informace najdete v tématu věnovaném [syntaxi jazyka OData pro filtry](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
@@ -192,18 +192,18 @@ Součástí požadavků hledání jsou filtry omezující vlastnost. Pomocí par
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Příklad (s omezujícími vlastnostmi a zmenšením rozsahu): `search=*&facet=Category&$top=2`
 
-* Parametr **search=** * znamená prázdné vyhledávání. Prázdné vyhledávání prohledává všechno. Jedním z důvodů odeslání prázdného dotazu je použití filtru nebo omezující vlastnosti na kompletní sadu dokumentů. For example, you want a faceting navigation structure to consist of all hotels in the index.
-* Parametr **facet** vrací navigační strukturu, kterou můžete předat ovládacímu prvku uživatelského rozhraní. Vrací kategorie a počet. In this case, categories are based on a field conveniently called *Category*. There is no aggregation in Azure Cognitive Search, but you can approximate aggregation via `facet`, which gives a count of documents in each category.
+* Parametr **search=** * znamená prázdné vyhledávání. Prázdné vyhledávání prohledává všechno. Jedním z důvodů odeslání prázdného dotazu je použití filtru nebo omezující vlastnosti na kompletní sadu dokumentů. Například chcete, aby se navigační struktura omezující vlastnosti sestávat ze všech hotelů v indexu.
+* Parametr **facet** vrací navigační strukturu, kterou můžete předat ovládacímu prvku uživatelského rozhraní. Vrací kategorie a počet. V takovém případě jsou kategorie založené na poli, které se pohodlně označuje jako *kategorie*. V Azure Kognitivní hledání neexistuje žádná agregace, ale je možné přibližnou agregaci pomocí `facet`, která poskytuje počet dokumentů v každé kategorii.
 
 * Parametr **$top=2** vrací dva dokumenty a ilustruje, že parametr `top` můžete použít ke snížení i navýšení počtu výsledků.
 
-#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Example (facet on numeric values): `search=spa&facet=Rating`
+#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Příklad (omezující vlastnost na číselné hodnoty): `search=spa&facet=Rating`
 
-* This query is facet for rating, on a text search for *spa*. The term *Rating* can be specified as a facet because the field is marked as retrievable, filterable, and facetable in the index, and the values it contains (numeric, 1 through 5), are suitable for categorizing listings into groups.
+* Tento dotaz je omezující vlastnost pro hodnocení na základě textu, který slouží k vyhledávání *hesla*. Termín *hodnocení* lze zadat jako omezující vlastnost, protože pole je označeno jakoelné, filtrovatelné a plošky v indexu a hodnoty, které obsahuje (číslo, 1 až 5), jsou vhodné pro kategorizaci výpisů do skupin.
 
 * Kategorizovat je možné pouze filtrovatelná pole. Ve výsledcích je možné vrátit pouze zobrazitelná pole.
 
-* The *Rating* field is double-precision floating point and the grouping will be by precise value. For more information on grouping by interval (for instance, "3 star ratings," "4 star ratings," etc.), see [How to implement faceted navigation in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
+* Pole *hodnocení* je plovoucí desetinná čárka dvojitá přesnost a seskupení bude podle přesné hodnoty. Další informace o seskupení podle intervalu (například hodnocení 3 hvězdičky, hodnocení 4 hvězdičkami atd.) najdete v tématu [implementace omezujících možností navigace v Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
 
 
 ### <a name="highlight-query"></a> Zvýraznění výsledků hledání
@@ -212,17 +212,17 @@ Zvýrazňování shod označuje formátování textu odpovídajícího klíčov�
 
 #### <a name="example-highlighter-searchbeachhighlightdescription"></a>Příklad (zvýraznění): `search=beach&highlight=Description`
 
-* In this example, the formatted word *beach* is easier to spot in the description field.
+* V tomto příkladu je ve formátovaných *slovech* snazší místo v poli Popis.
 
 #### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>Příklad (lingvistická analýza): `search=beaches&highlight=Description`
 
-* Full text search recognizes basic variations in word forms. In this case, search results contain highlighted text for "beach", for hotels that have that word in their searchable fields, in response to a keyword search on "beaches". Ve výsledcích se díky lingvistické analýze mohou zobrazit různé tvary téhož slova. 
+* Fulltextové vyhledávání rozpozná základní variace ve wordových formulářích. V takovém případě výsledky hledání obsahují zvýrazněný text "pláž", v případě hotelů, který má toto slovo v jejich prohledávatelné pole, v reakci na klíčové slovo "pláže". Ve výsledcích se díky lingvistické analýze mohou zobrazit různé tvary téhož slova. 
 
-* Azure Cognitive Search supports 56 analyzers from both Lucene and Microsoft. The default used by Azure Cognitive Search is the standard Lucene analyzer.
+* Azure Kognitivní hledání podporuje analyzátory 56 od Lucene i od Microsoftu. Výchozím nastavením používaným službou Azure Kognitivní hledání je standardní analyzátor Lucene.
 
 ### <a name="fuzzy-search"></a> Zkouška vyhledávání přibližných shod
 
-By default, misspelled query terms, like *seatle* for "Seattle", fail to return matches in typical search. Následující příklad nevrátí žádné výsledky.
+Ve výchozím nastavení nesprávně napsané výrazy dotazu, jako je například *Seatle* pro "Seattle", nevrátí shody v typickém hledání. Následující příklad nevrátí žádné výsledky.
 
 #### <a name="example-misspelled-term-unhandled-searchseatle"></a>Příklad (chybně zadaný termín bez zpracování): `search=seatle`
 
@@ -230,13 +230,13 @@ Ke zpracování chybně napsaných slov můžete využít vyhledávání přibli
 
 #### <a name="example-misspelled-term-handled-searchseatlequerytypefull"></a>Příklad (chybně zadaný termín se zpracováním): `search=seatle~&queryType=full`
 
-This example now returns documents that include matches on "Seattle".
+Tento příklad nyní vrátí dokumenty, které obsahují shodné položky "Praha".
 
 Pokud parametr **queryType** není zadaný, použije se výchozí jednoduchý analyzátor dotazů. Jednoduchý analyzátor dotazů je rychlejší, ale pokud vyžadujete vyhledávání přibližných shod, regulární výrazy, vyhledávání blízkých výrazů nebo jiné pokročilé typy dotazů, budete potřebovat celou syntaxi.
 
-Vyhledávání přibližných shod a vyhledávání pomocí zástupných znaků mají vliv na výstup hledání. U těchto formátů dotazů se neprovádí lingvistická analýza. Before using fuzzy and wildcard search, review [How full text search works in Azure Cognitive Search](search-lucene-query-architecture.md#stage-2-lexical-analysis) and look for the section about exceptions to lexical analysis.
+Vyhledávání přibližných shod a vyhledávání pomocí zástupných znaků mají vliv na výstup hledání. U těchto formátů dotazů se neprovádí lingvistická analýza. Než začnete používat hledání přibližné a zástupných znaků, přečtěte si, [Jak funguje fulltextové vyhledávání v Azure kognitivní hledání](search-lucene-query-architecture.md#stage-2-lexical-analysis) a vyhledejte část o výjimkách lexikálních analýz.
 
-For more information about query scenarios enabled by the full query parser, see [Lucene query syntax in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
+Další informace o scénářích dotazů povolených úplným analyzátorem dotazů najdete [v tématu Syntaxe dotazů Lucene v Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
 ### <a name="geo-search"></a>Vyzkoušení geoprostorového hledání
 
@@ -246,29 +246,29 @@ Geoprostorové hledání je podporované prostřednictvím [datového typu edm.G
 
 Tento vzorový dotaz vyfiltruje všechny výsledky pro poziční data, kde jsou výsledky od daného bodu (zadaného pomocí zeměpisné šířky a délky) vzdálené méně než 5 kilometrů. Přidáním parametru **$count** můžete zobrazit, kolik výsledků se vrátí, když změníte vzdálenost nebo souřadnice.
 
-Geoprostorové hledání je užitečné, pokud vaše vyhledávací aplikace obsahuje funkci typu „najít poblíž“ nebo používá navigaci podle map. Není to ale fulltextové vyhledávání. If you have user requirements for searching on a city or country/region by name, add fields containing city or country/region names, in addition to coordinates.
+Geoprostorové hledání je užitečné, pokud vaše vyhledávací aplikace obsahuje funkci typu „najít poblíž“ nebo používá navigaci podle map. Není to ale fulltextové vyhledávání. Pokud máte požadavky uživatelů na hledání města nebo země nebo oblasti podle jména, přidejte do souřadnic také pole obsahující názvy měst nebo země nebo oblasti.
 
 ## <a name="takeaways"></a>Shrnutí
 
-This tutorial provided a quick introduction to Azure Cognitive Search using the Azure portal.
+V tomto kurzu najdete rychlý Úvod k Azure Kognitivní hledání pomocí Azure Portal.
 
 Zjistili jste, jak vytvořit index vyhledávání pomocí průvodce pro **Import dat**. Dozvěděli jste se o [indexerech](search-indexer-overview.md) a také o základních pracovních postupech návrhu indexu, včetně [podporovaných úprav publikovaného indexu](https://docs.microsoft.com/rest/api/searchservice/update-index).
 
 V **průzkumníku služby Search** na webu Azure Portal jste se prostřednictvím praktických příkladů klíčových funkcí, jako jsou filtry, zvýrazňování shod, vyhledávání přibližných shod a geografické vyhledávání, seznámili se syntaxí dotazů.
 
-You also learned how to find indexes, indexers, and data sources in the portal. Pomocí portálu můžete v budoucnu u nových zdrojů dat s minimálním úsilím rychle zkontrolovat jejich definice nebo kolekce polí.
+Zjistili jste také, jak na portálu najít indexy, indexery a zdroje dat. Pomocí portálu můžete v budoucnu u nových zdrojů dat s minimálním úsilím rychle zkontrolovat jejich definice nebo kolekce polí.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
+Pokud pracujete ve vlastním předplatném, je vhodné na konci projektu zjistit, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které se na něm zbývá, můžou mít náklady na peníze. Prostředky můžete odstranit jednotlivě nebo odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
 
-You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
+Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
-If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit. 
+Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
 ## <a name="next-steps"></a>Další kroky
 
-While the portal is useful for initial exploration and small tasks, reviewing the APIs early on will help you understand the concepts and workflow on a deeper level:
+I když je portál užitečný pro počáteční a malé úlohy, podrobnější informace o rozhraních API vám pomůžou pochopit koncepty a pracovní postup na hlubší úrovni:
 
 > [!div class="nextstepaction"]
-> [Create an index using .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [Vytvoření indexu pomocí sady .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)

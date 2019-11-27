@@ -114,7 +114,7 @@ Blocklisting není trvalá podmínka. Po několika minutách se uzel odebere z s
 
 U všech těchto omezení jste si možná mysleli, že v systému jsou omezení domén selhání nejdůležitější. Aby bylo zajištěno, že nedošlo k porušení omezení domény selhání, je ochotno porušovat jiná omezení. "
 
-Omezení lze konfigurovat s různými úrovněmi priority. Toto jsou:
+Omezení lze konfigurovat s různými úrovněmi priority. Jsou to:
 
    - "pevná" (0)
    - "měkké" (1)

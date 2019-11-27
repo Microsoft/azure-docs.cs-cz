@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Host your domain and subdomain - Azure DNS'
-description: In this article, learn how to configure Azure DNS to host your DNS zones.
+title: 'Kurz: Hostování vaší domény a subdomény – Azure DNS'
+description: V tomto článku se dozvíte, jak nakonfigurovat Azure DNS pro hostování zón DNS.
 services: dns
 author: asudbring
 ms.service: dns
@@ -18,47 +18,47 @@ ms.locfileid: "74212194"
 
 Služba Azure DNS umožňuje hostování vaší domény DNS a správu vašich záznamů DNS. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
 
-Předpokládejme například, že od registrátora názvů domén zakoupíte doménu contoso.net a potom v Azure DNS vytvoříte zónu s názvem contoso.net. Jako vlastníkovi domény vám registrátor nabídne možnost konfigurovat pro vaši doménu záznamy názvového serveru (tj. záznamy NS). Doménový registrátor uloží tyto záznamy NS v nadřazené zóně, v tomto případě .net. Internet users around the world are then directed to your domain in your Azure DNS zone when they try to resolve DNS records in contoso.net.
+Předpokládejme například, že od registrátora názvů domén zakoupíte doménu contoso.net a potom v Azure DNS vytvoříte zónu s názvem contoso.net. Jako vlastníkovi domény vám registrátor nabídne možnost konfigurovat pro vaši doménu záznamy názvového serveru (tj. záznamy NS). Doménový registrátor uloží tyto záznamy NS v nadřazené zóně, v tomto případě .net. Uživatelé internetu po celém světě se pak přesměrují do vaší domény v Azure DNS zóně při pokusu o překlad záznamů DNS v contoso.net.
 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Create a DNS zone.
-> * Retrieve a list of name servers.
-> * Delegate the domain.
-> * Verify the delegation is working.
+> * Vytvořte zónu DNS.
+> * Načtěte seznam názvových serverů.
+> * Delegování domény
+> * Ověřte, zda delegování funguje.
 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-You must have a domain name available to test with that you can host in Azure DNS . Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
+Musíte mít k dispozici název domény pro testování, který můžete hostovat v Azure DNS. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 
-The example domain used for this tutorial is contoso.net, but use your own domain name.
+Ukázková doména použitá pro tento kurz je contoso.net, ale použijte vlastní název domény.
 
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 
-1. Go to the [Azure portal](https://portal.azure.com/) to create a DNS zone. Search for and select **DNS zones**.
+1. Pro vytvoření zóny DNS použijte [Azure Portal](https://portal.azure.com/) . Vyhledejte a vyberte **zóny DNS**.
 
    ![Zóna DNS](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
-1. Select **Create DNS zone**.
+1. Vyberte **vytvořit ZÓNU DNS**.
 1. Na stránce **Vytvořit zónu DNS** zadejte následující hodnoty a pak vyberte **Vytvořit**:
 
    | **Nastavení** | **Hodnota** | **Podrobnosti** |
    |---|---|---|
    |**Název**|[název vaší domény] |Název domény, kterou jste si zakoupili. V tomto kurzu se jako příklad používá doména contoso.net.|
    |**Předplatné**|[Vaše předplatné]|Vyberte předplatné, ve kterém se má zóna vytvořit.|
-   |**Skupina prostředků**|**Vytvořit novou:** contosoRG|Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci vybraného předplatného jedinečný.<br>Umístění skupiny prostředků nemá žádný vliv na zónu DNS. The DNS zone location is always "global," and isn't shown.|
-   |**Umístění**|USA – východ||
+   |**Skupina prostředků**|**Vytvořit novou:** contosoRG|Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci vybraného předplatného jedinečný.<br>Umístění skupiny prostředků nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a není zobrazeno.|
+   |**Umístění**|Východní USA||
 
 ## <a name="retrieve-name-servers"></a>Načtení názvových serverů
 
 Předtím, než budete moci svoji zónu DNS delegovat do Azure DNS, musíte znát názvové servery pro vaši zónu. Azure DNS přiděluje názvové servery z fondu vždy, když je vytvořena zóna.
 
-1. Když máte vytvořenou zónu DNS, na webu Azure Portal v podokně **Oblíbené** vyberte **Všechny prostředky**. Na stránce **Všechny prostředky** vyberte svoji zónu DNS. If the subscription that you selected already has several resources in it, you can enter your domain name in the **Filter by name** box to easily access the application gateway. 
+1. Když máte vytvořenou zónu DNS, na webu Azure Portal v podokně **Oblíbené** vyberte **Všechny prostředky**. Na stránce **Všechny prostředky** vyberte svoji zónu DNS. Pokud předplatné, které jste vybrali, již obsahuje několik prostředků, můžete zadat název domény do pole **filtrovat podle názvu** , abyste mohli snadno získat přístup k aplikační bráně. 
 
 1. Načtěte názvové servery ze stránky zóny DNS. V tomto příkladu má zóna contoso.net přiřazené názvové servery *ns1-01.azure-dns.com*, *ns2-01.azure-dns.net*, *ns3-01.azure-dns.org* a *ns4-01.azure-dns.info*:
 
@@ -72,26 +72,26 @@ Teď, když je vytvořena zóna DNS a máte názvové servery, je potřeba aktua
 
 1. Na stránce správy DNS vašeho registrátora upravte záznamy NS a nahraďte je názvovými servery Azure DNS.
 
-1. When you delegate a domain to Azure DNS, you must use the name servers that Azure DNS provides. Use all four name servers, regardless of the name of your domain. Domain delegation doesn't require a name server to use the same top-level domain as your domain.
+1. Při delegování domény na Azure DNS je nutné použít názvové servery, které Azure DNS poskytuje. Používejte všechny čtyři názvové servery bez ohledu na název vaší domény. Delegování domény nevyžaduje názvové servery, aby používaly stejnou doménu nejvyšší úrovně jako vaše doména.
 
 > [!NOTE]
-> Až budete kopírovat jednotlivé adresy názvových serverů, nezapomeňte zkopírovat i tečku na konci každé adresy. Tečka na konci znamená konec plně kvalifikovaného názvu domény. Some registrars append the period if the NS name doesn't have it at the end. To be compliant with the DNS RFC, include the trailing period.
+> Až budete kopírovat jednotlivé adresy názvových serverů, nezapomeňte zkopírovat i tečku na konci každé adresy. Tečka na konci znamená konec plně kvalifikovaného názvu domény. Některé registrátory přidávají období, pokud název NS nemá na konci. Chcete-li být v souladu se specifikací RFC DNS, uveďte koncové období.
 
-Delegations that use name servers in your own zone, sometimes called *vanity name servers*, aren't currently supported in Azure DNS.
+Delegování používající názvové servery ve vaší vlastní zóně, někdy označované jako *individuální názvové servery*, se v současnosti v Azure DNS nepodporují.
 
-## <a name="verify-the-delegation"></a>Verify the delegation
+## <a name="verify-the-delegation"></a>Ověření delegování
 
-After you complete the delegation, you can verify that it's working by using a tool such as *nslookup* to query the Start of Authority (SOA) record for your zone. Záznam SOA se automaticky vytvoří při vytváření zóny. You might need to wait 10 minutes or more after you complete the delegation, before you can successfully verify that it's working. Může nějakou dobu trvat, než se změny rozšíří do celého systému DNS.
+Po dokončení delegování můžete ověřit, že funguje pomocí nástroje, jako je například *nslookup* , pro dotazování záznamu Start of Authority (SOA) pro vaši zónu. Záznam SOA se automaticky vytvoří při vytváření zóny. Po dokončení delegování možná budete muset počkat 10 minut nebo déle, než budete moct úspěšně ověřit, jestli funguje. Může nějakou dobu trvat, než se změny rozšíří do celého systému DNS.
 
-You don't have to specify the Azure DNS name servers. Pokud bylo delegování správně nastaveno, normální proces překladu DNS najde názvové servery automaticky.
+Nemusíte zadávat Azure DNS názvové servery. Pokud bylo delegování správně nastaveno, normální proces překladu DNS najde názvové servery automaticky.
 
-1. From a command prompt, enter an nslookup command similar to the following example:
+1. Z příkazového řádku zadejte příkaz nslookup podobný následujícímu příkladu:
 
    ```
    nslookup -type=SOA contoso.net
    ```
 
-1. Verify that your response looks similar to the following nslookup output:
+1. Ověřte, že vaše odpověď vypadá podobně jako v následujícím výstupu nástroje Nslookup:
 
    ```
    Server: ns1-04.azure-dns.com
@@ -111,11 +111,11 @@ You don't have to specify the Azure DNS name servers. Pokud bylo delegování sp
 
 Pokud máte v plánu projít si i následující kurz, můžete si skupinu prostředků **contosoRG** ponechat. V opačném případě skupinu prostředků **contosoRG** odstraňte, aby se odstranily všechny prostředky vytvořené v tomto kurzu.
 
-- Select the **contosoRG** resource group, and then select **Delete resource group**. 
+- Vyberte skupinu prostředků **contosoRG** a pak vyberte **Odstranit skupinu prostředků**. 
 
 ## <a name="next-steps"></a>Další kroky
 
-In this tutorial, you created a DNS zone for your domain and delegated it to Azure DNS. Další informace o Azure DNS a webových aplikacích získáte v kurzu o webových aplikacích.
+V tomto kurzu jste vytvořili zónu DNS pro vaši doménu a delegovani ji na Azure DNS. Další informace o Azure DNS a webových aplikacích získáte v kurzu o webových aplikacích.
 
 > [!div class="nextstepaction"]
 > [Vytvoření záznamů DNS pro webovou aplikaci ve vlastní doméně](./dns-web-sites-custom-domain.md)

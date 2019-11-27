@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Propojení aplikace logiky s funkcí
 > * Odeslání e-mailu na základě odpovědi z funkce
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Aktivní účet na [Twitteru](https://twitter.com/). 
 + Účet [Outlook.com](https://outlook.com/) (pro odesílání oznámení).
@@ -43,7 +43,7 @@ Pokud jste tento krok zatím neprovedli, vraťte se k němu a vytvořte aplikaci
 
 Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatné prostředky. K rozpoznávání mínění v monitorovaných tweetech použijte rozhraní API pro analýzu textu.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 2. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
@@ -121,7 +121,7 @@ Funkce poskytují skvělý způsob snižování zátěže úloh zpracování v p
     ```
     Tento kód funkce vrátí barevnou kategorii na základě skóre mínění přijatého v požadavku. 
 
-4. To test the function, click **Test** at the far right to expand the Test tab. Type a value of `0.2` for the **Request body**, and then click **Run**. V textu odpovědi se vrátí hodnota **RED** (Červená). 
+4. Pokud chcete funkci otestovat, kliknutím na **test** úplně vpravo rozbalte kartu test. pro **tělo žádosti**zadejte hodnotu `0.2` a pak klikněte na **Spustit**. V textu odpovědi se vrátí hodnota **RED** (Červená). 
 
     ![Test funkce na webu Azure Portal](./media/functions-twitter-email/07-function-test.png)
 
@@ -141,7 +141,7 @@ Teď máte funkci, která kategorizuje skóre mínění. Dále vytvoříte aplik
     | ----------------- | ------------ | ------------- |
     | **Název** | TweetSentiment | Zvolte vhodný název vaší aplikace. |
     | **Skupina prostředků** | myResourceGroup | Zvolte stejnou existující skupinu prostředků jako předtím. |
-    | **Umístění** | USA – východ | Zvolte umístění, které je blízko vás. |    
+    | **Umístění** | Východní USA | Zvolte umístění, které je blízko vás. |    
 
 4. Po zadání odpovídajících hodnot nastavení klikněte na **Vytvořit** a vytvořte aplikaci logiky. 
 
@@ -205,7 +205,7 @@ Když je teď nakonfigurované rozpoznávání mínění, můžete do své funkc
 
 4. V části **Text požadavku** klikněte na **Skóre** a pak na **Uložit**.
 
-    ![Hodnocení](media/functions-twitter-email/17-function-input-score.png)
+    ![Skóre](media/functions-twitter-email/17-function-input-score.png)
 
 Vaše funkce se teď aktivuje při odeslání skóre mínění z aplikace logiky. Funkce do aplikace logiky vrátí barevně rozlišenou kategorii. Dále přidáte e-mailové oznámení, které se odešle, když funkce vrátí hodnotu mínění **RED** (Červená). 
 
@@ -238,7 +238,7 @@ Poslední částí pracovního postupu je aktivace e-mailu, když má skóre mí
 | **Předmět** | Rozpoznáno špatné mínění v tweetu  | Řádek předmětu e-mailového oznámení.  |
 | **Text** | Text tweetu, Umístění | Klikněte na parametry **Text tweetu** a **Umístění**. |
 
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 Když je teď pracovní postup dokončený, můžete aplikaci logiky povolit a podívat se na funkci v akci.
 

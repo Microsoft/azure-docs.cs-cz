@@ -42,11 +42,11 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 ## <a name="dedicated-resource-group"></a>Vyhrazená skupina prostředků
 
-Because container registries are resources that are used across multiple container hosts, a registry should reside in its own resource group.
+Vzhledem k tomu, že registry kontejnerů jsou prostředky, které se používají na více hostitelích kontejnerů, měl by být registr umístěný ve vlastní skupině prostředků.
 
 I když můžete experimentovat s konkrétním typem hostitele, jako je služba Azure Container Instances, pravděpodobně budete chtít instanci kontejneru odstranit, jakmile budete hotovi. Můžete však také chtít zachovat kolekci imagí, které jste nasdíleli do služby Azure Container Registry. Umístěním registru do vlastní skupiny prostředků minimalizujete riziko nechtěného odstranění kolekce imagí v registru při odstraňování skupiny prostředků instance kontejneru.
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
 Při ověřování ve službě Azure Container Registry existují dva primární scénáře: jednotlivé ověření a ověření služby (neboli bezobslužné ověření). Následující tabulka obsahuje stručný přehled těchto scénářů a doporučenou metodu ověřování pro každý z nich.
 
@@ -59,9 +59,9 @@ Podrobné informace o ověřování ve službě Azure Container Registry najdete
 
 ## <a name="manage-registry-size"></a>Správa velikosti registru
 
-The storage constraints of each [container registry SKU][container-registry-skus] are intended to align with a typical scenario: **Basic** for getting started, **Standard** for the majority of production applications, and **Premium** for hyper-scale performance and [geo-replication][container-registry-geo-replication]. Po celou dobu životnosti vašeho registru byste měli spravovat jeho velikost pravidelným odstraňováním nevyužívaného obsahu.
+Omezení úložiště každé skladové položky [registru kontejneru][container-registry-skus] mají být v souladu s obvyklým scénářem: **Basic** pro začátek, **Standard** pro většinu produkčních aplikací a **Premium** pro výkon a [geografickou replikaci][container-registry-geo-replication]na úrovni Hyper. Po celou dobu životnosti vašeho registru byste měli spravovat jeho velikost pravidelným odstraňováním nevyužívaného obsahu.
 
-Use the Azure CLI command [az acr show-usage][az-acr-show-usage] to display the current size of your registry:
+Pomocí příkazu Azure CLI [AZ ACR show-Usage][az-acr-show-usage] zobrazte aktuální velikost registru:
 
 ```console
 $ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
@@ -71,15 +71,15 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-You can also find the current storage used in the **Overview** of your registry in the Azure portal:
+Můžete také najít aktuální úložiště použité v **přehledu** registru v Azure Portal:
 
 ![Informace o využití registru na webu Azure Portal][registry-overview-quotas]
 
-### <a name="delete-image-data"></a>Delete image data
+### <a name="delete-image-data"></a>Odstranit data obrázku
 
-Azure Container Registry supports several methods for deleting image data from your container registry. You can delete images by tag or manifest digest, or delete a whole repository.
+Azure Container Registry podporuje několik metod odstranění dat imagí z registru kontejneru. Můžete odstranit obrázky podle značky nebo výtahu manifestu nebo odstranit celé úložiště.
 
-For details on deleting image data from your registry, including untagged (sometimes called "dangling" or "orphaned") images, see [Delete container images in Azure Container Registry](container-registry-delete.md).
+Podrobnosti o odstranění dat imagí z registru, včetně neoznačeného (někdy nazývaného "dangling" nebo "osamocené") imagí, najdete v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).
 
 ## <a name="next-steps"></a>Další kroky
 

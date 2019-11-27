@@ -1,6 +1,6 @@
 ---
-title: Best Practices for Azure Functions
-description: Learn best practices and patterns for Azure Functions.
+title: Osvědčené postupy pro Azure Functions
+description: Seznamte se s osvědčenými postupy a vzory pro Azure Functions.
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 10/16/2017
@@ -12,99 +12,99 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227373"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimize the performance and reliability of Azure Functions
+# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizujte výkon a spolehlivost Azure Functions
 
-This article provides guidance to improve the performance and reliability of your [serverless](https://azure.microsoft.com/solutions/serverless/) function apps.  
+Tento článek poskytuje pokyny pro zlepšení výkonu a spolehlivosti aplikací pracujících s bez [serveru](https://azure.microsoft.com/solutions/serverless/) .  
 
 ## <a name="general-best-practices"></a>Obecné osvědčené postupy
 
-The following are best practices in how you build and architect your serverless solutions using Azure Functions.
+Níže jsou uvedené osvědčené postupy při sestavování a architekti řešení bez serveru pomocí Azure Functions.
 
-### <a name="avoid-long-running-functions"></a>Avoid long running functions
+### <a name="avoid-long-running-functions"></a>Nepoužívejte dlouho běžící funkce
 
-Large, long-running functions can cause unexpected timeout issues. To learn more about the timeouts for a given hosting plan, see [function app timeout duration](functions-scale.md#timeout). 
+Velké a dlouho běžící funkce můžou způsobit neočekávané problémy s časovým limitem. Další informace o časových limitech pro daný plán hostování najdete v tématu [Doba trvání časového limitu aplikace Function App](functions-scale.md#timeout). 
 
-A function can become large because of many Node.js dependencies. Importing dependencies can also cause increased load times that result in unexpected timeouts. Dependencies are loaded both explicitly and implicitly. A single module loaded by your code may load its own additional modules. 
+Funkce může být velká z důvodu mnoha závislostí Node. js. Import závislostí může také způsobit delší dobu načítání, která vede k neočekávaným časovým limitům. Závislosti jsou načítány explicitně i implicitně. Jeden modul načtený vaším kódem může načíst vlastní další moduly. 
 
-Whenever possible, refactor large functions into smaller function sets that work together and return responses fast. For example, a webhook or HTTP trigger function might require an acknowledgment response within a certain time limit; it's common for webhooks to require an immediate response. You can pass the HTTP trigger payload into a queue to be processed by a queue trigger function. This approach lets you defer the actual work and return an immediate response.
-
-
-### <a name="cross-function-communication"></a>Cross function communication
-
-[Durable Functions](durable/durable-functions-overview.md) and [Azure Logic Apps](../logic-apps/logic-apps-overview.md) are built to manage state transitions and communication between multiple functions.
-
-If not using Durable Functions or Logic Apps to integrate with multiple functions, it's best to use storage queues for cross-function communication. The main reason is that storage queues are cheaper and much easier to provision than other storage options. 
-
-Individual messages in a storage queue are limited in size to 64 KB. If you need to pass larger messages between functions, an Azure Service Bus queue could be used to support message sizes up to 256 KB in the Standard tier, and up to 1 MB in the Premium tier.
-
-Service Bus topics are useful if you require message filtering before processing.
-
-Event hubs are useful to support high volume communications.
+Kdykoli je to možné, refaktorujte velké funkce na menší sady funkcí, které fungují společně, a rychle vrátí odpovědi. Například Webhook nebo funkce triggeru HTTP může vyžadovat odpověď potvrzení v určitém časovém limitu. pro Webhooky je běžné, že vyžadují okamžitou reakci. Datovou část triggeru HTTP můžete předat do fronty, aby ji bylo možné zpracovat funkcí triggeru fronty. Tento přístup umožňuje odložit skutečnou práci a vrátit okamžitou odezvu.
 
 
-### <a name="write-functions-to-be-stateless"></a>Write functions to be stateless 
+### <a name="cross-function-communication"></a>Komunikace mezi funkcemi
 
-Functions should be stateless and idempotent if possible. Associate any required state information with your data. For example, an order being processed would likely have an associated `state` member. A function could process an order based on that state while the function itself remains stateless. 
+[Durable Functions](durable/durable-functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) jsou sestaveny pro správu přechodů stavu a komunikaci mezi více funkcemi.
 
-Idempotent functions are especially recommended with timer triggers. For example, if you have something that absolutely must run once a day, write it so it can run anytime during the day with the same results. The function can exit when there's no work for a particular day. Also if a previous run failed to complete, the next run should pick up where it left off.
+Pokud při integraci s více funkcemi nepoužíváte Durable Functions nebo Logic Apps, je nejlepší pro komunikaci mezi funkcemi používat fronty úložiště. Hlavním důvodem je, že fronty úložiště mají levnější a mnohem snazší zřizování než jiné možnosti úložiště. 
+
+Jednotlivé zprávy ve frontě úložiště mají omezení velikosti až 64 KB. Pokud potřebujete předat větší zprávy mezi funkcemi, Azure Service Bus frontu můžete použít k podpoře velikosti zpráv až do 256 KB na úrovni Standard a až 1 MB na úrovni Premium.
+
+Service Bus témata jsou užitečná v případě, že před zpracováním potřebujete filtrování zpráv.
+
+Centra událostí jsou užitečná pro podporu komunikace s vysokými objemy.
 
 
-### <a name="write-defensive-functions"></a>Write defensive functions
+### <a name="write-functions-to-be-stateless"></a>Psaní funkcí, které mají být bezstavové 
 
-Assume your function could encounter an exception at any time. Design your functions with the ability to continue from a previous fail point during the next execution. Consider a scenario that requires the following actions:
+Funkce by měly být bezstavové a idempotentní, pokud je to možné. Přidružte k vašim datům všechny požadované informace o stavu. Například zpracování objednávky by pravděpodobně mělo přidruženého člena `state`. Funkce může zpracovat objednávku na základě tohoto stavu, zatímco samotná funkce zůstane Bezstavová. 
 
-1. Query for 10,000 rows in a database.
-2. Create a queue message for each of those rows to process further down the line.
+Funkce idempotentní jsou obzvláště Doporučené s triggery časovače. Například pokud máte něco, co naprosto musí běžet jednou denně, zapište ho, aby mohl běžet kdykoli během dne se stejnými výsledky. Funkce může skončit, i když pro určitý den nebude fungovat žádná práce. I v případě, že se nepovedlo dokončit předchozí spuštění, mělo by se další spuštění vystavit tam, kde skončila.
+
+
+### <a name="write-defensive-functions"></a>Zápis funkcí obrannou linií
+
+Předpokládejme, že vaše funkce může kdykoli narazit na výjimku. Navrhněte své funkce s možností pokračovat z předchozího bodu selhání během příštího spuštění. Vezměte v úvahu scénář, který vyžaduje následující akce:
+
+1. Dotaz na 10 000 řádků v databázi
+2. Vytvořte zprávu fronty pro každý z těchto řádků, která bude zpracována dále v řádku.
  
-Depending on how complex your system is, you may have: involved downstream services behaving badly, networking outages, or quota limits reached, etc. All of these can affect your function at any time. You need to design your functions to be prepared for it.
+V závislosti na tom, jak komplexní je váš systém, možná budete mít k dispozici tyto služby, které se budou chovat chybou, výpadky sítě nebo dosažené limity kvót atd. Všechny tyto funkce mohou mít na funkci kdykoli vliv. Je potřeba navrhnout vaše funkce, které se na ni budou připravovat.
 
-How does your code react if a failure occurs after inserting 5,000 of those items into a queue for processing? Track items in a set that you’ve completed. Otherwise, you might insert them again next time. This double-insertion can have a serious impact on your work flow, so [make your functions idempotent](functions-idempotent.md). 
+Jak váš kód reaguje, když po vložení 5 000 těchto položek do fronty ke zpracování dojde k chybě? Sledujte položky v sadě, kterou jste dokončili. V opačném případě je můžete vložit znovu později. Toto dvojité vložení může mít vážný dopad na pracovní tok, takže [idempotentní funkce](functions-idempotent.md). 
 
-If a queue item was already processed, allow your function to be a no-op.
+Pokud byla položka fronty již zpracována, povolte funkci no-op.
 
-Take advantage of defensive measures already provided for components you use in the Azure Functions platform. For example, see **Handling poison queue messages** in the documentation for [Azure Storage Queue triggers and bindings](functions-bindings-storage-queue.md#trigger---poison-messages). 
+Využijte výhod obrannou liniích opatření, která už jsou k dispozici pro komponenty, které používáte v Azure Functions platformě. Například viz **zpracování zpráv o nepoškozených frontách** v dokumentaci pro [aktivační události a vazby fronty Azure Storage](functions-bindings-storage-queue.md#trigger---poison-messages). 
 
-## <a name="scalability-best-practices"></a>Scalability best practices
+## <a name="scalability-best-practices"></a>Osvědčené postupy škálovatelnosti
 
-There are a number of factors that impact how instances of your function app scale. The details are provided in the documentation for [function scaling](functions-scale.md).  The following are some best practices to ensure optimal scalability of a function app.
+Existuje několik faktorů, které mají vliv na to, jak se instance aplikace Functions škálují. Podrobnosti jsou uvedeny v dokumentaci pro [škálování funkce](functions-scale.md).  Níže najdete některé osvědčené postupy pro zajištění optimální škálovatelnosti aplikace Function App.
 
-### <a name="share-and-manage-connections"></a>Share and manage connections
+### <a name="share-and-manage-connections"></a>Sdílení a Správa připojení
 
-Reuse connections to external resources whenever possible.  See [how to manage connections in Azure Functions](./manage-connections.md).
+Kdykoliv je to možné, znovu použijte připojení k externím prostředkům.  Další informace najdete [v tématu Správa připojení v Azure Functions](./manage-connections.md).
 
-### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Don't mix test and production code in the same function app
+### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Nemíchejte testovací a produkční kód ve stejné aplikaci Function App
 
-Functions within a function app share resources. For example, memory is shared. If you're using a function app in production, don't add test-related functions and resources to it. It can cause unexpected overhead during production code execution.
+Funkce v rámci sdílených prostředků aplikace Function App. Například paměť je sdílená. Pokud používáte aplikaci funkcí v produkčním prostředí, nepřidávejte do ní funkce související s testováním a prostředky. Může způsobit neočekávanou režii během provádění produkčního kódu.
 
-Be careful what you load in your production function apps. Memory is averaged across each function in the app.
+Buďte opatrní, co nahráváte do aplikací produkčních funkcí. Průměrná velikost paměti napříč všemi funkcemi v aplikaci.
 
-If you have a shared assembly referenced in multiple .NET functions, put it in a common shared folder. Otherwise, you could accidentally deploy multiple versions of the same binary that behave differently between functions.
+Pokud máte sdílené sestavení odkazované více funkcemi .NET, vložte ho do společné sdílené složky. V opačném případě byste mohli omylně nasadit více verzí stejného binárního souboru, které se chovají odlišně mezi funkcemi.
 
-Don't use verbose logging in production code, which has a negative performance impact.
+Nepoužívejte podrobné protokolování v produkčním kódu, který má negativní dopad na výkon.
 
-### <a name="use-async-code-but-avoid-blocking-calls"></a>Use async code but avoid blocking calls
+### <a name="use-async-code-but-avoid-blocking-calls"></a>Použít asynchronní kód, ale vyhnout se blokování volání
 
-Asynchronous programming is a recommended best practice. However, always avoid referencing the `Result` property or calling `Wait` method on a `Task` instance. This approach can lead to thread exhaustion.
+Asynchronní programování je doporučeným osvědčeným postupem. Nicméně vždy vyhněte odkazování na vlastnost `Result` nebo volání metody `Wait` na instanci `Task`. Tento přístup může vést k vyčerpání vlákna.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-### <a name="receive-messages-in-batch-whenever-possible"></a>Receive messages in batch whenever possible
+### <a name="receive-messages-in-batch-whenever-possible"></a>Kdykoli je to možné, přijímat zprávy v dávce
 
-Some triggers like Event Hub enable receiving a batch of messages on a single invocation.  Batching messages has much better performance.  You can configure the max batch size in the `host.json` file as detailed in the [host.json reference documentation](functions-host-json.md)
+Některé triggery, jako je centrum událostí, umožňují příjem dávky zpráv na jednom volání.  Dávkování zpráv má mnohem lepší výkon.  Maximální velikost dávky v souboru `host.json` můžete nakonfigurovat podle podrobných [informací v dokumentaci Host. JSON.](functions-host-json.md)
 
-For C# functions, you can change the type to a strongly-typed array.  For example, instead of `EventData sensorEvent` the method signature could be `EventData[] sensorEvent`.  For other languages, you'll need to explicitly set the cardinality property in your `function.json` to `many` in order to enable batching [as shown here](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+U C# funkcí lze typ změnit na pole silného typu.  Například namísto `EventData sensorEvent` může být podpis metody `EventData[] sensorEvent`.  Pro jiné jazyky budete muset explicitně nastavit vlastnost mohutnosti v `function.json` na `many`, aby bylo možné dávkování povolit [, jak je znázorněno zde](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Configure host behaviors to better handle concurrency
+### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurace chování hostitelů pro lepší zpracování souběžnosti
 
-The `host.json` file in the function app allows for configuration of host runtime and trigger behaviors.  In addition to batching behaviors, you can manage concurrency for a number of triggers. Often adjusting the values in these options can help each instance scale appropriately for the demands of the invoked functions.
+Soubor `host.json` ve Function App umožňuje konfiguraci chování hostitele a spuštění.  Kromě dávkování chování můžete spravovat souběžnost pro určitý počet triggerů. Často se upravují hodnoty v těchto možnostech, které mohou pokaždé škálovat každou instanci odpovídajícím způsobem pro požadavky vyvolaných funkcí.
 
-Settings in the host.json file apply across all functions within the app, within a *single instance* of the function. For example, if you had a function app with two HTTP functions and [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) requests set to 25, a request to either HTTP trigger would count towards the shared 25 concurrent requests.  When that function app is scaled to 10 instances, the two functions effectively allow 250 concurrent requests (10 instances * 25 concurrent requests per instance). 
+Nastavení v souboru Host. JSON se aplikují napříč všemi funkcemi v rámci aplikace v rámci *jedné instance* funkce. Pokud jste třeba aplikaci Function App se dvěma funkcemi HTTP a [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) požadavky nastavili na 25, požadavek na Trigger http by se dostal do sdíleného 25 souběžných požadavků.  Když se tato aplikace Functions škáluje na 10 instancí, můžou tyto dvě funkce efektivně umožňovat 250 souběžných žádostí (10 instancí × 25 souběžných požadavků na instanci). 
 
-Other host configuration options are found in the [host.json configuration article](functions-host-json.md).
+Další možnosti konfigurace hostitele najdete v [článku Konfigurace Host. JSON](functions-host-json.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace najdete v následujících zdrojích:
 
-* [How to manage connections in Azure Functions](manage-connections.md)
-* [Azure App Service best practices](../app-service/app-service-best-practices.md)
+* [Správa připojení v Azure Functions](manage-connections.md)
+* [Azure App Service osvědčené postupy](../app-service/app-service-best-practices.md)

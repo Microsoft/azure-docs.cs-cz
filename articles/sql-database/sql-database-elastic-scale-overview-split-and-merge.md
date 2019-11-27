@@ -1,6 +1,6 @@
 ---
 title: Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
-description: Explains how to manipulate shards and move data via a self-hosted service using elastic database APIs.
+description: Vysvětluje, jak manipulovat s horizontálních oddílů a přesouvat data prostřednictvím samoobslužné služby pomocí rozhraní API elastické databáze.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -20,85 +20,85 @@ ms.locfileid: "74421552"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
 
-If you are a Software as a Service developer, and suddenly your app undergoes tremendous demand, you need to accommodate the growth. So you add more databases (shards). How do you redistribute the data to the new databases without disrupting the data integrity? Use the **split-merge tool** to move data from constrained databases to the new databases.  
+Pokud jste software jako vývojář služby a náhle nebudete mít k potřebnou poptávku, je potřeba růst. Takže přidáte další databáze (horizontálních oddílů). Jak znovu distribuovat data do nových databází bez přerušení integrity dat? K přesunu dat z omezených databází do nových databází použijte **Nástroj pro dělení k paralelnímu sloučení** .  
 
-The split-merge tool runs as an Azure web service. An administrator or developer uses the tool to move shardlets (data from a shard) between different databases (shards). The tool uses shard map management to maintain the service metadata database, and ensure consistent mappings.
+Nástroj pro dělení a slučování se spouští jako webová služba Azure. Správce nebo vývojář používá nástroj k přesunu shardlety (data z horizontálních oddílů) mezi různými databázemi (horizontálních oddílů). Nástroj používá správu map horizontálních oddílů k údržbě databáze metadat služby a zajišťuje konzistentní mapování.
 
 ![Přehled][1]
 
-## <a name="download"></a>Ke stažení
+## <a name="download"></a>Stáhnout
 
-[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentace
 
-1. [Elastic database Split-Merge tool tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [Split-Merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md)
-3. [Split-merge security considerations](sql-database-elastic-scale-split-merge-security-configuration.md)
+1. [Kurz pro dělení a slučování elastické databáze](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
+2. [Konfigurace zabezpečení dělení a slučování](sql-database-elastic-scale-split-merge-security-configuration.md)
+3. [Předpoklady zabezpečení dělení a slučování](sql-database-elastic-scale-split-merge-security-configuration.md)
 4. [Správa mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md)
 5. [Migrace existujících databází pro horizontální navýšení kapacity](sql-database-elastic-convert-to-use-elastic-tools.md)
-6. [Elastic database tools](sql-database-elastic-scale-introduction.md)
-7. [Elastic Database tools glossary](sql-database-elastic-scale-glossary.md)
+6. [Nástroje elastické databáze](sql-database-elastic-scale-introduction.md)
+7. [Glosář nástrojů pro Elastic Database](sql-database-elastic-scale-glossary.md)
 
-## <a name="why-use-the-split-merge-tool"></a>Why use the split-merge tool
+## <a name="why-use-the-split-merge-tool"></a>Proč používat nástroj pro dělení a slučování
 
-- **Flexibility**
+- **Umožněn**
 
-  Applications need to stretch flexibly beyond the limits of a single Azure SQL DB database. Use the tool to move data as needed to new databases while retaining integrity.
+  Aplikace musí být pružně roztaženy nad rámec jedné databáze Azure SQL DB. Pomocí tohoto nástroje můžete přesouvat data podle potřeby do nových databází a přitom zachovat integritu.
 
-- **Split to grow**
+- **Rozdělit na růst**
 
-  To increase overall capacity to handle explosive growth, create additional capacity by sharding the data and by distributing it across incrementally more databases until capacity needs are fulfilled. This is a prime example of the **split** feature.
+  Chcete-li zvýšit celkovou kapacitu pro zpracování výbušného nárůstu, vytvořte další kapacitu tím, že horizontálního dělení data a distribuujete je napříč přírůstkově více databázemi až do splnění potřeb kapacity. Toto je hlavní příklad funkce **Split** .
 
-- **Merge to shrink**
+- **Sloučit do zmenšení**
 
-  Capacity needs shrink due to the seasonal nature of a business. The tool lets you scale down to fewer scale units when business slows. The ‘merge’ feature in the Elastic Scale split-merge Service covers this requirement.
+  Nároky na kapacitu se zmenšují z důvodu sezónní povahy podniku. Nástroj umožňuje horizontální snížení kapacity v menším množství jednotek škálování v případě, že je čas společnosti pomalý. Tato podmínka pokrývá funkci Merge ve službě elastického škálování Split-Merge.
 
-- **Manage hotspots by moving shardlets**
+- **Správa aktivních bodů přesunutím shardlety**
 
-  With multiple tenants per database, the allocation of shardlets to shards can lead to capacity bottlenecks on some shards. This requires re-allocating shardlets or moving busy shardlets to new or less utilized shards.
+  Díky více klientům na databázi může přidělení shardlety a horizontálních oddílů vést k kritickým místům kapacity u některých horizontálních oddílů. To vyžaduje opětovné přidělení shardlety nebo přesunutí zaneprázdněného shardletyu na nové nebo méně využité horizontálních oddílů.
 
-## <a name="concepts--key-features"></a>Concepts & key features
+## <a name="concepts--key-features"></a>Koncepty & klíčových funkcí
 
-- **Customer-hosted services**
+- **Služby hostované zákazníky**
 
-  The split-merge is delivered as a customer-hosted service. You must deploy and host the service in your Microsoft Azure subscription. The package you download from NuGet contains a configuration template to complete with the information for your specific deployment. See the [split-merge tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md) for details. Since the service runs in your Azure subscription, you can control and configure most security aspects of the service. The default template includes the options to configure SSL, certificate-based client authentication, encryption for stored credentials, DoS guarding and IP restrictions. You can find more information on the security aspects in the following document [split-merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
+  Rozdělené sloučení se doručuje jako služba hostovaná zákazníkem. Službu musíte nasadit a hostovat v rámci předplatného Microsoft Azure. Balíček, který stáhnete ze sady NuGet, obsahuje šablonu konfigurace, která se dokončí s informacemi pro konkrétní nasazení. Podrobnosti najdete v [kurzu rozdělení na sloučení](sql-database-elastic-scale-configure-deploy-split-and-merge.md) . Vzhledem k tomu, že služba běží ve vašem předplatném Azure, můžete řídit a konfigurovat většinu aspektů zabezpečení služby. Výchozí šablona obsahuje možnosti konfigurace protokolu SSL, ověřování klientů založených na certifikátech, šifrování uložených přihlašovacích údajů, ochrana systému DoS a omezení IP adres. Další informace o aspektech zabezpečení najdete v následující dokumentu [Konfigurace zabezpečení s rozděleným sloučením](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-  The default deployed service runs with one worker and one web role. Each uses the A1 VM size in Azure Cloud Services. While you cannot modify these settings when deploying the package, you could change them after a successful deployment in the running cloud service, (through the Azure portal). Note that the worker role must not be configured for more than a single instance for technical reasons.
+  Výchozí nasazená služba se spouští s jedním pracovním procesem a jednou webovou rolí. Každá z nich používá velikost virtuálního počítače a1 v Azure Cloud Services. I když při nasazování balíčku tato nastavení nemůžete změnit, můžete je po úspěšném nasazení v běžící cloudové službě změnit (prostřednictvím Azure Portal). Role pracovního procesu nesmí být nakonfigurovaná na více než jednu instanci z technických důvodů.
 
-- **Shard map integration**
+- **Integrace map horizontálních oddílů**
 
-  The split-merge service interacts with the shard map of the application. When using the split-merge service to split or merge ranges or to move shardlets between shards, the service automatically keeps the shard map up-to-date. To do so, the service connects to the shard map manager database of the application and maintains ranges and mappings as split/merge/move requests progress. This ensures that the shard map always presents an up-to-date view when split-merge operations are going on. Split, merge and shardlet movement operations are implemented by moving a batch of shardlets from the source shard to the target shard. During the shardlet movement operation the shardlets subject to the current batch are marked as offline in the shard map and are unavailable for data-dependent routing connections using the **OpenConnectionForKey** API.
+  Služba rozdělení a sloučení komunikuje s mapou horizontálních oddílů aplikace. Když použijete službu dělení a slučování k rozdělení nebo sloučení rozsahů nebo přesunete shardlety mezi horizontálních oddílů, služba automaticky udržuje mapu horizontálních oddílů v aktuálním stavu. V takovém případě se služba připojí k databázi správce mapy horizontálních oddílů aplikace a udržuje rozsahy a mapování jako průběh požadavků na rozdělení, sloučení a přesunutí. Tím se zajistí, že mapa horizontálních oddílů vždy prezentuje aktuální zobrazení při přechodu k operacím dělení na data. Operace rozdělení, sloučení a shardletu přesunu jsou implementovány přesunutím dávky shardlety ze zdrojového horizontálních oddílů do cílového horizontálních oddílů. Během operace přesunu shardletu se shardlety v závislosti na aktuální dávce označí jako offline v mapě horizontálních oddílů a nejsou k dispozici pro připojení směrování závislá na datech pomocí rozhraní **OpenConnectionForKey** API.
 
-- **Consistent shardlet connections**
+- **Konzistentní připojení shardletu**
 
-  When data movement starts for a new batch of shardlets, any shard-map provided data-dependent routing connections to the shard storing the shardlet are killed and subsequent connections from the shard map APIs to the shardlets are blocked while the data movement is in progress in order to avoid inconsistencies. Connections to other shardlets on the same shard will also get killed, but will succeed again immediately on retry. Once the batch is moved, the shardlets are marked online again for the target shard and the source data is removed from the source shard. The service goes through these steps for every batch until all shardlets have been moved. This will lead to several connection kill operations during the course of the complete split/merge/move operation.  
+  Po zahájení přesunu dat o novou dávku shardlety se všechna horizontálních oddílů mapa, která poskytuje směrování závislá na datech s horizontálních oddílů ukládáním shardletu, zablokovala a následná připojení z rozhraní API mapy horizontálních oddílů do shardlety jsou při přesunu dat zablokovaná. probíhá, aby nedocházelo k nekonzistencím. Připojení k ostatním shardlety na stejném horizontálních oddílů se taky zastaví, ale po opakování se to bude zdařit okamžitě. Po přesunutí dávky jsou shardlety znovu označeny online pro cílový horizontálních oddílů a zdrojová data budou odstraněna ze zdrojového horizontálních oddílů. Služba projde tyto kroky pro každou dávku, dokud nebudou všechny shardlety přesunuty. To bude mít za následek několik operací ukončování připojení v průběhu operace dokončení rozdělení, sloučení nebo přesunutí.  
 
-- **Managing shardlet availability**
+- **Správa dostupnosti shardletu**
 
-  Limiting the connection killing to the current batch of shardlets as discussed above restricts the scope of unavailability to one batch of shardlets at a time. This is preferred over an approach where the complete shard would remain offline for all its shardlets during the course of a split or merge operation. The size of a batch, defined as the number of distinct shardlets to move at a time, is a configuration parameter. It can be defined for each split and merge operation depending on the application’s availability and performance needs. Note that the range that is being locked in the shard map may be larger than the batch size specified. This is because the service picks the range size such that the actual number of sharding key values in the data approximately matches the batch size. This is important to remember in particular for sparsely populated sharding keys.
+  Omezení usmrcení připojení k aktuální dávce shardlety, jak je popsáno výše, omezuje rozsah nedostupnosti na jednu dávku shardlety v jednom okamžiku. To je upřednostňováno nad přístupem, kde kompletní horizontálních oddílů zůstane offline pro všechny své shardlety v průběhu operace rozdělení nebo sloučení. Velikost dávky definovaná jako počet jedinečných shardlety, která se mají přesunout najednou, je parametr konfigurace. Dá se definovat pro každou operaci rozdělení a sloučení v závislosti na potřebách dostupnosti a výkonu aplikace. Všimněte si, že rozsah, který je uzamčen v mapě horizontálních oddílů, může být větší než zadaná velikost dávky. Důvodem je to, že služba vybírá velikost rozsahu tak, aby skutečný počet hodnot horizontálního dělení klíčů v datech přibližně odpovídal velikosti dávky. To je důležité pamatovat zejména pro zhuštěné horizontálního dělení klíče.
 
-- **Metadata storage**
+- **Úložiště metadat**
 
-  The split-merge service uses a database to maintain its status and to keep logs during request processing. The user creates this database in their subscription and provides the connection string for it in the configuration file for the service deployment. Administrators from the user’s organization can also connect to this database to review request progress and to investigate detailed information regarding potential failures.
+  Služba rozdělení a sloučení používá databázi k údržbě jejího stavu a k udržování protokolů během zpracování žádosti. Uživatel tuto databázi vytvoří ve svém předplatném a poskytne připojovací řetězec v konfiguračním souboru pro nasazení služby. Správci z organizace uživatele se také mohou připojit k této databázi a zkontrolovat pokrok v žádosti a prozkoumat podrobné informace týkající se potenciálních selhání.
 
-- **Sharding-awareness**
+- **Horizontálního dělení – povědomí**
 
-  The split-merge service differentiates between (1) sharded tables, (2) reference tables, and (3) normal tables. The semantics of a split/merge/move operation depend on the type of the table used and are defined as follows:
+  Služba rozdělení a sloučení rozlišuje mezi (1) tabulkami horizontálně dělené, (2) referenčními tabulkami a (3) normálními tabulkami. Sémantika operace rozdělení, sloučení nebo přesunutí závisí na typu použité tabulky a jsou definovány následujícím způsobem:
 
-  - **Sharded tables**
+  - **Tabulky horizontálně dělené**
 
-    Split, merge, and move operations move shardlets from source to target shard. After successful completion of the overall request, those shardlets are no longer present on the source. Note that the target tables need to exist on the target shard and must not contain data in the target range prior to processing of the operation.
+    Operace rozdělení, sloučení a přesunu přesunou shardlety ze zdroje do cílového horizontálních oddílů. Po úspěšném dokončení celkové žádosti nejsou tyto shardlety nadále přítomny ve zdroji. Všimněte si, že cílové tabulky musí existovat na cílovém horizontálních oddílů a nesmí obsahovat data v cílovém rozsahu před zpracováním operace.
 
-  - **Reference tables**
+  - **Referenční tabulky**
 
-    For reference tables, the split, merge and move operations copy the data from the source to the target shard. Note, however, that no changes occur on the target shard for a given table if any row is already present in this table on the target. The table has to be empty for any reference table copy operation to get processed.
+    V případě referenčních tabulek kopírují operace rozdělení, sloučení a přesunutí data ze zdroje do cílového horizontálních oddílů. Všimněte si však, že v cílovém horizontálních oddílů pro danou tabulku nedochází k žádným změnám, pokud v této tabulce v cíli již existuje nějaký řádek. Tabulka musí být prázdná pro všechny operace kopírování referenční tabulky, aby se mohla zpracovat.
 
-  - **Other Tables**
+  - **Další tabulky**
 
-    Other tables can be present on either the source or the target of a split and merge operation. The split-merge service disregards these tables for any data movement or copy operations. Note, however, that they can interfere with these operations in case of constraints.
+    Další tabulky mohou být k dispozici buď na zdroji, nebo v cíli operace rozdělení a sloučení. Služba dělení a slučování ignoruje tyto tabulky pro jakékoli operace přesunu nebo kopírování dat. Upozorňujeme však, že tyto operace mohou v případě omezení narušovat.
 
-    The information on reference vs. sharded tables is provided by the `SchemaInfo` APIs on the shard map. The following example illustrates the use of these APIs on a given shard map manager object:
+    Informace o referenčních tabulkách vs. horizontálně dělené jsou poskytovány rozhraními API `SchemaInfo` na mapě horizontálních oddílů. Následující příklad ilustruje použití těchto rozhraní API na daném objektu Správce map horizontálních oddílů:
 
     ```csharp
     // Create the schema annotations
@@ -116,112 +116,112 @@ The split-merge tool runs as an Azure web service. An administrator or developer
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    The tables ‘region’ and ‘nation’ are defined as reference tables and will be copied with split/merge/move operations. ‘customer’ and ‘orders’ in turn are defined as sharded tables. `C_CUSTKEY` and `O_CUSTKEY` serve as the sharding key.
+    Tabulky "region" a "země" jsou definovány jako referenční tabulky a budou zkopírovány pomocí operací rozdělit/sloučit/přesunout. "Customer" a "Orders" jsou definovány jako tabulky horizontálně dělené. `C_CUSTKEY` a `O_CUSTKEY` slouží jako horizontálního dělení klíč.
 
-- **Referential Integrity**
+- **Referenční integrita**
 
-  The split-merge service analyzes dependencies between tables and uses foreign key-primary key relationships to stage the operations for moving reference tables and shardlets. In general, reference tables are copied first in dependency order, then shardlets are copied in order of their dependencies within each batch. This is necessary so that FK-PK constraints on the target shard are honored as the new data arrives.
+  Služba rozdělení a sloučení analyzuje závislosti mezi tabulkami a používá vztahy primárního klíče cizího klíče pro přípravu operací pro přesun referenčních tabulek a shardlety. Obecně se referenční tabulky zkopírují jako první v pořadí závislostí a shardlety se zkopírují v pořadí podle jejich závislosti v rámci každé dávky. To je nezbytné, aby při přijetí nových dat byly dodrženy omezení CK-PK na cílovém horizontálních oddílů.
 
-- **Shard Map Consistency and Eventual Completion**
+- **Konzistence map horizontálních oddílů a následné dokončení**
 
-  In the presence of failures, the split-merge service resumes operations after any outage and aims to complete any in progress requests. However, there may be unrecoverable situations, e.g., when the target shard is lost or compromised beyond repair. Under those circumstances, some shardlets that were supposed to be moved may continue to reside on the source shard. The service ensures that shardlet mappings are only updated after the necessary data has been successfully copied to the target. Shardlets are only deleted on the source once all their data has been copied to the target and the corresponding mappings have been updated successfully. The deletion operation happens in the background while the range is already online on the target shard. The split-merge service always ensures correctness of the mappings stored in the shard map.
+  V případě selhání služba rozdělení a sloučení pokračuje v operacích po jakémkoli výpadku a zaměřuje na dokončení všech probíhajících žádostí. Mohou však nastat neobnovitelné situace, například, když dojde ke ztrátě nebo zabezpečení cílového horizontálních oddílů po nápravě. Za těchto okolností se může stát, že některé shardlety, které by se mohly přesunout, budou i nadále uloženy na zdrojovém horizontálních oddílů. Služba zajišťuje, aby se mapování shardletu aktualizovalo až po úspěšném zkopírování potřebných dat do cíle. Shardlety se odstraní jenom na zdroji, jakmile se všechna data zkopírují do cíle a odpovídajícím způsobem se úspěšně aktualizovala příslušná mapování. Operace odstranění probíhá na pozadí, zatímco rozsah je již online na cílovém horizontálních oddílů. Služba dělené sloučení vždy zajišťuje správnost mapování uložených v mapě horizontálních oddílů.
 
-## <a name="the-split-merge-user-interface"></a>The split-merge user interface
+## <a name="the-split-merge-user-interface"></a>Uživatelské rozhraní dělení a slučování
 
-The split-merge service package includes a worker role and a web role. The web role is used to submit split-merge requests in an interactive way. The main components of the user interface are as follows:
+Balíček služby pro dělení a slučování zahrnuje roli pracovního procesu a webovou roli. Webová role slouží k odeslání požadavků dílčího sloučení interaktivním způsobem. Hlavní součásti uživatelského rozhraní jsou následující:
 
-- **Operation Type**
+- **Typ operace**
 
-  The operation type is a radio button that controls the kind of operation performed by the service for this request. You can choose between the split, merge and move scenarios. You can also cancel a previously submitted operation. You can use split, merge and move requests for range shard maps. List shard maps only support move operations.
+  Typ operace je přepínač, který řídí druh operace prováděné službou pro tuto žádost. Můžete si vybrat mezi scénáři rozdělení, sloučení a přesunutí. Můžete také zrušit dříve odeslanou operaci. Můžete použít žádosti o rozdělení, sloučení a přesun pro rozsah mapy horizontálních oddílů. List horizontálních oddílů Maps podporuje pouze operace přesunutí.
 
-- **Shard Map**
+- **Mapa horizontálních oddílů**
 
-  The next section of request parameters covers information about the shard map and the database hosting your shard map. In particular, you need to provide the name of the Azure SQL Database server and database hosting the shardmap, credentials to connect to the shard map database, and finally the name of the shard map. Currently, the operation only accepts a single set of credentials. These credentials need to have sufficient permissions to perform changes to the shard map as well as to the user data on the shards.
+  Další oddíl parametrů požadavku obsahuje informace o mapě horizontálních oddílů a databázi hostující vaši mapu horizontálních oddílů. Konkrétně je potřeba zadat název Azure SQL Database serveru a databáze hostující shardmap, přihlašovací údaje pro připojení k databázi map horizontálních oddílů a nakonec název mapy horizontálních oddílů. V současné době tato operace akceptuje jenom jednu sadu přihlašovacích údajů. Tyto přihlašovací údaje musí mít dostatečná oprávnění k provádění změn v mapě horizontálních oddílů a také k uživatelským datům na horizontálních oddílů.
 
-- **Source Range (split and merge)**
+- **Zdrojový rozsah (rozdělení a sloučení)**
 
-  A split and merge operation processes a range using its low and high key. To specify an operation with an unbounded high key value, check the “High key is max” check box and leave the high key field empty. The range key values that you specify do not need to precisely match a mapping and its boundaries in your shard map. If you do not specify any range boundaries at all the service will infer the closest range for you automatically. You can use the GetMappings.ps1 PowerShell script to retrieve the current mappings in a given shard map.
+  Operace rozdělení a sloučení zpracuje rozsah pomocí jeho nízkého a horního klíče. Chcete-li zadat operaci s neohraničenou hodnotou klíče s vysokým klíčem, zaškrtněte políčko vysoká hodnota klíče Max a nechejte pole horní klíč prázdné. Hodnoty klíče rozsahu, které určíte, nemusejí přesně odpovídat mapování a jeho hranicím v mapě horizontálních oddílů. Pokud nezadáte žádné hranice rozsahu na všech službách, odsadí nejbližší rozsah automaticky. Pomocí skriptu PowerShellu getmappings. ps1 můžete načíst aktuální mapování v dané mapě horizontálních oddílů.
 
-- **Split Source Behavior (split)**
+- **Chování rozdělení zdroje (rozdělit)**
 
-  For split operations, define the point to split the source range. You do this by providing the sharding key where you want the split to occur. Use the radio button specify whether you want the lower part of the range (excluding the split key) to move, or whether you want the upper part to move (including the split key).
+  Pro rozdělené operace definujte bod pro rozdělení zdrojového rozsahu. Provedete to tak, že zadáte horizontálního dělení klíč, ve kterém chcete rozdělení provést. Použijte přepínač určete, zda chcete přesunout dolní část rozsahu (kromě rozděleného klíče), nebo zda chcete přesunout horní část (včetně rozděleného klíče).
 
-- **Source Shardlet (move)**
+- **Shardletu zdroje (přesunout)**
 
-  Move operations are different from split or merge operations as they do not require a range to describe the source. A source for move is simply identified by the sharding key value that you plan to move.
+  Operace přesunu se liší od operací rozdělení nebo sloučení, protože nevyžadují rozsah pro popis zdroje. Zdroj pro přesun je jednoduše identifikovaný hodnotou horizontálního dělení klíče, kterou plánujete přesunout.
 
-- **Target Shard (split)**
+- **Cílový horizontálních oddílů (rozdělit)**
 
-  Once you have provided the information on the source of your split operation, you need to define where you want the data to be copied to by providing the Azure SQL Db server and database name for the target.
+  Po zadání informací o zdroji operace rozdělení musíte definovat, do kterého chcete data zkopírovat, zadáním serveru a názvu databáze služby Azure SQL DB pro cíl.
 
-- **Target Range (merge)**
+- **Cílový rozsah (sloučení)**
 
-  Merge operations move shardlets to an existing shard. You identify the existing shard by providing the range boundaries of the existing range that you want to merge with.
+  Operace sloučení přesunou shardlety k existujícímu horizontálních oddílů. Existující horizontálních oddílů identifikujete tak, že zadáte hranice rozsahu pro existující rozsah, se kterým chcete sloučení.
 
-- **Batch Size**
+- **Velikost dávky**
 
-  The batch size controls the number of shardlets that will go offline at a time during the data movement. This is an integer value where you can use smaller values when you are sensitive to long periods of downtime for shardlets. Larger values will increase the time that a given shardlet is offline but may improve performance.
+  Velikost dávky řídí počet shardlety, které se během přesunu dat vrátí do offline režimu. Toto je celočíselná hodnota, kde můžete použít menší hodnoty, pokud budete rozlišovat na dlouhou dobu výpadku shardlety. Větší hodnoty prodlouží dobu, po kterou je daný shardletu offline, ale může zvýšit výkon.
 
-- **Operation ID (Cancel)**
+- **ID operace (zrušit)**
 
-  If you have an ongoing operation that is no longer needed, you can cancel the operation by providing its operation ID in this field. You can retrieve the operation ID from the request status table (see Section 8.1) or from the output in the web browser where you submitted the request.
+  Pokud máte probíhající operaci, která už nepotřebujete, můžete operaci zrušit tím, že v tomto poli zadáte její ID operace. ID operace můžete načíst z tabulky stav žádosti (viz oddíl 8,1) nebo z výstupu ve webovém prohlížeči, kam jste odeslali žádost.
 
-## <a name="requirements-and-limitations"></a>Requirements and Limitations
+## <a name="requirements-and-limitations"></a>Požadavky a omezení
 
-The current implementation of the split-merge service is subject to the following requirements and limitations:
+Aktuální implementace služby rozdělení a sloučení podléhá následujícím požadavkům a omezením:
 
-- The shards need to exist and be registered in the shard map before a split-merge operation on these shards can be performed.
-- The service does not create tables or any other database objects automatically as part of its operations. This means that the schema for all sharded tables and reference tables needs to exist on the target shard prior to any split/merge/move operation. Sharded tables in particular are required to be empty in the range where new shardlets are to be added by a split/merge/move operation. Otherwise, the operation will fail the initial consistency check on the target shard. Also note that reference data is only copied if the reference table is empty and that there are no consistency guarantees with regard to other concurrent write operations on the reference tables. We recommend this: when running split/merge operations, no other write operations make changes to the reference tables.
-- The service relies on row identity established by a unique index or key that includes the sharding key to improve performance and reliability for large shardlets. This allows the service to move data at an even finer granularity than just the sharding key value. This helps to reduce the maximum amount of log space and locks that are required during the operation. Consider creating a unique index or a primary key including the sharding key on a given table if you want to use that table with split/merge/move requests. For performance reasons, the sharding key should be the leading column in the key or the index.
-- During the course of request processing, some shardlet data may be present both on the source and the target shard. This is necessary to protect against failures during the shardlet movement. The integration of split-merge with the shard map ensures that connections through the data-dependent routing APIs using the **OpenConnectionForKey** method on the shard map do not see any inconsistent intermediate states. However, when connecting to the source or the target shards without using the **OpenConnectionForKey** method, inconsistent intermediate states might be visible when split/merge/move requests are going on. These connections may show partial or duplicate results depending on the timing or the shard underlying the connection. This limitation currently includes the connections made by Elastic Scale Multi-Shard-Queries.
-- The metadata database for the split-merge service must not be shared between different roles. For example, a role of the split-merge service running in staging needs to point to a different metadata database than the production role.
+- Horizontálních oddílů musí existovat a musí být registrována v mapě horizontálních oddílů předtím, než je možné provést operaci dělení a sloučení u těchto horizontálních oddílů.
+- Služba nevytváří v rámci svých operací automaticky tabulky ani žádné jiné databázové objekty. To znamená, že schéma pro všechny tabulky horizontálně dělené a referenční tabulky musí existovat na cílovém horizontálních oddílů před jakoukoli operací Split/Merge/Move. Tabulky horizontálně dělené musí být v rozsahu prázdné, aby bylo přidáno nové shardlety pomocí operace rozdělení/sloučení nebo přesunutí. V opačném případě operace neproběhne při prvotní kontrole konzistence na cílovém horizontálních oddílů. Všimněte si také, že referenční data jsou zkopírována pouze v případě, že je referenční tabulka prázdná a že neexistují žádné záruky konzistence s ohledem na jiné souběžné operace zápisu v referenčních tabulkách. Doporučujeme toto: při spouštění operací rozdělení/sloučení neprovádí žádné jiné operace zápisu změny v referenčních tabulkách.
+- Služba spoléhá na identitu řádku vytvořenou jedinečným indexem nebo klíčem, který obsahuje klíč horizontálního dělení pro zlepšení výkonu a spolehlivosti pro velké shardletyy. Díky tomu může služba přesouvat data s ještě jemnější členitosti než jenom hodnota horizontálního dělení klíče. To pomáhá snižovat maximální množství místa v protokolu a zámků, které jsou požadovány během operace. Pokud chcete použít tuto tabulku s požadavky na rozdělení/sloučení/přesun, zvažte vytvoření jedinečného indexu nebo primárního klíče, včetně klíče horizontálního dělení v dané tabulce. Z důvodu výkonu by měl být klíč horizontálního dělení jako první sloupec v klíči nebo v indexu.
+- V průběhu zpracování žádosti můžou být některá shardletu data přítomná jak na zdrojovém, tak na cílovém horizontálních oddílů. To je nezbytné k ochraně před chybami při shardletu pohybu. Integrace rozděleného sloučení s mapou horizontálních oddílů zajišťuje, že připojení prostřednictvím rozhraní API směrování závislých na datech pomocí metody **OpenConnectionForKey** na mapě horizontálních oddílů neobsahují žádné nekonzistentní přechodné stavy. Při připojení ke zdroji nebo cílové horizontálních oddílů bez použití metody **OpenConnectionForKey** se ale můžou zobrazit nekonzistentní přechodné stavy, když se provedou žádosti o rozdělení/sloučení nebo přesunutí. Tato připojení mohou zobrazovat částečné nebo duplicitní výsledky v závislosti na časování nebo horizontálních oddílůu, který je pro připojení podkladové. Toto omezení v současné době zahrnuje připojení vytvořená horizontálních oddílůmi dotazy elastického škálování.
+- Databáze metadat pro službu dělení a slučování nesmí být sdílená mezi různými rolemi. Například role služby dělení a slučování běžící v přípravě musí odkazovat na jinou databázi metadat než produkční role.
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 
-The split-merge service runs as a cloud service in your Microsoft Azure subscription. Therefore charges for cloud services apply to your instance of the service. Unless you frequently perform split/merge/move operations, we recommend you delete your split-merge cloud service. That saves costs for running or deployed cloud service instances. You can re-deploy and start your readily runnable configuration whenever you need to perform split or merge operations.
+Služba dělení a slučování běží jako cloudová služba v rámci předplatného Microsoft Azure. Proto se poplatky za Cloud Services vztahují na vaši instanci služby. Pokud neprovádíte často operace rozdělení, sloučení nebo přesunutí, doporučujeme odstranit cloudovou službu pro dělení a slučování. Který šetří náklady na provoz nebo nasazení instancí cloudové služby. Můžete znovu nasadit a spustit spustitelný konfiguraci, kdykoli budete potřebovat provést operace rozdělení nebo sloučení.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
-### <a name="status-tables"></a>Status tables
+### <a name="status-tables"></a>Tabulky stavu
 
-The split-merge Service provides the **RequestStatus** table in the metadata store database for monitoring of completed and ongoing requests. The table lists a row for each split-merge request that has been submitted to this instance of the split-merge service. It gives the following information for each request:
+Služba rozdělení a sloučení poskytuje tabulku **stavem žádosti** v databázi úložiště metadat pro monitorování dokončených a probíhajících požadavků. Tabulka obsahuje řádek pro každou žádost o dělené sloučení, která byla odeslána do této instance služby dělení a slučování. Pro každý požadavek poskytuje tyto informace:
 
-- **Timestamp**
+- **Časové razítko**
 
-  The time and date when the request was started.
+  Čas a datum spuštění žádosti.
 
 - **OperationId**
 
-  A GUID that uniquely identifies the request. This request can also be used to cancel the operation while it is still ongoing.
+  Identifikátor GUID, který jedinečně identifikuje požadavek. Tuto žádost lze také použít k zrušení operace, dokud stále probíhá.
 
 - **Stav**
 
-  The current state of the request. For ongoing requests, it also lists the current phase in which the request is.
+  Aktuální stav žádosti. V případě průběžných žádostí také uvádí aktuální fázi, ve které je žádost.
 
 - **CancelRequest**
 
-  A flag that indicates whether the request has been canceled.
+  Příznak, který označuje, zda byla žádost zrušena.
 
-- **Progress**
+- **Přejde**
 
-  A percentage estimate of completion for the operation. A value of 50 indicates that the operation is approximately 50% complete.
+  Procentuální odhad dokončení operace. Hodnota 50 znamená, že operace je přibližně 50% dokončeno.
 
 - **Podrobnosti**
 
-  An XML value that provides a more detailed progress report. The progress report is periodically updated as sets of rows are copied from source to target. In case of failures or exceptions, this column also includes more detailed information about the failure.
+  Hodnota XML, která poskytuje podrobnější sestavu průběhu. Zpráva o průběhu se pravidelně aktualizuje, protože sady řádků se zkopírují ze zdroje do cíle. V případě selhání nebo výjimek obsahuje tento sloupec také podrobnější informace o selhání.
 
 ### <a name="azure-diagnostics"></a>Diagnostika Azure
 
-The split-merge service uses Azure Diagnostics based on Azure SDK 2.5 for monitoring and diagnostics. You control the diagnostics configuration as explained here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). The download package includes two diagnostics configurations - one for the web role and one for the worker role. It includes the definitions to log Performance Counters, IIS logs, Windows Event Logs, and split-merge application event logs.
+Služba dělení a slučování používá pro monitorování a diagnostiku Azure Diagnostics založenou na sadě Azure SDK 2,5. Konfiguraci diagnostiky můžete řídit, jak je vysvětleno zde: [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Balíček ke stažení obsahuje dvě konfigurace diagnostiky – jeden pro webovou roli a jeden pro roli pracovního procesu. Obsahuje definice pro protokolování čítačů výkonu, protokolů služby IIS, protokolů událostí systému Windows a protokolů událostí aplikací pro dělené sloučení.
 
-## <a name="deploy-diagnostics"></a>Deploy Diagnostics
+## <a name="deploy-diagnostics"></a>Nasadit diagnostiku
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
-To enable monitoring and diagnostics using the diagnostic configuration for the web and worker roles provided by the NuGet package, run the following commands using Azure PowerShell:
+Pokud chcete povolit monitorování a diagnostiku pomocí diagnostické konfigurace pro webové a pracovní role poskytované balíčkem NuGet, spusťte následující příkazy pomocí Azure PowerShell:
 
 ```powershell
 $storageName = "<azureStorageAccount>"
@@ -239,42 +239,42 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
     -Slot Production -Role "SplitMergeWorker"
 ```
 
-You can find more information on how to configure and deploy diagnostics settings here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
+Další informace o tom, jak nakonfigurovat a nasadit nastavení diagnostiky, najdete tady: [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
-## <a name="retrieve-diagnostics"></a>Retrieve diagnostics
+## <a name="retrieve-diagnostics"></a>Načíst diagnostiku
 
-You can easily access your diagnostics from the Visual Studio Server Explorer in the Azure part of the Server Explorer tree. Open a Visual Studio instance, and in the menu bar click View, and Server Explorer. Click the Azure icon to connect to your Azure subscription. Then navigate to Azure -> Storage -> `<your storage account>` -> Tables -> WADLogsTable. For more information, see [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx).
+K diagnostice můžete snadno přistupovat ze sady Visual Studio Průzkumník serveru v části Azure stromu Průzkumník serveru. Otevřete instanci sady Visual Studio a v řádku nabídek klikněte na tlačítko Zobrazit a Průzkumník serveru. Kliknutím na ikonu Azure se připojíte k vašemu předplatnému Azure. Pak přejděte do Azure-> Storage-> Tables `<your storage account>`-> Tables-> WADLogsTable. Další informace najdete v tématu [Průzkumník serveru](https://msdn.microsoft.com/library/x603htbk.aspx).
 
 ![WADLogsTable][2]
 
-The WADLogsTable highlighted in the figure above contains the detailed events from the split-merge service’s application log. Note that the default configuration of the downloaded package is geared towards a production deployment. Therefore the interval at which logs and counters are pulled from the service instances is large (5 minutes). For test and development, lower the interval by adjusting the diagnostics settings of the web or the worker role to your needs. Right-click on the role in the Visual Studio Server Explorer (see above) and then adjust the Transfer Period in the dialog for the Diagnostics configuration settings:
+WADLogsTable zvýrazněný na obrázku výše obsahuje podrobné události z aplikačního protokolu služby dělené sloučení. Všimněte si, že výchozí konfigurace staženého balíčku je zaměřená na produkční nasazení. Proto je interval, ve kterém jsou protokoly a čítače z instancí služby načítány, velký (5 minut). V případě testování a vývoje snižte interval úpravou nastavení diagnostiky webu nebo role pracovního procesu podle vašich potřeb. Klikněte pravým tlačítkem na roli v Průzkumník serveru sady Visual Studio (viz výše) a upravte dobu přenosu v dialogovém okně pro nastavení konfigurace diagnostiky:
 
 ![Konfigurace][3]
 
 ## <a name="performance"></a>Výkon
 
-In general, better performance is to be expected from the higher, more performant service tiers in Azure SQL Database. Higher IO, CPU and memory allocations for the higher service tiers benefit the bulk copy and delete operations that the split-merge service uses. For that reason, increase the service tier just for those databases for a defined, limited period of time.
+Obecně platí, že vyšší výkon se bude očekávat od vyšších, více výkonných úrovní služeb v Azure SQL Database. Zvýšení vstupně-výstupních operací a přidělení paměti pro vyšší úrovně služeb přináší výhody hromadného kopírování a odstraňování operací, které používá služba pro dělené sloučení. Z tohoto důvodu zvyšte úroveň služby jenom pro tyto databáze na definované a omezené časové období.
 
-The service also performs validation queries as part of its normal operations. These validation queries check for unexpected presence of data in the target range and ensure that any split/merge/move operation starts from a consistent state. These queries all work over sharding key ranges defined by the scope of the operation and the batch size provided as part of the request definition. These queries perform best when an index is present that has the sharding key as the leading column.
+Služba také provádí ověřovací dotazy jako součást běžných operací. Tyto ověřovací dotazy kontrolují neočekávanou přítomnost dat v cílovém rozsahu a zajišťují, že všechny operace rozdělení, sloučení a přesunu začnou být v konzistentním stavu. Tyto dotazy budou mít veškerou práci nad horizontálního dělení klíčovými rozsahy definovanými oborem operace a velikostí dávky poskytnutou v rámci definice požadavku. Tyto dotazy jsou vykonatelné nejlépe, když je přítomen index, který má horizontálního dělení klíč jako počáteční sloupec.
 
-In addition, a uniqueness property with the sharding key as the leading column will allow the service to use an optimized approach that limits resource consumption in terms of log space and memory. This uniqueness property is required to move large data sizes (typically above 1GB).
+Vlastnost Unique s klíčem horizontálního dělení jako provedený sloupec navíc umožní službě používat optimalizovaný přístup, který omezuje spotřebu prostředků z hlediska místa v protokolu a paměti. Tato vlastnost jedinečnosti je nutná k přesunutí velkých velikostí dat (obvykle nad 1 GB).
 
-## <a name="how-to-upgrade"></a>How to upgrade
+## <a name="how-to-upgrade"></a>Postup upgradu
 
-1. Follow the steps in [Deploy a split-merge service](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-2. Change your cloud service configuration file for your split-merge deployment to reflect the new configuration parameters. A new required parameter is the information about the certificate used for encryption. An easy way to do this is to compare the new configuration template file from the download against your existing configuration. Make sure you add the settings for “DataEncryptionPrimaryCertificateThumbprint” and “DataEncryptionPrimary” for both the web and the worker role.
-3. Before deploying the update to Azure, ensure that all currently running split-merge operations have finished. You can easily do this by querying the RequestStatus and PendingWorkflows tables in the split-merge metadata database for ongoing requests.
-4. Update your existing cloud service deployment for split-merge in your Azure subscription with the new package and your updated service configuration file.
+1. Postupujte podle kroků v části [nasazení služby dělení a slučování](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+2. Změňte konfigurační soubor cloudové služby pro nasazení rozděleného sloučení tak, aby odrážel nové parametry konfigurace. Nový požadovaný parametr je informace o certifikátu použitém k šifrování. To lze snadno provést tak, že porovnáte nový soubor šablony konfigurace od stažení proti vaší stávající konfiguraci. Nezapomeňte přidat nastavení "DataEncryptionPrimaryCertificateThumbprint" a "DataEncryptionPrimary" pro web i roli pracovního procesu.
+3. Před nasazením aktualizace do Azure zajistěte, aby byly dokončeny všechny aktuálně spuštěné operace dělení na sloučení. Můžete to snadno provést dotazování tabulek stavem žádosti a PendingWorkflows v databázi s metadaty pro dělené sloučení pro probíhající požadavky.
+4. Aktualizujte stávající nasazení cloudové služby pro rozdělené sloučení v předplatném Azure pomocí nového balíčku a aktualizovaného konfiguračního souboru služby.
 
-You do not need to provision a new metadata database for split-merge to upgrade. The new version will automatically upgrade your existing metadata database to the new version.
+Nemusíte zřizovat novou databázi metadat pro rozdělení a sloučení pro upgrade. Nová verze bude automaticky upgradovat stávající databázi metadat na novou verzi.
 
-## <a name="best-practices--troubleshooting"></a>Best practices & troubleshooting
+## <a name="best-practices--troubleshooting"></a>Osvědčené postupy & řešení potíží
 
-- Define a test tenant and exercise your most important split/merge/move operations with the test tenant across several shards. Ensure that all metadata is defined correctly in your shard map and that the operations do not violate constraints or foreign keys.
-- Keep the test tenant data size above the maximum data size of your largest tenant to ensure you are not encountering data size related issues. This helps you assess an upper bound on the time it takes to move a single tenant around.
-- Make sure that your schema allows deletions. The split-merge service requires the ability to remove data from the source shard once the data has been successfully copied to the target. For example, **delete triggers** can prevent the service from deleting the data on the source and may cause operations to fail.
-- The sharding key should be the leading column in your primary key or unique index definition. That ensures the best performance for the split or merge validation queries, and for the actual data movement and deletion operations which always operate on sharding key ranges.
-- Collocate your split-merge service in the region and data center where your databases reside.
+- Definujte testovacího tenanta a vyzkoušejte své nejdůležitější operace rozdělení, sloučení nebo přesunutí s testovacím klientem napříč několika horizontálních oddílů. Zajistěte, aby byla v mapě horizontálních oddílů správně definovaná všechna metadata a aby operace neporušila omezení nebo cizí klíče.
+- Udržujte velikost testovacích dat tenanta nad maximální velikostí dat vašeho největšího tenanta, abyste se ujistili, že se nesetkáte s problémy souvisejícími s velikostí dat. To vám pomůže vyhodnotit horní mez v době, kdy je potřeba přesunout jednoho tenanta kolem.
+- Ujistěte se, že vaše schéma umožňuje odstranění. Služba rozdělení a sloučení vyžaduje možnost odebrání dat ze zdrojového horizontálních oddílů, jakmile se data úspěšně zkopírují do cíle. Například **triggery Delete** můžou zabránit službě ve odstranění dat na zdroji a můžou způsobit selhání operací.
+- Klíč horizontálního dělení by měl být počátečním sloupcem v definici primárního klíče nebo jedinečného indexu. Který zajišťuje nejlepší výkon pro dotazy na rozdělené nebo slučovací ověřování a pro skutečné operace přesunu a odstranění dat, které vždy pracují s rozsahy horizontálního děleních klíčů.
+- Společné umístění službu pro dělení a slučování v oblasti a datovém centru, kde jsou umístěny vaše databáze.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

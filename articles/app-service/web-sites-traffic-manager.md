@@ -1,6 +1,6 @@
 ---
-title: Control traffic with Traffic Manager - Azure App Service
-description: This article provides summary information for  Azure Traffic Manager as it relates to Azure App Service.
+title: Řízení provozu pomocí Traffic Manager-Azure App Service
+description: Tento článek poskytuje souhrnné informace o službě Azure Traffic Manager v souvislosti s Azure App Service.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -22,39 +22,39 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483376"
 ---
-# <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Controlling Azure App Service traffic with Azure Traffic Manager
+# <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Řízení provozu Azure App Service s využitím Azure Traffic Manager
 > [!NOTE]
-> This article provides summary information for Microsoft Azure Traffic Manager as it relates to Azure App Service. More information about Azure Traffic Manager itself can be found by visiting the links at the end of this article.
+> Tento článek poskytuje souhrnné informace o Microsoft Azure Traffic Manager v souvislosti s Azure App Service. Další informace o samotném Azure Traffic Manager najdete na odkazech na konci tohoto článku.
 > 
 > 
 
-## <a name="introduction"></a>Představení
-You can use Azure Traffic Manager to control how requests from web clients are distributed to apps in Azure App Service. Pokud do profilu služby Azure Traffic Manager přidáte koncové body služby App Service, služba Azure Traffic Manager bude sledovat stav vašich aplikací App Service (spuštěné, zastavené nebo odstraněné), aby se mohla rozhodnout, do kterého z těchto koncových bodů se má směrovat provoz.
+## <a name="introduction"></a>Úvod
+Pomocí Azure Traffic Manager můžete řídit, jak se budou požadavky z webových klientů distribuovat do aplikací v Azure App Service. Pokud do profilu služby Azure Traffic Manager přidáte koncové body služby App Service, služba Azure Traffic Manager bude sledovat stav vašich aplikací App Service (spuštěné, zastavené nebo odstraněné), aby se mohla rozhodnout, do kterého z těchto koncových bodů se má směrovat provoz.
 
 ## <a name="routing-methods"></a>Metody směrování
-Azure Traffic Manager uses four different routing methods. These methods are described  in the following list as they pertain to Azure App Service.
+Azure Traffic Manager používá čtyři různé metody směrování. Tyto metody jsou popsány v následujícím seznamu, protože se vztahují k Azure App Service.
 
-* **[Priority](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method):** use a primary app for all traffic, and provide backups in case the primary or the backup apps are unavailable.
-* **[Weighted](../traffic-manager/traffic-manager-routing-methods.md#weighted):** distribute traffic across a set of apps, either evenly or according to weights, which you define.
-* **[Performance](../traffic-manager/traffic-manager-routing-methods.md#performance):** when you have apps in different geographic locations, use the "closest" app in terms of the lowest network latency.
-* **[Geographic](../traffic-manager/traffic-manager-routing-methods.md#geographic):** direct users to specific apps based on which geographic location their DNS query originates from. 
+* **[Priorita](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method):** použijte primární aplikaci pro veškerý provoz a poskytněte zálohy pro případ, že primární nebo záložní aplikace nejsou k dispozici.
+* **[Vážená](../traffic-manager/traffic-manager-routing-methods.md#weighted):** distribuujte provoz napříč sadou aplikací, a to buď rovnoměrně, nebo podle vah, které definujete.
+* **[Výkon](../traffic-manager/traffic-manager-routing-methods.md#performance):** Pokud máte aplikace v různých geografických umístěních, použijte "nejbližší" aplikaci z hlediska nejnižší latence sítě.
+* **[Geografické](../traffic-manager/traffic-manager-routing-methods.md#geographic):** přímé uživatele na konkrétní aplikace na základě toho, ze kterého geografického umístění dotaz DNS pocházejí. 
 
-For more information, see [Traffic Manager routing methods](../traffic-manager/traffic-manager-routing-methods.md).
+Další informace najdete v tématu [metody směrování Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md).
 
-## <a name="app-service-and-traffic-manager-profiles"></a>App Service and Traffic Manager Profiles
-To configure the control of App Service app traffic, you create a profile in Azure Traffic Manager that uses one of the four load balancing methods described previously, and then add the endpoints (in this case, App Service) for which you want to control traffic to the profile. Your app status (running, stopped, or deleted) is regularly communicated to the profile so that Azure Traffic Manager can direct traffic accordingly.
+## <a name="app-service-and-traffic-manager-profiles"></a>Profily App Service a Traffic Manager
+Pokud chcete nakonfigurovat řízení provozu aplikací App Service, vytvořte v Azure Traffic Manager profil, který používá jednu ze čtyř výše popsaných metod Vyrovnávání zatížení, a pak přidejte koncové body (v tomto případě App Service), pro které chcete řídit provoz na profilu. Stav vaší aplikace (spuštěné, zastavené nebo odstraněné) se pravidelně komunikuje s profilem, aby služba Azure Traffic Manager mohla odpovídajícím způsobem směrovat provoz.
 
-When using Azure Traffic Manager with Azure, keep in mind the following points:
+Při používání Azure Traffic Manager s Azure mějte na paměti následující body:
 
-* For app only deployments within the same region, App Service already provides failover and round-robin functionality without regard to app mode.
-* For deployments in the same region that use App Service in conjunction with another Azure cloud service, you can combine both types of endpoints to enable hybrid scenarios.
-* You can only specify one App Service endpoint per region in a profile. When you select an app as an endpoint for one region, the remaining apps in that region become unavailable for selection for that profile.
-* The App Service endpoints that you specify in an Azure Traffic Manager profile appears under the **Domain Names** section on the Configure page for the app in the profile, but is not configurable there.
-* After you add an app to a profile, the **Site URL** on the Dashboard of the app's portal page displays the custom domain URL of the app if you have set one up. Otherwise, it displays the Traffic Manager profile URL (for example, `contoso.trafficmanager.net`). Both the direct domain name of the app and the Traffic Manager URL are visible on the app's Configure page under the **Domain Names** section.
-* Your custom domain names work as expected, but in addition to adding them to your apps, you must also configure your DNS map to point to the Traffic Manager URL. For information on how to set up a custom domain for an App Service app,  see [Map an existing custom DNS name to Azure App Service](app-service-web-tutorial-custom-domain.md).
-* You can only add apps that are in standard or premium mode to an Azure Traffic Manager profile.
+* Pro nasazení jenom aplikace v rámci stejné oblasti už App Service v rámci stejné oblasti poskytuje funkce převzetí služeb při selhání a kruhové dotazování bez ohledu na režim aplikace.
+* Pro nasazení ve stejné oblasti, která používá App Service ve spojení s jinou cloudovou službou Azure, můžete kombinovat oba typy koncových bodů a povolit tak hybridní scénáře.
+* V profilu můžete zadat jenom jeden App Service koncový bod na oblast. Když vyberete aplikaci jako koncový bod pro jednu oblast, zbývající aplikace v této oblasti nebudou k dispozici pro výběr tohoto profilu.
+* Koncové body App Service, které zadáte v profilu Azure Traffic Manager, se zobrazí v části **názvy domén** na stránce konfigurace pro aplikaci v profilu, ale zde se nedají konfigurovat.
+* Když přidáte aplikaci do profilu, **Adresa URL webu** na řídicím panelu na stránce portálu aplikace zobrazí adresu URL vlastní domény aplikace, pokud jste ji nastavili. V opačném případě se zobrazí adresa URL profilu Traffic Manager (například `contoso.trafficmanager.net`). Přímý název domény aplikace i adresa URL Traffic Manager jsou viditelné na stránce konfigurace aplikace v části **názvy domén** .
+* Vaše vlastní názvy domén pracují podle očekávání, ale kromě jejich přidání do aplikací musíte také nakonfigurovat mapu DNS tak, aby odkazovala na adresu URL Traffic Manager. Informace o tom, jak nastavit vlastní doménu pro aplikaci App Service, najdete v tématu [Mapování existujícího vlastního názvu DNS na Azure App Service](app-service-web-tutorial-custom-domain.md).
+* Do profilu Azure Traffic Manager můžete přidat jenom aplikace, které jsou v režimu Standard nebo Premium.
 
 ## <a name="next-steps"></a>Další kroky
-For a conceptual and technical overview of Azure Traffic Manager, see [Traffic Manager Overview](../traffic-manager/traffic-manager-overview.md).
+Koncepční a technický přehled služby Azure Traffic Manager najdete v tématu [přehled Traffic Manager](../traffic-manager/traffic-manager-overview.md).
 
 

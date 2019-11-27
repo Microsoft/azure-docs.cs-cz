@@ -13,9 +13,9 @@ ms.locfileid: "74451463"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Nasazení šablony ze služby Cloud Shell
 
-K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/overview.md). To deploy an external template, provide the URI of the template exactly as you would for any external deployment. To deploy a local template, you must first load your template into the storage account for your Cloud Shell. This section describes how to load the template to your cloud shell account, and deploy it as a local file. If you haven't used Cloud Shell, see [Overview of Azure Cloud Shell](../articles/cloud-shell/overview.md) for information about setting it up.
+K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/overview.md). Pokud chcete nasadit externí šablonu, zadejte identifikátor URI šablony přesně stejně jako u jakéhokoli externího nasazení. Pokud chcete nasadit místní šablonu, musíte nejdřív načíst šablonu do účtu úložiště pro vaši Cloud Shell. Tato část popisuje, jak načíst šablonu do účtu Cloud Shell a jak ji nasadit jako místní soubor. Pokud jste nepoužili Cloud Shell, přečtěte si téma [přehled Azure Cloud Shell](../articles/cloud-shell/overview.md) , kde najdete informace o jeho nastavení.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 1. Vyberte vaši skupinu prostředků služby Cloud Shell. Vzor názvů je `cloud-shell-storage-<region>`.
 
@@ -33,29 +33,29 @@ K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/ove
 
    ![Přidání kontejneru](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. Give your container a name and an access level. The sample template in this article contains no sensitive information, so allow anonymous read access. Vyberte **OK**.
+1. Dejte kontejneru název a úroveň přístupu. Ukázková šablona v tomto článku neobsahuje žádné citlivé informace, takže umožňuje anonymní přístup pro čtení. Vyberte **OK**.
 
-   ![Provide container values](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
+   ![Zadat hodnoty kontejneru](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
-1. Select the container you created.
+1. Vyberte kontejner, který jste vytvořili.
 
-   ![Select new container](./media/resource-manager-cloud-shell-deploy/select-container.png)
+   ![Vybrat nový kontejner](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
 1. Vyberte **Nahrát**.
 
-   ![Upload blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
+   ![Nahrát objekt BLOB](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 
 1. Vyhledejte a nahrajte vaši šablonu.
 
    ![Nahrání souboru](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
 
-1. After it has uploaded, select the template.
+1. Po nahrání vyberte šablonu.
 
-   ![Select new template](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
+   ![Vybrat novou šablonu](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
 
-1. Copy the URL.
+1. Zkopírujte adresu URL.
 
-   ![Copy URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
+   ![Kopírovat adresu URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Otevřete příkazový řádek.
 

@@ -1,5 +1,5 @@
 ---
-title: PowerShell example-Sync between SQL Database and SQL Server on-premises
+title: Příklad PowerShellu – synchronizace mezi SQL Database a SQL Serverá místně
 description: Ukázkový skript Azure PowerShellu pro synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru
 services: sql-database
 ms.service: sql-database
@@ -26,21 +26,21 @@ Tento příklad PowerShellu nakonfiguruje Synchronizaci dat pro synchronizaci me
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-If you choose to install and use the PowerShell locally, this tutorial requires AZ PowerShell 1.4.0 or later. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](../sql-database-sync-data.md).
 
 > [!IMPORTANT]
-> Azure SQL Data Sync does not support Azure SQL Database Managed Instance at this time.
+> Azure Synchronizace dat SQL v tuto chvíli nepodporuje spravovanou instanci Azure SQL Database.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Create an Azure SQL database from AdventureWorksLT sample database as hub database
-- Create an Azure SQL database in the same region as sync database
-- Create an on premises SQL Server database as member database
-- Update the parameter placeholders before running the example
+- Vytvoření databáze SQL Azure z ukázkové databáze AdventureWorksLT jako databáze centra
+- Vytvoření databáze SQL Azure ve stejné oblasti jako databáze synchronizace
+- Vytvoření místní databáze SQL Server jako členské databáze
+- Před spuštěním příkladu aktualizujte zástupné symboly parametrů
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 ```powershell-interactive
 using namespace Microsoft.Azure.Commands.Sql.DataSync.Model
@@ -290,16 +290,16 @@ Remove-AzResourceGroup -ResourceGroupName $syncDatabaseResourceGroupName
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzSqlSyncAgent](/powershell/module/az.sql/New-azSqlSyncAgent) |  Vytvoří nového agenta synchronizace. |
 | [New-AzSqlSyncAgentKey](/powershell/module/az.sql/New-azSqlSyncAgentKey) |  Vygeneruje klíč agenta přidružený k agentovi synchronizace. |
 | [Get-AzSqlSyncAgentLinkedDatabase](/powershell/module/az.sql/Get-azSqlSyncAgentLinkedDatabase) |  Získá všechny informace o agentovi synchronizace. |
 | [New-AzSqlSyncMember](/powershell/module/az.sql/New-azSqlSyncMember) |  Přidá do skupiny synchronizace nového člena. |
-| [Update-AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  Aktualizuje informace o schématu databáze. |
+| [Update – AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  Aktualizuje informace o schématu databáze. |
 | [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/Get-azSqlSyncSchema) |  Získá informace o schématu databáze. |
-| [Update-AzSqlSyncGroup](/powershell/module/az.sql/Update-azSqlSyncGroup) |  Aktualizuje skupinu synchronizace. |
-| [Start-AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | Aktivuje synchronizaci. |
+| [Update – AzSqlSyncGroup](/powershell/module/az.sql/Update-azSqlSyncGroup) |  Aktualizuje skupinu synchronizace. |
+| [Spustit – AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | Aktivuje synchronizaci. |
 | [Get-AzSqlSyncGroupLog](/powershell/module/az.sql/Get-azSqlSyncGroupLog) |  Zkontroluje protokol synchronizace. |
 |||
 
@@ -311,18 +311,18 @@ Další ukázkové skripty PowerShellu pro službu SQL Database najdete v témat
 
 Další informace o Synchronizaci dat SQL:
 
-- Overview - [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync](../sql-database-sync-data.md)
-- Set up Data Sync
-    - In the portal - [Tutorial: Set up SQL Data Sync to sync data between Azure SQL Database and SQL Server on-premises](../sql-database-get-started-sql-data-sync.md)
+- Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí Azure synchronizace dat SQL](../sql-database-sync-data.md)
+- Nastavení synchronizace dat
+    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním](../sql-database-get-started-sql-data-sync.md) prostředím
     - S využitím PowerShellu
         - [Synchronizace mezi několika databázemi Azure SQL pomocí PowerShellu](sql-database-sync-data-between-sql-databases.md)
-- Data Sync Agent - [Data Sync Agent for Azure SQL Data Sync](../sql-database-data-sync-agent.md)
-- Best practices - [Best practices for Azure SQL Data Sync](../sql-database-best-practices-data-sync.md)
-- Monitor - [Monitor SQL Data Sync with Azure Monitor logs](../sql-database-sync-monitor-oms.md)
-- Troubleshoot - [Troubleshoot issues with Azure SQL Data Sync](../sql-database-troubleshoot-data-sync.md)
-- Update the sync schema
-    - With Transact-SQL - [Automate the replication of schema changes in Azure SQL Data Sync](../sql-database-update-sync-schema.md)
-    - With PowerShell - [Use PowerShell to update the sync schema in an existing sync group](sql-database-sync-update-schema.md)
+- Agent synchronizace dat – [Agent synchronizace dat pro Azure synchronizace dat SQL](../sql-database-data-sync-agent.md)
+- Osvědčené postupy – [osvědčené postupy pro Azure synchronizace dat SQL](../sql-database-best-practices-data-sync.md)
+- Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](../sql-database-sync-monitor-oms.md)
+- Řešení potíží – [řešení potíží s Azure synchronizace dat SQL](../sql-database-troubleshoot-data-sync.md)
+- Aktualizace schématu synchronizace
+    - Pomocí jazyka Transact-SQL – [Automatizace replikace změn schématu v Azure synchronizace dat SQL](../sql-database-update-sync-schema.md)
+    - Prostředí PowerShell – [použití PowerShellu k aktualizaci schématu synchronizace v existující skupině synchronizace](sql-database-sync-update-schema.md)
 
 Další informace o službě SQL Database:
 

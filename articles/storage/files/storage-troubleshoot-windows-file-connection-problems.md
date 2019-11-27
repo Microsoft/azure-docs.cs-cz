@@ -266,7 +266,7 @@ Když se soubor zkopíruje přes síť, dešifruje se na zdrojovém počítači,
 ### <a name="cause"></a>Příčina
 K tomuto problému může dojít, pokud používáte systém souborů EFS (Encrypting File System) (EFS). Soubory šifrované BitLockerem je možné zkopírovat do souborů Azure. Soubory Azure ale nepodporují systém souborů NTFS.
 
-### <a name="workaround"></a>Alternativní řešení:
+### <a name="workaround"></a>Alternativní řešení
 Chcete-li zkopírovat soubor přes síť, je nutné jej nejprve dešifrovat. Použijte jednu z následujících metod:
 
 - Použijte příkaz **Kopírovat/d** . Povoluje ukládání šifrovaných souborů v cílovém umístění jako dešifrovaných souborů.

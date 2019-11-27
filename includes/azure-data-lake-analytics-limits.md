@@ -11,11 +11,11 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224568"
 ---
-Azure Data Lake Analytics makes the complex task of managing distributed infrastructure and complex code easy. It dynamically provisions resources, and you can use it to do analytics on exabytes of data. When the job completes, it winds down resources automatically. You pay only for the processing power that was used. Při zvýšení nebo snížení objemu uložených dat nebo množství prováděných výpočtů nemusíte přepisovat kód. To raise the default limits for your subscription, contact support.
+Azure Data Lake Analytics usnadňuje správu distribuované infrastruktury a složitého kódu. Dynamicky zřizuje prostředky a můžete je použít k analýze datových zdrojů Exabyte. Po dokončení úlohy se automaticky vítr prostředky. Platíte jenom za výpočetní výkon, který jste použili. Při zvětšování a zmenšování objemu uložených dat nebo množství využitých výpočtů nemusíte přepisovat kód. Pokud chcete pro své předplatné zvýšit výchozí omezení, obraťte se na podporu.
 
 | **Prostředek** | **Výchozí omezení** | **Komentáře** |
 | --- | --- | --- |
-| Maximum number of concurrent jobs |20 | |
-| Maximum number of analytics units (AUs) per account |250 | Use any combination of up to a maximum of 250 AUs across 20 jobs. To increase this limit, contact Microsoft Support. |
-| Maximum script size for job submission | 3 MB | |
-| Maximum number of Data Lake Analytics accounts per region per subscription | 5 | To increase this limit, contact Microsoft Support. |
+| Maximální počet souběžných úloh |20 | |
+| Maximální počet jednotek analýzy (Austrálie) na účet |250 | Použijte libovolnou kombinaci až do maximálního počtu 250 jednotek Austrálie napříč 20 úlohami. Pokud chcete tento limit zvýšit, kontaktujte podpora Microsoftu. |
+| Maximální velikost skriptu pro odeslání úlohy | 3 MB | |
+| Maximální počet účtů Data Lake Analytics na oblast v rámci předplatného | 5 | Pokud chcete tento limit zvýšit, kontaktujte podpora Microsoftu. |

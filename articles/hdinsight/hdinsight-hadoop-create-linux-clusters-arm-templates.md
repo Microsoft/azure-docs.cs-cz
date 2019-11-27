@@ -25,7 +25,7 @@ V tomto článku se dozvíte několik způsobů, jak vytvářet clustery Azure H
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Předplatného Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* [Předplatné Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Azure PowerShell a/nebo Azure CLI.
 
 ### <a name="resource-manager-templates"></a>Šablony Resource Manageru

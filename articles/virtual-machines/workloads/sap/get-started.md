@@ -1,6 +1,6 @@
 ---
-title: Get started with SAP on Azure VMs | Microsoft Docs
-description: Learn about SAP solutions that run on virtual machines (VMs) in Microsoft Azure
+title: Začínáme s SAP na virtuálních počítačích Azure | Microsoft Docs
+description: Přečtěte si o řešeních SAP, která běží na virtuálních počítačích v Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -23,95 +23,95 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74328012"
 ---
-# <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Use Azure to host and run SAP workload scenarios
+# <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
-When you use Microsoft Azure, you can reliably run your mission-critical SAP workloads and scenarios on a scalable, compliant, and enterprise-proven platform. You get the scalability, flexibility, and cost savings of Azure. With the expanded partnership between Microsoft and SAP, you can run SAP applications across development and test and production scenarios in Azure and be fully supported. From SAP NetWeaver to SAP S/4HANA, SAP BI on Linux to Windows, and SAP HANA to SQL, we've got you covered.
+Když použijete Microsoft Azure, můžete spolehlivě spouštět klíčové úlohy a scénáře SAP na škálovatelné, kompatibilní a podnikové prověřené platformě. Získáte škálovatelnost, flexibilitu a úspory nákladů Azure. Díky rozšířenému partnerství mezi společnostmi Microsoft a SAP můžete spouštět aplikace SAP napříč vývojovými a testovacími a provozními scénáři v Azure a plně podporovat. Z SAP NetWeaver do SAP S/4HANA, SAP BI v systému Linux do Windows a SAP HANA k SQL, máme na vás přehled.
 
-Besides hosting SAP NetWeaver scenarios with the different DBMS on Azure, you can host other SAP workload scenarios, like SAP BI on Azure. 
+Kromě hostování scénářů SAP NetWeaver s různými systémy DBMS v Azure můžete hostovat i další scénáře úloh SAP, jako je například SAP BI v Azure. 
 
-The uniqueness of Azure for SAP HANA is an offer that sets Azure apart. To enable hosting more memory and CPU resource-demanding SAP scenarios that involve SAP HANA, Azure offers the use of customer-dedicated bare-metal hardware. Use this solution to run SAP HANA deployments that require up to 24 TB (120-TB scale-out) of memory for S/4HANA or other SAP HANA workload. 
+Jedinečnost Azure pro SAP HANA je nabídka, která nastavuje Azure odděleně. Aby bylo možné hostovat víc paměti a scénářů SAP náročných na prostředky procesoru, které zahrnují SAP HANA, Azure nabízí použití holého hardwaru vyhrazeného pro zákazníky. Pomocí tohoto řešení můžete spouštět SAP HANA nasazení, která vyžadují až 24 TB (120 – TB škálování) paměti pro S/4HANA nebo jiné úlohy SAP HANA. 
 
-Hosting SAP workload scenarios in Azure also can create requirements of identity integration and single sign-on. This situation can occur when you use Azure Active Directory (Azure AD) to connect different SAP components and SAP software-as-a-service (SaaS) or platform-as-a-service (PaaS) offers. A list of such integration and single sign-on scenarios with Azure AD and SAP entities is described and documented in the section "AAD SAP identity integration and single sign-on."
+Hostování scénářů pro úlohy SAP v Azure taky může vytvořit požadavky na integraci identit a jednotné přihlašování. K této situaci může dojít, když použijete Azure Active Directory (Azure AD) k propojení různých komponent SAP a SAP software-as-a-Service (SaaS) nebo Platform-as-a-Service (PaaS). Seznam takových scénářů integrace a jednotného přihlašování s entitami služby Azure AD a SAP je popsán v části "AAD SAP Identity Integration and Single přihlašování".
 
-## <a name="changes-to-the-sap-workload-section"></a>Changes to the SAP workload section
-Changes to documents in the SAP on Azure workload section are listed at the end of this article.
+## <a name="changes-to-the-sap-workload-section"></a>Změny v části úlohy SAP
+Změny dokumentů v části věnované úlohám SAP v Azure najdete na konci tohoto článku.
 
 
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA v Azure (velké instance)
 
-A series of documents leads you through SAP HANA on Azure (Large Instances), or for short, HANA Large Instances. For information on the following areas of HANA Large Instances, see:
+Řada dokumentů vás provede SAP HANA v Azure (velké instance) nebo pro krátké instance s vysokou kapacitou HANA. Informace o následujících oblastech velkých instancí HANA najdete v těchto tématech:
 
-- [Overview of SAP HANA on Azure (Large Instances)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
-- [Architecture of SAP HANA on Azure (Large Instances)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-architecture)
-- [Infrastructure and connectivity to SAP HANA on Azure (Large Instances)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- [Install SAP HANA on Azure (Large Instances)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
-- [High availability and disaster recovery of SAP HANA on Azure (Large Instances)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
-- [Troubleshoot and monitor SAP HANA on Azure (Large Instances)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
+- [Přehled SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [Architektura SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-architecture)
+- [Infrastruktura a připojení k SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
+- [Instalace SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
+- [Vysoká dostupnost a zotavení po havárii SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
+- [Řešení potíží a monitorování SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 
 Další kroky:
 
-- Read [Overview and architecture of SAP HANA on Azure (Large Instances)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- Přečtěte si [Přehled a architekturu SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 
 
 
-## <a name="sap-hana-on-azure-virtual-machines"></a>SAP HANA on Azure virtual machines
-This section of the documentation covers different aspects of SAP HANA. As a prerequisite, you should be familiar with the principal services of Azure that provide elementary services of Azure IaaS. So, you need knowledge of Azure compute, storage, and networking. Many of these subjects are handled in the SAP NetWeaver-related [Azure planning guide](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide). 
+## <a name="sap-hana-on-azure-virtual-machines"></a>SAP HANA na virtuálních počítačích Azure
+Tato část dokumentace obsahuje různé aspekty SAP HANA. V rámci předpokladů byste měli být obeznámeni s hlavními službami Azure, které poskytují základní služby Azure IaaS. Proto potřebujete znát výpočetní výkon, úložiště a síť Azure. Mnohé z těchto věcí jsou zpracovávány v [Průvodci plánováním Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)NetWeaver souvisejících s SAP. 
 
-For information on HANA on Azure, see the following articles and their subarticles:
+Informace o HANA v Azure najdete v následujících článcích a v jejich podčlánkůch:
 
-- [Quickstart: Manual installation of single-instance SAP HANA on Azure VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
-- [Deploy SAP S/4HANA or BW/4HANA on Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)
+- [Rychlý Start: ruční instalace SAP HANA s jednou instancí na virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)
 - [Konfigurace infrastruktury SAP HANA a operace v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
-- [SAP HANA high availability for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
-- [SAP HANA availability within one Azure region](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
-- [SAP HANA availability across Azure regions](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)
-- [High availability of SAP HANA on Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
-- [Backup guide for SAP HANA on Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-- [SAP HANA Azure Backup on file level](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
-- [SAP HANA backup based on storage snapshots](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
+- [SAP HANA vysoké dostupnosti pro virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+- [Dostupnost SAP HANA v rámci jedné oblasti Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
+- [SAP HANA dostupnost napříč oblastmi Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)
+- [Vysoká dostupnost SAP HANA na virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
+- [Průvodce zálohováním pro SAP HANA na virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [SAP HANA Azure Backup na úrovni souborů](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
+- [Zálohování SAP HANA na základě snímků úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
 
  
 
-## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>SAP NetWeaver deployed on Azure virtual machines
-This section lists planning and deployment documentation for SAP NetWeaver and Business One on Azure. The documentation focuses on the basics and the use of non-HANA databases with an SAP workload on Azure. The documents and articles for high availability are also the foundation for HANA high availability in Azure, such as:
+## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>SAP NetWeaver nasazené na virtuálních počítačích Azure
+Tato část obsahuje dokumentaci pro plánování a nasazení pro SAP NetWeaver a firmy One na Azure. Dokumentace se zaměřuje na základy a používání databází jiných než HANA s úlohou SAP v Azure. Dokumenty a články pro vysokou dostupnost představují také základ vysoké dostupnosti pro HANA v Azure, například:
 
-- [SAP Business One on Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/business-one-azure)
-- [Deploy SAP IDES EHP7 SP3 for SAP ERP 6.0 on Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-ides-erp6-erp7-sp3-sql)
-- [Run SAP NetWeaver on Microsoft Azure SUSE Linux VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)
-- [Azure Virtual Machines planning and implementation for SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
-- [Azure Virtual Machines deployment for SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
-- [Protect a multitier SAP NetWeaver application deployment by using Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap)
+- [SAP Business One na virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/business-one-azure)
+- [Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6,0 v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-ides-erp6-erp7-sp3-sql)
+- [Spuštění SAP NetWeaver na virtuálních počítačích s Microsoft Azure SUSE Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)
+- [Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
+- [Nasazení Azure Virtual Machines pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
+- [Ochrana nasazení aplikace s více vrstvami SAP NetWeaver pomocí Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap)
 - [Konektor SAP LaMa pro Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/lama-installation)
 
-For information on non-HANA databases under an SAP workload on Azure, see:
+Informace o databázích, které nejsou HANA v rámci úlohy SAP v Azure, najdete v těchto tématech:
 
-- [Considerations for Azure Virtual Machines DBMS deployment for SAP workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [SQL Server Azure Virtual Machines DBMS deployment for SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver)
+- [Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
+- [SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver)
 - [Nasazení DBMS v počítačích Azure Virtual Machines s Oraclem pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle)
 - [Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)
 - [Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
-- [SAP MaxDB, Live Cache, and Content Server deployment on Azure VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_maxdb)
+- [MaxDB SAP, živá mezipaměť a nasazení obsahu serveru na virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_maxdb)
 
-For information on SAP HANA databases on Azure, see the section "SAP HANA on Azure virtual machines."
+Informace o SAP HANA databázích v Azure najdete v části SAP HANA na virtuálních počítačích Azure.
 
-For information on high availability of an SAP workload on Azure, see:
+Informace o vysoké dostupnosti úlohy SAP v Azure najdete v těchto tématech:
 
-- [Azure Virtual Machines high availability for SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
+- [Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
 
-This document points to various other architecture and scenario documents. In later scenario documents, links to detailed technical documents that explain the deployment and configuration of the different high-availability methods are provided. The different documents that show how to establish and configure high availability for an SAP NetWeaver workload cover Linux and Windows operating systems.
+Tento dokument odkazuje na různé jiné architektury a dokumenty scénářů. V novějších dokumentech scénářů jsou k dispozici odkazy na podrobné technické dokumenty, které popisují nasazení a konfiguraci různých metod s vysokou dostupností. Různé dokumenty, které ukazují, jak vytvořit a nakonfigurovat vysokou dostupnost pro úlohy SAP NetWeaver, zahrnují systémy Linux a operační systémy Windows.
 
 
-For information on integration between Azure Active Directory (Azure AD) and SAP services and single sign-on, see:
+Informace o integraci mezi Azure Active Directory (Azure AD) a službami SAP a jednotným přihlašováním najdete v těchto tématech:
 
-- [Tutorial: Azure Active Directory integration with SAP Cloud for Customer](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-customer-cloud-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Tutorial: Azure Active Directory integration with SAP Cloud Platform Identity Authentication](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Tutorial: Azure Active Directory integration with SAP Cloud Platform](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Tutorial: Azure Active Directory integration with SAP NetWeaver](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-netweaver-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Tutorial: Azure Active Directory integration with SAP Business ByDesign](https://docs.microsoft.com/azure/active-directory/saas-apps/sapbusinessbydesign-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Tutorial: Azure Active Directory integration with SAP HANA](https://docs.microsoft.com/azure/active-directory/saas-apps/saphana-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Your S/4HANA environment: Fiori Launchpad SAML single sign-on with Azure AD](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
+- [Kurz: Azure Active Directory integrace se SAP cloudem pro zákazníky](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-customer-cloud-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Kurz: Azure Active Directory integrace s ověřováním identity cloudové platformy SAP](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Kurz: Azure Active Directory integrace s cloudovou platformou SAP](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Kurz: Azure Active Directory integrace s SAP NetWeaver](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-netweaver-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Kurz: Azure Active Directory integrace se SAP Business ByDesign](https://docs.microsoft.com/azure/active-directory/saas-apps/sapbusinessbydesign-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Kurz: Azure Active Directory integrace s SAP HANA](https://docs.microsoft.com/azure/active-directory/saas-apps/saphana-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Prostředí S/4HANA: jednotné přihlašování Fiori hlavní panel SAML pomocí Azure AD](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
 
-For information on integration of Azure services into SAP components, see:
+Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech:
 
 - [Použití SAP HANA v Power BI Desktopu](https://docs.microsoft.com/power-bi/desktop-sap-hana)
 - [DirectQuery a SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
@@ -120,32 +120,32 @@ For information on integration of Azure services into SAP components, see:
 
 
 ## <a name="change-log"></a>Protokol změn
-- 11/21/2019: Changes in [SAP HANA scale-out with standby node on Azure VMs with Azure NetApp Files on SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) to simplify the configuration for NFS ID mapping and change the recommended primary network interface to simplify routing.
-- 11/15/2019: Minor changes in [High availability for SAP NetWeaver on SUSE Linux Enterprise Server with Azure NetApp Files for SAP applications](high-availability-guide-suse-netapp-files.md) and [High availability for SAP NetWeaver on Red Hat Enterprise Linux with Azure NetApp Files for SAP applications](high-availability-guide-rhel-netapp-files.md) to clarify capacity pool size restrictions and remove statement that only NFSv3 version is supported.
-- 11/12/2019: Release of [High availability for SAP NetWeaver on Windows with Azure NetApp Files (SMB)](high-availability-guide-windows-netapp-files-smb.md)
-- 11/08/2019: Changes in [High availability of SAP HANA on Azure VMs on SUSE Linux Enterprise Server](sap-hana-high-availability.md), [Set up SAP HANA System Replication on Azure virtual machines (VMs)](sap-hana-high-availability-rhel.md), [Azure Virtual Machines high availability for SAP NetWeaver on SUSE Linux Enterprise Server for SAP applications](high-availability-guide-suse.md), [Azure Virtual Machines high availability for SAP NetWeaver on SUSE Linux Enterprise Server with Azure NetApp Files](high-availability-guide-suse-netapp-files.md), [Azure Virtual Machines high availability for SAP NetWeaver on Red Hat Enterprise Linux](high-availability-guide-rhel.md), [Azure Virtual Machines high availability for SAP NetWeaver on Red Hat Enterprise Linux  with Azure NetApp Files](high-availability-guide-rhel-netapp-files.md), [High availability for NFS on Azure VMs on SUSE Linux Enterprise Server](high-availability-guide-suse-nfs.md), [GlusterFS on Azure VMs on Red Hat Enterprise Linux for SAP NetWeaver](high-availability-guide-rhel-glusterfs.md) to recommend Azure standard load balancer  
-- 11/08/2019: Changes in [SAP workload planning and deployment checklist](sap-deployment-checklist.md) to clarify encryption recommendation  
-- 11/04/2019: Changes in [Setting up Pacemaker on SUSE Linux Enterprise Server in Azure](high-availability-guide-suse-pacemaker.md) to create the cluster directly with unicast configuration  
-- 10/29/2019: Release of [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](high-availability-guide-standard-load-balancer-outbound-connections.md)
-- 10/25/2019: Changes in [SAP HANA Azure virtual machine storage configurations](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) and [SAP HANA scale-out with standby node on Azure VMs with Azure NetApp Files on SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) to clarify NFS protocol for /hana/shared volume
-- 10/22/2019: Change in [High availability for SAP NetWeaver on Azure VMs on SUSE Linux Enterprise Server for SAP applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [High availability for SAP NetWeaver on Azure VMs on SUSE Linux Enterprise Server with Azure NetApp Files for SAP applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), [High availability for NFS on Azure VMs on SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs), [Setting up Pacemaker on SUSE Linux Enterprise Server in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker), [High availability of IBM Db2 LUW on Azure VMs on SUSE Linux Enterprise Server with Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm), and [High availability of SAP HANA on Azure VMs on SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) for Azure Load-Balancer Detection Hardening
-- Changes ANF section and header section in [SAP HANA Azure virtual machine storage configurations](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-- 10/21/2019: Release of [SAP HANA scale-out with standby node on Azure VMs with Azure NetApp Files on SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-- 10/16/2019: Fix broken links in [Backup and restore](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore)
-- 10/16/2019: Change the minimum recommended OS from SLES 12 SP3 to SLES 12 SP4 in [High availability of IBM Db2 LUW on Azure VMs on SUSE Linux Enterprise Server with Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)
-- 10/11/2019: Changes to Ultra disk storage configurations and introduction of ANF in [SAP HANA Azure virtual machine storage configurations](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-- 10/01/2019: Change in graphics of [Azure proximity placement groups for optimal network latency with SAP applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) to get more clarity
-- 10/01/2019: Change in [SAP HANA infrastructure configurations and operations on Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) to correct statements around highly available NFS share for /hana/shared. 
-- 09/28/2019: Change in [Setting up Pacemaker on Red Hat Enterprise Linux in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) to clarify SBD as a fencing mechanism is not supported on RHEL clusters  
-- 09/17/2019: Change in NetWeaver Planning and Deployment Guide to unify terms around VM Extension for SAP  
-- 08/22/2019: Changes in [Setting up Pacemaker on SUSE Linux Enterprise Server in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) to update the URLs for custom role creation  
-- 08/16/2019: Changes in [Setting up Pacemaker on Red Hat Enterprise Linux in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) to remind customers to update the actions in the custom role, if updating to the new version of the Azure fence agent  
-- 08/15/2019: Changes in [SAP HANA Azure virtual machine storage configurations](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) to reflect General Availability of Ultra disk (formerly Ultra SSD)
-- 08/01/2019: Changes to [Setting up Pacemaker on SUSE Linux Enterprise Server in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) to integrate changes specifically for SLES 15 
-- 07/23/2019: Changes in [Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a file share in Azure](sap-high-availability-guide-wsfc-file-share.md) to reflect support of Storage Space Direct by Azure Site Recovery Services
-- 07/14/2019: Release of [Azure Proximity Placement Groups for optimal network latency with SAP applications](sap-proximity-placement-scenarios.md)
-- 07/11/2019: Changes in various documents covering HANA Large Instances to cover Revision 4 of HANA Large Instances
-- 07/09/2019: Release of new guide for [IBM Db2 HADR in Red Hat Enterprise Server](high-availability-guide-rhel-ibm-db2-luw.md)
-- 06/13/2019: Release of [High availability for SAP NetWeaver on Red Hat Enterprise Linux with Azure NetApp Files for SAP applications](high-availability-guide-rhel-netapp-files.md)
+- 11/21/2019: změny v [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) pro zjednodušení konfigurace mapování ID NFS a změna doporučeného primárního síťového rozhraní pro zjednodušení směrování.
+- 11/15/2019: drobné změny [vysoké dostupnosti pro SAP NetWeaver v SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](high-availability-guide-suse-netapp-files.md) a [vysokou dostupnost pro sap NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace](high-availability-guide-rhel-netapp-files.md) SAP pro vysvětlení omezení velikosti fondu kapacity a příkazu Remove, který podporuje jenom NFSv3 verze.
+- 11/12/2019: vydání [vysoké dostupnosti pro SAP NetWeaver v systému Windows s použitím protokolu SMB (Azure NetApp Files)](high-availability-guide-windows-netapp-files-smb.md)
+- 11/08/2019: změny [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v SUSE Linux Enterprise Server](sap-hana-high-availability.md), [nastavení SAP HANA systémové replikace na virtuálních počítačích azure](sap-hana-high-availability-rhel.md), [Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver v SUSE Linux Enterprise Server pro aplikace](high-availability-guide-suse.md) [SAP, Azure Virtual Machines vysoká](high-availability-guide-suse-netapp-files.md)dostupnost pro SAP [NetWeaver v SUSE Linux Enterprise Server ](high-availability-guide-rhel.md), [Azure Virtual Machines vysoké dostupnosti pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files](high-availability-guide-rhel-netapp-files.md), [vysokou dostupností pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](high-availability-guide-suse-nfs.md), [GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver](high-availability-guide-rhel-glusterfs.md) , které doporučují Azure Standard Load Balancer.  
+- 11/08/2019: změny v [kontrolním seznamu plánování úloh SAP a nasazení](sap-deployment-checklist.md) k objasnění doporučení pro šifrování  
+- 11/04/2019: změny v [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](high-availability-guide-suse-pacemaker.md) pro vytvoření clusteru přímo s konfigurací jednosměrového vysílání  
+- 10/29/2019: vydání [připojení k veřejnému koncovému bodu pro Virtual Machines s využitím Azure Standard Load Balancer ve scénářích služby SAP pro vysokou dostupnost](high-availability-guide-standard-load-balancer-outbound-connections.md)
+- 10/25/2019: změny v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) a SAP HANA škálování na více instancí [s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) k objasnění protokolu NFS pro/Hana/Shared svazek
+- 10/22/2019: Změna [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NETAPP Files pro aplikace SAP ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), [Vysoká dostupnost pro systém souborů NFS na virtuálních počítačích azure při SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs), [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker), [Vysoká dostupnost IBM Db2 LUW na virtuálních počítačích Azure v SUSE Linux Enterprise Server s Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm). a [Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) pro detekci zesílení služby Vyrovnávání zatížení Azure
+- Mění oddíl a hlavičku ANF v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) .
+- 10/21/2019: vydání [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+- 10/16/2019: opravte poškozené odkazy v [zálohování a obnovení](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore)
+- 10/16/2019: Změňte minimální doporučený operační systém z SLES 12 SP3 na SLES 12 SP4 pro [vysokou dostupnost IBM DB2 LUW na virtuálních počítačích Azure v SUSE Linux Enterprise Server s Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)
+- 10/11/2019: změny konfigurace úložiště Ultra disk a zavedení ANF v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+- 10/01/2019: Změna grafiky [skupin umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) pro lepší přehlednost
+- 10/01/2019: Změna v [SAP HANA konfiguracích infrastruktury a operací v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) pro správné příkazy pro sdílenou složku NFS s vysokou dostupností pro/Hana/Shared. 
+- 09/28/2019: Změna [Nastavení Pacemaker v systému Azure na Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) pro vysvětlení SBD, protože v CLUSTERech RHEL není podporován mechanismus pro oplocení  
+- 09/17/2019: Změna v Průvodci plánováním a nasazením NetWeaver pro sjednocení podmínek v souvislosti s rozšířením virtuálního počítače pro SAP  
+- 08/22/2019: změny v [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro aktualizaci adres URL pro vytvoření vlastní role  
+- 08/16/2019: změny v [Nastavení Pacemaker na Red Hat Enterprise Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) , které zákazníkům připomínat, aby si aktualizovali akce v vlastní roli, pokud se aktualizuje na novou verzi agenta Azure plot  
+- 08/15/2019: změny v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , aby odrážely obecnou dostupnost Ultra disk (dřív SSD úrovně Ultra)
+- 08/01/2019: změny [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro integraci změn konkrétně pro SLES 15 
+- 07/23/2019: změny v [clusteru ASCS/SCS instance SAP v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky v Azure](sap-high-availability-guide-wsfc-file-share.md) , aby odrážely podporu prostoru úložiště s přímým přístupem Azure Site Recovery službami
+- 07/14/2019: vydání [skupin umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md)
+- 07/11/2019: změny v různých dokumentech, které pokrývají velké instance HANA, zahrnují revize 4 velkých instancí HANA
+- 07/09/2019: vydání nové příručky pro [IBM DB2 hadr na serveru Red Hat Enterprise](high-availability-guide-rhel-ibm-db2-luw.md)
+- 06/13/2019: vydání [vysoké dostupnosti pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](high-availability-guide-rhel-netapp-files.md)
 
 

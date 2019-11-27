@@ -1,5 +1,5 @@
 ---
-title: Provision simulated X.509 device to Azure IoT Hub using Java
+title: Zřizování simulovaného zařízení X. 509 pro Azure IoT Hub pomocí jazyka Java
 description: Rychlý start Azure – Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Java SDK pro zařízení pro službu IoT Hub Device Provisioning. V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
@@ -16,7 +16,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229573"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Create and provision a simulated X.509 device using Java device SDK for IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro zařízení Java pro IoT Hub Device Provisioning Service
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Windows simulovat zařízení X.509 a pomocí vzorového kódu propojit toto simulované zařízení se službou Device Provisioning a centrem IoT. 
@@ -72,20 +72,20 @@ Pomocí vzorového kódu ze sady [Azure IoT SDK pro Javu](https://github.com/Azu
     java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
     ```
 
-2. Po zobrazení text _Do you want to input common name_ (Chcete zadat běžný název) zadejte **N**. Zkopírujte do schránky výstup `Client Cert` od řádku *-----BEGIN CERTIFICATE-----* po řádek *-----END CERTIFICATE-----* .
+2. Po zobrazení text **Do you want to input common name** (Chcete zadat běžný název) zadejte _N_. Zkopírujte do schránky výstup `Client Cert` od řádku *-----BEGIN CERTIFICATE-----* po řádek *-----END CERTIFICATE-----* .
 
    ![Generátor jednotlivých certifikátů](./media/java-quick-create-simulated-device-x509/individual.png)
 
 3. Na svém počítači s Windows vytvořte soubor **_X509individual.pem_** , otevřete ho v libovolném editoru a zkopírujte do něj obsah schránky. Uložte soubor a zavřete editor.
 
-4. Na příkazovém řádku po zobrazení textu _Do you want to input Verification Code_ (Chcete zadat ověřovací kód) zadejte **N** a nechte výstup programu otevřený, protože ho použijete jako referenci v pozdější části tohoto rychlého startu. Později zkopírujete hodnoty `Client Cert` a `Client Cert Private Key` pro použití v další části.
+4. Na příkazovém řádku po zobrazení textu **Do you want to input Verification Code** (Chcete zadat ověřovací kód) zadejte _N_ a nechte výstup programu otevřený, protože ho použijete jako referenci v pozdější části tohoto rychlého startu. Později zkopírujete hodnoty `Client Cert` a `Client Cert Private Key` pro použití v další části.
 
 5. Přihlaste se k webu [Azure Portal](https://portal.azure.com), v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou instanci služby Device Provisioning Service.
 
 6. V okně s přehledem služby Device Provisioning vyberte **Správa registrací**. Vyberte kartu **Jednotlivé registrace** a nahoře klikněte na tlačítko **Přidat jednotlivou registraci**. 
 
 7. Na panelu **Přidat registraci** zadejte následující informace:
-   - Jako *Mechanismus* ověření identity vyberte **X.509**.
+   - Jako **Mechanismus** ověření identity vyberte *X.509*.
    - V části *Soubor .pem nebo .cer primárního certifikátu* klikněte na *Vyberte soubor* a vyberte soubor certifikátu **X509individual.pem** vytvořený v předchozích krocích.  
    - Volitelně můžete zadat následující informace:
      - Vyberte centrum IoT propojené s vaší zřizovací službou.
@@ -162,7 +162,7 @@ Pomocí vzorového kódu ze sady [Azure IoT SDK pro Javu](https://github.com/Azu
 Pokud chcete pokračovat v práci s touto ukázkou klienta zařízení a jejím prozkoumáváním, nevyčišťujte prostředky vytvořené v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
 
 1. Zavřete na svém počítači okno výstupu ukázky klienta zařízení.
-2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte svou službu Device Provisioning. Open the **Manage Enrollments** blade for your service, and then click the **Individual Enrollments** tab. Select the *REGISTRATION ID* of the device you enrolled in this Quickstart, and click the **Delete** button at the top. 
+2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte svou službu Device Provisioning. Otevřete okno **Správa** registrací pro vaši službu a pak klikněte na kartu **jednotlivé registrace** . Vyberte *ID registrace* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části. 
 3. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. Otevřete okno **Zařízení IoT** pro vaše centrum, vyberte *ID ZAŘÍZENÍ*, které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části.
 
 

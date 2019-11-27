@@ -1,6 +1,6 @@
 ---
-title: Tag resources for logical organization
-description: Shows how to apply tags to organize Azure resources for billing and managing.
+title: Označení prostředků pro logickou organizaci
+description: Ukazuje, jak použít značky k uspořádání prostředků Azure k fakturaci a správě.
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: f3fca2030d33ba5a52d43924ff542801d435e4de
@@ -14,13 +14,13 @@ ms.locfileid: "74484276"
 
 [!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
-To apply tags to resources, the user must have write access to that resource type. To apply tags to all resource types, use the [Contributor](../role-based-access-control/built-in-roles.md#contributor) role. To apply tags to only one resource type, use the contributor role for that resource. For example, to apply tags to virtual machines, use the [Virtual Machine Contributor](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+Pro použití značek u prostředků musí mít uživatel k tomuto typu prostředku přístup pro zápis. Chcete-li použít značky pro všechny typy prostředků, použijte roli [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) . Pokud chcete použít Tagy jenom pro jeden typ prostředku, použijte pro tento prostředek roli přispěvatele. Pokud například chcete použít značky pro virtuální počítače, použijte [přispěvatele virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="policies"></a>Zásady
 
-You can use [Azure Policy](../governance/policy/overview.md) to enforce tagging rules and conventions. By creating a policy, you avoid the scenario of resources being deployed to your subscription that don't comply with the expected tags for your organization. Instead of manually applying tags or searching for resources that aren't compliant, you can create a policy that automatically applies the needed tags during deployment. Tags can also now be applied to existing resources with the new [Modify](../governance/policy/concepts/effects.md#modify) effect and a [remediation task](../governance/policy/how-to/remediate-resources.md). The following section shows example policies for tags.
+Pomocí [Azure Policy](../governance/policy/overview.md) můžete vymáhat pravidla označování a konvence. Vytvořením zásady se vyhnete scénáři nasazení prostředků do vašeho předplatného, které nedodržují očekávané značky vaší organizace. Místo ručního použití značek nebo hledání prostředků, které nedodržují předpisy, můžete vytvořit zásadu, která při nasazení automaticky použije potřebné značky. Značky se teď dají použít u existujících prostředků s novým efektem [změny](../governance/policy/concepts/effects.md#modify) a [úlohou nápravy](../governance/policy/how-to/remediate-resources.md). V následující části jsou uvedeny příklady zásad pro značky.
 
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
@@ -67,7 +67,7 @@ Pokud chcete získat *prostředky s konkrétní značkou*, použijte:
 (Get-AzResource -Tag @{ Dept="Finance"}).Name
 ```
 
-To get *resources that have a specific tag name*, use:
+Chcete-li získat *prostředky, které mají konkrétní název značky*, použijte:
 
 ```azurepowershell-interactive
 (Get-AzResource -TagName Dept).Name
@@ -104,7 +104,7 @@ $r.Tags.Add("Status", "Approved")
 Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-To apply all tags from a resource group to its resources, and *not keep existing tags on the resources*, use the following script:
+Pokud chcete použít všechny značky ze skupiny prostředků na prostředky a *nezachovat existující značky prostředků*, použijte tento skript:
 
 ```azurepowershell-interactive
 $groups = Get-AzResourceGroup
@@ -114,7 +114,7 @@ foreach ($g in $groups)
 }
 ```
 
-To apply all tags from a resource group to its resources, and *keep existing tags on resources that aren't duplicates*, use the following script:
+Pokud chcete použít všechny značky ze skupiny prostředků na prostředky a *zachovat existující značky u neduplicitních prostředků*, použijte tento skript:
 
 ```azurepowershell-interactive
 $group = Get-AzResourceGroup "examplegroup"
@@ -165,25 +165,25 @@ Výstup tohoto skriptu bude v následujícím formátu:
 }
 ```
 
-Or, to see the existing tags for a *resource that has a specified name, type, and resource group*, use:
+Nebo pokud chcete zobrazit existující značky pro prostředek se *zadaným názvem, typem a skupinou prostředků*, použijte:
 
 ```azurecli
 az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
 ```
 
-When looping through a collection of resources, you might want to show the resource by resource ID. A complete example is shown later in this article. Pokud chcete zobrazit existující značky pro *prostředek s konkrétním ID prostředku*, použijte:
+Při procházení kolekcí prostředků je vhodné zobrazit prostředek podle ID prostředku. Kompletní příklad je uveden dále v tomto článku. Pokud chcete zobrazit existující značky pro *prostředek s konkrétním ID prostředku*, použijte:
 
 ```azurecli
 az resource show --id <resource-id> --query tags
 ```
 
-To get resource groups that have a specific tag, use `az group list`:
+Chcete-li získat skupiny prostředků s konkrétní značkou, použijte `az group list`:
 
 ```azurecli
 az group list --tag Dept=IT
 ```
 
-To get all the resources that have a particular tag and value, use `az resource list`:
+Chcete-li získat všechny prostředky, které mají určitou značku a hodnotu, použijte `az resource list`:
 
 ```azurecli
 az resource list --tag Dept=Finance
@@ -203,7 +203,7 @@ Pokud chcete přidat značky k *prostředku bez existujících značek*, použij
 az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-To add tags to a resource that already has tags, retrieve the existing tags, reformat that value, and reapply the existing and new tags:
+Chcete-li přidat značky k prostředku, který již obsahuje značky, načtěte existující značky, přeformátujte tuto hodnotu a znovu použijte existující a nové značky:
 
 ```azurecli
 jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags -o json)
@@ -211,7 +211,7 @@ rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
 az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-To apply all tags from a resource group to its resources, and *not keep existing tags on the resources*, use the following script:
+Pokud chcete použít všechny značky ze skupiny prostředků na prostředky a *nezachovat existující značky prostředků*, použijte tento skript:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -227,7 +227,7 @@ do
 done
 ```
 
-To apply all tags from a resource group to its resources, and *keep existing tags on resources*, use the following script:
+Pokud chcete použít všechny značky ze skupiny prostředků na prostředky a *zachovat existující značky prostředků*, použijte tento skript:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -247,7 +247,7 @@ done
 
 ## <a name="templates"></a>Šablony
 
-To tag a resource during deployment, add the `tags` element to the resource you're deploying. Zadejte název a hodnotu značky.
+Chcete-li během nasazování označit prostředek, přidejte `tags` element do prostředku, který nasazujete. Zadejte název a hodnotu značky.
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>Použití literálové hodnoty na název značky
 
@@ -283,7 +283,7 @@ Následující příklad ukazuje účet úložiště se dvěma značkami (`Dept`
 }
 ```
 
-To set a tag to a datetime value, use the [utcNow function](resource-group-template-functions-string.md#utcnow).
+Chcete-li nastavit značku na hodnotu DateTime, použijte [funkci UtcNow](resource-group-template-functions-string.md#utcnow).
 
 ### <a name="apply-an-object-to-the-tag-element"></a>Použití objektu na element značky
 
@@ -325,7 +325,7 @@ Můžete definovat parametr objektu, ve kterém je uloženo několik značek, a 
 
 ### <a name="apply-a-json-string-to-the-tag-name"></a>Použití řetězce JSON na název značky
 
-Pokud chcete uložit mnoho hodnot v jedné značce, použijte řetězec JSON, který představuje hodnoty. The entire JSON string is stored as one tag that can't exceed 256 characters. V následujícím příkladu je jedna značka `CostCenter`, která obsahuje několik hodnot z řetězce JSON:  
+Pokud chcete uložit mnoho hodnot v jedné značce, použijte řetězec JSON, který představuje hodnoty. Celý řetězec JSON je uložen jako jedna značka, která nemůže být delší než 256 znaků. V následujícím příkladu je jedna značka `CostCenter`, která obsahuje několik hodnot z řetězce JSON:  
 
 ```json
 {
@@ -356,9 +356,9 @@ Pokud chcete uložit mnoho hodnot v jedné značce, použijte řetězec JSON, kt
 }
 ```
 
-### <a name="apply-tags-from-resource-group"></a>Apply tags from resource group
+### <a name="apply-tags-from-resource-group"></a>Použít značky ze skupiny prostředků
 
-To apply tags from a resource group to a resource, use the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. When getting the tag value, use the `tags.[tag-name]` syntax instead of the `tags.tag-name` syntax, because some characters aren't parsed correctly in the dot notation.
+Chcete-li použít značky ze skupiny prostředků na prostředek, použijte funkci [Resource](resource-group-template-functions-resource.md#resourcegroup) . Při získávání hodnoty značky použijte místo syntaxe `tags.tag-name` syntaxi `tags.[tag-name]`, protože některé znaky se v zápisu tečky neanalyzují správně.
 
 ```json
 {
@@ -394,19 +394,19 @@ To apply tags from a resource group to a resource, use the [resourceGroup](resou
 
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 
-The Azure portal and PowerShell both use the [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) behind the scenes. If you need to integrate tagging into another environment, you can get tags by using **GET** on the resource ID and update the set of tags by using a **PATCH** call.
+Azure Portal a PowerShell používají [Správce prostředků REST API](https://docs.microsoft.com/rest/api/resources/) na pozadí. Pokud potřebujete integrovat označování do jiného prostředí, můžete získat značky pomocí metody **Get** pro ID prostředku a aktualizovat sadu značek pomocí volání **opravy** .
 
-## <a name="tags-and-billing"></a>Tags and billing
+## <a name="tags-and-billing"></a>Značky a fakturace
 
-You can use tags to group your billing data. For example, if you're running multiple VMs for different organizations, use the tags to group usage by cost center. You can also use tags to categorize costs by runtime environment, such as the billing usage for VMs running in the production environment.
+K seskupení fakturačních dat můžete použít značky. Pokud například spouštíte více virtuálních počítačů pro různé organizace, použijte značky k seskupení využití podle nákladového centra. Pomocí značek můžete také kategorizovat náklady podle běhového prostředí, jako je například využití fakturace pro virtuální počítače běžící v produkčním prostředí.
 
-You can retrieve information about tags through the [Azure Resource Usage and RateCard APIs](../billing/billing-usage-rate-card-overview.md) or the usage comma-separated values (CSV) file. You download the usage file from the [Azure Account Center](https://account.azure.com/Subscriptions) or Azure portal. For more information, see [Download or view your Azure billing invoice and daily usage data](../billing/billing-download-azure-invoice-daily-usage-date.md). When downloading the usage file from the Azure Account Center, select **Version 2**. For services that support tags with billing, the tags appear in the **Tags** column.
+Můžete načítat informace o značkách prostřednictvím [rozhraní API pro využití prostředků Azure a ratecard](../billing/billing-usage-rate-card-overview.md) nebo souborů hodnot oddělených čárkami (CSV). Soubor využití si můžete stáhnout z [centrum účtů Azure](https://account.azure.com/Subscriptions) nebo Azure Portal. Další informace najdete v tématech [stažení nebo zobrazení fakturačních faktur Azure a dat o denním využití](../billing/billing-download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z Centrum účtů Azure vyberte možnost **verze 2**. Pro služby, které podporují značky s fakturací, se značky zobrazí ve sloupci **značky** .
 
-For REST API operations, see [Azure Billing REST API Reference](/rest/api/billing/).
+Informace o REST API operacích najdete v [referenčních informacích o fakturačních REST API Azure](/rest/api/billing/).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Not all resource types support tags. To determine if you can apply a tag to a resource type, see [Tag support for Azure resources](tag-support.md).
-* For an introduction to using the portal, see [Using the Azure portal to manage your Azure resources](manage-resource-groups-portal.md).  
+* Ne všechny typy prostředků podporují značky. Pokud chcete zjistit, jestli můžete pro typ prostředku použít značku, přečtěte si téma [Podpora značek pro prostředky Azure](tag-support.md).
+* Úvod k používání portálu najdete v tématu [použití Azure Portal ke správě prostředků Azure](manage-resource-groups-portal.md).  

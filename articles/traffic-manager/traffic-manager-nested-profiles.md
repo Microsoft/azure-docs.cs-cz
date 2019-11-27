@@ -1,7 +1,7 @@
 ---
-title: Nested Traffic Manager Profiles in Azure
+title: Profily vnořených Traffic Manager v Azure
 titleSuffix: Azure Traffic Manager
-description: This article explains the 'Nested Profiles' feature of Azure Traffic Manager
+description: Tento článek vysvětluje funkci "vnořené profily" v Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -22,98 +22,98 @@ ms.locfileid: "74227757"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Vnořené profily Traffic Manageru
 
-Traffic Manager includes a range of traffic-routing methods that allow you to control how Traffic Manager chooses which endpoint should receive traffic from each end user. For more information, see [Traffic Manager traffic-routing methods](traffic-manager-routing-methods.md).
+Traffic Manager zahrnuje škálu metod směrování provozu, které vám umožní určit, jak má Traffic Manager zvolit, jaký koncový bod by měl přijímat přenosy od každého koncového uživatele. Další informace najdete v tématu [Traffic Manager metody směrování provozu](traffic-manager-routing-methods.md).
 
-Each Traffic Manager profile specifies a single traffic-routing method. However, there are scenarios that require more sophisticated traffic routing than the routing provided by a single Traffic Manager profile. You can nest Traffic Manager profiles to combine the benefits of more than one traffic-routing method. Nested profiles allow you to override the default Traffic Manager behavior to support larger and more complex application deployments.
+Každý profil Traffic Manager Určuje jednu metodu směrování provozu. Existují však scénáře, které vyžadují výkonnější směrování provozu než směrování poskytované jedním Traffic Manager profilem. Můžete vnořovat profily Traffic Manager, abyste mohli kombinovat výhody více než jedné metody směrování provozu. Vnořené profily umožňují přepsat výchozí chování Traffic Manager pro podporu většího a složitějšího nasazení aplikací.
 
-The following examples illustrate how to use nested Traffic Manager profiles in various scenarios.
+Následující příklady ilustrují použití vnořených profilů Traffic Manager v různých scénářích.
 
-## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Example 1: Combining 'Performance' and 'Weighted' traffic routing
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Příklad 1: kombinování směrování provozu Performance a Weight
 
-Suppose that you deployed an application in the following Azure regions: West US, West Europe, and East Asia. You use Traffic Manager's 'Performance' traffic-routing method to distribute traffic to the region closest to the user.
+Předpokládejme, že jste nasadili aplikaci v následujících oblastech Azure: Západní USA, Západní Evropa a Východní Asie. K distribuci provozu do oblasti, která je nejblíže uživateli, slouží Traffic Manager způsob směrování provozu "Performance".
 
-![Single Traffic Manager profile][4]
+![Profil jednoho Traffic Manager][4]
 
-Now, suppose you wish to test an update to your service before rolling it out more widely. You want to use the 'weighted' traffic-routing method to direct a small percentage of traffic to your test deployment. You set up the test deployment alongside the existing production deployment in West Europe.
+Nyní předpokládejme, že chcete otestovat aktualizaci služby před tím, než ji navedete do širšího provozu. Pro přesměrování malého procenta provozu do testovacího nasazení chcete použít metodu směrování "váženého" provozu. Testovací nasazení se nastavuje společně s existujícím provozním nasazením v Západní Evropa.
 
-You cannot combine both 'Weighted' and 'Performance traffic-routing in a single profile. To support this scenario, you create a Traffic Manager profile using the two West Europe endpoints and the 'Weighted' traffic-routing method. Next, you add this 'child' profile as an endpoint to the 'parent' profile. The parent profile still uses the Performance traffic-routing method and contains the other global deployments as endpoints.
+V jednom profilu nemůžete kombinovat jak vážené, tak výkonové směrování. Pro podporu tohoto scénáře vytvoříte profil Traffic Manager pomocí dvou koncových bodů Západní Evropa a vážené metody směrování provozu. Dále přidáte tento profil podřízeného objektu jako koncový bod do profilu nadřazených objektů. Nadřazený profil stále používá metodu směrování provozu a obsahuje další globální nasazení jako koncové body.
 
-The following diagram illustrates this example:
+Následující diagram znázorňuje tento příklad:
 
 ![Vnořené profily Traffic Manageru][2]
 
-In this configuration, traffic directed via the parent profile distributes traffic across regions normally. Within West Europe, the nested profile distributes traffic to the production and test endpoints according to the weights assigned.
+V této konfiguraci provoz směrované přes nadřazený profil distribuuje provoz napříč oblastmi normálně. V rámci Západní Evropa vnořený profil distribuuje provoz do produkčních a testovacích koncových bodů podle přiřazených vah.
 
-When the parent profile uses the 'Performance' traffic-routing method, each endpoint must be assigned a location. The location is assigned when you configure the endpoint. Choose the Azure region closest to your deployment. The Azure regions are the location values supported by the Internet Latency Table. For more information, see [Traffic Manager 'Performance' traffic-routing method](traffic-manager-routing-methods.md#performance).
+Pokud nadřazený profil používá metodu směrování provozu Performance, musí být každému koncovému bodu přiřazeno umístění. Umístění se přiřadí při konfiguraci koncového bodu. Vyberte oblast Azure, která je nejblíže vašemu nasazení. Oblasti Azure jsou hodnoty umístění podporované tabulkou latence Internetu. Další informace najdete v tématu [Traffic Manager metoda "Performance Traffic-Routing"](traffic-manager-routing-methods.md#performance).
 
-## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Example 2: Endpoint monitoring in Nested Profiles
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Příklad 2: monitorování koncových bodů ve vnořených profilech
 
-Traffic Manager actively monitors the health of each service endpoint. If an endpoint is unhealthy, Traffic Manager directs users to alternative endpoints to preserve the availability of your service. This endpoint monitoring and failover behavior applies to all traffic-routing methods. For more information, see [Traffic Manager Endpoint Monitoring](traffic-manager-monitoring.md). Endpoint monitoring works differently for nested profiles. With nested profiles, the parent profile doesn't perform health checks on the child directly. Instead, the health of the child profile's endpoints is used to calculate the overall health of the child profile. This health information is propagated up the nested profile hierarchy. The parent profile uses this aggregated health to determine whether to direct traffic to the child profile. See the [FAQ](traffic-manager-FAQs.md#traffic-manager-nested-profiles) for full details on health monitoring of nested profiles.
+Traffic Manager aktivně sleduje stav každého koncového bodu služby. Pokud koncový bod není v pořádku, Traffic Manager přesměruje uživatele do alternativních koncových bodů, aby se zachovala dostupnost vaší služby. Toto chování monitorování a převzetí služeb při selhání se vztahuje na všechny metody směrování provozu. Další informace najdete v tématu [Traffic Manager monitorování koncového bodu](traffic-manager-monitoring.md). Monitorování koncového bodu funguje pro vnořené profily jinak. U vnořených profilů nadřazený profil neprovádí kontroly stavu přímo u podřízeného objektu. Místo toho se k výpočtu celkového stavu podřízeného profilu používá stav koncových bodů podřízeného profilu. Tyto informace o stavu se šíří v hierarchii vnořeného profilu. Nadřazený profil pomocí tohoto agregovaného stavu určí, jestli se má směrovat provoz do podřízeného profilu. Úplné podrobnosti o monitorování stavu vnořených profilů najdete v [nejčastějších dotazech](traffic-manager-FAQs.md#traffic-manager-nested-profiles) .
 
-Returning to the previous example, suppose the production deployment in West Europe fails. By default, the 'child' profile directs all traffic to the test deployment. If the test deployment also fails, the parent profile determines that the child profile should not receive traffic since all child endpoints are unhealthy. Then, the parent profile distributes traffic to the other regions.
+Návrat k předchozímu příkladu Předpokládejme, že produkční nasazení v Západní Evropa neproběhne úspěšně. Ve výchozím nastavení profil "Child" směruje veškerý provoz do testovacího nasazení. Pokud testovací nasazení také neproběhne úspěšně, nadřazený profil určí, že podřízený profil by neměl přijímat přenosy, protože všechny podřízené koncové body nejsou v pořádku. Nadřazený profil pak distribuuje provoz do ostatních oblastí.
 
-![Nested Profile failover (default behavior)][3]
+![Převzetí služeb při selhání vnořeného profilu (výchozí chování)][3]
 
-You might be happy with this arrangement. Or you might be concerned that all traffic for West Europe is now going to the test deployment instead of a limited subset traffic. Regardless of the health of the test deployment, you want to fail over to the other regions when the production deployment in West Europe fails. To enable this failover, you can specify the 'MinChildEndpoints' parameter when configuring the child profile as an endpoint in the parent profile. The parameter determines the minimum number of available endpoints in the child profile. The default value is '1'. For this scenario, you set the MinChildEndpoints value to 2. Below this threshold, the parent profile considers the entire child profile to be unavailable and directs traffic to the other endpoints.
+S tímto uspořádáním možná budete spokojeni. Nebo se může stát, že veškerý provoz pro Západní Evropa nyní nachází do testovacího nasazení místo omezeného provozu podmnožiny. Bez ohledu na stav nasazení testu chcete převzít služby při selhání do ostatních oblastí, když produkční nasazení v Západní Evropa selže. Pokud chcete povolit toto převzetí služeb při selhání, můžete zadat parametr MinChildEndpoints při konfiguraci podřízeného profilu jako koncového bodu v nadřazeném profilu. Parametr určuje minimální počet dostupných koncových bodů v podřízeném profilu. Výchozí hodnota je 1. V tomto scénáři nastavíte hodnotu MinChildEndpoints na 2. Pod touto prahovou hodnotou nadřazený profil posuzuje, že celý podřízený profil nebude k dispozici a směruje provoz do ostatních koncových bodů.
 
-The following figure illustrates this configuration:
+Tato konfigurace je znázorněna na následujícím obrázku:
 
-![Nested Profile failover with 'MinChildEndpoints' = 2][4]
+![Převzetí služeb při selhání vnořeného profilu s ' MinChildEndpoints ' = 2][4]
 
 > [!NOTE]
-> The 'Priority' traffic-routing method distributes all traffic to a single endpoint. Thus there is little purpose in a MinChildEndpoints setting other than '1' for a child profile.
+> Metoda "Priorita" provoz-směrování distribuuje veškerý provoz do jednoho koncového bodu. Proto je pro podřízený profil malý účel v nastavení MinChildEndpoints, než je 1.
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Example 3: Prioritized failover regions in 'Performance' traffic routing
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Příklad 3: prioritní oblasti převzetí služeb při selhání ve směrování provozu výkonu
 
-The default behavior for the 'Performance' traffic-routing method is when you have endpoints in different geographic locations the end users are routed to the "closest" endpoint in terms of the lowest network latency.
+Výchozím chováním pro metodu směrování provozu Performance (výkon) je, že pokud máte koncové body v různých geografických umístěních, budou koncoví uživatelé směrováni do nejbližšího koncového bodu z hlediska nejnižší latence sítě.
 
-However, suppose you prefer the West Europe traffic failover to West US, and only direct traffic to other regions when both endpoints are unavailable. You can create this solution using a child profile with the 'Priority' traffic-routing method.
+Předpokládejme však, že dáváte přednost převzetí služeb při selhání Západní Evropa provozu Západní USA a pouze přímý provoz do jiných oblastí, pokud oba koncové body nejsou k dispozici. Toto řešení můžete vytvořit pomocí podřízeného profilu s metodou "Priorita" přenosu provozu.
 
-!['Performance' traffic routing with preferential failover][6]
+![Směrování provozu výkonu s preferenčním převzetím služeb při selhání][6]
 
-Since the West Europe endpoint has higher priority than the West US endpoint, all traffic is sent to the West Europe endpoint when both endpoints are online. If West Europe fails, its traffic is directed to West US. With the nested profile, traffic is directed to East Asia only when both West Europe and West US fail.
+Vzhledem k tomu, že koncový bod Západní Evropa má vyšší prioritu než koncový bod Západní USA, veškerý provoz se pošle do Západní Evropaho koncového bodu, pokud jsou oba koncové body online. Pokud se Západní Evropa nepovede, provoz se přesměruje na Západní USA. U vnořeného profilu je provoz směrován na Východní Asie pouze v případě, že dojde k selhání obou Západní Evropa a Západní USA.
 
-You can repeat this pattern for all regions. Replace all three endpoints in the parent profile with three child profiles, each providing a prioritized failover sequence.
+Tento vzor můžete opakovat pro všechny oblasti. Nahradí všechny tři koncové body v nadřazeném profilu třemi podřízenými profily, přičemž každý z nich poskytuje sekvenci převzetí služeb při selhání s určenou prioritou.
 
-## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Example 4: Controlling 'Performance' traffic routing between multiple endpoints in the same region
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Příklad 4: řízení směrování provozu výkonu mezi několika koncovými body ve stejné oblasti
 
-Suppose the 'Performance' traffic-routing method is used in a profile that has more than one endpoint in a particular region. By default, traffic directed to that region is distributed evenly across all available endpoints in that region.
+Předpokládejme, že se v profilu, který má více než jeden koncový bod v konkrétní oblasti, používá metoda směrování provozu Performance. Ve výchozím nastavení jsou přenosy směrované do této oblasti rovnoměrně rozloženy ve všech dostupných koncových bodech v této oblasti.
 
-!['Performance' traffic routing in-region traffic distribution (default behavior)][7]
+![Směrování provozu v oblasti výkonu pro distribuci provozu v oblasti (výchozí chování)][7]
 
-Instead of adding multiple endpoints in West Europe, those endpoints are enclosed in a separate child profile. The child profile is added to the parent as the only endpoint in West Europe. The settings on the child profile can control the traffic distribution with West Europe by enabling priority-based or weighted traffic routing within that region.
+Místo přidávání více koncových bodů v Západní Evropa jsou tyto koncové body uzavřeny v samostatném podřízeném profilu. Podřízený profil se přidá do nadřazeného objektu jako jediný koncový bod v Západní Evropa. Nastavení v podřízeném profilu můžou řídit distribuci provozu pomocí Západní Evropa tím, že v rámci této oblasti povolíte směrování na základě priority nebo váženého provozu.
 
-!['Performance' traffic routing with custom in-region traffic distribution][8]
+![Směrování provozu výkonu s vlastní distribucí provozu v oblasti][8]
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>Example 5: Per-endpoint monitoring settings
+## <a name="example-5-per-endpoint-monitoring-settings"></a>Příklad 5: nastavení monitorování na základě koncového bodu
 
-Suppose you are using Traffic Manager to smoothly migrate traffic from a legacy on-premises web site to a new Cloud-based version hosted in Azure. For the legacy site, you want to use the home page URI to monitor site health. But for the new Cloud-based version, you are implementing a custom monitoring page (path '/monitor.aspx') that includes additional checks.
+Předpokládejme, že používáte Traffic Manager k plynulé migraci provozu ze zastaralého místního webu do nové cloudové verze hostované v Azure. Pro starší verzi webu chcete použít identifikátor URI domovské stránky k monitorování stavu lokality. Ale pro novou cloudovou verzi implementujete vlastní stránku monitorování (cesta '/monitor.aspx '), která obsahuje další kontroly.
 
-![Traffic Manager endpoint monitoring (default behavior)][9]
+![Monitorování koncového bodu Traffic Manager (výchozí chování)][9]
 
-The monitoring settings in a Traffic Manager profile apply to all endpoints within a single profile. With nested profiles, you use a different child profile per site to define different monitoring settings.
+Nastavení monitorování v profilu Traffic Manager platí pro všechny koncové body v rámci jednoho profilu. U vnořených profilů můžete pro jednotlivé lokality použít jiný podřízený profil a definovat různá nastavení monitorování.
 
-![Traffic Manager endpoint monitoring with per-endpoint settings][10]
+![Traffic Manager monitorování koncového bodu s nastavením pro koncový bod][10]
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-* [How do I configure nested profiles?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+* [Návody nakonfigurovat vnořené profily?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
 
-* [How many layers of nesting does Traffic Manger support?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [Kolik vrstev vnoření podporuje Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [Can I mix other endpoint types with nested child profiles, in the same Traffic Manager profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [Můžu ve stejném profilu Traffic Manager kombinovat jiné typy koncových bodů s vnořenými podřízenými profily?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [How does the billing model apply for Nested profiles?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [Jak model fakturace platí pro vnořené profily?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [Is there a performance impact for nested profiles?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [Je pro vnořené profily dopad na výkon?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
 
-* [How does Traffic Manager compute the health of a nested endpoint in a parent profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [Jak Traffic Manager počítá stav vnořeného koncového bodu v nadřazeném profilu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn more about [Traffic Manager profiles](traffic-manager-overview.md)
+Další informace o [profilech Traffic Manager](traffic-manager-overview.md)
 
-Learn how to [create a Traffic Manager profile](traffic-manager-create-profile.md)
+Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

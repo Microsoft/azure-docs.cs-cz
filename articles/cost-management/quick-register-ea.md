@@ -31,16 +31,16 @@ Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Manageme
 
 1. Na webu Azure Portal klikněte v seznamu služeb na **Cost Management a fakturace**.
 2. V části **Přehled** klikněte na **Cloudyn**.  
-    ![Cloudyn page shown in the Azure portal](./media/quick-register-ea/cost-mgt-billing-service.png)
+    ![stránka Cloudyn zobrazená v Azure Portal](./media/quick-register-ea/cost-mgt-billing-service.png)
 3. Na stránce **Cloudyn** klikněte na **Přejít na Cloudyn** a v novém okně se otevře stránka pro registraci u Cloudyn.
 4. Na stránce pro registraci zkušební verze portálu Cloudyn zadejte název vaší společnosti a vyberte **Správce prováděcí smlouvy Azure Enterprise**.  
 5. Zadejte klíč rozhraní API vaší prováděcí smlouvy Enterprise Portal. Pokud svůj klíč nemáte po ruce, klikněte na odkaz na web [Enterprise Portal](https://ea.azure.com) a proveďte následující kroky:  
-    ![Paste your API key on the Billing tab](./media/quick-register-ea/trial-reg.png)
+    ![vložte klíč rozhraní API na kartě Fakturace](./media/quick-register-ea/trial-reg.png)
    1. Přihlaste se k webu Azure Enterprise, klikněte na **Sestavy**, pak na **Přístupový klíč rozhraní API** a zkopírujte váš primární klíč.  
-    ![Example of an EA API key in the EA portal](./media/quick-register-ea/ea-key.png)
+    ![příklad klíče rozhraní API EA na portálu EA](./media/quick-register-ea/ea-key.png)
    3. Vraťte se na registrační stránku a vložte váš klíč rozhraní API.
 6. Vyjádřete souhlas s podmínkami použití a ověřte váš klíč. Kliknutím na **Další** udělte Cloudyn oprávnění ke shromažďování dat o prostředcích Azure. Mezi shromažďovaná data patří informace o využití, výkonu, fakturaci a značkách z vašich předplatných.  
-    ![Example of a successful EA API key validation](./media/quick-register-ea/ea-key-validated.png)
+    ![Příklad úspěšného ověření klíče rozhraní API EA](./media/quick-register-ea/ea-key-validated.png)
 7. V části **Pozvat další účastníky** můžete zadáním příslušných e-mailových adres přidat další uživatele. Jakmile budete hotovi, klikněte na **Další**. V závislosti na velikosti vaší registrace v Azure může přidání všech vašich fakturačních dat do Cloudyn trvat až 24 hodin.
 8. Kliknutím na **Přejít do Cloudyn** otevřete portál Cloudyn a na stránce **Správa cloudových účtů** by se měly zobrazit informace o vašem zaregistrovaném účtu EA.
 

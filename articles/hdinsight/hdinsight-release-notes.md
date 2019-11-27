@@ -45,7 +45,7 @@ Kafka REST API poskytuje nasazení s vysokou dostupností služby REST proxy s c
 
 Automatické škálování pro Azure HDInsight je teď všeobecně dostupné ve všech oblastech pro typy clusterů Apache Spark a Hadoop. Tato funkce umožňuje spravovat úlohy analýzy velkých objemů dat v cenově výhodnějším a produktivním způsobu. Teď můžete optimalizovat použití clusterů HDInsight a platit jenom za to, co potřebujete.
 
-V závislosti na vašich požadavcích můžete zvolit automatické škálování založené na zatížení a na základě plánu. Díky automatickému škálování na základě zatížení se dá velikost clusteru škálovat nahoru a dolů na základě aktuálních potřeb prostředků, zatímco automatické škálování na základě plánu může měnit velikost clusteru podle předdefinovaného plánu. 
+V závislosti na vašich požadavcích můžete volit mezi automatickým škálováním na základě zatížení, nebo na základě plánu. Díky automatickému škálování na základě zatížení se dá velikost clusteru škálovat nahoru a dolů na základě aktuálních potřeb prostředků, zatímco automatické škálování na základě plánu může měnit velikost clusteru podle předdefinovaného plánu. 
 
 Podpora automatického škálování pro HBA a LLAP úlohy je také Public Preview. Další informace najdete v tématu [Automatické škálování clusterů Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters).
 

@@ -131,7 +131,7 @@ Sady SDK aktualizované v aktuální verzi nejsou zpětně kompatibilní s klien
 | &nbsp; | V2 | V1 |
 | ------ | -- | -- | 
 | portál Azure | [Ano](quickstart-create-data-factory-portal.md) | Ne |
-| Azure PowerShell | [Ano](quickstart-create-data-factory-powershell.md) | [Ano](data-factory-build-your-first-pipeline-using-powershell.md) |
+| Azure Powershell | [Ano](quickstart-create-data-factory-powershell.md) | [Ano](data-factory-build-your-first-pipeline-using-powershell.md) |
 | .NET SDK | [Ano](quickstart-create-data-factory-dot-net.md) | [Ano](data-factory-build-your-first-pipeline-using-vs.md) |
 | REST API | [Ano](quickstart-create-data-factory-rest-api.md) | [Ano](data-factory-build-your-first-pipeline-using-rest-api.md) |
 | Python SDK | [Ano](quickstart-create-data-factory-python.md) | Ne |

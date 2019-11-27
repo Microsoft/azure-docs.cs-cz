@@ -11,18 +11,18 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224397"
 ---
-| Úroveň | Zadarmo | Úroveň Basic | Úroveň Standard |
+| Vrstva | Free | Basic | Standard |
 | --- | --- | --- | --- |
-| Volání rozhraní API |500,000 |1.5 million per unit |15 million per unit |
-| Active devices |500 |Bez omezení |Bez omezení |
-| Limit |Nevztahuje se |Up to 6 units |Neomezený počet jednotek |
-| Nabízená oznámení |Azure Notification Hubs Free tier included, up to 1 million pushes |Notification Hubs Basic tier included, up to 10 million pushes |Notification Hubs Standard tier included, up to 10 million pushes |
-| Real-time messaging/<br/>Webové sokety |Omezená |350 per mobile service |Bez omezení |
-| Offline synchronizace |Omezená |Zahrnuté |Zahrnuté |
-| Naplánované úlohy |Omezená |Zahrnuté |Zahrnuté |
-| Azure SQL Database (required) <br/>Standard rates apply for additional capacity |20 MB included |20 MB included |20 MB included |
-| Kapacita procesoru |60 minutes per day |Bez omezení |Bez omezení |
-| Přenos odchozích dat |165 MB per day (daily rollover) |Zahrnuté |Zahrnuté |
+| Volání rozhraní API |500,000 |1 500 000 na jednotku |15 000 000 na jednotku |
+| Aktivní zařízení |500 |Neomezeno |Neomezeno |
+| Škálování |neuvedeno |Až 6 jednotek |Neomezený počet jednotek |
+| Nabízená oznámení |Zahrnuje Azure Notification Hubs úrovně Free, až 1 000 000 nabízených oznámení |Zahrnuté úrovně Basic Notification Hubs, až 10 000 000 nabízených oznámení |Zahrnutá úroveň Standard Notification Hubs, až 10 000 000 nabízených oznámení |
+| Zasílání zpráv v reálném čase/<br/>Webové sokety |Omezená |350 na mobilní službu |Neomezeno |
+| Offline synchronizace |Omezená |Zahrnuje |Zahrnuje |
+| Naplánované úlohy |Omezená |Zahrnuje |Zahrnuje |
+| Azure SQL Database (povinné) <br/>Pro další kapacitu se použijí standardní sazby. |zahrnuto 20 MB |zahrnuto 20 MB |zahrnuto 20 MB |
+| Kapacita procesoru |60 minut za den |Neomezeno |Neomezeno |
+| Přenos odchozích dat |165 MB za den (denní výměna) |Zahrnuje |Zahrnuje |
 
-For more information on limits and pricing, see [Azure Mobile Services pricing](https://azure.microsoft.com/pricing/details/mobile-services/). 
+Další informace o limitech a cenách najdete v tématu [ceny za Azure Mobile Services](https://azure.microsoft.com/pricing/details/mobile-services/). 
 

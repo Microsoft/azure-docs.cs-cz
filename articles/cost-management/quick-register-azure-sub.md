@@ -29,17 +29,17 @@ Pomocí svého předplatného Azure se zaregistrujete u Cloudyn. Registrací zí
 
 1. Na webu Azure Portal klikněte v seznamu služeb na **Cost Management a fakturace**.
 2. V části **Přehled** klikněte na **Cloudyn**.  
-    ![Cloudyn page shown in the Azure portal](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
+    ![stránka Cloudyn zobrazená v Azure Portal](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
 3. Na stránce **Cost Management** klikněte na **Přejít na Cloudyn** a v novém okně se otevře stránka pro registraci u Cloudyn.
 4. Na stránce pro registraci zkušební verze portálu Cloudyn zadejte název vaší společnosti, vyberte **Vlastník samostatného předplatného Azure** a pak klikněte na **Další**. Do formuláře se automaticky přidá název vašeho účtu a ID tenanta.  
-    ![Trial registration page where you enter your registration information](./media/quick-register-azure-sub/trial-reg-ind.png)
+    ![zkušební registrační stránku, kde zadáte registrační informace](./media/quick-register-azure-sub/trial-reg-ind.png)
 5. Vyberte **ID nabídky – Název** přidružený k vašemu předplatnému. Pokud si nejste jisti, jaké je ID sazby pro vaše předplatné, můžete se podívat na fakturu za Azure, na které najdete **ID nabídky**.
 6. Vyjádřete souhlas s podmínkami použití, ověřte své údaje a pak klikněte na **Další**.
 7. Na stránce **Shromažďování dalších dat** kliknutím na **Další** udělte Cloudyn oprávnění ke shromažďování dat o prostředcích Azure. Mezi shromažďovaná data patří informace o využití, výkonu, fakturaci a značkách z vašich předplatných.  
-    ![Gather additional data page where you authorize Cloudyn](./media/quick-register-azure-sub/gather-additional.png)
+    ![Shromážděte další datová stránka, kde autorizujete Cloudyn](./media/quick-register-azure-sub/gather-additional.png)
 8. Váš prohlížeč vás přesměruje na přihlašovací stránku pro Cloudyn. Přihlaste se pomocí přihlašovacích údajů vašeho předplatného Azure.
 9. Kliknutím na **Přejít do Cloudyn** otevřete portál Cloudyn a na stránce **Správa účtů** by se měly zobrazit informace o vašem účtu předplatného Azure.  
-    ![Accounts Management page showing Azure subscription information](./media/quick-register-azure-sub/accounts-mgt.png)
+    Stránka Správa účtů ![zobrazující informace o předplatném Azure](./media/quick-register-azure-sub/accounts-mgt.png)
 
 Pokud chcete zhlédnout videokurz k registraci předplatného Azure, podívejte se na video [Finding your Directory GUID and Rate ID for use in Cloudyn](https://youtu.be/PaRjnyaNGMI) (Vyhledání GUID adresáře a ID sazby pro použití v Cloudyn).
 

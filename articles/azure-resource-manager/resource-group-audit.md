@@ -1,6 +1,6 @@
 ---
-title: View Azure activity logs to monitor resources
-description: Use the activity logs to review user actions and errors. Shows Azure portal PowerShell, Azure CLI, and REST.
+title: Zobrazení protokolů aktivit Azure pro monitorování prostředků
+description: Protokoly aktivit můžete použít ke kontrole akcí a chyb uživatele. Zobrazuje Azure Portal PowerShell, rozhraní příkazového řádku Azure a REST.
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 7b70d2a8c158b6f8b3dc87c22e5ca90f2861aebb
@@ -10,189 +10,189 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422250"
 ---
-# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>View activity logs to monitor actions on resources
+# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Zobrazení protokolů aktivit pro monitorování akcí u prostředků
 
 Na základě protokolů aktivit můžete zjistit:
 
-* what operations were taken on the resources in your subscription
-* who started the operation
-* when the operation occurred
-* the status of the operation
-* the values of other properties that might help you research the operation
+* jaké operace byly provedeny u prostředků ve vašem předplatném
+* Kdo operaci zahájil
+* Při výskytu operace
+* stav operace
+* hodnoty dalších vlastností, které vám mohou při průzkumu operace.
 
-The activity log contains all write operations (PUT, POST, DELETE) for your resources. Nezahrnuje operace čtení (GET). For a list of resource actions, see [Azure Resource Manager Resource Provider operations](../role-based-access-control/resource-provider-operations.md). Protokoly aktivit můžete použít k vyhledání chyby při řešení potíží nebo k monitorování, jak uživatel ve vaší organizaci změnil prostředek.
+Protokol aktivit obsahuje všechny operace zápisu (PUT, POST, DELETE) pro vaše prostředky. Nezahrnuje operace čtení (GET). Seznam akcí prostředků najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md). Protokoly aktivit můžete použít k vyhledání chyby při řešení potíží nebo k monitorování, jak uživatel ve vaší organizaci změnil prostředek.
 
 Protokoly aktivit se uchovávají po dobu 90 dnů. Můžete se dotazovat na libovolný rozsah kalendářních dat, pokud počáteční datum neleží více než 90 dnů v minulosti.
 
-You can retrieve information from the activity logs through the portal, PowerShell, Azure CLI, Insights REST API, or [Insights .NET Library](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
+Informace z protokolů aktivit můžete načíst prostřednictvím portálu, PowerShellu, Azure CLI, Insights REST API nebo [knihovny .NET Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>portál Azure
 
-To view the activity logs through the portal, follow these steps:
+Pokud chcete zobrazit protokoly aktivit prostřednictvím portálu, postupujte podle těchto kroků:
 
-1. On the Azure portal menu, select **Monitor**, or search for and select **Monitor** from any page.
+1. V nabídce Azure Portal vyberte **monitorovat**, nebo vyhledejte a vyberte **monitorování** z libovolné stránky.
 
-    ![Select monitor](./media/resource-group-audit/select-monitor-from-menu.png)
+    ![Vybrat monitorování](./media/resource-group-audit/select-monitor-from-menu.png)
 
-1. Select **Activity Log**.
+1. Vyberte **Protokol aktivit**.
 
-    ![Select activity log](./media/resource-group-audit/select-activity-log.png)
+    ![Vybrat protokol aktivit](./media/resource-group-audit/select-activity-log.png)
 
-1. You see a summary of recent operations. A default set of filters is applied to the operations. Notice the information on the summary includes who started the action and when it happened.
+1. Zobrazí se souhrn posledních operací. Pro operace se použije výchozí sada filtrů. Všimněte si, že informace o souhrnu obsahují informace o tom, kdo akci zahájil a kdy k tomu došlo.
 
-    ![View summary of recent operations](./media/resource-group-audit/audit-summary.png)
+    ![Zobrazit souhrn nedávných operací](./media/resource-group-audit/audit-summary.png)
 
-1. To quickly run a pre-defined set of filters, select **Quick Insights**.
+1. Chcete-li rychle spustit předem definovanou sadu filtrů, vyberte možnost **rychlé přehledy**.
 
-    ![Select quick insights](./media/resource-group-audit/select-quick-insights.png)
+    ![Vybrat rychlé přehledy](./media/resource-group-audit/select-quick-insights.png)
 
-1. Select one of the options. For example, select **Failed deployments** to see errors from deployments.
+1. Vyberte jednu z možností. Pokud například chcete zobrazit chyby z nasazení, vyberte **neúspěšná nasazení** .
 
-    ![Select failed deployments](./media/resource-group-audit/select-failed-deployments.png)
+    ![Vybrat neúspěšná nasazení](./media/resource-group-audit/select-failed-deployments.png)
 
-1. Notice the filters have been changed to focus on deployment errors in the last 24 hours. Only operations that match the filters are displayed.
+1. Všimněte si, že se filtry změnily tak, aby se v posledních 24 hodinách zaměřily na chyby nasazení. Zobrazí se pouze operace, které odpovídají filtrům.
 
     ![Zobrazení filtrů](./media/resource-group-audit/view-filters.png)
 
-1. To focus on specific operations, change the filters or apply new ones. For example, the following image shows a new value for the **Timespan** and **Resource type** is set to storage accounts.
+1. Pokud se chcete zaměřit na konkrétní operace, změňte filtry nebo použijte nové. Například následující obrázek ukazuje novou hodnotu pro **časový** rozsah a **typ prostředku** je nastaven na účty úložiště.
 
-    ![Set filter options](./media/resource-group-audit/set-filter.png)
+    ![Nastavit možnosti filtru](./media/resource-group-audit/set-filter.png)
 
-1. If you need to run the query again later, select **Pin current filters**.
+1. Pokud budete potřebovat dotaz znovu spustit později, vyberte **připnout aktuální filtry**.
 
-    ![Pin filters](./media/resource-group-audit/pin-filters.png)
+    ![Připnout filtry](./media/resource-group-audit/pin-filters.png)
 
-1. Give the filter a name.
+1. Dejte filtru název.
 
-    ![Name filters](./media/resource-group-audit/name-filters.png)
+    ![Filtry názvů](./media/resource-group-audit/name-filters.png)
 
-1. The filter is available in the dashboard. On the Azure portal menu, select **Dashboard**.
+1. Filtr je k dispozici na řídicím panelu. V nabídce Azure Portal vyberte možnost **řídicí panel**.
 
-    ![Show filter on dashboard](./media/resource-group-audit/activity-log-on-dashboard.png)
+    ![Zobrazit filtr na řídicím panelu](./media/resource-group-audit/activity-log-on-dashboard.png)
 
-1. From the portal, you can view changes to a resource. Go back to the default view in Monitor, and select an operation that involved changing a resource.
+1. Z portálu můžete zobrazit změny prostředku. Vraťte se do výchozího zobrazení v monitorování a vyberte operaci, která se zabývá změnou prostředku.
 
-    ![Select operation](./media/resource-group-audit/select-operation.png)
+    ![Vybrat operaci](./media/resource-group-audit/select-operation.png)
 
-1. Select **Change history (Preview)** and pick one of the available operations.
+1. Vyberte možnost **historie změn (Preview)** a vyberte jednu z dostupných operací.
 
-    ![Select change history](./media/resource-group-audit/select-change-history.png)
+    ![Vybrat historii změn](./media/resource-group-audit/select-change-history.png)
 
-1. The changes in the resource are displayed.
+1. Zobrazí se změny v prostředku.
 
-    ![Show changes](./media/resource-group-audit/show-changes.png)
+    ![Zobrazit změny](./media/resource-group-audit/show-changes.png)
 
-To learn more about change history, see [Get resource changes](../governance/resource-graph/how-to/get-resource-changes.md).
+Další informace o historii změn najdete v tématu [získání změn prostředků](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-To retrieve log entries, run the **Get-AzLog** command. You provide additional parameters to filter the list of entries. If you don't specify a start and end time, entries for the last seven days are returned.
+Chcete-li načíst položky protokolu, spusťte příkaz **Get-AzLog** . Zadáním dalších parametrů můžete filtrovat seznam položek. Pokud nezadáte čas začátku a konce, budou vráceny položky za posledních sedm dní.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup
 ```
 
-The following example shows how to use the activity log to research operations taken during a specified time. The start and end dates are specified in a date format.
+Následující příklad ukazuje, jak používat protokol aktivit k výzkumu operací provedených během zadaného času. Počáteční a koncové datum jsou zadány ve formátu data.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime 2019-05-05T06:00 -EndTime 2019-05-09T06:00
 ```
 
-Or, you can use date functions to specify the date range, such as the last 14 days.
+Nebo můžete použít funkce date k určení rozsahu kalendářních dat, například posledních 14 dní.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
 ```
 
-You can look up the actions taken by a particular user.
+Můžete vyhledat akce provedené konkrétním uživatelem.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
 ```
 
-You can filter for failed operations.
+Můžete filtrovat neúspěšné operace.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -Status Failed
 ```
 
-You can focus on one error by looking at the status message for that entry.
+Můžete se zaměřit na jednu chybu tím, že si prohlížíte stavovou zprávu pro tuto položku.
 
 ```azurepowershell-interactive
 (Get-AzLog -ResourceGroup ExampleGroup -Status Failed).Properties.Content.statusMessage | ConvertFrom-Json
 ```
 
-You can select specific values to limit the data that is returned.
+Můžete vybrat konkrétní hodnoty pro omezení vrácených dat.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
 ```
 
-Depending on the start time you specify, the previous commands can return a long list of operations for the resource group. You can filter the results for what you are looking for by providing search criteria. For example, you can filter by the type of operation.
+V závislosti na počátečním čase, který zadáte, můžou předchozí příkazy vracet dlouhý seznam operací pro skupinu prostředků. Výsledky hledání můžete filtrovat podle toho, co hledáte. Například můžete filtrovat podle typu operace.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
 ```
 
-You can use Resource Graph to see the change history for a resource. For more information, see [Get resource changes](../governance/resource-graph/how-to/get-resource-changes.md).
+Pomocí grafu prostředků můžete zobrazit historii změn pro určitý prostředek. Další informace najdete v tématu [získání změn prostředků](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="azure-cli"></a>Azure CLI
 
-To retrieve log entries, run the [az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) command with an offset to indicate the time span.
+Chcete-li načíst položky protokolu, spusťte pomocí příkazu [AZ monitor Activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) s posunem, aby označoval časový rozsah.
 
 ```azurecli-interactive
 az monitor activity-log list --resource-group ExampleGroup --offset 7d
 ```
 
-The following example shows how to use the activity log to research operations taken during a specified time. The start and end dates are specified in a date format.
+Následující příklad ukazuje, jak používat protokol aktivit k výzkumu operací provedených během zadaného času. Počáteční a koncové datum jsou zadány ve formátu data.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --start-time 2019-05-01 --end-time 2019-05-15
 ```
 
-You can look up the actions taken by a particular user, even for a resource group that no longer exists.
+Můžete vyhledat akce provedené konkrétním uživatelem, a to i pro skupinu prostředků, která už neexistuje.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --caller someone@contoso.com --offset 5d
 ```
 
-You can filter for failed operations.
+Můžete filtrovat neúspěšné operace.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --status Failed --offset 1d
 ```
 
-You can focus on one error by looking at the status message for that entry.
+Můžete se zaměřit na jednu chybu tím, že si prohlížíte stavovou zprávu pro tuto položku.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --status Failed --offset 1d --query [].properties.statusMessage
 ```
 
-You can select specific values to limit the data that is returned.
+Můžete vybrat konkrétní hodnoty pro omezení vrácených dat.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --offset 1d --query '[].{Operation: operationName.value, Status: status.value, SubStatus: subStatus.localizedValue}'
 ```
 
-Depending on the start time you specify, the previous commands can return a long list of operations for the resource group. You can filter the results for what you are looking for by providing search criteria. For example, you can filter by the type of operation.
+V závislosti na počátečním čase, který zadáte, můžou předchozí příkazy vracet dlouhý seznam operací pro skupinu prostředků. Výsledky hledání můžete filtrovat podle toho, co hledáte. Například můžete filtrovat podle typu operace.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationName.value=='Microsoft.Storage/storageAccounts/write']"
 ```
 
-You can use Resource Graph to see the change history for a resource. For more information, see [Get resource changes](../governance/resource-graph/how-to/get-resource-changes.md).
+Pomocí grafu prostředků můžete zobrazit historii změn pro určitý prostředek. Další informace najdete v tématu [získání změn prostředků](../governance/resource-graph/how-to/get-resource-changes.md).
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 
-The REST operations for working with the activity log are part of the [Insights REST API](/rest/api/monitor/). To retrieve activity log events, see [List the management events in a subscription](/rest/api/monitor/activitylogs).
+Operace REST pro práci s protokolem aktivit jsou součástí [REST API Insights](/rest/api/monitor/). Pokud chcete načíst události protokolu aktivit, přečtěte si téma [seznam událostí správy v rámci předplatného](/rest/api/monitor/activitylogs).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Azure Activity logs can be used with Power BI to gain greater insights about the actions in your subscription. See [View and analyze Azure Activity Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* To learn about setting security policies, see [Azure Role-based Access Control](../role-based-access-control/role-assignments-portal.md).
-* To view more details about the changes to your applications from the infrastructure layer all the way to application deployment, see [Use Application Change Analysis in Azure Monitor](../azure-monitor/app/change-analysis.md).
-* To learn about the commands for viewing deployment operations, see [View deployment operations](resource-manager-deployment-operations.md).
-* To learn how to prevent deletions on a resource for all users, see [Lock resources with Azure Resource Manager](resource-group-lock-resources.md).
-* To see the list of operations available for each Microsoft Azure Resource Manager provider, see [Azure Resource Manager Resource Provider operations](../role-based-access-control/resource-provider-operations.md)
+* Protokoly aktivit Azure se dají použít s Power BI k získání dalších přehledů o akcích ve vašem předplatném. Podívejte se [na téma zobrazení a analýza protokolů aktivit Azure v Power BI a dalších](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
+* Další informace o nastavení zásad zabezpečení najdete v tématu [Access Control na základě rolí v Azure](../role-based-access-control/role-assignments-portal.md).
+* Pokud chcete zobrazit další podrobnosti o změnách vašich aplikací z infrastruktury infrastruktury všech způsobů nasazení aplikace, přečtěte si téma [použití analýzy změn aplikace v Azure monitor](../azure-monitor/app/change-analysis.md).
+* Další informace o příkazech pro zobrazení operací nasazení najdete v tématu [Zobrazení operací nasazení](resource-manager-deployment-operations.md).
+* Informace o tom, jak zabránit odstranění prostředků pro všechny uživatele, najdete v tématu [uzamčení prostředků pomocí Azure Resource Manager](resource-group-lock-resources.md).
+* Pokud chcete zobrazit seznam operací dostupných pro každého poskytovatele Microsoft Azure Správce prostředků, přečtěte si téma [Azure Resource Manager operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md) .

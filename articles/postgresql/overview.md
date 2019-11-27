@@ -15,43 +15,43 @@ ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481667"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Co je Azure Database for PostgreSQL?
-Azure Database for PostgreSQL is a relational database service in the Microsoft cloud built for developers. It is based on the community version of open-source [PostgreSQL](https://www.postgresql.org/) database engine, and is available in two deployment options: Single Server and Hyperscale (Citus).
+Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře. Vychází z komunitní verze open source databázového stroje [PostgreSQL](https://www.postgresql.org/) a je k dispozici ve dvou možnostech nasazení: jeden server a škálovatelné (Citus).
 
-## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server
-The Single Server deployment option delivers:
+## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – jeden server
+Možnost nasazení jediného serveru nabízí:
 
-- Built-in [high availability](concepts-high-availability.md) with no additional cost (99.99% SLA)
+- Integrovaná [Vysoká dostupnost](concepts-high-availability.md) bez dalších nákladů (99,99% SLA)
 - Předvídatelný výkon a všeobecné ceny při průběžných platbách
-- [Vertical scale as needed](concepts-pricing-tiers.md) within seconds
-- [Monitoring and alerting](concepts-monitoring.md) to assess your server
-- Dodržování předpisů a zabezpečení na podnikové úrovni
-- [Secured to protect](concepts-security.md) sensitive data at-rest and in-motion
-- [Automatic backups and point-in-time-restore](concepts-business-continuity.md) for up to 35 days
+- [Vertikální škálování podle potřeby](concepts-pricing-tiers.md) během několika sekund
+- [Monitorování a upozorňování](concepts-monitoring.md) na posouzení vašeho serveru
+- Zabezpečení a dodržování předpisů na podnikové úrovni
+- [Zabezpečené pro ochranu](concepts-security.md) citlivých dat v klidovém provozu a v pohybu
+- [Automatické zálohování a obnovení k bodu v čase](concepts-business-continuity.md) po dobu až 35 dnů
 
 
-Všechny tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. They allow you to focus on rapid application development and accelerating your time to market, rather than spending precious time and resources to manage virtual machines and infrastructure. You can continue to develop your application with the open-source tools and platform of your choice, without having to learn new skills.
+Všechny tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. Díky tomu se můžete soustředit na rychlý vývoj aplikací a urychlení doby uvedení na trh, ale netráví drahých časů a prostředků pro správu virtuálních počítačů a infrastruktury. Můžete pokračovat v vývoji aplikace pomocí Open source nástrojů a platformy podle vašeho výběru, aniž byste se museli učit nové dovednosti.
 
-The Single Server deployment option offers three pricing tiers: Basic, General Purpose, and Memory Optimized. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. See [Pricing tiers](concepts-pricing-tiers.md) for details.
+Možnost nasazení na jeden server nabízí tři cenové úrovně: základní, Pro obecné účely a paměťově optimalizované. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [cenové úrovně](concepts-pricing-tiers.md) .
 
-## <a name="azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus)
-The Hyperscale (Citus) option horizontally scales queries across multiple machines using sharding. Its query engine parallelizes incoming SQL queries across these servers for faster responses on large datasets. It serves applications that require greater scale and performance, generally workloads that are approaching -- or already exceed -- 100 GB of data.
+## <a name="azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL – Citus (škálování)
+Možnost Citus () horizontálně škáluje dotazy napříč více počítači pomocí horizontálního dělení. Jeho dotazovací modul parallelizes příchozí dotazy SQL napříč těmito servery, aby bylo rychlejší odezvy na velké datové sady. Obsluhuje aplikace, které vyžadují větší rozsah a výkon, obvykle úlohy, které se blíží--100 GB dat.
 
-The Hyperscale (Citus) deployment option delivers:
+Možnost nasazení Citus () nabízí:
 
-- Horizontal scaling across multiple machines using sharding
-- Query parallelization across these servers for faster responses on large datasets
-- Excellent support for multi-tenant applications, real time operational analytics, and high throughput transactional workloads
+- Horizontální škálování napříč několika počítači pomocí horizontálního dělení
+- Dotazování paralelního zpracování na těchto serverech pro rychlejší odezvy na velké datové sady
+- Vynikající podpora pro víceklientské aplikace, provozní analýzy v reálném čase a transakční úlohy s vysokou propustností
 
-Applications built for PostgreSQL can run distributed queries on Hyperscale (Citus) with standard [connection libraries](./concepts-connection-libraries.md) and minimal changes.
+Aplikace vytvořené pro PostgreSQL můžou spouštět distribuované dotazy na úrovni Citus (s standardními [knihovnami připojení](./concepts-connection-libraries.md) a minimálními změnami).
 
 ## <a name="contacts"></a>Kontakty
-For any questions or suggestions about working with Azure Database for PostgreSQL, send an email to the Azure Database for PostgreSQL Team ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). This address is for general questions rather than support tickets.
+Pokud máte jakékoli dotazy nebo návrhy týkající se práce s Azure Database for PostgreSQL, odešlete e-mail týmu Azure Database for PostgreSQL ([@Ask Azure DB pro PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Tato adresa je určena pro obecné otázky, nikoli pro lístky podpory.
 
-In addition, consider these points of contact as appropriate:
-- To contact Azure Support or fix an issue with your account, [file a ticket from the Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Dále podle potřeby zvažte tyto kontaktní body:
+- Pokud chcete kontaktovat podporu Azure nebo vyřešit problém s vaším účtem, zapište [lístek z Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
 ## <a name="next-steps"></a>Další kroky
 - Na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) najdete porovnání nákladů a kalkulačky.
-- Get started by creating your first Azure Database for PostgreSQL [Single Server](./quickstart-create-server-database-portal.md) or [Hyperscale (Citus)](./quickstart-create-hyperscale-portal.md)
+- Začněte tím, že vytvoříte první Azure Database for PostgreSQL [jeden server](./quickstart-create-server-database-portal.md) nebo [Citus (škálovatelný)](./quickstart-create-hyperscale-portal.md) .
 - Sestavte svou první aplikaci v jazyce Python, PHP, Ruby, C\#, Java, Node.js: [Knihovny připojení](./concepts-connection-libraries.md)

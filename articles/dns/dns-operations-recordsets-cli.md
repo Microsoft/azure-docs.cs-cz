@@ -1,6 +1,6 @@
 ---
-title: Manage DNS records in Azure DNS using the Azure CLI | Microsoft Docs
-description: Managing DNS record sets and records on Azure DNS when hosting your domain on Azure DNS.
+title: Správa záznamů DNS v Azure DNS pomocí rozhraní příkazového řádku Azure Microsoft Docs
+description: Správa sad záznamů DNS a záznamů na Azure DNS při hostování vaší domény v Azure DNS.
 services: dns
 documentationcenter: na
 author: asudbring
@@ -21,18 +21,18 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211636"
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Manage DNS records and recordsets in Azure DNS using the Azure CLI
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Správa záznamů a sad záznamů DNS v Azure DNS pomocí rozhraní příkazového řádku Azure
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-This article shows you how to manage DNS records for your DNS zone by using the cross-platform Azure CLI, which is available for Windows, Mac and Linux. You can also manage your DNS records using [Azure PowerShell](dns-operations-recordsets.md) or the [Azure portal](dns-operations-recordsets-portal.md).
+V tomto článku se dozvíte, jak spravovat záznamy DNS pro zónu DNS pomocí rozhraní příkazového řádku Azure CLI pro různé platformy, které je dostupné pro Windows, Mac a Linux. Záznamy DNS můžete spravovat také pomocí [Azure PowerShell](dns-operations-recordsets.md) nebo [Azure Portal](dns-operations-recordsets-portal.md).
 
-The examples in this article assume you have already [installed the Azure CLI, signed in, and created a DNS zone](dns-operations-dnszones-cli.md).
+V příkladech v tomto článku se předpokládá, že jste už [nainstalovali Azure CLI, jste přihlášeni a vytvořili ZÓNU DNS](dns-operations-dnszones-cli.md).
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 Před vytvářením záznamů DNS v DNS Azure je nejprve nutné pochopit, jak DNS Azure organizuje záznamy DNS v sadách záznamů DNS.
 
@@ -42,13 +42,13 @@ Další informace o záznamech DNS v DNS Azure najdete v tématu [Zóny a zázna
 
 ## <a name="create-a-dns-record"></a>Vytvoření záznamu DNS
 
-To create a DNS record, use the `az network dns record-set <record-type> add-record` command (where `<record-type>` is the type of record, i.e a, srv, txt, etc.) For help, see `az network dns record-set --help`.
+Chcete-li vytvořit záznam DNS, použijte příkaz `az network dns record-set <record-type> add-record` (kde `<record-type>` je typ záznamu, tj. a, SRV, txt atd.) Nápovědu najdete v tématu `az network dns record-set --help`.
 
-Při vytváření záznamu je třeba zadat název skupiny prostředků, název zóny, název sady záznamů a podrobnosti o vytvářeném záznamu. The record set name given must be a *relative* name, meaning it must exclude the zone name.
+Při vytváření záznamu je třeba zadat název skupiny prostředků, název zóny, název sady záznamů a podrobnosti o vytvářeném záznamu. Zadaný název sady záznamů musí být *relativní* název, což znamená, že musí název zóny vyloučit.
 
 Pokud sada záznamů ještě neexistuje, tento příkaz ji vytvoří. Pokud sada záznamů již existuje, tento příkaz přidá zadaný záznam do existující sady záznamů.
 
-Pokud se vytváří nová sada záznamů, použije se výchozí hodnota TTL (Time to Live) 3 600. For instructions on how to use different TTLs, see [Create a DNS record set](#create-a-dns-record-set).
+Pokud se vytváří nová sada záznamů, použije se výchozí hodnota TTL (Time to Live) 3 600. Pokyny k používání různých TTLs najdete v tématu [Vytvoření sady záznamů DNS](#create-a-dns-record-set).
 
 Následující příklad vytvoří záznam A s názvem *www* v zóně *contoso.com* ve skupině prostředků *MyResourceGroup*. IP adresa záznamu A je *1.2.3.4*.
 
@@ -56,62 +56,62 @@ Následující příklad vytvoří záznam A s názvem *www* v zóně *contoso.c
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
-To create a record set in the apex of the zone (in this case, "contoso.com"), use the record name "\@", including the quotation marks:
+Pokud chcete vytvořit sadu záznamů na vrcholu zóny (v tomto případě "contoso.com"), použijte název záznamu "\@", včetně uvozovek:
 
 ```azurecli
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --ipv4-address 1.2.3.4
 ```
 
-## <a name="create-a-dns-record-set"></a>Create a DNS record set
+## <a name="create-a-dns-record-set"></a>Vytvoření sady záznamů DNS
 
-In the above examples, the DNS record was either added to an existing record set, or the record set was created *implicitly*. You can also create the record set *explicitly* before adding records to it. Azure DNS supports 'empty' record sets, which can act as a placeholder to reserve a DNS name before creating DNS records. Empty record sets are visible in the Azure DNS control plane, but do not appear on the Azure DNS name servers.
+Ve výše uvedených příkladech se záznam DNS buď přidal do existující sady záznamů, nebo se sada záznamů vytvořila *implicitně*. Sadu záznamů můžete vytvořit také *explicitně* před přidáním záznamů do ní. Azure DNS podporuje prázdné sady záznamů, které mohou sloužit jako zástupný symbol pro rezervaci názvu DNS před vytvořením záznamů DNS. Prázdné sady záznamů jsou viditelné v Azure DNS rovině ovládacího prvku, ale nezobrazují se na Azure DNS názvových serverech.
 
-Record sets are created using the `az network dns record-set <record-type> create` command. Nápovědu získáte příkazem `az network dns record-set <record-type> create --help`.
+Sady záznamů se vytvářejí pomocí příkazu `az network dns record-set <record-type> create`. Nápovědu získáte příkazem `az network dns record-set <record-type> create --help`.
 
-Creating the record set explicitly allows you to specify record set properties such as the [Time-To-Live (TTL)](dns-zones-records.md#time-to-live) and metadata. [Record set metadata](dns-zones-records.md#tags-and-metadata) can be used to associate application-specific data with each record set, as key-value pairs.
+Při vytváření sady záznamů je explicitně možné zadat vlastnosti sady záznamů, jako je [TTL (Time to Live)](dns-zones-records.md#time-to-live) a metadata. [Metadata sady záznamů](dns-zones-records.md#tags-and-metadata) lze použít pro přiřazení dat specifických pro aplikaci ke každé sadě záznamů, jako páry klíč-hodnota.
 
-The following example creates an empty record set of type 'A' with a 60-second TTL, by using the `--ttl` parameter (short form `-l`):
+Následující příklad vytvoří prázdnou sadu záznamů typu A s 60 sekundou TTL pomocí parametru `--ttl` (krátký tvar `-l`):
 
 ```azurecli
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --ttl 60
 ```
 
-The following example creates a record set with two metadata entries, "dept=finance" and "environment=production", by using the `--metadata` parameter :
+Následující příklad vytvoří sadu záznamů se dvěma položkami metadat, "Odděl = finance" a "prostředí = produkce", a to pomocí parametru `--metadata`:
 
 ```azurecli
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --metadata "dept=finance" "environment=production"
 ```
 
-Having created an empty record set, records can be added using `azure network dns record-set <record-type> add-record` as described in [Create a DNS record](#create-a-dns-record).
+Díky vytvoření prázdné sady záznamů je možné záznamy přidat pomocí `azure network dns record-set <record-type> add-record`, jak je popsáno v tématu [Vytvoření záznamu DNS](#create-a-dns-record).
 
-## <a name="create-records-of-other-types"></a>Create records of other types
+## <a name="create-records-of-other-types"></a>Vytváření záznamů dalších typů
 
-Having seen in detail how to create 'A' records, the following examples show how to create record of other record types supported by Azure DNS.
+V následujících příkladech se dozvíte, jak vytvořit záznamy A, jak vytvořit záznam dalších typů záznamů podporovaných nástrojem Azure DNS.
 
-Parametry použité k zadání dat záznamu se liší podle typu záznamu. Například pro záznam typu A zadáváte adresu IPv4 pomocí parametru `--ipv4-address <IPv4 address>`. The parameters for each record type can be listed using `az network dns record-set <record-type> add-record --help`.
+Parametry použité k zadání dat záznamu se liší podle typu záznamu. Například pro záznam typu A zadáváte adresu IPv4 pomocí parametru `--ipv4-address <IPv4 address>`. Parametry pro každý typ záznamu lze uvést pomocí `az network dns record-set <record-type> add-record --help`.
 
-In each case, we show how to create a single record. The record is added to the existing record set, or a record set created implicitly. For more information on creating record sets and defining record set parameter explicitly, see [Create a DNS record set](#create-a-dns-record-set).
+V každém případě ukážeme, jak vytvořit jeden záznam. Záznam se přidá do existující sady záznamů nebo se sada záznamů vytvořila implicitně. Další informace o tom, jak explicitně vytvořit sady záznamů a definovat parametr sady záznamů, najdete v tématu [Vytvoření sady záznamů DNS](#create-a-dns-record-set).
 
-We do not give an example to create an SOA record set, since SOAs are created and deleted with each DNS zone and cannot be created or deleted separately. However, [the SOA can be modified, as shown in a later example](#to-modify-an-soa-record).
+Neposkytujeme příklad pro vytvoření sady záznamů SOA, protože SOAs se vytváří a odstraňují s každou zónou DNS a nedá se vytvořit ani odstranit samostatně. [Záznam SOA je však možné upravit, jak je znázorněno v pozdějším příkladu](#to-modify-an-soa-record).
 
-### <a name="create-an-aaaa-record"></a>Create an AAAA record
+### <a name="create-an-aaaa-record"></a>Vytvoření záznamu AAAA
 
 ```azurecli
 az network dns record-set aaaa add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-aaaa --ipv6-address 2607:f8b0:4009:1803::1005
 ```
 
-### <a name="create-an-caa-record"></a>Create an CAA record
+### <a name="create-an-caa-record"></a>Vytvoření záznamu CAA
 
 ```azurecli
 az network dns record-set caa add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-caa --flags 0 --tag "issue" --value "ca1.contoso.com"
 ```
 
-### <a name="create-a-cname-record"></a>Create a CNAME record
+### <a name="create-a-cname-record"></a>Vytvoření záznamu CNAME
 
 > [!NOTE]
-> The DNS standards do not permit CNAME records at the apex of a zone (`--Name "@"`), nor do they permit record sets containing more than one record.
+> Standardy DNS nepovolují záznamy CNAME na vrcholu zóny (`--Name "@"`), ani nepovolují sady záznamů obsahující více než jeden záznam.
 > 
-> For more information, see [CNAME records](dns-zones-records.md#cname-records).
+> Další informace najdete v tématu [záznamy CNAME](dns-zones-records.md#cname-records).
 
 ```azurecli
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.contoso.com
@@ -119,182 +119,182 @@ az network dns record-set cname set-record --resource-group myresourcegroup --zo
 
 ### <a name="create-an-mx-record"></a>Create an MX record
 
-In this example, we use the record set name "\@" to create the MX record at the zone apex (in this case, "contoso.com").
+V tomto příkladu používáme název sady záznamů "\@" k vytvoření záznamu MX ve vrcholu zóny (v tomto případě "contoso.com").
 
 ```azurecli
 az network dns record-set mx add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --exchange mail.contoso.com --preference 5
 ```
 
-### <a name="create-an-ns-record"></a>Create an NS record
+### <a name="create-an-ns-record"></a>Vytvoření záznamu NS
 
 ```azurecli
 az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-ns --nsdname ns1.contoso.com
 ```
 
-### <a name="create-a-ptr-record"></a>Create a PTR record
+### <a name="create-a-ptr-record"></a>Vytvoření záznamu PTR
 
-In this case, 'my-arpa-zone.com' represents the ARPA zone representing your IP range. Každá sada záznamů PTR v této zóně odpovídá IP adrese v rámci tohoto rozsahu IP adres.  The record name '10' is the last octet of the IP address within this IP range represented by this record.
+V tomto případě "my-arpa-zone.com" představuje zónu ARPA představující rozsah IP adres. Každá sada záznamů PTR v této zóně odpovídá IP adrese v rámci tohoto rozsahu IP adres.  Název záznamu ' 10 ' je poslední oktet IP adresy v rámci tohoto rozsahu IP adres reprezentovaného tímto záznamem.
 
 ```azurecli
 az network dns record-set ptr add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name my-arpa.zone.com --ptrdname myservice.contoso.com
 ```
 
-### <a name="create-an-srv-record"></a>Create an SRV record
+### <a name="create-an-srv-record"></a>Vytvoření záznamu SRV
 
-When creating an [SRV record set](dns-zones-records.md#srv-records), specify the *\_service* and *\_protocol* in the record set name. There is no need to include "\@" in the record set name when creating an SRV record set at the zone apex.
+Při vytváření [sady záznamů SRV](dns-zones-records.md#srv-records)zadejte v názvu sady záznamů *službu\_* a *protokol\_* . Při vytváření sady záznamů SRV v vrcholu zóny není nutné do názvu sady záznamů zahrnout "\@".
 
 ```azurecli
 az network dns record-set srv add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
 ```
 
-### <a name="create-a-txt-record"></a>Create a TXT record
+### <a name="create-a-txt-record"></a>Vytvoření záznamu TXT
 
-The following example shows how to create a TXT record. For more information about the maximum string length supported in TXT records, see [TXT records](dns-zones-records.md#txt-records).
+Následující příklad ukazuje, jak vytvořit záznam TXT. Další informace o maximální délce řetězce podporované v záznamech TXT najdete v tématu [záznamy TXT](dns-zones-records.md#txt-records).
 
 ```azurecli
 az network dns record-set txt add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-txt --value "This is a TXT record"
 ```
 
-## <a name="get-a-record-set"></a>Get a record set
+## <a name="get-a-record-set"></a>Získání sady záznamů
 
-To retrieve an existing record set, use `az network dns record-set <record-type> show`. Nápovědu získáte příkazem `az network dns record-set <record-type> show --help`.
+K načtení existující sady záznamů použijte `az network dns record-set <record-type> show`. Nápovědu získáte příkazem `az network dns record-set <record-type> show --help`.
 
-As when creating a record or record set, the record set name given must be a *relative* name, meaning it must exclude the zone name. You also need to specify the record type, the zone containing the record set, and the resource group containing the zone.
+Stejně jako při vytváření záznamu nebo sady záznamů musí být zadaný název sady záznamů *relativní* název, což znamená, že musí název zóny vyloučit. Je také potřeba zadat typ záznamu, zónu obsahující sadu záznamů a skupinu prostředků, která tuto zónu obsahuje.
 
-The following example retrieves the record *www* of type A from zone *contoso.com* in resource group *MyResourceGroup*:
+Následující příklad načte záznam *webové* služby typu A ze zóny *contoso.com* ve skupině prostředků *MyResourceGroup*:
 
 ```azurecli
 az network dns record-set a show --resource-group myresourcegroup --zone-name contoso.com --name www
 ```
 
-## <a name="list-record-sets"></a>List record sets
+## <a name="list-record-sets"></a>Seznam sad záznamů
 
-You can list all records in a DNS zone by using the `az network dns record-set list` command. Nápovědu získáte příkazem `az network dns record-set list --help`.
+Pomocí příkazu `az network dns record-set list` můžete zobrazit seznam všech záznamů v zóně DNS. Nápovědu získáte příkazem `az network dns record-set list --help`.
 
-This example returns all record sets in the zone *contoso.com*, in resource group *MyResourceGroup*, regardless of name or record type:
+Tento příklad vrátí všechny sady záznamů v zóně *contoso.com*ve skupině prostředků *MyResourceGroup*, bez ohledu na název nebo typ záznamu:
 
 ```azurecli
 az network dns record-set list --resource-group myresourcegroup --zone-name contoso.com
 ```
 
-This example returns all record sets that match the given record type (in this case, 'A' records):
+Tento příklad vrátí všechny sady záznamů, které odpovídají danému typu záznamu (v tomto případě záznamy ' A '):
 
 ```azurecli
 az network dns record-set a list --resource-group myresourcegroup --zone-name contoso.com 
 ```
 
-## <a name="add-a-record-to-an-existing-record-set"></a>Add a record to an existing record set
+## <a name="add-a-record-to-an-existing-record-set"></a>Přidání záznamu do existující sady záznamů
 
-You can use `az network dns record-set <record-type> add-record` both to create a record in a new record set, or to add a record to an existing record set.
+`az network dns record-set <record-type> add-record` můžete použít k vytvoření záznamu v nové sadě záznamů nebo k přidání záznamu do existující sady záznamů.
 
-For more information, see [Create a DNS record](#create-a-dns-record) and [Create records of other types](#create-records-of-other-types) above.
+Další informace najdete v tématech [Vytvoření záznamu DNS](#create-a-dns-record) a [Vytvoření záznamů dalších typů](#create-records-of-other-types) .
 
-## <a name="remove-a-record-from-an-existing-record-set"></a>Remove a record from an existing record set.
+## <a name="remove-a-record-from-an-existing-record-set"></a>Odebere záznam z existující sady záznamů.
 
-To remove a DNS record from an existing record set, use `az network dns record-set <record-type> remove-record`. Nápovědu získáte příkazem `az network dns record-set <record-type> remove-record -h`.
+Chcete-li odebrat záznam DNS z existující sady záznamů, použijte `az network dns record-set <record-type> remove-record`. Nápovědu získáte příkazem `az network dns record-set <record-type> remove-record -h`.
 
-This command deletes a DNS record from a record set. If the last record in a record set is deleted, the record set itself is also deleted. To keep the empty record set instead, use the `--keep-empty-record-set` option.
+Tento příkaz odstraní ze sady záznamů záznam DNS. Pokud se odstraní poslední záznam v sadě záznamů, odstraní se i samotná sada záznamů. Chcete-li místo toho ponechat prázdnou sadu záznamů, použijte možnost `--keep-empty-record-set`.
 
-You need to specify the record to be deleted and the zone it should be deleted from, using the same parameters as when creating a record using `az network dns record-set <record-type> add-record`. These parameters are described in [Create a DNS record](#create-a-dns-record) and [Create records of other types](#create-records-of-other-types) above.
+Je nutné zadat záznam, který chcete odstranit, a zónu, ze které má být odstraněn, pomocí stejných parametrů, jako při vytváření záznamu pomocí `az network dns record-set <record-type> add-record`. Tyto parametry jsou popsané v tématu [Vytvoření záznamu DNS](#create-a-dns-record) a [Vytvoření záznamů dalších typů](#create-records-of-other-types) .
 
-The following example deletes the A record with value '1.2.3.4' from the record set named *www* in the zone *contoso.com*, in the resource group *MyResourceGroup*.
+Následující příklad odstraní záznam A s hodnotou 1.2.3.4 ze sady záznamů s názvem *www* v zóně *contoso.com*ve skupině prostředků *MyResourceGroup*.
 
 ```azurecli
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "www" --ipv4-address 1.2.3.4
 ```
 
-## <a name="modify-an-existing-record-set"></a>Modify an existing record set
+## <a name="modify-an-existing-record-set"></a>Úprava existující sady záznamů
 
-Each record set contains a [time-to-live (TTL)](dns-zones-records.md#time-to-live), [metadata](dns-zones-records.md#tags-and-metadata), and DNS records. The following sections explain how to modify each of these properties.
+Každá sada záznamů obsahuje záznamy [TTL (Time-to-Live)](dns-zones-records.md#time-to-live), [metadata](dns-zones-records.md#tags-and-metadata)a DNS. V následujících částech se dozvíte, jak změnit každou z těchto vlastností.
 
-### <a name="to-modify-an-a-aaaa-caa-mx-ns-ptr-srv-or-txt-record"></a>To modify an A, AAAA, CAA, MX, NS, PTR, SRV, or TXT record
+### <a name="to-modify-an-a-aaaa-caa-mx-ns-ptr-srv-or-txt-record"></a>Úprava záznamu A, AAAA, CAA, MX, NS, PTR, SRV nebo TXT
 
-To modify an existing record of type A, AAAA, CAA, MX, NS, PTR, SRV, or TXT, you should first add a new record and then delete the existing record. For detailed instructions on how to delete and add records, see the earlier sections of this article.
+Pokud chcete upravit existující záznam typu A, AAAA, CAA, MX, NS, PTR, SRV nebo TXT, měli byste nejdřív přidat nový záznam a pak odstranit existující záznam. Podrobné pokyny k odstranění a přidání záznamů najdete v předchozích částech tohoto článku.
 
-The following example shows how to modify an 'A' record, from IP address 1.2.3.4 to IP address 5.6.7.8:
+Následující příklad ukazuje, jak upravit záznam "A" z IP adresy 1.2.3.4 na IP adresu 5.6.7.8:
 
 ```azurecli
 az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 5.6.7.8
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
-You cannot add, remove, or modify the records in the automatically created NS record set at the zone apex (`--Name "@"`, including quote marks). For this record set, the only changes permitted are to modify the record set TTL and metadata.
+Na vrcholu zóny (`--Name "@"`, včetně uvozovek) nemůžete přidávat, odebírat ani upravovat záznamy v sadě záznamů o automatickém vytváření NS. V případě této sady záznamů jsou povoleny pouze změny, kterými je upravena hodnota TTL a metadata sady záznamů.
 
-### <a name="to-modify-a-cname-record"></a>To modify a CNAME record
+### <a name="to-modify-a-cname-record"></a>Postup úpravy záznamu CNAME
 
-Unlike most other record types, a CNAME record set can only contain a single record.  Therefore, you cannot replace the current value by adding a new record and removing the existing record, as for other record types.
+Na rozdíl od většiny ostatních typů záznamů může sada záznamů CNAME obsahovat jenom jeden záznam.  Proto nemůžete nahradit aktuální hodnotu přidáním nového záznamu a odebráním existujícího záznamu, stejně jako u jiných typů záznamů.
 
-Instead, to modify a CNAME record, use `az network dns record-set cname set-record`. For help, see `az network dns record-set cname set-record --help`
+Místo toho pro úpravu záznamu CNAME použijte `az network dns record-set cname set-record`. Nápovědu najdete v tématu `az network dns record-set cname set-record --help`
 
-The example modifies the CNAME record set *www* in the zone *contoso.com*, in resource group *MyResourceGroup*, to point to 'www.fabrikam.net' instead of its existing value:
+V příkladu se změní *Webová* sada záznamů CNAME v zóně *contoso.com*ve skupině prostředků *MyResourceGroup*, aby odkazovala na ' www.fabrikam.NET ' namísto existující hodnoty:
 
 ```azurecli
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.fabrikam.net
 ``` 
 
-### <a name="to-modify-an-soa-record"></a>To modify an SOA record
+### <a name="to-modify-an-soa-record"></a>Postup úpravy záznamu SOA
 
-Unlike most other record types, a CNAME record set can only contain a single record.  Therefore, you cannot replace the current value by adding a new record and removing the existing record, as for other record types.
+Na rozdíl od většiny ostatních typů záznamů může sada záznamů CNAME obsahovat jenom jeden záznam.  Proto nemůžete nahradit aktuální hodnotu přidáním nového záznamu a odebráním existujícího záznamu, stejně jako u jiných typů záznamů.
 
-Instead, to modify the SOA record, use `az network dns record-set soa update`. Nápovědu získáte příkazem `az network dns record-set soa update --help`.
+Místo toho pro úpravu záznamu SOA použijte `az network dns record-set soa update`. Nápovědu získáte příkazem `az network dns record-set soa update --help`.
 
-The following example shows how to set the 'email' property of the SOA record for the zone *contoso.com* in the resource group *MyResourceGroup*:
+Následující příklad ukazuje, jak nastavit vlastnost email záznamu SOA pro zónu *contoso.com* ve skupině prostředků *MyResourceGroup*:
 
 ```azurecli
 az network dns record-set soa update --resource-group myresourcegroup --zone-name contoso.com --email admin.contoso.com
 ```
 
-### <a name="to-modify-ns-records-at-the-zone-apex"></a>To modify NS records at the zone apex
+### <a name="to-modify-ns-records-at-the-zone-apex"></a>Úprava záznamů NS ve vrcholu zóny
 
-The NS record set at the zone apex is automatically created with each DNS zone. It contains the names of the Azure DNS name servers assigned to the zone.
+Záznam NS nastavený na vrcholu zóny se automaticky vytvoří s každou zónou DNS. Obsahuje názvy Azure DNS názvových serverů přiřazených k zóně.
 
-You can add additional name servers to this NS record set, to support co-hosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, you cannot remove or modify the pre-populated Azure DNS name servers.
+Do této sady záznamů NS můžete přidat další názvové servery, aby se podporovaly domény spoluhostování s více než jedním poskytovatelem DNS. Můžete také upravit hodnotu TTL a metadata této sady záznamů. Nemůžete ale odebrat ani změnit předem vyplněné Azure DNS názvové servery.
 
-Note that this applies only to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be modified without constraint.
+Všimněte si, že to platí jenom pro záznam NS, který je nastavený na vrcholu zóny. Jiné sady záznamů NS ve vaší zóně (jako používané pro delegování podřízených zón) se dají upravovat bez omezení.
 
-The following example shows how to add an additional name server to the NS record set at the zone apex:
+Následující příklad ukazuje, jak přidat další názvový server do sady záznamů NS ve vrcholu zóny:
 
 ```azurecli
 az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.com 
 ```
 
-### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>To modify the TTL of an existing record set
+### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>Úprava hodnoty TTL existující sady záznamů
 
-To modify the TTL of an existing record set, use `azure network dns record-set <record-type> update`. Nápovědu získáte příkazem `azure network dns record-set <record-type> update --help`.
+Chcete-li upravit hodnotu TTL existující sady záznamů, použijte `azure network dns record-set <record-type> update`. Nápovědu získáte příkazem `azure network dns record-set <record-type> update --help`.
 
-The following example shows how to modify a record set TTL, in this case to 60 seconds:
+Následující příklad ukazuje, jak upravit hodnotu TTL sady záznamů, v tomto případě na 60 sekund:
 
 ```azurecli
 az network dns record-set a update --resource-group myresourcegroup --zone-name contoso.com --name www --set ttl=60
 ```
 
-### <a name="to-modify-the-metadata-of-an-existing-record-set"></a>To modify the metadata of an existing record set
+### <a name="to-modify-the-metadata-of-an-existing-record-set"></a>Úprava metadat existující sady záznamů
 
-[Record set metadata](dns-zones-records.md#tags-and-metadata) can be used to associate application-specific data with each record set, as key-value pairs. To modify the metadata of an existing record set, use `az network dns record-set <record-type> update`. Nápovědu získáte příkazem `az network dns record-set <record-type> update --help`.
+[Metadata sady záznamů](dns-zones-records.md#tags-and-metadata) lze použít pro přiřazení dat specifických pro aplikaci ke každé sadě záznamů, jako páry klíč-hodnota. Chcete-li upravit metadata existující sady záznamů, použijte `az network dns record-set <record-type> update`. Nápovědu získáte příkazem `az network dns record-set <record-type> update --help`.
 
-The following example shows how to modify a record set with two metadata entries, "dept=finance" and "environment=production". Note that any existing metadata is *replaced* by the values given.
+Následující příklad ukazuje, jak upravit sadu záznamů se dvěma položkami metadat, "oddělení = finance" a "prostředí = produkce". Všimněte si, že všechna existující metadata jsou *nahrazena* danými hodnotami.
 
 ```azurecli
 az network dns record-set a update --resource-group myresourcegroup --zone-name contoso.com --name www --set metadata.dept=finance metadata.environment=production
 ```
 
-## <a name="delete-a-record-set"></a>Delete a record set
+## <a name="delete-a-record-set"></a>Odstranění sady záznamů
 
-Record sets can be deleted by using the `az network dns record-set <record-type> delete` command. Nápovědu získáte příkazem `azure network dns record-set <record-type> delete --help`. Deleting a record set also deletes all records within the record set.
+Sady záznamů lze odstranit pomocí příkazu `az network dns record-set <record-type> delete`. Nápovědu získáte příkazem `azure network dns record-set <record-type> delete --help`. Odstraněním sady záznamů dojde také k odstranění všech záznamů v rámci sady záznamů.
 
 > [!NOTE]
-> You cannot delete the SOA and NS record sets at the zone apex (`--name "@"`).  These are created automatically when the zone was created, and are deleted automatically when the zone is deleted.
+> Sady záznamů SOA a NS nelze odstranit ve vrcholu zóny (`--name "@"`).  Ty se vytvoří automaticky při vytvoření zóny a automaticky se odstraní, když se zóna odstraní.
 
-The following example deletes the record set named *www* of type A from the zone *contoso.com* in resource group *MyResourceGroup*:
+Následující příklad odstraní sadu záznamů s názvem *www* typu A ze zóny *contoso.com* ve skupině prostředků *MyResourceGroup*:
 
 ```azurecli
 az network dns record-set a delete --resource-group myresourcegroup --zone-name contoso.com --name www
 ```
 
-You are prompted to confirm the delete operation. To suppress this prompt, use the `--yes` switch.
+Zobrazí se výzva k potvrzení operace odstranění. Chcete-li potlačit tuto výzvu, použijte přepínač `--yes`.
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn more about [zones and records in Azure DNS](dns-zones-records.md).
+Další informace o [zónách a záznamech v Azure DNS](dns-zones-records.md).
 <br>
-Learn how to [protect your zones and records](dns-protect-zones-recordsets.md) when using Azure DNS.
+Naučte se [chránit zóny a záznamy](dns-protect-zones-recordsets.md) při použití Azure DNS.

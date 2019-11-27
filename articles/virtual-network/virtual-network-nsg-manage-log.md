@@ -31,11 +31,11 @@ Diagnostické protokoly jsou k dispozici pouze pro skupin zabezpečení sítě n
 
 Protokolování diagnostiky je povoleno samostatně pro *každý* NSG, pro který chcete shromažďovat diagnostická data. Pokud vás zajímá provozní nebo činnost, protokoly, přečtěte si téma [protokolování aktivit](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)Azure.
 
-## <a name="enable-logging"></a>Povolit protokolování
+## <a name="enable-logging"></a>Povolte protokolování
 
 Pomocí webu [Azure Portal](#azure-portal), [PowerShellu](#powershell)nebo rozhraní příkazového [řádku Azure](#azure-cli) můžete povolit protokolování diagnostiky.
 
-### <a name="azure-portal"></a>Web Azure Portal
+### <a name="azure-portal"></a>Azure Portal
 
 1. Přihlaste se k [portálu](https://portal.azure.com).
 2. Vyberte **všechny služby**a pak zadejte *skupiny zabezpečení sítě*. Pokud se ve výsledcích hledání zobrazí **skupiny zabezpečení sítě** , vyberte ji.

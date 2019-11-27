@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Deploy from geo-replicated registry
-description: Deploy a Linux-based web app to two different Azure regions using a container image from a geo-replicated Azure container registry. Druhá část třídílné série.
+title: Kurz – nasazení z geograficky replikovaného registru
+description: Nasazení webové aplikace se systémem Linux do dvou různých oblastí Azure pomocí Image kontejneru z geograficky replikovaného registru kontejnerů Azure. Druhá část třídílné série.
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456106"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Deploy a web app from a geo-replicated Azure container registry
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
 
 Toto je druhá část z třídílné série kurzů. V [první části](container-registry-tutorial-prepare-registry.md) jste vytvořili privátní, geograficky replikovaný registr kontejneru a ze zdroje jste sestavili image kontejneru, kterou jste vložili do registru. V tomto článku nasadíte kontejner do instancí webových aplikací ve dvou různých oblastech Azure a využijete tak aspekt blízkosti sítě u geograficky replikovaného registru. Každá instance pak načte image kontejneru z nejbližšího registru.
 
@@ -54,7 +54,7 @@ V části **Web App for Containers**, která se zobrazí po výběru možnosti N
 | **Operační systém** | Linux |
 
 > [!NOTE]
-> When you create a new app service plan to deploy your containerized app, a default plan is automatically selected to host your application. The default plan depends on the operating system setting.
+> Při vytváření nového plánu služby App Service pro nasazení kontejnerové aplikace je automaticky vybrán výchozí plán pro hostování aplikace. Výchozí plán závisí na nastavení operačního systému.
 
 Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *Západní USA*.
 

@@ -28,15 +28,15 @@ ms.locfileid: "74196583"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Tento článek se týká modelu nasazení Classic. Můžete také [spravovat statickou privátní IP adresou v modelu nasazení Resource Manager](virtual-networks-static-private-ip-arm-cli.md).
+Tento článek se týká modelu nasazení Classic. [V modelu nasazení Správce prostředků můžete také spravovat statickou privátní IP adresu](virtual-networks-static-private-ip-arm-cli.md).
 
-Ukázky Azure classic CLI příkazy, které následují očekávat jednoduché prostředí už vytvořili. Pokud chcete spustit příkazy, jak jsou zobrazeny v tomto dokumentu, nejprve vytvořit testovací prostředí popsané v [vytvořit síť vnet](virtual-networks-create-vnet-classic-cli.md).
+Ukázky Azure classic CLI příkazy, které následují očekávat jednoduché prostředí už vytvořili. Pokud chcete spustit příkazy, které se zobrazují v tomto dokumentu, nejdříve Sestavte testovací prostředí popsané v tématu [vytvoření virtuální](virtual-networks-create-vnet-classic-cli.md)sítě.
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Jak zadat statickou privátní IP adresu při vytváření virtuálního počítače
-Chcete-li vytvořit nový virtuální počítač s názvem *DNS01* v novou cloudovou službu s názvem *TestService* založený na výše uvedeném scénáři, postupujte podle těchto kroků:
+Pokud chcete vytvořit nový virtuální počítač s názvem *DNS01* v nové cloudové službě s názvem *TestService* , která je založená na výše uvedeném scénáři, postupujte podle následujících kroků:
 
 1. Pokud jste rozhraní příkazového řádku Azure nikdy nepoužívali, přejděte na téma [Instalace a konfigurace rozhraní příkazového řádku Azure](/cli/azure/install-cli-version-1.0) a postupujte podle pokynů až do chvíle, kdy můžete vybrat svůj účet a předplatné Azure.
-2. Spustit **vytvoření služby azure** příkaz k vytvoření cloudové služby.
+2. Spuštěním příkazu **Azure Service Create** vytvořte cloudovou službu.
    
         azure service create TestService --location uscentral
    
@@ -46,7 +46,7 @@ Chcete-li vytvořit nový virtuální počítač s názvem *DNS01* v novou cloud
         info:    Creating cloud service
         data:    Cloud service name TestService
         info:    service create command OK
-3. Spustit **azure vytvořit virtuální počítač** příkaz pro vytvoření virtuálního počítače. Všimněte si, že hodnota pro statickou privátní IP adresu. Seznam uvedený za výstupem vysvětluje použité parametry.
+3. Spuštěním příkazu **Azure Create VM** vytvořte virtuální počítač. Všimněte si, že hodnota pro statickou privátní IP adresu. Seznam uvedený za výstupem vysvětluje použité parametry.
    
         azure vm create -l centralus -n DNS01 -w TestVNet -S "192.168.1.101" TestService bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2 adminuser AdminP@ssw0rd
    
@@ -66,16 +66,16 @@ Chcete-li vytvořit nový virtuální počítač s názvem *DNS01* v novou cloud
         info:    vm create command OK
    
    * **-l (nebo --location)** . Oblasti Azure, ve kterém se vytvoří virtuální počítač. V našem scénáři je to *centralus*.
-   * **-n (nebo--vm-name)** . Název virtuálního počítače, který se má vytvořit.
-   * **-w (nebo--virtuální síťový název)** . Název sítě VNet, ve kterém se vytvoří virtuální počítač. 
-   * **-S (nebo--statické ip)** . Statické privátní IP adresu pro virtuální počítač.
+   * **-n (nebo--VM-Name)** . Název virtuálního počítače, který se má vytvořit.
+   * **-w (nebo--Virtual-Network-Name)** . Název sítě VNet, ve kterém se vytvoří virtuální počítač. 
+   * **-S (nebo--Static-IP)** . Statické privátní IP adresu pro virtuální počítač.
    * **TestService**. Název cloudové služby, kde se vytvoří virtuální počítač.
-   * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012 R2-x64-v14.2**. Bitová kopie používaná k vytvoření virtuálního počítače.
+   * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v 14.2**. Bitová kopie používaná k vytvoření virtuálního počítače.
    * **AdminUser**. Místní správce pro virtuální počítač Windows.
    * <strong>AdminP@ssw0rd</strong>. Heslo místního správce pro virtuální počítač Windows.
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Jak načíst statické privátní informace o IP adrese virtuálního počítače
-Chcete-li zobrazit statické privátní informace o IP adresu pro virtuální počítač vytvořen pomocí výše uvedeného skriptu, spusťte následující příkaz rozhraní příkazového řádku Azure a podívejte se hodnota *sítě StaticIP*:
+Pokud chcete zobrazit informace o statických privátních IP adresách pro virtuální počítač vytvořený pomocí skriptu uvedeného výše, spusťte následující příkaz rozhraní příkazového řádku Azure a sledujte hodnotu pro *Network StaticIP*:
 
     azure vm static-ip show DNS01
 
@@ -118,6 +118,6 @@ Očekávaný výstup:
 Doporučuje se, že nepřiřadíte staticky privátní IP adresa přiřazená virtuální počítač Azure v rámci operačního systému virtuálního počítače, není-li nezbytné. Pokud jste ručně nastavili privátní IP adresu v rámci operačního systému, ujistěte se, že se jedná o stejnou adresu jako privátní IP adresa přiřazená k virtuálnímu počítači Azure nebo ztratíte připojení k virtuálnímu počítači. Nepřiřazujte ručně veřejnou IP adresu přiřazenou k virtuálnímu počítači Azure v operačním systému virtuálního počítače.
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [vyhrazené veřejné IP adresy](virtual-networks-reserved-public-ip.md) adresy.
-* Další informace o [veřejné IP (ILPIP) na úrovni instance](virtual-networks-instance-level-public-ip.md) adresy.
-* Poraďte [vyhrazené IP rozhraní REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).
+* Seznamte se s [rezervovanými veřejnými IP](virtual-networks-reserved-public-ip.md) adresami.
+* Přečtěte si informace o [veřejných IP adresách na úrovni instance (ILPIP)](virtual-networks-instance-level-public-ip.md) .
+* Projděte si [vyhrazená IP adresa rozhraní REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).

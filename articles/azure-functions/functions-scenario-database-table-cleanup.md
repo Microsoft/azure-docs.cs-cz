@@ -1,6 +1,6 @@
 ---
-title: Use Azure Functions to perform a database clean up task
-description: Use Azure Functions to schedule a task that connects to Azure SQL Database to periodically clean up rows.
+title: Použití Azure Functions k provedení úlohy vyčištění databáze
+description: Použijte Azure Functions k naplánování úlohy, která se připojuje k Azure SQL Database k pravidelnému vyčištění řádků.
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
@@ -11,82 +11,82 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230384"
 ---
-# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Use Azure Functions to connect to an Azure SQL Database
+# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Připojení k Azure SQL Database pomocí Azure Functions
 
-This article shows you how to use Azure Functions to create a scheduled job that connects to an Azure SQL Database or Azure SQL Managed Instance. The function code cleans up rows in a table in the database. The new C# function is created based on a pre-defined timer trigger template in Visual Studio 2019. To support this scenario, you must also set a database connection string as an app setting in the function app. For Azure SQL Managed Instance you need to [enable public endpoint](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) to be able to connect from Azure Functions. This scenario uses a bulk operation against the database. 
+V tomto článku se dozvíte, jak pomocí Azure Functions vytvořit naplánovanou úlohu, která se připojí k Azure SQL Database nebo spravované instanci Azure SQL. Kód funkce vyčistí řádky v tabulce v databázi. Nová C# funkce je vytvořena na základě předdefinované šablony triggeru časovače v aplikaci Visual Studio 2019. Pro podporu tohoto scénáře musíte také nastavit připojovací řetězec databáze jako nastavení aplikace ve Function App. Pro spravovanou instanci Azure SQL musíte [Povolit veřejný koncový bod](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) , abyste se mohli připojit z Azure Functions. Tento scénář používá pro databázi hromadnou operaci. 
 
-If this is your first experience working with C# Functions, you should read the [Azure Functions C# developer reference](functions-dotnet-class-library.md).
+Pokud se jedná o vaše první prostředí s C# funkcemi, měli byste si přečíst [referenční C# informace pro vývojáře Azure Functions](functions-dotnet-class-library.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-+ Complete the steps in the article [Create your first function using Visual Studio](functions-create-your-first-function-visual-studio.md) to create a local function app that targets the version 2.x runtime. You must also have published your project to a function app in Azure.
++ Dokončete kroky v článku [Vytvoření první funkce pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md) k vytvoření místní aplikace Function App, která cílí na modul runtime verze 2. x. Projekt musíte také publikovat do aplikace Function App v Azure.
 
-+ This article demonstrates a Transact-SQL command that executes a bulk cleanup operation in the **SalesOrderHeader** table in the AdventureWorksLT sample database. To create the AdventureWorksLT sample database, complete the steps in the article [Create an Azure SQL database in the Azure portal](../sql-database/sql-database-get-started-portal.md).
++ Tento článek ukazuje příkaz Transact-SQL, který provede operaci hromadného vyčištění v tabulce **SalesOrderHeader** v ukázkové databázi AdventureWorksLT. Chcete-li vytvořit ukázkovou databázi AdventureWorksLT, proveďte kroky v článku [Vytvoření databáze SQL Azure v Azure Portal](../sql-database/sql-database-get-started-portal.md).
 
-+ You must add a [server-level firewall rule](../sql-database/sql-database-get-started-portal-firewall.md) for the public IP address of the computer you use for this quickstart. This rule is required to be able access the SQL database instance from your local computer.  
++ Je nutné přidat [pravidlo brány firewall na úrovni serveru](../sql-database/sql-database-get-started-portal-firewall.md) pro veřejnou IP adresu počítače, který používáte pro účely tohoto rychlého startu. Toto pravidlo je vyžadováno, aby bylo možné získat přístup k instanci SQL Database z místního počítače.  
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 
-You need to get the connection string for the database you created when you completed [Create an Azure SQL database in the Azure portal](../sql-database/sql-database-get-started-portal.md).
+Pro databázi, kterou jste vytvořili po dokončení [vytváření databáze SQL Azure](../sql-database/sql-database-get-started-portal.md), musíte získat připojovací řetězec v Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
-1. Select **SQL Databases** from the left-hand menu, and select your database on the **SQL databases** page.
+1. V nabídce na levé straně vyberte **databáze SQL** a na stránce **databáze SQL** vyberte svou databázi.
 
-1. Select **Connection strings** under **Settings** and copy the complete **ADO.NET** connection string. For Azure SQL Managed Instance copy connection string for public endpoint.
+1. V části **Nastavení** vyberte **připojovací řetězce** a zkopírujte úplný připojovací řetězec **ADO.NET** . Pro připojovací řetězec kopírování spravované instance Azure SQL pro veřejný koncový bod.
 
-    ![Copy the ADO.NET connection string.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
+    ![Zkopírujte připojovací řetězec ADO.NET.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
 ## <a name="set-the-connection-string"></a>Nastavit připojovací řetězec
 
-Function App hostuje provádění vašich funkcí v Azure. As a best security practice, store connection strings and other secrets in your function app settings. Using application settings prevents accidental disclosure of the connection string with your code. You can access app settings for your function app right from Visual Studio.
+Function App hostuje provádění vašich funkcí v Azure. Osvědčeným postupem zabezpečení je ukládat připojovací řetězce a další tajné kódy do nastavení aplikace Function App. Použití nastavení aplikace brání nechtěnému zveřejnění připojovacího řetězce s vaším kódem. K nastavení aplikace vaší aplikace Function App můžete přistupovat přímo ze sady Visual Studio.
 
-You must have previously published your app to Azure. If you haven't already done so, [Publish your function app to Azure](functions-develop-vs.md#publish-to-azure).
+Je potřeba, abyste aplikaci publikovali už dřív v Azure. Pokud jste to ještě neudělali, [publikujte aplikaci Function App do Azure](functions-develop-vs.md#publish-to-azure).
 
-1. In Solution Explorer, right-click the function app project and choose **Publish** > **Manage application settings...** . Select **Add setting**, in **New app setting name**, type `sqldb_connection`, and select **OK**.
+1. V Průzkumník řešení klikněte pravým tlačítkem na projekt aplikace Function App a vyberte **publikovat** > **Spravovat nastavení aplikace..** .. Vyberte **Přidat nastavení**, v **nastavení nový název aplikace**zadejte `sqldb_connection`a pak vyberte **OK**.
 
-    ![Application settings for the function app.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
+    ![Nastavení aplikace pro aplikaci Function App](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-1. In the new **sqldb_connection** setting, paste the connection string you copied in the previous section into the **Local** field and replace `{your_username}` and `{your_password}` placeholders with real values. Select **Insert value from local** to copy the updated value into the **Remote** field, and then select **OK**.
+1. V nastavení nový **sqldb_connection** vložte připojovací řetězec, který jste zkopírovali v předchozí části, do **místního** pole a nahraďte `{your_username}` a `{your_password}` zástupné symboly skutečnými hodnotami. Vyberte možnost **Vložit hodnotu z místní** pro zkopírování aktualizované hodnoty do **vzdáleného** pole a pak vyberte **OK**.
 
-    ![Add SQL connection string setting.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
+    ![Přidat nastavení připojovacího řetězce SQL](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
-    The connection strings are stored encrypted in Azure (**Remote**). To prevent leaking secrets, the local.settings.json project file (**Local**) should be excluded from source control, such as by using a .gitignore file.
+    Připojovací řetězce se ukládají v Azure jako šifrované (**vzdálené**). Aby nedocházelo k únikům tajných kódů, je třeba soubor projektu Local. Settings. JSON (**místní**) vyloučit ze správy zdrojového kódu, jako je například pomocí souboru. gitignore.
 
-## <a name="add-the-sqlclient-package-to-the-project"></a>Add the SqlClient package to the project
+## <a name="add-the-sqlclient-package-to-the-project"></a>Přidat do projektu balíček SqlClient
 
-You need to add the NuGet package that contains the SqlClient library. This data access library is needed to connect to a SQL database.
+Musíte přidat balíček NuGet, který obsahuje knihovnu SqlClient. Tato knihovna přístupu k datům je nutná pro připojení k databázi SQL.
 
-1. Open your local function app project in Visual Studio 2019.
+1. Otevřete svůj projekt místní aplikace Function App v aplikaci Visual Studio 2019.
 
-1. In Solution Explorer, right-click the function app project and choose **Manage NuGet Packages**.
+1. V Průzkumník řešení klikněte pravým tlačítkem na projekt aplikace Function App a vyberte možnost **Spravovat balíčky NuGet**.
 
 1. Na kartě **Procházet** vyhledejte a po nalezení vyberte ```System.Data.SqlClient```.
 
-1. In the **System.Data.SqlClient** page, select version `4.5.1` and then click **Install**.
+1. Na stránce **System. data. SqlClient** vyberte verze `4.5.1` a pak klikněte na **nainstalovat**.
 
 1. Po dokončení instalace zkontrolujte změny a potom kliknutím na **OK** zavřete okno **Náhled**.
 
 1. Pokud se zobrazí okno **Souhlas s podmínkami licence**, klikněte na **Souhlasím**.
 
-Now, you can add the C# function code that connects to your SQL Database.
+Nyní můžete přidat kód C# funkce, který se připojí k vašemu SQL Database.
 
 ## <a name="add-a-timer-triggered-function"></a>Přidání funkce aktivované časovačem
 
-1. In Solution Explorer, right-click the function app project and choose **Add** > **New Azure function**.
+1. V Průzkumník řešení klikněte pravým tlačítkem na projekt aplikace Function App a vyberte **přidat** > **novou funkci Azure Functions**.
 
-1. With the **Azure Functions** template selected, name the new item something like `DatabaseCleanup.cs` and select **Add**.
+1. Když je vybraná Šablona **Azure Functions** , pojmenujte novou položku jako `DatabaseCleanup.cs` a vyberte **Přidat**.
 
-1. In the **New Azure function** dialog box, choose **Timer trigger** and then **OK**. This dialog creates a code file for the timer triggered function.
+1. V dialogovém okně **Nová funkce Azure** zvolte **aktivační událost časovače** a pak klikněte na **OK**. Toto dialogové okno vytvoří soubor s kódem pro funkci aktivovanou časovačem.
 
-1. Open the new code file and add the following using statements at the top of the file:
+1. Otevřete nový soubor kódu a na začátek souboru přidejte následující příkazy using:
 
     ```cs
     using System.Data.SqlClient;
     using System.Threading.Tasks;
     ```
 
-1. Replace the existing `Run` function with the following code:
+1. Existující funkci `Run` nahraďte následujícím kódem:
 
     ```cs
     [FunctionName("DatabaseCleanup")]
@@ -110,26 +110,26 @@ Now, you can add the C# function code that connects to your SQL Database.
     }
     ```
 
-    This function runs every 15 seconds to update the `Status` column based on the ship date. To learn more about the Timer trigger, see [Timer trigger for Azure Functions](functions-bindings-timer.md).
+    Tato funkce se spouští každých 15 sekund, aby aktualizovala sloupec `Status` na základě data expedice. Další informace o triggeru časovače najdete v tématu [Trigger časovače pro Azure Functions](functions-bindings-timer.md).
 
-1. Press **F5** to start the function app. The [Azure Functions Core Tools](functions-develop-local.md) execution window opens behind Visual Studio.
+1. Stisknutím klávesy **F5** spusťte aplikaci Function App. Otevře se okno spuštění [Azure Functions Core Tools](functions-develop-local.md) za Visual Studio.
 
-1. At 15 seconds after startup, the function runs. Watch the output and note the number of rows updated in the **SalesOrderHeader** table.
+1. Po uplynutí 15 sekund po spuštění funkce se spustí. Sledujte výstup a poznamenejte si počet řádků aktualizovaných v tabulce **SalesOrderHeader** .
 
-    ![View the function logs.](./media/functions-scenario-database-table-cleanup/function-execution-results-log.png)
+    ![Zobrazit protokoly funkcí.](./media/functions-scenario-database-table-cleanup/function-execution-results-log.png)
 
-    On the first execution, you should update 32 rows of data. Following runs update no data rows, unless you make changes to the SalesOrderHeader table data so that more rows are selected by the `UPDATE` statement.
+    Při prvním spuštění byste měli aktualizovat 32 řádků dat. Následující běhy aktualizují žádné řádky dat, Pokud neprovedete změny v tabulkových datech SalesOrderHeader, aby bylo vybráno více řádků pomocí příkazu `UPDATE`.
 
-If you plan to [publish this function](functions-develop-vs.md#publish-to-azure), remember to change the `TimerTrigger` attribute to a more reasonable [cron schedule](functions-bindings-timer.md#ncrontab-expressions) than every 15 seconds.
+Pokud plánujete [publikování této funkce](functions-develop-vs.md#publish-to-azure), nezapomeňte změnit atribut `TimerTrigger` na smysluplný [plán cron](functions-bindings-timer.md#ncrontab-expressions) než každých 15 sekund.
 
 ## <a name="next-steps"></a>Další kroky
 
-Next, learn how to use. Functions with Logic Apps to integrate with other services.
+Dále se naučíte, jak používat. Funkce s Logic Apps pro integraci s dalšími službami.
 
 > [!div class="nextstepaction"]
-> [Create a function that integrates with Logic Apps](functions-twitter-email.md)
+> [Vytvoření funkce, která se integruje s Logic Apps](functions-twitter-email.md)
 
-For more information about Functions, see the following articles:
+Další informace o funkcích naleznete v následujících článcích:
 
 + [Referenční informace pro vývojáře Azure Functions](functions-reference.md)  
   Referenční informace pro programátory týkající se kódování funkcí a definování triggerů a vazeb.

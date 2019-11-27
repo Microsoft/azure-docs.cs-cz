@@ -18,20 +18,20 @@ ms.locfileid: "74228153"
 V této části odešlete nejnovější zprávy jako šablonové oznámení se značkami z konzolové aplikace .NET.
 
 1. Ve Visual Studiu vytvořte novou konzolovou aplikaci Visual C#:
-    1. On the menu, select **File** > **New** > **Project**.
-    1. In **Create a new project**, select **Console App (.NET Framework)** for C# in the list of templates, and select **Next**.
-    1. Enter a name for the app.
-    1. For **Solution**, choose **Add to solution**, and select **Create** to create the project.
+    1. V nabídce vyberte **soubor** > **Nový** > **projekt**.
+    1. V části **vytvořit nový projekt**vyberte C# v seznamu šablon položku **aplikace konzoly (.NET Framework)** a vyberte **Další**.
+    1. Zadejte název aplikace.
+    1. Pro **řešení**zvolte možnost **Přidat do řešení**a vyberte **vytvořit** a vytvořte projekt.
 
-1. Select **Tools** > **NuGet Package Manager** > **Package Manager Console** and then, in the console window, run the following command:
+1. Vyberte **nástroje** > **správce balíčků NuGet** > **konzolu Správce balíčků** a pak v okně konzoly spusťte následující příkaz:
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs
    ```
 
-   This action adds a reference to the Azure Notification Hubs SDK by using the [Microsoft.Azure.NotificationHubs] package.
+   Tato akce přidá odkaz na sadu Azure Notification Hubs SDK pomocí balíčku [Microsoft. Azure. NotificationHubs] .
 
-1. Open the *Program.cs* file, and add the following `using` statement:
+1. Otevřete soubor *program.cs* a přidejte následující příkaz `using`:
 
    ```csharp
    using Microsoft.Azure.NotificationHubs;
@@ -69,7 +69,7 @@ V této části odešlete nejnovější zprávy jako šablonové oznámení se z
 
 1. V předchozím kódu nahraďte zástupné symboly `<hub name>` a `<connection string with full access>` názvem vašeho centra oznámení a připojovacím řetězcem pro *DefaultFullSharedAccessSignature* z řídicího panelu vašeho centra oznámení.
 
-1. In the `Main()` method, add the following lines:
+1. Do metody `Main()` přidejte následující řádky:
 
    ```csharp
     SendTemplateNotificationAsync();
@@ -86,4 +86,4 @@ V této části odešlete nejnovější zprávy jako šablonové oznámení se z
 [Notification Hubs REST interface]: https://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 [Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
-[Microsoft.Azure.NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
+[Microsoft. Azure. NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

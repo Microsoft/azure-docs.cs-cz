@@ -143,7 +143,7 @@ Vyberte ikonu **informace** v levém dolním rohu. Pak vyberte **prohlídky s as
 
 ![Řízená prohlídky](media/monitor-visually/guided-tours.png)
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 
 Upozornění na podporované metriky můžete vyvolávat v Data Factory. Začněte tím, že vyberete **Monitor** > **výstrahy & metrik** na stránce monitorování Data Factory.
 

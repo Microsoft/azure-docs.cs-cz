@@ -1,6 +1,6 @@
 ---
-title: Learn how modules run logic on your devices - Azure IoT Edge | Microsoft Docs
-description: Azure IoT Edge modules are containerized units of logic that can be deployed and managed remotely so that you can run business logic on IoT Edge devices
+title: Zjistěte, jak moduly spouštět logiku na vaše zařízení – Azure IoT Edge | Dokumentace Microsoftu
+description: Moduly Azure IoT Edge jsou kontejnerizovaných jednotky logiku, která je možné nasadit a spravovat vzdáleně, takže můžete spustit obchodní logiku na hraničních zařízeních IoT zařízení
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -17,43 +17,43 @@ ms.locfileid: "74456578"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Vysvětlení modulů Azure IoT Edge
 
-Azure IoT Edge lets you deploy and manage business logic on the edge in the form of *modules*. Azure IoT Edge modules are the smallest unit of computation managed by IoT Edge, and can contain Azure services (such as Azure Stream Analytics) or your own solution-specific code. To understand how modules are developed, deployed, and maintained, it helps to think of the four conceptual elements of a module:
+Azure IoT Edge umožňuje nasadit a spravovat obchodní logiku na hraničních zařízeních ve formě *modulů*. Moduly Azure IoT Edge je nejmenší jednotka výpočtu spravuje IoT Edge a může obsahovat služeb Azure (jako je Azure Stream Analytics) nebo vlastní kód specifický pro řešení. Chcete-li pochopit, jak jsou moduly vyvíjeny, nasazeny a udržovány, pomůže si představit čtyři koncepční prvky modulu:
 
-* A **module image** is a package containing the software that defines a module.
-* A **module instance** is the specific unit of computation running the module image on an IoT Edge device. The module instance is started by the IoT Edge runtime.
-* A **module identity** is a piece of information (including security credentials) stored in IoT Hub, that is associated to each module instance.
-* A **module twin** is a JSON document stored in IoT Hub, that contains state information for a module instance, including metadata, configurations, and conditions. 
+* **Image modulu** je balíček obsahující software, který definuje modul.
+* **Instance modulu** je specifická jednotka výpočtu, na které je spuštěná image modulu, na zařízení IoT Edge. Instance modulu je spuštěn modul runtime IoT Edge.
+* **Identita modulu** je část informací (včetně zabezpečovacích přihlašovacích údajů) uložených v IoT Hub, která je přidružená ke každé instanci modulu.
+* **Nevlákenný modul** je dokument JSON uložený v IoT Hub, který obsahuje informace o stavu instance modulu, včetně metadat, konfigurací a podmínek. 
 
-## <a name="module-images-and-instances"></a>Module images and instances
+## <a name="module-images-and-instances"></a>Bitové kopie modulu a instance
 
-IoT Edge module images contain applications that take advantage of the management, security, and communication features of the IoT Edge runtime. You can develop your own module images, or export one from a supported Azure service, such as Azure Stream Analytics.
-The images exist in the cloud and they can be updated, changed, and deployed in different solutions. For instance, a module that uses machine learning to predict production line output exists as a separate image than a module that uses computer vision to control a drone. 
+Bitové kopie modulu IoT Edge obsahují aplikace, které budou využívat správu, zabezpečení a komunikační funkce modulu runtime IoT Edge. Můžete vyvíjet vlastní bitové kopie modulu nebo exportovat z podporované služby Azure, jako je Azure Stream Analytics.
+Obrázky existovat v cloudu a může být aktualizován, změnit a nasazené v různých řešeních pro. Například modul, který využívá strojové učení k předpovědi výrobní linky výstup existuje jako samostatná bitová kopie než modul, který se používá k řízení dron pro počítačové zpracování obrazu. 
 
-Each time a module image is deployed to a device and started by the IoT Edge runtime, a new instance of that module is created. Two devices in different parts of the world could use the same module image. However, each device would have its own module instance when the module is started on the device. 
+Pokaždé, když modul image je nasazená na zařízení a tím, že modul runtime IoT Edge je vytvořena nová instance tohoto modulu. Stejná image modulu můžou používat dvě zařízení v různých částech světa. Každé zařízení by ale mělo vlastní instanci modulu, když je modul na zařízení spuštěný. 
 
-![Diagram - Module images in cloud, module instances on devices](./media/iot-edge-modules/image_instance.png)
+![Diagram - bitové kopie modulu v cloudu, instancí modulu na zařízeních](./media/iot-edge-modules/image_instance.png)
 
-In implementation, modules images exist as container images in a repository, and module instances are containers on devices. 
+V implementaci moduly imagí existovat jako imagí kontejnerů v úložišti a instance modulu jsou kontejnery na zařízeních. 
 
 <!--
 As use cases for Azure IoT Edge grow, new types of module images and instances will be created. For example, resource constrained devices cannot run containers so may require module images that exist as dynamic link libraries and instances that are executables. 
 -->
 
-## <a name="module-identities"></a>Module identities
+## <a name="module-identities"></a>Modul identity
 
-When a new module instance is created by the IoT Edge runtime, the instance is associated with a corresponding module identity. The module identity is stored in IoT Hub, and is employed as the addressing and security scope for all local and cloud communications for that specific module instance.
+Když je vytvořena nová instance modulu modulem runtime IoT Edge, instance je spojené s odpovídající identitu modulu. Modul identity je uložená ve službě IoT Hub a pracuje jako obor adresování a zabezpečení pro všechny místní a cloudové komunikaci pro danou instanci modulu pro konkrétní.
 
-The identity associated with a module instance depends on the identity of the device on which the instance is running and the name you provide to that module in your solution. For instance, if you call `insight` a module that uses an Azure Stream Analytics, and you deploy it on a device called `Hannover01`, the IoT Edge runtime creates a corresponding module identity called `/devices/Hannover01/modules/insight`.
+Identita spojenou s instancí modulu závisí na identitě zařízení, na kterém běží instance a název zadáte do tohoto modulu ve vašem řešení. Například pokud voláte `insight` modul, který používá Azure Stream Analytics a nasadíte ho do zařízení s názvem `Hannover01`, modul runtime IoT Edge vytvoří odpovídající identitu modulu nazvanou `/devices/Hannover01/modules/insight`.
 
-Clearly, in scenarios when you need to deploy one module image multiple times on the same device, you can deploy the same image multiple times with different names.
+Je zřejmé ve scénářích když potřebujete nasadit jednu image modul více než jednou na jednom zařízení můžete nasadit stejnou bitovou kopii několikrát s různými názvy.
 
-![Diagram - Module identities are unique within devices and across devices](./media/iot-edge-modules/identity.png)
+![Diagram – modul identity musí být jedinečné v rámci zařízení a napříč zařízeními](./media/iot-edge-modules/identity.png)
 
-## <a name="module-twins"></a>Module twins
+## <a name="module-twins"></a>Dvojčaty modulů
 
-Each module instance also has a corresponding module twin that you can use to configure the module instance. The instance and the twin are associated with each other through the module identity. 
+Každá instance modulu má také odpovídající dvojčete modulu, který vám pomůže nakonfigurovat instanci modulu. Instance a dvojčeti jsou spojeny s navzájem prostřednictvím modulu identity. 
 
-A module twin is a JSON document that stores module information and configuration properties. This concept parallels the [device twin](../iot-hub/iot-hub-devguide-device-twins.md) concept from IoT Hub. The structure of a module twin is the same as a device twin. The APIs used to interact with both types of twins are also the same. The only difference between the two is the identity used to instantiate the client SDK. 
+Dvojče modulu je dokument JSON, který ukládá vlastnosti informace a konfigurace modulu. Tento koncept se paralelně dojedná o neIoT Hubý koncept [zařízení](../iot-hub/iot-hub-devguide-device-twins.md) . Struktura vlákna modulu je stejná jako nevlákenná zařízení. Rozhraní API používaná pro interakci s oběma typy dvojčat jsou také stejné. Jediným rozdílem mezi těmito dvěma je identity použité k vytvoření instance klientskou sadou SDK. 
 
 ```csharp
 // Create a ModuleClient object. This ModuleClient will act on behalf of a 
@@ -68,9 +68,9 @@ Twin twin = await client.GetTwinAsync(); 
 
 ## <a name="offline-capabilities"></a>Offline možnosti
 
-Azure IoT Edge modules can operate offline indefinitely after syncing with IoT Hub at least once. IoT Edge devices can also extend this offline capability to other IoT devices. For more information, see [Understand extended offline capabilities for IoT Edge devices, modules, and child devices](offline-capabilities.md).
+Azure IoT Edge moduly můžou pracovat offline po neomezenou dobu po synchronizaci s IoT Hub aspoň jednou. Zařízení IoT Edge můžou také tuto funkci offline rozšiřuje na jiná zařízení IoT. Další informace najdete v tématu [vysvětlení rozšířených funkcí offline pro IoT Edge zařízení, moduly a podřízená zařízení](offline-capabilities.md).
 
 ## <a name="next-steps"></a>Další kroky
- - [Understand the requirements and tools for developing IoT Edge modules](module-development.md)
- - [Understand the Azure IoT Edge runtime and its architecture](iot-edge-runtime.md)
+ - [Pochopení požadavků a nástrojů pro vývoj IoT Edgech modulů](module-development.md)
+ - [Pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Enroll X.509 devices to Azure Device Provisioning Service using Java
+title: Registrace zařízení X. 509 do služby Azure Device Provisioning pomocí Java
 description: V tomto rychlém startu se používají skupinové i jednotlivé registrace. V tomto rychlém startu zaregistrujete zařízení X.509 do služby Azure IoT Hub Device Provisioning pomocí Javy.
 author: wesmc7777
 ms.author: wesmc
@@ -28,7 +28,7 @@ Přestože sada SDK služby pro Javu funguje na počítačích s Windows i Linux
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte sadu [Java SE Development Kit 8](https://aka.ms/azure-jdks).
 * Nainstalujte [Maven 3](https://maven.apache.org/download.cgi). Aktuální verzi Mavenu zjistíte spuštěním tohoto příkazu:
@@ -108,7 +108,7 @@ Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zř
                         "-----END CERTIFICATE-----\n";
                 ```
 
-        9. Zavřete příkazové okno nebo po zobrazení výzvy k zadání *ověřovacího kódu* zadejte **n**. 
+        9. Zavřete příkazové okno nebo po zobrazení výzvy k zadání **ověřovacího kódu** zadejte *n*. 
  
     3. Volitelně můžete svou službu zřizování nakonfigurovat pomocí vzorového kódu:
         - Pokud chcete do ukázky přidat tuto konfiguraci, postupujte následovně:
@@ -198,18 +198,18 @@ Pokud chcete zaregistrovat jediné zařízení X.509, upravte následujícím zp
     Attestation attestation = X509Attestation.createFromClientCertificates(PUBLIC_KEY_CERTIFICATE_STRING);
     ```
 
-4. Pomocí postupu v části [Sestavení a spuštění vzorového kódu pro jednotlivou registraci](quick-enroll-device-tpm-java.md#runjavasample) uložte, sestavte a spusťte soubor s ukázkou *jednotlivé registrace*.
+4. Pomocí postupu v části *Sestavení a spuštění vzorového kódu pro jednotlivou registraci* uložte, sestavte a spusťte soubor s ukázkou [jednotlivé registrace](quick-enroll-device-tpm-java.md#runjavasample).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-If you plan to explore the Java service sample, do not clean up the resources created in this quickstart. If you do not plan to continue, use the following steps to delete all resources created by this quickstart.
+Pokud plánujete prozkoumat ukázku služby Java, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
 
 1. Zavřete na svém počítači okno výstupu ukázky v Javě.
 1. Zavřete na svém počítači okno _Generátoru certifikátů X.509_.
-1. Navigate to your Device Provisioning service in the Azure portal, select **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the check box next to the *GROUP NAME* for the X.509 devices you enrolled using this quickstart, and press the **Delete** button at the top of the pane.  
+1. Přejděte do vaší služby Device Provisioning v Azure Portal, vyberte **spravovat registrace**a pak vyberte kartu **skupiny** registrací. zaškrtněte políčko vedle *názvu skupiny* pro zařízení X. 509, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna.  
 
 ## <a name="next-steps"></a>Další kroky
-In this quickstart, you enrolled a simulated group of X.509 devices to your Device Provisioning service. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal. 
+V tomto rychlém startu jste do své služby Device Provisioning zaregistrovali simulovanou skupinu zařízení X. 509. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal. 
 
 > [!div class="nextstepaction"]
 > [Kurzy pro službu Azure IoT Hub Device Provisioning](./tutorial-set-up-cloud.md)

@@ -556,7 +556,7 @@ Azure Storage úrovně Standard byl typ úložiště dostupný při vydání Azu
 
 Disky, které jsou uložené ve službě Azure Storage úrovně Standard, se účtují na základě skutečně uložených dat, objemu transakcí úložiště, přenosů odchozích dat a zvolené možnosti redundance. Mnoho disků lze vytvořit v maximální velikosti 1 TB, ale pokud zůstanou prázdné, bude se účtovat bez poplatků. Pokud pak naplníte jeden VHD s 100 GB, bude se vám účtovat za ukládání 100 GB a nikoli pro jmenovitou velikost, s jakou byl virtuální pevný disk vytvořen.
 
-#### <a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Azure Premium Storage
+#### <a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Premium Storage Azure
 V rámci Azure Premium Storage bylo zavedeno s cílem poskytnout:
 
 * Lepší latence vstupu a výstupu.
@@ -1574,7 +1574,7 @@ az vm unmanaged-disk attach --resource-group $rgName --vm-name SAPERPDemo --size
 az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 --disk datadisk --new
 ```
 
-##### <a name="template"></a>Šablony
+##### <a name="template"></a>Šablona
 
 Ukázkové šablony můžete použít v úložišti Azure-Rychlé šablony na GitHubu.
 
@@ -1629,11 +1629,11 @@ V tabulce níže jsou uvedeny typické komunikační porty SAP. V podstatě sta�
 
 <!-- sapms is prefix of a SAP service name and not a spelling error -->
 
-| Služba | Název portu | Příklad `<nn`> = 01 | Výchozí rozsah (min-max) | Komentář |
+| Služba | Název portu | Příklad `<nn`> = 01 | Výchozí rozsah (min-max) | Poznámka |
 | --- | --- | --- | --- | --- |
 | Dispečer |sapdp`<nn>` viz * |3201 |3200 - 3299 |SAP Dispatcher, používané grafickým uživatelským rozhraním SAP pro Windows a Java |
 | Server zpráv |sapms`<sid`> Zobrazit * * |3600 |bezplatné sapms`<anySID`> |SID = SAP-System-ID |
-| Brána |sapgw`<nn`> Zobrazit * |3301 |dost |Brána SAP, která se používá pro komunikaci CPIC a RFC |
+| brána |sapgw`<nn`> Zobrazit * |3301 |dost |Brána SAP, která se používá pro komunikaci CPIC a RFC |
 | Směrovač SAP |sapdp99 |3299 |dost |V/etc/Services se dá po instalaci přiřadit jenom názvy služeb CI (centrální instance) k libovolné hodnotě. |
 
 *) NN = číslo instance SAP
@@ -1688,7 +1688,7 @@ Sdílená složka tiskárny je v síti identifikována jedinečným názvem:
 * Název domény, Pokud sdílená tiskárna není ve stejné doméně jako systém SAP.
 * Kromě toho může být vyžadováno uživatelské jméno a heslo pro přístup ke sdílení tiskárny.
 
-Postupy:
+Postup:
 
 ---
 > ![Windows][Logo_Windows] Windows
@@ -1727,7 +1727,7 @@ Systém SAP Change and Transporting (TMS) musí být nakonfigurovaný tak, aby v
 
 Nakonfigurujte svou doménu přenosu v systému, který jste označili jako transportní řadič domény, jak je popsáno v tématu [Konfigurace přenosového řadiče domény](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm). Vytvoří se systémový uživatel TMSADM a bude vygenerován požadovaný cíl RFC. Tato připojení RFC můžete kontrolovat pomocí SM59 transakce. V rámci vaší domény přenosu musí být povoleno rozlišení názvu hostitele.
 
-Postupy:
+Postup:
 
 * V našem scénáři jsme se rozhodli, že místní systém QAS bude řadičem domény CTS. Zavolejte STMS transakce. Zobrazí se dialogové okno organizace TMS. Zobrazí se dialogové okno Konfigurovat doménu přenosu. (Toto dialogové okno se zobrazí pouze v případě, že jste ještě nenakonfigurovali doménu přenosu.)
 * Ujistěte se, že automaticky vytvořený uživatel TMSADM je autorizovaný (SM59-> ABAP Connection-> TMSADM@E61.DOMAIN_E61-> Details-> Utilities (M) – > autorizační test). Úvodní obrazovka transakčního STMS by měla Ukázat, že tento systém SAP teď funguje jako řadič domény přenosu, jak je znázorněno zde:
@@ -1745,7 +1745,7 @@ Tento systém SAP teď obsahuje informace potřebné pro všechny ostatní syst�
 
 Pokračujte v konfiguraci přenosového systému obvyklým způsobem, jak je popsáno v dokumentaci pro [změnu a přenos systému](https://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm).
 
-Postupy:
+Postup:
 
 * Ujistěte se, že je váš STMS místní konfigurace správně nakonfigurovaný.
 * Ujistěte se, že se název hostitele přenosového řadiče domény dá vyřešit vaším virtuálním počítačem v Azure a naopak.
@@ -1757,7 +1757,7 @@ V případě propojení mezi místními prostředími mezi lokalitami může bý
 
 Aby bylo možné tuto latenci obejít a tyto systémy budou rychle fungovat při čtení nebo zápisu do nebo z adresáře přenosu, můžete nastavit dvě STMS dopravních domén (jeden pro místní a druhý se systémy v Azure a propojit domény přenosu. Podívejte se prosím na tuto dokumentaci, která vysvětluje principy tohoto konceptu v tématu SAP TMS: <https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm>.
 
-Postupy:
+Postup:
 
 * Nastavení domény pro přenos v každém umístění (místně a Azure) pomocí transakčního STMS <https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
 * Propojte domény s propojením domény a potvrďte propojení mezi těmito dvěma doménami.

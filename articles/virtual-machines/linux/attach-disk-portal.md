@@ -33,7 +33,7 @@ Než připojíte disky k VIRTUÁLNÍmu počítači, přečtěte si tyto tipy:
 
 
 ## <a name="find-the-virtual-machine"></a>Najít virtuální počítač
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. V nabídce vlevo klikněte na **Virtual Machines**.
 3. Ze seznamu vyberte virtuální počítač.
 4. Na stránce virtuální počítače v části **základy**klikněte na **disky**.

@@ -1,6 +1,6 @@
 ---
 title: Konfigurace ověřování Azure Active Directory
-description: Learn how to connect to SQL Database, managed instance, and SQL Data Warehouse by using Azure Active Directory Authentication - after configuring Azure AD.
+description: Přečtěte si, jak se připojit k SQL Database, spravované instanci a SQL Data Warehouse pomocí Azure Active Directory ověřování – po konfiguraci služby Azure AD.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -18,63 +18,63 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421756"
 ---
-# <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Configure and manage Azure Active Directory authentication with SQL
+# <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa ověřování Azure Active Directory pomocí SQL
 
-This article shows you how to create and populate Azure AD, and then use Azure AD with Azure [SQL Database](sql-database-technical-overview.md), [managed instance](sql-database-managed-instance.md), and [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md). For an overview, see [Azure Active Directory Authentication](sql-database-aad-authentication.md).
+V tomto článku se dozvíte, jak vytvořit a naplnit Azure AD a potom použít Azure AD s Azure [SQL Database](sql-database-technical-overview.md), [managed instance](sql-database-managed-instance.md)a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled najdete v tématu [Azure Active Directory Authentication](sql-database-aad-authentication.md).
 
 > [!NOTE]
-> This article applies to Azure SQL server, and to both SQL Database and SQL Data Warehouse databases that are created on the Azure SQL server. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
+> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
 
 > [!IMPORTANT]  
-> Connecting to SQL Server running on an Azure VM is not supported using an Azure Active Directory account. Use a domain Active Directory account instead.
+> Připojení k SQL Server běžícímu na virtuálním počítači Azure se pomocí účtu Azure Active Directory nepodporuje. Místo toho použijte účet domény služby Active Directory.
 
-## <a name="create-and-populate-an-azure-ad"></a>Create and populate an Azure AD
+## <a name="create-and-populate-an-azure-ad"></a>Vytvoření a naplnění služby Azure AD
 
-Create an Azure AD and populate it with users and groups. Azure AD can be the initial Azure AD managed domain. Azure AD can also be an on-premises Active Directory Domain Services that is federated with the Azure AD.
+Vytvořte Azure AD a naplňte ho uživateli a skupinami. Azure AD může být počáteční doménou spravovanou službou Azure AD. Azure AD může být také místní Active Directory Domain Services, která je federované s Azure AD.
 
 Další informace najdete v tématech [Integrování místních identit do služby Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [Přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure podporuje federaci s Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Správa adresáře služby Azure AD](../active-directory/fundamentals/active-directory-administer.md), [Správa služby Azure AD pomocí rozhraní Windows PowerShell](/powershell/azure/overview) a [Porty a protokoly, které vyžaduje hybridní identita](../active-directory/hybrid/reference-connect-ports.md).
 
-## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Associate or add an Azure subscription to Azure Active Directory
+## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Přidružte nebo přidejte předplatné Azure k Azure Active Directory
 
-1. Associate your Azure subscription to Azure Active Directory by making the directory a trusted directory for the Azure subscription hosting the database. For details, see [How Azure subscriptions are associated with Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+1. Přidružte své předplatné Azure k Azure Active Directory tím, že adresář považujete za důvěryhodný adresář pro předplatné Azure hostující databázi. Podrobnosti najdete v tématu [jak jsou předplatná Azure přidružená k Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-2. Use the directory switcher in the Azure portal to switch to the subscription associated with domain.
+2. Pomocí přepínání adresářů v Azure Portal přepněte do předplatného přidruženého k doméně.
 
    > [!IMPORTANT]
-   > Každé předplatné služby Azure má vztah důvěryhodnosti s instancí služby Azure AD. To znamená, že tomuto adresáři svěřuje ověřování uživatelů, služeb i zařízení. Několik předplatných může důvěřovat stejnému adresáři, ale jedno předplatné důvěřuje pouze jednomu adresáři. Vztah důvěryhodnosti, který má předplatné s adresářem, se liší od vztahu, který má předplatné se všemi ostatními prostředky ve službě Azure (webové stránky, databáze apod.), což jsou pro předplatné spíše podřízené prostředky. Pokud platnost předplatného vyprší, zastaví se i přístup k těmto dalším prostředkům přidruženým k předplatnému. Adresář však ve službě Azure zůstane a vy k němu můžete přidružit jiné předplatné a pokračovat ve správě uživatelů adresáře. For more information about resources, see [Understanding resource access in Azure](../active-directory/active-directory-b2b-admin-add-users.md). To learn more about this trusted relationship see [How to associate or add an Azure subscription to Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+   > Každé předplatné služby Azure má vztah důvěryhodnosti s instancí služby Azure AD. To znamená, že tomuto adresáři svěřuje ověřování uživatelů, služeb i zařízení. Několik předplatných může důvěřovat stejnému adresáři, ale jedno předplatné důvěřuje pouze jednomu adresáři. Vztah důvěryhodnosti, který má předplatné s adresářem, se liší od vztahu, který má předplatné se všemi ostatními prostředky ve službě Azure (webové stránky, databáze apod.), což jsou pro předplatné spíše podřízené prostředky. Pokud platnost předplatného vyprší, zastaví se i přístup k těmto dalším prostředkům přidruženým k předplatnému. Adresář však ve službě Azure zůstane a vy k němu můžete přidružit jiné předplatné a pokračovat ve správě uživatelů adresáře. Další informace o prostředcích najdete v tématu [porozumění přístupu k prostředkům v Azure](../active-directory/active-directory-b2b-admin-add-users.md). Další informace o tomto důvěryhodném vztahu najdete v tématu [Postup přidružení nebo přidání předplatného Azure do Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Create an Azure AD administrator for Azure SQL server
+## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Vytvoření správce Azure AD pro Azure SQL Server
 
-Each Azure SQL server (which hosts a SQL Database or SQL Data Warehouse) starts with a single server administrator account that is the administrator of the entire Azure SQL server. A second SQL Server administrator must be created, that is an Azure AD account. This principal is created as a contained database user in the master database. As administrators, the server administrator accounts are members of the **db_owner** role in every user database, and enter each user database as the **dbo** user. For more information about the server administrator accounts, see [Managing Databases and Logins in Azure SQL Database](sql-database-manage-logins.md).
+Každý server Azure SQL (který je hostitelem SQL Database nebo SQL Data Warehouse) spouští s jedním účtem správce serveru, který je správcem celého serveru SQL Azure. Je potřeba vytvořit druhého správce SQL Server, který je účtem Azure AD. Tento objekt zabezpečení je vytvořen jako uživatel databáze s omezením v hlavní databázi. Jako správci jsou účty správců serveru členy role **db_owner** v každé uživatelské databázi a jako uživatel **dbo** zadejte každou uživatelskou databázi. Další informace o účtech správců serveru najdete v tématu [Správa databází a přihlášení v Azure SQL Database](sql-database-manage-logins.md).
 
-When using Azure Active Directory with geo-replication, the Azure Active Directory administrator must be configured for both the primary and the secondary servers. If a server does not have an Azure Active Directory administrator, then Azure Active Directory logins and users receive a "Cannot connect" to server error.
+Při použití Azure Active Directory s geografickou replikací musí být správce Azure Active Directory nakonfigurovaný jak pro primární, tak pro sekundární servery. Pokud server nemá správce Azure Active Directory, Azure Active Directory přihlášení a uživatelé obdrží chybu "nelze se připojit" k chybě serveru.
 
 > [!NOTE]
-> Users that are not based on an Azure AD account (including the Azure SQL server administrator account), cannot create Azure AD-based users, because they do not have permission to validate proposed database users with the Azure AD.
+> Uživatelé, kteří nejsou založeni na účtu Azure AD (včetně účtu správce Azure SQL serveru), nemůžou vytvářet uživatele založené na službě Azure AD, protože nemají oprávnění k ověřování uživatelů navrhovaných databází pomocí Azure AD.
 
-## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>Provision an Azure Active Directory administrator for your managed instance
+## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>Zřízení správce Azure Active Directory pro spravovanou instanci
 
 > [!IMPORTANT]
-> Only follow these steps if you are provisioning a managed instance. This operation can only be executed by Global/Company administrator or a Privileged Role Administrator in Azure AD. Following steps describe the process of granting permissions for users with different privileges in directory.
+> Postupovat pouze v případě, že zřizujete spravovanou instanci. Tuto operaci může provést jenom globální správce nebo správce společnosti nebo správce privilegované role v Azure AD. Následující kroky popisují proces udělení oprávnění pro uživatele s různými oprávněními v adresáři.
 
 > [!NOTE]
-> For Azure AD admins for MI created prior to GA, but continue operating post GA, there is no functional change to the existing behavior. For more information, see the [New Azure AD admin functionality for MI](#new-azure-ad-admin-functionality-for-mi) section for more details.
+> Pro správce Azure AD pro MI se vytvořil před GA, ale pokračuje v provozu po GA, neexistuje žádná funkční Změna stávajícího chování. Další informace najdete v části [nové funkce správce Azure AD pro mi](#new-azure-ad-admin-functionality-for-mi) , kde najdete další podrobnosti.
 
-Your managed instance needs permissions to read Azure AD to successfully accomplish tasks such as authentication of users through security group membership or creation of new users. For this to work, you need to grant permissions to managed instance to read Azure AD. There are two ways to do it: from Portal and PowerShell. The following steps both methods.
+Vaše spravovaná instance potřebuje oprávnění ke čtení služby Azure AD, aby bylo možné úspěšně provádět úlohy, jako je například ověřování uživatelů prostřednictvím členství ve skupině zabezpečení nebo vytváření nových uživatelů. Aby to fungovalo, musíte udělit oprávnění ke spravované instanci pro čtení Azure AD. Existují dva způsoby, jak to provést: z portálu a PowerShellu. Následující postup obou metod.
 
-1. In the Azure portal, in the upper-right corner, select your connection to drop down a list of possible Active Directories.
+1. V Azure Portal v pravém horním rohu výběrem svého připojení vyrozevíracíte seznam možných aktivních adresářů.
 
-2. Choose the correct Active Directory as the default Azure AD.
+2. Vyberte správnou službu Active Directory jako výchozí službu Azure AD.
 
-   This step links the subscription associated with Active Directory with Managed Instance making sure that the same subscription is used for both Azure AD and the Managed Instance.
+   Tento krok propojí předplatné přidružené ke službě Active Directory se spravovanou instancí a zajistí, že se stejné předplatné používá pro Azure AD i pro spravovanou instanci.
 
-3. Navigate to Managed Instance and select one that you want to use for Azure AD integration.
+3. Přejděte do spravované instance a vyberte ji, kterou chcete použít pro integraci služby Azure AD.
 
-   ![aad](./media/sql-database-aad-authentication/aad.png)
+   ![poplašné](./media/sql-database-aad-authentication/aad.png)
 
-4. Select the banner on top of the Active Directory admin page and grant permission to the current user. If you're logged in as Global/Company administrator in Azure AD, you can do it from the Azure portal or using PowerShell with the script below.
+4. Vyberte banner v horní části stránky Správce služby Active Directory a udělte aktuálnímu uživateli oprávnění. Pokud jste v Azure AD přihlášeni jako globální správce/správce společnosti, můžete to udělat z Azure Portal nebo pomocí skriptu v prostředí PowerShell.
 
-    ![grant permissions-portal](./media/sql-database-aad-authentication/grant-permissions.png)
+    ![udělení oprávnění – portál](./media/sql-database-aad-authentication/grant-permissions.png)
 
     ```powershell
     # Gives Azure Active Directory read permission to a Service Principal representing the managed instance.
@@ -126,89 +126,89 @@ Your managed instance needs permissions to read Azure AD to successfully accompl
     }
     ```
 
-5. After the operation is successfully completed, the following notification will show up in the top-right corner:
+5. Po úspěšném dokončení operace se v pravém horním rohu zobrazí následující oznámení:
 
     ![úspěch](./media/sql-database-aad-authentication/success.png)
 
-6. Now you can choose your Azure AD admin for your managed instance. For that, on the Active Directory admin page, select **Set admin** command.
+6. Teď si můžete vybrat svého správce Azure AD pro spravovanou instanci. V takovém případě na stránce Správce služby Active Directory vyberte **nastavit správce** .
 
-    ![set-admin](./media/sql-database-aad-authentication/set-admin.png)
+    ![Nastavení – správce](./media/sql-database-aad-authentication/set-admin.png)
 
-7. In the AAD admin page, search for a user, select the user or group to be an administrator, and then select **Select**.
+7. Na stránce Správce AAD vyhledejte uživatele, vyberte uživatele nebo skupinu, kterým chcete správce, a pak vyberte **Vybrat**.
 
-   The Active Directory admin page shows all members and groups of your Active Directory. Users or groups that are grayed out can't be selected because they aren't supported as Azure AD administrators. See the list of supported admins in [Azure AD Features and Limitations](sql-database-aad-authentication.md#azure-ad-features-and-limitations). Role-based access control (RBAC) applies only to the Azure portal and isn't propagated to SQL Server.
+   Na stránce Správce služby Active Directory se zobrazují všichni členové a skupiny služby Active Directory. Uživatele nebo skupiny, které jsou zobrazené šedě, nejde vybrat, protože nejsou podporované jako správci Azure AD. Podívejte se na seznam podporovaných správců ve [funkcích a omezeních služby Azure AD](sql-database-aad-authentication.md#azure-ad-features-and-limitations). Řízení přístupu na základě role (RBAC) platí jenom pro Azure Portal a není šířené do SQL Server.
 
-    ![add-admin](./media/sql-database-aad-authentication/add-admin.png)
+    ![přidat správce](./media/sql-database-aad-authentication/add-admin.png)
 
-8. At the top of the Active Directory admin page, select **Save**.
+8. V horní části stránky Správce služby Active Directory vyberte **Uložit**.
 
-    ![save](./media/sql-database-aad-authentication/save.png)
+    ![Uložit](./media/sql-database-aad-authentication/save.png)
 
-    The process of changing the administrator may take several minutes. Then the new administrator appears in the Active Directory admin box.
+    Proces změny správce může trvat několik minut. Pak se nový správce zobrazí v poli Správce služby Active Directory.
 
-After provisioning an Azure AD admin for your managed instance, you can begin to create Azure AD server principals (logins) with the <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> syntax. For more information, see [managed instance overview](sql-database-managed-instance.md#azure-active-directory-integration).
+Po zřízení správce Azure AD pro spravovanou instanci můžete začít vytvářet objekty zabezpečení serveru Azure AD (přihlášení) pomocí syntaxe <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Vytvoření přihlášení</a> . Další informace najdete v tématu [Přehled spravované instance](sql-database-managed-instance.md#azure-active-directory-integration).
 
 > [!TIP]
-> To later remove an Admin, at the top of the Active Directory admin page, select **Remove admin**, and then select **Save**.
+> Chcete-li později odebrat správce, v horní části stránky Správce služby Active Directory vyberte možnost **Odebrat správce**a pak vyberte **Uložit**.
 
-### <a name="new-azure-ad-admin-functionality-for-mi"></a>New Azure AD admin functionality for MI
+### <a name="new-azure-ad-admin-functionality-for-mi"></a>Nové funkce správce Azure AD pro MI
 
-The table below summarizes the functionality for the public preview Azure AD login admin for MI, versus a new functionality delivered with GA for Azure AD logins.
+Následující tabulka shrnuje funkce pro správce přihlášení služby Azure AD ve verzi Public Preview pro MI, a to oproti novým funkcím, které jsou poskytovány s GA pro přihlášení Azure AD.
 
-| Azure AD login admin for MI during public preview | GA functionality for Azure AD admin for MI |
+| Správce přihlášení Azure AD pro MI během veřejné verze Preview | Funkce GA pro správce Azure AD pro MI |
 | --- | ---|
-| Behaves in a similar way as Azure AD admin for SQL Database, which enables Azure AD authentication, but the Azure AD admin cannot create Azure AD or SQL logins in the master db for MI. | Azure AD admin has sysadmin permission and can create AAD and SQL logins in master db for MI. |
-| Is not present in the sys.server_principals view | Is present in the sys.server_principals view |
-| Allows individual Azure AD guest users to be set up as Azure AD admin for MI. For more information, see [Add Azure Active Directory B2B collaboration users in the Azure portal](../active-directory/b2b/add-users-administrator.md). | Requires creation of an Azure AD group with guest users as members to set up this group as an Azure AD admin for MI. For more information, see [Azure AD business to business support](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support). |
+| Se chová podobným způsobem jako správce Azure AD pro SQL Database, který umožňuje ověřování Azure AD, ale správce Azure AD nemůže v hlavní databázi pro MI vytvořit přihlašovací údaje Azure AD ani SQL. | Správce Azure AD má oprávnění sysadmin a může vytvořit přihlašovací údaje AAD a SQL v databázi Master DB pro MI. |
+| Není k dispozici v zobrazení sys. server_principals | Je k dispozici v zobrazení sys. server_principals |
+| Umožňuje nastavit jako správce Azure AD pro MI jednotlivé uživatele typu hosta Azure AD. Další informace najdete v tématu [přidání Azure Active Directory uživatelů spolupráce B2B v Azure Portal](../active-directory/b2b/add-users-administrator.md). | Vyžaduje vytvoření skupiny Azure AD s uživateli typu Host jako členové, kteří tuto skupinu nastavili jako správce Azure AD pro MI. Další informace najdete v tématu [Podpora Azure AD Business to Business](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support). |
 
-As a best practice for existing Azure AD admins for MI created before GA, and still operating post GA, reset the Azure AD admin using the Azure portal “Remove admin” and “Set admin” option for the same Azure AD user or group.
+Jako osvědčený postup pro stávající správce Azure AD pro MI vytvořil před GA a pořád provozovaná po GA, resetujte správce Azure AD pomocí možnosti Azure Portal "odebrat správce" a "nastavit správce" pro stejného uživatele nebo skupinu Azure AD.
 
-### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>Known issues with the Azure AD login GA for MI
+### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>Známé problémy s přihlašováním Azure AD GA pro MI
 
-- If an Azure AD login exists in the master database for MI, created using the T-SQL command `CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER`, it can't be set up as an Azure AD admin for MI. You'll experience an error setting the login as an Azure AD admin using the Azure portal, PowerShell, or CLI commands to create the Azure AD login.
-  - The login must be dropped in the master database using the command `DROP LOGIN [myaadaccount]`, before the account can be created as an Azure AD admin.
-  - Set up the Azure AD admin account in the Azure portal after the `DROP LOGIN` succeeds. 
-  - If you can't set up the Azure AD admin account, check in the master database of the managed instance for the login. Use the following command: `SELECT * FROM sys.server_principals`
-  - Setting up an Azure AD admin for MI will automatically create a login in the master database for this account. Removing the Azure AD admin will automatically drop the login from the master database.
+- Pokud v hlavní databázi pro MI existuje přihlášení Azure AD, které se vytvořilo pomocí příkazu T-SQL `CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER`, nejde ho nastavit jako správce Azure AD pro MI. Při nastavování přihlašovacích údajů jako správce Azure AD dojde k chybě pomocí příkazů Azure Portal, PowerShellu nebo rozhraní příkazového řádku pro vytvoření přihlášení k Azure AD.
+  - Aby bylo možné vytvořit účet jako správce Azure AD, musí být přihlašovací jméno vyřazené z hlavní databáze pomocí příkazu `DROP LOGIN [myaadaccount]`.
+  - Nastavte účet správce Azure AD v Azure Portal po úspěšném `DROP LOGIN`. 
+  - Pokud nemůžete nastavit účet správce Azure AD, vraťte se do hlavní databáze spravované instance pro přihlášení. Použijte následující příkaz: `SELECT * FROM sys.server_principals`
+  - Nastavením správce Azure AD pro MI bude pro tento účet automaticky vytvářet přihlašovací údaje v hlavní databázi. Odebrání správce Azure AD automaticky vynechá přihlašovací údaje z hlavní databáze.
 
-- Individual Azure AD guest users are not supported as Azure AD admins for MI. Guest users must be part of an Azure AD group to be set up as Azure AD admin. Currently, the Azure portal blade doesn't gray out guest users for another Azure AD, allowing users to continue with the admin setup. Saving guest users as an Azure AD admin will cause the setup to fail.
-  - If you wish to make a guest user an Azure AD admin for MI, include the guest user in an Azure AD group, and set this group as an Azure AD admin.
+- Jednotliví uživatelé typu Host služby Azure AD nejsou podporováni jako správci služby Azure AD pro MI. Uživatelé typu Host musí být součástí skupiny Azure AD, aby je bylo možné nastavit jako správce Azure AD. V současné době okno Azure Portal nezobrazuje šedě uživatele typu Host pro jinou službu Azure AD a umožňuje uživatelům pokračovat v instalaci správce. Při ukládání uživatelů typu Host jako správce Azure AD dojde k selhání instalace.
+  - Pokud chcete, aby uživatel typu Host byl pro MI správce Azure AD, zahrňte uživatele typu Host ve skupině Azure AD a nastavte tuto skupinu jako správce Azure AD.
 
-### <a name="powershell-for-sql-managed-instance"></a>PowerShell for SQL managed instance
+### <a name="powershell-for-sql-managed-instance"></a>PowerShell pro spravovanou instanci SQL
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-To run PowerShell cmdlets, you need to have Azure PowerShell installed and running. Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Pokud chcete spustit rutiny PowerShellu, musíte mít Azure PowerShell nainstalovanou a spuštěnou. Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> Modul Azure Resource Manager PowerShellu (RM) je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
-To provision an Azure AD admin, execute the following Azure PowerShell commands:
+Pokud chcete zřídit správce Azure AD, spusťte následující příkazy Azure PowerShell:
 
 - Connect-AzAccount
-- Select-AzSubscription
+- Vybrat – AzSubscription
 
-Cmdlets used to provision and manage Azure AD admin for SQL managed instance:
+Rutiny používané ke zřízení a správě správce Azure AD pro spravovanou instanci SQL:
 
-| Cmdlet name | Popis |
+| Název rutiny | Popis |
 | --- | --- |
-| [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Provisions an Azure AD administrator for SQL managed instance in the current subscription. (Must be from the current subscription)|
-| [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Removes an Azure AD administrator for SQL managed instance in the current subscription. |
-| [Get-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlinstanceactivedirectoryadministrator) |Returns information about an Azure AD administrator for SQL managed instance in the current subscription.|
+| [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Zřídí správce Azure AD pro spravovanou instanci SQL v aktuálním předplatném. (Musí být z aktuálního předplatného)|
+| [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Odebere správce Azure AD pro spravovanou instanci SQL v aktuálním předplatném. |
+| [Get-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlinstanceactivedirectoryadministrator) |Vrátí informace o Správci služby Azure AD pro spravovanou instanci SQL v aktuálním předplatném.|
 
-The following command gets information about an Azure AD administrator for a managed instance named ManagedInstance01 that is associated with a resource group named ResourceGroup01.
+Následující příkaz získá informace o Správci Azure AD pro spravovanou instanci s názvem ManagedInstance01, která je přidružená ke skupině prostředků s názvem ResourceGroup01.
 
 ```powershell
 Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
 ```
 
-The following command provisions an Azure AD administrator group named DBAs for the managed instance named ManagedInstance01. This server is associated with resource group ResourceGroup01.
+Následující příkaz zřídí skupinu správců Azure AD s názvem specializující pro spravovanou instanci nazvanou ManagedInstance01. Tento server je přidružený ke skupině prostředků ResourceGroup01.
 
 ```powershell
 Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -DisplayName "DBAs" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
 ```
 
-The following command removes the Azure AD administrator for the managed instance named ManagedInstanceName01 associated with the resource group ResourceGroup01.
+Následující příkaz odebere správce Azure AD pro spravovanou instanci s názvem ManagedInstanceName01 přidruženou ke skupině prostředků ResourceGroup01.
 
 ```powershell
 Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
@@ -216,89 +216,89 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-You can also provision an Azure AD admin for SQL managed instance by calling the following CLI commands:
+Správce Azure AD pro spravovanou instanci SQL můžete také zřídit voláním následujících příkazů rozhraní příkazového řádku:
 
 | Příkaz | Popis |
 | --- | --- |
-|[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | Provisions an Azure Active Directory administrator for SQL managed instance. (Must be from the current subscription) |
-|[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | Removes an Azure Active Directory administrator for SQL managed instance. |
-|[az sql mi ad-admin list](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) | Returns information about an Azure Active Directory administrator currently configured for SQL managed instance. |
-|[az sql mi ad-admin update](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) | Updates the Active Directory administrator for a SQL managed instance. |
+|[AZ SQL mi AD-admin Create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | Zřídí správce Azure Active Directory pro spravovanou instanci SQL. (Musí být z aktuálního předplatného) |
+|[AZ SQL mi AD-admin DELETE](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | Odebere správce Azure Active Directory pro spravovanou instanci SQL. |
+|[AZ SQL mi AD – seznam správců](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) | Vrátí informace o Správci Azure Active Directory aktuálně nakonfigurovaném pro spravovanou instanci SQL. |
+|[AZ SQL mi AD – aktualizace pro správce](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) | Aktualizuje Správce služby Active Directory pro spravovanou instanci SQL. |
 
-For more information about CLI commands, see [az sql mi](/cli/azure/sql/mi).
+Další informace o příkazech rozhraní příkazového řádku najdete v tématu [AZ SQL mi](/cli/azure/sql/mi).
 
 * * *
 
-## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Provision an Azure Active Directory administrator for your Azure SQL Database server
+## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Zřízení správce Azure Active Directory pro server Azure SQL Database
 
 > [!IMPORTANT]
-> Only follow these steps if you are provisioning an Azure SQL Database server or Data Warehouse.
+> Postupujte pouze v případě, že zřizujete Server Azure SQL Database nebo datový sklad.
 
-The following two procedures show you how to provision an Azure Active Directory administrator for your Azure SQL server in the Azure portal and by using PowerShell.
+Následující dva postupy vám ukážou, jak zřídit správce Azure Active Directory pro Azure SQL Server v Azure Portal a pomocí PowerShellu.
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>portál Azure
 
-1. In the [Azure portal](https://portal.azure.com/), in the upper-right corner, select your connection to drop down a list of possible Active Directories. Choose the correct Active Directory as the default Azure AD. This step links the subscription-associated Active Directory with Azure SQL server making sure that the same subscription is used for both Azure AD and SQL Server. (The Azure SQL server can be hosting either Azure SQL Database or Azure SQL Data Warehouse.) ![choose-ad][8]
+1. V [Azure Portal](https://portal.azure.com/)v pravém horním rohu výběrem svého připojení vyrozevíracíte seznam možných aktivních adresářů. Vyberte správnou službu Active Directory jako výchozí službu Azure AD. Tento krok propojí službu Active Directory přidruženou k předplatnému se službou Azure SQL Server, která zajišťuje, že se stejné předplatné používá pro Azure AD i SQL Server. (Server SQL Azure je možné hostovat buď Azure SQL Database nebo Azure SQL Data Warehouse.) ![zvolit-AD][8]
 
-2. In the left banner select **All services**, and in the filter type in **SQL server**. Select **Sql Servers**.
+2. V levém proužku vyberte **všechny služby**a v typu filtru v **SQL serveru**. Vyberte **SQL servery**.
 
     ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)
 
     >[!NOTE]
-    > On this page, before you select **SQL servers**, you can select the **star** next to the name to *favorite* the category and add **SQL servers** to the left navigation bar.
+    > Na této stránce před výběrem **SQL serveru**můžete vybrat **hvězdičku** vedle názvu *, abyste kategorii mohli přidat* a přidat **SQL servery** do levého navigačního panelu.
 
-3. On **SQL Server** page, select **Active Directory admin**.
+3. Na stránce **SQL Server** vyberte možnost **Správce služby Active Directory**.
 
-4. In the **Active Directory admin** page, select **Set admin**.
+4. Na stránce **Správce služby Active Directory** vyberte **nastavit správce**.
 
     ![Výběr Active Directory](./media/sql-database-aad-authentication/select-active-directory.png)  
 
-5. In the **Add admin** page, search for a user, select the user or group to be an administrator, and then select **Select**. (The Active Directory admin page shows all members and groups of your Active Directory. Users or groups that are grayed out cannot be selected because they are not supported as Azure AD administrators. (See the list of supported admins in the **Azure AD Features and Limitations** section of [Use Azure Active Directory Authentication for authentication with SQL Database or SQL Data Warehouse](sql-database-aad-authentication.md).) Role-based access control (RBAC) applies only to the portal and is not propagated to SQL Server.
+5. Na stránce **přidat správce** vyhledejte uživatele, vyberte uživatele nebo skupinu, které mají být správcem, a pak vyberte **Vybrat**. (Na stránce Správce služby Active Directory se zobrazují všichni členové a skupiny služby Active Directory. Uživatele nebo skupiny, které jsou šedé, nelze vybrat, protože nejsou podporovány jako správci služby Azure AD. (Další informace najdete v seznamu podporovaných správců v části **funkce a omezení služby Azure AD** tématu [použití Azure Active Directory ověřování pro ověřování pomocí SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication.md).) Řízení přístupu na základě role (RBAC) se vztahuje jenom na portál a nešíří se na SQL Server.
 
-    ![select admin](./media/sql-database-aad-authentication/select-admin.png)  
+    ![vybrat správce](./media/sql-database-aad-authentication/select-admin.png)  
 
-6. At the top of the **Active Directory admin** page, select **SAVE**.
+6. V horní části stránky **Správce služby Active Directory** vyberte **Uložit**.
 
-    ![save admin](./media/sql-database-aad-authentication/save-admin.png)
+    ![Uložit správce](./media/sql-database-aad-authentication/save-admin.png)
 
-The process of changing the administrator may take several minutes. Then the new administrator appears in the **Active Directory admin** box.
+Proces změny správce může trvat několik minut. Pak se nový správce zobrazí v poli **Správce služby Active Directory** .
 
    > [!NOTE]
-   > When setting up the Azure AD admin, the new admin name (user or group) cannot already be present in the virtual master database as a SQL Server authentication user. If present, the Azure AD admin setup will fail; rolling back its creation and indicating that such an admin (name) already exists. Since such a SQL Server authentication user is not part of the Azure AD, any effort to connect to the server using Azure AD authentication fails.
+   > Při nastavování správce Azure AD se nové jméno správce (uživatel nebo skupina) už ve virtuální hlavní databázi nedá nacházet jako uživatel s ověřováním SQL Server. Pokud je k dispozici, instalace správce Azure AD se nezdaří. vrácení svého vytvoření a označení, že takový správce (jméno) již existuje. Vzhledem k tomu, že takový uživatel SQL Server ověřování není součástí služby Azure AD, neproběhne žádné úsilí pro připojení k serveru pomocí ověřování Azure AD.
 
-To later remove an Admin, at the top of the **Active Directory admin** page, select **Remove admin**, and then select **Save**.
+Chcete-li později odebrat správce, v horní části stránky **Správce služby Active Directory** vyberte možnost **Odebrat správce**a pak vyberte **Uložit**.
 
-### <a name="powershell-for-azure-sql-database-and-azure-sql-data-warehouse"></a>PowerShell for Azure SQL Database and Azure SQL Data Warehouse
+### <a name="powershell-for-azure-sql-database-and-azure-sql-data-warehouse"></a>PowerShell pro Azure SQL Database a Azure SQL Data Warehouse
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-To run PowerShell cmdlets, you need to have Azure PowerShell installed and running. Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). To provision an Azure AD admin, execute the following Azure PowerShell commands:
+Pokud chcete spustit rutiny PowerShellu, musíte mít Azure PowerShell nainstalovanou a spuštěnou. Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). Pokud chcete zřídit správce Azure AD, spusťte následující příkazy Azure PowerShell:
 
 - Connect-AzAccount
-- Select-AzSubscription
+- Vybrat – AzSubscription
 
-Cmdlets used to provision and manage Azure AD admin for Azure SQL Database and Azure SQL Data Warehouse:
+Rutiny používané ke zřízení a správě správce Azure AD pro Azure SQL Database a Azure SQL Data Warehouse:
 
-| Cmdlet name | Popis |
+| Název rutiny | Popis |
 | --- | --- |
-| [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Provisions an Azure Active Directory administrator for Azure SQL server or Azure SQL Data Warehouse. (Must be from the current subscription) |
-| [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Removes an Azure Active Directory administrator for Azure SQL server or Azure SQL Data Warehouse. |
-| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Returns information about an Azure Active Directory administrator currently configured for the Azure SQL server or Azure SQL Data Warehouse. |
+| [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Zřídí správce Azure Active Directory pro Azure SQL Server nebo Azure SQL Data Warehouse. (Musí být z aktuálního předplatného) |
+| [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Odebere správce Azure Active Directory pro Azure SQL Server nebo Azure SQL Data Warehouse. |
+| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Vrátí informace o Správci Azure Active Directory aktuálně nakonfigurovaném pro Azure SQL Server nebo Azure SQL Data Warehouse. |
 
-Use PowerShell command get-help to see more information for each of these commands. Například, `get-help Set-AzSqlServerActiveDirectoryAdministrator`.
+K zobrazení dalších informací pro každý z těchto příkazů použijte příkaz PowerShellu Get-Help. Například, `get-help Set-AzSqlServerActiveDirectoryAdministrator`.
 
-The following script provisions an Azure AD administrator group named **DBA_Group** (object ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`) for the **demo_server** server in a resource group named **Group-23**:
+Následující skript zřídí skupinu správců Azure AD s názvem **DBA_Group** (ID objektu `40b79501-b343-44ed-9ce7-da4c8cc7353f`) pro **demo_server** Server ve skupině prostředků s názvem **Skupina-23**:
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
-The **DisplayName** input parameter accepts either the Azure AD display name or the User Principal Name. For example, ``DisplayName="John Smith"`` and ``DisplayName="johns@contoso.com"``. For Azure AD groups only the Azure AD display name is supported.
+Vstupní parametr **DisplayName** přijímá buď zobrazované jméno Azure AD, nebo hlavní název uživatele. Například ``DisplayName="John Smith"`` a ``DisplayName="johns@contoso.com"``. Pro skupiny Azure AD se podporuje jenom zobrazované jméno Azure AD.
 
 > [!NOTE]
-> The Azure PowerShell  command ```Set-AzSqlServerActiveDirectoryAdministrator``` does not prevent you from provisioning Azure AD admins for unsupported users. An unsupported user can be provisioned, but can not connect to a database.
+> Příkaz Azure PowerShell ```Set-AzSqlServerActiveDirectoryAdministrator``` nebrání zřizování správců Azure AD pro nepodporované uživatele. Můžete zřídit nepodporovaného uživatele, ale nemůžete se připojit k databázi.
 
-The following example uses the optional **ObjectID**:
+Následující příklad používá volitelné **objectID**:
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" `
@@ -306,15 +306,15 @@ Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Serve
 ```
 
 > [!NOTE]
-> The Azure AD **ObjectID** is required when the **DisplayName** is not unique. To retrieve the **ObjectID** and **DisplayName** values, use the Active Directory section of Azure Classic Portal, and view the properties of a user or group.
+> **Identifikátor objectID** služby Azure AD je vyžadován, pokud **Zobrazovaný** název není jedinečný. Chcete-li načíst hodnoty **objectID** a **DisplayName** , použijte část portál Azure Classic služby Active Directory a zobrazte vlastnosti uživatele nebo skupiny.
 
-The following example returns information about the current Azure AD admin for Azure SQL server:
+Následující příklad vrátí informace o aktuálním Správci služby Azure AD pro Azure SQL Server:
 
 ```powershell
 Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" | Format-List
 ```
 
-The following example removes an Azure AD administrator:
+Následující příklad odebere správce Azure AD:
 
 ```powershell
 Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
@@ -322,145 +322,145 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-You can provision an Azure AD admin by calling the following CLI commands:
+Správce Azure AD můžete zřídit voláním následujících příkazů rozhraní příkazového řádku:
 
 | Příkaz | Popis |
 | --- | --- |
-|[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Provisions an Azure Active Directory administrator for Azure SQL server or Azure SQL Data Warehouse. (Must be from the current subscription) |
-|[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Removes an Azure Active Directory administrator for Azure SQL server or Azure SQL Data Warehouse. |
-|[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | Returns information about an Azure Active Directory administrator currently configured for the Azure SQL server or Azure SQL Data Warehouse. |
-|[az sql server ad-admin update](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | Updates the Active Directory administrator for an Azure SQL server or Azure SQL Data Warehouse. |
+|[AZ SQL Server AD-admin Create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Zřídí správce Azure Active Directory pro Azure SQL Server nebo Azure SQL Data Warehouse. (Musí být z aktuálního předplatného) |
+|[AZ SQL Server AD – odstranění správce](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Odebere správce Azure Active Directory pro Azure SQL Server nebo Azure SQL Data Warehouse. |
+|[AZ SQL Server AD – seznam správců](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | Vrátí informace o Správci Azure Active Directory aktuálně nakonfigurovaném pro Azure SQL Server nebo Azure SQL Data Warehouse. |
+|[AZ SQL Server AD – aktualizace pro správce](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | Aktualizuje Správce služby Active Directory pro Azure SQL Server nebo Azure SQL Data Warehouse. |
 
-For more information about CLI commands, see [az sql server](/cli/azure/sql/server).
+Další informace o příkazech rozhraní příkazového řádku najdete v tématu [AZ SQL Server](/cli/azure/sql/server).
 
 * * *
 
 > [!NOTE]
-> You can also provision an Azure Active Directory Administrator by using the REST APIs. For more information, see [Service Management REST API Reference and Operations for Azure SQL Database Operations for Azure SQL Database](/rest/api/sql/)
+> Správce Azure Active Directory můžete také zřídit pomocí rozhraní REST API. Další informace najdete v tématu [referenční informace o operacích správy služby REST API a operacích Azure SQL Database pro Azure SQL Database](/rest/api/sql/)
 
-## <a name="configure-your-client-computers"></a>Configure your client computers
+## <a name="configure-your-client-computers"></a>Konfigurace klientských počítačů
 
-On all client machines, from which your applications or users connect to Azure SQL Database or Azure SQL Data Warehouse using Azure AD identities, you must install the following software:
+Na všech klientských počítačích, ze kterých se vaše aplikace nebo uživatelé připojují k Azure SQL Database nebo Azure SQL Data Warehouse pomocí identit Azure AD, je nutné nainstalovat následující software:
 
-- .NET Framework 4.6 or later from [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).
-- Azure Active Directory Authentication Library for SQL Server (*ADALSQL.DLL*) is available in multiple languages (both x86 and amd64) from the download center at [Microsoft Active Directory Authentication Library for Microsoft SQL Server](https://www.microsoft.com/download/details.aspx?id=48742).
+- .NET Framework 4,6 nebo novější z [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).
+- Azure Active Directory knihovny ověřování pro SQL Server (*ADALSQL. Knihovna DLL*) je k dispozici v několika jazycích (x86 i amd64) z webu služby Stažení softwaru [společnosti Microsoft Active Directory Authentication Library pro Microsoft SQL Server](https://www.microsoft.com/download/details.aspx?id=48742).
 
-You can meet these requirements by:
+Tyto požadavky můžete splnit:
 
-- Installing either [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) or [SQL Server Data Tools for Visual Studio 2015](https://msdn.microsoft.com/library/mt204009.aspx) meets the .NET Framework 4.6 requirement.
-- SSMS installs the x86 version of *ADALSQL.DLL*.
-- SSDT installs the amd64 version of *ADALSQL.DLL*.
-- The latest Visual Studio from [Visual Studio Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs) meets the .NET Framework 4.6 requirement, but does not install the required amd64 version of *ADALSQL.DLL*.
+- Instalace [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) nebo [SQL Server Data Tools for Visual Studio 2015](https://msdn.microsoft.com/library/mt204009.aspx) splňuje požadavek .NET Framework 4,6.
+- SSMS nainstaluje verzi x86 nástroje *ADALSQL. Knihovna DLL*:
+- SSDT nainstaluje verzi nástroje amd64 *ADALSQL. Knihovna DLL*:
+- Nejnovější verze sady Visual Studio ze sady [Visual Studio ke stažení](https://www.visualstudio.com/downloads/download-visual-studio-vs) splňuje požadavek .NET Framework 4,6, ale neinstaluje požadovanou verzi amd64 *ADALSQL. Knihovna DLL*:
 
-## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Create contained database users in your database mapped to Azure AD identities
+## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Umožňuje vytvořit uživatele databáze s omezením v databázi namapované na identity Azure AD.
 
 > [!IMPORTANT]
-> Managed instance now supports Azure AD server principals (logins), which enables you to create logins from Azure AD users, groups, or applications. Azure AD server principals (logins) provides the ability to authenticate to your managed instance without requiring database users to be created as a contained database user. For more information, see [managed instance Overview](sql-database-managed-instance.md#azure-active-directory-integration). For syntax on creating Azure AD server principals (logins), see <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>.
+> Spravovaná instance teď podporuje objekty zabezpečení serveru Azure AD (přihlášení), které umožňují vytvářet přihlášení z uživatelů, skupin a aplikací Azure AD. Objekty zabezpečení serveru Azure AD (přihlášení) poskytují možnost ověřování ve vaší spravované instanci bez toho, aby se uživatelé databáze museli vytvořit jako uživatel s omezením databáze. Další informace najdete v tématu [Přehled spravované instance](sql-database-managed-instance.md#azure-active-directory-integration). Syntaxi při vytváření objektů zabezpečení serveru Azure AD (přihlášení) najdete v tématu věnovaném <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Vytvoření přihlašovacích</a>údajů.
 
-Azure Active Directory authentication requires database users to be created as contained database users. A contained database user based on an Azure AD identity, is a database user that does not have a login in the master database, and which maps to an identity in the Azure AD directory that is associated with the database. The Azure AD identity can be either an individual user account or a group. For more information about contained database users, see [Contained Database Users- Making Your Database Portable](https://msdn.microsoft.com/library/ff929188.aspx).
+Ověřování Azure Active Directory vyžaduje, aby uživatelé databáze byli vytvořeni jako uživatelé databáze s omezením. Uživatel databáze s omezením, který je založený na identitě Azure AD, je uživatel databáze, který nemá přihlašovací údaje v hlavní databázi a který se mapuje na identitu v adresáři služby Azure AD, který je přidružený k databázi. Identitou Azure AD může být buď jednotlivý uživatelský účet, nebo skupina. Další informace o uživatelích databáze s omezením najdete v tématu databáze [uživatelů s omezením – vytvoření přenosné](https://msdn.microsoft.com/library/ff929188.aspx)databáze.
 
 > [!NOTE]
-> Database users (with the exception of administrators) cannot be created using the Azure portal. RBAC roles are not propagated to SQL Server, SQL Database, or SQL Data Warehouse. Azure RBAC roles are used for managing Azure Resources, and do not apply to database permissions. For example, the **SQL Server Contributor** role does not grant access to connect to the SQL Database or SQL Data Warehouse. The access permission must be granted directly in the database using Transact-SQL statements.
+> Uživatele databáze (s výjimkou správců) nelze vytvořit pomocí Azure Portal. Role RBAC se nešíří do SQL Server, SQL Database nebo SQL Data Warehouse. Role Azure RBAC se používají ke správě prostředků Azure a nevztahují se na oprávnění databáze. Například role **přispěvatel SQL Server** neuděluje přístup pro připojení k SQL Database nebo SQL Data Warehouse. Přístupové oprávnění musí být uděleno přímo v databázi pomocí příkazů jazyka Transact-SQL.
 
 > [!WARNING]
-> Special characters like  colon `:` or ampersand `&` when included as user names in the T-SQL CREATE LOGIN and CREATE USER statements are not supported.
+> Speciální znaky jako dvojtečka `:` nebo ampersand `&`, pokud jsou zahrnuté jako uživatelská jména v příkazech T-SQL CREATE LOGIN a CREATE USER nejsou podporovány.
 
-To create an Azure AD-based contained database user (other than the server administrator that owns the database), connect to the database with an Azure AD identity, as a user with at least the **ALTER ANY USER** permission. Then use the following Transact-SQL syntax:
+Pokud chcete vytvořit uživatele databáze s omezením založené na službě Azure AD (jiný než správce serveru, který je vlastníkem databáze), připojte se k databázi pomocí identity Azure AD jako uživatel, který má aspoň oprávnění ke **změně libovolného uživatele** . Pak použijte následující syntaxi jazyka Transact-SQL:
 
 ```sql
 CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
 ```
 
-*Azure_AD_principal_name* can be the user principal name of an Azure AD user or the display name for an Azure AD group.
+*Azure_AD_principal_name* může být hlavní název uživatele Azure AD nebo zobrazované jméno pro skupinu Azure AD.
 
-**Examples:** To create a contained database user representing an Azure AD federated or managed domain user:
+**Příklady:** Vytvoření uživatele databáze s omezením představujícího uživatele federovaného nebo spravované domény Azure AD:
 
 ```sql
 CREATE USER [bob@contoso.com] FROM EXTERNAL PROVIDER;
 CREATE USER [alice@fabrikam.onmicrosoft.com] FROM EXTERNAL PROVIDER;
 ```
 
-To create a contained database user representing an Azure AD or federated domain group, provide the display name of a security group:
+Pokud chcete vytvořit uživatele databáze s omezením, který představuje skupinu zabezpečení Azure AD nebo federované domény, zadejte zobrazovaný název skupiny zabezpečení:
 
 ```sql
 CREATE USER [ICU Nurses] FROM EXTERNAL PROVIDER;
 ```
 
-To create a contained database user representing an application that connects using an Azure AD token:
+Vytvoření uživatele databáze s omezením představující aplikaci, která se připojuje pomocí tokenu Azure AD:
 
 ```sql
 CREATE USER [appName] FROM EXTERNAL PROVIDER;
 ```
 
 > [!NOTE]
-> This command requires that SQL access Azure AD (the "external provider") on behalf of the logged-in user. Sometimes, circumstances will arise that cause Azure AD to return an exception back to SQL. In these cases, the user will see SQL error 33134, which should contain the AAD-specific error message. Most of the time, the error will say that access is denied, or that the user must enroll in MFA to access the resource, or that access between first-party applications must be handled via preauthorization. In the first two cases, the issue is usually caused by Conditional Access policies that are set in the user's AAD tenant: they prevent the user from accessing the external provider. Updating the CA policies to allow access to the application '00000002-0000-0000-c000-000000000000' (the application ID of the AAD Graph API) should resolve the issue. In the case that the error says access between first-party applications must be handled via preauthorization, the issue is because the user is signed in as a service principal. The command should succeed if it is executed by a user instead.
+> Tento příkaz vyžaduje, aby služba SQL Access Azure AD ("externí poskytovatel") jménem přihlášeného uživatele. Někdy nastane situace, které způsobí, že Azure AD vrátí výjimku zpátky do SQL. V těchto případech se uživateli zobrazí chyba SQL 33134, která by měla obsahovat chybovou zprávu specifickou pro AAD. Ve většině případů tato chyba znamená, že přístup je odepřený nebo že se uživatel musí zaregistrovat v MFA pro přístup k prostředku nebo že přístup mezi aplikacemi první strany musí být zpracován prostřednictvím předvedení. V prvních dvou případech je problém obvykle způsoben zásadami podmíněného přístupu, které jsou nastaveny v tenantovi AAD uživatele: zabrání uživateli v přístupu k externímu poskytovateli. Aktualizace zásad certifikační autority tak, aby povolovala přístup k aplikaci "00000002-0000-0000-C000-000000000000" (ID aplikace Graph API AAD) by měla tento problém vyřešit. V případě, že chyba znamená, že přístup mezi aplikacemi první strany musí být zpracován prostřednictvím předvedení, problém je proto, že uživatel je přihlášený jako instanční objekt. Příkaz by měl být úspěšný, pokud ho spustí uživatel.
 
 > [!TIP]
-> You cannot directly create a user from an Azure Active Directory other than the Azure Active Directory that is associated with your Azure subscription. However, members of other Active Directories that are imported users in the associated Active Directory (known as external users) can be added to an Active Directory group in the tenant Active Directory. By creating a contained database user for that AD group, the users from the external Active Directory can gain access to SQL Database.
+> Nemůžete přímo vytvořit uživatele z jiné Azure Active Directory než Azure Active Directory, která je přidružená k vašemu předplatnému Azure. Do skupiny služby Active Directory ve službě Active Directory klienta se ale dají přidat i členové jiných aktivních adresářů, které jsou importované uživatele v přidružené službě Active Directory (označované jako externí uživatelé). Když pro tuto skupinu AD vytvoříte uživatele databáze s omezením, můžou uživatelé z externí služby Active Directory získat přístup k SQL Database.
 
-For more information about creating contained database users based on Azure Active Directory identities, see [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx).
-
-> [!NOTE]
-> Removing the Azure Active Directory administrator for Azure SQL server prevents any Azure AD authentication user from connecting to the server. If necessary, unusable Azure AD users can be dropped manually by a SQL Database administrator.
+Další informace o vytváření uživatelů databáze s omezením na základě Azure Active Directory identit naleznete v tématu [Create User (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx).
 
 > [!NOTE]
-> If you receive a **Connection Timeout Expired**, you may need to set the `TransparentNetworkIPResolution` parameter of the connection string to false. For more information, see [Connection timeout issue with .NET Framework 4.6.1 - TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/).
-
-When you create a database user, that user receives the **CONNECT** permission and can connect to that database as a member of the **PUBLIC** role. Initially the only permissions available to the user are any permissions granted to the **PUBLIC** role, or any permissions granted to any Azure AD groups that they are a member of. Once you provision an Azure AD-based contained database user, you can grant the user additional permissions, the same way as you grant permission to any other type of user. Typically grant permissions to database roles, and add users to roles. For more information, see [Database Engine Permission Basics](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). For more information about special SQL Database roles, see [Managing Databases and Logins in Azure SQL Database](sql-database-manage-logins.md).
-A federated domain user account that is imported into a managed domain as an external user, must use the managed domain identity.
+> Odebráním správce Azure Active Directory pro Azure SQL Server znemožníte uživatelům ověřování Azure AD, aby se připojili k serveru. V případě potřeby je možné uživatele Azure AD, kteří se nedají použít, vyřadit ručně pomocí správce SQL Database.
 
 > [!NOTE]
-> Azure AD users are marked in the database metadata with type E (EXTERNAL_USER) and for groups with type X (EXTERNAL_GROUPS). For more information, see [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
+> Pokud obdržíte **časový limit připojení**, možná budete muset nastavit parametr `TransparentNetworkIPResolution` připojovacího řetězce na hodnotu NEPRAVDA. Další informace najdete v tématu [Chyba vypršení časového limitu připojení .NET Framework 4.6.1-konfiguruje nastavení transparentnetworkipresolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/).
 
-## <a name="connect-to-the-user-database-or-data-warehouse-by-using-ssms-or-ssdt"></a>Connect to the user database or data warehouse by using SSMS or SSDT  
+Když vytvoříte uživatele databáze, obdrží tento uživatel oprávnění **připojit** a může se k této databázi připojit jako člen **veřejné** role. Zpočátku jsou jedinou oprávnění k dispozici pro uživatele jakákoli oprávnění udělená **veřejné** roli nebo jakákoli oprávnění udělená všem SKUPINÁM Azure AD, které jsou členy. Po zřízení uživatele databáze s omezením založeného na službě Azure AD můžete uživateli udělit další oprávnění stejným způsobem jako oprávnění pro jakýkoli jiný typ uživatele. Typicky udělte oprávnění databázovým rolím a přidávají uživatele do rolí. Další informace najdete v tématu [základy oprávnění k databázovému stroji](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Další informace o zvláštních rolích SQL Database najdete [v tématu Správa databází a přihlášení v Azure SQL Database](sql-database-manage-logins.md).
+Uživatelský účet federované domény, který je importován do spravované domény jako externí uživatel, musí používat identitu spravované domény.
 
-To confirm the Azure AD administrator is properly set up, connect to the **master** database using the Azure AD administrator account.
-To provision an Azure AD-based contained database user (other than the server administrator that owns the database), connect to the database with an Azure AD identity that has access to the database.
+> [!NOTE]
+> Uživatelé Azure AD jsou označeni v metadatech databáze typu E (EXTERNAL_USER) a pro skupiny s typem X (EXTERNAL_GROUPS). Další informace najdete v tématu [Sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
+
+## <a name="connect-to-the-user-database-or-data-warehouse-by-using-ssms-or-ssdt"></a>Připojení k uživatelské databázi nebo datovému skladu pomocí SSMS nebo SSDT  
+
+Pokud chcete potvrdit, že správce Azure AD je správně nastavený, připojte se k **Hlavní** databázi pomocí účtu správce Azure AD.
+Pokud chcete zřídit uživatele databáze s omezením založené na službě Azure AD (jiný než správce serveru, který je vlastníkem databáze), připojte se k databázi pomocí identity Azure AD, která má přístup k databázi.
 
 > [!IMPORTANT]
-> Support for Azure Active Directory authentication is available with [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) and [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) in Visual Studio 2015. The August 2016 release of SSMS also includes support for Active Directory Universal Authentication, which allows administrators to require Multi-Factor Authentication using a phone call, text message, smart cards with pin, or mobile app notification.
+> Podpora ověřování Azure Active Directory je k dispozici v [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) a [datových nástrojích SQL Server](https://msdn.microsoft.com/library/mt204009.aspx) v aplikaci Visual Studio 2015. Verze SSMS ze srpna 2016 obsahuje také podporu univerzálního ověřování služby Active Directory, která správcům umožňuje vyžadovat Multi-Factor Authentication pomocí telefonního hovoru, textové zprávy, čipové karty s kódem PIN nebo oznámením o mobilní aplikaci.
 
-## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Using an Azure AD identity to connect using SSMS or SSDT
+## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Použití identity Azure AD pro připojení pomocí SSMS nebo SSDT
 
-The following procedures show you how to connect to a SQL database with an Azure AD identity using SQL Server Management Studio or SQL Server Database Tools.
+Následující postupy ukazují, jak se připojit k databázi SQL pomocí identity Azure AD pomocí SQL Server Management Studio nebo SQL Server databázových nástrojů.
 
-### <a name="active-directory-integrated-authentication"></a>Active Directory integrated authentication
+### <a name="active-directory-integrated-authentication"></a>Integrované ověřování služby Active Directory
 
-Use this method if you are logged in to Windows using your Azure Active Directory credentials from a federated domain.
+Tuto metodu použijte, pokud jste přihlášeni k Windows pomocí přihlašovacích údajů Azure Active Directory z federované domény.
 
-1. Start Management Studio or Data Tools and in the **Connect to Server** (or **Connect to Database Engine**) dialog box, in the **Authentication** box, select **Active Directory - Integrated**. No password is needed or can be entered because your existing credentials will be presented for the connection.
+1. Spusťte Management Studio nebo datové nástroje a v dialogovém okně **připojit k serveru** (nebo **se připojte k databázovému stroji**) vyberte v poli **ověřování** možnost **integrovaná se službou Active Directory**. Není potřeba žádné heslo, nebo ho nejde zadat, protože pro připojení se zobrazí vaše existující přihlašovací údaje.
 
-    ![Select AD Integrated Authentication][11]
+    ![Vybrat integrované ověřování Active Directory][11]
 
-2. Select the **Options** button, and on the **Connection Properties** page, in the **Connect to database** box, type the name of the user database you want to connect to. (The **AD domain name or tenant ID**” option is only supported for **Universal with MFA connection** options, otherwise it is greyed out.)  
+2. Vyberte tlačítko **Možnosti** a na stránce **Vlastnosti připojení** do pole **připojit k databázi** zadejte název uživatelské databáze, ke které se chcete připojit. (Možnost **název domény služby AD nebo ID tenanta**se podporuje jenom pro možnosti **připojení s MFA (Universal** ), v opačném případě se jedná o šedé.)  
 
-    ![Select the database name][13]
+    ![Vyberte název databáze.][13]
 
-## <a name="active-directory-password-authentication"></a>Active Directory password authentication
+## <a name="active-directory-password-authentication"></a>Ověřování hesla služby Active Directory
 
-Use this method when connecting with an Azure AD principal name using the Azure AD managed domain. You can also use it for federated accounts without access to the domain, for example when working remotely.
+Tuto metodu použijte při připojení k hlavnímu názvu Azure AD pomocí spravované domény Azure AD. Můžete ji také použít pro federované účty bez přístupu k doméně, například při vzdálené práci.
 
-Use this method to authenticate to SQL DB/DW with Azure AD for native or federated Azure AD users. A native user is one explicitly created in Azure AD and being authenticated using user name and password, while a federated user is a Windows user whose domain is federated with Azure AD. The latter method (using user & password) can be used when a user wants to use their windows credential, but their local machine is not joined with the domain (for example, using a remote access). In this case, a Windows user can indicate their domain account and password and can authenticate to SQL DB/DW using federated credentials.
+Tuto metodu použijte k ověření pro SQL DB/DW s Azure AD pro nativní nebo federované uživatele Azure AD. Nativní uživatel je explicitně vytvořený v Azure AD a ověřuje se pomocí uživatelského jména a hesla, zatímco Federovaný uživatel je uživatel systému Windows, jehož doména je federované pomocí Azure AD. Druhá metoda (pomocí uživatelského & heslo) se dá použít, když chce uživatel použít svoje přihlašovací údaje pro Windows, ale jejich místní počítač není připojený k doméně (třeba pomocí vzdáleného přístupu). V takovém případě může uživatel systému Windows označit svůj doménový účet a heslo a ověřit je v databázi SQL DB/DW pomocí federovaných přihlašovacích údajů.
 
-1. Start Management Studio or Data Tools and in the **Connect to Server** (or **Connect to Database Engine**) dialog box, in the **Authentication** box, select **Active Directory - Password**.
+1. Spusťte Management Studio nebo datové nástroje a v dialogovém okně **připojit k serveru** (nebo **se připojte k databázovému stroji**) v poli **ověřování** vyberte možnost **Active Directory – heslo**.
 
-2. In the **User name** box, type your Azure Active Directory user name in the format **username\@domain.com**. User names must be an account from the Azure Active Directory or an account from a domain federate with the Azure Active Directory.
+2. Do pole **uživatelské jméno** zadejte Azure Active Directory uživatelské jméno ve formátu **username\@Domain.com**. Uživatelské jméno musí být účet z Azure Active Directory nebo účet z federovat domény s Azure Active Directory.
 
-3. In the **Password** box, type your user password for the Azure Active Directory account or federated domain account.
+3. Do pole **heslo** zadejte heslo uživatele pro účet Azure Active Directory nebo účet federované domény.
 
-    ![Select AD Password Authentication][12]
+    ![Vybrat ověřování hesla služby AD][12]
 
-4. Select the **Options** button, and on the **Connection Properties** page, in the **Connect to database** box, type the name of the user database you want to connect to. (See the graphic in the previous option.)
+4. Vyberte tlačítko **Možnosti** a na stránce **Vlastnosti připojení** do pole **připojit k databázi** zadejte název uživatelské databáze, ke které se chcete připojit. (Viz obrázek v předchozí možnosti.)
 
-## <a name="using-an-azure-ad-identity-to-connect-from-a-client-application"></a>Using an Azure AD identity to connect from a client application
+## <a name="using-an-azure-ad-identity-to-connect-from-a-client-application"></a>Připojení z klientské aplikace pomocí identity Azure AD
 
-The following procedures show you how to connect to a SQL database with an Azure AD identity from a client application.
+Následující postupy ukazují, jak se připojit k databázi SQL pomocí identity Azure AD z klientské aplikace.
 
-### <a name="active-directory-integrated-authentication"></a>Active Directory integrated authentication
+### <a name="active-directory-integrated-authentication"></a>Integrované ověřování služby Active Directory
 
-To use integrated Windows authentication, your domain’s Active Directory must be federated with Azure Active Directory. Your client application (or a service) connecting to the database must be running on a domain-joined machine under a user’s domain credentials.
+Pokud chcete použít integrované ověřování systému Windows, musí být služba Active Directory vaší domény federované s Azure Active Directory. Klientská aplikace (nebo služba), která se připojuje k databázi, musí být spuštěná na počítači připojeném k doméně v rámci pověření domény uživatele.
 
-To connect to a database using integrated authentication and an Azure AD identity, the Authentication keyword in the database connection string must be set to Active Directory Integrated. The following C# code sample uses ADO .NET.
+Pokud se chcete připojit k databázi pomocí integrovaného ověřování a identity Azure AD, musí být klíčové slovo ověřování v připojovacím řetězci databáze nastavené na Active Directory Integrated. Následující C# ukázka kódu používá rozhraní ADO .NET.
 
 ```csharp
 string ConnectionString = @"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Integrated; Initial Catalog=testdb;";
@@ -468,11 +468,11 @@ SqlConnection conn = new SqlConnection(ConnectionString);
 conn.Open();
 ```
 
-The connection string keyword `Integrated Security=True` is not supported for connecting to Azure SQL Database. When making an ODBC connection, you will need to remove spaces and set Authentication to 'ActiveDirectoryIntegrated'.
+Klíčové slovo připojovacího řetězce `Integrated Security=True` není podporované pro připojení k Azure SQL Database. Při vytváření připojení rozhraní ODBC budete muset odebrat mezery a nastavit ověřování na ' ActiveDirectoryIntegrated '.
 
-### <a name="active-directory-password-authentication"></a>Active Directory password authentication
+### <a name="active-directory-password-authentication"></a>Ověřování hesla služby Active Directory
 
-To connect to a database using integrated authentication and an Azure AD identity, the Authentication keyword must be set to Active Directory Password. The connection string must contain User ID/UID and Password/PWD keywords and values. The following C# code sample uses ADO .NET.
+Pokud se chcete připojit k databázi pomocí integrovaného ověřování a identity Azure AD, musí být klíčové slovo ověřování nastavené na heslo služby Active Directory. Připojovací řetězec musí obsahovat klíčová slova ID uživatele/UID a heslo/heslo a hodnoty. Následující C# ukázka kódu používá rozhraní ADO .NET.
 
 ```csharp
 string ConnectionString =
@@ -481,18 +481,18 @@ SqlConnection conn = new SqlConnection(ConnectionString);
 conn.Open();
 ```
 
-Learn more about Azure AD authentication methods using the demo code samples available at [Azure AD Authentication GitHub Demo](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/security/azure-active-directory-auth).
+Přečtěte si další informace o metodách ověřování Azure AD pomocí ukázkových ukázek kódu dostupných v [ukázce Azure AD Authentication GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/security/azure-active-directory-auth).
 
-## <a name="azure-ad-token"></a>Azure AD token
+## <a name="azure-ad-token"></a>Token Azure AD
 
-This authentication method allows middle-tier services to connect to Azure SQL Database or Azure SQL Data Warehouse by obtaining a token from Azure Active Directory (AAD). It enables sophisticated scenarios including certificate-based authentication. You must complete four basic steps to use Azure AD token authentication:
+Tato metoda ověřování umožňuje službám střední vrstvy připojení k Azure SQL Database nebo Azure SQL Data Warehouse získáním tokenu z Azure Active Directory (AAD). Umožňuje sofistikované scénáře, včetně ověřování založeného na certifikátech. Chcete-li použít ověřování pomocí tokenu Azure AD, musíte provést čtyři základní kroky:
 
-1. Register your application with Azure Active Directory and get the client ID for your code.
-2. Create a database user representing the application. (Completed earlier in step 6.)
-3. Create a certificate on the client computer runs the application.
-4. Add the certificate as a key for your application.
+1. Zaregistrujte svoji aplikaci pomocí Azure Active Directory a Získejte ID klienta pro svůj kód.
+2. Vytvořte uživatele databáze reprezentující aplikaci. (Dokončeno dříve v kroku 6.)
+3. V klientském počítači se spustí aplikace s vytvořením certifikátu.
+4. Přidejte certifikát jako klíč pro vaši aplikaci.
 
-Sample connection string:
+Vzorový připojovací řetězec:
 
 ```csharp
 string ConnectionString =@"Data Source=n9lxnyuzhv.database.windows.net; Initial Catalog=testdb;"
@@ -501,14 +501,14 @@ conn.AccessToken = "Your JWT token"
 conn.Open();
 ```
 
-For more information, see [SQL Server Security Blog](https://blogs.msdn.microsoft.com/sqlsecurity/20../../token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/). For information about adding a certificate, see [Get started with certificate-based authentication in Azure Active Directory](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
+Další informace najdete v [blogu o SQL Server zabezpečení](https://blogs.msdn.microsoft.com/sqlsecurity/20../../token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/). Informace o přidání certifikátu najdete v tématu Začínáme [s ověřováním na základě certifikátů v Azure Active Directory](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-The following statements, connect using version 13.1 of sqlcmd, which is available from the [Download Center](https://www.microsoft.com/download/details.aspx?id=53591).
+Následující příkazy se připojují pomocí nástroje Sqlcmd verze 13,1, který je k dispozici na [webu Download Center](https://www.microsoft.com/download/details.aspx?id=53591).
 
 > [!NOTE]
-> `sqlcmd` with the `-G` command does not work with system identities, and requires a user principal login.
+> `sqlcmd` s příkazem `-G` nefunguje u systémových identit a vyžaduje přihlášení k hlavnímu uživateli.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

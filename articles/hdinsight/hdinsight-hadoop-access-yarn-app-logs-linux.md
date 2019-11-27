@@ -1,6 +1,6 @@
 ---
-title: Access Apache Hadoop YARN application logs - Azure HDInsight
-description: Learn how to access YARN application logs on a Linux-based HDInsight (Apache Hadoop) cluster using both the command-line and a web browser.
+title: Přístup k protokolům aplikace Apache Hadoop nitě – Azure HDInsight
+description: Přečtěte si, jak získat přístup k protokolům aplikací PŘÍZ na clusteru HDInsight se systémem Linux (Apache Hadoop) pomocí příkazového řádku i webového prohlížeče.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -15,65 +15,65 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327227"
 ---
-# <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Access Apache Hadoop YARN application logs on Linux-based HDInsight
+# <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Přístup k protokolům aplikace Apache Hadoop nitě v HDInsight se systémem Linux
 
-Learn how to access the logs for [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (Yet Another Resource Negotiator) applications on an [Apache Hadoop](https://hadoop.apache.org/) cluster in Azure HDInsight.
+Naučte se, jak získat přístup k protokolům pro [Apache HADOOP přízi](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (ještě další aplikace pro vyjednávání prostředků) v clusteru [Apache Hadoop](https://hadoop.apache.org/) ve službě Azure HDInsight.
 
-## <a name="what-is-apache-yarn"></a>What is Apache YARN?
+## <a name="what-is-apache-yarn"></a>Co je Apache PŘÍZe?
 
-YARN supports multiple programming models ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)  being one of them) by decoupling resource management from application scheduling/monitoring. YARN uses a global *ResourceManager* (RM), per-worker-node *NodeManagers* (NMs), and per-application *ApplicationMasters* (AMs). The per-application AM negotiates resources (CPU, memory, disk, network) for running your application with the RM. The RM works with NMs to grant these resources, which are granted as *containers*. The AM is responsible for tracking the progress of the containers assigned to it by the RM. An application may require many containers depending on the nature of the application.
+PŘÍZe podporuje více programovacích modelů ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) jednu z nich) tím, že odpojuje správu prostředků od plánování a monitorování aplikací. K PŘÍZi se používá globální *Správce prostředků* (RM), *NodeManagers* (NMs) a per-Application *ApplicationMasters* (AMs). Jednotlivé aplikace vyjednávají prostředky (CPU, paměť, disk, síť) pro spuštění aplikace s nástrojem RM. RM spolupracuje s NMs pro udělení těchto prostředků, které se udělují jako *kontejnery*. Zodpovídá za sledování průběhu kontejnerů, které mu jsou přiřazeny pomocí služby RM. Aplikace může vyžadovat mnoho kontejnerů v závislosti na povaze aplikace.
 
-Each application may consist of multiple *application attempts*. If an application fails, it may be retried as a new attempt. Each attempt runs in a container. In a sense, a container provides the context for basic unit of work performed by a YARN application. All work that is done within the context of a container is performed on the single worker node on which the container was allocated. See [Hadoop: Writing YARN Applications](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html), or [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) for further reference.
+Každá aplikace se může skládat z několika *pokusů o aplikace*. Pokud dojde k chybě aplikace, může se pokusit o nový pokus. Každý pokus se spustí v kontejneru. Ve smyslu kontejner poskytuje kontext pro základní pracovní jednotku, kterou provádí aplikace PŘÍZe. Veškerá práce, která je provedena v rámci kontextu kontejneru, je prováděna v jednom pracovním uzlu, na kterém byl kontejner přidělen. Další informace najdete v tématu [Hadoop: zápis přízch aplikací](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)nebo [Apache Hadoop příze](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) .
 
-To scale your cluster to support greater processing throughput, you can use [Autoscale](hdinsight-autoscale-clusters.md) or [Scale your clusters manually using a few different languages](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters).
+Pokud chcete škálovat cluster tak, aby podporoval větší propustnost zpracování, můžete použít automatické [škálování](hdinsight-autoscale-clusters.md) nebo [škálování clusterů ručně pomocí několika různých jazyků](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters).
 
-## <a name="YARNTimelineServer"></a>YARN Timeline Server
+## <a name="YARNTimelineServer"></a>Server časové osy PŘÍZe
 
-The [Apache Hadoop YARN Timeline Server](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) provides generic information on completed applications
+[Server časové osy Apache HADOOP příze](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) poskytuje obecné informace o dokončených aplikacích.
 
-YARN Timeline Server includes the following type of data:
+Server časové osy PŘÍZe obsahuje následující typy dat:
 
-* The application ID, a unique identifier of an application
-* The user who started the application
-* Information on attempts made to complete the application
-* The containers used by any given application attempt
+* ID aplikace, jedinečný identifikátor aplikace
+* Uživatel, který spustil aplikaci
+* Informace o pokusůch o dokončení aplikace
+* Kontejnery používané jakýmkoli pokusy o aplikace
 
-## <a name="YARNAppsAndLogs"></a>YARN applications and logs
+## <a name="YARNAppsAndLogs"></a>PŘÍZe aplikace a protokoly
 
-YARN supports multiple programming models ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)  being one of them) by decoupling resource management from application scheduling/monitoring. YARN uses a global *ResourceManager* (RM), per-worker-node *NodeManagers* (NMs), and per-application *ApplicationMasters* (AMs). The per-application AM negotiates resources (CPU, memory, disk, network) for running your application with the RM. The RM works with NMs to grant these resources, which are granted as *containers*. The AM is responsible for tracking the progress of the containers assigned to it by the RM. An application may require many containers depending on the nature of the application.
+PŘÍZe podporuje více programovacích modelů ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) jednu z nich) tím, že odpojuje správu prostředků od plánování a monitorování aplikací. K PŘÍZi se používá globální *Správce prostředků* (RM), *NodeManagers* (NMs) a per-Application *ApplicationMasters* (AMs). Jednotlivé aplikace vyjednávají prostředky (CPU, paměť, disk, síť) pro spuštění aplikace s nástrojem RM. RM spolupracuje s NMs pro udělení těchto prostředků, které se udělují jako *kontejnery*. Zodpovídá za sledování průběhu kontejnerů, které mu jsou přiřazeny pomocí služby RM. Aplikace může vyžadovat mnoho kontejnerů v závislosti na povaze aplikace.
 
-Each application may consist of multiple *application attempts*. If an application fails, it may be retried as a new attempt. Each attempt runs in a container. In a sense, a container provides the context for basic unit of work performed by a YARN application. All work that is done within the context of a container is performed on the single worker node on which the container was allocated. See [Apache Hadoop YARN Concepts](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html) for further reference.
+Každá aplikace se může skládat z několika *pokusů o aplikace*. Pokud dojde k chybě aplikace, může se pokusit o nový pokus. Každý pokus se spustí v kontejneru. Ve smyslu kontejner poskytuje kontext pro základní pracovní jednotku, kterou provádí aplikace PŘÍZe. Veškerá práce, která je provedena v rámci kontextu kontejneru, je prováděna v jednom pracovním uzlu, na kterém byl kontejner přidělen. Další informace najdete v tématu [Apache Hadoop koncepce příze](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html) .
 
-Application logs (and the associated container logs) are critical in debugging problematic Hadoop applications. YARN provides a nice framework for collecting, aggregating, and storing application logs with the [Log Aggregation](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) feature. The Log Aggregation feature makes accessing application logs more deterministic. It aggregates logs across all containers on a worker node and stores them as one aggregated log file per worker node. The log is stored on the default file system after an application finishes. Your application may use hundreds or thousands of containers, but logs for all containers run on a single worker node are always aggregated to a single file. So there's only 1 log per worker node used by your application. Log Aggregation is enabled by default on HDInsight clusters version 3.0 and above. Aggregated logs are located in default storage for the cluster. The following path is the HDFS path to the logs:
+Protokoly aplikací (a přidružené protokoly kontejnerů) jsou důležité při ladění problematických aplikací Hadoop. PŘÍZe nabízí dobrý rámec pro shromažďování, agregaci a ukládání protokolů aplikací pomocí funkce [agregace protokolů](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) . Funkce agregace protokolu usnadňuje přístup k protokolům aplikací. Agreguje protokoly mezi všemi kontejnery v pracovním uzlu a ukládá je jako jeden agregovaný soubor protokolu pro každý pracovní uzel. Protokol je po dokončení aplikace uložen ve výchozím systému souborů. Vaše aplikace může používat stovky nebo tisíce kontejnerů, ale protokoly pro všechny kontejnery spuštěné v jednom pracovním uzlu jsou vždycky agregované do jednoho souboru. Proto existuje pouze 1 protokol na jeden pracovní uzel používaný vaší aplikací. Agregace protokolů je ve výchozím nastavení povolená v clusterech HDInsight verze 3,0 a vyšší. Agregované protokoly jsou umístěny ve výchozím úložišti clusteru. Následující cesta je cesta HDFS k protokolům:
 
     /app-logs/<user>/logs/<applicationId>
 
-In the path, `user` is the name of the user who started the application. The `applicationId` is the unique identifier assigned to an application by the YARN RM.
+V cestě `user` je jméno uživatele, který aplikaci spustil. `applicationId` je jedinečný identifikátor přiřazený k aplikaci pomocí prostředků PŘÍZe RM.
 
-The aggregated logs aren't directly readable, as they're written in a [TFile](https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf), [binary format](https://issues.apache.org/jira/browse/HADOOP-3315) indexed by container. Use the YARN ResourceManager logs or CLI tools to view these logs as plain text for applications or containers of interest.
+Agregované protokoly nejsou přímo čitelné, protože jsou napsány v [TFile](https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf) [binárním formátu](https://issues.apache.org/jira/browse/HADOOP-3315) indexovaném kontejnerem. Použijte protokoly PŘÍZe ResourceManager nebo nástroje CLI k zobrazení těchto protokolů jako prostý text pro aplikace nebo kontejnery, které vás zajímají.
 
-## <a name="yarn-cli-tools"></a>YARN CLI tools
+## <a name="yarn-cli-tools"></a>Nástroje rozhraní příkazového řádku PŘÍZ
 
-To use the YARN CLI tools, you must first connect to the HDInsight cluster using SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+Chcete-li použít nástroje rozhraní příkazového řádku PŘÍZ, musíte se nejprve připojit ke clusteru HDInsight pomocí protokolu SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-You can view these logs as plain text by running one of the following commands:
+Tyto protokoly můžete zobrazit jako prostý text spuštěním jednoho z následujících příkazů:
 
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-Specify the &lt;applicationId>, &lt;user-who-started-the-application>, &lt;containerId>, and &lt;worker-node-address> information when running these commands.
+Zadejte &lt;applicationId > &lt;User-Started-the-Application >, &lt;containerId > a &lt;Work-Node-Address > informace při spuštění těchto příkazů.
 
-## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
+## <a name="yarn-resourcemanager-ui"></a>Uživatelské rozhraní Správce prostředků PŘÍZe
 
-The YARN ResourceManager UI runs on the cluster headnode. It's accessed through the Ambari web UI. Use the following steps to view the YARN logs:
+Uživatelské rozhraní Správce prostředků PŘÍZe běží na clusteru hlavnímu uzlu. Je k ní přistupované prostřednictvím webového uživatelského rozhraní Ambari. K zobrazení protokolů PŘÍZe použijte následující postup:
 
-1. In your web browser, navigate to https://CLUSTERNAME.azurehdinsight.net. Replace CLUSTERNAME with the name of your HDInsight cluster.
-2. From the list of services on the left, select **YARN**.
+1. Ve webovém prohlížeči přejděte na https://CLUSTERNAME.azurehdinsight.net. Položku název_clusteru nahraďte názvem vašeho clusteru HDInsight.
+2. V seznamu služeb vlevo vyberte možnost **příze**.
 
-    ![Apache Ambari Yarn service selected](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+    ![Je vybraná služba Apache Ambari nitě](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
-3. From the **Quick Links** dropdown, select one of the cluster head nodes and then select **ResourceManager Log**.
+3. V rozevíracím seznamu **Rychlé odkazy** vyberte jeden z hlavních uzlů clusteru a pak vyberte **protokol ResourceManager**.
 
-    ![Apache Ambari Yarn quick links](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
+    ![Rychlé odkazy na Ambari nitě Apache](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
-    You're presented with a list of links to YARN logs.
+    Zobrazí se seznam odkazů na záznamy PŘÍZe.

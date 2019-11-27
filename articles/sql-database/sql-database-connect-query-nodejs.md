@@ -55,7 +55,7 @@ K dokončení této ukázky se ujistěte, že máte následující požadavky:
 
 Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 2. Přejít na stránku **databáze SQL** nebo **spravované instance SQL** .
 

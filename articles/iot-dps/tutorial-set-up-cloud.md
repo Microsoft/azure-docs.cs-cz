@@ -1,6 +1,6 @@
 ---
-title: Set up cloud for Azure IoT Hub Device Provisioning Service in portal
-description: Tutorial - Set up the cloud resources for device provisioning in the [Azure portal](https://portal.azure.com) using the IoT Hub Device Provisioning Service
+title: Nastavení cloudu pro Azure IoT Hub Device Provisioning Service na portálu
+description: Kurz – nastavení cloudových prostředků pro zřizování zařízení v [Azure Portal](https://portal.azure.com) pomocí IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -15,13 +15,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228314"
 ---
-# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Tutorial: Configure cloud resources for device provisioning with the IoT Hub Device Provisioning Service
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Kurz: Konfigurace cloudových prostředků pro zřizování zařízení pomocí IoT Hub Device Provisioning Service
 
 Tento kurz ukazuje, jak nastavit cloud pro automatické zřizování zařízení pomocí služby IoT Hub Device Provisioning. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření služby IoT Hub Device Provisioning a získání rozsahu ID pomocí webu Azure Portal
-> * Vytvoření IoT Hubu
+> * Vytvoření centra IoT
 > * Propojení centra IoT se službou Device Provisioning
 > * Nastavení zásad přidělování ve službě Device Provisioning
 
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Vytvoření instance služby Device Provisioning a získání rozsahu ID
 
@@ -52,17 +52,17 @@ Pomocí těchto kroků vytvořte novou instanci služby Device Provisioning.
 
    ![Zadání základních informací o službě Device Provisioning na portálu](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Klikněte na **Vytvořit**. Za malou chvíli se vytvoří instance služby Device Provisioning a zobrazí se stránka **Přehled**.
+5. Klikněte na možnost **Vytvořit**. Za malou chvíli se vytvoří instance služby Device Provisioning a zobrazí se stránka **Přehled**.
 
 6. Ze stránky **Přehled** pro novou instanci služby zkopírujte pro pozdější použití hodnotu položky **Obor ID**. Tato hodnota slouží k identifikaci ID registrací a poskytuje záruku, že je ID registrace jedinečné.
 
 7. Pro pozdější použití zkopírujte i hodnotu položky **Koncový bod služby**. 
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Retrieve connection string for IoT hub
+### <a name="retrieve-connection-string-for-iot-hub"></a>Načtení připojovacího řetězce pro Centrum IoT
 
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
@@ -76,7 +76,7 @@ Dalším krokem je propojení služby Device Provisioning s centrem IoT, aby slu
 
 2. Na stránce služby Device Provisioning klikněte na **Propojená centra IoT**.
 
-3. Klikněte na tlačítko **Přidat**.
+3. Klikněte na **Přidat**.
 
 4. Na stránce **Přidat propojení na centrum IoT Hub** zadejte následují informace a klikněte na **Uložit**:
 
@@ -90,7 +90,7 @@ Dalším krokem je propojení služby Device Provisioning s centrem IoT, aby slu
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>Nastavení zásad přidělování ve službě Device Provisioning
 
-The allocation policy is an IoT Hub Device Provisioning Service setting that determines how devices are assigned to an IoT hub. Existují tři podporované zásady přidělování: 
+Zásada přidělování je IoT Hub Device Provisioning Service nastavení, které určuje, jak se zařízení přiřazují do služby IoT Hub. Existují tři podporované zásady přidělování: 
 
 1. **Nejnižší latence:** Zařízení se zřizují v centru IoT, které má se zařízením nejnižší latenci.
 
@@ -116,7 +116,7 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Vytvoření služby IoT Hub Device Provisioning a získání rozsahu ID pomocí webu Azure Portal
-> * Vytvoření IoT Hubu
+> * Vytvoření centra IoT
 > * Propojení centra IoT se službou Device Provisioning
 > * Nastavení zásad přidělování ve službě Device Provisioning
 

@@ -1,6 +1,6 @@
 ---
 title: Funkce šablon
-description: Describes the functions to use in an Azure Resource Manager template to retrieve values, work with strings and numerics, and retrieve deployment information.
+description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot, práci s řetězci a čísly a načtení informací o nasazení.
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: cf263bff72677778433d4ef2f3cee8135fe3ab06
@@ -10,11 +10,11 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224189"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager template functions
+# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager funkce šablon
 
-This article describes all the functions you can use in an Azure Resource Manager template. For information about using functions in your template, see [template syntax](template-expressions.md).
+Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manager. Informace o používání funkcí v šabloně najdete v tématu [syntaxe šablony](template-expressions.md).
 
-To create your own functions, see [User-defined functions](resource-group-authoring-templates.md#functions).
+Chcete-li vytvořit vlastní funkce, přečtěte si téma [uživatelsky definované funkce](resource-group-authoring-templates.md#functions).
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -35,25 +35,25 @@ To create your own functions, see [User-defined functions](resource-group-author
 <a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>Funkce pole a objektu
-Resource Manager provides several functions for working with arrays and objects.
+Správce prostředků poskytuje několik funkcí pro práci s poli a objekty.
 
-* [array](resource-group-template-functions-array.md#array)
-* [coalesce](resource-group-template-functions-array.md#coalesce)
-* [concat](resource-group-template-functions-array.md#concat)
-* [contains](resource-group-template-functions-array.md#contains)
+* [skupin](resource-group-template-functions-array.md#array)
+* [COALESCE](resource-group-template-functions-array.md#coalesce)
+* [spojuje](resource-group-template-functions-array.md#concat)
+* [zobrazí](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
-* [empty](resource-group-template-functions-array.md#empty)
-* [first](resource-group-template-functions-array.md#first)
-* [intersection](resource-group-template-functions-array.md#intersection)
-* [json](resource-group-template-functions-array.md#json)
-* [last](resource-group-template-functions-array.md#last)
-* [length](resource-group-template-functions-array.md#length)
-* [min](resource-group-template-functions-array.md#min)
-* [max](resource-group-template-functions-array.md#max)
-* [range](resource-group-template-functions-array.md#range)
-* [skip](resource-group-template-functions-array.md#skip)
-* [take](resource-group-template-functions-array.md#take)
-* [union](resource-group-template-functions-array.md#union)
+* [obsahovat](resource-group-template-functions-array.md#empty)
+* [první](resource-group-template-functions-array.md#first)
+* [průnik](resource-group-template-functions-array.md#intersection)
+* [JSON](resource-group-template-functions-array.md#json)
+* [posledního](resource-group-template-functions-array.md#last)
+* [časový](resource-group-template-functions-array.md#length)
+* [dlouhé](resource-group-template-functions-array.md#min)
+* [počet](resource-group-template-functions-array.md#max)
+* [oblasti](resource-group-template-functions-array.md#range)
+* [přímo](resource-group-template-functions-array.md#skip)
+* [nezbytná](resource-group-template-functions-array.md#take)
+* [sjednocovací](resource-group-template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -62,25 +62,25 @@ Resource Manager provides several functions for working with arrays and objects.
 <a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>Funkce porovnání
-Resource Manager provides several functions for making comparisons in your templates.
+Správce prostředků poskytuje několik funkcí pro porovnávání v šablonách.
 
-* [equals](resource-group-template-functions-comparison.md#equals)
-* [less](resource-group-template-functions-comparison.md#less)
+* [rovná](resource-group-template-functions-comparison.md#equals)
+* [tolik](resource-group-template-functions-comparison.md#less)
 * [lessOrEquals](resource-group-template-functions-comparison.md#lessorequals)
-* [greater](resource-group-template-functions-comparison.md#greater)
+* [zvýšen](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
 
-## <a name="deployment-value-functions"></a>Deployment value functions
-Resource Manager provides the following functions for getting values from sections of the template and values related to the deployment:
+## <a name="deployment-value-functions"></a>Funkce hodnoty nasazení
+Správce prostředků poskytuje následující funkce pro získání hodnot z částí šablony a hodnot souvisejících s nasazením:
 
-* [deployment](resource-group-template-functions-deployment.md#deployment)
-* [environment](resource-group-template-functions-deployment.md#environment)
+* [prostředí](resource-group-template-functions-deployment.md#deployment)
+* [hlediska](resource-group-template-functions-deployment.md#environment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
-* [variables](resource-group-template-functions-deployment.md#variables)
+* [proměnné](resource-group-template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -89,13 +89,13 @@ Resource Manager provides the following functions for getting values from sectio
 <a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>Logické funkce
-Resource Manager provides the following functions for working with logical conditions:
+Správce prostředků poskytuje následující funkce pro práci s logickými podmínkami:
 
-* [and](resource-group-template-functions-logical.md#and)
-* [bool](resource-group-template-functions-logical.md#bool)
-* [if](resource-group-template-functions-logical.md#if)
-* [not](resource-group-template-functions-logical.md#not)
-* [or](resource-group-template-functions-logical.md#or)
+* [ani](resource-group-template-functions-logical.md#and)
+* [logick](resource-group-template-functions-logical.md#bool)
+* [Přestože](resource-group-template-functions-logical.md#if)
+* [mění](resource-group-template-functions-logical.md#not)
+* [ani](resource-group-template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
 <a id="copyindex" aria-hidden="true" />
@@ -109,18 +109,18 @@ Resource Manager provides the following functions for working with logical condi
 <a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>Numerické funkce
-Resource Manager provides the following functions for working with integers:
+Správce prostředků poskytuje následující funkce pro práci s celými čísly:
 
-* [add](resource-group-template-functions-numeric.md#add)
+* [přidávání](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
-* [div](resource-group-template-functions-numeric.md#div)
-* [float](resource-group-template-functions-numeric.md#float)
-* [int](resource-group-template-functions-numeric.md#int)
-* [min](resource-group-template-functions-numeric.md#min)
-* [max](resource-group-template-functions-numeric.md#max)
-* [mod](resource-group-template-functions-numeric.md#mod)
+* [značek](resource-group-template-functions-numeric.md#div)
+* [Plovák](resource-group-template-functions-numeric.md#float)
+* [hmot](resource-group-template-functions-numeric.md#int)
+* [dlouhé](resource-group-template-functions-numeric.md#min)
+* [počet](resource-group-template-functions-numeric.md#max)
+* [střední](resource-group-template-functions-numeric.md#mod)
 * [mul](resource-group-template-functions-numeric.md#mul)
-* [sub](resource-group-template-functions-numeric.md#sub)
+* [jednotk](resource-group-template-functions-numeric.md#sub)
 
 <a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />
@@ -134,17 +134,17 @@ Resource Manager provides the following functions for working with integers:
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Funkce prostředků
-Resource Manager provides the following functions for getting resource values:
+Resource Manager poskytuje následující funkce pro načtení prostředků hodnot:
 
 * [extensionResourceId](resource-group-template-functions-resource.md#extensionresourceid)
 * [listAccountSas](resource-group-template-functions-resource.md#list)
-* [listKeys](resource-group-template-functions-resource.md#listkeys)
+* [Klíče listkey](resource-group-template-functions-resource.md#listkeys)
 * [listSecrets](resource-group-template-functions-resource.md#list)
-* [list*](resource-group-template-functions-resource.md#list)
-* [providers](resource-group-template-functions-resource.md#providers)
-* [reference](resource-group-template-functions-resource.md#reference)
+* [seznamu](resource-group-template-functions-resource.md#list)
+* [dodavateli](resource-group-template-functions-resource.md#providers)
+* [odkaz](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
-* [resourceId](resource-group-template-functions-resource.md#resourceid)
+* [Prostředku](resource-group-template-functions-resource.md#resourceid)
 * [předplatné](resource-group-template-functions-resource.md#subscription)
 * [subscriptionResourceId](resource-group-template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](resource-group-template-functions-resource.md#tenantresourceid)
@@ -181,45 +181,45 @@ Resource Manager provides the following functions for getting resource values:
 <a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>Funkce řetězců
-Resource Manager provides the following functions for working with strings:
+Správce prostředků poskytuje následující funkce pro práci s řetězci:
 
-* [base64](resource-group-template-functions-string.md#base64)
+* [Base](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
 * [base64ToString](resource-group-template-functions-string.md#base64tostring)
-* [concat](resource-group-template-functions-string.md#concat)
-* [contains](resource-group-template-functions-string.md#contains)
+* [spojuje](resource-group-template-functions-string.md#concat)
+* [zobrazí](resource-group-template-functions-string.md#contains)
 * [dataUri](resource-group-template-functions-string.md#datauri)
 * [dataUriToString](resource-group-template-functions-string.md#datauritostring)
-* [empty](resource-group-template-functions-string.md#empty)
+* [obsahovat](resource-group-template-functions-string.md#empty)
 * [endsWith](resource-group-template-functions-string.md#endswith)
-* [first](resource-group-template-functions-string.md#first)
-* [format](resource-group-template-functions-string.md#format)
-* [guid](resource-group-template-functions-string.md#guid)
+* [první](resource-group-template-functions-string.md#first)
+* [formátovat](resource-group-template-functions-string.md#format)
+* [hlavních](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
-* [last](resource-group-template-functions-string.md#last)
+* [posledního](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
-* [length](resource-group-template-functions-string.md#length)
+* [časový](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
-* [replace](resource-group-template-functions-string.md#replace)
-* [skip](resource-group-template-functions-string.md#skip)
+* [náhrady](resource-group-template-functions-string.md#replace)
+* [přímo](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
-* [string](resource-group-template-functions-string.md#string)
-* [substring](resource-group-template-functions-string.md#substring)
-* [take](resource-group-template-functions-string.md#take)
+* [řetezce](resource-group-template-functions-string.md#string)
+* [podřetězec](resource-group-template-functions-string.md#substring)
+* [nezbytná](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
 * [toUpper](resource-group-template-functions-string.md#toupper)
-* [trim](resource-group-template-functions-string.md#trim)
+* [sklon](resource-group-template-functions-string.md#trim)
 * [uniqueString](resource-group-template-functions-string.md#uniquestring)
-* [uri](resource-group-template-functions-string.md#uri)
+* [identifikátor URI](resource-group-template-functions-string.md#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
 * [utcNow](resource-group-template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Další kroky
 
-* For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)
-* To merge multiple templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)
-* To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)
-* To see how to deploy the template you've created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)
+* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md) .
+* Chcete-li sloučit více šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md)
+* Informace o iteraci zadaného počtu výskytů při vytváření typu prostředku najdete v tématu [vytvoření více instancí prostředků v Azure Resource Manager](resource-group-create-multiple.md)
+* Pokud chcete zjistit, jak nasadit šablonu, kterou jste vytvořili, přečtěte si téma [nasazení aplikace pomocí šablony Azure Resource Manager](resource-group-template-deploy.md) .

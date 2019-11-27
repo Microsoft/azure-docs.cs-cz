@@ -1,6 +1,6 @@
 ---
-title: Template functions - deployment
-description: Describes the functions to use in an Azure Resource Manager template to retrieve deployment information.
+title: Funkce šablon – nasazení
+description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení informací o nasazení.
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: a255cea128241465788f21013eb0522a29f5bd9e
@@ -10,26 +10,26 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230232"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Deployment functions for Azure Resource Manager templates 
+# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkce nasazení pro šablony Azure Resource Manager 
 
-Resource Manager provides the following functions for getting values from sections of the template and values related to the deployment:
+Správce prostředků poskytuje následující funkce pro získání hodnot z částí šablony a hodnot souvisejících s nasazením:
 
-* [deployment](#deployment)
-* [environment](#environment)
+* [prostředí](#deployment)
+* [hlediska](#environment)
 * [parameters](#parameters)
-* [variables](#variables)
+* [proměnné](#variables)
 
-To get values from resources, resource groups, or subscriptions, see [Resource functions](resource-group-template-functions-resource.md).
+Pokud chcete získat hodnoty z prostředků, skupin prostředků nebo předplatných, přečtěte si téma [funkce prostředků](resource-group-template-functions-resource.md).
 
 ## <a name="deployment"></a>nasazení
 
 `deployment()`
 
-Returns information about the current deployment operation.
+Vrátí informace o aktuální operaci nasazení.
 
-### <a name="return-value"></a>Return value
+### <a name="return-value"></a>Návratová hodnota
 
-This function returns the object that is passed during deployment. The properties in the returned object differ based on whether the deployment object is passed as a link or as an in-line object. When the deployment object is passed in-line, such as when using the **-TemplateFile** parameter in Azure PowerShell to point to a local file, the returned object has the following format:
+Tato funkce vrací objekt, který je předán během nasazování. Vlastnosti ve vráceném objektu se liší v závislosti na tom, zda je objekt nasazení předán jako odkaz nebo jako vložený objekt. Když je objekt nasazení předán do řádku, například při použití parametru **-TemplateFile** v Azure PowerShell k odkazování na místní soubor, vrácený objekt má následující formát:
 
 ```json
 {
@@ -51,7 +51,7 @@ This function returns the object that is passed during deployment. The propertie
 }
 ```
 
-When the object is passed as a link, such as when using the **-TemplateUri** parameter to point to a remote object, the object is returned in the following format: 
+Pokud je objekt předán jako odkaz, například při použití parametru **-TemplateUri** k nasměrování na vzdálený objekt, je objekt vrácen v následujícím formátu: 
 
 ```json
 {
@@ -75,11 +75,11 @@ When the object is passed as a link, such as when using the **-TemplateUri** par
 }
 ```
 
-When you [deploy to an Azure subscription](deploy-to-subscription.md), instead of a resource group, the return object includes a `location` property. The location property is included when deploying either a local template or an external template.
+Když [nasadíte do předplatného Azure](deploy-to-subscription.md)místo skupiny prostředků, návratový objekt zahrnuje vlastnost `location`. Vlastnost Location je obsažena při nasazení místní šablony nebo externí šablony.
 
 ### <a name="remarks"></a>Poznámky
 
-You can use deployment() to link to another template based on the URI of the parent template.
+Nasazení () můžete použít k propojení na jinou šablonu na základě identifikátoru URI nadřazené šablony.
 
 ```json
 "variables": {  
@@ -87,11 +87,11 @@ You can use deployment() to link to another template based on the URI of the par
 }
 ```  
 
-If you redeploy a template from the deployment history in the portal, the template is deployed as a local file. The `templateLink` property isn't returned in the deployment function. If your template relies on `templateLink` to construct a link to another template, don't use the portal to redeploy. Instead, use the commands you used to originally deploy the template.
+Pokud šablonu znovu nasadíte z historie nasazení na portálu, šablona bude nasazena jako místní soubor. Vlastnost `templateLink` není ve funkci nasazení vrácena. Pokud vaše šablona spoléhá na `templateLink` vytvoření odkazu na jinou šablonu, nepoužívejte portál k opětovnému nasazení. Místo toho použijte příkazy, které jste použili k původnímu nasazení šablony.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) returns the deployment object:
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) vrátí objekt nasazení:
 
 ```json
 {
@@ -107,7 +107,7 @@ The following [example template](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-The preceding example returns the following object:
+Předchozí příklad vrátí následující objekt:
 
 ```json
 {
@@ -131,17 +131,17 @@ The preceding example returns the following object:
 }
 ```
 
-For a subscription-level template that uses the deployment function, see [subscription deployment function](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). It's deployed with either `az deployment create` or `New-AzDeployment` commands.
+Šablonu na úrovni předplatného, která používá funkci nasazení, najdete v tématu [funkce nasazení předplatného](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Je nasazena buď pomocí příkazů `az deployment create`, nebo `New-AzDeployment`.
 
 ## <a name="environment"></a>environment
 
 `environment()`
 
-Returns information about the Azure environment used for deployment.
+Vrátí informace o prostředí Azure používaném pro nasazení.
 
-### <a name="return-value"></a>Return value
+### <a name="return-value"></a>Návratová hodnota
 
-This function returns properties for the current Azure environment.
+Tato funkce vrátí vlastnosti aktuálního prostředí Azure.
 
 ```json
 {
@@ -177,9 +177,9 @@ This function returns properties for the current Azure environment.
 }
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-The following example template returns the environment object.
+Následující příklad šablony vrátí objekt prostředí.
 
 ```json
 {
@@ -195,7 +195,7 @@ The following example template returns the environment object.
 }
 ```
 
-The preceding example returns the following object when deployed to global Azure:
+Předchozí příklad vrátí následující objekt při nasazení na globální Azure:
 
 ```json
 {
@@ -235,21 +235,21 @@ The preceding example returns the following object when deployed to global Azure
 
 `parameters(parameterName)`
 
-Returns a parameter value. The specified parameter name must be defined in the parameters section of the template.
+Vrátí hodnotu parametru. Zadaný název parametru musí být definován v oddílu Parameters této šablony.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |string |The name of the parameter to return. |
+| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
 
-### <a name="return-value"></a>Return value
+### <a name="return-value"></a>Návratová hodnota
 
-The value of the specified parameter.
+Hodnota zadaného parametru.
 
 ### <a name="remarks"></a>Poznámky
 
-Typically, you use parameters to set resource values. The following example sets the name of web site to the parameter value passed in during deployment.
+Obvykle použijete parametry pro nastavení hodnot prostředků. Následující příklad nastaví název webu na hodnotu parametru předaného během nasazení.
 
 ```json
 "parameters": { 
@@ -267,9 +267,9 @@ Typically, you use parameters to set resource values. The following example sets
 ]
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) shows a simplified use of the parameters function.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) ukazuje zjednodušené použití funkce Parameters.
 
 ```json
 {
@@ -324,37 +324,37 @@ The following [example template](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-The output from the preceding example with the default values is:
+Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringOutput | Řetězec | option 1 |
-| intOutput | Int | 1\. místo |
-| objectOutput | Objekt | {"one": "a", "two": "b"} |
+| stringOutput | Řetězec | Možnost 1 |
+| intOutput | Int | 1 |
+| objectOutput | Objekt | {"One": "a", "Two": "b"} |
 | arrayOutput | Pole | [1, 2, 3] |
-| crossOutput | Řetězec | option 1 |
+| crossOutput | Řetězec | Možnost 1 |
 
-For more information about using parameters, see [Parameters in Azure Resource Manager template](template-parameters.md).
+Další informace o použití parametrů naleznete v tématu [Parameters in Azure Resource Manager Template](template-parameters.md).
 
-## <a name="variables"></a>variables
+## <a name="variables"></a>proměnné
 
 `variables(variableName)`
 
-Returns the value of variable. The specified variable name must be defined in the variables section of the template.
+Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v oddílu Variables šablony.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| variableName |Ano |Řetězec |The name of the variable to return. |
+| variableName |Ano |Řetězec |Název proměnné, která se má vrátit. |
 
-### <a name="return-value"></a>Return value
+### <a name="return-value"></a>Návratová hodnota
 
-The value of the specified variable.
+Hodnota zadané proměnné.
 
 ### <a name="remarks"></a>Poznámky
 
-Typically, you use variables to simplify your template by constructing complex values only once. The following example constructs a unique name for a storage account.
+Obvykle používáte proměnné pro zjednodušení šablony vytvořením složitých hodnot pouze jednou. Následující příklad vytvoří jedinečný název pro účet úložiště.
 
 ```json
 "variables": {
@@ -376,9 +376,9 @@ Typically, you use variables to simplify your template by constructing complex v
 ],
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) returns different variable values.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) vrací různé hodnoty proměnných.
 
 ```json
 {
@@ -416,20 +416,20 @@ The following [example template](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-The output from the preceding example with the default values is:
+Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| exampleOutput1 | Řetězec | myVariable |
+| exampleOutput1 | Řetězec | MojePromenna |
 | exampleOutput2 | Pole | [1, 2, 3, 4] |
-| exampleOutput3 | Řetězec | myVariable |
-| exampleOutput4 |  Objekt | {"property1": "value1", "property2": "value2"} |
+| exampleOutput3 | Řetězec | MojePromenna |
+| exampleOutput4 |  Objekt | {"vlastnost1": "hodnota1"; "Vlastnost2": "hodnota2"} |
 
-For more information about using variables, see [Variables in Azure Resource Manager template](template-variables.md).
+Další informace o použití proměnných naleznete v tématu [proměnné v šabloně Azure Resource Manager](template-variables.md).
 
 ## <a name="next-steps"></a>Další kroky
-* For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
-* To merge several templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md).
-* To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).
-* To see how to deploy the template you've created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md).
+* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md).
+* Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
+* Informace o iteraci zadaného počtu výskytů při vytváření typu prostředku najdete v tématu [vytvoření více instancí prostředků v Azure Resource Manager](resource-group-create-multiple.md).
+* Pokud chcete zjistit, jak nasadit šablonu, kterou jste vytvořili, přečtěte si téma [nasazení aplikace pomocí šablony Azure Resource Manager](resource-group-template-deploy.md).
 

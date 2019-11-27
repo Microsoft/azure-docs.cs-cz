@@ -1,7 +1,7 @@
 ---
-title: Deployment and consumption
+title: Nasazení a spotřeba
 titleSuffix: ML Studio (classic) - Azure
-description: You can use Azure Machine Learning Studio (classic) to deploy machine learning workflows and models as web services. These web services can then be used to call the machine learning models from applications over the internet to do predictions in real time or in batch mode.
+description: K nasazení pracovních postupů a modelů machine learningu jako webových služeb můžete použít Azure Machine Learning Studio (Classic). Tyto webové služby můžete pak použita pro volání modely strojového učení z aplikací přes internet vytvářející předpovědi v reálném čase nebo v dávkovém režimu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -17,54 +17,54 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228241"
 ---
-# <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (classic) Web Services: Deployment and consumption
+# <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Webové služby Azure Machine Learning Studio (Classic): nasazení a spotřeba
 
-You can use Azure Machine Learning Studio (classic) to deploy machine learning workflows and models as web services. These web services can then be used to call the machine learning models from applications over the Internet to do predictions in real time or in batch mode. Because the web services are RESTful, you can call them from various programming languages and platforms, such as .NET and Java, and from applications, such as Excel.
+K nasazení pracovních postupů a modelů machine learningu jako webových služeb můžete použít Azure Machine Learning Studio (Classic). Tyto webové služby můžete pak použita pro volání modely strojového učení z aplikací přes Internet vytvářející předpovědi v reálném čase nebo v dávkovém režimu. Protože jsou webové služby RESTful, můžete je volat z různé programovací jazyky a platformy, jako je .NET nebo Javě a z aplikace, jako je Excel.
 
-The next sections provide links to walkthroughs, code, and documentation to help get you started.
+Následující části obsahují odkazy na návody, kód a dokumentaci, která vám pomůžou začít.
 
 ## <a name="deploy-a-web-service"></a>Nasazení webové služby
 
-### <a name="with-azure-machine-learning-studio-classic"></a>With Azure Machine Learning Studio (classic)
+### <a name="with-azure-machine-learning-studio-classic"></a>S Azure Machine Learning Studio (Classic)
 
-The Studio (classic) portal and the Microsoft Azure Machine Learning Web Services portal help you deploy and manage a web service without writing code.
+Portál studia (Classic) a Microsoft Azure Machine Learning portál webové služby vám pomůžou nasadit a spravovat webovou službu bez psaní kódu.
 
-The following links provide general Information about how to deploy a new web service:
+Následující odkazy obsahují obecné informace o tom, jak nasadit nové webové služby:
 
-* For an overview about how to deploy a new web service that's based on Azure Resource Manager, see [Deploy a new web service](deploy-a-machine-learning-web-service.md).
-* For a walkthrough about how to deploy a web service, see [Deploy an Azure Machine Learning web service](deploy-a-machine-learning-web-service.md).
-* For a full walkthrough about how to create and deploy a web service, start with [Tutorial 1: Predict credit risk](tutorial-part1-credit-risk.md).
-* For specific examples that deploy a web service, see:
+* Přehled o tom, jak nasadit novou webovou službu založenou na Azure Resource Manager, najdete v tématu [nasazení nové webové služby](deploy-a-machine-learning-web-service.md).
+* Návod, jak nasadit webovou službu, najdete v tématu [nasazení webové služby Azure Machine Learning](deploy-a-machine-learning-web-service.md).
+* Úplný návod, jak vytvořit a nasadit webovou službu, najdete v tématu [kurz 1: předpověď úvěrového rizika](tutorial-part1-credit-risk.md).
+* Konkrétní příklady, které nasazení webové služby naleznete v tématu:
 
-  * [Tutorial 3: Deploy credit risk model](tutorial-part3-credit-risk-deploy.md)
-  * [How to deploy a web service to multiple regions](deploy-a-machine-learning-web-service.md#multi-region)
+  * [Kurz 3: nasazení modelu úvěrového rizika](tutorial-part3-credit-risk-deploy.md)
+  * [Nasazení webové služby do více oblastí](deploy-a-machine-learning-web-service.md#multi-region)
 
-### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>With web services resource provider APIs (Azure Resource Manager APIs)
+### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>U poskytovatele prostředků služby webového rozhraní API (rozhraní API Azure Resource Manager)
 
-The classic version of Azure Machine Learning Studio resource provider for web services enables deployment and management of web services by using REST API calls. For more information, see the [Machine Learning Web Service (REST)](/rest/api/machinelearning/index) reference.
+Klasická verze Azure Machine Learning Studio poskytovatel prostředků pro webové služby umožňuje nasazení a správu webových služeb pomocí volání REST API. Další informace najdete v referenčních informacích o [službě Machine Learning Web Service (REST)](/rest/api/machinelearning/index) .
 
 <!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
 
-### <a name="with-powershell-cmdlets"></a>With PowerShell cmdlets
+### <a name="with-powershell-cmdlets"></a>Pomocí rutin prostředí PowerShell
 
-The classic version of Azure Machine Learning Studio resource provider for web services enables deployment and management of web services by using PowerShell cmdlets.
+Klasická verze poskytovatele prostředků Azure Machine Learning Studio pro webové služby umožňuje nasazení a správu webových služeb pomocí rutin prostředí PowerShell.
 
-To use the cmdlets, you must first sign in to your Azure account from within the PowerShell environment by using the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet. If you are unfamiliar with how to call PowerShell commands that are based on Resource Manager, see [Using Azure PowerShell with Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
+Pokud chcete rutiny použít, musíte se nejdřív přihlásit k účtu Azure z prostředí PowerShell pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Pokud nejste obeznámeni s tím, jak volat příkazy prostředí PowerShell založené na Správce prostředků, přečtěte si téma [použití Azure PowerShell s Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
 
-To export your predictive experiment, use [this sample code](https://github.com/ritwik20/AzureML-WebServices). After you create the .exe file from the code, you can type:
+K exportu prediktivní experimentu použijte [Tento vzorový kód](https://github.com/ritwik20/AzureML-WebServices). Po vytvoření souboru .exe z kódu, můžete zadat:
 
     C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
 
-Running the application creates a web service JSON template. To use the template to deploy a web service, you must add the following information:
+Spuštění aplikace vytvoří šablonu JSON webové služby. Použití šablony k nasazení webové služby, je nutné přidat následující informace:
 
-* Storage account name and key
+* Název účtu úložiště a klíč
 
-    You can get the storage account name and key from the [Azure portal](https://portal.azure.com/).
-* Commitment plan ID
+    Název a klíč účtu úložiště můžete získat z [Azure Portal](https://portal.azure.com/).
+* ID plánu závazku
 
-    You can get the plan ID from the [Azure Machine Learning Web Services](https://services.azureml.net) portal by signing in and clicking a plan name.
+    ID plánu můžete získat z portálu [Azure Machine Learning Web Services](https://services.azureml.net) tak, že se přihlásíte a kliknete na název plánu.
 
-Add them to the JSON template as children of the *Properties* node at the same level as the *MachineLearningWorkspace* node.
+Přidejte je do šablony JSON jako podřízené položky uzlu *vlastnosti* na stejné úrovni jako uzel *MachineLearningWorkspace* .
 
 Tady je příklad:
 
@@ -76,28 +76,28 @@ Tady je příklad:
         "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
     }
 
-See the following articles and sample code for additional details:
+Naleznete v následujících článcích a ukázkový kód pro další podrobnosti:
 
-* [Azure Machine Learning Studio (classic) Cmdlets](https://docs.microsoft.com/powershell/module/az.machinelearning) reference on MSDN
-* Sample [walkthrough](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) on GitHub
+* Reference k [rutinám Azure Machine Learning Studio (Classic)](https://docs.microsoft.com/powershell/module/az.machinelearning) na webu MSDN
+* Ukázkový [návod](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) na GitHubu
 
-## <a name="consume-the-web-services"></a>Consume the web services
+## <a name="consume-the-web-services"></a>Využívání webových služeb
 
-### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>From the Azure Machine Learning Web Services UI (Testing)
+### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>Z Azure Machine Learning Web Services uživatelského rozhraní (testování)
 
-You can test your web service from the Azure Machine Learning Web Services portal. This includes testing the Request-Response service (RRS) and Batch Execution service (BES) interfaces.
+Můžete testovat webové služby z portálu Azure Machine Learning Web Services. Jedná se o testování služba Request-Response (RRS) a služba Batch Execution (BES) rozhraní.
 
 * [Nasazení nové webové služby](deploy-a-machine-learning-web-service.md)
-* [Deploy an Azure Machine Learning web service](deploy-a-machine-learning-web-service.md)
-* [Tutorial 3: Deploy credit risk model](tutorial-part3-credit-risk-deploy.md)
+* [Nasazení webové služby Azure Machine Learning](deploy-a-machine-learning-web-service.md)
+* [Kurz 3: nasazení modelu úvěrového rizika](tutorial-part3-credit-risk-deploy.md)
 
-### <a name="from-excel"></a>From Excel
+### <a name="from-excel"></a>Z aplikace Excel
 
-You can download an Excel template that consumes the web service:
+Si můžete stáhnout šablony aplikace Excel, která využívá webovou službu:
 
-* [Consuming an Azure Machine Learning web service from Excel](consuming-from-excel.md)
-* [Excel add-in for Azure Machine Learning Web Services](excel-add-in-for-web-services.md)
+* [Využívání webové služby Azure Machine Learning z Excelu](consuming-from-excel.md)
+* [Doplněk aplikace Excel pro Azure Machine Learning webové služby](excel-add-in-for-web-services.md)
 
-### <a name="from-a-rest-based-client"></a>From a REST-based client
+### <a name="from-a-rest-based-client"></a>Z klienta založené na REST
 
-Azure Machine Learning Web Services are RESTful APIs. You can consume these APIs from various platforms, such as .NET, Python, R, Java, etc. The **Consume** page for your web service on the [Microsoft Azure Machine Learning Web Services portal](https://services.azureml.net) has sample code that can help you get started. Další informace najdete v tématu o [využívání webové služby Azure Machine Learning](consume-web-services.md).
+Azure Machine Learning Web Services jsou rozhraní RESTful API. Tato rozhraní API můžete využívat na různých platformách, jako je .NET, Python, R, Java atd. Stránka **využívání** webové služby na [portálu Microsoft Azure Machine Learning Web Services](https://services.azureml.net) obsahuje vzorový kód, který vám může pomáhat začít. Další informace najdete v tématu o [využívání webové služby Azure Machine Learning](consume-web-services.md).

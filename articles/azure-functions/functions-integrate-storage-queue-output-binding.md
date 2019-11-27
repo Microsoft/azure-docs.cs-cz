@@ -18,9 +18,9 @@ Vstupní a výstupní vazby ve službě Azure Functions poskytují deklarativní
 
 ![Zpráva fronty zobrazená v Průzkumníku služby Storage](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba:
+K dokončení tohoto rychlého startu je potřeba:
 
 * Postupujte podle pokynů v části [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md) a neprovádějte krok **Vyčištění prostředků**. Tento rychlý start vytvoří aplikaci funkcí a funkci, kterou tady použijete.
 

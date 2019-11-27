@@ -1,6 +1,6 @@
 ---
-title: Manage DNS records in Azure DNS using Azure PowerShell | Microsoft Docs
-description: Managing DNS record sets and records on Azure DNS when hosting your domain on Azure DNS. All PowerShell commands for operations on record sets and records.
+title: Správa záznamů DNS v Azure DNS pomocí Azure PowerShell | Microsoft Docs
+description: Správa sad záznamů DNS a záznamů na Azure DNS při hostování vaší domény v Azure DNS. Všechny příkazy PowerShellu pro operace se sadami záznamů a záznamy.
 services: dns
 documentationcenter: na
 author: asudbring
@@ -21,7 +21,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74211689"
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Manage DNS records and recordsets in Azure DNS using Azure PowerShell
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Správa záznamů a sad záznamů DNS v Azure DNS pomocí Azure PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
@@ -29,13 +29,13 @@ ms.locfileid: "74211689"
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-This article shows you how to manage DNS records for your DNS zone by using Azure PowerShell. DNS records can also be managed by using the cross-platform [Azure CLI](dns-operations-recordsets-cli.md) or the [Azure portal](dns-operations-recordsets-portal.md).
+V tomto článku se dozvíte, jak spravovat záznamy DNS pro zónu DNS pomocí Azure PowerShell. Záznamy DNS se dají spravovat taky pomocí [Azure CLI](dns-operations-recordsets-cli.md) pro různé platformy nebo [Azure Portal](dns-operations-recordsets-portal.md).
 
-The examples in this article assume you have already [installed Azure PowerShell, signed in, and created a DNS zone](dns-operations-dnszones.md).
+V příkladech v tomto článku se předpokládá, že jste už [nainstalovali Azure PowerShell, přihlášeni a vytvořili ZÓNU DNS](dns-operations-dnszones.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 Před vytvářením záznamů DNS v DNS Azure je nejprve nutné pochopit, jak DNS Azure organizuje záznamy DNS v sadách záznamů DNS.
 
@@ -44,29 +44,29 @@ Před vytvářením záznamů DNS v DNS Azure je nejprve nutné pochopit, jak DN
 Další informace o záznamech DNS v DNS Azure najdete v tématu [Zóny a záznamy DNS](dns-zones-records.md).
 
 
-## <a name="create-a-new-dns-record"></a>Create a new DNS record
+## <a name="create-a-new-dns-record"></a>Vytvořit nový záznam DNS
 
-If your new record has the same name and type as an existing record, you need to [add it to the existing record set](#add-a-record-to-an-existing-record-set). If your new record has a different name and type to all existing records, you need to create a new record set. 
+Pokud má nový záznam stejný název a typ jako existující záznam, budete [ho muset přidat do existující sady záznamů](#add-a-record-to-an-existing-record-set). Pokud má nový záznam jiný název a typ pro všechny existující záznamy, je nutné vytvořit novou sadu záznamů. 
 
-### <a name="create-a-records-in-a-new-record-set"></a>Create 'A' records in a new record set
+### <a name="create-a-records-in-a-new-record-set"></a>Vytvoření záznamů A v nové sadě záznamů
 
-Sady záznamů vytvoříte pomocí rutiny `New-AzDnsRecordSet`. When creating a record set, you need to specify the record set name, the zone, the time to live (TTL), the record type, and the records to be created.
+Sady záznamů vytvoříte pomocí rutiny `New-AzDnsRecordSet`. Při vytváření sady záznamů je nutné zadat název sady záznamů, zónu, hodnotu TTL (Time to Live), typ záznamu a záznamy, které mají být vytvořeny.
 
-Parametry pro přidání záznamů do sady záznamů se liší podle typu sady záznamů. For example, when using a record set of type 'A', you need to specify the IP address using the parameter `-IPv4Address`. Other parameters are used for other record types. See Additional record type examples for details.
+Parametry pro přidání záznamů do sady záznamů se liší podle typu sady záznamů. Například při použití sady záznamů typu A je třeba zadat IP adresu pomocí parametru `-IPv4Address`. Další parametry jsou používány pro jiné typy záznamů. Podrobnosti najdete v tématu Další příklady typů záznamů.
 
-The following example creates a record set with the relative name 'www' in the DNS Zone 'contoso.com'. The fully-qualified name of the record set is 'www.contoso.com'. The record type is 'A', and the TTL is 3600 seconds. The record set contains a single record, with IP address '1.2.3.4'.
+V následujícím příkladu je vytvořena sada záznamů s relativním názvem "www" v zóně DNS "contoso.com". Plně kvalifikovaný název sady záznamů je "www.contoso.com". Typ záznamu je a, hodnota TTL je 3600 sekund. Sada záznamů obsahuje jeden záznam s IP adresou "1.2.3.4".
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-To create a record set at the 'apex' of a zone (in this case, 'contoso.com'), use the record set name '\@' (excluding quotation marks):
+Pokud chcete vytvořit sadu záznamů na vrcholu zóny (v tomto případě ' contoso.com '), použijte název sady záznamů '\@' (kromě uvozovek):
 
 ```powershell
 New-AzDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-If you need to create a record set containing more than one record, first create a local array and add the records, then pass the array to `New-AzDnsRecordSet` as follows:
+Pokud potřebujete vytvořit sadu záznamů s více než jedním záznamem, nejprve vytvořte místní pole a přidejte záznamy a pak předejte pole `New-AzDnsRecordSet` následujícím způsobem:
 
 ```powershell
 $aRecords = @()
@@ -75,25 +75,25 @@ $aRecords += New-AzDnsRecordConfig -IPv4Address "2.3.4.5"
 New-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName MyResourceGroup -Ttl 3600 -RecordType A -DnsRecords $aRecords
 ```
 
-[Record set metadata](dns-zones-records.md#tags-and-metadata) can be used to associate application-specific data with each record set, as key-value pairs. The following example shows how to create a record set with two metadata entries, 'dept=finance' and 'environment=production'.
+[Metadata sady záznamů](dns-zones-records.md#tags-and-metadata) lze použít pro přiřazení dat specifických pro aplikaci ke každé sadě záznamů, jako páry klíč-hodnota. Následující příklad ukazuje, jak vytvořit sadu záznamů se dvěma položkami metadat, "Odděl = finance" a "Environment = produkce".
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") -Metadata @{ dept="finance"; environment="production" } 
 ```
 
-Azure DNS also supports 'empty' record sets, which can act as a placeholder to reserve a DNS name before creating DNS records. Empty record sets are visible in the Azure DNS control plane, but do appear on the Azure DNS name servers. The following example creates an empty record set:
+Azure DNS podporuje taky prázdné sady záznamů, které můžou fungovat jako zástupný symbol pro rezervaci názvu DNS před vytvořením záznamů DNS. Prázdné sady záznamů jsou viditelné v Azure DNS rovině ovládacího prvku, ale zobrazí se na Azure DNS názvových serverech. Následující příklad vytvoří prázdnou sadu záznamů:
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords @()
 ```
 
-## <a name="create-records-of-other-types"></a>Create records of other types
+## <a name="create-records-of-other-types"></a>Vytváření záznamů dalších typů
 
-Having seen in detail how to create 'A' records, the following examples show how to create records of other record types supported by Azure DNS.
+V následujících příkladech se dozvíte, jak vytvořit záznamy A, a ukazuje, jak vytvořit záznamy jiných typů záznamů podporovaných nástrojem Azure DNS.
 
-In each case, we show how to create a record set containing a single record. The earlier examples for 'A' records can be adapted to create record sets of other types containing multiple records, with metadata, or to create empty record sets.
+V každém případě ukážeme, jak vytvořit sadu záznamů obsahující jeden záznam. Předchozí příklady pro záznamy A je možné upravit tak, aby se vytvořily sady záznamů dalších typů, které obsahují několik záznamů, metadata nebo vytvořit prázdné sady záznamů.
 
-We do not give an example to create an SOA record set, since SOAs are created and deleted with each DNS zone and cannot be created or deleted separately. However, [the SOA can be modified, as shown in a later example](#to-modify-an-soa-record).
+Neposkytujeme příklad pro vytvoření sady záznamů SOA, protože SOAs se vytváří a odstraňují s každou zónou DNS a nedá se vytvořit ani odstranit samostatně. [Záznam SOA je však možné upravit, jak je znázorněno v pozdějším příkladu](#to-modify-an-soa-record).
 
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>Vytvoření sady záznamů AAAA s jedním záznamem
 
@@ -101,7 +101,7 @@ We do not give an example to create an SOA record set, since SOAs are created an
 New-AzDnsRecordSet -Name "test-aaaa" -RecordType AAAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ipv6Address "2607:f8b0:4009:1803::1005") 
 ```
 
-### <a name="create-a-caa-record-set-with-a-single-record"></a>Create a CAA record set with a single record
+### <a name="create-a-caa-record-set-with-a-single-record"></a>Vytvoření sady záznamů CAA s jedním záznamem
 
 ```powershell
 New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Caaflags 0 -CaaTag "issue" -CaaValue "ca1.contoso.com") 
@@ -110,9 +110,9 @@ New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -Res
 ### <a name="create-a-cname-record-set-with-a-single-record"></a>Vytvoření sady záznamů CNAME s jedním záznamem
 
 > [!NOTE]
-> The DNS standards do not permit CNAME records at the apex of a zone (`-Name '@'`), nor do they permit record sets containing more than one record.
+> Standardy DNS nepovolují záznamy CNAME na vrcholu zóny (`-Name '@'`), ani nepovolují sady záznamů obsahující více než jeden záznam.
 > 
-> For more information, see [CNAME records](dns-zones-records.md#cname-records).
+> Další informace najdete v tématu [záznamy CNAME](dns-zones-records.md#cname-records).
 
 
 ```powershell
@@ -121,7 +121,7 @@ New-AzDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.com" 
 
 ### <a name="create-an-mx-record-set-with-a-single-record"></a>Vytvoření sady záznamů MX s jedním záznamem
 
-In this example, we use the record set name '\@' to create an MX record at the zone apex (in this case, 'contoso.com').
+V tomto příkladu používáme název sady záznamů '\@' k vytvoření záznamu MX ve vrcholu zóny (v tomto případě ' contoso.com ').
 
 
 ```powershell
@@ -136,7 +136,7 @@ New-AzDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -Resou
 
 ### <a name="create-a-ptr-record-set-with-a-single-record"></a>Vytvoření sady záznamů PTR s jedním záznamem
 
-In this case, 'my-arpa-zone.com' represents the ARPA reverse lookup zone representing your IP range. Každá sada záznamů PTR v této zóně odpovídá IP adrese v rámci tohoto rozsahu IP adres. The record name '10' is the last octet of the IP address within this IP range represented by this record.
+V tomto případě "my-arpa-zone.com" představuje zónu zpětného vyhledávání ARPA představující rozsah IP adres. Každá sada záznamů PTR v této zóně odpovídá IP adrese v rámci tohoto rozsahu IP adres. Název záznamu ' 10 ' je poslední oktet IP adresy v rámci tohoto rozsahu IP adres reprezentovaného tímto záznamem.
 
 ```powershell
 New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "myservice.contoso.com") 
@@ -144,153 +144,153 @@ New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -Resour
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>Vytvoření sady záznamů SRV s jedním záznamem
 
-When creating an [SRV record set](dns-zones-records.md#srv-records), specify the *\_service* and *\_protocol* in the record set name. There is no need to include '\@' in the record set name when creating an SRV record set at the zone apex.
+Při vytváření [sady záznamů SRV](dns-zones-records.md#srv-records)zadejte v názvu sady záznamů *službu\_* a *protokol\_* . Při vytváření sady záznamů SRV na vrcholu zóny není nutné zahrnout do názvu sady záznamů '\@'.
 
 ```powershell
 New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
 ```
 
 
-### <a name="create-a-txt-record-set-with-a-single-record"></a>Create a TXT record set with a single record
+### <a name="create-a-txt-record-set-with-a-single-record"></a>Vytvoření sady záznamů TXT s jedním záznamem
 
-The following example shows how to create a TXT record. For more information about the maximum string length supported in TXT records, see [TXT records](dns-zones-records.md#txt-records).
+Následující příklad ukazuje, jak vytvořit záznam TXT. Další informace o maximální délce řetězce podporované v záznamech TXT najdete v tématu [záznamy TXT](dns-zones-records.md#txt-records).
 
 ```powershell
 New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Value "This is a TXT record") 
 ```
 
 
-## <a name="get-a-record-set"></a>Get a record set
+## <a name="get-a-record-set"></a>Získání sady záznamů
 
-To retrieve an existing record set, use `Get-AzDnsRecordSet`. This cmdlet returns a local object that represents the record set in Azure DNS.
+K načtení existující sady záznamů použijte `Get-AzDnsRecordSet`. Tato rutina vrátí místní objekt, který představuje sadu záznamů v Azure DNS.
 
-As with `New-AzDnsRecordSet`, the record set name given must be a *relative* name, meaning it must exclude the zone name. You also need to specify the record type, and the zone containing the record set.
+Stejně jako u `New-AzDnsRecordSet`musí být zadaný název sady záznamů *relativní* název, což znamená, že musí název zóny vyloučit. Je také nutné zadat typ záznamu a zónu obsahující sadu záznamů.
 
-The following example shows how to retrieve a record set. In this example, the zone is specified using the `-ZoneName` and `-ResourceGroupName` parameters.
+Následující příklad ukazuje, jak načíst sadu záznamů. V tomto příkladu je zóna určena pomocí parametrů `-ZoneName` a `-ResourceGroupName`.
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Alternatively, you can also specify the zone using a zone object, passed using the `-Zone` parameter.
+Případně můžete zónu zadat také pomocí objektu zóny, který byl předán pomocí parametru `-Zone`.
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
-## <a name="list-record-sets"></a>List record sets
+## <a name="list-record-sets"></a>Seznam sad záznamů
 
-You can also use `Get-AzDnsZone` to list record sets in a zone, by omitting the `-Name` and/or `-RecordType` parameters.
+Můžete také použít `Get-AzDnsZone` k vypsání sad záznamů v zóně vynecháte parametry `-Name` a/nebo `-RecordType`.
 
-The following example returns all record sets in the zone:
+Následující příklad vrátí všechny sady záznamů v zóně:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-The following example shows how all record sets of a given type can be retrieved by specifying the record type while omitting the record set name:
+Následující příklad ukazuje, jak lze načíst všechny sady záznamů daného typu zadáním typu záznamu při vynechání názvu sady záznamů:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-To retrieve all record sets with a given name, across record types, you need to retrieve all record sets and then filter the results:
+Chcete-li načíst všechny sady záznamů se zadaným názvem, pro různé typy záznamů, je nutné načíst všechny sady záznamů a následně vyfiltrovat výsledky:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | where {$_.Name.Equals("www")}
 ```
 
-In all the above examples, the zone can be specified either by using the `-ZoneName` and `-ResourceGroupName`parameters (as shown), or by specifying a zone object:
+Ve všech výše uvedených příkladech lze zónu zadat buď pomocí parametrů `-ZoneName` a `-ResourceGroupName`(jak je uvedeno), nebo zadáním objektu zóny:
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $recordsets = Get-AzDnsRecordSet -Zone $zone
 ```
 
-## <a name="add-a-record-to-an-existing-record-set"></a>Add a record to an existing record set
+## <a name="add-a-record-to-an-existing-record-set"></a>Přidání záznamu do existující sady záznamů
 
-To add a record to an existing record set, follow the following three steps:
+Chcete-li přidat záznam do existující sady záznamů, postupujte podle následujících tří kroků:
 
-1. Get the existing record set
+1. Získání existující sady záznamů
 
     ```powershell
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. Add the new record to the local record set. This is an off-line operation.
+2. Přidejte nový záznam do místní sady záznamů. Jedná se o offline operaci.
 
     ```powershell
     Add-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Commit the change back to the Azure DNS service. 
+3. Potvrďte změnu zpátky do služby Azure DNS. 
 
     ```powershell
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
-Using `Set-AzDnsRecordSet` *replaces* the existing record set in Azure DNS (and all records it contains) with the record set specified. [Etag checks](dns-zones-records.md#etags) are used to ensure concurrent changes are not overwritten. You can use the optional `-Overwrite` switch to suppress these checks.
+Použití `Set-AzDnsRecordSet` *nahradí* existující sadu záznamů v Azure DNS (a všechny záznamy, které obsahuje) se zadanou sadou záznamů. [Kontroly ETag](dns-zones-records.md#etags) se používají k zajištění toho, aby souběžné změny nebyly přepsány. Tyto kontroly můžete potlačit pomocí volitelného `-Overwrite`ového přepínače.
 
-This sequence of operations can also be *piped*, meaning you pass the record set object by using the pipe rather than passing it as a parameter:
+Tato posloupnost operací se dá také přesměrovat do *kanálu*, což znamená, že předáte objekt sady záznamů pomocí kanálu a nebudete ho moct předat jako parametr:
 
 ```powershell
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-The examples above show how to add an 'A' record to an existing record set of type 'A'. A similar sequence of operations is used to add records to record sets of other types, substituting the `-Ipv4Address` parameter of `Add-AzDnsRecordConfig` with other parameters specific to each record type. The parameters for each record type are the same as for the `New-AzDnsRecordConfig` cmdlet, as shown in Additional record type examples above.
+Výše uvedené příklady ukazují, jak přidat záznam "A" do existující sady záznamů typu "A". Podobná posloupnost operací se používá k přidání záznamů do sad záznamů jiných typů a nahrazení parametru `-Ipv4Address` `Add-AzDnsRecordConfig` s dalšími parametry specifickými pro každý typ záznamu. Parametry pro každý typ záznamu jsou stejné jako u rutiny `New-AzDnsRecordConfig`, jak je znázorněno v dalších příkladech typu záznamu.
 
-Record sets of type 'CNAME' or 'SOA' cannot contain more than one record. This constraint arises from the DNS standards. It is not a limitation of Azure DNS.
+Sady záznamů typu "CNAME" nebo "SOA" nemohou obsahovat více než jeden záznam. Toto omezení se projevuje ve standardech DNS. Nejedná se o omezení Azure DNS.
 
-## <a name="remove-a-record-from-an-existing-record-set"></a>Remove a record from an existing record set
+## <a name="remove-a-record-from-an-existing-record-set"></a>Odebrat záznam z existující sady záznamů
 
-The process to remove a record from a record set is similar to the process to add a record to an existing record set:
+Proces odebrání záznamu ze sady záznamů je podobný procesu přidání záznamu do existující sady záznamů:
 
-1. Get the existing record set
+1. Získání existující sady záznamů
 
     ```powershell
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. Remove the record from the local record set object. This is an off-line operation. The record that's being removed must be an exact match with an existing record across all parameters.
+2. Odeberte záznam z místního objektu sady záznamů. Jedná se o offline operaci. Odebraný záznam musí mít přesnou shodu s existujícím záznamem ve všech parametrech.
 
     ```powershell
     Remove-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Commit the change back to the Azure DNS service. Use the optional `-Overwrite` switch to suppress [Etag checks](dns-zones-records.md#etags) for concurrent changes.
+3. Potvrďte změnu zpátky do služby Azure DNS. Chcete-li potlačit kontroly značek [ETag](dns-zones-records.md#etags) pro souběžné změny, použijte volitelný `-Overwrite` přepínač.
 
     ```powershell
     Set-AzDnsRecordSet -RecordSet $Rs
     ```
 
-Using the above sequence to remove the last record from a record set does not delete the record set, rather it leaves an empty record set. To remove a record set entirely, see [Delete a record set](#delete-a-record-set).
+Když pomocí výše uvedeného pořadí odeberete poslední záznam ze sady záznamů, sada záznamů se neodstraní a místo toho opustí prázdnou sadu záznamů. Pokud chcete sadu záznamů úplně odebrat, přečtěte si téma [odstranění sady záznamů](#delete-a-record-set).
 
-Similarly to adding records to a record set, the sequence of operations to remove a record set can also be piped:
+Podobně jako při přidávání záznamů do sady záznamů lze také vytvořit kanál operací pro odebrání sady záznamů:
 
 ```powershell
 Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Different record types are supported by passing the appropriate type-specific parameters to `Remove-AzDnsRecordSet`. The parameters for each record type are the same as for the `New-AzDnsRecordConfig` cmdlet, as shown in Additional record type examples above.
+Různé typy záznamů jsou podporovány předáním příslušných parametrů specifických pro typ `Remove-AzDnsRecordSet`. Parametry pro každý typ záznamu jsou stejné jako u rutiny `New-AzDnsRecordConfig`, jak je znázorněno v dalších příkladech typu záznamu.
 
 
-## <a name="modify-an-existing-record-set"></a>Modify an existing record set
+## <a name="modify-an-existing-record-set"></a>Úprava existující sady záznamů
 
-The steps for modifying an existing record set are similar to the steps you take when adding or removing records from a record set:
+Postup změny existující sady záznamů je podobný postupům, které provedete při přidávání nebo odebírání záznamů ze sady záznamů:
 
-1. Retrieve the existing record set by using `Get-AzDnsRecordSet`.
-2. Modify the local record set object by:
-    * Adding or removing records
-    * Changing the parameters of existing records
-    * Changing the record set metadata and time to live (TTL)
-3. Commit your changes by using the `Set-AzDnsRecordSet` cmdlet. This *replaces* the existing record set in Azure DNS with the record set specified.
+1. Načtení existující sady záznamů pomocí `Get-AzDnsRecordSet`.
+2. Upravte objekt místní sady záznamů pomocí:
+    * Přidávání nebo odebírání záznamů
+    * Změna parametrů existujících záznamů
+    * Změna metadat sady záznamů a hodnoty TTL (Time to Live)
+3. Potvrďte změny pomocí rutiny `Set-AzDnsRecordSet`. Tím se *nahradí* existující sada záznamů v Azure DNS se specifikovanou sadou záznamů.
 
-When using `Set-AzDnsRecordSet`, [Etag checks](dns-zones-records.md#etags) are used to ensure concurrent changes are not overwritten. You can use the optional `-Overwrite` switch to suppress these checks.
+Při použití `Set-AzDnsRecordSet`se pro zajištění, že nejsou přepsány souběžné změny, používají [kontroly ETag](dns-zones-records.md#etags) . Tyto kontroly můžete potlačit pomocí volitelného `-Overwrite`ového přepínače.
 
-### <a name="to-update-a-record-in-an-existing-record-set"></a>To update a record in an existing record set
+### <a name="to-update-a-record-in-an-existing-record-set"></a>Aktualizace záznamu v existující sadě záznamů
 
-In this example, we change the IP address of an existing 'A' record:
+V tomto příkladu změníme IP adresu existujícího záznamu A:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -298,11 +298,11 @@ $rs.Records[0].Ipv4Address = "9.8.7.6"
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-an-soa-record"></a>To modify an SOA record
+### <a name="to-modify-an-soa-record"></a>Postup úpravy záznamu SOA
 
-You cannot add or remove records from the automatically created SOA record set at the zone apex (`-Name "@"`, including quote marks). However, you can modify any of the parameters within the SOA record (except "Host") and the record set TTL.
+Nemůžete přidávat ani odebírat záznamy z automaticky vytvořené sady záznamů SOA ve vrcholu zóny (`-Name "@"`, včetně uvozovek). Můžete však změnit libovolný parametr v rámci záznamu SOA (kromě "hostitel") a hodnoty TTL sady záznamů.
 
-The following example shows how to change the *Email* property of the SOA record:
+Následující příklad ukazuje, jak změnit vlastnost *email* záznamu SOA:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType SOA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -310,15 +310,15 @@ $rs.Records[0].Email = "admin.contoso.com"
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-ns-records-at-the-zone-apex"></a>To modify NS records at the zone apex
+### <a name="to-modify-ns-records-at-the-zone-apex"></a>Úprava záznamů NS ve vrcholu zóny
 
-The NS record set at the zone apex is automatically created with each DNS zone. It contains the names of the Azure DNS name servers assigned to the zone.
+Záznam NS nastavený na vrcholu zóny se automaticky vytvoří s každou zónou DNS. Obsahuje názvy Azure DNS názvových serverů přiřazených k zóně.
 
-You can add additional name servers to this NS record set, to support co-hosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, you cannot remove or modify the pre-populated Azure DNS name servers.
+Do této sady záznamů NS můžete přidat další názvové servery, aby se podporovaly domény spoluhostování s více než jedním poskytovatelem DNS. Můžete také upravit hodnotu TTL a metadata této sady záznamů. Nemůžete ale odebrat ani změnit předem vyplněné Azure DNS názvové servery.
 
-Note that this applies only to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be modified without constraint.
+Všimněte si, že to platí jenom pro záznam NS, který je nastavený na vrcholu zóny. Jiné sady záznamů NS ve vaší zóně (jako používané pro delegování podřízených zón) se dají upravovat bez omezení.
 
-The following example shows how to add an additional name server to the NS record set at the zone apex:
+Následující příklad ukazuje, jak přidat další názvový server do sady záznamů NS ve vrcholu zóny:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -326,11 +326,11 @@ Add-AzDnsRecordConfig -RecordSet $rs -Nsdname ns1.myotherdnsprovider.com
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-record-set-metadata"></a>To modify record set metadata
+### <a name="to-modify-record-set-metadata"></a>Úprava metadat sady záznamů
 
-[Record set metadata](dns-zones-records.md#tags-and-metadata) can be used to associate application-specific data with each record set, as key-value pairs.
+[Metadata sady záznamů](dns-zones-records.md#tags-and-metadata) lze použít pro přiřazení dat specifických pro aplikaci ke každé sadě záznamů, jako páry klíč-hodnota.
 
-The following example shows how to modify the metadata of an existing record set:
+Následující příklad ukazuje, jak změnit metadata existující sady záznamů:
 
 ```powershell
 # Get the record set
@@ -347,36 +347,36 @@ Set-AzDnsRecordSet -RecordSet $rs
 ```
 
 
-## <a name="delete-a-record-set"></a>Delete a record set
+## <a name="delete-a-record-set"></a>Odstranění sady záznamů
 
-Record sets can be deleted by using the `Remove-AzDnsRecordSet` cmdlet. Deleting a record set also deletes all records within the record set.
+Sady záznamů lze odstranit pomocí rutiny `Remove-AzDnsRecordSet`. Odstraněním sady záznamů dojde také k odstranění všech záznamů v rámci sady záznamů.
 
 > [!NOTE]
-> You cannot delete the SOA and NS record sets at the zone apex (`-Name '@'`).  Azure DNS created these automatically when the zone was created, and deletes them automatically when the zone is deleted.
+> Sady záznamů SOA a NS nelze odstranit ve vrcholu zóny (`-Name '@'`).  Tato Azure DNS vytvořena automaticky při vytvoření zóny a automaticky je odstraní při odstranění zóny.
 
-The following example shows how to delete a record set. In this example, the record set name, record set type, zone name, and resource group are each specified explicitly.
+Následující příklad ukazuje, jak odstranit sadu záznamů. V tomto příkladu jsou explicitně specifikované název sady záznamů, typ sady záznamů, název zóny a skupina prostředků.
 
 ```powershell
 Remove-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Alternatively, the record set can be specified by name and type, and the zone specified using an object:
+Alternativně lze sadu záznamů zadat podle názvu a typu a zóny určené pomocí objektu:
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
-As a third option, the record set itself can be specified using a record set object:
+Třetí možností je, že samotná sada záznamů může být zadaná pomocí objektu sady záznamů:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -RecordSet $rs
 ```
 
-When you specify the record set to be deleted by using a record set object, [Etag checks](dns-zones-records.md#etags) are used to ensure concurrent changes are not deleted. You can use the optional `-Overwrite` switch to suppress these checks.
+Když zadáte sadu záznamů, která se má odstranit pomocí objektu sady záznamů, pro zajištění, že se neodstraní souběžné změny, se použijí [kontroly ETag](dns-zones-records.md#etags) . Tyto kontroly můžete potlačit pomocí volitelného `-Overwrite`ového přepínače.
 
-The record set object can also be piped instead of being passed as a parameter:
+Objekt sady záznamů lze také přesměrovat, místo aby byl předán jako parametr:
 
 ```powershell
 Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | Remove-AzDnsRecordSet
@@ -386,7 +386,7 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 Všechny rutiny `New-AzDnsRecordSet`, `Set-AzDnsRecordSet` a `Remove-AzDnsRecordSet` podporují výzvy k potvrzení.
 
-Each cmdlet prompts for confirmation if the `$ConfirmPreference` PowerShell preference variable has a value of `Medium` or lower. Since the default value for `$ConfirmPreference` is `High`, these prompts are not given when using the default PowerShell settings.
+Každá rutina vyzve k potvrzení, pokud má proměnná předvoleb `$ConfirmPreference` PowerShellu hodnotu `Medium` nebo nižší. Vzhledem k tomu, že je výchozí hodnota pro `$ConfirmPreference` `High`, při použití výchozího nastavení PowerShellu se tyto výzvy neudělí.
 
 Aktuální nastavení `$ConfirmPreference` můžete přepsat pomocí parametru `-Confirm`. Pokud zadáte `-Confirm` nebo `-Confirm:$True`, rutina před spuštěním zobrazí výzvu k potvrzení. Pokud zadáte `-Confirm:$False`, rutina výzvu k potvrzení nezobrazí. 
 
@@ -394,8 +394,8 @@ Další informace o `-Confirm` a `$ConfirmPreference` najdete v tématu [Informa
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn more about [zones and records in Azure DNS](dns-zones-records.md).
+Další informace o [zónách a záznamech v Azure DNS](dns-zones-records.md).
 <br>
-Learn how to [protect your zones and records](dns-protect-zones-recordsets.md) when using Azure DNS.
+Naučte se [chránit zóny a záznamy](dns-protect-zones-recordsets.md) při použití Azure DNS.
 <br>
-Review the [Azure DNS PowerShell reference documentation](/powershell/module/az.dns).
+Přečtěte si [referenční dokumentaci k Azure DNS PowerShellu](/powershell/module/az.dns).

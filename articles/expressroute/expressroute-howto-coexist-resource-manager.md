@@ -1,6 +1,6 @@
 ---
-title: 'Configure ExpressRoute and S2S VPN coexisting connections: Azure PowerShell'
-description: Configure ExpressRoute and a Site-to-Site VPN connection that can coexist for the Resource Manager model using PowerShell.
+title: 'Konfigurace současně existujících připojení ExpressRoute a S2S VPN: Azure PowerShell'
+description: Konfigurace ExpressRoute a připojení VPN typu Site-to-Site, která mohou existovat vedle sebe pro model Resource Manageru pomocí prostředí PowerShell.
 services: expressroute
 author: charwen
 ms.service: expressroute
@@ -15,21 +15,21 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423580"
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Configure ExpressRoute and Site-to-Site coexisting connections using PowerShell
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurace ExpressRoute a Site-to-Site současně existujících připojení pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
 > * [PowerShell – Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell – Classic](expressroute-howto-coexist-classic.md)
 > 
 > 
 
-This article helps you configure ExpressRoute and Site-to-Site VPN connections that coexist. Možnost konfigurace VPN typu site-to-site a ExpressRoute má několik výhod. You can configure Site-to-Site VPN as a secure failover path for ExpressRoute, or use Site-to-Site VPNs to connect to sites that are not connected through ExpressRoute. V tomto článku vám nabídneme postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Resource Manager.
+Tento článek vám pomůže nakonfigurovat připojení ExpressRoute a VPN typu Site-to-Site, která existovat vedle sebe. Možnost konfigurace VPN typu site-to-site a ExpressRoute má několik výhod. Můžete nakonfigurovat VPN typu Site-to-Site jako cestu zabezpečené převzetí služeb při selhání pro ExpressRoute, nebo použít VPN typu Site-to-Site pro připojení k webům, které nejsou připojené prostřednictvím ExpressRoute. V tomto článku vám nabídneme postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Resource Manager.
 
 Konfigurace ExpressRoute a současně existujících připojení VPN typu Site-to-Site má několik výhod.
 
 * Můžete nakonfigurovat VPN typu Site-to-Site jako bezpečnou cestu převzetí služeb při selhání pro ExpressRoute. 
 * Další možností je použít VPN typu Site-to-Site pro připojení k webům, které nejsou prostřednictvím ExpressRoute připojené. 
 
-V tomto článku jsou postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Resource Manager a používá PowerShell. You can also configure these scenarios using the Azure portal, although documentation is not yet available. You can configure either gateway first. Typically, you will incur no downtime when adding a new gateway or gateway connection.
+V tomto článku jsou postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Resource Manager a používá PowerShell. Můžete také nakonfigurovat tyto scénáře pomocí webu Azure portal, i když dokumentaci ještě není k dispozici. Buď bránu můžete nakonfigurovat první. Při přidávání nové brány nebo připojení k bráně obvykle, budou účtovat nedojde k žádnému výpadku.
 
 >[!NOTE]
 >Pokud chcete vytvořit připojení VPN typu Site-to-Site přes okruh ExpressRoute, přečtěte si prosím [tento článek](site-to-site-vpn-over-microsoft-peering.md).
@@ -38,9 +38,9 @@ V tomto článku jsou postupy konfigurace pro oba scénáře. Tento článek se 
 ## <a name="limits-and-limitations"></a>Omezení
 * **Směrování provozu není podporováno.** Nemůžete provádět směrování (přes Azure) mezi místní sítí připojenou prostřednictvím sítě VPN typu site-to-site a místní sítí připojenou přes ExpressRoute.
 * **Základní brána SKU není podporována.** Pro [bránu ExpressRoute](expressroute-about-virtual-network-gateways.md) a [bránu VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) je nutné použít jinou než základní bránu SKU.
-* **Podporována je pouze brána VPN na základě tras.** You must use a route-based [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md). You also can use a route-based VPN gateway with a VPN connection configured for 'policy-based traffic selectors' as described in [Connect to multiple policy-based VPN devices](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+* **Podporována je pouze brána VPN na základě tras.** Je nutné použít [bránu sítě VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)založenou na trasách. Můžete také použít bránu sítě VPN založenou na trasách s připojením VPN nakonfigurovaným pro "selektory provozu na základě zásad", jak je popsáno v tématu [připojení k několika zařízením VPN založeným na zásadách](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 * **Pro vaši bránu VPN by měla být nakonfigurována statická trasa.** Pokud je vaše místní síť připojená k ExpressRoute a síti VPN typu site-to-site, musíte mít v místní síti konfigurovanou statickou trasu, abyste mohli směrovat připojení VPN typu site-to-site do veřejného internetu.
-* **VPN Gateway defaults to ASN 65515 if not specified.** Azure VPN Gateway supports the BGP routing protocol. You can specify ASN (AS Number) for a virtual network by adding the -Asn switch. If you don't specify this parameter, the default AS number is 65515. You can use any ASN for the configuration, but if you select something other than 65515, you must reset the gateway for the setting to take effect.
+* **Pokud není zadaný, VPN Gateway ve výchozím nastavení číslo ASN 65515.** Azure VPN Gateway podporuje směrovací protokol BGP. Můžete zadat číslo ASN (jako číslo) pro virtuální síť přidáním přepínače-ASN. Pokud tento parametr nezadáte, výchozí hodnota je 65515. Můžete použít jakékoli číslo ASN pro konfiguraci, ale pokud vyberete jinou hodnotu než 65515, musíte resetovat bránu, aby se nastavení projevilo.
 
 ## <a name="configuration-designs"></a>Návrhy konfigurace
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Konfigurace VPN typu site-to-site jako cesty převzetí služeb při selhání pro ExpressRoute
@@ -85,10 +85,10 @@ Existují dvě různé sady postupů, ze kterých si můžete vybrat. Postup kon
 ## <a name="new"></a>Vytvoření nové virtuální sítě a současně existujících připojení
 Tento postup vás provede procesem vytvoření virtuální sítě a připojení ExpressRoute a VPN typu Site-to-Site, která budou existovat společně. Rutiny, které použijete pro tuto konfiguraci, se můžou mírně lišit od těch, co znáte. Ujistěte se, že používáte rutiny určené v těchto pokynech.
 
-1. Sign in and select your subscription.
+1. Přihlaste se a vyberte své předplatné.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Set variables.
+2. Nastavte proměnné.
 
    ```azurepowershell-interactive
    $location = "Central US"
@@ -216,7 +216,7 @@ Rutiny, které použijete pro tuto konfiguraci, se můžou mírně lišit od tě
    ```azurepowershell-interactive
    $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-4. V tuto chvíli máte virtuální síť, která nemá žádné brány. To create new gateways and set up the connections, use the following examples:
+4. V tuto chvíli máte virtuální síť, která nemá žádné brány. Pokud chcete vytvořit nové brány a nastavit připojení, použijte následující příklady:
 
    Nastavte proměnné.
 
@@ -226,7 +226,7 @@ Rutiny, které použijete pro tuto konfiguraci, se můžou mírně lišit od tě
    $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
    ```
 
-   Create the gateway.
+   Vytvořte bránu.
 
    ```azurepowershell-interactive
    $gw = New-AzVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup> -Location <yourlocation) -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
@@ -241,7 +241,7 @@ Rutiny, které použijete pro tuto konfiguraci, se můžou mírně lišit od tě
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>Přidání konfigurace point-to-site k bráně VPN
 
-You can follow the steps below to add Point-to-Site configuration to your VPN gateway in a coexistence setup. To upload the VPN root certificate, you must either install PowerShell locally to your computer, or use the Azure portal.
+Provedením následujících kroků, abyste k vaší brány VPN v nastavení koexistence Přidat konfiguraci Point-to-Site. Pokud chcete nahrát kořenový certifikát sítě VPN, musíte místně nainstalovat PowerShell do svého počítače nebo použít Azure Portal.
 
 1. Přidejte fond adres klienta VPN.
 
@@ -249,7 +249,7 @@ You can follow the steps below to add Point-to-Site configuration to your VPN ga
    $azureVpn = Get-AzVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
    Set-AzVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
    ```
-2. Odešlete kořenový certifikát VPN pro bránu VPN do Azure. In this example, it's assumed that the root certificate is stored in the local machine where the following PowerShell cmdlets are run and that you are running PowerShell locally. You can also upload the certificate using the Azure portal.
+2. Odešlete kořenový certifikát VPN pro bránu VPN do Azure. V tomto příkladu se předpokládá, že kořenový certifikát je uložený v místním počítači, na kterém jsou spuštěné následující rutiny PowerShellu a že se místně spouští PowerShell. Certifikát můžete také nahrát pomocí Azure Portal.
 
    ```powershell
    $p2sCertFullName = "RootErVpnCoexP2S.cer" 

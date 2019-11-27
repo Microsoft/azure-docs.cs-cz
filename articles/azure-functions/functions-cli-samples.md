@@ -8,7 +8,7 @@ ms.date: 01/09/2018
 ms.custom: mvc
 ms.openlocfilehash: b875d2a478ccbd2fa99f43e584e02018866fc5cd
 ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230919"
@@ -19,7 +19,7 @@ Následující tabulka obsahuje odkazy na skripty Bash pro službu Azure Functio
 
 <a id="create"></a>
 
-| Create app | Popis |
+| Vytvořit aplikaci | Popis |
 |---|---|
 | [Vytvoření aplikace funkcí pro provádění bez serveru](scripts/functions-cli-create-serverless.md) | Vytvoří aplikaci funkcí v plánu Consumption.  |
 | [Vytvoření aplikace funkcí v plánu služby App Service](scripts/functions-cli-create-app-service-plan.md) | Vytvoří aplikaci funkcí ve vyhrazeném plánu služby App Service. |
@@ -29,10 +29,10 @@ Následující tabulka obsahuje odkazy na skripty Bash pro službu Azure Functio
 | [Vytvoření aplikace funkcí a připojení k účtu úložiště](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Vytvoří aplikaci funkcí a připojí ji k účtu úložiště. |
 | [Vytvoření aplikace funkcí a připojení ke službě Azure Cosmos DB](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Vytvoří aplikaci funkcí a připojí ji ke službě Azure Cosmos DB. |
 
-| Nepřetržité nasazování | Popis|
+| Průběžné nasazování | Popis|
 |---|---|
 | [Nasazení z GitHubu](scripts/functions-cli-create-function-app-github-continuous.md) | Vytvoří aplikaci funkcí, která se nasadí z úložiště GitHub.  |
-| [Nasazení z Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Create a function app that deploys from an Azure DevOps repository.  |
+| [Nasazení z Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Vytvořte aplikaci funkcí, která nasazuje z úložiště Azure DevOps.  |
 
 | Konfigurace aplikace | Popis |
 |---|---|

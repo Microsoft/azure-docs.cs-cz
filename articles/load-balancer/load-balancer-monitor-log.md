@@ -1,7 +1,7 @@
 ---
-title: Monitor operations, events, and counters for public Basic Load Balancer
+title: Monitorování operací, událostí a čítačů pro veřejný základní Load Balancer
 titleSuffix: Azure Load Balancer
-description: Learn how to enable alert events, and probe health status logging for public Basic Load Balancer
+description: Naučte se povolit události výstrah a protokolování stavu sondy pro veřejný základní Load Balancer.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -20,82 +20,82 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214912"
 ---
-# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor logs for public Basic Load Balancer
+# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Protokoly Azure Monitor pro veřejný základní Load Balancer
 
 >[!IMPORTANT] 
->Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. For more information about Standard Load Balancer, see [Standard Load Balancer overview](load-balancer-standard-overview.md) which exposes telemetry via multi-dimensional metrics in Azure Monitor.
+>Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o Standard Load Balancer naleznete v tématu [Standard Load Balancer Overview](load-balancer-standard-overview.md) , který zpřístupňuje telemetrii prostřednictvím multidimenzionálních metrik v Azure monitor.
 
-You can use different types of logs in Azure to manage and troubleshoot Basic Load Balancers. Some of these logs can be accessed through the portal. Logs can be streamed to an event hub or a Log Analytics workspace. All logs can be extracted from Azure blob storage, and viewed in different tools, such as Excel and Power BI.  You can learn more about the different types of logs from the list below.
+Pomocí různých typů protokolů v Azure můžete spravovat a řešit základní nástroje pro vyrovnávání zatížení. K některým z těchto protokolů se dá dostat prostřednictvím portálu. Protokoly můžou být streamované do centra událostí nebo do pracovního prostoru Log Analytics. Všechny protokoly se dají extrahovat z úložiště objektů BLOB v Azure a zobrazovat v různých nástrojích, jako je Excel a Power BI.  Další informace o různých typech protokolů najdete v níže uvedeném seznamu.
 
-* **Activity logs:** You can use [View activity logs to monitor actions on resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) to view all activity being submitted to your Azure subscription(s), and their status. Activity logs are enabled by default, and can be viewed in the Azure portal.
-* **Alert event logs:** You can use this log to view alerts raised by the load balancer. The status for the load balancer is collected every five minutes. This log is only written if a load balancer alert event is raised.
-* **Health probe logs:** You can use this log to view problems detected by your health probe, such as the number of instances in your backend-pool that are not receiving requests from the load balancer because of health probe failures. This log is written to when there is a change in the health probe status.
+* **Protokoly aktivit:** Pomocí [možnosti Zobrazit protokoly aktivit můžete monitorovat akce v prostředcích](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) a zobrazit všechny aktivity odeslané do vašich předplatných Azure a jejich stav. Protokoly aktivit jsou ve výchozím nastavení povolené a dají se zobrazit v Azure Portal.
+* **Protokoly událostí výstrah:** Pomocí tohoto protokolu můžete zobrazit výstrahy vyvolané nástrojem pro vyrovnávání zatížení. Stav nástroje pro vyrovnávání zatížení se shromáždí každých pět minut. Tento protokol je zapsán pouze v případě, že je vyvolána událost upozornění nástroje pro vyrovnávání zatížení.
+* **Protokoly sondy stavu:** Pomocí tohoto protokolu můžete zobrazit problémy zjištěné sondou stavu, jako je počet instancí ve fondu back-end, který nepřijímá požadavky z nástroje pro vyrovnávání zatížení z důvodu selhání sondy stavu. Do tohoto protokolu se zapisuje, když dojde ke změně stavu sondy stavu.
 
 > [!IMPORTANT]
-> Azure Monitor logs currently works only for public Basic load balancers. Logs are only available for resources deployed in the Resource Manager deployment model. You cannot use logs for resources in the classic deployment model. For more information about the deployment models, see [Understanding Resource Manager deployment and classic deployment](../azure-resource-manager/resource-manager-deployment-model.md).
+> Protokoly Azure Monitor aktuálně fungují pouze pro veřejné základní nástroje pro vyrovnávání zatížení. Protokoly jsou k dispozici pouze pro prostředky nasazené v modelu nasazení Správce prostředků. Protokoly pro prostředky v modelu nasazení Classic nemůžete použít. Další informace o modelech nasazení najdete v tématu [Principy nasazení Správce prostředků a klasického nasazení](../azure-resource-manager/resource-manager-deployment-model.md).
 
-## <a name="enable-logging"></a>Povolit protokolování
+## <a name="enable-logging"></a>Povolte protokolování
 
-Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Enable event and health probe logging to start collecting the data available through those logs. Use the following steps to enable logging.
+Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Povolte protokolování událostí a sondy stavu, abyste mohli začít shromažďovat data dostupná přes tyto protokoly. K povolení protokolování použijte následující postup.
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com). If you don't already have a load balancer, [create a load balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) before you continue.
+Přihlaste se na web [Azure Portal ](https://portal.azure.com). Pokud ještě nemáte Nástroj pro vyrovnávání zatížení, vytvořte před pokračováním [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
-1. In the portal, click **Resource groups**.
-2. Select **\<resource-group-name>** where your load balancer is.
-3. Select your load balancer.
-4. Select **Monitoring** > **Diagnostic settings**.
-5. In the **Diagnostics settings** pane, under **Diagnostics settings**, select **+ Add diagnostic setting**.
-6. In the **Diagnostics settings** creation pane, enter **myLBDiagnostics** in the **Name** field.
-7. You have three options for the **Diagnostics settings**.  You can choose one, two or all three and configure each for your requirements:
-   * **Archive to a storage account**
-   * **Stream to an event hub**
-   * **Send to Log Analytics**
+1. Na portálu klikněte na **skupiny prostředků**.
+2. Vyberte **\<Resource-Group-name >** , kde je váš nástroj pro vyrovnávání zatížení.
+3. Vyberte svůj nástroj pro vyrovnávání zatížení.
+4. Vyberte **monitorování** > **nastavení diagnostiky**.
+5. V podokně **nastavení diagnostiky** v části **nastavení diagnostiky**vyberte **+ Přidat nastavení diagnostiky**.
+6. V podokně vytvoření **nastavení diagnostiky** do pole **název** zadejte **myLBDiagnostics** .
+7. Pro **nastavení diagnostiky**máte tři možnosti.  Můžete zvolit jednu, dvě nebo všechny tři a nakonfigurovat každou z vašich požadavků:
+   * **Archivace do účtu úložiště**
+   * **Streamování do centra událostí**
+   * **Odeslat do Log Analytics**
 
-    ### <a name="archive-to-a-storage-account"></a>Archive to a storage account
-    You'll need a storage account already created for this process.  To create a storage account, see [Create a storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
+    ### <a name="archive-to-a-storage-account"></a>Archivace do účtu úložiště
+    Budete potřebovat účet úložiště, který se pro tento proces už vytvořil.  Informace o vytvoření účtu úložiště najdete v tématu [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) .
 
-    1. Select the checkbox next to **Archive to a storage account**.
-    2. Select **Configure** to open the **Select a storage account** pane.
-    3. Select the **Subscription** where your storage account was created in the pull-down box.
-    4. Select the name of your storage account under **Storage account** in the pull-down box. 
-    5. Select OK.
+    1. Zaškrtněte políčko vedle **archivace na účet úložiště**.
+    2. Vyberte **Konfigurovat** a otevřete tak podokno **Vybrat účet úložiště** .
+    3. V rozevíracím seznamu vyberte **předplatné** , ve kterém se vytvořil váš účet úložiště.
+    4. V části **účet úložiště** v rozevíracím seznamu vyberte název svého účtu úložiště. 
+    5. Vyberte OK.
 
-    ### <a name="stream-to-an-event-hub"></a>Stream to an event hub
-    You'll need an event hub already created for this process.  To create an event hub, see [Quickstart: Create an event hub using Azure portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
+    ### <a name="stream-to-an-event-hub"></a>Streamování do centra událostí
+    Pro tento proces budete potřebovat již vytvořenou centrum událostí.  Informace o vytvoření centra událostí najdete v tématu [rychlý Start: vytvoření centra událostí pomocí Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
 
-    1. Select the checkbox next to **Stream to an event hub**
-    2. Select **Configure** to open the **Select event hub** pane.
-    3. Select the **Subscription** where your event hub was created in the pull-down box.
-    4. **Select event hub namespace** in the pull-down box.
-    5. **Select event hub policy name** in the pull-down box.
-    6. Select OK.
+    1. Zaškrtněte políčko vedle **streamu do centra událostí** .
+    2. Vyberte **Konfigurovat** a otevřete tak podokno **Vybrat centrum událostí** .
+    3. V rozevíracím seznamu vyberte **předplatné** , ve kterém se vaše centrum událostí vytvořilo.
+    4. V rozevíracím seznamu **Vyberte obor názvů centra událostí** .
+    5. V rozevíracím seznamu **Vyberte název zásady centra událostí** .
+    6. Vyberte OK.
 
     ### <a name="send-to-log-analytics"></a>Odeslání do Log Analytics
-    You'll need to already have a log analytics workspace created and configured for this process.  To create a Log Analytics workspace, see [Create a Log Analytics workspace in the Azure portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+    Pro tento proces budete potřebovat pracovní prostor Log Analytics vytvořený a nakonfigurovaný.  Pokud chcete vytvořit pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 
-    1. Select the checkbox next to **Send to Log Analytics**.
-    2. Select the **Subscription** where your Log Analytics workspace is in the pull-down box.
-    3. Select the **Log Analytics Workspace** in the pull-down box.
+    1. Zaškrtněte políčko vedle **odeslat Log Analytics**.
+    2. V rozevíracím seznamu vyberte **předplatné** , ve kterém je váš pracovní prostor Log Analytics.
+    3. V rozevíracím seznamu vyberte **pracovní prostor Log Analytics** .
 
 
-8. Beneath the **LOG** section in the **Diagnostics settings** pane, select the check box next to both:
+8. Pod oddílem **protokol** v podokně **nastavení diagnostiky** zaškrtněte políčko vedle obou:
    * **LoadBalancerAlertEvent**
    * **LoadBalancerProbeHealthStatus**
 
-9.  Beneath the **METRIC** section in the **Diagnostics settings** pane, select the check box next to:
+9.  Pod oddílem **metrika** v podokně **nastavení diagnostiky** zaškrtněte políčko vedle:
    * **AllMetrics**
 
-11. Verify everything looks correct and click **Save** at the top of the create **Diagnostic settings** pane.
+11. Ověřte, zda je vše v pořádku, a v horní části podokna vytvořit **nastavení diagnostiky** klikněte na **Uložit** .
 
 ## <a name="activity-log"></a>Protokol aktivit
 
-The activity log is generated by default. The logs are preserved for 90 days in Azure's Event Logs store. Learn more about these logs by reading the [View activity logs to monitor actions on resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) article.
+Protokol aktivit je ve výchozím nastavení vygenerován. Protokoly se uchovávají po 90 dnech v úložišti protokolů událostí Azure. Další informace o těchto protokolech najdete v článku [zobrazení protokolů aktivit pro monitorování akcí v prostředcích](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) .
 
-## <a name="archive-to-storage-account-logs"></a>Archive to storage account logs
+## <a name="archive-to-storage-account-logs"></a>Archivovat do protokolů účtu úložiště
 
-### <a name="alert-event-log"></a>Alert event log
+### <a name="alert-event-log"></a>Protokol událostí výstrah
 
-This log is only generated if you've enabled it on a per load balancer basis. The events are logged in JSON format and stored in the storage account you specified when you enabled the logging. The following example is of an event.
+Tento protokol se vygeneruje jenom v případě, že jste ho povolili na základě nástroje pro vyrovnávání zatížení. Události se zaznamenávají ve formátu JSON a ukládají se do účtu úložiště, který jste zadali při povolování protokolování. V následujícím příkladu je událost.
 
 ```json
 {
@@ -114,11 +114,11 @@ This log is only generated if you've enabled it on a per load balancer basis. Th
 }
 ```
 
-The JSON output shows the *eventname* property, which will describe the reason for the load balancer created an alert. In this case, the alert generated was because of TCP port exhaustion caused by source IP NAT limits (SNAT).
+Výstup JSON zobrazuje vlastnost *EventName* , která popíše důvod, proč Nástroj pro vyrovnávání zatížení vytvořil výstrahu. V takovém případě se vygenerovala výstraha z důvodu vyčerpání portů TCP způsobených omezeními zdrojového překladu IP adres (SNAT).
 
-### <a name="health-probe-log"></a>Health probe log
+### <a name="health-probe-log"></a>Protokol sondy stavu
 
-This log is only generated if you've enabled it on a per load balancer basis as detailed above. The data is stored in the storage account you specified when you enabled the logging. A container named 'insights-logs-loadbalancerprobehealthstatus' is created and the following data is logged:
+Tento protokol se vygeneruje jenom v případě, že jste ho povolili na jednotlivých nástrojích pro vyrovnávání zatížení, jak je popsáno výše. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Vytvoří se kontejner s názvem Insights-logs-loadbalancerprobehealthstatus a zaprotokoluje se následující data:
 
 ```json
 {
@@ -154,27 +154,27 @@ This log is only generated if you've enabled it on a per load balancer basis as 
 }
 ```
 
-The JSON output shows in the properties field the basic information for the probe health status. The *dipDownCount* property shows the total number of instances on the back-end, which are not receiving network traffic because of failed probe responses.
+Výstup JSON se zobrazí v poli vlastnosti základní informace o stavu sondy. Vlastnost *dipDownCount* zobrazuje celkový počet instancí na back-endu, které nepříjemují síťový provoz z důvodu nezdařených odpovědí na testy.
 
-### <a name="view-and-analyze-the-audit-log"></a>View and analyze the audit log
+### <a name="view-and-analyze-the-audit-log"></a>Zobrazit a analyzovat protokol auditu
 
-You can view and analyze audit log data using any of the following methods:
+Data protokolu auditu můžete zobrazit a analyzovat pomocí kterékoli z následujících metod:
 
-* **Azure tools:** Retrieve information from the audit logs through Azure PowerShell, the Azure Command Line Interface (CLI), the Azure REST API, or the Azure portal. Step-by-step instructions for each method are detailed in the [Audit operations with Resource Manager](../azure-resource-manager/resource-group-audit.md) article.
-* **Power BI:** If you don't already have a [Power BI](https:// .microsoft.com/pricing) account, you can try it for free. Using the [Azure Audit Logs content pack for Power BI](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs), you can analyze your data with pre-configured dashboards, or you can customize views to suit your requirements.
+* **Nástroje Azure:** Načtěte informace z protokolů auditu prostřednictvím Azure PowerShell, rozhraní příkazového řádku Azure (CLI), Azure REST API nebo Azure Portal. Podrobné pokyny pro jednotlivé metody jsou podrobně popsané v článku [operace auditu s správce prostředků](../azure-resource-manager/resource-group-audit.md) .
+* **Power BI:** Pokud ještě nemáte účet [Power BI](https:// .microsoft.com/pricing) , můžete si ho vyzkoušet zdarma. Pomocí [balíčku obsahu protokoly auditování Azure pro Power BI](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)můžete analyzovat data pomocí předem nakonfigurovaných řídicích panelů nebo můžete přizpůsobit zobrazení podle svých požadavků.
 
-### <a name="view-and-analyze-the-health-probe-and-event-log"></a>View and analyze the health probe and event log
+### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Zobrazit a analyzovat sondu stavu a protokol událostí
 
-Connect to your storage account and retrieve the JSON log entries for event and health probe logs. Once you download the JSON files, you can convert them to CSV and view in Excel, Power BI, or any other data visualization tool.
+Připojte se k účtu úložiště a načtěte položky protokolu JSON pro protokoly událostí a stavu testu. Po stažení souborů JSON je můžete převést na CSV a zobrazit v Excelu, Power BI nebo jakémkoli jiném nástroji pro vizualizaci dat.
 
 > [!TIP]
 > Pokud znáte Visual Studio a máte představu, jak u konstant a proměnných v jazyce C# měnit hodnoty, můžete použít [nástroje pro převedení protokolů](https://github.com/Azure-Samples/networking-dotnet-log-converter), které jsou k dispozici na GitHubu.
 
-## <a name="stream-to-an-event-hub"></a>Stream to an event hub
-When diagnostic information is streamed to an event hub, it can be used for centralized log analysis in a third-party SIEM tool with Azure Monitor Integration. For more information, see [Stream Azure monitoring data to an event hub](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration)
+## <a name="stream-to-an-event-hub"></a>Streamování do centra událostí
+Když se diagnostické informace streamují do centra událostí, dá se použít k centralizované analýze protokolů v nástroji SIEM třetí strany s integrací Azure Monitor. Další informace najdete v tématu [streamování dat monitorování Azure do centra událostí](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration) .
 
 ## <a name="send-to-log-analytics"></a>Odeslání do Log Analytics
-Resources in Azure can have their diagnostic information sent directly to a Log Analytics workspace where complex queries can be run against the information for troubleshooting and analysis.  For more information, see [Collect Azure resource logs in Log Analytics workspace in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)
+Prostředky v Azure můžou mít své diagnostické informace odesílány přímo do Log Analytics pracovního prostoru, kde můžete provádět složité dotazy na informace pro řešení potíží a analýzy.  Další informace najdete v tématu [shromáždění protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Create a function in Azure triggered by Blob storage
+title: Vytvoření funkce v Azure aktivované službou BLOB Storage
 description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, kterou volají položky přidané do úložiště služby Azure Blob Storage.
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.topic: quickstart
@@ -18,7 +18,7 @@ Dozvíte se, jak vytvořit funkci, která se aktivuje při odesílání souborů
 
 ![Zobrazte si zprávy v protokolech.](./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Stáhnout a nainstalovat [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 + Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).

@@ -1,6 +1,6 @@
 ---
-title: Provision device using Azure IoT Hub Device Provisioning Service
-description: Tutorial - Provision your device to a single IoT hub using the Azure IoT Hub Device Provisioning Service
+title: Zřízení zařízení pomocí Azure IoT Hub Device Provisioning Service
+description: Kurz – zřízení zařízení pro jedno centrum IoT s využitím Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -15,7 +15,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228295"
 ---
-# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Tutorial: Provision the device to an IoT hub using the Azure IoT Hub Device Provisioning Service
+# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Kurz: zřízení zařízení ve službě IoT Hub pomocí IoT Hub Device Provisioning Service Azure
 
 V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke službě Device Provisioning. V tomto kurzu zjistíte, jak pomocí této služby zřídit zařízení pro jedno centrum IoT s využitím automatického zřizování a **_seznamů registrací_** . V tomto kurzu získáte informace o následujících postupech:
 
@@ -24,7 +24,7 @@ V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke sl
 > * Spuštění zařízení
 > * Ověření registrace zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat, nezapomeňte své zařízení nakonfigurovat, jak je popsáno v kurzu [Nastavení zařízení pro zřízení pomocí služby Azure IoT Hub Device Provisioning](./tutorial-set-up-device.md).
 
@@ -42,7 +42,7 @@ Tento krok zahrnuje přidání jedinečných artefaktů zabezpečení zařízen�
       [![Informace o registraci TPM na portálu](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - Pro zařízení založená na X.509 potřebujete:
-    - [Certifikát vydaný pro simulaci nebo čip X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) ve formě souboru *.pem* nebo *.cer*. For individual enrollment, you need to use the per-device  *signed certificate* for your X.509 system, while for enrollment groups, you need to use the *root certificate*. 
+    - [Certifikát vydaný pro simulaci nebo čip X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) ve formě souboru *.pem* nebo *.cer*. Pro jednotlivé registrace musíte použít *certifikát podepsaný* podle zařízení pro systém X. 509, ale u skupin registrací musíte použít *kořenový certifikát*. 
 
       [![Přidání jednotlivé registrace pro ověření X.509 na portálu](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
@@ -58,7 +58,7 @@ Teď zařízení zaregistrujete do své instance služby Device Provisioning s p
 
 1. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning.
 
-2. V okně s přehledem služby Device Provisioning vyberte **Správa registrací**. V závislosti na nastavení svého zařízení vyberte kartu **Jednotlivé registrace** nebo **Skupiny registrací**. Klikněte na tlačítko **Přidat** v horní části. Jako *Mechanismus* ověření identity vyberte **TPM** nebo **X.509** a zadejte odpovídající artefakty zabezpečení, jak je popsáno výše. Můžete zadat nové **ID zařízení služby IoT Hub**. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
+2. V okně s přehledem služby Device Provisioning vyberte **Správa registrací**. V závislosti na nastavení svého zařízení vyberte kartu **Jednotlivé registrace** nebo **Skupiny registrací**. Klikněte na tlačítko **Přidat** v horní části. Jako **Mechanismus** ověření identity vyberte **TPM** nebo *X.509* a zadejte odpovídající artefakty zabezpečení, jak je popsáno výše. Můžete zadat nové **ID zařízení služby IoT Hub**. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
 
 3. Po úspěšné registraci by se zařízení mělo zobrazit na portálu, jak je znázorněno níže:
 
@@ -88,7 +88,7 @@ Po spuštění zařízení by mělo proběhnout následující:
 
     ![Úspěšné připojení k centru na portálu](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-For more information, see the provisioning device client sample, [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). The sample demonstrates provisioning a simulated device using TPM, X.509 certificates and symmetric keys. Refer back to the [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), [X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509), and [Symmetric key](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key) attestation quickstarts for step-by-step instructions on using the sample.
+Další informace najdete v ukázce klienta zřízení zařízení [prov_dev_client_sample. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). Ukázka znázorňuje zřízení simulovaného zařízení pomocí čipu TPM, certifikátů X. 509 a symetrických klíčů. Podrobné pokyny k používání ukázky najdete v článku rychlé starty k [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), [X. 509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509)a ověřování pomocí [symetrického klíče](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key) .
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:

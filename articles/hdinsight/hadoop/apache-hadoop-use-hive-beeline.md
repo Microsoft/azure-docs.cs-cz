@@ -1,6 +1,6 @@
 ---
-title: Use Apache Beeline with Apache Hive - Azure HDInsight
-description: Learn how to use the Beeline client to run Hive queries with Hadoop on HDInsight. Beeline is a utility for working with HiveServer2 over JDBC.
+title: Použití Apache Beeline s Apache Hive – Azure HDInsight
+description: Naučte se používat klienta Beeline ke spouštění dotazů na podregistr pomocí Hadoop v HDInsight. Beeline je nástroj pro práci s HiveServer2 nad JDBC.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -14,17 +14,17 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406255"
 ---
-# <a name="use-the-apache-beeline-client-with-apache-hive"></a>Use the Apache Beeline client with Apache Hive
+# <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití klienta Apache Beeline s Apache Hive
 
-Learn how to use [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) to run Apache Hive queries on HDInsight.
+Naučte se používat [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) ke spouštění dotazů Apache Hive v HDInsight.
 
-Beeline is a Hive client that is included on the head nodes of your HDInsight cluster. Beeline uses JDBC to connect to HiveServer2, a service hosted on your HDInsight cluster. You can also use Beeline to access Hive on HDInsight remotely over the internet. The following examples provide the most common connection strings used to connect to HDInsight from Beeline:
+Beeline je klient podregistru, který je součástí hlavních uzlů clusteru HDInsight. Beeline používá JDBC pro připojení k HiveServer2, službě hostované v clusteru HDInsight. Beeline můžete použít také k vzdálenému přístupu k podregistru v HDInsight přes Internet. V následujících příkladech jsou uvedeny nejběžnější připojovací řetězce používané pro připojení ke službě HDInsight z Beeline:
 
-## <a name="types-of-connections"></a>Types of connections
+## <a name="types-of-connections"></a>Typy připojení
 
-### <a name="from-an-ssh-session"></a>From an SSH session
+### <a name="from-an-ssh-session"></a>Z relace SSH
 
-When connecting from an SSH session to a cluster headnode, you can then connect to the `headnodehost` address on port `10001`:
+Při připojování z relace SSH ke clusteru hlavnímu uzlu se můžete připojit k adrese `headnodehost` na portu `10001`:
 
 ```bash
 beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
@@ -32,78 +32,78 @@ beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
 
 ---
 
-### <a name="over-an-azure-virtual-network"></a>Over an Azure Virtual Network
+### <a name="over-an-azure-virtual-network"></a>Přes Virtual Network Azure
 
-When connecting from a client to HDInsight over an Azure Virtual Network, you must provide the fully qualified domain name (FQDN) of a cluster head node. Since this connection is made directly to the cluster nodes, the connection uses port `10001`:
+Když se připojujete z klienta k HDInsight přes Virtual Network Azure, musíte zadat plně kvalifikovaný název domény (FQDN) hlavního uzlu clusteru. Vzhledem k tomu, že se toto připojení provádí přímo na uzlech clusteru, připojení používá port `10001`:
 
 ```bash
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-Replace `<headnode-FQDN>` with the fully qualified domain name of a cluster headnode. To find the fully qualified domain name of a headnode, use the information in the [Manage HDInsight using the Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) document.
+Nahraďte `<headnode-FQDN>` plně kvalifikovaným názvem domény hlavnímu uzlu clusteru. K vyhledání plně kvalifikovaného názvu domény hlavnímu uzlu použijte informace v části [Správa HDInsight pomocí dokumentu Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) .
 
 ---
 
-### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>To HDInsight Enterprise Security Package (ESP) cluster using Kerberos
+### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Do clusteru HDInsight Balíček zabezpečení podniku (ESP) pomocí protokolu Kerberos
 
-When connecting from a client to an Enterprise Security Package (ESP) cluster joined to Azure Active Directory (AAD)-DS on a machine in same realm of the cluster, you must also specify the domain name `<AAD-Domain>` and the name of a domain user account with permissions to access the cluster `<username>`:
+Když se připojujete z klienta k clusteru Balíček zabezpečení podniku (ESP) připojenému k Azure Active Directory (AAD) – DS na počítači ve stejné sféře clusteru, musíte zadat taky název domény `<AAD-Domain>` a název účtu uživatele domény s oprávněními k přístupu ke clusteru `<username>`:
 
 ```bash
 kinit <username>
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>
 ```
 
-Replace `<username>` with the name of an account on the domain with permissions to access the cluster. Replace `<AAD-DOMAIN>` with the name of the Azure Active Directory (AAD) that the cluster is joined to. Use an uppercase string for the `<AAD-DOMAIN>` value, otherwise the credential won't be found. Check `/etc/krb5.conf` for the realm names if needed.
+Nahraďte `<username>` názvem účtu v doméně s oprávněními pro přístup ke clusteru. Nahraďte `<AAD-DOMAIN>` názvem Azure Active Directory (AAD), ke které je cluster připojený. Pro hodnotu `<AAD-DOMAIN>` použijte velká písmena, jinak se přihlašovací údaje nenašly. V případě potřeby ověřte `/etc/krb5.conf` názvů sféry.
 
 ---
 
-### <a name="over-public-or-private-endpoints"></a>Over public or private endpoints
+### <a name="over-public-or-private-endpoints"></a>Přes veřejné nebo soukromé koncové body
 
-When connecting to a cluster using the public or private endpoints, you must provide the cluster login account name (default `admin`) and password. For example, using Beeline from a client system to connect to the `<clustername>.azurehdinsight.net` address. This connection is made over port `443`, and is encrypted using SSL:
+Při připojování ke clusteru pomocí veřejných nebo privátních koncových bodů je nutné zadat název přihlašovacího účtu clusteru (výchozí `admin`) a heslo. Například pomocí Beeline z klientského systému se připojte k `<clustername>.azurehdinsight.net` adrese. Toto připojení se provádí prostřednictvím `443`portu a je šifrované pomocí protokolu SSL:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
 ```
 
-or for private endpoint:
+nebo pro soukromý koncový bod:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
 ```
 
-Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Replace `<username>` with the cluster login account for your cluster. For ESP clusters, use the full UPN (e.g. user@domain.com). Replace `password` with the password for the cluster login account.
+Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `<username>` účtem přihlášení clusteru pro váš cluster. U clusterů ESP použijte úplný název uživatele (např. user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
 
-Private endpoints point to a basic load balancer, which can only be accessed from the VNETs peered in the same region. See [constraints on global VNet peering and load balancers](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) for more info. You can use the `curl` command with `-v` option to troubleshoot any connectivity problems with public or private endpoints before using beeline.
+Soukromé koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v tématu [omezení globálních partnerských vztahů virtuální sítě a nástrojů pro vyrovnávání zatížení](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Pomocí příkazu `curl` s možností `-v` můžete řešit problémy s připojením s veřejnými nebo soukromými koncovými body před použitím Beeline.
 
 ---
 
-### <a id="sparksql"></a>Use Beeline with Apache Spark
+### <a id="sparksql"></a>Použití Beeline s Apache Spark
 
-Apache Spark provides its own implementation of HiveServer2, which is sometimes referred to as the Spark Thrift server. This service uses Spark SQL to resolve queries instead of Hive, and may provide better performance depending on your query.
+Apache Spark poskytuje vlastní implementaci HiveServer2, která se někdy označuje jako server Spark Thrift. Tato služba používá Spark SQL k překladu dotazů namísto podregistru a může poskytovat lepší výkon v závislosti na vašem dotazu.
 
-#### <a name="through-public-or-private-endpoints"></a>Through public or private endpoints
+#### <a name="through-public-or-private-endpoints"></a>Prostřednictvím veřejných nebo privátních koncových bodů
 
-The connection string used  is slightly different. Instead of containing `httpPath=/hive2` it's `httpPath/sparkhive2`:
+Použitý připojovací řetězec je trochu odlišný. Místo obsahující `httpPath=/hive2` `httpPath/sparkhive2`:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
 ```
 
-or for private endpoint:
+nebo pro soukromý koncový bod:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
 ```
 
-Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Replace `<username>` with the cluster login account for your cluster. For ESP clusters, use the full UPN (e.g. user@domain.com). Replace `password` with the password for the cluster login account.
+Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `<username>` účtem přihlášení clusteru pro váš cluster. U clusterů ESP použijte úplný název uživatele (např. user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
 
-Private endpoints point to a basic load balancer, which can only be accessed from the VNETs peered in the same region. See [constraints on global VNet peering and load balancers](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) for more info. You can use the `curl` command with `-v` option to troubleshoot any connectivity problems with public or private endpoints before using beeline.
+Soukromé koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v tématu [omezení globálních partnerských vztahů virtuální sítě a nástrojů pro vyrovnávání zatížení](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Pomocí příkazu `curl` s možností `-v` můžete řešit problémy s připojením s veřejnými nebo soukromými koncovými body před použitím Beeline.
 
 ---
 
-#### <a name="from-cluster-head-or-inside-azure-virtual-network-with-apache-spark"></a>From cluster head or inside Azure Virtual Network with Apache Spark
+#### <a name="from-cluster-head-or-inside-azure-virtual-network-with-apache-spark"></a>Z hlav clusteru nebo uvnitř Azure Virtual Network s Apache Spark
 
-When connecting directly from the cluster head node, or from a resource inside the same Azure Virtual Network as the HDInsight cluster, port `10002` should be used for Spark Thrift server instead of `10001`. The following example shows how to connect directly to the head node:
+Při přímém připojení k hlavnímu uzlu clusteru nebo z prostředku ve stejné službě Azure Virtual Network jako cluster HDInsight by se měl `10002` portů místo `10001`použít pro server Spark Thrift. Následující příklad ukazuje, jak se připojit přímo k hlavnímu uzlu:
 
 ```bash
 /usr/hdp/current/spark2-client/bin/beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
@@ -113,48 +113,48 @@ When connecting directly from the cluster head node, or from a resource inside t
 
 ## <a id="prereq"></a>Požadavky
 
-* A Hadoop cluster on HDInsight. See [Get Started with HDInsight on Linux](./apache-hadoop-linux-tutorial-get-started.md).
+* Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Notice the [URI scheme](../hdinsight-hadoop-linux-information.md#URI-and-scheme) for your cluster's primary storage. For example,  `wasb://` for Azure Storage, `abfs://` for Azure Data Lake Storage Gen2, or `adl://` for Azure Data Lake Storage Gen1. If secure transfer is enabled for Azure Storage, the URI is `wasbs://`. For more information, see [secure transfer](../../storage/common/storage-require-secure-transfer.md).
+* Všimněte si [schématu identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště vašeho clusteru. Například `wasb://` Azure Storage, `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Je-li pro Azure Storage povolen zabezpečený přenos, je identifikátor URI `wasbs://`. Další informace najdete v tématu [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 
-* Option 1: An SSH client. For more information, see [Connect to HDInsight (Apache Hadoop) using SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Most of the steps in this document assume that you're using Beeline from an SSH session to the cluster.
+* Možnost 1: klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Většina kroků v tomto dokumentu předpokládá, že používáte Beeline z relace SSH do clusteru.
 
-* Option 2:  A local Beeline client.
+* Možnost 2: místní klient Beeline.
 
-## <a id="beeline"></a>Run a Hive query
+## <a id="beeline"></a>Spustit dotaz na podregistr
 
-This example is based on using the Beeline client from an SSH connection.
+Tento příklad je založený na použití klienta Beeline z připojení SSH.
 
-1. Open an SSH connection to the cluster with the code below. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. When prompted, enter the password for the SSH user account.
+1. Otevřete připojení SSH ke clusteru pomocí následujícího kódu. Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `CLUSTERNAME` zadejte název clusteru. Po zobrazení výzvy zadejte heslo pro uživatelský účet SSH.
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Connect to HiveServer2 with your Beeline client from your open SSH session by entering the following command:
+2. Připojte se k HiveServer2 pomocí klienta Beeline z otevřené relace SSH zadáním následujícího příkazu:
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
     ```
 
-3. Beeline commands begin with a `!` character, for example `!help` displays help. However the `!` can be omitted for some commands. For example, `help` also works.
+3. Příkazy Beeline začínají znakem `!`, například `!help` zobrazí nápovědu. Pro některé příkazy však může být `!` vynecháno. Například `help` také funguje.
 
-    There's `!sql`, which is used to execute HiveQL statements. However, HiveQL is so commonly used that you can omit the preceding `!sql`. The following two statements are equivalent:
+    K dispozici je `!sql`, který se používá ke spouštění příkazů HiveQL. HiveQL je ale často používaný, takže můžete vynechat předchozí `!sql`. Následující dva příkazy jsou ekvivalentní:
 
     ```hiveql
     !sql show tables;
     show tables;
     ```
 
-    On a new cluster, only one table is listed: **hivesampletable**.
+    V novém clusteru je uvedena pouze jedna tabulka: **hivesampletable**.
 
-4. Use the following command to display the schema for the hivesampletable:
+4. K zobrazení schématu pro hivesampletable použijte následující příkaz:
 
     ```hiveql
     describe hivesampletable;
     ```
 
-    This command returns the following information:
+    Tento příkaz vrátí následující informace:
 
         +-----------------------+------------+----------+--+
         |       col_name        | data_type  | comment  |
@@ -172,9 +172,9 @@ This example is based on using the Beeline client from an SSH connection.
         | sessionpagevieworder  | bigint     |          |
         +-----------------------+------------+----------+--+
 
-    This information describes the columns in the table.
+    Tyto informace popisují sloupce v tabulce.
 
-5. Enter the following statements to create a table named **log4jLogs** by using sample data provided with the HDInsight cluster: (Revise as needed based on your [URI scheme](../hdinsight-hadoop-linux-information.md#URI-and-scheme).)
+5. Zadáním následujících příkazů vytvořte tabulku s názvem **log4jLogs** pomocí ukázkových dat, která jsou součástí clusteru HDInsight: (podle potřeby podle [schématu identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme)Proveďte revizi podle potřeby).
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -193,26 +193,26 @@ This example is based on using the Beeline client from an SSH connection.
         GROUP BY t4;
     ```
 
-    These statements do the following actions:
+    Tyto příkazy provedou následující akce:
 
-    * `DROP TABLE` - If the table exists, it's deleted.
+    * `DROP TABLE` – Pokud tabulka existuje, je odstraněna.
 
-    * `CREATE EXTERNAL TABLE` - Creates an **external** table in Hive. External tables only store the table definition in Hive. The data is left in the original location.
+    * `CREATE EXTERNAL TABLE` – vytvoří **externí** tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění.
 
-    * `ROW FORMAT` - How the data is formatted. In this case, the fields in each log are separated by a space.
+    * `ROW FORMAT` – způsob formátování dat V tomto případě jsou pole v každém protokolu oddělená mezerou.
 
-    * `STORED AS TEXTFILE LOCATION` - Where the data is stored and in what file format.
+    * `STORED AS TEXTFILE LOCATION` – kde jsou uložena data a v jakém formátu souboru.
 
-    * `SELECT` - Selects a count of all rows where column **t4** contains the value **[ERROR]** . This query returns a value of **3** as there are three rows that contain this value.
+    * `SELECT` – vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]** . Tento dotaz vrátí hodnotu **3** , protože jsou tři řádky, které obsahují tuto hodnotu.
 
-    * `INPUT__FILE__NAME LIKE '%.log'` - Hive attempts to apply the schema to all files in the directory. In this case, the directory contains files that don't match the schema. To prevent garbage data in the results, this statement tells Hive that it should only return data from files ending in .log.
+    * `INPUT__FILE__NAME LIKE '%.log'` – podregistr se pokusí použít schéma pro všechny soubory v adresáři. V tomto případě adresář obsahuje soubory, které neodpovídají schématu. Aby se zabránilo uvolňování dat ve výsledcích, tento příkaz oznamuje podregistru, že by měl vracet pouze data ze souborů končících log. log.
 
    > [!NOTE]  
-   > External tables should be used when you expect the underlying data to be updated by an external source. For example, an automated data upload process or a MapReduce operation.
+   > Externí tabulky by měly být použity, pokud očekáváte, že budou zdrojová data aktualizována externím zdrojem. Například automatizovaný proces odesílání dat nebo operace MapReduce.
    >
-   > Dropping an external table does **not** delete the data, only the table definition.
+   > Vyřazení externí tabulky **neodstraní data** , pouze definici tabulky.
 
-    The output of this command is similar to the following text:
+    Výstup tohoto příkazu je podobný následujícímu textu:
 
         INFO  : Tez session hasn't been created yet. Opening session
         INFO  :
@@ -236,52 +236,52 @@ This example is based on using the Beeline client from an SSH connection.
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-6. To exit Beeline, use `!exit`.
+6. K ukončení Beeline použijte `!exit`.
 
-## <a id="file"></a>Run a HiveQL file
+## <a id="file"></a>Spuštění souboru HiveQL
 
-This is a continuation from the prior example. Use the following steps to create a file, then run it using Beeline.
+Toto je pokračování z předchozího příkladu. Pomocí následujících kroků vytvořte soubor a pak ho spusťte pomocí Beeline.
 
-1. Use the following command to create a file named **query.hql**:
+1. Pomocí následujícího příkazu vytvořte soubor s názvem **Query. HQL**:
 
     ```bash
     nano query.hql
     ```
 
-2. Use the following text as the contents of the file. This query creates a new 'internal' table named **errorLogs**:
+2. Jako obsah souboru použijte následující text. Tento dotaz vytvoří novou interní **tabulku s názvem**protokolu chyb:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
     INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
     ```
 
-    These statements do the following actions:
+    Tyto příkazy provedou následující akce:
 
-   * **CREATE TABLE IF NOT EXISTS** - If the table doesn't already exist, it's created. Since the **EXTERNAL** keyword isn't used, this statement creates an internal table. Internal tables are stored in the Hive data warehouse and are managed completely by Hive.
-   * **STORED AS ORC** - Stores the data in Optimized Row Columnar (ORC) format. ORC format is a highly optimized and efficient format for storing Hive data.
-   * **INSERT OVERWRITE ... SELECT** - Selects rows from the **log4jLogs** table that contain **[ERROR]** , then inserts the data into the **errorLogs** table.
+   * **Create Table Pokud neexistuje** , pokud tabulka ještě neexistuje, vytvoří se. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Interní tabulky jsou uložené v datovém skladu podregistru a jsou plně spravované podregistrem.
+   * **Uloženo jako ORC** – ukládá data ve formátu optimalizovaného řádku (Orc). Formát ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.
+   * **Vložit přepsání... Vyberte možnost** – vybere řádky z tabulky **log4jLogs** , která obsahuje **[Error]** , a pak data vloží do **tabulky chyb** .
 
     > [!NOTE]  
-    > Unlike external tables, dropping an internal table deletes the underlying data as well.
+    > Na rozdíl od externích tabulek odstraní interní tabulka také podkladová data.
 
-3. To save the file, use **Ctrl**+**X**, then enter **Y**, and finally **Enter**.
+3. Pokud chcete soubor uložit, použijte **Ctrl**+**X**, zadejte **Y**a nakonec **ENTER**.
 
-4. Use the following to run the file using Beeline:
+4. K spuštění souboru pomocí Beeline použijte následující:
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i query.hql
     ```
 
     > [!NOTE]  
-    > The `-i` parameter starts Beeline and runs the statements in the `query.hql` file. Once the query completes, you arrive at the `jdbc:hive2://headnodehost:10001/>` prompt. You can also run a file using the `-f` parameter, which exits Beeline after the query completes.
+    > Parametr `-i` spustí Beeline a spustí příkazy v souboru `query.hql`. Po dokončení dotazu přijdete na `jdbc:hive2://headnodehost:10001/>`ovou výzvu. Můžete také spustit soubor pomocí parametru `-f`, který ukončí Beeline po dokončení dotazu.
 
-5. To verify that the **errorLogs** table was created, use the following statement to return all the rows from **errorLogs**:
+5. Chcete-li ověřit, zda byla **vytvořena tabulka chyb** protokolu chyb, použijte následující příkaz, který vrátí všechny řádky z chyb protokolu **chyb:**
 
     ```hiveql
     SELECT * from errorLogs;
     ```
 
-    Three rows of data should be returned, all containing **[ERROR]** in column t4:
+    Měly by se vracet tři řádky dat, všechny obsahující **[Error]** v sloupci T4:
 
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         | errorlogs.t1  | errorlogs.t2  | errorlogs.t3  | errorlogs.t4  | errorlogs.t5  | errorlogs.t6  | errorlogs.t7  |
@@ -292,8 +292,8 @@ This is a continuation from the prior example. Use the following steps to create
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a id="summary"></a><a id="nextsteps"></a>Next steps
+## <a id="summary"></a><a id="nextsteps"></a>Další kroky
 
-* For more general information on Hive in HDInsight, see [Use Apache Hive with Apache Hadoop on HDInsight](hdinsight-use-hive.md)
+* Obecnější informace o podregistru v HDInsight najdete v tématu [použití Apache Hive s Apache Hadoop v HDInsight](hdinsight-use-hive.md) .
 
-* For more information on other ways you can work with Hadoop on HDInsight, see [Use MapReduce with Apache Hadoop on HDInsight](hdinsight-use-mapreduce.md)
+* Další informace o dalších způsobech práce se systémem Hadoop ve službě HDInsight najdete v tématu [použití MapReduce s Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md) .

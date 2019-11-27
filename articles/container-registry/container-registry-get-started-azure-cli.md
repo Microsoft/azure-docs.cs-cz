@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Create registry - Azure CLI
+title: Rychlý Start – vytvoření registru – rozhraní příkazového řádku Azure
 description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí Azure CLI.
 ms.topic: quickstart
 ms.date: 01/22/2019
@@ -11,13 +11,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455166"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Quickstart: Create a private container registry using the Azure CLI
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI
 
-Azure Container Registry je spravovaná služba registru kontejnerů Dockeru sloužící k ukládání privátních imagí kontejnerů Dockeru. Tato příručka podrobně popisuje vytvoření instance služby Azure Container Registry pomocí Azure CLI. Then, use Docker commands to push a container image into the registry, and finally pull and run the image from your registry.
+Azure Container Registry je spravovaná služba registru kontejnerů Dockeru sloužící k ukládání privátních imagí kontejnerů Dockeru. Tato příručka podrobně popisuje vytvoření instance služby Azure Container Registry pomocí Azure CLI. Pak pomocí příkazů Docker nahrajte image kontejneru do registru a nakonec si vydejte a spusťte image z registru.
 
-This quickstart requires that you are running the Azure CLI (version 2.0.55 or later recommended). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Tento rychlý Start vyžaduje, abyste spustili Azure CLI (doporučuje se verze 2.0.55 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-Je také nutné mít Docker nainstalovaný místně. Docker provides packages that easily configure Docker on any [macOS][docker-mac], [Windows][docker-windows], or [Linux][docker-linux] system.
+Je také nutné mít Docker nainstalovaný místně. Docker poskytuje balíčky, které snadno konfigurují Docker na jakémkoli systému [MacOS][docker-mac], [Windows][docker-windows]nebo [Linux][docker-linux] .
 
 Azure Cloud Shell neobsahuje všechny požadované součásti Dockeru (démon `dockerd`), a proto pro tento rychlý start nelze Cloud Shell použít.
 
@@ -33,7 +33,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
-In this quickstart you create a *Basic* registry, which is a cost-optimized option for developers learning about Azure Container Registry. For details on available service tiers, see [Container registry SKUs][container-registry-skus].
+V tomto rychlém startu vytvoříte *základní* registr, což je výhodná možnost pro vývojáře, kteří se naučí o Azure Container Registry. Podrobnosti k dostupným úrovním služeb najdete v tématu [SKU služby Container Registry][container-registry-skus].
 
 Pomocí příkazu [az acr create][az-acr-create] vytvořte instanci služby ACR. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá *myContainerRegistry007*. Aktualizujte název na jedinečnou hodnotu.
 
@@ -64,11 +64,11 @@ Po vytvoření registru je výstup podobný tomuto:
 }
 ```
 
-Take note of `loginServer` in the output, which is the fully qualified registry name (all lowercase). V celé zbývající části tohoto rychlého startu se položka `<acrName>` používá jako zástupný symbol pro název registru kontejneru.
+Poznamenejte si `loginServer` ve výstupu, což je plně kvalifikovaný název registru (malými písmeny). V celé zbývající části tohoto rychlého startu se položka `<acrName>` používá jako zástupný symbol pro název registru kontejneru.
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 
-Before pushing and pulling container images, you must log in to the registry. K tomu použijte příkaz [az acr login][az-acr-login].
+Před vložením a stažením imagí kontejneru se musíte přihlásit k registru. K tomu použijte příkaz [az acr login][az-acr-login].
 
 ```azurecli
 az acr login --name <acrName>
@@ -80,7 +80,7 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 ## <a name="list-container-images"></a>Výpis imagí kontejnerů
 
-The following example lists the repositories in your registry:
+Následující příklad vypíše úložiště v registru:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -94,7 +94,7 @@ Result
 hello-world
 ```
 
-The following example lists the tags on the **hello-world** repository.
+Následující příklad vypíše značky v úložišti **Hello-World** .
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository hello-world --output table
@@ -112,7 +112,7 @@ v1
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-When no longer needed, you can use the [az group delete][az-group-delete] command to remove the resource group, the container registry, and the container images stored there.
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, registru kontejneru a uložených imagí kontejneru použít příkaz [AZ Group Delete][az-group-delete] .
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -120,10 +120,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-In this quickstart, you created an Azure Container Registry with the Azure CLI, pushed a container image to the registry, and pulled and ran the image from the registry. Continue to the Azure Container Registry tutorials for a deeper look at ACR.
+V tomto rychlém startu jste vytvořili Azure Container Registry pomocí Azure CLI, nahráli jste image kontejneru do registru a z registru jste vyžádali a spustili image. Pokračujte Azure Container Registry výukové kurzy, kde najdete hlubší přehled na ACR.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry tutorials][container-registry-tutorial-quick-task]
+> [Kurzy Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

@@ -11,20 +11,20 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74210996"
 ---
-**Public DNS zones**
+**Veřejné zóny DNS**
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Public DNS Zones per subscription |250 <sup>1</sup> |
-| Record sets per public DNS zone |10,000 <sup>1</sup> |
-| Records per record set in public DNS zone |20 |
-| Number of Alias records for a single Azure resource |20|
-| Private DNS zones per subscription |1 000|
-| Record sets per private DNS zone |25000|
-| Records per record set for private DNS zones |20|
-| Virtual Network Links per private DNS zone |1 000|
-| Virtual Networks Links per private DNS zones with auto-registration enabled |100|
-| Number of private DNS zones a virtual network can get linked to with auto-registration enabled |1\. místo|
-| Number of private DNS zones a virtual network can get linked |1 000|
+| Veřejné Zóny DNS na předplatné |250 <sup>1</sup> |
+| Sady záznamů na veřejnou zónu DNS |10 000 <sup>1</sup> |
+| Záznamů na sadu záznamů ve veřejné zóně DNS |20 |
+| Počet záznamů aliasů pro jeden prostředek Azure |20|
+| Privátní DNS zóny na předplatné |1000|
+| Sady záznamů na privátní zónu DNS |25000|
+| Počet záznamů na sadu záznamů pro privátní zóny DNS |20|
+| Virtual Network odkazy na privátní zónu DNS |1000|
+| Odkazy na virtuální sítě podle privátních zón DNS s povolenou automatickou registrací |100|
+| Počet privátních zón DNS, na které může virtuální síť připojit s povolenou automatickou registrací |1|
+| Počet privátních zón DNS, které může virtuální síť připojit |1000|
 
-<sup>1</sup>If you need to increase these limits, contact Azure Support.
+<sup>1</sup> Pokud potřebujete tato omezení zvýšit, obraťte se na podporu Azure.

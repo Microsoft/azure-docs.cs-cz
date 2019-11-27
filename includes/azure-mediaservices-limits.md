@@ -12,49 +12,49 @@ ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224526"
 ---
 >[!NOTE]
->For resources that aren't fixed, open a support ticket to ask for an increase in the quotas. Don't create additional Azure Media Services accounts in an attempt to obtain higher limits.
+>U prostředků, které nejsou opraveny, otevřete lístek podpory, který se zeptá na zvýšení kvót. Při pokusu o získání vyšších limitů nevytvářejte další účty Azure Media Services.
 
 | Prostředek | Výchozí omezení | 
 | --- | --- | 
-| Azure Media Services accounts in a single subscription | 25 (pevné) |
-| Media reserved units per Media Services account |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
-| Jobs per Media Services account | 50 000<sup>2</sup> |
+| Účty Azure Media Services v jednom předplatném | 25 (pevné) |
+| Rezervované jednotky médií na účet Media Services |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
+| Počet úloh na účet Media Services | 50 000<sup>2</sup> |
 | Zřetězené úkoly na jednu úlohu | 30 (pevné) |
-| Assets per Media Services account | 1 000 000|
+| Prostředky na účet Media Services | 1 000 000|
 | Prostředky na jeden úkol | 50 |
 | Prostředky na jednu úlohu | 100 |
 | Jedinečné lokátory přidružené k prostředku najednou | 5<sup>4</sup> |
-| Live channels per Media Services account |5|
+| Živé kanály na účet Media Services |5|
 | Programy v zastaveném stavu na jeden kanál |50|
 | Programy ve spuštěném stavu na jeden kanál |3|
-| Streaming endpoints that are stopped or running per Media Services account|2|
+| Koncové body streamování, které se zastavily nebo spouštějí na účet Media Services|2|
 | Jednotky streamování na jeden koncový bod streamování |10 |
 | Účty úložiště | 1 000<sup>5</sup> (pevné) |
 | Zásady | 1 000 000<sup>6</sup> |
-| Velikost souboru| In some scenarios, there's a limit on the maximum file size supported for processing in Media Services.<sup>7</sup> |
+| Velikost souboru| V některých scénářích je omezení maximální velikosti souboru podporovanou pro zpracování v Media Services. <sup>7</sup> |
 
-<sup>1</sup>If you change the type, for example, from S2 to S1, the maximum reserved unit limits are reset.
+<sup>1</sup> Změníte-li typ, například z hodnoty S2 na S1, budou vynulovány maximální rezervované jednotky.
 
-<sup>2</sup>This number includes queued, finished, active, and canceled jobs. It doesn't include deleted jobs. You can delete old jobs by using **IJob.Delete** or the **DELETE** HTTP request.
+<sup>2</sup> . Toto číslo zahrnuje úlohy ve frontě, dokončených, aktivních a zrušených úlohách. Neobsahuje odstraněné úlohy. Staré úlohy můžete odstranit pomocí **IJob. Delete** nebo **odstraňte** požadavek HTTP.
 
-As of April 1, 2017, any job record in your account older than 90 days is automatically deleted, along with its associated task records. Automatic deletion occurs even if the total number of records is below the maximum quota. To archive the job and task information, use the code described in [Manage assets with the Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
+Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní, spolu s přidruženými záznamy úkolů. Automatické odstranění probíhá i v případě, že celkový počet záznamů je nižší než maximální kvóta. K archivaci informací o úlohách a úlohách použijte kód popsaný v tématu [Správa prostředků pomocí sady Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
 
-<sup>3</sup>When you make a request to list job entities, a maximum of 1,000 jobs is returned per request. To keep track of all submitted jobs, use the top or skip queries as described in [OData system query options](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
+<sup>3</sup> . Když vytvoříte požadavek na výpis entit úloh, vrátí se maximálně 1 000 úloh na jednu žádost. Pokud chcete sledovat všechny odeslané úlohy, použijte dotazy TOP nebo Skip, jak je popsáno v tématu [Možnosti dotazování systému OData](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
 
-<sup>4</sup>Locators aren't designed for managing per-user access control. To give different access rights to individual users, use digital rights management (DRM) solutions. For more information, see [Protect your content with Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
+<sup>4</sup> . Lokátory nejsou navržené pro správu řízení přístupu pro jednotlivé uživatele. K udělení různých přístupových práv jednotlivým uživatelům použijte řešení DRM (Správa digitálních práv). Další informace najdete v tématu [Ochrana obsahu pomocí Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
 
-<sup>5</sup>The storage accounts must be from the same Azure subscription.
+<sup>5</sup> . Účty úložiště musí být ze stejného předplatného Azure.
 
-<sup>6</sup>There's a limit of 1,000,000 policies for different Media Services policies. An example is for the Locator policy or ContentKeyAuthorizationPolicy. 
+<sup>6</sup> K dispozici je omezení 1 000 000 zásad pro různé zásady Media Services. Příkladem je zásada lokátoru nebo ContentKeyAuthorizationPolicy. 
 
 >[!NOTE]
-> If you always use the same days and access permissions, use the same policy ID. For information and an example, see [Manage assets with the Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
+> Pokud vždycky používáte stejné dny a přístupová oprávnění, použijte stejné ID zásad. Informace a příklad najdete v tématu [Správa assetů pomocí sady Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
 
-<sup>7</sup>The maximum size supported for a single blob is currently up to 5 TB in Azure Blob Storage. Additional limits apply in Media Services based on the VM sizes that are used by the service. The size limit applies to the files that you upload and also the files that get generated as a result of Media Services processing (encoding or analyzing). If your source file is larger than 260-GB, your Job will likely fail. 
+<sup>7</sup> Maximální velikost podporovaná pro jeden objekt BLOB je v Azure Blob Storage v současnosti až o 5 TB. V Media Services na základě velikostí virtuálních počítačů, které služba používá, platí další omezení. Omezení velikosti se vztahuje na soubory, které nahráváte, a také soubory, které se generují v důsledku zpracování Media Services (kódování nebo analýza). Pokud je zdrojový soubor větší než 260 GB, bude pravděpodobně selhání úlohy. 
 
-The following table shows the limits on the media reserved units S1, S2, and S3. If your source file is larger than the limits defined in the table, your encoding job fails. If you encode 4K resolution sources of long duration, you're required to use S3 media reserved units to achieve the performance needed. If you have 4K content that's larger than the 260-GB limit on the S3 media reserved units, open a support ticket.
+V následující tabulce jsou uvedena omezení pro rezervované jednotky médií S1, S2 a S3. Pokud je zdrojový soubor větší než omezení definovaná v tabulce, vaše úloha kódování se nezdařila. Pokud kódujete zdroje 4K rozlišení dlouhé doby trvání, budete muset použít jednotky rezervované pro médium S3 k dosažení potřebného výkonu. Pokud jste 4K obsah, který je větší než limit 260 GB na rezervované jednotky médií S3, otevřete lístek podpory.
 
-|Media reserved unit type   |Maximum input size (GB)|
+|Typ rezervované jednotky médií   |Maximální velikost vstupu (GB)|
 |---|---|
 |S1 |   26|
 |S2 | 60|

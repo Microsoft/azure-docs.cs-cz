@@ -205,7 +205,7 @@ Můžete [vytvořit výstrahy](https://docs.microsoft.com/azure/log-analytics/lo
 | Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Počet výsledků > 0   | Když tryska obdrží pomalé upozornění zákazníků z loggregator, pošle ValueMetricu **slowConsumerAlert** do Azure monitor protokolů. |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Počet výsledků > 0   | Pokud rozdílový počet ztracených událostí dosáhne prahové hodnoty, znamená to, že může dojít k potížím s trysek. |
 
-## <a name="scale"></a>Měřítko
+## <a name="scale"></a>Škálování
 
 Můžete škálovat trysku a loggregator.
 

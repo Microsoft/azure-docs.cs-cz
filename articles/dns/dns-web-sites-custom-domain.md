@@ -16,7 +16,7 @@ ms.locfileid: "74211208"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření vlastních záznamů DNS ve vlastní doméně pro webovou aplikaci 
 
-Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. For example, you can create an Azure web app and have your users access it using either www\.contoso.com or contoso.com as a fully qualified domain name (FQDN).
+Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Můžete například vytvořit webovou aplikaci Azure a k ní budou mít přístup uživatelé pomocí webové\.contoso.com nebo contoso.com jako plně kvalifikovaný název domény (FQDN).
 
 > [!NOTE]
 > V tomto kurzu se jako příklad používá doména contoso.com. Doménu contoso.com nahraďte vlastním názvem domény.
@@ -43,11 +43,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* You must have a domain name available to test with that you can host in Azure DNS . Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
+* Musíte mít k dispozici název domény pro testování, který můžete hostovat v Azure DNS. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 * [Vytvořit plán služby App Service](../app-service/app-service-web-get-started-html.md) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
 
 * Vytvořte v Azure DNS zónu DNS a prostřednictvím svého registrátora ji delegujte na Azure DNS.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 Služba App Services používá tento záznam jenom při konfiguraci, když potřebuje ověřit, že vám vlastní doména opravdu patří. Po ověření a konfiguraci vlastní domény ve službě App Service můžete tento záznam TXT odstranit.
 
 > [!NOTE]
-> If you want to verify the domain name, but not route production traffic to the web app, you only need to specify the TXT record for the verification step.  Verification does not require an A or CNAME record in addition to the TXT record.
+> Pokud chcete ověřit název domény, ale nechcete směrovat provozní provoz do webové aplikace, stačí zadat záznam TXT pro krok ověření.  Ověření kromě záznamu TXT nevyžaduje i záznam typu A ani CNAME.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,9 +173,9 @@ set-AzWebApp `
 Otevřete prohlížeč a přejděte na `http://www.<your domainname>` a `http://<you domain name>` .
 
 > [!NOTE]
-> Make sure you include the `http://` prefix, otherwise your browser may attempt to predict a URL for you!
+> Ujistěte se, že jste zahrnuli předponu `http://`. v opačném případě se může váš prohlížeč pokusit předpovědět adresu URL.
 
-Pro obě adresy URL by se vám měla zobrazit stejná stránka. Například:
+Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
 
 ![Služba aplikace Contoso](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Script action for Python packages with Jupyter on Azure HDInsight
-description: Step-by-step instructions on how to use script action to configure Jupyter notebooks available with HDInsight Spark clusters to use external python packages.
+title: Akce skriptu pro balíčky Pythonu s Jupyter ve službě Azure HDInsight
+description: Podrobné pokyny, jak pomocí akce skriptu nakonfigurovat Jupyter poznámkové bloky dostupné v clusterech HDInsight Spark, aby používaly externí balíčky Pythonu.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -14,117 +14,117 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74215548"
 ---
-# <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Safely manage Python environment on Azure HDInsight using Script Action
+# <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
 > [!div class="op_single_selector"]
-> * [Using cell magic](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Using Script Action](apache-spark-python-package-installation.md)
+> * [Použití buňky Magic](apache-spark-jupyter-notebook-use-external-packages.md)
+> * [Pomocí akce skriptu](apache-spark-python-package-installation.md)
 
-HDInsight has two built-in Python installations in the Spark cluster, Anaconda Python 2.7 and Python 3.5. In some cases, customers need to customize the Python environment, like installing external Python packages or another Python version. In this article, we show the best practice of safely managing Python environments for an [Apache Spark](https://spark.apache.org/) cluster on HDInsight.
+HDInsight obsahuje dvě vestavěné Instalace Pythonu v clusteru Spark, Anaconda Python 2,7 a Python 3,5. V některých případech si zákazníci musí přizpůsobit prostředí Python, jako je instalace externích balíčků Pythonu nebo jiné verze Pythonu. V tomto článku se seznámíme s osvědčenými postupy pro bezpečnou správu prostředí Pythonu pro cluster [Apache Spark](https://spark.apache.org/) v HDInsight.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
    > [!NOTE]  
-   > If you do not already have a Spark cluster on HDInsight Linux, you can run script actions during cluster creation. Visit the documentation on [how to use custom script actions](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+   > Pokud ještě nemáte cluster Spark v HDInsight Linux, můžete spustit akce skriptu během vytváření clusteru. Podívejte se na dokumentaci, [Jak používat akce vlastního skriptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
-## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Support for open-source software used on HDInsight clusters
+## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Podpora open source softwaru používaného v clusterech HDInsight
 
-The Microsoft Azure HDInsight service uses an ecosystem of open-source technologies formed around Apache Hadoop. Microsoft Azure provides a general level of support for open-source technologies. For more information, see [Azure Support FAQ website](https://azure.microsoft.com/support/faq/). The HDInsight service provides an additional level of support for built-in components.
+Služba Microsoft Azure HDInsight používá ekosystém open source technologií vytvořených v Apache Hadoop. Microsoft Azure poskytuje obecnou úroveň podpory pro open source technologie. Další informace najdete na [webu věnovaném nejčastějším dotazům k podpoře Azure](https://azure.microsoft.com/support/faq/). Služba HDInsight poskytuje další úroveň podpory pro integrované součásti.
 
-There are two types of open-source components that are available in the HDInsight service:
+Existují dva typy open source komponent, které jsou k dispozici ve službě HDInsight:
 
-* **Built-in components** - These components are pre-installed on HDInsight clusters and provide core functionality of the cluster. For example, Apache Hadoop YARN Resource Manager, the Apache Hive query language (HiveQL), and the Mahout library belong to this category. A full list of cluster components is available in [What's new in the Apache Hadoop cluster versions provided by HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
-* **Custom components** - You, as a user of the cluster, can install or use in your workload any component available in the community or created by you.
+* **Předdefinované komponenty** – tyto komponenty jsou předem nainstalovány v clusterech HDInsight a poskytují základní funkce clusteru. Do této kategorie patří například Apache Hadoop nitě Správce prostředků, HiveQL (Apache Hive Query Language) a Mahout Library. Úplný seznam součástí clusteru je k dispozici v [části Co je nového ve verzích Apache Hadoop clusteru poskytovaných službou HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+* **Vlastní komponenty** – jako uživatel clusteru můžete nainstalovat nebo použít ve svých úlohách libovolnou komponentu dostupnou ve komunitě nebo vytvořenou vámi.
 
 > [!IMPORTANT]
-> Components provided with the HDInsight cluster are fully supported. Microsoft Support helps to isolate and resolve issues related to these components.
+> Součásti dodávané s clusterem HDInsight jsou plně podporované. Podpora Microsoftu pomáhá izolovat a řešit problémy související s těmito součástmi.
 >
-> Custom components receive commercially reasonable support to help you to further troubleshoot the issue. Microsoft support may be able to resolve the issue OR they may ask you to engage available channels for the open source technologies where deep expertise for that technology is found. For example, there are many community sites that can be used, like: [MSDN forum for HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Also Apache projects have project sites on [https://apache.org](https://apache.org), for example: [Hadoop](https://hadoop.apache.org/).
+> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. Tato podpora může být schopná vyřešit problém nebo může požádat o zapojení dostupných kanálů pro technologie Open Source, kde se nachází hloubkové odbornosti pro danou technologii. Například existuje mnoho webů komunity, které lze použít, například [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Projekty Apache také obsahují projektové weby na [https://apache.org](https://apache.org), například: [Hadoop](https://hadoop.apache.org/).
 
-## <a name="understand-default-python-installation"></a>Understand default Python installation
+## <a name="understand-default-python-installation"></a>Principy výchozí instalace Pythonu
 
-HDInsight Spark cluster is created with Anaconda installation. There are two Python installations in the cluster, Anaconda Python 2.7 and Python 3.5. The table below shows the default Python settings for Spark, Livy, and Jupyter.
+Cluster HDInsight Spark se vytvoří s instalací Anaconda. V clusteru jsou dvě instalace Pythonu, Anaconda Python 2,7 a Python 3,5. Následující tabulka ukazuje výchozí nastavení Pythonu pro Spark, Livy a Jupyter.
 
-| |Python 2.7|Python 3.5|
+| |Python 2.7|Python 3,5|
 |----|----|----|
 |Cesta|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Default set to 2.7|Nevztahuje se|
-|Livy|Default set to 2.7|Nevztahuje se|
-|Jupyter|PySpark kernel|PySpark3 kernel|
+|Spark|Výchozí nastavení je 2,7|neuvedeno|
+|Livy|Výchozí nastavení je 2,7|neuvedeno|
+|Jupyter|Jádro PySpark|Jádro PySpark3|
 
-## <a name="safely-install-external-python-packages"></a>Safely install external Python packages
+## <a name="safely-install-external-python-packages"></a>Bezpečně instalovat externí balíčky Pythonu
 
-HDInsight cluster depends on the built-in Python environment, both Python 2.7 and Python 3.5. Directly installing custom packages in those default built-in environments may cause unexpected library version changes, and break the cluster further. In order to safely install custom external Python packages for your Spark applications, follow below steps.
+Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Python 3,5. Přímá instalace vlastních balíčků v těchto výchozích předdefinovaných prostředích může způsobit neočekávané změny verze knihovny a další rozdělení clusteru. Aby bylo možné bezpečně nainstalovat vlastní externí balíčky Pythonu pro aplikace Spark, postupujte podle následujících kroků.
 
-1. Create Python virtual environment using conda. A virtual environment provides an isolated space for your projects without breaking others. When creating the Python virtual environment, you can specify python version that you want to use. Note that you still need to create virtual environment even though you would like to use Python 2.7 and 3.5. This is to make sure the cluster’s default environment not getting broke. Run script actions on your cluster for all nodes with below script to create a Python virtual environment. 
+1. Vytvořte virtuální prostředí Python pomocí conda. Virtuální prostředí poskytuje izolovaný prostor pro vaše projekty, aniž by došlo k porušení dalších. Při vytváření virtuálního prostředí Python můžete určit verzi Pythonu, kterou chcete použít. Všimněte si, že stále potřebujete vytvořit virtuální prostředí, i když byste chtěli používat Python 2,7 a 3,5. Tím se zajistěte, aby výchozí prostředí clusteru nepodařilo přerušito. Spustí v clusteru akce skriptu pro všechny uzly s níže uvedeným skriptem, aby se vytvořilo virtuální prostředí Pythonu. 
 
-    -   `--prefix` specifies a path where a conda virtual environment lives. There are several configs that need to be changed further based on the path specified here. In this example, we use the py35new, as the cluster has an existing virtual environment called py35 already.
-    -   `python=` specifies the Python version for the virtual environment. In this example, we use version 3.5, the same version as the cluster built in one. You can also use other Python versions to create the virtual environment.
-    -   `anaconda` specifies the package_spec as anaconda to install Anaconda packages in the virtual environment.
+    -   `--prefix` Určuje cestu, ve které virtuální prostředí conda žije. V závislosti na zadané cestě je potřeba změnit několik konfigurací. V tomto příkladu používáme py35new, protože cluster má už existující virtuální prostředí s názvem py35.
+    -   `python=` určuje verzi Pythonu pro virtuální prostředí. V tomto příkladu používáme verzi 3,5, což je stejná verze jako v clusteru. K vytvoření virtuálního prostředí můžete také použít jiné verze Pythonu.
+    -   `anaconda` určuje package_spec jako Anaconda pro instalaci balíčků Anaconda ve virtuálním prostředí.
     
     ```bash
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes 
     ```
 
-2. Install external Python packages in the created virtual environment if needed. Run script actions on your cluster for all nodes with below script to install external Python packages. You need to have sudo privilege here in order to write files to the virtual environment folder.
+2. V případě potřeby nainstalujte v vytvořeném virtuálním prostředí externí balíčky Pythonu. Spustí v clusteru akce skriptu pro všechny uzly s níže uvedeným skriptem pro instalaci externích balíčků Pythonu. Aby bylo možné zapisovat soubory do složky virtuálního prostředí, musíte mít sudo oprávnění.
 
-    You can search the [package index](https://pypi.python.org/pypi) for the complete list of packages that are available. You can also get a list of available packages from other sources. For example, you can install packages made available through [conda-forge](https://conda-forge.org/feedstocks/).
+    Úplný seznam balíčků, které jsou k dispozici, můžete vyhledat v [indexu balíčku](https://pypi.python.org/pypi) . Můžete také získat seznam dostupných balíčků z jiných zdrojů. Balíčky, které jsou k dispozici například, můžete nainstalovat pomocí [conda-zfalšovat](https://conda-forge.org/feedstocks/).
 
-    -   `seaborn` is the package name that you would like to install.
-    -   `-n py35new` specify the virtual environment name that just gets created. Make sure to change the name correspondingly based on your virtual environment creation.
+    -   `seaborn` je název balíčku, který chcete nainstalovat.
+    -   `-n py35new` zadejte název virtuálního prostředí, který se právě vytvoří. Ujistěte se, že název je odpovídajícím způsobem změněn na základě vytvoření virtuálního prostředí.
 
     ```bash
     sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-    if you don't know the virtual environment name, you can SSH to the header node of the cluster and run `/usr/bin/anaconda/bin/conda info -e` to show all virtual environments.
+    Pokud neznáte název virtuálního prostředí, můžete SSH na uzel záhlaví clusteru a spustit `/usr/bin/anaconda/bin/conda info -e` pro zobrazení všech virtuálních prostředí.
 
-3. Change Spark and Livy configs and point to the created virtual environment.
+3. Změňte konfiguraci Sparku a Livy a najeďte na vytvořené virtuální prostředí.
 
-    1. Open Ambari UI, go to Spark2 page, Configs tab.
+    1. Otevřete uživatelské rozhraní Ambari, klikněte na stránku Spark2, na kartu konfigurace.
     
-        ![Change Spark and Livy config through Ambari](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        ![Změna konfigurace Sparku a Livy prostřednictvím Ambari](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
  
-    2. Expand Advanced livy2-env, add below statements at bottom. If you installed the virtual environment with a different prefix, change the path correspondingly.
+    2. Rozbalte rozšířené livy2-ENV, v dolní části přidejte níže uvedené příkazy. Pokud jste nainstalovali virtuální prostředí s jinou předponou, změňte cestu odpovídajícím způsobem.
 
         ```
         export PYSPARK_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![Change Livy config through Ambari](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        ![Změna konfigurace Livy prostřednictvím Ambari](./media/apache-spark-python-package-installation/ambari-livy-config.png)
 
-    3. Expand Advanced spark2-env, replace the existing export PYSPARK_PYTHON statement at bottom. If you installed the virtual environment with a different prefix, change the path correspondingly.
+    3. Rozbalte položku Advanced spark2-ENV, v dolní části nahraďte existující příkaz Export PYSPARK_PYTHON. Pokud jste nainstalovali virtuální prostředí s jinou předponou, změňte cestu odpovídajícím způsobem.
 
         ```
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![Change Spark config through Ambari](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        ![Změna konfigurace Sparku prostřednictvím Ambari](./media/apache-spark-python-package-installation/ambari-spark-config.png)
 
-    4. Save the changes and restart affected services. These changes need a restart of Spark2 service. Ambari UI will prompt a required restart reminder, click Restart to restart all affected services.
+    4. Uložte změny a restartujte ovlivněné služby. Tyto změny vyžadují restartování služby Spark2. Uživatelské rozhraní Ambari vás vyzve k vyžadovanámu restartování, kliknutím na restartovat restartujte všechny ovlivněné služby.
 
-        ![Change Spark config through Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Změna konfigurace Sparku prostřednictvím Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
  
-4.  If you would like to use the new created virtual environment on Jupyter. You need to change Jupyter configs and restart Jupyter. Run script actions on all header nodes with below statement to point Jupyter to the new created virtual environment. Make sure to modify the path to the prefix you specified for your virtual environment. After running this script action, restart Jupyter service through Ambari UI to make this change available.
+4.  Pokud chcete použít nové vytvořené virtuální prostředí v Jupyter. Je potřeba změnit konfigurace Jupyter a restartovat Jupyter. Spusťte akce skriptu na všech uzlech hlaviček pomocí příkazu níže, aby odkazovaly Jupyter na nové vytvořené virtuální prostředí. Nezapomeňte upravit cestu k předponě, kterou jste zadali pro vaše virtuální prostředí. Po spuštění této akce skriptu restartujte službu Jupyter prostřednictvím uživatelského rozhraní Ambari, aby tato změna byla dostupná.
 
     ```
     sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
     ```
 
-    You could double confirm the Python environment in Jupyter Notebook by running below code:
+    Prostředí Pythonu v Jupyter Notebook můžete Double potvrdit spuštěním následujícího kódu:
 
-    ![Check Python version in Jupyter Notebook](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    ![Podívejte se na verzi Pythonu v Jupyter Notebook](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
 
 ## <a name="known-issue"></a>Známý problém
 
-There is a known bug for Anaconda version 4.7.11 and 4.7.12. If you see your script actions hanging at `"Collecting package metadata (repodata.json): ...working..."` and failing with `"Python script has been killed due to timeout after waiting 3600 secs"`. You can download [this script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) and run it as script actions on all nodes to fix the issue.
+Je známá chyba pro Anaconda verze 4.7.11 a 4.7.12. Pokud se vám akce se skripty dokončí při `"Collecting package metadata (repodata.json): ...working..."` a selhání s `"Python script has been killed due to timeout after waiting 3600 secs"`. [Tento skript](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) si můžete stáhnout a spustit jako akce skriptu na všech uzlech, aby se problém vyřešil.
 
-To check your Anaconda version, you can SSH to the cluster header node and run `/usr/bin/anaconda/bin/conda --v`.
+Ke kontrole verze Anaconda můžete použít SSH na uzel hlavičky clusteru a spustit `/usr/bin/anaconda/bin/conda --v`.
 
 ## <a name="seealso"></a>Viz také
 
@@ -132,23 +132,23 @@ To check your Anaconda version, you can SSH to the cluster header node and run `
 
 ### <a name="scenarios"></a>Scénáře
 
-* [Apache Spark with BI: Perform interactive data analysis using Spark in HDInsight with BI tools](apache-spark-use-bi-tools.md)
-* [Apache Spark with Machine Learning: Use Spark in HDInsight for analyzing building temperature using HVAC data](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results](apache-spark-machine-learning-mllib-ipython.md)
-* [Website log analysis using Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI.](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
 
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Run jobs remotely on an Apache Spark cluster using Apache Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 
-* [Use external packages with Jupyter notebooks in Apache Spark clusters on HDInsight](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Použití externích balíčků s Jupyter poznámkovým blokům v clusterech s Apache Spark v HDInsight](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Apache Spark applications remotely](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Use Apache Zeppelin notebooks with an Apache Spark cluster on HDInsight](apache-spark-zeppelin-notebook.md)
-* [Kernels available for Jupyter notebook in Apache Spark cluster for HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
+* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků

@@ -1,6 +1,6 @@
 ---
-title: FAQ - Azure DNS
-description: In this article, learn about frequently asked questions about Azure DNS
+title: Nejčastější dotazy – Azure DNS
+description: V tomto článku se dozvíte o nejčastějších dotazech k Azure DNS
 services: dns
 author: asudbring
 ms.service: dns
@@ -14,193 +14,193 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74212035"
 ---
-# <a name="azure-dns-faq"></a>Azure DNS FAQ
+# <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
-## <a name="about-azure-dns"></a>About Azure DNS
+## <a name="about-azure-dns"></a>O Azure DNS
 
 ### <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
-The Domain Name System (DNS) translates, or resolves, a website or service name to its IP address. Azure DNS is a hosting service for DNS domains. It provides name resolution by using Microsoft Azure infrastructure. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
+DNS (Domain Name System) překládá nebo řeší název webu nebo služby na jeho IP adresu. Azure DNS je hostingová služba pro domény DNS. Zajišťuje překlad názvů pomocí Microsoft Azure infrastruktury. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
 
-DNS domains in Azure DNS are hosted on the Azure global network of DNS name servers. This system uses Anycast networking so that each DNS query is answered by the closest available DNS server. Azure DNS provides fast performance and high availability for your domain.
+Domény DNS v Azure DNS hostují globální síť názvových serverů DNS v Azure. Tento systém využívá síť s libovolným všesměrovým vysíláním, aby každý dotaz DNS byl zodpovězen nejbližším dostupným serverem DNS. Azure DNS poskytuje pro vaši doménu rychlý výkon a vysokou dostupnost.
 
-Azure DNS is based on Azure Resource Manager. Azure DNS benefits from Resource Manager features such as role-based access control, audit logs, and resource locking. You can manage domains and records via the Azure portal, Azure PowerShell cmdlets, and the cross-platform Azure CLI. Applications that require automatic DNS management can integrate with the service via the REST API and SDKs.
+Azure DNS je založen na Azure Resource Manager. Azure DNS výhody z funkcí Správce prostředků, jako je řízení přístupu na základě role, protokoly auditu a uzamykání prostředků. Domény a záznamy můžete spravovat prostřednictvím Azure Portal, Azure PowerShell rutin a Azure CLI pro různé platformy. Aplikace, které vyžadují automatickou správu DNS, se dají integrovat se službou prostřednictvím REST API a sad SDK.
 
-### <a name="how-much-does-azure-dns-cost"></a>How much does Azure DNS cost?
+### <a name="how-much-does-azure-dns-cost"></a>Kolik se Azure DNS náklady?
 
-The Azure DNS billing model is based on the number of DNS zones hosted in Azure DNS. It's also based on the number of DNS queries they receive. Discounts are provided based on usage.
+Model fakturace Azure DNS vychází z počtu zón DNS hostovaných v Azure DNS. Vychází taky z počtu dotazů DNS, které obdrží. Slevy se poskytují na základě využití.
 
-For more information, see the [Azure DNS pricing page](https://azure.microsoft.com/pricing/details/dns/).
+Další informace najdete na stránce s [cenami Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
 
 ### <a name="what-is-the-sla-for-azure-dns"></a>Jaká je smlouva SLA pro Azure DNS?
 
-Azure guarantees that valid DNS requests receive a response from at least one Azure DNS name server 100% of the time.
+Azure zaručuje, že platné požadavky DNS obdrží odpověď aspoň z jednoho Azure DNS názvového serveru 100% času.
 
-For more information, see the [Azure DNS SLA page](https://azure.microsoft.com/support/legal/sla/dns).
+Další informace najdete na stránce věnované [smlouvě SLA Azure DNS](https://azure.microsoft.com/support/legal/sla/dns).
 
 ### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Co je zóna DNS? Je to to samé jako doména DNS? 
 
-A domain is a unique name in the domain name system. Příklad: contoso.com.
+Doména je jedinečný název v systému DNS (Domain Name System). Příklad: contoso.com.
 
-Zóna DNS se používá k hostování záznamů DNS pro konkrétní doménu. For example, the domain contoso.com might contain several DNS records. The records might include mail.contoso.com for a mail server and www\.contoso.com for a website. These records are hosted in the DNS zone contoso.com.
+K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Například doména contoso.com může obsahovat několik záznamů DNS. Tyto záznamy můžou zahrnovat mail.contoso.com pro poštovní server a webové\.contoso.com pro web. Tyto záznamy jsou hostované v zóně DNS contoso.com.
 
-A domain name is *just a name*. A DNS zone is a data resource that contains the DNS records for a domain name. Azure DNS můžete použít k hostování zóny DNS a správě záznamů DNS pro doménu v Azure. It also provides DNS name servers to answer DNS queries from the Internet.
+Název domény je *jenom název*. Zóna DNS je datový prostředek, který obsahuje záznamy DNS pro název domény. Azure DNS můžete použít k hostování zóny DNS a správě záznamů DNS pro doménu v Azure. Poskytuje taky názvové servery DNS pro zodpovězení dotazů DNS z Internetu.
 
-### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Do I need to buy a DNS domain name to use Azure DNS? 
+### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Potřebuji si koupit název domény DNS, který se má použít Azure DNS? 
 
 Ne nutně.
 
-You don't need to buy a domain to host a DNS zone in Azure DNS. Zónu DNS můžete vytvořit kdykoli a nemusíte přitom vlastnit název příslušné domény. DNS queries for this zone resolve only if they're directed to the Azure DNS name servers assigned to the zone.
+Nemusíte kupovat doménu pro hostování zóny DNS v Azure DNS. Zónu DNS můžete vytvořit kdykoli a nemusíte přitom vlastnit název příslušné domény. Dotazy DNS pro tuto zónu se vyřeší pouze v případě, že jsou směrovány na Azure DNS názvové servery přiřazené k zóně.
 
-To link your DNS zone into the global DNS hierarchy, you must buy the domain name. Then, DNS queries from anywhere in the world find your DNS zone and answer with your DNS records.
+Pokud chcete zónu DNS propojit s globální hierarchií DNS, musíte si koupit název domény. Pak dotazy DNS z libovolného místa na světě hledají vaši zónu DNS a odpověď se záznamy DNS.
 
-## <a name="azure-dns-features"></a>Azure DNS features
+## <a name="azure-dns-features"></a>Azure DNS funkce
 
-### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Are there any restrictions when using alias records for a domain name apex with Traffic Manager?
+### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Existují nějaká omezení při použití záznamů aliasů pro název domény ve vrcholu s Traffic Manager?
 
-Ano. You must use static public IP addresses with Azure Traffic Manager. Configure the **External endpoint** target by using a static IP address. 
+Ano. Pro Azure Traffic Manager je nutné použít statické veřejné IP adresy. Nakonfigurujte cíl **externího koncového bodu** pomocí statické IP adresy. 
 
-### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Does Azure DNS support DNS-based traffic routing or endpoint failover?
+### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Podporuje Azure DNS směrování provozu založeného na DNS nebo převzetí služeb při selhání koncového bodu?
 
-DNS-based traffic routing and endpoint failover are provided by Traffic Manager. Traffic Manager is a separate Azure service that can be used with Azure DNS. For more information, see the [Traffic Manager overview](../traffic-manager/traffic-manager-overview.md).
+Směrování provozu na základě DNS a převzetí služeb při selhání koncových bodů poskytuje Traffic Manager. Traffic Manager je samostatná služba Azure, kterou lze použít s Azure DNS. Další informace najdete v [přehledu Traffic Manager](../traffic-manager/traffic-manager-overview.md).
 
-Azure DNS only supports hosting static DNS domains, where each DNS query for a given DNS record always receives the same DNS response.
+Azure DNS podporuje pouze hostování statických domén DNS, kde každý dotaz DNS pro daný záznam DNS vždy obdrží stejnou odpověď DNS.
 
-### <a name="does-azure-dns-support-domain-name-registration"></a>Does Azure DNS support domain name registration?
+### <a name="does-azure-dns-support-domain-name-registration"></a>Podporuje Azure DNS registraci názvů domén?
 
-Ne. Azure DNS doesn't currently support the option to buy domain names. To buy domains, you must use a third-party domain name registrar. The registrar typically charges a small annual fee. The domains then can be hosted in Azure DNS for management of DNS records. Další informace najdete v tématu [Delegování domény do DNS Azure](dns-domain-delegation.md).
+Ne. Azure DNS v současné době nepodporuje možnost nákupu názvů domén. K nákupu domén je nutné použít registrátora názvu domény třetí strany. Registrátor obvykle účtuje malý roční poplatek. Domény pak můžou být hostované v Azure DNS pro správu záznamů DNS. Další informace najdete v tématu [Delegování domény do DNS Azure](dns-domain-delegation.md).
 
-The feature to buy domain names is tracked in the Azure backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
+Funkce pro nákup názvů domén se sleduje v nevyřízených položkách Azure. K [registraci podpory pro tuto funkci](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar)použijte web pro zpětnou vazbu.
 
-### <a name="does-azure-dns-support-dnssec"></a>Does Azure DNS support DNSSEC?
+### <a name="does-azure-dns-support-dnssec"></a>Podporuje Azure DNS DNSSEC?
 
-Ne. Azure DNS doesn't currently support the Domain Name System Security Extensions (DNSSEC).
+Ne. Azure DNS v současné době nepodporuje rozšíření DNSSEC (Domain Name System Security Extensions).
 
-The DNSSEC feature is tracked in the Azure DNS backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support).
+Funkce DNSSEC je sledována v Azure DNS nevyřízené položky. K [registraci podpory pro tuto funkci](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support)použijte web pro zpětnou vazbu.
 
-### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Does Azure DNS support zone transfers (AXFR/IXFR)?
+### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Podporuje Azure DNS přenos zón (AXFR/IXFR)?
 
-Ne. Azure DNS doesn't currently support zone transfers. DNS zones can be [imported into Azure DNS by using the Azure CLI](dns-import-export.md). DNS records are managed via the [Azure DNS management portal](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell cmdlets](dns-operations-recordsets.md), or the [CLI tool](dns-operations-recordsets-cli.md).
+Ne. Azure DNS v současné době nepodporuje přenosy zón. Zóny DNS se dají [do Azure DNS importovat pomocí Azure CLI](dns-import-export.md). Záznamy DNS se spravují prostřednictvím [portálu pro správu Azure DNS](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [sady SDK](dns-sdk.md), [rutin PowerShellu](dns-operations-recordsets.md)nebo [nástroje CLI](dns-operations-recordsets-cli.md).
 
-The zone transfer feature is tracked in the Azure DNS backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
+Funkce přenosu zóny je sledována v Azure DNS nevyřízené položky. K [registraci podpory pro tuto funkci](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)použijte web pro zpětnou vazbu.
 
-### <a name="does-azure-dns-support-url-redirects"></a>Does Azure DNS support URL redirects?
+### <a name="does-azure-dns-support-url-redirects"></a>Podporuje Azure DNS přesměrování adresy URL?
 
-Ne. URL redirect services aren't a DNS service. They work at the HTTP level rather than the DNS level. Some DNS providers bundle a URL redirect service as part of their overall offering. This service isn't currently supported by Azure DNS.
+Ne. Služby přesměrování adresy URL nejsou službou DNS. Fungují na úrovni HTTP, nikoli na úrovni DNS. Někteří poskytovatelé DNS naváže službu přesměrování adresy URL jako součást své celkové nabídky. Služba Azure DNS aktuálně nepodporuje tuto službu.
 
-The URL redirect feature is tracked in the Azure DNS backlog. Use the feedback site to [register your support for this feature](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
+Funkce přesměrování adresy URL je sledována v Azure DNS nevyřízené položky. K [registraci podpory pro tuto funkci](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)použijte web pro zpětnou vazbu.
 
-### <a name="does-azure-dns-support-the-extended-ascii-encoding-8-bit-set-for-txt-record-sets"></a>Does Azure DNS support the extended ASCII encoding (8-bit) set for TXT record sets?
+### <a name="does-azure-dns-support-the-extended-ascii-encoding-8-bit-set-for-txt-record-sets"></a>Podporuje Azure DNS rozšířené kódování ASCII (8bitové) nastavené pro sady záznamů TXT?
 
-Ano. Azure DNS supports the extended ASCII encoding set for TXT record sets. But you must use the latest version of the Azure REST APIs, SDKs, PowerShell, and the CLI. Versions older than October 1, 2017, or SDK 2.1 don't support the extended ASCII set. 
+Ano. Azure DNS podporuje sadu rozšířených kódování ASCII pro sady záznamů TXT. Musíte ale použít nejnovější verzi rozhraní Azure REST API, sady SDK, PowerShellu a rozhraní příkazového řádku. Verze starší než 1. října 2017 nebo SDK 2,1 nepodporují rozšířené sady ASCII. 
 
-For example, you might provide a string as the value for a TXT record that has the extended ASCII character \128. An example is "abcd\128efgh." Azure DNS uses the byte value of this character, which is 128, in internal representation. At the time of DNS resolution, this byte value is returned in the response. Also note that "abc" and "\097\098\099" are interchangeable as far as resolution is concerned. 
+Jako hodnotu pro záznam TXT můžete zadat například řetězec, který má rozšířený znak ASCII \ 128. Příkladem je "abcd\128efgh." Azure DNS používá hodnotu bajtu tohoto znaku, který je 128 v interní reprezentaci. V době překladu DNS se tato bajtová hodnota vrátí v odpovědi. Všimněte si také, že "ABC" a "\ 097 \ 098 \ 099" jsou zaměnitelné, pokud jde o řešení. 
 
-We follow [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) zone file master format escape rules for TXT records. For example, `\` now actually escapes everything per the RFC. If you specify `A\B` as the TXT record value, it's represented and resolved as just `AB`. If you really want the TXT record to have `A\B` at resolution, you need to escape the `\` again. As an example, specify `A\\B`.
+Pro záznamy TXT dodržujeme pravidla řídicího vzoru souboru zóny [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) . Například `\` aktuálně řídí vše na základě RFC. Pokud zadáte `A\B` jako hodnotu záznamu TXT, bude reprezentovaná a vyřešena jako pouze `AB`. Pokud opravdu chcete, aby měl záznam TXT `A\B` při řešení, je nutné `\` znovu spustit. Jako příklad zadejte `A\\B`.
 
-This support currently isn't available for TXT records created from the Azure portal.
+Tato podpora není aktuálně k dispozici pro záznamy TXT vytvořené z Azure Portal.
 
 ## <a name="alias-records"></a>Záznamy aliasů
 
-### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>What are some scenarios where alias records are useful?
+### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>Jaké jsou některé scénáře, kde jsou záznamy aliasů užitečné?
 
-See the scenarios section in the [Azure DNS alias records overview](dns-alias.md).
+Další informace najdete v části scénáře v tématu [Azure DNS – přehled záznamů aliasů](dns-alias.md).
 
-### <a name="what-record-types-are-supported-for-alias-record-sets"></a>What record types are supported for alias record sets?
+### <a name="what-record-types-are-supported-for-alias-record-sets"></a>Jaké typy záznamů jsou podporovány pro sady záznamů aliasů?
 
-Alias record sets are supported for the following record types in an Azure DNS zone:
+Sady záznamů aliasů jsou podporovány pro následující typy záznamů v zóně Azure DNS:
  
 - A 
 - AAAA
 - CNAME 
 
-### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>What resources are supported as targets for alias record sets?
+### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Jaké prostředky se podporují jako cíle pro sady záznamů aliasů?
 
-- **Point to a public IP resource from a DNS A/AAAA record set.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource.
-- **Point to a Traffic Manager profile from a DNS A/AAAA/CNAME record set.** You can point to the CNAME of a Traffic Manager profile from a DNS CNAME record set. An example is contoso.trafficmanager.net. Now, you also can point to a Traffic Manager profile that has external endpoints from an A or AAAA record set in your DNS zone.
-- **Point to an Azure Content Delivery Network (CDN) endpoint**. This is useful when you create static websites using Azure storage and Azure CDN.
-- **Point to another DNS record set within the same zone.** Alias records can reference to other record sets of the same type. Můžete mít například sadu záznamů DNS CNAME nastavenou jako alias pro jinou sadu záznamů CNAME stejného typu. This arrangement is useful if you want some record sets to be aliases and some non-aliases.
+- **Najeďte na prostředek veřejné IP adresy ze sady záznamů DNS A/AAAA.** Můžete vytvořit sadu záznamů a/AAAA a nastavit ji jako záznam aliasu, aby odkazoval na prostředek veřejné IP adresy.
+- **Najeďte na profil Traffic Manager ze sady záznamů DNS A/AAAA/CNAME.** Můžete Ukázat na záznam CNAME profilu Traffic Manager ze sady záznamů DNS CNAME. Příkladem je contoso.trafficmanager.net. Nyní můžete také Ukázat na profil Traffic Manager, který obsahuje externí koncové body ze sady záznamů A nebo AAAA v zóně DNS.
+- **Najeďte na koncový bod Azure Content Delivery Network (CDN)** . To je užitečné při vytváření statických webů s využitím služby Azure Storage a Azure CDN.
+- **Najeďte na jinou sadu záznamů DNS ve stejné zóně.** Záznamy aliasů mohou odkazovat na jiné sady záznamů stejného typu. Můžete mít například sadu záznamů DNS CNAME nastavenou jako alias pro jinou sadu záznamů CNAME stejného typu. Toto uspořádání je užitečné, pokud chcete, aby některé sady záznamů byly aliasy a některé jiné než aliasy.
 
-### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Can I create and update alias records from the Azure portal?
+### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Můžu vytvářet a aktualizovat záznamy aliasů z Azure Portal?
 
-Ano. You can create or manage alias records in the Azure portal along with the Azure REST APIs, PowerShell, the CLI, and SDKs.
+Ano. Můžete vytvářet nebo spravovat záznamy s aliasy v Azure Portal společně s rozhraními API Azure REST, PowerShellu, CLI a sady SDK.
 
-### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Will alias records help to make sure my DNS record set is deleted when the underlying public IP is deleted?
+### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Povede záznamy aliasů k zajištění odstranění sady záznamů DNS při odstranění základní veřejné IP adresy?
 
-Ano. This feature is one of the core capabilities of alias records. It helps you avoid potential outages for users of your application.
+Ano. Tato funkce je jednou ze základních funkcí záznamů aliasů. Pomáhá vyhnout se potenciálním výpadkům pro uživatele aplikace.
 
-### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Will alias records help to make sure my DNS record set is updated to the correct IP address when the underlying public IP address changes?
+### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Poznáte záznamy aliasů, aby se zajistilo, že se sada záznamů DNS aktualizuje na správnou IP adresu při změně základní veřejné IP adresy?
 
-Ano. This feature is one of the core capabilities of alias records. It helps you avoid potential outages or security risks for your application.
+Ano. Tato funkce je jednou ze základních funkcí záznamů aliasů. Pomáhá vyhnout se potenciálním výpadkům nebo bezpečnostním rizikům vaší aplikace.
 
-### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Are there any restrictions when using alias record sets for A or AAAA records to point to Traffic Manager?
+### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Existují nějaká omezení při použití sad záznamů aliasů pro záznamy AAAA a odkazují na Traffic Manager?
 
-Ano. To point to a Traffic Manager profile as an alias from an A or AAAA record set, the Traffic Manager profile must use only external endpoints. When you create the external endpoints in Traffic Manager, provide the actual IP addresses of the endpoints.
+Ano. Aby odkazoval na profil Traffic Manager jako alias ze sady záznamů A nebo AAAA, Traffic Manager profil musí používat jenom externí koncové body. Při vytváření externích koncových bodů v Traffic Manager zadejte vlastní IP adresy koncových bodů.
 
-### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Is there an additional charge to use alias records?
+### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Existují další poplatky za použití záznamů aliasů?
 
-Alias records are a qualification on a valid DNS record set. There's no additional billing for alias records.
+Záznamy aliasů jsou kvalifikací pro platnou sadu záznamů DNS. Pro záznamy aliasů se neúčtují žádné další fakturace.
 
-## <a name="use-azure-dns"></a>Use Azure DNS
+## <a name="use-azure-dns"></a>Použít Azure DNS
 
-### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Can I co-host a domain by using Azure DNS and another DNS provider?
+### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Je možné doménu hostovat pomocí Azure DNS a jiného poskytovatele DNS?
 
-Ano. Azure DNS supports co-hosting domains with other DNS services.
+Ano. Azure DNS podporuje souběžné hostování domén s jinými službami DNS.
 
-To set up co-hosting, modify the NS records for the domain to point to the name servers of both providers. The name server (NS) records control which providers receive DNS queries for the domain. You can modify these NS records in Azure DNS, in the other provider, and in the parent zone. The parent zone is typically configured via the domain name registrar. For more information on DNS delegation, see [DNS domain delegation](dns-domain-delegation.md).
+Chcete-li nastavit spoluhostování, upravte záznamy NS pro doménu tak, aby odkazovaly na názvové servery obou zprostředkovatelů. Záznamy názvového serveru (NS) určují, kteří zprostředkovatelé obdrží dotazy DNS pro doménu. Tyto záznamy NS můžete upravit v Azure DNS, v druhém poskytovateli a v nadřazené zóně. Nadřazená zóna je obvykle nakonfigurována prostřednictvím registrátora názvu domény. Další informace o delegování DNS najdete v tématu [delegování domény DNS](dns-domain-delegation.md).
 
-Also, make sure that the DNS records for the domain are in sync between both DNS providers. Azure DNS doesn't currently support DNS zone transfers. DNS records must be synchronized by using either the [Azure DNS management portal](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell cmdlets](dns-operations-recordsets.md), or the [CLI tool](dns-operations-recordsets-cli.md).
+Také se ujistěte, že jsou mezi poskytovateli DNS synchronizovány záznamy DNS pro tuto doménu. Azure DNS v současné době nepodporuje přenosy zón DNS. Záznamy DNS se musí synchronizovat pomocí [portálu pro správu Azure DNS](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [sady SDK](dns-sdk.md), [rutin PowerShellu](dns-operations-recordsets.md)nebo [nástroje CLI](dns-operations-recordsets-cli.md).
 
-### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Do I have to delegate my domain to all four Azure DNS name servers?
+### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Je nutné delegovat doménu na všechny čtyři Azure DNS názvové servery?
 
-Ano. Azure DNS assigns four name servers to each DNS zone. This arrangement is for fault isolation and increased resilience. To qualify for the Azure DNS SLA, delegate your domain to all four name servers.
+Ano. Azure DNS přiřadí každé zóně DNS čtyři názvové servery. Toto uspořádání představuje izolaci chyb a zvýšenou odolnost. Pokud chcete získat nárok na smlouvu SLA pro Azure DNS, přejmenujte svoji doménu na všechny čtyři názvové servery.
 
-### <a name="what-are-the-usage-limits-for-azure-dns"></a>What are the usage limits for Azure DNS?
+### <a name="what-are-the-usage-limits-for-azure-dns"></a>Jaká jsou omezení využití pro Azure DNS?
 
-The following default limits apply when you use Azure DNS.
+Při použití Azure DNS platí následující výchozí omezení.
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
-### <a name="can-i-move-an-azure-dns-zone-between-resource-groups-or-between-subscriptions"></a>Can I move an Azure DNS zone between resource groups or between subscriptions?
+### <a name="can-i-move-an-azure-dns-zone-between-resource-groups-or-between-subscriptions"></a>Je možné přesunout zónu Azure DNS mezi skupinami prostředků nebo mezi předplatnými?
 
-Ano. DNS zones can be moved between resource groups or between subscriptions.
+Ano. Zóny DNS se dají přesouvat mezi skupinami prostředků nebo mezi předplatnými.
 
-There's no effect on DNS queries when you move a DNS zone. The name servers assigned to the zone stay the same. DNS queries are processed as normal throughout.
+Při přesunu zóny DNS nebude mít žádný vliv na dotazy DNS. Názvové servery přiřazené k zóně zůstávají stejné. Dotazy DNS se zpracovávají jako normální v celém rozsahu.
 
-For more information and instructions on how to move DNS zones, see [Move resources to a new resource group or subscription](../azure-resource-manager/resource-group-move-resources.md).
+Další informace a pokyny, jak přesunout zóny DNS, najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 
-### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>How long does it take for DNS changes to take effect?
+### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>Jak dlouho trvá, než se změny DNS projeví?
 
-New DNS zones and DNS records typically appear in the Azure DNS name servers quickly. The timing is a few seconds.
+Nové zóny DNS a záznamy DNS se obvykle zobrazují ve Azure DNS názvové servery. Časování je několik sekund.
 
-Changes to existing DNS records can take a little longer. They typically appear in the Azure DNS name servers within 60 seconds. DNS caching by DNS clients and DNS recursive resolvers outside of Azure DNS also can affect timing. To control this cache duration, use the Time-To-Live (TTL) property of each record set.
+Změny stávajících záznamů DNS můžou trvat trochu déle. Obvykle se zobrazují v Azure DNS názvových serverech do 60 sekund. Ukládání DNS do mezipaměti pro klienty DNS a rekurzivní překladače DNS mimo Azure DNS může ovlivnit také časování. K řízení této doby trvání mezipaměti použijte vlastnost TTL (Time to Live) každé sady záznamů.
 
-### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>How can I protect my DNS zones against accidental deletion?
+### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>Jak můžu chránit své zóny DNS před náhodným odstraněním?
 
-Azure DNS is managed by using Azure Resource Manager. Azure DNS benefits from the access control features that Azure Resource Manager provides. Role-based access control controls which users have read or write access to DNS zones and record sets. Resource locks prevent accidental modification or deletion of DNS zones and record sets.
+Azure DNS se spravují pomocí Azure Resource Manager. Azure DNS výhody z funkcí řízení přístupu, které Azure Resource Manager poskytuje. Řízení přístupu na základě role řídí, kteří uživatelé mají přístup pro čtení nebo zápis do zón a sad záznamů DNS. Zámky prostředků zabraňují náhodnému úpravám nebo odstraňování zón a sad záznamů DNS.
 
-For more information, see [Protect DNS zones and records](dns-protect-zones-recordsets.md).
+Další informace najdete v tématu [ochrana záznamů a zón DNS](dns-protect-zones-recordsets.md).
 
-### <a name="how-do-i-set-up-spf-records-in-azure-dns"></a>How do I set up SPF records in Azure DNS?
+### <a name="how-do-i-set-up-spf-records-in-azure-dns"></a>Návody nastavit v Azure DNS záznamy SPF?
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
-### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Do Azure DNS name servers resolve over IPv6? 
+### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Řeší Azure DNS názvové servery přes IPv6? 
 
-Ano. Azure DNS name servers are dual stack. Dual stack means they have IPv4 and IPv6 addresses. To find the IPv6 address for the Azure DNS name servers assigned to your DNS zone, use a tool such as nslookup. Příklad: `nslookup -q=aaaa <Azure DNS Nameserver>`.
+Ano. Azure DNS názvové servery jsou duální zásobníky. Duální zásobník znamená, že mají adresy IPv4 a IPv6. Pokud chcete najít adresu IPv6 pro Azure DNS názvové servery přiřazené k zóně DNS, použijte nástroj, jako je například Nslookup. Příklad: `nslookup -q=aaaa <Azure DNS Nameserver>`.
 
-### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>How do I set up an IDN in Azure DNS?
+### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>Návody nastavit IDN v Azure DNS?
 
-Internationalized domain names (IDNs) encode each DNS name by using [punycode](https://en.wikipedia.org/wiki/Punycode). DNS queries are made by using these punycode-encoded names.
+Mezinárodní názvy domén (IDN) zakódují jednotlivé názvy DNS pomocí [Punycode](https://en.wikipedia.org/wiki/Punycode). Dotazy DNS se provádějí pomocí těchto názvů kódovaných v Punycode.
 
-To configure IDNs in Azure DNS, convert the zone name or record set name to punycode. Azure DNS doesn't currently support built-in conversion to or from punycode.
+Pokud chcete nakonfigurovat IDN v Azure DNS, převeďte název zóny nebo název sady záznamů na Punycode. Azure DNS v současné době nepodporuje integrovaný převod na nebo z Punycode.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Learn more about Azure DNS](dns-overview.md).
+- [Přečtěte si další informace o Azure DNS](dns-overview.md).
 
-- [Learn more about how to use Azure DNS for private domains](private-dns-overview.md).
+- [Přečtěte si další informace o použití Azure DNS u privátních domén](private-dns-overview.md).
 
-- [Learn more about DNS zones and records](dns-zones-records.md).
+- [Přečtěte si další informace o zónách a záznamech DNS](dns-zones-records.md).
 
-- [Get started with Azure DNS](dns-getstarted-portal.md).
+- [Začínáme s Azure DNS](dns-getstarted-portal.md).

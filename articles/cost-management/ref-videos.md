@@ -1,6 +1,6 @@
 ---
-title: Training videos for Cloudyn in Azure | Microsoft Docs
-description: The training videos for Cloudyn walk you through getting started and using its features.
+title: Školení videa pro Cloudyn v Azure | Dokumentace Microsoftu
+description: Školicí videa pro Cloudyn vás provedou získávání spuštění a používání jeho funkcí.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,58 +17,58 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229914"
 ---
-# <a name="cloudyn-walk-through-training-videos"></a>Cloudyn walk-through training videos
+# <a name="cloudyn-walk-through-training-videos"></a>Cloudyn názorném postupu Školicí videa
 
-The following videos provide demonstrations to walk you through getting started with Cloudyn and using its features. Cloudyn supports multi-cloud cost tracking and optimization including Microsoft Azure, Amazon Web Services, and Google Cloud Platform.
+Následující videa poskytují ukázek vás provede zahájení práce s Cloudyn a používání jeho funkcí. Cloudyn podporuje multicloudové sledování nákladů a optimalizace, včetně Microsoft Azure, Amazon Web Services a Google Cloud Platform.
 
-## <a name="overview-video"></a>Přehledové video
+## <a name="overview-video"></a>Přehled – video
 
-[Introduction to Cloudyn](https://youtu.be/NWIRny6Wpsk)
+[Úvod do Cloudyn](https://youtu.be/NWIRny6Wpsk)
 
 >[!VIDEO https://www.youtube.com/embed/NWIRny6Wpsk]
 
-## <a name="walk-through-videos"></a>Walk-through videos
+## <a name="walk-through-videos"></a>Návod, jak videa
 
-[Analyzing your cloud billing data vs. time with Cloudyn](https://youtu.be/7LsVPHglM0g)
+[Analýza fakturačních dat cloudu vs. čas pomocí Cloudyn](https://youtu.be/7LsVPHglM0g)
 
 >[!VIDEO https://www.youtube.com/embed/7LsVPHglM0g]
 
-[Adding Users to Cloudyn](https://youtu.be/Nzn7GLahx30)
+[Přidávání uživatelů do Cloudyn](https://youtu.be/Nzn7GLahx30)
 
 >[!VIDEO https://www.youtube.com/embed/Nzn7GLahx30?ecver=1]
 
-[Creating a Cost Entity Hierarchy in Cloudyn](https://youtu.be/dAd9G7u0FmU)
+[Vytvoření hierarchie entit nákladů v Cloudyn](https://youtu.be/dAd9G7u0FmU)
 
 >[!VIDEO https://www.youtube.com/embed/dAd9G7u0FmU?ecver=1]
 
-[Optimizing VM Size in Cloudyn](https://youtu.be/1xaZBNmV704)
+[Optimalizace velikosti virtuálních počítačů v Cloudyn](https://youtu.be/1xaZBNmV704)
 
 >[!VIDEO https://www.youtube.com/embed/1xaZBNmV704?ecver=1]
 
-[Defining a Cost Allocation Model in Cloudyn](https://youtu.be/FJzof_agKHY)
+[Definování modelu přidělení nákladů v Cloudyn](https://youtu.be/FJzof_agKHY)
 
 >[!VIDEO https://www.youtube.com/embed/FJzof_agKHY?ecver=1]
 
-[Defining Custom Charges in Cloudyn](https://youtu.be/3HcgkGPQjXE)
+[Definování vlastních poplatků v Cloudyn](https://youtu.be/3HcgkGPQjXE)
 
 >[!VIDEO https://www.youtube.com/embed/3HcgkGPQjXE?ecver=1]
 
-[How to Find Your EA Enrollment ID and API Key for use in Cloudyn](https://youtu.be/u_phLs_udig)
+[Jak najít ID registrace EA a klíč rozhraní API pro použití v Cloudyn](https://youtu.be/u_phLs_udig)
 
 >[!VIDEO https://www.youtube.com/embed/u_phLs_udig?ecver=1]
 
-[Finding your Directory GUID and Rate ID for use in Cloudyn](https://youtu.be/PaRjnyaNGMI)
+[Hledání identifikátoru GUID adresáře a ID míry pro použití v Cloudyn](https://youtu.be/PaRjnyaNGMI)
 
 >[!VIDEO https://www.youtube.com/embed/PaRjnyaNGMI?ecver=1]
 
-[Assigning Accounts and Subscriptions to Cost Entities in Cloudyn](https://youtu.be/d9uTWSdoQYo)
+[Přiřazení účtů a předplatných k cenovým entitám v Cloudyn](https://youtu.be/d9uTWSdoQYo)
 
 >[!VIDEO https://www.youtube.com/embed/d9uTWSdoQYo?ecver=1]
 
-[Connecting to Azure Resource Manager with Cloudyn](https://youtu.be/oCIwvfBB6kk)
+[Připojení k Azure Resource Manager pomocí Cloudyn](https://youtu.be/oCIwvfBB6kk)
 
 >[!VIDEO https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1]
 
-[Analyzing your cloud billing data with Cloudyn](https://youtu.be/G0pvI3iLH-Y)
+[Analýza údajů o fakturaci cloudu pomocí Cloudyn](https://youtu.be/G0pvI3iLH-Y)
 
 >[!VIDEO https://www.youtube.com/embed/G0pvI3iLH-Y?ecver=1]

@@ -25,10 +25,10 @@ Azure Traffic Manager je nástroj pro vyrovnávání zatížení provozu na zák
 Traffic Manager pomocí DNS směruje požadavky klientů do nejvhodnějšího koncového bodu služby v závislosti na metodě směrování provozu a stavu koncových bodů. Koncový bod je jakákoli internetová služba hostovaná v rámci nebo mimo Azure. Traffic Manager poskytuje celou řadu [metod směrování provozu](traffic-manager-routing-methods.md) a [možností monitorování koncových bodů](traffic-manager-monitoring.md), takže vyhovuje různým požadavkům aplikací a modelům automatického převzetí služeb při selhání. Služba Traffic Manager je odolná vůči selhání, a to i selhání celé oblasti Azure.
 
 >[!NOTE]
-> Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. Pokud chcete zajistit ukončování protokolu TLS (tzv. přesměrování zpracování SSL) nebo zpracování jednotlivých požadavků HTTP nebo HTTPS na úrovni aplikace, přečtěte si o službě [Application Gateway](../application-gateway/application-gateway-introduction.md). If you are looking for regional load balancing, review [Load Balancer](../load-balancer/load-balancer-overview.md). Vašim kompletním scénářům by mohla prospět kombinace těchto řešení podle potřeby.
+> Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. Pokud chcete zajistit ukončování protokolu TLS (tzv. přesměrování zpracování SSL) nebo zpracování jednotlivých požadavků HTTP nebo HTTPS na úrovni aplikace, přečtěte si o službě [Application Gateway](../application-gateway/application-gateway-introduction.md). Pokud hledáte regionální vyrovnávání zatížení, přečtěte si [Load Balancer](../load-balancer/load-balancer-overview.md). Vašim kompletním scénářům by mohla prospět kombinace těchto řešení podle potřeby.
 >
-> For an Azure load-balancing options comparison, see [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
-Traffic Manager offers following features:
+> Porovnání možností vyrovnávání zatížení Azure najdete v tématu [Přehled možností vyrovnávání zatížení v Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+Traffic Manager nabízí následující funkce:
 
 ## <a name="increase-application-availability"></a>Zvýšení dostupnosti aplikací
 
@@ -40,7 +40,7 @@ Azure umožňuje provozovat cloudové služby nebo weby v datacentrech umístěn
 
 ## <a name="perform-service-maintenance-without-downtime"></a>Provádění údržby služeb bez výpadků
 
-U svých aplikací můžete provádět operace plánované údržby bez jakýchkoli výpadků. Traffic Manager can direct traffic to alternative endpoints while the maintenance is in progress.
+U svých aplikací můžete provádět operace plánované údržby bez jakýchkoli výpadků. Traffic Manager může směrovat provoz do alternativních koncových bodů, zatímco probíhá údržba.
 
 ## <a name="combine-hybrid-applications"></a>Kombinace hybridních aplikací
 
@@ -48,7 +48,7 @@ Traffic Manager podporuje externí koncové body mimo Azure a díky tomu umožň
 
 ## <a name="distribute-traffic-for-complex-deployments"></a>Distribuce provozu pro komplexní nasazení
 
-Using [nested Traffic Manager profiles](traffic-manager-nested-profiles.md), multiple traffic-routing methods can be combined to create sophisticated and flexible rules to scale to the needs of larger, more complex deployments.
+Pomocí [vnořených profilů Traffic Manager](traffic-manager-nested-profiles.md)lze kombinovat různé metody směrování provozu, aby bylo možné vytvářet sofistikovaná a flexibilní pravidla pro škálování na požadavky většího, složitějšího nasazení.
 
 ## <a name="pricing"></a>Ceny
 

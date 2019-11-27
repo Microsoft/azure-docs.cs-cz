@@ -15,7 +15,7 @@ ms.date: 11/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 039176f2c546aa933d3a87ded8b6ded94e485d74
 ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74280645"
@@ -109,7 +109,7 @@ Můžete zadat následující typy metadat v seznamu pole získat aktivitu metad
 }
 ```
 
-**Dataset**
+**Integrován**
 
 ```json
 {
