@@ -1,6 +1,6 @@
 ---
-title: IP firewall rules
-description: Configure server-level IP firewall rules for a SQL database or SQL Data Warehouse firewall. Manage access and configure database-level IP firewall rules for a single or pooled database.
+title: Pravidla brány firewall protokolu IP
+description: Nakonfigurujte pravidla brány firewall protokolu IP na úrovni serveru pro databázi SQL nebo bránu SQL Data Warehouse firewall. Spravujte přístup a nakonfigurujte pravidla brány firewall protokolu IP na úrovni databáze pro jednu nebo sdruženou databázi.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -19,165 +19,165 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481446"
 ---
-# <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database and Azure SQL Data Warehouse IP firewall rules
+# <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database a Azure SQL Data Warehouse pravidla brány firewall protokolu IP
 
 > [!NOTE]
-> This article applies to Azure SQL servers, and to both Azure SQL Database and Azure SQL Data Warehouse databases on an Azure SQL server. For simplicity, *SQL Database* is used to refer to both SQL Database and SQL Data Warehouse.
+> Tento článek se týká serverů SQL Azure a databází Azure SQL Database i Azure SQL Data Warehouse na serveru Azure SQL. Pro zjednodušení *SQL Database* se používá pro odkazování na SQL Database a SQL Data Warehouse.
 
 > [!IMPORTANT]
-> This article does *not* apply to *Azure SQL Database Managed Instance*. For information about network configuration, see [Connect your application to Azure SQL Database Managed Instance](sql-database-managed-instance-connect-app.md).
+> Tento článek se *nevztahuje na* *Azure SQL Database spravovanou instanci*. Informace o konfiguraci sítě najdete v tématu [připojení aplikace k Azure SQL Database Managed instance](sql-database-managed-instance-connect-app.md).
 
-When you create a new Azure SQL server named *mysqlserver*, for example, the SQL Database firewall blocks all access to the public endpoint for the server (which is accessible at *mysqlserver.database.windows.net*).
+Když vytvoříte nový server SQL Azure s názvem *MySQLServer*, brána firewall SQL Database blokuje veškerý přístup k veřejnému koncovému bodu pro server (který je dostupný na *MySQLServer.Database.Windows.NET*).
 
 > [!IMPORTANT]
-> SQL Data Warehouse only supports server-level IP firewall rules. It doesn't support database-level IP firewall rules.
+> SQL Data Warehouse podporuje jenom pravidla brány firewall protokolu IP na úrovni serveru. Nepodporuje pravidla brány firewall protokolu IP na úrovni databáze.
 
-## <a name="how-the-firewall-works"></a>How the firewall works
-Connection attempts from the internet and Azure must pass through the firewall before they reach your SQL server or SQL database, as the following diagram shows.
+## <a name="how-the-firewall-works"></a>Jak funguje brána firewall
+Pokusy o připojení z Internetu a Azure musí projít přes bránu firewall, aby se dostaly na SQL Server nebo SQL Database, jak ukazuje následující diagram.
 
-   ![Firewall configuration diagram][1]
+   ![Diagram konfigurace brány firewall][1]
 
 ### <a name="server-level-ip-firewall-rules"></a>Pravidla firewallu protokolu IP na úrovni serveru
 
-  These rules enable clients to access your entire Azure SQL server, that is, all the databases within the same SQL Database server. The rules are stored in the *master* database. You can have a maximum of 128 server-level IP firewall rules for an Azure SQL Server.
+  Tato pravidla umožňují klientům přístup k celému serveru SQL Azure, to znamená všem databázím v rámci stejného serveru SQL Database. Pravidla jsou uložena v *Hlavní* databázi. Pro SQL Server Azure můžete mít maximálně 128 pravidel brány firewall protokolu IP na úrovni serveru.
   
-  You can configure server-level IP firewall rules by using the Azure portal, PowerShell, or Transact-SQL statements.
-  - To use the portal or PowerShell, you must be the subscription owner or a subscription contributor.
-  - To use Transact-SQL, you must connect to the SQL Database instance as the server-level principal login or as the Azure Active Directory administrator. (A server-level IP firewall rule must first be created by a user who has Azure-level permissions.)
+  Pravidla brány firewall protokolu IP na úrovni serveru můžete nakonfigurovat pomocí příkazů Azure Portal, PowerShellu nebo jazyka Transact-SQL.
+  - Pokud chcete používat portál nebo PowerShell, musíte být vlastníkem předplatného nebo přispěvatelem předplatného.
+  - Chcete-li použít jazyk Transact-SQL, je nutné se připojit k instanci SQL Database jako přihlašovací jméno hlavního objektu na úrovni serveru nebo jako správce Azure Active Directory. (Pravidlo brány firewall protokolu IP na úrovni serveru musí být nejdřív vytvořené uživatelem, který má oprávnění na úrovni Azure.)
 
-### <a name="database-level-ip-firewall-rules"></a>Database-level IP firewall rules
+### <a name="database-level-ip-firewall-rules"></a>Pravidla brány firewall protokolu IP na úrovni databáze
 
-  These rules enable clients to access certain (secure) databases within the same SQL Database server. You create the rules for each database (including the *master* database), and they're stored in the individual database.
+  Tato pravidla umožňují klientům přístup k určitým (zabezpečeným) databázím v rámci stejného serveru SQL Database. Pravidla můžete vytvořit pro každou databázi (včetně *Hlavní* databáze) a ukládají se do jednotlivých databází.
   
-  You can only create and manage database-level IP firewall rules for master and user databases by using Transact-SQL statements and only after you configure the first server-level firewall.
+  Pravidla brány firewall na úrovni databáze pro hlavní a uživatelské databáze můžete vytvářet a spravovat pouze pomocí příkazů jazyka Transact-SQL a až po nakonfigurování první brány firewall na úrovni serveru.
   
-  If you specify an IP address range in the database-level IP firewall rule that's outside the range in the server-level IP firewall rule, only those clients that have IP addresses in the database-level range can access the database.
+  Pokud zadáte rozsah IP adres do pravidla brány firewall protokolu IP na úrovni databáze, které je mimo rozsah v pravidle brány firewall protokolu IP na úrovni serveru, budou mít přístup k databázi jenom klienti, kteří mají IP adresy v rozsahu na úrovni databáze.
   
-  You can have a maximum of 128 database-level IP firewall rules for a database. For more information about configuring database-level IP firewall rules, see the example later in this article and see [sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx).
+  Pro databázi můžete mít maximálně 128 pravidel brány firewall protokolu IP na úrovni databáze. Další informace o konfiguraci pravidel brány firewall na úrovni databáze najdete v příkladu dále v tomto článku a v tématu [sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx).
 
-### <a name="recommendations-for-how-to-set-firewall-rules"></a>Recommendations for how to set firewall rules
+### <a name="recommendations-for-how-to-set-firewall-rules"></a>Doporučení pro nastavení pravidel brány firewall
 
-We recommend that you use database-level IP firewall rules whenever possible. This practice enhances security and makes your database more portable. Use server-level IP firewall rules for administrators. Also use them when you have many databases that have the same access requirements, and you don't want to configure each database individually.
+Pokud je to možné, doporučujeme použít pravidla brány firewall na úrovni databáze. Tento postup zvyšuje zabezpečení a zajišťuje větší přenositelnost databáze. Pro správce použijte pravidla brány firewall IP na úrovni serveru. Můžete je také použít, pokud máte mnoho databází se stejnými požadavky na přístup a nechcete konfigurovat jednotlivé databáze zvlášť.
 
 > [!NOTE]
 > Informace o přenosných databázích v kontextu kontinuity podnikových procesů najdete v tématu [Požadavky na ověřování pro zotavení po havárii](sql-database-geo-replication-security-config.md).
 
-## <a name="server-level-versus-database-level-ip-firewall-rules"></a>Server-level versus database-level IP firewall rules
+## <a name="server-level-versus-database-level-ip-firewall-rules"></a>Pravidla brány firewall protokolu IP na úrovni serveru i databáze
 
-*Should users of one database be fully isolated from another database?*
+*Mají být uživatelé jedné databáze plně izolované z jiné databáze?*
 
-If *yes*, use database-level IP firewall rules to grant access. This method avoids using server-level IP firewall rules, which permit access through the firewall to all databases. That would reduce the depth of your defenses.
+Pokud *Ano*, použijte pravidla brány firewall IP na úrovni databáze pro udělení přístupu. Tato metoda zabraňuje použití pravidel brány firewall na úrovni serveru, která umožňují přístup přes bránu firewall do všech databází. To by snížilo hloubku obrany.
 
-*Do users at the IP addresses need access to all databases?*
+*Potřebují uživatelé na IP adresách přístup ke všem databázím?*
 
-If *yes*, use server-level IP firewall rules to reduce the number of times that you have to configure IP firewall rules.
+Pokud *Ano*, použijte pravidla brány firewall na úrovni serveru k omezení počtu pokusů o konfiguraci pravidel brány firewall protokolu IP.
 
-*Does the person or team who configures the IP firewall rules only have access through the Azure portal, PowerShell, or the REST API?*
+*Má osoba nebo tým, který konfiguruje pravidla brány firewall protokolu IP, přístup jenom prostřednictvím Azure Portal, PowerShellu nebo REST API?*
 
-If so, you must use server-level IP firewall rules. Database-level IP firewall rules can only be configured through Transact-SQL.  
+Pokud ano, musíte použít pravidla brány firewall IP na úrovni serveru. Pravidla brány firewall protokolu IP na úrovni databáze lze konfigurovat pouze pomocí jazyka Transact-SQL.  
 
-*Is the person or team who configures the IP firewall rules prohibited from having high-level permission at the database level?*
+*Má osoba nebo tým, který konfiguruje pravidla brány firewall protokolu IP, zakázaná mít oprávnění vysoké úrovně na úrovni databáze?*
 
-If so, use server-level IP firewall rules. You need at least *CONTROL DATABASE* permission at the database level to configure database-level IP firewall rules through Transact-SQL.  
+Pokud ano, použijte pravidla brány firewall IP na úrovni serveru. Abyste mohli konfigurovat pravidla brány firewall protokolu IP na úrovni databáze prostřednictvím jazyka Transact-SQL, potřebujete aspoň oprávnění *řídicí databáze* na úrovni databáze.  
 
-*Does the person or team who configures or audits the IP firewall rules centrally manage IP firewall rules for many (perhaps hundreds) of databases?*
+*Spravuje osoba nebo tým, který konfiguruje nebo Audituje pravidla brány firewall protokolu IP, centrálně spravují pravidla brány firewall protokolu IP pro mnoho (možná stovky) databází?*
 
-In this scenario, best practices are determined by your needs and environment. Server-level IP firewall rules might be easier to configure, but scripting can configure rules at the database-level. And even if you use server-level IP firewall rules, you might need to audit database-level IP firewall rules to see if users with *CONTROL* permission on the database  create database-level IP firewall rules.
+V tomto scénáři jsou osvědčené postupy určeny podle vašich potřeb a prostředí. Pravidla brány firewall protokolu IP na úrovni serveru můžou být snáze nakonfigurovaná, ale skriptování může konfigurovat pravidla na úrovni databáze. A i když používáte pravidla brány firewall na úrovni serveru, možná budete muset auditovat pravidla brány firewall protokolu IP na úrovni databáze a zjistit, jestli uživatelé s oprávněním k *řízení* databáze vytvořit pravidla brány firewall IP na úrovni databáze.
 
-*Can I use a mix of server-level and database-level IP firewall rules?*
+*Můžu používat kombinaci pravidel brány firewall na úrovni serveru i databáze?*
 
-Ano. Some users, such as administrators, might need server-level IP firewall rules. Other users, such as users of a database application, might need database-level IP firewall rules.
+Ano. Někteří uživatelé, třeba správci, můžou potřebovat pravidla brány firewall IP na úrovni serveru. Jiní uživatelé, například uživatelé databázové aplikace, můžou potřebovat pravidla brány firewall IP na úrovni databáze.
 
-### <a name="connections-from-the-internet"></a>Connections from the internet
+### <a name="connections-from-the-internet"></a>Připojení z Internetu
 
-When a computer tries to connect to your database server from the internet, the firewall first checks the originating IP address of the request against the database-level IP firewall rules for the database that the connection requests.
+Když se počítač pokusí připojit k databázovému serveru z Internetu, brána firewall nejprve zkontroluje původní IP adresu žádosti o pravidla brány firewall protokolu IP na úrovni databáze pro databázi, kterou připojení požaduje.
 
-- If the address is within a range that's specified in the database-level IP firewall rules, the connection is granted to the SQL database that contains the rule.
-- If the address isn't within a range in the database-level IP firewall rules, the firewall checks the server-level IP firewall rules. If the address is within a range that's in the server-level IP firewall rules, the connection is granted. Server-level IP firewall rules apply to all SQL databases on the Azure SQL server.  
-- If the address isn't within a range that's in any of the database-level or server-level IP firewall rules, the connection request fails.
+- Pokud se adresa nachází v rozsahu zadaném v pravidlech brány firewall na úrovni databáze, připojení se udělí službě SQL Database, která pravidlo obsahuje.
+- Pokud adresa není v rozsahu v pravidlech brány firewall protokolu IP na úrovni databáze, brána firewall zkontroluje pravidla brány firewall protokolu IP na úrovni serveru. Pokud je adresa v rozsahu, ve kterém jsou pravidla brány firewall IP na úrovni serveru, připojení se udělí. Pravidla brány firewall protokolu IP na úrovni serveru se vztahují na všechny databáze SQL na serveru SQL Azure.  
+- Pokud adresa není v rozsahu, který je v žádném z pravidel brány firewall na úrovni databáze nebo na úrovni serveru, požadavek na připojení se nezdařil.
 
 > [!NOTE]
-> To access SQL Database from your local computer, ensure that the firewall on your network and local computer allow outgoing communication on TCP port 1433.
+> Pokud chcete získat přístup k SQL Database z místního počítače, zajistěte, aby brána firewall v síti a místní počítač povolovala odchozí komunikaci na portu TCP 1433.
 
-### <a name="connections-from-inside-azure"></a>Connections from inside Azure
+### <a name="connections-from-inside-azure"></a>Připojení z Azure
 
-To allow applications hosted inside Azure to connect to your SQL server, Azure connections must be enabled. When an application from Azure tries to connect to your database server, the firewall verifies that Azure connections are allowed. A firewall setting that has starting and ending IP addresses equal to *0.0.0.0* indicates that Azure connections are allowed. If the connection isn't allowed, the request doesn't reach the SQL Database server.
-
-> [!IMPORTANT]
-> This option configures the firewall to allow all connections from Azure, including connections from the subscriptions of other customers. If you select this option, make sure that your login and user permissions limit access to authorized users only.
-
-## <a name="create-and-manage-ip-firewall-rules"></a>Create and manage IP firewall rules
-
-You create the first server-level firewall setting by using the [Azure portal](https://portal.azure.com/) or programmatically by using [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/server/firewall-rule), or an Azure [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate). You create and manage additional server-level IP firewall rules by using these methods or Transact-SQL.
+Pokud chcete aplikacím hostovaným v Azure povolit připojení k vašemu SQL serveru, musí být povolená připojení Azure. Když se aplikace z Azure pokusí připojit k vašemu databázovému serveru, brána firewall ověří, jestli jsou povolená připojení Azure. Nastavení brány firewall, které má počáteční a koncovou IP adresu rovnou hodnotě *0.0.0.0* , znamená, že jsou povolená připojení Azure. Pokud se připojení nepovoluje, požadavek nebude mít přístup k serveru SQL Database.
 
 > [!IMPORTANT]
-> Database-level IP firewall rules can only be created and managed by using Transact-SQL.
+> Tato možnost nakonfiguruje bránu firewall tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných jiných zákazníků. Pokud vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup jenom na autorizované uživatele.
 
-To improve performance, server-level IP firewall rules are temporarily cached at the database level. Pokud chcete mezipaměť aktualizovat, podívejte se na příkaz [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
+## <a name="create-and-manage-ip-firewall-rules"></a>Vytvoření a Správa pravidel brány firewall protokolu IP
+
+První nastavení brány firewall na úrovni serveru můžete vytvořit pomocí [Azure Portal](https://portal.azure.com/) nebo programově pomocí [Azure POWERSHELL](https://docs.microsoft.com/powershell/module/az.sql), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/server/firewall-rule)nebo Azure [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate). Můžete vytvářet a spravovat další pravidla brány firewall protokolu IP na úrovni serveru pomocí těchto metod nebo jazyka Transact-SQL.
+
+> [!IMPORTANT]
+> Pravidla brány firewall protokolu IP na úrovni databáze lze vytvořit a spravovat pouze pomocí jazyka Transact-SQL.
+
+Pro zvýšení výkonu se pravidla brány firewall IP na úrovni serveru dočasně ukládají do mezipaměti na úrovni databáze. Pokud chcete mezipaměť aktualizovat, podívejte se na příkaz [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
 
 > [!TIP]
-> You can use [SQL Database Auditing](sql-database-auditing.md) to audit server-level and database-level firewall changes.
+> Pomocí [auditování SQL Database](sql-database-auditing.md) můžete auditovat změny brány firewall na úrovni serveru a databáze.
 
-### <a name="use-the-azure-portal-to-manage-server-level-ip-firewall-rules"></a>Use the Azure portal to manage server-level IP firewall rules
+### <a name="use-the-azure-portal-to-manage-server-level-ip-firewall-rules"></a>Použití Azure Portal ke správě pravidel brány firewall protokolu IP na úrovni serveru
 
-To set a server-level IP firewall rule in the Azure portal, go to the overview page for your Azure SQL database or your SQL Database server.
+Pokud chcete v Azure Portal nastavit pravidlo brány firewall na úrovni serveru, přejdete na stránku Přehled pro vaši databázi SQL Azure nebo server SQL Database.
 
 > [!TIP]
-> For a tutorial, see [Create a DB using the Azure portal](sql-database-single-database-get-started.md).
+> Kurz najdete v tématu [Vytvoření databáze pomocí Azure Portal](sql-database-single-database-get-started.md).
 
-#### <a name="from-the-database-overview-page"></a>From the database overview page
+#### <a name="from-the-database-overview-page"></a>Na stránce Přehled databáze
 
-1. To set a server-level IP firewall rule from the database overview page, select **Set server firewall** on the toolbar, as the following image shows. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
+1. Pokud chcete na stránce Přehled databáze nastavit pravidlo brány firewall protokolu IP na úrovni serveru, vyberte na panelu nástrojů možnost **nastavit bránu firewall serveru** , jak ukazuje následující obrázek. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
 
-      ![Server IP firewall rule](./media/sql-database-get-started-portal/server-firewall-rule.png)
+      ![Pravidlo brány firewall protokolu IP serveru](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
-2. Select **Add client IP** on the toolbar to add the IP address of the computer that you're using, and then select **Save**. A server-level IP firewall rule is created for your current IP address.
+2. Na panelu nástrojů vyberte **Přidat IP adresu klienta** , abyste mohli přidat IP adresu počítače, který používáte, a pak vyberte **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu.
 
-      ![Set server-level IP firewall rule](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
+      ![Nastavení pravidla brány firewall protokolu IP na úrovni serveru](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
 
-#### <a name="from-the-server-overview-page"></a>From the server overview page
+#### <a name="from-the-server-overview-page"></a>Na stránce Přehled serveru
 
-The overview page for your server opens. It shows the fully qualified server name (such as *mynewserver20170403.database.windows.net*) and provides options for further configuration.
+Otevře se stránka s přehledem pro váš server. Zobrazuje plně kvalifikovaný název serveru (například *mynewserver20170403.Database.Windows.NET*) a nabízí možnosti pro další konfiguraci.
 
-1. To set a server-level rule from this page, select **Firewall** from the **Settings** menu on the left side.
+1. Chcete-li nastavit pravidlo na úrovni serveru z této stránky, vyberte možnost **Brána firewall** v nabídce **Nastavení** na levé straně.
 
-2. Select **Add client IP** on the toolbar to add the IP address of the computer that you're using, and then select **Save**. A server-level IP firewall rule is created for your current IP address.
+2. Na panelu nástrojů vyberte **Přidat IP adresu klienta** , abyste mohli přidat IP adresu počítače, který používáte, a pak vyberte **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu.
 
-### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Use Transact-SQL to manage IP firewall rules
+### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Správa pravidel brány firewall protokolu IP pomocí jazyka Transact-SQL
 
-| Catalog view or stored procedure | Úroveň | Popis |
+| Zobrazení katalogu nebo uložená procedura | Úroveň | Popis |
 | --- | --- | --- |
-| [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Server |Displays the current server-level IP firewall rules |
-| [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Server |Creates or updates server-level IP firewall rules |
-| [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |Server |Removes server-level IP firewall rules |
-| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Databáze |Displays the current database-level IP firewall rules |
-| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Databáze |Creates or updates the database-level IP firewall rules |
-| [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |Databáze |Removes database-level IP firewall rules |
+| [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Server |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni serveru. |
+| [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Server |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni serveru. |
+| [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |Server |Odebere pravidla brány firewall protokolu IP na úrovni serveru. |
+| [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |Databáze |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni databáze. |
+| [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |Databáze |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni databáze. |
+| [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |Databáze |Odebere pravidla brány firewall protokolu IP na úrovni databáze. |
 
-The following example reviews the existing rules, enables a range of IP addresses on the server *Contoso*, and deletes an IP firewall rule:
+Následující příklad zkontroluje stávající pravidla, povolí rozsah IP adres na serveru *Contoso*a odstraní pravidlo brány firewall protokolu IP:
 
 ```sql
 SELECT * FROM sys.firewall_rules ORDER BY name;
 ```
 
-Next, add a server-level IP firewall rule.
+Pak přidejte pravidlo brány firewall protokolu IP na úrovni serveru.
 
 ```sql
 EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
    @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
 ```
 
-To delete a server-level IP firewall rule, execute the *sp_delete_firewall_rule* stored procedure. The following example deletes the rule *ContosoFirewallRule*:
+Pokud chcete odstranit pravidlo brány firewall protokolu IP na úrovni serveru, spusťte uloženou proceduru *sp_delete_firewall_rule* . Následující příklad odstraní pravidlo *ContosoFirewallRule*:
 
 ```sql
 EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ```
 
-### <a name="use-powershell-to-manage-server-level-ip-firewall-rules"></a>Use PowerShell to manage server-level IP firewall rules 
+### <a name="use-powershell-to-manage-server-level-ip-firewall-rules"></a>Správa pravidel brány firewall protokolu IP na úrovni serveru pomocí PowerShellu 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all development is now for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az and AzureRm modules are substantially identical.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale pro modul AZ. SQL je teď k dispozici veškerý vývoj. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty příkazů v modulech AZ a AzureRm jsou v podstatě identické.
 
 | Rutina | Úroveň | Popis |
 | --- | --- | --- |
@@ -186,7 +186,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 | [Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule) |Server |Aktualizuje vlastnosti existujícího pravidla brány firewall na úrovni serveru. |
 | [Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule) |Server |Odebere pravidla brány firewall na úrovni serveru. |
 
-The following example uses PowerShell to set a server-level IP firewall rule:
+Následující příklad používá PowerShell k nastavení pravidla brány firewall protokolu IP na úrovni serveru:
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
@@ -194,79 +194,79 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
     -FirewallRuleName "ContosoIPRange" -StartIpAddress "192.168.1.0" -EndIpAddress "192.168.1.255"
 ```
 > [!TIP]
-> For $servername specify the server name and not the fully qualified DNS name e.g. specify **mysqldbserver** instead of **mysqldbserver.database.windows.net**
+> Pro $servername zadejte název serveru, a ne plně kvalifikovaný název DNS, třeba zadat **mysqldbserver** místo **mysqldbserver.Database.Windows.NET** .
 
 > [!TIP]
-> For PowerShell examples in the context of a quickstart, see [Create DB - PowerShell](sql-database-powershell-samples.md) and [Create a single database and configure a SQL Database server-level IP firewall rule using PowerShell](scripts/sql-database-create-and-configure-database-powershell.md).
+> Příklady prostředí PowerShell v souvislosti s rychlým startem najdete v tématu [Vytvoření databáze – PowerShell](sql-database-powershell-samples.md) a [Vytvoření izolované databáze a konfigurace pravidla brány firewall IP SQL Database na úrovni serveru pomocí PowerShellu](scripts/sql-database-create-and-configure-database-powershell.md).
 
-### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Use CLI to manage server-level IP firewall rules
+### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Použití rozhraní příkazového řádku ke správě pravidel brány firewall protokolu IP na úrovni serveru
 
 | Rutina | Úroveň | Popis |
 | --- | --- | --- |
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Server|Creates a server IP firewall rule|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Server|Lists the IP firewall rules on a server|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Server|Shows the detail of an IP firewall rule|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Server|Updates an IP firewall rule|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Server|Deletes an IP firewall rule|
+|[AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Server|Vytvoří pravidlo brány firewall protokolu IP serveru.|
+|[AZ SQL Server Firewall-Rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Server|Vypíše pravidla brány firewall protokolu IP na serveru.|
+|[AZ SQL Server Firewall-Rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Server|Zobrazuje podrobnosti pravidla brány firewall protokolu IP.|
+|[AZ SQL Server Firewall-Rule Update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Server|Aktualizuje pravidlo brány firewall protokolu IP.|
+|[AZ SQL Server Firewall-Rule DELETE](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Server|Odstraní pravidlo brány firewall protokolu IP.|
 
-The following example uses CLI to set a server-level IP firewall rule:
+V následujícím příkladu se k nastavení pravidla brány firewall protokolu IP na úrovni serveru používá rozhraní příkazového řádku:
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server $servername \
 -n ContosoIPRange --start-ip-address 192.168.1.0 --end-ip-address 192.168.1.255
 ```
 > [!TIP]
-> For $servername specify the server name and not the fully qualified DNS name e.g. specify **mysqldbserver** instead of **mysqldbserver.database.windows.net**
+> Pro $servername zadejte název serveru, a ne plně kvalifikovaný název DNS, třeba zadat **mysqldbserver** místo **mysqldbserver.Database.Windows.NET** .
 
 > [!TIP]
-> For a CLI example in the context of a quickstart, see [Create DB - Azure CLI](sql-database-cli-samples.md) and [Create a single database and configure a SQL Database IP firewall rule using the Azure CLI](scripts/sql-database-create-and-configure-database-cli.md).
+> Příklad rozhraní příkazového řádku v souvislosti s rychlým startem najdete v tématu [Vytvoření databáze – Azure CLI](sql-database-cli-samples.md) a [Vytvoření izolované databáze a konfigurace pravidla brány firewall SQL Database IP pomocí Azure CLI](scripts/sql-database-create-and-configure-database-cli.md).
 
-### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Use a REST API to manage server-level IP firewall rules
+### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Použití REST API ke správě pravidel brány firewall protokolu IP na úrovni serveru
 
-| API | Úroveň | Popis |
+| Rozhraní API | Úroveň | Popis |
 | --- | --- | --- |
-| [List firewall rules](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Server |Displays the current server-level IP firewall rules |
-| [Create or update firewall rules](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Server |Creates or updates server-level IP firewall rules |
-| [Delete firewall rules](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Server |Removes server-level IP firewall rules |
-| [Get firewall rules](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Server | Gets server-level IP firewall rules |
+| [Vypsat pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Server |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni serveru. |
+| [Vytvořit nebo aktualizovat pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Server |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni serveru. |
+| [Odstranit pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Server |Odebere pravidla brány firewall protokolu IP na úrovni serveru. |
+| [Získat pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Server | Načte pravidla brány firewall IP na úrovni serveru. |
 
-## <a name="troubleshoot-the-database-firewall"></a>Troubleshoot the database firewall
+## <a name="troubleshoot-the-database-firewall"></a>Řešení potíží s bránou firewall databáze
 
-Consider the following points when access to the SQL Database service doesn't behave as you expect.
+Pokud se přístup ke službě SQL Database nechová podle očekávání, vezměte v úvahu následující body.
 
-- **Local firewall configuration:**
+- **Konfigurace místní brány firewall:**
 
-  Before your computer can access SQL Database, you may need to create a firewall exception on your computer for TCP port 1433. To make connections inside the Azure cloud boundary, you may have to open additional ports. For more information, see the "SQL Database: Outside vs inside" section of [Ports beyond 1433 for ADO.NET 4.5 and SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+  Předtím, než počítač bude moci získat přístup k SQL Database, může být nutné vytvořit v počítači výjimku brány firewall pro port TCP 1433. Aby bylo možné připojit se k hranici cloudu Azure, možná budete muset otevřít další porty. Další informace najdete v části "SQL Database: mimo rámec vs Inside" v tématu [porty nad 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 
-- **Network address translation:**
+- **Překlad síťových adres:**
 
-  Because of network address translation (NAT), the IP address that's used by your computer to connect to SQL Database may be different than the IP address in your computer's IP configuration settings. To view the IP address that your computer is using to connect to Azure:
+  Kvůli překladu adres (NAT) se IP adresa, kterou váš počítač používá pro připojení k SQL Database, může lišit od IP adresy v nastavení konfigurace protokolu IP počítače. Zobrazení IP adresy, kterou váš počítač používá pro připojení k Azure:
     1. Přihlaste se k portálu.
-    1. Go to the **Configure** tab on the server that hosts your database.
-    1. The **Current Client IP Address** is displayed in the **Allowed IP Addresses** section. Select **Add** for **Allowed IP Addresses** to allow this computer to access the server.
+    1. Na serveru, který je hostitelem vaší databáze, navštivte kartu **Konfigurace** .
+    1. V části **povolené IP adresy** se zobrazí **aktuální IP adresa klienta** . Pokud chcete povolit tomuto počítači přístup k serveru, vyberte **Přidat** pro **povolené IP adresy** .
 
-- **Changes to the allow list haven't taken effect yet:**
+- **Změny v seznamu povolených se zatím neprojevily:**
 
-  There may be up to a five-minute delay for changes to the SQL Database firewall configuration to take effect.
+  Může trvat až pět minut, než se změny konfigurace SQL Database brány firewall projeví.
 
-- **The login isn't authorized, or an incorrect password was used:**
+- **Přihlašovací jméno není autorizováno nebo bylo použito nesprávné heslo:**
 
-  If a login doesn't have permissions on the SQL Database server or the password is incorrect, the connection to the server is denied. Creating a firewall setting only gives clients an *opportunity* to try to connect to your server. The client must still provide the necessary security credentials. For more information about preparing logins, see [Controlling and granting database access to SQL Database and SQL Data Warehouse](sql-database-manage-logins.md).
+  Pokud přihlášení nemá oprávnění k serveru SQL Database nebo není správné heslo, připojení k serveru je odepřené. Vytvořením nastavení brány *firewall budou klienti* moct zkusit se připojit k vašemu serveru. Klient musí stále zadat potřebná zabezpečovací pověření. Další informace o přípravě přihlášení najdete v tématu [řízení a udělení přístupu k databázi SQL Database a SQL Data Warehouse](sql-database-manage-logins.md).
 
-- **Dynamic IP address:**
+- **Dynamická IP adresa:**
 
-  If you have an internet connection that uses dynamic IP addressing and you have trouble getting through the firewall, try one of the following solutions:
+  Pokud máte připojení k Internetu, které používá dynamické přidělování IP adres a máte potíže s připojením přes bránu firewall, zkuste použít jedno z následujících řešení:
   
-  - Ask your internet service provider for the IP address range that's assigned to your client computers that access the SQL Database server. Add that IP address range as an IP firewall rule.
-  - Get static IP addressing instead for your client computers. Add the IP addresses as IP firewall rules.
+  - Zeptejte se poskytovatele internetových služeb na rozsah IP adres, který je přiřazený k klientským počítačům, které přistupují k serveru SQL Database. Přidejte tento rozsah IP adres jako pravidlo brány firewall protokolu IP.
+  - Místo toho Získejte místo klientských počítačů přidělování statických IP adres. Přidejte IP adresy jako pravidla brány firewall protokolu IP.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Confirm that your corporate network environment allows inbound communication from the compute IP address ranges (including SQL ranges) that are used by the Azure datacenters. You might have to add those IP addresses to the allow list. See [Microsoft Azure datacenter IP ranges](https://www.microsoft.com/download/details.aspx?id=41653).  
-- For a quickstart about creating a server-level IP firewall rule, see [Create an Azure SQL database](sql-database-single-database-get-started.md).
-- For help with connecting to an Azure SQL database from open-source or third-party applications, see [Client quickstart code samples to SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
-- For information about additional ports that you may need to open, see the "SQL Database: Outside vs inside" section of [Ports beyond 1433 for ADO.NET 4.5 and SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
-- For an overview of Azure SQL Database security, see [Securing your database](sql-database-security-overview.md).
+- Ověřte, že vaše podnikové síťové prostředí umožňuje příchozí komunikaci z rozsahů IP adres služby COMPUTE (včetně rozsahů SQL) používaných datacentry Azure. Tyto IP adresy možná budete muset přidat do seznamu povolených adres. Viz [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653).  
+- Rychlý Start o vytvoření pravidla brány firewall IP na úrovni serveru najdete v tématu [Vytvoření databáze SQL Azure](sql-database-single-database-get-started.md).
+- Nápovědu k připojení k databázi SQL Azure z open source aplikací nebo aplikací třetích stran najdete v tématu [ukázky kódu pro rychlý Start klienta SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
+- Informace o dalších portech, které možná budete muset otevřít, najdete v části "SQL Database: mimo rámec vs Inside" na [portech, které přesahují 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
+- Přehled zabezpečení Azure SQL Database najdete v tématu [zabezpečení databáze](sql-database-security-overview.md).
 
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png

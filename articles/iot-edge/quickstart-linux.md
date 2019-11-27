@@ -1,6 +1,6 @@
 ---
-title: Quickstart create an Azure IoT Edge device on Linux | Microsoft Docs
-description: In this quickstart, learn how to create an IoT Edge device and then deploy prebuilt code remotely from the Azure portal.
+title: Rychlý start vytvoření zařízení Azure IoT Edge v Linuxu | Dokumentace Microsoftu
+description: V tomto rychlém startu zjistěte, jak vytvořit zařízení IoT Edge a pak nasazení předem připravených kódu vzdáleně z webu Azure portal.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -16,20 +16,20 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457664"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Quickstart: Deploy your first IoT Edge module to a virtual Linux device
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rychlý Start: nasazení prvního modulu IoT Edge do virtuálního zařízení se systémem Linux
 
-Test out Azure IoT Edge in this quickstart by deploying containerized code to a virtual IoT Edge device. IoT Edge allows you to remotely manage code on your devices so that you can send more of your workloads to the edge. For this quickstart, we recommend using an Azure virtual machine for your IoT Edge device, which allows you to quickly create a test machine with all prerequisites installed and then delete it when you're finished. 
+Vyzkoušejte si Azure IoT Edge v tomto rychlém startu nasazením kontejneru kódu na virtuální IoT Edge zařízení. IoT Edge vám umožní vzdáleně spravovat kód na svých zařízeních, abyste mohli do hraničních zařízení odesílat další úlohy. Pro tento rychlý Start doporučujeme použít pro vaše IoT Edge zařízení virtuální počítač Azure, který vám umožní rychle vytvořit testovací počítač se všemi nainstalovanými součástmi a pak ho po dokončení odstranit. 
 
 V tomto rychlém startu se naučíte:
 
 1. Vytvořit IoT Hub.
-2. Zaregistrovat zařízení IoT Edge do centra IoT Hub.
-3. Install and start the IoT Edge runtime on your virtual device.
+2. Zaregistrovat zařízení IoT Edge do IoT Hubu.
+3. Nainstalujte a spusťte modul runtime IoT Edge na virtuálním zařízení.
 4. Vzdáleně nasadit modul na zařízení IoT Edge.
 
-![Diagram - Quickstart architecture for device and cloud](./media/quickstart-linux/install-edge-full.png)
+![Diagram – rychlý start architektury pro zařízení a cloud](./media/quickstart-linux/install-edge-full.png)
 
-This quickstart walks you through creating a Linux virtual machine that's configured to be IoT Edge device. Potom můžete modul nasadit z webu Azure Portal do svého zařízení. Modul, který v tomto rychlém kurzu nasadíte, je simulovaný snímač, který generuje údaje o teplotě, vlhkosti a atmosferickém tlaku. Další kurzy o Azure IoT Edge vycházejí z tohoto kurzu. V něm nasadíte moduly, které analyzují simulovaná data kvůli získání obchodních informací.
+Tento rychlý Start vás provede vytvořením virtuálního počítače se systémem Linux, který je nakonfigurován tak, aby IoT Edge zařízení. Potom můžete modul nasadit z webu Azure Portal do svého zařízení. Modul, který v tomto rychlém startu nasadíte, je simulovaný snímač, který generuje údaje o teplotě, vlhkosti a atmosferickém tlaku. Další kurzy o Azure IoT Edge vycházejí z tohoto kurzu. V něm nasadíte moduly, které analyzují simulovaná data kvůli získání obchodních informací.
 
 Pokud nemáte aktivní předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
@@ -43,7 +43,7 @@ Přidejte rozšíření Azure IoT do instance služby Cloud Shell.
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cloudové prostředky:
 
@@ -55,24 +55,24 @@ Cloudové prostředky:
 
 Zařízení IoT Edge:
 
-* Virtuální počítač nebo zařízení s Linuxem, který bude fungovat jako zařízení IoT Edge. You should use the Microsoft-provided [Azure IoT Edge on Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) virtual machine, which preinstalls everything you need to run IoT Edge on a device. Accept the terms of use and create this virtual machine using the following commands:
+* Virtuální počítač nebo zařízení s Linuxem, který bude fungovat jako zařízení IoT Edge. Na virtuálním počítači s Ubuntu byste měli použít [Azure IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) poskytované společností Microsoft, která předinstaluje všechno, co potřebujete ke spuštění IoT Edge na zařízení. Přijměte podmínky použití a vytvořte tento virtuální počítač pomocí následujících příkazů:
 
    ```azurecli-interactive
    az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
-   It may take a few minutes to create and start the new virtual machine.
+   Vytvoření a spuštění nového virtuálního počítače může trvat několik minut.
 
-   When you create a new virtual machine, make a note of the **publicIpAddress**, which is provided as part of the create command output. You will use this public IP address to connect to the virtual machine later in the quickstart.
+   Když vytváříte nový virtuální počítač, poznamenejte si **publicIpAddress**, který je k dispozici jako součást výstupu příkazu CREATE. Tato veřejná IP adresa bude používat pro připojení k virtuálnímu počítači dále v tomto rychlém startu.
 
-* If you prefer to run the Azure IoT Edge runtime on your own device, follow instructions at [Install the Azure IoT Edge runtime on Linux](how-to-install-iot-edge-linux.md).
+* Pokud chcete spustit modul runtime Azure IoT Edge na vlastním zařízení, postupujte podle pokynů v [části instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md).
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-Start the quickstart by creating an IoT hub with Azure CLI.
+Začněte s rychlým startem vytvořením služby IoT Hub pomocí Azure CLI.
 
-![Diagram - Create an IoT hub in the cloud](./media/quickstart-linux/create-iot-hub.png)
+![Diagram – vytvoření centra IoT v cloudu](./media/quickstart-linux/create-iot-hub.png)
 
 Pro tento rychlý start můžete použít bezplatnou úroveň IoT Hubu. Pokud jste službu IoT Hub někdy používali a máte vytvořené bezplatné centrum IoT, můžete ho použít. V každém předplatném může být jenom jeden bezplatný IoT Hub.
 
@@ -82,17 +82,17 @@ Následující kód vytvoří bezplatné centrum **F1** ve skupině prostředků
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1
    ```
 
-   Pokud dojde k chybě kvůli tomu, že vaše předplatné již jedno bezplatné centrum obsahuje, změňte skladovou položku na **S1**. If you get an error that the IoT Hub name isn't available, it means that someone else already has a hub with that name. Try a new name.
+   Pokud dojde k chybě kvůli tomu, že vaše předplatné již jedno bezplatné centrum obsahuje, změňte skladovou položku na **S1**. Pokud dojde k chybě, že název služby IoT Hub není k dispozici, znamená to, že má někdo jiný již centra s tímto názvem. Zkuste použít nový název.
 
 ## <a name="register-an-iot-edge-device"></a>Registrace zařízení IoT Edge
 
 Zaregistrujte zařízení IoT Edge do nově vytvořeného centra IoT.
 
-![Diagram - Register a device with an IoT Hub identity](./media/quickstart-linux/register-device.png)
+![Diagram – registrace zařízení pomocí IoT Hub identity](./media/quickstart-linux/register-device.png)
 
-Create a device identity for your IoT Edge device so that it can communicate with your IoT hub. Identita zařízení se uchovává v cloudu a k přidružení fyzického zařízení k identitě zařízení se používá jedinečný připojovací řetězec zařízení.
+Vytvořte identitu zařízení pro zařízení IoT Edge, aby mohla komunikovat se službou IoT Hub. Identita zařízení se uchovává v cloudu a k přidružení fyzického zařízení k identitě zařízení se používá jedinečný připojovací řetězec zařízení.
 
-Since IoT Edge devices behave and can be managed differently than typical IoT devices, declare this identity to be for an IoT Edge device with the `--edge-enabled` flag.
+Vzhledem k tomu, že se zařízení IoT Edge chovají a dají se spravovat jinak než typická zařízení IoT, deklarujte tuto identitu pro IoT Edge zařízení s příznakem `--edge-enabled`.
 
 1. Ve službě Azure Cloud Shell zadejte následující příkaz, kterým v centru vytvoříte zařízení **myEdgeDevice**.
 
@@ -100,7 +100,7 @@ Since IoT Edge devices behave and can be managed differently than typical IoT de
    az iot hub device-identity create --hub-name {hub_name} --device-id myEdgeDevice --edge-enabled
    ```
 
-   If you get an error about iothubowner policy keys, make sure that your cloud shell is running the latest version of the azure-cli-iot-ext extension.
+   Pokud se zobrazí chyba týkající se iothubowner klíče zásad, ujistěte se, že vaší služby cloud shell běží nejnovější verze rozšíření azure-cli-iot-ext, přípona.
 
 2. Načtěte připojovací řetězec svého zařízení, který propojí vaše fyzické zařízení s jeho identitou ve službě IoT Hub.
 
@@ -108,50 +108,50 @@ Since IoT Edge devices behave and can be managed differently than typical IoT de
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Copy the value of the `connectionString` key from the JSON output and save it. This value is the device connection string. You'll use this connection string to configure the IoT Edge runtime in the next section.
+3. Zkopírujte hodnotu klíče `connectionString` z výstupu JSON a uložte ho. Tato hodnota je připojovací řetězec zařízení. Pomocí tohoto připojovacího řetězce můžete nakonfigurovat modul runtime IoT Edge v další části.
 
-   ![Retrieve connection string from CLI output](./media/quickstart/retrieve-connection-string.png)
+   ![Načtení připojovacího řetězce z výstupu rozhraní příkazového řádku](./media/quickstart/retrieve-connection-string.png)
 
-## <a name="configure-your-iot-edge-device"></a>Configure your IoT Edge device
+## <a name="configure-your-iot-edge-device"></a>Konfigurace zařízení IoT Edge
 
-Start the Azure IoT Edge runtime on your IoT Edge device.
+Na zařízení IoT Edge spusťte modul runtime Azure IoT Edge.
 
-![Diagram - Start the runtime on device](./media/quickstart-linux/start-runtime.png)
+![Diagram – spuštění modulu runtime na zařízení](./media/quickstart-linux/start-runtime.png)
 
-Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Skládá se ze tří částí. The **IoT Edge security daemon** starts each time an IoT Edge device boots and bootstraps the device by starting the IoT Edge agent. **Agent IoT Edge** umožňuje nasadit a monitorovat moduly na zařízení IoT Edge, včetně centra služby IoT Edge. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem.
+Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Skládá se ze tří částí. **IoT Edge démon zabezpečení** se spustí pokaždé, když se spustí IoT Edge zařízení, a spustí agenta IoT Edge. **Agent IoT Edge** umožňuje nasadit a monitorovat moduly na zařízení IoT Edge, včetně IoT Edge Hubu. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem.
 
 Během konfigurace modulu runtime zadáte připojovací řetězec zařízení. Použijte řetězec, který jste získali z Azure CLI. Tento řetězec přidruží vaše fyzické zařízení k identitě zařízení IoT Edge v Azure.
 
-### <a name="set-the-connection-string-on-the-iot-edge-device"></a>Set the connection string on the IoT Edge device
+### <a name="set-the-connection-string-on-the-iot-edge-device"></a>Nastavit připojovací řetězec na zařízení IoT Edge
 
-If you're using the Azure IoT Edge on Ubuntu virtual machine as described in the prerequisites, then your device already has the IoT Edge runtime installed. You just need to configure your device with the device connection string that you retrieved in the previous section. You can do this remotely without having to connect to the virtual machine. Run the following command, replacing **{device_connection_string}** with your own string.
+Pokud používáte Azure IoT Edge na virtuálním počítači s Ubuntu, jak je popsáno v části požadavky, má už zařízení IoT Edge runtime nainstalované. Stačí nakonfigurovat zařízení pomocí připojovacího řetězce zařízení, který jste získali v předchozí části. To můžete provést vzdáleně, aniž byste se museli připojovat k virtuálnímu počítači. Spusťte následující příkaz a nahraďte **{device_connection_string}** vlastním řetězcem.
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
    ```
 
-If you're running IoT Edge on your local machine or an ARM32 or ARM64 device, you need to install the IoT Edge runtime and its prerequisites on your device. Follow the instructions in [Install the Azure IoT Edge runtime on Linux](how-to-install-iot-edge-linux.md), then return to this quickstart.
+Pokud používáte IoT Edge v místním počítači nebo zařízení ARM32 nebo ARM64, musíte na zařízení nainstalovat modul runtime IoT Edge a jeho součásti. Postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md)a pak se vraťte k tomuto rychlému startu.
 
 ### <a name="view-the-iot-edge-runtime-status"></a>Zobrazení stavu modulu runtime IoT Edge
 
-The rest of the commands in this quickstart take place on your IoT Edge device itself, so that you can see what's happening on the device. If you're using a virtual machine, connect to that machine now using the public IP address that was output by the creation command. You can also find the public IP address on your virtual machine's overview page in the Azure portal. Use the following command to connect to your virtual machine. Replace **{azureuser}** if you used a different username than the one suggested in the prerequisites. Replace **{publicIpAddress}** with your machine's address.
+Zbývající příkazy v tomto rychlém startu se uskuteční na svém IoT Edge samotném zařízení, abyste viděli, co se děje na zařízení. Pokud používáte virtuální počítač, připojte se k tomuto počítači nyní pomocí veřejné IP adresy, která byla výstupem příkazu vytvoření. Můžete také najít veřejnou IP adresu na stránce Přehled virtuálního počítače na webu Azure Portal. Použijte následující příkaz pro připojení k virtuálnímu počítači. Nahraďte **{azureuser}** , pokud jste použili jiné uživatelské jméno, než jaké je navržené v požadavcích. Nahraďte **{publicIpAddress}** adresou vašeho počítače.
 
    ```azurecli-interactive
    ssh azureuser@{publicIpAddress}
    ```
 
-Verify that the runtime was successfully installed and configured on your IoT Edge device.
+Ověřte, že modul runtime byl úspěšně nainstalován a nakonfigurován na vašem zařízení IoT Edge.
 
 >[!TIP]
 >Ke spouštění příkazů `iotedge` potřebujete zvýšená oprávnění. Vaše oprávnění se automaticky aktualizují, jakmile se po instalaci modulu runtime IoT Edge odhlásíte z počítače a poprvé se k němu opět přihlásíte. Do té doby před příkazy používejte **sudo**.
 
-1. Check to see that the IoT Edge security daemon is running as a system service.
+1. Zkontrolujte, zda je démon zabezpečení IoT Edge spuštěn jako systémová služba.
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-   ![See the IoT Edge daemon running as a system service](./media/quickstart-linux/iotedged-running.png)
+   ![Viz IoT Edge démon spuštěný jako systémová služba.](./media/quickstart-linux/iotedged-running.png)
 
 2. Pokud potřebujete řešit potíže se službou, načtěte protokoly služby.
 
@@ -172,17 +172,17 @@ Vaše zařízení IoT Edge je teď nakonfigurované. Je připravené na spoušt�
 ## <a name="deploy-a-module"></a>Nasazení modulu
 
 Pokud budete zařízení Azure IoT Edge spravovat v cloudu, můžete nasadit modul, který bude posílat telemetrická data do IoT Hubu.
-![Diagram - deploy module from cloud to device](./media/quickstart-linux/deploy-module.png)
+![diagram – nasazení modulu z cloudu do zařízení](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 ## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 
-V tomto rychlém startu jste vytvořili nové zařízení IoT Edge a nainstalovali jste na něj modul runtime IoT Edge. Then, you used the Azure portal to deploy an IoT Edge module to run on the device without having to make changes to the device itself.
+V tomto rychlém startu jste vytvořili nové zařízení IoT Edge a nainstalovali jste na něj modul runtime IoT Edge. Pak jste použili Azure Portal k nasazení IoT Edge modulu pro spuštění na zařízení, aniž byste museli provádět změny samotného zařízení.
 
-In this case, the module that you pushed creates sample data that you can use for testing. The simulated temperature sensor module generates environment data that you can use for testing later. The simulated sensor is monitoring both a machine and the environment around the machine. For example, this sensor might be in a server room, on a factory floor, or on a wind turbine. The message includes ambient temperature and humidity, machine temperature and pressure, and a timestamp. The IoT Edge tutorials use the data created by this module as test data for analytics.
+V takovém případě modul, který jste odeslali, vytvoří ukázková data, která můžete použít pro testování. Modul pro simulaci teplotního senzoru generuje data prostředí, která můžete použít pro testování později. Simulovaný senzor sleduje počítač i prostředí v okolí počítače. Tento senzor může být například v serverové místnosti, v továrně nebo na větrné turbíně. Zpráva obsahuje okolní teplotu a vlhkost, teplotu a tlak počítače a časové razítko. Kurzy IoT Edge používají data vytvořená tímto modulem jako testovací data pro analýzy.
 
-Open the command prompt on your IoT Edge device again, or use the SSH connection from Azure CLI. Zkontrolujte, že modul, který jste nasadili z cloudu, běží na zařízení IoT Edge:
+Znovu otevřete příkazový řádek na vašem zařízení IoT Edge, ani používat připojení SSH z příkazového řádku Azure. Zkontrolujte, že modul, který jste nasadili z cloudu, běží na zařízení IoT Edge:
 
    ```bash
    sudo iotedge list
@@ -190,24 +190,24 @@ Open the command prompt on your IoT Edge device again, or use the SSH connection
 
    ![Zobrazení tří modulů na zařízení](./media/quickstart-linux/iotedge-list-2.png)
 
-View the messages being sent from the temperature sensor module:
+Zobrazit zprávy odesílané z modulu snímače teploty:
 
    ```bash
    sudo iotedge logs SimulatedTemperatureSensor -f
    ```
 
    >[!TIP]
-   >IoT Edge commands are case-sensitive when referring to module names.
+   >V IoT Edgech příkazech se rozlišují velká a malá písmena při odkazování na názvy modulů.
 
    ![Zobrazení dat z modulu](./media/quickstart-linux/iotedge-logs.png)
 
-You can also watch the messages arrive at your IoT hub by using the [Azure IoT Hub Toolkit extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (formerly Azure IoT Toolkit extension).
+Zprávy doručené do služby IoT Hub můžete také sledovat pomocí [rozšíření azure IoT Hub Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve rozšíření Azure IoT Toolkit).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete pokračovat dalšími kurzy o IoT Edge, použijte zařízení, které jste zaregistrovali a nastavili v tomto rychlém startu. Otherwise, you can delete the Azure resources that you created to avoid charges.
+Pokud chcete pokračovat dalšími kurzy o IoT Edge, použijte zařízení, které jste zaregistrovali a nastavili v tomto rychlém startu. Jinak můžete odstranit prostředky Azure, které jste vytvořili, abyste se vyhnuli poplatkům.
 
-Pokud jste virtuální počítač a centrum IoT vytvořili v nové skupině prostředků, můžete odstranit tuto skupinu a všechny související prostředky. Double check the contents of the resource group to make sure that there's nothing you want to keep. If you don't want to delete the whole group, you can delete individual resources instead.
+Pokud jste virtuální počítač a centrum IoT vytvořili v nové skupině prostředků, můžete odstranit tuto skupinu a všechny související prostředky. Dvojitá kontrola obsah skupiny prostředků pro Ujistěte se, že existuje vaší nic, které chcete zachovat. Pokud nechcete odstranit celou skupinu, můžete místo toho odstranit jednotlivé prostředky.
 
 Odeberte skupinu **IoTEdgeResources**.
 
@@ -218,9 +218,9 @@ az group delete --name IoTEdgeResources
 ## <a name="next-steps"></a>Další kroky
 
 
-In this quickstart, you created an IoT Edge device and used the Azure IoT Edge cloud interface to deploy code onto the device. Teď máte testovací zařízení, které generuje nezpracovaná data o prostředí.
+V tomto rychlém startu jste vytvořili zařízení IoT Edge a pomocí Azure IoT Edge cloudového rozhraní nasadíte kód do zařízení. Teď máte testovací zařízení, které generuje nezpracovaná data o prostředí.
 
-The next step is to set up your local development environment so that you can start creating IoT Edge modules that run your business logic. 
+Dalším krokem je nastavení místního vývojového prostředí, abyste mohli začít vytvářet IoT Edge moduly, které spouští vaši obchodní logiku. 
 
 > [!div class="nextstepaction"]
-> [Start developing IoT Edge modules for Linux devices](tutorial-develop-for-linux.md)
+> [Zahájení vývoje IoT Edge modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md)
