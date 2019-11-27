@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak povolit a zakázat spravované identity uživa
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md).
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md).
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
 ## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem

@@ -1,6 +1,6 @@
 ---
-title: Configure managed identities on Azure VM using REST - Azure AD
-description: Step by step instructions for configuring a system and user-assigned managed identities on an Azure VM using CURL to make REST API calls.
+title: Konfigurace spravovaných identit na virtuálním počítači Azure pomocí REST – Azure AD
+description: Podrobné pokyny pro konfiguraci systémových a uživatelem přiřazených identit na virtuálním počítači Azure pomocí objektu KUDRLINKOU pro REST API volání.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,61 +15,61 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eadbad5332147add9a1b30a25b9ad2403f1a108
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d78ddaaae886a33b4d22e8724ade04ab63508f1
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224594"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547343"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Configure Managed identities for Azure resources on an Azure VM using REST API calls
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí volání REST API
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Managed identities for Azure resources provides Azure services with an automatically managed system identity in Azure Active Directory. You can use this identity to authenticate to any service that supports Azure AD authentication, without having credentials in your code. 
+Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou identitou systému v Azure Active Directory. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
-In this article, using CURL to make calls to the Azure Resource Manager REST endpoint, you learn how to perform the following managed identities for Azure resources operations on an Azure VM:
+V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manager koncového bodu REST naučíte provádět následující spravované identity pro operace prostředků Azure na virtuálním počítači Azure:
 
-- Enable and disable the system-assigned managed identity on an Azure VM
-- Add and remove a user-assigned managed identity on an Azure VM
+- Povolení a zakázání spravované identity přiřazené systémem na virtuálním počítači Azure
+- Přidání a odebrání spravované identity přiřazené uživatelem na virtuálním počítači Azure
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- If you are using Windows, install the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) or use the [Azure Cloud Shell](../../cloud-shell/overview.md) in the Azure portal.
-- [Install the Azure CLI local console](/cli/azure/install-azure-cli), if you use the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) or a [Linux distribution OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
-- If you are using Azure CLI local console, sign in to Azure using `az login` with an account that is associated with the Azure subscription you would like to manage system or user-assigned managed identities.
+- Pokud používáte systém Windows, nainstalujte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo použijte [Azure Cloud Shell](../../cloud-shell/overview.md) v Azure Portal.
+- Pokud používáte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo systém pro [distribuci Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [nainstalujte místní konzolu Azure CLI](/cli/azure/install-azure-cli).
+- Pokud používáte místní konzolu Azure CLI, přihlaste se k Azure pomocí `az login` s účtem, který je přidružený k předplatnému Azure. chcete spravovat spravované identity v systému nebo uživateli.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="system-assigned-managed-identity"></a>System-assigned managed identity
+## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
-In this section, you learn how to enable and disable system-assigned managed identity on an Azure VM using CURL to make calls to the Azure Resource Manager REST endpoint.
+V této části se dozvíte, jak povolit a zakázat spravovanou identitu přiřazenou systémem na virtuálním počítači Azure pomocí technologie KUDRLINKOU k volání Azure Resource Manager koncového bodu REST.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Enable system-assigned managed identity during creation of an Azure VM
+### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Povolit spravovanou identitu přiřazenou systémem během vytváření virtuálního počítače Azure
 
-To create an Azure VM with the system-assigned managed identity enabled,your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
+Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou identitou přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Pomocí příkazu [az group create](/cli/azure/group/#az-group-create) vytvořte [skupinu prostředků](../../azure-resource-manager/resource-group-overview.md#terminology) pro nasazení a uchování virtuálního počítače a souvisejících prostředků. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
+1. Pomocí příkazu [az group create](../../azure-resource-manager/resource-group-overview.md#terminology) vytvořte [skupinu prostředků](/cli/azure/group/#az-group-create) pro nasazení a uchování virtuálního počítače a souvisejících prostředků. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-2. Create a [network interface](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) for your VM:
+2. Vytvoření [síťového rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro virtuální počítač:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+3. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Create a VM using CURL to call the Azure Resource Manager REST endpoint. The following example creates a VM named *myVM* with a system-assigned managed identity, as identified in the request body by the value `"identity":{"type":"SystemAssigned"}`. Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
+4. Vytvořte virtuální počítač pomocí metody KUDRLINKOU pro volání Azure Resource Manager koncového bodu REST. Následující příklad vytvoří virtuální počítač s názvem *myVM* se spravovanou identitou přiřazenou systémem, jak je uvedeno v těle žádosti hodnotou `"identity":{"type":"SystemAssigned"}`. Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste si vyžádali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>`, jak je to vhodné pro vaše prostředí.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"SystemAssigned"},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"<SECURE PASSWORD STRING>"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -79,14 +79,14 @@ To create an Azure VM with the system-assigned managed identity enabled,your acc
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    
-   **Request headers**
+   **Hlavičky požadavku**
    
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
    
-   **Request body**
+   **Text žádosti**
 
    ```JSON
      {
@@ -146,20 +146,20 @@ To create an Azure VM with the system-assigned managed identity enabled,your acc
     }  
    ```
 
-### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Enable system-assigned identity on an existing Azure VM
+### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Povolení identity přiřazené systémem na stávajícím virtuálním počítači Azure
 
-To enable system-assigned managed identity on a VM that was originally provisioned without it, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
+Aby se povolila spravovaná identita přiřazená systémem na virtuálním počítači, který se původně zřídil bez něho, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Use the following CURL command to call the Azure Resource Manager REST endpoint to enable system-assigned managed identity on your VM as identified in the request body by the value `{"identity":{"type":"SystemAssigned"}` for a VM named *myVM*.  Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
+2. Pomocí následujícího příkazu KUDRLINKOU zavolejte Azure Resource Manager koncový bod REST, aby se na VIRTUÁLNÍm počítači povolila spravovaná identita přiřazená systémem, jak je identifikované v těle žádosti `{"identity":{"type":"SystemAssigned"}` pro virtuální počítač s názvem *myVM*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste si vyžádali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>`, jak je to vhodné pro vaše prostředí.
    
    > [!IMPORTANT]
-   > To ensure you don't delete any existing user-assigned managed identities that are assigned to the VM, you need to list the user-assigned managed identities by using this CURL command: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. If you have any user-assigned managed identities assigned to the VM as identified in the `identity` value in the response, skip to step 3 that shows you how to retain user-assigned managed identities while enabling system-assigned managed identity on your VM.
+   > Aby se zajistilo, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k virtuálnímu počítači, musíte pomocí tohoto příkazu SLOŽENÉho příkazu Zobrazit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Pokud máte k virtuálnímu počítači přiřazené nějaké spravované identity přiřazené uživatelem, jak je identifikované v odpovědi na hodnotu `identity`, přeskočte na krok 3, který vám ukáže, jak uchovávat spravované identity přiřazené uživatelem a zároveň na svém VIRTUÁLNÍm počítači povolit spravovanou identitu přiřazenou systémem.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -168,14 +168,14 @@ To enable system-assigned managed identity on a VM that was originally provision
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
    
-   **Request body**
+   **Text žádosti**
     
    ```JSON
     {  
@@ -185,13 +185,13 @@ To enable system-assigned managed identity on a VM that was originally provision
     }
    ```
 
-3. To enable system-assigned managed identity on a VM with existing user-assigned managed identities, you need to add `SystemAssigned` to the `type` value.  
+3. Pokud chcete povolit spravovanou identitu přiřazenou systémem na virtuálním počítači s existujícími spravovanými identitami přiřazenými uživatelem, musíte do `type` hodnoty přidat `SystemAssigned`.  
    
-   For example, if your VM has the user-assigned managed identities `ID1` and `ID2` assigned to it, and you would like to add system-assigned managed identity to the VM, use the following CURL call. Replace `<ACCESS TOKEN>` and `<SUBSCRIPTION ID>` with values appropriate to your environment.
+   Pokud například váš virtuální počítač obsahuje spravované identity přiřazené uživatelem `ID1` a `ID2` k tomuto virtuálnímu počítači, a chcete do virtuálního počítače přidat spravovanou identitu přiřazenou systémem, použijte následující volání KUDRLINKOU. Nahraďte `<ACCESS TOKEN>` a `<SUBSCRIPTION ID>` hodnotami, které jsou vhodné pro vaše prostředí.
 
-   API version `2018-06-01` stores user-assigned managed identities in the `userAssignedIdentities` value in a dictionary format as opposed to the `identityIds` value in an array format used in API version `2017-12-01`.
+   Verze rozhraní API `2018-06-01` ukládá uživatelem přiřazené identity ve formátu slovníku `userAssignedIdentities` ve formátu slovníku na rozdíl od `identityIds` hodnoty ve formátu pole používaném v rozhraní API verze `2017-12-01`.
    
-   **API VERSION 2018-06-01**
+   **ROZHRANÍ API VERZE 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -200,14 +200,14 @@ To enable system-assigned managed identity on a VM that was originally provision
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
 
-   **Request body**
+   **Text žádosti**
 
    ```JSON
     {  
@@ -225,7 +225,7 @@ To enable system-assigned managed identity on a VM that was originally provision
     }
    ```
 
-   **API VERSION 2017-12-01**
+   **ROZHRANÍ API VERZE 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -235,14 +235,14 @@ To enable system-assigned managed identity on a VM that was originally provision
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
     
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
 
-   **Request body**
+   **Text žádosti**
 
    ```JSON
     {  
@@ -256,20 +256,20 @@ To enable system-assigned managed identity on a VM that was originally provision
     }
    ```   
 
-### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Disable system-assigned managed identity from an Azure VM
+### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Zakázat spravovanou identitu přiřazenou systémem z virtuálního počítače Azure
 
-To disable system-assigned managed identity on a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
+Aby se na virtuálním počítači zakázala spravovaná identita přiřazená systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Update the VM using CURL to call the Azure Resource Manager REST endpoint to disable system-assigned managed identity.  The following example disables system-assigned managed identity as identified in the request body by the value `{"identity":{"type":"None"}}` from a VM named *myVM*.  Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
+2. Aktualizujte virtuální počítač pomocí metody KUDRLINKOU a zavolejte tak Azure Resource Manager koncový bod REST, aby se zakázala spravovaná identita přiřazená systémem.  Následující příklad zakáže spravovanou identitu přiřazenou systémem, která je označená v těle žádosti, hodnotou `{"identity":{"type":"None"}}` z virtuálního počítače s názvem *myVM*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste si vyžádali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>`, jak je to vhodné pro vaše prostředí.
 
    > [!IMPORTANT]
-   > To ensure you don't delete any existing user-assigned managed identities that are assigned to the VM, you need to list the user-assigned managed identities by using this CURL command: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. If you have any user-assigned managed identities assigned to the VM as identified in the `identity` value in the response, skip to step 3 that shows you how to retain user-assigned managed identities while disabling system-assigned managed identity on your VM.
+   > Aby se zajistilo, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k virtuálnímu počítači, musíte pomocí tohoto příkazu SLOŽENÉho příkazu Zobrazit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Pokud máte k virtuálnímu počítači přiřazené nějaké spravované identity přiřazené uživatelem, jak je identifikované v odpovědi na hodnotu `identity`, přeskočte na krok 3, který vám ukáže, jak zachovat uživatelem přiřazené spravované identity a zároveň na svém VIRTUÁLNÍm počítači zablokovat spravovanou identitu přiřazenou systémem.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -278,14 +278,14 @@ To disable system-assigned managed identity on a VM, your account needs the [Vir
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
 
-   **Request body**
+   **Text žádosti**
 
    ```JSON
     {  
@@ -295,39 +295,39 @@ To disable system-assigned managed identity on a VM, your account needs the [Vir
     }
    ```
 
-   To remove system-assigned managed identity from a virtual machine that has user-assigned managed identities, remove `SystemAssigned` from the `{"identity":{"type:" "}}` value while keeping the `UserAssigned` value and the `userAssignedIdentities` dictionary values if you are using **API version 2018-06-01**. If you are using **API version 2017-12-01** or earlier, keep the `identityIds` array.
+   Pokud chcete odebrat spravovanou identitu přiřazenou systémem z virtuálního počítače, který má uživatelsky přiřazené spravované identity, odeberte `SystemAssigned` z `{"identity":{"type:" "}}` hodnoty a zachováte `UserAssigned` hodnotu a hodnoty `userAssignedIdentities` slovníku, pokud používáte **rozhraní API verze 2018-06-01**. Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, nechejte pole `identityIds`.
 
-## <a name="user-assigned-managed-identity"></a>User-assigned managed identity
+## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživatelem
 
-In this section, you learn how to add and remove user-assigned managed identity on an Azure VM using CURL to make calls to the Azure Resource Manager REST endpoint.
+V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřazenou uživatelem na virtuálním počítači Azure pomocí objektu KUDRLINKOU pro volání Azure Resource Manager koncového bodu REST.
 
-### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Assign a user-assigned managed identity during the creation of an Azure VM
+### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Přiřazení spravované identity přiřazené uživatelem během vytváření virtuálního počítače Azure
 
-To assign a user-assigned identity to a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) and [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role assignments. No additional Azure AD directory role assignments are required.
+K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Create a [network interface](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) for your VM:
+2. Vytvoření [síťového rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro virtuální počítač:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+3. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Create a user-assigned managed identity using the instructions found here: [Create a user-assigned managed identity](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+4. Pomocí pokynů, které najdete tady, vytvořte uživatelem přiřazenou spravovanou identitu: [vytvořte spravovanou identitu přiřazenou uživatelem](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-5. Create a VM using CURL to call the Azure Resource Manager REST endpoint. The following example creates a VM named *myVM* in the resource group *myResourceGroup* with a user-assigned managed identity `ID1`, as identified in the request body by the value `"identity":{"type":"UserAssigned"}`. Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
+5. Vytvořte virtuální počítač pomocí metody KUDRLINKOU pro volání Azure Resource Manager koncového bodu REST. Následující příklad vytvoří virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* s uživatelem přiřazenou spravovanou identitou `ID1`, jak je uvedeno v těle žádosti hodnotou `"identity":{"type":"UserAssigned"}`. Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste si vyžádali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>`, jak je to vhodné pro vaše prostředí.
  
-   **API VERSION 2018-06-01**
+   **ROZHRANÍ API VERZE 2018-06-01**
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -337,14 +337,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
 
-   **Request body**
+   **Text žádosti**
 
    ```JSON
     {  
@@ -408,7 +408,7 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
 
    ```
   
-   **API VERSION 2017-12-01**
+   **ROZHRANÍ API VERZE 2017-12-01**
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -418,14 +418,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
 
-   **Request body**
+   **Text žádosti**
 
    ```JSON
     {
@@ -488,19 +488,19 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Assign a user-assigned managed identity to an existing Azure VM
+### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Přiřazení spravované identity přiřazené uživateli k existujícímu virtuálnímu počítači Azure
 
-To assign a user-assigned identity to a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) and [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role assignments. No additional Azure AD directory role assignments are required.
+K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2.  Create a user-assigned managed identity using the instructions found here, [Create a user-assigned managed identity](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+2.  Pomocí pokynů, které najdete tady, vytvořte uživatelem přiřazenou spravovanou identitu a [vytvořte spravovanou identitu přiřazenou uživatelem](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-3. To ensure you don't delete existing user or system-assigned managed identities that are assigned to the VM, you need to list the identity types assigned to the VM by using the following CURL command. If you have managed identities assigned to the virtual machine scale set, they are listed under in the `identity` value.
+3. K tomu, abyste se ujistili, že neodstraňujete stávající spravované identity uživatelů nebo systémem přiřazené k virtuálnímu počítači, musíte zobrazit seznam typů identit přiřazených k virtuálnímu počítači pomocí následujícího příkazu. Pokud máte spravované identity přiřazené k sadě škálování virtuálních počítačů, jsou uvedené v části v poli `identity` hodnota.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -509,19 +509,19 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    ```HTTP
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.
 
-    If you have any user or system-assigned managed identities assigned to the VM as identified in the `identity` value in the response, skip to step 5 that shows you how to retain the system-assigned managed identity while adding a user-assigned managed identity on your VM.
+    Pokud máte ke svému virtuálnímu počítači přiřazenou nějaké spravované identity přiřazené uživateli nebo systémem, jak je identifikované v odpovědi na hodnotu `identity`, přeskočte na krok 5, který vám ukáže, jak zachovat spravovanou identitu přiřazenou systémem při přidávání uživatelsky přiřazené spravované identity na VIRTUÁLNÍm počítači.
 
-4. If you don't have any user-assigned managed identities assigned to your VM, use the following CURL command to call the Azure Resource Manager REST endpoint to assign the first user-assigned managed identity to the VM.
+4. Pokud nemáte ke svému VIRTUÁLNÍmu počítači přiřazené žádné spravované identity přiřazené uživatelem, použijte následující příkaz, který zavolá Azure Resource Manager koncový bod REST a přiřadí k virtuálnímu počítači první spravovanou identitu přiřazenou uživatelem.
 
-   The following examples assigns a user-assigned managed identity, `ID1` to a VM named *myVM* in the resource group *myResourceGroup*.  Replace `<ACCESS TOKEN>` with the value you received in the previous step when you requested a Bearer access token and the `<SUBSCRIPTION ID>` value as appropriate for your environment.
+   Následující příklady přiřadí spravovanou identitu přiřazenou uživatelem `ID1` k virtuálnímu počítači s názvem *myVM* ve skupině prostředků *myResourceGroup*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste si vyžádali přístupový token nosiče a hodnotu `<SUBSCRIPTION ID>`, jak je to vhodné pro vaše prostředí.
 
-   **API VERSION 2018-06-01**
+   **ROZHRANÍ API VERZE 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -530,14 +530,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    ```HTTP
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        |
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        |
  
-   **Request body**
+   **Text žádosti**
 
    ```JSON
     {
@@ -552,7 +552,7 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-   **API VERSION 2017-12-01**
+   **ROZHRANÍ API VERZE 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"userAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -562,14 +562,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
    
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
 
-   **Request body**
+   **Text žádosti**
 
    ```JSON
     {
@@ -582,13 +582,13 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-5. If you have an existing user-assigned or system-assigned managed identity assigned to your VM:
+5. Pokud máte ke svému VIRTUÁLNÍmu počítači přiřazenou stávající spravovanou identitu přiřazenou uživatelem nebo systémem:
    
-   **API VERSION 2018-06-01**
+   **ROZHRANÍ API VERZE 2018-06-01**
 
-   Add the user-assigned managed identity to the `userAssignedIdentities` dictionary value.
+   Přidejte spravovanou identitu přiřazenou uživatelem do hodnoty `userAssignedIdentities` slovníku.
     
-   For example, if you have system-assigned managed identity and the user-assigned managed identity `ID1` currently assigned to your VM and would like to add the user-assigned managed identity `ID2` to it:
+   Pokud máte například spravovanou identitu přiřazenou systémem a uživatelem přiřazenou spravovanou identitu `ID1` aktuálně přiřazenou k vašemu VIRTUÁLNÍmu počítači a chcete do ní přidat spravovanou identitu přiřazenou uživatelem, `ID2`:
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -598,14 +598,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
 
-   **Request body**
+   **Text žádosti**
 
    ```JSON
     {
@@ -623,11 +623,11 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-   **API VERSION 2017-12-01**
+   **ROZHRANÍ API VERZE 2017-12-01**
 
-   Retain the user-assigned managed identities you would like to keep in the `identityIds` array value while adding the new user-assigned managed identity.
+   Zachovejte spravované identity přiřazené uživatelem, které chcete zachovat v hodnotě `identityIds` pole při přidávání nové spravované identity přiřazené uživatelem.
 
-   For example, if you have system-assigned managed identity and the user-assigned managed identity `ID1` currently assigned to your VM and would like to add the user-assigned managed identity `ID2` to it: 
+   Pokud máte například spravovanou identitu přiřazenou systémem a uživatelem přiřazenou spravovanou identitu `ID1` aktuálně přiřazenou k vašemu VIRTUÁLNÍmu počítači a chcete do ní přidat spravovanou identitu přiřazenou uživatelem, `ID2`: 
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -637,14 +637,14 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
 
-   **Request body**
+   **Text žádosti**
 
    ```JSON
     {
@@ -658,17 +658,17 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```   
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Remove a user-assigned managed identity from an Azure VM
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Odebrání spravované identity přiřazené uživatelem z virtuálního počítače Azure
 
-To remove a user-assigned identity to a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.
+K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyžaduje váš účet přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .
 
-1. Retrieve a Bearer access token, which you will use in the next step in the Authorization header to create your VM with a system-assigned managed identity.
+1. Načte přístupový token nosiče, který použijete v dalším kroku v autorizační hlavičce k vytvoření virtuálního počítače pomocí spravované identity přiřazené systémem.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. To ensure you don't delete any existing user-assigned managed identities that you would like to keep assigned to the VM or remove the system-assigned managed identity, you need to list the managed identities by using the following CURL command: 
+2. Abyste se ujistili, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které byste chtěli zachovat přiřazený virtuálnímu počítači nebo odebrat spravovanou identitu přiřazenou systémem, musíte vypsat spravované identity pomocí následujícího příkazu SLOŽENÉho příkazu: 
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -678,20 +678,20 @@ To remove a user-assigned identity to a VM, your account needs the [Virtual Mach
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.
  
-   If you have managed identities assigned to the VM, they are listed in the response in the `identity` value.
+   Pokud máte přiřazené spravované identity k virtuálnímu počítači, zobrazí se v odpovědi v hodnotě `identity`.
 
-   For example, if you have user-assigned managed identities `ID1` and `ID2` assigned to your VM, and you only want to keep `ID1` assigned and retain the system-assigned identity:
+   Například pokud máte uživatelem přiřazené spravované identity `ID1` a `ID2` k vašemu VIRTUÁLNÍmu počítači, a chcete zachovat `ID1` přiřazenou a zachovat identitu přiřazenou systémem:
    
-   **API VERSION 2018-06-01**
+   **ROZHRANÍ API VERZE 2018-06-01**
 
-   Add `null` to the user-assigned managed identity you would like to remove:
+   Přidejte `null` k uživatelem přiřazené spravované identitě, kterou chcete odebrat:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -701,14 +701,14 @@ To remove a user-assigned identity to a VM, your account needs the [Virtual Mach
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
 
-   **Request body**
+   **Text žádosti**
 
    ```JSON
     {
@@ -721,9 +721,9 @@ To remove a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-   **API VERSION 2017-12-01**
+   **ROZHRANÍ API VERZE 2017-12-01**
 
-   Retain only the user-assigned managed identity(s) you would like to keep in the `identityIds` array:
+   Zachovejte pouze uživatelsky přiřazené spravované identity, které chcete ponechat v poli `identityIds`:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -733,14 +733,14 @@ To remove a user-assigned identity to a VM, your account needs the [Virtual Mach
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Request headers**
+   **Hlavičky požadavku**
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.        | 
+   |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.        | 
 
-   **Request body**
+   **Text žádosti**
 
    ```JSON
     {
@@ -753,7 +753,7 @@ To remove a user-assigned identity to a VM, your account needs the [Virtual Mach
     }
    ```
 
-If your VM has both system-assigned and user-assigned managed identities, you can remove all the user-assigned managed identities by switching to use only system-assigned managed identity using the following command:
+Pokud má váš virtuální počítač spravované identity přiřazené systémem i uživatelem, můžete odebrat všechny spravované identity přiřazené uživatelem tak, že přepnete na použití spravované identity přiřazené systémem, a to pomocí následujícího příkazu:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -763,14 +763,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Request headers**
+**Hlavičky požadavku**
 
 |Hlavička požadavku  |Popis  |
 |---------|---------|
-|*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token. | 
+|*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+|*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`. | 
 
-**Request body**
+**Text žádosti**
 
 ```JSON
 {
@@ -780,7 +780,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
     
-If your VM has only user-assigned managed identities and you would like to remove them all, use the following command:
+Pokud má váš virtuální počítač jenom spravované identity přiřazené uživatelem a Vy byste ho chtěli odebrat, použijte následující příkaz:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -790,14 +790,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Request headers**
+**Hlavičky požadavku**
 
 |Hlavička požadavku  |Popis  |
 |---------|---------|
-|*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Autorizace*     | Povinná hodnota. Set to a valid `Bearer` access token.| 
+|*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
+|*Autorizace*     | Povinná hodnota. Nastavte na platný přístupový token `Bearer`.| 
 
-**Request body**
+**Text žádosti**
 
 ```JSON
 {
@@ -809,6 +809,6 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-For information on how to create, list, or delete user-assigned managed identities using REST see:
+Informace o tom, jak vytvořit, vypsat nebo odstranit spravované identity přiřazené uživatelem pomocí REST, najdete v těchto tématech:
 
-- [Create, list or delete a user-assigned managed identities using REST API calls](how-to-manage-ua-identity-rest.md)
+- [Vytvoření, vypsání nebo odstranění spravovaných identit přiřazených uživatelem pomocí REST API volání](how-to-manage-ua-identity-rest.md)

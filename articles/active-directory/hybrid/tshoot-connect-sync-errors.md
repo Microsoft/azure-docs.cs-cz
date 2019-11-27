@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Troubleshooting Errors during synchronization | Microsoft Docs'
-description: Explains how to troubleshoot errors encountered during synchronization with Azure AD Connect.
+title: 'Azure AD Connect: řešení chyb při synchronizaci | Microsoft Docs'
+description: Vysvětluje, jak řešit chyby zjištěné při synchronizaci s Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -22,229 +22,229 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213031"
 ---
-# <a name="troubleshooting-errors-during-synchronization"></a>Troubleshooting Errors during synchronization
-Errors could occur when identity data is synchronized from Windows Server Active Directory (AD DS) to Azure Active Directory (Azure AD). This article provides an overview of different types of sync errors, some of the possible scenarios that cause those errors and potential ways to fix the errors. This article includes the common error types and may not cover all the possible errors.
+# <a name="troubleshooting-errors-during-synchronization"></a>Řešení chyb při synchronizaci
+Pokud jsou data identity synchronizovaná ze služby Windows Server Active Directory (služba AD DS) do Azure Active Directory (Azure AD), může dojít k chybám. Tento článek poskytuje přehled různých typů chyb synchronizace, některé z možných scénářů, které způsobují tyto chyby a potenciální způsoby, jak chyby opravit. Tento článek zahrnuje běžné typy chyb a nemusí pokrývat všechny možné chyby.
 
- This article assumes the reader is familiar with the underlying [design concepts of Azure AD and Azure AD Connect](plan-connect-design-concepts.md).
+ Tento článek předpokládá, že čtenář je obeznámen se základními [Koncepty návrhu Azure AD a Azure AD Connect](plan-connect-design-concepts.md).
 
-With the latest version of Azure AD Connect \(August 2016 or higher\), a report of Synchronization Errors is available in the [Azure portal](https://aka.ms/aadconnecthealth) as part of Azure AD Connect Health for sync.
+V případě nejnovější verze Azure AD Connect \(srpen 2016 nebo vyšší\)je v [Azure Portal](https://aka.ms/aadconnecthealth) k dispozici hlášení chyb synchronizace v rámci Azure AD Connect Health pro synchronizaci.
 
-Starting September 1, 2016 [Azure Active Directory Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) feature will be enabled by default for all the *new* Azure Active Directory Tenants. This feature will be automatically enabled for existing tenants in the upcoming months.
+Od 1. září Azure Active Directory 2016 bude funkce [odolnosti atributů s duplicitními atributy](how-to-connect-syncservice-duplicate-attribute-resiliency.md) ve výchozím nastavení povolená pro všechny *nové* klienty Azure Active Directory. Tato funkce bude automaticky povolena pro existující klienty v nadcházejících měsících.
 
-Azure AD Connect performs three types of operations from the directories it keeps in sync: Import, Synchronization, and Export. Errors can take place in all the operations. This article mainly focuses on errors during Export to Azure AD.
+Azure AD Connect provádí tři typy operací z adresářů, které uchovává synchronizace: import, synchronizace a export. V rámci všech operací může dojít k chybám. Tento článek se zaměřuje hlavně na chyby při exportu do Azure AD.
 
-## <a name="errors-during-export-to-azure-ad"></a>Errors during Export to Azure AD
-Following section describes different types of synchronization errors that can occur during the export operation to Azure AD using the Azure AD connector. This connector can be identified by the name format being "contoso.*onmicrosoft.com*".
-Errors during Export to Azure AD indicate that the operation \(add, update, delete etc.\) attempted by Azure AD Connect \(Sync Engine\) on Azure Active Directory failed.
+## <a name="errors-during-export-to-azure-ad"></a>Chyby při exportu do služby Azure AD
+Následující část popisuje různé typy chyb synchronizace, ke kterým může dojít během operace exportu do služby Azure AD pomocí konektoru služby Azure AD. Tento konektor můžete identifikovat pomocí formátu názvu "contoso". *onmicrosoft.com*".
+Chyby při exportu do služby Azure AD znamenají, že operace \(přidat, aktualizovat, odstranit atd.\) se pokusila Azure AD Connect \(synchronizačního modulu\) při Azure Active Directory chybě.
 
-![Export Errors Overview](./media/tshoot-connect-sync-errors/Export_Errors_Overview_01.png)
+![Přehled chyb exportu](./media/tshoot-connect-sync-errors/Export_Errors_Overview_01.png)
 
-## <a name="data-mismatch-errors"></a>Data Mismatch Errors
+## <a name="data-mismatch-errors"></a>Chyby neshody dat
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch
 #### <a name="description"></a>Popis
-* When Azure AD Connect \(sync engine\) instructs Azure Active Directory to add or update objects, Azure AD matches the incoming object using the **sourceAnchor** attribute to the **immutableId** attribute of objects in Azure AD. This match is called a **Hard Match**.
-* When Azure AD **does not find** any object that matches the **immutableId** attribute with the **sourceAnchor** attribute of the incoming object, before provisioning a new object, it falls back to use the ProxyAddresses and UserPrincipalName attributes to find a match. This match is called a **Soft Match**. The Soft Match is designed to match objects already present in Azure AD (that are sourced in Azure AD) with the new objects being added/updated during synchronization that represent the same entity (users, groups) on premises.
-* **InvalidSoftMatch** error occurs when the hard match does not find any matching object **AND** soft match finds a matching object but that object has a different value of *immutableId* than the incoming object's *SourceAnchor*, suggesting that the matching object was synchronized with another object from on premises Active Directory.
+* Když Azure AD Connect \(synchronizační modul\) instruuje Azure Active Directory, aby přidal nebo aktualizoval objekty, služba Azure AD odpovídá příchozímu objektu pomocí atributu **sourceAnchor** pro atribut **ImmutableId** objektů v Azure AD. Tato shoda se nazývá **těžká shoda**.
+* Když Azure AD **nenajde** žádný objekt, který by odpovídal atributu **immutableId** s atributem **sourceAnchor** příchozího objektu, před zřízením nového objektu se vrátí k použití atributů proxyAddresses a userPrincipalName k nalezení shody. Tato shoda se nazývá **měkká shoda**. Měkké porovnávání je navrženo tak, aby odpovídalo objektům, které již existují ve službě Azure AD (které jsou ve službě Azure AD), s novými přidanými a aktualizovanými objekty během synchronizace, které představují stejnou entitu (uživatele, skupiny) místně.
+* K chybě **InvalidSoftMatch** dojde v případě, že se při neshodě nenalezne žádný odpovídající objekt **a** měkké porovnávání najde odpovídající objekt, ale tento objekt má jinou hodnotu *immutableId* než *SourceAnchor*příchozích objektů, což naznačuje, že odpovídající objekt byl synchronizován s jiným objektem z místní služby Active Directory.
 
-In other words, in order for the soft match to work, the object to be soft-matched with should not have any value for the *immutableId*. If any object with *immutableId* set with a value is failing the hard-match but satisfying the soft-match criteria, the operation would result in an InvalidSoftMatch synchronization error.
+Jinými slovy, aby bylo Podmíněné porovnávání fungovat, objekt, který má být nevyhovující, by neměl mít pro *immutableId*žádnou hodnotu. Pokud některý z objektů s *immutableId* sadou s hodnotou neselže, ale splňuje kritéria pro tichou shodu, výsledkem operace bude chyba synchronizace InvalidSoftMatch.
 
-Azure Active Directory schema does not allow two or more objects to have the same value of the following attributes. \(This is not an exhaustive list.\)
+Azure Active Directory schéma neumožňuje, aby dva nebo více objektů mělo stejnou hodnotu následujících atributů. \(se nejedná o vyčerpávající seznam.\)
 
 * ProxyAddresses
 * UserPrincipalName
 * onPremisesSecurityIdentifier
-* ObjectId
+* Objektu
 
 > [!NOTE]
-> [Azure AD Attribute Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) feature is also being rolled out as the default behavior of Azure Active Directory.  This will reduce the number of synchronization errors seen by Azure AD Connect (as well as other sync clients) by making Azure AD more resilient in the way it handles duplicated ProxyAddresses and UserPrincipalName attributes present in on premises AD environments. This feature does not fix the duplication errors. So the data still needs to be fixed. But it allows provisioning of new objects which are otherwise blocked from being provisioned due to duplicated values in Azure AD. This will also reduce the number of synchronization errors returned to the synchronization client.
-> If this feature is enabled for your Tenant, you will not see the InvalidSoftMatch synchronization errors seen during provisioning of new objects.
+> Jako výchozí chování Azure Active Directory se také zavádí funkce [odolnosti duplicitních atributů atributů Azure AD](how-to-connect-syncservice-duplicate-attribute-resiliency.md) .  Tím se sníží počet chyb synchronizace, ke kterým dochází Azure AD Connect (stejně jako ostatní synchronizační klienti) tím, že Azure AD zpracovává duplicitní atributy ProxyAddresses a UserPrincipalName přítomné v místních prostředích služby AD. Tato funkce neopraví chyby duplikace. Proto musí být tato data stále opravena. Umožňuje ale zřídit nové objekty, které se jinak zablokují z důvodu duplicitních hodnot ve službě Azure AD. Tím se také sníží počet chyb synchronizace vrácených klientovi synchronizace.
+> Pokud je tato funkce pro vašeho tenanta povolená, neuvidíte chyby synchronizace InvalidSoftMatch při zřizování nových objektů.
 >
 >
 
-#### <a name="example-scenarios-for-invalidsoftmatch"></a>Example Scenarios for InvalidSoftMatch
-1. Two or more objects with the same value for the ProxyAddresses attribute exist in on-premises Active Directory. Only one is getting provisioned in Azure AD.
-2. Two or more objects with the same value for the userPrincipalName attribute exists in on-premises Active Directory. Only one is getting provisioned in Azure AD.
-3. An object was added in the on premises Active Directory with the same value of ProxyAddresses attribute as that of an existing object in Azure Active Directory. The object added on premises is not getting provisioned in Azure Active Directory.
-4. An object was added in on premises Active Directory with the same value of userPrincipalName attribute as that of an account in Azure Active Directory. The object is not getting provisioned in Azure Active Directory.
-5. A synced account was moved from Forest A to Forest B. Azure AD Connect (sync engine) was using ObjectGUID attribute to compute the SourceAnchor. After the forest move, the value of the SourceAnchor is different. The new object (from Forest B) is failing to sync with the existing object in Azure AD.
-6. A synced object got accidentally deleted from on premises Active Directory and a new object was created in Active Directory for the same entity (such as user) without deleting the account in Azure Active Directory. The new account fails to sync with the existing Azure AD object.
-7. Azure AD Connect was uninstalled and reinstalled. During the reinstallation, a different attribute was chosen as the SourceAnchor. All the objects that had previously synced stopped syncing with InvalidSoftMatch error.
+#### <a name="example-scenarios-for-invalidsoftmatch"></a>Příklady scénářů pro InvalidSoftMatch
+1. V místní službě Active Directory existují dva nebo více objektů se stejnou hodnotou atributu ProxyAddresses. V Azure AD se zřídí jenom jedna z nich.
+2. Dva nebo více objektů se stejnou hodnotou pro atribut userPrincipalName existuje v místní službě Active Directory. V Azure AD se zřídí jenom jedna z nich.
+3. Objekt byl přidán do místní služby Active Directory se stejnou hodnotou atributu ProxyAddresses jako stávající objekt v Azure Active Directory. Objekt přidaný místně není v Azure Active Directory zřízen.
+4. Do místní služby Active Directory byl přidán objekt se stejnou hodnotou atributu userPrincipalName jako u účtu v Azure Active Directory. Objekt není zřízen v Azure Active Directory.
+5. Synchronizovaný účet se přesunul z doménové struktury A na doménovou strukturu B. Azure AD Connect (synchronizační modul) použil k výpočtu SourceAnchor atribut ObjectGUID. Po přesunutí doménové struktury se hodnota SourceAnchor liší. U nového objektu (z doménové struktury B) se nedaří synchronizovat s existujícím objektem ve službě Azure AD.
+6. Synchronizovaný objekt se omylem odstranil z místní služby Active Directory a ve službě Active Directory se vytvořil nový objekt pro stejnou entitu (třeba uživatel), aniž by bylo potřeba účet odstranit v Azure Active Directory. Novému účtu se nepovedlo synchronizovat s existujícím objektem Azure AD.
+7. Azure AD Connect odinstalovat a znovu nainstalovat. Během přeinstalace byl jako SourceAnchor vybrán jiný atribut. Všechny objekty, které se dřív synchronizovaly, zastavily synchronizaci s InvalidSoftMatch chybou.
 
-#### <a name="example-case"></a>Example case:
-1. **Bob Smith** is a synced user in Azure Active Directory from on premises Active Directory of *contoso.com*
-2. Bob Smith's **UserPrincipalName** is set as **bobs\@contoso.com**.
-3. **"abcdefghijklmnopqrstuv=="** is the **SourceAnchor** calculated by Azure AD Connect using Bob Smith's **objectGUID** from on premises Active Directory, which is the **immutableId** for Bob Smith in Azure Active Directory.
-4. Bob also has following values for the **proxyAddresses** attribute:
-   * smtp: bobs@contoso.com
-   * smtp: bob.smith@contoso.com
-   * **smtp: bob\@contoso.com**
-5. A new user, **Bob Taylor**, is added to the on premises Active Directory.
-6. Bob Taylor's **UserPrincipalName** is set as **bobt\@contoso.com**.
-7. **"abcdefghijkl0123456789==""** is the **sourceAnchor** calculated by Azure AD Connect using Bob Taylor's **objectGUID** from on premises Active Directory. Bob Taylor's object has NOT synced to Azure Active Directory yet.
-8. Bob Taylor has the following values for the proxyAddresses attribute
-   * smtp: bobt@contoso.com
-   * smtp: bob.taylor@contoso.com
-   * **smtp: bob\@contoso.com**
-9. During sync, Azure AD Connect will recognize the addition of Bob Taylor in on premises Active Directory and ask Azure AD to make the same change.
-10. Azure AD will first perform hard match. That is, it will search if there is any object with the immutableId equal to "abcdefghijkl0123456789==". Hard Match will fail as no other object in Azure AD will have that immutableId.
-11. Azure AD will then attempt to soft-match Bob Taylor. That is, it will search if there is any object with proxyAddresses equal to the three values, including smtp: bob@contoso.com
-12. Azure AD will find Bob Smith's object to match the soft-match criteria. But this object has the value of immutableId = "abcdefghijklmnopqrstuv==". which indicates this object was synced from another object from on premises Active Directory. Thus, Azure AD cannot soft-match these objects and results in an **InvalidSoftMatch** sync error.
+#### <a name="example-case"></a>Příklad případu:
+1. **Bob Smith** je synchronizovaný uživatel v Azure Active Directory z místní služby Active Directory of *contoso.com*
+2. Hodnota **userPrincipalName** Jan Kovář je nastavená jako **honzuv\@contoso.com**.
+3. **"abcdefghijklmnopqrstuv = ="** je **SourceAnchor** vypočtený Azure AD Connect pomocí objektu **objectGUID** Jan Novák z místní služby Active Directory, což je **immutableId** pro Bob Smith v Azure Active Directory.
+4. Bob má také následující hodnoty pro atribut **proxyAddresses** :
+   * SMTP: bobs@contoso.com
+   * SMTP: bob.smith@contoso.com
+   * **SMTP: Bob\@contoso.com**
+5. Nový uživatel, **Bob Taylor**, se přidá do místní služby Active Directory.
+6. Atribut **userPrincipalName** Taylor je nastaven jako **bobt\@contoso.com**.
+7. **"abcdefghijkl0123456789 = =" "** je **sourceAnchor** vypočtený pomocí Azure AD Connect pomocí objektu **objectGUID** Taylor z místní služby Active Directory. Objekt Bob Taylor se ještě nesynchronizoval na Azure Active Directory.
+8. Bob Taylor má následující hodnoty pro atribut proxyAddresses
+   * SMTP: bobt@contoso.com
+   * SMTP: bob.taylor@contoso.com
+   * **SMTP: Bob\@contoso.com**
+9. Během synchronizace Azure AD Connect rozpozná přidání Boba Taylor v místní službě Active Directory a požádejte Azure AD, aby provedl stejnou změnu.
+10. Služba Azure AD nejprve provede závažnou shodu. To znamená, že bude hledat v případě, že objekt s immutableId se rovná "abcdefghijkl0123456789 = =". Neshoda se nezdaří, protože ve službě Azure AD nebude mít žádný jiný objekt immutableId.
+11. Služba Azure AD se pak pokusí o neshodu Boba Taylor. To znamená, že bude hledat v případě, že je nějaký objekt s proxyAddresses, který se rovná třem hodnotám, včetně SMTP: bob@contoso.com
+12. Služba Azure AD nalezne objekt Bob Smith, aby odpovídal kritériím pro tichou shodu. Ale tento objekt má hodnotu immutableId = "abcdefghijklmnopqrstuv = =". což znamená, že tento objekt byl synchronizován z jiného objektu z místní služby Active Directory. Proto služba Azure AD nemůže tyto objekty podmíněně vyhodnotit a výsledkem je chyba synchronizace **InvalidSoftMatch** .
 
-#### <a name="how-to-fix-invalidsoftmatch-error"></a>How to fix InvalidSoftMatch error
-The most common reason for the InvalidSoftMatch error is two objects with different SourceAnchor \(immutableId\) have the same value for the ProxyAddresses and/or UserPrincipalName attributes, which are used during the soft-match process on Azure AD. In order to fix the Invalid Soft Match
+#### <a name="how-to-fix-invalidsoftmatch-error"></a>Jak opravit chybu InvalidSoftMatch
+Nejběžnějším důvodem pro chybu InvalidSoftMatch jsou dva objekty s různou SourceAnchor \(immutableId\) mají stejnou hodnotu pro atributy ProxyAddresses a/nebo UserPrincipalName, které se používají během procesu tichého porovnávání v Azure AD. Aby bylo možné opravit neplatnou neplatnou chybu
 
-1. Identify the duplicated proxyAddresses, userPrincipalName, or other attribute value that's causing the error. Also identify which two \(or more\) objects are involved in the conflict. The report generated by [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) can help you identify the two objects.
-2. Identify which object should continue to have the duplicated value and which object should not.
-3. Remove the duplicated value from the object that should NOT have that value. You should make the change in the directory where the object is sourced from. In some cases, you may need to delete one of the objects in conflict.
-4. If you made the change in the on premises AD, let Azure AD Connect sync the change.
+1. Identifikujte duplicitní proxyAddresses, userPrincipalName nebo jiné hodnoty atributu, které způsobují chybu. Také určete, které dva \(nebo více objektů\) jsou součástí konfliktu. Sestava vygenerovaná [Azure AD Connect Health pro synchronizaci](https://aka.ms/aadchsyncerrors) vám může pomáhat identifikovat dva objekty.
+2. Určete, který objekt by měl i nadále mít duplicitní hodnotu, a objekt by neměl být.
+3. Odebere duplicitní hodnotu z objektu, který by neměl mít tuto hodnotu. Měli byste provést změnu v adresáři, ze kterého je objekt zdroj. V některých případech může být nutné odstranit jeden z objektů, které jsou v konfliktu.
+4. Pokud jste provedli změnu v místní službě AD, nechte tuto změnu Azure AD Connect synchronizovat.
 
-Sync error reports within Azure AD Connect Health for sync are updated every 30 minutes and include the errors from the latest synchronization attempt.
+Zprávy o chybách synchronizace v rámci Azure AD Connect Health pro synchronizaci se každých 30 minut aktualizují a obsahují chyby z posledního pokusu o synchronizaci.
 
 > [!NOTE]
-> ImmutableId, by definition, should not change in the lifetime of the object. If Azure AD Connect was not configured with some of the scenarios in mind from the above list, you could end up in a situation where Azure AD Connect calculates a different value of the SourceAnchor for the AD object that represents the same entity (same user/group/contact etc) that has an existing Azure AD Object that you wish to continue using.
+> ImmutableId, podle definice, by se nemělo měnit během životnosti objektu. Pokud se Azure AD Connect nenakonfiguroval s některými scénáři z výše uvedeného seznamu, můžete skončit v situaci, kdy Azure AD Connect vypočítá jinou hodnotu SourceAnchor pro objekt AD, který představuje stejnou entitu (stejný uživatel, skupina/kontakt atd.) s existujícím objektem Azure AD, který chcete dál používat.
 >
 >
 
-#### <a name="related-articles"></a>Related Articles
-* [Duplicate or invalid attributes prevent directory synchronization in Office 365](https://support.microsoft.com/kb/2647098)
+#### <a name="related-articles"></a>Související články
+* [Duplicitní a neplatné atributy zabraňují synchronizaci adresářů v sadě Office 365](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
 #### <a name="description"></a>Popis
-When Azure AD attempts to soft match two objects, it is possible that two objects of different "object type" (such as User, Group, Contact etc.) have the same values for the attributes used to perform the soft match. As duplication of these attributes is not permitted in Azure AD, the operation can result in "ObjectTypeMismatch" synchronization error.
+Když se služba Azure AD pokusí dočasná shoda dvou objektů, je možné, že dva objekty různého typu objektu (například uživatel, skupina, kontakt atd.) mají stejné hodnoty pro atributy používané k provedení měkké shody. Vzhledem k tomu, že duplikace těchto atributů není ve službě Azure AD povolená, může operace způsobit chybu synchronizace "ObjectTypeMismatch".
 
-#### <a name="example-scenarios-for-objecttypemismatch-error"></a>Example Scenarios for ObjectTypeMismatch error
-* A mail enabled security group is created in Office 365. Admin adds a new user or contact in on premises AD (that's not synchronized to Azure AD yet) with the same value for the ProxyAddresses attribute as that of the Office 365 group.
+#### <a name="example-scenarios-for-objecttypemismatch-error"></a>Příklady scénářů pro chybu ObjectTypeMismatch
+* V Office 365 se vytvoří skupina zabezpečení s povoleným e-mailem. Správce přidá nového uživatele nebo kontakt do místní služby AD (který ještě není synchronizovaný do Azure AD) se stejnou hodnotou atributu ProxyAddresses jako skupina sady Office 365.
 
-#### <a name="example-case"></a>Example case
-1. Admin creates a new mail enabled security group in Office 365 for the Tax department and provides an email address as tax@contoso.com. This group  is assigned the ProxyAddresses attribute value of **smtp: tax\@contoso.com**
-2. A new user joins Contoso.com and an account is created for the user on premises with the proxyAddress as **smtp: tax\@contoso.com**
-3. When Azure AD Connect will sync the new user account, it will get the "ObjectTypeMismatch" error.
+#### <a name="example-case"></a>Příklad případu
+1. Správce vytvoří novou skupinu zabezpečení s povoleným e-mailem v Office 365 pro daňové oddělení a poskytne e-mailovou adresu tax@contoso.com. Této skupině se přiřadí hodnota atributu ProxyAddresses pro **SMTP: daňový\@contoso.com.**
+2. Novému uživateli se připojí Contoso.com a účet se vytvoří pro uživatele místně s proxyAddress jako **SMTP:\@daní contoso.com**
+3. Když Azure AD Connect provede synchronizaci nového uživatelského účtu, zobrazí se chyba "ObjectTypeMismatch".
 
-#### <a name="how-to-fix-objecttypemismatch-error"></a>How to fix ObjectTypeMismatch error
-The most common reason for the ObjectTypeMismatch error is two objects of different type (User, Group, Contact etc.) have the same value for the ProxyAddresses attribute. In order to fix the ObjectTypeMismatch:
+#### <a name="how-to-fix-objecttypemismatch-error"></a>Jak opravit chybu ObjectTypeMismatch
+Nejběžnějším důvodem pro chybu ObjectTypeMismatch jsou dva objekty různých typů (uživatel, skupina, kontakt atd.), které mají stejnou hodnotu pro atribut ProxyAddresses. Chcete-li opravit ObjectTypeMismatch:
 
-1. Identify the duplicated proxyAddresses (or other attribute) value that's causing the error. Also identify which two \(or more\) objects are involved in the conflict. The report generated by [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) can help you identify the two objects.
-2. Identify which object should continue to have the duplicated value and which object should not.
-3. Remove the duplicated value from the object that should NOT have that value. Note that you should make the change in the directory where the object is sourced from. In some cases, you may need to delete one of the objects in conflict.
-4. If you made the change in the on premises AD, let Azure AD Connect sync the change. Sync error report within Azure AD Connect Health for sync gets updated every 30 minutes and includes the errors from the latest synchronization attempt.
+1. Identifikujte duplicitní hodnotu proxyAddresses (nebo jiný atribut), která způsobuje chybu. Také určete, které dva \(nebo více objektů\) jsou součástí konfliktu. Sestava vygenerovaná [Azure AD Connect Health pro synchronizaci](https://aka.ms/aadchsyncerrors) vám může pomáhat identifikovat dva objekty.
+2. Určete, který objekt by měl i nadále mít duplicitní hodnotu, a objekt by neměl být.
+3. Odebere duplicitní hodnotu z objektu, který by neměl mít tuto hodnotu. Všimněte si, že byste měli provést změnu v adresáři, ze kterého je objekt zdroj. V některých případech může být nutné odstranit jeden z objektů, které jsou v konfliktu.
+4. Pokud jste provedli změnu v místní službě AD, nechte tuto změnu Azure AD Connect synchronizovat. Zpráva o chybách synchronizace v rámci Azure AD Connect Health pro synchronizaci se každých 30 minut aktualizuje a obsahuje chyby z posledního pokusu o synchronizaci.
 
-## <a name="duplicate-attributes"></a>Duplicate Attributes
+## <a name="duplicate-attributes"></a>Duplicitní atributy
 ### <a name="attributevaluemustbeunique"></a>AttributeValueMustBeUnique
 #### <a name="description"></a>Popis
-Azure Active Directory schema does not allow two or more objects to have the same value of the following attributes. That is each object in Azure AD is forced to have a unique value of these attributes at a given instance.
+Azure Active Directory schéma neumožňuje, aby dva nebo více objektů mělo stejnou hodnotu následujících atributů. To znamená, že každý objekt ve službě Azure AD má v dané instanci jedinečnou hodnotu těchto atributů.
 
 * ProxyAddresses
 * UserPrincipalName
 
-If Azure AD Connect attempts to add a new object or update an existing object with a value for the above attributes that is already assigned to another object in Azure Active Directory, the operation results in the "AttributeValueMustBeUnique" sync error.
+Pokud se Azure AD Connect pokusí přidat nový objekt nebo aktualizovat existující objekt s hodnotou pro výše uvedené atributy, které jsou již přiřazeny k jinému objektu v Azure Active Directory, výsledkem operace je chyba synchronizace "AttributeValueMustBeUnique".
 
-#### <a name="possible-scenarios"></a>Possible Scenarios:
-1. Duplicate value is assigned to an already synced object, which conflicts with another synced object.
+#### <a name="possible-scenarios"></a>Možné scénáře:
+1. K již synchronizovanému objektu je přiřazena duplicitní hodnota, která je v konfliktu s jiným synchronizovaným objektem.
 
-#### <a name="example-case"></a>Example case:
-1. **Bob Smith** is a synced user in Azure Active Directory from on premises Active Directory of contoso.com
-2. Bob Smith's **UserPrincipalName** on premises is set as **bobs\@contoso.com**.
-3. Bob also has following values for the **proxyAddresses** attribute:
-   * smtp: bobs@contoso.com
-   * smtp: bob.smith@contoso.com
-   * **smtp: bob\@contoso.com**
-4. A new user, **Bob Taylor**, is added to the on premises Active Directory.
-5. Bob Taylor's **UserPrincipalName** is set as **bobt\@contoso.com**.
-6. **Bob Taylor** has the following values for the **ProxyAddresses** attribute i. smtp: bobt@contoso.com ii. smtp: bob.taylor@contoso.com
-7. Bob Taylor's object is synchronized with Azure AD successfully.
-8. Admin decided to update Bob Taylor's **ProxyAddresses** attribute with the following value: i. **smtp: bob\@contoso.com**
-9. Azure AD will attempt to update Bob Taylor's object in Azure AD with the above value, but that operation will fail as that ProxyAddresses value is already assigned to Bob Smith, resulting in "AttributeValueMustBeUnique" error.
+#### <a name="example-case"></a>Příklad případu:
+1. **Bob Smith** je synchronizovaný uživatel v Azure Active Directory z místní služby Active Directory of contoso.com
+2. Hodnota **userPrincipalName** Smith v místním prostředí je nastavená jako **honzuv\@contoso.com**.
+3. Bob má také následující hodnoty pro atribut **proxyAddresses** :
+   * SMTP: bobs@contoso.com
+   * SMTP: bob.smith@contoso.com
+   * **SMTP: Bob\@contoso.com**
+4. Nový uživatel, **Bob Taylor**, se přidá do místní služby Active Directory.
+5. Atribut **userPrincipalName** Taylor je nastaven jako **bobt\@contoso.com**.
+6. **Bob Taylor** má následující hodnoty pro atribut **proxyAddresses** i. SMTP: bobt@contoso.com II. SMTP: bob.taylor@contoso.com
+7. Objekt Bob Taylor se úspěšně synchronizuje se službou Azure AD.
+8. Správce rozhodl aktualizovat atribut **proxyAddresses** Boba Taylor o následující hodnotu: i. **SMTP: Bob\@contoso.com**
+9. Služba Azure AD se pokusí aktualizovat objekt Bob Taylor ve službě Azure AD s výše uvedenou hodnotou, ale tato operace selže, protože ProxyAddresses hodnota je již přiřazena k Bobovi Smith, což způsobí chybu "AttributeValueMustBeUnique".
 
-#### <a name="how-to-fix-attributevaluemustbeunique-error"></a>How to fix AttributeValueMustBeUnique error
-The most common reason for the AttributeValueMustBeUnique error is two objects with different SourceAnchor \(immutableId\) have the same value for the ProxyAddresses and/or UserPrincipalName attributes. In order to fix AttributeValueMustBeUnique error
+#### <a name="how-to-fix-attributevaluemustbeunique-error"></a>Jak opravit chybu AttributeValueMustBeUnique
+Nejběžnějším důvodem pro chybu AttributeValueMustBeUnique jsou dva objekty s různou SourceAnchor \(immutableId\) mají stejnou hodnotu pro atributy ProxyAddresses a/nebo UserPrincipalName. Aby bylo možné opravit chybu AttributeValueMustBeUnique
 
-1. Identify the duplicated proxyAddresses, userPrincipalName or other attribute value that's causing the error. Also identify which two \(or more\) objects are involved in the conflict. The report generated by [Azure AD Connect Health for sync](https://aka.ms/aadchsyncerrors) can help you identify the two objects.
-2. Identify which object should continue to have the duplicated value and which object should not.
-3. Remove the duplicated value from the object that should NOT have that value. Note that you should make the change in the directory where the object is sourced from. In some cases, you may need to delete one of the objects in conflict.
-4. If you made the change in the on premises AD, let Azure AD Connect sync the change for the error to get fixed.
+1. Identifikujte duplicitní proxyAddresses, userPrincipalName nebo jinou hodnotu atributu, která způsobuje chybu. Také určete, které dva \(nebo více objektů\) jsou součástí konfliktu. Sestava vygenerovaná [Azure AD Connect Health pro synchronizaci](https://aka.ms/aadchsyncerrors) vám může pomáhat identifikovat dva objekty.
+2. Určete, který objekt by měl i nadále mít duplicitní hodnotu, a objekt by neměl být.
+3. Odebere duplicitní hodnotu z objektu, který by neměl mít tuto hodnotu. Všimněte si, že byste měli provést změnu v adresáři, ze kterého je objekt zdroj. V některých případech může být nutné odstranit jeden z objektů, které jsou v konfliktu.
+4. Pokud jste provedli změnu v místní službě AD, nechte Azure AD Connect synchronizovat změnu chyby, aby se opravila.
 
-#### <a name="related-articles"></a>Related Articles
--[Duplicate or invalid attributes prevent directory synchronization in Office 365](https://support.microsoft.com/kb/2647098)
+#### <a name="related-articles"></a>Související články
+-[duplicitních nebo neplatných atributů brání synchronizaci adresáře v sadě Office 365](https://support.microsoft.com/kb/2647098) .
 
-## <a name="data-validation-failures"></a>Data Validation Failures
+## <a name="data-validation-failures"></a>Selhání ověřování dat
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed
 #### <a name="description"></a>Popis
-Azure Active Directory enforces various restrictions on the data itself before allowing that data to be written into the directory. These restrictions are to ensure that end users get the best possible experiences while using the applications that depend on this data.
+Azure Active Directory před tím, než povolí zápis těchto dat do adresáře, vynutila různá omezení nad samotnými daty. Tato omezení slouží k zajištění toho, aby koncoví uživatelé získali nejlepší možné prostředí při používání aplikací, které jsou na těchto datech závislé.
 
 #### <a name="scenarios"></a>Scénáře
-a. The UserPrincipalName attribute value has invalid/unsupported characters.
-b. The UserPrincipalName attribute does not follow the required format.
+a. Hodnota atributu UserPrincipalName obsahuje neplatné/nepodporované znaky.
+b. Atribut UserPrincipalName nedodržuje požadovaný formát.
 
-#### <a name="how-to-fix-identitydatavalidationfailed-error"></a>How to fix IdentityDataValidationFailed error
-a. Ensure that the userPrincipalName attribute has supported characters and required format.
+#### <a name="how-to-fix-identitydatavalidationfailed-error"></a>Jak opravit chybu IdentityDataValidationFailed
+a. Ujistěte se, že atribut userPrincipalName má podporované znaky a požadovaný formát.
 
-#### <a name="related-articles"></a>Related Articles
-* [Prepare to provision users through directory synchronization to Office 365](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
+#### <a name="related-articles"></a>Související články
+* [Příprava na zřízení uživatelů prostřednictvím synchronizace adresářů do sady Office 365](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
 #### <a name="description"></a>Popis
-This case results in a **"FederatedDomainChangeError"** sync error when the suffix of a user's UserPrincipalName is changed from one federated domain to another federated domain.
+V takovém případě dojde k chybě synchronizace **"FederatedDomainChangeError"** , pokud je přípona názvu userPrincipalName uživatele změněna z jedné federované domény na jinou federované domény.
 
 #### <a name="scenarios"></a>Scénáře
-For a synchronized user, the UserPrincipalName suffix was changed from one federated domain to another federated domain on premises. For example, *UserPrincipalName = bob\@contoso.com* was changed to *UserPrincipalName = bob\@fabrikam.com*.
+Pro synchronizovaného uživatele se přípona UserPrincipalName změnila z jedné federované domény na jinou federované domény místně. Například *userPrincipalName = bob\@contoso.com* byl změněn na *UserPrincipalName = Bob\@Fabrikam.com*.
 
-#### <a name="example"></a>Příklad:
-1. Bob Smith, an account for Contoso.com, gets added as a new user in Active Directory with the UserPrincipalName bob@contoso.com
-2. Bob moves to a different division of Contoso.com called Fabrikam.com and their UserPrincipalName is changed to bob@fabrikam.com
-3. Both contoso.com and fabrikam.com domains are federated domains with Azure Active Directory.
-4. Bob's userPrincipalName does not get updated and results in a "FederatedDomainChangeError" sync error.
+#### <a name="example"></a>Příklad
+1. Bob Smith, účet pro Contoso.com, se přidá jako nový uživatel ve službě Active Directory s bob@contoso.com UserPrincipalName.
+2. Bob se přesune na jiné rozdělení Contoso.com s názvem Fabrikam.com a jejich UserPrincipalName se změní na bob@fabrikam.com
+3. Contoso.com i fabrikam.com domény jsou federované domény s Azure Active Directory.
+4. Hodnota userPrincipalName elementu Bob se neaktualizuje a výsledkem je chyba synchronizace "FederatedDomainChangeError".
 
-#### <a name="how-to-fix"></a>How to fix
-If a user's UserPrincipalName suffix was updated from bob@**contoso.com** to bob\@**fabrikam.com**, where both **contoso.com** and **fabrikam.com** are **federated domains**, then follow these steps to fix the sync error
+#### <a name="how-to-fix"></a>Jak opravit
+Pokud byla přípona UserPrincipalName uživatele aktualizována z bob@**contoso.com** na bob\@**fabrikam.com**, kde **contoso.com** i **fabrikam.com** jsou **federované domény**, pak pomocí těchto kroků opravíte chybu synchronizace.
 
-1. Update the user's UserPrincipalName in Azure AD from bob@contoso.com to bob@contoso.onmicrosoft.com. You can use the following PowerShell command with the Azure AD PowerShell Module: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
-2. Allow the next sync cycle to attempt synchronization. This time synchronization will be successful and it will update the UserPrincipalName of Bob to bob@fabrikam.com as expected.
+1. Aktualizujte ve službě Azure AD atribut UserPrincipalName uživatele z bob@contoso.com na bob@contoso.onmicrosoft.com. Pomocí následujícího příkazu PowerShellu můžete použít modul Azure AD PowerShell: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
+2. Umožněte dalšímu synchronizačnímu cyklu pokus o synchronizaci. Tato doba synchronizace bude úspěšná a bude aktualizovat UserPrincipalName aplikace Bob na bob@fabrikam.com podle očekávání.
 
-#### <a name="related-articles"></a>Related Articles
-* [Changes aren't synced by the Azure Active Directory Sync tool after you change the UPN of a user account to use a different federated domain](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
+#### <a name="related-articles"></a>Související články
+* [Po změně hlavního názvu uživatele (UPN) uživatelského účtu na používání jiné federované domény nejsou změny synchronizované nástrojem Azure Active Directory Sync.](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>Popis
-When an attribute exceeds the allowed size limit, length limit or count limit set by Azure Active Directory schema, the synchronization operation results in the **LargeObject** or **ExceededAllowedLength** sync error. Typically this error occurs for the following attributes
+Pokud atribut překročí povolený limit velikosti, omezení délky nebo omezení počtu, který je nastaven Azure Active Directory schématem, výsledkem operace synchronizace je chyba synchronizace **LargeObject** nebo **ExceededAllowedLength** . K této chybě obvykle dochází pro následující atributy.
 
 * userCertificate
 * userSMIMECertificate
 * thumbnailPhoto
 * proxyAddresses
 
-### <a name="possible-scenarios"></a>Possible Scenarios
-1. Bob's userCertificate attribute is storing too many certificates assigned to Bob. These may include older, expired certificates. The hard limit is 15 certificates. For more information on how to handle LargeObject errors with userCertificate attribute, please refer to article [Handling LargeObject errors caused by userCertificate attribute](tshoot-connect-largeobjecterror-usercertificate.md).
-2. Bob's userSMIMECertificate attribute is storing too many certificates assigned to Bob. These may include older, expired certificates. The hard limit is 15 certificates.
-3. Bob's thumbnailPhoto set in Active Directory is too large to be synced in Azure AD.
-4. During automatic population of the ProxyAddresses attribute in Active Directory, an object has too many ProxyAddresses assigned.
+### <a name="possible-scenarios"></a>Možné scénáře
+1. Atribut userCertificate Boba ukládá příliš mnoho certifikátů přiřazených Bobovi. Mezi ně můžou patřit starší certifikáty s vypršenou platností. Pevný limit je 15 certifikátů. Další informace o tom, jak zpracovávat chyby LargeObject pomocí atributu userCertificate, najdete v článku [zpracování LargeObject chyb způsobených atributem userCertificate](tshoot-connect-largeobjecterror-usercertificate.md).
+2. Atribut userSMIMECertificate Boba ukládá příliš mnoho certifikátů přiřazených Bobovi. Mezi ně můžou patřit starší certifikáty s vypršenou platností. Pevný limit je 15 certifikátů.
+3. ThumbnailPhoto sada Boba ve službě Active Directory je moc velká pro synchronizaci ve službě Azure AD.
+4. Během automatického naplnění atributu ProxyAddresses ve službě Active Directory má objekt příliš mnoho přiřazených ProxyAddresses.
 
-### <a name="how-to-fix"></a>How to fix
-1. Ensure that the attribute causing the error is within the allowed limitation.
+### <a name="how-to-fix"></a>Jak opravit
+1. Zajistěte, aby byl atribut způsobil chybu v rámci povoleného omezení.
 
-## <a name="existing-admin-role-conflict"></a>Existing Admin Role Conflict
+## <a name="existing-admin-role-conflict"></a>Konflikt stávající role správce
 
 ### <a name="description"></a>Popis
-An **Existing Admin Role Conflict** will occur on a user object during synchronization when that user object has:
+**Ke konfliktu role správce** dojde v uživatelském objektu během synchronizace, pokud má tento objekt uživatele:
 
-- administrative permissions and
-- the same UserPrincipalName as an existing Azure AD object
+- oprávnění správce a
+- stejná hodnota UserPrincipalName jako stávající objekt Azure AD
 
-Azure AD Connect is not allowed to soft match a user object from on-premises AD with a user object in Azure AD that has an administrative role assigned to it.  For more information see [Azure AD UserPrincipalName population](plan-connect-userprincipalname.md)
+Azure AD Connect nemá povolenou možnost Soft odpovídat objektu uživatele z místní služby AD s uživatelským objektem ve službě Azure AD, který má přiřazenou roli správce.  Další informace najdete v tématu [populace Azure AD userPrincipalName](plan-connect-userprincipalname.md)
 
-![Existing Admin](media/tshoot-connect-sync-errors/existingadmin.png)
+![Stávající správce](media/tshoot-connect-sync-errors/existingadmin.png)
 
 
-### <a name="how-to-fix"></a>How to fix
-To resolve this issue do one of the following:
+### <a name="how-to-fix"></a>Jak opravit
+Chcete-li vyřešit tento problém, proveďte jednu z následujících akcí:
 
- - Remove the Azure AD account (owner) from all admin roles. 
- - **Hard Delete** the Quarantined object in the cloud. 
- - The next sync cycle will take care of soft-matching the on-premises user to the cloud account (since the cloud user is now no longer a global GA). 
- - Restore the role memberships for the owner. 
+ - Odeberte účet Azure AD (Owner) ze všech rolí správce. 
+ - **Pevným odstraněním** objektu v karanténě v cloudu. 
+ - Další cyklus synchronizace se postará o tiché porovnání místního uživatele s cloudovým účtem (vzhledem k tomu, že uživatel cloudu už není globálním GAm). 
+ - Obnovte členství v rolích pro vlastníka. 
 
 >[!NOTE]
->You can assign the administrative role to the existing user object again after the soft match between the on-premises user object and the Azure AD user object has completed.
+>Roli pro správu můžete přiřadit existujícímu uživatelskému objektu znovu, až se dočasná shoda mezi místním uživatelským objektem a objektem uživatele Azure AD dokončí.
 
 ## <a name="related-links"></a>Související odkazy
-* [Locate Active Directory Objects in Active Directory Administrative Center](https://technet.microsoft.com/library/dd560661.aspx)
-* [How to query Azure Active Directory for an object using Azure Active Directory PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx)
+* [Vyhledat objekty služby Active Directory v Centrum správy služby Active Directory](https://technet.microsoft.com/library/dd560661.aspx)
+* [Postup dotazování Azure Active Directory pro objekt pomocí Azure Active Directory PowerShellu](https://msdn.microsoft.com/library/azure/jj151815.aspx)

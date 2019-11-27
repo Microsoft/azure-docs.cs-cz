@@ -1,6 +1,6 @@
 ---
-title: Problem signing in to on-premises app using Azure AD app proxy | Microsoft Docs
-description: Troubleshooting common issues faced when you are unable to sign in to an on-premises application integrated with Azure AD using the Azure AD Application Proxy
+title: Potíže s přihlášením k místní aplikaci pomocí proxy aplikace Azure AD | Microsoft Docs
+description: Řešení běžných problémů s tím, že se nemůžete přihlásit k místní aplikaci integrované s Azure AD pomocí Proxy aplikací služby AD Azure
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -22,9 +22,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232329"
 ---
-# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problems signing in to an on-premises application using the Azure AD application proxy
+# <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problémy s přihlašováním k místní aplikaci pomocí proxy aplikací služby Azure AD
 
-If you are having problems signing in an on-premises application, you can try following the steps below to resolving your problem.
+Pokud máte problémy s přihlášením do místní aplikace, můžete zkusit problém vyřešit podle následujících pokynů.
 
 ## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>Můžu aplikaci načíst, ale něco na stránce zřejmě není v pořádku
 

@@ -1,6 +1,6 @@
 ---
-title: Create app passwords from Security info (preview) page - Azure AD
-description: Create auto-generated passwords (app passwords) to use with any non-browser app, or any app that doesn't support two-factor verification, in your organization. This app password is separate from a normal password and can be set up from the Security info page.
+title: Vytvoření hesel aplikací ze stránky Security Info (Preview) – Azure AD
+description: Vytvářejte automaticky generovaná hesla (hesla aplikací), která se použijí v libovolné aplikaci bez prohlížeče, nebo v jakékoli aplikaci, která nepodporuje dvojúrovňové ověřování ve vaší organizaci. Heslo této aplikace je oddělené od normálního hesla a lze je nastavit na stránce informace o zabezpečení.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -19,70 +19,70 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231810"
 ---
-# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Create app passwords from the Security info (preview) page
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Vytvoření hesel aplikací ze stránky informace o zabezpečení (Preview)
 
-Certain apps, such as Outlook 2010, don't support two-step verification. This lack of support means that if you're using two-step verification in your organization, the app won't work. To get around this problem, you can create an auto-generated password to use with each non-browser app, separate from your normal password.
+Některé aplikace, jako je například Outlook 2010, nepodporují dvoustupňové ověřování. Tato nedostatečná podpora znamená, že pokud ve vaší organizaci používáte dvoustupňové ověřování, aplikace nebude fungovat. Pokud se chcete tomuto problému vyhnout, můžete vytvořit automaticky generované heslo, které se použije u každé neprohlížečové aplikace, a to odděleně od normálního hesla.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
->Your administrator may not allow you to use app passwords. If you don't see **App passwords** as an option, they're not available in your organization.
+>Správce vám možná neumožní používat hesla aplikací. Pokud nevidíte jako možnost **hesla aplikací** , nejsou ve vaší organizaci k dispozici.
 
-When using app passwords, it's important to remember:
+Při používání hesel aplikací je důležité pamatovat:
 
-- App passwords are auto-generated, and should be created and entered once per app.
+- Hesla aplikací se generují automaticky a je třeba je vytvořit a zadat jednou pro každou aplikaci.
 
-- There's a limit of 40 passwords per user. If you try to create one after that limit, you'll be prompted to delete an existing password before being allowed to create the new one.
+- Pro každého uživatele je povolený limit 40 hesel. Pokud se po uplynutí tohoto limitu pokusíte jeden vytvořit, budete vyzváni k odstranění existujícího hesla, než bude povoleno vytvoření nového.
 
     >[!Note]
-    >Office 2013 clients (including Outlook) support new authentication protocols and can be used with two-step verification. This support means that after two-step verification is turned on, you'll no longer need app passwords for Office 2013 clients. For more info, see the [How modern authentication works for Office 2013 and Office 2016 client apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) article.
+    >Klienti Office 2013 (včetně Outlooku) podporují nové ověřovací protokoly a dají se použít se dvěma kroky ověřování. Tato podpora znamená, že po zapnutí dvoustupňové ověřování už nebudete potřebovat hesla aplikací pro klienty Office 2013. Další informace najdete v článku [jak moderní ověřování funguje pro klientské aplikace office 2013 a office 2016](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) .
 
-## <a name="create-new-app-passwords"></a>Create new app passwords
+## <a name="create-new-app-passwords"></a>Vytvoření nových hesel aplikací
 
-If you use two-step verification with your work or school account and your administrator has turned on the security info experience, you can create and delete your app passwords using the **Security info** page.
+Pokud používáte dvoustupňové ověřování u svého pracovního nebo školního účtu a váš správce zapnul prostředí s informacemi o zabezpečení, můžete vytvořit a odstranit hesla aplikací pomocí stránky **bezpečnostní údaje** .
 
 >[!Note]
->If your administrator hasn't turned on the security info experience, you must follow the instructions and information in the [Manage app passwords for two-step verification](multi-factor-authentication-end-user-app-passwords.md) section.
+>Pokud správce nezapnul prostředí informací o zabezpečení, je nutné postupovat podle pokynů a informací v části [Správa hesel aplikací pro dvoustupňové ověřování](multi-factor-authentication-end-user-app-passwords.md) .
 
-### <a name="to-create-a-new-app-password"></a>To create a new app password
+### <a name="to-create-a-new-app-password"></a>Vytvoření nového hesla aplikace
 
-1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na stránku https://myprofile.microsoft.com/.
 
-    ![My Profile page, showing highlighted Security info links](media/security-info/securityinfo-myprofile-page.png)
+    ![Stránka můj profil zobrazující odkazy na zvýrazněné informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
 
-2. Select **Security info** from the left navigation pane or from the link in the **Security info** block, and then select **Add method** from the **Security info** page.
+2. V levém navigačním podokně nebo na odkaz v bloku **informací o** zabezpečení vyberte možnost **informace o zabezpečení** a pak vyberte **Přidat metodu** ze stránky **bezpečnostní údaje** .
 
-    ![Security info page with highlighted Add method option](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Stránka informace o zabezpečení se zvýrazněnou možností přidat metodu](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. On the **Add a method** page, select **App password** from the drop-down list, and then select **Add**.
+3. Na stránce **Přidat metodu** vyberte v rozevíracím seznamu **heslo aplikace** a pak vyberte **Přidat**.
 
-    ![Add method box, with App password selected](media/security-info/securityinfo-myprofile-addpassword.png)
+    ![Pole přidat metodu s vybraným heslem aplikace](media/security-info/securityinfo-myprofile-addpassword.png)
 
-4. Type the name of the app that requires the app password, and then select **Next**.
+4. Zadejte název aplikace, která vyžaduje heslo aplikace, a pak vyberte **Další**.
 
-    ![App password page, with name of app](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![Stránka s heslem aplikace s názvem aplikace](media/security-info/securityinfo-myprofile-password-appname.png)
 
-5. Copy the text from the **Password** box, paste the password in the password area of the app (in this example, Outlook 2010), and then select **Done**.
+5. Zkopírujte text z pole **heslo** , vložte ho do oblasti hesla aplikace (v tomto příkladu je to pro Outlook 2010) a potom vyberte **Hotovo**.
 
-    ![App password page, with name of app](media/security-info/securityinfo-myprofile-password-copytext.png)
+    ![Stránka s heslem aplikace s názvem aplikace](media/security-info/securityinfo-myprofile-password-copytext.png)
 
-    The password is added and you can successfully log in to your app going forward.
+    Heslo se přidá a Vy se můžete úspěšně přihlásit do své aplikace.
 
-## <a name="delete-your-app-passwords"></a>Delete your app passwords
+## <a name="delete-your-app-passwords"></a>Odstranění hesel aplikací
 
-If you no longer need to use an app that requires an app password, you can delete the associated app password. Deleting the app password frees up one of the available app password spots for use in the future.
+Pokud už nepotřebujete používat aplikaci, která vyžaduje heslo aplikace, můžete odstranit příslušné heslo aplikace. Při odstranění hesla aplikace se uvolní jedna z dostupných bodů hesla aplikace, která se použijí v budoucnu.
 
 >[!Important]
->If you delete an app password by mistake, there's no way to undo it. You'll have to create a new app password and re-enter it into the app, following the steps in the [Create new app passwords](#create-new-app-passwords) section of this article.
+>Pokud omylem odstraníte heslo aplikace, neexistuje žádný způsob, jak ho vrátit zpátky. Budete muset vytvořit nové heslo aplikace a znovu ho zadat do aplikace podle kroků v části [vytvoření nových hesel aplikací](#create-new-app-passwords) v tomto článku.
 
-### <a name="to-delete-an-app-password"></a>To delete an app password
+### <a name="to-delete-an-app-password"></a>Odstranění hesla aplikace
 
-1. On the **Security info** page, select the **Delete** link next to the **App password** option for the specific app.
+1. Na stránce **informace o zabezpečení** vyberte odkaz **Odstranit** vedle možnosti **heslo aplikace** pro konkrétní aplikaci.
 
-    ![Link to delete the app password method from security info](media/security-info/securityinfo-myprofile-password-appdelete.png)
+    ![Odkaz pro odstranění metody hesla aplikace z informací o zabezpečení](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-2. Select **Yes** from the confirmation box to delete the **App password**. After the app password is deleted, it's removed from your security info and it disappears from the **Security info** page.
+2. V potvrzovacím poli vyberte **Ano** , pokud chcete odstranit **heslo aplikace**. Po odstranění hesla aplikace se z bezpečnostních údajů odstraní a zmizí ze stránky **bezpečnostní údaje** .
 
 ## <a name="for-more-information"></a>Další informace
 
-- For more information about the **Security info** page and how to set it up, see [Security info overview](user-help-security-info-overview.md)
+- Další informace o stránce **informace o zabezpečení** a o tom, jak je nastavit, najdete v tématu [Přehled informací o zabezpečení](user-help-security-info-overview.md) .

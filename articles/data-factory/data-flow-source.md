@@ -1,6 +1,6 @@
 ---
-title: Source transformation in mapping data flow
-description: Learn how to set up a source transformation in mapping data flow.
+title: Transformace zdroje v toku dat mapování
+description: Přečtěte si, jak nastavit transformaci zdroje v toku dat mapování.
 author: kromerm
 ms.author: makromer
 manager: anandsub
@@ -15,176 +15,176 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74217732"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>Source transformation for mapping data flow 
+# <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro tok dat mapování 
 
-A source transformation configures your data source for the data flow. When designing data flows, your first step will always be configuring a source transformation. To add a source, click on the **Add Source** box in the data flow canvas.
+Zdrojová transformace konfiguruje zdroj dat pro tok dat. Při navrhování toků dat bude váš první krok vždycky konfigurovat transformaci zdroje. Zdroj přidáte tak, že kliknete na pole **Přidat zdroj** v plátně toku dat.
 
-Every data flow requires at least one source transformation, but you can add as many sources as necessary to complete your data transformations. You can join those sources together with a join, lookup, or a union transformation.
+Každý tok dat vyžaduje aspoň jednu zdrojovou transformaci, ale můžete přidat tolik zdrojů, kolik jich je potřeba k dokončení transformace dat. Tyto zdroje můžete spojit spolu s transformací, vyhledáváním nebo sjednocením.
 
-Each source transformation is associated with exactly one Data Factory dataset. The dataset defines the shape and location of the data you want to write to or read from. If using a file-based dataset, you can use wildcards and file lists in your source to work with more than one file at a time.
+Každá transformace zdroje je přidružená k právě jedné datové sadě Data Factory. Datová sada definuje tvar a umístění dat, ke kterým chcete zapisovat, nebo z nich číst. Pokud používáte datovou sadu založenou na souborech, můžete ve zdroji použít zástupné znaky a seznamy souborů pro práci s více než jedním souborem v jednom okamžiku.
 
-## <a name="supported-connectors-in-mapping-data-flow"></a>Supported connectors in mapping data flow
+## <a name="supported-connectors-in-mapping-data-flow"></a>Podporované konektory v toku dat mapování
 
-Mapping Data Flow follows an extract, load, transform (ELT) approach and works with *staging* datasets that are all in Azure. Currently the following datasets can be used in a source transformation:
+Mapování toku dat sleduje přístup k extrakci, načítání, transformaci (ELT) a pracuje s *přípravnými* datovými sadami, které jsou všechny v Azure. V současné době je možné v transformaci zdroje použít následující datové sady:
     
-* Azure Blob Storage (JSON, Avro, Text, Parquet)
-* Azure Data Lake Storage Gen1 (JSON, Avro, Text, Parquet)
-* Azure Data Lake Storage Gen2 (JSON, Avro, Text, Parquet)
+* Azure Blob Storage (JSON, Avro, text, Parquet)
+* Azure Data Lake Storage Gen1 (JSON, Avro, text, Parquet)
+* Azure Data Lake Storage Gen2 (JSON, Avro, text, Parquet)
 * Azure SQL Data Warehouse
 * Azure SQL Database
 * Azure CosmosDB
 
-Azure Data Factory has access to over 80 native connectors. To include data from those other sources in your data flow, use the Copy Activity to load that data into one of the supported staging areas.
+Azure Data Factory má přístup k více než 80 nativním konektorům. Pokud chcete do toku dat zahrnout data z jiných zdrojů, použijte aktivitu kopírování a načtěte tato data do jedné z podporovaných pracovních oblastí.
 
 ## <a name="source-settings"></a>Nastavení zdroje
 
-Once you have added a source, configure via the **Source Settings** tab. Here you can pick or create the dataset your source points at. You can also select schema and sampling options for your data.
+Jakmile přidáte zdroj, nakonfigurujte ho přes kartu **Nastavení zdroje** . Tady můžete vybrat nebo vytvořit datovou sadu, na které se zdrojové body nacházejí. Můžete také vybrat možnosti schématu a vzorkování pro vaše data.
 
-![Source settings tab](media/data-flow/source1.png "Source settings tab")
+![Karta nastavení zdroje](media/data-flow/source1.png "Karta nastavení zdroje")
 
-**Schema drift:** [Schema Drift](concepts-data-flow-schema-drift.md) is data factory's ability to natively handle flexible schemas in your data flows without needing to explicitly define column changes.
+**Posun schématu:** [posun schématu](concepts-data-flow-schema-drift.md) je schopnost objektu pro vytváření dat nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců.
 
-* Check the **Allow schema drift** box if the source columns will change often. This setting allows all incoming source fields to flow through the transformations to the sink.
+* Zaškrtněte políčko pro **Povolení posunu schématu** , pokud se zdrojové sloupce často mění. Toto nastavení umožňuje, aby všechna vstupní pole zdroje prošla transformacemi do jímky.
 
-* Choosing **Infer drifted column types** will instruct data factory to detect and define data types for each new column discovered. With this feature turned off, all drifted columns will be of type string.
+* Výběr možnosti **odvodit sloupce** s vydanými sloupci způsobí pokyn objektu pro vytváření dat ke zjištění a definování datových typů pro každý nalezený nový sloupec. Když je tato funkce vypnutá, všechny sloupce poklesu budou typu String.
 
-**Validate schema:** If validate schema is selected, the data flow will fail to run if the incoming source data doesn't match the defined schema of the dataset.
+**Ověřit schéma:** Pokud je vybraná možnost ověřit schéma, tok dat se nepodaří spustit, pokud příchozí zdrojová data neodpovídají definovanému schématu datové sady.
 
-**Skip line count:** The skip line count field specifies how many lines to ignore at the beginning of the dataset.
+**Přeskočit počet řádků:** Pole počet řádků přeskočení určuje, kolik řádků se má na začátku datové sady ignorovat.
 
-**Sampling:** Enable sampling to limit the number of rows from your source. Use this setting when you test or sample data from your source for debugging purposes.
+**Vzorkování:** Povolte vzorkování, abyste omezili počet řádků ze zdroje. Toto nastavení použijte při testování nebo vzorkování dat ze zdroje pro účely ladění.
 
-**Multiline rows:** Select multiline rows if your source text file contains string values that span multiple rows, i.e. newlines inside a value.
+**Víceřádkové řádky:** Vyberte víceřádkové řádky, pokud zdrojový textový soubor obsahuje řetězcové hodnoty, které jsou rozloženy do více řádků, tj. newlines uvnitř hodnoty.
 
-To validate your source is configured correctly, turn on debug mode and fetch a data preview. For more information, see [Debug mode](concepts-data-flow-debug-mode.md).
+Pokud chcete ověřit, že je váš zdroj správně nakonfigurovaný, zapněte režim ladění a načtěte data ve verzi Preview. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
 
 > [!NOTE]
-> When debug mode is turned on, the row limit configuration in debug settings will overwrite the sampling setting in the source during data preview.
+> Když je režim ladění zapnutý, při konfiguraci limitu řádků v nastavení ladění dojde k přepsání nastavení vzorkování ve zdroji během náhledu dat.
 
-## <a name="file-based-source-options"></a>File-based source options
+## <a name="file-based-source-options"></a>Souborové možnosti zdroje
 
-If you're using a file-based dataset such as Azure Blob Storage or Azure Data Lake Storage, the **Source options** tab lets you manage how your source reads files.
+Pokud používáte datovou sadu založenou na souborech, jako je například Azure Blob Storage nebo Azure Data Lake Storage, karta **Možnosti zdroje** vám umožní spravovat způsob čtení souborů ve zdroji.
 
-![Source options](media/data-flow/sourceOPtions1.png "Source options")
+![Možnosti zdroje](media/data-flow/sourceOPtions1.png "Možnosti zdroje")
 
-**Wildcard path:** Using a wildcard pattern will instruct ADF to loop through each matching folder and file in a single Source transformation. This is an effective way to process multiple files within a single flow. Add multiple wildcard matching patterns with the + sign that appears when hovering over your existing wildcard pattern.
+**Cesta zástupného znaku:** Pomocí vzoru se zástupnými znaky nastavíte ADF, aby prochází každou shodnou složku a soubor v jediné zdrojové transformaci. Toto je efektivní způsob, jak zpracovat více souborů v rámci jednoho toku. Přidejte více vzorů pro porovnávání se zástupnými znaky s symbolem +, který se zobrazí při najetí myší na stávající zástupný vzor.
 
-From your source container, choose a series of files that match a pattern. Only container can be specified in the dataset. Your wildcard path must therefore also include your folder path from the root folder.
+Ze zdrojového kontejneru vyberte řadu souborů, které odpovídají vzoru. V datové sadě lze zadat pouze kontejner. Cesta ke zástupným znakům proto musí taky obsahovat cestu ke složce z kořenové složky.
 
-Wildcard examples:
+Příklady zástupných znaků:
 
-* ```*``` Represents any set of characters
-* ```**``` Represents recursive directory nesting
-* ```?``` Replaces one character
-* ```[]``` Matches one of more characters in the brackets
+* ```*``` představuje libovolnou sadu znaků.
+* ```**``` představuje rekurzivní vnořování adresářů.
+* ```?``` nahrazuje jeden znak.
+* ```[]``` odpovídá jednomu nebo více znakům v závorkách.
 
-* ```/data/sales/**/*.csv``` Gets all csv files under /data/sales
-* ```/data/sales/20??/**``` Gets all files in the 20th century
-* ```/data/sales/2004/*/12/[XY]1?.csv``` Gets all csv files in 2004 in December starting with X or Y prefixed by a two-digit number
+* ```/data/sales/**/*.csv``` získá všechny soubory CSV pod/data/Sales
+* ```/data/sales/20??/**``` získá všechny soubory ve dvacátém století.
+* ```/data/sales/2004/*/12/[XY]1?.csv``` získá všechny soubory CSV v 2004 v prosinci začínající znakem X nebo Y a číslem se dvěma číslicemi.
 
-**Partition Root Path:** If you have partitioned folders in your file source with  a ```key=value``` format (for example, year=2019), then you can assign the top level of that partition folder tree to a column name in your data flow data stream.
+**Kořenová cesta oddílu:** Pokud jste ve zdroji souborů nastavili dělené složky s formátem ```key=value``` (například Year = 2019), můžete přiřadit nejvyšší úroveň stromu složek oddílu k názvu sloupce v datovém proudu toku dat.
 
-First, set a wildcard to include all paths that are the partitioned folders plus the leaf files that you wish to read.
+Nejdřív nastavte zástupný znak tak, aby zahrnoval všechny cesty, které jsou rozdělené do oddílů, a soubory listů, které chcete číst.
 
-![Partition source file settings](media/data-flow/partfile2.png "Partition file setting")
+![Nastavení zdrojového souboru oddílu](media/data-flow/partfile2.png "Nastavení souboru oddílu")
 
-Use the Partition Root Path setting to define what the top level of the folder structure is. When you view the contents of your data via a data preview, you'll see that ADF will add the resolved partitions found in each of your folder levels.
+Nastavení kořenové cesty oddílu použijte k definování toho, co je nejvyšší úroveň struktury složek. Když zobrazíte obsah vašich dat prostřednictvím náhledu dat, uvidíte, že tento ADF bude přidávat vyřešené oddíly, které se nacházejí v jednotlivých úrovních vaší složky.
 
-![Partition root path](media/data-flow/partfile1.png "Partition root path preview")
+![Kořenová cesta oddílu](media/data-flow/partfile1.png "Zobrazit kořenovou cestu oddílu")
 
-**List of files:** This is a file set. Create a text file that includes a list of relative path files to process. Point to this text file.
+**Seznam souborů:** Toto je sada souborů. Vytvořte textový soubor, který obsahuje seznam relativních souborů cest ke zpracování. Najeďte na tento textový soubor.
 
-**Column to store file name:** Store the name of the source file in a column in your data. Enter a new column name here to store the file name string.
+**Sloupec pro uložení názvu souboru:** Uložte název zdrojového souboru do sloupce v datech. Sem zadejte nový název sloupce pro uložení řetězce názvu souboru.
 
-**After completion:** Choose to do nothing with the source file after the data flow runs, delete the source file, or move the source file. The paths for the move are relative.
+**Po dokončení:** Po spuštění toku dat vyberte, že nechcete nic dělat se zdrojovým souborem, odstraňte zdrojový soubor nebo přesuňte zdrojový soubor. Cesty pro přesun jsou relativní.
 
-To move source files to another location post-processing, first select "Move" for file operation. Then, set the "from" directory. If you're not using any wildcards for your path, then the "from" setting will be the same folder as your source folder.
+Chcete-li přesunout zdrojové soubory do následujícího následného zpracování, vyberte nejprve možnost přesunout pro operaci soubor. Potom nastavte adresář "z". Pokud pro cestu nepoužíváte žádné zástupné znaky, pak bude mít nastavení "od" stejnou složku jako vaše zdrojová složka.
 
-If you have a source path with wildcard, your syntax will look like this below:
+Pokud máte zdrojovou cestu se zástupným znakem, vaše syntaxe bude vypadat následovně:
 
 ```/data/sales/20??/**/*.csv```
 
-You can specify "from" as
+Můžete zadat "od" jako
 
 ```/data/sales```
 
-And "to" as
+A "to" jako
 
 ```/backup/priorSales```
 
-In this case, all files that were sourced under /data/sales are moved to /backup/priorSales.
+V tomto případě se všechny soubory, které se nacházely v/data/Sales, přesunuly do/backup/priorSales.
 
 > [!NOTE]
-> File operations run only when you start the data flow from a pipeline run (a pipeline debug or execution run) that uses the Execute Data Flow activity in a pipeline. File operations *do not* run in Data Flow debug mode.
+> Operace se soubory běží jenom při spuštění toku dat ze spuštění kanálu (ladění kanálu nebo spuštění spuštění), které používá aktivitu spustit tok dat v kanálu. Operace *se* soubory neběží v režimu ladění toku dat.
 
-**Filter by last modified:** You can filter which files you process by specifying a date range of when they were last modified. All date-times are in UTC. 
+**Filtrovat podle poslední změny:** Můžete filtrovat, které soubory se mají zpracovat, zadáním rozsahu data při jejich poslední úpravě. Všechna data jsou v čase UTC. 
 
-### <a name="add-dynamic-content"></a>Add dynamic content
+### <a name="add-dynamic-content"></a>Přidat dynamický obsah
 
-All source settings can be specified as expressions using the [Mapping Data flow's transformation expression language](data-flow-expression-functions.md). To add dynamic content, click or hover inside of the fields in the settings panel. Click the hyperlink for **Add dynamic content**. This will launch the expression builder where you can set values dynamically using expressions, static literal values, or parameters.
+Všechna nastavení zdroje lze zadat jako výrazy pomocí [jazyka výrazů transformace toku dat mapování](data-flow-expression-functions.md). Chcete-li přidat dynamický obsah, klikněte nebo umístěte ukazatel myši uvnitř polí na panelu nastavení. Klikněte na hypertextový odkaz **Přidat dynamický obsah**. Tím se spustí Tvůrce výrazů, kde můžete dynamicky nastavit hodnoty pomocí výrazů, hodnot statických literálů nebo parametrů.
 
 ![Parametry](media/data-flow/params6.png "Parametry")
 
-## <a name="sql-source-options"></a>SQL source options
+## <a name="sql-source-options"></a>Možnosti zdroje SQL
 
-If your source is in SQL Database or SQL Data Warehouse, additional SQL-specific settings are available in the **Source Options** tab. 
+Pokud je váš zdroj v SQL Database nebo SQL Data Warehouse, na kartě **Možnosti zdroje** jsou k dispozici další nastavení specifická pro SQL. 
 
-**Input:** Select whether you point your source at a table (equivalent of ```Select * from <table-name>```) or enter a custom SQL query.
+**Vstup:** Vyberte, zda chcete nasměrovat zdroj v tabulce (ekvivalent ```Select * from <table-name>```), nebo zadejte vlastní dotaz SQL.
 
-**Query**: If you select Query in the input field, enter a SQL query for your source. This setting overrides any table that you've chosen in the dataset. **Order By** clauses aren't supported here, but you can set a full SELECT FROM statement. You can also use user-defined table functions. **select * from udfGetData()** is a UDF in SQL that returns a table. This query will produce a source table that you can use in your data flow. Using queries is also a great way to reduce rows for testing or for lookups. Příklad: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
+**Dotaz**: Pokud ve vstupním poli vyberete možnost dotaz, zadejte pro zdroj dotaz SQL. Toto nastavení potlačí všechny tabulky, které jste vybrali v datové sadě. Klauzule **ORDER by** nejsou tady podporované, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat. Použití dotazů je také skvělým způsobem, jak omezit řádky pro testování nebo pro vyhledávání. Příklad: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Batch size**: Enter a batch size to chunk large data into reads.
+**Velikost dávky**: zadejte velikost dávky pro velké objemy dat v čtení.
 
-**Isolation Level**: The default for SQL sources in mapping data flow is read uncommitted. You can change the isolation level here to one of these values:
-* Read Committed
-* Read Uncommitted
-* Repeatable Read
-* Serializable
-* None (ignore isolation level)
+**Úroveň izolace**: ve výchozím nastavení pro zdroje SQL v toku dat mapování je čtení nepotvrzené. Úroveň izolace můžete změnit tady na jednu z těchto hodnot:
+* Čtení potvrzeno
+* Čtení nepotvrzených
+* Opakované čtení
+* Serializovatelný
+* Žádné (ignorovat úroveň izolace)
 
-![Isolation Level](media/data-flow/isolationlevel.png "Isolation Level")
+![Úroveň izolace](media/data-flow/isolationlevel.png "Úroveň izolace")
 
 ## <a name="projection"></a>Projekce
 
-Like schemas in datasets, the projection in a source defines the data columns, types, and formats from the source data. For most dataset types such as SQL and Parquet, the projection in a source is fixed to reflect the schema defined in a dataset. When your source files aren't strongly typed (for example, flat csv files rather than Parquet files), you can define the data types for each field in the source transformation.
+Stejně jako schémata v datových sadách definuje projekce ve zdroji datové sloupce, typy a formáty ze zdrojových dat. U většiny typů datových sad, jako je SQL a Parquet, je projekce ve zdroji pevná, aby odrážela schéma definované v datové sadě. Pokud zdrojové soubory nejsou silného typu (například ploché soubory CSV namísto souborů Parquet), můžete definovat datové typy pro každé pole ve zdrojové transformaci.
 
-![Settings on the Projection tab](media/data-flow/source3.png "Projekce")
+![Nastavení na kartě projekce](media/data-flow/source3.png "Projekce")
 
-If your text file has no defined schema, select **Detect data type** so that Data Factory will sample and infer the data types. Select **Define default format** to autodetect the default data formats. 
+Pokud textový soubor nemá žádné definované schéma, vyberte možnost **detekovat datový typ** , aby data Factory vzorkovat a odvodit datové typy. Pro automatické rozpoznání výchozích formátů dat vyberte možnost **definovat výchozí formát** . 
 
-You can modify the column data types in a down-stream derived-column transformation. Use a select transformation to modify the column names.
+Můžete upravit typy dat sloupce v transformaci odvozeného sloupce z vedlejšího datového proudu. Použijte transformaci SELECT k úpravě názvů sloupců.
 
-### <a name="import-schema"></a>Import schema
+### <a name="import-schema"></a>Importovat schéma
 
-Datasets like Avro and CosmosDB that support complex data structures do not require schema definitions to exist in the dataset. Therefore, you will be able to click the "Import Schema" button the Projection tab for these types of sources.
+Datové sady, jako jsou Avro a CosmosDB, které podporují komplexní datové struktury, nevyžadují, aby v datové sadě existovaly definice schématu. Proto budete moci kliknout na tlačítko "importovat schéma" na kartu projekce pro tyto typy zdrojů.
 
-## <a name="cosmosdb-specific-settings"></a>CosmosDB specific settings
+## <a name="cosmosdb-specific-settings"></a>Konkrétní nastavení CosmosDB
 
-When using CosmosDB as a source type, there are a few options to consider:
+Při použití CosmosDB jako typu zdroje existuje několik možností, které je třeba vzít v úvahu:
 
-* Include system columns: If you check this, ```id```, ```_ts```, and other system columns will be included in your data flow metadata from CosmosDB. When updating collections, it is important to include this so that you can grab the existing row id.
-* Page size: The number of documents per page of the query result. Default is "-1" which uses the service dynamic page up to 1000.
-* Throughput: Set an optional value for the number of RUs you'd like to apply to your CosmosDB collection for each execution of this data flow during the read operation. Minimum is 400.
-* Preferred regions: You can choose the preferred read regions for this process.
+* Zahrnout systémové sloupce: Pokud zaškrtnete toto, ```id```, ```_ts```a další systémové sloupce budou zahrnuty do metadat toku dat z CosmosDB. Při aktualizaci kolekcí je důležité zahrnout to, abyste mohli existující ID řádku vzít.
+* Velikost stránky: počet dokumentů na stránku výsledku dotazu. Výchozí hodnota je-1, která dynamickou stránku služby používá až 1000.
+* Propustnost: nastavte volitelnou hodnotu pro počet ru, které chcete použít pro kolekci CosmosDB pro každé spuštění tohoto toku dat během operace čtení. Minimum je 400.
+* Preferované oblasti: můžete zvolit preferované oblasti čtení pro tento proces.
 
-## <a name="optimize-the-source-transformation"></a>Optimize the source transformation
+## <a name="optimize-the-source-transformation"></a>Optimalizace zdrojové transformace
 
-On the **Optimize** tab for the source transformation, you might see a **Source** partition type. This option is available only when your source is Azure SQL Database. This is because Data Factory tries to make connections parallel to run large queries against your SQL Database source.
+Na kartě **optimalizace** pro transformaci zdroje se může zobrazit typ **zdrojového** oddílu. Tato možnost je dostupná jenom v případě, že je váš zdroj Azure SQL Database. Důvodem je to, že Data Factory se snaží vytvořit propojení paralelně, aby se spouštěly velké dotazy proti vašemu zdroji SQL Database.
 
-![Source partition settings](media/data-flow/sourcepart3.png "partitioning")
+![Nastavení zdrojového oddílu](media/data-flow/sourcepart3.png "dělení")
 
-You don't have to partition data on your SQL Database source, but partitions are useful for large queries. You can base your partition on a column or a query.
+Nemusíte rozdělit data na zdroj SQL Database, ale oddíly jsou užitečné pro velké dotazy. Oddíl můžete založit na sloupci nebo dotazu.
 
-### <a name="use-a-column-to-partition-data"></a>Use a column to partition data
+### <a name="use-a-column-to-partition-data"></a>Použití sloupce k dělení dat
 
-From your source table, select a column to partition on. Also set the number of partitions.
+Ve zdrojové tabulce vyberte sloupec, na kterém chcete vytvořit oddíly. Nastavte také počet oddílů.
 
-### <a name="use-a-query-to-partition-data"></a>Use a query to partition data
+### <a name="use-a-query-to-partition-data"></a>Použití dotazu k dělení dat
 
-You can choose to partition the connections based on a query. Enter the contents of a WHERE predicate. For example, enter year > 1980.
+Můžete se rozhodnout rozdělit připojení na základě dotazu. Zadejte obsah predikátu WHERE. Zadejte například rok > 1980.
 
-For more information on optimization within mapping data flow, see the [Optimize tab](concepts-data-flow-overview.md#optimize).
+Další informace o optimalizaci v rámci mapování toku dat najdete na [kartě optimalizace](concepts-data-flow-overview.md#optimize).
 
 ## <a name="next-steps"></a>Další kroky
 
-Begin building a [derived-column transformation](data-flow-derived-column.md) and a [select transformation](data-flow-select.md).
+Začněte sestavovat [transformaci odvozeného sloupce](data-flow-derived-column.md) a [transformaci Select](data-flow-select.md).

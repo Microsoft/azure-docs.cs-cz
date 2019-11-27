@@ -1,6 +1,6 @@
 ---
-title: Manage Cloudyn budgets in Azure
-description: This article helps you quickly create budgets and start managing them in Cloudyn.
+title: Správa rozpočtů Cloudyn v Azure
+description: Tento článek vám pomůže rychle vytvořit rozpočtů a zahájení správy ve službě Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,73 +17,73 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219100"
 ---
-# <a name="manage-azure-budgets-with-cloudyn"></a>Manage Azure budgets with Cloudyn
+# <a name="manage-azure-budgets-with-cloudyn"></a>Správa Azure rozpočtů s Cloudyn
 
-Setting up budgets and budget-based alerts help to improve your cloud governance and accountability. This article helps you quickly create budgets and start managing them in Cloudyn.
+Nastavení rozpočtů a na základě rozpočtu výstrahy zobrazíte nápovědu, jak zlepšit cloudu zásad správného řízení a zodpovědnost. Tento článek vám pomůže rychle vytvořit rozpočtů a zahájení správy ve službě Cloudyn.
 
-When you have an Enterprise or MSP account, you can use your hierarchical cost entity structure to assign monthly budget quotas to different business units, departments, or any other cost entity. When you have a Premium account, you can use the budget management functionality, which is then applied to your entire cloud expenditure. All budgets are manually assigned.
+Když máte účet organizace nebo MSP, můžete přiřadit různé organizační jednotky, oddělení nebo jiná entita náklady na měsíční kvóty rozpočtu struktury entity hierarchické náklady. Pokud máte účet Premium, můžete použít funkce správy rozpočtu, který se následně použije na vaše cloudové výdaje. Jsou všechny rozpočty přiřadit ručně.
 
-Based on assigned budgets, you can set threshold alerts based on the percentage of your budget that's consumed and define the severity of each threshold.
+Založené na přiřazené rozpočty, můžete nastavit prahové hodnoty výstrahy podle procenta z rozpočtu, který je zpracován a definovat závažnost jednotlivých prahovou hodnotu.
 
-Budget reports show the assigned budget. Users can view when their spending is over, under, or at par with their consumption over time. When you select **Show/Hide Fields** at the top of a budget report, you can view cost, budget, accumulated cost, or total budget.
+Rozpočet sestavy zobrazit přiřazené rozpočtu. Uživatelé můžou zobrazit po jejich útraty přes, v části nebo nominální s jejich využití v čase. Když vyberete možnost **Zobrazit/skrýt pole** v horní části sestavy rozpočtu, můžete zobrazit náklady, rozpočet, kumulované náklady nebo celkový rozpočet.
 
-Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Management je nativní řešení Azure pro správu nákladů. Umožní vám analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat optimalizační doporučení k úspoře peněz a reagovat na ně. For more information about budgets in Cost Management, see [Create and manage budgets](tutorial-acm-create-budgets.md).
+Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Management je nativní řešení Azure pro správu nákladů. Umožní vám analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat optimalizační doporučení k úspoře peněz a reagovat na ně. Další informace o rozpočtech v Cost Management najdete v tématu [vytváření a Správa rozpočtů](tutorial-acm-create-budgets.md).
 
-## <a name="create-budgets"></a>Create budgets
+## <a name="create-budgets"></a>Vytvoření rozpočtů
 
-When you create a budget, you set it for your fiscal year and it applies to a specific entity.
+Při vytváření rozpočtu, nastavte pro fiskální rok a platí pro konkrétní entitu.
 
-To create a budget and assign it to an entity:
+Vytvoření rozpočtu a přiřaďte ho do entity:
 
-1. Navigate to **Costs** &gt; **Cost Management** &gt; **Budget**.
-2. On the Budget Management page, under **Entities**, select the entity where you want to create the budget.
-3. In the budget year, select the year where you want to create the budget.
-4. For each month, set a budget value. When you're done, click  **Save**.
-In this example, the monthly budget for June 2018 is set to $135,000. The total budget for the year is $1,615,000.00.
-![Create a budget page where you set a budget for each month](./media/manage-budgets/set-budget.png)
+1. Přejděte na **náklady** &gt; **cost management** &gt; **rozpočtu**.
+2. Na stránce Správa rozpočtu v části **entity**vyberte entitu, u které chcete vytvořit rozpočet.
+3. V roce rozpočtu vyberte v roce, ve kterém chcete vytvořit rozpočtu.
+4. Pro každý měsíc nastavte hodnotu rozpočtu. Až skončíte, klikněte na **Uložit**.
+V tomto příkladu měsíční rozpočet. června 2018 nastavena na 135,000 $. Celkový rozpočet rok je 1,615,000.00 $.
+![vytvořit stránku rozpočtu, kde můžete nastavit rozpočet pro každý měsíc](./media/manage-budgets/set-budget.png)
 
 
-To import a file for the annual budget:
+Import souboru pro roční rozpočtu:
 
-1. Under **Actions**, select **Export** to download an empty CSV template to use as your basis for the budget.
-2. Fill in the CSV file with your budget entries and save it locally.
-3. Under **Actions**, select **Import**.
-4. Select your saved file and then click **OK**.
+1. V části **Akce**vyberte **exportovat** a stáhněte prázdnou šablonu sdíleného svazku clusteru, kterou použijete jako základ pro rozpočet.
+2. Zadejte soubor CSV s položky vašeho rozpočtu a uloží do místního prostředí.
+3. V části **Akce**vyberte **importovat**.
+4. Vyberte uložený soubor a klikněte na tlačítko **OK**.
 
-To export your completed budget as a CSV file, under **Actions**, select **Export** to download the file.
+Pokud chcete exportovat dokončený rozpočet jako soubor CSV, vyberte v části **Akce**možnost **exportovat** a Stáhněte soubor.
 
-## <a name="view-budget-in-reports"></a>View budget in reports
+## <a name="view-budget-in-reports"></a>Zobrazit rozpočtu v sestavách
 
-When completed, your budget is shown in most Cost reports under **Costs** &gt; **Cost Analysis** and in the Cost vs. Budget Over Time report. You can also schedule reports based on budget thresholds using **Actions**.
+Po dokončení se váš rozpočet zobrazuje ve většině sestav nákladů za **náklady** &gt; **analýzy nákladů** a v sestavě náklady vs. rozpočet v čase. Sestavy můžete také plánovat na základě prahových hodnot rozpočtu pomocí **akcí**.
 
-Here's an example of the Cost Analysis report. It shows the total budget and cost by workload and usage types since the beginning of the year.
+Tady je příklad sestavy analýzy nákladů. Zobrazuje celkový rozpočet a náklady na typy úloh a využití od začátku roku.
 
-![Example Cost Analysis report with budget](./media/manage-budgets/cost-analysis-budget-example.png)
+![Příklad sestavy analýzy nákladů s rozpočtu](./media/manage-budgets/cost-analysis-budget-example.png)
 
-In this example, assume the current date is June 22. The cost for June 2018 is $71,611.28 compared to the monthly budget of $135,000. The cost is much lower than the monthly budget because there are still eight days of spending before the end of the month.
+V tomto příkladu se předpokládá aktuální datum je 22. června. Bezplatně. června 2018 se $71,611.28 ve srovnání s měsíční rozpočtu 135,000 $. Náklady jsou mnohem nižší než měsíční rozpočtu, protože stále existují osm dní útraty do konce měsíce.
 
-Another way to view the report is to look at accumulated cost vs your budget. To see accumulated costs, under **Show/Hide Fields**, select **Accumulated Cost** and **Total Budget**. Here's an example showing the accumulated cost since the beginning of the year.
+Dalším způsobem, jak zobrazit sestavu je podívat se na celkové náklady vs vašemu rozpočtu. Chcete-li zobrazit nahromaděné náklady, vyberte v části **Zobrazit nebo skrýt pole**celkové **náklady** a **Celkový rozpočet**. Tady je příklad ukazující celkové náklady od začátku roku.
 
-![Example accumulated cost and total budget shown in the Cost vs. Budget Over Time report](./media/manage-budgets/accumulated-budget.png)
+![Příklad kumulovaných nákladů a celkových rozpočtů zobrazených v sestavě náklady vs. rozpočet v čase](./media/manage-budgets/accumulated-budget.png)
 
-Sometime in the future your accumulated cost might exceed your budget. You can more easily see that if you change the chart view to the _line_ type.
+Někdy v budoucnu vaše celkové náklady může překročit vašemu rozpočtu. Můžete snadněji vidět, že pokud změníte zobrazení grafu na typ _řádku_ .
 
-![Budget shown in a line chart in the Cost by Months report](./media/manage-budgets/budget-line.png)
+![Rozpočtu ukazuje spojnicový graf v náklady podle měsíců](./media/manage-budgets/budget-line.png)
 
-## <a name="create-budget-alerts-for-a-filter"></a>Create budget alerts for a filter
+## <a name="create-budget-alerts-for-a-filter"></a>Vytvářet upozornění na rozpočet filtr
 
-In the previous example, you can see that the accumulated cost approached the budget. You can create automatic budget alerts so that you're notified when spending approaches or exceeds your budget. Basically, the alert is a scheduled report with a threshold. Budget alert threshold metrics include:
+V předchozím příkladu vidíte, že celkové náklady dosaženy rozpočtu. Automatické rozpočtu výstrahy můžete vytvořit tak, aby se oznámení, když výdaje přístupy nebo překračuje vašemu rozpočtu. Výstraha představuje v podstatě naplánované sestavy s prahovou hodnotou. Zahrnout metriky pro prahovou hodnotu pro výstrahu rozpočtu:
 
-- Remaining cost vs. budget – to specify a currency value threshold
-- Cost percentage vs. budget – to specify a percentage value threshold
+- Zbývající náklady a rozpočet – chcete-li určit prahové hodnoty měny
+- Procento nákladů a rozpočet – k určení procentuální hodnota prahová hodnota
 
-Let's look at an example.
+Pojďme se podívat na příklad.
 
-In the Cost vs. Budget Over Time report, click **Actions** and then select **Schedule report**. On the Threshold tab, select a threshold metric. For example, **Cost percentage vs budget**. Select an alert type and enter a percentage value of the budget. If you want to get notified only once, select **Number of consecutive alerts** and then type _1_. Klikněte na **Uložit**.
+V sestavě náklady vs. rozpočet v průběhu času klikněte na **Akce** a pak vyberte **naplánovat sestavu**. Na kartě prahovou hodnotu vyberte metriku prahovou hodnotu. Například **procento nákladů vs. rozpočet**. Vyberte typ výstrahy a zadejte hodnotu v procentech rozpočtu. Pokud chcete dostávat oznámení jenom jednou, vyberte **počet po sobě jdoucích výstrah** a pak zadejte _1_. Klikněte na možnost **Uložit**.
 
-![Creating a budget alert on the Save or Schedule this report box](./media/manage-budgets/budget-alert.png)
+![Vytváření upozornění na rozpočet Save plánu nebo momentální tohoto pole sestavy](./media/manage-budgets/budget-alert.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- If you haven't already completed the first tutorial for Cloudyn, read it at  [Review usage and costs](tutorial-review-usage.md).
-- Learn more about the [reports available in Cloudyn](use-reports.md).
+- Pokud jste ještě nedokončili první kurz pro Cloudyn, přečtěte si ho na stránce [Kontrola využití a nákladů](tutorial-review-usage.md).
+- Přečtěte si další informace o [sestavách dostupných v Cloudyn](use-reports.md).

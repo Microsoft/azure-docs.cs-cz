@@ -1,6 +1,6 @@
 ---
-title: How to provision devices for multitenancy in Azure IoT Hub Device Provisioning Service
-description: How to provision devices for multitenancy with your device provisioning service instance
+title: Jak zřídit zařízení pro víceklientské architektury v Azure IoT Hub Device Provisioning Service
+description: Jak zřídit zařízení pro víceklientské prostředí pomocí instance služby Device Provisioning
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -14,126 +14,126 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228788"
 ---
-# <a name="how-to-provision-for-multitenancy"></a>How to provision for multitenancy 
+# <a name="how-to-provision-for-multitenancy"></a>Jak zřídit pro víceklientské architektury 
 
-The allocation policies defined by the provisioning service support a variety of allocation scenarios. Two common scenarios are:
+Zásady přidělování definované službou zřizování podporují celou řadu scénářů přidělování. Mezi dva běžné scénáře patří:
 
-* **Geolocation / GeoLatency**: As a device moves between locations, network latency is improved by having the device provisioned to the IoT hub closest to each location. In this scenario, a group of IoT hubs, which span across regions, are selected for enrollments. The **Lowest latency** allocation policy is selected for these enrollments. This policy causes the Device Provisioning Service to evaluate device latency and determine the closet IoT hub out of the group of IoT hubs. 
+* **Zeměpisná poloha/geografická latence**: když se zařízení pohybuje mezi místy, zlepšuje se latence sítě díky tomu, že je zařízení zřízené službě IoT Hub nejblíže každému umístění. V tomto scénáři jsou pro registrace vybrány skupiny služby IoT Hub, které jsou rozloženy mezi oblastmi. Pro tyto registrace se vybere nejnižší zásada přidělení **latence** . Tato zásada způsobí, že služba Device Provisioning vyhodnocuje latenci zařízení a určí skříň IoT Hub ze skupiny centra IoT. 
 
-* **Multi-tenancy**: Devices used within an IoT solution may need to be assigned to a specific IoT hub or group of IoT hubs. The solution may require all devices for a particular tenant to communicate with a specific group of IoT hubs. In some cases, a tenant may own IoT hubs and require devices to be assigned to their IoT hubs.
+* **Víceklientská architektura: zařízení**používaná v rámci řešení IoT může být potřeba přiřadit ke konkrétnímu centru IoT nebo skupině centra IoT. Řešení může vyžadovat, aby všechna zařízení pro konkrétního tenanta komunikovala s konkrétní skupinou služby IoT Hub. V některých případech může tenant vlastnit centra IoT a vyžadovat, aby zařízení byla přiřazena ke svým centrům IoT.
 
-It is common to combine these two scenarios. For example, a multitenant IoT solution will commonly assign tenant devices using a group of IoT hubs that are scattered across regions. These tenant devices can be assigned to the IoT hub in that group, which has the lowest latency based on geographic location.
+Tyto dva scénáře je běžné kombinovat. Například řešení IoT pro víceklientské klienty bude obvykle přiřazování klientských zařízení pomocí skupiny služby IoT Hub, které jsou rozptýlené napříč oblastmi. Tato zařízení klientů se dají přiřadit ke službě IoT Hub v této skupině, která má nejnižší latenci na základě geografického umístění.
 
-This article uses a simulated device sample from the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) to demonstrate how to provision devices in a multitenant scenario across regions. You will perform the following steps in this article:
+Tento článek používá ukázku simulovaného zařízení ze [sady Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) a předvádí, jak zřídit zařízení ve víceklientské situaci napříč oblastmi. V tomto článku provedete následující kroky:
 
-* Use the Azure CLI to create two regional IoT hubs (**West US** and **East US**)
-* Create a multitenant enrollment
-* Use the Azure CLI to create two regional Linux VMs to act as devices in the same regions (**West US** and **East US**)
-* Set up the development environment for the Azure IoT C SDK on both Linux VMs
-* Simulate the devices to see that they are provisioned for the same tenant in the closest region.
+* Použití rozhraní příkazového řádku Azure k vytvoření dvou oblastí centra IoT (**západní USA** a **východní USA**)
+* Vytvoření víceklientské registrace
+* Použití rozhraní příkazového řádku Azure k vytvoření dvou virtuálních počítačů se systémem Linux, které budou fungovat jako zařízení ve stejných oblastech (**západní USA** a **východní USA**)
+* Nastavení vývojového prostředí pro sadu Azure IoT C SDK na virtuálních počítačích se systémem Linux
+* Simulujte zařízení, abyste viděli, že jsou zřízené pro stejného tenanta v nejbližší oblasti.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Completion of the [Set up IoT Hub Device Provisioning Service with the Azure portal](./quick-setup-auto-provision.md) quickstart.
+* Dokončení [nastavení IoT Hub Device Provisioning Service pomocí](./quick-setup-auto-provision.md) nástroje pro rychlý Start Azure Portal
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
-## <a name="create-two-regional-iot-hubs"></a>Create two regional IoT hubs
+## <a name="create-two-regional-iot-hubs"></a>Vytvoření dvou oblastí centra IoT
 
-In this section, you will use the Azure Cloud Shell to create two new regional IoT hubs in the **West US** and **East US** regions for a tenant.
+V této části použijete Azure Cloud Shell k vytvoření dvou nových oblastí centra IoT v oblasti **západní USA** a **východní USA** pro tenanta.
 
 
-1. Use the Azure Cloud Shell to create a resource group with the [az group create](/cli/azure/group#az-group-create) command. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+1. Pomocí Azure Cloud Shell vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
-    The following example creates a resource group named *contoso-us-resource-group* in the *eastus* region. It is recommended that you use this group for all resources created in this article. This will make clean up easier after you are finished.
+    Následující příklad vytvoří skupinu prostředků s názvem *Contoso-US-Resource-Group* v oblasti *eastus* . Doporučuje se používat tuto skupinu pro všechny prostředky vytvořené v tomto článku. Díky tomu bude vyčištění snazší po dokončení.
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Use the Azure Cloud Shell to create an IoT hub in the **eastus** region with the [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) command. The IoT hub will be added to the *contoso-us-resource-group*.
+2. Pomocí Azure Cloud Shell vytvořte centrum IoT v oblasti **eastus** pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Centrum IoT se přidá do *skupiny contoso-US-Resource-Group*.
 
-    The following example creates an IoT hub named *contoso-east-hub* in the *eastus* location. You must use your own unique hub name instead of **contoso-east-hub**.
+    Následující příklad vytvoří centrum IoT s názvem *Contoso-východ-hub* v umístění *eastus* . Místo **Contoso-východ-hub**musíte použít vlastní jedinečný název centra.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-east-hub --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
     
-    This command may take a few minutes to complete.
+    Dokončení tohoto příkazu může trvat několik minut.
 
-3. Use the Azure Cloud Shell to create an IoT hub in the **westus** region with the [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) command. This IoT hub will also be added to the *contoso-us-resource-group*.
+3. Pomocí Azure Cloud Shell vytvořte centrum IoT v oblasti **westus** pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Toto centrum IoT se taky přidá do *skupiny contoso-US-Resource-Group*.
 
-    The following example creates an IoT hub named *contoso-west-hub* in the *westus* location. You must use your own unique hub name instead of **contoso-west-hub**.
+    Následující příklad vytvoří centrum IoT s názvem *Contoso-západ-hub* v umístění *westus* . Místo názvu **Contoso-západ-hub**musíte použít vlastní jedinečný název centra.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-west-hub --resource-group contoso-us-resource-group --location westus --sku S1
     ```
 
-    This command may take a few minutes to complete.
+    Dokončení tohoto příkazu může trvat několik minut.
 
 
 
-## <a name="create-the-multitenant-enrollment"></a>Create the multitenant enrollment
+## <a name="create-the-multitenant-enrollment"></a>Vytvoření víceklientské registrace
 
-In this section, you will create a new enrollment group for the tenant devices.  
+V této části vytvoříte novou skupinu registrace pro zařízení tenanta.  
 
-For simplicity, this article uses [Symmetric key attestation](concepts-symmetric-key-attestation.md) with the enrollment. For a more secure solution, consider using [X.509 certificate attestation](concepts-security.md#x509-certificates) with a chain of trust.
+V zájmu jednoduchosti Tento článek používá k registraci [symetrický klíč s ověřením identity](concepts-symmetric-key-attestation.md) . Pro bezpečnější řešení zvažte použití [ověření certifikátu X. 509](concepts-security.md#x509-certificates) s řetězem důvěryhodnosti.
 
-1. Sign in to the [Azure portal](https://portal.azure.com), and open your Device Provisioning Service instance.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete instanci služby Device Provisioning.
 
-2. Select the **Manage enrollments** tab, and then click the **Add enrollment group** button at the top of the page. 
+2. Vyberte kartu **spravovat registrace** a pak klikněte na tlačítko **Přidat skupinu** registrací v horní části stránky. 
 
-3. On **Add Enrollment Group**, enter the following information, and click the **Save** button.
+3. Do pole **Přidat skupinu**registrací zadejte následující informace a klikněte na tlačítko **Uložit** .
 
-    **Group name**: Enter **contoso-us-devices**.
+    **Název skupiny**: zadejte **Contoso-US-Devices**.
 
-    **Attestation Type**: Select **Symmetric Key**.
+    **Typ ověření identity**: vyberte **symetrický klíč**.
 
-    **Auto Generate Keys**: This checkbox should already be checked.
+    **Automaticky vygenerovat klíče**: Toto zaškrtávací políčko by již mělo být zaškrtnuté.
 
-    **Select how you want to assign devices to hubs**: Select **Lowest latency**.
+    **Vyberte, jak chcete přiřadit zařízení k rozbočovačům**: vyberte **nejnižší latenci**.
 
-    ![Add multitenant enrollment group for symmetric key attestation](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
-
-
-4. On **Add Enrollment Group**, click **Link a new IoT hub** to link both of your regional hubs.
-
-    **Subscription**: If you have multiple subscriptions, choose the subscription where you created the regional IoT hubs.
-
-    **IoT hub**: Select one of the regional hubs you created.
-
-    **Access Policy**: Choose **iothubowner**.
-
-    ![Link the regional IoT hubs with the provisioning service](./media/how-to-provision-multitenant/link-regional-hubs.png)
+    ![Přidat skupinu registrací víceklientské architektury pro ověření symetrického klíče](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
 
-5. Once both regional IoT hubs have been linked, you must select them for the enrollment group and click **Save** to create the regional IoT hub group for the enrollment.
+4. V části **Přidat skupinu**registrací klikněte na **propojit nové centrum IoT** a propojte obě vaše místní centra.
 
-    ![Create the regional hub group for the enrollment](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
+    **Předplatné**: Pokud máte více předplatných, vyberte předplatné, ve kterém jste vytvořili oblastní centra IoT.
+
+    **IoT Hub**: vyberte jedno z regionálních rozbočovačů, které jste vytvořili.
+
+    **Zásady přístupu**: vyberte **iothubowner**.
+
+    ![Propojení regionálních center IoT se službou zřizování](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
 
-6. After saving the enrollment, reopen it and make a note of the **Primary Key**. You must save the enrollment first to have the keys generated. This key will be used to generate unique device keys for both simulated devices later.
+5. Po propojení obou místních rozbočovačů IoT je musíte vybrat pro skupinu registrací a kliknutím na **Uložit** vytvořit místní skupinu IoT Hub pro registraci.
+
+    ![Vytvoření místní skupiny hub pro registraci](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
 
 
-## <a name="create-regional-linux-vms"></a>Create regional Linux VMs
+6. Po uložení registrace ho znovu otevřete a poznamenejte si **primární klíč**. Nejdřív musíte uložit registraci, aby se vygenerovaly klíče. Tento klíč se použije k vygenerování jedinečných klíčů zařízení pro simulovaná zařízení později.
 
-In this section, you will create two regional Linux virtual machines (VMs). These VMs will run a device simulation sample from each region to demonstrate device provisioning for tenant devices from both regions.
 
-To make clean-up easier, these VMs will be added to the same resource group that contains the IoT hubs that were created, *contoso-us-resource-group*. However, the VMs will run in separate regions (**West US** and **East US**).
+## <a name="create-regional-linux-vms"></a>Vytváření virtuálních počítačů pro místní Linux
 
-1. In the Azure Cloud Shell, execute the following command to create an **East US** region VM after making the following parameter changes in the command:
+V této části vytvoříte dva virtuální počítače pro místní Linux. Tyto virtuální počítače spustí ukázku simulace zařízení z každé oblasti a předvedením zřizování zařízení pro klientská zařízení z obou oblastí.
 
-    **--name**: Enter a unique name for your **East US** regional device VM. 
+K jednoduššímu vyčištění se tyto virtuální počítače přidají do stejné skupiny prostředků, která obsahuje centra IoT, která se vytvořila, *Contoso-US-Resource-Group*. Virtuální počítače se ale spustí v různých oblastech (**západní USA** a **východní USA**).
 
-    **--admin-username**: Use your own admin user name.
+1. V Azure Cloud Shell spuštěním následujícího příkazu vytvořte virtuální počítač **východní USA** oblasti po provedení následujících změn parametrů v příkazu:
 
-    **--admin-password**: Use your own admin password.
+    **--Name**: Zadejte jedinečný název pro **východní USA** místním virtuálním počítači zařízení. 
+
+    **--admin-username**: použijte vlastní uživatelské jméno správce.
+
+    **--admin-heslo**: použijte vlastní heslo správce.
 
     ```azurecli-interactive
     az vm create \
@@ -146,15 +146,15 @@ To make clean-up easier, these VMs will be added to the same resource group that
     --authentication-type password
     ```
 
-    This command will take a few minutes to complete. Once the command has completed, make a note of the **publicIpAddress** value for your East US region VM.
+    Dokončení tohoto příkazu bude trvat několik minut. Až se příkaz dokončí, poznamenejte si hodnotu **publicIpAddress** pro virtuální počítač východní USA oblasti.
 
-1. In the Azure Cloud Shell, execute the command to create a **West US** region VM after making the following parameter changes in the command:
+1. V Azure Cloud Shell spuštěním příkazu vytvořte virtuální počítač **západní USA** oblasti po provedení následujících změn parametrů v příkazu:
 
-    **--name**: Enter a unique name for your **West US** regional device VM. 
+    **--Name**: Zadejte jedinečný název pro **západní USA** místním virtuálním počítači zařízení. 
 
-    **--admin-username**: Use your own admin user name.
+    **--admin-username**: použijte vlastní uživatelské jméno správce.
 
-    **--admin-password**: Use your own admin password.
+    **--admin-heslo**: použijte vlastní heslo správce.
 
     ```azurecli-interactive
     az vm create \
@@ -167,11 +167,11 @@ To make clean-up easier, these VMs will be added to the same resource group that
     --authentication-type password
     ```
 
-    This command will take a few minutes to complete. Once the command has completed, make a note of the **publicIpAddress** value for your West US region VM.
+    Dokončení tohoto příkazu bude trvat několik minut. Až se příkaz dokončí, poznamenejte si hodnotu **publicIpAddress** pro virtuální počítač západní USA oblasti.
 
-1. Open two command-line shells. Connect to one of the regional VMs in each shell using SSH. 
+1. Otevřete dvě prostředí příkazového řádku. Pomocí SSH se připojte k jednomu z regionálních virtuálních počítačů v jednotlivých prostředích. 
 
-    Pass your admin username, and the public IP address you noted for the VM as parameters to SSH. Enter the admin password when prompted.
+    Předejte uživatelské jméno správce a veřejnou IP adresu, kterou jste si poznamenali pro virtuální počítač, jako parametry pro SSH. Po zobrazení výzvy zadejte heslo správce.
 
     ```bash
     ssh contosoadmin@1.2.3.4
@@ -187,12 +187,12 @@ To make clean-up easier, these VMs will be added to the same resource group that
 
 
 
-## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>Prepare the Azure IoT C SDK development environment
+## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>Příprava vývojového prostředí sady Azure IoT C SDK
 
-In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains a sample that will simulate a tenant's device provisioning from each region.
+V této části budete naklonovat sadu Azure IoT C SDK na každém virtuálním počítači. Sada SDK obsahuje ukázku, která simuluje zřizování zařízení tenanta z každé oblasti.
 
 
-1. For each VM, install **Cmake**, **g++** , **gcc**, and [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) using the following commands:
+1. Pro každý virtuální počítač nainstalujte **cmake**, **g + +** , **RSZ**a [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) pomocí následujících příkazů:
 
     ```bash
     sudo apt-get update
@@ -200,7 +200,7 @@ In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains
     ```
 
 
-1. Clone the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) on both VMs.
+1. Naklonujte [sadu Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) na obou virtuálních počítačích.
 
     ```bash
     cd ~/
@@ -209,14 +209,14 @@ In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-1. For both VMs, create a new **cmake** folder inside the repository and change to that folder.
+1. Pro oba virtuální počítače vytvořte novou složku **cmake** v úložišti a změňte ji do této složky.
 
     ```bash
     mkdir ~/azure-iot-sdk-c/cmake
     cd ~/azure-iot-sdk-c/cmake
     ```
 
-1. For both VMs, run the following command, which builds a version of the SDK specific to your development client platform. 
+1. U obou virtuálních počítačů spusťte následující příkaz, který sestaví verzi sady SDK specifickou pro vaši vývojovou platformu. 
 
     ```bash
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -244,21 +244,21 @@ In this section, you will clone the Azure IoT C SDK on each VM. The SDK contains
     ```    
 
 
-## <a name="derive-unique-device-keys"></a>Derive unique device keys
+## <a name="derive-unique-device-keys"></a>Odvodit jedinečné klíče zařízení
 
-When using symmetric key attestation with group enrollments, you don't use the enrollment group keys directly. Instead you create a unique derived key for each device and mentioned in [Group Enrollments with symmetric keys](concepts-symmetric-key-attestation.md#group-enrollments).
+Při použití ověřování symetrického klíče pomocí certifikátů skupin se nepoužívají klíče skupiny registrací přímo. Místo toho pro každé zařízení vytvoříte jedinečný odvozený klíč a v [rámci skupinových registrací pomocí symetrických klíčů](concepts-symmetric-key-attestation.md#group-enrollments)jste zmíněni v zápisu skupin.
 
-To generate the device key, use the group master key to compute an [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) of the unique registration ID for the device and convert the result into Base64 format.
+Pokud chcete vygenerovat klíč zařízení, použijte hlavní klíč skupiny k výpočtu [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) jedinečného ID registrace zařízení a výsledek převeďte na Formát Base64.
 
-Do not include your group master key in your device code.
+Nezahrnujte hlavní klíč skupiny do kódu zařízení.
 
-Use the Bash shell example to create a derived device key for each device using **openssl**.
+Použijte příklad prostředí bash k vytvoření odvozeného klíče zařízení pro každé zařízení pomocí **OpenSSL**.
 
-- Replace the value for **KEY** with the **Primary Key** you noted earlier for your enrollment.
+- Nahraďte hodnotu **klíče klíčem** s **primárním klíčem** , který jste si předtím poznamenali pro registraci.
 
-- Replace the value for **REG_ID** with your own unique registration ID for each device. Use lowercase alphanumeric and dash ('-') characters to define both IDs.
+- Nahraďte hodnotu pro **REG_ID** vlastním jedinečným registračním ID pro každé zařízení. Pro definování identifikátorů použijte malé alfanumerické znaky a spojovníky ('-').
 
-Example device key generation for *contoso-simdevice-east*:
+Příklad generování klíče zařízení pro *Contoso-simdevice-východ*:
 
 ```bash
 KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
@@ -272,7 +272,7 @@ echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | ba
 p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=
 ```
 
-Example device key generation for *contoso-simdevice-west*:
+Příklad generování klíče zařízení pro *Contoso-simdevice-západ*:
 
 ```bash
 KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
@@ -287,23 +287,23 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 ```
 
 
-The tenant devices will each use their derived device key and unique registration ID to perform symmetric key attestation with the enrollment group during provisioning to the tenant IoT hubs.
+Klientské zařízení budou každý použít svůj odvozený klíč zařízení a jedinečné ID registrace k provedení ověření symetrického klíče se skupinou registrace během zřizování pro centra IoT Hub.
 
 
 
 
-## <a name="simulate-the-devices-from-each-region"></a>Simulate the devices from each region
+## <a name="simulate-the-devices-from-each-region"></a>Simulace zařízení z každé oblasti
 
 
-In this section, you will update a provisioning sample in the Azure IoT C SDK for both of the regional VMs. 
+V této části budete aktualizovat ukázku zřizování v sadě Azure IoT C SDK pro oba místní virtuální počítače. 
 
-The sample code simulates a device boot sequence that sends the provisioning request to your Device Provisioning Service instance. The boot sequence will cause the device to be recognized and assigned to the IoT hub that is closest based on latency.
+Vzorový kód simuluje spouštěcí sekvenci zařízení, která odesílá požadavek na zřízení do instance služby Device Provisioning. Spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí do centra IoT, které je nejblíže v závislosti na latenci.
 
 1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning Service a poznamenejte si hodnotu **_Rozsah ID_** .
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-1. Open **~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c** for editing on both VMs.
+1. Otevřete **~/azure-iot-sdk-c/provisioning\_Client/Samples/prov\_dev\_client\_Sample/prokázání\_dev\_client\_Sample. c** pro úpravy na obou virtuálních počítačích.
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
@@ -315,9 +315,9 @@ The sample code simulates a device boot sequence that sends the provisioning req
     static const char* id_scope = "0ne00002193";
     ```
 
-1. Ve stejném souboru vyhledejte definici funkce `main()`. Make sure the `hsm_type` variable is set to `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` as shown below to match the enrollment group attestation method. 
+1. Ve stejném souboru vyhledejte definici funkce `main()`. Ujistěte se, že je proměnná `hsm_type` nastavená na `SECURE_DEVICE_TYPE_SYMMETRIC_KEY`, jak je znázorněno níže, aby odpovídala metodě ověřování skupiny registrací. 
 
-    Save your changes to the files on both VMs.
+    Uložte změny do souborů na obou virtuálních počítačích.
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -326,44 +326,44 @@ The sample code simulates a device boot sequence that sends the provisioning req
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. On both VMs, find the call to `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c** which is commented out.
+1. Na obou virtuálních počítačích vyhledejte volání `prov_dev_set_symmetric_key_info()` v **prov\_dev\_client\_Sample. c** , který je komentovaný.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Uncomment the function calls, and replace the placeholder values (including the angle brackets) with the unique registration IDs and derived device keys for each device. The keys shown below are for example purposes only. Use the keys you generated earlier.
+    Odkomentujte volání funkce a nahraďte zástupné hodnoty (včetně lomených závorek) jedinečnými identifikátory registrace a odvozenými klíči zařízení pro každé zařízení. Níže uvedené klíče jsou pouze příklady pro účely. Použijte klíče, které jste vygenerovali dříve.
 
-    East US:
+    Východní USA:
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-east", "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=");
     ```
 
-    West US:
+    Západní USA:
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
     ```
 
-    Save the files.
+    Uložte soubory.
 
-1. On both VMs, navigate to the sample folder shown below, and build the sample.
+1. Na obou virtuálních počítačích přejděte do ukázkové složky zobrazené níže a sestavte ukázku.
 
     ```bash
     cd ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. Once the build succeeds, run **prov\_dev\_client\_sample.exe** on both VMs to simulate a tenant device from each region. Notice that each device is allocated to the tenant IoT hub closest to the simulated device's regions.
+1. Po úspěšném sestavení spusťte příkaz **prov\_dev\_client\_Sample. exe** na obou virtuálních počítačích pro simulaci zařízení tenanta z každé oblasti. Všimněte si, že každé zařízení je přiděleno ke službě IoT Hub tenanta nejbližší k oblastem simulovaného zařízení.
 
-    Run the simulation:
+    Spusťte simulaci:
     ```bash
     ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample
     ```
 
-    Example output from the East US VM:
+    Příklad výstupu Východní USA virtuálního počítače:
 
     ```bash
     contosoadmin@ContosoSimDeviceEast:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
@@ -380,7 +380,7 @@ The sample code simulates a device boot sequence that sends the provisioning req
 
     ```
 
-    Example output from the West US VM:
+    Příklad výstupu Západní USA virtuálního počítače:
     ```bash
     contosoadmin@ContosoSimDeviceWest:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
     Provisioning API Version: 1.2.9
@@ -399,19 +399,19 @@ The sample code simulates a device boot sequence that sends the provisioning req
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you plan to continue working with resources created in this article, you can leave them. If you do not plan to continue using the resource, use the following steps to delete all resources created by this article to avoid unnecessary charges.
+Pokud máte v úmyslu pokračovat v práci s prostředky vytvořenými v tomto článku, můžete je nechat. Pokud nechcete pokračovat v používání prostředku, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto článkem, aby nedocházelo k zbytečným poplatkům.
 
-The steps here assume you created all resources in this article as instructed in the same resource group named **contoso-us-resource-group**.
+V těchto krocích se předpokládá, že jste vytvořili všechny prostředky v tomto článku podle pokynů ve stejné skupině prostředků s názvem **Contoso-US-Resource-Group**.
 
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT Hub.
 >
 
-To delete the resource group by name:
+Odstranění skupiny prostředků podle názvu:
 
-1. Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
-2. In the **Filter by name...** textbox, type the name of the resource group containing your resources, **contoso-us-resource-group**. 
+2. Do textového pole **filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaše prostředky, **Contoso-US-Resource-Group**. 
 
 3. V seznamu výsledků klikněte na **...** napravo od vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
@@ -419,8 +419,8 @@ To delete the resource group by name:
 
 ## <a name="next-steps"></a>Další kroky
 
-- To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
-- To learn more Deprovisioning, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
+- Další informace o opětovném zřízení najdete v tématu Koncepty opětovného [zřizování zařízení IoT Hub](concepts-device-reprovision.md) 
+- Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) . 
 
 
 

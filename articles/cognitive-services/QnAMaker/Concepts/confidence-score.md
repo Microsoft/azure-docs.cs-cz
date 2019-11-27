@@ -1,7 +1,7 @@
 ---
-title: Confidence Score - QnA Maker
+title: Hodnocení spolehlivosti – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: The confidence score indicates the confidence that the answer is the right match for the given user query.
+description: Skóre spolehlivosti označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,94 +18,94 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229107"
 ---
-# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Confidence score of a QnA Maker knowledge base
-When a user query is matched against a knowledge base, QnA Maker returns relevant answers, along with a confidence score. This score indicates the confidence that the answer is the right match for the given user query. 
+# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Skóre spolehlivosti znalostní báze QnA Maker
+Když uživatelský dotaz je hledána znalostní báze, vrátí QnA Maker příslušné odpovědi, spolu s skóre spolehlivosti. Toto skóre označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele. 
 
-The confidence score is a number between 0 and 100. A score of 100 is likely an exact match, while a score of 0 means, that no matching answer was found. The higher the score- the greater the confidence in the answer. For a given query, there could be multiple answers returned. In that case, the answers are returned in order of decreasing confidence score.
+Skóre spolehlivosti je číslo mezi 0 a 100. Skóre 100 je pravděpodobně přesnou shodu, zatímco skóre 0 znamená, která nebyla nalezena žádná odpovídající odpověď. Čím vyšší skóre – větší jistotou v odpovědi na dotaz. Pro daný dotaz může být vrátil více odpovědí. V takovém případě odpovědi se vrátí v pořadí podle snižuje pravděpodobnost.
 
-In the example below, you can see one QnA entity, with 2 questions. 
-
-
-![Sample QnA pair](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
-
-For the above example- you can expect scores like the sample score range below- for different types of user queries:
+V následujícím příkladu vidíte jednu entitu QnA 2 otázek. 
 
 
-![Ranker score range](../media/qnamaker-concepts-confidencescore/ranker-score-range.png)
+![Ukázka QnA pár](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
+
+Pro výše uvedeného příkladu – můžete očekávat, že skóre jako rozsah skóre ukázka níže – pro různé typy uživatelských dotazů:
 
 
-The following table indicates typical confidence associated for a given score.
+![Klasifikátor rozsahu skóre](../media/qnamaker-concepts-confidencescore/ranker-score-range.png)
 
-|Score Value|Score Meaning|Example Query|
+
+Následující tabulka uvádí typické přidruženou skóre spolehlivosti.
+
+|Hodnota skóre|Význam skóre|Příklad dotazu|
 |--|--|--|
-|90 - 100|A near exact match of user query and a KB question|"My changes aren't updated in KB after publish"|
-|> 70|High confidence - typically a good answer that completely answers the user's query|"I published my KB but it's not updated"|
-|50 - 70|Medium confidence - typically a fairly good answer that should answer the main intent of the user query|"Should I save my updates before I publish my KB?"|
-|30 - 50|Low confidence - typically a related answer, that partially answers the user's intent|" What does the save and train do?"|
-|< 30|Very low confidence - typically does not answer the user's query, but has some matching words or phrases |" Where can I add synonyms to my KB"|
-|0|No match, so the answer is not returned.|"How much does the service cost"|
+|90 – 100|A téměř přesnou shodu uživatele dotazu a dotaz KB|"Moje změny nejsou aktualizovány v KB po publikování"|
+|> 70|Vysokou spolehlivostí – obvykle dobrou odpověď, která úplně odpovědi na dotaz uživatele|"Jsem publikoval znalostní BÁZE, ale není prováděna"|
+|50 - 70|Střední jistotou – obvykle velmi dobrou odpověď, která by měla obsahovat odpovědi hlavním záměrem uživatelský dotaz|"Měli uložit Moje aktualizace před můžu publikovat znalostní BÁZE?"|
+|30 – 50|S nízkou spolehlivostí – obvykle související odpovědí, který odpovídá částečně záměru uživatele|"Co uložit a trénování dělá?"|
+|< 30|Velmi nízkou spolehlivostí – obvykle neodpovídá dotaz uživatele, ale má některé odpovídající slova nebo fráze |"Kde si můžu přidat synonyma znalostní BÁZE"|
+|0|Žádná shoda, proto se vrátí odpověď.|"Kolik službu stojí"|
 
-## <a name="choose-a-score-threshold"></a>Choose a score threshold
-The table above shows the scores that are expected on most KBs. However, since every KB is different, and has different types of words, intents, and goals- we recommend you test and choose the threshold that best works for you. By default the threshold is set to 0, so that all possible answers are returned. The recommended threshold that should work for most KBs, is **50**.
+## <a name="choose-a-score-threshold"></a>Zvolte prahové hodnoty skóre
+V tabulce výše najdete skóre, které se očekává, že na většině znalostní báze. Vzhledem k tomu, že se každá KB liší a má různé typy slov, záměrů a cílů – doporučujeme, abyste otestovali a zvolili prahovou hodnotu, která pro vás nejlépe vyhovuje. Ve výchozím nastavení je prahová hodnota nastavena na 0, aby byly vráceny všechny možné odpovědi. Doporučená prahová hodnota, která by měla fungovat pro většinu aktualizací KB, je **50**.
 
-When choosing your threshold, keep in mind the balance between Accuracy and Coverage, and tweak your threshold based on your requirements.
+Pokud zvolíte, že vaše mezní hodnota, mějte na paměti rovnováhu mezi přesnost a pokrytí a upravit vaše mezní hodnota, na základě vašich požadavků.
 
-- If **Accuracy** (or precision) is more important for your scenario, then increase your threshold. This way, every time you return an answer, it will be a much more CONFIDENT case, and much more likely to be the answer users are looking for. In this case, you might end up leaving more questions unanswered. *For example:* if you make the threshold **70**, you might miss some ambiguous examples likes "what is save and train?".
+- Pokud je **přesnost** (nebo přesnost) pro váš scénář důležitější, zvyšte svou prahovou hodnotu. Tímto způsobem pokaždé, když se vrátí odpověď, bude mnohem více důvěrné velikosti písmen a mnohem vyšší pravděpodobnost, že hledá odpověď uživatele. V takovém případě může skončit opuštění další nezodpovězené dotazy. *Příklad:* Pokud nastavíte prahovou hodnotu **70**, může dojít k nějakým nejednoznačným příkladům, jako je "Co je Save and vlak?".
 
-- If **Coverage** (or recall) is more important- and you want to answer as many questions as possible, even if there is only a partial relation to the user's question- then LOWER the threshold. This means there could be more cases where the answer does not answer the user's actual query, but gives some other somewhat related answer. *For example:* if you make the threshold **30**, you might give answers for queries like "Where can I edit my KB?"
+- Pokud je **pokrytí** (nebo odvolání) důležitější – a chcete odpovědět co nejvíce otázek, i když k otázce uživatele dojde jenom k částečné relaci – pak snižte prahovou hodnotu. To znamená, že může být více případů, kdy odpověď neodpovídá skutečné dotaz uživatele, ale poskytuje některé poněkud související odpovědí. *Příklad:* Pokud nastavíte prahovou hodnotu **30**, můžete poskytnout odpovědi na dotazy, jako je "kde můžu upravit svůj KB?"
 
 > [!NOTE]
-> Newer versions of QnA Maker include improvements to scoring logic, and could affect your threshold. Any time you update the service, make sure to test and tweak the threshold if necessary. You can check your QnA Service version [here](https://www.qnamaker.ai/UserSettings), and see how to get the latest updates [here](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
+> Novější verze nástroje QnA Maker vylepšení bodovací logiku zahrnout a může mít vliv na vaše mezní hodnota. Kdykoli můžete aktualizovat službu, ujistěte se, že pro testování a upravit prahovou hodnotu v případě potřeby. [Tady](https://www.qnamaker.ai/UserSettings)si můžete prohlédnout verzi služby QnA a podívat se, jak získat [nejnovější aktualizace.](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)
 
-## <a name="set-threshold"></a>Set threshold 
+## <a name="set-threshold"></a>Nastavit prahovou hodnotu 
 
-Set the threshold score as a property of the [GenerateAnswer API JSON body](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). This means you set it for each call to GenerateAnswer. 
+Nastavte skóre prahové hodnoty jako vlastnost [těla JSON GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). To znamená, že ji nastavíte pro každé volání GenerateAnswer. 
 
-From the bot framework, set the score as part of the options object with [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) or [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
+Z rozhraní bot Framework nastavte skóre jako součást objektu Options v [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) nebo [Node. js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
-## <a name="improve-confidence-scores"></a>Improve confidence scores
-To improve the confidence score of a particular response to a user query, you can add the user query to the knowledge base as an alternate question on that response. You can also use case-insensitive [word alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) to add synonyms to keywords in your KB.
-
-
-## <a name="similar-confidence-scores"></a>Similar confidence scores
-When multiple responses have a similar confidence score, it is likely that the query was too generic and therefore matched with equal likelihood with multiple answers. Try to structure your QnAs better so that every QnA entity has a distinct intent.
+## <a name="improve-confidence-scores"></a>Zvýšení skóre spolehlivosti
+Pro zvýšení skóre spolehlivosti konkrétní odpovědi na dotaz uživatele, můžete přidat uživatelský dotaz ve znalostní bázi jako alternativní dotaz na odpověď. [Změnou](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) velikosti písmen bez rozlišení velkých a malých písmen můžete také přidat synonyma do klíčových slov ve vaší znalostní bázi.
 
 
-## <a name="confidence-score-differences-between-test-and-production"></a>Confidence score differences between test and production
-The confidence score of an answer may change negligibly between the test and published version of the knowledge base even if the content is the same. This is because the content of the test and the published knowledge base are located in different Azure Cognitive Search indexes. 
-
-The test index holds all the QnA pairs of your knowledge bases. When querying the test index, the query applies to the entire index then results are restricted to the partition for that specific knowledge base. If the test query results are negatively impacting your ability to validate the knowledge base, you can:
-* organize your knowledge base using one of the following:
-    * 1 resource restricted to 1 KB: restrict your single QnA resource (and the resulting Azure Cognitive Search test index) to a single knowledge base. 
-    * 2 resources - 1 for test, 1 for production: have two QnA Maker resources, using one for testing (with its own test and  production indexes) and one for product (also having its own test and production indexes)
-* and, always use the same parameters, such as **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** when querying both your test and production knowledge base
-
-When you publish a knowledge base, the question and answer contents of your knowledge base moves from the test index to a production index in Azure search. See how the [publish](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) operation works.
-
-If you have a knowledge base in different regions, each region uses its own Azure Cognitive Search index. Because different indexes are used, the scores will not be exactly the same. 
+## <a name="similar-confidence-scores"></a>Podobně jako skóre spolehlivosti
+Když ukládat více odpovědí mají podobné skóre spolehlivosti, je pravděpodobné, že dotaz byl příliš obecný a proto shodné s stejnou pravděpodobnost, že s více odpovědí. Vystavět strukturu vaší maximálně lépe tak, aby každá entita QnA obsahuje různé záměr.
 
 
-## <a name="no-match-found"></a>No match found
-When no good match is found by the ranker, the confidence score of 0.0 or "None" is returned and the default response is "No good match found in the KB". You can override this [default response](#change-default-answer) in the bot or application code calling the endpoint. Alternately, you can also set the override response in Azure and this changes the default for all knowledge bases deployed in a particular QnA Maker service.
+## <a name="confidence-score-differences-between-test-and-production"></a>Rozdíly v hodnocení spolehlivosti mezi testováním a výrobou
+Skóre spolehlivosti odpověď může změnit zanedbatelně mezi testu a publikovanou verzi znalostní báze i v případě, obsah je stejný. Důvodem je to, že obsah testu a zveřejněné znalostní báze se nacházejí v různých indexech Kognitivní hledání Azure. 
 
-## <a name="change-default-answer"></a>Change Default Answer
+Index testu obsahuje všechny páry QnA vaší znalostní báze. Při dotazování indexu testu se dotaz vztahuje na celý index. výsledky jsou omezeny na oddíl tohoto konkrétního znalostní báze. Pokud výsledky testovacího dotazu mají negativní vliv na vaši schopnost ověřit znalostní bázi, můžete:
+* pomocí jedné z následujících akcí uspořádejte znalostní bázi:
+    * 1 prostředek je omezený na 1 KB: omezení jednoduchého QnA prostředku (a výsledného indexu Azure Kognitivní hledání test) na jednu znalostní bázi. 
+    * 2 zdroje-1 pro test, 1 pro produkci: mají dva QnA Maker prostředky, které používají jeden pro testování (s vlastními testy a výrobními indexy) a jeden pro produkt (také mají vlastní testovací a produkční indexy).
+* a vždy používejte stejné parametry, jako je například **[Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** při dotazování na znalostní bázi test a produkčního prostředí.
 
-1. Go to the [Azure portal](https://portal.azure.com) and navigate to the resource group that represents the QnA Maker service you created.
+Když publikujete znalostní bázi, obsah otázky a odpovědi ve znalostní bázi se přesune z indexu testu do výrobního indexu ve službě Azure Search. Podívejte se, jak funguje operace [publikování](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) .
 
-2. Click to open the **App Service**.
+Pokud máte znalostní bázi v různých oblastech, v každé oblasti se používá vlastní index služby Azure Kognitivní hledání. Vzhledem k tomu, že se používají různé indexy, skóre se přesně neshodují. 
 
-    ![In the Azure portal, access App service for QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
-3. Click on **Application Settings** and edit the **DefaultAnswer** field to the desired default response. Klikněte na **Uložit**.
+## <a name="no-match-found"></a>Nebyla nalezena žádná odpovídající
+Když dobré shoda nenajde ve klasifikátor, vrátí se skóre spolehlivosti 0,0 nebo "None" a výchozí odpověď je "Dobrá nebyla nalezena žádná odpovídající v KB". Tuto [výchozí odpověď](#change-default-answer) můžete přepsat v robotu nebo kódu aplikace, který volá koncový bod. Alternativně přepsání odpovědi můžete také nastavit v Azure a tím se změní na výchozí hodnoty pro všechny znalostních bází nasazených v konkrétní služba QnA Maker.
 
-    ![Select Application Settings and then edit DefaultAnswer for QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
+## <a name="change-default-answer"></a>Změnit výchozí odpověď
 
-4. Restart your App service
+1. Přejděte na [Azure Portal](https://portal.azure.com) a přejděte do skupiny prostředků, která představuje službu QnA maker, kterou jste vytvořili.
 
-    ![After you change the DefaultAnswer, restart the QnA Maker appservice](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+2. Kliknutím otevřete **App Service**.
+
+    ![Na webu Azure Portal přístup k App service pro nástroj QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+
+3. Klikněte na **nastavení aplikace** a upravte pole **DefaultAnswer** na požadovanou výchozí odpověď. Klikněte na možnost **Uložit**.
+
+    ![Vyberte nastavení aplikace a pak upravte DefaultAnswer pro nástroj QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
+
+4. Restartujte službu App service
+
+    ![Po změně DefaultAnswer restartujte App Service QnA Maker](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Data sources supported](./data-sources-supported.md)
+> [Podporované zdroje dat](./data-sources-supported.md)
 

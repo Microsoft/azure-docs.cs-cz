@@ -118,7 +118,7 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 Tím se spustí počáteční synchronizace všech uživatelů nebo skupin přiřazených ke zvýšení oprávnění LinkedInu v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než další synchronizace, ke kterým dojde přibližně každých 40 minut, pokud je služba spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování v aplikaci pro zvýšení oprávnění LinkedInu.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další prostředky
 

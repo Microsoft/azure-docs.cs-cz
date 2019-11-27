@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7edff127bb981db985bebb41740744f325306bc8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470116"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546196"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací v Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování pro webové aplikace, mobilní back-endy a aplikace API v [Azure Portal](https://portal.azure.com).
 
-V Azure Portal můžete zkontrolovat *kvóty* a *metriky* pro aplikaci, zkontrolovat plán App Service a automaticky nastavit *výstrahy* a *škálování* , které jsou založené na metrikách.
+V Azure Portal můžete zkontrolovat *kvóty* a *metriky* pro plán aplikací a App Service a nastavit *výstrahy* a *Automatické škálování* , které jsou založené na metrikách.
 
 ## <a name="understand-quotas"></a>Principy kvót
 
@@ -43,10 +43,10 @@ Kvóty pro bezplatné nebo sdílené aplikace jsou:
 | **PROCESOR (krátký)** | Počet PROCESORů povolených pro tuto aplikaci v intervalu 5 minut. Tato kvóta se resetuje každých pět minut. |
 | **CPU (den)** | Celková velikost procesoru povoleného pro tuto aplikaci za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
 | **Rezident** | Celková velikost paměti, která je pro tuto aplikaci povolena. |
-| **Připojení** | Celková velikost odchozí šířky pásma, která je pro tuto aplikaci povolená za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
+| **Šířka pásma** | Celková velikost odchozí šířky pásma, která je pro tuto aplikaci povolená za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
 | **Systému souborů** | Celková velikost povoleného úložiště. |
 
-Jediná kvóta platná pro aplikace, které jsou hostované v plánech *Basic*, *Standard*a *Premium* , je systém souborů.
+Jediná kvóta platí pro aplikace, které jsou hostované v systému souborů *Basic*, *Standard*a *Premium* .
 
 Další informace o konkrétních kvótách, omezeních a funkcích, které jsou dostupné pro různé App Service SKU, najdete v tématu [omezení služby předplatného Azure](../azure-subscription-service-limits.md#app-service-limits).
 
@@ -64,6 +64,10 @@ Můžete zvýšit nebo odebrat kvóty z aplikace tím, že upgradujete plán App
 
 ## <a name="understand-metrics"></a>Principy metrik
 
+> [!NOTE]
+> **Využití systému souborů** je nová metrika, která je globálně nasazená, ale neočekávají se žádná data, pokud jste si je nepřidali do seznamu povolených privátních náhledů.
+> 
+
 Metriky poskytují informace o chování aplikace nebo naplánování App Service.
 
 V případě aplikace jsou dostupné metriky:
@@ -77,6 +81,7 @@ V případě aplikace jsou dostupné metriky:
 | **Aktuální sestavení** | Aktuální počet sestavení načtených napříč všemi doménami AppDomain v této aplikaci. |
 | **Data v** | Množství příchozí šířky pásma spotřebované aplikací v souboru MiB. |
 | **Výstupní data** | Velikost odchozí šířky pásma spotřebované aplikací v souboru MiB. |
+| **Využití systému souborů** | Procento kvóty systému souborů spotřebované aplikací |
 | **Generace paměti gen 0** | Počet, kolikrát jsou objekty generace 0 od spuštění procesu aplikace shromažďovány z paměti. GC vyšší generace zahrnuje všechny GC nižší generace.|
 | **Generace paměti 1. generace** | Kolikrát jsou objekty generace 1 od spuštění procesu aplikace uvolněny z paměti. GC vyšší generace zahrnuje všechny GC nižší generace.|
 | **Uvolňování paměti 2. generace** | Kolikrát jsou objekty generace 2 od spuštění procesu aplikace uvolněny z paměti.|
@@ -90,7 +95,7 @@ V případě aplikace jsou dostupné metriky:
 | **4xx http** | Počet požadavků, které mají za následek stavový kód HTTP ≥ 400, ale < 500. |
 | **Chyby serveru http** | Počet požadavků, které mají za následek stavový kód HTTP ≥ 500, ale < 600. |
 | **IO – ostatní bajty za sekundu** | Rychlost, s jakou proces aplikace vydává bajty, do vstupně-výstupních operací, které neobsahují data, jako jsou například operace řízení.|
-| **V/v – ostatní operace za sekundu** | Frekvence, s jakou proces aplikace vystavuje vstupně-výstupní operace, které nejsou operacemi čtení ani zápisu.|
+| **V/v – ostatní operace za sekundu** | Frekvence, s jakou proces aplikace vystavuje vstupně-výstupní operace, které nejsou operacemi čtení nebo zápisu.|
 | **Bajty čtení v/v za sekundu** | Rychlost, s jakou proces aplikace čte bajty z vstupně-výstupních operací.|
 | **Vstupně-výstupní operace čtení za sekundu** | Rychlost, s jakou proces aplikace vydává vstupně-výstupní operace čtení|
 | **Vstupně-výstupní bajty zápisu za sekundu** | Rychlost, kterou proces aplikace zapisuje bajty na vstupně-výstupní operace.|

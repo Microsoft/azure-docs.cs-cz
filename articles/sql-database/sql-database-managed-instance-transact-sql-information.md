@@ -184,7 +184,7 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
 - [Záloha hlavního klíče služby](/sql/t-sql/statements/backup-service-master-key-transact-sql) není podporovaná (spravovaná službou SQL Database).
 - [Obnovení hlavního klíče služby](/sql/t-sql/statements/restore-service-master-key-transact-sql) se nepodporuje (spravuje služba SQL Database).
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
 ### <a name="buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti
 
@@ -392,7 +392,7 @@ Propojené servery ve spravovaných instancích podporují omezený počet cíl�
 Operace
 
 - Transakce zápisu mezi instancemi nejsou podporované.
-- `sp_dropserver` se podporuje pro vyřazování propojeného serveru. See [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
+- `sp_dropserver` se podporuje pro vyřazování propojeného serveru. Viz [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - Funkci `OPENROWSET` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Viz [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql).
 - Funkci `OPENDATASOURCE` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Jako poskytovatel se podporují jenom hodnoty `SQLNCLI`, `SQLNCLI11`a `SQLOLEDB`. Příklad: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Viz [OpenDataSource](/sql/t-sql/functions/opendatasource-transact-sql).
 - Propojené servery nelze použít ke čtení souborů (Excel, CSV) ze sdílených síťových složek. Zkuste použít [Bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) nebo [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) , které čtou soubory CSV z Azure Blob Storage. Sledujte tyto žádosti o [položku zpětné vazby spravované instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
@@ -519,7 +519,7 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 
 ## <a name="Environment"></a>Omezení prostředí
 
-### <a name="subnet"></a>Podsíť
+### <a name="subnet"></a>Subnet
 -  V podsíti, do které jste nasadili spravovanou instanci, nemůžete umístit žádné další prostředky (například virtuální počítače). Nasaďte tyto prostředky pomocí jiné podsítě.
 - Podsíť musí mít dostatečný počet dostupných [IP adres](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimum je 16, ale doporučujeme mít minimálně 32 IP adres v podsíti.
 - [Koncové body služby nelze přidružit k podsíti spravované instance](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Ujistěte se, že je při vytváření virtuální sítě možnost koncové body služby zakázaná.

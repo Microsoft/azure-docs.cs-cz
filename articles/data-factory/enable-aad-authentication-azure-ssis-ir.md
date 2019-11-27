@@ -42,7 +42,7 @@ Azure SQL Database Server podporuje vytváření databází pomocí uživatele A
 
 Můžete použít existující skupinu Azure AD nebo vytvořit novou pomocí Azure AD PowerShellu.
 
-1.  Nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modulu.
+1.  Nainstalujte modul [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) .
 
 2.  Přihlaste se pomocí `Connect-AzureAD`, spuštěním následující rutiny vytvořte skupinu a uložte ji do proměnné:
 

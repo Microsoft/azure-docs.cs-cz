@@ -1,6 +1,6 @@
 ---
-title: Create & delete a user-assigned managed identity using Azure Resource Manager
-description: Step by step instructions on how to create and delete user-assigned managed identities using Azure Resource Manager.
+title: Vytvoření & odstranění spravované identity přiřazené uživatelem pomocí Azure Resource Manager
+description: Podrobné pokyny, jak vytvořit a odstranit spravované identity přiřazené uživatelem pomocí Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,44 +15,44 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2eeb5b184d54f406be721ac73d75aaef192ac6a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 66a4415203871c8397af2b8f1f96ca4f08d6bfcc
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224615"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547439"
 ---
-# <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Create, list and delete a user-assigned managed identity using Azure Resource Manager
+# <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Vytvoření, vypsání a odstranění spravované identity přiřazené uživatelem pomocí Azure Resource Manager
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Managed identities for Azure resources provides Azure services with a managed identity in Azure Active Directory. You can use this identity to authenticate to services that support Azure AD authentication, without needing credentials in your code. 
+Spravované identity pro prostředky Azure poskytují služby Azure se spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro služby, které podporují ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
-In this article, you create a user-assigned managed identity using an Azure Resource Manager.
+V tomto článku vytvoříte spravovanou identitu přiřazenou uživatelem pomocí Azure Resource Manager.
 
-It is not possible to list and delete a user-assigned managed identity using an Azure Resource Manager template.  See the following articles to create and list a user-assigned managed identity:
+Pomocí šablony Azure Resource Manager není možné vypsat a odstranit spravovanou identitu přiřazenou uživatelem.  Chcete-li vytvořit a uvést spravovanou identitu přiřazenou uživatelem, Projděte si následující články:
 
-- [List user-assigned managed identity](how-to-manage-ua-identity-cli.md#list-user-assigned-managed-identities)
-- [Delete user-assigned managed identity](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
-  ## <a name="prerequisites"></a>Předpoklady
+- [Výpis spravované identity přiřazené uživatelem](how-to-manage-ua-identity-cli.md#list-user-assigned-managed-identities)
+- [Odstranit spravovanou identitu přiřazenou uživatelem](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
+  ## <a name="prerequisites"></a>Požadavky
 
-- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
-## <a name="template-creation-and-editing"></a>Template creation and editing
+## <a name="template-creation-and-editing"></a>Vytváření a úpravy šablon
 
-As with the Azure portal and scripting, Azure Resource Manager templates provide the ability to deploy new or modified resources defined by an Azure resource group. Several options are available for template editing and deployment, both local and portal-based, including:
+Stejně jako u Azure Portal a skriptování poskytují Azure Resource Manager šablony možnost nasazení nových nebo upravených prostředků definovaných skupinou prostředků Azure. K dispozici je několik možností pro úpravu a nasazení šablony, včetně místních i na portálu, včetně:
 
-- Using a [custom template from the Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), which allows you to create a template from scratch, or base it on an existing common or [QuickStart template](https://azure.microsoft.com/documentation/templates/).
-- Deriving from an existing resource group, by exporting a template from either [the original deployment](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), or from the [current state of the deployment](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
-- Using a local [JSON editor (such as VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md), and then uploading and deploying by using PowerShell or CLI.
-- Using the Visual Studio [Azure Resource Group project](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) to both create and deploy a template. 
+- Použití [vlastní šablony z Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), což vám umožňuje vytvořit zcela novou šablonu, nebo ji založit na stávající společné nebo [rychlé šabloně](https://azure.microsoft.com/documentation/templates/).
+- Odvození z existující skupiny prostředků exportováním šablony z [původního nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)nebo z [aktuálního stavu nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+- Použití místního [editoru JSON (například vs Code)](../../azure-resource-manager/resource-manager-create-first-template.md)a následného nahrávání a nasazování pomocí PowerShellu nebo rozhraní příkazového řádku.
+- Použití [projektu skupiny prostředků Azure](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) sady Visual Studio k vytvoření a nasazení šablony. 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem 
 
-To create a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+K vytvoření spravované identity přiřazené uživatelem potřebuje váš účet přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-To create a user-assigned managed identity, use the following template. Replace the `<USER ASSIGNED IDENTITY NAME>` value with your own values:
+K vytvoření spravované identity přiřazené uživatelem použijte následující šablonu. Hodnotu `<USER ASSIGNED IDENTITY NAME>` nahraďte vlastními hodnotami:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -86,7 +86,7 @@ To create a user-assigned managed identity, use the following template. Replace 
 ```
 ## <a name="next-steps"></a>Další kroky
 
-For information on how to assign a user-assigned managed identity to an Azure VM using an Azure Resource Manager template see, [Configure managed identities for Azure resources on an Azure VM using a templates](qs-configure-template-windows-vm.md).
+Informace o přiřazení spravované identity přiřazené uživatelem k virtuálnímu počítači Azure pomocí šablony Azure Resource Manager najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablon](qs-configure-template-windows-vm.md).
 
 
  

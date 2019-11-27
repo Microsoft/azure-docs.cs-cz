@@ -1,6 +1,6 @@
 ---
-title: Public preview service limits - Azure Digital Twins | Microsoft Docs
-description: Learn about public preview service, subscription, instance, and rate limits for Azure Digital Twins.
+title: Omezení služby Public Preview – digitální vlákna Azure | Microsoft Docs
+description: Přečtěte si o omezeních služeb, předplatném, instancí a přenosech verze Public Preview pro digitální vlákna Azure.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -17,62 +17,62 @@ ms.locfileid: "74383050"
 ---
 # <a name="public-preview-service-limits"></a>Omezení služby ve verzi Public Preview
 
-During the public preview, Azure Digital Twins has the following temporary subscription, instance, and rate limits.
+V rámci verze Public Preview má digitální vlákna Azure následující dočasné předplatné, instanci a omezení přenosové rychlosti.
 
-These constraints exist to help simplify learning about the new service and its many features.
+Tato omezení existují, pokud chcete zjednodušit učení o nové službě a jejich mnoha funkcích.
 
 > [!NOTE]
-> These limits will be increased or removed by general availability (GA).
+> Tato omezení se zvýší nebo odeberou obecnou dostupností (GA).
 
-## <a name="per-subscription-limits"></a>Per-subscription limits
+## <a name="per-subscription-limits"></a>Omezení pro předplatné
 
-During the public preview, each Azure subscription can create or run only one Azure Digital Twins instance at a time.
+V rámci verze Public Preview může každé předplatné Azure vytvořit nebo spustit pouze jednu instanci digitálního vlákna Azure v jednom okamžiku.
 
 > [!TIP]
-> If you delete your instance, you can create a new one.
+> Odstraníte-li instanci, můžete vytvořit novou.
 
-## <a name="per-instance-limits"></a>Per-instance limits
+## <a name="per-instance-limits"></a>Omezení podle instancí
 
-In turn, each Azure Digital Twins instance can have:
+Každá instance digitálního vlákna v Azure pak může mít:
 
-- Exactly one embedded **IoTHub** resource that's created automatically during service provisioning.
-- Exactly One **EventHub** endpoint for the event type **DeviceMessage**.
-- Up to three **EventHub**, **ServiceBus**, or **EventGrid** endpoints of the event type **SensorChange**, **SpaceChange**, **TopologyOperation**, or **UdfCustom**.
+- Právě jeden integrovaný prostředek **IoTHub** , který se vytvoří automaticky během zřizování služby.
+- Právě jeden koncový bod **EventHub** pro typ události **DeviceMessage**.
+- Až tři koncové body **EventHub**, **ServiceBus**nebo **EventGrid** typu události **SensorChange**, **SpaceChange**, **TopologyOperation**nebo **UdfCustom**.
 
 > [!NOTE]
-> Some parameters that are usually defined in creating the above Azure IoT entities are not required during public preview.
-> - Consult the [Swagger reference documentation](./how-to-use-swagger.md) for the most recent API specifications.
+> Některé parametry, které jsou obvykle definovány při vytváření výše uvedených entit Azure IoT, nejsou ve verzi Public Preview požadovány.
+> - Nejnovější specifikace rozhraní API najdete v [referenční dokumentaci k Swagger](./how-to-use-swagger.md) .
 
-## <a name="azure-digital-twins-management-api-limits"></a>Azure Digital Twins Management API limits
+## <a name="azure-digital-twins-management-api-limits"></a>Omezení rozhraní API pro správu digitálních vláken Azure
 
-The request rate limits for your Azure Digital Twins Management API are:
+Omezení přenosové rychlosti požadavků pro rozhraní API pro správu digitálních vláken Azure je:
 
-- 100 requests per second to the Azure Digital Twins Management API.
-- Up to 1,000 objects returned by a single Azure Digital Twins Management API query.
+- 100 požadavků za sekundu rozhraní API pro správu digitálních vláken Azure.
+- Až 1 000 objektů vrácených jedním dotazem rozhraní API pro správu digitálních vláken Azure.
 
 > [!IMPORTANT]
-> If you exceed the 1,000-object limit, you receive an error and must simplify your query.
+> Pokud překročíte limit 1 000 objektů, zobrazí se chybová zpráva a bude nutné dotaz zjednodušit.
 
-## <a name="user-defined-functions-rate-limits"></a>User-defined functions rate limits
+## <a name="user-defined-functions-rate-limits"></a>Omezení rychlosti uživatelem definovaných funkcí
 
-The following limits set the total number of all user-defined function calls made to your Azure Digital Twins instance:
+Následující omezení nastaví celkový počet všech volání uživatelsky definovaných funkcí provedených u vaší instance digitálního vlákna Azure:
 
-- 400 client library calls per second
-- 100 **SendNotification** calls per second
+- 400 volání klientské knihovny za sekundu
+- 100 **SendNotification** volání za sekundu
 
 > [!NOTE]
-> The following actions might cause additional rate limits to be applied temporarily:
-> - Edits made to the topology object metadata
-> - Updates made to the user-defined function definition
-> - Devices that send telemetry for the first time
+> Následující akce mohou způsobit dočasné použití limitů dalších sazeb:
+> - Úpravy provedené v metadatech objektu topologie
+> - Aktualizace provedené v definici uživatelsky definované funkce
+> - Zařízení, která poprvé odesílají telemetrii
 
-## <a name="device-telemetry-limits"></a>Device telemetry limits
+## <a name="device-telemetry-limits"></a>Omezení telemetrie zařízení
 
-The following limits cap the total number of all messages your devices can send to your Azure Digital Twins instance:
+Tato omezení omezují celkový počet všech zpráv, které vaše zařízení můžou odeslat do instance digitálních vláken Azure:
 
-- 100 messages per second across all devices
--   25 messages per second per device
+- 100 zpráv za sekundu napříč všemi zařízeními
+-   25 zpráv za sekundu na zařízení
 
 ## <a name="next-steps"></a>Další kroky
 
-- To try out an Azure Digital Twins sample, go to [Quickstart to find available rooms](./quickstart-view-occupancy-dotnet.md).
+- Pokud si chcete vyzkoušet ukázku digitálních vláken Azure, [vyhledejte dostupné místnosti v rychlém](./quickstart-view-occupancy-dotnet.md)startu.

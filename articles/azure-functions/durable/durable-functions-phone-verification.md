@@ -1,6 +1,6 @@
 ---
-title: Human interaction and timeouts in Durable Functions - Azure
-description: Learn how to handle human interaction and timeouts in the Durable Functions extension for Azure Functions.
+title: Lidská interakce a časové limity v Durable Functions – Azure
+description: Naučte se, jak zpracovávat lidské interakce a časové limity v rozšíření Durable Functions pro Azure Functions.
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
@@ -11,11 +11,11 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232828"
 ---
-# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Human interaction in Durable Functions - Phone verification sample
+# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Ukázka lidské interakce v Durable Functions-telefon ověřování
 
-This sample demonstrates how to build a [Durable Functions](durable-functions-overview.md) orchestration that involves human interaction. Whenever a real person is involved in an automated process, the process must be able to send notifications to the person and receive responses asynchronously. It must also allow for the possibility that the person is unavailable. (This last part is where timeouts become important.)
+Tato ukázka předvádí, jak sestavit [Durable Functions](durable-functions-overview.md) orchestrace, která zahrnuje lidskou interakci. Kdykoli je skutečná osoba zapojena do automatizovaného procesu, proces musí být schopný odesílat oznámení osobě a přijímat odpovědi asynchronně. Také musí umožnit, aby osoba nebyla k dispozici. (V této poslední části se stanou důležité časové limity.)
 
-This sample implements an SMS-based phone verification system. These types of flows are often used when verifying a customer's phone number or for multi-factor authentication (MFA). It is a powerful example because the entire implementation is done using a couple small functions. No external data store, such as a database, is required.
+Tato ukázka implementuje systém ověřování pro telefon založený na SMS. Tyto typy toků se často používají při ověřování telefonního čísla zákazníka nebo služby Multi-Factor Authentication (MFA). Jedná se o účinný příklad, protože celá implementace se provádí pomocí několika malých funkcí. Není vyžadováno žádné externí úložiště dat, například databáze.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
@@ -23,77 +23,77 @@ This sample implements an SMS-based phone verification system. These types of fl
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
-Phone verification is used to verify that end users of your application are not spammers and that they are who they say they are. Multi-factor authentication is a common use case for protecting user accounts from hackers. The challenge with implementing your own phone verification is that it requires a **stateful interaction** with a human being. An end user is typically provided some code (for example, a 4-digit number) and must respond **in a reasonable amount of time**.
+Ověřování pomocí telefonu se používá k ověření, že koncoví uživatelé vaší aplikace nejsou odesilatelé nevyžádané pošty a že se k nim říkají. Multi-Factor Authentication je běžný případ použití pro ochranu uživatelských účtů proti hackerům. Výzvou k implementaci vlastního ověřování na základě telefonu je, že vyžaduje **stavovou interakci** s lidmi. Koncovému uživateli se obvykle poskytuje nějaký kód (například číslo se čtyřmi číslicemi) a musí reagovat **v rozumném časovém intervalu**.
 
-Ordinary Azure Functions are stateless (as are many other cloud endpoints on other platforms), so these types of interactions involve explicitly managing state externally in a database or some other persistent store. In addition, the interaction must be broken up into multiple functions that can be coordinated together. For example, you need at least one function for deciding on a code, persisting it somewhere, and sending it to the user's phone. Additionally, you need at least one other function to receive a response from the user and somehow map it back to the original function call in order to do the code validation. A timeout is also an important aspect to ensure security. It can get fairly complex quickly.
+Běžné Azure Functions jsou bezstavové (stejně jako mnoho dalších koncových bodů cloudu na jiných platformách), takže tyto typy interakcí zahrnují explicitní správu stavu externě v databázi nebo v jiném trvalém úložišti. Kromě toho musí být interakce rozdělena do více funkcí, které mohou být koordinovány dohromady. Například potřebujete alespoň jednu funkci pro rozhodování o kódu, zachovat ho někam a poslat ho do telefonu uživatele. Kromě toho potřebujete alespoň jednu další funkci pro příjem odpovědi od uživatele a nějakým způsobem ji namapovat zpátky na původní volání funkce, aby bylo možné provést ověření kódu. Časový limit je také důležitým aspektem pro zajištění zabezpečení. Může rychle docházet k poměrně složitému zobrazení.
 
-The complexity of this scenario is greatly reduced when you use Durable Functions. As you will see in this sample, an orchestrator function can manage the stateful interaction easily and without involving any external data stores. Because orchestrator functions are *durable*, these interactive flows are also highly reliable.
+Složitost tohoto scénáře se výrazně zkracuje při použití Durable Functions. Jak vidíte v této ukázce, může funkce Orchestrator spravovat stavovou interakci snadno a bez zahrnutí externích úložišť dat. Vzhledem k tomu, že funkce nástroje Orchestrator jsou *trvalé*, jsou tyto interaktivní toky také vysoce spolehlivé.
 
-## <a name="configuring-twilio-integration"></a>Configuring Twilio integration
+## <a name="configuring-twilio-integration"></a>Konfigurace integrace Twilio
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="the-functions"></a>The functions
+## <a name="the-functions"></a>Funkce
 
-This article walks through the following functions in the sample app:
+Tento článek vás provede následujícími funkcemi v ukázkové aplikaci:
 
 * **E4_SmsPhoneVerification**
 * **E4_SendSmsChallenge**
 
-The following sections explain the configuration and code that is used for C# scripting and JavaScript. The code for Visual Studio development is shown at the end of the article.
+Následující části vysvětlují konfiguraci a kód, který se používá C# pro skriptování a JavaScript. Kód pro vývoj v aplikaci Visual Studio se zobrazí na konci článku.
 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>The SMS verification orchestration (Visual Studio Code and Azure portal sample code)
+## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Orchestrace ověření SMS (ukázkový kód Visual Studio Code a Azure Portal)
 
-The **E4_SmsPhoneVerification** function uses the standard *function.json* for orchestrator functions.
+Funkce **E4_SmsPhoneVerification** používá standardní *funkci Function. JSON* pro funkce Orchestrator.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/function.json)]
 
-Here is the code that implements the function:
+Zde je kód, který implementuje funkci:
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#Pravidel
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
-Once started, this orchestrator function does the following:
+Po spuštění tato funkce Orchestrator provede následující akce:
 
-1. Gets a phone number to which it will *send* the SMS notification.
-2. Calls **E4_SendSmsChallenge** to send an SMS message to the user and returns back the expected 4-digit challenge code.
-3. Creates a durable timer that triggers 90 seconds from the current time.
-4. In parallel with the timer, waits for an **SmsChallengeResponse** event from the user.
+1. Načte telefonní číslo, na které bude *odesílat* oznámení SMS.
+2. Zavolá **E4_SendSmsChallenge** k odeslání zprávy SMS uživateli a vrátí zpět očekávaný kód výzvy se čtyřmi číslicemi.
+3. Vytvoří trvalý časovač, který spouští 90 sekund od aktuálního času.
+4. Paralelně s časovačem počká na událost **SmsChallengeResponse** od uživatele.
 
-The user receives an SMS message with a four-digit code. They have 90 seconds to send that same 4-digit code back to the orchestrator function instance to complete the verification process. If they submit the wrong code, they get an additional three tries to get it right (within the same 90-second window).
+Uživatel obdrží zprávu SMS s kódem se čtyřmi číslicemi. Mají 90 sekund k odeslání stejného čtyřmístného kódu zpátky do instance funkce Orchestrator, aby se dokončil proces ověření. Pokud odešle nesprávný kód, získá další tři pokusy o jeho navýšení (v rámci stejného 90 druhého okna).
 
 > [!NOTE]
-> It may not be obvious at first, but this orchestrator function is completely deterministic. It is deterministic because the `CurrentUtcDateTime` (.NET) and `currentUtcDateTime` (JavaScript) properties are used to calculate the timer expiration time, and these properties return the same value on every replay at this point in the orchestrator code. This behavior is important to ensure that the same `winner` results from every repeated call to `Task.WhenAny` (.NET) or `context.df.Task.any` (JavaScript).
+> V první době nemusí být zřejmé, ale tato funkce Orchestrator je zcela deterministické. Je deterministický, protože vlastnosti `CurrentUtcDateTime` (.NET) a `currentUtcDateTime` (JavaScript) se používají k výpočtu času vypršení platnosti časovače. Tyto vlastnosti vrátí stejnou hodnotu pro každé přehrání v tomto okamžiku v kódu Orchestrator. Toto chování je důležité, aby se zajistilo, že stejné `winner` výsledky z každého opakovaného volání `Task.WhenAny` (.NET) nebo `context.df.Task.any` (JavaScript).
 
 > [!WARNING]
-> It's important to [cancel timers](durable-functions-timers.md) if you no longer need them to expire, as in the example above when a challenge response is accepted.
+> Je důležité [Zrušit časovače](durable-functions-timers.md) , pokud už nepotřebujete, aby vyprší platnost, jako v příkladu výše, pokud je odpověď na výzvu přijata.
 
-## <a name="send-the-sms-message"></a>Send the SMS message
+## <a name="send-the-sms-message"></a>Odeslat zprávu SMS
 
-The **E4_SendSmsChallenge** function uses the Twilio binding to send the SMS message with the 4-digit code to the end user. The *function.json* is defined as follows:
+Funkce **E4_SendSmsChallenge** používá vazbu Twilio k odeslání zprávy SMS s kódem se čtyřmi číslicemi koncovému uživateli. *Funkce Function. JSON* je definována takto:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/function.json)]
 
-And here is the code that generates the 4-digit challenge code and sends the SMS message:
+A zde je kód, který generuje kód výzvy se čtyřmi číslicemi a pošle zprávu SMS:
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#Pravidel
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
-This **E4_SendSmsChallenge** function only gets called once, even if the process crashes or gets replayed. This is good because you don't want the end user getting multiple SMS messages. The `challengeCode` return value is automatically persisted, so the orchestrator function always knows what the correct code is.
+Tato funkce **E4_SendSmsChallenge** se volá jenom jednou, i když proces selže nebo se přehraje. To je dobré, protože nechcete, aby koncový uživatel načítají více zpráv SMS. Návratová hodnota `challengeCode` je automaticky trvale zachovaná, takže funkce Orchestrator vždycky ví, co je to správný kód.
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Using the HTTP-triggered functions included in the sample, you can start the orchestration by sending the following HTTP POST request:
+Pomocí funkcí aktivovaných protokolem HTTP, které jsou součástí ukázky, můžete zahájit orchestraci odesláním následující žádosti HTTP POST:
 
 ```
 POST http://{host}/orchestrators/E4_SmsPhoneVerification
@@ -112,9 +112,9 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-The orchestrator function receives the supplied phone number and immediately sends it an SMS message with a randomly generated 4-digit verification code &mdash; for example, *2168*. The function then waits 90 seconds for a response.
+Funkce Orchestrator obdrží poskytnuté telefonní číslo a okamžitě pošle zprávu SMS s náhodně generovaným ověřovacím kódem se čtyřmi číslicemi &mdash; například *2168*. Funkce pak pro odpověď vyčká 90 sekund.
 
-To reply with the code, you can use [`RaiseEventAsync` (.NET) or `raiseEvent` (JavaScript)](durable-functions-instance-management.md) inside another function or invoke the **sendEventUrl** HTTP POST webhook referenced in the 202 response above, replacing `{eventName}` with the name of the event, `SmsChallengeResponse`:
+Pro odpověď s kódem můžete použít [`RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript)](durable-functions-instance-management.md) uvnitř jiné funkce nebo vyvolat Webhook **sendEventUrl** http post, na který se odkazuje v odpovědi 202, nahrazuje `{eventName}` názvem události `SmsChallengeResponse`:
 
 ```
 POST http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -124,7 +124,7 @@ Content-Type: application/json
 2168
 ```
 
-If you send this before the timer expires, the orchestration completes and the `output` field is set to `true`, indicating a successful verification.
+Pokud toto odešlete před vypršením platnosti časovače, orchestrace se dokončí a pole `output` je nastavené na `true`, což indikuje úspěšné ověření.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -138,7 +138,7 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":true,"createdTime":"2017-06-29T19:10:49Z","lastUpdatedTime":"2017-06-29T19:12:23Z"}
 ```
 
-If you let the timer expire, or if you enter the wrong code four times, you can query for the status and see a `false` orchestration function output, indicating that phone verification failed.
+Pokud necháte vypršení platnosti časovače, nebo pokud zadáte špatný kód čtyřikrát, můžete zadat dotaz na stav a zobrazit výstup funkce orchestrace `false`, což značí, že se nezdařilo ověření telefonu.
 
 ```
 HTTP/1.1 200 OK
@@ -148,18 +148,18 @@ Content-Length: 145
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
 
-## <a name="visual-studio-sample-code"></a>Visual Studio sample code
+## <a name="visual-studio-sample-code"></a>Vzorový kód sady Visual Studio
 
-Here is the orchestration as a single C# file in a Visual Studio project:
+Toto je orchestrace jako jeden C# soubor v projektu sady Visual Studio:
 
 > [!NOTE]
-> You will need to install the `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget package to run the sample code below.
+> Pro spuštění ukázkového kódu níže budete muset nainstalovat balíček `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
 ## <a name="next-steps"></a>Další kroky
 
-This sample has demonstrated some of the advanced capabilities of Durable Functions, notably `WaitForExternalEvent` and `CreateTimer` APIs. You've seen how these can be combined with `Task.WaitAny` to implement a reliable timeout system, which is often useful for interacting with real people. You can learn more about how to use Durable Functions by reading a series of articles that offer in-depth coverage of specific topics.
+Tato ukázka ukázala některé pokročilé funkce Durable Functions, zejména rozhraní API `WaitForExternalEvent` a `CreateTimer`. Seznámili jste se s tím, jak je můžete kombinovat s `Task.WaitAny` k implementaci systému spolehlivého časového limitu, který je často užitečný pro interakci se skutečnými lidmi. Další informace o tom, jak používat Durable Functions, najdete v řadě článků, které nabízejí podrobné pokrytí konkrétních témat.
 
 > [!div class="nextstepaction"]
-> [Go to the first article in the series](durable-functions-bindings.md)
+> [Přejít na první článek v řadě](durable-functions-bindings.md)

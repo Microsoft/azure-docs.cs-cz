@@ -19,15 +19,15 @@ ms.locfileid: "74230026"
 ---
 # <a name="what-is-azure-cost-management"></a>Co je Azure Cost Management?
 
-Správa nákladů je proces, při kterém efektivně plánujete a řídíte náklady své firmy. Úlohy správy nákladů obvykle provádějí finanční týmy, týmy správy účtů a týmy aplikací. Azure Cost Management helps organizations plan with cost in mind. It also helps to analyze costs effectively and take action to optimize cloud spending. Další informace o tom, jak organizace mohou využít správu nákladů, najdete v článku, který se věnuje [osvědčeným postupům pro Azure Cost Management](cost-mgt-best-practices.md).
+Správa nákladů je proces, při kterém efektivně plánujete a řídíte náklady své firmy. Úlohy správy nákladů obvykle provádějí finanční týmy, týmy správy účtů a týmy aplikací. Azure Cost Management pomáhá organizacím plánovat s ohledem na náklady. Pomůže vám také efektivně analyzovat náklady a provádět opatření k optimalizaci útraty cloudu. Další informace o tom, jak organizace mohou využít správu nákladů, najdete v článku, který se věnuje [osvědčeným postupům pro Azure Cost Management](cost-mgt-best-practices.md).
 
-Watch the [Azure Cost Management overview video](https://www.youtube.com/watch?v=el4yN5cHsJ0) for a quick overview about how Azure Cost Management can help you save money in Azure.
+Podívejte se na [video s přehledem Azure cost management](https://www.youtube.com/watch?v=el4yN5cHsJ0) , kde najdete rychlý přehled toho, jak vám Azure cost management můžou ušetřit peníze v Azure.
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 Přestože spolu souvisejí, fakturace se od správy nákladů liší. Fakturace je proces, při kterém vystavujete faktury za zboží a služby zákazníkům a spravujete komerční vztahy.  O fakturační úlohy se obvykle starají zásobovací a finanční týmy.
 
-Pomocí pokročilých analýz služba Cost Management zobrazuje schémata nákladů a využití na úrovni organizace. Reports in Cost Management show the usage-based costs consumed by Azure services and third-party Marketplace offerings. Costs are based on negotiated prices and factor in reservation and Azure Hybrid Benefit discounts. Společně tyto sestavy zobrazují interní a externí náklady na využití a poplatky za Azure Marketplace. Ostatní poplatky, například za nákupy rezervací, podporu a daně, se zatím v sestavách nezobrazují. Tyto sestavy vám pomohou vyznat se v útratách a využití prostředků a zjistit neobvyklé výdaje. K dispozici máte také prediktivní analýzu. Služba Cost Management využívá skupiny pro správu, rozpočty a doporučení Azure, aby přehledně zobrazila, jak máte uspořádány výdaje a jak byste mohli snížit náklady.
+Pomocí pokročilých analýz služba Cost Management zobrazuje schémata nákladů a využití na úrovni organizace. Sestavy v Cost Management zobrazují náklady založené na využívání využívané službami Azure a nabídkami na webu Marketplace třetích stran. Náklady jsou založené na sjednaných cenách a faktorech v rezervacích a Zvýhodněné hybridní využití Azure slevách. Společně tyto sestavy zobrazují interní a externí náklady na využití a poplatky za Azure Marketplace. Ostatní poplatky, například za nákupy rezervací, podporu a daně, se zatím v sestavách nezobrazují. Tyto sestavy vám pomohou vyznat se v útratách a využití prostředků a zjistit neobvyklé výdaje. K dispozici máte také prediktivní analýzu. Služba Cost Management využívá skupiny pro správu, rozpočty a doporučení Azure, aby přehledně zobrazila, jak máte uspořádány výdaje a jak byste mohli snížit náklady.
 
 K automatizaci exportu můžete využít web Azure Portal nebo různá rozhraní API, abyste mohli integrovat data nákladů s externími systémy a procesy. K dispozici máte také automatizovaný export dat fakturace a naplánované sestavy.
 
@@ -45,15 +45,15 @@ Pokud pro přístup k datům správy nákladů nebo jejich kontrole používáte
 
 ## <a name="consider-cloudyn"></a>Zvážení využití služby Cloudyn
 
-[Cloudyn](overview.md) je služba Azure, která souvisí se službou Cost Management. Pomocí služby Cloudyn můžete sledovat využití cloudu a výdaje na prostředky Azure. Podporuje také další poskytovatele cloudu, včetně AWS a Googlu. Snadno pochopitelné sestavy řídicího panelu pomáhají s přidělováním nákladů i metodami showback a chargeback. V současné době služba Cost Management nepodporuje metody showback a chargeback ani jiné poskytovatele cloudových služeb. Cloudyn je však možnost, která je _podporuje_. Currently, Cost Management doesn't support Microsoft Cloud Service Provider (CSP) accounts but Cloudyn does. If you have CSP accounts or if you want to use showback/chargeback, you can use Cloudyn to help manage your costs.
+[Cloudyn](overview.md) je služba Azure, která souvisí se službou Cost Management. Pomocí služby Cloudyn můžete sledovat využití cloudu a výdaje na prostředky Azure. Podporuje také další poskytovatele cloudu, včetně AWS a Googlu. Snadno pochopitelné sestavy řídicího panelu pomáhají s přidělováním nákladů i metodami showback a chargeback. V současné době služba Cost Management nepodporuje metody showback a chargeback ani jiné poskytovatele cloudových služeb. Cloudyn je však možnost, která je _podporuje_. V současné době Cost Management nepodporuje účty poskytovatele služeb Microsoft Cloud (CSP), ale Cloudyn. Pokud máte účty CSP, nebo pokud chcete používat showback/vrácení peněz, můžete k usnadnění správy nákladů využít Cloudyn.
 
-Watch the [Azure Cost Management and Cloudyn video](https://www.youtube.com/watch?v=PmwFWwSluh8) to see recommendations when you should use either Azure Cost Management or Cloudyn, based on your business needs.
+Podívejte se na [video Azure cost management a Cloudyn](https://www.youtube.com/watch?v=PmwFWwSluh8) , kde můžete zobrazit doporučení v závislosti na vašich obchodních potřebách, pokud používáte buď Azure cost management nebo Cloudyn.
 
 >[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
 ## <a name="additional-azure-tools"></a>Další nástroje Azure
 
-Azure má další nástroje, které nejsou součástí sady funkcí Azure Cost Management. However, they play an important role in the cost management process. Další informace o těchto nástrojích si můžete přečíst po kliknutí na následující odkazy.
+Azure má další nástroje, které nejsou součástí sady funkcí Azure Cost Management. Hrají ale důležitou roli v procesu správy nákladů. Další informace o těchto nástrojích si můžete přečíst po kliknutí na následující odkazy.
 
 - [Cenová kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/) – tento nástroj slouží k odhadování počátečních nákladů na cloud.
 - [Azure Migrate](../migrate/migrate-overview.md) – umožňuje zhodnotit aktuální úlohy datacentra a zjistit, co je třeba využít z náhradního řešení Azure.

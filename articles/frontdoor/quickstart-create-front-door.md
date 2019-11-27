@@ -42,7 +42,7 @@ Tento rychlý start vyžaduje dvě instance webové aplikace nasazené a běží
      | Název           | Zadejte jedinečný název vaší webové aplikace.  |
      | Skupina prostředků          | Vyberte **Nová** a zadejte *myResourceGroupFD1*. |
      | Plán služby App Service / umístění         | Vyberte **Nový**.  Jako plán služby App Service zadejte *myAppServicePlanEastUS* a pak vyberte **OK**. 
-     |      Umístění  |   Východní USA        |
+     |      Umístění  |   East US        |
     |||
 
 3. Vyberte **Vytvořit**.
@@ -75,7 +75,7 @@ Dále je potřeba nakonfigurovat back-end(y) aplikace v back-endovém fondu, aby
 3. Jako **Typ cílového hostitele** vyberte App Service, vyberte předplatné, ve kterém jste web vytvořili, a pak v poli **Název cílového hostitele** zvolte první web, to znamená *myAppServicePlanEastUS.azurewebsites.net*.
 4. Zbývající pole ponechejte v tuto chvíli tak, jak jsou, a klikněte na **Přidat**.
 5. Opakováním kroků 2 až 4 přidejte druhý web, to znamená *myAppServicePlanWestEurope.azurewebsites.net*.
-6. Pro back-endový fond můžete volitelně změnit nastavení Sondy stavu a Vyrovnávání zatížení, ale výchozí hodnoty by také měly fungovat. Klikněte na tlačítko **přidat**.
+6. Pro back-endový fond můžete volitelně změnit nastavení Sondy stavu a Vyrovnávání zatížení, ale výchozí hodnoty by také měly fungovat. Klikněte na **Přidat**.
 
 
 ### <a name="c-add-a-routing-rule"></a>C. Přidání pravidla směrování

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with AirWatch | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and AirWatch.
+title: 'Kurz: Integrace Azure Active Directory se sledováním Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a sledováním.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,232 +23,232 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231994"
 ---
-# <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Tutorial: Integrate AirWatch with Azure Active Directory
+# <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Kurz: integrace programu pro sledování ve službě Azure Active Directory
 
-In this tutorial, you'll learn how to integrate AirWatch with Azure Active Directory (Azure AD). When you integrate AirWatch with Azure AD, you can:
+V tomto kurzu se dozvíte, jak integrovat sledování pomocí Azure Active Directory (Azure AD). Když integrujete službu pro sledování v Azure AD, můžete:
 
-* Control in Azure AD who has access to AirWatch.
-* Enable your users to be automatically signed-in to AirWatch with their Azure AD accounts.
-* Manage your accounts in one central location - the Azure portal.
+* Řízení ve službě Azure AD, která má přístup ke sledování.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili ke kurzu sledování pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To get started, you need the following items:
+Chcete-li začít, potřebujete následující položky:
 
-* An Azure AD subscription. If you don't have a subscription, you can get one-month free trial [here](https://azure.microsoft.com/pricing/free-trial/).
-* AirWatch single sign-on (SSO) enabled subscription.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-In this tutorial, you configure and test Azure AD SSO in a test environment. AirWatch supports **SP** initiated SSO.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Pro jednotné přihlašování (SSO) **bylo spuštěno** sledování.
 
-## <a name="adding-airwatch-from-the-gallery"></a>Adding AirWatch from the gallery
+## <a name="adding-airwatch-from-the-gallery"></a>Přidání sledování z Galerie
 
-To configure the integration of AirWatch into Azure AD, you need to add AirWatch from the gallery to your list of managed SaaS apps.
+Pokud chcete nakonfigurovat integraci programu pro sledování videa do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat sledování z galerie.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. On the left navigation pane, select the **Azure Active Directory** service.
-1. Navigate to **Enterprise Applications** and then select **All Applications**.
-1. To add new application, select **New application**.
-1. In the **Add from the gallery** section, type **AirWatch** in the search box.
-1. Select **AirWatch** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **prowatch** .
+1. Na panelu výsledků vyberte **sledování** videa a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-Configure and test Azure AD SSO with AirWatch using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in AirWatch.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s využitím zkušebního uživatele pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci sledování.
 
-To configure and test Azure AD SSO with AirWatch, complete the following building blocks:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s využitím služby sledování, dokončete následující stavební bloky:
 
-1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
-2. **[Configure AirWatch SSO](#configure-airwatch-sso)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Create AirWatch test user](#create-airwatch-test-user)** - to have a counterpart of Britta Simon in AirWatch that is linked to the Azure AD representation of user.
-5. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-6. **[Test SSO](#test-sso)** - to verify whether the configuration works.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Nakonfigurovat jednotné přihlašování pro sledování](#configure-airwatch-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Vytvořte testovacího uživatele s hodinkami](#create-airwatch-test-user)** , abyste měli protiBrittaho Simonu ve službě sledování, která je propojená s reprezentací uživatele v Azure AD.
+5. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Follow these steps to enable Azure AD SSO in the Azure portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. In the [Azure portal](https://portal.azure.com/), on the **AirWatch** application integration page, find the **Manage** section and select **Single sign-on**.
-1. On the **Select a Single sign-on method** page, select **SAML**.
-1. On the **Set up Single Sign-On with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace ve službě **prokukátka** vyhledejte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Edit Basic SAML Configuration](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. On the **Basic SAML Configuration** page, enter the values for the following fields:
+1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    1. In the **Sign on URL** text box, type a URL using the following pattern: `https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
+    1. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
 
-    1. In the **Identifier (Entity ID)** text box, type the value as: `AirWatch`
+    1. Do textového pole **identifikátor (ID entity)** zadejte hodnotu jako: `AirWatch`
 
     > [!NOTE]
-    > This value is not the real. Update this value with the actual Sign-on URL. Contact [AirWatch Client support team](https://www.air-watch.com/company/contact-us/) to get this value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Tato hodnota není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory](https://www.air-watch.com/company/contact-us/) pro služby sledování. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. AirWatch application expects the SAML assertions in a specific format. Configure the following claims for this application. You can manage the values of these attributes from the **User Attributes** section on application integration page. On the **Set up Single Sign-On with SAML** page, click **Edit** button to open **User Attributes** dialog.
+1. Aplikace pro sledování a očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na tlačítko **Upravit** a otevřete dialog **uživatelské atributy** .
 
     ![image](common/edit-attribute.png)
 
-1. In the **User Claims** section on the **User Attributes** dialog, edit the claims by using **Edit icon** or add the claims by using **Add new claim** to configure SAML token attribute as shown in the image above and perform the following steps:
+1. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace pomocí **ikony upravit** nebo přidejte deklarace pomocí **Přidat novou deklaraci identity** , jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Name (Název) |  Source Attribute|
+    | Název |  Zdrojový atribut|
     |---------------|----------------|
     | UID | user.userprincipalname |
     | | |
 
-    a. Click **Add new claim** to open the **Manage user claims** dialog.
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    b. In the **Name** textbox, type the attribute name shown for that row.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Leave the **Namespace** blank.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. Select Source as **Attribute**.
+    d. Jako **atribut**vyberte zdroj.
 
-    e. From the **Source attribute** list, type the attribute value shown for that row.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
-    f. Click **Ok**
+    f. Klikněte na **OK** .
 
-    g. Klikněte na **Uložit**.
+    g. Klikněte na možnost **Uložit**.
 
-1. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, find **Federation Metadata XML** and select **Download** to download the Metadata XML and save it on your computer.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte si metadata XML a uložte je do počítače.
 
-   ![The Certificate download link](common/metadataxml.png)
+   ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-1. On the **Set up AirWatch** section, copy the appropriate URL(s) based on your requirement.
+1. V části **Nastavení sledování** vzdálení zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-   ![Copy configuration URLs](common/copy-configuration-urls.png)
+   ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-airwatch-sso"></a>Configure AirWatch SSO
+### <a name="configure-airwatch-sso"></a>Nakonfigurovat jednotné přihlašování pro sledování
 
-1. In a different web browser window, sign in to your AirWatch company site as an administrator.
+1. V jiném okně webového prohlížeče se přihlaste k firemnímu webu ve službě prowatch jako správce.
 
-1. On the settings page. Select **Settings > Enterprise Integration > Directory Services**.
+1. Na stránce nastavení. Vyberte **nastavení > Podniková integrace > adresářových služeb**.
 
    ![Nastavení](./media/airwatch-tutorial/ic791921.png "Nastavení")
 
-1. Click the **User** tab, in the **Base DN** textbox, type your domain name, and then click **Save**.
+1. Klikněte na kartu **uživatel** , do textového pole **Základní rozlišující** název zadejte název domény a pak klikněte na **Uložit**.
 
-   ![User](./media/airwatch-tutorial/ic791922.png "Uživatel")
+   ![Uživatelský](./media/airwatch-tutorial/ic791922.png "Uživatel")
 
-1. Click the **Server** tab.
+1. Klikněte na kartu **Server** .
 
    ![Server](./media/airwatch-tutorial/ic791923.png "Server")
 
-1. Perform the following steps on the **LDAP** section:
+1. V části **LDAP** proveďte následující kroky:
 
     ![Upload](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
-    a. As **Directory Type**, select **None**.
+    a. Jako **Typ adresáře**vyberte **None (žádné**).
 
-    b. Select **Use SAML For Authentication**.
+    b. **Pro ověřování vyberte použít SAML**.
 
-1. On the **SAML 2.0** section, to upload the downloaded certificate, click **Upload**.
+1. V části **SAML 2,0** nahrajte stažený certifikát kliknutím na **Odeslat**.
 
-    ![Upload](./media/airwatch-tutorial/ic791932.png "Nahrávání")
+    ![Upload](./media/airwatch-tutorial/ic791932.png "Odeslat")
 
-1. In the **Request** section, perform the following steps:
+1. V části **žádost** proveďte následující kroky:
 
     ![Požadavek](./media/airwatch-tutorial/ic791925.png "Žádost")  
 
-    a. As **Request Binding Type**, select **POST**.
+    a. Jako **typ vazby žádosti**vyberte **post (Odeslat**).
 
-    b. In the Azure portal, on the **Configure single sign-on at AirWatch** dialog page, copy the **Login URL** value, and then paste it into the **Identity Provider Single Sign On URL** textbox.
+    b. V Azure Portal na stránce **Konfigurovat jednotné přihlašování** na webu pro sledování videa Zkopírujte hodnotu **Adresa URL pro přihlášení** a vložte ji do textového pole **URL jednotného přihlašování zprostředkovatele identity** .
 
-    c. As **NameID Format**, select **Email Address**.
+    c. Jako **Formát NameId**vyberte **e-mailová adresa**.
 
-    d. As **Authentication Request Security**, select **None**.
+    d. Jako **zabezpečení žádosti o ověření**vyberte **žádné**.
 
-    e. Klikněte na **Uložit**.
+    e. Klikněte na možnost **Uložit**.
 
-1. Click the **User** tab again.
+1. Znovu klikněte na kartu **uživatel** .
 
-    ![User](./media/airwatch-tutorial/ic791926.png "Uživatel")
+    ![Uživatelský](./media/airwatch-tutorial/ic791926.png "Uživatel")
 
-1. In the **Attribute** section, perform the following steps:
+1. V části **atributu** proveďte následující kroky:
 
-    ![Attribute](./media/airwatch-tutorial/ic791927.png "Atribut")
+    ![Přidělen](./media/airwatch-tutorial/ic791927.png "Atribut")
 
-    a. In the **Object Identifier** textbox, type `http://schemas.microsoft.com/identity/claims/objectidentifier`.
+    a. Do textového pole **identifikátor objektu** zadejte `http://schemas.microsoft.com/identity/claims/objectidentifier`.
 
-    b. In the **Username** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    b. Do textového pole **uživatelské jméno** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    c. In the **Display Name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    c. Do textového pole **Zobrazovaný název** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    d. In the **First Name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. Do textového pole **jméno v prvním názvu** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    e. In the **Last Name** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. Do textového pole **příjmení** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
-    f. In the **Email** textbox, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. Do textového pole **e-mail** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    g. Klikněte na **Uložit**.
+    g. Klikněte na možnost **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-In this section, you'll create a test user in the Azure portal called B.Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
-1. Select **New user** at the top of the screen.
-1. In the **User** properties, follow these steps:
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. In the **User name** field, enter the username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-In this section, you'll enable B.Simon to use Azure single sign-on by granting access to AirWatch.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup ke sledování.
 
-1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
-1. In the applications list, select **AirWatch**.
-1. In the app's overview page, find the **Manage** section and select **Users and groups**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **sledování**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![The "Users and groups" link](common/users-groups-blade.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![The Add User link](common/add-assign-user.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
-1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
-1. In the **Add Assignment** dialog, click the **Assign** button.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-airwatch-test-user"></a>Create AirWatch test user
+### <a name="create-airwatch-test-user"></a>Vytvořit testovacího uživatele pro sledování
 
-To enable Azure AD users to sign in to AirWatch, they must be provisioned in to AirWatch. In the case of AirWatch, provisioning is a manual task.
+Aby se uživatelé Azure AD mohli přihlašovat ke službě vzdálení, musí se zřídit ke sledování. V případě vzkrokování je zřizování ručním úkolem.
 
-**To configure user provisioning, perform the following steps:**
+**Při konfiguraci zřizování uživatelů proveďte následující kroky:**
 
-1. Sign in to your **AirWatch** company site as administrator.
+1. Přihlaste se k webu společnosti s **hodinkami** ve službě providee jako správce.
 
-2. In the navigation pane on the left side, click **Accounts**, and then click **Users**.
+2. V navigačním podokně na levé straně klikněte na **účty**a potom klikněte na **Uživatelé**.
   
    ![Uživatelé](./media/airwatch-tutorial/ic791929.png "Uživatelé")
 
-3. In the **Users** menu, click **List View**, and then click **Add > Add User**.
+3. V nabídce **Uživatelé** klikněte na **zobrazení seznamu**a potom klikněte na **Přidat > Přidat uživatele**.
   
-   ![Add User](./media/airwatch-tutorial/ic791930.png "Přidání uživatele")
+   ![Přidat uživatele](./media/airwatch-tutorial/ic791930.png "Přidání uživatele")
 
-4. On the **Add / Edit User** dialog, perform the following steps:
+4. V dialogu **Přidat/upravit uživatele** proveďte následující kroky:
 
-   ![Add User](./media/airwatch-tutorial/ic791931.png "Přidání uživatele")
+   ![Přidat uživatele](./media/airwatch-tutorial/ic791931.png "Přidání uživatele")
 
-   a. Type the **Username**, **Password**, **Confirm Password**, **First Name**, **Last Name**, **Email Address** of a valid Azure Active Directory account you want to provision into the related textboxes.
+   a. Zadejte **uživatelské jméno**, **heslo**, **Potvrdit heslo**, jméno, **příjmení**, **e-mailovou adresu** platného Azure Active Directory **účtu, který**chcete zřídit do souvisejících textových polí.
 
-   b. Klikněte na **Uložit**.
+   b. Klikněte na možnost **Uložit**.
 
 > [!NOTE]
-> You can use any other AirWatch user account creation tools or APIs provided by AirWatch to provision Azure AD user accounts.
+> K zřizování uživatelských účtů Azure AD můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů nebo rozhraní API ve službě Vision Watch.
 
 ### <a name="test-sso"></a>Test SSO
 
-When you select the AirWatch tile in the Access Panel, you should be automatically signed in to the AirWatch for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici kolektoru, měli byste být automaticky přihlášení ke sledování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

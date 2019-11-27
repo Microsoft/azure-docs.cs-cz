@@ -1,6 +1,6 @@
 ---
-title: Security guidance for Azure Multi-Factor Authentication - Azure Active Directory
-description: This document provides guidance around using Azure MFA with Azure accounts
+title: Doprovodné materiály k zabezpečení pro Azure Multi-Factor Authentication – Azure Active Directory
+description: Tento dokument poskytuje pokyny k používání Azure MFA s účty Azure.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,102 +18,102 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74208437"
 ---
-# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Security guidance for using Azure Multi-Factor Authentication with Azure AD accounts
+# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Pokyny k zabezpečení při používání Azure Multi-Factor Authentication s účty Azure AD
 
-Two-step verification is the preferred choice for most organizations that want to enhance their authentication process. Azure Multi-Factor Authentication (MFA) helps companies meet their security and compliance requirements while providing a simple sign-in experience for their users. This article covers some tips that you should consider when planning for the adoption of Azure MFA.
+Dvoustupňové ověřování je upřednostňovanou volbou pro většinu organizací, které chtějí zlepšit proces ověřování. Azure Multi-Factor Authentication (MFA) pomáhá společnostem splnit požadavky na zabezpečení a dodržování předpisů a přitom zajistit jednoduché přihlášení pro své uživatele. Tento článek popisuje několik tipů, které byste měli vzít v úvahu při plánování přijetí Azure MFA.
 
-## <a name="deploy-azure-mfa-in-the-cloud"></a>Deploy Azure MFA in the cloud
+## <a name="deploy-azure-mfa-in-the-cloud"></a>Nasazení Azure MFA v cloudu
 
-There are two ways to [enable Azure MFA for all your users](howto-mfa-getstarted.md).
+Existují dva způsoby, jak [Povolit Azure MFA pro všechny uživatele](howto-mfa-getstarted.md).
 
-* Buy licenses for each user (Either Azure MFA, Azure AD Premium, or Enterprise Mobility + Security)
-* Create a Multi-Factor Auth Provider and pay per-user or per-authentication
+* Koupit licence pro každého uživatele (Azure MFA, Azure AD Premium nebo Enterprise Mobility + Security)
+* Vytvoření poskytovatele vícefaktorového ověřování a platby za jednotlivé uživatele nebo ověřování
 
-### <a name="licenses"></a>Licenses
+### <a name="licenses"></a>Vázaný
 
-![Apply licenses to users, enable, notify](./media/multi-factor-authentication-security-best-practices/ems.png)
+![Použití licencí pro uživatele, povolení, oznamování](./media/multi-factor-authentication-security-best-practices/ems.png)
 
-If you have Azure AD Premium or Enterprise Mobility + Security licenses, you already have Azure MFA. Your organization doesn't need anything additional to extend the two-step verification capability to all users. You only need to assign a license to a user, and then you can turn on MFA.
+Pokud máte licence Azure AD Premium nebo Enterprise Mobility + Security, již máte Azure MFA. Vaše organizace nepotřebuje žádné další, aby rozšířila možnosti dvoustupňové ověřování pro všechny uživatele. K uživateli stačí přiřadit licenci a pak můžete zapnout vícefaktorové ověřování.
 
-When setting up Multi-Factor Authentication, consider the following tips:
+Při nastavování Multi-Factor Authentication Vezměte v úvahu následující tipy:
 
-* Do not create a per-authentication Multi-Factor Auth Provider. If you do, you could end up paying for verification requests from users that already have licenses.
-* If you don't have enough licenses for all your users, you can create a per-user Multi-Factor Auth Provider to cover the rest of your organization. 
-* Azure AD Connect is only required if you are synchronizing your on-premises Active Directory environment with an Azure AD directory. If you use an Azure AD directory that is not synchronized with an on-premises instance of Active Directory, you do not need Azure AD Connect.
+* Nevytvářejte poskytovatele Multi-Factor auth pro ověřování. Pokud tak učiníte, můžete platit za žádosti o ověření od uživatelů, kteří už mají licence.
+* Pokud nemáte dostatečná licence pro všechny uživatele, můžete vytvořit poskytovatele vícefaktorového ověřování pro každého uživatele, který bude pokrývat zbytek vaší organizace. 
+* Azure AD Connect se vyžaduje jenom v případě, že synchronizujete místní prostředí Active Directory s adresářem Azure AD. Pokud použijete adresář služby Azure AD, který není synchronizovaný s místní instancí služby Active Directory, nepotřebujete Azure AD Connect.
 
-### <a name="multi-factor-auth-provider"></a>Multi-Factor Auth Provider
+### <a name="multi-factor-auth-provider"></a>Poskytovatel Multi-Factor auth
 
-![Multi-Factor Authentication Provider](./media/multi-factor-authentication-security-best-practices/authprovider.png)
+![Poskytovatel Multi-Factor Authentication](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-If you don't have licenses that include Azure MFA, then you can [create an MFA Auth Provider](concept-mfa-authprovider.md).
+Pokud nemáte licence, které zahrnují Azure MFA, můžete [vytvořit poskytovatele vícefaktorového ověřování](concept-mfa-authprovider.md).
 
-When creating the Auth Provider, you need to select a directory and consider the following details:
+Při vytváření poskytovatele ověřování je nutné vybrat adresář a vzít v úvahu následující podrobnosti:
 
-* You do not need an Azure AD directory to create a Multi-Factor Auth Provider, but you get more functionality with one. The following features are enabled when you associate the Auth Provider with an Azure AD directory:
-  * Extend two-step verification to all your users
-  * Offer your global administrators additional features, such as the management portal, custom greetings, and reports.
-* If you synchronize your on-premises Active Directory environment with an Azure AD directory, you need DirSync or Azure AD Sync. If you use an Azure AD directory that is not synchronized with an on-premises instance of Active Directory, you do not need DirSync or Azure AD Sync.
-* Choose the consumption model that best suits your business. Once you select the usage model, you can’t change it. The two models are:
-  * Per authentication: charges you for each verification. Use this model if you want two-step verification for anyone that accesses a certain app, not for specific users.
-  * Per enabled user: charges you for each user that you enable for Azure MFA. Use this model if you have some users with Azure AD Premium or Enterprise Mobility Suite licenses, and some without.
+* K vytvoření poskytovatele vícefaktorového ověřování nepotřebujete adresář Azure AD, ale získáte více funkcí s jedním. Při přidružení poskytovatele ověřování k adresáři služby Azure AD jsou povoleny následující funkce:
+  * Rozšířené ověřování dvou kroků pro všechny uživatele
+  * Poskytněte globálním správcům další funkce, jako je portál pro správu, vlastní pozdravy a sestavy.
+* Pokud synchronizujete místní prostředí Active Directory s adresářem služby Azure AD, budete potřebovat DirSync nebo Azure AD Sync. Pokud použijete adresář služby Azure AD, který není synchronizovaný s místní instancí Active Directory, nepotřebujete DirSync nebo Azure AD Sync.
+* Vyberte model spotřeby, který nejlépe vyhovuje vašemu podniku. Jakmile vyberete model využití, nemůžete ho změnit. Dva modely:
+  * Za ověřování: účtuje se za každé ověření. Tento model použijte, pokud chcete, aby dvoustupňové ověřování pro kohokoli, kdo přistupuje k určité aplikaci, ne pro konkrétní uživatele.
+  * Na povolené uživatele: účtuje se za každého uživatele, který povolíte pro Azure MFA. Tento model použijte, pokud máte nějaké uživatele s Azure AD Premium nebo licencemi Enterprise Mobility Suite a bez.
 
 ### <a name="supportability"></a>Možnosti podpory
 
-Since most users are accustomed to using only passwords to authenticate, it is important that your company brings awareness to all users regarding this process. This awareness can reduce the likelihood that users call your help desk for minor issues related to MFA. However, there are some scenarios where temporarily disabling MFA is necessary. Use the following guidelines to understand how to handle those scenarios:
+Vzhledem k tomu, že většina uživatelů je zvyklá používat k ověřování jenom hesla, je důležité, aby vaše společnost pocházela s vědomím pro všechny uživatele týkající se tohoto procesu. Toto povědomí může snížit pravděpodobnost, že uživatelé volají vaši technickou podporu s menšími problémy souvisejícími s MFA. Existují však situace, kdy je nutné dočasně zakázat MFA. Následující pokyny vám pomohou pochopit, jak tyto scénáře zvládnout:
 
-* Train your technical support staff to handle scenarios where the user can't sign in because the mobile app or phone is not receiving a notification or phone call. Technical support can [enable a one-time bypass](howto-mfa-mfasettings.md#one-time-bypass) to allow a user to authenticate a single time by "bypassing" two-step verification. The bypass is temporary and expires after a specified number of seconds.
-* Consider the [Trusted IPs capability](howto-mfa-mfasettings.md#trusted-ips) in Azure MFA as a way to minimize two-step verification. With this feature, administrators of a managed or federated tenant can bypass two-step verification for users that are signing in from the company’s local intranet. The features are available for Azure AD tenants that have Azure AD Premium, Enterprise Mobility Suite, or Azure Multi-Factor Authentication licenses.
+* Školením pracovníků technické podpory můžete zvládnout scénáře, kdy se uživatel nemůže přihlásit, protože mobilní aplikace nebo telefon nepřijímá oznámení nebo telefonní hovor. Technická podpora může [umožnit jednorázové](howto-mfa-mfasettings.md#one-time-bypass) přihlášení, které umožňuje uživateli ověřování jednorázovým ověřováním pomocí dvou kroků. Vynechání je dočasné a po zadaném počtu sekund vyprší platnost.
+* Vezměte v úvahu [schopnost důvěryhodných IP adres](howto-mfa-mfasettings.md#trusted-ips) v Azure MFA jako způsob minimalizace dvoustupňového ověřování. Díky této funkci můžou správci spravovaného nebo federovaného tenanta obejít dvoustupňové ověřování pro uživatele, kteří se přihlásí z místního intranetu společnosti. Tyto funkce jsou k dispozici pro klienty Azure AD, kteří mají Azure AD Premium, Enterprise Mobility Suite nebo Azure Multi-Factor Authentication licence.
 
-## <a name="best-practices-for-an-on-premises-deployment"></a>Best Practices for an on-premises deployment
+## <a name="best-practices-for-an-on-premises-deployment"></a>Osvědčené postupy pro místní nasazení
 
-If your company decided to leverage its own infrastructure to enable MFA, then you need to [deploy an Azure Multi-Factor Authentication Server on-premises](howto-mfaserver-deploy.md). The MFA Server components are shown in the following diagram:
+Pokud se vaše společnost rozhodla využít svoji vlastní infrastrukturu pro povolení vícefaktorového ověřování, musíte [nasadit Azure Multi-Factor Authentication Server místně](howto-mfaserver-deploy.md). Komponenty MFA serveru jsou uvedené v následujícím diagramu:
 
-![The default MFA Server components](./media/multi-factor-authentication-security-best-practices/server.png) \*Not installed by default \**Installed but not enabled by default
+![výchozí součásti MFA serveru](./media/multi-factor-authentication-security-best-practices/server.png) \*nejsou ve výchozím nastavení nainstalované \** nainstalované, ale nejsou ve výchozím nastavení povolené.
 
-Azure Multi-Factor Authentication Server can secure cloud resources and on-premises resources by using federation. You must have AD FS and have it federated with your Azure AD tenant.
-When setting up Multi-Factor Authentication Server, consider the following details:
+Azure Multi-Factor Authentication Server může zabezpečit cloudové prostředky a místní prostředky pomocí federace. Musíte mít AD FS a musí být federované s vaším klientem služby Azure AD.
+Při nastavování Multi-Factor Authentication Server Vezměte v úvahu následující podrobnosti:
 
-* If you are securing Azure AD resources using Active Directory Federation Services (AD FS), then the first verification step is performed on-premises using AD FS. Druhý krok se provádí místně dodržením deklarace identity.
-* You don't have to install the Azure Multi-Factor Authentication Server your AD FS federation server. However, the Multi-Factor Authentication Adapter for AD FS must be installed on a Windows Server 2012 R2 running AD FS. You can install the server on a different computer, as long as it is a supported version, and install the AD FS adapter separately on your AD FS federation server. 
-* The Multi-Factor Authentication AD FS Adapter installation wizard creates a security group called PhoneFactor Admins in your Active Directory, and then adds your AD FS service account to this group. Ověřte, že se v řadiči domény vytvořila skupina PhoneFactor Admins a mezi jejími členy je účet služby AD FS. Pokud to bude potřeba, přidejte účet služby AD FS do skupiny PhoneFactor Admins ve vašem řadiči domény ručně.
+* Pokud zabezpečujete prostředky Azure AD pomocí Active Directory Federation Services (AD FS) (AD FS), pak se první krok ověření provádí místně pomocí AD FS. Druhý krok se provádí místně dodržením deklarace identity.
+* Nemusíte instalovat Azure Multi-Factor Authentication Server AD FS federačního serveru. Multi-Factor Authentication adaptér pro AD FS ale musí být nainstalovaný na Windows Serveru 2012 R2 se spuštěným AD FS. Server můžete nainstalovat na jiný počítač, pokud se jedná o podporovanou verzi, a nainstalovat adaptér AD FS samostatně na AD FS federačního serveru. 
+* Průvodce instalací adaptéru Multi-Factor Authentication AD FS vytvoří ve službě Active Directory skupinu zabezpečení nazvanou PhoneFactor Admins a potom do této skupiny přidá účet služby AD FS. Ověřte, že se v řadiči domény vytvořila skupina PhoneFactor Admins a mezi jejími členy je účet služby AD FS. Pokud to bude potřeba, přidejte účet služby AD FS do skupiny PhoneFactor Admins ve vašem řadiči domény ručně.
 
 ### <a name="user-portal"></a>Uživatelský portál
 
-The user portal allows self-service capabilities and provides a full set of user administration capabilities. It runs in an Internet Information Server (IIS) web site. Use the following guidelines to configure this component:
+User Portal umožňuje samoobslužné funkce a poskytuje úplnou sadu funkcí pro správu uživatelů. Spouští se na webu Internet Information Server (IIS). Ke konfiguraci této součásti použijte následující pokyny:
 
-* Use IIS 6 or greater
-* Install and register ASP.NET v2.0.507207
-* Ensure that this server can be deployed in a perimeter network
+* Použití IIS 6 nebo vyšší
+* Instalace a registrace ASP.NET v 2.0.507207
+* Zajistěte, aby tento server bylo možné nasadit v hraniční síti.
 
-### <a name="app-passwords"></a>App Passwords
+### <a name="app-passwords"></a>Hesla aplikací
 
-If your organization is federated for SSO with Azure AD and you are going to be using Azure MFA, then be aware of the following details:
+Pokud je vaše organizace federované pro jednotné přihlašování pomocí Azure AD a budete používat Azure MFA, pamatujte na tyto podrobnosti:
 
-* The app password is verified by Azure AD and therefore bypasses federation. Federation is only used when setting up app passwords.
-* For federated (SSO) users, passwords are stored in the organizational ID. If the user leaves the company, that info has to flow to organizational ID using DirSync. Account disable/deletion may take up to three hours to sync, which delays disable/deletion of app passwords in Azure AD.
+* Heslo aplikace ověřuje služba Azure AD, takže se federace vynechá. Federace se používá jenom při nastavování hesel aplikací.
+* Pro uživatele federovaného (SSO) se hesla ukládají do ID organizace. Pokud uživatel odejde ze společnosti, musí tyto informace nasměrovat do ID organizace pomocí DirSync. Vypnutí nebo odstranění účtu může trvat až tři hodiny, než se synchronizuje, což zpozdí zakázání a odstranění hesel aplikací v Azure AD.
 * Místní nastavení služby Access Control klienta není dodrženo heslem aplikace.
-* No on-premises authentication logging/auditing capability is available for app passwords.
-* Certain advanced architectural designs may require using a combination of organizational username and passwords and app passwords when using two-step verification with clients, depending on where they authenticate. For clients that authenticate against an on-premises infrastructure, you would use an organizational username and password. For clients that authenticate against Azure AD, you would use the app password.
-* By default, users cannot create app passwords. If you need to allow users to create app passwords, select the **Allow users to create app passwords to sign into non-browser applications** option.
+* Pro hesla aplikací nejsou k dispozici žádné místní možnosti protokolování a auditování ověřování.
+* Některé pokročilé návrhy architektury mohou vyžadovat použití kombinace uživatelského jména a hesla organizace a hesla aplikací při použití dvoustupňového ověřování u klientů v závislosti na tom, kde jsou ověřovány. U klientů, kteří se ověřují s místní infrastrukturou, byste měli použít uživatelské jméno a heslo organizace. Pro klienty, kteří se ověřují v Azure AD, byste použili heslo aplikace.
+* Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Pokud potřebujete, aby uživatelé mohli vytvářet hesla aplikací, vyberte možnost **dovolit uživatelům vytvářet hesla aplikací pro přihlášení k neprohlížečovým aplikacím** .
 
-## <a name="additional-considerations"></a>Additional Considerations
+## <a name="additional-considerations"></a>Další požadavky
 
-Use this list for additional considerations and guidance for each component that is deployed on-premises:
+V tomto seznamu najdete další informace a pokyny pro jednotlivé komponenty, které jsou nasazené místně:
 
 * Nastavení služby Azure Multi-Factor Authentication se službou [Active Directory Federation Services (AD FS)](multi-factor-authentication-get-started-adfs.md).
 * Nastavení a konfigurace Azure MFA Serveru s [ověřováním pomocí protokolu RADIUS](howto-mfaserver-dir-radius.md).
-* Set up and configure the Azure MFA Server with [IIS Authentication](howto-mfaserver-iis.md).
-* Set up and configure the Azure MFA Server with [Windows Authentication](howto-mfaserver-windows.md).
-* Set up and configure the Azure MFA Server with [LDAP Authentication](howto-mfaserver-dir-ldap.md).
-* Set up and configure the Azure MFA Server with [Remote Desktop Gateway and Azure Multi-Factor Authentication Server using RADIUS](howto-mfaserver-nps-rdg.md).
-* Set up and configure synchronization between the Azure MFA Server and [Windows Server Active Directory](howto-mfaserver-dir-ad.md).
+* Nastavte a nakonfigurujte Azure MFA Server s [ověřováním IIS](howto-mfaserver-iis.md).
+* Nastavení a konfigurace Azure MFA serveru s [ověřováním systému Windows](howto-mfaserver-windows.md).
+* Nastavení a konfigurace Azure MFA serveru s [ověřováním pomocí protokolu LDAP](howto-mfaserver-dir-ldap.md).
+* Nastavte a nakonfigurujte Azure MFA Server pomocí [Brána vzdálené plochy a azure Multi-Factor Authentication Server pomocí protokolu RADIUS](howto-mfaserver-nps-rdg.md).
+* Nastavte a nakonfigurujte synchronizaci mezi Azure MFA serverem a [službou Windows Server Active Directory](howto-mfaserver-dir-ad.md).
 * [Nasazení webové služby mobilní aplikace Azure Multi-Factor Authentication Serveru](howto-mfaserver-deploy-mobileapp.md).
-* [Advanced VPN Configuration with Azure Multi-Factor Authentication](howto-mfaserver-nps-vpn.md) for Cisco ASA, Citrix Netscaler, and Juniper/Pulse Secure VPN appliances using LDAP or RADIUS.
+* [Pokročilá konfigurace sítě VPN s využitím Azure Multi-Factor Authentication](howto-mfaserver-nps-vpn.md) pro zařízení VPN Cisco ASA, Citrix NetScaler a Juniper/Pulse Secure VPN pomocí protokolu LDAP nebo RADIUS.
 
 ## <a name="next-steps"></a>Další kroky
 
-While this article highlights some best practices for Azure MFA, there are other resources that you can also use while planning your MFA deployment. The list below has some key articles that can assist you during this process:
+I když tento článek popisuje některé osvědčené postupy pro Azure MFA, existují další prostředky, které můžete využít i při plánování nasazení MFA. Následující seznam obsahuje některé klíčové články, které vám můžou pomoct během tohoto procesu:
 
-* [Reports in Azure Multi-Factor Authentication](howto-mfa-reporting.md)
-* [The two-step verification registration experience](../user-help/multi-factor-authentication-end-user-first-time.md)
-* [Azure Multi-Factor Authentication FAQ](multi-factor-authentication-faq.md)
+* [Sestavy v Azure Multi-Factor Authentication](howto-mfa-reporting.md)
+* [Prostředí pro registraci dvou kroků při ověřování](../user-help/multi-factor-authentication-end-user-first-time.md)
+* [Nejčastější dotazy k Azure Multi-Factor Authentication](multi-factor-authentication-faq.md)

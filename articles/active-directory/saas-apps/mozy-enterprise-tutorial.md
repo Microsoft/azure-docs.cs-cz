@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Mozy Enterprise | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Mozy Enterprise.
+title: 'Kurz: Azure Active Directory integrace s Mozy Enterprise | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Mozy Enterprise.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,235 +22,235 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233498"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Tutorial: Azure Active Directory integration with Mozy Enterprise
+# <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Kurz: Azure Active Directory integrace s Mozy Enterprise
 
-In this tutorial, you learn how to integrate Mozy Enterprise with Azure Active Directory (Azure AD).
-Integrating Mozy Enterprise with Azure AD provides you with the following benefits:
+V tomto kurzu se dozvíte, jak integrovat Mozy Enterprise s Azure Active Directory (Azure AD).
+Integrace Mozy Enterprise s Azure AD poskytuje následující výhody:
 
-* You can control in Azure AD who has access to Mozy Enterprise.
-* You can enable your users to be automatically signed-in to Mozy Enterprise (Single Sign-On) with their Azure AD accounts.
-* You can manage your accounts in one central location - the Azure portal.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k Mozy Enterprise.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k Mozy Enterprise (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To configure Azure AD integration with Mozy Enterprise, you need the following items:
+Ke konfiguraci integrace služby Azure AD s Mozy Enterprise budete potřebovat následující položky:
 
-* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
-* Mozy Enterprise single sign-on enabled subscription
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Předplatné Mozy Enterprise s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-In this tutorial, you configure and test Azure AD single sign-on in a test environment.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Mozy Enterprise supports **SP** initiated SSO
+* Mozy Enterprise podporuje jednotné přihlašování iniciované v **SP**
 
-## <a name="adding-mozy-enterprise-from-the-gallery"></a>Adding Mozy Enterprise from the gallery
+## <a name="adding-mozy-enterprise-from-the-gallery"></a>Přidání Mozy Enterprise z Galerie
 
-To configure the integration of Mozy Enterprise into Azure AD, you need to add Mozy Enterprise from the gallery to your list of managed SaaS apps.
+Pokud chcete nakonfigurovat integraci Mozy Enterprise do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Mozy Enterprise z galerie.
 
-**To add Mozy Enterprise from the gallery, perform the following steps:**
+**Pokud chcete přidat Mozy Enterprise z Galerie, proveďte následující kroky:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. To add new application, click **New application** button on the top of dialog.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![The New application button](common/add-new-app.png)
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. In the search box, type **Mozy Enterprise**, select **Mozy Enterprise** from result panel then click **Add** button to add the application.
+4. Do vyhledávacího pole zadejte **Mozy Enterprise**, vyberte **Mozy Enterprise** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Mozy Enterprise in the results list](common/search-new-app.png)
+     ![Mozy Enterprise v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-In this section, you configure and test Azure AD single sign-on with Mozy Enterprise based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in Mozy Enterprise needs to be established.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Mozy Enterprise na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Mozy Enterprise.
 
-To configure and test Azure AD single sign-on with Mozy Enterprise, you need to complete the following building blocks:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Mozy Enterprise, musíte dokončit tyto stavební bloky:
 
-1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Configure Mozy Enterprise Single Sign-On](#configure-mozy-enterprise-single-sign-on)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Create Mozy Enterprise test user](#create-mozy-enterprise-test-user)** - to have a counterpart of Britta Simon in Mozy Enterprise that is linked to the Azure AD representation of user.
-6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování Mozy Enterprise](#configure-mozy-enterprise-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte Mozy Enterprise Test User](#create-mozy-enterprise-test-user)** – abyste měli protějšek Britta Simon v Mozy Enterprise, který se odkazuje na reprezentaci uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-In this section, you enable Azure AD single sign-on in the Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-To configure Azure AD single sign-on with Mozy Enterprise, perform the following steps:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Mozy Enterprise, proveďte následující kroky:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Mozy Enterprise** application integration page, select **Single sign-on**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **podnikových aplikací Mozy** vyberte **jednotné přihlašování**.
 
-    ![Configure single sign-on link](common/select-sso.png)
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Single sign-on select mode](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-    ![Edit Basic SAML Configuration](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. On the **Basic SAML Configuration** section, perform the following steps:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Mozy Enterprise Domain and URLs single sign-on information](common/sp-signonurl.png)
+    ![Mozy firemní domény a adresy URL jednotného přihlašování](common/sp-signonurl.png)
 
-    In the **Sign-on URL** text box, type a URL using the following pattern:  `https://<tenantname>.Mozyenterprise.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<tenantname>.Mozyenterprise.com`
 
     > [!NOTE]
-    > The value is not real. Update the value with the actual Sign-On URL. Contact [Mozy Enterprise Client support team](https://support.mozy.com/) to get the value. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, kontaktujte [tým podpory Mozy Enterprise Client](https://support.mozy.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-6. On the **Set up Mozy Enterprise** section, copy the appropriate URL(s) as per your requirement.
+6. V části **Nastavení organizace Mozy Enterprise** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Login URL
+    a. Přihlašovací adresa URL
 
-    b. Azure AD Identifier
+    b. Identifikátor Azure AD
 
-    c. Logout URL
+    c. Adresa URL – odhlášení
 
-### <a name="configure-mozy-enterprise-single-sign-on"></a>Configure Mozy Enterprise Single Sign-On
+### <a name="configure-mozy-enterprise-single-sign-on"></a>Konfigurace jednotného přihlašování Mozy Enterprise
 
-1. In a different web browser window, log into your Mozy Enterprise company site as an administrator.
+1. V jiném okně webového prohlížeče se přihlaste k webu Mozy Enterprise společnosti jako správce.
 
-2. In the **Configuration** section, click **Authentication Policy**.
+2. V části **Konfigurace** klikněte na **zásady ověřování**.
    
-    ![Authentication policy](./media/mozy-enterprise-tutorial/ic777314.png "Authentication policy")
+    ![Zásady ověřování](./media/mozy-enterprise-tutorial/ic777314.png "Zásady ověřování")
 
-3. On the **Authentication Policy** section, perform the following steps:
+3. V části **zásady ověřování** proveďte následující kroky:
    
-    ![Authentication policy](./media/mozy-enterprise-tutorial/ic777315.png "Authentication policy")
+    ![Zásady ověřování](./media/mozy-enterprise-tutorial/ic777315.png "Zásady ověřování")
    
-    a. Select **Directory Service** as **Provider**.
+    a. Jako **zprostředkovatel**vyberte **adresářová služba** .
    
-    b. Select **Use LDAP Push**.
+    b. Vyberte **použít nabízení protokolu LDAP**.
    
-    c. Click the **SAML Authentication** tab.
+    c. Klikněte na kartu **ověřování SAML** .
    
-    d. Paste **Login URL**, which you have copied from the Azure portal into the **Authentication URL** textbox.
+    d. Vložte **adresu URL pro přihlášení**, kterou jste zkopírovali z Azure Portal do TEXTOVÉHO pole **URL pro ověřování** .
    
-    e. Paste **Azure AD Identifier**, which you have copied from the Azure portal into the **SAML Endpoint** textbox.
+    e. Vložte **identifikátor Azure AD**, který jste zkopírovali z Azure Portal do textového pole **koncového bodu SAML** .
    
-    f. Open your downloaded base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste the entire Certificate into **SAML Certificate** textbox.
+    f. V programu Poznámkový blok otevřete stažený stažený certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte celý certifikát do textového pole **certifikátu SAML** .
    
-    g. Select **Enable SSO for Admins to log in with their network credentials**.
+    g. Vyberte možnost **Povolit jednotné přihlašování pro správce, aby se přihlásili pomocí svých síťových přihlašovacích údajů**.
    
-    h. Click **Save Changes**.
+    h. Klikněte na **Uložit změny**.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![The "Users and groups" and "All users" links](common/users.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-2. Select **New user** at the top of the screen.
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![New user Button](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. In the User properties, perform the following steps.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    ![The User dialog box](common/user-properties.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. In the **Name** field enter **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Mozy Enterprise.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Mozy Enterprise.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Mozy Enterprise**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Mozy Enterprise**.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. In the applications list, select **Mozy Enterprise**.
+2. V seznamu aplikace vyberte **Mozy Enterprise**.
 
-    ![The Mozy Enterprise link in the Applications list](common/all-applications.png)
+    ![Odkaz Mozy Enterprise v seznamu aplikací](common/all-applications.png)
 
-3. In the menu on the left, select **Users and groups**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![The Add Assignment pane](common/add-assign-user.png)
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. In the **Add Assignment** dialog click the **Assign** button.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-mozy-enterprise-test-user"></a>Create Mozy Enterprise test user
+### <a name="create-mozy-enterprise-test-user"></a>Vytvořit Mozy Enterprise Test User
 
-In order to enable Azure AD users to log into Mozy Enterprise, they must be provisioned into Mozy Enterprise. In the case of Mozy Enterprise, provisioning is a manual task.
+Aby se uživatelé Azure AD mohli přihlašovat do Mozy Enterprise, musí se zřídit v Mozy Enterprise. V případě Mozy Enterprise je zřizování ručním úkolem.
 
 >[!NOTE]
->You can use any other Mozy Enterprise user account creation tools or APIs provided by Mozy Enterprise to provision Azure AD user accounts.
+>K zřizování uživatelských účtů Azure AD můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů Mozy Enterprise nebo rozhraní API poskytovaná Mozy Enterprise.
 
-**To provision a user accounts, perform the following steps:**
+**Při zřizování uživatelských účtů proveďte následující kroky:**
 
-1. Log in to your **Mozy Enterprise** tenant.
+1. Přihlaste se ke svému klientovi **Mozy Enterprise** .
 
-2. Click **Users**, and then click **Add New User**.
+2. Klikněte na **Uživatelé**a potom klikněte na **Přidat nového uživatele**.
    
     ![Uživatelé](./media/mozy-enterprise-tutorial/ic777317.png "Uživatelé")
    
     >[!NOTE]
-    >The **Add New User** option is only displayed only if **Mozy** is selected as the provider under **Authentication policy**. If SAML Authentication is configured, then the users are added automatically on their first login through Single sign on.
+    >Možnost **Přidat nového uživatele** se zobrazí jenom v případě, že je v části **zásady ověřování**vybraný **Mozy** jako zprostředkovatel. Pokud je nakonfigurováno ověřování SAML, přidají se uživatelé automaticky při prvním přihlášení prostřednictvím jednotného přihlašování.
     
-3. On the new user dialog, perform the following steps:
+3. V dialogovém okně Nový uživatel proveďte následující kroky:
    
-    ![Add Users](./media/mozy-enterprise-tutorial/ic777318.png "Add Users")
+    ![Přidat uživatele](./media/mozy-enterprise-tutorial/ic777318.png "Přidat uživatele")
    
-    a. From the **Choose a Group** list, select a group.
+    a. V seznamu **Vyberte skupinu** vyberte skupinu.
    
-    b. From the **What type of user** list, select a type.
+    b. V seznamu **typ uživatele** vyberte typ.
    
-    c. In the **Username** textbox, type the name of the Azure AD user.
+    c. Do textového pole **uživatelské jméno** zadejte jméno uživatele Azure AD.
    
-    d. In the **Email** textbox, type the email address of the Azure AD user.
+    d. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele Azure AD.
    
-    e. Select **Send user instruction email**.
+    e. Vyberte **Odeslat e-mailovou instrukci uživatele**.
    
-    f. Click **Add User(s)** .
+    f. Klikněte na **Přidat uživatele**.
 
      >[!NOTE]
-     > After creating the user, an email will be sent to the Azure AD user that includes a link to confirm the account before it becomes active.
+     > Po vytvoření uživatele se pošle e-mailem uživateli Azure AD, který obsahuje odkaz na potvrzení účtu dřív, než se aktivuje.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-When you click the Mozy Enterprise tile in the Access Panel, you should be automatically signed in to the Mozy Enterprise for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Mozy Enterprise na přístupovém panelu, měli byste se automaticky přihlásit k Mozy podniku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další prostředky
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

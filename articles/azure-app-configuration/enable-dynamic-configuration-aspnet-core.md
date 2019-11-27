@@ -195,7 +195,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. Přihlásit se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+4. Přihlaste se na web [Azure Portal ](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 5. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
 

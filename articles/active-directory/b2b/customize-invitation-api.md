@@ -115,7 +115,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 > [!NOTE]
 > Ujistěte se, že máte nejnovější verzi modulu PowerShellu AzureAD nebo modulu PowerShellu AzureADPreview. 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 Podívejte se na reference k rozhraní API pozvánky v [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
 

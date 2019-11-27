@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Detect anomalies in your time series data using the Anomaly Detector REST API and Java'
+title: 'Rychlý Start: zjištění anomálií v datech časových řad pomocí detektoru anomálií REST API a Java'
 titleSuffix: Azure Cognitive Services
-description: Use the Anomaly Detector API to detect abnormalities in your data series either as a batch or on streaming data.
+description: Rozhraní API pro detekci anomálií použijte k detekci anomálií v datové řadě buď jako dávku, nebo na streamovaná data.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,90 +17,90 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483025"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Quickstart: Detect anomalies in your time series data using the Anomaly Detector REST API and Java
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Rychlý Start: zjištění anomálií v datech časových řad pomocí detektoru anomálií REST API a Java
 
-Use this quickstart to start using the Anomaly Detector API's two detection modes to detect anomalies in your time series data. This Java application sends two API requests containing JSON-formatted time series data, and gets the responses.
+Tento rychlý Start vám umožní začít používat dva režimy zjišťování rozhraní API pro detekci anomálií ke zjištění anomálií v datech časových řad. Tato aplikace Java odesílá dvě požadavky rozhraní API obsahující data časových řad ve formátu JSON a získává odpovědi.
 
-| API request                                        | Application output                                                                                                                         |
+| Požadavek rozhraní API                                        | Výstup aplikace                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| Detect anomalies as a batch                        | The JSON response containing the anomaly status (and other data) for each data point in the time series data, and the positions of any detected anomalies. |
-| Detect the anomaly status of the latest data point | The JSON response containing the anomaly status (and other data) for the latest data point in the time series data.                                                                                                                                         |
+| Zjištění anomálií jako dávky                        | Odpověď JSON obsahující stav anomálie (a další data) pro každý datový bod v datech časové řady a pozice všech zjištěných anomálií. |
+| Zjistit stav anomálií nejnovějšího datového bodu | Odpověď JSON obsahující stav anomálie (a další data) pro poslední datový bod v datech časové řady.                                                                                                                                         |
 
- While this application is written in Java, the API is a RESTful web service compatible with most programming languages. You can find the source code for this quickstart on [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/java-detect-anomalies.java).
+ I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/java-detect-anomalies.java).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- The [Java&trade; Development Kit(JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or later.
-- An Anomaly detector key and endpoint
-- Import these libraries from the Maven Repository
-    - [JSON in Java](https://mvnrepository.com/artifact/org.json/json) package
-    - [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) package
+- [Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo novější.
+- Klíč a koncový bod detektoru anomálií
+- Importovat tyto knihovny z úložiště Maven
+    - [JSON v balíčku Java](https://mvnrepository.com/artifact/org.json/json)
+    - Balíček [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient)
 
-- A JSON file containing time series data points. The example data for this quickstart can be found on [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
+- Soubor JSON, který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 
-### <a name="create-an-anomaly-detector-resource"></a>Create an Anomaly Detector resource
+### <a name="create-an-anomaly-detector-resource"></a>Vytvoření prostředku detektoru anomálií
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
 ## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
-1. Create a new Java project and import the following libraries.
+1. Vytvořte nový projekt Java a importujte následující knihovny.
     
     [!code-java[Import statements](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=imports)]
 
-2. Create variables for your subscription key and your endpoint. Below are the URIs you can use for anomaly detection. These will be appended to your service endpoint later to create the API request URLs.
+2. Vytvořte proměnné pro svůj klíč předplatného a koncový bod. Níže jsou uvedeny identifikátory URI, které lze použít pro detekci anomálií. Ty se připojí ke koncovému bodu služby později a vytvoří adresy URL žádostí o rozhraní API.
 
-    |Detection method  |URI  |
+    |Metoda detekce  |Identifikátor URI  |
     |---------|---------|
-    |Batch detection    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |Detection on the latest data point     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    |Zjišťování dávky    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
+    |Zjišťování nejnovějšího datového bodu     | `/anomalydetector/v1.0/timeseries/last/detect`        |
 
     [!code-java[Initial key and endpoint variables](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=vars)]
 
-## <a name="create-a-function-to-send-requests"></a>Create a function to send requests
+## <a name="create-a-function-to-send-requests"></a>Vytvoření funkce pro odesílání požadavků
 
-1. Create a new function called `sendRequest()` that takes the variables created above. Then perform the following steps.
+1. Vytvořte novou funkci nazvanou `sendRequest()`, která přebírá proměnné vytvořené výše. Pak proveďte následující kroky.
 
-2. Create a `CloseableHttpClient` object that can send requests to the API. Send the request to an `HttpPost` request object by combining your endpoint, and an Anomaly Detector URL.
+2. Vytvoří objekt `CloseableHttpClient`, který může odesílat požadavky do rozhraní API. Odešlete žádost do objektu žádosti o `HttpPost` kombinováním koncového bodu a adresy URL detektoru anomálií.
 
-3. Use the request's `setHeader()` function to set the `Content-Type` header to `application/json`, and add your subscription key to the `Ocp-Apim-Subscription-Key` header.
+3. Pomocí funkce `setHeader()` žádosti nastavte hlavičku `Content-Type` na `application/json`a přidejte svůj klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key`.
 
-4. Use the request's `setEntity()` function to the data to be sent.
+4. K odeslání dat použijte funkci `setEntity()` žádosti.
 
-5. Use the client's `execute()` function to send the request, and save it to a `CloseableHttpResponse` object.
+5. K odeslání žádosti použijte funkci `execute()` klienta a uložte ji do objektu `CloseableHttpResponse`.
 
-6. Create an `HttpEntity` object to store the response content. Get the content with `getEntity()`. If the response isn't empty, return it.
+6. Vytvořte objekt `HttpEntity` pro uložení obsahu odpovědi. Získejte obsah pomocí `getEntity()`. Pokud odpověď není prázdná, vraťte ji.
 
     [!code-java[API request method](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=request)]
 
-## <a name="detect-anomalies-as-a-batch"></a>Detect anomalies as a batch
+## <a name="detect-anomalies-as-a-batch"></a>Zjištění anomálií jako dávky
 
-1. Create a method called `detectAnomaliesBatch()` to detect anomalies throughout the data as a batch. Call the `sendRequest()` method created above with your endpoint, url, subscription key, and json data. Get the result, and print it to the console.
+1. Vytvořte metodu nazvanou `detectAnomaliesBatch()` pro detekci anomálií v datech jako dávku. Zavolejte metodu `sendRequest()` vytvořenou výše s vaším koncovým bodem, adresou URL, klíčem předplatného a data JSON. Získejte výsledek a vytiskněte ho do konzoly.
 
-2. If the response contains `code` field, print the error code and error message.
+2. Pokud odpověď obsahuje `code` pole, vytiskněte kód chyby a chybovou zprávu.
 
-3. Otherwise, find the positions of anomalies in the data set. The response's `isAnomaly` field contains a boolean value relating to whether a given data point is an anomaly. Get the JSON array, and iterate through it, printing the index of any `true` values. These values correspond to the index of anomalous data points, if any were found.
+3. V opačném případě najděte pozice anomálií v datové sadě. Pole `isAnomaly` odpovědi obsahuje logickou hodnotu týkající se toho, zda je daný datový bod anomálií. Získá pole JSON a projde ho a vytiskne index všech `true`ch hodnot. Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
 
     [!code-java[Method for batch detection](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=detectBatch)]
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Detect the anomaly status of the latest data point
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Zjistit stav anomálií nejnovějšího datového bodu
 
-Create a method called `detectAnomaliesLatest()` to detect the anomaly status of the last data point in the data set. Call the `sendRequest()` method created above with your endpoint, url, subscription key, and json data. Get the result, and print it to the console.
+Vytvořte metodu nazvanou `detectAnomaliesLatest()` k detekci stavu anomálií posledního datového bodu v datové sadě. Zavolejte metodu `sendRequest()` vytvořenou výše s vaším koncovým bodem, adresou URL, klíčem předplatného a data JSON. Získejte výsledek a vytiskněte ho do konzoly.
 
 [!code-java[Latest point detection method](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=detectLatest)]
 
-## <a name="load-your-time-series-data-and-send-the-request"></a>Load your time series data and send the request
+## <a name="load-your-time-series-data-and-send-the-request"></a>Načtěte data časové řady a odešlete žádost.
 
-1. In the main method of your application, read in the JSON file containing the data that will be added to the requests.
+1. V metodě Main aplikace si přečtěte v souboru JSON obsahujícím data, která se přidají do požadavků.
 
-2. Call the two anomaly detection functions created above.
+2. Zavolejte dvě funkce detekce anomálií vytvořené výše.
 
     [!code-java[Main method](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=main)]
 
 ### <a name="example-response"></a>Příklad odpovědi
 
-A successful response is returned in JSON format. Click the links below to view the JSON response on GitHub:
-* [Example batch detection response](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
-* [Example latest point detection response](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+Ve formátu JSON se vrátí úspěšná odpověď. Kliknutím na následující odkazy zobrazíte odpověď JSON na GitHubu:
+* [Příklad odpovědi na zjišťování dávky](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
+* [Příklad odpovědi na nejnovější zjištění bodu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

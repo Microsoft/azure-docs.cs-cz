@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak vytvořit model pomocí automatizovaného ML s
 
 V tomto kurzu se naučíte[model klasifikace pomocí automatizovaného strojového učení](tutorial-auto-train-models.md)a naučíte se používat místní počítač k výuce modelu pomocí automatizovaného ml. Pracovní postup, když místně školení platí také pro i vzdálených cílů. Však s vzdálený výpočetní automatizované iterací experimentů v ML jsou spouštěny asynchronně. Tato funkce umožňuje zrušit konkrétní iteraci, podívejte se na stav provádění nebo pokračovat v práci na ostatní buňky v poznámkovém bloku Jupyter. Chcete-li se naučit vzdáleně, vytvořte nejprve vzdálené výpočetní cíle, jako je AmlCompute. Potom nakonfigurujte vzdáleného prostředku a odeslání kódu existuje.
 
-V tomto článku se dozvíte o dalších krocích potřebných ke spuštění automatizovaného experimentu ML na vzdáleném AmlCompute cíli. Objekt workspace `ws`, v tomto kurzu se používá v rámci sem kód.
+V tomto článku se dozvíte o dalších krocích potřebných ke spuštění automatizovaného experimentu ML na vzdáleném AmlCompute cíli. Objekt pracovního prostoru `ws`v tomto kurzu se používá v celém kódu zde.
 
 ```python
 ws = Workspace.from_config()
@@ -62,11 +62,11 @@ compute_target.wait_for_completion(
     show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-Teď můžete použít `compute_target` jako vzdálený výpočetní cílový objekt.
+Nyní můžete objekt `compute_target` použít jako cíl vzdáleného výpočtu.
 
 Mezi omezení názvu clusteru patří:
 + Musí být kratší než 64 znaků.
-+ Nesmí obsahovat žádný z následujících znaků: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |;: \' \\", < > /?. `
++ Nelze zahrnout žádný z následujících znaků: `\` ~! @ # $% ^ & * () = + _ [] {} \\\\ |; : \' \\", < >/?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>Přístup k datům pomocí funkce TabularDataset
 
@@ -126,7 +126,7 @@ run_config.environment.python.conda_dependencies = dependencies
 Další příklad tohoto návrhového vzoru najdete v tomto [ukázkovém poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) .
 
 ## <a name="configure-experiment"></a>Konfigurace testu
-Zadejte nastavení pro `AutoMLConfig`.  (Viz [úplný seznam parametrů](how-to-configure-auto-train.md#configure-experiment) a jejich možných hodnot.)
+Zadejte nastavení pro `AutoMLConfig`.  (Podívejte se na [úplný seznam parametrů](how-to-configure-auto-train.md#configure-experiment) a jejich možné hodnoty.)
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -229,5 +229,5 @@ Následující [Poznámkový blok](https://github.com/Azure/MachineLearningNoteb
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si [jak nakonfigurovat nastavení pro automatické školení](how-to-configure-auto-train.md).
+* Naučte [se konfigurovat nastavení pro automatické školení](how-to-configure-auto-train.md).
 * Další informace [najdete v tématu](how-to-machine-learning-interpretability-automl.md) povolení funkcí interpretace modelu v rámci automatizovaných experimentů ml.

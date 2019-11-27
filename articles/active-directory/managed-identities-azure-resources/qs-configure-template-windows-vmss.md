@@ -1,6 +1,6 @@
 ---
-title: Configure template to use managed identities on virtual machine scale sets - Azure AD
-description: Step-by-step instructions for configuring managed identities for Azure resources on a virtual machine scale set, using an Azure Resource Manager template.
+title: Konfigurace šablony pro použití spravovaných identit ve službě Virtual Machine Scale Sets – Azure AD
+description: Podrobné pokyny pro konfiguraci spravovaných identit pro prostředky Azure v sadě škálování virtuálního počítače pomocí šablony Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,55 +15,55 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f80134620bd1db0a0d802aff94a701fd32bb0e9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 09c1e31664b94dd814b33b630dfa4f8e24d4600f
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232200"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547187"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Configure managed identities for Azure resources on an Azure virtual machine scale using a template
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Konfigurace spravovaných identit pro prostředky Azure na škálování virtuálního počítače Azure pomocí šablony
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Managed identities for Azure resources provides Azure services with an automatically managed identity in Azure Active Directory. You can use this identity to authenticate to any service that supports Azure AD authentication, without having credentials in your code. 
+Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
-In this article, you learn how to perform the following managed identities for Azure resources operations on an Azure virtual machine scale set, using Azure Resource Manager deployment template:
-- Enable and disable the system-assigned managed identity on an Azure virtual machine scale set
-- Add and remove a user-assigned managed identity on an Azure virtual machine scale set
+V tomto článku se dozvíte, jak provádět následující spravované identity pro operace prostředků Azure v sadě škálování virtuálních počítačů Azure pomocí Azure Resource Manager šablony nasazení:
+- Povolení a zakázání spravované identity přiřazené systémem v sadě škálování virtuálních počítačů Azure
+- Přidání a odebrání spravované identity přiřazené uživatelem v sadě škálování virtuálních počítačů Azure
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- To perform the management operations in this article, your account needs the following Azure role based access control assignments:
+- K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení řízení přístupu na základě rolí Azure:
 
     > [!NOTE]
-    > No additional Azure AD directory role assignments required.
+    > Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-    - [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) to create a virtual machine scale set and enable and remove system and/or user-assigned managed identity from a virtual machine scale set.
-    - [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role to create a user-assigned managed identity.
-    - [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role to assign and remove a user-assigned managed identity from and to a virtual machine scale set.
+    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) , aby vytvořil sadu škálování virtuálního počítače a povolil a odebral systémovou a/nebo uživatelsky spravovanou identitu ze sady škálování virtuálního počítače.
+    - Role [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) k vytvoření spravované identity přiřazené uživatelem.
+    - Role [operátora spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) k přiřazení a odebrání spravované identity přiřazené uživatelem z a do sady škálování virtuálního počítače.
 
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-As with the Azure portal and scripting, [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) templates provide the ability to deploy new or modified resources defined by an Azure resource group. Several options are available for template editing and deployment, both local and portal-based, including:
+Stejně jako u Azure Portal a skriptování poskytují [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) šablony možnost nasazení nových nebo upravených prostředků definovaných skupinou prostředků Azure. K dispozici je několik možností pro úpravu a nasazení šablony, včetně místních i na portálu, včetně:
 
-   - Using a [custom template from the Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), which allows you to create a template from scratch, or base it on an existing common or [quickstart template](https://azure.microsoft.com/documentation/templates/).
-   - Deriving from an existing resource group, by exporting a template from either [the original deployment](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), or from the [current state of the deployment](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
-   - Using a local [JSON editor (such as VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md), and then uploading and deploying by using PowerShell or CLI.
-   - Using the Visual Studio [Azure Resource Group project](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) to both create and deploy a template.  
+   - Použití [vlastní šablony z Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), což vám umožňuje vytvořit zcela novou šablonu, nebo ji založit na stávající společné nebo [rychlé šabloně](https://azure.microsoft.com/documentation/templates/).
+   - Odvození z existující skupiny prostředků exportováním šablony z [původního nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)nebo z [aktuálního stavu nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+   - Použití místního [editoru JSON (například vs Code)](../../azure-resource-manager/resource-manager-create-first-template.md)a následného nahrávání a nasazování pomocí PowerShellu nebo rozhraní příkazového řádku.
+   - Použití [projektu skupiny prostředků Azure](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) sady Visual Studio k vytvoření a nasazení šablony.  
 
-Regardless of the option you choose, template syntax is the same during initial deployment and redeployment. Enabling managed identities for Azure resources on a new or existing VM is done in the same manner. Also, by default, Azure Resource Manager does an [incremental update](../../azure-resource-manager/deployment-modes.md) to deployments.
+Bez ohledu na zvolenou možnost je syntaxe šablony stejná při počátečním nasazení a opětovném nasazení. Povolení spravovaných identit pro prostředky Azure na novém nebo existujícím virtuálním počítači se provádí stejným způsobem. Ve výchozím nastavení Azure Resource Manager také [přírůstkovou aktualizaci](../../azure-resource-manager/deployment-modes.md) nasazení.
 
-## <a name="system-assigned-managed-identity"></a>System-assigned managed identity
+## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
-In this section, you will enable and disable the system-assigned managed identity using an Azure Resource Manager template.
+V této části povolíte nebo zakážete spravovanou identitu přiřazenou systémem pomocí šablony Azure Resource Manager.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>Enable system-assigned managed identity during creation the creation of a virtual machines scale set or an existing virtual machine scale set
+### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>Během vytváření povolit spravovanou identitu přiřazenou systémem a vytvořit sadu škálování virtuálních počítačů nebo existující sadu škálování virtuálního počítače
 
-1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the virtual machine scale set.
-2. To enable the system-assigned managed identity, load the template into an editor, locate the `Microsoft.Compute/virtualMachinesScaleSets` resource of interest within the resources section and add the `identity` property at the same level as the `"type": "Microsoft.Compute/virtualMachinesScaleSets"` property. Use the following syntax:
+1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače.
+2. Pokud chcete povolit spravovanou identitu přiřazenou systémem, načtěte šablonu do editoru, vyhledejte `Microsoft.Compute/virtualMachinesScaleSets` prostředku zájmu v části Resources (prostředky) a přidejte vlastnost `identity` na stejné úrovni jako vlastnost `"type": "Microsoft.Compute/virtualMachinesScaleSets"`. Použijte následující syntaxi:
 
    ```JSON
    "identity": { 
@@ -72,10 +72,10 @@ In this section, you will enable and disable the system-assigned managed identit
    ```
 
 > [!NOTE]
-> You may optionally provision the managed identities for Azure resources virtual machine scale set extension by specifying it in the `extensionProfile` element of the template. This step is optional as you can use the Azure Instance Metadata Service (IMDS) identity endpoint, to retrieve tokens as well.  For more information, see [Migrate from VM extension to Azure IMDS for authentication](howto-migrate-vm-extension.md).
+> Můžete volitelně zřídit spravované identity pro rozšíření sady škálování virtuálních počítačů Azure, a to tak, že je zadáte v prvku `extensionProfile` šablony. Tento krok je nepovinný, protože můžete použít koncový bod identity Azure Instance Metadata Service (IMDS) a načíst taky tokeny.  Další informace najdete v tématu [migrace z rozšíření virtuálního počítače do Azure IMDS pro ověřování](howto-migrate-vm-extension.md).
 
 
-4. When you're done, the following sections should added to the resource section of your template  and should resemble the following:
+4. Až budete hotovi, do oddílu prostředků vaší šablony by se měly přidat následující oddíly, které by měly vypadat takto:
 
    ```json
     "resources": [
@@ -115,25 +115,25 @@ In this section, you will enable and disable the system-assigned managed identit
     ]
    ``` 
 
-### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Disable a system-assigned managed identity from an Azure virtual machine scale set
+### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Zakažte spravovanou identitu přiřazenou systémem ze sady škálování virtuálních počítačů Azure.
 
-If you have a virtual machine scale set that no longer needs a system-assigned managed identity:
+Pokud máte sadu škálování virtuálního počítače, která už nepotřebuje spravovanou identitu přiřazenou systémem:
 
-1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the virtual machine scale set.
+1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače.
 
-2. Load the template into an [editor](#azure-resource-manager-templates) and locate the `Microsoft.Compute/virtualMachineScaleSets` resource of interest within the `resources` section. If you have a VM that only has system-assigned managed identity, you can disable it by changing the identity type to `None`.
+2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a v části `resources` Najděte `Microsoft.Compute/virtualMachineScaleSets` prostředek zájmu. Pokud máte virtuální počítač, který má jenom spravovanou identitu přiřazenou systémem, můžete ho zakázat změnou typu identity na `None`.
 
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2018-06-01**
 
-   If your apiVersion is `2018-06-01` and your VM has both system and user-assigned managed identities, remove `SystemAssigned` from the identity type and keep `UserAssigned` along with the userAssignedIdentities dictionary values.
+   Pokud je vaše apiVersion `2018-06-01` a váš virtuální počítač má spravované identity přiřazené systémem i uživatelem, odeberte `SystemAssigned` z typu identity a zachovejte `UserAssigned` spolu s hodnotami slovníku userAssignedIdentities.
 
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2018-06-01**
 
-   If your apiVersion is `2017-12-01` and your virtual machine scale set has both system and user-assigned managed identities, remove `SystemAssigned` from the identity type and keep `UserAssigned` along with the `identityIds` array of the user-assigned managed identities. 
+   Pokud je váš apiVersion `2017-12-01` a vaše sada škálování virtuálního počítače obsahuje spravované identity v systému i uživatelem, odeberte `SystemAssigned` z typu identity a zachovejte `UserAssigned` spolu s `identityIds`ovým polem uživatelem přiřazených spravovaných identit. 
    
     
 
-   The following example shows you how remove a system-assigned managed identity from a virtual machine scale set with no user-assigned managed identities:
+   Následující příklad ukazuje, jak odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálních počítačů bez přiřazených uživatelem definovaných identit:
    
    ```json
    {
@@ -147,20 +147,20 @@ If you have a virtual machine scale set that no longer needs a system-assigned m
    }
    ```
 
-## <a name="user-assigned-managed-identity"></a>User-assigned managed identity
+## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživatelem
 
-In this section, you assign a user-assigned managed identity to a virtual machine scale set using Azure Resource Manager template.
+V této části přiřadíte uživatelem přiřazenou identitu pro sadu škálování virtuálního počítače pomocí šablony Azure Resource Manager.
 
 > [!Note]
-> To create a user-assigned managed identity using an Azure Resource Manager Template, see [Create a user-assigned managed identity](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
+> Chcete-li vytvořit uživatelem přiřazenou identitu pomocí šablony Azure Resource Manager, přečtěte si téma [Vytvoření uživatelem přiřazené spravované identity](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
 
-### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Assign a user-assigned managed identity to a virtual machine scale set
+### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Přiřazení spravované identity přiřazené uživateli k sadě škálování virtuálního počítače
 
-1. Under the `resources` element, add the following entry to assign a user-assigned managed identity to your virtual machine scale set.  Be sure to replace `<USERASSIGNEDIDENTITY>` with the name of the user-assigned managed identity you created.
+1. V rámci elementu `resources` přidejte následující položku, která uživateli přiřadí spravovanou identitu pro sadu škálování virtuálního počítače.  Nezapomeňte nahradit `<USERASSIGNEDIDENTITY>` názvem uživatelsky přiřazené spravované identity, kterou jste vytvořili.
    
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2018-06-01**
 
-   If your apiVersion is `2018-06-01`, your user-assigned managed identities are stored in the `userAssignedIdentities` dictionary format and the `<USERASSIGNEDIDENTITYNAME>` value must be stored in a variable defined in the `variables` section of your template.
+   Pokud je váš apiVersion `2018-06-01`, jsou spravované identity přiřazené uživatelem uloženy ve formátu `userAssignedIdentities` slovníku a hodnota `<USERASSIGNEDIDENTITYNAME>` musí být uložena v proměnné definované v části `variables` vaší šablony.
 
    ```json
    {
@@ -177,9 +177,9 @@ In this section, you assign a user-assigned managed identity to a virtual machin
    }
    ```   
 
-   **Microsoft.Compute/virtualMachineScaleSets API version 2017-12-01**
+   **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2017-12-01**
     
-   If your `apiVersion` is `2017-12-01` or earlier, your user-assigned managed identities are stored in the `identityIds` array and the `<USERASSIGNEDIDENTITYNAME>` value must be stored in a variable defined in the variables section of your template.
+   Pokud je vaše `apiVersion` `2017-12-01` nebo starší, budou spravované identity přiřazené uživatelem uloženy v poli `identityIds` a hodnota `<USERASSIGNEDIDENTITYNAME>` musí být uložena v proměnné definované v části proměnné v šabloně.
 
    ```json
    {
@@ -196,11 +196,11 @@ In this section, you assign a user-assigned managed identity to a virtual machin
    }
    ``` 
 > [!NOTE]
-> You may optionally provision the managed identities for Azure resources virtual machine scale set extension by specifying it in the `extensionProfile` element of the template. This step is optional as you can use the Azure Instance Metadata Service (IMDS) identity endpoint, to retrieve tokens as well.  For more information, see [Migrate from VM extension to Azure IMDS for authentication](howto-migrate-vm-extension.md).
+> Můžete volitelně zřídit spravované identity pro rozšíření sady škálování virtuálních počítačů Azure, a to tak, že je zadáte v prvku `extensionProfile` šablony. Tento krok je nepovinný, protože můžete použít koncový bod identity Azure Instance Metadata Service (IMDS) a načíst taky tokeny.  Další informace najdete v tématu [migrace z rozšíření virtuálního počítače do Azure IMDS pro ověřování](howto-migrate-vm-extension.md).
 
-3. When you are done, your template should look similar to the following:
+3. Po dokončení by šablona měla vypadat nějak takto:
    
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**   
+   **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2018-06-01**   
 
    ```json
    "resources": [
@@ -243,7 +243,7 @@ In this section, you assign a user-assigned managed identity to a virtual machin
     ]
    ```
 
-   **Microsoft.Compute/virtualMachines API version 2017-12-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2017-12-01**
 
    ```json
    "resources": [
@@ -285,15 +285,15 @@ In this section, you assign a user-assigned managed identity to a virtual machin
         }
     ]
    ```
-   ### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Remove user-assigned managed identity from an Azure virtual machine scale set
+   ### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Odebrání spravované identity přiřazené uživatelem ze sady škálování virtuálních počítačů Azure
 
-If you have a virtual machine scale set that no longer needs a user-assigned managed identity:
+Pokud máte sadu škálování virtuálního počítače, která už nepotřebuje spravovanou identitu přiřazenou uživatelem:
 
-1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the virtual machine scale set.
+1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače.
 
-2. Load the template into an [editor](#azure-resource-manager-templates) and locate the `Microsoft.Compute/virtualMachineScaleSets` resource of interest within the `resources` section. If you have a virtual machine scale set that only has user-assigned managed identity, you can disable it by changing the identity type to `None`.
+2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a v části `resources` Najděte `Microsoft.Compute/virtualMachineScaleSets` prostředek zájmu. Pokud máte sadu škálování virtuálního počítače, která má pouze spravovanou identitu přiřazenou uživatelem, můžete ji zakázat změnou typu identity na `None`.
 
-   The following example shows you how remove all user-assigned managed identities from a VM with no system-assigned managed identities:
+   Následující příklad ukazuje, jak odebrat všechny spravované identity přiřazené uživatelem z virtuálního počítače bez spravovaných identit přiřazených systémem:
 
    ```json
    {
@@ -306,19 +306,19 @@ If you have a virtual machine scale set that no longer needs a user-assigned man
    }
    ```
    
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2018-06-01**
     
-   To remove a single user-assigned managed identity from a virtual machine scale set, remove it from the `userAssignedIdentities` dictionary.
+   Pokud chcete ze sady škálování virtuálního počítače odebrat jednu spravovanou identitu přiřazenou uživatelem, odeberte ji z `userAssignedIdentities` slovníku.
 
-   If you have a system-assigned identity, keep it in the in the `type` value under the `identity` value.
+   Pokud máte identitu přiřazenou systémem, zachovejte ji v hodnotě `type` pod hodnotou `identity`.
 
-   **Microsoft.Compute/virtualMachineScaleSets API version 2017-12-01**
+   **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2017-12-01**
 
-   To remove a single user-assigned managed identity from a virtual machine scale set, remove it from the `identityIds` array.
+   Pokud chcete ze sady škálování virtuálního počítače odebrat jednu spravovanou identitu přiřazenou uživatelem, odeberte ji z pole `identityIds`.
 
-   If you have a system-assigned managed identity, keep it in the in the `type` value under the `identity` value.
+   Pokud máte spravovanou identitu přiřazenou systémem, zachovejte ji v hodnotě `type` pod hodnotou `identity`.
    
 ## <a name="next-steps"></a>Další kroky
 
-- [Managed identities for Azure resources overview](overview.md).
+- [Přehled spravovaných identit pro prostředky Azure](overview.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Configure password writeback for SSPR - Azure Active Directory
-description: Use Azure AD and Azure AD Connect to writeback passwords to an on-premises directory
+title: Konfigurace zpětného zápisu hesla pro SSPR-Azure Active Directory
+description: Použití Azure AD a Azure AD Connect ke zpětnému zápisu hesel do místního adresáře
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,9 +18,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381157"
 ---
-# <a name="how-to-configure-password-writeback"></a>How-to: Configure password writeback
+# <a name="how-to-configure-password-writeback"></a>Postupy: Konfigurace zpětného zápisu hesla
 
-The following steps assume you have already configured Azure AD Connect in your environment by using the [Express](../hybrid/how-to-connect-install-express.md) or [Custom](../hybrid/how-to-connect-install-custom.md) settings.
+Následující postup předpokládá, že jste už ve svém prostředí nakonfigurovali Azure AD Connect pomocí [expresního](../hybrid/how-to-connect-install-express.md) nebo [vlastního](../hybrid/how-to-connect-install-custom.md) nastavení.
 
 1. Pokud chcete zpětný zápis hesla nakonfigurovat a zapnout, přihlaste se ke svému serveru Azure AD Connect a spusťte průvodce konfigurací služby **Azure AD Connect**.
 2. Na **úvodní** stránce vyberte **Konfigurovat**.
@@ -28,81 +28,81 @@ The following steps assume you have already configured Azure AD Connect in your 
 4. Na stránce **Připojení k Azure AD** zadejte přihlašovací údaje globálního správce a pak vyberte **Další**.
 5. Na stránkách filtrování **Připojení adresářů** a **Doména či organizační jednotka** vyberte **Další**.
 6. Na stránce **Volitelné funkce** vyberte políčko vedle **Zpětný zápis hesla** a vyberte **Další**.
-   ![Enable password writeback in Azure AD Connect][Writeback]
+   ![Povolení zpětného zápisu hesla v Azure AD Connect][Writeback]
 7. Na stránce **Připraveno ke konfiguraci** vyberte **Konfigurovat** a počkejte na dokončení procesu.
 8. Až se konfigurace dokončí, vyberte **Ukončit**.
 
-For common troubleshooting tasks related to password writeback, see the section [Troubleshoot password writeback](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) in our troubleshooting article.
+Běžné úlohy odstraňování potíží související se zpětným zápisem hesla najdete v části [řešení potíží se zpětným zápisem hesla](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) v našem článku o řešení potíží.
 
 > [!WARNING]
-> Password writeback will stop working for customers who are using Azure AD Connect versions 1.0.8641.0 and older when the [Azure Access Control service (ACS) is retired on November 7th, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect versions 1.0.8641.0 and older will no longer allow password writeback at that time because they depend on ACS for that functionality.
+> Zpětný zápis hesla přestane fungovat pro zákazníky, kteří používají Azure AD Connect verze 1.0.8641.0 a starší, pokud [je služba Azure Access Control Service (ACS) vyřazena 7. listopadu 2018](../develop/active-directory-acs-migration.md). Azure AD Connect verze 1.0.8641.0 a starší již v tuto chvíli neumožňují zpětný zápis hesla, protože pro tuto funkci závisí na službě ACS.
 >
-> To avoid a disruption in service, upgrade from a previous version of Azure AD Connect to a newer version, see the article [Azure AD Connect: Upgrade from a previous version to the latest](../hybrid/how-to-upgrade-previous-version.md)
+> Chcete-li se vyhnout výpadkům služby, upgradujte z předchozí verze Azure AD Connect na novější verzi, přečtěte si článek [Azure AD Connect: upgrade z předchozí verze na nejnovější](../hybrid/how-to-upgrade-previous-version.md)
 >
 
-## <a name="licensing-requirements-for-password-writeback"></a>Licensing requirements for password writeback
+## <a name="licensing-requirements-for-password-writeback"></a>Licenční požadavky pro zpětný zápis hesla
 
-**Self-Service Password Reset/Change/Unlock with on-premises writeback is a premium feature of Azure AD**. For more information about licensing, see the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
+**Samoobslužné resetování hesla/změna/odemknutí pomocí místního zpětného zápisu je funkce Premium služby Azure AD**. Další informace o licencování najdete na [webu Azure Active Directory Price](https://azure.microsoft.com/pricing/details/active-directory/).
 
-To use password writeback, you must have one of the following licenses assigned on your tenant:
+Pokud chcete použít zpětný zápis hesla, musíte mít přiřazenou jednu z následujících licencí ve vašem tenantovi:
 
 * Azure AD Premium P1
 * Azure AD Premium P2
-* Enterprise Mobility + Security E3 or A3
-* Enterprise Mobility + Security E5 or A5
-* Microsoft 365 E3 or A3
-* Microsoft 365 E5 or A5
+* Enterprise Mobility + Security E3 nebo a3
+* Enterprise Mobility + Security E5 nebo a5
+* Microsoft 365 E3 nebo a3
+* Microsoft 365 E5 nebo a5
 * Microsoft 365 F1
 * Microsoft 365 Business
 
 > [!WARNING]
-> Standalone Office 365 licensing plans *don't support "Self-Service Password Reset/Change/Unlock with on-premises writeback"* and require that you have one of the preceding plans for this functionality to work.
+> Samostatné plány licencování Office 365 *nepodporují Samoobslužné resetování hesla, změny/odemknutí pomocí místního zpětného zápisu* a vyžadují, abyste měli k dispozici jeden z předchozích plánů, aby tato funkce fungovala.
 >
 
-## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Active Directory permissions and on-premises password complexity policies 
+## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Oprávnění služby Active Directory a místní zásady složitosti hesla 
 
-The account specified in the Azure AD Connect utility must have the following items set if you want to be in scope for SSPR:
+Účet zadaný v nástroji Azure AD Connect musí mít nastavené následující položky, pokud chcete být v oboru pro SSPR:
 
 * **Resetování hesla** 
 * **Změnit heslo** 
-* **Write permissions** on `lockoutTime`
-* **Write permissions** on `pwdLastSet`
-* **Extended rights** on either:
-   * The root object of *each domain* in that forest
-   * The user organizational units (OUs) you want to be in scope for SSPR
+* **Oprávnění k zápisu** na `lockoutTime`
+* **Oprávnění k zápisu** na `pwdLastSet`
+* **Rozšířená práva** na jednom z těchto:
+   * Kořenový objekt *každé domény* v této doménové struktuře
+   * Organizační jednotky (OU) uživatele, které chcete mít v oboru pro SSPR
 
-If you're not sure what account the described account refers to, open the Azure Active Directory Connect configuration UI and select the **View current configuration** option. The account that you need to add permission to is listed under **Synchronized Directories**.
+Pokud si nejste jistí, ke kterému účtu se odkazuje účet, otevřete uživatelské rozhraní Azure Active Directory Connect konfigurace a vyberte možnost **Zobrazit aktuální konfiguraci** . Účet, do kterého je nutné přidat oprávnění, je uveden v části **synchronizované adresáře**.
 
-If you set these permissions, the MA service account for each forest can manage passwords on behalf of the user accounts within that forest. 
+Pokud tato oprávnění nastavíte, účet služby MA pro každou doménovou strukturu může spravovat hesla jménem uživatelských účtů v rámci této doménové struktury. 
 
 > [!IMPORTANT]
-> If you neglect to assign these permissions, then, even though writeback appears to be configured correctly, users will encounter errors when they attempt to manage their on-premises passwords from the cloud.
+> Pokud tato oprávnění přiřadíte, a to i v případě, že se zpětný zápis zdá být správně nakonfigurovaný, uživatelé budou při pokusu o správu místních hesel z cloudu zacházet s chybami.
 >
 
 > [!NOTE]
-> It might take up to an hour or more for these permissions to replicate to all the objects in your directory.
+> Může trvat až hodinu, než se tato oprávnění replikují do všech objektů ve vašem adresáři.
 >
 
-To set up the appropriate permissions for password writeback to occur, complete the following steps:
+Chcete-li nastavit příslušná oprávnění ke zpětnému zápisu hesla, proveďte následující kroky:
 
-1. Open Active Directory Users and Computers with an account that has the appropriate domain administration permissions.
-2. From the **View** menu, make sure **Advanced features** is turned on.
-3. In the left panel, right-click the object that represents the root of the domain and select **Properties** > **Security** > **Advanced**.
-4. From the **Permissions** tab, select **Add**.
-5. Pick the account that permissions are being applied to (from the Azure AD Connect setup).
-6. In the **Applies to** drop-down list, select **Descendant User objects**.
-7. Under **Permissions**, select the boxes for the following options:
+1. Otevřete modul Uživatelé a počítače služby Active Directory pomocí účtu, který má příslušná oprávnění pro správu domény.
+2. V nabídce **zobrazení** se ujistěte, že jsou zapnuté **Rozšířené funkce** .
+3. Na levém panelu klikněte pravým tlačítkem myši na objekt, který představuje kořen domény, a vyberte možnost **vlastnosti** > **zabezpečení** > **Upřesnit**.
+4. Na kartě **oprávnění** vyberte **Přidat**.
+5. Vyberte účet, ke kterému se vztahují oprávnění (z instalace Azure AD Connect).
+6. V rozevíracím seznamu **platí pro** vyberte **podřízené objekty uživatele**.
+7. V části **oprávnění**zaškrtněte políčka pro následující možnosti:
     * **Změnit heslo**
     * **Resetování hesla**
-8. Under **Properties**, select the boxes for the following options:
-    * **Write lockoutTime**
-    * **Write pwdLastSet**
-9. Select **Apply/OK** to apply the changes and exit any open dialog boxes.
+8. V části **vlastnosti**zaškrtněte políčka pro následující možnosti:
+    * **Zápis lockoutTime**
+    * **Zápis pwdLastSet**
+9. Výběrem **použít/ok** použijte změny a zavřete všechna otevřená dialogová okna.
 
-Since the source of authority is on premises, the password complexity policies apply from the same connected data source. Make sure you've changed the existing group policies for "Minimum password age". The group policy shouldn't be set to 1, which means password should be at least a day old before it can be updated. You need make sure it's set to 0. These settings can be found in `gpmc.msc` under **Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies**. Run `gpupdate /force` to ensure that the change takes effect. 
+Vzhledem k tomu, že zdroj autority je místní, zásady složitosti hesla se použijí ze stejného připojeného zdroje dat. Ujistěte se, že jste změnili existující zásady skupiny pro "minimální stáří hesla". Zásady skupiny by neměly být nastavené na hodnotu 1, což znamená, že heslo musí být alespoň jeden den starý předtím, než bude možné ho aktualizovat. Musíte se ujistit, že je nastavené na 0. Tato nastavení najdete v části `gpmc.msc` v části **Konfigurace počítače zásady > > nastavení systému Windows > nastavení zabezpečení > zásady účtů**. Spusťte `gpupdate /force`, abyste zajistili, že se změna projeví. 
 
 ## <a name="next-steps"></a>Další kroky
 
-[What is password writeback?](concept-sspr-writeback.md)
+[Co je zpětný zápis hesla?](concept-sspr-writeback.md)
 
-[Writeback]: ./media/howto-sspr-writeback/enablepasswordwriteback.png "Enable password writeback in Azure AD Connect"
+[Writeback]: ./media/howto-sspr-writeback/enablepasswordwriteback.png "Povolení zpětného zápisu hesla v Azure AD Connect"

@@ -18,12 +18,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c838c6fe256e2960842c5b40f58f8a5d5b1fdf3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 84275be5c85570a44d968dca8887b448fce09979
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473777"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546846"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 
@@ -39,16 +39,12 @@ Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarace rolí aplikace pomocí Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V horním panelu vyberte svůj účet a pak **Přepněte adresář**.
 1. Po otevření podokna **adresář a odběr** vyberte v seznamu **Oblíbené** nebo **všechny adresáře** klienta služby Active Directory, kde chcete aplikaci zaregistrovat.
 1. V levém navigačním panelu vyberte **všechny služby** a zvolte **Azure Active Directory**.
-1. V podokně **Azure Active Directory** vyberte **Registrace aplikací (starší verze)** , abyste zobrazili seznam všech aplikací.
-
-     Pokud nevidíte tu aplikaci, kterou chcete zobrazit, pomocí různých filtrů v horní části seznamu **Registrace aplikací (starší verze)** můžete seznam omezit, nebo posouvat seznam a najít svou aplikaci.
-
-1. Vyberte aplikaci, ve které chcete role aplikace definovat.
-1. V okně aplikace vyberte možnost **manifest**.
+1. V podokně **Azure Active Directory** vyberte **Registrace aplikací** a zobrazte seznam všech aplikací.
+1. Vyberte aplikaci, ve které chcete role aplikace definovat. Pak vyberte **manifest**.
 1. Upravte manifest aplikace tak, že vyhledáte nastavení `appRoles` a přidáte všechny své aplikační role.
 
      > [!NOTE]

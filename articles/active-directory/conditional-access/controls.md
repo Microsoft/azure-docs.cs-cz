@@ -1,6 +1,6 @@
 ---
-title: Access controls in Azure Active Directory Conditional Access
-description: Learn how access controls in Azure Active Directory Conditional Access work.
+title: Řízení přístupu v Azure Active Directory podmíněný přístup
+description: Přečtěte si, jak ovládací prvky přístupu v Azure Active Directory fungují v podmíněném přístupu.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,155 +18,155 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380815"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>What are access controls in Azure Active Directory Conditional Access?
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou ovládací prvky přístupu v Azure Active Directory podmíněný přístup?
 
-With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users access your cloud apps. In a Conditional Access policy, you define the response ("do this") to the reason for triggering your policy ("when this happens").
+Pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)můžete řídit, jak autorizovaným uživatelům přistupují k vašim cloudovým aplikacím. V zásadách podmíněného přístupu definujete odpověď ("Udělejte to") na důvod, který aktivuje vaše zásady ("Pokud k tomu dojde").
 
-![Řízení](./media/controls/10.png)
+![Ovládací prvek](./media/controls/10.png)
 
-In the context of Conditional Access,
+V kontextu podmíněného přístupu
 
-- "**When this happens**" is called **conditions**
-- "**Then do this**" is called **access controls**
+- "**Pokud k tomu dojde**, se nazývají **podmínky** "
+- **Pak se tato**možnost nazývá **řízení přístupu** .
 
-The combination of a condition statement with your controls represents a Conditional Access policy.
+Kombinace příkazu Condition s ovládacími prvky představuje zásadu podmíněného přístupu.
 
-![Řízení](./media/controls/61.png)
+![Ovládací prvek](./media/controls/61.png)
 
-Each control is either a requirement that must be fulfilled by the person or system signing in, or a restriction on what the user can do after signing in.
+Každý ovládací prvek je buď požadavkem, který musí splňovat osoba nebo systém přihlašování, nebo omezení, co může uživatel provést po přihlášení.
 
-There are two types of controls:
+Existují dva typy ovládacích prvků:
 
-- **Grant controls** - To gate access
-- **Session controls** - To restrict access within a session
+- **Udělení řízení** – přístup k bráně
+- **Řízení relace** – omezení přístupu v rámci relace
 
-This topic explains the various controls that are available in Azure AD Conditional Access. 
+Toto téma vysvětluje různé ovládací prvky, které jsou k dispozici v rámci podmíněného přístupu Azure AD. 
 
-## <a name="grant-controls"></a>Grant controls
+## <a name="grant-controls"></a>Udělit ovládací prvky
 
-With grant controls, you can either block access altogether or allow access with additional requirements by selecting the desired controls. For multiple controls, you can require:
+Pomocí ovládacích prvků grant můžete buď zablokovat přístup zcela, nebo povolit přístup s dalšími požadavky výběrem požadovaných ovládacích prvků. Pro více ovládacích prvků můžete vyžadovat:
 
-- All selected controls to be fulfilled (*AND*)
-- One selected control to be fulfilled (*OR*)
+- Všechny vybrané ovládací prvky, které se mají splnit (*a*)
+- Jeden vybraný ovládací prvek k splnění (*nebo*)
 
-![Řízení](./media/controls/18.png)
+![Ovládací prvek](./media/controls/18.png)
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+### <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
 
-You can use this control to require multi-factor authentication to access the specified cloud app. This control supports the following multi-factor providers:
+Tento ovládací prvek můžete použít k vyžádání vícefaktorového ověřování pro přístup k zadané cloudové aplikaci. Tento ovládací prvek podporuje následující Multi-Factor Providers:
 
 - Azure Multi-Factor Authentication
-- An on-premises multi-factor authentication provider, combined with Active Directory Federation Services (AD FS).
+- Místní zprostředkovatel vícefaktorového ověřování v kombinaci s Active Directory Federation Services (AD FS) (AD FS).
 
-Using multi-factor authentication helps protect resources from being accessed by an unauthorized user who might have gained access to the primary credentials of a valid user.
+Použití služby Multi-Factor Authentication pomáhá chránit prostředky před přístupem neoprávněného uživatele, který by mohl získat přístup k primárním přihlašovacím údajům platného uživatele.
 
 ### <a name="compliant-device"></a>Odpovídající zařízení
 
-You can configure Conditional Access policies that are device-based. The objective of a device-based Conditional Access policy is to only grant access to the selected cloud apps from [managed devices](require-managed-devices.md). Requiring a device to be marked as compliant is one option you have to limit access to managed devices. A device can be marked as compliant by Intune (for any device OS) or by your third-party MDM system for Windows 10 devices. Third-party MDM systems for device OS types other than Windows 10 are not supported. 
+Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu na základě zařízení je udělit jenom přístup k vybraným cloudovým aplikacím ze [spravovaných zařízení](require-managed-devices.md). Vyžadování zařízení, které je označeno jako vyhovující, je jedna z možností, kterou musíte omezit přístup ke spravovaným zařízením. Zařízení může být označeno jako kompatibilní s Intune (pro libovolný operační systém zařízení) nebo systémem MDM jiného výrobce pro zařízení s Windows 10. Systémy MDM třetích stran pro jiné typy operačních systémů zařízení, než je Windows 10, se nepodporují. 
 
-Your device needs to be registered to Azure AD before it can be marked as compliant. To register a device, you have three options: 
+Vaše zařízení musí být zaregistrované ve službě Azure AD, aby bylo možné ho označit jako kompatibilní. K registraci zařízení máte tři možnosti: 
 
 - Zařízení zaregistrovaná v Azure AD
 - Zařízení připojená k Azure AD  
 - Hybridní zařízení připojená k Azure AD
 
-These three options are discussed in the article [What is a device identity?](../devices/overview.md)
+Tyto tři možnosti jsou popsány v článku [co je identita zařízení?](../devices/overview.md)
 
-For more information, see [how to require managed devices for cloud app access with Conditional Access](require-managed-devices.md).
+Další informace najdete v tématu [jak vyžadovat spravovaná zařízení pro přístup k cloudovým aplikacím pomocí podmíněného přístupu](require-managed-devices.md).
 
-### <a name="hybrid-azure-ad-joined-device"></a>Hybrid Azure AD joined device
+### <a name="hybrid-azure-ad-joined-device"></a>Zařízení připojené k hybridní službě Azure AD
 
-Requiring a Hybrid Azure AD joined device is another option you have to configure device-based Conditional Access policies. This requirement refers to Windows desktops, laptops, and enterprise tablets that are joined to an on-premises Active Directory. If this option is selected, your Conditional Access policy grants access to access attempts made with devices that are joined to your on-premises Active Directory and your Azure Active Directory.  
+Vyžadování zařízení připojeného k hybridní službě Azure AD je další možností, jak musíte nakonfigurovat zásady podmíněného přístupu na základě zařízení. Tento požadavek se vztahuje na stolní počítače, přenosné počítače a podnikové tablety, které jsou připojené k místní službě Active Directory. Pokud je vybraná tato možnost, zásada podmíněného přístupu udělí přístup k pokusům o přístup pomocí zařízení, která jsou připojená k místní službě Active Directory a k vašemu Azure Active Directory.  
 
-For more information, see [set up Azure Active Directory device-based Conditional Access policies](require-managed-devices.md).
+Další informace najdete v tématu [nastavení Azure Active Directory zásad podmíněného přístupu na základě zařízení](require-managed-devices.md).
 
-### <a name="approved-client-app"></a>Approved client app
+### <a name="approved-client-app"></a>Schválená klientská aplikace
 
-Because your employees use mobile devices for both personal and work tasks, you might want to have the ability to protect company data accessed using devices even in the case where they are not managed by you.
-You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data independent of any mobile-device management (MDM) solution.
+Vzhledem k tomu, že vaši zaměstnanci používají mobilní zařízení pro osobní i pracovní úkoly, možná budete chtít chránit podniková data, která používají zařízení, i v případě, že je nespravujete sami.
+[Zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy) můžete použít k ochraně firemních dat nezávisle na řešení správy mobilních zařízení (MDM).
 
-With approved client apps, you can require a client app that attempts to access your cloud apps to support [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy). For example, you can restrict access to Exchange Online to the Outlook app. A Conditional Access policy that requires approved client apps is  also known as [app-based Conditional Access policy](app-based-conditional-access.md). For a list of supported approved client apps, see [approved client app requirement](technical-reference.md#approved-client-app-requirement).
+Se schválenými klientskými aplikacemi můžete vyžadovat klientskou aplikaci, která se pokusí o přístup k vašim cloudovým aplikacím, aby podporovala [Zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Můžete například omezit přístup k Exchangi Online do aplikace Outlook. Zásady podmíněného přístupu, které vyžadují schválené klientské aplikace, se taky označují jako [zásady podmíněného přístupu na základě aplikace](app-based-conditional-access.md). Seznam podporovaných autorizovaných klientských aplikací najdete v tématu [schválení klientské aplikace – požadavek](technical-reference.md#approved-client-app-requirement).
 
-### <a name="app-protection-policy-preview"></a>App protection policy (preview)
+### <a name="app-protection-policy-preview"></a>Zásady ochrany aplikací (Preview)
 
-Because your employees use mobile devices for both personal and work tasks, you might want to have the ability to protect company data accessed using devices even in the case where they are not managed by you.
-You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data independent of any mobile-device management (MDM) solution.
+Vzhledem k tomu, že vaši zaměstnanci používají mobilní zařízení pro osobní i pracovní úkoly, možná budete chtít chránit podniková data, která používají zařízení, i v případě, že je nespravujete sami.
+[Zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy) můžete použít k ochraně firemních dat nezávisle na řešení správy mobilních zařízení (MDM).
 
-With app protection policy, you can limit access to client applications that have reported to Azure AD has having received [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy). For example, you can restrict access to Exchange Online to the Outlook app that has an Intune app protection policy. A Conditional Access policy that requires app protection policy is also known as [app protection-based Conditional Access policy](app-protection-based-conditional-access.md). 
+Pomocí zásad ochrany aplikací můžete omezit přístup k klientským aplikacím, které nahlásily službě Azure AD, a které přijaly [Zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Můžete například omezit přístup k Exchangi Online na aplikaci Outlook, která má zásady ochrany aplikací Intune. Zásady podmíněného přístupu, které vyžadují zásady ochrany aplikací, se taky označují jako [zásady podmíněného přístupu na základě ochrany aplikací](app-protection-based-conditional-access.md). 
 
-Your device must be registered to Azure AD before an application can be marked as policy protected.
+Aby bylo možné aplikaci označit jako chráněnou zásadou, musí být vaše zařízení zaregistrované ve službě Azure AD.
 
-For a list of supported policy protected client apps, see [app protection policy requirement](technical-reference.md#app-protection-policy-requirement).
+Seznam podporovaných klientských aplikací chráněných zásadami najdete v tématu [požadavky na zásady ochrany aplikací](technical-reference.md#app-protection-policy-requirement).
 
 ### <a name="terms-of-use"></a>Podmínky použití
 
-You can require a user in your tenant to consent to the terms of use before being granted access to a resource. As an administrator, you can configure and customize terms of use by uploading a PDF document. If a user falls in scope of this control access to an application is only granted if the terms of use have been agreed.
+Před udělením přístupu k prostředku můžete vyžadovat, aby uživatel ve vašem tenantovi souhlasil s podmínkami použití. Jako správce můžete nakonfigurovat a přizpůsobit podmínek použití nahráním dokumentu PDF. Pokud uživatel spadá do rozsahu tohoto řízení přístup k aplikaci, udělí se jenom v případě, že se podmínek použití dohodly.
 
-## <a name="custom-controls-preview"></a>Custom controls (preview)
+## <a name="custom-controls-preview"></a>Vlastní ovládací prvky (Preview)
 
-Custom controls are a capability of the Azure Active Directory Premium P1 edition. When using custom controls, your users are redirected to a compatible service to satisfy further requirements outside of Azure Active Directory. To satisfy this control, a user’s browser is redirected to the external service, performs any required authentication or validation activities, and is then redirected back to Azure Active Directory. Azure Active Directory verifies the response and, if the user was successfully authenticated or validated, the user continues in the Conditional Access flow.
+Vlastní ovládací prvky jsou funkcemi edice Azure Active Directory Premium P1. Při použití vlastních ovládacích prvků jsou vaši uživatelé přesměrováni na kompatibilní službu, aby splňovaly další požadavky mimo Azure Active Directory. Aby bylo možné tento ovládací prvek vyhovět, bude prohlížeč uživatele přesměrován na externí službu, provede všechny požadované ověřovací nebo ověřovací aktivity a pak bude přesměrován zpět na Azure Active Directory. Azure Active Directory ověří odpověď, a pokud byl uživatel úspěšně ověřen nebo ověřen, uživatel pokračuje v toku podmíněného přístupu.
 
-These controls allow the use of certain external or custom services as Conditional Access controls, and generally extend the capabilities of Conditional Access.
+Tyto ovládací prvky umožňují použití určitých externích nebo vlastních služeb jako řízení podmíněného přístupu a obecně rozšiřuje možnosti podmíněného přístupu.
 
-Providers currently offering a compatible service include:
+Mezi poskytovatele, kteří aktuálně nabízejí kompatibilní služby, patří:
 
-- [Duo Security](https://duo.com/docs/azure-ca)
+- [Zabezpečení Duo](https://duo.com/docs/azure-ca)
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
-- [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
+- [Ověřit identitu](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
-- [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
-- [Thales (Gemalto)](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
+- [Virtuální IP adresa Symantec](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
+- [Thales (identita Gemalto)](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
-For more information on those services, contact the providers directly.
+Další informace o těchto službách získáte přímo od poskytovatelů.
 
-### <a name="creating-custom-controls"></a>Creating custom controls
+### <a name="creating-custom-controls"></a>Vytváření vlastních ovládacích prvků
 
-To create a custom control, you should first contact the provider that you wish to utilize. Each non-Microsoft provider has its own process and requirements to sign up, subscribe, or otherwise become a part of the service, and to indicate that you wish to integrate with Conditional Access. At that point, the provider will provide you with a block of data in JSON format. This data allows the provider and Conditional Access to work together for your tenant, creates the new control and defines how Conditional Access can tell if your users have successfully performed verification with the provider.
+Chcete-li vytvořit vlastní ovládací prvek, je třeba nejprve kontaktovat poskytovatele, kterého chcete využít. Každý poskytovatel od poskytovatele Microsoftu má svůj vlastní proces a požadavky na registraci, přihlášení k odběru nebo jinou součást služby a k označení, že chcete integraci s podmíněným přístupem. Od tohoto okamžiku vám poskytovatel poskytne blok dat ve formátu JSON. Tato data umožňují poskytovateli a podmíněným přístupům spolupracovat pro vašeho tenanta, vytvoří nový ovládací prvek a určí, jak podmíněný přístup může zjistit, jestli se uživatelé úspěšně provedli ověření u poskytovatele.
 
-Custom controls cannot be used with Identity Protection's automation requiring multi-factor authentication or to elevate roles in Privileged Identity Manager (PIM).
+Vlastní ovládací prvky nelze použít s automatizací Identity Protection, která vyžaduje vícefaktorové ověřování, nebo zvýšení rolí v Privileged identity Manageru (PIM).
 
-Copy the JSON data and then paste it into the related textbox. Do not make any changes to the JSON unless you explicitly understand the change you’re making. Making any change could break the connection between the provider and Microsoft and potentially lock you and your users out of your accounts.
+Zkopírujte data JSON a pak je vložte do příslušného textového pole. Neprovádějte žádné změny JSON, pokud výslovně nerozumíte změně, kterou provádíte. Provedení jakékoli změny by mohlo způsobit přerušení spojení mezi poskytovatelem a společností Microsoft a tím, že vás a vaši uživatelé budou moci uzamknout z vašich účtů.
 
-The option to create a custom control is in the **Manage** section of the **Conditional Access** page.
+Možnost vytvořit vlastní ovládací prvek je v části **Správa** na stránce **podmíněný přístup** .
 
-![Řízení](./media/controls/82.png)
+![Ovládací prvek](./media/controls/82.png)
 
-Clicking **New custom control**, opens a blade with a textbox for the JSON data of your control.  
+Kliknutím na **Nový vlastní ovládací prvek**otevře okno s textovým polem pro data JSON ovládacího prvku.  
 
-![Řízení](./media/controls/81.png)
+![Ovládací prvek](./media/controls/81.png)
 
-### <a name="deleting-custom-controls"></a>Deleting custom controls
+### <a name="deleting-custom-controls"></a>Odstranění vlastních ovládacích prvků
 
-To delete a custom control, you must first ensure that it isn’t being used in any Conditional Access policy. Once complete:
+Pokud chcete odstranit vlastní ovládací prvek, musíte nejdřív zkontrolovat, že se nepoužívá v žádné zásadě podmíněného přístupu. Po dokončení:
 
-1. Go to the Custom controls list
-1. Click …  
+1. Přejít na seznam vlastních ovládacích prvků
+1. Klikněte na...  
 1. Vyberte **Odstranit**.
 
-### <a name="editing-custom-controls"></a>Editing custom controls
+### <a name="editing-custom-controls"></a>Úprava vlastních ovládacích prvků
 
-To edit a custom control, you must delete the current control and create a new control with the updated information.
+Chcete-li upravit vlastní ovládací prvek, je nutné odstranit aktuální ovládací prvek a vytvořit nový ovládací prvek s aktualizovanými informacemi.
 
-## <a name="session-controls"></a>Session controls
+## <a name="session-controls"></a>Ovládací prvky relace
 
-Session controls enable limited experience within a cloud app. The session controls are enforced by cloud apps and rely on additional information provided by Azure AD to the app about the session.
+Ovládací prvky relace umožňují omezené prostředí v rámci cloudové aplikace. Ovládací prvky relace jsou vynutily cloudové aplikace a využívají další informace, které Azure AD poskytuje do aplikace o této relaci.
 
-![Řízení](./media/controls/31.png)
+![Ovládací prvek](./media/controls/31.png)
 
-### <a name="use-app-enforced-restrictions"></a>Use app enforced restrictions
+### <a name="use-app-enforced-restrictions"></a>Použít omezení pro uplatnění aplikace
 
-You can use this control to require Azure AD to pass device information to the selected cloud apps. The device information enables the cloud apps to know whether a connection is initiated from a compliant or domain-joined device. This control only supports SharePoint Online and Exchange Online as selected cloud apps. When selected, the cloud app uses the device information to provide users, depending on the device state, with a limited or full experience.
+Tento ovládací prvek můžete použít, pokud chcete, aby služba Azure AD předávala informace o zařízení vybraným cloudovým aplikacím. Informace o zařízení umožňuje cloudovým aplikacím zjistit, jestli je připojení iniciované z kompatibilního zařízení nebo zařízení připojeného k doméně. Tento ovládací prvek podporuje pouze SharePoint Online a Exchange Online jako vybrané cloudové aplikace. Když vyberete tuto možnost, cloudová aplikace použije informace o zařízení k poskytování uživatelů v závislosti na stavu zařízení s omezeným nebo úplným prostředím.
 
 Další informace naleznete v tématu:
 
-- [Enabling limited access with SharePoint Online](https://aka.ms/spolimitedaccessdocs)
-- [Enabling limited access with Exchange Online](https://aka.ms/owalimitedaccess)
+- [Povolení omezeného přístupu na SharePointu Online](https://aka.ms/spolimitedaccessdocs)
+- [Povolení omezeného přístupu pomocí Exchange Online](https://aka.ms/owalimitedaccess)
 
 ## <a name="next-steps"></a>Další kroky
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md).
+- Pokud chcete zjistit, jak nakonfigurovat zásady podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md).
+- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

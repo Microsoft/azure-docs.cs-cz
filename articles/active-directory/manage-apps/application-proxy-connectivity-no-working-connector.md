@@ -69,6 +69,6 @@ Pokud jsou jediné konektory ve skupině neaktivní, jsou pravděpodobně na po�
 Podrobnosti o vyšetřování tohoto problému najdete v dokumentu věnovaném řešení potíží s porty.
 
 ## <a name="next-steps"></a>Další kroky
-[Principy konektorů Proxy aplikací Azure AD](application-proxy-connectors.md)
+[Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)
 
 

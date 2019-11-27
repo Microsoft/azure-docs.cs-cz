@@ -1,6 +1,6 @@
 ---
-title: Azure Durable Functions unit testing
-description: Learn how to unit test Durable Functions.
+title: Testování částí Azure Durable Functions
+description: Přečtěte si, jak Durable Functions testování částí.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
@@ -10,28 +10,28 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231230"
 ---
-# <a name="durable-functions-unit-testing"></a>Durable Functions unit testing
+# <a name="durable-functions-unit-testing"></a>Testování částí Durable Functions
 
-Unit testing is an important part of modern software development practices. Unit tests verify business logic behavior and protect from introducing unnoticed breaking changes in the future. Durable Functions can easily grow in complexity so introducing unit tests will help to avoid breaking changes. The following sections explain how to unit test the three function types - Orchestration client, orchestrator, and activity functions.
+Testování částí je důležitou součástí moderních postupů vývoje softwaru. Testy jednotek ověřují chování obchodní logiky a chrání před tím, než budou v budoucnu předem zjištěny zásadní změny. Durable Functions může snadno růst složitou složitost, takže zavedení testů jednotek pomůže vyhnout se neprůlomovým změnám. Následující části vysvětlují, jak otestovat testování tří funkcí – klienta orchestrace, nástroje Orchestrator a aktivity.
 
 > [!NOTE]
-> This article provides guidance for unit testing for Durable Functions apps targeting Durable Functions 1.x. It has not yet been updated to account for changes introduced in Durable Functions 2.x. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Tento článek poskytuje pokyny pro testování částí Durable Functions aplikací cílících na Durable Functions 1. x. Ještě nebyla aktualizována na účet pro změny, které byly zavedeny v Durable Functions 2. x. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-The examples in this article require knowledge of the following concepts and frameworks:
+Příklady v tomto článku vyžadují znalost následujících konceptů a platforem:
 
 * Testování částí
 
 * Odolná služba Functions
 
-* [xUnit](https://xunit.github.io/) - Testing framework
+* rozhraní [xUnit](https://xunit.github.io/) -Testing
 
-* [moq](https://github.com/moq/moq4) - Mocking framework
+* rozhraní pro návrhy [MOQ](https://github.com/moq/moq4)
 
-## <a name="base-classes-for-mocking"></a>Base classes for mocking
+## <a name="base-classes-for-mocking"></a>Základní třídy pro napodobování
 
-Mocking is supported via three abstract classes in Durable Functions 1.x:
+Napodobování se podporuje prostřednictvím tří abstraktních tříd v Durable Functions 1. x:
 
 * `DurableOrchestrationClientBase`
 
@@ -39,29 +39,29 @@ Mocking is supported via three abstract classes in Durable Functions 1.x:
 
 * `DurableActivityContextBase`
 
-These classes are base classes for `DurableOrchestrationClient`, `DurableOrchestrationContext`, and `DurableActivityContext` that define Orchestration Client, Orchestrator, and Activity methods. The mocks will set expected behavior for base class methods so the unit test can verify the business logic. There is a two-step workflow for unit testing the business logic in the Orchestration Client and Orchestrator:
+Tyto třídy jsou základní třídy pro `DurableOrchestrationClient`, `DurableOrchestrationContext`a `DurableActivityContext`, které definují metody klienta, Orchestrator a aktivity pro orchestraci. Modely nastaví očekávané chování pro metody základní třídy, aby test jednotek mohl ověřit obchodní logiku. Pro testování částí obchodní logiky v klientu Orchestration a Orchestrator je k dispozici dva kroky.
 
-1. Use the base classes instead of the concrete implementation when defining orchestration client and orchestrator function signatures.
-2. In the unit tests mock the behavior of the base classes and verify the business logic.
+1. Použijte základní třídy namísto konkrétní implementace při definování signatury funkcí klienta a nástroje Orchestrator.
+2. V testování částí je chování základních tříd a ověření obchodní logiky.
 
-Find more details in the following paragraphs for testing functions that use the orchestration client binding and the orchestrator trigger binding.
+Další podrobnosti najdete v následujících odstavcích pro testování funkcí, které používají vazbu klienta Orchestration a aktivační vazbu nástroje Orchestrator.
 
-## <a name="unit-testing-trigger-functions"></a>Unit testing trigger functions
+## <a name="unit-testing-trigger-functions"></a>Aktivační funkce testování částí
 
-In this section, the unit test will validate the logic of the following HTTP trigger function for starting new orchestrations.
+V této části test jednotek ověří logiku následující funkce triggeru HTTP pro spuštění nových orchestrací.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-The unit test task will be to verify the value of the `Retry-After` header provided in the response payload. So the unit test will mock some of `DurableOrchestrationClientBase` methods to ensure predictable behavior.
+Úkol testování částí bude ověřovat hodnotu v hlavičce `Retry-After` poskytnutou v datové části odpovědi. Test jednotek tak bude napsaný některé z `DurableOrchestrationClientBase` metod, aby bylo zajištěno předvídatelné chování.
 
-First, a mock of the base class is required, `DurableOrchestrationClientBase`. The mock can be a new class that implements `DurableOrchestrationClientBase`. However, using a mocking framework like [moq](https://github.com/moq/moq4) simplifies the process:
+Nejprve je vyžadován druh základní třídy, `DurableOrchestrationClientBase`. Přípravou může být nová třída, která implementuje `DurableOrchestrationClientBase`. Nicméně použití napodobované architektury, jako je [MOQ](https://github.com/moq/moq4) , zjednodušuje proces:
 
 ```csharp
     // Mock DurableOrchestrationClientBase
     var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
 ```
 
-Then `StartNewAsync` method is mocked to return a well-known instance ID.
+Pak je `StartNewAsync` metoda napodobná, aby vracela ID dobře známé instance.
 
 ```csharp
     // Mock StartNewAsync method
@@ -70,7 +70,7 @@ Then `StartNewAsync` method is mocked to return a well-known instance ID.
         ReturnsAsync(instanceId);
 ```
 
-Next `CreateCheckStatusResponse` is mocked to always return an empty HTTP 200 response.
+Další `CreateCheckStatusResponse` je napodobná, aby vždycky vracela prázdnou odpověď HTTP 200.
 
 ```csharp
     // Mock CreateCheckStatusResponse method
@@ -87,14 +87,14 @@ Next `CreateCheckStatusResponse` is mocked to always return an empty HTTP 200 re
         });
 ```
 
-`ILogger` is also mocked:
+`ILogger` je také napodobná:
 
 ```csharp
     // Mock ILogger
     var loggerMock = new Mock<ILogger>();
 ```  
 
-Now the `Run` method is called from the unit test:
+Nyní je metoda `Run` volána z testu jednotky:
 
 ```csharp
     // Call Orchestration trigger function
@@ -109,7 +109,7 @@ Now the `Run` method is called from the unit test:
         loggerMock.Object);
  ```
 
- The last step is to compare the output with the expected value:
+ Posledním krokem je porovnat výstup s očekávanou hodnotou:
 
 ```csharp
     // Validate that output is not null
@@ -119,25 +119,25 @@ Now the `Run` method is called from the unit test:
     Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
 ```
 
-After combining all steps, the unit test will have the following code:
+Po zkombinování všech kroků bude test jednotky obsahovat následující kód:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HttpStartTests.cs)]
 
-## <a name="unit-testing-orchestrator-functions"></a>Unit testing orchestrator functions
+## <a name="unit-testing-orchestrator-functions"></a>Funkce nástroje Orchestrator pro testování částí
 
-Orchestrator functions are even more interesting for unit testing since they usually have a lot more business logic.
+Funkce nástroje Orchestrator jsou ještě zajímavější pro testování částí, protože obvykle mají mnohem více obchodních logik.
 
-In this section the unit tests will validate the output of the `E1_HelloSequence` Orchestrator function:
+V této části testy jednotek ověřují výstup `E1_HelloSequence` funkce Orchestrator:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-The unit test code will start with creating a mock:
+Kód testu jednotek začíná vytvořením tohoto typu:
 
 ```csharp
     var durableOrchestrationContextMock = new Mock<DurableOrchestrationContextBase>();
 ```
 
-Then the activity method calls will be mocked:
+Pak budou nacházet volání metody aktivity:
 
 ```csharp
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
@@ -145,13 +145,13 @@ Then the activity method calls will be mocked:
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
-Next the unit test will call `HelloSequence.Run` method:
+V dalším testu jednotky bude volána metoda `HelloSequence.Run`:
 
 ```csharp
     var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
 ```
 
-And finally the output will be validated:
+A nakonec se ověří výstup:
 
 ```csharp
     Assert.Equal(3, result.Count);
@@ -160,25 +160,25 @@ And finally the output will be validated:
     Assert.Equal("Hello London!", result[2]);
 ```
 
-After combining all steps, the unit test will have the following code:
+Po zkombinování všech kroků bude test jednotky obsahovat následující kód:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceOrchestratorTests.cs)]
 
-## <a name="unit-testing-activity-functions"></a>Unit testing activity functions
+## <a name="unit-testing-activity-functions"></a>Funkce aktivity testování částí
 
-Activity functions can be unit tested in the same way as non-durable functions.
+Funkce aktivity mohou být testovány jednotky stejným způsobem jako netrvanlivé funkce.
 
-In this section the unit test will validate the behavior of the `E1_SayHello` Activity function:
+V této části test jednotek ověří chování funkce `E1_SayHello` aktivity:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-And the unit tests will verify the format of the output. The unit tests can use the parameter types directly or mock `DurableActivityContextBase` class:
+A testy jednotek budou ověřovat formát výstupu. Testy jednotek mohou používat typy parametrů přímo nebo maketa `DurableActivityContextBase` třídy:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Learn more about xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
+> [Další informace o xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
 > 
-> [Learn more about moq](https://github.com/Moq/moq4/wiki/Quickstart)
+> [Další informace o MOQ](https://github.com/Moq/moq4/wiki/Quickstart)

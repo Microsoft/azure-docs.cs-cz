@@ -117,13 +117,13 @@ K ochraně vašich prostředků v klidovém stavu, prostředky by se měla šifr
 
 |Možnost šifrování|Popis|Media Services v2|Media Services v3|
 |---|---|---|---|
-|Šifrování úložiště služby Media Services|Šifrování AES-256, klíč spravovaný pomocí Media Services.|Podporované<sup>(1)</sup>|Nepodporuje<sup>(2)</sup>|
-|[Šifrování služby Storage pro neaktivní uložená Data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporuje se|Podporuje se|
-|[Šifrování na straně klienta úložiště](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Šifrování na straně klienta, které nabízí služba Azure Storage, klíč spravovaný zákazníkem v Key Vault.|Nepodporováno|Nepodporováno|
+|Šifrování úložiště služby Media Services|Šifrování AES-256, klíč spravovaný pomocí Media Services.|Podporováno<sup>(1)</sup>|Nepodporováno<sup>(2)</sup>|
+|[Šifrování služby Storage pro neaktivní neaktivní data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporováno|Podporováno|
+|[Šifrování na straně klienta úložiště](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Šifrování na straně klienta, které nabízí služba Azure Storage, klíč spravovaný zákazníkem v Key Vault.|Nepodporuje se|Nepodporuje se|
 
 <sup>1</sup> když Media Services podporuje zpracování obsahu v nešifrované/bez jakékoli formy šifrování, nedoporučuje se to.
 
-<sup>2</sup> v Media Services v3 šifrování úložiště (šifrování AES-256) je pouze podporována pro zpětné kompatibility při vaše prostředky se vytvořily pomocí Media Services v2. To znamená, že V3 funguje se stávajícími šifrovanými prostředky úložiště, ale neumožňuje vytváření nových.
+<sup>2</sup> v Media Services V3 se šifrování úložiště (šifrování AES-256) podporuje jenom pro zpětnou kompatibilitu, když se vaše prostředky vytvořily pomocí Media Services V2. To znamená, že V3 funguje se stávajícími šifrovanými prostředky úložiště, ale neumožňuje vytváření nových.
 
 ## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
 

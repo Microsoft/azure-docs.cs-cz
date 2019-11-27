@@ -125,9 +125,9 @@ Pomocí informací v následující tabulce můžete nakonfigurovat jiný virtu�
 
 |Nastavení  |Hodnota  |
 |---------|---------|
-|Podsíť|**Workload-SN**|
-|Veřejná IP adresa|**Žádné**|
-|Veřejné příchozí porty|**Žádné**|
+|Subnet|**Zatížení – SN**|
+|Veřejná IP adresa|**NTato**|
+|Veřejné příchozí porty|**NTato**|
 
 ## <a name="deploy-the-firewall"></a>Nasazení brány firewall
 
@@ -142,7 +142,7 @@ Nasaďte do virtuální sítě bránu firewall.
    |---------|---------|
    |Předplatné     |\<Vaše předplatné\>|
    |Skupina prostředků     |**Test-FW-RG** |
-   |Název     |**Test-FW01**|
+   |Název     |**Test – FW01**|
    |Umístění     |Vyberte dříve použité umístění.|
    |Volba virtuální sítě     |**Použít existující**: **test-FW-vn**|
    |Veřejná IP adresa     |**Vytvořte novou**. Veřejná IP adresa musí být typu Standardní SKU.|
@@ -241,7 +241,7 @@ Nyní otestujte bránu firewall a potvrďte, že funguje podle očekávání.
 
    Měla by se zobrazit Domovská stránka Google.
 
-5. Přejděte do https://www.microsoft.com.
+5. Přejděte na https://www.microsoft.com.
 
    Brána firewall by vás měla zablokovat.
 

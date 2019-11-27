@@ -1,7 +1,7 @@
 ---
-title: 'Regression tutorial: Automated ML'
+title: 'Kurz regrese: automatizované ML'
 titleSuffix: Azure Machine Learning
-description: In this tutorial, you learn how to generate a machine learning model by using automated machine learning. Azure Machine Learning can perform data preprocessing, algorithm selection, and hyperparameter selection in an automated way for you.
+description: V tomto kurzu se naučíte generovat model strojového učení pomocí automatizovaného strojového učení. Azure Machine Learning může při automatizovaném způsobu provádět předběžné zpracování dat, výběr algoritmu a výběr parametrů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,32 +17,32 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483554"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Tutorial: Use automated machine learning to predict taxi fares
+# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Kurz: Použití automatizovaného strojového učení k předvídání taxislužby tarifů
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In this tutorial, you use automated machine learning in Azure Machine Learning to create a regression model to predict NYC taxi fare prices. This process accepts training data and configuration settings, and automatically iterates through combinations of different feature normalization/standardization methods, models, and hyperparameter settings to arrive at the best model.
+V tomto kurzu pomocí automatizovaného strojového učení v Azure Machine Learning vytvoříte regresní model, který předpovídá ceny NYC taxislužby jízdné. Tento proces přijímá školicí data a nastavení konfigurace a automaticky iterovat kombinace různých metod normalizace/normalizace funkcí, modelů a nastavení parametrů pro dosažení nejlepšího modelu.
 
-![Flow diagram](./media/tutorial-auto-train-models/flow2.png)
+![Diagram toku](./media/tutorial-auto-train-models/flow2.png)
 
-In this tutorial you learn the following tasks:
+V tomto kurzu se seznámíte s následujícími úlohami:
 
 > [!div class="checklist"]
-> * Download, transform, and clean data using Azure Open Datasets
-> * Train an automated machine learning regression model
-> * Calculate model accuracy
+> * Stažení, transformace a vyčištění dat pomocí otevřených datových sad Azure
+> * Výuka automatizovaného modelu Machine Learning
+> * Vypočítat přesnost modelu
 
-If you don’t have an Azure subscription, create a free account before you begin. Try the [free or paid version](https://aka.ms/AMLFree) of Azure Machine Learning today.
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze](https://aka.ms/AMLFree) Azure Machine Learning dnes
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Complete the [setup tutorial](tutorial-1st-experiment-sdk-setup.md) if you don't already have an Azure Machine Learning workspace or notebook virtual machine.
-* After you complete the setup tutorial, open the **tutorials/regression-automated-ml.ipynb** notebook using the same notebook server.
+* Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, dokončete [kurz instalace](tutorial-1st-experiment-sdk-setup.md) .
+* Po dokončení kurzu instalace otevřete Poznámkový blok **kurzy/Regression-Automated-ml. ipynb** pomocí stejného serveru poznámkového bloku.
 
-This tutorial is also available on [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) if you wish to run it in your own [local environment](how-to-configure-environment.md#local). Run `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` to get the required packages.
+Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , pokud ho chcete spustit ve vašem vlastním [místním prostředí](how-to-configure-environment.md#local). Požadované balíčky získáte spuštěním `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets`.
 
-## <a name="download-and-prepare-data"></a>Download and prepare data
+## <a name="download-and-prepare-data"></a>Stažení a Příprava dat
 
-Import the necessary packages. The Open Datasets package contains a class representing each data source (`NycTlcGreen` for example) to easily filter date parameters before downloading.
+Importujte potřebné balíčky. Balíček Open DataSets obsahuje třídu reprezentující jednotlivé zdroje dat (`NycTlcGreen` například), aby bylo možné před stažením snadno filtrovat parametry data.
 
 ```python
 from azureml.opendatasets import NycTlcGreen
@@ -51,9 +51,9 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 ```
 
-Begin by creating a dataframe to hold the taxi data. When working in a non-Spark environment, Open Datasets only allows downloading one month of data at a time with certain classes to avoid `MemoryError` with large datasets.
+Začněte tím, že vytvoříte datový rámec, který bude uchovávat data taxislužby. Při práci v prostředí, které není Spark, mohou otevřené datové sady stahovat pouze jeden měsíc dat s určitými třídami, aby se předešlo `MemoryError` s velkými datovými sadami.
 
-To download taxi data, iteratively fetch one month at a time, and before appending it to `green_taxi_df` randomly sample 2,000 records from each month to avoid bloating the dataframe. Then preview the data.
+Aby bylo možné stahovat data taxislužby, iterativním načítání po jednom měsíci a před jejich připojením k `green_taxi_df` náhodně vzorkovat 2 000 záznamů z každého měsíce, aby se zabránilo bloatingí datového rámce. Pak zobrazte náhled dat.
 
 
 ```python
@@ -70,7 +70,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+<style scoped>. dataframe tbody TR tr: pouze-typu {vertikální zarovnání: prostřední;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -94,7 +94,7 @@ green_taxi_df.head(10)
       <th>pickupLongitude</th>
       <th>pickupLatitude</th>
       <th>dropoffLongitude</th>
-      <th>Tlačítka ...</th>
+      <th>...</th>
       <th>paymentType</th>
       <th>fareAmount</th>
       <th>extra</th>
@@ -114,22 +114,22 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:34:44</td>
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
-      <td>4.84</td>
+      <td>4,84</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.88</td>
-      <td>40.84</td>
-      <td>-73.94</td>
-      <td>Tlačítka ...</td>
+      <td>-73,88</td>
+      <td>40,84</td>
+      <td>-73,94</td>
+      <td>...</td>
       <td>2</td>
-      <td>15.00</td>
+      <td>15,00</td>
       <td>0.50</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>16.30</td>
+      <td>pak</td>
+      <td>16,30</td>
       <td>1.00</td>
     </tr>
     <tr>
@@ -137,23 +137,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0.69</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.96</td>
-      <td>40.81</td>
-      <td>-73.96</td>
-      <td>Tlačítka ...</td>
+      <td>-73,96</td>
+      <td>40,81</td>
+      <td>-73,96</td>
+      <td>...</td>
       <td>2</td>
       <td>4.50</td>
       <td>1.00</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
+      <td>pak</td>
+      <td>6,30</td>
       <td>1.00</td>
     </tr>
     <tr>
@@ -161,23 +161,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-01 05:58:10</td>
       <td>2015-01-01 06:00:55</td>
-      <td>1\. místo</td>
-      <td>0.45</td>
+      <td>1</td>
+      <td>0,45</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.91</td>
-      <td>Tlačítka ...</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,91</td>
+      <td>...</td>
       <td>2</td>
-      <td>4.00</td>
+      <td>4,00</td>
       <td>0.00</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>4.80</td>
+      <td>pak</td>
+      <td>4,80</td>
       <td>1.00</td>
     </tr>
     <tr>
@@ -185,119 +185,119 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0.00</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.81</td>
-      <td>40.70</td>
-      <td>-73.82</td>
-      <td>Tlačítka ...</td>
+      <td>-73,81</td>
+      <td>40,70</td>
+      <td>-73,82</td>
+      <td>...</td>
       <td>2</td>
-      <td>12.50</td>
+      <td>12,50</td>
       <td>0.50</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
+      <td>pak</td>
+      <td>13,80</td>
       <td>1.00</td>
     </tr>
     <tr>
       <th>1269627</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0.50</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.92</td>
-      <td>Tlačítka ...</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,92</td>
+      <td>...</td>
       <td>2</td>
-      <td>4.00</td>
+      <td>4,00</td>
       <td>0.50</td>
       <td>0.50</td>
       <td>0</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
+      <td>pak</td>
       <td>5.00</td>
       <td>1.00</td>
     </tr>
     <tr>
       <th>811755</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-04 19:57:51</td>
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
-      <td>1.10</td>
+      <td>1,10</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.95</td>
-      <td>Tlačítka ...</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,95</td>
+      <td>...</td>
       <td>2</td>
-      <td>6.50</td>
+      <td>6,50</td>
       <td>0.50</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>7.80</td>
+      <td>pak</td>
+      <td>7,80</td>
       <td>1.00</td>
     </tr>
     <tr>
       <th>737281</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-03 12:27:31</td>
       <td>2015-01-03 12:33:52</td>
-      <td>1\. místo</td>
-      <td>0.90</td>
+      <td>1</td>
+      <td>0,90</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.88</td>
-      <td>40.76</td>
-      <td>-73.87</td>
-      <td>Tlačítka ...</td>
+      <td>-73,88</td>
+      <td>40,76</td>
+      <td>-73,87</td>
+      <td>...</td>
       <td>2</td>
-      <td>6,00</td>
+      <td>6.00</td>
       <td>0.00</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.80</td>
+      <td>pak</td>
+      <td>6,80</td>
       <td>1.00</td>
     </tr>
     <tr>
       <th>113951</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-09 23:25:51</td>
       <td>2015-01-09 23:39:52</td>
-      <td>1\. místo</td>
-      <td>3.30</td>
+      <td>1</td>
+      <td>3,30</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.91</td>
-      <td>Tlačítka ...</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,91</td>
+      <td>...</td>
       <td>2</td>
-      <td>12.50</td>
+      <td>12,50</td>
       <td>0.50</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
+      <td>pak</td>
+      <td>13,80</td>
       <td>1.00</td>
     </tr>
     <tr>
@@ -305,23 +305,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-11 17:15:14</td>
       <td>2015-01-11 17:22:57</td>
-      <td>1\. místo</td>
-      <td>1.19</td>
+      <td>1</td>
+      <td>1,19</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.95</td>
-      <td>Tlačítka ...</td>
-      <td>1\. místo</td>
-      <td>7.00</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,95</td>
+      <td>...</td>
+      <td>1</td>
+      <td>7,00</td>
       <td>0.00</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>1,75</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>9.55</td>
+      <td>pak</td>
+      <td>9,55</td>
       <td>1.00</td>
     </tr>
     <tr>
@@ -329,32 +329,32 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-22 23:16:33</td>
       <td>2015-01-22 23:20:13</td>
-      <td>1\. místo</td>
-      <td>0.65</td>
+      <td>1</td>
+      <td>0,65</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.94</td>
-      <td>Tlačítka ...</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,94</td>
+      <td>...</td>
       <td>2</td>
       <td>5.00</td>
       <td>0.50</td>
       <td>0.50</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
+      <td>pak</td>
+      <td>6,30</td>
       <td>1.00</td>
     </tr>
   </tbody>
 </table>
-<p>10 rows × 23 columns</p>
+<p>10 řádků × 23 sloupců</p>
 </div>
 
 
-Now that the initial data is loaded, define a function to create various time-based features from the pickup datetime field. This will create new fields for the month number, day of month, day of week, and hour of day, and will allow the model to factor in time-based seasonality. Use the `apply()` function on the dataframe to iteratively apply the `build_time_features()` function to each row in the taxi data.
+Po načtení počátečních dat definujte funkci pro vytvoření různých funkcí založených na čase z pole Datum vyzvednutí. Tím se vytvoří nová pole pro číslo měsíce, den v měsíci, den v týdnu a hodina dne a v modelu bude umožněno, aby model platil jako sezónnost založený na čase. Použijte funkci `apply()` v dataframe pro iterativní použití funkce `build_time_features()` na každý řádek taxislužby dat.
 
 ```python
 def build_time_features(vector):
@@ -371,7 +371,7 @@ green_taxi_df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+<style scoped>. dataframe tbody TR tr: pouze-typu {vertikální zarovnání: prostřední;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -395,7 +395,7 @@ green_taxi_df.head(10)
       <th>pickupLongitude</th>
       <th>pickupLatitude</th>
       <th>dropoffLongitude</th>
-      <th>Tlačítka ...</th>
+      <th>...</th>
       <th>improvementSurcharge</th>
       <th>tipAmount</th>
       <th>tollsAmount</th>
@@ -415,20 +415,20 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:34:44</td>
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
-      <td>4.84</td>
+      <td>4,84</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.88</td>
-      <td>40.84</td>
-      <td>-73.94</td>
-      <td>Tlačítka ...</td>
-      <td>0.3</td>
+      <td>-73,88</td>
+      <td>40,84</td>
+      <td>-73,94</td>
+      <td>...</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>16.30</td>
+      <td>pak</td>
+      <td>16,30</td>
       <td>1.00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>11</td>
       <td>6</td>
       <td>5</td>
@@ -438,23 +438,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0.69</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.96</td>
-      <td>40.81</td>
-      <td>-73.96</td>
-      <td>Tlačítka ...</td>
-      <td>0.3</td>
+      <td>-73,96</td>
+      <td>40,81</td>
+      <td>-73,96</td>
+      <td>...</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
+      <td>pak</td>
+      <td>6,30</td>
       <td>1.00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>20</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>16</td>
     </tr>
     <tr>
@@ -462,22 +462,22 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-01 05:58:10</td>
       <td>2015-01-01 06:00:55</td>
-      <td>1\. místo</td>
-      <td>0.45</td>
+      <td>1</td>
+      <td>0,45</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.91</td>
-      <td>Tlačítka ...</td>
-      <td>0.3</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,91</td>
+      <td>...</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>4.80</td>
+      <td>pak</td>
+      <td>4,80</td>
       <td>1.00</td>
-      <td>1\. místo</td>
-      <td>1\. místo</td>
+      <td>1</td>
+      <td>1</td>
       <td>3</td>
       <td>5</td>
     </tr>
@@ -486,117 +486,117 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0.00</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.81</td>
-      <td>40.70</td>
-      <td>-73.82</td>
-      <td>Tlačítka ...</td>
-      <td>0.3</td>
+      <td>-73,81</td>
+      <td>40,70</td>
+      <td>-73,82</td>
+      <td>...</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
+      <td>pak</td>
+      <td>13,80</td>
       <td>1.00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>17</td>
       <td>5</td>
       <td>2</td>
     </tr>
     <tr>
       <th>1269627</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0.50</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.92</td>
-      <td>40.76</td>
-      <td>-73.92</td>
-      <td>Tlačítka ...</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,92</td>
+      <td>...</td>
       <td>0</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
+      <td>pak</td>
       <td>5.00</td>
       <td>1.00</td>
-      <td>1\. místo</td>
-      <td>1\. místo</td>
+      <td>1</td>
+      <td>1</td>
       <td>3</td>
       <td>5</td>
     </tr>
     <tr>
       <th>811755</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-04 19:57:51</td>
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
-      <td>1.10</td>
+      <td>1,10</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.95</td>
-      <td>Tlačítka ...</td>
-      <td>0.3</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,95</td>
+      <td>...</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>7.80</td>
+      <td>pak</td>
+      <td>7,80</td>
       <td>1.00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>4</td>
       <td>6</td>
       <td>19</td>
     </tr>
     <tr>
       <th>737281</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-03 12:27:31</td>
       <td>2015-01-03 12:33:52</td>
-      <td>1\. místo</td>
-      <td>0.90</td>
+      <td>1</td>
+      <td>0,90</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.88</td>
-      <td>40.76</td>
-      <td>-73.87</td>
-      <td>Tlačítka ...</td>
-      <td>0.3</td>
+      <td>-73,88</td>
+      <td>40,76</td>
+      <td>-73,87</td>
+      <td>...</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.80</td>
+      <td>pak</td>
+      <td>6,80</td>
       <td>1.00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>3</td>
       <td>5</td>
       <td>12</td>
     </tr>
     <tr>
       <th>113951</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-09 23:25:51</td>
       <td>2015-01-09 23:39:52</td>
-      <td>1\. místo</td>
-      <td>3.30</td>
+      <td>1</td>
+      <td>3,30</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.96</td>
-      <td>40.72</td>
-      <td>-73.91</td>
-      <td>Tlačítka ...</td>
-      <td>0.3</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,91</td>
+      <td>...</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>13.80</td>
+      <td>pak</td>
+      <td>13,80</td>
       <td>1.00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>9</td>
       <td>4</td>
       <td>23</td>
@@ -606,21 +606,21 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-11 17:15:14</td>
       <td>2015-01-11 17:22:57</td>
-      <td>1\. místo</td>
-      <td>1.19</td>
+      <td>1</td>
+      <td>1,19</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.95</td>
-      <td>Tlačítka ...</td>
-      <td>0.3</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,95</td>
+      <td>...</td>
+      <td>0,3</td>
       <td>1,75</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>9.55</td>
+      <td>pak</td>
+      <td>9,55</td>
       <td>1.00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>11</td>
       <td>6</td>
       <td>17</td>
@@ -630,31 +630,31 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-22 23:16:33</td>
       <td>2015-01-22 23:20:13</td>
-      <td>1\. místo</td>
-      <td>0.65</td>
+      <td>1</td>
+      <td>0,65</td>
       <td>Žádné</td>
       <td>Žádné</td>
-      <td>-73.94</td>
-      <td>40.71</td>
-      <td>-73.94</td>
-      <td>Tlačítka ...</td>
-      <td>0.3</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,94</td>
+      <td>...</td>
+      <td>0,3</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>nan</td>
-      <td>6.30</td>
+      <td>pak</td>
+      <td>6,30</td>
       <td>1.00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>22</td>
       <td>3</td>
       <td>23</td>
     </tr>
   </tbody>
 </table>
-<p>10 rows × 27 columns</p>
+<p>10 řádků × 27 sloupců</p>
 </div>
 
-Remove some of the columns that you won't need for training or additional feature building.
+Odeberte některé sloupce, které nebudete potřebovat pro školení, nebo pro vytváření dalších funkcí.
 
 ```python
 columns_to_remove = ["lpepPickupDatetime", "lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
@@ -667,16 +667,16 @@ for col in columns_to_remove:
 green_taxi_df.head(5)
 ```
 
-### <a name="cleanse-data"></a>Cleanse data
+### <a name="cleanse-data"></a>Vyčistit data
 
-Run the `describe()` function on the new dataframe to see summary statistics for each field.
+Spuštěním funkce `describe()` na novém dataframe zobrazíte souhrnnou statistiku pro každé pole.
 
 ```python
 green_taxi_df.describe()
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+<style scoped>. dataframe tbody TR tr: pouze-typu {vertikální zarovnání: prostřední;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -707,136 +707,136 @@ green_taxi_df.describe()
   <tbody>
     <tr>
       <th>count</th>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
-      <td>48000.00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
     </tr>
     <tr>
-      <th>mean</th>
-      <td>1.78</td>
-      <td>1.37</td>
-      <td>2.87</td>
-      <td>-73.83</td>
-      <td>40.69</td>
-      <td>-73.84</td>
-      <td>40.70</td>
-      <td>14.75</td>
-      <td>6.50</td>
-      <td>15.13</td>
-      <td>3.27</td>
-      <td>13.52</td>
+      <th>střední hodnotu</th>
+      <td>1,78</td>
+      <td>1,37</td>
+      <td>2,87</td>
+      <td>-73,83</td>
+      <td>40,69</td>
+      <td>-73,84</td>
+      <td>40,70</td>
+      <td>14,75</td>
+      <td>6,50</td>
+      <td>15,13</td>
+      <td>3,27</td>
+      <td>13,52</td>
     </tr>
     <tr>
-      <th>std</th>
+      <th>STD</th>
       <td>0.41</td>
-      <td>1.04</td>
-      <td>2.93</td>
-      <td>2.76</td>
-      <td>1.52</td>
+      <td>1,04</td>
+      <td>2,93</td>
+      <td>2,76</td>
+      <td>1,52</td>
       <td>2.61</td>
-      <td>1.44</td>
-      <td>12.08</td>
+      <td>1,44</td>
+      <td>12,08</td>
       <td>3.45</td>
-      <td>8.45</td>
-      <td>1.95</td>
-      <td>6.83</td>
+      <td>8,45</td>
+      <td>1,95</td>
+      <td>6,83</td>
     </tr>
     <tr>
       <th>min</th>
       <td>1.00</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>-74.66</td>
+      <td>-74,66</td>
       <td>0.00</td>
-      <td>-74.66</td>
+      <td>-74,66</td>
       <td>0.00</td>
-      <td>-300.00</td>
+      <td>-300,00</td>
       <td>1.00</td>
       <td>1.00</td>
       <td>0.00</td>
       <td>0.00</td>
     </tr>
     <tr>
-      <th>25 %</th>
+      <th>25%</th>
       <td>2.00</td>
       <td>1.00</td>
-      <td>1.06</td>
-      <td>-73.96</td>
-      <td>40.70</td>
-      <td>-73.97</td>
-      <td>40.70</td>
-      <td>7.80</td>
+      <td>1,06</td>
+      <td>-73,96</td>
+      <td>40,70</td>
+      <td>-73,97</td>
+      <td>40,70</td>
+      <td>7,80</td>
       <td>3.75</td>
       <td>8,00</td>
       <td>2.00</td>
-      <td>9.00</td>
+      <td>9,00</td>
     </tr>
     <tr>
-      <th>50 %</th>
+      <th>50%</th>
       <td>2.00</td>
       <td>1.00</td>
-      <td>1.90</td>
-      <td>-73.94</td>
-      <td>40.75</td>
-      <td>-73.94</td>
-      <td>40.75</td>
-      <td>11.30</td>
-      <td>6.50</td>
-      <td>15.00</td>
+      <td>1,90</td>
+      <td>-73,94</td>
+      <td>40,75</td>
+      <td>-73,94</td>
+      <td>40,75</td>
+      <td>11,30</td>
+      <td>6,50</td>
+      <td>15,00</td>
       <td>3.00</td>
-      <td>15.00</td>
+      <td>15,00</td>
     </tr>
     <tr>
       <th>75%</th>
       <td>2.00</td>
       <td>1.00</td>
-      <td>3.60</td>
-      <td>-73.92</td>
-      <td>40.80</td>
-      <td>-73.91</td>
-      <td>40.79</td>
-      <td>17.80</td>
-      <td>9.25</td>
-      <td>22.00</td>
+      <td>3,60</td>
+      <td>-73,92</td>
+      <td>40,80</td>
+      <td>-73,91</td>
+      <td>40,79</td>
+      <td>17,80</td>
+      <td>9,25</td>
+      <td>22,00</td>
       <td>5.00</td>
-      <td>19.00</td>
+      <td>19,00</td>
     </tr>
     <tr>
-      <th>max</th>
+      <th>Počet</th>
       <td>2.00</td>
-      <td>9.00</td>
-      <td>97.57</td>
+      <td>9,00</td>
+      <td>97,57</td>
       <td>0.00</td>
-      <td>41.93</td>
+      <td>41,93</td>
       <td>0.00</td>
-      <td>41.94</td>
-      <td>450.00</td>
-      <td>12.00</td>
-      <td>30.00</td>
-      <td>6,00</td>
-      <td>23.00</td>
+      <td>41,94</td>
+      <td>450,00</td>
+      <td>12,00</td>
+      <td>30,00</td>
+      <td>6.00</td>
+      <td>23,00</td>
     </tr>
   </tbody>
 </table>
 </div>
 
 
-From the summary statistics, you see that there are several fields that have outliers or values that will reduce model accuracy. First filter the lat/long fields to be within the bounds of the Manhattan area. This will filter out longer taxi trips or trips that are outliers in respect to their relationship with other features.
+V souhrnných statistikách vidíte, že existuje několik polí, která mají mimo jiné pole nebo hodnoty, které budou snižovat přesnost modelu. Nejdříve vyfiltrujte pole lat/Long tak, aby byla v mezích oblasti Manhattan. Tím se vyfiltruje déle taxislužby cest nebo cest, které jsou ve vztahu k ostatním funkcím.
 
-Additionally filter the `tripDistance` field to be greater than zero but less than 31 miles (the haversine distance between the two lat/long pairs). This eliminates long outlier trips that have inconsistent trip cost.
+Kromě toho `tripDistance` pole vyfiltrujte tak, aby bylo větší než nula, ale menší než 31 mil. (vzdálenost Haversine mezi dvěma páry lat/Long). Tím se eliminují dlouhé izolované cesty, které mají nekonzistentní náklady na služební cestu.
 
-Lastly, the `totalAmount` field has negative values for the taxi fares, which don't make sense in the context of our model, and the `passengerCount` field has bad data with the minimum values being zero.
+Nakonec má pole `totalAmount` záporné hodnoty pro taxislužby tarify, které nedávají smysl v kontextu našeho modelu a `passengerCount` pole obsahuje chybná data s minimálními hodnotami nula.
 
-Filter out these anomalies using query functions, and then remove the last few columns unnecessary for training.
+Vyfiltrujte tyto anomálie pomocí funkcí dotazů a pak odeberte poslední sloupce, které nejsou potřebné pro školení.
 
 
 ```python
@@ -850,7 +850,7 @@ for col in columns_to_remove_for_training:
     final_df.pop(col)
 ```
 
-Call `describe()` again on the data to ensure cleansing worked as expected. You now have a prepared and cleansed set of taxi, holiday, and weather data to use for machine learning model training.
+Znovu zavolejte `describe()` pro data, abyste zajistili, že čištění bude pracovat podle očekávání. Teď máte připravenou a vyčištěnou sadu dat taxislužby, svátků a počasí, která se použijí pro školení modelů ve strojovém učení.
 
 ```python
 final_df.describe()
@@ -858,18 +858,18 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Konfigurace pracovního prostoru
 
-Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. A [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is a class that accepts your Azure subscription and resource information. It also creates a cloud resource to monitor and track your model runs. `Workspace.from_config()` reads the file **config.json** and loads the authentication details into an object named `ws`. `ws` se používá ve zbývající části kódu v tomto kurzu.
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. [Pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) je třída, která přijímá vaše předplatné a informace o prostředcích Azure. Vytvoří také cloudový prostředek pro monitorování a sledování spuštění modelu. `Workspace.from_config()` přečte soubor **config. JSON** a načte podrobnosti ověřování do objektu s názvem `ws`. `ws` se používá ve zbývající části kódu v tomto kurzu.
 
 ```python
 from azureml.core.workspace import Workspace
 ws = Workspace.from_config()
 ```
 
-## <a name="split-the-data-into-train-and-test-sets"></a>Split the data into train and test sets
+## <a name="split-the-data-into-train-and-test-sets"></a>Rozdělení dat do vlakových a testovacích sad
 
-Split the data into training and test sets by using the `train_test_split` function in the `scikit-learn` library. This function segregates the data into the x (**features**) data set for model training and the y (**values to predict**) data set for testing.
+Data rozdělte do školicích a testovacích sad pomocí funkce `train_test_split` v knihovně `scikit-learn`. Tato funkce oddělí data do sady dat x (**Features**) pro školení modelů a datovou sadu y (**hodnoty pro předpověď**) pro testování.
 
-The `test_size` parameter determines the percentage of data to allocate to testing. The `random_state` parameter sets a seed to the random generator, so that your train-test splits are deterministic.
+Parametr `test_size` Určuje procentuální hodnotu dat, která se mají přidělit pro testování. Parametr `random_state` nastaví počáteční generátor náhodných hodnot tak, aby vaše výukové testy byly deterministické.
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -880,29 +880,29 @@ x_df = final_df
 x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=223)
 ```
 
-The purpose of this step is to have data points to test the finished model that haven't been used to train the model, in order to measure true accuracy.
+Účelem tohoto kroku je, aby bylo možné otestovat dokončený model, který se nepoužil k analýze modelu, aby se měřila skutečná přesnost.
 
-In other words, a well-trained model should be able to accurately make predictions from data it hasn't already seen. You now have data prepared for auto-training a machine learning model.
+Jinými slovy, dobře vycvičený model by měl být schopný přesně předpovědi data z dat, která ještě nikdo neviděl. Teď máte připravená data pro automatické školení modelu strojového učení.
 
-## <a name="automatically-train-a-model"></a>Automatically train a model
+## <a name="automatically-train-a-model"></a>Automaticky trénování modelu
 
-To automatically train a model, take the following steps:
-1. Define settings for the experiment run. Attach your training data to the configuration, and modify settings that control the training process.
-1. Submit the experiment for model tuning. After submitting the experiment, the process iterates through different machine learning algorithms and hyperparameter settings, adhering to your defined constraints. It chooses the best-fit model by optimizing an accuracy metric.
+K automatickému učení modelu proveďte následující kroky:
+1. Definujte nastavení pro spuštění experimentu. Připojte školicí data ke konfiguraci a upravte nastavení, které řídí proces školení.
+1. Odešlete experiment pro vyladění modelu. Po odeslání experimentu se proces prochází pomocí různých algoritmů strojového učení a nastavení vlastních parametrů, které dodržuje vaše definovaná omezení. Vybírá model nejlépe vyhovující optimalizacim metriky přesnosti.
 
-### <a name="define-training-settings"></a>Define training settings
+### <a name="define-training-settings"></a>Definování nastavení školení
 
-Define the experiment parameter and model settings for training. View the full list of [settings](how-to-configure-auto-train.md). Submitting the experiment with these default settings will take approximately 5-20 min, but if you want a shorter run time, reduce the `experiment_timeout_minutes` parameter.
+Definujte parametr experimentu a nastavení modelu pro školení. Zobrazí úplný seznam [Nastavení](how-to-configure-auto-train.md). Odeslání experimentu s těmito výchozími nastaveními bude trvat přibližně 5-20 min, ale pokud chcete zkrátit dobu běhu, snižte parametr `experiment_timeout_minutes`.
 
 |Vlastnost| Hodnota v tomto kurzu |Popis|
 |----|----|---|
-|**iteration_timeout_minutes**|2|Time limit in minutes for each iteration. Reduce this value to decrease total runtime.|
-|**experiment_timeout_minutes**|20|Maximum amount of time in minutes that all iterations combined can take before the experiment terminates.|
-|**enable_early_stopping**|Pravda|Flag to enble early termination if the score is not improving in the short term.|
-|**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat The best-fit model will be chosen based on this metric.|
-|**featurization**| auto | By using **auto**, the experiment can preprocess the input data (handling missing data, converting text to numeric, etc.)|
-|**verbosity**| logging.INFO | Controls the level of logging.|
-|**n_cross_validations**|5|Number of cross-validation splits to perform when validation data is not specified.|
+|**iteration_timeout_minutes**|2|Časový limit pro každou iteraci v minutách Snižte tuto hodnotu pro snížení celkové doby běhu.|
+|**experiment_timeout_minutes**|20|Maximální doba v minutách, po kterou můžou všechny iterace v kombinaci trvat, než se experiment ukončí.|
+|**enable_early_stopping**|True|Příznak pro enble předčasné ukončení, pokud se skóre nezlepšuje v krátkém období.|
+|**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat Model nejlépe přizpůsoben se vybere na základě této metriky.|
+|**featurization**| automaticky | Pomocí **auto**může experiment předzpracovat vstupní data (zpracování chybějících dat, převod textu na číslo atd.).|
+|**podrobností**| logging.INFO | Určuje úroveň protokolování.|
+|**n_cross_validations**|5|Počet rozdělení křížového ověření, které se mají provést, pokud nejsou zadaná ověřovací data.|
 
 ```python
 import logging
@@ -918,7 +918,7 @@ automl_settings = {
 }
 ```
 
-Use your defined training settings as a `**kwargs` parameter to an `AutoMLConfig` object. Additionally, specify your training data and the type of model, which is `regression` in this case.
+Použijte vaše definovaná nastavení školení jako `**kwargs` parametr objektu `AutoMLConfig`. Dále určete vaše školicí údaje a typ modelu, který je v tomto případě `regression`.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -931,13 +931,13 @@ automl_config = AutoMLConfig(task='regression',
 ```
 
 > [!NOTE]
-> Automated machine learning pre-processing steps (feature normalization, handling missing data, converting text to numeric, etc.) become part of the underlying model. When using the model for predictions, the same pre-processing steps applied during training are applied to your input data automatically.
+> Automatické kroky před zpracováním strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky před zpracováním během školení.
 
-### <a name="train-the-automatic-regression-model"></a>Train the automatic regression model
+### <a name="train-the-automatic-regression-model"></a>Trénování automatické regresní model
 
-Create an experiment object in your workspace. An experiment acts as a container for your individual runs. Pass the defined `automl_config` object to the experiment, and set the output to `True` to view progress during the run.
+Vytvořte v pracovním prostoru objekt experiment. Experiment funguje jako kontejner pro vaše jednotlivá spuštění. Předejte definovanému objektu `automl_config` do experimentu a nastavte výstup na `True`, aby se během běhu zobrazil průběh.
 
-After starting the experiment, the output shown updates live as the experiment runs. For each iteration, you see the model type, the run duration, and the training accuracy. The field `BEST` tracks the best running training score based on your metric type.
+Po zahájení experimentu se výstup v rámci spuštění experimentu zobrazí jako živý. Pro každou iteraci vidíte typ modelu, dobu trvání běhu a přesnost školení. Pole `BEST` sleduje nejlepší průběžné školení na základě typu metriky.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -986,19 +986,19 @@ local_run = experiment.submit(automl_config, show_output=True)
 
 ## <a name="explore-the-results"></a>Kontrola výsledků
 
-Explore the results of automatic training with a [Jupyter widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). The widget allows you to see a graph and table of all individual run iterations, along with training accuracy metrics and metadata. Additionally, you can filter on different accuracy metrics than your primary metric with the dropdown selector.
+Prozkoumejte výsledky automatického školení pomocí [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Pomůcka vám umožní zobrazit graf a tabulku všech jednotlivých iterací spuštění spolu s metrikami přesnosti školení a metadaty. Kromě toho můžete filtrovat různé metriky přesnosti, než je vaše primární metrika, pomocí rozevíracího selektoru.
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-![Jupyter widget run details](./media/tutorial-auto-train-models/automl-dash-output.png)
-![Jupyter widget plot](./media/tutorial-auto-train-models/automl-chart-output.png)
+Podrobnosti o spuštění widgetu ![Jupyter](./media/tutorial-auto-train-models/automl-dash-output.png)
+![Jupyter grafu widgetu](./media/tutorial-auto-train-models/automl-chart-output.png)
 
-### <a name="retrieve-the-best-model"></a>Retrieve the best model
+### <a name="retrieve-the-best-model"></a>Načíst tento nejlepší model
 
-Select the best model from your iterations. The `get_output` function returns the best run and the fitted model for the last fit invocation. By using the overloads on `get_output`, you can retrieve the best run and fitted model for any logged metric or a particular iteration.
+Vyberte nejlepší model z vašich iterací. Funkce `get_output` vrací nejlepší běh a namontovaný model pro poslední vyvolání. Pomocí přetížení na `get_output`můžete načíst nejlepší běh a namontovaný model pro všechny protokolované metriky nebo konkrétní iterace.
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1006,16 +1006,16 @@ print(best_run)
 print(fitted_model)
 ```
 
-### <a name="test-the-best-model-accuracy"></a>Test the best model accuracy
+### <a name="test-the-best-model-accuracy"></a>Testování osvědčených přesnost modelu
 
-Use the best model to run predictions on the test data set to predict taxi fares. The function `predict` uses the best model and predicts the values of y, **trip cost**, from the `x_test` data set. Print the first 10 predicted cost values from `y_predict`.
+Použijte nejlepší model pro spuštění předpovědi na testovacích datech sady pro předpověď taxislužby tarifů. Funkce `predict` využívá nejlepší model a předpovídá hodnoty y, **nákladů na cestu**, ze `x_test` sady dat. Vytiskněte prvních 10 předpokládaných hodnot nákladů z `y_predict`.
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-Calculate the `root mean squared error` of the results. Convert the `y_test` dataframe to a list to compare to the predicted values. The function `mean_squared_error` takes two arrays of values and calculates the average squared error between them. Taking the square root of the result gives an error in the same units as the y variable, **cost**. It indicates roughly how far the taxi fare predictions are from the actual fares.
+Vypočítá `root mean squared error` výsledků. Převeďte `y_test` datový rámec na seznam pro porovnání s předpokládanými hodnotami. Funkce `mean_squared_error` přebírá dvě pole hodnot a vypočítá průměrně čtvercovou chybu. Výsledkem druhé odmocniny výsledku je chyba ve stejných jednotkách jako proměnná y, **náklady**. Uvádí zhruba, jak daleko se taxislužby tarif předpovědi ze skutečné tarify.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1026,7 +1026,7 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-Run the following code to calculate mean absolute percent error (MAPE) by using the full `y_actual` and `y_predict` data sets. This metric calculates an absolute difference between each predicted and actual value and sums all the differences. Then it expresses that sum as a percent of the total of the actual values.
+Spusťte následující kód, který vypočítá průměrnou absolutní procentuální chybu (MAPE) pomocí úplného `y_actual` a `y_predict` datových sad. Tato metrika vypočítá absolutní rozdíl mezi každou předpovězenou a skutečnou hodnotou a sečte všechny rozdíly. Pak vyjadřuje, že součet je procentuální podíl celkového počtu skutečných hodnot.
 
 ```python
 sum_actuals = sum_errors = 0
@@ -1054,36 +1054,36 @@ print(1 - mean_abs_percent_error)
     0.8564613239394718
 
 
-From the two prediction accuracy metrics, you see that the model is fairly good at predicting taxi fares from the data set's features, typically within +- $4.00, and approximately 15% error.
+Ze dvou metrik přesnosti předpovědi vidíte, že model je poměrně dobrý při předvídání taxislužby tarifů z funkcí datové sady, obvykle v rámci +-$4,00 a přibližně 15% chyby.
 
-The traditional machine learning model development process is highly resource-intensive, and requires significant domain knowledge and time investment to run and compare the results of dozens of models. Using automated machine learning is a great way to rapidly test many different models for your scenario.
+Tradiční strojového učení proces vývoje modelu je velmi náročná a vyžaduje investice významné domény znalostní báze a čas ke spuštění a porovnávat výsledky desítky modely. Používání automatizovaného strojového učení je skvělým způsobem, jak rychle testovat spoustu různých modelů pro váš scénář.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Do not complete this section if you plan on running other Azure Machine Learning tutorials.
+Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning.
 
-### <a name="stop-the-notebook-vm"></a>Stop the Notebook VM
+### <a name="stop-the-notebook-vm"></a>Zastavení virtuálního počítače poznámkového bloku
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
-### <a name="delete-everything"></a>Delete everything
+### <a name="delete-everything"></a>Odstranit vše
 
-If you don't plan to use the resources you created, delete them, so you don't incur any charges.
+Pokud neplánujete použít prostředky, které jste vytvořili, odstraňte je, takže se vám neúčtují žádné poplatky.
 
 1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků**.
 1. V seznamu vyberte skupinu prostředků, kterou jste vytvořili.
 1. Vyberte **Odstranit skupinu prostředků**.
-1. Enter the resource group name. Vyberte **Odstranit**.
+1. Zadejte název skupiny prostředků. Vyberte **Odstranit**.
 
-You can also keep the resource group but delete a single workspace. Display the workspace properties and select **Delete**.
+Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-In this automated machine learning tutorial, you did the following tasks:
+V tomto kurzu automatizovaného strojového učení jste provedli následující úlohy:
 
 > [!div class="checklist"]
-> * Configured a workspace and prepared data for an experiment.
-> * Trained by using an automated regression model locally with custom parameters.
-> * Explored and reviewed training results.
+> * Nakonfigurovali jste pracovní prostor a připravené data pro experiment.
+> * Vyškoleno pomocí automatizovaného regresního modelu místně s vlastními parametry.
+> * Prozkoumání a přezkoumání výsledků školení.
 
-[Deploy your model](tutorial-deploy-models-with-aml.md) with Azure Machine Learning.
+[Nasaďte model](tutorial-deploy-models-with-aml.md) pomocí Azure Machine Learning.

@@ -170,7 +170,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným prostřednictvím služeb Azure povolených v koncových bodech se u jednotlivých služeb liší. Konkrétní kroky pro jednotlivé služby najdete v dokumentaci příslušné služby. Zbývající část tohoto článku obsahuje kroky pro omezení síťového přístupu pro účet Azure Storage jako příklad.
 
-### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Vytvořte účet Azure Storage pomocí [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Nahraďte `<replace-with-your-unique-storage-account-name>` názvem, který je jedinečný v rámci všech umístění Azure, mezi 3-24 znaků a s použitím pouze číslic a malých písmen.
 

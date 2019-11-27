@@ -1,6 +1,6 @@
 ---
-title: Manage a user-assigned managed identity in the Azure portal - Azure AD
-description: Step by step instructions on how to create, list, delete and assign a role to a user-assigned managed identity.
+title: Správa spravované identity přiřazené uživatelem v Azure Portal – Azure AD
+description: Podrobné pokyny, jak vytvořit, vypsat, odstranit a přiřadit roli k spravované identitě přiřazené uživatelem.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,77 +15,77 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06d25604ca1e8a59ca1da3c8e290d9052856b769
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10caa9e5e61dc1dd0c1062583f55a7357c643ce5
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224648"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547449"
 ---
-# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Create, list, delete or assign a role to a user-assigned managed identity using the Azure portal
+# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Vytvoření, vypsání, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Managed identities for Azure resources provides Azure services with a managed identity in Azure Active Directory. You can use this identity to authenticate to services that support Azure AD authentication, without needing credentials in your code. 
+Spravované identity pro prostředky Azure poskytují služby Azure se spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro služby, které podporují ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
-In this article, you learn how to create, list, delete or assign a role to a user-assigned managed identity using the Azure Portal.
+V tomto článku se naučíte, jak pomocí webu Azure Portal vytvořit, vypsat, odstranit nebo přiřadit roli spravované identitě přiřazené uživateli.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
-To create a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+K vytvoření spravované identity přiřazené uživatelem potřebuje váš účet přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to create the user-assigned managed identity.
-2. In the search box, type *Managed Identities*, and under **Services**, click **Managed Identities**.
-3. Click **Add** and enter values in the following fields under **Create user assigned managed** identity pane:
-   - **Resource Name**: This is the name for your user-assigned managed identity, for example UAI1.
-   - **Subscription**: Choose the subscription to create the user-assigned managed identity under
-   - **Resource Group**: Create a new resource group to contain your user-assigned managed identity or choose **Use existing** to create the user-assigned managed identity in an existing resource group.
-   - **Location**: Choose a location to deploy the user-assigned managed identity,for example **West US**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure a vytvořte spravovanou identitu přiřazenou uživatelem.
+2. Do vyhledávacího pole zadejte *spravované identity*a v části **služby**klikněte na **spravované identity**.
+3. Klikněte na tlačítko **Přidat** a zadejte hodnoty do následujících polí v části **vytvořit uživatelem spravovanou identitu přiřazenou uživateli** :
+   - **Název prostředku**: Jedná se o název vaší uživatelsky přiřazené spravované identity, například UAI1.
+   - **Předplatné**: vyberte předplatné, ve kterém chcete vytvořit spravovanou identitu přiřazenou uživatelem.
+   - **Skupina prostředků**: Vytvořte novou skupinu prostředků, která bude obsahovat vaši uživatelem přiřazenou spravovanou identitu, nebo vyberte **použít existující** a vytvořte spravovanou identitu přiřazenou uživatelem v existující skupině prostředků.
+   - **Umístění**: vyberte umístění pro nasazení spravované identity přiřazené uživatelem, například **západní USA**.
 4. Klikněte na **Vytvořit**.
 
 ![Vytvoření spravované identity přiřazené uživatelem](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 
-## <a name="list-user-assigned-managed-identities"></a>List user-assigned managed identities
+## <a name="list-user-assigned-managed-identities"></a>Výpis spravovaných identit přiřazených uživatelem
 
-To list/read a user-assigned managed identity, your account needs the [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) or [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+K vypsání nebo načtení spravované identity přiřazené uživatelem vyžaduje váš účet [spravovaný operátor identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) nebo přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to list the user-assigned managed identities.
-2. In the search box, type *Managed Identities*, and under Services, click **Managed Identities**.
-3. A list of the user-assigned managed identities for your subscription is returned.  To see the details of a user-assigned managed identity click its name.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure a seznamte se se spravovanými identitami přiřazenými uživatelem.
+2. Do vyhledávacího pole zadejte *spravované identity*a v části služby klikněte na **spravované identity**.
+3. Vrátí se seznam spravovaných identit přiřazených uživateli pro vaše předplatné.  Chcete-li zobrazit podrobnosti o spravované identitě přiřazené uživatelem, klikněte na její název.
 
-![List user-assigned managed identity](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
+![Výpis spravované identity přiřazené uživatelem](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Delete a user-assigned managed identity
+## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživatelem
 
-To delete a user-assigned managed identity, your account needs the [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role assignment.
+Pokud chcete odstranit spravovanou identitu přiřazenou uživatelem, váš účet potřebuje přiřazení role [Přispěvatel spravované identity](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Deleting a user assigned identity does not remove it from the VM or resource it was assigned to.  To remove the user assigned identity from a VM see, [Remove a user-assigned managed identity from a VM](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm).
+Odstranění identity přiřazené uživatelem ji neodebere z virtuálního počítače nebo prostředku, ke kterému byl přiřazen.  Pokud chcete odebrat identitu přiřazenou uživatelem z virtuálního počítače, přečtěte si článek [Odebrání spravované identity přiřazené uživatelem z virtuálního počítače](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#remove-a-user-assigned-managed-identity-from-a-vm).
 
-1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to delete a user-assigned managed identity.
-2. Select the user-assigned managed identity and click **Delete**.
-3. Under the confirmation box choose, **Yes**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure a odstraňte spravovanou identitu přiřazenou uživatelem.
+2. Vyberte spravovanou identitu přiřazenou uživatelem a klikněte na **Odstranit**.
+3. V poli potvrzení vyberte **Ano**.
 
-![Delete user-assigned managed identity](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
+![Odstranit spravovanou identitu přiřazenou uživatelem](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
 
-## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Assign a role to a user-assigned managed identity 
+## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Přiřazení role k spravované identitě přiřazené uživatelem 
 
-To assign a role to a user-assigned managed identity, your account needs the [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) role assignment.
+Pokud chcete přiřadit roli k spravované identitě přiřazené uživateli, váš účet potřebuje přiřazení role [Správce přístupu uživatele](/azure/role-based-access-control/built-in-roles#user-access-administrator) .
 
-1. Sign in to the [Azure portal](https://portal.azure.com) using an account associated with the Azure subscription to list the user-assigned managed identities.
-2. In the search box, type *Managed Identities*, and under Services, click **Managed Identities**.
-3. A list of the user-assigned managed identities for your subscription is returned.  Select the user-assigned managed identity that you want to assign a role.
-4. Select **Access control (IAM)** and then select **Add role assignment**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure a seznamte se se spravovanými identitami přiřazenými uživatelem.
+2. Do vyhledávacího pole zadejte *spravované identity*a v části služby klikněte na **spravované identity**.
+3. Vrátí se seznam spravovaných identit přiřazených uživateli pro vaše předplatné.  Vyberte spravovanou identitu přiřazenou uživatelem, kterému chcete přiřadit roli.
+4. Vyberte **řízení přístupu (IAM)** a pak vyberte **Přidat přiřazení role**.
 
-   ![User-assigned managed identity start](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
+   ![Spuštění uživatelsky přiřazené spravované identity](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
 
-5. In the Add role assignment blade, configure the following values and then click **Save**:
-   - **Role** - the role to assign
-   - **Assign access to**  - the resource to assign the user-assigned managed identity
-   - **Select** - the member to assign access
+5. V okně Přidat přiřazení role nakonfigurujte následující hodnoty a potom klikněte na **Uložit**:
+   - **Role** – role, která se má přiřadit
+   - **Přiřazení přístupu k** prostředku k přiřazení spravované identity přiřazené uživatelem
+   - **Vybrat** – člen pro přiřazení přístupu
    
-   ![User-assigned managed identity IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  
+   ![Uživatelsky přiřazená spravovaná identita IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Load Balancer VMs within a zone--Azure portal'
+title: 'Kurz: Load Balancer virtuálních počítačů v rámci zóny – Azure Portal'
 titleSuffix: Azure Load Balancer
 description: V tomto kurzu si ukážeme, jak vytvořit Standard Load Balancer se zónovým front-endem, který bude vyrovnávat zatížení virtuálních počítačů v rámci zóny dostupnosti pomocí webu Azure Portal.
 services: load-balancer
@@ -48,20 +48,20 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 Standard Load Balancer podporuje jenom standardní veřejnou IP adresu. Když při vytváření nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, automaticky se nakonfiguruje jako standardní verze SKU a bude automaticky zónově redundantní.
 
 1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
-2. In the **Basics** tab of the **Create load balancer** page, enter or select the following information, accept the defaults for the remaining settings, and then select **Review + create**:
+2. Na kartě **základy** na stránce **vytvořit službu Vyrovnávání zatížení** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**:
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | Select **Create new** and type *MyResourceGroupZLB* in the text box.|
-    | Name (Název)                   | *myLoadBalancer*                                   |
+    | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *MyResourceGroupZLB* .|
+    | Název                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Typ          | Select **Public**.                                        |
-    | Skladová položka           | Select **Standard**.                          |
+    | Typ          | Vyberte možnost **veřejné**.                                        |
+    | SKU           | Vyberte **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
-    | Public IP address name              | Type *myPublicIP* in the text box.   |
-    |Availability zone| Vyberte **1**.    |
-3. In the **Review + create** tab, click **Create**.   
+    | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   |
+    |Zóna dostupnosti| Vyberte **1**.    |
+3. Na kartě **Revize + vytvořit** klikněte na **vytvořit**.   
 
    ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 

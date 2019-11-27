@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Cosmos DB - Windows - Azure AD
+title: Kurz`:` použití spravované identity pro přístup k Azure Cosmos DB-Windows-Azure AD
 description: Tento kurz vás provede procesem použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
@@ -34,11 +34,11 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > * Získání přístupového tokenu pomocí spravované identity přiřazené systémem na virtuálním počítači s Windows k volání Azure Resource Manageru
 > * Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-- Install the latest version of [Azure PowerShell](/powershell/azure/install-az-ps)
+- Nainstalovat nejnovější verzi [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB 
 
@@ -73,7 +73,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 
 Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač. 
 
-You will need to install the latest version of [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) on your Windows VM.
+Na virtuální počítač s Windows budete muset nainstalovat nejnovější verzi rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
 1. Na webu Azure Portal přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a potom nahoře na stránce **Přehled** klikněte na **Připojit**. 
 2. Zadejte své **uživatelské jméno** a **heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 

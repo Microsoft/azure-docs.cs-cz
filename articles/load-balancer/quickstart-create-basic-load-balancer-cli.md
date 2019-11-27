@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Create a Basic Load Balancer - Azure CLI'
+title: 'Rychlý Start: Vytvoření základní Load Balancer – Azure CLI'
 titleSuffix: Azure Load Balancer
 description: Tento rychlý start ukazuje, jak pomocí Azure CLI vytvořit veřejný nástroj pro vyrovnávání zatížení.
 services: load-balancer
@@ -23,9 +23,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214848"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Create a load balancer to load balance VMs using Azure CLI
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý Start: vytvoření služby Vyrovnávání zatížení pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
-This quickstart shows you how to create an Azure Load Balancer to load balance internet traffic between virtual machines in Azure. K otestování nástroje pro vyrovnávání zatížení nasadíte dva virtuální počítače se serverem Ubuntu, které mezi sebou budou vyrovnávat zatížení webové aplikace.
+V tomto rychlém startu se dozvíte, jak vytvořit Azure Load Balancer pro vyrovnávání zatížení internetového provozu mezi virtuálními počítači v Azure. K otestování nástroje pro vyrovnávání zatížení nasadíte dva virtuální počítače se serverem Ubuntu, které mezi sebou budou vyrovnávat zatížení webové aplikace.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -87,7 +87,7 @@ Test stavu kontroluje všechny instance virtuálních počítačů a ověřuje, 
 
 ### <a name="create-the-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu *myLoadBalancerRuleWeb* vytvořte pravidlo nástroje pro vyrovnávání zatížení [myLoadBalancerRuleWeb](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) pro naslouchání na portu 80 ve front-endovém fondu *myFrontEndPool* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* rovněž na portu 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu *az network lb rule create* vytvořte pravidlo nástroje pro vyrovnávání zatížení [myLoadBalancerRuleWeb](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) pro naslouchání na portu 80 ve front-endovém fondu *myFrontEndPool* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* rovněž na portu 80. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -108,7 +108,7 @@ Než nasadíte několik virtuálních počítačů a budete moci otestovat svůj
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) vytvořte virtuální síť *myVnet* s podsítí *mySubnet* ve skupině prostředků *myResourceGroup*.
+Pomocí příkazu *az network vnet create* vytvořte virtuální síť *myVnet* s podsítí *mySubnet* ve skupině prostředků [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \
@@ -146,7 +146,7 @@ Vytvořte pravidlo skupiny zabezpečení sítě, které povolí příchozí při
 ```
 ### <a name="create-nics"></a>Vytvoření síťových rozhraní
 
-Create two network interfaces with [az network nic create](/cli/azure/network/nic#az-network-nic-create) and associate them with the Public IP address and the network security group. 
+Pomocí [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create) vytvořte dvě síťová rozhraní a přidružte je k veřejné IP adrese a skupině zabezpečení sítě. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -262,7 +262,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, nástro
 
 
 ## <a name="next-steps"></a>Další kroky
-V rámci tohoto rychlého startu jste vytvořili Load Balancer úrovně Basic, připojili jste k němu virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
+V rámci tohoto rychlého startu jste vytvořili Load Balancer úrovně Basic, připojili jste k němu virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Další informace o službě Azure Load Balancer najdete v kurzech týkajících se služby Azure Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Kurzy o službě Azure Load Balancer](tutorial-load-balancer-basic-internal-portal.md)

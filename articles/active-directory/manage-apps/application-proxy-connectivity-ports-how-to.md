@@ -25,7 +25,7 @@ ms.locfileid: "74275547"
 ---
 # <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Tom, jak otevřít porty brány firewall, vyžaduje se pro aplikaci Proxy aplikací
 
-Pokud chcete zobrazit úplný seznam požadované porty a funkce každý z portů, naleznete v části Požadavky [Proxy aplikací dokumentaci](application-proxy-add-on-premises-application.md). Všimněte si, že Proxy aplikace používá pouze odchozí porty.
+Úplný seznam požadovaných portů a funkce jednotlivých portů naleznete v části požadavky v [dokumentaci k proxy aplikací](application-proxy-add-on-premises-application.md). Všimněte si, že Proxy aplikace používá pouze odchozí porty.
 
 Můžete taky zkontrolovat, jestli máte všechny požadované porty otevřené, a to tak, že otevřete [Nástroj pro testování portů konektoru](https://aadap-portcheck.connectorporttest.msappproxy.net/) z místní sítě. Další zelené zaškrtnutí znamená větší odolnost proti chybám. 
 
@@ -40,4 +40,4 @@ Pokud chcete mít jistotu, že nástroj poskytuje správných výsledků, nezapo
 -   Ujistěte se, že všechny proxy nebo brány firewall pro váš konektor jsou použita také na této stránce. To lze provést v aplikaci Internet Explorer tak, že v **nastavení** -&gt; **možnosti Internetu** -&gt; **připojení** -&gt; **Nastavení LAN**. Na této stránce se zobrazí pole "Použití Proxy serveru pro svůj LAN". Zaškrtněte toto políčko a vložte adresu proxy serveru do pole "Address".
 
 ## <a name="next-steps"></a>Další kroky
-[Principy konektorů Proxy aplikací Azure AD](application-proxy-connectors.md)
+[Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)

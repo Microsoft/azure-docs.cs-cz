@@ -53,7 +53,7 @@ Každá aplikace vyžaduje pro vytvoření uživatele nebo skupiny jiné atribut
 
 Prostředky uživatele jsou označeny identifikátorem schématu `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`, který je zahrnutý v této specifikaci protokolu: https://tools.ietf.org/html/rfc7643.  Výchozí mapování atributů uživatelů ve službě Azure AD na atributy uživatelských prostředků je k dispozici v tabulce 1.  
 
-Prostředky skupiny prostředků jsou označeny identifikátor schématu `urn:ietf:params:scim:schemas:core:2.0:Group`. Tabulka 2 zobrazuje výchozí mapování atributů skupin ve službě Azure AD na atributy prostředků skupiny.
+Prostředky skupiny jsou identifikovány pomocí identifikátoru schématu `urn:ietf:params:scim:schemas:core:2.0:Group`. Tabulka 2 zobrazuje výchozí mapování atributů skupin ve službě Azure AD na atributy prostředků skupiny.
 
 Všimněte si, že nemusíte podporovat uživatele i skupiny ani všechny níže uvedené atributy. Jsou to odkazy na to, jak se atributy ve službě Azure AD často mapují na vlastnosti v protokolu SCIM.  
 
@@ -232,7 +232,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 #### <a name="get-user"></a>Načíst uživatele
 
 ###### <a name="request-1"></a>Request
-*GET /Users/5d48a0a8e9f04aa38008* 
+*ZÍSKAT/Users/5d48a0a8e9f04aa38008* 
 
 ###### <a name="response-1"></a>Odpověď (uživatel se našla)
 *HTTP/1.1 200 OK*
@@ -280,7 +280,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 ##### <a name="request-2"></a>Request
 
-*GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
+*ZÍSKAT/Users? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-B016-bdf221e82081"*
 
 ##### <a name="response-2"></a>Základě
 
@@ -433,7 +433,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-#### <a name="delete-user"></a>Odstranění uživatele
+#### <a name="delete-user"></a>Odstranit uživatele
 
 ##### <a name="request-6"></a>Request
 
@@ -450,7 +450,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 * Aktualizace žádosti o opravu skupiny by měla v odpovědi vracet *HTTP 204 bez obsahu* . Vrácení textu se seznamem všech členů není vhodné.
 * Není nutné podporovat vrácení všech členů skupiny.
 
-#### <a name="create-group"></a>Vytvoření skupiny
+#### <a name="create-group"></a>Vytvořit skupinu
 
 ##### <a name="request-7"></a>Request
 
@@ -602,11 +602,11 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *HTTP/1.1 204 bez obsahu*
 
-#### <a name="delete-group"></a>Odstranění skupiny
+#### <a name="delete-group"></a>Odstranit skupinu
 
 ##### <a name="request-13"></a>Request
 
-*DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
+*Odstranit/Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
 ##### <a name="response-13"></a>Základě
 
@@ -632,7 +632,7 @@ Pro snazší provádění tohoto procesu jsou k dispozici [ukázky kódu](https:
 * Visual Studio 2013 nebo novější
 * [Azure SDK pro .NET](https://azure.microsoft.com/downloads/)
 * Windows počítač, který podporuje rozhraní ASP.NET 4.5 se použije jako koncový bod SCIM. Tento počítač musí být přístupný z cloudu.
-* [Předplatné Azure s verzí zkušební verzi nebo s licencí Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
+* [Předplatné Azure se zkušební nebo licencovanou verzí Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
 
 ### <a name="getting-started"></a>Začínáme
 
@@ -640,7 +640,7 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
 
 #### <a name="to-create-a-sample-scim-endpoint"></a>Vytvoření ukázkového koncového bodu SCIM
 
-1. Stáhněte si balíček ukázky kódu v [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
+1. Stažení ukázkového balíčku kódu na [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
 1. Rozbalte balíček a umístěte ji na svém počítači s Windows do umístění, jako je například C:\AzureAD-BYOA-Provisioning-Samples\.
 1. V této složce spusťte FileProvisioning\Host\FileProvisioningService.csproj projektu v sadě Visual Studio.
 1. Vyberte **nástroje** > **správce balíčků NuGet** > **konzolu Správce balíčků**a spusťte následující příkazy pro projekt FileProvisioningService, abyste vyřešili odkazy na řešení:
@@ -650,7 +650,7 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
    ```
 
 1. FileProvisioningService projekt sestavte.
-1. Spuštění aplikace příkazového řádku ve Windows (jako správce) a použít **cd** příkazu změňte adresář na vaše **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug**složky.
+1. Spusťte aplikaci příkazového řádku v systému Windows (jako správce) a pomocí příkazu **CD** změňte adresář na složku **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug** .
 1. Spusťte následující příkaz a nahraďte `<ip-address>` IP adresou nebo názvem domény počítače s Windows:
 
    ```
@@ -667,23 +667,23 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
 1. Vyberte **+ Nová aplikace** > **všechny** > **aplikací mimo galerii**.
 1. Zadejte název vaší aplikace a vyberte **Přidat** a vytvořte objekt aplikace. Objekt aplikace vytvořené slouží k reprezentaci cílové aplikace, můžete by zřizování a implementaci jednotného přihlašování pro a nejen SCIM koncový bod.
 1. Na obrazovce Správa aplikací vyberte na levém panelu možnost **zřizování** .
-1. V **režim zřizování** nabídce vyberte možnost **automatické**.    
-1. V **adresy URL Tenanta** zadejte adresu URL koncového bodu SCIM vaší aplikace. Příklad: https://api.contoso.com/scim/
+1. V nabídce **režim zřizování** vyberte **automaticky**.    
+1. Do pole **Adresa URL tenanta** zadejte adresu URL koncového bodu SCIM aplikace. Příklad: https://api.contoso.com/scim/
 
-1. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte požadované tokenu nosiče OAuth nepovinný **tajný klíč tokenu** pole. Pokud toto pole zůstane prázdné, Azure AD zahrnuje token nosiče OAuth vydaný z Azure AD s každým požadavkem. Aplikace, které používají Azure AD jako zprostředkovatel identity, můžou ověřit tento token vydaný službou Azure AD.
+1. Pokud koncový bod SCIM vyžaduje token nosiče OAuth od jiného vydavatele než Azure AD, Zkopírujte požadovaný token Bearer OAuth do pole volitelného **tajného tokenu** . Pokud toto pole zůstane prázdné, Azure AD zahrnuje token nosiče OAuth vydaný z Azure AD s každým požadavkem. Aplikace, které používají Azure AD jako zprostředkovatel identity, můžou ověřit tento token vydaný službou Azure AD.
 1. Vyberte **Test připojení** , aby se Azure Active Directory pokus o připojení ke koncovému bodu SCIM. Pokud se pokus nezdaří, zobrazí se informace o chybě.  
 
     > [!NOTE]
     > **Test Connection** se dotazuje na koncový bod SCIM pro uživatele, který neexistuje, pomocí NÁHODNÉho identifikátoru GUID jako odpovídající vlastnosti vybrané v konfiguraci služby Azure AD. Očekávaná správná odpověď je HTTP 200 OK s prázdnou SCIM zprávou ListResponse
 
 1. Pokud se pokusí připojit k aplikaci úspěšně, vyberte **Uložit** a uložte přihlašovací údaje správce.
-1. V **mapování** části, existují dvě sady vybrat mapování atributů: jeden pro uživatelské objekty a jeden pro objekty skupiny. Vyberte každé z nich ke kontrole atributů, které se synchronizují ze služby Azure Active Directory do vaší aplikace. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatele a skupiny ve vaší aplikaci pro operace update. Vyberte **Uložit** a potvrďte všechny změny.
-1. V části **nastavení**, **oboru** pole určuje, kteří uživatelé nebo skupiny synchronizované. Vyberte možnost **synchronizovat pouze přiřazené uživatele a skupiny** (doporučeno), chcete-li synchronizovat pouze uživatele a skupiny přiřazené na kartě **Uživatelé a skupiny** .
+1. V oddílu **mapování** existují dvě sady mapování atributů, které lze vybrat: jeden pro uživatelské objekty a jeden pro objekty skupiny. Vyberte každé z nich ke kontrole atributů, které se synchronizují ze služby Azure Active Directory do vaší aplikace. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování s uživateli a skupinami v aplikaci pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
+1. V části **Nastavení**pole **obor** určuje, kteří uživatelé a skupiny budou synchronizováni. Vyberte možnost **synchronizovat pouze přiřazené uživatele a skupiny** (doporučeno), chcete-li synchronizovat pouze uživatele a skupiny přiřazené na kartě **Uživatelé a skupiny** .
 1. Po dokončení konfigurace nastavte **stav zřizování** **na zapnuto**.
 1. Výběrem **Uložit** spusťte službu Azure AD Provisioning.
 1. Pokud synchronizujete pouze přiřazené uživatele a skupiny (doporučeno), nezapomeňte vybrat kartu **Uživatelé a skupiny** a přiřadit uživatele nebo skupiny, které chcete synchronizovat.
 
-Po zahájení počátečního cyklu můžete vybrat **protokoly auditu** na levém panelu a monitorovat průběh, který zobrazuje všechny akce prováděné službou zřizování ve vaší aplikaci. Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](check-status-user-account-provisioning.md).
+Po zahájení počátečního cyklu můžete vybrat **protokoly auditu** na levém panelu a monitorovat průběh, který zobrazuje všechny akce prováděné službou zřizování ve vaší aplikaci. Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](check-status-user-account-provisioning.md).
 
 V posledním kroku ověřování ukázka je k otevření souboru TargetFile.csv \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug složky na svém počítači s Windows. Po spuštění procesu zřizování tento soubor obsahuje podrobné informace o všech přiřazeny a zřízení uživatelů a skupin.
 
@@ -695,11 +695,11 @@ K vývoji vlastní webové služby, který odpovídá specifikaci SCIM, nejdří
   
    ![Rozpis: požadavek přeložený do volání metod poskytovatele][3]
   
-* [Express route obslužné rutiny](https://expressjs.com/guide/routing.html) jsou k dispozici pro analýzu node.js požadavek objektů představujících volání (jak jsou definovány ve specifikaci SCIM) provedené webových služeb node.js.
+* [Obslužné rutiny Express Route](https://expressjs.com/guide/routing.html) jsou k dispozici pro analýzu objektů požadavků Node. js představujících volání (jak je definováno specifikací SCIM), která se provádí pro webovou službu Node. js.
 
 ### <a name="building-a-custom-scim-endpoint"></a>Vytvoření vlastního koncového bodu SCIM
 
-Vývojáři, kteří používají knihovny CLI, mohou hostovat své služby v jakémkoli spustitelném sestavení CLI nebo v rámci Internetová informační služba. Tady je ukázkový kód pro hostování služby v rámci spustitelného sestavení, na adrese http://localhost:9000: 
+Vývojáři, kteří používají knihovny CLI, mohou hostovat své služby v jakémkoli spustitelném sestavení CLI nebo v rámci Internetová informační služba. Zde je ukázkový kód pro hostování služby ve spustitelném sestavení, na adrese http://localhost:9000: 
 
 ```csharp
  private static void Main(string[] arguments)
@@ -1273,13 +1273,13 @@ Aplikace s podporou SCIM profilu je popsáno v tomto článku můžou být přip
    *Obrázek 2: Galerie aplikací Azure AD*
 
 5. Na obrazovce Správa aplikací vyberte na levém panelu možnost **zřizování** .
-6. V **režim zřizování** nabídce vyberte možnost **automatické**.
+6. V nabídce **režim zřizování** vyberte **automaticky**.
 
    Příklad ![: stránka zřizování aplikace v Azure Portal][2]<br/>
    *Obrázek 3: Konfigurace zřizování v Azure Portal*
 
-7. V **adresy URL Tenanta** zadejte adresu URL koncového bodu SCIM vaší aplikace. Příklad: https://api.contoso.com/scim/
-8. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte požadované tokenu nosiče OAuth nepovinný **tajný klíč tokenu** pole. Pokud toto pole zůstane prázdné, Azure AD zahrnuje token nosiče OAuth vydaný z Azure AD s každým požadavkem. Aplikace, které používají Azure AD jako zprostředkovatel identity, můžou ověřit tento token vydaný službou Azure AD. 
+7. Do pole **Adresa URL tenanta** zadejte adresu URL koncového bodu SCIM aplikace. Příklad: https://api.contoso.com/scim/
+8. Pokud koncový bod SCIM vyžaduje token nosiče OAuth od jiného vydavatele než Azure AD, Zkopírujte požadovaný token Bearer OAuth do pole volitelného **tajného tokenu** . Pokud toto pole zůstane prázdné, Azure AD zahrnuje token nosiče OAuth vydaný z Azure AD s každým požadavkem. Aplikace, které používají Azure AD jako zprostředkovatel identity, můžou ověřit tento token vydaný službou Azure AD. 
    > [!NOTE]
    > ***Nedoporučujeme*** toto pole nechat prázdné a spoléhat se na token generovaný službou Azure AD. Tato možnost je primárně k dispozici pro účely testování.
 9. Vyberte **Test připojení** , aby se Azure Active Directory pokus o připojení ke koncovému bodu SCIM. Pokud se pokus nezdaří, zobrazí se informace o chybě.  
@@ -1288,7 +1288,7 @@ Aplikace s podporou SCIM profilu je popsáno v tomto článku můžou být přip
     > **Test Connection** se dotazuje na koncový bod SCIM pro uživatele, který neexistuje, pomocí NÁHODNÉho identifikátoru GUID jako odpovídající vlastnosti vybrané v konfiguraci služby Azure AD. Očekávaná správná odpověď je HTTP 200 OK s prázdnou SCIM zprávou ListResponse.
 
 10. Pokud se pokusí připojit k aplikaci úspěšně, vyberte **Uložit** a uložte přihlašovací údaje správce.
-11. V oddílu **mapování** existují dvě sady [mapování atributů](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), které lze vybrat: jeden pro uživatelské objekty a jeden pro objekty skupiny. Vyberte každé z nich ke kontrole atributů, které se synchronizují ze služby Azure Active Directory do vaší aplikace. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatele a skupiny ve vaší aplikaci pro operace update. Vyberte **Uložit** a potvrďte všechny změny.
+11. V oddílu **mapování** existují dvě sady [mapování atributů](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), které lze vybrat: jeden pro uživatelské objekty a jeden pro objekty skupiny. Vyberte každé z nich ke kontrole atributů, které se synchronizují ze služby Azure Active Directory do vaší aplikace. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování s uživateli a skupinami v aplikaci pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
 
     > [!NOTE]
     > Volitelně můžete zakázat synchronizaci objektů skupiny zakázáním "groups" mapování.
@@ -1298,7 +1298,7 @@ Aplikace s podporou SCIM profilu je popsáno v tomto článku můžou být přip
 14. Výběrem **Uložit** spusťte službu Azure AD Provisioning.
 15. Pokud synchronizujete pouze přiřazené uživatele a skupiny (doporučeno), nezapomeňte vybrat kartu **Uživatelé a skupiny** a přiřadit uživatele nebo skupiny, které chcete synchronizovat.
 
-Po zahájení počátečního cyklu můžete na levém panelu vybrat **protokoly zřizování** a monitorovat průběh, který zobrazuje všechny akce prováděné službou zřizování ve vaší aplikaci. Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](check-status-user-account-provisioning.md).
+Po zahájení počátečního cyklu můžete na levém panelu vybrat **protokoly zřizování** a monitorovat průběh, který zobrazuje všechny akce prováděné službou zřizování ve vaší aplikaci. Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](check-status-user-account-provisioning.md).
 
 > [!NOTE]
 > Počáteční cyklus trvá déle než pozdější synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba spuštěná.
@@ -1331,12 +1331,12 @@ Některé aplikace umožňují příchozí provoz do své aplikace. Aby služba 
 
 ## <a name="related-articles"></a>Související články
 
-* [Automatizace uživatele zřizování a jeho rušení pro aplikace SaaS](user-provisioning.md)
+* [Automatizace zřizování a rušení zřizování uživatelů pro aplikace SaaS](user-provisioning.md)
 * [Přizpůsobení mapování atributů pro zřizování uživatelů](customize-application-attributes.md)
 * [Zápis výrazů pro mapování atributů](functions-for-customizing-application-data.md)
 * [Filtry oborů pro zřizování uživatelů](define-conditional-rules-for-provisioning-user-accounts.md)
-* [Oznámení o zřizování účtů](user-provisioning.md)
-* [Seznam kurzů o integraci aplikací SaaS](../saas-apps/tutorial-list.md)
+* [Oznámení zřizování účtů](user-provisioning.md)
+* [Seznam kurzů, jak integrovat aplikace SaaS](../saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png

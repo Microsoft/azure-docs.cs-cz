@@ -1,6 +1,6 @@
 ---
-title: Vyprázdnění koncového bodu Azure CDN | Dokumentace Microsoftu
-description: Zjistěte, jak chcete vymazat všechny uložené v mezipaměti obsahu z koncového bodu Azure CDN.
+title: Vyprázdnit Azure CDN koncový bod | Microsoft Docs
+description: Naučte se vyprázdnit veškerý obsah uložený v mezipaměti z Azure CDNho koncového bodu.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -14,66 +14,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: magattus
-ms.openlocfilehash: ff877810cb32d22cffd2af79880b6223c41d7d73
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 1bfbc1b730811e1111a08a957db3a747f90fb587
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593532"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546205"
 ---
-# <a name="purge-an-azure-cdn-endpoint"></a>Vyprázdnění koncového bodu Azure CDN
+# <a name="purge-an-azure-cdn-endpoint"></a>Vyprázdnit Azure CDN koncový bod
 ## <a name="overview"></a>Přehled
-Azure hraniční uzly CDN ukládá prostředky do vypršení platnosti prostředku time to live (TTL).  Po vypršení platnosti TTL prostředku, když klient požádá o prostředek z hraničního uzlu, na hraničním uzlu se načtou novou aktualizovanou kopii prostředku obsluhovat žádosti klienta a úložiště aktualizovat mezipaměť.
+Azure CDN hraniční uzly budou prostředky ukládat do mezipaměti, dokud nevyprší hodnota TTL (Time to Live) prostředku.  Po vypršení hodnoty TTL prostředku, když klient požaduje prostředek z hraničního uzlu, vytvoří hraniční uzel novou aktualizovanou kopii assetu, která bude obsluhovat požadavek klienta a uloží mezipaměť do úložiště.
 
-Osvědčeným postupem zajistit, aby vaši uživatelé vždy získat nejnovější verzi vaše prostředky se vaše prostředky pro každou aktualizaci na verzi a publikujte je jako nové adresy URL.  CDN okamžitě budou načítat nové prostředky pro další požadavky klienta.  Někdy můžete chtít Vyprázdnit obsah uložený v mezipaměti ze všech hraničních uzlů a vynuťte jejich všechny k načtení nové materiály aktualizované.  To může být způsobeno aktualizace do vaší webové aplikace, a rychle aktualizace prostředky, které obsahují nesprávné informace.
+Osvědčeným postupem je zajistit, aby vaši uživatelé měli vždycky přístup k nejnovější kopii vašich assetů, aby si mohli každou aktualizaci nastavovat vaše prostředky a publikovat je jako nové adresy URL.  CDN hned načte nové prostředky pro další požadavky klientů.  Někdy možná budete chtít vyprázdnit obsah uložený v mezipaměti ze všech hraničních uzlů a pokaždé, když budou všechny získávat nové aktualizované prostředky.  Důvodem může být aktualizace webové aplikace nebo rychlé aktualizace prostředků, které obsahují nesprávné informace.
 
 > [!TIP]
-> Všimněte si, že vyprazdňování pouze vymaže obsah uložený v mezipaměti v krajních serverů CDN.  Všechny podřízené mezipaměti, jako je například proxy servery a mezipamětí místního prohlížeče, stále se udržují v mezipaměti kopii souboru.  Je důležité si pamatovat, když nastavíte souboru time-to-live.  Můžete vynutit příjem dat klienta do žádosti o nejnovější verzi souboru s tím, že je jedinečný název, pokaždé, když ho aktualizujete nebo s využitím [řetězce dotazu do mezipaměti](cdn-query-string.md).  
+> Počítejte s tím, že vymazání pouze vymaže obsah uložený v mezipaměti na hraničních serverech CDN.  Jakékoli mezipaměti, jako jsou proxy servery a mezipaměti v místních prohlížečích, můžou pořád uchovávat kopii souboru uloženou v mezipaměti.  Je důležité si pamatovat na to, když nastavíte čas na živé soubory.  Můžete vynutit, aby klient pro příjem dat požádal o nejnovější verzi souboru tím, že mu při každé aktualizaci aktualizuje nebo využije výhod [ukládání řetězců dotazů do mezipaměti](cdn-query-string.md).  
 > 
 > 
 
-Tento kurz vás provede vyprázdnění prostředků z koncového bodu všech hraničních uzlů.
+Tento kurz vás provede vymazáním assetů ze všech hraničních uzlů koncového bodu.
 
 ## <a name="walkthrough"></a>Názorný postup
-1. V [webu Azure Portal](https://portal.azure.com), přejděte do profilu CDN obsahujícího koncový bod chcete vyprázdnit.
-2. Z okna profil CDN klikněte na tlačítko Vymazat.
+1. Na webu [Azure Portal](https://portal.azure.com)přejděte do profilu CDN obsahujícího koncový bod, který chcete vyprázdnit.
+2. V okně profilu CDN klikněte na tlačítko vyčistit.
    
     ![Okno profilu CDN](./media/cdn-purge-endpoint/cdn-profile-blade.png)
    
-    Otevře se okno vymazání.
+    Otevře se okno Vyčištění.
    
     ![Okno vyprázdnění CDN](./media/cdn-purge-endpoint/cdn-purge-blade.png)
-3. V okně vymazání vyberte adresu služby, které chcete vymazat z rozevíracího seznamu adresy URL.
+3. V okně vyčistit vyberte v rozevíracím seznamu Adresa URL adresu služby, kterou chcete vymazat.
    
-    ![Vyprázdnit formuláře](./media/cdn-purge-endpoint/cdn-purge-form.png)
+    ![Vyprázdnit formulář](./media/cdn-purge-endpoint/cdn-purge-form.png)
    
    > [!NOTE]
-   > Můžete také získáte do okna pro vymazání kliknutím **vyprázdnit** tlačítka v okně koncového bodu CDN.  V takovém případě **URL** pole budou předem vyplněná adresa služby této konkrétní koncového bodu.
+   > Můžete se také dostat do okna vyprázdnění kliknutím na tlačítko **vyčistit** v okně koncového bodu CDN.  V takovém případě bude pole **Adresa URL** předem vyplněno adresou služby daného konkrétního koncového bodu.
    > 
    > 
-4. Vyberte prostředky, které chcete vyprázdnit z hraničních uzlů.  Pokud chcete vymazat všechny prostředky, klikněte na tlačítko **vyprázdnit vše** zaškrtávací políčko.  V opačném případě zadejte cestu k každý prostředek, který chcete vyprázdnit v **cesta** textového pole. Následující formáty jsou podporovány v cestě.
-    1. **Vyprázdnění jedné adresy URL**: Odstranit jednotlivý prostředek tak, že zadáte úplnou adresu URL s nebo bez přípony souboru, například`/pictures/strasbourg.png`; `/pictures/strasbourg`
-    2. **Zástupné vyprázdnění**: Hvězdička (\*) může sloužit jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v koncovém bodě s `/*` v cestě nebo vymazat všechny podsložky a soubory v rámci konkrétní složky tak, že zadáte složce následovaný `/*`, například`/pictures/*`.  Všimněte si, že zástupné vyprázdnění se momentálně nepodporuje Azure CDN od Akamai. 
-    3. **Kořenové domény vyprázdnění**: Vyprázdnit kořenový koncový bod s "/" v cestě.
+4. Vyberte prostředky, které chcete vymazat z hraničních uzlů.  Pokud chcete vymazat všechny prostředky, klikněte na zaškrtávací políčko **Odstranit vše** .  V opačném případě zadejte cestu každého assetu, který chcete vyprázdnit, do textového pole **cesta** . Následující formáty jsou v cestě podporované.
+    1. **Vyprázdnit jednu adresu URL**: vyprázdnit jednotlivý prostředek zadáním úplné adresy URL s příponou nebo bez přípony souboru, třeba`/pictures/strasbourg.png`; `/pictures/strasbourg`
+    2. **Zástupné znaky**: hvězdička (\*) se dá použít jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v rámci koncového bodu s `/*` v cestě nebo vyprázdnit všechny podsložky a soubory v konkrétní složce zadáním složky, která je následována `/*`, například`/pictures/*`.  Všimněte si, že Azure CDN v současné době nepodporuje zástupné znaky vyprázdnění z Akamai. 
+    3. **Kořenová doména vyprázdnění**: vyprázdní kořen koncového bodu znakem "/" v cestě.
    
    > [!TIP]
-   > Cesty pro vyprázdnění se musí zadat a musí být relativní adresa URL, který se vejde následující [regulárního výrazu](/dotnet/standard/base-types/regular-expression-language-quick-reference). **Odstraní se všechny** a **zástupné vyprázdnění** nepodporuje **Azure CDN od Akamai** aktuálně.
-   > > Vyprázdnění jedné adresy URL `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
-   > > Řetězec dotazu `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
-   > > Zástupné vyprázdnění `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`. 
+   > Pro vyprázdnění je nutné zadat cesty a musí se jednat o relativní adresu URL, která se vejde do následujícího [regulárního výrazu](/dotnet/standard/base-types/regular-expression-language-quick-reference). **Vyprázdnit všechny** a **zástupné znaky** , které **Azure CDN z Akamai** aktuálně nepodporuje.
+   > > `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";` vyprázdnění jedné adresy URL  
+   > > `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";` řetězce dotazu  
+   > > `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`zástupné znaky 
    > 
-   > Další **cesta** textová pole se zobrazí, když zadáte text, který umožňuje vytvořit seznam více prostředků.  Prostředky můžete odstranit ze seznamu klikněte na tlačítko se třemi tečkami (...).
+   > Další textová pole **cesty** se zobrazí po zadání textu, který vám umožní vytvořit seznam více prostředků.  Assety můžete ze seznamu odstranit kliknutím na tlačítko se třemi tečkami (...).
    > 
-5. Klikněte na tlačítko **vyprázdnit** tlačítko.
+5. Klikněte na tlačítko **vyčistit** .
    
-    ![Tlačítko Vymazat](./media/cdn-purge-endpoint/cdn-purge-button.png)
+    ![Tlačítko vyčistit](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> Žádosti o vymazání trvat přibližně 2 zpracovat **Azure CDN od společnosti Microsoft** a **Azure CDN od Verizonu** (standard a premium) a přibližně 10 sekund **Azure CDN od Akamai**.  Azure CDN může obsahovat maximálně 50 souběžných vyprázdnit požadavky v daném okamžiku na úrovni profilu. 
+> Žádosti o vyprázdnění trvat přibližně 10 minut, než se **Azure CDN od Microsoftu**, přibližně 2 minuty s **Azure CDN z Verizon** (Standard a Premium) a přibližně 10 sekund **Azure CDN z Akamai**.  Azure CDN v daném okamžiku na úrovni profilu dosáhl limitu 50 souběžných žádostí o vyprázdnění. 
 > 
 > 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 * [Předběžné načtení prostředků v koncovém bodu Azure CDN](cdn-preload-endpoint.md)
-* [Reference rozhraní REST API služby CDN Azure – mazání nebo předběžné načtení koncový bod](/rest/api/cdn/endpoints)
+* [Odkaz na Azure CDN REST API – vymazání nebo přednačtení koncového bodu](/rest/api/cdn/endpoints)
 

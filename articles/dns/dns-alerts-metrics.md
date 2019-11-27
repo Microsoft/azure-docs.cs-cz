@@ -1,6 +1,6 @@
 ---
-title: Metrics and alerts - Azure DNS
-description: With this learning path, get started with Azure DNS metrics and alerts.
+title: Metriky a výstrahy – Azure DNS
+description: Pomocí této cesty výukového programu začněte pracovat s Azure DNS metrikami a výstrahami.
 services: dns
 documentationcenter: na
 author: asudbring
@@ -19,50 +19,50 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74212403"
 ---
-# <a name="azure-dns-metrics-and-alerts"></a>Azure DNS metrics and alerts
-Azure DNS is a hosting service for DNS domains that provides name resolution using the Microsoft Azure infrastructure. This article describes metrics and alerts for the Azure DNS service.
+# <a name="azure-dns-metrics-and-alerts"></a>Azure DNS metriky a výstrahy
+Azure DNS je hostingová služba pro domény DNS, která poskytuje překlad adres IP pomocí infrastruktury Microsoft Azure. Tento článek popisuje metriky a výstrahy pro službu Azure DNS.
 
-## <a name="azure-dns-metrics"></a>Azure DNS metrics
+## <a name="azure-dns-metrics"></a>Azure DNS metriky
 
-Azure DNS provides metrics for customers to enable them to monitor specific aspects of their DNS zones hosted in the service. In addition, with Azure DNS metrics, you can configure and receive alerts based on conditions of interest. The metrics are provided via the [Azure Monitor service](../azure-monitor/index.yml). Azure DNS provides the following metrics via Azure Monitor for your DNS zones:
+Azure DNS poskytuje zákazníkům metriky, které jim umožní monitorovat konkrétní aspekty svých zón DNS, které jsou hostovány ve službě. Kromě toho s Azure DNS metrikami můžete nakonfigurovat a přijímat výstrahy na základě podmínek zájmu. Metriky jsou k dispozici prostřednictvím [služby Azure monitor](../azure-monitor/index.yml). Azure DNS poskytuje následující metriky prostřednictvím Azure Monitor pro zóny DNS:
 
 -   QueryVolume
 -   RecordSetCount
 -   RecordSetCapacityUtilization
 
-You can also see the [definition of these metrics](../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) on the Azure Monitor documentation page.
+Na stránce dokumentace Azure Monitor můžete také zobrazit [definici těchto metrik](../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) .
 >[!NOTE]
-> At this time, these metrics are only available for Public DNS zones hosted in Azure DNS. If you have Private Zones hosted in Azure DNS, these metrics will not provide data for those zones. In addition, the metrics and alerting feature is only supported in Azure Public cloud. Support for sovereign clouds will follow at a later time. 
+> V tuto chvíli jsou tyto metriky dostupné jenom pro veřejné zóny DNS hostované v Azure DNS. Pokud máte v Azure DNS hostované soukromé zóny, tyto metriky nebudou poskytovat data pro tyto zóny. Funkce metrik a upozorňování se navíc podporují jenom ve veřejném cloudu Azure. Podpora pro cloudy svrchovaného provozu bude následovat později. 
 
-The most granular element that you can see metrics for is a DNS zone. You cannot currently see metrics for individual resource records within a zone.
+Nejpodrobnějiný prvek, pro který vidíte metriky, je zóna DNS. V tuto chvíli nemůžete vidět metriky pro jednotlivé záznamy prostředků v rámci zóny.
 
-### <a name="query-volume"></a>Query volume
+### <a name="query-volume"></a>Svazek dotazu
 
-The *Query Volume* metric in Azure DNS shows the volume of DNS queries (query traffic) that is received by Azure DNS for your DNS zone. The unit of measurement is Count and the aggregation is the total of all the queries received over a period of time. 
+Metrika *svazku dotazu* v Azure DNS zobrazuje objem dotazů DNS (přenos dotazů), které jsou přijímány Azure DNS pro vaši zónu DNS. Měrnou jednotkou je počet a agregace je celková hodnota všech dotazů přijatých v časovém intervalu. 
 
-To view this metric, select Metrics (preview) explorer experience from the Monitor tab in the Azure portal. Select your DNS zone from the Resource drop-down, select the Query Volume metric, and select Sum as the Aggregation. Below screenshot shows an example.  For more information on the Metrics Explorer experience and charting, see [Azure Monitor Metrics Explorer](../azure-monitor/platform/metrics-charts.md).
+Tuto metriku zobrazíte tak, že na kartě monitorování v Azure Portal vyberete možnosti Průzkumník metrik (Preview). Vyberte zónu DNS z rozevíracího seznamu prostředek, vyberte metriku svazku dotazu a jako agregaci Vyberte Sum. Pod ukázkou se zobrazuje příklad.  Další informace o prostředí Průzkumník metrik a vytváření grafů najdete v tématu [Azure Monitor Průzkumník metrik](../azure-monitor/platform/metrics-charts.md).
 
-![Query volume](./media/dns-alerts-metrics/dns-metrics-query-volume.png)
+![Svazek dotazu](./media/dns-alerts-metrics/dns-metrics-query-volume.png)
 
-*Figure: Azure DNS Query Volume metrics*
+*Obrázek: Azure DNS dotazování na metriky svazků*
 
-### <a name="record-set-count"></a>Record Set Count
-The *Record Set Count* metric shows the number of Recordsets in Azure DNS for your DNS zone. All the Recordsets defined in your zone are counted. The unit of measurement is Count and the aggregation is the Maximum of all the Recordsets. To view this metric, select **Metrics (preview)** explorer experience from the **Monitor** tab in the Azure portal. Select your DNS zone from the **Resource** drop-down, select the **Record Set Count** metric, and then select **Max** as the **Aggregation**. For more information on the Metrics Explorer experience and charting, see [Azure Monitor Metrics Explorer](../azure-monitor/platform/metrics-charts.md). 
+### <a name="record-set-count"></a>Počet sad záznamů
+Metrika *počtu sad záznamů* zobrazuje počet sad záznamů v Azure DNS pro vaši zónu DNS. Započítávají se všechny sady záznamů definované ve vaší zóně. Jednotkou měření je počet a agregace je maximální hodnota všech sad záznamů. Tuto metriku zobrazíte tak, že na kartě **monitorování** v Azure Portal vyberete možnosti Průzkumník **metrik (Preview)** . Vyberte zónu DNS z rozevíracího seznamu **prostředek** , vyberte metriku **počtu sad záznamů** a pak jako **agregaci**vyberte **Maximum** . Další informace o prostředí Průzkumník metrik a vytváření grafů najdete v tématu [Azure Monitor Průzkumník metrik](../azure-monitor/platform/metrics-charts.md). 
 
-![Record Set Count](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
+![Počet sad záznamů](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
-*Figure: Azure DNS Record Set Count metrics*
+*Obrázek: Azure DNS metriky počtu sad záznamů*
 
 
-### <a name="record-set-capacity-utilization"></a>Record Set Capacity Utilization
-The *Record Set Capacity Utilization* metric in Azure DNS shows the percentage of utilization of your Recordset capacity for a DNS Zone. Every DNS zone in Azure DNS is subject to a Recordset limit that defines the maximum number of Recordsets that are allowed for the Zone (see [DNS limits](dns-zones-records.md#limits)). Hence, this metric shows you how close you are to hitting the Recordset limit. For example, if you have 500 Recordsets configured for your DNS zone, and the zone has the default Recordset limit of 5000, the RecordSetCapacityUtilization metric will show the value of 10% (which is obtained by dividing 500 by 5000). The unit of measurement is **Percentage** and the **Aggregation** type is **Maximum**. To view this metric, select Metrics (preview) explorer experience from the Monitor tab in the Azure portal. Select your DNS zone from the Resource drop-down, select the Record Set Capacity Utilization metric, and select Max as the Aggregation. Below screenshot shows an example. For more information on the Metrics Explorer experience and charting, see [Azure Monitor Metrics Explorer](../azure-monitor/platform/metrics-charts.md). 
+### <a name="record-set-capacity-utilization"></a>Využití kapacity sady záznamů
+Metrika *využití kapacity sady záznamů* v Azure DNS zobrazuje procento využití kapacity vaší sady záznamů v zóně DNS. Každá zóna DNS v Azure DNS podléhá omezení sady záznamů, které definuje maximální počet sad záznamů, které jsou povoleny pro zónu (viz [omezení služby DNS](dns-zones-records.md#limits)). Proto tato metrika ukazuje, jak blízko vás limit sady záznamů zasáhne. Pokud máte například pro vaši zónu DNS nakonfigurované sady záznamů 500 a tato zóna má výchozí limit sady záznamů 5000, metrika RecordSetCapacityUtilization zobrazí hodnotu 10% (která se získá vydělením 500 hodnotou 5000). Měrnou jednotkou je **procento** a typ **agregace** je **maximální**. Tuto metriku zobrazíte tak, že na kartě monitorování v Azure Portal vyberete možnosti Průzkumník metrik (Preview). Vyberte zónu DNS z rozevíracího seznamu prostředek, vyberte metriku využití kapacity sady záznamů a jako agregaci vyberte max. Pod ukázkou se zobrazuje příklad. Další informace o prostředí Průzkumník metrik a vytváření grafů najdete v tématu [Azure Monitor Průzkumník metrik](../azure-monitor/platform/metrics-charts.md). 
 
-![Record Set Count](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
+![Počet sad záznamů](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
-*Figure: Azure DNS Record Set Capacity Utilization metrics*
+*Obrázek: metriky využití kapacity sady záznamů Azure DNS*
 
-## <a name="alerts-in-azure-dns"></a>Alerts in Azure DNS
-Azure Monitor provides the capability to alert against available metric values. The DNS metrics are available in the new Alert configuration experience. As described in detail in the [Azure Monitor alerts documentation](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), you can select DNS Zone as the resource, choose the Metric signal type, and configure the alert logic and other parameters such as **Period** and **Frequency**. You can further define an [Action Group](../azure-monitor/platform/action-groups.md) for when the alert condition is met, whereby the alert will be delivered via the chosen actions. For more information on how to configure alerting for Azure Monitor metrics, see [Create, view, and manage alerts using Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
+## <a name="alerts-in-azure-dns"></a>Výstrahy v Azure DNS
+Azure Monitor poskytuje možnost upozorňování na dostupné hodnoty metrik. Metriky DNS jsou k dispozici v novém prostředí pro konfiguraci výstrah. Jak je podrobně popsáno v [dokumentaci k výstrahám Azure monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), můžete jako prostředek vybrat zónu DNS, zvolit typ signálu metriky a nakonfigurovat logiku výstrah a další parametry, jako je například **tečka** a **frekvence**. Můžete dále definovat [skupinu akcí](../azure-monitor/platform/action-groups.md) pro situaci, kdy je splněna podmínka výstrahy, a na základě kterých bude výstraha doručena prostřednictvím zvolených akcí. Další informace o tom, jak nakonfigurovat upozorňování pro Azure Monitor metriky, najdete v tématu [Vytvoření, zobrazení a správa výstrah pomocí Azure monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
 
 ## <a name="next-steps"></a>Další kroky
-- Learn more about [Azure DNS](dns-overview.md).
+- Přečtěte si další informace o [Azure DNS](dns-overview.md).

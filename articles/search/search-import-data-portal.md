@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b4ae076ba08af5514caa09a2e8027a1cbc909dc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793674"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534540"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Průvodce importem dat pro Azure Kognitivní hledání
 
@@ -43,7 +43,7 @@ Známá omezení jsou shrnuta takto:
 
 + Průvodce nepodporuje iteraci ani opakované použití. Každý průchod průvodcem vytvoří nový index, dovednosti a konfiguraci indexeru. V průvodci můžete zachovat a znovu použít jenom zdroje dat. Chcete-li upravit nebo Upřesnit další objekty, je nutné použít rozhraní REST API nebo sadu .NET SDK pro načtení a úpravu struktury.
 
-+ Zdrojový obsah se musí nacházet v podporovaném zdroji dat Azure v rámci služby ve stejném předplatném.
++ Zdrojový obsah se musí nacházet v podporovaném zdroji dat Azure.
 
 + Vzorkování je nad podmnožinou zdrojových dat. U rozsáhlých zdrojů dat je možné, že Průvodce neobdrží pole. Pokud vzorkování nestačí, možná budete muset schéma zvětšit nebo opravit odvozené datové typy.
 
@@ -55,7 +55,7 @@ Známá omezení jsou shrnuta takto:
 
 ## <a name="data-source-input"></a>Vstup zdroje dat
 
-Průvodce **importem dat** se připojuje k externímu zdroji dat pomocí interní logiky poskytované indexovací službou Azure kognitivní hledání indexery, které jsou vybavené pro ukázku zdroje, čtení metadat, odhalení dokumentů pro čtení obsahu a struktury a serializace obsahu. jako JSON pro následné importy do Azure Kognitivní hledání.
+Průvodce **importem dat** se připojuje k externímu zdroji dat pomocí interní logiky poskytované indexovací službou Azure kognitivní hledání indexery, které jsou vybavené pro vzorkování zdrojového kódu, čtení metadat, rozlomení dokumentů pro čtení obsahu a struktury a serializace obsahu jako JSON pro následné importy do Azure kognitivní hledání.
 
 Importovat můžete pouze z jedné tabulky, zobrazení databáze nebo ekvivalentní datové struktury, ale struktura může zahrnovat hierarchické nebo vnořené podstruktury. Další informace najdete v tématu [modelování komplexních typů](search-howto-complex-data-types.md).
 

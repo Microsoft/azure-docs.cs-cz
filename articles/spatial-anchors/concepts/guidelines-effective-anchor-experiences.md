@@ -82,7 +82,7 @@ V cílovém scénáři můžou fotky pomáhat. Pokud zobrazíte uživatelům fot
 
 ![Ilustrace kotvy ukazující fotografii cíle na mobilním zařízení uživatele](./media/start-here-edit.png)
 
-### <a name="rooms"></a>pokoje
+### <a name="rooms"></a>Pokoje
 
 Ve scénáři místnosti uživatelé zadají místo jednoduše vědět, že tady je kotva. Uživatelé prohledají místo na svém zařízení a rychle vyhledají kotvu.
 

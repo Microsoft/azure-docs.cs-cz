@@ -1,5 +1,5 @@
 ---
-title: How it works Azure MFA - Azure Active Directory
+title: Jak funguje Azure MFA – Azure Active Directory
 description: Azure Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně plní požadavky uživatelů na jednoduchý proces přihlašování.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -18,42 +18,42 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381978"
 ---
-# <a name="how-it-works-azure-multi-factor-authentication"></a>How it works: Azure Multi-Factor Authentication
+# <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: Azure Multi-Factor Authentication
 
-The security of two-step verification lies in its layered approach. Compromising multiple authentication factors presents a significant challenge for attackers. Even if an attacker manages to learn the user's password, it is useless without also having possession of the additional authentication method. It works by requiring two or more of the following authentication methods:
+Zabezpečení dvoustupňového ověřování spočívá v jeho vrstveném přístupu. Omezení více ověřovacích faktorů prezentuje závažné výzvy pro útočníky. I když se útočník pokusí zjistit heslo uživatele, není k dispozici bez ohledu na další metodu ověřování. Funguje tak, že vyžaduje dvě nebo více následujících metod ověřování:
 
-* Something you know (typically a password)
-* Something you have (a trusted device that is not easily duplicated, like a phone)
-* Something you are (biometrics)
+* Něco, co znáte (obvykle heslo)
+* Něco, co máte (důvěryhodné zařízení, které není jednoduše duplikováno, jako je telefon)
+* Něco, co používáte (biometrika)
 
 <center>
 
-![Conceptual authentication methods image](./media/concept-mfa-howitworks/methods.png)</center>
+Obrázek metod ![koncepčního ověřování](./media/concept-mfa-howitworks/methods.png)</center>
 
-Azure Multi-Factor Authentication (MFA) helps safeguard access to data and applications while maintaining simplicity for users. It provides additional security by requiring a second form of authentication and delivers strong authentication via a range of easy to use [authentication methods](concept-authentication-methods.md). Users may or may not be challenged for MFA based on configuration decisions that an administrator makes.
+Azure Multi-Factor Authentication (MFA) pomáhá chránit přístup k datům a aplikacím a současně zachovává jednoduchost uživatelů. Poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a zajišťuje silné ověřování prostřednictvím řady snadno použitelných [metod ověřování](concept-authentication-methods.md). Na základě rozhodnutí týkajících se konfigurace, která správce provede, se uživatelé můžou nebo nemusí vyvolávat na MFA.
 
-## <a name="how-to-get-multi-factor-authentication"></a>How to get Multi-Factor Authentication?
+## <a name="how-to-get-multi-factor-authentication"></a>Jak získat Multi-Factor Authentication?
 
-Multi-Factor Authentication comes as part of the following offerings:
+Multi-Factor Authentication se dodává jako součást následujících nabídek:
 
-* **Azure Active Directory Premium** or **Microsoft 365 Business** - Full featured use of Azure Multi-Factor Authentication using Conditional Access policies to require multi-factor authentication.
+* **Azure Active Directory Premium** nebo **Microsoft 365 Business** plně vybaveného použití Azure Multi-Factor Authentication pomocí zásad podmíněného přístupu, které vyžadují vícefaktorové ověřování.
 
-* **Azure AD Free** or standalone **Office 365** licenses - Use pre-created [Conditional Access baseline protection policies](../conditional-access/concept-baseline-protection.md) to require multi-factor authentication for your users and administrators.
+* **Azure AD Free** nebo samostatné licence na **Office 365** – pomocí předem vytvořených [zásad ochrany základní úrovně přístupu](../conditional-access/concept-baseline-protection.md) pro uživatele a správce vyžadovat vícefaktorové ověřování.
 
-* **Azure Active Directory Global Administrators** - A subset of Azure Multi-Factor Authentication capabilities are available as a means to protect global administrator accounts.
+* **Azure Active Directory globálních správců** – podmnožina možností Azure Multi-Factor Authentication je dostupná jako způsob ochrany globálních účtů správců.
 
 > [!NOTE]
-> New customers may no longer purchase Azure Multi-Factor Authentication as a standalone offering effective September 1st, 2018. Multi-factor authentication will continue to be an available feature in Azure AD Premium licenses.
+> Noví zákazníci už nemůžou koupit Azure Multi-Factor Authentication jako samostatnou nabídku platnou od 1. září 2018. Multi-Factor Authentication bude nadále dostupná funkce v Azure AD Premium licencích.
 
 ## <a name="supportability"></a>Možnosti podpory
 
-Since most users are accustomed to using only passwords to authenticate, it is important that your organization communicates to all users regarding this process. Awareness can reduce the likelihood that users call your help desk for minor issues related to MFA. However, there are some scenarios where temporarily disabling MFA is necessary. Use the following guidelines to understand how to handle those scenarios:
+Vzhledem k tomu, že většina uživatelů je zvyklá používat k ověřování jenom hesla, je důležité, aby vaše organizace komunikovala se všemi uživateli týkajícími se tohoto procesu. Povědomí může snížit pravděpodobnost, že uživatelé volají vaši technickou podporu s menšími problémy souvisejícími s MFA. Existují však situace, kdy je nutné dočasně zakázat MFA. Následující pokyny vám pomohou pochopit, jak tyto scénáře zvládnout:
 
-* Train your support staff to handle scenarios where the user can't sign in because they do not have access to their authentication methods or they are not working correctly.
-   * Using Conditional Access policies for Azure MFA Service, your support staff can add a user to a group that is excluded from a policy requiring MFA.
-* Consider using Conditional Access named locations as a way to minimize two-step verification prompts. With this functionality, administrators can bypass two-step verification for users that are signing in from a secure trusted network location such as a network segment used for new user onboarding.
-* Deploy [Azure AD Identity Protection](../active-directory-identityprotection.md) and trigger two-step verification based on risk detections.
+* Školením pracovníků podpory můžete zvládnout scénáře, kdy se uživatel nemůže přihlásit, protože nemá přístup ke svým metodám ověřování nebo nepracuje správně.
+   * Pomocí zásad podmíněného přístupu pro službu Azure MFA mohou pracovníci podpory přidat uživatele do skupiny, která je vyloučena ze zásady, která vyžaduje MFA.
+* Zvažte použití podmíněného přístupu s názvem umístění jako způsob, jak minimalizovat výzvy ke dvěma krokům při ověřování. Díky této funkci můžou správci obejít dvoustupňové ověřování u uživatelů, kteří se přihlašují z zabezpečeného důvěryhodného síťového umístění, jako je například segment sítě, který se používá pro nové připojování uživatelů.
+* Nasazení [Azure AD Identity Protection](../active-directory-identityprotection.md) a aktivace dvoustupňového ověřování na základě detekce rizik.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Step-by-step Azure Multi-Factor Authentication deployment](howto-mfa-getstarted.md)
+- [Podrobný postup nasazení Azure Multi-Factor Authentication](howto-mfa-getstarted.md)

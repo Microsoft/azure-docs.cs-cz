@@ -1,6 +1,6 @@
 ---
-title: Monitors in Durable Functions - Azure
-description: Learn how to implement a status monitor using the Durable Functions extension for Azure Functions.
+title: Monitorování v Durable Functions – Azure
+description: Přečtěte si, jak implementovat monitorování stavu pomocí rozšíření Durable Functions pro Azure Functions.
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
@@ -11,9 +11,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232856"
 ---
-# <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Monitor scenario in Durable Functions - Weather watcher sample
+# <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scénář monitorování Durable Functions – ukázka sledovacích procesů počasí
 
-The monitor pattern refers to a flexible *recurring* process in a workflow - for example, polling until certain conditions are met. This article explains a sample that uses [Durable Functions](durable-functions-overview.md) to implement monitoring.
+Model monitorování odkazuje na flexibilní *opakovaný* proces v pracovním postupu – například dotazování do splnění určitých podmínek. Tento článek vysvětluje ukázku, která používá [Durable Functions](durable-functions-overview.md) k implementaci monitorování.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
@@ -21,110 +21,110 @@ The monitor pattern refers to a flexible *recurring* process in a workflow - for
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
-This sample monitors a location's current weather conditions and alerts a user by SMS when the skies are clear. You could use a regular timer-triggered function to check the weather and send alerts. However, one problem with this approach is **lifetime management**. If only one alert should be sent, the monitor needs to disable itself after clear weather is detected. The monitoring pattern can end its own execution, among other benefits:
+Tato ukázka monitoruje aktuální povětrnostní podmínky umístění a upozorní uživatele na serveru SMS, když je Skies jasný. Pomocí běžné funkce aktivované časovačem můžete kontrolovat počasí a odesílat výstrahy. Jedním z problémů s tímto přístupem však je **Správa životnosti**. Pokud by se měla odeslat jenom jedna výstraha, sledování se musí po zjištění jasného počasí zakázat. Model monitorování může ukončit své vlastní provádění mimo jiné výhody:
 
-* Monitors run on intervals, not schedules: a timer trigger *runs* every hour; a monitor *waits* one hour between actions. A monitor's actions will not overlap unless specified, which can be important for long-running tasks.
-* Monitors can have dynamic intervals: the wait time can change based on some condition.
-* Monitors can terminate when some condition is met or be terminated by another process.
-* Monitors can take parameters. The sample shows how the same weather-monitoring process can be applied to any requested location and phone number.
-* Monitors are scalable. Because each monitor is an orchestration instance, multiple monitors can be created without having to create new functions or define more code.
-* Monitors integrate easily into larger workflows. A monitor can be one section of a more complex orchestration function, or a [sub-orchestration](durable-functions-sub-orchestrations.md).
+* Monitory se spouštějí v intervalech, nikoli v plánech: aktivační událost časovače se *spouští* každou hodinu. monitorování *počká* jednu hodinu mezi akcemi. Akce monitorování se nepřekrývají, pokud nejsou zadány, což může být důležité pro dlouhotrvající úlohy.
+* Monitory můžou mít dynamické intervaly: čekací doba se může změnit na základě nějaké podmínky.
+* Monitory mohou skončit, pokud je některá podmínka splněna nebo ukončena jiným procesem.
+* Monitory mohou přijímat parametry. Ukázka ukazuje, jak je možné použít stejný proces monitorování počasí na požadované místo a telefonní číslo.
+* Monitory jsou škálovatelné. Vzhledem k tomu, že každý monitor je instancí orchestrace, lze vytvořit více monitorů bez nutnosti vytvářet nové funkce nebo definovat více kódů.
+* Monitorování se snadno integruje do větších pracovních postupů. Monitorování může být jeden oddíl složitější funkce orchestrace nebo [dílčí orchestrace](durable-functions-sub-orchestrations.md).
 
-## <a name="configuring-twilio-integration"></a>Configuring Twilio integration
+## <a name="configuring-twilio-integration"></a>Konfigurace integrace Twilio
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="configuring-weather-underground-integration"></a>Configuring Weather Underground integration
+## <a name="configuring-weather-underground-integration"></a>Konfigurace integrace s počasí v podzemních přístavech
 
-This sample involves using the Weather Underground API to check current weather conditions for a location.
+Tato ukázka zahrnuje použití povětrnostního rozhraní API ke kontrole aktuálních povětrnostních podmínek pro určité místo.
 
-The first thing you need is a Weather Underground account. You can create one for free at [https://www.wunderground.com/signup](https://www.wunderground.com/signup). Once you have an account, you will need to acquire an API key. You can do so by visiting [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1), then selecting Key Settings. The Stratus Developer plan is free and sufficient to run this sample.
+První věc, kterou potřebujete, je účet v podzemních počasí. Můžete ho vytvořit zdarma na [https://www.wunderground.com/signup](https://www.wunderground.com/signup). Jakmile budete mít účet, budete muset získat klíč rozhraní API. Můžete to udělat tak, že navštívíte [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)a pak vyberete nastavení klíče. Plán pro vývojáře Stratus je zdarma a stačí ke spuštění této ukázky.
 
-Once you have an API key, add the following **app setting** to your function app.
+Jakmile budete mít klíč rozhraní API, přidejte do aplikace Function App následující **nastavení aplikace** .
 
-| App setting name | Value description |
+| Název nastavení aplikace | Popis hodnoty |
 | - | - |
-| **WeatherUndergroundApiKey**  | Your Weather Underground API key. |
+| **WeatherUndergroundApiKey**  | Váš kód rozhraní API pro počasí |
 
-## <a name="the-functions"></a>The functions
+## <a name="the-functions"></a>Funkce
 
-This article explains the following functions in the sample app:
+Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 
-* `E3_Monitor`: An orchestrator function that calls `E3_GetIsClear` periodically. It calls `E3_SendGoodWeatherAlert` if `E3_GetIsClear` returns true.
-* `E3_GetIsClear`: An activity function that checks the current weather conditions for a location.
-* `E3_SendGoodWeatherAlert`: An activity function that sends an SMS message via Twilio.
+* `E3_Monitor`: funkce Orchestrator, která volá `E3_GetIsClear` pravidelně. Volá `E3_SendGoodWeatherAlert`, pokud `E3_GetIsClear` vrátí hodnotu true.
+* `E3_GetIsClear`: funkce aktivity, která kontroluje aktuální povětrnostní podmínky pro určité místo.
+* `E3_SendGoodWeatherAlert`: funkce aktivity, která odesílá zprávu SMS prostřednictvím Twilio.
 
-The following sections explain the configuration and code that is used for C# scripting and JavaScript. The code for Visual Studio development is shown at the end of the article.
+Následující části vysvětlují konfiguraci a kód, který se používá C# pro skriptování a JavaScript. Kód pro vývoj v aplikaci Visual Studio se zobrazí na konci článku.
 
-## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>The weather monitoring orchestration (Visual Studio Code and Azure portal sample code)
+## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Orchestrace sledování počasí (ukázka Visual Studio Code a Azure Portal ukázkový kód)
 
-The **E3_Monitor** function uses the standard *function.json* for orchestrator functions.
+Funkce **E3_Monitor** používá standardní *funkci Function. JSON* pro funkce Orchestrator.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_Monitor/function.json)]
 
-Here is the code that implements the function:
+Zde je kód, který implementuje funkci:
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#Pravidel
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
-This orchestrator function performs the following actions:
+Tato funkce Orchestrator provádí následující akce:
 
-1. Gets the **MonitorRequest** consisting of the *location* to monitor and the *phone number* to which it will send an SMS notification.
-2. Determines the expiration time of the monitor. The sample uses a hard-coded value for brevity.
-3. Calls **E3_GetIsClear** to determine whether there are clear skies at the requested location.
-4. If the weather is clear, calls **E3_SendGoodWeatherAlert** to send an SMS notification to the requested phone number.
-5. Creates a durable timer to resume the orchestration at the next polling interval. The sample uses a hard-coded value for brevity.
-6. Continues running until the `CurrentUtcDateTime` (.NET) or `currentUtcDateTime` (JavaScript) passes the monitor's expiration time, or an SMS alert is sent.
+1. Získá **MonitorRequest** sestávající z *umístění* , které se má monitorovat, a *telefonní číslo* , na které se pošle oznámení SMS.
+2. Určuje čas vypršení platnosti monitoru. Ukázka používá pevně zakódované hodnoty pro zkrácení.
+3. Volá **E3_GetIsClear** k určení, zda v požadovaném umístění nejsou jasné Skies.
+4. Pokud je počasí jasné, zavolá **E3_SendGoodWeatherAlert** k odeslání oznámení SMS požadovanému telefonnímu číslu.
+5. Vytvoří trvalý časovač pro pokračování orchestrace při dalším intervalu dotazování. Ukázka používá pevně zakódované hodnoty pro zkrácení.
+6. Pokračuje v běhu, dokud `CurrentUtcDateTime` (.NET) nebo `currentUtcDateTime` (JavaScript) neprojde časem vypršení platnosti monitoru, nebo se pošle výstraha SMS.
 
-Multiple orchestrator instances can run simultaneously by sending multiple **MonitorRequests**. The location to monitor and the phone number to send an SMS alert to can be specified.
+Několik instancí nástroje Orchestrator může běžet současně posíláním více **MonitorRequests**. Umístění, které se má monitorovat, a telefonní číslo, na které se má odeslat výstraha SMS, se může zadat.
 
-## <a name="strongly-typed-data-transfer-net-only"></a>Strongly-typed data transfer (.NET only)
+## <a name="strongly-typed-data-transfer-net-only"></a>Přenos dat silného typu (jenom .NET)
 
-The orchestrator requires multiple pieces of data, so [shared POCO objects](../functions-reference-csharp.md#reusing-csx-code) are used for strongly-typed data transfer in C# and C# script:  
+Nástroj Orchestrator vyžaduje více dat, takže [sdílené objekty POCO](../functions-reference-csharp.md#reusing-csx-code) se používají pro přenos dat silného typu v C# nástroji a C# skript:  
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
 
-The JavaScript sample uses regular JSON objects as parameters.
+Ukázka JavaScriptu jako parametry používá regulární objekty JSON.
 
-## <a name="helper-activity-functions"></a>Helper activity functions
+## <a name="helper-activity-functions"></a>Funkce aktivity pomocníka
 
-As with other samples, the helper activity functions are regular functions that use the `activityTrigger` trigger binding. The **E3_GetIsClear** function gets the current weather conditions using the Weather Underground API and determines whether the sky is clear. The *function.json* is defined as follows:
+Stejně jako u jiných ukázek jsou funkce aktivity pomocníka běžné funkcemi, které používají vazbu triggeru `activityTrigger`. Funkce **E3_GetIsClear** získává aktuální povětrnostní podmínky pomocí rozhraní API pro počasí, které určuje, zda je nebe jasný. *Funkce Function. JSON* je definována takto:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
 
-And here is the implementation. Like the POCOs used for data transfer, logic to handle the API call and parse the response JSON is abstracted into a shared class in C#. You can find it as part of the [Visual Studio sample code](#run-the-sample).
+A zde je implementace. Podobně jako POCOs, který se používá pro přenos dat, je logika pro zpracování volání rozhraní API a analýza JSON odpovědi je abstraktní na sdílenou C#třídu v. Můžete ji najít v rámci [ukázkového kódu sady Visual Studio](#run-the-sample).
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#Pravidel
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-The **E3_SendGoodWeatherAlert** function uses the Twilio binding to send an SMS message notifying the end user that it's a good time for a walk. Its *function.json* is simple:
+Funkce **E3_SendGoodWeatherAlert** používá vazbu Twilio k odeslání zprávy SMS upozorňující koncového uživatele, že se jedná o dobrý čas pro procházení. Jeho *Function. JSON* je jednoduchý:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/function.json)]
 
-And here is the code that sends the SMS message:
+A zde je kód, který odesílá zprávu SMS:
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#Pravidel
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Using the HTTP-triggered functions included in the sample, you can start the orchestration by sending the following HTTP POST request:
+Pomocí funkcí aktivovaných protokolem HTTP, které jsou součástí ukázky, můžete zahájit orchestraci odesláním následující žádosti HTTP POST:
 
 ```
 POST https://{host}/orchestrators/E3_Monitor
@@ -143,9 +143,9 @@ RetryAfter: 10
 {"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
 
-The **E3_Monitor** instance starts and queries the current weather conditions for the requested location. If the weather is clear, it calls an activity function to send an alert; otherwise, it sets a timer. When the timer expires, the orchestration will resume.
+Instance **E3_Monitor** se spustí a zadá dotaz na aktuální povětrnostní podmínky pro požadované umístění. Pokud je počasí jasné, volá funkci aktivity k odeslání výstrahy. v opačném případě nastaví časovač. Po vypršení platnosti časovače bude orchestrace pokračovat.
 
-You can see the orchestration's activity by looking at the function logs in the Azure Functions portal.
+Aktivitu orchestrace si můžete prohlédnout v protokolech funkce na portálu Azure Functions.
 
 ```
 2018-03-01T01:14:41.649 Function started (Id=2d5fcadf-275b-4226-a174-f9f943c90cd1)
@@ -163,24 +163,24 @@ You can see the orchestration's activity by looking at the function logs in the 
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-The orchestration will [terminate](durable-functions-instance-management.md) once its timeout is reached or clear skies are detected. You can also use `TerminateAsync` (.NET) or `terminate` (JavaScript) inside another function or invoke the **terminatePostUri** HTTP POST webhook referenced in the 202 response above, replacing `{text}` with the reason for termination:
+Orchestrace se [ukončí](durable-functions-instance-management.md) po dosažení časového limitu nebo se zjistí vymazání Skies. V rámci jiné funkce můžete také použít `TerminateAsync` (.NET) nebo `terminate` (JavaScript) nebo vyvolat **terminatePostUri** http post Webhook, na který odkazuje odpověď 202, a nahrazuje `{text}` důvod ukončení:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
 
-## <a name="visual-studio-sample-code"></a>Visual Studio sample code
+## <a name="visual-studio-sample-code"></a>Vzorový kód sady Visual Studio
 
-Here is the orchestration as a single C# file in a Visual Studio project:
+Toto je orchestrace jako jeden C# soubor v projektu sady Visual Studio:
 
 > [!NOTE]
-> You will need to install the `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget package to run the sample code below.
+> Pro spuštění ukázkového kódu níže budete muset nainstalovat balíček `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 
 ## <a name="next-steps"></a>Další kroky
 
-This sample has demonstrated how to use Durable Functions to monitor an external source's status using [durable timers](durable-functions-timers.md) and conditional logic. The next sample shows how to use external events and [durable timers](durable-functions-timers.md) to handle human interaction.
+Tato ukázka ukázala, jak použít Durable Functions k monitorování stavu externího zdroje pomocí [trvalých časovačů](durable-functions-timers.md) a podmíněné logiky. Další příklad ukazuje, jak použít externí události a [trvalé časovače](durable-functions-timers.md) pro zpracování lidské interakce.
 
 > [!div class="nextstepaction"]
-> [Run the human interaction sample](durable-functions-phone-verification.md)
+> [Spuštění ukázky lidské interakce](durable-functions-phone-verification.md)

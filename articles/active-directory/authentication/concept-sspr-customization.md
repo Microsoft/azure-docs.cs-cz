@@ -1,6 +1,6 @@
 ---
-title: Customize self-service password reset - Azure Active Directory
-description: Customization options for Azure AD self-service password reset
+title: Přizpůsobení samoobslužného resetování hesla – Azure Active Directory
+description: Možnosti vlastního nastavení pro Samoobslužné resetování hesla služby Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,75 +18,75 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381939"
 ---
-# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Customize the Azure AD functionality for self-service password reset
+# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Přizpůsobení funkce Azure AD pro Samoobslužné resetování hesla
 
-IT professionals who want to deploy self-service password reset (SSPR) in Azure Active directory (Azure AD) can customize the experience to match their users' needs.
+IT profesionálové, kteří chtějí nasadit Samoobslužné resetování hesla (SSPR) ve službě Azure Active Directory (Azure AD), můžou přizpůsobit prostředí tak, aby odpovídalo potřebám svých uživatelů.
 
-## <a name="customize-the-contact-your-administrator-link"></a>Customize the "Contact your administrator" link
+## <a name="customize-the-contact-your-administrator-link"></a>Přizpůsobení odkazu "kontaktujte správce"
 
-Self-service password reset users have a "Contact your administrator" link available to them in the password reset portal. If a user selects this link, it will do one of two things:
+Uživatelé samoobslužného resetování hesla mají v portálu pro resetování hesel k dispozici odkaz "kontaktujte správce". Pokud uživatel vybere tento odkaz, provede jednu z následujících akcí:
 
-* If left in the default state:
-   * Email is sent to your administrators and asks them to provide assistance in changing the user's password. See the [sample email](#sample-email) below.
-* If customized:
-   * Sends your user to a webpage or email address specified by the administrator for assistance.
+* Pokud necháte výchozí stav:
+   * E-mail se pošle vašim správcům a požádá ho, aby vám poskytl pomoc se změnou hesla uživatele. Podívejte se na [ukázkový e-mail](#sample-email) níže.
+* Pokud je přizpůsobený:
+   * Pošle uživateli na webovou stránku nebo e-mailovou adresu určenou správcem pro pomoc.
 
 > [!TIP]
-> If you customize this, we recommend setting this to something users are already familiar with for support
+> Pokud tuto akci přizpůsobíte, doporučujeme nastavit tuto možnost na uživatele, kteří už pro podporu znají.
 
 > [!WARNING]
-> If you customize this setting with an email address and account that needs a password reset the user may be unable to ask for assistance.
+> Pokud toto nastavení přizpůsobíte pomocí e-mailové adresy a účtu, který vyžaduje resetování hesla, uživatel nemusí být schopen požádat o pomoc.
 
-### <a name="sample-email"></a>Sample email
+### <a name="sample-email"></a>Ukázkový e-mail
 
-![Sample request to reset email sent to Administrator][Contact]
+![Ukázková žádost o resetování e-mailu odeslaného správci][Contact]
 
-The contact email is sent to the following recipients in the following order:
+Kontaktní e-mail se pošle následujícím příjemcům v tomto pořadí:
 
-1. If the **password administrator** role is assigned, administrators with this role are notified.
-2. If no password administrators are assigned, then administrators with the **user administrator** role are notified.
-3. If neither of the previous roles are assigned, then the **global administrators** are notified.
+1. Pokud je přiřazena role **správce hesel** , budou správci s touto rolí upozorněni.
+2. Pokud nejsou přiřazeni žádní správci hesla, budou upozorněni správci s rolí **Správce uživatelů** .
+3. Pokud není přiřazená žádná z předchozích rolí, budou se informovat **globální správci** .
 
-In all cases, a maximum of 100 recipients are notified.
+Ve všech případech se oznamuje maximálně 100 příjemců.
 
-To find out more about the different administrator roles and how to assign them, see [Assigning administrator roles in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Další informace o různých rolích správce a jejich přiřazení najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
-### <a name="disable-contact-your-administrator-emails"></a>Disable "Contact your administrator" emails
+### <a name="disable-contact-your-administrator-emails"></a>Zakázání e-mailů s názvem "kontaktujte správce"
 
-If your organization does not want to notify administrators about password reset requests, you can enable the following configuration:
+Pokud vaše organizace nechce informovat správce o požadavcích na resetování hesla, můžete povolit následující konfiguraci:
 
-* Enable self-service password reset for all end users. This option is under **Password Reset** > **Properties**. If you don't want users to reset their own passwords, you can scope access to an empty group. *We don't recommend this option.*
-* Customize the helpdesk link to provide a web URL or mailto: address that users can use to get assistance. This option is under **Password Reset** > **Customization** > **Custom helpdesk email or URL**.
+* Povolit Samoobslužné resetování hesla pro všechny koncové uživatele. Tato možnost je v části **resetování hesla** > **vlastnosti**. Pokud nechcete, aby uživatelé obnovili vlastní hesla, můžete nastavit rozsah přístupu do prázdné skupiny. *Tuto možnost nedoporučujeme.*
+* Přizpůsobte odkaz na helpdesk, který poskytuje adresu URL webu nebo adresu mailto: adresy, které mohou uživatelé použít k získání pomoci. Tato možnost je v části **resetování hesla** > **přizpůsobení** > **e-mail nebo adresa URL vlastního helpdesku**.
 
-## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Customize the AD FS sign-in page for SSPR
+## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Přizpůsobení přihlašovací stránky AD FS pro SSPR
 
-Active Directory Federation Services (AD FS) administrators can add a link to their sign-in page by using the guidance found in the [Add sign-in page description](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) article.
+Správci Active Directory Federation Services (AD FS) (AD FS) můžou přidat odkaz na přihlašovací stránku pomocí pokynů, které najdete v článku [Přidání přihlašovací stránky s popisem](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) .
 
-To add a link to the AD FS sign-in page, use the following command on your AD FS server. Users can use this page to enter the SSPR workflow.
+Chcete-li přidat odkaz na přihlašovací stránku AD FS, použijte následující příkaz na serveru AD FS. Uživatelé můžou pomocí této stránky zadat pracovní postup SSPR.
 
 ``` powershell
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
 ```
 
-## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Customize the sign-in page and access panel look and feel
+## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Přizpůsobení stránky pro přihlášení a vzhledu přístupového panelu
 
-You can customize the sign-in page. You can add a logo that appears along with the image that fits your company branding.
+Přihlašovací stránku můžete přizpůsobit. Můžete přidat logo, které se zobrazí spolu s obrázkem, který odpovídá branding vaší společnosti.
 
-The graphics you choose are shown in the following circumstances:
+Obrázek, který zvolíte, se zobrazí v následujících situacích:
 
-* After a user enters their username
-* If the user accesses the customized URL:
-   * By passing the `whr` parameter to the password reset page, like `https://login.microsoftonline.com/?whr=contoso.com`
-   * By passing the `username` parameter to the password reset page, like `https://login.microsoftonline.com/?username=admin@contoso.com`
+* Poté, co uživatel zadá své uživatelské jméno
+* Pokud uživatel přistupuje k přizpůsobené adrese URL:
+   * Předáním parametru `whr` na stránku pro resetování hesla, například `https://login.microsoftonline.com/?whr=contoso.com`
+   * Předáním parametru `username` na stránku pro resetování hesla, například `https://login.microsoftonline.com/?username=admin@contoso.com`
 
-Find details on how to configure company branding in the article [Add company branding to your sign-in page in Azure AD](../fundamentals/customize-branding.md).
+Podrobné informace o tom, jak nakonfigurovat Branding společnosti, najdete v článku [Přidání firemního brandingu na přihlašovací stránku ve službě Azure AD](../fundamentals/customize-branding.md).
 
-### <a name="directory-name"></a>Directory name
+### <a name="directory-name"></a>Název adresáře
 
-You can change the directory name attribute under **Azure Active Directory** > **Properties**. You can show a friendly organization name that is seen in the portal and in the automated communications. This option is the most visible in automated emails in the forms that follow:
+V části **Azure Active Directory** > **vlastnosti**můžete změnit atribut název adresáře. Můžete zobrazit popisný název organizace, který se zobrazuje na portálu a v automatizované komunikaci. Tato možnost je nejvíce viditelná v automatizovaných e-mailech ve formulářích, které následují:
 
-* The friendly name in the email, for example “Microsoft on behalf of CONTOSO demo”
-* The subject line in the email, for example “CONTOSO demo account email verification code”
+* Popisný název v e-mailu, například Microsoft jménem ukázky společnosti CONTOSO
+* Řádek předmětu v e-mailu, například kód pro ověření e-mailu s ukázkovým účtem CONTOSO
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -94,13 +94,13 @@ You can change the directory name attribute under **Azure Active Directory** > *
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
-* [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
+* [Jaká data používá SSPR a jaká data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [I think something is broken. How do I troubleshoot SSPR?](active-directory-passwords-troubleshoot.md)
-* [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
+* [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](active-directory-passwords-troubleshoot.md)
+* [Mám otázku, která nebyla zodpovězena jinde](active-directory-passwords-faq.md)
 
-[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Contact your administrator for help with resetting your password email example"
+[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Řekněte správci, aby vám pomohli resetovat e-maily s heslem. příklad"

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5eefac10e2ab196affc4c4148348d19959fcfeec
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bdc178661cf4db8505a444d1f5575bb3d0375979
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74266903"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547528"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -327,6 +327,10 @@ Uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Power
 > [!NOTE]
 > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell je tato role označená jako "Power BI Správce služby". V [Azure Portal](https://portal.azure.com)je "Power BI správce".
 
+### <a name="power-platform-administratorpower-platform-administrator-permissions"></a>[Správce Power Platform](#power-platform-administrator-permissions)
+
+Uživatelé v této roli můžou vytvářet a spravovat všechny aspekty prostředí, PowerApps, toků a zásady ochrany před únikem informací. Kromě toho uživatelé s touto rolí mají možnost spravovat lístky podpory a monitorovat stav služby.
+
 ### <a name="privileged-authentication-administratorprivileged-authentication-administrator-permissions"></a>[Správce privilegovaného ověřování](#privileged-authentication-administrator-permissions)
 
 Uživatelé s touto rolí můžou nastavit nebo resetovat přihlašovací údaje hesla pro všechny uživatele, včetně globálních správců, a můžou aktualizovat hesla pro všechny uživatele. Správci privilegovaného ověřování můžou vynutit, aby se uživatelé znovu zaregistrovali proti stávajícím přihlašovacím údajům bez hesla (například MFA, FIDO) a odvolali si MFA na zařízení. při příštím přihlášení všech uživatelů se zobrazí dotaz na MFA.
@@ -445,7 +449,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 | --- | --- |
 |Obecná oprávnění|<p>Vytváření uživatelů a skupin</p><p>Vytváření a Správa uživatelských zobrazení</p><p>Správa lístků podpory Office<p>Aktualizace zásad vypršení platnosti hesla|
 |<p>U všech uživatelů, včetně všech správců</p>|<p>Spravovat licence</p><p>Spravovat všechny vlastnosti uživatele kromě hlavního názvu uživatele</p>
-|Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatele|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetovat heslo</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
+|Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatele|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
@@ -1345,12 +1349,31 @@ Může spravovat všechny aspekty Power BI produktu.
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
 >
 >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Umožňuje spravovat všechny aspekty Power BI. |
+| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+
+
+### <a name="power-platform-administrator-permissions"></a>Oprávnění správce Power Platform
+
+Může vytvářet a spravovat všechny aspekty Microsoft Dynamics 365, PowerApps a Microsoft Flow. 
+
+> [!NOTE]
+> Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
+>
+>
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
+| Microsoft. dynamics365/allEntities/allTasks | Umožňuje spravovat všechny aspekty Dynamics 365. |
+| Microsoft. Flow/allEntities/allTasks | Umožňuje spravovat všechny aspekty Microsoft Flow. |
+| Microsoft. powerApps/allEntities/allTasks | Umožňuje spravovat všechny aspekty PowerApps. |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
@@ -1708,6 +1731,7 @@ Podpora partnerů úrovně 1 | Podpora partnerů Tier1 | 4ba39ca4-527c-499a-b93d
 Podpora partnerů úrovně 2 | Podpora partnerů 2 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Správce hesel | Správce hesel | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Správce služby Power BI | Správce Power BI | a9ea8996-122f-4c74-9520-8edcd192826c
+Správce Power Platform | Správce platforma Power | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 Správce privilegovaného ověřování | Správce privilegovaného ověřování | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 Správce privilegovaných rolí | Správce privilegovaných rolí | e8611ab8-c189-46e8-94e1-60213ab1f814
 Čtečka sestav | Čtečka sestav | 4a5d8f65-41da-4de4-8968-e035b65339cf

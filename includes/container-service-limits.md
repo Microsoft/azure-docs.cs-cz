@@ -17,13 +17,13 @@ ms.locfileid: "74485535"
 ---
 | Prostředek | Výchozí omezení |
 | --- | :--- |
-| Maximum clusters per subscription | 100 |
-| Maximum nodes per cluster with Virtual Machine Availability Sets and Basic Load Balancer SKU  | 100 |
-| Maximum nodes per cluster with Virtual Machine Scale Sets and [Standard Load Balancer SKU][standard-load-balancer] | 800 (100 nodes per [node pool][node-pool]) |
-| Maximum pods per node: [Basic networking][basic-networking] with Kubenet | 110 |
-| Maximum pods per node: [Advanced networking][advanced-networking] with Azure Container Networking Interface | Nasazení Azure CLI: 30<sup>1</sup><br />Azure Resource Manager template: 30<sup>1</sup><br />Nasazení na portálu: 30 |
+| Maximální počet clusterů na předplatné | 100 |
+| Maximální počet uzlů na cluster se skupinami dostupnosti virtuálních počítačů a základní Load Balancer SKU  | 100 |
+| Maximální počet uzlů na cluster s Virtual Machine Scale Sets a [Standard Load BALANCER SKU][standard-load-balancer] | 800 (100 uzlů na [fond uzlů][node-pool]) |
+| Maximální počet lusků na uzel: [základní sítě][basic-networking] s Kubenet | 110 |
+| Maximální počet lusků na uzel: [Pokročilé sítě][advanced-networking] s rozhraním Azure Container Networking | Nasazení Azure CLI: 30<sup>1</sup><br />Šablona Azure Resource Manager: 30<sup>1</sup><br />Nasazení na portálu: 30 |
 
-<sup>1</sup>When you deploy an Azure Kubernetes Service (AKS) cluster with the Azure CLI or a Resource Manager template, this value is configurable up to 250 pods per node. You can't configure maximum pods per node after you've already deployed an AKS cluster, or if you deploy a cluster by using the Azure portal.<br />
+<sup>1</sup> Když nasadíte cluster Azure Kubernetes Service (AKS) pomocí Azure CLI nebo šablony Správce prostředků, tato hodnota se dá nakonfigurovat až na 250 lusky na jeden uzel. Po nasazení clusteru AKS nebo pokud nasazujete cluster pomocí Azure Portal, nemůžete nakonfigurovat maximální počet lusků na uzel.<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

@@ -1,6 +1,6 @@
 ---
-title: Set up Azure IoT Hub Device Provisioning Service using Azure CLI
-description: Quickstart - Set up the Azure IoT Hub Device Provisioning Service using Azure CLI
+title: Nastavení IoT Hub Device Provisioning Service Azure pomocí Azure CLI
+description: Rychlý Start – Nastavení IoT Hub Device Provisioning Service Azure pomocí Azure CLI
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -15,14 +15,14 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228548"
 ---
-# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Quickstart: Set up the IoT Hub Device Provisioning Service with Azure CLI
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service pomocí Azure CLI
 
-Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. This quickstart details using the Azure CLI to create an IoT hub and an IoT Hub Device Provisioning Service, and to link the two services together. 
+Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento rychlý Start podrobně popisuje použití Azure CLI k vytvoření centra IoT a IoT Hub Device Provisioning Service a k propojení obou služeb dohromady. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 > [!IMPORTANT]
-> Both the IoT hub and the provisioning service you create in this quickstart will be publicly discoverable as DNS endpoints. Pokud se rozhodnete změnit názvy těchto prostředků, ujistěte se, že nepoužíváte žádné citlivé údaje.
+> Služba IoT Hub i služba zřizování, které vytvoříte v tomto rychlém startu, budou veřejně zjistitelné jako koncové body DNS. Pokud se rozhodnete změnit názvy těchto prostředků, ujistěte se, že nepoužíváte žádné citlivé údaje.
 >
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -43,35 +43,35 @@ az group create --name my-sample-resource-group --location westus
 >
 >
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Vytvořte centrum IoT pomocí příkazu [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create).
 
-Následující příklad vytvoří centrum IoT *my-sample-hub* v umístění *westus*. An IoT hub name must be globally unique in Azure, so you may want to add a unique prefix or suffix to the example name, or choose a new name altogether. Make sure your name follows proper naming conventions for an IoT hub: it should be 3-50 characters in length, and can contain only upper or lower case alphanumeric characters or hyphens ('-'). 
+Následující příklad vytvoří centrum IoT *my-sample-hub* v umístění *westus*. Název služby IoT Hub musí být globálně jedinečný v Azure, takže můžete chtít přidat jedinečnou předponu nebo příponu k názvu příkladu nebo úplně zvolit nový název. Ujistěte se, že název splňuje správné konvence pojmenování pro IoT Hub: musí mít 3-50 znaků a může obsahovat jenom horní nebo malé alfanumerické znaky nebo spojovníky (-). 
 
 ```azurecli-interactive 
 az iot hub create --name my-sample-hub --resource-group my-sample-resource-group --location westus
 ```
 
-## <a name="create-a-device-provisioning-service"></a>Create a Device Provisioning Service
+## <a name="create-a-device-provisioning-service"></a>Vytvořit službu Device Provisioning Service
 
-Create a Device Provisioning Service with the [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) command. 
+Pomocí příkazu [AZ IoT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) vytvořte službu Device Provisioning. 
 
-The following example creates a provisioning service named *my-sample-dps* in the *westus* location. You will also need to choose a globally unique name for your own provisioning service. Make sure it follows proper naming conventions for an IoT Hub Device Provisioning Service: it should be 3-64 characters in length and can contain only upper or lower case alphanumeric characters or hyphens ('-').
+Následující příklad vytvoří službu zřizování s názvem *My-Sample-DPS* v umístění *westus* . Budete také muset zvolit globálně jedinečný název pro vlastní službu zřizování. Ujistěte se, že splňuje správné konvence pojmenování pro IoT Hub Device Provisioning Service: mělo by být 3-64 znaků a může obsahovat pouze velké nebo malé alfanumerické znaky nebo spojovníky (-).
 
 ```azurecli-interactive 
 az iot dps create --name my-sample-dps --resource-group my-sample-resource-group --location westus
 ```
 
 > [!TIP]
-> Tento příklad vytvoří službu zřizování v umístění Západní USA. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` nebo na stránce [Stav Azure](https://azure.microsoft.com/status/) vyhledáním výrazu Služba Device Provisioning. In commands, locations can be specified either in one word or multi-word format; for example: westus, West US, WEST US, etc. The value is not case sensitive. Pokud k zadání umístění použijete víceslovný formát, uveďte hodnotu v uvozovkách, například `-- location "West US"`.
+> Tento příklad vytvoří službu zřizování v umístění Západní USA. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` nebo na stránce [Stav Azure](https://azure.microsoft.com/status/) vyhledáním výrazu Služba Device Provisioning. V příkazech lze umístění zadat buď v jednom nebo více slovovém formátu; například: westus, Západní USA, západ USA atd. Hodnota nerozlišuje velká a malá písmena. Pokud k zadání umístění použijete víceslovný formát, uveďte hodnotu v uvozovkách, například `-- location "West US"`.
 >
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>Získání připojovacího řetězce pro centrum IoT
 
 K propojení vašeho centra IoT se službou Device Provisioning potřebujete připojovací řetězec centra IoT. Získejte připojovací řetězec pomocí příkazu [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) a výstup příkazu použijte k nastavení proměnné, kterou použijete při propojování těchto dvou prostředků. 
 
-The following example sets the *hubConnectionString* variable to the value of the connection string for the primary key of the hub's *iothubowner* policy (the `--policy-name` parameter can be used to specify a different policy). Trade out *my-sample-hub* for the unique IoT hub name you chose earlier. Tento příkaz pomocí možností [query](/cli/azure/query-azure-cli) a [output](/cli/azure/format-output-azure-cli#tsv-output-format) v Azure CLI extrahuje připojovací řetězec z výstupu příkazu.
+Následující příklad nastaví proměnnou *hubConnectionString* na hodnotu připojovacího řetězce pro primární klíč zásad *iothubownerů* centra (parametr `--policy-name` lze použít k určení jiné zásady). Využívejte si pro jedinečný název služby IoT Hub, který jste zvolili v části *můj ukázkový hub* . Tento příkaz pomocí možností [query](/cli/azure/query-azure-cli) a [output](/cli/azure/format-output-azure-cli#tsv-output-format) v Azure CLI extrahuje připojovací řetězec z výstupu příkazu.
 
 ```azurecli-interactive 
 hubConnectionString=$(az iot hub show-connection-string --name my-sample-hub --key primary --query connectionString -o tsv)
@@ -91,30 +91,30 @@ echo $hubConnectionString
 
 Propojte centrum IoT a službu zřizování pomocí příkazu [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create). 
 
-The following example links an IoT hub named *my-sample-hub* in the *westus* location and a Device Provisioning Service named *my-sample-dps*. Trade out these names for the unique IoT hub and Device Provisioning Service names you chose earlier. The command uses the connection string for your IoT hub that was stored in the *hubConnectionString* variable in the previous step.
+Následující příklad propojuje službu IoT Hub s názvem *My-Sample-hub* v umístění *Westus* a službou Device Provisioning s názvem *My-Sample-DPS*. Využívejte si tyto názvy pro jedinečné názvy služeb IoT Hub a Device Provisioning, které jste si zvolili dříve. Příkaz používá připojovací řetězec pro Centrum IoT, který byl uložen v proměnné *hubConnectionString* v předchozím kroku.
 
 ```azurecli-interactive 
 az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample-resource-group --connection-string $hubConnectionString --location westus
 ```
 
-The command may take a few minutes to complete.
+Dokončení příkazu může trvat několik minut.
 
 ## <a name="verify-the-provisioning-service"></a>Ověření služby zřizování
 
 Získejte podrobnosti o své službě zřizování pomocí příkazu [az iot dps show](/cli/azure/iot/dps#az-iot-dps-show).
 
-Následující příklad získá podrobnosti o službě zřizování *my-sample-dps*. Trade out this name for your own Device Provisioning Service name.
+Následující příklad získá podrobnosti o službě zřizování *my-sample-dps*. Využívejte si tento název pro vlastní název služby Device Provisioning.
 
 ```azurecli-interactive
 az iot dps show --name my-sample-dps
 ```
 Propojené centrum IoT se zobrazí v kolekci *properties.iotHubs*.
 
-![Verify Provisioning Service](./media/quick-setup-auto-provision-cli/verify-provisioning-service.png)
+![Ověřit službu zřizování](./media/quick-setup-auto-provision-cli/verify-provisioning-service.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevyčišťujte prostředky vytvořené v rámci tohoto rychlého startu. Pokud pokračovat nechcete, můžete pomocí následujících příkazů odstranit službu zřizování, centrum IoT nebo skupinu prostředků a všechny její prostředky. Replace the names of the resources written below with the names of your own resources.
+Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevyčišťujte prostředky vytvořené v rámci tohoto rychlého startu. Pokud pokračovat nechcete, můžete pomocí následujících příkazů odstranit službu zřizování, centrum IoT nebo skupinu prostředků a všechny její prostředky. Názvy prostředků napsaných níže nahraďte názvy vašich vlastních prostředků.
 
 Pokud chcete odstranit službu zřizování, spusťte příkaz [az iot dps delete](/cli/azure/iot/dps#az-iot-dps-delete):
 
@@ -135,7 +135,7 @@ az group delete --name my-sample-resource-group
 
 ## <a name="next-steps"></a>Další kroky
 
-In this quickstart, you’ve deployed an IoT hub and a Device Provisioning Service instance, and linked the two resources. To learn how to use this setup to provision a simulated device, continue to the quickstart for creating a simulated device.
+V tomto rychlém startu jste nasadili službu IoT Hub a instanci služby Device Provisioning a propojili jste tyto dva prostředky. Informace o tom, jak pomocí tohoto nastavení zřídit simulované zařízení, najdete v rychlém startu pro vytvoření simulovaného zařízení.
 
 > [!div class="nextstepaction"]
-> [Quickstart to create a simulated device](./quick-create-simulated-device.md)
+> [Rychlý Start k vytvoření simulovaného zařízení](./quick-create-simulated-device.md)

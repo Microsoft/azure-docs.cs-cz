@@ -35,7 +35,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 
 > [!div class="checklist"]
-> * Vytvoření účtu úložiště
+> * vytvořit účet úložiště
 > * Udělit virtuálnímu počítači přístup k přístupovým klíčům účtu úložiště v Resource Manageru. 
 > * Získat přístupový token pomocí identity virtuálního počítače a použít ho k načtení přístupových klíčů k úložišti z Resource Manageru. 
 
@@ -45,7 +45,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště 
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
 Teď vytvoříte účet úložiště (pokud ho ještě nemáte). Tento krok také můžete přeskočit a udělit spravované identitě přiřazené systémem virtuálního počítače přístup ke klíčům stávajícího účtu úložiště. 
 

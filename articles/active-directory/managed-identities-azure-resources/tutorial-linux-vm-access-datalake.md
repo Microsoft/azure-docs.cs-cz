@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Data Lake Store - Linux - Azure AD
+title: Kurz`:` použití spravované identity pro přístup k Azure Data Lake Store-Linux-Azure AD
 description: V tomto kurzu se dozvíte, jak použít spravovanou identitu přiřazenou systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu.
 services: active-directory
 documentationcenter: ''
@@ -26,7 +26,7 @@ ms.locfileid: "74224286"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-This tutorial shows you how to use a system-assigned managed identity for a Linux virtual machine (VM) to access Azure Data Lake Store. Získáte informace o těchto tématech: 
+V tomto kurzu se dozvíte, jak používat spravovanou identitu přiřazenou systémem pro virtuální počítač se systémem Linux pro přístup k Azure Data Lake Store. Získáte informace o těchto tématech: 
 
 V tomto kurzu se naučíte:
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > * Udělit přístup virtuálnímu počítači k Azure Data Lake Store.
 > * Získejte přístupový token pomocí spravované identity přiřazené systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -71,7 +71,7 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
 
 1. Na portálu přejděte ke svému linuxovému virtuálním počítači. V **Přehledu** vyberte **Připojit**.  
 2. Připojte se vybraným klientem SSH k virtuálnímu počítači. 
-3. V okně terminálu použijte cURL a požádejte místní spravované identity Azure o koncový bod prostředků Azure, abyste získali přístupový token k systému souborů Data Lake Store. The resource identifier for Data Lake Store is `https://datalake.azure.net/`.  V identifikátoru prostředku musí být koncové lomítko.
+3. V okně terminálu použijte cURL a požádejte místní spravované identity Azure o koncový bod prostředků Azure, abyste získali přístupový token k systému souborů Data Lake Store. Identifikátor prostředku pro Data Lake Store je `https://datalake.azure.net/`.  V identifikátoru prostředku musí být koncové lomítko.
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
@@ -101,7 +101,7 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
    {"FileStatuses":{"FileStatus":[{"length":0,"pathSuffix":"TestFolder","type":"DIRECTORY","blockSize":0,"accessTime":1507934941392,"modificationTime":1508105430590,"replication":0,"permission":"770","owner":"bd0e76d8-ad45-4fe1-8941-04a7bf27f071","group":"bd0e76d8-ad45-4fe1-8941-04a7bf27f071"}]}}
    ```
 
-5. Teď můžete zkusit do instance Data Lake Store nahrát soubor. Nejprve vytvořte soubor, který chcete nahrát.
+5. Teď můžete zkusit do instance Data Lake Store nahrát soubor. Napřed vytvořte soubor, který chcete nahrát.
 
    ```bash
    echo "Test file." > Test1.txt
@@ -152,7 +152,7 @@ Pomocí jiných rozhraní API systému souborů Data Lake Store můžete přidá
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli, jak použít spravovanou identitu přiřazenou systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu. Další informace o službě Azure Data Lake Store najdete tady:
+V tomto kurzu jste se dozvěděli, jak použít spravovanou identitu přiřazenou systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu. Další informace o službě Azure Data Lake Store:
 
 > [!div class="nextstepaction"]
 >[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)

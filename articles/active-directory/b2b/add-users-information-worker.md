@@ -94,7 +94,7 @@ Samoobslužná správa aplikací vyžaduje určité počáteční nastavení glo
 3. Vyberte **skupiny**.
 4. Vyberte možnost **Nová skupina**.
 5. V části **typ skupiny**vyberte **zabezpečení**.
-6. Zadejte **Název skupiny** a **Popis skupiny**.
+6. Zadejte **název skupiny** a **Popis skupiny**.
 7. V části **typ členství**vyberte **přiřazeno**.
 8. Vyberte **vytvořit**a zavřete stránku **skupiny** .
 9. Na stránce **skupiny – všechny skupiny** otevřete skupinu. 

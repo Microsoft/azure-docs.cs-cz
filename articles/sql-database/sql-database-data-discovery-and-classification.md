@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b5f839cc6216eb12bfd0a86009ec49e987279d6e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 922a2eb910a99a899bdb9f2b3e2392559ec9b0f3
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889841"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548410"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasifikace & Azure SQL Database a SQL Data Warehouse Discovery Data
 
@@ -128,8 +128,9 @@ Důležitým aspektem paradigmata Information Protection je schopnost sledovat p
 
 ![Protokol auditu](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>Správa klasifikace dat pomocí T-SQL
+### <a name="manage-classifications"></a>Spravovat klasifikace
 
+# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
 Pomocí T-SQL můžete přidat nebo odebrat klasifikace sloupců a načíst všechny klasifikace pro celou databázi.
 
 > [!NOTE]
@@ -139,8 +140,7 @@ Pomocí T-SQL můžete přidat nebo odebrat klasifikace sloupců a načíst vše
 - Odeberte klasifikaci z jednoho nebo více sloupců: [klasifikace citlivosti přetažení](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Zobrazit všechny klasifikace v databázi: [Sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="manage-classifications-using-rest-apis"></a>Správa klasifikací pomocí rozhraní REST API
-
+# <a name="rest-apistabazure-rest-api"></a>[Rozhraní REST API](#tab/azure-rest-api)
 Pomocí rozhraní REST API můžete také programově spravovat klasifikace. Publikovaná rozhraní REST API podporují následující operace:
 
 - [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – vytvoří nebo aktualizuje popisek citlivosti daného sloupce.
@@ -152,12 +152,8 @@ Pomocí rozhraní REST API můžete také programově spravovat klasifikace. Pub
 
 - [Seznam doporučený databází](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) – získá Doporučené popisky citlivosti dané databáze.
 
-## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Správa zjišťování a klasifikace dat pomocí Azure PowerShell
-
-K získání všech doporučených sloupců v databázi SQL Azure a spravované instanci můžete použít PowerShell.
-
-### <a name="powershell-cmdlets-for-azure-sql-database"></a>Rutiny PowerShellu pro Azure SQL Database
-
+# <a name="powershell-cmdlet-for-azure-sqltabazure-portal-sqldb"></a>[Rutina PowerShellu pro Azure SQL](#tab/azure-portal-sqldb)
+K získání všech doporučených sloupců ve službě Azure SQL Database můžete použít PowerShell.
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
@@ -165,8 +161,8 @@ K získání všech doporučených sloupců v databázi SQL Azure a spravované 
 - [Enable – AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
 - [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-### <a name="powershell-cmdlets-for-managed-instance"></a>Rutiny PowerShellu pro spravovanou instanci
-
+# <a name="powershell-cmdlets-for-managed-instancetabazure-powershell-mi"></a>[Rutiny PowerShellu pro spravovanou instanci](#tab/azure-powershell-mi)
+K získání všech doporučených sloupců ve spravované instanci můžete použít PowerShell.
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)

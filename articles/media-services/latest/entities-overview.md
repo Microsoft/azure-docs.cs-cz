@@ -70,7 +70,7 @@ Použijte `$orderby` k řazení vrácených objektů zadaným parametrem. Přík
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Pokud chcete výsledky seřadit ve vzestupném nebo sestupném pořadí, přidejte do názvu pole buď `asc`, nebo `desc` a oddělte je mezerou. Příklad: `$orderby properties/created desc`.
+Pokud chcete výsledky seřadit ve vzestupném nebo sestupném pořadí, přidejte do názvu pole buď `asc`, nebo `desc` a oddělte je mezerou. Například: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Přeskočit token
 
@@ -156,29 +156,29 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 Následující tabulka ukazuje, jak můžete použít možnosti filtrování a řazení u různých entit:
 
-|Název entity|Název vlastnosti|Filtr|Objednávka|
+|Název entity|Název vlastnosti|Filtr|Objednání|
 |---|---|---|---|
-|[Aktiva](https://docs.microsoft.com/rest/api/media/assets/)|jméno|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
+|[Aktiva](https://docs.microsoft.com/rest/api/media/assets/)|jméno|`eq`, `gt`, `lt`, `ge``le`|`asc` a `desc`|
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
 ||Properties.Created| `eq`, `gt`, `lt`| `asc` a `desc`|
-|[Zásady pro klíč obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||Properties.Created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||Properties.Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
-||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+|[Zásady pro klíč obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|jméno|`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` a `desc`|
+||Properties.Created    |`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` a `desc`|
+||Properties.Description    |`eq`, `ne`, `ge`, `le`, `gt``lt`||
+||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` a `desc`|
 ||properties.policyId|`eq`, `ne`||
 |[Úlohy](https://docs.microsoft.com/rest/api/media/jobs)| jméno  | `eq`            | `asc` a `desc`|
 ||vlastnosti. State        | `eq`, `ne`        |                         |
-||Properties.Created      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
-||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` a `desc`| 
-|[Lokátory streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||Properties.Created      | `gt`, `ge`, `lt``le`| `asc` a `desc`|
+||properties.lastModified | `gt`, `ge`, `lt``le` | `asc` a `desc`| 
+|[Lokátory streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)|jméno|`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` a `desc`|
 ||Properties.Created    |`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` a `desc`|
-||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-|[Zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies)|jméno|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
-||Properties.Created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` a `desc`|
+|[Zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies)|jméno|`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` a `desc`|
+||Properties.Created    |`eq`, `ne`, `ge`, `le`, `gt``lt`|`asc` a `desc`|
 |[Transformuje](https://docs.microsoft.com/rest/api/media/transforms)| jméno | `eq`            | `asc` a `desc`|
-|| Properties.Created      | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
-|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` a `desc`|
+|| Properties.Created      | `gt`, `ge`, `lt``le`| `asc` a `desc`|
+|| properties.lastModified | `gt`, `ge`, `lt``le`| `asc` a `desc`|
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -284,7 +284,7 @@ Pomocí těchto kroků vytvořte v Azure Monitor upozornění protokolu pomocí 
 >Následující postup vytvoření pravidla výstrahy pro využití prostředků kontejneru vyžaduje, abyste přešli na nové rozhraní API upozornění protokolu, jak je popsáno v tématu [předvoleb rozhraní API pro protokolování výstrah](../platform/alerts-log-api-switch.md).
 >
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 2. V podokně na levé straně vyberte **monitor** . V části **přehledy**vyberte **kontejnery**.
 3. Na kartě **monitorované clustery** vyberte cluster ze seznamu.
 4. V podokně na levé straně **monitorování**vyberte **protokoly** a otevřete stránku Azure monitor protokoly. Tato stránka slouží k zápisu a provádění dotazů Azure Log Analytics.

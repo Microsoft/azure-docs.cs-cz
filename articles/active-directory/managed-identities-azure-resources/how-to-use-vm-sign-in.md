@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3d6d128677d2e82f4750a7771885474bf284fb1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184217"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547391"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure pro přihlášení 
 
@@ -41,7 +41,7 @@ Pokud máte v úmyslu použít Azure PowerShell nebo příklady Azure CLI v tomt
 
 ## <a name="overview"></a>Přehled
 
-Spravované identity pro prostředky Azure poskytují [objekt instančního objektu](../develop/developer-glossary.md#service-principal-object) , který se [vytvoří po povolení spravovaných identit pro prostředky Azure](overview.md#how-does-it-work) na virtuálním počítači. Instančnímu objektu se může udělit přístup k prostředkům Azure a používá se jako identita klienty skriptu a příkazového řádku pro přihlášení a přístup k prostředkům. Aby bylo možné přistupovat k zabezpečeným prostředkům v rámci vlastní identity, je třeba, aby klient skriptu:  
+Spravované identity pro prostředky Azure poskytují [objekt instančního objektu](../develop/developer-glossary.md#service-principal-object) , který se [vytvoří po povolení spravovaných identit pro prostředky Azure](overview.md#how-does-the-managed-identities-for-azure-resources-work) na virtuálním počítači. Instančnímu objektu se může udělit přístup k prostředkům Azure a používá se jako identita klienty skriptu a příkazového řádku pro přihlášení a přístup k prostředkům. Aby bylo možné přistupovat k zabezpečeným prostředkům v rámci vlastní identity, je třeba, aby klient skriptu:  
 
    - musí být zaregistrované a odsouhlasené s Azure AD jako důvěrná/Webová klientská aplikace.
    - Přihlaste se pod svým instančním objektem a použijte přihlašovací údaje aplikace (které jsou ve skriptu nejspíš vložené).
@@ -62,7 +62,7 @@ Následující skript ukazuje, jak:
    echo The managed identity for Azure resources service principal ID is $spID
    ```
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="azure-powershell"></a>Azure Powershell
 
 Následující skript ukazuje, jak:
 

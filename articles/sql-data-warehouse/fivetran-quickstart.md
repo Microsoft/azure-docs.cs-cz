@@ -1,6 +1,6 @@
 ---
-title: Fivetran quickstart
-description: Get started quickly with Fivetran and Azure SQL Data Warehouse.
+title: Rychlý Start Fivetran
+description: Fivetran a Azure SQL Data Warehouse vám umožní rychle začít.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -18,36 +18,36 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229095"
 ---
-# <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Get started quickly with Fivetran and SQL Data Warehouse
+# <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Rychlé zahájení práce s Fivetran a SQL Data Warehouse
 
-This quickstart describes how to set up a new Fivetran user to work with Azure SQL Data Warehouse. The article assumes that you have an existing instance of SQL Data Warehouse.
+V tomto rychlém startu se dozvíte, jak nastavit nového uživatele Fivetran pro práci s Azure SQL Data Warehouse. Článek předpokládá, že máte existující instanci SQL Data Warehouse.
 
-## <a name="set-up-a-connection"></a>Set up a connection
+## <a name="set-up-a-connection"></a>Nastavení připojení
 
-1. Find the fully qualified server name and database name that you use to connect to SQL Data Warehouse.
+1. Vyhledejte plně kvalifikovaný název serveru a databázi, který používáte k připojení k SQL Data Warehouse.
     
-    If you need help finding this information, see [Connect to Azure SQL Data Warehouse](sql-data-warehouse-connect-overview.md).
+    Pokud potřebujete podporu najít tyto informace, přečtěte si téma [připojení k Azure SQL Data Warehouse](sql-data-warehouse-connect-overview.md).
 
-2. In the setup wizard, choose whether to connect your database directly or by using an SSH tunnel.
+2. V Průvodci instalací vyberte, zda chcete připojit databázi přímo nebo pomocí tunelu SSH.
 
-   If you choose to connect directly to your database, you must create a firewall rule to allow access. This method is the simplest and most secure method.
+   Pokud se rozhodnete připojit přímo k databázi, je nutné vytvořit pravidlo brány firewall pro povolení přístupu. Tato metoda je nejjednodušší a nejbezpečnější metodou.
 
-   If you choose to connect by using an SSH tunnel, Fivetran connects to a separate server on your network. The server provides an SSH tunnel to your database. You must use this method if your database is in an inaccessible subnet on a virtual network.
+   Pokud se rozhodnete připojit pomocí tunelu SSH, Fivetran se připojí k samostatnému serveru v síti. Server poskytuje tunel SSH pro vaši databázi. Tuto metodu je nutné použít, pokud je databáze v nepřístupné podsíti ve virtuální síti.
 
-3. Add the IP address **52.0.2.4** to your server-level firewall to allow incoming connections to your SQL Data Warehouse instance from Fivetran.
+3. Přidejte IP adresu **52.0.2.4** do brány firewall na úrovni serveru, abyste umožnili příchozí připojení k vaší SQL Data Warehouse instanci z Fivetran.
 
-   For more information, see [Create a server-level firewall rule](create-data-warehouse-portal.md#create-a-server-level-firewall-rule).
+   Další informace najdete v tématu [Vytvoření pravidla brány firewall na úrovni serveru](create-data-warehouse-portal.md#create-a-server-level-firewall-rule).
 
-## <a name="set-up-user-credentials"></a>Set up user credentials
+## <a name="set-up-user-credentials"></a>Nastavení přihlašovacích údajů uživatele
 
-1. Connect to your Azure SQL Data Warehouse by using SQL Server Management Studio or the tool that you prefer. Sign in as a server admin user. Then, run the following SQL commands to create a user for Fivetran:
-    - In the master database: 
+1. Připojte se k Azure SQL Data Warehouse pomocí SQL Server Management Studio nebo nástroje, kterému dáváte přednost. Přihlaste se jako uživatel s oprávněními správce serveru. Pak spusťte následující příkazy SQL pro vytvoření uživatele pro Fivetran:
+    - V hlavní databázi: 
     
       ```
       CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
       ```
 
-    - In SQL Data Warehouse database:
+    - V SQL Data Warehouse databáze:
 
       ```
       CREATE USER fivetran_user_without_login without login;
@@ -55,31 +55,31 @@ This quickstart describes how to set up a new Fivetran user to work with Azure S
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. Grant the Fivetran user the following permissions to your warehouse:
+2. Udělte uživateli Fivetran následující oprávnění k vašemu skladu:
 
     ```
     GRANT CONTROL to fivetran;
     ```
 
-    CONTROL permission is required to create database-scoped credentials that are used when a user loads files from Azure Blob storage by using PolyBase.
+    Aby bylo možné vytvořit přihlašovací údaje v databázi, které se používají, když uživatel načte soubory ze služby Azure Blob Storage pomocí základu, je nutné mít oprávnění k řízení.
 
-3. Add a suitable resource class to the Fivetran user. The resource class you use depends on the memory that's required to create a columnstore index. For example, integrations with products like Marketo and Salesforce require a higher resource class because of the large number of columns and the larger volume of data the products use. A higher resource class requires more memory to create columnstore indexes.
+3. Přidejte do uživatele Fivetran vhodnou třídu prostředků. Použitá Třída prostředků závisí na paměti, která je potřebná k vytvoření indexu columnstore. Například integrace s produkty, jako je Marketo a Salesforce, vyžadují vyšší třídu prostředků z důvodu velkého počtu sloupců a většího objemu dat, která používají produkty. Vyšší Třída prostředků vyžaduje více paměti pro vytváření indexů columnstore.
 
-    We recommend that you use static resource classes. You can start with the `staticrc20` resource class. The `staticrc20` resource class allocates 200 MB for each user, regardless of the performance level you use. If columnstore indexing fails at the initial resource class level, increase the resource class.
+    Doporučujeme použít statické třídy prostředků. Můžete začít s `staticrc20` třídy prostředků. Třída prostředků `staticrc20` přiděluje každému uživateli 200 MB, bez ohledu na úroveň výkonu, kterou používáte. Pokud indexování columnstore na počáteční úrovni třídy prostředků selhává, zvyšte třídu prostředků.
 
     ```
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
     ```
 
-    For more information, read about [memory and concurrency limits](memory-concurrency-limits.md) and [resource classes](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
+    Další informace najdete v článku o [omezeních paměti a souběžnosti](memory-concurrency-limits.md) a [třídách prostředků](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
 
 
-## <a name="sign-in-to-fivetran"></a>Sign in to Fivetran
+## <a name="sign-in-to-fivetran"></a>Přihlásit se k Fivetran
 
-To sign in to Fivetran, enter the credentials that you use to access SQL Data Warehouse: 
+Pokud se chcete přihlásit k Fivetran, zadejte přihlašovací údaje, které používáte pro přístup k SQL Data Warehouse: 
 
-* Host (your server name).
-* Port.
+* Hostitel (název vašeho serveru).
+* Přístavní.
 * Databáze.
-* User (the user name should be **fivetran\@_server_name_** where *server_name* is part of your Azure host URI: ***server_name*.database.windows.net**).
-* Password.
+* Uživatel (uživatelské jméno by mělo být **fivetran\@_server_name_**  , kde *server_name* je součástí identifikátoru URI hostitele Azure: ***server_name *. Database. Windows. NET**).
+* Zadáno.

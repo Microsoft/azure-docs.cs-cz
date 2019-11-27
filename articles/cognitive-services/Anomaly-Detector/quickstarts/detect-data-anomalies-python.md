@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Detect anomalies as a batch using the Anomaly Detector REST API and Python'
+title: 'Rychlý Start: zjištění anomálií jako dávky pomocí REST API detektoru anomálií a Pythonu'
 titleSuffix: Azure Cognitive Services
-description: Use the Anomaly Detector API to detect abnormalities in your data series either as a batch or on streaming data.
+description: Rozhraní API pro detekci anomálií použijte k detekci anomálií v datové řadě buď jako dávku, nebo na streamovaná data.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,89 +17,89 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483391"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Quickstart: Detect anomalies in your time series data using the Anomaly Detector REST API and Python
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomálií a Pythonu
 
-Use this quickstart to start using the Anomaly Detector API's two detection modes to detect anomalies in your time series data. This Python application sends two API requests containing JSON-formatted time series data, and gets the responses.
+Tento rychlý Start vám umožní začít používat dva režimy zjišťování rozhraní API pro detekci anomálií ke zjištění anomálií v datech časových řad. Tato aplikace Python odesílá dvě požadavky rozhraní API obsahující data časových řad ve formátu JSON a získá odpovědi.
 
-| API request                                        | Application output                                                                                                                         |
+| Požadavek rozhraní API                                        | Výstup aplikace                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| Detect anomalies as a batch                        | The JSON response containing the anomaly status (and other data) for each data point in the time series data, and the positions of any detected anomalies. |
-| Detect the anomaly status of the latest data point | The JSON response containing the anomaly status (and other data) for the latest data point in the time series data.                                                                                                                                         |
+| Zjištění anomálií jako dávky                        | Odpověď JSON obsahující stav anomálie (a další data) pro každý datový bod v datech časové řady a pozice všech zjištěných anomálií. |
+| Zjistit stav anomálií nejnovějšího datového bodu | Odpověď JSON obsahující stav anomálie (a další data) pro poslední datový bod v datech časové řady.                                                                                                                                         |
 
- While this application is written in Python, the API is a RESTful web service compatible with most programming languages. You can find the source code for this quickstart on [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py).
+ I když je tato aplikace napsaná v Pythonu, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- [Python 2.x or 3.x](https://www.python.org/downloads/)
-- An Anomaly detector key and endpoint
-- The [Requests library](https://pypi.org/project/requests/) for python
+- [Python 2. x nebo 3. x](https://www.python.org/downloads/)
+- Klíč a koncový bod detektoru anomálií
+- [Knihovna požadavků](https://pypi.org/project/requests/) pro Python
 
-- A JSON file containing time series data points. The example data for this quickstart can be found on [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
+- Soubor JSON, který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 
-### <a name="create-an-anomaly-detector-resource"></a>Create an Anomaly Detector resource
+### <a name="create-an-anomaly-detector-resource"></a>Vytvoření prostředku detektoru anomálií
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
 
 ## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
-1. Create a new python file and add the following imports.
+1. Vytvořte nový soubor Python a přidejte následující importy.
 
     [!code-python[import statements](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=imports)]
 
-2. Create variables for your subscription key and your endpoint. Below are the URIs you can use for anomaly detection. These will be appended to your service endpoint later to create the API request URLs.
+2. Vytvořte proměnné pro svůj klíč předplatného a koncový bod. Níže jsou uvedeny identifikátory URI, které lze použít pro detekci anomálií. Ty se připojí ke koncovému bodu služby později a vytvoří adresy URL žádostí o rozhraní API.
 
-    |Detection method  |URI  |
+    |Metoda detekce  |Identifikátor URI  |
     |---------|---------|
-    |Batch detection    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |Detection on the latest data point     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    |Zjišťování dávky    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
+    |Zjišťování nejnovějšího datového bodu     | `/anomalydetector/v1.0/timeseries/last/detect`        |
 
     [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
-3. Read in the JSON data file by opening it, and using `json.load()`.
+3. V datovém souboru JSON si přečtěte otevřením a použitím `json.load()`.
 
     [!code-python[Open JSON file and read in the data](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=fileLoad)]
 
-## <a name="create-a-function-to-send-requests"></a>Create a function to send requests
+## <a name="create-a-function-to-send-requests"></a>Vytvoření funkce pro odesílání požadavků
 
-1. Create a new function called `send_request()` that takes the variables created above. Then perform the following steps.
+1. Vytvořte novou funkci nazvanou `send_request()`, která přebírá proměnné vytvořené výše. Pak proveďte následující kroky.
 
-2. Create a dictionary for the request headers. Set the `Content-Type` to `application/json`, and add your subscription key to the `Ocp-Apim-Subscription-Key` header.
+2. Vytvořte slovník pro hlavičky požadavku. Nastavte `Content-Type` na `application/json`a do hlavičky `Ocp-Apim-Subscription-Key` přidejte svůj klíč předplatného.
 
-3. Send the request using `requests.post()`. Combine your endpoint and anomaly detection URL for the full request URL, and include your headers, and json request data. And then return the response.
+3. Odešlete žádost pomocí `requests.post()`. Zkombinujte adresu URL koncového bodu a detekce anomálií pro úplnou adresu URL požadavku a zahrňte do nich vaše hlavičky a data požadavku JSON. A potom odpověď vraťte.
 
     [!code-python[request method](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=request)]
 
-## <a name="detect-anomalies-as-a-batch"></a>Detect anomalies as a batch
+## <a name="detect-anomalies-as-a-batch"></a>Zjištění anomálií jako dávky
 
-1. Create a method called `detect_batch()` to detect anomalies throughout the data as a batch. Call the `send_request()` method created above with your endpoint, url, subscription key, and json data.
+1. Vytvořte metodu nazvanou `detect_batch()` pro detekci anomálií v datech jako dávku. Zavolejte metodu `send_request()` vytvořenou výše s vaším koncovým bodem, adresou URL, klíčem předplatného a data JSON.
 
-2. Call `json.dumps()` on the result to format it, and print it to the console.
+2. Zavoláním `json.dumps()` ve výsledku ho naformátujete a vytisknete do konzoly.
 
-3. If the response contains `code` field, print the error code and error message.
+3. Pokud odpověď obsahuje `code` pole, vytiskněte kód chyby a chybovou zprávu.
 
-4. Otherwise, find the positions of anomalies in the data set. The response's `isAnomaly` field contains a boolean value relating to whether a given data point is an anomaly. Iterate through the list, and print the index of any `True` values. These values correspond to the index of anomalous data points, if any were found.
+4. V opačném případě najděte pozice anomálií v datové sadě. Pole `isAnomaly` odpovědi obsahuje logickou hodnotu týkající se toho, zda je daný datový bod anomálií. Iterujte v seznamu a vytiskněte index všech `True` hodnot. Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
 
     [!code-python[detection as a batch](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectBatch)]
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Detect the anomaly status of the latest data point
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Zjistit stav anomálií nejnovějšího datového bodu
 
-1. Create a method called `detect_latest()` to determine if the latest data point in your time series is an anomaly. Call the `send_request()` method above with your endpoint, url, subscription key, and json data. 
+1. Vytvořte metodu nazvanou `detect_latest()` k určení, zda je poslední datový bod v časové řadě anomálií. Zavolejte metodu `send_request()` výše s vaším koncovým bodem, adresou URL, klíčem předplatného a data JSON. 
 
-2. Call `json.dumps()` on the result to format it, and print it to the console.
+2. Zavoláním `json.dumps()` ve výsledku ho naformátujete a vytisknete do konzoly.
 
     [!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
 
-## <a name="send-the-request"></a>Send the request
+## <a name="send-the-request"></a>Odeslat žádost
 
-Call the anomaly detection methods created above.
+Zavolejte metody detekce anomálií vytvořené výše.
 
 [!code-python[Method calls](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=methodCalls)]
 
 ### <a name="example-response"></a>Příklad odpovědi
 
-A successful response is returned in JSON format. Click the links below to view the JSON response on GitHub:
-* [Example batch detection response](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
-* [Example latest point detection response](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+Ve formátu JSON se vrátí úspěšná odpověď. Kliknutím na následující odkazy zobrazíte odpověď JSON na GitHubu:
+* [Příklad odpovědi na zjišťování dávky](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
+* [Příklad odpovědi na nejnovější zjištění bodu](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

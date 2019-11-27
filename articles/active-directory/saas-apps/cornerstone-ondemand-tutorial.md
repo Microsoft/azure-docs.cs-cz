@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory Single sign-on (SSO) integration with Cornerstone OnDemand | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Cornerstone OnDemand.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s využitím nadřízeného kamene | Microsoft Docs'
+description: Naučte se konfigurovat jednotné přihlašování mezi Azure Active Directory a základním kamenem OnDemand.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,138 +23,138 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227637"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>Tutorial: Azure Active Directory Single sign-on (SSO) integration with Cornerstone OnDemand
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) se základním kamenem OnDemand
 
-In this tutorial, you'll learn how to integrate Cornerstone OnDemand with Azure Active Directory (Azure AD). When you integrate Cornerstone OnDemand with Azure AD, you can:
+V tomto kurzu se dozvíte, jak integrovat OnDemand OnDemand pomocí Azure Active Directory (Azure AD). Když integrujete základní platformu OnDemand s Azure AD, můžete:
 
-* Control in Azure AD who has access to Cornerstone OnDemand.
-* Enable your users to be automatically signed-in to Cornerstone OnDemand with their Azure AD accounts.
-* Manage your accounts in one central location - the Azure portal.
+* Řízení ve službě Azure AD, která má přístup k platformě OnDemand.
+* Umožněte uživatelům, aby se automaticky přihlásili k platformě OnDemand OnDemand pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To get started, you need the following items:
+Chcete-li začít, potřebujete následující položky:
 
-* An Azure AD subscription. If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
-* Cornerstone OnDemand single sign-on (SSO) enabled subscription.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné s povoleným jednoduchým přihlašováním (SSO) s podporou OnDemand.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-In this tutorial, you configure and test Azure AD SSO in a test environment.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Cornerstone OnDemand supports **SP** initiated SSO
-* Cornerstone OnDemand supports [Automated user provisioning](cornerstone-ondemand-provisioning-tutorial.md)
+* Základní kámen OnDemand podporuje jednotné přihlašování iniciované v **SP**
+* Základ OnDemand OnDemand podporuje [automatizované zřizování uživatelů](cornerstone-ondemand-provisioning-tutorial.md)
 
-## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Adding Cornerstone OnDemand from the gallery
+## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Přidání nadzákladu OnDemand z Galerie
 
-To configure the integration of Cornerstone OnDemand into Azure AD, you need to add Cornerstone OnDemand from the gallery to your list of managed SaaS apps.
+Pokud chcete nakonfigurovat integraci základní platformy OnDemand do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat nadřízenou platformu OnDemand z galerie.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. On the left navigation pane, select the **Azure Active Directory** service.
-1. Navigate to **Enterprise Applications** and then select **All Applications**.
-1. To add new application, select **New application**.
-1. In the **Add from the gallery** section, type **Cornerstone OnDemand** in the search box.
-1. Select **Cornerstone OnDemand** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **kamene OnDemand** .
+1. Z panelu výsledků vyberte základní **kámen OnDemand** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-cornerstone-ondemand"></a>Configure and test Azure AD single sign-on for Cornerstone OnDemand
+## <a name="configure-and-test-azure-ad-single-sign-on-for-cornerstone-ondemand"></a>Konfigurace a testování jednotného přihlašování Azure AD pro základní platformu OnDemand
 
-Configure and test Azure AD SSO with Cornerstone OnDemand using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Cornerstone OnDemand.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s využitím OnDemand OnDemand pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v základním kamenem OnDemand.
 
-To configure and test Azure AD SSO with Cornerstone OnDemand, complete the following building blocks:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD se základním kamenem OnDemand, dokončete následující stavební bloky:
 
-1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
-    1. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
-    1. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
-2. **[Configure Cornerstone OnDemand SSO](#configure-cornerstone-ondemand-sso)** - to configure the Single Sign-On settings on application side.
-    1. **[Create Cornerstone OnDemand test user](#create-cornerstone-ondemand-test-user)** - to have a counterpart of B.Simon in Cornerstone OnDemand that is linked to the Azure AD representation of user.
-3. **[Test SSO](#test-sso)** - to verify whether the configuration works.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+2. **[Konfigurovat základní nastavení OnDemand SSO](#configure-cornerstone-ondemand-sso)** – ke konfiguraci jednotného přihlašování na straně aplikace
+    1. **[Vytvoření uživatele](#create-cornerstone-ondemand-test-user)** s podporou vícefaktorového testování – Pokud chcete mít protějšek B. Simon v nadřízeném OnDemand, který je propojený s reprezentací uživatele v Azure AD.
+3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Follow these steps to enable Azure AD SSO in the Azure portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Cornerstone OnDemand** application integration page, find the **Manage** section and select **Single sign-on**.
-1. On the **Select a Single sign-on method** page, select **SAML**.
-1. On the **Set up Single Sign-On with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **OnDemand na základě kamenů** , najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Edit Basic SAML Configuration](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. On the **Basic SAML Configuration** section, perform the following steps:
+1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<company>.csod.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<company>.csod.com`
 
-    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://<company>.csod.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<company>.csod.com`
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [Cornerstone OnDemand Client support team](mailto:moreinfo@csod.com) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot se obraťte na [tým podpory klientů s podporou OnDemand](mailto:moreinfo@csod.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-4. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section,  find **Certificate (Base64)** and select **Download** to download the certificate and save it on your computer.
+4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-6. On the **Set up Cornerstone OnDemand** section, copy the appropriate URL(s) based on your requirement.
+6. V části **nastavit OnDemand základní kámen** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-In this section, you'll create a test user in the Azure portal called B.Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
-1. Select **New user** at the top of the screen.
-1. In the **User** properties, follow these steps:
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
     1. Do pole **Název** zadejte `B.Simon`.  
-    1. In the **User name** field, enter the username@companydomain.extension. Například, `B.Simon@contoso.com`.
-    1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
+    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
     1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Cornerstone OnDemand.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k platformě OnDemand.
 
-1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
-1. In the applications list, select **Cornerstone OnDemand**.
-1. In the app's overview page, find the **Manage** section and select **Users and groups**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **základ OnDemand**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![The Add User link](common/add-assign-user.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
-1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
-1. In the **Add Assignment** dialog, click the **Assign** button.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-cornerstone-ondemand-sso"></a>Configure Cornerstone OnDemand SSO
+## <a name="configure-cornerstone-ondemand-sso"></a>Konfigurace základu pro jednotné přihlašování
 
-To configure single sign-on on **Cornerstone OnDemand** side, you need to send the downloaded **Certificate (Base64)** and appropriate copied URLs from Azure portal to [Cornerstone OnDemand support team](mailto:moreinfo@csod.com). They set this setting to have the SAML SSO connection set properly on both sides.
+Pokud chcete nakonfigurovat jednotné přihlašování na bázi **OnDemand OnDemand** , je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal na [tým podpory pro OnDemand](mailto:moreinfo@csod.com)nadřízeného. Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-### <a name="create-cornerstone-ondemand-test-user"></a>Create Cornerstone OnDemand test user
+### <a name="create-cornerstone-ondemand-test-user"></a>Vytvořit uživatele s OnDemandm základem pro testování
 
-The objective of this section is to create a user called B.Simon in Cornerstone OnDemand. Cornerstone OnDemand supports automatic user provisioning, which is by default enabled. You can find more details [here](https://docs.microsoft.com/azure/active-directory/saas-apps/cornerstone-ondemand-provisioning-tutorial) on how to configure automatic user provisioning.
+Cílem této části je vytvořit uživatele s názvem B. Simon v základním kameni OnDemand. Základní kámen OnDemand podporuje automatické zřizování uživatelů, které je ve výchozím nastavení povolené. Další podrobnosti najdete v [tématu](https://docs.microsoft.com/azure/active-directory/saas-apps/cornerstone-ondemand-provisioning-tutorial) konfigurace automatického zřizování uživatelů.
 
-**If you need to create user manually, perform following steps:**
+**Pokud potřebujete ručně vytvořit uživatele, proveďte následující kroky:**
 
-To configure user provisioning, send the information (e.g.: Name, Email) about the Azure AD user you want to provision to the [Cornerstone OnDemand support team](mailto:moreinfo@csod.com).
+Pokud chcete nakonfigurovat zřizování uživatelů, pošlete informace (např.: jméno, E-mail) o uživateli Azure AD, kterého chcete zřídit [týmu podpory OnDemand](mailto:moreinfo@csod.com).
 
 >[!NOTE]
->You can use any other Cornerstone OnDemand user account creation tools or APIs provided by Cornerstone OnDemand to provision Azure AD user accounts.
+>K zřizování uživatelských účtů Azure AD můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů nebo rozhraní API pro základní platformu OnDemand OnDemand.
 
 ## <a name="test-sso"></a>Test SSO 
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-When you click the Cornerstone OnDemand tile in the Access Panel, you should be automatically signed in to the Cornerstone OnDemand for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici OnDemand OnDemand na přístupovém panelu, měli byste se automaticky přihlášeni k OnDemand OnDemand, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další prostředky
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Try Cornerstone OnDemand with Azure AD](https://aad.portal.azure.com)
+- [Vyzkoušejte si z Azure AD základ OnDemand.](https://aad.portal.azure.com)

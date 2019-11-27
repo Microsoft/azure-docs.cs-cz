@@ -55,7 +55,7 @@ Tento kurz vás provede postupem připojení dat řešení vzdáleného monitoro
 
 2. Až se zobrazí výzva k zadání dat, vyberte Vyhledat "Azure Cosmos DB" a vyberte tento konektor. Tento konektor v podstatě vyžádá data přímo z databáze Cosmos vašeho řešení Azure IoT.
   
-    ![Cosmos DB](./media/iot-accelerators-integrate-data-powerbi/cosmos_db.png)
+    ![Databáze Cosmos](./media/iot-accelerators-integrate-data-powerbi/cosmos_db.png)
   
 3. Zadejte informace, které jste si poznamenali výše:
 

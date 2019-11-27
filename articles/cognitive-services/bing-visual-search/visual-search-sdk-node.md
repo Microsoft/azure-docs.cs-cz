@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Get image insights using the SDK for Node.js - Bing Visual Search'
+title: 'Rychlý Start: Získání přehledů obrázků pomocí sady SDK pro Node. js – Vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to begin getting image insights from the Bing Visual Search service, using the Node.js SDK.
+description: Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z Vizuální vyhledávání Bingu služby pomocí sady Node. js SDK.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,14 +17,14 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383568"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Quickstart: Get image insights using the Bing Visual Search SDK for Node.js
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Rychlý Start: Získání přehledů imagí pomocí Vizuální vyhledávání Bingu SDK pro Node. js
 
-Use this quickstart to begin getting image insights from the Bing Visual Search service, using the Node.js SDK. While Bing Visual Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
+Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z Vizuální vyhledávání Bingu služby pomocí sady Node. js SDK. I když Vizuální vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * [Node.js](https://www.nodejs.org/)
-* The Bing Visual Search SDK for Node.js
-    * To set up a console application using the Bing Visual Search SDK, run the following commands:
+* Sada SDK Vizuální vyhledávání Bingu pro Node. js
+    * Chcete-li nastavit konzolovou aplikaci pomocí sady Vizuální vyhledávání Bingu SDK, spusťte následující příkazy:
         1. `npm install ms-rest-azure`
         2. `npm install azure-cognitiveservices-search-visualSearch`.
 
@@ -35,7 +35,7 @@ Use this quickstart to begin getting image insights from the Bing Visual Search 
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Create a new JavaScript file in your favorite IDE or editor, and add the following requirements. Then create variables for your subscription key, Custom Configuration ID, and file path to the image you want to upload. 
+1. V oblíbených IDE nebo editoru vytvořte nový soubor JavaScriptu a přidejte následující požadavky. Pak vytvořte proměnné pro svůj klíč předplatného, ID vlastní konfigurace a cestu k souboru k imagi, kterou chcete nahrát. 
 
     ```javascript
     const os = require("os");
@@ -49,15 +49,15 @@ Use this quickstart to begin getting image insights from the Bing Visual Search 
     let filePath = "../Data/image.jpg";
     ```
 
-2. Instantiate the client.
+2. Vytvořte instanci klienta.
 
     ```javascript
     let visualSearchClient = new Search.VisualSearchClient(credentials);
     ```
 
-## <a name="search-for-images"></a>Search for images
+## <a name="search-for-images"></a>Hledání imagí
 
-1. Use `fs.createReadStream()` to read in your image file, and create variables for your search request and results. Then use the client to search images.
+1. Pomocí `fs.createReadStream()` si můžete přečíst v souboru obrázku a vytvořit proměnné pro svůj požadavek a výsledky hledání. Pak použijte klienta k hledání imagí.
 
     ```javascript
     let fileStream = fs.createReadStream(filePath);
@@ -110,4 +110,4 @@ Use this quickstart to begin getting image insights from the Bing Visual Search 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](tutorial-bing-visual-search-single-page-app.md)
+> [Sestavení webové aplikace s jednou stránkou](tutorial-bing-visual-search-single-page-app.md)

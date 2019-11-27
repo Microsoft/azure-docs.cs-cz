@@ -41,7 +41,7 @@ V tomto kurzu získáte informace o následujících postupech:
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud nemáte nainstalovanou aplikaci Visual Studio, Získejte [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
-- [Vytvoření účtu Media Services](create-account-cli-how-to.md).<br/>Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services.
+- [Vytvořte účet Media Services](create-account-cli-how-to.md).<br/>Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services.
 - Postupujte podle kroků v [části přístup k rozhraní API Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md) a přihlašovací údaje uložte. Budete je muset použít pro přístup k rozhraní API.
 
 ## <a name="download-and-configure-the-sample"></a>Stažení a konfigurace ukázky
@@ -124,7 +124,7 @@ Dokončení úlohy trvá déle. V takovém případě chcete být upozorněni. E
 
 Cyklické dotazování není doporučeným osvědčeným postupem pro produkční aplikace kvůli možné latenci. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid.
 
-Služba Event Grid je navržená pro vysokou dostupnost, konzistentní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí. Další informace najdete v tématu [Směrování událostí do vlastního webového koncového bodu](job-state-events-cli-how-to.md).
+Služba Event Grid je navržená pro vysokou dostupnost, konzistentní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pochází v podstatě z jakékoli služby Azure nebo vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí. Další informace najdete v tématu [Směrování událostí do vlastního webového koncového bodu](job-state-events-cli-how-to.md).
 
 **Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud se úloha dokončí v rámci chyby, zobrazí se **chybový** stav. Pokud se úloha právě ruší, vrátíte se **a po dokončení** se **zruší** .
 

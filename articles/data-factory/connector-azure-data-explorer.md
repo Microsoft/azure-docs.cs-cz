@@ -11,18 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/26/2019
 ms.author: orspodek
-ms.openlocfilehash: 6945e4dcf6baf44881bd5b13571dd03e3dee41ed
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0ffec2639d9dfbf3a82a3c24248d65a53e114745
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300540"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547147"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Průzkumník dat pomocí Azure Data Factory
 
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data do a z [Azure Průzkumník dat](../data-explorer/data-explorer-overview.md). Vytvoří se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který nabízí obecný přehled aktivity kopírování.
+
+>[!TIP]
+>Azure Data Factory a Azure Průzkumník dat Integration obecně najdete další informace v [integraci služby azure Průzkumník dat s Azure Data Factory](../data-explorer/data-factory-integration.md).
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
@@ -45,7 +48,7 @@ Pomocí konektoru služby Azure Průzkumník dat můžete provádět následují
 ## <a name="getting-started"></a>Začínáme
 
 >[!TIP]
->Návod ke službě Azure Průzkumník dat Connector najdete v tématu [kopírování dat do/z Azure Průzkumník dat pomocí Azure Data Factory](../data-explorer/data-factory-load-data.md).
+>Návod ke službě Azure Průzkumník dat Connector najdete v tématu [kopírování dat do/z Azure Průzkumník dat použití Azure Data Factory](../data-explorer/data-factory-load-data.md) a [hromadného kopírování z databáze do Azure Průzkumník dat](../data-explorer/data-factory-template.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -74,7 +77,7 @@ Pro propojenou službu Azure Průzkumník dat se podporují následující vlast
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** musí být nastavená na **AzureDataExplorer**. | Ano |
-| endpoint | Adresa URL koncového bodu clusteru Azure Průzkumník dat s formátem jako `https://<clusterName>.<regionName>.kusto.windows.net`. | Ano |
+| endpoint | Adresa URL koncového bodu clusteru Azure Průzkumník dat s formátem jako `https://<clusterName>.<regionName>.kusto.windows.net` | Ano |
 | database | Název databáze | Ano |
 | tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. To se označuje jako ID autority v [připojovacím řetězci Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Načtěte ho tak, že najedete myší na ukazatel myši v pravém horním rohu Azure Portal. | Ano |
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. To se označuje jako "ID klienta aplikace AAD" v [připojovacím řetězci Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Ano |
@@ -139,17 +142,17 @@ Podporovány jsou následující vlastnosti:
 
 ### <a name="azure-data-explorer-as-source"></a>Azure Průzkumník dat jako zdroj
 
-Pokud chcete kopírovat data z Azure Průzkumník dat, nastavte vlastnost **typ** ve zdroji aktivity kopírování na **AzureDataExplorerSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Pokud chcete kopírovat data z Azure Průzkumník dat, nastavte vlastnost **typ** ve zdroji aktivity kopírování na **AzureDataExplorerSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na: **AzureDataExplorerSource** | Ano |
+| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na: **AzureDataExplorerSource** . | Ano |
 | query | Požadavek jen pro čtení zadaný ve [formátu KQL](/azure/kusto/query/) Použijte vlastní dotaz KQL jako referenci. | Ano |
 | queryTimeout | Doba čekání před vypršením časového limitu požadavku na dotaz Výchozí hodnota je 10 minut (00:10:00); maximální povolená hodnota je 1 hodina (01:00:00). | Ne |
 | Zkrácení | Označuje, zda se má zkrátit vrácená sada výsledků. Ve výchozím nastavení se výsledek zkrátí po 500 000 záznamech nebo 64 megabajtů (MB). Pro zajištění správného chování aktivity se důrazně doporučuje zkrátit. |Ne |
 
 >[!NOTE]
->Ve výchozím nastavení má Azure Průzkumník dat source omezení velikosti 500 000 záznamů nebo 64 MB. Chcete-li načíst všechny záznamy bez zkrácení, můžete zadat `set notruncation;` na začátku dotazu. Další informace najdete v tématu [omezení dotazů](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
+>Ve výchozím nastavení má Azure Průzkumník dat source omezení velikosti 500 000 záznamů nebo 64 MB. Pokud chcete načíst všechny záznamy bez zkrácení, můžete na začátku dotazu zadat `set notruncation;`. Další informace najdete v tématu [omezení dotazů](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
 
 **Příklad:**
 
@@ -186,12 +189,12 @@ Pokud chcete kopírovat data z Azure Průzkumník dat, nastavte vlastnost **typ*
 
 ### <a name="azure-data-explorer-as-sink"></a>Azure Průzkumník dat jako jímka
 
-Pokud chcete kopírovat data do Azure Průzkumník dat, nastavte vlastnost typ v jímky aktivity kopírování na **AzureDataExplorerSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky** části:
+Pokud chcete kopírovat data do Azure Průzkumník dat, nastavte vlastnost typ v jímky aktivity kopírování na **AzureDataExplorerSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na: **AzureDataExplorerSink**. | Ano |
-| ingestionMappingName | Název předem vytvořeného [mapování](/azure/kusto/management/mappings#csv-mapping) v tabulce Kusto Pokud chcete namapovat sloupce ze zdrojového do služby Azure Průzkumník dat (to platí pro [všechna podporovaná zdrojová úložiště a formáty](copy-activity-overview.md#supported-data-stores-and-formats), včetně formátů CSV/JSON/Avro), můžete použít [mapování sloupce](copy-activity-schema-and-type-mapping.md) aktivita kopírování (implicitně podle názvu nebo explicitně podle konfigurace) a /or mapování Azure Průzkumník dat. | Ne |
+| ingestionMappingName | Název předem vytvořeného [mapování](/azure/kusto/management/mappings#csv-mapping) v tabulce Kusto Pokud chcete namapovat sloupce ze zdrojového do služby Azure Průzkumník dat (to platí pro [všechna podporovaná zdrojová úložiště a formáty](copy-activity-overview.md#supported-data-stores-and-formats), včetně formátů CSV/JSON/Avro), můžete použít [mapování sloupce](copy-activity-schema-and-type-mapping.md) aktivita kopírování (implicitně podle názvu nebo explicitně jako nakonfigurovaná) a mapování Azure Průzkumník dat. | Ne |
 
 **Příklad:**
 

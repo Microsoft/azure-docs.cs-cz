@@ -1,6 +1,6 @@
 ---
-title: Develop and run Azure functions locally
-description: Learn how to code and test Azure functions on your local computer before you run them on Azure Functions.
+title: Místní vývoj a spouštění Azure Functions
+description: Naučte se, jak v místním počítači kódovat a testovat služby Azure Functions, než je spustíte na Azure Functions.
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 835edcb94b294d93cab41ea51b88ac38db71d95e
@@ -10,30 +10,30 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230633"
 ---
-# <a name="code-and-test-azure-functions-locally"></a>Code and test Azure Functions locally
+# <a name="code-and-test-azure-functions-locally"></a>Azure Functions kódu a testování místně
 
-While you're able to develop and test Azure Functions in the [Azure portal], many developers prefer a local development experience. Functions makes it easy to use your favorite code editor and development tools to create and test functions on your local computer. Your local functions can connect to live Azure services, and you can debug them on your local computer using the full Functions runtime.
+I když máte možnost vyvíjet a testovat Azure Functions v [Azure Portal], mnoho vývojářů preferuje místní vývojové prostředí. Funkce usnadňují používání oblíbeného editoru kódu a vývojářských nástrojů k vytváření a testování funkcí v místním počítači. Místní funkce se můžou připojit k živým službám Azure a můžete je ladit na svém místním počítači pomocí modulu runtime Full Functions.
 
-## <a name="local-development-environments"></a>Local development environments
+## <a name="local-development-environments"></a>Místní vývojová prostředí
 
-The way in which you develop functions on your local computer depends on your [language](supported-languages.md) and tooling preferences. The environments in the following table support local development:
+Způsob, jakým vyvíjíte funkce v místním počítači, závisí na vašich [jazykových](supported-languages.md) a nástrojových preferencích. Prostředí v následující tabulce podporují místní vývoj:
 
-|Prostředí                              |Jazyky         |Popis|
+|Prostředí                              |Languages         |Popis|
 |-----------------------------------------|------------|---|
-|[Visual Studio Code](functions-develop-vs-code.md)| [C# (class library)](functions-dotnet-class-library.md), [C# script (.csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [PowerShell](functions-create-first-function-powershell.md), [Python](functions-reference-python.md) | The [Azure Functions extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) adds Functions support to VS Code. Requires the Core Tools. Supports development on Linux, MacOS, and Windows, when using version 2.x of the Core Tools. To learn more, see [Create your first function using Visual Studio Code](functions-create-first-function-vs-code.md). |
-| [Command prompt or terminal](functions-run-local.md) | [C# (class library)](functions-dotnet-class-library.md), [C# script (.csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [PowerShell](functions-reference-powershell.md), [Python](functions-reference-python.md) | [Azure Functions Core Tools] provides the core runtime and templates for creating functions, which enable local development. Version 2.x supports development on Linux, MacOS, and Windows. All environments rely on Core Tools for the local Functions runtime. |
-| [Visual Studio 2019](functions-develop-vs.md) | [C# (class library)](functions-dotnet-class-library.md) | The Azure Functions tools are included in the **Azure development** workload of [Visual Studio 2019](https://www.visualstudio.com/vs/) and later versions. Lets you compile functions in a class library and publish the .dll to Azure. Includes the Core Tools for local testing. To learn more, see [Develop Azure Functions using Visual Studio](functions-develop-vs.md). |
-| [Maven](functions-create-first-java-maven.md) (various) | [Java](functions-reference-java.md) | Integrates with Core Tools to enable development of Java functions. Version 2.x supports development on Linux, MacOS, and Windows. To learn more, see [Create your first function with Java and Maven](functions-create-first-java-maven.md). Also supports development using [Eclipse](functions-create-maven-eclipse.md) and [IntelliJ IDEA](functions-create-maven-intellij.md) |
+|[Visual Studio Code](functions-develop-vs-code.md)| [](functions-create-first-function-powershell.md) [](functions-reference-python.md) [ C# ](functions-reference-csharp.md) [(knihovna tříd), skript (. csx), JavaScript C# ](functions-dotnet-class-library.md), PowerShell, Python [](functions-reference-node.md) | [Rozšíření Azure Functions pro vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) přidává do vs Code podporu funkcí. Vyžaduje základní nástroje. Podporuje vývoj v systémech Linux, MacOS a Windows při použití verze 2. x základních nástrojů. Další informace najdete v tématu [Vytvoření první funkce pomocí Visual Studio Code](functions-create-first-function-vs-code.md). |
+| [Příkazový řádek nebo terminál](functions-run-local.md) | [](functions-reference-powershell.md) [](functions-reference-python.md) [ C# ](functions-reference-csharp.md) [(knihovna tříd), skript (. csx), JavaScript C# ](functions-dotnet-class-library.md), PowerShell, Python [](functions-reference-node.md) | [Azure Functions Core Tools] poskytuje základní modul runtime a šablony pro tvorbu funkcí, které umožňují místní vývoj. Verze 2. x podporuje vývoj v systémech Linux, MacOS a Windows. Všechna prostředí využívají základní nástroje pro modul runtime místních funkcí. |
+| [Visual Studio 2019](functions-develop-vs.md) | [C#(knihovna tříd)](functions-dotnet-class-library.md) | Nástroje pro Azure Functions jsou součástí úlohy **vývoje Azure** sady [Visual Studio 2019](https://www.visualstudio.com/vs/) a novějších verzí. Umožňuje kompilaci funkcí v knihovně tříd a publikování knihovny DLL do Azure. Zahrnuje základní nástroje pro místní testování. Další informace najdete v tématu [vývoj Azure Functions pomocí sady Visual Studio](functions-develop-vs.md). |
+| [Maven](functions-create-first-java-maven.md) (různé) | [Java](functions-reference-java.md) | Integruje se základními nástroji a umožňuje vývoj funkcí Java. Verze 2. x podporuje vývoj v systémech Linux, MacOS a Windows. Další informace najdete v tématu [Vytvoření první funkce pomocí jazyků Java a Maven](functions-create-first-java-maven.md). Podporuje také vývoj pomocí [zatmění](functions-create-maven-eclipse.md) a [IntelliJ nápadu](functions-create-maven-intellij.md) . |
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-Each of these local development environments lets you create function app projects and use predefined Functions templates to create new functions. Each uses the Core Tools so that you can test and debug your functions against the real Functions runtime on your own machine just as you would any other app. You can also publish your function app project from any of these environments to Azure.  
+Každé z těchto místních vývojových prostředí umožňuje vytvářet projekty aplikací Function App a používat předdefinované šablony funkcí k vytváření nových funkcí. Každá z nich používá základní nástroje, takže můžete testovat a ladit své funkce na vlastním počítači pomocí modulu runtime Real Functions, stejně jako u jakékoli jiné aplikace. Projekt aplikace Function App můžete také publikovat z libovolného z těchto prostředí do Azure.  
 
 ## <a name="next-steps"></a>Další kroky
 
-+ To learn more about local development of compiled C# functions using Visual Studio 2019, see [Develop Azure Functions using Visual Studio](functions-develop-vs.md).
-+ To learn more about local development of functions using VS Code on a Mac, Linux, or Windows computer, see [Deploy Azure Functions from VS Code](/azure/javascript/tutorial-vscode-serverless-node-01).
-+ To learn more about developing functions from the command prompt or terminal, see [Work with Azure Functions Core Tools](functions-run-local.md).
++ Další informace o místním vývoji kompilovaných C# funkcí pomocí sady visual Studio 2019 naleznete v tématu [vývoj Azure Functions pomocí sady Visual Studio](functions-develop-vs.md).
++ Další informace o místním vývoji funkcí pomocí VS Code na počítačích se systémem Mac, Linux nebo Windows najdete v tématu [nasazení Azure Functions z vs Code](/azure/javascript/tutorial-vscode-serverless-node-01).
++ Další informace o vývoji funkcí z příkazového řádku nebo terminálu najdete v tématu věnovaném [práci s Azure Functions Core Tools](functions-run-local.md).
 
 <!-- LINKS -->
 

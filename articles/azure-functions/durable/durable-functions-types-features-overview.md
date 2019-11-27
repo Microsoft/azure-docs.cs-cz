@@ -1,6 +1,6 @@
 ---
-title: Function types in the Durable Functions extension of Azure Functions
-description: Learn about the types of functions and roles that support function-to-function communication in a Durable Functions orchestration in Azure Functions.
+title: Typy funkcí v rozšíření Durable Functions Azure Functions
+description: Přečtěte si o typech funkcí a rolí, které podporují komunikaci typu Function-to-Function v Durable Functions orchestrace v Azure Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 08/22/2019
@@ -12,56 +12,56 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232769"
 ---
-# <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions types and features (Azure Functions)
+# <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions typy a funkce (Azure Functions)
 
-Durable Functions is an extension of [Azure Functions](../functions-overview.md). You can use Durable Functions for stateful orchestration of function execution. A durable function app is a solution that's made up of different Azure functions. Functions can play different roles in a durable function orchestration. 
+Durable Functions je rozšíření [Azure Functions](../functions-overview.md). Durable Functions lze použít pro stavovou orchestraci provádění funkce. Trvalá aplikace Function App je řešení, které se skládá z různých Azure Functions. Funkce mohou hrát různé role v rámci trvalé orchestrace funkcí. 
 
-There are currently four durable function types in Azure Functions: activity, orchestrator, entity, and client. The rest of this section goes into more details about the types of functions involved in an orchestration.
+V Azure Functions aktuálně existují čtyři typy trvalých funkcí: Activity, Orchestrator, entity a Client. Zbytek této části se zabývá dalšími podrobnostmi o typech funkcí zapojených do orchestrace.
 
-## <a name="orchestrator-functions"></a>Orchestrator functions
+## <a name="orchestrator-functions"></a>Funkce nástroje Orchestrator
 
-Orchestrator functions describe how actions are executed and the order in which actions are executed. Orchestrator functions describe the orchestration in code (C# or JavaScript) as shown in [Durable Functions application patterns](durable-functions-overview.md#application-patterns). An orchestration can have many different types of actions, including [activity functions](#activity-functions), [sub-orchestrations](durable-functions-orchestrations.md#sub-orchestrations), [waiting for external events](durable-functions-orchestrations.md#external-events), [HTTP](durable-functions-http-features.md), and [timers](durable-functions-orchestrations.md#durable-timers). Orchestrator functions can also interact with [entity functions](#entity-functions).
-
-> [!NOTE]
-> Orchestrator functions are written using ordinary code, but there are strict requirements on how to write the code. Specifically, orchestrator function code must be *deterministic*. Failing to follow these determinism requirements can cause orchestrator functions to fail to run correctly. Detailed information on these requirements and how to work around them can be found in the [code constraints](durable-functions-code-constraints.md) topic.
-
-For more detailed information on orchestrator functions and their features, see the [Durable orchestrations](durable-functions-orchestrations.md) article.
-
-## <a name="activity-functions"></a>Activity functions
-
-Activity functions are the basic unit of work in a durable function orchestration. Activity functions are the functions and tasks that are orchestrated in the process. For example, you might create an orchestrator function to process an order. The tasks involve checking the inventory, charging the customer, and creating a shipment. Each task would be a separate activity function. These activity functions may be executed serially, in parallel, or some combination of both.
-
-Unlike orchestrator functions, activity functions aren't restricted in the type of work you can do in them. Activity functions are frequently used to make network calls or run CPU intensive operations. An activity function can also return data back to the orchestrator function. The Durable Task Framework guarantees that each called activity function will be executed *at least once* during an orchestration's execution.
+Funkce nástroje Orchestrator popisují způsob provádění akcí a pořadí, ve kterém jsou akce provedeny. Funkce nástroje Orchestrator popisují orchestraci v kódu (C# nebo JavaScriptu), jak je znázorněno v [Durable Functionsch vzorcích aplikací](durable-functions-overview.md#application-patterns). Orchestrace může mít mnoho různých typů akcí, včetně [funkcí aktivity](#activity-functions), [dílčích orchestrací](durable-functions-orchestrations.md#sub-orchestrations), [čekání na externí události](durable-functions-orchestrations.md#external-events), [http](durable-functions-http-features.md)a [časovače](durable-functions-orchestrations.md#durable-timers). Funkce nástroje Orchestrator mohou také interagovat s [funkcemi entit](#entity-functions).
 
 > [!NOTE]
-> Because activity functions only guarantee *at least once* execution, we recommend you make your activity function logic *idempotent* whenever possible.
+> Funkce nástroje Orchestrator jsou zapisovány pomocí obyčejného kódu, ale existují přísné požadavky na zápis kódu. Konkrétně musí být kód funkce nástroje Orchestrator *deterministický*. Po neúspěšném provedení těchto požadavků determinismem může dojít ke správnému spuštění funkcí nástroje Orchestrator. Podrobné informace o těchto požadavcích a způsobu jejich řešení najdete v tématu [omezení kódu](durable-functions-code-constraints.md) .
 
-Use an [activity trigger](durable-functions-bindings.md#activity-trigger) to define an activity function. .NET functions receive a `DurableActivityContext` as a parameter. You can also bind the trigger to any other JSON-serializeable object to pass in inputs to the function. In JavaScript, you can access an input via the `<activity trigger binding name>` property on the [`context.bindings` object](../functions-reference-node.md#bindings). Activity functions can only have a single value passed to them. To pass multiple values, you must use tuples, arrays, or complex types.
+Podrobnější informace o funkcích nástroje Orchestrator a jejich funkcích naleznete v článku [trvalé orchestrace](durable-functions-orchestrations.md) .
 
-> [!NOTE]
-> You can trigger an activity function only from an orchestrator function.
+## <a name="activity-functions"></a>Funkce aktivity
 
-## <a name="entity-functions"></a>Entity functions
+Funkce aktivity představují základní pracovní jednotku v rámci trvalé orchestrace funkcí. Funkce aktivity jsou funkce a úkoly, které jsou v procesu Orchestrované. Například můžete vytvořit funkci Orchestrator pro zpracování objednávky. Úkoly zahrnují kontrolu inventáře a účtování zákazníků a vytváření dodávek. Každý úkol by byl samostatnou funkcí aktivity. Tyto funkce aktivit můžou být spouštěny sériově, paralelně nebo v kombinaci obou.
 
-Entity functions define operations for reading and updating small pieces of state. We often refer to these stateful entities as *durable entities*. Like orchestrator functions, entity functions are functions with a special trigger type, *entity trigger*. They can also be invoked from client functions or from orchestrator functions. Unlike orchestrator functions, entity functions do not have any specific code constraints. Entity functions also manage state explicitly rather than implicitly representing state via control flow.
-
-> [!NOTE]
-> Entity functions and related functionality is only available in Durable Functions 2.0 and above.
-
-For more information about entity functions, see the [Durable Entities](durable-functions-entities.md) article.
-
-## <a name="client-functions"></a>Client functions
-
-Orchestrator functions are triggered by an [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger) and entity functions are triggered by an [entity trigger binding](durable-functions-bindings.md#entity-trigger). Both of these triggers work by reacting to messages that are enqueued into a [task hub](durable-functions-task-hubs.md). The primary way to deliver these messages is by using an [orchestrator client binding](durable-functions-bindings.md#orchestration-client) or an [entity client binding](durable-functions-bindings.md#entity-client) from within a *client function*. Any non-orchestrator function can be a *client function*. For example, You can trigger the orchestrator from an HTTP-triggered function, an Azure Event Hub triggered function, etc. What makes a function a *client function* is its use of the durable client output binding.
+Na rozdíl od funkcí Orchestrator nejsou funkce aktivity omezeny v typu práce, kterou v nich můžete dělat. Funkce aktivity se často používají k provádění síťových volání nebo provádění operací náročných na procesor. Funkce Activity může také vracet data zpět do funkce Orchestrator. Rozhraní odolné úlohy zaručuje, že každá funkce s názvem funkce se spustí *alespoň jednou* během provádění orchestrace.
 
 > [!NOTE]
-> Unlike other function types, orchestrator and entity functions cannot be triggered directly using the buttons in the Azure Portal. If you want to test an orchestrator or entity function in the Azure Portal, you must instead run a *client function* that starts an orchestrator or entity function as part of its implementation. For the simplest testing experience, a *manual trigger* function is recommended.
+> Vzhledem k tomu, že funkce aktivity zaručují *alespoň jedno* spuštění, doporučujeme, abyste *idempotentní* logiku funkce Activity, kdykoli to bude možné.
 
-In addition to triggering orchestrator or entity functions, the *durable client* binding can be used to interact with running orchestrations and entities. For example, orchestrations can be queried, terminated, and can have events raised to them. For more information on managing orchestrations and entities, see the [Instance management](durable-functions-instance-management.md) article.
+K definování funkce aktivity použijte [Trigger aktivity](durable-functions-bindings.md#activity-trigger) . Funkce .NET obdrží jako parametr `DurableActivityContext`. Můžete také navazovat Trigger na jakýkoli jiný objekt, který lze serializovat, a předat do něj vstupní hodnoty funkce. V jazyce JavaScript můžete ke vstupu přistupovat prostřednictvím vlastnosti `<activity trigger binding name>` v [objektu`context.bindings`](../functions-reference-node.md#bindings). Funkcí aktivity může být předána pouze jedna hodnota. Chcete-li předat více hodnot, je nutné použít řazené kolekce členů, pole nebo komplexní typy.
+
+> [!NOTE]
+> Funkci aktivity můžete aktivovat jenom z funkce Orchestrator.
+
+## <a name="entity-functions"></a>Funkce entit
+
+Funkce entit definují operace pro čtení a aktualizaci malých částí stavu. Často odkazujeme na tyto stavové entity jako *odolné entity*. Podobně jako funkce nástroje Orchestrator jsou funkce entit funkce se speciálním typem triggeru, *triggerem entity*. Mohou být také vyvolány z klientských funkcí nebo z funkcí nástroje Orchestrator. Na rozdíl od funkcí Orchestrator nemají entity Functions žádná konkrétní omezení kódu. Funkce entit také spravují stav explicitně namísto implicitního reprezentace stavu prostřednictvím řízení toku.
+
+> [!NOTE]
+> Funkce entit a související funkce jsou dostupné jenom v Durable Functions 2,0 a novějších.
+
+Další informace o funkcích entit najdete v článku [trvalé entity](durable-functions-entities.md) .
+
+## <a name="client-functions"></a>Klientské funkce
+
+Funkce Orchestrator se aktivují [aktivační vazbou orchestrace](durable-functions-bindings.md#orchestration-trigger) a funkce entit se spouštějí [vazbou triggeru entity](durable-functions-bindings.md#entity-trigger). Obě tyto triggery fungují tak, že jednají zprávy zařazené do [centra úloh](durable-functions-task-hubs.md). Hlavním způsobem, jak doručovat tyto zprávy, je použití [vazby klienta nástroje Orchestrator](durable-functions-bindings.md#orchestration-client) nebo [vazby klienta entit](durable-functions-bindings.md#entity-client) z *klientské funkce*. Jakákoli funkce bez nástroje Orchestrator může být *klientská funkce*. Můžete například aktivovat nástroj Orchestrator z funkce aktivované protokolem HTTP, funkcí aktivovaných centrem událostí Azure atd. To znamená, že funkce *klienta* funguje jako jeho použití trvalé výstupní vazby klienta.
+
+> [!NOTE]
+> Na rozdíl od jiných typů funkcí se funkce Orchestrator a entity nedají aktivovat přímo pomocí tlačítek na webu Azure Portal. Pokud chcete otestovat funkci Orchestrator nebo entity na webu Azure Portal, musíte místo toho spustit *klientskou funkci* , která jako součást implementace spustí nástroj Orchestrator nebo entity. Pro nejjednodušší prostředí testování je doporučena funkce *Ruční aktivace* .
+
+Kromě toho, že se aktivují funkce Orchestrator nebo entity, se dá *trvalé vazba klienta* použít k interakci s běžícími orchestrací a entitami. Například orchestrace lze dotazovat, ukončit a mohou mít vyvolané události. Další informace o správě orchestrací a entit najdete v článku věnovaném [správě instancí](durable-functions-instance-management.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-To get started, create your first durable function in [C#](durable-functions-create-first-csharp.md) or [JavaScript](quickstart-js-vscode.md).
+Chcete-li začít, vytvořte svou první trvalou [C#](durable-functions-create-first-csharp.md) funkci v nebo [JavaScriptu](quickstart-js-vscode.md).
 
 > [!div class="nextstepaction"]
-> [Read more about Durable Functions orchestrations](durable-functions-orchestrations.md)
+> [Přečtěte si další informace o orchestraci Durable Functions](durable-functions-orchestrations.md)

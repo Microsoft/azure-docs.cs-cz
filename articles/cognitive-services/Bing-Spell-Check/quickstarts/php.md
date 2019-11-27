@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Check spelling with the REST API and PHP - Bing Spell Check'
+title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a PHP-Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: This simple PHP application sends a request to the Bing Spell Check API and returns a list of suggested corrections.
+description: Tato jednoduchá aplikace PHP pošle požadavek na rozhraní API Bingu pro kontrolu pravopisu a vrátí seznam navrhovaných oprav.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,13 +17,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383852"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Quickstart: Check spelling with the Bing Spell Check REST API and PHP
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a PHP
 
-Use this quickstart to make your first call to the Bing Spell Check REST API. This simple PHP application sends a request to the API and returns a list of suggested corrections. While this application is written in PHP, the API is a RESTful Web service compatible with most programming languages.
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace PHP pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. I když je tato aplikace napsaná v PHP, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [PHP 5.6.x](https://php.net/downloads.php)
+* [PHP 5.6. x](https://php.net/downloads.php)
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
@@ -134,7 +134,7 @@ echo $json;
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Create a single page web-app](../tutorials/spellcheck.md)
+> [Vytvoření webové aplikace na jedné stránce](../tutorials/spellcheck.md)
 
-- [What is the Bing Spell Check API?](../overview.md)
+- [Co je rozhraní API Bingu pro kontrolu pravopisu?](../overview.md)
 - [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

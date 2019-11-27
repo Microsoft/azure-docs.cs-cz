@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Search for videos using the REST API and Ruby - Bing Video Search'
+title: 'Rychlý Start: hledání videí pomocí REST API a Ruby-Vvyhledávání videí Bingu'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to send video search requests to the Bing Video Search REST API using Ruby.
+description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání videí do Vvyhledávání videí Bingu REST API pomocí Ruby.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,13 +17,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378637"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Quickstart: Search for videos using the Bing Video Search REST API and Ruby
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a Ruby
 
-Use this quickstart to make your first call to the Bing Video Search API and view a search result from the JSON response. This simple Ruby application sends an HTTP video search query to the API, and displays the response. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) s dalším ošetřením chyb a poznámkami ke kódu.
+Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhraní API Bingu pro vyhledávání videí a zobrazit výsledky hledání z odpovědi JSON. Tato jednoduchá aplikace v Ruby pošle do rozhraní API dotaz pro vyhledávání videí HTTP a zobrazí odpověď. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) s dalším ošetřením chyb a poznámkami ke kódu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Ruby 2.4 or later
+* Ruby 2,4 nebo novější
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -37,7 +37,7 @@ Use this quickstart to make your first call to the Bing Video Search API and vie
     require 'json'
     ```
 
-2. Create variables for the API endpoint, video API search path, your subscription key, and search term.
+2. Vytvořte proměnné pro koncový bod rozhraní API, cestu pro vyhledávání rozhraní API pro video, klíč předplatného a hledaný termín.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -46,22 +46,22 @@ Use this quickstart to make your first call to the Bing Video Search API and vie
     accessKey = "your-subscription-key" 
     ```
 
-## <a name="create-and-send-an-api-request"></a>Create and send an API request
+## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání žádosti rozhraní API
 
-1. Use the variables from the last step to format a search URL for the request. Combine your uri and path, then url-encode your search term before appending it to the `?q=` parameter.
+1. Pomocí proměnných z posledního kroku naformátujte adresu URL hledání pro požadavek. Zkombinujte identifikátor URI a cestu a potom URL zakódováním hledaného termínu, než ho připojíte k parametru `?q=`.
 
     ```ruby
     uri = URI(uri + path + "?q=" + URI.escape(term))
     ```
 
-2. Add the complete search URL to the request, and add your subscription key to the `Ocp-Apim-Subscription-Key` header.
+2. Přidejte do žádosti úplnou adresu URL pro hledání a přidejte svůj klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key`.
     
     ``` ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = accessKey
     ```
 
-3. Send the request, and save the response.
+3. Odešlete požadavek a uložte odpověď.
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -71,7 +71,7 @@ Use this quickstart to make your first call to the Bing Video Search API and vie
 
 ## <a name="process-and-view-the-response"></a>Zpracování a zobrazení odpovědi
 
-1. After the response is received, you can print the JSON response.
+1. Po přijetí odpovědi můžete vytisknout odpověď JSON.
 
     ```ruby
     puts JSON::pretty_generate(JSON(response.body))
@@ -191,9 +191,9 @@ Use this quickstart to make your first call to the Bing Video Search API and vie
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Create a single page web app](../tutorial-bing-video-search-single-page-app.md)
+> [Vytvoření webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
- [What is the Bing Video Search API?](../overview.md)
+ [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)
 

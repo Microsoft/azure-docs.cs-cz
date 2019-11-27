@@ -33,16 +33,16 @@ Tento článek obsahuje jediný bod odkaz, který pomáhá při řešení potí�
 
 Tento článek neposkytuje následující předpoklady:
 
-- Nasazení Proxy aplikací Azure AD za [začít pracovat s Proxy aplikací](application-proxy-add-on-premises-application.md) a obecného přístupu k aplikacím bez KCD fungovat podle očekávání.
+- Nasazení Azure Proxy aplikací služby AD v rámci Začínáme [s proxy aplikací](application-proxy-add-on-premises-application.md) a obecný přístup k aplikacím, které KCD, fungují podle očekávání.
 - Publikované cílové aplikace je založena na Internetové informační služby (IIS) a Microsoft implementace protokolu Kerberos.
-- V jedné doméně Azure Active Directory se nachází hostitelé serveru a aplikace. Podrobné informace o scénáře napříč doménami a doménovou strukturu, najdete v článku [dokument white paper KCD](https://aka.ms/KCDPaper).
+- V jedné doméně Azure Active Directory se nachází hostitelé serveru a aplikace. Podrobné informace o scénářích mezi doménami a doménovými strukturami najdete v [dokumentu White Paper KCD](https://aka.ms/KCDPaper).
 - Příslušná aplikace, se publikují v Azure pomocí předběžného ověřování povoleno. Uživatelé se očekává, že ověřování do Azure prostřednictvím ověřování pomocí formulářů. Scénáře ověřování klienta bohaté nejsou uvedené v tomto článku. Může být přidají v určitém okamžiku v budoucnu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Proxy aplikací Azure AD je možné nasadit do mnoho typů prostředí nebo infrastruktury. Architektury lišit mezi organizacemi. Nejběžnější příčiny problémů souvisejících se KCD nejsou v prostředí. Jednoduché nesprávné konfigurace nebo obecné chyby způsobit, že většinu problémů.
 
-Z tohoto důvodu je nejvhodnější zajistit splnění všech požadavků v [pomocí KCD jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md) před spuštěním řešení potíží. Všimněte si části týkající se konfigurace omezeného delegování protokolu Kerberos na 2012 R2. Tento proces používá jiný přístup ke konfiguraci KCD na předchozích verzích systému Windows. Také mějte na paměti tyto aspekty:
+Z tohoto důvodu se před zahájením odstraňování potíží ujistěte, že jste splnili všechny předpoklady pro [použití jednotného přihlašování s proxy aplikací KCD](application-proxy-configure-single-sign-on-with-kcd.md) . Všimněte si části týkající se konfigurace omezeného delegování protokolu Kerberos na 2012 R2. Tento proces používá jiný přístup ke konfiguraci KCD na předchozích verzích systému Windows. Také mějte na paměti tyto aspekty:
 
 - Není, členský server domény a otevřete dialogové okno zabezpečený kanál s řadičem konkrétní domény (DC). Server může přesuňte do jiného dialogového okna v daném okamžiku. Konektor hostitelé nejsou tak s omezeným přístupem ke komunikaci s místní lokalita pouze konkrétní řadiče domény.
 - Scénáře napříč doménami spoléhat na referenční seznamy sledování, které budou řídit konektor hostitele do řadiče domény, které můžou být mimo hranice místní sítě. V těchto případech je stejně důležité také směrovat provoz dále do řadiče domény, které představují další příslušné domény. V opačném případě delegování se nezdaří.
@@ -62,13 +62,13 @@ Co se zobrazí KCD problém? Existuje několik běžných označení, které se 
 
 Obě tyto Image zobrazit stejný příznak: selhání jednotného přihlašování. Byl odepřen přístup uživatelů k aplikaci.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Jak je řešit, závisí na problému a příznaky, které můžete sledovat. Než budete pokračovat žádné vydrží déle, prozkoumejte v následujících článcích. Poskytují užitečné informace o odstraňování potíží:
 
-- [Poradce při potížích s Proxy aplikací problémy a chybové zprávy](application-proxy-troubleshoot.md)
-- [Chyby protokolu Kerberos a příznaky](application-proxy-troubleshoot.md#kerberos-errors)
-- [Práce s jednotným Přihlašováním při místní a cloudové identity nejsou shodné](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
+- [Řešení problémů s proxy aplikací a chybové zprávy](application-proxy-troubleshoot.md)
+- [Chyby a příznaky protokolu Kerberos](application-proxy-troubleshoot.md#kerberos-errors)
+- [Práce s jednotným přihlašováním, když jsou místní a cloudové identity stejné](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 
 Pokud jste se dostali do této chvíle, hlavní problém se neexistuje. Pokud chcete začít, oddělte toku do následující tři fáze, které je možné řešit.
 
@@ -86,18 +86,18 @@ Jak už bylo zmíněno dříve, chybové zprávy prohlížeče poskytuje někter
 
 ![Příklad: nesprávná chyba konfigurace KCD](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-Odpovídající položky v protokolu událostí se zobrazí jako události 13019 nebo 12027. Konektor protokolů událostí v **protokoly aplikací a služeb** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt;  **Konektor** &gt; **správce**.
+Odpovídající položky v protokolu událostí se zobrazí jako události 13019 nebo 12027. Vyhledejte protokoly událostí konektoru v **protokolech aplikací a služeb** &gt; &gt; **správce** **konektoru** **Microsoft** &gt; **AadApplicationProxy** &gt;.
 
 ![Událost 13019 z protokolu událostí Proxy aplikací](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
 ![12027 událostí z protokolu událostí Proxy aplikací](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic5.png)
 
-1. Použití **A** záznam v interní DNS pro adresu vaší aplikace, není **CName**.
-1. Znovu potvrdit, že konektor hostitele bylo uděleno právo pro delegování do určeného cílového účtu hlavní název služby. Který vyzváním **použití libovolného protokolu pro ověřování** zaškrtnuto. Další informace najdete v tématu [článku Konfigurace jednotného přihlašování](application-proxy-configure-single-sign-on-with-kcd.md).
-1. Ověřte, zda existuje pouze jedna instance hlavního názvu služby v rámci Azure AD. Problém `setspn -x` z příkazového řádku na žádném hostiteli člena domény.
-1. Zkontrolujte, že domény je tato zásada vynucená, který omezuje [maximální velikost vydaných tokenů Kerberos](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/). Tato zásada zastaví konektoru získat token, pokud je nalezen vysoké.
+1. V interní službě DNS použijte pro adresu aplikace záznam **a** , nikoli **záznam CNAME**.
+1. Znovu potvrdit, že konektor hostitele bylo uděleno právo pro delegování do určeného cílového účtu hlavní název služby. Znovu potvrďte, že je vybraná **možnost použít libovolný protokol ověřování** . Další informace najdete v článku věnovaném [konfiguraci jednotného přihlašování](application-proxy-configure-single-sign-on-with-kcd.md).
+1. Ověřte, zda existuje pouze jedna instance hlavního názvu služby v rámci Azure AD. Vystavení `setspn -x` z příkazového řádku na jakémkoli hostiteli člena domény.
+1. Ověřte, že je vynutila zásada domény, která omezuje [maximální velikost vydaných tokenů protokolu Kerberos](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/). Tato zásada zastaví konektoru získat token, pokud je nalezen vysoké.
 
-Trasování sítě, který zachycuje výměn mezi hostitelem konektoru a domény služby KDC je nejlepší dál chcete získat další podrobnosti nižší úrovně na problémy. Další informace najdete v tématu [podrobné informace Poradce při potížích papíru](https://aka.ms/proxytshootpaper).
+Trasování sítě, který zachycuje výměn mezi hostitelem konektoru a domény služby KDC je nejlepší dál chcete získat další podrobnosti nižší úrovně na problémy. Další informace najdete na dokumentu věnovaném [řešení potíží s hloubkou podrobně](https://aka.ms/proxytshootpaper).
 
 Vytváření tiketů vypadá v pořádku, uvidíte události v protokolech s informacemi o tom, že ověřování se nezdařilo, protože aplikace vrátila zobrazuje chyba 401. Tato událost znamená, že je cílová aplikace odmítli lístku. Přejděte do další fáze.
 
@@ -105,29 +105,29 @@ Vytváření tiketů vypadá v pořádku, uvidíte události v protokolech s inf
 
 Příjemce poskytnuté konektoru lístek služby Kerberos. V této fázi očekávat, že konektor pro odeslání lístků služby Kerberos k back-endu. Tento lístek se hlavička v první žádost o aplikaci.
 
-1. Pomocí aplikace interní adresa URL definované na portálu, ověřte, že aplikace je dostupná přímo z prohlížeče na hostiteli konektoru. Potom můžete přihlásit úspěšně. Podrobnosti najdete v konektoru **Poradce při potížích** stránky.
+1. Pomocí aplikace interní adresa URL definované na portálu, ověřte, že aplikace je dostupná přímo z prohlížeče na hostiteli konektoru. Potom můžete přihlásit úspěšně. Podrobnosti najdete na stránce **Poradce při potížích s** konektorem.
 1. Stále na hostiteli konektor potvrďte, že ověřování mezi prohlížečem a aplikace používá protokol Kerberos. Proveďte jednu z následujících akcí:
-1. Spustit DevTools (**F12**) v aplikaci Internet Explorer, nebo použijte [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) z hostitele konektoru. Přejděte do aplikace pomocí interní adresy URL. Kontrola vrácené v nabízený autorizační hlavičky WWW odpovědi z aplikace, abyste měli jistotu, že buď negotiate, nebo pomocí protokolu Kerberos je k dispozici.
+1. Spusťte DevTools (**F12**) v aplikaci Internet Explorer nebo použijte [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) z hostitele konektoru. Přejděte do aplikace pomocí interní adresy URL. Kontrola vrácené v nabízený autorizační hlavičky WWW odpovědi z aplikace, abyste měli jistotu, že buď negotiate, nebo pomocí protokolu Kerberos je k dispozici.
 
-   - Další objekt blob protokolu Kerberos, který je vrácený v odpovědi z prohlížeče do aplikace začíná **JÍ**. Těmto písmenům zjistit, zda je spuštěna protokolu Kerberos. Microsoft NT LAN Manager (NTLM), na druhé straně vždy začíná **TlRMTVNTUAAB**, která čte NTLM zabezpečení podporu zprostředkovatele (NTLMSSP) při dekódovat z formátu Base64. Pokud se zobrazí **TlRMTVNTUAAB** na začátku objekt blob protokolu Kerberos není k dispozici. Pokud nevidíte **TlRMTVNTUAAB**, protokolu Kerberos je pravděpodobně k dispozici.
+   - Další objekt BLOB Kerberos, který se vrátí v odpovědi z prohlížeče do aplikace, začíná na **YII**. Těmto písmenům zjistit, zda je spuštěna protokolu Kerberos. Microsoft NT LAN Manager (NTLM) na druhé straně vždy začíná **TlRMTVNTUAAB**, což při dekódování protokolu NTLM Security Support Provider (NTLMSSP) čte z base64. Pokud vidíte **TlRMTVNTUAAB** na začátku objektu blob, protokol Kerberos není k dispozici. Pokud nevidíte **TlRMTVNTUAAB**, je pravděpodobně k dispozici protokol Kerberos.
 
       > [!NOTE]
       > Pokud používáte aplikaci Fiddler, tato metoda vyžaduje, je dočasně zakázat rozšířené ochrany na konfiguraci aplikace ve službě IIS.
 
       ![Okno kontroly sítě prohlížeče](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
 
-   - Objekt blob na tomto obrázku nezačíná **TIRMTVNTUAAB**. V tomto příkladu je k dispozici protokol Kerberos, takže tento objekt blob protokolu Kerberos nezačíná znakem **JÍ**.
+   - Objekt blob na tomto obrázku nezačíná na **TIRMTVNTUAAB**. V tomto příkladu je k dispozici protokol Kerberos a objekt BLOB protokolu Kerberos nezačíná na **YII**.
 
 1. NTLM dočasně odeberte ze seznamu zprostředkovatelů na web služby IIS. Přístup k aplikaci přímo z aplikace Internet Explorer v hostiteli konektoru. NTLM je již v seznamu poskytovatelů. Aplikace můžete přistupovat pouze pomocí protokolu Kerberos. Pokud přístup selže, může být problém s konfigurací aplikace. Ověřování protokolem Kerberos nebude fungovat správně.
 
-   - Pokud není k dispozici protokol Kerberos, zkontrolujte nastavení ověřování aplikace ve službě IIS. Ujistěte se, že **Negotiate** je uvedena nahoře pomocí protokolu NTLM pod ním. Pokud se zobrazí **není vyjednávání**, **protokolu Kerberos nebo Negotiate**, nebo **pku2u odeslaným**, pokračujte pouze v případě protokolu Kerberos je funkční.
+   - Pokud není k dispozici protokol Kerberos, zkontrolujte nastavení ověřování aplikace ve službě IIS. Ujistěte se, že je seznam **Negotiate** uveden v horní části, s protokolem NTLM hned pod ním. Pokud se zobrazí **Nedohadované**, **Kerberos nebo Negotiate**nebo **PKU2U**, pokračujte pouze v případě, že je Kerberos funkční.
 
      ![Zprostředkovatelé ověřování Windows](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
 
    - Pomocí protokolů Kerberos a NTLM v místě dočasně zakážete předběžné ověřování pro aplikaci na portálu. Došlo k pokusu o přístup z Internetu pomocí externí adresu URL. Jste vyzváni k ověření. Budete moct použít stejný účet použitý v předchozím kroku. V opačném případě dojde k nějakému problému s back endové aplikace, ne KCD.
    - Znovu povolte předběžné ověření na portálu. Ověřování prostřednictvím Azure pokouší připojit k aplikaci prostřednictvím jeho externí adresu URL. Jednotné přihlašování se nezdaří, zobrazí zprávu chyby zakázáno v prohlížeči a 13022 událost v protokolu:
 
-     *Microsoft AAD Application Proxy Connector uživatele nejde ověřit, protože back-end server odpoví na pokusy o ověření protokolu Kerberos s chybou HTTP 401.*
+     *Microsoft AAD Application proxy Connector nemůže ověřit uživatele, protože back-end Server reaguje na pokusy o ověření pomocí protokolu Kerberos pomocí chyby HTTP 401.*
 
       ![Zobrazuje chybu HTTTP 401 Forbidden](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
 
@@ -143,23 +143,23 @@ Příjemce poskytnuté konektoru lístek služby Kerberos. V této fázi očeká
 
       ![Konfigurace hlavního názvu služby na webu Azure Portal](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic11.png)
 
-   - Přejděte do služby IIS a vyberte **Editor konfigurace** možnost pro aplikaci. Přejděte do **system.webServer/security/authentication/windowsAuthentication**. Ujistěte se, že hodnota **UseAppPoolCredentials** je **True**.
+   - Přejít do služby IIS a vybrat možnost **editoru konfigurace** pro aplikaci. Přejděte na **System. webServer/security/Authentication/windowsAuthentication**. Ujistěte se, že hodnota **UseAppPoolCredentials** je **true**.
 
       ![Fondy aplikací IIS konfigurace přihlašovacích údajů – možnost](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
 
-      Změňte tuto hodnotu na **True**. Odeberte všechny lístky protokolu Kerberos v mezipaměti z back endového serveru spuštěním následujícího příkazu:
+      Změňte tuto hodnotu na **true**. Odeberte všechny lístky protokolu Kerberos v mezipaměti z back endového serveru spuštěním následujícího příkazu:
 
       ```powershell
       Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'NTLM'} | ForEach-Object {klist.exe purge -li ([Convert]::ToString($_.LogonId, 16))}
       ```
 
-Další informace najdete v tématu [vymazat mezipaměť klienta lístek protokolu Kerberos na všechny relace](https://gallery.technet.microsoft.com/scriptcenter/Purge-the-Kerberos-client-b56987bf).
+Další informace najdete v tématu [vyprázdnění mezipaměti lístků klienta protokolu Kerberos pro všechny relace](https://gallery.technet.microsoft.com/scriptcenter/Purge-the-Kerberos-client-b56987bf).
 
-Ponecháte-li povolen režim jádra, zlepšuje výkon operací protokolu Kerberos. Ale také způsobí-the-ticket pro požadovanou službu k dešifrování pomocí účtu počítače. Tento účet se také nazývá místní systém. Nastavte tuto hodnotu na **True** přerušit KCD, když je aplikace hostovaná napříč více než jeden server ve farmě.
+Ponecháte-li povolen režim jádra, zlepšuje výkon operací protokolu Kerberos. Ale také způsobí-the-ticket pro požadovanou službu k dešifrování pomocí účtu počítače. Tento účet se také nazývá místní systém. Nastavte tuto hodnotu na **true** , pokud chcete přerušit KCD při hostování aplikace na více než jednom serveru ve farmě.
 
-- Jako další kontrolu, zakažte **Extended** ochrany příliš. V některých scénářích **Extended** ochrany se podařilo přerušit KCD při jeho povolování v konkrétní konfigurace. V těchto případech se aplikace publikované jako podsložku výchozího webu. Tato aplikace je nakonfigurována pro jenom anonymní ověřování. Všechna dialogová okna jsou zobrazena šedě, takže je možné, že by všechny aktivní nastavení zdědí podřízené objekty. Doporučujeme otestovat, ale nezapomeňte obnovit tuto hodnotu a **povolené**, kde je to možné.
+- Při další kontrole zakažte také **rozšířenou** ochranu. V některých scénářích je **Rozšířená** ochrana podařilo přerušit KCD, když byla povolená v konkrétních konfiguracích. V těchto případech se aplikace publikované jako podsložku výchozího webu. Tato aplikace je nakonfigurována pro jenom anonymní ověřování. Všechna dialogová okna jsou zobrazena šedě, takže je možné, že by všechny aktivní nastavení zdědí podřízené objekty. Doporučujeme, abyste provedli test, ale nezapomněli jste tuto hodnotu obnovit, **Pokud je to**možné.
 
-  Tato další kontrola vám dává na cestě k publikované aplikaci používat. Můžete aktivovat další konektory, které jsou také nakonfigurovány pro delegování. Další informace najdete v článku podrobnější technické názorném postupu [řešení potíží s Azure AD Application Proxy](https://aka.ms/proxytshootpaper).
+  Tato další kontrola vám dává na cestě k publikované aplikaci používat. Můžete aktivovat další konektory, které jsou také nakonfigurovány pro delegování. Další informace najdete podrobnější technický návod, který vám ukáže [řešení potíží s proxy aplikací služby AD Azure](https://aka.ms/proxytshootpaper).
 
 Pokud stále nemůžete provádět průběh, může vám pomůže podporu Microsoftu. Vytvoření lístku podpory přímo v rámci portálu. Vás bude kontaktovat pracovník.
 
@@ -170,4 +170,4 @@ Pokud stále nemůžete provádět průběh, může vám pomůže podporu Micros
 
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace KCD ve spravované doméně](../../active-directory-domain-services/deploy-kcd.md).
+[NAKONFIGURUJTE KCD ve spravované doméně](../../active-directory-domain-services/deploy-kcd.md).

@@ -27,7 +27,7 @@ Po přidání uživatele typu Host do adresáře můžete buď Odeslat uživatel
 > [!IMPORTANT]
 > Měli byste postupovat podle kroků v tématu [Postupy: Přidání informací o ochraně osobních údajů vaší organizace v tématu Azure Active Directory](https://aka.ms/adprivacystatement) k přidání adresy URL prohlášení o zásadách ochrany osobních údajů vaší organizace. V rámci prvního procesu uplatnění pozvánky musí pozvaní uživatelé před pokračováním vyjádřit souhlas s vaším podmínkami ochrany osobních údajů. 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Ujistěte se, že jsou nakonfigurovaná externí nastavení spolupráce vaší organizace, aby bylo možné pozvat hosty. Ve výchozím nastavení mohou všichni uživatelé a správci pozvat hosty. Ale externí zásady spolupráce vaší organizace můžou být nakonfigurované tak, aby se zabránilo určitým typům uživatelů nebo správců v pozvání hostům. Pokud chcete zjistit, jak tyto zásady zobrazit a nastavit, přečtěte si téma [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](delegate-invitations.md).
 

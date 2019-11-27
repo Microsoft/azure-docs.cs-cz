@@ -44,7 +44,7 @@ K vývoji funkcí Java a IntelliJ nainstalujte následující software:
 1. V okně **Nový projekt** vyberte v levém podokně možnost **Maven** .
 1. Zaškrtněte políčko **vytvořit z Archetype** a pak vyberte **Přidat Archetype** pro [Azure-Functions-Archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
 1. V okně **Přidat Archetype** vyplňte pole následujícím způsobem:
-    - _GroupId_: com.microsoft.azure
+    - ID _skupiny_: com. Microsoft. Azure
     - _ArtifactId_: Azure-Functions – Archetype
     - _Verze_: použijte nejnovější verzi **1,22** z [centrálního úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![vytvořte projekt Maven z Archetype v IntelliJ nápadu](media/functions-create-first-java-intellij/functions-create-intellij.png)  

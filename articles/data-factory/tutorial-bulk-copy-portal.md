@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 9feb9be5e76f91ab55ec1b3e60eb79ab5e246f4f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: aaa03e04167cc579cb19885a66db369a3e11176a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683736"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546907"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 Tento kurz představuje **kopírování několika tabulek z Azure SQL Database do služby Azure SQL Data Warehouse**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například při kopírování tabulek z SQL Serveru/Oraclu do služby Azure SQL Database/Data Warehouse/Azure Blob nebo při kopírování různých cest ze služby Blob do tabulek Azure SQL Database.
@@ -62,7 +62,7 @@ Podle postupu v článku [Vytvoření databáze Azure SQL](../sql-database/sql-d
 
 1. Pokud Azure SQL Data Warehouse nemáte, přečtěte si článek věnovaný [vytvoření služby SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md), kde najdete kroky pro její vytvoření.
 
-1. V SQL Data Warehouse vytvořte odpovídající schémata tabulek. K [migraci schémat](https://www.microsoft.com/download/details.aspx?id=49100) z Azure SQL Database do Azure SQL Data Warehouse můžete využít **nástroj pro migraci**. K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
+1. V SQL Data Warehouse vytvořte odpovídající schémata tabulek. K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
 
 ## <a name="azure-services-to-access-sql-server"></a>Služby Azure pro přístup k SQL serveru
 
@@ -76,7 +76,7 @@ Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server 
 
 1. Na stránce **Nová datová továrna** jako **název**zadejte **ADFTutorialBulkCopyDF** . 
  
-   Název datové továrny Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba pole názvu, změňte název datové továrny (například na vaše_jméno_ADFTutorialBulkCopyDF). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba pole názvu, změňte název datové továrny (například na vaše_jméno_ADFTutorialBulkCopyDF). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
        `Data factory name “ADFTutorialBulkCopyDF” is not available`
 1. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu. 

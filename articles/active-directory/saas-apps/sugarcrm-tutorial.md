@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory single sign-on (SSO) integration with Sugar CRM | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Sugar CRM.
+title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s cukrem CRM | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a cukrem CRM.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,76 +23,76 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231977"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>Tutorial: Azure Active Directory single sign-on (SSO) integration with Sugar CRM
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s cukrem v cukru CRM
 
-In this tutorial, you'll learn how to integrate Sugar CRM with Azure Active Directory (Azure AD). When you integrate Sugar CRM with Azure AD, you can:
+V tomto kurzu se dozvíte, jak integrovat cukrovou aplikaci CRM pomocí Azure Active Directory (Azure AD). Když integrujete cukrovou aplikaci CRM s Azure AD, můžete:
 
-* Control in Azure AD who has access to Sugar CRM.
-* Enable your users to be automatically signed-in to Sugar CRM with their Azure AD accounts.
-* Manage your accounts in one central location - the Azure portal.
+* Řízení ve službě Azure AD, která má přístup k cukru CRM
+* Umožněte uživatelům, aby se automaticky přihlásili k cukru CRM pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To get started, you need the following items:
+Chcete-li začít, potřebujete následující položky:
 
-* An Azure AD subscription. If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
-* Sugar CRM single sign-on (SSO) enabled subscription.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Odběr povolený jednotného přihlašování (SSO) v cukru CRM.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-In this tutorial, you configure and test Azure AD SSO in a test environment.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Sugar CRM supports **SP** initiated SSO
+* Cukrová aplikace **CRM podporuje jednotné** přihlašování (SSO)
 
 > [!NOTE]
-> Identifier of this application is a fixed string value so only one instance can be configured in one tenant.
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
-## <a name="adding-sugar-crm-from-the-gallery"></a>Adding Sugar CRM from the gallery
+## <a name="adding-sugar-crm-from-the-gallery"></a>Přidání cukru CRM z Galerie
 
-To configure the integration of Sugar CRM into Azure AD, you need to add Sugar CRM from the gallery to your list of managed SaaS apps.
+Pokud chcete nakonfigurovat integraci cukru CRM do Azure AD, musíte přidat do seznamu spravovaných aplikací pro SaaS cukr CRM z galerie.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. On the left navigation pane, select the **Azure Active Directory** service.
-1. Navigate to **Enterprise Applications** and then select **All Applications**.
-1. To add new application, select **New application**.
-1. In the **Add from the gallery** section, type **Sugar CRM** in the search box.
-1. Select **Sugar CRM** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **cukr CRM** .
+1. Z panelu výsledků vyberte **cukr CRM** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sugar-crm"></a>Configure and test Azure AD single sign-on for Sugar CRM
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sugar-crm"></a>Konfigurace a testování jednotného přihlašování Azure AD pro cukr CRM
 
-Configure and test Azure AD SSO with Sugar CRM using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in Sugar CRM.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s cukrem CRM pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v cukru CRM.
 
-To configure and test Azure AD SSO with Sugar CRM, complete the following building blocks:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby cukr CRM, dokončete následující stavební bloky:
 
-1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
-    1. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
-    1. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
-1. **[Configure Sugar CRM SSO](#configure-sugar-crm-sso)** - to configure the single sign-on settings on application side.
-    1. **[Create Sugar CRM test user](#create-sugar-crm-test-user)** - to have a counterpart of B.Simon in Sugar CRM that is linked to the Azure AD representation of user.
-1. **[Test SSO](#test-sso)** - to verify whether the configuration works.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte si jednotné PŘIhlašování pro cukr CRM](#configure-sugar-crm-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte si testovacího uživatele pro cukr CRM](#create-sugar-crm-test-user)** , abyste měli protějšek B. Simon v cukru CRM, který je propojený s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Follow these steps to enable Azure AD SSO in the Azure portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Sugar CRM** application integration page, find the **Manage** section and select **single sign-on**.
-1. On the **Select a single sign-on method** page, select **SAML**.
-1. On the **Set up single sign-on with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
+1. V [Azure Portal](https://portal.azure.com/)na stránce věnované integraci aplikací **CRM pro cukr** , najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Edit Basic SAML Configuration](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. On the **Basic SAML Configuration** section, enter the values for the following fields:
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. In the **Sign-on URL** text box, type a URL using the following pattern:
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
     | |
     |--|
     | `https://<companyname>.sugarondemand.com`|
     | `https://<companyname>.trial.sugarcrm`|
 
-    b. In the **Reply URL** text box, type a URL using the following pattern:
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
     | |
     |--|
@@ -101,126 +101,126 @@ Follow these steps to enable Azure AD SSO in the Azure portal.
     | `https://<companyname>.trial.sugarcrm.eu/<companyname>`|
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Sign-On URL and Reply URL. Contact [Sugar CRM Client support team](https://support.sugarcrm.com/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klienta podpory pro cukr CRM](https://support.sugarcrm.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. On the **Set up single sign-on with SAML** page, in the **SAML Signing Certificate** section,  find **Certificate (Base64)** and select **Download** to download the certificate and save it on your computer.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![The Certificate download link](common/certificatebase64.png)
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-1. On the **Set up Sugar CRM** section, copy the appropriate URL(s) based on your requirement.
+1. V části **nastavit cukr CRM** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-In this section, you'll create a test user in the Azure portal called B.Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
-1. Select **New user** at the top of the screen.
-1. In the **User** properties, follow these steps:
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. In the **User name** field, enter the username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-In this section, you'll enable B.Simon to use Azure single sign-on by granting access to Sugar CRM.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k cukru CRM.
 
-1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
-1. In the applications list, select **Sugar CRM**.
-1. In the app's overview page, find the **Manage** section and select **Users and groups**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **cukr CRM**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![The "Users and groups" link](common/users-groups-blade.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![The Add User link](common/add-assign-user.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
-1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
-1. In the **Add Assignment** dialog, click the **Assign** button.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-sugar-crm-sso"></a>Configure Sugar CRM SSO
+## <a name="configure-sugar-crm-sso"></a>Konfigurace jednotného přihlašování pro cukr CRM
 
-1. In a different web browser window, sign in to your Sugar CRM company site as an administrator.
+1. V jiném okně webového prohlížeče se přihlaste k webu cukr CRM společnosti jako správce.
 
-1. Go to **Admin**.
+1. Přejít na **správce**.
 
-    ![Admin](./media/sugarcrm-tutorial/ic795888.png "Admin")
+    ![Správ](./media/sugarcrm-tutorial/ic795888.png "Správce")
 
-1. In the **Administration** section, click **Password Management**.
+1. V části **Správa** klikněte na **Správa hesel**.
 
-    ![Administration](./media/sugarcrm-tutorial/ic795889.png "Správa")
+    ![Řízení](./media/sugarcrm-tutorial/ic795889.png "Správa")
 
-1. Select **Enable SAML Authentication**.
+1. Vyberte **Povolit ověřování SAML**.
 
-    ![Administration](./media/sugarcrm-tutorial/ic795890.png "Správa")
+    ![Řízení](./media/sugarcrm-tutorial/ic795890.png "Správa")
 
-1. In the **SAML Authentication** section, perform the following steps:
+1. V části **ověřování SAML** proveďte následující kroky:
 
-    ![SAML Authentication](./media/sugarcrm-tutorial/ic795891.png "SAML Authentication")  
+    ![Ověřování SAML](./media/sugarcrm-tutorial/ic795891.png "Ověřování SAML")  
 
-    a. In the **Login URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
+    a. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
   
-    b. In the **SLO URL** textbox, paste the value of **Logout URL**, which you have copied from Azure portal.
+    b. Do textového pole **Adresa URL objektu slo** vložte hodnotu **URL pro odhlášení**, kterou jste zkopírovali z Azure Portal.
   
-    c. Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste the entire Certificate into **X.509 Certificate** textbox.
+    c. V programu Poznámkový blok otevřete svůj certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte celý certifikát do textového pole **certifikátu X. 509** .
   
-    d. Klikněte na **Uložit**.
+    d. Klikněte na možnost **Uložit**.
 
-### <a name="create-sugar-crm-test-user"></a>Create Sugar CRM test user
+### <a name="create-sugar-crm-test-user"></a>Vytvořit testovacího uživatele pro cukr CRM
 
-In order to enable Azure AD users to sign in to Sugar CRM, they must be provisioned to Sugar CRM. In the case of Sugar CRM, provisioning is a manual task.
+Aby se uživatelé Azure AD mohli přihlásit k cukru CRM, musí se zřídit do cukru CRM. V případě cukru CRM je zřizování ručním úkolem.
 
-**To provision a user account, perform the following steps:**
+**Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Sign in to your **Sugar CRM** company site as administrator.
+1. Přihlaste se k webu **cukr CRM** společnosti jako správce.
 
-1. Go to **Admin**.
+1. Přejít na **správce**.
 
-    ![Admin](./media/sugarcrm-tutorial/ic795888.png "Admin")
+    ![Správ](./media/sugarcrm-tutorial/ic795888.png "Správce")
 
-1. In the **Administration** section, click **User Management**.
+1. V části **Správa** klikněte na **Správa uživatelů**.
 
-    ![Administration](./media/sugarcrm-tutorial/ic795893.png "Správa")
+    ![Řízení](./media/sugarcrm-tutorial/ic795893.png "Správa")
 
-1. Go to **Users \> Create New User**.
+1. Přejít na **uživatele \> vytvořit nového uživatele**.
 
-    ![Create New User](./media/sugarcrm-tutorial/ic795894.png "Create New User")
+    ![Vytvořit nového uživatele](./media/sugarcrm-tutorial/ic795894.png "Vytvořit nového uživatele")
 
-1. On the **User Profile** tab, perform the following steps:
+1. Na kartě **Profil uživatele** proveďte následující kroky:
 
-    ![New User](./media/sugarcrm-tutorial/ic795895.png "New User")
+    ![Nový uživatel](./media/sugarcrm-tutorial/ic795895.png "Nový uživatel")
 
-    * Type the **user name**, **last name**, and **email address** of a valid Azure Active Directory user into the related textboxes.
+    * Do souvisejících textových polí zadejte **uživatelské jméno**, **příjmení**a **e-mailovou adresu** platného Azure Active Directory uživatele.
   
-1. As **Status**, select **Active**.
+1. Jako **stav**vyberte **aktivní**.
 
-1. On the Password tab, perform the following steps:
+1. Na kartě heslo proveďte následující kroky:
 
-    ![New User](./media/sugarcrm-tutorial/ic795896.png "New User")
+    ![Nový uživatel](./media/sugarcrm-tutorial/ic795896.png "Nový uživatel")
 
-    a. Type the password into the related textbox.
+    a. Do příslušného textového pole zadejte heslo.
 
-    b. Klikněte na **Uložit**.
+    b. Klikněte na možnost **Uložit**.
 
 > [!NOTE]
-> You can use any other Sugar CRM user account creation tools or APIs provided by Sugar CRM to provision Azure AD user accounts.
+> K zřizování uživatelských účtů Azure AD můžete použít jakékoli jiné nástroje pro vytvoření uživatelského účtu nebo rozhraní API v cukru CRM poskytované cukrem CRM.
 
 ## <a name="test-sso"></a>Test SSO 
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-When you click the Sugar CRM tile in the Access Panel, you should be automatically signed in to the Sugar CRM for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici cukru CRM na přístupovém panelu byste měli být automaticky přihlášeni k cukru CRM, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Try Sugar CRM with Azure AD](https://aad.portal.azure.com/)
+- [Vyzkoušejte si cukr CRM s Azure AD](https://aad.portal.azure.com/)
 

@@ -1,14 +1,14 @@
 ---
-title: Ukázkový plán sdílených služeb ISO 27001 – postup nasazení
+title: Ukázka podrobného plánu nasazení sdílených služeb ISO 27001
 description: Nasaďte kroky pro ukázka podrobného plánu sdílených služeb ISO 27001, včetně podrobností o parametrech artefaktu podrobného plánu.
 ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 3f6928666dc098de81e20555cc1164338331fa90
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1ef96a3ccffa705290a90caf436fe1857d9442a7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184398"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546711"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Ukázka podrobného plánu pro nasazování sdílených služeb ISO 27001
 
@@ -104,9 +104,9 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
 |\[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
-|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
 |\[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
-|\[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
 |Povolené typy prostředků|Přiřazení zásad|Povolené typy prostředků|Seznam typů prostředků, které je možné nasadit Tento seznam se skládá ze všech typů prostředků nasazených ve sdílených službách.|
 |Povolené skladové položky účtu úložiště|Přiřazení zásad|Povolené skladové položky úložiště|Seznam povolených SKU účtu úložiště pro diagnostické protokoly. Výchozí hodnota je _["Standard_LRS"]_ .|
 |Povolené SKU virtuálních počítačů|Přiřazení zásad|Seznam SKU virtuálních počítačů, které je možné nasadit Výchozí hodnota je _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|

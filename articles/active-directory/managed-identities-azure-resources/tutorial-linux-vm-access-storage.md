@@ -29,7 +29,7 @@ ms.locfileid: "74183411"
 V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systémem na virtuálním počítači s Linuxem získat přístup ke službě Azure Storage. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření účtu úložiště
+> * vytvořit účet úložiště
 > * Vytvoření kontejneru objektů blob v účtu úložiště
 > * Udělení přístupu spravované identitě virtuálního počítače s Linuxem ke kontejneru Azure Storage
 > * Získání přístupového tokenu a jeho použití k volání Azure Storage
@@ -46,7 +46,7 @@ Ukázkové skripty rozhraní příkazového řádku v tomto kurzu můžete spust
 - Použijte [Azure Cloud Shell](~/articles/cloud-shell/overview.md) buď přímo z webu Azure Portal, nebo přes tlačítko **Vyzkoušet** umístěné v pravém horním rohu každého bloku kódu.
 - Pokud upřednostňujete práci v místní konzole rozhraní příkazového řádku, [nainstalujte nejnovější verzi CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 nebo novější).
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště 
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
 V této části vytvoříte účet úložiště. 
 

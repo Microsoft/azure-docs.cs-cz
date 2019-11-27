@@ -1,6 +1,6 @@
 ---
-title: Get container instance logs & events
-description: Learn how to debug with container logs and events with Azure Container Instances
+title: Získat protokoly instance kontejneru & události
+description: Naučte se ladit s protokoly kontejnerů a událostmi pomocí Azure Container Instances
 ms.topic: article
 ms.date: 03/21/2019
 ms.custom: mvc
@@ -11,15 +11,15 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481748"
 ---
-# <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Retrieve container logs and events in Azure Container Instances
+# <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Načtení protokolů kontejneru a událostí v Azure Container Instances
 
-When you have a misbehaving container, start by viewing its logs with [az container logs][az-container-logs], and streaming its standard out and standard error with [az container attach][az-container-attach].
+Při nesprávném chování kontejneru začněte zobrazením protokolů pomocí [AZ Container logs][az-container-logs]a Streamujte jeho standardní a standardní chybu pomocí [AZ Container Attach][az-container-attach].
 
 ## <a name="view-logs"></a>Zobrazení protokolů
 
-To view logs from your application code within a container, you can use the [az container logs][az-container-logs] command.
+Chcete-li zobrazit protokoly z kódu aplikace v rámci kontejneru, můžete použít příkaz [AZ Container logs][az-container-logs] .
 
-The following is log output from the example task-based container in [Run a containerized task in ACI](container-instances-restart-policy.md), after having fed it an invalid URL to process:
+Následuje výstup protokolu z ukázkového kontejneru založeného na úlohách v části [spuštění kontejnerové úlohy v ACI](container-instances-restart-policy.md), po jejím zaznamenání neplatné adresy URL do procesu:
 
 ```console
 $ az container logs --resource-group myResourceGroup --name mycontainer
@@ -45,9 +45,9 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 ## <a name="attach-output-streams"></a>Připojení výstupních datových proudů
 
-The [az container attach][az-container-attach] command provides diagnostic information during container startup. Once the container has started, it streams STDOUT and STDERR to your local console.
+Příkaz [AZ Container Attach][az-container-attach] poskytuje diagnostické informace při spuštění kontejneru. Po spuštění kontejneru streamuje STDOUT a STDERR do místní konzoly.
 
-For example, here is output from the task-based container in [Run a containerized task in ACI](container-instances-restart-policy.md), after having supplied a valid URL of a large text file to process:
+Tady je například výstup z kontejneru založeného na úlohách v části [spuštění kontejnerové úlohy v ACI](container-instances-restart-policy.md)a poté, co doplní platnou adresu URL souboru velkého textu, který se má zpracovat:
 
 ```console
 $ az container attach --resource-group myResourceGroup --name mycontainer
@@ -74,15 +74,15 @@ Start streaming logs:
  ('is', 8195)]
 ```
 
-## <a name="get-diagnostic-events"></a>Get diagnostic events
+## <a name="get-diagnostic-events"></a>Získat diagnostické události
 
-If your container fails to deploy successfully, you need to review the diagnostic information provided by the Azure Container Instances resource provider. To view the events for your container, run the [az container show][az-container-show] command:
+Pokud se Váš kontejner úspěšně nedaří nasadit, je nutné zkontrolovat diagnostické informace poskytnuté poskytovatelem prostředků Azure Container Instances. Pokud chcete zobrazit události pro svůj kontejner, spusťte příkaz [az Container show] [az-Container-show] Command:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
 ```
 
-The output includes the core properties of your container, along with deployment events (shown here truncated):
+Výstup zahrnuje základní vlastnosti vašeho kontejneru spolu s událostmi nasazení (tady se zobrazují zkráceně):
 
 ```JSON
 {
@@ -143,7 +143,7 @@ The output includes the core properties of your container, along with deployment
 }
 ```
 ## <a name="next-steps"></a>Další kroky
-Learn how to [troubleshoot common container and deployment issues](container-instances-troubleshooting.md) for Azure Container Instances.
+Naučte se [řešit běžné problémy s kontejnerem a nasazením](container-instances-troubleshooting.md) pro Azure Container Instances.
 
 <!-- LINKS - Internal -->
 [az-container-attach]: /cli/azure/container#az-container-attach

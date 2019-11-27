@@ -112,7 +112,7 @@ Symetrický klíč poskytuje zabezpečený přístup k vašim prostředkům. Je 
 
 Je nutné nastavit požadavky (omezení) na **zásady klíče obsahu** , které musí být splněny pro doručení klíčů se zadanou konfigurací. V tomto příkladu jsme nastavili následující konfigurace a požadavky:
 
-* Konfigurace
+* Konfiguraci
 
     Licence [PlayReady](playready-license-template-overview.md) a [Widevine](widevine-license-template-overview.md) jsou nakonfigurované tak, že se dají doručit pomocí služby doručení licencí Media Services. I když Tato ukázková aplikace nekonfiguruje licenci [Fairplay](fairplay-license-overview.md) , obsahuje metodu, kterou můžete použít ke konfiguraci Fairplay. Konfiguraci FairPlay můžete přidat jako jinou možnost.
 

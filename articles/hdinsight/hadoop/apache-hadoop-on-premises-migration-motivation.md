@@ -60,7 +60,7 @@ Azure HDInsight je cloudová distribuce komponent systému Hadoop. Azure HDInsig
     - Azure Data Factory (ADF)
     - Azure Blob Storage
     - Azure Data Lake Storage Gen2
-    - Databáze Azure Cosmos
+    - Azure Cosmos DB
     - Azure SQL Database
     - Azure Analysis Services
 

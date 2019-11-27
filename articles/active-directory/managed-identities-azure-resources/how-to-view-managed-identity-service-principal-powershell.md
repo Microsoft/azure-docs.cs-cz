@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak zobrazit instanční objekt spravované identi
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md).
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md).
 - Pokud ještě nemáte účet Azure, [Zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).
 - Povolte [identitu přiřazenou systémem na virtuálním počítači nebo v](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) [aplikaci](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity).
 - Nainstalovat nejnovější verzi [Azure PowerShell](/powershell/azure/install-az-ps)

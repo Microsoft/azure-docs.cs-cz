@@ -1,6 +1,6 @@
 ---
-title: Manage access to Azure resources using RBAC and Azure CLI | Microsoft Docs
-description: Learn how to manage access to Azure resources for users, groups, and applications using role-based access control (RBAC) and Azure CLI. To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
+title: Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI | Microsoft Docs
+description: Naučte se spravovat přístup k prostředkům Azure pro uživatele, skupiny a aplikace pomocí řízení přístupu na základě role (RBAC) a rozhraní příkazového řádku Azure CLI. To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -21,26 +21,26 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384097"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Manage access to Azure resources using RBAC and Azure CLI
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI
 
-[Role-based access control (RBAC)](overview.md) is the way that you manage access to Azure resources. This article describes how you manage access for users, groups, and applications using RBAC and Azure CLI.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny a aplikace pomocí RBAC a Azure CLI.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To manage access, you need one of the following:
+Ke správě přístupu budete potřebovat jednu z následujících možností:
 
-* [Bash in Azure Cloud Shell](/azure/cloud-shell/overview)
+* [Bash v Azure Cloud Shell](/azure/cloud-shell/overview)
 * [Azure CLI](/cli/azure)
 
 ## <a name="list-roles"></a>Výpis rolí
 
-To list all available role definitions, use [az role definition list](/cli/azure/role/definition#az-role-definition-list):
+Chcete-li zobrazit seznam všech dostupných definic rolí, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list
 ```
 
-The following example lists the name and description of all available role definitions:
+Následující příklad uvádí název a popis všech dostupných definic rolí:
 
 ```azurecli
 az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
@@ -63,7 +63,7 @@ az role definition list --output json | jq '.[] | {"roleName":.roleName, "descri
 ...
 ```
 
-The following example lists all of the built-in role definitions:
+V následujícím příkladu jsou uvedeny všechny předdefinované definice rolí:
 
 ```azurecli
 az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
@@ -89,15 +89,15 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-## <a name="list-a-role-definition"></a>List a role definition
+## <a name="list-a-role-definition"></a>Seznam definice role
 
-To list a role definition, use [az role definition list](/cli/azure/role/definition#az-role-definition-list):
+K vypsání definice role použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list --name <role_name>
 ```
 
-The following example lists the *Contributor* role definition:
+V následujícím příkladu je uvedena definice role *Přispěvatel* :
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -135,9 +135,9 @@ az role definition list --name "Contributor"
 ]
 ```
 
-### <a name="list-actions-of-a-role"></a>List actions of a role
+### <a name="list-actions-of-a-role"></a>Seznam akcí role
 
-The following example lists just the *actions* and *notActions* of the *Contributor* role:
+Následující příklad vypíše pouze *Akce* a *notActions* role *přispěvatele* :
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -156,7 +156,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-The following example lists just the actions of the *Virtual Machine Contributor* role:
+Následující příklad vypíše pouze akce role *Přispěvatel virtuálních počítačů* :
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -182,19 +182,19 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 
 ## <a name="list-access"></a>Výpis přístupu
 
-In RBAC, to list access, you list the role assignments.
+V části RBAC pro vypsání přístupu k seznamu se zobrazí seznam přiřazení rolí.
 
 ### <a name="list-role-assignments-for-a-user"></a>Výpis přiřazení rolí pro uživatele
 
-To list the role assignments for a specific user, use [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list):
+Chcete-li zobrazit seznam přiřazení rolí pro konkrétního uživatele, použijte příkaz [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --assignee <assignee>
 ```
 
-By default, only direct assignments scoped to subscription will be displayed. To view assignments scoped by resource or group, use `--all` and to view inherited assignments, use `--include-inherited`.
+Ve výchozím nastavení se zobrazí jenom Přímá přiřazení v oboru předplatného. Chcete-li zobrazit přiřazení v oboru podle prostředku nebo skupiny, použijte `--all` a k zobrazení zděděných přiřazení použijte `--include-inherited`.
 
-The following example lists the role assignments that are assigned directly to the *patlong\@contoso.com* user:
+V následujícím příkladu jsou uvedena přiřazení rolí, která jsou přiřazena přímo uživateli *patlong\@contoso.com* :
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -213,15 +213,15 @@ az role assignment list --all --assignee patlong@contoso.com --output json | jq 
 }
 ```
 
-### <a name="list-role-assignments-at-a-resource-group-scope"></a>List role assignments at a resource group scope
+### <a name="list-role-assignments-at-a-resource-group-scope"></a>Vypsat přiřazení rolí v oboru skupiny prostředků
 
-To list the role assignments that exist at a resource group scope, use [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list):
+Pokud chcete zobrazit seznam přiřazení rolí, která existují v oboru skupiny prostředků, použijte [seznam AZ role Assignment](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --resource-group <resource_group>
 ```
 
-The following example lists the role assignments for the *pharma-sales* resource group:
+V následujícím příkladu jsou uvedena přiřazení rolí pro skupinu prostředků *Pharma-Sales* :
 
 ```azurecli
 az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -242,9 +242,9 @@ az role assignment list --resource-group pharma-sales --output json | jq '.[] | 
 ...
 ```
 
-### <a name="list-role-assignments-at-a-subscription-scope"></a>List role assignments at a subscription scope
+### <a name="list-role-assignments-at-a-subscription-scope"></a>Seznam přiřazení rolí v oboru předplatného
 
-To list all role assignments at a subscription scope, use [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list). To get the subscription ID, you can find it on the **Subscriptions** blade in the Azure portal or you can use [az account list](/cli/azure/account#az-account-list).
+Chcete-li zobrazit seznam všech přiřazení rolí v oboru předplatného, použijte příkaz [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list). Pokud chcete získat ID předplatného, najdete ho v okně **předplatná** v Azure Portal nebo můžete použít příkaz [AZ Account list](/cli/azure/account#az-account-list).
 
 ```azurecli
 az role assignment list --subscription <subscription_name_or_id>
@@ -254,9 +254,9 @@ az role assignment list --subscription <subscription_name_or_id>
 az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-### <a name="list-role-assignments-at-a-management-group-scope"></a>List role assignments at a management group scope
+### <a name="list-role-assignments-at-a-management-group-scope"></a>Vypsat přiřazení rolí v oboru skupiny pro správu
 
-To list all role assignments at a management group scope, use [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list). To get the management group ID, you can find it on the **Management groups** blade in the Azure portal or you can use [az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
+Chcete-li zobrazit seznam všech přiřazení rolí v oboru skupiny pro správu, použijte příkaz [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list). Chcete-li získat ID skupiny pro správu, můžete ji najít v okně **skupiny pro správu** v Azure Portal nebo můžete použít [příkaz AZ Account Management-Group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
 
 ```azurecli
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -266,13 +266,13 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-## <a name="get-object-ids"></a>Get object IDs
+## <a name="get-object-ids"></a>Získat ID objektů
 
-To list, add, or remove role assignments, you might need to specify the unique ID of an object. The ID has the format: `11111111-1111-1111-1111-111111111111`. You can get the ID using the Azure portal or Azure CLI.
+Chcete-li zobrazit, přidat nebo odebrat přiřazení rolí, možná budete muset zadat jedinečné ID objektu. ID má formát: `11111111-1111-1111-1111-111111111111`. ID můžete získat pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI.
 
 ### <a name="user"></a>Uživatel
 
-To get the object ID for an Azure AD user, you can use [az ad user show](/cli/azure/ad/user#az-ad-user-show).
+Pokud chcete získat ID objektu pro uživatele Azure AD, můžete použít příkaz [AZ AD User show](/cli/azure/ad/user#az-ad-user-show).
 
 ```azurecli
 az ad user show --id "{email}" --query objectId --output tsv
@@ -280,7 +280,7 @@ az ad user show --id "{email}" --query objectId --output tsv
 
 ### <a name="group"></a>Skupina
 
-To get the object ID for an Azure AD group, you can use [az ad group show](/cli/azure/ad/group#az-ad-group-show) or [az ad group list](/cli/azure/ad/group#az-ad-group-list).
+Pokud chcete získat ID objektu pro skupinu Azure AD, můžete použít příkaz [AZ AD Group show](/cli/azure/ad/group#az-ad-group-show) nebo [AZ AD Group list](/cli/azure/ad/group#az-ad-group-list).
 
 ```azurecli
 az ad group show --group "{name}" --query objectId --output tsv
@@ -288,7 +288,7 @@ az ad group show --group "{name}" --query objectId --output tsv
 
 ### <a name="application"></a>Aplikace
 
-To get the object ID for an Azure AD service principal (identity used by an application), you can use [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list). For a service principal, use the object ID and **not** the application ID.
+Pokud chcete získat ID objektu pro instanční objekt služby Azure AD (identita, kterou používá aplikace), můžete použít příkaz [AZ AD SP list](/cli/azure/ad/sp#az-ad-sp-list). U instančního objektu použijte ID objektu, **nikoli** ID aplikace.
 
 ```azurecli
 az ad sp list --display-name "{name}" --query [].objectId --output tsv
@@ -298,118 +298,118 @@ az ad sp list --display-name "{name}" --query [].objectId --output tsv
 
 V RBAC se přístup uděluje vytvořením přiřazení role.
 
-### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Create a role assignment for a user at a resource group scope
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Vytvoření přiřazení role pro uživatele v oboru skupiny prostředků
 
-To grant access to a user at a resource group scope, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create).
+Pokud chcete udělit přístup k uživateli v oboru skupiny prostředků, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-The following example assigns the *Virtual Machine Contributor* role to *patlong\@contoso.com* user at the *pharma-sales* resource group scope:
+Následující příklad přiřadí roli *Přispěvatel virtuálních počítačů* k *patlong\@uživatele contoso.com* v oboru skupiny prostředků *Pharma-Sales* :
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
 ```
 
-### <a name="create-a-role-assignment-using-the-unique-role-id"></a>Create a role assignment using the unique role ID
+### <a name="create-a-role-assignment-using-the-unique-role-id"></a>Vytvoření přiřazení role pomocí jedinečného ID role
 
-There are a couple of times when a role name might change, for example:
+V některých případech se může stát, že se název role změní například takto:
 
-- You are using your own custom role and you decide to change the name.
-- You are using a preview role that has **(Preview)** in the name. When the role is released, the role is renamed.
+- Používáte vlastní roli a Vy se rozhodnete název změnit.
+- V názvu používáte roli Preview, která má **(Preview)** . Po uvolnění role se role přejmenuje.
 
 > [!IMPORTANT]
-> A preview version is provided without a service level agreement, and it's not recommended for production workloads. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Even if a role is renamed, the role ID does not change. If you are using scripts or automation to create your role assignments, it's a best practice to use the unique role ID instead of the role name. Therefore, if a role is renamed, your scripts are more likely to work.
+I když je role přejmenována, ID role se nezmění. Pokud k vytváření přiřazení rolí používáte skripty nebo automatizaci, je vhodné místo názvu role použít jedinečné ID role. Proto pokud je role přejmenována, vaše skripty budou pravděpodobnější, že budou fungovat.
 
-To create a role assignment using the unique role ID instead of the role name, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create).
+K vytvoření přiřazení role pomocí jedinečného ID role místo názvu role použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create).
 
 ```azurecli
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-The following example assigns the [Virtual Machine Contributor](built-in-roles.md#virtual-machine-contributor) role to the *patlong\@contoso.com* user at the *pharma-sales* resource group scope. To get the unique role ID, you can use [az role definition list](/cli/azure/role/definition#az-role-definition-list) or see [Built-in roles for Azure resources](built-in-roles.md).
+Následující příklad přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k uživateli *patlong\@contoso.com* v oboru skupiny prostředků *Pharma-Sales* . Pokud chcete získat jedinečné ID role, můžete použít příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list) nebo informace [o předdefinovaných rolích pro prostředky Azure](built-in-roles.md).
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
 ```
 
-### <a name="create-a-role-assignment-for-a-group"></a>Create a role assignment for a group
+### <a name="create-a-role-assignment-for-a-group"></a>Vytvoření přiřazení role pro skupinu
 
-To grant access to a group, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). For information about how to get the object ID of the group, see [Get object IDs](#get-object-ids).
+Chcete-li udělit přístup ke skupině, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Informace o tom, jak získat ID objektu skupiny, najdete v tématu [získání ID objektů](#get-object-ids).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-The following example assigns the *Reader* role to the *Ann Mack Team* group with ID 22222222-2222-2222-2222-222222222222 at a subscription scope.
+Následující příklad přiřadí roli *Čtenář* ke skupině *týmu Ann Mack* s ID 22222222-2222-2222-2222-222222222222 v oboru předplatného.
 
 ```azurecli
 az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000
 ```
 
-The following example assigns the *Virtual Machine Contributor* role to the *Ann Mack Team* group with ID 22222222-2222-2222-2222-222222222222 at a resource scope for a virtual network named *pharma-sales-project-network*.
+Následující příklad přiřadí roli *Přispěvatel virtuálních počítačů* ke skupině *Ann Mack týmu* s ID 22222222-2222-2222-2222-222222222222 v oboru prostředků pro virtuální síť s názvem *Pharma-Sales-Project-Network*.
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
 ```
 
-### <a name="create-a-role-assignment-for-an-application-at-a-resource-group-scope"></a>Create a role assignment for an application at a resource group scope
+### <a name="create-a-role-assignment-for-an-application-at-a-resource-group-scope"></a>Vytvoření přiřazení role pro aplikaci v oboru skupiny prostředků
 
-To grant access to an application, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). For information about how to get the object ID of the application, see [Get object IDs](#get-object-ids).
+Chcete-li udělit přístup k aplikaci, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Informace o tom, jak získat ID objektu aplikace, najdete v tématu [získání ID objektů](#get-object-ids).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group>
 ```
 
-The following example assigns the *Virtual Machine Contributor* role to an application with object ID 44444444-4444-4444-4444-444444444444 at the *pharma-sales* resource group scope.
+Následující příklad přiřadí roli *Přispěvatel virtuálních počítačů* k aplikaci s ID objektu 44444444-4444-4444-4444-444444444444 v oboru skupiny prostředků *Pharma-Sales* .
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales
 ```
 
-### <a name="create-a-role-assignment-for-a-user-at-a-subscription-scope"></a>Create a role assignment for a user at a subscription scope
+### <a name="create-a-role-assignment-for-a-user-at-a-subscription-scope"></a>Vytvoření přiřazení role pro uživatele v oboru předplatného
 
-To grant access to a user at a subscription scope, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). To get the subscription ID, you can find it on the **Subscriptions** blade in the Azure portal or you can use [az account list](/cli/azure/account#az-account-list).
+Pokud chcete udělit přístup k uživateli v oboru předplatného, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Pokud chcete získat ID předplatného, najdete ho v okně **předplatná** v Azure Portal nebo můžete použít příkaz [AZ Account list](/cli/azure/account#az-account-list).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
 ```
 
-The following example assigns the *Reader* role to the *annm\@example.com* user at a subscription scope.
+Následující příklad přiřadí roli *Čtenář* k uživateli *annm\@example.com* v oboru předplatného.
 
 ```azurecli
 az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-### <a name="create-a-role-assignment-for-a-user-at-a-management-group-scope"></a>Create a role assignment for a user at a management group scope
+### <a name="create-a-role-assignment-for-a-user-at-a-management-group-scope"></a>Vytvoření přiřazení role pro uživatele v oboru skupiny pro správu
 
-To grant access to a user at a management group scope, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). To get the management group ID, you can find it on the **Management groups** blade in the Azure portal or you can use [az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
+Chcete-li udělit uživateli přístup v oboru skupiny pro správu, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Chcete-li získat ID skupiny pro správu, můžete ji najít v okně **skupiny pro správu** v Azure Portal nebo můžete použít [příkaz AZ Account Management-Group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-The following example assigns the *Billing Reader* role to the *alain\@example.com* user at a management group scope.
+Následující příklad přiřadí roli *Čtenář fakturace* pro uživatele *Alain\@example.com* v oboru skupiny pro správu.
 
 ```azurecli
 az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
-### <a name="create-a-role-assignment-for-a-new-service-principal"></a>Create a role assignment for a new service principal
+### <a name="create-a-role-assignment-for-a-new-service-principal"></a>Vytvoření přiřazení role pro nový instanční objekt
 
-If you create a new service principal and immediately try to assign a role to that service principal, that role assignment can fail in some cases. For example, if you use a script to create a new managed identity and then try to assign a role to that service principal, the role assignment might fail. The reason for this failure is likely a replication delay. The service principal is created in one region; however, the role assignment might occur in a different region that hasn't replicated the service principal yet. To address this scenario, you should specify the principal type when creating the role assignment.
+Pokud vytvoříte nový instanční objekt a hned se pokusíte přiřadit roli k tomuto instančnímu objektu, toto přiřazení role může v některých případech selhat. Pokud například použijete skript k vytvoření nové spravované identity a potom se pokusíte přiřadit roli k tomuto instančnímu objektu, přiřazení role se nemusí zdařit. Důvodem této chyby je nejspíš zpoždění replikace. Instanční objekt se vytvoří v jedné oblasti. přiřazení role se ale může vyskytnout v jiné oblasti, která ještě nereplikoval instanční objekt. Chcete-li tento scénář vyřešit, je nutné při vytváření přiřazení role zadat typ objektu zabezpečení.
 
-To create a role assignment, use [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), specify a value for `--assignee-object-id`, and then set `--assignee-principal-type` to `ServicePrincipal`.
+Chcete-li vytvořit přiřazení role, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create), zadejte hodnotu pro `--assignee-object-id`a pak nastavte `--assignee-principal-type` na `ServicePrincipal`.
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --assignee-principal-type <assignee_principal_type> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-The following example assigns the *Virtual Machine Contributor* role to the *msi-test* managed identity at the *pharma-sales* resource group scope:
+Následující příklad přiřadí roli *Přispěvatel virtuálních počítačů* k spravované identitě *MSI-test* v oboru skupiny prostředků *Pharma-Sales* :
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 33333333-3333-3333-3333-333333333333 --assignee-principal-type ServicePrincipal --resource-group pharma-sales
@@ -417,25 +417,25 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ## <a name="remove-access"></a>Odebrání přístupu
 
-In RBAC, to remove access, you remove a role assignment by using [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete):
+Pokud chcete odebrat přístup, odeberte přiřazení role v RBAC pomocí funkce [AZ role Assignment Delete](/cli/azure/role/assignment#az-role-assignment-delete):
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
 ```
 
-The following example removes the *Virtual Machine Contributor* role assignment from the *patlong\@contoso.com* user on the *pharma-sales* resource group:
+Následující příklad odebere přiřazení role *Přispěvatel virtuálních počítačů* z uživatele *patlong\@contoso.com* ve skupině prostředků *Pharma-Sales* :
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales
 ```
 
-The following example removes the *Reader* role from the *Ann Mack Team* group with ID 22222222-2222-2222-2222-222222222222 at a subscription scope. For information about how to get the object ID of the group, see [Get object IDs](#get-object-ids).
+Následující příklad odebere roli *Čtenář* z *týmové skupiny Ann Mack* s ID 22222222-2222-2222-2222-222222222222 v oboru předplatného. Informace o tom, jak získat ID objektu skupiny, najdete v tématu [získání ID objektů](#get-object-ids).
 
 ```azurecli
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-The following example removes the *Billing Reader* role from the *alain\@example.com* user at the management group scope. To get the ID of the management group, you can use [az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
+Následující příklad odebere roli *Čtenář fakturace* z uživatele *Alain\@example.com* v oboru skupiny pro správu. ID skupiny pro správu můžete získat pomocí ovládacího panelu [AZ Account Management-Group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group
@@ -443,5 +443,5 @@ az role assignment delete --assignee alain@example.com --role "Billing Reader" -
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Tutorial: Create a custom role for Azure resources using Azure CLI](tutorial-custom-role-cli.md)
-- [Use the Azure CLI to manage Azure resources and resource groups](../azure-resource-manager/cli-azure-resource-manager.md)
+- [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI](tutorial-custom-role-cli.md)
+- [Použití rozhraní příkazového řádku Azure ke správě prostředků a skupin prostředků Azure](../azure-resource-manager/cli-azure-resource-manager.md)

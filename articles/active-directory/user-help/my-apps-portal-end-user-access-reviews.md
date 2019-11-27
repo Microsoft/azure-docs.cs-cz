@@ -1,6 +1,6 @@
 ---
-title: Manage your organization's access to apps & groups - Azure AD
-description: Learn how to perform an access review to manage security access for your organization's apps and groups from the My Apps portal.
+title: Správa přístupu vaší organizace k aplikacím & skupinám – Azure AD
+description: Naučte se provádět kontrolu přístupu ke správě přístupu zabezpečení pro aplikace a skupiny vaší organizace na portálu moje aplikace.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -20,62 +20,62 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231843"
 ---
-# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Perform an access review from the My Apps portal
+# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Provedení kontroly přístupu z portálu moje aplikace
 
-You can use your work or school account with the web-based **My Apps** portal, to view and start many of your organization’s cloud-based apps, to update some of your profile and account information, to see your **Groups** information, and to perform **access reviews** for your apps and groups. If you don’t have access to the **My Apps** portal, you must contact your Helpdesk for permission.
+Svůj pracovní nebo školní účet můžete použít s portálem web **Moje aplikace** , abyste mohli zobrazit a spustit spoustu cloudových aplikací vaší organizace, abyste mohli aktualizovat některé z vašich informací o profilu a účtu, abyste viděli informace o **skupinách** a mohli provádět  **kontroly přístupu** pro vaše aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Tento obsah je určený pro uživatele. If you're an administrator, you can find more information about how to set up and manage your cloud-based apps in the [Application Management Documentation](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
-## <a name="manage-access-reviews"></a>Manage access reviews
+## <a name="manage-access-reviews"></a>Správa kontrol přístupu
 
-If your administrator has given you permission to perform your own access reviews, you can manage your groups or apps access from the **Access reviews** tile on the **My Apps** portal page.
+Pokud vám správce udělil oprávnění k provádění vlastních kontrol přístupu, můžete ke správě skupin nebo aplikací přistupovat z dlaždice kontroly **přístupu** na stránce portálu **Moje aplikace** .
 
 >[!Note]
->If you don't see the **Access reviews** tile it either means that you don't have permission to perform access reviews, or that you don't have any pending reviews waiting for your approval. If you think you should have access to the tile, contact your Help desk for assistance.
+>Pokud nevidíte dlaždici kontroly **přístupu** , znamená to, že nemáte oprávnění k provádění kontrol přístupu nebo že nemáte žádné nevyřízené recenze čekající na vaše schválení. Pokud se domníváte, že byste měli mít přístup k této dlaždici, požádejte o pomoc svoji technickou podporu.
 
-### <a name="to-perform-your-access-reviews"></a>To perform your access reviews
+### <a name="to-perform-your-access-reviews"></a>Provedení kontrol přístupu
 
-1. Sign in to your work or school account.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-2. Open your web browser and go to https://myapps.microsoft.com, or use the link provided by your organization. For example, you might be directed to a customized page for your organization, such as https://myapps.microsoft.com/contoso.com.
+2. Otevřete webový prohlížeč a přejdete na https://myapps.microsoft.comnebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku vaší organizace, například https://myapps.microsoft.com/contoso.com.
 
-    The **Apps** page appears, showing all the cloud-based apps owned by your organization and available for you to use.
+    Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
-    ![Apps page in the My Apps portal](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![Stránka aplikace na portálu moje aplikace](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
 
-3. Select the **Access reviews** tile to see a list of access reviews waiting for your approval.
+3. Kliknutím na dlaždici kontroly **přístupu** zobrazíte seznam kontrol přístupu čekajících na vaše schválení.
 
-    ![Access reviews page with pending access reviews for the organization](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
+    ![Stránka kontroly přístupu s nevyřízenými recenzemi přístupu pro organizaci](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. Select **Begin review** to start your access review.
+4. Vyberte možnost **zahájit revizi** a spusťte tak kontrolu přístupu.
 
-5. Review your access and determine whether it's still necessary.
+5. Zkontrolujte svůj přístup a určete, zda je stále nutné.
 
-    ![Access review page, showing the review details](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
-
-    >[!Note]
-    >If you're an administrator, and allowed to review your organization's access to groups and apps, you'll see a different page. For more information about reviewing groups or apps for your organization, see [Review access to groups or applications in Azure AD Access Reviews](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
-
-6. Select **Yes** to keep your access or **No** to remove your access.
-
-    If you select **Yes**, you might need to specify a justification in the **Reason** box.
-
-    ![Access review page, showing the Reason box with sample text](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
-
-7. Select **Submit**.
-
-    Your access review is complete and you return to the **My Apps** portal.
+    ![Stránka pro kontrolu přístupu se zobrazenými podrobnostmi o kontrole](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >You can change your access at any time until your access review period ends. If you remove your access to an app or group, it's not removed immediately. The removal happens when the access review period ends or when an administrator closes the review.
+    >Pokud jste správce a máte povolený kontrolu přístupu vaší organizace ke skupinám a aplikacím, zobrazí se jiná stránka. Další informace o kontrole skupin nebo aplikací pro vaši organizaci najdete v tématu [Kontrola přístupu ke skupinám nebo aplikacím v rámci kontrol přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
+
+6. Vyberte **Ano** , pokud chcete zachovat přístup nebo **ne** pro odebrání přístupu.
+
+    Pokud vyberete **Ano**, možná budete muset zadat odůvodnění v poli **důvod** .
+
+    ![Stránka pro kontrolu přístupu, která zobrazuje pole důvod s ukázkovým textem](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
+
+7. Vyberte **Odeslat**.
+
+    Vaše kontrola přístupu je hotová a vrátíte se na portál **Moje aplikace** .
+
+    >[!Note]
+    >Přístup můžete kdykoli změnit, dokud období kontroly přístupu skončí. Když odeberete přístup k aplikaci nebo skupině, neodebere se okamžitě. K odebrání dojde po skončení období kontroly přístupu nebo po ukončení revize správcem.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Access and use apps on the My Apps portal](my-apps-portal-end-user-access.md).
+- [Přístup k aplikacím a jejich používání na portálu moje aplikace](my-apps-portal-end-user-access.md)
 
-- [Change your profile information](my-apps-portal-end-user-update-profile.md).
+- [Změna informací o profilu](my-apps-portal-end-user-update-profile.md).
 
-- [View and update your groups-related information](my-apps-portal-end-user-groups.md).
+- [Zobrazit a aktualizovat informace související se skupinami](my-apps-portal-end-user-groups.md).

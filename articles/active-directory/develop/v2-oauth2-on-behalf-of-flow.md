@@ -1,6 +1,6 @@
 ---
-title: Microsoft identity platform and OAuth2.0 On-Behalf-Of flow | Azure
-description: This article describes how to use HTTP messages to implement service to service authentication using the OAuth2.0 On-Behalf-Of flow.
+title: Microsoft Identity Platform a OAuth 2.0 s tokem za chodu | Azure
+description: Tento článek popisuje, jak pomocí zpráv HTTP implementovat ověřování Service to Service over pomocí toku OAuth 2.0 za běhu.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -25,62 +25,62 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74207512"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft identity platform and OAuth 2.0 On-Behalf-Of flow
+# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform a OAuth 2,0 s tokem za chodu
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-The OAuth 2.0 On-Behalf-Of flow (OBO) serves the use case where an application invokes a service/web API, which in turn needs to call another service/web API. The idea is to propagate the delegated user identity and permissions through the request chain. For the middle-tier service to make authenticated requests to the downstream service, it needs to secure an access token from the Microsoft identity platform, on behalf of the user.
+OBO (OAuth 2,0 on-of-jménem toku) slouží k použití případu, kdy aplikace vyvolá službu nebo webové rozhraní API, která zase potřebuje volat jiné služby nebo webové rozhraní API. Nápad je rozšířit identitu delegovaného uživatele a oprávnění prostřednictvím řetězce požadavků. Aby služba střední vrstvy prováděla ověřené požadavky na službu pro příjem dat, musí jménem uživatele zabezpečit přístupový token od platformy Microsoft identity.
 
-This article describes how to program directly against the protocol in your application.  When possible, we recommend you use the supported Microsoft Authentication Libraries (MSAL) instead to [acquire tokens and call secured web APIs](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Also take a look at the [sample apps that use MSAL](sample-v2-code.md).
+Tento článek popisuje, jak programovat přímo s protokolem ve vaší aplikaci.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny Microsoft Authentication Library (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Podívejte se také na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
 
 > [!NOTE]
 >
-> - The Microsoft identity platform endpoint doesn't support all scenarios and features. To determine whether you should use the Microsoft identity platform endpoint, read about [Microsoft identity platform limitations](active-directory-v2-limitations.md). Specifically, known client applications aren't supported for apps with Microsoft account (MSA) and Azure AD audiences. Thus, a common consent pattern for OBO will not work for clients that sign in both personal and work or school accounts. To learn more about how to handle this step of the flow, see [Gaining consent for the middle-tier application](#gaining-consent-for-the-middle-tier-application).
-> - As of May 2018, some implicit-flow derived `id_token` can't be used for OBO flow. Single-page apps (SPAs) should pass an **access** token to a middle-tier confidential client to perform OBO flows instead. For more info about which clients can perform OBO calls, see [limitations](#client-limitations).
+> - Koncový bod platformy Microsoft Identity Platform nepodporuje všechny scénáře a funkce. Pokud chcete zjistit, jestli byste měli použít koncový bod platformy Microsoft identity, přečtěte si informace o [omezeních platformy Microsoft Identity](active-directory-v2-limitations.md). Pro aplikace s účet Microsoft (MSA) a cílovými skupinami Azure AD se konkrétně nepodporují známé klientské aplikace. Proto společný vzor souhlasu pro OBO nebude fungovat pro klienty, kteří přihlásí osobní i pracovní nebo školní účty. Další informace o tom, jak zpracovat tento krok toku, najdete v tématu [získání souhlasu pro aplikaci střední vrstvy](#gaining-consent-for-the-middle-tier-application).
+> - Od května 2018 se v OBO toku nedá použít nějaký `id_token` odvozený z implicitního toku. Jednostránkové aplikace (jednostránkové) by měly předat **přístupovému** klientovi střední vrstvy přístupový token, aby se místo toho prováděly OBO toky. Další informace o tom, kteří klienti můžou provádět volání OBO, najdete v tématu [omezení](#client-limitations).
 
-## <a name="protocol-diagram"></a>Protocol diagram
+## <a name="protocol-diagram"></a>Diagram protokolu
 
-Assume that the user has been authenticated on an application using the [OAuth 2.0 authorization code grant flow](v2-oauth2-auth-code-flow.md). At this point, the application has an access token *for API A* (token A) with the user’s claims and consent to access the middle-tier web API (API A). Now, API A needs to make an authenticated request to the downstream web API (API B).
+Předpokládejme, že uživatel byl ověřený v aplikaci pomocí [toku udělení autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md). V tomto okamžiku má aplikace přístupový token *pro rozhraní API a* (token A) s deklaracemi identity uživatele a souhlasem pro přístup k webovému rozhraní API střední vrstvy (API a). Rozhraní API nyní potřebuje ověřený požadavek webového rozhraní API pro příjem dat (API B).
 
-The steps that follow constitute the OBO flow and are explained with the help of the following diagram.
+Následující kroky představují tok OBO a jsou vysvětleny pomocí následujícího diagramu.
 
-![Shows the OAuth2.0 On-Behalf-Of flow](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![Zobrazuje tok za běhu OAuth 2.0.](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
-1. The client application makes a request to API A with token A (with an `aud` claim of API A).
-1. API A authenticates to the Microsoft identity platform token issuance endpoint and requests a token to access API B.
-1. The Microsoft identity platform token issuance endpoint validates API A's credentials with token A and issues the access token for API B (token B).
-1. Token B is set in the authorization header of the request to API B.
-1. Data from the secured resource is returned by API B.
+1. Klientská aplikace vytvoří požadavek na rozhraní API A s tokenem A (s `aud` deklarací API A).
+1. Rozhraní API A ověřuje koncový bod vystavování tokenu platformy Microsoft identity a požaduje token pro přístup k rozhraní API B.
+1. Koncový bod vystavení tokenu platformy Microsoft Identity ověřuje přihlašovací údaje A pověření k rozhraní API s tokenem a a vydá přístupový token pro API B (token B).
+1. V autorizační hlavičce požadavku na rozhraní API B je nastaven token B.
+1. Rozhraní API B vrátí data z zabezpečeného prostředku.
 
 > [!NOTE]
-> In this scenario, the middle-tier service has no user interaction to obtain the user's consent to access the downstream API. Therefore, the option to grant access to the downstream API is presented upfront as a part of the consent step during authentication. To learn how to set this up for your app, see [Gaining consent for the middle-tier application](#gaining-consent-for-the-middle-tier-application).
+> V tomto scénáři nemá služba střední vrstvy žádnou interakci s uživatelem, aby získala souhlas uživatele s přístupem k rozhraní API pro příjem dat. Proto možnost udělení přístupu k rozhraní API pro příjem dat se při ověřování prezentuje jako součást kroku souhlasu. Informace o tom, jak tuto aplikaci nastavit, najdete v tématu [získání souhlasu pro aplikaci střední vrstvy](#gaining-consent-for-the-middle-tier-application).
 
-## <a name="service-to-service-access-token-request"></a>Service-to-service access token request
+## <a name="service-to-service-access-token-request"></a>Žádost o přístupový token služby na službu
 
-To request an access token, make an HTTP POST to the tenant-specific Microsoft identity platform token endpoint with the following parameters.
+Pokud chcete požádat o přístupový token, vytvořte HTTP POST do koncového bodu tokenu platformy Microsoft Identity Platform-Specific s následujícími parametry.
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 ```
 
-There are two cases depending on whether the client application chooses to be secured by a shared secret or a certificate.
+Existují dva případy, v závislosti na tom, jestli se klientská aplikace rozhodne zabezpečit sdíleným tajným klíčem nebo certifikátem.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>First case: Access token request with a shared secret
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>První případ: žádost přístupového tokenu se sdíleným tajným klíčem
 
-When using a shared secret, a service-to-service access token request contains the following parameters:
+Při použití sdíleného tajného klíče obsahuje požadavek na přístupový token služby na službu následující parametry:
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| `grant_type` | Požaduje se | The type of  token request. For a request using a JWT, the value must be `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Požaduje se | The application (client) ID that [the Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page has assigned to your app. |
-| `client_secret` | Požaduje se | The client secret that you generated for your app in the Azure portal - App registrations page. |
-| `assertion` | Požaduje se | The value of the token used in the request. |
-| `scope` | Požaduje se | A space separated list of scopes for the token request. For more information, see [scopes](v2-permissions-and-consent.md). |
-| `requested_token_use` | Požaduje se | Specifies how the request should be processed. In the OBO flow, the value must be set to `on_behalf_of`. |
+| `grant_type` | Požadováno | Typ žádosti o token Pro požadavek používající token JWT musí být hodnota `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `client_id` | Požadováno | ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
+| `client_secret` | Požadováno | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na stránce Azure Portal-Registrace aplikací. |
+| `assertion` | Požadováno | Hodnota tokenu použitého v požadavku. |
+| `scope` | Požadováno | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md). |
+| `requested_token_use` | Požadováno | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavená na `on_behalf_of`. |
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
-The following HTTP POST requests an access token and refresh token with `user.read` scope for the https://graph.microsoft.com web API.
+Následující příspěvek HTTP požaduje přístupový token a aktualizuje token s `user.read`m oborem pro https://graph.microsoft.com webové rozhraní API.
 
 ```
 //line breaks for legibility only
@@ -97,25 +97,25 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 &requested_token_use=on_behalf_of
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Second case: Access token request with a certificate
+### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: žádost o přístupový token s certifikátem
 
-A service-to-service access token request with a certificate contains the following parameters:
+Požadavek na přístupový token služby na službu s certifikátem obsahuje následující parametry:
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| `grant_type` | Požaduje se | The type of the token request. For a request using a JWT, the value must be `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Požaduje se |  The application (client) ID that [the Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page has assigned to your app. |
-| `client_assertion_type` | Požaduje se | The value must be `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
-| `client_assertion` | Požaduje se | An assertion (a JSON web token) that you need to create and sign with the certificate you registered as credentials for your application. To learn how to register your certificate and the format of the assertion, see [certificate credentials](active-directory-certificate-credentials.md). |
-| `assertion` | Požaduje se | The value of the token used in the request. |
-| `requested_token_use` | Požaduje se | Specifies how the request should be processed. In the OBO flow, the value must be set to `on_behalf_of`. |
-| `scope` | Požaduje se | A space-separated list of scopes for the token request. For more information, see [scopes](v2-permissions-and-consent.md).|
+| `grant_type` | Požadováno | Typ požadavku tokenu Pro požadavek používající token JWT musí být hodnota `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `client_id` | Požadováno |  ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
+| `client_assertion_type` | Požadováno | Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `client_assertion` | Požadováno | Kontrolní výraz (webový token JSON), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Informace o tom, jak zaregistrovat certifikát a formát kontrolního výrazu, najdete v tématu [přihlašovací údaje certifikátu](active-directory-certificate-credentials.md). |
+| `assertion` | Požadováno | Hodnota tokenu použitého v požadavku. |
+| `requested_token_use` | Požadováno | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavená na `on_behalf_of`. |
+| `scope` | Požadováno | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md).|
 
-Notice that the parameters are almost the same as in the case of the request by shared secret except that the `client_secret` parameter is replaced by two parameters: a `client_assertion_type` and `client_assertion`.
+Všimněte si, že parametry jsou skoro stejné jako v případě požadavku pomocí sdíleného tajného klíče s tím rozdílem, že parametr `client_secret` je nahrazen dvěma parametry: `client_assertion_type` a `client_assertion`.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
-The following HTTP POST requests an access token with `user.read` scope for the https://graph.microsoft.com web API with a certificate.
+Následující příspěvek HTTP požaduje přístupový token s oborem `user.read` pro https://graph.microsoft.com webové rozhraní API s certifikátem.
 
 ```
 // line breaks for legibility only
@@ -133,21 +133,21 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>Service to service access token response
+## <a name="service-to-service-access-token-response"></a>Odezva na token Service to Service Access
 
-A success response is a JSON OAuth 2.0 response with the following parameters.
+Odpověď na úspěch je odpověď protokolu JSON OAuth 2,0 s následujícími parametry.
 
 | Parametr | Popis |
 | --- | --- |
-| `token_type` | Indicates the token type value. The only type that Microsoft identity platform supports is `Bearer`. For more info about bearer tokens, see the [OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| `scope` | The scope of access granted in the token. |
-| `expires_in` | The length of time, in seconds, that the access token is valid. |
-| `access_token` | The requested access token. The calling service can use this token to authenticate to the receiving service. |
-| `refresh_token` | The refresh token for the requested access token. The calling service can use this token to request another access token after the current access token expires. The refresh token is only provided if the `offline_access` scope was requested. |
+| `token_type` | Určuje hodnotu typu tokenu. Jediným typem, který podporuje platforma Microsoft identity, je `Bearer`. Další informace o nosných tokenech najdete v části [autorizační rozhraní OAuth 2,0: použití nosných tokenů (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| `scope` | Rozsah přístupu uděleného v tokenu. |
+| `expires_in` | Doba, po kterou je přístupový token platný (v sekundách). |
+| `access_token` | Požadovaný přístupový token Volající služba může tento token použít k ověření pro přijímající službu. |
+| `refresh_token` | Obnovovací token požadovaného přístupového tokenu. Volající služba může tento token použít k vyžádání jiného přístupového tokenu po vypršení platnosti aktuálního přístupového tokenu. Aktualizační token je poskytován pouze v případě, že byl požadován obor `offline_access`. |
 
-### <a name="success-response-example"></a>Success response example
+### <a name="success-response-example"></a>Příklad odpovědi na úspěch
 
-The following example shows a success response to a request for an access token for the https://graph.microsoft.com web API.
+Následující příklad ukazuje odpověď na úspěch na žádost o přístupový token pro https://graph.microsoft.com webové rozhraní API.
 
 ```
 {
@@ -161,11 +161,11 @@ The following example shows a success response to a request for an access token 
 ```
 
 > [!NOTE]
-> The above access token is a v1.0-formatted token. This is because the token is provided based on the resource being accessed. The Microsoft Graph requests v1.0 tokens, so Microsoft identity platform produces v1.0 access tokens when a client requests tokens for Microsoft Graph. Only applications should look at access tokens. Clients should not need to inspect them.
+> Výše přístupový token je ve formátu tokenu v 1.0. Důvodem je to, že token je k dispozici na základě dostupného prostředku. Tokeny Microsoft Graph požadavků v 1.0, takže platforma Microsoft Identity Platform generuje přístupové tokeny v 1.0, když klient požaduje tokeny pro Microsoft Graph. V tokenech přístupu by se měly zobrazit jenom aplikace. Klienti by je neměli potřebovat kontrolovat.
 
-### <a name="error-response-example"></a>Error response example
+### <a name="error-response-example"></a>Příklad chybové odpovědi
 
-An error response is returned by the token endpoint when trying to acquire an access token for the downstream API, if the downstream API has a Conditional Access policy (such as multi-factor authentication) set on it. The middle-tier service should surface this error to the client application so that the client application can provide the user interaction to satisfy the Conditional Access policy.
+Koncový bod tokenu vrátí chybovou odpověď při pokusu o získání přístupového tokenu pro rozhraní API pro příjem dat, pokud pro podřízené rozhraní API existuje zásada podmíněného přístupu (například Multi-Factor Authentication) nastavená na něm. Služba střední vrstvy by tuto chybu měla obit klientské aplikaci, aby mohla klientská aplikace poskytnout interakci uživatele, aby splnila zásady podmíněného přístupu.
 
 ```
 {
@@ -179,11 +179,11 @@ An error response is returned by the token endpoint when trying to acquire an ac
 }
 ```
 
-## <a name="use-the-access-token-to-access-the-secured-resource"></a>Use the access token to access the secured resource
+## <a name="use-the-access-token-to-access-the-secured-resource"></a>Přístup k zabezpečenému prostředku pomocí přístupového tokenu
 
-Now the middle-tier service can use the token acquired above to make authenticated requests to the downstream web API, by setting the token in the `Authorization` header.
+Služba střední vrstvy teď může použít token získaný výše k provádění ověřených požadavků webového rozhraní API pro příjem dat, a to nastavením tokenu v hlavičce `Authorization`.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```
 GET /v1.0/me HTTP/1.1
@@ -191,42 +191,42 @@ Host: graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
 ```
 
-## <a name="gaining-consent-for-the-middle-tier-application"></a>Gaining consent for the middle-tier application
+## <a name="gaining-consent-for-the-middle-tier-application"></a>Získání souhlasu pro aplikaci střední vrstvy
 
-Depending on the audience for your application, you may consider different strategies for ensuring that the OBO flow is successful. In all cases, the ultimate goal is to ensure proper consent is given. How that occurs, however, depends on which users your application supports.
+V závislosti na cílové skupině vaší aplikace můžete zvážit různé strategie pro zajištění úspěšnosti OBO toku. Ve všech případech je konečným cílem zajistit, aby byl poskytnut správný souhlas. Jak k tomu dojde, ale závisí na tom, kteří uživatelé vaše aplikace podporuje.
 
-### <a name="consent-for-azure-ad-only-applications"></a>Consent for Azure AD-only applications
+### <a name="consent-for-azure-ad-only-applications"></a>Souhlas s aplikacemi jenom pro Azure AD
 
-#### <a name="default-and-combined-consent"></a>/.default and combined consent
+#### <a name="default-and-combined-consent"></a>/.Default a kombinovaný souhlas
 
-For applications that only need to sign in work or school accounts, the traditional "Known Client Applications" approach is sufficient. The middle tier application adds the client to the known client applications list in its manifest, and then the client can trigger a combined consent flow for both itself and the middle tier application. On the Microsoft identity platform endpoint, this is done using the [`/.default` scope](v2-permissions-and-consent.md#the-default-scope). When triggering a consent screen using known client applications and `/.default`, the consent screen will show permissions for both the client to the middle tier API, and also request whatever permissions are required by the middle-tier API. The user provides consent for both applications, and then the OBO flow works.
+Pro aplikace, které potřebují jenom přihlašovat pracovní nebo školní účty, stačí přístup k tradičním známým klientským aplikacím. Aplikace střední vrstvy přidá klienta do seznamu známých klientských aplikací ve svém manifestu a klient může aktivovat kombinovaný postup souhlasu pro sebe i pro aplikaci střední vrstvy. Na koncovém bodu Microsoft Identity Platform se to dělá pomocí [oboru`/.default`](v2-permissions-and-consent.md#the-default-scope). Při aktivaci obrazovky pro vyjádření souhlasu pomocí známých klientských aplikací a `/.default`se na obrazovce pro vyjádření souhlasu zobrazí oprávnění pro klienta i k rozhraní API střední vrstvy. také si vyžádají všechna oprávnění, která jsou vyžadována rozhraním API střední vrstvy. Uživatel poskytne souhlas obou aplikací a OBO tok funguje.
 
-At this time, the personal Microsoft account system does not support combined consent and so this approach does not work for apps that want to specifically sign in personal accounts. Personal Microsoft accounts being used as guest accounts in a tenant are handled using the Azure AD system, and can go through combined consent.
+V současné době osobní účet Microsoft systém nepodporuje kombinovaný souhlas, takže tento přístup nefunguje u aplikací, které se chtějí výslovně přihlašovat k osobním účtům. Osobní účty Microsoft, které se používají jako účty hostů v tenantovi, se zpracovávají pomocí systému Azure AD a můžou přecházet prostřednictvím kombinovaného souhlasu.
 
-#### <a name="pre-authorized-applications"></a>Pre-authorized applications
+#### <a name="pre-authorized-applications"></a>Předem autorizované aplikace
 
-A feature of the application portal is "pre-authorized applications". In this way, a resource can indicate that a given application always has permission to receive certain scopes. This is primarily useful to make connections between a front-end client and a back-end resource more seamless. A resource can declare multiple pre-authorized applications - any such application can request these permissions in an OBO flow and receive them without the user providing consent.
+Funkce portálu Application Portal je "předem autorizovanými aplikacemi". Tímto způsobem může prostředek indikovat, že daná aplikace má vždy oprávnění přijímat určité obory. To je primárně užitečné pro zajištění bezproblémového propojení mezi front-end klientem a prostředkem back-endu. Prostředek může deklarovat několik předem autorizovaných aplikací – každá taková aplikace může požadovat tato oprávnění v OBO toku a přijímat je bez souhlasu uživatele.
 
 #### <a name="admin-consent"></a>Souhlas správce
 
-A tenant admin can guarantee that applications have permission to call their required APIs by providing admin consent for the middle tier application. To do this, the admin can find the middle tier application in their tenant, open the required permissions page, and choose to give permission for the app. To learn more about admin consent, see the [consent and permissions documentation](v2-permissions-and-consent.md).
+Správce tenanta může zaručit, že aplikace mají oprávnění volat požadovaná rozhraní API poskytnutím souhlasu správce pro aplikaci střední vrstvy. Pokud to chcete udělat, správce může ve svém tenantovi najít aplikaci střední vrstvy, otevřít stránku požadovaná oprávnění a rozhodnout, že aplikaci udělíte oprávnění. Další informace o souhlasu správce najdete v [dokumentaci k souhlasu a oprávnění](v2-permissions-and-consent.md).
 
-### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Consent for Azure AD + Microsoft account applications
+### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Souhlas pro aplikace Azure AD + účet Microsoft
 
-Because of restrictions in the permissions model for personal accounts and the lack of a governing tenant, the consent requirements for personal accounts are a bit different from Azure AD. There is no tenant to provide tenant-wide consent for, nor is there the ability to do combined consent. Thus, other strategies present themselves - note that these work for applications that only need to support Azure AD accounts as well.
+Z důvodu omezení v modelu oprávnění pro osobní účty a chybějícího tenanta řízení se požadavky na souhlas pro osobní účty liší od služby Azure AD. Není k dispozici žádný tenant, který by mohl poskytnout souhlas na úrovni tenanta, ani není možné kombinovat souhlas. Proto si jiné strategie prezentují samy – Pamatujte na to, že aplikace, které potřebují jenom k podpoře účtů Azure AD, jsou také k dispozici.
 
-#### <a name="use-of-a-single-application"></a>Use of a single application
+#### <a name="use-of-a-single-application"></a>Použití jedné aplikace
 
-In some scenarios, you may only have a single pairing of middle-tier and front-end client. In this scenario, you may find it easier to make this a single application, negating the need for a middle-tier application altogether. To authenticate between the front-end and the web API, you can use cookies, an id_token, or an access token requested for the application itself. Then, request consent from this single application to the back-end resource.
+V některých scénářích můžete mít jenom jednu dvojici klienta střední vrstvy a klienta front-end. V tomto scénáři může být jednodušší vytvořit tuto jednu aplikaci, která bude mít na starosti nutnost použití střední vrstvy zcela. K ověření mezi front-end a webovým rozhraním API můžete použít soubory cookie, id_token nebo přístupový token, který je požadován pro samotnou aplikaci. Pak žádost o souhlas z této jediné aplikace na prostředek back-endu.
 
-## <a name="client-limitations"></a>Client limitations
+## <a name="client-limitations"></a>Omezení klienta
 
-If a client uses the implicit flow to get an id_token, and that client also has wildcards in a reply URL, the id_token can't be used for an OBO flow.  However, access tokens acquired through the implicit grant flow can still be redeemed by a confidential client even if the initiating client has a wildcard reply URL registered.
+Pokud klient používá implicitní tok k získání id_token a tento klient má také zástupné znaky v adrese URL odpovědi, id_token nelze použít pro OBO tok.  Přístup k tokenům získaným pomocí implicitního toku udělení se ale dá dál uplatnit u důvěrného klienta, i když má zahajovací klient adresu URL odpovědi na zástupný znak.
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn more about the OAuth 2.0 protocol and another way to perform service to service auth using client credentials.
+Přečtěte si další informace o protokolu OAuth 2,0 a další způsob, jak provádět ověřování pomocí pověření klienta prostřednictvím služby.
 
-* [OAuth 2.0 client credentials grant in Microsoft identity platform](v2-oauth2-client-creds-grant-flow.md)
-* [OAuth 2.0 code flow in Microsoft identity platform](v2-oauth2-auth-code-flow.md)
-* [Using the `/.default` scope](v2-permissions-and-consent.md#the-default-scope)
+* [Udělení přihlašovacích údajů klienta OAuth 2,0 v platformě Microsoft Identity Platform](v2-oauth2-client-creds-grant-flow.md)
+* [Tok kódu OAuth 2,0 na platformě Microsoft Identity Platform](v2-oauth2-auth-code-flow.md)
+* [Použití oboru `/.default`](v2-permissions-and-consent.md#the-default-scope)

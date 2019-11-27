@@ -73,7 +73,7 @@ Může to trvat několik minut, než se akce přihlášení projeví. Pak budou 
 1.  Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce Azure AD.
 2.  V navigačním podokně vyberte **Azure Active Directory**.
 3.  V části **Spravovat**vyberte **vztahy organizace**.
-4.  Vyberte **nastavení**.
+4.  Vyberte **Nastavení**.
 5.  V části **Povolit jednorázové e-mailové heslo pro hosty (Preview)** vyberte **Ano**.
  
 ### <a name="to-opt-in-using-powershell"></a>Výslovný souhlas s používáním PowerShellu
@@ -140,7 +140,7 @@ Může to trvat několik minut, než se akce odsouhlasení projeví. Pokud vypne
 1.  Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce Azure AD.
 2.  V navigačním podokně vyberte **Azure Active Directory**.
 3.  V části **Spravovat**vyberte **vztahy organizace**.
-4.  Vyberte **nastavení**.
+4.  Vyberte **Nastavení**.
 5.  V části **Povolit jednorázové e-mailové heslo pro hosty (Preview)** vyberte **ne**.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Vypnutí verze Preview pomocí PowerShellu

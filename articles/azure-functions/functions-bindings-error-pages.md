@@ -1,6 +1,6 @@
 ---
-title: Azure Functions error handling guidance
-description: Learn to handle errors in Azure Functions with links to specific binding errors.
+title: Průvodce zpracováním chyb Azure Functions
+description: Naučte se zpracovávat chyby v Azure Functions s odkazy na konkrétní chyby vazby.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/11/2019
@@ -12,21 +12,21 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227327"
 ---
-# <a name="azure-functions-error-handling"></a>Azure Functions error handling
+# <a name="azure-functions-error-handling"></a>Zpracování chyb Azure Functions
 
-Handling errors in Azure Functions is important to avoid lost data, missed events, and to monitor the health of your application.
+Zpracování chyb v Azure Functions je důležité k tomu, abyste se vyhnuli ztrátě dat, nezmeškaným událostem a mohli monitorovat stav vaší aplikace.
 
-This article describes general strategies for error handling along with links to binding-specific errors.
+Tento článek popisuje obecné strategie pro zpracování chyb spolu s odkazy na chyby specifické pro vazbu.
 
-## <a name="handling-errors"></a>Handling errors
+## <a name="handling-errors"></a>Zpracování chyb
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-## <a name="binding-error-codes"></a>Binding error codes
+## <a name="binding-error-codes"></a>Kódy chyb vazby
 
-When integrating with Azure services, errors may originate from the APIs of the underlying services. Information relating to binding-specific errors is available in the **Exceptions and return codes** section of the following articles:
+Při integraci se službami Azure mohou chyby vzcházet z rozhraní API základních služeb. Informace o chybách specifických pro vazbu jsou k dispozici v části **výjimky a návratové kódy** v následujících článcích:
 
-+ [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
++ [Databáze Azure Cosmos](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 
 + [Blob Storage](functions-bindings-storage-blob.md#exceptions-and-return-codes)
 

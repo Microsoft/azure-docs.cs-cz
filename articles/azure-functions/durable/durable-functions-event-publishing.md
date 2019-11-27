@@ -1,6 +1,6 @@
 ---
-title: Durable Functions publishing to Azure Event Grid (preview)
-description: Learn how to configure automatic Azure Event Grid publishing for Durable Functions.
+title: Durable Functions publikování do Azure Event Grid (Preview)
+description: Naučte se konfigurovat automatické publikování Azure Event Grid pro Durable Functions.
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: f0fbb46320b896008b6a1343357f016a9f57b0fe
@@ -10,36 +10,36 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231452"
 ---
-# <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publishing to Azure Event Grid (preview)
+# <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikování do Azure Event Grid (Preview)
 
-This article shows how to set up Durable Functions to publish orchestration lifecycle events (such as created, completed, and failed) to a custom [Azure Event Grid Topic](https://docs.microsoft.com/azure/event-grid/overview).
+Tento článek popisuje, jak nastavit Durable Functions pro publikování událostí životního cyklu orchestrace (například vytvoření, dokončení a selhání) do vlastního [tématu Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
-Following are some scenarios where this feature is useful:
+Tato funkce je užitečná v následujících situacích:
 
-* **DevOps scenarios like blue/green deployments**: You might want to know if any tasks are running before implementing the [side-by-side deployment strategy](durable-functions-versioning.md#side-by-side-deployments).
+* **DevOps scénáře jako modrá/zelená nasazení**: možná budete chtít zjistit, jestli nějaké úlohy běží před implementací [Souběžné strategie nasazení](durable-functions-versioning.md#side-by-side-deployments).
 
-* **Advanced monitoring and diagnostics support**: You can keep track of orchestration status information in an external store optimized for queries, such as SQL database or CosmosDB.
+* **Rozšířená podpora monitorování a diagnostiky**: informace o stavu orchestrace můžete sledovat v externím úložišti optimalizovaném pro dotazy, jako je SQL Database nebo CosmosDB.
 
-* **Long-running background activity**: If you use Durable Functions for a long-running background activity, this feature helps you to know the current status.
+* **Dlouhodobě běžící aktivita na pozadí**: Pokud použijete Durable Functions pro dlouhou běžící aktivitu na pozadí, tato funkce vám pomůže seznámit se s aktuálním stavem.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Install [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) in your Durable Functions project.
-* Install [Azure Storage Emulator](../../storage/common/storage-use-emulator.md).
-* Install [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) or use [Azure Cloud Shell](../../cloud-shell/overview.md)
+* Do projektu Durable Functions nainstalujte [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) .
+* Nainstalujte [emulátor Azure Storage](../../storage/common/storage-use-emulator.md).
+* Instalace rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) nebo použití [Azure Cloud Shell](../../cloud-shell/overview.md)
 
-## <a name="create-a-custom-event-grid-topic"></a>Create a custom event grid topic
+## <a name="create-a-custom-event-grid-topic"></a>Vytvoření vlastního tématu Event gridu
 
-Create an event grid topic for sending events from Durable Functions. The following instructions show how to create a topic by using Azure CLI. For information about how to do it by using PowerShell or the Azure portal, refer to the following articles:
+Vytvořte téma Event Grid pro odesílání událostí z Durable Functions. Následující pokyny ukazují, jak vytvořit téma pomocí Azure CLI. Informace o tom, jak to udělat pomocí PowerShellu nebo Azure Portal, najdete v následujících článcích:
 
-* [EventGrid Quickstarts: Create custom event - PowerShell](../../event-grid/custom-event-quickstart-powershell.md)
-* [EventGrid Quickstarts: Create custom event - Azure portal](../../event-grid/custom-event-quickstart-portal.md)
+* [EventGrid rychlý Start: Vytvoření vlastní události – PowerShell](../../event-grid/custom-event-quickstart-powershell.md)
+* [EventGrid rychlý Start: Vytvoření vlastní události – Azure Portal](../../event-grid/custom-event-quickstart-portal.md)
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pomocí příkazu `az group create` vytvořte skupinu prostředků. Currently, Azure Event Grid doesn't support all regions. For information about which regions are supported, see the [Azure Event Grid overview](../../event-grid/overview.md).
+Pomocí příkazu `az group create` vytvořte skupinu prostředků. V současné době Azure Event Grid nepodporuje všechny oblasti. Informace o podporovaných oblastech najdete v tématu [přehled Azure Event Grid](../../event-grid/overview.md).
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -47,33 +47,33 @@ az group create --name eventResourceGroup --location westus2
 
 ### <a name="create-a-custom-topic"></a>Vytvoření vlastního tématu
 
-An event grid topic provides a user-defined endpoint that you post your event to. Nahraďte `<topic_name>` jedinečným názvem vašeho tématu. The topic name must be unique because it becomes a DNS entry.
+Téma Event Grid poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte událost. Nahraďte `<topic_name>` jedinečným názvem vašeho tématu. Název tématu musí být jedinečný, protože se jedná o položku DNS.
 
 ```bash
 az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 ```
 
-## <a name="get-the-endpoint-and-key"></a>Get the endpoint and key
+## <a name="get-the-endpoint-and-key"></a>Získání koncového bodu a klíče
 
-Get the endpoint of the topic. Replace `<topic_name>` with the name you chose.
+Získejte koncový bod tématu. Nahraďte `<topic_name>` názvem, který jste zvolili.
 
 ```bash
 az eventgrid topic show --name <topic_name> -g eventResourceGroup --query "endpoint" --output tsv
 ```
 
-Get the topic key. Replace `<topic_name>` with the name you chose.
+Získejte klíč tématu. Nahraďte `<topic_name>` názvem, který jste zvolili.
 
 ```bash
 az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "key1" --output tsv
 ```
 
-Now you can send events to the topic.
+Nyní můžete odesílat události do tématu.
 
-## <a name="configure-azure-event-grid-publishing"></a>Configure Azure Event Grid publishing
+## <a name="configure-azure-event-grid-publishing"></a>Konfigurace publikování Azure Event Grid
 
-In your Durable Functions project, find the `host.json` file.
+V projektu Durable Functions vyhledejte `host.json` soubor.
 
-Add `eventGridTopicEndpoint` and `eventGridKeySettingName` in a `durableTask` property.
+Do vlastnosti `durableTask` přidejte `eventGridTopicEndpoint` a `eventGridKeySettingName`.
 
 ```json
 {
@@ -84,9 +84,9 @@ Add `eventGridTopicEndpoint` and `eventGridKeySettingName` in a `durableTask` pr
 }
 ```
 
-The possible Azure Event Grid configuration properties can be found in the [host.json documentation](../functions-host-json.md#durabletask). After you configure the `host.json` file, your function app sends lifecycle events to the event grid topic. This works when you run your function app both locally and in Azure.```
+Možné konfigurační vlastnosti Azure Event Grid najdete v [dokumentaci Host. JSON](../functions-host-json.md#durabletask). Po nakonfigurování `host.json` souboru odešle Function App události životního cyklu do tématu Event Grid. To funguje, když aplikaci Function App spustíte místně i v Azure.
 
-Set the app setting for the topic key in the Function App and `local.setting.json`. The following JSON is a sample of the `local.settings.json` for local debugging. Replace `<topic_key>` with the topic key.  
+Nastavte nastavení aplikace pro klíč tématu v Function App a `local.setting.json`. Následující JSON je ukázka `local.settings.json` pro místní ladění. Nahraďte `<topic_key>` klíčem tématu.  
 
 ```json
 {
@@ -99,29 +99,29 @@ Set the app setting for the topic key in the Function App and `local.setting.jso
 }
 ```
 
-Make sure that [Storage Emulator](../../storage/common/storage-use-emulator.md) is working. It's a good idea to run the `AzureStorageEmulator.exe clear all` command before executing.
+Ujistěte se, že [emulátor úložiště](../../storage/common/storage-use-emulator.md) pracuje. Před spuštěním příkazu je vhodné spustit `AzureStorageEmulator.exe clear all`.
 
-## <a name="create-functions-that-listen-for-events"></a>Create functions that listen for events
+## <a name="create-functions-that-listen-for-events"></a>Vytvořit funkce, které naslouchají událostem
 
-Create a Function App. It's best to locate it in the same region as the event grid topic.
+Vytvořte Function App. Je nejvhodnější ho vyhledat ve stejné oblasti jako téma Event Grid.
 
-### <a name="create-an-event-grid-trigger-function"></a>Create an event grid trigger function
+### <a name="create-an-event-grid-trigger-function"></a>Vytvoření funkce triggeru Event gridu
 
-Create a function to receive the lifecycle events. Select **Custom Function**.
+Vytvořte funkci pro příjem událostí životního cyklu. Vyberte možnost **vlastní funkce**.
 
-![Select a Create a custom function.](./media/durable-functions-event-publishing/functions-portal.png)
+![Vyberte vytvořit vlastní funkci.](./media/durable-functions-event-publishing/functions-portal.png)
 
-Choose Event Grid Trigger, and select `C#`.
+Zvolte aktivační událost Event Grid a vyberte `C#`.
 
-![Select the Event Grid Trigger.](./media/durable-functions-event-publishing/eventgrid-trigger.png)
+![Vyberte aktivační událost Event Grid.](./media/durable-functions-event-publishing/eventgrid-trigger.png)
 
-Enter the name of the function, and then select `Create`.
+Zadejte název funkce a pak vyberte `Create`.
 
-![Create the Event Grid Trigger.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
+![Vytvořte aktivační událost Event Grid.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
 
-A function with the following code is created:
+Vytvoří se funkce s následujícím kódem:
 
-#### <a name="precompiled-c"></a>Precompiled C#
+#### <a name="precompiled-c"></a>PředkompilovanéC#
 ```csharp
 public static void Run([HttpTrigger] JObject eventGridEvent, ILogger log)
 {
@@ -129,7 +129,7 @@ public static void Run([HttpTrigger] JObject eventGridEvent, ILogger log)
 }
 ```
 
-#### <a name="c-script"></a>C# Script
+#### <a name="c-script"></a>C#Pravidel
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -143,21 +143,21 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-Vyberte `Add Event Grid Subscription`. This operation adds an event grid subscription for the event grid topic that you created. For more information, see [Concepts in Azure Event Grid](https://docs.microsoft.com/azure/event-grid/concepts)
+Vyberte `Add Event Grid Subscription`. Tato operace přidá odběr služby Event Grid pro téma Event Grid, které jste vytvořili. Další informace najdete v tématu [Koncepty v Azure Event Grid](https://docs.microsoft.com/azure/event-grid/concepts) .
 
-![Select the Event Grid Trigger link.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
+![Vyberte odkaz Event Grid aktivační události.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
-Select `Event Grid Topics` for **Topic Type**. Select the resource group that you created for the event grid topic. Then select the instance of the event grid topic. Press `Create`.
+Jako **typ tématu**vyberte `Event Grid Topics`. Vyberte skupinu prostředků, kterou jste vytvořili pro téma Event Grid. Pak vyberte instanci tématu Event Grid. Stiskněte `Create`.
 
 ![Vytvoří odběr Event Gridu.](./media/durable-functions-event-publishing/eventsubscription.png)
 
-Now you're ready to receive lifecycle events.
+Teď jste připraveni přijímat události životního cyklu.
 
-## <a name="create-durable-functions-to-send-the-events"></a>Create Durable Functions to send the events
+## <a name="create-durable-functions-to-send-the-events"></a>Vytvoření Durable Functions k odeslání událostí
 
-In your Durable Functions project, start debugging on your local machine.  The following code is the same as the template code for the Durable Functions. You already configured `host.json` and `local.settings.json` on your local machine.
+V projektu Durable Functions spusťte ladění na místním počítači.  Následující kód je stejný jako kód šablony pro Durable Functions. Na místním počítači jste už nakonfigurovali `host.json` a `local.settings.json`.
 
-### <a name="precompiled-c"></a>Precompiled C#
+### <a name="precompiled-c"></a>PředkompilovanéC#
 
 ```csharp
 using System.Collections.Generic;
@@ -211,11 +211,11 @@ namespace LifeCycleEventSpike
 ```
 
 > [!NOTE]
-> The previous code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`, `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Předchozí kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`atribut `OrchestrationClient` namísto atributu `DurableClient` a místo `DurableOrchestrationClient` musíte použít parametr `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-If you call the `Sample_HttpStart` with Postman or your browser, Durable Function starts to send lifecycle events. The endpoint is usually `http://localhost:7071/api/Sample_HttpStart` for local debugging.
+Pokud zavoláte `Sample_HttpStart` s využitím post nebo prohlížeče, spustí se trvalá funkce pro odeslání událostí životního cyklu. Koncový bod je obvykle `http://localhost:7071/api/Sample_HttpStart` pro místní ladění.
 
-See the logs from the function that you created in the Azure portal.
+Podívejte se na protokoly ze funkce, kterou jste vytvořili v Azure Portal.
 
 ```
 2019-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
@@ -257,32 +257,32 @@ See the logs from the function that you created in the Azure portal.
 2019-04-20T09:28:37.098 [Info] Function completed (Success, Id=36fadea5-198b-4345-bb8e-2837febb89a2, Duration=0ms)
 ```
 
-## <a name="event-schema"></a>Event Schema
+## <a name="event-schema"></a>Schéma událostí
 
-The following list explains the lifecycle events schema:
+Následující seznam vysvětluje schéma událostí životního cyklu:
 
-* **`id`** : Unique identifier for the event grid event.
-* **`subject`** : Path to the event subject. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` will be `Running`, `Completed`, `Failed`, and `Terminated`.  
-* **`data`** : Durable Functions Specific Parameters.
-  * **`hubName`** : [TaskHub](durable-functions-task-hubs.md) name.
-  * **`functionName`** : Orchestrator function name.
-  * **`instanceId`** : Durable Functions instanceId.
-  * **`reason`** : Additional data associated with the tracking event. For more information, see [Diagnostics in Durable Functions (Azure Functions)](durable-functions-diagnostics.md)
-  * **`runtimeStatus`** : Orchestration Runtime Status. Running, Completed, Failed, Canceled.
+* **`id`** : jedinečný identifikátor události Event Grid.
+* **`subject`** : cesta k předmětu události. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` budou `Running`, `Completed`, `Failed`a `Terminated`.  
+* **`data`** : Durable Functions specifické parametry.
+  * **`hubName`** : [TaskHub](durable-functions-task-hubs.md) název.
+  * **`functionName`** : název funkce nástroje Orchestrator.
+  * **`instanceId`** : Durable Functions InstanceId.
+  * **`reason`** : další data přidružená k události sledování. Další informace najdete v tématu [Diagnostika v Durable Functions (Azure Functions)](durable-functions-diagnostics.md) .
+  * **`runtimeStatus`** : stav modulu runtime orchestrace. Spuštění, dokončení, selhání, zrušeno.
 * **`eventType`** : "orchestratorEvent"
-* **`eventTime`** : Event time (UTC).
-* **`dataVersion`** : Version of the lifecycle event schema.
-* **`metadataVersion`** :  Version of the metadata.
-* **`topic`** : Event grid topic resource.
+* **`eventTime`** : čas události (UTC).
+* **`dataVersion`** : verze schématu událostí životního cyklu.
+* **`metadataVersion`** : verze metadat.
+* **`topic`** : prostředek tématu Event Grid.
 
-## <a name="how-to-test-locally"></a>How to test locally
+## <a name="how-to-test-locally"></a>Jak místně testovat
 
-To test locally, use [ngrok](../functions-bindings-event-grid.md#local-testing-with-ngrok).
+K otestování lokálně použijte [ngrok](../functions-bindings-event-grid.md#local-testing-with-ngrok).
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Learn instance management in Durable Functions](durable-functions-instance-management.md)
+> [Naučte se správu instancí v Durable Functions](durable-functions-instance-management.md)
 
 > [!div class="nextstepaction"]
-> [Learn versioning in Durable Functions](durable-functions-versioning.md)
+> [Seznámení se správou verzí v Durable Functions](durable-functions-versioning.md)

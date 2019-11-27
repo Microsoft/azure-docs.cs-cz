@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 10/02/2019
-ms.openlocfilehash: 08e378c4b5f6d8e17ac67a80401edf69611c0a13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/27/2019
+ms.openlocfilehash: 816cf7cc78d3dfcb783b09f039f468ef3b23a06b
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823333"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548374"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -31,7 +31,7 @@ Spravovaná instance má charakteristiky a omezení prostředků, které závis�
 
 |   | **COMPUTE GEN4 –** | **Gen5** |
 | --- | --- | --- |
-| Hardware | Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD vCore = 1 PP (fyzický jádro) | Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz, Fast NVMe SSD, vCore = 1 LP (Hyper-thread) |
+| Hardware | Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD vCore = 1 PP (fyzický jádro) | Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz a Intel SP-8160 (Skylake), Fast NVMe SSD, vCore = 1 LP (Hyper-thread) |
 | Počet virtuálních jader | 8, 16, 24 virtuální jádra | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
 | Maximální velikost paměti (poměr paměti/jádra) | 7 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. | 5,1 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
 | Maximální paměť OLTP v paměti | Limit instance: 1 – 1,5 GB na vCore| Limit instance: 0,8 – 1,65 GB na vCore |
@@ -75,9 +75,9 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 | Maximální velikost datového souboru | Omezeno na aktuálně dostupnou velikost úložiště instance (max. 2 TB-8 TB) a [místo přidělení diskového úložiště Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Omezeno na velikost úložiště aktuálně dostupné instance (až do velikosti 1 TB až 4 TB). |
 | Maximální velikost souboru protokolu | Omezeno na 2 TB a aktuálně dostupnou velikost úložiště instance. | Omezeno na 2 TB a aktuálně dostupnou velikost úložiště instance. |
 | Data/protokol IOPS (přibližná) | Až 30-40 K IOPS na instanci *, 500-7500 na jeden soubor<br/>\*[zvětšit velikost souboru a získat tak více IOPS](#file-io-characteristics-in-general-purpose-tier)| 5,5 k-110 K (1375 IOPS/vCore)<br/>Přidáním dalších virtuální jádra získáte lepší výkon v/v. |
-| Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Maximální 48 MB/s |
+| Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Max 48 MB/s |
 | Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[zvětšete velikost souboru, abyste získali lepší vstupně-výstupní operace](#file-io-characteristics-in-general-purpose-tier) . | Neomezeno. |
-| Latence v/v úložiště (přibližná) | 5-10 MS | 1-2 MS |
+| Latence v/v úložiště (přibližná) | 5-10 ms | 1-2 ms |
 | OLTP v paměti | Nepodporuje se | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
 | Maximální počet relací | 30000 | 30000 |
 | [Repliky jen pro čtení](sql-database-read-scale-out.md) | 0 | 1 (zahrnuto do ceny) |
@@ -99,7 +99,7 @@ Na úrovni služby Pro obecné účely každý databázový soubor získává vy
 | Velikost souboru           | 0-128 GiB | 128 – 256 GiB | 256 – 512 GiB | 0,5 – 1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | Počet IOPS na soubor       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500   |
-| Propustnost na jeden soubor | soubory MiB 100/s | soubory MiB 125/s | soubory MiB 150/s | soubory MiB 200/s | soubory MiB 250/s | soubory MiB 250/s | soubory MiB 480/s | 
+| Propustnost na jeden soubor | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | soubory MiB 480/s | 
 
 Pokud si všimnete vysoké latence v/v některých databázových souborů nebo zjistíte, že počet IOPS/propustnost dosáhne limitu, můžete zvýšit výkon [zvýšením velikosti souboru](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337).
 
@@ -178,7 +178,7 @@ Postup pro zahájení procesu získání větší kvóty:
 
 5. Klikněte na **Další**.
 6. Na kartě kontaktní informace u nové žádosti o podporu zadejte upřednostňovanou metodu kontaktu (e-mail nebo telefon) a kontaktní údaje.
-7. Klikněte na možnost **Vytvořit**.
+7. Klikněte na **Vytvořit**.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Functions bindings expressions and patterns
-description: Learn to create different Azure Functions binding expressions based on common patterns.
+title: Azure Functions výrazy a vzory vazeb
+description: Naučte se vytvářet různé Azure Functions výrazy vazby na základě běžných vzorů.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
@@ -12,34 +12,34 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227230"
 ---
-# <a name="azure-functions-binding-expression-patterns"></a>Azure Functions binding expression patterns
+# <a name="azure-functions-binding-expression-patterns"></a>Azure Functions vzorů výrazů vazeb
 
-One of the most powerful features of [triggers and bindings](./functions-triggers-bindings.md) is *binding expressions*. In the *function.json* file and in function parameters and code, you can use expressions that resolve to values from various sources.
+Jednou z nejúčinnějších funkcí [triggerů a vazeb](./functions-triggers-bindings.md) jsou *výrazy vazby*. V souboru *Function. JSON* a v parametrech funkcí a kódu můžete použít výrazy, které se předají na hodnoty z různých zdrojů.
 
-Most expressions are identified by wrapping them in curly braces. For example, in a queue trigger function, `{queueTrigger}` resolves to the queue message text. If the `path` property for a blob output binding is `container/{queueTrigger}` and the function is triggered by a queue message `HelloWorld`, a blob named `HelloWorld` is created.
+Většina výrazů je identifikována jejich zabalením do složených závorek. Například ve funkci triggeru fronty se `{queueTrigger}` přeloží na text zprávy fronty. Je-li vlastnost `path` pro výstupní vazbu objektu BLOB `container/{queueTrigger}` a funkce je aktivována `HelloWorld`zprávy ve frontě, je vytvořen objekt BLOB s názvem `HelloWorld`.
 
-Types of binding expressions
+Typy výrazů vazby
 
-* [App settings](#binding-expressions---app-settings)
-* [Trigger file name](#trigger-file-name)
-* [Trigger metadata](#trigger-metadata)
-* [JSON payloads](#json-payloads)
-* [New GUID](#create-guids)
-* [Current date and time](#current-time)
+* [Nastavení aplikace](#binding-expressions---app-settings)
+* [Název souboru triggeru](#trigger-file-name)
+* [Aktivační metadata](#trigger-metadata)
+* [Datové části JSON](#json-payloads)
+* [Nový identifikátor GUID](#create-guids)
+* [Aktuální datum a čas](#current-time)
 
-## <a name="binding-expressions---app-settings"></a>Binding expressions - app settings
+## <a name="binding-expressions---app-settings"></a>Výrazy vazeb – nastavení aplikace
 
-As a best practice, secrets and connection strings should be managed using app settings, rather than configuration files. This limits access to these secrets and makes it safe to store files such as *function.json* in public source control repositories.
+Jako osvědčený postup by se měly tajné klíče a připojovací řetězce spravovat pomocí nastavení aplikace namísto konfiguračních souborů. Tato funkce omezuje přístup k těmto tajným klíčům a usnadňuje ukládání souborů, jako je *Function. JSON* v úložištích veřejného zdrojového kódu.
 
-App settings are also useful whenever you want to change configuration based on the environment. For example, in a test environment, you may want to monitor a different queue or blob storage container.
+Nastavení aplikace jsou užitečná také v případě, že chcete změnit konfiguraci na základě prostředí. Například v testovacím prostředí budete chtít monitorovat jinou frontu nebo kontejner úložiště objektů BLOB.
 
-App setting binding expressions are identified differently from other binding expressions: they are wrapped in percent signs rather than curly braces. For example if the blob output binding path is `%Environment%/newblob.txt` and the `Environment` app setting value is `Development`, a blob will be created in the `Development` container.
+Výrazy vazby nastavení aplikace jsou identifikovány jinak než jiné výrazy vazby: jsou zabaleny v procentech namísto složených závorek. Pokud je například cesta k výstupní vazbě objektu BLOB `%Environment%/newblob.txt` a hodnota nastavení `Environment` aplikace je `Development`, vytvoří se v kontejneru `Development` objekt BLOB.
 
-When a function is running locally, app setting values come from the *local.settings.json* file.
+Když je funkce spuštěná místně, hodnoty nastavení aplikace pocházejí ze souboru *Local. Settings. JSON* .
 
-Note that the `connection` property of triggers and bindings is a special case and automatically resolves values as app settings, without percent signs. 
+Všimněte si, že vlastnost `connection` triggerů a vazeb je zvláštní případ a automaticky řeší hodnoty jako nastavení aplikace bez znaménka procenta. 
 
-The following example is an Azure Queue Storage trigger that uses an app setting `%input-queue-name%` to define the queue to trigger on.
+V následujícím příkladu je Trigger služby Azure Queue Storage, který používá nastavení aplikace `%input-queue-name%` k definování fronty, která se má aktivovat.
 
 ```json
 {
@@ -55,7 +55,7 @@ The following example is an Azure Queue Storage trigger that uses an app setting
 }
 ```
 
-You can use the same approach in class libraries:
+Stejný přístup můžete použít v knihovnách tříd:
 
 ```csharp
 [FunctionName("QueueTrigger")]
@@ -67,11 +67,11 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-file-name"></a>Trigger file name
+## <a name="trigger-file-name"></a>Název souboru triggeru
 
-The `path` for a Blob trigger can be a pattern that lets you refer to the name of the triggering blob in other bindings and function code. The pattern can also include filtering criteria that specify which blobs can trigger a function invocation.
+`path` pro Trigger objektu BLOB může být vzor, který umožňuje odkazování na název triggerového objektu BLOB v jiných vazbách a kódu funkce. Vzor může také zahrnovat kritéria filtrování, která určují, které objekty blob mohou aktivovat vyvolání funkce.
 
-For example, in the following Blob trigger binding, the `path` pattern is `sample-images/{filename}`, which creates a binding expression named `filename`:
+Například v následující vazbě triggeru objektu BLOB je `sample-images/{filename}`vzor `path`, který vytvoří výraz vazby s názvem `filename`:
 
 ```json
 {
@@ -86,7 +86,7 @@ For example, in the following Blob trigger binding, the `path` pattern is `sampl
     ...
 ```
 
-The expression `filename` can then be used in an output binding to specify the name of the blob being created:
+Výraz `filename` lze použít ve výstupní vazbě k určení názvu vytvořeného objektu BLOB:
 
 ```json
     ...
@@ -101,7 +101,7 @@ The expression `filename` can then be used in an output binding to specify the n
 }
 ```
 
-Function code has access to this same value by using `filename` as a parameter name:
+Kód funkce má přístup k této stejné hodnotě pomocí `filename` jako název parametru:
 
 ```csharp
 // C# example of binding to {filename}
@@ -115,7 +115,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-The same ability to use binding expressions and patterns applies to attributes in class libraries. In the following example, the attribute constructor parameters are the same `path` values as the preceding *function.json* examples: 
+Stejnou možnost použití výrazů vazby a vzorů se vztahuje na atributy v knihovnách tříd. V následujícím příkladu jsou parametry konstruktoru atributu stejné `path` hodnoty jako předchozí *funkce. JSON* – příklady: 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -131,23 +131,23 @@ public static void Run(
 
 ```
 
-You can also create expressions for parts of the file name such as the extension. For more information on how to use expressions and patterns in the Blob path string, see the [Storage blob binding reference](functions-bindings-storage-blob.md).
+Můžete také vytvořit výrazy pro části názvu souboru, jako je například přípona. Další informace o tom, jak používat výrazy a vzory v řetězci cesty objektu blob, najdete v [referenčních informacích k vazbě objektů BLOB úložiště](functions-bindings-storage-blob.md).
 
-## <a name="trigger-metadata"></a>Trigger metadata
+## <a name="trigger-metadata"></a>Aktivační metadata
 
-In addition to the data payload provided by a trigger (such as the content of the queue message that triggered a function), many triggers provide additional metadata values. These values can be used as input parameters in C# and F# or properties on the `context.bindings` object in JavaScript. 
+Kromě datové části, kterou poskytuje Trigger (například obsah zprávy fronty, která aktivovala funkci), mnoho triggerů poskytuje další hodnoty metadat. Tyto hodnoty lze použít jako vstupní parametry v C# a F# nebo ve vlastnostech objektu `context.bindings` v JavaScriptu. 
 
-For example, an Azure Queue storage trigger supports the following properties:
+Například aktivační událost Azure Queue Storage podporuje následující vlastnosti:
 
-* QueueTrigger - triggering message content if a valid string
+* QueueTrigger – aktivace obsahu zprávy, pokud je platný řetězec
 * DequeueCount
-* ExpirationTime
+* expirationTime
 * ID
 * InsertionTime
 * NextVisibleTime
 * PopReceipt
 
-These metadata values are accessible in *function.json* file properties. For example, suppose you use a queue trigger and the queue message contains the name of a blob you want to read. In the *function.json* file, you can use `queueTrigger` metadata property in the blob `path` property, as shown in the following example:
+Tyto hodnoty metadat jsou přístupné ve vlastnostech souboru *Function. JSON* . Předpokládejme například, že používáte Trigger fronty a zpráva Queue obsahuje název objektu blob, který chcete číst. V souboru *Function. JSON* můžete použít vlastnost `queueTrigger` metadata ve vlastnosti `path` objektů blob, jak je znázorněno v následujícím příkladu:
 
 ```json
   "bindings": [
@@ -167,13 +167,13 @@ These metadata values are accessible in *function.json* file properties. For exa
   ]
 ```
 
-Details of metadata properties for each trigger are described in the corresponding reference article. For an example, see [queue trigger metadata](functions-bindings-storage-queue.md#trigger---message-metadata). Documentation is also available in the **Integrate** tab of the portal, in the **Documentation** section below the binding configuration area.  
+Podrobnosti o vlastnostech metadat pro jednotlivé triggery jsou popsány v odpovídajícím referenčním článku. Příklad najdete v tématu [metadata triggeru ve frontě](functions-bindings-storage-queue.md#trigger---message-metadata). Dokumentace je také k dispozici na kartě **integrace** na portálu v části **dokumentace** pod oblastí konfigurace vazby.  
 
-## <a name="json-payloads"></a>JSON payloads
+## <a name="json-payloads"></a>Datové části JSON
 
-When a trigger payload is JSON, you can refer to its properties in configuration for other bindings in the same function and in function code.
+Pokud je datová část triggeru JSON, můžete odkazovat na její vlastnosti v konfiguraci pro jiné vazby ve stejné funkci a v kódu funkce.
 
-The following example shows the *function.json* file for a webhook function that receives a blob name in JSON: `{"BlobName":"HelloWorld.txt"}`. A Blob input binding reads the blob, and the HTTP output binding returns the blob contents in the HTTP response. Notice that the Blob input binding gets the blob name by referring directly to the `BlobName` property (`"path": "strings/{BlobName}"`)
+Následující příklad ukazuje soubor *Function. JSON* pro funkci Webhooku, která přijímá název objektu BLOB ve formátu json: `{"BlobName":"HelloWorld.txt"}`. Vstupní vazba objektu BLOB přečte objekt BLOB a vazba výstupu HTTP vrátí obsah objektu BLOB v odpovědi HTTP. Všimněte si, že vstupní vazba objektu BLOB Získá název objektu BLOB odkazem přímo na vlastnost `BlobName` (`"path": "strings/{BlobName}"`).
 
 ```json
 {
@@ -200,7 +200,7 @@ The following example shows the *function.json* file for a webhook function that
 }
 ```
 
-For this to work in C# and F#, you need a class that defines the fields to be deserialized, as in the following example:
+Aby tato práce fungovala C# v F#a, potřebujete třídu, která definuje pole k deserializaci, jako v následujícím příkladu:
 
 ```csharp
 using System.Net;
@@ -225,7 +225,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, str
 }
 ```
 
-In JavaScript, JSON deserialization is automatically performed.
+V jazyce JavaScript je deserializace JSON automaticky provedena.
 
 ```javascript
 module.exports = function (context, info) {
@@ -243,9 +243,9 @@ module.exports = function (context, info) {
 }
 ```
 
-### <a name="dot-notation"></a>Dot notation
+### <a name="dot-notation"></a>Zápis tečky
 
-If some of the properties in your JSON payload are objects with properties, you can refer to those directly by using dot notation. For example, suppose your JSON looks like this:
+Pokud jsou některé vlastnosti v datové části JSON objekty s vlastnostmi, můžete na ty odkazovat přímo pomocí zápisu teček. Předpokládejme například, že váš kód JSON vypadá takto:
 
 ```json
 {
@@ -256,13 +256,13 @@ If some of the properties in your JSON payload are objects with properties, you 
 }
 ```
 
-You can refer directly to `FileName` as `BlobName.FileName`. With this JSON format, here's what the `path` property in the preceding example would look like:
+Můžete přímo odkazovat na `FileName` jako `BlobName.FileName`. V tomto formátu JSON je tu, jak by vlastnost `path` v předchozím příkladu vypadala takto:
 
 ```json
 "path": "strings/{BlobName.FileName}.{BlobName.Extension}",
 ```
 
-In C#, you would need two classes:
+V C#nástroji budete potřebovat dvě třídy:
 
 ```csharp
 public class BlobInfo
@@ -276,9 +276,9 @@ public class BlobName
 }
 ```
 
-## <a name="create-guids"></a>Create GUIDs
+## <a name="create-guids"></a>Vytvořit GUID
 
-The `{rand-guid}` binding expression creates a GUID. The following blob path in a `function.json` file creates a blob with a name like *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*.
+Výraz vazby `{rand-guid}` vytvoří identifikátor GUID. Následující cesta objektu BLOB v souboru `function.json` vytvoří objekt BLOB s názvem, jako je *50710cb5-84b9-4d87-9d83-a03d6976a682. txt*.
 
 ```json
 {
@@ -289,9 +289,9 @@ The `{rand-guid}` binding expression creates a GUID. The following blob path in 
 }
 ```
 
-## <a name="current-time"></a>Current time
+## <a name="current-time"></a>Aktuální čas
 
-The binding expression `DateTime` resolves to `DateTime.UtcNow`. The following blob path in a `function.json` file creates a blob with a name like *2018-02-16T17-59-55Z.txt*.
+Výraz vazby `DateTime` překládá na `DateTime.UtcNow`. Následující cesta objektu BLOB v souboru `function.json` vytvoří objekt BLOB s názvem, například *2018-02-16T17-59 -55z. txt*.
 
 ```json
 {
@@ -301,10 +301,10 @@ The binding expression `DateTime` resolves to `DateTime.UtcNow`. The following b
   "path": "my-output-container/{DateTime}"
 }
 ```
-## <a name="binding-at-runtime"></a>Binding at runtime
+## <a name="binding-at-runtime"></a>Vazba za běhu
 
-In C# and other .NET languages, you can use an imperative binding pattern, as opposed to the declarative bindings in *function.json* and attributes. Imperative binding is useful when binding parameters need to be computed at runtime rather than design time. To learn more, see the [C# developer reference](functions-dotnet-class-library.md#binding-at-runtime) or the [C# script developer reference](functions-reference-csharp.md#binding-at-runtime).
+V C# a v jiných jazycích .NET můžete použít imperativní vzor vazby, a to na rozdíl od deklarativních vazeb v *Functions. JSON* a Attributes. Imperativní vazba je užitečná v případě, že parametry vazby je třeba vypočítat za běhu, nikoli jako dobu návrhu. Další informace najdete v [ C# referenční](functions-dotnet-class-library.md#binding-at-runtime) příručce pro vývojáře nebo v [ C# referenční příručce pro vývojáře skriptů](functions-reference-csharp.md#binding-at-runtime).
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Using the Azure Function return value](./functions-bindings-return-value.md)
+> [Použití návratové hodnoty funkce Azure Functions](./functions-bindings-return-value.md)

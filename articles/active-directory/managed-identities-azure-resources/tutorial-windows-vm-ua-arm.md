@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Resource Manager - Windows - Azure AD
+title: Kurz`:` použití spravované identity pro přístup k Azure Resource Manager-Windows-Azure AD
 description: Tento kurz vás provede procesem použití spravované identity přiřazené uživatelem na virtuálním počítači s Windows pro přístup k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
@@ -22,7 +22,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224218"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Tutorial: Use a user-assigned managed identity on a Windows VM to access Azure Resource Manager
+# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: použití spravované identity přiřazené uživatelem na virtuálním počítači s Windows pro přístup k Azure Resource Manager
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -39,7 +39,7 @@ Získáte informace o těchto tématech:
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -48,7 +48,7 @@ Získáte informace o těchto tématech:
 - [Vytvoření virtuálního počítače s Windows](/azure/virtual-machines/windows/quick-create-portal)
 
 - K provedení kroků v tomto kurzu potřebných k vytvoření prostředku a správě rolí potřebuje váš účet oprávnění vlastníka v odpovídajícím oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](/azure/role-based-access-control/role-assignments-portal).
-- [Install the latest version of the Azure PowerShell module](/powershell/azure/install-az-ps). 
+- [Nainstalujte nejnovější verzi modulu Azure PowerShell](/powershell/azure/install-az-ps). 
 - Spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure.
 - Nainstalujte [nejnovější verzi modulu PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
 - Spuštěním rutiny `Install-Module -Name PowerShellGet -AllowPrerelease` získejte předběžnou verzi modulu `PowerShellGet` (po spuštění tohoto příkazu možná budete muset pomocí příkazu `Exit` ukončit aktuální relaci PowerShellu, aby se modul `Az.ManagedServiceIdentity` nainstaloval).
@@ -56,7 +56,7 @@ Získáte informace o těchto tématech:
 
 ## <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
 
-Identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Using the [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity),  Azure creates an identity in your Azure AD tenant that can be assigned to one or more Azure service instances.
+Identita přiřazená uživatelem se vytváří jako samostatný prostředek Azure. Pomocí [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity)vytvoří Azure v TENANTOVI Azure AD identitu, kterou je možné přiřadit k jedné nebo více instancím služby Azure.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -82,7 +82,7 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 
 ## <a name="assign-the-user-assigned-identity-to-a-windows-vm"></a>Přiřazení identity přiřazené uživatelem k virtuálnímu počítači s Windows
 
-Klienti můžou identitu přiřazenou uživatelem používat pro několik prostředků Azure. Pomocí následujících příkazů přiřaďte identitu přiřazenou uživatelem k jednomu virtuálnímu počítači. Jako hodnotu parametru `-IdentityID` použijte vlastnost `Id` vrácenou v předchozím kroku.
+Klienti můžou identitu přiřazenou uživatelem používat pro několik prostředků Azure. Pomocí následujících příkazů přiřaďte identitu přiřazenou uživatelem k jednomu virtuálnímu počítači. Jako hodnotu parametru `Id` použijte vlastnost `-IdentityID` vrácenou v předchozím kroku.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -124,7 +124,7 @@ Ve zbývající části kurzu použijete k práci dříve vytvořený virtuáln�
 
 3. Zadejte **Uživatelské jméno** a **Heslo**, které jste použili při vytváření virtuálního počítače s Windows.
 
-4. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete ve vzdálené relaci **PowerShell**.
+4. Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci **PowerShell**.
 
 5. Pomocí příkazu `Invoke-WebRequest` v PowerShellu požádejte místní spravované identity o koncový bod prostředků Azure k získání přístupového tokenu pro Azure Resource Manager.  Hodnota `client_id` je hodnota, která se vrátila při [vytvoření spravované identity přiřazené uživatelem](#create-a-user-assigned-identity).
 
@@ -149,7 +149,7 @@ Odpověď bude obsahovat informace o konkrétní skupině prostředků podobně 
 
 ## <a name="next-steps"></a>Další kroky
 
-In this tutorial, you learned how to create a user-assigned identity and attach it to an Azure Virtual Machine to access the Azure Resource Manager API.  Další informace o Azure Resource Manageru najdete tady:
+V tomto kurzu jste zjistili, jak vytvořit uživatelem přiřazenou identitu a připojit ji k virtuálnímu počítači Azure pro přístup k rozhraní Azure Resource Manager API.  Další informace o Azure Resource Manageru:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

@@ -1,5 +1,5 @@
 ---
-title: Quickstart:Create a public Standard Load Balancer - Azure CLI
+title: 'Rychlý Start: vytvoření veřejné Standard Load Balancer – Azure CLI'
 titleSuffix: Azure Load Balancer
 description: Tento rychlý start ukazuje, jak pomocí Azure CLI vytvořit veřejný nástroj pro vyrovnávání zatížení.
 services: load-balancer
@@ -24,7 +24,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214790"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Quickstart: Create a Standard Load Balancer to load balance VMs using Azure CLI
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý Start: vytvoření Standard Load Balancer pro vyrovnávání zatížení virtuálních počítačů pomocí rozhraní příkazového řádku Azure
 
 V tomto rychlém startu se dozvíte, jak vytvořit Load Balancer úrovně Standard. K otestování nástroje pro vyrovnávání zatížení nasadíte dva virtuální počítače se serverem Ubuntu, které mezi sebou budou vyrovnávat zatížení webové aplikace.
 
@@ -89,7 +89,7 @@ Test stavu kontroluje všechny instance virtuálních počítačů a ověřuje, 
 
 ### <a name="create-the-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myLoadBalancerRuleWeb* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* rovněž na portu 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu *az network lb rule create* vytvořte pravidlo nástroje pro vyrovnávání zatížení [myLoadBalancerRuleWeb](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* rovněž na portu 80. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -110,7 +110,7 @@ Než nasadíte několik virtuálních počítačů a budete moci otestovat svůj
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) vytvořte virtuální síť *myVnet* s podsítí *mySubnet* ve skupině prostředků *myResourceGroup*.
+Pomocí příkazu *az network vnet create* vytvořte virtuální síť *myVnet* s podsítí *mySubnet* ve skupině prostředků [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \
@@ -197,7 +197,7 @@ Vytvořte skupinu dostupnosti pomocí příkazu [az vm availabilityset create](/
     --name myAvailabilitySet
 ```
 
-### <a name="create-three-virtual-machines"></a>Create three virtual machines
+### <a name="create-three-virtual-machines"></a>Vytvoření tří virtuálních počítačů
 
 K instalaci serveru NGINX a spuštění aplikace Hello World v Node.js na virtuálním počítači s Linuxem můžete použít konfigurační soubor cloud-init. V aktuálním prostředí vytvořte soubor cloud-init.txt a zkopírujte následující konfiguraci a vložte ji do prostředí. Ujistěte se, že správně kopírujete celý soubor cloud-init, zejména první řádek:
 
@@ -301,7 +301,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, nástro
   az group delete --name myResourceGroupSLB
 ```
 ## <a name="next-step"></a>Další krok
-V rámci tohoto rychlého startu jste vytvořili službu Standard Load Balancer, připojili jste k ní virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
+V rámci tohoto rychlého startu jste vytvořili službu Standard Load Balancer, připojili jste k ní virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Další informace o službě Azure Load Balancer najdete v kurzech týkajících se služby Azure Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Kurzy o službě Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

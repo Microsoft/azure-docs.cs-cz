@@ -47,5 +47,5 @@ Existují tři způsoby, jak tento problém vyřešit. Níže uvedené možnosti
 3.  Pokud žádná z těchto možností není proveditelná, existuje více možností pro povolení překladu vloženého odkazu. Mezi tyto možnosti patří použití rozšíření Intune Managed Browser, moje aplikace nebo použití nastavení překladu odkazů ve vaší aplikaci. Další informace o každé z těchto možností a o tom, jak je povolit, najdete v tématu [přesměrování pevně zakódované odkazů pro aplikace publikované pomocí Azure proxy aplikací služby AD](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="next-steps"></a>Další kroky
-[Práce s existující místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
+[Práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
 

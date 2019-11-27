@@ -107,7 +107,7 @@ Chcete-li připojit problémový virtuální počítač, musí záchranný virtu
     ![obrázek o připojení disku](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
-15. Vyberte **použít**a pak vyberte **OK**.
+15. Vyberte **Apply** (Použít) a pak vyberte **OK**.
 
 16. Dvakrát klikněte na virtuální počítač a potom ho spusťte.
 

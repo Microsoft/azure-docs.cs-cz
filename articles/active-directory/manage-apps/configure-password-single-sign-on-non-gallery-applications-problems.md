@@ -42,7 +42,7 @@ Obecně platí, že pokud automatické zachycení přihlašovacích polí nefung
 
 Pokud chcete nakonfigurovat jednotné přihlašování založené na heslech pomocí automatického zachycení pole pro přihlášení, postupujte takto:
 
-1. Otevřete web [Azure Portal](https://portal.azure.com/). Přihlaste se jako globální správce nebo spolusprávce.
+1. Otevřete [portál Azure](https://portal.azure.com/). Přihlaste se jako globální správce nebo spolusprávce.
 
 2. V navigačním podokně na levé straně vyberte **všechny služby** a otevřete rozšíření Azure AD.
 
@@ -75,7 +75,7 @@ Informace o instalaci rozšíření najdete v části [Instalace rozšíření p
 
 Pokud chcete pro aplikaci nakonfigurovat jednotné přihlašování na základě hesla pomocí ručního zachycení pole pro přihlášení, postupujte podle těchto kroků:
 
-1. Otevřete web [Azure Portal](https://portal.azure.com/). Přihlaste se jako globální správce nebo spolusprávce.
+1. Otevřete [portál Azure](https://portal.azure.com/). Přihlaste se jako globální správce nebo spolusprávce.
 
 2. V navigačním podokně na levé straně vyberte **všechny služby** a otevřete rozšíření Azure AD.
 
@@ -252,4 +252,4 @@ Následující informace popisují, co jednotlivé položky oznámení znamenaj�
     Příklad: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 ## <a name="next-steps"></a>Další kroky
-[Poskytovat jednotné přihlašování do aplikací pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-kcd.md)
+[Zajištění jednotného přihlašování k aplikacím pomocí proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md)

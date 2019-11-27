@@ -36,7 +36,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště 
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
 Teď vytvoříte účet úložiště (pokud ho ještě nemáte).  Tento krok také můžete přeskočit a udělit spravované identitě přiřazené systémem virtuálního počítače přístup ke klíčům stávajícího účtu úložiště. 
 

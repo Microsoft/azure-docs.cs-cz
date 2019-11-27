@@ -1,6 +1,6 @@
 ---
 title: Přehled služby relačních databází Azure Database for MariaDB
-description: Learn about the Azure Database for MariaDB service, a relational database service in the Microsoft cloud based on the MySQL community edition.
+description: Přečtěte si o službě Azure Database for MariaDB, službě relačních databází v cloudu Microsoftu na základě verze MySQL Community Edition.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -16,7 +16,7 @@ ms.locfileid: "74484153"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Co je Azure Database for MariaDB?
 
-Azure Database for MariaDB je služba relačních databází v cloudu Microsoftu. Azure Database for MariaDB is based on the [MariaDB community edition](https://mariadb.org/download/) (available under the GPLv2 license) database engine, version 10.2 and 10.3.
+Azure Database for MariaDB je služba relačních databází v cloudu Microsoftu. Azure Database for MariaDB vychází z [MariaDB Community Edition](https://mariadb.org/download/) (k dispozici v rámci licence GPLv2) databázového stroje verze 10,2 a 10,3.
 
 Azure Database for MariaDB nabízí:
 
@@ -41,7 +41,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
 
-The Azure Database for MariaDB service offers several service tiers: Basic, General Purpose, and Memory Optimized. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost pomáhá databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. See [Pricing tiers](concepts-pricing-tiers.md) for details.
+Služba Azure Database for MariaDB nabízí několik úrovní služeb: Basic, Pro obecné účely a paměťově optimalizované. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost pomáhá databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [cenové úrovně](concepts-pricing-tiers.md) .
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 
@@ -49,11 +49,11 @@ Jak se rozhodnout, kdy vertikálně navýšit nebo snížit kapacitu? Můžete v
 
 ## <a name="keep-your-app-and-business-running"></a>Udržujte své aplikace a podnikáni v chodu
 
-Azure's industry-leading 99.99% availability SLA is powered by a global network of Microsoft-managed datacenters. Tato síť pomáhá udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. S Azure Database for MariaDB získáte výhody integrovaného zabezpečení, odolnosti proti chybám a ochrany dat. S Azure Database for MariaDB můžete využít obnovení serveru do určitého bodu v čase, a to až 35 dnů zpět.
+Smlouva SLA o špičkové 99,99% dostupnosti v oboru Azure využívá globální síť datacenter spravovaných Microsoftem. Tato síť pomáhá udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. S Azure Database for MariaDB získáte výhody integrovaného zabezpečení, odolnosti proti chybám a ochrany dat. S Azure Database for MariaDB můžete využít obnovení serveru do určitého bodu v čase, a to až 35 dnů zpět.
 
 ## <a name="secure-your-data"></a>Zabezpečte svoje data
 
-Databázové služby Azure mají tradici zabezpečení dat, kterou služba Azure Database for MariaDB zachovává. Azure Database for MariaDB nabízí funkce, které omezují přístup, chrání přenášená i neaktivní uložená data a pomáhají s monitorováním aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/trustcenter/security). For more information about Azure Database for MySQL security features, see the [security overview](concepts-security.md).
+Databázové služby Azure mají tradici zabezpečení dat, kterou služba Azure Database for MariaDB zachovává. Azure Database for MariaDB nabízí funkce, které omezují přístup, chrání přenášená i neaktivní uložená data a pomáhají s monitorováním aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/trustcenter/security). Další informace o funkcích zabezpečení Azure Database for MySQL najdete v [přehledu zabezpečení](concepts-security.md).
 
 ## <a name="contacts"></a>Kontakty
 

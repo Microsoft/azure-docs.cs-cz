@@ -46,7 +46,7 @@ V Data Lake Storu vytvořte novou složku a udělte identitě přiřazené syst�
 2. Klikněte na službu Data Lake Store, kterou chcete pro tento kurz použít.
 3. Na panelu příkazů klikněte na **Průzkumník dat**.
 4. Vybere se kořenová složka služby Data Lake Store.  Na panelu příkazů klikněte na **Přístup**.
-5. Klikněte na tlačítko **přidat**.  Do pole **Vybrat** zadejte název vašeho virtuálního počítače, například **DevTestVM**.  Ve výsledcích hledání kliknutím vyberte váš virtuální počítač a pak klikněte na **Vybrat**.
+5. Klikněte na **Přidat**.  Do pole **Vybrat** zadejte název vašeho virtuálního počítače, například **DevTestVM**.  Ve výsledcích hledání kliknutím vyberte váš virtuální počítač a pak klikněte na **Vybrat**.
 6. Klikněte na **Vybrat oprávnění**.  Vyberte oprávnění **Číst** a **Spustit**, přidejte je k **Tato složka** a přidejte je jako **Položka oprávnění k přístupu**.  Klikněte na tlačítko **OK**.  Oprávnění by mělo být úspěšně přidané.
 7. Zavřete okno **Přístup**.
 8. Pro tento kurz vytvořte novou složku.  Na panelu příkazů klikněte na **Nová složka** a zadejte název nové složky, například **TestFolder**.  Klikněte na tlačítko **OK**.

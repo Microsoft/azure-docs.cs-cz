@@ -39,7 +39,7 @@ Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](tutorial-r
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -77,7 +77,7 @@ Koncové body služby se povolují pro každou službu a podsíť. Vytvořte pod
 
     |Nastavení|Hodnota|
     |----|----|
-    |Název| Private |
+    |Název| Soukromé |
     |Rozsah adres| 10.0.1.0/24|
     |Koncové body služby| V části **Služby** vyberte **Microsoft.Storage**.|
 
@@ -107,13 +107,13 @@ Ve výchozím nastavení mohou všechny virtuální počítače v podsíti komun
     |Nastavení|Hodnota|
     |----|----|
     |Zdroj| Vyberte **VirtualNetwork**. |
-    |Rozsahy zdrojových portů| * |
+    |Source port ranges| * |
     |Destination | Vyberte **Značka služby**.|
     |Značka cílové služby | Vyberte **Storage**.|
     |Rozsahy cílových portů| * |
     |Protocol (Protokol)|Jakýkoli|
     |Akce|Allow|
-    |Priorita|100|
+    |Priority|100|
     |Název|Allow-Storage-All|
 
 8. Vytvořte další odchozí pravidlo zabezpečení, které zakáže komunikaci s internetem. Toto pravidlo přepíše výchozí pravidlo ve všech skupinách zabezpečení sítě, které odchozí komunikaci s internetem povoluje. Zopakujte kroky 5 až 7 s použitím následujících hodnot:
@@ -121,13 +121,13 @@ Ve výchozím nastavení mohou všechny virtuální počítače v podsíti komun
     |Nastavení|Hodnota|
     |----|----|
     |Zdroj| Vyberte **VirtualNetwork**. |
-    |Rozsahy zdrojových portů| * |
+    |Source port ranges| * |
     |Destination | Vyberte **Značka služby**.|
     |Značka cílové služby| Vyberte **Internet**.|
     |Rozsahy cílových portů| * |
     |Protocol (Protokol)|Jakýkoli|
     |Akce|Odepřít|
-    |Priorita|110|
+    |Priority|110|
     |Název|Deny-Internet-All|
 
 9. V části **NASTAVENÍ** vyberte **Příchozí pravidla zabezpečení**.
@@ -137,12 +137,12 @@ Ve výchozím nastavení mohou všechny virtuální počítače v podsíti komun
     |Nastavení|Hodnota|
     |----|----|
     |Zdroj| Jakýkoli |
-    |Rozsahy zdrojových portů| * |
+    |Source port ranges| * |
     |Destination | Vyberte **VirtualNetwork**.|
     |Rozsahy cílových portů| 3389 |
     |Protocol (Protokol)|Jakýkoli|
     |Akce|Allow|
-    |Priorita|120|
+    |Priority|120|
     |Název|Allow-RDP-All|
 
 12. V části **NASTAVENÍ** vyberte **Podsítě**.
@@ -154,7 +154,7 @@ Ve výchozím nastavení mohou všechny virtuální počítače v podsíti komun
 
 Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným prostřednictvím služeb Azure povolených v koncových bodech se u jednotlivých služeb liší. Konkrétní kroky pro jednotlivé služby najdete v dokumentaci příslušné služby. Zbývající část tohoto kurzu jako příklad obsahuje kroky k omezení síťového přístupu k účtu služby Azure Storage.
 
-### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
 2. Vyberte **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.

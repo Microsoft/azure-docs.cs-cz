@@ -1,6 +1,6 @@
 ---
-title: Set up a sink transformation in the mapping data flow feature
-description: Learn how to set up a sink transformation in the mapping data flow.
+title: Nastavení transformace jímky v funkci toku dat mapování
+description: Přečtěte si, jak nastavit transformaci jímky v toku dat mapování.
 author: kromerm
 ms.author: makromer
 manager: anandsub
@@ -15,105 +15,105 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74217929"
 ---
-# <a name="sink-transformation-for-a-data-flow"></a>Sink transformation for a data flow
+# <a name="sink-transformation-for-a-data-flow"></a>Transformace jímky pro tok dat
 
-After you transform your data flow, you can sink the data into a destination dataset. In the sink transformation, choose a dataset definition for the destination output data. You can have as many sink transformations as your data flow requires.
+Po transformaci toku dat můžete data zpracovat do cílové datové sady. V transformaci jímky vyberte definici datové sady pro cílová výstupní data. V případě, že datový tok vyžaduje, můžete mít tolik transformací jímky.
 
-To account for schema drift and changes in incoming data, sink the output data to a folder without a defined schema in the output dataset. You can also account for column changes in your sources by selecting **Allow schema drift** in the source. Then automap all fields in the sink.
+Aby se zohlednila změna schématu a změny v příchozích datech, zajímky výstupních dat do složky bez definovaného schématu ve výstupní datové sadě. V případě změn sloupců ve vašich zdrojích můžete také vybrat možnost u zdroje použít **posun schématu** . Pak automap všechna pole v jímky.
 
-![Options on the Sink tab, including the Auto Map option](media/data-flow/sink1.png "sink 1")
+![Možnosti na kartě jímka, včetně možnosti automatické mapování](media/data-flow/sink1.png "jímka 1")
 
-To sink all incoming fields, turn on **Auto Map**. To choose the fields to sink to the destination, or to change the names of the fields at the destination, turn off **Auto Map**. Then open the **Mapping** tab to map output fields.
+Chcete-li zpracovat všechna příchozí pole, zapněte **automatickou mapu**. Chcete-li vybrat pole, která mají být zajímka do cíle, nebo změnit názvy polí v cíli, vypněte **automatickou mapu**. Pak otevřete kartu **mapování** a namapujte výstupní pole.
 
-![Options on the Mapping tab](media/data-flow/sink2.png "sink 2")
+![Možnosti na kartě mapování](media/data-flow/sink2.png "jímka 2")
 
 ## <a name="output"></a>Výstup 
-For Azure Blob storage or Data Lake Storage sink types, output the transformed data into a folder. Spark generates partitioned output data files based on the partitioning scheme that the sink transformation uses. 
+Pro úložiště objektů BLOB v Azure nebo Data Lake Storage typy jímky výstup transformovaná data do složky. Spark generuje výstupní datové soubory rozdělené do oddílů na základě schématu dělení, které používá transformace jímky. 
 
-You can set the partitioning scheme from the **Optimize** tab. If you want Data Factory to merge your output into a single file, select **Single partition**. If you wish to maintain or create partitioned folders, use **Key partitioning** and set the keys you wish to use for partitioned folder structures.
+Schéma dělení můžete nastavit na kartě **optimalizace** . Pokud chcete, Data Factory sloučit výstup do jednoho souboru, vyberte **jeden oddíl**. Pokud chcete zachovat nebo vytvořit dělené složky, použijte **klíčové dělení** a nastavte klíče, které chcete použít pro segmentované struktury složek.
 
-![Options on the Optimize tab](media/data-flow/opt001.png "sink options")
+![Možnosti na kartě optimalizace](media/data-flow/opt001.png "možnosti jímky")
 
-## <a name="field-mapping"></a>Field mapping
-On the **Mapping** tab of your sink transformation, you can map the incoming columns on the left to the destinations on the right. When you sink data flows to files, Data Factory will always write new files to a folder. When you map to a database dataset, you will choose database table operation options to insert, update, upsert, or delete.
+## <a name="field-mapping"></a>Mapování polí
+Na kartě **mapování** transformace jímky můžete namapovat příchozí sloupce vlevo na cílové umístění na pravé straně. Když datovou jímku zařadíte do souborů, Data Factory bude vždy zapisovat nové soubory do složky. Při mapování na datovou sadu databáze zvolíte možnosti operace databázové tabulky pro vložení, aktualizaci, Upsert nebo odstranění.
 
-![The Mapping tab](media/data-flow/sink2.png "Sinks")
+![Karta mapování](media/data-flow/sink2.png "Jímky")
 
-In the mapping table, you can multiselect to link multiple columns, delink multiple columns, or map multiple rows to the same column name.
+V tabulce mapování můžete vícenásobný výběr propojit více sloupců, zrušit propojení více sloupců nebo mapovat více řádků na stejný název sloupce.
 
-To always map the incoming set of fields to a target as they are and to fully accept flexible schema definitions, select **Allow schema drift**.
+Chcete-li vždy mapovat příchozí sadu polí na cíl, protože jsou a plně akceptovat flexibilní definice schématu, vyberte možnost **Povolení posunu schématu**.
 
-![The Mapping tab, showing fields mapped to columns in the dataset](media/data-flow/multi1.png "multiple options")
+![Karta mapování zobrazující pole mapovaná na sloupce v datové sadě](media/data-flow/multi1.png "více možností")
 
-To reset your column mappings, select **Re-map**.
+Chcete-li obnovit mapování sloupců, vyberte možnost **znovu mapovat**.
 
-![The Sink tab](media/data-flow/sink1.png "Sink One")
+![Karta jímka](media/data-flow/sink1.png "Jímka jedna")
 
-Select **Validate schema** to fail the sink if the schema changes.
+Pokud se změní schéma, vyberte možnost **ověřit schéma** a selhání jímky.
 
-Select **Clear the folder** to truncate the contents of the sink folder before writing the destination files in that target folder.
+Chcete-li zkrátit obsah složky jímky před zápisem cílových souborů do této cílové složky, vyberte možnost **zrušit zaškrtnutí složky** .
 
-## <a name="fixed-mapping-vs-rule-based-mapping"></a>Fixed mapping vs. rule-based mapping
-When you turn off auto-mapping, you will have the option to add either column-based mapping (fixed mapping) or rule-based mapping. Rule-based mapping will allow you to write expressions with pattern matching while fixed mapping will map logical and physical column names.
+## <a name="fixed-mapping-vs-rule-based-mapping"></a>Pevné mapování vs. mapování na základě pravidel
+Pokud automatické mapování vypnete, budete mít možnost Přidat mapování na základě sloupců (pevné mapování) nebo mapování na základě pravidel. Mapování na základě pravidel vám umožní zapisovat výrazy s porovnáváním vzorů, zatímco pevné mapování bude mapovat logické a fyzické názvy sloupců.
 
-![Rule-based Mapping](media/data-flow/rules4.png "Rule-based mapping")
+![Mapování na základě pravidel](media/data-flow/rules4.png "Mapování na základě pravidel")
 
-When you choose rule-based mapping, you are instructing ADF to evaluate your matching expression to match incoming pattern rules and define the outgoing field names. You may add any combination of both field and rule-based mappings. Field names are then generated at runtime by ADF based on incoming metadata from the source. You can view the names of the generated fields during debug and using the data preview pane.
+Když zvolíte mapování na základě pravidel, budete mít k stránce ADF možnost vyhodnotit odpovídající výraz tak, aby odpovídala pravidlům příchozího vzoru, a definovat názvy odchozích polí. Můžete přidat libovolnou kombinaci polí i mapování na základě pravidel. Názvy polí se pak generují za běhu pomocí ADF na základě příchozích metadat ze zdroje. Můžete zobrazit názvy generovaných polí během ladění a pomocí podokna náhledu dat.
 
-Details on pattern matching are at [Column Pattern documentation](concepts-data-flow-column-pattern.md).
+Podrobnosti o porovnávání vzorů jsou v [dokumentaci ke vzorci sloupců](concepts-data-flow-column-pattern.md).
 
-You can also enter regular expression patterns when using rule based matching by expanding the row and entering a regular expression next to "Name Matches:".
+Můžete také zadat vzory regulárních výrazů při použití shody založené na pravidlech rozbalením řádku a zadáním regulárního výrazu vedle položky "shoda názvů:".
 
-![Regex Mapping](media/data-flow/scdt1g4.png "Regex mapping")
+![Mapování regulárního výrazu](media/data-flow/scdt1g4.png "Mapování regulárního výrazu")
 
-A very basic common example for a rule-based mapping vs. fixed mapping is the case where you want to map all incoming fields to the same name in your target. In the case of fixed mappings, you would list each individual column in the table. For rule-based mapping, you would have a single rule that maps all fields using ```true()``` to the same incoming field name represented by ```$$```.
+Velmi základní běžný příklad pro mapování na základě pravidel a pevné mapování je případ, kdy chcete mapovat všechna příchozí pole na stejný název v cíli. V případě pevných mapování byste měli v tabulce uvést každý jednotlivý sloupec. Pro mapování na základě pravidel byste měli mít jedno pravidlo, které mapuje všechna pole pomocí ```true()``` na stejný název pole, který je reprezentován ```$$```.
 
-### <a name="sink-association-with-dataset"></a>Sink association with dataset
+### <a name="sink-association-with-dataset"></a>Přidružení jímky s datovou sadou
 
-The dataset that you select for your sink may or may not have a schema defined in the dataset definition. If it does not have a defined schema, then you must allow schema drift. When you defined a fixed mapping, the logical-to-physical name mapping will persist in the sink transformation. If you change the schema definition of the dataset, then you will potentially break your sink mapping. To avoid this, use rule-based mapping. Rule-based mappings are generalized, meaning that schema changes on your dataset will not break the mapping.
+Datová sada, kterou vyberete pro jímku, může nebo nemusí mít schéma definované v definici datové sady. Pokud nemá definované schéma, je nutné zakázat posun schématu. Pokud jste definovali pevné mapování, mapování logických na fyzického názvu bude uchováno v transformaci jímky. Pokud změníte definici schématu pro datovou sadu, pak budete pravděpodobně přerušit mapování jímky. Pokud se tomu chcete vyhnout, použijte mapování na základě pravidel. Mapování na základě pravidel jsou zobecněna, což znamená, že změny schématu ve vaší datové sadě nebudou přerušit mapování.
 
-## <a name="file-name-options"></a>File name options
+## <a name="file-name-options"></a>Možnosti názvu souboru
 
-Set up file naming: 
+Nastavit pojmenování souborů: 
 
-   * **Default**: Allow Spark to name files based on PART defaults.
-   * **Pattern**: Enter a pattern for your output files. For example, **loans[n]** will create loans1.csv, loans2.csv, and so on.
-   * **Per partition**: Enter one file name per partition.
-   * **As data in column**: Set the output file to the value of a column.
-   * **Output to a single file**: With this option, ADF will combine the partitioned output files into a single named file. To use this option, your dataset should resolve to a folder name. Also, please be aware that this merge operation can possibly fail based upon node size.
-
-> [!NOTE]
-> File operations start only when you're running the Execute Data Flow activity. They don't start in Data Flow Debug mode.
-
-## <a name="database-options"></a>Database options
-
-Choose database settings:
-
-![The Settings tab, showing SQL sink options](media/data-flow/alter-row2.png "SQL Options")
-
-* **Update method**: The default is to allow inserts. Clear **Allow insert** if you want to stop inserting new rows from your source. To update, upsert, or delete rows, first add an alter-row transformation to tag rows for those actions. 
-* **Recreate table**: Drop or create your target table before the data flow finishes.
-* **Truncate table**: Remove all rows from your target table before the data flow finishes.
-* **Batch size**: Enter a number to bucket writes into chunks. Use this option for large data loads. 
-* **Enable staging**: Use PolyBase when you load Azure Data Warehouse as your sink dataset.
-* **Pre and Post SQL scripts**: Enter multi-line SQL scripts that will execute before (pre-processing) and after (post-processing) data is written to your Sink database
-
-![pre and post SQL processing scripts](media/data-flow/prepost1.png "SQL processing scripts")
+   * **Výchozí**: umožňuje Sparku pojmenovat soubory založené na výchozím nastavení části.
+   * **Vzor**: zadejte vzor pro výstupní soubory. Například **půjčky [n]** vytvoří loans1. csv, loans2. csv a tak dále.
+   * **Na oddíl**: zadejte jeden název souboru na oddíl.
+   * **Jako data ve sloupci**: Nastavte výstupní soubor na hodnotu sloupce.
+   * **Výstup do jednoho souboru**: pomocí této možnosti bude ADF spojovat výstupní soubory rozdělené do jednoho pojmenovaného souboru. Chcete-li použít tuto možnost, musí být datová sada přeložena na název složky. Všimněte si také, že tato operace sloučení může být na základě velikosti uzlu neúspěšná.
 
 > [!NOTE]
-> In Data Flow, you can direct Data Factory to create a new table definition in your target database. To create the table definition, set a dataset in the sink transformation that has a new table name. In the SQL dataset, below the table name, select **Edit** and enter a new table name. Then, in the sink transformation, turn on **Allow schema drift**. Set **Import schema** to **None**.
+> Operace se soubory zahájí pouze v případě, že jste spustili aktivitu spustit tok dat. Nespustí se v režimu ladění toku dat.
 
-![SQL dataset settings, showing where to edit the table name](media/data-flow/dataset2.png "SQL Schema")
+## <a name="database-options"></a>Možnosti databáze
+
+Vyberte nastavení databáze:
+
+![Karta nastavení zobrazující možnosti jímky SQL](media/data-flow/alter-row2.png "Možnosti SQL")
+
+* **Metoda aktualizace**: ve výchozím nastavení se povoluje vkládání. Pokud chcete zastavit vkládání nových řádků ze zdroje, zrušte zaškrtnutí políčka **povolí vložení** . Chcete-li aktualizovat, Upsert nebo odstranit řádky, přidejte nejprve transformaci ALTER-Row k označení řádků pro tyto akce. 
+* **Znovu vytvořit tabulku**: před dokončením toku dat vyřaďte nebo vytvořte cílovou tabulku.
+* **Zkrátit tabulku**: před dokončením toku dat odeberte všechny řádky z cílové tabulky.
+* **Velikost dávky**: zadejte číslo pro zablokování zápisů do bloků dat. Tato možnost slouží k načítání velkých objemů dat. 
+* **Povolit přípravu**: při načítání datového skladu Azure jako datové sady jímky použijte základnu.
+* **Skripty před a po SQL**: zadejte víceřádkové skripty SQL, které se spustí před (před zpracováním) a po (po zpracování) se zapisují do databáze jímky.
+
+![skripty pro zpracování před a po SQL](media/data-flow/prepost1.png "Skripty pro zpracování SQL")
 
 > [!NOTE]
-> When you update or delete rows in your database sink, you must set the key column. This setting allows the alter-row transformation to determine the unique row in the data movement library (DML).
+> V toku dat můžete Data Factory přímo vytvořit novou definici tabulky v cílové databázi. Chcete-li vytvořit definici tabulky, nastavte datovou sadu v transformaci jímky, která má název nové tabulky. V datové sadě SQL pod názvem tabulky vyberte **Upravit** a zadejte nový název tabulky. Potom v transformaci jímky zapněte možnost **Povolit posun schématu**. Nastavte **schéma pro import** na **none**.
 
-### <a name="cosmosdb-specific-settings"></a>CosmosDB specific settings
+![Nastavení datové sady SQL, kde se zobrazuje, kde upravit název tabulky](media/data-flow/dataset2.png "Schéma SQL")
 
-When landing data in CosmosDB, you will need to consider these additional options:
+> [!NOTE]
+> Když aktualizujete nebo odstraníte řádky v jímky databáze, musíte nastavit klíčový sloupec. Toto nastavení umožňuje transformaci ALTER-Row určit jedinečný řádek v knihovně pro přesun dat (DML).
 
-* Partition Key: This is a required field. Enter a string that represents the partition key for your collection. Příklad: ```/movies/title```
-* Throughput: Set an optional value for the number of RUs you'd like to apply to your CosmosDB collection for each execution of this data flow. Minimum is 400.
+### <a name="cosmosdb-specific-settings"></a>Konkrétní nastavení CosmosDB
+
+Při vykládku dat v CosmosDB je potřeba zvážit tyto další možnosti:
+
+* Klíč oddílu: Toto je povinné pole. Zadejte řetězec, který představuje klíč oddílu pro kolekci. Příklad: ```/movies/title```
+* Propustnost: nastavte volitelnou hodnotu pro počet ru, který chcete použít pro kolekci CosmosDB pro každé spuštění tohoto toku dat. Minimum je 400.
 
 ## <a name="next-steps"></a>Další kroky
-Now that you've created your data flow, add a [Data Flow activity to your pipeline](concepts-data-flow-overview.md).
+Teď, když jste vytvořili tok dat, přidejte [do svého kanálu aktivitu toku dat](concepts-data-flow-overview.md).

@@ -1,6 +1,6 @@
 ---
 title: Odstraňování běžných chyb
-description: Learn how to troubleshoot issues creating, assigning, and removing blueprints such as policy violations and blueprint parameter functions.
+description: Naučte se řešit problémy při vytváření, přiřazování a odebírání podrobných plánů, jako jsou porušení zásad a funkce parametrů podrobného plánu.
 ms.date: 11/22/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 4e7ea1760e000a167c4329d6f12f3acc18d18f7c
@@ -10,61 +10,61 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406614"
 ---
-# <a name="troubleshoot-errors-using-azure-blueprints"></a>Troubleshoot errors using Azure Blueprints
+# <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení chyb pomocí Azure modrotisky
 
-You may run into errors when creating or assigning blueprints. This article describes various errors that may occur and how to resolve them.
+Při vytváření nebo přiřazování podrobných plánů můžete spustit chybu. Tento článek popisuje různé chyby, ke kterým může dojít, a jejich řešení.
 
-## <a name="finding-error-details"></a>Finding error details
+## <a name="finding-error-details"></a>Hledání podrobností o chybě
 
-Many errors will be the result of assigning a blueprint to a scope. When an assignment fails, the blueprint provides details about the failed deployment. This information indicates the issue so that it can be fixed and the next deployment succeeds.
+Mnohé chyby budou výsledkem přiřazení podrobného plánu k oboru. Pokud přiřazení neproběhne úspěšně, podrobný plán poskytuje podrobnosti o neúspěšném nasazení. Tyto informace označují problém tak, aby se mohl opravit a další nasazení bude úspěšné.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select **Assigned blueprints** from the page on the left and use the search box to filter the blueprint assignments to find the failed assignment. You can also sort the table of assignments by the **Provisioning State** column to see all failed assignments grouped together.
+1. Na stránce vlevo vyberte **přiřazené plány** a pomocí vyhledávacího pole vyfiltrujte přiřazení podrobného plánu, abyste našli neúspěšné přiřazení. Můžete také seřadit tabulku přiřazení podle sloupce **stav zřizování** a zobrazit tak všechna neúspěšná přiřazení seskupená dohromady.
 
-1. Left-click on the blueprint with the _Failed_ status or right-click and select **View assignment details**.
+1. Klikněte levým tlačítkem na podrobný plán s _neúspěšným_ stavem nebo klikněte pravým tlačítkem a vyberte **Zobrazit podrobnosti o přiřazení**.
 
-1. A red banner warning that the assignment has failed is at the top of the blueprint assignment page. Click anywhere on the banner to get more details.
+1. Červená zpráva s upozorněním, že přiřazení se nezdařilo, je v horní části stránky přiřazení podrobného plánu. Kliknutím kamkoli na informační proužek získáte další podrobnosti.
 
-It's common for the error to be caused by an artifact and not the blueprint as a whole. If an artifact creates a Key Vault and Azure Policy prevents Key Vault creation, the entire assignment will fail.
+Je běžné, že chyba je způsobena artefaktem a nikoli úplným plánem. Pokud artefakt vytvoří Key Vault a Azure Policy znemožňuje vytváření Key Vault, celé přiřazení selže.
 
-## <a name="general-errors"></a>General errors
+## <a name="general-errors"></a>Obecné chyby
 
-### <a name="policy-violation"></a>Scenario: Policy Violation
-
-#### <a name="issue"></a>Problém
-
-The template deployment failed because of policy violation.
-
-#### <a name="cause"></a>Příčina
-
-A policy may conflict with the deployment for a number of reasons:
-
-- The resource being created is restricted by policy (commonly SKU or location restrictions)
-- The deployment is setting fields that are configured by policy (common with tags)
-
-#### <a name="resolution"></a>Rozlišení
-
-Change the blueprint so it doesn't conflict with the policies in the error details. If this change isn't possible, an alternative option is to have the scope of the policy assignment changed so the blueprint is no longer in conflict with the policy.
-
-### <a name="escape-function-parameter"></a>Scenario: Blueprint parameter is a function
+### <a name="policy-violation"></a>Scénář: porušení zásad
 
 #### <a name="issue"></a>Problém
 
-Blueprint parameters that are functions are processed before being passed to artifacts.
+Nasazení šablony se nepovedlo kvůli porušení zásad.
 
 #### <a name="cause"></a>Příčina
 
-Passing a blueprint parameter that uses a function, such as `[resourceGroup().tags.myTag]`, to an artifact results in the processed outcome of the function being set on the artifact instead of the dynamic function.
+Zásada může být v konfliktu s nasazením z několika důvodů:
 
-#### <a name="resolution"></a>Rozlišení
+- Vytvářený prostředek je omezený zásadami (obvykle se jedná o omezení umístění SKU nebo místa).
+- Nasazení je nastavené pole, která jsou nakonfigurovaná pomocí zásad (společné pomocí značek).
 
-To pass a function through as a parameter, escape the entire string with `[` such that the blueprint parameter looks like `[[resourceGroup().tags.myTag]`. The escape character causes Blueprints to treat the value as a string when processing the blueprint. Blueprints then places the function on the artifact allowing it to be dynamic as expected. For more information, see [Syntax and expressions in Azure Resource Manager templates](../../../azure-resource-manager/template-expressions.md).
+#### <a name="resolution"></a>Řešení
+
+Změňte podrobný plán tak, aby nedošlo ke konfliktu se zásadami v podrobnostech o chybě. Pokud tuto změnu nemůžete udělat, je alternativním parametrem, že se změní rozsah přiřazení zásady, takže podrobný plán už není v konfliktu se zásadami.
+
+### <a name="escape-function-parameter"></a>Scénář: parametr podrobného plánu je funkce
+
+#### <a name="issue"></a>Problém
+
+Parametry podrobného plánu, které jsou funkce, jsou zpracovány před předáním artefaktům.
+
+#### <a name="cause"></a>Příčina
+
+Předáním parametru podrobného plánu, který používá funkci, jako je například `[resourceGroup().tags.myTag]`, do výsledku artefaktu dojde ke zpracování výsledku funkce, která je nastavena na artefaktu namísto dynamické funkce.
+
+#### <a name="resolution"></a>Řešení
+
+Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu vypadal jako `[[resourceGroup().tags.myTag]`. Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/template-expressions.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
-- Get answers from Azure experts through [Azure Forums](https://azure.microsoft.com/support/forums/).
+- Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 - Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.
-- If you need more help, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.
+- Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.

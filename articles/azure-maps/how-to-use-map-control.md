@@ -1,6 +1,6 @@
 ---
-title: Getting started with web map control in Azure Maps | Microsoft Docs
-description: Learn how to use the Azure Maps map control client-side Javascript library.
+title: Začínáme s ovládacím prvkem webového mapování v Azure Maps | Microsoft Docs
+description: Naučte se, jak používat mapu Azure Maps k řízení knihovny JavaScriptu na straně klienta.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2018
@@ -15,30 +15,30 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74480529"
 ---
-# <a name="use-the-azure-maps-map-control"></a>Use the Azure Maps map control
+# <a name="use-the-azure-maps-map-control"></a>Použití ovládacího prvku Azure Maps mapa
 
-The Map Control client-side Javascript library allows you to render maps and embedded Azure Maps functionality into your web or mobile application.
+Ovládací prvek Mapa knihovna JavaScriptu na straně klienta umožňuje vykreslovat mapy a vložené Azure Maps funkce do vaší webové nebo mobilní aplikace.
 
-## <a name="create-a-new-map-in-a-web-page"></a>Create a new map in a web page
+## <a name="create-a-new-map-in-a-web-page"></a>Vytvoření nové mapy na webové stránce
 
-You can embed a map in a web page by using the Map Control client-side Javascript library.
+Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny JavaScript na straně klienta.
 
-1. Create a new HTML file.
+1. Vytvořte nový soubor HTML.
 
-2. Load in the Azure Maps Web SDK. This can be done using one of two options;
+2. Načtěte v sadě Azure Maps Web SDK. To lze provést pomocí jedné ze dvou možností:
 
-    a. Use the globally hosted CDN version of the Azure Maps Web SDK by adding the URL endpoints to the stylesheet and script references in the `<head>` element of the file:
+    a. Pomocí globálně hostované verze CDN rozhraní Azure Maps Web SDK přidejte koncové body adresy URL do šablony stylů a odkazy na skripty v elementu `<head>` souboru:
 
     ```HTML
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
-    b. Alternatively, load the Azure Maps Web SDK source code locally using the [azure-maps-control](https://www.npmjs.com/package/azure-maps-control) NPM package and host it with your app. This package also includes TypeScript definitions.
+    b. Případně můžete zdrojový kód Azure Maps Web SDK načíst místně pomocí balíčku [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) npm a hostovat ho s vaší aplikací. Tento balíček obsahuje také definice TypeScript.
 
-    > npm install azure-maps-control
+    > NPM instalace Azure-Maps-Control
 
-    Then add references to the Azure Maps stylesheet and script source references to the `<head>` element of the file:
+    Pak přidejte odkazy na Azure Maps šablon stylů a odkazů na zdrojový odkaz na element `<head>` souboru:
 
     ```HTML
     <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
@@ -46,12 +46,12 @@ You can embed a map in a web page by using the Map Control client-side Javascrip
     ```
 
     >[!Note]
-    > Typescript definitions can be imported into your application by adding:
+    > Definice TypeScript lze do aplikace importovat přidáním:
     > ```Javascript
     > import * as atlas from 'azure-maps-control';
     > ```
 
-3. To render the map so that it fills the full body of the page, add the following `<style>` element to the `<head>` element.
+3. Chcete-li vykreslit mapu, aby vyplnila celé tělo stránky, přidejte následující prvek `<style>` do prvku `<head>`.
 
     ```HTML
     <style>
@@ -66,7 +66,7 @@ You can embed a map in a web page by using the Map Control client-side Javascrip
     </style>
     ```
 
-4. In the body of the page, add a `<div>` element and give it an `id` of **myMap**.
+4. V těle stránky přidejte prvek `<div>` a poskytněte mu `id` **myMap**.
 
     ```HTML
     <body>
@@ -74,7 +74,7 @@ You can embed a map in a web page by using the Map Control client-side Javascrip
     </body>
     ```
 
-5. To initialize the map control, define a new section in the html body and create a script. Pass in the `id` of the map `<div>` or an `HTMLElement` (for example, `document.getElementById('myMap')`) as the first parameter when creating an instance of the `Map` class. Use your own Azure Maps account key or Azure Active Directory (AAD) credentials to authenticate the map using [authentication options](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). If you need to create an account or find your key, see [How to manage your Azure Maps account and keys](how-to-manage-account-keys.md). The **language** option specifies the language to be used for map labels and controls. For more information on supported languages, see [supported languages](supported-languages.md). If using a subscription key for authentication.
+5. Chcete-li inicializovat mapový ovládací prvek, definujte nový oddíl v těle HTML a vytvořte skript. Při vytváření instance třídy `Map` předat `id` mapování `<div>` nebo `HTMLElement` (například `document.getElementById('myMap')`) jako první parametr. Použijte vlastní klíč účtu Azure Maps nebo přihlašovací údaje pro Azure Active Directory (AAD) k ověření mapování pomocí [možností ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Pokud potřebujete vytvořit účet nebo najít klíč, přečtěte si téma [Správa účtu Azure Maps a klíčů](how-to-manage-account-keys.md). Možnost **Language** určuje jazyk, který má být použit pro popisky a ovládací prvky mapy. Další informace o podporovaných jazycích najdete v tématu [podporované jazyky](supported-languages.md). Pokud používáte klíč předplatného pro ověřování.
 
     ```HTML
     <script type="text/javascript">
@@ -90,7 +90,7 @@ You can embed a map in a web page by using the Map Control client-side Javascrip
     </script>
     ```
 
-    If using Azure Active Directory (AAD) for authentication:
+    Pokud používáte Azure Active Directory (AAD) pro ověřování:
 
     ```HTML
     <script type="text/javascript">
@@ -108,11 +108,11 @@ You can embed a map in a web page by using the Map Control client-side Javascrip
     </script>
     ```
 
-    A list of samples showing how to integrate Azure Active Directory (AAD) with Azure Maps can be found [here](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples). 
+    Seznam ukázek, které ukazují, jak integrovat Azure Active Directory (AAD) se Azure Maps najdete [tady](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples). 
     
-    For more information, see the [Authentication with Azure Maps](azure-maps-authentication.md) document and also the [Azure Maps Azure AD authentication samples](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
+    Další informace najdete v dokumentu [ověřování pomocí Azure Maps](azure-maps-authentication.md) a také [Azure Maps UKÁZEK ověřování Azure AD](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
 
-6. Optionally, you may find adding the following meta tag elements to the head of your page helpful:
+6. Volitelně můžete najít následující prvky meta značky do hlavní stránky, která je užitečná:
 
     ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
@@ -122,7 +122,7 @@ You can embed a map in a web page by using the Map Control client-side Javascrip
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
-7. Putting it all together your HTML file should look something like the following code:
+7. Celý soubor HTML by měl vypadat přibližně takto:
 
     ```HTML
     <!DOCTYPE html>
@@ -172,21 +172,21 @@ You can embed a map in a web page by using the Map Control client-side Javascrip
     </html>
     ```
 
-8. Open the file in your web browser and view the rendered map. It should look like the following code:
+8. Otevřete soubor ve webovém prohlížeči a zobrazte vykreslenou mapu. Měl by vypadat jako v následujícím kódu:
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="How to use the map control" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">See the Pen <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>How to use the map control</a> by Azure Maps(<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+    <iframe height="700" style="width: 100%;" scrolling="no" title="Jak používat mapový ovládací prvek" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Přečtěte si pero, <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>jak použít mapový ovládací prvek</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
     </iframe>
 
-## <a name="localizing-the-map"></a>Localizing the map
+## <a name="localizing-the-map"></a>Lokalizace mapy
 
-Azure Maps provides two different ways of setting the language and regional view of the map. The first option is to add this information to the global `atlas` namespace, which will result in all map control instances in your app defaulting to these settings. The following sets the language to French ("fr-FR") and the regional view to "Auto":
+Azure Maps poskytuje dva různé způsoby nastavení jazyka a regionálního zobrazení mapy. První možností je přidat tyto informace do globálního oboru názvů `atlas`, což způsobí, že se všechny instance mapového ovládacího prvku ve vaší aplikaci budou ve výchozím nastavení nacházet. Následující nastaví jazyk na francouzštinu ("fr-FR") a místní zobrazení na "auto":
 
 ```javascript
 atlas.setLanguage('fr-FR');
 atlas.setView('Auto');
 ```
 
-The second option is to pass this information into the map options when loading the map like:
+Druhá možnost je předat tyto informace do možností mapy při načítání mapy jako:
 
 ```javascript
 map = new atlas.Map('myMap', {
@@ -203,35 +203,35 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!Note]
-> With the Web SDK it is possible to load multiple map instances on the same page with different language and region settings. Additionally, these settings can be update after the map has loaded by using the `setStyle` function of the map. 
+> Díky webové sadě SDK je možné načíst více instancí mapy na stejné stránce s různými nastaveními jazyka a oblasti. Kromě toho lze tato nastavení aktualizovat po načtení mapy pomocí funkce `setStyle` mapy. 
 
-Here is an example of Azure Maps with the language set to "fr-FR" and the regional view set to "Auto".
+Tady je příklad Azure Maps s jazykem, který je nastaven na "fr-FR" a v místním zobrazení na hodnotu "auto".
 
-![Map image showing labels in French](./media/how-to-use-map-control/websdk-localization.png)
+![Obrázek mapy znázorňující popisky ve francouzštině](./media/how-to-use-map-control/websdk-localization.png)
 
-A complete list of supported languages and regional views is documented [here](supported-languages.md).
+Úplný seznam podporovaných jazyků a regionálních zobrazení je popsán [zde](supported-languages.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn how to create and interact with a map:
+Naučte se vytvořit mapu a pracovat s ní:
 
 > [!div class="nextstepaction"]
-> [Create a map](map-create.md)
+> [Vytvořit mapu](map-create.md)
 
-Learn how to style a map:
-
-> [!div class="nextstepaction"]
-> [Choose a map style](choose-map-style.md)
-
-To add more data to your map:
+Naučte se styl mapy:
 
 > [!div class="nextstepaction"]
-> [Create a map](map-create.md)
+> [Zvolit styl mapy](choose-map-style.md)
+
+Přidání dalších dat do mapy:
+
+> [!div class="nextstepaction"]
+> [Vytvořit mapu](map-create.md)
 
 > [!div class="nextstepaction"]
 > [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
 
-For a list of samples showing how to integrate Azure Active Directory (AAD) with Azure Maps, see:
+Seznam ukázek, které ukazují, jak integrovat Azure Active Directory (AAD) s Azure Maps, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Azure AD authentication samples](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+> [Ukázky ověřování Azure AD](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

@@ -34,15 +34,15 @@ Všechny aplikace jsou přiřazeny skupině konektorů. Pokud nevytvoříte skup
 
 ## <a name="prerequisites"></a>Požadavky
 
-K seskupení konektoru, máte jistotu, že budete [nainstalovat více konektorů](application-proxy-add-on-premises-application.md). Když instalujete nový konektor, automaticky připojí **výchozí** skupina konektorů.
+Chcete-li seskupit konektory, musíte se ujistit, že jste [nainstalovali více konektorů](application-proxy-add-on-premises-application.md). Při instalaci nového konektoru se automaticky připojí **výchozí** skupina konektorů.
 
 ## <a name="create-connector-groups"></a>Vytvoření skupiny konektorů
 
 Pomocí těchto kroků můžete vytvořit libovolný počet skupin konektoru.
 
 1. Přihlásit se na [Azure Portal](https://portal.azure.com).
-1. Vyberte **Azure Active Directory** > **podnikové aplikace** > **proxy aplikací**.
-1. Vyberte **nová skupina konektorů**. Otevře se okno Nová skupina konektorů.
+1. Vyberte **Azure Active Directory** > **podnikové aplikace** > **aplikační proxy**.
+1. Vyberte možnost **Nová skupina konektorů**. Otevře se okno Nová skupina konektorů.
 
    ![Zobrazuje obrazovku pro výběr nové skupiny konektorů.](./media/application-proxy-connector-groups/new-group.png)
 
@@ -53,9 +53,9 @@ Pomocí těchto kroků můžete vytvořit libovolný počet skupin konektoru.
 
 Tyto kroky použijte pro každou aplikaci, kterou jste publikovali pomocí Proxy aplikace. Když nejprve publikovat, nebo můžete použít tyto kroky pro změnu přiřazení je vždy, když chcete, můžete přiřadit aplikace do skupiny konektorů.
 
-1. Řídicí panel pro správu pro váš adresář, vyberte **podnikové aplikace** > **všechny aplikace** > aplikace, kterou chcete přiřadit ke skupině konektoru > **Proxy aplikací**.
-1. Použít **skupina konektorů** rozevírací nabídka pro výběr skupiny má aplikace používat.
-1. Vyberte **Uložit** na použití změny.
+1. Z řídicího panelu pro správu vašeho adresáře vyberte **podnikové aplikace** > **všechny aplikace** > aplikaci, kterou chcete přiřadit ke skupině konektorů > **proxy aplikací**.
+1. Pomocí rozevírací nabídky **Skupina konektoru** vyberte skupinu, kterou chcete použít v aplikaci.
+1. Vyberte **Uložit** a použijte změnu.
 
 ## <a name="use-cases-for-connector-groups"></a>Případy použití pro skupiny konektorů
 
@@ -128,5 +128,5 @@ V následujícím příkladu společnost má dvě datová centra, A a B, s dva k
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Principy konektorů Proxy aplikací Azure AD](application-proxy-connectors.md)
+* [Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)
 * [Povolení jednoduchého přihlášení](what-is-single-sign-on.md)

@@ -1,6 +1,6 @@
 ---
-title: Configure managed identities on Azure VM using template - Azure AD
-description: Step-by-step instructions for configuring managed identities for Azure resources on an Azure VM, using an Azure Resource Manager template.
+title: Konfigurace spravovaných identit na virtuálním počítači Azure pomocí šablony – Azure AD
+description: Podrobné pokyny pro konfiguraci spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,48 +15,48 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67367d8e50cf0b0b8929dc398a059180d5cd7567
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 74bbc596321b4882ef99104e045ee2da752b125a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224314"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547204"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Configure managed identities for Azure resources on an Azure VM using a templates
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablon
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Managed identities for Azure resources provides Azure services with an automatically managed identity in Azure Active Directory. You can use this identity to authenticate to any service that supports Azure AD authentication, without having credentials in your code. 
+Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
 
-In this article, using the Azure Resource Manager deployment template, you learn how to perform the following managed identities for Azure resources operations on an Azure VM:
+V tomto článku se pomocí šablony nasazení Azure Resource Manager dozvíte, jak provádět následující spravované identity pro operace prostředků Azure na virtuálním počítači Azure:
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- If you're unfamiliar with using Azure Resource Manager deployment template, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
+- Pokud nejste obeznámeni s používáním šablony nasazení Azure Resource Manager, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-As with the Azure portal and scripting, [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) templates provide the ability to deploy new or modified resources defined by an Azure resource group. Several options are available for template editing and deployment, both local and portal-based, including:
+Stejně jako u Azure Portal a skriptování poskytují [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) šablony možnost nasazení nových nebo upravených prostředků definovaných skupinou prostředků Azure. K dispozici je několik možností pro úpravu a nasazení šablony, včetně místních i na portálu, včetně:
 
-   - Using a [custom template from the Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), which allows you to create a template from scratch, or base it on an existing common or [quickstart template](https://azure.microsoft.com/documentation/templates/).
-   - Deriving from an existing resource group, by exporting a template from either [the original deployment](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), or from the [current state of the deployment](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
-   - Using a local [JSON editor (such as VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md), and then uploading and deploying by using PowerShell or CLI.
-   - Using the Visual Studio [Azure Resource Group project](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) to both create and deploy a template.  
+   - Použití [vlastní šablony z Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), což vám umožňuje vytvořit zcela novou šablonu, nebo ji založit na stávající společné nebo [rychlé šabloně](https://azure.microsoft.com/documentation/templates/).
+   - Odvození z existující skupiny prostředků exportováním šablony z [původního nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)nebo z [aktuálního stavu nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+   - Použití místního [editoru JSON (například vs Code)](../../azure-resource-manager/resource-manager-create-first-template.md)a následného nahrávání a nasazování pomocí PowerShellu nebo rozhraní příkazového řádku.
+   - Použití [projektu skupiny prostředků Azure](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) sady Visual Studio k vytvoření a nasazení šablony.  
 
-Regardless of the option you choose, template syntax is the same during initial deployment and redeployment. Enabling a system or user-assigned managed identity on a new or existing VM is done in the same manner. Also, by default, Azure Resource Manager does an [incremental update](../../azure-resource-manager/deployment-modes.md) to deployments.
+Bez ohledu na zvolenou možnost je syntaxe šablony stejná při počátečním nasazení a opětovném nasazení. Povolení systému nebo uživatelsky přiřazené spravované identity na novém nebo existujícím virtuálním počítači se provádí stejným způsobem. Ve výchozím nastavení Azure Resource Manager také [přírůstkovou aktualizaci](../../azure-resource-manager/deployment-modes.md) nasazení.
 
-## <a name="system-assigned-managed-identity"></a>System-assigned managed identity
+## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
-In this section, you will enable and disable a system-assigned managed identity using an Azure Resource Manager template.
+V této části povolíte a zakážete spravovanou identitu přiřazenou systémem pomocí šablony Azure Resource Manager.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Enable system-assigned managed identity during creation of an Azure VM or on an existing VM
+### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Povolit spravovanou identitu přiřazenou systémem během vytváření virtuálního počítače Azure nebo na existujícím virtuálním počítači
 
-To enable system-assigned managed identity on a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
+Aby se na virtuálním počítači povolila spravovaná identita přiřazená systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the VM.
+1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
 
-2. To enable system-assigned managed identity, load the template into an editor, locate the `Microsoft.Compute/virtualMachines` resource of interest within the `resources` section and add the `"identity"` property at the same level as the `"type": "Microsoft.Compute/virtualMachines"` property. Use the following syntax:
+2. Pokud chcete povolit spravovanou identitu přiřazenou systémem, načtěte šablonu do editoru, vyhledejte `Microsoft.Compute/virtualMachines` prostředku zájmu v rámci `resources` oddílu a přidejte vlastnost `"identity"` na stejné úrovni jako vlastnost `"type": "Microsoft.Compute/virtualMachines"`. Použijte následující syntaxi:
 
    ```JSON
    "identity": { 
@@ -66,7 +66,7 @@ To enable system-assigned managed identity on a VM, your account needs the [Virt
 
 
 
-3. When you're done, the following sections should added to the `resource` section of your template and it should resemble the following:
+3. Až budete hotovi, do části `resource` v šabloně by se měly přidat následující oddíly, které by měly vypadat takto:
 
    ```JSON
    "resources": [
@@ -103,17 +103,17 @@ To enable system-assigned managed identity on a VM, your account needs the [Virt
     ]
    ```
 
-### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>Assign a role the VM's system-assigned managed identity
+### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>Přiřaďte roli spravovanou identitu přiřazenou systémem virtuálního počítače.
 
-After you have enabled system-assigned managed identity on your VM, you may want to grant it a role such as **Reader** access to the resource group in which it was created.
+Až na svém VIRTUÁLNÍm počítači povolíte spravovanou identitu přiřazenou systémem, můžete jí udělit roli, jako je **Čtenář** přístupu ke skupině prostředků, ve které se vytvořila.
 
-To assign a role to your VM's system-assigned identity, your account needs the [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) role assignment.
+Pokud chcete přiřadit roli k identitě přiřazené systému vašeho virtuálního počítače, váš účet potřebuje přiřazení role [Správce přístupu uživatele](/azure/role-based-access-control/built-in-roles#user-access-administrator) .
 
-1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the VM.
+1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
  
-2. Load the template into an [editor](#azure-resource-manager-templates) and add the following information to give your VM **Reader** access to the resource group in which it was created.  Your template structure may vary depending on the editor and the deployment model you choose.
+2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a přidejte následující informace, které **vašemu virtuálnímu počítači umožní** přístup ke skupině prostředků, ve které se vytvořila.  Struktura šablony se může lišit v závislosti na editoru a modelu nasazení, který zvolíte.
    
-   Under the `parameters` section add the following:
+   V části `parameters` přidejte následující:
 
     ```JSON
     "builtInRoleType": {
@@ -125,13 +125,13 @@ To assign a role to your VM's system-assigned identity, your account needs the [
         }
     ```
 
-    Under the `variables` section add the following:
+    V části `variables` přidejte následující:
 
     ```JSON
     "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
     ```
 
-    Under the `resources` section add the following:
+    V části `resources` přidejte následující:
 
     ```JSON
     {
@@ -149,23 +149,23 @@ To assign a role to your VM's system-assigned identity, your account needs the [
     }
     ```
 
-### <a name="disable-a-system-assigned-managed-identity-from-an-azure-vm"></a>Disable a system-assigned managed identity from an Azure VM
+### <a name="disable-a-system-assigned-managed-identity-from-an-azure-vm"></a>Zakázání spravované identity přiřazené systémem z virtuálního počítače Azure
 
-To remove system-assigned managed identity from a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
+Pokud chcete z virtuálního počítače odebrat spravovanou identitu přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the VM.
+1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
 
-2. Load the template into an [editor](#azure-resource-manager-templates) and locate the `Microsoft.Compute/virtualMachines` resource of interest within the `resources` section. If you have a VM that only has system-assigned managed identity, you can disable it by changing the identity type to `None`.  
+2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a v části `resources` Najděte `Microsoft.Compute/virtualMachines` prostředek zájmu. Pokud máte virtuální počítač, který má jenom spravovanou identitu přiřazenou systémem, můžete ho zakázat změnou typu identity na `None`.  
    
-   **Microsoft.Compute/virtualMachines API version 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2018-06-01**
 
-   If your VM has both system and user-assigned managed identities, remove `SystemAssigned` from the identity type and keep `UserAssigned` along with the `userAssignedIdentities` dictionary values.
+   Pokud má váš virtuální počítač i spravované identity přiřazené systémem i uživatelem, odeberte `SystemAssigned` z typu identity a zachovejte `UserAssigned` společně s hodnotami `userAssignedIdentities` slovníku.
 
-   **Microsoft.Compute/virtualMachines API version 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2018-06-01**
    
-   If your `apiVersion` is `2017-12-01` and your VM has both system and user-assigned managed identities, remove `SystemAssigned` from the identity type and keep `UserAssigned` along with the `identityIds` array of the user-assigned managed identities.  
+   Pokud je vaše `apiVersion` `2017-12-01` a váš virtuální počítač má spravované identity se systémem i uživatelem, odeberte `SystemAssigned` z typu identity a `UserAssigned` společně s polem `identityIds` pro uživatelem přiřazené spravované identity.  
    
-The following example shows you how remove a system-assigned managed identity from a VM with no user-assigned managed identities:
+Následující příklad ukazuje, jak odebrat spravovanou identitu přiřazenou systémem z virtuálního počítače bez přiřazených uživatelem spravovaných identit:
 
 ```JSON
 {
@@ -179,22 +179,22 @@ The following example shows you how remove a system-assigned managed identity fr
 }
 ```
 
-## <a name="user-assigned-managed-identity"></a>User-assigned managed identity
+## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživatelem
 
-In this section, you assign a user-assigned managed identity to an Azure VM using Azure Resource Manager template.
+V této části pomocí šablony Azure Resource Manager přiřadíte k virtuálnímu počítači Azure spravovanou identitu s přiřazenou uživatelem.
 
 > [!Note]
-> To create a user-assigned managed identity using an Azure Resource Manager Template, see [Create a user-assigned managed identity](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
+> Chcete-li vytvořit uživatelem přiřazenou identitu pomocí šablony Azure Resource Manager, přečtěte si téma [Vytvoření uživatelem přiřazené spravované identity](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Assign a user-assigned managed identity to an Azure VM
+### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Přiřazení spravované identity přiřazené uživateli k virtuálnímu počítači Azure
 
-To assign a user-assigned identity to a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) and [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role assignments. No additional Azure AD directory role assignments are required.
+K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Under the `resources` element, add the following entry to assign a user-assigned managed identity to your VM.  Be sure to replace `<USERASSIGNEDIDENTITY>` with the name of the user-assigned managed identity you created.
+1. Pod prvkem `resources` přidejte následující položku, která uživateli přiřadí spravovanou identitu přiřazenou k vašemu VIRTUÁLNÍmu počítači.  Nezapomeňte nahradit `<USERASSIGNEDIDENTITY>` názvem uživatelsky přiřazené spravované identity, kterou jste vytvořili.
 
-   **Microsoft.Compute/virtualMachines API version 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2018-06-01**
 
-   If your `apiVersion` is `2018-06-01`, your user-assigned managed identities are stored in the `userAssignedIdentities` dictionary format and the `<USERASSIGNEDIDENTITYNAME>` value must be stored in a variable defined in the `variables` section of your template.
+   Pokud je vaše `apiVersion` `2018-06-01`, jsou spravované identity přiřazené uživatelem uloženy ve formátu `userAssignedIdentities` slovníku a `<USERASSIGNEDIDENTITYNAME>` hodnota musí být uložena v proměnné definované v části `variables` v šabloně.
 
    ```json
    {
@@ -211,9 +211,9 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    }
    ```
    
-   **Microsoft.Compute/virtualMachines API version 2017-12-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2017-12-01**
     
-   If your `apiVersion` is `2017-12-01`, your user-assigned managed identities are stored in the `identityIds` array and the `<USERASSIGNEDIDENTITYNAME>` value must be stored in a variable defined in the `variables` section of your template.
+   Pokud je vaše `apiVersion` `2017-12-01`, vaše uživatelem přiřazené spravované identity se uloží do pole `identityIds` a `<USERASSIGNEDIDENTITYNAME>` hodnota musí být uložená v proměnné definované v části `variables` v šabloně.
     
    ```json
    {
@@ -230,9 +230,9 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
    }
    ```
        
-3. When you're done, the following sections should added to the `resource` section of your template and it should resemble the following:
+3. Až budete hotovi, do části `resource` v šabloně by se měly přidat následující oddíly, které by měly vypadat takto:
    
-   **Microsoft.Compute/virtualMachines API version 2018-06-01**    
+   **Microsoft. COMPUTE/virtualMachines API verze 2018-06-01**    
 
    ```JSON
    "resources": [
@@ -270,7 +270,7 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
        }
     ]
    ```
-   **Microsoft.Compute/virtualMachines API version 2017-12-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2017-12-01**
    
    ```JSON
    "resources": [
@@ -310,15 +310,15 @@ To assign a user-assigned identity to a VM, your account needs the [Virtual Mach
     ]
    ```
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Remove a user-assigned managed identity from an Azure VM
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Odebrání spravované identity přiřazené uživatelem z virtuálního počítače Azure
 
-To remove a user-assigned identity from a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment. No additional Azure AD directory role assignments are required.
+K odebrání uživatelsky přiřazené identity z virtuálního počítače potřebuje váš účet přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the VM.
+1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje virtuální počítač.
 
-2. Load the template into an [editor](#azure-resource-manager-templates) and locate the `Microsoft.Compute/virtualMachines` resource of interest within the `resources` section. If you have a VM that only has user-assigned managed identity, you can disable it by changing the identity type to `None`.
+2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a v části `resources` Najděte `Microsoft.Compute/virtualMachines` prostředek zájmu. Pokud máte virtuální počítač, který má pouze spravovanou identitu přiřazenou uživatelem, můžete ho zakázat změnou typu identity na `None`.
  
-   The following example shows you how remove all user-assigned managed identities from a VM with no system-assigned managed identities:
+   Následující příklad ukazuje, jak odebrat všechny spravované identity přiřazené uživatelem z virtuálního počítače bez spravovaných identit přiřazených systémem:
    
    ```json
     {
@@ -332,19 +332,19 @@ To remove a user-assigned identity from a VM, your account needs the [Virtual Ma
     }
    ```
    
-   **Microsoft.Compute/virtualMachines API version 2018-06-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2018-06-01**
     
-   To remove a single user-assigned managed identity from a VM, remove it from the `useraAssignedIdentities` dictionary.
+   Pokud chcete z virtuálního počítače odebrat jednu spravovanou identitu přiřazenou uživatelem, odeberte ji z `useraAssignedIdentities` slovníku.
 
-   If you have a system-assigned managed identity, keep it in the in the `type` value under the `identity` value.
+   Pokud máte spravovanou identitu přiřazenou systémem, zachovejte ji v hodnotě `type` pod hodnotou `identity`.
  
-   **Microsoft.Compute/virtualMachines API version 2017-12-01**
+   **Microsoft. COMPUTE/virtualMachines API verze 2017-12-01**
 
-   To remove a single user-assigned managed identity from a VM, remove it from the `identityIds` array.
+   Pokud chcete z virtuálního počítače odebrat jednu spravovanou identitu přiřazenou uživatelem, odeberte ji z `identityIds`ho pole.
 
-   If you have a system-assigned managed identity, keep it in the in the `type` value under the `identity` value.
+   Pokud máte spravovanou identitu přiřazenou systémem, zachovejte ji v hodnotě `type` pod hodnotou `identity`.
    
 ## <a name="next-steps"></a>Další kroky
 
-- [Managed identities for Azure resources overview](overview.md).
+- [Přehled spravovaných identit pro prostředky Azure](overview.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Integrate RDG with Azure MFA NPS extension - Azure Active Directory
-description: Integrate your Remote Desktop Gateway infrastructure with Azure MFA using the Network Policy Server extension for Microsoft Azure
+title: Integrace RDG s rozšířením NPS pro Azure MFA – Azure Active Directory
+description: Integrace infrastruktury služby Brána vzdálené plochy s Azure MFA pomocí rozšíření serveru Network Policy Server pro Microsoft Azure
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,369 +18,369 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381817"
 ---
-# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrate your Remote Desktop Gateway infrastructure using the Network Policy Server (NPS) extension and Azure AD
+# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
 
-This article provides details for integrating your Remote Desktop Gateway infrastructure with Azure Multi-Factor Authentication (MFA) using the Network Policy Server (NPS) extension for Microsoft Azure.
+Tento článek obsahuje podrobnosti pro integraci s Azure Multi-Factor Authentication (MFA) infrastrukturu služby Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) pro Microsoft Azure.
 
-The Network Policy Server (NPS) extension for Azure allows customers to safeguard Remote Authentication Dial-In User Service (RADIUS) client authentication using Azure’s cloud-based [Multi-Factor Authentication (MFA)](multi-factor-authentication.md). This solution provides two-step verification for adding a second layer of security to user sign-ins and transactions.
+Rozšíření serveru NPS (Network Policy Server) pro Azure umožňuje zákazníkům chránit ověřování klientů protokol RADIUS (Remote Authentication Dial-In User Service) (RADIUS) pomocí cloudové [Multi-Factor Authentication Azure (MFA)](multi-factor-authentication.md). Toto řešení zajišťuje dvoustupňové ověření pro přidání druhou vrstvu zabezpečení uživatelská přihlášení a transakce.
 
-This article provides step-by-step instructions for integrating the NPS infrastructure with Azure MFA using the NPS extension for Azure. This enables secure verification for users attempting to sign in to a Remote Desktop Gateway.
+Tento článek obsahuje podrobné pokyny pro integraci s Azure MFA NPS server infrastruktury pomocí rozšíření NPS pro Azure. To umožňuje zabezpečené ověřování pro uživatele pokoušející se přihlásit do služby Brána vzdálené plochy.
 
 > [!NOTE]
-> This article should not be used with MFA Server deployments and should only be used with Azure MFA (Cloud-based) deployments.
+> Tento článek by se neměl používat s nasazeními MFA serveru a měl by se používat jenom s nasazeními Azure MFA (cloudové).
 
-The Network Policy and Access Services (NPS) gives organizations the ability to do the following:
+Síťové zásady a přístup k službám (NPS) poskytuje organizacím možnost postupujte takto:
 
-* Define central locations for the management and control of network requests by specifying who can connect, what times of day connections are allowed, the duration of connections, and the level of security that clients must use to connect, and so on. Rather than specifying these policies on each VPN or Remote Desktop (RD) Gateway server, these policies can be specified once in a central location. The RADIUS protocol provides the centralized Authentication, Authorization, and Accounting (AAA).
-* Establish and enforce Network Access Protection (NAP) client health policies that determine whether devices are granted unrestricted or restricted access to network resources.
-* Provide a means to enforce authentication and authorization for access to 802.1x-capable wireless access points and Ethernet switches.
+* Definujte centrální umístění pro řízení a kontrolu požadavků sítě tak, že určíte, kdo se může připojit, dobu připojení den jsou povolené a dobu trvání připojení a úroveň zabezpečení, které musí klienti používat pro připojení a tak dále. Místo zadání těchto zásad na každém serveru sítě VPN nebo Brána vzdálené plochy (RD), tyto zásady se dá nastavit jednou v centrálním umístění. Protokol RADIUS poskytuje centralizované ověřování, autorizaci a monitorování (AAA).
+* Vytvořit a vynucovat zásady stavu klienta ochrany NAP (Network Access), které určují, jestli zařízení jsou udělena neomezeného nebo omezeného přístupu k síťovým prostředkům.
+* Poskytují způsob vynucení ověřování a autorizace pro přístup k protokolu 802. 1 x podporuje bezdrátových přístupových bodů a přepínače sítě Ethernet.
 
-Typically, organizations use NPS (RADIUS) to simplify and centralize the management of VPN policies. However, many organizations also use NPS to simplify and centralize the management of RD Desktop Connection Authorization Policies (RD CAPs).
+Organizace obvykle používají server NPS (RADIUS) k zjednodušení a centralizaci správy zásad sítě VPN. Řada organizací ale používat taky NPS zjednodušují a centralizovat správu zásad autorizace připojení ke vzdálené ploše Desktop (CAP k vzdálené ploše).
 
-Organizations can also integrate NPS with Azure MFA to enhance security and provide a high level of compliance. This helps ensure that users establish two-step verification to sign in to the Remote Desktop Gateway. For users to be granted access, they must provide their username/password combination along with information that the user has in their control. This information must be trusted and not easily duplicated, such as a cell phone number, landline number, application on a mobile device, and so on. RDG currently supports phone call and push notifications from Microsoft authenticator app methods for 2FA. For more information about supported authentication methods see the section [Determine which authentication methods your users can use](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
+Organizace také můžete integrovat server NPS s Azure MFA pro zvýšení zabezpečení a poskytovat vysokou úroveň dodržování předpisů. To pomáhá zajistit, že uživatelé vytvořit dvoustupňové ověření pro přihlášení k Brána vzdálené plochy. Pro uživatele, který má být udělen přístup musí zadat jejich kombinace uživatelského jména a hesla společně s informacemi, jestli nemá uživatel v jejich řízení. Tyto informace musí být důvěryhodné a duplicitní nejsou snadno, jako je například číslo mobilního telefonu, číslo linky, aplikace na mobilním zařízení a tak dále. RDG v současné době podporuje telefonní hovory a nabízená oznámení z metod aplikace Microsoft Authenticator pro 2FA. Další informace o podporovaných metodách ověřování najdete v části [Určení metod ověřování, které uživatelé mohou používat](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use).
 
-Prior to the availability of the NPS extension for Azure, customers who wished to implement two-step verification for integrated NPS and Azure MFA environments had to configure and maintain a separate MFA Server in the on-premises environment as documented in [Remote Desktop Gateway and Azure Multi-Factor Authentication Server using RADIUS](howto-mfaserver-nps-rdg.md).
+Před dostupností rozšíření serveru NPS pro Azure museli zákazníci, kteří chtějí implementovat dvoustupňové ověřování pro integrovaná rozhraní NPS a Azure MFA, nakonfigurovat a udržovat samostatný server MFA v místním prostředí, jak je uvedeno v [Brána vzdálené plochy a v azure Multi-Factor Authentication Server pomocí protokolu RADIUS](howto-mfaserver-nps-rdg.md).
 
-The availability of the NPS extension for Azure now gives organizations the choice to deploy either an on-premises based MFA solution or a cloud-based MFA solution to secure RADIUS client authentication.
+Dostupnost rozšíření NPS pro Azure nyní poskytuje organizacím možnost nasazovat řešení vícefaktorového ověřování na základě v místním nebo cloudovým řešením vícefaktorové ověřování pro zabezpečené ověřování klienta protokolu RADIUS.
 
-## <a name="authentication-flow"></a>Authentication Flow
+## <a name="authentication-flow"></a>Tok ověřování
 
-For users to be granted access to network resources through a Remote Desktop Gateway, they must meet the conditions specified in one RD Connection Authorization Policy (RD CAP) and one RD Resource Authorization Policy (RD RAP). RD CAPs specify who is authorized to connect to RD Gateways. RD RAPs specify the network resources, such as remote desktops or remote apps, that the user is allowed to connect to through the RD Gateway.
+Pro uživatele, kterým se má udělit přístup k síťovým prostředkům prostřednictvím služby Brána vzdálené plochy musí splňovat podmínky uvedené v jedné VP zásady autorizace připojení (CAP ke vzdálené ploše) a zásady pro prostředků autorizace jeden vzdálené ploše (VP pro autorizaci prostředků). CAP k vzdálené ploše zadejte, kdo je oprávnění pro připojení k VP brány. Autorizaci zadejte síťovým prostředkům, jako je vzdálené plochy nebo vzdálené aplikace, které uživatel může pro připojení prostřednictvím brány VP.
 
-An RD Gateway can be configured to use a central policy store for RD CAPs. RD RAPs cannot use a central policy, as they are processed on the RD Gateway. An example of an RD Gateway configured to use a central policy store for RD CAPs is a RADIUS client to another NPS server that serves as the central policy store.
+Brány VP můžete nakonfigurovat pro použití zásady centrálního úložiště pro CAP k vzdálené ploše. Autorizaci nelze použít centrální zásady, jak se zpracovávají na bráně VP. Příklad Brána VP nakonfigurována pro použití zásady centrálního úložiště pro CAP k vzdálené ploše je klienta protokolu RADIUS na jiný server NPS, který slouží jako zásady centrálního úložiště.
 
-When the NPS extension for Azure is integrated with the NPS and Remote Desktop Gateway, the successful authentication flow is as follows:
+Když rozšíření NPS pro Azure je integrována se serverem NPS a Brána vzdálené plochy, tok úspěšné ověřování vypadá takto:
 
-1. The Remote Desktop Gateway server receives an authentication request from a remote desktop user to connect to a resource, such as a Remote Desktop session. Acting as a RADIUS client, the Remote Desktop Gateway server converts the request to a RADIUS Access-Request message and sends the message to the RADIUS (NPS) server where the NPS extension is installed.
-1. The username and password combination is verified in Active Directory and the user is authenticated.
-1. If all the conditions as specified in the NPS Connection Request and the Network Policies are met (for example, time of day or group membership restrictions), the NPS extension triggers a request for secondary authentication with Azure MFA.
-1. Azure MFA communicates with Azure AD, retrieves the user’s details, and performs the secondary authentication using supported methods.
-1. Upon success of the MFA challenge, Azure MFA communicates the result to the NPS extension.
-1. The NPS server, where the extension is installed, sends a RADIUS Access-Accept message for the RD CAP policy to the Remote Desktop Gateway server.
-1. The user is granted access to the requested network resource through the RD Gateway.
+1. Serveru služby Brána vzdálené plochy obdrží požadavek na ověření od uživatele vzdálené plochy pro připojení k prostředku, jako je například relaci vzdálené plochy. Funguje jako klienta protokolu RADIUS, serveru brány vzdálené plochy provede převod na zprávu pomocí protokolu RADIUS-žádost o přístup a odešle zprávu do serveru RADIUS (NPS), kde je nainstalovaná rozšíření NPS.
+1. Kombinace uživatelského jména a hesla je ověřen ve službě Active Directory a ověření uživatele.
+1. Pokud jsou splněny všechny podmínky uvedené v žádosti o připojení serveru NPS a zásady sítě (například čas, den nebo skupiny omezeními pro členství vyplývajícími), rozšíření NPS spustí požadavek pro sekundární ověřování s Azure MFA.
+1. Azure MFA komunikuje se službou Azure AD, načte podrobnosti daného uživatele a provádí sekundární ověření pomocí podporované metody.
+1. Po úspěšném nasazení z ověřovacím testem MFA Azure MFA komunikuje výsledek, který má rozšíření serveru NPS.
+1. Server NPS, kde je nainstalovaná rozšíření, odešle zprávu přijmout přístup protokolu RADIUS pro zásady CAP ke vzdálené ploše na serveru brány vzdálené plochy.
+1. Uživateli je udělen přístup k prostředku požadovaná síť prostřednictvím brány VP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-This section details the prerequisites necessary before integrating Azure MFA with the Remote Desktop Gateway. Before you begin, you must have the following prerequisites in place.  
+Tato část podrobně popisuje předpoklady nezbytné před integrace Azure MFA s bránou vzdálení plochy. Než začnete, musíte mít splněné následující požadavky na místě.  
 
-* Remote Desktop Services (RDS) infrastructure
-* Azure MFA License
-* Windows Server software
-* Network Policy and Access Services (NPS) role
-* Azure Active Directory synched with on-premises Active Directory
-* Azure Active Directory GUID ID
+* Vzdálené služby plocha (RDS) infrastruktury
+* Licence Azure MFA
+* Software Windows serveru
+* Síťové zásady a přístup k službám (NPS)
+* Azure Active Directory synchronizovat s místní služby Active Directory
+* Identifikátor GUID služby Azure Active Directory
 
-### <a name="remote-desktop-services-rds-infrastructure"></a>Remote Desktop Services (RDS) infrastructure
+### <a name="remote-desktop-services-rds-infrastructure"></a>Vzdálené služby plocha (RDS) infrastruktury
 
-You must have a working Remote Desktop Services (RDS) infrastructure in place. If you do not, then you can quickly create this infrastructure in Azure using the following quickstart template: [Create Remote Desktop Session Collection deployment](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
+Musíte mít funkční infrastrukturu služby Vzdálená plocha (RDS) na místě. Pokud to neuděláte, můžete tuto infrastrukturu v Azure rychle vytvořit pomocí následující šablony pro rychlé zprovoznění: [vytvoření nasazení kolekce relací vzdálené plochy](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
 
-If you wish to manually create an on-premises RDS infrastructure quickly for testing purposes, follow the steps to deploy one.
-**Learn more**: [Deploy RDS with Azure quickstart](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) and [Basic RDS infrastructure deployment](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+Pokud chcete ručně vytvořit místní infrastrukturu RDS rychle pro účely testování, postupujte podle kroků, které chcete nasadit některé.
+**Další informace**: [nasazení RDS pomocí rychlého startu Azure](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) a [základního nasazení infrastruktury VP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)
 
-### <a name="azure-mfa-license"></a>Azure MFA License
+### <a name="azure-mfa-license"></a>Licence Azure MFA
 
-Required is a license for Azure MFA, which is available through Azure AD Premium or other bundles that include it. Consumption-based licenses for Azure MFA, such as per user or per authentication licenses, are not compatible with the NPS extension. For more information, see [How to get Azure Multi-Factor Authentication](concept-mfa-licensing.md). For testing purposes, you can use a trial subscription.
+Vyžaduje se licence pro Azure MFA, která je dostupná prostřednictvím Azure AD Premium nebo dalších sad, které ho obsahují. Založenou na skutečné spotřebě licence pro Azure MFA, například podle uživatele nebo na ověřování licencí, nejsou kompatibilní s rozšíření serveru NPS. Další informace najdete v tématu [Jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md). Pro účely testování můžete použít zkušební verzi předplatného.
 
-### <a name="windows-server-software"></a>Windows Server software
+### <a name="windows-server-software"></a>Software Windows serveru
 
-The NPS extension requires Windows Server 2008 R2 SP1 or above with the NPS role service installed. All the steps in this section were performed using Windows Server 2016.
+Rozšíření NPS server vyžaduje Windows Server 2008 R2 SP1 nebo novějším s nainstalovanou službou role NPS. Všechny kroky v této části byly provedeny pomocí Windows serveru 2016.
 
-### <a name="network-policy-and-access-services-nps-role"></a>Network Policy and Access Services (NPS) role
+### <a name="network-policy-and-access-services-nps-role"></a>Síťové zásady a přístup k službám (NPS)
 
-The NPS role service provides the RADIUS server and client functionality as well as Network Access Policy health service. This role must be installed on at least two computers in your infrastructure: The Remote Desktop Gateway and another member server or domain controller. By default, the role is already present on the computer configured as the Remote Desktop Gateway.  You must also install the NPS role on at least on another computer, such as a domain controller or member server.
+Službu role NPS poskytuje server protokolu RADIUS a klientské funkce, jakož i služba health service zásady přístupu k síti. Tato role musí nainstalovat na nejméně dva počítače ve vaší infrastruktuře: služby Brána vzdálené plochy a další členského serveru nebo řadiče domény. Ve výchozím nastavení role již existuje v počítač nakonfigurovaný jako Brána vzdálené plochy.  Také nainstalujte NPS role na alespoň na jiném počítači, jako jsou řadiče domény nebo členském serveru.
 
-For information on installing the NPS role service Windows Server 2012 or older, see [Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx). For a description of best practices for NPS, including the recommendation to install NPS on a domain controller, see [Best Practices for NPS](https://technet.microsoft.com/library/cc771746).
+Informace o instalaci služby role NPS Windows Server 2012 nebo starší najdete v tématu [instalace serveru zásad stavu NAP](https://technet.microsoft.com/library/dd296890.aspx). Popis osvědčených postupů pro server NPS, včetně doporučení k instalaci NPS na řadič domény, najdete v tématu [osvědčené postupy pro server NPS](https://technet.microsoft.com/library/cc771746).
 
-### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory synched with on-premises Active Directory
+### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory synchronizovat s místní služby Active Directory
 
-To use the NPS extension, on-premises users must be synced with Azure AD and enabled for MFA. This section assumes that on-premises users are synched with Azure AD using AD Connect. For information on Azure AD connect, see [Integrate your on-premises directories with Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
+Použití rozšíření serveru NPS, musí být místním uživatelům synchronizaci se službou Azure AD a povolené pro vícefaktorové ověřování. V této části se předpokládá, že jsou v místním uživatelům synchronizovat s Azure AD pomocí AD Connect. Informace o službě Azure AD Connect najdete v tématu [Integrace místních adresářů s Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
-### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
+### <a name="azure-active-directory-guid-id"></a>Identifikátor GUID služby Azure Active Directory
 
-To install NPS extension, you need to know the GUID of the Azure AD. Instructions for finding the GUID of the Azure AD are provided below.
+Pokud chcete nainstalovat rozšíření serveru NPS, je potřeba vědět identifikátor GUID služby Azure AD. Níže jsou uvedené pokyny, jak najít identifikátor GUID služby Azure AD.
 
-## <a name="configure-multi-factor-authentication"></a>Configure Multi-Factor Authentication
+## <a name="configure-multi-factor-authentication"></a>Konfigurace ověřování službou Multi-Factor Authentication
 
-This section provides instructions for integrating Azure MFA with the Remote Desktop Gateway. As an administrator, you must configure the Azure MFA service before users can self-register their multi-factor devices or applications.
+Tato část obsahuje pokyny k integraci Azure MFA s bránou vzdálení plochy. Jako správce musíte nakonfigurovat službu Azure MFA, předtím, než mohou uživatelé registrovat svá zařízení služby Multi-Factor Authentication nebo aplikace.
 
-Follow the steps in [Getting started with Azure Multi-Factor Authentication in the cloud](howto-mfa-getstarted.md) to enable MFA for your Azure AD users.
+Postupujte podle kroků v části [Začínáme s Azure Multi-Factor Authentication v cloudu](howto-mfa-getstarted.md) a povolte MFA pro uživatele Azure AD.
 
-### <a name="configure-accounts-for-two-step-verification"></a>Configure accounts for two-step verification
+### <a name="configure-accounts-for-two-step-verification"></a>Konfigurace účtů pro dvoustupňové ověřování.
 
-Once an account has been enabled for MFA, you cannot sign in to resources governed by the MFA policy until you have successfully configured a trusted device to use for the second authentication factor and have authenticated using two-step verification.
+Jakmile účet povolen pro vícefaktorové ověřování, nemůžete se přihlásit k prostředkům řídí zásady vícefaktorového ověřování, dokud se úspěšně jste nakonfigurovali důvěryhodné zařízení pro druhý faktor ověřování a jste se ověřili pomocí dvoustupňového ověření.
 
-Follow the steps in [What does Azure Multi-Factor Authentication mean for me?](../user-help/multi-factor-authentication-end-user.md) to understand and properly configure your devices for MFA with your user account.
+Postupujte podle kroků v části [co Azure Multi-Factor Authentication znamená pro mě?](../user-help/multi-factor-authentication-end-user.md) k pochopení a správné konfiguraci zařízení pro MFA s vaším uživatelským účtem.
 
-## <a name="install-and-configure-nps-extension"></a>Install and configure NPS extension
+## <a name="install-and-configure-nps-extension"></a>Instalace a konfigurace rozšíření serveru NPS
 
-This section provides instructions for configuring RDS infrastructure to use Azure MFA for client authentication with the Remote Desktop Gateway.
+Tato část obsahuje pokyny ke konfiguraci vzdálené plochy infrastruktury pro ověřování klienta s bránou vzdálení plochy pomocí Azure MFA.
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Acquire Azure Active Directory GUID ID
+### <a name="acquire-azure-active-directory-guid-id"></a>Získat Identifikátor GUID služby Azure Active Directory
 
-As part of the configuration of the NPS extension, you need to supply admin credentials and the Azure AD ID for your Azure AD tenant. The following steps show you how to get the tenant ID.
+Jako součást konfigurace rozšíření serveru NPS budete muset zadat přihlašovací údaje správce a Azure AD ID pro vašeho tenanta Azure AD. Následující kroky ukazují, jak získat ID tenanta.
 
-1. Sign in to the [Azure portal](https://portal.azure.com) as the global administrator of the Azure tenant.
-1. In the left navigation, select the **Azure Active Directory** icon.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce tenanta Azure.
+1. V levém navigačním panelu vyberte ikonu **Azure Active Directory** .
 1. Vyberte **Vlastnosti**.
-1. In the Properties blade, beside the Directory ID, click the **Copy** icon, as shown below, to copy the ID to clipboard.
+1. V okně Vlastnosti vedle ID adresáře klikněte na ikonu **Kopírovat** , jak je vidět níže, a zkopírujte ID do schránky.
 
-   ![Getting the Directory ID from the Azure portal](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![Získává se ID adresáře z Azure Portal.](./media/howto-mfa-nps-extension-rdg/image1.png)
 
-### <a name="install-the-nps-extension"></a>Install the NPS extension
+### <a name="install-the-nps-extension"></a>Instalace rozšíření serveru NPS
 
-Install the NPS extension on a server that has the Network Policy and Access Services (NPS) role installed. This functions as the RADIUS server for your design.
+Instalace rozšíření serveru NPS na serveru s nainstalovanou rolí síťové zásady a přístup k službám (NPS). Tato operace funguje jako server RADIUS pro návrh.
 
 > [!Important]
-> Be sure you do not install the NPS extension on your Remote Desktop Gateway server.
+> Ujistěte se, že nenainstalujete rozšíření NPS na serveru služby Brána vzdálené plochy.
 >
 
-1. Download the [NPS extension](https://aka.ms/npsmfa).
-1. Copy the setup executable file (NpsExtnForAzureMfaInstaller.exe) to the NPS server.
-1. On the NPS server, double-click **NpsExtnForAzureMfaInstaller.exe**. If prompted, click **Run**.
-1. In the NPS Extension For Azure MFA Setup dialog box, review the software license terms, check **I agree to the license terms and conditions**, and click **Install**.
-1. In the NPS Extension For Azure MFA Setup dialog box, click **Close**.
+1. Stáhněte si [rozšíření serveru NPS](https://aka.ms/npsmfa).
+1. Zkopírujte spustitelný soubor instalace (NpsExtnForAzureMfaInstaller.exe) na server NPS.
+1. Na serveru NPS poklikejte na **NpsExtnForAzureMfaInstaller. exe**. Pokud se zobrazí výzva, klikněte na **Spustit**.
+1. V dialogovém okně rozšíření NPS pro instalaci Azure MFA si přečtěte licenční podmínky pro software, zkontrolujte, že souhlasím **s licenčními podmínkami a ujednáními**, a klikněte na **nainstalovat**.
+1. V dialogovém okně rozšíření serveru NPS pro instalaci Azure MFA klikněte na **Zavřít**.
 
-### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Configure certificates for use with the NPS extension using a PowerShell script
+### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Konfigurace certifikátů pro použití s rozšíření serveru NPS pomocí Powershellového skriptu
 
-Next, you need to configure certificates for use by the NPS extension to ensure secure communications and assurance. The NPS components include a Windows PowerShell script that configures a self-signed certificate for use with NPS.
+Dále je třeba nakonfigurovat certifikáty pro použití rozšíření NPS k zajištění zabezpečené komunikace a záruky. Server NPS součásti zahrnují skript prostředí Windows PowerShell, který se nakonfiguruje certifikát podepsaný svým držitelem pro použití se serverem NPS.
 
-The script performs the following actions:
+Skript provede následující akce:
 
-* Creates a self-signed certificate
-* Associates public key of certificate to service principal on Azure AD
-* Stores the cert in the local machine store
-* Grants access to the certificate’s private key to the network user
-* Restarts Network Policy Server service
+* Vytvoří certifikát podepsaný svým držitelem
+* Přidruží veřejný klíč certifikátu instančnímu objektu v Azure AD
+* Ukládá certifikát v úložišti místního počítače
+* Uděluje přístup k privátnímu klíči certifikátu do síťového uživatele
+* Restartuje službu Network Policy Server
 
-If you want to use your own certificates, you need to associate the public key of your certificate to the service principal on Azure AD, and so on.
+Pokud chcete použít vlastní certifikáty, musíte přidružit veřejný klíč certifikátu instančnímu objektu služby v Azure AD, a tak dále.
 
-To use the script, provide the extension with your Azure AD Admin credentials and the Azure AD tenant ID that you copied earlier. Run the script on each NPS server where you installed the NPS extension. Potom udělejte následující:
+Pokud chcete použít skript, poskytují rozšíření pomocí svých přihlašovacích údajů správce Azure AD a ID tenanta Azure AD, který jste si zkopírovali dříve. Spusťte skript na každém serveru NPS, kam jste nainstalovali rozšíření serveru NPS. Potom udělejte následující:
 
-1. Open an administrative Windows PowerShell prompt.
-1. At the PowerShell prompt, type `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`, and press **ENTER**.
-1. Type `.\AzureMfaNpsExtnConfigSetup.ps1`, and press **ENTER**. The script checks to see if the Azure Active Directory PowerShell module is installed. If not installed, the script installs the module for you.
+1. Otevřete řádku prostředí Windows PowerShell pro správu.
+1. Na příkazovém řádku prostředí PowerShell zadejte příkaz `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`a stiskněte klávesu **ENTER**.
+1. Zadejte `.\AzureMfaNpsExtnConfigSetup.ps1`a stiskněte klávesu **ENTER**. Skript zkontroluje, zda je nainstalován modul Powershellu pro Azure Active Directory. Pokud nainstalovaná není, skript nainstaluje modul pro vás.
 
-   ![Running AzureMfaNpsExtnConfigSetup.ps1 in Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
+   ![Spuštění AzureMfaNpsExtnConfigSetup. ps1 ve službě Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   
-1. After the script verifies the installation of the PowerShell module, it displays the Azure Active Directory PowerShell module dialog box. In the dialog box, enter your Azure AD admin credentials and password, and click **Sign In**.
+1. Jakmile skript ověří instalace modulu prostředí PowerShell, zobrazí dialogové okno modul Powershellu pro Azure Active Directory. V dialogovém okně zadejte svoje přihlašovací údaje a heslo správce Azure AD a klikněte na **Přihlásit**se.
 
-   ![Authenticating to Azure AD in PowerShell](./media/howto-mfa-nps-extension-rdg/image5.png)
+   ![Ověřování ve službě Azure AD v prostředí PowerShell](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. When prompted, paste the Directory ID you copied to the clipboard earlier, and press **ENTER**.
+1. Po zobrazení výzvy vložte ID adresáře, které jste zkopírovali do schránky dříve, a stiskněte klávesu **ENTER**.
 
-   ![Inputting the Directory ID in PowerShell](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![Vložení ID adresáře do PowerShellu](./media/howto-mfa-nps-extension-rdg/image6.png)
 
-1. The script creates a self-signed certificate and performs other configuration changes. The output should be like the image shown below.
+1. Tento skript vytvoří certifikát podepsaný svým držitelem a provede další změny v konfiguraci. Výstup by měl být podobně jako na následujícím obrázku.
 
-   ![Output of PowerShell showing self-signed certificate](./media/howto-mfa-nps-extension-rdg/image7.png)
+   ![Výstup PowerShellu ukazující certifikát podepsaný svým držitelem](./media/howto-mfa-nps-extension-rdg/image7.png)
 
-## <a name="configure-nps-components-on-remote-desktop-gateway"></a>Configure NPS components on Remote Desktop Gateway
+## <a name="configure-nps-components-on-remote-desktop-gateway"></a>Konfigurace součástí serveru NPS na Brána vzdálené plochy
 
-In this section, you configure the Remote Desktop Gateway connection authorization policies and other RADIUS settings.
+V této části nakonfigurujete zásady autorizace připojení brány vzdálené plochy a další nastavení protokolu RADIUS.
 
-The authentication flow requires that RADIUS messages be exchanged between the Remote Desktop Gateway and the NPS server where the NPS extension is installed. This means that you must configure RADIUS client settings on both Remote Desktop Gateway and the NPS server where the NPS extension is installed.
+Tok ověřování vyžaduje, aby byly zprávy protokolu RADIUS vyměněny mezi Brána vzdálené plochy a serverem NPS, na kterém je nainstalováno rozšíření serveru NPS. To znamená, že nastavení klienta RADIUS musíte nakonfigurovat na Brána vzdálené plochy a instalaci rozšíření NPS server NPS.
 
-### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Configure Remote Desktop Gateway connection authorization policies to use central store
+### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Nakonfigurujte zásady autorizace připojení brány vzdálené plochy pro použití centrální úložiště
 
-Remote Desktop connection authorization policies (RD CAPs) specify the requirements for connecting to a Remote Desktop Gateway server. RD CAPs can be stored locally (default) or they can be stored in a central RD CAP store that is running NPS. To configure integration of Azure MFA with RDS, you need to specify the use of a central store.
+Zásady autorizace připojení ke vzdálené ploše (CAP k vzdálené ploše) zadejte požadavky pro připojení k serveru služby Brána vzdálené plochy. CAP k vzdálené ploše můžete ukládat místně (výchozí) nebo může být uložený v centrální úložiště CAP ke vzdálené ploše, na kterém běží server NPS. Konfigurace integrace Azure MFA s vzdálené plochy, budete muset zadat příkaz use centrálního úložiště.
 
-1. On the RD Gateway server, open **Server Manager**.
-1. On the menu, click **Tools**, point to **Remote Desktop Services**, and then click **Remote Desktop Gateway Manager**.
-1. In the RD Gateway Manager, right-click **\[Server Name\] (Local)** , and click **Properties**.
-1. In the Properties dialog box, select the **RD CAP Store** tab.
-1. On the RD CAP Store tab, select **Central server running NPS**. 
-1. In the **Enter a name or IP address for the server running NPS** field, type the IP address or server name of the server where you installed the NPS extension.
+1. Na serveru Brána VP otevřete **Správce serveru**.
+1. V nabídce klikněte na **nástroje**, přejděte na **Vzdálená plocha**a pak klikněte na **Správce brány vzdálené plochy**.
+1. V Správce brány VP klikněte pravým tlačítkem na **\[název serveru\] (místní)** a klikněte na **vlastnosti**.
+1. V dialogovém okně Vlastnosti vyberte kartu **úložiště Cap k vzdálené ploše** .
+1. Na kartě úložiště CAP k vzdálené ploše vyberte **centrální server, na kterém běží server NPS**. 
+1. Do pole **Zadejte název nebo IP adresu serveru, na kterém běží server NPS** , zadejte IP adresu nebo název serveru, na který jste nainstalovali rozšíření serveru NPS.
 
-   ![Enter the name or IP Address of your NPS Server](./media/howto-mfa-nps-extension-rdg/image10.png)
+   ![Zadejte název nebo IP adresu vašeho serveru NPS.](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. Klikněte na tlačítko **Přidat**.
-1. In the **Shared Secret** dialog box, enter a shared secret, and then click **OK**. Ensure you record this shared secret and store the record securely.
+1. Klikněte na **Přidat**.
+1. V dialogovém okně **sdílený tajný klíč** zadejte sdílený tajný klíč a klikněte na tlačítko **OK**. Zkontrolujte záznam sdílený tajný klíč a bezpečně uložit záznam.
 
    >[!NOTE]
-   >Shared secret is used to establish trust between the RADIUS servers and clients. Create a long and complex secret.
+   >Sdílený tajný klíč se používá k navázání vztahu důvěryhodnosti mezi klienty a servery RADIUS. Vytvoření tajného klíče dlouhá a složitá.
    >
 
-   ![Creating a shared secret to establish trust](./media/howto-mfa-nps-extension-rdg/image11.png)
+   ![Vytvoření sdíleného tajného klíče pro vytvoření vztahu důvěryhodnosti](./media/howto-mfa-nps-extension-rdg/image11.png)
 
 1. Kliknutím na **OK** zavřete dialogové okno.
 
-### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>Configure RADIUS timeout value on Remote Desktop Gateway NPS
+### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>Hodnota časového limitu protokolu RADIUS nakonfigurovat na NPS brány vzdálené plochy
 
-To ensure there is time to validate users’ credentials, perform two-step verification, receive responses, and respond to RADIUS messages, it is necessary to adjust the RADIUS timeout value.
+Jak zajistit, že je čas na ověření přihlašovacích údajů uživatelů, provedení dvoustupňového ověřování, dostávat odpovědi a reagovat na zprávy pomocí protokolu RADIUS, je nutné upravit hodnoty časového limitu protokolu RADIUS.
 
-1. On the RD Gateway server, open Server Manager. On the menu, click **Tools**, and then click **Network Policy Server**.
-1. In the **NPS (Local)** console, expand **RADIUS Clients and Servers**, and select **Remote RADIUS Server**.
+1. Na serveru služby Brána VP otevřete Správce serveru. V nabídce klikněte na **nástroje**a potom klikněte na **Server NPS (Network Policy Server**).
+1. V konzole **NPS (místní)** rozbalte položku **klienti a servery RADIUS**a vyberte **vzdálený server RADIUS**.
 
-   ![Network Policy Server management console showing Remote RADIUS Server](./media/howto-mfa-nps-extension-rdg/image12.png)
+   ![Konzola pro správu serveru NPS (Network Policy Server) se vzdáleným serverem RADIUS](./media/howto-mfa-nps-extension-rdg/image12.png)
 
-1. In the details pane, double-click **TS GATEWAY SERVER GROUP**.
+1. V podokně podrobností poklikejte na **skupinu serverů brány TS**.
 
    >[!NOTE]
-   >This RADIUS Server Group was created when you configured the central server for NPS policies. The RD Gateway forwards RADIUS messages to this server or group of servers, if more than one in the group.
+   >Tato skupina serveru RADIUS byla vytvořena při konfiguraci centrálního serveru NPS zásady. Brána VP přeposílá zprávy pomocí protokolu RADIUS na tento server nebo skupinu serverů, pokud více než jedna ve skupině.
    >
 
-1. In the **TS GATEWAY SERVER GROUP Properties** dialog box, select the IP address or name of the NPS server you configured to store RD CAPs, and then click **Edit**.
+1. V dialogovém okně **Vlastnosti skupiny serverů brány TS** vyberte IP adresu nebo název serveru NPS, který jste nakonfigurovali pro ukládání Cap ke vzdálené ploše, a pak klikněte na **Upravit**.
 
-   ![Select the IP or name of the NPS Server configured earlier](./media/howto-mfa-nps-extension-rdg/image13.png)
+   ![Vyberte IP adresu nebo název serveru NPS, který jste nakonfigurovali dříve.](./media/howto-mfa-nps-extension-rdg/image13.png)
 
-1. In the **Edit RADIUS Server** dialog box, select the **Load Balancing** tab.
-1. In the **Load Balancing** tab, in the **Number of seconds without response before request is considered dropped** field, change the default value from 3 to a value between 30 and 60 seconds.
-1. In the **Number of seconds between requests when server is identified as unavailable** field, change the default value of 30 seconds to a value that is equal to or greater than the value you specified in the previous step.
+1. V dialogovém okně **Upravit server RADIUS** vyberte kartu **Vyrovnávání zatížení** .
+1. Na kartě **Vyrovnávání zatížení** v poli **počet sekund bez odpovědi, než je žádost považována za vyřazené** pole, změňte výchozí hodnotu ze 3 na hodnotu v rozmezí 30 až 60 sekund.
+1. V poli **počet sekund mezi požadavky, když je server identifikován jako nedostupný** , změňte výchozí hodnotu 30 sekund na hodnotu, která je větší nebo rovna hodnotě, kterou jste zadali v předchozím kroku.
 
-   ![Edit Radius Server timeout settings on the load balancing tab](./media/howto-mfa-nps-extension-rdg/image14.png)
+   ![Úprava nastavení časového limitu serveru RADIUS na kartě vyrovnávání zatížení](./media/howto-mfa-nps-extension-rdg/image14.png)
 
-1. Click **OK** two times to close the dialog boxes.
+1. Dvakrát klikněte na **OK** , čímž zavřete dialogová okna.
 
-### <a name="verify-connection-request-policies"></a>Verify Connection Request Policies
+### <a name="verify-connection-request-policies"></a>Ověření zásad vyžádání nového připojení
 
-By default, when you configure the RD Gateway to use a central policy store for connection authorization policies, the RD Gateway is configured to forward CAP requests to the NPS server. The NPS server with the Azure MFA extension installed, processes the RADIUS access request. The following steps show you how to verify the default connection request policy.
+Ve výchozím nastavení při konfiguraci brány VP pro použití zásady centrálního úložiště pro zásady autorizace připojení, je Brána VP nakonfigurované ke směrování žádostí Zakončení na server NPS. Server NPS pomocí rozšíření Azure MFA nainstalovali, zpracuje žádost o přístup protokolu RADIUS. Následující kroky ukazují, jak ověřit zásady vyžádání nového připojení výchozí.
 
-1. On the RD Gateway, in the NPS (Local) console, expand **Policies**, and select **Connection Request Policies**.
-1. Double-click **TS GATEWAY AUTHORIZATION POLICY**.
-1. In the **TS GATEWAY AUTHORIZATION POLICY properties** dialog box, click the **Settings** tab.
-1. On **Settings** tab, under Forwarding Connection Request, click **Authentication**. RADIUS client is configured to forward requests for authentication.
+1. Na Brána VP v konzole NPS (místní) rozbalte **zásady**a vyberte **zásady vyžádání nového připojení**.
+1. Poklikejte na **zásady autorizace brány TS**.
+1. V dialogovém okně **Vlastnosti zásad autorizace brány TS** klikněte na kartu **Nastavení** .
+1. Na kartě **Nastavení** klikněte v části předávání žádosti o připojení na **ověřování**. Klient protokolu RADIUS konfigurován pro směrování požadavků pro ověřování.
 
-   ![Configure Authentication Settings specifying the server group](./media/howto-mfa-nps-extension-rdg/image15.png)
+   ![Konfigurovat nastavení ověřování určující skupinu serverů](./media/howto-mfa-nps-extension-rdg/image15.png)
 
-1. Click **Cancel**.
+1. Klikněte na tlačítko **Storno**.
 
-## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Configure NPS on the server where the NPS extension is installed
+## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Konfigurace serveru NPS na serveru, kde je nainstalovaná rozšíření NPS
 
-The NPS server where the NPS extension is installed needs to be able to exchange RADIUS messages with the NPS server on the Remote Desktop Gateway. To enable this message exchange, you need to configure the NPS components on the server where the NPS extension service is installed.
+Server NPS, kde je nainstalovaná rozšíření NPS musí být schopen výměna zpráv pomocí protokolu RADIUS se serverem NPS na Brána vzdálené plochy. Pokud chcete povolit tento výměně zpráv, musíte nakonfigurovat komponenty NPS na serveru, ve kterém je nainstalovaná služba rozšíření NPS.
 
-### <a name="register-server-in-active-directory"></a>Register Server in Active Directory
+### <a name="register-server-in-active-directory"></a>Registrace serveru ve službě Active Directory
 
-To function properly in this scenario, the NPS server needs to be registered in Active Directory.
+Fungovat správně v tomto scénáři, NPS server musí být zaregistrované ve službě Active Directory.
 
-1. On the NPS server, open **Server Manager**.
-1. In Server Manager, click **Tools**, and then click **Network Policy Server**.
-1. In the Network Policy Server console, right-click **NPS (Local)** , and then click **Register server in Active Directory**.
-1. Click **OK** two times.
+1. Na serveru NPS otevřete **Správce serveru**.
+1. V Správce serveru klikněte na **nástroje**a pak klikněte na **Server NPS (Network Policy Server**).
+1. V konzole serveru NPS (Network Policy Server) klikněte pravým tlačítkem na **NPS (místní)** a pak klikněte na **zaregistrovat server ve službě Active Directory**.
+1. Dvakrát klikněte na **OK** .
 
-   ![Register the NPS server in Active Directory](./media/howto-mfa-nps-extension-rdg/image16.png)
+   ![Registrace serveru NPS ve službě Active Directory](./media/howto-mfa-nps-extension-rdg/image16.png)
 
-1. Leave the console open for the next procedure.
+1. Nechte konzolu otevřený pro další postup.
 
-### <a name="create-and-configure-radius-client"></a>Create and configure RADIUS client
+### <a name="create-and-configure-radius-client"></a>Vytvoření a konfigurace klienta protokolu RADIUS
 
-The Remote Desktop Gateway needs to be configured as a RADIUS client to the NPS server.
+Brána vzdálené plochy musí být nakonfigurován jako klienta RADIUS serveru NPS.
 
-1. On the NPS server where the NPS extension is installed, in the **NPS (Local)** console, right-click **RADIUS Clients** and click **New**.
+1. Na serveru NPS, na kterém je nainstalované rozšíření NPS, klikněte v konzole **NPS (místní)** na **Klienti RADIUS** pravým tlačítkem myši a klikněte na **Nový**.
 
-   ![Create a New RADIUS Client in the NPS console](./media/howto-mfa-nps-extension-rdg/image17.png)
+   ![Vytvoření nového klienta RADIUS v konzole NPS](./media/howto-mfa-nps-extension-rdg/image17.png)
 
-1. In the **New RADIUS Client** dialog box, provide a friendly name, such as _Gateway_, and the IP address or DNS name of the Remote Desktop Gateway server.
-1. In the **Shared secret** and the **Confirm shared secret** fields, enter the same secret that you used before.
+1. V dialogovém okně **Nový klient protokolu RADIUS** zadejte popisný název, například _Brána_, a IP adresu nebo název DNS serveru Brána vzdálené plochy.
+1. Do polí **sdílený tajný klíč** a **Potvrdit sdílený tajný klíč** zadejte stejný tajný klíč, který jste použili dříve.
 
-   ![Configure a friendly name and the IP or DNS address](./media/howto-mfa-nps-extension-rdg/image18.png)
+   ![Konfigurace popisného názvu a IP adresy nebo adresy DNS](./media/howto-mfa-nps-extension-rdg/image18.png)
 
-1. Click **OK** to close the New RADIUS Client dialog box.
+1. Kliknutím na tlačítko **OK** zavřete dialogové okno Nový klient protokolu RADIUS.
 
-### <a name="configure-network-policy"></a>Configure Network Policy
+### <a name="configure-network-policy"></a>Konfigurovat zásady sítě
 
-Recall that the NPS server with the Azure MFA extension is the designated central policy store for the Connection Authorization Policy (CAP). Therefore, you need to implement a CAP on the NPS server to authorize valid connections requests.  
+Připomínáme, že server NPS pomocí rozšíření Azure MFA je úložiště určené centrální zásady pro povolení zásad připojení (CAP). Proto budete muset implementovat LIMITU na serveru NPS k autorizaci požadavků na platné připojení.  
 
-1. On the NPS Server, open the NPS (Local) console, expand **Policies**, and click **Network Policies**.
-1. Right-click **Connections to other access servers**, and click **Duplicate Policy**.
+1. Na serveru NPS otevřete konzolu NPS (místní), rozbalte **zásady**a klikněte na **zásady sítě**.
+1. Klikněte pravým tlačítkem na **připojení k ostatním serverům pro přístup**a klikněte na **Duplikovat zásady**.
 
-   ![Duplicate the connection to other access servers policy](./media/howto-mfa-nps-extension-rdg/image19.png)
+   ![Duplikovat připojení k zásadám jiných přístupových serverů](./media/howto-mfa-nps-extension-rdg/image19.png)
 
-1. Right-click **Copy of Connections to other access servers**, and click **Properties**.
-1. In the **Copy of Connections to other access servers** dialog box, in **Policy name**, enter a suitable name, such as _RDG_CAP_. Check **Policy enabled**, and select **Grant access**. Optionally, in **Type of network access server**, select **Remote Desktop Gateway**, or you can leave it as **Unspecified**.
+1. Klikněte pravým tlačítkem na **Kopírovat připojení k ostatním serverům pro přístup**a klikněte na **vlastnosti**.
+1. V dialogovém okně **kopie připojení k jiným přístupovým serverům** zadejte do pole **název zásady**vhodný název, například _RDG_CAP_. Zaškrtněte políčko **Povolit zásadu**a vyberte **udělit přístup**. V případě potřeby můžete v **části Typ serveru pro přístup k síti**vybrat možnost **Brána vzdálené plochy**, nebo ji nechat **nespecifikovanou**.
 
-   ![Name the policy, enable, and grant access](./media/howto-mfa-nps-extension-rdg/image21.png)
+   ![Pojmenování zásady, povolení a udělení přístupu](./media/howto-mfa-nps-extension-rdg/image21.png)
 
-1. Click the **Constraints** tab, and check **Allow clients to connect without negotiating an authentication method**.
+1. Klikněte na kartu **omezení** a zaškrtněte políčko **umožňuje klientům připojit se bez vyjednávání metody ověřování**.
 
-   ![Modify authentication methods to allow clients to connect](./media/howto-mfa-nps-extension-rdg/image22.png)
+   ![Úprava metod ověřování, aby se klienti mohly připojit](./media/howto-mfa-nps-extension-rdg/image22.png)
 
-1. Optionally, click the **Conditions** tab and add conditions that must be met for the connection to be authorized, for example, membership in a specific Windows group.
+1. Případně můžete kliknout na kartu **podmínky** a přidat podmínky, které musí být splněny, aby bylo připojení autorizováno, například členství v určité skupině systému Windows.
 
-   ![Optionally specify connection conditions](./media/howto-mfa-nps-extension-rdg/image23.png)
+   ![Volitelně zadejte podmínky připojení](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. Klikněte na **OK**. When prompted to view the corresponding Help topic, click **No**.
-1. Ensure that your new policy is at the top of the list, that the policy is enabled, and that it grants access.
+1. Klikněte na tlačítko **OK**. Po zobrazení výzvy k zobrazení odpovídajícího tématu nápovědy klikněte na tlačítko **ne**.
+1. Ujistěte se, že nové zásady se v horní části seznamu, že je zásada povolená, a že uděluje přístup.
 
-   ![Move your policy to the top of the list](./media/howto-mfa-nps-extension-rdg/image24.png)
+   ![Přesuňte zásadu na začátek seznamu.](./media/howto-mfa-nps-extension-rdg/image24.png)
 
-## <a name="verify-configuration"></a>Verify configuration
+## <a name="verify-configuration"></a>Ověření konfigurace
 
-To verify the configuration, you need to sign in to the Remote Desktop Gateway with a suitable RDP client. Be sure to use an account that is allowed by your Connection Authorization Policies and is enabled for Azure MFA.
+Pokud chcete ověřit konfiguraci, budete muset přihlásit do služby Brána vzdálené plochy pomocí vhodné klienta protokolu RDP. Nezapomeňte použít účet, který povoluje vaše zásady autorizace připojení a je povolen pro Azure MFA.
 
-As show in the image below, you can use the **Remote Desktop Web Access** page.
+Jak je znázorněno na obrázku níže, můžete použít stránku **Web Access vzdálené plochy** .
 
-![Testing in Remote Desktop Web Access](./media/howto-mfa-nps-extension-rdg/image25.png)
+![Testování v Web Access vzdálené plochy](./media/howto-mfa-nps-extension-rdg/image25.png)
 
-Upon successfully entering your credentials for primary authentication, the Remote Desktop Connect dialog box shows a status of Initiating remote connection, as shown below. 
+Po úspěšném zadání přihlašovacích údajů pro primární ověřování, dialogové okno připojení k vzdálené ploše zobrazí stav spuštění vzdáleného připojení, jak je znázorněno níže. 
 
-If you successfully authenticate with the secondary authentication method you previously configured in Azure MFA, you are connected to the resource. However, if the secondary authentication is not successful, you are denied access to the resource. 
+Pokud jste úspěšně ověřit pomocí sekundární ověřování, které jste dříve nakonfigurovali v Azure MFA, jste připojení k prostředku. Pokud sekundární ověření není úspěšné, ale je odepřen přístup k prostředku. 
 
-![Remote Desktop Connection initiating a remote connection](./media/howto-mfa-nps-extension-rdg/image26.png)
+![Připojení ke vzdálené ploše iniciování vzdáleného připojení](./media/howto-mfa-nps-extension-rdg/image26.png)
 
-In the example below, the Authenticator app on a Windows phone is used to provide the secondary authentication.
+V následujícím příkladu se používá ověřovací aplikaci na Windows phone pro sekundární ověřování.
 
-![Example Windows Phone Authenticator app showing verification](./media/howto-mfa-nps-extension-rdg/image27.png)
+![Příklad Windows Phone ověřovací aplikace ukazující ověřování](./media/howto-mfa-nps-extension-rdg/image27.png)
 
-Once you have successfully authenticated using the secondary authentication method, you are logged into the Remote Desktop Gateway as normal. However, because you are required to use a secondary authentication method using a mobile app on a trusted device, the sign in process is more secure than it would be otherwise.
+Jakmile úspěšně jste se ověřili pomocí metody sekundární ověřování, jste přihlášení jako za normálních okolností Brána vzdálené plochy. Vzhledem k tomu, že je třeba použít sekundární metodu ověřování s použitím mobilní aplikace na důvěryhodném zařízení, je proces přihlašování bezpečnější než v opačném případě.
 
-### <a name="view-event-viewer-logs-for-successful-logon-events"></a>View Event Viewer logs for successful logon events
+### <a name="view-event-viewer-logs-for-successful-logon-events"></a>Zobrazit protokoly Prohlížeče událostí pro události úspěšného přihlášení
 
-To view the successful sign-in events in the Windows Event Viewer logs, you can issue the following Windows PowerShell command to query the Windows Terminal Services and Windows Security logs.
+Zobrazení událostí úspěšného přihlášení v protokolech prohlížeče událostí Windows, můžete použít následující příkaz prostředí Windows PowerShell, který dotazování protokolů zabezpečení Windows a Windows Terminálové služby.
 
-To query successful sign-in events in the Gateway operational logs _(Event Viewer\Applications and Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ , use the following PowerShell commands:
+K dotazování úspěšných přihlašovacích událostí v provozních protokolech brány _(Event prohlížeč and Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ použijte následující příkazy PowerShellu:
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
-* This command displays Windows events that show the user met resource authorization policy requirements (RD RAP) and was granted access.
+* Tento příkaz zobrazí události Windows, které uživatel splněny požadavky na zásady autorizace prostředků (VP pro autorizaci prostředků) a má umožněný přístup.
 
-![Viewing events using PowerShell](./media/howto-mfa-nps-extension-rdg/image28.png)
+![Zobrazení událostí pomocí prostředí PowerShell](./media/howto-mfa-nps-extension-rdg/image28.png)
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '200'} | FL`
-* This command displays the events that show when user met connection authorization policy requirements.
+* Tento příkaz zobrazí události, které zobrazit, když uživatel splněny požadavky na zásady autorizace připojení.
 
-![viewing the connection authorization policy using PowerShell](./media/howto-mfa-nps-extension-rdg/image29.png)
+![Zobrazení zásad autorizace připojení pomocí PowerShellu](./media/howto-mfa-nps-extension-rdg/image29.png)
 
-You can also view this log and filter on event IDs, 300 and 200. To query successful logon events in the Security event viewer logs, use the following command:
+Můžete také zobrazit tento protokol a filtru na události s ID, 300 a 200. K dotazování událostí úspěšného přihlášení v protokolech prohlížeče událostí zabezpečení, použijte následující příkaz:
 
 * `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
-* This command can be run on either the central NPS or the RD Gateway Server.
+* Tento příkaz můžete spustit na centrální server NPS nebo Server brány VP.
 
-![Sample successful logon events](./media/howto-mfa-nps-extension-rdg/image30.png)
+![Ukázka úspěšných událostí přihlášení](./media/howto-mfa-nps-extension-rdg/image30.png)
 
-You can also view the Security log or the Network Policy and Access Services custom view, as shown below:
+Můžete také zobrazit v protokolu zabezpečení nebo vlastní zobrazení síťové zásady a přístup ke službám, jak je znázorněno níže:
 
-![Network Policy and Access Services Event Viewer](./media/howto-mfa-nps-extension-rdg/image31.png)
+![Služba Síťové zásady a přístup Prohlížeč událostí](./media/howto-mfa-nps-extension-rdg/image31.png)
 
-On the server where you installed the NPS extension for Azure MFA, you can find Event Viewer application logs specific to the extension at _Application and Services Logs\Microsoft\AzureMfa_.
+Na serveru, na který jste nainstalovali rozšíření serveru NPS pro Azure MFA, můžete najít Prohlížeč událostí protokoly aplikací specifické pro rozšíření na stránce _Application and Services Logs\Microsoft\AzureMfa_.
 
-![Event Viewer AuthZ application logs](./media/howto-mfa-nps-extension-rdg/image32.png)
+![Prohlížeč událostí protokoly aplikací AuthZ](./media/howto-mfa-nps-extension-rdg/image32.png)
 
-## <a name="troubleshoot-guide"></a>Troubleshoot Guide
+## <a name="troubleshoot-guide"></a>Řešení potíží s Průvodce
 
-If the configuration is not working as expected, the first place to start to troubleshoot is to verify that the user is configured to use Azure MFA. Have the user connect to the [Azure portal](https://portal.azure.com). If users are prompted for secondary verification and can successfully authenticate, you can eliminate an incorrect configuration of Azure MFA.
+Pokud konfiguraci nefunguje podle očekávání, je prvním místem, kde začít řešení potíží s Ověřte, že je správce nakonfigurován na použití Azure MFA. Připojte se k [Azure Portal](https://portal.azure.com)uživatele. Pokud je uživatelé vyzváni k zadání sekundární ověřovací a můžete úspěšně ověřit, můžete eliminovat nesprávnou konfiguraci Azure MFA.
 
-If Azure MFA is working for the user(s), you should review the relevant Event logs. These include the Security Event, Gateway operational, and Azure MFA logs that are discussed in the previous section.
+Pokud Azure MFA funguje pro uživatele, přečtěte si relevantní protokoly událostí. Patří mezi ně zabezpečení, provozní brány, protokoly událostí a Azure MFA, které jsou popsané v předchozí části.
 
-Below is an example output of Security log showing a failed logon event (Event ID 6273).
+Níže je příklad výstupu protokolu zabezpečení znázorňující neúspěšné událostí (událost 6273 ID).
 
-![Sample of a Failed logon event](./media/howto-mfa-nps-extension-rdg/image33.png)
+![Ukázka události neúspěšného přihlášení](./media/howto-mfa-nps-extension-rdg/image33.png)
 
-Below is a related event from the AzureMFA logs:
+Níže je související události z protokolů AzureMFA:
 
-![Sample Azure MFA log in Event Viewer](./media/howto-mfa-nps-extension-rdg/image34.png)
+![Ukázka Prohlížeč událostí protokolu Azure MFA](./media/howto-mfa-nps-extension-rdg/image34.png)
 
-To perform advanced troubleshoot options, consult the NPS database format log files where the NPS service is installed. These log files are created in _%SystemRoot%\System32\Logs_ folder as comma-delimited text files.
+K provádění rozšířené možnosti řešení problémů, zkontrolujte soubory protokolu serveru NPS databáze v formát, ve kterém je nainstalovaná služba NPS. Tyto soubory protokolu se vytvoří ve složce _%systemroot%\System32\Logs_ jako textové soubory s oddělovači.
 
-For a description of these log files, see [Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx). The entries in these log files can be difficult to interpret without importing them into a spreadsheet or a database. You can find several IAS parsers online to assist you in interpreting the log files.
+Popis těchto souborů protokolu najdete v tématu [Interpretace souborů protokolu ve formátu databáze NPS](https://technet.microsoft.com/library/cc771748.aspx). Položky v těchto protokolových souborech může být obtížné pro interpretaci bez jejich importování do tabulky nebo databáze. Pomoc při interpretaci souborů protokolu můžete najít několik služby ověřování v Internetu analyzátory online.
 
-The image below shows the output of one such downloadable [shareware application](https://www.deepsoftware.com/iasviewer).
+Následující obrázek ukazuje výstup jedné takové [shareware aplikace](https://www.deepsoftware.com/iasviewer)ke stažení.
 
-![Sample Shareware app IAS parser](./media/howto-mfa-nps-extension-rdg/image35.png)
+![Ukázka analyzátoru služby IAS pro shareware App](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-Finally, for additional troubleshoot options, you can use a protocol analyzer, such [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx).
+Nakonec můžete pro další možnosti řešení potíží použít analyzátor protokolů, jako je například [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx).
 
-The image below from Microsoft Message Analyzer shows network traffic filtered on RADIUS protocol that contains the user name **CONTOSO\AliceC**.
+Následující obrázek v Microsoft Message Analyzer zobrazuje síťový provoz filtrovaný podle protokolu RADIUS, který obsahuje uživatelské jméno **CONTOSO\AliceC**.
 
-![Microsoft Message Analyzer showing filtered traffic](./media/howto-mfa-nps-extension-rdg/image36.png)
+![Microsoft Message Analyzer zobrazující filtrovaný provoz](./media/howto-mfa-nps-extension-rdg/image36.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3c70d2086fc5866b07c31966343397f8ccc809be
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846732"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546350"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -145,10 +145,10 @@ Zobrazení výsledků ve formátu CSV:
 | ethumbs.db$ | Dočasný soubor pro miniatury |
 | ~$\*.\* | Dočasný soubor Office |
 | \*. tmp | Dočasný soubor |
-| \*.laccdb | Soubor zámků Access DB|
+| \*. laccdb | Soubor zámků Access DB|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Soubor interní synchronizace|
 | Informace o svazcích \\systému | Složka specifická pro svazek |
-| $RECYCLE. BIN| Folder |
+| $RECYCLE. BIN| Složka |
 | \\SyncShareState | Složka pro synchronizaci |
 
 ### <a name="failover-clustering"></a>Clusteringu s podporou převzetí služeb při selhání
@@ -227,7 +227,7 @@ Pokud používáte místní řešení zálohování, měli byste zálohy provád
 > Úplné obnovení systému (BMR) může způsobit neočekávané výsledky a aktuálně se nepodporuje.
 
 > [!Note]  
-> Snímky služby Stínová kopie svazku (včetně karty předchozí verze) se aktuálně nepodporují na svazcích s povoleným vrstvou cloudu. Pokud je zapnutá vrstva cloudu, pomocí snímků sdílené složky Azure obnovte soubor ze zálohy.
+> S verzí 9 agenta Azure File SYnc se teď na svazcích, na kterých je povolená vrstva cloudu, podporují snímky stínové kopie svazku (včetně karty předchozí verze). Je však nutné povolit kompatibilitu předchozí verze prostřednictvím prostředí PowerShell. [Zjistěte jak](storage-files-deployment-guide.md).
 
 ### <a name="encryption-solutions"></a>Řešení šifrování
 Podpora šifrovacích řešení závisí na způsobu jejich implementace. Azure File Sync je známo, že funguje:
@@ -247,13 +247,13 @@ S Azure File Sync by se neměla používat žádná další řešení HSM.
 ## <a name="region-availability"></a>Dostupnost v oblastech
 Azure File Sync je k dispozici pouze v následujících oblastech:
 
-| Oblast | Umístění Datacenter |
+| Region (Oblast) | Umístění Datacenter |
 |--------|---------------------|
 | Austrálie – východ | Nový Jižní Wales |
 | Austrálie – jihovýchod | Victoria |
 | Brazílie – jih | Sao Paulo – stát |
-| Kanada – střed | Toronto |
-| Kanada – východ | Québec |
+| Střední Kanada | Toronto |
+| Východní Kanada | Québec |
 | Střed Indie | Puné |
 | Střední USA | Iowa |
 | Východní Asie | Hongkong – zvláštní správní oblast |
@@ -272,7 +272,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Středojižní USA | Texas |
 | Indie – jih | Čennaj |
 | Jihovýchodní Asie | Singapur |
-| Velká Británie – jih | Londýn |
+| Spojené království – jih | Londýn |
 | Spojené království – západ | Cardiff |
 | USA (Gov) – Arizona | Arizona |
 | USA (Gov) – Texas | Texas |
@@ -282,7 +282,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Západní Evropa | Nizozemsko |
 | Středozápadní USA | Wyoming |
 | Západní USA | Kalifornie |
-| USA – západ 2 | Washington |
+| Západní USA 2 | Washington |
 
 Azure File Sync podporuje synchronizaci jenom se sdílenou složkou Azure, která je ve stejné oblasti jako služba synchronizace úložiště.
 
@@ -301,13 +301,13 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Austrálie – východ      | Austrálie – jihovýchod|
 | Austrálie – jihovýchod | Austrálie – východ     |
 | Brazílie – jih        | Středojižní USA   |
-| Kanada – střed      | Kanada – východ        |
-| Kanada – východ         | Kanada – střed     |
+| Střední Kanada      | Východní Kanada        |
+| Východní Kanada         | Střední Kanada     |
 | Střed Indie       | Indie – jih        |
-| Střední USA          | Východní USA 2          |
+| Střední USA          | Východ USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
 | Východní USA             | Západní USA            |
-| Východní USA 2           | Střední USA         |
+| Východ USA 2           | Střední USA         |
 | Francie – střed      | Francie – jih       |
 | Francie – jih        | Francie – střed     |
 | Japonsko – východ          | Japonsko – západ         |
@@ -321,15 +321,15 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Středojižní USA    | Středoseverní USA   |
 | Indie – jih         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
-| Velká Británie – jih            | Spojené království – západ            |
-| Spojené království – západ             | Velká Británie – jih           |
+| Spojené království – jih            | Spojené království – západ            |
+| Spojené království – západ             | Spojené království – jih           |
 | USA (Gov) – Arizona      | USA (Gov) – Texas       |
 | US Gov – Iowa         | USA (Gov) – Virginia    |
 | USA (Gov) – Virginia      | USA (Gov) – Texas       |
 | Západní Evropa         | Severní Evropa       |
-| Středozápadní USA     | USA – západ 2          |
+| Středozápadní USA     | Západní USA 2          |
 | Západní USA             | Východní USA            |
-| USA – západ 2           | Středozápadní USA    |
+| Západní USA 2           | Středozápadní USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

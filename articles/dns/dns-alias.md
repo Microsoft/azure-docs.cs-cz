@@ -1,6 +1,6 @@
 ---
-title: Alias records overview - Azure DNS
-description: In this article, learn about support for alias records in Microsoft Azure DNS.
+title: Přehled záznamů aliasů – Azure DNS
+description: V tomto článku se dozvíte o podpoře záznamů aliasů v Microsoft Azure DNS.
 services: dns
 author: asudbring
 ms.service: dns
@@ -16,67 +16,67 @@ ms.locfileid: "74212324"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Přehled záznamů aliasů Azure DNS
 
-Azure DNS alias records are qualifications on a DNS record set. They can reference other Azure resources from within your DNS zone. For example, you can create an alias record set that references an Azure public IP address instead of an A record. Your alias record set points to an Azure public IP address service instance dynamically. As a result, the alias record set seamlessly updates itself during DNS resolution.
+Záznamy aliasů Azure DNS jsou kvalifikační v sadě záznamů DNS. Můžou na jiné prostředky Azure odkazovat v rámci zóny DNS. Můžete například vytvořit sadu záznamů aliasů, která odkazuje na veřejnou IP adresu Azure místo na záznam A. Vaše sada záznamů aliasu dynamicky odkazuje na instanci služby veřejné IP adresy Azure. V důsledku toho se sada záznamů aliasů během překladu názvů DNS bezproblémově aktualizuje.
 
-An alias record set is supported for the following record types in an Azure DNS zone: 
+Sada záznamů aliasů je podporovaná pro následující typy záznamů v zóně Azure DNS: 
 
 - A
 - AAAA
 - CNAME
 
 > [!NOTE]
-> If you intend to use an alias record for the A or AAAA record types to point to an [Azure Traffic Manager profile](../traffic-manager/quickstart-create-traffic-manager-profile.md) you must make sure that the Traffic Manager profile has only [external endpoints](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints). You must provide the IPv4 or IPv6 address for external endpoints in Traffic Manager. You can't use fully-qualified domain names (FQDNs) in endpoints. Ideally, use static IP addresses.
+> Pokud máte v úmyslu použít záznam aliasu pro typy záznamů A nebo AAAA tak, aby odkazovaly na [profil Azure Traffic Manager](../traffic-manager/quickstart-create-traffic-manager-profile.md) , je nutné zajistit, aby měl profil Traffic Manager pouze [externí koncové body](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints). Pro externí koncové body v Traffic Manager musíte zadat adresu IPv4 nebo IPv6. V koncových bodech nemůžete použít plně kvalifikované názvy domény (FQDN). V ideálním případě používejte statické IP adresy.
 
 ## <a name="capabilities"></a>Možnosti
 
-- **Point to a public IP resource from a DNS A/AAAA record set.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource (standard or basic). The DNS record set changes automatically if the public IP address changes or is deleted. Dangling DNS records that point to incorrect IP addresses are avoided.
+- **Najeďte na prostředek veřejné IP adresy ze sady záznamů DNS A/AAAA.** Můžete vytvořit sadu záznamů a/AAAA a nastavit ji jako záznam aliasu, aby odkazoval na prostředek veřejné IP adresy (Standard nebo Basic). Sada záznamů DNS se automaticky změní, pokud se změní veřejná IP adresa nebo se odstraní. Dangling záznamy DNS, které odkazují na nesprávné IP adresy, se vyhnete.
 
-   There is a current limit of 20 alias records sets per resource.
+   Pro každý prostředek je k dispozici aktuální limit 20 záznamů aliasů.
 
-- **Point to a Traffic Manager profile from a DNS A/AAAA/CNAME record set.** You can create an A/AAAA or CNAME record set and use alias records to point it to a Traffic Manager profile. It's especially useful when you need to route traffic at a zone apex, as traditional CNAME records aren't supported for a zone apex. For example, say your Traffic Manager profile is myprofile.trafficmanager.net and your business DNS zone is contoso.com. You can create an alias record set of type A/AAAA for contoso.com (the zone apex) and point to myprofile.trafficmanager.net.
-- **Point to an Azure Content Delivery Network (CDN) endpoint**. This is useful when you create static websites using Azure storage and Azure CDN.
-- **Point to another DNS record set within the same zone.** Záznamy aliasů můžou odkazovat na jiné sady záznamů stejného typu. For example, a DNS CNAME record set can be an alias to another CNAME record set. This arrangement is useful if you want some record sets to be aliases and some non-aliases.
+- **Najeďte na profil Traffic Manager ze sady záznamů DNS A/AAAA/CNAME.** Můžete vytvořit sadu záznamů A/AAAA nebo CNAME a pomocí záznamů aliasů je nasměrovat na profil Traffic Manager. To je zvlášť užitečné v případě, že potřebujete směrovat provoz ve vrcholu zóny, protože se u vrcholu zóny nepodporují tradiční záznamy CNAME. Řekněme například, že váš profil Traffic Manager je myprofile.trafficmanager.net a vaše firemní zóna DNS je contoso.com. Můžete vytvořit sadu záznamů s aliasem typu A/AAAA pro contoso.com (vrchol zóny) a nasměrovat na myprofile.trafficmanager.net.
+- **Najeďte na koncový bod Azure Content Delivery Network (CDN)** . To je užitečné při vytváření statických webů s využitím služby Azure Storage a Azure CDN.
+- **Najeďte na jinou sadu záznamů DNS ve stejné zóně.** Záznamy aliasů můžou odkazovat na jiné sady záznamů stejného typu. Například sada záznamů CNAME DNS může být aliasem jiné sady záznamů CNAME. Toto uspořádání je užitečné, pokud chcete, aby některé sady záznamů byly aliasy a některé jiné než aliasy.
 
 ## <a name="scenarios"></a>Scénáře
 
-There are a few common scenarios for Alias records.
+Existuje několik běžných scénářů pro záznamy s aliasy.
 
-### <a name="prevent-dangling-dns-records"></a>Prevent dangling DNS records
+### <a name="prevent-dangling-dns-records"></a>Zabránit záznamům DNS v dangling
 
-A common problem with traditional DNS records is dangling records. For example, DNS records that haven't been updated to reflect changes to IP addresses. The issue occurs especially with A/AAAA or CNAME record types.
+Běžným problémem s tradičními záznamy DNS jsou dangling záznamy. Například záznamy DNS, které nebyly aktualizovány, aby odrážely změny IP adres. K tomuto problému dochází zejména u typů záznamů typu AAAA nebo CNAME.
 
-With a traditional DNS zone record, if the target IP or CNAME no longer exists, the DNS record associated with it must be manually updated. In some organizations, a manual update might not happen in time because of process issues or the separation of roles and associated permission levels. For example, a role might have the authority to delete a CNAME or IP address that belongs to an application. But it doesn't have sufficient authority to update the DNS record that points to those targets. A delay in updating the DNS record can potentially cause an outage for the users.
+V případě tradičního záznamu zóny DNS je potřeba, aby v případě, že už neexistuje cílová IP adresa nebo záznam CNAME, byl ručně aktualizovaný záznam DNS, který je k němu přidružený. V některých organizacích nemusí ruční aktualizace probíhat v čase, protože se jedná o problémy se zpracováním nebo oddělení rolí a přidružených úrovní oprávnění. Například role může mít oprávnění k odstranění záznamu CNAME nebo IP adresy, která patří do aplikace. Ale nemá dostatečná oprávnění k aktualizaci záznamu DNS, který odkazuje na tyto cíle. Zpoždění při aktualizaci záznamu DNS může potenciálně způsobit výpadek uživatelů.
 
-Alias records prevent dangling references by tightly coupling the life cycle of a DNS record with an Azure resource. For example, consider a DNS record that's qualified as an alias record to point to a public IP address or a Traffic Manager profile. If you delete those underlying resources, the DNS alias record becomes an empty record set. It no longer references the deleted resource.
+Záznamy aliasů zabraňují dangling odkazování tak, že je životní cyklus záznamu DNS na prostředek Azure pevně spojený. Předpokládejme například, že záznam DNS, který je kvalifikován jako záznam aliasu, odkazuje na veřejnou IP adresu nebo profil Traffic Manager. Pokud tyto podkladové prostředky odstraníte, bude se záznam aliasu DNS nacházet v prázdné sadě záznamů. Již neodkazuje na odstraněný prostředek.
 
-### <a name="update-dns-record-set-automatically-when-application-ip-addresses-change"></a>Update DNS record-set automatically when application IP addresses change
+### <a name="update-dns-record-set-automatically-when-application-ip-addresses-change"></a>Aktualizace sady záznamů DNS automaticky při změně IP adres aplikace
 
-This scenario is similar to the previous one. Perhaps an application is moved, or the underlying virtual machine is restarted. An alias record then updates automatically when the IP address changes for the underlying public IP resource. This avoids potential security risks of directing the users to another application that has been assigned the old public IP address.
+Tento scénář je podobný předchozímu. Možná dojde k přesunutí aplikace nebo restartování základního virtuálního počítače. Záznam alias se pak automaticky aktualizuje, když se změní IP adresa pro základní prostředek veřejné IP adresy. Tím se vyhnete potenciálním bezpečnostním rizikům při přesměrování uživatelů na jinou aplikaci, která má přiřazenou starou veřejnou IP adresu.
 
-### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Host load-balanced applications at the zone apex
+### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Aplikace s vyrovnáváním zatížení hostitele ve vrcholu zóny
 
-The DNS protocol prevents the assignment of CNAME records at the zone apex. For example if your domain is contoso.com; you can create CNAME records for somelabel.contoso.com; but you can't create CNAME for contoso.com itself.
-This restriction presents a problem for application owners who have load-balanced applications behind [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Since using a Traffic Manager profile requires creation of a CNAME record, it isn't possible to point at the Traffic Manager profile from the zone apex.
+Protokol DNS brání přiřazení záznamů CNAME ve vrcholu zóny. Například pokud vaše doména je contoso.com; můžete vytvořit záznamy CNAME pro somelabel.contoso.com; ale nemůžete vytvořit záznam CNAME pro contoso.com sebe sama.
+Toto omezení představuje problém pro vlastníky aplikace, kteří mají aplikace s vyrovnáváním zatížení za [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Vzhledem k tomu, že použití profilu Traffic Manager vyžaduje vytvoření záznamu CNAME, není možné nasměrovat profil Traffic Manager ze vrcholu zóny.
 
-This problem is solved using alias records. Unlike CNAME records, alias records are created at the zone apex and application owners can use it to point their zone apex record to a Traffic Manager profile that has external endpoints. Application owners point to the same Traffic Manager profile that's used for any other domain within their DNS zone.
+Tento problém je vyřešen pomocí záznamů aliasů. Na rozdíl od záznamů CNAME se záznamy aliasů vytvoří ve vrcholu zóny a vlastníci aplikace je můžou použít k ukázání záznamu vrcholu zóny na Traffic Manager profil, který má externí koncové body. Vlastníci aplikace odkazují na stejný profil Traffic Manager, který se používá pro jakoukoliv jinou doménu v rámci zóny DNS.
 
-For example, contoso.com and www\.contoso.com can point to the same Traffic Manager profile. To learn more about using alias records with Azure Traffic Manager profiles, see the Next steps section.
+Například contoso.com a webová\.contoso.com mohou odkazovat na stejný profil Traffic Manager. Další informace o použití záznamů aliasů v profilech Azure Traffic Manager najdete v části Další kroky.
 
-### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Point zone apex to Azure CDN endpoints
+### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Vrchol zóny bodu Azure CDN koncových bodů
 
-Just like a Traffic Manager profile, you can also use alias records to point your DNS zone apex to Azure CDN endpoints. This is useful when you create static websites using Azure storage and Azure CDN. You can then access the website without prepending "www" to your DNS name.
+Stejně jako profil Traffic Manager můžete také záznamy aliasů použít k ukázání vrcholu zóny DNS na koncové body Azure CDN. To je užitečné při vytváření statických webů s využitím služby Azure Storage a Azure CDN. Pak můžete k webu přejít bez předplatného "www" na název DNS.
 
-For example, if your static website is named www.contoso.com, your users can access your site using contoso.com without the need to prepend www to the DNS name.
+Například pokud váš statický web má název www.contoso.com, uživatelé budou mít k webu přístup pomocí contoso.com, aniž by museli předřadit web do názvu DNS.
 
-As described previously, CNAME records aren't supported at the zone apex. So, you can’t use a CNAME record to point contoso.com to your CDN endpoint. Instead, you can use an alias record to point the zone apex to a CDN endpoint directly.
+Jak bylo popsáno dříve, záznamy CNAME nejsou podporovány ve vrcholu zóny. Proto nemůžete použít záznam CNAME k nasměrování contoso.com na koncový bod CDN. Místo toho můžete použít záznam aliasu k ukázání vrcholu zóny na koncový bod CDN přímo.
 
 > [!NOTE]
-> Pointing a zone apex to CDN endpoints for Azure CDN from Akamai is currently not supported.
+> Ukazatel na vrcholy zóny na koncové body CDN pro Azure CDN z Akamai není aktuálně podporován.
 
 ## <a name="next-steps"></a>Další kroky
 
-To learn more about alias records, see the following articles:
+Další informace o záznamech aliasů najdete v následujících článcích:
 
-- [Tutorial: Configure an alias record to refer to an Azure public IP address](tutorial-alias-pip.md)
-- [Tutorial: Configure an alias record to support apex domain names with Traffic Manager](tutorial-alias-tm.md)
+- [Kurz: Konfigurace záznamu aliasu, který odkazuje na veřejnou IP adresu Azure](tutorial-alias-pip.md)
+- [Kurz: Konfigurace záznamu aliasu pro podporu názvů vrcholu domény pomocí Traffic Manager](tutorial-alias-tm.md)
 - [Nejčastější dotazy k DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)

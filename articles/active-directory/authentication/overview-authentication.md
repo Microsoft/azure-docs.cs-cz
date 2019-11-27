@@ -1,5 +1,5 @@
 ---
-title: Authenticating and securing users - Azure Active Directory
+title: Ověřování a zabezpečení uživatelů – Azure Active Directory
 description: Jak jako správce Azure AD ochráním ověřování uživatelů a zároveň snížím dopad na koncové uživatele?
 services: active-directory
 ms.service: active-directory
@@ -22,7 +22,7 @@ ms.locfileid: "74381109"
 
 Občas můžete slyšet ve zprávách, jak někdo ukradne hesla nebo dojde k ohrožení zabezpečení identit. Zabezpečení organizace můžete kromě běžného hesla okamžitě zvýšit vynucením dvoufaktorového ověřování. Microsoft Azure Active Directory (Azure AD) obsahuje funkce, jako je Azure Multi-Factor Authentication (Azure MFA) a samoobslužné resetování hesla Azure AD (SSPR), které s dalšími metodami ověřování pomáhají správcům chránit organizace a uživatele.
 
-There are many scenarios that include: signing in to an application, resetting their password, enabling Windows Hello, and others, your users may be asked to provide additional verification that they are who they say they are.
+Existuje mnoho scénářů, které zahrnují: přihlášení do aplikace, resetování hesla, povolení Windows Hello a dalších uživatelů. vaši uživatelé mohou být požádáni o poskytnutí dodatečného ověření, které jim říkají.
 
 Dodatečné ověřování může mít podobu jedné z těchto metod ověřování:
 

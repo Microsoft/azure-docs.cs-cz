@@ -76,7 +76,7 @@ Kurzy ukazují postupy založené na scénářích pro některé z hlavních Med
 * [Analýza videa – .NET](analyze-videos-tutorial-with-api.md)
 * [Dynamické šifrování AES-128 – .NET](protect-with-aes128.md)
 
-### <a name="samples"></a>Ukázky
+### <a name="samples"></a>Ukázky kódu
 
 Pomocí [tohoto prohlížeče ukázek](https://docs.microsoft.com/samples/browse/?products=azure-media-services) můžete procházet Azure Media Services ukázky kódu.
 

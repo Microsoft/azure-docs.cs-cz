@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Analyze events in Time Series Insights - Azure Digital Twins| Microsoft Docs'
-description: Learn how to visualize and analyze events from your Azure Digital Twins spaces, with Azure Time Series Insights, by using the steps in this tutorial.
+title: 'Kurz: analýza událostí v Time Series Insights – digitální vlákna Azure Microsoft Docs'
+description: Pomocí kroků v tomto kurzu zjistíte, jak vizualizovat a analyzovat události z prostorů digitálních vláken Azure pomocí Azure Time Series Insights.
 services: digital-twins
 ms.author: alinast
 author: alinamstanciu
@@ -16,79 +16,79 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383060"
 ---
-# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Tutorial: Visualize and analyze events from Azure Digital Twins by using Time Series Insights
+# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Kurz: vizualizace a analýza událostí z digitálních vláken Azure pomocí Time Series Insights
 
-After you deploy your Azure Digital Twins instance, provision your spaces, and implement a custom function to monitor specific conditions, you can visualize the events and data coming from your spaces to look for trends and anomalies.
+Po nasazení instance digitálních vláken Azure si můžete zřídit své prostory a implementovat vlastní funkci pro monitorování konkrétních podmínek. můžete vizualizovat události a data přicházející z vašich prostorů a hledat trendy a anomálie.
 
-In [the first tutorial](tutorial-facilities-setup.md), you configured the spatial graph of an imaginary building, with a room that contains sensors for motion, carbon dioxide, and temperature. V [druhém kurzu](tutorial-facilities-udf.md) jste si zřídili graf a uživatelem definovanou funkci. The function monitors these sensor values and triggers notifications for the right conditions. That is, the room is empty, and the temperature and carbon dioxide levels are normal.
+V [prvním kurzu](tutorial-facilities-setup.md)jste nakonfigurovali prostorový graf imaginární budovy s místností, která obsahuje snímače pro pohyb, oxid uhličitý a teplotu. V [druhém kurzu](tutorial-facilities-udf.md) jste si zřídili graf a uživatelem definovanou funkci. Funkce monitoruje tyto hodnoty senzoru a aktivuje oznámení pro správné podmínky. To znamená, že místnost je prázdná a hladina teploty a oxidu uhličitého jsou normální.
 
-This tutorial shows you how you can integrate the notifications and data coming from your Azure Digital Twins setup with Azure Time Series Insights. You can then visualize your sensor values over time. You can look for trends such as which room is getting the most use and which are the busiest times of the day. You can also detect anomalies such as which rooms feel stuffier and hotter, or whether an area in your building is sending consistently high temperature values, indicating faulty air conditioning.
+V tomto kurzu se dozvíte, jak můžete integrovat oznámení a data přicházející z nastavení digitálních vláken Azure pomocí Azure Time Series Insights. V průběhu času můžete vizualizovat hodnoty snímačů. Můžete hledat trendy, jako je například ta, kterou místnost získává nejvíc a které jsou nejvytíženější denním časem. Můžete také detekovat anomálie, například které místnosti jsou stuffier a Hotter, nebo zda oblast ve vaší budově posílá konzistentně vysoké hodnoty teploty, což značí vadné klimatizace.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Stream data by using Azure Event Hubs.
-> * Analyze with Time Series Insights.
+> * Streamování dat pomocí Event Hubs Azure
+> * Analýza pomocí Time Series Insights.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste [nakonfigurovali](tutorial-facilities-setup.md) a [zřídili](tutorial-facilities-udf.md) vlastní systém Azure Digital Twins. Než budete pokračovat, ujistěte se, že máte následující:
 
 - [Účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Spuštěná instance služby Digital Twins.
 - Pracovní počítač se staženými a extrahovanými [ukázkami služby Digital Twins v jazyce C#](https://github.com/Azure-Samples/digital-twins-samples-csharp).
-- [.NET Core SDK version 2.1.403 or later](https://www.microsoft.com/net/download) on your development machine to run the sample. Run `dotnet --version` to verify that the right version is installed.
+- [.NET Core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) ve vývojovém počítači pro spuštění ukázky. Spusťte `dotnet --version` a ověřte, zda je nainstalovaná správná verze.
 
 > [!TIP]
-> Use a unique Digital Twins instance name if you're provisioning a new instance.
+> Pokud zřizujete novou instanci, použijte jedinečný název instance digitálního vlákna.
 
-## <a name="stream-data-by-using-event-hubs"></a>Stream data by using Event Hubs
+## <a name="stream-data-by-using-event-hubs"></a>Streamování dat pomocí Event Hubs
 
-You can use the [Event Hubs](../event-hubs/event-hubs-about.md) service to create a pipeline to stream your data. This section shows you how to create your event hub as the connector between your Azure Digital Twins and Time Series Insights instances.
+Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytvoření kanálu pro streamování dat. V této části se dozvíte, jak vytvořit centrum událostí jako konektor mezi digitálními a Time Series Insights instancemi Azure.
 
 ### <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 1. V levém podokně vyberte **Vytvořit prostředek**.
 
-1. Vyhledejte a vyberte **Event Hubs**. Vyberte **Create** (Vytvořit).
+1. Vyhledejte a vyberte **Event Hubs**. Vyberte **Vytvořit**.
 
-    [![Create an Event Hubs Namespace](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
+    [![vytvořit obor názvů Event Hubs](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
 
-1. Enter a **Name** for your Event Hubs namespace. Choose **Standard** for **Pricing tier**, your **Subscription**, the **Resource group** that you used for your Digital Twins instance, and the **Location**. Vyberte **Create** (Vytvořit).
+1. Zadejte **název** oboru názvů Event Hubs. Pro **cenovou úroveň**, vaše **předplatné**, **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a **umístění**, vyberte **Standard** . Vyberte **Vytvořit**.
 
-1. In the Event Hubs namespace deployment, select the **Overview** pane, then select **Go to resource**.
+1. V Event Hubs nasazení oboru názvů vyberte podokno **Přehled** a pak vyberte **Přejít k prostředku**.
 
-    [![Event Hubs namespace after deployment](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
+    [![Event Hubs oboru názvů po nasazení](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
 
-1. In the Event Hubs namespace **Overview** pane, select the **Event Hub** button at the top.
-    [![Event Hub button](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
+1. V podokně **přehledu** oboru názvů Event Hubs vyberte tlačítko **centra událostí** v horní části.
+    [![– tlačítko centra událostí](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
 
-1. Enter a **Name** for your event hub, and select **Create**.
+1. Zadejte **název** centra událostí a vyberte **vytvořit**.
 
-   After the event hub is deployed, it appears in the **Event Hubs** pane of the Event Hubs namespace with an **Active** status. Select this event hub to open its **Overview** pane.
+   Po nasazení centra událostí se zobrazí v podokně **Event Hubs** Event Hubs oboru názvů s **aktivním** stavem. Vyberte toto centrum událostí a otevřete jeho podokno **přehledu** .
 
-1. Select the **Consumer group** button at the top, and enter a name such as **tsievents** for the consumer group. Vyberte **Create** (Vytvořit).
+1. V horní části vyberte tlačítko **Skupina příjemců** a jako skupinu příjemců zadejte název, třeba **tsievents** . Vyberte **Vytvořit**.
 
-    [![Event Hub consumer group](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
+    [![skupina uživatelů centra událostí](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
-   After the consumer group is created, it appears in the list at the bottom of the event hub's **Overview** pane.
+   Jakmile se skupina uživatelů vytvoří, zobrazí se v seznamu v dolní části podokna **přehledu** centra událostí.
 
-1. Open the **Shared access policies** pane for your event hub, and select the **Add** button. Enter **ManageSend** as the policy name, make sure all the check boxes are selected, and select **Create**.
+1. Otevřete podokno **zásady sdíleného přístupu** pro centrum událostí a vyberte tlačítko **Přidat** . Jako název zásady zadejte **ManageSend** , ujistěte se, že jsou zaškrtnutá všechna políčka, a vyberte **vytvořit**.
 
-    [![Event Hub connection strings](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
+    [![připojovací řetězce centra událostí](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
     > [!TIP]
-    > Verify that you are creating an SAS Policy for your event hub instance rather than your namespace.
+    > Ověřte, že vytváříte zásady SAS pro instanci centra událostí a nikoli obor názvů.
 
-1. Otevřete zásadu **ManageSend**, kterou jste vytvořili, a zkopírujte do dočasného souboru hodnoty **Připojovací řetězec – primární klíč** a **Připojovací řetězec – sekundární klíč**. You'll need these values to create an endpoint for the event hub in the next section.
+1. Otevřete zásadu **ManageSend**, kterou jste vytvořili, a zkopírujte do dočasného souboru hodnoty **Připojovací řetězec – primární klíč** a **Připojovací řetězec – sekundární klíč**. Tyto hodnoty budete potřebovat pro vytvoření koncového bodu centra událostí v další části.
 
-### <a name="create-an-endpoint-for-the-event-hub"></a>Create an endpoint for the event hub
+### <a name="create-an-endpoint-for-the-event-hub"></a>Vytvoření koncového bodu centra událostí
 
-1. In the command window, make sure you're in the **occupancy-quickstart\src** folder of the Azure Digital Twins sample.
+1. V příkazovém okně se ujistěte, že jste ve složce **Occupancy-quickstart\src** v ukázce digitálních vláken Azure.
 
-1. Open the file **actions\createEndpoints.yaml** in your editor. Obsah souboru nahraďte následujícím kódem:
+1. Otevřete soubor **actions\createEndpoints.yaml** v editoru. Obsah souboru nahraďte následujícím kódem:
 
     ```yaml
     - type: EventHub
@@ -108,22 +108,22 @@ You can use the [Event Hubs](../event-hubs/event-hubs-about.md) service to creat
       path: Name_of_your_Event_Hub
     ```
 
-1. Replace the placeholders `Primary_connection_string_for_your_event_hub` with the value of **Connection string--primary key** for the event hub. Make sure the format of this connection string is as follows:
+1. Zástupné symboly nahraďte `Primary_connection_string_for_your_event_hub` hodnotou **připojovacího řetězce – primární klíč** pro centrum událostí. Ujistěte se, že formát tohoto připojovacího řetězce je následující:
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Replace the placeholders `Secondary_connection_string_for_your_event_hub` with the value of **Connection string--secondary key** for the event hub. Make sure the format of this connection string is as follows: 
+1. Zástupné symboly nahraďte `Secondary_connection_string_for_your_event_hub` hodnotou **připojovacího řetězce – sekundární klíč** pro centrum událostí. Ujistěte se, že formát tohoto připojovacího řetězce je následující: 
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Replace the placeholders `Name_of_your_Event_Hub` with the name of your Event Hub.
+1. Zástupné symboly nahraďte `Name_of_your_Event_Hub` názvem vašeho centra událostí.
 
     > [!IMPORTANT]
-    > Všechny hodnoty zadávejte bez uvozovek. Make sure there's at least one space character after the colons in the YAML file. You can also validate your YAML file contents by using any online YAML validator, such as [this tool](https://onlineyamltools.com/validate-yaml).
+    > Všechny hodnoty zadávejte bez uvozovek. Ujistěte se, že je alespoň jeden znak mezery za dvojtečkami v souboru YAML. Obsah souboru YAML můžete také ověřit pomocí libovolného ověřovacího modulu online YAML, jako je například [Tento nástroj](https://onlineyamltools.com/validate-yaml).
 
 1. Uložte soubor a zavřete ho. V příkazovém okně spusťte následující příkaz a po zobrazení výzvy se přihlaste ke svému účtu Azure.
 
@@ -131,56 +131,56 @@ You can use the [Event Hubs](../event-hubs/event-hubs-about.md) service to creat
     dotnet run CreateEndpoints
     ```
 
-   It creates two endpoints for your event hub.
+   Vytvoří dva koncové body centra událostí.
 
-   [![Endpoints for Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
+   [![koncové body pro Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Analýza s využitím služby Time Series Insights
 
-1. In the left pane of the [Azure portal](https://portal.azure.com), select **Create a resource**. 
+1. V levém podokně [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**. 
 
-1. Search for and select a **Time Series Insights** General Availability (GA) resource. Vyberte **Create** (Vytvořit).
+1. Vyhledejte a vyberte prostředek **Time Series Insights** obecné dostupnosti (GA). Vyberte **Vytvořit**.
 
-1. Zadejte **Název** vaší instance služby Time Series Insights a pak vyberte své **Předplatné**. Select the **Resource group** that you used for your Digital Twins instance, and your **Location**. Select **Next: Event Source** button or the **Event Source** tab.
+1. Zadejte **Název** vaší instance služby Time Series Insights a pak vyberte své **Předplatné**. Vyberte **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a vaši **polohu**. Vyberte **Další: tlačítko zdroje události** nebo karta **zdroj události** .
 
-    [![Selections for creating a Time Series Insights instance](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
+    [![výběrů pro vytvoření instance Time Series Insights](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
-1. In the **Event Source** tab, enter a **Name**, select **Event Hub** as the **Source type**, and make sure the other values are selected correctly. Select **ManageSend** for **Event Hub access policy name**, and then select the consumer group that you created in the previous section for **Event Hub consumer group**. Vyberte **Zkontrolovat a vytvořit**.
+1. Na kartě **zdroj události** zadejte **název**, vyberte **centrum událostí** jako **typ zdroje**a ujistěte se, že jsou vybrané jiné hodnoty správně. Vyberte **ManageSend** pro **název zásady přístupu centra událostí**a pak vyberte skupinu uživatelů, kterou jste vytvořili v předchozí části **skupiny uživatelů centra událostí**. Vyberte **Zkontrolovat a vytvořit**.
 
-    [![Selections for creating an event source](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
+    [![výběry pro vytvoření zdroje události](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
-1. In the **Review + Create** pane, review the information you entered, and select **Create**.
+1. V podokně **Revize + vytvořit** zkontrolujte zadané informace a vyberte **vytvořit**.
 
-1. In the deployment pane, select the Time Series Insights resource you just created. It opens the **Overview** pane for your Time Series Insights environment.
+1. V podokně nasazení vyberte prostředek Time Series Insights, který jste právě vytvořili. Otevře se podokno **Přehled** pro vaše Time Series Insights prostředí.
 
-1. Select the **Go to Environment** button at the top. If you get a data access warning, open the **Data Access Policies** pane for your Time Series Insights instance, select **Add**, select **Contributor** as the role, and select the appropriate user.
+1. V horní části vyberte tlačítko **Přejít k prostředí** . Pokud obdržíte upozornění pro přístup k datům, otevřete podokno **zásady přístupu k datům** pro vaši instanci Time Series Insights, vyberte **Přidat**, jako roli vyberte **Přispěvatel** a vyberte příslušného uživatele.
 
-1. The **Go to Environment** button opens the [Time Series Insights explorer](../time-series-insights/time-series-insights-explorer.md). If it doesn't show any events, simulate device events by browsing to the **device-connectivity** project of your Digital Twins sample, and running `dotnet run`.
+1. Tlačítko **Přejít na prostředí** otevře [Průzkumníka Time Series Insights](../time-series-insights/time-series-insights-explorer.md). Pokud se nezobrazí žádné události, simulujte události zařízení tak, že přejdete na projekt pro **připojení k zařízení** v ukázce digitálního vlákna a spustíte `dotnet run`.
 
-1. After a few simulated events are generated, go back to the Time Series Insights explorer, and select the refresh button at the top. You should see analytical charts being created for your simulated sensor data. 
+1. Po vygenerování několika simulovaných událostí se vraťte do Průzkumníka Time Series Insights a v horní části vyberte tlačítko Aktualizovat. Měli byste vidět analytické grafy, které se vytvářejí pro Simulovaná data senzorů. 
 
-    [![Chart in the Time Series Insights explorer](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
+    [![grafu v Průzkumníkovi Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
-1. In the Time Series Insights explorer, you can then generate charts and heatmaps for different events and data from your rooms, sensors, and other resources. On the left side, use the **MEASURE** and **SPLIT BY** drop-down boxes to create your own visualizations. 
+1. V Průzkumníku Time Series Insights můžete vygenerovat grafy a Heat mapy pro různé události a data z místností, senzorů a dalších prostředků. Na levé straně můžete pomocí rozevíracích seznamů **měření** a **rozdělení** vytvořit vlastní vizualizace. 
 
-   For example, select **Events** for **MEASURE** and **DigitalTwins-SensorHardwareId** for **SPLIT BY**, to generate a heatmap for each of your sensors. The heatmap will be similar to the following image:
+   Například vyberte **události** pro **míru** a **DIGITALTWINS-SensorHardwareId** pro **rozdělení podle**, abyste vygenerovali heatmapu pro každé z vašich senzorů. Heatmapu bude vypadat podobně jako na následujícím obrázku:
 
-   [![Heatmap in the Time Series Insights explorer](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
+   [![heatmapu v Průzkumníkovi Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you want to stop exploring Azure Digital Twins beyond this point, feel free to delete resources created in this tutorial:
+Pokud chcete přestat zkoumat digitální vlákna Azure nad rámec tohoto bodu, nebojte se odstranit prostředky vytvořené v tomto kurzu:
 
-1. From the left menu in the [Azure portal](https://portal.azure.com), select **All resources**, select your Digital Twins resource group, and then select **Delete**.
+1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte svou skupinu prostředků digitálního vynechání a pak vyberte **Odstranit**.
 
     > [!TIP]
-    > If you experienced trouble deleting your Digital Twins instance, a service update has been rolled out with the fix. Please retry deleting your instance.
+    > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
 
-2. If necessary, delete the sample applications on your work machine.
+2. V případě potřeby odstraňte ukázkové aplikace v pracovním počítači.
 
 ## <a name="next-steps"></a>Další kroky
 
-Go to the next article to learn more about spatial intelligence graphs and object models in Azure Digital Twins.
+V dalším článku se dozvíte víc o grafech prostorových informací a objektových modelech v digitálních prostředcích Azure.
 
 > [!div class="nextstepaction"]
 > [Vysvětlení grafu prostorové inteligence a objektových modelů služby Digital Twins](concepts-objectmodel-spatialgraph.md)

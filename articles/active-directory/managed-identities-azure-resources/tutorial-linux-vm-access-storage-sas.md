@@ -35,7 +35,7 @@ SAS služby poskytuje možnost získat po omezenou dobu omezený přístup k obj
 
 
 > [!div class="checklist"]
-> * Vytvoření účtu úložiště
+> * vytvořit účet úložiště
 > * Vytvoření kontejneru objektů blob v účtu úložiště
 > * Udělení přístupu k SAS účtu úložiště v Resource Manageru pro virtuální počítač 
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k načtení SAS z Resource Manageru 
@@ -44,7 +44,7 @@ SAS služby poskytuje možnost získat po omezenou dobu omezený přístup k obj
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště 
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
 Teď vytvoříte účet úložiště (pokud ho ještě nemáte).  Tento krok také můžete přeskočit a udělit spravované identitě přiřazené systémem virtuálního počítače přístup ke klíčům stávajícího účtu úložiště. 
 

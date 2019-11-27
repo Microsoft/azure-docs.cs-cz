@@ -1,6 +1,6 @@
 ---
-title: Known issues with Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Learn about the limitations and known issues with Azure Data Lake Storage Gen2
+title: Známé problémy s Azure Data Lake Storage Gen2 | Dokumentace Microsoftu
+description: Další informace o omezeních a známých problémech s Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,72 +8,79 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 9e1529517a812ac11f5a3023b699bd8f1332fc98
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 3ea77eb5dd8a03f877164179e3accc3a6f6d0aef
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484409"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548319"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Known issues with Azure Data Lake Storage Gen2
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
-This article lists the features and tools that are not yet supported or only partially supported with storage accounts that have a hierarchical namespace (Azure Data Lake Storage Gen2).
+V tomto článku jsou uvedené funkce a nástroje, které se ještě nepodporují, nebo jenom částečně podporované s účty úložiště, které mají hierarchický obor názvů (Azure Data Lake Storage Gen2).
 
 <a id="blob-apis-disabled" />
 
-## <a name="issues-and-limitations-with-using-blob-apis"></a>Issues and limitations with using Blob APIs
+## <a name="issues-and-limitations-with-using-blob-apis"></a>Problémy a omezení s použitím rozhraní API objektů BLOB
 
-Blob APIs and Data Lake Storage Gen2 APIs can operate on the same data.
+Rozhraní API objektů BLOB a rozhraní API pro Data Lake Storage Gen2 můžou pracovat se stejnými daty.
 
-This section describes issues and limitations with using blob APIs and Data Lake Storage Gen2 APIs to operate on the same data.
+Tato část popisuje problémy a omezení s použitím rozhraní API objektů BLOB a rozhraní API pro Data Lake Storage Gen2 pro práci se stejnými daty.
 
-* You can't use both Blob APIs and Data Lake Storage APIs to write to the same instance of a file. If you write to a file by using Data Lake Storage Gen2 APIs, then that file's blocks won't be visible to calls to the [Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API. You can overwrite a file by using either Data Lake Storage Gen2 APIs or Blob APIs. This won't affect file properties.
+* Rozhraní API objektů BLOB a rozhraní Data Lake Storage API nemůžete použít k zápisu do stejné instance souboru. Pokud zapisujete do souboru pomocí Data Lake Storage Gen2 rozhraní API, pak bloky tohoto souboru nebudou viditelné pro volání rozhraní API objektů BLOB [Get Block](https://docs.microsoft.com/rest/api/storageservices/get-block-list) . Soubor můžete přepsat buď pomocí rozhraní API Data Lake Storage Gen2 nebo rozhraní API objektů BLOB. To nebude mít vliv na vlastnosti souboru.
 
-* When you use the [List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) operation without specifying a delimiter, the results will include both directories and blobs. If you choose to use a delimiter, use only a forward slash (`/`). This is the only supported delimiter.
+* Když použijete operaci [listovat BLOBs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) bez zadání oddělovače, výsledky budou zahrnovat adresáře a objekty blob. Pokud se rozhodnete použít oddělovač, použijte pouze lomítko (`/`). Toto je jediný podporovaný oddělovač.
 
-* If you use the [Delete Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API to delete a directory, that directory will be deleted only if it's empty. This means that you can't use the Blob API delete directories recursively.
+* Použijete-li k odstranění adresáře rozhraní API pro [odstranění objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/delete-blob) , bude tento adresář odstraněn pouze v případě, že je prázdný. To znamená, že nemůžete rekurzivně odstraňovat adresáře pomocí rozhraní BLOB API.
 
-These Blob REST APIs aren't supported:
+Tato rozhraní REST API pro objekty blob nejsou podporovaná:
 
-* [Put Blob (Page)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Put Page](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Put Blob (Append)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [Vložit objekt BLOB (stránka)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Vložit stránku](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [Získat rozsahy stránek](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [Objekt BLOB přírůstkového kopírování](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [Vložit stránku z adresy URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Vložit objekt BLOB (připojit)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Připojit blok](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [Připojit blok z adresy URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-Unmanaged VM disks are not supported in accounts that have a hierarchical namespace. If you want to enable a hierarchical namespace on a storage account, place unmanaged VM disks into a storage account that doesn't have the hierarchical namespace feature enabled.
+Nespravované disky virtuálních počítačů nejsou podporované v účtech, které mají hierarchický obor názvů. Pokud chcete povolit hierarchický obor názvů v účtu úložiště, umístěte nespravované disky virtuálních počítačů do účtu úložiště, který nemá povolenou funkci hierarchického oboru názvů.
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="api-scope-for-data-lake-storage-client-library-for-sdk-powershell-and-cli"></a>API Scope for Data Lake Storage Client Library for SDK, Powershell and CLI
+## <a name="api-scope-for-data-lake-storage-client-library-for-sdk-powershell-and-cli"></a>Obor rozhraní API pro Data Lake Storage klientskou knihovnu pro sadu SDK, PowerShell a rozhraní příkazového řádku
 
-The following capabilities are currently not supported in data lake client library for PowerShell, Azure CLI, Java, Python and the .NET SDK: `RecursiveACL`, `setExpiry`, `Concat` and `ConcurrentAppend`.
+### <a name="filesystem-support-in-sdks"></a>Podpora systému souborů v sadách SDK
 
-## <a name="support-for-other-blob-storage-features"></a>Support for other Blob Storage features
+- .NET, Java a Python jsou ve verzi Public Preview. Jiné sady SDK se aktuálně nepodporují.
+- Operace get a set ACL nejsou aktuálně rekurzivní.
 
-The following table lists all other features and tools that are not yet supported or only partially supported with storage accounts that have a hierarchical namespace (Azure Data Lake Storage Gen2).
+### <a name="filesystem-support-in-powershell-and-azure-cli"></a>Podpora systému souborů v prostředí PowerShell a rozhraní příkazového řádku Azure
 
-| Feature / Tool    | Další informace    |
+Operace get a set ACL nejsou aktuálně rekurzivní.
+
+## <a name="support-for-other-blob-storage-features"></a>Podpora dalších funkcí Blob Storage
+
+Následující tabulka obsahuje seznam všech dalších funkcí a nástrojů, které ještě nejsou podporované nebo částečně podporované s účty úložiště, které mají hierarchický obor názvů (Azure Data Lake Storage Gen2).
+
+| Funkce/nástroj    | Další informace    |
 |--------|-----------|
-| **AzCopy** | Version-specific support <br><br>Use only the latest version of AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Earlier versions of AzCopy such as AzCopy v8.1, are not supported.|
-| **Azure Blob Storage lifecycle management policies** | All access tiers are supported. The archive access tier is currently in preview. The deletion of blob snapshots is not yet supported. |
-| **Azure Content Delivery Network (CDN)** | Not yet supported|
-| **Azure search** |Supported (Preview)|
-| **Azure Storage Explorer** | Version-specific support. <br><br>Use only versions `1.6.0` or higher. <br> There is currently a storage bug affecting version `1.11.0` that can result in authentication errors in certain scenarios. A fix for the storage bug is being rolled out, but as a workaround, we recommend that you use version `1.10.x` which is available as a [free download](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). `1.10.x` is not affected by the storage bug.|
-| **Blob container ACLs** |Not yet supported|
-| **Blobfuse** |Not yet supported|
-| **Vlastní domény** |Not yet supported|
-| **Storage Explorer in the Azure portal** | Limited support. ACLs are not yet supported. |
-| **Protokolování diagnostiky** |Diagnostic logs are supported (Preview).<br><br>Enabling logs in the Azure portal is not currently supported. Here's an example of how to enable the logs by using PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Make sure to specify `Blob` as the value of the `-ServiceType` parameter as shown in this example. <br><br>Currently, Azure Storage Explorer can't be used for viewing diagnostic logs. To view logs, please use AzCopy or SDKs.
-| **Immutable storage** |Not yet supported <br><br>Immutable storage gives the ability to store data in a [WORM (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) state.|
-| **Object-level tiers** |Cool and archive tiers are supported. The archive tier is in preview. All other access tiers are not yet supported.|
-| **Powershell and CLI support** | Limited functionality <br><br>Blob operations are supported. Working with directories and setting access control lists (ACLs) is not yet supported. |
-| **Static websites** |Not yet supported <br><br>Specifically, the ability to serve files to [Static websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
-| **Third party applications** | Limited support <br><br>Third party applications that use REST APIs to work will continue to work if you use them with Data Lake Storage Gen2. <br>Applications that call Blob APIs will likely work.|
-|**Obnovitelné odstranění** |Not yet supported|
-| **Versioning features** |Not yet supported <br><br>This includes  [soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete), and other versioning features such as [snapshots](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
+| **AzCopy** | Podpora specifická pro verzi <br><br>Použijte pouze nejnovější verzi AzCopy ([AzCopy v10 za účelem](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Starší verze AzCopy, jako je AzCopy v 8.1, nejsou podporovány.|
+| **Zásady správy životního cyklu Azure Blob Storage** | Podporují se zásady správy životního cyklu (Preview).  Podporují se všechny úrovně přístupu. Úroveň přístupu archivu je momentálně ve verzi Preview. Odstranění snímků objektů BLOB ještě není podporováno. <br><br> V současné době existují nějaké chyby ovlivňující zásady správy životního cyklu a úroveň přístupu archivu.  Zaregistrujte se do verze Preview zásad správy životního cyklu a archivní úrovně přístupu [zde](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   |
+| **Azure Content Delivery Network (CDN)** | Zatím nepodporováno|
+| **Hledání Azure** |Podporováno (Preview)|
+| **Azure Storage Explorer** | Podpora specifická pro verzi. <br><br>Používejte pouze verze `1.6.0` nebo vyšší. <br> V tuto chvíli existuje chyba úložiště ovlivňující `1.11.0` verze, která může v některých scénářích způsobit chyby ověřování. Zavádí se oprava chyby úložiště, ale jako alternativní řešení doporučujeme použít verzi `1.10.x`, která je k dispozici jako [bezplatné stahování](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). `1.10.x` není ovlivněná chybou úložiště.|
+| **Seznamy ACL kontejneru objektů BLOB** |Zatím nepodporováno|
+| **Blobfuse** |Zatím nepodporováno|
+| **Vlastní domény** |Zatím nepodporováno|
+| **Průzkumník služby Storage v Azure Portal** | Omezená podpora. Seznamy řízení přístupu (ACL) ještě nejsou podporované. |
+| **Protokolování diagnostiky** |Diagnostické protokoly jsou podporovány (Preview).<br><br>Povolení protokolů v Azure Portal není aktuálně podporováno. Tady je příklad, jak povolit protokoly pomocí PowerShellu. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Nezapomeňte zadat `Blob` jako hodnotu parametru `-ServiceType`, jak je znázorněno v tomto příkladu. <br><br>V současné době nelze Průzkumník služby Azure Storage použít pro zobrazení diagnostických protokolů. Pokud chcete zobrazit protokoly, použijte prosím AzCopy nebo sady SDK.
+| **Neměnné úložiště** |Zatím nepodporováno <br><br>Neměnné úložiště poskytuje možnost ukládat data v [červech (jeden způsob zápisu, čtení mnoha)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
+| **Vrstvy na úrovni objektů** |Jsou podporovány studené a archivní úrovně. Archivní úroveň je ve verzi Preview. Všechny ostatní úrovně přístupu ještě nejsou podporované. <br><br> V současné době dochází k nějakým chybám, které mají vliv na úroveň přístupu archivu.  Zaregistrujte si verzi Preview úrovně přístupu archivu [tady](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).|
+| **Podpora PowerShellu a rozhraní příkazového řádku** | Omezená funkčnost <br><br>Jsou podporovány operace objektů BLOB. Práce s adresáři a nastavování seznamů řízení přístupu (ACL) ještě není podporovaná. |
+| **Statické weby** |Zatím nepodporováno <br><br>Konkrétně možnost poskytovat soubory [statickým webům](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
+| **Aplikace třetích stran** | Omezená podpora <br><br>Aplikace třetích stran, které používají rozhraní REST API k práci, budou fungovat i v případě, že je použijete s Data Lake Storage Gen2. <br>Aplikace, které volají rozhraní API objektů blob, budou nejspíš fungovat.|
+|**Obnovitelné odstranění** |Zatím nepodporováno|
+| **Funkce správy verzí** |Zatím nepodporováno <br><br>Patří sem [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)a další funkce pro správu verzí, jako jsou [snímky](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
 
 

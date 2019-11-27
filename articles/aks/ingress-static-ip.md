@@ -27,7 +27,7 @@ Můžete také:
 - [Vytvoření kontroleru příchozího přenosu dat, který používá vaše vlastní certifikáty TLS][aks-ingress-own-tls]
 - [Vytvořte kontroler příchozího přenosu dat, který pomocí šifry umožňuje automaticky generovat certifikáty TLS s dynamickou veřejnou IP adresou.][aks-ingress-tls]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -392,7 +392,7 @@ Tento článek obsahuje některé externí komponenty, které se AKS. Další in
 
 - [Helm CLI][helm-cli]
 - [Kontroler NGINX pro příchozí přenosy][nginx-ingress]
-- [cert-manager][cert-manager]
+- [Správce certifikátů][cert-manager]
 
 Můžete také:
 

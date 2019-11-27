@@ -69,7 +69,7 @@ Pokaždé, když vytvoříte nový prostředek pro LUIS, je potřeba přiřadit 
 
     ![Pokud chcete přidat prostředek předpovědi LUIS, vyberte Přidat prostředek předpovědi.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřazení prostředků**.
+1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřadit prostředek**.
 
    ![Přiřadit prostředek vaší aplikace](./media/get-started-portal-deploy-app/assign-resource.png)
 

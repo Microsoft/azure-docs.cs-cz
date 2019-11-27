@@ -41,7 +41,7 @@ Pokud je vašemu účtu přiřazena role **přispěvatele**, nemáte dostatečn�
 3. V Azure Active Directory vyberte **Uživatelská nastavení**.
 4. Zkontrolujte nastavení **Registrace aplikací**.
     - Pokud je nastavená možnost **Ano**, můžou aplikace AD registrovat i uživatelé, kteří nemají oprávnění správce. V případě tohoto nastavení může aplikaci zaregistrovat kterýkoli uživatel v tenantovi Azure AD.  
-    ![select App registrations in User settings](./media/activate-subs-accounts/app-register.png)
+    ![vyberte Registrace aplikací v nastavení uživatele](./media/activate-subs-accounts/app-register.png)
     - Pokud je pro položku **Registrace aplikací** nastavená možnost **Ne**, můžou aplikace Azure Active Directory registrovat jenom uživatelé v roli správce tenanta. Aplikaci CloudynCollector musí zaregistrovat správce tenanta.
 
 
@@ -53,14 +53,14 @@ Když přidáte účet nebo aktualizujete předplatné, povolíte službě Cloud
 
 1. Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte **Cloud Accounts** (Účty v cloudu).
 2. Klikněte na **Add new account** (Přidat nový účet). Zobrazí se dialog **Add new account**. Zadejte požadované informace.  
-    ![enter required information in the Add new account box](./media/activate-subs-accounts/add-new-account.png)
+    ![zadejte požadované informace v poli Přidat nový účet](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Aktualizace předplatného
 
 1. Pokud chcete aktualizovat _neaktivované_ předplatné, které už ve službě Cloudyn v nástroji pro správu účtů máte, klikněte na symbol tužky pro úpravy napravo od nadřazeného _identifikátoru GUID tenanta_. Předplatná jsou seskupená pod nadřazeným tenantem, neaktivujte je tedy jednotlivě.
-    ![select your tenant ID in the Rediscover subscriptions box](./media/activate-subs-accounts/existing-sub.png)
+    ![vyberte ID tenanta v poli znovu vyhledat předplatná](./media/activate-subs-accounts/existing-sub.png)
 2. Pokud je potřeba, zadejte ID tenanta. Jestliže ID tenanta neznáte, vyhledejte ho pomocí následujících kroků:
-    1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+    1. Přihlásit se na [Azure Portal](https://portal.azure.com).
     2. Na portálu Azure Portal vyberte **Azure Active Directory**.
     3. K získání ID tenanta vyberte v tenantovi Azure AD možnost **Vlastnosti**.
     4. Zkopírujte GUID adresáře. Tato hodnota představuje ID tenanta.
@@ -87,7 +87,7 @@ Pokud jste uživatel se smlouvou Enterprise nebo Cloud Solution Provider (CSP), 
 
 - *The specified API key is not a top level enrollment key* (Zadaný klíč rozhraní API není klíč registru nejvyšší úrovně) – zobrazí se v průvodci **nastavením služby Cloudyn**.
 - *Direct Enrollment – No* (Přímá registrace – ne) – zobrazí se na portálu se smlouvou Enterprise.
-- *No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account* displayed in the Cloudyn portal.
+- *V posledních 30 dnech se nenašla žádná data o využití. Obraťte se prosím na svého distributora, abyste se ujistili, že pro váš účet Azure zobrazené na portálu Cloudyn jste povolili zápis* .
 
 Z předchozích zpráv vyplývá, že jste si smlouvu Azure Enterprise zakoupili přes prodejce nebo poskytovatele CSP. Abyste mohli zobrazovat data ve službě Cloudyn, musí váš prodejce nebo poskytovatel CSP pro váš účet Azure povolit _revize_.
 

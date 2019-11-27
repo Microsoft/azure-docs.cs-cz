@@ -48,7 +48,7 @@ Otevřete `HoloLens\DirectX\SampleHoloLens.sln` v aplikaci Visual Studio.
 
 Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Při [nastavování prostředku prostorových ukotvení](#create-a-spatial-anchors-resource)jste je zkopírovali do textového editoru.
 
-Otevřít `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
+Otevřete `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
 
 Vyhledejte pole `SpatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
 

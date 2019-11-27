@@ -57,7 +57,7 @@ K dokončení kurzu potřebujete následující:
 
 * Přečíst si článek [Přehled ochrany obsahu](content-protection-overview.md)
 * Nainstalujte Visual Studio Code nebo Visual Studio.
-* [Vytvoření účtu Media Services](create-account-cli-quickstart.md).
+* [Vytvořte účet Media Services](create-account-cli-quickstart.md).
 * Získání přihlašovacích údajů potřebných k použití Media Services rozhraní API pomocí [přístupových rozhraní API](access-api-cli-how-to.md).
 
 ## <a name="download-code"></a>Stažení kódu
@@ -170,4 +170,4 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Ochrana s využitím DRM](protect-with-drm.md)
+> [Ochrana pomocí DRM](protect-with-drm.md)

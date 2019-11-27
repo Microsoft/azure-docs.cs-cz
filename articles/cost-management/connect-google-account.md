@@ -1,6 +1,6 @@
 ---
-title: Connect a Google Cloud Platform account to Cloudyn in Azure | Microsoft Docs
-description: Connect a Google Cloud Platform account to view cost and usage data in Cloudyn reports.
+title: Připojení účtu Google Cloud Platform do Cloudyn v Azure | Dokumentace Microsoftu
+description: Připojení účtu Google Cloud Platform a zobrazit data o využití a nákladů v sestavách Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,62 +17,62 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230137"
 ---
-# <a name="connect-a-google-cloud-platform-account"></a>Connect a Google Cloud Platform account
+# <a name="connect-a-google-cloud-platform-account"></a>Připojení účtu Google Cloud Platform
 
-You can connect your existing Google Cloud Platform account to Cloudyn. After you connect your account to Cloudyn, cost and usage data is available in Cloudyn reports. This article helps you to configure and connect your Google account with Cloudyn.
+Můžete připojit váš existující účet Google Cloud Platform do Cloudyn. Po propojení účtu do Cloudyn, nákladů a využití dat je k dispozici v sestavách Cloudyn. Tento článek pomůže vám pomůže nakonfigurovat a připojte si účet Google s Cloudyn.
 
 
-## <a name="collect-project-information"></a>Collect project information
+## <a name="collect-project-information"></a>Shromažďovat informace o projektu
 
-You start by gathering information about your project.
+Začnete tím, že shromažďování informací o projektu.
 
-1. Sign in to the Google Cloud Platform console at [https://console.cloud.google.com](https://console.cloud.google.com).
-2. Review the project information that you want to onboard to Cloudyn and note the **Project name** and the **Project ID**. Keep the information handy for later steps.  
-    ![Project name and Project ID shown in the Google Cloud Platform console](./media/connect-google-account/gcp-console01.png)
-3. If billing is not enabled and linked to your project, create a billing account. For more information, see [Create a new billing account](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
+1. Přihlaste se ke konzole Google Cloud Platform v [https://console.cloud.google.com](https://console.cloud.google.com).
+2. Zkontrolujte informace o projektu, které chcete připojit k Cloudyn, a poznamenejte si **název projektu** a **ID projektu**. Zachovejte informace po ruce pro pozdější kroky.  
+    název projektu ![a ID projektu zobrazené v konzole Google Cloud Platform](./media/connect-google-account/gcp-console01.png)
+3. V případě fakturace není povolen a propojeny s projektem, vytvořte fakturační účet. Další informace najdete v tématu [Vytvoření nového fakturačního účtu](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
 
-## <a name="enable-storage-bucket-billing-export"></a>Enable storage bucket billing export
+## <a name="enable-storage-bucket-billing-export"></a>Povolit export fakturační kontejneru úložiště
 
-Cloudyn retrieves your Google billing data from a storage bucket. Keep the **Bucket name** and **Report prefix** information handy for later use during Cloudyn registration.
+Cloudyn načte vašich fakturačních dat Google z kontejneru úložiště. Ponechte **název** sady a informace **předpony sestavy** užitečné pro pozdější použití při registraci Cloudyn.
 
-Using Google Cloud Storage to store usage reports incurs minimal fees. For more information, see [Cloud Storage Pricing](https://cloud.google.com/storage/pricing).
+Použití Google Cloud Storage pro uložení sestavy o využití se účtují minimální poplatky. Další informace najdete v tématu [ceny cloudového úložiště](https://cloud.google.com/storage/pricing).
 
-1. If you have not enabled billing export to a file, follow the instructions at [How to enable billing export to a file](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). You can use either JSON or CSV billing export format.
-2. Otherwise, in the Google Cloud Platform console, navigate to **Billing** > **Billing export**. Note your billing **Bucket name** and **Report prefix**.  
-    ![Billing export information shown on the Billing export page](./media/connect-google-account/billing-export.png)
+1. Pokud jste nepovolili export fakturace do souboru, postupujte podle pokynů v tématu [Jak povolit export fakturace do souboru](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). Můžete použít JSON nebo CSV fakturační formát exportu.
+2. V opačném případě v konzole Google Cloud Platform přejděte na **fakturace** > **fakturace export**. Poznamenejte si **název** fakturačního intervalu a **předponu sestavy**.  
+    ![informace o exportu fakturace zobrazené na stránce Export fakturace](./media/connect-google-account/billing-export.png)
 
-## <a name="enable-google-cloud-platform-apis"></a>Enable Google Cloud Platform APIs
+## <a name="enable-google-cloud-platform-apis"></a>Povolte rozhraní API Google Cloud Platform
 
-To collect usage and asset information, Cloudyn needs the following Google Cloud Platform APIs enabled:
+Cloudyn shromažďovat údaje o využití a prostředků, potřebuje následující Google Cloud Platform rozhraní API povoleno:
 
-- BigQuery API
+- BigQuery rozhraní API
 - Google Cloud SQL
-- Google Cloud Datastore API
-- Cloudové úložiště Googlu
+- Google Cloud Datastore. rozhraní API
+- Google Cloud Storage
 - Google Cloud Storage JSON API
-- Google Compute Engine API
+- Google Compute Engine rozhraní API
 
-### <a name="enable-or-verify-apis"></a>Enable or verify APIs
+### <a name="enable-or-verify-apis"></a>Povolení nebo ověření rozhraní API
 
-1. In the Google Cloud Platform console, select the project that you want to register with Cloudyn.
-2. Navigate to **APIs & Services** > **Library**.
-3. Use search to find each previously listed API.
-4. For each API, verify that **API enabled** is shown. Otherwise, click **ENABLE**.
+1. V konzole Google Cloud Platform vyberte projekt, který chcete použít k registraci ve službě Cloudyn.
+2. Přejděte na **rozhraní api & Services** > **Library**.
+3. Pomocí hledání můžete najít jednotlivé dříve uvedené rozhraní API.
+4. U každého rozhraní API ověřte, že se zobrazuje **rozhraní API povoleno** . V opačném případě klikněte na tlačítko **Povolit**.
 
-## <a name="add-a-google-cloud-account-to-cloudyn"></a>Add a Google Cloud account to Cloudyn
+## <a name="add-a-google-cloud-account-to-cloudyn"></a>Přidání účtu Google Cloud Cloudyn
 
-1. Open the Cloudyn portal from the Azure portal or navigate to [https://azure.cloudyn.com](https://azure.cloudyn.com/) and sign in.
-2. Click **Settings** (cog symbol) and then select **Cloud Accounts**.
-3. In **Accounts Management**, select the **Google Accounts** tab and then click **Add new +** .
-4. In **Google Account Name**, enter the email address for the billing account then click **Next**.
-5. In the Google authentication dialog, select or enter a Google account and then **ALLOW** cloudyn.com access to your account.
-6. Add the request project information that you had previous noted. They include **Project ID**, **Project** name, **billing** bucket name, and **billing file** Report prefix then click **Save**.  
-    ![Add Google project to Cloudyn account](./media/connect-google-account/add-project.png)
+1. Otevřete portál Cloudyn z Azure Portal nebo přejděte na [https://azure.cloudyn.com](https://azure.cloudyn.com/) a přihlaste se.
+2. Klikněte na **Nastavení** (ozubeného kola symbol) a pak vyberte **cloudové účty**.
+3. V části **Správa účtů**vyberte kartu **účty Google** a pak klikněte na **Přidat nové +** .
+4. Do pole **název účtu Google**zadejte e-mailovou adresu fakturačního účtu a pak klikněte na **Další**.
+5. V dialogu ověřování Google vyberte nebo zadejte účet Google a pak **Povolte** přístup Cloudyn.com k vašemu účtu.
+6. Přidat žádost o informace o projektu, že jste měli předchozí jste si poznamenali. Patří mezi ně **ID projektu**, název **projektu** , název **fakturačního** souboru a předpona sestavy **soubor** a potom klikněte na **Uložit**.  
+    ![přidat projekt Google do účtu Cloudyn](./media/connect-google-account/add-project.png)
 
-Your Google account appears in the list of accounts and it should say **Authenticated**. Under it, your Google project name and ID should appear and have a green check mark symbol. Account Status should say **Completed**.
+Váš účet Google se zobrazí v seznamu účtů a měl by se jednat o **ověřený**příkaz. V něm by měl název projektu Google a ID se zobrazí a mít symbol zelená značka zaškrtnutí. Stav účtu by měl být **dokončen**.
 
-Within a few hours, Cloudyn reports show Google cost and usage information.
+Během pár hodin sestavách Cloudyn zobrazit Google nákladů a využití informací.
 
 ## <a name="next-steps"></a>Další kroky
 
-- To learn more about Cloudyn, continue to the [Review usage and costs](./tutorial-review-usage.md) tutorial for Cloudyn.
+- Další informace o Cloudyn najdete v kurzu [Kontrola využití a nákladů](./tutorial-review-usage.md) pro Cloudyn.

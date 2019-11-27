@@ -1,14 +1,14 @@
 ---
-title: ISO 27001 pomocného a mapování úloh podrobného řízení pro úlohy SQL
+title: Ovládací prvky podrobného řízení pro úlohy (ISO 27001)/řízení úloh SQL
 description: Mapování ovládacího prvku podrobného plánu úloh App Service Environment/SQL Database ISO 27001 na Azure Policy a RBAC.
 ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: ab650e35537213b0ce1e1d2b2f4692a09b0995ae
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5c5b83669a477255f0cdce45993a5871b5a9c6f8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184550"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546775"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Mapování ovládacího prvku ukázka ISO 27001 pomocného programu/úlohy SQL
 

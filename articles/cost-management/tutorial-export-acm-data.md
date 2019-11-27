@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create and manage exported data from Azure Cost Management
-description: This article shows you how you can create and manage exported Azure Cost Management data so that you can use it in external systems.
+title: Kurz – vytváření a Správa exportovaných dat z Azure Cost Management
+description: V tomto článku se dozvíte, jak můžete vytvářet a spravovat exportovaná Azure Cost Management data, abyste je mohli použít v externích systémech.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -19,20 +19,20 @@ ms.locfileid: "74229827"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
 
-Pokud jste si prošli kurz Analýza nákladů, pak jste obeznámeni s ručním stahováním dat ze služby Cost Management. However, you can create a recurring task that automatically exports your Cost Management data to Azure storage on a daily, weekly, or monthly basis. Exportovaná data jsou ve formátu CSV a obsahují všechny informace, které služba Cost Management shromažďuje. Exportovaná data v úložišti Azure pak můžete používat s externími systémy a kombinovat je se svými vlastními daty. Exportovaná data můžete používat v externím systému, jako je třeba řídicí panel nebo jiný finanční systém.
+Pokud jste si prošli kurz Analýza nákladů, pak jste obeznámeni s ručním stahováním dat ze služby Cost Management. Můžete však vytvořit opakované úlohy, která automaticky vyexportuje Cost Management data do služby Azure storage na základě denně, týdně nebo měsíčně. Exportovaná data jsou ve formátu CSV a obsahují všechny informace, které služba Cost Management shromažďuje. Exportovaná data v úložišti Azure pak můžete používat s externími systémy a kombinovat je se svými vlastními daty. Exportovaná data můžete používat v externím systému, jako je třeba řídicí panel nebo jiný finanční systém.
 
-Watch the [How to schedule exports to storage with Azure Cost Management](https://www.youtube.com/watch?v=rWa_xI1aRzo) video about creating a scheduled export of your Azure cost data to Azure Storage.
+Podívejte se na [článek Jak naplánovat exporty do úložiště pomocí Azure cost management](https://www.youtube.com/watch?v=rWa_xI1aRzo) videa o vytvoření plánovaného exportu vašich dat Azure pro Azure Storage.
 
 Příklady v tomto kurzu vás provedou exportem dat služby Cost Management a následným ověřením, že se daná data úspěšně exportovala.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření každodenního exportu
-> * Ověřit shromáždění dat
+> * Vytvořit každodenní export
+> * Ověření shromáždění dat
 
-## <a name="prerequisites"></a>Předpoklady
-Data export is available for a variety of Azure account types, including [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) customers. To view the full list of supported account types, see [Understand Cost Management data](understand-cost-mgt-data.md). The following Azure permissions, or scopes, are supported per subscription for data export by user and group. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
+## <a name="prerequisites"></a>Požadavky
+Export dat je dostupný pro celou řadu typů účtů Azure, včetně zákazníků [smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) . Úplný seznam podporovaných typů účtů najdete v tématu [pochopení cost management dat](understand-cost-mgt-data.md). Následující oprávnění Azure (nebo obory) jsou podporovaná pro každé předplatné pro export dat podle uživatele a skupiny. Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
 
 - Vlastník – může vytvářet, upravovat a odstraňovat naplánované exporty u předplatných.
 - Přispěvatel – může vytvářet, upravovat a odstraňovat svoje vlastní naplánované exporty. Může měnit názvy naplánovaných exportů, které vytvořili jiní uživatelé.
@@ -45,65 +45,65 @@ Pro účty služby Azure Storage:
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com/).
 
-## <a name="create-a-daily-export"></a>Vytvoření každodenního exportu
+## <a name="create-a-daily-export"></a>Vytvořit každodenní export
 
-To create or view a data export or to schedule an export, open the desired scope in the Azure portal and select **Cost analysis** in the menu. For example, navigate to **Subscriptions**, select a subscription from the list, and then select **Cost analysis** in the menu. At the top of the Cost analysis page, click **Export** and then choose an export option. For example, click **Schedule export**.  
+Pokud chcete vytvořit nebo zobrazit export dat nebo naplánovat export, otevřete požadovaný obor v Azure Portal a v nabídce vyberte **Analýza nákladů** . Přejděte například na **odběry**, vyberte předplatné ze seznamu a potom v nabídce vyberte **Analýza nákladů** . V horní části stránky analýza nákladů klikněte na **exportovat** a pak zvolte možnost exportu. Klikněte například na položku **naplánovat export**.  
 
 > [!NOTE]
-> - Besides subscriptions, you can create exports on resource groups, accounts, departments, and enrollments. For more information about scopes, see [Understand and work with scopes](understand-work-scopes.md).
->- When you’re signed in as a partner at the billing account scope or on a customer’s tenant, you can export data to an Azure Storage account that’s linked to your partner storage account. However, you must have an active subscription in your CSP tenant.
+> - Kromě předplatných můžete vytvářet exporty pro skupiny prostředků, účty, oddělení a registrace. Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
+>- Když jste se přihlásili jako partner v oboru fakturačního účtu nebo v tenantovi zákazníka, můžete data exportovat do účtu Azure Storage, který je propojený s vaším účtem úložiště partnera. V tenantovi CSP ale musíte mít aktivní předplatné.
 >
 
 
-Click **Add**, type a name for the export, and then select the **Daily export of month-to-date costs** option. Klikněte na **Další**.
+Klikněte na tlačítko **Přidat**, zadejte název exportu a pak vyberte možnost **denní export nákladů na měsíc do data** . Klikněte na **Další**.
 
-![New export example showing export type](./media/tutorial-export-acm-data/basics_exports.png)
+![Nový příklad pro export zobrazující export typu](./media/tutorial-export-acm-data/basics_exports.png)
 
-Specify the subscription for your Azure storage account, then select your storage account.  Specify the storage container and the directory path that you'd like the export file to go to.  Klikněte na **Další**.
+Zadejte předplatné pro svůj účet úložiště Azure a pak vyberte svůj účet úložiště.  Zadejte kontejner úložiště i Cesta k adresáři, který chcete přejít k souboru exportu.  Klikněte na **Další**.
 
-![New export example showing storage account details](./media/tutorial-export-acm-data/storage_exports.png)
+![Nový příklad pro export zobrazuje podrobnosti o účtu úložiště](./media/tutorial-export-acm-data/storage_exports.png)
 
-Review your export details and click **Create**.
+Zkontrolujte podrobnosti o exportu a klikněte na **vytvořit**.
 
-Nový export se zobrazí v seznamu exportů. By default, new exports are enabled. Pokud chcete zakázat nebo odstranit naplánovaný export, klikněte na libovolnou položku v seznamu a pak klikněte na **Zakázat** nebo **Odstranit**.
+Nový export se zobrazí v seznamu exportů. Ve výchozím nastavení jsou nové exporty povolené. Pokud chcete zakázat nebo odstranit naplánovaný export, klikněte na libovolnou položku v seznamu a pak klikněte na **Zakázat** nebo **Odstranit**.
 
 Na začátku může trvat jednu až dvě hodiny, než se export spustí. Může však trvat až čtyři hodiny, než se v exportovaných souborech zobrazí data.
 
-### <a name="export-schedule"></a>Export schedule
+### <a name="export-schedule"></a>Exportovat plán
 
-Scheduled exports are affected by the time and day of week of when you initially create the export. When you create a scheduled export, the export runs at the same time of day for each subsequent export occurrence. For example, you create a daily export at 1:00 PM. The next export runs at 1:00 PM the following day. The current time affects all other export types in the same manner—they always run at the same time of day as when you initially created the export. In a different example, you create a weekly export at 4:00 PM on Monday. The next report runs at 4:00 PM the following Monday. *Exported data is available within four hours of run time.*
+Plánované exporty ovlivňují čas a den v týdnu od počátečního vytvoření exportu. Při vytváření plánovaného exportu se export spustí ve stejnou denní dobu pro každý následný export. Například můžete vytvořit denní export v 1:00 PM. Další export se spustí v 1:00. následující den. Aktuální čas má vliv na všechny ostatní typy exportu stejným způsobem – vždy se spustí ve stejnou denní dobu jako při počátečním vytvoření exportu. V jiném příkladu vytvoříte týdenní export na 4:00 PM v pondělí. Další sestava se spustí v 4:00. odp. v následujícím pondělí. *Exportovaná data jsou k dispozici do čtyř hodin doby běhu.*
 
-Each export creates a new file, so older exports are not overwritten.
+Každý export vytvoří nový soubor, takže starší exporty nejsou přepsány.
 
-There are three types of export options:
+Existují tři typy možností exportu:
 
-**Daily export of month-to-date costs** – The initial export runs immediately. Subsequent exports run the next day at the same time as the initial export. The latest data is aggregated from previous daily exports.
+**Denní export nákladů na měsíc** – počáteční export se spustí hned. Následné exporty spustí následující den ve stejnou dobu jako počáteční export. Nejnovější data jsou agregována z předchozích denních exportů.
 
-**Weekly export of costs for the last 7 days** – The initial export runs immediately. Subsequent exports run on the day of the week and at the same time as the initial export. Costs are for the last seven days.
+**Týdenní export nákladů za posledních 7 dní** – počáteční export se spustí okamžitě. Následné exporty běží v den v týdnu a ve stejnou dobu jako při počátečním exportu. Náklady jsou za posledních sedm dnů.
 
-**Custom** – Allows you to schedule weekly and monthly exports with week-to-date and month-to-date options. *The initial export will run immediately.*
+**Vlastní** – umožňuje naplánovat týdenní a měsíční export s možnostmi v týdnu na aktuální a měsíc. *Počáteční export se spustí hned.*
 
-If you have a Pay-As-You-Go, MSDN, or Visual Studio subscription, your invoice billing period might not align to the calendar month. For those types of subscriptions and resource groups, you can create an export that's aligned to your invoice period or to calendar months. To create an export aligned to your invoice month, navigate to **Custom**, then select **Billing-period-to-date**.  To create an export aligned to the calendar month, select **Month-to-date**.
+Pokud máte předplatné s průběžnými platbami, MSDN nebo Visual Studio, fakturační období faktury se nemusí zarovnat k kalendářnímu měsíci. U těchto typů předplatných a skupin prostředků můžete vytvořit export, který je zarovnán k fakturačnímu období nebo kalendářním měsícům. Pokud chcete vytvořit Export zarovnaný k vašemu měsíci faktury, přejděte na **vlastní**a vyberte **Fakturovatelné – období k datu**.  Pokud chcete vytvořit Export přirovnaný k kalendářnímu měsíci, vyberte možnost **od začátku měsíce**.
 >
 >
 
-![New export - Basics tab showing a custom weekly week-to-date selection](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+![Nová karta základy exportu znázorňující výběr vlastního týdenního týdne](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
-## <a name="verify-that-data-is-collected"></a>Ověřit shromáždění dat
+## <a name="verify-that-data-is-collected"></a>Ověření shromáždění dat
 
 Pomocí Průzkumníka služby Azure Storage můžete snadno ověřit, že se data služby Cost Management shromažďují, a zobrazit exportovaný soubor CSV.
 
 V seznamu exportu klikněte na název účtu úložiště. Na stránce účtu úložiště klikněte na Otevřít v Průzkumníkovi. Pokud se zobrazí potvrzovací okno, klikněte na **Ano** a otevřete soubor v Průzkumníkovi služby Azure Storage.
 
-![Storage account page showing example information and link to Open in Explorer](./media/tutorial-export-acm-data/storage-account-page.png)
+![Zobrazuje informace z příkladu a propojte ho otevřít v Průzkumníkovi stránce účtu úložiště](./media/tutorial-export-acm-data/storage-account-page.png)
 
 V Průzkumníkovi služby Storage přejděte ke kontejneru, který chcete otevřít, a vyberte složku odpovídající aktuálnímu měsíci. Zobrazí se seznam souborů CSV. Vyberte jeden soubor a pak klikněte na **Otevřít**.
 
-![Example information shown in Storage Explorer](./media/tutorial-export-acm-data/storage-explorer.png)
+![Příklad informace zobrazené v Průzkumníku služby Storage](./media/tutorial-export-acm-data/storage-explorer.png)
 
 Soubor se otevře v programu nebo aplikaci, která je nastavená k otevírání souborů s příponou CSV. Tady je příklad v Excelu.
 
-![Example exported CSV data shown in Excel](./media/tutorial-export-acm-data/example-export-data.png)
+![Příklad exportovat data ve formátu CSV je znázorněno v aplikaci Excel](./media/tutorial-export-acm-data/example-export-data.png)
 
 
 ## <a name="access-exported-data-from-other-systems"></a>Přístup k exportovaným datům z jiných systémů
@@ -115,8 +115,8 @@ Jedním z důvodů pro export dat služby Cost Management je umožnění příst
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvoření každodenního exportu
-> * Ověřit shromáždění dat
+> * Vytvořit každodenní export
+> * Ověření shromáždění dat
 
 Přejděte k dalšímu kurzu, který se zabývá optimalizací a zvyšováním efektivity pomocí identifikace nečinných a nedostatečně využitých prostředků.
 

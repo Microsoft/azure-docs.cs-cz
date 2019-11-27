@@ -1,6 +1,6 @@
 ---
-title: Timers in Durable Functions - Azure
-description: Learn how to implement durable timers in the Durable Functions extension for Azure Functions.
+title: Časovače v Durable Functions – Azure
+description: Přečtěte si, jak implementovat trvalé časovače v rozšíření Durable Functions pro Azure Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
@@ -11,23 +11,23 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231270"
 ---
-# <a name="timers-in-durable-functions-azure-functions"></a>Timers in Durable Functions (Azure Functions)
+# <a name="timers-in-durable-functions-azure-functions"></a>Časovače v Durable Functions (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) provides *durable timers* for use in orchestrator functions to implement delays or to set up timeouts on async actions. Durable timers should be used in orchestrator functions instead of `Thread.Sleep` and `Task.Delay` (C#), or `setTimeout()` and `setInterval()` (JavaScript).
+[Durable Functions](durable-functions-overview.md) poskytuje *odolné časovače* pro použití ve funkcích nástroje Orchestrator pro implementaci zpoždění nebo nastavení časových limitů pro asynchronní akce. Trvalé časovače by se měly používat ve funkcích nástroje Orchestrator namísto `Thread.Sleep` aC#`Task.Delay` () nebo `setTimeout()` a `setInterval()` (JavaScript).
 
-You create a durable timer by calling the `CreateTimer` (.NET) method or the `createTimer` (JavaScript) method of the [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger). The method returns a task that completes on a specified date and time.
+Můžete vytvořit trvalý časovač voláním metody `CreateTimer` (.NET) nebo metody `createTimer` (JavaScript) [aktivační vazby orchestration](durable-functions-bindings.md#orchestration-trigger). Metoda vrátí úlohu, která se dokončí k zadanému datu a času.
 
-## <a name="timer-limitations"></a>Timer limitations
+## <a name="timer-limitations"></a>Omezení časovače
 
-When you create a timer that expires at 4:30 pm, the underlying Durable Task Framework enqueues a message that becomes visible only at 4:30 pm. When running in the Azure Functions Consumption plan, the newly visible timer message will ensure that the function app gets activated on an appropriate VM.
+Když vytvoříte časovač, jehož platnost vyprší v 4:30. odp., zařadí základní prostředí odolného úlohy do fronty zprávu, která se bude zobrazovat pouze na 4:30 ODP. Při spuštění v plánu Azure Functions spotřeby se nově zobrazená zpráva časovače ujistí, že se aplikace Function App aktivuje na příslušném virtuálním počítači.
 
 > [!NOTE]
-> * Durable timers are currently limited to 7 days. If longer delays are needed, they can be simulated using the timer APIs in a `while` loop.
-> * Always use `CurrentUtcDateTime` instead of `DateTime.UtcNow` in .NET or `currentUtcDateTime` instead of `Date.now` or `Date.UTC` in JavaScript when computing the fire time for durable timers. For more information, see the [orchestrator function code constraints](durable-functions-code-constraints.md) article.
+> * Trvalé časovače jsou momentálně omezeny na 7 dní. Pokud budete potřebovat delší prodlevy, je možné je simulovat pomocí rozhraní API časovače ve smyčce `while`.
+> * Při výpočtu doby běhu pro trvalé časovače použijte místo `DateTime.UtcNow` v rozhraní .NET nebo v `currentUtcDateTime` místo `Date.now` nebo `Date.UTC` `CurrentUtcDateTime` v jazyce JavaScript. Další informace naleznete v článku o [omezeních kódu funkce nástroje Orchestrator](durable-functions-code-constraints.md) .
 
-## <a name="usage-for-delay"></a>Usage for delay
+## <a name="usage-for-delay"></a>Využití pro zpoždění
 
-The following example illustrates how to use durable timers for delaying execution. The example is issuing a billing notification every day for 10 days.
+Následující příklad ukazuje, jak použít trvalá časovače ke zpoždění provádění. Příklad vydává fakturační oznámení každý den po dobu 10 dnů.
 
 ### <a name="c"></a>C#
 
@@ -46,9 +46,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> The previous C# example targets Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Předchozí C# příklad cílí Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```js
 const df = require("durable-functions");
@@ -65,11 +65,11 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> Avoid infinite loops in orchestrator functions. For information about how to safely and efficiently implement infinite loop scenarios, see [Eternal Orchestrations](durable-functions-eternal-orchestrations.md).
+> Vyhněte se nekonečným smyčkám ve funkcích nástroje Orchestrator. Informace o tom, jak bezpečně a efektivně implementovat scénáře nekonečné smyčky, najdete v tématu [orchestrace externí](durable-functions-eternal-orchestrations.md).
 
-## <a name="usage-for-timeout"></a>Usage for timeout
+## <a name="usage-for-timeout"></a>Použití časového limitu
 
-This example illustrates how to use durable timers to implement timeouts.
+Tento příklad ukazuje, jak použít trvalé časovače k implementaci časových limitů.
 
 ### <a name="c"></a>C#
 
@@ -103,9 +103,9 @@ public static async Task<bool> Run(
 ```
 
 > [!NOTE]
-> The previous C# example targets Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> Předchozí C# příklad cílí Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
+### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```js
 const df = require("durable-functions");
@@ -132,13 +132,13 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> Use a `CancellationTokenSource` to cancel a durable timer (.NET) or call `cancel()` on the returned `TimerTask` (JavaScript) if your code will not wait for it to complete. The Durable Task Framework will not change an orchestration's status to "completed" until all outstanding tasks are completed or canceled.
+> Použijte `CancellationTokenSource` pro zrušení trvalého časovače (.NET) nebo volání `cancel()` na vrácené `TimerTask` (JavaScript), pokud kód nebude čekat na dokončení. Architektura trvalého úkolu nemění stav orchestrace na dokončeno, dokud nebudou dokončeny nebo zrušeny všechny zbývající úlohy.
 
-This cancellation mechanism doesn't terminate in-progress activity function or sub-orchestration executions. Rather, it simply allows the orchestrator function to ignore the result and move on. If your function app uses the Consumption plan, you'll still be billed for any time and memory consumed by the abandoned activity function. By default, functions running in the Consumption plan have a timeout of five minutes. If this limit is exceeded, the Azure Functions host is recycled to stop all execution and prevent a runaway billing situation. The [function timeout is configurable](../functions-host-json.md#functiontimeout).
+Tento mechanismus zrušení neukončí probíhající funkci aktivity nebo provádění dílčí orchestrace. Místo toho jednoduše umožňuje, aby funkce Orchestrator ignorovala výsledek a přesunula se na. Pokud vaše aplikace Function App používá plán spotřeby, pořád se vám bude účtovat veškerá doba a paměť spotřebovaná funkcí opuštěná aktivita. Ve výchozím nastavení mají funkce spuštěné v plánu spotřeby časový limit pět minut. V případě překročení tohoto limitu se Azure Functions hostitel recykluje, aby zastavil všechna spuštění a zabránila situaci v fakturaci. [Časový limit funkce lze nakonfigurovat](../functions-host-json.md#functiontimeout).
 
-For a more in-depth example of how to implement timeouts in orchestrator functions, see the [Human Interaction & Timeouts - Phone Verification](durable-functions-phone-verification.md) article.
+Podrobnější příklad implementace časových limitů ve funkcích nástroje Orchestrator naleznete v článku o [& časových limitů pro lidské interakce – ověření pro telefon](durable-functions-phone-verification.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Learn how to raise and handle external events](durable-functions-external-events.md)
+> [Informace o tom, jak vyvolat a zpracovávat externí události](durable-functions-external-events.md)

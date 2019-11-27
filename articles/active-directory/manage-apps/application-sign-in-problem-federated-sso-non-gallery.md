@@ -38,7 +38,7 @@ Pokud chcete řešit potíže s přihlašováním níže, doporučujeme vám pos
 
 Atribut vystavitele odeslaný z aplikace do služby Azure AD v požadavku SAML se neshoduje s hodnotou identifikátoru nakonfigurovanou v aplikaci Azure AD.
 
-**Řešení**
+**Rozhodnutí**
 
 Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte prostředí pro [testování](../develop/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
@@ -46,13 +46,13 @@ Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identif
 
 2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
 4. v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
 
-5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Kliknutím na **všechny aplikace** zobrazíte seznam všech aplikací.
 
-   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud se vám nezobrazí aplikace, kterou chcete zobrazit, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** pro **všechny aplikace.**
 
 6. Vyberte aplikaci, pro kterou chcete nakonfigurovat jednotné přihlašování.
 
@@ -68,7 +68,7 @@ Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identif
 
 Hodnota AssertionConsumerServiceURL v požadavku SAML neodpovídá hodnotě adresy URL odpovědi nebo vzoru nakonfigurovanému ve službě Azure AD. Hodnota AssertionConsumerServiceURL v požadavku SAML je adresa URL, která se zobrazí v chybě. 
 
-**Řešení** 
+**Rozhodnutí** 
 
 Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte prostředí pro [testování](../develop/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
  
@@ -76,11 +76,11 @@ Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identif
 
 2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo. 
 
-3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky. 
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** . 
 
 4. v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** . 
 
-5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací. 
+5. Kliknutím na **všechny aplikace** zobrazíte seznam všech aplikací. 
 
    * Pokud se vám nezobrazí aplikace, kterou chcete zobrazit, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** pro **všechny aplikace.**
   
@@ -100,41 +100,41 @@ Po aktualizaci hodnoty adresy URL odpovědi v Azure AD, která odpovídá hodnot
 
 Uživateli nebyl udělen přístup k aplikaci ve službě Azure AD.
 
-**Řešení**
+**Rozhodnutí**
 
 Chcete-li přiřadit jednoho nebo více uživatelů k aplikaci přímo, postupujte podle následujících kroků. Pokud používáte prostředí pro [testování](../develop/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
-1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
 2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
 4. v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
 
-5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Kliknutím na **všechny aplikace** zobrazíte seznam všech aplikací.
 
-   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud se vám nezobrazí aplikace, kterou chcete zobrazit, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** pro **všechny aplikace.**
 
 6. Vyberte aplikaci, kterou chcete přiřadit uživatele ze seznamu.
 
 7. Po načtení aplikace klikněte na **Uživatelé a skupiny** v nabídce navigace na levé straně aplikace.
 
-8. Klikněte na tlačítko **přidat** tlačítko nahoře **uživatelů a skupin** seznamu a otevře **přidat přiřazení** podokně.
+8. Kliknutím na tlačítko **Přidat** v horní části seznamu **uživatelů a skupin** otevřete podokno **Přidat přiřazení** .
 
-9. Klikněte na tlačítko **uživatelů a skupin** selektor z **přidat přiřazení** podokně.
+9. v podokně **Přidat přiřazení** klikněte na selektor **Uživatelé a skupiny** .
 
-10. Zadejte **celý název** nebo **e-mailová adresa** uživatele zájem o přiřazení do **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
+10. Do pole **Hledat podle jména nebo e-mailové adresy** zadejte jméno a **příjmení** nebo **e-mailovou adresu** uživatele, kterého se zajímáte o přiřazení.
 
-11. Najeďte myší **uživatele** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky uživatele nebo logo, které chcete přidat uživatele **vybrané** seznamu.
+11. Pokud chcete zobrazit **zaškrtávací políčko**, najeďte myší na **uživatele** v seznamu. Kliknutím na zaškrtávací políčko vedle profilové fotografie nebo loga uživatele přidáte uživatele do **vybraného** seznamu.
 
-12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle názvu nebo e-mailová adresa** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
+12. **Volitelné:** Pokud chcete **Přidat více než jednoho uživatele**, zadejte do vyhledávacího pole **jméno nebo e-mailová** adresa další **jméno** nebo **e-mailovou adresu** a kliknutím na zaškrtávací políčko přidejte tohoto uživatele do **vybraného** seznamu.
 
-13. Po dokončení výběru uživatelů, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
+13. Po dokončení výběru uživatelů klikněte na tlačítko **Vybrat** a přidejte je do seznamu uživatelů a skupin, které chcete přiřadit k aplikaci.
 
-14. **Volitelné:** klikněte na tlačítko **vybrat roli** oblasti pro výběr **přidat přiřazení** podokně vyberte roli, kterou chcete přiřadit uživatelům, které jste vybrali.
+14. **Volitelné:** kliknutím na výběr **role** v podokně **Přidat přiřazení** vyberte roli, kterou chcete přiřadit vybraným uživatelům.
 
-15. Klikněte na tlačítko **přiřadit** tlačítko přiřadit aplikaci do vybraného uživatele.
+15. Kliknutím na tlačítko **přiřadit** aplikaci přiřadíte vybraným uživatelům.
 
 Po krátké době možné ke spouštění těchto aplikací pomocí metod popsaných v části popis řešení uživatele, které jste vybrali.
 
@@ -150,7 +150,7 @@ Azure AD nepodporuje požadavek SAML, který aplikace odeslala pro jednotné př
 
 -   Metoda kódovaná v požadavku SAML
 
-**Řešení**
+**Rozhodnutí**
 
 1.  Zachytit požadavek SAML. v tomto kurzu se dozvíte, [jak pomocí SAML ladit jednotné přihlašování k aplikacím ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) a Naučte se zachytit požadavek SAML.
 
@@ -170,7 +170,7 @@ Dodavatel aplikace by měl ověřit, jestli podporují implementaci Azure AD SAM
 
 Atribut `Issuer` odeslaný z aplikace do služby Azure AD v požadavku SAML se neshoduje s hodnotou identifikátoru nakonfigurovanou pro aplikaci ve službě Azure AD.
 
-**Řešení**
+**Rozhodnutí**
 
 Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte [prostředí testování](../develop/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků:
 
@@ -198,7 +198,7 @@ Chyba AADSTS50003: není nakonfigurovaný žádný podpisový klíč.
 
 Objekt aplikace je poškozený a Azure AD nerozpozná certifikát nakonfigurovaný pro aplikaci.
 
-**Řešení**
+**Rozhodnutí**
 
 Chcete-li odstranit a vytvořit nový certifikát, postupujte podle následujících kroků:
 
@@ -206,13 +206,13 @@ Chcete-li odstranit a vytvořit nový certifikát, postupujte podle následujíc
 
 2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
 4. v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
 
-5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Kliknutím na **všechny aplikace** zobrazíte seznam všech aplikací.
 
-   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud se vám nezobrazí aplikace, kterou chcete zobrazit, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** pro **všechny aplikace.**
 
 6. Vyberte aplikaci, pro kterou chcete nakonfigurovat jednotné přihlašování.
 
@@ -234,7 +234,7 @@ Chcete-li odstranit a vytvořit nový certifikát, postupujte podle následujíc
 
 Služba Azure AD nemohla identifikovat požadavek SAML v rámci parametrů adresy URL v požadavku HTTP. K tomu může dojít, když aplikace při odesílání požadavku SAML do Azure AD nepoužívá vazbu přesměrování HTTP.
 
-**Řešení**
+**Rozhodnutí**
 
 Aplikace potřebuje odeslat požadavek SAML zakódovaný do hlavičky umístění pomocí vazby přesměrování HTTP. Další informace o způsobu implementace najdete v části věnované vazbě HTTP Redirect v [dokumentu specifikace protokolu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
@@ -246,7 +246,7 @@ Pokud v rámci jednotného přihlašování požadavek na přihlášení neobsah
 
 Při přidávání aplikace jako aplikace mimo galerii služba Azure Active Directory vytvořila tuto adresu URL pro odpověď jako výchozí hodnotu. Toto chování se změnilo a Azure Active Directory už tuto adresu URL ve výchozím nastavení nepřidává. 
 
-**Řešení**
+**Rozhodnutí**
 
 Odstraní nepoužívané adresy URL odpovědí nakonfigurované pro aplikaci.
 

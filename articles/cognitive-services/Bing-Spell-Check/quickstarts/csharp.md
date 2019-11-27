@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Check spelling with the REST API and C# - Bing Spell Check'
+title: 'Rychlý Start: Kontrola pravopisu pomocí REST API C# a-kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Get started using the Bing Spell Check REST API to check spelling and grammar.
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,24 +17,24 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74378914"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Quickstart: Check spelling with the Bing Spell Check REST API and C#
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API aC#
 
-Use this quickstart to make your first call to the Bing Spell Check REST API. This simple C# application sends a request to the API and returns a list of suggested corrections. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. The source code for this application is available on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá C# aplikace pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
-* To install `Newtonsoft.Json` as a NuGet package in Visual studio:
-    1. In **Solution Explorer**, right-click the Solution file.
-    1. Select **Manage NuGet Packages for Solution**.
-    1. Search for `Newtonsoft.Json` and install the package.
-* If you're using Linux/MacOS, this application can be run using [Mono](https://www.mono-project.com/).
+* Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
+* Postup instalace `Newtonsoft.Json` jako balíčku NuGet v aplikaci Visual Studio:
+    1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na soubor řešení.
+    1. Vyberte **Spravovat balíčky NuGet pro řešení**.
+    1. Vyhledejte `Newtonsoft.Json` a nainstalujte balíček.
+* Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Create a new console solution named `SpellCheckSample` in Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
+1. Vytvořte nové řešení konzoly s názvem `SpellCheckSample` v aplikaci Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
     
     ```csharp
     using System;
@@ -46,7 +46,7 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     using Newtonsoft.Json;
     ```
 
-2. Create variables for the API endpoint, your subscription key, and the text to be spell checked.
+2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a text, který se má zkontrolovat pravopis.
 
     ```csharp
     namespace SpellCheckSample
@@ -62,15 +62,15 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     }
     ```
 
-3. Create a variable for your search parameters. Append your market code after `mkt=`. The market code is the country you make the request from. Also, append your spell-check mode after `&mode=`. Mode is either `proof` (catches most spelling/grammar errors) or `spell` (catches most spelling but not as many grammar errors).
+3. Vytvořte proměnnou pro parametry hledání. Po `mkt=`přidejte svůj kód na trhu. Kód na trhu je země, ze které provedete požadavek. Také po `&mode=`připojit režim kontroly pravopisu. Režim je buď `proof` (catch nejvíc pravopis/gramatické chyby) nebo `spell` (zachycuje většinu pravopisů, ale ne tolik gramatických chyb).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
     ```
 
-## <a name="create-and-send-a-spell-check-request"></a>Create and send a spell check request
+## <a name="create-and-send-a-spell-check-request"></a>Vytvoření a odeslání žádosti o kontrolu pravopisu
 
-1. Create an asynchronous function called `SpellCheck()` to send a request to the API. Create a `HttpClient`, and add your subscription key to the `Ocp-Apim-Subscription-Key` header. Then perform the following steps within the function.
+1. Vytvořte asynchronní funkci nazvanou `SpellCheck()` pro odeslání žádosti do rozhraní API. Vytvořte `HttpClient`a přidejte svůj klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key`. Pak proveďte následující kroky v rámci této funkce.
 
     ```csharp
     async static void SpellCheck()
@@ -83,13 +83,13 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     }
     ```
 
-2. Create the URI for your request by appending your host, path, and parameters.
+2. Vytvořte identifikátor URI pro vaši žádost připojením hostitele, cesty a parametrů.
     
     ```csharp
     string uri = host + path + params_;
     ```
 
-3. Create a list with a `KeyValuePair` object containing your text, and use it to create a `FormUrlEncodedContent` object. Set the header information, and use `PostAsync()` to send the request.
+3. Vytvoří seznam s `KeyValuePair` objektem, který obsahuje váš text, a použije ho k vytvoření objektu `FormUrlEncodedContent`. Nastavte informace v hlavičce a použijte `PostAsync()` k odeslání žádosti.
 
     ```csharp
     var values = new Dictionary<string, string>();
@@ -99,11 +99,11 @@ Use this quickstart to make your first call to the Bing Spell Check REST API. Th
     response = await client.PostAsync(uri, new FormUrlEncodedContent(values));
     ```
 
-## <a name="get-and-print-the-api-response"></a>Get and print the API response
+## <a name="get-and-print-the-api-response"></a>Načtení a tisk odpovědi rozhraní API
 
-### <a name="get-the-client-id-header"></a>Get the client ID header
+### <a name="get-the-client-id-header"></a>Získat hlavičku ID klienta
 
-If the response contains an `X-MSEdge-ClientID` header, get the value and print it.
+Pokud odpověď obsahuje hlavičku `X-MSEdge-ClientID`, Získejte hodnotu a vytiskněte ji.
 
 ``` csharp
 string client_id;
@@ -114,9 +114,9 @@ if (response.Headers.TryGetValues("X-MSEdge-ClientID", out IEnumerable<string> h
 }
 ```
 
-### <a name="get-the-response"></a>Get the response
+### <a name="get-the-response"></a>Získat odpověď
 
-Get the response from the API. Deserialize the JSON object, and print it to the console.
+Získejte odpověď z rozhraní API. Deserializace objektu JSON a jeho tisk do konzoly.
 
 ```csharp
 string contentString = await response.Content.ReadAsStringAsync();
@@ -125,9 +125,9 @@ dynamic jsonObj = JsonConvert.DeserializeObject(contentString);
 Console.WriteLine(jsonObj);
 ```
 
-## <a name="call-the-spell-check-function"></a>Call the spell check function
+## <a name="call-the-spell-check-function"></a>Volání funkce kontroly pravopisu
 
-In the Main function of your project, call `SpellCheck()`.
+V hlavní funkci projektu volejte `SpellCheck()`.
 
 ```csharp
 static void Main(string[] args)
@@ -137,7 +137,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="example-json-response"></a>Example JSON response
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -184,5 +184,5 @@ static void Main(string[] args)
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](../tutorials/spellcheck.md)
 
-- [What is the Bing Spell Check API?](../overview.md)
+- [Co je rozhraní API Bingu pro kontrolu pravopisu?](../overview.md)
 - [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

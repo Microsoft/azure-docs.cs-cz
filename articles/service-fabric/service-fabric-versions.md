@@ -60,7 +60,7 @@ Následující tabulka uvádí podporované operační systémy pro podporované
 | Windows Server 1709 | 6.0 |
 | Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
+| Windows Server. 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16,04 | 6.0 |
 
 ## <a name="supported-version-names"></a>Podporované názvy verzí

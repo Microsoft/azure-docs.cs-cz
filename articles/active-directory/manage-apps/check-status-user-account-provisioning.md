@@ -67,7 +67,7 @@ Odtud můžete přístup k řádku průběh zřizování i k protokolům zřizov
 
 Všechny aktivity prováděné službou zřizování se zaznamenávají v [protokolech zřizování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)Azure AD. Přístup k protokolům zřizování v Azure Portal získáte tak, že v části **aktivita** vyberete **Azure Active Directory** &gt; **podnikové aplikace** &gt; **protokoly zřizování (Preview)** . Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Typy událostí protokolovaných aktivit zahrnují:
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Sestava souhrnu zřizování a zřizovacích protokolů hraje klíčovou roli, která pomáhá správcům řešit problémy s různými problémy zřizování uživatelských účtů.
 

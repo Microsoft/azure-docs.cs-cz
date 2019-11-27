@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca02505ba9b7d93cac4216916909a8c6df7fdd05
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 200ba1e227c0e2e116e368a65ce7f2c4d42661f2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184049"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547320"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI
 
@@ -35,10 +35,10 @@ V tomto článku se pomocí Azure CLI naučíte, jak provádět následující s
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)** .
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Spuštění ukázkové skripty rozhraní příkazového řádku, máte tři možnosti:
-    - Použití [Azure Cloud Shell](../../cloud-shell/overview.md) z portálu Azure portal (viz další část).
+    - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md) z Azure Portal (viz další oddíl).
     - Použijte vložené Azure Cloud Shell pomocí "Vyzkoušet" tlačítka, nachází v pravém horním rohu každý blok kódu.
     - Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) . 
       
@@ -214,7 +214,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' ide
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- [Spravované identity pro prostředky Azure – přehled](overview.md)
+- [Přehled spravovaných identit pro prostředky Azure](overview.md)
 - Kompletní rychlé starty pro vytváření virtuálních počítačů Azure najdete v těchto tématech: 
   - [Vytvoření virtuálního počítače s Windows pomocí rozhraní příkazového řádku](../../virtual-machines/windows/quick-create-cli.md)  
   - [Vytvoření virtuálního počítače se systémem Linux pomocí rozhraní příkazového řádku](../../virtual-machines/linux/quick-create-cli.md) 

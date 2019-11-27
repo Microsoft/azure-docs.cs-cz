@@ -1,6 +1,6 @@
 ---
-title: Performance and scale in Durable Functions - Azure
-description: Introduction to the Durable Functions extension for Azure Functions.
+title: Výkon a škálování v Durable Functions – Azure
+description: Úvod do rozšíření Durable Functions pro Azure Functions
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
@@ -12,52 +12,52 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231347"
 ---
-# <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Performance and scale in Durable Functions (Azure Functions)
+# <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
-To optimize performance and scalability, it's important to understand the unique scaling characteristics of [Durable Functions](durable-functions-overview.md).
+Pro optimalizaci výkonu a škálovatelnosti je důležité pochopit jedinečné charakteristiky škálování [Durable Functions](durable-functions-overview.md).
 
-To understand the scale behavior, you have to understand some of the details of the underlying Azure Storage provider.
+Pro pochopení chování škálování je třeba pochopit některé podrobnosti o základním poskytovateli Azure Storage.
 
-## <a name="history-table"></a>History table
+## <a name="history-table"></a>Tabulka historie
 
-The **History** table is an Azure Storage table that contains the history events for all orchestration instances within a task hub. The name of this table is in the form *TaskHubName*History. As instances run, new rows are added to this table. The partition key of this table is derived from the instance ID of the orchestration. An instance ID is random in most cases, which ensures optimal distribution of internal partitions in Azure Storage.
+Tabulka **Historie** je Azure Storage tabulka, která obsahuje události historie pro všechny instance orchestrace v rámci centra úloh. Název této tabulky je ve formátu *TaskHubName*historie. Po spuštění instancí se do této tabulky přidají nové řádky. Klíč oddílu této tabulky je odvozen z ID instance orchestrace. ID instance je ve většině případů náhodné, což zajišťuje optimální distribuci vnitřních oddílů v Azure Storage.
 
-When an orchestration instance needs to run, the appropriate rows of the History table are loaded into memory. These *history events* are then replayed into the orchestrator function code to get it back into its previously checkpointed state. The use of execution history to rebuild state in this way is influenced by the [Event Sourcing pattern](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
+Je-li nutné spustit instanci orchestrace, jsou do paměti načteny příslušné řádky tabulky historie. Tyto *události historie* se pak přehrají do kódu funkce Orchestrator a vrátí se zpátky do předchozího kontrolního stavu. Použití historie spouštění k opětovnému sestavení tohoto způsobu je ovlivněno [vzorem zdroje události](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
 
-## <a name="instances-table"></a>Instances table
+## <a name="instances-table"></a>Tabulka instancí
 
-The **Instances** table is another Azure Storage table that contains the statuses of all orchestration and entity instances within a task hub. As instances are created, new rows are added to this table. The partition key of this table is the orchestration instance ID or entity key and the row key is a fixed constant. There is one row per orchestration or entity instance.
+Tabulka **Instances** je další Azure Storage tabulka, která obsahuje stavy všech orchestrací a instancí entit v rámci centra úloh. Při vytváření instancí se do této tabulky přidají nové řádky. Klíč oddílu této tabulky je ID instance orchestrace nebo klíč entity a klíč řádku je pevná konstanta. Existuje jeden řádek na orchestraci nebo instanci entity.
 
-This table is used to satisfy instance query requests from the `GetStatusAsync` (.NET) and `getStatus` (JavaScript) APIs as well as the [status query HTTP API](durable-functions-http-api.md#get-instance-status). It is kept eventually consistent with the contents of the **History** table mentioned previously. The use of a separate Azure Storage table to efficiently satisfy instance query operations in this way is influenced by the [Command and Query Responsibility Segregation (CQRS) pattern](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
+Tato tabulka slouží k uspokojení požadavků na dotazování instance z rozhraní API `GetStatusAsync` (.NET) a `getStatus` (JavaScript) a také z rozhraní [API pro dotaz na stav](durable-functions-http-api.md#get-instance-status). Je trvale konzistentní s obsahem výše zmíněné tabulky **Historie** . Použití samostatné Azure Storage tabulky k efektivnímu uspokojení operací dotazů na instance tímto způsobem je ovlivněno [vzorem CQRS (Command and Query Responsibility segregation) (CQRS)](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
-## <a name="internal-queue-triggers"></a>Internal queue triggers
+## <a name="internal-queue-triggers"></a>Interní triggery front
 
-Orchestrator functions and activity functions are both triggered by internal queues in the function app's task hub. Using queues in this way provides reliable "at-least-once" message delivery guarantees. There are two types of queues in Durable Functions: the **control queue** and the **work-item queue**.
+Funkce a funkce nástroje Orchestrator jsou spouštěny interními frontami v centru úloh aplikace Function App. Použití front tímto způsobem poskytuje spolehlivé záruky doručení zpráv "nejméně jednou". Existují dva typy front v Durable Functions: **frontu řízení** a **frontu pracovních položek**.
 
-### <a name="the-work-item-queue"></a>The work-item queue
+### <a name="the-work-item-queue"></a>Fronta pracovních položek
 
-There is one work-item queue per task hub in Durable Functions. It is a basic queue and behaves similarly to any other `queueTrigger` queue in Azure Functions. This queue is used to trigger stateless *activity functions* by dequeueing a single message at a time. Each of these messages contains activity function inputs and additional metadata, such as which function to execute. When a Durable Functions application scales out to multiple VMs, these VMs all compete to acquire work from the work-item queue.
+K dispozici je jedna fronta pracovních položek na každé centrum úloh v Durable Functions. Jedná se o základní frontu a chová se podobně jako jakákoli jiná fronta `queueTrigger` v Azure Functions. Tato fronta se používá k aktivaci bezstavových *funkcí aktivity* tím, že v jednom okamžiku odřadí jedinou zprávu. Každá z těchto zpráv obsahuje vstupy funkcí aktivity a další metadata, jako je například funkce, kterou je třeba provést. Když Durable Functions aplikace škáluje na více virtuálních počítačů, všechny tyto virtuální počítače budou chtít získat práci z fronty pracovních položek.
 
-### <a name="control-queues"></a>Control queue(s)
+### <a name="control-queues"></a>Počet front ovládacích prvků:
 
-There are multiple *control queues* per task hub in Durable Functions. A *control queue* is more sophisticated than the simpler work-item queue. Control queues are used to trigger the stateful orchestrator and entity functions. Because the orchestrator and entity function instances are stateful singletons, it's not possible to use a competing consumer model to distribute load across VMs. Instead, orchestrator and entity messages are load-balanced across the control queues. More details on this behavior can be found in subsequent sections.
+K dispozici je více *řídicích front* pro každé centrum úloh v Durable Functions. *Fronta ovládacího prvku* je výkonnější než jednodušší fronta pracovních položek. Řídicí fronty se používají ke spuštění stavových funkcí Orchestrator a entity. Vzhledem k tomu, že instance nástroje Orchestrator a entity Function jsou stavové nejednoznačné, není možné použít konkurenční model uživatele k distribuci zatížení napříč virtuálními počítači. Místo toho se zprávy Orchestrator a entity vyrovnávají zatížením napříč řídicími frontami. Další podrobnosti o tomto chování najdete v následujících oddílech.
 
-Control queues contain a variety of orchestration lifecycle message types. Examples include [orchestrator control messages](durable-functions-instance-management.md), activity function *response* messages, and timer messages. As many as 32 messages will be dequeued from a control queue in a single poll. These messages contain payload data as well as metadata including which orchestration instance it is intended for. If multiple dequeued messages are intended for the same orchestration instance, they will be processed as a batch.
+Řídicí fronty obsahují nejrůznější typy zpráv o životním cyklu orchestrace. Příklady zahrnují [zprávy řízení nástroje Orchestrator](durable-functions-instance-management.md), zprávy s *odezvou* funkcí aktivity a zprávy časovače. Ve frontě ovládacích prvků v jednom cyklickém dotazování bude z fronty ovládacího prvku odřazena spousta zpráv 32. Tyto zprávy obsahují data datové části i metadata, včetně toho, pro kterou instanci orchestrace je určena. Je-li pro stejnou instanci orchestrace určena více zpráv ve frontě, budou zpracovány jako dávka.
 
-### <a name="queue-polling"></a>Queue polling
+### <a name="queue-polling"></a>Cyklické dotazování front
 
-The durable task extension implements a random exponential back-off algorithm to reduce the effect of idle-queue polling on storage transaction costs. When a message is found, the runtime immediately checks for another message; when no message is found, it waits for a period of time before trying again. After subsequent failed attempts to get a queue message, the wait time continues to increase until it reaches the maximum wait time, which defaults to 30 seconds.
+Rozšíření odolné úlohy implementuje náhodný exponenciální algoritmus pro snížení vlivu nečinnosti na transakční dotaz na náklady transakce úložiště. Po nalezení zprávy modul runtime hned vyhledá jinou zprávu; Pokud se nenajde žádná zpráva, počká na určitou dobu, než se zkusí znovu. Po následných neúspěšných pokusech o získání zprávy fronty se doba čekání zvětšuje, dokud nedosáhne maximální čekací doby, která má výchozí hodnotu 30 sekund.
 
-The maximum polling delay is configurable via the `maxQueuePollingInterval` property in the [host.json file](../functions-host-json.md#durabletask). Setting this property to a higher value could result in higher message processing latencies. Higher latencies would be expected only after periods of inactivity. Setting this property to a lower value could result in higher storage costs due to increased storage transactions.
+Maximální zpoždění cyklického dotazování lze konfigurovat prostřednictvím vlastnosti `maxQueuePollingInterval` v [souboru Host. JSON](../functions-host-json.md#durabletask). Nastavení této vlastnosti na vyšší hodnotu může mít za následek vyšší latence při zpracování zpráv. Vyšší latence by se měly očekávat jenom po období nečinnosti. Nastavení této vlastnosti na nižší hodnotu může mít za následek vyšší náklady na úložiště kvůli zvýšeným transakcím úložiště.
 
 > [!NOTE]
-> When running in the Azure Functions Consumption and Premium plans, the [Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) will poll each control and work-item queue once every 10 seconds. This additional polling is necessary to determine when to activate function app instances and to make scale decisions. At the time of writing, this 10 second interval is constant and cannot be configured.
+> Při spuštění v rámci plánů Azure Functions a Premium se [kontroler Azure Functions Scale](../functions-scale.md#how-the-consumption-and-premium-plans-work) bude dotazovat každý ovládací prvek a frontu pracovních položek každých 10 sekund. Toto další cyklické dotazování je nezbytné k určení, kdy se mají aktivovat instance aplikace Function App a provádět rozhodování o škálování. V době psaní je tento 10 sekundový interval konstantní a nedá se nakonfigurovat.
 
-## <a name="storage-account-selection"></a>Storage account selection
+## <a name="storage-account-selection"></a>Výběr účtu úložiště
 
-The queues, tables, and blobs used by Durable Functions are created in a configured Azure Storage account. The account to use can be specified using the `durableTask/storageProvider/connectionStringName` setting (or `durableTask/azureStorageConnectionStringName` setting in Durable Functions 1.x) in the **host.json** file.
+Fronty, tabulky a objekty blob používané nástrojem Durable Functions jsou vytvořeny v nakonfigurovaném Azure Storagem účtu. Účet, který se má použít, se dá zadat pomocí nastavení `durableTask/storageProvider/connectionStringName` (nebo `durableTask/azureStorageConnectionStringName` nastavení v Durable Functions 1. x) v souboru **Host. JSON** .
 
-### <a name="durable-functions-2x"></a>Durable Functions 2.x
+### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
 ```json
 {
@@ -71,7 +71,7 @@ The queues, tables, and blobs used by Durable Functions are created in a configu
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1.x
+### <a name="durable-functions-1x"></a>Durable Functions 1. x
 
 ```json
 {
@@ -83,13 +83,13 @@ The queues, tables, and blobs used by Durable Functions are created in a configu
 }
 ```
 
-If not specified, the default `AzureWebJobsStorage` storage account is used. For performance-sensitive workloads, however, configuring a non-default storage account is recommended. Durable Functions uses Azure Storage heavily, and using a dedicated storage account isolates Durable Functions storage usage from the internal usage by the Azure Functions host.
+Pokud tento parametr nezadáte, použije se výchozí účet úložiště `AzureWebJobsStorage`. Pro úlohy citlivé na výkon se ale doporučuje nakonfigurovat účet úložiště, který není výchozí. Durable Functions používá Azure Storage silně a používání vyhrazeného účtu úložiště izoluje Durable Functions využití úložiště od interního využití hostitelem Azure Functions.
 
-## <a name="orchestrator-scale-out"></a>Orchestrator scale-out
+## <a name="orchestrator-scale-out"></a>Škálování na více instancí Orchestrator
 
-Activity functions are stateless and scaled out automatically by adding VMs. Orchestrator functions and entities, on the other hand, are *partitioned* across one or more control queues. The number of control queues is defined in the **host.json** file. The following example host.json snippet sets the `durableTask/storageProvider/partitionCount` property (or `durableTask/partitionCount` in Durable Functions 1.x) to `3`.
+Funkce aktivity jsou bezstavové a automaticky se škálují s přidáním virtuálních počítačů. Funkce a entity nástroje Orchestrator jsou naopak *rozdělené do oddílů* v jedné nebo několika řídicích frontách. Počet front řízení je definován v souboru **Host. JSON** . Následující ukázkový fragment kódu Host. JSON nastaví vlastnost `durableTask/storageProvider/partitionCount` (nebo `durableTask/partitionCount` v Durable Functions 1. x) na `3`.
 
-### <a name="durable-functions-2x"></a>Durable Functions 2.x
+### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
 ```json
 {
@@ -103,7 +103,7 @@ Activity functions are stateless and scaled out automatically by adding VMs. Orc
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1.x
+### <a name="durable-functions-1x"></a>Durable Functions 1. x
 
 ```json
 {
@@ -115,44 +115,44 @@ Activity functions are stateless and scaled out automatically by adding VMs. Orc
 }
 ```
 
-A task hub can be configured with between 1 and 16 partitions. If not specified, the default partition count is **4**.
+Centrum úloh se dá nakonfigurovat s mezi 1 a 16 oddíly. Pokud není zadaný, výchozí počet oddílů je **4**.
 
-When scaling out to multiple function host instances (typically on different VMs), each instance acquires a lock on one of the control queues. These locks are internally implemented as blob storage leases and ensure that an orchestration instance or entity only runs on a single host instance at a time. If a task hub is configured with three control queues, orchestration instances and entities can be load-balanced across as many as three VMs. Additional VMs can be added to increase capacity for activity function execution.
+Při horizontálním navýšení kapacity na více instancí hostitelů funkcí (obvykle na různých virtuálních počítačích) získá každá instance zámek jedné z řídicích front. Tyto zámky se interně implementují jako zapůjčení úložiště objektů BLOB a zajišťují, že instance orchestrace nebo entita běží jenom na jedné instanci hostitele najednou. Pokud je Centrum úkolů nakonfigurované se třemi řídicími frontami, instance Orchestrace a entity je možné vyrovnávat zatížení až po třech virtuálních počítačích. Další virtuální počítače je možné přidat za účelem zvýšení kapacity pro provádění funkcí aktivity.
 
-The following diagram illustrates how the Azure Functions host interacts with the storage entities in a scaled out environment.
+Následující diagram znázorňuje, jak se hostitel Azure Functions komunikuje s entitami úložiště v prostředí s možností horizontálního rozšíření kapacity.
 
-![Scale diagram](./media/durable-functions-perf-and-scale/scale-diagram.png)
+![Měřítko diagramu](./media/durable-functions-perf-and-scale/scale-diagram.png)
 
-As shown in the previous diagram, all VMs compete for messages on the work-item queue. However, only three VMs can acquire messages from control queues, and each VM locks a single control queue.
+Jak je znázorněno na předchozím diagramu, všechny virtuální počítače soutěží o zprávy ve frontě pracovní položky. Z řídicích front ale můžou získat zprávy jenom tři virtuální počítače a každý virtuální počítač zamkne jednu frontu ovládacích prvků.
 
-Orchestration instances and entities are distributed across all control queue instances. The distribution is done by hashing the instance ID of the orchestration or the entity name and key pair. Orchestration instance IDs by default are random GUIDs, ensuring that instances are equally distributed across all control queues.
+Instance Orchestrace a entity jsou distribuovány napříč všemi instancemi fronty ovládacích prvků. Distribuce se provádí pomocí hashování ID instance orchestrace nebo názvu entity a páru klíčů. Identifikátory instancí orchestrace jsou ve výchozím nastavení náhodné identifikátory GUID, které zajišťují, aby se instance rovnoměrně rozdělují mezi všechny fronty ovládacích prvků.
 
-Generally speaking, orchestrator functions are intended to be lightweight and should not require large amounts of computing power. It is therefore not necessary to create a large number of control queue partitions to get great throughput for orchestrations. Most of the heavy work should be done in stateless activity functions, which can be scaled out infinitely.
+Obecně řečeno, funkce nástroje Orchestrator mají být odlehčené a neměly by vyžadovat velké množství výpočetní síly. Proto není nutné vytvářet velký počet oddílů front řízení, aby bylo možné dosáhnout Skvělé propustnosti pro orchestraci. Většina těžkých prací by se měla provádět v bezstavových funkcích aktivity, které se dají škálovat nekonečně.
 
 ## <a name="auto-scale"></a>Automatické škálování
 
-As with all Azure Functions running in the Consumption and Elastic Premium plans, Durable Functions supports auto-scale via the [Azure Functions scale controller](../functions-scale.md#runtime-scaling). The Scale Controller monitors the latency of all queues by periodically issuing _peek_ commands. Based on the latencies of the peeked messages, the Scale Controller will decide whether to add or remove VMs.
+Stejně jako u všech Azure Functions běžících v plánech spotřeby a elastické Premium Durable Functions podporuje automatické škálování prostřednictvím [řadiče Azure Functions škálování](../functions-scale.md#runtime-scaling). Kontroler škálování monitoruje latenci všech front tím, že pravidelně vydává příkazy pro _prohlížení_ . V závislosti na latencích prohlížených zpráv se kontroler škálování rozhodne, jestli se mají přidat nebo odebrat virtuální počítače.
 
-If the Scale Controller determines that control queue message latencies are too high, it will add VM instances until either the message latency decreases to an acceptable level or it reaches the control queue partition count. Similarly, the Scale Controller will continually add VM instances if work-item queue latencies are high, regardless of the partition count.
+Pokud kontroler škálování zjistí, že latence zpráv řízení fronty je příliš vysoká, přidá instance virtuálních počítačů, dokud se latence zprávy nesníží na přijatelnou úroveň, nebo dosáhne počtu oddílů fronty řízení. Podobně, kontroler škálování průběžně přidá instance virtuálních počítačů, pokud jsou vysoké latence fronty pracovních položek, bez ohledu na počet oddílů.
 
 > [!NOTE]
-> Starting with Durable Functions 2.0, function apps can be configured to run within VNET-protected service endpoints in the Elastic Premium plan. In this configuration, the Durable Functions triggers initiate scale requests instead of the Scale Controller.
+> Počínaje Durable Functions 2,0 se aplikace funkcí dají nakonfigurovat tak, aby se spouštěly v rámci koncových bodů služby chráněných VIRTUÁLNÍmi sítěmi v plánu elastické Premium. V této konfiguraci Durable Functions triggery iniciují žádosti o škálování místo řadiče škálování.
 
-## <a name="thread-usage"></a>Thread usage
+## <a name="thread-usage"></a>Využití vlákna
 
-Orchestrator functions are executed on a single thread to ensure that execution can be deterministic across many replays. Because of this single-threaded execution, it's important that orchestrator function threads do not perform CPU-intensive tasks, do I/O, or block for any reason. Any work that may require I/O, blocking, or multiple threads should be moved into activity functions.
+Funkce nástroje Orchestrator jsou spouštěny v jednom vlákně, aby bylo zajištěno, že provádění může být deterministické v mnoha opakováních. Z důvodu tohoto spuštění s jedním vláknem je důležité, aby vlákna funkcí Orchestrator neprováděla úlohy náročné na procesor, prováděla vstupně-výstupní operace nebo blokovat z jakéhokoli důvodu. Všechny práce, které mohou vyžadovat vstupně-výstupní operace, blokování nebo více vláken, by měly být přesunuty do funkcí aktivity.
 
-Activity functions have all the same behaviors as regular queue-triggered functions. They can safely do I/O, execute CPU intensive operations, and use multiple threads. Because activity triggers are stateless, they can freely scale out to an unbounded number of VMs.
+Funkce aktivit mají stejné chování jako běžné funkce aktivované frontou. Můžou bezpečně dělat vstupně-výstupní operace, provádět operace náročné na procesor a používat víc vláken. Protože triggery aktivit jsou bezstavové, můžou volně škálovat na neohraničený počet virtuálních počítačů.
 
-Entity functions are also executed on a single thread and operations are processed one-at-a-time. However, entity functions do not have any restrictions on the type of code that can be executed.
+Funkce entit jsou také spouštěny v jednom vlákně a operace jsou zpracovávány po jednom čase. Funkce entit však nemají žádná omezení typu kódu, který lze spustit.
 
-## <a name="concurrency-throttles"></a>Concurrency throttles
+## <a name="concurrency-throttles"></a>Omezení souběžnosti
 
-Azure Functions supports executing multiple functions concurrently within a single app instance. This concurrent execution helps increase parallelism and minimizes the number of "cold starts" that a typical app will experience over time. However, high concurrency can exhaust per-VM system resources such network connections or available memory. Depending on the needs of the function app, it may be necessary to throttle the per-instance concurrency to avoid the possibility of running out of memory in high-load situations.
+Azure Functions podporuje souběžné provádění více funkcí v rámci jedné instance aplikace. Toto souběžné provádění pomáhá zvýšit paralelismus a minimalizuje počet "studených startů", na které bude Typická aplikace v průběhu času docházet. Vysoká souběžnost však může vyčerpat systémové prostředky pro virtuální počítače, například Síťová připojení nebo dostupná paměť. V závislosti na potřebách aplikace Function App může být nutné omezit souběžnost na jednotlivé instance, aby nedocházelo k možnosti vycházet z paměti v situacích s vysokým zatížením.
 
-Activity, orchestrator, and entity function concurrency limits can be configured in the **host.json** file. The relevant settings are `durableTask/maxConcurrentActivityFunctions` for activity functions and `durableTask/maxConcurrentOrchestratorFunctions` for both orchestrator and entity functions.
+Omezení souběžnosti funkcí Activity, Orchestrator a entity je možné nakonfigurovat v souboru **Host. JSON** . Příslušná nastavení jsou `durableTask/maxConcurrentActivityFunctions` pro funkce aktivity a `durableTask/maxConcurrentOrchestratorFunctions` pro funkce Orchestrator a entity.
 
-### <a name="functions-20"></a>Functions 2.0
+### <a name="functions-20"></a>Funkce 2,0
 
 ```json
 {
@@ -176,18 +176,18 @@ Activity, orchestrator, and entity function concurrency limits can be configured
 }
 ```
 
-In the previous example, a maximum of 10 orchestrator or entity functions and 10 activity functions can run on a single VM concurrently. If not specified, the number of concurrent activity and orchestrator or entity function executions is capped at 10X the number of cores on the VM.
+V předchozím příkladu může být v jednom virtuálním počítači souběžně spuštěných maximálně 10 funkcí Orchestrator nebo entity functions a 10 funkcí aktivit. Není-li tento parametr zadán, je počet souběžných spuštění a funkce Orchestrator nebo entity Function omezené na 10X počet jader virtuálního počítače.
 
 > [!NOTE]
-> These settings are useful to help manage memory and CPU usage on a single VM. However, when scaled out across multiple VMs, each VM has its own set of limits. These settings can't be used to control concurrency at a global level.
+> Tato nastavení jsou užitečná při správě paměti a využití CPU na jednom virtuálním počítači. Ale při horizontálním navýšení kapacity mezi několika virtuálními počítači má každý virtuální počítač vlastní sadu omezení. Tato nastavení se nedají použít k řízení souběžnosti na globální úrovni.
 
-## <a name="extended-sessions"></a>Extended sessions
+## <a name="extended-sessions"></a>Rozšířené relace
 
-Extended sessions is a setting that keeps orchestrations and entities in memory even after they finish processing messages. The typical effect of enabling extended sessions is reduced I/O against the Azure Storage account and overall improved throughput.
+Rozšířené relace jsou nastavení, které udržuje Orchestrace a entity v paměti, i když dokončí zpracování zpráv. Typický efekt povolení rozšířených relací se snižuje v/v proti účtu Azure Storage a celkově lepší propustnost.
 
-You can enable extended sessions by setting `durableTask/extendedSessionsEnabled` to `true` in the **host.json** file. The `durableTask/extendedSessionIdleTimeoutInSeconds` setting can be used to control how long an idle session will be held in memory:
+Můžete povolit rozšířené relace nastavením `durableTask/extendedSessionsEnabled` na `true` v souboru **Host. JSON** . Nastavení `durableTask/extendedSessionIdleTimeoutInSeconds` lze použít k určení, jak dlouho bude nečinná relace uchovávána v paměti:
 
-**Functions 2.0**
+**Funkce 2,0**
 ```json
 {
   "extensions": {
@@ -199,7 +199,7 @@ You can enable extended sessions by setting `durableTask/extendedSessionsEnabled
 }
 ```
 
-**Functions 1.0**
+**Funkce 1,0**
 ```json
 {
   "durableTask": {
@@ -209,64 +209,64 @@ You can enable extended sessions by setting `durableTask/extendedSessionsEnabled
 }
 ```
 
-There are two potential downsides of this setting to be aware of:
+Existují dva potenciální downsides tohoto nastavení, které je potřeba mít na paměti:
 
-1. There's an overall increase in function app memory usage.
-2. There can be an overall decrease in throughput if there are many concurrent, short-lived orchestrator or entity function executions.
+1. Došlo k celkovému nárůstu využití paměti aplikace Function App.
+2. Může dojít k celkovému snížení propustnosti v případě, že existuje mnoho souběžných, krátkodobých nebo nenáročnéch spuštění funkcí Orchestrator nebo entity.
 
-As an example, if `durableTask/extendedSessionIdleTimeoutInSeconds` is set to 30 seconds, then a short-lived orchestrator or entity function episode that executes in less than 1 second still occupies memory for 30 seconds. It also counts against the `durableTask/maxConcurrentOrchestratorFunctions` quota mentioned previously, potentially preventing other orchestrator or entity functions from running.
+Příklad: Pokud je `durableTask/extendedSessionIdleTimeoutInSeconds` nastavené na 30 sekund, pak krátká nestálá funkce Orchestrator nebo entity, která se provede za méně než 1 sekundou, zabírá paměť po dobu 30 sekund. Počítá se taky s výše uvedenou kvótou `durableTask/maxConcurrentOrchestratorFunctions`, která potenciálně brání spuštění dalších funkcí Orchestrator nebo entity.
 
-The specific effects of extended sessions on orchestrator and entity functions are described in the next sections.
+Konkrétní účinky rozšířených relací na nástroje Orchestrator a funkce entit jsou popsány v následujících částech.
 
-### <a name="orchestrator-function-replay"></a>Orchestrator function replay
+### <a name="orchestrator-function-replay"></a>Funkce Orchestrator – přehrání
 
-As mentioned previously, orchestrator functions are replayed using the contents of the **History** table. By default, the orchestrator function code is replayed every time a batch of messages are dequeued from a control queue. When extended sessions are enabled, orchestrator function instances are held in memory longer and new messages can be processed without a full history replay.
+Jak bylo zmíněno dříve, funkce Orchestrator se přehrávají pomocí obsahu tabulky **Historie** . Ve výchozím nastavení se kód funkce nástroje Orchestrator přehraje pokaždé, když se dávka zpráv z fronty ovládacího prvku odřadí. Pokud jsou povoleny rozšířené relace, instance funkcí nástroje Orchestrator jsou uchovávány v paměti déle a nové zprávy lze zpracovat bez nutnosti opětovného přehrání celé historie.
 
-The performance improvement of extended sessions is most often observed in the following situations:
+Zlepšení výkonu rozšířených relací je nejčastěji pozorováno v následujících situacích:
 
-* When there are a limited number of orchestration instances running concurrently.
-* When orchestrations have large number of sequential actions (e.g. hundreds of activity function calls) that complete quickly.
-* When orchestrations fan-out and fan-in a large number of actions that complete around the same time.
-* When orchestrator functions need to process large messages or do any CPU-intensive data processing.
+* V případě, že je současně spuštěn omezený počet instancí Orchestration.
+* Pokud orchestrace mají velký počet sekvenčních akcí (např. stovky volání funkcí aktivity), které jsou dokončeny rychle.
+* V případě orchestrace ventilátorů a ventilátorů se zobrazí velký počet akcí, které se dokončí přibližně ve stejnou dobu.
+* Když funkce Orchestrator potřebuje zpracovávat velké zprávy nebo provádět zpracování dat náročných na procesor.
 
-In all other situations, there is typically no observable performance improvement for orchestrator functions.
+Ve všech ostatních situacích obvykle neexistuje žádné pozorovatelské zlepšení výkonu pro funkce nástroje Orchestrator.
 
 > [!NOTE]
-> These settings should only be used after an orchestrator function has been fully developed and tested. The default aggressive replay behavior can useful for detecting [orchestrator function code constraints](durable-functions-code-constraints.md) violations at development time, and is therefore disabled by default.
+> Tato nastavení by měla být použita pouze poté, co byla funkce Orchestrator plně vyvinuta a testována. Výchozí agresivní chování při přehrání může být užitečné při zjišťování porušení [omezení kódu funkce Orchestrator](durable-functions-code-constraints.md) v době vývoje, a proto je ve výchozím nastavení zakázané.
 
-### <a name="entity-function-unloading"></a>Entity function unloading
+### <a name="entity-function-unloading"></a>Uvolnění funkce entity
 
-Entity functions process up to 20 operations in a single batch. As soon as an entity finishes processing a batch of operations, it persists its state and unloads from memory. You can delay the unloading of entities from memory using the extended sessions setting. Entities continue to persist their state changes as before, but remain in memory for the configured period of time to reduce the number of loads from Azure Storage. This reduction of loads from Azure Storage can improve the overall throughput of frequently accessed entities.
+Funkce entit zpracovávají až 20 operací v rámci jedné dávky. Jakmile entita dokončí zpracování dávky operací, zůstane její stav a uvolní se z paměti. Uvolnění entit z paměti můžete zpozdit pomocí nastavení rozšířené relace. Entity nadále ukládají změny stavu jako dříve, ale zůstávají v paměti pro nakonfigurované časové období, aby se snížil počet zatížení od Azure Storage. Toto omezení zatížení z Azure Storage může zlepšit celkovou propustnost často používaných entit.
 
-## <a name="performance-targets"></a>Performance targets
+## <a name="performance-targets"></a>Cíle výkonnosti
 
-When planning to use Durable Functions for a production application, it is important to consider the performance requirements early in the planning process. This section covers some basic usage scenarios and the expected maximum throughput numbers.
+Když plánujete použít Durable Functions pro produkční aplikaci, je důležité zvážit požadavky na výkon v brzké době v procesu plánování. Tato část se zabývá některými základními scénáři použití a očekávanými maximálními čísly propustnosti.
 
-* **Sequential activity execution**: This scenario describes an orchestrator function that runs a series of activity functions one after the other. It most closely resembles the [Function Chaining](durable-functions-sequence.md) sample.
-* **Parallel activity execution**: This scenario describes an orchestrator function that executes many activity functions in parallel using the [Fan-out, Fan-in](durable-functions-cloud-backup.md) pattern.
-* **Parallel response processing**: This scenario is the second half of the [Fan-out, Fan-in](durable-functions-cloud-backup.md) pattern. It focuses on the performance of the fan-in. It's important to note that unlike fan-out, fan-in is done by a single orchestrator function instance, and therefore can only run on a single VM.
-* **External event processing**: This scenario represents a single orchestrator function instance that waits on [external events](durable-functions-external-events.md), one at a time.
-* **Entity operation processing**: This scenario tests how quickly a _single_ [Counter entity](durable-functions-entities.md) can process a constant stream of operations.
+* **Sekvenční provádění aktivity**: Tento scénář popisuje funkci nástroje Orchestrator, která spouští řadu funkcí aktivity jednu po druhé. Nejlépe se podobá ukázce [řetězení funkcí](durable-functions-sequence.md) .
+* **Paralelní provádění aktivit**: Tento scénář popisuje funkci Orchestrator, která paralelně spouští mnoho funkcí aktivity s použitím modelu [ventilátoru s ventilátory](durable-functions-cloud-backup.md) .
+* **Paralelní zpracování odpovědí**: Tento scénář je druhá polovina vzoru ventilátoru [, ventilátoru](durable-functions-cloud-backup.md) . Zaměřuje se na výkon ventilátoru. Je důležité si uvědomit, že na rozdíl od ventilátoru se ventilátor používá v jedné instanci funkce Orchestrator, a proto může běžet jenom na jednom virtuálním počítači.
+* **Zpracování externích událostí**: Tento scénář představuje jednu instanci funkce Orchestrator, která čeká na [externí události](durable-functions-external-events.md), a to v jednom okamžiku.
+* **Zpracování operací entity**: Tento scénář testuje, jak rychle může _jedna_ [entita čítače](durable-functions-entities.md) zpracovat konstantní datový proud operací.
 
 > [!TIP]
-> Unlike fan-out, fan-in operations are limited to a single VM. If your application uses the fan-out, fan-in pattern and you are concerned about fan-in performance, consider sub-dividing the activity function fan-out across multiple [sub-orchestrations](durable-functions-sub-orchestrations.md).
+> Na rozdíl od ventilátorů jsou operace ventilátoru omezené na jeden virtuální počítač. Pokud vaše aplikace využívá vzorek ventilátoru a máte obavy o výkon ventilátoru, zvažte rozdělení funkce aktivity na více [dílčích orchestrací](durable-functions-sub-orchestrations.md).
 
-The following table shows the expected *maximum* throughput numbers for the previously described scenarios. "Instance" refers to a single instance of an orchestrator function running on a single small ([A1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM in Azure App Service. In all cases, it is assumed that [extended sessions](#orchestrator-function-replay) are enabled. Actual results may vary depending on the CPU or I/O work performed by the function code.
+Následující tabulka uvádí očekávaná *maximální* čísla propustnosti pro dříve popsané scénáře. "Instance" odkazuje na jednu instanci funkce Orchestrator běžící na jednom malém virtuálním počítači ([a1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) v Azure App Service. Ve všech případech se předpokládá, že jsou povolené [Rozšířené relace](#orchestrator-function-replay) . Skutečné výsledky se můžou lišit v závislosti na využití procesoru nebo vstupně-výstupní práci prováděné kódem funkce.
 
 | Scénář | Maximální propustnost |
 |-|-|
-| Sequential activity execution | 5 activities per second, per instance |
-| Parallel activity execution (fan-out) | 100 activities per second, per instance |
-| Parallel response processing (fan-in) | 150 responses per second, per instance |
-| External event processing | 50 events per second, per instance |
-| Entity operation processing | 64 operations per second |
+| Provádění sekvenční aktivity | 5 aktivit za sekundu, na instanci |
+| Paralelní provádění aktivit (ventilátor-out) | 100 aktivit za sekundu, na instanci |
+| Paralelní zpracování odpovědí (ventilátor-in) | 150 odpovědí za sekundu, na instanci |
+| Externí zpracování událostí | 50 událostí za sekundu, na instanci |
+| Zpracování operací entity | 64 operací za sekundu |
 
 > [!NOTE]
-> These numbers are current as of the v1.4.0 (GA) release of the Durable Functions extension. These numbers may change over time as the feature matures and as optimizations are made.
+> Tato čísla jsou aktuální pro vydání rozšíření Durable Functions v 1.4.0 (GA). Tato čísla se můžou v průběhu času měnit, protože se tato funkce prosazuje a optimalizace se provedou.
 
-If you are not seeing the throughput numbers you expect and your CPU and memory usage appears healthy, check to see whether the cause is related to [the health of your storage account](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance). The Durable Functions extension can put significant load on an Azure Storage account and sufficiently high loads may result in storage account throttling.
+Pokud se vám nezobrazují počty propustnosti, které očekáváte, a využití procesoru a paměti se zobrazí v pořádku, zkontrolujte, jestli příčina souvisí s [stavem vašeho účtu úložiště](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance). Rozšíření Durable Functions může vést k výraznému zatížení pro Azure Storage účet a dostatečně vysoké zatížení může mít za následek omezení účtu úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Learn about disaster recovery and geo-distribution](durable-functions-disaster-recovery-geo-distribution.md)
+> [Informace o zotavení po havárii a geografické distribuci](durable-functions-disaster-recovery-geo-distribution.md)

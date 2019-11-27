@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82fa5019e740d16d0b97111fcf8dbc4f6c91d57b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a2283ac076ef761fd098d75e7120e6557a959574
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184003"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547247"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Přiřazení přístupu spravovanou identitu prostředku pomocí Powershellu
 
@@ -32,15 +32,15 @@ Po dokončení konfigurace k prostředku Azure s využitím spravované identity
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)** .
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Nainstalujte [nejnovější verzi Azure Powershellu](/powershell/azure/install-az-ps) Pokud jste tak již neučinili.
+- Pokud jste to ještě neudělali, nainstalujte [nejnovější verzi Azure PowerShell](/powershell/azure/install-az-ps) .
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Využijte RBAC pro přiřazení přístupu spravovanou identitu do jiného prostředku
 
-Po povolení identity spravované v prostředku Azure, [jako je například virtuální počítač Azure](qs-configure-powershell-windows-vm.md):
+Po povolení spravované identity na prostředku Azure, jako je [třeba virtuální počítač Azure](qs-configure-powershell-windows-vm.md):
 
-1. Přihlaste se k Azure s využitím `Connect-AzAccount` rutiny. Použijte účet, který je přidružený k předplatnému Azure, ve které jste nakonfigurovali spravovaná identita:
+1. Přihlaste se k Azure pomocí rutiny `Connect-AzAccount`. Použijte účet, který je přidružený k předplatnému Azure, ve které jste nakonfigurovali spravovaná identita:
 
    ```powershell
    Connect-AzAccount
@@ -54,5 +54,5 @@ Po povolení identity spravované v prostředku Azure, [jako je například virt
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Spravovaná identita pro prostředky Azure – přehled](overview.md)
-- Povolit spravované identity na Virtuálním počítači Azure, najdete v článku [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Powershellu](qs-configure-powershell-windows-vm.md).
+- [Přehled spravované identity pro prostředky Azure](overview.md)
+- Pokud chcete povolit spravovanou identitu na virtuálním počítači Azure, přečtěte si téma [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](qs-configure-powershell-windows-vm.md).

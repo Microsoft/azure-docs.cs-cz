@@ -1,7 +1,7 @@
 ---
-title: Publish app - LUIS
+title: Publikování aplikace – LUIS
 titleSuffix: Azure Cognitive Services
-description: When you finish building and testing your active LUIS app, make it available to your client application by publishing it to the endpoint.
+description: Po dokončení vytváření a testování aplikace LUIS aktivní, zpřístupní ji pro klientské aplikace ji publikujete do koncového bodu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,81 +18,81 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74221719"
 ---
-# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publish your active, trained app to a staging or production endpoint
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikujte svou aktivní, školenou aplikaci do pracovního nebo produkčního koncového bodu.
 
-When you finish building, training, and testing your active LUIS app, make it available to your client application by publishing it to the endpoint. 
+Po dokončení sestavování, školení a testování vaší aktivní aplikace LUIS zpřístupněte ji klientské aplikaci tím, že ji publikujete do koncového bodu. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="publishing"></a>Publikování
 
-1. To publish to the endpoint, select **Publish** in the top, right panel. 
+1. Pokud chcete publikovat do koncového bodu, vyberte **publikovat** v horním a pravém panelu. 
 
-    ![Publish button in top, right nav bar](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
+    ![Tlačítko publikovat v horním a pravém navigačním panelu](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
-1. Select your settings for the published prediction endpoint, then select **Publish**.
+1. Vyberte nastavení pro publikovaný koncový bod předpovědi a pak vyberte **publikovat**.
 
-    ![Select publish settings then select Publish button](./media/luis-how-to-publish-app/publish-pop-up.png)
+    ![Vyberte publikovat nastavení a pak vyberte tlačítko publikovat.](./media/luis-how-to-publish-app/publish-pop-up.png)
 
-### <a name="publishing-slots"></a>Publishing slots
+### <a name="publishing-slots"></a>Sloty publikování
 
-Select the correct slot when the pop-up window displays: 
+Po zobrazení automaticky otevíraného okna vyberte správný slot: 
 
 * Staging
 * Výroba 
 
-By using both publishing slots, this allows you to have two different versions of your app available at the published endpoints or the same version on two different endpoints. 
+Pomocí obou slotů pro publikování vám to umožňuje mít v publikovaných koncových bodech k dispozici dvě různé verze aplikace nebo stejnou verzi ve dvou různých koncových bodech. 
 
-### <a name="publishing-regions"></a>Publishing regions
+### <a name="publishing-regions"></a>Publikování oblastí
 
-The app is published to all regions associated with the LUIS prediction endpoint resources added in the LUIS portal from the **Manage** ->  **[Azure Resources](/luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** page. 
+Aplikace se publikuje do všech oblastí přidružených k prostředkům koncového bodu předpovědi LUIS přidaným na portálu LUIS ze stránky **Správa** **[prostředků Azure](/luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)**  -> . 
 
-For example, for an app created on [www.luis.ai](https://www.luis.ai), if you create a LUIS resource in two regions, **westus** and **eastus**, and add these to the app as resources, the app is published in both regions. For more information about LUIS regions, see [Regions](luis-reference-regions.md).
+Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud vytvoříte prostředek Luis ve dvou oblastech, **westus** a **eastus**a přidáte je do aplikace jako prostředky, aplikace se publikuje v obou oblastech. Další informace o oblastech LUIS najdete v tématu [oblasti](luis-reference-regions.md).
 
 > [!TIP]
-> There are 3 authoring regions. You must author in the region you intend to publish to. If you need to publish to all regions, you need to manage your authoring process and the resulting trained model in all 3 authoring regions. 
+> Existují tři oblasti vytváření obsahu. Musíte vytvořit oblast, do které chcete publikovat. Pokud potřebujete publikovat ve všech oblastech, je nutné spravovat proces vytváření obsahu a výsledný model vyškolený ve všech třech oblastech vytváření obsahu. 
 
 
-## <a name="configuring-publish-settings"></a>Configuring publish settings
+## <a name="configuring-publish-settings"></a>Konfigurace nastavení publikování
 
-After you select the slot, configure the publish settings for:
+Po výběru slotu nakonfigurujte nastavení publikování pro:
 
-* Analýza subjektivního hodnocení
-* Spelling correction - v2 prediction endpoint only
-* Speech priming 
+* Analýza mínění
+* Oprava pravopisu – pouze koncový bod verze V2 – předpověď
+* Neprojevení řeči 
 
-After you publish, these settings are available for review from the **Manage** section's **Publish settings** page. You can change the settings with every publish. If you cancel a publish, any changes you made during the publish are also canceled. 
+Po publikování jsou tato nastavení dostupná ke kontrole na stránce **Správa** **Nastavení publikování** oddílu. Nastavení můžete změnit při každém publikování. Pokud zrušíte publikování, všechny změny, které jste provedli během publikování, se také zruší. 
 
-### <a name="when-your-app-is-published"></a>When your app is published
+### <a name="when-your-app-is-published"></a>Při publikování aplikace
 
-When your app is successfully published, a success notification appears at the top of the browser. The notification also includes a link to the endpoints. 
+Po úspěšném publikování vaší aplikace se v horní části prohlížeče zobrazí oznámení o úspěchu. Oznámení také obsahuje odkaz na koncové body. 
 
-If you need the endpoint URL, select the link. You can also get to the endpoint URLs by selecting **Manage** in the top menu, then select **Azure Resources** in the left menu. 
+Pokud budete potřebovat adresu URL koncového bodu, vyberte odkaz. K adresám URL koncových bodů se můžete dostat taky tak, že v horní nabídce vyberete **Spravovat** a v nabídce vlevo vyberete **prostředky Azure** . 
 
-## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
+## <a name="sentiment-analysis"></a>Analýza mínění
 
 <a name="enable-sentiment-analysis"></a>
 
-Sentiment analysis allows LUIS to integrate with [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) to provide sentiment and key phrase analysis. 
+Analýza mínění umožňuje integraci LUIS s [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) , aby poskytovala mínění a analýzu klíčových frází. 
 
-You do not have to provide a Text Analytics key and there is no billing charge for this service to your Azure account. 
+Není potřeba zadat klíč pro analýzu textu a nic neplatíte fakturace pro tuto službu ke svému účtu Azure. 
 
-Sentiment data is a score between 1 and 0 indicating the positive (closer to 1) or negative (closer to 0) sentiment of the data. The sentiment label of `positive`, `neutral`, and `negative` is per supported culture. Currently, only English supports sentiment labels. 
+Je skóre mezi 1 a 0 označující pozitivní mínění data (blíže 1) ani na zápornou (blíže 0) mínění data. Popisek mínění `positive`, `neutral`a `negative` je na podporovanou jazykovou verzi. V současné době podporuje popisky mínění jenom angličtina. 
 
-For more information about the JSON endpoint response with sentiment analysis, see [Sentiment analysis](luis-concept-data-extraction.md#sentiment-analysis)
+Další informace o odpovědích koncových bodů JSON s analýzou mínění najdete v tématu [Analýza mínění](luis-concept-data-extraction.md#sentiment-analysis) .
 
-## <a name="spelling-correction"></a>Spelling correction
+## <a name="spelling-correction"></a>Oprava pravopisu
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-Corrections to spelling are made before the LUIS user utterance prediction. You can see any changes to the original utterance, including spelling, in the response.
+Opravy pro kontrolu pravopisu se provádí před předvídáním LUIS uživatele utterance. V odpovědi můžete zobrazit všechny změny v původních utterance, včetně pravopisu.
 
-## <a name="speech-priming"></a>Speech priming
+## <a name="speech-priming"></a>Neprojevení řeči
 
-Speech priming is the process of using sending the LUIS model to Speech services prior to conversion of text to speech. This allows the speech service to provide speech conversion more accurately for your model. This allows bot Speech and LUIS requests and responses in one call by making one speech call and getting back a LUIS response. It provides less latency overall.
+Dopřed konverze textu na řeč je proces použití funkce posílání LUIS modelu na hlasové služby před převodem textu na řeč. Díky tomu může služba Speech Service pro váš model přesněji poskytovat převod řeči. To umožňuje, aby se v jednom volání LUIS robot a žádosti a odpovědi vyvolaly jedno volání řeči a vrátilo zpět odpověď LUIS. Poskytuje méně latence celkově.
 
 ## <a name="next-steps"></a>Další kroky
 
-* See [Manage keys](./luis-how-to-azure-subscription.md) to add keys to Azure subscription key to LUIS and how to set the Bing Spell Check key and include all intents in results.
-* See [Train and test your app](luis-interactive-test.md) for instructions on how to test your published app in the test console.
+* Přečtěte si téma [Správa klíčů](./luis-how-to-azure-subscription.md) a přidání klíčů do klíče předplatného Azure do Luis a jak nastavit klíč kontrola pravopisu Bingu a zahrnout všechny záměry do výsledků.
+* Pokyny k otestování publikované aplikace v konzole testu najdete v tématu [výuka a testování vaší aplikace](luis-interactive-test.md) .
 

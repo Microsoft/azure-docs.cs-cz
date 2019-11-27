@@ -1,6 +1,6 @@
 ---
-title: host.json reference for Azure Functions 1.x
-description: Reference documentation for the Azure Functions host.json file with the v1 runtime.
+title: Reference Host. JSON pro Azure Functions 1. x
+description: Referenční dokumentace k souboru Azure Functions Host. JSON s modulem Runtime v1
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 99a571483086343d4e7d6188b2f401abc616c1bb
@@ -10,24 +10,24 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230591"
 ---
-# <a name="hostjson-reference-for-azure-functions-1x"></a>host.json reference for Azure Functions 1.x
+# <a name="hostjson-reference-for-azure-functions-1x"></a>Reference Host. JSON pro Azure Functions 1. x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Vyberte verzi Azure Functions runtime, kterou používáte: "]
 > * [Verze 1](functions-host-json-v1.md)
 > * [Verze 2](functions-host-json.md)
 
-The *host.json* metadata file contains global configuration options that affect all functions for a function app. This article lists the settings that are available for the v1 runtime. The JSON schema is at http://json.schemastore.org/host.
+Soubor metadat *Host. JSON* obsahuje možnosti globální konfigurace, které mají vliv na všechny funkce aplikace Function App. Tento článek obsahuje seznam nastavení, která jsou k dispozici pro modul runtime v1. Schéma JSON je na http://json.schemastore.org/host.
 
 > [!NOTE]
-> This article is for Azure Functions 1.x.  For a reference of host.json in Functions 2.x, see [host.json reference for Azure Functions 2.x](functions-host-json.md).
+> Tento článek je určený pro Azure Functions 1.x.  Odkaz na Host. JSON ve funkcích 2. x najdete v tématu [reference Host. JSON pro Azure Functions 2. x](functions-host-json.md).
 
-Other function app configuration options are managed in your [app settings](functions-app-settings.md).
+Další možnosti konfigurace aplikace Function App jsou spravované v [nastavení aplikace](functions-app-settings.md).
 
-Some host.json settings are only used when running locally in the [local.settings.json](functions-run-local.md#local-settings-file) file.
+Některá nastavení Host. JSON se používají jenom v případě, že se spouští místně v souboru [Local. Settings. JSON](functions-run-local.md#local-settings-file) .
 
-## <a name="sample-hostjson-file"></a>Sample host.json file
+## <a name="sample-hostjson-file"></a>Ukázkový soubor host. JSON
 
-The following sample *host.json* files have all possible options specified.
+Následující ukázkové soubory *Host. JSON* mají uvedené všechny možné možnosti.
 
 
 ```json
@@ -110,9 +110,9 @@ The following sample *host.json* files have all possible options specified.
 }
 ```
 
-The following sections of this article explain each top-level property. All are optional unless otherwise indicated.
+Následující části tohoto článku vysvětlují jednotlivé vlastnosti nejvyšší úrovně. Všechny jsou volitelné, pokud není uvedeno jinak.
 
-## <a name="aggregator"></a>aggregator
+## <a name="aggregator"></a>agregovan
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
@@ -122,7 +122,7 @@ The following sections of this article explain each top-level property. All are 
 
 ## <a name="documentdb"></a>DocumentDB
 
-Configuration settings for the [Azure Cosmos DB trigger and bindings](functions-bindings-cosmosdb.md).
+Nastavení konfigurace [aktivační události Azure Cosmos DB a vazeb](functions-bindings-cosmosdb.md).
 
 ```json
 {
@@ -138,23 +138,23 @@ Configuration settings for the [Azure Cosmos DB trigger and bindings](functions-
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
-|GatewayMode|brána|The connection mode used by the function when connecting to the Azure Cosmos DB service. Options are `Direct` and `Gateway`|
-|Protocol (Protokol)|Https|The connection protocol used by the function when connection to the Azure Cosmos DB service.  Read [here for an explanation of both modes](../cosmos-db/performance-tips.md#networking)|
-|leasePrefix|–|Lease prefix to use across all functions in an app.|
+|GatewayMode|brána|Režim připojení, který funkce používá při připojování ke službě Azure Cosmos DB. Možnosti jsou `Direct` a `Gateway`|
+|Protocol (Protokol)|Https|Protokol připojení, který funkce používá při připojení ke službě Azure Cosmos DB.  Přečtěte si [zde pro vysvětlení obou režimů](../cosmos-db/performance-tips.md#networking) .|
+|leasePrefix|neuvedeno|Předpona zapůjčení pro použití ve všech funkcích aplikace|
 
 ## <a name="durabletask"></a>durableTask
 
 [!INCLUDE [durabletask](../../includes/functions-host-json-durabletask.md)]
 
-## <a name="eventhub"></a>eventHub
+## <a name="eventhub"></a>centra událostí
 
-Configuration settings for [Event Hub triggers and bindings](functions-bindings-event-hubs.md).
+Nastavení konfigurace [aktivačních událostí a vazeb centra událostí](functions-bindings-event-hubs.md)
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>– funkce
 
-A list of functions that the job host runs. An empty array means run all functions. Intended for use only when [running locally](functions-run-local.md). In function apps in Azure, you should instead follow the steps in [How to disable functions in Azure Functions](disable-function.md) to disable specific functions rather than using this setting.
+Seznam funkcí, které hostitel úlohy spouští. Prázdné pole znamená spuštění všech funkcí. Určeno pro použití pouze při [místním spuštění](functions-run-local.md). V aplikacích Function App v Azure byste měli místo použití tohoto nastavení zakázat konkrétní funkce pomocí postupu v [Azure Functions](disable-function.md) .
 
 ```json
 {
@@ -164,7 +164,7 @@ A list of functions that the job host runs. An empty array means run all functio
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Indicates the timeout duration for all functions. In a serverless Consumption plan, the valid range is from 1 second to 10 minutes, and the default value is 5 minutes. In an App Service plan, there is no overall limit and the default is _null_, which indicates no timeout.
+Označuje dobu trvání časového limitu pro všechny funkce. V plánu spotřeby bez serveru je platný rozsah od 1 sekundy do 10 minut a výchozí hodnota je 5 minut. V plánu App Service neexistuje žádný celkový limit a výchozí hodnota je _null_, což znamená, že nevypršel časový limit.
 
 ```json
 {
@@ -172,9 +172,9 @@ Indicates the timeout duration for all functions. In a serverless Consumption pl
 }
 ```
 
-## <a name="healthmonitor"></a>healthMonitor
+## <a name="healthmonitor"></a>Elementu
 
-Configuration settings for [Host health monitor](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
+Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
 
 ```
 {
@@ -190,15 +190,15 @@ Configuration settings for [Host health monitor](https://github.com/Azure/azure-
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|enabled|true|Specifies whether the feature is enabled. | 
-|healthCheckInterval|10 sekund|The time interval between the periodic background health checks. | 
-|healthCheckWindow|2 minutes|A sliding time window used in conjunction with the `healthCheckThreshold` setting.| 
-|healthCheckThreshold|6|Maximum number of times the health check can fail before a host recycle is initiated.| 
-|counterThreshold|0.80|The threshold at which a performance counter will be considered unhealthy.| 
+|enabled|true (pravda)|Určuje, jestli je funkce povolená. | 
+|healthCheckInterval|10 sekund|Časový interval mezi pravidelnými kontrolami stavu pozadí. | 
+|healthCheckWindow|2 minuty|Posuvné časové okno používané ve spojení s nastavením `healthCheckThreshold`.| 
+|healthCheckThreshold|6|Maximální počet neúspěšných kontrol stavu před zahájením recyklace hostitele.| 
+|counterThreshold|0,80|Prahová hodnota, při které bude čítač výkonu považován za špatný.| 
 
 ## <a name="http"></a>http
 
-Configuration settings for [http triggers and bindings](functions-bindings-http-webhook.md).
+Nastavení konfigurace [aktivačních událostí a vazeb HTTP](functions-bindings-http-webhook.md).
 
 ```json
 {
@@ -213,16 +213,16 @@ Configuration settings for [http triggers and bindings](functions-bindings-http-
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|dynamicThrottlesEnabled|false|When enabled, this setting causes the request processing pipeline to periodically check system performance counters like connections/threads/processes/memory/cpu/etc. and if any of those counters are over a built-in high threshold (80%), requests will be rejected with a 429 "Too Busy" response until the counter(s) return to normal levels.|
-|maxConcurrentRequests|unbounded (`-1`)|The maximum number of http functions that will be executed in parallel. This allows you to control concurrency, which can help manage resource utilization. For example, you might have an http function that uses a lot of system resources (memory/cpu/sockets) such that it causes issues when concurrency is too high. Or you might have a function that makes outbound requests to a third party service, and those calls need to be rate limited. In these cases, applying a throttle here can help.|
-|maxOutstandingRequests|unbounded (`-1`)|The maximum number of outstanding requests that are held at any given time. This limit includes requests that are queued but have not started executing, as well as any in progress executions. Any incoming requests over this limit are rejected with a 429 "Too Busy" response. That allows callers to employ time-based retry strategies, and also helps you to control maximum request latencies. This only controls queuing that occurs within the script host execution path. Other queues such as the ASP.NET request queue will still be in effect and unaffected by this setting.|
-|routePrefix|rozhraní api|The route prefix that applies to all routes. Use an empty string to remove the default prefix. |
+|dynamicThrottlesEnabled|false (nepravda)|Když je toto nastavení povolené, bude v kanálu zpracování požadavků pravidelně kontrolovat čítače výkonu systému, jako jsou připojení/vlákna, procesy/paměti/CPU/a, pokud některý z těchto čítačů překročí vestavěnou vysokou prahovou hodnotu (80%), požadavky se odmítnou se 429 "příliš zaneprázdněnou", dokud se čítače nevrátí na normální úrovně.|
+|maxConcurrentRequests|bez vazby (`-1`)|Maximální počet funkcí http, které se spustí paralelně. To vám umožňuje řídit souběžnost, což pomáhá spravovat využití prostředků. Můžete mít například funkci http, která používá velké množství systémových prostředků (paměť/procesor/sokety), což způsobuje problémy, pokud je souběžnost příliš vysoká. Nebo může být funkce, která vytváří odchozí požadavky na službu třetí strany, a tyto hovory musí být omezené na míru. V těchto případech vám může pomáhat použití omezení.|
+|maxOutstandingRequests|bez vazby (`-1`)|Maximální počet nezpracovaných požadavků, které jsou v daném okamžiku uchovávány. Tento limit zahrnuje požadavky, které jsou ve frontě, ale nezačaly běžet, a také jakékoli probíhající provádění. Všechny příchozí žádosti přes toto omezení se odmítnou s 429 "příliš zaneprázdněnou" odezvou. Umožňuje volajícím využívat strategie opakování na základě času a také vám pomůže řídit maximální latenci žádostí. Tato možnost řídí služby Řízení front zpráv, ke kterým dochází v cestě spuštění hostitele skriptu. Další fronty, například fronta žádostí ASP.NET, budou stále platit a nebudou ovlivněny tímto nastavením.|
+|routePrefix|rozhraní api|Předpona trasy, která se vztahuje na všechny trasy. K odebrání výchozí předpony použijte prázdný řetězec. |
 
 ## <a name="id"></a>id
 
-The unique ID for a job host. Can be a lower case GUID with dashes removed. Required when running locally. When running in Azure, we recommend that you not set an ID value. An ID is generated automatically in Azure when `id` is omitted. 
+Jedinečné ID pro hostitele úlohy Může to být malá GUID s odebranými pomlčkami. Vyžaduje se při místním spuštění. Při spuštění v Azure doporučujeme nenastavit hodnotu ID. ID se automaticky generuje v Azure, když se `id` vynechá. 
 
-If you share a Storage account across multiple function apps, make sure that each function app has a different `id`. You can omit the `id` property or manually set each function app's `id` to a different value. The timer trigger uses a storage lock to ensure that there will be only one timer instance when a function app scales out to multiple instances. If two function apps share the same `id` and each uses a timer trigger, only one timer will run.
+Pokud sdílíte účet úložiště napříč více aplikacemi Function App, ujistěte se, že každá aplikace Function App má jinou `id`. Můžete vynechat vlastnost `id` nebo ručně nastavit každou `id` aplikace Function App na jinou hodnotu. Aktivační událost časovače používá zámek úložiště k tomu, aby se zajistilo, že pokud se aplikace funkcí škáluje na více instancí, bude to mít jenom jednu instanci časovače. Pokud dvě aplikace Function sdílí stejné `id` a každá z nich používá aktivační událost časovače, spustí se jenom jeden časovač.
 
 ```json
 {
@@ -230,9 +230,9 @@ If you share a Storage account across multiple function apps, make sure that eac
 }
 ```
 
-## <a name="logger"></a>logger
+## <a name="logger"></a>Nástroj
 
-Controls filtering for logs written by an [ILogger object](functions-monitoring.md#write-logs-in-c-functions) or by [context.log](functions-monitoring.md#write-logs-in-javascript-functions).
+Řídí filtrování protokolů zapsaných [objektem ILogger](functions-monitoring.md#write-logs-in-c-functions) nebo [kontextem. log](functions-monitoring.md#write-logs-in-javascript-functions).
 
 ```json
 {
@@ -251,13 +251,13 @@ Controls filtering for logs written by an [ILogger object](functions-monitoring.
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|categoryFilter|–|Specifies filtering by category| 
-|defaultLevel|Informace|For any categories not specified in the `categoryLevels` array, send logs at this level and above to Application Insights.| 
-|categoryLevels|–|An array of categories that specifies the minimum log level to send to Application Insights for each category. The category specified here controls all categories that begin with the same value, and longer values take precedence. In the preceding sample *host.json* file, all categories that begin with "Host.Aggregator" log at `Information` level. All other categories that begin with "Host", such as "Host.Executor", log at `Error` level.| 
+|categoryFilter|neuvedeno|Určuje filtrování podle kategorie.| 
+|defaultLevel|Informace|Pro jakékoli kategorie, které nejsou určené v poli `categoryLevels`, odešlete protokoly na této úrovni a výše do Application Insights.| 
+|categoryLevels|neuvedeno|Pole kategorií, které určuje minimální úroveň protokolu, která se má odeslat Application Insights pro každou kategorii. Zde uvedená kategorie řídí všechny kategorie, které začínají stejnou hodnotou a mají přednost před delšími hodnotami. V předchozím ukázkovém souboru *Host. JSON* všechny kategorie, které začínají na "host. agregátor" na úrovni `Information`. Všechny ostatní kategorie, které začínají na "hostitel", jako je například Host. exekutor, se přihlaste na úrovni `Error`.| 
 
-## <a name="queues"></a>queues
+## <a name="queues"></a>vytvořil
 
-Configuration settings for [Storage queue triggers and bindings](functions-bindings-storage-queue.md).
+Nastavení konfigurace [aktivačních událostí a vazeb fronty úložiště](functions-bindings-storage-queue.md)
 
 ```json
 {
@@ -273,15 +273,15 @@ Configuration settings for [Storage queue triggers and bindings](functions-bindi
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|maxPollingInterval|60000|The maximum interval in milliseconds between queue polls.| 
-|visibilityTimeout|0|The time interval between retries when processing of a message fails.| 
-|batchSize|16|The number of queue messages that the Functions runtime retrieves simultaneously and processes in parallel. When the number being processed gets down to the `newBatchThreshold`, the runtime gets another batch and starts processing those messages. So the maximum number of concurrent messages being processed per function is `batchSize` plus `newBatchThreshold`. This limit applies separately to each queue-triggered function. <br><br>If you want to avoid parallel execution for messages received on one queue, you can set `batchSize` to 1. However, this setting eliminates concurrency only so long as your function app runs on a single virtual machine (VM). If the function app scales out to multiple VMs, each VM could run one instance of each queue-triggered function.<br><br>The maximum `batchSize` is 32. | 
-|maxDequeueCount|5|The number of times to try processing a message before moving it to the poison queue.| 
-|newBatchThreshold|batchSize/2|Whenever the number of messages being processed concurrently gets down to this number, the runtime retrieves another batch.| 
+|maxPollingInterval|60000|Maximální interval v milisekundách mezi dotazy na frontu.| 
+|visibilityTimeout|0|Časový interval mezi opakovanými pokusy při zpracování zprávy se nezdařil.| 
+|batchSize|16|Počet zpráv ve frontě, které funkce runtime Functions načítá současně a procesy paralelně. Když se zpracovávané číslo vrátí do `newBatchThreshold`, modul runtime získá další dávku a začne tyto zprávy zpracovávat. Proto je maximální počet souběžných zpráv zpracovávaných na funkci `batchSize` a `newBatchThreshold`. Toto omezení se vztahuje odděleně na jednotlivé funkce aktivované frontou. <br><br>Pokud se chcete vyhnout paralelnímu provádění zpráv přijatých v jedné frontě, můžete nastavit `batchSize` na 1. Toto nastavení však eliminuje souběžnost, pokud vaše aplikace Function App běží na jednom virtuálním počítači. Pokud se aplikace funkcí škáluje na více virtuálních počítačů, každý virtuální počítač může spustit jednu instanci každé funkce aktivované frontou.<br><br>Maximální `batchSize` je 32. | 
+|maxDequeueCount|5|Počet pokusů o zpracování zprávy před jejich přesunutím do nepoškozené fronty.| 
+|newBatchThreshold|batchSize/2|Pokaždé, když se počet zpracovávaných zpráv souběžně vrátí k tomuto číslu, modul runtime načte další dávku.| 
 
 ## <a name="sendgrid"></a>SendGrid
 
-Configuration setting for the [SendGrind output binding](functions-bindings-sendgrid.md)
+Nastavení konfigurace pro [výstupní vazbu SendGrind](functions-bindings-sendgrid.md)
 
 ```json
 {
@@ -292,11 +292,11 @@ Configuration setting for the [SendGrind output binding](functions-bindings-send
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|from|–|The sender's email address across all functions.| 
+|from|neuvedeno|E-mailová adresa odesílatele napříč všemi funkcemi.| 
 
 ## <a name="servicebus"></a>serviceBus
 
-Configuration setting for [Service Bus triggers and bindings](functions-bindings-service-bus.md).
+Nastavení konfigurace pro [aktivační události Service Bus a vazby](functions-bindings-service-bus.md).
 
 ```json
 {
@@ -310,13 +310,13 @@ Configuration setting for [Service Bus triggers and bindings](functions-bindings
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|maxConcurrentCalls|16|The maximum number of concurrent calls to the callback that the message pump should initiate. By default, the Functions runtime processes multiple messages concurrently. To direct the runtime to process only a single queue or topic message at a time, set `maxConcurrentCalls` to 1. | 
-|prefetchCount|–|The default PrefetchCount that will be used by the underlying MessageReceiver.| 
-|autoRenewTimeout|00:05:00|The maximum duration within which the message lock will be renewed automatically.| 
+|maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo zahájit pumpu zpráv. Ve výchozím nastavení modul runtime služby Functions zpracovávat více zpráv souběžně. Pokud chcete modul runtime nasměrovat tak, aby zpracovával jenom jednu frontu nebo zprávu o tématu, nastavte `maxConcurrentCalls` na 1. | 
+|prefetchCount|neuvedeno|Výchozí PrefetchCount, který se použije základní MessageReceiver.| 
+|autoRenewTimeout|00:05:00|Maximální doba, ve kterém se automatické obnovení zámku zprávy.| 
 
-## <a name="singleton"></a>singleton
+## <a name="singleton"></a>Singleton
 
-Configuration settings for Singleton lock behavior. For more information, see [GitHub issue about singleton support](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
+Nastavení konfigurace pro chování zámku typu singleton. Další informace najdete v tématu [problém GitHubu o podpoře typu Singleton](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
 ```json
 {
@@ -332,17 +332,17 @@ Configuration settings for Singleton lock behavior. For more information, see [G
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|lockPeriod|00:00:15|The period that function level locks are taken for. The locks auto-renew.| 
-|listenerLockPeriod|00:01:00|The period that listener locks are taken for.| 
-|listenerLockRecoveryPollingInterval|00:01:00|The time interval used for listener lock recovery if a listener lock couldn't be acquired on startup.| 
-|lockAcquisitionTimeout|00:01:00|The maximum amount of time the runtime will try to acquire a lock.| 
-|lockAcquisitionPollingInterval|–|The interval between lock acquisition attempts.| 
+|lockPeriod|00:00:15|Období, pro které jsou přijímány zámky na úrovni funkce. Automatické obnovení zámků.| 
+|listenerLockPeriod|00:01:00|Období, pro které jsou pořízeny zámky naslouchacího procesu.| 
+|listenerLockRecoveryPollingInterval|00:01:00|Časový interval, který se používá pro obnovení zámku naslouchacího procesu, pokud se nepovedlo získat zámek naslouchacího procesu při spuštění.| 
+|lockAcquisitionTimeout|00:01:00|Maximální doba, po kterou se modul runtime pokusí získat zámek.| 
+|lockAcquisitionPollingInterval|neuvedeno|Interval mezi pokusy o získání zámku.| 
 
-## <a name="tracing"></a>tracing
+## <a name="tracing"></a>probíhá
 
-*Version 1.x*
+*Verze 1. x*
 
-Configuration settings for logs that you create by using a `TraceWriter` object. See [C# Logging](functions-reference-csharp.md#logging) and [Node.js Logging](functions-reference-node.md#writing-trace-output-to-the-console).
+Nastavení konfigurace pro protokoly, které vytvoříte pomocí objektu `TraceWriter`. Viz [ C# protokolování](functions-reference-csharp.md#logging) a [protokolování Node. js](functions-reference-node.md#writing-trace-output-to-the-console).
 
 ```json
 {
@@ -355,12 +355,12 @@ Configuration settings for logs that you create by using a `TraceWriter` object.
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|consoleLevel|info|The tracing level for console logging. Options are: `off`, `error`, `warning`, `info`, and `verbose`.|
-|fileLoggingMode|debugOnly|The tracing level for file logging. Options are `never`, `always`, `debugOnly`.| 
+|consoleLevel|info|Úroveň trasování pro protokolování konzoly. Možnosti jsou: `off`, `error`, `warning`, `info`a `verbose`.|
+|fileLoggingMode|debugOnly|Úroveň trasování pro protokolování souborů. Možnosti jsou `never`, `always``debugOnly`.| 
 
 ## <a name="watchdirectories"></a>watchDirectories
 
-A set of [shared code directories](functions-reference-csharp.md#watched-directories) that should be monitored for changes.  Ensures that when code in these directories is changed, the changes are picked up by your functions.
+Sada [sdílených adresářů kódu](functions-reference-csharp.md#watched-directories) , které by měly být monitorovány pro změny.  Zajistí, že při změně kódu v těchto adresářích jsou změny převzaty funkcemi.
 
 ```json
 {
@@ -371,7 +371,7 @@ A set of [shared code directories](functions-reference-csharp.md#watched-directo
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Learn how to update the host.json file](functions-reference.md#fileupdate)
+> [Naučte se aktualizovat soubor host. JSON.](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [See global settings in environment variables](functions-app-settings.md)
+> [Zobrazit globální nastavení v proměnných prostředí](functions-app-settings.md)

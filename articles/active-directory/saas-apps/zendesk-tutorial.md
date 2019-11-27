@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Zendesk | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Zendesk.
+title: 'Kurz: Azure Active Directory integrace s Zendesk | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zendesk.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,261 +23,261 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233271"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Tutorial: Azure Active Directory integration with Zendesk
+# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Kurz: Azure Active Directory integrace s Zendesk
 
-In this tutorial, you learn how to integrate Zendesk with Azure Active Directory (Azure AD).
-Integrating Zendesk with Azure AD provides you with the following benefits:
+V tomto kurzu se dozvíte, jak integrovat Zendesk s Azure Active Directory (Azure AD).
+Integrace Zendesk s Azure AD poskytuje následující výhody:
 
-* You can control in Azure AD who has access to Zendesk.
-* You can enable your users to be automatically signed-in to Zendesk (Single Sign-On) with their Azure AD accounts.
-* You can manage your accounts in one central location - the Azure portal.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k Zendesk.
+* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Zendesk (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To configure Azure AD integration with Zendesk, you need the following items:
+Ke konfiguraci integrace služby Azure AD s Zendesk potřebujete následující položky:
 
-* An Azure AD subscription. If you don't have an Azure AD environment, you can get one-month trial [here](https://azure.microsoft.com/pricing/free-trial/)
-* Zendesk single sign-on enabled subscription
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Předplatné s povoleným Zendeskm jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-In this tutorial, you configure and test Azure AD single sign-on in a test environment.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Zendesk supports **SP** initiated SSO
+* Zendesk podporuje jednotné přihlašování iniciované v **SP**
 
-* Zendesk supports [**Automated** user provisioning](zendesk-provisioning-tutorial.md)
+* Zendesk podporuje [ **automatizované** zřizování uživatelů](zendesk-provisioning-tutorial.md)
 
-## <a name="adding-zendesk-from-the-gallery"></a>Adding Zendesk from the gallery
+## <a name="adding-zendesk-from-the-gallery"></a>Přidání Zendesk z Galerie
 
-To configure the integration of Zendesk into Azure AD, you need to add Zendesk from the gallery to your list of managed SaaS apps.
+Pokud chcete nakonfigurovat integraci Zendesk do služby Azure AD, musíte přidat Zendesk z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**To add Zendesk from the gallery, perform the following steps:**
+**Pokud chcete přidat Zendesk z Galerie, proveďte následující kroky:**
 
-1. In the **[Azure portal](https://portal.azure.com)** , on the left navigation panel, click **Azure Active Directory** icon.
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
-    ![The Azure Active Directory button](common/select-azuread.png)
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Navigate to **Enterprise Applications** and then select the **All Applications** option.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![The Enterprise applications blade](common/enterprise-applications.png)
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. To add new application, click **New application** button on the top of dialog.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
-    ![The New application button](common/add-new-app.png)
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. In the search box, type **Zendesk**, select **Zendesk** from result panel then click **Add** button to add the application.
+4. Do vyhledávacího pole zadejte **Zendesk**, vyberte **Zendesk** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Zendesk in the results list](common/search-new-app.png)
+     ![Zendesk v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-In this section, you configure and test Azure AD single sign-on with Zendesk based on a test user called **Britta Simon**.
-For single sign-on to work, a link relationship between an Azure AD user and the related user in Zendesk needs to be established.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Zendesk na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Zendesk.
 
-To configure and test Azure AD single sign-on with Zendesk, you need to complete the following building blocks:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Zendesk, musíte dokončit tyto stavební bloky:
 
-1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Configure Zendesk Single Sign-On](#configure-zendesk-single-sign-on)** - to configure the Single Sign-On settings on application side.
-3. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Create Zendesk test user](#create-zendesk-test-user)** - to have a counterpart of Britta Simon in Zendesk that is linked to the Azure AD representation of user.
-6. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování Zendesk](#configure-zendesk-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvoření Zendesk Test User](#create-zendesk-test-user)** – pro Britta Simon v Zendesk, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-In this section, you enable Azure AD single sign-on in the Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-To configure Azure AD single sign-on with Zendesk, perform the following steps:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zendesk, proveďte následující kroky:
 
-1. In the [Azure portal](https://portal.azure.com/), on the **Zendesk** application integration page, select **Single sign-on**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Zendesk** vyberte **jednotné přihlašování**.
 
-    ![Configure single sign-on link](common/select-sso.png)
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. On the **Select a Single sign-on method** dialog, select **SAML/WS-Fed** mode to enable single sign-on.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Single sign-on select mode](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. On the **Set up Single Sign-On with SAML** page, click **Edit** icon to open **Basic SAML Configuration** dialog.
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
-    ![Edit Basic SAML Configuration](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. On the **Basic SAML Configuration** section, perform the following steps:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Zendesk Domain and URLs single sign-on information](common/sp-identifier.png)
+    ![Informace o jednotném přihlašování v doméně Zendesk a adresách URL](common/sp-identifier.png)
 
-    a. In the **Sign on URL** text box, type a URL using the following pattern: `https://<subdomain>.zendesk.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.zendesk.com`
 
-   b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern: `https://<subdomain>.zendesk.com`
+   b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.zendesk.com`
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [Zendesk Client support team](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Zendesk](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Zendesk application expects the SAML assertions in a specific format. There are no mandatory SAML attributes but optionally you can manage from the **User Attributes** section on application integration page. On the **Set up Single Sign-On with SAML** page, click **Edit** button to open **User Attributes** dialog.
+5. Zendesk aplikace očekává kontrolní výrazy SAML v určitém formátu. Neexistují žádné povinné atributy SAML, ale Volitelně můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na tlačítko **Upravit** a otevřete dialog **uživatelské atributy** .
 
     ![image](common/edit-attribute.png)
 
-6. In the **User Claims** section on the **User Attributes** dialog, configure SAML token attribute as shown in the image above and perform the following steps:
+6. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    a. Click **Add new claim** to open the **Manage user claims** dialog.
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. In the **Name** textbox, type the attribute name shown for that row.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Leave the **Namespace** blank.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. Select Source as **Attribute**.
+    d. Jako **atribut**vyberte zdroj.
 
-    e. From the **Source attribute** list, select the appropriate attribute value.
+    e. V seznamu **zdrojový atribut** vyberte odpovídající hodnotu atributu.
 
-    f. Click **Ok**
+    f. Klikněte na **OK** .
 
-    g. Klikněte na **Uložit**.
+    g. Klikněte na možnost **Uložit**.
 
     > [!NOTE]
-    > You use extension attributes to add attributes that are not in Azure AD by default. Click [User attributes that can be set in SAML](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-) to get the complete list of SAML attributes that **Zendesk** accepts.
+    > Pomocí atributů rozšíření ve výchozím nastavení přidáte atributy, které nejsou ve službě Azure AD. Klikněte na [atributy uživatele, které se dají nastavit v SAML](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-) , aby se získal úplný seznam atributů SAML, které **Zendesk** akceptuje.
 
-7. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, copy the **Thumbprint** and save it on your computer.
+7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** zkopírujte **kryptografický otisk** a uložte ho do svého počítače.
 
-    ![Copy Thumbprint value](common/copy-certificatethumbprint.png)
+    ![Kopírovat hodnotu kryptografického otisku](common/copy-certificatethumbprint.png)
 
-8. On the **Set up Zendesk** section, copy the appropriate URL(s) as per your requirement.
+8. V části **Nastavení Zendesk** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Login URL
+    a. Přihlašovací adresa URL
 
-    b. Azure Ad Identifier
+    b. Identifikátor Azure AD
 
-    c. Logout URL
+    c. Adresa URL – odhlášení
 
-9. There are two ways in which Zendesk can be configured - Automatic and Manual.
+9. Existují dva způsoby, jak lze Zendesk nakonfigurovat – automatické a ruční.
   
-10. To automate the configuration within Zendesk, you need to install **My Apps Secure Sign-in browser extension** by clicking **Install the extension**.
+10. Pokud chcete automatizovat konfiguraci v rámci Zendesk, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
     ![image](./media/zendesk-tutorial/install_extension.png)
 
-11. After adding extension to the browser, click on **Setup Zendesk** will direct you to the Zendesk application. From there, provide the admin credentials to sign into Zendesk. The browser extension will automatically configure the application for you and automate section **Configure Zendesk Single Sign-On**.
+11. Po přidání rozšíření do prohlížeče klikněte na **Zendesk nastavení** a nasměrujte vás na aplikaci Zendesk. Odtud zadejte přihlašovací údaje správce, které se přihlásí k Zendesk. Rozšíření prohlížeče automaticky nakonfiguruje aplikaci za vás a automatizuje část **Konfigurace jednotného přihlašování Zendesk**.
 
     ![image](./media/zendesk-tutorial/d2_saml.png)
 
-### <a name="configure-zendesk-single-sign-on"></a>Configure Zendesk Single Sign-On
+### <a name="configure-zendesk-single-sign-on"></a>Konfigurace jednotného přihlašování Zendesk
 
-1. If you want to setup Zendesk manually, open a new web browser window and log into your Zendesk company site as an administrator and perform the following steps:
+1. Pokud chcete nastavit Zendesk ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu Zendesk společnosti jako správce a proveďte následující kroky:
 
-2. Click **Admin**.
+2. Klikněte na **správce**.
 
-3. In the left navigation pane, click **Settings**, and then click **Security**.
+3. V levém navigačním podokně klikněte na **Nastavení**a pak klikněte na **zabezpečení**.
 
-4. On the **Security** page, perform the following steps:
+4. Na stránce **zabezpečení** proveďte následující kroky:
 
     ![Zabezpečení](././media/zendesk-tutorial/ic773089.png "Zabezpečení")
 
     ![Jednotné přihlašování](././media/zendesk-tutorial/ic773090.png "Jednotné přihlašování")
 
-    a. Click the **Admin & Agents** tab.
+    a. Klikněte na kartu **správci & agenti** .
 
-    b. Select **Single sign-on (SSO) and SAML**, and then select **SAML**.
+    b. Vyberte **jednotné přihlašování (SSO) a SAML**a pak vyberte **SAML**.
 
-    c. In **SAML SSO URL** textbox, paste the value of **Login URL** which you have copied from Azure portal.
+    c. Do textového pole **URL jednotného přihlašování SAML** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    d. In **Remote Logout URL** textbox, paste the value of **Logout URL** which you have copied from Azure portal.
+    d. Do textového pole **Adresa URL pro vzdálené odhlášení** vložte hodnotu **URL** pro odhlášení, kterou jste zkopírovali z Azure Portal.
 
-    e. In **Certificate Fingerprint** textbox, paste the **Thumbprint** value of certificate which you have copied from Azure portal.
+    e. Do textového pole **otisku certifikátu** vložte hodnotu **kryptografického otisku** certifikátu, který jste zkopírovali z Azure Portal.
 
-    f. Klikněte na **Uložit**.
+    f. Klikněte na možnost **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![The "Users and groups" and "All users" links](common/users.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-2. Select **New user** at the top of the screen.
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![New user Button](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. In the User properties, perform the following steps.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    ![The User dialog box](common/user-properties.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. In the **Name** field enter **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Zendesk.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Zendesk.
 
-1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Zendesk**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Zendesk**.
 
-    ![Enterprise applications blade](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. In the applications list, type and select **Zendesk**.
+2. V seznamu aplikace zadejte a vyberte **Zendesk**.
 
-    ![The Zendesk link in the Applications list](common/all-applications.png)
+    ![Odkaz Zendesk v seznamu aplikací](common/all-applications.png)
 
-3. In the menu on the left, select **Users and groups**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![The "Users and groups" link](common/users-groups-blade.png)
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![The Add Assignment pane](common/add-assign-user.png)
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. In the **Add Assignment** dialog click the **Assign** button.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-zendesk-test-user"></a>Create Zendesk test user
+### <a name="create-zendesk-test-user"></a>Vytvořit testovacího uživatele Zendesk
 
-The objective of this section is to create a user called Britta Simon in Zendesk. Zendesk supports automatic user provisioning, which is by default enabled. You can find more details [here](Zendesk-provisioning-tutorial.md) on how to configure automatic user provisioning.
+Cílem této části je vytvořit uživatele s názvem Britta Simon v Zendesk. Zendesk podporuje automatické zřizování uživatelů, které je ve výchozím nastavení povolené. Další podrobnosti najdete v [tématu](Zendesk-provisioning-tutorial.md) konfigurace automatického zřizování uživatelů.
 
-**If you need to create user manually, please perform following steps:**
-
-> [!NOTE]
-> **End-user** accounts are automatically provisioned when signing in. **Agent** and **Admin** accounts need to be manually provisioned in **Zendesk** before signing in.
-
-1. Log in to your **Zendesk** tenant.
-
-2. Select the **Customer List** tab.
-
-3. Select the **User** tab, and click **Add**.
-
-    ![Add user](././media/zendesk-tutorial/ic773632.png "Přidání uživatele")
-4. Type the **Name** and **Email** of an existing Azure AD account you want to provision, and then click **Save**.
-
-    ![New user](././media/zendesk-tutorial/ic773633.png "New user")
+**Pokud potřebujete ručně vytvořit uživatele, proveďte prosím následující kroky:**
 
 > [!NOTE]
-> You can use any other Zendesk user account creation tools or APIs provided by Zendesk to provision Azure AD user accounts.
+> Účty **koncových uživatelů** se při přihlašování automaticky zřídí. Účty **agenta** a **správce** je potřeba ručně zřídit v **Zendesk** , než se přihlásí.
+
+1. Přihlaste se ke svému tenantovi **Zendesk** .
+
+2. Vyberte kartu **seznam zákazníků** .
+
+3. Vyberte kartu **uživatel** a klikněte na **Přidat**.
+
+    ![Přidat uživatele](././media/zendesk-tutorial/ic773632.png "Přidání uživatele")
+4. Zadejte **název** a **E-mail** existujícího účtu Azure AD, který chcete zřídit, a pak klikněte na **Uložit**.
+
+    ![Nový uživatel](././media/zendesk-tutorial/ic773633.png "Nový uživatel")
+
+> [!NOTE]
+> K zřizování uživatelských účtů Azure AD můžete použít jiné nástroje pro vytváření uživatelských účtů Zendesk nebo rozhraní API poskytovaná Zendesk.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-When you click the Zendesk tile in the Access Panel, you should be automatically signed in to the Zendesk for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Zendesk, měli byste se automaticky přihlásit k Zendesk, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Configure User Provisioning](zendesk-provisioning-tutorial.md)
+- [Konfigurace zřizování uživatelů](zendesk-provisioning-tutorial.md)

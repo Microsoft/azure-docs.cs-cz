@@ -1,6 +1,6 @@
 ---
-title: Custom allocation policies with Azure IoT Hub Device Provisioning Service
-description: How to use custom allocation policies with the Azure IoT Hub Device Provisioning Service
+title: Vlastní zásady přidělování pomocí Azure IoT Hub Device Provisioning Service
+description: Jak používat vlastní zásady přidělování pro Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/14/2019
@@ -14,124 +14,124 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228743"
 ---
-# <a name="how-to-use-custom-allocation-policies"></a>How to use custom allocation policies
+# <a name="how-to-use-custom-allocation-policies"></a>Jak používat vlastní zásady přidělování
 
-A custom allocation policy gives you more control over how devices are assigned to an IoT hub. This is accomplished by using custom code in an [Azure Function](../azure-functions/functions-overview.md) to assign devices to an IoT hub. The device provisioning service calls your Azure Function code providing all relevant information about the device and the enrollment. Your function code is executed and returns the IoT hub information used to provisioning the device.
+Vlastní zásady přidělení poskytují větší kontrolu nad tím, jak se zařízení přiřazují do služby IoT Hub. K tomu je potřeba pomocí vlastního kódu ve [službě Azure Function](../azure-functions/functions-overview.md) přiřazovat zařízení ke službě IoT Hub. Služba Device Provisioning zavolá váš kód funkce Azure, který poskytuje všechny relevantní informace o zařízení a registraci. Váš kód funkce se spustí a vrátí informace o službě IoT Hub použité ke zřízení zařízení.
 
-By using custom allocation policies, you define your own allocation policies when the policies provided by the Device Provisioning Service don't meet the requirements of your scenario.
+Když použijete vlastní zásady přidělování, definujete vlastní zásady přidělování, když zásady poskytované službou Device Provisioning nesplňují požadavky vašeho scénáře.
 
-For example, maybe you want to examine the certificate a device is using during provisioning and assign the device to an IoT hub based on a certificate property. Or, maybe you have information stored in a database for your devices and need to query the database to determine which IoT hub a device should be assigned to.
+Například možná budete chtít ověřit certifikát, který zařízení používá během zřizování, a přiřadit ho ke službě IoT Hub na základě vlastnosti certifikátu. Nebo, možná máte informace uložené v databázi pro vaše zařízení a potřebujete zadat dotaz na databázi, abyste zjistili, ke kterému centru IoT Hub se má zařízení přiřadit.
 
-This article demonstrates a custom allocation policy using an Azure Function written in C#. Two new IoT hubs are created representing a *Contoso Toasters Division* and a *Contoso Heat Pumps Division*. Devices requesting provisioning must have a registration ID with one of the following suffixes to be accepted for provisioning:
+Tento článek ukazuje vlastní zásadu přidělování pomocí funkce Azure napsané v C#. Vytvoří se dvě nová centra IoT, která představují *divize informačních společností společnosti Contoso* a *divizi tepelného čerpadla společnosti Contoso*. Zařízení požadující zřizování musí mít ID registrace s jednou z následujících přípon, které se mají přijmout pro zřizování:
 
-* **-contoso-tstrsd-007**: Contoso Toasters Division
-* **-contoso-hpsd-088**: Contoso Heat Pumps Division
+* **-Contoso-tstrsd-007**: divize pro informační společnosti Contoso
+* **-Contoso-hpsd-088**: divize pro tepelné pumpy contoso
 
-The devices will be provisioned based on one of these required suffixes on the registration ID. These devices will be simulated using a provisioning sample included in the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c).
+Zařízení se zřídí na základě jedné z těchto požadovaných přípon s ID registrace. Tato zařízení se budou simulovat pomocí ukázky zřizování zahrnuté v [sadě Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c).
 
-You perform the following steps in this article:
+V tomto článku provedete následující kroky:
 
-* Use the Azure CLI to create two Contoso division IoT hubs (**Contoso Toasters Division** and **Contoso Heat Pumps Division**)
-* Create a new group enrollment using an Azure Function for the custom allocation policy
-* Create device keys for two device simulations.
-* Set up the development environment for the Azure IoT C SDK
-* Simulate the devices and verify that they are provisioned according to the example code in the custom allocation policy
+* Použití rozhraní příkazového řádku Azure k vytvoření dvou oddělení IoT divize**společnosti Contoso (divize a části** se **tepelnými čerpadly contoso**)
+* Vytvoření nové skupiny pro vlastní zásady přidělování pomocí funkce Azure Functions
+* Vytvořte klíče zařízení pro dvě simulace zařízení.
+* Nastavení vývojového prostředí pro sadu SDK Azure IoT C
+* Simulovat zařízení a ověřit, jestli jsou zřízené podle ukázkového kódu ve vlastních zásadách přidělení
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 or later with the ['Desktop development with C++'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) workload enabled.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s povolenou úlohou [" C++vývoj pro stolní počítače"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>Create the provisioning service and two divisional IoT hubs
+## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>Vytvoření služby zřizování a dvou Center IoT Hub
 
-In this section, you use the Azure Cloud Shell to create a provisioning service and two IoT hubs representing the **Contoso Toasters Division** and the **Contoso Heat Pumps division**.
+V této části použijete Azure Cloud Shell k vytvoření služby zřizování a dvou rozbočovačů IoT, které představují **divize informačních společností společnosti Contoso** a **divizi vytápěcích čerpadel společnosti Contoso**.
 
 > [!TIP]
-> The commands used in this article create the provisioning service and other resources in the West US location. We recommend that you create your resources in the region nearest you that supports Device Provisioning Service. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` nebo na stránce [Stav Azure](https://azure.microsoft.com/status/) vyhledáním výrazu Služba Device Provisioning. In commands, locations can be specified either in one word or multi-word format; for example: westus, West US, WEST US, etc. The value is not case sensitive. Pokud k zadání umístění použijete víceslovný formát, uveďte hodnotu v uvozovkách, například `-- location "West US"`.
+> Příkazy použité v tomto článku vytvářejí službu zřizování a další prostředky v umístění Západní USA. Doporučujeme vytvořit prostředky v oblasti nejbližší vašemu, který podporuje službu Device Provisioning Service. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` nebo na stránce [Stav Azure](https://azure.microsoft.com/status/) vyhledáním výrazu Služba Device Provisioning. V příkazech lze umístění zadat buď v jednom nebo více slovovém formátu; například: westus, Západní USA, západ USA atd. Hodnota nerozlišuje velká a malá písmena. Pokud k zadání umístění použijete víceslovný formát, uveďte hodnotu v uvozovkách, například `-- location "West US"`.
 >
 
-1. Use the Azure Cloud Shell to create a resource group with the [az group create](/cli/azure/group#az-group-create) command. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+1. Pomocí Azure Cloud Shell vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-    The following example creates a resource group named *contoso-us-resource-group* in the *westus* region. It is recommended that you use this group for all resources created in this article. This approach will make clean up easier after you're finished.
+    Následující příklad vytvoří skupinu prostředků s názvem *Contoso-US-Resource-Group* v oblasti *westus* . Doporučuje se používat tuto skupinu pro všechny prostředky vytvořené v tomto článku. Tento přístup usnadňuje vyčištění po dokončení.
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. Use the Azure Cloud Shell to create a device provisioning service with the [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) command. The provisioning service will be added to *contoso-us-resource-group*.
+2. Pomocí Azure Cloud Shell vytvořte službu Device Provisioning pomocí příkazu [AZ IoT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) . Služba zřizování bude přidána do *skupiny contoso-US-Resource-Group*.
 
-    The following example creates a provisioning service named *contoso-provisioning-service-1098* in the *westus* location. You must use a unique service name. Make up your own suffix in the service name in place of **1098**.
+    Následující příklad vytvoří službu zřizování s názvem *Contoso-Provisioning-Service-1098* v umístění *westus* . Je nutné použít jedinečný název služby. Vytvořte vlastní příponu v názvu služby místo **1098**.
 
     ```azurecli-interactive 
     az iot dps create --name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --location westus
     ```
 
-    This command may take a few minutes to complete.
+    Dokončení tohoto příkazu může trvat několik minut.
 
-3. Use the Azure Cloud Shell to create the **Contoso Toasters Division** IoT hub with the [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) command. The IoT hub will be added to *contoso-us-resource-group*.
+3. Pomocí Azure Cloud Shell můžete pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) vytvořit **informační centrum společnosti Contoso s oddělením** IoT Hub. Centrum IoT se přidá do *skupiny contoso-US-Resource-Group*.
 
-    The following example creates an IoT hub named *contoso-toasters-hub-1098* in the *westus* location. You must use a unique hub name. Make up your own suffix in the hub name in place of **1098**. The example code for the custom allocation policy requires `-toasters-` in the hub name.
+    Následující příklad vytvoří centrum IoT s názvem contoso- *-hub-1098* v umístění *westus* . Je nutné použít jedinečný název centra. Vytvořte vlastní příponu v názvu centra místo **1098**. Vzorový kód pro vlastní zásady přidělování vyžaduje `-toasters-` v názvu centra.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
     ```
 
-    This command may take a few minutes to complete.
+    Dokončení tohoto příkazu může trvat několik minut.
 
-4. Use the Azure Cloud Shell to create the **Contoso Heat Pumps Division** IoT hub with the [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) command. This IoT hub will also be added to *contoso-us-resource-group*.
+4. Pomocí Azure Cloud Shell vytvořte pomocí příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) vytvořit centrum IoT pro **tepelné pumpy společnosti Contoso** . Toto centrum IoT se taky přidá do *skupiny contoso-US-Resource-Group*.
 
-    The following example creates an IoT hub named *contoso-heatpumps-hub-1098* in the *westus* location. You must use a unique hub name. Make up your own suffix in the hub name in place of **1098**. The example code for the custom allocation policy requires `-heatpumps-` in the hub name.
+    Následující příklad vytvoří centrum IoT s názvem *Contoso-heatpumps-hub-1098* v umístění *westus* . Je nutné použít jedinečný název centra. Vytvořte vlastní příponu v názvu centra místo **1098**. Vzorový kód pro vlastní zásady přidělování vyžaduje `-heatpumps-` v názvu centra.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
     ```
 
-    This command may take a few minutes to complete.
+    Dokončení tohoto příkazu může trvat několik minut.
 
-## <a name="create-the-custom-allocation-function"></a>Create the custom allocation function
+## <a name="create-the-custom-allocation-function"></a>Vytvoření vlastní alokační funkce
 
-In this section, you create an Azure function that implements your custom allocation policy. This function decides which divisional IoT hub a device should be registered to based on whether its registration ID contains the string **-contoso-tstrsd-007** or **-contoso-hpsd-088**. It also sets the initial state of the device twin based on whether the device is a toaster or a heat pump.
+V této části vytvoříte funkci Azure, která implementuje vaše vlastní zásady přidělování. Tato funkce určuje, ke kterému centru IoT Hub má být zařízení zaregistrováno na základě toho, zda ID registrace obsahuje řetězec **-Contoso-tstrsd-007** nebo **-Contoso-hpsd-088**. Také nastaví počáteční stav vlákna zařízení na základě toho, zda je zařízení informační nebo tepelné čerpadlo.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). From your home page, select **+ Create a resource**.
+1. Přihlásit se na [Azure Portal](https://portal.azure.com). Na domovské stránce vyberte **+ vytvořit prostředek**.
 
-2. In the *Search the Marketplace* search box, type "Function App". From the drop-down list select **Function App**, and then select **Create**.
+2. Do vyhledávacího pole *Hledat na Marketplace* zadejte "Function App". V rozevíracím seznamu vyberte **Function App**a pak vyberte **vytvořit**.
 
-3. On **Function App** create page, under the **Basics** tab, enter the following settings for your new function app and select **Review + create**:
+3. Na **Function App** vytvořit stránku na kartě **základy** zadejte následující nastavení pro novou aplikaci Function App a vyberte **zkontrolovat + vytvořit**:
 
-    **Resource Group**: Select the **contoso-us-resource-group** to keep all resources created in this article together.
+    **Skupina prostředků**: vyberte **Contoso-US-Resource-Group** , aby se všechny prostředky vytvořené v tomto článku zachovaly společně.
 
-    **Function App name**: Enter a unique function app name. This example uses **contoso-function-app-1098**.
+    **Function App název**: Zadejte jedinečný název aplikace Function App. V tomto příkladu se používá **Contoso-Function-App-1098**.
 
-    **Publish**: Verify that **Code** is selected.
+    **Publikovat**: Ověřte, že je vybraný **kód** .
 
-    **Runtime Stack**: Select **.NET Core** from the drop-down.
+    **Zásobník modulu runtime**: v rozevíracím seznamu vyberte **.NET Core** .
 
-    **Region**: Select the same region as your resource group. This example uses **West US**.
+    **Oblast**: Vyberte stejnou oblast jako vaše skupina prostředků. Tento příklad používá **západní USA**.
 
     > [!NOTE]
-    > By default, Application Insights is enabled. Application Insights is not necessary for this article, but it might help you understand and investigate any issues you encounter with the custom allocation. If you prefer, you can disable Application Insights by selecting the **Monitoring** tab and then selecting **No** for **Enable Application Insights**.
+    > Ve výchozím nastavení je povoleno Application Insights. Application Insights není pro tento článek nutný, ale může vám pomůže pochopit a prozkoumat všechny problémy, ke kterým dojde s vlastním přidělením. Pokud chcete, můžete Application Insights zakázat výběrem karty **monitorování** a výběrem možnosti **ne** pro **možnost Povolit Application Insights**.
 
-    ![Create an Azure Function App to host the custom allocation function](./media/how-to-use-custom-allocation-policies/create-function-app.png)
+    ![Vytvoření Function App Azure pro hostování vlastní alokační funkce](./media/how-to-use-custom-allocation-policies/create-function-app.png)
 
-4. On the **Summary** page, select **Create** to create the function app. Deployment may take several minutes. When it completes, select **Go to resource**.
+4. Na stránce **Souhrn** vyberte **vytvořit** a vytvořte aplikaci Function App. Nasazení může trvat několik minut. Až se dokončí, vyberte **Přejít k prostředku**.
 
-5. On the left pane of the function app **Overview** page, select **+** next to **Functions** to add a new function.
+5. V levém podokně na stránce **Přehled** aplikace Function app vyberte **+** další **funkce** a přidejte novou funkci.
 
-    ![Add a function to the Function App](./media/how-to-use-custom-allocation-policies/create-function.png)
+    ![Přidání funkce do Function App](./media/how-to-use-custom-allocation-policies/create-function.png)
 
-6. On the **Azure Functions for .NET - getting started** page, for the **CHOOSE A DEPLOYMENT ENVIRONMENT** step, select the **In-portal** tile, then select **Continue**.
+6. Na stránce **Azure Functions pro rozhraní .NET – Začínáme** v části **Zvolte prostředí nasazení** vyberte dlaždici na **portálu** a pak vyberte **pokračovat**.
 
-    ![Select the portal development environment](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
+    ![Vyberte vývojové prostředí portálu.](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
 
-7. On the next page, for the **CREATE A FUNCTION** step, select the **Webhook + API** tile, then select **Create**. A function named **HttpTrigger1** is created, and the portal displays the contents of the **run.csx** code file.
+7. Na další stránce pro krok **Vytvoření funkce** vyberte dlaždici **WEBHOOK + rozhraní API** a pak vyberte **vytvořit**. Vytvoří se funkce s názvem **HttpTrigger1** a na portálu se zobrazí obsah souboru kódu **Run. csx** .
 
-8. Reference required Nuget packages. To create the initial device twin, the custom allocation function uses classes that are defined in two Nuget packages that must be loaded into the hosting environment. With Azure Functions, Nuget packages are referenced using a *function.host* file. In this step, you save and upload a *function.host* file.
+8. Odkaz na požadované balíčky NuGet. Chcete-li vytvořit počáteční vlákna zařízení, vlastní funkce přidělení používá třídy, které jsou definovány ve dvou balíčcích NuGet, které musí být načteny do hostitelského prostředí. Pomocí Azure Functions jsou na balíčky NuGet odkazovány pomocí souboru *Function. Host* . V tomto kroku uložíte a nahrajete soubor *Function. Host* .
 
-    1. Copy the following lines into your favorite editor and save the file on your computer as *function.host*.
+    1. Zkopírujte následující řádky do svého oblíbeného editoru a uložte soubor na počítači jako *Function. Host*.
 
         ```xml
         <Project Sdk="Microsoft.NET.Sdk">  
@@ -145,15 +145,15 @@ In this section, you create an Azure function that implements your custom alloca
         </Project>
         ```
 
-    2. On the **HttpTrigger1** function, expand the **View Files** tab on the right side of the window.
+    2. Na funkci **HttpTrigger1** rozbalte kartu **Zobrazit soubory** na pravé straně okna.
 
-        ![Open view files](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
+        ![Otevřít zobrazení souborů](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
 
-    3. Select **Upload**, browse to the **function.proj** file, and select **Open** to upload the file.
+    3. Vyberte **Odeslat**, přejděte k souboru **Function. proj** a vyberte **otevřít** , aby se soubor nahrál.
 
-        ![Select upload file](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
+        ![Vybrat odeslat soubor](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
 
-9. Replace the code for the **HttpTrigger1** function with the following code and select **Save**:
+9. Nahraďte kód funkce **HttpTrigger1** následujícím kódem a vyberte **Uložit**:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -292,64 +292,64 @@ In this section, you create an Azure function that implements your custom alloca
     }
     ```
 
-## <a name="create-the-enrollment"></a>Create the enrollment
+## <a name="create-the-enrollment"></a>Vytvořit registraci
 
-In this section, you'll create a new enrollment group that uses the custom allocation policy. For simplicity, this article uses [Symmetric key attestation](concepts-symmetric-key-attestation.md) with the enrollment. For a more secure solution, consider using [X.509 certificate attestation](concepts-security.md#x509-certificates) with a chain of trust.
+V této části vytvoříte novou skupinu registrací, která používá vlastní zásady přidělování. V zájmu jednoduchosti Tento článek používá k registraci [symetrický klíč s ověřením identity](concepts-symmetric-key-attestation.md) . Pro bezpečnější řešení zvažte použití [ověření certifikátu X. 509](concepts-security.md#x509-certificates) s řetězem důvěryhodnosti.
 
-1. Still on the [Azure portal](https://portal.azure.com), open your provisioning service.
+1. Pořád na [Azure Portal](https://portal.azure.com)otevřete službu zřizování.
 
-2. Select **Manage enrollments** on the left pane, and then select the **Add enrollment group** button at the top of the page.
+2. V levém podokně vyberte **spravovat registrace** a pak v horní části stránky vyberte tlačítko **Přidat skupinu** registrací.
 
-3. On **Add Enrollment Group**, enter the following information, and select the **Save** button.
+3. Do pole **Přidat skupinu**registrací zadejte následující informace a klikněte na tlačítko **Uložit** .
 
-    **Group name**: Enter **contoso-custom-allocated-devices**.
+    **Název skupiny**: zadejte **Contoso-customed-alokovaný-Devices**.
 
-    **Attestation Type**: Select **Symmetric Key**.
+    **Typ ověření identity**: vyberte **symetrický klíč**.
 
-    **Auto Generate Keys**: This checkbox should already be checked.
+    **Automaticky vygenerovat klíče**: Toto zaškrtávací políčko by již mělo být zaškrtnuté.
 
-    **Select how you want to assign devices to hubs**: Select **Custom (Use Azure Function)** .
+    **Vyberte, jak chcete přiřadit zařízení k**centrům: vyberte **vlastní (použijte funkci Azure Functions)** .
 
-    ![Add custom allocation enrollment group for symmetric key attestation](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
+    ![Přidat vlastní skupinu pro zápis přidělení pro ověření symetrického klíče](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. On **Add Enrollment Group**, select **Link a new IoT hub** to link both of your new divisional IoT hubs.
+4. V části **Přidat skupinu**registrací vyberte **propojit nové centrum IoT** a propojte je s vašimi novými centry IoT Hub.
 
-    Execute this step for both of your divisional IoT hubs.
+    Tento krok proveďte pro obě vaše divize IoT Hub.
 
-    **Subscription**: If you have multiple subscriptions, choose the subscription where you created the divisional IoT hubs.
+    **Předplatné**: Pokud máte více předplatných, vyberte předplatné, ve kterém jste vytvořili centra IoT Hub.
 
-    **IoT hub**: Select one of the divisional hubs you created.
+    **IoT Hub**: vyberte jedno ze špičkových rozbočovačů, které jste vytvořili.
 
-    **Access Policy**: Choose **iothubowner**.
+    **Zásady přístupu**: vyberte **iothubowner**.
 
-    ![Link the divisional IoT hubs with the provisioning service](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
+    ![Propojte centra IoT v divizi se službou zřizování.](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
 
-5. On **Add Enrollment Group**, once both divisional IoT hubs have been linked, you must select them as the IoT Hub group for the enrollment group as shown below:
+5. Když je v nabídce **Přidat skupinu**registrací propojená centra IoT, musíte je vybrat jako skupinu IoT Hub pro skupinu registrací, jak je znázorněno níže:
 
-    ![Create the divisional hub group for the enrollment](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
+    ![Vytvoření skupiny oddělení invisioning pro registraci](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
 
-6. On **Add Enrollment Group**, scroll down to the **Select Azure Function** section, select the Function app you created in the previous section. Then select the function you created and select Save to save the enrollment group.
+6. V části **Přidat skupinu**registrací přejděte dolů na část **funkce vybrat Azure** a vyberte aplikaci funkcí, kterou jste vytvořili v předchozí části. Pak vyberte vytvořenou funkci a kliknutím na Uložit uložte skupinu registrace.
 
-    ![Select the function and save the enrollment group](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
+    ![Vyberte funkci a uložte skupinu registrace.](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
 
-7. After saving the enrollment, reopen it and make a note of the **Primary Key**. You must save the enrollment first to have the keys generated. This key will be used to generate unique device keys for simulated devices later.
+7. Po uložení registrace ho znovu otevřete a poznamenejte si **primární klíč**. Nejdřív musíte uložit registraci, aby se vygenerovaly klíče. Tento klíč se použije k vygenerování jedinečných klíčů zařízení pro simulovaná zařízení později.
 
-## <a name="derive-unique-device-keys"></a>Derive unique device keys
+## <a name="derive-unique-device-keys"></a>Odvodit jedinečné klíče zařízení
 
-In this section, you create two unique device keys. One key will be used for a simulated toaster device. The other key will be used for a simulated heat pump device.
+V této části vytvoříte dva jedinečné klíče zařízení. Pro simulované zařízení informačního zařízení se použije jeden klíč. Druhý klíč se použije pro simulované tepelné čerpadlo.
 
-To generate the device key, you use the **Primary Key** you noted earlier to compute the [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) of the device registration ID for each device and convert the result into Base64 format. For more information on creating derived device keys with enrollment groups, see the group enrollments section of [Symmetric key attestation](concepts-symmetric-key-attestation.md).
+K vygenerování klíče zařízení použijete **primární klíč** , který jste si dříve poznamenali, k výpočtu [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ID registrace zařízení pro každé zařízení a výsledek převedete na Formát Base64. Další informace o vytváření odvozených klíčů zařízení pomocí skupin registrací najdete v části registrace skupin v tématu [ověření identity symetrického klíče](concepts-symmetric-key-attestation.md).
 
-For the example in this article, use the following two device registration IDs and compute a device key for both devices. Both registration IDs have a valid suffix to work with the example code for the custom allocation policy:
+Pro příklad v tomto článku použijte následující dvě ID registrace zařízení a Vypočtěte klíč zařízení pro obě zařízení. ID registrace mají platnou příponu pro práci s ukázkovým kódem pro vlastní zásady přidělování:
 
 * **breakroom499-contoso-tstrsd-007**
 * **mainbuilding167-contoso-hpsd-088**
 
-### <a name="linux-workstations"></a>Linux workstations
+### <a name="linux-workstations"></a>Pracovní stanice Linux
 
-If you're using a Linux workstation, you can use openssl to generate your derived device keys as shown in the following example.
+Pokud používáte pracovní stanici se systémem Linux, můžete použít OpenSSL k vygenerování odvozených klíčů zařízení, jak je znázorněno v následujícím příkladu.
 
-1. Replace the value of **KEY** with the **Primary Key** you noted earlier.
+1. Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
 
     ```bash
     KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
@@ -369,11 +369,11 @@ If you're using a Linux workstation, you can use openssl to generate your derive
     mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     ```
 
-### <a name="windows-based-workstations"></a>Windows-based workstations
+### <a name="windows-based-workstations"></a>Pracovní stanice založené na systému Windows
 
-If you're using a Windows-based workstation, you can use PowerShell to generate your derived device key as shown in the following example.
+Pokud používáte pracovní stanici se systémem Windows, můžete použít PowerShell k vygenerování odvozeného klíče zařízení, jak je znázorněno v následujícím příkladu.
 
-1. Replace the value of **KEY** with the **Primary Key** you noted earlier.
+1. Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
 
     ```powershell
     $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
@@ -396,17 +396,17 @@ If you're using a Windows-based workstation, you can use PowerShell to generate 
     mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     ```
 
-The simulated devices will use the derived device keys with each registration ID to perform symmetric key attestation.
+Simulovaná zařízení budou používat odvozené klíče zařízení s každým registračním ID k provedení ověření symetrického klíče.
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Příprava vývojového prostředí Azure IoT C SDK
 
-In this section, you prepare the development environment used to build the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). The SDK includes the sample code for the simulated device. Toto simulované zařízení se pokusí zřídit během spouštěcí sekvence zařízení.
+V této části připravíte vývojové prostředí používané pro sestavení [sady Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované zařízení se pokusí zřídit během spouštěcí sekvence zařízení.
 
-This section is oriented toward a Windows-based workstation. For a Linux example, see the set-up of the VMs in [How to provision for multitenancy](how-to-provision-multitenant.md).
+Tato část se orientuje k pracovní stanici založené na systému Windows. Příklad pro Linux najdete v tématu nastavení virtuálních počítačů při [zřizování víceklientské architektury](how-to-provision-multitenant.md).
 
-1. Download the [CMake build system](https://cmake.org/download/).
+1. Stáhněte si [sestavovací systém cmake](https://cmake.org/download/).
 
-    It is important that the Visual Studio prerequisites (Visual Studio and the 'Desktop development with C++' workload) are installed on your machine **before** starting the `CMake` installation. Once the prerequisites are in place and the download is verified, install the CMake build system.
+    Před spuštěním instalace `CMake` je důležité, aby byly na počítači nainstalovány požadavky sady Visual Studio ( C++Visual Studio a "vývoj desktopových aplikací s"). Až budou požadavky splněné a bude ověřeno stažení, nainstalujte systém sestavení CMake.
 
 2. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz pro naklonování úložiště GitHub sady Azure IoT C SDK:
 
@@ -430,7 +430,7 @@ This section is oriented toward a Windows-based workstation. For a Linux example
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    If `cmake` doesn't find your C++ compiler, you might get build errors while running the command. If that happens, try running the command in the [Visual Studio command prompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+    Pokud `cmake` nenajde váš C++ kompilátor, může při spuštění příkazu dojít k chybám sestavení. Pokud k tomu dojde, zkuste spustit příkaz v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
@@ -448,17 +448,17 @@ This section is oriented toward a Windows-based workstation. For a Linux example
     -- Build files have been written to: E:/IoT Testing/azure-iot-sdk-c/cmake
     ```
 
-## <a name="simulate-the-devices"></a>Simulate the devices
+## <a name="simulate-the-devices"></a>Simulace zařízení
 
-In this section, you update a provisioning sample named **prov\_dev\_client\_sample** located in the Azure IoT C SDK you set up previously.
+V této části aktualizujete ukázku zřizování s názvem **prov\_dev\_client\_Sample** v sadě Azure IoT C SDK, kterou jste si nastavili dříve.
 
-This sample code simulates a device boot sequence that sends the provisioning request to your Device Provisioning Service instance. The boot sequence will cause the toaster device to be recognized and assigned to the IoT hub using the custom allocation policy.
+Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesílá požadavek na zřízení do instance služby Device Provisioning. Sekvence spouštění způsobí, že zařízení informačního zařízení bude rozpoznáno a přiřazeno ke službě IoT Hub pomocí vlastních zásad přidělování.
 
 1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning Service a poznamenejte si hodnotu **_Rozsah ID_** .
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. In Visual Studio, open the **azure_iot_sdks.sln** solution file that was generated by running CMake earlier. Soubor řešení by se měl nacházet v následujícím umístění:
+2. V sadě Visual Studio otevřete soubor řešení **azure_iot_sdks. sln** , který byl vygenerován starším spuštěním cmake. Soubor řešení by se měl nacházet v následujícím umístění:
 
     ```
     azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -483,16 +483,16 @@ This sample code simulates a device boot sequence that sends the provisioning re
 
 6. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** a vyberte **Nastavit jako spouštěný projekt**.
 
-### <a name="simulate-the-contoso-toaster-device"></a>Simulate the Contoso toaster device
+### <a name="simulate-the-contoso-toaster-device"></a>Simulace zařízení s informačními zprávami společnosti Contoso
 
-1. To simulate the toaster device, find the call to `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c** which is commented out.
+1. Chcete-li simulovat zařízení informačního zařízení, vyhledejte volání `prov_dev_set_symmetric_key_info()` v **prov\_dev\_client\_Sample. c** , který je komentovaný.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Uncomment the function call and replace the placeholder values (including the angle brackets) with the toaster registration ID and derived device key you generated previously. The key value **JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=** shown below is only given as an example.
+    Odkomentujte volání funkce a nahraďte zástupné hodnoty (včetně lomených závorek) ID registrace informačního zařízení a odvozeného klíče zařízení, který jste dříve vygenerovali. Hodnota klíče **JC8F96eayuQwwz + PkE7IzjH2lIAjCUnAa61tDigBnSs =** uvedená níže je uvedena pouze jako příklad.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -501,9 +501,9 @@ This sample code simulates a device boot sequence that sends the provisioning re
 
     Uložte soubor.
 
-2. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. In the prompt to rebuild the project, select **Yes**, to rebuild the project before running.
+2. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano**a znovu sestavte projekt před spuštěním.
 
-    The following output is an example of the simulated toaster device successfully booting up and connecting to the provisioning service instance to be assigned to the toasters IoT hub by the custom allocation policy:
+    Následující výstup je příkladem simulovaného zařízení, které se úspěšně spouští a připojuje k instanci služby zřizování, která má být přiřazena ke službě IoT Hub pro vlastní zásady přidělování:
 
     ```cmd
     Provisioning API Version: 1.3.6
@@ -519,9 +519,9 @@ This sample code simulates a device boot sequence that sends the provisioning re
     Press enter key to exit:
     ```
 
-### <a name="simulate-the-contoso-heat-pump-device"></a>Simulate the Contoso heat pump device
+### <a name="simulate-the-contoso-heat-pump-device"></a>Simulace zařízení tepelného čerpadla contoso
 
-1. To simulate the heat pump device, update the call to `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c** again with the heat pump registration ID and derived device key you generated earlier. The key value **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=** shown below is also only given as an example.
+1. Chcete-li simulovat zařízení tepelného čerpadla, aktualizujte volání `prov_dev_set_symmetric_key_info()` v **prov\_dev\_client\_Sample. c** s ID registrace tepelného čerpadla a odvozeným klíčem zařízení, který jste dříve vygenerovali. Hodnota klíče **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** zobrazená níže je také uvedena jako příklad.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -530,9 +530,9 @@ This sample code simulates a device boot sequence that sends the provisioning re
 
     Uložte soubor.
 
-2. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. In the prompt to rebuild the project, select **Yes** to rebuild the project before running.
+2. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano** pro opětovné sestavení projektu před spuštěním.
 
-    The following output is an example of the simulated heat pump device successfully booting up and connecting to the provisioning service instance to be assigned to the Contoso heat pumps IoT hub by the custom allocation policy:
+    Následující výstup je příkladem simulovaného tepelného zařízení, které se úspěšně spouští a připojuje k instanci služby zřizování, která je přiřazená k službě IoT Hub v zařízeních společnosti Contoso pomocí vlastních zásad přidělování:
 
     ```cmd
     Provisioning API Version: 1.3.6
@@ -548,40 +548,40 @@ This sample code simulates a device boot sequence that sends the provisioning re
     Press enter key to exit:
     ```
 
-## <a name="troubleshooting-custom-allocation-policies"></a>Troubleshooting custom allocation policies
+## <a name="troubleshooting-custom-allocation-policies"></a>Řešení potíží s vlastními zásadami přidělování
 
-The following table shows expected scenarios and the results error codes you might receive. Use this table to help troubleshoot custom allocation policy failures with your Azure Functions.
+V následující tabulce jsou uvedeny očekávané scénáře a kódy chyb výsledků, které se mohou zobrazit. Tato tabulka vám umožní pomoct řešit problémy s chybami vlastního nastavení zásad přidělení s vaším Azure Functions.
 
-| Scénář | Registration result from Provisioning Service | Provisioning SDK Results |
+| Scénář | Výsledek registrace ze služby zřizování | Zřizování výsledků sady SDK |
 | -------- | --------------------------------------------- | ------------------------ |
-| The webhook returns 200 OK with ‘iotHubHostName’ set to a valid IoT hub host name | Result status: Assigned  | SDK returns PROV_DEVICE_RESULT_OK along with hub information |
-| The webhook returns 200 OK with ‘iotHubHostName’ present in the response, but set to an empty string or null | Result status: Failed<br><br> Error code: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
-| The webhook returns 401 Unauthorized | Result status: Failed<br><br>Error code: CustomAllocationUnauthorizedAccess (400209) | SDK returns PROV_DEVICE_RESULT_UNAUTHORIZED |
-| An Individual Enrollment was created to disable the device | Result status: Disabled | SDK returns PROV_DEVICE_RESULT_DISABLED |
-| The webhook returns error code >= 429 | DPS’ orchestration will retry a number of times. The retry policy is currently:<br><br>&nbsp;&nbsp;- Retry count: 10<br>&nbsp;&nbsp;- Initial interval: 1s<br>&nbsp;&nbsp;- Increment: 9s | SDK will ignore error and submit another get status message in the specified time |
-| The webhook returns any other status code | Result status: Failed<br><br>Error code: CustomAllocationFailed (400207) | SDK returns PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
+| Webhook vrátí 200 OK s iotHubHostName nastavenou na platný název hostitele centra IoT Hub. | Stav výsledku: přiřazeno  | Sada SDK vrací PROV_DEVICE_RESULT_OK společně s informacemi z centra |
+| Webhook vrátí 200 OK s ' iotHubHostName ' obsažený v odpovědi, ale nastavte na prázdný řetězec nebo hodnotu null. | Stav výsledku: neúspěšné<br><br> Kód chyby: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| Webhook vrátí 401 – Neautorizováno. | Stav výsledku: neúspěšné<br><br>Kód chyby: CustomAllocationUnauthorizedAccess (400209) | Sada SDK vrací PROV_DEVICE_RESULT_UNAUTHORIZED |
+| Byl vytvořen jednotlivý zápis za účelem zakázání zařízení. | Stav výsledku: zakázáno | Sada SDK vrací PROV_DEVICE_RESULT_DISABLED |
+| Webhook vrátí kód chyby > = 429. | Orchestrace DPS bude opakována kolikrát. Zásada opakování je aktuálně:<br><br>&nbsp;&nbsp;-počet opakování: 10<br>&nbsp;&nbsp;– počáteční interval: 1<br>&nbsp;&nbsp;-přírůstek: devítky | Sada SDK bude ignorovat chybu a pošle do určeného času další zprávu o stavu Get. |
+| Webhook vrátí jakýkoliv jiný stavový kód. | Stav výsledku: neúspěšné<br><br>Kód chyby: CustomAllocationFailed (400207) | Sada SDK vrací PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you plan to continue working with the resources created in this article, you can leave them. If you don't plan to continue using the resources, use the following steps to delete all of the resources created in this article to avoid unnecessary charges.
+Pokud máte v úmyslu pokračovat v práci s prostředky vytvořenými v tomto článku, můžete je nechat. Pokud nechcete prostředky dál používat, pomocí následujícího postupu odstraňte všechny prostředky vytvořené v tomto článku, abyste se vyhnuli zbytečným poplatkům.
 
-The steps here assume you created all resources in this article as instructed in the same resource group named **contoso-us-resource-group**.
+V těchto krocích se předpokládá, že jste vytvořili všechny prostředky v tomto článku podle pokynů ve stejné skupině prostředků s názvem **Contoso-US-Resource-Group**.
 
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT Hub.
 >
 
-To delete the resource group by name:
+Odstranění skupiny prostředků podle názvu:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
 
-2. In the **Filter by name...** textbox, type the name of the resource group containing your resources, **contoso-us-resource-group**. 
+2. Do textového pole **filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaše prostředky, **Contoso-US-Resource-Group**. 
 
-3. To the right of your resource group in the result list, select **...** then **Delete resource group**.
+3. Napravo od skupiny prostředků v seznamu výsledků vyberte **...** a pak **odstraňte skupinu prostředků**.
 
-4. You'll be asked to confirm the deletion of the resource group. Type the name of your resource group again to confirm, and then select **Delete**. Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
+4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Opětovným zadáním názvu skupiny prostředků potvrďte a pak vyberte **Odstranit**. Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 
 ## <a name="next-steps"></a>Další kroky
 
-* To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
-* To learn more Deprovisioning, see [How to deprovision devices that were previously autoprovisioned](how-to-unprovision-devices.md) 
+* Další informace o opětovném zřízení najdete v tématu Koncepty opětovného [zřizování zařízení IoT Hub](concepts-device-reprovision.md) 
+* Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dřív zřízena](how-to-unprovision-devices.md) . 

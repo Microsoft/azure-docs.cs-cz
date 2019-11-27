@@ -50,7 +50,7 @@ Popis těchto typů najdete v následující tabulce:
 |Typ|Jednotky škálování|Popis|
 |--------|--------|--------|  
 |**Standard**|0|Výchozí koncový bod streamování je **standardní** typ – dá se změnit na typ Premium úpravou `scaleUnits`.|
-|**Premium**|> 0|Úroveň **Premium** Koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přesunete se na typ **Premium** úpravou `scaleUnits` (jednotky streamování). `scaleUnits` poskytují vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Při použití typu **Premium** poskytuje každá povolená jednotka pro aplikaci další kapacitu šířky pásma. |
+|**Premium**|>0|Úroveň **Premium** Koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přesunete se na typ **Premium** úpravou `scaleUnits` (jednotky streamování). `scaleUnits` poskytují vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Při použití typu **Premium** poskytuje každá povolená jednotka pro aplikaci další kapacitu šířky pásma. |
 
 > [!NOTE]
 > Pro zákazníky, kteří chtějí doručovat obsah do rozsáhlých internetových cílových skupin, doporučujeme povolit CDN pro koncový bod streamování.

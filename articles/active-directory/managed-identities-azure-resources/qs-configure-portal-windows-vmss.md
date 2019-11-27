@@ -30,7 +30,7 @@ Spravované identity pro prostředky Azure poskytují služby Azure s automatick
 
 V tomto článku se naučíte, jak provádět následující spravované identity pro operace prostředků Azure ve službě škálování virtuálního počítače pomocí PowerShellu:
 
-- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md).
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md).
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení řízení přístupu na základě rolí Azure:
 
