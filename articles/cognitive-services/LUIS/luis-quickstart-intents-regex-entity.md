@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Regulární výraz entity – LUIS'
+title: 'Kurz: regulární výraz entity – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Extrahování konzistentně formátovaných dat z promluvy s využitím entity regulárního výrazu
 services: cognitive-services
@@ -9,19 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: db60d87b441836f38309166318dd1778ce828483
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0f24721272c85d658a46ab1319e6f4af79b29364
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307590"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465194"
 ---
-# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Kurz: Získat dobře formátovaná data z utterance
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Kurz: získání dobře formátovaných dat z utterance
 V tomto kurzu vytvoříte aplikaci, která extrahuje konzistentně formátovaná data z utterance pomocí entity **regulárního výrazu** .
 
-**V tomto kurzu se naučíte:**
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+**Co se v tomto kurzu naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -82,7 +84,7 @@ Regulární výraz je pro tento typ dat vhodný, když:
     |author of hrf-546234? (autor hrf-546234?)|
     |title of hrf-456234? (název hrf-456234?)|
 
-    [![Snímek stránky záměru s novým projevy zvýrazněnou](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
+    [![stránka záměru s novým zvýrazněným projevy](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
@@ -99,7 +101,7 @@ Podle následujících kroků vytvořte entitu regulárního výrazu, která slu
 
 1. Na stránce Entities (Entity) vyberte tlačítko **Create new entity** (Vytvořit novou entitu). 
 
-1. V automaticky otevíraném okně zadejte název nové entity `HRF-number`, jako typ entity vyberte **RegEx** (Regulární výraz), jako hodnotu `hrf-[0-9]{6}`RegEx**zadejte** a pak vyberte **Done** (Hotovo).
+1. V automaticky otevíraném okně zadejte název nové entity `HRF-number`, jako typ entity vyberte **RegEx** (Regulární výraz), jako hodnotu `hrf-[0-9]** `RegEx**zadejte** a pak vyberte **Done** (Hotovo).
 
     ![Snímek obrazovky s automaticky otevíraným dialogovým oknem s nastavením vlastností nové entity](./media/luis-quickstart-intents-regex-entity/create-regex-entity.png)
 
@@ -180,7 +182,7 @@ Podle následujících kroků vytvořte entitu regulárního výrazu, která slu
 * [Testování na portálu LUIS](luis-interactive-test.md)
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste vytvořili nový záměr, přidali příklady promluv a pak vytvořili entitu regulárního výrazu k extrahování správně formátovaných data z promluv. Po natrénování a publikování aplikace jste dotazem adresovaným koncovému bodu zjistili záměr a vrátili extrahovaná data.
+V tomto kurzu jste vytvořili nový záměr, přidali příklady promluv a pak vytvořili entitu regulárního výrazu k extrahování správně formátovaných data z promluv. Dotaz na koncový bod po trénování a publikování aplikace identifikoval záměr a vrátil extrahovaná data.
 
 > [!div class="nextstepaction"]
 > [Informace o entitě seznamu](luis-quickstart-intent-and-list-entity.md)

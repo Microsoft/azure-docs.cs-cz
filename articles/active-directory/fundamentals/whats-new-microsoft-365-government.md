@@ -1,6 +1,6 @@
 ---
-title: Co je nového v Azure Active Directory ve službě Microsoft 365 Government – Azure Active Directory | Dokumentace Microsoftu
-description: Přečtěte si o některých změnách Azure Active Directory (Azure AD) v Microsoftu 365 Government Cloudová instance, což může ovlivnit.
+title: Co je nového pro Azure AD v Microsoft 365 státní správy? | Dokumenty Microsoft
+description: Přečtěte si o některých změnách Azure Active Directory (Azure AD) v instanci cloudu Microsoft 365 státní správy, což vám může ovlivnit.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,56 +13,56 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b077c7b5efbad2add971d42ff31938b56f6bc33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258891"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805287"
 ---
-# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Co je nového v Azure Active Directory ve službě Microsoft 365 Government
+# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Novinky Azure Active Directory v Microsoft 365 státní správě
 
-Provedli jsme některé změny do služby Azure Active Directory (Azure AD) v Microsoftu 365 Government Cloudová instance, která se vztahuje na zákazníky, kteří používají tyto služby:
+Provedli jsme některé změny Azure Active Directory (Azure AD) v instanci cloudu Microsoft 365 státní správy, která se vztahuje na zákazníky, kteří používají tyto služby:
 
 - Microsoft Azure Government
 
-- Microsoft 365 Government – GCC vysoká
+- Microsoft 365 státní správy – velká a rychlé v oblasti RSZ
 
-- Microsoft 365 Government – DoD
+- Microsoft 365 státní správy – DoD
 
-Tento článek se nevztahuje na Microsoft 365 Government – GCC zákazníků.
+Tento článek se nevztahuje na Microsoft 365 vládní organizace – RSZ pro zákazníky.
 
-## <a name="changes-to-the-initial-domain-name"></a>Změny bude počáteční název domény
+## <a name="changes-to-the-initial-domain-name"></a>Změny počátečního názvu domény
 
-Během vaší organizace počáteční registraci si uživatelé pro online služby Microsoftu 365 Government, byly muset zvolte název domény vaší organizace, `<your-domain-name>.onmicrosoft.com`. Pokud už máte názvu domény pomocí přípony .com, nic se změní.
+Při počáteční registraci vaší organizace pro online službu Microsoft 365 státní správy jste požádáni o výběr názvu domény vaší organizace, `<your-domain-name>.onmicrosoft.com`. Pokud už máte název domény s příponou. com, nic se nezmění.
 
-Nicméně, pokud se zaregistrujete pro novou službu Microsoft 365 Government, budete vyzváni zvolit použití názvu domény `.us` příponu. Ano, bude `<your-domain-name>.onmicrosoft.us`.
+Pokud si ale zaregistrujete novou Microsoft 365ovou službu pro státní správu, budete požádáni o výběr názvu domény pomocí `.us` přípony. Bude to `<your-domain-name>.onmicrosoft.us`.
 
 >[!Note]
->Tato změna se nevztahuje na všechny zákazníky, kteří spravují poskytovatelé cloudových služeb (CSP).
+>Tato změna se nevztahuje na žádné zákazníky, kteří spravují Poskytovatelé cloudových služeb (CSP).
 
-## <a name="changes-to-portal-access"></a>Změny pro přístup k portálu
+## <a name="changes-to-portal-access"></a>Změny přístupu na portál
 
-Aktualizovali jsme portál koncové body pro Microsoft Azure Government, Microsoft 365 Government – vysoká GCC a Microsoft 365 Government – amerického ministerstva obrany, jak je znázorněno [koncový bod tabulky mapování](#endpoint-mapping).
+Aktualizovali jsme koncové body portálu pro Microsoft Azure Government, Microsoft 365 vládou – RSZ a Microsoft 365 vládou – DoD, jak je znázorněno v [tabulce mapování koncových bodů](#endpoint-mapping).
 
-Zákazníci by mohla dříve přihlásit pomocí Azure po celém světě (portal.azure.com) a Office 365 (portal.office.com) portálů. S touto aktualizací se zákazníci musí nyní přihlaste konkrétní Microsoft Azure Government, Microsoft 365 Government – vysoká GCC a Microsoft 365 Government – DoD portály.
+Dřív se zákazníci mohli přihlásit pomocí celosvětových portálů Azure (portal.azure.com) a Office 365 (portal.office.com). V této aktualizaci se zákazníci teď musí přihlašovat pomocí konkrétních Microsoft Azure Government, Microsoft 365 vládních úřadů pro státní správu a Microsoft 365.
 
-## <a name="endpoint-mapping"></a>Mapování na koncový bod
+## <a name="endpoint-mapping"></a>Mapování koncových bodů
 
-V následující tabulce jsou uvedeny koncových bodů pro všechny zákazníky:
+V následující tabulce jsou uvedeny koncové body pro všechny zákazníky:
 
-| Name | Podrobnosti o koncovém bodu |
+| Název | Podrobnosti koncového bodu |
 |------|------------------|
-| Portály |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365 Government – GCC vysokou: https://portal.office365.us<p>Microsoft 365 Government – DoD: https://portal.apps.mil |
-| Koncového bodu autority Azure Active Directory | https://login.microsoftonline.us |
+| Portály |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365ská vláda – velká a rychlé v oblasti RSZ: https://portal.office365.us<p>Microsoft 365 státní správa – DoD: https://portal.apps.mil |
+| Koncový bod Azure Active Directory autority | https://login.microsoftonline.us |
 | Azure Active Directory Graph API | https://graph.windows.net |
-| Microsoft Graph API pro Microsoft 365 Government - GCC vysoká | https://graph.microsoft.us |
-| Microsoft Graph API pro Microsoft 365 Government – ministerstva obrany USA | https://dod-graph.microsoft.us |
-| Koncové body služeb Azure Government | Podrobnosti najdete v tématu [– Příručka pro vývojáře Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
-| Microsoft 365 Government - GCC vysokou koncových bodů | Podrobnosti najdete v tématu [Office 365 US Koncové body vysoké GCC státní správy](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
-| Microsoft 365 Government – ministerstva obrany USA | Podrobnosti najdete v tématu [Office 365 US Koncové body Government ministerstva obrany USA](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
+| Rozhraní API pro Microsoft Graph pro Microsoft 365 státní správu – RSZ – vysoká | https://graph.microsoft.us |
+| Microsoft Graph API pro Microsoft 365 vládu – DoD | https://dod-graph.microsoft.us |
+| Koncové body služby Azure Government Services | Podrobnosti najdete v tématu [Azure Government příručka pro vývojáře](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) . |
+| Microsoft 365 státní správy – horní koncové body pro RSZ | Podrobnosti najdete v části [Office 365 USA – vysoké koncové body pro RSZ](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) . |
+| Microsoft 365 státní správy – DoD | Podrobnosti najdete v tématu [koncové body DoD pro státní správu USA pro Office 365](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) . |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v těchto článcích:
 
@@ -70,6 +70,6 @@ Další informace najdete v těchto článcích:
 
 - [Aktualizace koncového bodu autority AAD Azure Government](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
 
-- [Microsoft Graph koncových bodů v cloudu pro státní správu USA](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
+- [Koncové body Microsoft Graph v cloudu pro státní správu USA](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
 
-- [Office 365 U.S. Government GCC vysoké a ministerstva obrany USA](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
+- [Office 365 USA úrovně RSZ a DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
