@@ -17,9 +17,9 @@ ms.locfileid: "74422029"
 ---
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Zkopírování přihlašovacích údajů z webu Azure Portal
 
-When the sample application makes a request to Azure Storage, it must be authorized. To authorize a request, add your storage account credentials to the application as a connection string. Přihlašovací údaje účtu úložiště zobrazíte pomocí následujícího postupu:
+Když ukázková aplikace odešle požadavek na Azure Storage, musí být ověřena. K autorizaci žádosti přidejte do aplikace přihlašovací údaje účtu úložiště jako připojovací řetězec. Přihlašovací údaje účtu úložiště zobrazíte pomocí následujícího postupu:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 2. Vyhledejte svůj účet úložiště.
 3. V části **Nastavení** v přehledu účtu úložiště vyberte **Přístupové klíče**. Tady se zobrazí přístupové klíče vašeho účtu a úplný připojovací řetězec pro jednotlivé klíče.
 4. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a výběrem tlačítka **Kopírovat** zkopírujte připojovací řetězec. V dalším kroku přidáte hodnotu připojovacího řetězce do proměnné prostředí.
@@ -28,7 +28,7 @@ When the sample application makes a request to Azure Storage, it must be authori
 
 ### <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 
-Po zkopírování připojovacího řetězce ho zapište do nové proměnné prostředí na místním počítači, na kterém aplikaci spouštíte. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Replace `<yourconnectionstring>` with your actual connection string.
+Po zkopírování připojovacího řetězce ho zapište do nové proměnné prostředí na místním počítači, na kterém aplikaci spouštíte. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Nahraďte `<yourconnectionstring>` skutečným připojovacím řetězcem.
 
 #### <a name="windows"></a>Windows
 
@@ -36,7 +36,7 @@ Po zkopírování připojovacího řetězce ho zapište do nové proměnné pros
 setx CONNECT_STR "<yourconnectionstring>"
 ```
 
-After you add the environment variable in Windows, you must start a new instance of the command window.
+Po přidání proměnné prostředí v systému Windows je nutné spustit novou instanci příkazového okna.
 
 #### <a name="linux"></a>Linux
 
@@ -50,6 +50,6 @@ export CONNECT_STR="<yourconnectionstring>"
 export CONNECT_STR="<yourconnectionstring>"
 ```
 
-#### <a name="restart-programs"></a>Restart programs
+#### <a name="restart-programs"></a>Restartovat programy
 
-After you add the environment variable, restart any running programs that will need to read the environment variable. For example, restart your development environment or editor before continuing.
+Po přidání proměnné prostředí restartujte všechny spuštěné programy, které budou muset číst proměnnou prostředí. Před pokračováním například restartujte vývojové prostředí nebo editor.

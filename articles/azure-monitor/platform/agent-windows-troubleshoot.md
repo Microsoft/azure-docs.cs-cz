@@ -20,9 +20,9 @@ Tento článek poskytuje nápovědu k řešení chyb, se kterými se můžete se
 
 Pokud žádný z těchto kroků pro vás nejvhodnější, jsou také k dispozici následující kanály podpory:
 
-* Výhody v oblasti podpory pro zákazníky v rámci podpory Premier můžou otevřít žádost o podporu s [Premier](https://premier.microsoft.com/).
-* Zákazníci s smlouvy o podpoře Azure můžou otevřít žádost o podporu [na webu Azure Portal](https://manage.windowsazure.com/?getsupport=true).
-* Na stránce Log Analytics zpětnou vazbu ke kontrole odeslané nápady a chyby [ https://aka.ms/opinsightsfeedback ](https://aka.ms/opinsightsfeedback) nebo soubor nový. 
+* Zákazníci s výhodami Premier Support můžou otevřít žádost o podporu pomocí [Premier](https://premier.microsoft.com/).
+* Zákazníci se smlouvou o podpoře Azure můžou na [Azure Portal](https://manage.windowsazure.com/?getsupport=true)otevřít žádost o podporu.
+* Navštivte stránku Log Analytics zpětnou vazbu pro kontrolu odeslaných nápadů a chyb [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) nebo zasouboru nového. 
 
 ## <a name="important-troubleshooting-sources"></a>Důležité zdroje pro odstraňování potíží
 

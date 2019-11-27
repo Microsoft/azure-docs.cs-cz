@@ -1,6 +1,6 @@
 ---
-title: Network security concepts and requirements in Azure | Microsoft Docs
-description: This article provides basic explanations about core network security concepts and requirements, and information on what Azure offers in each of these areas.
+title: Koncepce a požadavky zabezpečení sítě v Azure | Microsoft Docs
+description: Tento článek obsahuje základní Vysvětlení konceptů a požadavků zabezpečení základní sítě a informace o tom, co Azure nabízí v každé z těchto oblastí.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -22,145 +22,145 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384202"
 ---
-# <a name="azure-network-security-overview"></a>Azure network security overview
+# <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
-Network security could be defined as the process of protecting resources from unauthorized access or attack by applying controls to network traffic. The goal is to ensure that only legitimate traffic is allowed. Azure includes a robust networking infrastructure to support your application and service connectivity requirements. Network connectivity is possible between resources located in Azure, between on-premises and Azure hosted resources, and to and from the internet and Azure.
+Zabezpečení sítě je možné definovat jako proces ochrany prostředků před neoprávněným přístupem nebo útokem pomocí ovládacích prvků pro síťový provoz. Cílem je zajistit, aby byl povolen pouze legitimní provoz. Azure zahrnuje robustní síťovou infrastrukturu pro podporu požadavků vaší aplikace a připojení služby. Mezi prostředky umístěnými v Azure, mezi místními a hostovanými prostředky Azure a a z Internetu a Azure se může připojit k síti.
 
-This article covers some of the options that Azure offers in the area of network security. You can learn about:
+Tento článek popisuje některé z možností, které Azure nabízí v oblasti zabezpečení sítě. Informace o:
 
-* Azure networking
-* Network access control
-* Azure Firewall
-* Secure remote access and cross-premises connectivity
+* Sítě Azure
+* Řízení přístupu k síti
+* Brána Azure Firewall
+* Zabezpečený vzdálený přístup a připojení mezi místními sítěmi
 * Dostupnost
 * Překlad adres
-* Perimeter network (DMZ) architecture
+* Architektura hraniční sítě (DMZ)
 * Azure DDoS Protection
 * Azure Front Door
 * Traffic Manager
-* Monitoring and threat detection
+* Monitorování a detekce hrozeb
 
-## <a name="azure-networking"></a>Azure networking
+## <a name="azure-networking"></a>Sítě Azure
 
-Azure requires virtual machines to be connected to an Azure Virtual Network. A virtual network is a logical construct built on top of the physical Azure network fabric. Each virtual network is isolated from all other virtual networks. This helps ensure that network traffic in your deployments is not accessible to other Azure customers.
+Azure vyžaduje, aby se virtuální počítače připojovaly k Virtual Network Azure. Virtuální síť je logická konstrukce, která je postavená na fyzických prostředcích infrastruktury sítě Azure. Každá virtuální síť je izolovaná od všech ostatních virtuálních sítí. To pomáhá zajistit, že síťový provoz ve vašich nasazeních není přístupný ostatním zákazníkům Azure.
 
 Další informace:
 
-* [Virtual network overview](../../virtual-network/virtual-networks-overview.md)
+* [Přehled virtuální sítě](../../virtual-network/virtual-networks-overview.md)
 
-## <a name="network-access-control"></a>Network access control
+## <a name="network-access-control"></a>Řízení přístupu k síti
 
-Network access control is the act of limiting connectivity to and from specific devices or subnets within a virtual network. The goal of network access control is to limit access to your virtual machines and services to approved users and devices. Access controls are based on decisions to allow or deny connections to and from your virtual machine or service.
+Řízení přístupu k síti je výsledkem omezení připojení k určitým zařízením nebo podsítím v rámci virtuální sítě a z nich. Cílem řízení přístupu k síti je omezit přístup k virtuálním počítačům a službám na schválené uživatele a zařízení. Ovládací prvky přístupu jsou založené na rozhodnutích o povolení nebo zamítnutí připojení k virtuálnímu počítači nebo službě.
 
-Azure supports several types of network access control, such as:
+Azure podporuje několik typů řízení přístupu k síti, například:
 
-* Network layer control
-* Route control and forced tunneling
-* Virtual network security appliances
+* Řízení vrstvy sítě
+* Řízení směrování a vynucené tunelování
+* Zařízení zabezpečení virtuální sítě
 
-### <a name="network-layer-control"></a>Network layer control
+### <a name="network-layer-control"></a>Řízení vrstvy sítě
 
-Any secure deployment requires some measure of network access control. The goal of network access control is to restrict virtual machine communication to the necessary systems. Other communication attempts are blocked.
+Jakékoli zabezpečené nasazení vyžaduje určitou míru řízení přístupu k síti. Cílem řízení přístupu k síti je omezit komunikaci virtuálních počítačů s potřebnými systémy. Ostatní pokusy o komunikaci jsou blokované.
 
 > [!NOTE]
-> Storage Firewalls are covered in the [Azure storage security overview](storage-overview.md) article
+> Brány firewall úložiště jsou uvedené v článku [Přehled zabezpečení služby Azure Storage](storage-overview.md) .
 
-#### <a name="network-security-rules-nsgs"></a>Network security rules (NSGs)
+#### <a name="network-security-rules-nsgs"></a>Pravidla zabezpečení sítě (skupin zabezpečení sítě)
 
-If you need basic network level access control (based on IP address and the TCP or UDP protocols), you can use Network Security Groups (NSGs). An NSG is a basic, stateful, packet filtering firewall, and it enables you to control access based on a [5-tuple](https://www.techopedia.com/definition/28190/5-tuple). NSGs include functionality to simplify management and reduce the chances of configuration mistakes:
+Pokud potřebujete základní řízení přístupu na úrovni sítě (na základě IP adresy a protokolů TCP nebo UDP), můžete použít skupiny zabezpečení sítě (skupin zabezpečení sítě). NSG je základní a stavová brána firewall pro filtrování paketů a umožňuje řídit přístup na základě [5 řazených kolekcí členů](https://www.techopedia.com/definition/28190/5-tuple). Skupin zabezpečení sítě zahrnují funkce pro zjednodušení správy a omezení pravděpodobnosti chyb konfigurace:
 
-* **Augmented security rules** simplify NSG rule definition and allow you to create complex rules rather than having to create multiple simple rules to achieve the same result.
-* **Service tags** are Microsoft created labels that represent a group of IP addresses. They update dynamically to include IP ranges that meet the conditions that define inclusion in the label. For example, if you want to create a rule that applies to all Azure storage on the east region you can use Storage.EastUS
-* **Application security groups** allow you to deploy resources to application groups and control the access to those resources by creating rules that use those application groups. For example, if you have webservers deployed to the 'Webservers' application group you can create a rule that applies a NSG allowing 443 traffic from the Internet to all systems in the 'Webservers' application group.
+* **Rozšířená pravidla zabezpečení** zjednodušují definici pravidla NSG a umožňují vytvářet složitá pravidla, ale nemusíte vytvářet více jednoduchých pravidel, abyste dosáhli stejného výsledku.
+* **Značky služby** jsou vytvořené Microsoftem štítky, které představují skupinu IP adres. Dynamicky se aktualizují tak, aby zahrnovaly rozsahy IP adres, které splňují podmínky definující zahrnutí do popisku. Pokud například chcete vytvořit pravidlo, které bude platit pro všechny služby Azure Storage na východní oblasti, můžete použít Storage. EastUS
+* **Skupiny zabezpečení aplikací** umožňují nasadit prostředky do skupin aplikací a řídit přístup k těmto prostředkům vytvořením pravidel, která používají tyto skupiny aplikací. Například pokud máte nasazené webservers do skupiny aplikací webservers, můžete vytvořit pravidlo, které 443 povolí NSG provoz z Internetu do všech systémů ve skupině aplikací webservers.
 
-NSGs do not provide application layer inspection or authenticated access controls.
-
-Další informace:
-
-* [Network Security Groups](../../virtual-network/security-overview.md)
-
-#### <a name="asc-just-in-time-vm-access"></a>ASC just in time VM access
-
-[Azure security center](../../security-center/security-center-intro.md) can manage the NSGs on VMs and lock access to the VM until a user with the appropriate role-based access control [RBAC](/azure/role-based-access-control/overview) permissions requests access. When the user is successfully authorized ASC makes modifications to the NSGs to allow access to selected ports for the time specified. When the time expires the NSGs are restored to their previous secured state.
+Skupin zabezpečení sítě neposkytuje kontrolu aplikační vrstvy ani ověřování řízení přístupu.
 
 Další informace:
 
-* [Azure Security Center Just in Time Access](../../security-center/security-center-just-in-time.md)
+* [Skupiny zabezpečení sítě](../../virtual-network/security-overview.md)
+
+#### <a name="asc-just-in-time-vm-access"></a>Přístup k virtuálnímu počítači v čase ASC
+
+[Azure Security Center](../../security-center/security-center-intro.md) může spravovat skupin zabezpečení sítě na virtuálních počítačích a uzamknout přístup k virtuálnímu počítači, dokud uživatel s [příslušnými oprávněními pro](/azure/role-based-access-control/overview) řízení přístupu na základě role nepožaduje přístup. Po úspěšném ověření uživatele ASC provede úpravy skupin zabezpečení sítě k povolení přístupu k vybraným portům po určenou dobu. Po vypršení časového limitu se skupin zabezpečení sítě obnoví na předchozí zabezpečený stav.
+
+Další informace:
+
+* [Přístup k Azure Security Center jenom v čase](../../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>Koncové body služby
 
-Service endpoints are another way to apply control over your traffic. You can limit communication with supported services to just your VNets over a direct connection. Traffic from your VNet to the specified Azure service remains on the Microsoft Azure backbone network.  
+Koncové body služby představují jiný způsob, jak použít kontrolu nad přenosem dat. Komunikaci s podporovanými službami můžete omezit jenom na virtuální sítě přes přímé připojení. Provoz z vaší virtuální sítě do zadané služby Azure zůstane v páteřní síti Microsoft Azure.  
 
 Další informace:
 
 * [Koncové body služby](../../virtual-network/virtual-network-service-endpoints-overview.md#secure-azure-services-to-virtual-networks)
 
-### <a name="route-control-and-forced-tunneling"></a>Route control and forced tunneling
+### <a name="route-control-and-forced-tunneling"></a>Řízení směrování a vynucené tunelování
 
-The ability to control routing behavior on your virtual networks is critical. If routing is configured incorrectly, applications and services hosted on your virtual machine might connect to unauthorized devices, including systems owned and operated by potential attackers.
+Možnost řídit chování směrování ve virtuálních sítích je kritická. Pokud je směrování nesprávně nakonfigurované, můžou se aplikace a služby hostované ve vašem virtuálním počítači připojit k neautorizovaným zařízením, včetně systémů vlastněných a provozovaných potenciálními útočníky.
 
-Azure networking supports the ability to customize the routing behavior for network traffic on your virtual networks. This enables you to alter the default routing table entries in your virtual network. Control of routing behavior helps you make sure that all traffic from a certain device or group of devices enters or leaves your virtual network through a specific location.
+Síť Azure podporuje možnost přizpůsobení chování směrování pro síťový provoz ve vašich virtuálních sítích. To umožňuje změnit výchozí položky směrovací tabulky ve vaší virtuální síti. Řízení chování směrování vám pomůže zajistit, že veškerý provoz z určitého zařízení nebo skupiny zařízení zadá nebo opustí virtuální síť prostřednictvím konkrétního umístění.
 
-For example, you might have a virtual network security appliance on your virtual network. You want to make sure that all traffic to and from your virtual network goes through that virtual security appliance. You can do this by configuring [User Defined Routes](../../virtual-network/virtual-networks-udr-overview.md) (UDRs) in Azure.
+Můžete mít například zařízení zabezpečení virtuální sítě ve vaší virtuální síti. Chcete se ujistit, že veškerý provoz do a z vaší virtuální sítě projde virtuálním zařízením zabezpečení. To můžete provést tak, že nakonfigurujete [trasy definované uživatelem](../../virtual-network/virtual-networks-udr-overview.md) (udr) v Azure.
 
-[Forced tunneling](https://www.petri.com/azure-forced-tunneling) is a mechanism you can use to ensure that your services are not allowed to initiate a connection to devices on the internet. Note that this is different from accepting incoming connections and then responding to them. Front-end web servers need to respond to requests from internet hosts, and so internet-sourced traffic is allowed inbound to these web servers and the web servers are allowed to respond.
+[Vynucené tunelování](https://www.petri.com/azure-forced-tunneling) je mechanismus, který můžete použít k zajištění toho, aby vaše služby neumožňovaly iniciovat připojení k zařízením v Internetu. Všimněte si, že se liší od přijetí příchozích připojení a jejich reakce na ně. Webové servery front-end musí odpovídat na požadavky od hostitelů v Internetu, takže internetový internetový provoz je na tyto webové servery povolený, a webové servery můžou reagovat.
 
-What you don't want to allow is a front-end web server to initiate an outbound request. Such requests might represent a security risk because these connections can be used to download malware. Even if you do want these front-end servers to initiate outbound requests to the internet, you might want to force them to go through your on-premises web proxies. This enables you to take advantage of URL filtering and logging.
+To, co nechcete povolit, je front-end webový server, který iniciuje odchozí požadavek. Takové žádosti mohou představovat bezpečnostní riziko, protože tato připojení lze použít ke stažení malwaru. I když chcete, aby tyto servery front-end zahájily odchozí požadavky na Internet, můžete vynutit, aby procházely prostřednictvím místních webových proxy serverů. Díky tomu můžete využít filtrování a protokolování adres URL.
 
-Instead, you would want to use forced tunneling to prevent this. When you enable forced tunneling, all connections to the internet are forced through your on-premises gateway. You can configure forced tunneling by taking advantage of UDRs.
+Místo toho byste měli používat vynucené tunelování k tomu, aby se zabránilo. Když povolíte vynucené tunelování, všechna připojení k Internetu se vynutí prostřednictvím místní brány. Můžete nakonfigurovat vynucené tunelování tím, že využijete výhod udr.
 
 Další informace:
 
-* [What are User Defined Routes and IP Forwarding](../../virtual-network/virtual-networks-udr-overview.md)
+* [Co jsou trasy definované uživatelem a předávání IP](../../virtual-network/virtual-networks-udr-overview.md)
 
-### <a name="virtual-network-security-appliances"></a>Virtual network security appliances
+### <a name="virtual-network-security-appliances"></a>Zařízení zabezpečení virtuální sítě
 
-While NSGs, UDRs, and forced tunneling provide you a level of security at the network and transport layers of the [OSI model](https://en.wikipedia.org/wiki/OSI_model), you might also want to enable security at levels higher than the network.
+I když skupin zabezpečení sítě, udr a vynucené tunelování poskytují úroveň zabezpečení v síťové a transportní vrstvě [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), možná budete chtít povolit zabezpečení i na vyšších úrovních než v síti.
 
-For example, your security requirements might include:
+Vaše požadavky na zabezpečení můžou například zahrnovat:
 
-* Authentication and authorization before allowing access to your application
-* Intrusion detection and intrusion response
-* Application layer inspection for high-level protocols
-* URL filtering
-* Network level antivirus and Antimalware
-* Anti-bot protection
-* Application access control
-* Additional DDoS protection (above the DDoS protection provided by the Azure fabric itself)
+* Ověřování a autorizace před povolením přístupu k aplikaci
+* Zjišťování vniknutí a reakce na neoprávněné vniknutí
+* Kontrola aplikační vrstvy pro protokoly vysoké úrovně
+* Filtrování adres URL
+* Antivirová ochrana a antimalware na úrovni sítě
+* Ochrana proti robotům
+* Řízení přístupu k aplikaci
+* Další ochrana DDoS (nad ochranou DDoS poskytovanou samotnými prostředky infrastruktury Azure)
 
-You can access these enhanced network security features by using an Azure partner solution. You can find the most current Azure partner network security solutions by visiting the [Azure Marketplace](https://azure.microsoft.com/marketplace/), and searching for "security" and "network security."
+K těmto rozšířeným funkcím zabezpečení sítě můžete přistupovat pomocí partnerského řešení Azure. Nejaktuálnější řešení zabezpečení pro Azure Partner Network najdete na [Azure Marketplace](https://azure.microsoft.com/marketplace/)a vyhledáte "zabezpečení" a "zabezpečení sítě".
 
-## <a name="azure-firewall"></a>Azure Firewall
+## <a name="azure-firewall"></a>Brána Azure Firewall
 
-Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Jde o plně stavovou bránu firewall poskytovanou jako služba s integrovanou vysokou dostupností a neomezenou cloudovou škálovatelností. Some features include:
+Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Jde o plně stavovou bránu firewall poskytovanou jako služba s integrovanou vysokou dostupností a neomezenou cloudovou škálovatelností. Mezi tyto funkce patří:
 
 * Vysoká dostupnost
-* Cloud scalability
+* Škálovatelnost cloudu
 * Pravidla filtrování plně kvalifikovaných názvů domén aplikací
 * Pravidla filtrování síťového provozu
 
 Další informace:
 
-* [Azure Firewall overview](/azure/firewall/overview)
+* [Přehled Azure Firewall](/azure/firewall/overview)
 
-## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Secure remote access and cross-premises connectivity
+## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Zabezpečený vzdálený přístup a připojení mezi místními sítěmi
 
-Setup, configuration, and management of your Azure resources needs to be done remotely. In addition, you might want to deploy [hybrid IT](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) solutions that have components on-premises and in the Azure public cloud. These scenarios require secure remote access.
+Instalaci, konfiguraci a správu prostředků Azure je potřeba provést vzdáleně. Kromě toho můžete chtít nasadit [hybridní řešení IT](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) , která mají komponenty v místním prostředí a ve veřejném cloudu Azure. Tyto scénáře vyžadují zabezpečený vzdálený přístup.
 
-Azure networking supports the following secure remote access scenarios:
+Sítě Azure podporují následující scénáře zabezpečeného vzdáleného přístupu:
 
-* Connect individual workstations to a virtual network
-* Connect your on-premises network to a virtual network with a VPN
-* Connect your on-premises network to a virtual network with a dedicated WAN link
-* Connect virtual networks to each other
+* Připojení jednotlivých pracovních stanic k virtuální síti
+* Připojení místní sítě k virtuální síti pomocí sítě VPN
+* Připojení místní sítě k virtuální síti s vyhrazeným propojením WAN
+* Vzájemná propojení virtuálních sítí
 
-### <a name="connect-individual-workstations-to-a-virtual-network"></a>Connect individual workstations to a virtual network
+### <a name="connect-individual-workstations-to-a-virtual-network"></a>Připojení jednotlivých pracovních stanic k virtuální síti
 
-You might want to enable individual developers or operations personnel to manage virtual machines and services in Azure. For example, let's say you need access to a virtual machine on a virtual network. But your security policy does not allow RDP or SSH remote access to individual virtual machines. In this case, you can use a [point-to-site VPN](../../vpn-gateway/point-to-site-about.md) connection.
+Pro správu virtuálních počítačů a služeb v Azure můžete chtít povolit jednotlivé vývojáře nebo provozní pracovníky. Řekněme například, že potřebujete přístup k virtuálnímu počítači ve virtuální síti. Zásady zabezpečení ale nepovolují vzdálený přístup RDP nebo SSH k jednotlivým virtuálním počítačům. V takovém případě můžete použít připojení [VPN typu Point-to-site](../../vpn-gateway/point-to-site-about.md) .
 
-The point-to-site VPN connection enables you to set up a private and secure connection between the user and the virtual network. When the VPN connection is established, the user can RDP or SSH over the VPN link into any virtual machine on the virtual network. (This assumes that the user can authenticate and is authorized.) Point-to-site VPN supports:
+Připojení VPN typu Point-to-site umožňuje nastavit privátní a zabezpečené připojení mezi uživatelem a virtuální sítí. Po navázání připojení VPN může uživatel na virtuálním počítači ve virtuální síti připojit protokol RDP nebo SSH přes připojení k síti VPN. (Předpokládá se, že se uživatel může ověřit a má oprávnění.) SÍŤ VPN typu Point-to-site podporuje:
 
-* Secure Socket Tunneling Protocol (SSTP), a proprietary SSL-based VPN protocol. An SSL VPN solution can penetrate firewalls, since most firewalls open TCP port 443, which SSL uses. SSTP is only supported on Windows devices. Azure supports all versions of Windows that have SSTP (Windows 7 and later).
+* Protokol SSTP (Secure Socket Tunneling Protocol), což je proprietární protokol VPN založený na protokolu SSL. Řešení SSL VPN může proniknout do brány firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. SSTP se podporuje jenom na zařízeních s Windows. Azure podporuje všechny verze Windows, které mají protokol SSTP (Windows 7 a novější).
 
 * IKEv2 VPN, řešení IPsec VPN založené na standardech. IKEv2 VPN je možné použít k připojení ze zařízení se systémem Mac (OSX verze 10.11 a vyšší).
 
@@ -168,100 +168,100 @@ The point-to-site VPN connection enables you to set up a private and secure conn
 
 Další informace:
 
-* [Configure a point-to-site connection to a virtual network using PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Konfigurace připojení typu Point-to-site k virtuální síti pomocí PowerShellu](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-vpn"></a>Connect your on-premises network to a virtual network with a VPN
+### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-vpn"></a>Připojení místní sítě k virtuální síti pomocí sítě VPN
 
-You might want to connect your entire corporate network, or portions of it, to a virtual network. This is common in hybrid IT scenarios, where organizations [extend their on-premises datacenter into Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). In many cases, organizations host parts of a service in Azure, and parts on-premises. For example,they might do so when a solution includes front-end web servers in Azure and back-end databases on-premises. These types of "cross-premises" connections also make management of Azure located resources more secure, and enable scenarios such as extending Active Directory domain controllers into Azure.
+Je možné, že budete chtít připojit celou podnikovou síť nebo její části k virtuální síti. To je běžné ve scénářích hybridního IT oddělení, kde organizace [šíří své místní datacentrum do Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). V mnoha případech organizace hostují části služby v Azure a místní součásti. To může například udělat, když řešení zahrnuje webové servery front-end v Azure a back-endové databáze v místním prostředí. Tyto typy připojení mezi různými místy také usnadňují správu prostředků v Azure s větším zabezpečením a umožňují scénáře, jako je rozšíření řadičů domény služby Active Directory do Azure.
 
-One way to accomplish this is to use a [site-to-site VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn). The difference between a site-to-site VPN and a point-to-site VPN is that the latter connects a single device to a virtual network. A site-to-site VPN connects an entire network (such as your on-premises network) to a virtual network. Site-to-site VPNs to a virtual network use the highly secure IPsec tunnel mode VPN protocol.
+Jedním ze způsobů, jak toho dosáhnout, je použít [síť VPN typu Site-to-site](https://www.techopedia.com/definition/30747/site-to-site-vpn). Rozdíl mezi sítí VPN typu Site-to-site a sítí VPN typu Point-to-site spočívá v tom, že druhá zařízení připojuje k virtuální síti jedno zařízení. Síť Site-to-Site VPN připojuje celou síť (například místní síť) k virtuální síti. Sítě VPN typu Site-to-site k virtuální síti používají vysoce zabezpečený protokol VPN tunelového režimu IPsec.
 
 Další informace:
 
-* [Create a Resource Manager VNet with a site-to-site VPN connection using the Azure portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Vytvoření virtuální sítě Správce prostředků s připojením VPN typu Site-to-site pomocí Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [Informace o službě VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>Connect your on-premises network to a virtual network with a dedicated WAN link
+### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>Připojení místní sítě k virtuální síti s vyhrazeným propojením WAN
 
-Point-to-site and site-to-site VPN connections are effective for enabling cross-premises connectivity. However, some organizations consider them to have the following drawbacks:
+Připojení VPN typu Point-to-site a Site-to-site jsou platná pro povolení připojení mezi různými místy. Některé organizace je však považují za následující nevýhody:
 
-* VPN connections move data over the internet. This exposes these connections to potential security issues involved with moving data over a public network. In addition, reliability and availability for internet connections cannot be guaranteed.
-* VPN connections to virtual networks might not have the bandwidth for some applications and purposes, as they max out at around 200 Mbps.
+* Připojení VPN přesouvá data přes Internet. To zveřejňuje tato připojení k potenciálním problémům se zabezpečením, které se týkají přesouvání dat přes veřejnou síť. Kromě toho není možné zaručit spolehlivost a dostupnost připojení k Internetu.
+* Připojení VPN k virtuálním sítím nemusí mít šířku pásma pro některé aplikace a účely, protože mají maximální velikost od přibližně 200 MB/s.
 
-Organizations that need the highest level of security and availability for their cross-premises connections typically use dedicated WAN links to connect to remote sites. Azure provides you the ability to use a dedicated WAN link that you can use to connect your on-premises network to a virtual network. Azure ExpressRoute, Express route direct, and Express route global reach enable this.
-
-Další informace:
-
-* [ExpressRoute technical overview](../../expressroute/expressroute-introduction.md)
-* [ExpressRoute direct](../../expressroute/expressroute-erdirect-about.md)
-* [Express route global reach](../../expressroute/expressroute-global-reach.md)
-
-### <a name="connect-virtual-networks-to-each-other"></a>Connect virtual networks to each other
-
-It is possible to use many virtual networks for your deployments. There are various reasons why you might do this. You might want to simplify management, or you might want increased security. Regardless of the motivation for putting resources on different virtual networks, there might be times when you want resources on each of the networks to connect with one another.
-
-One option is for services on one virtual network to connect to services on another virtual network, by "looping back" through the internet. The connection starts on one virtual network, goes through the internet, and then comes back to the destination virtual network. This option exposes the connection to the security issues inherent in any internet-based communication.
-
-A better option might be to create a site-to-site VPN that connects between two virtual networks. This method uses the same [IPSec tunnel mode](https://technet.microsoft.com/library/cc786385.aspx) protocol as the cross-premises site-to-site VPN connection mentioned above.
-
-The advantage of this approach is that the VPN connection is established over the Azure network fabric, instead of connecting over the internet. This provides you an extra layer of security, compared to site-to-site VPNs that connect over the internet.
+Organizace, které potřebují nejvyšší úroveň zabezpečení a dostupnosti pro připojení mezi různými místy, obvykle používají vyhrazené odkazy sítě WAN pro připojení ke vzdáleným webům. Azure poskytuje možnost použít vyhrazené propojení WAN, které můžete použít k připojení místní sítě k virtuální síti. Tuto možnost umožňují globální dosah Azure ExpressRoute, Express Route Direct a Express Route.
 
 Další informace:
 
-* [Configure a VNet-to-VNet Connection by using Azure Resource Manager and PowerShell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+* [Technický přehled ExpressRoute](../../expressroute/expressroute-introduction.md)
+* [ExpressRoute Direct](../../expressroute/expressroute-erdirect-about.md)
+* [Globální dosah Express Route](../../expressroute/expressroute-global-reach.md)
 
-Another way to connect your virtual networks is  [VNET peering](../../virtual-network/virtual-network-peering-overview.md). This feature allows you to connect two Azure networks so that communication between them happens over the Microsoft backbone infrastructure without it ever going over the Internet. VNET peering can connect two VNETs within the same region or two VNETs across Azure regions. NSGs can be used to limit connectivity between different subnets or systems.
+### <a name="connect-virtual-networks-to-each-other"></a>Vzájemná propojení virtuálních sítí
+
+Pro vaše nasazení je možné použít spoustu virtuálních sítí. K dispozici jsou různé důvody, proč to může udělat. Může se stát, že budete chtít zjednodušit správu, nebo budete chtít zvýšené zabezpečení. Bez ohledu na motivaci pro vložení prostředků do různých virtuálních sítí může nastat situace, kdy chcete, aby se prostředky v každé z těchto sítí připojovaly k sobě.
+
+Jednou z možností je, že služby v jedné virtuální síti se připojují ke službám v jiné virtuální síti – "opakováním" prostřednictvím Internetu. Připojení se spouští v jedné virtuální síti, prochází přes Internet a pak se vrátí do cílové virtuální sítě. Tato možnost zveřejňuje připojení k problémům se zabezpečením, které jsou součástí jakékoli internetové komunikace.
+
+Lepší možností může být vytvoření sítě VPN typu Site-to-site, která se připojuje mezi dvěma virtuálními sítěmi. Tato metoda používá stejný protokol [tunelového režimu IPSec](https://technet.microsoft.com/library/cc786385.aspx) jako připojení VPN typu Site-to-site uvedená výše.
+
+Výhodou tohoto přístupu je, že připojení VPN se naváže přes síťové prostředky infrastruktury Azure místo připojení přes Internet. V porovnání s sítěmi VPN typu Site-to-site, které se připojují přes Internet, získáte další vrstvu zabezpečení.
+
+Další informace:
+
+* [Konfigurace připojení typu VNet-to-VNet pomocí Azure Resource Manager a PowerShellu](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+
+Dalším způsobem připojení virtuálních sítí je vytvoření [partnerského vztahu](../../virtual-network/virtual-network-peering-overview.md)virtuální sítě. Tato funkce umožňuje propojit dvě sítě Azure, aby komunikace mezi nimi byla přes páteřní infrastrukturu Microsoftu, aniž by bylo možné přejít přes Internet. Partnerský vztah virtuálních sítí může propojit dvě virtuální sítě v rámci stejné oblasti nebo dvou virtuální sítě napříč oblastmi Azure. Skupin zabezpečení sítě se dá použít k omezení připojení mezi různými podsítěmi nebo systémy.
 
 ## <a name="availability"></a>Dostupnost
 
-Availability is a key component of any security program. If your users and systems can't access what they need to access over the network, the service can be considered compromised. Azure has networking technologies that support the following high-availability mechanisms:
+Dostupnost je klíčovou součástí jakéhokoli programu zabezpečení. Pokud vaši uživatelé a systémy nemají přístup k tomu, co potřebují k přístupu přes síť, může být služba považována za ohroženou. Azure obsahuje síťové technologie, které podporují následující mechanismy vysoké dostupnosti:
 
-* HTTP-based load balancing
-* Network level load balancing
-* Global load balancing
+* Vyrovnávání zatížení založené na protokolu HTTP
+* Vyrovnávání zatížení na úrovni sítě
+* Globální vyrovnávání zatížení
 
-Load balancing is a mechanism designed to equally distribute connections among multiple devices. The goals of load balancing are:
+Vyrovnávání zatížení je mechanismus navržený tak, aby bylo možné rovnoměrně rozdělovat připojení mezi více zařízení. Cílem vyrovnávání zatížení jsou:
 
-* To increase availability. When you load balance connections across multiple devices, one or more of the devices can become unavailable without compromising the service. The services running on the remaining online devices can continue to serve the content from the service.
-* To increase performance. When you load balance connections across multiple devices, a single device doesn't have to handle all processing. Instead, the processing and memory demands for serving the content is spread across multiple devices.
+* Pro zvýšení dostupnosti. Při vyrovnávání zatížení připojení mezi různými zařízeními může být jedno nebo více zařízení nedostupné bez narušení služby. Služby běžící ve zbývajících online zařízeních mohou nadále obsluhovat obsah služby.
+* Pro zvýšení výkonu. Když vyrovnáváte zatížení připojení napříč více zařízeními, nemusíte mít jedno zařízení zpracovávat veškeré zpracování. Místo toho jsou požadavky na zpracování a paměť pro obsluhu obsahu rozloženy mezi několik zařízení.
 
-### <a name="http-based-load-balancing"></a>HTTP-based load balancing
+### <a name="http-based-load-balancing"></a>Vyrovnávání zatížení založené na protokolu HTTP
 
-Organizations that run web-based services often desire to have an HTTP-based load balancer in front of those web services. This helps ensure adequate levels of performance and high availability. Traditional, network-based load balancers rely on network and transport layer protocols. HTTP-based load balancers, on the other hand, make decisions based on characteristics of the HTTP protocol.
+Organizace, na kterých běží webové služby, často chtějí před těmito webovými službami používat nástroj pro vyrovnávání zatížení založený na protokolu HTTP. To pomáhá zajistit odpovídající úroveň výkonu a vysokou dostupnost. Tradiční nástroje pro vyrovnávání zatížení založené na síti spoléhají na protokoly sítě a transportní vrstvy. Nástroje pro vyrovnávání zatížení založené na protokolu HTTP na druhé straně se rozhodnou na základě charakteristik protokolu HTTP.
 
-Azure Application Gateway provides HTTP-based load balancing for your web-based services. Application Gateway supports:
+Azure Application Gateway poskytuje vyrovnávání zatížení na základě protokolu HTTP pro vaše webové služby. Application Gateway podporuje:
 
-* Cookie-based session affinity. This capability makes sure that connections established to one of the servers behind that load balancer stays intact between the client and server. This ensures stability of transactions.
-* SSL offload. When a client connects with the load balancer, that session is encrypted by using the HTTPS (SSL) protocol. However, in order to increase performance, you can use the HTTP (unencrypted) protocol to connect between the load balancer and the web server behind the load balancer. This is referred to as "SSL offload," because the web servers behind the load balancer don't experience the processor overhead involved with encryption. The web servers can therefore service requests more quickly.
-* URL-based content routing. This feature makes it possible for the load balancer to make decisions about where to forward connections based on the target URL. This provides a lot more flexibility than solutions that make load balancing decisions based on IP addresses.
-
-Další informace:
-
-* [Application Gateway overview](/azure/application-gateway/application-gateway-introduction)
-
-### <a name="network-level-load-balancing"></a>Network level load balancing
-
-In contrast to HTTP-based load balancing, network level load balancing makes decisions based on IP address and port (TCP or UDP) numbers.
-You can gain the benefits of network level load balancing in Azure by using Azure Load Balancer. Some key characteristics of Load Balancer include:
-
-* Network level load balancing based on IP address and port numbers.
-* Support for any application layer protocol.
-* Load balances to Azure virtual machines and cloud services role instances.
-* Can be used for both internet-facing (external load balancing) and non-internet facing (internal load balancing) applications and virtual machines.
-* Endpoint monitoring, which is used to determine if any of the services behind the load balancer have become unavailable.
+* Spřažení relace na základě souborů cookie. Tato možnost zajistí, že připojení navázaná na jeden ze serverů za tímto nástrojem pro vyrovnávání zatížení zůstanou beze změny mezi klientem a serverem. Tím se zajistí stabilita transakcí.
+* Přesměrování zpracování SSL. Když se klient připojí pomocí nástroje pro vyrovnávání zatížení, tato relace se zašifruje pomocí protokolu HTTPS (SSL). Aby bylo možné zvýšit výkon, můžete použít protokol HTTP (nešifrovaný) pro připojení mezi nástrojem pro vyrovnávání zatížení a webovým serverem za nástrojem pro vyrovnávání zatížení. To se označuje jako přesměrování zpracováním SSL, protože webové servery za nástrojem pro vyrovnávání zatížení nezpůsobí režii procesoru související se šifrováním. Webové servery proto mohou rychleji vycházet žádosti o služby.
+* Směrování obsahu na základě adresy URL. Tato funkce umožňuje nástroji pro vyrovnávání zatížení rozhodnout, kam se mají dodávat připojení na základě cílové adresy URL. Díky tomu je větší flexibilita než řešení, která na základě IP adres provádí rozhodnutí o vyrovnávání zatížení.
 
 Další informace:
 
-* [Internet-facing load balancer between multiple virtual machines or services](/azure/load-balancer/load-balancer-internet-overview)
-* [Internal load balancer overview](/azure/load-balancer/load-balancer-internal-overview)
+* [Přehled Application Gateway](/azure/application-gateway/application-gateway-introduction)
 
-### <a name="global-load-balancing"></a>Global load balancing
+### <a name="network-level-load-balancing"></a>Vyrovnávání zatížení na úrovni sítě
 
-Some organizations want the highest level of availability possible. One way to reach this goal is to host applications in globally distributed datacenters. When an application is hosted in datacenters located throughout the world, it's possible for an entire geopolitical region to become unavailable, and still have the application up and running.
+Na rozdíl od vyrovnávání zatížení založeného na protokolu HTTP umožňuje vyrovnávání zatížení na úrovni sítě rozhodnutí založená na číslech IP adresy a portu (TCP nebo UDP).
+Výhody vyrovnávání zatížení sítě v Azure můžete získat pomocí Azure Load Balancer. Mezi klíčové charakteristiky Load Balancer patří:
 
-This load-balancing strategy can also yield performance benefits. You can direct requests for the service to the datacenter that is nearest to the device that is making the request.
+* Vyrovnávání zatížení na úrovni sítě založené na IP adrese a číslech portů.
+* Podpora jakéhokoli protokolu vrstvy aplikace.
+* Načtěte si rovnováhu mezi virtuálními počítači Azure a instancemi rolí cloudových služeb.
+* Dá se použít pro internetovou (externí vyrovnávání zatížení) i pro aplikace a virtuální počítače, které nejsou v Internetu (interní vyrovnávání zatížení).
+* Monitorování koncového bodu, které slouží k určení, jestli některé ze služeb za nástroj pro vyrovnávání zatížení nebudou dostupné.
 
-In Azure, you can gain the benefits of global load balancing by using Azure Traffic Manager.
+Další informace:
+
+* [Internetový nástroj pro vyrovnávání zatížení mezi několika virtuálními počítači nebo službami](/azure/load-balancer/load-balancer-internet-overview)
+* [Interní přehled nástroje pro vyrovnávání zatížení](/azure/load-balancer/load-balancer-internal-overview)
+
+### <a name="global-load-balancing"></a>Globální vyrovnávání zatížení
+
+Některé organizace chtějí nejvyšší možnou úroveň dostupnosti. Jedním ze způsobů, jak dosáhnout tohoto cíle, je hostovat aplikace v globálně distribuovaných datových centrech. Když je aplikace hostována v datových centrech umístěných na celém světě, je možné, že celá geopolitická oblast nebude k dispozici a stále je aplikace spuštěná.
+
+Tato strategie vyrovnávání zatížení může také přinést výhody výkonu. Požadavky na službu můžete směrovat do datového centra, které je nejblíže zařízení, které tuto žádost vytváří.
+
+V Azure můžete získat výhody globálního vyrovnávání zatížení s využitím Azure Traffic Manager.
 
 Další informace:
 
@@ -269,115 +269,115 @@ Další informace:
 
 ## <a name="name-resolution"></a>Překlad adres
 
-Name resolution is a critical function for all services you host in Azure. From a security perspective, compromise of the name resolution function can lead to an attacker redirecting requests from your sites to an attacker's site. Secure name resolution is a requirement for all your cloud hosted services.
+Překlad názvů je kritická funkce pro všechny služby, které hostuje v Azure. Z hlediska zabezpečení může zabezpečení funkce překladu IP adres vést k přesměrování požadavků od vašich webů na web útočníka. Zabezpečené rozlišení názvů je požadavek pro všechny služby hostované v cloudu.
 
-There are two types of name resolution you need to address:
+Existují dva typy překladu IP adres, které potřebujete:
 
-* Internal name resolution. This is used by services on your virtual networks, your on-premises networks, or both. Names used for internal name resolution are not accessible over the internet. For optimal security, it's important that your internal name resolution scheme is not accessible to external users.
-* External name resolution. This is used by people and devices outside of your on-premises networks and virtual networks. These are the names that are visible to the internet, and are used to direct connection to your cloud-based services.
+* Interní překlad názvů. Tato služba je používána službami ve vašich virtuálních sítích, v místních sítích nebo v obou. Názvy používané k internímu překladu názvů nejsou přístupné přes Internet. Pro zajištění optimálního zabezpečení je důležité, aby vaše interní schéma překladu názvů nebylo přístupné pro externí uživatele.
+* Překlad externích názvů. Používají je lidé a zařízení mimo vaše místní sítě a virtuální sítě. Jedná se o názvy, které jsou viditelné pro Internet a slouží k přímému připojení k vašim cloudovým službám.
 
-For internal name resolution, you have two options:
+V případě překladu interních názvů máte dvě možnosti:
 
-* A virtual network DNS server. When you create a new virtual network, a DNS server is created for you. This DNS server can resolve the names of the machines located on that virtual network. This DNS server is not configurable, is managed by the Azure fabric manager, and can therefore help you secure your name resolution solution.
-* Bring your own DNS server. You have the option of putting a DNS server of your own choosing on your virtual network. This DNS server can be an Active Directory integrated DNS server, or a dedicated DNS server solution provided by an Azure partner, which you can obtain from the Azure Marketplace.
-
-Další informace:
-
-* [Virtual network overview](../../virtual-network/virtual-networks-overview.md)
-* [Manage DNS Servers used by a virtual network](../../virtual-network/manage-virtual-network.md#change-dns-servers)
-
-For external name resolution, you have two options:
-
-* Host your own external DNS server on-premises.
-* Host your own external DNS server with a service provider.
-
-Many large organizations host their own DNS servers on-premises. They can do this because they have the networking expertise and global presence to do so.
-
-In most cases, it's better to host your DNS name resolution services with a service provider. These service providers have the network expertise and global presence to ensure very high availability for your name resolution services. Availability is essential for DNS services, because if your name resolution services fail, no one will be able to reach your internet facing services.
-
-Azure provides you with a highly available and high-performing external DNS solution in the form of Azure DNS. This external name resolution solution takes advantage of the worldwide Azure DNS infrastructure. It allows you to host your domain in Azure, using the same credentials, APIs, tools, and billing as your other Azure services. As part of Azure, it also inherits the strong security controls built into the platform.
+* Server DNS virtuální sítě. Při vytváření nové virtuální sítě se vytvoří server DNS. Tento server DNS může přeložit názvy počítačů umístěných v této virtuální síti. Tento server DNS není možné konfigurovat, je spravovaný správcem prostředků infrastruktury Azure a může vám tak přispět k zabezpečení řešení překladu názvů.
+* Přineste si vlastní server DNS. Máte možnost umístit si vlastní server DNS, který zvolíte ve své virtuální síti. Tento server DNS může být integrovaným serverem DNS služby Active Directory nebo vyhrazeným řešením serveru DNS poskytovaným partnerem Azure, který můžete získat z Azure Marketplace.
 
 Další informace:
 
-* [Azure DNS overview](../../dns/dns-overview.md)
-* [Azure DNS private zones](../../dns/private-dns-overview.md) allows you to configure private DNS names for Azure resources rather than the automatically assigned names without the need to add a custom DNS solution.
+* [Přehled virtuální sítě](../../virtual-network/virtual-networks-overview.md)
+* [Správa serverů DNS používaných virtuální sítí](../../virtual-network/manage-virtual-network.md#change-dns-servers)
 
-## <a name="perimeter-network-architecture"></a>Perimeter network architecture
+Pro překlad externích názvů máte dvě možnosti:
 
-Many large organizations use perimeter networks to segment their networks, and create a buffer-zone between the internet and their services. The perimeter portion of the network is considered a low-security zone, and no high-value assets are placed in that network segment. You'll typically see network security devices that have a network interface on the perimeter network segment. Another network interface is connected to a network that has virtual machines and services that accept inbound connections from the internet.
+* Hostování vlastního externího serveru DNS v místním prostředí.
+* Hostování vlastního externího serveru DNS u poskytovatele služeb
 
-You can design perimeter networks in a number of different ways. The decision to deploy a perimeter network, and then what type of perimeter network to use if you decide to use one, depends on your network security requirements.
+Mnoho velkých organizací hostuje vlastní servery DNS místně. Můžou to udělat, protože mají síťové znalosti a globální přítomnost.
+
+Ve většině případů je lepší hostovat služby překladu názvů DNS s poskytovatelem služeb. Tito poskytovatelé služeb mají znalosti sítě a globální přítomnost, aby zajistili vysokou dostupnost služeb překladu názvů. Dostupnost je pro služby DNS zásadní, protože pokud vaše služby překladu IP adres selžou, nebude mít nikdo přístup k vašim internetovým službám.
+
+Azure poskytuje vysoce dostupné a vysoce výkonné externí řešení DNS ve formě Azure DNS. Toto řešení překladu externích názvů využívá celosvětovou infrastrukturu Azure DNS. Umožňuje hostovat vaši doménu v Azure pomocí stejných přihlašovacích údajů, rozhraní API, nástrojů a fakturace jako jiné služby Azure. V rámci Azure zahrnuje také silné ovládací prvky zabezpečení, které jsou součástí platformy.
 
 Další informace:
 
-* [Microsoft Cloud Services and Network Security](network-best-practices.md)
+* [Přehled Azure DNS](../../dns/dns-overview.md)
+* [Azure DNS privátní zóny](../../dns/private-dns-overview.md) vám umožní nakonfigurovat privátní názvy DNS pro prostředky Azure namísto automaticky přiřazených názvů bez nutnosti přidat vlastní řešení DNS.
+
+## <a name="perimeter-network-architecture"></a>Architektura hraniční sítě
+
+Řada velkých organizací používá hraniční sítě k segmentaci svých sítí a vytváří zónu vyrovnávací paměti mezi Internetem a jejich službami. Hraniční část sítě se považuje za zónu s nízkým zabezpečením a v tomto segmentu sítě se neumísťují žádné prostředky s vysokou hodnotou. Obvykle se zobrazí zařízení zabezpečení sítě, která mají síťové rozhraní v segmentu hraniční sítě. Jiné síťové rozhraní je připojeno k síti s virtuálními počítači a službami, které přijímají příchozí připojení z Internetu.
+
+Hraniční sítě můžete navrhovat mnoha různými způsoby. Rozhodnutí o nasazení hraniční sítě a následný typ hraniční sítě, která se má použít, pokud se rozhodnete použít jeden, závisí na požadavcích na zabezpečení sítě.
+
+Další informace:
+
+* [Microsoft Cloud služeb a zabezpečení sítě](network-best-practices.md)
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS Protection
 
-Distribuované útoky na dostupnost služeb (DDoS) patří k největším hrozbám pro dostupnost a zabezpečení, se kterými se musejí zákazníci přesouvající aplikace do cloudu vyrovnávat. A DDoS attack attempts to exhaust an application's resources, making the application unavailable to legitimate users. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet.
-Microsoft provides DDoS protection known as **Basic** as part of the Azure Platform. This comes at no charge and includes always on monitoring and real-time mitigation of common network level attacks. In addition to the protections included with DDoS protection **Basic** you can enable the **Standard** option. DDoS Protection Standard features include:
+Distribuované útoky na dostupnost služeb (DDoS) patří k největším hrozbám pro dostupnost a zabezpečení, se kterými se musejí zákazníci přesouvající aplikace do cloudu vyrovnávat. Útok DDoS se pokusí vyčerpat prostředky aplikace, takže aplikace nebude k dispozici oprávněným uživatelům. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet.
+Společnost Microsoft poskytuje jako součást platformy Azure DDoS Protection označované jako **Basic** . K dispozici je zdarma a zahrnuje nepřetržité monitorování a zmírnění běžných útoků na úrovni sítě v reálném čase. Kromě ochrany zahrnuté v DDoS Protection **Basic** můžete povolit **standardní** možnost. Mezi DDoS Protection standardní funkce patří:
 
-* **Native platform integration:** Natively integrated into Azure. Includes configuration through the Azure portal. DDoS Protection Standard understands your resources and resource configuration.
-* **Turn-key protection:** Simplified configuration immediately protects all resources on a virtual network as soon as DDoS Protection Standard is enabled. No intervention or user definition is required. DDoS Protection Standard instantly and automatically mitigates the attack, once it is detected.
-* **Always-on traffic monitoring:** Your application traffic patterns are monitored 24 hour a day, 7 days a week, looking for indicators of DDoS attacks. Mitigation is performed when protection policies are exceeded.
-* **Attack Mitigation Reports** Attack Mitigation Reports use aggregated network flow data to provide detailed information about attacks targeted at your resources.
-* **Attack Mitigation Flow Logs** Attack Mitigation Flow Logs allow you to review the dropped traffic, forwarded traffic and other attack data in near real-time during an active DDoS attack.
-* **Adaptive tuning:** Intelligent traffic profiling learns your application's traffic over time, and selects and updates the profile that is the most suitable for your service. The profile adjusts as traffic changes over time. Layer 3 to layer 7 protection: Provides full stack DDoS protection, when used with a web application firewall.
-* **Extensive mitigation scale:** Over 60 different attack types can be mitigated, with global capacity, to protect against the largest known DDoS attacks.
-* **Attack metrics:** Summarized metrics from each attack are accessible through Azure Monitor.
-* **Attack alerting:** Alerts can be configured at the start and stop of an attack, and over the attack's duration, using built-in attack metrics. Alerts integrate into your operational software like Microsoft Azure Monitor logs, Splunk, Azure Storage, Email, and the Azure portal.
-* **Cost guarantee:**  Data-transfer and application scale-out service credits for documented DDoS attacks.
-* **DDoS Rapid responsive** DDoS Protection Standard customers now have access to Rapid Response team during an active attack. DRR can help with attack investigation, custom mitigations during an attack and post-attack analysis.
+* **Integrace nativní platformy:** Nativně integrovaná do Azure. Zahrnuje konfiguraci prostřednictvím Azure Portal. DDoS Protection Standard rozumí vašim prostředkům a konfiguraci prostředků.
+* **Zapnout ochranu klíče:** Zjednodušená konfigurace okamžitě chrání všechny prostředky ve virtuální síti, jakmile je povolená DDoS Protection Standard. Není nutná žádná definice ani zásah uživatele. DDoS Protection Standard okamžitě a automaticky zmírnit útok, jakmile se zjistí.
+* **Monitorování nepřetržitého provozu:** Vaše vzory přenosů aplikací jsou sledovány 24 hodin denně, 7 dní v týdnu a hledají ukazatele DDoSch útoků. Při překročení zásad ochrany dochází ke zmírnění rizik.
+* **Sestavy o zmírnění útoků** Sestavy zmírnění útoků používají agregovaná data toku sítě a poskytují podrobné informace o útocích cílících na vaše prostředky.
+* **Protokoly o omezeních toků útoků na útoky** Protokoly o omezeních toků útoků na útoky umožňují kontrolovat vyřazený provoz, předávané přenosy a další data útoku téměř v reálném čase během útoku na aktivní DDoS.
+* **Adaptivní ladění:** Inteligentní profilace provozu zjišťuje provoz vaší aplikace v průběhu času a vybere a aktualizuje profil, který je nejvhodnější pro vaši službu. Profil se v průběhu času upraví jako změny provozu. Ochrana vrstvy 3 ke vrstvě 7: poskytuje úplnou ochranu zásobníku DDoS při použití s bránou firewall webových aplikací.
+* **Rozsáhlá škála rizik:** U více než 60 různých typů útoků se dá zmírnit s globální kapacitou, která se bude chránit před největším známými DDoS útoky.
+* **Metriky útoku:** Souhrnná metrika z každého útoku je přístupná prostřednictvím Azure Monitor.
+* **Výstrahy útoku:** Výstrahy se dají nakonfigurovat na začátku a na konci útoku a přes dobu trvání útoku pomocí integrované metriky útoku. Výstrahy se integrují do svého provozního softwaru, jako je Microsoft Azure monitorování protokolů, Splunk, Azure Storage, e-mailu a Azure Portal.
+* **Záruka nákladů:**  Kredity služeb pro přenos dat a škálování aplikací pro dokumentované DDoS útoky.
+* **DDoS rychle reagovat** Zákazníci s DDoS Protection Standard teď mají při aktivním útoku přístup k týmu Rapid Response. DRR může pomáhat s vyšetřováním útoků, vlastními riziky při útoku a analýzou po útoku.
 
 
 Další informace:
 
-* [DDOS protection overview](../../virtual-network/ddos-protection-overview.md)
+* [Přehled ochrany DDOS](../../virtual-network/ddos-protection-overview.md)
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-Azure Front Door Service enables you to define, manage, and monitor the global routing of your web traffic. It optimizes your traffic's routing for best performance and high availability. Azure Front Door umožňuje vytvořit vlastní pravidla firewallu webových aplikací pro řízení přístupu za účelem ochrany úloh HTTP/HTTPS před zneužitím na základě klientských IP adres, kódů zemí a parametrů HTTP. Additionally, Front Door also enables you to create rate limiting rules to battle malicious bot traffic, it includes SSL offloading and per-HTTP/HTTPS request, application-layer processing.
+Služba front-dveří Azure umožňuje definovat, spravovat a monitorovat globální směrování webového provozu. Optimalizuje směrování provozu pro zajištění nejlepšího výkonu a vysoké dostupnosti. Azure Front Door umožňuje vytvořit vlastní pravidla firewallu webových aplikací pro řízení přístupu za účelem ochrany úloh HTTP/HTTPS před zneužitím na základě klientských IP adres, kódů zemí a parametrů HTTP. Kromě toho je možné, že přední dvířka vám také umožní vytvořit si pravidla omezující omezení pro vytvoření škodlivého provozu robota, včetně snižování zátěže SSL a požadavků na protokol HTTP/HTTPS, zpracování aplikační vrstvy.
 
-Front Door platform itself is protected by Azure DDoS Protection Basic. Z důvodu další ochrany je možné ve virtuálních sítích povolit službu Azure DDoS Protection Standard a pomocí automatického ladění a zmírnění chránit prostředky před útoky na vrstvě sítě (TCP/UDP). Front Door is a layer 7 reverse proxy, it only allows web traffic to pass through to back end servers and block other types of traffic by default.
-
-Další informace:
-
-* For more information on the whole set of Azure Front door capabilities you can review the [Azure Front Door overview](../../frontdoor/front-door-overview.md)
-
-## <a name="azure-traffic-manager"></a>Azure Traffic manager
-
-Azure Traffic Manager je nástroj pro vyrovnávání zatížení provozu na základě DNS, který umožňuje optimálně distribuovat provoz do služeb napříč globálními oblastmi Azure při zajištění vysoké dostupnosti a rychlosti odezvy. Traffic Manager pomocí DNS směruje požadavky klientů do nejvhodnějšího koncového bodu služby v závislosti na metodě směrování provozu a stavu koncových bodů. Koncový bod je jakákoli internetová služba hostovaná v rámci nebo mimo Azure. Traffic manager monitors the end points and does not direct traffic to any endpoints that are unavailable.
+Platforma pro přední dveře je chráněná Azure DDoS Protection Basic. Z důvodu další ochrany je možné ve virtuálních sítích povolit službu Azure DDoS Protection Standard a pomocí automatického ladění a zmírnění chránit prostředky před útoky na vrstvě sítě (TCP/UDP). Přední dvířka jsou reverzní proxy vrstvy 7, ale umožňuje průchod webovým serverem přes back-end servery a blokování dalších typů provozu ve výchozím nastavení.
 
 Další informace:
 
-* [Azure Traffic manager overview](../../traffic-manager/traffic-manager-overview.md)
+* Další informace o celé sadě možností front-end pro Azure najdete v článku Přehled služby [front-end pro Azure](../../frontdoor/front-door-overview.md) .
 
-## <a name="monitoring-and-threat-detection"></a>Monitoring and threat detection
+## <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-Azure provides capabilities to help you in this key area with early detection, monitoring, and collecting and reviewing network traffic.
+Azure Traffic Manager je nástroj pro vyrovnávání zatížení provozu na základě DNS, který umožňuje optimálně distribuovat provoz do služeb napříč globálními oblastmi Azure při zajištění vysoké dostupnosti a rychlosti odezvy. Traffic Manager pomocí DNS směruje požadavky klientů do nejvhodnějšího koncového bodu služby v závislosti na metodě směrování provozu a stavu koncových bodů. Koncový bod je jakákoli internetová služba hostovaná v rámci nebo mimo Azure. Traffic Manager monitoruje koncové body a nesměruje provoz do žádných koncových bodů, které nejsou k dispozici.
+
+Další informace:
+
+* [Přehled služby Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)
+
+## <a name="monitoring-and-threat-detection"></a>Monitorování a detekce hrozeb
+
+Azure poskytuje možnosti, které vám pomůžou v této klíčové oblasti s včasnou detekcí, monitorováním a shromažďováním a kontrolou síťového provozu.
 
 ### <a name="azure-network-watcher"></a>Azure Network Watcher
 
-Azure Network Watcher can help you troubleshoot, and provides a whole new set of tools to assist with the identification of security issues.
+Azure Network Watcher vám může pomoct při odstraňování potíží a poskytuje celou novou sadu nástrojů, které vám pomůžou s identifikací problémů se zabezpečením.
 
-[Security Group View](../../network-watcher/network-watcher-security-group-view-overview.md) helps with auditing and security compliance of Virtual Machines. Use this feature to perform programmatic audits, comparing the baseline policies defined by your organization to effective rules for each of your VMs. This can help you identify any configuration drift.
+[Zobrazení skupiny zabezpečení](../../network-watcher/network-watcher-security-group-view-overview.md) pomáhá s dodržováním zásad auditování a zabezpečení Virtual Machines. Pomocí této funkce můžete provádět programové audity a porovnat základní zásady definované vaší organizací s platnými pravidly pro každý z vašich virtuálních počítačů. To vám může přispět k identifikaci posunu konfigurace.
 
-[Packet capture](../../network-watcher/network-watcher-packet-capture-overview.md) allows you to capture network traffic to and from the virtual machine. You can collect network statistics and troubleshoot application issues, which can be invaluable in the investigation of network intrusions. You can also use this feature together with Azure Functions to start network captures in response to specific Azure alerts.
+[Zachycení paketů](../../network-watcher/network-watcher-packet-capture-overview.md) umožňuje zachytit síťový provoz do a z virtuálního počítače. Můžete shromažďovat statistiky sítě a řešit problémy s aplikacemi, které mohou být neužitečné při vyšetřování neoprávněných vniknutí do sítě. Tuto funkci můžete také použít spolu s Azure Functions ke spuštění síťových zachycení v reakci na konkrétní výstrahy Azure.
 
-For more information on Network Watcher and how to start testing some of the functionality in your labs, see [Azure network watcher monitoring overview](../../network-watcher/network-watcher-monitoring-overview.md).
+Další informace o Network Watcher a o tom, jak začít s testováním některých funkcí v laboratoři, najdete v tématu [Přehled monitorování sledování sítě Azure](../../network-watcher/network-watcher-monitoring-overview.md).
 
 > [!NOTE]
-> For the most up-to-date notifications on availability and status of this service, check the [Azure updates page](https://azure.microsoft.com/updates/?product=network-watcher).
+> Nejaktuálnější oznámení o dostupnosti a stavu této služby najdete na [stránce s aktualizacemi Azure](https://azure.microsoft.com/updates/?product=network-watcher).
 
-### <a name="azure-security-center"></a>Centrum zabezpečení Azure
+### <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center helps you prevent, detect, and respond to threats, and provides you increased visibility into, and control over, the security of your Azure resources. It provides integrated security monitoring and policy management across your Azure subscriptions, helps detect threats that might otherwise go unnoticed, and works with a large set of security solutions.
+Azure Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a poskytuje lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované monitorování zabezpečení a správu zásad v rámci předplatných Azure, pomáhá detekovat hrozby, které by jinak neinformovaly a fungují s velkou sadou řešení zabezpečení.
 
-Security Center helps you optimize and monitor network security by:
+Security Center vám pomůže optimalizovat a monitorovat zabezpečení sítě pomocí:
 
-* Providing network security recommendations.
-* Monitoring the state of your network security configuration.
-* Alerting you to network based threats, both at the endpoint and network levels.
+* Poskytnutí doporučení zabezpečení sítě.
+* Monitorování stavu konfigurace zabezpečení sítě.
+* Upozornění na síťové hrozby na úrovni koncového bodu i sítě.
 
 Další informace:
 
@@ -385,21 +385,21 @@ Další informace:
 
 ### <a name="virtual-network-tap"></a>VTAP (Virtual Network TAP)
 
-Azure virtual network TAP (Terminal Access Point) allows you to continuously stream your virtual machine network traffic to a network packet collector or analytics tool. The collector or analytics tool is provided by a network virtual appliance partner. You can use the same virtual network TAP resource to aggregate traffic from multiple network interfaces in the same or different subscriptions.
+KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuje nepřetržitě streamovat síťový provoz virtuálního počítače do nástroje pro shromažďování síťových paketů nebo pro analýzu. Sběrač nebo nástroj pro analýzu poskytuje síťový partner pro síťové virtuální zařízení. K agregaci provozu z více síťových rozhraní ve stejných nebo různých předplatných můžete použít stejnou virtuální síť. klepněte na prostředek.
 
 Další informace:
 
-* [Virtual network TAP](../../virtual-network/virtual-network-tap-overview.md)
+* [Klepnutí na virtuální síť](../../virtual-network/virtual-network-tap-overview.md)
 
 ### <a name="logging"></a>Protokolování
 
-Logging at a network level is a key function for any network security scenario. In Azure, you can log information obtained for NSGs to get network level logging information. With NSG logging, you get information from:
+Protokolování na úrovni sítě je klíčovou funkcí pro jakýkoli scénář zabezpečení sítě. V Azure můžete protokolovat informace získané pro skupin zabezpečení sítě a získat informace o protokolování na úrovni sítě. Pomocí protokolování NSG získáte informace z těchto údajů:
 
-* [Activity logs](../../azure-monitor/platform/activity-logs-overview.md). Use these logs to view all operations submitted to your Azure subscriptions. These logs are enabled by default, and can be used within the Azure portal. They were previously known as audit or operational logs.
-* Event logs. These logs provide information about what NSG rules were applied.
-* Counter logs. These logs let you know how many times each NSG rule was applied to deny or allow traffic.
+* [Protokoly aktivit](../../azure-monitor/platform/activity-logs-overview.md). Pomocí těchto protokolů můžete zobrazit všechny operace odeslané do předplatných Azure. Tyto protokoly jsou ve výchozím nastavení povolené a dají se použít v rámci Azure Portal. Dříve se nazývaly jako audit nebo provozní protokoly.
+* Protokoly událostí. Tyto protokoly obsahují informace o tom, jaká pravidla NSG byla použita.
+* Protokoly čítače. Tyto protokoly vám umožní zjistit, kolikrát se každé pravidlo NSG použilo pro odepření nebo povolení provozu.
 
-You can also use [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), a powerful data visualization tool, to view and analyze these logs.
+K zobrazení a analýze těchto protokolů můžete použít také [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), výkonný nástroj pro vizualizaci dat.
 Další informace:
 
-* [Azure Monitor logs for Network Security Groups (NSGs)](../../virtual-network/virtual-network-nsg-manage-log.md)
+* [Protokoly Azure Monitor pro skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../virtual-network/virtual-network-nsg-manage-log.md)

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4f9804ed0e7d6c83a4f6fc732f836fcecce1c2e7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090632"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548341"
 ---
 # <a name="streaming-ingestion-preview"></a>Ingestování streamování (Preview)
 
@@ -73,8 +73,7 @@ Existují dva podporované typy přijímání streamování:
 
 ## <a name="limitations"></a>Omezení
 
-* Zvýšení výkonu a kapacity příjmu streamování díky větší velikosti virtuálních počítačů a clusterů. Pro jeden uzel D14 je Doporučené zatížení až 150 požadavků za sekundu.
-* V současné době je podpora určena pouze pro 8 a 16 základních SKU (D13, D14, L8 a L16).
+* Zvýšení výkonu a kapacity příjmu streamování díky větší velikosti virtuálních počítačů a clusterů. Souběžné přijímání se omezí na 6 příjmu na jádro. Například u 16 základních SKU, jako je například D14 a L16, je maximální podporované zatížení 96 souběžných ingestování. U 2 základních SKU, jako je například D11, je maximální podporované zatížení 12 souběžných ingest.
 * Omezení velikosti dat na žádost o přijetí dat je 4 MB.
 * Aktualizace schématu, jako je vytváření a úprava tabulek a mapování přijímání, můžou trvat až 5 minut, než se služba pro příjem dat streamuje.
 * Povolení ingestování streamování na clusteru, i když se data nedrží prostřednictvím streamování, používá část místního disku SSD clusterových počítačů pro data příjmu streamování a snižuje úložiště dostupné pro hotkou mezipaměť.

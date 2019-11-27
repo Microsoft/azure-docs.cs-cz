@@ -1,6 +1,6 @@
 ---
-title: Debug Application Proxy applications - Azure Active Directory | Microsoft Docs
-description: Debug issues with Azure Active Directory (Azure AD) Application Proxy applications.
+title: Ladit aplikace proxy aplikací – Azure Active Directory | Microsoft Docs
+description: Problémy s laděním u aplikací proxy aplikace Azure Active Directory (Azure AD).
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -18,42 +18,42 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382071"
 ---
-# <a name="debug-application-proxy-application-issues"></a>Debug Application Proxy application issues 
+# <a name="debug-application-proxy-application-issues"></a>Problémy s laděním aplikací proxy aplikací 
 
-This article helps you troubleshoot issues with Azure Active Directory (Azure AD) Application Proxy applications. If you're using the Application Proxy service for remote access to an on-premises web application, but you're having trouble connecting to the application, use this flowchart to debug application issues. 
+Tento článek vám pomůže vyřešit problémy s aplikacemi proxy aplikace Azure Active Directory (Azure AD). Pokud používáte službu proxy aplikací pro vzdálený přístup k místní webové aplikaci, ale máte potíže s připojením k aplikaci, použijte tento vývojový diagram k ladění problémů s aplikacemi. 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-When troubleshooting Application Proxy issues, we recommend you start with the connectors. First, follow the troubleshooting flow in [Debug Application Proxy Connector issues](application-proxy-debug-connectors.md) to make sure Application Proxy connectors are configured correctly. If you're still having issues, return to this article to troubleshoot the application.  
+Při řešení potíží s proxy aplikací doporučujeme začít s konektory. Nejdřív postupujte podle postupu pro řešení potíží v části [ladění proxy serveru aplikace](application-proxy-debug-connectors.md) a ujistěte se, že konektory proxy aplikací jsou správně nakonfigurované. Pokud stále dochází k problémům, vraťte se k tomuto článku a vyřešte potíže s aplikací.  
 
-For more information about Application Proxy, see:
+Další informace o proxy aplikací najdete v těchto tématech:
 
-- [Remote access to on-premises applications through Application Proxy](application-proxy.md)
-- [Application Proxy connectors](application-proxy-connectors.md)
-- [Install and register a connector](application-proxy-add-on-premises-application.md)
-- [Troubleshoot Application Proxy problems and error messages](application-proxy-troubleshoot.md)
+- [Vzdálený přístup k místním aplikacím prostřednictvím proxy aplikací](application-proxy.md)
+- [Konektory proxy aplikací](application-proxy-connectors.md)
+- [Instalace a registrace konektoru](application-proxy-add-on-premises-application.md)
+- [Řešení problémů s proxy aplikací a chybové zprávy](application-proxy-troubleshoot.md)
 
-## <a name="flowchart-for-application-issues"></a>Flowchart for application issues
+## <a name="flowchart-for-application-issues"></a>Vývojový diagram pro problémy s aplikacemi
 
-This flowchart walks you through the steps for debugging some of the more common issues with connecting to the application. For details about each step, see the table following the flowchart.
+Tento vývojový diagram vás provede kroky pro ladění některých nejběžnějších potíží s připojením k aplikaci. Podrobnosti o jednotlivých krocích najdete v tabulce, která následuje po tomto vývojovém diagramu.
 
-![Flowchart showing steps for debugging an application](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
+![Vývojový diagram znázorňující kroky pro ladění aplikace](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
 |  | Akce | Popis | 
 |---------|---------|---------|
-|1\. místo | Open a browser, access the app, and enter your credentials | Try using your credentials to sign in to the app, and check for any user-related errors, like [This corporate app can't be accessed](application-proxy-sign-in-bad-gateway-timeout-error.md). |
-|2 | Verify user assignment to the app | Make sure your user account has permission to access the app from inside the corporate network, and then test signing in to the app by following the steps in [Test the application](application-proxy-add-on-premises-application.md#test-the-application). If sign-in issues persist, see [How to troubleshoot sign-in errors](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).  |
-|3 | Open a browser and try to access the app | If an error appears immediately, check to see that Application Proxy is configured correctly. For details about specific error messages, see [Troubleshoot Application Proxy problems and error messages](application-proxy-troubleshoot.md).  |
-|4 | Check your custom domain setup or troubleshoot the error | If the page doesn't display at all, make sure your custom domain is configured correctly by reviewing [Working with custom domains](application-proxy-configure-custom-domain.md).<br></br>If the page doesn't load and an error message appears, troubleshoot the error by referring to  [Troubleshoot Application Proxy problems and error messages](application-proxy-troubleshoot.md). <br></br>If it takes longer than 20 seconds for an error message to appear, there could be connectivity issue. Go to the [Debug Application Proxy connectors](application-proxy-debug-connectors.md) troubleshooting article.  |
-|5 | If issues persist, go to connector debugging | There could be a connectivity issue between the proxy and the connector or between the connector and the back end. Go to the [Debug Application Proxy connectors](application-proxy-debug-connectors.md) troubleshooting article. |
-|6 | Publish all resources, check browser developer tools, and fix links | Make sure the publishing path includes all the necessary images, scripts, and style sheets for your application. For details, see [Add an on-premises app to Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). <br></br>Use the browser's developer tools (F12 tools in Internet Explorer or Microsoft Edge) and check for publishing issues as described in [Application page does not display correctly](application-proxy-page-appearance-broken-problem.md). <br></br>Review options for resolving broken links in [Links on the page don't work](application-proxy-page-links-broken-problem.md). |
-|7 | Check for network latency | If the page loads slowly, learn about ways to minimize network latency in [Considerations for reducing latency](application-proxy-network-topology.md#considerations-for-reducing-latency). | 
-|8 | See additional troubleshooting help | If issues persist, find additional troubleshooting articles in the [Application Proxy troubleshooting documentation](application-proxy-troubleshoot.md). |
+|1 | Otevřete prohlížeč, přejděte do aplikace a zadejte svoje přihlašovací údaje. | Zkuste použít přihlašovací údaje pro přihlášení k aplikaci a vyhledat všechny chyby související s uživatelem, třeba [Tato podniková aplikace není dostupná](application-proxy-sign-in-bad-gateway-timeout-error.md). |
+|2 | Ověření přiřazení uživatele k aplikaci | Ujistěte se, že váš uživatelský účet má oprávnění pro přístup k aplikaci zevnitř podnikové sítě, a pak otestujte přihlášení k aplikaci pomocí kroků v části [test aplikace](application-proxy-add-on-premises-application.md#test-the-application). Pokud se problémy s přihlášením trvají, přečtěte si téma [jak řešit chyby při přihlašování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).  |
+|3 | Otevřete prohlížeč a pokuste se získat přístup k aplikaci. | Pokud se zobrazí chyba okamžitě, zkontrolujte, jestli je proxy aplikací správně nakonfigurovaný. Podrobnosti o konkrétních chybových zprávách najdete v tématu [řešení potíží se službou Application proxy a chybovými zprávami](application-proxy-troubleshoot.md).  |
+|4 | Projděte si vlastní nastavení domény nebo odstraňte chybu. | Pokud se stránka vůbec nezobrazuje, ujistěte se, že je vaše vlastní doména správně nakonfigurovaná, a to tak, že zkontrolujete [práci s vlastními doménami](application-proxy-configure-custom-domain.md).<br></br>Pokud se stránka nenačte a zobrazí se chybová zpráva, vyřešte problém pomocí odkazu na [řešení potíží s proxy aplikací a chybové zprávy](application-proxy-troubleshoot.md). <br></br>Pokud se zobrazí chybová zpráva delší než 20 sekund, může dojít k potížím s připojením. Přejít na článek řešení potíží [konektory proxy aplikace pro ladění](application-proxy-debug-connectors.md) .  |
+|5 | Pokud problémy přetrvávají, přejdete na ladění konektoru. | Mohlo dojít k potížím s připojením mezi proxy serverem a konektorem nebo mezi konektorem a back-end. Přejít na článek řešení potíží [konektory proxy aplikace pro ladění](application-proxy-debug-connectors.md) . |
+|6 | Publikování všech prostředků, kontroly vývojářských nástrojů v prohlížeči a oprava odkazů | Ujistěte se, že cesta publikování zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Podrobnosti najdete v tématu [Přidání místní aplikace do služby Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). <br></br>Použijte vývojářské nástroje v prohlížeči (nástroje F12 v aplikaci Internet Explorer nebo Microsoft Edge) a vyhledejte problémy publikování, jak je popsáno na [stránce aplikace. nezobrazuje se správně](application-proxy-page-appearance-broken-problem.md). <br></br>Kontrola možností pro řešení přerušených odkazů v [odkazech na stránce nefunguje](application-proxy-page-links-broken-problem.md). |
+|7 | Kontrolovat latenci sítě | Pokud se stránka načítá pomalu, přečtěte si informace o způsobech minimalizace latence sítě v části [požadavky na snížení latence](application-proxy-network-topology.md#considerations-for-reducing-latency). | 
+|8 | Zobrazit další pomoc při řešení potíží | Pokud potíže přetrvávají, vyhledejte další články týkající se řešení potíží v [dokumentaci k řešení potíží s proxy aplikací](application-proxy-troubleshoot.md). |
 
 ## <a name="next-steps"></a>Další kroky
 
 
-* [Publish applications on separate networks and locations using connector groups](application-proxy-connector-groups.md)
-* [Work with existing on-premises proxy servers](application-proxy-configure-connectors-with-proxy-servers.md)
-* [Troubleshoot Application Proxy and connector errors](application-proxy-troubleshoot.md)
-* [How to silently install the Azure AD Application Proxy Connector](application-proxy-register-connector-powershell.md)
+* [Publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů](application-proxy-connector-groups.md)
+* [Práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
+* [Řešení chyb proxy aplikací a konektorů](application-proxy-troubleshoot.md)
+* [Postup při tiché instalaci konektoru služby Azure Proxy aplikací služby AD](application-proxy-register-connector-powershell.md)

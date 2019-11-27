@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8261723f145c7b8ba01e27108e7a309f9f483d2c
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cd0e77d1534bf540376fd397ee3e6d45bf8c424a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993135"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546260"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Konfigurace e-mailových oznámení pro problémy v Azure Active Directory Domain Services
 
@@ -33,7 +33,7 @@ Následující příklad e-mailového oznámení indikuje, že se ve spravované
 ![Příklad e-mailového oznámení](./media/active-directory-domain-services-alerts/email-alert.png)
 
 > [!WARNING]
-> Před kliknutím na odkazy ve zprávě se ujistěte, že e-mail pochází od ověřeného odesilatele Microsoftu. E-mailová oznámení se vždycky `azure-noreply@microsoft.com` podávají z adresy.
+> Před kliknutím na odkazy ve zprávě se ujistěte, že e-mail pochází od ověřeného odesilatele Microsoftu. E-mailová oznámení se vždycky podávají z `azure-noreply@microsoft.com` adresy.
 
 ### <a name="why-would-i-receive-email-notifications"></a>Proč dostávat e-mailová oznámení?
 
@@ -78,7 +78,7 @@ Pokud nemůžete získat přístup k stránce nastavení oznámení v Azure Port
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Zdá se, že nepřijímám e-mailová oznámení, i když mi Mám e-mailovou adresu. Proč?
 
-Zkontrolujte e-mailovou zprávu nebo složku Nevyžádaná pošta v e-mailu s oznámením a `azure-noreply@microsoft.com`Ujistěte se, že odesílateli povolíte.
+Zkontrolujte e-mailovou zprávu nebo složku Nevyžádaná pošta v e-mailu s oznámením a ujistěte se, že odesilateli `azure-noreply@microsoft.com`.
 
 ## <a name="next-steps"></a>Další kroky
 

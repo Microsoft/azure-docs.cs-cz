@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Tokens account management
-description: Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
+title: Správa účtů tokenů Azure blockchain
+description: Pomocí služby Azure blockchain tokens Management můžete vytvořit skupiny a propojit účty blockchain za účelem řízení přístupu k akcím blockchain.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
@@ -11,26 +11,26 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326103"
 ---
-# <a name="azure-blockchain-tokens-account-management"></a>Azure Blockchain Tokens account management
+# <a name="azure-blockchain-tokens-account-management"></a>Správa účtů tokenů Azure blockchain
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-For a blockchain solution, users may require different levels of access to the tokens that are created with the Azure Blockchain Tokens service. In most blockchain scenarios, you need to plan and deploy different blockchain accounts that exist on the ledger. You also need to manage access across participants. Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
+Pro řešení blockchain můžou uživatelé vyžadovat různé úrovně přístupu k tokenům vytvořeným pomocí služby tokenů Azure blockchain. Ve většině scénářů Blockchain je potřeba naplánovat a nasadit různé účty blockchain, které existují v hlavní knize. Musíte taky spravovat přístup mezi účastníky. Pomocí služby Azure blockchain tokens Management můžete vytvořit skupiny a propojit účty blockchain za účelem řízení přístupu k akcím blockchain.
 
-## <a name="blockchain-networks"></a>Blockchain networks
+## <a name="blockchain-networks"></a>Blockchain sítě
 
-Azure Blockchain Tokens enables deployment and management of tokens across a set of blockchain networks. You can connect a single blockchain ledger or several blockchain ledgers to the service.
+Tokeny Azure blockchain umožňují nasazení a správu tokenů napříč sadou blockchain sítí. Ke službě můžete připojit jednu blockchain knihu nebo několik knih blockchain.
 
 ## <a name="accounts"></a>Účty
 
-For blockchain networks connected to Azure Blockchain Tokens, the service creates and manages the account private-public key pairs and performs transaction signing and submission. Azure Blockchain Tokens also provides identity mapping to match accounts with the public key identity on the ledger.
+Pro sítě blockchain připojené k tokenům Azure blockchain služba vytvoří a spravuje páry klíčů privátního veřejného klíče a provádí podepisování a odesílání transakcí. Tokeny Azure blockchain také poskytuje mapování identit tak, aby odpovídalo účtům s identitou veřejného klíče v hlavní knize.
 
 ## <a name="groups"></a>Skupiny
 
-Groups lets you manage a large number of blockchain accounts across connected networks. You can track and audit which applications and users in the directory have the ability to use accounts through Azure Blockchain Tokens APIs. For example, you could group a set of accounts that represent different lines of business or different roles and access to blockchain tokens.
+Skupiny vám umožní spravovat velký počet blockchain účtů napříč propojenými sítěmi. Můžete sledovat a auditovat, které aplikace a uživatelé v adresáři mají schopnost používat účty prostřednictvím rozhraní API pro tokeny Azure blockchain. Můžete například seskupit sadu účtů, které reprezentují různé řádky obchodních nebo různých rolí a přístup k tokenům blockchain.
 
-You can also associate a group to an Azure Active Directory user or service principal and this principal has permissions to the group and its associated accounts.  
+Skupinu můžete také přidružit k Azure Active Directory uživateli nebo instančnímu objektu a tento objekt zabezpečení má oprávnění ke skupině a jejím přidruženým účtům.  
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn more about available [Azure Blockchain Tokens templates](templates.md).
+Přečtěte si další informace o dostupných [šablonách tokenů Azure blockchain](templates.md).

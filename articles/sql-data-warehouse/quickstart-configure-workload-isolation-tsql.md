@@ -35,7 +35,7 @@ V tomto rychlém startu se předpokládá, že již máte SQL Data Warehouse a �
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlásit se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 ## <a name="create-login-for-dataloads"></a>Vytvoření přihlašovacích údajů pro dataloades
 

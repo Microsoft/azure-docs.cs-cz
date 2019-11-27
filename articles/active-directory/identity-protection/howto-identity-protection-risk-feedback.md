@@ -1,6 +1,6 @@
 ---
-title: Provide risk feedback in Azure Active Directory Identity Protection
-description: How and why should you provide feedback on Identity Protection risk detections.
+title: Poskytněte zpětnou vazbu rizika v Azure Active Directory Identity Protection
+description: Jak a proč byste měli poskytovat zpětnou vazbu k detekcím rizik ochrany identity
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,46 +18,46 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382092"
 ---
-# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>How To: Give risk feedback in Azure AD Identity Protection
+# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Postupy: poskytnutí zpětné vazby o riziku v Azure AD Identity Protection
 
-Azure AD Identity Protection allows you to give feedback on its risk assessment. The following document lists the scenarios where you would like to give feedback on Azure AD Identity Protection’s risk assessment and how we incorporate it.
+Azure AD Identity Protection vám umožní sdělit svůj názor na posouzení rizik. Následující dokument obsahuje seznam scénářů, ve kterých byste chtěli sdělit svůj názor na posouzení rizika Azure AD Identity Protection a způsob, jakým ho zachováme.
 
-## <a name="what-is-a-detection"></a>What is a detection?
+## <a name="what-is-a-detection"></a>Co je zjišťování?
 
-An Identity Protection detection is an indicator of suspicious activity from an identity risk perspective. These suspicious activities are called risk detections. These identity-based detections can be based on heuristics, machine learning or can come from partner products. These detections are used to determine sign-in risk and user risk,
+Detekce Identity Protection je indikátorem podezřelé aktivity z perspektivy rizika identity. Tyto podezřelé aktivity se nazývají detekce rizik. Tyto detekce na základě identity můžou být založené na heuristikách, strojovém učení nebo může pocházet z partnerských produktů. Tyto detekce slouží k určení rizika přihlašování a rizika pro uživatele.
 
-* User risk represents the probability an identity is compromised.
-* Sign-in risk represents the probability a sign-in is compromised (for example, the sign-in is not authorized by the identity owner).
+* Riziko uživatele představuje pravděpodobnost ohrožení identity.
+* Riziko přihlášení představuje pravděpodobnost, že je přihlášení ohroženo (například přihlášení není autorizováno vlastníkem identity).
 
-## <a name="why-should-i-give-risk-feedback-to-azure-ads-risk-assessments"></a>Why should I give risk feedback to Azure AD’s risk assessments? 
+## <a name="why-should-i-give-risk-feedback-to-azure-ads-risk-assessments"></a>Proč bych měl poskytnout rizikovou zpětnou vazbu k posouzení rizik Azure AD? 
 
-There are several reasons why you should give Azure AD risk feedback:
+Existuje několik důvodů, proč byste měli poskytnout zpětnou vazbu k riziku Azure AD:
 
-- **You found Azure AD’s user or sign-in risk assessment incorrect**. For example, a sign-in shown in ‘Risky sign-ins’ report was benign and all the detections on that sign-in were false positives.
-- **You validated that Azure AD’s user or sign-in risk assessment was correct**. For example, a sign-in shown in ‘Risky sign-ins’ report was indeed malicious and you want Azure AD to know that all the detections on that sign-in were true positives.
-- **You remediated the risk on that user outside of Azure AD Identity Protection** and you want the user’s risk level to be updated.
+- **Našli jste nesprávné vyhodnocení rizika uživatele nebo přihlášení služby Azure AD**. Například přihlášení zobrazené v sestavě rizikové přihlášení bylo neškodné a všechny detekce tohoto přihlášení byly falešně pozitivní.
+- **Ověřili jste správnost vyhodnocení rizika uživatele nebo přihlašování služby Azure AD**. Například přihlášení zobrazené v sestavě rizikové přihlášení bylo opravdu škodlivé a chcete, aby služba Azure AD věděla, že všechna zjištění tohoto přihlášení byla pravdivá.
+- Napravili **jste riziko pro daného uživatele mimo Azure AD Identity Protection** a chcete aktualizovat úroveň rizika uživatele.
 
-## <a name="how-does-azure-ad-use-my-risk-feedback"></a>How does Azure AD use my risk feedback?
+## <a name="how-does-azure-ad-use-my-risk-feedback"></a>Jak Azure AD využívá můj názor na rizika?
 
-Azure AD uses your feedback to update the risk of the underlying user and/or sign-in and the accuracy of these events. This feedback helps secure the end user. For example, once you confirm a sign-in is compromised, Azure AD immediately increases the user’s risk and sign-in’s aggregate risk (not real-time risk) to High. If this user is included in your user risk policy to force High risk users to securely reset their passwords, the user will automatically remediate itself the next time they sign-in.
+Azure AD používá vaši zpětnou vazbu k aktualizaci rizika podkladového uživatele nebo přihlašování a přesnosti těchto událostí. Tato zpětná vazba pomáhá zabezpečit koncového uživatele. Když například ověříte, že je přihlášení ohrožené, Azure AD okamžitě zvyšuje riziko uživatele a agregované riziko přihlášení (ne riziko v reálném čase) na maximum. Pokud je tento uživatel zahrnutý v zásadách rizik uživatelů, aby mohli uživatelé s vysokým rizikem bezpečně resetovat hesla, uživatel se při příštím přihlášení automaticky opraví.
 
-## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>How should I give risk feedback and what happens under the hood?
+## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>Jak mám sdělit svůj názor na riziko a co se stane pod digestoří?
 
-Here are the scenarios and mechanisms to give risk feedback to Azure AD.
+Tady jsou scénáře a mechanismy, které vám poskytnou zpětnou vazbu na rizika pro Azure AD.
 
-| Scénář | How to give feedback? | What happens under the hood? | Poznámky |
+| Scénář | Jak můžete sdělit svůj názor? | Co se stane pod digestoří? | Poznámky: |
 | --- | --- | --- | --- |
-| **Sign-in not compromised (False positive)** <br> ‘Risky sign-ins’ report shows an at-risk sign-in [Risk state = At risk] but that sign-in was not compromised. | Select the sign-in and click on ‘Confirm sign-in safe’. | Azure AD will move the sign-in’s aggregate risk to none [Risk state = Confirmed safe; Risk level (Aggregate) = -] and will reverse its impact on the user risk. | Currently, the ‘Confirm sign-in safe’ option is only available in ‘Risky sign-ins’ report. |
-| **Sign-in compromised (True positive)** <br> ‘Risky sign-ins’ report shows an at-risk sign-in [Risk state = At risk] with low risk [Risk level (Aggregate) = Low] and that sign-in was indeed compromised. | Select the sign-in and click on ‘Confirm sign-in compromised’. | Azure AD will move the sign-in’s aggregate risk and the user risk to High [Risk state = Confirmed compromised; Risk level = High]. | Currently, the ‘Confirm sign-in compromised’ option is only available in ‘Risky sign-ins’ report. |
-| **User compromised (True positive)** <br> ‘Risky users’ report shows an at-risk user [Risk state = At risk] with low risk [Risk level = Low] and that user was indeed compromised. | Select the user and click on ‘Confirm user compromised’. | Azure AD will move the user risk to High [Risk state = Confirmed compromised; Risk level = High] and will add a new detection ‘Admin confirmed user compromised’. | Currently, the ‘Confirm user compromised’ option is only available in ‘Risky users’ report. <br> The detection ‘Admin confirmed user compromised’ is shown in the tab ‘Risk detections not linked to a sign-in’ in the ‘Risky users’ report. |
-| **User remediated outside of Azure AD Identity Protection (True positive + Remediated)** <br> ‘Risky users’ report shows an at-risk user and I have subsequently remediated the user outside of Azure AD Identity Protection. | 1. Select the user and click ‘Confirm user compromised’. (This process confirms to Azure AD that the user was indeed compromised.) <br> 2. Wait for the user’s ‘Risk level’ to go to High. (This time gives Azure AD the needed time to take the above feedback to the risk engine.) <br> 3. Select the user and click ‘Dismiss user risk’. (This process confirms to Azure AD that the user is no longer compromised.) |  Azure AD moves the user risk to none [Risk state = Dismissed; Risk level = -] and closes the risk on all existing sign-ins having active risk. | Clicking ‘Dismiss user risk’ will close all risk on the user and past sign-ins. This action cannot be undone. |
-| **User not compromised (False positive)** <br> ‘Risky users’ report shows at at-risk user but the user is not compromised. | Select the user and click ‘Dismiss user risk’. (This process confirms to Azure AD that the user is not compromised.) | Azure AD moves the user risk to none [Risk state = Dismissed; Risk level = -]. | Clicking ‘Dismiss user risk’ will close all risk on the user and past sign-ins. This action cannot be undone. |
-| I want to close the user risk but I am not sure whether the user is compromised / safe. | Select the user and click ‘Dismiss user risk’. (This process confirms to Azure AD that the user is no longer compromised.) | Azure AD moves the user risk to none [Risk state = Dismissed; Risk level = -]. | Clicking ‘Dismiss user risk’ will close all risk on the user and past sign-ins. This action cannot be undone. We recommend you remediate the user by clicking on ‘Reset password’ or request the user to securely reset/change their credentials. |
+| **Neohrožené přihlášení (falešně pozitivní)** <br> Sestava rizikových přihlášení zobrazuje nerizikové přihlašování [rizikový stav = ohroženo], ale toto přihlášení nebylo ohroženo. | Vyberte přihlášení a klikněte na potvrdit bezpečné přihlášení. | Azure AD přesune agregované riziko přihlášení do žádného [stav rizika = potvrzené zabezpečení; Úroveň rizika (agregace) =-] a vrátí dopad na riziko uživatele. | V současné době je možnost potvrdit přihlášení bezpečně dostupná jenom v sestavě rizikové přihlašovacích. |
+| **Narušeno přihlášení (true pozitivní)** <br> Sestava rizikové přihlašovací údaje zobrazuje nerizikové přihlašování [rizikový stav = ohroženo] s nízkým rizikem [úroveň rizika (agregace) = nízká] a toto přihlášení bylo skutečně ohroženo. | Vyberte přihlášení a klikněte na potvrdit narušené přihlášení. | Azure AD přesune agregované riziko přihlášení a riziko pro uživatele do vysoké úrovně [rizikový stav = potvrzené ohrožení zabezpečení; Úroveň rizika = vysoká]. | V současné době je možnost potvrdit narušení přihlášení dostupná jenom v sestavě rizikové přihlašovacích. |
+| **Ohrožení zabezpečení uživatele (true pozitivní)** <br> Sestava rizikové uživatele zobrazuje nerizikové uživatele [rizikový stav = ohroženo] s nízkým rizikem [úroveň rizika = nízká] a tímto uživatelem došlo k ohrožení zabezpečení. | Vyberte uživatele a klikněte na potvrdit ohrožení zabezpečení uživatele. | Azure AD přesune riziko uživatele do vysoké úrovně [rizikový stav = potvrzené ohrožení zabezpečení; Úroveň rizika = vysoká] a přidá nový detekční účet správce potvrzující ohrožení uživatele. | V současné době je možnost potvrdit ohrožení uživatele dostupná jenom v sestavě rizikové uživatele. <br> Detekce "správce potvrzuje, že došlo k ohrožení uživatele", se zobrazí v části detekce rizik, která není propojena s přihlášením v sestavě rizikové uživatele. |
+| **Napravení uživatele mimo Azure AD Identity Protection (true kladné + opraveno)** <br> Sestava rizikové uživatele zobrazuje nerizikového uživatele a uživatel ho následně napravoval mimo Azure AD Identity Protection. | 1. Vyberte uživatele a klikněte na potvrdit napadení uživatelem. (Tento proces potvrzuje službě Azure AD, že uživatel byl skutečně ohrožen.) <br> 2. Počkejte, až bude úroveň rizika uživatele přejít na hodnotu Vysoká. (Tentokrát poskytuje Azure AD potřebnou dobu k tomu, aby se výše uvedená zpětná vazba vybrala na rizikový modul.) <br> 3. Vyberte uživatele a klikněte na tlačítko Zavřít riziko uživatele. (Tento proces potvrzuje službě Azure AD, že uživatel už není ohrožen.) |  Azure AD přesune riziko pro uživatele na žádné [stav rizika = zrušeno; Úroveň rizika =-] a uzavře riziko pro všechna existující přihlášení, která mají aktivní riziko. | Kliknutím na Zavřít riziko uživatele zavřete všechna rizika pro přihlášení a uživatele v minulosti. Tuto akci nelze vrátit zpět. |
+| **Uživatel není napadený (falešně pozitivní).** <br> Sestava rizikové uživatele zobrazuje uživatele v rizikovém uživateli, ale uživatel není ohrožen. | Vyberte uživatele a klikněte na tlačítko Zavřít riziko uživatele. (Tento proces potvrdí službě Azure AD, že uživatel není ohrožen.) | Azure AD přesune riziko pro uživatele na žádné [stav rizika = zrušeno; Úroveň rizika =-]. | Kliknutím na Zavřít riziko uživatele zavřete všechna rizika pro přihlášení a uživatele v minulosti. Tuto akci nelze vrátit zpět. |
+| Chci zavřít riziko uživatele, ale nejste si jistí, jestli je uživatel napadený/bezpečný. | Vyberte uživatele a klikněte na tlačítko Zavřít riziko uživatele. (Tento proces potvrzuje službě Azure AD, že uživatel už není ohrožen.) | Azure AD přesune riziko pro uživatele na žádné [stav rizika = zrušeno; Úroveň rizika =-]. | Kliknutím na Zavřít riziko uživatele zavřete všechna rizika pro přihlášení a uživatele v minulosti. Tuto akci nelze vrátit zpět. Doporučujeme, abyste uživatele opravili kliknutím na resetovat heslo nebo požádat uživatele, aby bezpečně obnovil nebo změnil své přihlašovací údaje. |
 
-Feedback on user risk detections in Identity Protection is processed offline and may take some time to update. The risk processing state column will provide the current state of feedback processing.
+Zpětná vazba na zjišťování rizik uživatelů v ochraně identity je zpracována offline a aktualizace může nějakou dobu trvat. Sloupec stav zpracování rizika vám poskytne aktuální stav zpracování zpětné vazby.
 
-![Risk processing state for risky user report](./media/howto-identity-protection-risk-feedback/risky-users-provide-feedback.png)
+![Stav zpracování rizik pro sestavu rizikového uživatele](./media/howto-identity-protection-risk-feedback/risky-users-provide-feedback.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Active Directory Identity Protection risk detections reference](risk-events-reference.md)
+- [Referenční informace o Azure Active Directory Identity Protection detekci rizik](risk-events-reference.md)

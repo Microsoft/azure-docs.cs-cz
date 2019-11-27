@@ -1,6 +1,6 @@
 ---
-title: What is Azure Blockchain Tokens
-description: Azure Blockchain Tokens is a platform as a service (PaaS) for token issuance and management.
+title: Co jsou tokeny Azure blockchain
+description: Tokeny Azure blockchain jsou platforma jako služba (PaaS) pro vystavování a správu tokenů.
 ms.date: 11/04/2019
 ms.topic: overview
 ms.reviewer: brendal
@@ -15,32 +15,32 @@ ms.locfileid: "74326089"
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Azure Blockchain Tokens is a platform as a service (PaaS) for standardized token issuance and management across blockchain ledgers in Azure.
+Tokeny Azure blockchain jsou platforma jako služba (PaaS) pro vystavování a správu standardizovaných tokenů v rámci Blockchainch knih v Azure.
 
-Using Azure Blockchain Tokens you can create standardized tokens for your blockchain solution using a pre-built token template. You can also compose your own token template using the service. Once created, use Azure Blockchain Tokens to connect and issue the tokens on a blockchain. Once issued, you can then manage the tokens across multiple blockchain networks.
+Pomocí tokenů Azure blockchain můžete vytvořit standardizované tokeny pro vaše řešení blockchain s použitím předem připravené šablony tokenu. Pomocí služby můžete také vytvořit vlastní šablonu tokenu. Po vytvoření použijte tokeny Azure blockchain k připojení a vydávání tokenů na blockchain. Po vydání můžete tyto tokeny spravovat napříč několika blockchain sítěmi.
 
 ## <a name="templates"></a>Šablony
 
-Use Azure Blockchain Tokens to select a pre-built token template or create your own token template. Azure Blockchain Tokens supports token template composability that allows you to create your own token template based on supported behaviors. Token templates can be used for most blockchain solutions since they map to the most commonly utilized tokens. You can start with a template, personalize it, and deploy the tokens for your solution.
+Pomocí tokenů Azure blockchain můžete vybrat předem vytvořenou šablonu tokenu nebo vytvořit vlastní šablonu tokenu. Tokeny Azure blockchain podporují vytváření šablon tokenů, které vám umožní vytvořit vlastní šablonu tokenu na základě podporovaného chování. Šablony tokenů se dají použít pro většinu řešení blockchain, protože se mapují na nejběžněji používané tokeny. Můžete začít se šablonou, přizpůsobit ji a nasazovat tokeny pro vaše řešení.
 
-For more information on Azure Blockchain Tokens templates, see [Azure Blockchain Tokens templates](templates.md).
+Další informace o šablonách tokenů Azure blockchain najdete v tématu [šablony tokenů Azure blockchain](templates.md).
 
 ## <a name="management"></a>Správa
 
-Azure Blockchain Tokens provides Azure portal management and APIs to connect to an existing blockchain network. Currently, you can connect to [Azure Blockchain Service](../service/overview.md) or another Ethereum family blockchain.
+Tokeny Azure blockchain poskytují Azure Portal správu a rozhraní API pro připojení k existující síti blockchain. V současné době se můžete připojit ke [službě Azure blockchain](../service/overview.md) nebo k jinému blockchain Family ethereem.
 
-Once connected to one or multiple blockchain networks, you can use Azure Blockchain Tokens APIs to issue and manage tokens for use in your blockchain solution. Using APIs, you can integrate token management in your business applications and logic. For example, you can use the REST API to  manage tokens instead of managing tokens directly on the blockchain.
+Po připojení k jedné nebo více sítím blockchain můžete použít rozhraní API Azure blockchain tokeny k vydávání a správě tokenů pro použití ve vašem řešení blockchain. Pomocí rozhraní API můžete integrovat správu tokenů do obchodních aplikací a logiky. Můžete například použít REST API ke správě tokenů namísto správy tokenů přímo na blockchain.
 
-## <a name="blockchains-and-accounts"></a>Blockchains and accounts
+## <a name="blockchains-and-accounts"></a>Blockchainy a účty
 
-Azure Blockchain Tokens provides Azure portal management and APIs to create new groups and new blockchain accounts on connected blockchain networks. You can create new accounts directly on your connected networks, and Azure Blockchain Tokens manages your account private keys on your behalf. Using groups, you can group together different blockchain accounts from multiple networks and manage access control via the groups.
+Tokeny Azure blockchain poskytují Azure Portal pro správu a rozhraní API k vytváření nových skupin a nových účtů blockchain v připojených sítích blockchain. Nové účty můžete vytvářet přímo v připojených sítích a tokeny Azure blockchain spravuje privátní klíče vašeho účtu vaším jménem. Pomocí skupin můžete seskupovat různé účty blockchain z více sítí a spravovat řízení přístupu přes skupiny.
 
-For more information on Azure Blockchain Tokens account management, see [Azure Blockchain Tokens account management](account-management.md).
+Další informace o správě účtů tokenů Azure blockchain najdete v tématu [Správa účtů Azure blockchain tokens](account-management.md).
 
-## <a name="token-taxonomy-framework"></a>Token Taxonomy Framework
+## <a name="token-taxonomy-framework"></a>Rozhraní taxonomie tokenů
 
-Azure Blockchain Tokens is built on a standards-based foundation named the Token Taxonomy Framework (TTF). TTF is a set of deliverables created from the [Token Taxonomy Initiative](https://entethalliance.org/participate/token-taxonomy-initiative/) (TTI) token working group. The TTI working group defines a business taxonomy for tokens and their behaviors that can be applied across all major ledgers including Ethereum, Quorum, Corda, and Hyperledger Fabric. The working group's goal is to create a framework that standardizes the use of tokens from a business perspective to drive simplification and democratize token based development. By letting the industry define these tokens and their behavior at the business level, the detailed implementation of the tokens are abstracted away from the business logic that manipulates the tokens.
+Tokeny Azure blockchain jsou založené na standardizovaných základech s názvem token taxonomie (TTF). TTF je sada dodávek vytvořených z pracovní skupiny tokenů pro TTI ( [token taxonomie](https://entethalliance.org/participate/token-taxonomy-initiative/) ). Pracovní skupina TTI definuje obchodní taxonomii pro tokeny a jejich chování, které lze použít ve všech hlavních knihách, včetně Ethereem, kvora, šňůry a prostředků infrastruktury hlavní knihy. Cílem pracovní skupiny je vytvořit architekturu, která bude standardizovat použití tokenů z obchodní perspektivy pro účely zjednodušení a vývoje na základě tokenu Demokratizujte. Tím, že umožníte odvětví definovat tyto tokeny a jejich chování na úrovni firmy, je podrobná implementace tokenů z obchodní logiky, která zpracovává tokeny, abstraktní.
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn more about available [Azure Blockchain Tokens templates](templates.md).
+Přečtěte si další informace o dostupných [šablonách tokenů Azure blockchain](templates.md).

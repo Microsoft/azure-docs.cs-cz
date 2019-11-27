@@ -9,22 +9,24 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 1cfddf14d60b7d73bae283a18732c7c99ae22b4d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898234"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546317"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Vytvoření skupinového účtu spravované služby (gMSA) v Azure AD Domain Services
 
-Aplikace a služby často potřebují identitu k ověřování pomocí jiných prostředků. Webová služba může například vyžadovat ověření pomocí databázové služby. Pokud má aplikace nebo služba více instancí, jako je například webová serverová farma, ruční vytvoření a Konfigurace identit pro tyto prostředky získá časově náročnou dobu. Místo toho je možné vytvořit skupinový účet spravované služby (gMSA) ve spravované doméně služby Azure Active Directory Domain Services (Azure služba AD DS). OPERAČNÍ systém Windows automaticky spravuje přihlašovací údaje pro gMSA, což zjednodušuje správu velkých skupin prostředků.
+Aplikace a služby často potřebují identitu k ověřování pomocí jiných prostředků. Webová služba může například vyžadovat ověření pomocí databázové služby. Pokud má aplikace nebo služba více instancí, jako je například webová serverová farma, ruční vytvoření a Konfigurace identit pro tyto prostředky získá časově náročnou dobu.
 
-V tomto článku se dozvíte, jak vytvořit gMSA ve spravované doméně Azure služba AD DS.
+Místo toho je možné vytvořit skupinový účet spravované služby (gMSA) ve spravované doméně služby Azure Active Directory Domain Services (Azure služba AD DS). OPERAČNÍ systém Windows automaticky spravuje přihlašovací údaje pro gMSA, což zjednodušuje správu velkých skupin prostředků.
 
-## <a name="before-you-begin"></a>Před zahájením
+V tomto článku se dozvíte, jak vytvořit gMSA ve spravované doméně Azure služba AD DS pomocí Azure PowerShell.
+
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -60,6 +62,9 @@ Jelikož jsou spravované domény služby Azure služba AD DS uzamčeny a spravo
 
 Nejdřív vytvořte vlastní organizační jednotku pomocí rutiny [New-ADOrganizationalUnit][New-AdOrganizationalUnit] . Další informace o vytváření a správě vlastních organizačních jednotek najdete v tématu [Custom ou v Azure služba AD DS][create-custom-ou].
 
+> [!TIP]
+> K vytvoření gMSA [použijte virtuální počítač pro správu][tutorial-create-management-vm]a proveďte tyto kroky. Tento virtuální počítač pro správu by už měl mít požadované rutiny služby AD PowerShell a připojení ke spravované doméně.
+
 Následující příklad vytvoří vlastní organizační jednotku s názvem *myNewOU* ve spravované doméně Azure služba AD DS s názvem *contoso.com*. Použijte vlastní organizační jednotku a název spravované domény:
 
 ```powershell
@@ -90,7 +95,7 @@ New-ADServiceAccount -Name WebFarmSvc `
 
 Aplikace a služby se teď dají nakonfigurovat tak, aby v případě potřeby používaly gMSA.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o účty gMSA najdete v tématu [Začínáme se skupinovými účty spravované služby][gmsa-start].
 

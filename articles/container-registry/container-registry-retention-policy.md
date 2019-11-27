@@ -1,6 +1,6 @@
 ---
-title: Policy to retain untagged manifests
-description: Learn how to enable a retention policy in your Azure container registry, for automatic deletion of untagged manifests after a defined period.
+title: Zásady pro zachování netagovaných manifestů
+description: Naučte se, jak ve službě Azure Container Registry povolit zásady uchovávání informací pro automatické odstranění netagovaných manifestů po definovaném období.
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
@@ -10,99 +10,99 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454812"
 ---
-# <a name="set-a-retention-policy-for-untagged-manifests"></a>Set a retention policy for untagged manifests
+# <a name="set-a-retention-policy-for-untagged-manifests"></a>Nastavit zásady uchovávání informací pro netagované manifesty
 
-Azure Container Registry gives you the option to set a *retention policy* for stored image manifests that don't have any associated tags (*untagged manifests*). When a retention policy is enabled, untagged manifests in the registry are automatically deleted after a number of days you set. This feature prevents the registry from filling up with artifacts that aren't needed and helps you save on storage costs. If the `delete-enabled` attribute of an untagged manifest is set to `false`, the manifest can't be deleted, and the retention policy doesn't apply.
+Azure Container Registry vám dává možnost nastavit *zásady uchovávání informací* pro manifesty uložených imagí, které nemají žádné přidružené značky (*netagované manifesty*). Pokud jsou povoleny zásady uchovávání informací, odtagované manifesty v registru budou automaticky odstraněny po nastaveném počtu dní. Tato funkce zabrání registru v naplnění artefaktů, které nepotřebujete, a pomůže vám ušetřit náklady na úložiště. Pokud je atribut `delete-enabled` netagovaného manifestu nastavený na `false`, manifest se nedá odstranit a zásady uchovávání informací se nepoužijí.
 
-You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the command examples in this article. If you'd like to use it locally, version 2.0.74 or later is required. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Příklady příkazů v tomto článku můžete spustit pomocí Azure Cloud Shell nebo místní instalace rozhraní příkazového řádku Azure CLI. Pokud ho chcete používat místně, je potřeba verze 2.0.74 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 > [!IMPORTANT]
-> This feature is currently in preview, and some [limitations apply](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Tato funkce je aktuálně ve verzi Preview a [platí některá omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
 > [!WARNING]
-> Set a retention policy with care--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not set a retention policy for untagged manifests. Deleting untagged images will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md).
+> Nastavte zásady uchovávání informací se zapnutou opatrností. data bitové kopie je možné obnovit. Pokud máte systémy, které vyžádají image podle výtahu manifestu (na rozdíl od názvu image), neměli byste nastavit zásady uchovávání informací pro netagované manifesty. Odstraněním netagovaných imagí znemožníte těmto systémům navrácení imagí z registru. Místo toho, aby se vybral manifest, zvažte přijetí *jedinečného schématu označování* , což je [doporučený osvědčený postup](container-registry-image-tag-version.md).
 
-## <a name="preview-limitations"></a>Preview limitations
+## <a name="preview-limitations"></a>Omezení verze Preview
 
-* Only a **Premium** container registry can be configured with a retention policy. For information about registry service tiers, see [Azure Container Registry SKUs](container-registry-skus.md).
-* You can only set a retention policy for untagged manifests.
-* The retention policy currently applies only to manifests that are untagged *after* the policy is enabled. Existing untagged manifests in the registry aren't subject to the policy. To delete existing untagged manifests, see examples in [Delete container images in Azure Container Registry](container-registry-delete.md).
+* Pomocí zásad uchovávání informací se dá nakonfigurovat jenom registr kontejnerů **Premium** . Informace o úrovních služby registru najdete v tématu [Azure Container Registry SKU](container-registry-skus.md).
+* Zásady uchovávání informací lze nastavit pouze pro netagované manifesty.
+* Zásady uchovávání informací se aktuálně vztahují jenom na manifesty, které jsou *po* povolení zásady neoznačené. Existující netagované manifesty v registru nepodléhají zásadám. Chcete-li odstranit existující netagované manifesty, přečtěte si příklady v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).
 
-## <a name="about-the-retention-policy"></a>About the retention policy
+## <a name="about-the-retention-policy"></a>Informace o zásadách uchovávání informací
 
-Azure Container Registry does reference counting for manifests in the registry. When a manifest is untagged, it checks the retention policy. If a retention policy is enabled, a manifest delete operation is queued, with a specific date, according to the number of days set in the policy.
+Azure Container Registry provádí počítání odkazů pro manifesty v registru. Pokud je manifest bez příznaku označený, zkontroluje zásady uchovávání informací. Pokud je povolená zásada uchovávání informací, je operace odstranění manifestu zařazená do fronty s konkrétním datem podle počtu dní nastavených v zásadě.
 
-A separate queue management job constantly processes messages, scaling as needed. As an example, suppose you untagged two manifests, 1 hour apart, in a registry with a retention policy of 30 days. Two messages would be queued. Then, 30 days later, approximately 1 hour apart, the messages would be retrieved from the queue and processed, assuming the policy was still in effect.
+Samostatná úloha správy fronty neustále zpracovává zprávy a mění velikost podle potřeby. Předpokládejme například, že jste neoznačili dva manifesty, a to v registru se zásadami uchovávání informací po dobu 30 dnů. Dvě zprávy by byly zařazeny do fronty. Po uplynutí 30 dnů později přibližně 1 hodinu od sebe se zprávy načtou z fronty a zpracovaná za předpokladu, že zásada byla stále platná.
 
-## <a name="set-a-retention-policy---cli"></a>Set a retention policy - CLI
+## <a name="set-a-retention-policy---cli"></a>Nastavení zásad uchovávání informací – CLI
 
-The following example shows you how to use the Azure CLI to set a retention policy for untagged manifests in a registry.
+Následující příklad ukazuje, jak pomocí rozhraní příkazového řádku Azure nastavit zásady uchovávání informací pro netagované manifesty v registru.
 
-### <a name="enable-a-retention-policy"></a>Enable a retention policy
+### <a name="enable-a-retention-policy"></a>Povolit zásady uchovávání informací
 
-By default, no retention policy is set in a container registry. To set or update a retention policy, run the [az acr config retention update][az-acr-config-retention-update] command in the Azure CLI. You can specify a number of days between 0 and 365 to retain the untagged manifests. If you don't specify a number of days, the command sets a default of 7 days. After the retention period, all untagged manifests in the registry are automatically deleted.
+Ve výchozím nastavení nejsou v registru kontejneru nastavené žádné zásady uchovávání informací. Pokud chcete nastavit nebo aktualizovat zásady uchovávání informací, spusťte v Azure CLI příkaz [AZ ACR config][az-acr-config-retention-update] re Update. Pro uchování netagovaných manifestů můžete zadat počet dní mezi 0 a 365. Pokud nezadáte počet dnů, příkaz nastaví výchozí hodnotu 7 dní. Po dobu uchování se všechny neoznačené manifesty v registru automaticky odstraní.
 
-The following example sets a retention policy of 30 days for untagged manifests in the registry *myregistry*:
+Následující příklad nastaví zásady uchovávání informací po dobu 30 dnů pro netagované manifesty v registru *myregistry*:
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 30 --type UntaggedManifests
 ```
 
-The following example sets a policy to delete any manifest in the registry as soon as it's untagged. Create this policy by setting a retention period of 0 days. 
+Následující příklad nastaví zásadu pro odstranění všech manifestů v registru, jakmile není označena. Vytvořte tuto zásadu nastavením doby uchování 0 dnů. 
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 0 --type UntaggedManifests
 ```
 
-### <a name="validate-a-retention-policy"></a>Validate a retention policy
+### <a name="validate-a-retention-policy"></a>Ověření zásady uchovávání informací
 
-If you enable the preceding policy with a retention period of 0 days, you can quickly verify that untagged manifests are deleted:
+Pokud povolíte předchozí zásadu s dobou uchování 0 dnů, můžete rychle ověřit, jestli jsou netagované manifesty smazány:
 
-1. Push a test image `hello-world:latest` image to your registry, or substitute another test image of your choice.
-1. Untag the `hello-world:latest` image, for example, using the [az acr repository untag][az-acr-repository-untag] command. The untagged manifest remains in the registry.
+1. Nahrajte bitovou kopii `hello-world:latest` image do registru nebo nahraďte jinou zkušební image podle vašeho výběru.
+1. `hello-world:latest` zrušit označení image použijte například pomocí příkazu [AZ ACR úložiště zrušit označení][az-acr-repository-untag] . Netagovaný manifest zůstane v registru.
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
     ```
-1. Within a few seconds, the untagged manifest is deleted. You can verify the deletion by listing manifests in the repository, for example, using the [az acr repository show-manifests][az-acr-repository-show-manifests] command. If the test image was the only one in the repository, the repository itself is deleted.
+1. Během několika sekund se netagovaný manifest odstraní. Odstraněním výpisů v úložišti můžete ověřit zadáním manifestů, například pomocí příkazu [AZ ACR úložiště show-Manifests][az-acr-repository-show-manifests] . Pokud byl test image jediným z nich v úložišti, odstraní se samotné úložiště.
 
-### <a name="disable-a-retention-policy"></a>Disable a retention policy
+### <a name="disable-a-retention-policy"></a>Zakázat zásady uchovávání informací
 
-To see the retention policy set in a registry, run the [az acr config retention show][az-acr-config-retention-show] command:
+Pokud chcete zobrazit sadu zásad uchovávání dat v registru, spusťte příkaz [AZ ACR config diskazuje show][az-acr-config-retention-show] :
 
 ```azurecli
 az acr config retention show --registry myregistry
 ```
 
-To disable a retention policy in a registry, run the [az acr config retention update][az-acr-config-retention-update] command and set `--status disabled`:
+Chcete-li zakázat zásady uchovávání informací v registru, spusťte příkaz [AZ ACR config uchování aktualizace][az-acr-config-retention-update] a nastavte `--status disabled`:
 
 ```azurecli
 az acr config retention update --registry myregistry --status disabled --type UntaggedManifests
 ```
 
-## <a name="set-a-retention-policy---portal"></a>Set a retention policy - portal
+## <a name="set-a-retention-policy---portal"></a>Nastavení zásad uchovávání informací – portál
 
-You can also set a registry's retention policy in the [Azure portal](https://portal.azure.com). The following example shows you how to use the portal to set a retention policy for untagged manifests in a registry.
+V [Azure Portal](https://portal.azure.com)můžete také nastavit zásady uchovávání registru. Následující příklad ukazuje, jak pomocí portálu nastavit zásady uchovávání informací pro netagované manifesty v registru.
 
-### <a name="enable-a-retention-policy"></a>Enable a retention policy
+### <a name="enable-a-retention-policy"></a>Povolit zásady uchovávání informací
 
-1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
-1. In **Status**, select **Enabled**.
-1. Select a number of days between 0 and 365 to retain the untagged manifests. Vyberte **Save** (Uložit).
+1. Přejděte do služby Azure Container Registry. V části **zásady**vyberte **uchování** (Preview).
+1. V **stav**vyberte **povoleno**.
+1. Vyberte počet dní mezi 0 a 365 a zachovejte netagované manifesty. Vyberte **Uložit**.
 
-![Enable a retention policy in Azure portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
+![Povolit zásady uchovávání informací v Azure Portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
 
-### <a name="disable-a-retention-policy"></a>Disable a retention policy
+### <a name="disable-a-retention-policy"></a>Zakázat zásady uchovávání informací
 
-1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
-1. In **Status**, select **Disabled**. Vyberte **Save** (Uložit).
+1. Přejděte do služby Azure Container Registry. V části **zásady**vyberte **uchování** (Preview).
+1. V **stav**vyberte **zakázáno**. Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Learn more about options to [delete images and repositories](container-registry-delete.md) in Azure Container Registry
+* Další informace o možnostech [odstraňování imagí a úložišť](container-registry-delete.md) v Azure Container Registry
 
-* Learn how to [automatically purge](container-registry-auto-purge.md) selected images and manifests from a registry
+* Zjistěte, jak [automaticky vyprázdnit](container-registry-auto-purge.md) vybrané image a manifesty z registru.
 
-* Learn more about options to [lock images and manifests](container-registry-image-lock.md) in a registry
+* Další informace o možnostech pro [uzamknutí obrázků a manifestů](container-registry-image-lock.md) v registru
 
 <!-- LINKS - external -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

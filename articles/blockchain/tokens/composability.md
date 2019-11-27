@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Tokens composability
-description: Azure Blockchain Tokens composability provides flexibility to create tokens for advanced scenarios.
+title: Možnosti vytváření tokenů Azure blockchain
+description: Vytváření tokenů Azure blockchain poskytuje flexibilitu při vytváření tokenů pro pokročilé scénáře.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
@@ -11,74 +11,74 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325116"
 ---
-# <a name="azure-blockchain-tokens-composability"></a>Azure Blockchain Tokens composability
+# <a name="azure-blockchain-tokens-composability"></a>Možnosti vytváření tokenů Azure blockchain
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Token composability provides flexibility to create tokens for advanced scenarios. You may have a complex scenario that cannot be implemented using the [four pre-built token templates](templates.md#base-token-types). Token composability allows you to design your own token templates by adding or removing defined behaviors to build your own token template. When creating a new token template, Azure Blockchain Tokens verifies all token grammar rules. Composed templates are saved in Azure Blockchain Tokens service for issuing on connected blockchain networks.
+Vytváření tokenů poskytuje flexibilitu při vytváření tokenů pro pokročilé scénáře. Můžete mít složitý scénář, který nelze implementovat pomocí [čtyř předem připravených šablon tokenů](templates.md#base-token-types). Možnost vytvářet tokeny umožňuje navrhnout vlastní šablony tokenů přidáním nebo odebráním definovaného chování a vytvořit vlastní šablonu tokenu. Při vytváření nové šablony tokenu Azure blockchain tokeny ověří všechna gramatická pravidla tokenu. Složené šablony se ukládají ve službě tokenů Azure blockchain pro vydávání v připojených sítích blockchain.
 
-You can use the [token behaviors](templates.md#token-behaviors) in the following sections to design your token template.
+Pomocí [chování tokenu](templates.md#token-behaviors) v následujících částech můžete navrhnout šablonu tokenu.
 
-## <a name="burnable-b"></a>Burnable (b)
+## <a name="burnable-b"></a>Vypálitelné (b)
 
-Ability to remove the tokens from supply.
+Schopnost odebrat tokeny ze zdroje.
 
-For example, when you redeem online credit card points for a gift card, the credit card points are burned.
+Například při uplatnění online platebních karet pro dárkovou kartu jsou vypáleny body platební karty.
 
-## <a name="delegable-g"></a>Delegable (g)
+## <a name="delegable-g"></a>Možností delegování (g)
 
-Ability to delegate the actions taken on the token that you own.
+Schopnost delegovat akce provedené na tokenu, který vlastníte.
 
-The delegate can perform actions as the owner of the token. For example, you could use a delegable token to implement a vote. A delegable token allows the vote token owner to have someone else vote on their behalf.
+Delegát může provádět akce jako vlastník tokenu. Můžete například použít token možností delegování k implementaci hlasování. Token možností delegování umožňuje vlastníkovi hlasovacího tokenu, aby jeho jménem měl hlasovacího práva někoho jiného.
 
 ## <a name="logable-l"></a>Logable (l)
 
-Ability to log.
+Možnost přihlásit se.
 
-For example, you can issue a logable token for a movie distribution to each theater showing a specific movie. For the movie to be played, the showing must log a transaction for each showing because royalty payouts are per showing during the movie's release run. The actors build can use the movie tokens to validate payouts per movie showing per theater in the distribution.
+Například můžete vystavit token logable pro distribuci filmu na každé kino ukazující konkrétní video. Aby se film mohl přehrát, musí se v zobrazení zaznamenat transakce pro každý z nich, protože výběry s licenčními poplatky jsou na základě toho, jak se v průběhu vydaných verzí videa zobrazují. Sestavení Actors může používat filmové tokeny k ověření vydaných výběrů na film ukazující v rozdělení na kino.
 
-## <a name="mint-able-m"></a>Mint-able (m)
+## <a name="mint-able-m"></a>Mentolová – možné (m)
 
-Ability to mint additional tokens for the token class. The minter role includes the mintable behavior.
+Možnost mentolová další tokeny pro třídu tokenu. Role Minter zahrnuje chování mintable.
 
-For example, a retail company, which wants to implement a loyalty program can use mintable tokens for their loyalty program. They can mint additional loyalty points for their customers as their customer base grows.  
+Například maloobchodní společnost, která chce implementovat věrnostní program, může pro svůj věrnostní program použít tokeny mintable. Můžou mentolová další věrnostní body pro zákazníky, když se jejich základna zákazník rozroste.  
 
-## <a name="non-subdividable-or-whole-d"></a>Non-subdividable or whole (~d)
+## <a name="non-subdividable-or-whole-d"></a>Nerozdělitelné nebo celé (~ d)
 
-Restriction to prevent a token from being divided into smaller parts.
+Omezení zabraňující rozdělení tokenu na menší části.
 
-For example, a single art painting cannot be subdivided into multiple smaller parts. 
+Například vykreslování jednoho obrázku nelze rozdělit na více menších částí. 
 
-## <a name="non-transferable-t"></a>Non-transferable (~t)
+## <a name="non-transferable-t"></a>Bez přenosu (~ t)
 
-Restriction to prevent a change of ownership from the initial token owner.
+Omezení zabraňující změně vlastnictví od vlastníka počátečního tokenu.
 
-For example, a university diploma is a non-transferable token. Once a diploma is given to a graduate, it cannot be transferred from the graduate to another person.
+Například diplom z univerzity je nepřevoditelný token. Jakmile se diplom dostaná k promoci, nedá se přenést z dopravení na jinou osobu.
 
-## <a name="roles-r"></a>Roles (r)
+## <a name="roles-r"></a>Role (r)
 
-Ability to define roles within the token template class for specific behaviors.
+Možnost definovat role v rámci třídy šablony tokenu pro konkrétní chování.
 
-You can provide a list of role names that a token supports at the token creation time. When roles are specified, the user can assign roles to these behaviors. Currently, only the minter role is supported.
+Můžete zadat seznam názvů rolí, které token podporuje v době vytváření tokenu. Při zadání rolí může uživatel přiřadit role k tomuto chování. V současné době je podporována pouze role Minter.
 
 ## <a name="singleton-s"></a>Singleton (s)
 
-Restriction to allow a supply of one token.
+Omezení umožňující poskytnout jeden token.
 
-For example, a museum artifact is a singleton token. Museum artifacts are unique. A token representing an artifact only has a single item in the supply.
+Například artefakt Museum je token typu singleton. Artefakty Museum jsou jedinečné. Token představující artefakt má pouze jednu položku v rámci dodávek.
 
-## <a name="subdividable-d"></a>Subdividable (d)
+## <a name="subdividable-d"></a>Rozdělitelné (d)
 
-Ability to divide a token into smaller parts.
+Schopnost rozdělit token na menší části.
 
-For example, a dollar can be subdivided into cents.
+Například dolar může být rozdělen na centy.
 
-## <a name="transferable-t"></a>Transferable (t)
+## <a name="transferable-t"></a>Přenosná (t)
 
-Ability to transfer ownership of the token.
+Schopnost přenášet vlastnictví tokenu.
 
-For example, a property title is a transferable token, which can be transferred from one person to another when the property is sold.
+Například název vlastnosti je převoditelný token, který lze přenést z jedné osoby do druhé při prodeji vlastnosti.
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn about [Azure Blockchain Tokens account management](account-management.md).
+Přečtěte si o [správě účtů tokenů Azure blockchain](account-management.md).

@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Use quickstart templates
-description: Learn how to use Azure Quickstart templates to complete your template development.
+title: Kurz – použití šablon pro rychlý Start
+description: Naučte se používat šablony Azure pro rychlý Start k dokončení vývoje šablon.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,56 +12,56 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74405948"
 ---
-# <a name="tutorial-use-azure-quickstart-templates"></a>Tutorial: Use Azure Quickstart templates
+# <a name="tutorial-use-azure-quickstart-templates"></a>Kurz: použití šablon Azure pro rychlý Start
 
-[Azure Quickstart templates](https://azure.microsoft.com/resources/templates/) is a repository of community contributed templates. You can use the sample templates in your template development. In this tutorial, you find a website resource definition, and add it to your own template. It takes about **12 minutes** to complete.
+[Šablony Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/) jsou úložištěm, které vám poskytla komunita. Můžete použít ukázkové šablony pro vývoj šablon. V tomto kurzu najdete definici prostředků webu a přidáte ji do své vlastní šablony. Dokončení trvá přibližně **12 minut** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-We recommend that you complete the [tutorial about exported templates](template-tutorial-export-template.md), but it's not required.
+Doporučujeme, abyste dokončili [kurz týkající se exportovaných šablon](template-tutorial-export-template.md), ale není to nutné.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Zkontrolovat šablonu
 
-At the end of the previous tutorial, your template had the following JSON:
+Na konci předchozího kurzu má vaše šablona následující JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json)]
 
-This template works for deploying storage accounts and app service plans, but you might want to add a website to it. You can use pre-built templates to quickly discover the JSON required for deploying a resource.
+Tato šablona funguje pro nasazení účtů úložiště a plánů služby App Service, ale můžete chtít do ní přidat web. Předem připravené šablony můžete použít k rychlému zjištění formátu JSON, který je potřeba k nasazení prostředku.
 
-## <a name="find-template"></a>Find template
+## <a name="find-template"></a>Najít šablonu
 
-1. Open [Azure Quickstart templates](https://azure.microsoft.com/resources/templates/)
-1. In **Search**, enter **deploy linux web app**.
-1. Select the one with the title **Deploy a basic Linux web app**. If you have trouble finding it, here's the [direct link](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
-1. Select **Browse on GitHub**.
-1. Select **azuredeploy.json**.
-1. Review the template. In particular, look for the `Microsoft.Web/sites` resource.
+1. Otevření [šablon pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
+1. Do **Hledat**zadejte **nasazení webové aplikace Linux**.
+1. Vyberte jeden s nadpisem **nasazení základní webové aplikace pro Linux**. Pokud máte potíže s jeho hledáním, tady je [přímý odkaz](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
+1. Vyberte **Procházet na GitHubu**.
+1. Vyberte **azuredeploy. JSON**.
+1. Zkontrolujte šablonu. Zejména vyhledejte prostředek `Microsoft.Web/sites`.
 
-    ![Resource Manager template quickstart web site](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
+    ![Web rychlý Start pro šablonu Správce prostředků](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
 
-## <a name="revise-existing-template"></a>Revise existing template
+## <a name="revise-existing-template"></a>Revidovat existující šablonu
 
-Merge the quickstart template with the existing template:
+Sloučit šablonu pro rychlý Start se stávající šablonou:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json?range=1-108&highlight=32-45,49,85-100)]
 
-The web app name needs to be unique across Azure. To prevent having duplicate names, the **webAppPortalName** variable has been updated from **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** to **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"** .
+Název webové aplikace musí být v rámci Azure jedinečný. Aby nedocházelo k duplicitním názvům, byla proměnná **webAppPortalName** aktualizována z **"webAppPortalName": "[Concat (Parameters (' webAppName '), '-WebApp ')]"** na **"webAppPortalName": "[Concat (Parameters (' webAppName '), uniqueString (resourceName (). ID))]"** .
 
-Add a comma at the end of the `Microsoft.Web/serverfarms` definition to separate the resource definition from the `Microsoft.Web/sites` definition.
+Přidejte čárku na konec definice `Microsoft.Web/serverfarms` a oddělte definici prostředků od definice `Microsoft.Web/sites`.
 
-There are a couple of important features to note in this new resource.
+V tomto novém prostředku si můžete všimnout několika důležitých funkcí.
 
-You'll notice it has an element named **dependsOn** that is set to the app service plan. This setting is required because the app service plan must exist before the web app is created. The **dependsOn** element tells Resource Manager how to order the resources for deployment.
+Všimněte si, že má element s názvem **dependsOn** , který je nastavený na plán služby App Service. Toto nastavení se vyžaduje, protože plán služby App Service musí existovat před vytvořením webové aplikace. Element **dependsOn** oznamuje správce prostředků, jak objednat prostředky pro nasazení.
 
-The **serverFarmId** property uses the [resourceId](resource-group-template-functions-resource.md#resourceid) function. This function gets the unique identifier for a resource. In this case, it gets the unique identifier for the app service plan. The web app is associated with one specific app service plan.
+Vlastnost **serverFarmId** používá funkci [ResourceID](resource-group-template-functions-resource.md#resourceid) . Tato funkce získá jedinečný identifikátor prostředku. V tomto případě získá jedinečný identifikátor plánu služby App Service. Webová aplikace je přidružená k jednomu konkrétnímu plánu služby App Service.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-Use either Azure CLI or Azure PowerShell to deploy a template.
+K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -89,9 +89,9 @@ az group deployment create \
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
 
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
@@ -100,7 +100,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Další kroky
 
-You learned how to use a quickstart template for your template development. In the next tutorial, you add tags to the resources.
+Zjistili jste, jak používat šablonu pro rychlý Start pro vývoj šablon. V dalším kurzu přidáte do prostředků značky.
 
 > [!div class="nextstepaction"]
-> [Add tags](template-tutorial-add-tags.md)
+> [Přidat značky](template-tutorial-add-tags.md)

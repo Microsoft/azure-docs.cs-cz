@@ -1,6 +1,6 @@
 ---
-title: Manage IoT Central from Azure PowerShell | Microsoft Docs
-description: This article describes how to create and manage your IoT Central applications from Azure PowerShell.
+title: Spravovat IoT Central z Azure PowerShell | Microsoft Docs
+description: Tento článek popisuje, jak vytvořit a spravovat vaše aplikace IoT Central z Azure PowerShell.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -19,25 +19,25 @@ ms.locfileid: "74480279"
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-Instead of creating and managing IoT Central applications on the [Azure IoT Central application manager](https://aka.ms/iotcentral) website, you can use [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) to manage your applications.
+Místo vytváření a správy aplikací IoT Central na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) můžete ke správě aplikací použít [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-If you prefer to run Azure PowerShell on your local machine, see [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps). When you run Azure PowerShell locally, use the **Connect-AzAccount** cmdlet to sign in to Azure before you try the cmdlets in this article.
+Pokud dáváte přednost spuštění Azure PowerShell na místním počítači, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Když spustíte Azure PowerShell místně, přihlaste se k Azure pomocí rutiny **Connect-AzAccount** , než se pokusíte rutiny v tomto článku vyzkoušet.
 
-## <a name="install-the-iot-central-module"></a>Install the IoT Central module
+## <a name="install-the-iot-central-module"></a>Instalace modulu IoT Central
 
-Run the following command to check the [IoT Central module](https://docs.microsoft.com/powershell/module/az.iotcentral/) is installed in your PowerShell environment:
+Spuštěním následujícího příkazu ověřte, že je v prostředí PowerShellu nainstalovaný [modul IoT Central](https://docs.microsoft.com/powershell/module/az.iotcentral/) :
 
 ```powershell
 Get-InstalledModule -name Az.I*
 ```
 
-If the list of installed modules doesn't include **Az.IotCentral**, run the following command:
+Pokud seznam nainstalovaných modulů neobsahuje **AZ. IotCentral**, spusťte následující příkaz:
 
 ```powershell
 Install-Module Az.IotCentral
@@ -45,7 +45,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Use the [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) cmdlet to create an IoT Central application in your Azure subscription. Například:
+Pomocí rutiny [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Příklad:
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -61,54 +61,54 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-The script first creates a resource group in the east US location for the application. The following table describes the parameters used with the **New-AzIotCentralApp** command:
+Skript nejprve vytvoří skupinu prostředků v umístění východní USA pro danou aplikaci. Následující tabulka popisuje parametry, které se používají v příkazu **New-AzIotCentralApp** :
 
 |Parametr         |Popis |
 |------------------|------------|
-|ResourceGroupName |The resource group that contains the application. This resource group must already exist in your subscription. |
-|Umístění |By default, this cmdlet uses the location from the resource group. Currently, you can create an IoT Central application in the **United States**, **Australia**, **Asia Pacific**, or in the **Europe** locations.  |
-|Name (Název)              |The name of the application in the Azure portal. |
-|Subdomain         |The subdomain in the URL of the application. In the example, the application URL is https://mysubdomain.azureiotcentral.com. |
-|SKU               |Currently, the only value is **S1** (standard tier). See [Azure IoT Central pricing](https://azure.microsoft.com/pricing/details/iot-central/). |
-|Šablona          | The application template to use. For more information, see the following table: |
-|DisplayName       |The name of the application as displayed in the UI. |
+|ResourceGroupName |Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
+|Umístění |Ve výchozím nastavení používá tato rutina umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v **USA**, **Austrálii**, **Asie a Tichomoří**nebo v **Evropě** .  |
+|Název              |Název aplikace v Azure Portal. |
+|subdomény         |Subdoména v adrese URL aplikace V příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
+|Skladová jednotka (SKU)               |V současné době jediná hodnota je **S1** (úroveň Standard). Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
+|Šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce: |
+|DisplayName       |Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
 
-**Application templates with generally available features**
+**Šablony aplikací s všeobecně dostupnými funkcemi**
 
 | Název šablony            | Popis |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
 | iotc-demo@1.0.0          | Vytvoří aplikaci, která zahrnuje již vytvořenou šablonu zařízení pro chladící prodejní automat. Pomocí této šablony můžete začít zkoumat Azure IoT Central. |
-| iotc-devkit-sample@1.0.0 | Vytvoří aplikaci s připravenými šablonami zařízení pro připojení zařízení MXChip nebo Raspberry Pi. Use this template if you're a device developer experimenting with any of these devices. |
+| iotc-devkit-sample@1.0.0 | Vytvoří aplikaci s připravenými šablonami zařízení pro připojení zařízení MXChip nebo Raspberry Pi. Tuto šablonu použijte, pokud jste vývojář zařízení experimentovat s některým z těchto zařízení. |
 
 
-**Application templates with public preview features**
+**Šablony aplikací s funkcemi veřejné verze Preview**
 
 | Název šablony            | Popis |
 | ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | Creates an empty plug and play preview application for you to populate with your own device templates and devices. |
-| iotc-condition@1.0.0     | Creates an application with a in-store analytics – condition monitoring template. Use this template to connect and monitor store environment. |
-| iotc-consumption@1.0.0   | Creates an application with water consumption monitoring template. Use this template to monitor and control water flow. |
-| iotc-distribution@1.0.0  | Creates an application with a Digital distribution template. Use this template to improve warehouse output efficiency by digitalizing key assets and actions. |
-| iotc-inventory@1.0.0     | Creates an application with a smart inventory management template. Use this template to automate receiving, product movement, cycle counting, and tracking of sensors. |
-| iotc-logistics@1.0.0     | Creates an application with a Connected logistics template. Use this template to track your shipment in real-time across air, water and land with location and condition monitoring. |
-| iotc-meter@1.0.0         | Creates an application with smart meter monitoring template. Use this template to monitor energy consumption, network status, and identify trends to improve customer support and smart meter management.  |
-| iotc-patient@1.0.0       | Creates an application with continuous patient monitoring template. Use this template to extend patient care, re-admissions, and manage diseases. |
-| iotc-power@1.0.0         | Creates an application with solar panel monitoring template. Use this template to monitor solar panel status, energy generation trends. |
-| iotc-quality@1.0.0       | Creates an application with water quality monitoring template. Use this template to digitally monitor water quality.|
-| iotc-store@1.0.0         | Creates an application with a in-store analytics – checkout template. Use this template to monitor and manage the checkout flow inside your store. |
-| iotc-waste@1.0.0         | Creates an application with a Connected waste management template. Use this template to monitor waste bins and dispatch field operators. |
+| iotc-pnp-preview@1.0.0   | Vytvoří prázdnou aplikaci typu Plug and Play Preview, která vám umožní naplnit vlastní šablony zařízení a zařízení. |
+| iotc-condition@1.0.0     | Vytvoří aplikaci s analytickou šablonou monitorování podmínek in-Store. Pomocí této šablony můžete připojit a monitorovat prostředí úložiště. |
+| iotc-consumption@1.0.0   | Vytvoří aplikaci s šablonou monitorování spotřeby vody. Pomocí této šablony můžete monitorovat a řídit tok vody. |
+| iotc-distribution@1.0.0  | Vytvoří aplikaci s šablonou digitální distribuce. Pomocí této šablony můžete zvýšit efektivitu výstupu datového skladu tím, že digitalizing klíče a akce. |
+| iotc-inventory@1.0.0     | Vytvoří aplikaci se šablonou správy inteligentního inventáře. Pomocí této šablony můžete automatizovat příjem, pohyb produktů, počítání cyklů a sledování senzorů. |
+| iotc-logistics@1.0.0     | Vytvoří aplikaci s připojenou logistickou šablonou. Pomocí této šablony můžete sledovat svou dodávku v reálném čase napříč vzduchem, vodou a půdou pomocí monitorování polohy a stavu. |
+| iotc-meter@1.0.0         | Vytvoří aplikaci se šablonou monitorování inteligentního měření. Pomocí této šablony můžete monitorovat spotřebu energie, stav sítě a identifikovat trendy pro zlepšení zákaznické podpory a správy inteligentních měřičů.  |
+| iotc-patient@1.0.0       | Vytvoří aplikaci se šablonou monitorování nepřetržitého pacienta. Tato šablona slouží k prodloužení péče o pacienty, opětovném přístupu a správě nemocí. |
+| iotc-power@1.0.0         | Vytvoří aplikaci s šablonou monitorování na panelu slunečního příplatku. Pomocí této šablony můžete monitorovat stav panelu slunečního vývoje, trendy v oblasti generování energie. |
+| iotc-quality@1.0.0       | Vytvoří aplikaci se šablonou monitorování kvality vody. Pomocí této šablony můžete digitálně monitorovat kvalitu vody.|
+| iotc-store@1.0.0         | Vytvoří aplikaci se šablonou pro rezervaci in-Store –. Pomocí této šablony můžete monitorovat a spravovat tok rezervací v rámci svého obchodu. |
+| iotc-waste@1.0.0         | Vytvoří aplikaci s propojenou šablonou správy odpadu. Tuto šablonu použijte k monitorování odpadkových přihrádek a operátorů polí dispatch. |
 
 > [!NOTE]
-> The preview application templates are currently only available in the **Europe** and **United States** locations.
+> Šablony aplikace ve verzi Preview jsou v tuto chvíli dostupné jenom v oblastech **Evropa** a **USA** .
 
-## <a name="view-your-iot-central-applications"></a>View your IoT Central applications
+## <a name="view-your-iot-central-applications"></a>Zobrazení aplikací IoT Central
 
-Use the [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp) cmdlet to list your IoT Central applications and view metadata.
+Pomocí rutiny [Get-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Get-AzIotCentralApp) můžete zobrazit seznam aplikací IoT Central a zobrazovat metadata.
 
-## <a name="modify-an-application"></a>Modify an application
+## <a name="modify-an-application"></a>Úprava aplikace
 
-Use the [Set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) cmdlet to update the metadata of an IoT Central application. For example, to change the display name of your application:
+Pomocí rutiny [set-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) aktualizujte metadata aplikace IoT Central. Například pro změnu zobrazovaného názvu vaší aplikace:
 
 ```powershell
 Set-AzIotCentralApp -Name "myiotcentralapp" `
@@ -118,7 +118,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>Odebrání aplikace
 
-Use the [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) cmdlet to delete an IoT Central application. Například:
+K odstranění aplikace IoT Central použijte rutinu [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) . Příklad:
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
@@ -127,7 +127,7 @@ Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 
 ## <a name="next-steps"></a>Další kroky
 
-Now that you've learned how to manage Azure IoT Central applications from Azure PowerShell, here is the suggested next step:
+Teď, když jste se naučili, jak spravovat aplikace Azure IoT Central z Azure PowerShell, je tady doporučený další krok:
 
 > [!div class="nextstepaction"]
-> [Administer your application](howto-administer.md)
+> [Správa aplikace](howto-administer.md)

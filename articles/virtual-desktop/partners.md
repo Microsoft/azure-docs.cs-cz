@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop partner integrations - Azure
-description: Learn about Windows Virtual Desktop's partners and access documentation about how to integrate with them.
+title: Integrace partnerů virtuálních počítačů s Windows – Azure
+description: Přečtěte si o partnerech virtuálních počítačů s Windows a dokumentaci k nim o tom, jak s nimi integrovat.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -14,218 +14,218 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384305"
 ---
-# <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop partner integrations
+# <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
-This article lists partners of Windows Virtual Desktop.
+V tomto článku jsou uvedeni partneři virtuálního klienta Windows.
 
 ## <a name="citrix"></a>Citrix
 
-![Citrix logo](./media/partners/citrix.png)
+![Logo Citrix](./media/partners/citrix.png)
 
-Citrix is an approved provider that offers enterprises centralized hybrid management of virtual apps and desktops workloads in Azure, side by side with on-premises deployments. Citrix Workspace with the Virtual Apps and Desktops service allows users to access apps and desktops from any device, leveraging the advanced Citrix HDX protocol to deliver a high definition experience from anywhere.
+Citrix je schváleným poskytovatelem, který nabízí podnikům centralizovanou hybridní správu virtuálních aplikací a úloh stolních počítačů v Azure vedle sebe s místními nasazeními. Pracovní prostor Citrix s virtuálními aplikacemi a pracovními plochami umožňuje uživatelům přístup k aplikacím a plochám z libovolného zařízení, který využívá pokročilý protokol Citrix HDX k poskytování možností vysokého rozsahu z libovolného místa.
 
-Citrix extends the value of Windows Virtual Desktop with robust enterprise tools to improve user density and performance, provision workloads on demand, and simplify image and application management. IT can optimize costs with intelligent scaling tools, while delivering an incredible user experience that's field-tested against the toughest applications across industries. Additionally, Citrix Managed Desktops is a Windows Virtual Desktop-enabled desktops-as-a-service program that provides a simple, cloud-based management solution for delivering virtual apps and desktops to any device.
+Citrix rozšiřuje hodnotu virtuální plochy Windows pomocí robustních podnikových nástrojů, aby vylepšila hustotu a výkon uživatelů, zřídila zatížení na vyžádání a zjednodušila správu obrázků a aplikací. Může optimalizovat náklady pomocí nástrojů inteligentního škálování a zároveň doručovat nenáročné uživatelské prostředí, které je testováno proti nejpohodlnější aplikaci v rámci odvětví. Spravované desktopy Citrix navíc představují desktopový program s podporou virtuálních počítačů s Windows, který poskytuje jednoduché cloudové řešení správy pro doručování virtuálních aplikací a stolních počítačů do libovolného zařízení.
 
-- [Go to the partner website](https://more.citrix.com/wvd).
+- [Přejít na web partnera](https://more.citrix.com/wvd).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
-![Cloudhouse logo](./media/partners/cloudhouse.png)
+![Logo Cloudhouse](./media/partners/cloudhouse.png)
 
-Cloudhouse is a Windows Virtual Desktop value-added services provider that offers customers a turnkey application migration service that can move all applications, including ones that are incompatible with modern Windows operating systems, to the Windows Virtual Desktop environment, allowing customers to truly leverage multi-session Windows 10. 
+Cloudhouse je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který nabízí zákazníkům službu migrace aplikací klíč, která může přesunout všechny aplikace, včetně těch, které jsou nekompatibilní s moderními operačními systémy Windows, do Windows. Prostředí virtuálního počítače, které zákazníkům umožňuje skutečně využívat Windows 10 s více relacemi. 
 
-By leveraging proven Cloudhouse containerization technology, the Cloudhouse service takes all applications, including ones designed for Windows XP, Windows 7, or Windows 8, and deploys them to a modern Windows Virtual Desktop without needing to change code or impact user experience. Cloudhouse further adds to the value of Windows Virtual Desktop by isolating applications from the underlying operating system, allowing Windows Servicing updates to be rolled out without affecting the containerized application. 
+Díky využití osvědčené technologie Cloudhouseování kontejnerů služba Cloudhouse přebírá všechny aplikace, včetně těch, které jsou určené pro Windows XP, Windows 7 nebo Windows 8, a nasadí je na moderní virtuální počítače s Windows, aniž by museli měnit kód nebo dopad na činnost koncového uživatele. Cloudhouse dále přičítá k hodnotě virtuálního klienta Windows izolací aplikací z podkladového operačního systému, což umožňuje zavádět aktualizace údržby Windows beze změny, aniž by to ovlivnilo kontejnerové aplikace. 
 
-- [Go to the partner website](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
+- [Přejít na web partnera](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
 ## <a name="vmware"></a>VMware
 
-![VMware Logo](./media/partners/vmware.png)
+![Logo VMware](./media/partners/vmware.png)
 
-VMware Horizon Cloud on Microsoft Azure gives organizations the ability to connect their own instance of Microsoft Azure to the simple, intuitive Horizon Cloud control plane, creating a secure, comprehensive, cloud-hosted solution for delivering virtualized Windows applications and desktops. With the release of Windows Virtual Desktop, VMware has partnered with Microsoft to extend the functionality of Windows Virtual Desktop to customers using Horizon Cloud on Microsoft Azure. This functionality will be available in Tech Preview by the end of 2019.
+VMware Horizon Cloud v Microsoft Azure poskytuje organizacím možnost připojit svou vlastní instanci Microsoft Azure k jednoduché a intuitivní rovině řídicího cloudového řízení a vytvořit zabezpečené a komplexní řešení hostované v cloudu pro zajištění virtualizovaného prostředí. Aplikace a plochy systému Windows. S vydáním virtuálního počítače s Windows se společnost VMware spolupracuje s Microsoftem, aby rozšířila funkce virtuálních klientů Windows na zákazníky využívajících Horizontal Cloud v Microsoft Azure. Tato funkce bude k dispozici ve verzi Tech Preview po konci 2019.
  
-As an approved provider, the benefits of Windows Virtual Desktop will be extended to VMware Horizon Cloud on Microsoft Azure customers, including Windows 10 Enterprise for multi-session, Windows 7 with free Extended Security Updates for up to three years, and FSLogix. Additionally, customers will receive the enterprise-class features of Horizon Cloud, such as broad endpoint support; global, cloud-optimized brokering; flexible desktop options and configurations; user-environment management; and support for hybrid environments.
+V rámci schváleného poskytovatele se výhody virtuálního klienta Windows rozšíří na Cloud VMware Horizon na Microsoft Azure zákazníky, včetně Windows 10 Enterprise pro více relací, Windows 7 s bezplatné rozšířené aktualizace zabezpečení až pro tři roky a FSLogix. Kromě toho zákazníci získají funkce cloudového cloudu na podnikové úrovni, jako je široká podpora koncových bodů. globální cloudově optimalizované zprostředkovatele; flexibilní možnosti a konfigurace desktopu; Správa uživatelského prostředí; a podpora hybridních prostředí.
 
-- [Register for the Tech Preview of Horizon Cloud on Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
-- [Go to the partner website](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+- [Zaregistrujte se na verzi pro cloudovou verzi Horizontal Preview na Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+- [Přejít na web partnera](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
 
 ## <a name="cloudjumper"></a>CloudJumper
 
-![CloudJumper Logo](./media/partners/cloudjumper.png)
+![Logo CloudJumper](./media/partners/cloudjumper.png)
 
-CloudJumper is a Windows Virtual Desktop value-added services provider that equips solution providers and enterprise IT with software to  provision and manage Windows Virtual Desktop environments holistically. With CloudJumper software, IT can manage every layer of a Windows Virtual Desktop deployment. Delivery of workloads and applications is automated, ensuring that users can quickly access their desktop anywhere on any device.
+CloudJumper je poskytovatel služeb s přidanými hodnotami pro virtuální počítače s Windows, který vybaví poskytovatele řešení a podnik IT se softwarem pro zřizování a správu prostředí virtuálních ploch Windows komplexní. Pomocí CloudJumper softwaru může spravovat každou vrstvu nasazení virtuálních klientů Windows. Doručování úloh a aplikací je automatizované, což zajišťuje, aby uživatelé mohli rychle získat přístup k jejich ploše kdekoli na jakémkoli zařízení.
 
-CloudJumper’s software, Cloud Workspace Management Suite extends the value of Windows Virtual Desktop by simplifying deployment and ongoing administration tasks in Azure. From a single pane of glass, IT can provision, manage, and optimize infrastructure for user workspaces. CloudJumper’s Simple Script Triggering Engine integrates with IT service platforms to automate tasks involved in provisioning Windows Virtual Desktop. Additionally, CloudJumper APIs allow further extensibility and integration with other enterprise systems like ServiceNow and BMC Ready.
+CloudJumper software, sada cloudových pracovních prostorových aplikací rozšiřuje hodnotu virtuálních klientů Windows tím, že zjednodušuje úlohy nasazení a průběžné správy v Azure. Z jednoho podokna ze skla může zřídit, spravovat a optimalizovat infrastrukturu pro pracovní prostory uživatelů. CloudJumper je jednoduchý skript spouštějící modul, který se integruje s platformami služeb IT za účelem automatizace úloh zapojených do zřizování virtuálních klientů Windows. Kromě toho rozhraní API CloudJumper umožňují další rozšiřitelnost a integraci s jinými podnikovými systémy, jako je ServiceNow a BMC připravené.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
-- [Go to the partner website](https://cloudjumper.com/wvd/).
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
+- [Přejít na web partnera](https://cloudjumper.com/wvd/).
 
 ## <a name="controlup"></a>ControlUp
 
-![ControlUp Logo](./media/partners/controlup.png)
+![Logo ControlUp](./media/partners/controlup.png)
 
-ControlUp is a Windows Virtual Desktop value-added services provider that enables IT teams to monitor, troubleshoot, analyze, and directly remediate problems in their on-premises, hybrid cloud, and cloud infrastructure in real time from a single console. ControlUp’s analytics and management platform also allows IT to proactively automate fixes for a rapidly growing set of use cases.
+ControlUp je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který umožňuje týmům IT v reálném čase monitorovat, řešit, analyzovat a napravovat problémy v místních, hybridních cloudových a cloudových infrastruktuře v reálném čase z jediné konzoly. Analytická a řídicí platforma ControlUp také umožňuje proaktivní automatizaci oprav pro rychle rostoucí sadu případů použití.
 
-When used with Windows Virtual Desktop, ControlUp provides additional capabilities to optimize Windows Virtual Desktop environments and the end-user experience. From the ControlUp console, IT gets end-user environment visibility to effectively monitor and troubleshoot performance issues. An intuitive dashboard provides insights and analytics for virtual desktop deployments, as well as options for automated reporting enriched with community benchmarks. ControlUp can manage multiple data sources and types, organizing them in high-performance data sets aggregated across compute, storage, and Windows Virtual Desktop infrastructure, allowing granular visibility from a single pane of glass.
+Při použití s virtuálním počítačem s Windows poskytuje ControlUp další možnosti pro optimalizaci prostředí virtuálních počítačů s Windows a prostředí koncových uživatelů. Z konzoly ControlUp získá přehled prostředí koncových uživatelů a efektivně monitoruje a řeší problémy s výkonem. Intuitivní řídicí panel poskytuje přehledy a analýzy pro nasazení virtuálních ploch a také možnosti pro automatizované generování sestav obohacených pomocí srovnávacích standardů komunity. ControlUp může spravovat více zdrojů dat a typů a organizovat je do vysoce výkonných datových sad agregovaných napříč výpočetními, úložnými a virtuálními infrastrukturami virtuálních počítačů s Windows a umožňuje tak detailní viditelnost z jednoho podokna skla.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
-- [Go to the partner website](https://www.controlup.com/solutions/ms_wvd/).
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [Přejít na web partnera](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="devicetrust"></a>deviceTRUST
 
-![deviceTRUST Logo](./media/partners/devicetrust.png)
+![Logo deviceTRUST](./media/partners/devicetrust.png)
 
-deviceTRUST is a Windows Virtual Desktop value-added services provider that contextualizes the corporate enterprise. It allows users the freedom to access their Windows Virtual Desktop from any location, on any device, over any network, while giving IT departments the information and control they need to meet their governance requirements. 
+deviceTRUST je poskytovatel služeb s hodnotou "Windows Virtual Desktop-added", který contextualizes podnikovou firmu. Umožňuje uživatelům volnost přístupu ke svému virtuálnímu počítači s Windows z libovolného místa na jakémkoli zařízení, přes jakoukoli síť a zároveň jim poskytnout informace a kontrolu, které potřebují ke splnění svých požadavků na zásady správného řízení. 
 
-deviceTRUST extends the value of Windows Virtual Desktop with their contextual security technology. deviceTRUST enables conditional access for a secure Windows Virtual Desktop access, conditional application access within Windows Virtual Desktop and to apply conditional Windows Virtual Desktop policies without any additional infrastructure. Using deviceTRUST enables a mobile, flexible workspace that meets all security, compliance, and regulatory requirements. 
+deviceTRUST rozšiřuje hodnotu virtuálního klienta Windows s jejich kontextovou technologií zabezpečení. deviceTRUST umožňuje podmíněný přístup pro zabezpečený přístup k virtuálním plochám Windows, podmíněný přístup k aplikacím v rámci virtuálních ploch Windows a k aplikování podmíněné zásady virtuálních počítačů s Windows bez jakékoli další infrastruktury. Použití deviceTRUST umožňuje mobilní a flexibilní pracovní prostor, který splňuje všechny požadavky na zabezpečení, dodržování předpisů a předpisy. 
 
-- [Go to the partner website](https://devicetrust.com/wvd).
+- [Přejít na web partnera](https://devicetrust.com/wvd).
 
 ## <a name="igel"></a>IGEL
 
-![IGEL logo](./media/partners/igel.png)
+![Logo IGEL](./media/partners/igel.png)
 
-IGEL is an approved and verified partner of Microsoft Azure and Windows Virtual Desktop services. IGEL offers IGEL OS, the next-gen edge OS for cloud workspaces designed to access virtual apps, desktops, and cloud workspaces from one or more user devices with a lightweight, simple, and secure Linux-based endpoint. A platform-independent software solution, IGEL OS and its server-based management and control software, IGEL Universal Management Suite (UMS), comprise an endpoint management and control solution that frees enterprises to take full advantage of Azure-based cloud instances and Windows Virtual Desktop desktops, including economical multi-session Windows Virtual Desktop, while reducing endpoint hardware and endpoint device management and operations costs.
+IGEL je schválený a ověřený partner služby Microsoft Azure a Windows Virtual Desktop. IGEL nabízí IGEL operační systém, což je další – gen hraniční operační systém pro cloudové pracovní prostory, které slouží k přístupu k virtuálním aplikacím, plochám a pracovním prostorům cloudu z jednoho nebo několika uživatelských zařízení s odlehčeným, jednoduchým a zabezpečeným koncovým bodem se systémem Linux. Softwarové řešení nezávislé na platformě, IGEL operační systém a jeho serverový software pro správu a řízení, IGEL Universal Management Suite (UMS), tvoří řešení pro správu a řízení koncového bodu, které podnikům uvolňuje plné využití Azure cloudové instance a virtuální desktopové plochy Windows, včetně úsporného virtuálního počítače s Windows pro více relací, při snižování hardwarových a provozních zařízení a nákladů na provoz koncových bodů.
  
-IGEL OS supports all popular virtual apps, desktops, and cloud workspace client protocols from Citrix, Microsoft, and VMware. It includes integrated technologies from 85 peripheral, interface, and protocol partners to help organizations quickly adopt Windows Virtual Desktop services into their own unique user environments. IGEL OS is a read-only, modular endpoint OS, which helps protect it from tampering. It now also includes a complete “chain of trust” that verifies the integrity of all key major processes running on the endpoint, from the endpoint hardware (some selected models) or UEFI process all the way to the Azure cloud and Windows Virtual Desktop services. With IGEL OS, enterprises can subscribe to Windows Virtual Desktop from the Azure cloud with full confidence in the integrity, security, and manageability of their users’ endpoint devices.
+IGEL OS podporuje všechny oblíbené virtuální aplikace, stolní počítače a klientské protokoly v cloudovém pracovním prostoru od Citrix, Microsoftu a VMware. Zahrnuje integrované technologie od partnerů periferních zařízení, rozhraní a protokolů 85, které organizacím umožňují rychle přijímat služby Windows Virtual Desktop Services do vlastních jedinečných uživatelských prostředí. IGEL OS je modulární koncový bod, který je jen pro čtení, který pomáhá chránit před manipulací. Teď také obsahuje úplný "řetězec důvěryhodnosti", který ověřuje integritu všech klíčových hlavních procesů spuštěných v koncovém bodu, od hardwaru koncového bodu (některé vybrané modely) nebo procesu UEFI až po služby Azure Cloud a Windows Virtual Desktop. S operačním systémem IGEL se podniky můžou přihlásit k odběru virtuálního klienta Windows z cloudu Azure s plnou jistotou v rámci integrity, zabezpečení a spravovatelnosti svých zařízení koncových bodů uživatelů.
 
-- [Go to the partner website.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+- [Přejít na web partnera.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
 
 ## <a name="ivanti"></a>Ivanti
 
-![Ivanti Logo](./media/partners/ivanti.png)
+![Logo Ivanti](./media/partners/ivanti.png)
 
-Ivanti User Workspace Manager is a Windows Virtual Desktop value-added service that eases desktop deployment and management by separating user data from the desktop for seamless portability. With Ivanti, users can deliver complex projects like migrating to Windows 10, adopting Office 365, or moving services to the cloud faster. 
+Správce pracovního prostoru uživatele Ivanti je služba s přidanou hodnotou pro virtuální počítače s Windows, která usnadňuje nasazení a správu stolních počítačů oddělením uživatelských dat z plochy pro bezproblémové přenositelnosti. Díky Ivanti můžou uživatelé poskytovat komplexní projekty, jako je migrace na Windows 10, přijímání Office 365 nebo přesouvání služeb do cloudu rychleji. 
 
-When used with Windows Virtual Desktop, Ivanti User Workspace Manager provides simple contextual management of the user desktop experience, eliminating long sign-in times and eradicating group policy nightmares. Ivanti User Workspace Manager out-of-the-box templates simplify installation for users through agents and the existing console. Ivanti User Workspace Manager delivers responsive, secure desktops that users love, saving money on servers, managing users more effectively, and reducing endpoint security risk. 
+Při použití s virtuálním počítačem s Windows Ivanti Správce pracovních prostorů uživatelů poskytuje jednoduchou kontextovou správu možností práce s počítačem, eliminují dlouhé časy přihlášení a eradikace Nightmares zásad skupiny. Předem připravené šablony pro uživatele Ivanti User Workspace zjednodušují instalaci pro uživatele prostřednictvím agentů a stávající konzoly. Správce pracovních prostorů uživatele Ivanti nabízí reagovat, zabezpečené plochy, které uživatelé chtějí, ušetřit peníze na serverech, efektivněji spravovat uživatele a snižovat riziko zabezpečení koncového bodu. 
 
-- [Go to the partner website](https://www.ivanti.com/products/user-workspace-manager).
+- [Přejít na web partnera](https://www.ivanti.com/products/user-workspace-manager).
 
-## <a name="lakeside-software"></a>Lakeside Software
+## <a name="lakeside-software"></a>Lakeside software
 
-![Lakeside Software Logo](./media/partners/lakeside.png)
+![Logo Lakeside softwaru](./media/partners/lakeside.png)
 
-Lakeside Software is a Windows Virtual Desktop value-added services provider that equips IT teams with software for monitoring performance and assessing Azure migration readiness of user workloads. With this software, IT gains clearer visibility into application usage and resource consumption to streamline the migration process. Lakeside Software collects data at every workspace to create a comprehensive report on user environments, enabling quick troubleshooting and optimization of assets.
+Lakeside software je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který vybaví IT týmy pomocí softwaru pro monitorování výkonu a posouzení připravenosti na migraci Azure na úlohy uživatelů. S tímto softwarem se díky tomuto softwaru vylepší přehled o využití aplikací a spotřebě prostředků, aby se proces migrace zjednodušil. Lakeside software shromáždí data v každém pracovním prostoru a vytvoří komplexní sestavu pro uživatelská prostředí, která umožňuje rychlé řešení potíží a optimalizaci assetů.
 
-Lakeside Software’s digital experience monitoring solution, SysTrack, can help provide a great user experience by tracking performance and identifying ideal workloads for migration. SysTrack works to extend the value of Windows Virtual Desktop through right-sizing assessments and continuous monitoring of user environments.
+Řešení monitorování digitálního zážitků v Lakeside softwaru, SysTrack, vám může pomáhat zajistit Skvělé uživatelské prostředí sledováním výkonu a identifikací ideálních úloh pro migraci. SysTrack pracuje na rozšiřování hodnoty virtuálního klienta Windows prostřednictvím hodnocení správné velikosti a nepřetržitého monitorování uživatelských prostředí.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
-- [Go to the partner website](https://www.lakesidesoftware.com/assessments/wvd).
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
+- [Přejít na web partnera](https://www.lakesidesoftware.com/assessments/wvd).
 
 ## <a name="liquidware"></a>Liquidware
 
-![Liquidware Logo](./media/partners/liquidware.png)
+![Logo Liquidware](./media/partners/liquidware.png)
 
-Liquidware is a Windows Virtual Desktop value-added services provider that delivers software that manages and optimizes Windows Virtual Desktop deployment. The Liquidware Essentials suite provides application delivery through layering, user environment management, and key user experience visibility and diagnostics. With solutions for assessing migration readiness and analyzing usage metrics, Liquidware provides a seamless virtual desktop experience for end users.
+Liquidware je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který poskytuje software, který spravuje a optimalizuje nasazení virtuálních klientů Windows. Sada Liquidware Essentials Suite poskytuje doručování aplikací prostřednictvím vrstvení, správy uživatelského prostředí a klíčových viditelnosti a diagnostiky uživatelského prostředí. S řešením pro vyhodnocení připravenosti na migraci a analýzou metriky využití poskytuje Liquidware bezproblémové prostředí virtuálních počítačů pro koncové uživatele.
 
-Liquidware Essentials extends the value of Windows Virtual Desktop by efficiently harvesting user profiles and gathering key user data to streamline migration of user environments to Azure. Additionally, Liquidware Essentials simplifies image management by unifying user profiles and layering apps based on configurable rights management settings.
+Liquidware Essentials rozšiřuje hodnotu virtuálního klienta Windows tím, že efektivně shromažďuje profily uživatelů a shromažďuje klíčová uživatelská data, aby se zjednodušila migrace uživatelských prostředí do Azure. Liquidware Essentials navíc zjednodušuje správu imagí tím, že sjednotí profily uživatelů a vícevrstvé aplikace na základě konfigurovatelného nastavení správy přístupových práv.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
-- [Go to the partner website](https://www.liquidware.com/solutions/solutions-platform/microsoft).
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
+- [Přejít na web partnera](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
-## <a name="login-vsi"></a>Login VSI
+## <a name="login-vsi"></a>Přihlašovací VSI
 
-![Login VSI Logo](./media/partners/loginvsi.png)
+![Logo VSI přihlašovacího jména](./media/partners/loginvsi.png)
 
-Login VSI is a Windows Virtual Desktop value-added services provider and Microsoft partner delivering software for application performance testing in Windows Virtual Desktop environments. Customers moving their on-premises business services to Windows Virtual Desktop use Login VSI Enterprise Edition to evaluate and maintain optimal performance, scalability, and availability of Windows 10  Enterprise multi-session, Windows 10 Enterprise, and Windows 7 enabled with their business critical applications.
+Přihlašovací VSI je poskytovatel služeb s přidanými virtuálními počítači s Windows a poskytuje software pro testování výkonu aplikace v prostředích virtuálních ploch Windows. Zákazníci, kteří přesouvá své místní obchodní služby na virtuální plochu Windows, používají přihlašovací VSI Enterprise Edition k vyhodnocení a údržbě optimálního výkonu, škálovatelnosti a dostupnosti Windows 10 Enterprise multi-session, Windows 10 Enterprise a Systém Windows 7 je povolený s jejich důležitými podnikovými aplikacemi.
 
-- [Go to the partner website](https://www.loginvsi.com).
+- [Přejít na web partnera](https://www.loginvsi.com).
 
 ## <a name="nerdio"></a>Nerdio
 
-![Nerdio Logo](./media/partners/nerdio.png)
+![Logo Nerdio](./media/partners/nerdio.png)
 
-Nerdio is an Azure IT automation platform that makes it easy to deploy and manage Windows Virtual Desktop. Nerdio provides the knowledge and technology to deploy, price, package, manage, and optimize customers’ Azure deployments—with Windows Virtual Desktop front-and-center.
+Nerdio je platforma pro automatizaci IT v Azure, která usnadňuje nasazování a správu virtuálního počítače s Windows. Nerdio poskytuje znalostní báze a technologii pro nasazení, cenách, balení, správu a optimalizaci nasazení Azure pro zákazníky – pomocí front-and-Center pro Windows Virtual Desktop.
 
-Nerdio extends the value of Windows Virtual Desktop by making it easy to provision Azure resources and streamline deployment. With Nerdio for Azure, IT can automatically deploy and manage a complete Azure environment, including Windows Virtual Desktop, in under two hours.
+Nerdio rozšiřuje hodnotu virtuálního klienta Windows tím, že usnadňuje zřizování prostředků Azure a zjednodušení nasazení. S Nerdio pro Azure může v průběhu dvou hodin automaticky nasadit a spravovat kompletní prostředí Azure, včetně virtuálního klienta Windows.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
-- [Go to the partner website](https://getnerdio.com/windows-virtual-desktop/).
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
+- [Přejít na web partnera](https://getnerdio.com/windows-virtual-desktop/).
 
 ## <a name="numecent"></a>Numecent
 
-![Numecent Logo](./media/partners/numecent.png)
+![Logo Numecent](./media/partners/numecent.png)
 
-Numecent is a Windows Virtual Desktop value-added services provider that significantly reduces the total operating costs through rapid onboarding and migration of complicated or incompatible Windows apps in Windows Virtual Desktop environments. Numecent also minimizes the amount of configuration that users need to do, reduces application updates, and simplifies complex processes. Because Numecent Cloudpaging supports more applications seamlessly than any other application delivery tool, it reduces time and IT workloads in environments with a diverse set of applications. 
+Numecent je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který významně snižuje celkové provozní náklady díky rychlé registraci a migraci složitých nebo nekompatibilních aplikací pro Windows v prostředích virtuálních počítačů s Windows. Numecent také minimalizuje množství konfigurace, které uživatelé potřebují, zmenšuje aktualizace aplikací a zjednodušuje složité procesy. Vzhledem k tomu, že Numecent Cloudpaging podporuje více aplikací bez problémů s jakýmkoli jiným nástrojem pro doručování aplikací, zkracuje čas a pracovní zatížení v prostředích s různou sadou aplikací. 
 
-When used with Windows Virtual Desktop, Cloudpaging further reduces costs by completing software asset lifecycle from deployment to upgrading, metering, and removing applications. Cloudpaging simplifies image management by dynamically provisioning apps as needed in real time to the Windows Virtual Desktop deployments. Cloudpaging helps applications run without administration or intervention through the periodic Windows 10 updates. Cloudpaging also reduces the licensing cost of expensive applications by enabling more efficient deployment and usage of these applications. 
+Při použití s virtuálním počítačem s Windows Cloudpaging dále snižuje náklady tím, že v nasazení dokončí životní cyklus softwarového assetu pro upgrade, měření a odebírání aplikací. Cloudpaging zjednodušuje správu imagí tím, že se v reálném čase dynamicky zřídí aplikace podle potřeby pro nasazení virtuálních ploch Windows. Cloudpaging pomáhá aplikacím běžet bez nutnosti správy nebo zásahu prostřednictvím pravidelných aktualizací Windows 10. Cloudpaging také snižuje náklady na náklad na nákladné aplikace tím, že umožňuje efektivnější nasazení a používání těchto aplikací. 
 
-- [Go to the partner website](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+- [Přejít na web partnera](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
 
 ## <a name="policypak"></a>PolicyPak
 
-![PolicyPak Logo](./media/partners/policypak.png)
+![Logo PolicyPak](./media/partners/policypak.png)
 
-PolicyPak Software is a Windows Virtual Desktop partner that performs total settings management for applications, desktop, browsers, Java, and security settings. PolicyPak keeps your desktop, system, and security settings in compliance. PolicyPak enhances the value of Windows Virtual Desktop by adding a suite of components to enhance Windows’ built-in administration. Use your existing Active Directory Group Policy and/or Windows Intune to deliver PolicyPak’s settings and increase administrators’ ability to manage their Windows 10 machines. 
+PolicyPak software je partner s virtuálními počítači s Windows, který provádí celkovou správu nastavení pro aplikace, stolní počítače, prohlížeče, Java a nastavení zabezpečení. PolicyPak zachovává dodržování předpisů pro stolní počítače, systém a zabezpečení. PolicyPak vylepšuje hodnotu virtuální plochy Windows přidáním sady součástí pro vylepšení předdefinované správy Windows. Pomocí stávající služby Active Directory Zásady skupiny a/nebo Windows Intune dodávejte nastavení PolicyPak a zvyšte schopnost správců spravovat jejich počítače s Windows 10. 
 
-The top use cases for PolicyPak are to remove local admin rights and overcome UAC prompts, block Ransomware, manage multiple browsers, manage Internet Explorer’s Enterprise and Compatibility modes, reduce the number of GPOs, manage Windows 10 File Associations, manage Windows 10 Start Menu and Taskbar, and manage Windows 10 Features and Optional features.  
+Hlavní případy použití pro PolicyPak jsou odebrání oprávnění místního správce a překonání výzev pro řízení uživatelských účtů, blokování ransomwarem, Správa více prohlížečů, Správa režimů podnikových a kompatibilních s Internet Explorerem, omezení počtu objektů zásad skupiny, Správa přidružení souborů Windows 10. Spravujte nabídku Start a hlavní panel Windows 10 a spravujte funkce Windows 10 a volitelné funkce.  
 
-- [Go to partner website](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
+- [Přejít na web partnera](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
 
 ## <a name="printerlogic"></a>PrinterLogic
 
-![PrinterLogic Logo](./media/partners/printerlogic.png)
+![Logo PrinterLogic](./media/partners/printerlogic.png)
 
-PrinterLogic is a Windows Virtual Desktop value-added service provider platform that empowers IT professionals to eliminate all print servers and deliver a highly available serverless printing infrastructure. PrinterLogic extends the value of Windows Virtual Desktop and Azure by making it easy to manage centrally and deploy printer objects to any printer or endpoint OS. 
+PrinterLogic je platforma pro poskytovatele služeb s přidanou hodnotou pro virtuální počítače s Windows, která pomáhá odborníkům v oblasti IT eliminovat všechny tiskové servery a doručovat vysoce dostupnou tiskovou infrastrukturu bez serveru. PrinterLogic rozšiřuje hodnotu virtuálních počítačů s Windows a Azure tím, že usnadňuje správu centrálně a nasazují objekty tiskárny na všechny tiskárny nebo operační systémy koncových bodů. 
 
-Available as SaaS or as a web stack in your own private cloud, the PrinterLogic platform ensures users always have the right printers they need in their virtual sessions based on user ID, device name, or location. This functionality is complemented by a full suite of enterprise print management features such as print tracking and reporting, mobile printing, and secure badge release printing. 
+PrinterLogic platforma, která je k dispozici jako SaaS nebo jako webový zásobník ve vlastním privátním cloudu, zajišťuje, aby uživatelé měli vždy správné tiskárny, které potřebují ve svých virtuálních relacích na základě ID uživatele, názvu zařízení nebo umístění. Tato funkce je doplněná celou sadou funkcí správy tiskáren Enterprise, jako je sledování tisku, vytváření sestav, mobilní tisk a tisk přes bezpečnostní vydání. 
 
-- [Go to partner website](https://www.printerlogic.com).
+- [Přejít na web partnera](https://www.printerlogic.com).
 
 ## <a name="printix"></a>Printix
 
-![Printix Logo](./media/partners/printix.png)
+![Logo Printix](./media/partners/printix.png)
 
-Printix is a Windows Virtual Desktop value-added service provider that automates user connection to office printing resources. As the missing piece in your customer Azure migration, Printix is the most cost-effective service available to remove infrastructure and IT tasks associated with supporting and optimizing print workflow for every user, regardless of location.
+Printix je poskytovatel služeb s hodnotou přidaný do virtuálního počítače s Windows, který automatizuje připojení uživatelů k prostředkům pro tisk Office. Jako chybějící část migrace Azure pro zákazníky je Printix nejúčinnější službou dostupnou k odebrání infrastruktury a úkolů IT, které jsou přidružené k podpoře a optimalizaci tiskového pracovního postupu pro každého uživatele bez ohledu na jeho umístění.
 
-Printing is a fundamental task in just about every office and small business environment. In order to take full advantage of Windows Virtual Desktop and provide a great user experience, it's essential to ensure your users can connect to printers with minimum effort and maximum reliability. With Printix, you can get the most out of Windows Virtual Desktop through single sign-on (SSO), silent configuration, regular updates, and continuous monitoring of your print environment.
+Tisk je základní úlohou v rámci každého kancelářského a malého podnikového prostředí. Abyste mohli plně využít výhod virtuálních klientů Windows a zajistit skvělou činnost koncového uživatele, je nutné zajistit, aby se uživatelé mohli připojit k tiskárnám s minimálním úsilím a maximální spolehlivostí. Pomocí Printix můžete využít virtuální plochu Windows na maximum prostřednictvím jednotného přihlašování (SSO), bezobslužné konfigurace, pravidelných aktualizací a nepřetržitého monitorování tiskového prostředí.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [Go to the partner website](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [Stručně si přečtěte společné řešení.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
+- [Přejít na web partnera](https://www.printix.net/printix-for-windows-virtual-desktop)
 
 ## <a name="rdpsoft"></a>RDPSoft
 
-![RDPSoft logo](./media/partners/rdpsoft.png)
+![Logo RDPSoft](./media/partners/rdpsoft.png)
 
-RDPSoft is a Windows Virtual Desktop partner that provides powerful and inexpensive monitoring, management, and reporting solutions. Their Remote Desktop Commander offerings allow IT professionals to gain insight into the health, performance, user activity, licensing, and security of their Windows Virtual Desktop deployments. 
+RDPSoft je partner s virtuálními počítači s Windows, který poskytuje výkonné a levné řešení pro monitorování, správu a vytváření sestav. Nabídky pro správce vzdálených klientů umožňují odborníkům v oblasti IT získat přehled o stavu, výkonu, aktivitě uživatelů, licencování a zabezpečení nasazení virtuálních ploch v systému Windows. 
  
-RDPSoft's Remote Desktop Commander solutions enhance Windows Virtual Desktop administration. Premium Management features simplify delegation of Windows Virtual Desktop management tasks to support desk staff by providing remote assistance, user session, and process management. At the same time, the Remote Desktop Commander Suite collects rich metrics about per-user performance and load, user activity and auditing, Windows Virtual Desktop connection quality (latency and bandwidth), licensing, and security into a central Azure SQL database instance for review. With RDPSoft, rich historic reporting and comprehensive dashboards are just a click away.
+Řešení pro RDPSoft Remote Desktop Commander zlepšují správu virtuálních ploch Windows. Funkce Premium Management zjednodušují delegování úloh správy virtuálních klientů Windows na pracovníky podpory, protože zajišťuje vzdálenou pomoc, relaci uživatelů a správu procesů. Ve stejnou chvíli sada funkcí pro vzdálenou plochu shromažďuje bohatou metriku týkající se výkonu a zatížení jednotlivých uživatelů, aktivit uživatelů a auditování, kvality připojení k virtuálním plochám Windows (latence a šířka pásma), licencování a zabezpečení do centrální databáze SQL Azure. instance databáze pro kontrolu. Díky RDPSoft máte k dispozici bohatě historické sestavy a komplexní řídicí panely hned po kliknutí.
 
-- [Go to the partner website](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [Přejít na web partnera](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
 
 ## <a name="thinprint"></a>ThinPrint
 
-![ThinPrint Logo](./media/partners/thinprint.png)
+![Logo ThinPrint](./media/partners/thinprint.png)
 
-ThinPrint is a Windows Virtual Desktop value-added services provider that delivers simple and secure cloud printing from Windows Virtual Desktop. With its services and software, existing print infrastructure can be utilized to print documents from the cloud. ThinPrint enables connection to both local and network printers, making it easy for users to print while at the office or working remotely.
+ThinPrint je poskytovatel služeb s přidanými hodnotami pro virtuální počítače s Windows, který poskytuje jednoduchý a zabezpečený cloudový tisk z virtuálního počítače s Windows. Pomocí služeb a softwaru je možné použít existující tiskovou infrastrukturu pro tisk dokumentů z cloudu. ThinPrint umožňuje připojení k místním i síťovým tiskárnám, což uživatelům usnadňuje tisk v kanceláři nebo při práci vzdáleně.
 
-ThinPrint’s ezeep solution extends the value of Windows Virtual Desktop by enabling the connection to existing enterprise print infrastructure. ezeep gives users control over printing in the enterprise no matter where they are. Using ezeep, users can bridge the gap between Windows Virtual Desktop and printing hardware.
+ThinPrint řešení ezeep rozšiřuje hodnotu virtuální plochy Windows tím, že umožňuje připojení ke stávající podnikové infrastruktuře tisku. ezeep zajišťuje uživatelům kontrolu nad tiskem v podniku bez ohledu na to, kde jsou. Pomocí ezeep můžou uživatelé přemostění mezi virtuálními počítači s Windows a tiskovým hardwarem.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
-- [Go to partner website](https://www.ezeep.com/wvd-printing).
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
+- [Přejít na web partnera](https://www.ezeep.com/wvd-printing).
 
 ## <a name="tricerat"></a>Tricerat
 
-![Tricerat Logo](./media/partners/tricerat.png)
+![Logo Tricerat](./media/partners/tricerat.png)
 
-Tricerat offers a superior print management solution for Windows Virtual Desktop and other desktop platforms. Tricerat software has robust functionality, offering a better experience for both users and administrators. Administrators gain efficiencies through complete driver management, simplified deployment of print queues, and consistent management across hybrid platforms. User experience improves with shorter sign-in times, intelligent print queues based on user, device, and network location, and self-service options for quick printer selection. 
+Tricerat nabízí vynikající řešení pro správu tisku pro virtuální počítače s Windows a další desktopové platformy. Tricerat software má robustní funkce a nabízí lepší možnosti pro uživatele i správce. Správci získají efektivitu prostřednictvím kompletní správy ovladačů, zjednodušeného nasazení tiskových front a konzistentní správy napříč hybridními platformami. Činnost koncového uživatele se zlepšuje s kratším počtem přihlášení, inteligentními tiskovými frontami založenými na uživateli, zařízení a umístění v síti a samoobslužnými možnostmi pro rychlý výběr tiskárny. 
 
-With Tricerat, printing is seamless in Windows Virtual Desktop and beyond. Tricerat software allows administrators to easily connect on-premises printers to the cloud, extending enterprise print management from traditional environments to new, modern workspaces.
+V Tricerat je tisk na virtuálním počítači s Windows a mimo něj bezproblémové. Tricerat software umožňuje správcům snadno připojovat místní tiskárny ke cloudu a rozšiřovat správu podnikových tiskáren z tradičních prostředí na nové moderní pracovní prostory.
 
-- [Go to the partner website](https://www.tricerat.com/solutions/wvd-microsoft/).
+- [Přejít na web partnera](https://www.tricerat.com/solutions/wvd-microsoft/).
 
 ## <a name="workspot"></a>Workspot
 
-![Workspot Logo](./media/partners/workspot.png)
+![Logo Workspot](./media/partners/workspot.png)
 
-Workspot is a Windows Virtual Desktop value-added services provider that equips enterprises with high-performance desktops and workstations in Azure. With Workspot, infrastructure provisioning is automated, which means users can access their Windows Virtual Desktop environment from anywhere around the world with high availability.
+Workspot je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který vybaví podniky s vysoce výkonnými stolními počítači a pracovními stanicemi v Azure. Díky Workspot je zřizování infrastruktury automatizované, což znamená, že uživatelé mají přístup k prostředí virtuálních ploch Windows odkudkoli po celém světě s vysokou dostupností.
 
-Workspot extends the value of Windows Virtual Desktop by simplifying the provisioning process of cloud desktop infrastructure. With Workspot, resources can be easily scaled up and down to meet the needs of different users and uses cases. Workspot can optimize deployments for high-performance GPU workstations necessary for CAD and engineering users, as well as Windows applications and Windows 10 desktops for all business users.
+Workspot rozšiřuje hodnotu virtuálního klienta Windows tím, že zjednodušuje proces zřizování infrastruktury cloudové plochy. V Workspot se prostředky dají snadno škálovat nahoru a dolů, aby splňovaly potřeby různých uživatelů a případy použití. Workspot může optimalizovat nasazení pro vysoce výkonné pracovní stanice GPU potřebné pro uživatele CAD a strojírenství a také pro aplikace Windows a desktopy Windows 10 pro všechny obchodní uživatele.
 
-- [See the joint solution brief](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
-- [Go to partner website](https://www.workspot.com/wvd).
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
+- [Přejít na web partnera](https://www.workspot.com/wvd).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Learn more about Windows Virtual Desktop](overview.md).
-- [Create a tenant in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
+- [Přečtěte si další informace o virtuálním počítači s Windows](overview.md).
+- [Vytvořte tenanta na virtuálním počítači s Windows](tenant-setup-azure-active-directory.md).

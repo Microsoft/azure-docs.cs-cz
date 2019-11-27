@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection security overview
-description: Learn how the Security overview gives you an insight into your organization’s security posture.
+title: Přehled zabezpečení Azure Active Directory Identity Protection
+description: Seznamte se s postupem zabezpečení, který vám poskytne přehled o stav zabezpečení vaší organizace.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,52 +18,52 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382188"
 ---
-# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - Security overview
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – Přehled zabezpečení
 
-The [Security overview](https://aka.ms/IdentityProtectionRefresh) in the Azure portal gives you an insight into your organization’s security posture. It helps identify potential attacks and understand the effectiveness of your policies.
+[Přehled zabezpečení](https://aka.ms/IdentityProtectionRefresh) v Azure Portal poskytuje přehled o stav zabezpečení vaší organizace. Pomáhá identifikovat možné útoky a pochopit efektivitu vašich zásad.
 
-The ‘Security overview’ is broadly divided into two sections:
+Přehled zabezpečení je široce rozdělen do dvou částí:
 
-- Trends, on the left, provide a timeline of risk in your organization.
-- Tiles, on the right, highlight the key ongoing issues in your organization and suggest how to quickly take action.
+- Trendy na levé straně poskytují časovou osu rizika ve vaší organizaci.
+- Dlaždice na pravé straně, zvýrazněte klíčové problémy ve vaší organizaci a navrhněte, jak rychle provést akci.
 
 ![Přehled zabezpečení](./media/concept-identity-protection-security-overview/01.png)
   
 ## <a name="trends"></a>Trendy
 
-### <a name="new-risky-users-detected"></a>New risky users detected
+### <a name="new-risky-users-detected"></a>Zjištěni noví rizikové uživatelé
 
-This chart shows the number of new risky users that were detected over the chosen time period. You can filter the view of this chart by user risk level (low, medium, high). Hover over the UTC date increments to see the number of risky users detected for that day. A click on this chart will bring you to the ‘Risky users’ report. To remediate users that are at risk, consider changing their password.
+Tento graf znázorňuje počet nových rizikových uživatelů zjištěných ve zvoleném časovém období. Můžete filtrovat zobrazení tohoto grafu podle úrovně rizika uživatele (nízká, střední, vysoká). Najeďte ukazatelem myši na přírůstek data UTC, abyste viděli počet rizikových uživatelů zjištěných pro daný den. Kliknutím na tento graf vás přinesete do sestavy rizikové uživatele. Chcete-li opravit uživatele, kteří jsou ohroženi, zvažte možnost změnit heslo.
 
-### <a name="new-risky-sign-ins-detected"></a>New risky sign-ins detected
+### <a name="new-risky-sign-ins-detected"></a>Zjistila se nová riziková přihlášení.
 
-This chart shows the number of risky sign-ins detected over the chosen time period. You can filter the view of this chart by the sign-in risk type (real-time or aggregate) and the sign-in risk level (low, medium, high). Unprotected sign-ins are successful real-time risk sign-ins that were not MFA challenged. (Note: Sign-ins that are risky because of offline detections cannot be protected in real-time by sign-in risk policies). Hover over the UTC date increments to see the number of sign-ins detected at risk for that day. A click on this chart will bring you to the ‘Risky sign-ins’ report.
+Tento graf znázorňuje počet rizikových přihlášení zjištěných ve zvoleném časovém období. Zobrazení tohoto grafu můžete filtrovat podle typu rizika přihlašování (v reálném čase nebo agregace) a úrovně rizika přihlašování (nízká, střední, vysoká). Nechráněná přihlášení jsou úspěšná přihlášení rizik v reálném čase, která neproběhla proti ověřování MFA. (Poznámka: přihlášení, která jsou riskantní, protože v reálném čase není možné v reálném čase chránit pomocí zásad pro rizikové přihlášení). Najeďte ukazatelem myši na přírůstek data UTC, abyste viděli počet přihlášení, která se v daném dni objevila v nebezpečí. Kliknutím na tento graf vás přinesete do sestavy rizikové přihlášení.
 
-## <a name="tiles"></a>Tiles
+## <a name="tiles"></a>Dlaždice
  
-### <a name="high-risk-users"></a>High risk users
+### <a name="high-risk-users"></a>Uživatelé s vysokým rizikem
 
-The ‘High risk users’ tile shows the latest count of users with high probability of identity compromise. These should be a top priority for investigation. A click on the ‘High risk users’ tile will redirect to a filtered view of the ‘Risky users’ report showing only users with a risk level of high. Using this report, you can learn more and remediate these users with a password reset.
+Na dlaždici uživatelé s vysokým rizikem se zobrazuje nejnovější počet uživatelů s vysokou pravděpodobností ohrožení identity. Ty by měly být nejvyšší prioritou pro šetření. Kliknutím na dlaždici s vysokým rizikovým uživatelům se přesměruje na filtrované zobrazení sestavy rizikové uživatele, která zobrazuje jenom uživatele s úrovní rizika vysoká. Pomocí této sestavy můžete získat další informace a opravit tyto uživatele s resetováním hesla.
 
 ![Přehled zabezpečení](./media/concept-identity-protection-security-overview/02.png)
 
-### <a name="medium-risk-users"></a>Medium risk users
-The ‘Medium risk users’ tile shows the latest count of users with medium probability of identity compromise. A click on ‘Medium risk users’ tile will redirect to a filtered view of the ‘Risky users’ report showing only users with a risk level of medium. Using this report, you can further investigate and remediate these users.
+### <a name="medium-risk-users"></a>Středně rizikové uživatele
+Dlaždice středně rizikové uživatele zobrazuje nejnovější počet uživatelů se střední pravděpodobností ohrožení identity. Kliknutím na dlaždici středně rizikové uživatele se přesměruje na filtrované zobrazení sestavy rizikové uživatele, která zobrazuje jenom uživatele, kteří mají úroveň rizika střední. Pomocí této sestavy můžete tyto uživatele dále prozkoumat a opravit.
 
-### <a name="unprotected-risky-sign-ins"></a>Unprotected risky sign-ins
+### <a name="unprotected-risky-sign-ins"></a>Nechráněná riziková přihlášení
 
-The ‘Unprotected risky sign-ins' tile shows the last week’s count of successful, real-time risky sign-ins that were not blocked or MFA challenged by a Conditional Access policy, Identity Protection risk policy, or per-user MFA. These are potentially compromised logins that were successful and not MFA challenged. To protect such sign-ins in future, apply a sign-in risk policy. A click on ‘Unprotected risky sign-ins' tile will redirect to the sign-in risk policy configuration blade where you can configure the sign-in risk policy to require MFA on a sign-in with a specified risk level.
+Dlaždice nechráněná riziková znaménka zobrazuje počet úspěšných rizikových přihlášení v reálném čase, které nebyly blokované nebo MFA na základě zásad podmíněného přístupu, zásady rizik ochrany identity nebo MFA pro uživatele. To může mít za následek ohrožení přihlášení, která byla úspěšná, a ne MFA. K ochraně takových přihlášení v budoucnu použijte zásady pro rizikové přihlašování. Kliknutím na dlaždici nechráněná riziková přihlášení se přesměruje na okno Konfigurace zásad rizik přihlašování, kde můžete nakonfigurovat zásady rizik přihlašování a vyžadovat MFA na přihlášení se zadanou úrovní rizika.
 
-### <a name="legacy-authentication"></a>Legacy authentication
+### <a name="legacy-authentication"></a>Starší verze ověřování
 
-The ‘Legacy authentication’ tile shows the last week’s count of legacy authentications in your organization. Legacy authentication protocols do not support modern security methods such as an MFA. To prevent legacy authentication, you can apply a Conditional Access policy. A click on ‘Legacy authentication’ tile will redirect you to the ‘Identity Secure Score’.
+Na dlaždici starší verze ověřování se zobrazuje počet starších verzí ověřování ve vaší organizaci v posledním týdnu. Starší protokoly ověřování nepodporují moderní metody zabezpečení, jako je MFA. Pokud chcete zabránit staršímu ověřování, můžete použít zásady podmíněného přístupu. Kliknutím na dlaždici starší verze ověřování vás přesměruje na "bezpečné skóre identity".
 
-### <a name="identity-secure-score"></a>Identity Secure Score
+### <a name="identity-secure-score"></a>Skóre Secure identity
 
-The Identity Secure Score measures and compares your security posture to industry patterns. If you click on ‘Identity Secure Score (Preview)’ tile, it will redirect to the ‘Identity Secure Score’ blade where you can learn more about improving your security posture.
+Skóre identity Secure měří a porovnává stav zabezpečení s oborovými vzory. Pokud kliknete na dlaždici "bezpečné skóre identity (Preview)", přesměruje se na okno "bezpečné skóre identity", kde si můžete přečíst další informace o vylepšení stav zabezpečení.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [What is risk](concept-identity-protection-risks.md)
+- [Co je riziko](concept-identity-protection-risks.md)
 
-- [Policies available to mitigate risks](concept-identity-protection-policies.md)
+- [Dostupné zásady pro zmírnění rizik](concept-identity-protection-policies.md)

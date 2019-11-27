@@ -1,6 +1,6 @@
 ---
-title: Sign in to Windows virtual machine in Azure using Azure Active Directory (Preview)
-description: Azure AD sign in to an Azure VM running Windows
+title: Přihlášení k virtuálnímu počítači s Windows v Azure pomocí Azure Active Directory (Preview)
+description: Přihlášení do Azure AD s virtuálním počítačem Azure s Windows
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -18,92 +18,92 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420535"
 ---
-# <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Sign in to Windows virtual machine in Azure using Azure Active Directory authentication (Preview)
+# <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
-Organizations can now utilize Azure Active Directory (AD) authentication for their Azure virtual machines (VMs) running **Windows Server 2019 Datacenter edition** or **Windows 10 1809** and later. Using Azure AD to authenticate to VMs provides you with a way to centrally control and enforce policies. Tools like Azure Role-Based Access Control (RBAC) and Azure AD Conditional Access allow you to control who can access a VM. This article shows you how to create and configure a Windows Server 2019 VM to use Azure AD authentication.
+Organizace teď můžou používat ověřování Azure Active Directory (AD) pro své virtuální počítače Azure s **Windows serverem 2019 Datacenter Edition** nebo **Windows 10 1809** a novějším. Použití Azure AD k ověřování na virtuálních počítačích vám poskytne způsob, jak centrálně řídit a vysazovat zásady. Nástroje, jako je Access Control na základě rolí Azure (RBAC) a podmíněný přístup Azure AD, umožňují řídit, kdo má přístup k virtuálnímu počítači. V tomto článku se dozvíte, jak vytvořit a nakonfigurovat virtuální počítač s Windows serverem 2019 pro použití ověřování Azure AD.
 
 |     |
 | --- |
-| Azure AD sign in for Azure Windows VMs is a public preview feature of Azure Active Directory. For more information about previews, see  [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Přihlášení Azure AD pro virtuální počítače Azure s Windows je funkce veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.|
 |     |
 
-There are many benefits of using Azure AD authentication to log in to Windows VMs in Azure, including:
+K přihlášení k virtuálním počítačům s Windows v Azure přinášíme spoustu výhod, včetně těchto:
 
-- Utilize the same federated or managed Azure AD credentials you normally use.
-- No longer have to manage local administrator accounts.
-- Azure RBAC allows you to grant the appropriate access to VMs based on need and remove it when it is no longer needed.
-- Before allowing access to a VM, Azure AD Conditional Access can enforce additional requirements such as: 
-   - Multi-Factor Authentication
-   - Sign-in risk check
-- Automate and scale Azure AD join of Azure Windows VMs that are part for your VDI deployments.
+- Využijte stejné federované nebo spravované přihlašovací údaje služby Azure AD, které běžně používáte.
+- Už nemusíte spravovat účty místních správců.
+- Azure RBAC vám umožňuje udělit odpovídající přístup k virtuálním počítačům podle potřeby a odebrat je, když už nepotřebujete.
+- Než povolíte přístup k virtuálnímu počítači, podmíněný přístup Azure AD může vynutil další požadavky, jako třeba: 
+   - Ověřování pomocí služby Multi-Factor Authentication
+   - Kontroly rizika přihlašování
+- Automatizujte a škálujte připojení Azure AD k virtuálním počítačům Azure s Windows, které jsou součástí nasazení infrastruktury virtuálních klientských počítačů.
 
 ## <a name="requirements"></a>Požadavky
 
-### <a name="supported-azure-regions-and-windows-distributions"></a>Supported Azure regions and Windows distributions
+### <a name="supported-azure-regions-and-windows-distributions"></a>Podporované oblasti Azure a distribuce oken
 
-The following Windows distributions are currently supported during the preview of this feature:
+Během verze Preview této funkce se aktuálně podporují následující distribuce systému Windows:
 
 - Windows Server 2019 Datacenter
-- Windows 10 1809 and later
+- Windows 10 1809 a novější
 
-The following Azure regions are currently supported during the preview of this feature:
+Ve verzi Preview této funkce se aktuálně podporují tyto oblasti Azure:
 
-- All Azure global regions
+- Všechny globální oblasti Azure
 
 > [!IMPORTANT]
-> To use this preview feature, only deploy a supported Windows distribution and in a supported Azure region. The feature is currently not supported in Azure Government or sovereign clouds.
+> Chcete-li použít tuto funkci verze Preview, nasaďte pouze podporované distribuce oken a v podporované oblasti Azure. Tato funkce se v cloudech Azure Government nebo svrchovaného v tuto chvíli nepodporuje.
 
 ### <a name="network-requirements"></a>Síťové požadavky
 
-To enable Azure AD authentication for your Windows VMs in Azure, you need to ensure your VMs network configuration permits outbound access to the following endpoints over TCP port 443:
+Pokud chcete povolit ověřování Azure AD pro virtuální počítače s Windows v Azure, musíte zajistit, aby konfigurace sítě virtuálních počítačů povolovala odchozí přístup k následujícím koncovým bodům přes port TCP 443:
 
 - https://enterpriseregistration.windows.net
 - https://login.microsoftonline.com
 - https://device.login.microsoftonline.com
 - https://pas.windows.net
 
-## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Enabling Azure AD login in for Windows VM in Azure
+## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Povolení přihlášení Azure AD pro virtuální počítač s Windows v Azure
 
-To use Azure AD login in for Windows VM in Azure, you need to first enable Azure AD login option for your Windows VM and then you need to configure RBAC role assignments for users who are authorized to login in to the VM.
-There are multiple ways you can enable Azure AD login for your Windows VM:
+Pokud chcete používat přihlášení Azure AD pro virtuální počítače s Windows v Azure, musíte nejdřív povolit možnost přihlášení Azure AD pro virtuální počítač s Windows a pak musíte nakonfigurovat přiřazení rolí RBAC pro uživatele, kteří mají oprávnění k přihlášení k virtuálnímu počítači.
+Přihlášení Azure AD pro virtuální počítač s Windows můžete povolit několika způsoby:
 
-- Using the Azure portal experience when creating a Windows VM
-- Using the Azure Cloud Shell experience when creating a Windows VM **or for an existing Windows VM**
+- Použití prostředí Azure Portal při vytváření virtuálního počítače s Windows
+- Použití prostředí Azure Cloud Shell při vytváření virtuálního počítače s Windows **nebo pro existující virtuální počítač s Windows**
 
-### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Using Azure portal create VM experience to enable Azure AD login
+### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Povolení přihlášení Azure AD pomocí Azure Portal vytvoření prostředí pro virtuální počítače
 
-You can enable Azure AD login for Windows Server 2019 Datacenter or Windows 10 1809 and later VM images. 
+Přihlašovací údaje služby Azure AD můžete povolit pro image virtuálních počítačů s Windows serverem 2019 Datacenter nebo Windows 10 1809 a novějším. 
 
-To create a Windows Server 2019 Datacenter VM in Azure with Azure AD logon: 
+Vytvoření virtuálního počítače s Windows serverem 2019 Datacenter v Azure s přihlášením pomocí Azure AD: 
 
-1. Sign in to the [Azure portal](https://portal.azure.com), with an account that has access to create VMs, and select **+ Create a resource**.
-1. Type **Windows Server** in Search the Marketplace search bar.
-   1. Click **Windows Server** and choose **Windows Server 2019 Datacenter** from Select a software plan dropdown.
-   1. Click on **Create**.
-1. On the “Management” tab, enable the option to **Login with AAD credentials (Preview)** under the Azure Active Directory section from Off to **On**.
-1. Make sure **System assigned managed identity** under the Identity section is set to **On**. This action should happen automatically once you enable Login with Azure AD credentials.
-1. Go through the rest of the experience of creating a virtual machine. During this preview, you will have to create an administrator username and password for the VM.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)s účtem, který má přístup k vytváření virtuálních počítačů, a vyberte **+ vytvořit prostředek**.
+1. Do vyhledávacího panelu webu Marketplace zadejte **Windows Server** .
+   1. Klikněte na **Windows Server** a zvolte **Windows Server 2019 Datacenter** v rozevíracím seznamu vybrat plán softwaru.
+   1. Klikněte na **vytvořit**.
+1. Na kartě Správa povolte možnost **Přihlásit se pomocí přihlašovacích údajů AAD (Preview)** v části Azure Active Directory z možností vypnuto na **zapnuto**.
+1. Ujistěte se, že je v části Identita nastavená **spravovaná identita systému** **na zapnuto**. Tato akce by se měla provést automaticky po povolení přihlášení s přihlašovacími údaji Azure AD.
+1. Projděte si zbytek zkušeností při vytváření virtuálního počítače. V této verzi Preview budete muset vytvořit uživatelské jméno a heslo správce pro virtuální počítač.
 
-![Login with Azure AD credentials create a VM](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-login-with-azure-ad.png)
+![Přihlášení pomocí přihlašovacích údajů Azure AD vytvoření virtuálního počítače](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-login-with-azure-ad.png)
 
 > [!NOTE]
-> In order to log in to the VM using your Azure AD credential, you will first need to configure role assignments for the VM as described in one of the sections below.
+> Abyste se mohli přihlásit k VIRTUÁLNÍmu počítači pomocí přihlašovacích údajů Azure AD, musíte nejdřív nakonfigurovat přiřazení rolí pro virtuální počítač, jak je popsáno v některém z následujících částí.
 
-### <a name="using-the-azure-cloud-shell-experience-to-enable-azure-ad-login"></a>Using the Azure Cloud Shell experience to enable Azure AD login
+### <a name="using-the-azure-cloud-shell-experience-to-enable-azure-ad-login"></a>Povolení přihlášení Azure AD pomocí Azure Cloud Shellho prostředí
 
-Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Ve službě Cloud Shell jsou předinstalované obvyklé nástroje Azure a jsou nakonfigurované pro použití s vaším účtem. Just select the Copy button to copy the code, paste it in Cloud Shell, and then press Enter to run it. Cloud Shell můžete otevřít několika způsoby:
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Ve službě Cloud Shell jsou předinstalované obvyklé nástroje Azure a jsou nakonfigurované pro použití s vaším účtem. Stačí vybrat tlačítko Kopírovat a kód zkopírovat, vložit ho do Cloud Shell a potom ho spustit stisknutím klávesy ENTER. Cloud Shell můžete otevřít několika způsoby:
 
-Select Try It in the upper-right corner of a code block.
+Vyberte vyzkoušet v pravém horním rohu bloku kódu.
 Otevřete Cloud Shell ve vašem prohlížeči.
-Select the Cloud Shell button on the menu in the upper-right corner of the [Azure portal](https://portal.azure.com).
+V nabídce v pravém horním rohu [Azure Portal](https://portal.azure.com)vyberte tlačítko Cloud Shell.
 
-If you choose to install and use the CLI locally, this article requires that you are running the Azure CLI version 2.0.31 or later. Pokud chcete zjistit verzi, spusťte příkaz az --version. If you need to install or upgrade, see the article [Install Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.31 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz az --version. Pokud potřebujete instalaci nebo upgrade, přečtěte si článek instalace rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 1. Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create). 
-1. Create a VM with [az vm create](https://docs.microsoft.com/cli/azure/vm#az-vm-create) using a supported distribution in a supported region. 
-1. Install the Azure AD login VM extension. 
+1. Vytvořte virtuální počítač pomocí [AZ VM Create](https://docs.microsoft.com/cli/azure/vm#az-vm-create) pomocí podporované distribuce v podporované oblasti. 
+1. Nainstalujte rozšíření pro přihlášení k virtuálnímu počítači Azure AD. 
 
-The following example deploys a VM named myVM that uses Win2019Datacenter, into a resource group named myResourceGroup, in the southcentralus region. In the following examples, you can provide your own resource group and VM names as needed.
+Následující příklad nasadí virtuální počítač s názvem myVM, který používá Win2019Datacenter, do skupiny prostředků s názvem myResourceGroup v oblasti southcentralus. V následujících příkladech můžete podle potřeby zadat vlastní skupinu prostředků a názvy virtuálních počítačů.
 
 ```AzureCLI
 az group create --name myResourceGroup --location southcentralus
@@ -119,10 +119,10 @@ az vm create \
 
 Vytvoření virtuálního počítače a podpůrných prostředků trvá několik minut.
 
-Finally, install the Azure AD login VM extension to enable Azure AD login for Windows VM. VM extensions are small applications that provide post-deployment configuration and automation tasks on Azure virtual machines. Use [az vm extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) set to install the AADLoginForWindows extension on the VM named myVM in the myResourceGroup resource group:
+Nakonec nainstalujte rozšíření Azure AD Login VM pro povolení přihlášení Azure AD pro virtuální počítač s Windows. Rozšíření virtuálních počítačů jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pomocí [AZ VM Extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) set nainstalujete rozšíření AADLoginForWindows na virtuální počítač s názvem myVM ve skupině prostředků myResourceGroup:
 
 > [!NOTE]
-> You can install AADLoginForWindows extension on an existing Windows Server 2019 or Windows 10 1809 and later VM to enable it for Azure AD authentication. An example of AZ CLI is shown below.
+> Rozšíření AADLoginForWindows můžete nainstalovat na stávající virtuální počítač s Windows serverem 2019 nebo Windows 10 1809 a novějším, abyste ho mohli povolit pro ověřování Azure AD. Příklad AZ CLI je uveden níže.
 
 ```AzureCLI
 az vm extension set \
@@ -132,41 +132,41 @@ az vm extension set \
     --vm-name myVM
 ```
 
-The `provisioningState` of `Succeeded` is shown, once the extension is installed on the VM.
+Po instalaci rozšíření na virtuální počítač se zobrazí `provisioningState` `Succeeded`.
 
-## <a name="configure-role-assignments-for-the-vm"></a>Configure role assignments for the VM
+## <a name="configure-role-assignments-for-the-vm"></a>Konfigurace přiřazení rolí pro virtuální počítač
 
-Now that you have created the VM, you need to configure Azure RBAC policy to determine who can log in to the VM. Two RBAC roles are used to authorize VM login:
+Teď, když jste vytvořili virtuální počítač, musíte nakonfigurovat zásadu Azure RBAC, abyste zjistili, kdo se může přihlásit k virtuálnímu počítači. K autorizaci přihlášení k virtuálnímu počítači se používají dvě role RBAC:
 
-- **Virtual Machine Administrator Login**: Users with this role assigned can log in to an Azure virtual machine with administrator privileges.
-- **Virtual Machine User Login**: Users with this role assigned can log in to an Azure virtual machine with regular user privileges.
+- **Přihlášení správce virtuálního počítače**: uživatelé s touto rolí se můžou přihlašovat k virtuálnímu počítači Azure s oprávněními správce.
+- **Přihlášení uživatele k virtuálnímu počítači**: uživatelé s touto rolí se můžou přihlašovat k virtuálnímu počítači Azure s pravidelnými uživatelskými oprávněními.
 
 > [!NOTE]
-> To allow a user to log in to the VM over RDP, you must assign either the Virtual Machine Administrator Login or Virtual Machine User Login role. An Azure user with the Owner or Contributor roles assigned for a VM do not automatically have privileges to log in to the VM over RDP. This is to provide audited separation between the set of people who control virtual machines versus the set of people who can access virtual machines.
+> Pokud chcete uživateli dovolit, aby se přihlásil k VIRTUÁLNÍmu počítači přes RDP, musíte přiřadit buď roli přihlášení správce virtuálního počítače, nebo přihlašovací údaje uživatele virtuálního počítače. Uživatel Azure s rolemi vlastník nebo přispěvatel přiřazený k virtuálnímu počítači nemá automaticky oprávnění k přihlášení k virtuálnímu počítači přes RDP. Slouží k zajištění prověřeného oddělení mezi sadou osob, které ovládají virtuální počítače a sadou lidí, kteří mají přístup k virtuálním počítačům.
 
-There are multiple ways you can configure role assignments for VM:
+Přiřazení rolí pro virtuální počítač můžete nakonfigurovat několika způsoby:
 
-- Using the Azure AD Portal experience
-- Using the Azure Cloud Shell experience
+- Použití prostředí portálu Azure AD
+- Použití prostředí Azure Cloud Shell
 
-### <a name="using-azure-ad-portal-experience"></a>Using Azure AD Portal experience
+### <a name="using-azure-ad-portal-experience"></a>Použití prostředí portálu Azure AD
 
-To configure role assignments for your Azure AD enabled Windows Server 2019 Datacenter VMs:
+Konfigurace přiřazení rolí pro virtuální počítače Windows serveru 2019 Datacenter s povolenou službou Azure AD:
 
-1. Navigate to the specific virtual machine overview page
-1. Select **Access control (IAM)** from the menu options
-1. Select **Add**, **Add role assignment** to open the Add role assignment pane.
-1. In the **Role** drop-down list, select a role such as **Virtual Machine Administrator Login** or **Virtual Machine User Login**.
-1. In the **Select** field, select a user, group, service principal, or managed identity. Pokud se objekt zabezpečení v seznamu nezobrazí, pomocí pole **Vybrat** můžete v adresáři prohledat zobrazované názvy, e-mailové adresy a identifikátory objektů.
-1. Select **Save**, to assign the role.
+1. Přejít na stránku Přehled konkrétního virtuálního počítače
+1. Z možností nabídky vyberte **řízení přístupu (IAM)** .
+1. Výběrem **Přidat**, **Přidat přiřazení role** otevřete podokno přidat přiřazení role.
+1. V rozevíracím seznamu **role** vyberte roli, například **přihlašovací jméno správce virtuálního počítače** nebo **přihlášení uživatele k virtuálnímu počítači**.
+1. V poli **Vybrat** vyberte uživatele, skupinu, instanční objekt nebo spravovanou identitu. Pokud se objekt zabezpečení v seznamu nezobrazí, pomocí pole **Vybrat** můžete v adresáři prohledat zobrazované názvy, e-mailové adresy a identifikátory objektů.
+1. Vyberte **Uložit**a přiřaďte roli.
 
-After a few moments, the security principal is assigned the role at the selected scope.
+Po chvíli se objektu zabezpečení přiřadí role ve vybraném oboru.
 
-![Assign roles to users who will access the VM](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-access-control-assign-role.png)
+![Přiřaďte role uživatelům, kteří budou mít přístup k virtuálnímu počítači.](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-access-control-assign-role.png)
 
-### <a name="using-the-azure-cloud-shell-experience"></a>Using the Azure Cloud Shell experience
+### <a name="using-the-azure-cloud-shell-experience"></a>Použití prostředí Azure Cloud Shell
 
-The following example uses [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) to assign the Virtual Machine Administrator Login role to the VM for your current Azure user. The username of your active Azure account is obtained with [az account show](https://docs.microsoft.com/cli/azure/account#az-account-show), and the scope is set to the VM created in a previous step with [az vm show](https://docs.microsoft.com/cli/azure/vm#az-vm-show). The scope could also be assigned at a resource group or subscription level, and normal RBAC inheritance permissions apply. For more information, see [Role-Based Access Controls](../../virtual-machines/linux/login-using-aad.md).
+V následujícím příkladu se pomocí funkce [AZ role Assignment Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) přiřadí k virtuálnímu počítači role přihlášení správce virtuálního počítače pro aktuálního uživatele Azure. Uživatelské jméno vašeho aktivního účtu Azure se získá pomocí [AZ Account show](https://docs.microsoft.com/cli/azure/account#az-account-show)a obor se nastaví na virtuální počítač vytvořený v předchozím kroku pomocí [AZ VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show). Obor se taky dá přiřadit na úrovni skupiny prostředků nebo předplatného a použít normální oprávnění dědičnosti RBAC. Další informace najdete v tématu [řízení přístupu na základě rolí](../../virtual-machines/linux/login-using-aad.md).
 
 ```AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -179,181 +179,181 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> If your AAD domain and logon username domain do not match, you must specify the object ID of your user account with the `--assignee-object-id`, not just the username for `--assignee`. You can obtain the object ID for your user account with [az ad user list](https://docs.microsoft.com/cli/azure/ad/user#az-ad-user-list).
+> Pokud se vaše doména AAD a doména přihlašovacího jména uživatele neshodují, musíte zadat ID objektu vašeho uživatelského účtu pomocí `--assignee-object-id`, nikoli jenom uživatelského jména pro `--assignee`. ID objektu pro svůj uživatelský účet můžete získat pomocí [seznamu AZ AD User list](https://docs.microsoft.com/cli/azure/ad/user#az-ad-user-list).
 
-For more information on how to use RBAC to manage access to your Azure subscription resources, see the following articles:
+Další informace o tom, jak pomocí RBAC spravovat přístup k prostředkům předplatného Azure, najdete v následujících článcích:
 
-- [Manage access to Azure resources using RBAC and Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+- [Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 - [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [Manage access to Azure resources using RBAC and Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+- [Spravujte přístup k prostředkům Azure pomocí RBAC a Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
-## <a name="using-conditional-access"></a>Using Conditional Access
+## <a name="using-conditional-access"></a>Použití podmíněného přístupu
 
-You can enforce Conditional Access policies such as multi-factor authentication or user sign-in risk check before authorizing access to Windows VMs in Azure that are enabled with Azure AD sign in. To apply Conditional Access policy, you must select "Azure Windows VM Sign-In" app from the cloud apps or actions assignment option and then use Sign-in risk as a condition and/or require multi-factor authentication as a grant access control. 
+Před autorizací přístupu k virtuálním počítačům s Windows v Azure, které jsou povolené při přihlášení ke službě Azure AD, můžete vyhovět zásadám podmíněného přístupu, jako je vícefaktorové ověřování nebo ověření rizik přihlašování uživatelů. Pokud chcete použít zásady podmíněného přístupu, musíte v rámci možnosti přiřazení cloudových aplikací nebo akcí vybrat aplikaci přihlášení k virtuálnímu počítači Azure Azure a pak použít pro podmínku přihlášení podmínky přihlášení nebo vyžadovat vícefaktorové ověřování jako řízení přístupu pro udělení. 
 
 > [!NOTE]
-> If you use "Require multi-factor authentication" as a grant access control for requesting access to the "Azure Windows VM Sign-In" app, then you must supply multi-factor authentication claim as part of the client that initiates the RDP session to the target Windows VM in Azure. The only way to achieve this on a Windows 10 client is to use Windows Hello for Business PIN or biometric authenication with the RDP client. Support for biometric authentication was added to the RDP client in Windows 10 version 1809. Remote desktop using Windows Hello for Business authentication is only available for deployments that use cert trust model and currently not available for key trust model.
+> Pokud použijete "vyžadovat vícefaktorové ověřování" jako udělení řízení přístupu pro vyžádání přístupu k aplikaci pro přihlášení k virtuálnímu počítači Azure s Windows, musíte zadat službu Multi-Factor Authentication jako součást klienta, která inicializuje relaci RDP do cílových oken. Virtuální počítač v Azure. Jediným způsobem, jak toho dosáhnout na klientovi s Windows 10, je použít PIN kód Windows Hello pro firmy nebo biometrické ověřování s klientem RDP. Do klienta RDP v systému Windows 10 verze 1809 byla přidána podpora biometrického ověřování. Ověřování pomocí Windows Hello pro firmy na vzdálené ploše je dostupné jenom pro nasazení, která používají model důvěryhodnosti certifikátů a aktuálně nejsou k dispozici pro model vztahu důvěryhodnosti klíče.
 
-## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Log in using Azure AD credentials to a Windows VM
+## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Přihlášení pomocí přihlašovacích údajů Azure AD k virtuálnímu počítači s Windows
 
 > [!IMPORTANT]
-> Remote connection to VMs joined to Azure AD is only allowed from Windows 10 PCs that are Azure AD joined or hybrid Azure AD joined to the **same** directory as the VM. Additionally, to RDP using Azure AD credentials, the user must belong to one of the two RBAC roles, Virtual Machine Administrator Login or Virtual Machine User Login.
+> Vzdálené připojení k virtuálním počítačům připojeným ke službě Azure AD je povolené jenom z počítačů s Windows 10, které jsou připojené ke službě Azure AD nebo které je služba Azure AD připojená ke **stejnému** adresáři jako virtuální počítač. Navíc k protokolu RDP pomocí přihlašovacích údajů Azure AD musí uživatel patřit do jedné ze dvou rolí RBAC, přihlášení správce virtuálního počítače nebo přihlášení uživatele virtuálního počítače.
 
-To login in to your Windows Server 2019 virtual machine using Azure AD: 
+Přihlášení k virtuálnímu počítači s Windows serverem 2019 pomocí Azure AD: 
 
-1. Navigate to the overview page of the virtual machine that has been enabled with Azure AD logon.
-1. Select **Connect** to open the Connect to virtual machine blade.
-1. Select **Download RDP File**.
-1. Select **Open** to launch the Remote Desktop Connection client.
-1. Select **Connect** to launch the Windows logon dialog.
-1. Logon using your Azure AD credentials.
+1. Přejděte na stránku Přehled virtuálního počítače, který je povolený s přihlášením pomocí Azure AD.
+1. Kliknutím na **připojit** otevřete okno připojit k virtuálnímu počítači.
+1. Vyberte **Stáhnout soubor RDP**.
+1. Vyberte **otevřít** a spusťte klienta připojení ke vzdálené ploše.
+1. Vyberte **připojit** a spusťte přihlašovací dialog Windows.
+1. Přihlaste se pomocí přihlašovacích údajů Azure AD.
 
-You are now signed in to the Windows Server 2019 Azure virtual machine with the role permissions as assigned, such as VM User or VM Administrator. 
+Nyní jste přihlášeni k virtuálnímu počítači s Windows serverem 2019 Azure pomocí oprávnění role, jako je například uživatel virtuálního počítače nebo správce virtuálního počítače. 
 
 > [!NOTE]
-> You can save the .RDP file locally on your computer to launch future remote desktop connections to your virtual machine instead of having to navigate to virtual machine overview page in the Azure portal and using the connect option.
+> Můžete uložit. Soubor RDP místně ve vašem počítači, aby se spouštěla budoucí připojení vzdálené plochy k virtuálnímu počítači, nemusíte v Azure Portal přejít na stránku Přehled virtuálního počítače a použít možnost připojit.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
 
-The AADLoginForWindows extension must install successfully in order for the VM to complete the Azure AD join process. Perform the following steps if the VM extension fails to install correctly.
+Aby virtuální počítač dokončil proces připojení k Azure AD, musí se úspěšně nainstalovat rozšíření AADLoginForWindows. Pokud se nepovede správně nainstalovat rozšíření virtuálního počítače, proveďte následující kroky.
 
-1. RDP to the VM using the local administrator account and examine the CommandExecution.log under  
+1. RDP k virtuálnímu počítači pomocí účtu místního správce a prověřte protokol CommandExecution. log pod  
    
    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
 
    > [!NOTE]
-   > If the extension restarts after the initial failure, the log with the deployment error will be saved as CommandExecution_YYYYMMDDHHMMSSSSS.log. 
+   > Pokud se rozšíření po počátečním selhání restartuje, protokol s chybou nasazení se uloží jako CommandExecution_YYYYMMDDHHMMSSSSS. log. 
 
-1. Open a command prompt on the VM and verify these queries against the Instance Metadata Service (IMDS) Endpoint running on the Azure host returns:
+1. Na virtuálním počítači otevřete příkazový řádek a ověřte tyto dotazy proti koncovému bodu Instance Metadata Service (IMDS), který běží na hostiteli Azure, vrátí:
 
-   | Command to run | Očekávaný výstup |
+   | Příkaz, který se má spustit | Očekávaný výstup |
    | --- | --- |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Correct information about the Azure VM |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Valid Tenant ID associated with the Azure Subscription |
-   | curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Valid access token issued by Azure Active Directory for the managed identity that is assigned to this VM |
+   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Správné informace o virtuálním počítači Azure |
+   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Platné ID tenanta přidružené k předplatnému Azure |
+   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Platný přístupový token vydaný Azure Active Directory pro spravovanou identitu, která je přiřazená k tomuto virtuálnímu počítači |
 
    > [!NOTE]
-   > The access token can be decoded using a tool like [http://calebb.net/](http://calebb.net/). Verify the "appid" in the access token matches the managed identity assigned to the VM.
+   > Přístupový token se dá dekódovat pomocí nástroje, jako je [http://calebb.net/](http://calebb.net/). Ověřte, že "AppID" v přístupovém tokenu odpovídá spravované identitě přiřazené k virtuálnímu počítači.
 
-1. Ensure the required endpoints are accessible from the VM using the command line:
+1. Ujistěte se, že požadované koncové body jsou dostupné z virtuálního počítače pomocí příkazového řádku:
    
-   - curl https://login.microsoftonline.com/ -D –
-   - curl https://login.microsoftonline.com/`<TenantID>` / -D –
+   - kudrlinkou https://login.microsoftonline.com/-D –
+   - kudrlinkou https://login.microsoftonline.com/`<TenantID>`/-D –
 
    > [!NOTE]
-   > Replace `<TenantID>` with the Azure AD Tenant ID that is associated with the Azure subscription.
+   > Nahraďte `<TenantID>` číslem tenanta Azure AD, který je přidružený k předplatnému Azure.
 
-   - curl https://enterpriseregistration.windows.net/ -D -
-   - curl https://device.login.microsoftonline.com/ -D -
-   - curl https://pas.windows.net/ -D -
+   - kudrlinkou https://enterpriseregistration.windows.net/-D –
+   - kudrlinkou https://device.login.microsoftonline.com/-D –
+   - kudrlinkou https://pas.windows.net/-D –
 
-1. The Device State can be viewed by running `dsregcmd /status`. The goal is for Device State to show as `AzureAdJoined : YES`.
+1. Stav zařízení lze zobrazit spuštěním `dsregcmd /status`. Cílem je stav zařízení, který se má zobrazit jako `AzureAdJoined : YES`.
 
    > [!NOTE]
-   > Azure AD join activity is captured in Event viewer under the User Device Registration\Admin log.
+   > Aktivita připojení Azure AD se zachycuje v prohlížeči událostí v protokolu Registration\Admin uživatelského zařízení.
 
-If AADLoginForWindows extension fails with certain error code, you can perform the following steps:
+Pokud rozšíření AADLoginForWindows selhává s určitým kódem chyby, můžete provést následující kroky:
 
-#### <a name="issue-1-aadloginforwindows-extension-fails-to-install-with-terminal-error-code-1007-and-exit-code--2145648574"></a>Issue 1: AADLoginForWindows extension fails to install with terminal error code '1007' and Exit code: -2145648574.
+#### <a name="issue-1-aadloginforwindows-extension-fails-to-install-with-terminal-error-code-1007-and-exit-code--2145648574"></a>Problém 1: rozšíření AADLoginForWindows se nemůže nainstalovat s kódem chyby terminálu 1007 a ukončovacím kódem:-2145648574.
 
-This exit code translates to DSREG_E_MSI_TENANTID_UNAVAILABLE because the extension is unable to query the Azure AD Tenant information.
+Tento ukončovací kód se přeloží na DSREG_E_MSI_TENANTID_UNAVAILABLE, protože rozšíření se nemůže dotazovat na informace o Tenantovi Azure AD.
 
-1. Verify the Azure VM can retrieve the TenantID from the Instance Metadata Service.
+1. Ověřte, že virtuální počítač Azure může načíst TenantID z Instance Metadata Service.
 
-   - RDP to the VM as a local administrator and verify the endpoint returns valid Tenant ID by running this command from an elevated command line on the VM:
+   - RDP na virtuální počítač jako místní správce a ověření, že koncový bod vrátí platné ID tenanta spuštěním tohoto příkazu z příkazového řádku se zvýšenými oprávněními na virtuálním počítači:
       
-      - curl -H Metadata:true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01
+      - Metadata složeného H: true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01
 
-1. The VM admin attempts to install the AADLoginForWindows extension, but a system assigned managed identity has not enabled the VM first. Navigate to the Identity blade of the VM. From the System assigned tab, verify Status is toggled to On.
+1. Správce virtuálních počítačů se pokusí nainstalovat rozšíření AADLoginForWindows, ale spravovaná identita přiřazená systémem nepovolila virtuální počítač jako první. Přejděte do okna identita virtuálního počítače. Na kartě přiřazené systémem ověřte, zda je stav Zapnuto.
 
-#### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Issue 2: AADLoginForWindows extension fails to install with Exit code: -2145648607
+#### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Problém 2: rozšíření AADLoginForWindows se nemůže nainstalovat s ukončovacím kódem:-2145648607
 
-This Exit code translates to DSREG_AUTOJOIN_DISC_FAILED because the extension is not able to reach the https://enterpriseregistration.windows.net endpoint.
+Tento ukončovací kód se přeloží na DSREG_AUTOJOIN_DISC_FAILED, protože rozšíření nemůže kontaktovat koncový bod https://enterpriseregistration.windows.net.
 
-1. Verify the required endpoints are accessible from the VM using the command line:
+1. Ověřte dostupnost požadovaných koncových bodů z virtuálního počítače pomocí příkazového řádku:
 
-   - curl https://login.microsoftonline.com/ -D –
-   - curl https://login.microsoftonline.com/`<TenantID>` / -D –
+   - kudrlinkou https://login.microsoftonline.com/-D –
+   - kudrlinkou https://login.microsoftonline.com/`<TenantID>`/-D –
    
    > [!NOTE]
-   > Replace `<TenantID>` with the Azure AD Tenant ID that is associated with the Azure subscription. If you need to find the tenant ID, you can hover over your account name to get the directory / tenant ID, or select Azure Active Directory > Properties > Directory ID in the Azure portal.
+   > Nahraďte `<TenantID>` číslem tenanta Azure AD, který je přidružený k předplatnému Azure. Pokud potřebujete najít ID tenanta, můžete ukazatel myši umístit na název účtu a získat tak ID adresáře nebo tenanta, nebo v Azure Portal vybrat Azure Active Directory > vlastností > ID adresáře.
 
-   - curl https://enterpriseregistration.windows.net/ -D -
-   - curl https://device.login.microsoftonline.com/ -D -
-   - curl https://pas.windows.net/ -D -
+   - kudrlinkou https://enterpriseregistration.windows.net/-D –
+   - kudrlinkou https://device.login.microsoftonline.com/-D –
+   - kudrlinkou https://pas.windows.net/-D –
 
-1. If any of the commands fails with "Could not resolve host `<URL>`", try running this command to determine the DNS server that is being used by the VM.
+1. Pokud některý z příkazů selhává s příkazem "nelze přeložit hostitel `<URL>`", zkuste spustit tento příkaz, který určí server DNS, který je používán virtuálním počítačem.
    
    `nslookup <URL>`
 
    > [!NOTE] 
-   > Replace `<URL>` with the fully qualified domain names used by the endpoints, such as “login.microsoftonline.com”.
+   > Nahraďte `<URL>` plně kvalifikovanými názvy domén, které jsou používány koncovými body, například "login.microsoftonline.com".
 
-1. Next, see if specifying a public DNS server allows the command to succeed:
+1. Další informace najdete v tématu určení veřejného serveru DNS, který umožňuje úspěšné provedení příkazu:
 
    `nslookup <URL> 208.67.222.222`
 
-1. If necessary, change the DNS server that is assigned to the network security group that the Azure VM belongs to.
+1. V případě potřeby změňte server DNS, který je přiřazený ke skupině zabezpečení sítě, do které virtuální počítač Azure patří.
 
-#### <a name="issue-3-aadloginforwindows-extension-fails-to-install-with-exit-code-51"></a>Issue 3: AADLoginForWindows extension fails to install with Exit code: 51
+#### <a name="issue-3-aadloginforwindows-extension-fails-to-install-with-exit-code-51"></a>Problém 3: rozšíření AADLoginForWindows se nemůže nainstalovat s ukončovacím kódem: 51
 
-Exit code 51 translates to "This extension is not supported on the VM's operating system".
+Ukončovací kód 51 se překládá na toto rozšíření není v operačním systému virtuálního počítače podporováno.
 
-At Public Preview, the AADLoginForWindows extension is only intended to be installed on Windows Server 2019 or Windows 10 (Build 1809 or later). Ensure the version of Windows is supported. If the build of Windows is not supported, uninstall the VM Extension.
+V Public Preview je rozšíření AADLoginForWindows určeno pouze pro instalaci v systému Windows Server 2019 nebo Windows 10 (Build 1809 nebo novější). Ujistěte se, že je podporovaná verze Windows. Pokud sestavení Windows není podporované, odinstalujte rozšíření virtuálního počítače.
 
-### <a name="troubleshoot-sign-in-issues"></a>Troubleshoot sign-in issues
+### <a name="troubleshoot-sign-in-issues"></a>Řešení potíží s přihlašováním
 
-Some common errors when you try to RDP with Azure AD credentials include no RBAC roles assigned, unauthorized client, or 2FA sign-in method required. Use the following information to correct these issues.
+Některé běžné chyby při pokusu o připojení RDP s přihlašovacími údaji služby Azure AD zahrnují žádné role RBAC přiřazené, neautorizovaného klienta nebo 2FA Metoda přihlašování, která je povinná. Tyto problémy opravíte pomocí následujících informací.
 
-The Device and SSO State can be viewed by running `dsregcmd /status`. The goal is for Device State to show as `AzureAdJoined : YES` and `SSO State` to show `AzureAdPrt : YES`.
+Stav zařízení a jednotného přihlašování se dá zobrazit spuštěním `dsregcmd /status`. Cílem je stav zařízení, který se má zobrazit jako `AzureAdJoined : YES` a `SSO State` k zobrazení `AzureAdPrt : YES`.
 
-Also, RDP Sign-in using Azure AD accounts is captured in Event viewer under the AAD\Operational event logs.
+Přihlášení RDP pomocí účtů Azure AD se taky zachycuje v prohlížeči událostí v protokolech událostí AAD\Operational.
 
-#### <a name="rbac-role-not-assigned"></a>RBAC role not assigned
+#### <a name="rbac-role-not-assigned"></a>Role RBAC není přiřazená.
 
-If you see the following error message when you initiate a remote desktop connection to your VM: 
+Pokud se při inicializaci připojení ke vzdálené ploše na virtuální počítač zobrazí následující chybová zpráva: 
 
-- Your account is configured to prevent you from using this device. For more info, contact your system administrator
+- Váš účet je nakonfigurovaný tak, aby vám zabránil v používání tohoto zařízení. Pokud chcete získat další informace, obraťte se na správce systému.
 
-![Your account is configured to prevent you from using this device.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
+![Váš účet je nakonfigurovaný tak, aby vám zabránil v používání tohoto zařízení.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-Verify that you have [configured RBAC policies](../../virtual-machines/linux/login-using-aad.md) for the VM that grants the user either the Virtual Machine Administrator Login or Virtual Machine User Login role:
+Ověřte, že jste [nakonfigurovali zásady RBAC](../../virtual-machines/linux/login-using-aad.md) pro virtuální počítač, který uděluje uživateli přihlašovací jméno správce virtuálního počítače nebo uživatelskou roli pro přihlášení k virtuálnímu počítači:
  
-#### <a name="unauthorized-client"></a>Unauthorized client
+#### <a name="unauthorized-client"></a>Neautorizovaný klient
 
-If you see the following error message when you initiate a remote desktop connection to your VM: 
+Pokud se při inicializaci připojení ke vzdálené ploše na virtuální počítač zobrazí následující chybová zpráva: 
 
-- Your credentials did not work
+- Vaše přihlašovací údaje nefungovaly.
 
-![Your credentials did not work](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
+![Vaše přihlašovací údaje nefungovaly.](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-Verify that the Windows 10 PC you are using to initiate the remote desktop connection is one that is either Azure AD joined, or hybrid Azure AD joined to the same Azure AD directory where your VM is joined to. For more information about device identity, see the article [What is a device identity](https://docs.microsoft.com/azure/active-directory/devices/overview).
+Ověřte, že počítač s Windows 10, který používáte k inicializaci připojení ke vzdálené ploše, je ten, který je připojený k Azure AD, nebo jestli je hybridní služba Azure AD připojená ke stejnému adresáři Azure AD, ke kterému je připojený váš virtuální počítač. Další informace o identitě zařízení najdete v článku [co je identita zařízení](https://docs.microsoft.com/azure/active-directory/devices/overview).
 
 > [!NOTE]
-> Windows 10 20H1, will add support for Azure AD Registered PC to initiate remote desktop connection to your VM. Join the Windows Insider Program to try this out and explore new features of Windows 10.
+> Windows 10 20H1 přidá podporu pro počítač se systémem Azure AD pro inicializaci připojení vzdálené plochy k vašemu VIRTUÁLNÍmu počítači. Připojte se k programu Windows Insider a vyzkoušejte si to a prozkoumejte nové funkce Windows 10.
 
-Also, verify the AADLoginForWindows extension has not been uninstalled after Azure AD join has completed.
+Ověřte také, že rozšíření AADLoginForWindows nebylo po dokončení připojení služby Azure AD odinstalováno.
  
-#### <a name="mfa-sign-in-method-required"></a>MFA sign-in method required
+#### <a name="mfa-sign-in-method-required"></a>Vyžaduje se metoda přihlášení MFA.
 
-If you see the following error message when you initiate a remote desktop connection to your VM: 
+Pokud se při inicializaci připojení ke vzdálené ploše na virtuální počítač zobrazí následující chybová zpráva: 
 
-- The sign-in method you're trying to use isn't allowed. Try a different sign-in method or contact your system administrator.
+- Metoda přihlašování, kterou se pokoušíte použít, není povolená. Vyzkoušejte jinou metodu přihlašování nebo se obraťte na správce systému.
 
-![The sign-in method you're trying to use isn't allowed.](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
+![Metoda přihlašování, kterou se pokoušíte použít, není povolená.](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
-If you have configured a Conditional Access policy that requires multi-factor authentication (MFA) before you can access the resource, then you need to ensure that the Windows 10 PC initiating the remote desktop connection to your VM signs in using a strong authentication method such as Windows Hello. If you do not use a strong authentication method for your remote desktop connection, you will see the previous error.
+Pokud jste nakonfigurovali zásadu podmíněného přístupu, která vyžaduje vícefaktorové ověřování (MFA) před tím, než budete moct získat přístup k prostředku, musíte zajistit, aby se počítač s Windows 10, který iniciuje připojení ke vzdálenému počítači, přihlásí k vašemu VIRTUÁLNÍmu počítači pomocí silného Metoda ověřování, jako je například Windows Hello. Pokud pro připojení ke vzdálené ploše nepoužíváte metodu silného ověřování, zobrazí se předchozí chyba.
 
-If you have not deployed Windows Hello for Business and if that is not an option for now, you can exclude MFA requirement by configuring Conditional Access policy that excludes "Azure Windows VM Sign-In" app from the list of cloud apps that require MFA. To learn more about Windows Hello for Business, see [Windows Hello for Business Overview](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
+Pokud jste nenainstalovali Windows Hello pro firmy a pokud to není možnost pro teď, můžete tento požadavek vyloučit z důvodu nastavení zásad podmíněného přístupu, které vyloučí aplikaci Azure Azure VM Signing ze seznamu cloudových aplikací, které vyžadují MFA. Další informace o Windows Hello pro firmy najdete v tématu [Přehled Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
 > [!NOTE]
-> Windows Hello for Business PIN authentication with RDP has been supported by Windows 10 for several versions, however support for Biometric authentication with RDP was added in Windows 10 version 1809. Using Windows Hello for Business auth during RDP is only available for deployments that use cert trust model and currently not available for key trust model.
+> Ověřování PIN kódu ve Windows Hello pro firmy se systémem Windows 10 podporuje pro několik verzí, ale v systému Windows 10 verze 1809 byla přidána podpora biometrického ověřování pomocí protokolu RDP. Použití ověřování ve Windows Hello pro firmy během protokolu RDP je dostupné jenom pro nasazení, která používají model důvěryhodnosti certifikátu a v současnosti není k dispozici pro model vztahu důvěryhodnosti klíče.
  
-## <a name="preview-feedback"></a>Preview feedback
+## <a name="preview-feedback"></a>Náhled zpětné vazby
 
-Share your feedback about this preview feature or report issues using it on the [Azure AD feedback forum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+Nasdílejte svůj názor na tuto funkci ve verzi Preview nebo nahlaste problémy s jejich použitím ve [fóru pro názory na Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 
 ## <a name="next-steps"></a>Další kroky
-For more information on Azure Active Directory, see [What is Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+Další informace o Azure Active Directory najdete v tématu [co je Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) .

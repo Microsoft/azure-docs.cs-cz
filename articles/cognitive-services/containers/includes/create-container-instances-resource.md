@@ -1,7 +1,7 @@
 ---
 title: Podpora kontejnerů
 titleSuffix: Azure Cognitive Services
-description: Learn how to create an Azure container instance resource.
+description: Přečtěte si, jak vytvořit prostředek Azure Container instance.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -16,37 +16,37 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383515"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>Create an Azure Container Instance resource
+## <a name="create-an-azure-container-instance-resource"></a>Vytvoření prostředku Azure Container instance
 
-1. Go to the [Create](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) page for Container Instances.
+1. Pro Container Instances přejít na stránku [vytvořit](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) .
 
-2. On the **Basics** tab, enter the following details:
+2. Na kartě **základy** zadejte následující podrobnosti:
 
     |Nastavení|Hodnota|
     |--|--|
     |Předplatné|Vyberte své předplatné.|
-    |Skupina prostředků|Select the available resource group or create a new one such as `cognitive-services`.|
-    |Název kontejneru|Enter a name such as `cognitive-container-instance`. The name must be in lower caps.|
-    |Umístění|Select a region for deployment.|
-    |Image type|If your container image is stored in a container registry that doesn’t require credentials, choose `Public`. If accessing your container image requires credentials, choose `Private`. Refer to [container repositories and images](../../cognitive-services-container-support.md#container-repositories-and-images) for details on whether or not the container image is `Public` or `Private` ("Public Preview"). |
-    |Název image|Enter the Cognitive Services container location. The location is what's used as an argument to the `docker pull` command. Refer to the [container repositories and images](../../cognitive-services-container-support.md#container-repositories-and-images) for the available image names and their corresponding repository.<br><br>The image name must be fully qualified specifying three parts. First, the container registry, then the repository, finally the image name: `<container-registry>/<repository>/<image-name>`.<br><br>Here is an example, `mcr.microsoft.com/azure-cognitive-services/keyphrase` would represent the Key Phrase Extraction image in the Microsoft Container Registry under the Azure Cognitive Services repository. Another example is, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` which would represent the Speech to Text image in the Microsoft repository of the Container Preview container registry. |
-    |OS type|`Linux`|
-    |Velikost|Change size to the suggested recommendations for your specific Cognitive Service container:<br>2 CPU cores<br>4 GB
+    |Skupina prostředků|Vyberte dostupnou skupinu prostředků nebo vytvořte novou, například `cognitive-services`.|
+    |Název kontejneru|Zadejte název, například `cognitive-container-instance`. Název musí být malými písmeny.|
+    |Umístění|Vyberte oblast pro nasazení.|
+    |Typ obrázku|Pokud je vaše image kontejneru uložená v registru kontejneru, který nevyžaduje přihlašovací údaje, vyberte `Public`. Pokud přístup k imagi kontejneru vyžaduje přihlašovací údaje, vyberte `Private`. Podrobnosti o tom, jestli je image kontejneru `Public` nebo `Private` (Public Preview), najdete v tématu [úložiště kontejnerů a image](../../cognitive-services-container-support.md#container-repositories-and-images) . |
+    |Název image|Zadejte umístění kontejneru Cognitive Services. Umístění se používá jako argument pro příkaz `docker pull`. Podívejte se na [úložiště kontejnerů a obrázky](../../cognitive-services-container-support.md#container-repositories-and-images) pro dostupné názvy imagí a jejich odpovídající úložiště.<br><br>Název Image musí být plně kvalifikovaný, aby se zadaly tři části. Nejprve registr kontejneru, potom úložiště, nakonec název bitové kopie: `<container-registry>/<repository>/<image-name>`.<br><br>Tady je příklad, `mcr.microsoft.com/azure-cognitive-services/keyphrase` by představoval Extrakce klíčových frází image v Container Registry Microsoftu v úložišti Cognitive Services Azure. Dalším příkladem je `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text`, který představuje řeč k textovému obrázku v úložišti Microsoftu úložiště kontejnerů pro náhled kontejneru. |
+    |Typ operačního systému|`Linux`|
+    |Velikost|Změňte velikost na navrhovaná doporučení pro konkrétní kontejner služby pro rozpoznávání:<br>2 jádra procesoru<br>4 GB
 
-3. On the **Networking** tab, enter the following details:
+3. Na kartě **sítě** zadejte následující podrobnosti:
 
     |Nastavení|Hodnota|
     |--|--|
-    |Porty|Set the TCP port to `5000`. Exposes the container on port 5000.|
+    |Porty|Nastavte port TCP na `5000`. Zpřístupňuje kontejner na portu 5000.|
 
-4. On the **Advanced** tab, enter the required **Environment Variables** for the container billing settings of the Azure Container Instance resource:
+4. Na kartě **Upřesnit** zadejte požadované **proměnné prostředí** pro nastavení fakturace kontejneru prostředku Azure Container instance:
 
     | Klíč | Hodnota |
     |--|--|
-    |`apikey`|Copied from the **Keys** page of the resource. It is a 32 alphanumeric-character string with no spaces or dashes, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Copied from the **Overview** page of the resource.|
+    |`apikey`|Zkopírováno ze stránky **klíče** v prostředku. Je to 32 řetězec alfanumerického znaku, který neobsahuje mezery ani pomlčky, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |`billing`|Zkopírováno ze stránky **Přehled** prostředku.|
     |`eula`|`accept`|
 
-1. Click **Review and Create**
-1. After validation passes, click **Create** to finish the creation process
-1. When the resource is successfully deployed, it's ready
+1. Klikněte na tlačítko **zkontrolovat a vytvořit**
+1. Po úspěšném ověření kliknutím na **vytvořit** dokončete proces vytváření.
+1. Po úspěšném nasazení prostředku je jeho připravenost

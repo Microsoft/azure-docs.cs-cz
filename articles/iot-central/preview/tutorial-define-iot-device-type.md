@@ -1,6 +1,6 @@
 ---
-title: Define a new IoT device type in Azure IoT Central | Microsoft Docs
-description: This tutorial shows you, as a builder, how to create a new Azure IoT device template in your Azure IoT Central application. You define the telemetry, state, properties, and commands for your type.
+title: Definování nového typu zařízení IoT v Azure IoT Central | Microsoft Docs
+description: V tomto kurzu se dozvíte jako tvůrce, jak v aplikaci Azure IoT Central vytvořit novou šablonu zařízení Azure IoT. Definujete telemetrii, stav, vlastnosti a příkazy pro svůj typ.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -16,427 +16,427 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74407020"
 ---
-# <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Define a new IoT device type in your Azure IoT Central application (preview features)
+# <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Kurz: definování nového typu zařízení IoT v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-A device template is a blueprint that defines the characteristics and behaviors of a type of device that connects to an Azure IoT Central application.
+Šablona zařízení je podrobný plán, který definuje charakteristiky a chování typu zařízení, které se připojuje k aplikaci Azure IoT Central.
 
-For example, a builder can create a device template for a connected fan that has the following characteristics:
+Tvůrce může například vytvořit šablonu zařízení pro připojený ventilátor, která má následující vlastnosti:
 
-- Sends temperature telemetry
-- Sends location property
-- Sends fan motor error events
-- Sends fan operating state
-- Provides a writeable fan speed property
-- Provides a command to restart the device
-- Gives you an overall view of the device via a dashboard
+- Odesílá telemetrii teploty.
+- Odeslat vlastnost Location
+- Odesílá chybové události motocyklu pro ventilátor.
+- Odešle provozní stav ventilátoru.
+- Poskytuje vlastnost rychlosti ventilátoru umožňující zápis.
+- Poskytuje příkaz k restartování zařízení.
+- Poskytuje celkový přehled o zařízení prostřednictvím řídicího panelu.
 
-From this device template, an operator can create and connect real fan devices. All these fans have measurements, properties, and commands that operators use to monitor and manage them. Operators use the device dashboards and forms to interact with the fan devices.
+Z této šablony zařízení může operátor vytvářet a připojovat reálné ventilátory. Všechny tyto ventilátory mají měření, vlastnosti a příkazy, které operátory používají pro monitorování a správu. Operátory používají řídicí panely a formuláře zařízení k interakci se zařízeními ventilátoru.
 
 > [!NOTE]
-> Only builders and administrators can create, edit, and delete device templates. Any user can create devices on the **Devices** page from existing device templates.
+> Šablony zařízení můžou vytvářet, upravovat a odstraňovat jenom tvůrci a správci. Každý uživatel může vytvořit zařízení na stránce **zařízení** z existujících šablon zařízení.
 
-[IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) enables IoT Central to integrate devices, without you writing any embedded device code. At the core of IoT Plug and Play is a device capability model schema that describes device capabilities. In an IoT Central Preview application, device templates use these IoT Plug and Play device capability models.
+[IoT technologie Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) umožňuje IoT Central integrovat zařízení, aniž byste museli psát žádný integrovaný kód zařízení. V jádru IoT technologie Plug and Play je schéma modelu schopností zařízení, které popisuje možnosti zařízení. V aplikaci IoT Central Preview používají šablony zařízení tyto modely schopností zařízení technologie Plug and Play IoT.
 
-As a builder, you have several options for creating device templates:
+Jako tvůrce máte k dispozici několik možností pro vytváření šablon zařízení:
 
-- Design the device template in IoT Central, and then implement its device capability model in your device code.
-- Import a device capability model from the [Azure Certified for IoT device catalog](https://aka.ms/iotdevcat). Then add any cloud properties, customizations, and dashboards your IoT Central application needs.
-- Create a device capability model by using Visual Studio Code. Implement your device code from the model. Manually import the device capability model into your IoT Central application, and then add any cloud properties, customizations, and dashboards your IoT Central application needs.
-- Create a device capability model by using Visual Studio Code. Implement your device code from the model, and connect your real device to your IoT Central application by using a device-first connection. IoT Central finds and imports the device capability model from the public repository for you. You can then add any cloud properties, customizations, and dashboards your IoT Central application needs to the device template.
+- Navrhněte šablonu zařízení v IoT Central a potom v kódu zařízení implementujte svůj model schopností zařízení.
+- Importujte model schopností zařízení z [katalogu zařízení Azure Certified for IoT](https://aka.ms/iotdevcat). Pak přidejte libovolné vlastnosti cloudu, přizpůsobení a řídicí panely, které vaše aplikace IoT Central potřebuje.
+- Vytvořte model schopností zařízení pomocí Visual Studio Code. Implementujte kód zařízení z modelu. Model schopností zařízení naimportujte ručně do aplikace IoT Central a pak přidejte všechny vlastnosti cloudu, přizpůsobení a řídicí panely, které aplikace IoT Central potřebuje.
+- Vytvořte model schopností zařízení pomocí Visual Studio Code. Naimplementujte kód zařízení z modelu a připojte skutečné zařízení k vaší IoT Central aplikaci pomocí připojení zařízení, které se používá jako první. IoT Central najde a naimportuje model schopností zařízení z veřejného úložiště za vás. Pak můžete přidat libovolné vlastnosti cloudu, vlastní nastavení a řídicí panely, které vaše aplikace IoT Central potřebuje k šabloně zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To complete this tutorial, you need to [create an Azure IoT Central application](quick-deploy-iot-central.md).
+K dokončení tohoto kurzu potřebujete [vytvořit aplikaci Azure IoT Central](quick-deploy-iot-central.md).
 
-## <a name="create-a-device-template-from-the-device-catalog"></a>Create a device template from the device catalog
+## <a name="create-a-device-template-from-the-device-catalog"></a>Vytvoření šablony zařízení z katalogu zařízení
 
-As a builder, you can quickly start building out your solution by using an IoT Plug and Play certified device. See the list in the [Azure IoT Device Catalog](https://catalog.azureiotsolutions.com/alldevices). IoT Central integrates with the device catalog so you can import a device capability model from any of these IoT Plug and Play certified devices. To create a device template from one of these devices in IoT Central:
+Jako tvůrce můžete rychle začít vytvářet řešení pomocí zařízení s certifikací IoT technologie Plug and Play. Podívejte se na seznam v [katalogu zařízení Azure IoT](https://catalog.azureiotsolutions.com/alldevices). IoT Central se integruje s katalogem zařízení, abyste mohli naimportovat model schopností zařízení z některého z těchto zařízení s certifikací IoT technologie Plug and Play. Chcete-li vytvořit šablonu zařízení z jednoho z těchto zařízení v IoT Central:
 
-1. Go to the **Device Templates** page in your IoT Central application.
-1. Select **+ New**, and then select any of the IoT Plug and Play certified devices from the catalog. IoT Central creates a device template based on this device capability model.
-1. Add any cloud properties, customizations, or views to your device template.
-1. Select **Publish** to make the template available for operators to view and connect devices.
+1. V aplikaci IoT Central otevřete stránku **šablony zařízení** .
+1. Vyberte **+ Nový**a potom z katalogu vyberte libovolné zařízení s certifikací IoT technologie Plug and Play. IoT Central vytvoří šablonu zařízení založenou na tomto modelu schopností zařízení.
+1. Přidejte do šablony zařízení všechny vlastnosti cloudu, vlastní nastavení nebo zobrazení.
+1. Vyberte **publikovat** a zpřístupněte tak šablonu pro operátory k zobrazení a připojení zařízení.
 
-## <a name="create-a-device-template-from-scratch"></a>Create a device template from scratch
+## <a name="create-a-device-template-from-scratch"></a>Vytvoření zcela nové šablony zařízení
 
-A device template contains:
+Šablona zařízení obsahuje:
 
-- A _device capability model_ that specifies the telemetry, properties, and commands that the device implements. These capabilities are organized into one or more interfaces.
-- _Cloud properties_ that define information that your IoT Central application stores about your devices. For example, a cloud property might record the date a device was last serviced. This information is never shared with the device.
-- _Customizations_ let the builder override some of the definitions in the device capability model. For example, the builder can override the name of a device property. Property names appear in IoT Central dashboards and forms.
-- _Dashboards and forms_ let the builder create a UI that lets operators monitor and manage the devices connected to your application.
+- _Model schopností zařízení_ , který určuje telemetrii, vlastnosti a příkazy, které zařízení implementuje. Tyto možnosti jsou uspořádány do jednoho nebo více rozhraní.
+- _Vlastnosti cloudu_ , které definují informace, které vaše aplikace IoT Central ukládá na vaše zařízení. Například vlastnost cloudu může zaznamenat datum, kdy bylo zařízení naposledy obsluhované. Tyto informace se zařízení nikdy nesdílí.
+- _Přizpůsobení_ umožní tvůrci přepsat některé definice v modelu schopností zařízení. Tvůrce může například přepsat název vlastnosti zařízení. Názvy vlastností se zobrazí v IoT Central řídicích panelech a formulářích.
+- _Řídicí panely a formuláře_ umožňují tvůrci vytvořit uživatelské rozhraní, které umožňuje operátorům monitorovat a spravovat zařízení připojená k vaší aplikaci.
 
-To create a device template in IoT Central:
+Vytvoření šablony zařízení v IoT Central:
 
-1. Go to the **Device Templates** page in your IoT Central application.
-1. Select **+ New** > **Custom**.
-1. Enter a name for your template, such as **Environmental Sensor**.
-1. Stiskněte **Enter**. IoT Central creates an empty device template.
+1. V aplikaci IoT Central otevřete stránku **šablony zařízení** .
+1. Vyberte **+ nový** > **vlastní**.
+1. Zadejte název šablony, například **snímač pro životní prostředí**.
+1. Stiskněte **Enter**. IoT Central vytvoří prázdnou šablonu zařízení.
 
-## <a name="manage-a-device-template"></a>Manage a device template
+## <a name="manage-a-device-template"></a>Správa šablony zařízení
 
-You can rename or delete a template from the template's home page.
+Šablonu můžete přejmenovat nebo odstranit z domovské stránky šablony.
 
-After you've added a device capability model to your template, you can publish it. Until you've published the template, you can't connect a device based on this template for your operators to see in the **Devices** page.
+Až do šablony přidáte model schopností zařízení, můžete ho publikovat. Dokud šablonu nepublikujete, nemůžete připojit zařízení založené na této šabloně pro vaše operátory a zobrazit je na stránce **zařízení** .
 
-## <a name="create-a-capability-model"></a>Create a capability model
+## <a name="create-a-capability-model"></a>Vytvoření modelu schopností
 
-To create a device capability model, you can:
+Pokud chcete vytvořit model schopností zařízení, můžete:
 
-- Use IoT Central to create a custom model from scratch.
-- Import a model from a JSON file. A device builder might have used Visual Studio Code to author a device capability model for your application.
-- Select one of the devices from the Device Catalog. This option imports the device capability model that the manufacturer has published for this device. A device capability model imported like this is automatically published.
+- Pomocí IoT Central vytvořit vlastní model od začátku.
+- Importuje model ze souboru JSON. Tvůrce zařízení mohl použít Visual Studio Code k vytvoření modelu schopností zařízení pro vaši aplikaci.
+- Vyberte jedno ze zařízení z katalogu zařízení. Tato možnost importuje model schopností zařízení, který výrobce pro toto zařízení publikoval. Automaticky se publikuje model schopností zařízení importovaný jako takový.
 
-## <a name="manage-a-capability-model"></a>Manage a capability model
+## <a name="manage-a-capability-model"></a>Správa modelu schopností
 
-After you create a device capability model, you can:
+Po vytvoření modelu schopností zařízení můžete:
 
-- Add interfaces to the model. A model must have at least one interface.
-- Edit model metadata, such as its ID, namespace, and name.
-- Delete the model.
+- Přidejte do modelu rozhraní. Model musí mít alespoň jedno rozhraní.
+- Upravte metadata modelu, jako je jeho ID, obor názvů a název.
+- Odstraňte model.
 
-## <a name="create-an-interface"></a>Create an interface
+## <a name="create-an-interface"></a>Vytvoření rozhraní
 
-A device capability must have at least one interface. An interface is a reusable collection of capabilities.
+Schopnost zařízení musí mít aspoň jedno rozhraní. Rozhraní je opakovaně použitelná kolekce funkcí.
 
-To create an interface:
+Vytvoření rozhraní:
 
-1. Go to your device capability model, and choose **+ Add Interface**.
+1. Přejdete do modelu schopností zařízení a zvolíte **+ Přidat rozhraní**.
 
-1. On the **Select an Interface** page, you can:
+1. Na stránce **Vybrat rozhraní** můžete:
 
-    - Create a custom interface from scratch.
-    - Import an existing interface from a file. A device builder might have used Visual Studio Code to author an interface for your device.
-    - Choose one of the standard interfaces, such as the **Device Information** interface. Standard interfaces specify the capabilities common to many devices. These standard interfaces are published by Azure IoT, and can't be versioned or edited.
+    - Vytvořte vlastní rozhraní od začátku.
+    - Importuje existující rozhraní ze souboru. Je možné, že Visual Studio Code k vytváření rozhraní pro vaše zařízení použít nástroj pro sestavovatele zařízení.
+    - Vyberte jedno ze standardních rozhraní, například rozhraní **informací o zařízení** . Standardní rozhraní určují možnosti společné pro mnoho zařízení. Tato standardní rozhraní jsou publikována službou Azure IoT a nelze je upravovat ani upravovat.
 
-1. After you create an interface, choose **Edit Identity** to change the display name of the interface.
+1. Po vytvoření rozhraní změňte zobrazovaný název rozhraní výběrem možnosti **Upravit identitu** .
 
-1. If you choose to create a custom interface from scratch, you can add your device's capabilities. Device capabilities are telemetry, properties, and commands.
+1. Pokud se rozhodnete vytvořit vlastní rozhraní od začátku, můžete přidat možnosti svého zařízení. Možnosti zařízení jsou telemetrie, vlastnosti a příkazy.
 
-### <a name="telemetry"></a>Telemetrie
+### <a name="telemetry"></a>Telemetrická data
 
-Telemetry is a stream of values sent from the device, typically from a sensor. For example, a sensor might report the ambient temperature.
+Telemetrie je proud hodnot odeslaných ze zařízení, typicky ze senzoru. Senzor může například ohlásit okolní teplotu.
 
-The following table shows the configuration settings for a telemetry capability:
+Následující tabulka ukazuje nastavení konfigurace pro schopnost telemetrie:
 
 | Pole | Popis |
 | ----- | ----------- |
-| Zobrazovaný název | The display name for the telemetry value used on dashboards and forms. |
-| Name (Název) | The name of the field in the telemetry message. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Capability Type | Telemetry. |
-| Semantic Type | The semantic type of the telemetry, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
-| Schéma | The telemetry data type, such as double, string, or vector. The available choices are determined by the semantic type. Schema isn't available for the event and state semantic types. |
-| Závažnost | Only available for the event semantic type. The severities are **Error**, **Information**, or **Warning**. |
-| State Values | Only available for the state semantic type. Define the possible state values, each of which has display name, name, enumeration type, and value. |
-| Jednotka | A unit for the telemetry value, such as **mph**, **%** , or **&deg;C**. |
-| Display Unit | A display unit for use on dashboards and forms. |
-| Poznámka | Any comments about the telemetry capability. |
-| Popis | A description of the telemetry capability. |
+| Zobrazovaný název | Zobrazovaný název hodnoty telemetrie používané na řídicích panelech a formulářích |
+| Název | Název pole ve zprávě telemetrie IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Typ schopnosti | Telemetrie. |
+| Sémantický typ | Sémantický typ telemetrie, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
+| Schéma | Datový typ telemetrie, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
+| Severity | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
+| Hodnoty stavu | K dispozici pouze pro sémantický typ State. Definujte hodnoty možných stavů, z nichž každá má zobrazované jméno, název, Výčtový typ a hodnotu. |
+| Jednotka | Jednotka pro hodnotu telemetrie, například **mph**, **%** nebo **&deg;C**. |
+| Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
+| Poznámka | Jakékoli komentáře k schopnosti telemetrie. |
+| Popis | Popis schopnosti telemetrie. |
 
 ### <a name="properties"></a>Vlastnosti
 
-Properties represent point-in-time values. For example, a device can use a property to report the target temperature it's trying to reach. You can set writeable properties from IoT Central.
+Vlastnosti znázorňují hodnoty bodu v čase. Zařízení může například pomocí vlastnosti nahlásit cílovou teplotu, se kterou se snaží dosáhnout. Můžete nastavit zapisovatelné vlastnosti z IoT Central.
 
-The following table shows the configuration settings for a property capability:
+Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti:
 
 | Pole | Popis |
 | ----- | ----------- |
-| Zobrazovaný název | The display name for the property value used on dashboards and forms. |
-| Name (Název) | The name of the property. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Capability Type | Property. |
-| Semantic Type | The semantic type of the property, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
-| Schéma | The property data type, such as double, string, or vector. The available choices are determined by the semantic type. Schema isn't available for the event and state semantic types. |
-| Writeable | If the property isn't writeable, the device can report property values to IoT Central. If the property is writeable, the device can report property values to IoT Central and IoT Central can send property updates to the device.
-| Závažnost | Only available for the event semantic type. The severities are **Error**, **Information**, or **Warning**. |
-| State Values | Only available for the state semantic type. Define the possible state values, each of which has display name, name, enumeration type, and value. |
-| Jednotka | A unit for the property value, such as **mph**, **%** , or **&deg;C**. |
-| Display Unit | A display unit for use on dashboards and forms. |
-| Poznámka | Any comments about the property capability. |
-| Popis | A description of the property capability. |
+| Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti používané na řídicích panelech a formulářích. |
+| Název | Název vlastnosti. IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Typ schopnosti | Majetek. |
+| Sémantický typ | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
+| Schéma | Datový typ vlastnosti, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
+| Zapisovatelné | Pokud vlastnost není zapisovatelná, může zařízení nahlásit hodnoty vlastností IoT Central. Pokud je vlastnost zapisovatelná, může zařízení nahlásit hodnoty vlastností IoT Central a IoT Central může odesílat aktualizace vlastností do zařízení.
+| Severity | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
+| Hodnoty stavu | K dispozici pouze pro sémantický typ State. Definujte hodnoty možných stavů, z nichž každá má zobrazované jméno, název, Výčtový typ a hodnotu. |
+| Jednotka | Jednotka pro hodnotu vlastnosti, například **mph**, **%** nebo **&deg;C**. |
+| Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
+| Poznámka | Jakékoli komentáře k funkci vlastnosti. |
+| Popis | Popis schopnosti vlastnosti. |
 
 ### <a name="commands"></a>Příkazy
 
-You can call device commands from IoT Central. Commands optionally pass parameters to the device and receive a response from the device. For example, you can call a command to reboot a device in 10 seconds.
+Příkazy zařízení můžete volat z IoT Central. Příkazy volitelně předají do zařízení parametry a obdrží odpověď ze zařízení. Například můžete zavolat příkaz k restartování zařízení za 10 sekund.
 
-The following table shows the configuration settings for a command capability:
+Následující tabulka ukazuje nastavení konfigurace pro funkci příkazu:
 
 | Pole | Popis |
 | ----- | ----------- |
-| Zobrazovaný název | The display name for the command used on dashboards and forms. |
-| Name (Název) | The name of the command. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Capability Type | Command. |
+| Zobrazovaný název | Zobrazovaný název příkazu, který se používá na řídicích panelech a formulářích. |
+| Název | Název příkazu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Typ schopnosti | Systému. |
 | Příkaz | `SynchronousExecutionType`. |
-| Poznámka | Any comments about the command capability. |
-| Popis | A description of the command capability. |
-| Žádost | If enabled, a definition of the request parameter, including: name, display name, schema, unit, and display unit. |
-| Odpověď | If enabled, a definition of the command response, including: name, display name, schema, unit, and display unit. |
+| Poznámka | Jakékoli komentáře k funkci příkazu. |
+| Popis | Popis funkce příkazu |
+| Žádost | Pokud je povoleno, definice parametru Request, včetně názvu, zobrazovaného názvu, schématu, jednotky a zobrazované jednotky. |
+| Odpověď | Pokud je povoleno, definice odpovědi příkazu, včetně názvu, zobrazovaného názvu, schématu, jednotky a zobrazované jednotky, je-li povolena. |
 
-## <a name="manage-an-interface"></a>Manage an interface
+## <a name="manage-an-interface"></a>Správa rozhraní
 
-If you haven't published the interface, you can edit the capabilities defined by the interface. After you publish the interface, if you want to make any changes, you'll need to create a new version of the device template and version the interface. You can make changes that don't require versioning, such as display names or units, in the **Customize** section.
+Pokud jste rozhraní nepublikovali, můžete upravit možnosti definované rozhraním. Pokud chcete provést změny, budete po publikování rozhraní muset vytvořit novou verzi šablony zařízení a verzi rozhraní. V části **přizpůsobení** můžete provádět změny, které nevyžadují správu verzí, jako jsou názvy zobrazení nebo jednotky.
 
-You can also export the interface as a JSON file if you want to reuse it in another capability model.
+Rozhraní můžete také exportovat jako soubor JSON, pokud ho chcete znovu použít v jiném modelu schopností.
 
-## <a name="add-cloud-properties"></a>Add cloud properties
+## <a name="add-cloud-properties"></a>Přidat vlastnosti cloudu
 
-Use cloud properties to store information about devices in IoT Central. Cloud properties are never sent to a device. For example, you can use cloud properties to store the name of the customer who has installed the device, or the device's last service date.
+Pomocí vlastností cloudu můžete ukládat informace o zařízeních v IoT Central. Vlastnosti cloudu se nikdy neodesílají do zařízení. Pomocí vlastností cloudu můžete například uložit jméno zákazníka, který má nainstalované zařízení, nebo datum poslední služby daného zařízení.
 
-The following table shows the configuration settings for a cloud property:
+Následující tabulka ukazuje nastavení konfigurace pro cloudovou vlastnost:
 
 | Pole | Popis |
 | ----- | ----------- |
-| Zobrazovaný název | The display name for the cloud property value used on dashboards and forms. |
-| Name (Název) | The name of the cloud property. IoT Central generates a value for this field from the display name, but you can choose your own value if necessary. |
-| Semantic Type | The semantic type of the property, such as temperature, state, or event. The choice of semantic type determines which of the following fields are available. |
-| Schéma | The cloud property data type, such as double, string, or vector. The available choices are determined by the semantic type. |
+| Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti cloudu používaný na řídicích panelech a formulářích. |
+| Název | Název vlastnosti cloudu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Sémantický typ | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
+| Schéma | Datový typ cloudové vlastnosti, jako je například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. |
 
-## <a name="add-customizations"></a>Add customizations
+## <a name="add-customizations"></a>Přidat přizpůsobení
 
-Use customizations when you need to modify an imported interface or add IoT Central-specific features to a capability. You can only customize fields that don't break interface compatibility. Můžete například provést následující věci:
+Vlastní nastavení použijte v případě, že potřebujete upravit importované rozhraní nebo přidat funkce specifické pro IoT Central do funkce. Můžete přizpůsobit pouze pole, která neruší kompatibilitu rozhraní. Můžete například provést následující věci:
 
-- Customize the display name and units of a capability.
-- Add a default color to use when the value appears on a chart.
-- Specify initial, minimum, and maximum values for a property.
+- Přizpůsobení zobrazovaného názvu a jednotek schopnosti.
+- Přidejte výchozí barvu, která se použije, když se hodnota zobrazí v grafu.
+- Zadejte počáteční, minimální a maximální hodnoty vlastnosti.
 
-You can't customize the capability name or capability type. If there are changes you can't make in the **Customize** section, you'll need to version your device template and interface to modify the capability.
+Nemůžete přizpůsobit název schopnosti ani typ schopnosti. Pokud existují změny, které nemůžete provést v části **přizpůsobení** , budete muset verzi šablony a rozhraní upravit tak, aby se tato možnost změnila.
 
-### <a name="generate-default-views"></a>Generate default views
+### <a name="generate-default-views"></a>Generovat výchozí zobrazení
 
-Generating default views is a quick way to visualize your important device information. You have up to three default views generated for your device template:
+Generování výchozích zobrazení je rychlý způsob, jak vizualizovat důležité informace o zařízení. Máte k dispozici až tři výchozí zobrazení vygenerovaná pro šablonu zařízení:
 
-- **Commands** provides a view with device commands, and allows your operator to dispatch them to your device.
-- **Overview** provides a view with device telemetry, displaying charts and metrics.
-- **About** provides a view with device information, displaying device properties.
+- **Příkazy** poskytují zobrazení pomocí příkazů zařízení a umožňují operátorovi, aby je odesílal do vašeho zařízení.
+- **Přehled** nabízí zobrazení telemetrie zařízení, zobrazení grafů a metrik.
+- **O produktu** poskytuje zobrazení s informacemi o zařízení a zobrazuje vlastnosti zařízení.
 
-After you've selected **Generate default views**, you see that they have been automatically added under the **Views** section of your device template.
+Jakmile vyberete možnost **Generovat výchozí zobrazení**, uvidíte, že byly automaticky přidány do části **zobrazení** v šabloně zařízení.
 
-## <a name="add-dashboards"></a>Add dashboards
+## <a name="add-dashboards"></a>Přidat řídicí panely
 
-Add dashboards to a device template to enable operators to visualize a device by using charts and metrics. You can have multiple dashboards for a device template.
+Přidejte řídicí panely do šablony zařízení a umožněte tak operátorům vizualizovat zařízení pomocí grafů a metrik. Pro šablonu zařízení můžete mít více řídicích panelů.
 
-To add a dashboard to a device template:
+Přidání řídicího panelu do šablony zařízení:
 
-1. Go to your device template, and select **Views**.
-1. Choose **Visualizing the Device**.
-1. Enter a name for your dashboard in **Dashboard Name**.
-1. Add tiles to your dashboard from the list of static, property, cloud property, telemetry, and command tiles. Drag and drop the tiles you want to add to your dashboard.
-1. To plot multiple telemetry values on a single chart tile, select the telemetry values, and then select **Combine**.
-1. Configure each tile you add to customize how it displays data. You can do this by selecting the gear icon, or by selecting **Change configuration** on your chart tile.
-1. Arrange and resize the tiles on your dashboard.
+1. Otevřete šablonu zařízení a vyberte **zobrazení**.
+1. Vyberte **vizualizaci zařízení**.
+1. Do **název řídicího panelu**zadejte název řídicího panelu.
+1. Přidejte dlaždice na řídicí panel ze seznamu statických, vlastností, vlastností cloudu, telemetrie a příkazových dlaždic. Přetáhněte dlaždice, které chcete přidat na řídicí panel.
+1. Chcete-li vykreslit více hodnot telemetrie na dlaždici s jedním grafem, vyberte hodnoty telemetrie a pak vyberte **kombinovat**.
+1. Nakonfigurujte každou dlaždici, kterou přidáte, abyste mohli přizpůsobit způsob zobrazení dat. To můžete provést tak, že vyberete ikonu ozubeného kolečka nebo na dlaždici grafu vyberete **změnit konfiguraci** .
+1. Uspořádejte a změňte velikost dlaždic na řídicím panelu.
 1. Uložte změny.
 
-### <a name="configure-preview-device-to-view-dashboard"></a>Configure preview device to view dashboard
+### <a name="configure-preview-device-to-view-dashboard"></a>Konfigurace zařízení Preview pro zobrazení řídicího panelu
 
-To view and test your dashboard, select **Configure preview device**. This enables you to see the dashboard as your operator sees it after it's published. Use this option to validate that your views show the correct data. You can choose from the following:
+Řídicí panel zobrazíte a otestujete tak, že vyberete **Konfigurovat zařízení ve verzi Preview**. To vám umožní zobrazit řídicí panel tak, jak ho váš operátor uvidí po publikování. Tuto možnost použijte, pokud chcete ověřit, jestli se v zobrazeních zobrazují správná data. Můžete si vybrat z těchto možností:
 
-- No preview device.
-- The real test device you've configured for your device template.
-- An existing device in your application, by using the device ID.
+- Žádné zařízení ve verzi Preview
+- Reálné testovací zařízení, které jste nakonfigurovali pro šablonu zařízení.
+- Existující zařízení v aplikaci pomocí ID zařízení.
 
-## <a name="add-forms"></a>Add forms
+## <a name="add-forms"></a>Přidat formuláře
 
-Add forms to a device template to enable operators to manage a device by viewing and setting properties. Operators can only edit cloud properties and writeable device properties. You can have multiple forms for a device template.
+Přidejte formuláře do šablony zařízení a umožněte tak operátorům spravovat zařízení zobrazením a nastavením vlastností. Operátoři můžou upravovat jenom vlastnosti cloudu a zapisovatelné vlastnosti zařízení. Pro šablonu zařízení můžete mít několik forem.
 
-To add a form to a device template:
+Přidání formuláře do šablony zařízení:
 
-1. Go to your device template, and select **Views**.
-1. Choose **Editing Device and Cloud data**.
-1. Enter a name for your form in **Form Name**.
-1. Select the number of columns to use to lay out your form.
-1. Add properties to an existing section on your form, or select properties and choose **Add Section**. Use sections to group properties on your form. You can add a title to a section.
-1. Configure each property on the form to customize its behavior.
-1. Arrange the properties on your form.
+1. Otevřete šablonu zařízení a vyberte **zobrazení**.
+1. Vyberte možnost **Upravit zařízení a data v cloudu**.
+1. Do **názvu**formuláře zadejte název formuláře.
+1. Vyberte počet sloupců, které se mají použít k rozložení formuláře.
+1. Přidejte vlastnosti do existující části formuláře nebo vyberte vlastnosti a zvolte možnost **přidat oddíl**. K seskupení vlastností formuláře použijte oddíly. Do oddílu můžete přidat název.
+1. Nakonfigurujte jednotlivé vlastnosti formuláře, abyste mohli přizpůsobit jeho chování.
+1. Uspořádejte vlastnosti ve formuláři.
 1. Uložte změny.
 
-## <a name="publish-a-device-template"></a>Publish a device template
+## <a name="publish-a-device-template"></a>Publikování šablony zařízení
 
-Before you can connect a device that implements your device capability model, you must publish your device template.
+Předtím, než budete moci připojit zařízení, které implementuje model schopností zařízení, je nutné publikovat šablonu zařízení.
 
-After you publish a device template, you can only make limited changes to the device capability model. To modify an interface, you need to [create and publish a new version](./howto-version-device-template.md).
+Po publikování šablony zařízení můžete provádět pouze omezené změny modelu schopností zařízení. Chcete-li změnit rozhraní, je třeba [vytvořit a publikovat novou verzi](./howto-version-device-template.md).
 
-To publish a device template, go to you your device template, and select **Publish**.
+Šablonu zařízení publikujete tak, že přejdete na šablonu zařízení a vyberete **publikovat**.
 
-After you publish a device template, an operator can go to the **Devices** page, and add either real or simulated devices that use your device template. You can continue to modify and save your device template as you're making changes. When you want to push these changes out to the operator to view under the **Devices** page, you must select **Publish** each time.
+Po publikování šablony zařízení může operátor přejít na stránku **zařízení** a přidat buď skutečná, nebo simulovaná zařízení, která používají šablonu zařízení. Můžete i nadále upravovat a ukládat šablonu zařízení, když provádíte změny. Pokud chcete tyto změny vložit do operátoru, který se zobrazí na stránce **zařízení** , je nutné vybrat **publikovat** pokaždé.
 
-## <a name="define-a-new-iot-gateway-device-type-preview-features"></a>Define a new IoT gateway device type (preview features)
+## <a name="define-a-new-iot-gateway-device-type-preview-features"></a>Definování nového typu zařízení brány IoT (funkce ve verzi Preview)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-This tutorial shows you, as a builder, how to use a gateway device template to define a new type of IoT device in your IoT Central application. 
+V tomto kurzu se dozvíte jako tvůrce, jak použít šablonu zařízení brány k definování nového typu zařízení IoT ve vaší aplikaci IoT Central. 
 
-In this section, you create a **Smart Building** device template. A Smart Building gateway device:
+V této části vytvoříte šablonu zařízení pro **inteligentní sestavení** . Zařízení inteligentní brány pro sestavování:
 
-* Sends telemetry, such as temperature and occupancy.
-* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
-* Responds to commands, such as resetting temperature.
-* Allows relationships to other device capability models.
+* Odesílá telemetrii, například teplotu a obsazení.
+* Reaguje na zapisovatelné vlastnosti při aktualizaci v cloudu, jako je například interval odesílání telemetrie.
+* Reaguje na příkazy, jako je resetování teploty.
+* Umožňuje vztahy k jiným modelům schopností zařízení.
 
-### <a name="create-iot-device-templates"></a>Create IoT device templates
+### <a name="create-iot-device-templates"></a>Vytvoření šablon zařízení IoT
 
-Here's how to create IoT device templates: 
+Tady je postup vytvoření šablon zařízení IoT: 
 
-1. In the left navigation, select **Device Templates**. Then select **+ New**, and select the **IoT Device** tile and occupancy sensor tile. Select **Next: Customize**.
+1. V levém navigačním panelu vyberte **šablony zařízení**. Pak vyberte **+ Nový**a vyberte dlaždici **zařízení IoT** a senzor obsazení. Vyberte **Další: přizpůsobit**.
 
-   ![Screenshot of Device Templates page and options](./media/tutorial-define-iot-device-type/gateway-downstream-new.png)
+   ![Obrazovka stránky a možností pro šablony zařízení](./media/tutorial-define-iot-device-type/gateway-downstream-new.png)
 
-1. On the **Review** page, select **Create**. 
+1. Na stránce **Kontrola** vyberte **vytvořit**. 
 
-   ![Screenshot of Review page](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
+   ![Snímek obrazovky se stránkou Revize](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
 
-1. A new device template is created. 
+1. Vytvoří se nová šablona zařízení. 
 
-   ![Screenshot of new device template](./media/tutorial-define-iot-device-type/occupancy-sensor.png)
+   ![Snímek obrazovky s novou šablonou zařízení](./media/tutorial-define-iot-device-type/occupancy-sensor.png)
 
-Here's how to create a device template for S1 Sensor:
+Tady je postup vytvoření šablony zařízení pro senzor S1:
 
-1. In the left navigation, select **Device Templates**. Then select **+ New**, and select the **IoT Device** tile and select occupancy sensor tile. Select **Next: Customize**.
+1. V levém navigačním panelu vyberte **šablony zařízení**. Pak vyberte **+ Nový**a vyberte dlaždici **zařízení IoT** a vyberte dlaždici snímače obsazení. Vyberte **Další: přizpůsobit**.
 
-   ![Screenshot of Device Templates page and options](./media/tutorial-define-iot-device-type/s1-sensor.png)
+   ![Obrazovka stránky a možností pro šablony zařízení](./media/tutorial-define-iot-device-type/s1-sensor.png)
 
-1. On the **Review** page, select **Create**. 
+1. Na stránce **Kontrola** vyberte **vytvořit**. 
 
-   ![Screenshot of Review page](./media/tutorial-define-iot-device-type/s1-review.png)
+   ![Snímek obrazovky se stránkou Revize](./media/tutorial-define-iot-device-type/s1-review.png)
 
-1. A new device template is created. 
+1. Vytvoří se nová šablona zařízení. 
 
-   ![Screenshot of new device template](./media/tutorial-define-iot-device-type/s1-template.png)
+   ![Snímek obrazovky s novou šablonou zařízení](./media/tutorial-define-iot-device-type/s1-template.png)
 
-## <a name="create-an-iot-gateway-device-template"></a>Create an IoT gateway device template
+## <a name="create-an-iot-gateway-device-template"></a>Vytvoření šablony zařízení brány IoT
 
-You can choose to create an IoT gateway device template. The gateway device has relationships with downstream devices that connect into IoT Central through the gateway device. 
+Můžete zvolit vytvoření šablony zařízení brány IoT. Zařízení brány má relace se zařízeními pro příjem dat, která se připojují k IoT Central prostřednictvím zařízení brány. 
 
-### <a name="downstream-device-relationships-with-gateway-device"></a>Downstream device relationships with gateway device
+### <a name="downstream-device-relationships-with-gateway-device"></a>Vztahy navazujících zařízení se zařízením brány
 
-IoT devices can connect to an IoT gateway device.
+Zařízení IoT se můžou připojit k zařízení brány IoT.
 
-![Diagram of relationship between gateway device and downstream devices](./media/tutorial-define-iot-device-type/gatewaypattern.png)
+![Diagram vztahů mezi zařízením brány a zařízeními pro příjem dat](./media/tutorial-define-iot-device-type/gatewaypattern.png)
 
-As a builder, you can create and edit IoT gateway device templates in your application. After you publish a device template, you can connect real devices that implement the device template.
+Jako tvůrce můžete v aplikaci vytvořit a upravit šablony zařízení brány IoT Gateway. Po publikování šablony zařízení můžete propojit skutečná zařízení, která implementují šablonu zařízení.
 
-### <a name="select-a-device-template-type"></a>Select a device template type 
+### <a name="select-a-device-template-type"></a>Vybrat typ šablony zařízení 
 
-To add a new device template to your application:
+Přidání nové šablony zařízení do aplikace:
 
-1. From the left pane, select the **Device Templates** tab.
+1. V levém podokně vyberte kartu **šablony zařízení** .
 
-   ![Screenshot of Device templates page](./media/tutorial-define-iot-device-type/devicetemplate.png)
+   ![Snímek obrazovky se stránkou šablon zařízení](./media/tutorial-define-iot-device-type/devicetemplate.png)
 
-1. Select **+ New** to start creating a new device template.
+1. Vyberte **+ Nová** a začněte vytvářet novou šablonu zařízení.
 
-   ![Screenshot of Device templates page, with New highlighted](./media/tutorial-define-iot-device-type/devicetemplatenew.png)
+   ![Obrazovka stránky šablony zařízení s novým zvýrazněným](./media/tutorial-define-iot-device-type/devicetemplatenew.png)
 
-   ![Screenshot of Customize device page](./media/tutorial-define-iot-device-type/gateway-review.png)
+   ![Snímek obrazovky s přizpůsobením stránky zařízení](./media/tutorial-define-iot-device-type/gateway-review.png)
 
-1. On the **Select template type** page, select **Azure IoT**, and then select **Next: Customize**.
+1. Na stránce **Vybrat typ šablony** vyberte **Azure IoT**a potom vyberte **Další: přizpůsobit**.
 
-   ![Screenshot of Select template type page](./media/tutorial-define-iot-device-type/gateway-customize.png)
+   ![Snímek obrazovky s výběrem stránky typu šablony](./media/tutorial-define-iot-device-type/gateway-customize.png)
 
-1. Select the gateway check box, and select **Create**.
+1. Zaškrtněte políčko Brána a vyberte **vytvořit**.
 
-   ![Screenshot of Customize device page, with gateway highlighted](./media/tutorial-define-iot-device-type/gateway-review.png)
+   ![Snímek obrazovky se stránkou přizpůsobení zařízení se zvýrazněnou bránou](./media/tutorial-define-iot-device-type/gateway-review.png)
 
-1. On the review page, select **Create**. 
+1. Na stránce Kontrola vyberte **vytvořit**. 
 
-1. Enter the gateway template name, **Smart Building Gateway Template**. Select the **Custom** tile.
+1. Zadejte název šablony brány, **šablonu Smart budova Gateway**. Vyberte **vlastní** dlaždici.
 
-1. Add a standard interface **Device Information**.
+1. Přidejte **informace o zařízení**standardního rozhraní.
 
-### <a name="add-relationships"></a>Add relationships
+### <a name="add-relationships"></a>Přidat relace
 
-You can add downstream relationships to device capability models for devices you connect to a gateway device.
+Pro zařízení, která se připojují k zařízení brány, můžete přidat podřízené vztahy k modelům schopností zařízení.
 
-Create relationships to downstream device capability models. Vyberte **Save** (Uložit).
+Vytvořte vztahy k modelům schopností pro příjem dat z libovolného zařízení. Vyberte **Uložit**.
 
-![Screenshot of Smart Building Gateway Template, with various options highlighted](./media/tutorial-define-iot-device-type/gateway-occupancy-s1-rel.png)
+![Snímek obrazovky s šablonou inteligentního sestavování a zvýrazněnými různými možnostmi](./media/tutorial-define-iot-device-type/gateway-occupancy-s1-rel.png)
 
-### <a name="add-cloud-properties"></a>Add cloud properties
+### <a name="add-cloud-properties"></a>Přidat vlastnosti cloudu
 
-A device template can include cloud properties. Cloud properties only exist in the IoT Central application, and are never sent to, or received from, a device.
+Šablona zařízení může obsahovat vlastnosti cloudu. Vlastnosti cloudu existují jenom v aplikaci IoT Central a nikdy se neodesílají do zařízení nebo se z něj nepřijímají.
 
-1. Select **Cloud Properties** >  **+ Add Cloud Property**. Use the information in the following table to add a cloud property to your device template.
+1. Vyberte **vlastnosti cloudu** >  **+ přidat cloudovou vlastnost**. Pomocí informací v následující tabulce můžete přidat vlastnost cloudu do šablony zařízení.
 
-    | Zobrazované jméno      | Semantic type | Schéma |
+    | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
-    | Customer name     | Žádné          | Řetězec |
+    | Last Service Date (Datum poslední údržby) | Žádný          | Datum   |
+    | Jméno zákazníka     | Žádný          | Řetězec |
 
-2. Vyberte **Save** (Uložit).
+2. Vyberte **Uložit**.
 
-### <a name="add-customizations"></a>Add customizations
+### <a name="add-customizations"></a>Přidat přizpůsobení
 
-Use customizations to modify an interface, or to add IoT Central-specific features to a capability that doesn't require you to version your device capability model. You can customize fields when the capability model is in a draft or published state. You can only customize fields that don't break interface compatibility. Můžete například provést následující věci:
+Pomocí přizpůsobení můžete změnit rozhraní nebo přidat funkce specifické pro IoT Central, které nevyžadují, abyste používali model schopností zařízení. Můžete přizpůsobit pole, když je model schopností v konceptu nebo publikovaném stavu. Můžete přizpůsobit pouze pole, která neruší kompatibilitu rozhraní. Můžete například provést následující věci:
 
-- Customize the display name and units of a capability.
-- Add a default color to use when the value appears on a chart.
-- Specify initial, minimum, and maximum values for a property.
+- Přizpůsobení zobrazovaného názvu a jednotek schopnosti.
+- Přidejte výchozí barvu, která se použije, když se hodnota zobrazí v grafu.
+- Zadejte počáteční, minimální a maximální hodnoty vlastnosti.
 
-You can't customize the capability name or capability type.
+Nemůžete přizpůsobit název schopnosti ani typ schopnosti.
 
-When you're finished customizing, select **Save**.
+Až budete hotovi s přizpůsobením, vyberte **Uložit**.
 
-### <a name="create-views"></a>Create views
+### <a name="create-views"></a>Vytváření zobrazení
 
-As a builder, you can customize the application to display relevant information about the environmental sensor device to an operator. Your customizations enable the operator to manage the environmental sensor devices connected to the application. You can create two types of views for an operator to use to interact with devices:
+Jako tvůrce můžete aplikaci přizpůsobit tak, aby zobrazovala relevantní informace o zařízení snímače životního prostředí pro operátora. Vlastní nastavení umožňuje operátorovi spravovat zařízení senzorů pro životní prostředí připojená k aplikaci. Můžete vytvořit dva typy zobrazení pro operátora pro práci se zařízeními:
 
-* Forms to view and edit device and cloud properties.
-* Dashboards to visualize devices.
+* Formuláře pro zobrazení a úpravy vlastností zařízení a cloudu.
+* Řídicí panely k vizualizaci zařízení.
 
-### <a name="generate-default-views"></a>Generate default views
+### <a name="generate-default-views"></a>Generovat výchozí zobrazení
 
-If you select **Generate default views**, you can generate the **Overview** and **About** dashboards. 
+Pokud vyberete možnost **Generovat výchozí zobrazení**, můžete vygenerovat **Přehled** a **informace o** řídicích panelech. 
 
-## <a name="publish-a-device-template"></a>Publish a device template
+## <a name="publish-a-device-template"></a>Publikování šablony zařízení
 
-Before you can create a simulated environmental sensor, or connect a real environmental sensor, you need to publish your device template.
+Než budete moct vytvořit simulovaný senzor pro životní prostředí nebo připojit reálný senzor pro životní prostředí, budete muset publikovat šablonu zařízení.
 
-To publish a device template:
+Publikování šablony zařízení:
 
-1. Go to your device template from the **Device Templates** page.
+1. Na stránce **šablony zařízení** můžete přejít na šablonu zařízení.
 
 2. Vyberte **Publikovat**.
 
-3. In the **Publish a Device Template** dialog box, choose **Publish**.
+3. V dialogovém okně **publikovat šablonu zařízení** klikněte na tlačítko **publikovat**.
 
-After a device template is published, it's visible on the **Devices** page and to the operator. In a published device template, you can't edit a device capability model without creating a new version. However, you can make updates to cloud properties, customizations, and views, in a published device template. These updates don't cause a new version to be created. After making any changes, select **Publish**  to push those changes out to your operator.
+Po publikování je šablona zařízení zobrazená na stránce **zařízení** a v operátoru. V publikované šabloně zařízení nemůžete upravovat model schopností zařízení bez vytváření nové verze. V publikované šabloně zařízení ale můžete dělat aktualizace vlastností cloudu, přizpůsobení a zobrazení. Tyto aktualizace nezpůsobí vytvoření nové verze. Po provedení změn vyberte **publikovat** , aby se tyto změny převedly do vašeho operátoru.
 
-## <a name="create-a-gateway-simulated-device"></a>Create a gateway simulated device
+## <a name="create-a-gateway-simulated-device"></a>Vytvoření simulovaného zařízení brány
 
-From the device explorer, create a simulated smart building gateway. 
+V Průzkumníku zařízení vytvořte simulovanou bránu inteligentního sestavení. 
 
-![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/smartbuildingdevice.png)
+![Snímek obrazovky s dialogovým oknem vytvořit nové zařízení](./media/tutorial-define-iot-device-type/smartbuildingdevice.png)
 
-## <a name="create-downstream-simulated-devices"></a>Create downstream simulated devices
+## <a name="create-downstream-simulated-devices"></a>Vytvoření navazujících simulovaných zařízení
 
-From the device explorer, create a simulated occupancy sensor. 
+V Průzkumníku zařízení vytvořte senzor pro simulaci obsazení. 
 
-![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/occupancydevice.png)
+![Snímek obrazovky s dialogovým oknem vytvořit nové zařízení](./media/tutorial-define-iot-device-type/occupancydevice.png)
 
-From the device explorer, create a simulated S1 sensor. 
+V Průzkumníku zařízení vytvořte simulovaný senzor S1. 
 
-![Screenshot of Create new device dialog box](./media/tutorial-define-iot-device-type/s1device.png)
+![Snímek obrazovky s dialogovým oknem vytvořit nové zařízení](./media/tutorial-define-iot-device-type/s1device.png)
 
-## <a name="add-downstream-devices-relationships-to-a-gateway-device"></a>Add downstream devices relationships to a gateway device
+## <a name="add-downstream-devices-relationships-to-a-gateway-device"></a>Přidání vztahů zařízení pro příjem dat do zařízení brány
 
-Select S1 Sensor and Occupancy Sensor, and select **Connect to gateway**. 
+Vyberte senzor S1 a obsazení a vyberte **připojit k bráně**. 
 
-![Screenshot of Occupancy Sensor, with Connect to gateway highlighted](./media/tutorial-define-iot-device-type/connecttogateway.png)
+![Snímek obrazovky se senzorem obsazení se zvýrazněnou možností připojit k bráně](./media/tutorial-define-iot-device-type/connecttogateway.png)
 
-Select a gateway device template and gateway device instance, and select **Join**.
+Vyberte šablonu zařízení brány a instanci zařízení brány a pak vyberte **připojit**.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
-* Create a new IoT gateway as a device template.
-* Create cloud properties.
-* Create customizations.
-* Define a visualization for the device telemetry.
-* Add relationships.
-* Publish your device template.
+* Vytvořte novou bránu IoT jako šablonu zařízení.
+* Vytvořte vlastnosti cloudu.
+* Vytvořte vlastní nastavení.
+* Definujte vizualizaci pro telemetrii zařízení.
+* Přidejte relace.
+* Publikujte šablonu zařízení.
 
-Next, you can:
+V dalším kroku můžete:
 
 > [!div class="nextstepaction"]
-> [Connect a device](tutorial-connect-pnp-device.md)
+> [Připojení zařízení](tutorial-connect-pnp-device.md)

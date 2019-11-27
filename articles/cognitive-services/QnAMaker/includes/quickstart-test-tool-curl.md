@@ -17,30 +17,30 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74424409"
 ---
-This cURL-based quickstart walks you through getting an answer from your knowledge base.
+Tento rychlý Start založený na složeném startu vás provede tím, že získáte odpověď ze znalostní báze.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Latest [**cURL**](https://curl.haxx.se/).
-* You must have a [QnA Maker service](../How-To/set-up-qnamaker-service-azure.md) and have a [knowledge base with questions and answers](../Tutorials/create-publish-query-in-portal.md).
+* Poslední [**kudrlinkou**](https://curl.haxx.se/)
+* Musíte mít [QnA maker službu](../How-To/set-up-qnamaker-service-azure.md) a mít [znalostní bázi s dotazy a odpověďmi](../Tutorials/create-publish-query-in-portal.md).
 
-## <a name="publish-to-get-endpoint"></a>Publish to get endpoint
+## <a name="publish-to-get-endpoint"></a>Publikování pro získání koncového bodu
 
-When you are ready to generate an answer to a question from your knowledge base, [publish](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) your knowledge base.
+Až budete připraveni vygenerovat odpověď na otázku ze znalostní báze Knowledge Base, [publikujte](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) znalostní bázi.
 
-## <a name="use-production-endpoint-with-curl"></a>Use production endpoint with cURL
+## <a name="use-production-endpoint-with-curl"></a>Použití výrobního koncového bodu s kudrlinkou
 
-When your knowledge base is published, the **Publish** page displays the HTTP request settings to generate an answer. The **CURL** tab shows the settings required to generate an answer from the command-line tool, [CURL](https://www.getpostman.com).
+Když je vaše znalostní báze publikována, zobrazí se na stránce **publikovat** nastavení požadavku HTTP, které vygeneruje odpověď. Karta **kudrlinkou** zobrazuje nastavení požadovaná pro vygenerování odpovědi z nástroje příkazového řádku, [kudrlinkou](https://www.getpostman.com).
 
-[![Publish results](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
+[![publikování výsledků](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 
-To generate an answer with CURL, complete the following steps:
+Pokud chcete vygenerovat odpověď s KUDRLINKOU, proveďte následující kroky:
 
-1. Copy the text in the CURL tab. 
-1. Open a command-line or terminal and paste the text.
-1. Edit the question to be relevant to your knowledge base. Be careful not to remove the containing JSON surrounding the question.
-1. Enter the command. 
-1. The response includes the relevant information about the answer. 
+1. Zkopírujte text na kartě KUDRLINKOU. 
+1. Otevřete příkazový řádek nebo terminál a vložte text.
+1. Upravte otázku, která bude relevantní pro vaši znalostní bázi. Dejte pozor, abyste neodebrali obsahující kód JSON, který tuto otázku obklopuje.
+1. Zadejte příkaz. 
+1. Odpověď obsahuje relevantní informace o odpovědi. 
 
     ```bash
     > curl -X POST https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/1111f8c-d01b-4698-a2de-85b0dbf3358c/generateAnswer -H "Authorization: EndpointKey 111841fb-c208-4a72-9412-03b6f3e55ca1" -H "Content-type: application/json" -d "{'question':'How do I programmatically update my Knowledge Base?'}"
@@ -65,9 +65,9 @@ To generate an answer with CURL, complete the following steps:
     }
     ```
 
-## <a name="use-staging-endpoint-with-curl"></a>Use staging endpoint with cURL
+## <a name="use-staging-endpoint-with-curl"></a>Použití pracovního koncového bodu s kudrlinkou
 
-If you want to get an answer from the staging endpoint, use the `isTest` body property.
+Pokud chcete získat odpověď z pracovního koncového bodu, použijte vlastnost text `isTest`.
 
 ```json
 isTest:true

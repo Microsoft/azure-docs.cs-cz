@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services live transcription | Microsoft Docs
-description: This article explains what the Azure Media Services live transcription is.
+title: Azure Media Services živý přepis | Microsoft Docs
+description: Tento článek vysvětluje, co je Azure Media Services živý přepis.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -20,24 +20,24 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327351"
 ---
-# <a name="live-transcription-preview"></a>Live transcription (preview)
+# <a name="live-transcription-preview"></a>Živý přepis (Preview)
 
-Azure Media Service delivers video, audio, and now text in different protocols. When you publish your live stream using MPEG-DASH or HLS/CMAF, then along with video and audio, our service will deliver the transcribed text in IMSC1.1 compatible TTML, packaged into MPEG-4 Part 30 (ISO/IEC 14496-30) fragments. If using delivery via HLS/TS, then text is delivered as chunked VTT. 
+Azure Media Service nabízí video, zvuk a teď text v různých protokolech. Když publikujete živý stream pomocí MPEG-POMLČKy nebo HLS/CMAF, pak společně s videem a zvukem doručí naše služba text přepisu v IMSC 1.1 kompatibilní TTML, zabalený na fragmenty MPEG-4 Part 30 (ISO/IEC 14496-30). Pokud používáte doručování přes HLS/TS, text se doručí jako VTTý v bloku. 
 
-This article describes how to enable live transcription when streaming a Live Event with Azure Media Services v3. Before you proceed, make sure you are familiar with the use of Media Services v3 REST APIs (see [this tutorial](stream-files-tutorial-with-rest.md) for details). You should also be familiar with the [live streaming](live-streaming-overview.md) concept. It is recommended to complete the [Stream live with Media Services](stream-live-tutorial-with-api.md) tutorial. 
+Tento článek popisuje, jak povolit živý přepis při streamování živé události s Azure Media Services V3. Než budete pokračovat, ujistěte se, že jste obeznámeni s používáním rozhraní REST API Media Services V3 (podrobnosti najdete v [tomto kurzu](stream-files-tutorial-with-rest.md) ). Měli byste se také seznámit s konceptem [živého streamování](live-streaming-overview.md) . Při Media Services kurzu se doporučuje dokončit [Stream živě](stream-live-tutorial-with-api.md) . 
 
 > [!NOTE]
-> Currently, live transcription is only available as a preview feature in the West US 2 region. It supports transcription of spoken words in English to text. The API reference for this feature is in this document – since it is in preview, the details are not available with our REST documents. 
+> V současné době je živý přepis dostupný jenom jako funkce Preview v oblasti Západní USA 2. Podporuje přepis mluvených slov v angličtině a textu. Odkaz na rozhraní API této funkce je v tomto dokumentu – protože je ve verzi Preview, podrobnosti nejsou k dispozici u našich dokumentů REST. 
 
-## <a name="creating-the-live-event"></a>Creating the Live Event 
+## <a name="creating-the-live-event"></a>Vytváří se živá událost. 
 
-To create the Live Event, you would send the PUT operation to the 2019-05-01 version, such as: 
+Chcete-li vytvořit živou událost, měli byste odeslat operaci PUT do verze 2019-05-01, například: 
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-The operation has the following body (where a pass-through Live Event is created with RTMP as the ingest protocol). Note the addition of a transcriptions property. The only allowed value for language is en-US. 
+Operace má následující text (kde se vytvoří předávací živá událost s RTMP jako protokol ingestování). Všimněte si přidání vlastnosti přepisy. Jediná povolená hodnota pro jazyk je en-US. 
 
 ```
 { 
@@ -87,24 +87,24 @@ The operation has the following body (where a pass-through Live Event is created
 } 
 ```
 
-You should poll the status of the Live Event until it goes into the “Running” state, which indicates that you can now send a contribution RTMP feed. You can now follow the same steps as in this tutorial, such as checking the preview feed, and creating Live Outputs. 
+Měli byste se dotázat na stav živé události, dokud nepřejde do stavu spuštěno, což znamená, že teď můžete poslat příspěvek RTMP. Nyní můžete postupovat stejným způsobem jako v tomto kurzu, jako je například kontrola kanálu náhledu a vytváření živých výstupů. 
 
-## <a name="delivery-and-playback"></a>Delivery and playback 
+## <a name="delivery-and-playback"></a>Doručení a přehrávání 
 
-Review the [Dynamic packaging overview](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery) article of how our service uses dynamic packaging to deliver video, audio, and now text in different protocols. When you publish your live stream using MPEG-DASH or HLS/CMAF, then along with video and audio, our service will deliver the transcribed text in IMSC1.1 compatible TTML, packaged into MPEG-4 Part 30 (ISO/IEC 14496-30) fragments. If using delivery via HLS/TS, then text is delivered as chunked VTT. You can use a web player such as the [Azure Media Player](use-azure-media-player.md) to play the stream.  
+Přečtěte si článek [Přehled dynamického balení](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery) , jak naše služba používá dynamické balení k doručování videa, zvuku a textu v různých protokolech. Když publikujete živý stream pomocí MPEG-POMLČKy nebo HLS/CMAF, pak společně s videem a zvukem doručí naše služba text přepisu v IMSC 1.1 kompatibilní TTML, zabalený na fragmenty MPEG-4 Part 30 (ISO/IEC 14496-30). Pokud používáte doručování přes HLS/TS, text se doručí jako VTTý v bloku. K přehrání datového proudu můžete použít webový přehrávač, například [Azure Media Player](use-azure-media-player.md) .  
 
 > [!NOTE]
->  If using Azure Media Player, use version 2.3.3 or later.
+>  Pokud používáte Azure Media Player, použijte verzi 2.3.3 nebo novější.
 
 ## <a name="known-issues"></a>Známé problémy 
 
-At preview, following are the known issues with Live Transcription 
+Ve verzi Preview jsou tady uvedené známé problémy s živým přepisem. 
 
-* The feature is available only in West US 2.
-* Applications need to use the preview APIs, described in the [Media Services v3 OpenAPI Specification](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json) specification.
-* The only supported language is English.
-* With respect to content protection, only AES envelope encryption is supported.
+* Tato funkce je k dispozici pouze v Západní USA 2.
+* Aplikace musí používat rozhraní API verze Preview popsané ve specifikaci [Media Services V3 openapi Specification](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json) .
+* Jediným podporovaným jazykem je angličtina.
+* V souvislosti s ochranou obsahu je podporována pouze šifrování obálek AES.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Media Services overview](media-services-overview.md)
+[Přehled Media Services](media-services-overview.md)

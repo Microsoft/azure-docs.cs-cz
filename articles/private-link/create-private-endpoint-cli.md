@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Create an Azure private endpoint using Azure CLI
-description: Learn about Azure private endpoint in this Quickstart
+title: Rychlý Start – vytvoření privátního koncového bodu Azure pomocí Azure CLI
+description: Seznamte se s privátním koncovým bodem Azure v tomto rychlém startu
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,23 +14,23 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419812"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Quickstart: Create a private endpoint using Azure CLI
-Private Endpoint is the fundamental building block for Private Link in Azure. It enables Azure resources, like virtual machines (VMs), to communicate privately with Private Link Resources. In this Quickstart, you will learn how to create a VM on a virtual network, a SQL Database Server with a Private Endpoint using Azure CLI. Then, you can access the VM to and securely access the private link resource (a private Azure SQL Database server in this example). 
+# <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure CLI
+Soukromý koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení. V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač ve virtuální síti, SQL Database Server s privátním koncovým bodem pomocí Azure CLI. Pak můžete k virtuálnímu počítači přistupovat a získat zabezpečený přístup k prostředku privátního propojení (privátní Azure SQL Database Server v tomto příkladu). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-If you decide to install and use Azure CLI locally instead, this quickstart requires you to use Azure CLI version 2.0.28 or later. To find your installed version, run `az --version`. See [Install Azure CLI](/cli/azure/install-azure-cli) for install or upgrade info.
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Before you can create any resource, you have to create a resource group to host the Virtual Network. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). This example creates a resource group named *myResourceGroup* in the *westcentralus* location:
+Než budete moct vytvořit libovolný prostředek, musíte vytvořit skupinu prostředků, která bude hostovat Virtual Network. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Tento příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *westcentralus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westcentralus
 ```
 
-## <a name="create-a-virtual-network"></a>Create a Virtual Network
-Create a Virtual Network with [az network vnet create](/cli/azure/network/vnet). This example creates a default Virtual Network named *myVirtualNetwork* with one subnet named *mySubnet*:
+## <a name="create-a-virtual-network"></a>Vytvoření Virtual Network
+Vytvořte Virtual Network pomocí [AZ Network VNet Create](/cli/azure/network/vnet). Tento příklad vytvoří výchozí Virtual Network s názvem *myVirtualNetwork* s jednou podsítí s názvem *mySubnet*:
 
 ```azurecli-interactive
 az network vnet create \
@@ -38,8 +38,8 @@ az network vnet create \
  --resource-group myResourceGroup \
  --subnet-name mySubnet
 ```
-## <a name="disable-subnet-private-endpoint-policies"></a>Disable subnet private endpoint policies 
-Azure deploys resources to a subnet within a virtual network, so you need to create or update the subnet to disable private endpoint network policies. Update a subnet configuration named *mySubnet* with [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+## <a name="disable-subnet-private-endpoint-policies"></a>Zakázat zásady privátního koncového bodu podsítě 
+Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly zásady sítě privátního koncového bodu. Aktualizujte konfiguraci podsítě s názvem *mySubnet* pomocí [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -49,17 +49,17 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač. 
-Create a VM with az vm create. When prompted, provide a password to be used as the sign-in credentials for the VM. This example creates a VM named *myVm*: 
+Vytvořte virtuální počítač pomocí AZ VM Create. Po zobrazení výzvy zadejte heslo, které se použije jako přihlašovací údaje pro virtuální počítač. Tento příklad vytvoří virtuální počítač s názvem *myVm*: 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm \
   --image Win2019Datacenter
 ```
- Note the public IP address of the VM. You will use this address to connect to the VM from the internet in the next step.
+ Poznamenejte si veřejnou IP adresu virtuálního počítače. Tato adresa se použije k připojení k virtuálnímu počítači z Internetu v dalším kroku.
 
-## <a name="create-a-sql-database-server"></a>Create a SQL Database Server 
-Create a SQL Database Server with the az sql server create command. Remember that the name of your SQL Server must be unique across Azure, so replace the placeholder value in brackets with your own unique value: 
+## <a name="create-a-sql-database-server"></a>Vytvoření serveru SQL Database 
+Pomocí příkazu AZ SQL Server Create vytvořte server SQL Database. Mějte na paměti, že název SQL Server musí být v rámci Azure jedinečný, proto nahraďte hodnotu zástupný symbol v závorkách vlastní jedinečnou hodnotou: 
 
 ```azurecli-interactive
 # Create a logical server in the resource group 
@@ -81,10 +81,10 @@ az sql db create \
     --capacity 1 
 ```
 
-Note the SQL Server ID is similar to ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` You will use the SQL Server ID in the next step. 
+Všimněte si, že ID SQL Server se podobá ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` v dalším kroku budete používat ID SQL Server. 
 
-## <a name="create-the-private-endpoint"></a>Create the Private Endpoint 
-Create a private endpoint for the SQL Database server in your Virtual Network: 
+## <a name="create-the-private-endpoint"></a>Vytvoření privátního koncového bodu 
+Vytvořte v Virtual Network privátní koncový bod pro server SQL Database: 
 ```azurecli-interactive
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
@@ -95,8 +95,8 @@ az network private-endpoint create \
     --group-ids sqlServer \  
     --connection-name myConnection  
  ```
-## <a name="configure-the-private-dns-zone"></a>Configure the Private DNS Zone 
-Create a Private DNS Zone for SQL Database server domain and create an association link with the Virtual Network. 
+## <a name="configure-the-private-dns-zone"></a>Konfigurovat zónu Privátní DNS 
+Vytvořte zónu Privátní DNS pro doménu SQL Database serveru a vytvořte odkaz na přidružení s Virtual Network. 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.database.windows.net" 
@@ -121,35 +121,35 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
-Connect to the VM *myVm* from the internet as follows:
+Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způsobem:
 
-1. In the portal's search bar, enter *myVm*.
+1. Na panelu hledání na portálu zadejte *myVm*.
 
-1. Klikněte na tlačítko **Připojit**. After selecting the **Connect** button, **Connect to virtual machine** opens.
+1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Select **Download RDP File**. Azure creates a Remote Desktop Protocol ( *.rdp*) file and downloads it to your computer.
+1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
-1. Open the downloaded.rdp* file.
+1. Otevřete stažený soubor. RDP *.
 
     1. Pokud se zobrazí výzva, vyberte **Připojit**.
 
-    1. Enter the username and password you specified when creating the VM.
+    1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
-        > You may need to select **More choices** > **Use a different account**, to specify the credentials you entered when you created the VM.
+        > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. If you receive a certificate warning, select **Yes** or **Continue**.
+1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
 
-1. Once the VM desktop appears, minimize it to go back to your local desktop.  
+1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>Access SQL Database Server privately from the VM
+## <a name="access-sql-database-server-privately-from-the-vm"></a>Přístup k serveru SQL Database soukromě z virtuálního počítače
 
-In this section, you will connect to the SQL Database Server from the VM using the Private Endpoint.
+V této části se připojíte k serveru SQL Database z virtuálního počítače pomocí privátního koncového bodu.
 
- 1. In the Remote Desktop of *myVM*, open PowerShell.
- 2. Enter nslookup myserver.database.windows.net  You'll receive a message similar to this: 
+ 1. Ve vzdálené ploše *myVM*otevřete PowerShell.
+ 2. Zadejte nslookup myserver.database.windows.net  obdržíte zprávu podobnou této: 
 
 ```
       Server:  UnKnown 
@@ -159,23 +159,23 @@ In this section, you will connect to the SQL Database Server from the VM using t
       Address:  10.0.0.5 
       Aliases:  myserver.database.windows.net 
 ```
- 3. Install SQL Server Management Studio 
- 4. In Connect to server, enter or select this information: Server type: Select Database Engine.
- Server name: Select myserver.database.windows.net Username: Enter a username provided during creation.
- Password: Enter a password provided during creation.
- Remember password: Select Yes.
+ 3. Nainstalovat SQL Server Management Studio 
+ 4. V připojení k serveru zadejte nebo vyberte tyto informace: typ serveru: vyberte možnost databázový stroj.
+ Název serveru: vyberte myserver.database.windows.net uživatelské jméno: zadejte uživatelské jméno, které jste zadali při vytváření.
+ Heslo: zadejte heslo, které jste zadali při vytváření.
+ Pamatovat heslo: vyberte Ano.
  
  5. Vyberte **Connect** (Připojit).
- 6. Browse **Databases** from left menu.
- 7. (Optionally) Create or query information from *mydatabase*
- 8. Close the remote desktop connection to *myVm*.
+ 6. Procházet **databáze** z levé nabídky
+ 7. Volitelně Vytvoření nebo dotazování informací z *MyDatabase*
+ 8. Zavřete připojení ke vzdálené ploše pro *myVm*.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz AZ Group Delete: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- Learn more about [Azure Private Link](private-link-overview.md)
+- Další informace o [privátním propojení Azure](private-link-overview.md)

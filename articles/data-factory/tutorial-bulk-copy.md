@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d695c7a74945fd68591360864e107aadc826240
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8ebcf7b3a8dfa4103c0b2773ace76797e5b8f899
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683677"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546410"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 Tento kurz představuje **kopírování několika tabulek z Azure SQL Database do služby Azure SQL Data Warehouse**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například při kopírování tabulek z SQL Serveru/Oraclu do služby Azure SQL Database/Data Warehouse/Azure Blob nebo při kopírování různých cest ze služby Blob do tabulek Azure SQL Database.
@@ -62,7 +62,7 @@ Podle postupu v článku [Vytvoření databáze Azure SQL](../sql-database/sql-d
 
 1. Pokud Azure SQL Data Warehouse nemáte, přečtěte si článek věnovaný [vytvoření služby SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md), kde najdete kroky pro její vytvoření.
 
-2. V SQL Data Warehouse vytvořte odpovídající schémata tabulek. K [migraci schémat](https://www.microsoft.com/download/details.aspx?id=49100) z Azure SQL Database do Azure SQL Data Warehouse můžete využít **nástroj pro migraci**. K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
+2. V SQL Data Warehouse vytvořte odpovídající schémata tabulek. K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
 
 ## <a name="azure-services-to-access-sql-server"></a>Služby Azure pro přístup k SQL serveru
 
@@ -197,7 +197,7 @@ V tomto kurzu použijete Azure Blob Storage jako dočasné pracovní oblast, aby
 1. Ve složce **C:\ADFv2TutorialBulkCopy** vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** s následujícím obsahem:
 
     > [!IMPORTANT]
-    > Než soubor uložíte, položky &lt;accountName&gt; a &lt;accountKey&gt; nahraďte názvem svého účtu Azure Storage a jeho klíčem.
+    > Než soubor uložíte, položky &lt;accountName&gt; a &lt;accountKey&gt; nahraďte názvem svého účtu úložiště Azure a jeho klíčem.
 
     ```json
     {
@@ -513,7 +513,7 @@ Tento kanál provádí dva kroky:
     $result
     ```
 
-    Tady je výstup tohoto ukázkového spuštění:
+    Zde je výstup tohoto ukázkového spuštění:
 
     ```json
     Pipeline run details:
@@ -566,7 +566,7 @@ Tento kanál provádí dva kroky:
     ($result | Where-Object {$_.ActivityName -eq "TriggerCopy"}).Output.ToString()
     ```
 
-    Tady je výstup tohoto ukázkového spuštění:
+    Zde je výstup tohoto ukázkového spuštění:
 
     ```json
     {

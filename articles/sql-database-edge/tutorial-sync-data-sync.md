@@ -1,7 +1,7 @@
 ---
-title: Sync data from Azure SQL Database Edge by using SQL Data Sync | Microsoft Docs
-description: Learn about syncing data from Azure SQL Database Edge by using Azure SQL Data Sync
-keywords: sql database edge,sync data from sql database edge, sql database edge data sync
+title: Synchronizace dat z Azure SQL Database Edge pomocí Synchronizace dat SQL | Microsoft Docs
+description: Další informace o synchronizaci dat z Azure SQL Database Edge pomocí Azure Synchronizace dat SQL
+keywords: Edge SQL Database, synchronizace dat z okraje SQL Database, synchronizace dat Edge SQL Database
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: tutorial
@@ -16,48 +16,48 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384185"
 ---
-# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Tutorial: Sync data from SQL Database Edge to Azure SQL Database by using SQL Data Sync
+# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Kurz: synchronizace dat z SQL Database Edge do Azure SQL Database pomocí Synchronizace dat SQL
 
-In this tutorial, you'll learn how to use an Azure SQL Data Sync *sync group* to incrementally sync data from Azure SQL Database Edge to Azure SQL Database. SQL Data Sync is a service built on Azure SQL Database that lets you synchronize the data you select bi-directionally across multiple SQL databases and SQL Server instances. For more information on SQL Data Sync, see [Azure SQL Data Sync](../sql-database/sql-database-sync-data.md).
+V tomto kurzu se naučíte používat *skupinu synchronizace* Azure synchronizace dat SQL k přírůstkové synchronizaci dat z Azure SQL Database Edge na Azure SQL Database. Synchronizace dat SQL je služba založená na Azure SQL Database, která umožňuje synchronizovat data, která jste vybrali obousměrně napříč několika databázemi SQL a instance systému SQL Server. Další informace o Synchronizace dat SQL najdete v tématu [Azure synchronizace dat SQL](../sql-database/sql-database-sync-data.md).
 
-Because SQL Database Edge is built on the latest versions of the [SQL Server Database Engine](/sql/sql-server/sql-server-technical-documentation/), any data synchronization mechanism that's applicable to an on-premises SQL Server instance can also be used to sync data to or from a SQL Database Edge instance running on an edge device.
+Vzhledem k tomu, že SQL Database Edge je postaven na nejnovějších verzích [databázového stroje SQL Server](/sql/sql-server/sql-server-technical-documentation/), můžete k synchronizaci dat do nebo z instance SQL Database Edge běžící na hraničním zařízení použít také jakýkoliv mechanismus synchronizace dat, který je použitelný pro místní instanci SQL Server.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-This tutorial requires a Windows computer configured with the [Data Sync Agent for Azure SQL Data Sync](../sql-database/sql-database-data-sync-agent.md).
+Tento kurz vyžaduje počítač se systémem Windows nakonfigurovaný s [agentem synchronizace dat pro Azure synchronizace dat SQL](../sql-database/sql-database-data-sync-agent.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Vytvoření databáze Azure SQL For information on how to create an Azure SQL database by using the Azure portal, see [Create a single database in Azure SQL Database](../sql-database/sql-database-single-database-get-started.md?tabs=azure-portal).
+* Vytvoření databáze Azure SQL Informace o tom, jak vytvořit databázi SQL Azure pomocí Azure Portal, najdete [v tématu Vytvoření izolované databáze v Azure SQL Database](../sql-database/sql-database-single-database-get-started.md?tabs=azure-portal).
 
-* Create the tables and other necessary objects in your Azure SQL Database deployment.
+* V nasazení Azure SQL Database vytvořte tabulky a další potřebné objekty.
 
-* Create the necessary tables and objects in your Azure SQL Database Edge deployment. For more information, see [Using SQL Database DAC packages with SQL Database Edge](stream-analytics.md).
+* Vytvořte potřebné tabulky a objekty v nasazení Azure SQL Database Edge. Další informace najdete v tématu [použití SQL Databasech DAC Packages s SQL Database Edge](stream-analytics.md).
 
-* Register the Azure SQL Database Edge instance with the Data Sync Agent for Azure SQL Data Sync. For more information, see [Add an on-premises SQL Server database](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem).
+* Zaregistrujte instanci Azure SQL Database Edge s agentem synchronizace dat pro Azure Synchronizace dat SQL. Další informace najdete v tématu [Přidání místní databáze SQL Server](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem).
 
-## <a name="sync-data-between-an-azure-sql-database-and-sql-database-edge"></a>Sync data between an Azure SQL database and SQL Database Edge
+## <a name="sync-data-between-an-azure-sql-database-and-sql-database-edge"></a>Synchronizace dat mezi databází Azure SQL a SQL Database Edge
 
-Setting up synchronization between an Azure SQL database and a SQL Database Edge instance by using SQL Data Sync involves three key steps:  
+Nastavení synchronizace mezi službou Azure SQL Database a instancí SQL Database Edge pomocí Synchronizace dat SQL zahrnuje tři klíčové kroky:  
 
-1. Use the Azure portal to create a sync group. For more information, see [Create a sync group](../sql-database/sql-database-get-started-sql-data-sync.md#create-sync-group). You can use a single *hub* database to create multiple sync groups to synchronize data from various SQL Database Edge instances to one or more SQL databases in Azure.
+1. Pomocí Azure Portal vytvořte skupinu synchronizace. Další informace najdete v tématu [Vytvoření skupiny synchronizace](../sql-database/sql-database-get-started-sql-data-sync.md#create-sync-group). Pomocí jedné databáze *hub* můžete vytvořit více skupin synchronizace pro synchronizaci dat z různých instancí SQL Database Edge do jedné nebo více databází SQL v Azure.
 
-2. Add sync members to the sync group. For more information, see [Add sync members](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members).
+2. Přidejte členy synchronizace do skupiny synchronizace. Další informace najdete v tématu [Přidání členů synchronizace](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members).
 
-3. Set up the sync group to select the tables that will be part of the synchronization. For more information, see [Configure a sync group](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members).
+3. Nastavte skupinu synchronizace pro výběr tabulek, které budou součástí synchronizace. Další informace najdete v tématu [Konfigurace skupiny synchronizace](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members).
 
-After you complete the preceding steps, you'll have a sync group that includes an Azure SQL database and a SQL Database Edge instance.
+Po dokončení předchozích kroků budete mít skupinu synchronizace, která zahrnuje databázi SQL Azure a instanci SQL Database Edge.
 
-For more info about SQL Data Sync, see these articles:
+Další informace o Synchronizace dat SQL najdete v těchto článcích:
 
-* [Data Sync Agent for Azure SQL Data Sync](../sql-database/sql-database-data-sync-agent.md)
+* [Agent synchronizace dat pro Azure Synchronizace dat SQL](../sql-database/sql-database-data-sync-agent.md)
 
-* [Best practices](../sql-database/sql-database-best-practices-data-sync.md) and [How to troubleshoot issues with Azure SQL Data Sync](../sql-database/sql-database-troubleshoot-data-sync.md)
+* [Osvědčené postupy](../sql-database/sql-database-best-practices-data-sync.md) a [řešení potíží s Azure synchronizace dat SQL](../sql-database/sql-database-troubleshoot-data-sync.md)
 
-* [Monitor SQL Data Sync with Azure Monitor logs](../sql-database/sql-database-sync-monitor-oms.md)
+* [Monitorování Synchronizace dat SQL pomocí protokolů Azure Monitor](../sql-database/sql-database-sync-monitor-oms.md)
 
-* [Update the sync schema with Transact-SQL](../sql-database/sql-database-update-sync-schema.md) or [PowerShell](../sql-database/scripts/sql-database-sync-update-schema.md)
+* [Aktualizace schématu synchronizace pomocí jazyka Transact-SQL](../sql-database/sql-database-update-sync-schema.md) nebo [PowerShell](../sql-database/scripts/sql-database-sync-update-schema.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Use PowerShell to sync between Azure SQL Database and Azure SQL Database Edge](../sql-database/scripts/sql-database-sync-data-between-azure-onprem.md). In this tutorial, replace the `OnPremiseServer` database details with the Azure SQL Database Edge details.
+* [K synchronizaci mezi Azure SQL Database a Azure SQL Database Edge použijte PowerShell](../sql-database/scripts/sql-database-sync-data-between-azure-onprem.md). V tomto kurzu nahraďte podrobnosti `OnPremiseServer` databáze údaji o Azure SQL Database Edge.

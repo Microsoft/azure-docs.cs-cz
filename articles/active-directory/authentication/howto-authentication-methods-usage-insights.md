@@ -1,6 +1,6 @@
 ---
-title: Authentication methods usage & insights - Azure Active Directory
-description: Reporting on Azure AD self-service password reset and Multi-Factor Authentication authentication method usage
+title: Použití metod ověřování & Insights – Azure Active Directory
+description: Vytváření sestav o samoobslužném resetování hesla služby Azure AD a Multi-Factor Authentication použití metody ověřování
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,84 +18,84 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381900"
 ---
-# <a name="authentication-methods-usage--insights-preview"></a>Authentication methods usage & insights (preview)
+# <a name="authentication-methods-usage--insights-preview"></a>Použití metod ověřování & Insights (Preview)
 
-Usage & insights enables you to understand how authentication methods for features like Azure Multi-Factor Authentication and self-service password reset are working in your organization. This reporting capability provides your organization with the means to understand what methods are being registered and how they are being used.
+Využití & Insights vám umožní pochopit, jak metody ověřování pro funkce, jako je Azure Multi-Factor Authentication a Samoobslužné resetování hesla, fungují ve vaší organizaci. Tato funkce vytváření sestav poskytuje vaší organizaci prostředky, které vám pomohou pochopit, jaké metody se registrují a jak se používají.
 
-## <a name="permissions-and-licenses"></a>Permissions and licenses
+## <a name="permissions-and-licenses"></a>Oprávnění a licence
 
-The following roles can access usage and insights:
+K využití a přehledům můžou získat přístup následující role:
 
 - Globální správce
-- Security Reader
-- Security Administrator
-- Reports Reader
+- Čtecí modul zabezpečení
+- Správce zabezpečení
+- Čtečka sestav
 
-No additional licensing is required to access usage and insights. Azure Multi-Factor Authentication and self-service password reset (SSPR) licensing information can be found on the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
+Pro přístup k používání a přehledům nejsou potřeba žádné další licence. Informace o licencování služby Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) najdete na [webu Azure Active Directory s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-To access authentication method usage and insights:
+Přístup k používání metod ověřování a přehledům:
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
-1. Browse to **Azure Active Directory** > **Password reset** > **Usage & insights**.
-1. From the **Registration** or **Usage** overviews, you can choose to open the pre-filtered reports to filter based on your needs.
+1. Přejděte na **Azure Active Directory** > **resetování hesla** > **využití & přehledy**.
+1. Z přehledů **registrace** nebo **využití** můžete zvolit otevření předem filtrovaných sestav, které se budou filtrovat podle vašich potřeb.
 
-![Usage & insights overview](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
+![Přehled využití & Insights](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-To access usage & insights directly, go to [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade). This link will bring you to the registration overview.
+Pokud chcete získat přístup k využití & Insights přímo, přejděte na [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade). Tento odkaz vás přenese na přehled registrace.
 
-The Users registered, Users enabled, and Users capable tiles show the following registration data for your users:
+Uživatelé zaregistrovaní, uživatelé a uživatelé s podporou dlaždic zobrazí následující registrační data pro vaše uživatele:
 
-- Registered: A user is considered registered if they (or an admin) have registered enough authentication methods to meet your organization's SSPR or Multi-Factor Authentication policy.
-- Enabled: A user is considered enabled if they are in scope for the SSPR policy. If SSPR is enabled for a group, then the user is considered enabled if they are in that group. If SSPR is enabled for all users, then all users in the tenant (excluding guests) are considered enabled.
-- Capable: A user is considered capable if they are both registered and enabled. This status means that they can perform SSPR at any time if needed.
+- Registrováno: uživatel se považuje za registrovaný, pokud (nebo správce) zaregistroval dostatek metod ověřování pro splnění zásad SSPR nebo Multi-Factor Authentication vaší organizace.
+- Povoleno: uživatel se považuje za povolený, pokud jsou v oboru pro zásady SSPR. Pokud je pro skupinu povolená možnost SSPR, bude uživatel považován za povolený, pokud se nachází v této skupině. Pokud je SSPR povolená pro všechny uživatele, považují se za povolené všechny uživatele v tenantovi (kromě hostů).
+- Možnost: uživatel se považuje za schopný, pokud je registrovaný i povolený. Tento stav znamená, že v případě potřeby mohou SSPR kdykoli provádět.
 
-Clicking on any of these tiles or the insights shown in them will bring you to a pre-filtered list of registration details.
+Kliknutím na kteroukoli z těchto dlaždic nebo přehledů zobrazených v nich získáte předem filtrovaný seznam podrobností o registraci.
 
-The **Registrations** chart on the **Registration** tab shows the number of successful and failed authentication method registrations by authentication method. The **Resets** chart on the **Usage** tab shows the number of successful and failed authentications during the password reset flow by authentication method.
+Graf **registrací** na kartě **registrace** zobrazuje počet úspěšných a neúspěšných zaregistrovaných metod ověřování podle metody ověřování. Graf resetování na kartě **využití** zobrazuje počet úspěšných a neúspěšných ověření během metody resetování hesla podle ověření.
 
-Clicking on either of the charts will bring you to a pre-filtered list of registration or reset events.
+Když kliknete na některé z grafů, zobrazí se předem filtrovaný seznam událostí registrace nebo resetování.
 
-Using the control in the upper, right-hand corner, you can change the date range for the audit data shown in the Registrations and Resets charts to 24 hours, 7 days, or 30 days.
+Pomocí ovládacího prvku v pravém horním rohu můžete změnit rozsah dat pro auditovaná data zobrazená v registracích a resetovat grafy na 24 hodin, 7 dní nebo 30 dní.
 
-### <a name="registration-details"></a>Registration details
+### <a name="registration-details"></a>Podrobnosti registrace
 
-Clicking on the **Users registered**, **Users enabled**, or **Users capable** tiles or insights will bring you to the registration details.
+Kliknutím na **zaregistrované uživatele**, **povoleným uživatelům**nebo **uživatelům, kteří** můžou používat dlaždice nebo přehledy, vás přenese podrobnosti o registraci.
 
-The registration details report shows the following information for each user:
+Sestava Podrobnosti o registraci zobrazuje pro každého uživatele následující informace:
 
-- Name (Název)
+- Název
 - Uživatelské jméno
-- Registration status (All, Registered, Not registered)
-- Enabled status (All, Enabled, Not enabled)
-- Capable status (All, Capable, Not capable)
-- Methods (App notification, App code, Phone call, SMS, Email, Security questions)
+- Stav registrace (vše, registrováno, Neregistrováno)
+- Povolený stav (vše, povoleno, Nepovoleno)
+- Stav schopností (vše, schopný, neschopný)
+- Metody (oznámení aplikace, kód aplikace, telefonní hovor, SMS, E-mail, bezpečnostní otázky)
 
-Using the controls at the top of the list, you can search for a user and filter the list of users based on the columns shown.
+Pomocí ovládacích prvků v horní části seznamu můžete vyhledat uživatele a filtrovat seznam uživatelů na základě zobrazených sloupců.
 
-### <a name="reset-details"></a>Reset details
+### <a name="reset-details"></a>Resetovat podrobnosti
 
-Clicking on the Registrations or Resets charts will bring you to the reset details.
+Kliknutím na registrace nebo resetování grafů zobrazíte podrobnosti o resetování.
 
-The reset details report shows registration and reset events from the last 30 days including:
+Sestava obnovit podrobnosti zobrazuje události registrace a resetování za posledních 30 dní, včetně:
 
-- Name (Název)
+- Název
 - Uživatelské jméno
-- Feature (All, Registration, Reset)
-- Authentication method (App notification, App code, Phone call, Office call, SMS, Email, Security questions)
-- Status (All, Success, Failure)
+- Funkce (vše, registrace, resetování)
+- Metoda ověřování (oznámení aplikace, kód aplikace, telefonní hovor, volání Office, SMS, E-mail, bezpečnostní otázky)
+- Stav (vše, úspěch, selhání)
 
-Using the controls at the top of the list, you can search for a user and filter the list of users based on the columns shown.
+Pomocí ovládacích prvků v horní části seznamu můžete vyhledat uživatele a filtrovat seznam uživatelů na základě zobrazených sloupců.
 
 ## <a name="limitations"></a>Omezení
 
-The data shown in these reports will be delayed by up to 60 minutes. A “Last refreshed" field exists in the Azure portal to identify how recent your data is.
+Data zobrazená v těchto sestavách se budou zpozdit až o 60 minut. V Azure Portal existuje pole Poslední aktualizace, které vám umožní určit, jak se vaše data nacházejí.
 
-Usage and insights data is not a replacement for the Azure Multi-Factor Authentication activity reports or information contained in the Azure AD sign-ins report.
+Data o využití a Insights nejsou náhradou za sestavy aktivit Azure Multi-Factor Authentication ani informace obsažené v sestavě přihlášení k Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Working with the authentication methods usage report API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
-- [Choosing authentication methods for your organization](concept-authentication-methods.md)
-- [Combined registration experience](concept-registration-mfa-sspr-combined.md)
+- [Práce s rozhraním API pro sestavy využití metod ověřování](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Výběr metod ověřování pro vaši organizaci](concept-authentication-methods.md)
+- [Prostředí kombinované registrace](concept-registration-mfa-sspr-combined.md)

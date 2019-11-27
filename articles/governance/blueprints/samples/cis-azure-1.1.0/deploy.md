@@ -1,14 +1,14 @@
 ---
-title: Ukázka srovnávacího plánu CIS Microsoft Azure Foundation – nasazení kroků
+title: Ukázka testu výkonnosti modelu CI Microsoft Azure Foundation
 description: Nasaďte kroky pro ukázku srovnávacího plánu CIS Microsoft Azure Foundation, včetně podrobností parametrů artefaktu podrobného plánu.
 ms.date: 10/14/2019
 ms.topic: sample
-ms.openlocfilehash: e33a7788d9d7a13cb7f8df3f6663bf009b685169
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038377"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544526"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Nasaďte ukázku srovnávacího plánu pro CIS Microsoft Azure Foundation
 
