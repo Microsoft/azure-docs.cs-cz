@@ -27,7 +27,7 @@ Naučte se, jak nasadit model z Azure Machine Learning jako aplikace Function Ap
 
 Pomocí Azure Machine Learning můžete vytvářet image Docker z školicích modelů strojového učení. Azure Machine Learning teď má funkce Preview k sestavování těchto modelů strojového učení do aplikací Function App, které se dají [nasadit do Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 * Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)

@@ -38,7 +38,7 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | Maximální počet DTU | 5 |
 | Zahrnuté úložiště (GB) | 2 |
 | Maximální počet možností úložiště (GB) | 2 |
-| Maximální úložiště OLTP v paměti (GB) |neuvedeno |
+| Maximální úložiště OLTP v paměti (GB) |Nevztahuje se |
 | Maximální počet souběžných pracovních procesů (požadavků) | 30 |
 | Maximální počet souběžných relací | 300 |
 |||
@@ -56,7 +56,7 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | Maximální počet DTU | 10 | 20 | 50 | 100 |
 | Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 |
 | Maximální počet možností úložiště (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Maximální úložiště OLTP v paměti (GB) | neuvedeno | neuvedeno | neuvedeno | neuvedeno |
+| Maximální úložiště OLTP v paměti (GB) | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se |
 | Maximální počet souběžných pracovních procesů (požadavků)| 60 | 90 | 120 | 200 |
 | Maximální počet souběžných relací |600 | 900 | 1200 | 2400 |
 ||||||
@@ -74,7 +74,7 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 | Maximální počet DTU | 200 | 400 | 800 | 1600 | 3000 |
 | Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximální počet možností úložiště (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Maximální úložiště OLTP v paměti (GB) | neuvedeno | neuvedeno | neuvedeno | neuvedeno |neuvedeno |
+| Maximální úložiště OLTP v paměti (GB) | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se |Nevztahuje se |
 | Maximální počet souběžných pracovních procesů (požadavků)| 400 | 800 | 1600 | 3200 |6000 |
 | Maximální počet souběžných relací |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
@@ -83,10 +83,10 @@ V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici 
 
 | **Velikost výpočetního prostředí** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
-| Maximální počet DTU | 125 | 250 | 500 | 1000 | 1750 | 4000 |
+| Maximální počet DTU | 125 | 250 | 500 | 1 000 | 1750 | 4000 |
 | Zahrnuté úložiště (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
 | Maximální počet možností úložiště (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
-| Maximální úložiště OLTP v paměti (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
+| Maximální úložiště OLTP v paměti (GB) | 1\. místo | 2 | 4 | 8 | 14 | 32 |
 | Maximální počet souběžných pracovních procesů (požadavků)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Maximální počet souběžných relací | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||

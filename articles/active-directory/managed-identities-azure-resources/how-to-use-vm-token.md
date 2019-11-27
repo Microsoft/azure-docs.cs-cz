@@ -30,7 +30,7 @@ Spravované identity pro prostředky Azure poskytují služby Azure s automatick
 
 Tento článek poskytuje různé příklady kódu a skriptů pro získání tokenu a také pokyny k důležitým tématům, jako je zpracování vypršení platnosti tokenu a chyby protokolu HTTP. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -70,7 +70,7 @@ Ukázková žádost s použitím koncového bodu Azure Instance Metadata Service
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| Prvek | Popis |
+| Element | Popis |
 | ------- | ----------- |
 | `GET` | Příkaz HTTP, který indikuje, že chcete načíst data z koncového bodu. V tomto případě se jedná o přístupový token OAuth. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Koncový bod spravovaných identit pro prostředky Azure pro Instance Metadata Service. |
@@ -88,7 +88,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| Prvek | Popis |
+| Element | Popis |
 | ------- | ----------- |
 | `GET` | Příkaz HTTP, který indikuje, že chcete načíst data z koncového bodu. V tomto případě se jedná o přístupový token OAuth. | 
 | `http://localhost:50342/oauth2/token` | Spravované identity pro koncové body prostředků Azure, kde 50342 je výchozí port a dá se konfigurovat. |
@@ -113,7 +113,7 @@ Content-Type: application/json
 }
 ```
 
-| Prvek | Popis |
+| Element | Popis |
 | ------- | ----------- |
 | `access_token` | Požadovaný přístupový token Při volání zabezpečeného REST API se token vloží do pole hlavička žádosti `Authorization` jako "nosič", což umožňuje rozhraní API ověřit volajícího. | 
 | `refresh_token` | Nepoužívá se spravovanými identitami pro prostředky Azure. |
@@ -362,7 +362,7 @@ Spravované identity pro prostředky Azure – koncový bod signalizuje chyby pr
 
 Pokud dojde k chybě, odpovídající tělo odpovědi HTTP obsahuje JSON s podrobnostmi o chybě:
 
-| Prvek | Popis |
+| Element | Popis |
 | ------- | ----------- |
 | error   | Identifikátor chyby |
 | error_description | Podrobný popis chyby **Popisy chyb se můžou kdykoli změnit. Nepište kód, který se větví na základě hodnot v popisu chyby.**|
@@ -393,7 +393,7 @@ Pro opakování doporučujeme následující strategii:
 
 | **Strategie opakování** | **Nastavení** | **Hodnoty** | **Jak to funguje** |
 | --- | --- | --- | --- |
-|ExponentialBackoff |Počet opakování<br />Min back-off<br />Max back-off<br />Delta back-off<br />První rychlé opakování |5<br />0 s<br />60 s<br />2 s<br />false (nepravda) |Pokus 1 – zpoždění 0 s<br />Pokus 2 – zpoždění ~2 s<br />Pokus 3 – zpoždění ~6 s<br />Pokus 4 – zpoždění ~14 s<br />Pokus 5 – zpoždění ~30 s |
+|ExponentialBackoff |Počet opakování<br />Min back-off<br />Max back-off<br />Delta back-off<br />První rychlé opakování |5<br />0 s<br />60 s<br />2 s<br />false |Pokus 1 – zpoždění 0 s<br />Pokus 2 – zpoždění ~2 s<br />Pokus 3 – zpoždění ~6 s<br />Pokus 4 – zpoždění ~14 s<br />Pokus 5 – zpoždění ~30 s |
 
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
 

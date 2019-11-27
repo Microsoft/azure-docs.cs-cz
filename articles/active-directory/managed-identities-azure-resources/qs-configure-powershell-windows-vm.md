@@ -32,7 +32,7 @@ V tomto článku se naučíte, jak provádět následující spravované identit
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
@@ -144,7 +144,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
 1. Přečtěte si jedno z následujících rychlých startů virtuálních počítačů Azure a vyplněním pouze nezbytných oddílů ("přihlášení do Azure", "vytvořit skupinu prostředků", "vytvořit síťovou skupinu", "Vytvoření virtuálního počítače"). 
   
-    Až se dostanete do části Vytvoření virtuálního počítače, udělejte mírně změnu v syntaxi rutiny [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) . Přidáním parametrů `-IdentityType UserAssigned` a `-IdentityID` můžete zřídit virtuální počítač s identitou přiřazenou uživatelem.  Nahraďte `<VM NAME>`,`<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami.  Příklad:
+    Až se dostanete do části Vytvoření virtuálního počítače, udělejte mírně změnu v syntaxi rutiny [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) . Přidáním parametrů `-IdentityType UserAssigned` a `-IdentityID` můžete zřídit virtuální počítač s identitou přiřazenou uživatelem.  Nahraďte `<VM NAME>`,`<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami.  Například:
     
     ```powershell 
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."

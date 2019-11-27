@@ -26,7 +26,7 @@ Pomocí Site Recovery můžete:
 
 Tento článek popisuje, jak chránit nasazení aplikací SAP NetWeaver pomocí [Azure Site Recovery](site-recovery-overview.md). Tento článek se zabývá osvědčenými postupy pro ochranu nasazení NetWeaver SAP v Azure pomocí replikace do jiného datového centra Azure pomocí Site Recovery. Popisuje podporované scénáře a konfigurace a postup testování převzetí služeb při selhání (cvičení zotavení po havárii) a skutečné převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete, ujistěte se, že víte, jak provádět následující úlohy:
 
 * [Replikace virtuálního počítače do Azure](azure-to-azure-walkthrough-enable-replication.md)
@@ -59,22 +59,22 @@ Tato referenční architektura ukazuje spuštění SAP NetWeaver v prostředí W
 
 ## <a name="disaster-recovery-considerations"></a>Požadavky na zotavení po havárii
 
-Pro zotavení po havárii (DR) musíte být schopni převzetí služeb při selhání do sekundární oblasti. Každá úroveň používá k zajištění ochrany při zotavení po havárii jinou strategii.
+V případě zotavení po havárii musíte být schopni převzít služby při selhání do sekundární oblasti. Každá úroveň používá k zajištění ochrany při zotavení po havárii jinou strategii.
 
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>Virtuální počítače s fondem webového dispečera SAP 
-Komponenta Web Dispatchera slouží jako nástroj pro vyrovnávání zatížení pro provoz SAP mezi aplikačními servery SAP. Pro zajištění vysoké dostupnosti pro komponentu webového dispečera Azure Load Balancer slouží k implementaci nastavení paralelního webového dispečera v konfiguraci kruhového dotazování pro distribuci přenosů HTTP (S) mezi dostupnými webovými odinstalačními soubory ve fondu vyrovnávání. Tato akce bude replikována pomocí Azure Site Recovery (ASR) a skripty služby Automation budou použity ke konfiguraci nástroje pro vyrovnávání zatížení v oblasti zotavení po havárii. 
+Komponenta webového dispečera se používá jako nástroj pro vyrovnávání zatížení pro přenos dat SAP mezi aplikační servery SAP. Pro zajištění vysoké dostupnosti pro komponentu webového dispečera Azure Load Balancer slouží k implementaci nastavení paralelního webového dispečera v konfiguraci kruhového dotazování pro distribuci přenosů HTTP (S) mezi dostupnými webovými odinstalačními soubory ve fondu vyrovnávání. Tato akce bude replikována pomocí Azure Site Recovery (ASR) a skripty služby Automation budou použity ke konfiguraci nástroje pro vyrovnávání zatížení v oblasti zotavení po havárii. 
 
 #### <a name="vms-running-application-servers-pool"></a>Virtuální počítače s fondem aplikačních serverů
-Ke správě skupin přihlášení pro ABAP aplikační servery, je použít SMLG transakce. Jak rozdělit zatížení mezi fond serverů pro aplikace SAP pro SAPGUIs a v dokumentu RFC využívá funkce v rámci zprávy serveru z centrální služby Vyrovnávání zatížení provozu. Tato akce bude replikována pomocí Azure Site Recovery 
+Pro správu přihlašovacích skupin pro aplikační servery ABAP se používá transakce SMLG. Používá funkci Vyrovnávání zatížení v rámci serveru zpráv centrálních služeb k distribuci úloh mezi fondem aplikačních serverů SAP pro provoz SAPGUIs a RFC. Tato akce bude replikována pomocí Azure Site Recovery 
 
 #### <a name="vms-running-sap-central-services-cluster"></a>Virtuální počítače se spuštěným clusterem SAP Central Services
-Tato referenční architektura centrální služby běží na virtuálních počítačích v aplikační vrstvě. Centrální služby je možné jediný bod selhání (SPOF) při nasazení na jeden virtuální počítač – typické nasazení při vysoké dostupnosti není povinné.<br>
+Tato referenční architektura spouští centrální služby na virtuálních počítačích v aplikační vrstvě. Centrální služby jsou potenciální SPOF (Single-Point of failure) při nasazení na jeden virtuální počítač – Typická implementace, pokud vysoká dostupnost není požadavkem.<br>
 
 K implementaci řešení vysoké dostupnosti lze použít buď cluster sdíleného disku, nebo cluster sdílené složky. Pokud chcete nakonfigurovat virtuální počítače pro cluster sdíleného disku, použijte cluster Windows serveru s podporou převzetí služeb při selhání. Disk s kopií cloudu se doporučuje jako určující disk kvora. 
  > [!NOTE]
  > Azure Site Recovery nereplikuje sdílené složky v cloudu. proto se doporučuje nasadit v oblasti zotavení po havárii cloudovou kopii clusteru.
 
-V rámci podpory prostředí clusteru s podporou převzetí služeb při selhání provede s tím, že služba [DataKeeper Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) provádí replikaci nezávislých disků vlastněných uzly clusteru, pomocí funkce Shared Volume clusteru. Azure nativně nepodporuje sdílené disky a proto vyžaduje řešení poskytovaných SIOS. 
+V rámci podpory prostředí clusteru s podporou převzetí služeb při selhání provede s tím, že služba [DataKeeper Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) provádí replikaci nezávislých disků vlastněných uzly clusteru, pomocí funkce Shared Volume clusteru. Azure nativně nepodporuje sdílené disky, a proto vyžaduje řešení, která poskytuje. 
 
 Dalším způsobem, jak zvládnout clustering, je implementovat cluster sdílené složky. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) nedávno upravil vzor nasazení centrální služby pro přístup k globálním adresářům/sapmnt pomocí cesty UNC. Přesto se však doporučuje zajistit vysokou dostupnost sdílení/sapmnt UNC. To se dá udělat na instanci centrální služby pomocí clusteru s podporou převzetí služeb při selhání Windows serveru se souborovým serverem se škálováním na více systémů (SOFS) a funkcí Prostory úložiště s přímým přístupem (S2D) ve Windows serveru 2016. 
  > [!NOTE]

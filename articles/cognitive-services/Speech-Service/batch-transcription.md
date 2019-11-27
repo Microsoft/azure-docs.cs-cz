@@ -1,7 +1,7 @@
 ---
 title: Jak používat službu Batch přepis-Speech Service
 titleSuffix: Azure Cognitive Services
-description: Přepis batch je ideální, pokud chcete přepisy velké množství zvuk v úložišti, jako jsou objekty BLOB Azure. Pomocí vyhrazené rozhraní REST API můžete odkazovat na zvukové soubory pomocí sdíleného přístupového podpisu (SAS) identifikátor URI a asynchronně přijímat přepisů.
+description: Služba Batch přepis je ideální, pokud chcete přepisovat velké množství zvuků v úložišti, jako jsou objekty blob Azure. Pomocí vyhrazené REST API můžete odkazovat na zvukové soubory s identifikátorem URI sdíleného přístupového podpisu (SAS) a asynchronně přijímat přepisy.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -17,45 +17,45 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74538118"
 ---
-# <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
+# <a name="why-use-batch-transcription"></a>Proč používat Batch přepis?
 
-Přepis batch je ideální, pokud chcete přepisy velké množství zvuk v úložišti, jako jsou objekty BLOB Azure. Pomocí vyhrazené rozhraní REST API můžete odkazovat na zvukové soubory pomocí sdíleného přístupového podpisu (SAS) identifikátor URI a asynchronně přijímat přepisů.
+Služba Batch přepis je ideální, pokud chcete přepisovat velké množství zvuků v úložišti, jako jsou objekty blob Azure. Pomocí vyhrazené REST API můžete odkazovat na zvukové soubory s identifikátorem URI sdíleného přístupového podpisu (SAS) a asynchronně přijímat přepisy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="subscription-key"></a>Klíč předplatného
 
-Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pomocí [příručky Začínáme](get-started.md)klíč předplatného z [Azure Portal](https://portal.azure.com) . Pokud budete chtít získat přepisů z našich základní modely, vytváří se klíč je všechno, co musíte udělat.
+Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pomocí [příručky Začínáme](get-started.md)klíč předplatného z [Azure Portal](https://portal.azure.com) . Pokud máte v úmyslu získat z našich standardních modelů nějaké přepisy, musíte vytvořit klíč, který je potřeba udělat.
 
 >[!NOTE]
-> Standardní předplatné (S0) pro hlasové služby je potřeba pomocí služby batch určené k transkripci. Bezplatné předplatné klíče (F0) nebudou fungovat. Další informace najdete v tématu [ceny a omezení](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> K použití dávkového přepisu se vyžaduje standardní předplatné (S0) pro služby řeči. Klíče bezplatného předplatného (F0) nebudou fungovat. Další informace najdete v tématu [ceny a omezení](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="custom-models"></a>Vlastní modely
 
 Pokud máte v úmyslu přizpůsobit akustické nebo jazykové modely, postupujte podle kroků v části [přizpůsobení akustických modelů](how-to-customize-acoustic-models.md) a [přizpůsobení jazykových modelů](how-to-customize-language-model.md). Pokud chcete v rámci dávkového přepisu použít vytvořené modely, budete potřebovat jejich ID modelu. Toto ID není ID koncového bodu, které najdete v zobrazení podrobností koncového bodu, jedná se o ID modelu, které můžete načíst, když vyberete podrobnosti modelů.
 
-## <a name="the-batch-transcription-api"></a>Přepis rozhraní API služby Batch
+## <a name="the-batch-transcription-api"></a>Rozhraní API pro dávkové Přepisy
 
-Rozhraní API služby Batch určené k transkripci nabízí asynchronní přepis řeči na text, společně s další funkce. Je rozhraní REST API, který poskytuje metody pro:
+Rozhraní API dávkového přepisu nabízí jako přepis asynchronního převodu řeči na text spolu s dalšími funkcemi. Je REST API, který zveřejňuje metody pro:
 
-1. Vytváření žádostí o zpracování služby batch
-1. Stav dotazu
-1. Přepisy stahování
+1. Vytváření požadavků dávkového zpracování
+1. Dotaz na stav
+1. Stahování přepisů
 
 > [!NOTE]
-> Rozhraní API služby Batch určené k transkripci je ideální pro volání Center, která obvykle accumulate tisíce hodin zvukového záznamu. Díky tomu se snadno přepisovat velké objemy zvukových nahrávek.
+> Rozhraní API služby Batch pro přepisy je ideální pro centra volání, která obvykle shromažďují tisíce hodin zvukového přenosu. Díky tomu se snadno přepisovat velké objemy zvukových nahrávek.
 
 ### <a name="supported-formats"></a>Podporované formáty
 
-Rozhraní API služby Batch určené k transkripci podporuje následující formáty:
+Rozhraní API dávkového přepisu podporuje následující formáty:
 
-| Formát | Kodek | S přenosovou rychlostí | Vzorkovací frekvence |
+| Formát | Kodek | Rychlostí | Vzorkovací frekvence |
 |--------|-------|---------|-------------|
-| WAV | PCM | 16 bitů | 8 nebo 16 mono, stereo kHz, |
-| MP3 | PCM | 16 bitů | 8 nebo 16 mono, stereo kHz, |
-| OGG | DÍLE | 16 bitů | 8 nebo 16 mono, stereo kHz, |
+| BUĎ | Code | 16 bitů | 8 nebo 16 kHz, mono, stereo |
+| MP3 | Code | 16 bitů | 8 nebo 16 kHz, mono, stereo |
+| OGG | OPUS | 16 bitů | 8 nebo 16 kHz, mono, stereo |
 
-Přepis rozhraní API služby Batch pro stereo zvukové datové proudy, rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Tato ukázková žádost obsahuje vlastnosti pro filtrování vulgárních výrazů, interpunkční znaménka a časová razítka na úrovni slov.
+V případě datových proudů v stereofonních zvukech rozhraní API dávkového přepisu během přepisu rozdělí levý a pravý kanál. Dva soubory JSON s výsledkem jsou jednotlivé vytvořené z jednoho kanálu. Časová razítka na utterance umožňují vývojáři vytvořit seřazený finální přepis. Tato ukázková žádost obsahuje vlastnosti pro filtrování vulgárních výrazů, interpunkční znaménka a časová razítka na úrovni slov.
 
 ### <a name="configuration"></a>Konfigurace
 
@@ -78,7 +78,7 @@ Parametry konfigurace jsou zadány jako JSON:
 ```
 
 > [!NOTE]
-> Rozhraní API určené k transkripci služby Batch používá službu REST pro požadování přepisů, jejich stav a přidružené výsledky. Můžete použít rozhraní API z jakéhokoli jazyka. Další část popisuje, jak se používá rozhraní API.
+> Rozhraní API služby Batch pro přepis používá službu REST pro vyžádání přepisů, jejich stavů a přidružených výsledků. Rozhraní API můžete použít v jakémkoli jazyce. Následující část popisuje, jak se používá rozhraní API.
 
 ### <a name="configuration-properties"></a>Vlastnosti konfigurace
 
@@ -86,8 +86,8 @@ K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
 
 | Parametr | Popis |
 |-----------|-------------|
-| `ProfanityFilterMode` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Přípustné hodnoty jsou `None`, které deaktivují filtrování vulgárních výrazů, `masked`, které nahradí vulgární znaky hvězdičkami, `removed` které odstraní všechny vulgární výrazy z výsledku nebo `tags`, které přidávají značky "vulgární výrazy". Výchozí nastavení je `masked`. |
-| `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Přípustné hodnoty jsou `None`, což zakáže interpunkci, `dictated`, která implikuje explicitní interpunkci, `automatic`, která umožňuje dekodéru zacházet s interpunkčním znaménkem nebo `dictatedandautomatic`, což znamená, že se automaticky zakazují interpunkční znaménka |
+| `ProfanityFilterMode` | Určuje způsob zpracování vulgárních výrazů ve výsledcích rozpoznávání. Přípustné hodnoty jsou `None`, které deaktivují filtrování vulgárních výrazů, `masked`, které nahradí vulgární znaky hvězdičkami, `removed` které odstraní všechny vulgární výrazy z výsledku nebo `tags`, které přidávají značky "vulgární výrazy". Výchozí nastavení je `masked`. |
+| `PunctuationMode` | Určuje způsob zpracování interpunkce ve výsledcích rozpoznávání. Přípustné hodnoty jsou `None`, což zakáže interpunkci, `dictated`, která implikuje explicitní interpunkci, `automatic`, která umožňuje dekodéru zacházet s interpunkčním znaménkem nebo `dictatedandautomatic`, což znamená, že se automaticky zakazují interpunkční znaménka |
  | `AddWordLevelTimestamps` | Určuje, zda mají být do výstupu přidány časová razítka na úrovni aplikace Word. Přípustné hodnoty jsou `true`, které umožňují, aby byla časová razítka na úrovni aplikace Word a `false` (výchozí hodnota) zakázána. |
  | `AddSentiment` | Určuje mínění by měl být přidán do utterance. Přijaté hodnoty jsou `true`, které povolují mínění na utterance a `false` (výchozí hodnotu), která ho zakáže. |
  | `AddDiarization` | Určuje, že by měla být provedena analýza diarization na vstupu, u kterého se očekává, že kanál mono obsahuje dvě hlasy. Přípustné hodnoty jsou `true`, které povolují diarization a `false` (výchozí hodnota), která ji zakáže. Také je nutné, aby bylo `AddWordLevelTimestamps` nastaveno na hodnotu true.|
@@ -125,7 +125,7 @@ Všimněte si také, že v stereofonních záznamech není Diarization k dispozi
 > [!NOTE]
 > Diarization je k dispozici ve všech oblastech a pro všechna národní prostředí!
 
-## <a name="sentiment"></a>Mínění
+## <a name="sentiment"></a>Zabarvení
 
 Mínění je nová funkce v rozhraní API služby Batch přepisu a je důležitou funkcí v doméně centra volání. Zákazníci mohou použít parametry `AddSentiment` pro jejich požadavky na
 
@@ -190,9 +190,9 @@ Vzorový kód nastaví klienta a odešle požadavek přepisu. Pak se zobrazí do
 
 Úplné podrobnosti o předchozích voláních najdete v našem [dokumentu Swagger](https://westus.cris.ai/swagger/ui/index). Úplný vzorek zobrazený tady najdete na [GitHubu](https://aka.ms/csspeech/samples) v podadresáři `samples/batch`.
 
-Poznamenejte si nastavení asynchronní pro zvuk odesílání a příjem určené k transkripci stav. Klient, který vytvoříte je klienta .NET protokolu HTTP. K odeslání podrobností o zvukovém souboru a metodě `GetTranscriptions` pro příjem výsledků je `PostTranscriptions` metoda. `PostTranscriptions` vrátí popisovač a `GetTranscriptions` ho použije k vytvoření popisovače pro získání stavu přepisu.
+Poznamenejte si asynchronní nastavení pro publikování zvuku a přijetí přepisu stavu. Vytvořeným klientem je klient .NET HTTP. K odeslání podrobností o zvukovém souboru a metodě `GetTranscriptions` pro příjem výsledků je `PostTranscriptions` metoda. `PostTranscriptions` vrátí popisovač a `GetTranscriptions` ho použije k vytvoření popisovače pro získání stavu přepisu.
 
-Aktuální vzorový kód neurčuje vlastního modelu. Služba používá základní modely pro přepisování na soubor nebo soubory. K určení vzorů, můžete předat na stejné metodě jako ID modelu akustických a jazykový model.
+Aktuální ukázkový kód neurčuje vlastní model. Služba používá základní modely pro zdlouhavého přepisování souborů nebo souborů. Chcete-li určit modely, můžete předat stejnou metodu jako ID modelu pro akustický a jazykový model.
 
 > [!NOTE]
 > Pro přepisy směrného plánu není nutné deklarovat ID pro základní modely. Pokud zadáte pouze ID jazykového modelu (bez ID akustického modelu), je automaticky vybrán shodný akustický model. Pokud zadáte pouze ID akustického modelu, je automaticky vybrán shodný jazykový model.

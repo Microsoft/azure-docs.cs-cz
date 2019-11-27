@@ -34,7 +34,7 @@ Metriky a přehledy jsou dostupné prostřednictvím prostředku [Azure Applicat
 > [!Important]
 > Mějte na paměti, že při sledování přenosů dat pomocí sady SDK je k dispozici ve všech edicích, zatímco monitorování se dokončí přes Studio na webu pouze edice Enterprise.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytváření a práci s monitory datových sad potřebujete:
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
@@ -131,7 +131,7 @@ Tato tabulka obsahuje základní nastavení použitá pro monitorování datový
 
 | Nastavení | Popis | Tipy | Měnitelné | 
 | ------- | ----------- | ---- | ------- | 
-| Název | Název monitorování datové sady | | Ne |
+| Name (Název) | Název monitorování datové sady | | Ne |
 | Základní datová sada | Tabulková datová sada, která bude použita jako základ pro porovnání cílové datové sady v průběhu času. | Základní datová sada musí mít funkce společné s cílovou datovou sadou. Obecně platí, že by měl být standardní hodnota nastavena na školicí datovou sadu modelu nebo na řez cílové datové sady. | Ne |
 | Cílová datová sada | Sada tabulkových dat se zadaným sloupcem časového razítka, která se bude analyzovat pro posun dat | Cílová datová sada musí mít funkce společné se základní datovou sadou a měla by být `timeseries` datovou sadu, ke které se připojí nová data. Historická data v cílové datové sadě můžete analyzovat, nebo je možné monitorovat nová data. | Ne | 
 | Frequency | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Úpravou tohoto nastavení zahrňte do směrného plánu srovnatelnou velikost dat. | Ne | 
@@ -147,7 +147,7 @@ Tato nastavení se dají vytvořit v případě naplánovaných kanálů monitor
 | Povolení | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Zakažte plán k analýze historických dat s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Ano | 
 | Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než dorazí data do databáze SQL DB pro zapouzdření datové sady, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | Ne | 
 | E-mailové adresy | E-mailové adresy pro výstrahy na základě porušení procentuální prahové hodnoty posunu dat | E-maily se odesílají prostřednictvím Azure Monitor. | Ano | 
-| Prahová hodnota | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Ano | 
+| Mezí | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Ano | 
 
 ### <a name="backfill-settings"></a>Nastavení zpětných výplní
 
@@ -173,7 +173,7 @@ Po potvrzení funkčnosti pracovního prostoru přejděte na domovskou stránku 
 
 Klikněte na tlačítko **+ vytvořit monitorování** a pokračujte v průvodci kliknutím na tlačítko **Další**.
 
-![Průvodce](media/how-to-monitor-datasets/wizard.png)
+![Tip](media/how-to-monitor-datasets/wizard.png)
 
 Výsledný monitor DataSet se zobrazí v seznamu. Vyberte ji a přejdete na stránku podrobností tohoto monitorování.
 

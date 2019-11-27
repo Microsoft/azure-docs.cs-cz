@@ -20,7 +20,7 @@ ms.locfileid: "74533792"
 ---
 # <a name="add-contributors-to-your-app"></a>Přidání přispěvatelů do aplikace
 
-Vlastník aplikace může přidat přispěvatele do aplikací. Tyto spolupracovníky můžete měnit model, natrénujete ho a publikovat aplikace. 
+Vlastník aplikace může přidat přispěvatele do aplikací. Tito spolupracovníci můžou upravit model, výuku a publikování aplikace. 
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -49,15 +49,15 @@ Následující postup platí pro všechny uživatele, kteří se **nemigrovali**
 
 Nemigrovali jste, pokud vaše prostředí pro vytváření LUIS není vázané na zdroj obsahu na stránce **Správa prostředků Azure >** na portálu Luis.
 
-Aplikace má jeden Autor, vlastník, ale může mít mnoho spolupracovníky. Povolit spolupracovníci LUIS aplikaci upravovat, je nutné přidat e-mailu, které používají pro přístup k portálu služby LUIS do seznamu spolupracovníky. Jakmile jsou přidány, aplikace bude zobrazovat na portálu služby LUIS.
+Aplikace má jednoho autora, vlastníka, ale může mít mnoho spolupracujících spolupracovníků. Pokud chcete spolupracovníkům dovolit upravit aplikaci LUIS, musíte přidat e-maily, které používají pro přístup k portálu LUIS, do seznamu spolupracovníci. Po přidání se aplikace zobrazí na portálu LUIS.
 
 1. V pravé horní nabídce vyberte **Spravovat** a v levé nabídce vyberte **spolupracovníci** .
 
 1. Na panelu nástrojů vyberte **Přidat spolupracovníka** .
 
-1. Zadejte e-mailovou adresu, kterou spolupracovníka používá k přihlášení k portálu služby LUIS.
+1. Zadejte e-mailovou adresu, kterou spolupracovníka používá pro přihlášení k portálu LUIS.
 
-    ![Přidat spolupracovníka vaší e-mailovou adresu](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
+    ![Přidat e-mailovou adresu spolupracovníka](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
 
 
 ### <a name="users-with-multiple-emails"></a>Uživatelé s více e-maily 
@@ -66,26 +66,26 @@ Pokud do aplikace LUIS přidáte přispěvatele nebo spolupracovníky, zadávát
 
 <a name="owner-and-collaborators"></a>
 
-### <a name="azure-active-directory-resources"></a>Prostředky služby Azure Active Directory
+### <a name="azure-active-directory-resources"></a>Prostředky Azure Active Directory
 
-Pokud ve vaší organizaci používáte [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD), Language UNDERSTANDING (Luis) potřebuje oprávnění k informacím o přístupu vašich uživatelů, když chtějí používat Luis. Prostředky, které vyžaduje služba LUIS jsou minimální. 
+Pokud ve vaší organizaci používáte [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD), Language UNDERSTANDING (Luis) potřebuje oprávnění k informacím o přístupu vašich uživatelů, když chtějí používat Luis. Prostředky, které LUIS vyžaduje, jsou minimální. 
 
-Podrobný popis zobrazí při pokusu o přihlášení pomocí účtu, který má souhlas správce, nebo není vyžadují souhlas správce, jako je například souhlas správce:
+V případě, že se pokusíte zaregistrovat účet, který má souhlas správce nebo nevyžaduje souhlas správce, jako je třeba souhlas správce, se zobrazí podrobný popis.
 
-* Umožňuje přihlášení k aplikaci pomocí účtu organizace a umožňuje aplikaci číst váš profil. Také to umožňuje aplikaci číst základní informace o firmě. To dává LUIS oprávnění ke čtení dat základních profilů, jako je ID uživatele, e-mail, jméno
-* Umožňuje aplikaci zobrazovat a aktualizovat data, i když se aplikace nejsou aktuálně používá. K aktualizaci přístupového tokenu uživatele se vyžaduje oprávnění.
+* Umožňuje přihlásit se k aplikaci pomocí účtu organizace a nechat si aplikaci číst váš profil. Umožňuje také aplikaci číst základní informace o společnosti. To dává LUIS oprávnění ke čtení dat základních profilů, jako je ID uživatele, e-mail, jméno
+* Umožňuje aplikaci zobrazovat a aktualizovat vaše data, i když tuto aplikaci momentálně nepoužíváte. K aktualizaci přístupového tokenu uživatele se vyžaduje oprávnění.
 
 
-### <a name="azure-active-directory-tenant-user"></a>Uživatel tenanta Azure Active Directory
+### <a name="azure-active-directory-tenant-user"></a>Azure Active Directory uživatel tenanta
 
-LUIS používá standardní toku souhlasu Azure Active Directory (Azure AD). 
+LUIS používá tok souhlasu Standard Azure Active Directory (Azure AD). 
 
-Správce klienta by měl spolupracovat přímo s uživatele, který potřebuje udělení přístupu k použití LUIS ve službě Azure AD. 
+Správce tenanta by měl spolupracovat přímo s uživatelem, který potřebuje udělený přístup k používání LUIS ve službě Azure AD. 
 
-* Nejprve uživatel přihlásí do LUIS a vidí v místním dialogovém okně, které vyžadují schválení správce. Uživatel kontaktuje správce tenanta, než budete pokračovat. 
-* Druhý správce klienta do LUIS přihlásí a zobrazí automaticky otevíraný dialog toku souhlasu. Toto je dialogové okno Správce musí udělit oprávnění pro uživatele. Jakmile správce přijímá oprávnění, uživatel je moci pokračovat s LUIS. Pokud se správce tenanta nebude přihlašovat k LUIS, může správce získat přístup k [souhlasu](https://account.activedirectory.windowsazure.com/r#/applications) pro Luis, které vidíte na následujícím snímku obrazovky. Všimněte si, že seznam je filtrovaný na položky, které obsahují název `LUIS`.
+* Nejprve se uživatel přihlásí k LUIS a zobrazí se automaticky otevírané okno, které vyžaduje schválení správcem. Před pokračováním uživatel kontaktuje správce tenanta. 
+* Za druhé se správce tenanta přihlásí do LUIS a zobrazí se místní okno s tokem souhlasu. Toto je dialogové okno, které správce potřebuje k udělení oprávnění uživateli. Jakmile správce přijme oprávnění, může pokračovat v LUIS. Pokud se správce tenanta nebude přihlašovat k LUIS, může správce získat přístup k [souhlasu](https://account.activedirectory.windowsazure.com/r#/applications) pro Luis, které vidíte na následujícím snímku obrazovky. Všimněte si, že seznam je filtrovaný na položky, které obsahují název `LUIS`.
 
-![Oprávnění Azure active directory web aplikace](./media/luis-how-to-collaborate/tenant-permissions.png)
+![Oprávnění Azure Active Directory na webu aplikace](./media/luis-how-to-collaborate/tenant-permissions.png)
 
 Pokud chce správce tenanta používat LUIS jenom někteří uživatelé, existuje několik možných řešení:
 * Udělení souhlasu správce (souhlasu se všemi uživateli Azure AD), ale pak nastavte na Ano, aby se přiřazení uživatelů vyžadovalo v části vlastnosti podnikové aplikace, a nakonec přiřaďte nebo přidejte do aplikace jenom ty, které jsou k tomu potřeba. V této metodě správce stále poskytuje aplikaci souhlas správce, ale je možné řídit uživatele, kteří k nim mají přístup.

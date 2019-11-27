@@ -24,7 +24,7 @@ Po naplánování naplánovaných vln [údržby](maintenance-notifications.md) m
 
 Můžete použít Azure Portal a vyhledat virtuální počítače s naplánovanou údržbou.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. V levém navigačním panelu klikněte na **Virtual Machines**.
 

@@ -34,7 +34,7 @@ V okně **nápovědu a podpora** nebo v okně **používání a kvóta** na port
 
 Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help + podpora" v Azure, které je dostupné v Azure Portal. 
 
-1. V https://portal.azure.comvyberte možnost **help + podpora**.
+1. V https://portal.azure.com vyberte možnost **help + podpora**.
 
 ![Pomoc a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -65,7 +65,7 @@ Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help +
 
 Pomocí následujících pokynů můžete vytvořit žádost o podporu prostřednictvím okna Azure využití + kvóty dostupného v Azure Portal. 
 
-1. Z https://portal.azure.comvyberte **předplatná**.
+1. Z https://portal.azure.com vyberte **předplatná**.
 
 ![Předplatná](./media/resource-manager-core-quotas-request/subscriptions.png)
 

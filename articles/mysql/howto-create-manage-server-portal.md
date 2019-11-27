@@ -16,8 +16,8 @@ ms.locfileid: "74534062"
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Správa serveru Azure Database for MySQL pomocí Azure Portal
 V tomto článku se dozvíte, jak spravovat databázi Afire pro servery MySQL. Úlohy správy zahrnují výpočetní výkon a škálování úložiště, resetování hesla správce a zobrazení podrobností serveru.
 
-## <a name="sign-in"></a>Přihlášení
-Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+## <a name="sign-in"></a>Přihlásit se
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-server"></a>Vytvoření serveru
 Další informace o tom, jak vytvořit a začít s Azure Database for MySQL serverem, najdete v [rychlém](quickstart-create-mysql-server-database-using-azure-portal.md) startu.
@@ -79,7 +79,7 @@ Můžete změnit heslo role správce pomocí Azure Portal.
 
 2. Zadejte nové heslo a potvrďte ho. Textové pole vás vyzve k zadání požadavků na složitost hesla.
 
-   ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
+   ![Resetovat heslo](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Kliknutím na **tlačítko OK** uložte nové heslo.
 
@@ -94,7 +94,7 @@ Server můžete odstranit, pokud ho už nepotřebujete.
 
 2. Zadáním názvu serveru do vstupního pole potvrďte, že se jedná o server, který chcete odstranit.
 
-    ![confirm-delete](./media/howto-create-manage-server-portal/confirm-delete.png)
+    ![Potvrdit odstranění](./media/howto-create-manage-server-portal/confirm-delete.png)
 
     > [!NOTE]
     > Odstranění serveru je nevratné.

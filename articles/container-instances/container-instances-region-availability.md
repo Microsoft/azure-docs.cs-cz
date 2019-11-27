@@ -25,7 +25,7 @@ Informace o kvótách a dalších omezeních v nasazeních najdete v tématu [kv
 
 Pro skupiny kontejnerů se systémem Linux a [podporovanými](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnery Windows Server 2016 jsou k dispozici následující oblasti a prostředky.
 
-| Umístění | Operační systém | Procesor | Paměť (GB) |
+| Umístění | OS | Procesor | Paměť (GB) |
 | -------- | -- | :---: | :-----------: |
 | Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní USA | Linux | 4 | 16 |
 | Západní Evropa Západní USA 2 | Linux | 4 | 14 |
@@ -39,7 +39,7 @@ Pro skupiny kontejnerů se systémem Linux a [podporovanými](container-instance
 
 Následující oblasti a prostředky jsou k dispozici pro skupiny kontejnerů s kontejnery založenými na Windows serveru 2019 (Preview).
 
-| Umístění | Operační systém | Procesor | Paměť (GB) |
+| Umístění | OS | Procesor | Paměť (GB) |
 | -------- | -- | :---: | :-----------: |
 | Jihovýchodní Asie, Severní Evropa, Západní Evropa, Střed USA, Východní USA, Západní USA západní USA 2 | Windows | 4 | 16 |
 | Východ USA 2 | Windows | 2 | 3,5 |

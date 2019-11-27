@@ -23,7 +23,7 @@ ms.locfileid: "74539291"
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí ingestování (načítání) dat ze služby Event Hubs, platformy pro streamování velkých objemů dat a služby pro ingestování událostí. [Event Hubs](/azure/event-hubs/event-hubs-about) může zpracovávat miliony událostí za sekundu téměř v reálném čase. V tomto článku vytvoříte centrum událostí, připojíte se k němu z Azure Průzkumník dat a Prohlédněte si tok dat prostřednictvím systému.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -35,7 +35,7 @@ Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání d
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
@@ -47,7 +47,7 @@ V tomto článku vygenerujete ukázková data a odešlete je do centra událost�
 
     Výběrem tlačítka **Deploy to Azure** (Nasadit do Azure) přejdete na web Azure Portal, kde vyplníte formulář nasazení.
 
-    ![Nasazení do Azure](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Nasadit do Azure](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Vyberte předplatné, ve kterém chcete centrum událostí vytvořit, a vytvořte skupinu prostředků s názvem *test-hub-rg*.
 
@@ -129,7 +129,7 @@ Teď se můžete z Azure Data Exploreru připojit k centru událostí. Po naváz
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Table | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
+    | Tabulka | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
     | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOHSV, SCSV, TSV, TSVE a TXT. Podporované možnosti komprese: GZip |
     | Mapování sloupců | *TestMapping* | [Mapování](/azure/kusto/management/mappings) , které jste vytvořili v **TestDatabase**, které mapuje příchozí data JSON na názvy sloupců a datové typy **testovacího**typu. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON nebo AVRO a volitelné pro jiné formáty.|
     | | |

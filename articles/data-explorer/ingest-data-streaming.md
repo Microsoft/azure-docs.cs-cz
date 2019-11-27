@@ -25,7 +25,7 @@ Použijte klasickou (hromadnou) ingestu místo příjmu streamování, když se 
 > * [Kurzory databáze](/azure/kusto/management/databasecursor).
 > * [Mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/tables#create-ingestion-mapping) mapování dat. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * Přihlaste se k [webovému uživatelskému rozhraní](https://dataexplorer.azure.com/).
@@ -35,7 +35,7 @@ Použijte klasickou (hromadnou) ingestu místo příjmu streamování, když se 
 
 1. V Azure Portal přejdete do svého clusteru Azure Průzkumník dat. V **Nastavení**vyberte **Konfigurace**. 
 1. V podokně **Konfigurace** vyberte **zapnuto** , aby se povolilo **přijímání streamování**.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
  
     ![přijímání příjmu streamování](media/ingest-data-streaming/streaming-ingestion-on.png)
  
@@ -67,7 +67,7 @@ Existují dva podporované typy přijímání streamování:
 1. Přetáhněte [zásadu přijímání streamování](/azure/kusto/concepts/streamingingestionpolicy) ze všech relevantních tabulek a databází. Odebrání zásady přijímání do streamování spustí přenos dat příjmu streamování z počátečního úložiště do trvalého úložiště v úložišti sloupců (rozsahy nebo horizontálních oddílů). Pohyb dat může trvat během několika sekund po několik hodin v závislosti na množství dat v počátečním úložišti a využití procesoru a paměti v clusteru.
 1. V Azure Portal přejdete do svého clusteru Azure Průzkumník dat. V **Nastavení**vyberte **Konfigurace**. 
 1. V podokně **Konfigurace** vyberte **vypnuto** a zakažte příjem **vysílání datového proudu**.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
     ![Ingestování streamování vypnuto](media/ingest-data-streaming/streaming-ingestion-off.png)
 

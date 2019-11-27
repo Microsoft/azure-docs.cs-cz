@@ -27,7 +27,7 @@ Možnosti nasazení najdete v části věnované [nasazení](#deployment) . Chce
 | [emptyDir][vol-emptydir] | Nasadí dva kontejnery Linux, které sdílejí svazek emptyDir. |
 | [Gitrepo nepodporují][vol-gitrepo] | Nasadí kontejner pro Linux, který naklonuje úložiště GitHubu a připojí ho jako svazek. |
 | [otázku][vol-secret] | Nasadí kontejner pro Linux s certifikátem PFX připojeným jako tajný svazek. |
-| **Sítě** ||
+| **Networking** ||
 | [Kontejner vystavený UDP][net-udp] | Nasadí kontejner systému Windows nebo Linux, který zveřejňuje port UDP. |
 | [Kontejner pro Linux s veřejnou IP adresou][net-publicip] | Nasadí jeden kontejner pro Linux přístupný prostřednictvím veřejné IP adresy. |
 | [Nasazení skupiny kontejnerů pomocí virtuální sítě (Preview)][net-vnet] | Nasadí novou virtuální síť, podsíť, síťový profil a skupinu kontejnerů. |

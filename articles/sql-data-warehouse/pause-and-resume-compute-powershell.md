@@ -22,7 +22,7 @@ ms.locfileid: "74539169"
 
 Pomocí Azure PowerShell můžete pozastavit výpočetní prostředí v Azure SQL Data Warehouse a ušetřit tak náklady. Až budete připraveni k používání datového skladu, [obnovte výpočetní](sql-data-warehouse-manage-compute-overview.md) prostředky.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -56,8 +56,8 @@ Vyhledejte název databáze, název serveru a skupinu prostředků pro datový s
 
 Informace o umístění vašeho datového skladu vyhledáte pomocí následujících kroků.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
-2. Na webu Azure Portal klikněte vlevo na **Databáze SQL**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+2. Na levé stránce webu Azure Portal klikněte na **Databáze SQL**.
 3. Na stránce **Databáze SQL** vyberte **mySampleDataWarehouse**. Otevře se datový sklad.
 
     ![Název serveru a skupina prostředků](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)

@@ -24,7 +24,7 @@ Při spouštění aplikací může být potřeba, aby tyto aplikace měly přís
 
 V tomto článku se dozvíte, jak nakonfigurovat omezené delegování protokolu Kerberos založené na prostředku ve spravované doméně Azure služba AD DS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 

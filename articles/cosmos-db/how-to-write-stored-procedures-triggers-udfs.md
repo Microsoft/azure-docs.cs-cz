@@ -75,7 +75,7 @@ function createToDoItem(itemToCreate) {
 
 ### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Pole jako vstupní parametry pro uložené procedury 
 
-Při definování uložené procedury v Azure Portal jsou vstupní parametry vždy odeslány jako řetězec do uložené procedury. I v případě, předejte pole řetězců jako vstupní pole je převést na řetězec a odesílat na uložené procedury. Chcete-li tento problém obejít, můžete definovat funkci v rámci uložené procedury k analýze řetězce jako pole. Následující kód ukazuje, jak analyzovat vstupní parametr řetězce jako pole:
+Při definování uložené procedury v Azure Portal jsou vstupní parametry vždy odeslány jako řetězec do uložené procedury. I v případě, že předáte pole řetězců jako vstup, pole je převedeno na řetězec a odesláno do uložené procedury. Chcete-li tento problém obejít, můžete definovat funkci v rámci uložené procedury k analýze řetězce jako pole. Následující kód ukazuje, jak analyzovat vstupní parametr řetězce jako pole:
 
 ```javascript
 function sample(arr) {
@@ -238,7 +238,7 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-Předběžné aktivační události nemůže mít žádné vstupní parametry. Objekt Request v triggeru slouží k manipulaci s požadavkem na zprávu s žádostí přidruženou k operaci. V předchozím příkladu se předběžná Trigger spouští při vytváření položky Azure Cosmos a tělo zprávy požadavku obsahuje položku, která se má vytvořit ve formátu JSON.
+Triggery před akcí nesmí mít žádné vstupní parametry. Objekt Request v triggeru slouží k manipulaci s požadavkem na zprávu s žádostí přidruženou k operaci. V předchozím příkladu se předběžná Trigger spouští při vytváření položky Azure Cosmos a tělo zprávy požadavku obsahuje položku, která se má vytvořit ve formátu JSON.
 
 Pokud jsou triggery registrovány, můžete zadat operace, se kterými může běžet. Tato aktivační událost by měla být vytvořena s hodnotou `TriggerOperation` `TriggerOperation.Create`, což znamená, že pomocí triggeru v operaci nahrazení, jak je znázorněno v následujícím kódu, není povoleno.
 
@@ -332,7 +332,7 @@ Console.WriteLine(response.ScriptLog);
 
 Přečtěte si další koncepty a postupy psaní a používání uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB:
 
-* [Postup při registraci a používání uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
+* [Postup registrace a používání uložených procedur, triggerů a funkcí definovaných uživatelem ve službě Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
 
 * [Jak zapisovat uložené procedury a triggery pomocí rozhraní API dotazů jazyka JavaScript v Azure Cosmos DB](how-to-write-javascript-query-api.md)
 

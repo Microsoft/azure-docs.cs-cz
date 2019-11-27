@@ -43,7 +43,7 @@ Kvóty pro bezplatné nebo sdílené aplikace jsou:
 | **PROCESOR (krátký)** | Počet PROCESORů povolených pro tuto aplikaci v intervalu 5 minut. Tato kvóta se resetuje každých pět minut. |
 | **CPU (den)** | Celková velikost procesoru povoleného pro tuto aplikaci za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
 | **Rezident** | Celková velikost paměti, která je pro tuto aplikaci povolena. |
-| **Šířka pásma** | Celková velikost odchozí šířky pásma, která je pro tuto aplikaci povolená za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
+| **Připojení** | Celková velikost odchozí šířky pásma, která je pro tuto aplikaci povolená za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
 | **Systému souborů** | Celková velikost povoleného úložiště. |
 
 Jediná kvóta platí pro aplikace, které jsou hostované v systému souborů *Basic*, *Standard*a *Premium* .

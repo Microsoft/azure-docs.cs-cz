@@ -87,7 +87,7 @@ Chcete-li zrušit označení entity, vyberte název entity pod textem a vyberte 
 
 Pokud při označování dojde k chybě, je paleta entit jednoduchý nástroj, který umožňuje rychlé úpravy. Pokud například popisek entity zahrnuje nadbytečné slovo omylem a již má označené dílčí komponenty, můžete použít paletu entit ke štětci přes požadované kratší rozsah slov.
 
-Příklad:
+Například:
 
 1. Dílčí komponenta typu Pizza zahrnuje "sýr Pizza s", který zahrnuje nadbytečné nesprávné slovo--"with".
 

@@ -75,7 +75,7 @@ K aktualizaci zařízení ve službě Azure AD potřebujete účet, který má p
 
 V zásadách úklidu vyberte účty, které mají přiřazené požadované role. 
 
-### <a name="timeframe"></a>Časové období
+### <a name="timeframe"></a>Časový rámec
 
 Definujte časové období, které je ukazatelem zastaralého zařízení. Při definování časového rámce přihlaste okno, ve kterém se aktualizuje časové razítko aktivity, na svou hodnotu. Například byste neměli považovat časové razítko mladší než 21 dní (zahrnuje odchylku) jako indikátor pro zastaralé zařízení. V určitých situacích se zařízení může jevit jako zastaralé, přestože není. Vlastník takového zařízení může být například na dovolené nebo na nemocenské,  která přesahuje časové období pro zastaralá zařízení.
 

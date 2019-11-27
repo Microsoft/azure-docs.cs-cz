@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak pomocí [rozhraní příkazového řádku Azur
 > Rozšíření `storage-preview`, které je vybrané v tomto článku, je momentálně ve verzi Public Preview.
 
 [Ukázka](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [Gen1 na mapování Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [poskytnutí zpětné vazby](https://github.com/Azure/azure-cli-extensions/issues)
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -296,7 +296,7 @@ Tento příklad ukazuje všechna uživatelsky definovaná metadata pro adresář
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Ukázka](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
 * [Mapování Gen1 na Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)

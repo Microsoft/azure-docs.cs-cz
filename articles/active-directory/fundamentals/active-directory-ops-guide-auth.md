@@ -207,7 +207,7 @@ Podle priority použijte následující tabulku k vyhledání doporučeného ře
 
 | **Priorita** | **Scénář** | **Základě** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| 1 | Pokud používáte KOSMETICE nebo PTA a nebyla definována pojmenovaná umístění | Definování pojmenovaných umístění pro zlepšení detekce rizikových událostí |
+| 1\. místo | Pokud používáte KOSMETICE nebo PTA a nebyla definována pojmenovaná umístění | Definování pojmenovaných umístění pro zlepšení detekce rizikových událostí |
 | 2 | Pokud jste federované a nepoužíváte deklaraci "insideCorporateNetwork" a pojmenovaná umístění nebyla definována. | Definování pojmenovaných umístění pro zlepšení detekce rizikových událostí |
 | 3 | Pokud v zásadách podmíněného přístupu nepoužíváte pojmenovaná umístění a v zásadách podmíněného přístupu není žádné řízení rizik nebo zařízení | Nakonfigurujte zásady podmíněného přístupu tak, aby zahrnovaly pojmenovaná umístění. |
 | 4 | Pokud jste federované a nedefinovali jste deklaraci identity "insideCorporateNetwork" a pojmenovaná umístění nebyla definována. | Definování pojmenovaných umístění pro zlepšení detekce rizikových událostí |

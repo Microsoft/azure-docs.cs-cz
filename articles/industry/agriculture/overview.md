@@ -46,7 +46,7 @@ Datový rozbočovač Azure FarmBeats je vrstva rozhraní API, která umožňuje 
 
 Ukázkové řešení, které je postavené na datovém centru, které Jumpstarts vaše uživatelské rozhraní a vývoj modelů. Tato webová aplikace využívá rozhraní API k předvedení vizualizace dat s příjmovým senzorem jako grafů a vizualizaci výstupu modelu jako map. Akcelerátor můžete použít například k rychlému vytvoření farmy a ke snadnému získání mapy pro vegetaci nebo k mapě umístění senzoru pro danou farmu.
 
-## <a name="resources"></a>Zdroje informací
+## <a name="resources"></a>Materiály
 
 Další informace najdete na [blogu](https://aka.ms/AzureFarmBeats) o Azure FarmBeats a na [fórech](https://aka.ms/FarmBeatsMSDN) .
 

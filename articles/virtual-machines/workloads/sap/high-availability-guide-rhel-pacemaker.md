@@ -124,13 +124,13 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 1. **[A]** nastavení rozlišení názvu hostitele
 
-   Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
-   Nahraďte IP adresu a název hostitele v následujících příkazech. Výhodou použití/Etc/Hosts je, že cluster bude nezávisle na DNS, který může být kritickým prvkem způsobujícím selhání příliš.
+   Můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
+   V následujících příkazech nahraďte IP adresu a název hostitele. Výhodou použití/etc/hosts je to, že váš cluster bude nezávislý na službě DNS, což může být jen jeden bod selhání.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele, aby odpovídaly vašemu prostředí
+   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí.
 
    <pre><code># IP address of the first cluster node
    <b>10.0.0.6 prod-cl1-0</b>
@@ -198,26 +198,26 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 ## <a name="create-stonith-device"></a>Vytvoření zařízení STONITH
 
-Využitím techniky STONITH zařízení využívá instanční objekt služby k autorizaci s Microsoft Azure. Postupujte podle těchto kroků můžete vytvořit instanční objekt služby.
+Zařízení STONITH používá instanční objekt k autorizaci proti Microsoft Azure. Pomocí těchto kroků můžete vytvořit instanční objekt.
 
 1. Přejděte na <https://portal.azure.com>.
-1. Otevře se okno Azure Active Directory  
-   Přejděte do vlastností a poznamenejte si ID adresáře. Toto je **ID tenanta**.
-1. Klikněte na možnost registrace aplikací
+1. Otevřete okno Azure Active Directory  
+   Přejděte na vlastnosti a zapište ID adresáře. Toto je **ID tenanta**.
+1. Klikněte na Registrace aplikací
 1. Klikněte na nová registrace.
 1. Zadejte název, vyberte účty pouze v tomto adresáři organizace. 
 2. Vyberte typ aplikace "Web", zadejte adresu URL pro přihlášení (například http:\//localhost) a klikněte na Přidat.  
-   Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
+   Přihlašovací adresa URL se nepoužívá a může to být libovolná platná adresa URL.
 1. Vyberte certifikáty a tajné klíče a pak klikněte na nový tajný klíč klienta.
 1. Zadejte popis nového klíče, vyberte možnost "nikdy vyprší platnost" a klikněte na tlačítko Přidat.
-1. Poznamenejte si hodnotu. Používá se jako **heslo** instančního objektu.
+1. Zapište hodnotu. Používá se jako **heslo** instančního objektu.
 1. Vyberte přehled. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno (**přihlašovací ID** v následujících krocích) instančního objektu.
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** vytvoření vlastní role pro agenta plotu
 
-Instanční objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Musíte přidělit oprávnění instančního objektu pro spuštění a zastavení (napájení) všech virtuálních počítačů v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete ji vytvořit pomocí [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) .
+Objekt služby nemá ve výchozím nastavení oprávnění pro přístup k prostředkům Azure. Musíte přidělit oprávnění instančního objektu pro spuštění a zastavení (napájení) všech virtuálních počítačů v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete ji vytvořit pomocí [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) .
 
-Použijte následující obsah vstupního souboru. Je potřeba upravit obsah, který je pro vaše předplatná, c276fc76-9cd4-44c9-99a7-4fd71546436e a e91d47c4-76f3-4271-a796-21b4ecfe3624 nahraďte ID vašeho předplatného. Pokud máte pouze jedno předplatné, odeberte v AssignableScopes druhou položku.
+Pro vstupní soubor použijte následující obsah. Je potřeba upravit obsah pro vaše předplatná, která jsou, nahraďte c276fc76-9cd4-44c9-99a7-4fd71546436e a e91d47c4-76f3-4271-a796-21b4ecfe3624 ID vašeho předplatného. Pokud máte jenom jedno předplatné, odeberte druhou položku v AssignableScopes.
 
 ```json
 {
@@ -241,22 +241,22 @@ Použijte následující obsah vstupního souboru. Je potřeba upravit obsah, kt
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** přiřazení vlastní role k instančnímu objektu
 
-Přiřazení vlastní role "Linux ohrazení agenta roli", který byl vytvořen v kapitole poslední k Instančnímu objektu. Už nepoužívají role vlastníka!
+Přiřaďte vlastní roli "role ochrany systému Linux" vytvořenou v poslední kapitole objektu služby. Nepoužívejte již vlastníka role.
 
 1. Přejděte na https://portal.azure.com.
-1. Otevřete v okně všechny prostředky
-1. Vyberte virtuální počítač na prvním uzlu clusteru
-1. Klikněte na řízení přístupu (IAM)
-1. Klikněte na tlačítko Přidat přiřazení role
-1. Vyberte roli "Linux ohrazení agenta roli"
-1. Zadejte název aplikace, kterou jste vytvořili výše
+1. Otevřete okno všechny prostředky.
+1. Vyberte virtuální počítač prvního uzlu clusteru.
+1. Klikněte na řízení přístupu (IAM).
+1. Klikněte na přidat přiřazení role.
+1. Vyberte roli "role agenta pro ochrannou část Linux".
+1. Zadejte název aplikace, kterou jste vytvořili výše.
 1. Kliknutí na Uložit
 
-Opakujte předchozí kroky pro druhý uzel clusteru.
+Opakujte výše uvedené kroky pro druhý uzel clusteru.
 
 ### <a name="1-create-the-stonith-devices"></a>**[1]** vytvoření zařízení STONITH
 
-Až budete upravovat oprávnění pro virtuální počítače, můžete nakonfigurovat zařízení využitím techniky STONITH v clusteru.
+Po úpravě oprávnění pro virtuální počítače můžete nakonfigurovat zařízení STONITH v clusteru.
 
 <pre><code>
 sudo pcs property set stonith-timeout=900

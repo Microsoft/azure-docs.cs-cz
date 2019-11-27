@@ -27,7 +27,7 @@ Tento článek poskytuje podrobné informace o výrazech a funkcích, které pod
 
 ## <a name="expressions"></a>Výrazy
 
-Hodnoty JSON v definici můžou být literály nebo výrazy, které se vyhodnocují za běhu. Příklad:  
+Hodnoty JSON v definici můžou být literály nebo výrazy, které se vyhodnocují za běhu. Například:  
   
 ```json
 "name": "value"
@@ -142,7 +142,7 @@ V následujícím příkladu kanál přijímá parametry **inputPath** a **outpu
 Tento [kurz](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) vás provede procesem předávání parametrů mezi kanálem a aktivitou a mezi aktivitami.
 
   
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Můžete volat funkce v rámci výrazů. Následující části obsahují informace o funkcích, které lze použít ve výrazu.  
 
@@ -202,7 +202,7 @@ Tyto funkce jsou užitečné v rámci podmínek, které je možné použít k vy
 ## <a name="conversion-functions"></a>Převodní funkce  
 
  Tyto funkce slouží k převodu mezi jednotlivými nativními typy v jazyku:  
--   řetězec
+-   string
 -   celé číslo
 -   float
 -   Boolean
@@ -702,7 +702,7 @@ A vrátí tento výsledek: `"hello"`
 
 <a name="binary"></a>
 
-### <a name="binary"></a>binary
+### <a name="binary"></a>tvaru
 
 Vrátí binární verzi řetězce.
 
@@ -835,7 +835,7 @@ A vrátí tento výsledek: `"HelloWorld"`
 
 <a name="contains"></a>
 
-### <a name="contains"></a>Obsahuje
+### <a name="contains"></a>zobrazí
 
 Kontroluje, zda kolekce obsahuje konkrétní položku.
 Vrátí hodnotu true, pokud se položka najde, nebo vrátí hodnotu false, pokud nebyla nalezena.
@@ -1295,7 +1295,7 @@ A vrátí tento výsledek:
 
 <a name="decodeUriComponent"></a>
 
-### <a name="decodeuricomponent"></a>decodeUriComponent
+### <a name="decodeuricomponent"></a>decodeURIComponent –
 
 Vrátí řetězec, který nahradí řídicí znaky pomocí dekódování verzí.
 
@@ -1325,7 +1325,7 @@ A vrátí tento výsledek: `"https://contoso.com"`
 
 <a name="div"></a>
 
-### <a name="div"></a>div
+### <a name="div"></a>značek
 
 Vrátí celočíselný výsledek z vydělení dvou čísel.
 Chcete-li získat zbývající výsledek, viz [mod ()](#mod).
@@ -1358,7 +1358,7 @@ A vrátí tento výsledek: `2`
 
 <a name="encodeUriComponent"></a>
 
-### <a name="encodeuricomponent"></a>encodeUriComponent
+### <a name="encodeuricomponent"></a>encodeURIComponent –
 
 Nahrazením znaků, které nejsou v adrese URL, pomocí řídicích znaků vrátíte verzi kódovanou podle identifikátoru URI (Uniform Resource Identifier) pro řetězec.
 Zvažte použití [uriComponent ()](#uriComponent)místo `encodeUriComponent()`.
@@ -1390,7 +1390,7 @@ A vrátí tento výsledek: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
-### <a name="empty"></a>Prázdná
+### <a name="empty"></a>Obsahovat
 
 Zkontroluje, jestli je kolekce prázdná.
 Vrátí hodnotu true, pokud je kolekce prázdná, nebo vrátí hodnotu false, pokud není prázdná.
@@ -1469,7 +1469,7 @@ A vrátí tento výsledek: `false`
 
 <a name="equals"></a>
 
-### <a name="equals"></a>rovná se
+### <a name="equals"></a>rovná
 
 Zkontroluje, jestli jsou hodnoty, výrazy nebo objekty ekvivalentní.
 Vrátí hodnotu true, pokud jsou obě ekvivalentní, nebo vrátí hodnotu false, pokud nejsou ekvivalentní.
@@ -1554,7 +1554,7 @@ float('<value>')
 
 | Návratová hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*float-value*> | Float | Číslo s plovoucí desetinnou čárkou pro zadaný řetězec |
+| <*float-value*> | Plovák | Číslo s plovoucí desetinnou čárkou pro zadaný řetězec |
 ||||
 
 *Příklad*
@@ -1762,7 +1762,7 @@ A vrátí tyto výsledky:
 
 <a name="guid"></a>
 
-### <a name="guid"></a>guid
+### <a name="guid"></a>hlavních
 
 Vygenerujte globálně jedinečný identifikátor (GUID) jako řetězec, například "c2ecc88d-88c8-4096-912c-d6f2e2b138ce":
 
@@ -1798,7 +1798,7 @@ A vrátí tento výsledek: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
-### <a name="if"></a>if
+### <a name="if"></a>Přestože
 
 Zkontroluje, jestli je výraz pravdivý, nebo nepravdivý.
 Na základě výsledku vrátí zadanou hodnotu.
@@ -1892,7 +1892,7 @@ A vrátí tento výsledek: `10`
 
 <a name="json"></a>
 
-### <a name="json"></a>json
+### <a name="json"></a>JSON
 
 Vrátí hodnotu nebo objekt typu JavaScript Object Notation (JSON) pro řetězec nebo XML.
 
@@ -2092,7 +2092,7 @@ A vrátí tento výsledek: `6`
 
 <a name="length"></a>
 
-### <a name="length"></a>length
+### <a name="length"></a>časový
 
 Vrátí počet položek v kolekci.
 
@@ -2570,7 +2570,7 @@ split('<text>', '<delimiter>')
 
 | Návratová hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| [<*subřetěze*>, <*subřetěze*>,...] | Pole | Pole, které obsahuje podřetězce z původního řetězce oddělené čárkami |
+| [<*subřetězec1*>, <*subřetězec2*>,...] | Pole | Pole, které obsahuje podřetězce z původního řetězce oddělené čárkami |
 ||||
 
 *Příklad*
@@ -2721,7 +2721,7 @@ A vrátí tento výsledek: `false`
 
 <a name="string"></a>
 
-### <a name="string"></a>řetězec
+### <a name="string"></a>string
 
 Vrátí verzi řetězce pro hodnotu.
 
@@ -2761,7 +2761,7 @@ A vrátí tento výsledek: `"{ \\"name\\": \\"Sophie Owen\\" }"`
 
 <a name="sub"></a>
 
-### <a name="sub"></a>sub
+### <a name="sub"></a>jednotk
 
 Vrátí výsledek odečtením druhého čísla od prvního čísla.
 
@@ -2792,7 +2792,7 @@ A vrátí tento výsledek: `10`
 
 <a name="substring"></a>
 
-### <a name="substring"></a>substring
+### <a name="substring"></a>podřetězec
 
 Vrátí znaky z řetězce počínaje zadaným umístěním nebo indexem.
 Hodnoty indexu začínají číslem 0.
@@ -2986,7 +2986,7 @@ A vrátí tento výsledek: `"HELLO WORLD"`
 
 <a name="trim"></a>
 
-### <a name="trim"></a>trim
+### <a name="trim"></a>sklon
 
 Odstraňte úvodní a koncové mezery z řetězce a vraťte aktualizovaný řetězec.
 

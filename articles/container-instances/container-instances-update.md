@@ -65,8 +65,8 @@ Tyto vlastnosti vyžadují před znovu nasazením odstranění skupiny kontejner
 
 * Typ operačního systému
 * Procesor
-* Memory (Paměť)
-* Zásady restartování
+* Paměť
+* Restartovat zásadu
 * Porty
 
 Když skupinu kontejnerů odstraníte a znovu vytvoříte, nebude se znovu nasazovat, ale vytvořila se nová. Všechny vrstvy imagí jsou z registru načítány z mezipaměti, nikoli z těch, které jsou uložené v mezipaměti v předchozím nasazení. IP adresa kontejneru se může také změnit, protože se nasazuje na jiného základního hostitele.

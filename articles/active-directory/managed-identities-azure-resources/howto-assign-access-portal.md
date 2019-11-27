@@ -1,6 +1,6 @@
 ---
 title: Přiřazení spravované identity k prostředku pomocí Azure Portal – Azure AD
-description: Podrobné pokyny pro přiřazování spravovanou identitu na jeden přístup k prostředkům na jiný prostředek, pomocí webu Azure portal.
+description: Podrobné pokyny pro přiřazení spravované identity k jednomu prostředku přístup k jinému prostředku pomocí Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -22,28 +22,28 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74547293"
 ---
-# <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Spravovaná identita přístup k prostředku přiřadit i pomocí webu Azure portal
+# <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Přiřazení spravované identity k prostředku pomocí Azure Portal
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Po dokončení konfigurace k prostředku Azure s využitím spravované identity, můžete poskytnout přístup spravovaná identita na jiný prostředek, stejně jako jakýkoli zaregistrovaný objekt zabezpečení. Tento článek ukazuje, jak poskytnout přístup spravovanou identitu sadu škálování virtuálního počítače nebo virtuálního počítače Azure do účtu služby Azure storage pomocí webu Azure portal.
+Po nakonfigurování prostředku Azure pomocí spravované identity můžete spravované identitě udělit přístup k jinému prostředku, stejně jako jakýkoli objekt zabezpečení. V tomto článku se dozvíte, jak udělit přístup ke spravovaným identitám virtuálního počítače Azure nebo ke službě Azure Storage ve službě Virtual Machine Scale pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
-## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Využijte RBAC pro přiřazení přístupu spravovanou identitu do jiného prostředku
+## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Přiřaďte přístup spravované identity k jinému prostředku pomocí RBAC.
 
 Po povolení spravované identity na prostředku Azure, jako je třeba [virtuální počítač Azure](qs-configure-portal-windows-vm.md) nebo [Azure VMSS](qs-configure-portal-windows-vmss.md):
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přidruženého k předplatnému Azure, v rámci kterého jste nakonfigurovali spravovanou identitu.
 
-2. Přejděte na požadovaný prostředek, na který chcete upravit řízení přístupu. V tomto příkladu nabízíme přístupu virtuálních počítačů Azure do účtu úložiště, takže přejdeme k účtu úložiště.
+2. Přejděte k požadovanému prostředku, u kterého chcete změnit řízení přístupu. V tomto příkladu poskytujeme virtuálnímu počítači Azure přístup k účtu úložiště, takže přejdeme na účet úložiště.
 
-3. Vyberte stránku **řízení přístupu (IAM)** daného prostředku a vyberte **+ Přidat přiřazení role**. Pak zadejte **roli**, **přiřaďte přístup k**a zadejte odpovídající **předplatné**. V rámci oblasti kritéria hledání měli byste vidět prostředku. Vyberte prostředek a vyberte **Uložit**. 
+3. Vyberte stránku **řízení přístupu (IAM)** daného prostředku a vyberte **+ Přidat přiřazení role**. Pak zadejte **roli**, **přiřaďte přístup k**a zadejte odpovídající **předplatné**. V oblasti kritérií hledání byste měli vidět prostředek. Vyberte prostředek a vyberte **Uložit**. 
 
-   ![Snímek obrazovky přístupu (IAM) ovládacího prvku](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
+   ![Snímek obrazovky řízení přístupu (IAM)](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      
 ## <a name="next-steps"></a>Další kroky
 

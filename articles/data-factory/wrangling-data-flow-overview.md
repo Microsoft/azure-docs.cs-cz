@@ -42,9 +42,9 @@ Vizuálně naskenujte vaše data způsobem bez kódu, abyste mohli odebrat jaké
 
 | Konektor | Formát dat | Typ ověřování |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | SDÍLENÝ SVAZEK CLUSTERU | Klíč účtu |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | SDÍLENÝ SVAZEK CLUSTERU | Instanční objekt |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | SDÍLENÝ SVAZEK CLUSTERU | Klíč účtu, instanční objekt |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | Formát | Klíč účtu |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | Formát | Instanční objekt |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Formát | Klíč účtu, instanční objekt |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | Ověřování pomocí SQL |
 | [Azure synapse Analytics](connector-azure-sql-data-warehouse.md) | - | Ověřování pomocí SQL |
 

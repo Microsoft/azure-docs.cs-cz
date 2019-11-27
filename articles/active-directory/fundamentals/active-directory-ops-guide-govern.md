@@ -70,7 +70,7 @@ Existují změny, které vyžadují zvláštní okolnosti při testování, od j
 |Změna pravidel AD FS, jako je například autorizace, vystavení, MFA|K cílové podmnožině uživatelů použijte deklaraci skupiny uživatelů.|
 |Změna možností AD FS ověřování nebo podobných změn v rámci farmy|Vytvořte paralelní farmu se stejným názvem hostitele, implementujte změny konfigurace, otestujte klienty pomocí souboru Hosts, pravidla směrování vyrovnávání zatížení sítě nebo podobného směrování.<br>Pokud cílová platforma nepodporuje soubory hostitelů (například mobilní zařízení), změna ovládacího prvku.|
 
-## <a name="access-reviews"></a>Kontroly přístupu
+## <a name="access-reviews"></a>Revize přístupu
 
 ### <a name="access-reviews-to-applications"></a>Kontroly přístupu k aplikacím
 

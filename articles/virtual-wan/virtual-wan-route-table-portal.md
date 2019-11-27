@@ -19,7 +19,7 @@ ms.locfileid: "74534140"
 
 V tomto článku se dozvíte, jak řídit provoz z větve (místní lokalita) připojených k virtuální síti WAN přes virtuální síť rozbočovače prostřednictvím síťového virtuálního zařízení (síťové virtuální zařízení).
 
-![Diagram služby Virtual WAN](./media/virtual-wan-route-table/vwanroute.png)
+![Diagram virtuální sítě WAN](./media/virtual-wan-route-table/vwanroute.png)
 
 ## <a name="before-you-begin"></a>Než začnete
 

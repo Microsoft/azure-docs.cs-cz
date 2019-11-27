@@ -33,7 +33,7 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 ## <a name="find-azure-cognitive-search"></a>Najít Kognitivní hledání Azure
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. V levém horním rohu klikněte na symbol plus (+ vytvořit prostředek).
 3. Pomocí panelu hledání vyhledejte "Azure Kognitivní hledání" nebo přejděte k prostředku přes **Web** > **Azure kognitivní hledání**.
 
@@ -49,7 +49,7 @@ Skupina prostředků je povinná a je užitečná pro správu všech prostředk�
 
 Pokud nekombinujete prostředky do jedné skupiny, nebo pokud jsou stávající skupiny prostředků vyplněné prostředky používanými v nesouvisejících řešeních, vytvořte novou skupinu prostředků jenom pro svůj prostředek Azure Kognitivní hledání. 
 
-![Vytvořit novou skupinu prostředků](./media/search-create-service-portal/new-resource-group.png "Vytvořte novou skupinu prostředků")
+![Vytvořit novou skupinu prostředků](./media/search-create-service-portal/new-resource-group.png "Vytvoření nové skupiny prostředků")
 
 V průběhu času můžete sledovat aktuální a předpokládané náklady (jak je znázorněno na snímku obrazovky) nebo přejít dolů a zobrazit poplatky za jednotlivé prostředky. Následující snímek obrazovky znázorňuje druh informací o nákladech, které můžete očekávat, když zkombinujete více prostředků do jedné skupiny.
 

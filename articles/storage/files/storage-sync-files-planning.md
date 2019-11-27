@@ -122,7 +122,7 @@ Zobrazení výsledků ve formátu CSV:
 
 ### <a name="file-system-features"></a>Funkce systému souborů
 
-| Funkce | Stav podpory | Poznámky: |
+| Funkce | Stav podpory | Poznámky |
 |---------|----------------|-------|
 | Seznamy řízení přístupu (ACL) | Plně podporováno | Seznamy řízení přístupu systému Windows jsou zachovány Azure File Sync a jsou vynutily Windows Server na koncových bodech serveru. Seznamy řízení přístupu (ACL) Windows nejsou (zatím) podporované soubory Azure, pokud se k souborům dostanete přímo v cloudu. |
 | Pevné odkazy | Přeskočeno | |
@@ -141,8 +141,8 @@ Zobrazení výsledků ve formátu CSV:
 
 | Soubor nebo složka | Poznámka |
 |-|-|
-| Desktop.ini | Soubor specifický pro systém |
-| ethumbs.db$ | Dočasný soubor pro miniatury |
+| Desktop. ini | Soubor specifický pro systém |
+| ethumbs. DB $ | Dočasný soubor pro miniatury |
 | ~$\*.\* | Dočasný soubor Office |
 | \*. tmp | Dočasný soubor |
 | \*. laccdb | Soubor zámků Access DB|
@@ -244,25 +244,25 @@ Obecně platí, Azure File Sync by měla podporovat interoperabilitu s řešení
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Další řešení pro správu hierarchických úložišť (HSM)
 S Azure File Sync by se neměla používat žádná další řešení HSM.
 
-## <a name="region-availability"></a>Dostupnost v oblastech
+## <a name="region-availability"></a>Regionální dostupnost
 Azure File Sync je k dispozici pouze v následujících oblastech:
 
-| Region (Oblast) | Umístění Datacenter |
+| Oblast | Umístění Datacenter |
 |--------|---------------------|
 | Austrálie – východ | Nový Jižní Wales |
 | Austrálie – jihovýchod | Victoria |
 | Brazílie – jih | Sao Paulo – stát |
-| Střední Kanada | Toronto |
-| Východní Kanada | Québec |
-| Střed Indie | Puné |
+| Kanada – střed | Toronto |
+| Kanada – východ | Québec |
+| Střední Indie | Puné |
 | Střední USA | Iowa |
 | Východní Asie | Hongkong – zvláštní správní oblast |
-| Východní USA | Virginie |
+| USA – východ | Virginie |
 | USA – východ 2 | Virginie |
 | Francie – střed | Paříž |
 | Francie – jih * | Marseille |
-| Jižní Korea – střed | Soul |
-| Jižní Korea – jih | Busan |
+| Korea – střed | Soul |
+| Korea – jih | Pusan |
 | Japonsko – východ | Tokio, Saitama |
 | Japonsko – západ | Ósaka |
 | Středoseverní USA | Illinois |
@@ -270,13 +270,13 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Jižní Afrika – sever | Johannesburg |
 | Jižní Afrika – západ * | Kapské město |
 | Středojižní USA | Texas |
-| Indie – jih | Čennaj |
+| Jižní Indie | Čennaj |
 | Jihovýchodní Asie | Singapur |
-| Spojené království – jih | Londýn |
-| Spojené království – západ | Cardiff |
-| USA (Gov) – Arizona | Arizona |
-| USA (Gov) – Texas | Texas |
-| USA (Gov) – Virginia | Virginie |
+| Velká Británie – jih | Londýn |
+| Velká Británie – západ | Cardiff |
+| US Gov – Arizona | Arizona |
+| US Gov – Texas | Texas |
+| USA – Virginie | Virginie |
 | Spojené arabské emiráty – sever | Dubaj |
 | Spojené arabské emiráty střed * | Abú Zabí |
 | Západní Evropa | Nizozemsko |
@@ -301,34 +301,34 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Austrálie – východ      | Austrálie – jihovýchod|
 | Austrálie – jihovýchod | Austrálie – východ     |
 | Brazílie – jih        | Středojižní USA   |
-| Střední Kanada      | Východní Kanada        |
-| Východní Kanada         | Střední Kanada     |
-| Střed Indie       | Indie – jih        |
+| Kanada – střed      | Kanada – východ        |
+| Kanada – východ         | Kanada – střed     |
+| Střední Indie       | Jižní Indie        |
 | Střední USA          | Východ USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
-| Východní USA             | Západní USA            |
+| USA – východ             | Západní USA            |
 | Východ USA 2           | Střední USA         |
 | Francie – střed      | Francie – jih       |
 | Francie – jih        | Francie – střed     |
 | Japonsko – východ          | Japonsko – západ         |
 | Japonsko – západ          | Japonsko – východ         |
-| Jižní Korea – střed       | Jižní Korea – jih        |
-| Jižní Korea – jih         | Jižní Korea – střed      |
+| Korea – střed       | Korea – jih        |
+| Korea – jih         | Korea – střed      |
 | Severní Evropa        | Západní Evropa        |
 | Středoseverní USA    | Středojižní USA   |
 | Jižní Afrika – sever  | Jižní Afrika – západ  |
 | Jižní Afrika – západ   | Jižní Afrika – sever |
 | Středojižní USA    | Středoseverní USA   |
-| Indie – jih         | Střed Indie      |
+| Jižní Indie         | Střední Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
-| Spojené království – jih            | Spojené království – západ            |
-| Spojené království – západ             | Spojené království – jih           |
-| USA (Gov) – Arizona      | USA (Gov) – Texas       |
-| US Gov – Iowa         | USA (Gov) – Virginia    |
-| USA (Gov) – Virginia      | USA (Gov) – Texas       |
+| Velká Británie – jih            | Velká Británie – západ            |
+| Velká Británie – západ             | Velká Británie – jih           |
+| US Gov – Arizona      | US Gov – Texas       |
+| USA – Iowa         | USA – Virginie    |
+| USA – Virginie      | US Gov – Texas       |
 | Západní Evropa         | Severní Evropa       |
 | Středozápadní USA     | Západní USA 2          |
-| Západní USA             | Východní USA            |
+| Západní USA             | USA – východ            |
 | Západní USA 2           | Středozápadní USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure

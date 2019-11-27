@@ -38,9 +38,9 @@ Nastavit, pokud chybí | Pokud je vybrána tato možnost a pravidlo se shoduje s
 
 #### <a name="additional-fields"></a>Další pole
 
-Dny | Hodiny | Minut | Sekundy
+Dnů | Hodin | Minut | Sekund
 -----|-------|---------|--------
-Int | Int | Int | Int 
+Hmot | Hmot | Hmot | Hmot 
 
 ### <a name="cache-key-query-string"></a>Řetězec dotazu na klíč mezipaměti
 
@@ -65,7 +65,7 @@ Akce | Název hlavičky protokolu HTTP | Hodnota
 -------|------------------|------
 Připojit | Pokud je vybrána tato možnost a pravidlo odpovídá, bude do žádosti se zadanou hodnotou přidána hlavička zadaná v **názvu záhlaví** . Pokud hlavička již existuje, hodnota se připojí k existující hodnotě. | Řetězec
 Přepsat | Pokud je vybrána tato možnost a pravidlo odpovídá, bude do žádosti se zadanou hodnotou přidána hlavička zadaná v **názvu záhlaví** . Pokud hlavička již existuje, zadaná hodnota přepíše existující hodnotu. | Řetězec
-Odstranění | Když je vybraná tato možnost, pravidlo se shoduje s a hlavička zadaná v pravidle je k dispozici, hlavička se z požadavku odstraní. | Řetězec
+Odstranit | Když je vybraná tato možnost, pravidlo se shoduje s a hlavička zadaná v pravidle je k dispozici, hlavička se z požadavku odstraní. | Řetězec
 
 ### <a name="modify-response-header"></a>Upravit hlavičku odpovědi
 
@@ -77,7 +77,7 @@ Akce | Název hlavičky protokolu HTTP | Hodnota
 -------|------------------|------
 Připojit | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavička zadaná v **názvu záhlaví** přidána k odpovědi pomocí zadané **hodnoty**. Pokud hlavička již existuje, **hodnota** se připojí k existující hodnotě. | Řetězec
 Přepsat | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavička zadaná v **názvu záhlaví** přidána k odpovědi pomocí zadané **hodnoty**. Pokud je již hlavička přítomna, **hodnota** přepíše existující hodnotu. | Řetězec
-Odstranění | Když je vybraná tato možnost, pravidlo se shoduje s a hlavička zadaná v pravidle je k dispozici, hlavička se z odpovědi odstraní. | Řetězec
+Odstranit | Když je vybraná tato možnost, pravidlo se shoduje s a hlavička zadaná v pravidle je k dispozici, hlavička se z odpovědi odstraní. | Řetězec
 
 ### <a name="url-redirect"></a>Přesměrování adresy URL
 
@@ -92,7 +92,7 @@ Protocol (Protokol) | Požadavek shody, HTTP, HTTPS.
 Název hostitele | Vyberte název hostitele, na který chcete požadavek přesměrovat. Ponechte prázdné, pokud chcete zachovat příchozího hostitele.
 Cesta | Zadejte cestu, která se má použít v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí cestu.  
 Řetězec dotazu | Zadejte řetězec dotazu použitý v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí řetězec dotazu. 
-Fragment | Definujte fragment, který se použije v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí fragment. 
+Zpomalen | Definujte fragment, který se použije v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí fragment. 
 
 Důrazně doporučujeme, abyste použili absolutní adresu URL. Použití relativní adresy URL může přesměrovat Azure CDN adresy URL na neplatnou cestu. 
 

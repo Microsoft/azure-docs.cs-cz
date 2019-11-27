@@ -50,7 +50,7 @@ Bez ohledu na to, jestli je doména po volání nebo v reálném čase, nabízí
 
 [Převod řeči na text](speech-to-text.md) je co nejužitečnější funkce v jakémkoli řešení pro centrum volání. Vzhledem k tomu, že mnoho procesů pro průběžné analýzy spoléhá na přepisu text, je četnost výskytu chyb slov (_wer_) největší důležitost. Jedním z klíčových problémů v přepisu služby Call Center je hluk, který je předaný v centru volání (například ostatní agenti mluví na pozadí), bohatou škálu jazykových národních prostředí a dialektů a také nízkou kvalitou vlastního telefonního signálu. Funkce WER je vysoce korelujá s tím, jak dobře jsou zvukové a jazykové modely učené pro dané národní prostředí, takže je důležité možnost přizpůsobit model pro vaše národní prostředí. Naše nejnovější sjednocené modely 4. x jsou řešením pro přesnost přepisu i latenci. S využitím desítek tisíc hodin akustických dat a miliard lexikálních informací představují sjednocené modely nejpřesnější modely na trhu, aby přepisovat data centra volání.
 
-### <a name="sentiment"></a>Mínění
+### <a name="sentiment"></a>Zabarvení
 
 Měření, jestli má zákazník dobré prostředí, je jedním z nejdůležitějších oblastí analýzy řeči při použití v prostoru volání centra. Naše [rozhraní API pro dávkové přepisy](batch-transcription.md) nabízí analýzu mínění na utterance. Můžete agregovat sadu hodnot získaných jako součást přepisu volání, abyste zjistili mínění volání pro vaše agenty i zákazníka.
 
@@ -70,7 +70,7 @@ Naše kompletní latence je výrazně nízká pro různé technologie, jako je n
 
 Naše nové hlasy jsou také odlišitelné od lidského hlasy. Naše hlasy vám umožní dát své robot své jedinečné preference.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledat
 
 Další sešívání analýz je identifikace interakcí, u kterých došlo k určité události nebo zkušenostem. To se obvykle provádí s jedním ze dvou přístupů; buď vyhledávání ad hoc, kde uživatel jednoduše zadá frázi a systém odpoví, nebo více strukturovaný dotaz, kde analytik může vytvořit sadu logických příkazů, které identifikují scénář ve volání, a potom každé volání může být indexováno proti této sadě dotazů. Dobrým příkladem hledání je příkaz všudypřítomný dodržování předpisů "Toto volání se bude zaznamenávat z hlediska kvality... ". Mnohé společnosti chtějí zajistit, aby jejich agenti poskytovali tomuto právnímu omezení zákazníkům před tím, než se volání skutečně zaznamená. Většina analytických systémů má schopnost trendu chování zjištěného pomocí algoritmů dotazu nebo vyhledávání a vytváření sestav trendů je nakonec jednou z nejdůležitějších funkcí analytického systému. V [adresáři služby pro rozpoznávání](https://azure.microsoft.com/services/cognitive-services/directory/search/) koncových služeb je možné výrazně zvýšit možnosti indexování a vyhledávání.
 
@@ -125,7 +125,7 @@ Dalším scénářem je přímá integrace s protokolem protokolu SIP (Session I
 | -------------- | ----- | ----------- |
 | Převod řeči na text | [Akustický model](how-to-customize-acoustic-models.md) | Vytvořte si vlastní akustický model pro aplikace, nástroje nebo zařízení, které se používají v různých prostředích, jako je třeba v kleci nebo v továrně, z nichž každá má konkrétní podmínky záznamu. Mezi příklady patří zvýrazněné rozpoznávání řeči, konkrétní šum na pozadí nebo použití konkrétního mikrofonu pro záznam. |
 |                | [Jazykový model](how-to-customize-language-model.md) | Vytvořte vlastní jazykový model pro zlepšení přepisu slovníku a gramatiky specifické pro konkrétní odvětví, jako je lékařské terminologie nebo žargonu. |
-|                | [Model výslovnosti](how-to-customize-pronunciation.md) | Pomocí vlastního modelu výslovnosti můžete definovat fonetický formulář a zobrazit ho pro slovo nebo termín. Je vhodný pro zpracování vlastní podmínky, jako jsou názvy produktů nebo zkratky. Vše, co potřebujete k zahájení práce, je soubor výslovnosti, což je jednoduchý soubor `.txt`. |
+|                | [Model výslovnosti](how-to-customize-pronunciation.md) | Pomocí vlastního modelu výslovnosti můžete definovat fonetický formulář a zobrazit ho pro slovo nebo termín. Je užitečné pro zpracování přizpůsobených podmínek, jako jsou názvy produktů nebo akronymy. Vše, co potřebujete k zahájení práce, je soubor výslovnosti, což je jednoduchý soubor `.txt`. |
 | Převod textu na řeč | [Hlasové písmo](how-to-customize-voice-font.md) | Vlastní hlasová písma umožňují vytvořit rozpoznatelný hlasový hlas pro vaši značku. Pro začátek zabere pouze malé množství dat. Větší údaje, které poskytnete, budou zvukové písmo větší, než je vaše hlasová. |
 
 ## <a name="sample-code"></a>Ukázka kódu

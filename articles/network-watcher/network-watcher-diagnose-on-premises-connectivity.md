@@ -65,7 +65,7 @@ Chcete-li diagnostikovat připojení, připojte se k Azure PowerShell a zahajte 
 
 Po dokončení rutiny můžete přejít do umístění úložiště určeného v rutině a získat podrobné informace o problémech a protokolech. Azure Network Watcher vytvoří složku zip, která obsahuje následující soubory protokolu:
 
-![1][1]
+![1\. místo][1]
 
 Otevřete soubor s názvem IKEErrors. txt a zobrazí se následující chyba s informacemi o potížích s nastavením místní služby IKE chybné konfigurace.
 
@@ -108,10 +108,10 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojeno. |Ne|
 | ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
 | ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
-| Ověřování | Neshoda s předsdíleným klíčem. | Ano|
+| Ověření | Neshoda s předsdíleným klíčem. | Ano|
 | PeerReachability | Partnerská brána není dostupná. | Ano|
 | IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
-| WfpParse Error | Při analýze protokolu WFP došlo k chybě. |Ano|
+| Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Ano|
 
 ## <a name="next-steps"></a>Další kroky
 

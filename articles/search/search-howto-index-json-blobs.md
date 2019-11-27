@@ -424,7 +424,7 @@ Můžete také odkazovat na jednotlivé prvky pole pomocí indexu založeného n
 >
 >
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Indexery v Azure Kognitivní hledání](search-indexer-overview.md)
 + [Indexování služby Azure Blob Storage s využitím Azure Kognitivní hledání](search-howto-index-json-blobs.md)

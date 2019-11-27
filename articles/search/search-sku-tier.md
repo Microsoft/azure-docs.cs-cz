@@ -80,7 +80,7 @@ V případě [obohacení AI](cognitive-search-concept-intro.md)byste měli napl�
 
 | Operace | Dopad fakturace |
 |-----------|----------------|
-| Trhliny dokumentů, extrakce textu | Free |
+| Trhliny dokumentů, extrakce textu | Zadarmo |
 | Trhliny dokumentů, extrakce obrázků | Účtuje se podle počtu imagí extrahovaných z vašich dokumentů. V [konfiguraci indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)je **imageAction** parametr, který aktivuje extrakci imagí. Pokud je **imageAction** nastavené na None (výchozí nastavení), nebudete se vám za extrakci imagí účtovat. Sazba za extrakci imagí je popsána na stránce s [podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/search/) pro Azure kognitivní hledání.|
 | [Vestavěné dovednosti při rozpoznávání](cognitive-search-predefined-skills.md) | Účtuje se se stejnou sazbou, jako kdyby jste provedli úlohu přímo pomocí Cognitive Services. |
 | Vlastní dovednosti | Vlastní dovednost je funkce, kterou zadáte. Náklady na používání vlastní dovednosti závisí výhradně na tom, jestli vlastní kód volá jiné měřené služby. |

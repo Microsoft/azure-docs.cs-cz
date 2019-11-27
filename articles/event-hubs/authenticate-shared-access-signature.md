@@ -20,7 +20,7 @@ Sdílený přístupový podpis (SAS) poskytuje podrobnější kontrolu nad typem
 
 - Interval, po který je SAS platný, včetně času zahájení a vypršení platnosti.
 - Oprávnění udělená SAS. Například SAS pro obor názvů Event Hubs může udělit oprávnění k naslouchání, ale ne oprávnění Odeslat.
-- Pouze klienti, které představují platné přihlašovací údaje může odesílat data do centra událostí.
+- Do centra událostí mohou odesílat data pouze klienti, kteří jsou přítomni platná pověření.
 - Klient nemůže zosobnit jiného klienta.
 - Klientovi Rouge se může zablokovat odesílání dat do centra událostí.
 
@@ -179,15 +179,15 @@ private static string createToken(string resourceUri, string keyName, string key
 ```
 
 ## <a name="authenticating-event-hubs-publishers-with-sas"></a>Ověřování Event Hubs vydavatelů pomocí SAS 
-Na vydavatele událostí definuje virtuální koncový bod pro v Centru událostí. Vydavatel se dá použít jenom k posílání zpráv do centra událostí a nepřijímá zprávy.
+Vydavatel události definuje virtuální koncový bod pro centrum událostí. Vydavatel se dá použít jenom k posílání zpráv do centra událostí a nepřijímá zprávy.
 
-Centra událostí obvykle používá jeden vydavatele za klienta. Všechny zprávy, které se odesílají do všech vydavatelů centra událostí jsou zařazených do fronty v rámci tohoto centra událostí. Vydavatelé umožňují jemně odstupňované řízení přístupu.
+Centrum událostí obvykle využívá jednoho vydavatele na každého klienta. Všechny zprávy, které jsou odeslány všem vydavatelům centra událostí, jsou zařazeny do fronty v rámci tohoto centra událostí. Vydavatelé umožňují jemně odstupňované řízení přístupu.
 
-Každý klient služby Event Hubs je přiřazen jedinečný token, který se nahraje do klienta. Tokeny jsou vytvořeny tak, že každý jedinečný token udělí přístup jinému jedinečnému vydavateli. Klient, který obsahuje token, lze odeslat pouze jednomu vydavateli a žádnému vydavateli. Pokud stejný token sdílí více klientů, pak každý z nich sdílí vydavatele.
+Každému klientovi Event Hubs je přiřazen jedinečný token, který se nahraje do klienta. Tokeny jsou vytvořeny tak, že každý jedinečný token udělí přístup jinému jedinečnému vydavateli. Klient, který obsahuje token, lze odeslat pouze jednomu vydavateli a žádnému vydavateli. Pokud stejný token sdílí více klientů, pak každý z nich sdílí vydavatele.
 
-Všechny tokeny jsou přiřazeny k klíčům SAS. Obvykle všechny tokeny jsou podepsány pomocí stejného klíče. Klienti si nevědí, že se jedná o klíč, který brání klientům ze zpracovatelských tokenů. Klienti pracují se stejnými tokeny, dokud nevyprší jejich platnost.
+Všechny tokeny jsou přiřazeny k klíčům SAS. Všechny tokeny jsou obvykle podepsány stejným klíčem. Klienti si nevědí, že se jedná o klíč, který brání klientům ze zpracovatelských tokenů. Klienti pracují se stejnými tokeny, dokud nevyprší jejich platnost.
 
-Pokud chcete například definovat autorizační pravidla s rozsahem, aby se odesílaly a publikují jenom Event Hubs, musíte definovat autorizační pravidlo pro odeslání. To se dá udělat na úrovni oboru názvů nebo podrobnější rozsah konkrétní entity (instance centra událostí nebo téma). Je volán klient nebo aplikace s tímto detailním přístupem, Event Hubs Vydavatel. Chcete-li to provést, postupujte takto:
+Pokud chcete například definovat autorizační pravidla s rozsahem, aby se odesílaly a publikují jenom Event Hubs, musíte definovat autorizační pravidlo pro odeslání. To se dá udělat na úrovni oboru názvů nebo podrobnější rozsah konkrétní entity (instance centra událostí nebo téma). Je volán klient nebo aplikace s tímto detailním přístupem, Event Hubs Vydavatel. Uděláte to takto:
 
 1. Vytvořte klíč SAS na entitě, kterou chcete publikovat, a přiřaďte obor pro **odeslání** . Další informace najdete v tématu [zásady autorizace sdíleného přístupu](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
 2. Vygenerujte token SAS s časem vypršení platnosti konkrétního vydavatele pomocí klíče vygenerovaného v Krok 1.
@@ -207,16 +207,16 @@ Pokud chcete například definovat autorizační pravidla s rozsahem, aby se ode
 
 
 > [!NOTE]
-> I když se to nedoporučuje, je možné zařízení s tokeny, která udělují přístup k centru událostí nebo k oboru názvů, nabavit. Jakékoli zařízení, které obsahuje tento token, může odesílat zprávy přímo do tohoto centra událostí. Kromě toho zařízení nemůže být na seznamu zakázaných adres v odesílání do tohoto centra událostí.
+> I když se to nedoporučuje, je možné zařízení s tokeny, která udělují přístup k centru událostí nebo k oboru názvů, nabavit. Jakékoli zařízení, které obsahuje tento token, může odesílat zprávy přímo do tohoto centra událostí. Zařízení se navíc nedá od odeslání do tohoto centra událostí vyvažovat za zakázané.
 > 
 > Vždy doporučujeme zadat konkrétní a podrobné obory.
 
 > [!IMPORTANT]
-> Po vytvoření tokeny každého klienta se služnou svůj vlastní jedinečný token.
+> Po vytvoření tokenů se každý klient zřídí s vlastním jedinečným tokenem.
 >
-> Když klient odešle data do centra událostí, označí svůj požadavek tokenem. Tak případnému útočníkovi odposlouchávání a krást token, musí probíhat komunikace mezi klientem a centra událostí na základě šifrovaný kanál.
+> Když klient odešle data do centra událostí, označí svůj požadavek tokenem. Aby se zabránilo útočníkovi v odposlouchávání a krádeži tokenu, komunikace mezi klientem a centrem událostí musí probíhat přes zašifrovaný kanál.
 > 
-> Pokud se vám ho někdo ukradne token ze strany útočníka, může útočník zosobnit klienta odcizen jehož token. Když je Vydavatel zakázaný, vykreslí ho jako nepoužitelný, dokud neobdrží nový token, který používá jiného vydavatele.
+> Pokud je token odcizen útočníkem, může útočník zosobnit klienta, jehož token byl ukraden. Když je Vydavatel zakázaný, vykreslí ho jako nepoužitelný, dokud neobdrží nový token, který používá jiného vydavatele.
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>Ověřování Event Hubsch uživatelů pomocí SAS 

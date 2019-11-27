@@ -31,7 +31,7 @@ Použití klientské knihovny Content Moderator pro Python pro:
 
 [Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) |  | [ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) [(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * [Python 3. x](https://www.python.org/)
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 Následující třídy zpracovávají některé z hlavních funkcí sady Content Moderator Python SDK.
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Tato třída je potřebná pro všechny funkce Content Moderator. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
 |[ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Tato třída poskytuje funkce pro analýzu obrázků pro obsah pro dospělé, osobní údaje nebo lidské obličeje.|
@@ -132,7 +132,7 @@ Přidejte odkaz na složku, pokud jste ji ještě nedefinovali.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_textfolder)]
 
-### <a name="create-a-list"></a>Vytvořit seznam
+### <a name="create-a-list"></a>Vytvoří seznam.
 
 Do skriptu Pythonu přidejte následující kód, který vytvoří vlastní seznam podmínek a uloží jeho hodnotu ID.
 

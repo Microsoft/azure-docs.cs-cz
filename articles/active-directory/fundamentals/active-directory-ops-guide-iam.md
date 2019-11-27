@@ -97,7 +97,7 @@ Pokud vaše organizace nemá strategii zotavení po havárii a převzetí služe
 
 ![Snímek obrazovky s konfigurací pracovního režimu Azure AD Connect](./media/active-directory-ops-guide/active-directory-ops-img1.png)
 
-#### <a name="stay-current"></a>Zajištění aktuálnosti
+#### <a name="stay-current"></a>Udržování aktuálního stavu
 
 Aktualizace společnosti Microsoft Azure AD Connect pravidelně. Současným využitím vylepšení výkonu, oprav chyb a nových funkcí, které poskytuje každá nová verze.
 

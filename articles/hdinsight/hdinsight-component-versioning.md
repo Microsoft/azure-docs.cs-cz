@@ -29,7 +29,7 @@ Verze komponent přidružených ke clusterům HDInsight jsou uvedené v následu
 > [!NOTE]  
 > Výchozí verze služby HDInsight se může změnit bez předchozího upozornění. Pokud máte závislost verze, určete verzi HDInsight při vytváření clusterů pomocí sady .NET SDK s Azure PowerShell a Azure Classic CLI.
 
-| Komponenta              | HDInsight 4.0 | HDInsight 3,6 (výchozí)     |
+| Součást              | HDInsight 4.0 | HDInsight 3,6 (výchozí)     |
 |------------------------|---------------|-----------------------------|
 | Apache Hadoop a PŘÍZe | 3.1.1         | 2.7.3                       |
 | Apache Tez             | 0.9.1         | 0.7.0                       |
@@ -37,16 +37,16 @@ Verze komponent přidružených ke clusterům HDInsight jsou uvedené v následu
 | Apache Hive            | 3.1.0         | 2.1.0, 1.2.1                |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
-| Apache HBase           | 2.0.1         | 1.1.2                       |
+| Apache HBase           | 2.0.1         | bodu                       |
 | Apache Sqoop           | 1.4.7         | 1.4.6                       |
-| Apache Oozie           | 4.3.1         | 4.2.0                       |
+| Apache Oozie           | bodu         | 4.2.0                       |
 | Apache Zookeeper       | 3.4.6         | 3.4.6                       |
 | Apache Storm           | -             | 1.1.0                       |
-| Apache Mahout          | -             | 0.9.0+                      |
+| Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2.3.1, 2.4    | 2.3.0, 2.2.0, 2.1.0         |
+| Apache Spark           | 2.3.1, 2,4    | 2.3.0, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
-| Apache Kafka           | 1.1.1, 2.1    | 1,1, 1,0 * (viz poznámka níže) |
+| Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (viz poznámka níže) |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.0                       |
 | Výstupu                   | 4.2.1         | 4.2.1                       |
@@ -94,7 +94,7 @@ V následující tabulce jsou uvedeny verze HDInsight, **které nejsou k dispozi
 | HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Ano |Ne |
 | HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11. února 2014 |17. září 2014 |30. června 2015 |Ano |Ne |
 | HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28. října 2013 |12. května 2014 |31. května 2015 |Ano |Ne |
-| HDInsight 1,6 |HDP 1.1 | |28. října 2013 |26. dubna 2014 |31. května 2015 |Ne |Ne |
+| HDInsight 1,6 |HDP 1,1 | |28. října 2013 |26. dubna 2014 |31. května 2015 |Ne |Ne |
 
 > [!NOTE]  
 > Clustery s vysokou dostupností se dvěma hlavními uzly se ve výchozím nastavení nasazují pro HDInsight verze 2,1 a novější. Pro clustery HDInsight verze 1,6 nejsou k dispozici.
@@ -107,7 +107,7 @@ Enterprise Security je volitelný balíček, který můžete přidat do clusteru
 
     V minulosti můžete vytvářet clustery HDInsight jenom s místním správcem a místním uživatelem SSH. Místní uživatel správce má přístup ke všem souborům, složkám, tabulkám a sloupcům.  Pomocí Balíček zabezpečení podniku můžete povolit řízení přístupu na základě role integrací clusterů HDInsight s vlastní službou Active Directory, která zahrnuje místní službu Active Directory, Azure Active Directory Domain Services nebo Active Directory v IaaS. virtuální počítač. Správce domény v clusteru může uživatelům udělit přístup ke clusteru pomocí vlastního uživatelského jména a hesla v podnikové síti (domény).
 
-    Další informace naleznete v tématu:
+    Další informace:
 
     - [Úvod do zabezpečení Apache Hadoop s využitím clusterů HDInsight připojených k doméně](./domain-joined/hdinsight-security-overview.md)
     - [Plánování clusterů Apache Hadoop připojených k doméně Azure v HDInsight](./domain-joined/apache-domain-joined-architecture.md)
@@ -119,7 +119,7 @@ Enterprise Security je volitelný balíček, který můžete přidat do clusteru
   - Integrace s Apache Ranger pro autorizaci pro podregistry, Spark SQL a přízové fronty.
   - Můžete nastavit řízení přístupu k souborům a složkám.
 
-    Další informace naleznete v tématu:
+    Další informace:
 
   - [Konfigurace zásad Apache Hive v HDInsight připojené k doméně](./domain-joined/apache-domain-joined-run-hive.md)
 
@@ -131,7 +131,7 @@ V současné době jsou Balíček zabezpečení podniku podporovány pouze násl
 
 - Hadoop (pouze HDInsight 3,6)
 - Spark
-- Interaktivní dotaz
+- Interactive Query
 
 ### <a name="support-for-azure-data-lake-storage"></a>Podpora Azure Data Lake Storage
 

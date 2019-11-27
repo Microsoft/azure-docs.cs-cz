@@ -24,7 +24,7 @@ Po recyklaci kontejnerů jsou [prostředky](container-instances-container-groups
 
 Akce zastavit nemá žádný vliv, pokud se skupina kontejnerů už ukončila (je v úspěšném nebo neúspěšném stavu). Například skupina kontejnerů s dokončenými úlohami kontejneru spustit po, která se úspěšně ukončila v úspěšném stavu. Pokusy o zastavení skupiny v tomto stavu nemění stav. 
 
-## <a name="start"></a>Start
+## <a name="start"></a>Začátek
 
 Když se skupina kontejnerů zastaví – buď z důvodu, že se kontejnery ukončily, nebo jste skupinu ručně zastavili – můžete spustit kontejnery. K ručnímu spuštění kontejnerů ve skupině použijte například příkaz [AZ Container Start][az-container-start] nebo Azure Portal. Pokud se aktualizuje image kontejneru pro libovolný kontejner, načte se nový obrázek. 
 

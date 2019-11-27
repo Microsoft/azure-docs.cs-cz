@@ -35,7 +35,7 @@ Nasazení Azure FarmBeats vytvoří níže uvedené prostředky v rámci vašeho
 
 |Zdroj č.  |Název prostředku  |Komponenta Azure FarmBeats  |
 |---------|---------|---------|
-|1  |       Azure Cosmos DB   |  Datové centrum       |
+|1\. místo  |       Azure Cosmos DB   |  Datové centrum       |
 |2  |    Application Insights      |     Datové centrum/akcelerátor     |
 |3  |Azure Cache for Redis   |Datové centrum   |
 |4  |       Trezor klíčů Azure    |  Datové centrum/akcelerátor        |
@@ -72,7 +72,7 @@ Zobrazí se stránka Podmínky použití. Přečtěte si standardní údaje na w
 > [!NOTE]
 > Dokončení nabídky v Azure Marketplace dokončí pouze část nastavení. Dokončete nasazení Azure FarmBeats ve vašem předplatném Azure podle následujících pokynů.
 
-## <a name="prepare"></a>Příprava
+## <a name="prepare"></a>Připravit
 
 Pro nasazení Azure FarmBeats potřebujete následující oprávnění:
 
@@ -313,7 +313,7 @@ Po dokončení instalace akcelerátoru obdržíte adresu URL pro přístup k už
 1. Pokud se chcete přihlásit z akcelerátoru, zkopírujte a vložte adresu URL do prohlížeče.
 2. Přihlaste se pomocí přihlašovacích údajů Azure Portal.
 
-## <a name="upgrade"></a>Upgrade
+## <a name="upgrade"></a>Aktualizace
 
 Postup upgradu je podobný jako při první instalaci. Postupujte následovně:
 

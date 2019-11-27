@@ -47,13 +47,13 @@ Aktivační procedury FTP fungují při cyklickém dotazování systému soubor�
 
 | Klient SFTP | Akce |
 |-------------|--------|
-| Winscp | Přejít na **možnosti** > **předvolby** > **přenos** > **Upravit** > **zachovat časové razítko** > **Zakázat** |
-| FileZilla | Přejít na **přenos** > **zachovejte časová razítka přenesených souborů** > **Zakázat** |
+| WinSCP | Přejít na **možnosti** > **předvolby** > **přenos** > **Upravit** > **zachovat časové razítko** > **Zakázat** |
+| FileZilly | Přejít na **přenos** > **zachovejte časová razítka přenesených souborů** > **Zakázat** |
 |||
 
 Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje, jestli je nový soubor hotový, a ne částečně napsaný. Soubor může mít například probíhající změny, když aktivační událost kontroluje souborový server. Aby nedošlo k vrácení částečně napsaného souboru, aktivační událost zapisuje časové razítko pro soubor, který má poslední změny, ale tento soubor okamžitě nevrátí. Aktivační událost vrátí soubor pouze při opakovaném dotazování serveru. V některých případech může toto chování způsobit zpoždění až dvojnásobku intervalu dotazování triggeru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

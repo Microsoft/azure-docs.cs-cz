@@ -49,7 +49,7 @@ Všechny operace související s indexery, včetně požadavků GET pro stav neb
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (ve verzi Preview)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Databáze Azure Cosmos](search-howto-index-cosmosdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [SQL Server na Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [Spravované instance SQL v Azure](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
@@ -129,7 +129,7 @@ Historie spouštění obsahuje až 50 posledních dokončených spuštění, kte
 Teď jste získali základní představu. V dalším kroku se zaměříme na požadavky a úlohy specifické pro různé typy zdrojů dat.
 
 * [Azure SQL Database nebo SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Databáze Azure Cosmos](search-howto-index-cosmosdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Indexování objektů BLOB CSV pomocí indexeru Azure Kognitivní hledání BLOB](search-howto-index-csv-blobs.md)

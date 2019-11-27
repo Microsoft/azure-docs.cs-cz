@@ -88,9 +88,9 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a využité paměti za sekundu.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|Skladová jednotka (SKU)|Jádra|Memory (Paměť)|Úložiště|
+|Skladová položka|Jádra|Paměť|Úložiště|
 |--|--|--|--|
-|EP1|1|3,5 GB|250 GB|
+|EP1|1\. místo|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
 |EP3|4|S frekvencí|250 GB|
 
@@ -98,31 +98,31 @@ Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velik
 
 Níže jsou uvedené aktuálně podporované oblasti pro každý operační systém.
 
-|Region (Oblast)| Windows | Linux |
+|Oblast| Windows | Linux |
 |--| -- | -- |
 |Austrálie – střed| ✔<sup>1</sup> | |
 |Austrálie – střed 2| ✔<sup>1</sup> | |
 |Austrálie – východ| ✔ | |
 |Austrálie – jihovýchod | ✔ | ✔ |
 |Brazílie – jih| ✔<sup>2</sup> |  |
-|Střední Kanada| ✔ |  |
+|Kanada – střed| ✔ |  |
 |Střední USA| ✔ |  |
 |Východní Asie| ✔ |  |
-|Východní USA | ✔ | ✔ |
+|USA – východ | ✔ | ✔ |
 |Východ USA 2| ✔ |  |
 |Francie – střed| ✔ |  |
 |Japonsko – východ| ✔ | ✔ |
 |Japonsko – západ| ✔ | |
-|Jižní Korea – střed| ✔ |  |
+|Korea – střed| ✔ |  |
 |Středoseverní USA| ✔ |  |
 |Severní Evropa| ✔ | ✔ |
 |Středojižní USA| ✔ |  |
-|Indie – jih | ✔ | |
+|Jižní Indie | ✔ | |
 |Jihovýchodní Asie| ✔ | ✔ |
-|Spojené království – jih| ✔ | |
-|Spojené království – západ| ✔ |  |
+|Velká Británie – jih| ✔ | |
+|Velká Británie – západ| ✔ |  |
 |Západní Evropa| ✔ | ✔ |
-|Indie – západ| ✔ |  |
+|Západní Indie| ✔ |  |
 |Západní USA| ✔ | ✔ |
 |Západní USA 2| ✔ |  |
 

@@ -29,7 +29,7 @@ Tento článek poskytuje příklady skriptu PowerShellu a rozhraní příkazové
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -62,7 +62,7 @@ Následující skript ukazuje, jak:
    echo The managed identity for Azure resources service principal ID is $spID
    ```
 
-## <a name="azure-powershell"></a>Azure Powershell
+## <a name="azure-powershell"></a>Azure PowerShell
 
 Následující skript ukazuje, jak:
 

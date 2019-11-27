@@ -37,7 +37,7 @@ ms.locfileid: "74539050"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před instalací a konfigurací tohoto řešení se vyžaduje následující:
 
@@ -532,9 +532,9 @@ Kliknutím na dlaždici **office 365** otevřete řídicí panel **Office 365** 
 
 Řídicí panel obsahuje sloupce v následující tabulce. V každém sloupci je uveden seznam deseti výstrah podle počtu odpovídající kritériím daného sloupce pro zadaný obor a časový rozsah. Hledání v protokolu, které poskytuje celý seznam, můžete spustit kliknutím na Zobrazit vše v dolní části sloupce nebo kliknutím na záhlaví sloupce.
 
-| Sloupec | Popis |
+| Column | Popis |
 |:--|:--|
-| Provoz | Poskytuje informace o aktivních uživatelích z monitorovaných předplatných Office 365. Uvidíte také počet aktivit, ke kterým dojde v průběhu času.
+| Operations | Poskytuje informace o aktivních uživatelích z monitorovaných předplatných Office 365. Uvidíte také počet aktivit, ke kterým dojde v průběhu času.
 | Exchange | Zobrazuje rozpis aktivit systému Exchange Server, jako je například oprávnění k přidání a poštovní schránce, nebo nastavit poštovní schránku. |
 | SharePoint | Zobrazuje hlavní aktivity, které uživatelé provádějí v dokumentech služby SharePoint. Když přejdete k podrobnostem na této dlaždici, na stránce hledání se zobrazí podrobnosti o těchto aktivitách, jako je cílový dokument a umístění této aktivity. Například pro událost otevření souboru budete moci zobrazit dokument, ke kterému se přistupovalo, jeho přidružený název účtu a IP adresu. |
 | Azure Active Directory | Zahrnuje hlavní aktivity uživatelů, jako je resetování hesla uživatele a pokusů o přihlášení. Když přejdete k podrobnostem, budete moci zobrazit podrobnosti o těchto činnostech, jako je stav výsledku. To je hlavně užitečné, pokud chcete monitorovat podezřelé aktivity v Azure Active Directory. |
@@ -553,15 +553,15 @@ Následující vlastnosti jsou společné pro všechny záznamy sady Office 365.
 | Vlastnost | Popis |
 |:--- |:--- |
 | Typ | *OfficeActivity* |
-| ClientIP | IP adresa zařízení, které se použilo při zaznamenání aktivity. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
-| OfficeWorkload | Služba Office 365, na kterou odkazuje záznam.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
+| IP adresa klienta | IP adresa zařízení, které se použilo při zaznamenání aktivity. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
+| OfficeWorkload | Služba Office 365, na kterou odkazuje záznam.<br><br>Azureactivedirectory selhala<br>Exchange<br>SharePoint|
 | Operace | Název aktivity uživatele nebo správce.  |
 | OrganizationId | Identifikátor GUID klienta Office 365 vaší organizace. Tato hodnota bude pro vaši organizaci vždycky stejná, bez ohledu na službu Office 365, ve které se vyskytuje. |
 | RecordType | Typ operace byl proveden. |
 | ResultStatus | Označuje, zda akce (zadaná ve vlastnosti Operation) byla úspěšná nebo ne. Možné hodnoty jsou úspěšné, pravdivé hodnotě stavem nebo selhaly. V případě aktivity správce serveru Exchange je hodnota buď true, nebo false. |
-| UserId | Hlavní název uživatele (UPN) uživatele, který provedl akci, která vedla k zaznamenání záznamu; například my_name@my_domain_name. Všimněte si, že jsou zahrnuté také záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM.). | 
-| UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti UserId.  Tato vlastnost se například naplní jedinečným IDENTIFIKÁTORem (PUID) služby Passport pro události prováděné uživateli na SharePointu, OneDrivu pro firmy a Exchange. Tato vlastnost může taky určovat stejnou hodnotu jako vlastnost UserID pro události, ke kterým dochází v jiných službách a událostech, které provádí systémové účty.|
-| UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Platné<br>Vyhrazeno<br>ServicePrincipal<br>Systémový |
+| userId | Hlavní název uživatele (UPN) uživatele, který provedl akci, která vedla k zaznamenání záznamu; například my_name@my_domain_name. Všimněte si, že jsou zahrnuté také záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM.). | 
+| Vlastnosti UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti UserId.  Tato vlastnost se například naplní jedinečným IDENTIFIKÁTORem (PUID) služby Passport pro události prováděné uživateli na SharePointu, OneDrivu pro firmy a Exchange. Tato vlastnost může taky určovat stejnou hodnotu jako vlastnost UserID pro události, ke kterým dochází v jiných službách a událostech, které provádí systémové účty.|
+| userType | Typ uživatele, který provedl operaci.<br><br>správ<br>Aplikace<br>DcAdmin<br>Platné<br>Rezervováno<br>ServicePrincipal<br>Systém |
 
 
 ### <a name="azure-active-directory-base"></a>Základ Azure Active Directory
@@ -570,8 +570,8 @@ Následující vlastnosti jsou společné pro všechny záznamy Azure Active Dir
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| OfficeWorkload | Azureactivedirectory selhala |
+| RecordType     | Azureactivedirectory selhala |
 | AzureActiveDirectory_EventType | Typ události služby Azure AD. |
 | extendedProperties | Rozšířené vlastnosti události Azure AD. |
 
@@ -582,7 +582,7 @@ Tyto záznamy se vytvoří, když se uživatel služby Active Directory pokusí 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| `OfficeWorkload` | AzureActiveDirectory |
+| `OfficeWorkload` | Azureactivedirectory selhala |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
 | `Application` | Aplikace, která aktivuje událost přihlášení k účtu, například Office 15. |
 | `Client` | Podrobnosti o klientském zařízení, operačním systému zařízení a prohlížeči zařízení, které se použily pro událost přihlášení k účtu. |
@@ -596,8 +596,8 @@ Tyto záznamy se vytvoří, když se změní nebo doplňují objekty Azure Activ
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| OfficeWorkload | Azureactivedirectory selhala |
+| RecordType     | Azureactivedirectory selhala |
 | AADTarget | Uživatel, na kterém se provedla akce (identifikovaná vlastností Operation) |
 | Tříd | Uživatel nebo instanční objekt, který tuto akci provedl. |
 | ActorContextId | Identifikátor GUID organizace, do které patří objekt actor |
@@ -634,7 +634,7 @@ Tyto záznamy jsou vytvořeny při změně konfigurace systému Exchange.
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  Určuje, jestli rutina spustila uživatel ve vaší organizaci, pracovníkovi Datacenter společnosti Microsoft nebo účtem služby Datacenter nebo delegovaným správcem. Hodnota false znamená, že rutina spustila někdo ve vaší organizaci. Hodnota true označuje, že rutina byla spuštěna pracovníky datového centra, účtem služby Datacenter nebo delegovaným správcem. |
 | ModifiedObjectResolvedName |  Toto je uživatelsky přívětivý název objektu, který byl změněn rutinou. Toto je zaznamenáno pouze v případě, že rutina mění objekt. |
-| Název organizace | Název tenanta. |
+| Organizace | Název tenanta. |
 | OriginatingServer | Název serveru, ze kterého byla rutina spuštěna. |
 | Parametry | Název a hodnota pro všechny parametry, které byly použity s rutinou, která je identifikována vlastností Operations. |
 
@@ -753,7 +753,7 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 | Dotaz | Popis |
 | --- | --- |
-|Počet všech operací v předplatném sady Office 365 |OfficeActivity &#124; summarize count() by Operation |
+|Počet všech operací v předplatném sady Office 365 |OfficeActivity &#124; sumarizace Count () podle operace |
 |Použití webů SharePointu|OfficeActivity &#124; WHERE OfficeWorkload = ~ "SharePoint" &#124; sumarizace Count () podle SiteUrl \| řazení podle počtu ASC|
 |Operace přístupu k souboru podle typu uživatele|Hledat v (OfficeActivity) OfficeWorkload = ~ "azureactivedirectory selhala" a "MyTest"|
 |Hledat pomocí konkrétního klíčového slova|Type = OfficeActivity OfficeWorkload = azureactivedirectory selhala "MyTest"|

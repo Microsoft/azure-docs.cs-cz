@@ -22,7 +22,7 @@ Chcete-li odeslat data protokolu a událostí skupiny kontejnerů do Azure Monit
 > [!NOTE]
 > V současné době můžete odesílat data událostí z instancí kontejnerů Linux pouze do Log Analytics.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli povolit protokolování ve vašich instancích kontejnerů, potřebujete následující:
 
@@ -48,7 +48,7 @@ Teď, když máte ID pracovního prostoru Log Analytics a primární klíč, jst
 
 Následující příklady znázorňují dva způsoby, jak vytvořit skupinu kontejnerů [s jedním][fluentd] mikrokontejnerem: Azure CLI a Azure CLI se šablonou YAML. Kontejner fluentd ve výchozí konfiguraci produkuje několik řádků výstupu. Tento výstup se odesílá do pracovního prostoru služby Log Analytics, takže se dobře hodí pro ukázku zobrazení a dotazování protokolů.
 
-### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+### <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
 Pokud chcete nasadit pomocí Azure CLI, zadejte parametry `--log-analytics-workspace` a `--log-analytics-workspace-key` v příkazu [AZ Container Create][az-container-create] . Tyto dvě hodnoty pracovního prostoru nahraďte hodnotami, které jste získali v předchozím kroku (a aktualizujte název skupiny prostředků). Teprve potom spusťte následující příkaz.
 

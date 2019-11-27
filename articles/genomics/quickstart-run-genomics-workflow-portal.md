@@ -74,7 +74,7 @@ pip install msgen
 ```
 
 
-Pokud nechcete instalovat `msgen` jako binární soubor pro celý systém a upravovat balíčky Python pro celý systém, použijte příkaz `–-user` s příznakem `pip`.
+Pokud nechcete instalovat `msgen` jako binární soubor pro celý systém a upravovat balíčky Python pro celý systém, použijte příkaz `pip` s příznakem `–-user`.
 Pokud použijete instalaci využívající balíčky nebo skript setup.py, nainstalují se všechny potřebné balíčky. Jinak msgen vyžaduje tyto základní balíčky 
 
  * [Azure-storage](https://pypi.python.org/pypi/azure-storage). 
@@ -122,10 +122,10 @@ Nastavte v účtu Storage následující údaje, viz předchozí obrázek. Použ
  |Skupina prostředků       | MyResourceGroup       |  Můžete vybrat stejnou skupinu prostředků, ve které je váš účet Genomics. Platné názvy skupin prostředků najdete v tématu [Pravidla pojmenování](/azure/architecture/best-practices/resource-naming). |
  |Název účtu úložiště         | MyStorageAccount     |Zvolte jedinečný identifikátor účtu. Informace o platných názvech najdete v části [Pravidla pojmenování](/azure/architecture/best-practices/resource-naming) |
  |Umístění                  | Západní USA 2                  | Použijte stejné umístění, jaké má účet Genomics, abyste se vyhnuli poplatkům za přenosy dat a vyšší latenci.  | 
- |Výkon                  | Standard                   | Výchozí nastavení je Standard. Další podrobnosti o účtech úložiště úrovně Standard a Premium najdete v tématu [Úvod do Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction).    |
- |Account kind (Druh účtu)       | Blob Storage       |  Úložiště objektů blob nabízí 2–5× rychlejší stahování a nahrávání než úložiště pro obecné účely. |
+ |Výkon                  | Úroveň Standard                   | Výchozí nastavení je Standard. Další podrobnosti o účtech úložiště úrovně Standard a Premium najdete v tématu [Úvod do Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction).    |
+ |Account kind (Druh účtu)       | Úložiště blobů       |  Úložiště objektů blob nabízí 2–5× rychlejší stahování a nahrávání než úložiště pro obecné účely. |
  |Replikace                  | (Locally redundant storage) Místně redundantní úložiště                  | Místně redundantní úložiště replikuje data třikrát v rámci oblasti, ve které jste vytvořili účet úložiště. Další informace najdete v tématu [Replikace Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy).    |
- |Access tier (Vrstva přístupu)                  | Hot                   | Horká úroveň přístupu znamená, že k objektům v účtu úložiště budete přistupovat častěji.    |
+ |Vrstva přístupu                  | Hot                   | Horká úroveň přístupu znamená, že k objektům v účtu úložiště budete přistupovat častěji.    |
 
 
 Pak kliknutím na `Review + create` vytvořte účet úložiště. Podobně jako při vytváření účtu Genomics klikněte v horní nabídce na Oznámení, budete tak moci sledovat proces nasazení. 

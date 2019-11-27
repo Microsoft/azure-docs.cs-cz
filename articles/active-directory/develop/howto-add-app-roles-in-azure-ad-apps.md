@@ -39,7 +39,7 @@ Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarace rolí aplikace pomocí Azure Portal
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horním panelu vyberte svůj účet a pak **Přepněte adresář**.
 1. Po otevření podokna **adresář a odběr** vyberte v seznamu **Oblíbené** nebo **všechny adresáře** klienta služby Active Directory, kde chcete aplikaci zaregistrovat.
 1. V levém navigačním panelu vyberte **všechny služby** a zvolte **Azure Active Directory**.

@@ -34,7 +34,7 @@ Následující tabulka uvádí prvky pole a omezení znaků pro každou operaci 
 | Zjišťování | 10 000 | 100 |   50 000 |
 | BreakSentence | 10 000    | 100 | 50 000 |
 | Slovníkové vyhledávání| 100 |  10  | 1 000 |
-| Příklady slovníku | 100 pro text a 100 pro překlad (200 celkem)| 10|   2,000 |
+| Příklady slovníku | 100 pro text a 100 pro překlad (200 celkem)| 10|   2 000 |
 
 ## <a name="character-limits-per-hour"></a>Omezení počtu znaků za hodinu
 
@@ -44,13 +44,13 @@ Hodinová kvóta by se měla v průběhu hodiny spotřebovat rovnoměrně. Např
 
 Pokud tato omezení dosáhnete nebo překročíte nebo v krátké době zadáte příliš velkou část kvóty, pravděpodobně obdržíte odpověď na neplatnou kvótu. Neexistují žádná omezení souběžných žádostí.
 
-| Vrstva | Omezení počtu znaků |
+| Úroveň | Omezení počtu znaků |
 |------|-----------------|
 | F0 | 2 000 000 znaků za hodinu |
 | S1 | 40 000 000 znaků za hodinu |
-| S2 / C2 | 40 000 000 znaků za hodinu |
-| S3 / C3 | 120 000 000 znaků za hodinu |
-| S4 / C4 | 200 000 000 znaků za hodinu |
+| S2/C2 | 40 000 000 znaků za hodinu |
+| S3/C3 | 120 000 000 znaků za hodinu |
+| S4/C4 | 200 000 000 znaků za hodinu |
 
 Limity pro [předplatné s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) jsou stejné jako u úrovně S1.
 

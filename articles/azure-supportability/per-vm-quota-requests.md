@@ -35,7 +35,7 @@ Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help +
 
 Můžete také požádat o kvótu pro více oblastí prostřednictvím jediného případu podpory. Podrobnosti najdete v kroku 11 níže.
 
-1. V https://portal.azure.comvyberte možnost **help + podpora**.
+1. V https://portal.azure.com vyberte možnost **help + podpora**.
 
    ![Pomoc a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -87,7 +87,7 @@ Pomocí následujících pokynů můžete vytvořit žádost o podporu prostřed
 
 Můžete také **požádat o kvótu pro více oblastí** prostřednictvím jediného případu podpory. Podrobnosti najdete v kroku 10 níže.
 
-1. Z https://portal.azure.comvyberte **předplatná**.
+1. Z https://portal.azure.com vyberte **předplatná**.
 
    ![Předplatná](./media/resource-manager-core-quotas-request/subscriptions.png)
 

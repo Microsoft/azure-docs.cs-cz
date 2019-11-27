@@ -69,13 +69,13 @@ Pokud chcete požádat o nové funkce, publikujte je na UserVoice. Sdílejte sv�
 |-------------------------------|---------------|
 | Detektor anomálií              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
 | Služby Bing                 | https://cognitive.uservoice.com/forums/555907-bing-search |
-| Počítačové zpracování obrazu               | https://cognitive.uservoice.com/forums/430309-computer-vision |
+| Computer Vision               | https://cognitive.uservoice.com/forums/430309-computer-vision |
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Tvář                          | https://cognitive.uservoice.com/forums/430315-face |
 | Tvar                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | Atraktivní                     | https://feedback.azure.com/forums/34192--general-feedback |
-| Rozpoznávání jazyka (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
+| Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizace                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
 | Hlasové služby               | https://cognitive.uservoice.com/forums/912208-speech-service |
@@ -106,7 +106,7 @@ Poznámky k verzi jsou aktualizované, protože jsou k dispozici nové verze. Po
 
 Novinky o Cognitive Services se sdílí na [blogu Azure](https://azure.microsoft.com/blog/topics/cognitive-services/).
 
-## <a name="search"></a>Search
+## <a name="search"></a>Hledat
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>

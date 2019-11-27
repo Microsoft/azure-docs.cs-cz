@@ -22,7 +22,7 @@ Pokud potřebujete další podporu, přečtěte si část dostupná podpora a mo
 
 Při definování specifikace kontejneru vyžadují některé parametry dodržování omezení pojmenování. Níže je tabulka se specifickými požadavky na vlastnosti skupiny kontejnerů. Další informace o zásadách vytváření názvů pro Azure najdete v tématu [konvence pojmenování][azure-name-restrictions] v cetrum architektury Azure.
 
-| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný vzor | Příklad |
+| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný vzor | Příklad: |
 | --- | --- | --- | --- | --- | --- |
 | Název skupiny kontejnerů | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |

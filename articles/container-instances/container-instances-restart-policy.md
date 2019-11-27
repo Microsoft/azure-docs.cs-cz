@@ -22,7 +22,7 @@ Příklady uvedené v tomto článku používají rozhraní příkazového řád
 
 Při vytváření [skupiny kontejnerů](container-instances-container-groups.md) v Azure Container Instances můžete zadat jedno ze tří nastavení zásad restartování.
 
-| Zásady restartování   | Popis |
+| Restartovat zásadu   | Popis |
 | ---------------- | :---------- |
 | `Always` | Kontejnery ve skupině kontejnerů se vždy restartují. Toto je **výchozí** nastavení, které se použije, když se při vytváření kontejneru nezadá žádná zásada restartování. |
 | `Never` | Kontejnery ve skupině kontejnerů se nikdy nerestartují. Kontejnery se spouštějí současně. |

@@ -34,7 +34,7 @@ V tomto tématu se dozvíte, jak provádět tyto úlohy:
 * Přesuňte účet pro integraci do jiné skupiny prostředků nebo předplatného Azure.
 * Odstraňte účet pro integraci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -113,7 +113,7 @@ Pokud chcete zvýšit [omezení](../logic-apps/logic-apps-limits-and-config.md#i
 
 Tuto změnu můžete provést buď pomocí Azure Portal podle kroků v této části, nebo pomocí [Azure CLI](#upgrade-tier-azure-cli).
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
@@ -207,7 +207,7 @@ Pokud chcete aplikaci logiky propojit s jiným účtem pro integraci nebo už ne
    },
    ```
 
-   Příklad:
+   Například:
 
    ![Najít objekt "integrationAccount"](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 

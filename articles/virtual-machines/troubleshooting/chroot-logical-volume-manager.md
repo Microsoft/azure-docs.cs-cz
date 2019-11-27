@@ -166,7 +166,7 @@ grub2-editenv list
 grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
-*Názorný postup*
+*názorném postupu*
 
 Příkaz **grep** vypíše seznam jader, na které **grub. cfg** ví.
 ![jádra](./media/chroot-logical-volume-manager/kernels.png)
@@ -190,7 +190,7 @@ Spuštěním příkazu **LVS** ověřte, které **LVS** jsou k dispozici pro př
 
 Ukončení prostředí **chroot** připojit požadované **LV**
 
-![Upřesňující](./media/chroot-logical-volume-manager/advanced.png)
+![Rozšířený](./media/chroot-logical-volume-manager/advanced.png)
 
 Teď znovu přihlaste k prostředí **chroot** spuštěním
 
@@ -198,11 +198,11 @@ Teď znovu přihlaste k prostředí **chroot** spuštěním
 
 Všechny LVs musí být viditelné jako připojené oddíly.
 
-![Upřesňující](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Rozšířený](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 Dotaz na nainstalované **jádro**
 
-![Upřesňující](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Rozšířený](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
 V případě potřeby upgradujte
 **jádra** ![pokročilé](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)

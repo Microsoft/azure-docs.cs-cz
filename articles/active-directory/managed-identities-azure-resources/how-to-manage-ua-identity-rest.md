@@ -30,7 +30,7 @@ Spravované identity pro prostředky Azure poskytují službám Azure možnost o
 
 V tomto článku se dozvíte, jak vytvořit, vypsat a odstranit spravovanou identitu přiřazenou uživatelem pomocí OBLÉ k provedení REST API volání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
@@ -67,7 +67,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **Text žádosti**
 
-|Název  |Popis  |
+|Name (Název)  |Popis  |
 |---------|---------|
 |location     | Povinná hodnota. Umístění prostředku.        |
 

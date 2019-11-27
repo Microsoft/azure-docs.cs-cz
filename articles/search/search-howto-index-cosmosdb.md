@@ -58,7 +58,7 @@ Ujistěte se, že vaše databáze Cosmos DB obsahuje data. [Průvodce importem d
 
 ### <a name="2---start-import-data-wizard"></a>2\. spuštění Průvodce importem dat
 
-Průvodce můžete [Spustit](search-import-data-portal.md) z příkazového řádku na stránce služby Azure kognitivní hledání, nebo pokud se připojujete k Cosmos DB rozhraní SQL API, můžete kliknout na **Přidat Azure kognitivní hledání** v části **Nastavení** v účtu Cosmos DB vlevo. navigační podokno.
+Průvodce můžete [Spustit](search-import-data-portal.md) z příkazového řádku na stránce služby Azure kognitivní hledání, nebo pokud se připojujete k Cosmos DB rozhraní SQL API, můžete kliknout na **Přidat Azure kognitivní hledání** v části **Nastavení** v levém navigačním podokně účtu Cosmos DB.
 
    ![Příkaz Importovat data na portálu](./media/search-import-data-portal/import-data-cmd2.png "Spuštění Průvodce importem dat")
 
@@ -251,14 +251,14 @@ Ujistěte se, že schéma cílového indexu je kompatibilní se schématem zdroj
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>Mapování mezi datovými typy JSON a datovými typy Azure Kognitivní hledání
 | Datový typ JSON | Kompatibilní typy polí cílového indexu |
 | --- | --- |
-| Bool |EDM. Boolean, Edm. String |
-| Čísla, která vypadají jako celá čísla |Edm.Int32, Edm.Int64, Edm.String |
-| Čísla, která vypadají jako plovoucí body |Edm.Double, Edm.String |
+| Logick |EDM. Boolean, Edm. String |
+| Čísla, která vypadají jako celá čísla |EDM. Int32, Edm. Int64, Edm. String |
+| Čísla, která vypadají jako plovoucí body |EDM. Double, Edm. String |
 | Řetězec |Edm.String |
 | Pole primitivních typů, například ["a", "b", "c"] |Collection(Edm.String) |
-| Řetězce, které vypadají jako kalendářní data |Edm.DateTimeOffset, Edm.String |
+| Řetězce, které vypadají jako kalendářní data |EDM. DateTimeOffset, Edm. String |
 | Objekty injson, například {"Type": "Point", "souřadnice": [Long, lat]} |Edm.GeographyPoint |
-| Jiné objekty JSON |neuvedeno |
+| Jiné objekty JSON |Nevztahuje se |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4\. konfigurace a spuštění indexeru
 

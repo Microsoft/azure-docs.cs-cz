@@ -69,7 +69,7 @@ Služba samoobslužná údržba se doporučuje používat v následujících př
 - Mezi dvěma aktualizačními doménami se vyžaduje více než 30 minut času obnovení virtuálního počítače. Chcete-li řídit dobu mezi aktualizačními doménami, je nutné aktivovat údržbu v rámci virtuálních počítačů po jedné aktualizační doméně (UD).
 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 
 **Otázka: Proč potřebujete restartovat virtuální počítače nyní?**

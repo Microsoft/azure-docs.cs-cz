@@ -48,10 +48,10 @@ Návrh odvozené architektury je čistě z hlediska infrastruktury a Vy musíte 
 
 Tento dokument popisuje podrobnosti o těchto dvou součástech v každé podporované architektuře:
 
-- Ethernet
+- Adaptér
 - Úložiště
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 
 Každý zřízený Server je předem nakonfigurovaný se sadami rozhraní Ethernet. Zde jsou uvedeny podrobnosti o rozhraních sítě Ethernet nakonfigurovaných na každé jednotce HLI.
 
@@ -130,9 +130,9 @@ Tato topologie podporuje jeden uzel v konfiguraci škálované nahoru s jedním 
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![Single-node-with-one-SID.png](media/hana-supported-scenario/Single-node-with-one-SID.png)
+![Single-node-with-one-SID. png](media/hana-supported-scenario/Single-node-with-one-SID.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -165,9 +165,9 @@ Tato topologie podporuje jeden uzel v konfiguraci škálované nahoru s více id
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![single-node-mcos.png](media/hana-supported-scenario/single-node-mcos.png)
+![Single-Node-MCoS. png](media/hana-supported-scenario/single-node-mcos.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -205,9 +205,9 @@ Tato topologie podporuje jeden uzel v konfiguraci škálované nahoru s jedním 
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![Single-node-with-dr.png](media/hana-supported-scenario/Single-node-with-dr.png)
+![Single-Node-with-Dr. png](media/hana-supported-scenario/Single-node-with-dr.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -246,9 +246,9 @@ Tato topologie podporuje jeden uzel v konfiguraci škálované nahoru s jedním 
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![single-node-with-dr-multipurpose.png](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
+![Single-Node-with-Dr-Multipurpose. png](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -302,7 +302,7 @@ Tato topologie podporuje dva uzly pro konfiguraci replikace systému HANA (HSR).
 
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -348,9 +348,9 @@ V diagramu se v multifunkčním scénáři zobrazuje, kde se v lokalitě DR pou�
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![HSR-with-DR.png](media/hana-supported-scenario/HSR-with-DR.png)
+![HSR-with-DR. png](media/hana-supported-scenario/HSR-with-DR.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -409,7 +409,7 @@ Tato topologie podporuje dva uzly v konfiguraci automatického převzetí služe
 
 ![SCA](media/hana-supported-scenario/scaleup-with-standby.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -450,7 +450,7 @@ Tato topologie podporuje více uzlů v konfiguraci s možností horizontálního
 
 ![scaleout-nm-Standby. png](media/hana-supported-scenario/scaleout-nm-standby.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -483,10 +483,10 @@ Tato topologie podporuje více uzlů v konfiguraci s možností horizontálního
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![scaleout-nm.png](media/hana-supported-scenario/scaleout-nm.png)
+![scaleout-nm. png](media/hana-supported-scenario/scaleout-nm.png)
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -522,10 +522,10 @@ Tato topologie podporuje více uzlů ve škálování na více instancí s použ
 
 ### <a name="architecture-diagram"></a>Diagram architektury  
 
-![scaleout-with-dr.png](media/hana-supported-scenario/scaleout-with-dr.png)
+![scaleout-with-Dr. png](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -570,7 +570,7 @@ Tato topologie podporuje jeden uzel v konfiguraci škálování s jedním identi
 
 ![Single-Node-HSR-Dr-111. png](media/hana-supported-scenario/single-node-hsr-dr-111.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -611,7 +611,7 @@ Následující mountpoints jsou předem nakonfigurované v jednotkách HLI (prim
 
 ![Single-Node-HSR-Dr-cost-Optimized-121. png](media/hana-supported-scenario/single-node-hsr-dr-cost-optimized-121.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -661,7 +661,7 @@ Předkonfigurované jsou následující mountpoints:
 
 ![Hana-System-Replication-Dr-131. png](media/hana-supported-scenario/hana-system-replication-dr-131.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -706,7 +706,7 @@ Předkonfigurované jsou následující mountpoints:
 
 ![Hana-System-Replication-Dr-cost-Optimized-141. png](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -757,7 +757,7 @@ Tato topologie podporuje více uzlů ve škálování na více instancí s použ
 [![Scale-out-Dr-HSR-151. png](media/hana-supported-scenario/scale-out-dr-hsr-151.png)](media/hana-supported-scenario/scale-out-dr-hsr-151.png#lightbox)
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Adaptér
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | LOGICKÁ ROZHRANÍ NIC | TYP SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|

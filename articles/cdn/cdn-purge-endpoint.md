@@ -73,7 +73,7 @@ Tento kurz vás provede vymazáním assetů ze všech hraničních uzlů koncov�
 > 
 > 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Předběžné načtení prostředků v koncovém bodu Azure CDN](cdn-preload-endpoint.md)
 * [Odkaz na Azure CDN REST API – vymazání nebo přednačtení koncového bodu](/rest/api/cdn/endpoints)
 

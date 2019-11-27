@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: rozpoznávání řeči pomocí služby mikrofon-Speech'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme

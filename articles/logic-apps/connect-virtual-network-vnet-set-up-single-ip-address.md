@@ -20,7 +20,7 @@ ms.locfileid: "74549242"
 
 Při práci s Azure Logic Apps můžete nastavit [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) pro hostování aplikací logiky, které potřebují přístup k prostředkům ve [službě Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Pokud máte několik instancí ISE, které potřebují přístup k jiným koncovým bodům s omezeními IP adres, nasaďte [Azure firewall](../firewall/overview.md) nebo [síťové virtuální zařízení](../virtual-network/virtual-networks-overview.md#filter-network-traffic) do své virtuální sítě a přesměrujte odchozí přenosy přes tuto bránu firewall nebo síťové virtuální zařízení. Pak můžete všechny instance ISE ve vaší virtuální síti používat pro komunikaci s cílovými systémy jednu, předvídatelná a veřejnou IP adresu. Tímto způsobem není nutné nastavovat další otevřená brána firewall v cílových systémech pro každý ISE. V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím Azure Firewall, ale můžete použít podobné koncepty virtuálního zařízení virtuální sítě, jako je například brána firewall jiného výrobce z Azure Marketplace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Brána firewall Azure, která běží ve stejné virtuální síti jako vaše ISE. Pokud bránu firewall nemáte, přidejte do své virtuální sítě [podsíť](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) s názvem `AzureFirewallSubnet`. Pak můžete [vytvořit a nasadit bránu firewall](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) ve vaší virtuální síti.
 

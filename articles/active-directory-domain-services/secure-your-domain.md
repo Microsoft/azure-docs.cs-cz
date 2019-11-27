@@ -24,7 +24,7 @@ Ve výchozím nastavení umožňuje Azure Active Directory Domain Services (Azur
 
 V tomto článku se dozvíte, jak zakázat šifry protokolu NTLM V1 a TLS V1 a vypnout synchronizaci hodnot hash hesel protokolu NTLM.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 
