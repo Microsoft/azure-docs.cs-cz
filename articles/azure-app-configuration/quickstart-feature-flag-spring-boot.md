@@ -47,7 +47,7 @@ Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou p
 
 Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový projekt pro spuštění pružiny.
 
-1. Přejděte do <https://start.spring.io/>.
+1. Přejděte na <https://start.spring.io/>.
 
 2. Zadejte následující možnosti:
 

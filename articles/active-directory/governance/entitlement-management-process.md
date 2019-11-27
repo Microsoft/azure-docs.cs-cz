@@ -1,6 +1,6 @@
 ---
-title: Request process and email notifications in Azure AD entitlement management - Azure Active Directory
-description: Learn about the request process for an access package and when email notifications are sent in Azure Active Directory entitlement management.
+title: Žádost o proces a e-mailová oznámení v Azure AD – Správa nároků – Azure Active Directory
+description: Přečtěte si o procesu požadavků pro balíček pro přístup a při posílání e-mailových oznámení v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -23,136 +23,136 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74206959"
 ---
-# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Request process and email notifications in Azure AD entitlement management
+# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Žádost o proces a e-mailová oznámení v Azure AD – Správa nároků
 
-When a user submits a request to an access package, a process begins to deliver that access request. Azure AD entitlement management sends email notifications to approvers and requestors when key events occur during the process. This article describes the request process and the email notifications that are sent.
+Když uživatel odešle požadavek do balíčku pro přístup, zahájí proces doručení žádosti o přístup. Správa nároků na Azure AD posílá schvalovatelům a žadatelům e-mailová oznámení, když během procesu dojde k klíčovým událostem. Tento článek popisuje proces žádosti a e-mailová oznámení, která se odesílají.
 
-## <a name="request-process"></a>Request process
+## <a name="request-process"></a>Proces žádosti
 
-A user that needs access to an access package can submit an access request. Depending on the configuration of the policy, the request might require an approval. When a request is approved, a process begins to assign the user access to each resource in the access package. The following diagram shows an overview of the process and the different states:
+Uživatel, který potřebuje přístup k přístupovému balíčku, může odeslat žádost o přístup. V závislosti na konfiguraci zásady může požadavek vyžadovat schválení. Při schválení žádosti proces začne přiřazovat přístup uživatelů ke každému prostředku v balíčku pro přístup. Následující diagram znázorňuje přehled procesu a různých stavů:
 
-![Approval process diagram](./media/entitlement-management-process/request-process.png)
+![Diagram procesu schválení](./media/entitlement-management-process/request-process.png)
 
 | Stav | Popis |
 | --- | --- |
-| Submitted | User submits a request. |
-| Pending approval | If the policy for an access package requires approval, a request moves to pending approval. |
-| Platnost vypršela | If no approvers approve a request within the approval request timeout, the request expires. To try again, the user will have to resubmit their request. |
-| Denied | Approver denies a request. |
-| Schválené | Approver approves a request. |
-| Delivering | User has **not** been assigned access to all the resources in the access package. If this is an external user, the user may not have accessed the resource directory yet. They also may not have accepted the consent prompt. |
-| Doručeno | User has been assigned access to all the resources in the access package. |
-| Access extended | If extensions are allowed in the policy, the user extended the assignment. |
-| Access expired | User's access to the access package has expired. To get access again, the user will have to submit a request. |
+| Předán | Uživatel odešle požadavek. |
+| Čeká na schválení | Pokud zásada pro balíček pro přístup vyžaduje schválení, požadavek se přesune na čeká na schválení. |
+| Platnost vypršela | Pokud žádný schvalovatel neschválí žádost v rámci časového limitu žádosti o schválení, vyprší platnost žádosti. Chcete-li akci opakovat, bude uživatel muset odeslat žádost znovu. |
+| Odepřen | Schvalovatel odepře požadavek. |
+| Schválené | Schvalovatel schválí žádost. |
+| Doručování | Uživatel **nemá** přiřazený přístup ke všem prostředkům v balíčku pro přístup. Pokud se jedná o externího uživatele, uživatel pravděpodobně neotevřel adresář prostředků ještě předtím. Také možná nepřijali výzvu k vyjádření souhlasu. |
+| Doručeno | Uživatel má přiřazený přístup ke všem prostředkům v balíčku pro přístup. |
+| Přístup rozšířený | Pokud jsou v zásadách povoleny rozšíření, uživatel rozšíření přiřazení. |
+| Platnost přístupu vypršela | Vypršela platnost přístupu uživatele k balíčku přístupu. K opětovnému získání přístupu bude uživatel muset odeslat žádost. |
 
 ## <a name="email-notifications"></a>E-mailová oznámení
 
-If you're an approver, you're sent email notifications when you need to approve an access request. You also receive notifications when an access request has been completed. You're also sent email notifications that indicate the status of your request if you're a requestor.
+Pokud jste schvalovatel, pošleme vám e-mailová oznámení, když potřebujete schválit žádost o přístup. Oznámení se zobrazí také po dokončení žádosti o přístup. Také se vám odesílají e-mailová oznámení upozorňující na stav vaší žádosti, pokud jste žadatel.
 
-The following diagrams show when these email notifications are sent to either the approvers or the requestor. Reference the [email notifications table](entitlement-management-process.md#email-notifications-table) to find the corresponding number to the email notifications displayed in the diagrams.
+Následující diagramy znázorňují, kdy jsou tato e-mailová oznámení odeslána schvalovatelům nebo žadateli. V [tabulce e-mailových oznámení](entitlement-management-process.md#email-notifications-table) vyhledejte odpovídající číslo pro e-mailová oznámení zobrazená v diagramech.
 
-### <a name="first-approvers-and-alternate-approvers"></a>First approvers and alternate approvers
-The following diagram shows the experience of first approvers and alternate approvers, and the email notifications they receive during the request process:
+### <a name="first-approvers-and-alternate-approvers"></a>První schvalovatelé a alternativní schvalovatelé
+Následující diagram znázorňuje možnosti prvních schvalovatelů a alternativních schvalovatelů a e-mailová oznámení, která obdrží během procesu žádosti:
 
-![First and alternate approvers process flow](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
+![Tok procesu prvního a alternativního schvalovatele](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
 
 ### <a name="requestors"></a>Žadatelé
-The following diagram shows the experience of requestors and the email notifications they receive during the request process:
+Následující diagram znázorňuje prostředí žadatelů a e-mailová oznámení, která obdrží během procesu žádosti:
 
-![Requestor process flow](./media/entitlement-management-process/requestor-approval-request-flow.png)
+![Tok procesu žadatele](./media/entitlement-management-process/requestor-approval-request-flow.png)
 
-### <a name="2-stage-approval"></a>2-stage approval
-The following diagram shows the experience of stage-1 and stage-2 approvers and the email notifications they receive during the request process:
+### <a name="2-stage-approval"></a>schválení 2 fáze
+Následující diagram znázorňuje prostředí schvalovatelů fáze 1 a fáze 2 a e-mailová oznámení, která obdrží během procesu žádosti:
 
-![2-stage approval process flow](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
+![tok procesu schválení 2 fáze](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
 
-### <a name="email-notifications-table"></a>Email notifications table
-The following table provides more detail about each of these email notifications. To manage these emails, you can use rules. For example, in Outlook, you can create rules to move the emails to a folder if the subject contains words from this table:
+### <a name="email-notifications-table"></a>Tabulka e-mailových oznámení
+Následující tabulka poskytuje další podrobnosti o každé z těchto e-mailových oznámení. Pokud chcete tyto e-maily spravovat, můžete použít pravidla. Například v Outlooku můžete vytvořit pravidla pro přesun e-mailů do složky, pokud předmět obsahuje slova z této tabulky:
 
-| # | Email subject | When sent | Sent to |
+| # | Předmět e-mailu | Při odeslání | Odesláno do |
 | --- | --- | --- | --- |
-| 1\. místo | Action required: Approve or deny forwarded request by *[date]* | This email will be sent to Stage-1 alternate approvers (after the request has been escalated) to take action. | Stage-1 alternate approvers |
-| 2 | Action required: Approve or deny request by *[date]* | This email will be sent to the first approver, if escalation is disabled, to take action. | First approver |
-| 3 | Reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the first approver, if escalation is disabled. The email asks them to take action if they haven't. | First approver |
-| 4 | Approve or deny the request by *[time]* on *[date]* | This email will be sent to the first approver (if escalation is enabled) to take action. | First approver |
-| 5 | Action required reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the first approver, if escalation is enabled. The email asks them to take action if they haven't. | First approver |
-| 6 | Request has expired for *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers after the request has expired. | First approver, stage-1 alternate approvers |
-| 7 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers upon request completion. | First approver, stage-1 alternate approvers |
-| 8 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers of a 2-stage request when the stage-1 request is approved. | First approver, stage-1 alternate approvers |
-| 9 | Request denied to *[access_package]* | This email will be sent to the requestor when their request is denied | Requestor |
-| 10 | Your request has expired for *[access_package]* | This email will be sent to the requestor at the end of a single or 2-stage request. The email notifies the requestor that the request expired. | Requestor |
-| 11 | Action required: Approve or deny request by *[date]* | This email will be sent to the second approver, if escalation is disabled, to take action. | Second approver |
-| 12 | Action required reminder: Approve or deny the request by *[date]* | This reminder email will be sent to the second approver, if escalation is disabled. The notification asks them to take action if they haven't yet. | Second approver |
-| 13 | Action required: Approve or deny the request by *[date]* for *[requestor]* | This email will be sent to second approver, if escalation is enabled, to take action. | Second approver |
-| 14 | Action required reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the second approver, if escalation is enabled. The notification asks them to take action if they haven't yet. | Second approver |
-| 15 | Action required: Approve or deny forwarded request by *[date]* | This email will be sent to stage-2 alternate approvers, if escalation is enabled, to take action. | Stage-2 alternate approvers |
-| 16 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the second approver and stage-2 alternate approvers upon approving the request. | Second approver, Stage-2 alternate approvers |
-| 17 | A request has expired for *[access_package]* | This email will be sent to the second approver or alternate approvers, after the request expires. | Second approver, stage-2 alternate approvers |
-| 18 | You now have access to *[access_package]* | This email will be sent to the end users to start using their access. | Requestor |
-| 19 | Extend access for *[access_package]* by *[date]* | This email will be sent to the end users before their access expires. | Requestor |
-| 20 | Access has ended for *[access_package]* | This email will be sent to the end users after their access expires. | Requestor |
+| 1 | Požaduje se akce: schválení nebo zamítnutí přesměrovaného požadavku uživatelem *[Date]* | Tento e-mail se pošle alternativním schvalovatelům fáze-1 (po eskalaci žádosti), aby provedl akci. | Fáze 1 – alternativní schvalovatelé |
+| 2 | Požaduje se akce: schválit nebo odepřít požadavek podle *[Date]* | Tento e-mail se pošle prvnímu schvalovateli, pokud je eskalace zakázaná a provede akci. | První schvalovatel |
+| 3 | Připomenutí: schvalte nebo odepřete požadavek pomocí *[Date]* pro *[žadatel]* . | Tento e-mail s připomenutím se pošle prvnímu schvalovateli, pokud je eskalace zakázaná. E-mail si vyžádá, aby probral akci, pokud ne. | První schvalovatel |
+| 4 | Schválit nebo zamítnout žádost pomocí *[Time]* dne *[Date]* | Tento e-mail se pošle prvnímu schvalovateli (Pokud je povolená eskalace), aby probral akci. | První schvalovatel |
+| 5 | Připomenutí vyžadované akcí: schvalte nebo odepřete požadavek podle *[Date]* pro *[žadatel]* . | Tento e-mail s připomenutím se pošle prvnímu schvalovateli, pokud je eskalace povolená. E-mail si vyžádá, aby probral akci, pokud ne. | První schvalovatel |
+| 6 | Vypršela platnost žádosti pro *[access_package]* . | Tento e-mail se pošle prvnímu schvalovateli a prvnímu schvalovateli – 1 po vypršení platnosti žádosti. | První schvalovatel, fáze-1 alternativních schvalovatelů |
+| 7 | Žádost schválená pro *[žadatel]* na *[access_package]* | Tento e-mail se pošle prvnímu schvalovateli a prvnímu schvalovateli – 1 alternativním schvalovatelům při dokončení žádosti. | První schvalovatel, fáze-1 alternativních schvalovatelů |
+| 8 | Žádost schválená pro *[žadatel]* na *[access_package]* | Tento e-mail se pošle prvnímu schvalovateli a fázi 1 žádosti o 2 fázi při schválení žádosti fáze-1. | První schvalovatel, fáze-1 alternativních schvalovatelů |
+| 9 | Žádost byla zamítnuta *[access_package]* . | Tento e-mail se pošle žadateli, když je jeho žádost zamítnutá. | Žadatele |
+| 10 | Platnost vaší žádosti vypršela pro *[access_package]* . | Tento e-mail odešle žadateli na konci jedné nebo 2 fáze žádosti. E-mail oznámí žadateli, že platnost žádosti vypršela. | Žadatele |
+| 11 | Požaduje se akce: schválit nebo odepřít požadavek podle *[Date]* | Tento e-mail se pošle druhému schvalovateli, pokud je eskalace zakázaná, aby se mohla provést akce. | Druhý schvalovatel |
+| 12 | Připomenutí vyžadované akcí: schválit nebo zamítnout požadavek podle *[datum]* | Tento e-mail s připomenutím se pošle druhému schvalovateli, pokud je eskalace zakázaná. Oznámení se požádá, aby provedla akci, pokud ještě nebyla. | Druhý schvalovatel |
+| 13 | Požaduje se akce: schválit nebo zamítnout požadavek podle *[Date]* pro *[žadatel]* | Tento e-mail se pošle druhému schvalovateli, pokud je eskalace povolená a provede akci. | Druhý schvalovatel |
+| 14 | Připomenutí vyžadované akcí: schvalte nebo odepřete požadavek podle *[Date]* pro *[žadatel]* . | Tento e-mail s připomenutím se pošle druhému schvalovateli, pokud je eskalace povolená. Oznámení se požádá, aby provedla akci, pokud ještě nebyla. | Druhý schvalovatel |
+| 15 | Požaduje se akce: schválení nebo zamítnutí přesměrovaného požadavku uživatelem *[Date]* | Tento e-mail se pošle alternativním schvalovatelům fáze 2, pokud je povolená eskalace, aby se tato akce mohla provést. | Fáze 2 – alternativní schvalovatele |
+| 16 | Žádost schválená pro *[žadatel]* na *[access_package]* | Tento e-mail se pošle druhým schvalovateli a fázi 2 – alternativní schvalovatele při schvalování žádosti. | Druhý schvalovatel, fáze 2 – alternativní schvalovatelé |
+| 17 | Vypršela platnost žádosti pro *[access_package]* . | Tento e-mail se pošle druhému schvalovateli nebo alternativním schvalovatelům po vypršení platnosti žádosti. | Druhý schvalovatel, fáze 2 – alternativní schvalovatelé |
+| 18 | Teď máte přístup k *[access_package]* . | Tento e-mail se pošle koncovým uživatelům, aby mohli začít používat svůj přístup. | Žadatele |
+| 19 | Rozšíří přístup pro *[access_package]* do *[Date]* . | Tento e-mail se pošle koncovým uživatelům předtím, než vyprší platnost přístupu. | Žadatele |
+| 20 | Pro *[access_package]* skončil přístup. | Tento e-mail se pošle koncovým uživatelům po vypršení platnosti přístupu. | Žadatele |
 
-### <a name="access-request-emails"></a>Access request emails
+### <a name="access-request-emails"></a>E-maily žádostí o přístup
 
-When a requestor submits an access request for an access package configured to require approval, all approvers added to the policy will receive an email notification with details of the request. The details in the email include: requestor's name organization, and business justification; and the requested access start and end date (if provided). The details will also include when the request was submitted and when the request will expire.
+Když žadatel pošle žádost o přístup balíčku pro přístup nakonfigurovaného tak, aby vyžadoval schválení, všichni schvalovatelé přidaní k zásadě obdrží e-mailové oznámení s podrobnostmi o žádosti. Mezi podrobnosti v e-mailu patří: název organizace žadatele a obchodní odůvodnění; a požadovaný počáteční a koncové datum přístupu (Pokud je k dispozici). Podrobnosti budou také zahrnuty při odeslání žádosti a vypršení platnosti žádosti.
 
-The email includes a link approvers can click on to go to My Access to approve or deny the access request. Here is a sample email notification that is sent to the first approver or second approver (if 2-stage approval is enabled) to complete an access request:
+E-mail obsahuje schvalovatele odkazů, kteří můžou kliknout na odkaz a přejít na tento přístup ke schválení nebo zamítnutí žádosti o přístup. Tady je ukázka e-mailového oznámení, které se pošle prvnímu schvalovateli nebo druhému schvalovateli (Pokud je povolené schválení ve dvou fázích) k dokončení žádosti o přístup:
 
-![Approve request to access package email](./media/entitlement-management-shared/approver-request-email.png)
+![Schválit žádost o přístup k e-mailu balíčku](./media/entitlement-management-shared/approver-request-email.png)
 
-Approvers can also receive a reminder email. The email asks the approver to make a decision on the request. Here is a sample email notification the approver receives to remind them to take action:
+Schvalovatelé také mohou dostávat e-maily s připomenutím. E-mail požádá schvalovatele, aby na žádost narozhodl rozhodnutí. Tady je ukázka e-mailového oznámení, které schvalovatel obdrží, aby se připomenout, aby mohli provést následující akce:
 
-![Reminder access request email](./media/entitlement-management-process/approver-access-request-reminder-email.png)
+![E-mail s požadavkem na přístup k připomenutí](./media/entitlement-management-process/approver-access-request-reminder-email.png)
 
-### <a name="alternate-approvers-request-emails"></a>Alternate approvers request emails
+### <a name="alternate-approvers-request-emails"></a>Alternativní e-maily žádosti o další schvalovatele
 
-If the alternate approvers setting is enabled and the request is still pending, it will be forwarded. Alternate approvers will receive an email to approve or deny the request. You can enable alternate approvers in stage-1 and stage-2. Here is a sample email of the notification the alternate approvers receive:
+Pokud je povolené nastavení alternativní schvalovatelé a požadavek pořád čeká na vyřízení, přepošle se. Alternativní schvalovatelé obdrží e-mail ke schválení nebo zamítnutí žádosti. Můžete povolit alternativní schvalovatele ve fázi 1 a fázi 2. Zde je příklad e-mailu oznámení, které alternativní schvalovatelé obdrží:
 
-![Alternate approvers request email](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
+![E-mail s žádostí o alternativní schvalovatele](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
 
-Both the approver and the alternate approvers can approve or deny the request.
+Schvalovatel i alternativní schvalovatelé můžou žádost schválit nebo zamítnout.
 
-### <a name="approved-or-denied-emails"></a>Approved or denied emails
+### <a name="approved-or-denied-emails"></a>Schválené nebo zakázané e-maily
 
- When an approver receives an access request submitted by a requestor, they can approve or deny the access request. The approver needs to add a business justification for their decision. Here is a sample email sent to the approvers and alternate approvers after a request is approved:
+ Když schvalovatel obdrží žádost o přístup odeslanou žadatelem, může žádost o přístup schválit nebo zamítnout. Schvalovatel potřebuje k rozhodnutí přidat obchodní odůvodnění. Tady je ukázka e-mailu odeslané schvalovatelům a alternativním schvalovatelům po schválení žádosti:
 
-![Approved request to access package email](./media/entitlement-management-process/approver-request-email-approved.png)
+![Schválená žádost o přístup k e-mailu balíčku](./media/entitlement-management-process/approver-request-email-approved.png)
 
-When an access request is approved, and their access is provisioned, an email notification is sent to the requestor that they now have access to the access package. Here is a sample email notification that is sent to a requestor when they're granted access to an access package:
+Po schválení žádosti o přístup a jejím přístupu se žadateli pošle e-mailové oznámení, že teď mají přístup k balíčku přístupu. Tady je ukázka e-mailového oznámení, které se pošle žadateli, když jim udělí přístup k balíčku pro přístup:
 
-![Approved requestor access request email](./media/entitlement-management-process/requestor-email-approved.png)
+![E-mail žádosti o přístup schváleného žadatele](./media/entitlement-management-process/requestor-email-approved.png)
 
-When an access request is denied, an email notification is sent to the requestor. Here is a sample email notification that is sent to a requestor when their access request is denied:
+Po odepření žádosti o přístup se žadateli pošle e-mailové oznámení. Tady je ukázka e-mailového oznámení, které se pošle žadateli při odepření žádosti o přístup:
 
-![Requestor request denied email](./media/entitlement-management-process/requestor-email-denied.png)
+![Žádost žadatele o zamítnutí e-mailu](./media/entitlement-management-process/requestor-email-denied.png)
 
-### <a name="2-stage-approval-access-request-emails"></a>2-stage approval access request emails
+### <a name="2-stage-approval-access-request-emails"></a>2\. – e-maily žádostí o přístup k schválení
 
-If 2-stage approval is enabled, at least two approvers must approve the request, one from each stage, before the requestor can receive access.
+Pokud je povoleno schválení ve dvou fázích, musí alespoň dva schvalovatelé žádost schválit, jednu z každé fáze, aby žadateli mohli získat přístup.
 
-During stage-1, the first approver will receive the access request email and make a decision. If they approve the request, all first approvers and alternate approvers in stage-1 (if escalation is enabled) will receive notification that stage-1 is complete. Here is a sample email of the notification that is sent when stage-1 is complete:
+V průběhu fáze 1 dostane první schvalovatel e-mail s požadavkem na přístup a provede rozhodnutí. Pokud žádost schválí, všichni první schvalovatelé a alternativní schvalovatelé ve fázi 1 (Pokud je povolená eskalace) obdrží oznámení o dokončení fáze 1. Zde je příklad e-mailu s oznámením, které je odesláno, když je dokončena fáze-1:
 
-![2-stage access request email](./media/entitlement-management-process/approver-request-email-2stage.png)
+![2\. e-mail s požadavkem na přístup](./media/entitlement-management-process/approver-request-email-2stage.png)
 
-After the first or alternate approvers approve the request in stage-1, stage-2 begins. During stage-2, the second approver will receive the access request notification email. After the second approver or alternate approvers in stage-2 (if escalation is enabled) decide to approve or deny the request, notification emails are sent to the first and second approvers, and all alternate approvers in stage-1 and stage-2, as well as the requestor.
+Po schválení prvního nebo alternativního schvalovatele žádost ve fázi 1, fáze-2 začne. V průběhu fáze 2 dostane druhý schvalovatel e-mail s oznámením o žádosti o přístup. Po druhém schvalovateli nebo alternativním schvalovateli ve fázi 2 (Pokud je povolená eskalace) se rozhodne schválit nebo odmítnout žádost, e-maily oznámení se odešlou první a druhé schvalovateli a všem alternativním schvalovatelům ve fázi 1 a fázi 2 a také žadateli.
 
-### <a name="expired-access-request-emails"></a>Expired access request emails
+### <a name="expired-access-request-emails"></a>E-mail s žádostí o přístup s vypršenou platností
 
-Access requests could expire if no approver has approved or denied the request. 
+Žádosti o přístup můžou vypršet, pokud žádný schvalovatel žádost neschválil nebo nezamítl. 
 
-When the request reaches its configured expiration date and expires, it can no longer be approved or denied by the approvers. Here is a sample email of the notification sent to all of the first, second (if 2-stage approval is enabled), and alternate approvers:
+Když požadavek dosáhne svého nakonfigurovaného data a vypršení platnosti, už ho schvalovatelé nemůžou schválit nebo odepřít. Tady je ukázkový e-mail s oznámením odeslaným do všech prvních sekund (Pokud je povolené schválení ve dvou fázích) a alternativní schvalovatelé:
 
-![Approvers expired access request email](./media/entitlement-management-process/approver-request-email-expired.png)
+![E-mail žádosti o přístup pro schvalovatele vypršel](./media/entitlement-management-process/approver-request-email-expired.png)
 
-An email notification is also sent to the requestor, notifying them that their access request has expired, and that they need to resubmit the access request. The following diagram shows the experience of the requestor and the email notifications they receive when they request to extend access:
+Žadateli se také pošle e-mailové oznámení, které jim oznámí, že vypršela platnost žádosti o přístup a že musí žádost o přístup znovu odeslat. Na následujícím obrázku vidíte prostředí žadatele a e-mailová oznámení, která obdrží, když požadují rozšiřování přístupu:
 
-![Requestor extend access process flow](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
+![Postup rozšiřování procesu přístupu žadatele](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
 
-Here is a sample email notification that is sent to a requestor when their access request has expired:
+Tady je ukázka e-mailového oznámení, které se pošle žadateli v případě vypršení platnosti žádosti o přístup:
 
-![Requestor expired access request email](./media/entitlement-management-process/requestor-email-request-expired.png)
+![E-mail s požadavkem na přístup žadatele vypršel](./media/entitlement-management-process/requestor-email-request-expired.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Request access to an access package](entitlement-management-request-access.md)
-- [Approve or deny access requests](entitlement-management-request-approve.md)
+- [Vyžádat přístup k balíčku přístupu](entitlement-management-request-access.md)
+- [Schválení nebo zamítnutí žádostí o přístup](entitlement-management-request-approve.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple - Back up workload virtual machines on Private Cloud using Veeam
-description: Describes how you can back up your virtual machines that are running in an Azure-based CloudSimple Private Cloud using Veeam B&R 9.5
+title: Řešení Azure VMware podle CloudSimple – zálohování virtuálních počítačů s úlohami v privátním cloudu pomocí Veeam
+description: Popisuje, jak můžete zálohovat virtuální počítače, které běží v privátním cloudu CloudSimple založeném na Azure pomocí Veeam B & R 9,5.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -15,164 +15,164 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232363"
 ---
-# <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Back up workload VMs on CloudSimple Private Cloud using Veeam B&R
+# <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Zálohování virtuálních počítačů s úlohami v privátním cloudu CloudSimple pomocí Veeam B & R
 
-This guide describes how you can back up your virtual machines that are running in an Azure-based CloudSimple Private Cloud by using Veeam B&R 9.5.
+Tato příručka popisuje, jak můžete zálohovat virtuální počítače, které běží v privátním cloudu CloudSimple založeném na Azure, pomocí Veeam B & R 9,5.
 
-## <a name="about-the-veeam-back-up-and-recovery-solution"></a>About the Veeam back up and recovery solution
+## <a name="about-the-veeam-back-up-and-recovery-solution"></a>Řešení zálohování a obnovení Veeam
 
-The Veeam solution includes the following components.
+Řešení Veeam zahrnuje následující součásti.
 
-**Backup Server**
+**Záložní server**
 
-The backup server is a Windows server (VM) that serves as the control center for Veeam and performs these functions: 
+Záložní server je Windows Server (VM), který slouží jako řídicí centrum pro Veeam a provádí tyto funkce: 
 
-* Coordinates backup, replication, recovery verification, and restore tasks
-* Controls job scheduling and resource allocation
-* Allows you to set up and manage backup infrastructure components and specify global settings for the backup infrastructure
+* Koordinuje úlohy zálohování, replikace, ověřování obnovení a obnovení.
+* Řídí plánování úloh a přidělování prostředků.
+* Umožňuje nastavit a spravovat komponenty infrastruktury zálohování a zadat globální nastavení pro infrastrukturu zálohování.
 
-**Proxy Servers**
+**Proxy servery**
 
-Proxy servers are installed between the backup server and other components of the backup infrastructure. They manage the following functions:
+Mezi záložním serverem a dalšími součástmi infrastruktury zálohování se nainstalují proxy servery. Spravují následující funkce:
 
-* Retrieval of VM data from the production storage
+* Načtení dat virtuálního počítače z produkčního úložiště
 * Komprese
 * Odstranění duplicit
 * Šifrování
-* Transmission of data to the backup repository
+* Přenos dat do úložiště záloh
 
-**Backup repository**
+**Úložiště záloh**
 
-The backup repository is the storage location where Veeam keeps backup files, VM copies, and metadata for replicated VMs.  The repository can be a Windows or Linux server with local disks (or mounted NFS/SMB) or a hardware storage deduplication appliance.
+Úložiště zálohování je umístění úložiště, ve kterém Veeam udržuje záložní soubory, kopie virtuálních počítačů a metadata replikovaných virtuálních počítačů.  Úložiště může být server s Windows nebo Linux s místními disky (nebo připojeným systémem souborů NFS/SMB) nebo zařízením pro odstranění duplicitních dat v hardwarovém úložišti.
 
-### <a name="veeam-deployment-scenarios"></a>Veeam deployment scenarios
-You can leverage Azure to provide a backup repository and a storage target for long term backup and archiving. All the backup network traffic between VMs in the Private Cloud and the backup repository in Azure travels over a high bandwidth, low latency link. Replication traffic across regions travels over the internal Azure backplane network, which lowers bandwidth costs for users.
+### <a name="veeam-deployment-scenarios"></a>Scénáře nasazení Veeam
+Azure můžete využít k poskytnutí úložiště zálohování a cíle úložiště pro dlouhodobé zálohování a archivaci. Veškerá síťová přenosová data mezi virtuálními počítači v privátním cloudu a úložištěm záloh v Azure se přenáší přes propojení s velkou šířkou pásma a nízkou latencí. Provoz replikace mezi oblastmi se cestuje přes interní síť Azure pro replánování, která snižuje náklady na šířku pásma pro uživatele.
 
-**Basic deployment**
+**Základní nasazení**
 
-For environments with less than 30 TB to back up, CloudSimple recommends the following configuration:
+Pro prostředí, která mají k zálohování méně než 30 TB, CloudSimple doporučuje následující konfiguraci:
 
-* Veeam backup server and proxy server installed on the same VM in the Private Cloud.
-* A Linux based primary backup repository in Azure configured as a target for backup jobs.
-* `azcopy` used to copy the data from the primary backup repository to an Azure blob container that is replicated to another region.
+* Veeam Backup Server a proxy server nainstalovaná na stejném virtuálním počítači v privátním cloudu.
+* Primární úložiště záloh založené na systému Linux v Azure nakonfigurované jako cíl pro úlohy zálohování.
+* `azcopy` se používá ke kopírování dat z primárního úložiště záloh do kontejneru objektů BLOB v Azure, který se replikuje do jiné oblasti.
 
-![Basic deployment scenarios](media/veeam-basicdeployment.png)
+![Základní scénáře nasazení](media/veeam-basicdeployment.png)
 
-**Advanced deployment**
+**Pokročilé nasazení**
 
-For environments with more than 30 TB to back up, CloudSimple recommends the following configuration:
+Pro prostředí, která mají víc než 30 TB pro zálohování, CloudSimple doporučuje následující konfiguraci:
 
-* One proxy server per node in the vSAN cluster, as recommended by Veeam.
-* Windows based primary backup repository in the Private Cloud to cache five days of data for fast restores.
-* Linux backup repository in Azure as a target for backup copy jobs for longer duration retention. This repository should be configured as a scale-out backup repository.
-* `azcopy` used to copy the data from the primary backup repository to an Azure blob container that is replicated to another region.
+* Jednu proxy server na uzel v clusteru síti vSAN, jak to doporučila Veeam.
+* Primární úložiště záloh založené na Windows v privátním cloudu pro ukládání dat do mezipaměti pro rychlé obnovení.
+* Záložní úložiště pro Linux v Azure jako cíl pro úlohy zálohování s delší dobou trvání. Toto úložiště by mělo být nakonfigurované jako úložiště zálohování se škálováním na více instancí.
+* `azcopy` se používá ke kopírování dat z primárního úložiště záloh do kontejneru objektů BLOB v Azure, který se replikuje do jiné oblasti.
 
-![Basic deployment scenarios](media/veeam-advanceddeployment.png)
+![Základní scénáře nasazení](media/veeam-advanceddeployment.png)
 
-In the previous figure, notice that the backup proxy is a VM with Hot Add access to workload VM disks on the vSAN datastore. Veeam uses Virtual Appliance backup proxy transport mode for vSAN.
+Na předchozím obrázku si všimněte, že záložní proxy je virtuální počítač s nástrojem Hot Add Access pro úlohy virtuálních počítačů na síti vSAN úložiště dat. Veeam používá transportní režim proxy serveru pro zálohování virtuálních zařízení pro síti vSAN.
 
-## <a name="requirements-for-veeam-solution-on-cloudsimple"></a>Requirements for Veeam solution on CloudSimple
+## <a name="requirements-for-veeam-solution-on-cloudsimple"></a>Požadavky na řešení Veeam na CloudSimple
 
-The Veeam solution requires you to do the following:
+Řešení Veeam vyžaduje, abyste provedete následující kroky:
 
-* Provide your own Veeam licenses.
-* Deploy and manage Veeam to backup the workloads running in the CloudSimple Private Cloud.
+* Zadejte vlastní licence Veeam.
+* Nasaďte a spravujte Veeam a zálohujte úlohy spuštěné v privátním cloudu CloudSimple.
 
-This solution provides you with full control over the Veeam backup tool and offers the choice to use the native Veeam interface or the Veeam vCenter plug-in to manage VM backup jobs.
+Toto řešení poskytuje úplnou kontrolu nad nástrojem Veeam Backup a nabízí možnost použít nativní rozhraní Veeam nebo modul plug-in Veeam vCenter ke správě úloh zálohování virtuálních počítačů.
 
-If you are an existing Veeam user, you can skip the section on Veeam Solution Components and directly proceed to [Veeam Deployment Scenarios](#veeam-deployment-scenarios).
+Pokud jste existující uživatel Veeam, můžete přeskočit oddíl na součásti řešení Veeam a přímo přejít ke [scénářům nasazení Veeam](#veeam-deployment-scenarios).
 
-## <a name="install-and-configure-veeam-backups-in-your-cloudsimple-private-cloud"></a>Install and configure Veeam backups in your CloudSimple Private Cloud
+## <a name="install-and-configure-veeam-backups-in-your-cloudsimple-private-cloud"></a>Instalace a konfigurace záloh Veeam v privátním cloudu CloudSimple
 
-The following sections describe how to install and configure a Veeam backup solution for your CloudSimple Private Cloud.
+Následující části popisují, jak nainstalovat a nakonfigurovat řešení zálohování Veeam pro privátní cloud CloudSimple.
 
-The deployment process consists of these steps:
+Proces nasazení se skládá z těchto kroků:
 
-1. [vCenter UI: Set up infrastructure services in your Private Cloud](#vcenter-ui-set-up-infrastructure-services-in-your-private-cloud)
-2. [CloudSimple portal: Set up Private Cloud networking for Veeam](#cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam)
-3. [CloudSimple portal: Escalate Privileges](#cloudsimple-private-cloud-escalate-privileges-for-cloudowner)
-4. [Azure portal: Connect your virtual network to the Private Cloud](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
-5. [Azure portal: Create a backup repository in Azure](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
-6. [Azure portal: Configure Azure blob storage for long term data retention](#configure-azure-blob-storage-for-long-term-data-retention)
-7. [vCenter UI of Private Cloud: Install Veeam B&R](#vcenter-console-of-private-cloud-install-veeam-br)
-8. [Veeam Console: Configure Veeam Backup & Recovery software](#veeam-console-install-veeam-backup-and-recovery-software)
-9. [CloudSimple portal: Set up Veeam access and de-escalate privileges](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
+1. [uživatelské rozhraní vCenter: nastavení služby infrastruktury ve vašem privátním cloudu](#vcenter-ui-set-up-infrastructure-services-in-your-private-cloud)
+2. [Portál CloudSimple: nastavení sítě privátního cloudu pro Veeam](#cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam)
+3. [Portál CloudSimple: eskalace oprávnění](#cloudsimple-private-cloud-escalate-privileges-for-cloudowner)
+4. [Azure Portal: připojení virtuální sítě k privátnímu cloudu](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+5. [Azure Portal: vytvoření úložiště záloh v Azure](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+6. [Azure Portal: konfigurace úložiště objektů BLOB v Azure pro dlouhodobé uchovávání dat](#configure-azure-blob-storage-for-long-term-data-retention)
+7. [uživatelské rozhraní vCenter privátního cloudu: instalace Veeam B & R](#vcenter-console-of-private-cloud-install-veeam-br)
+8. [Konzola Veeam: konfigurace softwaru Veeam Backup pro obnovení &](#veeam-console-install-veeam-backup-and-recovery-software)
+9. [Portál CloudSimple: nastavení přístupu Veeam a oprávnění ke zrušení eskalace](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
 
 ### <a name="before-you-begin"></a>Než začnete
 
-The following are required before you begin Veeam deployment:
+Než začnete Veeam nasazení, jsou potřeba následující:
 
-* An Azure subscription owned by you
-* A pre-created Azure resource group
-* An Azure virtual network in your subscription
-* An Azure storage account
-* A [Private Cloud](create-private-cloud.md) created using the CloudSimple portal.  
+* Předplatné Azure, které vlastníte
+* Předem vytvořená skupina prostředků Azure
+* Virtuální síť Azure ve vašem předplatném
+* Účet úložiště Azure
+* [Privátní cloud](create-private-cloud.md) vytvořený pomocí portálu CloudSimple.  
 
-The following items are needed during the implementation phase:
+Během fáze implementace jsou potřeba tyto položky:
 
-* VMware templates for Windows to install Veeam (such as Windows Server 2012 R2 - 64 bit image)
-* One available VLAN identified for the backup network
-* CIDR of the subnet to be assigned to the backup network
-* Veeam 9.5 u3 installable media (ISO) uploaded to the vSAN datastore of the Private Cloud
+* Šablony VMware pro Windows k instalaci Veeam (například Windows Server 2012 R2 – 64 bitová kopie)
+* Zjištěna jedna dostupná síť VLAN pro záložní síť
+* CIDR podsítě, která se má přiřadit k síti zálohování
+* Veeam 9,5 U3 installed Media (ISO) nahrané do úložiště dat síti vSAN privátního cloudu
 
-### <a name="vcenter-ui-set-up-infrastructure-services-in-your-private-cloud"></a>vCenter UI: Set up infrastructure services in your Private Cloud
+### <a name="vcenter-ui-set-up-infrastructure-services-in-your-private-cloud"></a>uživatelské rozhraní vCenter: nastavení služby infrastruktury ve vašem privátním cloudu
 
-Configure infrastructure services in the Private Cloud to make it easy to manage your workloads and tools.
+Konfigurujte služby infrastruktury v privátním cloudu, abyste usnadnili správu úloh a nástrojů.
 
-* You can add an external identity provider as described in [Set up vCenter identity sources to use Active Directory](set-vcenter-identity.md) if any of the following apply:
+* Můžete přidat externího poskytovatele identity, jak je popsáno v části [Nastavení zdrojů identity vCenter na používání služby Active Directory](set-vcenter-identity.md) , pokud platí některá z následujících možností:
 
-  * You want to identify users from your on-premises Active Directory (AD) in your Private Cloud.
-  * You want to set up an AD in your Private Cloud for all users.
-  * You want to use Azure AD.
-* To provide IP address lookup, IP address management, and name resolution services for your workloads in the Private Cloud, set up a DHCP and DNS server as described in [Set up DNS and DHCP applications and workloads in your CloudSimple Private Cloud](dns-dhcp-setup.md).
+  * Chcete identifikovat uživatele z místní služby Active Directory (AD) ve vašem privátním cloudu.
+  * Chcete nastavit službu AD v privátním cloudu pro všechny uživatele.
+  * Chcete používat Azure AD.
+* Pokud chcete pro vaše úlohy v privátním cloudu poskytnout vyhledávání IP adres, správu IP adres a služby překladu IP adres, nastavte server DHCP a DNS, jak je popsáno v tématu [nastavení aplikací DNS a DHCP a úloh v privátním cloudu CloudSimple](dns-dhcp-setup.md).
 
-### <a name="cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam"></a>CloudSimple Private Cloud: Set up Private Cloud networking for Veeam
+### <a name="cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam"></a>Privátní cloud CloudSimple: nastavení sítě privátního cloudu pro Veeam
 
-Access the CloudSimple portal to set up Private Cloud networking for the Veeam solution.
+Přístup k portálu CloudSimple k nastavení sítě privátního cloudu pro řešení Veeam.
 
-Create a VLAN for the backup network and assign it a subnet CIDR. For instructions, see [Create and manage VLANs/Subnets](create-vlan-subnet.md).
+Vytvořte síť VLAN pro záložní síť a přiřaďte ji k podsíti CIDR. Pokyny najdete v tématu [Vytvoření a správa sítí VLAN a podsítí](create-vlan-subnet.md).
 
-Create firewall rules between the management subnet and the backup network to allow network traffic on ports used by Veeam. See the Veeam topic [Used Ports](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95). For instructions on firewall rule creation, see [Set up firewall tables and rules](firewall.md).
+Vytvořte pravidla brány firewall mezi podsítí pro správu a sítí zálohování, aby se povolil síťový provoz na portech, které používá Veeam. Přečtěte si téma Veeam [použité porty](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95). Pokyny k vytvoření pravidla brány firewall najdete v tématu [Nastavení tabulek a pravidel brány firewall](firewall.md).
 
-The following table provides a port list.
+V následující tabulce je uveden seznam portů.
 
-| Icon | Popis | Icon | Popis |
+| Ikona | Popis | Ikona | Popis |
 | ------------ | ------------- | ------------ | ------------- |
-| Backup Server  | vCenter  | HTTPS / TCP  | 443 |
-| Backup Server <br> *Required for deploying Veeam Backup & Replication components* | Backup Proxy  | TCP/UDP  | 135, 137 to 139 and 445 |
+| Backup Server  | vCenter  | PROTOKOL HTTPS/TCP  | 443 |
+| Backup Server <br> *Vyžaduje se pro nasazení součástí Veeam Backup & pro replikaci.* | Záložní proxy server  | TCP/UDP  | 135, 137 až 139 a 445 |
     | Backup Server   | DNS  | UDP  | 53  | 
-    | Backup Server   | Veeam Update Notification Server  | TCP  | 80  | 
-    | Backup Server   | Veeam License Update Server  | TCP  | 443  | 
-    | Backup Proxy   | vCenter |   |   | 
-    | Backup Proxy  | Linux Backup Repository   | TCP  | 22  | 
-    | Backup Proxy  | Windows Backup Repository  | TCP  | 49152 - 65535   | 
-    | Backup Repository  | Backup Proxy  | TCP  | 2500 -5000  | 
-    | Source Backup Repository<br> *Used for backup copy jobs*  | Target Backup Repository  | TCP  | 2500 - 5000  | 
+    | Backup Server   | Veeam aktualizace serveru oznámení  | TCP  | 80  | 
+    | Backup Server   | Server aktualizace licence Veeam  | TCP  | 443  | 
+    | Záložní proxy server   | vCenter |   |   | 
+    | Záložní proxy server  | Záložní úložiště pro Linux   | TCP  | 22  | 
+    | Záložní proxy server  | Úložiště záloh Windows  | TCP  | 49152 – 65535   | 
+    | Úložiště záloh  | Záložní proxy server  | TCP  | 2500 – 5000  | 
+    | Zdrojové úložiště záloh<br> *Používá se pro úlohy záložního kopírování.*  | Cílové úložiště zálohování  | TCP  | 2500 – 5000  | 
 
-Create firewall rules between the workload subnet and the backup network as described in [Set up firewall tables and rules](firewall.md).  For application aware backup and restore, [additional ports](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95) must be opened on the workload VMs that host specific applications.
+Vytvořte pravidla brány firewall mezi podsítí úloh a záložní sítí, jak je popsáno v tématu [Nastavení tabulek a pravidel brány firewall](firewall.md).  Pro zálohování a obnovení, které podporuje aplikace, je nutné otevřít [Další porty](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95) na virtuálních počítačích úloh, které hostují konkrétní aplikace.
 
-By default, CloudSimple provides a 1Gbps ExpressRoute link. For larger environment sizes, a higher bandwidth link may be required. Contact Azure support for more information about higher bandwidth links.
+Ve výchozím nastavení CloudSimple poskytuje odkaz 1Gb/s ExpressRoute. U větších velikostí prostředí se může vyžadovat odkaz na větší šířku pásma. Pokud chcete získat další informace o propojeních s větší šířkou pásma, kontaktujte podporu Azure.
 
-To continue the setup, you need the authorization key and peer circuit URI and access to your Azure Subscription.  This information is available on the Virtual Network Connection page in the CloudSimple portal. For instructions, see [Obtain peering information for Azure virtual network to CloudSimple connection](virtual-network-connection.md). If you have any trouble obtaining the information, [contact support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Abyste mohli pokračovat v instalaci, budete potřebovat autorizační klíč a identifikátor URI partnerského okruhu a přístup k vašemu předplatnému Azure.  Tyto informace jsou k dispozici na stránce Virtual Network připojení na portálu CloudSimple. Pokyny najdete v tématu [získání informací o partnerském vztahu pro službu Azure Virtual Network do CloudSimple připojení](virtual-network-connection.md). Pokud máte potíže s získáním informací, obraťte se na [podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-### <a name="cloudsimple-private-cloud-escalate-privileges-for-cloudowner"></a>CloudSimple Private Cloud: Escalate privileges for cloudowner
+### <a name="cloudsimple-private-cloud-escalate-privileges-for-cloudowner"></a>Privátní cloud CloudSimple: zvýšení oprávnění pro cloudowner
 
-The default 'cloudowner' user doesn't have sufficient privileges in the Private Cloud vCenter to install VEEAM, so the user's vCenter privileges must be escalated. For more information, see [Escalate privileges](escalate-private-cloud-privileges.md).
+Výchozí uživatel cloudowner nemá dostatečná oprávnění v privátním cloudu vCenter pro instalaci VEEAM, takže musí být namířená oprávnění pro vCenter uživatele. Další informace najdete v tématu [Eskalace oprávnění](escalate-private-cloud-privileges.md).
 
-### <a name="azure-portal-connect-your-virtual-network-to-the-private-cloud"></a>Azure portal: Connect your virtual network to the Private Cloud
+### <a name="azure-portal-connect-your-virtual-network-to-the-private-cloud"></a>Azure Portal: připojení virtuální sítě k privátnímu cloudu
 
-Connect your virtual network to the Private Cloud by following the instructions in [Azure Virtual Network Connection using ExpressRoute](azure-expressroute-connection.md).
+Připojte virtuální síť k privátnímu cloudu podle pokynů v tématu [připojení k Azure Virtual Network pomocí nástroje ExpressRoute](azure-expressroute-connection.md).
 
-### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure portal: Create a backup repository VM
+### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure Portal: Vytvoření virtuálního počítače úložiště zálohování
 
-1. Create a standard D2 v3 VM with (2 vCPUs and 8 GB memory).
-2. Select the CentOS 7.4 based image.
-3. Configure a network security group (NSG) for the VM. Verify that the VM does not have a public IP address and is not reachable from the public internet.
-4. Create a username and password based user account for the new VM. For instructions, see [Create a Linux virtual machine in the Azure portal](../virtual-machines/linux/quick-create-portal.md).
-5. Create 1x512 GiB standard HDD and attach it to the repository VM.  For instructions, see [How to attach a managed data disk to a Windows VM in the Azure portal](../virtual-machines/windows/attach-managed-disk-portal.md).
-6. [Create an XFS volume on the managed disk](https://www.digitalocean.com/docs/volumes/how-to/). Log in to the VM using the previously mentioned credentials. Execute the following script to create a logical volume, add the disk to it, create an XFS filesystem [partition](https://www.digitalocean.com/docs/volumes/how-to/partition/) and [mount](https://www.digitalocean.com/docs/volumes/how-to/mount/) the partition under the /backup1 path.
+1. Vytvořte standardní virtuální počítač D2 v3 s (2 vCPU a 8 GB paměti).
+2. Vyberte bitovou kopii založenou na CentOS 7,4.
+3. Nakonfigurujte skupinu zabezpečení sítě (NSG) pro virtuální počítač. Ověřte, že virtuální počítač nemá veřejnou IP adresu a není dosažitelný z veřejného Internetu.
+4. Vytvořte uživatelský účet založený na uživatelských jménech a hesle pro nový virtuální počítač. Pokyny najdete v tématu [Vytvoření virtuálního počítače se systémem Linux v Azure Portal](../virtual-machines/linux/quick-create-portal.md).
+5. Vytvořte 1x512 GiB Standard HDD a připojte ho k virtuálnímu počítači úložiště.  Pokyny najdete v tématu [Postup připojení spravovaného datového disku k virtuálnímu počítači s Windows v Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md).
+6. [Vytvořte na spravovaném disku svazek XFS](https://www.digitalocean.com/docs/volumes/how-to/). Přihlaste se k virtuálnímu počítači pomocí dříve uvedených přihlašovacích údajů. Spuštěním následujícího skriptu vytvořte logický svazek, přidejte do něj disk, vytvořte [oddíl](https://www.digitalocean.com/docs/volumes/how-to/partition/) systému souborů XFS a [Připojte](https://www.digitalocean.com/docs/volumes/how-to/mount/) oddíl pod cestu/Backup1.
 
-    Example script:
+    Ukázkový skript:
 
     ```
     sudo pvcreate /dev/sdc
@@ -185,18 +185,18 @@ Connect your virtual network to the Private Cloud by following the instructions 
     sudo mount -t xfs /dev/mapper/backup1-backup1 /backup1
     ```
 
-7. Expose /backup1 as an NFS mount point to the Veeam backup server that is running in the Private Cloud. For instructions, see the Digital Ocean article [How To Set Up an NFS Mount on CentOS 6](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6). Use this NFS share name when you configure the backup repository in the Veeam backup server.
+7. Zveřejněte/Backup1 jako přípojný bod systému souborů NFS na záložní server Veeam, který běží v privátním cloudu. Pokyny najdete v článku o digitálním oceánu, [jak nastavit připojení NFS na CentOS 6](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6). Tento název sdílené složky systému souborů NFS použijte při konfiguraci úložiště zálohování na serveru Veeam Backup.
 
-8. Configure filtering rules in the NSG for the backup repository VM to explicitly allow all network traffic to and from the VM.
+8. Nakonfigurujte pravidla filtrování v NSG pro virtuální počítač úložiště zálohování tak, aby explicitně povolovala veškerý síťový provoz do a z virtuálního počítače.
 
 > [!NOTE]
-> Veeam Backup & Replication uses the SSH protocol to communicate with Linux backup repositories and requires the SCP utility on Linux repositories. Verify that the SSH daemon is properly configured and that SCP is available on the Linux host.
+> Veeam Backup & replikace používá protokol SSH ke komunikaci s úložišti záloh Linux a vyžaduje nástroj SCP v úložištích se systémem Linux. Ověřte, zda je démon procesu SSH správně nakonfigurován a zda je spojovací bod služby k dispozici na hostiteli se systémem Linux.
 
-### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Configure Azure blob storage for long term data retention
+### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Konfigurace úložiště objektů BLOB v Azure pro dlouhodobé uchovávání dat
 
-1. Create a general purpose storage account (GPv2) of standard type and a blob container as described in the Microsoft video [Getting Started with Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage).
-2. Create an Azure storage container, as described in the [Create Container](https://docs.microsoft.com/rest/api/storageservices/create-container) reference.
-2. Download the `azcopy` command line utility for Linux from Microsoft. You can use the following commands in the bash shell in CentOS 7.5.
+1. Vytvořte účet úložiště pro obecné účely (GPv2) standardního typu a kontejner objektů blob, jak je popsáno v části Microsoft video [Začínáme with Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage).
+2. Vytvořte kontejner úložiště Azure, jak je popsáno v tématu [Vytvoření](https://docs.microsoft.com/rest/api/storageservices/create-container) odkazu na kontejner.
+2. Stáhněte si nástroj `azcopy` příkazového řádku pro Linux od Microsoftu. V prostředí bash v CentOS 7,5 můžete použít následující příkazy.
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -206,100 +206,100 @@ Connect your virtual network to the Private Cloud by following the instructions 
     sudo yum -y install icu
     ```
 
-3. Use the `azcopy` command to copy backup files to and from the blob container.  See [Transfer data with AzCopy on Linux](../storage/common/storage-use-azcopy-linux.md) for detailed commands.
+3. Pomocí příkazu `azcopy` můžete kopírovat záložní soubory do kontejneru objektů BLOB a z něj.  Podrobné příkazy najdete v tématu [přenos dat pomocí AzCopy v systému Linux](../storage/common/storage-use-azcopy-linux.md) .
 
-### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>vCenter console of Private Cloud: Install Veeam B&R
+### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>Konzola vCenter pro privátní cloud: Nainstalujte Veeam B & R
 
-Access vCenter from your Private Cloud to create a Veeam service account, install Veeam B&R 9.5, and configure Veeam using the service account.
+Přístup k vCenter z vašeho privátního cloudu pro vytvoření účtu služby Veeam, nainstalujte Veeam B & R 9,5 a nakonfigurujte Veeam pomocí účtu služby.
 
-1. Create a new role named ‘Veeam Backup Role’ and assign it necessary permissions as recommended by Veeam. For details see the Veeam topic [Required Permissions](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95).
-2. Create a new ‘Veeam User Group’ group in vCenter and assign it the ‘Veeam Backup Role’.
-3. Create a new ‘Veeam Service Account’ user and add it to the ‘Veeam User Group’.
+1. Vytvořte novou roli s názvem Veeam Backup role a přiřaďte jí potřebná oprávnění, která doporučila Veeam. Podrobnosti najdete v tématu Veeam s [požadovanými oprávněními](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95).
+2. Vytvořte novou skupinu Veeam User Group v vCenter a přiřaďte ji k roli zálohování Veeam.
+3. Vytvořte nového uživatele účtu služby Veeam a přidejte ho do skupiny uživatelů Veeam.
 
-    ![Creating a Veeam service account](media/veeam-vcenter01.png)
+    ![Vytvoření účtu služby Veeam](media/veeam-vcenter01.png)
 
-4. Create a distributed port group in vCenter using the backup network VLAN. For details, view the VMware video [Creating a Distributed Port Group in the vSphere Web Client](https://www.youtube.com/watch?v=wpCd5ZbPOpA).
-5. Create the VMs for the Veeam backup and proxy servers in vCenter as per the [Veeam system requirements](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95). You can use Windows 2012 R2 or Linux. For more information see [Requirements for using Linux backup repositories](https://www.veeam.com/kb2216).
-6. Mount the installable Veeam ISO as a CDROM device in the Veeam backup server VM.
-7. Using an RDP session to the Windows 2012 R2 machine (the target for the Veeam installation), [install Veeam B&R 9.5u3](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95) in a Windows 2012 R2 VM.
-8. Find the internal IP address of the Veeam backup server VM and configure the IP address to be static in the DHCP server. The exact steps required to do this depend on the DHCP server. As an example, the Netgate article <a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">static DHCP mappings</a> explains how to configure a DHCP server using a pfSense router.
+4. Vytvořte distribuovanou skupinu portů v vCenter pomocí sítě VLAN pro zálohování. Podrobnosti najdete v části video VMware [Vytvoření distribuované skupiny portů ve webovém klientovi vSphere](https://www.youtube.com/watch?v=wpCd5ZbPOpA).
+5. Vytvořte virtuální počítače pro zálohování Veeam a proxy servery v vCenter podle [požadavků na systém Veeam](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95). Můžete použít systém Windows 2012 R2 nebo Linux. Další informace najdete v tématu [požadavky na používání úložišť záloh pro Linux](https://www.veeam.com/kb2216).
+6. Připojte instalovatelný Veeam ISO jako zařízení CD na virtuálním počítači záložního serveru Veeam.
+7. Pomocí relace RDP na počítač s Windows 2012 R2 (cíl pro instalaci Veeam) [nainstalujte Veeam B & R 9.5 U3](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95) do virtuálního počítače s Windows 2012 R2.
+8. Najděte interní IP adresu virtuálního počítače Veeam Backup serveru a na serveru DHCP nakonfigurujte IP adresu na statickou. Přesný postup, který je nutný k tomu, závisí na serveru DHCP. Příklad: <a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">statická mapování DHCP</a> v článku NETGATE popisují, jak nakonfigurovat server DHCP pomocí směrovače pfSense.
 
-### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veeam console: Install Veeam backup and recovery software
+### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Konzola Veeam: instalace softwaru pro zálohování a obnovení Veeam
 
-Using the Veeam console, configure Veeam backup and recovery software. For details, see [Veeam Backup & Replication v9 - Installation and Deployment](https://www.youtube.com/watch?v=b4BqC_WXARk).
+Pomocí konzoly Veeam nakonfigurujte software pro zálohování a obnovení Veeam. Podrobnosti najdete v tématu [Veeam Backup & Replication v9-Installation and Deployment](https://www.youtube.com/watch?v=b4BqC_WXARk).
 
-1. Add VMware vSphere as a managed server environment. When prompted, provide  the credentials of the Veeam Service Account that you created at the beginning of [vCenter Console of Private Cloud: Install Veeam B&R](#vcenter-console-of-private-cloud-install-veeam-br).
+1. Přidejte VMware vSphere jako prostředí spravovaného serveru. Po zobrazení výzvy zadejte přihlašovací údaje k účtu služby Veeam, který jste vytvořili na začátku [konzoly vCenter v privátním cloudu: Nainstalujte Veeam B & R](#vcenter-console-of-private-cloud-install-veeam-br).
 
-    * Use default settings for load control and default advanced settings.
-    * Set the mount server location  to be the backup server.
-    * Change the configuration backup location for the Veeam server to the remote repository.
+    * Použijte výchozí nastavení pro řízení zatížení a výchozí upřesňující nastavení.
+    * Nastavte umístění serveru připojení na záložní server.
+    * Změňte umístění zálohy konfigurace serveru Veeam na vzdálené úložiště.
 
-2. Add the Linux server in Azure as the backup repository.
+2. Jako úložiště záloh přidejte server Linux do Azure.
 
-    * Use default settings for load control and for the advanced settings. 
-    * Set the mount server location to be the backup server.
-    * Change the configuration backup location for the Veeam server to the remote repository.
+    * Použijte výchozí nastavení pro řízení zatížení a pro pokročilá nastavení. 
+    * Nastavte umístění serveru připojení na záložní server.
+    * Změňte umístění zálohy konfigurace serveru Veeam na vzdálené úložiště.
 
-3. Enable encryption of configuration backup using **Home> Configuration Backup Settings**.
+3. Povolte šifrování zálohy konfigurace pomocí **nastavení zálohování konfigurace pro domovskou >** .
 
-4. Add a Windows server VM as a proxy server for VMware environment. Using ‘Traffic Rules’ for a proxy, encrypt backup data over the wire.
+4. Přidejte virtuální počítač s Windows serverem jako proxy server pro prostředí VMware. Pomocí pravidel přenosů pro proxy server Zašifrujte zálohovaná data prostřednictvím tohoto drátu.
 
-5. Configure backup jobs.
-    * To configure backup jobs, follow the instructions in [Creating a Backup Job](https://www.youtube.com/watch?v=YHxcUFEss4M).
-    * Enable encryption of backup files under **Advanced Settings > Storage**.
+5. Nakonfigurujte úlohy zálohování.
+    * Pokud chcete nakonfigurovat úlohy zálohování, postupujte podle pokynů v [tématu Vytvoření úlohy zálohování](https://www.youtube.com/watch?v=YHxcUFEss4M).
+    * V části **Upřesnit nastavení > úložiště**Povolte šifrování záložních souborů.
 
-6. Configure backup copy jobs.
+6. Nakonfigurujte úlohy zálohování kopírováním.
 
-    * To configure backup copy jobs, follow the instructions in the video [Creating a Backup Copy Job](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s).
-    * Enable encryption of backup files under **Advanced Settings > Storage**.
+    * Pokud chcete nakonfigurovat úlohy zálohování, postupujte podle pokynů ve videu [Vytvoření úlohy zálohování při kopírování](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s).
+    * V části **Upřesnit nastavení > úložiště**Povolte šifrování záložních souborů.
 
-### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>CloudSimple portal: Set up Veeam access and de-escalate privileges
-Create a public IP address for the Veeam backup and recovery server. For instructions, see [Allocate public IP addresses](public-ips.md).
+### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>Portál CloudSimple: nastavení přístupu Veeam a oprávnění ke zrušení eskalace
+Vytvořte veřejnou IP adresu pro Veeam Backup and Recovery Server. Pokyny najdete v tématu [přidělování veřejných IP adres](public-ips.md).
 
-Create a firewall rule using to allow the Veeam backup server to create an outbound connection to Veeam website for downloading updates/patches on TCP port 80. For instructions, see [Set up firewall tables and rules](firewall.md).
+Vytvořte pravidlo brány firewall pomocí nástroje, aby server Veeam Backup mohl vytvořit odchozí připojení k webu Veeam pro stahování aktualizací nebo oprav na portu TCP 80. Pokyny najdete v tématu [Nastavení tabulek a pravidel brány firewall](firewall.md).
 
-To de-escalate privileges, see [De-escalate privileges](escalate-private-cloud-privileges.md#de-escalate-privileges).
+Chcete-li zrušit oprávnění, přečtěte si téma oprávnění ke zrušení [Eskalace](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
 ## <a name="references"></a>Odkazy
 
-### <a name="cloudsimple-references"></a>CloudSimple references
+### <a name="cloudsimple-references"></a>Odkazy na CloudSimple
 
 * [Vytvoření privátního cloudu](create-private-cloud.md)
-* [Create and manage VLANs/Subnets](create-vlan-subnet.md)
-* [vCenter Identity Sources](set-vcenter-identity.md)
-* [Workload DNS and DHCP Setup](dns-dhcp-setup.md)
-* [Escalate privileges](escalate-privileges.md)
-* [Set up firewall tables and rules](firewall.md)
-* [Private Cloud permissions](learn-private-cloud-permissions.md)
-* [Allocate public IP Addresses](public-ips.md)
+* [Vytváření a správa sítí VLAN a podsítí](create-vlan-subnet.md)
+* [Zdroje identity vCenter](set-vcenter-identity.md)
+* [Nastavení služby DNS a DHCP pro úlohy](dns-dhcp-setup.md)
+* [Eskalace oprávnění](escalate-privileges.md)
+* [Nastavení tabulek a pravidel brány firewall](firewall.md)
+* [Oprávnění privátního cloudu](learn-private-cloud-permissions.md)
+* [Přidělit veřejné IP adresy](public-ips.md)
 
-### <a name="veeam-references"></a>Veeam References
+### <a name="veeam-references"></a>Odkazy na Veeam
 
-* [Used Ports](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)
-* [Required Permissions](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)
-* [System Requirements](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)
-* [Installing Veeam Backup & Replication](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)
-* [Required modules and permissions for Multi-OS FLR and Repository support for Linux](https://www.veeam.com/kb2216)
-* [Veeam Backup & Replication v9 - Installation and Deployment - Video](https://www.youtube.com/watch?v=b4BqC_WXARk)
-* [Veeam v9 Creating a Backup Job - Video](https://www.youtube.com/watch?v=YHxcUFEss4M)
-* [Veeam v9 Creating a Backup Copy Job - Video](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)
+* [Používané porty](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)
+* [Požadovaná oprávnění](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)
+* [Požadavky na systém](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)
+* [Instalace Veeam Backup & replikace](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)
+* [Požadované moduly a oprávnění pro FLR a podporu úložiště s více operačními systémy pro Linux](https://www.veeam.com/kb2216)
+* [Veeam zálohování & replikace v9 – instalace a nasazení – video](https://www.youtube.com/watch?v=b4BqC_WXARk)
+* [Veeam v9 vytváření úlohy zálohování – video](https://www.youtube.com/watch?v=YHxcUFEss4M)
+* [Veeam v9 vytvoření úlohy záložního kopírování – video](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)
 
-### <a name="azure-references"></a>Azure references
+### <a name="azure-references"></a>Odkazy na Azure
 
-* [Configure a virtual network gateway for ExpressRoute using the Azure portal](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
-* [Connect a VNet to a circuit - different subscription](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
-* [Create a Linux virtual machine in the Azure portal](../virtual-machines/linux/quick-create-portal.md)
-* [How to attach a managed data disk to a Windows VM in the Azure portal](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [Getting Started with Azure Storage - Video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [Create Container](https://docs.microsoft.com/rest/api/storageservices/create-container)
+* [Konfigurace brány virtuální sítě pro ExpressRoute pomocí Azure Portal](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
+* [Připojení virtuální sítě k okruhu jiné předplatné](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
+* [Vytvoření virtuálního počítače se systémem Linux v Azure Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Postup připojení spravovaného datového disku k virtuálnímu počítači s Windows v Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md)
+* [Začínáme s využitím Azure Storage-video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
+* [Vytvořit kontejner](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [Přenos dat pomocí AzCopy v Linuxu](../storage/common/storage-use-azcopy-linux.md)
 
-### <a name="vmware-references"></a>VMware references
+### <a name="vmware-references"></a>Reference VMware
 
-* [Creating a Distributed Port Group in the vSphere Web Client - Video](https://www.youtube.com/watch?v=wpCd5ZbPOpA)
+* [Vytvoření distribuované skupiny portů ve webovém klientovi vSphere – video](https://www.youtube.com/watch?v=wpCd5ZbPOpA)
 
-### <a name="other-references"></a>Other references
+### <a name="other-references"></a>Další odkazy
 
-* [Create an XFS volume on the managed disk - RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
-* [How To Set Up an NFS Mount on CentOS 7 - HowToForge](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)
-* [Configuring the DHCP Server - Netgate](https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html)
+* [Vytvoření svazku XFS na spravovaném disku – RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
+* [Jak nastavit připojení NFS na CentOS 7 – HowToForge](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)
+* [Konfigurace serveru DHCP – NETGATE](https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html)

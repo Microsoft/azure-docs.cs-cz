@@ -174,12 +174,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -214,11 +214,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Otevřete nové okno webového prohlížeče a přihlaste se k webu společnosti F5 (na základě záhlaví) jako správce a proveďte následující kroky:
 
-1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . Zadejte **název certifikátu** (bude odkazován později v konfiguraci). Ve **zdroji certifikátu**vyberte Odeslat soubor a při konfiguraci jednotného přihlašování SAML zadejte certifikát stažený z Azure. Klikněte na tlačítko **Import**.
+1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . Zadejte **název certifikátu** (bude odkazován později v konfiguraci). Ve **zdroji certifikátu**vyberte Odeslat soubor a při konfiguraci jednotného přihlašování SAML zadejte certifikát stažený z Azure. Klikněte na **Importovat**.
 
     ![Konfigurace F5 (na základě hlaviček)](./media/headerf5-tutorial/configure12.png)
  
-1. Kromě toho budete vyžadovat **certifikát SSL pro název hostitele aplikace. Přejděte do seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . **Typ importu** bude **PKCS 12 (IIS)** . Zadejte **název klíče** (bude odkazován později v konfiguraci) a zadejte soubor PFX. Zadejte **heslo** pro PFX. Klikněte na tlačítko **Import**.
+1. Kromě toho budete vyžadovat **certifikát SSL pro název hostitele aplikace. Přejděte do seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . **Typ importu** bude **PKCS 12 (IIS)** . Zadejte **název klíče** (bude odkazován později v konfiguraci) a zadejte soubor PFX. Zadejte **heslo** pro PFX. Klikněte na **Importovat**.
 
     >[!NOTE]
     >V příkladu našeho názvu aplikace je `Headerapp.superdemo.live`, používáme certifikát se zástupnými kartami. náš KeyName je `WildCard-SuperDemo.live`.
@@ -283,7 +283,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 Tato část je určena k použití, pokud nemůžete použít konfiguraci s asistencí nebo chcete přidat nebo změnit další parametry. Pro název hostitele aplikace budete potřebovat certifikát SSL.
 
-1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . **Typ importu** bude **PKCS 12 (IIS)** . Zadejte **název klíče** (bude odkazován později v konfiguraci) a zadejte soubor PFX. Zadejte **heslo** pro PFX. Klikněte na tlačítko **Import**.
+1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . **Typ importu** bude **PKCS 12 (IIS)** . Zadejte **název klíče** (bude odkazován později v konfiguraci) a zadejte soubor PFX. Zadejte **heslo** pro PFX. Klikněte na **Importovat**.
 
     >[!NOTE]
     >V příkladu našeho názvu aplikace je `Headerapp.superdemo.live`, používáme certifikát se zástupnými kartami. náš KeyName je `WildCard-SuperDemo.live`.

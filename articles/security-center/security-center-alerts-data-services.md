@@ -23,7 +23,7 @@ ms.locfileid: "74196122"
 
 * [Azure SQL Database a Azure SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
-* [Azure Cosmos DB](#cosmos-db)
+* [Databáze Azure Cosmos](#cosmos-db)
 
 ## SQL Database a SQL Data Warehouse<a name="data-sql"></a>
 

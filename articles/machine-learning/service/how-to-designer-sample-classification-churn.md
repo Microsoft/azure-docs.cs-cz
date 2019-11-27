@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Predict churn example'
+title: 'Návrhář: příklad prediktivních změn'
 titleSuffix: Azure Machine Learning
-description: Follow this classification example to predict churn with Azure Machine Learning designer & boosted decision trees.
+description: Pomocí tohoto příkladu klasifikace můžete předpovědět změny v Návrháři Azure Machine Learning & zvýšili rozhodovací stromy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,61 +17,61 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74225117"
 ---
-# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Use boosted decision tree to predict churn with Azure Machine Learning designer
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Použití zesíleného rozhodovacího stromu k předpovědi změn pomocí návrháře Azure Machine Learning
 
-**Designer (preview) sample 5**
+**Návrhář (Preview) – ukázka 5**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Learn how to build a complex machine learning pipeline without writing a single line of code using the designer (preview).
+Naučte se vytvářet komplexní kanály strojového učení bez psaní jediného řádku kódu pomocí návrháře (Preview).
 
-This pipeline trains 2 **two-class boosted decision tree** classifiers to predict common tasks for customer relationship management (CRM) systems - customer churn. The data values and labels are split across multiple data sources and scrambled to anonymize customer information, however, we can still use the designer to combine data sets and train a model using the obscured values.
+Tento kanál vlaků 2 se **dvěma třídami zvyšuje klasifikátory rozhodovacího stromu** , aby bylo možné předpovědět běžné úkoly pro systémy řízení vztahů se zákazníky (CRM) – změny zákazníků. Hodnoty dat a popisky jsou rozdělené do několika zdrojů dat a zakódované tak, aby se anonymizovat informace o zákaznících, ale i přesto můžete Návrhář použít ke kombinování datových sad a výukou modelu pomocí zakrytých hodnot.
 
-Because you're trying to answer the question "Which one?" this is called a classification problem, but you can apply the same logic shown in this sample to tackle any type of machine learning problem whether it be regression, classification, clustering, and so on.
+Vzhledem k tomu, že se snažíte odpovědět na otázku, kterou jste nahlásili? To se označuje jako problém klasifikace, ale můžete použít stejnou logiku jako v této ukázce, abyste mohli řešit jakýkoli typ problému strojového učení, ať už jde o regresi, klasifikaci, clusteringu a tak dále.
 
-Here's the completed graph for this pipeline:
+Zde je dokončený graf pro tento kanál:
 
-![Pipeline graph](./media/how-to-designer-sample-classification-predict-churn/pipeline-graph.png)
+![Graf kanálu](./media/how-to-designer-sample-classification-predict-churn/pipeline-graph.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Click sample 5 to open it. 
+4. Kliknutím na tlačítko Ukázka 5 otevřete. 
 
 ## <a name="data"></a>Data
 
-The data for this pipeline is from KDD Cup 2009. It has 50,000 rows and 230 feature columns. The task is to predict churn, appetency, and up-selling for customers who use these features. For more information about the data and the task, see the [KDD website](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
+Data pro tento kanál vychází z konference KDDu 2009. Má 50 000 řádků a 230 sloupců funkcí. Úkolem je předpovědět změny, appetency a prodej pro zákazníky, kteří tyto funkce používají. Další informace o datech a úkolech najdete na [webu konference KDD](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 
-## <a name="pipeline-summary"></a>Pipeline summary
+## <a name="pipeline-summary"></a>Souhrn kanálu
 
-This sample pipeline in the designer shows binary classifier prediction of churn, appetency, and up-selling, a common task for customer relationship management (CRM).
+Tento vzorový kanál v Návrháři zobrazuje ukázku klasifikátoru pro změny, appetency a prodej, což je společný úkol pro řízení vztahů se zákazníky (CRM).
 
-First, some simple data processing.
+Nejprve některé jednoduché zpracování dat.
 
-- The raw dataset has many missing values. Use the **Clean Missing Data** module to replace the missing values with 0.
+- Nezpracovaná datová sada má mnoho chybějících hodnot. Pomocí modulu **Vyčištění chybějících dat** nahraďte chybějící hodnoty hodnotou 0.
 
-    ![Clean the dataset](./media/how-to-designer-sample-classification-predict-churn/cleaned-dataset.png)
+    ![Vyčistit datovou sadu](./media/how-to-designer-sample-classification-predict-churn/cleaned-dataset.png)
 
-- The features and the corresponding churn are in different datasets. Use the **Add Columns** module to append the label columns to the feature columns. The first column, **Col1**, is the label column. From the visualization result we can see the dataset is unbalanced. There way more negative (-1) examples than positive examples (+1). We will use **SMOTE** module to increase underrepresented cases later.
+- Funkce a odpovídající změny jsou v různých datových sadách. Pomocí modulu **Přidat sloupce** přidejte sloupce popisků ke sloupcům funkce. První sloupec, **Sloupe**, je sloupec popisku. Z výsledku vizualizace můžeme vidět, že datová sada je nevyvážená. Způsob více negativních (-1) příkladů než pozitivních příkladů (+ 1). Použijeme modul **SMOTE** k pozdějšímu zvýšení odstupujících případů.
 
-    ![Add the column dataset](./media/how-to-designer-sample-classification-predict-churn/added-column1.png)
+    ![Přidat datovou sadu sloupce](./media/how-to-designer-sample-classification-predict-churn/added-column1.png)
 
 
 
-- Use the **Split Data** module to split the dataset into train and test sets.
+- Pomocí modulu **rozdělit data** rozdělte datovou sadu do výukových a testovacích sad.
 
-- Then use the Boosted Decision Tree binary classifier with the default parameters to build the prediction models. Build one model per task, that is, one model each to predict up-selling, appetency, and churn.
+- Pak použijte binární klasifikátor zesíleného rozhodovacího stromu s výchozími parametry pro sestavení předpovědí modelů. Sestavte jeden model na každý úkol, tj. jeden model pro předpověď prodeje, appetency a změn.
 
-- In the right part of the pipeline, we use **SMOTE** module to increase the percentage of positive examples. The SMOTE percentage is set to 100 to double the positive examples. Learn more on how SMOTE module works with [SMOTE module reference0](../././algorithm-module-reference/SMOTE.md).
+- V pravé části kanálu používáme modul **SMOTE** ke zvýšení procenta pozitivních příkladů. SMOTE procento je nastavené na 100, aby bylo možné zdvojnásobit kladné příklady. Přečtěte si další informace o tom, jak modul SMOTE funguje s [modulem SMOTE reference0](../././algorithm-module-reference/SMOTE.md).
 
 ## <a name="results"></a>Výsledky
 
-Visualize the output of the **Evaluate Model** module to see the performance of the model on the test set. 
+Vizualizujte výstup modulu **vyhodnocení modelu** , abyste viděli výkon modelu v sadě testů. 
 
-![Evaluate the results](./media/how-to-designer-sample-classification-predict-churn/evaluate-result.png)
+![Vyhodnotit výsledky](./media/how-to-designer-sample-classification-predict-churn/evaluate-result.png)
 
- You can move the **Threshold** slider and see the metrics change for the binary classification task. 
+ Můžete přesunout posuvník **prahové hodnoty** a zobrazit změny metrik pro úlohu binární klasifikace. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -79,11 +79,11 @@ Visualize the output of the **Evaluate Model** module to see the performance of 
 
 ## <a name="next-steps"></a>Další kroky
 
-Explore the other samples available for the designer:
+Prozkoumejte další ukázky, které jsou k dispozici pro návrháře:
 
-- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
-- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
-- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)
+- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Ukázka 2 – regrese: porovnání algoritmů pro předpověď cen automobilu](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Ukázka 3 – klasifikace s výběrem funkcí: předpověď příjmů](how-to-designer-sample-classification-predict-income.md)
+- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Ukázka 6 – klasifikace: předpověď zpoždění letů](how-to-designer-sample-classification-flight-delay.md)
+- [Ukázka 7 – klasifikace textu: Wikipedii SP 500 DataSet](how-to-designer-sample-text-classification.md)

@@ -44,7 +44,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
-   - Azure PowerShell
+   - Azure Powershell
    
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell

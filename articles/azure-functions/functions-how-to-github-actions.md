@@ -1,6 +1,6 @@
 ---
-title: Use GitHub Actions to make code updates in Azure Functions
-description: Learn how to use GitHub Actions to define a workflow to build and deploy Azure Functions projects in GitHub.
+title: Použití akcí GitHubu ke zpřístupnění aktualizací kódu v Azure Functions
+description: Naučte se používat akce GitHubu k definování pracovního postupu pro sestavování a nasazování projektů Azure Functions v GitHubu.
 author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
@@ -12,68 +12,68 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226910"
 ---
-# <a name="continuous-delivery-by-using-github-action"></a>Continuous delivery by using GitHub Action
+# <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
-[GitHub Actions](https://github.com/features/actions) lets you define a workflow to automatically build and deploy your functions code to function app in Azure. 
+[Akce GitHubu](https://github.com/features/actions) vám umožní definovat pracovní postup, který automaticky vytvoří a nasadí kód Functions do aplikace Function App v Azure. 
 
-In GitHub Actions, a [workflow](https://help.github.com/articles/about-github-actions#workflow) is an automated process that you define in your GitHub repository. This process tells GitHub how to build and deploy your functions app project on GitHub. 
+[Pracovní postup](https://help.github.com/articles/about-github-actions#workflow) v akcích GitHub je automatizovaný proces, který definujete v úložišti GitHub. Tento proces oznamuje GitHubu, jak sestavit a nasadit projekt Function App na GitHubu. 
 
-A workflow is defined by a YAML (.yml) file in the `/.github/workflows/` path in your repository. This definition contains the various steps and parameters that make up the workflow. 
+Pracovní postup je definovaný souborem YAML (. yml) v cestě `/.github/workflows/` ve vašem úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup. 
 
-For an Azure Functions workflow, the file has three sections: 
+V případě pracovního postupu Azure Functions má soubor tři části: 
 
 | Sekce | Úlohy |
 | ------- | ----- |
-| **Ověřování** | <ol><li>Define a service principal.</li><li>Download publishing profile.</li><li>Create a GitHub secret.</li></ol>|
-| **Build** | <ol><li>Set up the environment.</li><li>Build the function app.</li></ol> |
-| **Nasazení** | <ol><li>Deploy the function app.</li></ol>|
+| **Ověřování** | <ol><li>Definujte instanční objekt.</li><li>Stáhnout profil publikování.</li><li>Vytvořte tajný klíč GitHubu.</li></ol>|
+| **Budování** | <ol><li>Nastavte prostředí.</li><li>Sestavte aplikaci Function App.</li></ol> |
+| **Nasazení** | <ol><li>Nasaďte aplikaci Function App.</li></ol>|
 
 > [!NOTE]
-> You do not need to create a service principal if you decide to use publishing profile for authentication.
+> Pokud se rozhodnete použít profil publikování pro ověřování, nemusíte vytvářet instanční objekt.
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-You can create a [service principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) by using the [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command in the [Azure CLI](/cli/azure/). You can run this command using [Azure Cloud Shell](https://shell.azure.com) in the Azure portal or by selecting the **Try it** button.
+[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com) v Azure Portal nebo tak, že vyberete tlačítko **vyzkoušet** .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
 ```
 
-In this example, replace the placeholders in the resource with your subscription ID, resource group, and function app name. The output is the role assignment credentials that provides access to your function app. Copy this JSON object, which you can use to authenticate from GitHub.
+V tomto příkladu Nahraďte zástupné symboly v prostředku ID vašeho předplatného, skupiny prostředků a názvu aplikace Function App. Výstupem jsou přihlašovací údaje přiřazení role, které poskytují přístup k vaší aplikaci Function App. Zkopírujte tento objekt JSON, který můžete použít k ověření z GitHubu.
 
 > [!IMPORTANT]
-> It is always a good practice to grant minimum access. This is why the scope in the previous example is limited to the specific function app and not the entire resource group.
+> Je vždy dobrým zvykem udělit minimální přístup. To je důvod, proč je obor v předchozím příkladu omezený na konkrétní aplikaci Function App, a ne na celou skupinu prostředků.
 
-## <a name="download-the-publishing-profile"></a>Download the publishing profile
+## <a name="download-the-publishing-profile"></a>Stáhnout profil publikování
 
-You can download the publishing profile of your functionapp, by going to the **Overview** page of your app and clicking **Get publish profile**.
+Profil publikování vašeho functionapp můžete stáhnout tak, že přejdete na stránku **Přehled** vaší aplikace a kliknete na **získat profil publikování**.
 
-   ![Download publish profile](media/functions-how-to-github-actions/get-publish-profile.png)
+   ![Stáhnout profil publikování](media/functions-how-to-github-actions/get-publish-profile.png)
 
-Copy the content of the file.
+Zkopírujte obsah souboru.
 
-## <a name="configure-the-github-secret"></a>Configure the GitHub secret
+## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
 
-1. In [GitHub](https://github.com), browse your repository, select **Settings** > **Secrets** > **Add a new secret**.
+1. V [GitHubu](https://github.com)přejděte do úložiště, vyberte **Nastavení** > **tajných** kódů > **přidejte nový tajný kód**.
 
-   ![Add Secret](media/functions-how-to-github-actions/add-secret.png)
+   ![Přidat tajný kód](media/functions-how-to-github-actions/add-secret.png)
 
-1. Use `AZURE_CREDENTIALS` for the **Name** and the copied command output for **Value**, if you then select **Add secret**. If you are using publishing profile, use `SCM_CREDENTIALS` for the **Name** and the file content for **Value**.
+1. Pokud pak vyberete **Přidat tajný klíč**, použijte `AZURE_CREDENTIALS` pro **název** a zkopírovaný výstup příkazu pro **hodnotu**. Pokud používáte profil publikování, použijte `SCM_CREDENTIALS` pro **název** a obsah souboru pro **hodnotu**.
 
-GitHub can now authenticate to your function app in Azure.
+GitHub se teď může ověřit pro vaši aplikaci Function App v Azure.
 
 ## <a name="set-up-the-environment"></a>Nastavení prostředí 
 
-Setting up the environment can be done using one of the publish setup actions.
+Nastavení prostředí je možné provést pomocí jedné z akcí nastavení publikování.
 
-|Jazyk | Setup Action |
+|Jazyk | Akce nastavení |
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**    | `actions/setup-java` |
 |**JavaScript**     | `actions/setup-node` |
 |**Python**   | `actions/setup-python` |
 
-The following examples show the part of the workflow that sets up the environment for the various supported languages:
+Následující příklady znázorňují část pracovního postupu, která nastavuje prostředí pro různé podporované jazyky:
 
 **JavaScript**
 
@@ -129,11 +129,11 @@ The following examples show the part of the workflow that sets up the environmen
         java-version: '1.8.x'
 ```
 
-## <a name="build-the-function-app"></a>Build the function app
+## <a name="build-the-function-app"></a>Sestavení aplikace Function App
 
-This depends on the language and for languages supported by Azure Functions, this section should be the standard build steps of each language.
+To závisí na jazyku a jazycích podporovaných nástrojem Azure Functions, Tato část by měla být standardním postupem sestavení každého jazyka.
 
-The following examples show the part of the workflow that builds the function app, in the various supported languages.:
+Následující příklady znázorňují část pracovního postupu, který vytváří aplikaci Function App v různých podporovaných jazycích.:
 
 **JavaScript**
 
@@ -193,15 +193,15 @@ The following examples show the part of the workflow that builds the function ap
 
 ## <a name="deploy-the-function-app"></a>Nasazení aplikace funkcí
 
-To deploy your code to a function app, you will need to use the `Azure/functions-action` action. This action has two parameters:
+K nasazení kódu do aplikace Function App budete muset použít akci `Azure/functions-action`. Tato akce má dva parametry:
 
 |Parametr |Vysvětlení  |
 |---------|---------|
-|**_app-name_** | (Mandatory) The name of your function app. |
-|_**slot-name**_ | (Optional) The name of the [deployment slot](functions-deployment-slots.md) you want to deploy to. The slot must already be defined in your function app. |
+|**_název aplikace_** | Závaznou Název vaší aplikace Function App |
+|_**název slotu**_ | Volitelné Název [slotu nasazení](functions-deployment-slots.md) , na který chcete nasadit. Slot už musí být definovaný ve vaší aplikaci Function App. |
 
 
-The following example uses version 1 of the `functions-action`:
+V následujícím příkladu je použita verze 1 `functions-action`:
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -213,7 +213,7 @@ The following example uses version 1 of the `functions-action`:
 
 ## <a name="next-steps"></a>Další kroky
 
-To view a complete workflow .yaml, see one of the files in the [Azure GitHub Actions workflow samples repo](https://aka.ms/functions-actions-samples) that have `functionapp` in the name. You can use these samples a starting point for your workflow.
+Pokud chcete zobrazit kompletní pracovní postup. yaml, podívejte se na jeden ze souborů na webu [Azure Actions Workflow Samples](https://aka.ms/functions-actions-samples) , který má v názvu `functionapp`. Tyto ukázky můžete použít jako výchozí bod pro pracovní postup.
 
 > [!div class="nextstepaction"]
-> [Learn more about GitHub Actions](https://help.github.com/en/articles/about-github-actions)
+> [Další informace o akcích GitHubu](https://help.github.com/en/articles/about-github-actions)

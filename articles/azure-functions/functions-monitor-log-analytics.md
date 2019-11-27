@@ -1,6 +1,6 @@
 ---
-title: Monitoring Azure Functions with Azure Monitor Logs
-description: Learn how to use Azure Monitor Logs with Azure Functions to monitor function executions.
+title: Monitorování Azure Functions pomocí protokolů Azure Monitor
+description: Naučte se používat protokoly Azure Monitor s Azure Functions k monitorování provádění funkcí.
 author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
@@ -12,30 +12,30 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226853"
 ---
-# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitoring Azure Functions with Azure Monitor Logs
+# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitorování Azure Functions pomocí protokolů Azure Monitor
 
-Azure Functions offers an integration with [Azure Monitor Logs](../azure-monitor/platform/data-platform-logs.md) to monitor functions. This article shows you how to configure Azure Functions to send system-generated and user-generated logs to Azure Monitor Logs.
+Azure Functions nabízí integraci s [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) pro monitorování funkcí. V tomto článku se dozvíte, jak nakonfigurovat Azure Functions pro odesílání protokolů generovaných systémem a uživatelem do Azure Monitor protokolů.
 
-Azure Monitor Logs gives you the ability to consolidate logs from different resources in the same workspace, where it can be analyzed with [queries](../azure-monitor/log-query/log-query-overview.md) to quickly retrieve, consolidate, and analyze collected data.  You can create and test queries using [Log Analytics](../azure-monitor/log-query/portals.md) in the Azure portal and then either directly analyze the data using these tools or save queries for use with [visualizations](../azure-monitor/visualizations.md) or [alert rules](../azure-monitor/platform/alerts-overview.md).
+Protokoly Azure Monitor poskytují možnost konsolidovat protokoly z různých prostředků ve stejném pracovním prostoru, kde je lze analyzovat pomocí [dotazů](../azure-monitor/log-query/log-query-overview.md) pro rychlé načítání, konsolidaci a analýzu shromážděných dat.  Můžete vytvářet a testovat dotazy pomocí [Log Analytics](../azure-monitor/log-query/portals.md) v Azure Portal a potom buď přímo analyzovat data pomocí těchto nástrojů, nebo ukládat dotazy pro použití s [vizualizacemi](../azure-monitor/visualizations.md) nebo [pravidly výstrah](../azure-monitor/platform/alerts-overview.md).
 
-Azure Monitor uses a version of the [Kusto query language](/azure/kusto/query/) used by Azure Data Explorer that is suitable for simple log queries but also includes advanced functionality such as aggregations, joins, and smart analytics. You can quickly learn the query language using [multiple lessons](../azure-monitor/log-query/get-started-queries.md).
+Azure Monitor používá verzi [dotazovacího jazyka Kusto](/azure/kusto/query/) , kterou používá služba Azure Průzkumník dat, která je vhodná pro jednoduché dotazy protokolů, ale zahrnuje i pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Dotazovací jazyk můžete rychle zjistit pomocí [více lekcí](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
-> Integration with Azure Monitor Logs is currently in public preview for function apps running on Windows Consumption, Premium, and Dedicated hosting plans.
+> Integrace s protokoly Azure Monitor je v současnosti ve verzi Public Preview pro aplikace Function App běžící ve Windows, Premium a vyhrazených plánech hostování.
 
-## <a name="setting-up"></a>Setting up
+## <a name="setting-up"></a>Nastavení
 
-From the Monitoring section, select **Diagnostic settings** and then click **Add**.
+V části monitorování vyberte **nastavení diagnostiky** a pak klikněte na **Přidat**.
 
-![Add a diagnostic setting](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+![Přidat nastavení diagnostiky](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-In the setting page, choose **Send to Log Analytics**, and under **LOG** choose **FunctionAppLogs**, this table contains the desired logs.
+Na stránce nastavení vyberte **Odeslat do Log Analytics**a v části **protokol** zvolit **FunctionAppLogs**, tato tabulka obsahuje požadované protokoly.
 
-![Add a diagnostic setting](media/functions-monitor-log-analytics/choose-table.png)
+![Přidat nastavení diagnostiky](media/functions-monitor-log-analytics/choose-table.png)
 
-## <a name="user-generated-logs"></a>User generated logs
+## <a name="user-generated-logs"></a>Uživatelem vygenerované protokoly
 
-To generate custom logs, you can use the specific logging statement depending on your language, here are sample code snippets:
+Chcete-li generovat vlastní protokoly, můžete použít konkrétní příkaz protokolování v závislosti na jazyku, zde jsou ukázkové fragmenty kódu:
 
 **JavaScript**
 
@@ -67,15 +67,15 @@ To generate custom logs, you can use the specific logging statement depending on
     Write-Host "My app logs here."
 ```
 
-## <a name="querying-the-logs"></a>Querying the logs
+## <a name="querying-the-logs"></a>Dotazování protokolů
 
-To query the generated logs, go to the log analytics workspace and click **Logs**.
+Pokud chcete zadat dotaz na vygenerované protokoly, přejděte do pracovního prostoru Log Analytics a klikněte na **protokoly**.
 
-![Query window in LA workspace](media/functions-monitor-log-analytics/querying.png)
+![Okno dotazu v pracovním prostoru LA](media/functions-monitor-log-analytics/querying.png)
 
-Azure Functions writes all logs to **FunctionAppLogs** table, here are some sample queries.
+Azure Functions zapisuje všechny protokoly do tabulky **FunctionAppLogs** . tady je několik ukázkových dotazů.
 
-### <a name="all-logs"></a>All logs
+### <a name="all-logs"></a>Všechny protokoly
 
 ```
 
@@ -84,7 +84,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>A specific function logs
+### <a name="a-specific-function-logs"></a>Konkrétní protokoly funkcí
 
 ```
 
@@ -105,6 +105,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>Další kroky
 
-- Review the [Azure Functions overview](functions-overview.md)
-- Learn more about [Azure Monitor Logs](../azure-monitor/platform/data-platform-logs.md)
-- Learn more about the [query language](../azure-monitor/log-query/get-started-queries.md).
+- Přečtěte si [přehled Azure Functions](functions-overview.md)
+- Další informace o [protokolech Azure monitor](../azure-monitor/platform/data-platform-logs.md)
+- Přečtěte si další informace o [dotazovacím jazyce](../azure-monitor/log-query/get-started-queries.md).

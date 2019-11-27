@@ -1,6 +1,6 @@
 ---
-title: Ensure application high availability when running in VMware on Azure
-description: Describes CloudSimple high availability features to address common application failure scenarios for applications running in a CloudSimple Private Cloud
+title: Zajistěte vysokou dostupnost aplikace při spuštění v prostředí VMware v Azure
+description: Popisuje CloudSimple funkce vysoké dostupnosti pro řešení běžných scénářů selhání aplikací pro aplikace běžící v privátním cloudu CloudSimple.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -15,52 +15,52 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74206531"
 ---
-# <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Ensure application high availability when running in VMware on Azure
+# <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Zajistěte vysokou dostupnost aplikace při spuštění v prostředí VMware v Azure
 
-The CloudSimple solution provides high availability for your applications running on VMware in the Azure environment. The following table lists failure scenarios and the associated high availability features.
+Řešení CloudSimple poskytuje vysokou dostupnost pro vaše aplikace běžící na VMware v prostředí Azure. V následující tabulce jsou uvedeny scénáře selhání a související funkce vysoké dostupnosti.
 
-| Failure scenario | Application protected? | Platform HA feature | VMware HA feature | Azure HA feature |
+| Scénář selhání | Je aplikace chráněná? | Funkce HA platformy | Funkce VMware HA | Azure HA – funkce |
 ------------ | ------------- | ------------ | ------------ | ------------- |
-| Disk Failure | YES | Fast replacement of failed node | [About the vSAN Default Storage Policy](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| Fan Failure | YES | Redundant fans, fast replacement of failed node |  |  |
-| NIC Failure | YES | Redundant NIC, fast replacement of failed node
-| Host Power Failure | YES | Redundant power supply |  |  |
-| ESXi Host Failure | YES | fast replacement of failed node | [VMware vSphere High Availability](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| VM Failure | YES | [Nástroje pro vyrovnávání zatížení](load-balancers.md)  | [VMware vSphere High Availability](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer for stateless VMware VMs |
-| Leaf Switch Port Failure | YES | Redundant NIC |  |  |
-| Leaf Switch Failure | YES | Redundant leaf switches |  |  |
-| Rack Failure | YES | Skupiny umístění |  |  |
-| Network Connectivity to on-premises DC | YES  | Redundant networking services |  | Redundant ER circuits |
-| Network Connectivity to Azure | YES | |  | Redundant ER circuits |
-| Datacenter Failure | YES |  |  | Zóny dostupnosti |
-| Regional Failure | YES  |  |  | Oblasti Azure |
+| Selhání disku | Ano | Rychlé nahrazení neúspěšného uzlu | [O výchozích zásadách úložiště síti vSAN](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
+| Selhání ventilátoru | Ano | Redundantní ventilátory, rychlá výměna neúspěšného uzlu |  |  |
+| Selhání síťové karty | Ano | Redundantní síťová karta, rychlá výměna neúspěšného uzlu
+| Selhání napájení hostitele | Ano | Redundantní zdroj napájení |  |  |
+| Selhání hostitele ESXi | Ano | Rychlé nahrazení neúspěšného uzlu | [VMware vSphere vysoká dostupnost](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| Chyba virtuálního počítače | Ano | [Nástroje pro vyrovnávání zatížení](load-balancers.md)  | [VMware vSphere vysoká dostupnost](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer pro bezstavové virtuální počítače VMware |
+| Selhání portu přepínání listů | Ano | Redundantní síťová karta |  |  |
+| Selhání přepínání listů | Ano | Redundantní přepínače na list |  |  |
+| Selhání racku | Ano | Skupiny umístění |  |  |
+| Síťové připojení k místnímu řadiči domény | Ano  | Redundantní síťové služby |  | Redundantní okruhy ER |
+| Síťové připojení k Azure | Ano | |  | Redundantní okruhy ER |
+| Selhání datacentra | Ano |  |  | Zóny dostupnosti |
+| Regionální selhání | Ano  |  |  | Oblast Azure |
 
-Azure VMware Solution by CloudSimple provides the following high availability features.
+Řešení Azure VMware podle CloudSimple poskytuje následující funkce vysoké dostupnosti.
 
-## <a name="fast-replacement-of-failed-node"></a>Fast replacement of failed node
+## <a name="fast-replacement-of-failed-node"></a>Rychlé nahrazení neúspěšného uzlu
 
-The CloudSimple control plane software continuously monitors the health of VMware clusters and detects when an ESXi node fails. It then automatically adds a new ESXi host to the affected VMware cluster from its pool of readily available nodes and takes the failed node out of the cluster. This functionality ensures that the spare capacity in the VMware cluster is restored quickly so that the cluster’s resiliency provided by vSAN and VMware HA is restored.
+Řídicí software CloudSimplee nepřetržitě monitoruje stav clusterů VMware a detekuje, kdy dojde k chybě uzlu ESXi. Pak automaticky přidá nového hostitele ESXi do ovlivněného clusteru VMware z fondu snadno dostupných uzlů a převezme neúspěšný uzel z clusteru. Tato funkce zajišťuje, že se v clusteru VMware rychle obnoví volná kapacita, aby se obnovila odolnost clusteru poskytovaná síti vSAN a VMware HA.
 
 ## <a name="placement-groups"></a>Skupiny umístění
 
-A user who creates a Private Cloud can select an Azure region and a placement group within the selected region. A placement group is a set of nodes spread across multiple racks but within the same spine network segment. Nodes within the same placement group can reach each other with a maximum of two extra switch hops. A placement group is always within a single Azure availability zone and spans multiple racks. The CloudSimple control plane distributes nodes of a Private Cloud across multiple racks based on best effort. Nodes in different placement groups are guaranteed to be placed in different racks.
+Uživatel, který vytváří privátní cloud, může vybrat oblast Azure a skupinu umístění v rámci vybrané oblasti. Skupina umístění je sada uzlů rozložená mezi více stojanů, ale ve stejném segmentu sítě páteře. Uzly v rámci stejné skupiny umístění se můžou vzájemně navázat, což může mít maximálně dva segmenty dalšího přecházení. Skupina umístění je vždy v rámci jedné zóny dostupnosti Azure a zahrnuje více stojanů. Rovina ovládacího prvku CloudSimple distribuuje uzly privátního cloudu napříč různými racky na základě nejlepšího úsilí. U uzlů v různých skupinách umístění je zaručeno, že budou umístěny do různých stojanů.
 
 ## <a name="availability-zones"></a>Zóny dostupnosti
 
-Availability zones are a high-availability offering that protects your applications and data from datacenter failures. Availability zones are special physical locations within an Azure region. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Each region has one availability zone. For more information, see [What are Availability Zones in Azure?](../availability-zones/az-overview.md).
+Zóny dostupnosti jsou nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóny dostupnosti jsou zvláštní fyzická umístění v rámci oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Každá oblast má jednu zónu dostupnosti. Další informace najdete v tématu [co je zóny dostupnosti v Azure?](../availability-zones/az-overview.md).
 
-## <a name="redundant-azure-expressroute-circuits"></a>Redundant Azure ExpressRoute circuits
+## <a name="redundant-azure-expressroute-circuits"></a>Redundantní okruhy Azure ExpressRoute
 
-Data center connectivity to Azure vNet using ExpressRoute has redundant circuits to provide highly available network connectivity link.
+Připojení datového centra k virtuální síti Azure pomocí ExpressRoute má redundantní okruhy k zajištění připojení k síti s vysokou dostupností.
 
-## <a name="redundant-networking-services"></a>Redundant networking services
+## <a name="redundant-networking-services"></a>Redundantní síťové služby
 
-All the CloudSimple networking services for the Private Cloud (including VLAN, firewall, public IP addresses, Internet, and VPN) are designed to be highly available and able to support the service SLA.
+Všechny síťové služby CloudSimple pro privátní cloud (včetně sítě VLAN, brány firewall, veřejných IP adres, internetu a sítě VPN) jsou navržené tak, aby byly vysoce dostupné a mohly podporovat smlouvu SLA služby.
 
-## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Azure Layer 7 Load Balancer for stateless VMware VMs
+## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Azure vrstvy 7 Load Balancer pro bezstavové virtuální počítače VMware
 
-Users can put an Azure Layer 7 Load Balancer in front of the stateless web tier VMs running in the VMware environment to achieve high availability for the web tier.
+Uživatelé můžou do Azure vrstvy 7 umístit Load Balancer před bezstavovým virtuálním počítačům s nestavovou vrstvou běžící v prostředí VMware, aby dosáhli vysoké dostupnosti pro webovou vrstvu.
 
-## <a name="azure-regions"></a>Oblasti Azure
+## <a name="azure-regions"></a>Oblast Azure
 
-An Azure region is a set of data centers deployed within a latency-defined perimeter and connected through a dedicated regional low-latency network. For details, see [Azure Regions](https://azure.microsoft.com/global-infrastructure/regions).
+Oblast Azure je sada datových center nasazených v hraničním prostředí definovaném latencí a připojená prostřednictvím sítě s nízkou latencí. Podrobnosti najdete v tématu [oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions).

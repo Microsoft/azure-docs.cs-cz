@@ -44,7 +44,7 @@ Chcete-li zjistit, které značky služby se mají přidat do vaší oblasti, p�
 
 Pokud upřednostňujete možnost označení služby dvě a váš cluster se nachází v jedné z oblastí uvedených v této tabulce, stačí do skupiny zabezpečení sítě přidat jenom jednu oblastní značku služby.
 
-| Země | Oblast | Značka služby |
+| Země | Region (Oblast) | Značka služby |
 | ---- | ---- | ---- |
 | Austrálie | Austrálie – východ | HDInsight. AustraliaEast |
 | &nbsp; | Austrálie – jihovýchod | HDInsight. AustraliaSoutheast |
@@ -62,7 +62,7 @@ Pokud upřednostňujete možnost označení služby dvě a váš cluster se nach
 | &nbsp; | Indie – jih | HDInsight. SouthIndia |
 | Japonsko | Japonsko – západ | HDInsight. JapanWest |
 | Francie | Francie – střed| HDInsight. FranceCentral |
-| Spojené království | Velká Británie – jih | HDInsight. UKSouth |
+| Spojené království | Spojené království – jih | HDInsight. UKSouth |
 | Azure Government (Fairfax) | USDoD – střed   | HDInsight. USDoDCentral |
 | &nbsp; | USGov Texas | HDInsight. USGovTexas |
 | &nbsp; | UsDoD východ | HDInsight. USDoDEast |
@@ -83,9 +83,9 @@ Pokud je například cluster vytvořen v oblasti `East US 2`, bude nutné do sku
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Země | Oblast | Značka služby |
+| Země | Region (Oblast) | Značka služby |
 | ---- | ---- | ---- |
-| Spojené státy | Východní USA 2 | HDInsight. EastUS2 |
+| Spojené státy | Východ USA 2 | HDInsight. EastUS2 |
 | &nbsp; | Střední USA | HDInsight. CentralUS |
 | &nbsp; | NorthCentral nás | HDInsight. NorthCentralUS |
 | &nbsp; | Středojižní USA | HDInsight. SouthCentralUS |

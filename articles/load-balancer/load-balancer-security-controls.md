@@ -1,6 +1,6 @@
 ---
-title: Security controls for Azure Load Balancer
-description: A checklist of security controls for evaluating Load Balancer
+title: Ovládací prvky zabezpečení pro Azure Load Balancer
+description: Kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocení Load Balancer
 services: load-balancer
 author: asudbring
 manager: KumudD
@@ -15,52 +15,52 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214898"
 ---
-# <a name="security-controls-for-azure-load-balancer"></a>Security controls for Azure Load Balancer
+# <a name="security-controls-for-azure-load-balancer"></a>Ovládací prvky zabezpečení pro Azure Load Balancer
 
-This article documents the security controls built into Azure Load Balancer.
+Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Load Balancer.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Síť
+## <a name="network"></a>Network (Síť)
 
-| Security control | Ano/Ne | Poznámky |
+| Řízení zabezpečení | Ano/Ne | Poznámky: |
 |---|---|--|
-| Service endpoint support| Nevztahuje se | |
-| VNet injection support| Nevztahuje se | |
-| Network Isolation and Firewalling support| Nevztahuje se |  |
-| Forced tunneling support| Nevztahuje se | |
+| Podpora koncového bodu služby| neuvedeno | |
+| Podpora vkládání virtuální sítě| neuvedeno | |
+| Izolace sítě a podpora brány firewall| neuvedeno |  |
+| Podpora vynuceného tunelování| neuvedeno | |
 
-## <a name="monitoring--logging"></a>Monitoring & logging
+## <a name="monitoring--logging"></a>Monitorování protokolování &
 
-| Security control | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky:|
 |---|---|--|
-| Azure monitoring support (Log analytics, App insights, etc.)| Ano | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
-| Control and management plane logging and audit| Ano | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
-| Data plane logging and audit | Nevztahuje se |  |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | [Load Balancer veřejné základní](load-balancer-monitor-log.md)najdete v tématu protokoly Azure monitor. |
+| Protokolování a audit roviny řízení a správy| Ano | [Load Balancer veřejné základní](load-balancer-monitor-log.md)najdete v tématu protokoly Azure monitor. |
+| Protokolování a audit roviny dat | neuvedeno |  |
 
 ## <a name="identity"></a>Identita
 
-| Security control | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky:|
 |---|---|--|
-| Ověření| Nevztahuje se |  |
-| Autorizace| Nevztahuje se |  |
+| Ověřování| neuvedeno |  |
+| Autorizace| neuvedeno |  |
 
 ## <a name="data-protection"></a>Ochrana dat
 
-| Security control | Ano/Ne | Poznámky |
+| Řízení zabezpečení | Ano/Ne | Poznámky: |
 |---|---|--|
-| Server-side encryption at rest: Microsoft-managed keys | Nevztahuje se | |
-| Encryption in transit (such as ExpressRoute encryption, in VNet encryption, and VNet-VNet encryption )| Nevztahuje se | |
-| Server-side encryption at rest: customer-managed keys (BYOK) | Nevztahuje se | |
-| Column level encryption (Azure Data Services)| Nevztahuje se | |
-| API calls encrypted| Ano | Via the [Azure Resource Manager](../azure-resource-manager/index.yml). |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | neuvedeno | |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| neuvedeno | |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | neuvedeno | |
+| Šifrování na úrovni sloupce (Azure Data Services)| neuvedeno | |
+| Zašifrovaná volání rozhraní API| Ano | Prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml). |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
-| Security control | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky:|
 |---|---|--|
-| Configuration management support (versioning of configuration, etc.)| Nevztahuje se |  | 
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| neuvedeno |  | 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Learn more about the [built-in security controls across Azure services](../security/fundamentals/security-controls.md).
+- Přečtěte si další informace o [integrovaných kontrolních prvcích zabezpečení napříč službami Azure](../security/fundamentals/security-controls.md).

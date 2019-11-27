@@ -282,7 +282,7 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**:
 

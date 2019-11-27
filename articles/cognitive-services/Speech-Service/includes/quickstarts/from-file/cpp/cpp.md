@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Recognize speech from an audio file, C++ - Speech Service'
+title: 'Rychlý Start: rozpoznávání řeči ze zvukového souboru C++ , – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Bude doplněno
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -17,7 +17,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260690"
 ---
-**Choose your target environment**
+**Volba cílového prostředí**
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 [!INCLUDE [linux](./linux.md)]
 #### <a name="macostabmacos"></a>[macOS](#tab/macOS)

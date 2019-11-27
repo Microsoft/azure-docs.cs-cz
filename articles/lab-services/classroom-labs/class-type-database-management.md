@@ -1,6 +1,6 @@
 ---
-title: Set up a lab to teach database management for relational databases | Microsoft Docs
-description: Learn how to set up a lab to teach the management of relational databases.
+title: Nastavení testovacího prostředí pro učení správy databází pro relační databáze | Microsoft Docs
+description: Naučte se, jak nastavit testovací prostředí pro učení správy relačních databází.
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -20,59 +20,59 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233763"
 ---
-# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Set up a lab to teach database management for relational databases
+# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Nastavení testovacího prostředí pro správu databází pro relační databáze
 
-This article describes how to set up a lab for a basic databases management class in Azure Lab Services. Databases concepts are one of the introductory courses taught in most of the Computer Science departments in college. Structured Query Language (SQL) is an international standard. SQL is the standard language for relation database management including adding, accessing, and managing content in a database.  It is most noted for its quick processing, proven reliability, ease, and flexibility of use.
+Tento článek popisuje, jak nastavit testovací prostředí pro třídu správy základních databází v Azure Lab Services. Koncepty databází jsou jedním z úvodních kurzů, které jsou v rámci vysokoškolského ministerstva v oblasti počítačové vědy. Jazyk SQL (Structured Query Language) (SQL) je mezinárodní standard. SQL je standardním jazykem pro relaci správy databází, včetně přidávání, přístupu a správy obsahu v databázi.  Je nejužitečnější pro své rychlé zpracování, prověřenou spolehlivost, jednoduchost a flexibilitu použití.
 
-In this article, we'll show how to set up a virtual machine template in a lab with both MySQL Database Server and SQL Server 2019 server.  [MySQL](https://www.mysql.com/) is a freely available open source Relational Database Management System (RDBMS).  [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) is the latest version of Microsoft’s RDBMS.
+V tomto článku ukážeme, jak nastavit šablonu virtuálního počítače v testovacím prostředí s databázovým serverem MySQL i serverem SQL Server 2019.  [MySQL](https://www.mysql.com/) je volně dostupný open source systém pro správu relačních databází (RDBMS).  [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) je nejnovější verze RDBMS Microsoftu.
 
-## <a name="lab-configuration"></a>Lab configuration
+## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-To set up this lab, you need an Azure subscription and lab account to get started. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Once you get an Azure subscription, you can create a new lab account in Azure Lab Services. For more information about creating a new lab account, see [Tutorial to Setup a Lab Account](tutorial-setup-lab-account.md).  You can also use an existing lab account.
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete použít i existující účet testovacího prostředí.
 
-### <a name="lab-account-settings"></a>Lab account settings
+### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 
-Enable the settings described in the table below for the lab account. For more information about how to enable marketplace images, see [Specify Marketplace images available to lab creators](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators).
+Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators).
 
-| Lab account setting | Pokyny |
+| Nastavení účtu testovacího prostředí | Pokyny |
 | ------------------- | ------------ |
-|Marketplace image| Enable the ‘SQL Server 2019 Standard on Windows Server 2019’ image for use within your lab account.|
+|Obrázek Marketplace| Pro použití v rámci vašeho účtu testovacího prostředí povolte image SQL Server 2019 Standard na Windows serveru 2019.|
 
-### <a name="lab-settings"></a>Lab settings
+### <a name="lab-settings"></a>Nastavení testovacího prostředí
 
-Use the settings in the table below when setting up a classroom lab.  For more information how to create a classroom lab, see [set up a classroom lab tutorial](tutorial-setup-classroom-lab.md).
+Při nastavování testovacího prostředí učebny použijte nastavení v následující tabulce.  Další informace o tom, jak vytvořit prostředí učebny, najdete v tématu [Nastavení kurzu pro prostředí učebny](tutorial-setup-classroom-lab.md).
 
-| Lab settings | Value/instructions |
+| Nastavení testovacího prostředí | Hodnota/pokyny |
 | ------------ | ------------------ |
-|Virtual Machine Size| Střední. This size is best suited for relational databases, in-memory caching, and analytics.|
-|Virtual Machine Image| SQL Server 2019 Standard on Windows Server 2019|
+|Velikost virtuálního počítače| Střední. Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy.|
+|Image virtuálního počítače| SQL Server 2019 standard v systému Windows Server 2019|
 
-## <a name="template-machine-configuration"></a>Template machine configuration
+## <a name="template-machine-configuration"></a>Konfigurace počítače šablony
 
-To install MySQL on Windows Server 2019, you can follow the steps mentioned in [Install and Run MySQL Community Server on a Virtual Machine](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine).
+Pokud chcete nainstalovat MySQL na Windows Server 2019, můžete postupovat podle kroků uvedených v části [instalace a spuštění MySQL Community serveru na virtuálním počítači](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine).
 
-SQL Server 2019 is pre-installed in the virtual machine image we chose when creating the new lab.
+V imagi virtuálního počítače, kterou jsme při vytváření nového testovacího prostředí zvolili, je předinstalovaná SQL Server 2019.
 
 ## <a name="cost-estimate"></a>Odhad nákladů
 
-Let's cover a possible cost estimate for this class.  We'll use a class of 25 students.  There are 20 hours of scheduled class time.  Also, each student gets 10 hours quota for homework or assignments outside scheduled class time.  The virtual machine size we chose was medium, which is 42 lab units.
+Pojďme pro tuto třídu pokrýt možné náklady.  Použijeme třídu 25 studentů.  Naplánovaný čas třídy je 20 hodin.  Každý student navíc získá kvótu 10 hodin pro domácí nebo přiřazení mimo plánovanou dobu třídy.  Velikost virtuálního počítače, kterou jsme zvolili, byla střední, což je 42 jednotek testovacího prostředí.
 
-Here is an example of a possible cost estimate for this class:
+Zde je příklad možného odhadu nákladů pro tuto třídu:
 
-25 students \* (20 scheduled hours + 10 quota hours) \* 0.42 USD per hour  = 315.00 USD
+25 studentů \* (20 naplánovaných hodin + 10 hodinových hodin) \* 0,42 USD za hodinu = 315,00 USD
 
-Further more details on pricing, see [Azure Lab Services Pricing](https://azure.microsoft.com/pricing/details/lab-services/).
+Další podrobnosti o cenách najdete v článku [Azure Lab Services ceny](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Závěr
 
-This article walked you through the steps necessary to create a lab for basic database management concepts using both MySQL and SQL Server. You can use a similar setup for other databases classes.
+Tento článek vás vás provedl kroky potřebnými k vytvoření testovacího prostředí pro základní koncepty správy databází pomocí MySQL i SQL Server. Podobné nastavení můžete použít pro jiné třídy databází.
 
 ## <a name="next-steps"></a>Další kroky
 
-Next steps are common to setting up any lab.
+Další kroky jsou běžné pro nastavení testovacího prostředí.
 
-- [Create and manage a template](how-to-create-manage-template.md)
+- [Vytvoření a Správa šablony](how-to-create-manage-template.md)
 - [Přidání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Set quota](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Set a schedule](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Email registration links to students](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Nastavit kvótu](how-to-configure-student-usage.md#set-quotas-for-users)
+- [Nastavit plán](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users)

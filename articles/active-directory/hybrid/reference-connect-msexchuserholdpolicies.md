@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: msExchUserHoldPolicies and cloudMsExchUserHoldPolicies | Microsoft Docs'
-description: This topic describes attribute behavior of the msExchUserHoldPolicies and cloudMsExchUserHoldPolicies attributes
+title: 'Azure AD Connect: msExchUserHoldPolicies a cloudMsExchUserHoldPolicies | Microsoft Docs'
+description: Toto téma popisuje chování atributů atributů msExchUserHoldPolicies a cloudMsExchUserHoldPolicies.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -21,54 +21,54 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213073"
 ---
-# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies and cloudMsExchUserHoldPolicies
-The following reference document describes these attributes used by Exchange and the proper way to edit the default sync rules.
+# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect – msExchUserHoldPolicies a cloudMsExchUserHoldPolicies
+Následující referenční dokument popisuje tyto atributy používané systémem Exchange a správný způsob, jak upravit výchozí pravidla synchronizace.
 
-## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>What are msExchUserHoldPolicies and cloudMsExchUserHoldPolicies?
-There are two types of [holds](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) available for an Exchange Server: Litigation Hold and In-Place Hold. When Litigation Hold is enabled, all mailbox all items are placed on hold.  An In-Place Hold is used to preserve only those items that meet the criteria of a search query that you defined by using the In-Place eDiscovery tool.
+## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Co jsou msExchUserHoldPolicies a cloudMsExchUserHoldPolicies?
+Pro Exchange Server jsou k dispozici dva typy [blokování](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) pro soudní řízení a místní blokování. Pokud je povoleno blokování sporů, jsou všechny položky poštovních schránek blokovány.  Místní blokování se používá k zachování pouze těch položek, které splňují kritéria vyhledávacího dotazu, který jste definovali pomocí místního nástroje eDiscovery.
 
-The MsExchUserHoldPolcies and cloudMsExchUserHoldPolicies attributes allow on-premises AD and Azure AD to determine which users are under a hold depending on whether they are using on-premises Exchange or Exchange on-line.
+Atributy MsExchUserHoldPolcies a cloudMsExchUserHoldPolicies umožňují místní službě AD a službě Azure AD určit, kteří uživatelé se budou držet v závislosti na tom, jestli používají místní Exchange nebo Exchange on-line.
 
-## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies synchronization flow
-By default MsExchUserHoldPolcies is synchronized by Azure AD Connect directly to the msExchUserHoldPolicies attribute in the metaverse and then to the msExchUserHoldPolices attribute in Azure AD
+## <a name="msexchuserholdpolicies-synchronization-flow"></a>průběh synchronizace msExchUserHoldPolicies
+Ve výchozím nastavení se MsExchUserHoldPolcies synchronizuje Azure AD Connect přímo k atributu msExchUserHoldPolicies v úložišti metaverse a potom k atributu msExchUserHoldPolices v Azure AD.
 
-The following tables describe the flow:
+Tok je popsán v následujících tabulkách:
 
-Inbound from on-premises Active Directory:
+Příchozí z místní služby Active Directory:
 
-|Active Directory attribute|Attribute name|Flow type|Metaverse attribute|Sync Rule|
+|Atribut služby Active Directory|Název atributu|Typ toku|Atribut úložiště metaverse|Pravidlo synchronizace|
 |-----|-----|-----|-----|-----|
-|Místní služby Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolices|In from AD - User Exchange|
+|Místní služby Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolices|V nástroji ze služby AD-User Exchange|
 
-Outbound to Azure AD:
+Odchozí do Azure AD:
 
-|Metaverse attribute|Attribute name|Flow type|Azure AD attribute|Sync Rule|
+|Atribut úložiště metaverse|Název atributu|Typ toku|Atribut Azure AD|Pravidlo synchronizace|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|Out to AAD – UserExchangeOnline|
+|Azure Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|Do AAD – UserExchangeOnline|
 
-## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies synchronization flow
-By default cloudMsExchUserHoldPolicies is synchronized by Azure AD Connect directly to the cloudMsExchUserHoldPolicies attribute in the metaverse. Then, if msExchUserHoldPolices is not null in the metaverse, the attribute in flowed out to Active Directory.
+## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>průběh synchronizace cloudMsExchUserHoldPolicies
+Ve výchozím nastavení je cloudMsExchUserHoldPolicies synchronizován pomocí Azure AD Connect přímo do atributu cloudMsExchUserHoldPolicies v úložišti Metaverse. Pokud msExchUserHoldPolices v úložišti Metaverse není null, atribut v toku se přesměruje do služby Active Directory.
 
-The following tables describe the flow:
+Tok je popsán v následujících tabulkách:
 
-Inbound from Azure AD:
+Příchozí z Azure AD:
 
-|Active Directory attribute|Attribute name|Flow type|Metaverse attribute|Sync Rule|
+|Atribut služby Active Directory|Název atributu|Typ toku|Atribut úložiště metaverse|Pravidlo synchronizace|
 |-----|-----|-----|-----|-----|
-|Místní služby Active Directory|cloudMsExchUserHoldPolicies|Direct|cloudMsExchUserHoldPolicies|In from AAD - User Exchange|
+|Místní služby Active Directory|cloudMsExchUserHoldPolicies|Direct|cloudMsExchUserHoldPolicies|V nástroji AAD – uživatel Exchange|
 
-Outbound to on-premises Active Directory:
+Odchozí do místní služby Active Directory:
 
-|Metaverse attribute|Attribute name|Flow type|Azure AD attribute|Sync Rule|
+|Atribut úložiště metaverse|Název atributu|Typ toku|Atribut Azure AD|Pravidlo synchronizace|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|cloudMsExchUserHoldPolicies|IF(NOT NULL)|msExchUserHoldPolicies|Out to AD – UserExchangeOnline|
+|Azure Active Directory|cloudMsExchUserHoldPolicies|IF (NOT NULL)|msExchUserHoldPolicies|Z AD – UserExchangeOnline|
 
-## <a name="information-on-the-attribute-behavior"></a>Information on the attribute behavior
-The msExchangeUserHoldPolicies is a single authority attribute.  A single authority attribute can be set on an object (in this case, user object) in the on-premises directory or in the cloud directory.  The Start of Authority rules dictate, that if the attribute is synchronized from on-premises, then Azure AD will not be allowed to update this attribute.
+## <a name="information-on-the-attribute-behavior"></a>Informace o chování atributu
+MsExchangeUserHoldPolicies je jeden atribut Authority.  U objektu (v tomto případě uživatelského objektu) je možné nastavit atribut s jednou autoritou v místním adresáři nebo v adresáři cloudu.  Pravidla začátku úřadu určují, že pokud je atribut synchronizovaný z místního prostředí, Azure AD nebude moct tento atribut aktualizovat.
 
-To allow users to set a hold policy on a user object in the cloud, the cloudMSExchangeUserHoldPolicies attribute is used. This attribute is used because Azure AD cannot set msExchangeUserHoldPolicies directly based on the rules explained above.  This attribute will then synchronize back to the on-premises directory if, the msExchangeUserHoldPolicies is not null and replace the current value of msExchangeUserHoldPolicies.
+Pokud chcete uživatelům dovolit nastavit zásadu blokování u objektu uživatele v cloudu, použije se atribut cloudMSExchangeUserHoldPolicies. Tento atribut se používá, protože Azure AD nemůže nastavit msExchangeUserHoldPolicies přímo na základě pravidel, která jsou vysvětlená výše.  Tento atribut se pak synchronizuje zpátky do místního adresáře, pokud msExchangeUserHoldPolicies nemá hodnotu null a nahradí aktuální hodnotu msExchangeUserHoldPolicies.
 
-Under certain circumstances, for instance, if both were changed on-premises and in Azure at the same time, this could cause some issues.  
+Za určitých okolností, například pokud byly oba změněny místně i v Azure, může to způsobit určité problémy.  
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

@@ -1,6 +1,6 @@
 ---
-title: Use Azure Data Factory to migrate data from an on-premises Netezza server to Azure
-description: Use Azure Data Factory to migrate data from an on-premises Netezza server to Azure.
+title: Použití Azure Data Factory k migraci dat z místního serveru Netezza do Azure
+description: K migraci dat z místního Netezza serveru do Azure použijte Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -19,192 +19,192 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74217677"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Use Azure Data Factory to migrate data from an on-premises Netezza server to Azure 
+# <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Použití Azure Data Factory k migraci dat z místního serveru Netezza do Azure 
 
-Azure Data Factory provides a performant, robust, and cost-effective mechanism to migrate data at scale from an on-premises Netezza server to your Azure storage account or Azure SQL Data Warehouse database. 
+Azure Data Factory poskytuje výkonný, robustní a nákladově efektivní mechanismus pro migraci dat ve velkém měřítku z místního Netezza serveru do svého účtu služby Azure Storage nebo Azure SQL Data Warehouse databáze. 
 
-This article provides the following information for data engineers and developers:
+Tento článek poskytuje následující informace pro inženýry dat a vývojáře:
 
 > [!div class="checklist"]
 > * Výkon 
-> * Copy resilience
+> * Kopírovat odolnost
 > * Zabezpečení sítě
-> * High-level solution architecture 
-> * Implementation best practices  
+> * Architektura řešení vysoké úrovně 
+> * Osvědčené postupy implementace  
 
 ## <a name="performance"></a>Výkon
 
-Azure Data Factory offers a serverless architecture that allows parallelism at various levels. If you're a developer, this means you can build pipelines to fully use both network and database bandwidth to maximize data movement throughput for your environment.
+Azure Data Factory nabízí architekturu bez serveru, která umožňuje paralelismus na různých úrovních. Pokud jste vývojář, znamená to, že můžete vytvářet kanály pro plné využití šířky pásma sítě i databáze k maximalizaci propustnosti přesunu dat pro vaše prostředí.
 
-![Performance diagram](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
+![Diagram výkonu](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
 
-The preceding diagram can be interpreted as follows:
+Předchozí diagram lze interpretovat následujícím způsobem:
 
-- A single copy activity can take advantage of scalable compute resources. When you use Azure Integration Runtime, you can specify [up to 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) for each copy activity in a serverless manner. With a self-hosted integration runtime (self-hosted IR), you can manually scale up the machine or scale out to multiple machines ([up to four nodes](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)), and a single copy activity distributes its partition across all nodes. 
+- Jedna aktivita kopírování může využít výhod škálovatelných výpočetních prostředků. Když použijete Azure Integration Runtime, můžete pro každou aktivitu kopírování v rámci serveru zadat [až 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) . V místním prostředí Integration runtime (v místním prostředí IR) můžete ručně škálovat počítač nebo škálovat na více počítačů ([až čtyři uzly](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) a jedna aktivita kopírování distribuuje svůj oddíl napříč všemi uzly. 
 
-- A single copy activity reads from and writes to the data store by using multiple threads. 
+- Jedna aktivita kopírování čte z a zapisuje do úložiště dat pomocí více vláken. 
 
-- Azure Data Factory control flow can start multiple copy activities in parallel. For example, it can start them by using a [For Each loop](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
+- Tok řízení Azure Data Factory může současně spustit více aktivit kopírování. Například je může spustit pomocí příkazu [pro každou smyčku](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
 
-For more information, see [Copy activity performance and scalability guide](https://docs.microsoft.com/azure/data-factory/copy-activity-performance).
+Další informace najdete v tématu [Průvodce výkonem a škálovatelností aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance).
 
 ## <a name="resilience"></a>Odolnost
 
-Within a single copy activity run, Azure Data Factory has a built-in retry mechanism, which enables it to handle a certain level of transient failures in the data stores or in the underlying network.
+V rámci jedné aktivity kopírování Azure Data Factory má vestavěný mechanismus opakování, který umožňuje zpracování určité úrovně přechodných chyb v úložištích dat nebo v podkladové síti.
 
-With Azure Data Factory copy activity, when you copy data between source and sink data stores, you have two ways to handle incompatible rows. You can either abort and fail the copy activity or continue to copy the rest of the data by skipping the incompatible data rows. In addition, to learn the cause of the failure, you can log the incompatible rows in Azure Blob storage or Azure Data Lake Store, fix the data on the data source, and retry the copy activity.
+Při Azure Data Factory aktivity kopírování se při kopírování dat mezi zdrojem a úložištěm dat jímky existují dva způsoby, jak zpracovávat nekompatibilní řádky. Můžete buď přerušit, nebo převzít aktivitu kopírování, nebo pokračovat ve kopírování zbývajících dat vynecháním nekompatibilních datových řádků. Chcete-li zjistit příčinu selhání, můžete protokolovat nekompatibilní řádky ve službě Azure Blob Storage nebo Azure Data Lake Store, opravovat data ve zdroji dat a opakovat aktivitu kopírování.
 
 ## <a name="network-security"></a>Zabezpečení sítě 
 
-By default, Azure Data Factory transfers data from the on-premises Netezza server to an Azure storage account or Azure SQL Data Warehouse database by using an encrypted connection over Hypertext Transfer Protocol Secure (HTTPS). HTTPS provides data encryption in transit and prevents eavesdropping and man-in-the-middle attacks.
+Ve výchozím nastavení Azure Data Factory přenáší data z místního serveru Netezza do účtu služby Azure Storage nebo do databáze Azure SQL Data Warehouse pomocí šifrovaného připojení přes protokol HTTPS (Hypertext Transfer Protocol Secure). Protokol HTTPS zajišťuje šifrování dat při přenosu a znemožňuje odposlouchávání a útoky prostředníkem.
 
-Alternatively, if you don't want data to be transferred over the public internet, you can help achieve higher security by transferring data over a private peering link via Azure Express Route. 
+Případně, pokud nechcete, aby se data přenesla prostřednictvím veřejného Internetu, můžete přispět k vyššímu zabezpečení prostřednictvím přenosu dat prostřednictvím privátního partnerského propojení prostřednictvím trasy Azure Express. 
 
-The next section discusses how to achieve higher security.
+Další část popisuje, jak dosáhnout vyšší úrovně zabezpečení.
 
 ## <a name="solution-architecture"></a>Architektura řešení
 
-This section discusses two ways to migrate your data.
+Tato část popisuje dva způsoby, jak migrovat data.
 
-### <a name="migrate-data-over-the-public-internet"></a>Migrate data over the public internet
+### <a name="migrate-data-over-the-public-internet"></a>Migrace dat přes veřejný Internet
 
-![Migrate data over the public internet](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
+![Migrace dat přes veřejný Internet](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
 
-The preceding diagram can be interpreted as follows:
+Předchozí diagram lze interpretovat následujícím způsobem:
 
-- In this architecture, you transfer data securely by using HTTPS over the public internet.
+- V této architektuře můžete data bezpečně přenášet pomocí protokolu HTTPS prostřednictvím veřejného Internetu.
 
-- To achieve this architecture, you need to install the Azure Data Factory integration runtime (self-hosted) on a Windows machine behind a corporate firewall. Make sure that this integration runtime can directly access the Netezza server. To fully use your network and data stores bandwidth to copy data, you can manually scale up your machine or scale out to multiple machines.
+- Chcete-li dosáhnout této architektury, je nutné nainstalovat Azure Data Factory Integration runtime (v místním prostředí) na počítač s Windows za podnikovou bránou firewall. Ujistěte se, že tento modul runtime integrace má přímý přístup k serveru Netezza. Pokud chcete plně využívat síť a úložiště dat ke kopírování dat, můžete ručně škálovat počítač nebo škálovat kapacitu na více počítačů.
 
-- By using this architecture, you can migrate both initial snapshot data and delta data.
+- Pomocí této architektury můžete migrovat data počátečního snímku i rozdílová data.
 
-### <a name="migrate-data-over-a-private-network"></a>Migrate data over a private network 
+### <a name="migrate-data-over-a-private-network"></a>Migrace dat přes soukromou síť 
 
-![Migrate data over a private network](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
+![Migrace dat přes soukromou síť](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
 
-The preceding diagram can be interpreted as follows:
+Předchozí diagram lze interpretovat následujícím způsobem:
 
-- In this architecture, you migrate data over a private peering link via Azure Express Route, and data never traverses over the public internet. 
+- V této architektuře migrujete data přes privátní partnerský vztah přes Azure Express Route a data nikdy neprochází přes veřejný Internet. 
 
-- To achieve this architecture, you need to install the Azure Data Factory integration runtime (self-hosted) on a Windows virtual machine (VM) within your Azure virtual network. To fully use your network and data stores bandwidth to copy data, you can manually scale up your VM or scale out to multiple VMs.
+- K dosažení této architektury je potřeba nainstalovat Azure Data Factory Integration runtime (v místním prostředí) na virtuální počítač s Windows v rámci služby Azure Virtual Network. Pokud chcete plně využívat síť a úložiště dat ke kopírování dat, můžete ručně škálovat virtuální počítač nebo škálovat na více virtuálních počítačů.
 
-- By using this architecture, you can migrate both initial snapshot data and delta data.
+- Pomocí této architektury můžete migrovat data počátečního snímku i rozdílová data.
 
-## <a name="implement-best-practices"></a>Implement best practices 
+## <a name="implement-best-practices"></a>Implementace osvědčených postupů 
 
-### <a name="manage-authentication-and-credentials"></a>Manage authentication and credentials 
+### <a name="manage-authentication-and-credentials"></a>Správa ověřování a přihlašovacích údajů 
 
-- To authenticate to Netezza, you can use [ODBC authentication via connection string](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties). 
+- K ověření v Netezza můžete použít ověřování pomocí [rozhraní ODBC prostřednictvím připojovacího řetězce](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties). 
 
-- To authenticate to Azure Blob storage: 
+- Ověření ve službě Azure Blob Storage: 
 
-   - We highly recommend using [managed identities for Azure resources](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity). Built on top of an automatically managed Azure Data Factory identity in Azure Active Directory (Azure AD), managed identities allows you to configure pipelines without having to supply credentials in the Linked Service definition.  
+   - Důrazně doporučujeme používat [pro prostředky Azure spravované identity](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity). Spravované identity založené na automaticky spravované Azure Data Factory identitě v Azure Active Directory (Azure AD) umožňují konfigurovat kanály bez nutnosti zadávat přihlašovací údaje v definici propojené služby.  
 
-   - Alternatively, you can authenticate to Azure Blob storage by using [service principal](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), a [shared access signature](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication), or a [storage account key](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
+   - Případně můžete provést ověření ve službě Azure Blob Storage pomocí [instančního objektu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [sdíleného přístupového podpisu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)nebo [klíče účtu úložiště](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
 
-- To authenticate to Azure Data Lake Storage Gen2: 
+- Ověření pro Azure Data Lake Storage Gen2: 
 
-   - We highly recommend using [managed identities for Azure resources](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity).
+   - Důrazně doporučujeme používat [pro prostředky Azure spravované identity](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity).
    
-   - You can also use [service principal](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) or a [storage account key](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication). 
+   - Můžete také použít [instanční objekt](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) nebo [klíč účtu úložiště](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication). 
 
-- To authenticate to Azure SQL Data Warehouse:
+- Ověření pro Azure SQL Data Warehouse:
 
-   - We highly recommend using [managed identities for Azure resources](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity).
+   - Důrazně doporučujeme používat [pro prostředky Azure spravované identity](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity).
    
-   - You can also use [service principal](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) or [SQL authentication](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication).
+   - Můžete také použít [instanční objekt](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) nebo [ověřování SQL](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication).
 
-- When you're not using managed identities for Azure resources, we highly recommend [storing the credentials in Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) to make it easier to centrally manage and rotate keys without having to modify Azure Data Factory linked services. This is also one of the [best practices for CI/CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
+- Pokud nepoužíváte spravované identity pro prostředky Azure, důrazně doporučujeme [ukládat přihlašovací údaje v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) , aby bylo snazší centrálně spravovat a střídat klíče, aniž byste museli upravovat Azure Data Factory propojené služby. Toto je také jedním z [osvědčených postupů pro CI/CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
 
-### <a name="migrate-initial-snapshot-data"></a>Migrate initial snapshot data 
+### <a name="migrate-initial-snapshot-data"></a>Migrace dat počátečního snímku 
 
-For small tables (that is, tables with a volume of less than 100 GB or that can be migrated to Azure within two hours), you can make each copy job load data per table. For greater throughput, you can run multiple Azure Data Factory copy jobs to load separate tables concurrently. 
+Pro malé tabulky (to znamená, že tabulky se svazkem menším než 100 GB nebo které je možné migrovat do Azure do dvou hodin), můžete vytvořit každou úlohu kopírování dat na každou tabulku. Pro větší propustnost můžete spustit několik úloh kopírování Azure Data Factory pro souběžné načtení samostatných tabulek. 
 
-Within each copy job, to run parallel queries and copy data by partitions, you can also reach some level of parallelism by using the [`parallelCopies` property setting](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) with either of the following data partition options:
+Aby bylo možné spouštět paralelní dotazy a kopírovat data podle oddílů, můžete v rámci každé úlohy kopírování získat přístup k určité úrovni paralelismu pomocí [nastavení vlastnosti`parallelCopies`](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) s kteroukoli z následujících možností datových oddílů:
 
-- For help achieve greater efficiency, we encourage you to start from a data slice.  Make sure that the value in the `parallelCopies` setting is less than the total number of data-slice partitions in your table on the Netezza server.  
+- Abychom vám pomohli dosáhnout vyšší efektivity, doporučujeme začít z datového řezu.  Ujistěte se, že hodnota v nastavení `parallelCopies` je menší než celkový počet oddílů datového řezu v tabulce na serveru Netezza.  
 
-- If the volume of each data-slice partition is still large (for example, 10 GB or greater), we encourage you to switch to a dynamic range partition. This option gives you greater flexibility to define the number of partitions and the volume of each partition by partition column, upper bound and lower bound.
+- Pokud je svazek každého oddílu pro datové řezy stále velký (například 10 GB nebo větší), doporučujeme přepnout na oddíl dynamického rozsahu. Tato možnost nabízí větší flexibilitu pro definování počtu oddílů a objemu jednotlivých oddílů podle sloupce oddílu, horní meze a dolní meze.
 
-For larger tables (that is, tables with a volume of 100 GB or greater or that *can't* be migrated to Azure within two hours), we recommend that you partition the data by custom query and then make each copy-job copy one partition at a time. For better throughput, you can run multiple Azure Data Factory copy jobs concurrently. For each copy-job target of loading one partition by custom query, you can increase throughput by enabling parallelism via either data slice or dynamic range. 
+Pro větší tabulky (tj. tabulky se svazkem 100 GB nebo vyšší nebo, které *nelze* migrovat do Azure do dvou hodin), doporučujeme rozdělit data na oddíly vlastními dotazy a pak vytvořit každou kopii v jednom okamžiku kopírováním jednotlivých oddílů. Pro zajištění lepší propustnosti můžete současně spustit více úloh kopírování Azure Data Factory. Pro každý cíl kopírování a úlohy pro načtení jednoho oddílu vlastním dotazem můžete zvýšit propustnost tím, že provedete paralelismus prostřednictvím datového řezu nebo dynamického rozsahu. 
 
-If any copy job fails because of a network or data store transient issue, you can rerun the failed copy job to reload that specific partition from the table. Other copy jobs that load other partitions aren't affected.
+Pokud dojde k selhání jakékoli úlohy kopírování z důvodu přechodného problému sítě nebo úložiště dat, můžete znovu spustit úlohu, která se nezdařila, a znovu načíst konkrétní oddíl z tabulky. Jiné úlohy kopírování, které načítají jiné oddíly, nejsou ovlivněny.
 
-When you load data into an Azure SQL Data Warehouse database, we suggest that you enable PolyBase within the copy job with Azure Blob storage as staging.
+Když nahráváte data do databáze Azure SQL Data Warehouse, doporučujeme, abyste v rámci úlohy kopírování v úložišti objektů BLOB v Azure jako fázování povolili základ.
 
-### <a name="migrate-delta-data"></a>Migrate delta data 
+### <a name="migrate-delta-data"></a>Migrace rozdílových dat 
 
-To identify the new or updated rows from your table, use a timestamp column or an incrementing key within the schema. You can then store the latest value as a high watermark in an external table and then use it to filter the delta data the next time you load data. 
+Chcete-li identifikovat nové nebo aktualizované řádky z tabulky, použijte ve schématu sloupec časového razítka nebo přírůstkový klíč. Pak můžete uložit nejnovější hodnotu jako horní mez v externí tabulce a pak ji použít k filtrování rozdílových dat při příštím načtení dat. 
 
-Each table can use a different watermark column to identify its new or updated rows. We suggest that you create an external control table. In the table, each row represents one table on the Netezza server with its specific watermark column name and high watermark value. 
+Každá tabulka může použít jiný sloupec meze k identifikaci nových nebo aktualizovaných řádků. Doporučujeme vytvořit tabulku externího ovládacího prvku. V tabulce každý řádek představuje jednu tabulku na serveru Netezza s jeho specifickým názvem sloupce meze a horní hodnotou meze. 
 
-### <a name="configure-a-self-hosted-integration-runtime"></a>Configure a self-hosted integration runtime
+### <a name="configure-a-self-hosted-integration-runtime"></a>Konfigurace prostředí Integration runtime v místním prostředí
 
-If you're migrating data from the Netezza server to Azure, whether the server is on-premises behind your corporation firewall or within a virtual network environment, you need to install a self-hosted IR on a Windows machine or VM, which is the engine that's used to move data. As you're installing the self-hosted IR, we recommend the following approach:
+Pokud migrujete data ze serveru Netezza do Azure, ať už je místní lokalita za bránou firewall nebo ve virtuálním síťovém prostředí, musíte na počítači s Windows nebo na virtuálním počítači s Windows nainstalovat místně hostovaný IR, což je modul, který se používá k přesune data. Při instalaci prostředí IR pro místní hostování doporučujeme následující postup:
 
-- For each Windows machine or VM, start with a configuration of 32 vCPU and 128-GB memory. You can keep monitoring the CPU and memory usage of the IR machine during the data migration to see whether you need to further scale up the machine for better performance or scale down the machine to save cost.
+- Pro každý počítač s Windows nebo virtuální počítač začněte konfigurací 32 vCPU a 128-GB paměti. V průběhu migrace dat můžete sledovat využití CPU a paměti v počítači IR, abyste viděli, jestli potřebujete ještě víc škálovat počítač pro lepší výkon, nebo snížit kapacitu počítače, aby se ušetřily náklady.
 
-- You can also scale out by associating up to four nodes with a single self-hosted IR. A single copy job that's running against a self-hosted IR automatically applies all VM nodes to copy the data in parallel. For high availability, start with four VM nodes to avoid a single point of failure during the data migration.
+- Horizontální navýšení kapacity můžete také škálovat tak, že přidružíte až čtyři uzly s jedním místně hostovaným IR. Jedna úloha kopírování, která běží na místním prostředí IR, automaticky aplikuje všechny uzly virtuálních počítačů na paralelní kopírování dat. V případě vysoké dostupnosti začněte se čtyřmi uzly virtuálních počítačů, abyste se vyhnuli jednomu bodu selhání během migrace dat.
 
-### <a name="limit-your-partitions"></a>Limit your partitions
+### <a name="limit-your-partitions"></a>Omezení oddílů
 
-As a best practice, conduct a performance proof of concept (POC) with a representative sample dataset, so that you can determine an appropriate partition size for each copy activity. We suggest that you load each partition to Azure within two hours.  
+Osvědčeným postupem je vyřídit výkon konceptu (ověření koncepce) s reprezentativní ukázkovou datovou sadou, abyste pro každou aktivitu kopírování mohli určit vhodnou velikost oddílu. Každý oddíl do Azure doporučujeme načíst do dvou hodin.  
 
-To copy a table, start with a single copy activity with a single, self-hosted IR machine. Gradually increase the `parallelCopies` setting based on the number of data-slice partitions in your table. See whether the entire table can be loaded to Azure within two hours, according to the throughput that results from the copy job. 
+Chcete-li zkopírovat tabulku, začněte s jednou aktivitou kopírování s jedním místně hostovaným počítačem IR. Postupně zvyšujte nastavení `parallelCopies` v závislosti na počtu oddílů datového řezu v tabulce. Podívejte se, jestli se celá tabulka dá načíst do Azure do dvou hodin, podle propustnosti, která je výsledkem úlohy kopírování. 
 
-If it can't be loaded to Azure within two hours, and the capacity of the self-hosted IR node and the data store are not fully used, gradually increase the number of concurrent copy activities until you reach the limit of your network or the bandwidth limit of the data stores. 
+Pokud se do Azure nedá načíst do dvou hodin a kapacita uzlu IR v místním prostředí a úložiště dat se nepoužívá, postupně zvyšujte počet souběžných aktivit kopírování, dokud nedosáhnete limitu sítě nebo šířky pásma úložiště dat. pracují. 
 
-Keep monitoring the CPU and memory usage on the self-hosted IR machine, and be ready to scale up the machine or scale out to multiple machines when you see that the CPU and memory are fully used. 
+Sledujte využití CPU a paměti na místním počítači IR a připravte se na horizontální navýšení kapacity počítače nebo horizontální navýšení kapacity na více počítačů, když zjistíte, že je procesor a paměť plně využité. 
 
-When you encounter throttling errors, as reported by Azure Data Factory copy activity, either reduce the concurrency or `parallelCopies` setting in Azure Data Factory, or consider increasing the bandwidth or I/O operations per second (IOPS) limits of the network and data stores. 
+Když narazíte na chyby omezování, jak je uvedeno v Azure Data Factory aktivita kopírování, buď zmenšete nastavení souběžnosti nebo `parallelCopies` v Azure Data Factory, nebo zvažte zvýšení limitu šířky pásma nebo vstupně-výstupních operací za sekundu (IOPS) sítě a dat. Store. 
 
 
-### <a name="estimate-your-pricing"></a>Estimate your pricing 
+### <a name="estimate-your-pricing"></a>Odhad ceny 
 
-Consider the following pipeline, which is constructed to migrate data from the on-premises Netezza server to an Azure SQL Data Warehouse database:
+Vezměte v úvahu následující kanál, který je vytvořený k migraci dat z místního serveru Netezza do databáze Azure SQL Data Warehouse:
 
-![The pricing pipeline](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
+![Cenový kanál](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
-Let's assume that the following statements are true: 
+Pojďme předpokládat, že jsou splněné následující příkazy: 
 
-- The total data volume is 50 terabytes (TB). 
+- Celkový objem dat je 50 terabajtů (TB). 
 
-- We're migrating data by using first-solution architecture (the Netezza server is on-premises, behind the firewall).
+- Migrujeme data pomocí architektury prvního řešení (Server Netezza je v místním prostředí za bránou firewall).
 
-- The 50-TB volume is divided into 500 partitions, and each copy activity moves one partition.
+- Svazek 50-TB je rozdělen do 500 oddílů a každá aktivita kopírování přesune jeden oddíl.
 
-- Each copy activity is configured with one self-hosted IR against four machines and achieves a throughput of 20 megabytes per second (MBps). (Within copy activity, `parallelCopies` is set to 4, and each thread to load data from the table achieves a 5-MBps throughput.)
+- Každá aktivita kopírování je nakonfigurována s jedním místním prostředím IR na čtyři počítače a dosáhne propustnosti 20 megabajtů za sekundu (MB/s). (V rámci aktivity kopírování `parallelCopies` je nastavené na 4 a každé vlákno načte data z tabulky dosáhne propustnosti 5 MB/s.)
 
-- The ForEach concurrency is set to 3, and the aggregate throughput is 60 MBps.
+- Souběžnost ForEach je nastavená na 3 a agregovaná propustnost je 60 MB/s.
 
-- In total, it takes 243 hours to complete the migration.
+- V celkovém případě dokončení migrace trvá 243 hodin.
 
-Based on the preceding assumptions, here's the estimated price: 
+V závislosti na předchozích předpokladech je zde uvedená odhadovaná cena: 
 
-![The pricing table](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
+![Tabulka s cenami](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
 
 > [!NOTE]
-> The pricing shown in the preceding table is hypothetical. Your actual pricing depends on the actual throughput in your environment. The price for the  Windows machine (with the self-hosted IR installed) is not included. 
+> Ceny uvedené v předchozí tabulce jsou hypotetické. Vaše skutečné ceny závisí na skutečné propustnosti ve vašem prostředí. Není zahrnuta cena za počítač se systémem Windows (s nainstalovaným prostředím IR pro místní hostování). 
 
 ### <a name="additional-references"></a>Další odkazy
 
-For more information, see the following articles and guides:
+Další informace najdete v následujících článcích a příručkách:
 
-- [Migrate data from an on-premises relational Data Warehouse database to Azure by using Azure Data Factory](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premises-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
-- [Netezza connector](https://docs.microsoft.com/azure/data-factory/connector-netezza)
-- [ODBC connector](https://docs.microsoft.com/azure/data-factory/connector-odbc)
-- [Azure Blob storage connector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2 connector](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure SQL Data Warehouse connector](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
-- [Copy activity performance tuning guide](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
+- [Migrace dat z místní databáze relačního datového skladu do Azure pomocí Azure Data Factory](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premises-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
+- [Konektor Netezza](https://docs.microsoft.com/azure/data-factory/connector-netezza)
+- [Konektor ODBC](https://docs.microsoft.com/azure/data-factory/connector-odbc)
+- [Konektor služby Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+- [Konektor Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
+- [Konektor Azure SQL Data Warehouse](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
+- [Průvodce laděním výkonu aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Vytvoření a konfigurace místního prostředí Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Self-hosted integration runtime HA and scalability](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [Data movement security considerations](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Store credentials in Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Copy data incrementally from one table](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
-- [Copy data incrementally from multiple tables](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
-- [Azure Data Factory pricing page](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+- [Vysoce hostované prostředí Integration runtime – HA a škálovatelnost](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
+- [Požadavky na zabezpečení přesunu dat](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
+- [Ukládat přihlašovací údaje v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+- [Přírůstkové kopírování dat z jedné tabulky](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
+- [Přírůstkové kopírování dat z více tabulek](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
+- [Stránka s cenami Azure Data Factory](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Copy files from multiple containers by using Azure Data Factory](solution-template-copy-files-multiple-containers.md)
+- [Kopírování souborů z více kontejnerů pomocí Azure Data Factory](solution-template-copy-files-multiple-containers.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Text Analytics client library | Microsoft Docs'
+title: 'Rychlý Start: Klientská knihovna Analýza textu | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: In this quickstart, detect language by using the Text Analytics API from Azure Cognitive Services.
+description: V tomto rychlém startu zjistíte jazyk pomocí rozhraní API pro analýzu textu z Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,14 +18,14 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74220781"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library"></a>Quickstart: Use the Text Analytics client library
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Rychlý Start: použití klientské knihovny Analýza textu
 
-Get started with the Text Analytics client library. Follow these steps to install the package and try out the example code for basic tasks.
+Začněte s klientskou knihovnou Analýza textu. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 
-Use the Text Analytics client library to perform:
+Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
-* Analýza subjektivního hodnocení
-* Detekce jazyka
+* Analýza mínění
+* Rozpoznávání jazyka
 * Rozpoznávání entit
 * Extrakce klíčových frází
 
@@ -61,7 +61,7 @@ Use the Text Analytics client library to perform:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you want to clean up and remove a Cognitive Services subscription, you can delete the resource or resource group. Deleting the resource group also deletes any other resources associated with it.
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
 
 * [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -73,7 +73,7 @@ If you want to clean up and remove a Cognitive Services subscription, you can de
 
 
 * [Přehled rozhraní API pro analýzu textu](../overview.md)
-* [Sentiment analysis](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Entity recognition](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Detect language](../how-tos/text-analytics-how-to-keyword-extraction.md)
-* [Language recognition](../how-tos/text-analytics-how-to-language-detection.md)
+* [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Zjistit jazyk](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Rozpoznávání jazyka](../how-tos/text-analytics-how-to-language-detection.md)

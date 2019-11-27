@@ -75,7 +75,7 @@ Služba mobility komunikuje se zařízením replikace a replikovanými počíta�
 
 ## <a name="ports"></a>Porty
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | --- 
 Virtuální počítače | Služba mobility spuštěná na virtuálních počítačích komunikuje s místním zařízením replikace na portu HTTPS 443 příchozí, pro správu replikací.<br/><br/> Virtuální počítače odesílají data replikace na procesový Server (ve výchozím nastavení běží na zařízení replikace) na portu HTTPS 9443 příchozí. Tento port lze změnit.
 Replikační zařízení | Zařízení replikace orchestruje replikaci pomocí Azure přes odchozí port HTTPS 443.
@@ -97,7 +97,7 @@ Hodnoty v této tabulce lze použít k zjištění, zda v nasazení potřebujete
 - Pokud je frekvence denních změn (četnost změn) větší než 2 TB, nasaďte další procesový Server.
 - Pokud provádíte replikaci více než 200 počítačů, nasaďte další replikační zařízení.
 
-**CPU** | **Paměť** | **Volné místo pro ukládání dat do mezipaměti** | **Míra četnosti změn** | **Omezení replikace**
+**VČETNĚ** | **Rezident** | **Volné místo pro ukládání dat do mezipaměti** | **Míra četnosti změn** | **Omezení replikace**
 --- | --- | --- | --- | ---
 8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB nebo méně | počítače s < 100 
 12 vCPU (2 sokety × 6 jader \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB až 1 TB | 100-150 počítačů.

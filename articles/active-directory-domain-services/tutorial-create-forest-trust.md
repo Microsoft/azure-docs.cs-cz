@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create a forest trust in Azure AD Domain Services | Microsoft Docs
-description: Learn how to create a one-way outbound forest to an on-premises AD DS domain in the Azure portal for Azure AD Domain Services
+title: Kurz – vytvoření vztahu důvěryhodnosti doménové struktury v Azure AD Domain Services | Microsoft Docs
+description: Naučte se vytvořit jednosměrnou odchozí doménovou strukturu do místní služba AD DS domény v Azure Portal pro Azure AD Domain Services
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,195 +17,195 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233594"
 ---
-# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Tutorial: Create an outbound forest trust to an on-premises domain in Azure Active Directory Domain Services (preview)
+# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Kurz: Vytvoření vztahu důvěryhodnosti odchozí doménové struktury do místní domény v Azure Active Directory Domain Services (Preview)
 
-In environments where you can't synchronize password hashes, or you have users that exclusively sign in using smart cards so they don't know their password, you can use a resource forest in Azure Active Directory Domain Services (AD DS). A resource forest uses a one-way outbound trust from Azure AD DS to one or more on-premises AD DS environments. This trust relationship lets users, applications, and computers authenticate against an on-premises domain from the Azure AD DS managed domain. Azure AD DS resource forests are currently in preview.
+V prostředích, kde nemůžete synchronizovat hodnoty hash hesel, nebo máte uživatele, kteří se přihlásili pomocí čipových karet, aby si neznali heslo, můžete použít doménovou strukturu prostředků v Azure Active Directory Domain Services (služba AD DS). Doménová struktura prostředků používá jednosměrný odchozí vztah důvěryhodnosti z Azure služba AD DS do jednoho nebo více místních služba AD DS prostředí. Tento vztah důvěryhodnosti umožňuje uživatelům, aplikacím a počítačům provádět ověřování v místní doméně ze spravované domény Azure služba AD DS. Doménové struktury prostředků Azure služba AD DS jsou momentálně ve verzi Preview.
 
-![Diagram of forest trust from Azure AD DS to on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Diagram vztahu důvěryhodnosti doménové struktury z Azure služba AD DS do místního služba AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Configure DNS in an on-premises AD DS environment to support Azure AD DS connectivity
-> * Create a one-way inbound forest trust in an on-premises AD DS environment
-> * Create a one-way outbound forest trust in Azure AD DS
-> * Test and validate the trust relationship for authentication and resource access
+> * Konfigurace DNS v místním prostředí služba AD DS pro podporu připojení Azure služba AD DS
+> * Vytvoření jednosměrného vztahu důvěryhodnosti pro příchozí doménovou strukturu v místním prostředí služba AD DS
+> * Vytvoření jednosměrné důvěryhodnosti pro odchozí doménovou strukturu v Azure služba AD DS
+> * Testování a ověření vztahu důvěryhodnosti pro ověřování a přístup k prostředkům
 
-If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To complete this tutorial, you need the following resources and privileges:
+K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
 * Aktivní předplatné Azure.
-    * If you don’t have an Azure subscription, [create an account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* An Azure Active Directory tenant associated with your subscription, either synchronized with an on-premises directory or a cloud-only directory.
-    * If needed, [create an Azure Active Directory tenant][create-azure-ad-tenant] or [associate an Azure subscription with your account][associate-azure-ad-tenant].
-* An Azure Active Directory Domain Services managed domain created using a resource forest and configured in your Azure AD tenant.
-    * If needed, [create and configure an Azure Active Directory Domain Services instance][create-azure-ad-ds-instance-advanced].
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+* Azure Active Directory Domain Services spravovaná doména vytvořená pomocí doménové struktury prostředků a nakonfigurovaná ve vašem tenantovi Azure AD.
+    * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance-advanced].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-In this tutorial, you create and configure the outbound forest trust from Azure AD DS using the Azure portal. To get started, first sign in to the [Azure portal](https://portal.azure.com).
+V tomto kurzu vytvoříte a nakonfigurujete odchozí vztah důvěryhodnosti doménové struktury z Azure služba AD DS pomocí Azure Portal. Chcete-li začít, nejprve se přihlaste k [Azure Portal](https://portal.azure.com).
 
 ## <a name="networking-considerations"></a>Aspekty sítí
 
-The virtual network that hosts the Azure AD DS resource forest needs network connectivity to your on-premises Active Directory. Applications and services also need network connectivity to the virtual network hosting the Azure AD DS resource forest. Network connectivity to the Azure AD DS resource forest must be always on and stable otherwise users may fail to authenticate or access resources.
+Virtuální síť, která je hostitelem doménové struktury prostředků Azure služba AD DS, potřebuje síťové připojení k vaší místní službě Active Directory. Aplikace a služby také potřebují síťové připojení k virtuální síti hostující doménovou strukturu prostředků Azure služba AD DS. Síťové připojení k doménové struktuře prostředků Azure služba AD DS musí být vždycky zapnuté a stabilní, jinak se uživatelům nemusí podařit ověřit nebo získat přístup k prostředkům.
 
-Before you configure a forest trust in Azure AD DS, make sure your networking between Azure and on-premises environment meets the following requirements:
+Před konfigurací vztahu důvěryhodnosti doménové struktury ve službě Azure služba AD DS se ujistěte, že vaše síť mezi Azure a místním prostředím splňuje následující požadavky:
 
-* Use private IP addresses. Don't rely on DHCP with dynamic IP address assignment.
-* Avoid overlapping IP address spaces to allow virtual network peering and routing to successfully communicate between Azure and on-premises.
-* An Azure virtual network needs a gateway subnet to configure a site-to-site (S2S) VPN or ExpressRoute connection
-* Create subnets with enough IP addresses to support your scenario.
-* Make sure Azure AD DS has its own subnet, don't share this virtual network subnet with application VMs and services.
-* Peered virtual networks are NOT transitive.
-    * Azure virtual network peerings must be created between all virtual networks you want to use the Azure AD DS resource forest trust to the on-premises AD DS environment.
-* Provide continuous network connectivity to your on-premises Active Directory forest. Don't use on-demand connections.
-* Make sure there's continuous name resolution (DNS) between your Azure AD DS resource forest name and your on-premises Active Directory forest name.
+* Použijte privátní IP adresy. Nespoléhá se na protokol DHCP s přiřazením dynamické IP adresy.
+* Nepoužívejte překrývající se adresní prostory IP adres, aby bylo možné vytvořit partnerský vztah virtuálních sítí a směrování pro úspěšnou komunikaci mezi Azure a místním prostředím.
+* Virtuální síť Azure vyžaduje podsíť brány pro konfiguraci připojení VPN nebo ExpressRoute připojení typu Site-to-Site (S2S).
+* Vytvořte podsítě s dostatkem IP adres pro podporu vašeho scénáře.
+* Ujistěte se, že je v Azure služba AD DS vlastní podsíť, nesdílejte tuto podsíť virtuální sítě s virtuálními počítači a službami aplikací.
+* Partnerské virtuální sítě nejsou přenosné.
+    * Partnerské vztahy virtuálních sítí Azure musí být vytvořené mezi všemi virtuálními sítěmi, které chcete použít pro vztah důvěryhodnosti doménové struktury prostředků Azure služba AD DS k místnímu služba AD DS prostředí.
+* Poskytněte nepřetržité síťové připojení k místní doménové struktuře služby Active Directory. Nepoužívejte připojení na vyžádání.
+* Zajistěte, aby mezi názvem doménové struktury prostředků Azure služba AD DS a názvem vaší místní doménové struktury služby Active Directory bylo překlad nepřetržitého překladu adres (DNS).
 
-## <a name="configure-dns-in-the-on-premises-domain"></a>Configure DNS in the on-premises domain
+## <a name="configure-dns-in-the-on-premises-domain"></a>Konfigurace DNS v místní doméně
 
-To correctly resolve the Azure AD DS managed domain from the on-premises environment, you may need to add forwarders to the existing DNS servers. If you haven't configure the on-premises environment to communicate with the Azure AD DS managed domain, complete the following steps from a management workstation for the on-premises AD DS domain:
+Pokud chcete správně přeložit spravovanou doménu Azure služba AD DS z místního prostředí, možná budete muset přidat servery pro přeposílání na existující servery DNS. Pokud jste nenakonfigurovali místní prostředí, aby komunikovalo se spravovanou doménou Azure služba AD DS, proveďte následující kroky z pracovní stanice pro správu v místní doméně služba AD DS:
 
-1. Select **Start | Administrative Tools | DNS**
-1. Right-select DNS server, such as *myAD01*, select **Properties**
-1. Choose **Forwarders**, then **Edit** to add additional forwarders.
-1. Add the IP addresses of the Azure AD DS managed domain, such as *10.0.1.4* and *10.0.1.5*.
+1. Vyberte **Spustit | Nástroje pro správu | Služba DNS**
+1. Klikněte pravým tlačítkem na server DNS, jako je například *myAD01*, vyberte možnost **vlastnosti** .
+1. Zvolte nástroje **pro přeposílání**a pak **Upravit** pro přidání dalších služeb pro dodávání.
+1. Přidejte IP adresy spravované domény Azure služba AD DS, například *10.0.1.4* a *10.0.1.5*.
 
-## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Create inbound forest trust in the on-premises domain
+## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Vytvoření vztahu důvěryhodnosti příchozí doménové struktury v místní doméně
 
-The on-premises AD DS domain needs an incoming forest trust for the Azure AD DS managed domain. This trust must be manually created in the on-premises AD DS domain, it can't be created from the Azure portal.
+Místní služba AD DS doména potřebuje příchozí vztah důvěryhodnosti doménové struktury pro spravovanou doménu Azure služba AD DS. Tento vztah důvěryhodnosti musí být ručně vytvořen v místní doméně služba AD DS, a proto jej nelze vytvořit z Azure Portal.
 
-To configure inbound trust on the on-premises AD DS domain, complete the following steps from a management workstation for the on-premises AD DS domain:
+Pokud chcete nakonfigurovat příchozí vztah důvěryhodnosti v místní doméně služba AD DS, proveďte následující kroky z pracovní stanice pro správu pro místní doménu služba AD DS:
 
-1. Select **Start | Administrative Tools | Active Directory Domains and Trusts**
-1. Right-select domain, such as *onprem.contoso.com*, select **Properties**
-1. Choose **Trusts** tab, then **New Trust**
-1. Enter name on Azure AD DS domain name, such as *aadds.contoso.com*, then select **Next**
-1. Select the option to create a **Forest trust**, then to create a **One way: incoming** trust.
-1. Choose to create the trust for **This domain only**. In the next step, you create the trust in the Azure portal for the Azure AD DS managed domain.
-1. Choose to use **Forest-wide authentication**, then enter and confirm a trust password. This same password is also entered in the Azure portal in the next section.
-1. Step through the next few windows with default options, then choose the option for **No, do not confirm the outgoing trust**.
+1. Vyberte **Spustit | Nástroje pro správu | Domény a vztahy důvěryhodnosti služby Active Directory**
+1. Klikněte pravým tlačítkem na doména, jako je například *OnPrem.contoso.com*, vyberte možnost **vlastnosti** .
+1. Zvolte kartu **vztahy důvěryhodnosti** a pak **nový vztah důvěryhodnosti** .
+1. Do pole název domény pro Azure služba AD DS zadejte název, jako je třeba *aadds.contoso.com*, a potom vyberte **Další** .
+1. Vyberte možnost vytvoření **vztahu důvěryhodnosti doménové struktury**a pak vytvořte **jednosměrné: příchozí** vztah důvěryhodnosti.
+1. Vyberte, chcete-li vytvořit vztah důvěryhodnosti **pouze pro tuto doménu**. V dalším kroku vytvoříte vztah důvěryhodnosti v Azure Portal pro spravovanou doménu Azure služba AD DS.
+1. Zvolte možnost použití **ověřování v rámci doménové struktury**a pak zadejte a potvrďte heslo vztahu důvěryhodnosti. Stejné heslo je také zadáno v Azure Portal v další části.
+1. Projděte několik dalších oken s výchozími možnostmi a zvolte možnost **Ne, Nepotvrzujte odchozí vztah důvěryhodnosti**.
 1. Vyberte **Dokončit**.
 
-## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Create outbound forest trust in Azure AD DS
+## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Vytvoření odchozího vztahu důvěryhodnosti doménové struktury v Azure služba AD DS
 
-With the on-premises AD DS domain configured to resolve the Azure AD DS managed domain and an inbound forest trust created, now created the outbound forest trust. This outbound forest trust completes the trust relationship between the on-premises AD DS domain and the Azure AD DS managed domain.
+S místní doménou služba AD DS nakonfigurovanou pro přeložení spravované domény Azure služba AD DS a vytvoření příchozího vztahu důvěryhodnosti doménové struktury teď vytvořili odchozí vztah důvěryhodnosti doménové struktury. Tento odchozí vztah důvěryhodnosti doménové struktury dokončí vztah důvěryhodnosti mezi místní služba AD DSovou doménou a spravovanou doménou Azure služba AD DS.
 
-To create the outbound trust for the Azure AD DS managed domain in the Azure portal, complete the following steps:
+Pokud chcete vytvořit odchozí vztah důvěryhodnosti pro spravovanou doménu Azure služba AD DS v Azure Portal, proveďte následující kroky:
 
-1. In the Azure portal, search for and select **Azure AD Domain Services**, then select your managed domain, such as *aadds.contoso.com*
-1. From the menu on the left-hand side of the Azure AD DS managed domain, select **Trusts**, then choose to **+ Add** a trust.
-1. Enter a display name that identifies your trust, then the on-premises trusted forest DNS name, such as *onprem.contoso.com*
-1. Provide the same trust password that was used when configuring the inbound forest trust for the on-premises AD DS domain in the previous section.
-1. Provide at least two DNS servers for the on-premises AD DS domain, such as *10.0.2.4* and *10.0.2.5*
-1. When ready, **Save** the outbound forest trust
+1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**a pak vyberte spravovanou doménu, například *aadds.contoso.com* .
+1. V nabídce na levé straně spravované domény Azure služba AD DS vyberte **vztahy důvěryhodnosti**a pak zvolte **Přidat** vztah důvěryhodnosti.
+1. Zadejte zobrazovaný název, který identifikuje vaši důvěryhodnost, a pak místní název DNS důvěryhodné doménové struktury, například *OnPrem.contoso.com* .
+1. Zadejte stejné heslo vztahu důvěryhodnosti, které bylo použito při konfiguraci vztahu důvěryhodnosti příchozí doménové struktury pro místní služba AD DS domény v předchozí části.
+1. Poskytněte aspoň dva servery DNS místní domény služba AD DS, například *10.0.2.4* a *10.0.2.5* .
+1. Až budete připraveni, **uložte** odchozí vztah důvěryhodnosti doménové struktury.
 
-    [Create outbound forest trust in the Azure portal](./media/create-forest-trust/portal-create-outbound-trust.png)
+    [Vytvořit vztah důvěryhodnosti odchozí doménové struktury v Azure Portal](./media/create-forest-trust/portal-create-outbound-trust.png)
 
-## <a name="validate-resource-authentication"></a>Validate resource authentication
+## <a name="validate-resource-authentication"></a>Ověření ověřování prostředků
 
-The following common scenarios let you validate that forest trust correctly authenticates users and access to resources:
+Následující běžné scénáře vám umožní ověřit, že vztah důvěryhodnosti doménové struktury správně ověřuje uživatele a přístup k prostředkům:
 
-* [On-premises user authentication from the Azure AD DS resource forest](#on-premises-user-authentication-from-the-azure-ad-ds-resource-forest)
-* [Access resources in the Azure AD DS resource forest using on-premises user](#access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user)
-    * [Enable file and printer sharing](#enable-file-and-printer-sharing)
-    * [Create a security group and add members](#create-a-security-group-and-add-members)
-    * [Create a file share for cross-forest access](#create-a-file-share-for-cross-forest-access)
-    * [Validate cross-forest authentication to a resource](#validate-cross-forest-authentication-to-a-resource)
+* [Ověřování místního uživatele z doménové struktury prostředků Azure služba AD DS](#on-premises-user-authentication-from-the-azure-ad-ds-resource-forest)
+* [Přístup k prostředkům v doménové struktuře prostředků Azure služba AD DS pomocí místního uživatele](#access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user)
+    * [Povolit sdílení souborů a tiskáren](#enable-file-and-printer-sharing)
+    * [Vytvoření skupiny zabezpečení a přidání členů](#create-a-security-group-and-add-members)
+    * [Vytvoření sdílené složky pro přístup mezi doménovými strukturami](#create-a-file-share-for-cross-forest-access)
+    * [Ověření ověřování mezi doménovými strukturami v prostředku](#validate-cross-forest-authentication-to-a-resource)
 
-### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>On-premises user authentication from the Azure AD DS resource forest
+### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>Ověřování místního uživatele z doménové struktury prostředků Azure služba AD DS
 
-You should have Windows Server virtual machine joined to the Azure AD DS resource domain. Use this virtual machine to test your on-premises user can authenticate on a virtual machine.
+Je potřeba, aby byl virtuální počítač s Windows serverem připojený k doméně prostředků Azure služba AD DS. Použijte tento virtuální počítač k otestování místního uživatele, který se může ověřit na virtuálním počítači.
 
-1. Connect to the Windows Server VM joined to the Azure AD DS resource forest using Remote Desktop and your Azure AD DS administrator credentials. If you get a Network Level Authentication (NLA) error, check the user account you used is not a domain user account.
+1. Připojte se k virtuálnímu počítači s Windows serverem připojenému k doménové struktuře prostředků Azure služba AD DS pomocí vzdálené plochy a přihlašovacích údajů správce Azure služba AD DS. Pokud se zobrazí chyba ověřování na úrovni sítě (NLA), ověřte, že uživatelský účet, který jste použili, není uživatelský účet domény.
 
     > [!NOTE]
-    > To securely connect to your VMs joined to Azure AD Domain Services, you can use the [Azure Bastion Host Service](https://docs.microsoft.com/azure/bastion/bastion-overview) in supported Azure regions.
+    > K zabezpečenému připojení k virtuálním počítačům připojeným k Azure AD Domain Services můžete použít [službu Azure bastionu Host](https://docs.microsoft.com/azure/bastion/bastion-overview) v podporovaných oblastech Azure.
 
-1. Open a command prompt and use the `whoami` command to show the distinguished name of the currently authenticated user:
+1. Otevřete příkazový řádek a pomocí příkazu `whoami` Zobrazte rozlišující název aktuálně ověřeného uživatele:
 
     ```console
     whoami /fqdn
     ```
 
-1. Use the `runas` command to authenticate as a user from the on-premises domain. In the following command, replace `userUpn@trusteddomain.com` with the UPN of a user from the trusted on-premises domain. The command prompts you for the user’s password:
+1. Použijte příkaz `runas` pro ověření uživatele z místní domény. V následujícím příkazu nahraďte `userUpn@trusteddomain.com` hlavním jménem uživatele v důvěryhodné místní doméně. V příkazu se zobrazí výzva k zadání hesla uživatele:
 
     ```console
     Runas /u:userUpn@trusteddomain.com cmd.exe
     ```
 
-1. If the authentication is a successful, a new command prompt opens. The title of the new command prompt includes `running as userUpn@trusteddomain.com`.
-1. Use `whoami /fqdn` in the new command prompt to view the distinguished name of the authenticated user from the on-premises Active Directory.
+1. Pokud je ověření úspěšné, otevře se nový příkazový řádek. Název nového příkazového řádku zahrnuje `running as userUpn@trusteddomain.com`.
+1. Pomocí `whoami /fqdn` na novém příkazovém řádku můžete zobrazit rozlišující název ověřeného uživatele z místní služby Active Directory.
 
-### <a name="access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user"></a>Access resources in the Azure AD DS resource forest using on-premises user
+### <a name="access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user"></a>Přístup k prostředkům v doménové struktuře prostředků Azure služba AD DS pomocí místního uživatele
 
-Using the Windows Server VM joined to the Azure AD DS resource forest, you can test the scenario where users can access resources hosted in the resource forest when they authenticate from computers in the on-premises domain with users from the on-premises domain. The following examples show you how to create and test various common scenarios.
+Pomocí virtuálního počítače s Windows serverem připojeného k doménové struktuře prostředků Azure služba AD DS můžete otestovat scénář, ve kterém můžou uživatelé přistupovat k prostředkům hostovaným v doménové struktuře prostředků v případě, že se ověřují z počítačů v místní doméně s uživateli z místní domény. Následující příklady vám ukážou, jak vytvořit a otestovat různé běžné scénáře.
 
-#### <a name="enable-file-and-printer-sharing"></a>Enable file and printer sharing
+#### <a name="enable-file-and-printer-sharing"></a>Povolit sdílení souborů a tiskáren
 
-1. Connect to the Windows Server VM joined to the Azure AD DS resource forest using Remote Desktop and your Azure AD DS administrator credentials. If you get a Network Level Authentication (NLA) error, check the user account you used is not a domain user account.
-
-    > [!NOTE]
-    > To securely connect to your VMs joined to Azure AD Domain Services, you can use the [Azure Bastion Host Service](https://docs.microsoft.com/azure/bastion/bastion-overview) in supported Azure regions.
-
-1. Open **Windows Settings**, then search for and select **Network and Sharing Center**.
-1. Choose the option for **Change advanced sharing** settings.
-1. Under the **Domain Profile**, select **Turn on file and printer sharing** and then **Save changes**.
-1. Close **Network and Sharing Center**.
-
-#### <a name="create-a-security-group-and-add-members"></a>Create a security group and add members
-
-1. Open **Active Directory Users and Computers**.
-1. Right-select the domain name, choose **New**, and then select **Organizational Unit**.
-1. In the name box, type *LocalObjects*, then select **OK**.
-1. Select and right-click **LocalObjects** in the navigation pane. Select **New** and then **Group**.
-1. Type *FileServerAccess* in the **Group name** box. For the **Group Scope**, select **Domain local**, then choose **OK**.
-1. In the content pane, double-click **FileServerAccess**. Select **Members**, choose to **Add**, then select **Locations**.
-1. Select your on-premises Active Directory from the **Location** view, then choose **OK**.
-1. Type *Domain Users* in the **Enter the object names to select** box. Select **Check Names**, provide credentials for the on-premises Active Directory, then select **OK**.
+1. Připojte se k virtuálnímu počítači s Windows serverem připojenému k doménové struktuře prostředků Azure služba AD DS pomocí vzdálené plochy a přihlašovacích údajů správce Azure služba AD DS. Pokud se zobrazí chyba ověřování na úrovni sítě (NLA), ověřte, že uživatelský účet, který jste použili, není uživatelský účet domény.
 
     > [!NOTE]
-    > You must provide credentials because the trust relationship is only one way. This means users from the Azure AD DS can't access resources or search for users or groups in the trusted (on-premises) domain.
+    > K zabezpečenému připojení k virtuálním počítačům připojeným k Azure AD Domain Services můžete použít [službu Azure bastionu Host](https://docs.microsoft.com/azure/bastion/bastion-overview) v podporovaných oblastech Azure.
 
-1. The **Domain Users** group from your on-premises Active Directory should be a member of the **FileServerAccess** group. Select **OK** to save the group and close the window.
+1. Otevřete **nastavení systému Windows**, vyhledejte a vyberte **Centrum síťových a sdílení**.
+1. Vyberte možnost pro **změnu pokročilého nastavení sdílení** .
+1. V části **Profil domény**vyberte **zapnout sdílení souborů a tiskáren** a pak **změny uložte**.
+1. Zavřete **Centrum síťových a sdílení**.
 
-#### <a name="create-a-file-share-for-cross-forest-access"></a>Create a file share for cross-forest access
+#### <a name="create-a-security-group-and-add-members"></a>Vytvoření skupiny zabezpečení a přidání členů
 
-1. On the Windows Server VM joined to the Azure AD DS resource forest, create a folder and provide name such as *CrossForestShare*.
-1. Right-select the folder and choose **Properties**.
-1. Select the **Security** tab, then choose **Edit**.
-1. In the *Permissions for CrossForestShare* dialog box, select **Add**.
-1. Type *FileServerAccess* in **Enter the object names to select**, then select **OK**.
-1. Select *FileServerAccess* from the **Groups or user names** list. In the **Permissions for FileServerAccess** list, choose *Allow* for the **Modify** and **Write** permissions, then select **OK**.
-1. Select the **Sharing** tab, then choose **Advanced Sharing…**
-1. Choose **Share this folder**, then enter a memorable name for the file share in **Share name** such as *CrossForestShare*.
-1. Select **Permissions**. In the **Permissions for Everyone** list, choose **Allow** for the **Change** permission.
-1. Select **OK** two times and then **Close**.
+1. Otevřete položku **Uživatelé a počítače služby Active Directory**.
+1. Klikněte pravým tlačítkem myši na název domény, vyberte možnost **Nový**a pak vyberte možnost **organizační jednotka**.
+1. Do pole název zadejte *LocalObjects*a pak vyberte **OK**.
+1. V navigačním podokně vyberte a klikněte pravým tlačítkem na **LocalObjects** . Vyberte **Nový** a potom **Skupina**.
+1. Do pole **název skupiny** zadejte *FileServerAccess* . V poli **Rozsah skupiny**vyberte **místní doména**a pak zvolte **OK**.
+1. V podokně obsah poklikejte na **FileServerAccess**. Vyberte možnost **Členové**, zvolte možnost **Přidat**a potom vyberte **umístění**.
+1. V zobrazení **umístění** vyberte místní službu Active Directory a pak zvolte **OK**.
+1. Do pole **Zadejte názvy objektů k výběru** zadejte *Domain Users* . Vyberte možnost **kontrolovat jména**, zadejte přihlašovací údaje pro místní službu Active Directory a pak vyberte **OK**.
 
-#### <a name="validate-cross-forest-authentication-to-a-resource"></a>Validate cross-forest authentication to a resource
+    > [!NOTE]
+    > Je nutné zadat přihlašovací údaje, protože vztah důvěryhodnosti je pouze jedním ze způsobů. To znamená, že uživatelé z Azure služba AD DS nemůžou získat přístup k prostředkům nebo Hledat uživatele nebo skupiny v důvěryhodné (místní) doméně.
 
-1. Sign in a Windows computer joined to your on-premises Active Directory using a user account from your on-premises Active Directory.
-1. Using **Windows Explorer**, connect to the share you created using the fully qualified host name and the share such as `\\fs1.aadds.contoso.com\CrossforestShare`.
-1. To validate the write permission, right-select in the folder, choose **New**, then select **Text Document**. Use the default name **New Text Document**.
+1. Skupina **Domain Users** z vaší místní služby Active Directory by měla být členem skupiny **FileServerAccess** . Výběrem **OK** uložte skupinu a zavřete okno.
 
-    If the write permissions are set correctly, a new text document is created. The following steps will then open, edit, and delete the file as appropriate.
-1. To validate the read permission, open **New Text Document**.
-1. To validate the modify permission, add text to the file and close **Notepad**. When prompted to save changes, choose **Save**.
-1. To validate the delete permission, right-select **New Text Document** and choose **Delete**. Choose **Yes** to confirm file deletion.
+#### <a name="create-a-file-share-for-cross-forest-access"></a>Vytvoření sdílené složky pro přístup mezi doménovými strukturami
+
+1. Na virtuálním počítači s Windows serverem připojeném k doménové struktuře prostředků Azure služba AD DS vytvořte složku a zadejte její název, jako je například *CrossForestShare*.
+1. Klepněte pravým tlačítkem myši na složku a vyberte možnost **vlastnosti**.
+1. Vyberte kartu **zabezpečení** a pak zvolte **Upravit**.
+1. V dialogovém okně *oprávnění pro CrossForestShare* vyberte **Přidat**.
+1. Do pole **Zadejte názvy objektů k výběru**zadejte *FileServerAccess* a pak vyberte **OK**.
+1. V seznamu **skupiny nebo jména uživatelů** vyberte *FileServerAccess* . V seznamu **oprávnění pro FileServerAccess** zvolte možnost *Povolení* oprávnění k **úpravám** a **zápisu** a pak vyberte **OK**.
+1. Vyberte kartu **sdílení** a pak zvolte **Rozšířené sdílení...**
+1. Zvolte **sdílet tuto složku**a pak zadejte zapamatovatelné jméno sdílené složky v **názvu sdílené složky** , například *CrossForestShare*.
+1. Vyberte **oprávnění**. V seznamu **oprávnění pro všechny** vyberte možnost **udělit** oprávnění ke **změně** .
+1. Dvakrát klikněte na **OK** a pak na **Zavřít**.
+
+#### <a name="validate-cross-forest-authentication-to-a-resource"></a>Ověření ověřování mezi doménovými strukturami v prostředku
+
+1. Přihlaste se k počítači s Windows připojenému k místní službě Active Directory pomocí uživatelského účtu z vaší místní služby Active Directory.
+1. Pomocí **Průzkumníka Windows**se připojte ke sdílené složce, kterou jste vytvořili, pomocí plně kvalifikovaného názvu hostitele a sdílené složky, jako je `\\fs1.aadds.contoso.com\CrossforestShare`.
+1. Chcete-li ověřit oprávnění k zápisu, ve složce klikněte pravým tlačítkem myši, vyberte možnost **Nový**a pak vyberte možnost **textový dokument**. Použijte výchozí název **nový textový dokument**.
+
+    Pokud jsou oprávnění k zápisu nastavena správně, je vytvořen nový textový dokument. Následující kroky pak otevřou, upraví a odstraní soubor podle potřeby.
+1. Chcete-li ověřit oprávnění ke čtení, otevřete **nový textový dokument**.
+1. Chcete-li ověřit oprávnění upravit, přidejte text do souboru a ukončete **Poznámkový blok**. Po zobrazení výzvy k uložení změn klikněte na **Uložit**.
+1. Chcete-li ověřit oprávnění k odstranění, klikněte pravým tlačítkem myši na **nový textový dokument** a zvolte možnost **Odstranit**. Kliknutím na **tlačítko Ano** potvrďte odstranění souboru.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Configure DNS in an on-premises AD DS environment to support Azure AD DS connectivity
-> * Create a one-way inbound forest trust in an on-premises AD DS environment
-> * Create a one-way outbound forest trust in Azure AD DS
-> * Test and validate the trust relationship for authentication and resource access
+> * Konfigurace DNS v místním prostředí služba AD DS pro podporu připojení Azure služba AD DS
+> * Vytvoření jednosměrného vztahu důvěryhodnosti pro příchozí doménovou strukturu v místním prostředí služba AD DS
+> * Vytvoření jednosměrné důvěryhodnosti pro odchozí doménovou strukturu v Azure služba AD DS
+> * Testování a ověření vztahu důvěryhodnosti pro ověřování a přístup k prostředkům
 
-For more conceptual information about forest types in Azure AD DS, see [What are resource forests?][concepts-forest] and [How do forest trusts work in Azure AD DS?][concepts-trust]
+Další koncepční informace o typech doménové struktury v Azure služba AD DS najdete v tématu [co jsou doménové struktury prostředků?][concepts-forest] a [jak vztahy důvěryhodnosti doménové struktury fungují v Azure služba AD DS?][concepts-trust]
 
 <!-- INTERNAL LINKS -->
 [concepts-forest]: concepts-resource-forest.md

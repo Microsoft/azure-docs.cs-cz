@@ -77,7 +77,7 @@ Pro jiné operační systémy musíte počítače před migrací ručně připra
 Pokud migrujete počítač se systémem Windows, proveďte tyto změny před migrací. Pokud před provedením změn migrujete virtuální počítač, nemusí se virtuální počítač spustit v Azure.
 
 1. [Povolte konzolu sériového přístupu Azure](../virtual-machines/troubleshooting/serial-console-windows.md) pro virtuální počítač Azure. To pomáhá při řešení potíží. Nemusíte restartovat virtuální počítač. Virtuální počítač Azure se spustí s použitím bitové kopie disku. Jedná se o ekvivalent restartování nového virtuálního počítače. 
-2. Pokud migrujete počítače se systémem Windows Server 2003, nainstalujte integrační služby technologie Hyper-V hosta do operačního systému virtuálního počítače. [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)
+2. Pokud migrujete počítače se systémem Windows Server 2003, nainstalujte integrační služby technologie Hyper-V hosta do operačního systému virtuálního počítače. [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
 
 ### <a name="prepare-linux-machines"></a>Příprava počítačů se systémem Linux
 
@@ -135,7 +135,7 @@ Na místních počítačích se systémem Linux proveďte tyto kroky:
 
 Po dokončení migrace proveďte následující na virtuálních počítačích Azure, které se vytvořily.
 
-1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Nemůžete použít stejnou veřejnou IP adresu pro virtuální počítač Azure, který jste použili pro místní počítač. [Další informace](../virtual-network/virtual-network-public-ip-address.md)
+1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Nemůžete použít stejnou veřejnou IP adresu pro virtuální počítač Azure, který jste použili pro místní počítač. [Další informace](../virtual-network/virtual-network-public-ip-address.md).
 2. Ověřte, že pravidla skupiny zabezpečení sítě (NSG) na virtuálním počítači povolují příchozí připojení k portu RDP nebo SSH.
 3. Zkontrolujte [diagnostiku spouštění](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) a zobrazte si virtuální počítač.
 

@@ -72,13 +72,13 @@ Informace o chování a konfiguraci jednotlivých monitorů, které podporují A
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlásit se na [Azure Portal](https://portal.azure.com). 
+Přihlaste se na web [Azure Portal ](https://portal.azure.com). 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Zobrazení stavu clusteru AKS nebo non-AKS
 
-Přístup k funkci Azure Monitor for Containers Health (Preview) je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně Azure Portal vyberete **přehledy** . V části **Insights** vyberte **kontejnery**. 
+Přístup k funkci Azure Monitor for Containers Health (Preview) je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně Azure Portal vyberete **přehledy** . V části **přehledy** vyberte **kontejnery**. 
 
-Pokud chcete zobrazit stav z neAKSho clusteru, který je hostitelem AKS modulu, který je hostovaný místně nebo na Azure Stack, vyberte **Azure monitor** v levém podokně Azure Portal. V části **Insights** vyberte **kontejnery**.  Na stránce více clusterů vyberte v seznamu cluster bez AKS.
+Pokud chcete zobrazit stav z neAKSho clusteru, který je hostitelem AKS modulu, který je hostovaný místně nebo na Azure Stack, vyberte **Azure monitor** v levém podokně Azure Portal. V části **přehledy** vyberte **kontejnery**.  Na stránce více clusterů vyberte v seznamu cluster bez AKS.
 
 V Azure Monitor pro kontejnery na stránce **cluster** vyberte **stav**.
 

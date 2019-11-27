@@ -1,6 +1,6 @@
 ---
-title: Enable automatic user provisioning for multi-tenant applications - Azure AD
-description: A guide for independent software vendors for enabling automated provisioning
+title: Povolení automatického zřizování uživatelů pro aplikace s více klienty – Azure AD
+description: Průvodce pro nezávislé výrobce softwaru pro povolení automatického zřizování
 services: active-directory
 documentationcenter: azure
 author: BarbaraSelden
@@ -22,101 +22,101 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232318"
 ---
-# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Enable automatic user provisioning for your multi-tenant application
+# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
 
-Automatic user provisioning is the process of automating the creation, maintenance, and removal of user identities in target systems like your software-as-a-service applications.
+Automatické zřizování uživatelů je proces automatizace vytváření, údržby a odebírání identit uživatelů v cílových systémech, jako jsou aplikace typu software jako služba.
 
-## <a name="why-enable-automatic-user-provisioning"></a>Why enable automatic user provisioning?
+## <a name="why-enable-automatic-user-provisioning"></a>Proč povolit Automatické zřizování uživatelů?
 
-Applications that require that a user record is present in the application before a user’s first sign in require user provisioning. There are benefits to you as a service provider, and benefits to your customers.
+Aplikace, které vyžadují, aby se v aplikaci nachází záznam uživatele před prvním přihlášením uživatele vyžaduje zřízení uživatele. Pro vás jako poskytovatel služeb a výhody pro vaše zákazníky nabízíme výhody.
 
-### <a name="benefits-to-you-as-the-service-provider"></a>Benefits to you as the service provider
+### <a name="benefits-to-you-as-the-service-provider"></a>Výhody jako poskytovatel služeb
 
-* Increase the security of your application by using the Microsoft identity platform.
+* Zvyšte zabezpečení aplikace pomocí platformy Microsoft identity.
 
-* Reduce actual and perceived customer effort to adopt your application.
+* Pro přijetí vaší aplikace omezte skutečná a zjištěná úsilí zákazníka.
 
-* Reduce your costs in integrating with multiple identity providers (IdPs) for automatic user provisioning by using System for Cross-Domain Identity Management (SCIM)-based provisioning.
+* Snižte náklady v integraci s více zprostředkovateli identity (zprostředkovatelů identity) pro Automatické zřizování uživatelů pomocí systému pro zřizování založené na SCIM (pro správu identit mezi doménami).
 
-* Reduce support costs by providing rich logs to help customers troubleshoot user provisioning issues.
+* Snižte náklady na podporu poskytováním bohatých protokolů, které zákazníkům pomohou při řešení potíží se zřizováním uživatelů.
 
-* Increase the visibility of your application in the [Azure AD app gallery](https://azuremarketplace.microsoft.com/marketplace/apps).
+* Zvyšte viditelnost své aplikace v [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps).
 
-* Get a prioritized listing in the App Tutorials page.
+* Seznamte se s určením priorit na stránce kurzy aplikací.
 
-### <a name="benefits-to-your-customers"></a>Benefits to your customers
+### <a name="benefits-to-your-customers"></a>Výhody pro vaše zákazníky
 
-* Increase security by automatically removing access to your application for users who change roles or leave the organization to your application.
+* Zvyšte zabezpečení tím, že automaticky odeberete přístup k aplikaci pro uživatele, kteří mění role nebo odejdou organizaci do vaší aplikace.
 
-* Simplify user management for your application by avoiding human error and repetitive work associated with manual provisioning.
+* Zjednodušte správu uživatelů pro svou aplikaci tím, že vyloučíte lidskou chybu a opakující se práci související s ručním zřizováním.
 
-* Reduce the costs of hosting and maintaining custom-developed provisioning solutions.
+* Snižte náklady na hostování a údržbu řešení pro zřizování s vlastním vývojem.
 
-## <a name="choose-a-provisioning-method"></a>Choose a provisioning method
+## <a name="choose-a-provisioning-method"></a>Zvolit metodu zřizování
 
-Azure AD provides several integration paths to enable automatic user provisioning for your application.
+Azure AD poskytuje několik integračních cest, které umožňují Automatické zřizování uživatelů pro vaši aplikaci.
 
-* The [Azure AD Provisioning Service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) manages the provisioning and deprovisioning of users from Azure AD to your application (outbound provisioning) and from your application to Azure AD (inbound provisioning). The service connects to the System for Cross-Domain Identity Management (SCIM) user management API endpoints provided by your application.
+* [Služba zřizování Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) spravuje zřizování a rušení zřizování uživatelů ze služby Azure AD do vaší aplikace (odchozí zřizování) a z vaší aplikace do Azure AD (příchozí zřizování). Služba se připojuje k systému pro koncové body rozhraní API pro správu uživatelů mezi doménami (SCIM), které poskytuje vaše aplikace.
 
-* When using the [Microsoft Graph](https://docs.microsoft.com/graph/), your application manages inbound and outbound provisioning of users and groups from Azure AD to your application by querying the Microsoft Graph API.
+* Při použití [Microsoft Graph](https://docs.microsoft.com/graph/)vaše aplikace spravuje příchozí a odchozí zřizování uživatelů a skupin ze služby Azure AD do vaší aplikace pomocí dotazování rozhraní API Microsoft Graph.
 
-* The Security Assertion Markup Language Just in Time (SAML JIT) user provisioning can be enabled if your application is using SAML for federation. It uses claims information sent in the SAML token to provision users.
+* Pokud vaše aplikace používá pro federaci federačního rozhraní SAML, může být povoleno zřizování uživatelů v čase (SAML JIT) Security Assertion Markup Language. Pomocí informací o deklaracích odeslaných v tokenu SAML zřídí uživatele.
 
-To help determine which integration option to use for your application, refer to the high-level comparison table, and then see the more detailed information on each option.
+Pokud chcete zjistit, která možnost integrace se má použít pro vaši aplikaci, přečtěte si referenční tabulku vysoké úrovně a podívejte se na podrobnější informace o jednotlivých možnostech.
 
-| Capabilities enabled or enhanced by Automatic Provisioning| Azure AD Provisioning Service (SCIM 2.0)| Microsoft Graph API (OData v4.0)| SAML JIT |
+| Funkce, které jsou povolené nebo rozšířené pomocí automatického zřizování| Služba zřizování Azure AD (SCIM 2,0)| Rozhraní API pro Microsoft Graph (OData v 4.0)| JIT SAML |
 |---|---|---|---|
-| User and group management in Azure AD| √| √| User only |
-| Manage users and groups synced from on-premises Active Directory| √*| √*| User only* |
-| Access data beyond users and groups during provisioning Access to O365 data (Teams, SharePoint, Email, Calendar, Documents, etc.)| X+| √| × |
-| Create, read, and update users based on business rules| √| √| √ |
-| Delete users based on business rules| √| √| × |
-| Manage automatic user provisioning for all applications from the Azure portal| √| ×| √ |
-| Support multiple identity providers| √| ×| √ |
-| Support guest accounts (B2B)| √| √| √ |
-| Support non-enterprise accounts (B2C)| ×| √| √ |
+| Správa uživatelů a skupin ve službě Azure AD| √| √| Pouze uživatel |
+| Správa uživatelů a skupin synchronizovaných z místní služby Active Directory| √*| √*| Jenom uživatel * |
+| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k datům O365 (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X+| √| × |
+| Vytváření, čtení a aktualizace uživatelů na základě obchodních pravidel| √| √| √ |
+| Odstranění uživatelů na základě obchodních pravidel| √| √| × |
+| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| ×| √ |
+| Podpora více zprostředkovatelů identity| √| ×| √ |
+| Podpora účtů hostů (B2B)| √| √| √ |
+| Podpora účtů mimo podnik (B2C)| ×| √| √ |
 
-<sup>*</sup> – Azure AD Connect setup is required to sync users from AD to Azure AD.  
-<sup>+</sup >– Using SCIM for provisioning does not preclude you from integrating your application with MIcrosoft Graph for other purposes.
+<sup>*</sup> – pro synchronizaci uživatelů ze služby AD do Azure AD se vyžaduje nastavení Azure AD Connect.  
+<sup>+</sup >– použití SCIM pro zřizování vám nevylučuje integraci aplikace do Microsoft graphu pro jiné účely.
 
-## <a name="azure-ad-provisioning-service-scim"></a>Azure AD Provisioning Service (SCIM)
+## <a name="azure-ad-provisioning-service-scim"></a>Služba zřizování Azure AD (SCIM)
 
-The Azure AD provisioning services uses [SCIM](https://aka.ms/SCIMOverview), an industry standard for provisioning supported by many identity providers (IdPs) as well as applications (e.g. Slack, G Suite, Dropbox). We recommend you use the Azure AD provisioning service if you want to support IdPs in addition to Azure AD, as any SCIM-compliant IdP can connect to your SCIM endpoint. Building a simple /User endpoint, you can enable provisioning without having to maintain your own sync engine. 
+Služba zřizování Azure AD používá [SCIM](https://aka.ms/SCIMOverview), což je standardní obor pro zřizování podporovaný mnoha zprostředkovateli identity (zprostředkovatelů identity) a také aplikacemi (například časová rezerva, g Suite, Dropbox). Doporučujeme použít službu zřizování Azure AD, pokud chcete kromě služby Azure AD podporovat zprostředkovatelů identity, protože libovolný IdP kompatibilní s SCIM se může připojit ke svému koncovému bodu SCIM. Vytvořením jednoduchého koncového bodu/User můžete povolit zřizování bez nutnosti udržovat vlastní synchronizační modul. 
 
-For more information on how the Azure AD Provisioning Service users SCIM, see: 
+Další informace o tom, jak se uživatelé služby zřizování Azure AD SCIM, najdete v těchto tématech: 
 
-* [Learn more about the SCIM standard](https://aka.ms/SCIMOverview)
+* [Další informace o standardu SCIM](https://aka.ms/SCIMOverview)
 
-* [Using System for Cross-Domain Identity Management (SCIM) to automatically provision users and groups from Azure Active Directory to applications](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Automatické zřizování uživatelů a skupin z Azure Active Directory k aplikacím pomocí systému pro správu identit mezi doménami (SCIM)](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-* [Understand the Azure AD SCIM implementation](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Porozumění implementaci Azure AD SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph for Provisioning
+## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph pro zřizování
 
-When you use Microsoft Graph for provisioning, you have access to all the rich user data available in Graph. In addition to the details of users and groups, you can also fetch additional information like the user’s roles, manager and direct reports, owned and registered devices, and hundreds of other data pieces available in the [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0). 
+Při použití Microsoft Graph ke zřízení máte přístup ke všem uživatelům, kteří jsou k dispozici v grafu. Kromě podrobností o uživatelích a skupinách můžete také načítat Další informace, jako jsou role uživatelů, vedoucí a přímé sestavy, vlastněná a registrovaná zařízení a stovky dalších datových částí, které jsou k dispozici v [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0). 
 
-More than 15 million organizations, and 90% of fortune 500 companies use Azure AD while subscribing to Microsoft cloud services like Office 365, Microsoft Azure, Enterprise Mobility Suite, or Microsoft 365. You can use Microsoft Graph to integrate your app with administrative workflows, such as employee onboarding (and termination), profile maintenance, and more. 
+Více než 15 000 000 organizací a 90% Fortune 500 společnosti využívají Azure AD při přihlášení k odběru cloudových služeb Microsoftu, jako je Office 365, Microsoft Azure, Enterprise Mobility Suite nebo Microsoft 365. Pomocí Microsoft Graph můžete integrovat svou aplikaci s pracovními postupy pro správu, jako je například registrace zaměstnanců (a ukončení), údržba profilu a další. 
 
-Learn more about using Microsoft Graph for provisioning:
+Další informace o použití Microsoft Graph pro zřizování:
 
-* [Microsoft Graph Home page](https://developer.microsoft.com/graph)
+* [Microsoft Graph domovskou stránku](https://developer.microsoft.com/graph)
 
 * [Přehled Microsoft Graphu](https://docs.microsoft.com/graph/overview)
 
-* [Microsoft Graph Auth Overview](https://docs.microsoft.com/graph/auth/)
+* [Přehled ověřování Microsoft Graph](https://docs.microsoft.com/graph/auth/)
 
-* [Getting started with Microsoft Graph](https://developer.microsoft.com/graph/get-started)
+* [Začínáme s Microsoft Graph](https://developer.microsoft.com/graph/get-started)
 
-## <a name="using-saml-jit-for-provisioning"></a>Using SAML JIT for provisioning
+## <a name="using-saml-jit-for-provisioning"></a>Používání JIT pro zřizování pomocí jazyka SAML
 
-If you want to provision users only upon first sign in to your application, and do not need to automatically deprovision users, SAML JIT is an option. Your application must support SAML 2.0 as a federation protocol to use SAML JIT.
+Pokud chcete uživatelům zřídit jenom při prvním přihlášení k vaší aplikaci a nemusíte automaticky zrušit zřízení uživatelů, SAML JIT je možnost. Vaše aplikace musí podporovat SAML 2,0 jako federační protokol pro použití JIT SAML.
 
-SAML JIT uses the claims information in the SAML token to create and update user information in the application. Customers can configure these required claims in the Azure AD application as needed. Sometimes the JIT provisioning needs to be enabled from the application side so that customer can use this feature. SAML JIT is useful for creating and updating users, but it can't delete or deactivate the users in the application.
+Kompilátor SAML používá informace o deklaracích identity v tokenu SAML k vytvoření a aktualizaci informací o uživateli v aplikaci. Zákazníci můžou podle potřeby nakonfigurovat tyto požadované deklarace identity v aplikaci Azure AD. V některých případech je potřeba zřizování JIT povolit ze strany aplikace, aby zákazník mohl používat tuto funkci. Kompilátor SAML JIT je vhodný pro vytváření a aktualizaci uživatelů, ale nemůže uživatele v aplikaci odstranit ani deaktivovat.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Enable Single Sign-on for your application](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [Povolení jednotného přihlašování pro aplikaci](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
 
-* [Submit your application listing](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) and partner with Microsoft to create documentation on Microsoft’s site.
+* [Odesláním seznamu aplikací](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a partnera s Microsoftem můžete vytvořit dokumentaci na webu Microsoftu.
 
-* [Join the Microsoft Partner Network (free) and create your go to market plan](https://partner.microsoft.com/en-us/explore/commercial).
+* [Připojte se k Microsoft Partner Network (zdarma) a vytvořte svůj přejít na trh](https://partner.microsoft.com/en-us/explore/commercial).

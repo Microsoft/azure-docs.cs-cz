@@ -99,7 +99,7 @@ https://download.microsoft.com/download/* | Povoluje soubory ke stažení z webu
 
 Následující tabulka shrnuje požadavky na porty pro posouzení.
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | ---
 **Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Odchozí připojení na portech 443, 5671 a 5672 pro posílání metadat zjišťování a výkonu Azure Migrate.
 **Hostitel nebo cluster Hyper-V** | Příchozí připojení na portech WinRM 5985 (HTTP) a 5986 (HTTPS) k vyžádání metadat konfigurace a výkonu virtuálních počítačů Hyper-V pomocí relace model CIM (Common Information Model) (CIM).
@@ -159,7 +159,7 @@ time.windows.com | Ověřuje časovou synchronizaci mezi systémovým a globáln
 
 Následující tabulka shrnuje požadavky portů na hostitele Hyper-V a virtuální počítače pro migraci virtuálních počítačů.
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | ---
 Hostitelé nebo virtuální počítače Hyper-V | Odchozí připojení na portu HTTPS 443 pro odesílání dat replikace virtuálních počítačů do Azure Migrate.
 

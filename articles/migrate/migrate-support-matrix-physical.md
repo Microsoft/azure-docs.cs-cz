@@ -106,7 +106,7 @@ https://download.microsoft.com/download/* | Povoluje soubory ke stažení z webu
 
 Následující tabulka shrnuje požadavky na porty pro posouzení.
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | ---
 **Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Odchozí připojení na portech 443, 5671 a 5672 pro posílání metadat zjišťování a výkonu Azure Migrate.
 **Fyzické servery** | **Windows:** Příchozí připojení na portech 443, 5989, které vyžádají metadata o konfiguraci a výkonu ze serverů Windows. <br/> **Linux:**  Příchozí připojení na portu 22 (UDP) pro vyžádání metadat konfigurace a výkonu ze serverů se systémem Linux. |

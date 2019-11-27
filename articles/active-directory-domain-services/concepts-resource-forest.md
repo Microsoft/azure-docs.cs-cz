@@ -1,6 +1,6 @@
 ---
-title: Resource forest concepts for Azure AD Domain Services | Microsoft Docs
-description: Learn what a resource forest is in Azure Active Directory Domain Services and how they benefit your organization in hybrid environment with limited user authentication options or security concerns.
+title: Koncepty doménové struktury prostředků pro Azure AD Domain Services | Microsoft Docs
+description: Seznamte se s tím, co je doménová struktura prostředků v Azure Active Directory Domain Services a jak mají prospěch pro vaši organizaci v hybridním prostředí s omezenými možnostmi ověřování uživatelů nebo problémy zabezpečení.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,106 +17,106 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233607"
 ---
-# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Resource forest concepts and features for Azure Active Directory Domain Services
+# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Koncepty a funkce doménové struktury prostředků pro Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (AD DS) provides a sign-in experience for legacy, on-premises, line-of-business applications. Users, groups, and password hashes of on-premises and cloud users are synchronized to the Azure AD DS managed domain. These synchronized password hashes are what gives users a single set of credentials they can use for the on-premises AD DS, Office 365, and Azure Active Directory.
+Azure Active Directory Domain Services (služba AD DS) poskytuje přihlašovací prostředí pro starší, místní a obchodní aplikace. Uživatelé, skupiny a hodnoty hash hesel místních i cloudových uživatelů se synchronizují do spravované domény Azure služba AD DS. Tato synchronizovaná hodnota hash hesla dává uživatelům jedinou sadu přihlašovacích údajů, které můžou používat pro místní služba AD DS, Office 365 a Azure Active Directory.
 
-Although secure and provides additional security benefits, some organizations can't synchronize those user passwords hashes to Azure AD or Azure AD DS. Users in an organization may not know their password because they only use smart card authentication. These limitations prevent some organizations from using Azure AD DS to lift and shift on-premises classic applications to Azure.
+I když zabezpečení a poskytuje další výhody zabezpečení, některé organizace nemůžou synchronizovat hodnoty hash hesel uživatelů do služby Azure AD nebo Azure služba AD DS. Uživatelé v organizaci nemusí znát heslo, protože používají jenom ověřování pomocí čipové karty. Tato omezení brání některým organizacím v používání Azure služba AD DS k přenesení a posunutí místních klasických aplikací do Azure.
 
-To address these needs and restrictions, you can create an Azure AD DS managed domain that uses a resource forest. This conceptual article explains what forests are, and how they trust other resources to provide a secure authentication method. Azure AD DS resource forests are currently in preview.
+Pro řešení těchto potřeb a omezení můžete vytvořit spravovanou doménu Azure služba AD DS, která používá doménovou strukturu prostředků. Tento koncepční článek vysvětluje, co jsou doménové struktury a jak důvěřují jiným prostředkům, aby poskytovala zabezpečenou metodu ověřování. Doménové struktury prostředků Azure služba AD DS jsou momentálně ve verzi Preview.
 
 > [!IMPORTANT]
-> Azure AD DS resource forests don't currently support Azure HDInsight or Azure Files. The default Azure AD DS user forests do support both of these additional services.
+> Doménové struktury prostředků Azure služba AD DS v současné době nepodporují Azure HDInsight ani soubory Azure. Výchozí doménové struktury uživatelů Azure služba AD DS podporují obě tyto další služby.
 
-## <a name="what-are-forests"></a>What are forests?
+## <a name="what-are-forests"></a>Co jsou doménové struktury?
 
-A *forest* is a logical construct used by Active Directory Domain Services (AD DS) to group one or more *domains*. The domains then store objects for user or groups, and provide authentication services.
+*Doménová struktura* je logická konstrukce, kterou používá Active Directory Domain Services (služba AD DS) k seskupení jedné nebo více *domén*. Domény pak uchovávají objekty pro uživatele nebo skupiny a poskytují ověřovací služby.
 
-In Azure AD DS, the forest only contains one domain. On-premises AD DS forests often contain many domains. In large organizations, especially after mergers and acquisitions, you may end up with multiple on-premises forests that each then contain multiple domains.
+V Azure služba AD DS doménová struktura obsahuje jenom jednu doménu. Místní doménové struktury služba AD DS často obsahují mnoho domén. Ve velkých organizacích, zejména po fúzích a akvizicích, můžete mít několik místních doménových struktur, které každý z nich obsahuje víc domén.
 
-By default, an Azure AD DS managed domain is created as a *user* forest. This type of forest synchronizes all objects from Azure AD, including any user accounts created in an on-premises AD DS environment. User accounts can directly authenticate against the Azure AD DS managed domain, such as to sign in to a domain-joined VM. A user forest works when the password hashes can be synchronized and users aren't using exclusive sign-in methods like smart card authentication.
+Ve výchozím nastavení je spravovaná doména Azure služba AD DS vytvořená jako doménová struktura *uživatelů* . Tento typ doménové struktury synchronizuje všechny objekty z Azure AD, včetně všech uživatelských účtů vytvořených v místním služba AD DS prostředí. Uživatelské účty se můžou přímo ověřovat proti spravované doméně Azure služba AD DS, například pro přihlášení k virtuálnímu počítači připojenému k doméně. Doménová struktura uživatelů funguje, když je možné synchronizovat hodnoty hash hesla a uživatelé nepoužívají exkluzivní metody přihlašování, jako je ověřování pomocí čipové karty.
 
-In an Azure AD DS *resource* forest, users authenticate over a one-way forest *trust* from their on-premises AD DS. With this approach, the user objects and password hashes aren't synchronized to Azure AD DS. The user objects and credentials only exist in the on-premises AD DS. This approach lets enterprises host resources and application platforms in Azure that depend on classic authentication such LDAPS, Kerberos, or NTLM, but any authentication issues or concerns are removed. Azure AD DS resource forests are currently in preview.
+V doménové struktuře *prostředků* Azure služba AD DS se uživatelé ověřují pomocí jednosměrné *důvěryhodnosti* doménové struktury ze své místní služba AD DS. S tímto přístupem se uživatelské objekty a hodnoty hash hesel nesynchronizují do Azure služba AD DS. Uživatelské objekty a přihlašovací údaje existují pouze v místních služba AD DS. Tento přístup umožňuje podnikům hostovat prostředky a aplikační platformy v Azure, které jsou závislé na klasických ověřováních, jako jsou protokoly LDAP, Kerberos nebo NTLM, ale všechny problémy s ověřováním nebo obavy se odeberou. Doménové struktury prostředků Azure služba AD DS jsou momentálně ve verzi Preview.
 
-Resource forests also provide the capability to lift-and-shift your applications one component at a time. Many legacy on-premises applications are multi-tiered, often using a web server or front end and many database-related components. These tiers make it hard to lift-and-shift the entire application to the cloud in one step. With resource forests, you can lift your application to the cloud in phased approach, which makes it easier to move your application to Azure.
+Doménové struktury prostředků také poskytují schopnost nasouvat a přesouvat aplikace po jednotlivých součástech najednou. Mnohé starší verze místních aplikací jsou vícevrstvé, často se používají webový server nebo front-end a mnoho součástí souvisejících s databází. Tyto vrstvy usnadňují navýšení a posunutí celé aplikace do cloudu v jednom kroku. Pomocí doménových struktur prostředků můžete svou aplikaci nasunout do cloudu v rámci postupného přístupu, což usnadňuje přesun vaší aplikace do Azure.
 
-## <a name="what-are-trusts"></a>What are trusts?
+## <a name="what-are-trusts"></a>Co jsou vztahy důvěryhodnosti?
 
-Organizations that have more than one domain often need users to access shared resources in a different domain. Access to these shared resources requires that users in one domain authenticate to another domain. To provide these authentication and authorization capabilities between clients and servers in different domains, there must be a *trust* between the two domains.
+Organizace, které mají více než jednu doménu často potřebují uživatele pro přístup ke sdíleným prostředkům v jiné doméně. Přístup k těmto sdíleným prostředkům vyžaduje, aby se uživatelé v jedné doméně ověřovali v jiné doméně. Aby bylo možné zajistit tyto možnosti ověřování a autorizace mezi klienty a servery v různých doménách, musí mezi těmito dvěma doménami existovat *vztah důvěryhodnosti* .
 
-With domain trusts, the authentication mechanisms for each domain trust the authentications coming from the other domain. Trusts help provide controlled access to shared resources in a resource domain (the *trusting* domain) by verifying that incoming authentication requests come from a trusted authority (the *trusted* domain). Trusts act as bridges that only allow validated authentication requests to travel between domains.
+U vztahů důvěryhodnosti domén ověřovací mechanismy pro každou doménu důvěřují ověřováním, které přicházejí z jiné domény. Vztahy důvěryhodnosti poskytují řízený přístup ke sdíleným prostředkům v doméně prostředků ( *důvěřující* doména) tím, že ověřují příchozí požadavky na ověření pocházející od důvěryhodné autority ( *důvěryhodné* domény). Vztahy důvěryhodnosti fungují jako mosty, které umožňují pouze ověřené žádosti o ověření mezi doménami.
 
-How a trust passes authentication requests depends on how it's configured. Trusts can be configured in one of the following ways:
+Způsob, jakým vztah důvěryhodnosti projde požadavky na ověření, závisí na tom, jak je nakonfigurován. Vztahy důvěryhodnosti lze nakonfigurovat jedním z následujících způsobů:
 
-* **One-way** - provides access from the trusted domain to resources in the trusting domain.
-* **Two-way** - provides access from each domain to resources in the other domain.
+* **Jednosměrné** – poskytuje přístup z důvěryhodné domény k prostředkům v důvěřující doméně.
+* **Obousměrný** – poskytuje přístup z každé domény k prostředkům v druhé doméně.
 
-Trusts are also be configured to handle additional trust relationships in one of the following ways:
+Vztahy důvěryhodnosti je také možné nakonfigurovat tak, aby zpracovávala další vztahy důvěryhodnosti jedním z následujících způsobů:
 
-* **Nontransitive** - The trust exists only between the two trust partner domains.
-* **Transitive** - Trust automatically extends to any other domains that either of the partners trusts.
+* **Nepřenosná** – vztah důvěryhodnosti existuje jenom mezi dvěma doménami Trust partner.
+* **Přenosný** -důvěryhodný se automaticky rozšiřuje na všechny ostatní domény, které partner důvěřuje.
 
-In some cases, trust relationships are automatically established when domains are created. Other times, you must choose a type of trust and explicitly establish the appropriate relationships. The specific types of trusts used and the structure of those trust relationships depend on how the Active Directory directory service is organized, and whether different versions of Windows coexist on the network.
+V některých případech se vztahy důvěryhodnosti automaticky vytvoří při vytváření domén. Jindy, musíte zvolit typ vztahu důvěryhodnosti a výslovně vytvořit příslušné vztahy. Konkrétní typy vztahů důvěryhodnosti a struktura těchto vztahů důvěryhodnosti závisí na tom, jak je adresářová služba Active Directory organizována, a zda různé verze systému Windows v síti koexistovat.
 
-## <a name="trusts-between-two-forests"></a>Trusts between two forests
+## <a name="trusts-between-two-forests"></a>Vztahy důvěryhodnosti mezi dvěma doménovými strukturami
 
-You can extend domain trusts within a single forest to another forest by manually creating a one-way or two-way forest trust. A forest trust is a transitive trust that exists only between a forest root domain and a second forest root domain.
+Důvěryhodnost domén v rámci jedné doménové struktury můžete roztáhnout do jiné doménové struktury tak, že ručně vytvoříte jednosměrný nebo obousměrný vztah důvěryhodnosti doménové struktury. Vztah důvěryhodnosti doménové struktury je tranzitivní vztah důvěryhodnosti, který existuje jenom mezi kořenovou doménou struktury a druhou kořenovou doménou doménové struktury.
 
-* A one-way forest trust allows all users in one forest to trust all domains in the other forest.
-* A two-way forest trust forms a transitive trust relationship between every domain in both forests.
+* Jednosměrná důvěryhodnost doménové struktury umožňuje všem uživatelům v jedné doménové struktuře důvěřovat všem doménám v jiné doménové struktuře.
+* Obousměrná důvěryhodnost domén tvoří vztah mezi doménami v obou doménových strukturách s tranzitivní důvěryhodností.
 
-The transitivity of forest trusts is limited to the two forest partners. The forest trust doesn't extend to additional forests trusted by either of the partners.
+Přenositelnost vztahů důvěryhodnosti doménové struktury je omezená na tyto dva partnery doménové struktury. Vztah důvěryhodnosti doménové struktury se nerozšiřuje na další doménové struktury, které jsou pro některé z partnerů důvěryhodné.
 
-![Diagram of forest trust from Azure AD DS to on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Diagram vztahu důvěryhodnosti doménové struktury z Azure služba AD DS do místního služba AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-You can create different domain and forest trust configurations depending on the Active Directory structure of the organization. Azure AD DS only supports a one-way forest trust. In this configuration, resources in Azure AD DS can trust all domains in an on-premises forest.
+V závislosti na struktuře služby Active Directory organizace můžete vytvořit různé konfigurace doménových a doménových vztahů důvěryhodnosti. Azure služba AD DS podporuje jenom jednosměrný vztah důvěryhodnosti mezi doménovými strukturami. V této konfiguraci můžou prostředky v Azure služba AD DS důvěřovat všem doménám v místní doménové struktuře.
 
-## <a name="supporting-technology-for-trusts"></a>Supporting technology for trusts
+## <a name="supporting-technology-for-trusts"></a>Podpůrná technologie pro vztahy důvěryhodnosti
 
-Trusts use various services and features, such as DNS to locate domain controllers in partnering forests. Trusts also depend on NTLM and Kerberos authentication protocols and on Windows-based authorization and access control mechanisms to help provide a secured communications infrastructure across Active Directory domains and forests. The following services and features help support successful trust relationships.
+Vztahy důvěryhodnosti využívají různé služby a funkce, jako je třeba DNS k vyhledání řadičů domény v partnerských doménových strukturách. Vztahy důvěryhodnosti také závisí na ověřovacích protokolech NTLM a Kerberos a v mechanismech ověřování a řízení přístupu na základě systému Windows, které vám pomůžou zajistit zabezpečenou komunikační infrastrukturu napříč doménami a doménovými strukturami Active Directory. Následující služby a funkce vám pomůžou podpořit úspěšné vztahy důvěryhodnosti.
 
 ### <a name="dns"></a>DNS
 
-AD DS needs DNS for domain controller (DC) location and naming. The following support from DNS is provided for AD DS to work successfully:
+Služba AD DS potřebuje DNS pro umístění řadiče domény (DC) a pojmenování. K úspěšnému fungování služba AD DS je k dispozici následující Podpora služby DNS:
 
-* A name resolution service that lets network hosts and services to locate DCs.
-* A naming structure that enables an enterprise to reflect its organizational structure in the names of its directory service domains.
+* Služba překladu názvů umožňující síťovým hostitelům a službám vyhledat řadiče domény.
+* Struktura pojmenování, která umožňuje podniku odrážet svou organizační strukturu v názvech svých domén adresářových služeb.
 
-A DNS domain namespace is usually deployed that mirrors the AD DS domain namespace. If there's an existing DNS namespace before the AD DS deployment, the DNS namespace is typically partitioned for Active Directory, and a DNS subdomain and delegation for the Active Directory forest root is created. Additional DNS domain names are then added for each Active Directory child domain.
+Obvykle je nasazen obor názvů domény DNS, který odráží služba AD DS obor názvů domény. Pokud již existuje obor názvů DNS před nasazením služba AD DS, je obor názvů DNS obvykle rozdělený pro službu Active Directory a je vytvořena subdoména DNS a delegování pro kořenovou strukturu doménové struktury služby Active Directory. Pro každou podřízenou doménu služby Active Directory se pak přidaly další názvy domén DNS.
 
-DNS is also used to support the location of Active Directory DCs. The DNS zones are populated with DNS resource records that enable network hosts and services to locate Active Directory DCs.
+Služba DNS se používá také k podpoře umístění řadičů domény služby Active Directory. Zóny DNS se naplní záznamy prostředků DNS, které umožňují síťovým hostitelům a službám vyhledat řadiče domény služby Active Directory.
 
-### <a name="applications-and-net-logon"></a>Applications and Net Logon
+### <a name="applications-and-net-logon"></a>Aplikace a přihlášení k síti
 
-Both applications and the Net Logon service are components of the Windows distributed security channel model. Applications integrated with Windows Server and Active Directory use authentication protocols to communicate with the Net Logon service so that a secured path can be established over which authentication can occur.
+Obě aplikace i služba přihlášení k síti jsou součástí modelu Windows Distributed Security Channel. Aplikace integrované s Windows serverem a službou Active Directory používají ověřovací protokoly ke komunikaci se službou přihlašování k síti, aby bylo možné navázat zabezpečenou cestu, přes kterou může ověřování probíhat.
 
-### <a name="authentication-protocols"></a>Protokoly ověřování
+### <a name="authentication-protocols"></a>Protokoly pro ověřování
 
-Active Directory DCs authenticate users and applications using one of the following protocols:
+Řadiče domény služby Active Directory ověřují uživatele a aplikace pomocí jednoho z následujících protokolů:
 
-* **Kerberos version 5 authentication protocol**
-    * The Kerberos version 5 protocol is the default authentication protocol used by on-premises computers running Windows and supporting third-party operating systems. This protocol is specified in RFC 1510 and is fully integrated with Active Directory, server message block (SMB), HTTP, and remote procedure call (RPC), as well as the client and server applications that use these protocols.
-    * When the Kerberos protocol is used, the server doesn't have to contact the DC. Instead, the client gets a ticket for a server by requesting one from a DC in the server account domain. The server then validates the ticket without consulting any other authority.
-    * If any computer involved in a transaction doesn't support the Kerberos version 5 protocol, the NTLM protocol is used.
+* **Ověřovací protokol Kerberos verze 5**
+    * Protokol Kerberos verze 5 je výchozí protokol ověřování používaný místními počítači, na kterých běží Windows, a podporuje operační systémy třetích stran. Tento protokol je zadaný v dokumentu RFC 1510 a je plně integrovaný se službou Active Directory, protokolem SMB (Server Message Block), HTTP a vzdáleným voláním procedur (RPC) a také klientskými a serverovými aplikacemi, které používají tyto protokoly.
+    * Když se použije protokol Kerberos, server se nemusí připojit k řadiči domény. Místo toho klient obdrží lístek pro server tím, že si ho požádá z řadiče domény v doméně účtu serveru. Server potom ověří lístek bez konzultace jakékoli jiné autority.
+    * Pokud některý počítač zahrnutý v transakci nepodporuje protokol Kerberos verze 5, použije se protokol NTLM.
 
-* **NTLM authentication protocol**
-    * The NTLM protocol is a classic network authentication protocol used by older operating systems. For compatibility reasons, it's used by Active Directory domains to process network authentication requests that come from applications designed for earlier Windows-based clients and servers, and third-party operating systems.
-    * When the NTLM protocol is used between a client and a server, the server must contact a domain authentication service on a DC to verify the client credentials. The server authenticates the client by forwarding the client credentials to a DC in the client account domain.
-    * When two Active Directory domains or forests are connected by a trust, authentication requests made using these protocols can be routed to provide access to resources in both forests.
+* **Protokol ověřování NTLM**
+    * Protokol NTLM je klasický protokol ověřování sítě používaný staršími operačními systémy. Z důvodu kompatibility je používá doména služby Active Directory ke zpracování požadavků na ověření v síti, které pocházejí z aplikací navržených pro starší klienty a servery se systémem Windows a operačních systémů třetích stran.
+    * Pokud je protokol NTLM použit mezi klientem a serverem, server musí kontaktovat službu ověřování v doméně na řadiči domény za účelem ověření přihlašovacích údajů klienta. Server ověřuje klienta předáním přihlašovacích údajů klienta na řadič domény v doméně klientského účtu.
+    * Pokud je mezi dvěma doménami služby Active Directory nebo doménovou strukturou propojena důvěryhodnost, je možné směrovat požadavky na ověření pomocí těchto protokolů, aby poskytovaly přístup k prostředkům v obou doménových strukturách.
 
-## <a name="authorization-and-access-control"></a>Authorization and access control
+## <a name="authorization-and-access-control"></a>Autorizace a řízení přístupu
 
-Authorization and trust technologies work together to provide a secured communications infrastructure across Active Directory domains or forests. Authorization determines what level of access a user has to resources in a domain. Trusts facilitate cross-domain authorization of users by providing a path for authenticating users in other domains so their requests to shared resources in those domains can be authorized.
+Technologie autorizace a vztahu důvěryhodnosti společně spolupracují na poskytování zabezpečené komunikační infrastruktury napříč doménami nebo doménovými strukturami služby Active Directory. Autorizace určuje, jakou úroveň přístupu má uživatel k prostředkům v doméně. Vztahy důvěryhodnosti usnadňují ověřování uživatelů mezi doménami, protože poskytují cestu k ověřování uživatelů v jiných doménách, takže jejich požadavky na sdílené prostředky v těchto doménách mohou být autorizovány.
 
-When an authentication request made in a trusting domain is validated by the trusted domain, it's passed to the target resource. The target resource then determines whether to authorize the specific request made by the user, service, or computer in the trusted domain based on its access control configuration.
+V případě, že je žádost o ověření vytvořená v důvěřující doméně ověřena důvěryhodnou doménou, bude předána cílovému prostředku. Cílový prostředek pak určuje, jestli se má autorizovat konkrétní žádost vytvořená uživatelem, službou nebo počítačem v důvěryhodné doméně na základě konfigurace řízení přístupu.
 
-Trusts provide this mechanism to validate authentication requests that are passed to a trusting domain. Access control mechanisms on the resource computer determine the final level of access granted to the requestor in the trusted domain.
+Vztahy důvěryhodnosti poskytují tento mechanismus k ověřování žádostí o ověření, které jsou předány důvěřující doméně. Mechanismy řízení přístupu na počítači prostředků určují konečnou úroveň přístupu uděleného žadateli v důvěryhodné doméně.
 
 ## <a name="next-steps"></a>Další kroky
 
-To learn more about trusts, see [How do forest trusts work in Azure AD DS?][concepts-trust]
+Další informace o vztahu důvěryhodnosti najdete v tématu [jak vztahy důvěryhodnosti doménové struktury fungují v Azure služba AD DS?][concepts-trust]
 
-To get started with creating an Azure AD DS managed domain with a resource forest, see [Create and configure an Azure AD DS managed domain][tutorial-create-advanced]. You can then [Create an outbound forest trust to an on-premises domain (preview)][create-forest-trust].
+Pokud chcete začít s vytvářením spravované domény Azure služba AD DS pomocí doménové struktury prostředků, přečtěte si téma [Vytvoření a konfigurace spravované domény azure služba AD DS][tutorial-create-advanced]. Pak můžete [vytvořit odchozí vztah důvěryhodnosti doménové struktury k místní doméně (Preview)][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

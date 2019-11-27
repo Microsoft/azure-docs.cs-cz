@@ -83,13 +83,13 @@ Tenant nebo globální správce může udělit oprávnění následujícím způ
     ![Oprávnění služby Azure AD](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Toto je výchozí nastavení, které není citlivé. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)
+> Toto je výchozí nastavení, které není citlivé. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 
 
 #### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace
 
-Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
+Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 
 ## <a name="prepare-for-hyper-v-assessment"></a>Příprava na posouzení technologie Hyper-V
@@ -148,7 +148,7 @@ Spusťte skript následujícím způsobem:
 
 Hodnoty hash jsou:
 
-| **Hash** | **Hodnota** |
+| **Kontrole** | **Hodnota** |
 | --- | --- |
 | **ALGORITMY** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |

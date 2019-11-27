@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Predict automobile price with the designer'
+title: 'Kurz: předpověď ceny automobilu pomocí návrháře'
 titleSuffix: Azure Machine Learning
-description: Learn how to train, score, and deploy a machine learning model by using a drag-and-drop interface. This tutorial is part one of a two-part series on predicting automobile prices by using linear regression.
+description: Naučte se, jak pomocí rozhraní přetažení využít výuku, skóre a nasazení modelu strojového učení. Tento kurz je první částí série dvou částí pro předpověď cen automobilů pomocí lineární regrese.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -16,207 +16,207 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228396"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Predict automobile price with the designer (preview)
+# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-In this two-part tutorial, you learn how to use the Azure Machine Learning designer to develop and deploy a predictive analytics solution that predicts the price of any car. 
+V tomto kurzu se dozvíte, jak pomocí návrháře Azure Machine Learning vyvíjet a nasazovat řešení prediktivní analýzy, které předpovídá cenu každé auta. 
 
-In part one, you set up your environment, drag modules onto an interactive canvas, and connect them together to create an Azure Machine Learning pipeline.
+V první části nastavíte prostředí, přetáhnete moduly na interaktivní plátno a spojíte je dohromady, aby se vytvořil kanál Azure Machine Learning.
 
-In part one of the tutorial, you'll learn how to:
+V první části kurzu se dozvíte, jak:
 
 > [!div class="checklist"]
-> * Create a new pipeline.
-> * Import data.
-> * Prepare data.
-> * Train a machine learning model.
-> * Evaluate a machine learning model.
+> * Vytvořte nový kanál.
+> * Importujte data.
+> * Připravte data.
+> * Naučte se model strojového učení.
+> * Vyhodnoťte model strojového učení.
 
-In [part two](tutorial-designer-automobile-price-deploy.md) of the tutorial, you'll learn how to deploy your predictive model as a real-time inferencing endpoint to predict the price of any car based on technical specifications you send it. 
+V [druhé části](tutorial-designer-automobile-price-deploy.md) kurzu se naučíte, jak nasadit prediktivní model jako koncový bod Inferencing v reálném čase, abyste mohli předpovědět cenu každé auta na základě technických specifikací, které vám odešlete. 
 
 > [!NOTE]
->A completed version of this tutorial is available as a sample pipeline.
+>Dokončená verze tohoto kurzu je k dispozici jako vzorový kanál.
 >
->To find it, go to the designer in your workspace. In the **New pipeline** section, select **Sample 1 - Regression: Automobile Price Prediction(Basic)** .
+>Pokud ho chcete najít, v pracovním prostoru se podívejte do návrháře. V části **Nový kanál** vyberte **Ukázka 1 – regrese: automobilová předpověď ceny (základní)** .
 
-## <a name="create-a-new-pipeline"></a>Create a new pipeline
+## <a name="create-a-new-pipeline"></a>Vytvořit nový kanál
 
-Azure Machine Learning pipelines organize multiple, dependent machine learning and data processing steps into a single resource. Pipelines help you organize, manage, and reuse complex machine learning workflows across projects and users. To create an Azure Machine Learning pipeline, you need an Azure Machine Learning workspace. In this section, you learn how to create both these resources.
+Kanály Azure Machine Learning organizují více závislých kroků strojového učení a zpracování dat do jediného prostředku. Kanály vám pomůžou organizovat, spravovat a opakovaně používat složité pracovní postupy strojového učení napříč projekty a uživateli. Pokud chcete vytvořit kanál Azure Machine Learning, potřebujete Azure Machine Learning pracovní prostor. V této části se dozvíte, jak tyto prostředky vytvořit.
 
-### <a name="create-a-new-workspace"></a>Create a new workspace
+### <a name="create-a-new-workspace"></a>Vytvořit nový pracovní prostor
 
-If you have an Azure Machine Learning workspace with an Enterprise edition, [skip to the next section](#create-the-pipeline).
+Pokud máte pracovní prostor Azure Machine Learning s edicí Enterprise, [přejděte k další části](#create-the-pipeline).
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>Vytvoření kanálu
 
-1. Sign in to [ml.azure.com](https://ml.azure.com), and select the workspace you want to work with.
+1. Přihlaste se k [ml.Azure.com](https://ml.azure.com)a vyberte pracovní prostor, se kterým chcete pracovat.
 
-1. Select **Designer**.
+1. Vyberte **Návrhář**.
 
-    ![Screenshot of the visual workspace showing how to access the designer](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
+    ![Snímek obrazovky s vizuálním pracovním prostorem, který ukazuje, jak získat přístup k Návrháři](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
 
-1. Select **Easy-to-use prebuilt modules**.
+1. Vyberte **snadno použitelné předem připravené moduly**.
 
-1. Select the default pipeline name **Pipeline-Created-on** at the top of the canvas. Rename it to something meaningful. An example is *Automobile price prediction*. Název nemusí být jedinečný.
+1. Vyberte výchozí kanál názvu kanálu **– Vytvořeno v** horní části plátna. Přejmenujte ho na něco smysluplného. Příkladem je *předpověď ceny automobilu*. Název nemusí být jedinečný.
 
 ## <a name="import-data"></a>Import dat
 
-There are several sample datasets included in the designer for you to experiment with. For this tutorial, use **Automobile price data (Raw)** . 
+Návrhář obsahuje několik ukázkových datových sad, které můžete experimentovat s nástrojem. Pro tento kurz použijte **data o cenách automobilu (RAW)** . 
 
-1. To the left of the pipeline canvas is a palette of datasets and modules. Select **Datasets**, and then view the **Samples** section to view the available sample datasets.
+1. Vlevo od plátna kanálu je paleta datových sad a modulů. Vyberte **datové sady**a pak zobrazte část **ukázky** a zobrazte si dostupné ukázkové datové sady.
 
-1. Select the dataset **Automobile price data (Raw)** , and drag it onto the canvas.
+1. Vyberte **data automobil auto data (Hrubá cena)** a přetáhněte je na plátno.
 
-   ![Drag data to canvas](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
+   ![Přetáhněte data na plátno.](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
 
 ### <a name="visualize-the-data"></a>Vizualizace dat
 
-You can visualize the data to understand the dataset that you'll use.
+Můžete vizualizovat data a pochopit datovou sadu, kterou budete používat.
 
-1. Select the **Automobile price data (Raw)** module.
+1. Vyberte modul **cena za automobilový data (RAW)** .
 
-1. In the properties pane to the right of the canvas, select **Outputs**.
+1. V podokně vlastnosti napravo od plátna vyberte **výstupy**.
 
-1. Select the graph icon to visualize the data.
+1. Vyberte ikonu grafu pro vizualizaci dat.
 
     ![Vizualizace dat](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
 
-1. Select the different columns in the data window to view information about each one.
+1. Výběrem různých sloupců v okně data zobrazíte informace o každém z nich.
 
-    Each row represents an automobile, and the variables associated with each automobile appear as columns. There are 205 rows and 26 columns in this dataset.
+    Každý řádek představuje automobil a proměnné přidružené k jednotlivým automobilům se zobrazí jako sloupce. V této datové sadě jsou 205 řádky a 26 sloupců.
 
 ## <a name="prepare-data"></a>Příprava dat
 
-Datasets typically require some preprocessing before analysis. You might have noticed some missing values when you inspected the dataset. These missing values must be cleaned so that the model can analyze the data correctly.
+Datové sady obvykle vyžadují před analýzou určitý předzpracování. Při kontrole datové sady jste si pravděpodobně všimli některých chybějících hodnot. Tyto chybějící hodnoty musí být vyčištěny, aby model mohl správně analyzovat data.
 
 ### <a name="remove-a-column"></a>Odebrání sloupce
 
-When you train a model, you have to do something about the data that's missing. In this dataset, the **normalized-losses** column is missing many values, so you exclude that column from the model altogether.
+Při výukovém modelu je nutné provést něco o chybějících datech. Ve sloupci **normalizované ztráty** v této datové sadě chybí mnoho hodnot, takže tento sloupec z modelu zcela vyloučíte.
 
-1. Enter **Select** in the search box at the top of the palette to find the **Select Columns in Dataset** module.
+1. Do pole Hledat v horní části palety zadejte **Select** a vyhledejte modul **Výběr sloupců v datové sadě** .
 
-1. Drag the **Select Columns in Dataset** module onto the canvas. Drop the module below the dataset module.
+1. Přetáhněte modul **Výběr sloupců v datové sadě** na plátno. Přetáhněte modul pod modul DataSet.
 
-1. Connect the **Automobile price data (Raw)** dataset to the **Select Columns in Dataset** module. Drag from the dataset's output port, which is the small circle at the bottom of the dataset on the canvas, to the input port of **Select Columns in Dataset**, which is the small circle at the top of the module.
+1. Připojte datovou sadu **dat o ceně automobilu (RAW)** do modulu **Výběr sloupců v datové sadě** . Přetáhněte z výstupního portu datové sady, což je malý kroužek v dolní části datové sady na plátně, na vstupní port pro **Výběr sloupců v datové sadě**, což je malý kruh v horní části modulu.
 
     > [!TIP]
-    > You create a flow of data through your pipeline when you connect the output port of one module to an input port of another.
+    > Pokud připojíte výstupní port jednoho modulu ke vstupnímu portu jiného, vytvoříte tok dat prostřednictvím kanálu.
     >
 
-    ![Connect modules](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
+    ![Připojit moduly](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
 
-1. Select the **Select Columns in Dataset** module.
+1. Vyberte modul **Výběr sloupců v datové sadě** .
 
-1. In the properties pane to the right of the canvas, select **Parameters** > **Edit column**.
+1. V podokně vlastnosti napravo od plátna vyberte **parametry** > **Upravit sloupec**.
 
-1. Select the **+** to add a new rule.
+1. Vyberte **+** pro přidání nového pravidla.
 
-1. From the drop-down menu, select **Exclude** and **Column names**.
+1. V rozevírací nabídce vyberte **vyloučit** a **názvy sloupců**.
     
-1. Enter *normalized-losses* in the text box.
+1. Do textového pole zadejte *normalizované ztráty* .
 
-1. In the lower right, select **Save** to close the column selector.
+1. V pravém dolním rohu výběrem **Uložit** zavřete selektor sloupců.
 
-    ![Exclude a column](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
+    ![Vyloučení sloupce](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
         
-    The properties pane shows that the **normalized-losses** column is excluded.
+    V podokně vlastnosti se zobrazí vyloučený sloupec **normalizované ztráty** .
 
-1. Select the **Select Columns in Dataset** module. 
+1. Vyberte modul **Výběr sloupců v datové sadě** . 
 
-1. In the properties pane, select **Parameters** > **Comment** and enter *Exclude normalized losses*.
+1. V podokně Vlastnosti vyberte **parametry** > **Komentář** a zadejte *vyloučit normalizované ztráty*.
 
-### <a name="clean-missing-data"></a>Clean missing data
+### <a name="clean-missing-data"></a>Vyčištění chybějících dat
 
-Your dataset still has missing values after you remove the **normalized-losses** column. You can remove the remaining missing data by using the **Clean Missing Data** module.
+V datové sadě ještě chybí hodnoty po odebrání sloupce **normalizované ztráty** . Zbývající chybějící data můžete odebrat pomocí modulu **Vyčištění chybějících dat** .
 
 > [!TIP]
-> Cleaning the missing values from input data is a prerequisite for using most of the modules in the designer.
+> Vyčištění chybějících hodnot ze vstupních dat je předpokladem pro použití většiny modulů v návrháři.
 
-1. Enter **Clean** in the search box to find the **Clean Missing Data** module.
+1. Do vyhledávacího pole zadejte **vyčistit** a vyhledejte modul **Vyčištění chybějících dat** .
 
-1. Drag the **Clean Missing Data** module to the pipeline canvas. Connect it to the **Select Columns in Dataset** module. 
+1. Přetáhněte modul **Vyčištění chybějících dat** na plátno kanálu. Připojte ho k modulu **Výběr sloupců v datové sadě** . 
 
-1. In the properties pane, select **Remove entire row** under **Cleaning mode**.
+1. V podokně Vlastnosti vyberte v **režimu čištění**možnost **odstranit celý řádek** .
 
-1. In the properties pane **Comment** box, enter *Remove missing value rows*. 
+1. V poli **Komentář** k podoknu vlastností zadejte příkaz *odebrat chybějící řádky hodnoty*. 
 
-    Your pipeline should now look something like this:
+    Váš kanál by teď měl vypadat nějak takto:
     
-    ![Select-column](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
+    ![Vybrat – sloupec](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
 
-## <a name="train-a-machine-learning-model"></a>Train a machine learning model
+## <a name="train-a-machine-learning-model"></a>Výuka modelu strojového učení
 
-Now that the data is processed, you can train a predictive model.
+Teď, když jsou data zpracovaná, můžete vytvořit prediktivní model.
 
 ### <a name="select-an-algorithm"></a>Výběr algoritmu
 
-*Klasifikace* a *regrese* jsou dva typy technik strojového učení se supervizí. Classification predicts an answer from a defined set of categories, such as a color like red, blue, or green. Regrese se používá k předpovědi čísel.
+*Klasifikace* a *regrese* jsou dva typy technik strojového učení se supervizí. Klasifikace předpovídá odpověď ze definované sady kategorií, například barvy, jako je červená, modrá nebo zelená. Regrese se používá k předpovědi čísel.
 
-Because you want to predict price, which is a number, you can use a regression algorithm. For this example, you use a linear regression model.
+Vzhledem k tomu, že chcete odhadnout cenu, což je číslo, můžete použít regresní algoritmus. V tomto příkladu použijete model lineární regrese.
 
-### <a name="split-the-data"></a>Split the data
+### <a name="split-the-data"></a>Rozdělení dat
 
-Split your data into two separate datasets for training the model and testing it.
+Rozdělte data do dvou samostatných datových sad pro účely školení modelu a testování.
 
-1. Enter **split data** in the search box to find the **Split Data** module. Connect it to the left port of the **Clean Missing Data** module.
+1. Do vyhledávacího pole zadejte **rozdělená data** , abyste mohli najít modul **rozdělených dat** . Připojte ho k levému portu modulu **Vyčištění chybějících dat** .
 
-1. Select the **Split Data** module.
+1. Vyberte modul **rozdělit data** .
 
-1. In the properties pane, set the **Fraction of rows in the first output dataset** to 0.7.
+1. V podokně Vlastnosti nastavte **zlomek řádků v první výstupní sadě dat** na 0,7.
 
-    This option splits 70 percent of the data to train the model and 30 percent for testing it.
+    Tato možnost rozdělí 70 procent dat za účelem výuky modelu a 30 procent pro jeho testování.
 
-1. In the properties pane **Comment** box, enter *Split the dataset into training set (0.7) and test set (0.3)* .
+1. V poli **Komentář** podokna Vlastnosti zadejte *rozdělit datovou sadu do sady školení (0,7) a sady testů (0,3)* .
 
 ### <a name="train-the-model"></a>Trénování modelu
 
-Train the model by giving it a set of data that includes the price. The model scans through the data and looks for correlations between a car's features and its price to construct a model.
+Zajistěte si model tím, že mu udělíte sadu dat, která obsahuje cenu. Model prochází data a vyhledává korelace mezi funkcemi automobilu a cenou za účelem vytvoření modelu.
 
-1. To select the learning algorithm, clear your module palette search box.
+1. Chcete-li vybrat sledovací algoritmus, zrušte zaškrtnutí políčka pro hledání palety modulu.
 
-1. Expand **Machine Learning Algorithms**.
+1. Rozbalte **Machine Learning algoritmy**.
     
-    This option displays several categories of modules that you can use to initialize learning algorithms.
+    Tato možnost zobrazí několik kategorií modulů, které lze použít k inicializaci výukových algoritmů.
 
-1. Select **Regression** > **Linear Regression**, and drag it to the pipeline canvas.
+1. Vyberte **regresi** > **lineární regresi**a přetáhněte ji na plátno kanálu.
 
-1. Find and drag the **Train Model** module to the pipeline canvas. 
+1. Najděte modul **vlakového modelu** a přetáhněte ho na plátno kanálu. 
 
-1. Connect the output of the **Linear Regression** module to the left input of the **Train Model** module.
+1. Připojte výstup modulu **lineární regrese** k levému vstupu modulu **vlak model** .
 
-1. Connect the training data output (left port) of the **Split Data** module to the right input of the **Train Model** module.
+1. Připojte výstup školicích dat (levý port) modulu **rozdělení dat** ke správnému vstupu modulu **vlak model** .
 
-    ![Screenshot showing the correct configuration of the Train Model module. The Linear Regression module connects to left port of Train Model module and the Split Data module connects to right port of Train Model](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
+    ![Snímek obrazovky znázorňující správnou konfiguraci modulu vlakového modelu. Modul lineární regrese se připojí k levému portu modulu vlakového modelu a modul rozdělit data se připojí k pravému portu modelu vlaku.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. Select the **Train Model** module.
+1. Vyberte modul **vlakového modelu** .
 
-1. In the properties pane, select **Edit column** selector.
+1. V podokně Vlastnosti vyberte možnost **Upravit selektor sloupců** .
 
-1. In the **Label column** dialog box, expand the drop-down menu and select **Column names**. 
+1. V dialogovém okně **popisek sloupce** rozbalte rozevírací nabídku a vyberte možnost **názvy sloupců**. 
 
-1. In the text box, enter *price*. Price is the value that your model is going to predict.
+1. Do textového pole zadejte *Price*. Cena je hodnota, kterou model hodlá předpovědět.
 
-    Your pipeline should look like this:
+    Váš kanál by měl vypadat takto:
 
-    ![Screenshot showing the correct configuration of the pipeline after adding the Train Model module.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
+    ![Snímek obrazovky, který zobrazuje správnou konfiguraci kanálu po přidání modulu vlakového modelu.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="evaluate-a-machine-learning-model"></a>Evaluate a machine learning model
+## <a name="evaluate-a-machine-learning-model"></a>Vyhodnocení modelu Machine Learning
 
-After you train your model by using 70 percent of the data, you can use it to score the other 30 percent to see how well your model functions.
+Jakmile svůj model provedete pomocí 70 procent dat, můžete ho použít k vyhodnocení dalších 30 procent, abyste viděli, jak dobře model funguje.
 
-1. Enter *score model* in the search box to find the **Score Model** module. Drag the module to the pipeline canvas. 
+1. Do vyhledávacího pole zadejte *model skóre* , abyste našli modul **skóre modelu** . Přetáhněte modul na plátno kanálu. 
 
-1. Connect the output of the **Train Model** module to the left input port of **Score Model**. Connect the test data output (right port) of the **Split Data** module to the right input port of **Score Model**.
+1. Připojte výstup modulu **vlak model** k levému vstupnímu portu **modelu skóre**. Připojte výstup testovacích dat (pravý port) modulu **rozdělení dat** ke správnému vstupnímu portu **modelu skóre**.
 
-1. Enter *evaluate* in the search box to find the **Evaluate Model** module. Drag the module to the pipeline canvas. 
+1. Do vyhledávacího pole zadejte *vyhodnotit* a najděte modul **vyhodnocení modelu** . Přetáhněte modul na plátno kanálu. 
 
-1. Connect the output of the **Score Model** module to the left input of **Evaluate Model**. 
+1. Propojte výstup modulu určení **skóre modelu** s levým vstupem **modelu vyhodnocení**. 
 
-    The final pipeline should look something like this:
+    Konečný kanál by měl vypadat přibližně takto:
 
-    ![Screenshot showing the correct configuration of the pipeline.](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
+    ![Snímek obrazovky znázorňující správnou konfiguraci kanálu](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
 ### <a name="run-the-pipeline"></a>Spuštění kanálu
 
@@ -224,29 +224,29 @@ After you train your model by using 70 percent of the data, you can use it to sc
 
 ### <a name="view-results"></a>Zobrazení výsledků
 
-After the run completes, you can view the results of the pipeline run. 
+Po dokončení běhu můžete zobrazit výsledky spuštění kanálu. 
 
-1. Select the **Score Model** module to view its output.
+1. Vyberte modul určení **skóre modelu** , ve kterém chcete zobrazit jeho výstup.
 
-1. In the properties pane, select **Outputs** > **Visualize**.
+1. V podokně Vlastnosti vyberte možnost **výstupy** > **vizualizace**.
 
-    Here you can see the predicted prices and the actual prices from the testing data.
+    Tady vidíte předpovězené ceny a skutečné ceny z testovacích dat.
 
-    ![Screenshot of the output visualization highlighting the Scored Label column](./media/tutorial-designer-automobile-price-train-score/score-result.png)
+    ![Snímek obrazovky výstupní vizualizace, která zvýrazňuje sloupec popisku s skóre](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
-1. Select the **Evaluate Model** module to view its output.
+1. Vyberte modul **vyhodnocení modelu** a zobrazte jeho výstup.
 
-1. In the properties pane, select **Output** > **Visualize**.
+1. V podokně Vlastnosti vyberte **výstup** > **vizualizace**.
 
-The following statistics are shown for your model:
+Pro váš model se zobrazí následující statistiky:
 
-* **Mean Absolute Error (MAE)** : The average of absolute errors. An error is the difference between the predicted value and the actual value.
-* **Root Mean Squared Error (RMSE)** : The square root of the average of squared errors of predictions made on the test dataset.
+* **Střední absolutní chyba (Mae)** : průměr absolutních chyb. Chyba je rozdíl mezi předpokládanou hodnotou a skutečnou hodnotou.
+* **Původní střední hodnota chyby (RMSE)** : druhá odmocnina průměru kvadratických chyb předpovědi provedených v testovací datové sadě.
 * **Relativní absolutní chyba**: Průměr absolutních chyb relativních k absolutnímu rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
 * **Relativní kvadratická chyba**: Průměr kvadratických chyb relativních ke kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
-* **Coefficient of Determination**: Also known as the R squared value, this statistical metric indicates how well a model fits the data.
+* **Koeficient stanovitelnosti**: označuje se také jako hodnota v hodnotě R. Tato statistická metrika indikuje, jak dobře model odpovídá datům.
 
-Pro každou statistiku chyb platí, že menší hodnota je lepší. A smaller value indicates that the predictions are closer to the actual values. For the coefficient of determination, the closer its value is to one (1.0), the better the predictions.
+Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodnota označuje, že předpovědi jsou bližší k skutečným hodnotám. Pro koeficient stanovení je bližší jeho hodnota jednomu (1,0), což je lepší předpovědi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -254,14 +254,14 @@ Pro každou statistiku chyb platí, že menší hodnota je lepší. A smaller va
 
 ## <a name="next-steps"></a>Další kroky
 
-In part one of this tutorial, you completed the following tasks:
+V první části tohoto kurzu jste dokončili následující úlohy:
 
 * Vytvoření kanálu
 * Příprava dat
 * Trénování modelu
-* Score and evaluate the model
+* Skóre a vyhodnocení modelu
 
-In part two, you'll learn how to deploy your model as a real-time endpoint.
+V části druhá část se dozvíte, jak model nasadit jako koncový bod v reálném čase.
 
 > [!div class="nextstepaction"]
-> [Continue to deploying models](tutorial-designer-automobile-price-deploy.md)
+> [Pokračovat v nasazování modelů](tutorial-designer-automobile-price-deploy.md)

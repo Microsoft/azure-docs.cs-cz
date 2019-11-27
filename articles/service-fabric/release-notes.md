@@ -18,11 +18,10 @@ ms.locfileid: "74186524"
 ---
 # <a name="service-fabric-releases"></a>Verze Service Fabric
 
-| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Poradci při potížích s průvodci</a> 
-| <a href="https://github.com/Azure/service-fabric-issues" target="blank">
-sledování problémů</a> 
-| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Možnosti</a> 
-| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">propodporované verze</a> 
+| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Průvodci odstraňováním potíží</a> 
+| možnosti <a href="https://github.com/Azure/service-fabric-issues" target="blank">sledování problémů</a> 
+| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">podpoře</a> 
+| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">podporované verze</a> 
 | <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">ukázky kódu</a>
 
 V tomto článku najdete další informace o nejnovějších vydáních a aktualizacích Service Fabric runtime a sadách SDK.

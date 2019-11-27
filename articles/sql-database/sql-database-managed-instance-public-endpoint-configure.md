@@ -1,6 +1,6 @@
 ---
-title: Configure public endpoint - managed instance
-description: Learn how to configure a public endpoint for managed instance
+title: Konfigurace spravované instance s veřejným koncovým bodem
+description: Informace o tom, jak nakonfigurovat veřejný koncový bod pro spravovanou instanci
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -17,39 +17,39 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227986"
 ---
-# <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Configure public endpoint in Azure SQL Database managed instance
+# <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Konfigurace veřejného koncového bodu v Azure SQL Database Managed instance
 
-Public endpoint for a [managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) enables data access to your managed instance from outside the [virtual network](../virtual-network/virtual-networks-overview.md). You are able to access your managed instance from multi-tenant Azure services like Power BI, Azure App Service, or an on-premises network. By using the public endpoint on a managed instance, you do not need to use a VPN, which can help avoid VPN throughput issues.
+Veřejný koncový bod pro [spravovanou instanci](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) umožňuje přístup k datům ze spravované instance mimo [virtuální síť](../virtual-network/virtual-networks-overview.md). K spravované instanci máte přístup z více tenantů služeb Azure, jako je Power BI, Azure App Service nebo místní síť. Pomocí veřejného koncového bodu na spravované instanci nemusíte používat síť VPN, která může pomoci vyhnout se problémům s propustností sítě VPN.
 
-In this article, you'll learn how to:
+V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
-> - Enable public endpoint for your managed instance in the Azure portal
-> - Enable public endpoint for your managed instance using PowerShell
-> - Configure your managed instance network security group to allow traffic to the managed instance public endpoint
-> - Obtain the managed instance public endpoint connection string
+> - Povolit veřejný koncový bod pro spravovanou instanci v Azure Portal
+> - Povolení veřejného koncového bodu pro spravovanou instanci pomocí prostředí PowerShell
+> - Nakonfigurujte skupinu zabezpečení sítě spravované instance tak, aby povolovala provoz do veřejného koncového bodu spravované instance.
+> - Získání připojovacího řetězce veřejného koncového bodu spravované instance
 
 ## <a name="permissions"></a>Oprávnění
 
-Due to the sensitivity of data that is in a managed instance, the configuration to enable managed instance public endpoint requires a two-step process. This security measure adheres to separation of duties (SoD):
+Vzhledem k citlivosti dat, která jsou ve spravované instanci, je konfigurace pro povolení veřejného koncového bodu spravované instance vyžaduje proces se dvěma kroky. Toto opatření zabezpečení dodržuje oddělení povinností (SoD):
 
-- Enabling public endpoint on a managed instance needs to be done by the managed instance admin. The managed instance admin can be found on **Overview** page of your SQL managed instance resource.
-- Allowing traffic using a network security group that needs to be done by a network admin. For more information, see [network security group permissions](../virtual-network/manage-network-security-group.md#permissions).
+- Povolení veřejného koncového bodu na spravované instanci musí být provedeno správcem spravované instance. Správce spravované instance najdete na stránce s **přehledem** prostředku spravované instance SQL.
+- Povolení provozu pomocí skupiny zabezpečení sítě, kterou je nutné provést správcem sítě. Další informace najdete v tématu [oprávnění skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md#permissions).
 
-## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Enabling public endpoint for a managed instance in the Azure portal
+## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Povolení veřejného koncového bodu pro spravovanou instanci v Azure Portal
 
-1. Launch the Azure portal at <https://portal.azure.com/.>
-1. Open the resource group with the managed instance, and select the **SQL managed instance** that you want to configure public endpoint on.
-1. On the **Security** settings, select the **Virtual network** tab.
-1. In the Virtual network configuration page, select **Enable** and then the **Save** icon to update the configuration.
+1. Spustit Azure Portal v <https://portal.azure.com/.>
+1. Otevřete skupinu prostředků se spravovanou instancí a vyberte **spravovanou instanci SQL** , na které chcete nakonfigurovat veřejný koncový bod.
+1. V nastavení **zabezpečení** vyberte kartu **virtuální síť** .
+1. Na stránce konfigurace virtuální sítě vyberte **Povolit** a potom kliknutím na ikonu **Uložit** aktualizujte konfiguraci.
 
 ![mi-vnet-config.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
 
-## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Enabling public endpoint for a managed instance using PowerShell
+## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Povolení veřejného koncového bodu pro spravovanou instanci pomocí prostředí PowerShell
 
-### <a name="enable-public-endpoint"></a>Enable public endpoint
+### <a name="enable-public-endpoint"></a>Povolit veřejný koncový bod
 
-Run the following PowerShell commands. Replace **subscription-id** with your subscription ID. Also replace **rg-name** with the resource group for your managed instance, and replace **mi-name** with the name of your managed instance.
+Spusťte následující příkazy PowerShellu. Nahraďte ID **předplatného** ID vašeho předplatného. Také nahraďte **RG-Name** skupinou prostředků vaší spravované instance a nahraďte **mi** název názvem vaší spravované instance.
 
 ```powershell
 Install-Module -Name Az
@@ -70,50 +70,50 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -PublicDataEndpointEnabled $true -force
 ```
 
-### <a name="disable-public-endpoint"></a>Disable public endpoint
+### <a name="disable-public-endpoint"></a>Zakázat veřejný koncový bod
 
-To disable the public endpoint using PowerShell, you would execute the following command (and also do not forget to close the NSG for the inbound port 3342 if you have it configured):
+Pokud chcete veřejný koncový bod zakázat pomocí prostředí PowerShell, spusťte následující příkaz (a také nezapomeňte zavřít NSG pro příchozí port 3342, pokud jste je nakonfigurovali):
 
 ```powershell
 Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ```
 
-## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Allow public endpoint traffic on the network security group
+## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Povolení provozu veřejného koncového bodu ve skupině zabezpečení sítě
 
-1. If you have the configuration page of the managed instance still open, navigate to the **Overview** tab. Otherwise, go back to your **SQL managed instance** resource. Select the **Virtual network/subnet** link, which will take you to the Virtual network configuration page.
+1. Pokud je stránka konfigurace spravované instance stále otevřená, přejděte na kartu **Přehled** . v opačném případě se vraťte k prostředku **spravované instance SQL** . Vyberte odkaz **virtuální síť/podsíť** , který vás přesměruje na stránku konfigurace virtuální sítě.
 
-    ![mi-overview.png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
+    ![mi-Overview. png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
 
-1. Select the **Subnets** tab on the left configuration pane of your Virtual network, and make note of the **SECURITY GROUP** for your managed instance.
+1. Vyberte kartu **podsítě** v levém podokně Konfigurace vaší virtuální sítě a poznamenejte si **skupinu zabezpečení** pro spravovanou instanci.
 
     ![mi-vnet-subnet.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
 
-1. Go back to your resource group that contains your managed instance. You should see the **Network security group** name noted above. Select the name to go into the network security group configuration page.
+1. Vraťte se do skupiny prostředků, která obsahuje vaši spravovanou instanci. Měl by se zobrazit název **skupiny zabezpečení sítě** , který jste si poznamenali výše. Vyberte název, který chcete přejít na stránku konfigurace skupiny zabezpečení sítě.
 
-1. Select the **Inbound security rules** tab, and **Add** a rule that has higher priority than the **deny_all_inbound** rule with the following settings: </br> </br>
+1. Vyberte kartu **příchozí pravidla zabezpečení** a **přidejte** pravidlo, které má vyšší prioritu než pravidlo **deny_all_inbound** s následujícím nastavením: </br> </br>
 
     |Nastavení  |Navrhovaná hodnota  |Popis  |
     |---------|---------|---------|
-    |**Zdroj**     |Any IP address or Service tag         |<ul><li>For Azure services like Power BI, select the Azure Cloud Service Tag</li> <li>For your computer or Azure VM, use NAT IP address</li></ul> |
-    |**Source port ranges**     |*         |Leave this to * (any) as source ports are usually dynamically allocated and as such, unpredictable |
-    |**Destination**     |Všechny         |Leaving destination as Any to allow traffic into the managed instance subnet |
-    |**Destination port ranges**     |3342         |Scope destination port to 3342, which is the managed instance public TDS endpoint |
-    |**Protokol**     |TCP         |Managed instance uses TCP protocol for TDS |
-    |**Akce**     |Povolit         |Allow inbound traffic to managed instance through the public endpoint |
-    |**Priorita**     |1300         |Make sure this rule is higher priority than the **deny_all_inbound** rule |
+    |**Zdroj**     |Jakákoli IP adresa nebo značka služby         |<ul><li>U služeb Azure, jako je Power BI, vyberte značku cloudová služba Azure.</li> <li>Pro váš počítač nebo virtuální počítač Azure použijte IP adresu překladu adres (NAT).</li></ul> |
+    |**Rozsahy zdrojových portů**     |*         |Nechte to * (any), protože zdrojové porty se obvykle dynamicky přiřazují a jako nepředvídatelné. |
+    |**Tabulka**     |Všechny         |Ponechání cíle jako pro povolení provozu do podsítě spravované instance |
+    |**Rozsahy cílových portů**     |3342         |Rozsah cílového portu na 3342, který je veřejným koncovým bodem spravované instance TDS |
+    |**Protokol**     |TCP         |Spravovaná instance používá protokol TCP pro TDS. |
+    |**Akce**     |Povolit         |Povolit příchozí provoz do spravované instance prostřednictvím veřejného koncového bodu |
+    |**Priorita**     |1300         |Ujistěte se, že toto pravidlo má vyšší prioritu než pravidlo **deny_all_inbound** . |
 
     ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
-    > Port 3342 is used for public endpoint connections to managed instance, and cannot be changed at this point.
+    > Port 3342 se používá pro připojení veřejného koncového bodu ke spravované instanci a v tomto okamžiku jej nelze změnit.
 
-## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Obtaining the managed instance public endpoint connection string
+## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Získání připojovacího řetězce veřejného koncového bodu spravované instance
 
-1. Navigate to the SQL managed instance configuration page that has been enabled for public endpoint. Select the **Connection strings** tab under the **Settings** configuration.
-1. Note that the public endpoint host name comes in the format <mi_name>.**public**.<dns_zone>.database.windows.net and that the port used for the connection is 3342.
+1. Přejděte na stránku konfigurace spravované instance SQL, která je povolená pro veřejný koncový bod. V části konfigurace **Nastavení** vyberte kartu **připojovací řetězce** .
+1. Všimněte si, že název hostitele veřejného koncového bodu se nachází ve formátu < mi_name >. **Public**. < dns_zone >. Database. Windows. NET a port používaný pro připojení je 3342.
 
     ![mi-public-endpoint-conn-string.png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Learn about [using Azure SQL Database managed instance securely with public endpoint](sql-database-managed-instance-public-endpoint-securely.md).
+- Přečtěte si informace o [použití spravované instance Azure SQL Database bezpečně s veřejným koncovým bodem](sql-database-managed-instance-public-endpoint-securely.md).

@@ -1,7 +1,7 @@
 ---
-title: 'Evaluate Model: Module Reference'
+title: 'Vyhodnocení modelu: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the Evaluate Model module in Azure Machine Learning to measure the accuracy of a trained model.
+description: Naučte se používat modul vyhodnocení modelu v Azure Machine Learning k měření přesnosti vyučeného modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -16,113 +16,113 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214571"
 ---
-# <a name="evaluate-model-module"></a>Evaluate Model module
+# <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
-This article describes a module in Azure Machine Learning designer (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Use this module to measure the accuracy of a trained model. You provide a dataset containing scores generated from a model, and the **Evaluate Model** module computes a set of industry-standard evaluation metrics.
+Tento modul použijte k měření přesnosti trained model. Poskytnete datovou sadu obsahující skóre vygenerované z modelu a modul **vyhodnocení modelu** vypočítá sadu standardních metrik vyhodnocení v oboru.
   
- The metrics returned by **Evaluate Model** depend on the type of model that you are evaluating:  
+ Metriky vrácené **modelem vyhodnocení** závisí na typu modelu, který vyhodnocujete:  
   
--   **Classification Models**    
--   **Regression Models**    
+-   **Modely klasifikace**    
+-   **Regresní modely**    
 
 
 > [!TIP]
-> If you are new to model evaluation, we recommend the video series by Dr. Stephen Elston, as part of the [machine learning course](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) from EdX. 
+> Pokud s hodnocením modelu začínáte, doporučujeme, aby se série videí Dr. Stephen Elston jako součást [strojového učení](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) od EdX. 
 
 
-There are three ways to use the **Evaluate Model** module:
+Existují tři způsoby použití modulu **vyhodnocení modelu** :
 
-+ Generate scores over your training data, and evaluate the model based on these scores
-+ Generate scores on the model, but compare those scores to scores on a reserved testing set
-+ Compare scores for two different but related models, using the same set of data
++ Vygenerujte skóre z vašich školicích dat a vyhodnoťte model na základě těchto skóre.
++ Generování skóre modelu, ale porovnání těchto skóre s skóre na rezervované sadě testů
++ Porovnání skóre dvou různých, ale souvisejících modelů, pomocí stejné sady dat
 
-## <a name="use-the-training-data"></a>Use the training data
+## <a name="use-the-training-data"></a>Použití školicích dat
 
-To evaluate a model, you must connect a dataset that contains a set of input columns and scores.  If no other data is available, you can use your original dataset.
+Pro vyhodnocení modelu musíte připojit datovou sadu, která obsahuje sadu vstupních sloupců a skóre.  Pokud nejsou k dispozici žádná jiná data, můžete použít původní datovou sadu.
 
-1. Connect the **Scored dataset** output of the [Score Model](./score-model.md) to the input of **Evaluate Model**. 
-2. Click **Evaluate Model** module, and run the pipeline to generate the evaluation scores.
+1. Připojte výstup skóre výsledné **sady dat** [modelu skóre](./score-model.md) k vstupu **modelu vyhodnocení**. 
+2. Klikněte na **vyhodnotit modul modelu** a spuštěním kanálu vygenerujte skóre vyhodnocení.
 
-## <a name="use-testing-data"></a>Use testing data
+## <a name="use-testing-data"></a>Použití testovacích dat
 
-A common scenario in machine learning is to separate your original data set into training and testing datasets, using the [Split](./split-data.md) module, or the [Partition and Sample](./partition-and-sample.md) module. 
+Běžným scénářem ve službě Machine Learning je oddělení původní sady dat o školení a testování datových sad, použití [rozděleného](./split-data.md) modulu nebo [oddílu a vzorového](./partition-and-sample.md) modulu. 
 
-1. Connect the **Scored dataset** output of the [Score Model](score-model.md) to the input of **Evaluate Model**. 
-2. Connect the output of the Split Data module that contains the testing data to the right-hand input of **Evaluate Model**.
-2. Click **Evaluate Model** module, and select **Run selected** to generate the evaluation scores.
+1. Připojte výstup skóre výsledné **sady dat** [modelu skóre](score-model.md) k vstupu **modelu vyhodnocení**. 
+2. Připojte výstup modulu rozdělených dat, který obsahuje testovací data, do pravého vstupu pro **vyhodnocení modelu**.
+2. Klikněte na **vyhodnotit modul modelu** a vyberte **Spustit vybrané** pro vygenerování skóre vyhodnocení.
 
-## <a name="compare-scores-from-two-models"></a>Compare scores from two models
+## <a name="compare-scores-from-two-models"></a>Porovnání skóre ze dvou modelů
 
-You can also connect a second set of scores to **Evaluate Model**.  The scores might be a shared evaluation set that has known results, or a set of results from a different model for the same data.
+K **vyhodnocení modelu**můžete také připojit druhou sadu výsledků.  Skóre můžou být sdílenou zkušební sadou, která má známé výsledky, nebo sadu výsledků z jiného modelu pro stejná data.
 
-This feature is useful because you can easily compare results from two different models on the same data. Or, you might compare scores from two different runs over the same data with different parameters.
+Tato funkce je užitečná, protože můžete snadno porovnat výsledky dvou různých modelů se stejnými daty. Nebo můžete porovnat skóre ze dvou různých spuštění přes stejná data s různými parametry.
 
-1. Connect the **Scored dataset** output of the [Score Model](score-model.md) to the input of **Evaluate Model**. 
-2. Connect the output of the Score Model module for the second model to the right-hand input of **Evaluate Model**.
-3. Right-click **Evaluate Model**, and select **Run selected** to generate the evaluation scores.
+1. Připojte výstup skóre výsledné **sady dat** [modelu skóre](score-model.md) k vstupu **modelu vyhodnocení**. 
+2. Připojte výstup modulu určení skóre modelu pro druhý model na pravého vstupu **modelu vyhodnocení**.
+3. Klikněte pravým tlačítkem na **vyhodnotit model**a vyberte **Spustit vybrané** a vygenerujte hodnocení vyhodnocení.
 
 ## <a name="results"></a>Výsledky
 
-After you run **Evaluate Model**, right-click the module and select **Evaluation results** to see the results. Můžete:
+Po spuštění **modelu vyhodnocení**klikněte pravým tlačítkem myši na modul a výběrem **výsledků vyhodnocení** zobrazte výsledky. Můžete:
 
-+ Save the results as a dataset, for easier analysis with other tools
-+ Generate a visualization in the designer
++ Uložte výsledky jako datovou sadu pro snazší analýzu pomocí dalších nástrojů.
++ Generování vizualizace v Návrháři
 
-If you connect datasets to both inputs of **Evaluate Model**, the results will contain metrics for both set of data, or both models.
-The model or data attached to the left port is presented first in the report, followed by the metrics for the dataset, or model attached on the right port.  
+Pokud připojíte datové sady ke vstupům **modelu vyhodnocení**, budou výsledky obsahovat metriky pro sadu dat nebo oba modely.
+Model nebo data připojená k levému portu se zobrazí jako první v sestavě, za kterými následuje metrika pro datovou sadu nebo model připojený ke správnému portu.  
 
-For example, the following image represents a comparison of results from two clustering models that were built on the same data, but with different parameters.  
+Například následující obrázek představuje porovnání výsledků ze dvou modelů clusteringu, které byly vytvořeny na stejných datech, ale s různými parametry.  
 
 ![AML&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
 
-Because this is a clustering model, the evaluation results are different than if you compared scores from two regression models, or compared two classification models. However, the overall presentation is the same. 
+Vzhledem k tomu, že se jedná o model clusteringu, výsledky hodnocení jsou jiné než v porovnání s výsledky ze dvou regresních modelů nebo porovnáním dvou modelů klasifikace. Ale celková prezentace je stejná. 
 
 ## <a name="metrics"></a>Metriky
 
-This section describes the metrics returned for the specific types of models supported for use with **Evaluate Model**:
+Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou podporované pro použití s **vyhodnocením modelu**:
 
-+ [classification models](#bkmk_classification)
-+ [regression models](#bkmk_regression)
++ [modely klasifikace](#bkmk_classification)
++ [Regresní modely](#bkmk_regression)
 
-###  <a name="bkmk_classification"></a> Metrics for classification models
+###  <a name="bkmk_classification"></a>Metriky pro modely klasifikace
 
-The following metrics are reported when evaluating classification models. If you compare models, they are ranked by the metric you select for evaluation.  
+Při vyhodnocování modelů klasifikace jsou hlášeny následující metriky. Pokud porovnáte modely, jsou seřazené podle metriky, kterou jste vybrali pro vyhodnocení.  
   
--   **Accuracy** measures the goodness of a classification model as the proportion of true results to total cases.  
+-   **Přesnost** měření modelu klasifikace jako poměru skutečných výsledků do celkového počtu případů je dobrá.  
   
--   **Precision** is the proportion of true results over all positive results.  
+-   **Přesnost** je poměr skutečných výsledků pro všechny pozitivní výsledky.  
   
--   **Recall** is the fraction of all correct results returned by the model.  
+-   **Odvolání** je zlomek všech správných výsledků vrácených modelem.  
   
--   **F-score** is computed as the weighted average of precision and recall between 0 and 1, where the ideal F-score value is 1.  
+-   Hodnota **f-skore** je vypočítána jako vážený průměr přesnosti a odvolání mezi 0 a 1, kde ideální hodnota F-Skore je 1.  
   
--   **AUC** measures the area under the curve plotted with true positives on the y axis and false positives on the x axis. This metric is useful because it provides a single number that lets you compare models of different types.  
+-   **AUC** měří oblast pod křivkou vykreslenou se skutečnými klady na ose y a falešně pozitivních hodnot na ose x. Tato metrika je užitečná, protože poskytuje jedno číslo, které umožňuje porovnat modely různých typů.  
   
-- **Average log loss** is a single score used to express the penalty for wrong results. It is calculated as the difference between two probability distributions – the true one, and the one in the model.  
+- **Průměrná ztráta protokolu** je jedno skóre, které slouží k vyjádření pokuty pro nesprávné výsledky. Počítá se jako rozdíl mezi dvěma distribucí pravděpodobnosti – true One a v modelu.  
   
-- **Training log loss** is a single score that represents the advantage of the classifier over a random prediction. The log loss measures the uncertainty of your model by comparing the probabilities it outputs to the known values (ground truth) in the labels. You want to minimize log loss for the model as a whole.
+- Ve službě **Training Log ztrát** je jedno skóre, které představuje výhodu klasifikátoru na náhodné předpovědi. Ztráta protokolu měří nejistotu modelu tím, že se porovnávají pravděpodobnosti, že se výstupy označují na známé hodnoty (v terénu). Chcete minimalizovat ztrátu protokolu pro model jako celek.
 
-##  <a name="bkmk_regression"></a> Metrics for regression models
+##  <a name="bkmk_regression"></a>Metriky pro regresní modely
  
-The metrics returned for regression models are designed to estimate the amount of error.  A model is considered to fit the data well if the difference between observed and predicted values is small. However, looking at the pattern of the residuals (the difference between any one predicted point and its corresponding actual value) can tell you a lot about potential bias in the model.  
+Metriky vracené pro regresní modely jsou navržené k odhadu množství chyb.  Model se považuje za správný, pokud rozdíl mezi zjištěnými a předpovězenými hodnotami je malý. Nicméně na vzor zbytků (rozdíl mezi jedním předpokládaným bodem a odpovídající skutečnou hodnotou) vám může sdělit spoustu potenciálního posunu v modelu.  
   
- The following metrics are reported for evaluating regression models. When you compare models, they are ranked by the metric you select for evaluation.  
+ Následující metriky jsou hlášeny pro vyhodnocení regresních modelů. Při porovnávání modelů jsou seřazeny podle metriky, kterou jste vybrali pro vyhodnocení.  
   
-- **Mean absolute error (MAE)** measures how close the predictions are to the actual outcomes; thus, a lower score is better.  
+- **Střední absolutní chyba (Mae)** měří způsob, jakým se předpovědi blíží skutečným výsledkům. Proto je nižší skóre lepší.  
   
-- **Root mean squared error (RMSE)** creates a single value that summarizes the error in the model. By squaring the difference, the metric disregards the difference between over-prediction and under-prediction.  
+- **Hlavní střední hodnota chyby (RMSE)** vytvoří jednu hodnotu, která shrnuje chybu v modelu. Tím, že umocnění rozdíl, metrika ignoruje rozdíl mezi předpověďmi a průběžnými předpověďmi.  
   
-- **Relative absolute error (RAE)** is the relative absolute difference between expected and actual values; relative because the mean difference is divided by the arithmetic mean.  
+- **Relativní absolutní chyba (Rae)** je relativní absolutní rozdíl mezi očekávanou a skutečnou hodnotou; relativní vzhledem k tomu, že střední rozdíl je vydělený aritmetickým průměrem.  
   
-- **Relative squared error (RSE)** similarly normalizes the total squared error of the predicted values by dividing by the total squared error of the actual values.  
+- **Relativní kvadratická chyba (RSE)** podobně normalizuje celkovou kvadratickou chybu předpokládaných hodnot tak, že se vydělí celkovými kvadratickými chybami skutečných hodnot.  
   
-- **Mean Zero One Error (MZOE)** indicates whether the prediction was correct or not.  In other words: `ZeroOneLoss(x,y) = 1` when `x!=y`; otherwise `0`.
+- **Střední hodnota nula (MZOE)** označuje, zda byla předpověď správná nebo ne.  Jinými slovy: `ZeroOneLoss(x,y) = 1`, když `x!=y`; jinak `0`.
   
-- **Coefficient of determination**, often referred to as R<sup>2</sup>, represents the predictive power of the model as a value between 0 and 1. Zero means the model is random (explains nothing); 1 means there is a perfect fit. However, caution should be used in interpreting  R<sup>2</sup> values, as low values can be entirely normal and high values can be suspect.
+- **Koeficient stanovitelnosti**, který se často označuje jako R<sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že je model náhodný (vysvětluje nic); 1 znamená dokonalé přizpůsobení. Nicméně opatrnost by se měla použít při interpretaci hodnot R<sup>2</sup> , protože nízké hodnoty můžou být zcela normální a vysoké hodnoty můžou být podezřelé.
   
 
 ## <a name="next-steps"></a>Další kroky
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

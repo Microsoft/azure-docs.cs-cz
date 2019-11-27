@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple - Stretch a Layer 2 network on-premises to Private Cloud
-description: Describes how to set up a Layer 2 VPN between NSX-T on a CloudSimple Private Cloud and an on-premises standalone NSX Edge client
+title: Řešení Azure VMware podle CloudSimple – roztažení místní sítě vrstvy 2 do privátního cloudu
+description: Popisuje, jak nastavit síť VPN vrstvy 2 mezi NSX-T v privátním cloudu CloudSimple a místním klientovi samostatného NSX Edge.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -17,165 +17,165 @@ ms.locfileid: "74232386"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrace úloh pomocí roztažené sítě vrstvy 2
 
-In this guide, you will learn how to use Layer 2 VPN (L2VPN) to stretch a Layer 2 network from your on-premises environment to your CloudSimple Private Cloud. This solution enables migration of workloads running in your on-premises VMware environment to the Private Cloud in Azure within the same subnet address space without having to re-IP your workloads.
+V této příručce se dozvíte, jak pomocí sítě VPN úrovně 2 roztáhnout síť 2 z místního prostředí do privátního cloudu CloudSimple. Toto řešení umožňuje migrovat úlohy běžící v místním prostředí VMware do privátního cloudu v Azure v rámci stejného adresního prostoru podsítě, aniž by bylo nutné znovu přinášet vaše úlohy.
 
-L2VPN based stretching of Layer 2 networks can work with or without NSX-based networks in your on-premises VMware environment. If you don't have NSX-based networks for workloads on-premises, you can use a standalone NSX Edge Services Gateway.
+Roztažení sítí vrstvy 2 na základě L2VPN může spolupracovat se sítěmi založenými na NSX nebo bez nich v místním prostředí VMware. Pokud nemáte sítě založené na NSX pro úlohy v místním prostředí, můžete použít samostatnou bránu služby NSX Edge.
 
 > [!NOTE]
-> This guide covers the scenario where on-premises and the Private Cloud datacenters are connected over Site-to-Site VPN.
+> Tato příručka se zabývá scénářem, ve kterém jsou připojení k síti VPN typu Site-to-site připojená k místním i datacentrům privátního cloudu.
 
-## <a name="deployment-scenario"></a>Deployment scenario
+## <a name="deployment-scenario"></a>Scénář nasazení
 
-To stretch your on-premises network using L2VPN, you must configure an L2VPN server (destination NSX-T Tier0 router) and an L2VPN client (source standalone client).  
+K roztažení místní sítě pomocí L2VPN musíte nakonfigurovat L2VPN Server (cílový směrovač NSX-T Tier0) a klienta L2VPN (zdrojový samostatný klient).  
 
-In this deployment scenario, your Private Cloud is connected to your on-premises environment via a Site-to-Site VPN tunnel that allows on-premises management and vMotion subnets to communicate with the Private Cloud management and vMotion subnets. This arrangement is necessary for Cross vCenter vMotion (xVC-vMotion). A NSX-T Tier0 router is deployed as an L2VPN server in the Private Cloud.
+V tomto scénáři nasazení je váš privátní cloud připojený k místnímu prostředí prostřednictvím tunelu VPN typu Site-to-site, který umožňuje místní správě a vMotion podsítě komunikovat s podsítěmi privátního cloudu a vMotion. Toto uspořádání je nezbytné pro vMotion pro různé platformy vCenter (xVC-vMotion). Tier0 směrovač NSX-T je nasazený jako server L2VPN v privátním cloudu.
 
-Standalone NSX Edge is deployed in your on-premises environment as an L2VPN client and subsequently paired with the L2VPN server. A GRE tunnel endpoint is created on each side and configured to 'stretch' the on-premises Layer 2 network to your Private Cloud. This configuration is depicted in the following figure.
+Samostatná NSX Edge se v místním prostředí nasadí jako klient L2VPN a následně se spáruje se serverem L2VPN. Koncový bod tunelu GRE se vytvoří na každé straně a nakonfiguruje se tak, aby se do vašeho privátního cloudu natáhla místní síť vrstvy 2. Tato konfigurace je znázorněna na následujícím obrázku.
 
-![Deployment scenario](media/l2vpn-deployment-scenario.png)
+![Scénář nasazení](media/l2vpn-deployment-scenario.png)
 
-To learn more about migration using L2 VPN, see [Virtual Private Networks](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) in the VMware documentation.
+Další informace o migraci pomocí sítě VPN L2 najdete v tématu [virtuální privátní sítě](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) v dokumentaci k VMware.
 
-## <a name="prerequisites-for-deploying-the-solution"></a>Prerequisites for deploying the solution
+## <a name="prerequisites-for-deploying-the-solution"></a>Předpoklady pro nasazení řešení
 
-Verify that the following are in place before deploying and configuring the solution:
+Před nasazením a konfigurací řešení ověřte, zda je k dismístě:
 
-* The on-premises vSphere version is 6.7U1+ or 6.5P03+.
-* The on-premises vSphere license is at the Enterprise Plus level (for vSphere Distributed Switch).
-* Identify the workload Layer 2 network to be stretched to your Private Cloud.
-* Identify a Layer 2 network in your on-premises environment for deploying your L2VPN client appliance.
-* [A Private Cloud is already created](create-private-cloud.md).
-* The version of the standalone NSX-T Edge appliance is compatible with the NSX-T Manager version (NSX-T 2.3.0) used in your Private Cloud environment.
-* A trunk port group has been created in the on-premises vCenter with forged transmits enabled.
-* A public IP address has been reserved to use for the NSX-T standalone client uplink IP  address, and 1:1 NAT is in place for translation between the two addresses.
-* DNS forwarding is set on the on-premises DNS servers for the az.cloudsimple.io domain to point to the Private Cloud DNS servers.
-* RTT latency is less than or equal to 150 ms, as required for vMotion to work across the two sites.
+* Místní verze vSphere je 6.7 U1 + nebo 6.5 P03 + +.
+* Místní licence vSphere je na úrovni podniku plus (pro distribuovaný přepínač vSphere).
+* Identifikujte síť 2 úlohy zatížení, která se má roztáhnout do vašeho privátního cloudu.
+* Identifikujte síť ve vrstvě 2 v místním prostředí pro nasazení klientského zařízení L2VPN.
+* [Privátní cloud je již vytvořen](create-private-cloud.md).
+* Verze samostatného hraničního zařízení NSX-T je kompatibilní s verzí Správce NSX-t (NSX-T 2.3.0), která se používá ve vašem privátním cloudovém prostředí.
+* Skupina portů se vytvořila v místním serveru vCenter s povolenými falešnými přenosy.
+* Veřejná IP adresa byla rezervována pro použití pro samostatnou IP adresu odchozího připojení klienta NSX-T a 1:1 NAT pro překlad mezi těmito dvěma adresami.
+* Předávání DNS se nastavuje na místních serverech DNS pro doménu az.cloudsimple.io tak, aby odkazovaly na servery DNS privátního cloudu.
+* Latence RTT je menší nebo rovna 150 ms, jak je potřeba, aby vMotion fungovalo na těchto dvou lokalitách.
 
-## <a name="limitations-and-considerations"></a>Limitations and considerations
+## <a name="limitations-and-considerations"></a>Omezení a požadavky
 
-The following table lists supported vSphere versions and network adaptor types.  
+V následující tabulce jsou uvedeny podporované verze vSphere a typy síťových adaptérů.  
 
-| vSphere version | Source vSwitch type | Virtual NIC driver | Target vSwitch Type | Podporované? |
+| verze vSphere | Zdrojový typ virtuálního přepínače | Ovladač virtuální síťové karty | Cílový typ virtuálního přepínače | Podporované? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Všechno | DVS | Všechno | DVS | Ano |
-| vSphere 6.7UI or higher, 6.5P03 or higher | DVS | VMXNET3 | N-VDS | Ano |
-| vSphere 6.7UI or higher, 6.5P03 or higher | DVS | E1000 | N-VDS | [Not supported per VWware](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7UI or 6.5P03, NSX-V or versions below NSX-T2.2, 6.5P03 or higher | Všechno | Všechno | N-VDS | [Not supported per VWware](https://kb.vmware.com/s/article/56991) |
+| Všechny | DVS | Všechny | DVS | Ano |
+| vSphere 6.7 UI nebo vyšší, 6.5 P03 nebo vyšší | DVS | VMXNET3 | N-VDS | Ano |
+| vSphere 6.7 UI nebo vyšší, 6.5 P03 nebo vyšší | DVS | E1000 | N-VDS | [Nepodporováno na VWware](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7 UI nebo 6.5 P03, NSX-V nebo verze nižší než NSX-T 2.2, 6.5 P03 nebo vyšší | Všechny | Všechny | N-VDS | [Nepodporováno na VWware](https://kb.vmware.com/s/article/56991) |
 
-As of the VMware NSX-T 2.3 release:
+Od verze VMware NSX-T 2,3:
 
-* The logical switch on the Private Cloud side that is stretched to on-premises over L2VPN can't be routed at the same time. The stretched logical switch can't be connected to a logical router.
-* L2VPN and route-based IPSEC VPNs can only be configured using API calls.
+* Logický přepínač na straně privátního cloudu, která je roztažená na místní přes L2VPN, se nedá směrovat současně. Roztažený logický přepínač nelze připojit k logickému směrovači.
+* Sítě VPN v L2VPN a protokolu IPSEC založené na směrování se dají konfigurovat jenom pomocí volání rozhraní API.
 
-For more information, see [Virtual Private Networks](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) in the VMware documentation.
+Další informace najdete v dokumentaci k VMware v tématu [virtuální privátní sítě](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) .
 
-### <a name="sample-l2-vpn-deployment-addressing"></a>Sample L2 VPN deployment addressing
+### <a name="sample-l2-vpn-deployment-addressing"></a>Ukázka adresování pro nasazení sítě VPN L2
 
-### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>On-premises network where the standalone ESG (L2 VPN client) is deployed
-
-| **Položka** | **Hodnota** |
-|------------|-----------------|
-| Network name | MGMT_NET_VLAN469 |
-| VLAN | 469 |
-| CIDR| 10.250.0.0/24 |
-| Standalone Edge appliance IP address | 10.250.0.111 |
-| Standalone Edge appliance NAT IP address | 192.227.85.167 |
-
-### <a name="on-premises-network-to-be-stretched"></a>On-premises network to be stretched
+### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>Místní síť, ve které je nasazen samostatný ESG (L2 VPN)
 
 | **Položka** | **Hodnota** |
 |------------|-----------------|
-| VLAN | 472 |
-| CIDR| 10.250.3.0/24 |
+| Název sítě | MGMT_NET_VLAN469 |
+| REŽIM | 469 |
+| IPv4/IPv6| 10.250.0.0/24 |
+| IP adresa samostatného hraničního zařízení | 10.250.0.111 |
+| IP adresa zařízení na samostatném hraničním zařízení | 192.227.85.167 |
 
-### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Private Cloud IP schema for NSX-T Tier0 Router (L2 VPN serve)
-
-| **Položka** | **Hodnota** |
-|------------|-----------------|
-| Loopback interface | 192.168.254.254/32 |
-| Tunnel interface | 5.5.5.1/29 |
-| Logical switch (stretched) | Stretch_LS |
-| Loopback interface (NAT IP address) | 104.40.21.81 |
-
-### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Private Cloud network to be mapped to the stretched network
+### <a name="on-premises-network-to-be-stretched"></a>Místní síť, která se má roztáhnout
 
 | **Položka** | **Hodnota** |
 |------------|-----------------|
-| VLAN | 712 |
-| CIDR| 10.200.15.0/24 |
+| REŽIM | 472 |
+| IPv4/IPv6| 10.250.3.0/24 |
 
-## <a name="fetch-the-logical-router-id-needed-for-l2vpn"></a>Fetch the logical router ID needed for L2VPN
+### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Schéma IP adresy privátního cloudu pro směrovač NSX-T Tier0 (L2 VPN slouží)
 
-The following steps show how to fetch the logical-router ID of Tier0 DR logical router instance for the IPsec and L2VPN services. The logical-router ID is needed later when implementing the L2VPN.
+| **Položka** | **Hodnota** |
+|------------|-----------------|
+| Rozhraní zpětné smyčky | 192.168.254.254/32 |
+| Rozhraní tunelu | 5.5.5.1/29 |
+| Logický přepínač (roztaženo) | Stretch_LS |
+| Rozhraní zpětné smyčky (IP adresa NAT) | 104.40.21.81 |
 
-1. Sign in to NSX-T Manager https://*nsx-t-manager-ip-address* and select **Networking** > **Routers** > **Provider-LR** > **Overview**. For **High Availability Mode**, select **Active-Standby**. This action opens a pop-up window that shows the Edge VM on which the Tier0 router is currently active.
+### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Síť privátního cloudu, která má být namapována na roztaženou síť
 
-    ![Select active-standby](media/l2vpn-fetch01.png)
+| **Položka** | **Hodnota** |
+|------------|-----------------|
+| REŽIM | 712 |
+| IPv4/IPv6| 10.200.15.0/24 |
 
-2. Select **Fabric** > **Nodes** > **Edges**. Make a note of the management IP address of the active Edge VM (Edge VM1) identified in the previous step.
+## <a name="fetch-the-logical-router-id-needed-for-l2vpn"></a>Načtení ID logického směrovače potřebného pro L2VPN
 
-    ![Note management IP](media/l2vpn-fetch02.png)
+Následující kroky ukazují, jak načíst ID logického směrovače Tier0 DR instance logického směrovače pro služby IPsec a L2VPN. ID logického směrovače je potřeba později při implementaci rozhraní L2VPN.
 
-3. Open an SSH session to the management IP address of the Edge VM. Run the ```get logical-router``` command with username **admin** and password **CloudSimple 123!** .
+1. Přihlaste se k nástroji NSX-T Manager https://*NSX-t-Manager-IP-Address* a vyberte **sítě** > **směrovače** > **Provider-LR** > **Přehled**. V **režimu vysoké dostupnosti**vyberte **aktivní – pohotovostní**. Tato akce otevře automaticky otevírané okno, ve kterém se zobrazí hraniční virtuální počítač, na kterém je směrovač Tier0 aktuálně aktivní.
 
-    ![get logical-router output](media/l2vpn-fetch03.png)
+    ![Vybrat aktivní – pohotovostní](media/l2vpn-fetch01.png)
 
-4. If you don't see an entry 'DR-Provider-LR', complete the following steps.
+2. Vyberte možnost **Fabric** > **uzly** > **hrany**. Poznamenejte si IP adresu pro správu virtuálního počítače s aktivním okrajem (Edge VM1) identifikovanou v předchozím kroku.
 
-5. Create two overlay-backed logical switches. One logical switch is stretched to on-premises where the migrated workloads reside. Another logical switch is a dummy switch. For instructions, see [Create a Logical Switch](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-23194F9A-416A-40EA-B9F7-346B391C3EF8.html) in the VMware documentation.
+    ![Poznámka k IP správě](media/l2vpn-fetch02.png)
 
-    ![Create logical switch](media/l2vpn-fetch04.png)
+3. Otevřete relaci SSH s IP adresou pro správu virtuálního počítače Edge. Spusťte příkaz ```get logical-router``` s uživatelským jménem **správce** a heslem **CloudSimple 123!** .
 
-6. Attach the dummy switch to the Tier1 router with a link local IP address or any non-overlapping subnet from on-premises or your Private Cloud. See [Add a Downlink Port on a Tier-1 Logical Router](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) in the VMware documentation.
+    ![získat výstup logického směrovače](media/l2vpn-fetch03.png)
 
-    ![Attach dummy switch](media/l2vpn-fetch05.png)
+4. Pokud nevidíte položku DR-Provider-LR, proveďte následující kroky.
 
-7. Run the `get logical-router` command again on the SSH session of the Edge VM. The UUID of the 'DR-Provider-LR' logical router is displayed. Make a note of the UUID, which is required when configuring the L2VPN.
+5. Vytvoření dvou překrytých logických přepínačů. Jeden logický přepínač je roztažen na místní, kde jsou umístěny migrované úlohy. Jiný logický přepínač je fiktivní přepínač. Pokyny najdete v tématu [Vytvoření logického přepínače](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-23194F9A-416A-40EA-B9F7-346B391C3EF8.html) v dokumentaci k VMware.
 
-    ![get logical-router output](media/l2vpn-fetch06.png)
+    ![Vytvořit logický přepínač](media/l2vpn-fetch04.png)
 
-## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Fetch the logical-switch ID needed for L2VPN
+6. Připojte zástupný přepínač ke směrovači Tier1 s místní IP adresou propojení nebo jinou překrývající podsíť z místního počítače nebo vašeho privátního cloudu. Další informace najdete v dokumentaci k VMware v tématu [Přidání portu pro stahování na logický směrovač vrstvy 1](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) .
 
-1. Sign in to [NSX-T Manager](https://nsx-t-manager-ip-address).
-2. Select **Networking** > **Switching** > **Switches** >  **<\Logical switch\>**  > **Overview**.
-3. Make a note of the UUID of the stretch logical switch, which is required when configuring the L2VPN.
+    ![Připojit fiktivní přepínač](media/l2vpn-fetch05.png)
 
-    ![get logical-router output](media/l2vpn-fetch-switch01.png)
+7. Znovu spusťte příkaz `get logical-router` v relaci SSH virtuálního počítače Edge. Je zobrazen identifikátor UUID logického směrovače DR-Provider-LR. Poznamenejte si identifikátor UUID, který se vyžaduje při konfiguraci L2VPN.
 
-## <a name="routing-and-security-considerations-for-l2vpn"></a>Routing and security considerations for L2VPN
+    ![získat výstup logického směrovače](media/l2vpn-fetch06.png)
 
-To establish an IPsec route-based VPN between the NSX-T Tier0 router and the standalone NSX Edge client, the loopback interface of the NSX-T Tier0 router must be able to communicate with the public IP address of NSX standalone client on-premises over UDP 500/4500.
+## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Načtení IDENTIFIKÁTORu logického přepínače potřebného pro L2VPN
 
-### <a name="allow-udp-5004500-for-ipsec"></a>Allow UDP 500/4500 for IPsec
+1. Přihlaste se ke [Správci NSX-T](https://nsx-t-manager-ip-address).
+2. Vyberte **sítě** > **přepínání** > **přepínačů** >  **< přepínač \Logical**\>**Přehled**. > 
+3. Poznamenejte si identifikátor UUID roztaženého logického přepínače, který se při konfiguraci L2VPN vyžaduje.
 
-1. [Create a public IP address](public-ips.md) for the NSX-T Tier0 loopback interface in the CloudSimple portal.
+    ![získat výstup logického směrovače](media/l2vpn-fetch-switch01.png)
 
-2. [Create a firewall table](firewall.md) with stateful rules that allow UDP 500/ 4500 inbound traffic and attach the firewall table to the NSX-T HostTransport subnet.
+## <a name="routing-and-security-considerations-for-l2vpn"></a>Otázky týkající se směrování a zabezpečení pro L2VPN
 
-### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Advertise the loopback interface IP to the underlay network
+Aby bylo možné vytvořit síť VPN založenou na trasách protokolu IPsec mezi směrovačem NSX-T Tier0 a samostatným klientem NSX Edge, musí být rozhraní zpětné smyčky Tier0 směrovače NSX-T schopné komunikovat s veřejnou IP adresou NSX samostatného klienta v místním prostředí přes UDP 500/4500.
 
-1. Create a null route for the loopback interface network. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **Static Routes**. Klikněte na tlačítko **Přidat**. For **Network**, enter the loopback interface IP address. For **Next Hops**, click **Add**, specify 'Null' for the next hop, and keep the default of 1 for Admin Distance.
+### <a name="allow-udp-5004500-for-ipsec"></a>Povolení UDP 500/4500 pro protokol IPsec
 
-    ![Add static route](media/l2vpn-routing-security01.png)
+1. [Vytvořte veřejnou IP adresu](public-ips.md) rozhraní zpětné smyčky NSX-T Tier0 na portálu CloudSimple.
 
-2. Create an IP prefix list. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **IP Prefix Lists**. Klikněte na tlačítko **Přidat**. Enter a name to identify the list. For **Prefixes**, click **Add** twice. In the first line, enter '0.0.0.0/0' for **Network** and 'Deny' for **Action**. In the second line, select **Any** for **Network** and **Permit** for **Action**.
-3. Attach the IP prefix list to both BGP neighbors (TOR). Attaching the IP prefix list to the BGP neighbor prevents the default route from being advertised in BGP to the TOR switches. However, any other route that includes the null route will advertise the loopback interface IP address to the TOR switches.
+2. [Vytvořte tabulku brány firewall](firewall.md) se stavovým pravidlem, která povolují příchozí přenosy UDP 500/4500 a připojte tabulku brány firewall k podsíti NSX-T HostTransport.
 
-    ![Create IP prefix list](media/l2vpn-routing-security02.png)
+### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Inzerování IP adresy rozhraní zpětné smyčky do sítě Underlay
 
-4. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **BGP** > **Neighbors**. Select the first neighbor. Click **Edit** > **Address Families**. For the IPv4 family, Edit the **Out Filter** column and select the IP prefix list that you created. Klikněte na **Uložit**. Repeat this step for the second neighbor.
+1. Vytvořte trasu s hodnotou null pro síť rozhraní zpětné smyčky. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **směrování** > **směrovače** > **Provider-LR** > **Routing** > **Static Routes**. Klikněte na **Přidat**. V poli **síť**zadejte IP adresu rozhraní zpětné smyčky. Pro **Další segmenty směrování**klikněte na **Přidat**, pro další segment směrování zadejte null a pro vzdálenost správce ponechte výchozí hodnotu 1.
 
-    ![Attach IP prefix list 1](media/l2vpn-routing-security03.png) ![Attach IP prefix list 2](media/l2vpn-routing-security04.png)
+    ![Přidat statickou trasu](media/l2vpn-routing-security01.png)
 
-5. Redistribute the null static route into BGP. To advertise the loopback interface route to the underlay, you must redistribute the null static route into BGP. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **Route Redistribution** > **Neighbors**. Select **Provider-LR-Route_Redistribution** and click **Edit**. Select the **Static** checkbox and click **Save**.
+2. Vytvoří seznam předpon IP adres. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **směrování** > **směrovače** > **Provider-LR** > **seznam předpon > IP adres**pro **Směrování** . Klikněte na **Přidat**. Zadejte název pro identifikaci seznamu. V případě **předpon**klikněte dvakrát na tlačítko **Přidat** . Do prvního řádku zadejte pro **akci** **Network** a Deny hodnotu 0.0.0.0/0. Ve druhém řádku vyberte možnost **kterákoli** pro **síť** a **Povolit** **akci**.
+3. Přiřaďte seznam předpon IP adres oběma sousedním uzlům protokolu BGP (mandát). Připojením seznamu předpony IP k sousednímu směrovači protokolu BGP znemožníte inzerování výchozí trasy v protokolu BGP k přepínačům MANDÁTu. Nicméně jakákoli jiná trasa, která obsahuje trasu s hodnotou null, bude inzerovat IP adresu rozhraní zpětné smyčky pro přepínače MANDÁTu.
 
-    ![Redistribute null static route into BGP](media/l2vpn-routing-security05.png)
+    ![Vytvořit seznam předpon IP adres](media/l2vpn-routing-security02.png)
 
-## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>Configure a route-based VPN on the NSX-T Tier0 router
+4. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **směrování** > **směrovače** > **Provider-LR** > **Routing** > **routers** > **BGP** . Vyberte první sousední uzel. Klikněte na **upravit** > **rodin adres**. V případě řady IPv4 upravte sloupec **Filtr pro výstup** a vyberte seznam předpon IP adres, který jste vytvořili. Klikněte na možnost **Uložit**. Tento krok opakujte pro druhý sousední uzel.
 
-Use the following template to fill in all the details for configuring a route-based VPN on the NSX-T Tier0 router. The UUIDs in each POST call are required in subsequent POST calls. The IP addresses for the loopback and tunnel interfaces for L2VPN must be unique and not overlap with the on-premises or Private Cloud networks.
+    ![připojit seznam předpon IP adres 1](media/l2vpn-routing-security03.png) ![připojit seznam předpon IP adres 2](media/l2vpn-routing-security04.png)
 
-The IP addresses chosen for loopback and tunnel interface used for L2VPN must be unique and not overlap with the on-premises or Private Cloud networks. The loopback interface network must always be /32.
+5. Znovu distribuujte statickou trasu null do protokolu BGP. Chcete-li inzerovat směrování rozhraní zpětné smyčky do Underlay, je nutné znovu distribuovat statickou trasu null do protokolu BGP. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **směrování** > **směrovače** > **zprostředkovatele-LR** > **Směrování** > směrování **trasy** > **okolí**. Vyberte **Provider-LR-Route_Redistribution** a klikněte na **Upravit**. Zaškrtněte políčko **static** a klikněte na **Uložit**.
+
+    ![Znovu distribuovat statickou trasu null do protokolu BGP](media/l2vpn-routing-security05.png)
+
+## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>Konfigurace sítě VPN založené na směrování ve směrovači NSX-T Tier0
+
+Pomocí následující šablony vyplňte všechny podrobnosti o konfiguraci sítě VPN založené na směrování ve směrovači NSX-T Tier0. V následných voláních POST jsou vyžadovány identifikátory UUID v každém volání POST. IP adresy pro rozhraní zpětné smyčky a tunelu pro L2VPN musí být jedinečné a nesmí se překrývat s místními nebo privátními cloudy.
+
+IP adresy zvolené pro rozhraní zpětné smyčky a tunelu používané pro L2VPN musí být jedinečné a nesmí se překrývat s místními nebo privátními cloudy. Síť rozhraní zpětné smyčky musí být vždy/32.
 
 ```
 Loopback interface ip : 192.168.254.254/32
@@ -195,9 +195,9 @@ Logical-Port ID :
 Peer Code :
 ```
 
-For all of the following API calls, replace the IP address with your NSX-T Manager IP address. You can run all these API calls from the POSTMAN client or by using `curl` commands.
+U všech následujících volání rozhraní API nahraďte IP adresu svou IP adresou správce NSX-T. Všechna tato volání rozhraní API můžete spustit z klienta po klientovi nebo pomocí příkazů `curl`.
 
-### <a name="enable-the-ipsec-vpn-service-on-the-logical-router"></a>Enable the IPSec VPN service on the logical router
+### <a name="enable-the-ipsec-vpn-service-on-the-logical-router"></a>Povolte službu VPN IPSec na logickém směrovači.
 
 ```
 POST   https://192.168.110.201/api/v1/vpn/ipsec/services/
@@ -211,7 +211,7 @@ POST   https://192.168.110.201/api/v1/vpn/ipsec/services/
 }
 ```
 
-### <a name="create-profiles-ike"></a>Create profiles: IKE
+### <a name="create-profiles-ike"></a>Vytváření profilů: IKE
 
 ```
 POST https://192.168.110.201/api/v1/vpn/ipsec/ike-profiles
@@ -228,7 +228,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/ike-profiles
 }
 ```
 
-### <a name="create-profiles-dpd"></a>Create profiles: DPD
+### <a name="create-profiles-dpd"></a>Vytváření profilů: DPD
 
 ```
 POST  https://192.168.110.201/api/v1/vpn/ipsec/dpd-profiles  
@@ -240,7 +240,7 @@ POST  https://192.168.110.201/api/v1/vpn/ipsec/dpd-profiles
 }
 ```
 
-### <a name="create-profiles-tunnel"></a>Create profiles: Tunnel
+### <a name="create-profiles-tunnel"></a>Vytváření profilů: tunel
 
 ```
 POST  https://192.168.110.201/api/v1/vpn/ipsec/tunnel-profiles
@@ -259,7 +259,7 @@ POST  https://192.168.110.201/api/v1/vpn/ipsec/tunnel-profiles
 }
 ```
 
-### <a name="create-a-local-endpoint"></a>Create a local endpoint
+### <a name="create-a-local-endpoint"></a>Vytvoření místního koncového bodu
 
 ``` 
 POST https://192.168.110.201/api/v1/vpn/ipsec/local-endpoints
@@ -277,7 +277,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/local-endpoints
 }
 ```
 
-### <a name="create-a-peer-endpoint"></a>Create a peer endpoint
+### <a name="create-a-peer-endpoint"></a>Vytvořit rovnocenný koncový bod
 
 ```
 POST https://192.168.110.201/api/v1/vpn/ipsec/peer-endpoints
@@ -297,7 +297,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/peer-endpoints
 }
 ```
 
-### <a name="create-a-route-based-vpn-session"></a>Create a route-based VPN session
+### <a name="create-a-route-based-vpn-session"></a>Vytvoření relace sítě VPN založené na trasách
 
 ```
 POST :  https://192.168.110.201/api/v1/vpn/ipsec/sessions
@@ -323,9 +323,9 @@ POST :  https://192.168.110.201/api/v1/vpn/ipsec/sessions
 }
 ```
 
-## <a name="configure-l2vpn-on-nsx-t-tier0-router"></a>Configure L2VPN on NSX-T Tier0 router
+## <a name="configure-l2vpn-on-nsx-t-tier0-router"></a>Konfigurace L2VPN na směrovači NSX-T Tier0
 
-Fill in the following information after every POST call. The IDs are required in subsequent POST calls.
+Po každém volání POST zadejte následující informace. V následných voláních POST jsou požadována ID.
 
 ```
 L2VPN Service ID:
@@ -333,15 +333,15 @@ L2VPN Session ID:
 Logical Port ID:
 ```
 
-### <a name="create-the-l2vpn-service"></a>Create the L2VPN service
+### <a name="create-the-l2vpn-service"></a>Vytvoření služby L2VPN
 
-The output of the following GET command will be blank, because the configuration is not complete yet.
+Výstup následujícího příkazu GET bude prázdný, protože konfigurace ještě není dokončená.
 
 ```
 GET : https://192.168.110.201/api/v1/vpn/l2vpn/services
 ```
 
-For the following POST command, the logical router ID is the UUID of the Tier0 DR logical router obtained earlier.
+Pro následující příkaz POST je ID logického směrovače identifikátor UUID logického směrovače Tier0 DR, který jste získali dříve.
 
 ```
 POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
@@ -352,9 +352,9 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 }
 ```
 
-### <a name="create-the-l2vpn-session"></a>Create the L2VPN session
+### <a name="create-the-l2vpn-session"></a>Vytvoření relace L2VPN
 
-For the following POST command, the L2VPN service ID is the ID that you just obtained and the IPsec VPN session ID is the ID obtained in the previous section.
+Pro následující příkaz POST je ID služby L2VPN ID, které jste právě získali, a ID relace VPN IPsec je ID získané v předchozí části.
 
 ``` 
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
@@ -368,7 +368,7 @@ POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 }
 ```
 
-These calls create a GRE tunnel endpoint. To check the status, run the following command.
+Tato volání vytvoří koncový bod tunelu GRE. Chcete-li zjistit stav, spusťte následující příkaz.
 
 ```
 edge-2> get tunnel-port
@@ -391,7 +391,7 @@ REMOTE      : 192.168.140.156
 ENCAP       : GENEVE
 ```
 
-### <a name="create-logical-port-with-the-tunnel-id-specified"></a>Create logical port with the tunnel ID specified
+### <a name="create-logical-port-with-the-tunnel-id-specified"></a>Vytvořit logický port se zadaným ID tunelu
 
 ```
     POST https://192.168.110.201/api/v1/logical-ports/
@@ -412,70 +412,70 @@ ENCAP       : GENEVE
         }
 ```
 
-## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>Obtain the peer code for L2VPN on the NSX-T side
+## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>Získání partnerského kódu pro L2VPN na straně NSX-T
 
-Obtain the peer code of the NSX-T endpoint. The peer code is required when configuring the remote endpoint. The L2VPN <session-id> can be obtained from the previous section. For more information, see the [NSX-T 2.3 API Guide](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html).
+Získejte partnerský kód koncového bodu NSX-T. Při konfiguraci vzdáleného koncového bodu je vyžadován partnerský kód. V předchozí části se dá získat > L2VPN < ID relace. Další informace najdete v příručce k [rozhraní API NSX-T 2,3](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html).
 
 ```
 GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 ```
 
-## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>Deploy the NSX-T standalone client (on-premises)
+## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>Nasazení samostatného klienta NSX-T (místně)
 
-Before deploying, verify that your on-premises firewall rules allow inbound and outbound UDP 500/4500 traffic from/to the CloudSimple public IP address that was reserved earlier for the NSX-T T0 router loopback interface. 
+Před nasazením ověřte, že vaše místní pravidla brány firewall umožňují příchozí a odchozí přenosy UDP 500/4500 z/na veřejnou IP adresu CloudSimple, která byla vyhrazená dříve pro rozhraní zpětné smyčky směrovače NSX-T T0. 
 
-1. [Download the Standalone NSX Edge Client](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230) OVF and Extract the files from the downloaded bundle into a folder.
+1. [Stažení samostatného klienta NSX Edge](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230) OVF a extrahujte soubory ze stažené sady do složky.
 
-    ![Download standalone NSX Edge client](media/l2vpn-deploy-client01.png)
+    ![Stáhnout samostatného klienta NSX Edge](media/l2vpn-deploy-client01.png)
 
-2. Go to the folder with all the extracted files. Select all the vmdks (NSX-l2t-client-large.mf and NSX-l2t-client-large.ovf for large appliance size or NSX-l2t-client-Xlarge.mf and NSX-l2t-client-Xlarge.ovf for extra large size appliance size). Klikněte na **Další**.
+2. Přejít do složky se všemi extrahovaných souborů. Vyberte všechna VMDK (NSX-l2t-Client-large. MF a NSX-l2t-client-large. ovf pro velkou velikost zařízení nebo NSX-l2t-Client-XLarge. MF a NSX-l2t-client-Xlarge. ovf pro největší velikost zařízení s velkou velikostí). Klikněte na **Další**.
 
-    ![Select template](media/l2vpn-deploy-client02.png) ![Select template](media/l2vpn-deploy-client03.png)
+    ![vyberte šablonu](media/l2vpn-deploy-client02.png) ![vyberte šablonu](media/l2vpn-deploy-client03.png)
 
-3. Enter a name for the NSX-T standalone client and click **Next**.
+3. Zadejte název samostatného klienta NSX-T a klikněte na **Další**.
 
-    ![Enter template name](media/l2vpn-deploy-client04.png)
+    ![Zadejte název šablony.](media/l2vpn-deploy-client04.png)
 
-4. Click **Next** as needed to reach the datastore settings. Select the appropriate datastore for NSX-T standalone client and click **Next**.
+4. Klikněte na **Další** , jak je potřeba, abyste dosáhli nastavení úložiště dat. Vyberte vhodné úložiště dat pro samostatného klienta NSX-T a klikněte na **Další**.
 
-    ![Select datastore](media/l2vpn-deploy-client06.png)
+    ![Vyberte úložiště dat.](media/l2vpn-deploy-client06.png)
 
-5. Select the correct port groups for Trunk (Trunk PG), Public (Uplink PG) and HA interface (Uplink PG) for the NSX-T standalone client. Klikněte na **Další**.
+5. Vyberte pro samostatného klienta NSX-T správné skupiny portů pro datový kmen (šachta PG), veřejné (pro odesílání) a rozhraní HA (odchozí připojení). Klikněte na **Další**.
 
-    ![Select port groups](media/l2vpn-deploy-client07.png)
+    ![Výběr skupin portů](media/l2vpn-deploy-client07.png)
 
-6. Fill the following details in the **Customize template** screen and click **Next**:
+6. Na obrazovce **přizpůsobit šablonu** vyplňte následující podrobnosti a klikněte na **Další**:
 
-    Expand L2T:
+    Rozbalte L2T:
 
-    * **Peer Address**. Enter the IP address reserved on Azure CloudSimple portal for NSX-T Tier0 Loopback interface.
-    * **Peer Code**. Paste the peer code obtained from the last step of L2VPN Server deployment.
-    * **Sub Interfaces VLAN (Tunnel ID)** . Enter the VLAN ID to be stretched. In parentheses (), enter the tunnel ID that was previously configured.
+    * **Adresa partnera**. Zadejte IP adresu rezervovanou na portálu Azure CloudSimple pro rozhraní NSX-T Tier0 Loopback.
+    * **Partnerský kód**. Vložte partnerský kód získaný z posledního kroku nasazení L2VPN serveru.
+    * **Dílčí rozhraní sítě VLAN (ID tunelu)** . Zadejte ID sítě VLAN, které chcete roztáhnout. V závorkách () zadejte ID tunelu, které jste dříve nakonfigurovali.
 
-    Expand Uplink Interface:
+    Rozbalte rozhraní pro odesílání:
 
-    * **DNS IP Address**. Enter the on-premises DNS IP address.
-    * **Default Gateway**.  Enter the default gateway of the VLAN that will act as a default gateway for this client.
-    * **IP Address**. Enter the uplink IP address of the standalone client.
-    * **Prefix Length**. Enter the prefix length of the uplink VLAN/subnet.
-    * **CLI admin/enable/root User Password**. Set the password for admin /enable /root account.
+    * **IP adresa DNS**. Zadejte místní IP adresu DNS.
+    * **Výchozí brána**.  Zadejte výchozí bránu sítě VLAN, která bude pro tohoto klienta sloužit jako výchozí brána.
+    * **IP adresa**. Zadejte IP adresu pro odesílání samostatného klienta.
+    * **Délka předpony**. Zadejte délku předpony pro síť VLAN nebo podsíť pro odesílání.
+    * Rozhraní **CLI správce/povolení/heslo uživatele root**. Nastavte heslo pro účet správce/Enable/root.
 
-      ![Customize template](media/l2vpn-deploy-client08.png)
-      ![Customize template - more](media/l2vpn-deploy-client09.png)
+      ![přizpůsobení šablony](media/l2vpn-deploy-client08.png)
+      ![přizpůsobit šablonu – další](media/l2vpn-deploy-client09.png)
 
-7. Review the settings and click **Finish**.
+7. Zkontrolujte nastavení a klikněte na **Dokončit**.
 
-    ![Complete configuration](media/l2vpn-deploy-client10.png)
+    ![Dokončit konfiguraci](media/l2vpn-deploy-client10.png)
 
-## <a name="configure-an-on-premises-sink-port"></a>Configure an on-premises sink port
+## <a name="configure-an-on-premises-sink-port"></a>Konfigurace místního portu jímky
 
-If one of the VPN sites doesn't have NSX deployed, you can configure an L2 VPN by deploying a standalone NSX Edge at that site. A standalone NSX Edge is deployed using an OVF file on a host that is not managed by NSX. This deploys an NSX Edge Services Gateway appliance to function as an L2 VPN client.
+Pokud na jednom z webů sítě VPN není nasazený NSX, můžete nakonfigurovat síť VPN L2 nasazením samostatné NSX Edge v této lokalitě. Samostatná NSX Edge se nasadí pomocí souboru OVF na hostiteli, který není spravovaný pomocí NSX. Tím se nasadí zařízení brány NSX hraniční služby, které bude fungovat jako klient sítě VPN L2.
 
-If a standalone edge trunk vNIC is connected to a vSphere Distributed Switch, either promiscuous mode or a sink port is required for L2 VPN function. Using promiscuous mode can cause duplicate pings and duplicate responses. For this reason, use sink port mode in the L2 VPN standalone NSX Edge configuration. See the [Configure a sink port](https://docs.vmware.com/en/VMware-NSX-Data-Center-for-vSphere/6.4/com.vmware.nsx.admin.doc/GUID-3CDA4346-E692-4592-8796-ACBEEC87C161.html) in the VMware documentation.
+Pokud je samostatný hraniční kmen vNIC připojený k vSphere distribuovanému přepínači, pro funkci L2 sítě VPN se vyžaduje buď smíšený režim, nebo port jímky. Použití promiskuitního režimu může způsobit duplicity příkazů a duplicitní odpovědi. Z tohoto důvodu použijte režim portů jímky v konfiguraci NSX Edge pro nastavení L2 – samostatná konfigurace. Viz část [Konfigurace portu jímky](https://docs.vmware.com/en/VMware-NSX-Data-Center-for-vSphere/6.4/com.vmware.nsx.admin.doc/GUID-3CDA4346-E692-4592-8796-ACBEEC87C161.html) v dokumentaci k VMware.
 
-## <a name="ipsec-vpn-and-l2vpn-verification"></a>IPsec VPN and L2VPN verification
+## <a name="ipsec-vpn-and-l2vpn-verification"></a>Ověřování IPsec VPN a L2VPN
 
-Use the following commands to verify IPsec and L2VPN sessions from standalone NSX-T Edge.
+Pomocí následujících příkazů můžete ověřit relace protokolu IPsec a L2VPN ze samostatného hraničního NSX – T.
 
 ```
 nsx-l2t-edge> show service ipsec
@@ -502,7 +502,7 @@ SITENAME                       IPSECSTATUS          VTI                  GRE
 1ecb00fb-a538-4740-b788-c9049e8cb6c6 UP                   vti-100              l2t-1
 ```
 
-Use the following commands to verify IPsec and L2VPN sessions from the NSX-T Tier0 router.
+Pomocí následujících příkazů ověřte relace protokolu IPsec a L2VPN ze směrovače NSX-T Tier0.
 
 ```
 edge-2> get ipsecvpn session
@@ -531,7 +531,7 @@ IPSEC Session : 1ecb00fb-a538-4740-b788-c9049e8cb6c6
 Status        : UP
 ```
 
-Use the following commands to verify the sink port on the ESXi host where the NSX-T standalone client VM resides in the on-premises environment.
+Pomocí následujících příkazů ověřte port jímky na hostiteli ESXi, kde se virtuální počítač samostatného klienta NSX-T nachází v místním prostředí.
 
 ```
  [root@esxi02:~] esxcfg-vswitch -l |grep NSX

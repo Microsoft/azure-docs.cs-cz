@@ -119,7 +119,7 @@ Metoda `ConfigureRefresh` slouží k určení nastavení použitých k aktualiza
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/dotnet-core-app-run.png)
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
 

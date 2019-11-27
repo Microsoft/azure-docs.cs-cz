@@ -43,7 +43,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
 
 1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)** . Klikněte na **Další**.
 
-1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4.7.1** nebo vyšší. Klikněte na **Vytvořit**.
+1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4.7.1** nebo vyšší. Klikněte na možnost **Vytvořit**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 

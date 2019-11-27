@@ -1,6 +1,6 @@
 ---
-title: Use dependency injection in .NET Azure Functions
-description: Learn how to use dependency injection for registering and using services in .NET functions
+title: Použití injektáže závislosti v rozhraní .NET Azure Functions
+description: Naučte se používat vkládání závislostí k registraci a používání služeb ve funkcích .NET.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/05/2019
@@ -13,27 +13,27 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226991"
 ---
-# <a name="use-dependency-injection-in-net-azure-functions"></a>Use dependency injection in .NET Azure Functions
+# <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislosti v rozhraní .NET Azure Functions
 
-Azure Functions supports the dependency injection (DI) software design pattern, which is a technique to achieve [Inversion of Control (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) between classes and their dependencies.
+Azure Functions podporuje vzor návrhu pro vkládání závislostí (DI), což je technika pro dosažení [inverze řízení (IOC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) mezi třídami a jejich závislostmi.
 
-- Dependency injection in Azure Functions is built on the .NET Core Dependency Injection features. Familiarity with the [.NET Core dependency injection](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) is recommended. There are differences, however, in how you override dependencies and how configuration values are read with Azure Functions on the Consumption plan.
+- Vkládání závislostí v Azure Functions je postavené na funkcích injektáže .NET Core Dependency vstřik. Doporučuje se používat [vkládání závislostí .NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) . Existují však rozdíly v tom, jak potlačíte závislosti a jak jsou čteny konfigurační hodnoty pomocí Azure Functions v plánu spotřeby.
 
-- Support for dependency injection begins with Azure Functions 2.x.
+- Podpora vkládání závislostí začíná Azure Functions 2. x.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Before you can use dependency injection, you must install the following NuGet packages:
+Než budete moci použít vkládání závislostí, je nutné nainstalovat následující balíčky NuGet:
 
-- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- [Microsoft.NET.Sdk.Functions package](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) version 1.0.28 or later
+- [Balíček Microsoft. NET. SDK. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) verze 1.0.28 nebo novější
 
-## <a name="register-services"></a>Register services
+## <a name="register-services"></a>Registrovat služby
 
-To register services, create a method to configure and add components to an `IFunctionsHostBuilder` instance.  The Azure Functions host creates an instance of `IFunctionsHostBuilder` and passes it directly into your method.
+Chcete-li registrovat služby, vytvořte metodu pro konfiguraci a přidání součástí do instance `IFunctionsHostBuilder`.  Hostitel Azure Functions vytvoří instanci `IFunctionsHostBuilder` a předá ji přímo do vaší metody.
 
-To register the method, add the `FunctionsStartup` assembly attribute that specifies the type name used during startup.
+Chcete-li zaregistrovat metodu, přidejte atribut `FunctionsStartup` sestavení, který určuje název typu použitý při spuštění.
 
 ```csharp
 using System;
@@ -62,19 +62,19 @@ namespace MyNamespace
 }
 ```
 
-### <a name="caveats"></a>Caveats
+### <a name="caveats"></a>Upozornění
 
-A series of registration steps run before and after the runtime processes the startup class. Therefore, the keep in mind the following items:
+Série kroků registrace se spouští před a po zpracování spouštěcí třídy. Proto Pamatujte na následující položky:
 
-- *The startup class is meant for only setup and registration.* Avoid using services registered at startup during the startup process. For instance, don't try to log a message in a logger that is being registered during startup. This point of the registration process is too early for your services to be available for use. After the `Configure` method is run, the Functions runtime continues to register additional dependencies, which can affect how your services operate.
+- *Spouštěcí třída je určena pouze pro instalaci a registraci.* Vyhněte se používání služeb zaregistrovaných při spuštění během procesu spuštění. Nesnažte se třeba protokolovat zprávu do protokolovacího nástroje, který se registruje při spuštění. Tento bod procesu registrace je příliš brzy, aby byly vaše služby k dispozici pro použití. Po spuštění metody `Configure` bude modul runtime funkcí nadále registrovat další závislosti, které mohou ovlivnit fungování služeb.
 
-- *The dependency injection container only holds explicitly registered types*. The only services available as injectable types are what are setup in the `Configure` method. As a result, Functions-specific types like `BindingContext` and `ExecutionContext` aren't available during setup or as injectable types.
+- *Kontejner pro vkládání závislostí obsahuje pouze explicitně registrované typy*. Jediné služby, které jsou k dispozici jako vložené typy, jsou to, co je nastavení v metodě `Configure`. V důsledku toho typy specifické pro funkce, jako je například `BindingContext` a `ExecutionContext`, nejsou během instalace nebo jako vložené typy k dispozici.
 
-## <a name="use-injected-dependencies"></a>Use injected dependencies
+## <a name="use-injected-dependencies"></a>Použít vložené závislosti
 
-Constructor injection is used to make your dependencies available in a function. The use of constructor injection requires that you do not use static classes.
+K dispozici jsou závislosti pomocí injektáže konstruktoru ve funkci. Použití injektáže konstruktoru vyžaduje, abyste nepoužívali statické třídy.
 
-The following sample demonstrates how the `IMyService` and `HttpClient` dependencies are injected into an HTTP-triggered function. This example uses the [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) package required to register an `HttpClient` at startup.
+Následující příklad ukazuje, jak jsou do funkce aktivované protokolem HTTP vloženy závislosti `IMyService` a `HttpClient`. V tomto příkladu se používá balíček [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) vyžadovaný k registraci `HttpClient` při spuštění.
 
 ```csharp
 using System;
@@ -114,46 +114,46 @@ namespace MyNamespace
 }
 ```
 
-## <a name="service-lifetimes"></a>Service lifetimes
+## <a name="service-lifetimes"></a>Životnost služeb
 
-Azure Functions apps provide the same service lifetimes as [ASP.NET Dependency Injection](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). For a Functions app, the different service lifetimes behave as follows:
+Azure Functions aplikace poskytují stejné životnosti služeb jako [vkládání závislostí ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). U aplikace Functions se chovají různé životnosti služby následujícím způsobem:
 
-- **Transient**: Transient services are created upon each request of the service.
-- **Scoped**: The scoped service lifetime matches a function execution lifetime. Scoped services are created once per execution. Later requests for that service during the execution reuse the existing service instance.
-- **Singleton**: The singleton service lifetime matches the host lifetime and is reused across function executions on that instance. Singleton lifetime services are recommended for connections and clients, for example `SqlConnection` or `HttpClient` instances.
+- **Přechodný**: přechodné služby se vytvářejí při každém požadavku služby.
+- **Vymezené**: rozsah platnosti služby odpovídá době trvání spuštění funkce. Oborové služby se pro každé spuštění vytvoří jednou. Pozdější požadavky na tuto službu během opakovaného použití existující instance služby.
+- **Singleton**: životnost služby typu Singleton odpovídá době životnosti hostitele a je znovu používána napříč prováděním funkce v dané instanci. Pro připojení a klienty jsou doporučovány služby životnosti singleton, například `SqlConnection` nebo `HttpClient` instance.
 
-View or download a [sample of different service lifetimes](https://aka.ms/functions/di-sample) on GitHub.
+Zobrazit nebo stáhnout [ukázku různých životností služby](https://aka.ms/functions/di-sample) na GitHubu.
 
-## <a name="logging-services"></a>Logging services
+## <a name="logging-services"></a>Protokolovací služby
 
-If you need your own logging provider, register a custom type as an `ILoggerProvider` instance. Application Insights is added by Azure Functions automatically.
+Pokud potřebujete vlastního zprostředkovatele protokolování, zaregistrujte vlastní typ jako instanci `ILoggerProvider`. Application Insights automaticky přidá Azure Functions.
 
 > [!WARNING]
-> - Do not add `AddApplicationInsightsTelemetry()` to the services collection as it registers services that conflict with services provided by the environment.
-> - Do not register your own `TelemetryConfiguration` or `TelemetryClient` if you are using the built-in Application Insights functionality.
+> - Nepřidávat `AddApplicationInsightsTelemetry()` do kolekce Services, protože registruje služby, které jsou v konfliktu se službami poskytovanými prostředím.
+> - Pokud používáte integrované Application Insights funkce, neregistrujte vlastní `TelemetryConfiguration` ani `TelemetryClient`.
 
-## <a name="function-app-provided-services"></a>Function app provided services
+## <a name="function-app-provided-services"></a>Poskytnuté služby Function App
 
-The function host registers many services. The following services are safe to take as a dependency in your application:
+Hostitel funkce registruje mnoho služeb. V rámci vaší aplikace je možné v aplikaci provést zabezpečení těchto služeb:
 
-|Typ služby|Lifetime|Popis|
+|Typ služby|Životnost|Popis|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Runtime configuration|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Responsible for providing the ID of the host instance|
+|`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Konfigurace modulu runtime|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Zodpovídá za poskytnutí ID instance hostitele.|
 
-If there are other services you want to take a dependency on, [create an issue and propose them on GitHub](https://github.com/azure/azure-functions-host).
+Pokud existují další služby, na kterých chcete převzít závislost, [vytvořte problém a navrhněte je na GitHubu](https://github.com/azure/azure-functions-host).
 
-### <a name="overriding-host-services"></a>Overriding host services
+### <a name="overriding-host-services"></a>Přepsání hostitelských služeb
 
-Overriding services provided by the host is currently not supported.  If there are services you want to override, [create an issue and propose them on GitHub](https://github.com/azure/azure-functions-host).
+Přepsání služeb poskytovaných hostitelem není aktuálně podporováno.  Pokud existují služby, které chcete přepsat, [vytvořte problém a navrhněte je na GitHubu](https://github.com/azure/azure-functions-host).
 
-## <a name="working-with-options-and-settings"></a>Working with options and settings
+## <a name="working-with-options-and-settings"></a>Práce s možnostmi a nastaveními
 
-Values defined in [app settings](./functions-how-to-use-azure-function-app-settings.md#settings) are available in an `IConfiguration` instance, which allows you to read app settings values in the startup class.
+Hodnoty definované v [nastavení aplikace](./functions-how-to-use-azure-function-app-settings.md#settings) jsou k dispozici v instanci `IConfiguration`, která umožňuje číst hodnoty nastavení aplikace ve třídě Startup.
 
-You can extract values from the `IConfiguration` instance into a custom type. Copying the app settings values to a custom type makes it easy test your services by making these values injectable. Settings read into the configuration instance must be simple key/value pairs.
+Hodnoty z instance `IConfiguration` můžete extrahovat do vlastního typu. Kopírování hodnot nastavení aplikace do vlastního typu usnadňuje testování služeb tím, že se tyto hodnoty vloží. Nastavení číst do instance konfigurace musí být jednoduché páry klíč-hodnota.
 
-Consider the following class that includes a property named consistent with an app setting.
+Vezměte v úvahu následující třídu, která obsahuje vlastnost s názvem konzistentní s nastavením aplikace.
 
 ```csharp
 public class MyOptions
@@ -162,7 +162,7 @@ public class MyOptions
 }
 ```
 
-From inside the `Startup.Configure` method, you can extract values from the `IConfiguration` instance into your custom type using the following code:
+V rámci metody `Startup.Configure` můžete extrahovat hodnoty z instance `IConfiguration` do vlastního typu pomocí následujícího kódu:
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
@@ -172,9 +172,9 @@ builder.Services.AddOptions<MyOptions>()
                                            });
 ```
 
-Calling `Bind` copies values that have matching property names from the configuration into the custom instance. The options instance is now available in the IoC container to inject into a function.
+Volání `Bind` kopíruje hodnoty, které mají odpovídající názvy vlastností z konfigurace do vlastní instance. Instance Options je teď k dispozici v kontejneru IoC pro vkládání do funkce.
 
-The options object is injected into the function as an instance of the generic `IOptions` interface. Use the `Value` property to access the values found in your configuration.
+Objekt Options je vložen do funkce jako instance obecného rozhraní `IOptions`. Pro přístup k hodnotám nalezeným ve vaší konfiguraci použijte vlastnost `Value`.
 
 ```csharp
 using System;
@@ -191,14 +191,14 @@ public class HttpTrigger
 }
 ```
 
-Refer to [Options pattern in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) for more details regarding working with options.
+Další podrobnosti týkající se práce s možnostmi najdete [v tématu vzor možností v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) .
 
 > [!WARNING]
-> Avoid attempting to read values from files like *local.settings.json* or *appsettings.{environment}.json* on the Consumption plan. Values read from these files related to trigger connections aren't available as the app scales because the hosting infrastructure has no access to the configuration information.
+> Vyhněte se pokusu o čtení hodnot ze souborů, jako je *Local. Settings. JSON* nebo *appSettings. { Environment}. JSON* pro plán spotřeby Hodnoty načtené z těchto souborů souvisejících s triggery triggeru nejsou k dispozici, protože hostitelská infrastruktura nemá přístup k informacím o konfiguraci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace najdete v následujících zdrojích:
 
-- [How to monitor your function app](functions-monitoring.md)
-- [Best practices for functions](functions-best-practices.md)
+- [Jak monitorovat aplikaci Function App](functions-monitoring.md)
+- [Osvědčené postupy pro funkce](functions-best-practices.md)

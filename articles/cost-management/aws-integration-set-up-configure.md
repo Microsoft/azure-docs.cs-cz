@@ -1,6 +1,6 @@
 ---
-title: Set up and configure AWS Cost and Usage report integration with Azure Cost Management
-description: This article walks you through setting up and configuring AWS Cost and Usage report integration with Azure Cost Management.
+title: Nastavte a nakonfigurujte integraci sestav AWS a nákladů na využití pomocí Azure Cost Management
+description: Tento článek vás provede nastavením a konfigurací integrace AWS nákladů a sestav využití pomocí Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,104 +17,104 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219697"
 ---
-# <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Set up and configure AWS Cost and Usage report integration
+# <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Nastavení a konfigurace integrace sestav AWS a nákladů na využití
 
-With Amazon Web Services (AWS) Cost and Usage report (CUR) integration, you monitor and control your AWS spending in Azure Cost Management. The integration allows a single location in the Azure portal where you monitor and control spending for both Azure and AWS. This article explains how to set up the integration and configure it so that you can use Azure Cost Management features to analyze costs and review budgets.
+Díky integraci Amazon Web Services (AWS) a sestavy využití (stejné) můžete monitorovat a řídit své AWS útraty v Azure Cost Management. Integrace umožňuje jedno umístění v Azure Portal, kde můžete monitorovat a řídit útratu pro Azure i pro AWS. Tento článek vysvětluje, jak nastavit integraci a nakonfigurovat ji, aby bylo možné používat funkce Azure Cost Management k analýze nákladů a kontrole rozpočtů.
 
-Cost Management processes the AWS Cost and Usage report stored in an S3 bucket by using your AWS access credentials to get report definitions and download report GZIP CSV files.
+Cost Management zpracovává sestavu nákladů a využití AWS uložených v intervalu S3 pomocí přihlašovacích údajů AWS pro přístup k získání definic sestav a stažení sestav souborů CSV protokolu GZIP.
 
-## <a name="create-a-cost-and-usage-report-in-aws"></a>Create a Cost and Usage report in AWS
+## <a name="create-a-cost-and-usage-report-in-aws"></a>Vytvoření sestavy nákladů a využití v AWS
 
-Using a Cost and Usage report is the AWS-recommended way to collect and process AWS costs. For more information, see the [AWS Cost and Usage Report](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html) documentation.
+Použití sestavy náklady a využití je AWS způsobem doporučeným pro shromažďování a zpracování AWS nákladů. Další informace najdete v dokumentaci [AWS Cost and Usage Report](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html) .
 
-Use the **Cost & Usage Reports** page of the Billing and Cost Management console in AWS to create a Cost and Usage report with the following steps:
+Na stránce **sestavy využití & nákladů** a cost management v konzole AWS můžete vytvořit sestavu nákladů a využití pomocí následujících kroků:
 
-1. Sign in to the AWS Management Console and open the [Billing and Cost Management console](https://console.aws.amazon.com/billing).
-2. In the navigation pane, select **Cost & Usage Reports**.
-3. Select **Create report**.
-4. For **Report name**, enter a name for your report.
-5. Under **Additional report details**, select **Include resource IDs**.
-6. For **Data refresh settings**, select whether you want the AWS Cost and Usage report to refresh if AWS applies refunds, credits, or support fees to your account after finalizing your bill. When a report refreshes, a new report is uploaded to Amazon S3. We recommend that you leave the setting selected.
-7. Vyberte **Další**.
-8. For **S3 bucket**, choose **Configure**.
-9. In the Configure S3 Bucket dialog box, do one of the following tasks:
-    1. Select an existing bucket from the drop-down list and choose **Next**.
-    2. Enter a bucket name and the Region where you want to create a new bucket and choose **Next**.
-10. Select **I have confirmed that this policy is correct**, then click **Save**.
-11. (Optional) For Report path prefix, enter the report path prefix that you want prepended to the name of your report.
-If you don't specify a prefix, the default prefix is the name that you specified for the report. The date range has the `/report-name/date-range/` format.
-12. For **Time unit**, choose  **Hourly**.
-13. For **Report versioning**, choose whether you want each version of the report to overwrite the previous version, or if you want additional new reports.
-14. For **Enable data integration for**, no selection is required.
-15. For **Compression**, select **GZIP**.
-16. Vyberte **Další**.
-17. After you've reviewed the settings for your report, select **Review and Complete**.
+1. Přihlaste se ke konzole pro správu AWS a otevřete [konzolu pro fakturaci a cost management](https://console.aws.amazon.com/billing).
+2. V navigačním podokně vyberte **náklady & sestavy využití**.
+3. Vyberte **vytvořit sestavu**.
+4. Jako **název sestavy**zadejte název sestavy.
+5. V části **Další podrobnosti sestavy**vyberte **zahrnout ID prostředků**.
+6. V části **Nastavení aktualizace dat**vyberte, jestli chcete, aby se sestava AWS náklady a využití aktualizovala v případě, že AWS po dokončení faktury aplikuje refundace, kredity nebo poplatky za podporu k vašemu účtu. Při aktualizaci sestavy se do Amazon S3 nahraje Nová sestava. Doporučujeme ponechat nastavení vybrané.
+7. Vyberte **Next** (Další).
+8. V případě **intervalu S3**klikněte na tlačítko **Konfigurovat**.
+9. V dialogovém okně Konfigurovat interval S3 proveďte jednu z následujících úloh:
+    1. V rozevíracím seznamu vyberte existující kontejner a klikněte na tlačítko **Další**.
+    2. Zadejte název a oblast, kde chcete vytvořit nový kontejner, a klikněte na tlačítko **Další**.
+10. Vyberte možnost **potvrzuji, že je tato zásada správná**, a pak klikněte na **Uložit**.
+11. Volitelné V poli Předpona cesty k sestavě zadejte předponu cesty k sestavě, kterou chcete přidat k názvu vaší sestavy.
+Pokud nezadáte předponu, výchozí předpona je název, který jste zadali pro sestavu. Rozsah kalendářních dat má formát `/report-name/date-range/`.
+12. V případě **časové jednotky**vyberte **každou hodinu**.
+13. Pro **správu verzí sestav**vyberte, zda chcete, aby každá verze sestavy přepsala předchozí verzi, nebo pokud chcete další nové sestavy.
+14. Pro **možnost povolit integraci dat pro**není žádný výběr nutný.
+15. V případě **Komprese**vyberte **gzip**.
+16. Vyberte **Next** (Další).
+17. Po kontrole nastavení sestavy vyberte **zkontrolovat a dokončit**.
 
-    Note the report name. You'll use it in later steps.
+    Poznamenejte si název sestavy. Použijete ho v pozdějších krocích.
 
-It can take up to 24 hours for AWS to start delivering reports to your Amazon S3 bucket. After delivery starts, AWS updates the AWS Cost and Usage report files at least once a day. You can continue configuring your AWS environment without waiting for delivery to start.
+AWS může trvat až 24 hodin, než se zahájí doručování sestav do vašeho intervalu Amazon S3. Po zahájení doručování AWS aktualizuje soubory sestav náklady AWS a využití alespoň jednou denně. Můžete pokračovat v konfiguraci prostředí AWS, aniž byste čekali na zahájení doručování.
 
-## <a name="create-a-role-and-policy-in-aws"></a>Create a role and policy in AWS
+## <a name="create-a-role-and-policy-in-aws"></a>Vytvoření role a zásad v AWS
 
-Azure Cost Management accesses the S3 bucket where the Cost and Usage report is located several times a day. The service needs access to credentials to check for new data. You create a role and policy in AWS to allow Cost Management to access it.
+Azure Cost Management přistupuje k bloku S3, kde se sestava náklady a využití nacházela několikrát denně. Služba potřebuje přístup k přihlašovacím údajům pro kontrolu nových dat. V AWSu vytvoříte roli a zásadu, která umožní přístup k ní Cost Management.
 
-To enable role-based access to an AWS account in Cost Management, the role is created in the AWS console. You need to have the _role ARN_ and _external ID_ from the AWS console. Later, you use them on the **Create an AWS connector** page in Cost Management.
+Pokud chcete povolit přístup na základě role k účtu AWS v Cost Management, role se vytvoří v konzole AWS. Musíte mít ARN a _externí ID_ _role_ z konzoly AWS. Později je můžete použít na stránce **konektoru vytvořit AWS** v cost management.
 
-Use the Create a New Role wizard:
+Použijte Průvodce vytvořením nové role:
 
-1. Sign in to your AWS console and select **Services**.
-2. In the list of services, select **IAM**.
-3. Select **Roles** and then select **Create Role**.
-4. On the next page, select **Another AWS account**.
-5. In **Account ID**, enter **432263259397**.
-6. In **Options**, select **Require external ID (Best practice when a third party will assume this role)** .
-7. In **External ID**, enter the external ID. The external ID is a shared passcode between the AWS role and Azure Cost Management. The same external ID is also used on the **New Connector** page in Cost Management. For example, an external ID resembles _Companyname1234567890123_.
+1. Přihlaste se ke konzole AWS a vyberte **služby**.
+2. V seznamu služeb vyberte **IAM**.
+3. Vyberte **role** a pak vyberte **vytvořit roli**.
+4. Na další stránce vyberte **jiný účet AWS**.
+5. Do **ID účtu**zadejte **432263259397**.
+6. V **Možnosti**vyberte **vyžadovat externí ID (osvědčené postupy, pokud bude tato role platit třetí strana)** .
+7. Do pole **externí ID**zadejte externí ID. Externí ID je sdílené heslo mezi rolí AWS a Azure Cost Management. Stejné externí ID se používá také na stránce **nový konektor** v cost management. Například externí ID se podobá _Companyname1234567890123_.
 
     > [!NOTE]
-    > Don't change the selection for **Require MFA**. It should remain cleared.
-8. Select **Next: Permissions**.
-9. Select **Create policy**. Otevře se nová karta prohlížeče. That's where you create a policy.
-10. Select **Choose a service**.
+    > Neměňte výběr pro **vyžadovat MFA**. Měla by zůstat nezaškrtnutá.
+8. Vyberte **Další: oprávnění**.
+9. Vyberte **vytvořit zásadu**. Otevře se nová karta prohlížeče. V takovém případě vytvoříte zásadu.
+10. Vyberte **možnost zvolit službu**.
 
-Configure permission for the Cost and Usage report:
+Konfigurovat oprávnění pro sestavu náklady a využití:
 
-1. Enter **Cost and Usage Report**.
-2. Select **Access level** > **Read** > **DescribeReportDefinitions**. This step allows Cost Management to read what CUR reports are defined and determine if they match the report definition prerequisite.
-3. Select **Add additional permissions**.
+1. Zadejte **náklady a sestavu využití**.
+2. Vyberte **úroveň přístupu** > **číst** > **DescribeReportDefinitions**. Tento krok umožňuje Cost Management přečíst stejné sestavy, které jsou definovány, a určit, jestli se shodují se splněním požadavků definice sestavy.
+3. Vyberte **Přidat další oprávnění**.
 
-Configure permission for your S3 bucket and objects:
+Konfigurovat oprávnění pro vaše bloky a objekty S3:
 
-1. Select **Choose a service**.
-2. Enter **S3**.
-3. Select **Access level** > **List** > **ListBucket**. This action gets the list of objects in the S3 Bucket.
-4. Select **Access level** > **Read** > **GetObject**. This action allows the download of billing files.
-5. Select **Resources**.
-6. Select **bucket – Add ARN**.
-7. In **Bucket name**, enter the bucket used to store the CUR files.
-8. Select **object – Add ARN**.
-9. In **Bucket name**, enter the bucket used to store the CUR files.
-10. In **Object name**, select **Any**.
-11. Select **Add additional permissions**.
+1. Vyberte **možnost zvolit službu**.
+2. Zadejte **S3**.
+3. Vyberte **úroveň přístupu** > **seznamu** > **ListBucket**. Tato akce načte seznam objektů v intervalu S3.
+4. Vyberte **úroveň přístupu** > **číst** > **GetObject**. Tato akce umožňuje stažení fakturačních souborů.
+5. Vyberte **prostředky**.
+6. Vyberte možnost **kontejner – přidat ARN**.
+7. Do pole **název**sady zadejte interval, ve kterém se mají ukládat stejné soubory.
+8. Vyberte **objekt – přidat ARN**.
+9. Do pole **název**sady zadejte interval, ve kterém se mají ukládat stejné soubory.
+10. V **názvu objektu**vyberte **libovolný**.
+11. Vyberte **Přidat další oprávnění**.
 
-Configure permission for Cost Explorer:
+Konfigurovat oprávnění pro Průzkumníka nákladů:
 
-1. Select **Choose a service**.
-2. Enter **Cost Explorer Service**.
-3. Select **All Cost Explorer Service actions (ce:\*)** . This action validates that the collection is correct.
-4. Select **Add additional permissions**.
+1. Vyberte **možnost zvolit službu**.
+2. Zadejte **službu cost Explorer**.
+3. Vyberte **všechny akce služby cost Explorer (CE:\*)** . Tato akce ověří, zda je kolekce správná.
+4. Vyberte **Přidat další oprávnění**.
 
-Add permission for AWS Organizations:
+Přidání oprávnění pro organizace AWS:
 
-1. Enter **Organizations**.
-2. Select **Access level** > **List** > **ListAccounts**. This action gets the names of the accounts.
-3. In **Review Policy**, enter a name for the new policy. Check that you entered the correct information, and then select **Create Policy**.
-4. Go back to the previous tab and refresh your browser's webpage. On the search bar, search for your new policy.
-5. Select **Next: Review**.
-6. Enter a name for the new role. Check that you entered the correct information, and then select **Create Role**.
+1. Zadejte **organizace**.
+2. Vyberte **úroveň přístupu** > **seznamu** > **ListAccounts**. Tato akce Získá názvy účtů.
+3. V části **zkontrolovat zásadu**zadejte název nové zásady. Zkontrolujte, zda jste zadali správné informace, a pak vyberte **vytvořit zásadu**.
+4. Vraťte se na předchozí kartu a aktualizujte webovou stránku prohlížeče. Na panelu hledání vyhledejte novou zásadu.
+5. Vyberte **Další: zkontrolovat**.
+6. Zadejte název nové role. Zkontrolujte, zda jste zadali správné informace, a pak vyberte **vytvořit roli**.
 
-    Note the role ARN and the external ID used in the preceding steps when you created the role. You'll use them later when you set up the Azure Cost Management connector.
+    Všimněte si, že role ARN a externí ID použité v předchozích krocích při vytváření role. Později je budete používat při nastavování konektoru Azure Cost Management.
 
-The policy JSON should resemble the following example. Replace _bucketname_ with the name of your S3 bucket.
+JSON zásad by měl vypadat podobně jako v následujícím příkladu. Parametr _interval_ nahraďte názvem svého intervalu S3.
 
 ```JSON
 {
@@ -146,89 +146,89 @@ The policy JSON should resemble the following example. Replace _bucketname_ with
 }
 ```
 
-## <a name="set-up-a-new-aws-connector-in-azure"></a>Set up a new AWS connector in Azure
+## <a name="set-up-a-new-aws-connector-in-azure"></a>Nastavení nového konektoru AWS v Azure
 
-Use the following information to create an AWS connector and start monitoring your AWS costs:
+Pomocí následujících informací vytvořte konektor AWS a začněte monitorovat náklady na AWS:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-2. Go to **Cost Management + Billing** > **Cost Management**.
-3. Under **Settings**, select **Cloud connectors (Preview)** .  
-    ![Example showing the Cloud connectors (Preview) setting)](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
-4. Select **+Add** at the top of the page to create a connector.
-5. On the **Create an AWS connector** page, in **Display name**, enter a name for your connector.  
-    ![Example of the page for creating an AWS connector](./media/aws-integration-setup-configure/create-aws-connector01.png)
-6. Optionally, select the default management group. It will store all discovered linked accounts. You can set it up later.
-7. In the **Billing** section, select **Automatically charge the 1% at general availability** if you want to ensure continuous operation when the preview expires. If you select the automatic option, you must select a billing subscription.
-8. For **Role ARN**, enter the value that you used when you set up the role in AWS.
-9. For **External ID**, enter the value that you used when you set up the role in AWS.
-10. For **Report Name**, enter the name that you created in AWS.
-11. Select **Next** and then select **Create**.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+2. Přejít na **cost management a fakturační** > **cost management**.
+3. V části **Nastavení**vyberte **cloudové konektory (Preview)** .  
+    ![Příklad znázorňující nastavení cloudové konektory (Preview)](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
+4. V horní části stránky vyberte **+ Přidat** a vytvořte konektor.
+5. Na stránce **Vytvoření konektoru AWS** zadejte do pole **Zobrazovaný název**název vašeho konektoru.  
+    ![příklad stránky pro vytvoření konektoru AWS](./media/aws-integration-setup-configure/create-aws-connector01.png)
+6. Volitelně můžete vybrat výchozí skupinu pro správu. Budou se ukládat všechny zjištěné propojené účty. Můžete ho nastavit později.
+7. V části **fakturace** vyberte **automaticky účtovat 1% při obecné dostupnosti** , pokud chcete zajistit nepřetržitou operaci, když platnost vyprší. Pokud vyberete možnost automaticky, musíte vybrat fakturační předplatné.
+8. Do pole **role ARN**zadejte hodnotu, kterou jste použili při nastavení role v AWS.
+9. Pro **externí ID**zadejte hodnotu, kterou jste použili při nastavení role v AWS.
+10. Jako **název sestavy**zadejte název, který jste vytvořili v AWS.
+11. Vyberte **Další** a pak vyberte **vytvořit**.
 
-It might take a few hours for the new AWS scopes, AWS consolidated account, AWS linked accounts, and their cost data to appear.
+Může to trvat několik hodin, než se objeví nové obory AWS, AWS konsolidovaný účet, AWS propojené účty a jejich nákladová data.
 
-After you create the connector, we recommend that you assign access control to it. Users are assigned permissions to the newly discovered scopes: AWS consolidated account and AWS linked accounts. The user who creates the connector is the owner of the connector, the consolidated account, and all linked accounts.
+Po vytvoření konektoru doporučujeme, abyste k němu přiřadili řízení přístupu. Uživatelům jsou přiřazena oprávnění k nově zjištěným oborům: AWS konsolidovaný účet a AWS propojené účty. Uživatel, který vytváří konektor, je vlastníkem konektoru, konsolidovaného účtu a všech propojených účtů.
 
-Assigning connector permissions to users after discovery occurs doesn't assign permissions to the existing AWS scopes. Instead, only new linked accounts are assigned permissions.
+Přiřazení oprávnění k konektoru uživatelům po zjištění, že dojde ke zjišťování, nepřiřazuje oprávnění existujícím oborům AWS. Místo toho jsou přiřazena oprávnění pouze novým propojeným účtům.
 
-## <a name="take-additional-steps"></a>Take additional steps
+## <a name="take-additional-steps"></a>Provedení dalších kroků
 
-- [Set up management groups](../governance/management-groups/overview.md#initial-setup-of-management-groups), if you haven't already.
-- Check that new scopes are added to your scope picker. Select **Refresh** to view the latest data.
-- On the **Cloud connectors** page, select your connector and select **Go to billing account** to assign the linked account to management groups.
+- [Nastavte skupiny pro správu](../governance/management-groups/overview.md#initial-setup-of-management-groups), pokud jste to ještě neudělali.
+- Ověřte, že se do výběru oboru přidaly nové obory. Kliknutím na **aktualizovat** zobrazíte nejnovější data.
+- Na stránce **cloudové konektory** vyberte svůj konektor a vyberte **Přejít k fakturačnímu účtu** , abyste přiřadili propojený účet ke skupinám pro správu.
 
-## <a name="manage-cloud-connectors"></a>Manage cloud connectors
+## <a name="manage-cloud-connectors"></a>Správa cloudových konektorů
 
-When you select a connector on the **Cloud connectors** page, you can:
+Když vyberete konektor na stránce **cloudové konektory** , můžete:
 
-- Select **Go to Billing Account** to view information for the AWS consolidated account.
-- Select **Access Control** to manage the role assignment for the connector.
-- Select **Edit** to update the connector. You can't change the AWS account number, because it appears in the role ARN. But you can create a new connector.
-- Select **Verify** to rerun the verification test to make sure that Cost Management can collect data by using the connector settings.
+- Výběrem možnosti **Přejít na fakturační účet** zobrazíte informace pro konsolidovaný účet AWS.
+- Vyberte **Access Control** pro správu přiřazení role pro konektor.
+- Vyberte **Upravit** pro aktualizaci konektoru. Číslo účtu AWS nemůžete změnit, protože se zobrazuje v ARN role. Můžete ale vytvořit nový konektor.
+- Vyberte možnost **ověřit** a znovu spusťte ověřovací test, abyste se ujistili, že cost management mohou shromažďovat data pomocí nastavení konektoru.
 
-![Example list of created AWS connectors](./media/aws-integration-setup-configure/list-aws-connectors.png)
+![Ukázkový seznam vytvořených konektorů AWS](./media/aws-integration-setup-configure/list-aws-connectors.png)
 
-## <a name="set-up-azure-management-groups"></a>Set up Azure management groups
+## <a name="set-up-azure-management-groups"></a>Nastavení skupin pro správu Azure
 
-Place your Azure subscriptions and AWS linked accounts in the same management group to create a single location where you can  see cross-cloud provider information. If you haven't already configured your Azure environment with management groups, see [Initial setup of management groups](../governance/management-groups/overview.md#initial-setup-of-management-groups).
+Přiložte své předplatné Azure a propojené účty AWS ve stejné skupině pro správu, abyste vytvořili jedno místo, kde vidíte informace o poskytovateli mezi cloudy. Pokud jste prostředí Azure ještě nenakonfigurovali pomocí skupin pro správu, přečtěte si téma [počáteční nastavení skupin pro správu](../governance/management-groups/overview.md#initial-setup-of-management-groups).
 
-If you want to separate costs, you can create a management group that holds just AWS linked accounts.
+Pokud chcete rozdělit náklady, můžete vytvořit skupinu pro správu, která obsahuje jenom AWS propojené účty.
 
-## <a name="set-up-an-aws-consolidated-account"></a>Set up an AWS consolidated account
+## <a name="set-up-an-aws-consolidated-account"></a>Nastavení konsolidovaného účtu AWS
 
-The AWS consolidated account combines billing and payment for multiple AWS accounts. It also acts as an AWS linked account.
+Konsolidovaný účet AWS kombinuje fakturaci a platbu za několik účtů AWS. Funguje taky jako propojený účet AWS.
 
-![Example details for an AWS consolidated account](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
+![Příklady podrobností pro konsolidovanou AWS účet](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
 
-From the page, you can:
+Na stránce můžete:
 
-- Select **Update** to bulk update the association of AWS linked accounts with a management group.
-- Select **Access Control** to set the role assignment for the scope.
+- Pokud chcete hromadně aktualizovat přidružení účtů AWS ke skupině pro správu, vyberte **aktualizovat** .
+- Vyberte **Access Control** pro nastavení přiřazení role pro obor.
 
-### <a name="permissions-for-an-aws-consolidated-account"></a>Permissions for an AWS consolidated account
+### <a name="permissions-for-an-aws-consolidated-account"></a>Oprávnění pro konsolidovanou AWS účet
 
-By default, permissions for an AWS consolidated account are set upon the account's creation, based on the AWS connector permissions. The connector creator is the owner.
+Ve výchozím nastavení jsou oprávnění pro konsolidovaný účet AWS nastavena na vytvoření účtu na základě oprávnění konektoru AWS. Tvůrce konektoru je vlastníkem.
 
-You manage the access level by using the **Access Level** page of the AWS consolidated account. However, AWS linked accounts don't inherit permissions to the AWS consolidated account.
+Úroveň přístupu můžete spravovat pomocí stránky **úroveň přístupu** konsolidovaného účtu AWS. Propojené účty AWS ale nedědí oprávnění k konsolidovanému účtu AWS.
 
-## <a name="set-up-an-aws-linked-account"></a>Set up an AWS linked account
+## <a name="set-up-an-aws-linked-account"></a>Nastavení propojeného účtu AWS
 
-The AWS linked account is where AWS resources are created and managed. A linked account also acts as a security boundary.
+Propojený účet AWS je místo, kde se vytvářejí a spravují prostředky AWS. Propojený účet funguje také jako hranice zabezpečení.
 
-From this page, you can:
+Na této stránce můžete:
 
-- Select **Update** to update the association of an AWS linked account with a management group.
-- Select **Access Control** to set a role assignment for the scope.
+- Vyberte **aktualizovat** , pokud chcete aktualizovat přidružení propojeného účtu AWS ke skupině pro správu.
+- Vyberte **Access Control** pro nastavení přiřazení role pro obor.
 
-![Example of the AWS Linked Account page](./media/aws-integration-setup-configure/aws-linked-account01.png)
+![Příklad stránky propojeného účtu AWS](./media/aws-integration-setup-configure/aws-linked-account01.png)
 
-### <a name="permissions-for-an-aws-linked-account"></a>Permissions for an AWS linked account
+### <a name="permissions-for-an-aws-linked-account"></a>Oprávnění pro propojený účet AWS
 
-By default, permissions for an AWS linked account are set upon creation, based on the AWS connector permissions. The connector creator is the owner. You manage the access level by using the **Access Level** page of the AWS linked account. AWS linked accounts don't inherit permissions from an AWS consolidated account.
+Ve výchozím nastavení jsou oprávnění pro propojený účet AWS nastavena při vytváření na základě oprávnění konektoru AWS. Tvůrce konektoru je vlastníkem. Úroveň přístupu můžete spravovat pomocí stránky **úroveň přístupu** propojeného účtu AWS. Propojené účty AWS nedědí oprávnění z konsolidovaného účtu AWS.
 
-AWS linked accounts always inherit permissions from the management group that they belong to.
+Propojené účty AWS vždy dědí oprávnění ze skupiny pro správu, do které patří.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Now that you've set up and configured AWS Cost and Usage report integration, continue to [Manage AWS costs and usage](aws-integration-manage.md).
-- If you're unfamiliar with cost analysis, see [Explore and analyze costs with cost analysis](quick-acm-cost-analysis.md) quickstart.
-- If you're unfamiliar with budgets in Azure, see [Create and manage Azure budgets](tutorial-acm-create-budgets.md).
+- Teď, když jste nastavili a nakonfigurovali integraci sestav AWS a nákladů na používání, budete moct dál [Spravovat AWS náklady a využití](aws-integration-manage.md).
+- Pokud nejste obeznámeni s analýzou nákladů, přečtěte si téma [prozkoumat a analyzovat náklady pomocí rychlého startu analýzy nákladů](quick-acm-cost-analysis.md) .
+- Pokud si nejste zvyklí rozpočty v Azure, přečtěte si téma [Vytvoření a Správa rozpočtů Azure](tutorial-acm-create-budgets.md).

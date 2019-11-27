@@ -22,7 +22,7 @@ Toto jsou nejčastější dotazy ke službě Azure Internet Analyzer – Pokud m
 
 Verze Preview je k dispozici pro vybrané zákazníky. Pokud vás zajímá připojení k verzi Preview, udělejte prosím toto:
 
-1. Přihlásit se na [Azure Portal](https://ms.portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://ms.portal.azure.com).
 2. Přejděte na stránku **předplatná** .
 3. Klikněte na předplatné Azure, u kterého plánujete používat Internet Analyzer.
 4. Přejít na nastavení **poskytovatelé prostředků** pro předplatné.

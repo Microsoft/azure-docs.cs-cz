@@ -1,6 +1,6 @@
 ---
-title: Add an Azure Storage queue binding to your Python function
-description: Learn how to add an Azure Storage queue output binding to your Python function.
+title: Přidání vazby fronty Azure Storage k funkci Pythonu
+description: Naučte se, jak do funkce Pythonu Přidat výstupní vazbu Azure Storage fronty.
 ms.date: 10/02/2019
 ms.topic: quickstart
 ms.openlocfilehash: dede135da56e9ed1eaaed2ae0f7b5cd14d08195c
@@ -10,33 +10,33 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231239"
 ---
-# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Add an Azure Storage queue binding to your Python function
+# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Přidání vazby fronty Azure Storage k funkci Pythonu
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-This article shows you how to integrate the function you created in the [previous quickstart article](functions-create-first-function-python.md) with an Azure Storage queue. The output binding that you add to this function writes data from an HTTP request to a message in the queue.
+V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [předchozím článku rychlý Start](functions-create-first-function-python.md) s frontou Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
 
-Most bindings require a stored connection string that Functions uses to access the bound service. To make this connection easier, you use the Storage account that you created with your function app. The connection to this account is already stored in an app setting named `AzureWebJobsStorage`.  
+Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Aby bylo toto připojení snazší, použijte účet úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage`.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Before you start this article, complete the steps in [part 1 of the Python quickstart](functions-create-first-function-python.md).
+Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého startu v Pythonu](functions-create-first-function-python.md).
 
 [!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
 
-## <a name="download-the-function-app-settings"></a>Download the function app settings
+## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
 
 [!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Enable extension bundles
+## <a name="enable-extension-bundles"></a>Povolit sady rozšíření
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-You can now add the Storage output binding to your project.
+Nyní můžete přidat výstupní vazbu úložiště do projektu.
 
 ## <a name="add-an-output-binding"></a>Přidání výstupní vazby
 
-In Functions, each type of binding requires a `direction`, `type`, and a unique `name` to be defined in the function.json file. The way you define these attributes depends on the language of your function app.
+V rámci funkcí vyžaduje každý typ vazby `direction`, `type`a jedinečné `name`, které mají být definovány v souboru Function. JSON. Způsob, jakým definujete tyto atributy, závisí na jazyku aplikace Function App.
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -44,52 +44,52 @@ In Functions, each type of binding requires a `direction`, `type`, and a unique 
 
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
-When you use an output binding, you don't have to use the Azure Storage SDK code for authentication, getting a queue reference, or writing data. The Functions runtime and queue output binding do those tasks for you.
+Když použijete výstupní vazbu, nemusíte používat Azure Storage kód SDK pro ověřování, získání odkazu na frontu nebo zápis dat. Úlohy za běhu functions a Queue výstupní vazby jsou za vás.
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
-As before, use the following command to start the Functions runtime locally:
+Stejně jako dřív pomocí následujícího příkazu spusťte modul runtime Functions místně:
 
 ```bash
 func host start
 ```
 
 > [!NOTE]  
-> Because you enabled extension bundles in the host.json, the [Storage binding extension](functions-bindings-storage-blob.md#packages---functions-2x) was downloaded and installed for you during startup, along with the other Microsoft binding extensions.
+> Vzhledem k tomu, že jste povolili sady rozšíření v Host. JSON, [rozšíření pro vytváření vazeb úložiště](functions-bindings-storage-blob.md#packages---functions-2x) se během spouštění stáhlo a nainstalovalo společně s dalšími rozšířeními vazby Microsoftu.
 
-Zkopírujte adresu URL vaší funkce `HttpTrigger` z výstupu modulu runtime a vložte do panelu Adresa vašeho prohlížeče. Append the query string `?name=<yourname>` to this URL and run the request. You should see the same response in the browser as you did in the previous article.
+Zkopírujte adresu URL vaší funkce `HttpTrigger` z výstupu modulu runtime a vložte do panelu Adresa vašeho prohlížeče. Připojí řetězec dotazu `?name=<yourname>` k této adrese URL a spustí požadavek. V prohlížeči by se měla zobrazit stejná odpověď jako v předchozím článku.
 
-This time, the output binding also creates a queue named `outqueue` in your Storage account and adds a message with this same string.
+Tentokrát výstupní vazba také vytvoří ve svém účtu úložiště frontu s názvem `outqueue` a přidá zprávu se stejným řetězcem.
 
-Next, you use the Azure CLI to view the new queue and verify that a message was added. You can also view your queue by using the [Microsoft Azure Storage Explorer][Azure Storage Explorer] or in the [Azure portal](https://portal.azure.com).
+Dále pomocí Azure CLI zobrazíte novou frontu a ověříte, že se přidala zpráva. Frontu můžete také zobrazit pomocí [Průzkumník služby Microsoft Azure Storage][Azure Storage Explorer] nebo v [Azure Portal](https://portal.azure.com).
 
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
-### <a name="redeploy-the-project"></a>Redeploy the project 
+### <a name="redeploy-the-project"></a>Znovu nasadit projekt 
 
-To update your published app, use the [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools command to deploy your project code to Azure. In this example, replace `<APP_NAME>` with the name of your app.
+Pokud chcete aktualizovat publikovanou aplikaci, pomocí příkazu [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools nasaďte kód projektu do Azure. V tomto příkladu nahraďte `<APP_NAME>` názvem vaší aplikace.
 
 ```command
 func azure functionapp publish <APP_NAME> --build remote
 ```
 
-Again, you can use cURL or a browser to test the deployed function. As before, append the query string `&name=<yourname>` to the URL, as in this example:
+Znovu můžete k otestování nasazené funkce použít kudrlinkou nebo prohlížeč. Stejně jako dřív připojíte řetězec dotazu `&name=<yourname>` k adrese URL, jako v tomto příkladu:
 
 ```bash
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-You can [examine the Storage queue message](#query-the-storage-queue) again to verify that the output binding generates a new message in the queue, as expected.
+Opětovným [zkontrolováním zprávy fronty úložiště](#query-the-storage-queue) můžete ověřit, zda výstupní vazba vygeneruje novou zprávu ve frontě, podle očekávání.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-You've updated your HTTP-triggered function to write data to a Storage queue. To learn more about developing Azure Functions with Python, see the [Azure Functions Python developer guide](functions-reference-python.md) and [Azure Functions triggers and bindings](functions-triggers-bindings.md). For examples of complete Function projects in Python, see the [Python Functions samples](/samples/browse/?products=azure-functions&languages=python). To learn more about pricing, see the [Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) and the [Estimating Consumption plan costs](functions-consumption-costs.md) article.
+Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do fronty úložiště. Další informace o vývoji Azure Functions pomocí Pythonu najdete v [příručce pro vývojáře Azure Functions Pythonu](functions-reference-python.md) a v [Azure Functions triggerech a vazbách](functions-triggers-bindings.md). Příklady kompletních projektů funkcí v Pythonu najdete v tématu [ukázky funkcí Pythonu](/samples/browse/?products=azure-functions&languages=python). Další informace o cenách najdete na stránce s [cenami funkcí](https://azure.microsoft.com/pricing/details/functions/) a v článku [odhad nákladů na plán spotřeby](functions-consumption-costs.md) .
 
-Next, you should enable Application Insights monitoring for your function app:
+Dále byste měli povolit Application Insights monitorování aplikace Function App:
 
 > [!div class="nextstepaction"]
 > [Povolení integrace Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)

@@ -1,6 +1,6 @@
 ---
-title: Migrate from v1 to v2 - Azure Application Gateway
-description: This article shows you how to migrate Azure Application Gateway and Web Application Firewall from v1 to v2
+title: Migrace z verze V1 na v2 – Azure Application Gateway
+description: V tomto článku se dozvíte, jak migrovat službu Azure Application Gateway a firewall webových aplikací z verze V1 na verzi v2.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -14,67 +14,67 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231727"
 ---
-# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrate Azure Application Gateway and Web Application Firewall from v1 to v2
+# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi 2
 
-[Azure Application Gateway and Web Application Firewall (WAF) v2](application-gateway-autoscaling-zone-redundant.md) is now available, offering additional features such as autoscaling and availability-zone redundancy. Existující brány v1 se však automaticky neupgradují na verzi v2. If you want to migrate from v1 to v2, follow the steps in this article.
+K dispozici je teď [Azure Application Gateway a firewall webových aplikací (WAF) v2](application-gateway-autoscaling-zone-redundant.md) a nabízí další funkce, jako je automatické škálování a redundance zóny dostupnosti. Existující brány v1 se však automaticky neupgradují na verzi v2. Chcete-li provést migraci z verze V1 na verzi 2, postupujte podle kroků v tomto článku.
 
-There are two stages in a migration:
+Migrace probíhá ve dvou fázích:
 
-1. Migrate the configuration
-2. Migrate the client traffic
+1. Migrace konfigurace
+2. Migrace klientského provozu
 
-This article covers configuration migration. Client traffic migration varies depending on your specific environment. However, some high-level, general recommendations [are provided](#migrate-client-traffic).
+Tento článek popisuje migraci konfigurace. Migrace provozu klientů se liší v závislosti na konkrétním prostředí. [Jsou však k dispozici](#migrate-client-traffic)některá obecná doporučení.
 
 ## <a name="migration-overview"></a>Přehled migrace
 
-An Azure PowerShell script is available that does the following:
+K dispozici je skript Azure PowerShell, který provede následující akce:
 
-* Creates a new Standard_v2 or WAF_v2 gateway in a virtual network subnet that you specify.
-* Seamlessly copies the configuration associated with the v1 Standard or WAF gateway to the newly created Standard_V2 or WAF_V2 gateway.
+* Vytvoří novou Standard_v2 nebo WAF_v2 bránu v podsíti virtuální sítě, kterou zadáte.
+* Bez problémů zkopíruje konfiguraci spojenou s bránou v1 Standard nebo WAF na nově vytvořenou Standard_V2 nebo WAF_V2 bránu.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* The new v2 gateway has new public and private IP addresses. It isn't possible to move the IP addresses associated with the existing v1 gateway seamlessly to v2. However, you can allocate an existing (unallocated) public or private IP address to the new v2 gateway.
-* You must provide an IP address space for another subnet within your virtual network where your v1 gateway is located. The script can't create the v2 gateway in any existing subnets that already have a v1 gateway. However, if the existing subnet already has a v2 gateway, that may still work provided there's enough IP address space.
-* To  migrate an SSL configuration, you must specify all the SSL certs used in your v1 gateway.
-* If you have FIPS mode enabled for your V1 gateway, it won’t be migrated to your new v2 gateway. FIPS mode isn't supported in v2.
-* v2 doesn't support IPv6, so IPv6 enabled v1 gateways aren't migrated. If you run the script, it may not complete.
-* If the v1 gateway has only a private IP address, the script creates a public IP address and a private IP address for the new v2 gateway. v2 gateways currently don't support only private IP addresses.
+* Nová brána v2 má nové veřejné a privátní IP adresy. Není možné bezproblémově přesunout IP adresy přidružené k existující bráně V1 na v2. K nové bráně v2 ale můžete přiřadit existující (nepřiřazenou) veřejnou nebo privátní IP adresu.
+* Je nutné zadat adresní prostor IP adres pro jinou podsíť ve virtuální síti, kde se nachází brána v1. Skript nemůže vytvořit bránu V2 v žádné z existujících podsítí, které již mají bránu v1. Nicméně pokud již existující podsíť má bránu v2, která může fungovat i v případě, že je k dispozici dostatek adresního prostoru IP adres.
+* Pokud chcete migrovat konfiguraci SSL, musíte zadat všechny certifikáty SSL použité v bráně v1.
+* Pokud máte pro bránu v1 povolený režim FIPS, nebude se migrovat na novou bránu v2. V v2 není podporován režim FIPS.
+* V2 nepodporuje protokol IPv6, protože brány V1 s povoleným protokolem IPv6 nejsou migrovány. Pokud skript spustíte, nemusí se dokončit.
+* Pokud má brána v1 pouze privátní IP adresu, skript vytvoří veřejnou IP adresu a soukromou IP adresu pro novou bránu v2. brány v2 aktuálně nepodporují pouze privátní IP adresy.
 
-## <a name="download-the-script"></a>Download the script
+## <a name="download-the-script"></a>Stáhnout skript
 
-Download the migration script from the  [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureAppGWMigration).
+Stáhněte si skript migrace z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAppGWMigration).
 
-## <a name="use-the-script"></a>Use the script
+## <a name="use-the-script"></a>Použití skriptu
 
-There are two options for you depending on your local PowerShell environment setup and preferences:
+V závislosti na nastaveních a preferencích místního prostředí PowerShellu jsou k dispozici dvě možnosti:
 
-* If you don’t have the Azure Az modules installed, or don’t mind uninstalling the Azure Az modules, the best option is to use the `Install-Script` option to run the script.
-* If you need to keep the Azure Az modules, your best bet is to download the script and run it directly.
+* Pokud nemáte nainstalované moduly AZ pro Azure nebo si nejste odinstalovali odinstalaci modulů AZ pro Azure, nejlepší možností je použít pro spuštění skriptu možnost `Install-Script`.
+* Pokud potřebujete zachovat moduly Azure AZ, nejlepším řešením je stáhnout skript a spustit ho přímo.
 
-To determine if you have the Azure Az modules installed, run `Get-InstalledModule -Name az`. If you don't see any installed Az modules, then you can use the `Install-Script` method.
+Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az`. Pokud nevidíte žádné nainstalované moduly AZ, můžete použít metodu `Install-Script`.
 
-### <a name="install-using-the-install-script-method"></a>Install using the Install-Script method
+### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody install-Script
 
-To use this option, you must not have the Azure Az modules installed on your computer. If they're installed, the following command displays an error. You can either uninstall the Azure Az modules, or use the other option to download the script manually and run it.
+Pokud chcete použít tuto možnost, musíte mít v počítači nainstalované moduly AZ pro Azure. Pokud jsou nainstalovány, následující příkaz zobrazí chybu. Můžete buď odinstalovat moduly AZ pro Azure, nebo použít jinou možnost ke stažení skriptu ručně a jeho spuštění.
   
-Run the script with the following command:
+Spusťte skript s následujícím příkazem:
 
 `Install-Script -Name AzureAppGWMigration`
 
-This command also installs the required Az modules.  
+Tento příkaz nainstaluje také požadované moduly AZ Modules.  
 
-### <a name="install-using-the-script-directly"></a>Install using the script directly
+### <a name="install-using-the-script-directly"></a>Instalace pomocí skriptu přímo
 
-If you do have some Azure Az modules installed and can't uninstall them (or don't want to uninstall them), you can manually download the script using the **Manual Download** tab in the script download link. The script is downloaded as a raw nupkg file. To install the script from this nupkg file, see [Manual Package Download](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
+Pokud máte nainstalované některé moduly Azure AZ a nemůžete je odinstalovat (nebo je nechcete odinstalovat), můžete ručně stáhnout skript pomocí karty **Ruční stažení** v odkazu ke stažení skriptu. Skript se stáhne jako nezpracovaný soubor nupkg. Pokud chcete skript nainstalovat z tohoto souboru nupkg, přečtěte si téma [Ruční stažení balíčku](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
 
 Spuštění skriptu:
 
-1. Use `Connect-AzAccount` to connect to Azure.
+1. Pro připojení k Azure použijte `Connect-AzAccount`.
 
-1. Use `Import-Module Az` to import the Az modules.
+1. Pomocí `Import-Module Az` importujte moduly AZ.
 
-1. Run `Get-Help AzureAppGWMigration.ps1` to examine the required parameters:
+1. Spusťte `Get-Help AzureAppGWMigration.ps1` pro prohlédnutí požadovaných parametrů:
 
    ```
    AzureAppGwMigration.ps1
@@ -88,21 +88,21 @@ Spuštění skriptu:
     -validateMigration -enableAutoScale
    ```
 
-   Parameters for the script:
-   * **resourceId: [String]: Required** - This is the Azure Resource ID for your existing Standard v1 or WAF v1 gateway. To find this string value,  navigate to the Azure portal, select your application gateway or WAF resource, and click the **Properties** link for the gateway. The Resource ID is located on that page.
+   Parametry skriptu:
+   * **ResourceID: [String]: požadováno** – Toto je ID prostředku Azure pro stávající bránu Standard v1 nebo WAF v1. Tuto řetězcovou hodnotu zjistíte tak, že přejdete na Azure Portal, vyberete svůj prostředek Application Gateway nebo WAF a kliknete na odkaz **vlastnosti** pro bránu. ID prostředku se nachází na dané stránce.
 
-     You can also run the following Azure PowerShell commands to get the Resource ID:
+     K získání ID prostředku můžete také spustit následující příkazy Azure PowerShell:
 
      ```azurepowershell
      $appgw = Get-AzApplicationGateway -Name <v1 gateway name> -ResourceGroupName <resource group Name> 
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]:  Required** - This is the IP address space that you've allocated (or want to allocate) for a new subnet that contains your new v2 gateway. This must be specified in the CIDR notation. For example: 10.0.0.0/24. You don't need to create this subnet in advance. The script creates it for you if it doesn't exist.
-   * **appgwName: [String]: Optional**. This is a string you specify to use as the name for the new Standard_v2 or WAF_v2 gateway. If this parameter isn't supplied, the name of your existing v1 gateway will be used with the suffix *_v2* appended.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Optional**.  A comma-separated list of PSApplicationGatewaySslCertificate objects that you create to represent the SSL certs from your v1 gateway must be uploaded to the new v2 gateway. For each of your SSL certs configured for your Standard v1 or WAF v1 gateway, you can create a new PSApplicationGatewaySslCertificate object via the `New-AzApplicationGatewaySslCertificate` command shown here. You need the path to your SSL Cert file and the password.
+   * **subnetAddressRange: [String]: Required** – jedná se o adresní prostor IP adres, který jste přiřadili (nebo chcete přidělit) pro novou podsíť, která obsahuje novou bránu v2. Toto musí být zadáno v zápisu CIDR. Například: 10.0.0.0/24. Tuto podsíť nemusíte vytvářet předem. Skript ji vytvoří za vás, pokud neexistuje.
+   * **appgwName: [řetězec]: volitelné**. Toto je řetězec, který zadáte pro použití jako název nové Standard_v2 nebo WAF_v2 bránu. Pokud tento parametr není zadaný, použije se název vaší stávající brány V1 s příponou *_V2* připojena.
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: volitelné**.  Seznam objektů PSApplicationGatewaySslCertificate oddělených čárkami, které vytvoříte pro reprezentaci certifikátů SSL z vaší brány V1, se musí nahrát do nové brány v2. Pro každý z vašich certifikátů SSL nakonfigurovaných pro vaši standardní bránu v1 nebo WAF v1 můžete vytvořit nový objekt PSApplicationGatewaySslCertificate pomocí příkazu `New-AzApplicationGatewaySslCertificate`, který se tady zobrazuje. Budete potřebovat cestu k vašemu souboru certifikátu SSL a heslu.
 
-       This parameter is only optional if you don’t have HTTPS listeners configured for your v1 gateway or WAF. If you have at least one HTTPS listener setup, you must specify this parameter.
+       Tento parametr je volitelný jenom v případě, že nemáte naslouchací procesy protokolu HTTPS nakonfigurované pro bránu v1 nebo WAF. Pokud máte aspoň jedno nastavení naslouchacího procesu HTTPS, musíte zadat tento parametr.
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,16 +114,16 @@ Spuštění skriptu:
         -Password $password
       ```
 
-      You can pass in `$mySslCert1, $mySslCert2` (comma-separated) in the previous example as values for this parameter in the script.
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: Optional**. A comma-separated list of PSApplicationGatewayTrustedRootCertificate objects that you create to represent the [Trusted Root certificates](ssl-overview.md) for authentication of your backend instances from your v2 gateway.  
+      V předchozím příkladu můžete předat `$mySslCert1, $mySslCert2` (oddělený čárkami) jako hodnoty pro tento parametr ve skriptu.
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: volitelné**. Čárkami oddělený seznam objektů PSApplicationGatewayTrustedRootCertificate, které vytvoříte pro reprezentaci [důvěryhodných kořenových certifikátů](ssl-overview.md) pro ověřování instancí back-endu z vaší brány v2.  
 
-      To create a list of PSApplicationGatewayTrustedRootCertificate objects, see [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
-   * **privateIpAddress: [String]: Optional**. A specific private IP address that you want to associate to your new v2 gateway.  This must be from the same VNet that you allocate for your new v2 gateway. If this isn't specified, the script allocates a private IP address for your v2 gateway.
-    * **publicIpResourceId: [String]: Optional**. The resourceId of a public IP address (standard SKU) resource in your subscription that you want to allocate to the new v2 gateway. If this isn't specified, the script allocates a new public IP in the same resource group. The name is the v2 gateway’s name with *-IP* appended.
-   * **validateMigration: [switch]: Optional**. Use this parameter if you want the script to do some basic configuration comparison validations after the v2 gateway creation and the configuration copy. By default, no validation is done.
-   * **enableAutoScale: [switch]: Optional**. Use this parameter if you want the script to enable AutoScaling on the new v2 gateway after it's created. By default, AutoScaling is disabled. You can always manually enable it later on the newly created v2 gateway.
+      Chcete-li vytvořit seznam objektů PSApplicationGatewayTrustedRootCertificate, přečtěte si téma [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
+   * **privateIpAddress: [řetězec]: volitelné**. Konkrétní privátní IP adresa, kterou chcete přidružit k nové bráně v2.  Tato hodnota musí být ze stejné virtuální sítě, kterou přidělíte pro novou bránu v2. Pokud tato hodnota není zadaná, skript přidělí privátní IP adresu pro bránu v2.
+    * **publicIpResourceId: [řetězec]: volitelné**. Identifikátor resourceId prostředku veřejné IP adresy (Standard SKU) ve vašem předplatném, který chcete přidělit nové bráně v2. Pokud tento parametr nezadáte, skript přidělí novou veřejnou IP adresu ve stejné skupině prostředků. Název je název brány v2 s připojením *-IP* .
+   * **validateMigration: [přepínač]: volitelné**. Tento parametr použijte v případě, že chcete, aby skript po vytvoření brány v2 a kopii konfigurace provedl některé základní ověřování v porovnání s konfigurací. Ve výchozím nastavení se neprovádí žádné ověření.
+   * **enableAutoScale: [přepínač]: volitelné**. Tento parametr použijte, pokud chcete, aby skript po vytvoření nové brány v2 povolil automatické škálování na nové bráně v2. Ve výchozím nastavení je automatické škálování zakázané. Vždycky je můžete kdykoli později aktivovat na nově vytvořené bráně v2.
 
-1. Run the script using the appropriate parameters. It may take five to seven minutes to finish.
+1. Spusťte skript s použitím příslušných parametrů. Dokončení může trvat pět až 7 minut.
 
     **Příklad**
 
@@ -139,59 +139,59 @@ Spuštění skriptu:
       -validateMigration -enableAutoScale
    ```
 
-## <a name="migrate-client-traffic"></a>Migrate client traffic
+## <a name="migrate-client-traffic"></a>Migrace klientského provozu
 
-First, double check that the script successfully created a new v2 gateway with the exact configuration migrated over from your v1 gateway. You can verify this from the Azure portal.
+Nejdřív dvakrát ověřte, že skript úspěšně vytvořil novou bránu v2 s přesnou konfigurací, která se migruje z vaší brány v1. Můžete to ověřit z Azure Portal.
 
-Also, send a small amount of traffic through the v2 gateway as a manual test.
+Odešlete také malý objem provozu prostřednictvím brány v2 jako manuální test.
   
-Here are a few scenarios where your current application gateway (Standard) may receive client traffic, and our recommendations for each one:
+Tady je několik scénářů, kdy vaše aktuální Aplikační brána (Standard) může přijímat klientský provoz a naše doporučení pro každé z nich:
 
-* **A custom DNS zone (for example, contoso.com) that points to the frontend IP address (using an A record) associated with your Standard v1 or WAF v1 gateway**.
+* **Vlastní zóna DNS (například contoso.com), která odkazuje na IP adresu front-endu (pomocí záznamu A) přidruženého k bráně Standard v1 nebo WAF v1**.
 
-    You can update your DNS record to point to the frontend IP or DNS label associated with your Standard_v2 application gateway. Depending on the TTL configured on your DNS record, it may take a while for all your client traffic to migrate to your new v2 gateway.
-* **A custom DNS zone (for example, contoso.com) that points to the DNS label (for example: *myappgw.eastus.cloudapp.azure.com* using a CNAME record) associated with your v1 gateway**.
+    Můžete aktualizovat svůj záznam DNS tak, aby odkazoval na front-end IP nebo popisek DNS přidružený k vaší Standard_v2 aplikační bráně. V závislosti na hodnotě TTL nakonfigurované na záznamu DNS může chvíli trvat, než se veškerý provoz klienta migruje na novou bránu v2.
+* **Vlastní zóna DNS (například contoso.com), která odkazuje na popisek DNS (například: *myappgw.eastus.cloudapp.Azure.com* pomocí záznamu CNAME) přidruženého k vaší bráně v1**.
 
-   You have two choices:
+   Máte dvě možnosti:
 
-  * If you use public IP addresses on your application gateway, you can do a controlled, granular migration using a Traffic Manager profile to incrementally route traffic (weighted traffic routing method) to the new v2 gateway.
+  * Pokud ve své aplikační bráně používáte veřejné IP adresy, můžete provést řízenou a podrobnou migraci pomocí Traffic Manager profilu pro přírůstkové směrování provozu (metoda váženého směrování provozu) do nové brány v2.
 
-    You can do this by adding the DNS labels of both the v1 and v2 application gateways to the [Traffic Manager profile](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method), and CNAMEing your custom DNS record (for example, `www.contoso.com`) to the Traffic Manager domain (for example, contoso.trafficmanager.net).
-  * Or, you can update your custom domain DNS record to point to the DNS label of the new v2 application gateway. Depending on the TTL configured on your DNS record, it may take a while for all your client traffic to migrate to your new v2 gateway.
-* **Your clients connect to the frontend IP address of your application gateway**.
+    Můžete to udělat tak, že přidáte popisky DNS aplikačních bran V1 a v2 do [profilu Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)a CNAME svůj vlastní záznam DNS (například `www.contoso.com`) do domény Traffic Manager (například na contoso.trafficmanager.NET).
+  * Nebo můžete aktualizovat záznam DNS pro vlastní doménu tak, aby odkazoval na popisek DNS nové aplikační brány v2. V závislosti na hodnotě TTL nakonfigurované na záznamu DNS může chvíli trvat, než se veškerý provoz klienta migruje na novou bránu v2.
+* **Vaši klienti se připojují k IP adrese front-endu vaší aplikační brány**.
 
-   Update your clients to use the IP address(es) associated with the newly created v2 application gateway. We recommend that you don't use IP addresses directly. Consider using the DNS name label (for example, yourgateway.eastus.cloudapp.azure.com) associated with your application gateway that you can CNAME to your own custom DNS zone (for example, contoso.com).
+   Aktualizujte své klienty tak, aby používaly IP adresy přidružené k nově vytvořené aplikační bráně v2. Doporučujeme, abyste IP adresy nepoužívali přímo. Zvažte použití popisku názvu DNS (například yourgateway.eastus.cloudapp.azure.com) přidruženého k vaší aplikační bráně, kterou můžete použít k záznamu CNAME do vlastní zóny DNS (například contoso.com).
 
 ## <a name="common-questions"></a>Časté dotazy
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Are there any limitations with the Azure PowerShell script to migrate the configuration from v1 to v2?
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Existují nějaká omezení Azure PowerShell skriptu pro migraci konfigurace z V1 na v2?
 
-Ano. See [Caveats/Limitations](#caveatslimitations).
+Ano. Podívejte se na [Upozornění a omezení](#caveatslimitations).
 
-### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>Is this article and the Azure PowerShell script applicable for Application Gateway WAF product as well? 
+### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>Je tento článek a Azure PowerShell skript použitelný pro Application Gateway produkt WAF? 
 
 Ano.
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Does the Azure PowerShell script also switch over the traffic from my v1 gateway to the newly created v2 gateway?
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Přepíná skript Azure PowerShell také přenos dat z mé brány V1 na nově vytvořenou bránu v2?
 
-Ne. The Azure PowerShell script only migrates the configuration. Actual traffic migration is your responsibility and in your control.
+Ne. Azure PowerShell skript migruje pouze konfiguraci. Skutečná migrace provozu je vaší zodpovědností a vaším ovládacím prvkem.
 
-### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Is the new v2 gateway created by the Azure PowerShell script sized appropriately to handle all of the traffic that is currently served by my v1 gateway?
+### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Je nová brána v2 vytvořená o správné velikosti skriptu Azure PowerShell pro zpracování všech přenosů, které aktuálně obsluhuje moje brána v1?
 
-The Azure PowerShell script creates a new v2 gateway with an appropriate size to handle the traffic on your existing v1 gateway. Autoscaling is disabled by default, but you can enable AutoScaling when you run the script.
+Skript Azure PowerShell vytvoří novou bránu v2, která má odpovídající velikost pro zpracování provozu v existující bráně v1. Automatické škálování je ve výchozím nastavení zakázané, ale při spuštění skriptu můžete povolit automatické škálování.
 
-### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>I configured my v1 gateway  to send logs to Azure storage. Does the script replicate this configuration for v2 as well?
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Nakonfigurovali jsem moji bránu V1, aby odesílala protokoly do služby Azure Storage. Replikuje tento skript tuto konfiguraci pro v2?
 
-Ne. The script doesn't  replicate this configuration for v2. You must add the log configuration separately to the migrated v2 gateway.
+Ne. Skript nereplikuje tuto konfiguraci pro v2. Je nutné přidat konfiguraci protokolu odděleně od migrované brány v2.
 
-### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Does this script support certificates uploaded to Azure KeyVault ?
+### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Podporuje tento skript certifikáty nahrané do služby Azure webtrezor?
 
-Ne. Currently the script does not support certificates in KeyVault. However, this is being considered for a future version.
+Ne. V současné době skript nepodporuje certifikáty v trezoru klíčů. To se ale zvažuje i v budoucí verzi.
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>I ran into some issues with using this script. How can I get help?
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Narazili jsme na některé problémy s použitím tohoto skriptu. Jak získám pomoc?
   
-You can send an email to appgwmigrationsup@microsoft.com, open a support case with Azure Support, or do both.
+Můžete odeslat e-mail appgwmigrationsup@microsoft.com, otevřít případ podpory s podporou Azure nebo obojí.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Learn about Application Gateway v2](application-gateway-autoscaling-zone-redundant.md)
+[Další informace o Application Gateway v2](application-gateway-autoscaling-zone-redundant.md)

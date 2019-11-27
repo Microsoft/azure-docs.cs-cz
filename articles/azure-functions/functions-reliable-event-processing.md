@@ -1,6 +1,6 @@
 ---
-title: Azure Functions reliable event processing
-description: Avoid missing Event Hub messages in Azure Functions
+title: Azure Functions spolehlivé zpracování událostí
+description: Vyhněte se chybějícím zprávám centra událostí v Azure Functions
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
@@ -12,123 +12,123 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230372"
 ---
-# <a name="azure-functions-reliable-event-processing"></a>Azure Functions reliable event processing
+# <a name="azure-functions-reliable-event-processing"></a>Azure Functions spolehlivé zpracování událostí
 
-Event processing is one of the most common scenarios associated with serverless architecture. This article describes how to create a reliable message processor with Azure Functions to avoid losing messages.
+Zpracování událostí je jedním z nejběžnějších scénářů přidružených k architektuře bez serveru. Tento článek popisuje, jak vytvořit spolehlivý procesor zpráv s Azure Functions, abyste se vyhnuli ztrátě zpráv.
 
-## <a name="challenges-of-event-streams-in-distributed-systems"></a>Challenges of event streams in distributed systems
+## <a name="challenges-of-event-streams-in-distributed-systems"></a>Výzvy k datovým proudům událostí v distribuovaných systémech
 
-Consider a system that sends events at a constant rate  of 100 events per second. At this rate, within minutes multiple parallel Functions instances can consume the incoming 100 events every second.
+Vezměte v úvahu systém, který odesílá události s konstantní frekvencí 100 událostí za sekundu. V této míře může více instancí paralelních funkcí během několika minut spotřebovat příchozí události 100 každou sekundu.
 
-However, any of the following less-optimal conditions are possible:
+Je ale možné, že existují následující méně optimální podmínky:
 
-- What if the event publisher sends a corrupt event?
-- What if your Functions instance encounters unhandled exceptions?
-- What if a downstream system goes offline?
+- Co když Vydavatel události pošle poškozenou událost?
+- Co když instance Functions narazí na neošetřené výjimky?
+- Co když systém pro příjem dat přejde do režimu offline?
 
-How do you handle these situations while preserving the throughput of your application?
+Jak se tyto situace zpracovávají při zachování propustnosti aplikace?
 
-With queues, reliable messaging comes naturally. When paired with a Functions trigger, the function creates a lock on the queue message. If processing fails, the lock is released to allow another instance to retry processing. Processing then continues until either the message is evaluated successfully, or it is added to a poison queue.
+Díky frontám se spolehlivé zasílání zpráv přináší přirozeně. Když se spáruje s triggerem Functions, funkce vytvoří zámek ve zprávě fronty. Pokud se zpracování nepovede, je zámek uvolněn, aby bylo možné opakovat zpracování jiné instance. Zpracování poté pokračuje, dokud není zpráva úspěšně vyhodnocena, nebo přidána do fronty poškození.
 
-Even while a single queue message may remain in a retry cycle, other parallel executions continue to keep to dequeueing remaining messages. The result is that the overall throughput remains largely unaffected by one bad message. However, storage queues don’t guarantee ordering and aren’t optimized for the high throughput demands required by Event Hubs.
+I když může jedna zpráva fronty zůstat v cyklu opakování, ostatní paralelní spouštění budou dál muset vyřadit zbývající zprávy do fronty. Výsledkem je, že celková propustnost zůstává do značné míry neovlivněna jednou chybnou zprávou. Fronty úložiště ale nezaručují řazení a nejsou optimalizované pro požadavky na vysokou propustnost, které vyžaduje Event Hubs.
 
-By contrast, Azure Event Hubs doesn't include a locking concept. To allow for features like high-throughput, multiple consumer groups, and replay-ability, Event Hubs events behave more like a video player. Events are read from a single point in the stream per partition. From the pointer you can read forwards or backwards from that location, but you have to choose to move the pointer for events to process.
+Naproti tomu Azure Event Hubs nezahrnuje pojem zamykání. Aby bylo možné povolit funkce jako vysokou propustnost, více uživatelů a možnosti opakovaného přehrávání, Event Hubs události se chovají podobně jako přehrávač videa. Události jsou čteny z jednoho bodu v datovém proudu na oddíl. Z ukazatele můžete číst vpřed nebo zpět z tohoto umístění, ale je nutné zvolit, zda chcete přesunout události ke zpracování.
 
-When errors occur in a stream, if you decide to keep the pointer in the same spot, event processing is blocked until the pointer is advanced. In other words, if the pointer is stopped to deal with problems processing a single event, the unprocessed events begin piling up.
+Pokud se v datovém proudu objeví chyby, pokud se rozhodnete zachovat ukazatel ve stejném místě, bude zpracování událostí zablokované, dokud nebude ukazatel pokročilý. Jinými slovy, pokud je ukazatel zastaven, aby se zabývat problémy, které zpracovávají jednu událost, nezpracované události začnou piling.
 
-Azure Functions avoids deadlocks by advancing the stream's pointer regardless of success or failure. Since the pointer keeps advancing, your functions need to deal with failures appropriately.
+Azure Functions se vyhnete zablokování tím, že přechází ukazatel datového proudu bez ohledu na úspěch nebo neúspěch. Vzhledem k tomu, že se ukazatel stále mění, vaše funkce potřebují patřičně řešit chyby.
 
-## <a name="how-azure-functions-consumes-event-hubs-events"></a>How Azure Functions consumes Event Hubs events
+## <a name="how-azure-functions-consumes-event-hubs-events"></a>Jak Azure Functions spotřebovává Event Hubs události
 
-Azure Functions consumes Event Hub events while cycling through the following steps:
+Azure Functions spotřebovává události centra událostí při procházení následujících kroků:
 
-1. A pointer is created and persisted in Azure Storage for each partition of the event hub.
-2. When new messages are received (in a batch by default), the host attempts to trigger the function with the batch of messages.
-3. If the function completes execution (with or without exception) the pointer advances and a checkpoint is saved to the storage account.
-4. If conditions prevent the function execution from completing, the host fails to progress the pointer. If the pointer isn't advanced, then later checks end up processing the same messages.
-5. Repeat steps 2–4
+1. V Azure Storage pro každý oddíl centra událostí se vytvoří a uloží ukazatel.
+2. Při přijetí nových zpráv (ve výchozím nastavení v dávce) se hostitel pokusí aktivovat funkci s dávkou zpráv.
+3. Pokud funkce dokončí provádění (s výjimkou nebo bez ní), přesun ukazatele a kontrolní bod se uloží do účtu úložiště.
+4. Pokud podmínky brání dokončení provádění funkce, hostitel neprojde ukazatelem průběhu. Pokud ukazatel není pokročilý, pak později zkontroluje, jestli zpracovává stejné zprávy.
+5. Opakování kroků 2 – 4
 
-This behavior reveals a few important points:
+Toto chování odhalí několik důležitých bodů:
 
-- *Unhandled exceptions may cause you to lose messages.* Executions that result in an exception will continue to progress the pointer.
-- *Functions guarantees at-least-once delivery.* Your code and dependent systems may need to [account for the fact that the same message could be received twice](./functions-idempotent.md).
+- *Neošetřené výjimky mohou způsobit ztrátu zpráv.* Spuštění, které způsobí výjimku, bude pokračovat v průběhu ukazatele.
+- *Funkce garantuje alespoň jedno doručení.* Váš kód a závislé systémy budou pravděpodobně potřebovat [účet pro skutečnost, že stejnou zprávu lze přijmout dvakrát](./functions-idempotent.md).
 
 ## <a name="handling-exceptions"></a>Zpracování výjimek
 
-As a general rule, every function should include a [try/catch block](./functions-bindings-error-pages.md) at the highest level of code. Specifically, all functions that consume Event Hubs events should have a `catch` block. That way, when an exception is raised, the catch block handles the error before the pointer progresses.
+Obecně platí, že každá funkce by měla obsahovat [blok try/catch](./functions-bindings-error-pages.md) na nejvyšší úrovni kódu. Konkrétně všechny funkce, které spotřebovávají Event Hubs události, by měly mít blok `catch`. Tímto způsobem, když je vyvolána výjimka, blok catch zpracovává chybu před průběhem ukazatele.
 
-### <a name="retry-mechanisms-and-policies"></a>Retry mechanisms and policies
+### <a name="retry-mechanisms-and-policies"></a>Mechanismy a zásady opakování
 
-Some exceptions are transient in nature and don't reappear when an operation is attempted again moments later. This is why the first step is always to retry the operation. You could write retry processing rules yourself, but they are so commonplace that a number of tools available. Using these libraries allow you to define robust retry-policies, which can also help preserve processing order.
+Některé výjimky jsou přechodným charakterem a po opakovaném pokusu o operaci později se nezobrazují. Z tohoto důvodu je prvním krokem vždy opakování operace. Pravidla opakovaného zpracování můžete napsat sami, ale je tak maloobchodech, že je k dispozici řada nástrojů. Použití těchto knihoven vám umožní definovat robustní zásady opakování, které mohou také pomoci zachovat pořadí zpracování.
 
-Introducing fault-handling libraries to your functions allow you to define both basic and advanced retry policies. For instance, you could implement a policy that follows a workflow illustrated by the following rules:
+Představujeme knihovny pro zpracování chyb do vašich funkcí vám umožní definovat základní i pokročilé zásady opakování. Můžete například implementovat zásadu, která následuje za pracovním postupem, a to podle následujících pravidel:
 
-- Try to insert a message three times (potentially with a delay between retries).
-- If the eventual outcome of all retries is a failure, then add a message to a queue so processing can continue on the stream.
-- Corrupt or unprocessed messages are then handled later.
+- Zkuste vložit zprávu třikrát (může se jednat o prodlevu mezi opakovanými pokusy).
+- Pokud případný výsledek všech opakovaných pokusů selže, přidejte do fronty zprávu, aby zpracování mohlo pokračovat na datovém proudu.
+- Poškozené nebo nezpracované zprávy jsou následně zpracovávány později.
 
 > [!NOTE]
-> [Polly](https://github.com/App-vNext/Polly) is an example of a resilience and transient-fault-handling library for C# applications.
+> [Polly](https://github.com/App-vNext/Polly) je příklad odolnosti a knihovny pro zpracování s přechodnou chybou pro C# aplikace.
 
-When working with pre-complied C# class libraries, [exception filters](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) allow you to run code whenever an unhandled exception occurs.
+Při práci s předem vyplněnými C# knihovnami tříd umožňují [filtry výjimek](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) spustit kód vždy, když dojde k neošetřené výjimce.
 
-Samples that demonstrate how to use exception filters are available in the [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) repo.
+Ukázky, které ukazují, jak používat filtry výjimek, jsou k dispozici v úložišti [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) .
 
-## <a name="non-exception-errors"></a>Non-exception errors
+## <a name="non-exception-errors"></a>Chyby bez výjimky
 
-Some issues arise even when an error is not present. For example, consider a failure that occurs in the middle of an execution. In this case, if a function doesn’t complete execution, the offset pointer is never progressed. If the pointer doesn't advance, then any instance that runs after a failed execution continues to read the same messages. This situation provides an "at-least-once" guarantee.
+K nějakým problémům dojde i v případě, že chyba není k dispozici. Zvažte například selhání, ke kterému dojde v průběhu provádění. V takovém případě, pokud funkce nedokončí provádění, ukazatel posunu nikdy nepostupuje. Pokud ukazatel nebude pokračovat, bude jakákoli instance, která se spustí po neúspěšném spuštění, nadále přečetla stejné zprávy. Tato situace poskytuje záruku "nejméně jednou".
 
-The assurance that every message is processed at least one time implies that some messages may be processed more than once. Your function apps need to be aware of this possibility and must be built around the [principles of idempotency](./functions-idempotent.md).
+Záruka, že se každá zpráva zpracovává aspoň jednou, znamená, že některé zprávy mohou být zpracovány více než jednou. Vaše aplikace Function App musí tuto možnost znát a musí být postaveny na [principech idempotence](./functions-idempotent.md).
 
-## <a name="stop-and-restart-execution"></a>Stop and restart execution
+## <a name="stop-and-restart-execution"></a>Zastavení a restartování provádění
 
-While a few errors may be acceptable, what if your app experiences significant failures? You may want to stop triggering on events until the system reaches a healthy state. Having the opportunity pause processing is often achieved with a circuit breaker pattern. The circuit breaker pattern allows your app to "break the circuit" of the event process and resume at a later time.
+I když může být přijatelné několik chyb, co když vaše aplikace dochází k významným chybám? Je možné, že budete chtít zastavit aktivaci na události, dokud systém nedosáhne stavu v pořádku. Zpracování pozastavení příležitostí se často dosahuje pomocí vzoru pro přestávku okruhu. Vzorek přerušení obvodu umožňuje aplikaci přerušit okruh procesu události a později ho obnovit.
 
-There are two pieces required to implement a circuit breaker in an event process:
+K implementaci přerušení okruhu v procesu události se vyžadují dvě části:
 
-- Shared state across all instances to track and monitor health of the circuit
-- Master process that can manage the circuit state (open or closed)
+- Sdílený stav napříč všemi instancemi, který sleduje a monitoruje stav okruhu
+- Hlavní proces, který může spravovat stav okruhu (otevřené nebo uzavřené)
 
-Implementation details may vary, but to share state among instances you need a storage mechanism. You may choose to store state in Azure Storage, a Redis cache, or any other account that is accessible by a collection of functions.
+Podrobnosti implementace se můžou lišit, ale sdílet stav mezi instancemi, které potřebujete úložného mechanismu. Můžete se rozhodnout uložit stav do Azure Storage, mezipaměť Redis nebo jakýkoli jiný účet, který je přístupný pro kolekci funkcí.
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) or [durable entities](./durable/durable-functions-overview.md) are a natural fit to manage the workflow and circuit state. Other services may work just as well, but logic apps are used for this example. Using logic apps, you can pause and restart a function's execution giving you the control required to implement the circuit breaker pattern.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) nebo [trvalé entity](./durable/durable-functions-overview.md) jsou přirozenou možností správy pracovního postupu a stavu okruhu. Další služby můžou fungovat stejně, ale v tomto příkladu se používají Logic Apps. Pomocí Logic Apps můžete pozastavit a restartovat provádění funkce a poskytnout tak ovládací prvek potřebný k implementaci vzorku pro přestávku okruhu.
 
-### <a name="define-a-failure-threshold-across-instances"></a>Define a failure threshold across instances
+### <a name="define-a-failure-threshold-across-instances"></a>Definice prahové hodnoty selhání napříč instancemi
 
-To account for multiple instances processing events simultaneously, persisting shared external state is needed to monitor the health of the circuit.
+Aby bylo možné přihlédnout k různým instancím, které zpracovávají události současně, je nutné zachovat sdílený externí stav pro monitorování stavu okruhu.
 
-A rule you may choose to implement might enforce that:
+Pravidlo, které můžete použít k implementaci, může vyhovět těmto akcím:
 
-- If there are more than 100 eventual failures within 30 seconds across all instances, then break the circuit and stop triggering on new messages.
+- Pokud v rámci všech instancí existuje více než 100 případných chyb, přerušit okruh a zastavte spouštění nových zpráv.
 
-The implementation details will vary given your needs, but in general you can create a system that:
+Podrobnosti implementace se budou lišit podle vašich potřeb, ale obecně můžete vytvořit systém, který:
 
-1. Log failures to a storage account (Azure Storage, Redis, etc.)
-1. When new failure is logged, inspect the rolling count to see if the threshold is met (for example, more than 100 in last 30 seconds).
-1. If the threshold is met, emit an event to Azure Event Grid telling the system to break the circuit.
+1. Protokoluje chyby do účtu úložiště (Azure Storage, Redis atd.).
+1. Když se zaprotokoluje nové selhání, zkontrolujte počet vydaných položek a podívejte se, jestli se prahová hodnota splní (například více než 100 za posledních 30 sekund).
+1. Pokud je prahová hodnota splněna, vygeneruje událost, která Azure Event Grid informuje systém o přerušení okruhu.
 
-### <a name="managing-circuit-state-with-azure-logic-apps"></a>Managing circuit state with Azure Logic Apps
+### <a name="managing-circuit-state-with-azure-logic-apps"></a>Správa stavu okruhu pomocí Azure Logic Apps
 
-The following description highlights one way you could create an Azure Logic App to halt a Functions app from processing.
+Následující popis představuje jeden ze způsobů, jak můžete vytvořit aplikaci logiky Azure pro zastavení zpracování aplikace Functions.
 
-Azure Logic Apps comes with built-in connectors to different services, features stateful orchestrations, and is a natural choice to manage circuit state. After detecting the circuit needs to break, you can build a logic app to implement the following workflow:
+Azure Logic Apps přináší Integrované konektory k různým službám, funkce pro stavové orchestraci a je přirozenou volbou pro správu stavu okruhu. Po zjištění, že okruh potřebuje přerušit, můžete vytvořit aplikaci logiky, která implementuje následující pracovní postup:
 
-1. Trigger an Event Grid workflow and stop the Azure Function (with the Azure Resource connector)
-1. Send a notification email that includes an option to restart the workflow
+1. Aktivace pracovního postupu Event Grid a zastavení funkce Azure (pomocí konektoru prostředků Azure)
+1. Odeslání e-mailu s oznámením, který obsahuje možnost restartovat pracovní postup
 
-The email recipient can investigate the health of the circuit and, when appropriate, restart the circuit via a link in the notification email. As the workflow restarts the function, messages are processed from the last Event Hub checkpoint.
+Příjemce e-mailu může prozkoumat stav okruhu a v případě potřeby restartovat okruh přes odkaz v oznamovacím e-mailu. Když pracovní postup restartuje funkci, zprávy se zpracují z posledního kontrolního bodu centra událostí.
 
-Using this approach, no messages are lost, all messages are processed in order, and you can break the circuit as long as necessary.
+Při použití tohoto přístupu se neztratí žádné zprávy, všechny zprávy jsou zpracovávány v daném pořadí a okruh můžete v případě potřeby rozdělit na dlouhou dobu.
 
-## <a name="resources"></a>Materiály
+## <a name="resources"></a>Zdroje informací
 
-- [Reliable event processing samples](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Durable Functions Circuit Breaker](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Ukázky spolehlivých zpracování událostí](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
+- [Přepínací modul okruhů Azure Durable Functions](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace najdete v následujících zdrojích:
 
-- [Azure Functions error handling](./functions-bindings-error-pages.md)
+- [Zpracování chyb Azure Functions](./functions-bindings-error-pages.md)
 - [Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
 - [Vytvoření funkce, která se integruje s Azure Logic Apps](./functions-twitter-email.md)

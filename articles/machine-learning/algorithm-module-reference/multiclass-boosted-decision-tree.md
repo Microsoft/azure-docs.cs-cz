@@ -1,7 +1,7 @@
 ---
-title: 'Multiclass Boosted Decision Tree: Module Reference'
+title: 'Více třídou rozhodovacího stromu s zvýšením úrovně: Reference k modulu'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the Multiclass Boosted Decision Tree module in Azure Machine Learning to create a classifier using labeled data.
+description: Naučte se používat modul více tříd pro rozhodovací strom s více třídami v Azure Machine Learning k vytvoření klasifikátoru pomocí popisků dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,46 +18,46 @@ ms.locfileid: "74232608"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Posílený rozhodovací strom s několika třídami
 
-This article describes a module in Azure Machine Learning designer (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Use this module to create a machine learning model that is based on the boosted decision trees algorithm.
+Pomocí tohoto modulu můžete vytvořit model strojového učení, který je založený na algoritmu zesílených rozhodovacích stromů.
 
-A boosted decision tree is an ensemble learning method in which the second tree corrects for the errors of the first tree, the third tree corrects for the errors of the first and second trees, and so forth. Predictions are based on the ensemble of trees together.
+Posílený rozhodovací strom je metoda učení kompletu, ve které druhý strom opravuje chyby prvního stromu, třetí strom pro chyby první a druhé stromy a tak dále. Předpovědi jsou založené na kompletu stromů dohromady.
 
-## <a name="how-to-configure"></a>How to configure 
+## <a name="how-to-configure"></a>Jak nakonfigurovat 
 
-This module creates an untrained classification model. Because classification is a supervised learning method, you need a *labeled dataset* that includes a label column with a value for all rows.
+Tento modul vytváří nevlakový model klasifikace. Vzhledem k tomu, že klasifikace je metoda učení pod dohledem, potřebujete *datovou sadu s popiskem* , která obsahuje sloupec popisku s hodnotou pro všechny řádky.
 
-You can train this type of model by using the [Train Model](././train-model.md). 
+Tento typ modelu můžete vyškolit pomocí [modelu vlakové soupravy](././train-model.md). 
 
-1.  Add the **Multiclass Boosted Decision Tree** module to your pipeline.
+1.  Přidejte do vašeho kanálu modul pro **zvýšení rozhodovacího stromu s více třídami** .
 
-1.  Specify how you want the model to be trained by setting the **Create trainer mode** option.
+1.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .
 
-    + **Single Parameter**: If you know how you want to configure the model, you can provide a specific set of values as arguments.
+    + **Jediný parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.
 
 
-    *  **Maximum number of leaves per tree** limits the maximum number of terminal nodes (leaves) that can be created in any tree.
+    *  **Maximální počet ponechání na stromovou strukturu** omezuje maximální počet uzlů terminálů (opustí), které je možné vytvořit v jakémkoli stromu.
     
-        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
+        Zvýšením této hodnoty můžete zvýšit velikost stromu a dosáhnout vyšší přesnosti, a to na riziko přebudování a delší dobu školení.
   
-    * **Minimum number of samples per leaf node** indicates the number of cases required to create any terminal node (leaf) in a tree.  
+    * **Minimální počet vzorků na uzel na list** určuje počet případů vyžadovaných k vytvoření libovolného uzlu terminálu (list) ve stromu.  
 
-         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
+         Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň pět případů splňujících stejné podmínky.
 
-    * **Learning rate** defines the step size while learning. Enter a number between 0 and 1.
+    * **Studijní frekvence** definuje velikost kroku při učení. Zadejte číslo od 0 do 1.
 
-         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
+         Studijní frekvence určuje, jak rychle nebo pomalu se učí sblížení s optimálním řešením. Pokud je velikost kroku moc velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než se sblížení dostanou na nejlepší řešení.
 
-    * **Number of trees constructed** indicates the total number of decision trees to create in the ensemble. By creating more decision trees, you can potentially get better coverage, but training time will increase.
+    * **Počet vytvořených stromů** označuje celkový počet rozhodovacích stromů, které se mají v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete získat lepší pokrytí, ale čas školení se zvýší.
 
-    *  **Random number seed** optionally sets a non-negative integer to use as the random seed value. Specifying a seed ensures reproducibility across runs that have the same data and parameters.  
+    *  **Náhodné číslo semen** volitelně nastaví nezáporné celé číslo, které se použije jako hodnota náhodného základu. Určení počáteční hodnoty zajišťuje reprodukovatelnost v různých spuštěních, která mají stejná data a parametry.  
 
-         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
+         Náhodné osazení je ve výchozím nastavení nastaveno na 42. Po sobě jdoucí běhy s různými náhodnými osivy můžou mít různé výsledky.
 
 > [!Note]
-> If you set **Create trainer mode** to **Single Parameter**, connect a tagged dataset and the [Train Model](./train-model.md) module.
+> Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](./train-model.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

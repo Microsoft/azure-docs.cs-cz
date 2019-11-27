@@ -83,7 +83,7 @@ Několik hodnot uvedených za jednotlivými parametry je možná trochu nesrozum
 
 | Parametr        | Hodnota   | Popis  |
 |------------------|---------|---------|
-| *oprávnění*    | racwdl  | Tento SAS povoluje funkce *read* (čtení), *append* (připojení), *create* (vytvoření), *write* (zápis), *delete* (odstranění) a *list* (výpis). |
+| *permissions*    | racwdl  | Tento SAS povoluje funkce *read* (čtení), *append* (připojení), *create* (vytvoření), *write* (zápis), *delete* (odstranění) a *list* (výpis). |
 | *resource-types* | sco     | Tento SAS ovlivňuje prostředky *service* (služba), *container* (kontejner) a *object* (objekt). |
 | *services*       | b       | Tento SAS ovlivňuje službu *Blob* Service. |
 

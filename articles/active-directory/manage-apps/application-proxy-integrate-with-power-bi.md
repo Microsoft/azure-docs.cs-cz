@@ -70,7 +70,7 @@ Pokud chcete nakonfigurovat KCD, opakujte následující kroky pro každý poč�
 1. Přihlaste se k řadiči domény jako správce domény a pak otevřete položku **Uživatelé a počítače služby Active Directory**.
 2. Najděte, na kterém běží konektor na počítač.  
 3. Dvakrát klikněte na počítač a pak vyberte kartu **delegování** .
-4. Nastavení delegování nastavte na **Důvěřovat tomuto počítači pro delegování pouze určeným službám**. Vyberte **použití libovolného protokolu pro ověřování**.
+4. Nastavení delegování nastavte na **Důvěřovat tomuto počítači pro delegování pouze určeným službám**. Pak vyberte **použít libovolný protokol pro ověřování**.
 5. Vyberte **Přidat**a pak vyberte **Uživatelé nebo počítače**.
 6. Zadejte účet služby, který používáte pro službu Reporting Services. Jedná se o účet, do kterého jste přidali hlavní název služby (SPN) v rámci konfigurace služby Reporting Services.
 7. Klikněte na tlačítko **OK**. Pokud chcete změny uložit, klikněte znovu na **OK** .
@@ -91,15 +91,15 @@ Teď jste připraveni nakonfigurovat Azure Proxy aplikací služby AD.
 
 2. Po publikování aplikace konfigurujte nastavení jednotného přihlašování pomocí následujících kroků:
 
-   a. Na stránce aplikace na portálu vyberte **jednotného přihlašování**.
+   a. Na stránce aplikace na portálu vyberte **jednotné přihlašování**.
 
    b. V případě **režimu jednotného přihlašování**vyberte **integrované ověřování systému Windows**.
 
    c. Nastavte **vnitřní hlavní název aplikace** na hodnotu, kterou jste nastavili dříve.  
 
-   d. Zvolte **delegovaná identita přihlášení** pro konektor nekonfigurovali používání jménem uživatele. Další informace najdete v tématu [práce s různými místními a cloudovou identitou](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
+   d. Vyberte **delegovanou identitu přihlášení** , kterou má konektor použít jménem uživatelů. Další informace najdete v tématu [práce s různými místními a cloudovou identitou](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
-   e. Klikněte na tlačítko **Uložit** uložte provedené změny.
+   e. Kliknutím na **Uložit** uložte změny.
 
 Pokud chcete dokončit nastavování aplikace, přejděte do části **Uživatelé a skupiny** a přiřaďte uživatele k přístupu k této aplikaci.
 

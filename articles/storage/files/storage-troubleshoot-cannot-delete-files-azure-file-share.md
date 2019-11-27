@@ -72,7 +72,7 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 ## <a name="example-result"></a>Příklad výsledku:
 
-|HandleId|Cesta|IP adresa klienta|ClientPort|OpenTime|LastReconnectTime|Identifikátor|ParentId|SessionId|
+|HandleId|Cesta|IP adresa klienta|ClientPort|OpenTime|LastReconnectTime|Identifikátor|ParentId|ID relace|
 |---|---|---|---|---|---|---|---|---|
 |259101229083|---|10.222.10.123|62758|2019-10-05|12:16:50Z|0|0|9507758546259807489|
 |259101229131|---|10.222.10.123|62758|2019-10-05|12:36:20Z|0|0|9507758546259807489|

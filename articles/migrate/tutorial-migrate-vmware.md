@@ -104,8 +104,8 @@ Azure Migrate vyžaduje změny virtuálních počítačů, aby bylo zajištěno,
 --- | --- | ---
 Zajistěte, aby svazky Windows na virtuálním počítači Azure používaly stejná přiřazení písmen jednotek jako místní virtuální počítač. | Nakonfigurujte zásady sítě SAN jako online vše. | 1. Přihlaste se k virtuálnímu počítači pomocí účtu správce a otevřete příkazové okno.<br/> 2. zadáním příkazu **DiskPart** spustíte nástroj Diskpart.<br/> 3. zadejte **zásady sítě San = OnlineAll**<br/> 4. Zadejte příkaz exit pro opuštění programu DiskPart a zavřete příkazový řádek.
 Povolení konzole sériového přístupu Azure pro virtuální počítač Azure | To pomáhá při řešení potíží. Nemusíte restartovat virtuální počítač. Virtuální počítač Azure se spustí s použitím bitové kopie disku a je stejný jako restart nového virtuálního počítače. | Pokud chcete povolit, postupujte podle [těchto pokynů](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console) .
-Nainstalovat integraci hosta technologie Hyper-V | Pokud migrujete počítače se systémem Windows Server 2003, nainstalujte integrační služby technologie Hyper-V hosta do operačního systému virtuálního počítače. | [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)
-Vzdálená plocha | Povolte na VIRTUÁLNÍm počítači vzdálenou plochu a ověřte, že brána Windows firewall neblokuje přístup ke vzdálené ploše v žádných síťových profilech. | [Další informace](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)
+Nainstalovat integraci hosta technologie Hyper-V | Pokud migrujete počítače se systémem Windows Server 2003, nainstalujte integrační služby technologie Hyper-V hosta do operačního systému virtuálního počítače. | [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
+Vzdálená plocha | Povolte na VIRTUÁLNÍm počítači vzdálenou plochu a ověřte, že brána Windows firewall neblokuje přístup ke vzdálené ploše v žádných síťových profilech. | [Další informace](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
 
 ### <a name="prepare-linux-vms"></a>Příprava virtuálních počítačů se systémem Linux
 
@@ -156,8 +156,8 @@ Po dokončení zjišťování můžete zahájit replikaci virtuálních počíta
 6. V části **Nastavení cíle** vyberte předplatné a cílovou oblast migrace a zadejte skupinu prostředků, ve které se po migraci budou nacházet virtuální počítače Azure. V části **Virtuální síť** vyberte virtuální síť a podsíť Azure, ke kterým se po migraci připojí virtuální počítače Azure.
 7. V části **Zvýhodněné hybridní využití Azure**:
 
-    - Vyberte **Ne**, pokud nechcete využít Zvýhodněné hybridní využití Azure. Potom klikněte na tlačítko **Další**.
-    - Vyberte **Ano**, pokud máte počítače s Windows Serverem s aktivním Software Assurance nebo předplatným Windows Serveru a u migrovaných počítačů chcete využít tuto výhodu. Potom klikněte na tlačítko **Další**.
+    - Vyberte **Ne**, pokud nechcete využít Zvýhodněné hybridní využití Azure. Pak klikněte na tlačítko **Další**.
+    - Vyberte **Ano**, pokud máte počítače s Windows Serverem s aktivním Software Assurance nebo předplatným Windows Serveru a u migrovaných počítačů chcete využít tuto výhodu. Pak klikněte na tlačítko **Další**.
 
     ![Nastavení cíle](./media/tutorial-migrate-vmware/target-settings.png)
 
@@ -169,7 +169,7 @@ Po dokončení zjišťování můžete zahájit replikaci virtuálních počíta
 
     ![Nastavení výpočetního virtuálního počítače](./media/tutorial-migrate-vmware/compute-settings.png)
 
-9. V části **Disky** zadejte, jestli se mají disky virtuálních počítačů replikovat do Azure, a vyberte typ disků (disky SSD nebo HDD úrovně Standard nebo spravované disky úrovně Premium) v Azure. Potom klikněte na tlačítko **Další**.
+9. V části **Disky** zadejte, jestli se mají disky virtuálních počítačů replikovat do Azure, a vyberte typ disků (disky SSD nebo HDD úrovně Standard nebo spravované disky úrovně Premium) v Azure. Pak klikněte na tlačítko **Další**.
     - Disky můžete z replikace vyloučit.
     - Pokud disky vyloučíte, po migraci nebudou na virtuálním počítači Azure. 
 
@@ -263,8 +263,8 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
 - Pro zvýšení odolnosti:
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md)
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md)
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
     - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
     - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview).

@@ -1,6 +1,6 @@
 ---
-title: Azure Functions deployment slots
-description: Learn to create and use deployment slots with Azure Functions
+title: Azure Functions sloty nasazení
+description: Naučte se vytvářet a používat nasazovací sloty pomocí Azure Functions
 author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
@@ -12,177 +12,177 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230667"
 ---
-# <a name="azure-functions-deployment-slots"></a>Azure Functions deployment slots
+# <a name="azure-functions-deployment-slots"></a>Azure Functions sloty nasazení
 
-Azure Functions deployment slots allow your function app to run different instances called "slots". Slots are different environments exposed via a publicly available endpoint. One app instance is always mapped to the production slot, and you can swap instances assigned to a slot on demand. Function apps running under the Apps Service plan may have multiple slots, while under Consumption only one slot is allowed.
+Azure Functions sloty nasazení umožňují vaší aplikaci Function App spouštět různé instance s názvem "sloty". Sloty jsou různá prostředí, která se zveřejňují prostřednictvím veřejně dostupného koncového bodu. Jedna instance aplikace je vždycky namapovaná na produkční slot a můžete měnit instance přiřazené k slotu na vyžádání. Aplikace Function App spuštěné v plánu služby App Service mohou mít několik slotů, zatímco v části spotřeba je povolena pouze jedna patice.
 
-The following reflect how functions are affected by swapping slots:
+Následující informace odrážejí, jak jsou funkce ovlivněné odkládacími Sloty:
 
-- Traffic redirection is seamless; no requests are dropped because of a swap.
-- If a function is running during a swap, execution continues and subsequent triggers are routed to the swapped app instance.
+- Přesměrování provozu je bezproblémové; z důvodu zahození nejsou vyřazeny žádné žádosti.
+- Pokud během prohození funguje funkce, pokračuje provádění a následné triggery se směrují do vyměněné instance aplikace.
 
 > [!NOTE]
-> Slots are currently not available for the Linux Consumption plan.
+> Pro plán spotřeby pro Linux nejsou aktuálně dostupné sloty.
 
-## <a name="why-use-slots"></a>Why use slots?
+## <a name="why-use-slots"></a>Proč používat sloty?
 
-There are a number of advantages to using deployment slots. The following scenarios describe common uses for slots:
+Pro použití slotů nasazení existuje několik výhod. Následující scénáře popisují běžné použití pro Sloty:
 
-- **Different environments for different purposes**: Using different slots gives you the opportunity to differentiate app instances before swapping to production or a staging slot.
-- **Prewarming**: Deploying to a slot instead of directly to production allows the app to warm up before going live. Additionally, using slots reduces latency for HTTP-triggered workloads. Instances are warmed up before deployment which reduces the cold start for newly-deployed functions.
-- **Easy fallbacks**: After a swap with production, the slot with a previously staged app now has the previous production app. If the changes swapped into the production slot aren't as you expect, you can immediately reverse the swap to get your "last known good instance" back.
+- **Různá prostředí pro různé účely**: pomocí různých slotů získáte možnost odlišit instance aplikací před odchodem do produkčního nebo přípravného slotu.
+- Průběžné nasazování **: nasazení**do slotu místo přímo do produkčního prostředí umožňuje, aby se aplikace před živým zprovozněním zahřívá. Kromě toho se pomocí slotů omezuje latence pro úlohy aktivované protokolem HTTP. Instance jsou před nasazením zavedeny, což snižuje studenou dobu spouštění nově nasazených funkcí.
+- **Snadné nouzové**akce: po prohození s produkčním prostředím má teď pozice s dřív připravenou aplikací předchozí produkční aplikaci. Pokud se změny vyměněné do produkčního slotu neshodují, můžete okamžitě vrátit swap a získat tak zpátky "Poslední známá dobrá instance".
 
-## <a name="swap-operations"></a>Swap operations
+## <a name="swap-operations"></a>Operace prohození
 
-During a swap, one slot is considered the source and the other the target. The source slot has the instance of the application that is applied to the target slot. The following steps ensure the target slot doesn't experience downtime during a swap:
+Během swapu je jeden slot považován za zdroj a druhý cíl. Zdrojové sloty má instanci aplikace, která se používá pro cílový slot. Následující kroky zajišťují, že se cílovému slotu během prohození neprojeví výpadky:
 
-1. **Apply settings:** Settings from the target slot are applied to all instances of the source slot. For example, the production settings are applied to the staging instance. The applied settings include the following categories:
-    - [Slot-specific](#manage-settings) app settings and connection strings (if applicable)
-    - [Continuous deployment](../app-service/deploy-continuous-deployment.md) settings (if enabled)
-    - [App Service authentication](../app-service/overview-authentication-authorization.md) settings (if enabled)
+1. **Použít nastavení:** Nastavení z cílového slotu se aplikují na všechny instance zdrojové patice. Například nastavení produkčního prostředí se aplikuje na pracovní instanci. K použitým nastavením patří následující kategorie:
+    - Nastavení aplikace [konkrétního slotu](#manage-settings) a připojovací řetězce (Pokud je k dispozici)
+    - Nastavení [průběžného nasazování](../app-service/deploy-continuous-deployment.md) (Pokud je povolené)
+    - Nastavení [ověřování App Service](../app-service/overview-authentication-authorization.md) (Pokud je povolené)
 
-1. **Wait for restarts and availability:** The swap waits for every instance in the source slot to complete its restart and to be available for requests. If any instance fails to restart, the swap operation reverts all changes to the source slot and stops the operation.
+1. **Počkat na restartování a dostupnost:** Swap počká na všechny instance ve zdrojové patici, aby bylo možné dokončit jeho restart a bude k dispozici pro požadavky. Pokud se nepovede restartování jakékoli instance, operace přepnutí vrátí všechny změny zdrojové patice a zastaví operaci.
 
-1. **Update routing:** If all instances on the source slot are warmed up successfully, the two slots complete the swap by switching routing rules. After this step, the target slot (for example, the production slot) has the app that's previously warmed up in the source slot.
+1. **Postup aktualizace:** Pokud se všechny instance ve zdrojové patici zahřívá úspěšně, tyto dva sloty dokončí prohození přepnutím pravidel směrování. Po provedení tohoto kroku bude mít cílová patice (například produkční slot) aplikaci, která byla dříve zahřívání ve zdrojové patici.
 
-1. **Repeat operation:** Now that the source slot has the pre-swap app previously in the target slot, perform the same operation by applying all settings and restarting the instances for the source slot.
+1. **Opakovat operaci:** Teď, když má zdrojový slot předem prohozenou aplikaci v cílové patici, proveďte stejnou operaci pomocí všech nastavení a restartováním instancí zdrojové patice.
 
 Mějte na paměti následující skutečnosti:
 
-- At any point of the swap operation, initialization of the swapped apps happens on the source slot. The target slot remains online while the source slot is being prepared, whether the swap succeeds or fails.
+- V jakémkoli bodě operace swapu se inicializace vyměněných aplikací stane ve zdrojové pozici. Cílový slot zůstane online, zatímco se připravuje zdrojová slot, bez ohledu na to, jestli je prohození úspěšné nebo neúspěšné.
 
-- To swap a staging slot with the production slot, make sure that the production slot is *always* the target slot. This way, the swap operation doesn't affect your production app.
+- Pokud chcete vyměnit pracovní slot s produkčním slotem, ujistěte se, že produkční slot je *vždycky* cílový slot. Tato operace přepnutí nijak neovlivní vaši produkční aplikaci.
 
-- Settings related to event sources and bindings need to be configured as [deployment slot settings](#manage-settings) *before you initiate a swap*. Marking them as "sticky" ahead of time ensures events and outputs are directed to the proper instance.
+- Nastavení související se zdroji událostí a vazbami je potřeba nakonfigurovat jako [nastavení slotu nasazení](#manage-settings) , *než zahájíte prohození*. Pokud je označíte jako "vždy", zajistíte tím, že události a výstupy budou směrovány do správné instance.
 
 ## <a name="manage-settings"></a>Správa nastavení
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-### <a name="create-a-deployment-setting"></a>Create a deployment setting
+### <a name="create-a-deployment-setting"></a>Vytvoření nastavení nasazení
 
-You can mark settings as a deployment setting which makes it "sticky". A sticky setting does not swap with the app instance.
+Nastavení můžete označit jako nastavení nasazení, což způsobí, že bude "rychlé". Nastavení s rychlým použitím se v instanci aplikace nemění.
 
-If you create a deployment setting in one slot, make sure to create the same setting with a unique value in any other slot involved in a swap. This way, while a setting's value doesn't change, the setting names remain consistent among slots. This name consistency ensures your code doesn't try to access a setting that is defined in one slot but not another.
+Pokud vytvoříte nastavení nasazení v jednom slotu, ujistěte se, že jste vytvořili stejné nastavení s jedinečnou hodnotou v jakékoli jiné pozici, která je zapojená do swapu. V případě, že se hodnota nastavení nezmění, názvy nastavení zůstávají konzistentní mezi sloty. Konzistence názvů zajišťuje, že se váš kód nepokouší získat přístup k nastavení, které je definováno v jednom slotu, ale ne jiné.
 
-Use the following steps to to create a deployment setting:
+Chcete-li vytvořit nastavení nasazení, použijte následující postup:
 
-- Navigate to *Slots* in the function app
-- Click on the slot name
-- Under *Platform Features > General Settings*, click on **Configuration**
-- Click on the setting name you want to stick with the current slot
-- Click the **Deployment slot setting** checkbox
+- Přechod na *sloty* v aplikaci Function App
+- Klikněte na název slotu.
+- V části *funkce platformy > Obecné nastavení*klikněte na **Konfigurace** .
+- Klikněte na název nastavení, který chcete s aktuálním slotem vylepit.
+- Zaškrtněte políčko **nastavení slotu nasazení** .
 - Klikněte na tlačítko **OK**.
-- Once setting blade disappears, click **Save** to keep the changes
+- Po nezobrazení okna nastavení klikněte na **Uložit** , aby se změny zachovaly.
 
-![Deployment Slot Setting](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
+![Nastavení slotu nasazení](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
 ## <a name="deployment"></a>Nasazení
 
-Slots are empty when you create a slot. You can use any of the [supported deployment technologies](./functions-deployment-technologies.md) to deploy your application to a slot.
+Při vytváření slotu jsou sloty prázdné. K nasazení aplikace do slotu můžete použít kteroukoli z [podporovaných technologií nasazení](./functions-deployment-technologies.md) .
 
 ## <a name="scaling"></a>Škálování
 
-All slots scale to the same number of workers as the production slot.
+Všechny sloty se škálují na stejný počet pracovních procesů jako produkční slot.
 
-- For Consumption plans, the slot scales as the function app scales.
-- For App Service plans, the app scales to a fixed number of workers. Slots run on the same number of workers as the app plan.
+- V případě plánů spotřeby se slot škáluje podle škály aplikace Function App.
+- U App Service plánů se aplikace škáluje na pevný počet pracovních procesů. Sloty běží na stejném počtu pracovních procesů jako plán aplikace.
 
-## <a name="add-a-slot"></a>Add a slot
+## <a name="add-a-slot"></a>Přidat slot
 
-You can add a slot via the [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) or through the portal. The following steps demonstrate how to create a new slot in the portal:
+Slot můžete přidat prostřednictvím rozhraní příkazového [řádku](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) nebo prostřednictvím portálu. Následující kroky ukazují, jak vytvořit novou patici na portálu:
 
-1. Navigate to your function app and click on the **plus sign** next to *Slots*.
+1. Přejděte do aplikace Function App a klikněte na **symbol plus** vedle položku *sloty*.
 
-    ![Add Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
+    ![Přidat slot nasazení Azure Functions](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
 
-1. Enter a name in the textbox, and press the **Create** button.
+1. Do textového pole zadejte název a klikněte na tlačítko **vytvořit** .
 
-    ![Name Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
+    ![Název Azure Functions slot pro nasazení](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
 
-## <a name="swap-slots"></a>Swap slots
+## <a name="swap-slots"></a>Prohození slotů
 
-You can swap slots via the [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) or through the portal. The following steps demonstrate how to swap slots in the portal:
+Sloty můžete prohodit přes rozhraní příkazového [řádku](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) nebo prostřednictvím portálu. Následující kroky ukazují, jak odkládací sloty na portálu:
 
-1. Navigate to the function app
-1. Click on the source slot name that you want to swap
-1. From the *Overview* tab, click on the **Swap** button  ![Swap Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Verify the configuration settings for your swap and click **Swap** ![Swap Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Přechod do aplikace Function App
+1. Klikněte na název zdrojové patice, kterou chcete prohodit.
+1. Na kartě *Přehled* klikněte na tlačítko **swap** ![přepnout Azure Functions slot nasazení](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Ověřte nastavení konfigurace pro zahození a klikněte na **swap** ![swap Azure Functions slot nasazení](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
-The operation may take a moment while the swap operation is executing.
+Operace přepnutí může chvíli trvat.
 
-## <a name="roll-back-a-swap"></a>Roll back a swap
+## <a name="roll-back-a-swap"></a>Vrácení swapu zpět
 
-If a swap results in an error or you simply want to "undo" a swap, you can roll back to the initial state. To return to the pre-swapped state, do another swap to reverse the swap.
+Pokud dojde k chybě zahození nebo pokud chcete jednoduše vrátit zpět změny, můžete se vrátit k počátečnímu stavu. Chcete-li se vrátit do předem vyměněného stavu, proveďte další prohození pro obrácení swapu.
 
-## <a name="remove-a-slot"></a>Remove a slot
+## <a name="remove-a-slot"></a>Odebrat slot
 
-You can remove a slot via the [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) or through the portal. The following steps demonstrate how to remove a slot in the portal:
+Slot můžete odebrat přes rozhraní příkazového [řádku](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) nebo prostřednictvím portálu. Následující kroky ukazují, jak odebrat slot na portálu:
 
-1. Navigate to the function app Overview
+1. Přejít na Přehled aplikace Function App
 
-1. Click on the **Delete** button
+1. Klikněte na tlačítko **Odstranit** .
 
-    ![Add Azure Functions deployment slot](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
+    ![Přidat slot nasazení Azure Functions](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
 
-## <a name="automate-slot-management"></a>Automate slot management
+## <a name="automate-slot-management"></a>Automatizace správy slotů
 
-Using the [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest), you can automate the following actions for a slot:
+Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)můžete pro slot automatizovat následující akce:
 
 - [vytvoření](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [odstranění](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
 - [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [auto-swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [adresu](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [Automatické prohození](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
-## <a name="change-app-service-plan"></a>Change app service plan
+## <a name="change-app-service-plan"></a>Změnit plán služby App Service
 
-With a function app that is running under an App Service plan, you have the option to change the underlying app service plan for a slot.
+Pomocí aplikace Function App, která běží v plánu App Service, máte možnost změnit základní plán služby App Service pro slot.
 
 > [!NOTE]
-> You can't change a slot's App Service plan under the Consumption plan.
+> V plánu spotřeby nemůžete změnit plán App Service přihrádky.
 
-Use the following steps to change a slot's app service plan:
+Pomocí následujícího postupu změníte plán služby App Service pro slot:
 
-1. Navigate to a slot
+1. Přejít na slot
 
-1. Under *Platform Features*, click **All Settings**
+1. V části *funkce platformy*klikněte na **všechna nastavení** .
 
-    ![Change app service plan](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
+    ![Změnit plán služby App Service](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
 
-1. Click on **App Service plan**
+1. Klikněte na **plán App Service**
 
-1. Select a new App Service plan, or create a new plan
+1. Vyberte plán nové App Service nebo vytvořte nový plán.
 
 1. Klikněte na tlačítko **OK**.
 
-    ![Change app service plan](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
+    ![Změnit plán služby App Service](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
 
 
 ## <a name="limitations"></a>Omezení
 
-Azure Functions deployment slots have the following limitations:
+Azure Functions sloty nasazení mají následující omezení:
 
-- The number of slots available to an app depends on the plan. The Consumption plan is only allowed one deployment slot. Additional slots are available for apps running under the App Service plan.
-- Swapping a slot resets keys for apps that have an `AzureWebJobsSecretStorageType` app setting equal to `files`.
-- Slots are not available for the Linux Consumption plan.
+- Počet slotů dostupných pro aplikaci závisí na plánu. Plán spotřeby má povolený jenom jeden slot nasazení. Pro aplikace spuštěné v plánu App Service jsou k dispozici další sloty.
+- Výměna slotu resetuje klíče pro aplikace, které mají nastavení aplikace `AzureWebJobsSecretStorageType` rovno `files`.
+- Pro plán spotřeby pro Linux nejsou k dispozici žádné sloty.
 
 ## <a name="support-levels"></a>Úrovně podpory
 
-There are two levels of support for deployment slots:
+Existují dvě úrovně podpory pro sloty nasazení:
 
-- **General availability (GA)** : Fully supported and approved for production use.
-- **Preview**: Not yet supported, but is expected to reach GA status in the future.
+- **Všeobecná dostupnost (GA)** : plně podporovaná a schválená pro použití v produkčním prostředí.
+- **Verze Preview**: zatím není podporovaná, ale očekává se, že bude v budoucnu dostupný stav GA.
 
-| OS/Hosting plan           | Level of support     |
+| Operační systém/plán hostování           | Úroveň podpory     |
 | ------------------------- | -------------------- |
-| Windows Consumption       | Všeobecná dostupnost |
+| Spotřeba Windows       | Všeobecná dostupnost |
 | Windows Premium           | Všeobecná dostupnost  |
-| Windows Dedicated         | Všeobecná dostupnost |
-| Linux Consumption         | Nepodporované          |
+| Vyhrazená pro Windows         | Všeobecná dostupnost |
+| Spotřeba Linux         | Nepodporované          |
 | Linux Premium             | Všeobecná dostupnost  |
-| Linux Dedicated           | Všeobecná dostupnost |
+| Vyhrazený pro Linux           | Všeobecná dostupnost |
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Deployment technologies in Azure Functions](./functions-deployment-technologies.md)
+- [Technologie nasazení v Azure Functions](./functions-deployment-technologies.md)

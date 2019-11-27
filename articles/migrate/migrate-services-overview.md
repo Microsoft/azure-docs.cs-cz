@@ -103,11 +103,11 @@ Azure Migrate: Nástroj pro migraci serveru vám pomůže migrovat místní virt
 
 ## <a name="database-migration-assistant"></a>Pomocník s migrací databáze
 
-Azure Migrate se integruje s Microsoft Data Migration Assistant (DMA) k vyhodnocení místních SQL Server databází pro migraci do Azure SQL DB, spravované instance Azure SQL nebo virtuálních počítačů Azure se systémem SQL Server. DMA poskytuje informace o potenciálních blokujících problémech pro migraci. Označuje nepodporované funkce a také nové funkce, které můžete využívat po migraci, a pomůže vám identifikovat správnou cestu k migraci databáze. [Další informace](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)
+Azure Migrate se integruje s Microsoft Data Migration Assistant (DMA) k vyhodnocení místních SQL Server databází pro migraci do Azure SQL DB, spravované instance Azure SQL nebo virtuálních počítačů Azure se systémem SQL Server. DMA poskytuje informace o potenciálních blokujících problémech pro migraci. Označuje nepodporované funkce a také nové funkce, které můžete využívat po migraci, a pomůže vám identifikovat správnou cestu k migraci databáze. [Další informace](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
 
 ## <a name="database-migration-service"></a>Database Migration Service
 
-Azure Migrate se integruje s Azure Database Migration Service (DMS) pro migraci místních databází do Azure. DMS slouží k migraci místních databází do virtuálních počítačů Azure, na kterých běží SQL, Azure SQL DB a Azure SQL Managed Instances. [Další informace](https://docs.microsoft.com/azure/dms/dms-overview)
+Azure Migrate se integruje s Azure Database Migration Service (DMS) pro migraci místních databází do Azure. DMS slouží k migraci místních databází do virtuálních počítačů Azure, na kterých běží SQL, Azure SQL DB a Azure SQL Managed Instances. [Další informace](https://docs.microsoft.com/azure/dms/dms-overview).
 
 ## <a name="movere"></a>Movere
 

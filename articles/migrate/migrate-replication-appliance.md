@@ -30,7 +30,7 @@ Zařízení replikace se nasadí jako jeden místní počítač, a to buď jako 
 
 ## <a name="appliance-deployment"></a>Nasazení zařízení
 
-**Nasadit jako** | **Používá pro** | **Podrobnosti**
+**Nasadit jako** | **Používá se pro** | **Podrobnosti**
 --- | --- |  ---
 Virtuální počítač VMware | Obvykle se používá při migraci virtuálních počítačů VMware pomocí nástroje Azure Migrate Migration Tool s migrací založenou na agentech. | Šablonu pro sadu vajíček si stáhnete z centra Azure Migrate a naimportujete ji do vCenter Server a vytvoříte virtuální počítač zařízení.
 Fyzický počítač | Používá se při migraci místních fyzických serverů, pokud nemáte infrastrukturu VMware, nebo pokud nemůžete vytvořit virtuální počítač VMware pomocí šablony vajíček. | Instalační program softwaru si můžete stáhnout z centra Azure Migrate a spustit ho k nastavení počítače zařízení.

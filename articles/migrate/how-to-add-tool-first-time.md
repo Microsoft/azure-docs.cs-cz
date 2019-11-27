@@ -50,7 +50,7 @@ Nastavte nový projekt Azure Migrate v rámci předplatného Azure a přidejte n
     Japonsko  | Japonsko – východ nebo Japonsko – západ
     Spojené království | Velká Británie – jih nebo Velká Británie – západ
     Spojené státy | Střed USA nebo Západní USA 2
-    Kanada | Kanada – střed
+    Kanada | Střední Kanada
     Indie  | Indie – střed nebo Indie – jih
     Austrálie | Austrálie – jihovýchod
 

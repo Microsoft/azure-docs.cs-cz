@@ -78,7 +78,7 @@ Po povolení výchozích hodnot zabezpečení ve vašem tenantovi budou všechny
 Organizace používají různé služby Azure spravované prostřednictvím rozhraní Azure Resource Manager API, včetně:
 
 - portál Azure 
-- Azure PowerShell 
+- Azure Powershell 
 - Azure CLI
 
 Použití Azure Resource Manager ke správě služeb je vysoce privilegovaná akce. Azure Resource Manager může měnit konfigurace v rámci tenanta, jako je například nastavení služby a fakturace předplatného. Jednotné vícefaktorové ověřování je zranitelné vůči nejrůznějším útokům, jako je útok phishing a heslo. 

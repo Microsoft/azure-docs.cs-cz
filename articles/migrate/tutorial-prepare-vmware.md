@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Tato oprávnění budete potřebovat.
 
-**Úloha** | **Oprávnění**
+**Úkol** | **Oprávnění**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění k vytvoření projektu.
 **Registrace zařízení Azure Migrate** | Azure Migrate využívá odlehčené Azure Migrate zařízení k vyhodnocení virtuálních počítačů VMware pomocí posouzení Azure Migrate serveru a spouštění migrace virtuálních počítačů VMware bez [agenta](server-migrate-overview.md) pomocí migrace serveru Azure Migrate. Toto zařízení vyhledá virtuální počítače a odešle údaje o metadatech a výkonu virtuálních počítačů do Azure Migrate.<br/><br/>Během registrace Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD), které zařízení jednoznačně identifikují, a potřebuje oprávnění k vytváření těchto aplikací.<br/> – První aplikace komunikuje s koncovými body služby Azure Migrate.<br/> – Druhá aplikace přistupuje k Azure Key Vault vytvořenému během registrace pro ukládání informací o aplikaci Azure AD a nastavení konfigurace zařízení.
@@ -70,7 +70,7 @@ Pokud chcete zařízení zaregistrovat, přiřadíte jim oprávnění Azure Migr
 Tenant nebo globální správce může udělit oprávnění následujícím způsobem.
 
 1. V Azure AD by měl tenant/globální správce přejít na **Azure Active Directory** > **Uživatelé** > **uživatelských nastavení**.
-2. Správce by měl nastavit **Registrace aplikací** **Ano**. Toto je výchozí nastavení, které není citlivé. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)
+2. Správce by měl nastavit **Registrace aplikací** **Ano**. Toto je výchozí nastavení, které není citlivé. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
     ![Oprávnění služby Azure AD](./media/tutorial-prepare-vmware/aad.png)
 
@@ -78,7 +78,7 @@ Tenant nebo globální správce může udělit oprávnění následujícím způ
 
 #### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace
 
-Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
+Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 ### <a name="assign-role-assignment-permissions"></a>Přiřadit oprávnění přiřazení role
 

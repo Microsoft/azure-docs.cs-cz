@@ -127,7 +127,7 @@ Pro zjišťování aplikací, rolí a funkcí a vizualizací závislostí virtu�
 2. Vyberte **operační systém**.
 3. Zadejte popisný název přihlašovacích údajů.
 4. V části **uživatelské jméno** a **heslo**zadejte účet, který má alespoň přístup k hostům na virtuálních počítačích.
-5. Klikněte na tlačítko **přidat**.
+5. Klikněte na **Přidat**.
 
 Po zadání vCenter Server a přihlašovacích údajů k virtuálnímu počítači (volitelné) klikněte na **Uložit a spusťte zjišťování** a spusťte zjišťování místního prostředí.
 

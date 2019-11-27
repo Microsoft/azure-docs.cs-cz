@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Set up dev platform'
+title: 'Rychlý Start: nastavení platformy pro vývoj'
 titleSuffix: Azure Cognitive Services
-description: In this quickstart, you'll learn how to install the Speech SDK for your preferred platform and programming language combination.
+description: V tomto rychlém startu se dozvíte, jak nainstalovat sadu Speech SDK pro vaši preferovanou platformu a programovací jazyk.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -18,17 +18,17 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74221975"
 ---
-# <a name="quickstart-setup-development-environment"></a>Quickstart: Setup development environment
+# <a name="quickstart-setup-development-environment"></a>Rychlý Start: vývojové prostředí pro instalaci
 
 ::: zone pivot="programming-language-csharp"
-**Choose your target environment**
+**Volba cílového prostředí**
 #### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](../includes/quickstarts/platform/csharp-dotnet-windows.md)]
 #### <a name="net-coretabdotnetcore"></a>[.NET Core](#tab/dotnetcore)
 [!INCLUDE [dotnetcore](../includes/quickstarts/platform/csharp-dotnetcore-windows.md)]
-#### <a name="unitytabunity"></a>[Unity](#tab/unity)
+#### <a name="unitytabunity"></a>[Jednot](#tab/unity)
 [!INCLUDE [unity](../includes/quickstarts/platform/csharp-unity.md)]
-#### <a name="uwptabuwp"></a>[UWP](#tab/uwp)
+#### <a name="uwptabuwp"></a>[PODPORUJÍ](#tab/uwp)
 [!INCLUDE [uwp](../includes/quickstarts/platform/csharp-uwp.md)]
 #### <a name="xamarintabxaml"></a>[Xamarin](#tab/xaml)
 [!INCLUDE [xamarin](../includes/quickstarts/platform/csharp-xamarin.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "74221975"
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
-**Choose your target environment**
+**Volba cílového prostředí**
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 [!INCLUDE [linux](../includes/quickstarts/platform/cpp-linux.md)]
 #### <a name="macostabmacos"></a>[macOS](#tab/macos)
@@ -48,7 +48,7 @@ ms.locfileid: "74221975"
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-**Choose your target environment**
+**Volba cílového prostředí**
 #### <a name="java-runtimetabjre"></a>[Java Runtime](#tab/jre)
 [!INCLUDE [jre](../includes/quickstarts/platform/java-jre.md)]
 #### <a name="androidtabandroid"></a>[Android](#tab/android)

@@ -1,6 +1,6 @@
 ---
-title: Connect functions to Azure Storage using Visual Studio
-description: Learn how to add an output binding to connect your C# class library functions to an Azure Storage queue using Visual Studio.
+title: Připojení funkcí k Azure Storage pomocí sady Visual Studio
+description: Naučte se, jak přidat výstupní vazbu pro připojení C# vašich funkcí knihovny tříd do Azure Storageové fronty pomocí sady Visual Studio.
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
@@ -11,49 +11,49 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227430"
 ---
-# <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Connect functions to Azure Storage using Visual Studio
+# <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Připojení funkcí k Azure Storage pomocí sady Visual Studio
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-This article shows you how to use Visual Studio to connect the function you created in the [previous quickstart article] to Azure Storage. The output binding that you add to this function writes data from the HTTP request to a message in an Azure Queue storage queue. 
+V tomto článku se dozvíte, jak pomocí sady Visual Studio připojit funkci, kterou jste vytvořili v [předchozí článek rychlý Start] , a Azure Storage. Výstupní vazba, kterou do této funkce přidáte, zapisuje data z požadavku HTTP do zprávy ve frontě úložiště Azure Queue. 
 
-Most bindings require a stored connection string that Functions uses to access the bound service. To make it easier, you use the Storage account that you created with your function app. The connection to this account is already stored in an app setting named `AzureWebJobsStorage`.  
+Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Pro snazší použití účtu úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage`.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Before you start this article, you must: 
+Než začnete tento článek, musíte: 
 
- - Complete [part 1 of the Visual Studio quickstart][./functions-create-first-function-vs-code.md]. 
+ - Dokončete [část 1 rychlého startu sady Visual Studio] [./Functions-Create-First-Function-vs-Code.MD]. 
 
-- Sign in to your Azure subscription from Visual Studio.
+- Přihlaste se ke svému předplatnému Azure ze sady Visual Studio.
 
-## <a name="download-the-function-app-settings"></a>Download the function app settings
+## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
 
-In the [previous quickstart article](functions-create-first-function-vs-code.md), you created a function app in Azure along with the required Storage account. The connection string for this account is stored securely in app settings in Azure. In this article, you write messages to a Storage queue in the same account. To connect to your Storage account when running the function locally, you must download app settings to the *local.settings.json* file. 
+V [předchozím článku rychlý Start](functions-create-first-function-vs-code.md)jste vytvořili aplikaci funkcí v Azure spolu s požadovaným účtem úložiště. Připojovací řetězec pro tento účet je bezpečně uložený v nastavení aplikace v Azure. V tomto článku napíšete zprávy do fronty úložiště ve stejném účtu. Pokud se chcete připojit k účtu úložiště, když se funkce spouští místně, musíte si stáhnout nastavení aplikace do souboru *Local. Settings. JSON* . 
 
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**. 
 
-1. Under **Actions**, select **Edit Azure App Service Settings**. 
+1. V části **Akce**vyberte **Upravit Azure App Service nastavení**. 
 
-    ![Edit the application settings](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
+    ![Upravit nastavení aplikace](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 
-1. Under **AzureWebJobsStorage**, copy the **Remote** string value to **Local**, and then select **OK**. 
+1. V části **AzureWebJobsStorage**Zkopírujte hodnotu **vzdáleného** řetězce na **místní**a pak vyberte **OK**. 
 
-The storage binding, which uses the `AzureWebJobsStorage` setting for the connection, can now connect to your Queue storage when running locally.
+Vazba úložiště, která používá nastavení `AzureWebJobsStorage` pro připojení, se nyní může připojit k úložišti fronty, pokud je spuštěno místně.
 
 ## <a name="register-binding-extensions"></a>Registrace rozšíření vazeb
 
-Because you're using a Queue storage output binding, you need the Storage bindings extension installed before you run the project. Except for HTTP and timer triggers, bindings are implemented as extension packages. 
+Vzhledem k tomu, že používáte výstupní vazbu úložiště front, budete potřebovat rozšíření vazby úložiště nainstalované před spuštěním projektu. S výjimkou triggerů HTTP a Timer jsou vazby implementovány jako balíčky rozšíření. 
 
-1. From the **Tools** menu, select **NuGet Package Manager** > **Package Manager Console**. 
+1. V nabídce **nástroje** vyberte **správce balíčků NuGet** > **konzolu Správce balíčků**. 
 
-1. In the console, run the following [Install-Package](/nuget/tools/ps-ref-install-package) command to install the Storage extensions:
+1. V konzole nástroje spusťte následující příkaz [Install-Package](/nuget/tools/ps-ref-install-package) pro instalaci rozšíření úložiště:
 
     ```Command
     Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.6
     ````
 
-Now, you can add the storage output binding to your project.
+Nyní můžete přidat výstupní vazbu úložiště do projektu.
 
 ## <a name="add-an-output-binding"></a>Přidání výstupní vazby
 
@@ -61,7 +61,7 @@ Now, you can add the storage output binding to your project.
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Přidání kódu, který používá výstupní vazbu
 
-After the binding is defined, you can use the `name` of the binding to access it as an attribute in the function signature. By using an output binding, you don't have to use the Azure Storage SDK code for authentication, getting a queue reference, or writing data. The Functions runtime and queue output binding do those tasks for you.
+Po definování vazby můžete použít `name` vazby k přístupu jako atributu v signatuře funkce. Pomocí výstupní vazby nemusíte pro ověřování používat kód Azure Storage SDK, získat odkaz na frontu nebo zapisovat data. Úlohy za běhu functions a Queue výstupní vazby jsou za vás.
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
@@ -69,31 +69,31 @@ After the binding is defined, you can use the `name` of the binding to access it
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
-A new queue named `outqueue` is created in your storage account by the Functions runtime when the output binding is first used. You'll use Cloud Explorer to verify that the queue was created along with the new message.
+V účtu úložiště se vytvoří nová fronta s názvem `outqueue` při prvním použití výstupní vazby. Pomocí Průzkumníka cloudu ověříte, že se vytvořila fronta spolu s novou zprávou.
 
 ## <a name="examine-the-output-queue"></a>Prozkoumání výstupní fronty
 
-1. In Visual Studio from the **View** menu, select **Cloud Explorer**.
+1. V aplikaci Visual Studio v nabídce **zobrazení** vyberte **Průzkumník cloudu**.
 
-1. In **Cloud Explorer**, expand your Azure subscription and **Storage Accounts**, then expand the storage account used by your function. If you can't remember the storage account name, check the `AzureWebJobsStorage` connection string setting in the *local.settings.json* file.  
+1. V **Průzkumníku cloudu**rozbalte předplatné Azure a **účty úložiště**a potom rozbalte účet úložiště, který funkce používá. Pokud si název účtu úložiště nepamatujete, podívejte se do nastavení připojovacího řetězce `AzureWebJobsStorage` v souboru *Local. Settings. JSON* .  
 
-1. Expand the **Queues** node, and then double-click the queue named **outqueue** to view the contents of the queue in Visual Studio. 
+1. Rozbalte uzel **fronty** a pak dvakrát klikněte **na frontu s názvem front** -to pro zobrazení obsahu fronty v aplikaci Visual Studio. 
 
    Tato fronta obsahuje zprávu, kterou vytvořila výstupní vazba fronty při spuštění funkce aktivované protokolem HTTP. Pokud jste tuto funkci volali s výchozí hodnotou `name` (*Azure*), zpráva fronty je *Name passed to the function: Azure*.
 
-    ![Queue message shown in Azure Storage Explorer](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
+    ![Zpráva fronty zobrazená v Průzkumník služby Azure Storage](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
-1. Run the function again, send another request, and you'll see a new message appear in the queue.  
+1. Znovu spusťte funkci, odešlete další žádost a ve frontě se zobrazí nová zpráva.  
 
-Now, it's time to republish the updated function app to Azure.
+Teď je čas na opětovné publikování aktualizované aplikace Function App do Azure.
 
-## <a name="redeploy-and-verify-the-updated-app"></a>Redeploy and verify the updated app
+## <a name="redeploy-and-verify-the-updated-app"></a>Opětovné nasazení a ověření aktualizované aplikace
 
-1. In **Solution Explorer**, right-click the project and select **Publish**, then choose **Publish** to republish the project to Azure.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt a vyberte **publikovat**a pak klikněte na **publikovat** , aby se projekt znovu publikoval do Azure.
 
-1. After deployment completes, you can again use the browser to test the redeployed function. As before, append the query string `&name=<yourname>` to the URL.
+1. Po dokončení nasazení můžete znovu použít prohlížeč k otestování znovu nasazené funkce. Stejně jako dřív připojí řetězec dotazu `&name=<yourname>` k adrese URL.
 
-1. Again [view the message in the storage queue](#examine-the-output-queue) to verify that the output binding again generates a new message in the queue.
+1. Opětovným [zobrazením zprávy ve frontě úložiště](#examine-the-output-queue) ověřte, zda výstupní vazba znovu generuje novou zprávu ve frontě.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -101,12 +101,12 @@ Now, it's time to republish the updated function app to Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
-You've updated your HTTP triggered function to write data to a Storage queue. To learn more about developing Functions, see [Develop Azure Functions using Visual Studio](functions-develop-vs.md).
+Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do fronty úložiště. Další informace o vývoji funkcí naleznete v tématu [vývoj Azure Functions pomocí sady Visual Studio](functions-develop-vs.md).
 
-Next, you should enable Application Insights monitoring for your function app:
+Dále byste měli povolit Application Insights monitorování aplikace Function App:
 
 > [!div class="nextstepaction"]
 > [Povolení integrace Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/
-[previous quickstart article]: functions-create-your-first-function-visual-studio.md
+[předchozí článek rychlý Start]: functions-create-your-first-function-visual-studio.md

@@ -1,6 +1,6 @@
 ---
-title: View privacy-related info from the My Account portal - Azure AD
-description: Learn how your organization uses your privacy-related information from the Privacy page of the My Account portal.
+title: Zobrazení informací týkajících se ochrany osobních údajů na portálu Můj účet – Azure AD
+description: Přečtěte si, jak vaše organizace používá informace týkající se ochrany osobních údajů na stránce soukromí na portálu Můj účet.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -19,34 +19,34 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231823"
 ---
-# <a name="view-how-your-organization-uses-your-privacy-related-data"></a>View how your organization uses your privacy-related data
+# <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Podívejte se, jak vaše organizace používá data týkající se ochrany osobních údajů.
 
-You can view how your organization uses your data from the **Privacy** page of the **My Account** portal.
+To, jak vaše organizace používá vaše data, můžete zobrazit na stránce **soukromí** na portálu **můj účet** .
 
 ## <a name="view-your-privacy-related-info"></a>Zobrazení informací souvisejících s ochranou osobních údajů
 
-1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na stránku https://myprofile.microsoft.com/.
 
-2. Select **Privacy** from the left navigation pane or select the **Review privacy** link from the **Privacy** block.
+2. V levém navigačním podokně vyberte **Ochrana osobních** údajů nebo vyberte odkaz **zkontrolovat soukromí** z bloku **osobních údajů** .
 
-    ![My Account page, showing highlighted Privacy links](media/my-account-portal/my-account-portal-privacy.png)
+    ![Stránka můj účet zobrazující zvýrazněné odkazy na ochranu osobních údajů](media/my-account-portal/my-account-portal-privacy.png)
 
-3. Review the information, including:
+3. Projděte si informace, včetně:
 
-    - **Services.** A list of online services you're connected to using your work or school account.
+    - **Služby.** Seznam online služby, ke kterým jste se připojili pomocí svého pracovního nebo školního účtu.
 
-    - **Terms of use**. Your organization's terms of use.
+    - **Podmínky použití**. Podmínek použití vaší organizace.
 
 ## <a name="next-steps"></a>Další kroky
 
-After viewing how your organization uses your data, you can:
+Po zobrazení, jak vaše organizace používá vaše data, můžete:
 
-- View or manage your [security info](user-help-security-info-overview.md).
+- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md).
 
-- View or manage your connected [devices](my-account-portal-devices-page.md).
+- Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md).
 
-- View or manage your [organizations](my-account-portal-organizations-page.md).
+- Umožňuje zobrazit nebo spravovat vaše [organizace](my-account-portal-organizations-page.md).
 
-- View your [sign-in activity](my-account-portal-sign-ins-page.md).
+- Zobrazit [přihlašovací aktivitu](my-account-portal-sign-ins-page.md)
 
-- You can also view your Microsoft Office-related contact preferences and privacy information from the [Office portal, Security & privacy page](https://portal.office.com/account/#security).
+- Na [portálu Office a na stránce ochrana osobních údajů & zabezpečení](https://portal.office.com/account/#security)můžete zobrazit také informace o vašich systém Microsoft Officech kontaktech souvisejících s vaším.
