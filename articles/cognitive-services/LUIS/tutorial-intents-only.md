@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Predict intentions - LUIS'
+title: 'Kurz: předpověď záměrů – LUIS'
 titleSuffix: Azure Cognitive Services
-description: In this tutorial, create a custom app that predicts a user's intention. Tato aplikace představuje nejjednodušší typ aplikace LUIS, protože neextrahuje různé datové prvky z textu promluvy, jako jsou e-mailové adresy nebo kalendářní data.
+description: V tomto kurzu vytvoříte vlastní aplikaci, která předpovídá záměr uživatele. Tato aplikace představuje nejjednodušší typ aplikace LUIS, protože neextrahuje různé datové prvky z textu promluvy, jako jsou e-mailové adresy nebo kalendářní data.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,9 +18,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325930"
 ---
-# <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Tutorial: Build a LUIS app to determine user intentions
+# <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Kurz: Vytvoření aplikace v LUIS pro určení záměrů uživatele
 
-In this tutorial, you create a custom app that predicts a user's intention based on the utterance (text). 
+V tomto kurzu vytvoříte vlastní aplikaci, která předpovídá záměr uživatele na základě utterance (text). 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -30,16 +30,16 @@ In this tutorial, you create a custom app that predicts a user's intention based
 > * Vytvoření nové aplikace 
 > * Vytvořit záměry
 > * Přidat ukázkové promluvy
-> * Vytrénovat aplikaci
+> * Trénovat aplikaci
 > * Publikování aplikace
-> * Get intent prediction from endpoint
+> * Získat předpověď záměru z koncového bodu
 
 
 [!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
 
-## <a name="user-intentions-as-intents"></a>User intentions as intents
+## <a name="user-intentions-as-intents"></a>Záměry uživatelů jako záměrů
 
-The purpose of the app is to determine the intention of conversational, natural language text: 
+Účelem aplikace je určit záměr konverzací, text přirozeného jazyka: 
 
 `I'd like to order a veggie pizza with a salad on the side.`
 
@@ -47,10 +47,10 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
 
 |Záměr|Účel|
 |--|--|
-|`ModifyOrder`|Determine user's pizza order.|
-|`Greeting`|Begin bot conversation.|
-|`ConfirmOrder`|Confirm pizza order.|
-|`None`|Determine if user is asking something the app is not supposed to answer. This intent if provided as part of app creation and can't be deleted. |
+|`ModifyOrder`|Určuje pořadí Pizza uživatele.|
+|`Greeting`|Začněte s konverzací robot.|
+|`ConfirmOrder`|Potvrďte pořadí Pizza.|
+|`None`|Určete, jestli uživatel žádá o něco, co aplikace nemá odpovídat. Tento záměr, pokud je k dispozici jako součást vytváření aplikace a nelze jej odstranit. |
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 
@@ -58,13 +58,13 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
 
 ## <a name="create-a-new-intent"></a>Vytvoření nového záměru 
 
-1. In the portal, inside the app's **Build** section, select **+ Create**. Enter the new intent name, `OrderPizza`, then select **Done**.
+1. Na portálu uvnitř oddílu **Build** aplikace vyberte **+ vytvořit**. Zadejte název nového záměru `OrderPizza`a potom vyberte **Hotovo**.
 
-    The `OrderPizza` intent is predicted when: a user wants to order a pizza. 
+    Předpokládá se `OrderPizza` záměr, když: uživatel chce objednat Pizza. 
 
-1. Add several example utterances to this intent that you expect a user to ask:
+1. Do tohoto záměru přidejte několik příkladů projevy, u kterých očekáváte, že se uživatel zeptá:
 
-    |`OrderPizza` example utterances|
+    |`OrderPizza` příklad projevy|
     |--|
     |`can i get a pepperoni pizza and a can of coke please`|
     |`can i get a small pizza with onions peppers and olives`|
@@ -74,15 +74,15 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
 
     ![Přidat ukázkové promluvy](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    By providing _example utterances_, you are training LUIS about what kinds of utterances should be predicted for this intent. 
+    Poskytnutím _ukázkového projevyu_budete školením Luis o tom, jaké druhy projevyy by se měly pro tento záměr odhadnout. 
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]    
 
-## <a name="create-remaining-intents"></a>Create remaining intents
+## <a name="create-remaining-intents"></a>Vytvořit zbývající záměry
 
-1. Create the `Greeting` intent and add the following example utterances. This is the intent to determine if a user is beginning a new pizza order conversation.
+1. Vytvořte `Greeting` záměr a přidejte následující příklad projevy. Účelem je určit, jestli uživatel začíná novou konverzaci v Pizza pořadí.
 
-    |`Greeting` example utterances|
+    |`Greeting` příklad projevy|
     |--|
     |`Hi`|
     |`Hello`|
@@ -90,9 +90,9 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
     |`Start`|
     |`Begin`|
 
-1. Create the `Confirm` intent and add the following example utterances. This is the intent to determine if a user is done ordering and accepts the order details. 
+1. Vytvořte `Confirm` záměr a přidejte následující příklad projevy. Cílem je zjistit, jestli je uživatel hotový, a přijmout podrobnosti objednávky. 
 
-    |`Confirm` example utterances|
+    |`Confirm` příklad projevy|
     |--|
     |`Go ahead`|
     |`ok`|
@@ -100,7 +100,7 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
     |`Sure`|
 
 
-## <a name="none-intent-example-utterances"></a>None intent example utterances
+## <a name="none-intent-example-utterances"></a>Projevy příklad záměru None
 
 [!INCLUDE [Follow these steps to add the None intent to the app](includes/add-example-utterances-none-intent.md)]
 
@@ -108,19 +108,19 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app"></a>Publish the app 
+## <a name="publish-the-app"></a>Publikování aplikace 
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)] 
 
-## <a name="get-intent-prediction"></a>Get intent prediction
+## <a name="get-intent-prediction"></a>Získat předpověď záměru
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Go to the end of the URL in the address bar and enter:
+1. V adresním řádku přejděte na konec adresy URL a zadejte:
 
     `get a medium vegetarian pizza for delivery` 
 
-    This is not exactly the same as an example utterance so it is a good test to see if LUIS can learn what should be predicted with this intent.
+    To není naprosto stejné jako u příkladu utterance, takže je dobrým testem zjistit, jestli se LUIS může naučit, co by mělo být s tímto záměrem předpověď.
 
     Poslední parametr řetězce dotazu je `query`, což je **dotaz** promluvy. Tato promluva není stejná jako některá z ukázkových promluv. Jde o vhodný test a jako záměr s nejvyšším skóre by se měl vrátit záměr `OrderPizza`. 
 
@@ -148,15 +148,15 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
     }
     ```
 
-    The entities array is empty because this app currently does not have any entities (unit of data inside the utterance to extract). 
+    Pole entit je prázdné, protože tato aplikace v současné době neobsahuje žádné entity (v rámci utterance k extrakci dat). 
 
-    Výsledek JSON identifikuje záměr s nejvyšším skóre jako vlastnost **`prediction.topIntent`** . All scores are between 1 and 0, with the better score being closer to 1. 
+    Výsledek JSON identifikuje záměr s nejvyšším skóre jako vlastnost **`prediction.topIntent`** . Všechna skóre jsou mezi 1 a 0 a lepším skóre je blíže 1. 
 
-1. Change the URL **query** parameter to target the **Greeting** intent:
+1. Změňte parametr **dotazu** adresy URL tak, aby byl cílen na záměr **pozdravu** :
 
     `Howdy`
 
-    This is not exactly the same as an example utterance so it is a good test to see if LUIS can learn what should be predicted with this intent. 
+    To není naprosto stejné jako u příkladu utterance, takže je dobrým testem zjistit, jestli se LUIS může naučit, co by mělo být s tímto záměrem předpověď. 
 
     ```json
     {
@@ -182,27 +182,27 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
     }    
     ```
  
-    This prediction has a 44% confidence score. To increase the confidence score, add between 15 and 30 example utterances.  
+    Tato předpověď má 44% spolehlivost. Chcete-li zvýšit míru spolehlivosti, přidejte mezi 15 a 30 příkladem projevy.  
 
-## <a name="client-application-next-steps"></a>Client-application next steps
+## <a name="client-application-next-steps"></a>Klient-aplikace – další kroky
 
-Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila. Služba LUIS neposkytuje odpovědi na promluvy uživatelů, pouze identifikuje, na jaký typ informací směřuje dotaz v přirozeném jazyce. The conversational follow-up is provided by the client application such as an Azure Bot. 
+Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila. Služba LUIS neposkytuje odpovědi na promluvy uživatelů, pouze identifikuje, na jaký typ informací směřuje dotaz v přirozeném jazyce. Následná následné konverzace poskytuje klientská aplikace, jako je třeba robot Azure. 
 
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>Související informace
 
-* [Types of entities](luis-concept-entity-types.md)
-* [How to train](luis-how-to-train.md)
+* [Typy entit](luis-concept-entity-types.md)
+* [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
-* [How to test in LUIS portal](luis-interactive-test.md)
-* [Azure Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Testování na portálu LUIS](luis-interactive-test.md)
+* [Robot Azure bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-This tutorial created a LUIS app, created intents, added example utterances to each intent, added example utterances to the None intent, trained, published, and tested at the endpoint. Toto jsou základní kroky vytvoření modelu LUIS. 
+V tomto kurzu jste vytvořili aplikaci LUIS, vytvořené záměry, Přidali jste vzorový projevy ke každému záměru a Přidali jste příklad projevy k záměru None, trained, Published a test na koncovém bodu. Toto jsou základní kroky vytvoření modelu LUIS. 
 
 > [!div class="nextstepaction"]
-> [Add a decomposable entity to this app](tutorial-machine-learned-entity.md)
+> [Přidat do této aplikace entitu s možností destavitele](tutorial-machine-learned-entity.md)

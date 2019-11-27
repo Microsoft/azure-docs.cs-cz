@@ -52,7 +52,7 @@ Pokud jste po dokončení zjišťování zadali přihlašovací údaje pro zjiš
 1. V **Azure Migrate-servery** > **Azure Migrate: posouzení serveru**, kliknutím na zobrazený počet otevřete stránku **zjištěné servery** .
 
     > [!NOTE]
-    > V této fázi můžete také volitelně nastavit mapování závislostí pro zjištěné počítače, abyste mohli vizualizovat závislosti mezi počítači, které chcete vyhodnotit. [Další informace](how-to-create-group-machine-dependencies.md)
+    > V této fázi můžete také volitelně nastavit mapování závislostí pro zjištěné počítače, abyste mohli vizualizovat závislosti mezi počítači, které chcete vyhodnotit. [Další informace](how-to-create-group-machine-dependencies.md).
 
 2. V části **zjištěné aplikace**klikněte na zobrazený počet.
 3. V **inventáři aplikací**můžete zkontrolovat zjištěné aplikace, role a funkce.

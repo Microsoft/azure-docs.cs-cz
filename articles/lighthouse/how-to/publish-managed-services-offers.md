@@ -1,6 +1,6 @@
 ---
-title: Publish a managed services offer to Azure Marketplace
-description: Learn how to publish a managed service offer that onboards customers to Azure delegated resource management.
+title: Publikování nabídky spravovaných služeb pro Azure Marketplace
+description: Naučte se publikovat nabídku spravované služby, která zákazníkům zařadí správu delegovaných prostředků Azure.
 ms.date: 11/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: be9d93c2b71bb3db7df86ddd44e0171bec522294
@@ -10,148 +10,148 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483170"
 ---
-# <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publish a managed services offer to Azure Marketplace
+# <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikování nabídky spravovaných služeb pro Azure Marketplace
 
-In this article, you'll learn how to publish a public or private managed services offer to [Azure Marketplace](https://azuremarketplace.microsoft.com) using the [Cloud Partner Portal](https://cloudpartner.azure.com/), enabling a customer who purchases the offer to onboard resources for Azure delegated resource management.
+V tomto článku se dozvíte, jak publikovat veřejnou nebo soukromou nabídku spravovaných služeb, která [Azure Marketplace](https://azuremarketplace.microsoft.com) pomocí [portál partnerů cloudu](https://cloudpartner.azure.com/)a umožňuje zákazníkům, kteří si nabídku koupí, připojit prostředky pro delegovaný prostředek Azure. správu.
 
 > [!NOTE]
-> You need to have a valid [account in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) to create and publish these offers. If you don’t have an account already, the [sign-up process](https://aka.ms/joinmarketplace) will lead you through the steps of creating an account in Partner Center and enrolling in the Commercial Marketplace program. Your Microsoft Partner Network (MPN) ID will be [automatically associated](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) with the offers you publish to track your impact across customer engagements.
+> Aby bylo možné vytvořit a publikovat tyto nabídky, musíte mít platný [účet v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) . Pokud účet ještě nemáte, [proces registrace](https://aka.ms/joinmarketplace) vás provede kroky pro vytvoření účtu v partnerském centru a registraci v programu komerčního tržiště. Vaše ID Microsoft Partner Network (MPN) se [automaticky přidruží](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) k nabídkám, které publikujete, abyste mohli sledovat svůj dopad na zapojení zákazníků.
 >
-> If you don't want to publish an offer to Azure Marketplace, you can onboard customers manually by using Azure Resource Manager templates. For more info, see [Onboard a customer to Azure delegated resource management](onboard-customer.md).
+> Pokud nechcete publikovat nabídku Azure Marketplace, můžete zákazníky připojit ručně pomocí Azure Resource Manager šablon. Další informace najdete v tématu připojení [zákazníka k delegované správě prostředků Azure](onboard-customer.md).
 
-Publishing a Managed Services offer is similar to publishing any other type of offer to Azure Marketplace. To learn about that process, see [Azure Marketplace and AppSource Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) and [Manage Azure and AppSource Marketplace offers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). You should also review the [commercial marketplace certification policies](https://docs.microsoft.com/legal/marketplace/certification-policies), particularly the [Managed Services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) section.
+Publikování nabídky spravovaných služeb je podobné jako publikování jakéhokoli jiného typu nabídky Azure Marketplace. Další informace o tomto procesu najdete v tématu [Příručka pro publikování Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) a [Správa nabídek Azure a AppSource Marketplace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). Měli byste si také projít [zásady certifikace komerčního tržiště](https://docs.microsoft.com/legal/marketplace/certification-policies), zejména část [spravované služby](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) .
 
-Once a customer adds your offer, they will be able to delegate one or more specific subscriptions or resource groups which will then be [onboarded for Azure delegated resource management](#the-customer-onboarding-process). Note that before a subscription (or resource groups within a subscription) can be onboarded, the subscription must be authorized for onboarding by manually registering the **Microsoft.ManagedServices** resource provider.
+Jakmile zákazník vaši nabídku přidá, bude moct delegovat jedno nebo několik konkrétních předplatných nebo skupin prostředků, které se pak budou připravovat [pro správu delegovaných prostředků Azure](#the-customer-onboarding-process). Všimněte si, že před započetím předplatného (nebo skupin prostředků v rámci předplatného) musí být odběr autorizovaný k registraci tím, že ručně zaregistruje poskytovatele prostředků **Microsoft. ManagedServices** .
 
 > [!IMPORTANT]
-> Each plan in a managed services offer includes a **Manifest Details** section, where you define the Azure Active Directory (Azure AD) entities in your tenant that will have access to the delegated resource groups and/or subscriptions for customers who purchase that plan. It’s important to be aware that any group (or user or service principal) that you include here will have the same permissions for every customer who purchases the plan. To assign different groups to work with each customer, you’ll need to publish a separate private plan that is exclusive to each customer.
+> Každý plán v nabídce spravovaných služeb obsahuje oddíl s **podrobnostmi o manifestu** , ve kterém definujete entity Azure Active Directory (Azure AD) ve vašem tenantovi, které budou mít přístup k delegovaným skupinám prostředků a/nebo předplatným pro zákazníky, kteří Kupte si plán. Je důležité si uvědomit, že jakákoli skupina (nebo uživatel nebo instanční objekt), kterou tady zadáte, bude mít stejná oprávnění pro každého zákazníka, který plán koupí. Pokud chcete přiřadit různé skupiny pro práci s každým zákazníkem, budete muset publikovat samostatný soukromý plán, který je exkluzivní pro každého zákazníka.
 
-## <a name="create-your-offer-in-the-cloud-partner-portal"></a>Create your offer in the Cloud Partner Portal
+## <a name="create-your-offer-in-the-cloud-partner-portal"></a>Vytvořte nabídku v portál partnerů cloudu
 
-1. Sign in to the [Cloud Partner Portal](https://cloudpartner.azure.com/).
-2. From the left navigation menu, select **New offer**, then select **Managed services**.
-3. You'll see an **Editor** section for your offer with four parts to fill in: **Offer Settings**, **Plans**, **Marketplace**, and **Support**. Read on for guidance on how to complete these sections.
+1. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
+2. V levém navigačním panelu vyberte možnost **Nová nabídka**a pak vyberte **spravované služby**.
+3. Pro nabídku se zobrazí oddíl **editoru** se čtyřmi částmi, které se mají vyplnit **: nastavení nabídek**, **plány**, **tržiště**a **Podpora**. Přečtěte si, kde najdete pokyny k dokončení těchto oddílů.
 
-## <a name="enter-offer-settings"></a>Enter offer settings
+## <a name="enter-offer-settings"></a>Zadat nastavení nabídky
 
-In the **Offer settings** section, provide the following:
-
-|Pole  |Popis  |
-|---------|---------|
-|**Offer ID**     | A unique identifier for your offer (within your publisher profile). This ID can only contain lowercase alphanumeric characters, dashes, and underscores, with a maximum of 50 characters. Keep in mind that the Offer ID may be visible to customers in places like in product URLs and billing reports. Once you publish the offer, you can't change this value.        |
-|**Publisher ID**     | The publisher ID that will be associated with the offer. If you have more than one publisher ID, you can select the one you wish to use for this offer.       |
-|**Název**     | The name (up to 50 characters) that customers will see for your offer in Azure Marketplace and in the Azure portal. Use a recognizable brand name that customers will understand—if you're promoting this offer through your own website, be sure to use the exact same name here.        |
-
-When you've finished, select **Save**. Now you're ready to move on to the **Plans** section.
-
-## <a name="create-plans"></a>Create plans
-
-Each offer must have one or more plans (sometimes referred to as SKUs). You might add multiple plans to support different feature sets at different prices or to customize a specific plan for a limited audience of specific customers. Customers can view the plans that are available to them under the parent offer.
-
-In the Plans section, select **New Plan**. Then enter a **Plan ID**. This ID can only contain lowercase alphanumeric characters, dashes, and underscores, with a maximum of 50 characters. The plan ID may be visible to customers in places like in product URLs and billing reports. Once you publish the offer, you can't change this value.
-
-### <a name="plan-details"></a>Plan details
-
-Complete the following sections in the **Plan Details** section:
+V části **nastavení nabídky** zadejte následující:
 
 |Pole  |Popis  |
 |---------|---------|
-|**Název**     | Friendly name for the plan for display. Maximum length of 50 characters.        |
-|**Souhrn**     | Succinct description of the plan for display under the title. Maximum length of 100 characters.        |
-|**Popis**     | Description text that provides a more detailed explanation of the plan.         |
-|**Billing model**     | There are 2 billing models shown here, but you must choose **Bring your own license** for managed services offers. This means that you will bill your customers directly for costs related to this offer, and Microsoft does not charge any fees to you.   |
-|**Is this a private Plan?**     | Indicates whether the SKU is private or public. The default is **No** (public). If you leave this selection, your plan will not be restricted to specific customers (or to a certain number of customers); after you publish a public plan, you can't later change it to private. To make this plan available only to specific customers, select **Yes**. When you do so, you'll need to identify the customers by providing their subscription IDs. These can be entered one by one (for up to 10 subscriptions) or by uploading a .csv file (for up to 20,000 subscriptions). Be sure to include your own subscriptions here so you can test and validate the offer. For more information, see [Private SKUs and Plans](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
+|**ID nabídky**     | Jedinečný identifikátor vaší nabídky (v rámci vašeho profilu vydavatele). Toto ID může obsahovat jenom malé alfanumerické znaky, pomlčky a podtržítka, maximálně 50 znaků. Mějte na paměti, že ID nabídky může být pro zákazníky viditelné v místech, například v adresách URL produktů a v sestavách fakturace. Po publikování této nabídky tuto hodnotu nemůžete změnit.        |
+|**ID vydavatele**     | ID vydavatele, které bude přidruženo k této nabídce Pokud máte více než jedno ID vydavatele, můžete vybrat ten, který chcete pro tuto nabídku použít.       |
+|**Název**     | Název (až 50 znaků), který zákazníci uvidí pro vaši nabídku v Azure Marketplace a Azure Portal. Použijte rozpoznatelný název značky, který zákazníci považují – Pokud tuto nabídku povýšíte prostřednictvím vlastního webu, nezapomeňte použít přesně stejný název.        |
 
-### <a name="manifest-details"></a>Manifest details
+Po dokončení vyberte **Uložit**. Nyní jste připraveni přejít k části **plány** .
 
-Complete the **Manifest Details** section for your plan. This creates a manifest with authorization information for managing customer resources. This information is required in order to enable Azure delegated resource management.
+## <a name="create-plans"></a>Vytvoření plánů
+
+Každá nabídka musí mít jeden nebo více plánů (někdy označovaných jako SKU). Můžete přidat více plánů pro podporu různých sad funkcí v různých cenách nebo upravit konkrétní plán pro omezené cílové skupiny konkrétních zákazníků. Zákazníci si můžou prohlédnout plány, které jsou pro ně k dispozici v rámci nadřízené nabídky.
+
+V části plány vyberte **Nový plán**. Pak zadejte **ID plánu**. Toto ID může obsahovat jenom malé alfanumerické znaky, pomlčky a podtržítka, maximálně 50 znaků. ID plánu může být pro zákazníky viditelné v místech, například v adresách URL produktů a v sestavách fakturace. Po publikování této nabídky tuto hodnotu nemůžete změnit.
+
+### <a name="plan-details"></a>Podrobnosti plánu
+
+V části **podrobnosti plánu** dokončete následující části:
+
+|Pole  |Popis  |
+|---------|---------|
+|**Název**     | Popisný název pro plán zobrazení Maximální délka 50 znaků.        |
+|**Souhrn**     | Stručný popis plánu, který se má zobrazit pod nadpisem Maximální délka 100 znaků.        |
+|**Popis**     | Popisný text, který poskytuje podrobnější vysvětlení plánu.         |
+|**Model fakturace**     | Tady jsou uvedené 2 modely fakturace, ale musíte si vybrat **vlastní licenci** pro nabídky spravované služby. To znamená, že vaše zákazníky budete fakturovat přímo za náklady související s touto nabídkou a Microsoft vám nebude účtovat žádné poplatky.   |
+|**Jedná se o soukromý plán?**     | Označuje, zda je SKU soukromá nebo veřejná. Výchozí **hodnota není (Public** ). Pokud necháte tento výběr, váš plán se nebude omezovat na konkrétní zákazníky (nebo na určitý počet zákazníků). Když publikujete veřejný plán, nemůžete ho později změnit na privátní. Pokud chcete, aby byl tento plán dostupný jenom pro konkrétní zákazníky, vyberte **Ano**. Když to uděláte, budete muset zákazníky identifikovat tak, že zadáte jejich ID předplatného. Můžete je zadat jednou (až pro 10 odběry) nebo nahráním souboru. CSV (až 20 000 odběrů). Nezapomeňte sem zahrnout vlastní odběry, abyste mohli otestovat a ověřit nabídku. Další informace najdete v tématu [soukromé SKU a plány](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
+
+### <a name="manifest-details"></a>Podrobnosti manifestu
+
+Dokončete oddíl **podrobností manifestu** pro váš plán. Tím se vytvoří manifest s autorizačními informacemi pro správu zákaznických prostředků. Tyto informace jsou nutné, aby bylo možné povolit správu delegovaných prostředků Azure.
 
 > [!NOTE]
-> As noted above, the users and roles in your **Authorization** entries will apply to every customer who purchases the plan. If you want to limit access to a specific customer, you'll need to publish a private plan for their exclusive use.
+> Jak je uvedeno výše, uživatelé a role v **autorizačních** položkách budou platit pro každého zákazníka, který plán koupí. Pokud chcete omezit přístup na konkrétního zákazníka, budete muset publikovat privátní plán pro výhradní použití.
 
-First, provide a **Version** for the manifest. Use the format *n.n.n* (for example, 1.2.5).
+Nejprve zadejte **verzi** manifestu. Použijte formát *n. n. n* (například 1.2.5).
 
-Next, enter your **Tenant ID**. This is a GUID associated with the Azure Active Directory tenant ID of your organization (i.e., the tenant which you will be working in to manage your customers' resources). If you don't have this handy, you can find it by hovering over your account name on the upper right-hand side of the Azure portal, or by selecting **Switch directory**.
+Potom zadejte **ID tenanta**. Toto je identifikátor GUID přidružený k Azure Active Directorymu ID tenanta vaší organizace (tj. tenant, ve kterém budete pracovat, abyste mohli spravovat prostředky vašich zákazníků). Pokud tyto možnosti nemáte k dispozici, můžete ji najít přesunutím ukazatele myši na název účtu v pravém horním rohu Azure Portal, nebo výběrem **přepínače Adresář**.
 
-Finally, add one or more **Authorization** entries to your plan. Authorizations define the entities who can access resources and subscriptions for customers who purchase the plan, and assign roles that grant specific levels of access. For details about supported roles, see [Tenants, roles, and users in Azure Lighthouse scenarios](../concepts/tenants-users-roles.md).
+Nakonec do svého plánu přidejte jednu nebo více **autorizačních** položek. Autorizace definují entity, které mají přístup k prostředkům a předplatným pro zákazníky, kteří si plán kupují, a přiřazují role, které udělují konkrétní úrovně přístupu. Podrobnosti o podporovaných rolích najdete [v tématu Klienti, role a uživatelé ve scénářích Azure Lighthouse](../concepts/tenants-users-roles.md).
 
-For each **Authorization**, you'll need to provide the following. You can then select **New authorization** as many times as needed to add more users and role definitions.
+Pro každou **autorizaci**musíte zadat následující. Pak můžete vybrat **nové autorizace** tolikrát, kolikrát je potřeba, a přidat tak další uživatele a definice rolí.
 
-- **Azure AD Object ID**: The Azure AD identifier of a user, user group, or application which will be granted certain permissions (as described by the Role Definition) to your customers' resources.
-- **Azure AD Object Display Name**: A friendly name to help the customer understand the purpose of this authorization. The customer will see this name when delegating resources.
-- **Role Definition**: Select one of the available Azure AD built-in roles from the list. This role will determine the permissions that the user in the **Azure AD Object ID** field will have on your customers' resources. For descriptions of these roles, see [Built-in roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) and [Role support for Azure delegated resource management](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
-- **Assignable Roles**: This is required only if you have selected User Access Administrator in the **Role Definition** for this authorization. If so, you must add one or more assignable roles here. The user in the **Azure AD Object ID** field will be able to assign these **Assignable Roles** to [managed identities](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), which is required in order to [deploy policies that can be remediated](deploy-policy-remediation.md). Note that no other permissions normally associated with the User Access Administrator role will apply to this user. If you do not select one or more roles here, your submission will not pass certification. (If you did not select User Access Administrator for this user’s Role Definition, this field has no effect.)
+- **ID objektu Azure AD**: identifikátor Azure AD uživatele, skupiny uživatelů nebo aplikace, kterým budou udělena určitá oprávnění (jak je popsáno v definici role) s prostředky vašich zákazníků.
+- **Zobrazovaný název objektu Azure AD**: popisný název, který zákazníkovi pomůže pochopit účel této autorizace. Zákazník uvidí tento název při delegování prostředků.
+- **Definice role**: v seznamu vyberte jednu z dostupných předdefinovaných rolí Azure AD. Tato role určuje oprávnění, která bude mít uživatel v poli **ID objektu Azure AD** v materiálech vašich zákazníků. Popisy těchto rolí najdete v tématu [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) a [Podpora rolí pro správu delegovaných prostředků Azure](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management) .
+- **Přiřaditelné role**: to se vyžaduje jenom v případě, že jste pro tuto autorizaci vybrali správce přístupu uživatele v **definici role** . Pokud ano, musíte sem přidat jednu nebo více rolí, které lze přiřadit. Uživatel v poli **ID objektu Azure AD** bude moct přiřadit tyto **role** ke [spravovaným identitám](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), které se vyžadují k [nasazení zásad, které se dají opravit](deploy-policy-remediation.md). Pro tohoto uživatele se nepoužijí žádná jiná oprávnění, která se běžně nevztahují k roli správce přístupu uživatele. Pokud tady nevyberete jednu nebo víc rolí, odeslání se nepředá. (Pokud jste nevybrali správce přístupu uživatele pro definici role tohoto uživatele, toto pole nemá žádný vliv.)
 
 > [!TIP]
-> In most cases, you'll want to assign permissions to an Azure AD user group or service principal, rather than to a series of individual user accounts. This lets you add or remove access for individual users without having to update and republish the plan when your access requirements change. For additional recommendations, see [Tenants, roles, and users in Azure Lighthouse scenarios](../concepts/tenants-users-roles.md).
+> Ve většině případů budete chtít přiřadit oprávnění k skupině uživatelů nebo instančnímu objektu služby Azure AD, a ne k řadě jednotlivých uživatelských účtů. To vám umožní přidat nebo odebrat přístup pro jednotlivé uživatele bez nutnosti aktualizace a opětovného publikování plánu, když se změní vaše požadavky na přístup. Další doporučení najdete v tématu [klienti, role a uživatelé ve scénářích Azure Lighthouse](../concepts/tenants-users-roles.md).
 
-Once you've completed the info, you can select **New plan** as many times as you need to create additional plans. When you're done, select **Save**, and then continue to the **Marketplace** section.
+Po dokončení informací můžete vybrat **Nový plán** tolikrát, kolikrát potřebujete vytvořit další plány. Až to budete mít, vyberte **Uložit**a potom přejděte do části **Marketplace** .
 
-## <a name="provide-marketplace-text-and-images"></a>Provide Marketplace text and images
+## <a name="provide-marketplace-text-and-images"></a>Zadání textu a obrázků z Marketplace
 
-The **Marketplace** section is where you provide the text and images which customers will see in Azure Marketplace and the Azure portal.
+V části **Marketplace** můžete zadat text a obrázky, které se zákazníkům zobrazí v Azure Marketplace a Azure Portal.
 
-Complete the following fields in the **Overview** section:
+V části **Přehled** vyplňte následující pole:
 
 |Pole  |Popis  |
 |---------|---------|
-|**Název**     |  Title of the offer, often the long, formal name. This title will be displayed prominently in the marketplace. Maximum length of 50 characters. In most cases, this should be the same as the **Name** you entered in the **Offer Settings** section.       |
-|**Souhrn**     | Brief purpose or function of your offer. This is usually displayed under the title. Maximum length of 100 characters.        |
-|**Long Summary**     | A longer summary of the purpose or function of your offer. Maximum length of 256 characters.        |
-|**Popis**     | More information about your offer. This field has a maximum length of 3000 characters and supports simple HTML formatting. You must include the words "managed service" or "managed services" somewhere in your description.       |
-|**Marketing Identifier**     | A unique URL-friendly identifier. This identifier can only contain lowercase alphanumeric characters and dashes. It will be used in Marketplace URLs for this offer. For example, if your publisher ID is *contoso* and your marketing identifier is *sampleApp*, the URL for your offer in Azure Marketplace will be *https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp* .        |
-|**Preview Subscription IDs**     | Add one to 100 subscription identifiers. The customers associated with these subscriptions will be able to view the offer in Azure Marketplace before it goes live. We suggest including your own subscriptions here so you can preview how your offer appears in the Azure Marketplace before making it available to customers.  (Microsoft support and engineering teams will also be able to view your offer during this preview period.)   |
-|**Useful Links**     | URLs related to your offer, such as documentation, release notes, FAQs, etc.        |
-|**Suggested Categories (Max 5)**     | One or more categories (up to five) which apply to your offer. These categories help customers discover your offer in Azure Marketplace and the Azure portal.        |
+|**Název**     |  Název nabídky, často dlouhého a formálního názvu. Tento název se bude zobrazovat na webu Marketplace. Maximální délka 50 znaků. Ve většině případů by měl být stejný jako **název** , který jste zadali v části **nastavení nabídky** .       |
+|**Souhrn**     | Stručný účel nebo funkce vaší nabídky Obvykle se zobrazuje pod nadpisem. Maximální délka 100 znaků.        |
+|**Dlouhý souhrn**     | Delší souhrn účelu nebo funkce vaší nabídky. Maximální délka 256 znaků.        |
+|**Popis**     | Další informace o vaší nabídce V tomto poli je maximální délka 3000 znaků a podporuje jednoduché formátování HTML. V popisu musíte uvést slova "spravovaná služba" nebo "spravované služby".       |
+|**Identifikátor marketingu**     | Jedinečný identifikátor popisný z adresy URL. Tento identifikátor může obsahovat jenom malé alfanumerické znaky a spojovníky. použije se v adresách URL Marketplace pro tuto nabídku. Pokud je váš Vydavatel ID například *Contoso* a váš marketingový identifikátor je *dotazů*, adresa URL vaší nabídky v Azure Marketplace bude *https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp* .        |
+|**Náhled ID předplatných**     | Přidejte jeden až 100 identifikátorů předplatného. Zákazníci, kteří jsou přidruženi k těmto předplatným, budou moci zobrazit nabídku v Azure Marketplace ještě předtím, než budou živá. Do této služby doporučujeme zahrnout vlastní odběry, abyste si mohli prohlédnout, jak se vaše nabídka zobrazí v Azure Marketplace před zpřístupněním zákazníkům.  (Podpora Microsoftu a technické týmy budou moci zobrazit vaši nabídku i v období Preview.)   |
+|**Užitečné odkazy**     | Adresy URL související s vaší nabídkou, například dokumentace, poznámky k verzi, nejčastější dotazy atd.        |
+|**Navrhované kategorie (max. 5)**     | Jedna nebo více kategorií (až pět), které se vztahují na vaši nabídku. Tyto kategorie usnadňují zákazníkům vyhledávání vaší nabídky v Azure Marketplace a Azure Portal.        |
 
-In the **Marketing Artifacts** section, you can upload logos and other assets to be shown with your offer. You can optionally upload screenshots or links to videos that can help customers understand your offer.
+V části **marketingové artefakty** můžete nahrát logo a další prostředky, které se mají zobrazit s vaší nabídkou. Volitelně můžete nahrávat snímky obrazovky nebo odkazy na videa, která zákazníkům pomůžou pochopit vaši nabídku.
 
-Four logo sizes are required: **Small (40x40)** , **Medium (90x90)** , **Large (115x115)** , and **Wide (255x115)** . Follow these guidelines for your logos:
+Vyžadují se čtyři velikosti loga: **malá (40x40)** , **střední (90x90)** , **Velká (115x115)** a **roztažitelné (255x115)** . Postupujte podle těchto pokynů pro vaše loga:
 
 - Design Azure má jednoduchou paletu barev. Omezte počet primárních a sekundárních barev ve vašem logu.
 - Barvami motivů na portálu jsou bílá a černá. Nepoužívejte tyto barvy jako barvu pozadí pro vaše logo. Použijte barvu, která vaše logo na portálu zvýrazní. Doporučujeme použít jednoduché primární barvy.
-- If you use a transparent background, make sure that the logo and text aren't white, black, or blue.
+- Pokud používáte průhledné pozadí, ujistěte se, že logo a text nejsou bílé, černé nebo modré.
 - Logo by mělo působit plochým dojmem a nemělo by obsahovat barevné přechody. Nepoužívejte v logu pozadí s barevným přechodem.
 - Na logo neumisťujte žádný text, a to ani název vaší společnosti nebo název značky.
 - Zajistěte, aby logo nebylo roztažené.
 
-The **Hero (815x290)** logo is optional but recommended. If you include a hero logo, follow these guidelines:
+Logo **Hero (815x290)** je volitelné, ale doporučuje se. Pokud zadáte logo Hero, postupujte podle těchto pokynů:
 
-- Don't include any text in the hero logo, and be sure to leave 415 pixels of empty space on the right side of the logo. This is required to leave room for text elements that will be embedded programmatically: your publisher display name, plan title, offer long summary.
-- Your hero logo's background may not be black, white, or transparent. Make sure your background color isn't too light, because the embedded text will be displayed in white.
-- Once you publish your offer with a hero icon, you can't remove it (although you can update it with a different version if desired).
+- Do loga Hero nezahrnujte text a nezapomeňte na pravé straně loga opustit 415 pixelů prázdného místa. To je nutné pro ponechání místa pro textové prvky, které budou vloženy programově: zobrazované jméno vydavatele, název plánu, nabídka dlouhého souhrnu.
+- Pozadí loga Hero nesmí být černé, bílé nebo transparentní. Ujistěte se, že barva pozadí není příliš světlá, protože vložený text se zobrazí bíle.
+- Po publikování nabídky pomocí ikony Hero ji nemůžete odebrat (i když ji můžete v případě potřeby aktualizovat jinou verzí).
 
-In the **Lead Management** section, you can select the CRM system where your leads will be stored. Note that per the [Managed Services certification policies](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services), a **Lead Destination** is required.
+V části **Správa zájemců** můžete vybrat systém CRM, ve kterém budou vaše potenciální zákazníci uložené. Všimněte si, že pro [zásady certifikace spravovaných služeb](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)se vyžaduje **cíl zájemce** .
 
-Finally, provide your **Privacy Policy URL** and **Terms of use** in the **Legal** section. You can also specify here whether or not to use the [Standard Contract](https://docs.microsoft.com/azure/marketplace/standard-contract) for this offer.
+Nakonec zadejte **adresu URL zásad ochrany osobních údajů** a **podmínky použití** v části **právní** . Můžete také zadat, jestli se má pro tuto nabídku používat [standardní smlouva](https://docs.microsoft.com/azure/marketplace/standard-contract) .
 
-Be sure to save your changes before moving on to the **Support** section.
+Nezapomeňte změny uložit před přechodem k části **Podpora** .
 
-## <a name="add-support-info"></a>Add support info
+## <a name="add-support-info"></a>Přidat informace o podpoře
 
-In the **Support** section, provide the name, email, and phone number for an engineering contact and a customer support contact. You'll also need to provide support URLs. Microsoft may use this information when we need to contact you about business and support issues.
+V části **Podpora** zadejte jméno, e-mail a telefonní číslo pro technický kontakt a kontakt na zákaznickou podporu. Budete taky muset poskytnout adresy URL podpory. Společnost Microsoft může tyto informace používat v případě, že potřebujeme kontaktovat informace o obchodních a pomocných problémech.
 
-Once you've added this info, select **Save.**
+Po přidání těchto informací vyberte **Uložit.**
 
 ## <a name="publish-your-offer"></a>Publikování nabídky
 
-Once you've completed all of the sections, your next step is to publish the offer to Azure Marketplace. Select the **Publish** button to initiate the process of making your offer live. For more about this process, see [Publish Azure Marketplace and AppSource offers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
+Po dokončení všech oddílů je dalším krokem publikování nabídky Azure Marketplace. Kliknutím na tlačítko **publikovat** zahajte proces provádění vaší nabídky v reálném čase. Další informace o tomto procesu najdete v tématu [publikování Azure Marketplace a nabídky AppSource](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
 
-You can [publish an updated version of your offer](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer) at any time. For example, you may want to add a new role definition to a previously-published offer. When you do so, customers who have already added the offer will see an icon in the [**Service providers**](view-manage-service-providers.md) page in the Azure portal that lets them know an update is available. Each customer will be able to [review the changes](view-manage-service-providers.md#update-service-provider-offers) and decide whether they want to update to the new version. 
+[Aktualizovanou verzi vaší nabídky můžete publikovat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer) kdykoli. Například můžete chtít přidat novou definici role do dříve publikované nabídky. V takovém případě se zákazníkům, kteří si tuto nabídku už přidali, na Azure Portal stránce [**poskytovatelé služeb**](view-manage-service-providers.md) zobrazí ikona s informacemi o tom, že je k dispozici aktualizace. Každý zákazník bude moci [Zkontrolovat změny](view-manage-service-providers.md#update-service-provider-offers) a rozhodnout, jestli chtějí aktualizovat na novou verzi. 
 
-## <a name="the-customer-onboarding-process"></a>The customer onboarding process
+## <a name="the-customer-onboarding-process"></a>Proces zprovoznění zákazníků
 
-After a customer adds your offer, they'll be able to [delegate one or more specific subscriptions or resource groups](view-manage-service-providers.md#delegate-resources), which will then be onboarded for Azure delegated resource management. If a customer has accepted an offer but has not yet delegated any resources, they'll see a note at the top of the **Provider offers** section of the [**Service providers**](view-manage-service-providers.md) page in the Azure portal.
+Jakmile zákazník vaši nabídku přidá, bude moct [delegovat jedno nebo několik konkrétních předplatných nebo skupin prostředků](view-manage-service-providers.md#delegate-resources), které se pak budou zakládat pro správu delegovaných prostředků Azure. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí v **horní části stránky** poskytovatelé [**služeb**](view-manage-service-providers.md) v Azure Portal poznámku.
 
 > [!IMPORTANT]
-> Delegation must be done by a non-guest account in the customer’s tenant which has the [Owner built-in role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) for the subscription being onboarded (or which contains the resource groups that are being onboarded). To see all users who can delegate the subscription, a user in the customer's tenant can select the subscription in the Azure portal, open **Access control (IAM)** , and [view all users with the Owner role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
+> Delegování musí provést účet bez hosta v tenantovi zákazníka, který má [předdefinovanou roli](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) předplatného pro odběr (nebo který obsahuje skupiny prostředků, které jsou připojené). Pokud chcete zobrazit všechny uživatele, kteří můžou delegovat předplatné, uživatel v tenantovi zákazníka může vybrat předplatné ve Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
-After the customer delegates a subscription (or one or more resource groups within a subscription), the **Microsoft.ManagedServices** resource provider will be registered for that subscription, and users in your tenant will be able to access the delegated resources according to the authorizations in your offer.
+Po tom, co zákazník deleguje předplatné (nebo jednu nebo více skupin prostředků v rámci předplatného), bude pro toto předplatné zaregistrovaný poskytovatel prostředků **Microsoft. ManagedServices** a uživatelé ve vašem tenantovi budou mít přístup k delegovaným prostředkům v závislosti na autorizacích vaší nabídky.
 
 > [!NOTE]
-> At this time, subscriptions (or resource groups within a subscription) can't be delegated if the subscription uses Azure Databricks. Similarly, if a subscription (or resource groups within a subscription) has already been delegated, it currently isn't possible to create Databricks workspaces in that subscription.
+> V tuto chvíli není možné delegovat předplatná (nebo skupiny prostředků v rámci předplatného), pokud předplatné používá Azure Databricks. Podobně platí, že pokud už bylo delegované předplatné (nebo skupiny prostředků v rámci předplatného), v současné době není možné v tomto předplatném vytvořit pracovní prostory datacihly.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Learn about [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md).
-- [View and manage customers](view-manage-customers.md) by going to **My customers** in the Azure portal.
+- Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
+- V **Azure Portal můžete** [Zobrazit a spravovat zákazníky](view-manage-customers.md) .

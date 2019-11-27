@@ -1,6 +1,6 @@
 ---
-title: Web app that signs in users (overview) - Microsoft identity platform
-description: Learn how to build a web app that signs in users (overview)
+title: Webová aplikace, která se podepisuje uživateli (přehled) – Microsoft Identity Platform
+description: Naučte se vytvářet webové aplikace, které se přihlásí uživatelům (přehled).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -22,68 +22,68 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482487"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web app that signs in users
+# <a name="scenario-web-app-that-signs-in-users"></a>Scénář: webová aplikace, která se přihlásí uživatelům
 
-Learn all you need to build a web app that uses the Microsoft identity platform to sign in users.
+Seznamte se s tím, co potřebujete k vytvoření webové aplikace, která používá Microsoft Identity Platform k přihlašování uživatelů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="getting-started"></a>Začínáme
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
-If you want to create your first portable (ASP.NET Core) web app that signs in users, follow this quickstart:
+Pokud chcete vytvořit první přenosnou webovou aplikaci (ASP.NET Core), která se přihlašuje uživatelům, postupujte podle tohoto rychlého startu:
 
 > [!div class="nextstepaction"]
-> [Quickstart: ASP.NET Core web app that signs in users](quickstart-v2-aspnet-core-webapp.md)
+> [Rychlý Start: ASP.NET Core webovou aplikaci, která se přihlásí uživatelům](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-If you want to understand how to add sign-in to an existing ASP.NET web application, try the following quickstart:
+Pokud chcete pochopit, jak přidat přihlášení do existující webové aplikace ASP.NET, vyzkoušejte následující rychlý Start:
 
 > [!div class="nextstepaction"]
-> [Quickstart: ASP.NET web app that signs in users](quickstart-v2-aspnet-webapp.md)
+> [Rychlý Start: ASP.NET webová aplikace, která přihlásí uživatele](quickstart-v2-aspnet-webapp.md)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-If you're a Java developer, try the following quickstart:
+Pokud jste vývojářem Java, zkuste následující rychlý Start:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Add sign-in with Microsoft to a Java web app](quickstart-v2-java-webapp.md)
+> [Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu](quickstart-v2-java-webapp.md)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-If you develop with Python, try the following quickstart:
+Pokud vyvíjíte pomocí Pythonu, zkuste následující rychlý Start:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Add sign-in with Microsoft to a Python web app](quickstart-v2-python-webapp.md)
+> [Rychlý Start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu](quickstart-v2-python-webapp.md)
 
 ---
 
 ## <a name="overview"></a>Přehled
 
-You add authentication to your web app so that it can sign in users. Adding authentication enables your web app to access limited profile information in order to customize the experience for users. 
+Do své webové aplikace můžete přidat ověřování, aby se mohli přihlašovat uživatelům. Přidání ověřování umožní vaší webové aplikaci získat přístup k informacím o omezených profilech, aby bylo možné přizpůsobit prostředí pro uživatele. 
 
-Web apps authenticate a user in a web browser. In this scenario, the web app directs the user's browser to sign them in to Azure Active Directory (Azure AD). Azure AD returns a sign-in response through the user's browser, which contains claims about the user in a security token. Signing in users takes advantage of the [Open ID Connect](./v2-protocols-oidc.md) standard protocol, simplified by the use of middleware [libraries](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps).
+Webové aplikace ověřují uživatele ve webovém prohlížeči. V tomto scénáři webová aplikace přesměruje prohlížeč uživatele, aby je přihlásil k Azure Active Directory (Azure AD). Azure AD vrátí odpověď pro přihlášení prostřednictvím prohlížeče uživatele, který obsahuje deklarace identity uživatele v tokenu zabezpečení. Přihlášení uživatelé využívají standardní protokol [Open ID Connect](./v2-protocols-oidc.md) , který je zjednodušený pomocí [knihoven](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps)middlewaru.
 
-![Web app signs in users](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
+![Přihlašování uživatelů k webové aplikaci](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 
-As a second phase, you can enable your application to call web APIs on behalf of the signed-in user. This next phase is a different scenario, which you'll find in [Web app that calls web APIs](scenario-web-app-call-api-overview.md).
+V druhé fázi můžete aplikaci povolit, aby vyvolala webová rozhraní API jménem přihlášeného uživatele. Tato další fáze je jiný scénář, který najdete ve [webové aplikaci, která volá webová rozhraní API](scenario-web-app-call-api-overview.md).
 
 > [!NOTE]
-> Adding sign-in to a web app is about protecting the web app and validating a user token, which is what  **middleware** libraries do. In the case of .NET, this scenario does not yet require the Microsoft Authentication Library (MSAL), which is about acquiring a token to call protected APIs. Authentication libraries will be introduced in the follow-up scenario, when the web app needs to call web APIs.
+> Přidání přihlašování do webové aplikace se týká ochrany webové aplikace a ověření tokenu uživatele, který se nachází v knihovnách **middlewaru** . V případě .NET tento scénář ještě nevyžaduje knihovnu Microsoft Authentication Library (MSAL), která má za následek získání tokenu pro volání chráněných rozhraní API. Knihovny pro ověřování budou zavedeny do následného scénáře, pokud webová aplikace potřebuje volat webová rozhraní API.
 
-## <a name="specifics"></a>Specifics
+## <a name="specifics"></a>Specifika
 
-- During the application registration, you'll need to provide one or several (if you deploy your app to several locations) reply URIs. In some cases (ASP.NET and ASP.NET Core), you'll need to enable the ID token. Finally, you'll want to set up a sign-out URI so that your application reacts to users signing out.
-- In the code for your application, you'll need to provide the authority to which your web app delegates sign-in. You might want to customize token validation (in particular, in partner scenarios).
-- Web applications support any account types. For more information, see [Supported account types](v2-supported-account-types.md).
+- Při registraci aplikace budete muset zadat jednu nebo několik (Pokud aplikaci nasadíte do několika umístění) identifikátorů URI odpovědi. V některých případech (ASP.NET a ASP.NET Core) budete muset token ID povolit. Nakonec budete chtít nastavit identifikátor URI pro odhlášení, aby se vaše aplikace znovu přihlásila k uživatelům, kteří se odhlásí.
+- V kódu vaší aplikace budete muset zadat autoritu, které vaše webová aplikace deleguje přihlašování. Můžete chtít přizpůsobit ověření tokenu (zejména v partnerských scénářích).
+- Webové aplikace podporují všechny typy účtů. Další informace najdete v tématu [podporované typy účtů](v2-supported-account-types.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
 > [Registrace aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore)

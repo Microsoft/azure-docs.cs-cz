@@ -98,8 +98,8 @@ Informace o požadavcích na Vyrovnávání zatížení back-endové aplikace na
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolení Proxy aplikace](application-proxy-add-on-premises-application.md)
+- [Povolit proxy aplikací](application-proxy-add-on-premises-application.md)
 - [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Povolit podmíněný přístup](application-proxy-integrate-with-sharepoint-server.md)
-- [Řešení potíží s problémy, se kterými máte potíže s Proxy aplikací](application-proxy-troubleshoot.md)
+- [Řešení problémů, které máte s proxy aplikací](application-proxy-troubleshoot.md)
 - [Přečtěte si, jak architektura Azure AD podporuje vysokou dostupnost](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

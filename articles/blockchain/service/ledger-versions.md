@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Service ledger versions, patching, & upgrade
-description: Overview of the supported ledgers versions in Azure Blockchain Service, including policies regarding systems patching and system-managed and user-managed upgrades.
+title: Verze hlavní knihy služeb Azure blockchain, opravy, aktualizace &
+description: Přehled podporovaných verzí v hlavní knize ve službě Azure blockchain, včetně zásad týkajících se oprav systémů a počítačů spravovaných systémem a uživatelem spravovaných upgradů.
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: janders
@@ -11,26 +11,26 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325193"
 ---
-# <a name="supported-azure-blockchain-service-ledger-versions"></a>Supported Azure Blockchain Service ledger versions
+# <a name="supported-azure-blockchain-service-ledger-versions"></a>Podporované verze hlavní knihy služby Azure blockchain
 
-Azure Blockchain Service uses the Ethereum-based [Quorum](https://www.goquorum.com/developers) ledger designed for the processing of private transactions within a group of known participants, identified as a consortium in Azure Blockchain Service.
+Služba Azure blockchain používá hlavní knihu [kvora](https://www.goquorum.com/developers) založenou na ethereem navrženou pro zpracování privátních transakcí v rámci skupiny známých účastníků, která je určená jako konsorcium ve službě Azure blockchain Service.
 
-Currently, Azure Blockchain Service supports [Quorum version 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) and [Tessera transaction manager](https://github.com/jpmorganchase/tessera).
+V současné době služba Azure blockchain podporuje [kvorum verze 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) a [správce transakcí Tessera](https://github.com/jpmorganchase/tessera).
 
-## <a name="managing-updates-and-upgrades"></a>Managing updates and upgrades
+## <a name="managing-updates-and-upgrades"></a>Správa aktualizací a upgradů
 
-Versioning in Quorum is done through a major, minor, and patch releases. For example, if the Quorum version is 2.0.1, release type would be categorized as follows:
+Správa verzí v kvoru se provádí prostřednictvím hlavní, vedlejší a opravné verze. Pokud je například kvorum verze 2.0.1, typ verze bude zařazen následovně:
 
-|Hlavní | Minor  | Patch  |
+|Hlavní | Podverze  | Použita  |
 | :--- | :----- | :----- |
-| 2 | 0 | 1\. místo | 
+| 2 | 0 | 1 | 
 
-Azure Blockchain Service automatically updates patch releases of Quorum to existing running members within 30 days of being made available from Quorum.
+Služba Azure blockchain automaticky aktualizuje vydané verze kvora na stávající běžící členy do 30 dnů od jejího zpřístupnění z kvora.
 
-## <a name="availability-of-new-ledger-versions"></a>Availability of new ledger versions
+## <a name="availability-of-new-ledger-versions"></a>Dostupnost nových verzí hlavní knihy
 
-Azure Blockchain Service provides the latest major and minor versions of the Quorum ledger within 60 days of being available from the Quorum manufacturer. A maximum of four minor releases are provided for consortia to choose from when provisioning a new member and consortium. Upgrading from to a major or minor release is currently not supported. For example, if you are running version 2.x, an upgrade to version 3.x is currently not supported. Similarly, if you are running version 2.2, an upgrade to version 2.3 is currently not supported.
+Služba Azure blockchain poskytuje nejnovější hlavní a dílčí verze hlavní knihy kvora do 60 dnů od jejího zpřístupnění od výrobce kvora. Pro konsorcia si můžete při zřizování nového člena a konsorcia poskytnout maximálně čtyři dílčí verze. Upgrade z verze na hlavní nebo dílčí verzi se v tuto chvíli nepodporuje. Například pokud používáte verzi 2. x, upgrade na verzi 3. x není aktuálně podporován. Podobně pokud používáte verzi 2,2, upgrade na verzi 2,3 není aktuálně podporován.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Limits in Azure Blockchain Service](limits.md)
+[Omezení ve službě Azure blockchain](limits.md)

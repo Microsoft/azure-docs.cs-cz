@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Manage tag governance'
-description: In this tutorial, you use the Modify effect of Azure Policy to create and enforce a tag governance model on new and existing resources.
+title: 'Kurz: Správa zásad správného řízení značek'
+description: V tomto kurzu použijete efekt změny Azure Policy k vytvoření a vykonání modelu zásad správného řízení pro nové a stávající prostředky.
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: e3d6e279b293ea8063c690f9fb69a6f183b2838d
@@ -10,49 +10,49 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482252"
 ---
-# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Tutorial: Manage tag governance with Azure Policy
+# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Kurz: Správa řízení značek pomocí Azure Policy
 
-[Tags](../../../azure-resource-manager/resource-group-using-tags.md) are a crucial part of organizing your Azure resources into a taxonomy. When following [best practices for tag management](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources), tags can be the basis for applying your business policies with Azure Policy or [tracking costs with Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
-No matter how or why you use tags, it's important that you can quickly add, change, and remove those tags on your Azure resources.
+[Značky](../../../azure-resource-manager/resource-group-using-tags.md) jsou důležitou součástí uspořádání prostředků Azure do taxonomie. Při dodržování [osvědčených postupů pro správu značek](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)může být značkami základem pro použití obchodních zásad s Azure Policy nebo [sledováním nákladů pomocí cost management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+Bez ohledu na to, jak nebo proč používáte značky, je důležité, abyste tyto značky mohli rychle přidávat, měnit a odebírat ve svých prostředcích Azure.
 
-Azure Policy's [Modify](../concepts/effects.md#modify) effect is designed to aid in the governance of tags no matter what stage of resource governance you are in. **Modify** helps when:
+Efekt [změny](../concepts/effects.md#modify) Azure Policy je navržený tak, aby se v rámci zásad správného řízení značek bez ohledu na to, ve které fázi zásad správného řízení prostředků nejednalo. **Upravit** pomáhá v těchto případech:
 
-- You're new to the cloud and have no tag governance
-- Already have thousands of resources with no tag governance
-- Already have an existing taxonomy that you need changed
+- Nejste v cloudu a nemusíte mít žádné zásady správného řízení značek.
+- Už máte tisíce prostředků bez zásad správného řízení značek.
+- Už máte existující taxonomii, kterou potřebujete změnit.
 
-In this tutorial, you'll complete the following tasks:
+V tomto kurzu provedete následující úlohy:
 
 > [!div class="checklist"]
-> - Identify your business requirements
-> - Map each requirement to a policy definition
-> - Group the tag policies into an initiative
+> - Určení podnikových požadavků
+> - Namapujte každý požadavek na definici zásady.
+> - Seskupení zásad značek k iniciativě
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="identify-requirements"></a>Identify requirements
+## <a name="identify-requirements"></a>Identifikace požadavků
 
-Like any good implementation of governance controls, the requirements should come from your business needs and be well understood before creating technical controls. For this scenario tutorial, the following items are our business requirements:
+Stejně jako jakákoli dobrá implementace řízení zásad správného řízení by měly požadavky přijít z vašich obchodních potřeb a být dobře pochopitelné před vytvořením technických ovládacích prvků. V tomto scénáři se jedná o naše obchodní požadavky na následující položky:
 
-- Two required tags on all resources: _CostCenter_ and _Env_
-- _CostCenter_ must exist on all containers and individual resources
-  - Resources inherit from the container they're in, but may be individually overridden
-- _Env_ must exist on all containers and individual resources
-  - Resources determine environment by container naming scheme and may not be overridden
-  - All resources in a container are part of the same environment
+- Dvě požadované značky pro všechny prostředky: _CostCenter_ a _ENV_
+- _CostCenter_ musí existovat na všech kontejnerech a jednotlivých prostředcích.
+  - Prostředky dědí z kontejneru, ve kterém jsou, ale můžou být individuálně přepsané.
+- _Obálka_ musí existovat na všech kontejnerech a jednotlivých prostředcích.
+  - Prostředky určují prostředí podle schématu pojmenování kontejnerů a nedají se přepsat.
+  - Všechny prostředky v kontejneru jsou součástí stejného prostředí.
 
-## <a name="configure-the-costcenter-tag"></a>Configure the CostCenter tag
+## <a name="configure-the-costcenter-tag"></a>Konfigurace značky CostCenter
 
-In terms specific to an Azure environment managed by Azure Policy, the _CostCenter_ tag requirements call for the following:
+V závislosti na prostředí Azure spravovaném pomocí Azure Policy požadavky na značku _CostCenter_ volají následující:
 
-- Deny resource groups missing the _CostCenter_ tag
-- Modify resources to add the _CostCenter_ tag from the parent resource group when missing
+- Odepření skupin prostředků chybí značka _CostCenter_ .
+- Upravit prostředky pro přidání značky _CostCenter_ z nadřazené skupiny prostředků, když chybí
 
-### <a name="deny-resource-groups-missing-the-costcenter-tag"></a>Deny resource groups missing the CostCenter tag
+### <a name="deny-resource-groups-missing-the-costcenter-tag"></a>Odepření skupin prostředků chybí značka CostCenter.
 
-Since the _CostCenter_ for a resource group can't be determined by the name of the resource group, it must have the tag defined on the request to create the resource group. The following policy rule with the [Deny](../concepts/effects.md#deny) effect prevents the creation or updating of resource groups that don't have the _CostCenter_ tag:
+Vzhledem k tomu, že _CostCenter_ pro skupinu prostředků nejde určit podle názvu skupiny prostředků, musí mít pro vytvoření skupiny prostředků značku definovanou v žádosti. Následující pravidlo zásad s efektem [odepření](../concepts/effects.md#deny) zabraňuje vytvoření nebo aktualizaci skupin prostředků, které nemají značku _CostCenter_ :
 
 ```json
 "if": {
@@ -72,11 +72,11 @@ Since the _CostCenter_ for a resource group can't be determined by the name of t
 ```
 
 > [!NOTE]
-> As this policy rule targets a resource group, the _mode_ on the policy definition must be 'All' instead of 'Indexed'.
+> Vzhledem k tomu, že toto pravidlo zásad cílí na skupinu prostředků, musí být _režim_ definice zásady "vše" místo "indexovaný".
 
-### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>Modify resources to inherit the CostCenter tag when missing
+### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>V případě chybějících prostředků upravit prostředky pro dědění značky CostCenter
 
-The second _CostCenter_ need is for any resources to inherit the tag from the parent resource group when it's missing. If the tag is already defined on the resource, even if different from the parent resource group, it must be left alone. The following policy rule uses [Modify](../concepts/effects.md#modify):
+Druhý _CostCenter_ vyžaduje, aby všechny prostředky dědily značku z nadřazené skupiny prostředků, když chybí. Pokud je značka již definována v prostředku, i když se liší od nadřazené skupiny prostředků, musí být ponechána samostatně. Následující pravidlo zásad používá [úpravu](../concepts/effects.md#modify):
 
 ```json
 "policyRule": {
@@ -100,21 +100,21 @@ The second _CostCenter_ need is for any resources to inherit the tag from the pa
 }
 ```
 
-This policy rule uses the **add** operation instead of **addOrReplace** as we don't want to alter the tag value if it's present when [remediating](../how-to/remediate-resources.md) existing resources. It also uses the `[resourcegroup()]` template function to get the tag value from the parent resource group.
+Toto pravidlo zásady používá operaci **Přidání** místo **addOrReplace** , protože nechceme změnit hodnotu značky, pokud je přítomna při [Oprava](../how-to/remediate-resources.md) stávajících prostředcích. Používá také funkci šablony `[resourcegroup()]` k získání hodnoty značky z nadřazené skupiny prostředků.
 
 > [!NOTE]
-> As this policy rule targets resources that support tags, the _mode_ on the policy definition must be 'Indexed'. This configuration also ensures this policy skips resource groups.
+> Vzhledem k tomu, že toto pravidlo zásad cílí na prostředky, které podporují značky, musí být _režim_ definice zásady indexovaný. Tato konfigurace taky zajišťuje, že tyto zásady přeskočí skupiny prostředků.
 
-## <a name="configure-the-env-tag"></a>Configure the Env tag
+## <a name="configure-the-env-tag"></a>Konfigurace značky ENV
 
-In terms specific to an Azure environment managed by Azure Policy, the _Env_ tag requirements call for the following:
+V souvislosti s prostředím Azure spravovaným pomocí Azure Policy požadavky na značku _ENV_ vyvolají následující:
 
-- Modify the _Env_ tag on the resource group based on the naming scheme of the resource group
-- Modify the _Env_ tag on all resources in the resource group to the same as the parent resource group
+- Upravte značku _ENV_ pro skupinu prostředků na základě schématu pojmenování skupiny prostředků.
+- Upravte značku _ENV_ u všech prostředků ve skupině prostředků na stejnou jako nadřazená skupina prostředků.
 
-### <a name="modify-resource-groups-env-tag-based-on-name"></a>Modify resource groups Env tag based on name
+### <a name="modify-resource-groups-env-tag-based-on-name"></a>Upravit značku ENV skupin prostředků podle názvu
 
-A [Modify](../concepts/effects.md#modify) policy is required for each environment that exists in your Azure environment. The Modify policy for each looks something like this policy definition:
+Pro každé prostředí, které existuje ve vašem prostředí Azure, se vyžadují zásady [úprav](../concepts/effects.md#modify) . Zásady úprav pro každou z nich vypadají jako tato definice zásad:
 
 ```json
 "policyRule": {
@@ -146,13 +146,13 @@ A [Modify](../concepts/effects.md#modify) policy is required for each environmen
 ```
 
 > [!NOTE]
-> As this policy rule targets a resource group, the _mode_ on the policy definition must be 'All' instead of 'Indexed'.
+> Vzhledem k tomu, že toto pravidlo zásad cílí na skupinu prostředků, musí být _režim_ definice zásady "vše" místo "indexovaný".
 
-This policy only matches resource groups with the sample naming scheme used for production resources of `prd-`. More complex naming scheme's can be achieved with several **match** conditions instead of the single **like** in this example.
+Tato zásada se shoduje jenom se skupinami prostředků s ukázkovým schématem pojmenovávání, které se používá pro produkční prostředky `prd-`. Složitější schéma pojmenování je možné dosáhnout s několika podmínkami **shody** namísto jediného, **jako** v tomto příkladu.
 
-### <a name="modify-resources-to-inherit-the-env-tag"></a>Modify resources to inherit the Env tag
+### <a name="modify-resources-to-inherit-the-env-tag"></a>Úprava prostředků pro dědění značky ENV
 
-The business requirement calls for all resources to have the _Env_ tag that their parent resource group does. This tag can't be overridden, so we'll use the **addOrReplace** operation with the [Modify](../concepts/effects.md#modify) effect. The sample Modify policy looks like the following rule:
+Požadavek na podnik vyžaduje, aby všechny prostředky měly značku _ENV_ , která má svou nadřazenou skupinu prostředků. Tuto značku nejde přepsat, takže použijeme operaci **addOrReplace** s efektem [úprav](../concepts/effects.md#modify) . Ukázková zásada úprav vypadá jako v následujícím pravidle:
 
 ```json
 "policyRule": {
@@ -184,21 +184,21 @@ The business requirement calls for all resources to have the _Env_ tag that thei
 ```
 
 > [!NOTE]
-> As this policy rule targets resources that support tags, the _mode_ on the policy definition must be 'Indexed'. This configuration also ensures this policy skips resource groups.
+> Vzhledem k tomu, že toto pravidlo zásad cílí na prostředky, které podporují značky, musí být _režim_ definice zásady indexovaný. Tato konfigurace taky zajišťuje, že tyto zásady přeskočí skupiny prostředků.
 
-This policy rule looks for any resource that doesn't have its parent resource groups value for the _Env_ tag or is missing the _Env_ tag. Matching resources have their _Env_ tag set to the parent resource groups value, even if the tag already existed on the resource but with a different value.
+Toto pravidlo zásad vyhledá všechny prostředky, které nemají hodnotu nadřazených skupin prostředků pro značku _ENV_ nebo chybějící značku _ENV_ . Odpovídající prostředky mají svou značku _ENV_ nastavenou na hodnotu nadřazených skupin prostředků, a to i v případě, že značka již existovala v prostředku, ale s jinou hodnotou.
 
-## <a name="assign-the-initiative-and-remediate-resources"></a>Assign the initiative and remediate resources
+## <a name="assign-the-initiative-and-remediate-resources"></a>Přiřazení iniciativy a nápravy prostředků
 
-Once the tag policies above are created, join them into a single initiative for tag governance and assign them to a management group or subscription. The initiative and included policies then evaluate compliance of existing resources and alters requests for new or updated resources that match the **if** property in the policy rule. However, the policy doesn't automatically update existing non-compliant resources with the defined tag changes.
+Po vytvoření výše uvedených zásad značek je připojte k jedné iniciativě pro řízení značek a přiřaďte je ke skupině nebo předplatnému správy. Iniciativa a zahrnuté zásady pak vyhodnocují shodu stávajících prostředků a mění požadavky na nové nebo aktualizované prostředky, které odpovídají vlastnosti **if** v pravidle zásad. Zásady ale neaktualizují existující prostředky, které nedodržují předpisy, automaticky pomocí definovaných změn značek.
 
-Like [deployIfNotExists](../concepts/effects.md#deployifnotexists) policies, the **Modify** policy uses remediation tasks to alter existing non-compliant resources. Follow the directions on [How-to remediate resources](../how-to/remediate-resources.md) to identify your non-compliant **Modify** resources and correct the tags to your defined taxonomy.
+Podobně jako zásady [deployIfNotExists](../concepts/effects.md#deployifnotexists) používají zásady **úprav** ke změně existujících prostředků, které nedodržují předpisy, úlohy nápravy. Postupujte podle pokynů k [nápravě prostředků](../how-to/remediate-resources.md) , abyste identifikovali nekompatibilní prostředky pro **Úpravy** a opravili značky pro vaši definovanou taxonomii.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you're done working with resources from this tutorial, use the following steps to delete any of the assignments or definitions created above:
+Pokud to uděláte práci s prostředky z tohoto kurzu, pomocí následujícího postupu odstraňte všechna přiřazení a definice vytvořili výše:
 
-1. Select **Definitions** (or **Assignments** if you're trying to delete an assignment) under **Authoring** in the left side of the Azure Policy page.
+1. Vyberte **definice** (nebo **přiřazení** , pokud se pokoušíte odstranit přiřazení) v části **vytváření obsahu** v levé části stránky Azure Policy.
 
 1. Vyhledejte novou definici iniciativy nebo zásady (nebo přiřazení), kterou chcete odebrat.
 
@@ -206,12 +206,12 @@ If you're done working with resources from this tutorial, use the following step
 
 ## <a name="review"></a>Revize
 
-In this tutorial, you learned about the following tasks:
+V tomto kurzu jste se dozvěděli o následujících úlohách:
 
 > [!div class="checklist"]
-> - Identified your business requirements
-> - Mapped each requirement to a policy definition
-> - Grouped the tag policies into an initiative
+> - Identifikujte vaše podnikové požadavky.
+> - Namapovaný každý požadavek na definici zásady
+> - Seskupení zásad značek do iniciativy
 
 ## <a name="next-steps"></a>Další kroky
 

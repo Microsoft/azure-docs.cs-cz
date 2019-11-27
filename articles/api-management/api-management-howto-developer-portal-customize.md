@@ -1,6 +1,6 @@
 ---
-title: Access and customize the managed developer portal - Azure API Management | Microsoft Docs
-description: Learn how to use the managed version of the developer portal in API Management.
+title: Přístup a přizpůsobení spravovaného portálu pro vývojáře – Azure API Management | Microsoft Docs
+description: Naučte se používat spravovanou verzi portálu pro vývojáře v API Management.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -19,115 +19,115 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454416"
 ---
-# <a name="access-and-customize-developer-portal"></a>Access and customize developer portal
+# <a name="access-and-customize-developer-portal"></a>Přístup a přizpůsobení portálu pro vývojáře
 
-Developer portal is an automatically generated, fully customizable website with the documentation of your APIs. It is where API consumers can discover your APIs, learn how to use them, and request access.
+Portál pro vývojáře je automaticky generovaný plně přizpůsobitelný web s dokumentací vašich rozhraní API. Je tam, kde můžou příjemci rozhraní API zjistit vaše rozhraní API, zjistit, jak je používat, a požádat o přístup.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Access the managed version of the developer portal
-> * Navigate its administrative interface
-> * Customize the content
-> * Publish the changes
-> * View the published portal
+> * Přístup ke spravované verzi portálu pro vývojáře
+> * Přejít na jeho rozhraní pro správu
+> * Přizpůsobení obsahu
+> * Publikovat změny
+> * Zobrazení publikovaného portálu
 
-You can find more details on the developer portal in the [Azure API Management developer portal overview](api-management-howto-developer-portal.md).
+Další podrobnosti najdete na portálu pro vývojáře v článku [Přehled portálu pro vývojáře Azure API Management](api-management-howto-developer-portal.md).
 
-![API Management developer portal - admin mode](media/api-management-howto-developer-portal-customize/cover.png)
+![Portál pro vývojáře API Management – režim správy](media/api-management-howto-developer-portal-customize/cover.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
-- Import and publish an Azure API Management instance. For more information, see [Import and publish](import-and-publish.md)
+- Import a publikování instance služby Azure API Management. Další informace najdete v tématu [Import a publikování](import-and-publish.md) .
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="access-the-portal-as-an-administrator"></a>Access the portal as an administrator
+## <a name="access-the-portal-as-an-administrator"></a>Přístup k portálu jako správce
 
-Follow the steps below to access the managed version of the portal.
+Použijte následující postup, chcete-li získat přístup ke spravované verzi portálu.
 
-1. Go to your API Management service instance in the Azure portal.
-1. Click on the **Developer portal** button in the top navigation bar. A new browser tab with an administrative version of the portal will open.
+1. V Azure Portal přejít na instanci služby API Management.
+1. V horním navigačním panelu klikněte na tlačítko **portál pro vývojáře** . Otevře se nová karta prohlížeče s verzí pro správu portálu.
 
-## <a name="understand-the-portals-administrative-interface"></a>Understand the portal's administrative interface
+## <a name="understand-the-portals-administrative-interface"></a>Pochopení rozhraní pro správu portálu
 
-### <a name="default-content"></a>Default content 
+### <a name="default-content"></a>Výchozí obsah 
 
-If you're accessing the portal for the first time, the default content will be automatically provisioned in the background. Default content has been designed to showcase portal's capabilities and minimize the amount of customizations needed to personalize your portal. You can learn more about what is included in the portal content in the [Azure API Management developer portal overview](api-management-howto-developer-portal.md).
+Pokud k portálu přistupujete poprvé, výchozí obsah se automaticky zřídí na pozadí. Výchozí obsah byl navržený tak, aby předvedl možnosti portálu a minimalizoval množství přizpůsobení potřebných k přizpůsobení portálu. Další informace o tom, co je součástí obsahu portálu, najdete v článku [Přehled portálu pro vývojáře Azure API Management](api-management-howto-developer-portal.md).
 
-### <a name="visual-editor"></a>Visual editor
+### <a name="visual-editor"></a>Vizuální Editor
 
-You can customize the content of the portal with the visual editor. The menu sections on the left let you create or modify pages, media, layouts, menus, styles, or website settings. The menu items on the bottom let you switch between viewports (for example, mobile or desktop), view the elements of the portal visible to authenticated or anonymous users, or save or undo actions.
+Můžete přizpůsobit obsah portálu pomocí vizuálního editoru. Oddíly nabídky na levé straně umožňují vytvářet nebo upravovat stránky, multimédia, rozložení, nabídky, styly a nastavení webu. Položky nabídky v dolní části umožňují přepínání mezi zobrazeními (například mobilní nebo desktopové), zobrazení prvků portálu viditelných pro ověřené nebo anonymní uživatele nebo ukládání nebo vrácení akcí.
 
-You can add rows to a page by clicking on a blue icon with a plus sign. Widgets (for example, text, images, or APIs list) can be added by pressing a grey icon with a plus sign. You can rearrange items in a page with the drag-and-drop interaction. 
+Kliknutím na modrou ikonu se znaménkem plus můžete přidat řádky na stránku. Widgety (například text, obrázky nebo seznam rozhraní API) lze přidat stisknutím šedé ikony se znaménkem plus. Můžete změnit uspořádání položek na stránce pomocí interakce přetažení myší. 
 
-### <a name="layouts-and-pages"></a>Layouts and pages
+### <a name="layouts-and-pages"></a>Rozložení a stránky
 
-![Pages and layouts](media/api-management-howto-developer-portal-customize/pages-layouts.png)
+![Stránky a rozložení](media/api-management-howto-developer-portal-customize/pages-layouts.png)
 
-Layouts define how pages are displayed. For example, in the default content, there are two layouts - one applies to the home page, and the other to all remaining pages.
+Rozložení definují způsob zobrazení stránek. Například ve výchozím obsahu jsou k dispozici dvě rozložení – jedna se vztahuje na domovskou stránku a druhá na všechny zbývající stránky.
 
-A layout gets applied to a page by matching its URL template to the page's URL. For example, layout with a URL template of `/wiki/*` will be applied to every page with the `/wiki/` segment in the URL: `/wiki/getting-started`, `/wiki/styles`, etc.
+Rozložení se použije na stránku podle odpovídající šablony URL k adrese URL stránky. Například rozložení se šablonou adresa URL `/wiki/*` bude použito na každou stránku s `/wiki/` segmentem v adrese URL: `/wiki/getting-started`, `/wiki/styles`atd.
 
-In the image above, content belonging to the layout is marked in blue, while the page is marked in red. The menu sections are marked respectively.
+Na obrázku výše je obsah patřící do rozložení označen modře, zatímco stránka je označena červeně. Oddíly nabídky jsou označeny v uvedeném pořadí.
 
-### <a name="styling-guide"></a>Styling guide
+### <a name="styling-guide"></a>Vodítko stylu
 
-![Styling guide](media/api-management-howto-developer-portal-customize/styling-guide.png)
+![Vodítko stylu](media/api-management-howto-developer-portal-customize/styling-guide.png)
 
-Styling guide is a panel created with designers in mind. It allows for overseeing and styling all the visual elements in your portal. The styling is hierarchical - many elements inherit properties from other elements. For example, button elements use colors for text and background. To change a button's color, you need to change the original color variant.
+Vodítko pro stylování je panel vytvořený s ohledem na použití návrháře. Umožňuje zobrazení a stylování všech vizuálních prvků na portálu. Styl je hierarchický – mnoho prvků dědí vlastnosti z jiných prvků. Například prvky Button používají barvy pro text a pozadí. Chcete-li změnit barvu tlačítka, je nutné změnit původní variaci barvy.
 
-To edit a variant, click on it and select the pencil icon that appears on top of it. Once you make the changes in the pop-up window, close it.
+Pokud chcete upravit variantu, klikněte na ni a vyberte ikonu tužky, která se zobrazí v horní části. Jakmile provedete změny v místním okně, zavřete je.
 
-### <a name="save-button"></a>Save button
+### <a name="save-button"></a>Tlačítko Uložit
 
-![Save button](media/api-management-howto-developer-portal-customize/save-button.png)
+![Tlačítko Uložit](media/api-management-howto-developer-portal-customize/save-button.png)
 
-Whenever you make a change in the portal, you need to save it manually by pressing the **Save** button in the menu at the bottom. When you save your changes, the modified content is automatically uploaded to your API Management service.
+Pokaždé, když provedete změnu na portálu, je nutné ji uložit ručně stisknutím tlačítka **Uložit** v nabídce v dolní části. Po uložení změn se změněný obsah automaticky nahraje do vaší služby API Management.
 
-## <a name="customize-the-portals-content"></a>Customize the portal's content
+## <a name="customize-the-portals-content"></a>Přizpůsobení obsahu portálu
 
-Before you make your portal available to the visitors, you should personalize the automatically generated content. Recommended changes include the layouts, styles, and the content of the home page.
+Než zpřístupníte portál návštěvníkům, měli byste přizpůsobit automaticky generovaný obsah. Mezi doporučené změny patří rozložení, styly a obsah domovské stránky.
 
 > [!NOTE]
-> Due to integration considerations, the following pages can't be removed or moved under a different URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
+> Z důvodu integrace nelze tyto stránky odebrat nebo přesunout pod jinou adresu URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso``/signup`.
 
 ### <a name="home-page"></a>Domovská stránka
 
-The default **Home** page is filled with dummy content. You can either remove the whole sections with the content or keep the structure and adjust the elements one by one. Replace the generated text and images with your own and make sure the links point to desired locations.
+Výchozí **Domovská** stránka je vyplněna fiktivním obsahem. Můžete buď odebrat všechny části s obsahem, nebo zachovat strukturu a upravit prvky jednu po jedné. Vygenerovaný text a obrázky nahraďte vlastními a ujistěte se, že odkazy odkazují na požadovaná umístění.
 
-### <a name="layouts"></a>Layouts
+### <a name="layouts"></a>Rozložení
 
-Replace the automatically generated logo in the navigation bar with your own image.
+V navigačním panelu nahraďte automaticky vygenerované logo vlastním obrázkem.
 
-### <a name="styling"></a>Styling
+### <a name="styling"></a>Používání stylů
 
-Although you don't need to adjust any styles, you may consider adjusting particular elements. For example, change the primary color to match your brand's color.
+Přestože nemusíte upravovat žádné styly, můžete zvážit úpravu určitých prvků. Například změňte primární barvu tak, aby odpovídala barvě vaší značky.
 
-### <a name="customization-example"></a>Customization example
+### <a name="customization-example"></a>Příklad přizpůsobení
 
-In the video below we demonstrate how to edit the content of the portal, customize the website's look, and publish the changes.
+V níže uvedeném videu jsme ukázali, jak upravit obsah portálu, přizpůsobit vzhled webu a publikovat změny.
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 
-## <a name="publish"> </a>Publish the portal
+## <a name="publish"> </a>Publikování portálu
 
-To make your portal and its latest changes available to visitors, you need to publish it.
+Pokud chcete, aby byl váš portál a jeho nejnovější změny dostupné pro návštěvníky, je nutné ji publikovat.
 
-1. Make sure you saved your changes by clicking on the **Save** icon.
-1. Click on **Publish website** in the **Operations** section of the menu. Tato operace může trvat několik minut.  
-    ![Publish portal](media/api-management-howto-developer-portal-customize/publish-portal.png)
+1. Ujistěte se, že jste změny uložili kliknutím na ikonu **Uložit** .
+1. V nabídce v části **operace** klikněte na **Publikovat web** . Tato operace může trvat několik minut.  
+    ![publikování portálu](media/api-management-howto-developer-portal-customize/publish-portal.png)
 
 > [!NOTE]
-> The portal needs to be republished after API Management service configuration changes, such as assigning a custom domain, updating the identity providers, setting delegation, specifying sign-in and product terms, and more.
+> Portál se musí znovu publikovat po API Management změny konfigurace služby, jako je například přiřazení vlastní domény, aktualizace zprostředkovatelů identity, nastavení delegování, určení podmínek pro přihlášení a produkt a další.
 
-## <a name="visit-the-published-portal"></a>Visit the published portal
+## <a name="visit-the-published-portal"></a>Navštívit publikovaný portál
 
-After you publish the portal, you can access it at the same URL as the administrative panel, for example `https://contoso-api.developer.azure-api.net`. View it in a separate browser session (incognito / private browsing mode) as an external visitor.
+Po publikování portálu je možné k němu přistupovat na stejné adrese URL jako panel pro správu, například `https://contoso-api.developer.azure-api.net`. Zobrazí se v samostatné relaci prohlížeče (režim procházení anonymním/privátní) jako externí návštěvník.
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn more about the developer portal:
+Další informace o portálu pro vývojáře:
 
-- [Azure API Management developer portal overview](api-management-howto-developer-portal.md)
+- [Přehled portálu pro vývojáře Azure API Management](api-management-howto-developer-portal.md)

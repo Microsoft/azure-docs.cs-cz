@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Grant a user access to Azure resources using RBAC and Resource Manager template
-description: Learn how to grant a user access to Azure resources using role-based access control (RBAC) by using Azure Resource Manager template in this tutorial.
+title: Kurz – udělení přístupu uživatele k prostředkům Azure pomocí šablony RBAC a Správce prostředků
+description: Naučte se, jak udělit uživateli přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) pomocí šablony Azure Resource Manager v tomto kurzu.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
 author: rolyon
@@ -20,31 +20,31 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74418485"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Tutorial: Grant a user access to Azure resources using RBAC and Resource Manager template
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Kurz: udělení přístupu uživatele k prostředkům Azure pomocí šablony RBAC a Správce prostředků
 
-[Role-based access control (RBAC)](overview.md) is the way that you manage access to Azure resources. In this tutorial, you create a resource group and grant a user access to create and manage virtual machines in the resource group. This tutorial focuses on the process of deploying a Resource Manager template to grant the access. For more information on developing Resource Manager templates, see [Resource Manager documentation](/azure/azure-resource-manager/) and the [template reference](/azure/templates/microsoft.authorization/allversions
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. V tomto kurzu vytvoříte skupinu prostředků a udělíte uživatelům přístup k vytváření a správě virtuálních počítačů ve skupině prostředků. Tento kurz se zaměřuje na proces nasazení šablony Správce prostředků pro udělení přístupu. Další informace o vývoji šablon Správce prostředků naleznete v [dokumentaci správce prostředků](/azure/azure-resource-manager/) a odkazu na [šablonu](/azure/templates/microsoft.authorization/allversions
 ).
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Grant access for a user at a resource group scope
+> * Udělení přístupu pro uživatele v oboru skupiny prostředků
 > * Ověření nasazení
 > * Vyčištění
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To add and remove role assignments, you must have:
+Chcete-li přidat a odebrat přiřazení rolí, je nutné mít následující:
 
-* `Microsoft.Authorization/roleAssignments/write` and `Microsoft.Authorization/roleAssignments/delete` permissions, such as [User Access Administrator](built-in-roles.md#user-access-administrator) or [Owner](built-in-roles.md#owner)
+* oprávnění `Microsoft.Authorization/roleAssignments/write` a `Microsoft.Authorization/roleAssignments/delete`, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-The template used in this quickstart is from [Azure quickstart templates](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). More Azure authorization related templates can be found [here](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). Další šablony související s autorizací Azure najdete [tady](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization).
 
-To deploy the template, select **Try it** to open the Azure Cloud shell, and then paste the following PowerShell script into the shell window. To paste the code, right-click the shell window and then select **Paste**.
+Pokud chcete šablonu nasadit, vyberte **zkusit znovu** a otevřete službu Azure Cloud Shell a vložte do okna prostředí následující skript PowerShellu. Kód vložíte tak, že kliknete pravým tlačítkem myši na okno prostředí a pak vyberete **Vložit**.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -63,15 +63,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. Open the resource group created in the last procedure. The default name is the project name with **rg** appended.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Otevřete skupinu prostředků vytvořenou v posledním postupu. Výchozí název je název projektu s připojeným **RG** .
 1. Z nabídky vlevo vyberte **Řízení přístupu (IAM)** .
 1. Vyberte **Přiřazení rolí**. 
-1. In **Name**, enter the email address you typed in the last procedure. You shall see the user with the email address has the **Virtual Machine Contributor** role.
+1. Do pole **název**zadejte e-mailovou adresu, kterou jste zadali v posledním postupu. Zobrazí se uživatel s e-mailovou adresou role **Přispěvatel virtuálních počítačů** .
 
 ## <a name="clean-up"></a>Vyčištění
 
-To remove the resource group created in the last procedure, select **Try it** to open the Azure Cloud shell, and then paste the following PowerShell script into the shell window.
+Pokud chcete odebrat skupinu prostředků vytvořenou v posledním postupu, vyberte **zkusit** , aby se otevřelo Azure Cloud Shell, a pak do okna prostředí vložte následující skript PowerShellu.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a same project name you used in the last procedure"
@@ -83,4 +83,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Tutorial: Grant a user access to Azure resources using RBAC and Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure PowerShell](tutorial-role-assignments-user-powershell.md)

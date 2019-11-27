@@ -1,6 +1,6 @@
 ---
-title: Management concepts for Azure AD Domain Services | Microsoft Docs
-description: Learn about how to administer an Azure Active Directory Domain Services managed domain and the behavior of user accounts and passwords
+title: Koncepty správy pro Azure AD Domain Services | Microsoft Docs
+description: Informace o tom, jak spravovat Azure Active Directory Domain Services spravovanou doménu a chování uživatelských účtů a hesel
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,66 +17,66 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481023"
 ---
-# <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Management concepts for user accounts, passwords, and administration in Azure Active Directory Domain Services
+# <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Koncepce správy uživatelských účtů, hesel a správy v Azure Active Directory Domain Services
 
-When you create and run an Azure Active Directory Domain Services (AD DS) managed domain, there are some differences in behavior compared to a traditional on-premises AD DS environment. You use the same administrative tools in Azure AD DS as a self-managed domain, but you can't directly access the domain controllers (DC). There's also some differences in behavior for password policies and password hashes depending on the source of the user account creation.
+Když vytváříte a spouštíte spravovanou doménu Azure Active Directory Domain Services (služba AD DS), v porovnání s tradičním místním služba AD DS prostředím dochází k nějakým rozdílům v chování. V Azure služba AD DS používáte stejné nástroje pro správu jako samoobslužné domény, ale nemůžete získat přímý přístup k řadičům domény (DC). V závislosti na zdroji vytváření uživatelských účtů je také několik rozdílů v chování zásad hesel a hodnot hash hesel.
 
-This conceptual article details how to administer an Azure AD DS managed domain and the different behavior of user accounts depending on the way they're created.
+Tento koncepční článek podrobně popisuje, jak spravovat spravovanou doménu Azure služba AD DS a různé chování uživatelských účtů v závislosti na tom, jak se vytváří.
 
-## <a name="domain-management"></a>Domain management
+## <a name="domain-management"></a>Správa domén
 
-In Azure AD DS, the domain controllers (DCs) that contain all the resources like users and groups, credentials, and policies are part of the managed service. For redundancy, two DCs are created as part of an Azure AD DS managed domain. You can't sign in to these DCs to perform management tasks. Instead, you create a management VM that's joined to the Azure AD DS managed domain, then install your regular AD DS management tools. You can use the Active Directory Administrative Center or Microsoft Management Console (MMC) snap-ins like DNS or Group Policy objects, for example.
+V Azure služba AD DS jsou řadiče domény (DCs), které obsahují všechny prostředky, jako jsou uživatelé a skupiny, přihlašovací údaje a zásady, součástí spravované služby. V případě redundance se dva řadiče domény vytvoří jako součást spravované domény Azure služba AD DS. K těmto řadičům domény se nemůžete přihlásit, abyste mohli provádět úlohy správy. Místo toho vytvoříte virtuální počítač pro správu, který je připojený k spravované doméně Azure služba AD DS, a pak nainstalujete běžné nástroje pro správu služba AD DS. Můžete použít Centrum správy služby Active Directory nebo moduly snap-in konzoly MMC (Microsoft Management Console), jako jsou například objekty DNS nebo Zásady skupiny.
 
-## <a name="user-account-creation"></a>User account creation
+## <a name="user-account-creation"></a>Vytvoření uživatelského účtu
 
-User accounts can be created in Azure AD DS in multiple ways. Most user accounts are synchronized in from Azure AD, which can also include user account synchronized from an on-premises AD DS environment. You can also manually create accounts directly in Azure AD DS. Some features, like initial password synchronization or password policy, behave differently depending on how and where user accounts are created.
+Uživatelské účty je možné v Azure služba AD DS vytvořit několika způsoby. Většina uživatelských účtů je synchronizovaná ve službě Azure AD, která může také zahrnovat uživatelský účet synchronizovaný z místního prostředí služba AD DS. Účty můžete také ručně vytvořit přímo v Azure služba AD DS. Některé funkce, jako je například počáteční synchronizace hesel nebo zásady hesel, se chovají různě v závislosti na tom, jak a kde jsou vytvářeny uživatelské účty.
 
-* The user account can be synchronized in from Azure AD. This includes cloud-only user accounts created directly in Azure AD, and hybrid user accounts synchronized from an on-premises AD DS environment using Azure AD Connect.
-    * The majority of user accounts in Azure AD DS are created through the synchronization process from Azure AD.
-* The user account can be manually created in an Azure AD DS managed domain, and doesn't exist in Azure AD.
-    * If you need to create service accounts for applications that only run in Azure AD DS, you can manually create them in the managed domain. As synchronization is one-way from Azure AD, user accounts created in Azure AD DS aren't synchronized back to Azure AD.
+* Uživatelský účet může být synchronizovaný v rámci služby Azure AD. Patří sem pouze cloudové uživatelské účty vytvořené přímo v Azure AD a hybridní uživatelské účty synchronizované z místního služba AD DS prostředí pomocí Azure AD Connect.
+    * Většina uživatelských účtů ve službě Azure služba AD DS se vytváří prostřednictvím procesu synchronizace z Azure AD.
+* Uživatelský účet se dá ručně vytvořit ve spravované doméně Azure služba AD DS a neexistuje v Azure AD.
+    * Pokud potřebujete vytvořit účty služeb pro aplikace, které běží jenom v Azure služba AD DS, můžete je ručně vytvořit ve spravované doméně. Vzhledem k jednosměrné synchronizaci z Azure AD se uživatelské účty vytvořené v Azure služba AD DS nesynchronizují zpátky do Azure AD.
 
-## <a name="password-policy"></a>Password policy
+## <a name="password-policy"></a>Zásady hesel
 
-Azure AD DS includes a default password policy that defines settings for things like account lockout, maximum password age, and password complexity. Settings like account lockout policy apply to all users in Azure AD DS, regardless of how the user was created as outlined in the previous section. A few settings, like minimum password length and password complexity, only apply to users created directly in Azure AD DS.
+Azure služba AD DS obsahuje výchozí zásady pro hesla, které definují nastavení pro věci, jako je uzamčení účtu, maximální stáří hesla a složitost hesla. Nastavení, jako je zásada uzamčení účtů, se vztahuje na všechny uživatele v Azure služba AD DS bez ohledu na to, jak byl uživatel vytvořen, jak je uvedeno v předchozí části. Některá nastavení, jako je minimální délka hesla a složitost hesla, se vztahují jenom na uživatele vytvořené přímo v Azure služba AD DS.
 
-You can create your own custom password policies to override the default policy in Azure AD DS. These custom policies can then be applied to specific groups of users as needed.
+Můžete vytvořit vlastní zásady hesel a přepsat tak výchozí zásady v Azure služba AD DS. Tyto vlastní zásady pak můžete podle potřeby použít na konkrétní skupiny uživatelů.
 
-For more information on the differences in how password policies are applied depending on the source of user creation, see [Password and account lockout policies on managed domains][password-policy].
+Další informace o rozdílech v tom, jak se používají zásady hesel v závislosti na zdroji vytváření uživatelů, najdete v tématu [zásady hesel a uzamčení účtů ve spravovaných doménách][password-policy].
 
-## <a name="password-hashes"></a>Password hashes
+## <a name="password-hashes"></a>Hodnoty hash hesel
 
-To authenticate users on the managed domain, Azure AD DS needs password hashes in a format that's suitable for NT LAN Manager (NTLM) and Kerberos authentication. Azure AD doesn't generate or store password hashes in the format that's required for NTLM or Kerberos authentication until you enable Azure AD DS for your tenant. For security reasons, Azure AD also doesn't store any password credentials in clear-text form. Therefore, Azure AD can't automatically generate these NTLM or Kerberos password hashes based on users' existing credentials.
+K ověřování uživatelů ve spravované doméně služba AD DS Azure potřebuje hodnoty hash hesel ve formátu, který je vhodný pro ověřování pomocí protokolu NTLM (NT LAN Manager) a Kerberos. Azure AD negeneruje nebo ukládá hodnoty hash hesel ve formátu, který je vyžadován pro ověřování protokolem NTLM nebo Kerberos, dokud nepovolíte služba AD DS Azure pro vašeho tenanta. Z bezpečnostních důvodů Azure AD také neukládá přihlašovací údaje hesla ve formě nešifrovaných textů. Proto služba Azure AD nemůže automaticky generovat tyto hodnoty hash hesla NTLM nebo Kerberos na základě stávajících přihlašovacích údajů uživatelů.
 
-For cloud-only user accounts, users must change their passwords before they can use Azure AD DS. This password change process causes the password hashes for Kerberos and NTLM authentication to be generated and stored in Azure AD.
+U uživatelských účtů jenom pro Cloud musí uživatelé změnit svoje heslo, aby mohli používat Azure služba AD DS. Tento proces změny hesla způsobí, že se ve službě Azure AD vygenerují a ukládají hodnoty hash hesel pro ověřování pomocí protokolu Kerberos a NTLM.
 
-For users synchronized from an on-premises AD DS environment using Azure AD Connect, [enable synchronization of password hashes][hybrid-phs].
+Pro uživatele synchronizované z místního služba AD DS prostředí pomocí Azure AD Connect [Povolte synchronizaci hodnot hash hesel][hybrid-phs].
 
 > [!IMPORTANT]
-> Azure AD Connect only synchronizes legacy password hashes when you enable Azure AD DS for your Azure AD tenant. Legacy password hashes aren't used if you only use Azure AD Connect to synchronize an on-premises AD DS environment with Azure AD.
+> Pokud povolíte Azure služba AD DS pro vašeho tenanta Azure AD, Azure AD Connect synchronizuje jenom starší hodnoty hash hesel. Starší hodnoty hash hesel se nepoužívají, pokud používáte jenom Azure AD Connect k synchronizaci místního prostředí služba AD DS s Azure AD.
 >
-> If your legacy applications don't use NTLM authentication or LDAP simple binds, we recommend that you disable NTLM password hash synchronization for Azure AD DS. For more information, see [Disable weak cipher suites and NTLM credential hash synchronization][secure-domain].
+> Pokud vaše starší aplikace nepoužívají ověřování NTLM nebo jednoduché vazby LDAP, doporučujeme pro Azure služba AD DS zakázat synchronizaci hodnot hash hesel protokolu NTLM. Další informace najdete v tématu [zakázání slabých šifrovacích sad a synchronizace hodnot hash přihlašovacích údajů NTLM][secure-domain].
 
-Once appropriately configured, the usable password hashes are stored in the Azure AD DS managed domain. If you delete the Azure AD DS managed domain, any password hashes stored at that point are also deleted. Synchronized credential information in Azure AD can't be reused if you later create an Azure AD DS managed domain - you must reconfigure the password hash synchronization to store the password hashes again. Previously domain-joined VMs or users won't be able to immediately authenticate - Azure AD needs to generate and store the password hashes in the new Azure AD DS managed domain. For more information, see [Password hash sync process for Azure AD DS and Azure AD Connect][azure-ad-password-sync].
+Po správné konfiguraci se použitelné hodnoty hash hesel ukládají do spravované domény Azure služba AD DS. Pokud odstraníte spravovanou doménu Azure služba AD DS, odstraní se i všechny hodnoty hash hesel uložené v tomto okamžiku. Informace o synchronizovaných přihlašovacích údajích ve službě Azure AD se nedají znovu použít, pokud později vytvoříte Azure služba AD DS spravované domény – musíte znovu nakonfigurovat synchronizaci hodnot hash hesel, aby se znovu ukládaly hodnoty hash hesel. Virtuální počítače připojené k doméně nebo uživatelé nebudou moct hned ověřit – Azure AD potřebuje vygenerovat a uložit hodnoty hash hesel v nové spravované doméně Azure služba AD DS. Další informace najdete v tématu [proces synchronizace hodnot hash hesel pro Azure služba AD DS a Azure AD Connect][azure-ad-password-sync].
 
 > [!IMPORTANT]
-> Azure AD Connect should only be installed and configured for synchronization with on-premises AD DS environments. It's not supported to install Azure AD Connect in an Azure AD DS managed domain to synchronize objects back to Azure AD.
+> Azure AD Connect by měl být nainstalovaný a nakonfigurovaný jenom pro synchronizaci s místními služba AD DS prostředími. Pro synchronizaci objektů zpět do Azure AD se nepodporuje instalace Azure AD Connect ve spravované doméně Azure služba AD DS.
 
 ## <a name="forests-and-trusts"></a>Doménové struktury a vztahy důvěryhodnosti
 
-A *forest* is a logical construct used by Active Directory Domain Services (AD DS) to group one or more *domains*. The domains then store objects for user or groups, and provide authentication services.
+*Doménová struktura* je logická konstrukce, kterou používá Active Directory Domain Services (služba AD DS) k seskupení jedné nebo více *domén*. Domény pak uchovávají objekty pro uživatele nebo skupiny a poskytují ověřovací služby.
 
-In Azure AD DS, the forest only contains one domain. On-premises AD DS forests often contain many domains. In large organizations, especially after mergers and acquisitions, you may end up with multiple on-premises forests that each then contain multiple domains.
+V Azure služba AD DS doménová struktura obsahuje jenom jednu doménu. Místní doménové struktury služba AD DS často obsahují mnoho domén. Ve velkých organizacích, zejména po fúzích a akvizicích, můžete mít několik místních doménových struktur, které každý z nich obsahuje víc domén.
 
-By default, an Azure AD DS managed domain is created as a *user* forest. This type of forest synchronizes all objects from Azure AD, including any user accounts created in an on-premises AD DS environment. User accounts can directly authenticate against the Azure AD DS managed domain, such as to sign in to a domain-joined VM. A user forest works when the password hashes can be synchronized and users aren't using exclusive sign-in methods like smart card authentication.
+Ve výchozím nastavení je spravovaná doména Azure služba AD DS vytvořená jako doménová struktura *uživatelů* . Tento typ doménové struktury synchronizuje všechny objekty z Azure AD, včetně všech uživatelských účtů vytvořených v místním služba AD DS prostředí. Uživatelské účty se můžou přímo ověřovat proti spravované doméně Azure služba AD DS, například pro přihlášení k virtuálnímu počítači připojenému k doméně. Doménová struktura uživatelů funguje, když je možné synchronizovat hodnoty hash hesla a uživatelé nepoužívají exkluzivní metody přihlašování, jako je ověřování pomocí čipové karty.
 
-In an Azure AD DS *resource* forest, users authenticate over a one-way forest *trust* from their on-premises AD DS. With this approach, the user objects and password hashes aren't synchronized to Azure AD DS. The user objects and credentials only exist in the on-premises AD DS. This approach lets enterprises host resources and application platforms in Azure that depend on classic authentication such LDAPS, Kerberos, or NTLM, but any authentication issues or concerns are removed. Azure AD DS resource forests are currently in preview.
+V doménové struktuře *prostředků* Azure služba AD DS se uživatelé ověřují pomocí jednosměrné *důvěryhodnosti* doménové struktury ze své místní služba AD DS. S tímto přístupem se uživatelské objekty a hodnoty hash hesel nesynchronizují do Azure služba AD DS. Uživatelské objekty a přihlašovací údaje existují pouze v místních služba AD DS. Tento přístup umožňuje podnikům hostovat prostředky a aplikační platformy v Azure, které jsou závislé na klasických ověřováních, jako jsou protokoly LDAP, Kerberos nebo NTLM, ale všechny problémy s ověřováním nebo obavy se odeberou. Doménové struktury prostředků Azure služba AD DS jsou momentálně ve verzi Preview.
 
-For more information about forest types in Azure AD DS, see [What are resource forests?][concepts-forest] and [How do forest trusts work in Azure AD DS?][concepts-trust]
+Další informace o typech doménové struktury v Azure služba AD DS najdete v tématu [co jsou doménové struktury prostředků?][concepts-forest] a [jak vztahy důvěryhodnosti doménové struktury fungují v Azure služba AD DS?][concepts-trust]
 
 ## <a name="next-steps"></a>Další kroky
 
-To get started, [create an Azure AD DS managed domain][create-instance].
+Začněte tím, [že vytvoříte Azure služba AD DS spravovanou doménu][create-instance].
 
 <!-- INTERNAL LINKS -->
 [password-policy]: password-policy.md

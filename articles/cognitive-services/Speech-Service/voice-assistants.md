@@ -58,9 +58,9 @@ Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za mén
 
 | Rychlý start | Platforma | API – referenční informace |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Procházet](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Procházet](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Hlíží](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Hlíží](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Ukázka kódu
 

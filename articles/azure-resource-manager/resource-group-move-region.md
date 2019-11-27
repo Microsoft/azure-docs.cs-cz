@@ -25,7 +25,7 @@ Po nasazení prostředků v konkrétní oblasti Azure existuje několik důvodů
 - **Zarovnání pro služby/funkce**: přesunout prostředky, abyste mohli využívat služby nebo funkce, které jsou k dispozici v konkrétní oblasti.
 - **Reakce na obchodní vývoj**: Přesunutí prostředků do oblasti v reakci na změny v podniku, jako je fúze nebo akvizice.
 - **Zarovnání k blízkosti**: Přesunutí prostředků do místní oblasti do vaší firmy.
-- **Splnění požadavků na data**: Přesunutí prostředků, aby se daly v souladu s požadavky na data a nároky na data a klasifikace dat. [Další informace](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf)
+- **Splnění požadavků na data**: Přesunutí prostředků, aby se daly v souladu s požadavky na data a nároky na data a klasifikace dat. [Další informace](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf).
 - **Reakce na požadavky na nasazení**: přesunout prostředky, které byly nasazeny chybně, nebo je přesunout v reakci na kapacitu kapacity. 
 - **Reakce na vyřazení z provozu**: Přesunutí prostředků z důvodu vyřazení oblastí z provozu.
 

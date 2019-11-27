@@ -1,6 +1,6 @@
 ---
-title: Collect & analyze resource logs
-description: Record and analyze resource log events for Azure Container Registry such as authentication, image push, and image pull.
+title: Shromažďovat & analyzovat protokoly prostředků
+description: Zaznamenává a analyzuje události protokolu prostředků pro Azure Container Registry, jako je například ověřování, vkládání obrázků a vyžádanou image.
 ms.topic: article
 ms.date: 10/30/2019
 ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
@@ -10,81 +10,81 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456426"
 ---
-# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry logs for diagnostic evaluation and auditing
+# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Protokoly Azure Container Registry pro vyhodnocení a auditování diagnostiky
 
-This article explains how to collect log data for an Azure container registry using features of [Azure Monitor](../azure-monitor/overview.md). Azure Monitor collects [resource logs](../azure-monitor/platform/resource-logs-overview.md) (formerly called *diagnostic logs*) for user-driven events in your registry. Collect and consume this data to meet needs such as:
+Tento článek vysvětluje, jak shromažďovat data protokolu pro službu Azure Container Registry pomocí funkcí [Azure monitor](../azure-monitor/overview.md). Azure Monitor shromažďuje [protokoly prostředků](../azure-monitor/platform/resource-logs-overview.md) (dříve nazývané *diagnostické protokoly*) pro události řízené uživateli v registru. Shromažďování a využívání těchto dat pro splnění potřeb, jako jsou:
 
-* Audit registry authentication events to ensure security and compliance 
+* Auditování událostí ověřování registru za účelem zajištění zabezpečení a dodržování předpisů 
 
-* Provide a complete activity trail on registry artifacts such as pull and pull events so you can diagnose operational issues with your registry 
+* Zadejte úplný záznam aktivity pro artefakty registru, jako jsou události Pull a pull, abyste mohli diagnostikovat provozní problémy s registrem. 
 
-Collecting resource log data using Azure Monitor may incur additional costs. See [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/). 
+Shromažďování dat protokolu prostředků pomocí Azure Monitor může nabývat dalších nákladů. Viz [ceny Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). 
 
 
 > [!IMPORTANT]
-> This feature is currently in preview, and some [limitations](#preview-limitations) apply. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Tato funkce je aktuálně ve verzi Preview a platí některá [omezení](#preview-limitations) . Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="preview-limitations"></a>Preview limitations
+## <a name="preview-limitations"></a>Omezení verze Preview
 
-Logging of repository-level events doesn't currently include delete or untag events. Only the following repository events are logged:
-* **Push events** for images and other artifacts
-* **Pull events** for images and other artifacts
+Protokolování událostí na úrovni úložiště v současné době neobsahuje události Delete nebo zrušit označení. Protokolují se jenom tyto události úložiště:
+* **Vložení událostí** pro obrázky a další artefakty
+* **Vyžádané události** pro image a jiné artefakty
 
-## <a name="registry-resource-logs"></a>Registry resource logs
+## <a name="registry-resource-logs"></a>Protokoly prostředků registru
 
-Resource logs contain information emitted by Azure resources that describe their internal operation. For an Azure container registry, the logs contain authentication and repository-level events stored in the following tables. 
+Protokoly prostředků obsahují informace vydávané prostředky Azure, které popisují jejich interní operace. V případě služby Azure Container registry obsahují protokoly události na úrovni ověřování a úložiště uložené v následujících tabulkách. 
 
-* **ContainerRegistryLoginEvents**  - Registry authentication events and status, including the incoming identity and IP address
-* **ContainerRegistryRepositoryEvents** - Operations such as push and pull for images and other artifacts in registry repositories
-* **AzureMetrics** - [Container registry metrics](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) such as aggregated push and pull counts.
+* **ContainerRegistryLoginEvents** – události a stav ověřování registru, včetně příchozí identity a IP adresy
+* **ContainerRegistryRepositoryEvents** – operace jako push a pull pro image a další artefakty v úložištích registru
+* **AzureMetrics** - [metriky registru kontejnerů](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , jako jsou agregované nabízené oznámení a počty vyžádané replikace.
 
-For operations, log data includes:
-  * Success or failure status
-  * Start and end time stamps
+V případě operací zahrnuje data protokolu:
+  * Stav úspěch nebo neúspěch
+  * Počáteční a koncové časové razítko
 
-In addition to resource logs, Azure provides an [activity log](../azure-monitor/platform/activity-logs-overview.md), a single subscription-level record of Azure management events such as the creation or deletion of a container registry.
+Kromě protokolů prostředků poskytuje Azure [Protokol aktivit](../azure-monitor/platform/activity-logs-overview.md), což je jeden záznam událostí správy Azure na úrovni předplatného, jako je například vytvoření nebo odstranění registru kontejneru.
 
-## <a name="enable-collection-of-resource-logs"></a>Enable collection of resource logs
+## <a name="enable-collection-of-resource-logs"></a>Povolit shromažďování protokolů prostředků
 
-Collection of resource logs for a container registry isn't enabled by default. Explicitly enable diagnostic settings for each registry you want to monitor. For options to enable diagnostic settings, see [Create diagnostic setting to collect platform logs and metrics in Azure](../azure-monitor/platform/diagnostic-settings.md).
+Kolekce protokolů prostředků pro registr kontejneru není ve výchozím nastavení povolená. Explicitně povolte nastavení diagnostiky pro každý registr, který chcete monitorovat. Možnosti pro povolení nastavení diagnostiky najdete [v tématu Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../azure-monitor/platform/diagnostic-settings.md).
 
-For example, to view logs and metrics for a container registry in near real-time in Azure Monitor, collect the resource logs in a Log Analytics workspace. To enable this diagnostic setting using the Azure portal:
+Pokud například chcete zobrazit protokoly a metriky pro registr kontejnerů téměř v reálném čase v Azure Monitor, Shromážděte protokoly prostředků v pracovním prostoru Log Analytics. Povolení tohoto nastavení diagnostiky pomocí Azure Portal:
 
-1. If you don't already have a workspace, create a workspace using the [Azure portal](../azure-monitor/learn/quick-create-workspace.md). To minimize latency in data collection, ensure that the workspace is in the **same region** as your container registry.
-1. In the portal, select the registry, and select **Monitoring > Diagnostic settings > Add diagnostic setting**.
-1. Enter a name for the setting, and select **Send to Log Analytics**.
-1. Select the workspace for the registry diagnostic logs.
-1. Select the log data you want to collect, and click **Save**.
+1. Pokud ještě nemáte pracovní prostor, vytvořte pracovní prostor pomocí [Azure Portal](../azure-monitor/learn/quick-create-workspace.md). Chcete-li minimalizovat latenci v shromažďování dat, ujistěte se, že je pracovní prostor ve **stejné oblasti** jako registr kontejneru.
+1. Na portálu vyberte registr a vyberte **monitorování > nastavení diagnostiky > přidat nastavení diagnostiky**.
+1. Zadejte název nastavení a vyberte **Odeslat do Log Analytics**.
+1. Vyberte pracovní prostor pro diagnostické protokoly registru.
+1. Vyberte data protokolu, která chcete shromáždit, a klikněte na **Uložit**.
 
-The following image shows creation of a diagnostic setting for a registry using the portal.
+Následující obrázek ukazuje vytvoření nastavení diagnostiky pro registr pomocí portálu.
 
 ![Povolení nastavení diagnostiky](media/container-registry-diagnostics-audit-logs/diagnostic-settings.png)
 
 > [!TIP]
-> Collect only the data that you need, balancing cost and your monitoring needs. For example, if you only need to audit authentication events, select only the **ContainerRegistryLoginEvents** log. 
+> Shromážděte jenom data, která potřebujete, vyvážením nákladů a vašich potřeb pro monitorování. Pokud například potřebujete auditovat pouze události ověřování, vyberte pouze protokol **ContainerRegistryLoginEvents** . 
 
-## <a name="view-data-in-azure-monitor"></a>View data in Azure Monitor
+## <a name="view-data-in-azure-monitor"></a>Zobrazit data v Azure Monitor
 
-After you enable collection of diagnostic logs in Log Analytics, it can take a few minutes for data to appear in Azure Monitor. To view the data in the portal, select the registry, and select **Monitoring > Logs**. Select one of the tables that contains data for the registry. 
+Po povolení shromažďování diagnostických protokolů v Log Analytics může trvat několik minut, než se data zobrazí v Azure Monitor. Chcete-li zobrazit data na portálu, vyberte registr a vyberte **sledování > protokoly**. Vyberte jednu z tabulek, která obsahuje data pro registr. 
 
-Run queries to view the data. Several sample queries are provided, or run your own. For example, the following query retrieves the most recent 24 hours of data from the **ContainerRegistryRepositoryEvents** table:
+Spusťte dotazy pro zobrazení dat. Je k dispozici několik ukázkových dotazů nebo vlastní spuštění. Například následující dotaz načte nejaktuálnější 24 hodin dat z tabulky **ContainerRegistryRepositoryEvents** :
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | where TimeGenerated > ago(1d) 
 ```
 
-The following image shows sample output:
+Následující obrázek ukazuje vzorový výstup:
 
 ![Dotazy na data protokolů](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-For a tutorial on using Log Analytics in the Azure portal, see [Get started with Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md), or try the Log Analytics [Demo environment](https://portal.loganalytics.io/demo). 
+Kurz týkající se použití Log Analytics v Azure Portal najdete v tématu [Začínáme s Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md)nebo vyzkoušejte [ukázkové prostředí](https://portal.loganalytics.io/demo)Log Analytics. 
 
-For more information on log queries, see [Overview of log queries in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+Další informace o dotazech protokolu najdete v tématu [Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 
-### <a name="additional-query-examples"></a>Additional query examples
+### <a name="additional-query-examples"></a>Další příklady dotazů
 
-#### <a name="100-most-recent-registry-events"></a>100 most recent registry events
+#### <a name="100-most-recent-registry-events"></a>100 nejnovějších událostí registru
 
 ```Kusto
 ContainerRegistryRepositoryEvents
@@ -93,16 +93,16 @@ ContainerRegistryRepositoryEvents
 | project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
 ```
 
-## <a name="additional-log-destinations"></a>Additional log destinations
+## <a name="additional-log-destinations"></a>Další cíle protokolu
 
-In addition to sending the logs to Log Analytics, or as an alternative, a common scenario is to select an Azure Storage account as a log destination. To archive logs in Azure Storage, create a storage account before enabling archiving through the diagnostic settings.
+Kromě odesílání protokolů pro Log Analytics, nebo jako alternativu můžete běžným scénářem vybrat Azure Storage účet jako cíl protokolu. Pokud chcete archivovat protokoly v Azure Storage, vytvořte si účet úložiště ještě předtím, než povolíte archivaci prostřednictvím nastavení diagnostiky.
 
-You can also stream diagnostic log events to an [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs can ingest millions of events per second, which you can then transform and store using any real-time analytics provider. 
+Události diagnostického protokolu můžete také streamovat do [centra událostí Azure](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs můžete ingestovat miliony událostí za sekundu, které pak můžete transformovat a uložit pomocí libovolného zprostředkovatele datové analýzy v reálném čase. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Learn more about using [Log Analytics](../azure-monitor/log-query/get-started-portal.md) and creating [log queries](../azure-monitor/log-query/get-started-queries.md).
-* See [Overview of Azure platform logs](../azure-monitor/platform/platform-logs-overview.md) to learn about platform logs that are available at different layers of Azure.
+* Přečtěte si další informace o použití [Log Analytics](../azure-monitor/log-query/get-started-portal.md) a vytváření [dotazů protokolu](../azure-monitor/log-query/get-started-queries.md).
+* Další informace o protokolech platforem, které jsou k dispozici v různých vrstvách Azure, najdete v tématu [Přehled protokolů platformy Azure](../azure-monitor/platform/platform-logs-overview.md) .
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

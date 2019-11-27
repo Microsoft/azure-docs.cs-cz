@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: ML pipelines for batch scoring'
+title: 'Kurz: kanály ML pro dávkové vyhodnocování'
 titleSuffix: Azure Machine Learning
-description: In this tutorial, you build a machine learning pipeline for running batch scoring on an image classification model in Azure Machine Learning. Machine learning pipelines optimize your workflow with speed, portability, and reuse, so you can focus on your expertise - machine learning - instead of on infrastructure and automation.
+description: V tomto kurzu vytvoříte kanál strojového učení pro spuštění dávkového vyhodnocování pro model klasifikace obrázků v Azure Machine Learning. Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, takže se můžete soustředit na vaše odbornosti a strojové učení – místo na infrastruktuře a automatizaci.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,48 +17,48 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483299"
 ---
-# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Tutorial: Build an Azure Machine Learning pipeline for batch scoring
+# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Kurz: vytvoření kanálu Azure Machine Learning pro dávkové vyhodnocování
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In this tutorial, you use a pipeline in Azure Machine Learning to run a batch scoring job. The example uses the pretrained [Inception-V3](https://arxiv.org/abs/1512.00567) convolutional neural network Tensorflow model to classify unlabeled images. After you build and publish a pipeline, you configure a REST endpoint that you can use to trigger the pipeline from any HTTP library on any platform.
+V tomto kurzu použijete kanál v Azure Machine Learning ke spuštění úlohy dávkového vyhodnocování. V příkladu se používá [předem](https://arxiv.org/abs/1512.00567) vydaný model Tensorflow sítě konvoluční neuronové pro klasifikaci neoznačených obrázků. Po sestavení a publikování kanálu nakonfigurujete koncový bod REST, který můžete použít ke spuštění kanálu z libovolné knihovny HTTP na libovolné platformě.
 
-Machine learning pipelines optimize your workflow with speed, portability, and reuse, so you can focus on your expertise - machine learning - instead of on infrastructure and automation. [Learn more about machine learning pipelines](concept-ml-pipelines.md).
+Kanály strojového učení optimalizují pracovní postup s využitím rychlosti, přenositelnosti a opakovaného použití, takže se můžete soustředit na vaše odbornosti a strojové učení – místo na infrastruktuře a automatizaci. [Přečtěte si další informace o kanálech strojového učení](concept-ml-pipelines.md).
 
 V tomto kurzu provedete následující úlohy:
 
 > [!div class="checklist"]
-> * Configure workspace and download sample data
-> * Create data objects to fetch and output data
-> * Download, prepare, and register the model in your workspace
-> * Provision compute targets and create a scoring script
-> * Build, run, and publish a pipeline
-> * Enable a REST endpoint for the pipeline
+> * Konfigurace pracovního prostoru a stažení ukázkových dat
+> * Vytvoření datových objektů pro načtení a výstup dat
+> * Stažení, příprava a registrace modelu v pracovním prostoru
+> * Zřizování výpočetních cílů a vytvoření skriptu bodování
+> * Sestavování, spouštění a publikování kanálu
+> * Povolit koncový bod REST pro kanál
 
-If you don’t have an Azure subscription, create a free account before you begin. Try the [free or paid version of Azure Machine Learning](https://aka.ms/AMLFree) today.
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* If you don't already have an Azure Machine Learning workspace or notebook virtual machine, complete [Part 1 of the setup tutorial](tutorial-1st-experiment-sdk-setup.md).
-* When you finish the setup tutorial, use the same notebook server to open the *tutorials/tutorial-pipeline-batch-scoring-classification.ipynb* notebook.
+* Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, vyplňte [část 1 tohoto kurzu instalace](tutorial-1st-experiment-sdk-setup.md).
+* Po dokončení kurzu instalace použijte stejný server poznámkového bloku a otevřete Poznámkový blok *kurzy/tutorial-Pipeline-Batch-scoring-Classification. ipynb* .
 
-If you want to run the setup tutorial in your own [local environment](how-to-configure-environment.md#local), you can access the tutorial on [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials). Run `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` to get the required packages.
+Pokud chcete spustit kurz nastavení ve vlastním [místním prostředí](how-to-configure-environment.md#local), můžete získat přístup k kurzu na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials). Požadované balíčky získáte spuštěním `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests`.
 
-## <a name="configure-workspace-and-create-a-datastore"></a>Configure workspace and create a datastore
+## <a name="configure-workspace-and-create-a-datastore"></a>Konfigurace pracovního prostoru a vytvoření úložiště dat
 
-Create a workspace object from the existing Azure Machine Learning workspace.
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru Azure Machine Learning.
 
-- A [workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is a class that accepts your Azure subscription and resource information. The workspace also creates a cloud resource you can use to monitor and track your model runs. 
-- `Workspace.from_config()` reads the `config.json` file and then loads the authentication details into an object named `ws`. The `ws` object is used in the code throughout this tutorial.
+- [Pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) je třída, která přijímá vaše předplatné a informace o prostředcích Azure. Pracovní prostor také vytvoří cloudový prostředek, který můžete použít k monitorování a sledování spuštění modelu. 
+- `Workspace.from_config()` přečte soubor `config.json` a potom načte podrobnosti ověřování do objektu s názvem `ws`. Objekt `ws` se používá v kódu v celém tomto kurzu.
 
 ```python
 from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-datastore-for-sample-images"></a>Create a datastore for sample images
+### <a name="create-a-datastore-for-sample-images"></a>Vytvoření úložiště dat pro ukázkové image
 
-On the `pipelinedata` account, get the ImageNet evaluation public data sample from the `sampledata` public blob container. Call `register_azure_blob_container()` to make the data available to the workspace under the name `images_datastore`. Then, set the workspace default datastore as the output datastore. Use the output datastore to score output in the pipeline.
+Na účtu `pipelinedata` Získejte ukázku veřejné dat ImageNet Evaluation z `sampledata` veřejného kontejneru objektů BLOB. Zavolejte `register_azure_blob_container()`, aby data byla k dispozici v pracovním prostoru pod názvem `images_datastore`. Pak nastavte výchozí úložiště dat pracovního prostoru jako výstupní úložiště dat. Použijte výstupní úložiště dat k určení skóre výstupu v kanálu.
 
 ```python
 from azureml.core.datastore import Datastore
@@ -72,18 +72,18 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 def_data_store = ws.get_default_datastore()
 ```
 
-## <a name="create-data-objects"></a>Create data objects
+## <a name="create-data-objects"></a>Vytváření datových objektů
 
-When you build a pipeline, a `DataReference` object reads data from the workspace datastore. A `PipelineData` object transfers intermediate data between pipeline steps.
+Když vytváříte kanál, objekt `DataReference` čte data z úložiště dat pracovního prostoru. Objekt `PipelineData` přenáší mezilehlá data mezi jednotlivými kroky kanálu.
 
 > [!Important]
-> The batch scoring example in this tutorial uses only one pipeline step. In use cases that have multiple steps, the typical flow will include these steps:
+> Příklad dávkového vyhodnocování v tomto kurzu používá pouze jeden krok kanálu. V případech použití, které mají více kroků, bude typický tok zahrnovat tyto kroky:
 >
-> 1. Use `DataReference` objects as *inputs* to fetch raw data, perform some transformation, and then *output* a `PipelineData` object.
+> 1. Použijte `DataReference` objekty jako *vstupy* k načtení nezpracovaných dat, proveďte nějakou transformaci a pak *výstup* objektu `PipelineData`.
 >
-> 2. Use the `PipelineData` *output object* in the preceding step as an *input object*. Repeat it for subsequent steps.
+> 2. Použijte *výstupní objekt* `PipelineData` v předchozím kroku jako *vstupní objekt*. Opakujte postup pro následné kroky.
 
-In this scenario, you create `DataReference` objects that correspond to the datastore directories for both the input images and the classification labels (y-test values). You also create a `PipelineData` object for the batch scoring output data.
+V tomto scénáři vytvoříte `DataReference` objekty, které odpovídají adresářům úložiště dat pro vstupní image a popisky klasifikace (hodnoty y-test). Také vytvoříte objekt `PipelineData` pro výstupní data dávkového vyhodnocování.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -106,9 +106,9 @@ output_dir = PipelineData(name="scores",
                           output_path_on_compute="batchscoring/results")
 ```
 
-## <a name="download-and-register-the-model"></a>Download and register the model
+## <a name="download-and-register-the-model"></a>Stažení a registrace modelu
 
-Download the pretrained Tensorflow model to use it for batch scoring in a pipeline. First, create a local directory where you store the model. Then, download and extract the model.
+Stáhněte si předTensorflowný model, který se použije pro dávkové vyhodnocování v kanálu. Nejprve vytvořte místní adresář, do kterého chcete model Uložit. Pak stáhněte a extrahujte model.
 
 ```python
 import os
@@ -123,7 +123,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall("models")
 ```
 
-Next, register the model to your workspace, so you can easily retrieve the model in the pipeline process. In the `register()` static function, the `model_name` parameter is the key you use to locate your model throughout the SDK.
+Dále zaregistrujte model do svého pracovního prostoru, abyste ho mohli snadno načíst v procesu kanálu. Ve funkci `register()` static je parametr `model_name` klíč, který použijete k vyhledání modelu v rámci sady SDK.
 
 ```python
 from azureml.core.model import Model
@@ -135,11 +135,11 @@ model = Model.register(model_path="models/inception_v3.ckpt",
                        workspace=ws)
 ```
 
-## <a name="create-and-attach-the-remote-compute-target"></a>Create and attach the remote compute target
+## <a name="create-and-attach-the-remote-compute-target"></a>Vytvoření a připojení vzdáleného cíle výpočtů
 
-Machine learning pipelines can't be run locally, so you run them on cloud resources or *remote compute targets*. A remote compute target is a reusable virtual compute environment where you run experiments and machine learning workflows. 
+Kanály strojového učení nejde spouštět místně, takže je spouštíte na cloudových prostředcích nebo *vzdálených výpočetních cílech*. Vzdálený výpočetní cíl je opakovaně použitelný virtuální výpočetní prostředí, ve kterém spouštíte experimenty a pracovní postupy strojového učení. 
 
-Run the following code to create a GPU-enabled [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) target, and then attach it to your workspace. For more information about compute targets, see the [conceptual article](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
+Spusťte následující kód pro vytvoření cíle [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) s povoleným GPU a pak ho připojte k pracovnímu prostoru. Další informace o cílových výpočetních operacích najdete v [článku konceptu](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
 
 
 ```python
@@ -160,19 +160,19 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-## <a name="write-a-scoring-script"></a>Write a scoring script
+## <a name="write-a-scoring-script"></a>Zápis vyhodnocovacího skriptu
 
-To do the scoring, create a batch scoring script called `batch_scoring.py`, and then write it to the current directory. The script takes input images, applies the classification model, and then outputs the predictions to a results file.
+Chcete-li provést vyhodnocování, vytvořte skript vyhodnocování s názvem `batch_scoring.py`a poté jej zapište do aktuálního adresáře. Skript bere vstupní image, použije model klasifikace a pak výstup předpovědi do souboru výsledků.
 
-The `batch_scoring.py` script takes the following parameters, which are passed from the pipeline step that you create later in this tutorial:
+Skript `batch_scoring.py` přebírá následující parametry, které se předávají z kroku kanálu, který vytvoříte později v tomto kurzu:
 
-- `--model_name`: The name of the model being used.
-- `--label_dir`: The directory that holds the `labels.txt` file.
-- `--dataset_path`: The directory that contains the input images.
-- `--output_dir`: The output directory for the `results-label.txt` file after the script runs the model on the data.
-- `--batch_size`: The batch size used in running the model.
+- `--model_name`: název používaného modelu.
+- `--label_dir`: adresář, který obsahuje soubor `labels.txt`.
+- `--dataset_path`: adresář, který obsahuje vstupní image.
+- `--output_dir`: adresář výstupu pro `results-label.txt` soubor poté, co skript spustí model pro data.
+- `--batch_size`: velikost dávky použitou při spuštění modelu.
 
-The pipeline infrastructure uses the `ArgumentParser` class to pass parameters into pipeline steps. For example, in the following code, the first argument `--model_name` is given the property identifier `model_name`. In the `main()` function, `Model.get_model_path(args.model_name)` is used to access this property.
+Infrastruktura kanálu používá třídu `ArgumentParser` k předání parametrů do kroků kanálu. Například v následujícím kódu je první argument `--model_name` přidaný identifikátor vlastnosti `model_name`. Ve funkci `main()` se `Model.get_model_path(args.model_name)` používá pro přístup k této vlastnosti.
 
 
 ```python
@@ -294,11 +294,11 @@ if __name__ == "__main__":
 ```
 
 > [!TIP]
-> The pipeline in this tutorial has only one step, and it writes the output to a file. For multi-step pipelines, you also use `ArgumentParser` to define a directory to write output data for input to subsequent steps. For an example of passing data between multiple pipeline steps by using the `ArgumentParser` design pattern, see the [notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
+> Kanál v tomto kurzu má pouze jeden krok a zapisuje výstup do souboru. Pro kanály s více kroky můžete také použít `ArgumentParser` k definování adresáře pro zápis výstupních dat pro vstup do následujících kroků. Příklad předávání dat mezi různými kroky kanálu pomocí `ArgumentParser`ho vzoru návrhu najdete v [poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
 
-## <a name="build-and-run-the-pipeline"></a>Build and run the pipeline
+## <a name="build-and-run-the-pipeline"></a>Sestavení a spuštění kanálu
 
-Before you run the pipeline, create an object that defines the Python environment and creates the dependencies that your `batch_scoring.py` script requires. The main dependency required is Tensorflow, but you also install `azureml-defaults` from the SDK for background processes. Create a `RunConfiguration` object by using the dependencies. Also, specify Docker and Docker-GPU support.
+Před spuštěním kanálu vytvořte objekt, který definuje prostředí Python, a vytvoří závislosti, které váš `batch_scoring.py` skript vyžaduje. Hlavní požadovaná závislost je Tensorflow, ale také nainstalujete `azureml-defaults` ze sady SDK pro procesy na pozadí. Vytvořte objekt `RunConfiguration` pomocí závislostí. Také zadejte Docker a Docker-GPU support.
 
 ```python
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
@@ -312,29 +312,29 @@ amlcompute_run_config.environment.docker.base_image = DEFAULT_GPU_IMAGE
 amlcompute_run_config.environment.spark.precache_packages = False
 ```
 
-### <a name="parameterize-the-pipeline"></a>Parameterize the pipeline
+### <a name="parameterize-the-pipeline"></a>Parametrizovat kanál
 
-Define a custom parameter for the pipeline to control the batch size. After the pipeline is published and exposed via a REST endpoint, any configured parameters are also exposed. You can specify custom parameters in the JSON payload when you rerun the pipeline via an HTTP request.
+Definujte vlastní parametr pro kanál, který bude řídit velikost dávky. Po publikování a zpřístupnění kanálu prostřednictvím koncového bodu REST jsou také zpřístupněny všechny nakonfigurované parametry. Vlastní parametry můžete zadat v datové části JSON při opětovném spuštění kanálu přes požadavek HTTP.
 
-Create a `PipelineParameter` object to enable this behavior and to define a name and default value.
+Vytvořte objekt `PipelineParameter` pro povolení tohoto chování a definování názvu a výchozí hodnoty.
 
 ```python
 from azureml.pipeline.core.graph import PipelineParameter
 batch_size_param = PipelineParameter(name="param_batch_size", default_value=20)
 ```
 
-### <a name="create-the-pipeline-step"></a>Create the pipeline step
+### <a name="create-the-pipeline-step"></a>Vytvoření kanálu krok
 
-A pipeline step is an object that encapsulates everything you need to run a pipeline, including:
+Krok kanálu je objekt, který zapouzdřuje všechno, co potřebujete ke spuštění kanálu, včetně:
 
-* Environment and dependency settings
-* The compute resource to run the pipeline on
-* Input and output data, and any custom parameters
-* Reference to a script or SDK logic to run during the step
+* Nastavení prostředí a závislostí
+* Výpočetní prostředek, na kterém se má kanál spustit
+* Vstupní a výstupní data a libovolné vlastní parametry
+* Odkaz na skript nebo logiku sady SDK, které se spustí během kroku
 
-Multiple classes inherit from the parent class [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). You can choose classes to use specific frameworks or stacks to build a step. In this example, you use the [`PythonScriptStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) class to define your step logic by using a custom Python script. If an argument to your script is either an input to the step or an output of the step, the argument must be defined *both* in the `arguments` array *and* in either the `input` or the `output` parameter, respectively. 
+Více tříd dědí z nadřazené třídy [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). Můžete zvolit třídy pro použití specifických rozhraní nebo zásobníků k vytvoření kroku. V tomto příkladu použijete třídu [`PythonScriptStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) k definování kroku logiky pomocí vlastního skriptu Pythonu. Je-li argument skriptu buď vstupem do kroku, nebo výstupem kroku, musí být *argument definován v* poli `arguments` *a* v parametru `input` nebo `output`. 
 
-In scenarios where there is more than one step, an object reference in the `outputs` array becomes available as an *input* for a subsequent pipeline step.
+V případech, kdy je k dispozici více kroků, bude odkaz na objekt v poli `outputs` k dispozici jako *vstup* pro další krok kanálu.
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
@@ -354,16 +354,16 @@ batch_score_step = PythonScriptStep(
 )
 ```
 
-For a list of all the classes you can use for different step types, see the [steps package](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py).
+Seznam všech tříd, které lze použít pro různé typy kroků, naleznete v [balíčku kroků](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py).
 
 ### <a name="run-the-pipeline"></a>Spuštění kanálu
 
-Now, run the pipeline. First, create a `Pipeline` object by using your workspace reference and the pipeline step you created. The `steps` parameter is an array of steps. In this case, there's only one step for batch scoring. To build pipelines that have multiple steps, place the steps in order in this array.
+Teď kanál spusťte. Nejprve vytvořte objekt `Pipeline` pomocí odkazu na pracovní prostor a kroku kanálu, který jste vytvořili. Parametr `steps` je pole kroků. V tomto případě je pro dávkové vyhodnocování k dispozici pouze jeden krok. Chcete-li vytvořit kanály, které mají více kroků, umístěte kroky v tomto poli do pořadí.
 
-Next, use the `Experiment.submit()` function to submit the pipeline for execution. You also specify the custom parameter `param_batch_size`. The `wait_for_completion` function outputs logs during the pipeline build process. You can use the logs to see current progress.
+Dále pomocí funkce `Experiment.submit()` odešlete kanál ke spuštění. Zadejte také vlastní parametr `param_batch_size`. Funkce `wait_for_completion` ukládá do procesu sestavení kanálu protokoly. Pomocí protokolů můžete zobrazit aktuální průběh.
 
 > [!IMPORTANT]
-> The first pipeline run takes roughly *15 minutes*. All dependencies must be downloaded, a Docker image is created, and the Python environment is provisioned and created. Running the pipeline again takes significantly less time because those resources are reused instead of created. However, total run time for the pipeline depends on the workload of your scripts and the processes that are running in each pipeline step.
+> První spuštění kanálu trvá přibližně *15 minut*. Všechny závislosti je nutné stáhnout, vytvoří se image Docker a prostředí Pythonu se zřídí a vytvoří. Opětovné spuštění kanálu bude trvat mnohem méně času, protože se místo vytvoření znovu použijí tyto prostředky. Celková doba běhu pro kanál ale závisí na zatížení skriptů a procesech, které jsou spuštěné v jednotlivých krocích kanálu.
 
 ```python
 from azureml.core import Experiment
@@ -374,9 +374,9 @@ pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline, pipeline_paramet
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
-### <a name="download-and-review-output"></a>Download and review output
+### <a name="download-and-review-output"></a>Stáhnout a zkontrolovat výstup
 
-Run the following code to download the output file that's created from the `batch_scoring.py` script. Then, explore the scoring results.
+Spusťte následující kód ke stažení výstupního souboru vytvořeného z `batch_scoring.py` skriptu. Pak prozkoumejte výsledky bodování.
 
 ```python
 import pandas as pd
@@ -390,7 +390,7 @@ df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+<style scoped>. dataframe tbody TR tr: pouze-typu {vertikální zarovnání: prostřední;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -404,70 +404,70 @@ df.head(10)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Filename</th>
-      <th>Prediction</th>
+      <th>Bitmap</th>
+      <th>Předpověď</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>0</td>
-      <td>ILSVRC2012_val_00000102.JPEG</td>
+      <td>ILSVRC2012_val_00000102. JPEG</td>
       <td>Rhodesian Ridgeback</td>
     </tr>
     <tr>
-      <td>1\. místo</td>
-      <td>ILSVRC2012_val_00000103.JPEG</td>
+      <td>1</td>
+      <td>ILSVRC2012_val_00000103. JPEG</td>
       <td>tripod</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>ILSVRC2012_val_00000104.JPEG</td>
-      <td>typewriter keyboard</td>
+      <td>ILSVRC2012_val_00000104. JPEG</td>
+      <td>klávesnice psacího stroje</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>ILSVRC2012_val_00000105.JPEG</td>
-      <td>silky terrier</td>
+      <td>ILSVRC2012_val_00000105. JPEG</td>
+      <td>hedvábí Terrier</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>ILSVRC2012_val_00000106.JPEG</td>
-      <td>Windsor tie</td>
+      <td>ILSVRC2012_val_00000106. JPEG</td>
+      <td>Windsor</td>
     </tr>
     <tr>
       <td>5</td>
-      <td>ILSVRC2012_val_00000107.JPEG</td>
-      <td>harvestman</td>
+      <td>ILSVRC2012_val_00000107. JPEG</td>
+      <td>sklizeň</td>
     </tr>
     <tr>
       <td>6</td>
-      <td>ILSVRC2012_val_00000108.JPEG</td>
-      <td>violin</td>
+      <td>ILSVRC2012_val_00000108. JPEG</td>
+      <td>Violin</td>
     </tr>
     <tr>
       <td>7</td>
-      <td>ILSVRC2012_val_00000109.JPEG</td>
-      <td>loudspeaker</td>
+      <td>ILSVRC2012_val_00000109. JPEG</td>
+      <td>reproduktor</td>
     </tr>
     <tr>
       <td>8</td>
-      <td>ILSVRC2012_val_00000110.JPEG</td>
-      <td>apron</td>
+      <td>ILSVRC2012_val_00000110. JPEG</td>
+      <td>odbavovací</td>
     </tr>
     <tr>
       <td>9</td>
-      <td>ILSVRC2012_val_00000111.JPEG</td>
-      <td>American lobster</td>
+      <td>ILSVRC2012_val_00000111. JPEG</td>
+      <td>USA – sever</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-## <a name="publish-and-run-from-a-rest-endpoint"></a>Publish and run from a REST endpoint
+## <a name="publish-and-run-from-a-rest-endpoint"></a>Publikování a spuštění z koncového bodu REST
 
-Run the following code to publish the pipeline to your workspace. In your workspace in Azure Machine Learning studio, you can see metadata for the pipeline, including run history and durations. You can also run the pipeline manually from the studio.
+Spusťte následující kód k publikování kanálu do svého pracovního prostoru. Ve vašem pracovním prostoru v Azure Machine Learning Studiu uvidíte metadata pro kanál, včetně historie spuštění a trvání. Kanál můžete také spustit ručně ze sady Studio.
 
-Publishing the pipeline enables a REST endpoint that you can use to run the pipeline from any HTTP library on any platform.
+Publikování kanálu umožňuje koncovému bodu REST, který můžete použít ke spuštění kanálu z libovolné knihovny HTTP na libovolné platformě.
 
 ```python
 published_pipeline = pipeline_run.publish_pipeline(
@@ -476,11 +476,11 @@ published_pipeline = pipeline_run.publish_pipeline(
 published_pipeline
 ```
 
-To run the pipeline from the REST endpoint, you need an OAuth2 Bearer-type authentication header. The following example uses interactive authentication (for illustration purposes), but for most production scenarios that require automated or headless authentication, use service principal authentication as [described in this notebook](https://aka.ms/pl-restep-auth).
+Pokud chcete kanál spustit z koncového bodu REST, budete potřebovat hlavičku ověřování typu OAuth2 Bearer. Následující příklad používá interaktivní ověřování (pro ilustraci), ale u většiny produkčních scénářů, které vyžadují automatizované nebo bezobslužné ověřování, použijte ověřování instančního objektu, jak je [popsáno v tomto poznámkovém bloku](https://aka.ms/pl-restep-auth).
 
-Service principal authentication involves creating an *App Registration* in *Azure Active Directory*. First, you generate a client secret, and then you grant your service principal *role access* to your machine learning workspace. Use the [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) class to manage your authentication flow. 
+Ověřování instančního objektu zahrnuje vytvoření *Registrace aplikace* v *Azure Active Directory*. Nejdřív vygenerujete tajný klíč klienta a potom udělíte roli instančního objektu *přístup* k pracovnímu prostoru Machine Learning. Ke správě toku ověřování použijte třídu [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) . 
 
-Both [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) and `ServicePrincipalAuthentication` inherit from `AbstractAuthentication`. In both cases, use the [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) function in the same way to fetch the header:
+[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) i `ServicePrincipalAuthentication` dědí z `AbstractAuthentication`. V obou případech použijte funkci [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) stejným způsobem, jak načíst hlavičku:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -489,11 +489,11 @@ interactive_auth = InteractiveLoginAuthentication()
 auth_header = interactive_auth.get_authentication_header()
 ```
 
-Get the REST URL from the `endpoint` property of the published pipeline object. You can also find the REST URL in your workspace in Azure Machine Learning studio. 
+Získejte adresu URL REST z vlastnosti `endpoint` publikovaného objektu kanálu. Adresu URL REST můžete také najít ve vašem pracovním prostoru v Azure Machine Learning Studiu. 
 
-Build an HTTP POST request to the endpoint. Specify your authentication header in the request. Add a JSON payload object that has the experiment name and the batch size parameter. As noted earlier in the tutorial, `param_batch_size` is passed through to your `batch_scoring.py` script because you defined it as a `PipelineParameter` object in the step configuration.
+Sestavte požadavek HTTP POST na koncový bod. Zadejte hlavičku ověřování v žádosti. Přidejte objekt datové části JSON, který má název experimentu a parametr velikosti dávky. Jak bylo uvedeno výše v tomto kurzu, `param_batch_size` se předává do skriptu `batch_scoring.py`, protože jste ho v konfiguraci kroku definovali jako objekt `PipelineParameter`.
 
-Make the request to trigger the run. Include code to access the `Id` key from the response dictionary to get the value of the run ID.
+Vytvořte žádost o aktivaci běhu. Přidejte kód pro přístup k klíči `Id` z slovníku odpovědí, abyste získali hodnotu ID běhu.
 
 ```python
 import requests
@@ -506,9 +506,9 @@ response = requests.post(rest_endpoint,
 run_id = response.json()["Id"]
 ```
 
-Use the run ID to monitor the status of the new run. The new run takes another 10-15 min to finish. 
+Ke sledování stavu nového běhu použijte ID běhu. Nové spuštění trvá dokončení dalších 10-15. 
 
-The new run will look similar to the pipeline you ran earlier in the tutorial. You can choose not to view the full output.
+Nové spuštění bude vypadat podobně jako u kanálu, který jste spustili dříve v tomto kurzu. Můžete zvolit, aby se nezobrazil úplný výstup.
 
 ```python
 from azureml.pipeline.core.run import PipelineRun
@@ -520,30 +520,30 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Don't complete this section if you plan to run other Azure Machine Learning tutorials.
+Tuto část neprovádějte, pokud máte v plánu spouštět další kurzy Azure Machine Learning.
 
-### <a name="stop-the-notebook-vm"></a>Stop the Notebook VM
+### <a name="stop-the-notebook-vm"></a>Zastavení virtuálního počítače poznámkového bloku
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
-### <a name="delete-everything"></a>Delete everything
+### <a name="delete-everything"></a>Odstranit vše
 
-If you don't plan to use the resources you created, delete them, so you don't incur any charges:
+Pokud neplánujete použít prostředky, které jste vytvořili, odstraňte je, takže se vám neúčtují žádné poplatky:
 
-1. In the Azure portal, in the left menu, select **Resource groups**.
-1. In the list of resource groups, select the resource group you created.
+1. V Azure Portal v nabídce vlevo vyberte **skupiny prostředků**.
+1. V seznamu skupin prostředků vyberte skupinu prostředků, kterou jste vytvořili.
 1. Vyberte **Odstranit skupinu prostředků**.
-1. Enter the resource group name. Then, select **Delete**.
+1. Zadejte název skupiny prostředků. Pak vyberte **Odstranit**.
 
-You can also keep the resource group but delete a single workspace. Display the workspace properties, and then select **Delete**.
+Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a pak vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-In this machine learning pipelines tutorial, you did the following tasks:
+V tomto kurzu strojového učení se provedly následující úlohy:
 
 > [!div class="checklist"]
-> * Built a pipeline with environment dependencies to run on a remote GPU compute resource.
-> * Created a scoring script to run batch predictions by using a pretrained Tensorflow model.
-> * Published a pipeline and enabled it to be run from a REST endpoint.
+> * Vytvořili jste kanál se závislostmi prostředí pro spouštění ve vzdáleném výpočetním prostředku GPU.
+> * Vytvořili jste skript bodování pro spouštění Batch předpovědi pomocí předTensorflowho modelu.
+> * Publikování kanálu a jeho povolení ke spuštění z koncového bodu REST.
 
-For more examples of how to build pipelines by using the machine learning SDK, see the [notebook repository](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines).
+Další příklady vytváření kanálů pomocí sady Machine Learning SDK najdete v [úložišti poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines).

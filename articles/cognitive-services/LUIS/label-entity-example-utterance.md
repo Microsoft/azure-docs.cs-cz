@@ -1,7 +1,7 @@
 ---
-title: Label entity example utterance
+title: Popisek entity příkladu utterance
 titleSuffix: Azure Cognitive Services
-description: Learn how to label a machine-learned entity with subcomponents in an example utterance in an intent detail page of the LUIS portal.
+description: Naučte se, jak na stránce s podrobnostmi záměru na utterance portálu LUIS označit entitu získanou počítačem s podsoučástmi v příkladu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,106 +11,106 @@ ms.topic: quickstart
 ms.date: 11/21/2019
 ms.author: diberry
 ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 11/26/2019
 ms.locfileid: "74383708"
 ---
-# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Label machine-learned entity in an example utterance
+# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Označení entity náročné na počítač v příkladu utterance
 
-Labeling an entity in an example utterance gives LUIS an example of what the entity is and where the entity can appear in the utterance. 
+Označení entity v příkladu utterance poskytuje LUIS příklad, co je entita a kde se entita může zobrazit v utterance. 
 
-## <a name="labeling-machine-learned-entity"></a>Labeling machine-learned entity
+## <a name="labeling-machine-learned-entity"></a>Označování uživatelem zjištěné entity
 
-Consider the phrase, `hi, please I want a cheese pizza in 20 minutes`. 
+Vezměte v úvahu frázi `hi, please I want a cheese pizza in 20 minutes`. 
 
-1. Select the left-most text, then select the right-most text of the entity, then pick the entity you want to label with, in this case Complete Order. The _complete order_ is labeled in the following image.
+1. Vyberte nejvíce vlevo a pak vyberte text v entitě nejvíce vpravo a potom v tomto případě vyberte entitu, se kterou chcete popisek provést. _Úplná objednávka_ je označena na následujícím obrázku.
 
     > [!div class="mx-imgBorder"]
-    > ![Label complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
+    > ![popisek dokončit](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)ou entitu, kterou získal počítač
 
-1. Select the entity from the pop-up window. The labeled complete pizza order entity includes all words (from left to right in English) that are labeled. 
+1. V místním okně vyberte entitu. Entita označená jako dokončená objednávka Pizza zahrnuje všechna slova (zleva doprava v angličtině), která jsou označená. 
 
-## <a name="review-labeled-text"></a>Review labeled text
+## <a name="review-labeled-text"></a>Zkontrolovat text s popiskem
 
-After labeling, review the example utterance and ensure the selected span of text has been underlined with the chosen entity. The solid line indicates the text has been labeled. 
+Po označení se podívejte na příklad utterance a ujistěte se, že vybraný rozsah textu byl podtržený zvolenou entitou. Plná čára indikuje, že text byl označený. 
 
 > [!div class="mx-imgBorder"]
-> ![Labeled complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
+> ![označený jako dokončený počítač – získaná entita](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
 
-## <a name="confirm-predicted-entity"></a>Confirm predicted entity
+## <a name="confirm-predicted-entity"></a>Potvrdit předpovězenou entitu
 
-If there is a dotted-lined box around the span of text and the entity name is above the utterance, it indicates the text is predicted but _not labeled yet_. To turn the prediction into a label, select the utterance row, then select **Confirm entity predictions**.
-
-> [!div class="mx-imgBorder"]
-> ![Predict complete machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
-
-Alternatively, you could select the entity name above the text, then select **Confirm Prediction** from the menu that appears.
+Pokud je kolem rozsahu textu tečkovaný obdélník a název entity je nad utterance, znamená to, že text je předpovězený, ale _ještě není označený_. Chcete-li tuto předpověď převést na popisek, vyberte řádek utterance a pak vyberte **Potvrdit entitu předpovědi**.
 
 > [!div class="mx-imgBorder"]
-> ![Predict complete machine-learned entity with menu](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
+> ![předpovědět kompletní entitu získanou počítačem](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
 
-## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Label entity by painting with entity palette cursor
-
-The entity palette offers an alternative to the previous labeling experience. It allows you to brush over text to instantly label it with an entity.
-
-1. Open the entity palette by selecting on the Highlighter icon at the top right of the utterance table. 
-
-    > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
-
-2. Select the entity component. This action is visually indicated with a new cursor. The cursor follows the mouse as you move in the portal. 
-
-    > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
-
-3. In the example utterance, _paint_ the entity with the cursor.
-
-    > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
-
-## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Labeling subcomponents of a machine learned entity
-
-Subcomponents in entities are labeled exactly the same way as top level entities. When selecting text, the entities available in the pop-up window are relative to the context in which the text appears. For example, if you have a 5-level machine-learned entity, and you are selecting text that has been labeled with the 1st and 2nd levels (indicated by a labeled entity name under the example utterance), the entities available in the pop-up window are limited to the context of components of the 3rd level. To label the text with other entities, select **Label as another entity** option.
+Alternativně můžete vybrat název entity nad textem a pak vybrat **Potvrdit předpověď** z nabídky, která se zobrazí.
 
 > [!div class="mx-imgBorder"]
-> ![Entity palette for machine-learned entity](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
+> ![odhadnout entitu s](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)ou získanou počítačem
 
-Subcomponents can be labeled only if the parent is also labeled. 
+## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Popisek entity podle vykreslování pomocí ukazatele na paletě entity
 
-## <a name="unlabel-entities"></a>Unlabel entities
+Paleta entit nabízí alternativu k předchozímu prostředí označování. Umožňuje přenášet text na text, abyste ho mohli hned označit entitou.
 
-To unlabel an entity, select the entity name underneath the text and select **Unlabel**. If the entity you are trying to unlabel has labeled subcomponents, then the subcomponents must be unlabeled first. 
-
-## <a name="editing-labels-using-the-entity-palette"></a>Editing labels using the entity palette
-
-If you make a mistake while labeling, the entity palette is an easy tool that allows for quick edits. For example, if an entity label spans an extra word by mistake, and it already has labeled subcomponents, then you can use the entity palette to brush over the required shorter span of words.
-
-Například:
-
-1. Pizza Type subcomponent spans "cheese pizza with" which includes an extra incorrect word -- "with"
+1. Otevřete paletu entity tak, že vyberete ikonu zvýrazňovače v pravém horním rohu tabulky utterance. 
 
     > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/edit-label-with-palette-1.png)
+    > ![ová paleta entit pro](media/label-utterances/example-1-label-machine-learned-entity-palette.png) získaná počítačová entita
 
-2. Use the entity palette to pick Pizza Type and brush over "cheese pizza". The outcome is that only cheese pizza is labeled as Pizza Type now.
+2. Vyberte součást entity. Tato akce je vizuálně označena novým kurzorem. Po přesunutí na portálu se ukazatel myši sleduje. 
 
     > [!div class="mx-imgBorder"]
-    > ![Entity palette for machine-learned entity](media/label-utterances/edit-label-with-palette-2.png)
+    > ![ová paleta entit pro](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png) získaná počítačová entita
 
+3. V příkladu utterance _malujte_ entitu pomocí kurzoru.
 
-## <a name="labels-for-matching-text-entities"></a>Labels for matching-text entities
+    > [!div class="mx-imgBorder"]
+    > ![ová paleta entit pro](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png) získaná počítačová entita
 
-Matching-text entities include prebuilt entities, regular expression entities, list entities, and pattern.any entities. These are automatically labeled by LUIS so they are not required to be manually labeled by users.
+## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Označování dílčích součástí zjištěné entity počítače
 
-## <a name="entity-prediction-errors"></a>Entity prediction errors
-
-Entity prediction errors indicate the predicted entity doesn't match the labeled entity. This is visualized with a caution indicator next to the utterance.
+Dílčí součásti v entitách jsou označeny stejným způsobem jako entity nejvyšší úrovně. Při výběru textu jsou entity, které jsou k dispozici v místním okně, relativní vzhledem k kontextu, ve kterém se text zobrazuje. Pokud máte například určitou počítačovou entitu s podporou strojového přístupu a vyberete text, který byl označený na 1 a 2 úrovni (označený názvem entity s označením v příkladu utterance), jsou entity, které jsou k dispozici v místním okně, omezené na kontext komponent na úrovni 3. Chcete-li text označit dalšími entitami, vyberte možnost **Označit jako jinou entitu** .
 
 > [!div class="mx-imgBorder"]
-> ![Entity palette for machine-learned entity](media/label-utterances/example-utterance-indicates-prediction-error.png)
+> ![ová paleta entit pro](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png) získaná počítačová entita
+
+Dílčí součásti lze označit pouze v případě, že je nadřazený také popisek. 
+
+## <a name="unlabel-entities"></a>Odznačení entit
+
+Chcete-li zrušit označení entity, vyberte název entity pod textem a vyberte možnost zrušit **označení**. Pokud entita, kterou se pokoušíte označit jako odznačení, má označené dílčí komponenty, pak musí být dílčí součásti před označením označeny jako první. 
+
+## <a name="editing-labels-using-the-entity-palette"></a>Úprava popisků pomocí palety entit
+
+Pokud při označování dojde k chybě, je paleta entit jednoduchý nástroj, který umožňuje rychlé úpravy. Pokud například popisek entity zahrnuje nadbytečné slovo omylem a již má označené dílčí komponenty, můžete použít paletu entit ke štětci přes požadované kratší rozsah slov.
+
+Příklad:
+
+1. Dílčí komponenta typu Pizza zahrnuje "sýr Pizza s", který zahrnuje nadbytečné nesprávné slovo--"with".
+
+    > [!div class="mx-imgBorder"]
+    > ![ová paleta entit pro](media/label-utterances/edit-label-with-palette-1.png) získaná počítačová entita
+
+2. Pomocí palety entit můžete vybrat typ Pizza a štětec přes "sýr pizza". Výsledkem je, že se teď jako typ Pizza označí jenom sýr Pizza.
+
+    > [!div class="mx-imgBorder"]
+    > ![ová paleta entit pro](media/label-utterances/edit-label-with-palette-2.png) získaná počítačová entita
+
+
+## <a name="labels-for-matching-text-entities"></a>Popisky pro párové entity textu
+
+Mezi párové textové entity patří předem připravené entity, entity regulárních výrazů, seznam entit a vzor. jakékoli entity. Tyto jsou automaticky označeny pomocí LUIS, takže není nutné je ručně popsat podle uživatelů.
+
+## <a name="entity-prediction-errors"></a>Chyby předpovědi entity
+
+Chyby předpovědi entit označují, že předpovězená entita neodpovídá označené entitě. Toto je vizuálně s indikátorem upozornění vedle utterance.
+
+> [!div class="mx-imgBorder"]
+> ![ová paleta entit pro](media/label-utterances/example-utterance-indicates-prediction-error.png) získaná počítačová entita
 
 ## <a name="next-steps"></a>Další kroky
 
-Use the [dashboard](luis-how-to-use-dashboard.md) and [review endpoint utterances](luis-how-to-review-endpoint-utterances.md) to improve the prediction quality of your app.
+K vylepšení kvality předpovědi vaší aplikace použijte [řídicí panel](luis-how-to-use-dashboard.md) a [Prohlédněte si projevy koncového bodu](luis-how-to-review-endpoint-utterances.md) .

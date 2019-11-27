@@ -93,8 +93,8 @@ Zachovat a odebrat horní, zachovat rozsah (odpovídající funkce M, jenom poč
 | Table. RemoveLastN | Odebrat dolní řádky nejsou podporovány. |
 | Table. RowCount | Nepodporuje se, ale dá se dosáhnout pomocí výrazu přidat sloupec se všemi buňkami s prázdným sloupcem (můžete použít sloupec podmínka) a potom v tomto sloupci použít Group by. Tabulka. Group je podporována. | 
 | Zpracování chyb na úrovni řádků | Zpracování chyb na úrovni řádků se momentálně nepodporuje. Chcete-li například vyfiltrovat nečíselné hodnoty ze sloupce, může být jedním z přístupů převod textového sloupce na číslo. Každá buňka, která se nedokáže transformovat, bude v chybovém stavu a bude nutné ji filtrovat. Tento scénář není možný v toku dat tahání. |
-| Tabulka. transponovat | Nepodporováno |
-| Table. Pivot | Nepodporováno |
+| Tabulka. transponovat | Nepodporuje se |
+| Table. Pivot | Nepodporuje se |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Manage Private Endpoints in Azure
-description: Learn how to create a Private Endpoint using the Azure portal in this Quickstart
+title: Rychlý Start – Správa privátních koncových bodů v Azure
+description: Naučte se vytvořit privátní koncový bod pomocí Azure Portal v tomto rychlém startu.
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,199 +14,199 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74419764"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Quickstart: Create a Private Endpoint using Azure portal
+# <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure Portal
 
-A Private Endpoint is the fundamental building block for private link in Azure. It enables Azure resources, like Virtual Machines (VMs), to communicate privately with private link resources. In this Quickstart, you will learn how to create a VM on an Azure Virtual Network, a  SQL Database Server with an Azure private endpoint using the Azure Portal. Then, you can securely access the SQL Database Server from the VM.
+Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač na Azure Virtual Network, SQL Database Server s privátním koncovým bodem Azure pomocí webu Azure Portal. Pak můžete z virtuálního počítače bezpečně přistupovat k serveru SQL Database.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 
 > [!NOTE]
-> Private endpoint(s) are not permitted in conjunction with service endpoints in the same subnet!
+> Ve spojení s koncovými body služby ve stejné podsíti nejsou povolené privátní koncové body.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
-In this section, you will create virtual network and the subnet to host the VM that is used to access your Private Link resource (a SQL server in Azure in this example).
+V této části vytvoříte virtuální síť a podsíť pro hostování virtuálního počítače, který se používá pro přístup k prostředku privátního propojení (SQL Server v Azure v tomto příkladu).
 
-### <a name="create-the-virtual-network"></a>Create the virtual network
+### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
 
-In this section, you will create a Virtual Network and the subnet to host the VM that is used to access your Private Link resource.
+V této části vytvoříte Virtual Network a podsíť, která bude hostovat virtuální počítač, který se používá pro přístup k prostředku privátního propojení.
 
-1. On the upper-left side of the screen, select **Create a resource** > **Networking** > **Virtual network**.
-1. In **Create virtual network**, enter or select this information:
+1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+1. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name (Název) | Enter *MyVirtualNetwork*. |
-    | Adresní prostor | Enter *10.1.0.0/16*. |
+    | Název | Zadejte *MyVirtualNetwork*. |
+    | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Select **Create new**, enter *myResourceGroup*, then select **OK**. |
-    | Umístění | Select **WestCentralUS**.|
-    | Subnet - Name | Enter *mySubnet*. |
-    | Podsíť – Rozsah adres | Enter *10.1.0.0/24*. |
+    | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
+    | Umístění | Vyberte **WestCentralUS**.|
+    | Název podsítě | Zadejte *mySubnet*. |
+    | Podsíť – Rozsah adres | Zadejte *10.1.0.0/24*. |
     |||
-1. Leave the rest as default and select **Create**.
+1. Ponechte REST jako výchozí a vyberte **vytvořit**.
 
 
 ### <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Compute** > **Virtual Machine**.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek** > **výpočetní** > **virtuální počítač**.
 
-1. In **Create a virtual machine - Basics**, enter or select this information:
+1. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **PROJECT DETAILS** | |
+    | **PODROBNOSTI O PROJEKTU** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Select **myResourceGroup**. You created this in the previous section.  |
-    | **INSTANCE DETAILS** |  |
-    | Název virtuálního počítače | Enter *myVm*. |
-    | Oblast | Select **WestCentralUS**. |
-    | Availability options | Leave the default **No infrastructure redundancy required**. |
-    | Obrázek | Select **Windows Server 2019 Datacenter**. |
-    | Velikost | Leave the default **Standard DS1 v2**. |
-    | **ADMINISTRATOR ACCOUNT** |  |
-    | Uživatelské jméno | Enter a username of your choosing. |
+    | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
+    | **PODROBNOSTI INSTANCE** |  |
+    | Název virtuálního počítače | Zadejte *myVm*. |
+    | Region (Oblast) | Vyberte **WestCentralUS**. |
+    | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
+    | Image | Vyberte **Windows Server 2019 Datacenter**. |
+    | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
+    | **ÚČET SPRÁVCE** |  |
+    | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
     | Heslo | Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Confirm Password | Reenter password. |
-    | **INBOUND PORT RULES** |  |
-    | Public inbound ports | Leave the default **None**. |
-    | **SAVE MONEY** |  |
-    | Already have a Windows license? | Leave the default **No**. |
+    | Potvrzení hesla | Zadejte znovu heslo. |
+    | **PRAVIDLA PORTŮ PRO PŘÍCHOZÍ SPOJENÍ** |  |
+    | Veřejné příchozí porty | Nechejte výchozí nastavení **žádné**. |
+    | **ÚSPORA PENĚZ** |  |
+    | Máte už licenci na Windows? | Ponechte výchozí hodnotu **ne**. |
     |||
 
-1. Select **Next: Disks**.
+1. Vyberte **Další: disky**.
 
-1. In **Create a virtual machine - Disks**, leave the defaults and select **Next: Networking**.
+1. V části **vytvořit virtuální počítač – disky**ponechte výchozí hodnoty a vyberte **Další: sítě**.
 
-1. In **Create a virtual machine - Networking**, select this information:
+1. V nástroji **vytvořit virtuální počítač – síť**vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Virtuální síť | Leave the default **MyVirtualNetwork**.  |
-    | Adresní prostor | Leave the default **10.1.0.0/24**.|
-    | Podsíť | Leave the default **mySubnet (10.1.0.0/24)** .|
-    | Veřejná IP adresa | Leave the default **(new) myVm-ip**. |
-    | Public inbound ports | Select **Allow selected ports**. |
-    | Select inbound ports | Select **HTTP** and **RDP**.|
+    | Virtuální síť | Ponechte výchozí **MyVirtualNetwork**.  |
+    | Adresní prostor | Ponechte výchozí **10.1.0.0/24**.|
+    | Podsíť | Ponechte výchozí **mySubnet (10.1.0.0/24)** .|
+    | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP**. |
+    | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
+    | Vybrat příchozí porty | Vyberte **http** a **RDP**.|
     |||
 
 
-1. Vyberte **Zkontrolovat a vytvořit**. You're taken to the **Review + create** page where Azure validates your configuration.
+1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
 
-1. When you see the **Validation passed** message, select **Create**.
+1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
 
-## <a name="create-a-sql-database-server"></a>Create a SQL database server
-In this section, you will create a SQL database server in Azure. 
+## <a name="create-a-sql-database-server"></a>Vytvoření serveru databáze SQL
+V této části vytvoříte server služby SQL Database v Azure. 
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Databases** > **SQL database**.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek** > **databáze** > **SQL Database**.
 
-1. In **Create SQL database - Basics**, enter or select this information:
+1. V nástroji **vytvořit SQL Database – základy**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **Database details** | |
+    | **Podrobnosti databáze** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Select **myResourceGroup**. You created this in the previous section.|
-    | **INSTANCE DETAILS** |  |
-    | Název databáze  | Enter *mydatabase*. If this name is taken, create a unique name. |
+    | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
+    | **PODROBNOSTI INSTANCE** |  |
+    | Název databáze  | Zadejte *MyDatabase*. Pokud se tento název povede, vytvořte jedinečný název. |
     |||
-5. In **Server**, select **Create new**. 
-6. In **New server**, enter or select this information:
+5. V **serveru**vyberte **vytvořit novou**. 
+6. Na **novém serveru**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    |Název serveru  | Enter *myserver*. If this name is taken, create a unique name.|
-    | Přihlašovací jméno správce serveru| Enter an administrator name of your choosing. |
-    | Heslo | Zadejte libovolné heslo. The password must be at least 8 characters long and meet the defined requirements. |
-    | Umístění | Select an Azure region where you want to want your SQL Server to reside. |
+    |Název serveru  | Zadejte *MyServer*. Pokud se tento název povede, vytvořte jedinečný název.|
+    | Přihlašovací jméno správce serveru| Zadejte jméno správce, které chcete zvolit. |
+    | Heslo | Zadejte libovolné heslo. Heslo musí mít délku alespoň 8 znaků a musí splňovat definované požadavky. |
+    | Umístění | Vyberte oblast Azure, ve které chcete, aby se vaše SQL Server nacházela. |
     
 7. Vyberte **OK**. 
-8. Vyberte **Zkontrolovat a vytvořit**. You're taken to the **Review + create** page where Azure validates your configuration. 
-9. When you see the Validation passed message, select **Create**. 
-10. When you see the Validation passed message, select Create. 
+8. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
+9. Když se zobrazí zpráva s potvrzením ověření, vyberte **vytvořit**. 
+10. Když se zobrazí zpráva s potvrzením ověření, vyberte vytvořit. 
 
-## <a name="create-a-private-endpoint"></a>Create a private endpoint
+## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
 
-In this section, you will create a SQL server and add a private endpoint to it. 
+V této části vytvoříte SQL Server a přidáte do něj privátní koncový bod. 
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Networking** > **Private Link Center (Preview)** .
-2. In **Private Link Center - Overview**, on the option to **Build a private connection to a service**, select **Start**.
-1. In **Create a private endpoint (Preview) - Basics**, enter or select this information:
+1. V levém horním rohu obrazovky v Azure Portal vyberte **vytvořit prostředek** > **sítě** > **privátní Link Center (Preview)** .
+2. V části **centrum privátních odkazů – přehled**na možnost **vytvořit privátní připojení ke službě**vyberte možnost **Spustit**.
+1. V **Vytvoření privátního koncového bodu (Preview) – základy**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **Project details** | |
+    | **Podrobnosti o projektu** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Select **myResourceGroup**. You created this in the previous section.|
-    | **INSTANCE DETAILS** |  |
-    | Name (Název) | Enter * myPrivateEndpoint*. If this name is taken, create a unique name. |
-    |Oblast|Select **WestCentralUS**.|
+    | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
+    | **PODROBNOSTI INSTANCE** |  |
+    | Název | Zadejte * myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
+    |Region (Oblast)|Vyberte **WestCentralUS**.|
     |||
-5. Select **Next: Resource**.
-6. In **Create a private endpoint - Resource**, enter or select this information:
+5. Vyberte **Další: prostředek**.
+6. V **Vytvoření privátního koncového bodu – prostředek**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    |Způsob připojení  | Select connect to an Azure resource in my directory.|
+    |Způsob připojení  | V adresáři vyberte připojit k prostředku Azure.|
     | Předplatné| Vyberte své předplatné. |
-    | Typ prostředku | Select **Microsoft.Sql/servers**. |
-    | Prostředek |Select *myServer*|
-    |Target sub-resource |Select *sqlServer*|
+    | Typ prostředku | Vyberte **Microsoft. SQL/servery**. |
+    | Prostředek |Vybrat *MyServer*|
+    |Cílový dílčí prostředek |Výběr *sqlServer*|
     |||
-7. Select **Next: Configuration**.
-8. In **Create a private endpoint (Preview) - Configuration**, enter or select this information:
+7. Vyberte **Další: Konfigurace**.
+8. V **Vytvoření privátního koncového bodu (Preview) – konfigurace**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    |**NETWORKING**| |
-    | Virtuální síť| Select *MyVirtualNetwork*. |
-    | Podsíť | Select *mySubnet*. |
-    |**PRIVATE DNS INTEGRATION**||
-    |Integrate with private DNS zone |Vyberte **Ano**. |
-    |Private DNS Zone |Select *(New)privatelink.database.windows.net* |
+    |**SÍTĚ**| |
+    | Virtuální síť| Vyberte *MyVirtualNetwork*. |
+    | Podsíť | Vyberte *mySubnet*. |
+    |**INTEGRACE PRIVÁTNÍ DNS**||
+    |Integrace s privátní zónou DNS |Vyberte **Ano**. |
+    |Zóna Privátní DNS |Select *(New) privatelink. Database. Windows. NET* |
     |||
 
-1. Vyberte **Zkontrolovat a vytvořit**. You're taken to the **Review + create** page where Azure validates your configuration. 
-2. When you see the **Validation passed** message, select **Create**. 
+1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
+2. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**. 
  
-## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Connect to a VM using Remote Desktop (RDP)
+## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Připojení k virtuálnímu počítači pomocí vzdálené plochy (RDP)
 
 
-After you've created **myVm*, connect to it from the internet as follows: 
+Po vytvoření **myVm*se k němu připojte z Internetu následujícím způsobem: 
 
-1. In the portal's search bar, enter *myVm*.
+1. Na panelu hledání na portálu zadejte *myVm*.
 
-1. Klikněte na tlačítko **Připojit**. After selecting the **Connect** button, **Connect to virtual machine** opens.
+1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Select **Download RDP File**. Azure creates a Remote Desktop Protocol ( *.rdp*) file and downloads it to your computer.
+1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
-1. Open the downloaded.rdp* file.
+1. Otevřete stažený soubor. RDP *.
 
     1. Pokud se zobrazí výzva, vyberte **Připojit**.
 
-    1. Enter the username and password you specified when creating the VM.
+    1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
-        > You may need to select **More choices** > **Use a different account**, to specify the credentials you entered when you created the VM.
+        > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. If you receive a certificate warning, select **Yes** or **Continue**.
+1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
 
-1. Once the VM desktop appears, minimize it to go back to your local desktop.  
+1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
 
-## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Access the SQL database server privately from the VM
+## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Přístup k serveru SQL Database soukromě z virtuálního počítače
 
-1. In the Remote Desktop of *myVM*, open PowerShell.
+1. Ve vzdálené ploše *myVM*otevřete PowerShell.
 
-2. Enter `nslookup myserver.database.windows.net`. 
+2. Zadejte `nslookup myserver.database.windows.net`. 
 
-    You'll receive a message similar to this:
+    Zobrazí se zpráva podobná této:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -215,29 +215,29 @@ After you've created **myVm*, connect to it from the internet as follows:
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
-3. Install [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+3. Nainstalujte [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-4. In **Connect to server**, enter or select this information:
+4. V **Connect to Server (připojit k serveru**) zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Typ serveru| Vyberte **Databázový stroj**.|
-    | Název serveru| Select *myserver.database.windows.net* |
-    | Uživatelské jméno | Enter username as username@servername which is provided during the SQL server creation. |
-    |Heslo |Enter a password provided during the SQL server creation. |
-    |Remember password|Vyberte **Ano**.|
+    | Název serveru| Vybrat *MyServer.Database.Windows.NET* |
+    | Uživatelské jméno | Jako username@servername zadejte uživatelské jméno, které se poskytuje během vytváření SQL serveru. |
+    |Heslo |Zadejte heslo, které jste zadali během vytváření SQL serveru. |
+    |Zapamatovat heslo|Vyberte **Ano**.|
     |||
 1. Vyberte **Connect** (Připojit).
-2. Browse databases from left menu.
-3. (Optionally) Create or query information from mydatabase.
-4. Close the remote desktop connection to *myVm*. 
+2. Procházet databáze z levé nabídky
+3. Volitelně Vytvoření nebo dotazování informací z MyDatabase.
+4. Zavřete připojení ke vzdálené ploše pro *myVm*. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
-When you're done using the private endpoint, SQL server, and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
+Až budete s použitím privátního koncového bodu, SQL serveru a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje: 
+1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte *myResourceGroup* . 
 2. Vyberte **Odstranit skupinu prostředků**. 
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+3. Zadejte myResourceGroup pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-In this quickstart, you created a VM on a virtual network, a SQL database server, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the SQL database server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint?](private-endpoint-overview.md).
+V tomto rychlém startu jste vytvořili virtuální počítač ve virtuální síti, serveru služby SQL Database a privátním koncovém bodu pro privátní přístup. Připojili jste se k jednomu virtuálnímu počítači z Internetu a bezpečně komunikovali na serveru SQL Database pomocí privátního odkazu. Další informace o privátních koncových bodech najdete v tématu [co je privátní koncový bod Azure](private-endpoint-overview.md).

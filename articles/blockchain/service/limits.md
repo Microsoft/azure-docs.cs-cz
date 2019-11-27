@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Service limits
-description: Overview of the service and functional limits in Azure Blockchain Service
+title: Omezení služby Azure blockchain
+description: Přehled služby a funkční omezení ve službě Azure blockchain
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
@@ -11,51 +11,51 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455657"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Limits in Azure Blockchain Service
+# <a name="limits-in-azure-blockchain-service"></a>Omezení ve službě Azure blockchain
 
-Azure Blockchain Service has service and functional limits such as the number of nodes a member can have, consortium restrictions, and storage amounts.
+Služba Azure blockchain má omezení služby a funkčnosti, jako je počet uzlů, které může mít člen, omezení konsorcia a množství úložiště.
 
 ## <a name="pricing-tier"></a>Cenová úroveň
 
-Maximum limits on transactions and validator nodes depend on whether you provision Azure Blockchain Service at Basic or Standard pricing tiers.
+Maximální limity pro transakce a uzly validátoru závisí na tom, jestli zřizujete službu Azure blockchain na úrovních Basic nebo Standard.
 
-| Cenová úroveň | Max transaction nodes | Max validator nodes |
+| Cenová úroveň | Maximální počet uzlů transakcí | Maximální počet uzlů validátoru |
 |:---|:---:|:---:|
-| Úroveň Basic | 10 | 1\. místo |
-| Úroveň Standard | 10 | 2 |
+| Basic | 10 | 1 |
+| Standard | 10 | 2 |
 
-Changing the pricing tier between Basic and Standard after member creation is not supported.
+Změna cenové úrovně mezi základními a standardními po vytvoření členů není podporována.
 
 ## <a name="storage-capacity"></a>Kapacita úložiště
 
-The maximum amount of storage that can be used per node for ledger data and logs is 1.8 terabytes.
+Maximální velikost úložiště, které je možné použít pro jednotlivé uzly pro data a protokoly hlavní knihy, je 1,8 terabajtů.
 
-Decreasing ledger and log storage size is not supported.
+Zmenšení hlavní knihy a velikosti úložiště protokolů se nepodporuje.
 
-## <a name="consortium-limits"></a>Consortium limits
+## <a name="consortium-limits"></a>Omezení konsorcia
 
-* **Consortium and member names must be unique** from other consortium and member names in the Azure Blockchain Service.
+* **Názvy konsorcia a členů musí být** v rámci služby Azure blockchain jedinečné od ostatních názvů Consortium a member.
 
-* **Member and consortium names cannot be changed**
+* **Názvy členů a konsorcia se nedají změnit.**
 
-* **All members in a consortium must be in the same pricing tier**
+* **Všichni členové konsorcia musí být ve stejné cenové úrovni.**
 
-* **All members that participate in a consortium must reside in the same region**
+* **Všichni členové, kteří se účastní konsorcium, se musí nacházet ve stejné oblasti.**
 
-    The first member created in a consortium dictates the region. Invited members to the consortium must reside in the same region as the first member. Limiting all members to the same region helps ensure network consensus is not negatively impacted.
+    První člen vytvořený v konsorciu určuje oblast. Pozvaní členové do konsorcia musí být ve stejné oblasti jako první člen. Omezení všech členů na stejnou oblast vám pomůže zajistit, aby se v síti nepříznivě ovlivnila shoda.
 
-* **A consortium must have at least one administrator**
+* **Konsorcium musí mít aspoň jednoho správce.**
 
-    If there is only one administrator in a consortium, they cannot remove themselves from the consortium or delete their member until another administrator is added or promoted in the consortium.
+    Pokud má konsorcium pouze jednoho správce, nemůže z konsorcia odstranit ani odstranit jeho člena, dokud není do konsorcia přidán nebo povýšen jiný správce.
 
-* **Members removed from the consortium cannot be added again**
+* **Členy odebrané z konsorcia nelze znovu přidat.**
 
-    Rather, they must be reinvited to join the consortium and create a new member. Their existing member resource are not deleted to preserve historical transactions.
+    Místo toho je nutné je znovu pozvat, aby se připojili k konsorciu a vytvořil nový člen. Jejich stávající členské prostředky nejsou odstraněny pro zachování historických transakcí.
 
-* **All members in a consortium must be using the same ledger version**
+* **Všichni členové konsorcia musí používat stejnou verzi hlavní knihy.**
 
-    For more information on the patching, updates, and ledger versions available in Azure Blockchain Service, see [Patching, updates, and versions](ledger-versions.md).
+    Další informace o opravách, aktualizacích a verzích hlavní knihy dostupných ve službě Azure blockchain najdete v článku o [opravách, aktualizacích a verzích](ledger-versions.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Learn more about policies regarding systems patching and upgrades - [Patching, updates, and versions](ledger-versions.md).
+Přečtěte si další informace o zásadách pro opravy a upgrady systémů – [opravy, aktualizace a verze](ledger-versions.md).

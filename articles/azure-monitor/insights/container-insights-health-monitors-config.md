@@ -63,7 +63,7 @@ Azure Monitor for Containers zahrnuje řadu klíčových scénářů monitorová
 
 ### <a name="unit-monitors"></a>Monitory jednotek
 
-|**Název monitorování** | Typ monitorování | **Popis** | **Parametr** | **Hodnota** |
+|**Název monitorování** | Typ monitorování | **Popis** | **Ukazatele** | **Hodnota** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |Využití paměti uzlu |Monitorování jednotky |Toto monitorování vyhodnocuje využití paměti uzlu každou minutu pomocí cadvisor nahlášených dat. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |Využití procesoru uzlů |Monitorování jednotky |Toto monitorování zkontroluje využití CPU v uzlu každou minutu pomocí cadvisor nahlášených dat. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||

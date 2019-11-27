@@ -1,6 +1,6 @@
 ---
-title: External authentication from ACR task
-description: Enable a managed identity for Azure Resources in an Azure Container Registry (ACR) task to allow the task to read Docker Hub credentials stored in an Azure key vault.
+title: Externí ověřování z ACR úlohy
+description: Povolte spravovanou identitu pro prostředky Azure v úloze Azure Container Registry (ACR), která umožňuje, aby úloha četla přihlašovací údaje Docker, uložené v trezoru klíčů Azure.
 ms.topic: article
 ms.date: 07/12/2019
 ms.openlocfilehash: a7086050a4aef380f11298c819817692396216b2
@@ -10,45 +10,45 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456217"
 ---
-# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>External authentication in an ACR task using an Azure-managed identity 
+# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Externí ověřování v úloze ACR s využitím identity spravované službou Azure 
 
-In an [ACR task](container-registry-tasks-overview.md), you can [enable a managed identity for Azure resources](container-registry-tasks-authentication-managed-identity.md). The task can use the identity to access other Azure resources, without needing to provide or manage credentials. 
+V [úloze ACR](container-registry-tasks-overview.md)můžete [Povolit spravovanou identitu pro prostředky Azure](container-registry-tasks-authentication-managed-identity.md). Tato úloha může používat identitu pro přístup k dalším prostředkům Azure, aniž byste museli zadávat nebo spravovat přihlašovací údaje. 
 
-In this article, you learn how to enable a managed identity in a task that accesses secrets stored in an Azure key vault. 
+V tomto článku se dozvíte, jak povolit spravovanou identitu v úloze, která přistupuje k tajným klíčům uloženým v trezoru klíčů Azure. 
 
-To create the Azure resources, this article requires that you run the Azure CLI version 2.0.68 or later. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.68 nebo novější, abyste mohli vytvořit prostředky Azure. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
-The example task reads Docker Hub credentials stored in an Azure key vault. The credentials are for a Docker Hub account with write (push) permissions to a private repository in Docker Hub. To read the credentials, you configure the task with a managed identity and assign appropriate permissions to it. The task associated with the identity builds an image, and signs into Docker Hub to push the image to the private repo. 
+Ukázkový úkol načte přihlašovací údaje Docker Hub uložené v trezoru klíčů Azure. Přihlašovací údaje jsou pro účet Docker Hub s oprávněním Write (push) k privátnímu úložišti v Docker Hub. Pokud chcete přihlašovací údaje přečíst, nakonfigurujete úlohu se spravovanou identitou a přiřadíte jí patřičná oprávnění. Úloha přidružená k identitě sestaví image a přihlásí do Docker Hub, aby nastavila image do soukromého úložiště. 
 
-This example shows steps using either a user-assigned or system-assigned managed identity. Your choice of identity depends on your organization's needs.
+Tento příklad ukazuje kroky buď pomocí uživatelsky přiřazené nebo spravované identity přiřazené systémem. Vaše volba identity závisí na potřebách vaší organizace.
 
-In a real-world scenario, a company might publish images to a private repo in Docker Hub as part of a build process. 
+Ve skutečném scénáři může společnost publikovat image do soukromého úložiště v Docker Hub jako součást procesu sestavení. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-You need an Azure container registry in which you run the task. In this article, this registry is named *myregistry*. Replace with your own registry name in later steps.
+Potřebujete službu Azure Container Registry, ve které úlohu spouštíte. V tomto článku má tento registr název *myregistry*. Nahraďte vlastním názvem registru v pozdějších krocích.
 
-If you don't already have an Azure container registry, see [Quickstart: Create a private container registry using the Azure CLI](container-registry-get-started-azure-cli.md). You don't need to push images to the registry yet.
+Pokud ještě nemáte službu Azure Container Registry, přečtěte si téma [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md). Image ještě nemusíte vkládat do registru.
 
-You also need a private repository in Docker Hub, and a Docker Hub account with permissions to write to the repo. In this example, this repo is named *hubuser/hubrepo*. 
+Budete také potřebovat privátní úložiště v Docker Hub a účet Docker s oprávněními k zápisu do úložiště. V tomto příkladu má toto úložiště název *hubuser/hubrepo*. 
 
-## <a name="create-a-key-vault-and-store-secrets"></a>Create a key vault and store secrets
+## <a name="create-a-key-vault-and-store-secrets"></a>Vytvoření trezoru klíčů a uložení tajných kódů
 
-First, if you need to, create a resource group named *myResourceGroup* in the *eastus* location with the following [az group create][az-group-create] command:
+Nejdřív v případě potřeby vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* pomocí následujícího příkazu [AZ Group Create][az-group-create] :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Use the [az keyvault create][az-keyvault-create] command to create a key vault. Be sure to specify a unique key vault name. 
+Pomocí příkazu [AZ datatrezor Create][az-keyvault-create] vytvořte Trezor klíčů. Nezapomeňte zadat jedinečný název trezoru klíčů. 
 
 ```azurecli-interactive
 az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
 ```
 
-Store the required Docker Hub credentials in the key vault using the [az keyvault secret set][az-keyvault-secret-set] command. In these commands, the values are passed in environment variables:
+V trezoru klíčů uložte požadované přihlašovací údaje k Docker Hub pomocí příkazu [AZ Key trezor tajné sady][az-keyvault-secret-set] . V těchto příkazech jsou hodnoty předány do proměnných prostředí:
 
 ```azurecli
 # Store Docker Hub user name
@@ -64,11 +64,11 @@ az keyvault secret set \
   --vault-name mykeyvault
 ```
 
-In a real-world scenario, secrets would likely be set and maintained in a separate process.
+V reálném scénáři by tajné klíče byly pravděpodobně nastaveny a udržovány v samostatném procesu.
 
-## <a name="define-task-steps-in-yaml-file"></a>Define task steps in YAML file
+## <a name="define-task-steps-in-yaml-file"></a>Definování kroků úkolu v souboru YAML
 
-The steps for this example task are defined in a [YAML file](container-registry-tasks-reference-yaml.md). Create a file named `dockerhubtask.yaml` in a local working directory and paste the following contents. Be sure to replace the key vault name in the file with the name of your key vault.
+Kroky pro tento příklad úlohy jsou definovány v [souboru YAML](container-registry-tasks-reference-yaml.md). V místním pracovním adresáři vytvořte soubor s názvem `dockerhubtask.yaml` a vložte následující obsah. Nezapomeňte nahradit název trezoru klíčů v souboru názvem vašeho trezoru klíčů.
 
 ```yml
 version: v1.0.0
@@ -88,22 +88,22 @@ steps:
     - {{.Values.PrivateRepo}}:{{.Run.ID}}
 ```
 
-The task steps do the following:
+Kroky úlohy jsou následující:
 
-* Manage secret credentials to authenticate with Docker Hub.
-* Authenticate with Docker Hub by passing the secrets to the `docker login` command.
-* Build an image using a sample Dockerfile in the [Azure-Samples/acr-tasks](https://github.com/Azure-Samples/acr-tasks.git) repo.
-* Push the image to the private Docker Hub repository.
+* Spravujte přihlašovací údaje tajných kódů pro ověřování pomocí Docker Hub.
+* Ověřte pomocí Docker Hub předáním tajných kódů do příkazu `docker login`.
+* Sestavte Image pomocí ukázkového souboru dockerfileu v úložišti [Azure-Samples/ACR-Tasks](https://github.com/Azure-Samples/acr-tasks.git) .
+* Nahrajte image do úložiště privátního Docker Hub.
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>Option 1: Create task with user-assigned identity
+## <a name="option-1-create-task-with-user-assigned-identity"></a>Možnost 1: vytvoření úlohy s identitou přiřazenou uživatelem
 
-The steps in this section create a task and enable a user-assigned identity. If you want to enable a system-assigned identity instead, see [Option 2: Create task with system-assigned identity](#option-2-create-task-with-system-assigned-identity). 
+Kroky v této části vytvoří úlohu a umožní uživateli přiřazenou identitu. Pokud místo toho chcete povolit identitu přiřazenou systémem, přečtěte si část [možnost 2: vytvoření úlohy s identitou přiřazenou systémem](#option-2-create-task-with-system-assigned-identity). 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
-### <a name="create-task"></a>Create task
+### <a name="create-task"></a>Vytvořit úlohu
 
-Create the task *dockerhubtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `dockerhubtask.yaml` in the working directory. The `--assign-identity` parameter passes the resource ID of the user-assigned identity. 
+Vytvořte úlohu *dockerhubtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `dockerhubtask.yaml` v pracovním adresáři. Parametr `--assign-identity` předává ID prostředku identity přiřazené uživatelem. 
 
 ```azurecli
 az acr task create \
@@ -116,13 +116,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Create task with system-assigned identity
+## <a name="option-2-create-task-with-system-assigned-identity"></a>Možnost 2: vytvoření úlohy s identitou přiřazenou systémem
 
-The steps in this section create a task and enable a system-assigned identity. If you want to enable a user-assigned identity instead, see [Option 1: Create task with user-assigned identity](#option-1-create-task-with-user-assigned-identity). 
+Kroky v této části vytvoří úlohu a povolí identitu přiřazenou systémem. Pokud místo toho chcete povolit uživatelsky přiřazenou identitu, přečtěte si část [možnost 1: vytvoření úlohy s identitou přiřazenou uživatelem](#option-1-create-task-with-user-assigned-identity). 
 
-### <a name="create-task"></a>Create task
+### <a name="create-task"></a>Vytvořit úlohu
 
-Create the task *dockerhubtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `dockerhubtask.yaml` in the working directory. The `--assign-identity` parameter with no value enables the system-assigned identity on the task.  
+Vytvořte úlohu *dockerhubtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `dockerhubtask.yaml` v pracovním adresáři. Parametr `--assign-identity` bez hodnoty umožňuje pro tuto úlohu přiřadit identitu systému.  
 
 ```azurecli
 az acr task create \
@@ -135,23 +135,23 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="grant-identity-access-to-key-vault"></a>Grant identity access to key vault
+## <a name="grant-identity-access-to-key-vault"></a>Udělení přístupu identit k trezoru klíčů
 
-Run the following [az keyvault set-policy][az-keyvault-set-policy] command to set an access policy on the key vault. The following example allows the identity to read secrets from the key vault. 
+Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následující příkaz [AZ Key trezor set-Policy][az-keyvault-set-policy] . Následující příklad umožňuje identitě číst tajné klíče z trezoru klíčů. 
 
 ```azurecli
 az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
 ```
 
-## <a name="manually-run-the-task"></a>Manually run the task
+## <a name="manually-run-the-task"></a>Ručně spustit úlohu
 
-To verify that the task in which you enabled a managed identity runs successfully, manually trigger the task with the [az acr task run][az-acr-task-run] command. The `--set` parameter is used to pass the private repo name to the task. In this example, the placeholder repo name is *hubuser/hubrepo*.
+Chcete-li ověřit, zda je úloha, ve které jste povolili spravovanou identitu, úspěšně spuštěna, spusťte úlohu ručně pomocí příkazu [AZ ACR Task Run][az-acr-task-run] . Parametr `--set` slouží k předání názvu soukromého úložiště do úlohy. V tomto příkladu je zástupný název úložiště *hubuser/hubrepo*.
 
 ```azurecli
 az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
 ```
 
-When the task runs successfully, output shows successful authentication to Docker Hub, and the image is successfully built and pushed to the private repo:
+Po úspěšném spuštění úlohy výstup zobrazí úspěšné ověření v Docker Hub a image se úspěšně sestaví a vloží do privátního úložiště:
 
 ```console
 Queued a run with ID: cf24
@@ -198,12 +198,12 @@ Sending build context to Docker daemon    129kB
 Run ID: cf24 was successful after 15s
 ```
 
-To confirm the image is pushed, check for the tag (`cf24` in this example) in the private Docker Hub repo.
+Pokud chcete potvrdit, že je image vložená, zkontrolujte, jestli je značka (v tomto příkladu`cf24`) v úložišti privátního Docker Hub.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Learn more about [enabling a managed identity in an ACR task](container-registry-tasks-authentication-managed-identity.md).
-* See the [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md)
+* Přečtěte si další informace o [Povolení spravované identity v ACR úloze](container-registry-tasks-authentication-managed-identity.md).
+* Další informace najdete v tématu [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md)
 
 
 <!-- LINKS - Internal -->

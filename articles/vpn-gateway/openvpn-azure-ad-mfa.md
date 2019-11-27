@@ -1,6 +1,6 @@
 ---
-title: 'Enable MFA for VPN users: Azure AD authentication'
-description: Enable multi-factor authentication for VPN users
+title: 'Povolit MFA pro uživatele sítě VPN: ověřování Azure AD'
+description: Povolení služby Multi-Factor Authentication pro uživatele sítě VPN
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -14,46 +14,46 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382216"
 ---
-# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Enable Azure Multi-Factor Authentication (MFA) for VPN users
+# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Povolit Azure Multi-Factor Authentication (MFA) pro uživatele sítě VPN
 
-If you want users to be prompted for a second factor of authentication before granting access, you can configure Azure Multi-Factor Authentication (MFA) for your Azure AD tenant. The steps in this article help you enable a requirement for two-step verification.
+Pokud chcete, aby se uživatelé před udělením přístupu zobrazovali k druhému faktoru ověřování, můžete pro vašeho tenanta Azure AD nakonfigurovat službu Azure Multi-Factor Authentication (MFA). Kroky v tomto článku vám pomůžou zajistit požadavek na dvoustupňové ověřování.
 
-## <a name="prereq"></a>Prerequisite
+## <a name="prereq"></a>Požadovaných součástí
 
-The prerequisite for this configuration is a configured Azure AD tenant using the steps in [Configure a tenant](openvpn-azure-ad-tenant.md).
+Předpokladem pro tuto konfiguraci je konfigurovaný tenant Azure AD pomocí kroků v části [Konfigurace tenanta](openvpn-azure-ad-tenant.md).
 
-## <a name="mfa"></a>Open the MFA page
+## <a name="mfa"></a>Otevření stránky MFA
 
 1. Přihlaste se k portálu Azure.
-2. Navigate to **Azure Active Directory -> All users**.
-3. Select **Multi-Factor Authentication** to open the multi-factor authentication page.
+2. Přejděte na **Azure Active Directory-> všechny uživatele**.
+3. Výběrem **Multi-Factor Authentication** otevřete stránku Multi-Factor Authentication.
 
-   ![Přihlásit se](./media/openvpn-azure-ad-mfa/mfa1.jpg)
+   ![Přihlášení](./media/openvpn-azure-ad-mfa/mfa1.jpg)
 
-## <a name="users"></a> Select users
+## <a name="users"></a>Vybrat uživatele
 
-1. On the **multi-factor authentication** page, select the user(s) for which you want to enable MFA.
+1. Na stránce **Multi-Factor Authentication** vyberte uživatele, pro které chcete povolit MFA.
 2. Vyberte **Povolit**.
 
    ![Vyberte](./media/openvpn-azure-ad-mfa/mfa2.jpg)
 
-## <a name="enableauth"></a>Enable authentication
+## <a name="enableauth"></a>Povolit ověřování
 
-1. Navigate to **Azure Active Directory  -> Enterprise applications -> All applications**.
-2. On the **Enterprise applications - All applications** page, select **Azure VPN**.
+1. Přejděte na **Azure Active Directory > podnikové aplikace – > všechny aplikace**.
+2. Na stránce **podnikové aplikace – všechny aplikace** vyberte **Azure VPN**.
 
-   ![Directory ID](./media/openvpn-azure-ad-mfa/user1.jpg)
+   ![ID adresáře](./media/openvpn-azure-ad-mfa/user1.jpg)
 
-## <a name="enablesign"></a> Configure sign-in settings
+## <a name="enablesign"></a>Konfigurovat nastavení přihlášení
 
-On the **Azure VPN - Properties** page, configure sign-in settings.
+Na stránce **Azure VPN – vlastnosti** nakonfigurujte nastavení přihlášení.
 
-1. Set **Enabled for users to sign-in?** to **Yes**. This allows all users in the AD tenant to connect to the VPN successfully.
-2. Set **User assignment required?** to **Yes** if you want to limit sign-in to only users that have permissions to the Azure VPN.
+1. Nastavte možnost **Povolit uživatelům přihlášení?** na **Ano**. To umožní všem uživatelům v tenantovi služby AD se úspěšně připojit k síti VPN.
+2. Nastavit **přiřazení uživatele jako povinné?** Pokud chcete omezit přihlašování jenom na uživatele, kteří mají oprávnění k Azure VPN, nastavte **hodnotu Ano** .
 3. Uložte provedené změny.
 
    ![Oprávnění](./media/openvpn-azure-ad-mfa/user2.jpg)
 
 ## <a name="next-steps"></a>Další kroky
 
-To connect to your virtual network, you must create and configure a VPN client profile. See [Configure a VPN client for P2S VPN connections](openvpn-azure-ad-client.md).
+Pokud se chcete připojit k virtuální síti, musíte vytvořit a nakonfigurovat profil klienta VPN. Viz téma [Konfigurace klienta VPN pro připojení P2S VPN](openvpn-azure-ad-client.md).

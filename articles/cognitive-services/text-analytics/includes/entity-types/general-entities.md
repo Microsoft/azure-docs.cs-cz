@@ -75,7 +75,7 @@ Jazyky
 |----------|----------------------------------------------|
 | neuvedeno         | E-mailová adresa, například `support@contoso.com` |
 
-### <a name="url"></a>Adresa URL
+### <a name="url"></a>zprostředkovatele identity
 
 Internetové adresy URL.
 
@@ -102,6 +102,6 @@ Jazyky
 | neuvedeno         | `6`, `six`                   |
 | Procento  | `50%`, `fifty percent`       |
 | Pořadí     | `2nd`, `second`              |
-| Currency    | `$10.99`, `€30.00`           |
+| Měna    | `$10.99`, `€30.00`           |
 | Dimenze   | `10 miles`, `40 cm`          |
 | Teplota | `32 degrees`, `10°C`         |

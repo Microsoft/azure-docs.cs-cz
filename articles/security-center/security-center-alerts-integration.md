@@ -21,7 +21,7 @@ ms.locfileid: "74278331"
 
 Azure Security Center poskytuje další licence Microsoftu pro práci s následujícími produkty zabezpečení:
 
-* [Azure WAF](#azure-waf)
+* [WAF Azure](#azure-waf)
 * [Azure DDoS Protection](#azure-ddos)
 
 ## WAF Azure<a name="azure-waf"></a>

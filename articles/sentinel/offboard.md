@@ -1,6 +1,6 @@
 ---
-title: Offboard Azure Sentinel| Microsoft Docs
-description: How to delete your Azure Sentinel instance.
+title: Odpojení Azure Sentinel | Microsoft Docs
+description: Jak odstranit instanci Sentinel Azure
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -21,67 +21,67 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74464141"
 ---
-# <a name="remove-azure-sentinel-from-your-tenant"></a>Remove Azure Sentinel from your tenant
+# <a name="remove-azure-sentinel-from-your-tenant"></a>Odeberte Azure Sentinel z vašeho tenanta.
 
-If you no longer want to use the Azure Sentinel, this article explains how to remove it from your tenant.
+Pokud už nechcete používat službu Azure Sentinel, Tento článek vysvětluje, jak ho odebrat z vašeho tenanta.
 
-## <a name="how-to-delete-azure-sentinel"></a>How to delete Azure Sentinel
+## <a name="how-to-delete-azure-sentinel"></a>Jak odstranit Azure Sentinel
 
-In the background, when you install Azure Sentinel, the **SecurityInsights** solution is installed on your selected workspace. So the first thing you need to do is remove the **SecurityInsights** solution.
+Když na pozadí nainstalujete službu Azure Sentinel, řešení **SecurityInsights** se nainstaluje na vybraný pracovní prostor. Takže první věc, kterou potřebujete udělat, je odebrat řešení **SecurityInsights** .
 
-1.  Go to **Azure Sentinel**, followed by **Configuration**, followed by **Workspace settings**, and then **Solutions**.
+1.  Klikněte na **Azure Sentinel**, potom na **Konfigurace**, potom na **Nastavení pracovního prostoru**a pak na **řešení**.
 
-2.  Select `SecurityInsights` and click on it.
+2.  Vyberte `SecurityInsights` a klikněte na něj.
 
-    ![Find the SecurityInsights solution](media/offboard/find-solution.png)
+    ![Najít řešení SecurityInsights](media/offboard/find-solution.png)
 
-3.  At the top of the page select **Delete**.
+3.  V horní části stránky vyberte **Odstranit**.
 
     > [!IMPORTANT]
-    > If you remove the workspace, it may affect other solutions and data sources that are using this workspace, including Azure Monitor. To check which solutions are using this workspace, see [List installed monitoring solutions](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions). To check which solutions' data is being ingested into the workspace, see [Understanding ingested data volume](../azure-monitor/platform/manage-cost-storage.md#understanding-ingested-data-volume).
+    > Pokud pracovní prostor odeberete, může to mít vliv na jiná řešení a zdroje dat, které používají tento pracovní prostor, včetně Azure Monitor. Pokud chcete zjistit, která řešení používají tento pracovní prostor, přečtěte si článek [seznam nainstalovaných řešení monitorování](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions). Pokud chcete zjistit, která řešení se ingestují do pracovního prostoru, přečtěte si téma principy ingestované [datové svazky](../azure-monitor/platform/manage-cost-storage.md#understanding-ingested-data-volume).
 
-    ![Delete the SecurityInsights solution](media/offboard/delete-solution.png)
+    ![Odstranění řešení SecurityInsights](media/offboard/delete-solution.png)
 
-## <a name="what-happens-behind-the-scenes"></a>What happens behind the scenes?
+## <a name="what-happens-behind-the-scenes"></a>Co se stane na pozadí?
 
-When you delete the solution, Azure Sentinel takes up to 48 hours to complete the first phase of the deletion process.
+Při odstranění řešení vyžaduje Azure Sentinel až 48 hodin, než se dokončí první fáze procesu odstranění.
 
-After the disconnection is identified, the offboarding process begins.
+Po zjištění odpojení se spustí proces zrušení.
 
-**The configuration of these connectors is deleted:**
+**Konfigurace těchto konektorů se odstraní:**
 -   Office 365
 
 -   AWS
 
--   Microsoft services security alerts (Azure ATP, Microsoft Cloud App Security including Cloud Discovery Shadow IT reporting, Azure AD Identity Protection, Microsoft Defender ATP, Azure Security Center)
+-   Výstrahy zabezpečení služeb Microsoftu (ATP Azure, Microsoft Cloud App Security včetně Cloud Discovery stínových sestav IT, Azure AD Identity Protection, ATP v programu Microsoft Defender, Azure Security Center)
 
 -   Analýza hrozeb
 
--   Common security logs (including CEF-based logs, Barracuda, and Syslog) (If you have Azure Security Center, these logs will continue to be collected.)
+-   Běžné protokoly zabezpečení (včetně protokolů založených na CEF, Barracuda a syslog) (Pokud máte Azure Security Center, budou tyto protokoly i nadále shromažďovány.)
 
--   Windows Security Events (If you have Azure Security Center, these logs will continue to be collected.)
+-   Události zabezpečení systému Windows (Pokud máte Azure Security Center budou tyto protokoly nadále shromažďovány.)
 
-Within the first 48 hours, the data and alert rules (including real-time automation configuration) will no longer be accessible or queryable in Azure Sentinel.
+Během prvních 48 hodin už nebudou pravidla dat a upozornění (včetně konfigurace automatizace v reálném čase) dostupná ani Queryable ve službě Azure Sentinel.
 
-**After 30 days these resources are deleted:**
+**Po 30 dnech se tyto prostředky odstraní:**
 
--   Incidents (including investigation metadata)
+-   Incidenty (včetně metadat šetření)
 
 -   Pravidla upozornění
 
--   Bookmarks
+-   Záložky
 
-Your playbooks, saved workbooks, saved hunting queries, and notebooks are not deleted. **Some may break due to the removed data. You can remove those manually.**
+Vaše playbooky, uložené sešity, uložené lovecké dotazy a poznámkové bloky se neodstraňují. **Některé mohou být z důvodu odebraných dat přerušeny. Můžete je odebrat ručně.**
 
-After you remove the service, there is a grace period of 30 days during which you can re-enable the solution and your data and alert rules will be restored but the configured connectors that were disconnected must be reconnected.
+Po odebrání služby dojde k uplynutí období 30 dnů, během kterého můžete řešení znovu povolit, a data a pravidla výstrah budou obnovena, ale odpojené odpojené konektory se musí znovu připojit.
 
 > [!NOTE]
-> If you remove the solution, your subscription will continue to be registered with the Azure Sentinel resource provider. **You can remove it manually.**
+> Pokud řešení odeberete, vaše předplatné bude i nadále zaregistrováno u poskytovatele prostředků Azure Sentinel. **Můžete jej odebrat ručně.**
 
 
 
 
 ## <a name="next-steps"></a>Další kroky
-In this document, you learned how to remove the Azure Sentinel service. If you change your mind and want to install it again:
-- Get started [on-boarding Azure Sentinel](quickstart-onboard.md).
+V tomto dokumentu jste zjistili, jak odebrat službu Azure Sentinel. Pokud si to rozmyslíte a chcete ji znovu nainstalovat:
+- Začínáme s připojováním [Azure Sentinel](quickstart-onboard.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple - Choose a load balancing solution for CloudSimple Private Clouds
-description: Describes the load balancing options deploying an application in a Private Cloud
+title: Řešení Azure VMware podle CloudSimple – volba řešení vyrovnávání zatížení pro privátní cloudy CloudSimple
+description: Popisuje možnosti vyrovnávání zatížení, které nasazují aplikaci v privátním cloudu.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -15,32 +15,32 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74206506"
 ---
-# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Choose a load balancing solution for CloudSimple Private Clouds
+# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Volba řešení vyrovnávání zatížení pro privátní cloudy CloudSimple
 
-When deploying an application in a CloudSimple Private Cloud, you can choose any of several options for load balancing.
+Když nasazujete aplikaci v privátním cloudu CloudSimple, můžete pro vyrovnávání zatížení zvolit některou z několika možností.
 
-You can choose a virtual or software-based load balancer in your CloudSimple private cloud or even use Azure L7 load balancer running in your Azure subscription to front end your web tier VMs running in the CloudSimple Private Cloud. Here, we list a few options:
+Můžete zvolit virtuální nebo softwarový nástroj pro vyrovnávání zatížení ve vašem privátním cloudu CloudSimple nebo dokonce použít nástroj pro vyrovnávání zatížení Azure L7 spuštěný ve vašem předplatném Azure ke front-endu virtuálních počítačů webové vrstvy, které běží v privátním cloudu CloudSimple. Tady je seznam několika možností:
 
-## <a name="virtual-load-balancers"></a>Virtual load balancers
+## <a name="virtual-load-balancers"></a>Virtuální nástroje pro vyrovnávání zatížení
 
-You can deploy virtual load balancer appliances in your VMware environment through the vCenter interface and configure them to front end your application traffic.
+Virtuální zařízení nástroje pro vyrovnávání zatížení můžete nasadit v prostředí VMware přes rozhraní vCenter a nakonfigurovat je tak, aby byly přenosy aplikace front-endu.
 
-Some popular vendors are: NginX: http://nginx.org/en/docs/http/load_balancing.html F5- BigIP - Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC: https://www.citrix.com/products/citrix-adc/
+Někteří oblíbená dodavatelé jsou: NginX: http://nginx.org/en/docs/http/load_balancing.html F5-Big-IP-Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC: https://www.citrix.com/products/citrix-adc/
 
-## <a name="azure-l7-load-balancer"></a>Azure L7 load balancer
+## <a name="azure-l7-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure L7
 
-When you use Azure Application Gateway as a L7 load balancer for your application running in a Private Cloud, you don’t need to manage the load balancer software. The load balancer software is managed by Azure. All the web tier VMs in the Private Cloud use private IP addresses and don’t require additional NAT rules or public IPs addresses to resolve names. Web tier VMs communicate with the Azure Application Gateway over a private, low-latency, high-bandwidth connection.
+Pokud používáte Azure Application Gateway jako nástroj pro vyrovnávání zatížení L7 pro vaši aplikaci spuštěnou v privátním cloudu, nemusíte spravovat software nástroje pro vyrovnávání zatížení. Software pro vyrovnávání zatížení se spravuje v Azure. Všechny virtuální počítače webové vrstvy v privátním cloudu používají privátní IP adresy a k překladu názvů nevyžadují další pravidla překladu adres (NAT) ani veřejné IP adresy. Virtuální počítače webové vrstvy komunikují s Application Gateway Azure přes privátní připojení s nízkou latencí a velkou šířkou pásma.
 
-To learn more about how to configure this solution, refer to the solution guide on Using Azure Application Gateway as a L7 load balancer.
+Další informace o tom, jak nakonfigurovat toto řešení, najdete v Průvodci řešením použití Azure Application Gateway jako nástroje pro vyrovnávání zatížení L7.
 
-## <a name="azure-internal-load-balancer"></a>Azure internal load balancer
+## <a name="azure-internal-load-balancer"></a>Interní nástroj pro vyrovnávání zatížení Azure
 
-If you choose to run your application in a hybrid deployment where the web front-end tier is running within an Azure vNet in your Azure subscription and the DB tier of the application is running in VMware VMs in CloudSimple Private Cloud, you can use Azure internal load balancer (L4 load balancer) in front of your DB tier VMs for traffic management.
+Pokud se rozhodnete aplikaci spustit v hybridním nasazení, kde webová front-end je spuštěná ve virtuální síti Azure v rámci vašeho předplatného Azure a vrstva DB aplikace je spuštěná ve virtuálních počítačích VMware v privátním cloudu CloudSimple, můžete použít interní zatížení Azure. Vyrovnávání zatížení (L4 Load Balancer) před virtuálními počítači vrstvy databáze pro správu provozu.
 
-To learn more, see Azure [Internal Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) documentation.
+Další informace najdete v dokumentaci k [interním Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) Azure.
 
-## <a name="global-server-load-balancer"></a>Global server load balancer
+## <a name="global-server-load-balancer"></a>Globální nástroj pro vyrovnávání zatížení serveru
 
-If you are looking for a DNS-based load balancer, then you may either use third party solutions available in Azure Marketplace or go with the native Azure solution.
+Pokud hledáte Nástroj pro vyrovnávání zatížení založený na DNS, můžete buď využít řešení třetích stran, která jsou k dispozici v Azure Marketplace, nebo přejít s nativním řešením Azure.
 
-Azure Traffic Manager is a DNS-based traffic load balancer that enables you to distribute traffic optimally to services across global Azure regions and on-premises, while providing high availability and responsiveness. To learn more, see Azure [Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) documentation.
+Azure Traffic Manager je nástroj pro vyrovnávání zatížení založený na DNS, který umožňuje distribuci provozu optimálně do služeb napříč globálními oblastmi Azure a v místním prostředí a zároveň zajišťuje vysokou dostupnost a rychlost odezvy. Další informace najdete v dokumentaci k Azure [Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) .

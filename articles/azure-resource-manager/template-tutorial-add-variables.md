@@ -1,6 +1,6 @@
 ---
-title: Tutorial - add variable to template
-description: Add variables to your Azure Resource Manager template to simplify the syntax.
+title: Kurz – přidání proměnné do šablony
+description: K zjednodušení syntaxe přidejte proměnné do šablony Azure Resource Manager.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,49 +12,49 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406051"
 ---
-# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Tutorial: Add variables to your Resource Manager template
+# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Kurz: Přidání proměnných do šablony Správce prostředků
 
-In this tutorial, you learn how to add a variable to your template. Variables simplify your templates by enabling you to write an expression once and reuse it throughout the template. This tutorial takes **7 minutes** to complete.
+V tomto kurzu se dozvíte, jak přidat proměnnou do šablony. Proměnné zjednodušují vaše šablony tím, že umožňují napsat výraz jednou a znovu ho použít v celé šabloně. Dokončení tohoto kurzu trvá **7 minut** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-We recommend that you complete the [tutorial about functions](template-tutorial-add-functions.md), but it's not required.
+Doporučujeme, abyste dokončili [kurz týkající se funkcí](template-tutorial-add-functions.md), ale není to nutné.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Zkontrolovat šablonu
 
-At the end of the previous tutorial, your template had the following JSON:
+Na konci předchozího kurzu má vaše šablona následující JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json)]
 
-The parameter for the storage account name is hard-to-use because you have to provide a unique name. If you've completed the earlier tutorials in this series, you're probably tired of guessing a unique name. You solve this problem by adding a variable that constructs a unique name for the storage account.
+Parametr názvu účtu úložiště je nevratný, protože je nutné zadat jedinečný název. Pokud jste dokončili předchozí kurzy v této sérii, budete pravděpodobně už vás unavuje jedinečný název. Tento problém vyřešíte tak, že přidáte proměnnou, která vytvoří jedinečný název pro účet úložiště.
 
-## <a name="use-variable"></a>Use variable
+## <a name="use-variable"></a>Použít proměnnou
 
-The following example highlights the changes to add a variable to your template that creates a unique storage account name. Copy the whole file and replace your template with its contents.
+Následující příklad zvýrazní změny a přidá proměnnou do šablony, která vytvoří jedinečný název účtu úložiště. Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json?range=1-47&highlight=5-9,29-31,36)]
 
-Notice that it includes a variable named **uniqueStorageName**. This variable uses four functions to construct a string value.
+Všimněte si, že obsahuje proměnnou s názvem **uniqueStorageName**. Tato proměnná používá čtyři funkce k vytvoření řetězcové hodnoty.
 
-You're already familiar with the [parameters](resource-group-template-functions-deployment.md#parameters) function, so we won't examine it.
+Již jste obeznámeni s funkcí [Parameters](resource-group-template-functions-deployment.md#parameters) , takže ji nebudeme posuzovat.
 
-You're also familiar with the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. In this case, you get the **id** property instead of the **location** property, as shown in the previous tutorial. The **id** property returns the full identifier of the resource group, including the subscription ID and resource group name.
+Také jste obeznámeni se funkcí [Resource](resource-group-template-functions-resource.md#resourcegroup) . V takovém případě získáte vlastnost **ID** místo vlastnosti **Location** , jak je znázorněno v předchozím kurzu. Vlastnost **ID** vrátí úplný identifikátor skupiny prostředků, včetně ID předplatného a názvu skupiny prostředků.
 
-The [uniqueString](resource-group-template-functions-string.md#uniquestring) function creates a 13 character hash value. The returned value is determined by the parameters you pass in. For this tutorial, you use the resource group ID as the input for the hash value. That means you could deploy this template to different resource groups and get a different unique string value. However, you get the same value if you deploy to the same resource group.
+Funkce [uniqueString](resource-group-template-functions-string.md#uniquestring) vytvoří hodnotu hash znaku 13 znaků. Vrácená hodnota je určena parametry, které předáte. V tomto kurzu použijete ID skupiny prostředků jako vstup pro hodnotu hash. To znamená, že můžete tuto šablonu nasadit do různých skupin prostředků a získat jinou jedinečnou řetězcovou hodnotu. Pokud však nasadíte do stejné skupiny prostředků, získáte stejnou hodnotu.
 
-The [concat](resource-group-template-functions-string.md#concat) function takes values and combines them. For this variable, it takes the string from the parameter and the string from the uniqueString function, and combines them into one string.
+Funkce [Concat](resource-group-template-functions-string.md#concat) přebírá hodnoty a kombinuje je. Pro tuto proměnnou přebírá řetězec z parametru a řetězce z funkce uniqueString a kombinuje je do jednoho řetězce.
 
-The **storagePrefix** parameter enables you to pass in a prefix that helps you identify storage accounts. You can create your own naming convention that makes it easier to identify storage accounts after deployment from a long list of resources.
+Parametr **storagePrefix** vám umožní předat předponu, která vám pomůže identifikovat účty úložiště. Můžete vytvořit vlastní zásadu vytváření názvů, která usnadňuje identifikaci účtů úložiště po nasazení z dlouhého seznamu prostředků.
 
-Finally, notice that the storage name is now set to the variable instead of a parameter.
+Nakonec si všimněte, že název úložiště je nyní nastaven na proměnnou namísto parametru.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-Let's deploy the template. Deploying this template is easier than the previous templates because you provide just the prefix for the storage name.
+Pojďme šablonu nasadit. Nasazení této šablony je snazší než u předchozích šablon, protože zadáváte pouze předponu názvu úložiště.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -81,18 +81,18 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. You see that a storage account resource has been deployed. The name of the storage account is **store** plus a string of random characters.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. V nabídce vlevo vyberte **skupiny prostředků**.
+1. Vyberte skupinu prostředků, do které jste nasadili.
+1. Vidíte, že byl nasazen prostředek účtu úložiště. Název účtu úložiště je **uložený** spolu s řetězcem náhodných znaků.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
 
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
@@ -101,7 +101,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Další kroky
 
-In this tutorial, you added a variable that creates a unique name for a storage account. In the next tutorial, you return a value from the deployed storage account.
+V tomto kurzu jste přidali proměnnou, která pro účet úložiště vytvoří jedinečný název. V dalším kurzu vrátíte hodnotu z nasazeného účtu úložiště.
 
 > [!div class="nextstepaction"]
-> [Add outputs](template-tutorial-add-outputs.md)
+> [Přidat výstupy](template-tutorial-add-outputs.md)

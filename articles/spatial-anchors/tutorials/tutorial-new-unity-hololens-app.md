@@ -34,7 +34,7 @@ Nejdřív nastavíme náš projekt a scénu Unity:
 2. Vyberte **Nový**.
 4. Ujistěte se, že je vybraná možnost **3D** .
 5. Pojmenujte projekt a zadejte **umístění**pro uložení.
-6. Klikněte na tlačítko **vytvořit projekt**.
+6. Klikněte na **vytvořit projekt**.
 7. Uložte prázdnou výchozí scénu do nového souboru pomocí: **soubor** > **Uložit jako**.
 8. Pojmenujte novou **scénu** a stiskněte tlačítko **Uložit** .
 
@@ -117,7 +117,7 @@ Nyní je nutné přidat následující metodu `HandleTap()` níže `Update()`. P
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-277,299-300,304-312)]
 
-Teď je potřeba vytvořit sphere. Koule bude zpočátku bílá, ale tato hodnota se upraví později. Přidejte následující `CreateAndSaveSphere()` metody:
+Teď je potřeba vytvořit sphere. Koule bude zpočátku bílá, ale tato hodnota se upraví později. Přidejte následující metodu `CreateAndSaveSphere()`:
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-325,390)]
 

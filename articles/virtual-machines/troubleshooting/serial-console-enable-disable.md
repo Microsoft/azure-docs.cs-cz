@@ -1,6 +1,6 @@
 ---
-title: Enable and disable the Azure Serial Console | Microsoft Docs
-description: How to enable and disable the Azure Serial Console service
+title: Povolení a zakázání služby Azure Serial Console | Microsoft Docs
+description: Jak povolit a zakázat službu Azure Serial Console
 services: virtual-machines
 documentationcenter: ''
 author: asinn826
@@ -21,37 +21,37 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452234"
 ---
-# <a name="enable-and-disable-the-azure-serial-console"></a>Enable and disable the Azure Serial Console
+# <a name="enable-and-disable-the-azure-serial-console"></a>Povolení a zakázání konzole sériového úložiště Azure
 
-Just like any other resource, the Azure Serial Console can be enabled and disabled. Serial Console is enabled by default for all subscriptions in global Azure. Currently, disabling Serial Console will disable the service for your entire subscription. Disabling or re-enabling Serial Console for a subscription requires contributor level access or above on the subscription.
+Stejně jako u jakéhokoli jiného prostředku je možné povolit a zakázat službu sériového portu Azure. Sériová konzola je ve výchozím nastavení povolená pro všechna předplatná v globálním Azure. V současné době zakázání sériové konzoly zakáže službu pro celé předplatné. Zakázání nebo opětovné povolení sériové konzoly pro předplatné vyžaduje přístup na úrovni přispěvatele nebo vyšší úrovně v rámci předplatného.
 
-You can also disable serial console for an individual VM or virtual machine scale set instance by disabling boot diagnostics. You will require contributor level access or above on both the VM/virtual machine scale set and your boot diagnostics storage account.
+Službu sériového portu pro jednotlivé virtuální počítače nebo instance sady škálování virtuálních počítačů můžete také zakázat zakázáním diagnostiky spouštění. Budete vyžadovat přístup na úrovni přispěvatele nebo vyšší úrovně jak na virtuálním počítači, tak i v účtu úložiště pro diagnostiku spouštění.
 
-## <a name="vm-level-disable"></a>VM-level disable
-The serial console can be disabled for a specific VM or virtual machine scale set by disabling the boot diagnostics setting. Turn off boot diagnostics from the Azure portal to disable the serial console for the VM or the virtual machine scale set. If you are using serial console on a virtual machine scale set, ensure you upgrade your virtual machine scale set instances to the latest model.
+## <a name="vm-level-disable"></a>Zakázat úrovni virtuálního počítače
+Sériová konzola se dá zakázat pro konkrétní virtuální počítač nebo sadu škálování virtuálního počítače zakázáním nastavení diagnostiky spouštění. Vypnutím diagnostiky spouštění z Azure Portal zakážete sériovou konzoli pro virtuální počítač nebo sadu škálování virtuálního počítače. Pokud v sadě škálování virtuálního počítače používáte sériovou konzolu, ujistěte se, že upgradujete instance sady škálování virtuálních počítačů na nejnovější model.
 
 
-## <a name="subscription-level-enabledisable"></a>Subscription-level enable/disable
+## <a name="subscription-level-enabledisable"></a>Povolit/zakázat na úrovni předplatného
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Serial console can be disabled and re-enabled for an entire subscription by using the following commands in the Azure CLI (you may use the "Try it" button to launch an instance of the Azure Cloud Shell in which you can run the commands):
+Sériová konzola se dá zakázat a znovu povolit pro celé předplatné pomocí následujících příkazů v Azure CLI (můžete použít tlačítko vyzkoušet a spustit instanci Azure Cloud Shell, ve které můžete příkazy spustit):
 
-To disable serial console for a subscription, use the following commands:
+Pokud chcete zakázat sériovou konzoli pro předplatné, použijte následující příkazy:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
-To enable serial console for a subscription, use the following commands:
+Pokud chcete pro odběr povolit sériovou konzolu, použijte následující příkazy:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
-To get the current enabled/disabled status of serial console for a subscription, use the following commands:
+Chcete-li získat aktuální stav povoleného a zakázaného sériového portu pro odběr, použijte následující příkazy:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
@@ -59,20 +59,20 @@ az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.Seria
 ```
 
 > [!NOTE]
-> Ensure you are in the right cloud (Azure Public Cloud, Azure US Government Cloud) before running this command. You can check with `az cloud list` and set your cloud with `az cloud set -n <Name of cloud>`.
+> Před spuštěním tohoto příkazu se ujistěte, že jste v pravém cloudu (veřejný cloud Azure, Azure USA). Můžete se podívat na `az cloud list` a nastavit Cloud pomocí `az cloud set -n <Name of cloud>`.
 
 ### <a name="powershell"></a>PowerShell
 
-Serial console can also be enabled and disabled using PowerShell.
+Sériová konzola taky můžete povolit a zakázat pomocí PowerShellu.
 
-To disable serial console for a subscription, use the following commands:
+Pokud chcete zakázat sériovou konzoli pro předplatné, použijte následující příkazy:
 ```azurepowershell-interactive
 $subscription=(Get-AzContext).Subscription.Id
 
 Invoke-AzResourceAction -Action disableConsole -ResourceId /subscriptions/$subscription/providers/Microsoft.SerialConsole/consoleServices/default -ApiVersion 2018-05-01
 ```
 
-To enable serial console for a subscription, use the following commands:
+Pokud chcete pro odběr povolit sériovou konzolu, použijte následující příkazy:
 ```azurepowershell-interactive
 $subscription=(Get-AzContext).Subscription.Id
 
@@ -80,6 +80,6 @@ Invoke-AzResourceAction -Action enableConsole -ResourceId /subscriptions/$subscr
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Learn more about the [Azure Serial Console for Linux VMs](./serial-console-linux.md)
-* Learn more about the [Azure Serial Console for Windows VMs](./serial-console-windows.md)
-* Learn about [power management options within the Azure Serial Console](./serial-console-power-options.md)
+* Další informace o [konzole sériového rozhraní Azure pro virtuální počítače se systémem Linux](./serial-console-linux.md)
+* Další informace o [konzole sériového rozhraní Azure pro virtuální počítače s Windows](./serial-console-windows.md)
+* Další informace o [možnostech řízení spotřeby v rámci konzoly Azure Serial Console](./serial-console-power-options.md)

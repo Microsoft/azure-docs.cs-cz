@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/26/2019
+ms.date: 11/26/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 8cabc1031f9d0be772ba087109ae1dfc881ce163
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 218031830a7516dfd539e1c0b9b665807822f38d
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680086"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533150"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory Azure Data Factory
 
@@ -47,84 +47,6 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Řešení**: po několika minutách znovu spusťte aktivitu kopírování.
 
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-
-### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Chybová zpráva: převod se nezdařil při převodu ze znakového řetězce na typ uniqueidentifier.
-
-- **Příznaky**: Když zkopírujete data z tabulkového zdroje dat (například SQL Server) do Azure SQL Data Warehouse pomocí připravené kopie a základu, zobrazí se následující chyba:
-
-    ```
-    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
-    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
-    Message=Conversion failed when converting from a character string to uniqueidentifier...
-    ```
-
-- **Příčina**: Azure SQL data Warehouseá základna nemůže převést prázdný řetězec na identifikátor GUID.
-
-- **Řešení**: v jímky aktivity kopírování v části nastavení základní hodnoty nastavte možnost**použít výchozí typ**na hodnotu NEPRAVDA.
-
-### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Chybová zpráva: očekávaný datový typ: DECIMAL (x, x), problematická hodnota
-
-- **Příznaky**: Když zkopírujete data z tabulkového zdroje dat (například SQL Server) do SQL DW pomocí připravené kopie a základu, zobrazí se následující chyba:
-
-    ```
-    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
-    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
-    Message=Query aborted-- the maximum reject threshold (0 rows) was reached while reading from an external source: 1 rows rejected out of total 415 rows processed. (/file_name.txt) 
-    Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
-    ```
-
-- **Příčina**: Azure SQL Data Warehouse základnu nemůže vložit prázdný řetězec (hodnota null) do desetinného sloupce.
-
-- **Řešení**: v jímky aktivity kopírování v části nastavení základní hodnoty nastavte možnost**použít výchozí typ**na hodnotu NEPRAVDA.
-
-### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Chybová zpráva: zpráva o výjimce Java: HdfsBridge:: CreateRecordReader
-
-- **Příznaky**: kopírujete data do Azure SQL Data Warehouse pomocí primární databáze a zaškrtnete tuto chybu:
-
-    ```
-    Message=110802;An internal DMS error occurred that caused this operation to fail. 
-    Details: Exception: Microsoft.SqlServer.DataWarehouse.DataMovement.Common.ExternalAccess.HdfsAccessException, 
-    Message: Java exception raised on call to HdfsBridge_CreateRecordReader. 
-    Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
-    ```
-
-- **Příčina**: možnou příčinou je, že schéma (celková šířka sloupce) je příliš velké (větší než 1 MB). Ověřte schéma cílové tabulky SQL DW přidáním velikosti všech sloupců:
-
-    - Int-> 4 bajty
-    - Bigint – > 8 bajtů
-    - Varchar (n), char (n), Binary (n), varbinary (n)-> n bajtů
-    - Nvarchar (n), nchar (n)-> n * 2 bajty
-    - Datum-> 6 bajtů
-    - DateTime/(2), smalldatetime-> 16 bajtů
-    - DateTimeOffset-> 20 bajtů
-    - Desítkové – > 19 bajtů
-    - Float-> 8 bajtů
-    - Peníze – > 8 bajtů
-    - Smallmoney-> 4 bajty
-    - Reálné > 4 bajty
-    - Smallint – > 2 bajty
-    - Čas – > 12 bajtů
-    - Tinyint-> 1 bajt
-
-- **Řešení**: Zmenšete šířku sloupce tak, aby byla menší než 1 MB.
-
-- Nebo použijte přístup k hromadnému vložení zakázáním základny
-
-### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Chybová zpráva: podmínka zadaná pomocí podmíněných hlaviček HTTP není splněna.
-
-- **Příznaky**: k vyžádání dat z Azure SQL Data Warehouse použijte dotaz SQL a stiskněte následující chybu:
-
-    ```
-    ...StorageException: The condition specified using HTTP conditional header(s) is not met...
-    ```
-
-- **Příčina**: Azure SQL Data Warehouse narazila na dotaz na externí tabulku v Azure Storage.
-
-- **Řešení**: Spusťte stejný dotaz v SSMS a zkontrolujte, jestli vidíte stejný výsledek. Pokud ano, otevřete lístek podpory pro Azure SQL Data Warehouse a zadejte svůj server SQL DW a název databáze pro další odstraňování potíží.
-
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
 ### <a name="error-message-request-size-is-too-large"></a>Chybová zpráva: velikost požadavku je příliš velká.
@@ -141,7 +63,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
     ```
     Message=Partition range id 0 | Failed to import mini-batch. 
-    Exception was Message: {"Errors":["Encountered exception while executing function. Exception &#61; Error: {\"Errors\":[\"Unique index constraint violation.\"]}... 
+    Exception was Message: {"Errors":["Encountered exception while executing function. Exception = Error: {\"Errors\":[\"Unique index constraint violation.\"]}... 
     ```
 
 - **Příčina**: Existují dvě možné příčiny:
@@ -238,6 +160,249 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
         ```
 
     - Pro příčinu #3 dvakrát zkontrolujte, jestli je soubor klíče nebo heslo správné, pomocí jiných nástrojů, abyste ověřili, jestli ho můžete správně použít pro přístup k serveru SFTP.
+  
+
+## <a name="azure-sql-data-warehouse--azure-sql-database--sql-server"></a>Azure SQL Data Warehouse \ Azure SQL Database \ SQL Server
+
+### <a name="error-code--sqlfailedtoconnect"></a>Kód chyby: SqlFailedToConnect
+
+- **Zpráva**: `Cannot connect to SQL database: '%server;', Database: '%database;', User: '%user;'. Please check the linked service configuration is correct, and make sure the SQL database firewall allows the integration runtime to access.`
+
+- **Příčina**: Pokud chybová zpráva obsahuje "SqlException", SQL Database vyvolá chybu oznamující, že se některá konkrétní operace nezdařila.
+
+- **Doporučení**: Další podrobnosti najdete v kódu chyby SQL v tomto referenčním dokumentu: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Pokud potřebujete další pomoc, obraťte se prosím na podporu Azure SQL.
+
+- **Příčina**: Pokud chybová zpráva obsahuje "klient s IP adresou"... nemá povolený přístup k serveru a pokoušíte se připojit ke službě Azure SQL Database, obvykle to způsobuje problém brány firewall služby Azure SQL Database.
+
+- **Doporučení**: v konfiguraci brány firewall Azure SQL Server povolte možnost Povolit službám a prostředkům Azure přístup k tomuto serveru. Referenční doc: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure.
+
+
+### <a name="error-code--sqloperationfailed"></a>Kód chyby: SqlOperationFailed
+
+- **Zpráva**: `A database operation failed. Please search error to get more details.`
+
+- **Příčina**: Pokud chybová zpráva obsahuje "SqlException", SQL Database vyvolá chybu oznamující, že se některá konkrétní operace nezdařila.
+
+- **Doporučení**: Další podrobnosti najdete v kódu chyby SQL v tomto referenčním dokumentu: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Pokud potřebujete další pomoc, obraťte se prosím na podporu Azure SQL.
+
+- **Příčina**: Pokud chybová zpráva obsahuje "PdwManagedToNativeInteropException", obvykle se jedná o neshodu mezi zdrojem a velikostmi sloupců jímky.
+
+- **Doporučení**: Zkontrolujte velikost zdrojů a sloupců jímky. Pokud potřebujete další pomoc, obraťte se prosím na podporu Azure SQL.
+
+- **Příčina**: Pokud chybová zpráva obsahuje "InvalidOperationException", obvykle je způsobena neplatnými vstupními daty.
+
+- **Doporučení**: Chcete-li zjistit, který řádek narazí na problém, povolte funkci odolnost proti chybám u aktivity kopírování, která může přesměrovat problematické řádky do úložiště pro další šetření. Referenční doc: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+
+
+### <a name="error-code--sqlunauthorizedaccess"></a>Kód chyby: SqlUnauthorizedAccess
+
+- **Zpráva**: `Cannot connect to '%connectorName;'. Detail Message: '%message;'`
+
+- **Příčina**: přihlašovací údaje jsou nesprávné nebo přihlašovací účet nemá přístup k SQL Database.
+
+- **Doporučení**: Zkontrolujte prosím, že přihlašovací účet má dostatečná oprávnění pro přístup k databázi SQL.
+
+
+### <a name="error-code--sqlopenconnectiontimeout"></a>Kód chyby: SqlOpenConnectionTimeout
+
+- **Zpráva**: `Open connection to database timeout after '%timeoutValue;' seconds.`
+
+- **Příčina**: mohlo by se jednat o přechodné selhání SQL Database.
+
+- **Doporučení**: zkuste aktualizovat připojovací řetězec propojené služby s větším časovým limitem připojení.
+
+
+### <a name="error-code--sqlautocreatetabletypemapfailed"></a>Kód chyby: SqlAutoCreateTableTypeMapFailed
+
+- **Zpráva**: `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(colunm name:'%colunmName;') in auto-create table.`
+
+- **Příčina**: tabulka automatického vytváření nemůže splňovat požadavek na zdroj.
+
+- **Doporučení**: Aktualizujte prosím typ sloupce v mapování, nebo na cílovém serveru vytvořte tabulku jímky ručně.
+
+
+### <a name="error-code--sqldatatypenotsupported"></a>Kód chyby: SqlDataTypeNotSupported
+
+- **Zpráva**: `A database operation failed. Please check the SQL errors.`
+
+- **Příčina**: Pokud k problému dojde ve zdroji SQL a chyba se týká přetečení Hodnota SqlDateTime, hodnota dat je nad rozsahem typu logic (1/1/1753 12:00:00 dop. 12/31/9999 11:59:59 odp.).
+
+- **Doporučení**: přetypování typu na řetězec ve zdrojovém dotazu SQL, nebo v mapování sloupce aktivity kopírování změňte typ sloupce na String.
+
+- **Příčina**: Pokud k problému dojde v jímky SQL a chyba se vztahuje k přetečení Hodnota SqlDateTime, hodnota dat je nad povoleným rozsahem v tabulce jímky.
+
+- **Doporučení**: aktualizujte odpovídající typ sloupce na typ datetime2 v tabulce jímky.
+
+
+### <a name="error-code--sqlinvaliddbstoredprocedure"></a>Kód chyby: SqlInvalidDbStoredProcedure
+
+- **Zpráva**: `The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
+
+- **Příčina**: zadaná uložená procedura není platná. Příčinou může být to, že uložená procedura nevrací žádná data.
+
+- **Doporučení**: Ověřte uloženou proceduru pomocí nástrojů SQL. Ujistěte se, že uložená procedura může vracet data.
+
+
+### <a name="error-code--sqlinvaliddbquerystring"></a>Kód chyby: SqlInvalidDbQueryString
+
+- **Zpráva**: `The specified SQL Query is not valid. It could be caused by that the query doesn't return any data. Invalid query: '%query;'`
+
+- **Příčina**: zadaný dotaz SQL není platný. To může být způsobeno tím, že dotaz nevrátí žádná data.
+
+- **Doporučení**: Ověřte dotaz SQL pomocí nástrojů SQL. Ujistěte se, že dotaz může vracet data.
+
+
+### <a name="error-code--sqlinvalidcolumnname"></a>Kód chyby: SqlInvalidColumnName
+
+- **Zpráva**: `Column '%column;' does not exist in the table '%tableName;', ServerName: '%serverName;', DatabaseName: '%dbName;'.`
+
+- **Příčina**: sloupec nelze najít. Možná konfigurace je chybná.
+
+- **Doporučení**: Ověřte sloupec v dotazu, "Structure" v datové sadě a "Mappings" v aktivitě.
+
+
+### <a name="error-code--sqlbatchwritetimeout"></a>Kód chyby: SqlBatchWriteTimeout
+
+- **Zpráva**: `Timeout in SQL write opertaion.`
+
+- **Příčina**: mohlo by se jednat o přechodné selhání SQL Database.
+
+- **Doporučení**: Pokud se problém reprodukci, obraťte se prosím na podporu Azure SQL.
+
+
+### <a name="error-code--sqlbatchwriterollbackfailed"></a>Kód chyby: SqlBatchWriteRollbackFailed
+
+- **Zpráva**: `Timeout in SQL write operation and rollback also fail.`
+
+- **Příčina**: mohlo by se jednat o přechodné selhání SQL Database.
+
+- **Doporučení**: zkuste aktualizovat připojovací řetězec propojené služby s větším časovým limitem připojení.
+
+
+### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>Kód chyby: SqlBulkCopyInvalidColumnLength
+
+- **Zpráva**: `SQL Bulk Copy failed due to received an invalid column length from the bcp client.`
+
+- **Příčina**: hromadné kopírování SQL se nezdařilo, protože od klienta BCP byla přijata neplatná délka sloupce.
+
+- **Doporučení**: Chcete-li zjistit, který řádek narazí na problém, povolte funkci odolnost proti chybám u aktivity kopírování, která může přesměrovat problematické řádky do úložiště pro další šetření. Referenční doc: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+
+
+### <a name="error-code--sqlconnectionisclosed"></a>Kód chyby: SqlConnectionIsClosed
+
+- **Zpráva**: `The connection is closed by SQL database.`
+
+- **Příčina**: připojení SQL je ukončeno službou SQL Database v případě vysokého souběžného spuštění a ukončení připojení zakončení severem.
+
+- **Doporučení**: vzdálený server ukončí připojení SQL. Zkuste to prosím znovu. Pokud se problém reprodukci, obraťte se prosím na podporu Azure SQL.
+
+### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Chybová zpráva: převod se nezdařil při převodu ze znakového řetězce na typ uniqueidentifier.
+
+- **Příznaky**: Když zkopírujete data z tabulkového zdroje dat (například SQL Server) do Azure SQL Data Warehouse pomocí připravené kopie a základu, zobrazí se následující chyba:
+
+    ```
+    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
+    Message=Error happened when loading data into SQL Data Warehouse.,
+    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
+    Message=Conversion failed when converting from a character string to uniqueidentifier...
+    ```
+
+- **Příčina**: Azure SQL data Warehouseá základna nemůže převést prázdný řetězec na identifikátor GUID.
+
+- **Řešení**: v jímky aktivity kopírování v části nastavení základní hodnoty nastavte možnost**použít výchozí typ**na hodnotu NEPRAVDA.
+
+### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Chybová zpráva: očekávaný datový typ: DECIMAL (x, x), problematická hodnota
+
+- **Příznaky**: Když zkopírujete data z tabulkového zdroje dat (například SQL Server) do SQL DW pomocí připravené kopie a základu, zobrazí se následující chyba:
+
+    ```
+    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
+    Message=Error happened when loading data into SQL Data Warehouse.,
+    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
+    Message=Query aborted-- the maximum reject threshold (0 rows) was reached while reading from an external source: 1 rows rejected out of total 415 rows processed. (/file_name.txt) 
+    Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
+    ```
+
+- **Příčina**: Azure SQL Data Warehouse základnu nemůže vložit prázdný řetězec (hodnota null) do desetinného sloupce.
+
+- **Řešení**: v jímky aktivity kopírování v části nastavení základní hodnoty nastavte možnost**použít výchozí typ**na hodnotu NEPRAVDA.
+
+### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Chybová zpráva: zpráva o výjimce Java: HdfsBridge:: CreateRecordReader
+
+- **Příznaky**: kopírujete data do Azure SQL Data Warehouse pomocí primární databáze a zaškrtnete tuto chybu:
+
+    ```
+    Message=110802;An internal DMS error occurred that caused this operation to fail. 
+    Details: Exception: Microsoft.SqlServer.DataWarehouse.DataMovement.Common.ExternalAccess.HdfsAccessException, 
+    Message: Java exception raised on call to HdfsBridge_CreateRecordReader. 
+    Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
+    ```
+
+- **Příčina**: možnou příčinou je, že schéma (celková šířka sloupce) je příliš velké (větší než 1 MB). Ověřte schéma cílové tabulky SQL DW přidáním velikosti všech sloupců:
+
+    - Int-> 4 bajty
+    - Bigint – > 8 bajtů
+    - Varchar (n), char (n), Binary (n), varbinary (n)-> n bajtů
+    - Nvarchar (n), nchar (n)-> n * 2 bajty
+    - Datum-> 6 bajtů
+    - DateTime/(2), smalldatetime-> 16 bajtů
+    - DateTimeOffset-> 20 bajtů
+    - Desítkové – > 19 bajtů
+    - Float-> 8 bajtů
+    - Peníze – > 8 bajtů
+    - Smallmoney-> 4 bajty
+    - Reálné > 4 bajty
+    - Smallint – > 2 bajty
+    - Čas – > 12 bajtů
+    - Tinyint-> 1 bajt
+
+- **Řešení**: Zmenšete šířku sloupce tak, aby byla menší než 1 MB.
+
+- Nebo použijte přístup k hromadnému vložení zakázáním základny
+
+### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Chybová zpráva: podmínka zadaná pomocí podmíněných hlaviček HTTP není splněna.
+
+- **Příznaky**: k vyžádání dat z Azure SQL Data Warehouse použijte dotaz SQL a stiskněte následující chybu:
+
+    ```
+    ...StorageException: The condition specified using HTTP conditional header(s) is not met...
+    ```
+
+- **Příčina**: Azure SQL Data Warehouse narazila na dotaz na externí tabulku v Azure Storage.
+
+- **Řešení**: Spusťte stejný dotaz v SSMS a zkontrolujte, jestli vidíte stejný výsledek. Pokud ano, pokračujte v řešení potíží otevřením lístku podpory pro službu Azure SQL Data Warehouse a zadáním názvu serveru a databáze SQL Data Warehouse.
+            
+
+## <a name="azure-blob-storage"></a>Azure Blob Storage
+
+### <a name="error-code--azurebloboperationfailed"></a>Kód chyby: AzureBlobOperationFailed
+
+- **Zpráva**: `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
+
+- **Příčina**: došlo k potížím s voláním operace BLOB Storage.
+
+- **Doporučení**: Podrobnosti najdete v podrobnostech o chybě. Další informace najdete v dokumentu o nápovědě k objektům blob: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes. Pokud potřebujete, obraťte se na tým úložiště.
+
+
+
+## <a name="azure-data-lake-gen2"></a>Azure Data Lake Gen2
+
+### <a name="error-code--adlsgen2operationfailed"></a>Kód chyby: AdlsGen2OperationFailed
+
+- **Zpráva**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+
+- **Příčina**: adls Gen2 vyvolá chybu oznamující, že operace se nezdařila.
+
+- **Doporučení**: Přečtěte si podrobnou chybovou zprávu vyvolanou adls Gen2. Pokud je to způsobeno přechodným selháním, zkuste to prosím znovu. Pokud potřebujete další pomoc, obraťte se prosím na podporu Azure Storage a poskytněte ID žádosti v chybové zprávě.
+
+- **Příčina**: Pokud chybová zpráva obsahuje zakázané, instanční objekt nebo spravovaná identita nemusí mít k dispozici dostatečná oprávnění pro přístup k adls Gen2.
+
+- **Doporučení**: Přečtěte si prosím dokument v nápovědě: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication.
+
+- **Příčina**: Pokud chybová zpráva obsahuje hodnotu ' Nenalezeno ', je vrácena chyba adls Gen2.
+
+- **Doporučení**: může to být způsobeno přechodným selháním. zkuste to prosím znovu. Pokud se problém nevyřeší, obraťte se prosím na podporu Azure Storage a poskytněte ID žádosti v chybové zprávě.
+
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -249,6 +414,4 @@ Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 *  [Fórum MSDN](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
 *  [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
-
-
-
+            

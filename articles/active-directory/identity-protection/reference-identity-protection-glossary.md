@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection Glossary
-description: Azure Active Directory Identity Protection Glossary
+title: Glosář Azure Active Directory Identity Protection
+description: Glosář Azure Active Directory Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,146 +18,146 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232348"
 ---
-# <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection Glossary
+# <a name="azure-active-directory-identity-protection-glossary"></a>Glosář Azure Active Directory Identity Protection
 
-### <a name="at-risk-user"></a>At risk (User)
-A user with one or more active risk detections. 
+### <a name="at-risk-user"></a>Ohroženo (uživatel)
+Uživatel s jedním nebo více aktivními detekci rizik. 
 
-### <a name="atypical-sign-in-location"></a>Atypical sign-in location
-A sign-in from a geographic location that is not typical for the specific user, similar users, or the tenant.
+### <a name="atypical-sign-in-location"></a>Neobvyklý přihlašovací umístění
+Přihlášení z geografického umístění, které není typické pro konkrétního uživatele, podobné uživatele nebo tenanta.
 
 ### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
-A security module of Azure Active Directory that provides a consolidated view into risk detections and potential vulnerabilities affecting an organization’s identities.
+Modul zabezpečení Azure Active Directory, který poskytuje konsolidovanou pohled na detekci rizik a potenciální ohrožení zabezpečení ovlivňující identity organizace.
 
 ### <a name="conditional-access"></a>Podmíněný přístup
-A policy for securing access to resources. Conditional Access rules are stored in the Azure Active Directory and are evaluated by Azure AD before granting access to the resource.  Example rules include restricting access based on user location, device health, or user authentication method.
+Zásada pro zabezpečení přístupu k prostředkům. Pravidla podmíněného přístupu se ukládají v Azure Active Directory a před udělením přístupu k prostředku se vyhodnocují ve službě Azure AD.  Příklady pravidel zahrnují omezení přístupu na základě umístění uživatele, stavu zařízení nebo metody ověřování uživatelů.
 
 ### <a name="credentials"></a>Přihlašovací údaje
-Information that includes identification and proof of identification that is used to gain access to local and network resources. Examples of credentials are user names and passwords, smart cards, and certificates.
+Informace, které zahrnují identifikaci a ověření identifikace, která se používá k získání přístupu k místním a síťovým prostředkům. Příklady přihlašovacích údajů jsou uživatelská jména a hesla, čipové karty a certifikáty.
 
 ### <a name="event"></a>Událost
-A record of an activity in Azure Active Directory.
+Záznam aktivity v Azure Active Directory.
 
-### <a name="false-positive-risk-detection"></a>False-positive (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the risk detection was investigated and was incorrectly flagged as a risk detection.
+### <a name="false-positive-risk-detection"></a>Falešně pozitivní (zjišťování rizik)
+Stav detekce rizik nastavený ručně uživatelem ochrany identity, což značí, že se zjistilo, že bylo detekováno riziko a bylo nesprávně označeno jako detekce rizika.
 
 ### <a name="identity"></a>Identita
-A person or entity that must be verified by means of authentication, based on criteria such as password or a certificate.
+Osoba nebo entita, která musí být ověřena pomocí ověřování, na základě kritérií, jako je například heslo nebo certifikát.
 
-### <a name="identity-risk-detection"></a>Identity risk detection
-Azure AD event that was flagged as anomalous by Identity Protection, and may indicate that an identity has been compromised.
+### <a name="identity-risk-detection"></a>Detekce rizik identity
+Událost Azure AD, která byla označena jako neobvyklé podle Identity Protection, a může znamenat, že došlo k ohrožení identity.
 
-### <a name="ignored-risk-detection"></a>Ignored (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the risk detection is closed without taking a remediation action.
+### <a name="ignored-risk-detection"></a>Ignorováno (zjišťování rizik)
+Stav detekce rizik nastavený ručně uživatelem ochrany identity, což znamená, že zjišťování rizik je uzavřeno bez provedení nápravné akce.
 
-### <a name="impossible-travel-from-atypical-locations"></a>Impossible travel from atypical locations
-A risk detection triggered when two sign-ins for the same user are detected, where at least one of them is from an atypical sign-in location, and where the time between the sign-ins is shorter than the minimum time it would take to physically travel between these locations.  
+### <a name="impossible-travel-from-atypical-locations"></a>Nemožná cesta z netypických míst
+Rozpoznání rizika aktivované při zjištění dvou přihlášení stejného uživatele, kde alespoň jedna z nich pochází z neobvyklých přihlašovacích umístění a kde je doba mezi přihlášeními kratší než minimální čas, který by vyžadoval fyzické cestování polohy.  
 
 ### <a name="investigation"></a>Šetření
-The process of reviewing the activities, logs, and other relevant information related to a risk detection to decide whether remediation or mitigation steps are necessary, understand if and how the identity was compromised, and understand how the compromised identity was used.
+Proces kontroly aktivit, protokolů a dalších relevantních informací souvisejících s detekcí rizik pro rozhodování o tom, jestli je potřeba vyřešit a jak by se jednalo o ohrožení identity, a pochopit, jakým způsobem došlo k ohrožení bezpečnosti identita se použila.
 
-### <a name="leaked-credentials"></a>Leaked credentials
-A risk detection triggered when current user credentials (user name and password) are found posted publicly in the Dark   web by our researchers.
+### <a name="leaked-credentials"></a>Nevrácená pověření
+K detekci rizik aktivovanému v případě, že se aktuální přihlašovací údaje uživatele (uživatelské jméno a heslo) zveřejňují veřejně v tmavém webu našimi výzkumníky.
 
 ### <a name="mitigation"></a>Omezení rizik
-An action to limit or eliminate the ability of an attacker to exploit a compromised identity or device without restoring the identity or device to a safe state. A mitigation does not resolve previous risk detections associated with the identity or device.
+Akce omezující nebo eliminující schopnost útočníka zneužít ohroženou identitu nebo zařízení bez obnovení identity nebo zařízení do bezpečného stavu. Zmírnění rizika neřeší předchozí zjištění rizik přidružená k identitě nebo zařízení.
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
-An authentication method that requires two or more authentication methods, which may include something the user has, such a certificate; something the user knows, such as user names, passwords, or pass phrases; physical attributes, such as a thumbprint; and personal attributes, such as a personal signature.
+### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
+Metoda ověřování, která vyžaduje dvě nebo víc metod ověřování, které můžou zahrnovat něco, co uživatel má, třeba certifikát; text, který zná uživatel, například uživatelská jména, hesla nebo fráze Pass. fyzické atributy, jako je například kryptografický otisk; a osobní atributy, jako je osobní podpis.
 
-### <a name="offline-detection"></a>Offline detection
-The detection of anomalies and evaluation of the risk of an event such as sign-in attempt after the fact, for an event that has already happened.
+### <a name="offline-detection"></a>Detekce offline
+Detekci anomálií a hodnocení rizika události, jako je například pokus o přihlášení po faktu, pro událost, která již proběhla.
 
-### <a name="policy-condition"></a>Policy condition
-A part of a security policy, which defines the entities (groups, users, apps, device platforms, Device states, IP ranges, client types) included in the policy or excluded from it.
+### <a name="policy-condition"></a>Podmínka zásady
+Součást zásad zabezpečení, která definuje entity (skupiny, uživatele, aplikace, platformy zařízení, stavy zařízení, rozsahy IP adres, typy klientů) zahrnuté v zásadě nebo z ní vyloučené.
 
-### <a name="policy-rule"></a>Policy rule
-The part of a security policy that describes the circumstances that would trigger the policy, and the actions taken when the policy is triggered.
+### <a name="policy-rule"></a>Pravidlo zásad
+Část zásady zabezpečení, která popisuje okolnosti, které by tuto zásadu aktivovaly, a akce provedené při aktivaci zásady.
 
 ### <a name="prevention"></a>Prevention (Prevence)
-An action to prevent damage to the organization through abuse of an identity or device suspected or know to be compromised. A prevention action does not secure the device or identity, and does not resolve previous risk detections.
+Akce, která zabrání poškození v organizaci prostřednictvím zneužití identity nebo zařízení podezřelého z důvodu ohrožení bezpečnosti. Akce prevence nezabezpečuje zařízení nebo identitu a neřeší předchozí zjišťování rizik.
 
-### <a name="privileged-user"></a>Privileged (user)
-A user that at the time of a risk detection, had permanent or temporary admin permissions to one or more resources in Azure Active Directory, such as a Global Administrator, Billing Administrator, Service Administrator, User administrator, and Password Administrator. 
+### <a name="privileged-user"></a>Privilegované (uživatel)
+Uživatel, který v době detekce rizik má trvalá nebo dočasná oprávnění správce k jednomu nebo více prostředkům v Azure Active Directory, jako je globální správce, správce fakturace, správce služeb, Správce uživatelů a heslo Správce. 
 
-### <a name="real-time"></a>Real-time
-See Real-time detection.
+### <a name="real-time"></a>V reálném čase
+Viz zjišťování v reálném čase.
 
-### <a name="real-time-detection"></a>Real-time detection
-The detection of anomalies and evaluation of the risk of an event such as sign-in attempt before the event is allowed to proceed.
+### <a name="real-time-detection"></a>Zjišťování v reálném čase
+Detekce anomálií a vyhodnocení rizika události, jako je například pokus o přihlášení, než bude moci událost pokračovat.
 
-### <a name="remediated-risk-detection"></a>Remediated (risk detection)
-A risk detection status set automatically by Identity Protection, indicating that the risk detection was remediated using the standard remediation action for this type of risk detection. For example, when the user password is reset, many risk detections that indicate that the previous password was compromised are automatically remediated.
+### <a name="remediated-risk-detection"></a>Opraveno (zjišťování rizik)
+Stav detekce rizik nastavený automaticky pomocí Identity Protection, což znamená, že detekce rizik byla opravena pomocí standardní nápravné akce pro tento typ zjišťování rizik. Například při resetování hesla uživatele se automaticky opraví mnoho detekcí rizika, které ukazují, že předchozí heslo bylo ohroženo.
 
-### <a name="remediation"></a>Remediation
-An action to secure an identity or a device that were previously suspected or known to be compromised. A remediation action restores the identity or device to a safe state, and resolves previous risk detections associated with the identity or device.
+### <a name="remediation"></a>Náprava
+Akce zabezpečující identitu nebo zařízení, které byly dříve podezřelé nebo známé jako ohrožené. Nápravná akce obnoví identitu nebo zařízení do bezpečného stavu a vyřeší předchozí zjištění rizik související s identitou nebo zařízením.
 
-### <a name="resolved-risk-detection"></a>Resolved (risk detection)
-A risk detection status set manually by an Identity Protection user, indicating that the user took an appropriate remediation action outside Identity Protection, and that the risk detection should be considered closed.
+### <a name="resolved-risk-detection"></a>Vyřešené (zjišťování rizik)
+Stav detekce rizik nastavený ručně uživatelem ochrany identity, který indikuje, že uživatel přijal příslušnou akci nápravy mimo ochranu identity a že by mělo být považováno za uzavřeno.
 
-### <a name="risk-detection-status"></a>Risk detection status
-A property of a risk detection, indicating whether the event is active, and if closed, the reason for closing it.
+### <a name="risk-detection-status"></a>Stav detekce rizik
+Vlastnost detekce rizika, která označuje, jestli je událost aktivní, a pokud je uzavřená, důvod uzavření.
 
-### <a name="risk-detection-type"></a>Risk detection type
-A category for the risk detection, indicating the type of anomaly that caused the event to be considered risky.
+### <a name="risk-detection-type"></a>Typ detekce rizika
+Kategorie pro detekci rizik, která indikuje typ anomálie, která způsobila, že se událost považuje za rizikové.
 
-### <a name="risk-level-risk-detection"></a>Risk level (risk detection)
-An indication (High, Medium, or Low) of the severity of the risk detection to help Identity Protection users prioritize the actions they take to reduce the risk to their organization. 
+### <a name="risk-level-risk-detection"></a>Úroveň rizika (detekce rizik)
+Indikace (vysoká, střední nebo nízká) závažnost detekce rizik, která uživatelům pomůže chránit identity, přijímají akce, které přijmou, aby snížily riziko pro jejich organizaci. 
 
-### <a name="risk-level-sign-in"></a>Risk level (sign-in)
-An indication (High, Medium, or Low) of the likelihood that for a specific sign-in, someone else is attempting to use the user’s identity.
+### <a name="risk-level-sign-in"></a>Úroveň rizika (přihlášení)
+Indikace (vysoká, střední nebo nízká úroveň) pravděpodobnosti, že pro konkrétní přihlašování se někdo jiný pokouší použít identitu uživatele.
 
-### <a name="risk-level-user-compromise"></a>Risk level (user compromise)
-An indication (High, Medium, or Low) of the likelihood that an identity has been compromised.
+### <a name="risk-level-user-compromise"></a>Úroveň rizika (ohrožení zabezpečení uživatele)
+Indikace (vysoká, střední nebo nízká úroveň) pravděpodobnosti ohrožení identity.
 
-### <a name="risk-level-vulnerability"></a>Risk level (vulnerability)
-An indication (High, Medium, or Low) of the severity of the vulnerability to help Identity Protection users prioritize the actions they take to reduce the risk to their organization.
+### <a name="risk-level-vulnerability"></a>Úroveň rizika (ohrožení zabezpečení)
+Indikace (vysoká, střední nebo nízká) závažnost ohrožení zabezpečení, která uživatelům pomůže zajistit, aby se snížila rizika pro jejich organizaci.
 
-### <a name="secure-identity"></a>Secure (identity)
-Take remediation action such as a password change or machine reimaging to restore a potentially compromised identity to an uncompromised state.
+### <a name="secure-identity"></a>Zabezpečení (identita)
+Proveďte nápravné akce, jako je třeba Změna hesla nebo obnovení bitové kopie počítače, aby se obnovila potenciálně ohrožená identita v neohroženém stavu.
 
 ### <a name="security-policy"></a>Zásady zabezpečení
-A collection of policy rules and condition. A policy can be applied to entities such as users, groups, apps, devices, device platforms, device states, IP ranges, and Auth2.0 client types. When a policy is enabled, it is evaluated whenever an entity included in the policy is issued a token for a resource.
+Kolekce pravidel a podmínek zásad Zásady je možné použít u entit, jako jsou uživatelé, skupiny, aplikace, zařízení, platformy zařízení, stavy zařízení, rozsahy IP adres a typy klientů ověřování 2.0. Pokud je zásada povolená, vyhodnotí se vždy, když je entita, která je součástí zásady, vystavena tokenu pro prostředek.
 
-### <a name="sign-in-v"></a>Sign in (v)
-To authenticate to an identity in Azure Active Directory.
+### <a name="sign-in-v"></a>Přihlásit (v)
+Ověření identity v Azure Active Directory.
 
-### <a name="sign-in-n"></a>Sign-in (n)
-The process or action of authenticating an identity in Azure Active Directory, and the event that captures this operation.
+### <a name="sign-in-n"></a>Přihlášení (n)
+Proces nebo akce ověřování identity v Azure Active Directory a událost, která zachycuje tuto operaci.
 
-### <a name="sign-in-from-anonymous-ip-address"></a>Sign in from anonymous IP address
-A risk detection triggered after a successful sign-in from IP address that has been identified as an anonymous proxy IP address.
+### <a name="sign-in-from-anonymous-ip-address"></a>Přihlášení z anonymní IP adresy
+Rozpoznávání rizik aktivované po úspěšném přihlášení z IP adresy, která byla identifikována jako IP adresa anonymního proxy serveru.
 
-### <a name="sign-in-from-infected-device"></a>Sign in from infected device
-A risk detection triggered when a sign-in originates from an IP address, which is known to be used by one or more compromised devices, which are actively attempting to communicate with a bot server.
+### <a name="sign-in-from-infected-device"></a>Přihlášení z nakaženého zařízení
+Zjišťování rizik aktivované při přihlášení, které pochází z IP adresy, která se používá pro jedno nebo více ohrožených zařízení, která se aktivně snaží o komunikaci se serverem bot.
 
-### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Sign in from IP address with suspicious activity
-A risk detection triggered after a successful sign-in from an IP address with a high number of failed login attempts across multiple user accounts over a short period of time.
+### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Přihlášení z IP adresy s podezřelou aktivitou
+Rozpoznávání rizik aktivované po úspěšném přihlášení z IP adresy s vysokým počtem neúspěšných pokusů o přihlášení v rámci několika uživatelských účtů za krátkou dobu.
 
-### <a name="sign-in-from-unfamiliar-location"></a>Sign in from unfamiliar location
-A risk detection triggered when a user successfully signs in from a new location (IP, Latitude/Longitude, and ASN).
+### <a name="sign-in-from-unfamiliar-location"></a>Přihlášení z neznámého místa
+Rozpoznání rizika aktivované v případě, že se uživatel úspěšně přihlásí z nového umístění (IP, zeměpisná šířka/zeměpisná délka a ASN).
 
-### <a name="sign-in-risk"></a>Sign-in risk
-See Risk level (sign-in)
+### <a name="sign-in-risk"></a>Riziko přihlášení
+Zobrazit úroveň rizika (přihlášení)
 
-### <a name="sign-in-risk-policy"></a>Sign-in risk policy
-A Conditional Access policy that evaluates the risk to a specific sign-in and applies mitigations based on predefined conditions and rules.
+### <a name="sign-in-risk-policy"></a>Zásady rizik přihlašování
+Zásada podmíněného přístupu, která vyhodnotí riziko pro konkrétní přihlášení a aplikuje omezení na základě předdefinovaných podmínek a pravidel.
 
-### <a name="user-compromise-risk"></a>User compromise risk
-See Risk level (user compromise)
+### <a name="user-compromise-risk"></a>Riziko ohrožení uživatele
+Zobrazit úroveň rizika (ohrožení zabezpečení uživatele)
 
-### <a name="user-risk"></a>User risk
-See Risk level (user compromise).
+### <a name="user-risk"></a>Riziko uživatele
+Viz úroveň rizika (ohrožení zabezpečení uživatele).
 
-### <a name="user-risk-policy"></a>User risk policy
-A Conditional Access policy that considers the sign-in and applies mitigations based on predefined conditions and rules.
+### <a name="user-risk-policy"></a>Zásady rizik uživatelů
+Zásady podmíněného přístupu, které přistupují k přihlášení a využívají omezení na základě předdefinovaných podmínek a pravidel.
 
 ### <a name="users-flagged-for-risk"></a>Uživatelé označení příznakem rizika
-Users that have risk detections, which are either active or remediated
+Uživatelé s detekcí rizik, které jsou buď aktivní, nebo opravené
 
-### <a name="vulnerability"></a>Vulnerability
-A configuration or condition in Azure Active Directory, which makes the directory susceptible to exploits or threats.
+### <a name="vulnerability"></a>Dochází
+Konfigurace nebo podmínka v Azure Active Directory, což umožňuje, aby byl adresář vnímav k zneužití nebo hrozbám.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)

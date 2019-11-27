@@ -1,6 +1,6 @@
 ---
-title: How to install IoT Edge on Kubernetes | Microsoft Docs
-description: Learn on how to install IoT Edge on Kubernetes using a local development cluster environment
+title: Jak nainstalovat IoT Edge v Kubernetes | Microsoft Docs
+description: Naučte se, jak nainstalovat IoT Edge v Kubernetes pomocí prostředí místního vývojového clusteru.
 author: kgremban
 manager: philmea
 ms.author: veyalla
@@ -15,55 +15,55 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457346"
 ---
-# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>How to install IoT Edge on Kubernetes (Preview)
+# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Postup instalace IoT Edge v Kubernetes (Preview)
 
-IoT Edge can integrate with Kubernetes using it as a resilient, highly available infrastructure layer. It registers an IoT Edge *Custom Resource Definition* (CRD) with the Kubernetes API Server. Additionally, it provides an *Operator* (IoT Edge agent) that reconciles cloud-managed desired state with the local cluster state. 
+IoT Edge můžete integrovat s Kubernetes a používat ji jako odolnou, vysoce dostupnou infrastrukturu infrastruktury. Registruje IoT Edge *vlastní definice prostředků* (CRD) pomocí serveru Kubernetes API. Navíc poskytuje *operátor* (IoT Edge Agent), který slučuje požadovaný stav cloudového řízení s místním stavem clusteru. 
 
-Module lifetime is managed by the Kubernetes scheduler, which maintains module availability and chooses their placement. IoT Edge manages the edge application platform running on top, continuously reconciling the desired state specified in IoT Hub with the state on the edge cluster. The edge application model is still the familiar model based on IoT Edge modules and routes. The IoT Edge agent operator performs *automatic* translation to the Kubernetes natives constructs like pods, deployments, services etc.
+Doba života modulu je spravovaná plánovačem Kubernetes, který udržuje dostupnost modulu a volí jejich umístění. IoT Edge spravuje platformu hraniční aplikace spuštěnou nahoře a nepřetržitě slučuje požadovaný stav zadaný v IoT Hub se stavem na hraničním clusteru. Model hraniční aplikace je stále známý model založený na IoT Edgech modulech a trasách. Operátor agenta IoT Edge provádí *Automatické* překlady konstrukcí Kubernetes Native, jako jsou lusky, nasazení, služby atd.
 
-Here is a high-level architecture diagram:
+Tady je diagram architektury vysoké úrovně:
 
-![kubernetes arch](./media/how-to-install-iot-edge-kubernetes/k8s-arch.png)
+![Kubernetes arch](./media/how-to-install-iot-edge-kubernetes/k8s-arch.png)
 
-Every component of the edge deployment is scoped to a Kubernetes namespace specific to the device, making it possible to share the same cluster resources among multiple edge devices and their deployments.
+Každá součást nasazení Edge je vymezená na obor názvů Kubernetes specifický pro zařízení, takže je možné sdílet stejné prostředky clusteru mezi více hraničními zařízeními a jejich nasazeními.
 
 >[!NOTE]
->IoT Edge on Kubernetes is in [public preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>IoT Edge v Kubernetes je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="install-locally-for-a-quick-test-environment"></a>Install locally for a quick test environment
+## <a name="install-locally-for-a-quick-test-environment"></a>Místní instalace pro rychlé testovací prostředí
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
-* Kubernetes 1.10 or newer. If you don't have an existing cluster setup, you can use [Minikube](https://kubernetes.io/docs/setup/minikube/) for a local cluster environment. 
+* Kubernetes 1,10 nebo novější. Pokud nemáte existující instalaci clusteru, můžete použít [Minikube](https://kubernetes.io/docs/setup/minikube/) pro místní Clusterové prostředí. 
 
-* [Helm](https://helm.sh/docs/using_helm/#quickstart-guide), the Kubernetes package manager.
+* [Helm](https://helm.sh/docs/using_helm/#quickstart-guide), správce balíčků Kubernetes.
 
-* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) for viewing and interacting with the cluster.
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) pro zobrazení a interakci s clusterem.
 
-### <a name="setup-steps"></a>Setup steps
+### <a name="setup-steps"></a>Kroky pro instalaci
 
-1. Start **Minikube**
+1. Spustit **Minikube**
 
     ``` shell
     minikube start
     ```
 
-1. Initialize the **Helm** server component (*tiller*) in your cluster
+1. Inicializace součásti serveru **Helm** (*pokladny*) v clusteru
 
     ``` shell
     helm init
     ```
 
-1. Add IoT Edge repo and update the helm installation
+1. Přidání úložiště IoT Edge a aktualizace instalace Helm
 
     ``` shell
     helm repo add edgek8s https://edgek8s.blob.core.windows.net/helm/
     helm repo update
     ```
 
-1. [Create an IoT Hub](../iot-hub/iot-hub-create-through-portal.md), [register an IoT Edge device](how-to-register-device.md), and note its connection string.
+1. [Vytvořte IoT Hub](../iot-hub/iot-hub-create-through-portal.md), [zaregistrujte IoT Edge zařízení](how-to-register-device.md)a poznamenejte si jeho připojovací řetězec.
 
-1. Install iotedged and IoT Edge agent into your cluster
+1. Instalace iotedged a agenta IoT Edge do clusteru
 
     ```shell
     helm install \
@@ -71,21 +71,21 @@ Every component of the edge deployment is scoped to a Kubernetes namespace speci
     --set "deviceConnectionString=replace-with-device-connection-string" \
     edgek8s/edge-kubernetes
     ```
-1. Open the Kubernetes dashboard in the browser
+1. Otevření řídicího panelu Kubernetes v prohlížeči
 
     ```shell
     minikube dashboard
     ```
 
-    Under the cluster namespaces, you will see one for the IoT Edge device following the convention *msiot-\<iothub-name>-\<edgedevice-name>* . The IoT Edge agent and iotedged pods should be up and running in this namespace.
+    V části obory názvů clusteru se zobrazí jedno pro IoT Edge zařízení podle konvence *msiot-\<iothub-name >-\<edgedevice-name >* . Agent IoT Edge iotedged a lusky by měly být v tomto oboru názvů v provozu.
 
-1. Add a simulated temperature sensor module using the steps in the [Deploy a module](quickstart-linux.md#deploy-a-module) section of the quickstart. IoT Edge module management is done from the IoT Hub portal just like any other IoT Edge device. Making local changes to module configuration via Kubernetes tools is not recommended as they might get overwritten.
+1. Přidejte modul simulovaného senzoru teploty pomocí postupu v části [nasazení modulu](quickstart-linux.md#deploy-a-module) v rychlém startu. Správa modulů IoT Edge se provádí z portálu IoT Hub stejným způsobem jako jiné IoT Edge zařízení. Provádění místních změn v konfiguraci modulů prostřednictvím nástrojů Kubernetes se nedoporučuje, protože by se mohlo přepsat.
 
-1. In a few seconds, refreshing the **Pods** page under the edge device namespace in the dashboard will list the IoT Edge hub and simulated sensor pods as running with the IoT Edge hub pod ingesting data into IoT Hub.
+1. Během několika sekund se při aktualizaci stránky **lusky** pod oborem názvů hraničního zařízení na řídicím panelu zobrazí seznam IoT Edge hub a simulované IoT Hub IoT Edge snímače.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-To remove all resources created by the edge deployment, use the following command with the name used in step 5 of the previous section.
+Pokud chcete odebrat všechny prostředky vytvořené nasazením Edge, použijte následující příkaz s názvem použitým v kroku 5 předchozí části.
 
 ``` shell
 helm delete --purge k8s-edge1
@@ -93,6 +93,6 @@ helm delete --purge k8s-edge1
 
 ## <a name="next-steps"></a>Další kroky
 
-### <a name="deploy-as-a-highly-available-edge-gateway"></a>Deploy as a highly available edge gateway 
+### <a name="deploy-as-a-highly-available-edge-gateway"></a>Nasazení jako hraniční brány s vysokou dostupností 
 
-The edge device in a Kubernetes cluster can be used as an IoT gateway for downstream devices. It can be configured to be resilient to node failure thus providing high availability to edge deployments. See this [detailed walkthrough](https://github.com/Azure-Samples/iotedge-gateway-on-kubernetes) to use IoT Edge in this scenario.
+Hraniční zařízení v clusteru Kubernetes se dá použít jako brána IoT pro podřízená zařízení. Dá se nakonfigurovat tak, aby byl odolný vůči selhání uzlu a poskytoval tak vysokou dostupnost nasazení Edge. V tomto scénáři se dozvíte v tomto [podrobném návodu](https://github.com/Azure-Samples/iotedge-gateway-on-kubernetes) k použití IoT Edge.

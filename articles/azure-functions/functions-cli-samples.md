@@ -6,12 +6,12 @@ ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
 ms.topic: sample
 ms.date: 01/09/2018
 ms.custom: mvc
-ms.openlocfilehash: b875d2a478ccbd2fa99f43e584e02018866fc5cd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 8de245dc6307890c872bfc4b8b66371775e1ad12
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230919"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532873"
 ---
 # <a name="azure-cli-samples"></a>Ukázky Azure CLI
 
@@ -22,7 +22,9 @@ Následující tabulka obsahuje odkazy na skripty Bash pro službu Azure Functio
 | Vytvořit aplikaci | Popis |
 |---|---|
 | [Vytvoření aplikace funkcí pro provádění bez serveru](scripts/functions-cli-create-serverless.md) | Vytvoří aplikaci funkcí v plánu Consumption.  |
-| [Vytvoření aplikace funkcí v plánu služby App Service](scripts/functions-cli-create-app-service-plan.md) | Vytvoří aplikaci funkcí ve vyhrazeném plánu služby App Service. |
+| [Vytvoření aplikace funkcí Python bez serveru](scripts/functions-cli-create-serverless-python.md) | Vytvoří aplikaci funkcí ve vyhrazeném plánu služby App Service. |
+| [Vytvoření aplikace Function App v rámci škálovatelného plánu Premium](scripts/functions-cli-create-premium-plan.md) | Vytvoří aplikaci funkcí ve vyhrazeném plánu služby App Service. |
+| [Vytvoření aplikace Function App ve vyhrazeném (App Service) plánu](scripts/functions-cli-create-app-service-plan.md) | Vytvoří aplikaci funkcí ve vyhrazeném plánu služby App Service. |
 
 | Integrace | Popis|
 |---|---|
@@ -33,15 +35,3 @@ Následující tabulka obsahuje odkazy na skripty Bash pro službu Azure Functio
 |---|---|
 | [Nasazení z GitHubu](scripts/functions-cli-create-function-app-github-continuous.md) | Vytvoří aplikaci funkcí, která se nasadí z úložiště GitHub.  |
 | [Nasazení z Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Vytvořte aplikaci funkcí, která nasazuje z úložiště Azure DevOps.  |
-
-| Konfigurace aplikace | Popis |
-|---|---|
-| [Mapování vlastní domény na aplikaci funkcí](scripts/functions-cli-configure-custom-domain.md) | Definuje vlastní doménu pro vaše funkce.  |
-| [Vytvoření vazby certifikátu SSL na aplikaci funkcí](scripts/functions-cli-configure-ssl-certificate.md)  |  Nahraje certifikáty SSL pro funkce na vlastní doméně. |
-
-<!---
-
-|**Scale app**||
-
-|**Connect app to resources**||
--->

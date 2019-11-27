@@ -1,111 +1,111 @@
 ---
-title: PCI-DSS v3.2.1 blueprint sample - Deploy steps
-description: Deploy steps for the Payment Card Industry Data Security Standard v3.2.1 blueprint sample including blueprint artifact parameter details.
+title: Ukázka nasazení PCI-DSS v 3.2.1 podrobný plán
+description: Nasaďte kroky pro ukázka zabezpečení dat v odvětví platební karty Standard v 3.2.1, včetně podrobností o parametrech artefaktu podrobného plánu.
 ms.date: 06/24/2019
 ms.topic: sample
-ms.openlocfilehash: f8759a1686a89f4e3f70e1876f661805e5dbda39
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: aa641b35f1a7533a13803e7984c83df2f3268de6
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404006"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546552"
 ---
-# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Deploy the PCI-DSS v3.2.1 blueprint sample
+# <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Nasazení ukázky pro PCI-DSS v 3.2.1 podrobný plán
 
-To deploy the Azure Blueprints PCI-DSS v3.2.1 blueprint sample, the following steps must be taken:
+Pokud chcete nasadit ukázkovou ukázku pro Azure modrotisky PCI-DSS v 3.2.1, je potřeba provést tyto kroky:
 
 > [!div class="checklist"]
-> - Create a new blueprint from the sample
-> - Mark your copy of the sample as **Published**
-> - Assign your copy of the blueprint to an existing subscription
+> - Vytvořit nový podrobný plán z ukázky
+> - Označení kopie ukázky jako **publikované**
+> - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
-## <a name="create-blueprint-from-sample"></a>Create blueprint from sample
+## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
-First, implement the blueprint sample by creating a new blueprint in your environment using the sample as a starter.
+Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako Starter.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. From the **Getting started** page on the left, select the **Create** button under _Create a blueprint_.
+1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
-1. Find the **PCI-DSS v3.2.1** blueprint sample under _Other Samples_ and select **Use this sample**.
+1. V části _Další ukázky_ Najděte ukázkový plán **PCI-DSS v 3.2.1** a vyberte **použít tuto ukázku**.
 
-1. Enter the _Basics_ of the blueprint sample:
+1. Zadejte _základy_ ukázky podrobného plánu:
 
-   - **Blueprint name**: Provide a name for your copy of the PCI-DSS v3.2.1 blueprint sample.
-   - **Definition location**: Use the ellipsis and select the management group to save your copy of the sample to.
+   - **Název**podrobného plánu: zadejte název vaší kopie ukázkového plánu PCI-DSS v 3.2.1.
+   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
-1. Select the _Artifacts_ tab at the top of the page or **Next: Artifacts** at the bottom of the page.
+1. Vyberte kartu _artefakty_ v horní části stránky nebo **Další: artefakty** v dolní části stránky.
 
-1. Review the list of artifacts that make up the blueprint sample. Many of the artifacts have parameters that we'll define later. Select **Save Draft** when you've finished reviewing the blueprint sample.
+1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Mnohé z artefaktů mají parametry, které budeme definovat později. Po dokončení kontroly ukázkového plánu vyberte **Uložit koncept** .
 
-## <a name="publish-the-sample-copy"></a>Publish the sample copy
+## <a name="publish-the-sample-copy"></a>Publikovat ukázkovou kopii
 
-Your copy of the blueprint sample has now been created in your environment. It's created in **Draft** mode and must be **Published** before it can be assigned and deployed. The copy of the blueprint sample can be customized to your environment and needs, but that modification may move it away from the PCI-DSS v3.2.1 standard.
+Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu **konceptu** a musí být **publikována** před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard PCI-DSS v 3.2.1.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. Select **Publish blueprint** at the top of the page. In the new page on the right, provide a **Version** for your copy of the blueprint sample. This property is useful for if you make a modification later. Provide **Change notes** such as "First version published from the PCI-DSS v3.2.1 blueprint sample." Then select **Publish** at the bottom of the page.
+1. V horní části stránky vyberte **publikovat podrobný plán** . Na stránce Nová na pravé straně zadejte **verzi** pro kopii ukázky podrobného plánu. Tato vlastnost je užitečná, pokud uděláte změnu později. Zadejte **poznámky ke změnám** , jako je například "první verze publikovaná z: PCI-DSS v 3.2.1 podrobný plán ukázka". Potom v dolní části stránky vyberte **publikovat** .
 
-## <a name="assign-the-sample-copy"></a>Assign the sample copy
+## <a name="assign-the-sample-copy"></a>Přiřadit ukázkovou kopii
 
-Once the copy of the blueprint sample has been successfully **Published**, it can be assigned to a subscription within the management group it was saved to. This step is where parameters are provided to make each deployment of the copy of the blueprint sample unique.
+Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. Select **Assign blueprint** at the top of the blueprint definition page.
+1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
 
-1. Provide the parameter values for the blueprint assignment:
+1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
    - Základy
 
-     - **Subscriptions**: Select one or more of the subscriptions that are in the management group you saved your copy of the blueprint sample to. If you select more than one subscription, an assignment will be created for each using the parameters entered.
-     - **Assignment name**: The name is pre-populated for you based on the name of the blueprint.
-       Change as needed or leave as is.
-     - **Location**: Select a region for the managed identity to be created in. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Blueprint definition version**: Pick a **Published** version of your copy of the blueprint sample.
+     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
+       Změňte podle potřeby nebo ponechte tak, jak je.
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
-   - Lock Assignment
+   - Zamknout přiřazení
 
-     Select the blueprint lock setting for your environment. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
+     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
 
    - Spravovaná identita
 
-     Leave the default _system assigned_ managed identity option.
+     Ponechte výchozí _systém přiřazenou_ možnost spravovaná identita.
 
-   - Artifact parameters
+   - Parametry artefaktu
 
-     The parameters defined in this section apply to the artifact under which it's defined. These parameters are [dynamic parameters](../../concepts/parameters.md#dynamic-parameters) since they're defined during the assignment of the blueprint. For a full list or artifact parameters and their descriptions, see [Artifact parameters table](#artifact-parameters-table).
+     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Úplný seznam nebo parametry artefaktu a jejich popis najdete v tématu [tabulka parametrů artefaktů](#artifact-parameters-table).
 
-1. Once all parameters have been entered, select **Assign** at the bottom of the page. The blueprint assignment is created and artifact deployment begins. Deployment takes roughly an hour. To check on the status of deployment, open the blueprint assignment.
+1. Po zadání všech parametrů vyberte v dolní části stránky **přiřadit** . Vytvoří se přiřazení podrobného plánu a spustí se nasazení artefaktu. Nasazení trvá zhruba hodinu. Chcete-li zjistit stav nasazení, otevřete přiřazení podrobného plánu.
 
 > [!WARNING]
-> The Azure Blueprints service and the built-in blueprint samples are **free of cost**. Azure resources are [priced by product](https://azure.microsoft.com/pricing/). Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the cost of running resources deployed by this blueprint sample.
+> Služba Azure modrotisky a předdefinované ukázky podrobného plánu jsou **zdarma**. Ceny prostředků Azure se účtují [podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na provozované prostředky nasazené touto ukázkou podrobného plánu.
 
-## <a name="artifact-parameters-table"></a>Artifact parameters table
+## <a name="artifact-parameters-table"></a>Tabulka parametrů artefaktů
 
-The following table provides a list of the blueprint artifact parameters:
+Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-|Artifact name|Artifact type|Název parametru|Popis|
+|Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|\[Preview\] Audit PCI v3.2.1:2018 controls and deploy specific VM Extensions to support audit requirements|Přiřazení zásad|List of Resource Types | Audit diagnostic setting for selected resource types. Default value is all resources are selected| 
-|Povolená umístění|Přiřazení zásad|List Of Allowed Locations|List of data center locations allowed for any resource to be deployed into. This list is customizable to the desired Azure locations globally. Select locations you wish to allow.| 
-|Allowed Locations for resource groups|Přiřazení zásad |Allowed Location |This policy enables you to restrict the locations your organization can create resource groups in. Můžete je využít k vynucování vašich požadavků na geografické dodržování předpisů.| 
-|Deploy Auditing on SQL servers|Přiřazení zásad|Retention days|Data retention in number of days. Default value is 180 but PCI requires 365.| 
-|Deploy Auditing on SQL servers|Přiřazení zásad|Resource group name for storage account|Auditing writes database events to an audit log in your Azure Storage account (a storage account will be created in each region where a SQL Server is created that will be shared by all servers in that region).| 
+|\[Preview\] audit PCI v 3.2.1:2018 řídí ovládací prvky a nasazují specifická rozšíření virtuálních počítačů pro podporu požadavků na audit.|Přiřazení zásad|Seznam typů prostředků | Auditování nastavení diagnostiky pro vybrané typy prostředků. Výchozí hodnota jsou vybrané všechny prostředky.| 
+|Povolená umístění|Přiřazení zásad|Seznam povolených umístění|Seznam umístění datových center povolených pro všechny prostředky, které se mají nasadit do. Tento seznam je globálně přizpůsobitelný pro požadovaná umístění Azure. Vyberte umístění, která chcete přidělit.| 
+|Povolená umístění pro skupiny prostředků|Přiřazení zásad |Povolené umístění |Tato zásada vám umožní omezit umístění, ve kterých může organizace vytvářet skupiny prostředků. Můžete je využít k vynucování vašich požadavků na geografické dodržování předpisů.| 
+|Nasazení auditování na SQL serverech|Přiřazení zásad|Dny uchování|Uchovávání dat v počtu dnů. Výchozí hodnota je 180, ale sběrnice PCI vyžaduje 365.| 
+|Nasazení auditování na SQL serverech|Přiřazení zásad|Název skupiny prostředků pro účet úložiště|Audit zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který bude sdílen všemi servery v této oblasti).| 
 
 ## <a name="next-steps"></a>Další kroky
 
-Now that you've reviewed the steps to deploy the PCI-DSS v3.2.1 blueprint sample, visit the following articles to learn about the overview and control mapping:
+Teď, když jste si prohlédli postup nasazení ukázky pro PCI-DSS v 3.2.1 podrobný plán, najdete v následujících článcích informace o přehledu a mapování ovládacích prvků:
 
 > [!div class="nextstepaction"]
-> [PCI-DSS v3.2.1 blueprint - Overview](./index.md)
-> [PCI-DSS v3.2.1 blueprint - Control mapping](./control-mapping.md)
+> [PCI-DSS v 3.2.1 podrobný plán – přehled](./index.md)
+> [PCI-DSS v 3.2.1 podrobný plán – mapování ovládacích prvků](./control-mapping.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

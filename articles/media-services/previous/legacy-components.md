@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services legacy components | Microsoft Docs
-description: This topic discusses Azure Media Services legacy components.
+title: Azure Media Services starší verze komponent | Microsoft Docs
+description: Toto téma popisuje Azure Media Services starších komponent.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -20,24 +20,24 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423928"
 ---
-# <a name="azure-media-services-legacy-components"></a>Azure Media Services legacy components
+# <a name="azure-media-services-legacy-components"></a>Azure Media Services starší součásti
 
-Over time, there have been steady improvements and enhancements to Media Service components. As a result, some legacy components have been retired. You can find the instructions on how to migrate your application from the legacy component to a current component in the following articles.
+V průběhu času byla k dispozici stabilní vylepšení a vylepšení komponent Media Service. V důsledku toho byly některé starší komponenty vyřazeny. Pokyny, jak migrovat aplikaci ze starší verze na aktuální komponentu, najdete v následujících článcích.
  
-## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Retirement plans of legacy components and migration guidance
+## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Plány vyřazení zastaralých součástí a pokyny k migraci
 
-We are announcing deprecation of the *Windows Azure Media Encoder* (WAME) and *Azure Media Encoder* (AME) media processors. These processors are being retired on March 31, 2020.
+Oznamujeme vyřazení *Windows Azure Media Encoder* (WAME) a *Azure Media Encoderch* (ázev) mediálních procesorů. Tyto procesory jsou vyřazeny 31. března 2020.
 
-* [Migrate from Windows Azure Media Encoder to Media Encoder Standard](migrate-windows-azure-media-encoder.md)
-* [Migrate from Azure Media Encoder to Media Encoder Standard](migrate-azure-media-encoder.md)
+* [Migrace z Windows Azure Media Encoder na Media Encoder Standard](migrate-windows-azure-media-encoder.md)
+* [Migrace z Azure Media Encoder na Media Encoder Standard](migrate-azure-media-encoder.md)
 
-We are also announcing retirement of the following Media Analytics media processors: 
+Také oznamujeme vyřazení následujících Media Analytics mediálních procesorů: 
  
-|Název procesoru médií|Retirement date|Další poznámky|
+|Název procesoru médií|Datum vyřazení|Další poznámky|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| January 1 of 2020|This media processor will be replaced by [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). For more information, see [Migrate from Azure Media Indexer 2 to Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).|
-|[Azure Media Indexer](media-services-index-content.md)|October 1st of 2020|This media processor will be replaced by [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). For more information, see [Migrate from Azure Media Indexer to Azure Media Services Video Indexer](migrate-indexer-v1-v2.md)
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| Od 1. ledna 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Další informace najdete v tématu [migrace z Azure Media Indexer 2 do Azure Media Services video indexer](migrate-indexer-v1-v2.md).|
+|[Azure Media Indexer](media-services-index-content.md)|1\. října z 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Další informace najdete v tématu [migrace z Azure Media Indexer do Azure Media Services video indexer](migrate-indexer-v1-v2.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Migration guidance for moving from Media Services v2 to v3](../latest/migrate-from-v2-to-v3.md)
+[Pokyny k migraci pro přesun z Media Services V2 na V3](../latest/migrate-from-v2-to-v3.md)

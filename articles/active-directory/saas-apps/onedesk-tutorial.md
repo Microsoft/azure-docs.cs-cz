@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory single sign-on (SSO) integration with OneDesk | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and OneDesk.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s OneDesk | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a OneDesk.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,151 +23,151 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485568"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onedesk"></a>Tutorial: Azure Active Directory single sign-on (SSO) integration with OneDesk
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onedesk"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s OneDesk
 
-In this tutorial, you'll learn how to integrate OneDesk with Azure Active Directory (Azure AD). When you integrate OneDesk with Azure AD, you can:
+V tomto kurzu se dozvíte, jak integrovat OneDesk s Azure Active Directory (Azure AD). Když integrujete OneDesk s Azure AD, můžete:
 
-* Control in Azure AD who has access to OneDesk.
-* Enable your users to be automatically signed-in to OneDesk with their Azure AD accounts.
-* Manage your accounts in one central location - the Azure portal.
+* Řízení ve službě Azure AD, která má přístup k OneDesk.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k OneDesk svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-To learn more about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To get started, you need the following items:
+Chcete-li začít, potřebujete následující položky:
 
-* An Azure AD subscription. If you don't have a subscription, you can get a [free account](https://azure.microsoft.com/free/).
-* OneDesk single sign-on (SSO) enabled subscription.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* OneDesk odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-In this tutorial, you configure and test Azure AD SSO in a test environment.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* OneDesk supports **SP and IDP** initiated SSO
-* OneDesk supports **Just In Time** user provisioning
+* OneDesk podporuje jednotné přihlašování (SSO) **a IDP** .
+* OneDesk podporuje zřizování uživatelů **jenom v čase** .
 
-## <a name="adding-onedesk-from-the-gallery"></a>Adding OneDesk from the gallery
+## <a name="adding-onedesk-from-the-gallery"></a>Přidání OneDesk z Galerie
 
-To configure the integration of OneDesk into Azure AD, you need to add OneDesk from the gallery to your list of managed SaaS apps.
+Pokud chcete nakonfigurovat integraci OneDesk do služby Azure AD, musíte přidat OneDesk z Galerie do svého seznamu spravovaných aplikací SaaS.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. On the left navigation pane, select the **Azure Active Directory** service.
-1. Navigate to **Enterprise Applications** and then select **All Applications**.
-1. To add new application, select **New application**.
-1. In the **Add from the gallery** section, type **OneDesk** in the search box.
-1. Select **OneDesk** from results panel and then add the app. Wait a few seconds while the app is added to your tenant.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **OneDesk** .
+1. Na panelu výsledků vyberte **OneDesk** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-onedesk"></a>Configure and test Azure AD single sign-on for OneDesk
+## <a name="configure-and-test-azure-ad-single-sign-on-for-onedesk"></a>Konfigurace a testování jednotného přihlašování Azure AD pro OneDesk
 
-Configure and test Azure AD SSO with OneDesk using a test user called **B.Simon**. For SSO to work, you need to establish a link relationship between an Azure AD user and the related user in OneDesk.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí OneDesk pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v OneDesk.
 
-To configure and test Azure AD SSO with OneDesk, complete the following building blocks:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí OneDesk, dokončete následující stavební bloky:
 
-1. **[Configure Azure AD SSO](#configure-azure-ad-sso)** - to enable your users to use this feature.
-    * **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with B.Simon.
-    * **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable B.Simon to use Azure AD single sign-on.
-1. **[Configure OneDesk SSO](#configure-onedesk-sso)** - to configure the single sign-on settings on application side.
-    * **[Create OneDesk test user](#create-onedesk-test-user)** - to have a counterpart of B.Simon in OneDesk that is linked to the Azure AD representation of user.
-1. **[Test SSO](#test-sso)** - to verify whether the configuration works.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte ONEDESK SSO](#configure-onedesk-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    * **[Vytvořte OneDesk Test User](#create-onedesk-test-user)** -to, abyste měli protějšek B. Simon v OneDesk, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Configure Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Follow these steps to enable Azure AD SSO in the Azure portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. In the [Azure portal](https://portal.azure.com/), on the **OneDesk** application integration page, find the **Manage** section and select **single sign-on**.
-1. On the **Select a single sign-on method** page, select **SAML**.
-1. On the **Set up single sign-on with SAML** page, click the edit/pen icon for **Basic SAML Configuration** to edit the settings.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **OneDesk** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Edit Basic SAML Configuration](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. On the **Basic SAML Configuration** section, if you wish to configure the application in **IDP** initiated mode, enter the values for the following fields:
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. In the **Identifier** text box, type a URL using the following pattern: `onedesk.com_<specific_tenant_string>`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `onedesk.com_<specific_tenant_string>`
 
-    b. In the **Reply URL** text box, type a URL using the following pattern: `https://app.onedesk.com/sso/saml/SSO/alias/onedesk.com_<specific_tenant_string>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://app.onedesk.com/sso/saml/SSO/alias/onedesk.com_<specific_tenant_string>`
 
-1. Click **Set additional URLs** and perform the following step if you wish to configure the application in **SP** initiated mode:
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    In the **Sign-on URL** text box, type a URL using the following pattern:  `https://app.onedesk.com/sso/saml/login/alias/onedesk.com_<specific_tenant_string>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://app.onedesk.com/sso/saml/login/alias/onedesk.com_<specific_tenant_string>`
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Identifier, Reply URL and Sign-on URL. Contact [OneDesk Client support team](mailto:hello@onedesk.com) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta OneDesk](mailto:hello@onedesk.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. On the **Set up single sign-on with SAML** page, in the **SAML Signing Certificate** section, find **Federation Metadata XML** and select **Download** to download the certificate and save it on your computer.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![The Certificate download link](common/metadataxml.png)
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-1. On the **Set up OneDesk** section, copy the appropriate URL(s) based on your requirement.
+1. V části **Nastavení OneDesk** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-    ![Copy configuration URLs](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-In this section, you'll create a test user in the Azure portal called B.Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
-1. Select **New user** at the top of the screen.
-1. In the **User** properties, follow these steps:
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. In the **User name** field, enter the username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
-   1. Klikněte na **Vytvořit**.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-In this section, you'll enable B.Simon to use Azure single sign-on by granting access to OneDesk.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k OneDesk.
 
-1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
-1. In the applications list, select **OneDesk**.
-1. In the app's overview page, find the **Manage** section and select **Users and groups**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **OneDesk**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![The "Users and groups" link](common/users-groups-blade.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![The Add User link](common/add-assign-user.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
-1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
-1. In the **Add Assignment** dialog, click the **Assign** button.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-onedesk-sso"></a>Configure OneDesk SSO
+## <a name="configure-onedesk-sso"></a>Konfigurace jednotného přihlašování OneDesk
 
-1. To automate the configuration within OneDesk, you need to install **My Apps Secure Sign-in browser extension** by clicking **Install the extension**.
+1. Pokud chcete automatizovat konfiguraci v rámci OneDesk, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-    ![My apps extension](common/install-myappssecure-extension.png)
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-1. After adding extension to the browser, click on **Set up OneDesk** will direct you to the OneDesk application. From there, provide the admin credentials to sign into OneDesk. The browser extension will automatically configure the application for you and automate steps 3-5.
+1. Po přidání rozšíření do prohlížeče klikněte na **nastavit OneDesk** , které vás přesměruje do aplikace OneDesk. Odtud zadejte přihlašovací údaje správce, které se přihlásí k OneDesk. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-5.
 
-    ![Setup configuration](common/setup-sso.png)
+    ![Konfigurace instalace](common/setup-sso.png)
 
-1. If you want to setup OneDesk manually, open a new web browser window and sign into your OneDesk company site as an administrator and perform the following steps:
+1. Pokud chcete nastavit OneDesk ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu OneDesk společnosti jako správce a proveďte následující kroky:
 
-1. Click on the **Integrations** tab.
+1. Klikněte na kartu **integrace** .
 
-    ![Settings tab](./media/onedesk-tutorial/img-integration.png)
+    ![Karta nastavení](./media/onedesk-tutorial/img-integration.png)
 
-1. Click on the **Single Sign On**, select **Upload Metadata File** and click on the **Choose File** to upload the metadata file, which you have downloaded from the Azure portal.
+1. Klikněte na **jednotné přihlašování**, vyberte **nahrát soubor metadat** a klikněte na **zvolit soubor** , abyste nahráli soubor metadat, který jste stáhli z Azure Portal.
 
-    ![Settings tab](./media/onedesk-tutorial/img-singlesignon.png)
+    ![Karta nastavení](./media/onedesk-tutorial/img-singlesignon.png)
 
-### <a name="create-onedesk-test-user"></a>Create OneDesk test user
+### <a name="create-onedesk-test-user"></a>Vytvořit testovacího uživatele OneDesk
 
-In this section, a user called B.Simon is created in OneDesk. OneDesk supports just-in-time user provisioning, which is enabled by default. There is no action item for you in this section. If a user doesn't already exist in OneDesk, a new one is created after authentication.
+V této části se v OneDesk vytvoří uživatel s názvem B. Simon. OneDesk podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v OneDesk neexistuje, vytvoří se po ověření nový.
 
 ## <a name="test-sso"></a>Test SSO
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-When you click the OneDesk tile in the Access Panel, you should be automatically signed in to the OneDesk for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici OneDesk, měli byste se automaticky přihlásit k OneDesk, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Try OneDesk with Azure AD](https://aad.portal.azure.com/)
+- [Vyzkoušejte si OneDesk s Azure AD](https://aad.portal.azure.com/)

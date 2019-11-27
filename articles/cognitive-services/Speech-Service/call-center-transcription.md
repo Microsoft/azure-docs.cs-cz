@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a2025eb611a394cf4b67c05a4019ccf03bcadf9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2a8bea01d67c1820dc4f5c0a4922872541449a9e
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075864"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538179"
 ---
 # <a name="speech-service-for-telephony-data"></a>Služba řeči pro data telefonního subsystému
 
@@ -70,7 +70,7 @@ Naše kompletní latence je výrazně nízká pro různé technologie, jako je n
 
 Naše nové hlasy jsou také odlišitelné od lidského hlasy. Naše hlasy vám umožní dát své robot své jedinečné preference.
 
-### <a name="search"></a>Hledat
+### <a name="search"></a>Search
 
 Další sešívání analýz je identifikace interakcí, u kterých došlo k určité události nebo zkušenostem. To se obvykle provádí s jedním ze dvou přístupů; buď vyhledávání ad hoc, kde uživatel jednoduše zadá frázi a systém odpoví, nebo více strukturovaný dotaz, kde analytik může vytvořit sadu logických příkazů, které identifikují scénář ve volání, a potom každé volání může být indexováno proti této sadě dotazů. Dobrým příkladem hledání je příkaz všudypřítomný dodržování předpisů "Toto volání se bude zaznamenávat z hlediska kvality... ". Mnohé společnosti chtějí zajistit, aby jejich agenti poskytovali tomuto právnímu omezení zákazníkům před tím, než se volání skutečně zaznamená. Většina analytických systémů má schopnost trendu chování zjištěného pomocí algoritmů dotazu nebo vyhledávání a vytváření sestav trendů je nakonec jednou z nejdůležitějších funkcí analytického systému. V [adresáři služby pro rozpoznávání](https://azure.microsoft.com/services/cognitive-services/directory/search/) koncových služeb je možné výrazně zvýšit možnosti indexování a vyhledávání.
 
@@ -95,7 +95,6 @@ Typické řešení používá tyto služby:
 - Služba Speech slouží k přepisovat převodu řeči na text. K použití rozhraní API služby Batch pro přepis se vyžaduje standardní předplatné (S0) pro službu Speech. Bezplatné odběry (F0) nebudou fungovat.
 - [Azure Storage](https://azure.microsoft.com/services/storage/) slouží k ukládání dat telefonního subsystému a přepisů vrácených rozhraním API služby Batch přepisu. Tento účet úložiště by měl používat oznámení, konkrétně pro přidání nových souborů. Tato oznámení slouží k aktivaci procesu přepisu.
 - [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) slouží k vytvoření identifikátoru URI sdíleného přístupového podpisu (SAS) pro každý záznam a aktivaci požadavku HTTP POST pro spuštění přepisu. Kromě toho Azure Functions slouží k vytváření žádostí o načtení a odstranění přepisů pomocí rozhraní API dávkového přepisu.
-- [Webhooky](webhooks.md) slouží k získání oznámení, když jsou přepisy dokončeny.
 
 Interně používáme výše uvedené technologie k podpoře zákaznických hovorů Microsoftu v dávkovém režimu.
 Architektura ![Batch](media/scenarios/call-center-batch-pipeline.png)

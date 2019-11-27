@@ -1,6 +1,6 @@
 ---
-title: FSLogix profile containers NetApp Windows Virtual Desktop - Azure
-description: How to create an FSLogix profile container using Azure NetApp Files in Windows Virtual Desktop.
+title: Kontejnery profilů FSLogix NetApp virtuální plocha Windows – Azure
+description: Postup vytvoření kontejneru profilu FSLogix pomocí Azure NetApp Files ve virtuálním počítači s Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -14,47 +14,47 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483653"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Create an FSLogix profile container for a host pool using Azure NetApp Files
+# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files
 
-We recommend using FSLogix profile containers as a user profile solution for the [Windows Virtual Desktop service](overview.md). FSLogix profile containers store a complete user profile in a single container and are designed to roam profiles in non-persistent remote computing environments like Windows Virtual Desktop. When you sign in, the container dynamically attaches to the computing environment using a locally supported virtual hard disk (VHD) and Hyper-V virtual hard disk (VHDX). These advanced filter-driver technologies allow the user profile to be immediately available and appear in the system exactly like a local user profile. To learn more about FSLogix profile containers, see [FSLogix profile containers and Azure files](fslogix-containers-azure-files.md).
+Pro [službu Virtual Desktop systému Windows](overview.md)doporučujeme používat kontejnery profilů FSLogix jako řešení uživatelských profilů. Kontejnery profilů FSLogix ukládají úplný profil uživatele v jednom kontejneru a jsou navržené pro roaming profilů v netrvalých vzdálených výpočetních prostředích, jako je třeba virtuální počítač s Windows. Když se přihlásíte, kontejner se dynamicky připojí k výpočetnímu prostředí pomocí místně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Tyto rozšířené technologie Filter-Driver umožňují, aby byl profil uživatele hned dostupný a byl zobrazen v systému, stejně jako místní profil uživatele. Další informace o kontejnerech profilů FSLogix najdete v tématu [kontejnery profilů FSLogix a soubory Azure](fslogix-containers-azure-files.md).
 
-You can create FSLogix profile containers using [Azure NetApp Files](https://azure.microsoft.com/services/netapp/), an easy-to-use Azure native platform service that helps customers quickly and reliably provision enterprise-grade SMB volumes for their Windows Virtual Desktop environments. To learn more about Azure NetApp Files, see [What is Azure NetApp Files?](../azure-netapp-files/azure-netapp-files-introduction.md)
+Kontejnery profilů FSLogix můžete vytvářet pomocí [Azure NetApp Files](https://azure.microsoft.com/services/netapp/), snadno použitelné služby Azure Native Platform, která zákazníkům pomáhá rychle a spolehlivě ZŘIZOVAT svazky SMB na podnikové úrovni pro prostředí virtuálních ploch Windows. Další informace o Azure NetApp Files najdete v tématu [co je Azure NetApp Files?](../azure-netapp-files/azure-netapp-files-introduction.md)
 
-This guide will show you how to set up an Azure NetApp Files account and create FSLogix profile containers in Windows Virtual Desktop.
+V této příručce se dozvíte, jak nastavit účet Azure NetApp Files a vytvořit kontejnery profilů FSLogix ve virtuálním počítači s Windows.
 
-This article assumes you already have [host pools](create-host-pools-azure-marketplace.md) set up and grouped into one or more tenants in your Windows Virtual Desktop environment. To learn how to set up tenants, see [Create a tenant in Windows Virtual Desktop](tenant-setup-azure-active-directory.md) and [our Tech Community blog post](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
+V tomto článku se předpokládá, že už máte [fondy hostitelů](create-host-pools-azure-marketplace.md) nastavené a seskupené do jednoho nebo víc tenantů v prostředí virtuálních počítačů s Windows. Informace o tom, jak nastavit klienty, najdete v tématu [Vytvoření tenanta v rámci virtuálního počítače s Windows](tenant-setup-azure-active-directory.md) a [našeho příspěvku na blogu pro technickou komunitu](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
-The instructions in this guide are specifically for Windows Virtual Desktop users. If you're looking for more general guidance for how to set up Azure NetApp Files and create FSLogix profile containers outside of Windows Virtual Desktop, see the [Set up Azure NetApp Files and create an NFS volume quickstart](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md).
-
->[!NOTE]
->This article doesn't cover best practices for securing access to the Azure NetApp Files share.
+Pokyny v této příručce jsou určené konkrétně pro uživatele s virtuálními počítači s Windows. Pokud hledáte obecnější informace o tom, jak nastavit Azure NetApp Files a vytvořit kontejnery profilů FSLogix mimo virtuální počítač s Windows, přečtěte si téma [nastavení Azure NetApp Files a vytvoření svazku NFS v rychlém](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)startu.
 
 >[!NOTE]
->If you're looking for comparison material about the different FSLogix Profile Container storage options on Azure, see [Storage options for FSLogix profile containers](store-fslogix-profile.md).
+>Tento článek se nezabývá osvědčenými postupy pro zabezpečení přístupu ke sdílené Azure NetApp Files.
 
-## <a name="prerequisites"></a>Předpoklady
+>[!NOTE]
+>Pokud hledáte srovnávací materiál o různých možnostech úložiště kontejneru FSLogix v Azure, přečtěte si téma [Možnosti úložiště pro kontejnery profilů FSLogix](store-fslogix-profile.md).
 
-Before you can create an FSLogix profile container for a host pool, you must:
+## <a name="prerequisites"></a>Požadavky
 
-- Set up and configure Windows Virtual Desktop
-- Provision a Windows Virtual Desktop host pool
-- [Enable your Azure NetApp Files subscription](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
+Než budete moct vytvořit kontejner profilu FSLogix pro fond hostitelů, musíte:
 
-## <a name="set-up-your-azure-netapp-files-account"></a>Set up your Azure NetApp Files account
+- Nastavení a konfigurace virtuálního počítače s Windows
+- Zřízení fondu hostitelů virtuálních počítačů s Windows
+- [Povolení předplatného Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
 
-To get started, you need to set up an Azure NetApp Files account.
+## <a name="set-up-your-azure-netapp-files-account"></a>Nastavení účtu Azure NetApp Files
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Make sure your account has contributor or administrator permissions.
+Abyste mohli začít, musíte nastavit účet Azure NetApp Files.
 
-2. Select the **Azure Cloud Shell icon** to the right of the search bar to open Azure Cloud Shell.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). Ujistěte se, že váš účet má oprávnění přispěvatele nebo správce.
 
-3. Once Azure Cloud Shell is open, select **PowerShell**.
+2. Vyberte **ikonu Azure Cloud Shell** napravo od panelu hledání a otevřete Azure Cloud Shell.
 
-4. If this is your first time using Azure Cloud Shell, create a storage account in the same subscription you keep your Azure NetApp Files and Windows Virtual Desktop.
+3. Po otevření Azure Cloud Shell vyberte **PowerShell**.
 
-   ![The storage account window with the create storage button at the bottom of the window highlighted in red.](media/create-storage-button.png)
+4. Pokud Azure Cloud Shell používáte poprvé, vytvořte účet úložiště ve stejném předplatném, ve kterém zachováte Azure NetApp Files a virtuální plochu Windows.
 
-5. Once Azure Cloud Shell loads, run the following two cmdlets.
+   ![Okno účtu úložiště s tlačítkem vytvořit úložiště v dolní části okna zvýrazněné červeně.](media/create-storage-button.png)
+
+5. Jakmile Azure Cloud Shell načte, spusťte následující dvě rutiny.
 
    ```powershell
    az account set --subscription <subscriptionID>
@@ -64,132 +64,132 @@ To get started, you need to set up an Azure NetApp Files account.
    az provider register --namespace Microsoft.NetApp --wait
    ```
 
-6. In the left side of the window, select **All services**. Enter **Azure NetApp Files** into the search box that appears at the top of the menu.
+6. V levé části okna vyberte **všechny služby**. Do vyhledávacího pole, které se zobrazí v horní části nabídky, zadejte **Azure NetApp Files** .
 
-   ![A screenshot of a user entering "Azure NetApp Files" into the All services search box. The search results show the Azure NetApp Files resource.](media/azure-netapp-files-search-box.png)
+   ![Snímek obrazovky uživatele, který zadává slovo "Azure NetApp Files" do vyhledávacího pole všechny služby. Ve výsledcích hledání se zobrazuje prostředek Azure NetApp Files.](media/azure-netapp-files-search-box.png)
 
 
-7. Select **Azure NetApp Files** in the search results, then select **Create**.
+7. Ve výsledcích hledání vyberte **Azure NetApp Files** a pak vyberte **vytvořit**.
 
-8. Select the **Add** button.
-9. When the **New NetApp account** blade opens, enter the following values:
+8. Vyberte tlačítko **Přidat** .
+9. Jakmile se otevře okno **nový účet NetApp** , zadejte následující hodnoty:
 
-    - For **Name**, enter your NetApp account name.
-    - For **Subscription**, select the subscription for the storage account you set up in step 4 from the drop-down menu.
-    - For **Resource group**, either select an existing resource group from the drop-down menu or create a new one by selecting **Create new**.
-    - For **Location**, select the region for your NetApp account from the drop-down menu. This region must be the same region as your session host VMs.
+    - Jako **název**zadejte název účtu NetApp.
+    - V poli **předplatné**vyberte předplatné pro účet úložiště, které jste nastavili v kroku 4 z rozevírací nabídky.
+    - V poli **Skupina prostředků**vyberte z rozevírací nabídky existující skupinu prostředků nebo vytvořte novou výběrem možnosti **vytvořit nový**.
+    - V poli **umístění**vyberte oblast účtu NetApp z rozevírací nabídky. Tato oblast musí být stejná jako vaše virtuální počítače hostitele relace.
 
    >[!NOTE]
-   >Azure NetApp Files currently doesn't support mounting of a volume across regions.
+   >Azure NetApp Files aktuálně nepodporuje připojení svazku mezi oblasti.
 
-10. When you're finished, select **Create** to create your NetApp account.
+10. Až budete hotovi, vyberte **vytvořit** a vytvořte účet NetApp.
 
-## <a name="create-a-capacity-pool"></a>Create a capacity pool
+## <a name="create-a-capacity-pool"></a>Vytvoření fondu kapacity
 
-Next, create a new capacity pool: 
+Pak vytvořte nový fond kapacity: 
 
-1. Go to the Azure NetApp Files menu and select your new account.
-2. In your account menu, select **Capacity pools** under Storage service.
-3. Select **Add pool**.
-4. When the **New capacity pool** blade opens, enter the following values:
+1. Přejděte do nabídky Azure NetApp Files a vyberte svůj nový účet.
+2. V nabídce účtu v části služba úložiště vyberte **fondy kapacit** .
+3. Vyberte **Přidat fond**.
+4. Až se otevře okno **Nový fond kapacit** , zadejte následující hodnoty:
 
-    - For **Name**, enter a name for the new capacity pool.
-    - For **Service level**, select your desired value from the drop-down menu. We recommend **Premium** for most environments.
+    - Do pole **název**zadejte název nového fondu kapacity.
+    - V rozevírací nabídce vyberte požadovanou hodnotu pro **úroveň služby**. Pro většinu prostředí doporučujeme **Premium** .
        >[!NOTE]
-       >The Premium setting provides the minimum throughput available for a Premium Service level, which is 256 MBps. You may need to adjust this throughput for a production environment. Final throughput is based on the relationship described in [Throughput limits](../azure-netapp-files/azure-netapp-files-service-levels.md).
-    - For **Size (TiB)** , enter the capacity pool size that best fits your needs. The minimum size is 4 TiB.
+       >Nastavení Premium poskytuje minimální propustnost dostupnou pro úroveň Premium Service, která je 256 MB/s. Možná budete muset upravit tuto propustnost pro produkční prostředí. Konečná propustnost vychází z vztahu popsaného v části [omezení propustnosti](../azure-netapp-files/azure-netapp-files-service-levels.md).
+    - V poli **Velikost (TIB)** zadejte velikost fondu kapacit, který nejlépe vyhovuje vašim potřebám. Minimální velikost je 4 TiB.
 
-5. When you're finished, select **OK**.
+5. Až budete hotovi, vyberte **OK**.
 
-## <a name="join-an-active-directory-connection"></a>Join an Active Directory connection
+## <a name="join-an-active-directory-connection"></a>Připojení ke službě Active Directory
 
-After that, you need to join an Active Directory connection.
+Potom musíte připojit připojení ke službě Active Directory.
 
-1. Select **Active Directory connections** in the menu on the left side of the page, then select the **Join** button to open the **Join Active Directory** page.
+1. V nabídce na levé straně stránky vyberte **připojení služby Active Directory** a pak vyberte tlačítko **připojit** a otevřete stránku připojit se ke **službě Active Directory** .
 
-   ![A screenshot of the Join Active Directory connections menu.](media/active-directory-connections-menu.png)
+   ![Snímek obrazovky s nabídkou připojení ke službě Active Directory](media/active-directory-connections-menu.png)
 
-2. Enter the following values in the **Join Active Directory** page to join a connection:
+2. Zadejte následující hodnoty na stránce připojit se ke **službě Active Directory** , abyste se připojili k připojení:
 
-    - For **Primary DNS**, enter the IP address of the DNS server in your environment that can resolve the domain name.
-    - For **Domain**, enter your fully qualified domain name (FQDN).
-    - For **SMB Server (Computer Account) Prefix**, enter the string you want to append to the computer account name.
-    - For **Username**, enter the name of the account with permissions to perform domain join.
-    - For **Password**, enter the account's password.
+    - V případě **primárního serveru DNS**zadejte IP adresu serveru DNS ve vašem prostředí, která může přeložit název domény.
+    - V případě **domény**zadejte plně kvalifikovaný název domény (FQDN).
+    - V poli **předpona serveru SMB (účet počítače)** zadejte řetězec, který chcete připojit k názvu účtu počítače.
+    - Jako **uživatelské jméno**zadejte název účtu s oprávněním k provedení připojení k doméně.
+    - Jako **heslo**zadejte heslo účtu.
 
   >[!NOTE]
-  >It's best practice to confirm that the computer account you created in [Join an Active Directory connection](create-fslogix-profile-container.md#join-an-active-directory-connection) has appeared in your domain controller under **Computers** or **your enterprise's relevant OU**.
+  >Osvědčeným postupem je ověřit, že účet počítače, který jste vytvořili v části [připojení ke službě Active Directory](create-fslogix-profile-container.md#join-an-active-directory-connection) , se objevil v řadiči domény v části **počítače** nebo **příslušná organizační jednotka vaší organizace**.
 
-## <a name="create-a-new-volume"></a>Create a new volume
+## <a name="create-a-new-volume"></a>Vytvořit nový svazek
 
-Next, you'll need to create a new volume.
+V dalším kroku budete muset vytvořit nový svazek.
 
-1. Select **Volumes**, then select **Add volume**.
+1. Vyberte **svazky**a pak vyberte **Přidat svazek**.
 
-2. When the **Create a volume** blade opens, enter the following values:
+2. Když se otevře okno **vytvořit svazek** , zadejte následující hodnoty:
 
-    - For **Volume name**, enter a name for the new volume.
-    - For **Capacity pool**, select the capacity pool you just created from the drop-down menu.
-    - For **Quota (GiB)** , enter the volume size appropriate for your environment.
-    - For **Virtual network**, select an existing virtual network that has connectivity to the domain controller from the drop-down menu.
-    - Under **Subnet**, select **Create new**. Keep in mind that this subnet will be delegated to Azure NetApp Files.
+    - Jako **název svazku**zadejte název nového svazku.
+    - V poli **fond kapacit**vyberte fond kapacit, který jste právě vytvořili, z rozevírací nabídky.
+    - Pro **kvótu (GIB)** zadejte velikost svazku, která je vhodná pro vaše prostředí.
+    - V případě **virtuální sítě**vyberte existující virtuální síť, která má připojení k řadiči domény z rozevírací nabídky.
+    - V části **podsíť**vyberte **vytvořit novou**. Pamatujte, že tato podsíť bude delegována na Azure NetApp Files.
 
-3.  Select **Next: Protocol \>\>** to open the Protocol tab and configure your volume access parameters.
+3.  Kliknutím na tlačítko **Další: protokol \>\>** otevřete kartu protokol a nakonfigurujte parametry přístupu ke svazku.
 
-## <a name="configure-volume-access-parameters"></a>Configure volume access parameters
+## <a name="configure-volume-access-parameters"></a>Konfigurace parametrů přístupu ke svazkům
 
-After you create the volume, configure the volume access parameters.
+Po vytvoření svazku nakonfigurujte parametry přístupu ke svazku.
 
-1.  Select **SMB** as the protocol type.
-2.  Under Configuration in the **Active Directory** drop-down menu, select the same directory that you originally connected in [Join an Active Directory connection](create-fslogix-profile-container.md#join-an-active-directory-connection). Keep in mind that there's a limit of one Active Directory per subscription.
-3.  In the **Share name** text box, enter the name of the share used by the session host pool and its users.
+1.  Jako typ protokolu vyberte **SMB** .
+2.  V rozevírací nabídce konfigurace v **Active Directory** vyberte stejný adresář, ke kterému jste se připojili, a připojte se k [připojení Active Directory](create-fslogix-profile-container.md#join-an-active-directory-connection). Mějte na paměti, že u každého předplatného je omezení jedné služby Active Directory.
+3.  Do textového pole **název sdílené složky** zadejte název sdílené složky používané fondem hostitelů relací a jeho uživateli.
 
-4.  Select **Review + create** at the bottom of the page. This opens the validation page. After your volume is validated successfully, select **Create**.
+4.  V dolní části stránky vyberte **zkontrolovat + vytvořit** . Tím se otevře stránka ověřování. Po úspěšném ověření svazku vyberte **vytvořit**.
 
-5.  At this point, the new volume will start to deploy. Once deployment is complete, you can use the Azure NetApp Files share.
+5.  V tuto chvíli se nový svazek začne nasazovat. Po dokončení nasazení můžete použít sdílenou složku Azure NetApp Files.
 
-6.  To see the mount path, select **Go to resource** and look for it in the Overview tab.
+6.  Pokud chcete zobrazit cestu pro připojení, vyberte **Přejít k prostředku** a podívejte se na kartu Přehled.
 
-    ![A screenshot of the Overview screen with a red arrow pointing at the mount path.](media/overview-mount-path.png)
+    ![Snímek obrazovky s přehledem s červenou šipkou ukazující na cestu pro připojení](media/overview-mount-path.png)
 
-## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>Configure FSLogix on session host virtual machines (VMs)
+## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>Konfigurace FSLogix na virtuálních počítačích hostitele relace
 
-This section is based on [Create a profile container for a host pool using a file share](create-host-pools-user-profile.md).
+Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md).
 
-1. [Download the FSLogix agent .zip file](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409) while you're still remoted in the session host VM.
+1. [Stáhněte si soubor. zip s agentem FSLogix](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409) a pořád jste ve VZDÁLENÉm virtuálním počítači hostitele relace.
 
-2. Unzip the downloaded file.
+2. Extrahování staženého souboru.
 
-3. In the file, go to **x64** > **Releases** and run **FSLogixAppsSetup.exe**. The installation menu will open.
+3. V souboru, přejdete na **x64** > **releases** a spusťte **FSLogixAppsSetup. exe**. Otevře se nabídka instalace.
 
-4.  If you have a product key, enter it in the Product Key text box.
+4.  Pokud máte kód Product Key, zadejte ho do textového pole kód Product Key.
 
-5. Select the check box next to **I agree to the license terms and conditions**.
+5. Zaškrtněte políčko vedle Souhlasím **s licenčními podmínkami a ujednáními**.
 
 6. Vyberte **Install** (Nainstalovat).
 
-7. Navigate to **C:\\Program Files\\FSLogix\\Apps** to confirm the agent installed.
+7. Přejděte na **C:\\Program Files\\FSLogix\\aplikace** a potvrďte, že je agent nainstalovaný.
 
-8. From the Start menu, run **RegEdit** as administrator.
+8. V nabídce Start spusťte program **Regedit** jako správce.
 
-9. Navigate to **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
+9. Přejděte na **počítač\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
 
-10. Create a key named **Profiles**.
+10. Vytvořte klíč s názvem **Profiles**.
 
-11.  Create a value named **Enabled** with a **REG_DWORD** type set to a data value of **1**.
+11.  Vytvořte hodnotu s názvem **Enabled** s typem **REG_DWORD** nastavenou na hodnotu dat **1**.
 
-12. Create a value named **VHDLocations** with a **Multi-String** type and set its data value to the URI for the Azure NetApp Files share.
+12. Vytvořte hodnotu s názvem **VHDLocations** s typem s **více řetězci** a nastavte její datovou hodnotu na URI pro sdílenou složku Azure NetApp Files.
 
-13. Create a value named **DeleteLocalProfileWhenVHDShouldApply** with a DWORD value of 1 to avoid problems with existing local profiles before you sign in.
+13. Vytvořte hodnotu s názvem **DeleteLocalProfileWhenVHDShouldApply** s hodnotou DWORD 1, abyste zabránili problémům se stávajícími místními profily před přihlášením.
 
      >[!WARNING]
-     >Be careful when creating the DeleteLocalProfileWhenVHDShouldApply value. When the FSLogix Profiles system determines a user should have an FSLogix profile, but a local profile already exists, Profile Container will permanently delete the local profile. The user will then be signed in with the new FSLogix profile.
+     >Při vytváření hodnoty DeleteLocalProfileWhenVHDShouldApply buďte opatrní. Když systém profilů FSLogix určuje, že uživatel musí mít profil FSLogix, ale místní profil už existuje, kontejner profilu trvale odstraní místní profil. Uživatel pak bude přihlášený pomocí nového profilu FSLogix.
 
-## <a name="assign-users-to-session-host"></a>Assign users to session host
+## <a name="assign-users-to-session-host"></a>Přiřazení uživatelů k hostiteli relace
 
-1. Open **PowerShell ISE** as administrator and sign in to Windows Virtual Desktop.
+1. Otevřete **POWERSHELL ISE** jako správce a přihlaste se k virtuálnímu počítači s Windows.
 
-2. Run the following cmdlets:
+2. Spusťte následující rutiny:
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell
@@ -198,9 +198,9 @@ This section is based on [Create a profile container for a host pool using a fil
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-3. When prompted for credentials, enter the credentials for the user with the Tenant Creator or RDS Owner/RDS Contributor roles on the Windows Virtual Desktop tenant.
+3. Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte přihlašovací údaje pro uživatele s rolemi tvůrce tenanta nebo RDS Owner/RDS na tenantovi virtuálních klientů Windows.
 
-4. Run the following cmdlets to assign a user to a Remote Desktop group:
+4. Spuštěním následujících rutin přiřaďte uživatele ke skupině vzdálené plochy:
 
    ```powershell
    $wvdTenant = "<your-wvd-tenant>"
@@ -210,26 +210,26 @@ This section is based on [Create a profile container for a host pool using a fil
    Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
-## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Make sure users can access the Azure NetApp File share
+## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Ujistěte se, že uživatelé mají přístup ke sdílené složce Azure NetApp.
 
-1. Open your internet browser and go to <https://rdweb.wvd.microsoft.com/webclient/index.html>.
+1. Otevřete internetový prohlížeč a přejít na <https://rdweb.wvd.microsoft.com/webclient/index.html>.
 
-2. Sign in with the credentials of a user assigned to the Remote Desktop group.
+2. Přihlaste se pomocí přihlašovacích údajů uživatele přiřazeného ke skupině Vzdálená plocha.
 
-3. Once you've established the user session, sign in to the Azure portal with an administrative account.
+3. Po navázání uživatelské relace se přihlaste k Azure Portal pomocí účtu správce.
 
-4. Open **Azure NetApp Files**, select your Azure NetApp Files account, and then select **Volumes**. Once the Volumes menu opens, select the corresponding volume.
+4. Otevřete **Azure NetApp Files**, vyberte svůj účet Azure NetApp Files a pak vyberte **svazky**. Po otevření nabídky svazky vyberte odpovídající svazek.
 
-   ![A screenshot of the NetApp account you set up earlier in the Azure portal with the Volumes button selected.](media/netapp-account.png)
+   ![Snímek obrazovky s NetApp účtem, který jste nastavili dříve v Azure Portal s vybraným tlačítkem svazky.](media/netapp-account.png)
 
-5. Go to the **Overview** tab and confirm that the FSLogix profile container is using space.
+5. Přejít na kartu **Přehled** a ověřte, že kontejner profilu FSLogix používá místo.
 
-6. Connect directly to any VM part of the host pool using Remote Desktop and open the **File Explorer.** Then navigate to the **Mount path** (in the following example, the mount path is \\\\anf-SMB-3863.gt1107.onmicrosoft.com\\anf-VOL).
+6. Připojte se přímo k libovolné části virtuálního počítače fondu hostitele pomocí vzdálené plochy a otevřete **Průzkumníka souborů.** Pak přejděte do **cesty pro připojení** (v následujícím příkladu se cesta pro připojení \\\\ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF-VOL).
 
-   Within this folder, there should be a profile VHD (or VHDX) like the one in the following example.
+   V rámci této složky by měl existovat profil VHD (nebo VHDX), jako je ten v následujícím příkladu.
 
-   ![A screenshot of the contents of the folder in the mount path. Inside is a single VHD file named "Profile_ssbb."](media/mount-path-folder.png)
+   ![Snímek obrazovky obsahu složky v cestě pro připojení Uvnitř je jeden soubor VHD s názvem "Profile_ssbb".](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-You can use FSLogix profile containers to set up a user profile share. To learn how to create user profile shares with your new containers, see [Create a profile container for a host pool using a file share](create-host-pools-user-profile.md).
+Kontejnery profilů FSLogix můžete použít k nastavení sdílené složky profilu uživatele. Informace o tom, jak vytvořit sdílené složky profilů uživatelů pomocí nových kontejnerů, najdete v tématu [vytvoření kontejneru profilů pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md).

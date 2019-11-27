@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection notifications
-description: Learn how notifications support your investigation activities.
+title: Oznámení Azure Active Directory Identity Protection
+description: Přečtěte si, jak oznámení podporují vaše aktivity šetření.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -18,53 +18,53 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382159"
 ---
-# <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection notifications
+# <a name="azure-active-directory-identity-protection-notifications"></a>Oznámení Azure Active Directory Identity Protection
 
-Azure AD Identity Protection sends two types of automated notification emails to help you manage user risk and risk detections:
+Azure AD Identity Protection posílá dva typy automatických e-mailů s oznámením, které vám pomůžou se správou rizik uživatelů a detekcí rizik:
 
-- Users at risk detected email
-- Weekly digest email
+- E-mail zjištěných uživatelů v nebezpečí
+- Týdenní e-mail pro výtah
 
-This article provides you with an overview of both notification emails.
+Tento článek poskytuje přehled e-mailů s oznámením.
 
-## <a name="users-at-risk-detected-email"></a>Users at risk detected email
+## <a name="users-at-risk-detected-email"></a>E-mail zjištěných uživatelů v nebezpečí
 
-In response to a detected account at risk, Azure AD Identity Protection generates an email alert with **Users at risk detected** as subject. The email includes a link to the **[Users flagged for risk](../reports-monitoring/concept-user-at-risk.md)** report. As a best practice, you should immediately investigate the users at risk.
+V reakci na zjištěný účet hrozí Azure AD Identity Protection vygenerovat e-mailové upozornění s **uživateli s rizikem zjištěným** jako předmětem. E-mail obsahuje odkaz na sestavu **[Uživatelé označení příznakem rizika](../reports-monitoring/concept-user-at-risk.md)** . Osvědčeným postupem je okamžitě prozkoumat riziko pro uživatele.
 
-The configuration for this alert allows you to specify at what user risk level you want the alert to be generated. The email will be generated when the user's risk level reaches what you have specified; however, you will not receive new users at risk detected email alerts for this user after they move to this user risk level. For example, if you set the policy to alert on medium user risk and your user John moves to medium risk, you will receive the users at risk detected email for John. However, you will not receive a second user at risk detected alert if John then moves to high risk or has additional risk detections.
+Konfigurace pro tuto výstrahu vám umožní určit, na jakou úroveň rizika uživatele má být výstraha vygenerována. E-mail se vygeneruje, když úroveň rizika uživatele dosáhne toho, co jste určili. Po přesunu na tuto úroveň rizika uživatele ale nebudete dostávat noví uživatelé upozorňující na riziko zjištěná e-mailová upozornění pro tohoto uživatele. Pokud jste například nastavili zásady na upozornění pro středně velké uživatelské riziko a uživatel Jan se přesune na střední riziko, obdržíte riziko zjištěného e-mailu pro uživatele Jan. V případě, že se Jan pak přesune na vysoké riziko nebo má další zjišťování rizik, nedostanete upozornění zjištěná druhým uživatelem.
 
-![Users at risk detected email](./media/howto-identity-protection-configure-notifications/01.png)
+![E-mail zjištěných uživatelů v nebezpečí](./media/howto-identity-protection-configure-notifications/01.png)
 
-### <a name="configure-users-at-risk-detected-alerts"></a>Configure users at risk detected alerts
+### <a name="configure-users-at-risk-detected-alerts"></a>Konfigurace výstrah zjištěných uživateli v případě rizik
 
-As an administrator, you can set:
+Jako správce můžete nastavit:
 
-- **The user risk level that triggers the generation of this email** - By default, the risk level is set to “High” risk.
-- **The recipients of this email** - By default, recipients include all Global Admins. Global Admins can also add other Global Admins, Security Admins, Security Readers as recipients.
-   - Optionally you can **Add additional emails to receive alert notifications** this feature is a preview and users defined must have the appropriate permissions to view the linked reports in the Azure portal.
+- **Úroveň rizika uživatele, která aktivuje generování tohoto e-mailu** – ve výchozím nastavení je úroveň rizika nastavena na "vysoké" riziko.
+- **Příjemci tohoto e-mailu** – ve výchozím nastavení mají příjemci všechny globální správce. Globální správci můžou také přidat další globální správce, správce zabezpečení, čtenáře zabezpečení jako příjemce.
+   - Volitelně můžete **Přidat další e-maily pro příjem oznámení o výstrahách** . Tato funkce je verze Preview a uživatelé musí mít příslušná oprávnění k zobrazení propojených sestav v Azure Portal.
 
-Configure the users at risk email in the **Azure portal** under **Azure Active Directory** > **Security** > **Identity Protection** > **Users at risk detected alerts**.
+Nakonfigurujte e-mailová rizika uživatelů v **Azure Portal** v části **Azure Active Directory** > **zabezpečení** > **Identity Protection** > **uživatelé při zjištěných výstrahách**.
 
-## <a name="weekly-digest-email"></a>Weekly digest email
+## <a name="weekly-digest-email"></a>Týdenní e-mail pro výtah
 
-The weekly digest email contains a summary of new risk detections.  
-It includes:
+Týdenní e-mailová zpráva o Digest obsahuje souhrn nových detekcí rizik.  
+Zahrnuje:
 
 - Ohrožení uživatelé
-- Suspicious activities
-- Detected vulnerabilities
-- Links to the related reports in Identity Protection
+- Podezřelé aktivity
+- Zjištěná ohrožení zabezpečení
+- Odkazy na související sestavy v Identity Protection
 
-![Weekly digest email](./media/howto-identity-protection-configure-notifications/400.png)
+![Týdenní e-mail pro výtah](./media/howto-identity-protection-configure-notifications/400.png)
 
-By default, recipients include all Global Admins. Global Admins can also add other Global Admins, Security Admins, Security Readers as recipients.
+Ve výchozím nastavení mají příjemci všechny globální správce. Globální správci můžou také přidat další globální správce, správce zabezpečení, čtenáře zabezpečení jako příjemce.
 
-### <a name="configure-weekly-digest-email"></a>Configure weekly digest email
+### <a name="configure-weekly-digest-email"></a>Konfigurace týdenního e-mailu pro vydigest
 
-As an administrator, you can switch sending a weekly digest email on or off and choose the users assigned to receive the email.
+Jako správce můžete zapnout nebo vypnout odesílání e-mailů na týden Digest a vybrat uživatele, kteří mají přiřazený příjem e-mailů.
 
-Configure the weekly digest email in the **Azure portal** under **Azure Active Directory** > **Security** > **Identity Protection** > **Weekly digest**.
+V **Azure Portal** v části **Azure Active Directory** > **zabezpečení** > **Identity Protection** > **týden Digest**nakonfigurujte e-maily týdně vydigest.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)

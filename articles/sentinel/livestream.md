@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ms.author: cabailey
-ms.openlocfilehash: d1d048507946850192c1c6f8ca9024c6f9ddf8ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515119"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546866"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>K detekci hrozeb použijte lovecké živě ve službě Azure Sentinel.
 
 > [!IMPORTANT]
-> Lovecké živě ve službě Azure Sentinel jsou momentálně ve verzi Public Preview.
+> Lovecké živě ve službě Azure Sentinel jsou momentálně ve verzi Public Preview a postupně se vystavují klientům.
 > Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
@@ -53,7 +53,7 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
 2. Vytvoření relace živě z loveckého dotazu:
     
     1. Na kartě **dotazy** vyhledejte lovecký dotaz, který chcete použít.
-    2. Klikněte pravým tlačítkem na dotaz a vyberte **Přidat do živě**. Například:
+    2. Klikněte pravým tlačítkem na dotaz a vyberte **Přidat do živě**. Příklad:
     
     > [!div class="mx-imgBorder"]
     > ![vytvořit relaci živě z dotazu pro lov na základě ověřovacích dotazů Azure](./media/livestream/livestream-from-query.png)
@@ -63,7 +63,7 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
     1. Vyberte kartu **živě**
     2. Vyberte **Přejít na živě**.
     
-4. V okně **živě** :
+4. V podokně **živě** :
     
     - Pokud jste spustili živě z dotazu, zkontrolujte dotaz a proveďte jakékoli změny, které chcete provést.
     - Pokud jste začali živě od začátku, vytvořte dotaz. 
@@ -83,7 +83,7 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
 
 1. V Azure Portal přejděte na kartu **Sentinel** > **Threat Management** > **lovecké** > **živě** .
 
-2. Vyberte relaci živě, kterou chcete zobrazit nebo upravit. Například:
+2. Vyberte relaci živě, kterou chcete zobrazit nebo upravit. Příklad:
     
     > [!div class="mx-imgBorder"]
     > ![vytvořit relaci živě z dotazu pro lov na základě ověřovacích dotazů Azure](./media/livestream/livestream-tab.png)
@@ -92,11 +92,11 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
 
 ## <a name="receive-notifications-when-new-events-occur"></a>Dostávat oznámení, když dojde k novým událostem
 
-Vzhledem k tomu, že živě oznámení o nových událostech používají Azure Portal oznámení, uvidíte tato oznámení vždy, když použijete Azure Portal. Například:
+Vzhledem k tomu, že živě oznámení o nových událostech používají Azure Portal oznámení, uvidíte tato oznámení vždy, když použijete Azure Portal. Příklad:
 
 ![Oznámení Azure Portal pro živě](./media/livestream/notification.png)
 
-Vyberte oznámení a otevřete okno **živě** .
+Vyberte oznámení a otevřete podokno **živě** .
  
 ## <a name="elevate-a-livestream-session-to-an-alert"></a>Zvýšení relace živě na výstrahu
 

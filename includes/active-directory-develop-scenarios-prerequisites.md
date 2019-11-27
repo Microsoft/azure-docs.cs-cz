@@ -21,11 +21,11 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482477"
 ---
-Before reading this article, you should be familiar with the following concepts:
+Před čtením tohoto článku byste měli být obeznámeni s následujícími koncepty:
 
-- [Microsoft identity platform overview](../articles/active-directory/develop/v2-overview.md)
+- [Přehled platformy Microsoft identity](../articles/active-directory/develop/v2-overview.md)
 - [Základy ověřování](../articles/active-directory/develop/authentication-scenarios.md)
-- [Audiences](../articles/active-directory/develop/v2-supported-account-types.md)
-- [Application and service principals](../articles/active-directory/develop/app-objects-and-service-principals.md)
-- [Permissions and consent](../articles/active-directory/develop/v2-permissions-and-consent.md)
-- [ID tokens](../articles/active-directory/develop/id-tokens.md) and [access tokens](../articles/active-directory/develop/access-tokens.md)
+- [Publikum](../articles/active-directory/develop/v2-supported-account-types.md)
+- [Aplikační a instanční objekty](../articles/active-directory/develop/app-objects-and-service-principals.md)
+- [Oprávnění a souhlas](../articles/active-directory/develop/v2-permissions-and-consent.md)
+- [Tokeny ID](../articles/active-directory/develop/id-tokens.md) a [přístupové tokeny](../articles/active-directory/develop/access-tokens.md)

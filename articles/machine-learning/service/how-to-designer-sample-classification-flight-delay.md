@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Predict flight delay example'
+title: 'Návrhář: příklad zpoždění letu'
 titleSuffix: Azure Machine Learning
-description: Build a classifier and use custom R code to predict flight delays with Azure Machine Learning designer.
+description: Sestavte klasifikátor a pomocí vlastního kódu R předpovídat zpoždění letů pomocí návrháře Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,112 +17,112 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213975"
 ---
-# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Build a classifier & use R to predict flight delays with Azure Machine Learning designer
+# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Sestavování klasifikátoru & použití R k předpovědi zpoždění letu pomocí návrháře Azure Machine Learning
 
-**Designer (preview) sample 6**
+**Návrhář (Preview) – ukázka 6**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-This pipeline uses historical flight and weather data to predict if a scheduled passenger flight will be delayed by more than 15 minutes. This problem can be approached as a classification problem, predicting two classes: delayed, or on time.
+Tento kanál používá historické údaje o letu a počasí k předběžnému předběžnému zpoždění, pokud se naplánovaný osobní let zpozdí o více než 15 minut. K tomuto problému může dojít jako problém klasifikace, předpověď dvou tříd: opožděné nebo včas.
 
-Here's the final pipeline graph for this sample:
+Toto je konečný Graf kanálu pro tuto ukázku:
 
-[![Graph of the pipeline](media/how-to-designer-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graf kanálu](media/how-to-designer-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Click sample 6 to open it.
+4. Kliknutím na Ukázka 6 otevřete.
 
 ## <a name="get-the-data"></a>Získání dat
 
-This sample uses the **Flight Delays Data** dataset. It's part of the TranStats data collection from the U.S. Department of Transportation. The dataset contains flight delay information from April to October 2013. The dataset has been pre-processed as follows:
+Tato ukázka používá datovou sadu **dat o zpoždění letů** . Je součástí shromažďování dat TranStats z ministerstva dopravy USA. Datová sada obsahuje informace o zpoždění letu od dubna do října 2013. Datová sada byla předem zpracována následujícím způsobem:
 
-* Filtered to include the 70 busiest airports in the continental United States.
-* Relabeled canceled flights as delayed by more than 15 mins.
-* Filtered out diverted flights.
-* Selected 14 columns.
+* Filtrováno tak, aby zahrnovalo letiště 70 nejvytíženější do kontinentální USA.
+* Zrušené lety přeoznačené jako zpožděné o více než 15 minut.
+* Vyfiltrováno odcházející lety.
+* Vybráno 14 sloupců.
 
-To supplement the flight data, the **Weather Dataset** is used. The weather data contains hourly, land-based weather observations from NOAA, and represents observations from airport weather stations, covering the same time period as the flights dataset. It has been pre-processed as follows:
+Pro doplnění letových dat se použije **datová sada počasí** . Data o počasí obsahují hodinu a počasí na základě půdy z NOAA a představují pozorování z povětrnostních stanic na letišti, které pokrývají stejné časové období jako datová sada letů. Byl předem zpracován následujícím způsobem:
 
-* Weather station IDs were mapped to corresponding airport IDs.
-* Weather stations not associated with the 70 busiest airports were removed.
-* The Date column was split into separate columns: Year, Month, and Day.
-* Selected 26 columns.
+* ID povětrnostních stanic byly namapovány na odpovídající ID letišť.
+* Některé z povětrnostních stanic, které nejsou spojené s 70 nejvytíženější letiště, se odebraly.
+* Sloupec data byl rozdělen na samostatné sloupce: rok, měsíc a den.
+* Vybráno 26 sloupců.
 
-## <a name="pre-process-the-data"></a>Pre-process the data
+## <a name="pre-process-the-data"></a>Předběžné zpracování dat
 
-A dataset usually requires some pre-processing before it can be analyzed.
+Datová sada obvykle vyžaduje před analýzou některé předběžné zpracování.
 
-![data-process](media/how-to-designer-sample-classification-predict-flight-delay/data-process.png)
+![zpracování dat](media/how-to-designer-sample-classification-predict-flight-delay/data-process.png)
 
-### <a name="flight-data"></a>Flight data
+### <a name="flight-data"></a>Letová data
 
-The columns **Carrier**, **OriginAirportID**, and **DestAirportID** are saved as integers. However, they're  categorical attributes, use the **Edit Metadata** module to convert them to categorical.
+Sloupce **přepravce**, **OriginAirportID**a **DestAirportID** se ukládají jako celá čísla. Jsou však kategorií atributy, a to pomocí modulu **Upravit metadata** a převeďte je na kategorií.
 
 ![edit-metadata](media/how-to-designer-sample-classification-predict-flight-delay/edit-metadata.png)
 
-Then use the **Select Columns** in Dataset module to exclude from the dataset columns that are possible target leakers: **DepDelay**, **DepDel15**, **ArrDelay**, **Canceled**, **Year**. 
+Pak použijte modul **Výběr sloupců** v datové sadě k vyloučení ze sloupců datové sady, které jsou potenciálními nevrácenými cíli: **DepDelay**, **DepDel15**, **ArrDelay**, **Canceled**, **year**. 
 
-To join the flight records with the hourly weather records, use the scheduled departure time as one of the join keys. To do the join, the CSRDepTime column must be rounded down to the nearest hour, which is done by in the **Execute R Script** module. 
+Pokud se chcete připojit ke letovým záznamům pomocí hodinových záznamů počasí, použijte naplánovaný čas odchodu jako jeden z klíčů JOIN. Aby bylo možné spojení provést, musí být sloupec CSRDepTime zaokrouhlený dolů na nejbližší hodinu, kterou provádí v modulu **spuštění skriptu jazyka R** . 
 
-### <a name="weather-data"></a>Weather data
+### <a name="weather-data"></a>Data o počasí
 
-Columns that have a large proportion of missing values are excluded using the **Project Columns** module. These columns include all string-valued columns: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**, and **StationPressure**.
+Sloupce, které mají velký podíl chybějících hodnot, jsou vyloučeny pomocí modulu **projektové sloupce** . Mezi tyto sloupce patří všechny sloupce s hodnotou řetězce: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**a **StationPressure.** .
 
-The **Clean Missing Data** module is then applied to the remaining columns to remove rows with missing data.
+Na zbývajících sloupcích se pak použije modul **Vyčištění chybějících dat** , aby se odstranily řádky s chybějícími daty.
 
-Weather observation times are rounded up to the nearest full hour. Scheduled flight times and the weather observation times are rounded in opposite directions to ensure the model uses only weather before the flight time. 
+Doby pozorování počasí se zaokrouhlují na nejbližší celou hodinu. Plánované lety a doby pozorování počasí jsou v opačném směru zaokrouhleny, aby model používaly pouze počasí před letovým časem. 
 
-Since weather data is reported in local time, time zone differences are accounted for by subtracting the time zone columns from the scheduled departure time and the weather observation time. These operations are done using the **Execute R Script** module.
+Vzhledem k tomu, že údaje o počasí jsou hlášeny v místním čase, účtují se rozdíly v časovém pásmu pro odečtením sloupců časového pásma od naplánovaného času odchodu a doby pozorování počasí. Tyto operace se provádějí pomocí modulu **skriptu pro spuštění R** .
 
-### <a name="joining-datasets"></a>Joining Datasets
+### <a name="joining-datasets"></a>Spojování datových sad
 
-Flight records are joined with weather data at origin of the flight (**OriginAirportID**) using the **Join Data** module.
+Letové záznamy jsou spojeny s daty o počasí v počátku letu (**OriginAirportID**) pomocí modulu **Join data** Module.
 
- ![join flight and weather by origin](media/how-to-designer-sample-classification-predict-flight-delay/join-origin.png)
+ ![spojit lety a počasí podle původu](media/how-to-designer-sample-classification-predict-flight-delay/join-origin.png)
 
 
-Flight records are joined with weather data using the destination of the flight (**DestAirportID**).
+Letové záznamy jsou spojené s daty o počasí, a to s využitím cíle letu (**DestAirportID**).
 
- ![Join flight and weather by destination](media/how-to-designer-sample-classification-predict-flight-delay/join-destination.png)
+ ![Připojení letu a počasí podle cíle](media/how-to-designer-sample-classification-predict-flight-delay/join-destination.png)
 
-### <a name="preparing-training-and-test-samples"></a>Preparing Training and Test Samples
+### <a name="preparing-training-and-test-samples"></a>Příprava ukázek školení a testování
 
-The **Split Data** module splits the data into April through September records for training, and October records for test.
+Modul **rozdělit data** rozdělí data do dne do září záznamů pro školení a pro test na základě záznamů.
 
- ![Split training and test data](media/how-to-designer-sample-classification-predict-flight-delay/split.png)
+ ![Rozdělení dat školení a testování](media/how-to-designer-sample-classification-predict-flight-delay/split.png)
 
-Year, month, and timezone columns are removed from the training dataset using the Select Columns module.
+Sloupce rok, měsíc a časové pásmo jsou z datové sady školení odebrány pomocí modulu vybrat sloupce.
 
-## <a name="define-features"></a>Define features
+## <a name="define-features"></a>Definovat funkce
 
-In machine learning, features are individual measurable properties of something you’re interested in. Finding a strong set of features requires experimentation and domain knowledge. Některé příznaky jsou pro predikci cíle vhodnější než jiné. Also, some features may have a strong correlation with other features, and won't add new information to the model. These features can be removed.
+Ve strojovém učení jsou funkce jednotlivé měřitelné vlastnosti něčeho, co vás zajímá. Nalezení silné sady funkcí vyžaduje experimenty a znalosti v doméně. Některé příznaky jsou pro predikci cíle vhodnější než jiné. Některé funkce také mohou mít silnou korelaci s jinými funkcemi a nebudou do modelu přidávat nové informace. Tyto funkce je možné odebrat.
 
-To build a model, you can use all the features available, or select a subset of the features.
+Chcete-li vytvořit model, můžete použít všechny dostupné funkce nebo vybrat podmnožinu funkcí.
 
-## <a name="choose-and-apply-a-learning-algorithm"></a>Choose and apply a learning algorithm
+## <a name="choose-and-apply-a-learning-algorithm"></a>Volba a použití algoritmu učení
 
-Create a model using the **Two-Class Logistic Regression** module and train it on the training dataset. 
+Vytvořte model pomocí modulu **logistické regrese dvou tříd** a prohlaste ho v datové sadě školení. 
 
-The result of the **Train Model** module is a trained classification model that can be used to score new samples to make predictions. Use the test set to generate scores from the trained models. Then use the **Evaluate Model** module to analyze and compare the quality of the models.
-pipeline After you run the pipeline, you can view the output from the **Score Model** module by clicking the output port and selecting **Visualize**. The output includes the scored labels and the probabilities for the labels.
+Výsledkem modulu **vlakového modelu** je vyškolený model klasifikace, který se dá použít ke stanovení skóre nových vzorků, aby bylo možné předpovědiovat. Pomocí sady testů můžete vygenerovat skóre z vycvičených modelů. Pak pomocí modulu **vyhodnocení modelu** Analyzujte a porovnejte kvalitu modelů.
+kanál po spuštění kanálu můžete zobrazit výstup z modulu **skóre modelu** tak, že kliknete na výstupní port a vyberete **vizualizovat**. Výstup obsahuje popisky s skóre a pravděpodobnosti pro popisky.
 
-Finally, to test the quality of the results, add the **Evaluate Model** module to the pipeline canvas, and connect the left input port to the output of the Score Model module. Run the pipeline and view the output of the **Evaluate Model** module, by clicking the output port and selecting **Visualize**.
+Nakonec můžete testovat kvalitu výsledků, přidat modul **vyhodnocení modelu** na plátno kanálu a propojit levý vstupní port s výstupem modulu určení skóre modelu. Spusťte kanál a zobrazte výstup modulu **vyhodnocení modelu** tak, že kliknete na výstupní port a vyberete **vizualizovat**.
 
-## <a name="evaluate"></a>Vyhodnocení
-The logistic regression model has AUC of 0.631 on the test set.
+## <a name="evaluate"></a>Vyhodnotit
+Model logistické regrese má v sadě testů AUC 0,631.
 
  ![Vyhodnocení](media/how-to-designer-sample-classification-predict-flight-delay/evaluate.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Explore the other samples available for the designer:
+Prozkoumejte další ukázky, které jsou k dispozici pro návrháře:
 
-- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
-- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
-- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)
+- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Ukázka 2 – regrese: porovnání algoritmů pro předpověď cen automobilu](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Ukázka 3 – klasifikace s výběrem funkcí: předpověď příjmů](how-to-designer-sample-classification-predict-income.md)
+- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Ukázka 5 – klasifikace: předpověď změn](how-to-designer-sample-classification-churn.md)
+- [Ukázka 7 – klasifikace textu: Wikipedii SP 500 DataSet](how-to-designer-sample-text-classification.md)

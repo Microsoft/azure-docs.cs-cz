@@ -1,6 +1,6 @@
 ---
-title: Passwordless security key sign-in Windows - Azure Active Directory
-description: Enable passwordless security key sign-in to Azure AD using FIDO2 security keys (preview)
+title: Přihlášení k bezpečnostnímu klíči s nehesly do Windows – Azure Active Directory
+description: Povolení nezabezpečeného přihlášení klíče zabezpečení do Azure AD pomocí klíčů zabezpečení FIDO2 (Preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,145 +18,145 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452949"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Enable passwordless security key sign in to Windows 10 devices (preview)
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Povolit pro zařízení s Windows 10 přihlášení ke klíčům zabezpečení s nezabezpečenými hesly (Preview)
 
-This document focuses on enabling FIDO2 security key based passwordless authentication with Windows 10 devices. At the end of this article, you will be able to sign in to both web-based applications and your Azure AD joined Windows 10 devices with your Azure AD account using a FIDO2 security key.
+Tento dokument se zaměřuje na povolení ověřování bez hesla založeného na klíčích zabezpečení FIDO2 u zařízení s Windows 10. Na konci tohoto článku budete moct přihlašovat webové aplikace i zařízení s Windows 10 připojená k Azure AD k vašemu účtu Azure AD pomocí bezpečnostního klíče FIDO2.
 
 |     |
 | --- |
-| FIDO2 security keys are a public preview feature of Azure Active Directory. For more information about previews, see  [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.|
 |     |
 
 ## <a name="requirements"></a>Požadavky
 
-- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [Combined security information registration preview](concept-registration-mfa-sspr-combined.md)
-- Compatible [FIDO2 security keys](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN requires Windows 10 version 1809 or higher
-- [Azure AD joined devices](../devices/concept-azure-ad-join.md) require Windows 10 version 1809 or higher
-- [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (Optional)
-- Provisioning package (Optional)
+- [Multi-Factor Authentication Azure](howto-mfa-getstarted.md)
+- [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md)
+- Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys)
+- Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší.
+- [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1809 nebo vyšší.
+- [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (volitelné)
+- Zřizovací balíček (volitelné)
 
-### <a name="unsupported-scenarios"></a>Unsupported scenarios
+### <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
-- Windows Server Active Directory Domain Services (AD DS) domain-joined (on-premises only devices) deployment **not supported**.
-- RDP, VDI, and Citrix scenarios are **not supported** using security key.
-- S/MIME is **not supported** using security key.
-- “Run as“ is **not supported** using security key.
-- Log in to a server using security key is **not supported**.
-- If you have not used your security key to sign in to your device while online, you will not be able to use it to sign in or unlock offline.
-- Signing in or unlocking a Windows 10 device with a security key containing multiple Azure AD accounts. This scenario will utilize the last account added to the security key. WebAuthN will allow users to choose the account they wish to use.
+- Nasazení Windows Server Active Directory Domain Services (služba AD DS) připojené k doméně (jenom místní zařízení) **se**nepodporuje.
+- Scénáře RDP, VDI a Citrix nejsou **podporovány** pomocí klíče zabezpečení.
+- S/MIME není **podporována** použití klíče zabezpečení.
+- Příkaz Spustit jako není **podporován** pomocí klíče zabezpečení.
+- Přihlášení k serveru pomocí klíče zabezpečení není **podporováno**.
+- Pokud jste zabezpečovací klíč nepoužívali k přihlášení k zařízení v online režimu, nebudete ho moct použít k přihlášení nebo odemčení offline.
+- Přihlášení nebo odemknutí zařízení s Windows 10 klíčem zabezpečení, který obsahuje několik účtů Azure AD. Tento scénář bude využívat Poslední účet přidaný do klíče zabezpečení. Operace WebAuthN umožní uživatelům zvolit účet, který chtějí použít.
 
-## <a name="prepare-devices-for-preview"></a>Prepare devices for preview
+## <a name="prepare-devices-for-preview"></a>Příprava zařízení pro verzi Preview
 
-Azure AD joined devices that you will be piloting with must be running Windows 10 version 1809 or higher. The best experience is on Windows 10 version 1903 or higher.
+Zařízení připojená k Azure AD, na kterých budete pilotní nasazení, musí používat Windows 10 verze 1809 nebo vyšší. Nejlepší prostředí je ve Windows 10 verze 1903 nebo vyšší.
 
-## <a name="enable-security-keys-for-windows-sign-in"></a>Enable security keys for Windows sign-in
+## <a name="enable-security-keys-for-windows-sign-in"></a>Povolit klíče zabezpečení pro přihlášení k Windows
 
-Organizations may choose to use one or more of the following methods to enable the use of security keys for Windows sign-in based on their organization's requirements.
+Organizace se můžou rozhodnout použít jednu nebo více následujících metod k povolení použití klíčů zabezpečení pro přihlášení Windows na základě požadavků organizace.
 
-- [Enable with Intune](#enable-with-intune)
-   - [Targeted Intune deployment](#targeted-intune-deployment)
-- [Enable with a provisioning package](#enable-with-a-provisioning-package)
+- [Povolit s Intune](#enable-with-intune)
+   - [Cílené nasazení Intune](#targeted-intune-deployment)
+- [Povolit pomocí zřizovacího balíčku](#enable-with-a-provisioning-package)
 
-### <a name="enable-with-intune"></a>Enable with Intune
+### <a name="enable-with-intune"></a>Povolit s Intune
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. Browse to **Microsoft Intune** > **Device enrollment** > **Windows enrollment** > **Windows Hello for Business** > **Properties**.
-1. Under **Settings** set **Use security keys for sign-in** to **Enabled**.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přejděte na **Microsoft Intune** > **registrace zařízení** > **vlastnosti** **registrace** zařízení > **Windows Hello pro firmy** > .
+1. V části **Nastavení** nastavení **použít klíče zabezpečení pro přihlášení** na **povoleno**.
 
-Configuration of security keys for sign-in, is not dependent on configuring Windows Hello for Business.
+Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci Windows Hello pro firmy.
 
-#### <a name="targeted-intune-deployment"></a>Targeted Intune deployment
+#### <a name="targeted-intune-deployment"></a>Cílené nasazení Intune
 
-To target specific device groups to enable the credential provider, use the following custom settings via Intune.
+Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele přihlašovacích údajů, použijte následující vlastní nastavení přes Intune.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. Browse to **Microsoft Intune** > **Device configuration** > **Profiles** > **Create profile**.
-1. Configure the new profile with the following settings
-   1. Name: Security Keys for Windows Sign-In
-   1. Description: Enables FIDO Security Keys to be used during Windows Sign In
-   1. Platform: Windows 10 and later
-   1. Profile type: Custom
-   1. Custom OMA-URI Settings:
-      1. Name: Turn on FIDO Security Keys for Windows Sign-In
-      1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
-      1. Data Type: Integer
-      1. Value: 1
-1. This policy can be assigned to specific users, devices, or groups. More information can be found in the article [Assign user and device profiles in Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přejděte na **Microsoft Intune** > **Konfigurace zařízení** > **profily** > **vytvořit profil**.
+1. Nakonfigurujte nový profil s následujícím nastavením.
+   1. Název: bezpečnostní klíče pro přihlášení k Windows
+   1. Popis: povolí použití klíčů zabezpečení FIDO během přihlašování Windows.
+   1. Platforma: Windows 10 a novější
+   1. Typ profilu: vlastní
+   1. Vlastní nastavení OMA-URI:
+      1. Name (název): zapnout FIDO klíče zabezpečení pro přihlášení k Windows
+      1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
+      1. Datový typ: celé číslo
+      1. Hodnota: 1
+1. Tato zásada se dá přiřadit konkrétním uživatelům, zařízením nebo skupinám. Další informace najdete v článku [přiřazení profilů uživatelů a zařízení v Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
 
-![Intune custom device configuration policy creation](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
+![Vytvoření vlastní zásady konfigurace zařízení v Intune](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
 
-### <a name="enable-with-a-provisioning-package"></a>Enable with a provisioning package
+### <a name="enable-with-a-provisioning-package"></a>Povolit pomocí zřizovacího balíčku
 
-For devices not managed by Intune, a provisioning package can be installed to enable the functionality. The Windows Configuration Designer app can be installed from the [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22).
+Pro zařízení, která nespravuje služba Intune, je možné nainstalovat zřizovací balíček, který tuto funkci povolí. Aplikaci Windows Configuration Designer můžete nainstalovat z [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22).
 
-1. Launch the Windows Configuration Designer.
-1. Select **File** > **New project**.
-1. Give your project a name and take note of the path where your project is created.
-1. Vyberte **Další**.
-1. Leave **Provisioning package** selected as the **Selected project workflow** and select **Next**.
-1. Select **All Windows desktop editions** under **Choose which settings to view and configure** and select **Next**.
+1. Spusťte Windows Configuration Designer.
+1. Vyberte **soubor** > **Nový projekt**.
+1. Dejte svému projektu název a poznamenejte si cestu, kde je projekt vytvořen.
+1. Vyberte **Next** (Další).
+1. Nechejte **zřizovací balíček** vybraný jako **vybraný pracovní postup projektu** a vyberte **Další**.
+1. V části **Zvolte nastavení, které chcete zobrazit a konfigurovat** a vyberte možnost **Další**, vyberte **všechny edice Windows Desktop** .
 1. Vyberte **Finish** (Dokončit).
-1. In your newly created project, browse to **Runtime settings** > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
-1. Set **UseSecurityKeyForSignIn** to **Enabled**.
-1. Select **Export** > **Provisioning package**
-1. Leave the defaults in the **Build** window under **Describe the provisioning package** and select **Next**.
-1. Leave the defaults in the **Build** window under **Select security details for the provisioning package** and select **Next**.
-1. Take note of or change the path in the **Build** windows under **Select where to save the provisioning package** and select **Next**.
-1. Select **Build** on the **Build the provisioning package** page.
-1. Save the two files created (ppkg and cat) to a location where you can apply them to machines later.
-1. Follow the guidance in the article [Apply a provisioning package](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package), to apply the provisioning package you created.
+1. V nově vytvořeném projektu přejděte do **nastavení modulu Runtime** > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
+1. Nastavte **UseSecurityKeyForSignIn** na **povoleno**.
+1. Vyberte **exportovat** > **zřizovací balíček** .
+1. V okně **sestavení** ponechte výchozí nastavení v části **Popis zřizovacího balíčku** a vyberte **Další**.
+1. V okně **sestavení** v části **Vybrat podrobnosti zabezpečení pro zřizovací balíček** ponechte výchozí nastavení a vyberte **Další**.
+1. Poznamenejte si nebo změňte cestu v oknech **sestavení** v části **Vyberte místo, kde se má zřizovací balíček uložit** , a vyberte **Další**.
+1. Na stránce **sestavení balíčku pro zřizování** vyberte **sestavit** .
+1. Uložte dva vytvořené soubory (ppkg a CAT) do umístění, kde je můžete použít na počítače později.
+1. Podle pokynů v článku [použití zřizovacího](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package)balíčku použijte zřizovací balíček, který jste vytvořili.
 
 > [!NOTE]
-> Devices running Windows 10 Version 1809 must also enable shared PC mode (EnableSharedPCMode). Information about enabling this funtionality can be found in the article, [Set up a shared or guest PC with Windows 10](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
+> Zařízení se systémem Windows 10 verze 1809 musí umožňovat také režim sdíleného osobního počítače (EnableSharedPCMode). Informace o povolení tohoto funkci najdete v článku [nastavení sdíleného nebo hostovaného počítače s Windows 10](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
 
-## <a name="sign-in-to-windows-with-a-fido2-security-key"></a>Sign in to Windows with a FIDO2 security key
+## <a name="sign-in-to-windows-with-a-fido2-security-key"></a>Přihlaste se k Windows pomocí bezpečnostního klíče FIDO2.
 
-In the example below a user Bala Sandhu has already provisioned their FIDO2 security key using the steps in the previous article, [Enable passwordless security key sign in](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys). Bala can choose the security key credential provider from the Windows 10 lock screen and insert the security key to sign into Windows.
+V níže uvedeném příkladu už uživatel Bala Sandhu zřídil svůj klíč zabezpečení FIDO2 pomocí postupu v předchozím článku, který [umožňuje přihlásit klíč zabezpečení bez hesla](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys). Bala může zvolit poskytovatele pověření bezpečnostního klíče z zamykací obrazovky Windows 10 a vložit bezpečnostní klíč pro přihlášení do Windows.
 
-![Security key sign in at the Windows 10 lock screen](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-sign-in-lock-screen.png)
+![Přihlášení k bezpečnostnímu klíči na zamykací obrazovce Windows 10](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-sign-in-lock-screen.png)
 
-### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Manage security key biometric, PIN, or reset security key
+### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Správa klíčového bezpečnostního biometriky, PIN kódu nebo resetování klíče zabezpečení
 
-* Windows 10 version 1903 or higher
-   * Users can open **Windows Settings** on their device > **Accounts** > **Security Key**
-   * Users can change their PIN, update biometrics, or reset their security key
+* Windows 10 verze 1903 nebo vyšší
+   * Uživatelé můžou otevřít **nastavení Windows** na svém zařízení > **účty** > **bezpečnostní klíč** .
+   * Uživatelé můžou změnit kód PIN, aktualizovat biometrika nebo obnovit svůj bezpečnostní klíč.
 
-## <a name="troubleshooting-and-feedback"></a>Troubleshooting and feedback
+## <a name="troubleshooting-and-feedback"></a>Řešení potíží a zpětná vazba
 
-If you would like to share feedback or encounter issues while previewing this feature, please share via the Windows Feedback Hub app.
+Pokud chcete sdílet zpětnou vazbu nebo narazit na problémy při prohlížení této funkce, sdílejte ji prosím přes aplikaci Centrum zpětné vazby z Windows.
 
-1. Launch **Feedback Hub** and make sure you're signed in.
-1. Submit feedback under the following categorization:
-   1. Category: Security and Privacy
+1. Spusťte **Centrum zpětné vazby** a ujistěte se, že jste přihlášení.
+1. Odeslat názor v rámci následující kategorizace:
+   1. Kategorie: zabezpečení a ochrana osobních údajů
    1. Subcategory: FIDO
-1. To capture logs, use the option: **Recreate my Problem**
+1. Pro zachycení protokolů použijte možnost: **znovu vytvořit můj problém**
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="does-this-work-in-my-on-premises-environment"></a>Does this work in my on-premises environment?
+### <a name="does-this-work-in-my-on-premises-environment"></a>Funguje to v místním prostředí?
 
-This feature does not work for a pure on-premises Active Directory Domain Services (AD DS) environment.
+Tato funkce nefunguje pro čistě místní prostředí Active Directory Domain Services (služba AD DS).
 
-### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>My organization requires two factor authentication to access resources, what can I do to support this requirement?
+### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>Má moje organizace pro přístup k prostředkům dva faktory ověřování, co můžu udělat pro podporu tohoto požadavku?
 
-Security keys come in a variety of form factors. Please contact the device manufacturer of interest to discuss how their devices can be enabled with a PIN or biometric as a second factor.
+Bezpečnostní klíče přicházejí v nejrůznějších faktorech formy. Obraťte se na výrobce zařízení, aby pomohly pojednávat, jak je možné jejich zařízení povolit pomocí PIN kódu nebo biometriky jako druhý faktor.
 
-### <a name="can-admins-set-up-security-keys"></a>Can admins set up security keys?
+### <a name="can-admins-set-up-security-keys"></a>Můžou správci nastavit klíče zabezpečení?
 
-We are working on this capability for general availability (GA) of this feature.
+Pracujeme na této funkci pro obecnou dostupnost této funkce (GA).
 
-### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Where can I go to find compliant security keys?
+### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Kde můžu přejít k hledání odpovídajících bezpečnostních klíčů?
 
-[FIDO2 security keys](concept-authentication-passwordless.md#fido2-security-keys)
+[FIDO2 klíče zabezpečení](concept-authentication-passwordless.md#fido2-security-keys)
 
-### <a name="what-do-i-do-if-i-lose-my-security-key"></a>What do I do if I lose my security key?
+### <a name="what-do-i-do-if-i-lose-my-security-key"></a>Jak mám postupovat, když ztratím svůj bezpečnostní klíč?
 
-You can remove keys from the Azure portal, by navigating to the security info page and removing the security key.
+Klíče můžete z Azure Portal odebrat tak, že přejdete na stránku bezpečnostní údaje a odeberete klíč zabezpečení.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Learn more about device registration](../devices/overview.md)
+[Další informace o registraci zařízení](../devices/overview.md)
 
-[Learn more about Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Další informace o Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

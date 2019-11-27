@@ -1,6 +1,6 @@
 ---
-title: Scale an instance of Azure SignalR Service
-description: Learn how to scale an Azure SignalR Service instance to add or reduce capacity, through Azure portal or Azure CLI.
+title: Škálování instance služby signalizace Azure
+description: Naučte se škálovat instance služby signalizace Azure za účelem přidání nebo snížení kapacity, prostřednictvím Azure Portal nebo Azure CLI.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
@@ -13,35 +13,35 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74464175"
 ---
-# <a name="how-to-scale-an-azure-signalr-service-instance"></a>How to scale an Azure SignalR Service instance?
-This article shows you how to scale your instance of Azure SignalR Service. There are two scenarios for scaling, scale up and scale out.
+# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Jak škálovat instanci služby signalizace Azure?
+V tomto článku se dozvíte, jak škálovat instanci služby signalizace Azure. Existují dva scénáře pro škálování, horizontální navýšení kapacity a horizontální navýšení kapacity.
 
-* [Scale up](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Get more units, connections, messages, and more. You scale up by changing the pricing tier from Free to Standard.
-* [Scale out](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Increase the number of SignalR units. You can scale out to as many as 100 units.
+* [Horizontální navýšení kapacity](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Získejte další jednotky, připojení, zprávy a další. Škálujte nahoru změnou cenové úrovně od bezplatné na standard.
+* [Horizontální](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)navýšení kapacity: zvyšte počet jednotek signalizace. Můžete škálovat až na až 100 jednotek.
 
-The scale settings take a few minutes to apply. They don't require you to change your code or redeploy your server application.
+Použití nastavení škálování trvá několik minut. Nevyžadují, abyste změnili kód nebo znovu nasadili serverovou aplikaci.
 
-For information about the pricing and capacities of individual SignalR Service, see [Azure SignalR Service Pricing Details](https://azure.microsoft.com/pricing/details/signalr-service/).  
+Informace o cenách a kapacitě jednotlivých služeb signalizace najdete v [podrobnostech o cenách služby Azure Signal Service](https://azure.microsoft.com/pricing/details/signalr-service/).  
 
 > [!NOTE]
-> Changing SignalR Service from **Free** tier to **Standard** tier or vice versa, the public service IP will be changed and it usually takes 3-60 minutes to propagate the change to DNS servers across the entire internet. Your service might be unreachable before DNS gets updated. Generally it’s not recommended to change your pricing tier too often.
+> Změna služby signalizace z úrovně **Free** na úroveň **Standard** nebo naopak dojde ke změně IP adresy veřejné služby a obvykle zabere 3-60 minut na rozšíření změn na servery DNS v celém internetu. Vaše služba může být nedosažitelná, než se aktualizuje služba DNS. Obecně se nedoporučuje měnit cenovou úroveň příliš často.
 
 
-## <a name="scale-on-azure-portal"></a>Scale on Azure portal
+## <a name="scale-on-azure-portal"></a>Škálování podle Azure Portal
 
 1. Otevřete v prohlížeči portál [Azure Portal](https://portal.azure.com).
 
-2. In your SignalR Service page, from the left menu, select **Scale**.
+2. Na stránce služby signalizace v nabídce vlevo vyberte možnost **škálovat**.
    
-3. Choose your pricing tier, and then click **Select**. You need to set the unit count for **Standard** Tier.
+3. Zvolte cenovou úroveň a pak klikněte na **Vybrat**. Je nutné nastavit počet jednotek pro úroveň **Standard** .
    
-    ![Scale on Portal](./media/signalr-howto-scale/signalr-howto-scale.png)
+    ![Škálování na portálu](./media/signalr-howto-scale/signalr-howto-scale.png)
 
-4. Klikněte na **Uložit**.
+4. Klikněte na možnost **Uložit**.
 
-## <a name="scale-using-azure-cli"></a>Scale using Azure CLI
+## <a name="scale-using-azure-cli"></a>Škálování pomocí Azure CLI
 
-This script creates a new SignalR Service resource of **Free** Tier and a new resource group, and scale it up to **Standard** Tier. 
+Tento skript vytvoří nový prostředek služby signálu úrovně **Free** a novou skupinu prostředků a škáluje je až na úroveň **Standard** . 
 
 ```azurecli-interactive
 #!/bin/bash
@@ -77,17 +77,17 @@ Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Tento náze
 
 [!INCLUDE [cli-script-clean-up](../../includes/cli-script-clean-up.md)]
 
-## <a name="compare-pricing-tiers"></a>Compare pricing tiers
+## <a name="compare-pricing-tiers"></a>Porovnat cenové úrovně
 
-For detailed information, such as included messages and connections for each pricing tier, see [SignalR Service Pricing Details](https://azure.microsoft.com/pricing/details/signalr-service/).
+Podrobné informace, jako jsou zahrnuté zprávy a připojení pro jednotlivé cenové úrovně, najdete v tématu [Podrobnosti o cenách služby signaler](https://azure.microsoft.com/pricing/details/signalr-service/).
 
-For a table of service limits, quotas, and constraints in each tier, see [SignalR Service limits](../azure-subscription-service-limits.md#azure-signalr-service-limits).
+Tabulka omezení služby, kvót a omezení v každé úrovni najdete v tématu [omezení služby Signal Service](../azure-subscription-service-limits.md#azure-signalr-service-limits).
 
 ## <a name="next-steps"></a>Další kroky
 
-In this guide, you learned about how to scale single SignalR Service instance.
+V této příručce jste se dozvěděli, jak škálovat instanci služby jednoho signálu.
 
-Multiple endpoints are also supported for scaling, sharding and cross-region scenarios.
+Pro scénáře škálování, horizontálního dělení a mezi oblastmi se podporuje také více koncových bodů.
 
 > [!div class="nextstepaction"]
-> [scale SignalR Service with multiple instances](./signalr-howto-scale-multi-instances.md)
+> [škálování služby signalizace s víc instancemi](./signalr-howto-scale-multi-instances.md)

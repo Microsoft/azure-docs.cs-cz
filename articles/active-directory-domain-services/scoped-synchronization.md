@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 5fe19d3800883782187ae15c0a6fc0cd9709f0e9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 525ea421eb0fa0131fa91078b0619b8463f6fbb0
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842684"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546242"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Konfigurace vymezené synchronizace z Azure AD na Azure Active Directory Domain Services
 
-Pro poskytování ověřovacích služeb Azure Active Directory Domain Services (Azure služba AD DS) synchronizuje uživatele a skupiny z Azure AD. V hybridním prostředí je možné nejdřív synchronizovat uživatele a skupiny z místního prostředí Active Directory Domain Services (služba AD DS) do Azure AD pomocí Azure AD Connect a pak je synchronizovat s Azure služba AD DS. Ve výchozím nastavení se všechny uživatele a skupiny z adresáře Azure AD synchronizují do spravované domény Azure služba AD DS. Pokud máte konkrétní potřeby, můžete místo toho synchronizovat jenom definovanou skupinu uživatelů.
+Pro poskytování ověřovacích služeb Azure Active Directory Domain Services (Azure služba AD DS) synchronizuje uživatele a skupiny z Azure AD. V hybridním prostředí je možné nejdřív synchronizovat uživatele a skupiny z místního prostředí Active Directory Domain Services (služba AD DS) do Azure AD pomocí Azure AD Connect a pak je synchronizovat s Azure služba AD DS.
+
+Ve výchozím nastavení se všechny uživatele a skupiny z adresáře Azure AD synchronizují do spravované domény Azure služba AD DS. Pokud máte konkrétní potřeby, můžete místo toho synchronizovat jenom definovanou skupinu uživatelů.
 
 V tomto článku se dozvíte, jak vytvořit spravovanou doménu služba AD DS Azure, která používá vymezenou synchronizaci, a pak změnit nebo zakázat sadu uživatelů s vymezeným oborem.
 
@@ -38,7 +40,7 @@ Následující tabulka popisuje, jak použít vymezenou synchronizaci:
 
 Pomocí Azure Portal nebo PowerShellu můžete nakonfigurovat vymezená nastavení synchronizace:
 
-| Action | | |
+| Akce | | |
 |--|--|--|
 | Vytvoření spravované domény Azure služba AD DS a konfigurace vymezené synchronizace | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
 | Upravit vymezenou synchronizaci | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
@@ -53,7 +55,7 @@ Pomocí Azure Portal nebo PowerShellu můžete nakonfigurovat vymezená nastaven
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Povolit vymezenou synchronizaci pomocí Azure Portal
 
-1. Postup [Vytvoření a konfigurace instance Azure služba AD DS](tutorial-create-instance.md)najdete v tomto kurzu. Dokončete všechny požadavky a kroky nasazení kromě oboru synchronizace.
+1. Postup [Vytvoření a konfigurace instance Azure služba AD DS](tutorial-create-instance-advanced.md)najdete v tomto kurzu. Dokončete všechny požadavky a kroky nasazení kromě oboru synchronizace.
 1. Zvolte **vymezený** v kroku synchronizace a pak vyberte skupiny Azure AD, které chcete synchronizovat s instancí Azure služba AD DS.
 
 Pro dokončení nasazení může trvat až hodinu, než se spravovaná doména Azure služba AD DS. Na stránce s **přehledem** pro spravovanou doménu Azure služba AD DS se Azure Portal v rámci této fáze nasazení zobrazuje aktuální stav.
@@ -62,13 +64,13 @@ Když Azure Portal ukáže, že se dokončilo zřizování spravované domény A
 
 * Aktualizujte nastavení DNS pro virtuální síť, aby virtuální počítače mohly najít spravovanou doménu pro připojení k doméně nebo ověřování.
     * Pokud chcete nakonfigurovat DNS, vyberte na portálu spravovanou doménu Azure služba AD DS. V okně **Přehled** se zobrazí výzva k automatické konfiguraci těchto nastavení DNS.
-* [Povolte synchronizaci hesel Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) tak, aby se koncoví uživatelé mohli přihlásit ke spravované doméně pomocí svých podnikových přihlašovacích údajů.
+* [Povolte synchronizaci hesel Azure AD Domain Services](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) tak, aby se koncoví uživatelé mohli přihlásit ke spravované doméně pomocí svých podnikových přihlašovacích údajů.
 
 ## <a name="modify-scoped-synchronization-using-the-azure-portal"></a>Úprava rozsahu synchronizace pomocí Azure Portal
 
 Pokud chcete upravit seznam skupin, jejichž uživatelé by se měli synchronizovat do spravované domény Azure služba AD DS, proveďte následující kroky:
 
-1. V Azure Portal vyberte svou instanci Azure služba AD DS, například *contoso.com*.
+1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte svou instanci, například *contoso.com*.
 1. V nabídce na levé straně vyberte **synchronizace** .
 1. Chcete-li přidat skupinu, zvolte možnost **+ Vybrat skupiny** v horní části a pak zvolte skupiny, které chcete přidat.
 1. Chcete-li odebrat skupinu z oboru synchronizace, vyberte ji ze seznamu aktuálně synchronizovaných skupin a zvolte možnost **odebrat skupiny**.
@@ -80,7 +82,7 @@ Změna rozsahu synchronizace způsobí, že doména spravovaná službou Azure s
 
 Pokud chcete zakázat synchronizaci s rozsahem na základě skupin pro spravovanou doménu Azure služba AD DS, proveďte následující kroky:
 
-1. V Azure Portal vyberte svou instanci Azure služba AD DS, například *contoso.com*.
+1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte svou instanci, například *contoso.com*.
 1. V nabídce na levé straně vyberte **synchronizace** .
 1. Nastavte obor synchronizace z **oboru** na **vše**a pak vyberte **Uložit rozsah synchronizace**.
 
@@ -88,7 +90,7 @@ Změna rozsahu synchronizace způsobí, že doména spravovaná službou Azure s
 
 ## <a name="powershell-script-for-scoped-synchronization"></a>PowerShellový skript pro vymezenou synchronizaci
 
-Pokud chcete nakonfigurovat vymezenou synchronizaci pomocí PowerShellu, nejdřív uložte následující skript do souboru s `Select-GroupsToSync.ps1`názvem. Tento skript nakonfiguruje Azure služba AD DS k synchronizaci vybraných skupin z Azure AD. Všechny uživatelské účty, které jsou součástí zadaných skupin, se synchronizují do spravované domény Azure služba AD DS.
+Pokud chcete nakonfigurovat vymezenou synchronizaci pomocí PowerShellu, nejdřív uložte následující skript do souboru s názvem `Select-GroupsToSync.ps1`. Tento skript nakonfiguruje Azure služba AD DS k synchronizaci vybraných skupin z Azure AD. Všechny uživatelské účty, které jsou součástí zadaných skupin, se synchronizují do spravované domény Azure služba AD DS.
 
 Tento skript se používá v dalších krocích v tomto článku.
 
@@ -215,7 +217,9 @@ Když Azure Portal ukáže, že se dokončilo zřizování spravované domény A
 
 * Aktualizujte nastavení DNS pro virtuální síť, aby virtuální počítače mohly najít spravovanou doménu pro připojení k doméně nebo ověřování.
     * Pokud chcete nakonfigurovat DNS, vyberte na portálu spravovanou doménu Azure služba AD DS. V okně **Přehled** se zobrazí výzva k automatické konfiguraci těchto nastavení DNS.
-* [Povolte synchronizaci hesel Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) tak, aby se koncoví uživatelé mohli přihlásit ke spravované doméně pomocí svých podnikových přihlašovacích údajů.
+* Pokud jste vytvořili spravovanou doménu Azure služba AD DS v oblasti, která podporuje Zóny dostupnosti, vytvořte skupinu zabezpečení sítě, která bude omezovat provoz ve virtuální síti pro spravovanou doménu Azure služba AD DS. Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který vyžaduje, aby se tato pravidla mohla umístit. Tato skupina zabezpečení sítě zabezpečuje službu Azure služba AD DS a je potřeba, aby správně fungovala spravovaná doména.
+    * Pokud chcete vytvořit skupinu zabezpečení sítě a požadovaná pravidla, vyberte na portálu spravovanou doménu Azure služba AD DS. V okně **Přehled** se zobrazí výzva k automatickému vytvoření a konfiguraci skupiny zabezpečení sítě.
+* [Povolte synchronizaci hesel Azure AD Domain Services](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) tak, aby se koncoví uživatelé mohli přihlásit ke spravované doméně pomocí svých podnikových přihlašovacích údajů.
 
 ## <a name="modify-scoped-synchronization-using-powershell"></a>Úprava oboru synchronizace pomocí PowerShellu
 
@@ -247,7 +251,7 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScoped
 
 Změna rozsahu synchronizace způsobí, že doména spravovaná službou Azure služba AD DS znovu synchronizuje všechna data. Objekty, které již nejsou vyžadovány ve spravované doméně služby Azure služba AD DS, jsou odstraněny a dokončení opakované synchronizace může trvat dlouhou dobu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o procesu synchronizace najdete [v tématu pochopení synchronizace v Azure AD Domain Services](synchronization.md).
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: cd0fc90988048f98be46370d2c7836d9506cc44a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6d1c2eff9bc9ffe8a0fb2166d39c16360c0a79cc
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475286"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538923"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Kurz: ověřování uživatelů v nativním klientském počítači pomocí Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte toky uživatelů](tutorial-create-user-flows.md) a povolte ve své aplikaci uživatelské prostředí.
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s pracovními procesy pro vývoj **desktopových** aplikací pro .NET a **ASP.NET a web** .
@@ -43,7 +43,7 @@ Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku.
 
 ## <a name="configure-the-sample"></a>Konfigurace ukázky
 
-V tomto kurzu nakonfigurujete ukázku, kterou si můžete stáhnout z GitHubu. Ukázková desktopová aplikace WPF ukazuje registraci, přihlášení a může volat chráněné webové rozhraní API v Azure AD B2C. [Stáhněte si soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip), [projděte si úložiště](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) nebo naklonujte ukázku z GitHubu.
+V tomto kurzu nakonfigurujete ukázku, kterou si můžete stáhnout z GitHubu. Ukázková desktopová aplikace WPF ukazuje registraci, přihlášení a může volat chráněné webové rozhraní API v Azure AD B2C. [Stáhněte si soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip), [projděte si úložiště](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) nebo naklonujte ukázku z GitHubu.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git
@@ -60,7 +60,7 @@ Chcete-li aktualizovat aplikaci pro práci s vaším klientem Azure AD B2C a vyv
     private static readonly string ClientId = "{application-ID}";
     ```
 
-3. Aktualizujte proměnné názvu zásad pomocí názvů toků uživatelů, které jste vytvořili v rámci požadavků. Například:
+3. Aktualizujte proměnné názvu zásad pomocí názvů toků uživatelů, které jste vytvořili v rámci požadavků. Příklad:
 
     ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";
@@ -74,7 +74,7 @@ Stisknutím klávesy **F5** Sestavte a spusťte ukázku.
 
 ### <a name="sign-up-using-an-email-address"></a>Registrace pomocí e-mailové adresy
 
-1. Vyberte **Přihlásit** se a zaregistrujte se jako uživatel. Používá se tok uživatele **B2C_1_signupsignin1** .
+1. Vyberte **Přihlásit** se a zaregistrujte se jako uživatel. Používá tok uživatele **B2C_1_signupsignin1** .
 2. Azure AD B2C zobrazí přihlašovací stránku s odkazem na **registraci** . Vzhledem k tomu, že ještě nemáte účet, vyberte odkaz **Registrovat nyní** .
 3. Pracovní postup registrace zobrazí stránku pro shromáždění a ověření identity uživatele pomocí e-mailové adresy. Pracovní postup registrace také shromažďuje heslo uživatele a požadované atributy definované v toku uživatele.
 

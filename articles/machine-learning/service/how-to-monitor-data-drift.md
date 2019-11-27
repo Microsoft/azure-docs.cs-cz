@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: e33f8a8090e7840087add0e16252bd2a3e873524
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: acf1df6bb71f4ea8878d8f50f3f42f4ddd831fb5
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276778"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539240"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Detekce posunu dat (Preview) na modelech nasazených do služby Azure Kubernetes Service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,7 +31,7 @@ V kontextu strojového učení je posun dat změnou v modelu vstupní data, kter
 Pomocí Azure Machine Learning můžete sledovat vstupy modelu nasazeného na AKS a porovnávat tato data s datovou sadou školení pro model. Odvozená data jsou v pravidelných intervalech [snímková a](how-to-explore-prepare-data.md)profilovaná a pak se vypočítávají proti základní datové sadě za účelem vytvoření analýzy posunu dat, která: 
 
 + Měří velikost posunu dat, která se označuje jako unášený koeficient.
-+ Měří příspěvek na posun dat podle funkcí a informuje o tom, které funkce způsobily posun dat.
++ Měří příspěvek k posunu dat podle funkcí a označuje, které funkce způsobily posun dat.
 + Měří metriky na dálku. V současné době se vypočítávají Wasserstein a energetická vzdálenost.
 + Měří distribuce funkcí. V současné době se odhad hustoty a histogramy.
 + Posílat výstrahy na posun dat e-mailem
@@ -90,7 +90,7 @@ from azureml.datadrift import DataDriftDetector, AlertConfiguration
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
 
-# create a new DatadriftDetector object
+# create a new DataDriftDetector object
 datadrift = DataDriftDetector.create(ws, model.name, model.version, services, frequency="Day", alert_config=alert_config)
     
 print('Details of Datadrift Object:\n{}'.format(datadrift))
@@ -112,7 +112,7 @@ run = datadrift.run(target_date, services, feature_list=feature_list, compute_ta
 
 # show details of the data drift run
 exp = Experiment(ws, datadrift._id)
-dd_run = Run(experiment=exp, run_id=run)
+dd_run = Run(experiment=exp, run_id=run.id)
 RunDetails(dd_run).show()
 ```
 
@@ -142,7 +142,7 @@ Následující příklad Pythonu ukazuje, jak vykreslovat relevantní metriky pr
 # start and end are datetime objects 
 drift_metrics = datadrift.get_output(start_time=start, end_time=end)
 
-# Show all data drift result figures, one per serivice.
+# Show all data drift result figures, one per service.
 # If setting with_details is False (by default), only the data drift magnitude will be shown; if it's True, all details will be shown.
 drift_figures = datadrift.show(with_details=True)
 ```

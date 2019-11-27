@@ -1,7 +1,7 @@
 ---
-title: 'Join Data: Module Reference'
+title: 'Data spojování: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the join Join Data module in Azure Machine Learning to merge datasets.
+description: Naučte se používat datový modul Join join v Azure Machine Learning ke sloučení datových sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,54 +18,54 @@ ms.locfileid: "74232622"
 ---
 # <a name="join-data"></a>Spojení dat
 
-This article describes how to use the **Join Data** module in Azure Machine Learning designer (preview) to merge two datasets using a database-style join operation.  
+Tento článek popisuje, jak použít modul **Join data** v Návrháři Azure Machine Learning (Preview) ke sloučení dvou datových sad pomocí operace join ve stylu databáze.  
 
-## <a name="how-to-configure-join-data"></a>How to configure Join Data
+## <a name="how-to-configure-join-data"></a>Postup konfigurace připojení k datům
 
-To perform a join on two datasets, they should be related by a key column. Composite keys using multiple columns are also supported. 
+Chcete-li provést spojení se dvěma datovými sadami, měly by se vztahovat na klíčový sloupec. Podporují se také složené klíče využívající více sloupců. 
 
-1. Add the datasets you want to combine, and then drag the **Join Data** module into your pipeline. 
+1. Přidejte datové sady, které chcete zkombinovat, a pak přetáhněte modul **Join data** do kanálu. 
 
-    You can find the module in the **Data Transformation** category, under **Manipulation**.
+    Modul můžete najít v kategorii **transformace dat** v části **manipulace**.
 
-1. Connect the datasets to the **Join Data** module. 
+1. Připojte datové sady k modulu **Join data** . 
  
-1. Select **Launch column selector** to choose key column(s). Remember to choose columns for both the left and right inputs.
+1. Vyberte **Spustit selektor sloupců** a zvolte sloupce klíčů. Nezapomeňte zvolit sloupce pro vstupy vlevo a vpravo.
 
-    For a single key:
+    Pro jeden klíč:
 
-    Select a single key column for both inputs.
+    Vyberte jeden klíčový sloupec pro oba vstupy.
     
-    For a composite key:
+    Pro složený klíč:
 
-    Select all the key columns from left input and right input in the same order. The **Join Data** module will join the tables when all key columns match. Check the option **Allow duplicates and preserve column order in selection** if the column order isn't the same as the original table. 
+    Vyberte všechny klíčové sloupce z levého vstupního a pravého vstupu ve stejném pořadí. Modul **Join data** se spojí s tabulkami, pokud se všechny klíčové sloupce shodují. Pokud pořadí sloupců není stejné jako původní tabulka, **Zachovejte v výběru možnost povolující duplicity a zachovejte pořadí sloupců** . 
 
-    ![column-selector](media/module/join-data-column-selector.png)
+    ![výběr sloupců](media/module/join-data-column-selector.png)
 
 
-1. Select the **Match case** option if you want to preserve case sensitivity on a text column join. 
+1. Vyberte možnost **rozlišovat velká a malá písmena** , pokud chcete zachovat citlivost velkých a malých písmen u spojení s textovým sloupcem. 
    
-1. Use the **Join type** dropdown list to specify how the datasets should be combined.  
+1. Pomocí rozevíracího seznamu **typ spojení** můžete určit, jak se mají datové sady kombinovat.  
   
-    * **Inner Join**: An *inner join* is the most common join operation. It returns the combined rows only when the values of the key columns match.  
+    * **Vnitřní spojení**: nejběžnější operace spojení je *vnitřní spojení* . Vrátí kombinované řádky pouze v případě, že se hodnoty klíčových sloupců shodují.  
   
-    * **Left Outer Join**: A *left outer join* returns joined rows for all rows from the left table. When a row in the left table has no matching rows in the right table, the returned row contains missing values for all columns that come from the right table. You can also specify a replacement value for missing values.  
+    * **Levé vnější spojení**: *levé vnější spojení* vrátí připojené řádky pro všechny řádky z levé tabulky. Pokud řádek v levé tabulce nemá odpovídající řádky v pravé tabulce, vrácený řádek obsahuje chybějící hodnoty pro všechny sloupce, které pocházejí z pravé tabulky. Můžete také zadat náhradní hodnotu pro chybějící hodnoty.  
   
-    * **Full Outer Join**: A *full outer join* returns all rows from the left table (**table1**) and from the right table (**table2**).  
+    * **Úplné vnější spojení**: *úplné vnější spojení* vrátí všechny řádky z levé tabulky (**Tabulka1**) a z pravé tabulky (**Tabulka2**).  
   
-         For each of the rows in either table that have no matching rows in the other, the result includes a row containing missing values.  
+         Pro každý z řádků v obou tabulkách, které nemají odpovídající řádky v druhé, výsledek zahrnuje řádek obsahující chybějící hodnoty.  
   
-    * **Left Semi-Join**: A *left semi-join* returns only the values from the left table when the values of the key columns match.  
+    * **LEFT JOIN**: *levá polovina spojení* vrátí pouze hodnoty z levé tabulky, když se hodnoty klíčových sloupců shodují.  
 
-1. For the option **Keep right key columns in joined table**:
+1. Pro možnost **zachovat pravé klíčové sloupce v připojené tabulce**:
 
-    * Select this option to view the keys from both input tables.
-    * Deselect to only return the key columns from the left input.
+    * Tuto možnost vyberte, pokud chcete zobrazit klíče z obou vstupních tabulek.
+    * Zrušte zaškrtnutí, pokud chcete vrátit pouze klíčové sloupce z levého vstupu.
 
-1. Run the pipeline, or select the Join Data module and selected **Run Selected** to perform the join.
+1. Spusťte kanál, nebo vyberte modul připojení dat a vybrané **spuštění** , aby se spojení provádělo.
 
-1. To view the results, right-click the **Join Data** > **Results dataset** > **Visualize**.
+1. Chcete-li zobrazit výsledky, klikněte pravým tlačítkem myši na **datovou sadu výsledků** **spojení > dat** > **vizualizace**.
 
 ## <a name="next-steps"></a>Další kroky
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

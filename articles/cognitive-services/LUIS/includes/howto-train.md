@@ -21,7 +21,7 @@ ms.locfileid: "74451562"
 
     ![Tlačítko Train (Trénovat)](../media/train-button-preview.png)
 
-2. Training is complete when you see the status confirming success.
+2. Školení se dokončí, když vidíte stav potvrzení úspěšnosti.
 
     > [!Tip]
-    > **Notifications** is available in the top-right navigation and includes a history.
+    > **Oznámení** jsou k dispozici v pravém horním navigačním panelu a obsahují historii.

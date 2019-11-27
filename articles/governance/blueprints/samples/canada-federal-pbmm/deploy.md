@@ -1,119 +1,119 @@
 ---
-title: Canada Federal PBMM blueprint sample - Deploy steps
-description: Deploy steps for the Canada Federal PBMM blueprint sample including blueprint artifact parameter details.
+title: Ukázka ukázky nástroje Canada federální PBMM podrobný plán
+description: Nasaďte kroky pro ukázku federálního PBMM podrobného plánu pro Kanadu, včetně podrobností parametrů artefaktu podrobného plánu.
 ms.date: 09/05/2019
 ms.topic: sample
-ms.openlocfilehash: 3b140e99e2715e90515759a1720c594817c48147
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 087112df7ab18cd71bde80f22b13c9c7800c05e9
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404702"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544584"
 ---
-# <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Deploy the Canada Federal PBMM blueprint samples
+# <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Nasazení ukázek pro Kanadu federální PBMM podrobný plán
 
-To deploy the Canada Federal PBMM blueprint samples, the following steps must be taken:
+Pro nasazení ukázek pro kanadské federální PBMM podrobného plánu musí být podniknuty tyto kroky:
 
 > [!div class="checklist"]
-> - Create a new blueprint from the sample
-> - Mark your copy of the sample as **Published**
-> - Assign your copy of the blueprint to an existing subscription
+> - Vytvořit nový podrobný plán z ukázky
+> - Označení kopie ukázky jako **publikované**
+> - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
-## <a name="create-blueprint-from-sample"></a>Create blueprint from sample
+## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
-First, implement the blueprint sample by creating a new blueprint in your environment using the sample as a starter.
+Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako Starter.
 
-1. Select **All services** and search for and select **Policy** in the left pane. On the **Policy** page, select **Blueprints**.
+1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
 
-1. From the **Getting started** page on the left, select the **Create** button under _Create a blueprint_.
+1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
-1. Find the **Canada Federal PBMM** blueprint sample under _Other Samples_ and select **Use this sample**.
+1. V části _Další ukázky_ vyhledejte ukázku **federální PBMM** podrobného plánu Kanady a vyberte **použít tuto ukázku**.
 
-1. Enter the _Basics_ of the blueprint sample:
+1. Zadejte _základy_ ukázky podrobného plánu:
 
-   - **Blueprint name**: Provide a name for your copy of the blueprint sample.
-   - **Definition location**: Use the ellipsis and select the management group to save your copy of the sample to.
+   - **Název**podrobného plánu: zadejte název vaší kopie ukázky podrobného plánu.
+   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
-1. Select the _Artifacts_ tab at the top of the page or **Next: Artifacts** at the bottom of the page.
+1. Vyberte kartu _artefakty_ v horní části stránky nebo **Další: artefakty** v dolní části stránky.
 
-1. Review the list of artifacts that make up the blueprint sample. Many of the artifacts have parameters that we'll define later. Select **Save Draft** when you've finished reviewing the blueprint sample.
+1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Mnohé z artefaktů mají parametry, které budeme definovat později. Po dokončení kontroly ukázkového plánu vyberte **Uložit koncept** .
 
-## <a name="publish-the-sample-copy"></a>Publish the sample copy
+## <a name="publish-the-sample-copy"></a>Publikovat ukázkovou kopii
 
-Your copy of the blueprint sample has now been created in your environment. It's created in **Draft** mode and must be **Published** before it can be assigned and deployed. The copy of the blueprint sample can be customized to your environment and needs, but that modification may move it away from the standard.
+Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu **konceptu** a musí být **publikována** před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard.
 
-1. Select **All services** and search for and select **Policy** in the left pane. On the **Policy** page, select **Blueprints**.
+1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. Select **Publish blueprint** at the top of the page. In the new page on the right, provide a **Version** for your copy of the blueprint sample. This property is useful for if you make a modification later. Provide **Change notes** such as "First version published from the Canada Federal PBMM blueprint sample." Then select **Publish** at the bottom of the page.
+1. V horní části stránky vyberte **publikovat podrobný plán** . Na stránce Nová na pravé straně zadejte **verzi** pro kopii ukázky podrobného plánu. Tato vlastnost je užitečná, pokud uděláte změnu později. Zadejte **poznámky ke změnám** , jako je například "první verze publikovaná z ukázky pro federální PBMM podrobný plán." Potom v dolní části stránky vyberte **publikovat** .
 
-## <a name="assign-the-sample-copy"></a>Assign the sample copy
+## <a name="assign-the-sample-copy"></a>Přiřadit ukázkovou kopii
 
-Once the copy of the blueprint sample has been successfully **Published**, it can be assigned to a subscription within the management group it was saved to. This step is where parameters are provided to make each deployment of the copy of the blueprint sample unique.
+Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. Select **All services** and search for and select **Policy** in the left pane. On the **Policy** page, select **Blueprints**.
+1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
 
-1. Select the **Blueprint definitions** page on the left. Use the filters to find your copy of the blueprint sample and then select it.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. Select **Assign blueprint** at the top of the blueprint definition page.
+1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
 
-1. Provide the parameter values for the blueprint assignment:
+1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
    - Základy
 
-     - **Subscriptions**: Select one or more of the subscriptions that are in the management group you saved your copy of the blueprint sample to. If you select more than one subscription, an assignment will be created for each using the parameters entered.
-     - **Assignment name**: The name is pre-populated for you based on the name of the blueprint.
-       Change as needed or leave as is.
-     - **Location**: Select a region for the managed identity to be created in. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Blueprint definition version**: Pick a **Published** version of your copy of the blueprint sample.
+     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
+       Změňte podle potřeby nebo ponechte tak, jak je.
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
-   - Lock Assignment
+   - Zamknout přiřazení
 
-     Select the blueprint lock setting for your environment. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
+     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
 
    - Spravovaná identita
 
-     Leave the default _system assigned_ managed identity option.
+     Ponechte výchozí _systém přiřazenou_ možnost spravovaná identita.
 
-   - Artifact parameters
+   - Parametry artefaktu
 
-     The parameters defined in this section apply to the artifact under which it's defined. These parameters are [dynamic parameters](../../concepts/parameters.md#dynamic-parameters) since they're defined during the assignment of the blueprint. For a full list or artifact parameters and their descriptions, see [Artifact parameters table](#artifact-parameters-table).
+     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Úplný seznam nebo parametry artefaktu a jejich popis najdete v tématu [tabulka parametrů artefaktů](#artifact-parameters-table).
 
-1. Once all parameters have been entered, select **Assign** at the bottom of the page. The blueprint assignment is created and artifact deployment begins. Deployment takes roughly an hour. To check on the status of deployment, open the blueprint assignment.
+1. Po zadání všech parametrů vyberte v dolní části stránky **přiřadit** . Vytvoří se přiřazení podrobného plánu a spustí se nasazení artefaktu. Nasazení trvá zhruba hodinu. Chcete-li zjistit stav nasazení, otevřete přiřazení podrobného plánu.
 
 > [!WARNING]
-> The Azure Blueprints service and the built-in blueprint samples are **free of cost**. Azure resources are [priced by product](https://azure.microsoft.com/pricing/). Use the [pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the cost of running resources deployed by this blueprint sample.
+> Služba Azure modrotisky a předdefinované ukázky podrobného plánu jsou **zdarma**. Ceny prostředků Azure se účtují [podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na provozované prostředky nasazené touto ukázkou podrobného plánu.
 
-## <a name="artifact-parameters-table"></a>Artifact parameters table
+## <a name="artifact-parameters-table"></a>Tabulka parametrů artefaktů
 
-The following table provides a list of the blueprint artifact parameters:
+Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-Artifact name|Artifact type|Název parametru|Popis|
+Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|\[Preview\]: Deploy Log Analytics Agent for Linux VMs |Přiřazení zásad |Log Analytics workspace for Linux VMs |For more information, see [Create a Log Analytics workspace in the Azure portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview\]: Deploy Log Analytics Agent for Linux VMs |Přiřazení zásad |Optional: List of VM images that have supported Linux OS to add to scope |An empty array may be used to indicate no optional parameters: `[]` |
-|\[Preview\]: Deploy Log Analytics Agent for Windows VMs |Přiřazení zásad |Optional: List of VM images that have supported Windows OS to add to scope |An empty array may be used to indicate no optional parameters: `[]` |
-|\[Preview\]: Deploy Log Analytics Agent for Windows VMs |Přiřazení zásad |Log Analytics workspace for Windows VMs |For more information, see [Create a Log Analytics workspace in the Azure portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |Přiřazení zásad |Log Analytics workspace ID that VMs should be configured for |This is the ID (GUID) of the Log Analytics workspace that the VMs should be configured for. |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |Přiřazení zásad |List of resource types that should have diagnostic logs enabled |List of resource types to audit if diagnostic log setting isn't enabled. Acceptable values can be found at [Azure Monitor diagnostic logs schemas](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |Přiřazení zásad |Administrators group |Group. Příklad: `Administrator; myUser1; myUser2` |
-|\[Preview\]: Audit Canada Federal PBMM controls and deploy specific VM Extensions to support audit requirements |Přiřazení zásad |List of users that should be included in Windows VM Administrators group |A semicolon-separated list of members that should be included in the Administrators local group. Příklad: `Administrator; myUser1; myUser2` |
-|Deploy Advanced Threat Protection on Storage Accounts |Přiřazení zásad |Efekt |Information about policy effects can be found at [Understand Azure Policy Effects](../../../policy/concepts/effects.md). |
-|Deploy Auditing on SQL servers |Přiřazení zásad |The value in days of the retention period (0 indicates unlimited retention) |Retention days (optional, _180_ days if unspecified) |
-|Deploy Auditing on SQL servers |Přiřazení zásad |Resource group name for storage account for SQL server auditing |Auditing writes database events to an audit log in your Azure Storage account (a storage account is created in each region where a SQL Server is created that is shared by all servers in that region). Important - for proper operation of Auditing don't delete or rename the resource group or the storage accounts. |
-|Deploy diagnostic settings for Network Security Groups |Přiřazení zásad |Storage account prefix for network security group diagnostics |This prefix is combined with the network security group location to form the created storage account name. |
-|Deploy diagnostic settings for Network Security Groups |Přiřazení zásad |Resource group name for storage account for network security group diagnostics (must exist) |The resource group that the storage account is created in. This resource group must already exist. |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Přiřazení zásad |Log Analytics pracovní prostor pro virtuální počítače se systémem Linux |Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru |Prázdné pole se dá použít k označení žádných volitelných parametrů: `[]` |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru |Prázdné pole se dá použít k označení žádných volitelných parametrů: `[]` |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows |Přiřazení zásad |Log Analytics pracovní prostor pro virtuální počítače s Windows |Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Preview\]: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat |Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat. |
+|\[Preview\]: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |Seznam typů prostředků, které by měly mít povolené diagnostické protokoly |Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
+|\[Preview\]: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |Skupina Administrators |Skupiny. Příklad: `Administrator; myUser1; myUser2` |
+|\[Preview\]: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |Seznam uživatelů, které by měly být zahrnuté ve skupině Správci virtuálních počítačů s Windows |Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Příklad: `Administrator; myUser1; myUser2` |
+|Nasazení rozšířené ochrany před internetovými útoky na účty úložiště |Přiřazení zásad |Účinek |Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md). |
+|Nasazení auditování na SQL serverech |Přiřazení zásad |Hodnota v dnech doby uchování (0 označuje neomezené uchovávání) |Počet dnů uchování (volitelné, _180_ dní, pokud není zadaný) |
+|Nasazení auditování na SQL serverech |Přiřazení zásad |Název skupiny prostředků pro účet úložiště pro auditování SQL serveru |Auditování zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který sdílí všechny servery v této oblasti). Důležité: Pokud chcete, aby řádná operace auditování neodstranila ani nepřejmenovala skupinu prostředků nebo účty úložiště. |
+|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě |Přiřazení zásad |Předpona účtu úložiště pro diagnostiku skupiny zabezpečení sítě |Tato předpona je kombinována s umístěním skupiny zabezpečení sítě, aby vytvořila název vytvořeného účtu úložiště. |
+|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě |Přiřazení zásad |Název skupiny prostředků pro účet úložiště pro diagnostiku skupiny zabezpečení sítě (musí existovat) |Skupina prostředků, ve které se účet úložiště vytvoří. Tato skupina prostředků už musí existovat. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Now that you've reviewed the steps to deploy the Canada Federal PBMM sample, visit the following articles to learn about the overview and control mapping:
+Teď, když jste si prohlédli postup nasazení ukázky Federal PBMM pro Kanadu, najdete v následujících článcích informace o přehledu a mapování ovládacích prvků:
 
 > [!div class="nextstepaction"]
-> [Canada Federal PBMM blueprints - Overview](./index.md)
-> [Canada Federal PBMM blueprints - Control mapping](./control-mapping.md)
+> [Kanada – federální PBMM modrotisky – přehled](./index.md)
+> [Kanadu federální PBMM modrotisky – mapování ovládacích prvků](./control-mapping.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

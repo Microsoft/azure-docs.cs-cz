@@ -1,5 +1,5 @@
 ---
-title: Get prediction with REST call in C#
+title: Získat předpovědi s voláním REST vC#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -15,11 +15,11 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74414546"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [.NET Core V2.2+](https://dotnet.microsoft.com/download)
+* [.NET Core V 2.2 +](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* ID veřejné aplikace: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>Získání klíče LUIS
 
@@ -27,22 +27,22 @@ ms.locfileid: "74414546"
 
 ## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
-Use C# (.NET Core) to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
+Použijte C# (.NET Core) k dotazování [koncového bodu předpovědi](https://aka.ms/luis-apim-v3-prediction) a získejte výsledek předpovědi.
 
-1. Create a new console application targeting the C# language, with a project and folder name of `predict-with-rest`. 
+1. Vytvořte novou konzolovou aplikaci, která C# cílí na jazyk, s názvem projektu a složky `predict-with-rest`. 
 
     ```console
     dotnet new console -lang C# -n predict-with-rest
     ```
 
-1. Change to the `predict-with-rest` directory you just created, and install required dependencies with these commands:  
+1. Přejděte do adresáře `predict-with-rest`, který jste právě vytvořili, a nainstalujte požadované závislosti pomocí těchto příkazů:  
 
     ```console
     cd predict-with-rest
     dotnet add package System.Net.Http
     ```
 
-1. Open `Program.cs` in your favorite IDE or editor. Then overwrite `Program.cs` with the following code:
+1. Otevřete `Program.cs` v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru. Pak `Program.cs` přepsat následujícím kódem:
     
    ```csharp
     using System;
@@ -102,31 +102,31 @@ Use C# (.NET Core) to query the [prediction endpoint](https://aka.ms/luis-apim-v
 
    ```
 
-1. Replace the following values:
+1. Nahraďte následující hodnoty:
 
-    * `YOUR-KEY` with your starter key.
-    * `YOUR-ENDPOINT` with your endpoint. Například, `westus2.api.cognitive.microsoft.com`.
+    * `YOUR-KEY` pomocí počátečního klíče.
+    * `YOUR-ENDPOINT` s vaším koncovým bodem. Například, `westus2.api.cognitive.microsoft.com`.
 
-1. Build the console application with this command: 
+1. Sestavte konzolovou aplikaci pomocí tohoto příkazu: 
 
     ```console
     dotnet build
     ```
 
-1. Spusťte konzolovou aplikaci. The console output displays the same JSON that you saw earlier in the browser window.
+1. Spusťte konzolovou aplikaci. Výstup konzoly zobrazí stejný kód JSON, který jste viděli dříve v okně prohlížeče.
 
     ```console
     dotnet run
     ```
 
-1. Review the prediction response, which is returned as JSON:
+1. Zkontrolujte odpověď předpovědi, která se vrátí jako JSON:
 
     ```console
     Hit ENTER to exit...
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    The JSON response formatted for readability: 
+    Odpověď JSON naformátovaná pro čitelnost: 
 
     ```JSON
     {
@@ -175,9 +175,9 @@ Use C# (.NET Core) to query the [prediction endpoint](https://aka.ms/luis-apim-v
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-When you are finished with this quickstart, delete the file from the file system. 
+Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému souborů. 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Add utterances and train](../get-started-get-model-rest-apis.md)
+> [Přidat projevy a vlak](../get-started-get-model-rest-apis.md)

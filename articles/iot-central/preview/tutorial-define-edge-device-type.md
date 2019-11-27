@@ -1,6 +1,6 @@
 ---
-title: Define a new Azure IoT Edge device type in Azure IoT Central | Microsoft Docs
-description: This tutorial shows you, as a builder, how to create a new Azure IoT Edge device in your Azure IoT Central application. You define the telemetry, state, properties, and commands for your type.
+title: Definování nového typu Azure IoT Edge zařízení v Azure IoT Central | Microsoft Docs
+description: V tomto kurzu se dozvíte jako tvůrce, jak vytvořit nové zařízení Azure IoT Edge v aplikaci Azure IoT Central. Definujete telemetrii, stav, vlastnosti a příkazy pro svůj typ.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -16,98 +16,98 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406469"
 ---
-# <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Tutorial: Define a new Azure IoT Edge device type in your Azure IoT Central application (preview features)
+# <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Kurz: definování nového typu Azure IoT Edge zařízení v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-This tutorial shows you, as a builder, how to use a device template to define a new type of Azure IoT Edge device in your Azure IoT Central application. 
+V tomto kurzu se dozvíte jako tvůrce, jak použít šablonu zařízení k definování nového typu Azure IoT Edge zařízení v aplikaci Azure IoT Central. 
 
-For an overview, see [What is Azure IoT Central (preview features)?](overview-iot-central.md). 
+Přehled najdete v tématu [co je Azure IoT Central (funkce verze Preview)?](overview-iot-central.md). 
 
-IoT Edge is made up of three components:
-* **IoT Edge modules** are containers that run Azure services, partner services, or your own code. Modules are deployed to IoT Edge devices, and run locally on those devices.
-* The **IoT Edge runtime** runs on each IoT Edge device, and manages the modules deployed to each device.
-* A **cloud-based interface** enables you to remotely monitor and manage IoT Edge devices. IoT Central is the cloud interface.
+IoT Edge se skládá ze tří součástí:
+* **Moduly IoT Edge** jsou kontejnery, ve kterých běží služby Azure, partnerské služby nebo vlastní kód. Moduly se nasazují na zařízení IoT Edge a spustí se místně na těchto zařízeních.
+* Modul **runtime IoT Edge** běží na každém zařízení IoT Edge a spravuje moduly nasazené na každé zařízení.
+* **Cloudové rozhraní** umožňuje vzdáleně monitorovat a spravovat IoT Edge zařízení. IoT Central je cloudové rozhraní.
 
-An **Azure IoT Edge** device can be a gateway device, with downstream devices connecting into the IoT Edge device. This tutorial shares more information about downstream device connectivity patterns.
+Zařízení **Azure IoT Edge** může být zařízení brány se zařízeními, která se připojují k IoT Edgemu zařízení. Tento kurz sdílí Další informace o vzorech připojení k navazujícím zařízením.
 
-A **device template** defines the capabilities of your device and IoT Edge modules. Capabilities include telemetry the module sends, module properties, and the commands a module responds to.
+**Šablona zařízení** definuje možnosti zařízení a IoT Edge moduly. Mezi možnosti patří telemetrie, kterou modul odesílá, vlastnosti modulu a příkazy, na které modul reaguje.
 
-In this tutorial, you create an Environment Sensor device template. An environmental sensor device:
+V tomto kurzu vytvoříte šablonu zařízení snímače prostředí. Zařízení snímače prostředí:
 
-* Sends telemetry, such as temperature.
-* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
-* Responds to commands, such as resetting temperature.
+* Odesílá telemetrii, například teplotu.
+* Reaguje na zapisovatelné vlastnosti při aktualizaci v cloudu, jako je například interval odesílání telemetrie.
+* Reaguje na příkazy, jako je resetování teploty.
 
-Also in this tutorial, you create an Environment Gateway device template. An environmental gateway device:
+V tomto kurzu taky vytvoříte šablonu zařízení brány prostředí. Zařízení brány pro prostředí:
 
-* Sends telemetry, such as temperature.
-* Responds to writeable properties when updated in the cloud, such as telemetry send interval.
-* Responds to commands, such as resetting temperature.
-* Allows relationships to other device capability models.
+* Odesílá telemetrii, například teplotu.
+* Reaguje na zapisovatelné vlastnosti při aktualizaci v cloudu, jako je například interval odesílání telemetrie.
+* Reaguje na příkazy, jako je resetování teploty.
+* Umožňuje vztahy k jiným modelům schopností zařízení.
 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Create a new Azure IoT Edge device device template.
-> * Upload a deployment manifest.
-> * Create capabilities including telemetry, properties, and commands for each module.
-> * Define a visualization for the module telemetry.
-> * Add relationships to downstream device templates.
-> * Publish your device template.
+> * Vytvořte novou šablonu zařízení Azure IoT Edge zařízení.
+> * Nahrajte manifest nasazení.
+> * Vytvářejte možnosti, včetně telemetrie, vlastností a příkazů pro každý modul.
+> * Definujte vizualizaci pro telemetrii modulu.
+> * Přidejte relace do šablon zařízení pro příjem dat.
+> * Publikujte šablonu zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-To complete this tutorial, you need to [create an Azure IoT Central application](quick-deploy-iot-central.md).
+K dokončení tohoto kurzu potřebujete [vytvořit aplikaci Azure IoT Central](quick-deploy-iot-central.md).
 
 
-## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Downstream device relationships with a gateway and modules
+## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Vztahy navazujících zařízení s bránou a moduly
 
-Downstream devices can connect to an IoT Edge gateway device through the `$edgeHub` module. This IoT Edge device becomes a transparent gateway in this scenario.
+Podřízená zařízení se mohou připojit k zařízení IoT Edge brány prostřednictvím modulu `$edgeHub`. Toto zařízení IoT Edge se v tomto scénáři stávají transparentní bránou.
 
-![Diagram of transparent gateway](./media/tutorial-define-edge-device-type/gateway-transparent.png)
+![Diagram transparentní brány](./media/tutorial-define-edge-device-type/gateway-transparent.png)
 
-Downstream devices can also connect to an IoT Edge gateway device through a custom module. In the following scenario, downstream devices connect through a Modbus custom module.
+Podřízená zařízení se taky můžou připojit k zařízení IoT Edge brány prostřednictvím vlastního modulu. V následujícím scénáři se pro zařízení se zařízením připojí vlastní modul Modbus.
 
-![Diagram of custom module connection](./media/tutorial-define-edge-device-type/gateway-module.png)
+![Diagram připojení vlastního modulu](./media/tutorial-define-edge-device-type/gateway-module.png)
 
-The following diagram shows connection to an IoT Edge gateway device through both types of modules (custom and `$edgeHub`).  
+Následující diagram znázorňuje připojení k zařízení IoT Edge brány prostřednictvím obou typů modulů (vlastní a `$edgeHub`).  
 
-![Diagram of connecting via both connection modules](./media/tutorial-define-edge-device-type/gateway-module-transparent.png)
+![Diagram připojení prostřednictvím obou připojovacích modulů](./media/tutorial-define-edge-device-type/gateway-module-transparent.png)
 
-Finally, downstream devices can connect to an IoT Edge gateway device through multiple custom modules. The following diagram shows downstream devices connecting through a Modbus custom module, a BLE custom module, and the `$edgeHub` module. 
+V konečném případě se mohou zařízení pro příjem dat připojit k zařízení IoT Edge brány prostřednictvím několika vlastních modulů. Následující diagram zobrazuje zařízení, která se připojují prostřednictvím vlastního modulu Modbus, vlastního modulu v police a modulu `$edgeHub`. 
 
-![Diagram of connecting via multiple custom modules](./media/tutorial-define-edge-device-type/gateway-module2-transparent.png)
+![Diagram připojení přes více vlastních modulů](./media/tutorial-define-edge-device-type/gateway-module2-transparent.png)
 
 
 ## <a name="create-a-template"></a>Vytvoření šablony
 
-As a builder, you can create and edit IoT Edge device templates in your application. After you publish a device template, you can connect real devices that implement the device template.
+Jako tvůrce můžete v aplikaci vytvořit a upravit IoT Edge šablony zařízení. Po publikování šablony zařízení můžete propojit skutečná zařízení, která implementují šablonu zařízení.
 
-### <a name="select-device-template-type"></a>Select device template type 
+### <a name="select-device-template-type"></a>Vybrat typ šablony zařízení 
 
-To add a new device template to your application, select **Device Templates** on the left pane.
+Chcete-li do aplikace přidat novou šablonu zařízení, v levém podokně vyberte **šablony zařízení** .
 
-![Screenshot of Preview Application, with Device Templates highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplate.png)
+![Snímek obrazovky aplikace ve verzi Preview se zvýrazněnými šablonami zařízení](./media/tutorial-define-edge-device-type/edgedevicetemplate.png)
 
-Select **+ New** to start creating a new device template.
+Vyberte **+ Nová** a začněte vytvářet novou šablonu zařízení.
 
-![Screenshot of Device templates page, with New highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatenew.png)
+![Obrazovka stránky šablony zařízení s novým zvýrazněným](./media/tutorial-define-edge-device-type/edgedevicetemplatenew.png)
 
-On the **Select template type** page, select **Azure IoT Edge**, and select **Next: Customize**.
+Na stránce **Vybrat typ šablony** vyberte **Azure IoT Edge**a vyberte **Další: přizpůsobit**.
 
-![Screenshot of Select template type page](./media/tutorial-define-edge-device-type/selectiotedge.png)
+![Snímek obrazovky s výběrem stránky typu šablony](./media/tutorial-define-edge-device-type/selectiotedge.png)
 
-### <a name="customize-device-template"></a>Customize device template
+### <a name="customize-device-template"></a>Přizpůsobení šablony zařízení
 
-In IoT Edge, you can deploy and manage business logic in the form of modules. IoT Edge modules are the smallest unit of computation managed by IoT Edge, and can contain Azure services (such as Azure Stream Analytics), or your own solution-specific code. To understand how modules are developed, deployed, and maintained, see [IoT Edge modules](../../iot-edge/iot-edge-modules.md).
+V IoT Edge můžete nasadit a spravovat obchodní logiku ve formě modulů. IoT Edge moduly jsou nejmenší jednotkou výpočtu spravovanou pomocí IoT Edge a můžou obsahovat služby Azure (například Azure Stream Analytics) nebo vlastní kód specifický pro řešení. Pokud chcete pochopit, jak se moduly vyvíjí, nasazují a udržují, přečtěte si téma [IoT Edge moduly](../../iot-edge/iot-edge-modules.md).
 
-At a high level, a deployment manifest is a list of module twins that are configured with their desired properties. A deployment manifest tells an IoT Edge device (or a group of devices) which modules to install, and how to configure them. Deployment manifests include the desired properties for each module twin. IoT Edge devices report back the reported properties for each module.
+Manifest nasazení na vysoké úrovni, je seznam dvojčaty modulů, které jsou nakonfigurovány s jejich požadované vlastnosti. Manifest nasazení oznamuje IoT Edge zařízení (nebo skupině zařízení), které moduly se mají nainstalovat, a jak je nakonfigurovat. Manifesty nasazení obsahují požadované vlastnosti pro každý modul s dvojitou vlastností. IoT Edge zařízení hlásí zpět ohlášené vlastnosti pro každý modul.
 
-Use Visual Studio Code to create a deployment manifest. To learn more, see [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
+Pomocí Visual Studio Code vytvořit manifest nasazení. Další informace najdete v tématu [Azure IoT Edge Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
 
-Here's a basic deployment manifest, with one module as an example to be used for this tutorial. Copy the following JSON, and save it as a .json file. 
+Tady je základní manifest nasazení s jedním modulem jako příkladem, který se má použít pro tento kurz. Zkopírujte následující kód JSON a uložte ho jako soubor. JSON. 
 
    ```JSON
    {
@@ -176,53 +176,53 @@ Here's a basic deployment manifest, with one module as an example to be used for
    }
    ```
 
-#### <a name="upload-an-iot-edge-deployment-manifest"></a>Upload an IoT Edge deployment manifest
+#### <a name="upload-an-iot-edge-deployment-manifest"></a>Nahrání manifestu nasazení IoT Edge
 
-On the **Customize device** page, under **Upload an Azure IoT Edge deployment manifest**, select **Browse**. 
+Na stránce **přizpůsobit zařízení** v části **nahrát manifest nasazení Azure IoT Edge**vyberte **Procházet**. 
 
-![Screenshot of Customize device page, with Browse highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplateuploadmanifest.png)
+![Snímek obrazovky s přizpůsobením stránky zařízení se zvýrazněnou možností Procházet](./media/tutorial-define-edge-device-type/edgedevicetemplateuploadmanifest.png)
 
-If you plan to create an IoT Edge Gateway device template, make sure to select **Gateway device with downstream devices**.
+Pokud plánujete vytvořit šablonu zařízení IoT Edge Gateway, ujistěte se, že jste vybrali **zařízení brány se zařízeními pro příjem dat**.
 
-![Screenshot of Customize device page, with Gateway device with downstream devices highlighted](./media/tutorial-define-edge-device-type/gateway-upload.png)
+![Snímek obrazovky s přizpůsobením stránky zařízení se zařízením brány se zvýrazněnými zařízeními pro příjem dat](./media/tutorial-define-edge-device-type/gateway-upload.png)
 
-In the file selection dialog box, select the deployment manifest file, and select **Open**.
+V dialogovém okně Výběr souboru vyberte soubor manifestu nasazení a vyberte **otevřít**.
 
-IoT Edge validates the deployment manifest file against a schema. If the validation is successful, select **Review**.
+IoT Edge ověří soubor manifestu nasazení proti schématu. Pokud je ověření úspěšné, vyberte **zkontrolovat**.
 
-![Screenshot of Customize device page, with Deployment Manifest and Review highlighted](./media/tutorial-define-edge-device-type/deploymentmanifestvalidate.png)
+![Snímek obrazovky s přizpůsobením stránky zařízení s manifestem nasazení a zvýrazněnou revizí](./media/tutorial-define-edge-device-type/deploymentmanifestvalidate.png)
 
-The following flowchart shows a deployment manifest life cycle in IoT Central.
+Následující vývojový diagram znázorňuje životní cyklus manifestu nasazení v IoT Central.
 
-![Flowchart of deployment manifest life cycle](./media/tutorial-define-edge-device-type/dmflow.png)
+![Vývojový diagram životního cyklu manifestu nasazení](./media/tutorial-define-edge-device-type/dmflow.png)
 
-Next, you'll see a review page, with details of the deployment manifest. This page shows a list of modules from the deployment manifest. In this tutorial, note that the `SimulatedTemperatureSensor` module is listed. Vyberte **Create** (Vytvořit).
+V dalším kroku se zobrazí stránka pro kontrolu s podrobnostmi o manifestu nasazení. Tato stránka zobrazuje seznam modulů z manifestu nasazení. V tomto kurzu si všimněte, že je uvedený modul `SimulatedTemperatureSensor`. Vyberte **Vytvořit**.
 
-![Screenshot of Review page, with Module and Create highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatereview.png)
+![Snímek obrazovky se stránkou pro revize s modulem a zvýrazněnou možností vytvořit](./media/tutorial-define-edge-device-type/edgedevicetemplatereview.png)
 
-If you had selected a gateway device, you see the following review page.
+Pokud jste vybrali zařízení brány, zobrazí se následující stránka pro kontrolu.
 
-![Screenshot of Review page, with Azure IoT Edge Gateway highlighted](./media/tutorial-define-edge-device-type/gateway-review.png)
+![Snímek obrazovky se zvýrazněnou Azure IoT Edge bránou](./media/tutorial-define-edge-device-type/gateway-review.png)
 
 
-You create a device template with module capability models. In this tutorial, you create a device template with the `SimulatedTemperatureSensor` module capability model. 
+Vytvoříte šablonu zařízení s modely schopností modulu. V tomto kurzu vytvoříte šablonu zařízení s modelem schopností modulu `SimulatedTemperatureSensor`. 
 
-Change title of the device template to **Environment Sensor Device Template**.
+Změňte název šablony zařízení na **šablonu zařízení snímače prostředí**.
 
-![Screenshot of device template, with updated title highlighted](./media/tutorial-define-edge-device-type/edgedevicetemplatelanding.png)
+![Snímek šablony zařízení s zvýrazněným aktualizovaným nadpisem](./media/tutorial-define-edge-device-type/edgedevicetemplatelanding.png)
 
-In IoT Edge device, model IoT Plug and Play as follows:
-* Every IoT Edge device template has a device capability model.
-* For every custom module listed in the deployment manifest, a module capability model is generated.
-* A relationship is established between each module capability model and a device capability model.
-* A module capability model implements module interfaces.
-* Each module interface contains telemetry, properties, and commands.
+V IoT Edge zařízení technologie Plug and Play model IoT následujícím způsobem:
+* Každá šablona zařízení IoT Edge má model schopností zařízení.
+* Pro každý vlastní modul uvedený v manifestu nasazení je vygenerován model schopností modulu.
+* Mezi jednotlivými modely schopností modulu a modelem schopností zařízení je vytvořen vztah.
+* Model schopnosti modulu implementuje rozhraní modulů.
+* Každé rozhraní modulů obsahuje telemetrii, vlastnosti a příkazy.
 
-![Diagram of IoT Edge modeling](./media/tutorial-define-edge-device-type/edgemodelling.png)
+![Diagram modelování IoT Edge](./media/tutorial-define-edge-device-type/edgemodelling.png)
 
-#### <a name="add-capabilities-to-a-module-capability-model"></a>Add capabilities to a module capability model
+#### <a name="add-capabilities-to-a-module-capability-model"></a>Přidání schopností do modelu schopností modulu
 
-Here is a sample output from the `SimulatedTemperatureSensor` module:
+Tady je ukázkový výstup z modulu `SimulatedTemperatureSensor`:
 ```json
 {
 
@@ -239,165 +239,165 @@ Here is a sample output from the `SimulatedTemperatureSensor` module:
 }
 ```
 
-You can add capabilities to the `SimulatedTemperatureSensor` module, which will reflect the preceding output. 
+Do modulu `SimulatedTemperatureSensor` můžete přidat funkce, které budou odrážet předchozí výstup. 
 
-1. To manage an interface of the `SimulatedTemperatureSensor` module capability model, select **Manage** > **Add Capability**. 
+1. Pokud chcete spravovat rozhraní modelu schopností modulu `SimulatedTemperatureSensor`, vyberte **spravovat** > **Přidat možnost**. 
 
-    ![Screenshot of Environment Sensor Template, with Add Capability highlighted](./media/tutorial-define-edge-device-type/edgetemplateaddcapability.png)
+    ![Snímek šablony senzoru prostředí se zvýrazněnou funkcí přidat](./media/tutorial-define-edge-device-type/edgetemplateaddcapability.png)
   
-1. Add a machine as an object type.
+1. Přidejte počítač jako typ objektu.
   
-    ![Screenshot of Environment Sensor Template Capabilities page, with Schema highlighted](./media/tutorial-define-edge-device-type/edgetemplatemachineobject.png)
+    ![Snímek obrazovky se stránkou možností šablon senzorů prostředí se zvýrazněným schématem](./media/tutorial-define-edge-device-type/edgetemplatemachineobject.png)
 
-1. Select **Define**. In the dialog box that appears, change the object name to **machine**. Create temperature and pressure properties, and select **Apply**.
+1. Vyberte **definovat**. V dialogovém okně, které se zobrazí, změňte název objektu na **Machine**. Vytvořte vlastnosti teploty a tlaku a vyberte **použít**.
   
-    ![Screenshot of attributes dialog box, with various options highlighted](./media/tutorial-define-edge-device-type/edgetemplatemachineattributes.png)
+    ![Snímek obrazovky dialogového okna atributů s různými možnostmi zvýraznění](./media/tutorial-define-edge-device-type/edgetemplatemachineattributes.png)
   
-1. Add **ambient** as an object type.
+1. Přidejte **okolí** jako typ objektu.
 
-1. Select **Define**. In the dialog box that appears, change the object name to **ambient**. Create temperature and humidity properties, and select **Apply**.
+1. Vyberte **definovat**. V dialogovém okně, které se zobrazí, změňte název objektu na **Ambient**. Vytvořte vlastnosti teploty a vlhkosti a vyberte **použít**.
   
-    ![Screenshot of attributes dialog box, with various options highlighted](./media/tutorial-define-edge-device-type/edgetemplateambientattributes.png)
+    ![Snímek obrazovky dialogového okna atributů s různými možnostmi zvýraznění](./media/tutorial-define-edge-device-type/edgetemplateambientattributes.png)
 
   
-1. Add `timeCreated` as a `DateTime` type, and select **Save**.
+1. Přidejte `timeCreated` jako typ `DateTime` a vyberte **Uložit**.
   
-    ![Screenshot of Environment Sensor Template, with Save highlighted](./media/tutorial-define-edge-device-type/edgetemplateallattributes.png)
+    ![Snímek šablony senzoru prostředí se zvýrazněnou možností Uložit](./media/tutorial-define-edge-device-type/edgetemplateallattributes.png)
 
 
-### <a name="add-relationships"></a>Add relationships
+### <a name="add-relationships"></a>Přidat relace
 
-If you selected an IoT Edge device to be a gateway device, you can add downstream relationships to device capability models for devices you want to connect to the gateway device.
+Pokud jste jako zařízení brány vybrali IoT Edge zařízení, můžete pro zařízení, která chcete připojit k zařízení brány, přidat podřízené vztahy k modelům schopností zařízení.
   
-  ![Screenshot of Environment Gateway Template, with Add Relationship highlighted](./media/tutorial-define-edge-device-type/gateway-add-relationship.png)
+  ![Snímek šablony brány prostředí se zvýrazněnou možností přidat relaci](./media/tutorial-define-edge-device-type/gateway-add-relationship.png)
 
-You can add a relationship at a device or at a module.
+Můžete přidat relaci na zařízení nebo v modulu.
   
-  ![Screenshot of Environment Gateway Template, with device and module level relationships highlighted](./media/tutorial-define-edge-device-type/gateway-relationship-types.png)
+  ![Snímek obrazovky s šablonou brány prostředí se zvýrazněnými vztahy na úrovni zařízení a modulu](./media/tutorial-define-edge-device-type/gateway-relationship-types.png)
 
 
-You can select a downstream device capability model, or you can select the asterisk symbol. 
+Můžete vybrat model schopností pro příjem dat, nebo můžete vybrat symbol hvězdičky. 
   
-  ![Screenshot of Environment Gateway Template, with Target highlighted](./media/tutorial-define-edge-device-type/gateway-downstream-rel.png)
+  ![Snímek šablony brány prostředí se zvýrazněnou možností cíl](./media/tutorial-define-edge-device-type/gateway-downstream-rel.png)
 
-  For this tutorial, select the asterisk. This option allows any downstream relationship. Potom vyberte **Uložit**.
+  V tomto kurzu vyberte hvězdičku. Tato možnost povolí jakýkoli vztah podřízenosti. Potom vyberte **Uložit**.
 
-  ![Screenshot of Environment Gateway Template, with Target highlighted](./media/tutorial-define-edge-device-type/gateway-add-relationship-asterix.png)
+  ![Snímek šablony brány prostředí se zvýrazněnou možností cíl](./media/tutorial-define-edge-device-type/gateway-add-relationship-asterix.png)
 
 
-### <a name="add-cloud-properties"></a>Add cloud properties
+### <a name="add-cloud-properties"></a>Přidat vlastnosti cloudu
 
-A device template can include cloud properties. Cloud properties only exist in the IoT Central application, and are never sent to, or received from, a device.
+Šablona zařízení může obsahovat vlastnosti cloudu. Vlastnosti cloudu existují jenom v aplikaci IoT Central a nikdy se neodesílají do zařízení nebo se z něj nepřijímají.
 
-1. Select **Cloud Properties** >  **+ Add Cloud Property**. Use the information in the following table to add a cloud property to your device template.
+1. Vyberte **vlastnosti cloudu** >  **+ přidat cloudovou vlastnost**. Pomocí informací v následující tabulce můžete přidat vlastnost cloudu do šablony zařízení.
 
-    | Zobrazované jméno      | Semantic type | Schéma |
+    | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
-    | Customer name     | Žádné          | Řetězec |
+    | Last Service Date (Datum poslední údržby) | Žádný          | Datum   |
+    | Jméno zákazníka     | Žádný          | Řetězec |
 
-2. Vyberte **Save** (Uložit).
-
-  
-    ![Screenshot of Environment Sensor Template, with Save highlighted](./media/tutorial-define-edge-device-type/edgetemplatecloudproperties.png)
-
-### <a name="add-customizations"></a>Add customizations
-
-Use customizations to modify an interface, or to add IoT Central-specific features to a capability that doesn't require you to version your device capability model. You can customize fields when the capability model is in a draft or published state. You can only customize fields that don't break interface compatibility. Můžete například provést následující věci:
-
-- Customize the display name and units of a capability.
-- Add a default color to use when the value appears on a chart.
-- Specify initial, minimum, and maximum values for a property.
-
-You can't customize the capability name or capability type.
-
-When you're finished customizing, select **Save**.
-  
-![Screenshot of Environment Sensor Template Customize page](./media/tutorial-define-edge-device-type/edgetemplatecustomize.png)
-
-
-### <a name="create-views"></a>Create views
-
-As a builder, you can customize the application to display relevant information about the environmental sensor device to an operator. Your customizations enable the operator to manage the environmental sensor devices connected to the application. You can create two types of views for an operator to use to interact with devices:
-
-* Forms to view and edit device and cloud properties.
-* Dashboards to visualize devices.
-
-### <a name="configure-a-view-to-visualize-devices"></a>Configure a view to visualize devices
-
-A device dashboard lets an operator visualize a device by using charts and metrics. As a builder, you can define what information appears on a device dashboard. You can define multiple dashboards for devices. To create a dashboard to visualize the environmental sensor telemetry, select **Views** > **Visualizing the Device**:
+2. Vyberte **Uložit**.
 
   
-![Screenshot of Environment Sensor Template Views page, with Visualizing the Device highlighted](./media/tutorial-define-edge-device-type/visualizingthedevice.png)
+    ![Snímek šablony senzoru prostředí se zvýrazněnou možností Uložit](./media/tutorial-define-edge-device-type/edgetemplatecloudproperties.png)
 
+### <a name="add-customizations"></a>Přidat přizpůsobení
 
-Ambient Telemetry and Machine Telemetry are complex objects. To create charts:
+Pomocí přizpůsobení můžete změnit rozhraní nebo přidat funkce specifické pro IoT Central, které nevyžadují, abyste používali model schopností zařízení. Můžete přizpůsobit pole, když je model schopností v konceptu nebo publikovaném stavu. Můžete přizpůsobit pouze pole, která neruší kompatibilitu rozhraní. Můžete například provést následující věci:
 
-1. Drag **Ambient Telemetry**, and select **Line chart**. 
+- Přizpůsobení zobrazovaného názvu a jednotek schopnosti.
+- Přidejte výchozí barvu, která se použije, když se hodnota zobrazí v grafu.
+- Zadejte počáteční, minimální a maximální hodnoty vlastnosti.
+
+Nemůžete přizpůsobit název schopnosti ani typ schopnosti.
+
+Až budete hotovi s přizpůsobením, vyberte **Uložit**.
   
-   ![Screenshot of Environment Sensor Template, with Ambient Telemetry and Line chart highlighted](./media/tutorial-define-edge-device-type/sensorambientchart.png)
+![Snímek obrazovky se stránkou pro přizpůsobení šablony senzoru prostředí](./media/tutorial-define-edge-device-type/edgetemplatecustomize.png)
 
-1. Select the configure icon. Select **Temperature** and **Humidity** to visualize the data, and select **Update configuration**. 
+
+### <a name="create-views"></a>Vytváření zobrazení
+
+Jako tvůrce můžete aplikaci přizpůsobit tak, aby zobrazovala relevantní informace o zařízení snímače životního prostředí pro operátora. Vlastní nastavení umožňuje operátorovi spravovat zařízení senzorů pro životní prostředí připojená k aplikaci. Můžete vytvořit dva typy zobrazení pro operátora pro práci se zařízeními:
+
+* Formuláře pro zobrazení a úpravy vlastností zařízení a cloudu.
+* Řídicí panely k vizualizaci zařízení.
+
+### <a name="configure-a-view-to-visualize-devices"></a>Konfigurace zobrazení pro vizualizaci zařízení
+
+Řídicí panel zařízení umožňuje, aby operátor vizualizuje zařízení pomocí grafů a metrik. Jako tvůrce můžete definovat, jaké informace se zobrazí na řídicím panelu zařízení. Pro zařízení můžete definovat několik řídicích panelů. Pokud chcete vytvořit řídicí panel pro vizualizaci telemetrie senzorů pro životní prostředí, vyberte **zobrazení** > **vizualizaci zařízení**:
+
   
-   ![Screenshot of Environment Sensor Template, with various options highlighted](./media/tutorial-define-edge-device-type/sensorambienttelemetrychart.png)
+![Obrazovka stránky zobrazení šablon senzoru prostředí s vizualizací zvýrazněné zařízení](./media/tutorial-define-edge-device-type/visualizingthedevice.png)
 
-1. Vyberte **Save** (Uložit).
 
-You can add more tiles that show other properties or telemetry values. You can also add static text, links, and images. To move or resize a tile on the dashboard, move the mouse pointer over the tile, and drag the tile to a new location or resize it.
+Ambientní telemetrie a telemetrie počítačů jsou komplexní objekty. Vytváření grafů:
+
+1. Přetáhněte **ambientní telemetrii**a vyberte **Spojnicový graf**. 
   
-![Screenshot of Environment Sensor Template Dashboard view](./media/tutorial-define-edge-device-type/viewsdashboard.png)
+   ![Snímek šablony senzoru prostředí se zvýrazněnou ambientní telemetrie a spojnicovým grafem](./media/tutorial-define-edge-device-type/sensorambientchart.png)
 
-### <a name="add-a-device-form"></a>Add a device form
-
-A device form lets an operator edit writeable device properties and cloud properties. As a builder, you can define multiple forms and choose which device and cloud properties to show on each form. You can also display read-only device properties on a form.
-
-To create a form to view and edit environmental sensor properties:
-
-1. In the **Environmental Sensor Template**, go to **Views**. Select the **Editing Device and Cloud data** tile to add a new view.
+1. Vyberte ikonu konfigurovat. Vyberte možnost **teplota** a **vlhkost** pro vizualizaci dat a vyberte **aktualizovat konfiguraci**. 
   
-   ![Screenshot of Environmental Sensor Template Views page, with Editing Device and Cloud data highlighted](./media/tutorial-define-edge-device-type/editingdeviceandclouddata.png)
+   ![Snímek šablony senzoru prostředí s vybranými různými možnostmi](./media/tutorial-define-edge-device-type/sensorambienttelemetrychart.png)
 
-1. Enter the form name **Environmental Sensor properties**.
+1. Vyberte **Uložit**.
 
-1. Drag the **Customer name** and **Last service date** cloud properties onto the existing section on the form.
+Můžete přidat další dlaždice, které zobrazují další vlastnosti nebo hodnoty telemetrie. Můžete také přidat statický text, odkazy a obrázky. Chcete-li přesunout nebo změnit velikost dlaždice na řídicím panelu, přesuňte ukazatel myši na dlaždici a přetáhněte dlaždici na nové umístění nebo změňte jeho velikost.
   
-   ![Screenshot of Environmental Sensor Template Views page, with various options highlighted](./media/tutorial-define-edge-device-type/views-properties.png)
+![Snímek obrazovky s zobrazením řídicího panelu šablony senzoru prostředí](./media/tutorial-define-edge-device-type/viewsdashboard.png)
 
-1. Vyberte **Save** (Uložit).
+### <a name="add-a-device-form"></a>Přidat formulář zařízení
 
-## <a name="publish-a-device-template"></a>Publish a device template
+Formulář zařízení umožňuje operátorovi upravovat vlastnosti zapisovatelného zařízení a cloudové vlastnosti. Jako tvůrce můžete definovat několik forem a vybrat, které vlastnosti zařízení a cloudu se mají na každém formuláři zobrazit. Ve formuláři můžete také zobrazit vlastnosti zařízení jen pro čtení.
 
-Before you can create a simulated environmental sensor, or connect a real environmental sensor, you need to publish your device template.
+Vytvoření formuláře pro zobrazení a úpravy vlastností senzoru životního prostředí:
 
-To publish a device template:
+1. V **šabloně snímače životního prostředí**, přejít na **zobrazení**. Kliknutím na dlaždici pro **úpravu zařízení a cloudových dat** přidejte nové zobrazení.
+  
+   ![Snímek obrazovky se stránkou zobrazení šablony senzoru prostředí se zvýrazněnými úpravami zařízení a cloudových dat](./media/tutorial-define-edge-device-type/editingdeviceandclouddata.png)
 
-1. Go to your device template from the **Device Templates** page.
+1. Zadejte název formuláře **vlastnosti senzoru prostředí**.
+
+1. Přetáhněte **název zákazníka** a poslední vlastnosti cloudového **data služby** do existující části formuláře.
+  
+   ![Obrazovka stránky zobrazení šablon senzoru v prostředí s vybranými různými možnostmi](./media/tutorial-define-edge-device-type/views-properties.png)
+
+1. Vyberte **Uložit**.
+
+## <a name="publish-a-device-template"></a>Publikování šablony zařízení
+
+Než budete moct vytvořit simulovaný senzor pro životní prostředí nebo připojit reálný senzor pro životní prostředí, budete muset publikovat šablonu zařízení.
+
+Publikování šablony zařízení:
+
+1. Na stránce **šablony zařízení** můžete přejít na šablonu zařízení.
 
 2. Vyberte **Publikovat**.
   
-    ![Screenshot of Environmental Sensor Template, with Publish highlighted](./media/tutorial-define-edge-device-type/edgetemplatepublish.png)
+    ![Snímek šablony environmentálního senzoru se zvýrazněnou možností publikovat](./media/tutorial-define-edge-device-type/edgetemplatepublish.png)
 
-1. In the **Publish a Device Template** dialog box, choose **Publish**.
+1. V dialogovém okně **publikovat šablonu zařízení** klikněte na tlačítko **publikovat**.
   
-    ![Screenshot of Publish a Device Template dialog box, with Publish highlighted](./media/tutorial-define-edge-device-type/edgepublishtemplate.png)
+    ![Snímek obrazovky dialogového okna publikování šablony zařízení s zvýrazněným publikováním](./media/tutorial-define-edge-device-type/edgepublishtemplate.png)
 
-After a device template is published, it's visible on the **Devices** page and to the operator. In a published device template, you can't edit a device capability model without creating a new version. However, you can make updates to cloud properties, customizations, and views, in a published device template. These updates don't cause a new version to be created. After you make any changes, select **Publish** to push those changes out to your operator.
+Po publikování je šablona zařízení zobrazená na stránce **zařízení** a v operátoru. V publikované šabloně zařízení nemůžete upravovat model schopností zařízení bez vytváření nové verze. V publikované šabloně zařízení ale můžete dělat aktualizace vlastností cloudu, přizpůsobení a zobrazení. Tyto aktualizace nezpůsobí vytvoření nové verze. Až provedete nějaké změny, vyberte **publikovat** a přehrajte tyto změny do svého operátoru.
   
-![Screenshot of Device templates list of published templates](./media/tutorial-define-edge-device-type/publishedtemplate.png)
+![Snímek obrazovky s seznamem publikovaných šablon zařízení](./media/tutorial-define-edge-device-type/publishedtemplate.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
-* Create a new edge as a leaf device template.
-* Generate modules from an uploaded deployment manifest.
-* Add complex type telemetry and properties.
-* Create cloud properties.
-* Create customizations.
-* Define a visualization for the device telemetry.
-* Publish your edge device template.
+* Vytvoří novou hranu jako šablonu na listovém zařízení.
+* Generuje moduly z nahraného manifestu nasazení.
+* Přidejte telemetrii a vlastnosti pro komplexní typy.
+* Vytvořte vlastnosti cloudu.
+* Vytvořte vlastní nastavení.
+* Definujte vizualizaci pro telemetrii zařízení.
+* Publikujte šablonu hraničního zařízení.
 
-Now that you've created a device template in your Azure IoT Central application, you can do this next:
+Teď, když jste v aplikaci Azure IoT Central vytvořili šablonu zařízení, můžete to udělat dál:
 
 > [!div class="nextstepaction"]
-> [Connect device](./tutorial-connect-pnp-device.md)
+> [Připojit zařízení](./tutorial-connect-pnp-device.md)

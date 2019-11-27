@@ -1,6 +1,6 @@
 ---
-title: How trusts work for Azure AD Domain Services | Microsoft Docs
-description: Learn more about how forest trust work with Azure AD Domain Services
+title: Jak vztahy důvěryhodnosti fungují pro Azure AD Domain Services | Microsoft Docs
+description: Další informace o tom, jak vztah důvěryhodnosti doménové struktury funguje s Azure AD Domain Services
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,266 +17,266 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233698"
 ---
-# <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>How trust relationships work for resource forests in Azure Active Directory Domain Services
+# <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Jak vztahy důvěryhodnosti fungují pro doménové struktury prostředků v Azure Active Directory Domain Services
 
-Active Directory Domain Services (AD DS) provides security across multiple domains or forests through domain and forest trust relationships. Before authentication can occur across trusts, Windows must first check if the domain being requested by a user, computer, or service has a trust relationship with the domain of the requesting account.
+Active Directory Domain Services (služba AD DS) poskytuje zabezpečení napříč více doménami nebo doménovými strukturami prostřednictvím vztahů důvěryhodnosti domén a doménových struktur. Předtím, než může ověřování probíhat napříč vztahy důvěryhodnosti, musí systém Windows nejdřív ověřit, jestli má doména, kterou uživatel, počítač nebo služba požaduje vztah důvěryhodnosti s doménou žádajícího účtu.
 
-To check for this trust relationship, the Windows security system computes a trust path between the domain controller (DC) for the server that receives the request and a DC in the domain of the requesting account.
+Pro kontrolu tohoto vztahu důvěryhodnosti systém Windows Security vypočítá cestu vztahu důvěryhodnosti mezi řadičem domény (DC) pro server, který obdrží požadavek a řadič domény v doméně žádajícího účtu.
 
-The access control mechanisms provided by AD DS and the Windows distributed security model provide an environment for the operation of domain and forest trusts. For these trusts to work properly, every resource or computer must have a direct trust path to a DC in the domain in which it is located.
+Mechanismy řízení přístupu poskytované služba AD DS a modelem distribuovaného zabezpečení systému Windows poskytují prostředí pro fungování vztahů důvěryhodnosti domény a doménové struktury. Aby tyto vztahy důvěryhodnosti fungovaly správně, musí mít každý prostředek nebo počítač přímo důvěryhodnou cestu k řadiči domény v doméně, ve které se nachází.
 
-The trust path is implemented by the Net Logon service using  an authenticated remote procedure call (RPC) connection to the trusted domain authority. A secured channel also extends to other AD DS domains through interdomain trust relationships. This secured channel is used to obtain and verify security information, including security identifiers (SIDs) for users and groups.
+Cesta vztahu důvěryhodnosti je implementovaná službou přihlašování k síti pomocí ověřeného připojení RPC (Remote Procedure Call) k důvěryhodné autoritě domény. Zabezpečený kanál se také rozšiřuje na jiné služba AD DS domény prostřednictvím vztahů mezi vztahy důvěryhodnosti mezi doménami. Tento zabezpečený kanál slouží k získání a ověření informací o zabezpečení, včetně identifikátorů zabezpečení (SID) pro uživatele a skupiny.
 
-## <a name="trust-relationship-flows"></a>Trust relationship flows
+## <a name="trust-relationship-flows"></a>Toky vztahů důvěryhodnosti
 
-The flow of secured communications over trusts determines the elasticity of a trust. How you create or configure a trust determines how far the communication extends within or across forests.
+Tok zabezpečené komunikace přes vztahy důvěryhodnosti určuje pružnost vztahu důvěryhodnosti. Způsob vytvoření nebo konfigurace vztahu důvěryhodnosti určuje, jak daleko se komunikace rozšiřuje v rámci doménové struktury nebo napříč doménami.
 
-The flow of communication over trusts is determined by the direction of the trust. Trusts can be one-way or two-way, and can be transitive or non-transitive.
+Tok komunikace v rámci vztahů důvěryhodnosti určuje směr vztahu důvěryhodnosti. Vztahy důvěryhodnosti můžou být jednosměrné nebo obousměrné a můžou být přenosné nebo netranzitivní.
 
-The following diagram shows that all domains in *Tree 1* and *Tree 2* have transitive trust relationships by default. As a result, users in *Tree 1* can access resources in domains in *Tree 2* and users in *Tree 1* can access resources in *Tree 2*, when the proper permissions are assigned at the resource.
+Následující diagram znázorňuje, že všechny domény ve *stromové struktuře 1* a *stromu 2* mají ve výchozím nastavení přenositelné vztahy důvěryhodnosti. Výsledkem je, že uživatelé ve *stromové struktuře 1* mají přístup k prostředkům v doménách ve *stromové struktuře 2* a uživatelé ve *stromové struktuře 1* mají přístup k prostředkům ve *stromu 2*, pokud jsou přiřazena správná oprávnění k prostředku.
 
-![Diagram of trust relationships between two forests](./media/concepts-forest-trust/trust-relationships.png)
+![Diagram vztahů důvěryhodnosti mezi dvěma doménovými strukturami](./media/concepts-forest-trust/trust-relationships.png)
 
-### <a name="one-way-and-two-way-trusts"></a>One-way and two-way trusts
+### <a name="one-way-and-two-way-trusts"></a>Jednosměrné a obousměrné vztahy důvěryhodnosti
 
-Trust relationships enable access to resources can be either one-way or two-way.
+Vztahy důvěryhodnosti povolují přístup k prostředkům, které můžou být jednosměrné nebo obousměrné.
 
-A one-way trust is a unidirectional authentication path created between two domains. In a one-way trust between *Domain A* and *Domain B*, users in *Domain A* can access resources in *Domain B*. However, users in *Domain B* can't access resources in *Domain A*.
+Jednosměrný vztah důvěryhodnosti je jednosměrná ověřovací cesta vytvořená mezi dvěma doménami. V jednosměrovém vztahu důvěryhodnosti mezi *doménou* a a *doménou b*můžou uživatelé v *doméně a* přistupovat k prostředkům v *doméně b*. Uživatelé v *doméně B* ale nemůžou získat přístup k prostředkům v *doméně A*.
 
-Some one-way trusts can be either non-transitive or transitive depending on the type of trust being created.
+Některé jednosměrné vztahy důvěryhodnosti mohou být buď netranzitivní, nebo přechodné v závislosti na typu vytvářeného vztahu důvěryhodnosti.
 
-In a two-way trust, *Domain A* trusts *Domain B* and *Domain B* trusts *Domain A*. This configuration means that authentication requests can be passed between the two domains in both directions. Some two-way relationships can be non-transitive or transitive depending on the type of trust being created.
+V obousměrném *vztahu důvěryhodnosti doména důvěřuje* *doméně B* a *doména b* důvěřuje *doméně a*. Tato konfigurace znamená, že požadavky na ověřování se dají mezi oběma doménami předávat v obou směrech. Některé obousměrné relace mohou být v závislosti na typu vytvářeného vztahu důvěryhodnosti netranzitivní nebo přechodné.
 
-All domain trusts in an AD DS forest are two-way, transitive trusts. When a new child domain is created, a two-way, transitive trust is automatically created between the new child domain and the parent domain.
+Všechny vztahy důvěryhodnosti domén v doménové struktuře služba AD DS jsou obousměrné a přenositelné vztahy důvěryhodnosti. Když se vytvoří nová podřízená doména, mezi novou podřízenou doménou a nadřazenou doménou se automaticky vytvoří obousměrný přenositelný vztah důvěryhodnosti.
 
-### <a name="transitive-and-non-transitive-trusts"></a>Transitive and non-transitive trusts
+### <a name="transitive-and-non-transitive-trusts"></a>Přenosné a netranzitivní vztahy důvěryhodnosti
 
-Transitivity determines whether a trust can be extended outside of the two domains with which it was formed.
+Přenositelnost určuje, zda je možné vztah důvěryhodnosti rozšířit mimo dvě domény, se kterými byl vytvořen.
 
-* A transitive trust can be used to extend trust relationships with other domains.
-* A non-transitive trust can be used to deny trust relationships with other domains.
+* Přenosná důvěra se dá použít k rozšiřování vztahů důvěryhodnosti s ostatními doménami.
+* Netranzitivní vztah důvěryhodnosti lze použít k odepření vztahů důvěryhodnosti s jinými doménami.
 
-Each time you create a new domain in a forest, a two-way, transitive trust relationship is automatically created between the new domain and its parent domain. If child domains are added to the new domain, the trust path flows upward through the domain hierarchy extending the initial trust path created between the new domain and its parent domain. Transitive trust relationships flow upward through a domain tree as it is formed, creating transitive trusts between all domains in the domain tree.
+Pokaždé, když vytvoříte novou doménu v doménové struktuře, automaticky se vytvoří obousměrný přenositelný vztah důvěryhodnosti mezi novou doménou a nadřazenou doménou. Pokud se do nové domény přidají podřízené domény, prochází cesta vztahu důvěryhodnosti směrem nahoru v doménové hierarchii, která rozšiřuje počáteční cestu důvěryhodnosti vytvořenou mezi novou doménou a nadřazenou doménou. Vztahy s přenositelnými vztahy důvěryhodnosti procházejí při vytváření doménového stromu směrem nahoru a vytvářejí přenositelné vztahy důvěryhodnosti mezi všemi doménami ve stromu domén.
 
-Authentication requests follow these trust paths, so accounts from any domain in the forest can be authenticated by any other domain in the forest. With a single logon process, accounts with the proper permissions can access resources in any domain in the forest.
+Žádosti o ověření následují tyto cesty důvěryhodnosti, takže účty z libovolné domény v doménové struktuře se dají ověřit v jakékoli jiné doméně v doménové struktuře. Při jednom procesu přihlášení mají účty s příslušnými oprávněními přístup k prostředkům v libovolné doméně v doménové struktuře.
 
-## <a name="forest-trusts"></a>Forest trusts
+## <a name="forest-trusts"></a>Vztahy důvěryhodnosti doménové struktury
 
-Forest trusts help you to manage a segmented AD DS infrastructures and support access to resources and other objects across multiple forests. Forest trusts are useful for service providers, companies undergoing mergers or acquisitions, collaborative business extranets, and companies seeking a solution for administrative autonomy.
+Vztahy důvěryhodnosti doménové struktury vám pomůžou spravovat segmentované služba AD DS infrastruktury a podporovat přístup k prostředkům a dalším objektům v několika doménových strukturách. Vztahy důvěryhodnosti doménové struktury jsou užitečné pro poskytovatele služeb, společnosti, které procházejí fúzí nebo akvizicou, obchodní extranety pro spolupráci a společnosti, které hledají řešení pro administrativní autonomii.
 
-Using forest trusts, you can link two different forests to form a one-way or two-way transitive trust relationship. A forest trust allows administrators to connect two AD DS forests with a single trust relationship to provide a seamless authentication and authorization experience across the forests.
+Pomocí vztahů důvěryhodnosti doménové struktury můžete propojit dvě různé doménové struktury a vytvořit tak jednosměrný nebo obousměrný vztah s obousměrným vztahem důvěryhodnosti. Vztah důvěryhodnosti doménové struktury umožňuje správcům propojit dvě služba AD DS doménových struktur s jedním vztahem důvěryhodnosti a zajistit tak bezproblémové ověřování a možnosti autorizace napříč doménovými strukturami.
 
-A forest trust can only be created between a forest root domain in one forest and a forest root domain in another forest. Forest trusts can only be created between two forests and can't be implicitly extended to a third forest. This behavior means that if a forest trust is created between *Forest 1* and *Forest 2*, and another forest trust is created between *Forest 2* and *Forest 3*, *Forest 1* doesn't have an implicit trust with *Forest 3*.
+Vztah důvěryhodnosti doménové struktury je možné vytvořit jenom mezi kořenovou doménou struktury v jedné doménové struktuře a kořenovou doménou struktury v jiné doménové struktuře. Vztahy důvěryhodnosti doménové struktury je možné vytvořit jenom mezi dvěma doménovými strukturami a nedá se implicitně rozšířit na třetí doménovou strukturu. To znamená, že pokud se vytvoří vztah důvěryhodnosti doménové struktury mezi doménovou strukturou *1* a doménovou strukturou *2*a vytvoří se další vztah důvěryhodnosti doménové struktury mezi *doménovou strukturou 2* a *doménovou* *strukturou*3, *doménová struktura 1* nemá implicitní vztah důvěryhodnosti
 
-The following diagram shows two separate forest trust relationships between three AD DS forests in a single organization.
+Následující diagram znázorňuje dva samostatné vztahy důvěryhodnosti doménové struktury mezi třemi služba AD DS doménovou strukturou v jedné organizaci.
 
-![Diagram of forest trusts relationships within a single organization](./media/concepts-forest-trust/forest-trusts.png)
+![Diagram vztahů důvěryhodnosti doménové struktury v rámci jedné organizace](./media/concepts-forest-trust/forest-trusts.png)
 
-This example configuration provides the following access:
+Tato příklad konfigurace poskytuje následující přístup:
 
-* Users in *Forest 2* can access resources in any domain in either *Forest 1* or *Forest 3*
-* Users in *Forest 3* can access resources in any domain in *Forest 2*
-* Users in *Forest 1* can access resources in any domain in *Forest 2*
+* Uživatelé v *doménové struktuře 2* mají přístup k prostředkům v libovolné doméně v *doménové struktuře 1* nebo *doménové struktuře 3* .
+* Uživatelé v *doménové struktuře 3* mají přístup k prostředkům v libovolné doméně v *doménové struktuře 2* .
+* Uživatelé v *doménové struktuře 1* mají přístup k prostředkům v libovolné doméně v *doménové struktuře 2* .
 
-This configuration doesn't allow users in *Forest 1* to access resources in *Forest 3* or vice versa. To allow users in both *Forest 1* and *Forest 3* to share resources, a two-way transitive trust must be created between the two forests.
+Tato konfigurace neumožňuje uživatelům v *doménové struktuře 1* přistupovat k prostředkům v *doménové struktuře 3* nebo naopak. Chcete-li uživatelům v *doménové struktuře 1* a *doménové struktuře 3* dovolit sdílení prostředků, je třeba vytvořit obousměrný tranzitivní vztah důvěryhodnosti mezi dvěma doménovými strukturami.
 
-If a one-way forest trust is created between two forests, members of the trusted forest can utilize resources located in the trusting forest. However, the trust operates in only one direction.
+Pokud je mezi dvěma doménovými strukturami vytvořen jednosměrný vztah důvěryhodnosti doménové struktury, můžou členové důvěryhodné doménové struktury využívat prostředky umístěné v důvěřující doménové struktuře. Vztah důvěryhodnosti však pracuje pouze v jednom směru.
 
-For example, when a one-way, forest trust is created between *Forest 1* (the trusted forest) and *Forest 2* (the trusting forest):
+Například když se vztah důvěryhodnosti doménové struktury vytvoří mezi *doménovou* strukturou 1 (důvěryhodná doménová struktura) a *doménovou* strukturou 2 (důvěřující doménová struktura):
 
-* Members of *Forest 1* can access resources located in *Forest 2*.
-* Members of *Forest 2* can't access resources located in *Forest 1* using the same trust.
+* Členové *doménové struktury 1* mají přístup k prostředkům umístěným v *doménové struktuře 2*.
+* Členové *doménové struktury 2* nemůžou získat přístup k prostředkům umístěným v *doménové struktuře 1* pomocí stejného vztahu důvěryhodnosti.
 
 > [!IMPORTANT]
-> Azure AD Domain Services resource forest only supports a one-way forest trust to on-premises Active Directory.
+> Azure AD Domain Services doménová struktura prostředků podporuje pouze jednosměrnou důvěryhodnost doménové struktury k místní službě Active Directory.
 
-### <a name="forest-trust-requirements"></a>Forest trust requirements
+### <a name="forest-trust-requirements"></a>Požadavky vztahu důvěryhodnosti doménové struktury
 
-Before you can create a forest trust, you need to verify you have the correct Domain Name System (DNS) infrastructure in place. Forest trusts can only be created when one of the following DNS configurations is available:
+Než budete moct vytvořit vztah důvěryhodnosti doménové struktury, musíte ověřit, jestli máte zavedenou správnou infrastrukturu DNS (Domain Name System). Vztahy důvěryhodnosti doménové struktury lze vytvořit pouze v případě, že je k dispozici jedna z následujících konfigurací služby DNS:
 
-* A single root DNS server is the root DNS server for both forest DNS namespaces - the root zone contains delegations for each of the DNS namespaces and the root hints of all DNS servers include the root DNS server.
-* Where there is no shared root DNS server, and the root DNS servers for each forest DNS namespace use DNS conditional forwarders for each DNS namespace to route queries for names in the other namespace.
+* Jeden kořenový server DNS je kořenový server DNS pro oba obory názvů DNS doménové struktury – kořenová zóna obsahuje delegování pro každý obor názvů DNS a kořenové odkazy všech serverů DNS zahrnuje kořenový server DNS.
+* V případě, že není k dispozici žádný sdílený kořenový server DNS, a kořenové servery DNS pro každý obor názvů DNS doménové struktury používají pro každý obor názvů DNS pro směrování dotazů na názvy v jiném oboru názvů DNS podmíněné předávací služby DNS.
 
     > [!IMPORTANT]
-    > Azure AD Domain Services resource forest must use this DNS configuration. Hosting a DNS namespace other than the resource forest DNS namespace is not a feature of Azure AD Domain Services. Conditional forwarders is the proper configuration.
+    > Tato konfigurace DNS musí používat Azure AD Domain Services doménová struktura prostředků. Hostování jiného oboru názvů DNS, než je obor názvů DNS doménové struktury prostředků, není funkce Azure AD Domain Services. Je vhodná konfigurace pro podmíněné dopředné.
 
-* Where there is no shared root DNS server, and the root DNS servers for each forest DNS namespace are use DNS secondary zones are configured in each DNS namespace to route queries for names in the other namespace.
+* Pokud není žádný sdílený kořenový server DNS a kořenové servery DNS pro každý obor názvů DNS doménové struktury používají sekundární zóny DNS, nakonfigurují se v každém oboru názvů DNS na směrování dotazů na názvy v jiném oboru názvů.
 
-To create a forest trust, you must be a member of the Domain Admins group (in the forest root domain) or the Enterprise Admins group in Active Directory. Each trust is assigned a password that the administrators in both forests must know. Members of Enterprise Admins in both forests can create the trusts in both forests at once and, in this scenario, a password that is cryptographically random is automatically generated and written for both forests.
+Chcete-li vytvořit vztah důvěryhodnosti doménové struktury, musíte být členem skupiny Domain Admins (v kořenové doméně doménové struktury) nebo skupiny Enterprise Admins ve službě Active Directory. Každému vztahu důvěryhodnosti je přiřazeno heslo, které musí znát správci v obou doménových strukturách. Členové skupiny Enterprise Admins v obou doménových strukturách můžou vytvářet vztahy důvěryhodnosti v obou doménových strukturách najednou a v tomto případě je heslo, které je kryptograficky náhodné, automaticky vygenerováno a napsáno pro obě doménové struktury.
 
-The outbound forest trust for Azure AD Domain Services is created in the Azure portal. You don't manually create the trust with the managed domain itself. The incoming forest trust must be configured by a user with the privileges previously noted in the on-premises Active Directory.
+V Azure Portal se vytvoří odchozí vztah důvěryhodnosti doménové struktury pro Azure AD Domain Services. Nemusíte ručně vytvořit vztah důvěryhodnosti se samotnou spravovanou doménou. Příchozí vztah důvěryhodnosti doménové struktury musí být nakonfigurovaný uživatelem s oprávněními, která se dřív poznamenala v místní službě Active Directory.
 
-## <a name="trust-processes-and-interactions"></a>Trust processes and interactions
+## <a name="trust-processes-and-interactions"></a>Vztahy důvěryhodnosti procesů a interakcí
 
-Many inter-domain and inter-forest transactions depend on domain or forest trusts in order to complete various tasks. This section describes the processes and interactions that occur as resources are accessed across trusts and authentication referrals are evaluated.
+Mnoho transakcí mezi doménami a mezi doménovými strukturami závisí na vztahu důvěryhodnosti domény nebo doménové struktury, aby bylo možné dokončit různé úlohy. V této části jsou popsány procesy a interakce, ke kterým dochází v případě, že se k prostředkům přistupovaly v rámci vztahů důvěryhodnosti.
 
-### <a name="overview-of-authentication-referral-processing"></a>Overview of Authentication Referral Processing
+### <a name="overview-of-authentication-referral-processing"></a>Přehled zpracování odkazů ověřování
 
-When a request for authentication is referred to a domain, the domain controller in that domain must determine whether a trust relationship exists with the domain from which the request comes. The direction of the trust and whether the trust is transitive or nontransitive must also be determined before it authenticates the user to access resources in the domain. The authentication process that occurs between trusted domains varies according to the authentication protocol in use. The Kerberos V5 and NTLM protocols process referrals for authentication to a domain differently
+Pokud je žádost o ověření odkazována na doménu, musí řadič domény v této doméně určit, zda existuje vztah důvěryhodnosti s doménou, ze které pochází požadavek. Aby bylo možné získat přístup k prostředkům v doméně, je třeba určit směr vztahu důvěryhodnosti a informace o tom, zda je vztah důvěryhodnosti nebo nepřenosný. Proces ověřování, který probíhá mezi důvěryhodnými doménami, se liší podle používaného ověřovacího protokolu. Protokoly Kerberos V5 a NTLM zpracovávají odkazy pro ověřování do domény odlišně.
 
-### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 Referral Processing
+### <a name="kerberos-v5-referral-processing"></a>Zpracování odkazů protokolu Kerberos V5
 
-The Kerberos V5 authentication protocol is dependent on the Net Logon service on domain controllers for client authentication and authorization information. The Kerberos protocol connects to an online Key Distribution Center (KDC) and the Active Directory account store for session tickets.
+Ověřovací protokol Kerberos V5 závisí na službě přihlášení k síti na řadičích domény pro informace o ověřování a autorizaci klientů. Protokol Kerberos se připojuje ke službě KDC (online služba KDC (Key Distribution Center)) a úložišti účtů služby Active Directory pro lístky relací.
 
-The Kerberos protocol also uses trusts for cross-realm ticket-granting services (TGS) and to validate Privilege Attribute Certificates (PACs) across a secured channel. The Kerberos protocol performs cross-realm authentication only with non-Windows-brand operating system Kerberos realms such as an MIT Kerberos realm and does not need to interact with the Net Logon service.
+Protokol Kerberos používá také vztahy důvěryhodnosti pro služby udělování lístků (TGS) mezi sférami a k ověřování certifikátů atributů oprávnění (PACs) napříč zabezpečeným kanálem. Protokol Kerberos provádí ověřování mezi sférami jenom s sférami protokolu Kerberos v operačním systému, které nepoužívají Windows, jako je například sféra protokolu MIT Kerberos, a nemusí komunikovat se službou přihlašování k síti.
 
-If the client uses Kerberos V5 for authentication, it requests a ticket to the server in the target domain from a domain controller in its account domain. The Kerberos KDC acts as a trusted intermediary between the client and server and provides a session key that enables the two parties to authenticate each other. If the target domain is different from the current domain, the KDC follows a logical process to determine whether an authentication request can be referred:
+Pokud klient používá k ověřování protokol Kerberos V5, požádá o lístek na server v cílové doméně z řadiče domény ve své doméně účtu. Služba KDC protokolu Kerberos funguje jako důvěryhodný prostředník mezi klientem a serverem a poskytuje klíč relace, který oběma stranám umožňuje vzájemné ověřování. Pokud je cílová doména odlišná od aktuální domény, služba KDC sleduje logický proces a určí, jestli se dá odkazovat na žádost o ověření:
 
-1. Is the current domain trusted directly by the domain of the server that is being requested?
-    * If yes, send the client a referral to the requested domain.
-    * If no, go to the next step.
+1. Je aktuální doména důvěryhodná přímo doménou serveru, který je požadován?
+    * Pokud ano, pošlete klientovi odkaz na požadovanou doménu.
+    * Pokud ne, pokračujte na další krok.
 
-2. Does a transitive trust relationship exist between the current domain and the next domain on the trust path?
-    * If yes, send the client a referral to the next domain on the trust path.
-    * If no, send the client a logon-denied message.
+2. Existuje mezi aktuální doménou a další doménou v cestě vztahu důvěryhodnosti vztah přenosné důvěryhodnosti?
+    * Pokud ano, pošlete klientovi odkaz na další doménu v cestě důvěryhodnosti.
+    * Pokud ne, pošlete klientovi zprávu o odepřeném přihlášení.
 
-### <a name="ntlm-referral-processing"></a>NTLM Referral Processing
+### <a name="ntlm-referral-processing"></a>Zpracování odkazů protokolu NTLM
 
-The NTLM authentication protocol is dependent on the Net Logon service on domain controllers for client authentication and authorization information. This protocol authenticates clients that do not use Kerberos authentication. NTLM uses trusts to pass authentication requests between domains.
+Ověřovací protokol NTLM závisí na službě přihlášení k síti na řadičích domény pro informace o ověřování a autorizaci klientů. Tento protokol ověřuje klienty, kteří nepoužívají ověřování pomocí protokolu Kerberos. Protokol NTLM používá vztahy důvěryhodnosti k předávání žádostí o ověření mezi doménami.
 
-If the client uses NTLM for authentication, the initial request for authentication goes directly from the client to the resource server in the target domain. This server creates a challenge to which the client responds. The server then sends the user's response to a domain controller in its computer account domain. This domain controller checks the user account against its security accounts database.
+Pokud klient používá pro ověřování protokol NTLM, počáteční požadavek na ověření směřuje přímo z klienta na server prostředků v cílové doméně. Tento server vytvoří výzvu, na kterou klient odpoví. Server pak pošle reakci uživatele na řadič domény v doméně svého účtu počítače. Tento řadič domény zkontroluje uživatelský účet s databází zabezpečení účtů.
 
-If the account does not exist in the database, the domain controller determines whether to perform pass-through authentication, forward the request, or deny the request by using the following logic:
+Pokud účet v databázi neexistuje, řadič domény určí, jestli se má provést předávací ověřování, předání žádosti nebo zamítnutí žádosti pomocí následující logiky:
 
-1. Does the current domain have a direct trust relationship with the user's domain?
-    * If yes, the domain controller sends the credentials of the client to a domain controller in the user's domain for pass-through authentication.
-    * If no, go to the next step.
+1. Má aktuální doména vztah s přímým vztahem důvěryhodnosti s doménou uživatele?
+    * Pokud ano, řadič domény pošle přihlašovací údaje klienta k řadiči domény v doméně uživatele pro předávací ověřování.
+    * Pokud ne, pokračujte na další krok.
 
-2. Does the current domain have a transitive trust relationship with the user's domain?
-    * If yes, pass the authentication request on to the next domain in the trust path. This domain controller repeats the process by checking the user's credentials against its own security accounts database.
-    * If no, send the client a logon-denied message.
+2. Má aktuální doména vztah přenosného vztahu důvěryhodnosti s doménou uživatele?
+    * Pokud ano, předejte žádost o ověření k další doméně v cestě vztahu důvěryhodnosti. Tento řadič domény tento proces zopakuje kontrolou přihlašovacích údajů uživatele proti vlastní databázi účtů zabezpečení.
+    * Pokud ne, pošlete klientovi zprávu o odepřeném přihlášení.
 
-### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>Kerberos-Based Processing of Authentication Requests Over Forest Trusts
+### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>Zpracování žádostí o ověření pomocí protokolu Kerberos na základě vztahů důvěryhodnosti doménové struktury
 
-When two forests are connected by a forest trust, authentication requests made using the Kerberos V5 or NTLM protocols can be routed between forests to provide access to resources in both forests.
+Pokud je mezi doménovými strukturami propojeny dvě doménové struktury, požadavky na ověřování vytvořené pomocí protokolů Kerberos V5 nebo NTLM je možné směrovat mezi doménovou strukturou, aby poskytovaly přístup k prostředkům v obou doménových strukturách.
 
-When a forest trust is first established, each forest collects all of the trusted namespaces in its partner forest and stores the information in a [trusted domain object](#trusted-domain-object). Trusted namespaces include domain tree names, user principal name (UPN) suffixes, service principal name (SPN) suffixes, and security ID (SID) namespaces used in the other forest. TDO objects are replicated to the global catalog.
+Při prvním navázání vztahu důvěryhodnosti doménové struktury shromáždí každá doménová struktura všechny důvěryhodné obory názvů ve své partnerské struktuře partnerů a uloží je do [objektu důvěryhodné domény](#trusted-domain-object). Mezi důvěryhodné obory názvů patří názvy doménových struktur, přípony hlavního názvu uživatele (UPN), přípony hlavního názvu služby (SPN) a obory názvů identifikátoru zabezpečení (SID) používané v jiné doménové struktuře. Objekty objektu pro replikaci se replikují do globálního katalogu.
 
-Before authentication protocols can follow the forest trust path, the service principal name (SPN) of the resource computer must be resolved to a location in the other forest. An SPN can be one of the following:
+Než mohou ověřovací protokoly sledovat cestu vztahu důvěryhodnosti doménové struktury, musí být hlavní název služby (SPN) počítače prostředku přeložen do umístění v jiné doménové struktuře. Hlavní název služby (SPN) může být jeden z následujících:
 
-* The DNS name of a host.
-* The DNS name of a domain.
-* The distinguished name of a service connection point object.
+* Název DNS hostitele.
+* Název DNS domény.
+* Rozlišující název objektu spojovacího bodu služby.
 
-When a workstation in one forest attempts to access data on a resource computer in another forest, the Kerberos authentication process contacts the domain controller for a service ticket to the SPN of the resource computer. Once the domain controller queries the global catalog and determines that the SPN is not in the same forest as the domain controller, the domain controller sends a referral for its parent domain back to the workstation. At that point, the workstation queries the parent domain for the service ticket and continues to follow the referral chain until it reaches the domain where the resource is located.
+Když se pracovní stanice v jedné doménové struktuře pokusí získat přístup k datům v počítači prostředků v jiné doménové struktuře, proces ověřování protokolu Kerberos kontaktuje řadič domény pro lístek služby na hlavní název služby (SPN) počítače prostředku. Jakmile řadič domény zadá dotaz na globální katalog a zjistí, že hlavní název služby není ve stejné doménové struktuře jako řadič domény, odešle řadič domény odkaz na svou nadřazenou doménu zpátky na pracovní stanici. V tomto okamžiku pracovní stanice zadá dotaz na nadřazenou doménu pro lístek služby a pokračuje podle řetězce odkazů, dokud nedosáhne domény, ve které je prostředek umístěný.
 
-The following diagram and steps provide a detailed description of the Kerberos authentication process that's used when computers running Windows attempt to access resources from a computer located in another forest.
+Následující diagram a kroky poskytují podrobný popis procesu ověřování protokolu Kerberos, který se používá, když se počítače se systémem Windows pokusí získat přístup k prostředkům z počítače umístěného v jiné doménové struktuře.
 
-![Diagram of the Kerberos process over a forest trust](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![Diagram procesu Kerberos přes vztah důvěryhodnosti doménové struktury](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
 
-1. *User1* logs on to *Workstation1* using credentials from the *europe.tailspintoys.com* domain. The user then attempts to access a shared resource on *FileServer1* located in the *usa.wingtiptoys.com* forest.
+1. *Uživatel1* se přihlásí k *Workstation1* pomocí přihlašovacích údajů z domény *Europe.tailspintoys.com* . Uživatel se pak pokusí získat přístup ke sdílenému prostředku ve složce *Server1* umístěné v doménové struktuře *USA.wingtiptoys.com* .
 
-2. *Workstation1* contacts the Kerberos KDC on a domain controller in its domain, *ChildDC1*, and requests a service ticket for the *FileServer1* SPN.
+2. *Workstation1* kontaktuje službu KDC protokolu Kerberos v řadiči domény ve své doméně, *ChildDC1*a požádá o lístek služby pro *hlavní název* služby (SPN).
 
-3. *ChildDC1* does not find the SPN in its domain database and queries the global catalog to see if any domains in the *tailspintoys.com* forest contain this SPN. Because a global catalog is limited to its own forest, the SPN is not found.
+3. *ChildDC1* nenajde hlavní název služby (SPN) v doméně databáze a dotazuje se na globální katalog, aby bylo možné zjistit, zda některé domény v doménové struktuře *tailspintoys.com* obsahují tento název SPN. Vzhledem k tomu, že globální katalog je omezený na vlastní doménovou strukturu, hlavní název služby se nenalezne.
 
-    The global catalog then checks its database for information about any forest trusts that are established with its forest. If found, it compares the name suffixes listed in the forest trust trusted domain object (TDO) to the suffix of the target SPN to find a match. Once a match is found, the global catalog provides a routing hint back to *ChildDC1*.
+    Globální katalog potom zkontroluje svou databázi, kde zjistí informace o všech vztazích důvěryhodnosti doménové struktury, které jsou vytvořeny s doménovou strukturou. Pokud se najde, porovná přípony názvů uvedené v doménové struktuře Trust Object (důvěryhodné domény) k příponě cílového hlavního názvu služby (SPN), aby nalezla shodu. Po nalezení shody globální katalog poskytne doporučení směrování zpátky na *ChildDC1*.
 
-    Routing hints help direct authentication requests toward the destination forest. Hints are only used when all traditional authentication channels, such as local domain controller and then global catalog, fail to locate a SPN.
+    Pomocné parametry směrování vám pomůžou s přímými požadavky na ověřování směrem k cílové doménové struktuře. Pomocné parametry se používají jenom v případě, že se hlavní název služby (SPN) nepodaří najít u všech tradičních ověřovacích kanálů, jako je místní řadič domény a pak globální katalog.
 
-4. *ChildDC1* sends a referral for its parent domain back to *Workstation1*.
+4. *ChildDC1* odešle odkaz na svou nadřazenou doménu zpět na *Workstation1*.
 
-5. *Workstation1* contacts a domain controller in *ForestRootDC1* (its parent domain) for a referral to a domain controller (*ForestRootDC2*) in the forest root domain of the *wingtiptoys.com* forest.
+5. *Workstation1* kontaktuje řadič domény v *ForestRootDC1* (jeho nadřazená doména) pro odkaz na řadič domény (*ForestRootDC2*) v kořenové doméně doménové struktury *wingtiptoys.com* .
 
-6. *Workstation1* contacts *ForestRootDC2* in the *wingtiptoys.com* forest for a service ticket to the requested service.
+6. *Workstation1* kontakty *ForestRootDC2* v doménové struktuře *wingtiptoys.com* pro lístek služby na požadovanou službu.
 
-7. *ForestRootDC2* contacts its global catalog to find the SPN, and the global catalog finds a match for the SPN and sends it back to *ForestRootDC2*.
+7. *ForestRootDC2* kontaktuje svůj globální katalog, aby našel hlavní název služby (SPN), a globální katalog najde shodu pro hlavní název služby (SPN) a odešle ho zpátky do *ForestRootDC2*.
 
-8. *ForestRootDC2* then sends the referral to *usa.wingtiptoys.com* back to *Workstation1*.
+8. *ForestRootDC2* pak odešle odkaz na *USA.wingtiptoys.com* zpět na *Workstation1*.
 
-9. *Workstation1* contacts the KDC on *ChildDC2* and negotiates the ticket for *User1* to gain access to *FileServer1*.
+9. *Workstation1* kontaktuje službu KDC na *ChildDC2* a vyjednává lístek pro *Uživatel1* , aby získal přístup k souborům *Server1*.
 
-10. Once *Workstation1* has a service ticket, it sends the service ticket to *FileServer1*, which reads *User1*'s security credentials and constructs an access token accordingly.
+10. Jakmile *Workstation1* má lístek služby, pošle lístek služby do příkazu *Server1*, který přečte přihlašovací údaje zabezpečení *user1*a podle toho vytvoří token pro přístup.
 
-## <a name="trusted-domain-object"></a>Trusted domain object
+## <a name="trusted-domain-object"></a>Objekt důvěryhodné domény
 
-Each domain or forest trust within an organization is represented by a Trusted Domain Object (TDO) stored in the *System* container within its domain.
+Každý vztah důvěryhodnosti domény nebo doménové struktury v rámci organizace je reprezentován objektem důvěryhodné domény, který je uložený v kontejneru *System* v rámci příslušné domény.
 
-### <a name="tdo-contents"></a>TDO contents
+### <a name="tdo-contents"></a>Obsah pro
 
-The information contained in a TDO varies depending on whether a TDO was created by a domain trust or by a forest trust.
+Informace obsažené v poli se liší v závislosti na tom, jestli byl objekt pro vytváření domén vytvořený pomocí vztahu důvěryhodnosti domény nebo vztahu důvěryhodnosti doménové struktury.
 
-When a domain trust is created, attributes such as the DNS domain name, domain SID, trust type, trust transitivity, and the reciprocal domain name are represented in the TDO. Forest trust TDOs store additional attributes to identify all of the trusted namespaces from the partner forest. These attributes include domain tree names, user principal name (UPN) suffixes, service principal name (SPN) suffixes, and security ID (SID) namespaces.
+Když se vytvoří vztah důvěryhodnosti domény, ve kterém se nachází atributy, jako je název domény DNS, identifikátor SID domény, typ důvěryhodnosti, Přenositelnost vztahu důvěryhodnosti a název protější domény. Vztah důvěryhodnosti doménové struktury TDOs ukládá další atributy pro identifikaci všech důvěryhodných oborů názvů z partnerské struktury partnera. Mezi tyto atributy patří názvy doménových struktur, přípony hlavního názvu uživatele (UPN), přípony hlavního názvu služby (SPN) a obory názvů IDENTIFIKÁTORu zabezpečení (SID).
 
-Because trusts are stored in Active Directory as TDOs, all domains in a forest have knowledge of the trust relationships that are in place throughout the forest. Similarly, when two or more forests are joined together through forest trusts, the forest root domains in each forest have knowledge of the trust relationships that are in place throughout all of the domains in trusted forests.
+Vzhledem k tomu, že vztahy důvěryhodnosti jsou uloženy ve službě Active Directory jako TDOs, všechny domény v doménové struktuře mají znalosti o vztazích vztahů důvěryhodnosti, které jsou umístěny v celé doménové struktuře. Podobně platí, že pokud jsou dvě nebo více doménových struktur propojených prostřednictvím vztahů důvěryhodnosti doménové struktury, kořenové domény doménové struktury v každé doménové struktuře mají znalosti o vztazích vztahů důvěryhodnosti, které jsou umístěny v rámci všech domén v důvěryhodných doménových strukturách.
 
-### <a name="tdo-password-changes"></a>TDO password changes
+### <a name="tdo-password-changes"></a>Změny hesla pro heslo
 
-Both domains in a trust relationship share a password, which is stored in the TDO object in Active Directory. As part of the account maintenance process, every 30 days the trusting domain controller changes the password stored in the TDO. Because all two-way trusts are actually two one-way trusts going in opposite directions, the process occurs twice for two-way trusts.
+Obě domény ve vztahu důvěryhodnosti sdílejí heslo, které je uloženo v objektu objektů úložiště ve službě Active Directory. V rámci procesu údržby účtu každých 30 dnů změní důvěřující řadič domény heslo uložené v řadiči domény. Vzhledem k tomu, že všechny obousměrné vztahy důvěryhodnosti jsou ve skutečnosti 2 1 vztahy důvěryhodnosti v opačném směru, proces se pro oboustranné vztahy důvěryhodnosti vyskytuje dvakrát.
 
-A trust has a trusting and a trusted side. On the trusted side, any writable domain controller can be used for the process. On the trusting side, the PDC emulator performs the password change.
+Vztah důvěryhodnosti má důvěřující a důvěryhodnou stranu. Na straně důvěryhodné se dá k procesu použít libovolný zapisovatelný řadič domény. Na straně vztahu důvěryhodnosti provede emulátor primárního řadiče domény změnu hesla.
 
-To change a password, the domain controllers complete the following process:
+K provedení změny hesla řadiče domény dokončí následující postup:
 
-1. The primary domain controller (PDC) emulator in the trusting domain creates a new password. A domain controller in the trusted domain never initiates the password change. It's always initiated by the trusting domain PDC emulator.
+1. Emulátor primárního řadiče domény v důvěřující doméně vytvoří nové heslo. Řadič domény v důvěryhodné doméně nikdy neinicializuje změnu hesla. Je vždy iniciována důvěryhodným emulátorem primárního řadiče domény.
 
-2. The PDC emulator in the trusting domain sets the *OldPassword* field of the TDO object to the current *NewPassword* field.
+2. Emulátor primárního řadiče domény v důvěřující doméně nastaví pole *oldPassword* objektu na aktuální pole *nové_heslo* .
 
-3. The PDC emulator in the trusting domain sets the *NewPassword* field of the TDO object to the new password. Keeping a copy of the previous password makes it possible to revert to the old password if the domain controller in the trusted domain fails to receive the change, or if the change is not replicated before a request is made that uses the new trust password.
+3. Emulátor primárního řadiče domény v důvěřující doméně nastaví pole *nové_heslo* objektu na nové heslo. Když si kopii předchozího hesla zachováte, můžete se vrátit k původnímu heslu v případě, že se řadič domény v důvěryhodné doméně nepovede změnit, nebo pokud se změna nereplikuje předtím, než se vytvoří žádost, která používá nové heslo vztahu důvěryhodnosti.
 
-4. The PDC emulator in the trusting domain makes a remote call to a domain controller in the trusted domain asking it to set the password on the trust account to the new password.
+4. Emulátor primárního řadiče domény v důvěřující doméně vytvoří vzdálené volání řadiče domény v důvěryhodné doméně, aby na něj nastavila heslo pro účet důvěry na nové heslo.
 
-5. The domain controller in the trusted domain changes the trust password to the new password.
+5. Řadič domény v důvěryhodné doméně změní heslo vztahu důvěryhodnosti na nové heslo.
 
-6. On each side of the trust, the updates are replicated to the other domain controllers in the domain. In the trusting domain, the change triggers an urgent replication of the trusted domain object.
+6. Na každé straně vztahu důvěryhodnosti se aktualizace replikují do ostatních řadičů domény v doméně. V důvěřující doméně vyvolá změna naléhavou replikaci objektu důvěryhodné domény.
 
-The password is now changed on both domain controllers. Normal replication distributes the TDO objects to the other domain controllers in the domain. However, it's possible for the domain controller in the trusting domain to change the password without successfully updating a domain controller in the trusted domain. This scenario might occur because a secured channel, which is required to process the password change, couldn't be established. It's also possible that the domain controller in the trusted domain might be unavailable at some point during the process and might not receive the updated password.
+Heslo je nyní změněno na obou řadičích domény. Normální replikace distribuuje objekty objektu datacontroller na ostatní řadiče domény v doméně. Je ale možné, že řadič domény v důvěřující doméně změní heslo, aniž by se úspěšně aktualizoval řadič domény v důvěryhodné doméně. K tomuto scénáři může dojít, protože zabezpečený kanál, který je nutný ke zpracování změny hesla, se nedal zřídit. Je také možné, že řadič domény v důvěryhodné doméně nemusí být v určitém okamžiku během procesu k dispozici a nemusí získat aktualizované heslo.
 
-To deal with situations in which the password change isn't successfully communicated, the domain controller in the trusting domain never changes the new password unless it has successfully authenticated (set up a secured channel) using the new password. This behavior is why both the old and new passwords are kept in the TDO object of the trusting domain.
+Pokud se chcete zabývat situací, kdy se změna hesla úspěšně nekomunikuje, řadič domény v důvěřující doméně nikdy nemění nové heslo, pokud se úspěšně neověřil (nastavení zabezpečeného kanálu) pomocí nového hesla. To je důvod, proč se stará i nová hesla uchovávají v objektu důvěryhodné domény.
 
-A password change isn't finalized until authentication using the password succeeds. The old, stored password can be used over the secured channel until the domain controller in the trusted domain receives the new password, thus enabling uninterrupted service.
+Změna hesla není dokončena, dokud nebude ověřování pomocí hesla úspěšné. Staré uložené heslo lze použít přes zabezpečený kanál, dokud řadič domény v důvěryhodné doméně neobdrží nové heslo, čímž povolí nepřerušenou službu.
 
-If authentication using the new password fails because the password is invalid, the trusting domain controller tries to authenticate using the old password. If it authenticates successfully with the old password, it resumes the password change process within 15 minutes.
+Pokud ověřování pomocí nového hesla neproběhne úspěšně, protože heslo je neplatné, pokusí se důvěřující řadič domény ověřit pomocí starého hesla. Pokud se úspěšně ověřuje pomocí starého hesla, pokračuje proces změny hesla během 15 minut.
 
-Trust password updates need to replicate to the domain controllers of both sides of the trust within 30 days. If the trust password is changed after 30 days and a domain controller then only has the N-2 password, it cannot use the trust from the trusting side and cannot create a secure channel on the trusted side.
+Aktualizace hesel trustu se musí replikovat na řadiče domény obou stran důvěry do 30 dnů. Pokud je heslo vztahu důvěryhodnosti změněno po 30 dnech a řadič domény pak má pouze heslo N-2, nemůže použít vztah důvěryhodnosti ze strany vztahu důvěryhodnosti a nemůže vytvořit zabezpečený kanál na důvěryhodné straně.
 
-## <a name="network-ports-used-by-trusts"></a>Network ports used by trusts
+## <a name="network-ports-used-by-trusts"></a>Síťové porty používané vztahy důvěryhodnosti
 
-Because trusts must be deployed across various network boundaries, they might have to span one or more firewalls. When this is the case, you can either tunnel trust traffic across a firewall or open specific ports in the firewall to allow the traffic to pass through.
+Vzhledem k tomu, že vztahy důvěryhodnosti musí být nasazeny napříč různými hranicemi sítě, může být nutné rozložit jednu nebo více bran firewall. Pokud se jedná o tento případ, můžete buď tunelovat vztah důvěryhodnosti přes bránu firewall nebo otevřít konkrétní porty v bráně firewall, aby bylo možné předávání provozu.
 
 > [!IMPORTANT]
-> Active Directory Domain Services does not support restricting Active Directory RPC traffic to specific ports.
+> Active Directory Domain Services nepodporuje omezení provozu služby Active Directory RPC na konkrétní porty.
 
-Read the **Windows Server 2008 and later versions** section of the Microsoft Support Article [How to configure a firewall for Active Directory domains and trusts](https://support.microsoft.com/help/179442/how-to-configure-a-firewall-for-domains-and-trusts) to learn about the ports needed for a forest trust.
+Přečtěte si část podpora Microsoftu článku o **Windows serveru 2008 a novějších verzích** , [jak nakonfigurovat bránu firewall pro domény služby Active Directory a vztahy důvěryhodnosti](https://support.microsoft.com/help/179442/how-to-configure-a-firewall-for-domains-and-trusts) , abyste se dozvěděli o portech potřebných pro vztah důvěryhodnosti doménové struktury.
 
-## <a name="supporting-services-and-tools"></a>Supporting services and tools
+## <a name="supporting-services-and-tools"></a>Podpůrné služby a nástroje
 
-To support trusts and authentication, some additional features and management tools are used.
+Pro podporu vztahů důvěryhodnosti a ověřování se používají některé další funkce a nástroje pro správu.
 
-### <a name="net-logon"></a>Net Logon
+### <a name="net-logon"></a>Přihlášení k síti
 
-The Net Logon service maintains a secured channel from a Windows-based computer to a DC. It's also used in the following trust-related processes:
+Služba přihlášení k síti udržuje zabezpečený kanál z počítače se systémem Windows do řadiče domény. Používá se také v následujících procesech souvisejících s důvěryhodností:
 
-* Trust setup and management - Net Logon helps maintain trust passwords, gathers trust information, and verifies trusts by interacting with the LSA process and the TDO.
+* Nastavení a Správa důvěryhodnosti – přihlášení k síti pomáhá udržovat hesla důvěry, shromažďuje informace o důvěryhodnosti a ověřuje vztahy důvěryhodnosti pomocí interakce s procesem LSA a s DOMÉNou.
 
-    For Forest trusts, the trust information includes the Forest Trust Information (*FTInfo*) record, which includes the set of namespaces that a trusted forest claims to manage, annotated with a field that indicates whether each claim is trusted by the trusting forest.
+    U vztahů důvěryhodnosti doménové struktury obsahují informace o vztahu důvěryhodnosti záznam o vztahu důvěryhodnosti doménové struktury (*FTInfo*), který zahrnuje sadu oborů názvů, které důvěryhodná doménová struktura spravuje, s použitím pole, které indikuje, jestli je každá deklarace identity důvěřující doménové struktuře.
 
-* Authentication – Supplies user credentials over a secured channel to a domain controller and returns the domain SIDs and user rights for the user.
+* Ověřování – poskytuje přihlašovací údaje uživatele přes zabezpečený kanál k řadiči domény a vrací identifikátory SID domény a uživatelská práva pro uživatele.
 
-* Domain controller location – Helps with finding or locating domain controllers in a domain or across domains.
+* Umístění řadiče domény – pomáhá najít nebo vyhledat řadiče domény v doméně nebo napříč doménami.
 
-* Pass-through validation – Credentials of users in other domains are processed by Net Logon. When a trusting domain needs to verify the identity of a user, it passes the user's credentials through Net Logon to the trusted domain for verification.
+* Předávací ověřování – přihlašovací údaje uživatelů v jiných doménách jsou zpracovávány pomocí příkazu Net Logon. Když důvěřující doména potřebuje ověřit identitu uživatele, předá přihlašovací údaje uživatele pomocí příkazu Net Logon k důvěryhodné doméně za účelem ověření.
 
-* Privilege Attribute Certificate (PAC) verification – When a server using the Kerberos protocol for authentication needs to verify the PAC in a service ticket, it sends the PAC across the secure channel to its domain controller for verification.
+* Ověření certifikátu PAC (Privileged Certificate) – Pokud server, který používá protokol Kerberos pro ověřování, musí ověřit PAC v lístku služby, pošle PAC přes zabezpečený kanál na jeho řadič domény a ověří tak ověření.
 
-### <a name="local-security-authority"></a>Local Security Authority
+### <a name="local-security-authority"></a>Místní autorita zabezpečení
 
-The Local Security Authority (LSA) is a protected subsystem that maintains information about all aspects of local security on a system. Collectively known as local security policy, the LSA provides various services for translation between names and identifiers.
+Místní úřad zabezpečení (LSA) je chráněný podsystém, který uchovává informace o všech aspektech místního zabezpečení v systému. V zásadě označované jako místní zásady zabezpečení poskytuje LSA různé služby pro překlad mezi názvy a identifikátory.
 
-The LSA security subsystem provides services in both kernel mode and user mode for validating access to objects, checking user privileges, and generating audit messages. LSA is responsible for checking the validity of all session tickets presented by services in trusted or untrusted domains.
+Subsystém zabezpečení LSA poskytuje služby v režimu jádra i v uživatelském režimu pro ověřování přístupu k objektům, kontrolu uživatelských oprávnění a generování zpráv auditu. LSA zodpovídá za kontrolu platnosti všech lístků relací prezentovaných službami v důvěryhodných nebo nedůvěryhodných doménách.
 
 ### <a name="management-tools"></a>Nástroje pro správu
 
-Administrators can use *Active Directory Domains and Trusts*, *Netdom* and *Nltest* to expose, create, remove, or modify trusts.
+Správci můžou *domény a vztahy důvěryhodnosti služby Active Directory*používat *k* vystavení, vytváření, odebírání a úpravám vztahů důvěryhodnosti.
 
-* *Active Directory Domains and Trusts* is the Microsoft Management Console (MMC) that is used to administer domain trusts, domain and forest functional levels, and user principal name suffixes.
-* The *Netdom* and *Nltest* command-line tools can be used to find, display, create, and manage trusts. These tools communicate directly with the LSA authority on a domain controller.
+* *Domény a vztahy důvěryhodnosti služby Active Directory* je konzola MMC (Microsoft Management Console), která slouží ke správě vztahů důvěryhodnosti domén, úrovní funkčnosti domény a doménové struktury a přípon hlavního názvu uživatele.
+* Nástroje příkazového řádku *netdom* a *Nltest* lze použít k vyhledání, zobrazení, vytvoření a správě vztahů důvěryhodnosti. Tyto nástroje komunikují přímo s autoritou LSA na řadiči domény.
 
 ## <a name="next-steps"></a>Další kroky
 
-To learn more about resource forests, see [How do forest trusts work in Azure AD DS?][concepts-trust]
+Další informace o doménových strukturách prostředků najdete v tématu [jak vztahy důvěryhodnosti doménové struktury fungují v Azure služba AD DS?][concepts-trust]
 
-To get started with creating an Azure AD DS managed domain with a resource forest, see [Create and configure an Azure AD DS managed domain][tutorial-create-advanced]. You can then [Create an outbound forest trust to an on-premises domain (preview)][create-forest-trust].
+Pokud chcete začít s vytvářením spravované domény Azure služba AD DS pomocí doménové struktury prostředků, přečtěte si téma [Vytvoření a konfigurace spravované domény azure služba AD DS][tutorial-create-advanced]. Pak můžete [vytvořit odchozí vztah důvěryhodnosti doménové struktury k místní doméně (Preview)][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

@@ -57,11 +57,11 @@ Podporovaná jsou následující nastavení:
 
    * **Azurite: Host objektu BLOB** – koncový bod naslouchací služby BLOB Service. Výchozí nastavení je 127.0.0.1.
    * **Azurite: port objektu BLOB** – port naslouchání BLOB Service. Výchozí port je 10000.
-   * **Azurite: Debug** – výstup protokolu ladění do kanálu Azurite. Výchozí hodnota je **false**.
+   * **Azurite: Debug** – výstup protokolu ladění do kanálu Azurite. Výchozí hodnota je **false (NEPRAVDA**).
    * **Azurite: Location** – cesta k umístění pracovního prostoru. Výchozí je Visual Studio Code pracovní složka.
    * **Azurite: Queue Host** – koncový bod naslouchací služby služba front. Výchozí nastavení je 127.0.0.1.
    * **Azurite: port fronty** – port naslouchání služba front. Výchozí port je 10001.
-   * **Azurite: bezobslužný** bezobslužný režim zakáže protokol přístupu. Výchozí hodnota je **false**.
+   * **Azurite: bezobslužný** bezobslužný režim zakáže protokol přístupu. Výchozí hodnota je **false (NEPRAVDA**).
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Instalace a spuštění Azurite pomocí NPM
 

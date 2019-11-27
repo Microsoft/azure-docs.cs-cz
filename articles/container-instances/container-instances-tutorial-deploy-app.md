@@ -1,26 +1,21 @@
 ---
-title: Kurz – nasazení aplikace kontejneru do Azure Container Instances
+title: Kurz – nasazení aplikace kontejneru do instance kontejneru
 description: Azure Container Instances kurz 3 ze 3 – nasazení kontejnerové aplikace do Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f2890948dd15fa972104e4ef11001e83a2abd4f8
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: d3cbf16feea299e320cf7e24092d00e93cb7cf5b
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846584"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533350"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Kurz: nasazení aplikace typu kontejner do Azure Container Instances
 
 Toto je poslední kurz třídílné série. V předchozích částech série se [vytvářela image kontejneru](container-instances-tutorial-prepare-app.md) a [odesílala se do služby Azure Container Registry](container-instances-tutorial-prepare-acr.md). Tento článek sérii uzavírá nasazením kontejneru do služby Azure Container Instances.
 
-V tomto kurzu se naučíte:
+V tomto kurzu jste:
 
 > [!div class="checklist"]
 > * Nasadit kontejner ze služby Azure Container Registry do služby Azure Container Instances

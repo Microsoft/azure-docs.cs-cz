@@ -18,7 +18,7 @@ ms.locfileid: "74267956"
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Verze Preview služby Azure Firewall Manager je služba pro správu zabezpečení, která poskytuje centrální zásady zabezpečení a správu směrování pro hraniční zabezpečení na základě cloudu. Funguje s [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources), což je prostředek spravovaný Microsoftem, který umožňuje snadno vytvářet architektury hub a paprsků. Pokud jsou zásady zabezpečení a směrování přidruženy k takovému centru, označuje se jako *[zabezpečené virtuální rozbočovač](secured-virtual-hub.md)* . 
+Azure Firewall Manager Preview je služba pro správu zabezpečení, která nabízí centrální zásady zabezpečení a správu směrování pro cloudové bezpečnostní perimetry. Funguje s [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources), což je prostředek spravovaný Microsoftem, který umožňuje snadno vytvářet architektury hub a paprsků. Pokud jsou zásady zabezpečení a směrování přidruženy k takovému centru, označuje se jako *[zabezpečené virtuální rozbočovač](secured-virtual-hub.md)* . 
 
 ![firewall – správce](media/overview/firewallmanagerv3.png)
 
@@ -59,7 +59,7 @@ Verze Public Preview podporuje následující oblasti:
 
 - Západní Evropa, Severní Evropa, Francie – střed, Francie – jih, Velká Británie – jih Velká Británie – západ
 - Austrálie – východ, Austrálie – střed, Austrálie – střed 2, Austrálie – jihovýchod
-- Kanada – střed
+- Střední Kanada
 - Východní USA, Západní USA, Východní USA 2, Střed USA – jih, Západní USA 2, Střed USA, Střed USA – sever, Středozápadní USA
 
 Zásady Azure Firewall lze vytvořit pouze v těchto oblastech, ale lze je použít v různých oblastech. Můžete například vytvořit zásadu v Západní USA a použít ji v Východní USA. 

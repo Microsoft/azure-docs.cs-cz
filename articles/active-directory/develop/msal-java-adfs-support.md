@@ -1,7 +1,7 @@
 ---
-title: AD FS support in Microsoft Authentication Library for Java
+title: Podpora AD FS v knihovně Microsoft Authentication Library pro Java
 titleSuffix: Microsoft identity platform
-description: Learn about Active Directory Federation Services (AD FS) support in Microsoft Authentication Library for Java (MSAL4j).
+description: Přečtěte si o podpoře Active Directory Federation Services (AD FS) (AD FS) v knihovně Microsoft Authentication Library pro Java (MSAL4j).
 services: active-directory
 documentationcenter: dev-center-name
 author: sangonzal
@@ -25,32 +25,32 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74482082"
 ---
-# <a name="active-directory-federation-services-support-in-msal-for-java"></a>Active Directory Federation Services support in MSAL for Java
+# <a name="active-directory-federation-services-support-in-msal-for-java"></a>Podpora Active Directory Federation Services (AD FS) v MSAL pro Java
 
-Active Directory Federation Services (AD FS) in Windows Server enables you to add OpenID Connect and OAuth 2.0 based authentication and authorization to your Microsoft Authentication Library for Java (MSAL for Java) app. Once integrated, your app can authenticate users in AD FS, federated through Azure AD. For more information about scenarios, see [AD FS Scenarios for Developers](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
+Active Directory Federation Services (AD FS) (AD FS) ve Windows serveru vám umožní přidat ověřování a autorizaci na základě protokolu OAuth 2,0 pro aplikaci Microsoft Authentication Library pro Java (MSAL for Java). Po integraci aplikace může ověřit uživatele v AD FS federované prostřednictvím služby Azure AD. Další informace o scénářích najdete v tématu [AD FSch scénářů pro vývojáře](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
 
-An app that uses MSAL for Java will talk to Azure Active Directory (Azure AD), which then federates to AD FS.
+Aplikace, která používá MSAL pro Java, bude komunikovat s Azure Active Directory (Azure AD), která pak federuje na AD FS.
 
-MSAL for Java connects to Azure AD, which signs in users that are managed in Azure AD (managed users) or users managed by another identity provider such as AD FS (federated users). MSAL for Java doesn't  know that a user is federated. It simply talks to Azure AD.
+MSAL for Java se připojuje ke službě Azure AD, která přihlašuje uživatele spravované v Azure AD (spravované uživatele) nebo uživatele spravované jiným poskytovatelem identity, jako je AD FS (federované uživatele). MSAL for Java neví, že je uživatel federovaný. Jednoduše mluví s Azure AD.
 
-The [authority](msal-client-application-configuration.md#authority) you use in this case is the usual authority (authority host name + tenant, common, or organizations).
+[Autorita](msal-client-application-configuration.md#authority) , kterou použijete v tomto případě, je obvyklá autorita (název hostitele autority + tenant, Common nebo organizace).
 
-## <a name="acquire-a-token-interactively-for-a-federated-user"></a>Acquire a token interactively for a federated user
+## <a name="acquire-a-token-interactively-for-a-federated-user"></a>Interaktivní získání tokenu pro federovaného uživatele
 
-When you call `ConfidentialClientApplication.AcquireToken()` or `PublicClientApplication.AcquireToken()` with `AuthorizationCodeParameters` or `DeviceCodeParameters`, the user experience is typically:
+Když zavoláte `ConfidentialClientApplication.AcquireToken()` nebo `PublicClientApplication.AcquireToken()` pomocí `AuthorizationCodeParameters` nebo `DeviceCodeParameters`, uživatelské prostředí je obvykle:
 
-1. The user enters their account ID.
-2. Azure AD briefly displays "Taking you to your organization's page", and the user is redirected to the sign-in page of the identity provider. The sign-in page is usually customized with the logo of the organization.
+1. Uživatel zadá své ID účtu.
+2. Azure AD krátce zobrazuje "přebírá vás na stránku vaší organizace" a uživatel se přesměruje na přihlašovací stránku zprostředkovatele identity. Přihlašovací stránka se obvykle přizpůsobí s logem organizace.
 
-The supported AD FS versions in this federated scenario are:
-- Active Directory Federation Services FS v2
-- Active Directory Federation Services v3 (Windows Server 2012 R2)
-- Active Directory Federation Services v4 (AD FS 2016)
+Podporované verze AD FS v tomto federovaném scénáři jsou:
+- Active Directory Federation Services (AD FS) FS v2
+- Active Directory Federation Services (AD FS) V3 (Windows Server 2012 R2)
+- Active Directory Federation Services (AD FS) v4 (AD FS 2016)
 
-## <a name="acquire-a-token-via-username-and-password"></a>Acquire a token via username and password
+## <a name="acquire-a-token-via-username-and-password"></a>Získání tokenu prostřednictvím uživatelského jména a hesla
 
-When you acquire a token using `ConfidentialClientApplication.AcquireToken()` or `PublicClientApplication.AcquireToken()` with `IntegratedWindowsAuthenticationParameters` or `UsernamePasswordParameters`, MSAL for Java gets the identity provider to contact based on the username. MSAL for Java gets a [SAML 1.1 token](reference-saml-tokens.md) token from the identity provider, which it then provides to Azure AD which returns the JSON Web Token (JWT).
+Když získáte token pomocí `ConfidentialClientApplication.AcquireToken()` nebo `PublicClientApplication.AcquireToken()` s `IntegratedWindowsAuthenticationParameters` nebo `UsernamePasswordParameters`, MSAL pro jazyk Java získá poskytovatele identity, aby kontaktoval na základě uživatelského jména. MSAL for Java získá token [tokenu SAML 1,1](reference-saml-tokens.md) od poskytovatele identity, který potom poskytne službě Azure AD, která vrací JSON web token (Jwt).
 
 ## <a name="next-steps"></a>Další kroky
 
-For the federated case, see [Configure Azure Active Directory sign in behavior for an application by using a Home Realm Discovery policy](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
+V případě federovaného případu si přečtěte téma [Konfigurace chování přihlášení Azure Active Directory pro aplikaci pomocí zásad zjišťování domovské sféry](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal) .

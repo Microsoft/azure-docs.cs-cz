@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Blockchain Service member - Azure CLI
-description: Create an Azure Blockchain Service member for a blockchain consortium using the Azure CLI.
+title: Vytvoření členu služby Azure blockchain – Azure CLI
+description: Vytvoření členu služby Azure blockchain pro konsorcium blockchain pomocí Azure CLI.
 ms.date: 11/20/2019
 ms.topic: quickstart
 ms.reviewer: janders
@@ -11,9 +11,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455943"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Rychlý Start: Vytvoření člena blockchain služby Azure blockchain pomocí Azure CLI
 
-In this quickstart, you deploy a new blockchain member and consortium in Azure Blockchain Service using Azure CLI.
+V tomto rychlém startu nasadíte nového člena blockchain a konsorcia ve službě Azure blockchain pomocí Azure CLI.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použ
 
 Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
-If you prefer to install and use the CLI locally, this quickstart requires Azure CLI version 2.0.51 or later. Verzi zjistíte spuštěním příkazu `az --version`. If you need to install or upgrade, see [install Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.51 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -37,7 +37,7 @@ az group create \
 
 ## <a name="create-a-blockchain-member"></a>Vytvoření člena blockchainu
 
-Create a blockchain member in Azure Blockchain Service that runs the Quorum ledger protocol in a new consortium. There are several parameters and properties you need to pass. Replace the example parameters with your values.
+Vytvořte člena blockchain ve službě Azure blockchain, která spouští protokol hlavní knihy kvora v nové konsorcium. Existuje několik parametrů a vlastností, které je třeba předat. Nahraďte ukázkové parametry hodnotami.
 
 ```azurecli-interactive
 az resource create \
@@ -50,21 +50,21 @@ az resource create \
 
 | Parametr | Popis |
 |---------|-------------|
-| **resource-group** | Resource group name where Azure Blockchain Service resources are created. Use the resource group you created in the previous section.
-| **name** | A unique name that identifies your Azure Blockchain Service blockchain member. The name is used for the public endpoint address. Například, `myblockchainmember.blockchain.azure.com`.
-| **location** | Azure region where the blockchain member is created. Například, `westus2`. Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
-| **password** | The password for the member's default transaction node. Use the password for basic authentication when connecting to blockchain member's default transaction node public endpoint.
-| **consortium** | Name of the consortium to join or create.
-| **consortiumAccountPassword** | The consortium account password is also known as the member account password. The member account password is used to encrypt the private key for the Ethereum account that is created for your member. You use the member account and member account password for consortium management.
-| **skuName** | Tier type. Use S0 for Standard and B0 for Basic.
+| **Skupina prostředků** | Název skupiny prostředků, kde se vytvářejí prostředky služby Azure blockchain. Použijte skupinu prostředků, kterou jste vytvořili v předchozí části.
+| **Jméno** | Jedinečný název, který identifikuje svého člena blockchain služby Azure blockchain. Název se používá pro adresu veřejného koncového bodu. Například, `myblockchainmember.blockchain.azure.com`.
+| **location** | Oblast Azure, ve které je vytvořen člen blockchain. Například, `westus2`. Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
+| **zadáno** | Heslo pro výchozí uzel transakce člena Při připojování k výchozímu koncovému bodu transakčního uzlu blockchain člena použijte heslo pro základní ověřování.
+| **konsorci** | Název konsorcia, která se má připojit nebo vytvořit
+| **consortiumAccountPassword** | Heslo účtu konsorcia se označuje také jako heslo k členskému účtu. Heslo pro členský účet slouží k šifrování privátního klíče pro účet Ethereem, který je vytvořen pro vašeho člena. Použijete členský účet a heslo členského účtu pro správu konsorcia.
+| **skuName** | Typ vrstvy Pro Basic použijte S0 for Standard a B0.
 
-It takes about 10 minutes to create the blockchain member and supporting resources.
+Vytvoření člena blockchain a podpůrných prostředků trvá přibližně 10 minut.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-You can use the blockchain member you created for the next quickstart or tutorial. When no longer needed, you can delete the resources by deleting the `myResourceGroup` resource group you created for the quickstart.
+Můžete použít člen blockchain, který jste vytvořili pro další rychlý Start nebo kurz. Pokud už je nepotřebujete, můžete prostředky odstranit tak, že odstraníte `myResourceGroup` skupinu prostředků, kterou jste vytvořili pro rychlý Start.
 
-Run the following command to remove the resource group and all related resources.
+Spuštěním následujícího příkazu odeberte skupinu prostředků a všechny související prostředky.
 
 ```azurecli-interactive
 az group delete \
@@ -74,7 +74,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Další kroky
 
-In this quickstart, you deployed an Azure Blockchain Service member and a new consortium. Try the next quickstart to use  Azure Blockchain Development Kit for Ethereum to attach to a consortium on Azure Blockchain Service.
+V tomto rychlém startu jste nasadili člen služby Azure blockchain a nový konsorcium. Vyzkoušejte si další rychlý Start pro použití Azure blockchain Development Kit pro Ethereem pro připojení k konsorciu ve službě Azure blockchain.
 
 > [!div class="nextstepaction"]
-> [Use Visual Studio Code to connect to Azure Blockchain Service](connect-vscode.md)
+> [Použití Visual Studio Code k připojení ke službě Azure blockchain](connect-vscode.md)

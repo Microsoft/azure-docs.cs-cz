@@ -1,6 +1,6 @@
 ---
 title: Zobrazení a správa poskytovatelů služeb
-description: Customers can use the Service providers page in the Azure portal to view info about service providers, service provider offers, and delegated resources.
+description: Zákazníci mohou pomocí stránky poskytovatelé služeb v Azure Portal zobrazit informace o poskytovatelích služeb, nabídkách poskytovatele služeb a delegovaných prostředcích.
 ms.date: 11/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 453f5d3ba4ed5c49b5e71c7530298bc0a03c73ee
@@ -12,56 +12,56 @@ ms.locfileid: "74463814"
 ---
 # <a name="view-and-manage-service-providers"></a>Zobrazení a správa poskytovatelů služeb
 
-Customers can use the **Service providers** page in the [Azure portal](https://portal.azure.com) to view info about service providers and service provider offers, delegate specific resources through [Azure delegated resource management](../concepts/azure-delegated-resource-management.md), and shop for additional service provider offers. While we'll refer to service providers and customers here, enterprises managing multiple tenants can use the same process to consolidate their management experience.
+Zákazníci mohou pomocí stránky **poskytovatelé služeb** v [Azure Portal](https://portal.azure.com) zobrazit informace o nabídkách poskytovatelů služeb a poskytovatelů služeb, delegovat konkrétní prostředky prostřednictvím [správy delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md)a nakupovat další nabídky poskytovatele služeb. V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které spravují víc tenantů, můžou stejný postup využít k konsolidaci prostředí pro správu.
 
-To access the **Service providers** page in the Azure portal, the customer can select **All services**, then search for **Service providers** and select it. They can also find it by entering “Service providers” in the search box near the top of the Azure portal.
+Pro přístup ke stránce **poskytovatelé služeb** v Azure Portal může zákazník vybrat **všechny služby**a pak vyhledat **poskytovatele služeb** a vybrat ho. Můžou je taky najít zadáním "poskytovatelé služeb" do vyhledávacího pole v horní části Azure Portal.
 
-Keep in mind that the **Service providers** page only shows info about the service providers which have access to the customer's subscriptions or resource groups through Azure delegated resource management. If a customer works with additional service providers who don't use Azure delegated resource management to access the customer's resources, info about those service providers is not shown here.
+Mějte na paměti, že na stránce **poskytovatelé služeb** se zobrazují jenom informace o poskytovatelích služeb, kteří mají přístup k předplatným zákazníků nebo ke skupinám prostředků prostřednictvím správy delegovaných prostředků Azure. Pokud zákazník spolupracuje s dalšími poskytovateli služeb, kteří k přístupu k prostředkům zákazníka nepoužívají správu delegovaných prostředků Azure, informace o těchto poskytovatelích služeb tady nejsou uvedené.
 
 > [!NOTE]
-> Service providers can view info about their customers by navigating to **My customers** in the Azure portal. For more info, see [View and manage customers and delegated resources](view-manage-customers.md).
+> Poskytovatelé služeb mohou zobrazit informace o svých zákaznících tak, že v Azure Portal přejdou na **Moje zákazníky** . Další informace najdete v tématu [zobrazení a Správa zákazníků a delegovaných prostředků](view-manage-customers.md).
 
-## <a name="view-service-provider-details"></a>View service provider details
+## <a name="view-service-provider-details"></a>Zobrazit podrobnosti o poskytovateli služeb
 
-To view info about the service provider(s) that a customer is working with, they can select **Provider offers** on the left side of the **Service providers** page.
+Chcete-li zobrazit informace o poskytovatelích služeb, se kterými zákazník pracuje, může vybrat **nabídky poskytovatele** na levé straně stránky **poskytovatelé služeb** .
 
-For each service provider offer, the customer will see the service provider's name and the offer associated with it, along with the name that the customer entered during the onboarding process.
+Pro každou nabídku poskytovatele služeb uvidí Zákazník název poskytovatele služeb a nabídku, která je k ní přidružená, spolu s názvem, který zákazník zadal během procesu připojování.
 
-In the **Delegations** column, the customer sees how many subscriptions and/or resource groups have been delegated to the service provider for that offer. The service provider will be able to access and manage these subscriptions and/or resource groups according to the access levels specified in the offer.
+Ve sloupci **delegování** si zákazník uvidí, kolik předplatných a skupin prostředků bylo delegováno pro poskytovatele služeb této nabídky. Poskytovatel služeb bude moci získat přístup k těmto předplatným a skupinám prostředků a spravovat je podle úrovní přístupu zadaných v nabídce.
 
-## <a name="delegate-resources"></a>Delegate resources
+## <a name="delegate-resources"></a>Delegovat prostředky
 
-Before a service provider can access and manage a customer's resources, they must be delegated. If a customer has accepted an offer but has not yet delegated any resources, they'll see a note at the top of the **Provider offers** section. This lets the customer know that they need to take action before the service provider can access any of the customer's resources.
+Předtím, než může poskytovatel služeb získat přístup k prostředkům zákazníka a spravovat je, musí být delegovaný. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí v horní části **nabídky poskytovatele** poznámku. To zákazníkovi ví, že musí provést akci předtím, než bude moci poskytovatel služeb získat přístup k některým prostředkům zákazníka.
 
-To delegate subscriptions or resource groups:
+Delegování předplatných nebo skupin prostředků:
 
-1. Check the box for the row containing the service provider, offer, and name. Then select **Delegate resources** at the top of the screen.
-1. In the **Offer details** section of the **Delegate resources** page, review the details about the service provider and offer. To review role assignments for the offer, select **Click here to see the details of the selected offer**.
-1. In the **Delegate** section, select **Delegate subscriptions** or **Delegate resource groups**.
-1. Choose the subscriptions and/or resource groups you'd like to delegate for this offer, then select **Add**.
-1. Select the checkbox at the bottom of the page to confirm that you want to grant this service provider access to the resources that you've selected, then select **Delegate**.
+1. Zaškrtněte políčko u řádku obsahujícího poskytovatele služeb, nabídku a název. Pak vyberte **delegovat prostředky** v horní části obrazovky.
+1. V části **Podrobnosti nabídky** na stránce **delegovat prostředky** si přečtěte podrobnosti o poskytovateli služeb a nabídce. Chcete-li zkontrolovat přiřazení rolí pro nabídku, vyberte **kliknutím sem zobrazíte podrobnosti vybrané nabídky**.
+1. V části **delegáta** vyberte **delegovat odběry** nebo **delegovat skupiny prostředků**.
+1. Zvolte předplatná nebo skupiny prostředků, které chcete pro tuto nabídku delegovat, a pak vyberte **Přidat**.
+1. Zaškrtněte políčko v dolní části stránky a potvrďte, že chcete tomuto poskytovateli služeb udělit přístup k vybraným prostředkům, a pak vyberte **delegovat**.
 
-## <a name="add-or-remove-service-provider-offers"></a>Add or remove service provider offers
+## <a name="add-or-remove-service-provider-offers"></a>Přidat nebo odebrat nabídky poskytovatele služeb
 
-A customer can add a new service provider offer from the **Provider offers** page by selecting **Add offer**. The service provider must have published an offer for this customer. The customer can then select that offer from the **Private offers** screen and then select **Create**.
+Zákazník může přidat novou nabídku poskytovatele služeb ze stránky **nabídky poskytovatele** výběrem možnosti **přidat nabídku**. Poskytovatel služeb musí publikovat nabídku pro tohoto zákazníka. Zákazník pak může vybrat tuto nabídku z obrazovky **soukromé nabídky** a pak vybrat **vytvořit**.
 
-If the customer wants to remove a service provider offer, they can select the trash can icon in the row for that offer. After confirming the deletion, that service provider will no longer have access to the customer resources that were formerly delegated for that offer.
+Pokud chce zákazník odebrat nabídku poskytovatele služeb, může vybrat ikonu odpadkového koše na řádku této nabídky. Po potvrzení odstranění již poskytovatel služeb nebude mít přístup k zákaznickým prostředkům, které byly dříve delegovány pro tuto nabídku.
 
-## <a name="update-service-provider-offers"></a>Update service provider offers
+## <a name="update-service-provider-offers"></a>Aktualizovat nabídky poskytovatele služeb
 
-After a customer has added an offer, a service provider may publish an updated version of the same offer to Azure Marketplace. For example, they may want to add a new role definition. If a new version of the offer has been published, the **Provider offers** page will show an "update" icon in the row for that offer. The customer can select this icon to see the differences between the current version of the offer and the new one.
+Po přidání nabídky může poskytovatel služeb publikovat aktualizovanou verzi stejné nabídky, která Azure Marketplace. Například mohou chtít přidat novou definici role. Pokud byla publikována nová verze nabídky, na stránce **nabídky poskytovatele** se zobrazí ikona "aktualizace" na řádku této nabídky. Zákazník může tuto ikonu vybrat, aby se zobrazily rozdíly mezi aktuální verzí nabídky a novou.
 
- ![Update offer icon](../media/update-offer.jpg)
+ ![Ikona nabídky aktualizace](../media/update-offer.jpg)
 
-After reviewing the changes, the customer can choose to update to the new version. Once they do, the authorizations and other settings specified in the new version will apply to any subscriptions and/or resource groups that have been delegated for that offer.
+Po kontrole změn si může zákazník vybrat, že se má aktualizovat na novou verzi. Jakmile to uděláte, autorizaci a další nastavení zadaná v nové verzi budou platit pro všechna předplatná nebo skupiny prostředků, které jsou pro tuto nabídku delegované.
 
-## <a name="view-delegations"></a>View delegations
+## <a name="view-delegations"></a>Zobrazit delegování
 
-Delegations represent the role assignments that grant permissions to the service provider for the resources a customer has delegated. To view this info, select **Delegations** on the left side of the **Service providers** page.
+Delegace představují přiřazení rolí, které udělují poskytovateli služeb oprávnění k prostředkům delegovaným zákazníkem. Chcete-li zobrazit tyto informace, vyberte možnost **delegace** na levé straně stránky **poskytovatelé služeb** .
 
-Filters at the top of the page let you sort and group your delegation info or filter by specific customers, offers, or keywords.
+Filtry v horní části stránky umožňují seřadit a seskupit informace o delegování nebo filtrovat podle konkrétních zákazníků, nabídek nebo klíčových slov.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Learn more about [Azure Lighthouse](../overview.md).
-- Learn how service providers can [view and manage customers](view-manage-customers.md) by going to **My customers** in the Azure portal.
+- Přečtěte si další informace o [Azure Lighthouse](../overview.md).
+- Přečtěte si, jak můžou poskytovatelé služeb [Zobrazit a spravovat zákazníky](view-manage-customers.md) tak, že na Azure Portal na **moji zákazníci** .

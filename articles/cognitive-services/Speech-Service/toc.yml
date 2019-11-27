@@ -374,8 +374,6 @@
               href: rest-speech-to-text.md
             - name: Rozhraní REST API pro převod textu na řeč
               href: rest-text-to-speech.md
-            - name: Rozhraní REST API pro webhooky
-              href: webhooks.md
         - name: Dokumentace ke Swaggeru
           href: swagger-documentation.md
 - name: Speech SDK

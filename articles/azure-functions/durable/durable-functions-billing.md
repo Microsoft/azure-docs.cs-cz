@@ -1,6 +1,6 @@
 ---
-title: Durable functions billing - Azure Functions
-description: Learn about the internal behaviors of Durable Functions and how they affect billing for Azure Functions.
+title: Fakturace trvalých funkcí – Azure Functions
+description: Přečtěte si o interním chování Durable Functions a o tom, jak ovlivňují fakturaci pro Azure Functions.
 author: cgillum
 ms.topic: overview
 ms.date: 08/31/2019
@@ -12,45 +12,45 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233017"
 ---
-# <a name="durable-functions-billing"></a>Durable Functions billing
+# <a name="durable-functions-billing"></a>Durable Functions fakturaci
 
-[Durable Functions](durable-functions-overview.md) is billed the same way as Azure Functions. For more information, see [Azure Functions pricing](https://azure.microsoft.com/pricing/details/functions/).
+[Durable Functions](durable-functions-overview.md) se účtuje stejným způsobem jako Azure Functions. Další informace najdete v tématu [Azure Functions ceny](https://azure.microsoft.com/pricing/details/functions/).
 
-When executing orchestrator functions in Azure Functions [Consumption plan](../functions-scale.md#consumption-plan), you need to be aware of some billing behaviors. The following sections describe these behaviors and their effect in more detail.
+Při provádění funkcí Orchestrator v [plánu Azure Functions spotřeby](../functions-scale.md#consumption-plan)musíte být vědomi některých chování fakturace. Následující části popisují tato chování a jejich efekt podrobněji.
 
-## <a name="orchestrator-function-replay-billing"></a>Orchestrator function replay billing
+## <a name="orchestrator-function-replay-billing"></a>Faktura pro opětovné přehrání funkcí Orchestrator
 
-[Orchestrator functions](durable-functions-orchestrations.md) might replay several times throughout the lifetime of an orchestration. Each replay is viewed by the Azure Functions runtime as a distinct function invocation. For this reason, in the Azure Functions Consumption plan you're billed for each replay of an orchestrator function. Other plan types don't charge for orchestrator function replay.
+[Funkce Orchestrator](durable-functions-orchestrations.md) se můžou několikrát přehrát během celé životnosti orchestrace. Každé přehrání je prohlížející modulem runtime Azure Functions jako odlišné vyvolání funkce. Z tohoto důvodu se v plánu Azure Functions spotřeby účtuje za každé přehrání funkce Orchestrator. Pro další typy plánů se neúčtují žádné poplatky za opětovné přehrání funkce nástroje Orchestrator.
 
-## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Awaiting and yielding in orchestrator functions
+## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Čeká se a bude se vracet ve funkcích Orchestrator.
 
-When an orchestrator function waits for an asynchronous action to finish by using **await** in C# or **yield** in JavaScript, the runtime considers that particular execution to be finished. The billing for the orchestrator function stops at that point. It doesn't resume until the next orchestrator function replay. You aren't billed for any time spent awaiting or yielding in an orchestrator function.
+Když funkce Orchestrator čeká na dokončení asynchronní akce pomocí **operátoru await** v C# nebo v jazyce JavaScript, považuje modul **runtime za to** , že konkrétní spuštění bude dokončeno. Fakturace pro funkci Orchestrator se v tomto okamžiku zastaví. Nebude pokračovat, dokud se další funkce nástroje Orchestrator znovu dohraje. Neúčtují se vám žádné čas strávený čekáním nebo zavracením do funkce Orchestrator.
 
 > [!NOTE]
-> Functions calling other functions is considered by some to be an antipattern. This is because of a problem known as _double billing_. When a function calls another function directly, both run at the same time. The called function is actively running code while the calling function is waiting for a response. In this case, you must pay for the time the calling function spends waiting for the called function to run.
+> Funkce, které volají jiné funkce, jsou považovány za antipattern. Důvodem je problém známý jako _Dvojitá fakturace_. Když funkce přímo volá jinou funkci, obě se spustí současně. Volaná funkce aktivně spouští kód, zatímco volající funkce čeká na odpověď. V takovém případě musíte platit za čas, kdy volání funkce stráví čekáním na spuštění volané funkce.
 >
-> There is no double billing in orchestrator functions. An orchestrator function's billing stops while it waits for the result of an activity function or sub-orchestration.
+> Ve funkcích nástroje Orchestrator není žádná dvojitá fakturace. Při čekání na výsledek funkce aktivity nebo dílčí orchestrace se ukončí fakturace funkce Orchestrator.
 
-## <a name="durable-http-polling"></a>Durable HTTP polling
+## <a name="durable-http-polling"></a>Trvalé cyklické dotazování HTTP
 
-Orchestrator functions can make long-running HTTP calls to external endpoints as described in the [HTTP features article](durable-functions-http-features.md). The **CallHttpAsync** method in C# and the **callHttp** method in JavaScript might internally poll an HTTP endpoint while following the [asynchronous 202 pattern](durable-functions-http-features.md#http-202-handling).
+Funkce Orchestrator můžou provádět dlouhotrvající volání HTTP do externích koncových bodů, jak je popsáno v [článku o funkcích http](durable-functions-http-features.md). Metoda **CallHttpAsync** v C# jazyce a metoda **callHttp** v JavaScriptu může INTERNě dotazovat koncový bod HTTP za běhu za [asynchronním vzorem 202](durable-functions-http-features.md#http-202-handling).
 
-There currently isn't direct billing for internal HTTP polling operations. However, internal polling might cause the orchestrator function to periodically replay. You'll be billed standard charges for these internal function replays.
+V současné době není k dispozici přímá fakturace za interní operace cyklického dotazování HTTP. Interní dotazování může ale způsobit, že se funkce Orchestrator bude pravidelně přehrávat. U těchto interních funkcí se vám budou účtovat standardní poplatky.
 
-## <a name="azure-storage-transactions"></a>Azure Storage transactions
+## <a name="azure-storage-transactions"></a>Transakce Azure Storage
 
-Durable Functions uses Azure Storage by default to keep state persistent, process messages, and manage partitions via blob leases. Because you own this storage account, any transaction costs are billed to your Azure subscription. For more information about the Azure Storage artifacts used by Durable Functions, see the [Task hubs article](durable-functions-task-hubs.md).
+Durable Functions používá ve výchozím nastavení Azure Storage, aby bylo možné trvale zachovávat stav, zpracovávat zprávy a spravovat oddíly prostřednictvím zapůjčení objektů BLOB. Vzhledem k tomu, že tento účet úložiště vlastníte, účtují se všechny poplatky za transakce za vaše předplatné Azure. Další informace o artefaktech Azure Storage používaných v Durable Functions najdete v [článku centra úloh](durable-functions-task-hubs.md).
 
-Several factors contribute to the actual Azure Storage costs incurred by your Durable Functions app:
+Několik faktorů přispívá k skutečným Azure Storagem nákladům, které vznikly v aplikaci Durable Functions:
 
-* A single function app is associated with a single task hub, which shares a set of Azure Storage resources. These resources are used by all durable functions in a function app. The actual number of functions in the function app has no effect on Azure Storage transaction costs.
-* Each function app instance internally polls multiple queues in the storage account by using an exponential-backoff polling algorithm. An idle app instance polls the queues less often than does an active app, which results in fewer transaction costs. For more information about Durable Functions queue-polling behavior, see the [queue-polling section of the Performance and Scale article](durable-functions-perf-and-scale.md#queue-polling).
-* When running in the Azure Functions Consumption or Premium plans, the [Azure Functions scale controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) regularly polls all task-hub queues in the background. If a function app is under light to moderate scale, only a single scale controller instance will poll these queues. If the function app scales out to a large number of instances, more scale controller instances might be added. These additional scale controller instances can increase the total queue-transaction costs.
-* Each function app instance competes for a set of blob leases. These instances will periodically make calls to the Azure Blob service either to renew held leases or to attempt to acquire new leases. The task hub's configured partition count determines the number of blob leases. Scaling out to a larger number of function app instances likely increases the Azure Storage transaction costs associated with these lease operations.
+* Jedna aplikace Function App je přidružená k jednomu rozbočovači úloh, který sdílí sadu prostředků Azure Storage. Tyto prostředky používá všechny trvalé funkce ve Function App. Skutečný počet funkcí v aplikaci Function App nemá žádný vliv na Azure Storage náklady transakce.
+* Každá instance aplikace Function interně se dotazuje více front v účtu úložiště pomocí algoritmu cyklického dotazování exponenciálního omezení rychlosti. Nečinná instance aplikace dotazuje fronty méně často než aktivní aplikace, což vede k menšímu počtu transakčních nákladů. Další informace o chování při cyklickém dotazování ve frontě Durable Functions najdete v [článku o výkonu a škálování v části cyklické dotazování front](durable-functions-perf-and-scale.md#queue-polling).
+* Při spuštění ve Azure Functions spotřebě nebo plánu Premium se [kontroler Azure Functions](../functions-scale.md#how-the-consumption-and-premium-plans-work) pravidelně dotazuje na všechny fronty centra úkolů na pozadí. Pokud se aplikace Function App dohlíží ke střednímu měřítku, bude se tyto fronty dotazovat jenom u jediné instance řadiče škálování. Pokud se aplikace funkcí škáluje na velký počet instancí, můžou se přidat další instance kontroleru škálování. Tyto dodatečné instance kontroleru škálování můžou zvýšit celkovou cenu za transakce ve frontě.
+* Každá instance aplikace funkcí soutěží o sadu zapůjčení objektů BLOB. Tyto instance budou pravidelně volat Blob service Azure, aby obnovili držené zapůjčení nebo se pokusili získat nová zapůjčení. Počet nakonfigurovaného oddílu centra úkolů určuje počet zapůjčení objektů BLOB. Horizontální navýšení kapacity u většího počtu instancí aplikace Functions může zvýšit náklady na Azure Storage transakce spojené s těmito operacemi zapůjčení.
 
-You can find more information on Azure Storage pricing in the [Azure Storage pricing](https://azure.microsoft.com/pricing/details/storage/) documentation. 
+Další informace o cenách Azure Storage najdete v dokumentaci k [Azure Storageám s cenami](https://azure.microsoft.com/pricing/details/storage/) . 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Learn more about Azure Functions pricing](https://azure.microsoft.com/pricing/details/functions/)
+> [Další informace o cenách Azure Functions](https://azure.microsoft.com/pricing/details/functions/)

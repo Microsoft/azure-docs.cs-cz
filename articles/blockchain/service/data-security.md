@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Service security
-description: Azure Blockchain Service data access and security concepts
+title: Zabezpečení služby Azure blockchain
+description: Koncepce přístupu k datům a zabezpečení Azure blockchain Service
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
@@ -11,52 +11,52 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455710"
 ---
-# <a name="azure-blockchain-service-security"></a>Azure Blockchain Service security
+# <a name="azure-blockchain-service-security"></a>Zabezpečení služby Azure blockchain
 
 Azure Blockchain Service k zajištění zabezpečení a dostupnosti vašich dat využívá několik funkcí Azure. Zabezpečení dat zajišťuje izolace, šifrování a ověřování.
 
 ## <a name="isolation"></a>Izolace
 
-Azure Blockchain Service resources are isolated in a private virtual network. Each transaction and validation node is a virtual machine (VM). VMs in one virtual network cannot communicate directly to VMs in a different virtual network. Isolation ensures communication remains private within the virtual network. For more information on Azure virtual network isolation, see [isolation in the Azure Public Cloud](../../security/fundamentals/isolation-choices.md#networking-isolation).
+Prostředky služby Azure blockchain jsou izolované v privátní virtuální síti. Každá transakce a ověřovací uzel je virtuální počítač (VM). Virtuální počítače v jedné virtuální síti nemůžou komunikovat přímo s virtuálními počítači v jiné virtuální síti. Izolace zajišťuje, že komunikace zůstane soukromá v rámci virtuální sítě. Další informace o izolaci virtuálních sítí Azure najdete v tématu věnovaném [izolaci ve veřejném cloudu Azure](../../security/fundamentals/isolation-choices.md#networking-isolation).
 
-![VNET diagram](./media/data-security/vnet.png)
+![Diagram virtuální sítě](./media/data-security/vnet.png)
 
 ## <a name="encryption"></a>Šifrování
 
-User data is stored in Azure storage. User data is encrypted in motion and at rest for security and confidentiality. For more information, see: [Azure Storage security guide](../../storage/common/storage-security-guide.md).
+Uživatelská data se ukládají ve službě Azure Storage. Data uživatelů jsou v klidovém stavu zašifrovaná a v klidovém stavu a jejich zabezpečení a důvěrnost. Další informace najdete v tématu: [Azure Storage Průvodce zabezpečením](../../storage/common/storage-security-guide.md).
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
-Transactions can be sent to blockchain nodes via an RPC endpoint. Clients communicate with a transaction node using a reverse proxy server that handles user authentication and encrypts data over SSL.
+Transakce se dají odesílat do uzlů blockchain prostřednictvím koncového bodu RPC. Klienti komunikují s uzlem transakce pomocí reverzní proxy server, která zpracovává ověřování uživatelů a šifruje data přes SSL.
 
-![Authentication diagram](./media/data-security/authentication.png)
+![Diagram ověřování](./media/data-security/authentication.png)
 
-There are three modes of authentication for RPC access.
+Existují tři režimy ověřování pro přístup přes protokol RPC.
 
 ### <a name="basic-authentication"></a>Základní ověřování
 
-Basic authentication uses an HTTP authentication header containing the user name and password. User name is the name of the blockchain node. Password is set during provisioning of a member or node. The password can be changed using the Azure portal or CLI.
+Základní ověřování používá hlavičku ověřování protokolu HTTP obsahující uživatelské jméno a heslo. Uživatelské jméno je název uzlu blockchain. Heslo je nastaveno při zřizování člena nebo uzlu. Heslo lze změnit pomocí Azure Portal nebo CLI.
 
 ### <a name="access-keys"></a>Přístupové klíče
 
-Access keys use a randomly generated string included in the endpoint URL. Two access keys help enable key rotation. Keys can be regenerated from the Azure portal and CLI.
+Přístupové klíče používají náhodně vygenerovaný řetězec, který je zahrnutý v adrese URL koncového bodu. Pomocí dvou přístupových klíčů můžete povolit rotaci klíčů. Klíče je možné znovu vygenerovat z Azure Portal a CLI.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Azure Active Directory (Azure AD) uses a claim-based authentication mechanism where the user is authenticated by Azure AD using Azure AD user credentials. Azure AD provides cloud-based identity management and allows customers to use a single identity across an entire enterprise and access applications on the cloud. Azure Blockchain Service integrates with Azure AD enabling ID federation, single sign-on and multi-factor authentication. You can assign users, groups, and application roles in your organization for blockchain member and node access.
+Azure Active Directory (Azure AD) používá ověřovací mechanismus založený na deklaracích identity, kde se uživatel ověřuje pomocí přihlašovacích údajů uživatele Azure AD pomocí služby Azure AD. Azure AD poskytuje cloudovou správu identit a umožňuje zákazníkům používat jedinou identitu napříč celým podnikem a přistupovat k aplikacím v cloudu. Služba Azure blockchain se integruje s Azure AD a povoluje federaci ID, jednotné přihlašování a vícefaktorové ověřování. Můžete přiřadit uživatele, skupiny a aplikační role ve vaší organizaci pro blockchain člena a přístup k uzlu.
 
-The Azure AD client proxy is available on [GitHub](https://github.com/Microsoft/azure-blockchain-connector/releases). The client proxy directs the user to the Azure AD sign-in page and obtains a bearer token upon successful authentication. Subsequently, the user connects an Ethereum client application such as Geth or Truffle to the client proxy's endpoint. Finally, when a transaction is submitted, the client proxy injects the bearer token in the http header and the reverse proxy validates the token using OAuth protocol.
+Proxy klient služby Azure AD je k dispozici na [GitHubu](https://github.com/Microsoft/azure-blockchain-connector/releases). Klient proxy přesměruje uživatele na přihlašovací stránku Azure AD a získá token nosiče po úspěšném ověření. Následně se uživatel připojí ke koncovému bodu proxy klienta aplikace klienta Ethereem, jako je Geth nebo Truffle. Nakonec při odeslání transakce klientský proxy server vloží token nosiče v hlavičce protokolu HTTP a reverzní proxy ověří token pomocí protokolu OAuth.
 
-## <a name="keys-and-ethereum-accounts"></a>Keys and Ethereum accounts
+## <a name="keys-and-ethereum-accounts"></a>Klíče a účty Ethereem
 
-When provisioning an Azure Blockchain Service member, an Ethereum account and a public and private key pair is generated. The private key is used to send transactions to the blockchain. The Ethereum account is the last 20 bytes of the public key's hash. The Ethereum account is also called a wallet.
+Při zřizování členu služby Azure blockchain se vygeneruje účet Ethereem a pár veřejného a privátního klíče. Privátní klíč se používá k posílání transakcí do blockchain. Účet Ethereem je poslední 20 bajtů hodnoty hash veřejného klíče. Účet Ethereem se také označuje jako kapesní.
 
-The private and public key pair is stored as a keyfile in JSON format. The private key is encrypted using the password entered when the blockchain ledger service is created.
+Pár privátních a veřejných klíčů je uložen jako soubor klíče ve formátu JSON. Privátní klíč je zašifrovaný pomocí hesla zadaného při vytvoření služby blockchain hl.
 
-Private keys are used to digitally sign transactions. In private blockchains, a smart contract signed by a private key represents the signer's identity. To verify the validity of the signature, the receiver can compare the public key of the signer with the address computed from the signature.
+Privátní klíče slouží k digitálnímu podepisování transakcí. V soukromém blockchainy představuje inteligentní kontrakt podepsaný soukromým klíčem identitu podepisujícího. K ověření platnosti signatury může příjemce porovnat veřejný klíč podepsaného s adresou vypočítanou z podpisu.
 
-Constellation keys are used to uniquely identify a Quorum node. Constellation keys are generated at the time of node provisioning and are specified in the privateFor parameter of a private transaction in Quorum.
+Klíče Constellation slouží k jednoznačné identifikaci uzlu kvora. Klíče Constellation jsou generovány v době zřizování uzlu a jsou zadány v parametru privateFor soukromé transakce v rámci kvora.
 
 ## <a name="next-steps"></a>Další kroky
 
-See [How to configure Azure Active Directory access for Azure Blockchain Service](configure-aad.md).
+Podívejte [se, jak nakonfigurovat přístup Azure Active Directory pro službu Azure blockchain](configure-aad.md).

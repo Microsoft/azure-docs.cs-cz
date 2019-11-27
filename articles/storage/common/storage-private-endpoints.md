@@ -1,6 +1,6 @@
 ---
-title: Using Private Endpoints with Azure Storage | Microsoft Docs
-description: Overview of private endpoints for secure access to storage accounts from virtual networks.
+title: Používání privátních koncových bodů s Azure Storage | Microsoft Docs
+description: Přehled privátních koncových bodů pro zabezpečený přístup k účtům úložiště z virtuálních sítí.
 services: storage
 author: santoshc
 ms.service: storage
@@ -16,125 +16,125 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227879"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>Using Private Endpoints for Azure Storage (Preview)
+# <a name="using-private-endpoints-for-azure-storage-preview"></a>Použití privátních koncových bodů pro Azure Storage (Preview)
 
-You can use [Private Endpoints](../../private-link/private-endpoint-overview.md) for your Azure Storage accounts to allow clients on a virtual network (VNet) to securely access data over a [Private Link](../../private-link/private-link-overview.md). The private endpoint uses an IP address from the VNet address space for your storage account service. Network traffic between the clients on the VNet and the storage account traverses over the VNet and a private link on the Microsoft backbone network, eliminating exposure from the public internet.
+Pro účty Azure Storage můžete použít [soukromé koncové body](../../private-link/private-endpoint-overview.md) , které umožní klientům ve virtuální síti (VNET) zabezpečený přístup k datům prostřednictvím [privátního propojení](../../private-link/private-link-overview.md). Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro službu účtu úložiště. Síťový provoz mezi klienty ve virtuální síti a účtem úložiště prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
 
-Using private endpoints for your storage account enables you to:
-- Secure your storage account by configuring the storage firewall to block all connections on the public endpoint for the storage service.
-- Increase security for the virtual network (VNet), by enabling you to block exfiltration of data from the VNet.
-- Securely connect to storage accounts from on-premises networks that connect to the VNet using [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) or [ExpressRoutes](../../expressroute/expressroute-locations.md) with private-peering.
+Použití privátních koncových bodů pro váš účet úložiště vám umožní:
+- Zabezpečte svůj účet úložiště tak, že nakonfigurujete bránu firewall úložiště tak, aby blokovala všechna připojení na veřejném koncovém bodu služby úložiště.
+- Zvyšte zabezpečení virtuální sítě tak, že povolíte blokování exfiltrace dat z virtuální sítě.
+- Připojte se bezpečně k účtům úložiště z místních sítí, které se připojují k virtuální síti pomocí [sítě VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoutes](../../expressroute/expressroute-locations.md) s privátním partnerským vztahem.
 
-## <a name="conceptual-overview"></a>Conceptual Overview
-![Private Endpoints for Azure Storage Overview](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
+## <a name="conceptual-overview"></a>Koncepční přehled
+![Přehled privátních koncových bodů pro Azure Storage](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
-A Private Endpoint is a special network interface for an Azure service in your [Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNet). When you create a private endpoint for your storage account, it provides secure connectivity between clients on your VNet and your storage. The private endpoint is assigned an IP address from the IP address range of your VNet. The connection between the private endpoint and the storage service uses a secure private link.
+Privátní koncový bod je speciální síťové rozhraní pro službu Azure ve vaší [Virtual Network](../../virtual-network/virtual-networks-overview.md) (virtuální síť). Když vytvoříte privátní koncový bod pro svůj účet úložiště, zajistíte zabezpečené připojení mezi klienty ve vaší virtuální síti a vaším úložištěm. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou úložiště používá zabezpečený privátní odkaz.
 
-Applications in the VNet can connect to the storage service over the private endpoint seamlessly, **using the same connection strings and authorization mechanisms that they would use otherwise**. Private endpoints can be used with all protocols supported by the storage account, including REST and SMB.
+Aplikace ve virtuální síti se můžou bez problémů připojit k službě úložiště přes soukromý koncový bod **pomocí stejných připojovacích řetězců a mechanismů autorizace, které by jinak používaly**. Soukromé koncové body lze použít se všemi protokoly podporovanými účtem úložiště, včetně REST a protokolu SMB.
 
-When you create a private endpoint for a storage service in your VNet, a consent request is sent for approval to the storage account owner. If the user requesting the creation of the private endpoint is also an owner of the storage account, this consent request is automatically approved.
+Když vytvoříte privátní koncový bod pro službu úložiště ve vaší virtuální síti, pošle se žádost o souhlas ke schválení vlastníkem účtu úložiště. Pokud je uživatel žádající o vytvoření privátního koncového bodu také vlastníkem účtu úložiště, bude tato žádost o přijetí souhlasu automaticky schválena.
 
-Storage account owners can manage consent requests and the private endpoints, through the '*Private Endpoints*' tab for the storage account in the [Azure portal](https://portal.azure.com).
-
-> [!TIP]
-> If you want to restrict access to your storage account through the private endpoint only, configure the storage firewall to deny or control access through the public endpoint.
-
-You can secure your storage account to only accept connections from your VNet, by [configuring the storage firewall](storage-network-security.md#change-the-default-network-access-rule) to deny access through its public endpoint by default. You don't need a firewall rule to allow traffic from a VNet that has a private endpoint, since the storage firewall only controls access through the public endpoint. Private endpoints instead rely on the consent flow for granting subnets access to the storage service.
-
-### <a name="private-endpoints-for-storage-service"></a>Private Endpoints for Storage Service
-
-When creating the private endpoint, you must specify the storage account and the storage service to which it connects. You need a separate private endpoint for each storage service in a storage account that you need to access, namely [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Files](../files/storage-files-introduction.md), [Queues](../queues/storage-queues-introduction.md), [Tables](../tables/table-storage-overview.md), or [Static Websites](../blobs/storage-blob-static-website.md).
+Vlastníci účtu úložiště můžou spravovat žádosti o souhlas a soukromé koncové body přes kartu*privátní koncové body*pro účet úložiště v [Azure Portal](https://portal.azure.com).
 
 > [!TIP]
-> Create a separate private endpoint for the secondary instance of the storage service for better read performance on RA-GRS accounts.
+> Pokud chcete omezit přístup k účtu úložiště jenom prostřednictvím privátního koncového bodu, nakonfigurujte bránu firewall úložiště tak, aby odepřela nebo řízení přístupu prostřednictvím veřejného koncového bodu.
 
-For read availability on a [read-access geo redundant storage account](storage-redundancy-grs.md#read-access-geo-redundant-storage), you need separate private endpoints for both the primary and secondary instances of the service. You don't need to create a private endpoint for the secondary instance for **failover**. The private endpoint will automatically connect to the new primary instance after failover.
+Svůj účet úložiště můžete zabezpečit tak, aby přijímal jenom připojení z vaší virtuální sítě. [nakonfigurujete bránu firewall úložiště](storage-network-security.md#change-the-default-network-access-rule) tak, aby odepřela přístup prostřednictvím veřejného koncového bodu ve výchozím nastavení. Nepotřebujete pravidlo brány firewall, abyste mohli povolit provoz z virtuální sítě s privátním koncovým bodem, protože brána firewall úložiště řídí přístup jenom prostřednictvím veřejného koncového bodu. Místo toho privátní koncové body spoléhají na tok souhlasu pro udělení přístupu ke službě úložiště pro podsítě.
 
-#### <a name="resources"></a>Materiály
+### <a name="private-endpoints-for-storage-service"></a>Privátní koncové body služby úložiště
 
-For more detailed information on creating a private endpoint for your storage account, refer to the following articles:
+Při vytváření privátního koncového bodu musíte zadat účet úložiště a službu úložiště, ke které se připojí. Potřebujete samostatný soukromý koncový bod pro každou službu úložiště v účtu úložiště, ke kterému potřebujete získat přístup, konkrétně [objekty blob](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [soubory](../files/storage-files-introduction.md), [fronty](../queues/storage-queues-introduction.md), [tabulky](../tables/table-storage-overview.md)nebo [statické weby](../blobs/storage-blob-static-website.md).
 
-- [Connect privately to a storage account from the Storage Account experience in the Azure portal](../../private-link/create-private-endpoint-storage-portal.md)
-- [Create a private endpoint using the Private Link Center in the Azure portal](../../private-link/create-private-endpoint-portal.md)
-- [Create a private endpoint using Azure CLI](../../private-link/create-private-endpoint-cli.md)
-- [Create a private endpoint using Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
+> [!TIP]
+> Vytvořte samostatný privátní koncový bod pro sekundární instanci služby úložiště pro lepší výkon při čtení účtů RA-GRS.
 
-### <a name="connecting-to-private-endpoints"></a>Connecting to Private Endpoints
+Pro čtení v [účtu geograficky redundantního úložiště s přístupem pro čtení](storage-redundancy-grs.md#read-access-geo-redundant-storage)budete potřebovat samostatné koncové body pro primární i sekundární instance služby. Nemusíte vytvářet privátní koncový bod pro sekundární instanci pro **převzetí služeb při selhání**. Po převzetí služeb při selhání se privátní koncový bod automaticky připojí k nové primární instanci.
 
-Clients on a VNet using the private endpoint should use the same connection string for the storage account, as clients connecting to the public endpoint. We rely upon DNS resolution to automatically route the connections from the VNet to the storage account over a private link.
+#### <a name="resources"></a>Zdroje informací
+
+Podrobnější informace o vytvoření privátního koncového bodu pro účet úložiště najdete v následujících článcích:
+
+- [Připojte soukromě k účtu úložiště z prostředí účtu úložiště v Azure Portal](../../private-link/create-private-endpoint-storage-portal.md)
+- [Vytvoření privátního koncového bodu pomocí centra privátního spojení v Azure Portal](../../private-link/create-private-endpoint-portal.md)
+- [Vytvoření privátního koncového bodu pomocí Azure CLI](../../private-link/create-private-endpoint-cli.md)
+- [Vytvoření privátního koncového bodu pomocí Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
+
+### <a name="connecting-to-private-endpoints"></a>Připojování k soukromým koncovým bodům
+
+Klienti ve virtuální síti s použitím privátního koncového bodu by měli použít stejný připojovací řetězec pro účet úložiště, jak se klienti připojují k veřejnému koncovému bodu. Pro automatické směrování připojení z virtuální sítě do účtu úložiště prostřednictvím privátního propojení spoléháme na překlad DNS.
 
 > [!IMPORTANT]
-> Use the same connection string to connect to the storage account using private endpoints, as you'd use otherwise. Please don't connect to the storage account using its '*privatelink*' subdomain URL.
+> Použijte stejný připojovací řetězec pro připojení k účtu úložiště pomocí privátních koncových bodů, protože byste mohli jinak použít. Nepřipojujte se prosím k účtu úložiště pomocí adresy URL subdomény*privatelink*.
 
-We create a [private DNS zone](../../dns/private-dns-overview.md) attached to the VNet with the necessary updates for the private endpoints, by default. However, if you're using your own DNS server, you may need to make additional changes to your DNS configuration. The section on [DNS changes](#dns-changes-for-private-endpoints) below describes the updates required for private endpoints.
+Ve výchozím nastavení vytvoříme [privátní ZÓNU DNS](../../dns/private-dns-overview.md) připojenou k virtuální síti s nezbytnými aktualizacemi pro privátní koncové body. Pokud ale používáte vlastní server DNS, možná budete muset provést další změny v konfiguraci DNS. Oddíl o [změnách DNS](#dns-changes-for-private-endpoints) níže popisuje aktualizace vyžadované pro soukromé koncové body.
 
-## <a name="dns-changes-for-private-endpoints"></a>DNS changes for Private Endpoints
+## <a name="dns-changes-for-private-endpoints"></a>Změny DNS u privátních koncových bodů
 
-The DNS CNAME resource record for a storage account with a private endpoint is updated to an alias in a subdomain with the prefix '*privatelink*'. By default, we also create a [private DNS zone](../../dns/private-dns-overview.md) attached to the VNet that corresponds to the subdomain with the prefix '*privatelink*', and contains the DNS A resource records for the private endpoints.
+Záznam prostředku CNAME DNS pro účet úložiště s privátním koncovým bodem se aktualizuje na alias v subdoméně s předponou '*privatelink*'. Ve výchozím nastavení vytvoříme také [privátní ZÓNU DNS](../../dns/private-dns-overview.md) připojenou k virtuální síti, která odpovídá subdoméně s předponou '*privatelink*', a obsahuje záznamy prostředků DNS pro privátní koncové body.
 
-When you resolve the storage endpoint URL from outside the VNet with the private endpoint, it resolves to the public endpoint of the storage service. When resolved from the VNet hosting the private endpoint, the storage endpoint URL resolves to the private endpoint's IP address.
+Při překladu adresy URL koncového bodu úložiště mimo virtuální síť s privátním koncovým bodem se přeloží na veřejný koncový bod služby úložiště. Při překladu z virtuální sítě hostující soukromý koncový bod se adresa URL koncového bodu úložiště přeloží na IP adresu privátního koncového bodu.
 
-For the illustrated example above, the DNS resource records for the storage account 'StorageAccountA', when resolved from outside the VNet hosting the private endpoint, will be:
+V zobrazeném příkladu se v záznamech o prostředcích DNS pro účet úložiště "StorageAccountA" po vyřešení mimo virtuální síť hostující soukromý koncový bod:
 
-| Name (Název)                                                  | Typ  | Hodnota                                                 |
+| Název                                                  | Typ  | Hodnota                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
-| \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | veřejný koncový bod služby \<Storage\>                   |
+| veřejný koncový bod služby \<Storage\>                   | A     | \<veřejné IP adresy služby úložiště\>                 |
 
-As previously mentioned, you can deny or control access for clients outside the VNet through the public endpoint using the storage firewall.
+Jak už jsme uvedli, můžete odepřít nebo řídit přístup pro klienty mimo virtuální síť prostřednictvím veřejného koncového bodu pomocí brány firewall úložiště.
 
-The DNS resource records for StorageAccountA, when resolved by a client in the VNet hosting the private endpoint, will be:
+Záznamy prostředků DNS pro StorageAccountA, když je klient ve virtuální síti hostující soukromý koncový bod, budou:
 
-| Name (Název)                                                  | Typ  | Hodnota                                                 |
+| Název                                                  | Typ  | Hodnota                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
-This approach enables access to the storage account **using the same connection string** for clients on the VNet hosting the private endpoints, as well as clients outside the VNet.
+Tento přístup umožňuje přístup k účtu úložiště **pomocí stejného připojovacího řetězce** pro klienty ve virtuální síti, která je hostitelem privátních koncových bodů, a taky klientů mimo virtuální síť.
 
-If you are using a custom DNS server on your network, clients must be able to resolve the FQDN for the storage account endpoint to the private endpoint IP address. For this, you must configure your DNS server to delegate your private link subdomain to the private DNS zone for the VNet, or configure the A records for '*StorageAccountA.privatelink.blob.core.windows.net*' with the private endpoint IP address. 
+Pokud ve vaší síti používáte vlastní server DNS, klienti musí být schopni přeložit plně kvalifikovaný název domény pro koncový bod účtu úložiště na IP adresu privátního koncového bodu. V takovém případě musíte nakonfigurovat server DNS tak, aby delegoval subdoménu privátního propojení do privátní zóny DNS pro virtuální síť, nebo můžete nakonfigurovat záznamy pro '*StorageAccountA.privatelink.blob.Core.Windows.NET*' s IP adresou privátního koncového bodu. 
 
 > [!TIP]
-> When using a custom or on-premises DNS server, you should configure your DNS server to resolve the storage account name in the 'privatelink' subdomain to the private endpoint IP address. You can do this by delegating the 'privatelink' subdomain to the private DNS zone of the VNet, or configuring the DNS zone on your DNS server and adding the DNS A records.
+> Pokud používáte vlastní nebo místní server DNS, měli byste server DNS nakonfigurovat tak, aby přeložil název účtu úložiště v subdoméně privatelink na IP adresu privátního koncového bodu. Můžete to udělat tak, že delegujete subdoménu privatelink do privátní zóny DNS virtuální sítě nebo nakonfigurujete zónu DNS na serveru DNS a přidáte záznamy DNS a.
 
-The recommended DNS zone names for private endpoints for storage services are:
+Doporučené názvy zón DNS pro privátní koncové body služby Storage jsou:
 
-| Storage service        | Zone name                            |
+| Služba úložiště        | Název zóny                            |
 | :--------------------- | :----------------------------------- |
-| Blob Service           | `privatelink.blob.core.windows.net`  |
+| Blob service           | `privatelink.blob.core.windows.net`  |
 | Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
-| File service           | `privatelink.file.core.windows.net`  |
-| Queue service          | `privatelink.queue.core.windows.net` |
+| Souborová služba           | `privatelink.file.core.windows.net`  |
+| Služba front          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |
-| Static Websites        | `privatelink.web.core.windows.net`   |
+| Statické weby        | `privatelink.web.core.windows.net`   |
 
-#### <a name="resources"></a>Materiály
+#### <a name="resources"></a>Zdroje informací
 
-For additional guidance on configuring your own DNS server to support private endpoints, refer to the following articles:
+Další pokyny týkající se konfigurace vlastního serveru DNS pro podporu privátních koncových bodů najdete v následujících článcích:
 
 - [Překlad názvů pro prostředky ve virtuálních sítích Azure](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [DNS configuration for Private Endpoints](/private-link/private-endpoint-overview#dns-configuration)
+- [Konfigurace DNS pro privátní koncové body](/private-link/private-endpoint-overview#dns-configuration)
 
 ## <a name="pricing"></a>Ceny
 
-For pricing details, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link).
+Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure](https://azure.microsoft.com/pricing/details/private-link).
 
 ## <a name="known-issues"></a>Známé problémy
 
-### <a name="copy-blob-support"></a>Copy Blob support
+### <a name="copy-blob-support"></a>Podpora kopírování objektů BLOB
 
-During the preview, we don't support [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) commands issued to storage accounts accessed through private endpoints when the source storage account is protected by a firewall.
+Ve verzi Preview nepodporujeme [kopírování příkazů objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) vydaných na účty úložiště, ke kterým jste získali prostřednictvím privátních koncových bodů, když je zdrojový účet úložiště chráněný bránou firewall.
 
-### <a name="subnets-with-service-endpoints"></a>Subnets with Service Endpoints
-Currently, you can't create a private endpoint in a subnet that has service endpoints. As a workaround, you can create separate subnets in the same VNet for service endpoints and private endpoints.
+### <a name="subnets-with-service-endpoints"></a>Podsítě s koncovými body služby
+V současné době nemůžete vytvořit privátní koncový bod v podsíti, která má koncové body služby. Jako alternativní řešení můžete vytvořit samostatné podsítě ve stejné virtuální síti pro koncové body služby a privátní koncové body.
 
-### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Storage access constraints for clients in VNets with Private Endpoints
+### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Omezení přístupu k úložišti pro klienty v virtuální sítě s privátními koncovými body
 
-Clients in VNets with existing private endpoints face constraints when accessing other storage accounts that have private endpoints. For instance, suppose a VNet N1 has a private endpoint for a storage account A1 for, say, the blob service. If storage account A2 has a private endpoint in a VNet N2 for the blob service, then clients in VNet N1 must also access the blob service of account A2 using a private endpoint. If storage account A2 does not have any private endpoints for the blob service, then clients in VNet N1 can access its blob service without a private endpoint.
+Klienti v virtuální sítě se stávajícími omezeními tváře privátních koncových bodů při přístupu k jiným účtům úložiště s privátními koncovými body. Předpokládejme například, že virtuální síť N1 má privátní koncový bod pro účet úložiště a1 pro službu blob, řekněme, že. Pokud má účet úložiště a2 privátní koncový bod ve virtuálním N2 pro službu BLOB Service, pak klienti ve virtuální síti N1 taky musí přistupovat ke službě BLOB účtu a2 pomocí privátního koncového bodu. Pokud účet úložiště a2 nemá žádné privátní koncové body pro službu BLOB Service, klienti v síti VNet N1 mají přístup ke službě BLOB bez privátního koncového bodu.
 
-This constraint is a result of the DNS changes made when account A2 creates a private endpoint.
+Toto omezení je výsledkem změn DNS provedených při vytváření privátního koncového bodu z účtu a2.
 
-### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Network Security Group rules for subnets with private endpoints
+### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Pravidla skupiny zabezpečení sítě pro podsítě s privátními koncovými body
 
-Currently, you can't configure [Network Security Group](../../virtual-network/security-overview.md) (NSG) rules for subnets with private endpoints. A limited workaround for this issue is to implement your access rules for private endpoints on the source subnets, though this approach may require a higher management overhead.
+V současné době nemůžete konfigurovat pravidla [skupiny zabezpečení sítě](../../virtual-network/security-overview.md) (NSG) pro podsítě s privátními koncovými body. Omezené řešení tohoto problému je implementace pravidel přístupu pro privátní koncové body ve zdrojových podsítích, i když tento přístup může vyžadovat vyšší režijní náklady na správu.

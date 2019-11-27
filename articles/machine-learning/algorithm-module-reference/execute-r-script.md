@@ -1,7 +1,7 @@
 ---
-title: 'Execute R Script: Module Reference'
+title: 'Spustit skript R: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the Execute R Script module in Azure Machine Learning to run R code.
+description: Naučte se používat modul r skriptu Execute v Azure Machine Learning ke spuštění kódu R.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,22 +18,22 @@ ms.locfileid: "74232639"
 ---
 # <a name="execute-r-script"></a>Spouštění skriptů R
 
-This article describes how to use the **Execute R Script** module to run R code in your Azure Machine Learning designer (preview) pipeline.
+Tento článek popisuje, jak použít modul **skriptu Run r** ke spuštění kódu R v kanálu návrháře Azure Machine Learning (Preview).
 
-With R, you can perform tasks that aren't currently supported by existing modules such as: 
-- Create custom data transformations
-- Use your own metrics to evaluate predictions
-- Build models using algorithms that aren't implemented as standalone modules in the designer
+Pomocí jazyka R můžete provádět úlohy, které aktuálně nejsou podporovány existujícími moduly, například: 
+- Vytváření vlastních transformací dat
+- Použití vlastních metrik k vyhodnocení předpovědi
+- Modely sestavení pomocí algoritmů, které nejsou implementované jako samostatné moduly v Návrháři
 
-## <a name="r-version-support"></a>R version support
+## <a name="r-version-support"></a>Podpora verze R
 
-Azure Machine Learning designer uses the CRAN (Comprehensive R Archive Network) distribution of R. The currently used version is CRAN 3.5.1.
+Azure Machine Learning Designer používá distribuci R v CRAN (komplexní archivní síť v R). Aktuálně použitá verze je CRAN 3.5.1.
 
-## <a name="supported-r-packages"></a>Supported R packages
+## <a name="supported-r-packages"></a>Podporované balíčky R
 
-The R environment is pre-installed with over 100 packages. For a complete list, see the section [Pre-installed R packages](#pre-installed-r-packages).
+Prostředí jazyka R je předem nainstalováno s více balíčky 100. Úplný seznam najdete v části [předinstalované balíčky R](#pre-installed-r-packages).
 
-You can also add the following code to any **Execute R Script** module and to see the installed packages.
+Následující kód můžete také přidat do jakéhokoli **spouštěného modulu skriptu R** a zobrazit nainstalované balíčky.
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -43,10 +43,10 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-## <a name="installing-r-packages"></a>Installing R packages
-To install additional R packages, use the `install.packages()` method. Be sure to specify the CRAN repository. Packages are installed for each **Execute R Script** module, and aren't shared across other **Execute R Script** modules.
+## <a name="installing-r-packages"></a>Instalace balíčků R
+Chcete-li nainstalovat další balíčky R, použijte metodu `install.packages()`. Nezapomeňte zadat úložiště CRAN. Balíčky se nainstalují pro každý modul **spuštění skriptu r** a nesdílí se mezi jinými moduly **spouštění skriptu jazyka r** .
 
-This sample shows how to install Zoo:
+V této ukázce se dozvíte, jak nainstalovat:
 ```R
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
@@ -65,31 +65,31 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-  > Please check if the package already exists before install it to avoid repeat installing. Like `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`  in above sample code. Repeat installing may cause web service request timeout.     
+  > Zkontrolujte prosím, jestli balíček už existuje, a teprve potom ho nainstalujte, abyste se vyhnuli opakované instalaci. Podobně jako `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` výše vzorový kód. Opakování instalace může způsobit vypršení časového limitu požadavku webové služby.     
 
-## <a name="how-to-configure-execute-r-script"></a>How to configure Execute R Script
+## <a name="how-to-configure-execute-r-script"></a>Jak nakonfigurovat skript spouštěný v jazyce R
 
-The **Execute R Script** module contains sample code that you can use as a starting point. To configure the **Execute R Script** module, provide a set of inputs and code to execute.
+Modul **spuštění skriptu jazyka R** obsahuje vzorový kód, který můžete použít jako výchozí bod. Chcete-li nakonfigurovat modul **skriptu Execute R** , poskytněte sadu vstupů a kódů, které mají být provedeny.
 
-![R-module](media/module/execute-r-script.png)
+![R – modul](media/module/execute-r-script.png)
 
-Datasets stored in the designer are automatically converted to an R data frame when loaded with this module.
+Datové sady uložené v návrháři se při načtení s tímto modulem automaticky převedou na datový rámec R.
 
-1.  Add the **Execute R Script** module to your pipeline.
+1.  Přidejte do svého kanálu modul **spuštění skriptu jazyka R** .
 
   
 
-1. Connect any inputs needed by the script. Inputs are optional and can include data and additional R code.
+1. Připojte libovolné vstupy, které skript potřebuje. Vstupy jsou volitelné a můžou obsahovat data a další kód R.
 
-    * **Dataset1**: Reference the first input as `dataframe1`. The input dataset must be formatted as a CSV, TSV, ARFF, or you can connect an Azure Machine Learning dataset.
+    * **DataSet1.** : odkazuje na první vstup jako `dataframe1`. Vstupní datová sada musí být naformátovaná jako CSV, TSV, ARFF nebo můžete připojit Azure Machine Learning datovou sadu.
 
-    * **Dataset2**: Reference the second input as `dataframe2`. This dataset also must be formatted as a CSV, TSV, ARFF file, or as an Azure Machine Learning dataset.
+    * **Dataset2**: odkázat na druhý vstup jako `dataframe2`. Tato datová sada musí být také naformátovaná jako soubor CSV, TSV, ARFF nebo jako datová sada Azure Machine Learning.
 
-    * **Script Bundle**: The third input accepts ZIP files. The zipped file can contain multiple files and multiple file types.
+    * **Sada skriptů**: třetí vstup přijímá soubory zip. Soubor ZIP může obsahovat více souborů a více typů souborů.
 
-1. In the **R script** text box, type or paste valid R script.
+1. Do textového pole **skript jazyka r** zadejte nebo vložte platný skript r.
 
-    To help you get started, the **R Script** text box is pre-populated with sample code, which you can edit or replace.
+    Abychom vám pomohli začít, textové pole **skriptu jazyka R** je předem vyplněno ukázkovým kódem, který můžete upravit nebo nahradit.
     
 ```R
 # R version: 3.5.1
@@ -111,48 +111,48 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
- * The script must contain a function named `azureml_main`, which is the entry point for this module.
+ * Skript musí obsahovat funkci s názvem `azureml_main`, což je vstupní bod pro tento modul.
 
- * The entry point function can contain up to two input arguments: `Param<dataframe1>` and `Param<dataframe2>`
+ * Funkce vstupního bodu může obsahovat až dva vstupní argumenty: `Param<dataframe1>` a `Param<dataframe2>`
  
    > [!NOTE]
-    > The data passed to the **Execute R Script** module is referenced as `dataframe1` and `dataframe2`, which is different from Azure Machine Learning designer (the designer reference as `dataset1`, `dataset2`). Please check to make sure input data is referneced correctly in your script.  
+    > Data předaná do modulu **spuštění skriptu jazyka R** jsou odkazována jako `dataframe1` a `dataframe2`, která se liší od Azure Machine Learning Designer (odkaz návrháře jako `dataset1`, `dataset2`). Zkontrolujte prosím, jestli se vstupní data ve skriptu referneced správně.  
  
     > [!NOTE]
-    >  Existing R code may need minor changes to run in a designer pipeline. For example, input data that you provide in CSV format should be explicitly converted to a dataset before you can use it in your code. Data and column types used in the R language also differ in some ways from the data and column types used in the designer.
+    >  Existující kód R může vyžadovat drobné změny ke spuštění v kanálu návrháře. Například vstupní data, která zadáte ve formátu CSV, by měla být explicitně převedena na datovou sadu, aby ji bylo možné použít ve svém kódu. Typy dat a sloupců používané v jazyce R se také liší v různých způsobech z dat a typů sloupců použitých v návrháři.
 
-1.  **Random Seed**: Type a value to use inside the R environment as the random seed value. This parameter is equivalent to calling `set.seed(value)` in R code.  
+1.  **Náhodný základ**: zadejte hodnotu, která se má použít v prostředí jazyka R, jako náhodná hodnota počáteční hodnoty. Tento parametr je ekvivalentní volání `set.seed(value)` v kódu R.  
 
 1. Spuštění kanálu  
 
 ## <a name="results"></a>Výsledky
 
-The **Execute R Script** modules can return multiple outputs, but they must be provided as R data frames. Data frames are automatically converted to datasets in the designer for compatibility with other modules.
+Moduly **spouštěné skriptem R** mohou vracet více výstupů, ale musí být zadány jako datové snímky R. Datové snímky jsou automaticky převedeny na datové sady v návrháři, aby byly kompatibilní s jinými moduly.
 
-Standard messages and errors from R are returned to the module's log.
+Do protokolu modulu se vrátí standardní zprávy a chyby z R.
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 
-There are many ways that you can extend your pipeline by using custom R script.  This section provides sample code for common tasks.
+Existuje mnoho způsobů, jak kanál můžete roztáhnout pomocí vlastního skriptu jazyka R.  V této části najdete vzorový kód pro běžné úlohy.
 
 
-### <a name="add-r-script-as-an-input"></a>Add R script as an input
+### <a name="add-r-script-as-an-input"></a>Přidat skript jazyka R jako vstup
 
-The **Execute R Script** module supports arbitrary R script files as inputs. To do so, they must be uploaded to your workspace as part of the ZIP file.
+Modul **spuštění skriptu jazyka r** podporuje jako vstupy libovolné soubory skriptu r. V takovém případě je třeba je odeslat do vašeho pracovního prostoru jako součást souboru ZIP.
 
-1. To upload a ZIP file containing R code to your workspace, click **New**, click **Dataset**, and then select **From local file** and the **Zip file** option.  
+1. Pokud chcete nahrát soubor ZIP, který obsahuje kód R, do svého pracovního prostoru, klikněte na **Nový**, klikněte na **datovou sadu**a pak vyberte možnost **z místního souboru** a **souboru ZIP** .  
 
-1. Verify that the zipped file is available in the **Saved Datasets** list.
+1. Ověřte, zda je soubor zip k dispozici v seznamu **uložených datových sad** .
 
-1.  Connect the dataset to the **Script Bundle** input port.
+1.  Připojte datovou sadu ke vstupnímu portu **sady skriptu** .
 
-1. All files that are contained in the ZIP file are available during pipeline run time. 
+1. Všechny soubory, které jsou obsaženy v souboru ZIP, jsou k dispozici během běhu kanálu. 
 
-    If the script bundle file contained a directory structure, the structure is preserved. However, you must alter your code to prepend the directory **./Script Bundle** to the path.
+    Pokud soubor sady skriptu obsahuje adresářovou strukturu, struktura se zachová. Je však nutné upravit kód pro **předvedení adresáře./Script** do cesty.
 
 ### <a name="process-data"></a>Zpracování dat
 
-The following sample shows how to scale and normalize input data:
+Následující příklad ukazuje, jak škálovat a normalizovat vstupní data:
 
 ```R
 # R version: 3.5.1
@@ -181,15 +181,15 @@ azureml_main <- function(dataframe1, dataframe2){
 }
  ```
 
-### <a name="read-a-zip-file-as-input"></a>Read a ZIP file as input
+### <a name="read-a-zip-file-as-input"></a>Přečíst soubor ZIP jako vstup
 
-This sample shows how to use a dataset in a ZIP file as an input to the **Execute R Script** module.
+Tato ukázka ukazuje, jak použít datovou sadu v souboru ZIP jako vstup pro modul **spouštění skriptu jazyka R** .
 
-1. Create the data file in CSV format, and name it “mydatafile.csv”.
-1. Create a ZIP file and add the CSV file to the archive.
-1. Upload the zipped file to your Azure Machine Learning workspace. 
-1. Connect the resulting dataset to the **ScriptBundle** input of your **Execute R Script** module.
-1. Using the following code to read the CSV data from the zipped file.
+1. Vytvořte datový soubor ve formátu CSV a pojmenujte ho "mydatafile. csv".
+1. Vytvořte soubor ZIP a přidejte soubor CSV do archivu.
+1. Nahrajte soubor zip do svého pracovního prostoru Azure Machine Learning. 
+1. Připojte výslednou datovou sadu k **ScriptBundle** vstupu modulu **skriptu pro spuštění R** .
+1. K načtení dat sdíleného svazku clusteru ze souboru ZIP použijte následující kód.
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -200,9 +200,9 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-### <a name="replicate-rows"></a>Replicate rows
+### <a name="replicate-rows"></a>Replikovat řádky
 
-This sample shows how to replicate positive records in a dataset to balance the sample:
+Tento příklad ukazuje, jak replikovat kladné záznamy v datové sadě pro vyvážení ukázky:
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -217,11 +217,11 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-### <a name="pass-r-objects-between-execute-r-script-modules"></a>Pass R objects between Execute R Script modules
+### <a name="pass-r-objects-between-execute-r-script-modules"></a>Předávání objektů R mezi spouštěním modulů skriptu jazyka R
 
-You can pass R objects between instances of the **Execute R Script** module by using the internal serialization mechanism. This example assumes that you want to move the R object named `A` between two **Execute R Script** modules.
+Můžete předat objekty R mezi instancemi modulu **spouštění skriptu jazyka r** pomocí interního mechanizmu serializace. V tomto příkladu se předpokládá, že chcete přesunout objekt R s názvem `A` mezi dvěma moduly **provádění skriptu jazyka r** .
 
-1. Add the first **Execute R Script** module to your pipeline, and type the following code in the **R Script** text box to create a serialized object `A` as a column in the module’s output Data Table:  
+1. Přidejte do svého kanálu první modul **spuštění skriptu jazyka r** a do textového pole **skript jazyka r** zadejte následující kód, který vytvoří serializovaný objekt `A` jako sloupec v tabulce výstupních dat modulu:  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -235,11 +235,11 @@ You can pass R objects between instances of the **Execute R Script** module by u
     }
     ```
 
-    The explicit conversion to integer type is done because the serialization function outputs data in the R `Raw` format, which isn't supported by the designer.
+    Explicitní převod na celočíselný typ je proveden, protože funkce serializace výstupuje data ve formátu R `Raw`, který není podporován návrhářem.
 
-1. Add a second instance of the **Execute R Script** module, and connect it to the output port of the previous module.
+1. Přidejte druhou instanci modulu **spuštění skriptu jazyka R** a připojte ho k výstupnímu portu předchozího modulu.
 
-1. Type the following code in the **R Script** text box to extract object `A` from the input Data Table. 
+1. Do textového pole **skript R** zadejte následující kód pro extrakci `A` objektů z tabulky vstupních dat. 
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -250,38 +250,38 @@ You can pass R objects between instances of the **Execute R Script** module by u
     }
     ```
 
-## <a name="pre-installed-r-packages"></a>Pre-installed R Packages
+## <a name="pre-installed-r-packages"></a>Předem nainstalované balíčky R
 
-The current list of pre-installed R Packages available to use:
+Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 
 |              |            | 
 |--------------|------------| 
 | Balíček      | Version    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
-| backports    | 1.1.4      | 
-| base         | 3.5.1      | 
-| base64enc    | 0.1-3      | 
+| porty pro porty    | 1.1.4      | 
+| základ         | 3.5.1      | 
+| base64enc    | 0,1 – 3      | 
 | BH           | 1.69.0-1   | 
-| bindr        | 0.1.1      | 
+| pořadač        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
-| bitops       | 1.0-6      | 
+| bitops       | 1,0 – 6      | 
 | startování         | 1.3-22     | 
 | broom        | 0.5.2      | 
-| callr        | 3.2.0      | 
-| caret        | 6.0-84     | 
+| volající        | 3.2.0      | 
+| něj        | 6.0 – 84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
-| class        | 7.3-15     | 
-| cli          | 1.1.0      | 
-| clipr        | 0.6.0      | 
-| cluster      | 2.0.7-1    | 
-| codetools    | 0.2-16     | 
+| Třída        | 7.3-15     | 
+| CLI          | 1.1.0      | 
+| Galerie        | 0.6.0      | 
+| služby      | 2.0.7-1    | 
+| codetools    | 0,2 – 16     | 
 | colorspace   | 1.4-1      | 
-| compiler     | 3.5.1      | 
-| crayon       | 1.3.4      | 
-| curl         | 3.3        | 
-| data.table   | 1.12.2     | 
+| Přepínač     | 3.5.1      | 
+| pastel       | 1.3.4      | 
+| Curl         | 3.3        | 
+| data. tabulka   | 1.12.2     | 
 | datasets     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
@@ -289,62 +289,62 @@ The current list of pre-installed R Packages available to use:
 | dplyr        | 0.7.6      | 
 | e1071        | 1.7-2      | 
 | Vyhodnocení     | 0.14       | 
-| fansi        | 0.4.0      | 
+| ventilátory        | 0.4.0      | 
 | forcats      | 0.3.0      | 
 | foreach      | 1.4.4      | 
-| foreign      | 0.8-71     | 
-| fs           | 1.3.1      | 
+| měnov      | 0,8 – 71     | 
+| FS           | 1.3.1      | 
 | gdata        | 2.18.0     | 
-| generics     | 0.0.2      | 
+| Obecné typy     | 0.0.2      | 
 | ggplot2      | 3.2.0      | 
-| glmnet       | 2.0-18     | 
-| glue         | 1.3.1      | 
+| glmnet       | 2.0 – 18     | 
+| spojovací         | 1.3.1      | 
 | gower        | 0.2.1      | 
 | gplots       | 3.0.1.1    | 
-| graphics     | 3.5.1      | 
+| prvky     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| grid         | 3.5.1      | 
+| mřížky         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
-| haven        | 2.1.0      | 
-| highr        | 0.8        | 
+| Některé        | 2.1.0      | 
+| vysoká        | 0,8        | 
 | hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
-| ipred        | 0.9-9      | 
-| iterators    | 1.0.10     | 
+| ipred        | 0.9 – 9      | 
+| iterátory    | 1.0.10     | 
 | jsonlite     | 1.6        | 
 | KernSmooth   | 2.23-15    | 
-| knitr        | 1.23       | 
-| labeling     | 0.3        | 
-| lattice      | 0.20-38    | 
+| knitr        | 1,23       | 
+| označování     | 0,3        | 
+| mřížky      | 0,20 – 38    | 
 | lava         | 1.6.5      | 
 | lazyeval     | 0.2.2      | 
 | lubridate    | 1.7.4      | 
 | magrittr     | 1,5        | 
-| markdown     | 1\. místo          | 
-| MASS         | 7.3-51.4   | 
-| Matrix       | 1.2-17     | 
-| methods      | 3.5.1      | 
-| mgcv         | 1.8-28     | 
-| mime         | 0.7        | 
+| Markdownu     | 1          | 
+| HROMADNÉ         | 7.3-51.4   | 
+| Službu       | 1.2-17     | 
+| způsobů      | 3.5.1      | 
+| mgcv         | 1.8 – 28     | 
+| typů         | 0,7        | 
 | ModelMetrics | 1.2.2      | 
-| modelr       | 0.1.4      | 
+| model       | 0.1.4      | 
 | munsell      | 0.5.0      | 
-| nlme         | 3.1-140    | 
-| nnet         | 7.3-12     | 
+| nlme         | 3.1 – 140    | 
+| sušené         | 7.3-12     | 
 | numDeriv     | 2016.8-1.1 | 
-| openssl      | 1.4        | 
+| OpenSSL      | 1.4        | 
 | parallel     | 3.5.1      | 
-| pillar       | 1.4.1      | 
+| pilíř       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 
 | plogr        | 0.2.0      | 
 | plyr         | 1.8.4      | 
 | prettyunits  | 1.0.2      | 
 | processx     | 3.3.1      | 
 | prodlim      | 2018.04.18 | 
-| progress     | 1.2.2      | 
-| ps           | 1.3.0      | 
+| Přejde     | 1.2.2      | 
+| PS           | 1.3.0      | 
 | purrr        | 0.3.2      | 
 | quadprog     | 1.5-7      | 
 | quantmod     | 0.4-15     | 
@@ -353,53 +353,53 @@ The current list of pre-installed R Packages available to use:
 | RColorBrewer | 1.1-2      | 
 | Rcpp         | 1.0.1      | 
 | RcppRoll     | 0.3.0      | 
-| readr        | 1.3.1      | 
+| čtení        | 1.3.1      | 
 | readxl       | 1.3.1      | 
 | recepty      | 0.1.5      | 
-| rematch      | 1.0.1      | 
+| přerovnávat      | 1.0.1      | 
 | reprex       | 0.3.0      | 
 | reshape2     | 1.4.3      | 
-| reticulate   | 1.12       | 
+| reticulate   | 1,12       | 
 | rlang        | 0.4.0      | 
-| rmarkdown    | 1.13       | 
-| ROCR         | 1.0-7      | 
+| rmarkdown    | 1,13       | 
+| ROCR         | 1,0 – 7      | 
 | rpart        | 4.1-15     | 
 | rstudioapi   | 0.1        | 
 | rvest        | 0.3.4      | 
-| scales       | 1.0.0      | 
-| selectr      | 0.4-1      | 
-| spatial      | 7.3-11     | 
-| splines      | 3.5.1      | 
+| Uprav       | 1.0.0      | 
+| výběr      | 0.4-1      | 
+| klepání      | 7.3-11     | 
+| křivky      | 3.5.1      | 
 | SQUAREM      | 2017.10-1  | 
-| stats        | 3.5.1      | 
+| statistické        | 3.5.1      | 
 | stats4       | 3.5.1      | 
-| stringi      | 1.4.3      | 
-| stringr      | 1.3.1      | 
-| survival     | 2.44-1.1   | 
-| sys          | 3,2        | 
+| řetězce      | 1.4.3      | 
+| Stringer      | 1.3.1      | 
+| záchran     | 2.44-1.1   | 
+| tabulce          | 3,2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
 | tidyr        | 0.8.3      | 
 | tidyselect   | 0.2.5      | 
 | tidyverse    | 1.2.1      | 
-| timeDate     | 3043.102   | 
-| tinytex      | 0.13       | 
+| timeDate     | 3043,102   | 
+| tinytex      | 0,13       | 
 | nástroje        | 3.5.1      | 
-| tseries      | 0.10-47    | 
+| tseries      | 0.10 – 47    | 
 | TTR          | 0.23-4     | 
 | utf8         | 1.1.4      | 
 | utils        | 3.5.1      | 
 | vctrs        | 0.1.0      | 
 | viridisLite  | 0.3.0      | 
-| whisker      | 0.3-2      | 
-| withr        | 2.1.2      | 
-| xfun         | 0.8        | 
+| vous      | 0,3 – 2      | 
+| s ním        | 2.1.2      | 
+| xfun         | 0,8        | 
 | xml2         | 1.2.0      | 
-| xts          | 0.11-2     | 
-| yaml         | 2.2.0      | 
+| XTS          | 0,11 – 2     | 
+| YAML         | 2.2.0      | 
 | zeallot      | 0.1.0      | 
-| zoo          | 1.8-6      | 
+| zoo          | 1.8 – 6      | 
 
 ## <a name="next-steps"></a>Další kroky
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

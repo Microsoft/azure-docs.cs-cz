@@ -27,8 +27,8 @@ Abyste mohli přijmout předpověď služby LUIS v chatbotu nebo jiné klientsk�
 
     ![Publikování LUIS do koncového bodu](../media/howto-publish/publish-app-popup.png)
 
-3. Publishing is complete when you see the status bar at the top of the page confirming success.
+3. Publikování je dokončeno po zobrazení stavového řádku v horní části stránky potvrzující úspěch.
 
     ![Publikování LUIS do koncového bodu](../media/howto-publish/publish-endpoint-success.png)
 
-4. Select the **Access your endpoint URLs** link in the notification to go to the **Azure Resources** page. The endpoint URLs are listed as the **Example Query**.
+4. Vyberte odkaz **přístup k adresám URL koncových bodů** v oznámení, abyste přešli na stránku **prostředků Azure** . Adresa URL koncového bodu je uvedena jako **vzorový dotaz**.

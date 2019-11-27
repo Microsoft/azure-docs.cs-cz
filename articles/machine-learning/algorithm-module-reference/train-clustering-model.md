@@ -1,7 +1,7 @@
 ---
-title: 'Train Clustering Model: Module Reference'
+title: 'Model clusteringu pro vlak: Reference k modulu'
 titleSuffix: Azure Machine Learning
-description: Learn how to use the Train Clustering Model module in Azure Machine Learning to train clustering models.
+description: Naučte se používat modul výukového modelu clusteringu v Azure Machine Learning ke školení modelů clusteringu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,44 +18,44 @@ ms.locfileid: "74232578"
 ---
 # <a name="train-clustering-model"></a>Trénování modelu clusteringu
 
-This article describes a module in Azure Machine Learning designer (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Use this module to train a clustering model.
+Tento modul slouží ke školení modelu clusteringu.
 
-The module takes an untrained clustering model that you have already configured using the [K-Means Clustering](k-means-clustering.md) module, and trains the model using a labeled or unlabeled data set. The module creates both a trained model that you can use for prediction, and a set of cluster assignments for each case in the training data.
+Modul převezme provedený model clusteringu, který jste už nakonfigurovali pomocí technologie [K-označuje modul clusteringu](k-means-clustering.md) a navlakuje model pomocí označené nebo neoznačené sady dat. Modul vytvoří jak vyškolený model, který můžete použít pro předpověď, a sadu přiřazení clusteru pro každý případ v školicích datech.
 
 > [!NOTE]
-> A clustering model cannnot be trained using the [Train Model](train-model.md) module, which is the generic module for training machine learning models. That is because [Train Model](train-model.md) works only with supervised learning algorithms. K-means and other clustering algorithms allow unsupervised learning, meaning that the algorithm can learn from unlabeled data.  
+> Model clusteringu nejde být vyškolený pomocí modulu [výuka modelu](train-model.md) , který je obecným modulem pro školení modelů strojového učení. Důvodem je to, že [model výuky](train-model.md) funguje jenom se základními algoritmy učení. K-znamená a další algoritmy clusteringu umožňují bezdohledné učení, což znamená, že se algoritmus může naučit z neoznačených dat.  
   
-## <a name="how-to-use-train-clustering-model"></a>How to use Train Clustering Model  
+## <a name="how-to-use-train-clustering-model"></a>Použití modelu výukového clusteringu  
 
-1.  Add the **Train Clustering Model** module to your pipeline in the designer. You can find the module under **Machine Learning Modules**, in the **Train** category.  
+1.  Přidejte modul **clusteringu clustering model** do kanálu v návrháři. Modul najdete v části **Machine Learning moduly**v kategorii **vlaků** .  
   
-2. Add the [K-Means Clustering](k-means-clustering.md) module, or another custom module that creates a compatible clustering model, and set the parameters of the clustering model.  
+2. Přidejte modul pro clusteringu, který je [prostředkem pro clustering](k-means-clustering.md) , nebo jiný vlastní modul, který vytvoří kompatibilní model clusteringu, a nastavte parametry modelu clusteringu.  
     
-3.  Attach a training dataset to the right-hand input of **Train Clustering Model**.
+3.  Připojte školicí datovou sadu k pravému vstupu **modelu clusteringu s výukou**.
   
-5.  In **Column Set**, select the columns from the dataset to use in building clusters. Be sure to select columns that make good features: for example, avoid using IDs or other columns that have unique values, or columns that have all the same values.
+5.  V části **sada sloupců**vyberte sloupce z datové sady, které chcete použít při vytváření clusterů. Nezapomeňte vybrat sloupce, které mají dobré funkce, například Vyhněte se použití ID nebo jiných sloupců, které mají jedinečné hodnoty, nebo sloupců, které mají všechny stejné hodnoty.
 
-    If a label is available, you can either use it as a feature, or leave it out.  
+    Pokud je popisek k dispozici, můžete ho buď použít jako funkci, nebo ho nechat zapnutý.  
   
-6. Select the option, **Check for append or uncheck for result only**, if you want to output the training data together with the new cluster label.
+6. Vyberte možnost a **zaškrtněte políčko připojit nebo zrušit zaškrtnutí pouze pro výsledek**, pokud chcete výstup školicích dat společně s novým označením clusteru.
 
-    If you deselect this option, only the cluster assignments are output. 
+    Pokud zrušíte výběr této možnosti, budou výstupem pouze přiřazení clusteru. 
 
-7. Run the pipeline, or click the **Train Clustering Model** module and select **Run Selected**.  
+7. Spusťte kanál nebo klikněte na modul **výukového modelu clusteringu** a vyberte **Spustit vybrané**.  
   
 ### <a name="results"></a>Výsledky
 
-After training has completed:
+Po dokončení školení:
 
 
-+  To view the values in the dataset, right-click the module, select **Result datasets**, and click **Visualize**.
++  Chcete-li zobrazit hodnoty v datové sadě, klikněte pravým tlačítkem na modul, vyberte **výslednou**datovou sadu a klikněte na **vizualizovat**.
 
-+ To save the trained model for later reuse, right-click the module, select **Trained model**, and click **Save As Trained Model**.
++ Pokud chcete vyškolený model Uložit pro pozdější použití, klikněte pravým tlačítkem na modul, vyberte **trained model**a klikněte na **Uložit jako trained model**.
 
-+ To generate scores from the model, use [Assign Data to Clusters](assign-data-to-clusters.md).
++ K vygenerování skóre z modelu použijte [přiřazení dat do clusterů](assign-data-to-clusters.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

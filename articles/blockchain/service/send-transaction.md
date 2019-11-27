@@ -1,6 +1,6 @@
 ---
-title: Create, build, & deploy smart contracts tutorial - Azure Blockchain Service
-description: Tutorial on how to use the Azure Blockchain Development Kit for Ethereum extension in Visual Studio Code to create, build, and deploy a smart contract on Azure Blockchain Service.
+title: Kurz vytvoření, sestavení, & nasazení inteligentních kontraktů – Azure blockchain Service
+description: Kurz týkající se použití rozšíření Azure blockchain Development Kit pro rozšíření Ethereem v Visual Studio Code k vytvoření, sestavení a nasazení inteligentních kontraktů ve službě Azure blockchain Service.
 ms.date: 11/20/2019
 ms.topic: tutorial
 ms.reviewer: chrisseg
@@ -11,83 +11,83 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325174"
 ---
-# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Tutorial: Create, build, and deploy smart contracts on Azure Blockchain Service
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Kurz: vytvoření, sestavení a nasazení inteligentních smluv ve službě Azure blockchain
 
-In this tutorial, use the Azure Blockchain Development Kit for Ethereum extension in Visual Studio Code to create, build, and deploy a smart contract on Azure Blockchain Service. You also use Truffle to execute a smart contract function via a transaction.
+V tomto kurzu pomocí rozšíření Azure blockchain Development Kit pro Ethereem v Visual Studio Code vytvoříte, sestavíte a nasadíte inteligentní smlouvu na Azure blockchain Service. Pomocí Truffle můžete také spustit funkci inteligentního kontraktu prostřednictvím transakce.
 
-You use Azure Blockchain Development Kit for Ethereum to:
+Pomocí Azure blockchain Development Kit pro Ethereem:
 
 > [!div class="checklist"]
-> * Create a smart contract
-> * Deploy a smart contract
-> * Execute a smart contract function via a transaction
-> * Query contract state
+> * Vytvoření inteligentního kontraktu
+> * Nasazení inteligentního kontraktu
+> * Provedení funkce inteligentního kontraktu prostřednictvím transakce
+> * Dotaz na stav kontraktu
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Complete [Quickstart: Use Visual Studio Code to connect to a Azure Blockchain Service consortium network](connect-vscode.md)
+* Kompletní [rychlé zprovoznění: použití Visual Studio Code pro připojení k síti konsorcia Azure blockchain](connect-vscode.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Azure Blockchain Development Kit for Ethereum extension](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.js 10.15.x or higher](https://nodejs.org/download)
-* [Git 2.10.x or higher](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Add python.exe to your path. Python version 2.7.15 in your path is required for Azure Blockchain Development Kit.
+* [Azure blockchain Development Kit pro rozšíření Ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node. js 10.15. x nebo vyšší](https://nodejs.org/download)
+* [Git 2.10. x nebo vyšší](https://git-scm.com)
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Přidejte Python. exe do cesty. Pro Azure blockchain Development Kit se vyžaduje Python verze 2.7.15 ve vaší cestě.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
-On Windows, an installed C++ compiler is required for the node-gyp module. You can use the MSBuild tools:
+V systému Windows je potřebný C++ kompilátor vyžadován pro modul Node-gyp. Můžete použít nástroje MSBuild:
 
-* If Visual Studio 2017 is installed, configure npm to use the MSBuild tools with the command `npm config set msvs_version 2017 -g`
-* If Visual Studio 2019 is installed, set the MS build tools path for npm. Například `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`.
-* Otherwise, install the stand-alone VS Build tools using `npm install --global windows-build-tools` in an elevated *Run as administrator* command shell.
+* Pokud je nainstalována aplikace Visual Studio 2017, nakonfigurujte npm pro použití nástrojů MSBuild s příkazem `npm config set msvs_version 2017 -g`
+* Pokud je nainstalována sada Visual Studio 2019, nastavte cestu k nástrojům pro sestavení MS pro npm. Například `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`.
+* V opačném případě nainstalujte samostatné nástroje VS Build Tools pomocí `npm install --global windows-build-tools` v příkazovém okně *Spusťte správce* se zvýšenými oprávněními.
 
-For more information about node-gyp, see the [node-gyp repository on GitHub](https://github.com/node-gyp).
+Další informace o Node-gyp najdete v části [úložiště Node-gyp na GitHubu](https://github.com/node-gyp).
 
-## <a name="create-a-smart-contract"></a>Create a smart contract
+## <a name="create-a-smart-contract"></a>Vytvoření inteligentního kontraktu
 
-The Azure Blockchain Development Kit for Ethereum uses project templates and Truffle tools to help scaffold, build, and deploy contracts. Before you begin, complete the prerequisite [Quickstart: Use Visual Studio Code to connect to a Azure Blockchain Service consortium network](connect-vscode.md). The quickstart guides you through the installation and configuration of the Azure Blockchain Development Kit for Ethereum.
+Sada Azure blockchain Development Kit pro Ethereem používá projektové šablony a nástroje Truffle, které vám pomůžou vytvářet kontrakty pro generování a nasazení. Než začnete, dokončete potřebný [rychlý Start: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací a konfigurací sady Azure blockchain Development Kit pro Ethereem.
 
-1. From the VS Code command palette, choose **Azure Blockchain: New Solidity Project**.
-1. Choose **Create basic project**.
-1. Create a new folder named `HelloBlockchain` and **Select new project path**.
+1. Z palety příkazů VS Code vyberte **Azure blockchain: nový projekt soliding**.
+1. Vyberte **vytvořit základní projekt**.
+1. Vytvořte novou složku s názvem `HelloBlockchain` a **Vyberte možnost Nová cesta k projektu**.
 
-The Azure Blockchain Development Kit creates and initializes a new Solidity project for you. The basic project includes a sample **HelloBlockchain** smart contract and all the necessary files to build and deploy to your consortium member in Azure Blockchain Service. It may take several minutes for the project to be created. You can monitor the progress in VS Code's terminal panel by selecting the output for Azure Blockchain.
+Sada Azure blockchain Development Kit vytvoří a inicializuje nový projekt Solider pro vás. Základní projekt obsahuje vzorový **HelloBlockchain** a všechny potřebné soubory pro sestavování a nasazování členů konsorcia ve službě Azure blockchain. Vytvoření projektu může trvat několik minut. Průběh můžete sledovat na panelu terminálu VS Code, když vyberete výstup pro Azure blockchain.
 
-The project structure looks like the following example:
+Struktura projektu vypadá jako v následujícím příkladu:
 
-   ![Solidity project](./media/send-transaction/solidity-project.png)
+   ![Projekt solidosti](./media/send-transaction/solidity-project.png)
 
-## <a name="build-a-smart-contract"></a>Build a smart contract
+## <a name="build-a-smart-contract"></a>Vytvoření inteligentního kontraktu
 
-Smart contracts are located in the project's **contracts** directory. You compile smart contracts before you deploy them to a blockchain. Use the **Build Contracts** command to compile all the smart contracts in your project.
+Inteligentní kontrakty se nacházejí v adresáři **kontraktů** projektu. Inteligentní smlouvy kompilujete před jejich nasazením do blockchain. Použijte příkaz **kontrakty sestavení** pro zkompilování všech inteligentních kontraktů v projektu.
 
-1. In the VS Code explorer sidebar, expand the **contracts** folder in your project.
-1. Right-click **HelloBlockchain.sol** and choose **Build Contracts** from the menu.
+1. Na bočním panelu Průzkumníka VS Code rozbalte složku **smlouvy** ve vašem projektu.
+1. Klikněte pravým tlačítkem na **HelloBlockchain. Sol** a v nabídce vyberte **kontrakty sestavení** .
 
-    ![Build contracts](./media/send-transaction/build-contracts.png)
+    ![Smlouvy sestavení](./media/send-transaction/build-contracts.png)
 
-Azure Blockchain Development Kit uses Truffle to compile the smart contracts.
+Azure blockchain Development Kit používá Truffle ke kompilaci inteligentních smluv.
 
-![Compile output](./media/send-transaction/compile-output.png)
+![Kompilovat výstup](./media/send-transaction/compile-output.png)
 
-## <a name="deploy-a-smart-contract"></a>Deploy a smart contract
+## <a name="deploy-a-smart-contract"></a>Nasazení inteligentního kontraktu
 
-Truffle uses migration scripts to deploy your contracts to an Ethereum network. Migrations are JavaScript files located in the project's **migrations** directory.
+Truffle používá skripty pro migraci k nasazení svých smluv do sítě Ethereem. Migrace jsou soubory JavaScriptu, které se nacházejí v adresáři **migrace** projektu.
 
-1. To deploy your smart contract, right-click **HelloBlockchain.sol** and choose **Deploy Contracts** from the menu.
-1. Choose your Azure Blockchain consortium network in the command palette. The consortium blockchain network was added to the project's Truffle configuration file when you created the project.
-1. Choose **Generate mnemonic**. Choose a filename and save the mnemonic file in the project folder. Například, `myblockchainmember.env`. The mnemonic file is used to generate an Ethereum private key for your blockchain member.
+1. Pokud chcete nasadit vaši inteligentní kontrakt, klikněte pravým tlačítkem na **HelloBlockchain. Sol** a v nabídce vyberte **nasadit smlouvy** .
+1. V paletě příkazů vyberte síť Azure blockchain Consortium. Při vytváření projektu byla do konfiguračního souboru Truffle projektu přidána síť blockchain Consortium.
+1. Vyberte možnost **generovat klávesové zkratky**. Vyberte název souboru a uložte symbolický soubor do složky projektu. Například, `myblockchainmember.env`. K vygenerování Ethereem privátního klíče pro člena blockchain se použije symbolický soubor.
 
-Azure Blockchain Development Kit uses Truffle to execute the migration script to deploy the contracts to the blockchain.
+Azure blockchain Development Kit používá Truffle ke spouštění migračního skriptu k nasazení kontraktů do blockchain.
 
-![Successfully deployed contract](./media/send-transaction/deploy-contract.png)
+![Kontrakt se úspěšně nasadil.](./media/send-transaction/deploy-contract.png)
 
-## <a name="call-a-contract-function"></a>Call a contract function
+## <a name="call-a-contract-function"></a>Volání funkce kontraktu
 
-The **HelloBlockchain** contract's **SendRequest** function changes the **RequestMessage** state variable. Changing the state of a blockchain network is done via a transaction. You can create a script to execute the **SendRequest** function via a transaction.
+Funkce **SendRequest** kontraktu **HelloBlockchain** změní proměnnou stavu **RequestMessage** . Změna stavu blockchain sítě se provádí prostřednictvím transakce. Můžete vytvořit skript pro spuštění funkce **SendRequest** prostřednictvím transakce.
 
-1. Create a new file in the root of your Truffle project and name it `sendrequest.js`. Add the following Web3 JavaScript code to the file.
+1. V kořenovém adresáři projektu Truffle vytvořte nový soubor a pojmenujte ho `sendrequest.js`. Do souboru přidejte následující kód JavaScriptu Web3.
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
@@ -108,26 +108,26 @@ The **HelloBlockchain** contract's **SendRequest** function changes the **Reques
     };
     ```
 
-1. When Azure Blockchain Development Kit creates a project, the Truffle configuration file is generated with your consortium blockchain network endpoint details. Open **truffle-config.js** in your project. The configuration file lists two networks: one named development and one with the same name as the consortium.
-1. In VS Code's terminal pane, use Truffle to execute the script on your consortium blockchain network. In the terminal pane menu bar, select the **Terminal** tab and **PowerShell** in the dropdown.
+1. Když Azure blockchain Development Kit vytvoří projekt, konfigurační soubor Truffle se vygeneruje s podrobnostmi o koncovém bodu vaší konsorcia blockchain Network. Otevřete v projektu **Truffle-config. js** . Konfigurační soubor obsahuje seznam dvou sítí: jeden s názvem vývoj a druhý se stejným názvem jako konsorcium.
+1. V podokně terminálu VS Code použijte Truffle ke spuštění skriptu v síti konsorcia blockchain. V panelu nabídek podokna terminálu vyberte kartu **terminál** a **PowerShell** v rozevíracím seznamu.
 
     ```PowerShell
     truffle exec sendrequest.js --network <blockchain network>
     ```
 
-    Replace \<blockchain network\> with the name of the blockchain network defined in the **truffle-config.js**.
+    Nahraďte \<blockchain síť\> názvem sítě blockchain definované v **Truffle-config. js**.
 
-Truffle executes the script on your blockchain network.
+Truffle spustí skript ve vaší síti blockchain.
 
-![Script output](./media/send-transaction/execute-transaction.png)
+![Výstup skriptu](./media/send-transaction/execute-transaction.png)
 
-When you execute a contract's function via a transaction, the transaction isn't processed until a block is created. Functions meant to be executed via a transaction return a transaction ID instead of a return value.
+Při spuštění funkce kontraktu prostřednictvím transakce není transakce zpracována, dokud nebude vytvořen blok. Funkce, které mají být spuštěny prostřednictvím transakce, vracejí ID transakce namísto návratové hodnoty.
 
-## <a name="query-contract-state"></a>Query contract state
+## <a name="query-contract-state"></a>Dotaz na stav kontraktu
 
-Smart contract functions can return the current value of state variables. Let's add a function to return the value of a state variable.
+Funkce inteligentních kontraktů mohou vracet aktuální hodnotu proměnných stavu. Pojďme přidat funkci, která vrátí hodnotu stavové proměnné.
 
-1. In **HelloBlockchain.sol**, add a **getMessage** function to the **HelloBlockchain** smart contract.
+1. Do **HelloBlockchain. Sol**Přidejte funkci **GetMessage** do **HelloBlockchain** Smart Contract.
 
     ``` solidity
     function getMessage() public view returns (string memory)
@@ -139,11 +139,11 @@ Smart contract functions can return the current value of state variables. Let's 
     }
     ```
 
-    The function returns the message stored in a state variable based on the current state of the contract.
+    Funkce vrátí zprávu uloženou v proměnné stavu na základě aktuálního stavu kontraktu.
 
-1. Right-click **HelloBlockchain.sol** and choose **Build Contracts** from the menu to compile the changes to the smart contract.
-1. To deploy, right-click **HelloBlockchain.sol** and choose **Deploy Contracts** from the menu. When prompted, choose your Azure Blockchain consortium network in the command palette.
-1. Next, create a script using to call the **getMessage** function. Create a new file in the root of your Truffle project and name it `getmessage.js`. Add the following Web3 JavaScript code to the file.
+1. Kliknutím pravým tlačítkem na **HelloBlockchain. Sol** a kliknutím na možnost **sestavit smlouvy** z nabídky zkompilujete změny v rámci inteligentního kontraktu.
+1. Nasazení provedete tak, že kliknete pravým tlačítkem na **HelloBlockchain. Sol** a v nabídce kliknete na **nasadit smlouvy** . Po zobrazení výzvy vyberte v paletě příkazů síť konsorcia Azure blockchain Consortium.
+1. Dále vytvořte skript pomocí volání funkce **GetMessage** . V kořenovém adresáři projektu Truffle vytvořte nový soubor a pojmenujte ho `getmessage.js`. Do souboru přidejte následující kód JavaScriptu Web3.
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
@@ -164,38 +164,38 @@ Smart contract functions can return the current value of state variables. Let's 
     };
     ```
 
-1. In VS Code's terminal pane, use Truffle to execute the script on your blockchain network. In the terminal pane menu bar, select the **Terminal** tab and **PowerShell** in the dropdown.
+1. V podokně terminálu VS Code spusťte skript na blockchain síti pomocí Truffle. V panelu nabídek podokna terminálu vyberte kartu **terminál** a **PowerShell** v rozevíracím seznamu.
 
     ```bash
     truffle exec getmessage.js --network <blockchain network>
     ```
 
-    Replace \<blockchain network\> with the name of the blockchain network defined in the **truffle-config.js**.
+    Nahraďte \<blockchain síť\> názvem sítě blockchain definované v **Truffle-config. js**.
 
-The script queries the smart contract by calling the getMessage function. The current value of the **RequestMessage** state variable is returned.
+Skript se dotazuje na inteligentní kontrakt zavoláním funkce GetMessage. Vrátí se aktuální hodnota **RequestMessage** stavu proměnné.
 
-![Script output](./media/send-transaction/execute-get.png)
+![Výstup skriptu](./media/send-transaction/execute-get.png)
 
-Notice the value is not **Hello, blockchain!** . Instead, the returned value is a placeholder. When you change and deploy the contract, the changed contract is deployed at a new address and the state variables are assigned values in the smart contract constructor. The Truffle sample **2_deploy_contracts.js** migration script deploys the smart contract and passes a placeholder value as an argument. The constructor sets the **RequestMessage** state variable to the placeholder value and that's what is returned.
+Všimněte si, že hodnota není **Hello, blockchain!** . Místo toho je vrácená hodnota zástupný symbol. Když změníte a nasadíte smlouvu, je změna smlouvy nasazena na novou adresu a proměnné stavu jsou přiřazeny hodnoty v konstruktoru inteligentních kontraktů. Ukázkový skript Truffle **2_deploy_contracts. js** nasadí inteligentní kontrakt a předá jako argument hodnotu zástupného symbolu. Konstruktor nastaví proměnnou stavu **RequestMessage** na hodnotu zástupného symbolu a vrátí to, co je vráceno.
 
-1. To set the **RequestMessage** state variable and query the value, run the **sendrequest.js** and **getmessage.js** scripts again.
+1. Chcete-li nastavit proměnnou stavu **RequestMessage** a zadat dotaz na hodnotu, spusťte znovu skripty **SendRequest. js** a **GetMessage. js** .
 
-    ![Script output](./media/send-transaction/execute-set-get.png)
+    ![Výstup skriptu](./media/send-transaction/execute-set-get.png)
 
-    **sendrequest.js** sets the **RequestMessage** state variable to **Hello, blockchain!** and **getmessage.js** queries the contract for value of **RequestMessage** state variable and returns **Hello, blockchain!** .
+    **SendRequest. js** nastaví proměnnou stavu **RequestMessage** na **Hello, blockchain!** a **GetMessage. js** vyžádá kontrakt pro hodnotu **RequestMessage** stavu a vrátí **Hello, blockchain!** .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-When no longer needed, you can delete the resources by deleting the `myResourceGroup` resource group you created in the *Create a blockchain member* prerequisite quickstart.
+Pokud už je nepotřebujete, můžete prostředky odstranit tak, že odstraníte `myResourceGroup` skupinu prostředků, kterou jste vytvořili v rychlém startu průvodce *vytvořením blockchain člena* .
 
-To delete the resource group:
+Odstranění skupiny prostředků:
 
-1. In the Azure portal, navigate to **Resource group** in the left navigation pane and select the resource group you want to delete.
-1. Vyberte **Odstranit skupinu prostředků**. Verify deletion by entering the resource group name and select **Delete**.
+1. V Azure Portal přejděte do **skupiny prostředků** v levém navigačním podokně a vyberte skupinu prostředků, kterou chcete odstranit.
+1. Vyberte **Odstranit skupinu prostředků**. Potvrďte odstranění zadáním názvu skupiny prostředků a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-In this tutorial, you created a sample Solidity project using Azure Blockchain Development Kit. You built and deployed a smart contract then called a function via a transaction on a blockchain consortium network hosted on Azure Blockchain Service.
+V tomto kurzu jste vytvořili ukázkový projekt s ukázkou pomocí Azure blockchain Development Kit. Vystavíte a nasadili jste inteligentní kontrakt a pak jste volali funkci prostřednictvím transakce v síti konsorcia blockchain, která je hostovaná ve službě Azure blockchain.
 
 > [!div class="nextstepaction"]
-> [Developing blockchain applications using Azure Blockchain Service](develop.md)
+> [Vývoj aplikací blockchain pomocí služby Azure blockchain](develop.md)

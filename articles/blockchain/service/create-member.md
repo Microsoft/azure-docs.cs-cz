@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Blockchain Service member - Azure portal
-description: Create an Azure Blockchain Service member for a blockchain consortium using the Azure portal.
+title: Vytvoření členu služby Azure blockchain – Azure Portal
+description: Vytvoření členu služby Azure blockchain pro konsorcium blockchain pomocí Azure Portal.
 ms.date: 11/18/2019
 ms.topic: quickstart
 ms.reviewer: janders
@@ -11,55 +11,55 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455781"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Quickstart: Create an Azure Blockchain Service blockchain member using the Azure portal
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Rychlý Start: Vytvoření člena blockchain služby Azure blockchain pomocí Azure Portal
 
-In this quickstart, you deploy a new blockchain member and consortium in Azure Blockchain Service using the Azure portal.
+V tomto rychlém startu nasadíte nového člena blockchain a konsorcia ve službě Azure blockchain pomocí Azure Portal.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-blockchain-member"></a>Vytvoření člena blockchainu
 
-Create a blockchain member that runs the Quorum ledger protocol in a new or existing consortium.
+Vytvořte člena blockchain, který spouští protokol hlavní knihy kvora v nové nebo existující konsorcium.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
-1. Select **Blockchain** > **Azure Blockchain Service (preview)** .
+1. Vyberte **Blockchain** > **Azure blockchain Service (Preview)** .
 
-    ![Create Service](./media/create-member/create-member.png)
+    ![Vytvořit službu](./media/create-member/create-member.png)
 
     Nastavení | Popis
     --------|------------
-    Předplatné | Select the Azure subscription that you want to use for your service. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
-    Skupina prostředků | Create a new resource group name or choose an existing one from your subscription.
-    Oblast | Choose a region to create the member. All members of the consortium must be in the same location.
-    Protocol (Protokol) | Currently, Azure Blockchain Service Preview supports the Quorum protocol.
-    Konsorcium | For a new consortium, enter a unique name. If joining a consortium through an invite, choose the consortium you are joining.
-    Name (Název) | Choose a unique name for the Azure Blockchain Service member. The blockchain member name can only contain lowercase letters and numbers. Prvním znakem musí být písmeno. The value must be between 2 and 20 characters long.
-    Member account password | The member account password is used to encrypt the private key for the Ethereum account that is created for your member. You use the member account and member account password for consortium management.
-    Popis | Description of the consortium.
-    Ceny | The node configuration and cost for your new service. Select the **Change** link to choose between **Standard** and **Basic** tiers.
-    Node password | The password for the member's default transaction node. Use the password for basic authentication when connecting to blockchain member's default transaction node public endpoint.
+    Předplatné | Vyberte předplatné Azure, které chcete použít pro vaši službu. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
+    Skupina prostředků | Vytvořte nový název skupiny prostředků nebo vyberte existující v rámci svého předplatného.
+    Region (Oblast) | Vyberte oblast, ve které se má člen vytvořit. Všichni členové konsorcia musí být ve stejném umístění.
+    Protocol (Protokol) | V současné době verze Preview služby Azure blockchain podporuje protokol kvora.
+    Konsorcium | Pro nového konsorcia zadejte jedinečný název. Pokud se připojujete k konsorciu prostřednictvím pozvánky, vyberte konsorcium, ke které se připojujete.
+    Název | Vyberte jedinečný název členu služby Azure blockchain. Název členu blockchain může obsahovat jenom malá písmena a číslice. Prvním znakem musí být písmeno. Hodnota musí být dlouhá 2 až 20 znaků.
+    Heslo pro členský účet | Heslo pro členský účet slouží k šifrování privátního klíče pro účet Ethereem, který je vytvořen pro vašeho člena. Použijete členský účet a heslo členského účtu pro správu konsorcia.
+    Popis | Popis konsorcia
+    Ceny | Konfigurace uzlu a náklady na novou službu. Vyberte odkaz **změnit** pro výběr mezi úrovněmi **Standard** a **Basic** .
+    Heslo uzlu | Heslo pro výchozí uzel transakce člena Při připojování k výchozímu koncovému bodu transakčního uzlu blockchain člena použijte heslo pro základní ověřování.
 
-1. Select **Review + create** to validate your settings. Select **Create** to provision the service. Provisioning takes about 10 minutes.
-1. Select **Notifications** on the toolbar to monitor the deployment process.
-1. After deployment, navigate to your blockchain member.
+1. Vyberte **zkontrolovat + vytvořit** a ověřte nastavení. Vyberte **vytvořit** a zřiďte službu. Zřizování trvá přibližně 10 minut.
+1. Na panelu nástrojů vyberte **oznámení** , abyste mohli monitorovat proces nasazení.
+1. Po nasazení přejděte k blockchain členu.
 
-Select **Overview**, you can view the basic information about your service including the RootContract address and member account.
+Vyberte **Přehled**. můžete si zobrazit základní informace o vaší službě včetně adresy RootContract a členského účtu.
 
-![Blockchain member overview](./media/create-member/overview.png)
+![Přehled členů blockchain](./media/create-member/overview.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-You can use the member you created for the next quickstart or tutorial. When no longer needed, you can delete the resources by deleting the `myResourceGroup` resource group you created for the quickstart.
+Můžete použít člena, kterého jste vytvořili pro další rychlý Start nebo kurz. Pokud už je nepotřebujete, můžete prostředky odstranit tak, že odstraníte `myResourceGroup` skupinu prostředků, kterou jste vytvořili pro rychlý Start.
 
-To delete the resource group:
+Odstranění skupiny prostředků:
 
-1. In the Azure portal, navigate to **Resource group** in the left navigation pane and select the resource group you want to delete.
-2. Vyberte **Odstranit skupinu prostředků**. Verify deletion by entering the resource group name and select **Delete**.
+1. V Azure Portal přejděte do **skupiny prostředků** v levém navigačním podokně a vyberte skupinu prostředků, kterou chcete odstranit.
+2. Vyberte **Odstranit skupinu prostředků**. Potvrďte odstranění zadáním názvu skupiny prostředků a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-In this quickstart, you deployed an Azure Blockchain Service member and a new consortium. Try the next quickstart to use Azure Blockchain Development Kit for Ethereum to attach to a consortium on Azure Blockchain Service.
+V tomto rychlém startu jste nasadili člen služby Azure blockchain a nový konsorcium. Vyzkoušejte si další rychlý Start pro použití Azure blockchain Development Kit pro Ethereem pro připojení k konsorciu ve službě Azure blockchain.
 
 > [!div class="nextstepaction"]
-> [Use Visual Studio Code to connect to Azure Blockchain Service](connect-vscode.md)
+> [Použití Visual Studio Code k připojení ke službě Azure blockchain](connect-vscode.md)

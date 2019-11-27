@@ -1,6 +1,6 @@
 ---
-title: Azure Files performance troubleshooting guide
-description: Known performance issues with Azure file shares and associated workarounds.
+title: Průvodce řešením potíží s výkonem služby soubory Azure
+description: Známé problémy s výkonem se sdílenými složkami Azure a souvisejícími alternativními řešeními.
 author: gunjanj
 ms.service: storage
 ms.topic: conceptual
@@ -14,157 +14,157 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227812"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshoot Azure Files performance issues
+# <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
 
-This article lists some common problems related to Azure file shares. It provides potential causes and workarounds when these problems are encountered.
+V tomto článku jsou uvedené některé běžné problémy související se sdílenými složkami Azure. Poskytuje možné příčiny a alternativní řešení, když dojde k těmto potížím.
 
-## <a name="high-latency-low-throughput-and-general-performance-issues"></a>High latency, low throughput, and general performance issues
+## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Vysoká latence, nízká propustnost a obecné problémy s výkonem
 
-### <a name="cause-1-share-experiencing-throttling"></a>Cause 1: Share experiencing throttling
+### <a name="cause-1-share-experiencing-throttling"></a>Příčina 1: sdílená omezení
 
-The default quota on a premium share is 100 GiB, which provides 100 baseline IOPS (with a potential to burst up to 300 for an hour). For more information about provisioning and its relationship to IOPS, see the [Provisioned shares](storage-files-planning.md#provisioned-shares) section of the planning guide.
+Výchozí kvótou pro sdílenou složku Premium je 100 GiB, která poskytuje 100 standardních IOPS (s potenciálem pro nárůst až 300 po hodinu). Další informace o zřizování a jeho vztahu k IOPS najdete v části [zřízené sdílené složky](storage-files-planning.md#provisioned-shares) v příručce pro plánování.
 
-To confirm if your share is being throttled, you can leverage Azure Metrics in the portal.
+Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využít metriky Azure na portálu.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
-1. Select **All services** and then search for **Metrics**.
+1. Vyberte **všechny služby** a pak vyhledejte **metriky**.
 
 1. Vyberte **Metriky**.
 
-1. Select your storage account as the resource.
+1. Jako prostředek vyberte svůj účet úložiště.
 
-1. Select **File** as the metric namespace.
+1. Jako obor názvů metriky vyberte **soubor** .
 
-1. Select **Transactions** as the metric.
+1. Jako metriku vyberte **transakce** .
 
-1. Add a filter for **ResponseType** and check to see if any requests have a response code of **SuccessWithThrottling** (for SMB) or **ClientThrottlingError** (for REST).
+1. Přidejte filtr pro **ResponseType** a zkontrolujte, zda nějaké požadavky obsahují kód odpovědi **SuccessWithThrottling** (pro protokol SMB) nebo **ClientThrottlingError** (pro REST).
 
-![Metrics options for premium fileshares](media/storage-troubleshooting-premium-fileshares/metrics.png)
-
-### <a name="solution"></a>Řešení
-
-- Increase share provisioned capacity by specifying a higher quota on your share.
-
-### <a name="cause-2-metadatanamespace-heavy-workload"></a>Cause 2: Metadata/namespace heavy workload
-
-If the majority of your requests are metadata centric, (such as createfile/openfile/closefile/queryinfo/querydirectory) then the latency will be worse when compared to read/write operations.
-
-To confirm if most of your requests are metadata centric, you can use the same steps as above. Except instead of adding a filter for **ResponseType**, add a filter for **API Name**.
-
-![Filter for API Name in your metrics](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
-
-### <a name="workaround"></a>Alternativní řešení
-
-- Check if the application can be modified to reduce the number of metadata operations.
-- Add a VHD on the file share and mount VHD over SMB from the client to perform files operations against the data. This approach works for single writer and multiple readers scenarios and allows metadata operations to be local, offering performance similar to a local direct-attached storage.
-
-### <a name="cause-3-single-threaded-application"></a>Cause 3: Single-threaded application
-
-If the application being used by the customer is single-threaded, this can result in significantly lower IOPS/throughput than the maximum possible based on your provisioned share size.
+![Možnosti metrik pro sdílené složky Premium](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
 ### <a name="solution"></a>Řešení
 
-- Increase application parallelism by increasing the number of threads.
-- Switch to applications where parallelism is possible. For example, for copy operations, customers could use AzCopy or RoboCopy from Windows clients or the **parallel** command on Linux clients.
+- Zvyšte kapacitu zřízenou sdílenou složkou tím, že zadáte vyšší kvótu pro sdílenou složku.
 
-## <a name="very-high-latency-for-requests"></a>Very high latency for requests
+### <a name="cause-2-metadatanamespace-heavy-workload"></a>Příčina 2: silná úloha metadat/obor názvů
 
-### <a name="cause"></a>Příčina
+Pokud jsou většina vašich požadavků na střed (například CreateFile/OpenFile/CloseFile/QueryInfo/querydirectory), bude latence ve srovnání s operacemi čtení/zápisu horší.
 
-The client VM could be located in a different region than the file share.
+Pokud chcete potvrdit, jestli je většina vašich požadavků na střed, můžete použít stejné kroky jako v předchozím kroku. S výjimkou přidání filtru pro **ResponseType**přidejte filtr pro **název rozhraní API**.
+
+![Filtrování názvu rozhraní API v metrikách](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
+
+### <a name="workaround"></a>Alternativní řešení
+
+- Ověřte, zda lze aplikaci upravovat a snížit tak počet operací s metadaty.
+- Přidejte virtuální pevný disk do sdílené složky a připojte VHD přes SMB od klienta k provádění operací se soubory s daty. Tento přístup funguje pro scénáře s jedním zapisovačem a více čtenářů a umožňuje místní operace s metadaty, což nabízí podobný výkon jako místní úložiště připojené přímo.
+
+### <a name="cause-3-single-threaded-application"></a>Příčina 3: aplikace s jedním vláknem
+
+Pokud je aplikace, kterou zákazník používá, jediným vláknem, může to vést k výraznému snížení počtu IOPS/propustnosti, než je maximální možná velikost na základě zřízené velikosti vaší sdílené složky.
 
 ### <a name="solution"></a>Řešení
 
-- Run the application from a VM that is located in the same region as the file share.
+- Zvýšení paralelismu aplikace zvýšením počtu vláken.
+- Přepněte na aplikace, kde je možné paralelismus. Například pro operace kopírování mohou zákazníci používat AzCopy nebo Robocopy z klientů systému Windows nebo **paralelní** příkaz v klientech se systémem Linux.
 
-## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Client unable to achieve maximum throughput supported by the network
-
-One potential cause of this is a lack fo SMB multi-channel support. Currently, Azure file shares only support single channel, so there is only one connection from the client VM to the server. This single connection is pegged to a single core on the client VM, so the maximum throughput achievable from a VM is bound by a single core.
-
-### <a name="workaround"></a>Alternativní řešení
-
-- Obtaining a VM with a bigger core may help improve throughput.
-- Running the client application from multiple VMs will increase throughput.
-
-- Use REST APIs where possible.
-
-## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Throughput on Linux clients is significantly lower when compared to Windows clients.
+## <a name="very-high-latency-for-requests"></a>Velmi vysoká latence pro žádosti
 
 ### <a name="cause"></a>Příčina
 
-This is a known issue with the implementation of SMB client on Linux.
+Klientský virtuální počítač se může nacházet v jiné oblasti než sdílená složka.
+
+### <a name="solution"></a>Řešení
+
+- Spusťte aplikaci z virtuálního počítače, který je umístěný ve stejné oblasti jako sdílená složka.
+
+## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Klientovi se nepovedlo dosáhnout maximální propustnosti, kterou síť podporuje.
+
+Jednou z možných příčin tohoto je nedostatečná podpora více kanálů SMB. Sdílené složky Azure v současné době podporují jenom jeden kanál, takže existuje jenom jedno připojení z virtuálního počítače klienta k serveru. Toto jediné připojení je v klientském počítači klienta připojeno k jednomu jádru, takže maximální propustnost, kterou je možné z virtuálního počítače dosáhnout, je svázána s jedním jádrem.
 
 ### <a name="workaround"></a>Alternativní řešení
 
-- Spread the load across multiple VMs.
-- On the same VM, use multiple mount points with **nosharesock** option, and spread the load across these mount points.
-- On Linux, try mounting with **nostrictsync** option to avoid forcing SMB flush on every fsync call. For Azure Files, this option does not interfere with data consistentcy, but may result in stale file metadata on directory listing (**ls -l** command). Directly querying metadata of file (**stat** command) will return the most up-to date file metadata.
+- Získání virtuálního počítače s větším jádrem vám může pomoci zlepšit propustnost.
+- Při spuštění klientské aplikace z více virtuálních počítačů se zvýší propustnost.
 
-## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>High latencies for metadata heavy workloads involving extensive open/close operations.
+- Pokud je to možné, použijte rozhraní REST API.
+
+## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Při porovnání s klienty se systémem Windows výrazně snižuje propustnost klientů se systémem Linux.
 
 ### <a name="cause"></a>Příčina
 
-Lack of support for directory leases.
+Jedná se o známý problém s implementací klienta SMB v systému Linux.
 
 ### <a name="workaround"></a>Alternativní řešení
 
-- If possible, avoid excessive opening/closing handle on the same directory within a short period of time.
-- For Linux VMs, increase the directory entry cache timeout by specifying **actimeo=\<sec>** as a mount option. By default, it is one second, so a larger value like three or five might help.
-- For Linux VMs, upgrade the kernel to 4.20 or higher.
+- Rozprostře zatížení mezi více virtuálních počítačů.
+- Ve stejném virtuálním počítači použijte více přípojných bodů s možností **nosharesock** a rozprostřete zatížení mezi tyto přípojné body.
+- V systému Linux se pokuste připojit pomocí možnosti **nostrictsync** , abyste se vyhnuli vynucení vyprázdnění protokolu SMB u každého volání Fsync. U souborů Azure Tato možnost neovlivňuje consistentcy dat, ale může mít za následek zastaralá metadata souborů v seznamu adresářů (příkaz**ls-l** ). Přímo se dotazování na metadata souboru (**stat** Command) vrátí nejaktuálnější metadata souborů.
 
-## <a name="low-iops-on-centosrhel"></a>Low IOPS on CentOS/RHEL
+## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Vysoká latence pro silná zatížení metadat, která zahrnují rozsáhlé operace otevření/zavření.
 
 ### <a name="cause"></a>Příčina
 
-IO depth greater than one is not supported on CentOS/RHEL.
+Nedostatečná podpora pro zapůjčení adresáře.
 
 ### <a name="workaround"></a>Alternativní řešení
 
-- Upgrade to CentOS 8 / RHEL 8.
-- Change to Ubuntu.
+- Pokud je to možné, vyhněte se nadměrnému otevírání a zavírání popisovačům ve stejném adresáři v krátké době.
+- U virtuálních počítačů se systémem Linux zvyšte časový limit mezipaměti položky adresáře zadáním **actimeo =\<sec >** jako možnosti připojení. Ve výchozím nastavení je to jedna sekunda, takže může pomáhat větší hodnota, například tři nebo pět.
+- Pro virtuální počítače se systémem Linux upgradujte jádro na 4,20 nebo vyšší.
 
-## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Slow file copying to and from Azure Files in Linux
-
-If you are experiencing slow file copying to and from Azure Files, take a look at the [Slow file copying to and from Azure Files in Linux](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) section in the Linux troubleshooting guide.
-
-## <a name="jitterysaw-tooth-pattern-for-iops"></a>Jittery/saw-tooth pattern for IOPS
+## <a name="low-iops-on-centosrhel"></a>Nízká IOPS v CentOS/RHEL
 
 ### <a name="cause"></a>Příčina
 
-Client application consistently exceeds baseline IOPS. Currently, there is no service side smoothing of the request load, so if the client exceeds baseline IOPS, it will get throttled by the service. That throttling can result in the client experiencing a jittery/saw-tooth IOPS pattern. In this case, average IOPS achieved by the client might be lower than the baseline IOPS.
+V CentOS/RHEL není podporována Hloubka v/v s větší než jednou.
 
 ### <a name="workaround"></a>Alternativní řešení
 
-- Reduce the request load from the client application, so that the share does not get throttled.
-- Increase the quota of the share so that the share does not get throttled.
+- Upgradujte na CentOS 8/RHEL 8.
+- Přejděte na Ubuntu.
 
-## <a name="excessive-directoryopendirectoryclose-calls"></a>Excessive DirectoryOpen/DirectoryClose calls
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Pomalé kopírování souborů do a ze souborů Azure v systému Linux
+
+Pokud máte pomalé kopírování souborů do a ze souborů Azure, podívejte se do části [pomalé kopírování souborů do a ze souborů Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) v Průvodci odstraňováním potíží se systémem Linux.
+
+## <a name="jitterysaw-tooth-pattern-for-iops"></a>Model kolísání/pily-tooth pro IOPS
 
 ### <a name="cause"></a>Příčina
 
-If the number of DirectoryOpen/DirectoryClose calls is among the top API calls and you don't expect the client to be making that many calls, it may be an issue with the antivirus installed on the Azure client VM.
+Klientská aplikace konzistentně překračuje základní IOPS. V současné době není možné vyhladit zatížení žádosti na straně služby, takže pokud klient překročí směrného plánu IOPS, bude služba omezena. Toto omezování může mít za následek, že u klienta dochází ke kolísání nebo navýšení IOPS – tooth. V tomto případě může být průměrná hodnota IOPS dosažená klientem nižší než hodnota IOPS.
 
 ### <a name="workaround"></a>Alternativní řešení
 
-- A fix for this issue is available in the [April Platform Update for Windows](https://support.microsoft.com/help/4052623/update-for-windows-defender-antimalware-platform).
+- Snižte zatížení žádosti z klientské aplikace tak, aby se sdílená složka neomezila.
+- Zvyšte kvótu sdílené složky tak, aby sdílená složka nezískala omezení.
 
-## <a name="file-creation-is-slower-than-expected"></a>File creation is slower than expected
+## <a name="excessive-directoryopendirectoryclose-calls"></a>Nadměrné DirectoryOpen/DirectoryClose volání
 
 ### <a name="cause"></a>Příčina
 
-Workloads that rely on creating a large number of files will not see a substantial difference between the performance of premium file shares and standard file shares.
+Pokud je počet volání DirectoryOpen/DirectoryClose mezi horními voláními rozhraní API a neočekáváte, že klient bude provádět mnoho volání, může se jednat o problém s antivirovým programem nainstalovaným na virtuálním počítači klienta Azure.
+
+### <a name="workaround"></a>Alternativní řešení
+
+- Oprava tohoto problému je k dispozici v [aktualizaci platformy duben pro Windows](https://support.microsoft.com/help/4052623/update-for-windows-defender-antimalware-platform).
+
+## <a name="file-creation-is-slower-than-expected"></a>Vytvoření souboru je pomalejší, než se očekávalo.
+
+### <a name="cause"></a>Příčina
+
+Úlohy, které spoléhají na vytvoření velkého počtu souborů, nebudou mít podstatný rozdíl mezi výkonem a standardními sdílenými složkami souborů Premium.
 
 ### <a name="workaround"></a>Alternativní řešení
 
 - Žádné.
 
-## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Slow performance from Windows 8.1 or Server 2012 R2
+## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Pomalý výkon od Windows 8.1 nebo serveru 2012 R2
 
 ### <a name="cause"></a>Příčina
 
-Higher than expected latency accessing Azure Files for IO intensive workloads.
+Vyšší než očekávaná latence při přístupu k souborům Azure pro úlohy náročné na vstupně-výstupní operace.
 
 ### <a name="workaround"></a>Alternativní řešení
 
-- Install the available [hotfix](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).
+- Nainstalujte dostupnou [opravu hotfix](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).

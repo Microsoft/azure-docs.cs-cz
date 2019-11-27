@@ -74,7 +74,7 @@ Než začnete, budete potřebovat:
 
    1. Do textového pole **přihlašovací adresa URL** zadejte `http://localhost`.
 
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 1. Stránku **Nastavení** otevřete tak, že v seznamu aplikace kliknete na nově vytvořenou registraci aplikace. 
 1. Zkopírujte **ID aplikace**.
 

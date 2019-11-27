@@ -1,6 +1,6 @@
 ---
-title: Configure Blockchain Data Manager using Azure CLI - Azure Blockchain Service
-description: Create and manage a Blockchain Data Manager for Azure Blockchain Service using Azure CLI
+title: Konfigurace blockchain Data Manager pomocí Azure CLI – Azure blockchain Service
+description: Vytvoření a Správa blockchain Data Manager pro službu Azure blockchain pomocí Azure CLI
 ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
@@ -13,22 +13,22 @@ ms.locfileid: "74455936"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurace Blockchain Data Manageru s využitím Azure CLI
 
-Configure Blockchain Data Manager for Azure Blockchain Service to capture blockchain data send it to an Azure Event Grid Topic.
+Konfigurace blockchain Data Manager pro službu Azure blockchain pro zachycení blockchain dat odeslání do Azure Event Grid tématu.
 
-To configure a Blockchain Data Manager instance, you:
+Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 
-* Create a Blockchain Manager instance
-* Create an input to an Azure Blockchain Service transaction node
-* Create an output to an Azure Event Grid Topic
-* Add a blockchain application
-* Start an instance
+* Vytvoření instance blockchain Manageru
+* Vytvoří vstup pro uzel transakce služby Azure blockchain.
+* Vytvoření výstupu Azure Event Grid tématu
+* Přidání aplikace blockchain
+* Spustit instanci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Install the latest [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) and signed in using `az login`.
-* Complete [Quickstart: Use Visual Studio Code to connect to a Azure Blockchain Service consortium network](connect-vscode.md)
-* Create an [Event Grid Topic](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
-* Learn about [Event handlers in Azure Event Grid](../../event-grid/event-handlers.md)
+* Nainstalujte nejnovější rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a přihlaste se pomocí `az login`.
+* Kompletní [rychlé zprovoznění: použití Visual Studio Code pro připojení k síti konsorcia Azure blockchain](connect-vscode.md)
+* Vytvoření [tématu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
+* Další informace o [obslužných rutinách událostí v Azure Event Grid](../../event-grid/event-handlers.md)
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -36,7 +36,7 @@ Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použ
 
 Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
-If you prefer to install and use the CLI locally, this quickstart requires Azure CLI version 2.0.51 or later. Verzi zjistíte spuštěním příkazu `az --version`. If you need to install or upgrade, see [install Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.51 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -46,9 +46,9 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.
 az group create --name myRG --location eastus
 ```
 
-## <a name="create-instance"></a>Create instance
+## <a name="create-instance"></a>Vytvořit instanci
 
-A Blockchain Data Manager instance monitors an Azure Blockchain Service transaction node. An instance captures all raw block and raw transaction data from the transaction node.
+Instance blockchain Data Manager monitoruje uzel transakcí služby Azure blockchain. Instance zachycuje všechna nepracovaná data bloku a nezpracovaná transakce z uzlu transakce.
 
 ``` azurecli
 az resource create \
@@ -61,15 +61,15 @@ az resource create \
 
 | Parametr | Popis |
 |-----------|-------------|
-| resource-group | Resource group name where to create the Blockchain Data Manager instance. |
-| jméno | Name of the Blockchain Data Manager instance. |
-| resource-type | The resource type for a Blockchain Data Manager instance is **Microsoft.blockchain/watchers**. |
-| is-full-object | Indicates properties contain options for the watcher resource. |
-| properties | JSON-formatted string containing properties for the watcher resource. Can be passed as a string or a file.  |
+| resource-group | Název skupiny prostředků, kde se má vytvořit instance Data Manager blockchain |
+| jméno | Název instance Data Manager blockchain |
+| typ prostředku | Typ prostředku pro instanci blockchain Data Manager je **Microsoft. blockchain/sledovací**procesy. |
+| je-full-Object | Určuje, že vlastnosti obsahují možnosti pro prostředek sledovacího procesu. |
+| properties | Řetězec ve formátu JSON, který obsahuje vlastnosti prostředku sledovacího procesu. Může být předán jako řetězec nebo jako soubor.  |
 
-### <a name="create-instance-examples"></a>Create instance examples
+### <a name="create-instance-examples"></a>Vytvořit příklady instancí
 
-JSON configuration example to create a Blockchain Manager instance in the **East US** region.
+Příklad konfigurace JSON pro vytvoření instance blockchain Manageru v oblasti **východní USA** .
 
 ``` json
 {
@@ -79,12 +79,12 @@ JSON configuration example to create a Blockchain Manager instance in the **East
 }
 ```
 
-| Element | Popis |
+| Prvek | Popis |
 |---------|-------------|
-| location | Region where to create the watcher resource |
-| properties | Properties to set when creating the watcher resource |
+| location | Oblast, kde se má vytvořit prostředek sledovacího procesu |
+| properties | Vlastnosti, které se mají nastavit při vytváření prostředku sledovacího procesu |
 
-Create a Blockchain Data Manager instance named *mywatcher* using a JSON string for configuration.
+Vytvořte instanci blockchain Data Manager s názvem *mywatcher* s použitím řetězce JSON pro konfiguraci.
 
 ``` azurecli-interactive
 az resource create \
@@ -95,7 +95,7 @@ az resource create \
                      --properties '{"location":"eastus"}'
 ```
 
-Create a Blockchain Data Manager instance named *mywatcher* using a JSON configuration file.
+Vytvořte instanci blockchain Data Manager s názvem *mywatcher* pomocí konfiguračního souboru JSON.
 
 ``` azurecli
 az resource create \
@@ -106,9 +106,9 @@ az resource create \
                     --properties @watcher.json
 ```
 
-## <a name="create-input"></a>Create input
+## <a name="create-input"></a>Vytvořit zadání
 
-An input connects Blockchain Data Manager to an Azure Blockchain Service transaction node. Only users with access to the transaction node can create a connection.
+Vstup připojuje blockchain Data Manager k uzlu transakce služby Azure blockchain. Pouze uživatelé s přístupem k uzlu transakce mohou vytvořit připojení.
 
 ``` azurecli
 az resource create \
@@ -123,17 +123,17 @@ az resource create \
 
 | Parametr | Popis |
 |-----------|-------------|
-| resource-group | Resource group name where to create the input resource. |
-| jméno | Name of the input. |
-| Obor názvů | Use the **Microsoft.Blockchain** provider namespace. |
-| resource-type | The resource type for a Blockchain Data Manager input is **inputs**. |
-| parent | The path to the watcher to which the input is associated. For example, **watchers/mywatcher**. |
-| is-full-object | Indicates properties contain options for the input resource. |
-| properties | JSON-formatted string containing properties for the input resource. Can be passed as a string or a file. |
+| resource-group | Název skupiny prostředků, kde se má vytvořit vstupní prostředek |
+| jméno | Název vstupu |
+| Obor názvů | Použijte obor názvů poskytovatele **Microsoft. blockchain** . |
+| typ prostředku | Typ prostředku pro vstup Data Manager blockchain jsou **vstupy**. |
+| nadřazený | Cesta ke sledovacímu procesu, ke kterému je vstup přidružen. Například sledovací procesy **/mywatcher**. |
+| je-full-Object | Určuje vlastnosti, které obsahují možnosti pro vstupní prostředek. |
+| properties | Řetězec ve formátu JSON, který obsahuje vlastnosti pro vstupní prostředek. Může být předán jako řetězec nebo jako soubor. |
 
-### <a name="input-examples"></a>Input examples
+### <a name="input-examples"></a>Příklady vstupu
 
-Configuration JSON example to create an input resource in the *East US* region that is connected to \<Blockchain member\>.
+Příklad konfigurace JSON pro vytvoření vstupního prostředku v oblasti *východní USA* , která je připojená k \<mu členskému\>blockchain.
 
 ``` json
 {
@@ -147,13 +147,13 @@ Configuration JSON example to create an input resource in the *East US* region t
 }
 ```
 
-| Element | Popis |
+| Prvek | Popis |
 |---------|-------------|
-| location | Region where to create the input resource. |
-| inputType | Ledger type of the Azure Blockchain Service member. Currently, **Ethereum** is supported. |
-| resourceId | Transaction node to which the input is connected. Replace \<Subscription ID\>, \<Resource group\>, and \<Blockchain member\> with the values for the transaction node resource. The input connects to the default transaction node for the Azure Blockchain Service member. |
+| location | Oblast, kde se má vytvořit vstupní prostředek |
+| inputType | Typ hlavní knihy člena služby Azure blockchain. V současné době se podporuje **ethereem** . |
+| resourceId | Uzel transakce, ke kterému je vstup připojen Nahraďte\>ID \<předplatného, \<skupinu prostředků\>a \<blockchain členů\> hodnotami pro prostředek uzlu transakce. Vstup se připojí k výchozímu uzlu transakce pro člena služby Azure blockchain. |
 
-Create an input named *myInput* for *mywatcher* using a JSON string for configuration.
+Vytvořte vstup s názvem *myInput* pro *MYWATCHER* pomocí řetězce JSON pro konfiguraci.
 
 ``` azurecli-interactive
 az resource create \
@@ -166,7 +166,7 @@ az resource create \
                    --properties '{"location":"eastus", "properties":{"inputType":"Ethereum","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/BlockchainMembers/<Blockchain member>/transactionNodes/transaction-node"}}}'
 ```
 
-Create an input named *myInput* for *mywatcher* using a JSON configuration file.
+Vytvořte vstup s názvem *myInput* pro *mywatcher* pomocí konfiguračního souboru JSON.
 
 ``` azurecli
 az resource create \
@@ -178,9 +178,9 @@ az resource create \
                    --properties @input.json
 ```
 
-## <a name="create-output"></a>Create output
+## <a name="create-output"></a>Vytvořit výstup
 
-An outbound connection sends blockchain data to Azure Event Grid. You can send blockchain data to a single destination or send blockchain data to multiple destinations. Blockchain Data Manager supports multiple Event Grid Topic outbound connections for any given Blockchain Data Manager instance.
+Odchozí připojení odesílá blockchain data do Azure Event Grid. Blockchain data můžete odesílat do jednoho cíle nebo odesílat blockchain data do více cílů. Blockchain Data Manager podporuje vícenásobná odchozí připojení Event Grid tématu pro všechny dané instance služby blockchain Data Manager.
 
 ``` azurecli
 az resource create \
@@ -195,17 +195,17 @@ az resource create \
 
 | Parametr | Popis |
 |-----------|-------------|
-| resource-group | Resource group name where to create the output resource. |
-| jméno | Name of the output. |
-| Obor názvů | Use the **Microsoft.Blockchain** provider namespace. |
-| resource-type | The resource type for a Blockchain Data Manager output is **outputs**. |
-| parent | The path to the watcher to which the output is associated. For example, **watchers/mywatcher**. |
-| is-full-object | Indicates properties contain options for the output resource. |
-| properties | JSON-formatted string containing properties for the output resource. Can be passed as a string or a file. |
+| resource-group | Název skupiny prostředků, kde se má vytvořit výstupní prostředek |
+| jméno | Název výstupu. |
+| Obor názvů | Použijte obor názvů poskytovatele **Microsoft. blockchain** . |
+| typ prostředku | Typ prostředku pro výstup blockchain Data Manager je **výstupy**. |
+| nadřazený | Cesta ke sledovacímu procesu, ke kterému je výstup přidružen Například sledovací procesy **/mywatcher**. |
+| je-full-Object | Určuje, že vlastnosti obsahují možnosti pro výstupní prostředek. |
+| properties | Řetězec ve formátu JSON obsahující vlastnosti výstupního prostředku. Může být předán jako řetězec nebo jako soubor. |
 
-### <a name="output-examples"></a>Output examples
+### <a name="output-examples"></a>Příklady výstupu
 
-Configuration JSON example to create an output resource in the *East US* region that is connected to an event grid topic named \<event grid topic\>.
+Příklad konfigurace JSON pro vytvoření výstupního prostředku v oblasti *východní USA* , která je připojená k tématu služby Event Grid s názvem \<\>.
 
 ``` json
 {
@@ -219,13 +219,13 @@ Configuration JSON example to create an output resource in the *East US* region 
 }
 ```
 
-| Element | Popis |
+| Prvek | Popis |
 |---------|-------------|
-| location | Region where to create the output resource. |
-| outputType | Type of output. Currently, **EventGrid** is supported. |
-| resourceId | Resource to which the output is connected. Replace \<Subscription ID\>, \<Resource group\>, and \<Blockchain member\> with the values for the event grid resource. |
+| location | Oblast, ve které se má vytvořit výstupní prostředek. |
+| outputType | Typ výstupu. V současné době se podporuje **EventGrid** . |
+| resourceId | Prostředek, ke kterému je připojen výstup. Nahraďte\>ID \<předplatného, \<skupinu prostředků\>a \<blockchain členů\> s hodnotami pro prostředek Event gridu. |
 
-Create an output named *myoutput* for *mywatcher* that connects to an event grid topic using a JSON configuration string.
+Vytvořte výstup s názvem *MyOutput* pro *mywatcher* , který se připojí k tématu Event gridu pomocí konfiguračního řetězce JSON.
 
 ``` azurecli-interactive
 az resource create \
@@ -238,7 +238,7 @@ az resource create \
                    --properties '{"location":"eastus","properties":{"outputType":"EventGrid","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"}}}'
 ```
 
-Create an output named *myoutput* for *mywatcher* that connects to an event grid topic using a JSON configuration file.
+Vytvořte výstup s názvem *MyOutput* pro *mywatcher* , který se připojí k tématu Event gridu pomocí konfiguračního souboru JSON.
 
 ``` azurecli
 az resource create \
@@ -251,13 +251,13 @@ az resource create \
                    --properties @output.json
 ```
 
-## <a name="add-blockchain-application"></a>Add blockchain application
+## <a name="add-blockchain-application"></a>Přidat aplikaci blockchain
 
-If you add a blockchain application, Blockchain Data Manager decodes event and property state for the application. Otherwise, only raw block and raw transaction data is sent. Blockchain Data Manager also discovers contract addresses when the contract is deployed. You can add multiple blockchain applications to a Blockchain Data Manager instance.
+Pokud přidáte blockchain aplikaci, blockchain Data Manager dekódování události a stavu vlastnosti aplikace. V opačném případě jsou odesílána pouze nezpracovaná data bloku a nezpracované transakce. Blockchain Data Manager také zjišťuje adresy smluv při nasazení smlouvy. Do instance Data Manager blockchain můžete přidat více aplikací blockchain.
 
 
 > [!IMPORTANT]
-> Currently, blockchain applications that declare Solidity [array types](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) or [mapping types](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) are not fully supported. Properties declared as array or mapping types will not be decoded in *ContractPropertiesMsg* or *DecodedContractEventsMsg* messages.
+> V současné době nejsou aplikace blockchain, které deklarují [typy polí](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) soliding nebo [mapování typů](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) , plně podporovány. Vlastnosti deklarované jako pole nebo typy mapování nebudou v rámci zpráv *ContractPropertiesMsg* nebo *DecodedContractEventsMsg* dekódovat.
 
 ``` azurecli
 az resource create \
@@ -272,17 +272,17 @@ az resource create \
 
 | Parametr | Popis |
 |-----------|-------------|
-| resource-group | Resource group name where to create the application resource. |
-| jméno | Name of the application. |
-| Obor názvů | Use the **Microsoft.Blockchain** provider namespace. |
-| resource-type | The resource type for a Blockchain Data Manager application is **artifacts**. |
-| parent | The path to the watcher to which the application is associated. For example, **watchers/mywatcher**. |
-| is-full-object | Indicates properties contain options for the application resource. |
-| properties | JSON-formatted string containing properties for the application resource. Can be passed as a string or a file. |
+| resource-group | Název skupiny prostředků, kde se má vytvořit prostředek aplikace |
+| jméno | Název aplikace |
+| Obor názvů | Použijte obor názvů poskytovatele **Microsoft. blockchain** . |
+| typ prostředku | Typ prostředku pro aplikaci blockchain Data Manager je **artefakty**. |
+| nadřazený | Cesta ke sledovacímu procesu, ke kterému je aplikace přidružena Například sledovací procesy **/mywatcher**. |
+| je-full-Object | Určuje, že vlastnosti obsahují možnosti pro prostředek aplikace. |
+| properties | Řetězec ve formátu JSON obsahující vlastnosti prostředku aplikace Může být předán jako řetězec nebo jako soubor. |
 
-### <a name="blockchain-application-examples"></a>Blockchain application examples
+### <a name="blockchain-application-examples"></a>Příklady aplikace blockchain
 
-Configuration JSON example to create an application resource in the *East US* region that monitors a smart contract defined by the contract ABI and bytecode.
+Příklad konfigurace JSON pro vytvoření prostředku aplikace v oblasti *východní USA* , která sleduje inteligentní kontrakt definovaný v kontraktu ABI a bytového kódu.
 
 ``` json
 {
@@ -301,15 +301,15 @@ Configuration JSON example to create an application resource in the *East US* re
 }
 ```
 
-| Element | Popis |
+| Prvek | Popis |
 |---------|-------------|
-| location | Region where to create the application resource. |
-| artifactType | Type of application. Currently, **EthereumSmartContract** is supported. |
-| abiFileUrl | URL for smart contract ABI JSON file. For more information on obtaining contract ABI and creating a URL, see [Get Contract ABI and bytecode](data-manager-portal.md#get-contract-abi-and-bytecode) and [Create contract ABI and bytecode URL](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
-| bytecodeFileUrl | URL for smart contract deployed bytecode JSON file. For more information on obtaining the smart contract deployed bytecode and creating a URL, see [Get Contract ABI and bytecode](data-manager-portal.md#get-contract-abi-and-bytecode) and [Create contract ABI and bytecode URL](data-manager-portal.md#create-contract-abi-and-bytecode-url). Note: Blockchain Data Manager requires the **deployed bytecode**. |
-| queryTargetTypes | Published message types. Specifying **ContractProperties** publishes *ContractPropertiesMsg* message type. Specifying **ContractEvents** publishes *DecodedContractEventsMsg* message type. Note: *RawBlockAndTransactionMsg* and *RawTransactionContractCreationMsg* message types are always published. |
+| location | Oblast, kde se má vytvořit prostředek aplikace |
+| artifactType | Typ aplikace V současné době se podporuje **EthereumSmartContract** . |
+| abiFileUrl | Adresa URL pro soubor JSON pro inteligentní kontrakt Další informace o získání kontraktu ABI a vytvoření adresy URL najdete v tématu [získání kontraktu ABI a bytového kódu](data-manager-portal.md#get-contract-abi-and-bytecode) a [Vytvoření kontraktu ABI a adresy URL bytového kódu](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
+| bytecodeFileUrl | Adresa URL souboru JSON pro bajtový identifikátor nasazené inteligentní smlouvy Další informace o získání nasazeného bajtového kódu inteligentního kontraktu a vytvoření adresy URL najdete v tématu [získání kontraktu ABI a bytového kódu](data-manager-portal.md#get-contract-abi-and-bytecode) a [Vytvoření kontraktu ABI a adresy URL bytového kódu](data-manager-portal.md#create-contract-abi-and-bytecode-url). Poznámka: blockchain Data Manager vyžaduje **nasazený bajt**. |
+| queryTargetTypes | Typy publikovaných zpráv. Zadání **ContractProperties** publikuje typ zprávy *ContractPropertiesMsg* . Zadání **ContractEvents** publikuje typ zprávy *DecodedContractEventsMsg* . Poznámka: typy zpráv *RawBlockAndTransactionMsg* a *RawTransactionContractCreationMsg* jsou vždy publikovány. |
 
-Create an application named *myApplication* for *mywatcher* that monitors a smart contract defined by a JSON string.
+Vytvořte aplikaci s názvem *MyApplication* pro *mywatcher* , která sleduje inteligentní kontrakt definovaný řetězcem JSON.
 
 ``` azurecli-interactive
 az resource create \
@@ -322,7 +322,7 @@ az resource create \
                    --properties '{"location":"eastus","properties":{"artifactType":"EthereumSmartContract","content":{"abiFileUrl":"<ABI URL>","bytecodeFileUrl":"<Bytecode URL>","queryTargetTypes":["ContractProperties","ContractEvents"]}}}'
 ```
 
-Create an application named *myApplication* for *mywatcher* that watches a smart contract defined using a JSON configuration file.
+Vytvořte aplikaci s názvem *MyApplication* pro *mywatcher* , která sleduje inteligentní kontrakt definovaný pomocí konfiguračního souboru JSON.
 
 ``` azurecli
 az resource create \
@@ -335,9 +335,9 @@ az resource create \
                    --properties @artifact.json
 ```
 
-## <a name="start-instance"></a>Start instance
+## <a name="start-instance"></a>Spustit instanci
 
-When running, a Blockchain Manager instance monitors blockchain events from the defined inputs and sends data to the defined outputs.
+Když je spuštěná, instance blockchain Manager monitoruje události blockchain z definovaných vstupů a odesílá data do definovaných výstupů.
 
 ``` azurecli
 az resource invoke-action \
@@ -347,12 +347,12 @@ az resource invoke-action \
 
 | Parametr | Popis |
 |-----------|-------------|
-| action | Use **start** to run the watcher. |
-| ids | Watcher resource ID. Replace \<Subscription ID\>, \<Resource group\>, and \<Watcher name\> with the values for the watcher resource.|
+| action | Spusťte sledovací proces pomocí rutiny **Start** . |
+| identifikační | ID prostředku sledovacího procesu. Nahraďte \<ID předplatného\>, \<skupinu prostředků\>a \<název sledovacího procesu\> s hodnotami prostředku sledovacího procesu.|
 
-### <a name="start-instance-example"></a>Start instance example
+### <a name="start-instance-example"></a>Příklad spuštění instance
 
-Start a Blockchain Data Manager instance named *mywatcher*.
+Spusťte instanci blockchain Data Manager s názvem *mywatcher*.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -360,9 +360,9 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/mywatcher
 ```
 
-## <a name="stop-instance"></a>Stop instance
+## <a name="stop-instance"></a>Zastavit instanci
 
-Stop a Blockchain Data Manager instance.
+Zastavte instanci blockchain Data Manager.
 
 ``` azurecli
 az resource invoke-action \
@@ -372,12 +372,12 @@ az resource invoke-action \
 
 | Parametr | Popis |
 |-----------|-------------|
-| action | Use **stop** to stop the watcher. |
-| ids | Name of the watcher. Replace \<Subscription ID\>, \<Resource group\>, and \<Watcher name\> with the values for the watcher resource. |
+| action | Pomocí **stop** zastavte sledovací proces. |
+| identifikační | Název sledovacího procesu. Nahraďte \<ID předplatného\>, \<skupinu prostředků\>a \<název sledovacího procesu\> s hodnotami prostředku sledovacího procesu. |
 
-### <a name="stop-watcher-example"></a>Stop watcher example
+### <a name="stop-watcher-example"></a>Příklad zastavení sledovacího procesu
 
-Stop an instance named *mywatcher*.
+Zastavte instanci s názvem *mywatcher*.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -385,9 +385,9 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/mywatcher
 ```
 
-## <a name="delete-instance"></a>Delete instance
+## <a name="delete-instance"></a>Odstranit instanci
 
-Delete a Blockchain Data Manager instance.
+Odstraní instanci Data Manager blockchain.
 
 ``` azurecli
 az resource delete \
@@ -398,13 +398,13 @@ az resource delete \
 
 | Parametr | Popis |
 |-----------|-------------|
-| resource-group | Resource group name of the watcher to delete. |
-| jméno | Name of the watcher to delete. |
-| resource-type | The resource type for a Blockchain Data Manager watcher is **Microsoft.blockchain/watchers**. |
+| resource-group | Název skupiny prostředků sledovacího procesu, který se má odstranit |
+| jméno | Název sledovacího procesu, který se má odstranit |
+| typ prostředku | Typ prostředku pro sledovací proces blockchain Data Manager je **Microsoft. blockchain/sledovací**procesy. |
 
-### <a name="delete-instance-example"></a>Delete instance example
+### <a name="delete-instance-example"></a>Příklad odstranění instance
 
-Delete an instance named *mywatcher* in the *myRG* resource group.
+Odstraňte instanci s názvem *mywatcher* ve skupině prostředků *myRG* .
 
 ``` azurecli-interactive
 az resource delete \
@@ -415,7 +415,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>Další kroky
 
-Try the next tutorial creating a blockchain transaction message explorer using Blockchain Data Manager and Azure Cosmos DB.
+Zkuste v dalším kurzu vytvořit blockchain Průzkumníka zpráv transakce pomocí blockchain Data Manager a Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Use Blockchain Data Manager to send data to Azure Cosmos DB](data-manager-cosmosdb.md)
+> [Použití Data Manager blockchain k odesílání dat do Azure Cosmos DB](data-manager-cosmosdb.md)

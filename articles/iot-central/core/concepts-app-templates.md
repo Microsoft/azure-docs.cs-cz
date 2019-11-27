@@ -1,6 +1,6 @@
 ---
-title: What are application templates in Azure IoT Central | Microsoft Docs
-description: Azure IoT Central application templates allow you to jump in to IoT solution development.
+title: Co jsou šablony aplikací v Azure IoT Central | Microsoft Docs
+description: Šablony aplikací pro Azure IoT Central umožňují přejít do vývoje řešení IoT.
 author: philmea
 ms.author: philmea
 ms.date: 10/25/2019
@@ -16,64 +16,64 @@ ms.locfileid: "74480321"
 ---
 # <a name="what-are-application-templates"></a>Co jsou šablony aplikací?
 
-Application templates in Azure IoT Central are a tool to help solution builders kickstart their IoT solution development. You can use app templates for everything from getting a feel for what is possible, to fully customizing and your application for resale to your customers.
+Šablony aplikací v Azure IoT Central jsou nástroj, který pomůže sestavování řešení Kickstart jejich vývoj řešení IoT. Šablony aplikací můžete použít pro všechno, co je potřeba, abyste měli pocit, co je možné, abyste mohli své zákazníky plně přizpůsobovat a využívat k dalšímu prodeji.
 
-Application templates consist of:
+Šablony aplikací se skládají z:
 
-- Sample operator dashboards
-- Sample device templates
-- Simulated devices producing real-time data
-- Pre-configured rules and jobs
-- Rich documentation including tutorials and how-tos
+- Ukázky řídicích panelů operátorů
+- Ukázkové šablony zařízení
+- Simulovaná zařízení vytvářející data v reálném čase
+- Předem konfigurovaná pravidla a úlohy
+- Bohatá dokumentace, včetně kurzů a postupů
 
-## <a name="preview-templates"></a>Preview templates
+## <a name="preview-templates"></a>Náhled šablon
 
-Your choice of application template determines whether your application uses IoT Central preview features such as Plug and Play for devices.
+Vaše volba šablony aplikace určuje, jestli vaše aplikace používá funkce IoT Central verze Preview, jako je technologie Plug and Play pro zařízení.
 
-Currently, the application templates that use _generally available_ features are:
+V současné době šablony aplikací, které používají _všeobecně dostupné_ funkce, jsou:
 
-- Custom app > Custom application
-- Custom app > Sample Contoso
-- Custom app > Sample Devkits
+- Vlastní aplikace > vlastní aplikace
+- Ukázka vlastní aplikace > contoso
+- Vlastní aplikace > Sample Devkits
 
-Currently, the application templates that use _public preview_ features are:
+V současné době jsou šablony aplikací, které používají funkce _veřejné verze Preview_ :
 
-- Custom app > Preview application
-- Retail > Connected logistics
-- Retail > Digital distribution center
-- Retail > In-store analytics – condition monitoring
-- Retail > In-store analytics – checkout
-- Retail > Smart inventory management
-- Energy > Smart meter monitoring
-- Energy > Solar panel monitoring
-- Government > Connected waste management
-- Government > Water consumption monitoring
-- Government > Water quality monitoring
-- Healthcare > Continuous patient monitoring
+- Aplikace vlastní aplikace > Preview
+- > Připojená logistika v maloobchodní síti
+- Retail > digital Distribution Center
+- Analýzy maloobchodních > v obchodě – monitorování podmínek
+- Analýzy maloobchodních > v obchodě – rezervace
+- Správa inteligentního inventáře > maloobchodního prodeje
+- Monitorování inteligentních měřičů energie >
+- Sledování panelu Energy > slunečního dozoru
+- Správa propojených odpadů v oblasti státní správy >
+- Monitorování spotřeby vody > státní správy
+- Monitorování kvality >ch vod pro státní správu
+- Zdravotní péče > nepřetržité monitorování pacientů
 
 > [!NOTE]
-> The **Custom application, Sample Contoso, Sample Devkits** templates are currently  available in the **United States**, **Australia**, **Asia Pacific**, or in the **Europe** locations, while other templates are currently available only in **Europe** and **US** locations.
+> **Vlastní aplikace, ukázka contoso, ukázkové šablony Devkits** jsou aktuálně dostupné v **USA**, **Austrálii**, **Asie a Tichomoří**nebo v **Evropě** , zatímco jiné šablony jsou aktuálně dostupné jenom v **Evropě** a **USA** .
 
-## <a name="industry-focused-templates"></a>Industry focused templates
+## <a name="industry-focused-templates"></a>Šablony zaměřené na odvětví
 
-Azure IoT Central is an industry agnostic application platform. Application templates are industry focused examples available for these industries today, with more to come in the future:
+Azure IoT Central je nezávislá aplikační platforma pro odvětví. Šablony aplikací jsou příklady zaměřené na obory, které jsou v současnosti dostupné pro tyto odvětví. Další informace jsou k dispozici v budoucnu:
 
-- [Retail](../retail/overview-iot-central-retail-pnp.md)
+- [Prodejci](../retail/overview-iot-central-retail-pnp.md)
   - Propojená logistika
   - Digitální distribuční centrum
-  - In-store analytics - condition monitoring
-  - In-store analytics - checkout
-  - Smart Inventory Management
-- [Energy](../energy/overview-iot-central-energy.md)
-  - Smart meter monitoring
-  - Solar panel monitoring
-- [Government](../government/overview-iot-central-government.md)
+  - Analýzy v obchodě – monitorování podmínek
+  - Analýza v obchodě – rezervace
+  - Správa inteligentních inventářů
+- [Konfiguruje](../energy/overview-iot-central-energy.md)
+  - Monitorování inteligentních měřičů
+  - Sledování panelu slunečníku
+- [Schod](../government/overview-iot-central-government.md)
   - Propojená správa odpadů
   - Monitorování spotřeby vody
   - Monitorování kvality vody
-- [Healthcare](../healthcare/overview-iot-central-healthcare.md).
+- [Zdravotní péče](../healthcare/overview-iot-central-healthcare.md).
   - Průběžné monitorování pacientů
 
 ## <a name="next-steps"></a>Další kroky
 
-Now that you know what IoT Central application templates are, get started by [creating an IoT Central Application](quick-deploy-iot-central.md).
+Když teď víte, co IoT Central šablon aplikací, začněte tím, že [vytvoříte aplikaci IoT Central](quick-deploy-iot-central.md).

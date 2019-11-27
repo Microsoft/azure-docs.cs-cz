@@ -17,4 +17,4 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451419"
 ---
-For this article, you can use the free [LUIS](../luis-concept-keys.md#starter-key) account and its starter key in order to author your LUIS application.
+Pro účely tohoto článku můžete použít bezplatný účet [Luis](../luis-concept-keys.md#starter-key) a jeho počáteční klíč, abyste mohli vytvořit aplikaci Luis.

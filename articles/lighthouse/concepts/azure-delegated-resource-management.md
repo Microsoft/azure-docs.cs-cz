@@ -1,6 +1,6 @@
 ---
 title: Správa delegovaných prostředků Azure
-description: Managed services offers allow service providers to sell resource management offers to customers in Azure Marketplace.
+description: Spravované služby umožňují poskytovatelům služeb prodávat nabídky správy prostředků zákazníkům v Azure Marketplace.
 ms.date: 07/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: ccbd09cd51216f9076e3b5bd462ee2180ac8f3ab
@@ -12,38 +12,38 @@ ms.locfileid: "74464021"
 ---
 # <a name="azure-delegated-resource-management"></a>Správa delegovaných prostředků Azure
 
-Azure delegated resource management is one of the key components of Azure Lighthouse. With Azure delegated resource management, service providers can simplify customer engagement and onboarding experiences, while managing delegated resources at scale with agility and precision.
+Správa delegovaných prostředků Azure je jednou z klíčových součástí Azure Lighthouse. Pomocí delegované správy prostředků Azure můžou poskytovatelé služeb zjednodušit zapojení zákazníků a zprovoznění při správě delegovaných prostředků s flexibilitou a přesností.
 
-## <a name="what-is-azure-delegated-resource-management"></a>What is Azure delegated resource management?
+## <a name="what-is-azure-delegated-resource-management"></a>Co je Správa prostředků delegovaná Azure?
 
-Azure delegated resource management enables logical projection of resources from one tenant onto another tenant. This lets authorized users in one Azure Active Directory (Azure AD) tenant perform management operations across different Azure AD tenants belonging to their customers. Service providers can sign in to their own Azure AD tenant and have authorization to work in delegated customer subscriptions and resource groups. This lets them perform management operations on behalf of their customers, without having to sign in to each individual customer tenant.
+Správa delegovaných prostředků v Azure umožňuje logickou projekci prostředků z jednoho tenanta do jiného tenanta. To umožňuje autorizovaným uživatelům v jednom Azure Active Directory (Azure AD) provádět operace správy v různých klientech Azure AD, které patří svým zákazníkům. Poskytovatelé služeb se můžou přihlásit ke svému vlastnímu tenantovi Azure AD a mít autorizaci pro práci v delegovaných zákaznických předplatných a skupinách prostředků. To jim umožní provádět operace správy jménem svých zákazníků, aniž by se museli přihlašovat ke každému klientovi v jednotlivých zákaznících.
 
 > [!NOTE]
-> Azure delegated resource management can also be used [within an enterprise which has multiple Azure AD tenants of its own](enterprise.md) to simplify cross-tenant management.
+> Správu delegovaných prostředků Azure je možné použít i [v rámci podniku, který má více tenantů Azure AD vlastní](enterprise.md) pro zjednodušení správy mezi klienty.
 
-With Azure delegated resource management, authorized users can work directly in the context of a customer subscription without having an account in that customer's tenant or being a co-owner of the customer's tenant. They can also [view and manage all delegated customer subscriptions in the new **My customers** page](../how-to/view-manage-customers.md) in the Azure portal.
+Se správou delegovaných prostředků Azure můžou autorizovaní uživatelé pracovat přímo v kontextu zákaznického předplatného, aniž by museli mít účet v tenantovi daného zákazníka nebo je spoluvlastníkem tenanta zákazníka. Můžou si taky [Zobrazit a spravovat všechna delegovaná předplatná zákazníka na stránce noví **moji zákazníci** ](../how-to/view-manage-customers.md) v Azure Portal.
 
-The [cross-tenant management experience](cross-tenant-management-experience.md) helps you work more efficiently with Azure management services like Azure Policy, Azure Security Center, and more. All service provider activity is tracked in the activity log, which is stored in both the service provider's and the customer's tenants. This means that both the customer and service provider can easily identify the user associated with any changes.
+[Prostředí pro správu mezi klienty](cross-tenant-management-experience.md) pomáhá efektivněji pracovat s Azure Management Services, jako je Azure Policy, Azure Security Center a další. Aktivita všechny poskytovatele služeb je sledována v protokolu aktivit, který je uložen v klientech služeb i v klientech zákazníka. To znamená, že zákazník i poskytovatel služeb můžou snadno identifikovat uživatele přidruženého k jakýmkoli změnám.
 
-When you onboard a customer to Azure delegated resource management, they’ll have access to the new **Service providers** page in the Azure portal, where they can [confirm and manage their offers, service providers, and delegated resources](../how-to/view-manage-service-providers.md). If the customer ever wants to revoke access for a service provider, they can do so here at any time.
+Když zařadíte zákazníka do správy delegovaných prostředků Azure, budou mít přístup k nové stránce **poskytovatelé služeb** v Azure Portal, kde můžou [Potvrdit a spravovat své nabídky, poskytovatele služeb a delegované prostředky](../how-to/view-manage-service-providers.md). Pokud zákazník někdy chce odvolat přístup pro poskytovatele služeb, může to udělat kdykoli.
 
-You can [publish the new Managed Services offer type to Azure Marketplace](../how-to/publish-managed-services-offers.md) to easily onboard customers to Azure delegated resource management. Alternatively, you can [complete the onboarding process by deploying Azure Resource Manager templates](../how-to/onboard-customer.md).
+[Nový typ nabídky spravovaných služeb můžete publikovat do Azure Marketplace](../how-to/publish-managed-services-offers.md) , abyste mohli snadno připojit zákazníky do správy delegovaných prostředků Azure. Alternativně můžete [dokončit proces připojování nasazením Azure Resource Manager šablon](../how-to/onboard-customer.md).
 
-## <a name="how-azure-delegated-resource-management-works"></a>How Azure delegated resource management works
+## <a name="how-azure-delegated-resource-management-works"></a>Jak funguje Správa delegovaných prostředků v Azure
 
-At a high level, here's how Azure delegated resource management works:
+V takovém případě funguje Správa delegovaných prostředků v Azure na nejvyšší úrovni:
 
-1. As a service provider, you identify the access (roles) that your groups, service principals, or users will need to manage the customer's Azure resources. The access definition contains the service provider's tenant ID along with the required access for the offer, defined using **principalId** identities from your tenant mapped to [built-in **roleDefinition** values](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (Contributor, VM Contributor, Reader, etc.).
-2. You specify this access and onboard the customer to Azure delegated resource management in one of two ways:
-   - [Publish an Azure Marketplace managed services offer](../how-to/publish-managed-services-offers.md) (private or public) that the customer will accept
-   - [Deploy an Azure Resource Manager template to the customer's tenant](../how-to/onboard-customer.md) for one or more specific subscriptions or resource groups
-3. Once the customer has been onboarded, authorized users can sign in to your service provider tenant and perform management tasks at the given customer scope, based on the access that you defined.
+1. Jako poskytovatel služeb identifikujete přístup (role), které vaše skupiny, instanční objekty nebo uživatelé budou potřebovat ke správě prostředků Azure daného zákazníka. Definice přístupu obsahuje ID tenanta poskytovatele služeb společně s požadovaným přístupem pro nabídku, která je definovaná pomocí **principalId** identit z vašeho tenanta namapovaného na [předdefinované **rutiny roledefinition** hodnoty](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (přispěvatel, virtuální počítač Přispěvatel, čtenář atd.).
+2. Tento přístup určíte a zařadíte zákazníka do správy delegovaných prostředků Azure jedním ze dvou způsobů:
+   - [Publikování nabídky spravované služby Azure Marketplace](../how-to/publish-managed-services-offers.md) (soukromé nebo veřejné), kterou bude zákazník akceptovat
+   - [Nasazení šablony Azure Resource Manager do tenanta zákazníka](../how-to/onboard-customer.md) pro jedno nebo více konkrétních předplatných nebo skupin prostředků
+3. Po zprovoznění zákazníka se oprávnění uživatelé můžou přihlásit k tenantovi poskytovatele služeb a provádět úlohy správy v daném oboru zákazníka na základě přístupu, který jste definovali.
 
-## <a name="support-for-azure-delegated-resource-management"></a>Support for Azure delegated resource management
+## <a name="support-for-azure-delegated-resource-management"></a>Podpora správy delegovaných prostředků Azure
 
-If you need help related to Azure delegated resource management, you can open a support request in the Azure portal. For **Issue type**, choose **Technical**. Select a subscription, then select **Delegated Resource Management** (under **Monitoring & Management**).
+Pokud potřebujete pomoc související se správou delegovaných prostředků Azure, můžete na Azure Portal otevřít žádost o podporu. Jako **typ problému**vyberte **technický**. Vyberte předplatné a pak vyberte **delegovaná Správa prostředků** (pod položkou **monitorování & Správa**).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Learn about [cross-tenant management experiences](cross-tenant-management-experience.md).
-- Learn about [managed services offers in Azure Marketplace](managed-services-offers.md).
+- Přečtěte si o [prostředích pro správu mezi klienty](cross-tenant-management-experience.md).
+- Seznamte [se s nabídkami spravovaných služeb v Azure Marketplace](managed-services-offers.md).

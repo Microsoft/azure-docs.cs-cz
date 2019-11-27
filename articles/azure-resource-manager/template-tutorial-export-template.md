@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Export template from the Azure portal
-description: Learn how to use an exported template to complete your template development.
+title: Kurz – Export šablony z Azure Portal
+description: Naučte se používat exportovanou šablonu k dokončení vývoje šablon.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,77 +12,77 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406010"
 ---
-# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Tutorial: Use exported template from the Azure portal
+# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Kurz: použití exportované šablony z Azure Portal
 
-In this tutorial series, you've created a template to deploy an Azure storage account. In the next two tutorials, you add an *App Service plan* and a *website*. Instead of creating templates from scratch, you learn how to export templates from the Azure portal and how to use sample templates from the [Azure Quickstart templates](https://azure.microsoft.com/resources/templates/). You customize those templates for your use. This tutorial focuses on exporting templates, and customizing the result for your template. It takes about **14 minutes** to complete.
+V této sérii kurzů jste vytvořili šablonu pro nasazení účtu úložiště Azure. V následujících dvou kurzech můžete přidat *plán App Service* a *Web*. Místo vytváření šablon od začátku se naučíte exportovat šablony z Azure Portal a jak používat ukázkové šablony ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/). Tyto šablony můžete přizpůsobit pro použití. Tento kurz se zaměřuje na export šablon a přizpůsobení výsledku pro šablonu. Dokončení trvá přibližně **14 minut** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-We recommend that you complete the [tutorial about outputs](template-tutorial-add-outputs.md), but it's not required.
+Doporučujeme, abyste dokončili [kurz týkající se výstupů](template-tutorial-add-outputs.md), ale není to nutné.
 
-You must have Visual Studio Code with the Resource Manager Tools extension, and either Azure PowerShell or Azure CLI. For more information, see [template tools](template-tutorial-create-first-template.md#get-tools).
+Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Review template
+## <a name="review-template"></a>Zkontrolovat šablonu
 
-At the end of the previous tutorial, your template had the following JSON:
+Na konci předchozího kurzu má vaše šablona následující JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json)]
 
-This template works well for deploying storage accounts, but you might want to add more resources to it. You can export a template from an existing resource to quickly get the JSON for that resource.
+Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete chtít přidat další prostředky. Můžete exportovat šablonu z existujícího prostředku, abyste mohli rychle získat kód JSON pro daný prostředek.
 
 ## <a name="create-app-service-plan"></a>Vytvoření plánu služby App Service
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. Select **Create a resource**.
-1. In **Search the Marketplace**, enter **App Service plan**, and then select **App Service plan**.  Don’t select **App Service plan (classic)**
-1. Vyberte **Create** (Vytvořit).
-1. Enter:
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Vyberte **vytvořit prostředek**.
+1. V **části Hledat na Marketplace**zadejte **App Service plán**a potom vyberte **App Service plán**.  Nevybírat **plán App Service (klasický)**
+1. Vyberte **Vytvořit**.
+1. Napište
 
     - **Předplatné:** Vyberte své předplatné Azure.
-    - **Resource Group**: Select **Create new** and then specify a name. Provide a different resource group name than the one you have been using in this tutorial series.
-    - **Name**: enter a name for the App service plan.
-    - **Operating System**: select **Linux**.
-    - **Region**: select an Azure location. For example, **Central US**.
-    - **Pricing tier**: to save costs, change the SKU to **Basic B1** (under Dev/Test).
+    - **Skupina prostředků**: vyberte **vytvořit novou** a zadejte název. Zadejte jiný název skupiny prostředků než ten, který jste používali v této sérii kurzů.
+    - **Název**: zadejte název plánu služby App Service.
+    - **Operační systém**: vyberte **Linux**.
+    - **Oblast**: vyberte umístění Azure. Například **střed USA**.
+    - **Cenová úroveň**: Pokud chcete ušetřit náklady, změňte SKU na **Basic B1** (vývoj/test).
 
-    ![Resource Manager template export template portal](./media/template-tutorial-export-template/resource-manager-template-export.png)
-1. Select **Review and create**.
-1. Vyberte **Create** (Vytvořit). It takes a few moments to create the resource.
+    ![Portál šablony Správce prostředků Exportovat šablonu](./media/template-tutorial-export-template/resource-manager-template-export.png)
+1. Vyberte možnost **zkontrolovat a vytvořit**.
+1. Vyberte **Vytvořit**. Vytvoření prostředku chvíli trvá.
 
 ## <a name="export-template"></a>Export šablony
 
-1. Select **Go to resource**.
+1. Vyberte **Přejít k prostředku**.
 
     ![Přejít k prostředku](./media/template-tutorial-export-template/resource-manager-template-export-go-to-resource.png)
 
-1. Select **Export template**.
+1. Vyberte **Exportovat šablonu**.
 
-    ![Resource Manager template export template](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
+    ![Šablona exportu šablony Správce prostředků](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
 
-   The export template feature takes the current state of a resource and generates a template to deploy it. Exporting a template can be a helpful way of quickly getting the JSON you need to deploy a resource.
+   Funkce Exportovat šablonu převezme aktuální stav prostředku a vygeneruje šablonu, která ho nasadí. Export šablony může být užitečný způsob, jak rychle získat JSON, který potřebujete k nasazení prostředku.
 
-1. Copy the **Microsoft.Web/serverfarms** definition and the parameter definition to your template.
+1. Zkopírujte definici **Microsoft. Web/serverových farem** a definici parametru do šablony.
 
-    ![Resource Manager template export template exported template](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
+    ![Šablona exportu exportované šablony Správce prostředků šablony](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
 > [!IMPORTANT]
-> Typically, the exported template is more verbose than you might want when creating a template. For example, the SKU object in the exported template has five properties. This template works, but you could just use the **name** property. You can start with the exported template, and then modify it as you like to fit your requirements.
+> Vyexportovaná šablona je typicky podrobnější, než když budete chtít vytvořit šablonu. Například objekt SKU v exportované šabloně má pět vlastností. Tato šablona funguje, ale můžete pouze použít vlastnost **Name** . Můžete začít s exportovanou šablonou a pak ji upravit tak, jak budete chtít podle svých požadavků.
 
-## <a name="revise-existing-template"></a>Revise existing template
+## <a name="revise-existing-template"></a>Revidovat existující šablonu
 
-The exported template gives you most of the JSON you need, but you need to customize it for your template. Pay particular attention to differences in parameters and variables between your template and the exported template. Obviously, the export process doesn't know the parameters and variables that you've already defined in your template.
+Vyexportovaná šablona vám poskytne většinu formátu JSON, který potřebujete, ale je nutné ji přizpůsobit pro šablonu. Věnujte zvláštní pozornost rozdílům v parametrech a proměnných mezi šablonou a exportovanou šablonou. Proces exportu neznáte parametry a proměnné, které jste již definovali v šabloně.
 
-The following example highlights the additions to your template. It contains the exported code plus some changes. First, it changes the name of the parameter to match your naming convention. Second, it uses your location parameter for the location of the app service plan. Third, it removes the **name** inside the **properties** object because this value is redundant with the **name** property at the resource level.
+Následující příklad zvýrazní přidání do šablony. Obsahuje exportovaný kód a některé změny. Nejprve změní název parametru tak, aby odpovídal vaší konvenci pojmenování. Za druhé používá parametr Location pro umístění plánu služby App Service. Třetí, odebere **název** uvnitř objektu **Properties** , protože tato hodnota je redundantní s vlastností **Name** na úrovni prostředku.
 
-Copy the whole file and replace your template with its contents.
+Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-Use either Azure CLI or Azure PowerShell to deploy a template.
+K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell.
 
-If you haven't created the resource group, see [Create resource group](template-tutorial-create-first-template.md#create-resource-group). The example assumes you've set the **templateFile** variable to the path to the template file, as shown in the [first tutorial](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -109,18 +109,18 @@ az group deployment create \
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. From the left menu, select **Resource groups**.
-1. Select the resource group you deployed to.
-1. The resource group contains a storage account and an App Service plan.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. V nabídce vlevo vyberte **skupiny prostředků**.
+1. Vyberte skupinu prostředků, do které jste nasadili.
+1. Skupina prostředků obsahuje účet úložiště a plán App Service.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
 
-If you're stopping now, you might want to clean up the resources you deployed by deleting the resource group.
+Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
 
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
@@ -129,7 +129,7 @@ If you're stopping now, you might want to clean up the resources you deployed by
 
 ## <a name="next-steps"></a>Další kroky
 
-You learned how to export a template from the Azure portal, and how to use the exported template for your template development. You can also use the Azure Quickstart templates to simplify template development.
+Zjistili jste, jak exportovat šablonu z Azure Portal a jak používat exportovanou šablonu pro vývoj šablon. K zjednodušení vývoje šablon můžete také použít šablony Azure pro rychlý Start.
 
 > [!div class="nextstepaction"]
-> [Use Azure Quickstart templates](template-tutorial-quickstart-template.md)
+> [Použití šablon Azure pro rychlý Start](template-tutorial-quickstart-template.md)

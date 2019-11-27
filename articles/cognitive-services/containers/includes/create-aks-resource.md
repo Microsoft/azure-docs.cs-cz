@@ -1,7 +1,7 @@
 ---
-title: Create an Azure Kubernetes Service cluster resource
+title: Vytvoření prostředku clusteru služby Azure Kubernetes
 titleSuffix: Azure Cognitive Services
-description: Learn how to create an Azure Kubernetes Service (AKS) resource.
+description: Naučte se vytvořit prostředek služby Azure Kubernetes Service (AKS).
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -16,36 +16,36 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383421"
 ---
-## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Create an Azure Kubernetes Service cluster resource
+## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Vytvoření prostředku clusteru služby Azure Kubernetes
 
-1. Go to [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks), and select **Create**.
+1. Přejít na [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks)a vyberte **vytvořit**.
 
-1. On the **Basics** tab, enter the following information:
+1. Na kartě **základy** zadejte následující informace:
 
     |Nastavení|Hodnota|
     |--|--|
     |Předplatné|Vyberte odpovídající předplatné.|
-    |Skupina prostředků|Select an available resource group.|
-    |Kubernetes cluster name|Enter a name (lowercase).|
-    |Oblast|Select a nearby location.|
-    |Kubernetes version|Whatever value is marked as **(default)** .|
-    |DNS name prefix|Created automatically, but you can override.|
-    |Node size|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
-    |Node count|Leave the slider at the default value.|
+    |Skupina prostředků|Vyberte dostupnou skupinu prostředků.|
+    |Název clusteru Kubernetes|Zadejte název (malými písmeny).|
+    |Region (Oblast)|Vyberte okolní umístění.|
+    |Verze Kubernetes|Libovolná hodnota je označena jako **(výchozí)** .|
+    |Předpona názvu DNS|Vytvoří se automaticky, ale můžete přepsat.|
+    |Velikost uzlu|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
+    |Počet uzlů|Ponechte posuvník na výchozí hodnotu.|
 
-1. On the **Scale** tab, leave **Virtual nodes** and **VM scale sets** set to their default values.
-1. On the **Authentication** tab, leave **Service principal** and **Enable RBAC** set to their default values.
-1. On the **Networking** tab, enter the following selections:
+1. Na kartě **škálování** nechejte **virtuální uzly** a služba **VM Scale Sets** nastavené na výchozí hodnoty.
+1. Na kartě **ověřování** ponechte **instanční objekt** a nastavte možnost **RBAC** na výchozí hodnoty.
+1. Na kartě **sítě** zadejte následující výběry:
 
     |Nastavení|Hodnota|
     |--|--|
     |Směrování aplikace HTTP|Ne|
-    |Networking configuration|Úroveň Basic|
+    |Konfigurace sítě|Basic|
 
-1. On the **Monitoring** tab, make sure that **Enable container monitoring** is set to **Yes**, and leave **Log Analytics workspace** as the default value.
-1. On the **Tags** tab, leave the name/value pairs blank for now.
-1. Select **Review and Create**.
-1. After validation passes, select **Create**.
+1. Na kartě **monitorování** se ujistěte, že je **možnost povolit sledování kontejneru** nastavená na **hodnotu Ano**, a jako výchozí hodnotu ponechte **Log Analytics pracovní prostor** .
+1. Na kartě **značky** ponechte páry název/hodnota prázdné pro nyní.
+1. Vyberte možnost **zkontrolovat a vytvořit**.
+1. Po úspěšném ověření vyberte **vytvořit**.
 
 > [!NOTE]
-> If validation fails, it might be because of a "Service principal" error. Go back to the **Authentication** tab and then go back to **Review + create**, where validation should run and then pass.
+> Pokud ověření selhalo, může to být způsobeno chybou instančního objektu. Vraťte se na kartu **ověřování** a pak vraťte zpět na **kontrolu + vytvořit**, kde by se mělo ověřování spustit a pak předat.

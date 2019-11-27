@@ -1,22 +1,17 @@
 ---
-title: Kurz – Azure Container Instances triggeru pomocí funkce Azure Functions
+title: Kurz – spuštění skupiny kontejnerů podle funkce Azure Functions
 description: Vytvoření funkce PowerShellu bez serveru aktivovaného protokolem HTTP pro automatizaci vytváření instancí služby Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 00bd017b0bcff6386e678802c301087819792744
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179978"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533373"
 ---
-# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Kurz: Vytvoření skupiny kontejnerů pomocí funkce Azure aktivované protokolem HTTP
+# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Kurz: použití funkce Azure aktivované protokolem HTTP k vytvoření skupiny kontejnerů
 
 [Azure Functions](../azure-functions/functions-overview.md) je výpočetní služba bez serveru, která může spouštět skripty nebo kód v reakci na nejrůznější události, jako je požadavek HTTP, časovač nebo zpráva ve frontě Azure Storage.
 
@@ -92,11 +87,11 @@ if ($name) {
 [...]
 ```
 
-Tento příklad vytvoří skupinu kontejnerů skládající se z jedné instance kontejneru, která `alpine` spouští image. Kontejner spustí jediný `echo` příkaz a potom ukončí. V reálných příkladech můžete aktivovat vytvoření jedné nebo více skupin kontejnerů pro spuštění úlohy služby Batch.
+Tento příklad vytvoří skupinu kontejnerů skládající se z jedné instance kontejneru, na které běží image `alpine`. Kontejner spustí jeden `echo` příkaz a potom ukončí. V reálných příkladech můžete aktivovat vytvoření jedné nebo více skupin kontejnerů pro spuštění úlohy služby Batch.
  
 ## <a name="test-function-app-locally"></a>Místní test aplikace Function App
 
-Před opětovným publikováním projektu Function App do Azure zajistěte, aby se funkce spouštěla správně místně. Jak je znázorněno v [rychlém startu PowerShellu](../azure-functions/functions-create-first-function-powershell.md), vložte do skriptu PowerShellu místní `Wait-Debugger` zarážku a zavolejte na něj výše. Pokyny k ladění najdete v tématu [ladění powershellu Azure Functions místně](../azure-functions/functions-debug-powershell-local.md).
+Před opětovným publikováním projektu Function App do Azure zajistěte, aby se funkce spouštěla správně místně. Jak je znázorněno v [rychlém startu PowerShellu](../azure-functions/functions-create-first-function-powershell.md), vložte do skriptu PowerShellu místní zarážku a `Wait-Debugger` hovor nad ním. Pokyny k ladění najdete v tématu [ladění powershellu Azure Functions místně](../azure-functions/functions-debug-powershell-local.md).
 
 
 ## <a name="republish-azure-function-app"></a>Opětovné publikování aplikace funkce Azure Functions
@@ -104,7 +99,7 @@ Před opětovným publikováním projektu Function App do Azure zajistěte, aby 
 Po ověření, že se funkce v místním počítači spustí správně, je čas publikovat projekt znovu do existující aplikace Function App v Azure.
 
 > [!NOTE]
-> Nezapomeňte `Wait-Debugger` před publikováním funkcí do Azure odebrat jakákoli volání.
+> Před publikováním funkcí do Azure nezapomeňte odebrat všechna volání `Wait-Debugger`.
 
 1. V Visual Studio Code otevřete paletu příkazů. Vyhledejte a vyberte `Azure Functions: Deploy to function app...`.
 1. Vyberte aktuální pracovní složku pro zip a nasazení.
@@ -114,7 +109,7 @@ Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí ozn�
 
 ## <a name="run-the-function-in-azure"></a>Spuštění funkce v Azure
 
-Po úspěšném dokončení nasazení získáte adresu URL funkce. Například použijte **Azure: Oblast** funkce v nástroji Visual Studio Code ke zkopírování adresy URL funkce **HttpTrigger** nebo získání adresy URL funkce v [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
+Po úspěšném dokončení nasazení získáte adresu URL funkce. Například použijte oblast **Azure: Functions** v nástroji Visual Studio Code ke ZKOPÍROVÁNÍ adresy URL funkce **HttpTrigger** nebo získání adresy URL funkce v [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
 
 Adresa URL funkce zahrnuje jedinečný kód a má tvar:
 
@@ -124,7 +119,7 @@ https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0Gng
 
 ### <a name="run-function-without-passing-a-name"></a>Spustit funkci bez předání názvu
 
-Jako první test spusťte `curl` příkaz a předejte adresu URL funkce bez připojení `name` řetězce dotazu. Ujistěte se, že jste zahrnuli jedinečný kód vaší funkce.
+Jako první test spusťte příkaz `curl` a předejte adresu URL funkce bez připojení řetězce dotazu `name`. Ujistěte se, že jste zahrnuli jedinečný kód vaší funkce.
 
 ```bash
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M=="
@@ -151,7 +146,7 @@ Please pass a name on the query string or in the request body.
 
 ### <a name="run-function-and-pass-the-name-of-a-container-group"></a>Spustit funkci a předat název skupiny kontejnerů
 
-Nyní spusťte `curl` příkaz připojením názvu skupiny kontejnerů (*mycontainergroup*) jako řetězce `&name=mycontainergroup`dotazu:
+Nyní spusťte příkaz `curl` připojením názvu skupiny kontejnerů (*mycontainergroup*) jako řetězce dotazu `&name=mycontainergroup`:
 
 ```bash
 curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup"

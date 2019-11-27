@@ -203,7 +203,7 @@
 - name: Řešení potíží
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
-- name: Odkazy
+- name: Referenční informace
   items:
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'

@@ -1,6 +1,6 @@
 ---
-title: Disable network policies for private endpoints in Azure
-description: Learn how to disable network policies for private endpoints.
+title: Zakázání zásad sítě pro privátní koncové body v Azure
+description: Přečtěte si, jak zakázat zásady sítě pro privátní koncové body.
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,16 +14,16 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224810"
 ---
-# <a name="disable-network-policies-for-private-endpoints"></a>Disable network policies for private endpoints
+# <a name="disable-network-policies-for-private-endpoints"></a>Zakázání zásad sítě pro privátní koncové body
 
-Network policies like network security groups (NSG) are not supported for private endpoints. In order to deploy a Private Endpoint on a given subnet, an explicit disable setting is required on that subnet. This setting is only applicable for the Private Endpoint. For other resources in the subnet, access is controlled based on Network Security Groups (NSG) security rules definition. 
+Zásady sítě, jako jsou skupiny zabezpečení sítě (NSG), nejsou podporovány u privátních koncových bodů. Aby bylo možné v dané podsíti nasadit privátní koncový bod, je v této podsíti vyžadováno explicitní nastavení zakázání. Toto nastavení platí jenom pro soukromý koncový bod. V případě jiných prostředků v podsíti se přístup řídí podle definice pravidel zabezpečení skupiny zabezpečení sítě (NSG). 
  
-When using the portal to create a private endpoint, this setting is automatically disabled as part of the create process. Deployment using other clients requires an additional step to change this setting. You can disable the setting using cloud shell from the Azure portal, or local installations of Azure PowerShell, Azure CLI, or use Azure Resource Manager templates.  
+Když použijete portál k vytvoření privátního koncového bodu, toto nastavení se automaticky zakáže jako součást procesu vytvoření. Nasazení pomocí jiných klientů vyžaduje další krok ke změně tohoto nastavení. Nastavení můžete zakázat pomocí služby Cloud Shell z Azure Portal nebo místní instalace Azure PowerShell, rozhraní příkazového řádku Azure nebo pomocí šablon Azure Resource Manager.  
  
-The following examples describe how to disable `PrivateEndpointNetworkPolicies` for a virtual network named *myVirtualNetwork* with a *default* subnet hosted in a resource group named *myResourceGroup*.
+Následující příklady popisují, jak zakázat `PrivateEndpointNetworkPolicies` pro virtuální síť s názvem *myVirtualNetwork* s *výchozí* podsítí hostovanou ve skupině prostředků s názvem *myResourceGroup*.
 
 ## <a name="using-azure-powershell"></a>Použití Azure Powershell
-This section describes how to disable subnet private endpoint policies using Azure PowerShell.
+Tato část popisuje, jak zakázat zásady privátního koncového bodu podsítě pomocí Azure PowerShell.
 
 ```azurepowershell
 $virtualNetwork= Get-AzVirtualNetwork `
@@ -35,7 +35,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
 ## <a name="using-azure-cli"></a>Použití Azure CLI
-This section describes how to disable subnet private endpoint policies using Azure CLI.
+Tato část popisuje, jak zakázat zásady privátního koncového bodu podsítě pomocí Azure CLI.
 ```azurecli
 az network vnet subnet update \ 
   --name default \ 
@@ -43,8 +43,8 @@ az network vnet subnet update \
   --vnet-name myVirtualNetwork \ 
   --disable-private-endpoint-network-policies true
 ```
-## <a name="using-a-template"></a>Using a template
-This section describes how to disable subnet private endpoint policies using Azure Resource Manager Template.
+## <a name="using-a-template"></a>Použití šablony
+Tato část popisuje, jak zakázat zásady privátního koncového bodu podsítě pomocí šablony Azure Resource Manager.
 ```json
 { 
           "name": "myVirtualNetwork", 
@@ -70,5 +70,5 @@ This section describes how to disable subnet private endpoint policies using Azu
 } 
 ```
 ## <a name="next-steps"></a>Další kroky
-- Learn more about [Azure private endpoint](private-endpoint-overview.md)
+- Další informace o [privátním koncovém bodu Azure](private-endpoint-overview.md)
  

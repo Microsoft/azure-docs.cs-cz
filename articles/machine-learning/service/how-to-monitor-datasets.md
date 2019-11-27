@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 10532ba2b43e40c4ffa2990e924947046d03b576
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049179"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539203"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -64,12 +64,12 @@ V koncepčním případě existují tři primární scénáře nastavení monito
 Scénář | Popis
 ---|---
 Sledování dat modelu obsluhujících data pro zajištění posunu od školicích dat modelu | Výsledky z tohoto scénáře je možné interpretovat jako monitorování proxy serveru pro přesnost modelu. vzhledem k tomu, že se tato přesnost modelu snižuje, pokud se obsluha dat od školicích dat odkládá.
-Monitorování datové sady časových řad pro posun od předchozího časového období. | Tento scénář je obecnější a dá se použít k monitorování datových sad, které jsou v nadřazeném nebo podřízeném sestavení modelu.  Cílová datová sada musí mít sloupec časového razítka, zatímco datová sada může být libovolná tabelární datová sada, která má funkce společné s cílovou datovou sadou.
-Probíhá analýza minulých dat. | Tato možnost se dá použít k pochopení historických dat a informování o rozhodnutích v nastavení pro monitorování datových sad.
+Monitorování datové sady časových řad pro posun od předchozího časového období. | Tento scénář je obecnější a dá se použít k monitorování datových sad, které jsou v nadřazeném nebo podřízeném sestavení modelu.  Cílová datová sada musí mít sloupec časového razítka, zatímco datová sada může být libovolná tabulková sada, která má funkce společné s cílovou datovou sadou.
+Probíhá analýza minulých dat. | Tento scénář se dá použít k pochopení historických dat a informování o rozhodnutích v nastavení pro monitorování datových sad.
 
 ## <a name="how-dataset-can-monitor-data"></a>Jak může datová sada monitorovat data
 
-Pomocí Azure Machine Learning se v datových sadách monitorují data na posunování dat. Chcete-li monitorovat pro posun dat, je určena datová sada, která je obvykle datovou sadou pro model. Cílová datová sada – obvykle model vstupní data – je porovnána v průběhu času na základní datovou sadu. To znamená, že vaše cílová datová sada musí mít zadaný sloupec časového razítka.
+Pomocí Azure Machine Learning se v datových sadách monitorují data na posunování dat. Chcete-li monitorovat pro posun dat, je určena datová sada, která je obvykle datovou sadou pro model. Cílová datová sada – obvykle model vstupní data – je porovnána v průběhu času na základní datovou sadu. Toto porovnání znamená, že vaše cílová datová sada musí mít zadaný sloupec časového razítka.
 
 ### <a name="set-the-timeseries-trait-in-the-target-dataset"></a>Nastavení vlastnosti `timeseries` v cílové sadě dat
 
@@ -117,7 +117,7 @@ V následujícím příkladu jsou pořízena všechna data v podsložce *NoaaIsd
 
 V nastavení **schématu** zadejte sloupec časového razítka z virtuálního nebo reálného sloupce v zadané datové sadě:
 
-![Timestamp](media/how-to-monitor-datasets/timestamp.png)
+![Časové razítko](media/how-to-monitor-datasets/timestamp.png)
 
 ## <a name="dataset-monitor-settings"></a>Nastavení monitorování datových sad
 
@@ -134,18 +134,18 @@ Tato tabulka obsahuje základní nastavení použitá pro monitorování datový
 | Název | Název monitorování datové sady | | Ne |
 | Základní datová sada | Tabulková datová sada, která bude použita jako základ pro porovnání cílové datové sady v průběhu času. | Základní datová sada musí mít funkce společné s cílovou datovou sadou. Obecně platí, že by měl být standardní hodnota nastavena na školicí datovou sadu modelu nebo na řez cílové datové sady. | Ne |
 | Cílová datová sada | Sada tabulkových dat se zadaným sloupcem časového razítka, která se bude analyzovat pro posun dat | Cílová datová sada musí mít funkce společné se základní datovou sadou a měla by být `timeseries` datovou sadu, ke které se připojí nová data. Historická data v cílové datové sadě můžete analyzovat, nebo je možné monitorovat nová data. | Ne | 
-| Frequency | Toto je frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Úpravou tohoto nastavení zahrňte do směrného plánu srovnatelnou velikost dat. | Ne | 
-| Funkce | Seznam funkcí, které se budou analyzovat pro posun dat v průběhu času | Nastavte na výstupní funkce modelu pro měření posunu konceptu. Nezahrnují funkce, které se přirozeně mění v průběhu času (měsíc, rok, index atd.). Po úpravě seznamu funkcí můžete zpětně naplnit a sledovat sledování posunu dat. | Ano | 
+| Frequency | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Úpravou tohoto nastavení zahrňte do směrného plánu srovnatelnou velikost dat. | Ne | 
+| Funkce | Seznam funkcí, které se budou analyzovat pro posun dat v průběhu času. | Nastavte na výstupní funkce modelu pro měření posunu konceptu. Nezahrnují funkce, které se přirozeně mění v průběhu času (měsíc, rok, index atd.). Po úpravě seznamu funkcí můžete zpětně naplnit a sledovat sledování posunu dat. | Ano | 
 | Cílový výpočetní objekt | Pokud chcete spustit úlohy monitorování datových sad, Azure Machine Learning výpočetní cíl. | | Ano | 
 
 ### <a name="monitor-settings"></a>Nastavení monitorování
 
-Tato nastavení jsou pro vytvářený kanál monitorování datových sad, který se vytvoří. 
+Tato nastavení se dají vytvořit v případě naplánovaných kanálů monitorování datových sad, které se vytvoří. 
 
 | Nastavení | Popis | Tipy | Měnitelné | 
 | ------- | ----------- | ---- | ------- |
-| Povolení | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Tuto možnost zakažte, pokud chcete analyzovat historická data s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Ano | 
-| Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než se data dorazí do zapouzdřených datových sad SQL DB, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | Ne | 
+| Povolení | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Zakažte plán k analýze historických dat s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Ano | 
+| Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než dorazí data do databáze SQL DB pro zapouzdření datové sady, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | Ne | 
 | E-mailové adresy | E-mailové adresy pro výstrahy na základě porušení procentuální prahové hodnoty posunu dat | E-maily se odesílají prostřednictvím Azure Monitor. | Ano | 
 | Prahová hodnota | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Ano | 
 
@@ -156,7 +156,7 @@ Tato nastavení slouží ke spouštění zpětných dat pro metriky pro přenos 
 | Nastavení | Popis | Tipy |
 | ------- | ----------- | ---- |
 | Počáteční datum | Počáteční datum úlohy naplnění | | 
-| Koncové datum | Koncové datum úlohy naplnění | Toto nemůže být více než 31 × frekvence času od počátečního data. U stávajícího monitorování datových sad může být metrika zpětně vyplněna, aby bylo možné analyzovat historická data nebo nahrazovat metriky s aktualizovanými nastaveními. |
+| Koncové datum | Koncové datum úlohy naplnění | Koncové datum nemůže být větší než 31 * frekvence jednotek času od počátečního data. U stávajícího monitorování datových sad může být metrika zpětně vyplněna, aby bylo možné analyzovat historická data nebo nahrazovat metriky s aktualizovanými nastaveními. |
 
 ## <a name="create-dataset-monitors"></a>Vytváření monitorování datových sad 
 
@@ -181,7 +181,7 @@ Výsledný monitor DataSet se zobrazí v seznamu. Vyberte ji a přejdete na str�
 
 Úplné podrobnosti najdete v [referenční dokumentaci k Python SDK na posunu dat](/python/api/azureml-datadrift/azureml.datadrift) . 
 
-Následuje příklad vytvoření monitorování datové sady pomocí sady Python SDK.
+Následující příklad ukazuje, jak vytvořit monitorování datových sad pomocí sady Python SDK
 
 ```python
 from azureml.core import Workspace, Dataset
@@ -252,7 +252,7 @@ Následující obrázek představuje příklad grafů zobrazených Azure Machine
 
 Část **Podrobnosti o funkci** obsahuje přehledy na úrovni funkcí v rámci změny distribuce vybrané funkce a také dalších statistik v průběhu času. 
 
-Cílová datová sada je také profilovaná v průběhu času. Statistická vzdálenost mezi distribucí standardních hodnot jednotlivých funkcí je porovnána s cílovou datovou sadou v průběhu času, která je koncepčně podobná velikosti posunu dat s výjimkou toho, že se jedná o konkrétní funkci. K dispozici jsou také minimální, maximální a střední hodnota. 
+Cílová datová sada je také profilovaná v průběhu času. Statistická vzdálenost mezi distribucí standardních hodnot jednotlivých funkcí je porovnána s cílovou datovou sadou v průběhu času, která je koncepčně podobná velikosti posunu dat s výjimkou, že tato statistická vzdálenost je určena pro jednotlivé funkce. K dispozici jsou také minimální, maximální a střední hodnota. 
 
 Pokud v Azure Machine Learning Studiu kliknete na datový bod v grafu, bude se odpovídajícím způsobem měnit distribuce zobrazené funkce. Ve výchozím nastavení se zobrazuje distribuce základní datové sady a poslední distribuce stejné funkce. 
 
@@ -295,7 +295,7 @@ V levém podokně v části monitorování vyberte protokoly (analýza):
 
 ![Přehled Application Insights](media/how-to-monitor-datasets/ai-overview.png)
 
-Metriky monitorování datových sad jsou uloženy jako `customMetrics`. Můžete napsat a spustit jednoduchý dotaz po nastavení monitorování datové sady, abyste je mohli zobrazit:
+Metriky monitorování datových sad jsou uloženy jako `customMetrics`. Můžete napsat a spustit dotaz po nastavení monitorování datové sady, abyste je mohli zobrazit:
 
 [dotaz na ![Log Analytics](media/how-to-monitor-datasets/simple-query.png)](media/how-to-monitor-datasets/simple-query-expanded.png)
 
@@ -321,7 +321,7 @@ Sloupce nebo funkce v datové sadě jsou klasifikovány jako kategorií nebo č�
 | Typ funkce | Data type | Podmínka | Omezení | 
 | ------------ | --------- | --------- | ----------- |
 | Kategorické | String, bool, int, float | Počet jedinečných hodnot ve funkci je menší než 100 a menší než 5% počtu řádků. | Hodnota null se považuje za svou vlastní kategorii. | 
-| Číselné | int, float | Číselného datového typu a nesplňuje podmínky pro funkci kategorií. | Funkce byla vynechána, pokud > 15% hodnot mají hodnotu null. | 
+| Číselné | int, float | Hodnoty ve funkci jsou číselného datového typu a nesplňují podmínky pro funkci kategorií. | Funkce byla vynechána, pokud > 15% hodnot mají hodnotu null. | 
 
 ## <a name="next-steps"></a>Další kroky
 

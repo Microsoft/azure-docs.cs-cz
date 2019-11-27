@@ -1,6 +1,6 @@
 ---
-title: Deploy management tool - Azure
-description: How to install a user interface tool to manage Windows Virtual Desktop resources.
+title: Nasazení nástroje pro správu – Azure
+description: Postup instalace nástroje uživatelského rozhraní pro správu prostředků virtuálních počítačů s Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -14,106 +14,106 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384287"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Tutorial: Deploy a management tool
+# <a name="tutorial-deploy-a-management-tool"></a>Kurz: nasazení nástroje pro správu
 
-The management tool provides a user interface (UI) for managing Microsoft Virtual Desktop resources. In this tutorial, you'll learn how to deploy and connect to the management tool.
+Nástroj pro správu poskytuje uživatelské rozhraní (UI) pro správu prostředků virtuálních klientů společnosti Microsoft. V tomto kurzu se naučíte, jak nasadit nástroj pro správu a připojit se k němu.
 
 >[!NOTE]
->These instructions are for a Windows Virtual Desktop-specific configuration that can be used with your organization's existing processes.
+>Tyto pokyny se týkají konfigurace specifické pro virtuální počítače s Windows, které se dají použít s existujícími procesy vaší organizace.
 
-## <a name="important-considerations"></a>Important considerations
+## <a name="important-considerations"></a>Důležité informace
 
-Since the app requires consent to interact with Windows Virtual Desktop, this tool doesn't support Business-to-Business (B2B) scenarios. Each Azure Active Directory (AAD) tenant's subscription will need its own separate deployment of the management tool.
+Vzhledem k tomu, že aplikace vyžaduje souhlas s používáním virtuálního klienta Windows, tento nástroj nepodporuje scénáře B2B (Business-to-Business). Každé předplatné tenanta Azure Active Directory (AAD) bude potřebovat vlastní samostatné nasazení nástroje pro správu.
 
-This management tool is a sample. Microsoft will provide important security and quality updates. The [source code is available in GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Customers and partners are encouraged to customize the tool to fit their business needs.
+Tento nástroj pro správu je ukázka. Microsoft bude poskytovat důležité aktualizace zabezpečení a kvality. [Zdrojový kód je k dispozici na GitHubu](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Zákazníkům a partnerům doporučujeme přizpůsobit nástroj tak, aby vyhovoval jejich obchodním potřebám.
 
-To following browsers are compatible with the management tool:
-- Google Chrome 68 or later
-- Microsoft Edge 40.15063 or later
-- Mozilla Firefox 52.0 or later
-- Safari 10 or later (macOS only)
+Pro následující prohlížeče jsou kompatibilní s nástrojem pro správu:
+- Google Chrome 68 nebo novější
+- Microsoft Edge 40,15063 nebo novější
+- Mozilla Firefox 52,0 nebo novější
+- Safari 10 nebo novější (jenom macOS)
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>What you need to run the Azure Resource Manager template
+## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Co potřebujete ke spuštění šablony Azure Resource Manager
 
-Before deploying the Azure Resource Manager template, you'll need an Azure Active Directory user to deploy the management UI. This user must:
+Před nasazením šablony Azure Resource Manager budete potřebovat Azure Active Directoryho uživatele pro nasazení uživatelského rozhraní pro správu. Tento uživatel musí:
 
-- Have Azure Multi-Factor Authentication (MFA) disabled
-- Have permission to create resources in your Azure subscription
-- Have permission to create an Azure AD application. Follow these steps to check if your user has the [required permissions](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+- Máte zakázanou službu Azure Multi-Factor Authentication (MFA)
+- Mít oprávnění k vytváření prostředků ve vašem předplatném Azure
+- Mít oprávnění k vytvoření aplikace služby Azure AD. Pomocí těchto kroků zjistíte, jestli má uživatel [požadovaná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-After deploying the Azure Resource Manager template, you'll want to launch the management UI to validate. This user must:
-- Have a role assignment to view or edit your Windows Virtual Desktop tenant
+Po nasazení šablony Azure Resource Manager budete chtít spustit uživatelské rozhraní pro správu, které chcete ověřit. Tento uživatel musí:
+- Přiřazení role pro zobrazení nebo úpravy tenanta virtuálních klientů s Windows
 
-## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>Run the Azure Resource Manager template to provision the management UI
+## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>Spuštění šablony Azure Resource Manager pro zřízení uživatelského rozhraní pro správu
 
-Before you start, ensure the server and client apps have consent by visiting the [Windows Virtual Desktop Consent Page](https://rdweb.wvd.microsoft.com) for the Azure Active Directory (AAD) represented.
+Než začnete, ujistěte se, že serverové a klientské aplikace mají souhlas, a to návštěvou na [stránce pro vyjádření souhlasu s virtuálním počítačem s Windows](https://rdweb.wvd.microsoft.com) pro Azure Active Directory (AAD) reprezentované.
 
-Follow these instructions to deploy the Azure Resource Management template:
+Pomocí těchto pokynů nasaďte šablonu Azure Resource Management:
 
-1. Go to the [GitHub Azure RDS-Templates page](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
-2. Deploy the template to Azure.
-    - If you're deploying in an Enterprise subscription, scroll down and select **Deploy to Azure**. See [Guidance for template parameters](#guidance-for-template-parameters).
-    - If you're deploying in a Cloud Solution Provider subscription, follow these instructions to deploy to Azure:
-        1. Scroll down and right-click **Deploy to Azure**, then select **Copy Link Location**.
-        2. Open a text editor like Notepad and paste the link there.
-        3. Right after <https://portal.azure.com/> and before the hashtag (#), enter an at sign (@) followed by the tenant domain name. Here's an example of the format: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
-        4. Sign in to the Azure portal as a user with Admin/Contributor permissions to the Cloud Solution Provider subscription.
-        5. Paste the link you copied to the text editor into the address bar.
+1. Přejít na [stránku GitHub Azure RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
+2. Nasaďte šablonu do Azure.
+    - Pokud nasazujete v podnikovém předplatném, přejděte dolů a vyberte **nasadit do Azure**. Viz [doprovodné materiály k parametrům šablon](#guidance-for-template-parameters).
+    - Pokud nasazujete v rámci předplatného poskytovatele Cloud Solution Provider, při nasazení do Azure postupujte podle těchto pokynů:
+        1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure**a pak vyberte **Kopírovat umístění odkazu**.
+        2. Otevřete textový editor, jako je Poznámkový blok, a vložte odkaz sem.
+        3. Hned po <https://portal.azure.com/> a před hashtagem (#) zadejte znak hvězdička (@) následovaný názvem domény klienta. Tady je příklad formátu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        4. Přihlaste se k Azure Portal jako uživatel s oprávněním správce/Přispěvatel k předplatnému poskytovatele Cloud Solution Provider.
+        5. Vložte odkaz, který jste zkopírovali do textového editoru, do adresního řádku.
 
-### <a name="guidance-for-template-parameters"></a>Guidance for template parameters
-Here's how to enter parameters for configuring the tool:
+### <a name="guidance-for-template-parameters"></a>Doprovodné materiály k parametrům šablon
+Tady je postup, jak zadat parametry pro konfiguraci nástroje:
 
-- For the **isServicePrincipal** parameter, select **false**.
-- For the credentials, enter your Azure Active Directory credentials with multi-factor authentication disabled. These credentials will be the ones you use to sign in to Azure and create the Azure AD application and Azure web app resources. To learn more, see [What you need to run the Azure Resource Manager template](#what-you-need-to-run-the-azure-resource-manager-template).
-- For the **applicationName**, use a unique name for your app that will be registered in your Azure Active Directory. This name will also be used for the web app URL. For example, you can use a name like "Apr3UX."
+- Pro parametr **isServicePrincipal** vyberte false ( **NEPRAVDA**).
+- Pro přihlašovací údaje zadejte přihlašovací údaje Azure Active Directory se zakázaným službou Multi-Factor Authentication. Tyto přihlašovací údaje budou ty, které používáte pro přihlášení k Azure a vytvoření prostředků Azure AD a prostředků webové aplikace Azure. Další informace najdete v tématu [co potřebujete ke spuštění šablony Azure Resource Manager](#what-you-need-to-run-the-azure-resource-manager-template).
+- Pro **ApplicationName**použijte jedinečný název aplikace, který se zaregistruje ve vašem Azure Active Directory. Tento název se použije taky pro adresu URL webové aplikace. Můžete například použít název, například "Apr3UX".
 
-## <a name="provide-consent-for-the-management-tool"></a>Provide consent for the management tool
+## <a name="provide-consent-for-the-management-tool"></a>Poskytnutí souhlasu pro nástroj pro správu
 
-After the GitHub Azure Resource Manager template completes, you'll find a resource group containing two app services along with one app service plan in the Azure portal.
+Po dokončení šablony Azure Resource Manager GitHubu najdete v Azure Portal skupinu prostředků, která obsahuje dvě aplikační služby společně s jedním plánem služby App Service.
 
-Before you sign in and use the management tool, you'll need to provide consent for the new Azure Active Directory application that is associated with the management tool. By providing consent, you are allowing the management tool to make Windows Virtual Desktop management calls on behalf of the user who's signed into the tool.
+Předtím, než se přihlásíte a použijete nástroj pro správu, musíte poskytnout souhlas s novou Azure Active Directory aplikací, která je přidružená k nástroji pro správu. Poskytnutím souhlasu umožníte nástroji pro správu provádět volání správy virtuálních počítačů s Windows jménem uživatele, který je přihlášený k nástroji.
 
-![A screenshot showing the permissions being provided when you consent to the UI management tool.](media/management-ui-delegated-permissions.png)
+![Snímek obrazovky zobrazující oprávnění, která jsou k dispozici při souhlasu nástroje pro správu uživatelského rozhraní.](media/management-ui-delegated-permissions.png)
 
-To determine which user you can use to sign in to the tool, go to your [Azure Active Directory user settings page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) and take note of the value for **Users can consent to apps accessing company data on their behalf**.
+Chcete-li zjistit, který uživatel, který můžete použít k přihlášení k nástroji, přejít na [stránku nastavení uživatele Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) a poznamenejte si hodnotu pro uživatele, kteří budou mít **souhlas s přístupem k firemním datům jménem společnosti**.
 
-![A screenshot showing if users can grant consent to applications for just their user.](media/management-ui-user-consent-allowed.png)
+![Snímek obrazovky, který ukazuje, jestli uživatelé můžou udělit souhlas aplikacím jenom pro uživatele.](media/management-ui-user-consent-allowed.png)
 
-- If the value is set to **Yes**, you can sign in with any user account in the Azure Active Directory and provide consent for that user only. However, if you sign in to the management tool with a different user later, you must perform the same consent again.
-- If the value is set to **No**, you must sign in as a Global Administrator in the Azure Active Directory and provide admin consent for all users in the directory. No other users will face a consent prompt.
+- Pokud je hodnota nastavená na **Ano**, můžete se přihlásit pomocí libovolného uživatelského účtu v Azure Active Directory a poskytnout souhlas jenom pro tohoto uživatele. Pokud se ale později přihlásíte k nástroji pro správu pomocí jiného uživatele, musíte stejný souhlas udělat znovu.
+- Pokud je hodnota nastavena na **ne**, musíte se přihlásit jako globální správce v Azure Active Directory a poskytnout souhlas správce pro všechny uživatele v adresáři. Žádnému dalšímu uživateli se zobrazí výzva k vyjádření souhlasu.
 
 
-Once you decide which user you will use to provide consent, follow these instructions to provide consent to the tool:
+Jakmile se rozhodnete, který uživatel použijete k poskytnutí souhlasu, postupujte podle těchto pokynů a poskytněte tomuto nástroji souhlas:
 
-1. Go to your Azure resources, select the Azure App Services resource with the name you provided in the template (for example, Apr3UX) and navigate to the URL associated with it; for example,  <https://rdmimgmtweb-210520190304.azurewebsites.net>.
-2. Sign in using the appropriate Azure Active Directory user account.
-3. If you authenticated with a Global Administrator, you can now select the checkbox to **Consent on behalf of your organization**. Select **Accept** to provide consent.
+1. Přejděte do prostředků Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která k němu je přidružená. například <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Přihlaste se pomocí příslušného Azure Active Directory uživatelského účtu.
+3. Pokud jste ověřili s globálním správcem, můžete teď zaškrtnout políčko pro **vyjádření souhlasu jménem vaší organizace**. Vyberte **přijmout** pro poskytnutí souhlasu.
    
-   ![A screenshot showing the full consent page that the user or admin will see.](media/management-ui-consent-page.png)
+   ![Snímek obrazovky zobrazující stránku s úplným souhlasem, kterou uvidí uživatel nebo správce.](media/management-ui-consent-page.png)
 
-This will now take you to the management tool.
+Nyní přejdete k nástroji pro správu.
 
-## <a name="use-the-management-tool"></a>Use the management tool
+## <a name="use-the-management-tool"></a>Použití nástroje pro správu
 
-After providing consent for the organization or for a specified user, you can access the management tool at any time.
+Po poskytnutí souhlasu organizace nebo zadaného uživatele můžete kdykoli získat přístup k nástroji pro správu.
 
-Follow these instructions to launch the tool:
+Při spuštění nástroje postupujte podle těchto pokynů:
 
-1. Select the Azure App Services resource with the name you provided in the template (for example, Apr3UX) and navigate to the URL associated with it; for example,  <https://rdmimgmtweb-210520190304.azurewebsites.net>.
-2. Sign in using your Windows Virtual Desktop credentials.
-3. When prompted to choose a Tenant Group, select **Default Tenant Group** from the drop-down list.
-4. When you select Default Tenant Group, a menu should appear on the right side of your window. On this menu, find the name of your tenant group and select it.
+1. Vyberte prostředek služby Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která je k ní přidružená. například <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Přihlaste se pomocí svých přihlašovacích údajů k virtuálnímu počítači s Windows.
+3. Po zobrazení výzvy k výběru skupiny tenantů vyberte v rozevíracím seznamu **výchozí skupinu tenantů** .
+4. Když vyberete výchozí skupinu tenantů, měla by se zobrazit nabídka na pravé straně okna. V této nabídce najděte název skupiny tenantů a vyberte ji.
 
 > [!NOTE]
-> If you have a custom Tenant Group, enter the name manually instead of choosing from the drop-down list.
+> Pokud máte vlastní skupinu tenantů, zadejte název ručně místo volby v rozevíracím seznamu.
 
-## <a name="report-issues"></a>Report issues
+## <a name="report-issues"></a>Nahlásit problémy
 
-If you encounter any issues with the management tool or other Windows Virtual Desktop tools, follow the directions in [ARM Templates for Remote Desktop Services](https://github.com/Azure/RDS-Templates/blob/master/README.md) to report them on GitHub.
+Pokud narazíte na nějaké problémy s nástrojem pro správu nebo jinými nástroji pro virtuální počítače s Windows, pořiďte si pokyny v [šablonách ARM pro vzdálenou plochu](https://github.com/Azure/RDS-Templates/blob/master/README.md) , abyste je nahlásili na GitHubu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Now that you've learned how to deploy and connect to the management tool, you can learn how to use Azure Service Health to monitor service issues and health advisories.
+Teď, když jste se naučili, jak nasadit nástroj pro správu a připojit se k němu, se dozvíte, jak pomocí Azure Service Health monitorovat problémy se službami a Poradce pro stav.
 
 > [!div class="nextstepaction"]
-> [Set up service alerts tutorial](./set-up-service-alerts.md)
+> [Kurz nastavení výstrah služby](./set-up-service-alerts.md)

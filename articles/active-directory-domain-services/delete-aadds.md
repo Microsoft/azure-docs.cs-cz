@@ -1,6 +1,6 @@
 ---
-title: Zakázat Azure Active Directory Domain Services | Microsoft Docs
-description: Informace o tom, jak zakázat Azure Active Directory Domain Services pomocí Azure Portal
+title: Odstranit Azure Active Directory Domain Services | Microsoft Docs
+description: Přečtěte si, jak zakázat nebo odstranit Azure Active Directory Domain Services spravované domény pomocí Azure Portal
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 05c4e73c56b79c6e313ea15124bd0f3d17b2fc70
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 9f0b8a438a7c236c5e016673a59bfb691e9c2152
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842608"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546301"
 ---
-# <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Zakázat Azure Active Directory Domain Services pomocí Azure Portal
+# <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Odstranění Azure Active Directory Domain Services spravované domény pomocí Azure Portal
 
 Pokud už nepotřebujete spravovanou doménu, můžete instanci Azure Active Directory Domain Services (Azure služba AD DS) odstranit. Neexistuje možnost vypnout nebo dočasně zakázat spravovanou doménu Azure služba AD DS. Odstranění spravované domény Azure služba AD DS neodstraní nebo jinak nepříznivě ovlivní tenanta Azure AD. V tomto článku se dozvíte, jak použít Azure Portal k odstranění spravované domény Azure služba AD DS.
 
@@ -40,7 +40,7 @@ Pokud chcete odstranit spravovanou doménu Azure služba AD DS, proveďte násle
 
 Odstranění spravované domény Azure služba AD DS může trvat 15-20 minut nebo déle.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zvažte [sdílení zpětné vazby][feedback] k funkcím, které byste chtěli vidět v Azure služba AD DS.
 

@@ -1,7 +1,7 @@
 ---
-title: Custom token cache serialization in MSAL for Java
+title: Serializace mezipaměti vlastního tokenu v MSAL pro Java
 titleSuffix: Microsoft identity platform
-description: Learn how to serialize the token cache for MSAL for Java
+description: Zjistěte, jak serializovat mezipaměť tokenů pro MSAL pro jazyk Java.
 services: active-directory
 documentationcenter: dev-center-name
 author: sangonzal
@@ -25,15 +25,15 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452598"
 ---
-# <a name="custom-token-cache-serialization-in-msal-for-java"></a>Custom token cache serialization in MSAL for Java
+# <a name="custom-token-cache-serialization-in-msal-for-java"></a>Serializace mezipaměti vlastního tokenu v MSAL pro Java
 
-To persist the token cache between instances of your application, you will need to customize the serialization. The Java classes and interfaces involved in token cache serialization are the following:
+Chcete-li uchovat mezipaměť tokenů mezi instancemi aplikace, bude nutné tuto serializaci přizpůsobit. Třídy a rozhraní jazyka Java zapojené do serializace mezipaměti tokenu jsou následující:
 
-- [ITokenCache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html):  Interface representing security token cache.
-- [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html): Interface representing operation of executing code before and after access. You would @Override *beforeCacheAccess* and *afterCacheAccess* with the logic responsible for serializing and deserializing the cache.
-- [ITokenCacheContext](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessContext.html): Interface representing context in which the token cache is accessed. 
+- [ITokenCache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html): rozhraní představuje mezipaměť tokenů zabezpečení.
+- [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html): rozhraní představující operaci spuštění kódu před a po přístupu. Měli byste @Override *beforeCacheAccess* a *afterCacheAccess* s logikou odpovědnou za serializaci a deserializaci mezipaměti.
+- [ITokenCacheContext](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessContext.html): rozhraní představující kontext, ve kterém je dostupná mezipaměť tokenu. 
 
-Below is a naive implementation of custom serialization of token cache serialization/deserialization. Do not copy and paste this into a production environment.
+Níže je Naive implementace vlastního serializace serializace mezipaměti tokenů nebo deserializace. Tuto hodnotu Nekopírujte a nevkládejte do produkčního prostředí.
 
 ```Java
 static class TokenPersistence implements ITokenCacheAccessAspect {
@@ -67,4 +67,4 @@ PublicClientApplication.builder("my_client_id").setTokenCacheAccessAspect(persis
 
 ## <a name="learn-more"></a>Další informace
 
-Learn about [Get and remove accounts from the token cache using MSAL for Java](msal-java-get-remove-accounts-token-cache.md).
+Přečtěte si [, jak získat a odebrat účty z mezipaměti tokenů pomocí MSAL pro Java](msal-java-get-remove-accounts-token-cache.md).

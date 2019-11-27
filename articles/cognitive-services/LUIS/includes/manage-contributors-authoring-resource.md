@@ -17,13 +17,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451626"
 ---
-If your apps need to be authored by other people, you need to add the associated email addresses in the Azure portal's authoring resource.
+Pokud je potřeba, aby vaše aplikace vytvořily jiní uživatelé, musíte do prostředku pro vytváření Azure Portal přidat přidružené e-mailové adresy.
 
-If you are the **owner or administrator of your Azure subscription**, you can add a contributor to the resource. 
+Pokud jste **vlastníkem nebo správcem předplatného Azure**, můžete do prostředku přidat přispěvatele. 
 
-If you are **not the owner or administrator of your Azure subscription**, your Azure account needs to have `Microsoft.Authorization/roleAssignments/write` permissions.
+Pokud nejste **vlastníkem ani správcem předplatného Azure**, musí mít váš účet azure oprávnění `Microsoft.Authorization/roleAssignments/write`.
 
-If you have trouble with this role assignment, review: 
+Pokud máte potíže s přiřazením této role, přečtěte si: 
 
-* [Azure role assignments](../../../role-based-access-control/role-assignments-portal.md)
- * [Azure access control troubleshooting](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)
+* [Přiřazení rolí Azure](../../../role-based-access-control/role-assignments-portal.md)
+ * [Řešení potíží s řízením přístupu Azure](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: 53280bc90f629d93ff8a045c80f34a73970b43f6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 11/26/2019
 ms.locfileid: "74171635"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Akce v modulu Standard rules pro Azure CDN
@@ -65,7 +65,7 @@ Akce | Název hlavičky protokolu HTTP | Hodnota
 -------|------------------|------
 Připojit | Pokud je vybrána tato možnost a pravidlo odpovídá, bude do žádosti se zadanou hodnotou přidána hlavička zadaná v **názvu záhlaví** . Pokud hlavička již existuje, hodnota se připojí k existující hodnotě. | Řetězec
 Přepsat | Pokud je vybrána tato možnost a pravidlo odpovídá, bude do žádosti se zadanou hodnotou přidána hlavička zadaná v **názvu záhlaví** . Pokud hlavička již existuje, zadaná hodnota přepíše existující hodnotu. | Řetězec
-Odstranit | Když je vybraná tato možnost, pravidlo se shoduje s a hlavička zadaná v pravidle je k dispozici, hlavička se z požadavku odstraní. | Řetězec
+Odstranění | Když je vybraná tato možnost, pravidlo se shoduje s a hlavička zadaná v pravidle je k dispozici, hlavička se z požadavku odstraní. | Řetězec
 
 ### <a name="modify-response-header"></a>Upravit hlavičku odpovědi
 
@@ -77,7 +77,7 @@ Akce | Název hlavičky protokolu HTTP | Hodnota
 -------|------------------|------
 Připojit | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavička zadaná v **názvu záhlaví** přidána k odpovědi pomocí zadané **hodnoty**. Pokud hlavička již existuje, **hodnota** se připojí k existující hodnotě. | Řetězec
 Přepsat | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavička zadaná v **názvu záhlaví** přidána k odpovědi pomocí zadané **hodnoty**. Pokud je již hlavička přítomna, **hodnota** přepíše existující hodnotu. | Řetězec
-Odstranit | Když je vybraná tato možnost, pravidlo se shoduje s a hlavička zadaná v pravidle je k dispozici, hlavička se z odpovědi odstraní. | Řetězec
+Odstranění | Když je vybraná tato možnost, pravidlo se shoduje s a hlavička zadaná v pravidle je k dispozici, hlavička se z odpovědi odstraní. | Řetězec
 
 ### <a name="url-redirect"></a>Přesměrování adresy URL
 

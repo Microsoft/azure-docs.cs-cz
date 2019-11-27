@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: b47c80f3c23c26828037954c01608cc502c017c9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186597"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534313"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Vytváření vysoce dostupných Azure Storage aplikací s geograficky redundantním úložištěm (GZRS) (Preview)
 
@@ -32,7 +32,7 @@ GZRS a RA-GZRS jsou aktuálně k dispozici pro verzi Preview v následujících 
 - Jihovýchodní Asie
 - Evropa – sever
 - Evropa – západ
-- Velká Británie – jih
+- Spojené království – jih
 - USA – východ
 - USA – východ 2
 - USA – střed
@@ -85,6 +85,11 @@ Doba obnovení (RTO) je mírou, jak dlouho trvá provedení převzetí služeb p
 ## <a name="migrate-a-storage-account-to-gzrs-or-ra-gzrs"></a>Migrace účtu úložiště do GZRS nebo RA-GZRS
 
 Existující účet úložiště můžete migrovat na GZRS nebo RA-GZRS. Migrace z existujícího účtu ZRS na GZRS nebo RA-GZRS je jednoduchá a při migraci z účtu LRS, GRS nebo RA-GRS se zapojí. Následující části popisují, jak provést migraci v obou případech.
+
+**Známá omezení**
+
+- Úroveň archivu se v současné době nepodporuje u účtů GZRS (RA-). Další podrobnosti najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) .
+- Spravované disky nepodporují (RA-) GZRS. Můžete ukládat snímky a obrázky pro SSD úrovně Standard Managed Disks na HDD úrovně Standard úložiště a [volit mezi možnostmi LRS a ZRS](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ### <a name="migrating-from-a-zrs-account"></a>Migrace z účtu ZRS
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Migrate appliance architecture
-description: Provides an overview of the Azure Migrate appliance used in server assessment and migration.
+title: Architektura zařízení Azure Migrate
+description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
@@ -15,205 +15,205 @@ ms.locfileid: "74232573"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
-This article describes the Azure Migrate appliance. You deploy the appliance when you use Azure Migrate Assessment and Migration tools to discover, assess and migrate apps, infrastructure, and workloads to Microsoft Azure. 
+Tento článek popisuje zařízení Azure Migrate. Zařízení nasazujete při použití Azure Migrate nástrojů pro posuzování a migraci ke zjišťování, hodnocení a migraci aplikací, infrastruktury a úloh do Microsoft Azure. 
 
-[Azure Migrate](migrate-services-overview.md) provides a central hub to track discovery, assessment and migration of your on-premises apps and workloads, and private/public cloud VMs, to Azure. The hub provides Azure Migrate tools for assessment and migration, as well as third-party independent software vendor (ISV) offerings.
+[Azure Migrate](migrate-services-overview.md) poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh a virtuálních a veřejných cloudových virtuálních počítačů do Azure. Centrum poskytuje Azure Migrate nástroje pro posuzování a migraci i nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců.
 
 
 
-## <a name="appliance-overview"></a>Appliance overview
+## <a name="appliance-overview"></a>Přehled zařízení
 
-The Azure Migrate appliance types and usage are as follows.
+Typy a využití Azure Migrate zařízení jsou následující.
 
-**Deployed as** | **Used for** | **Podrobnosti**
+**Nasazeno jako** | **Používá se pro** | **Podrobnosti**
 --- | --- |  ---
-VMware VM | VMware VM assessment with the Azure Migrate Assessment tool.<br/><br/> VMware VM agentless migration with the Azure Migrate Server Migration tool | Download OVA template and import to vCenter Server to create the appliance VM.
-Hyper-V VM | Hyper-V VM assessment with the Azure Migrate Assessment tool. | Download zipped VHD and import to Hyper-V to create the appliance VM.
+Virtuální počítač VMware | Posouzení virtuálního počítače VMware pomocí nástroje pro vyhodnocení Azure Migrate.<br/><br/> Migrace bez agentů virtuálního počítače VMware pomocí nástroje pro migraci Azure Migrate serveru | Stáhněte si šablonu pro sadu vajíček a importujte ji vCenter Server k vytvoření virtuálního počítače zařízení.
+Virtuální počítač Hyper-V | Posouzení virtuálního počítače Hyper-V pomocí nástroje pro vyhodnocení Azure Migrate. | Pokud chcete vytvořit virtuální počítač zařízení, Stáhněte si VHD a importujte ho do Hyper-V.
 
-## <a name="appliance-access"></a>Appliance access
+## <a name="appliance-access"></a>Přístup k zařízení
 
-After you have configured the appliance, you can remotely access the appliance VM through TCP port 3389. You can also remotely access the web management app for the appliance, on port 44368 with URL: `https://<appliance-ip-or-name>:44368`.
+Po nakonfigurování zařízení můžete vzdáleně přistupovat k virtuálnímu počítači zařízení přes port TCP 3389. Můžete také vzdáleně přistupovat k aplikaci pro správu webu pro zařízení na portu 44368 s adresou URL: `https://<appliance-ip-or-name>:44368`.
 
-## <a name="appliance-license"></a>Appliance license
-The appliance comes with a Windows Server 2016 evaluation license, which is valid for 180 days. If the evaluation period is close to expiry, we recommend that you download and deploy a new appliance, or that you activate the operating system license of the appliance VM.
+## <a name="appliance-license"></a>Licence na zařízení
+Zařízení obsahuje zkušební licenci Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 
-## <a name="appliance-agents"></a>Appliance agents
-The appliance has these agents installed.
+## <a name="appliance-agents"></a>Agenti zařízení
+Zařízení má nainstalované tyto agenty.
 
 **Agent** | **Podrobnosti**
 --- | ---
-Discovery agent | Gathers configuration data of on-premises virtual machines
-Agent posouzení | Profiles the on-premises environment to collect VM performance data.
-Migration adapter | Orchestrates VM replication, and coordinates communication between VMs and Azure.
-Migration gateway | Sends replicated VM data to Azure.
+Agent zjišťování | Shromažďuje konfigurační data místních virtuálních počítačů.
+Agent posouzení | Profiluje místní prostředí pro shromažďování dat o výkonu virtuálních počítačů.
+Adaptér migrace | Orchestruje replikaci virtuálních počítačů a koordinuje komunikaci mezi virtuálními počítači a Azure.
+Brána migrace | Odesílá replikovaná data virtuálního počítače do Azure.
 
 
-## <a name="appliance-deployment-requirements"></a>Appliance deployment requirements
+## <a name="appliance-deployment-requirements"></a>Požadavky na nasazení zařízení
 
-- [Review](migrate-support-matrix-vmware.md#assessment-appliance-requirements) the deployment requirements for a VMware appliance, and the URLs that the appliance needs to access.
-- [Review](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) the deployment requirements for a Hyper-V appliance, and the URLs that the appliance  needs to access.
+- [Zkontrolujte](migrate-support-matrix-vmware.md#assessment-appliance-requirements) požadavky na nasazení pro zařízení VMware a adresy URL, ke kterým má zařízení přístup.
+- [Zkontrolujte](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) požadavky na nasazení pro zařízení s technologií Hyper-V a adresy URL, ke kterým musí zařízení přistupovat.
 
 
-## <a name="collected-performance-data-vmware"></a>Collected performance data-VMware
+## <a name="collected-performance-data-vmware"></a>Shromážděná data o výkonu – VMware
 
-Here's the VMware VM performance data that the appliance collects and sends to Azure.
+Tady je údaje o výkonu virtuálních počítačů VMware, které zařízení shromažďuje a odesílá do Azure.
 
-**Data** | **Counter** | **Assessment impact**
+**Data** | **Objektů** | **Dopad posouzení**
 --- | --- | ---
-CPU utilization | cpu.usage.average | Recommended VM size/cost
-Memory utilization | mem.usage.average | Recommended VM size/cost
-Disk read throughput (MB per second) | virtualDisk.read.average | Calculation for disk size, storage cost, VM size
-Disk write throughput (MB per second) | virtualDisk.write.average | Calculation for disk size, storage cost, VM size
-Disk read operations per second | virtualDisk.numberReadAveraged.average | Calculation for disk size, storage cost, VM size
-Disk write operations per second | virtualDisk.numberWriteAveraged.average  | Calculation for disk size, storage cost, VM size
-NIC read throughput (MB per second) | net.received.average | Calculation for VM size
-NIC write throughput (MB per second) | net.transmitted.average  |Calculation for VM size
+Využití procesoru | CPU. Usage. Average | Doporučená velikost virtuálního počítače/náklady
+Využití paměti | mem.usage.average | Doporučená velikost virtuálního počítače/náklady
+Propustnost čtení z disku (MB za sekundu) | virtualDisk.read.average | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
+Propustnost zápisu na disk (MB za sekundu) | virtualDisk.write.average | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
+Operace čtení z disku za sekundu | virtualDisk.numberReadAveraged.average | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
+Počet operací zápisu na disk za sekundu | virtualDisk. numberWriteAveraged. Average  | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
+Propustnost čtení síťových adaptérů (MB za sekundu) | net.received.average | Výpočet pro velikost virtuálního počítače
+Propustnost zápisu síťových adaptérů (MB za sekundu) | net.transmitted.average  |Výpočet pro velikost virtuálního počítače
 
 
-## <a name="collected-metadata-vmware"></a>Collected metadata-VMware
+## <a name="collected-metadata-vmware"></a>Shromážděná metadata – VMware
 
 > [!NOTE]
-> Metadata discovered by the Azure Migrate appliance is used to help you right-size your applications as you migrate them to Azure, perform Azure suitability analysis, application dependency analysis, and cost planning. Microsoft does not use this data in relation to any license compliance audit.
+> Metadata zjištěná zařízením Azure Migrate se používají k usnadnění správné velikosti vašich aplikací při jejich migraci do Azure, k provedení analýzy vhodnosti Azure, analýze závislostí aplikací a plánování nákladů. Společnost Microsoft nepoužívá tato data ve vztahu k auditu dodržování předpisů v licencích.
 
-Here's the full list of VMware VM metadata that the appliance collects and sends to Azure.
+Tady je úplný seznam metadat virtuálních počítačů VMware, které zařízení shromažďuje a odesílá do Azure.
 
-**Data** | **Counter**
+**Data** | **Objektů**
 --- | --- 
-**Machine details** | 
-VM ID | vm.Config.InstanceUuid 
-název virtuálního počítače | vm.Config.Name
-vCenter Server ID | VMwareClient.Instance.Uuid
-VM description | vm.Summary.Config.Annotation
-License product name | vm.Client.ServiceContent.About.LicenseProductName
-Operating system type | vm.SummaryConfig.GuestFullName
-Boot type | vm.Config.Firmware
-Počet jader | vm.Config.Hardware.NumCPU
-Memory (MB) | vm.Config.Hardware.MemoryMB
-Počet disků | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk).count
-Disk size list | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
-Network adapters list | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualEthernet).count
-CPU utilization | cpu.usage.average
-Memory utilization |mem.usage.average
-**Per disk details** | 
-Disk key value | disk.Key
-Dikunit number | disk.UnitNumber
-Disk controller key value | disk.ControllerKey.Value
-Gigabytes provisioned | virtualDisk.DeviceInfo.Summary
-Disk name | Value generated using disk.UnitNumber, disk.Key, disk.ControllerKey.VAlue
-Read operations per second | virtualDisk.numberReadAveraged.average
-Write operations per second | virtualDisk.numberWriteAveraged.average
-Read throughput (MB per second) | virtualDisk.read.average
-Write throughput (MB per second) | virtualDisk.write.average
-**Per NIC details** | 
-Network adapter name | nic.Key
-MAC address | ((VirtualEthernetCard)nic).MacAddress
-IPv4 addresses | vm.Guest.Net
-IPv6 addresses | vm.Guest.Net
-Read throughput (MB per second) | net.received.average
-Write throughput (MB per second) | net.transmitted.average
-**Inventory path details** | 
-Name (Název) | container.GetType().Name
-Type of child object | container.ChildType
-Reference details | container.MoRef
-Parent details | Container.Parent
-Folder details per VM | ((Folder)container).ChildEntity.Type
-Datacenter details per VM | ((Datacenter)container).VmFolder
-Datacenter details per host folder | ((Datacenter)container).HostFolder
-Cluster details per host | ((ClusterComputeResource)container).Host
-Host details per VM | ((HostSystem)container).VM
+**Podrobnosti o počítači** | 
+ID VIRTUÁLNÍHO POČÍTAČE | vm.Config.InstanceUuid 
+název virtuálního počítače | síť. Config.Name
+ID vCenter Server | VMwareClient. instance. UUID
+Popis virtuálního počítače | síť. Summary. config. Annotation
+Název licenčního produktu | síť. Client. ServiceContent. about. LicenseProductName
+Typ operačního systému | síť. SummaryConfig.GuestFullName
+Typ spouštění | síť. Config. firmware
+Počet jader | síť. Config. hardware. NumCPU
+Paměť (MB) | síť. Config. hardware. MemoryMB
+Počet disků | síť. Config. hardware. Device. ToList – (). FindAll (x = > je VirtualDisk). Count
+Seznam velikostí disků | síť. Config. hardware. Device. ToList – (). FindAll (x = > je VirtualDisk)
+Seznam síťových adaptérů | síť. Config. hardware. Device. ToList – (). FindAll (x = > je VirtualEthernet). Count
+Využití procesoru | CPU. Usage. Average
+Využití paměti |mem.usage.average
+**Podrobnosti o jednotlivých discích** | 
+Hodnota klíč disku | disk. Zkrat
+Dikunit číslo | disk. UnitNumber
+Hodnota klíče řadiče disku | disk. ControllerKey. Value
+Zřízené gigabajty | virtualDisk. DeviceInfo. Summary
+Název disku | Hodnota generovaná pomocí disku UnitNumber, disk. Klíč, disk. ControllerKey. VAlue
+Operace čtení za sekundu | virtualDisk.numberReadAveraged.average
+Operace zápisu za sekundu | virtualDisk. numberWriteAveraged. Average
+Propustnost čtení (MB za sekundu) | virtualDisk.read.average
+Propustnost zápisu (MB za sekundu) | virtualDisk.write.average
+**Podrobnosti na NIC** | 
+Název síťového adaptéru | síťových. Zkrat
+Adresa MAC | ((VirtualEthernetCard)nic).MacAddress
+Adresy IPv4 | síť. Guest.Net
+IPv6 adresy | síť. Guest.Net
+Propustnost čtení (MB za sekundu) | net.received.average
+Propustnost zápisu (MB za sekundu) | net.transmitted.average
+**Podrobnosti o cestě inventáře** | 
+Název | container.GetType().Name
+Typ podřízeného objektu | container.ChildType
+Referenční informace | vnitřního. MoRef
+Podrobnosti nadřazené položky | Kontejner. Parent
+Podrobnosti složky na virtuální počítač | ((Folder)container).ChildEntity.Type
+Podrobnosti datového centra na virtuální počítač | ((Datacenter)container).VmFolder
+Podrobnosti datacentra na složku hostitelů | ((Datacenter)container).HostFolder
+Podrobnosti o clusteru na hostitele | ((ClusterComputeResource) kontejner). Provoz
+Podrobnosti o hostiteli na virtuálním počítači | ((HostSystem)container).VM
 
 
 
-## <a name="collected-performance-data-hyper-v"></a>Collected performance data-Hyper-V
+## <a name="collected-performance-data-hyper-v"></a>Shromážděná data o výkonu – Hyper-V
 
 > [!NOTE]
-> Metadata discovered by the Azure Migrate appliance is used to help you right-size your applications as you migrate them to Azure, perform Azure suitability analysis, application dependency analysis, and cost planning. Microsoft does not use this data in relation to any license compliance audit.
+> Metadata zjištěná zařízením Azure Migrate se používají k usnadnění správné velikosti vašich aplikací při jejich migraci do Azure, k provedení analýzy vhodnosti Azure, analýze závislostí aplikací a plánování nákladů. Společnost Microsoft nepoužívá tato data ve vztahu k auditu dodržování předpisů v licencích.
 
-Here's the Hyper VM performance data that the appliance collects and sends to Azure.
+Tady je údaje o výkonu virtuálního počítače Hyper, které zařízení shromažďuje a odesílá do Azure.
 
-**Performance counter class** | **Counter** | **Assessment impact**
+**Třída čítače výkonu** | **Objektů** | **Dopad posouzení**
 --- | --- | ---
-Hyper-V Hypervisor Virtual Processor | % Guest Run Time | Recommended VM size/cost
-Hyper-V Dynamic Memory VM | Current Pressure (%)<br/> Guest Visible Physical Memory (MB) | Recommended VM size/cost
-Hyper-V Virtual Storage Device | Read Bytes/Second | Calculation for disk size, storage cost, VM size
-Hyper-V Virtual Storage Device | Write Bytes/Second | Calculation for disk size, storage cost, VM size
-Hyper-V Virtual Network Adapter | Bytes Received/Second | Calculation for VM size
-Hyper-V Virtual Network Adapter | Bytes Sent/Second | Calculation for VM size
+Virtuální procesor hypervisoru technologie Hyper-V | % Doby běhu hosta | Doporučená velikost virtuálního počítače/náklady
+Hyper-V Dynamická paměť virtuální počítač | Aktuální tlak (%)<br/> Fyzická paměť viditelná pro hosta (MB) | Doporučená velikost virtuálního počítače/náklady
+Virtuální úložné zařízení Hyper-V | Přečtené bajty za sekundu | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
+Virtuální úložné zařízení Hyper-V | Bajty zápisu za sekundu | Výpočet velikosti disku, nákladů na úložiště, velikosti virtuálního počítače
+Hyper-V Virtual Network adaptér | Přijaté bajty za sekundu | Výpočet pro velikost virtuálního počítače
+Hyper-V Virtual Network adaptér | Odeslané bajty za sekundu | Výpočet pro velikost virtuálního počítače
 
-- CPU utilization is the sum of all usage, for all virtual processors attached to a VM.
-- Memory utilization is (Current Pressure * Guest Visible Physical Memory) / 100.
-- Disk and network utilization values are collected from the listed Hyper-V performance counters.
+- Využití CPU je součtem veškerého využití pro všechny virtuální procesory připojené k virtuálnímu počítači.
+- Využití paměti je (aktuální tlak × viditelnost fyzické paměti hosta)/100.
+- Hodnoty využití disku a sítě se shromažďují ze seznamu čítačů výkonu technologie Hyper-V.
 
-## <a name="collected-metadata-hyper-v"></a>Collected metadata-Hyper-V
+## <a name="collected-metadata-hyper-v"></a>Shromážděná metadata – Hyper-V
 
-Here's the full list of Hyper-V VM metadata that the appliance collects and sends to Azure.
+Tady je úplný seznam metadat virtuálních počítačů Hyper-V, které zařízení shromažďuje a odesílá do Azure.
 
-**Data** | **WMI class** | **WMI class property**
+**Data** | **Třída WMI** | **Vlastnost třídy WMI**
 --- | --- | ---
-**Machine details** | 
-Serial number of BIOS _ Msvm_BIOSElement | BIOSSerialNumber
-VM type (Gen 1 or 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
-VM display name | Msvm_VirtualSystemSettingData | ElementName
-VM version | Msvm_ProcessorSettingData | VirtualQuantity
-Memory (bytes) | Msvm_MemorySettingData | VirtualQuantity
-Maximum memory that can be consumed by VM | Msvm_MemorySettingData | škálování
-Dynamic memory enabled | Msvm_MemorySettingData | DynamicMemoryEnabled
-Operating system name/version/FQDN | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems Name Data
-VM power status | Msvm_ComputerSystem | EnabledState
-**Per disk details** | 
-Disk identifier | Msvm_VirtualHardDiskSettingData | VirtualDiskId
-Virtual hard disk type | Msvm_VirtualHardDiskSettingData | Typ
-Virtual hard disk size | Msvm_VirtualHardDiskSettingData | MaxInternalSize
-Virtual hard disk parent | Msvm_VirtualHardDiskSettingData | ParentPath
-**Per NIC details** | 
-IP addresses (synthetic NICs) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
-DHCP enabled (synthetic NICs) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
-NIC ID (synthetic NICs) | Msvm_SyntheticEthernetPortSettingData | InstanceID
-NIC MAC address (synthetic NICs) | Msvm_SyntheticEthernetPortSettingData | Adresa
-NIC ID (legacy NICs) | MsvmEmulatedEthernetPortSetting Data | InstanceID
-NIC MAC ID (legacy NICs) | MsvmEmulatedEthernetPortSetting Data | Adresa
+**Podrobnosti o počítači** | 
+Sériové číslo systému BIOS _ Msvm_BIOSElement | BIOSSerialNumber
+Typ virtuálního počítače (FIN 1 nebo 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
+Zobrazovaný název virtuálního počítače | Msvm_VirtualSystemSettingData | ElementName
+Verze virtuálního počítače | Msvm_ProcessorSettingData | VirtualQuantity
+Paměť (bajty) | Msvm_MemorySettingData | VirtualQuantity
+Maximální velikost paměti, kterou může virtuální počítač spotřebovat | Msvm_MemorySettingData | Omezení
+Dynamická paměť je povolena | Msvm_MemorySettingData | DynamicMemoryEnabled
+Název/verze operačního systému/plně kvalifikovaný název domény | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems data o názvech
+Stav napájení virtuálního počítače | Msvm_ComputerSystem | EnabledState
+**Podrobnosti o jednotlivých discích** | 
+Identifikátor disku | Msvm_VirtualHardDiskSettingData | VirtualDiskId
+Typ virtuálního pevného disku | Msvm_VirtualHardDiskSettingData | Typ
+Velikost virtuálního pevného disku | Msvm_VirtualHardDiskSettingData | MaxInternalSize
+Nadřazený virtuální pevný disk | Msvm_VirtualHardDiskSettingData | ParentPath
+**Podrobnosti na NIC** | 
+IP adresy (syntetické síťové adaptéry) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
+Protokol DHCP povolen (syntetické síťové adaptéry) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
+ID síťové karty (syntetické síťové adaptéry) | Msvm_SyntheticEthernetPortSettingData | InstanceID
+Adresa MAC síťové karty (syntetické síťové adaptéry) | Msvm_SyntheticEthernetPortSettingData | Adresa
+ID síťové karty (starší síťové karty) | MsvmEmulatedEthernetPortSetting data | InstanceID
+ID MAC síťové karty (starší síťové karty) | MsvmEmulatedEthernetPortSetting data | Adresa
 
 
 
 
-## <a name="discovery-and-collection-process"></a>Discovery and collection process
+## <a name="discovery-and-collection-process"></a>Proces zjišťování a shromažďování
 
-The appliance communicates with vCenter Servers and Hyper-V hosts/cluster using the following process.
+Zařízení komunikuje s vCenter servery a hostiteli nebo clustery Hyper-V pomocí následujícího procesu.
 
 
-1. **Start discovery**:
-    - When you start the discovery on the Hyper-V appliance, it communicates with the Hyper-V hosts on WinRM ports 5985 (HTTP) and 5986 (HTTPS).
-    - When you start discovery on the VMware appliance, it communicates with the vCenter server on TCP port 443 by default. IF the vCenter server listens on a different port, you can configure it in the appliance web app.
-2. **Gather metadata and performance data**:
-    - The appliance uses a Common Information Model (CIM) session to gather Hyper-V VM data from the Hyper-V host on ports 5985 and 5986.
-    - The appliance communicates with port 443 by default, to gather VMware VM data from the vCenter Server.
-3. **Send data**: The appliance sends the collected data to Azure Migrate Server Assessment and Azure Migrate Server Migration over SSL port 443.
-    - For performance data, the appliance collects real-time utilization data.
-        - Performance data is collected every 20 seconds for VMware, and every 30 seconds for Hyper-V, for each performance metric.
-        - The collected data is rolled up to create a single data point for ten minutes.
-        - The peak utilization value is selected from all of the 20/30 second data points, and sent to Azure for assessment calculation.
-        - Based on the percentile value specified in the assessment properties (50th/90th/95th/99th), the ten-minute points are sorted in ascending order, and the appropriate percentile value is used to compute the assessment
-    - For Server Migration, the appliance starts collecting VM data, and replicates it to Azure.
-4. **Assess and migrate**: You can now create assessments from the metadata collected by the appliance using Azure Migrate Server Assessment. In addition, you can also start migrating VMware VMs using Azure Migrate Server Migration to orchestrate agentless VM replication.
+1. **Spustit zjišťování**:
+    - Když zahájíte zjišťování na zařízení Hyper-V, komunikuje s hostiteli Hyper-V na portech WinRM 5985 (HTTP) a 5986 (HTTPS).
+    - Když spustíte zjišťování na zařízení VMware, ve výchozím nastavení komunikuje s vCenter serverem na portu TCP 443. Pokud Server vCenter naslouchá na jiném portu, můžete ho nakonfigurovat ve webové aplikaci zařízení.
+2. **Shromážděte metadata a data o výkonu**:
+    - Zařízení používá relaci model CIM (Common Information Model) (CIM) ke shromažďování dat virtuálních počítačů Hyper-V z hostitele Hyper-V na portech 5985 a 5986.
+    - Zařízení ve výchozím nastavení komunikuje s portem 443, aby mohla shromažďovat data virtuálních počítačů VMware z vCenter Server.
+3. **Odeslat data**: zařízení odesílá shromážděná data pro Azure Migrate posouzení serveru a migraci Azure Migrate serveru přes SSL port 443.
+    - Pro data o výkonu zařízení shromažďuje data o využití v reálném čase.
+        - Údaje o výkonu se shromažďují každých 20 sekund pro VMware a každých 30 sekund pro Hyper-V pro každou metriku výkonu.
+        - Shromážděná data jsou zahrnuta k vytvoření jednoho datového bodu po dobu deseti minut.
+        - Hodnota maximálního využití je vybrána ze všech bodů 20/30 sekund a byla odeslána do Azure pro výpočet vyhodnocení.
+        - Na základě hodnoty percentilu uvedené ve vlastnostech posouzení (50/90/95./99) se ve vzestupném pořadí seřadí body o deseti minutách a příslušná hodnota percentilu se použije k výpočtu posouzení.
+    - U migrace serveru začne zařízení shromažďovat data virtuálních počítačů a replikuje je do Azure.
+4. **Vyhodnocení a migrace**: teď můžete z metadat shromážděných zařízením vytvořit posouzení pomocí Azure Migrate posouzení serveru. Kromě toho můžete také začít migrovat virtuální počítače VMware pomocí migrace serveru Azure Migrate pro orchestraci replikace virtuálních počítačů bez agentů.
 
 
 ![Architektura](./media/migrate-appliance/architecture.png)
 
 
-## <a name="appliance-upgrades"></a>Appliance upgrades
+## <a name="appliance-upgrades"></a>Upgrady zařízení
 
-The appliance is upgraded as the Azure Migrate agents running on the appliance are updated.
+Zařízení se upgraduje, protože Azure Migrate agenti, kteří běží na zařízení, se aktualizují.
 
-- This happens automatically because the auto-update is enabled on the appliance by default.
-- You can change this default setting to update the agents manually.
-- To disable the auto-update, go to the Registry Editor>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance and set the registry key- "AutoUpdate" to 0 (DWORD).
+- K tomu dochází automaticky, protože ve výchozím nastavení je automaticky povolena automatická aktualizace na zařízení.
+- Toto výchozí nastavení můžete změnit tak, aby se agenti aktualizovaly ručně.
+- Automatické aktualizace zakážete tak, že přejdete do editoru registru > HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance a nastavíte klíč registru-"AutoUpdate" na hodnotu 0 (DWORD).
  
-### <a name="set-agent-updates-to-manual"></a>Set agent updates to manual
+### <a name="set-agent-updates-to-manual"></a>Nastavit aktualizace agenta na ruční
 
-For manual updates, make sure that you update all the agents on the appliance at the same time, using the **Update** button for each outdated agent on the appliance. You can switch the update setting back to automatic updates at any time.
+V případě ručních aktualizací nezapomeňte aktualizovat všechny agenty na zařízení ve stejnou dobu, a to pomocí tlačítka **aktualizovat** pro každého zastaralého agenta na zařízení. Nastavení aktualizace můžete kdykoli přepnout zpátky na automatické aktualizace.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Learn how](tutorial-assess-vmware.md#set-up-the-appliance-vm) to set up the appliance for VMware.
-[Learn how](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) to set up the appliance for Hyper-V.
+[Přečtěte si, jak](tutorial-assess-vmware.md#set-up-the-appliance-vm) nastavit zařízení pro VMware.
+[Přečtěte si, jak](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) nastavit zařízení pro Hyper-V.
 

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Synthesize speech, C# - Speech Service'
+title: 'Rychlý Start: Syntetiz řeči, C# služba pro rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Bude doplněno
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -17,15 +17,15 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74260688"
 ---
-**Choose your target environment**
+**Volba cílového prostředí**
 
 #### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](./dotnet.md)]
 #### <a name="net-coretabdotnetcore"></a>[.NET Core](#tab/dotnetcore)
 [!INCLUDE [dotnetcore](./dotnetcore.md)]
-#### <a name="unitytabunity"></a>[Unity](#tab/unity)
+#### <a name="unitytabunity"></a>[Jednot](#tab/unity)
 [!INCLUDE [unity](./unity.md)]
-#### <a name="uwptabuwp"></a>[UWP](#tab/uwp)
+#### <a name="uwptabuwp"></a>[PODPORUJÍ](#tab/uwp)
 [!INCLUDE [uwp](./uwp.md)]
 
 * * *

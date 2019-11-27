@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 89bc690e5a8c8d24d7732dd4e12f70a9f1f368af
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b6941a159c8be9f7d1921dd281f7366b078b30a7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842653"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546269"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurace omezeného delegování protokolu Kerberos (KCD) v Azure Active Directory Domain Services
 
 Při spouštění aplikací může být potřeba, aby tyto aplikace měly přístup k prostředkům v kontextu jiného uživatele. Active Directory Domain Services (služba AD DS) podporuje mechanismus označovaný jako *delegování protokolu Kerberos* , který umožňuje použití tohoto případu použití. *Omezené* delegování protokolu Kerberos (KCD) následně sestaví na tomto mechanismu k definování konkrétních prostředků, ke kterým je možné přistupovat v kontextu uživatele. Spravované domény Azure Active Directory Domain Services (Azure služba AD DS) jsou bezpečnějším způsobem uzamčeny, které používají tradiční místní služba AD DS prostředí, takže používejte bezpečnější KCD *založené na prostředcích* .
 
-V tomto článku se dozvíte, jak nakonfigurovat omezené delegování basd pomocí protokolu Kerberos ve spravované doméně Azure služba AD DS.
+V tomto článku se dozvíte, jak nakonfigurovat omezené delegování protokolu Kerberos založené na prostředku ve spravované doméně Azure služba AD DS.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +42,9 @@ K dokončení tohoto článku potřebujete tyto prostředky:
 
 Delegování protokolu Kerberos umožňuje jednomu účtu zosobnit jiný účet pro přístup k prostředkům. Například webová aplikace, která přistupuje k back-endové webové komponentě, se může při připojení k back-endu zosobnit jako jiný uživatelský účet. Delegování protokolu Kerberos je nezabezpečené, protože neomezuje prostředky, ke kterým má zosobněný účet přístup.
 
-Omezené delegování protokolu Kerberos (KCD) omezuje služby nebo prostředky, které může zadaný server nebo aplikace připojit při zosobnění jiné identity. Tradiční KCD vyžaduje oprávnění správce domény ke konfiguraci účtu domény pro službu a omezuje účet tak, aby běžel v jedné doméně. Tradiční KCD také obsahuje několik problémů. Například ve starších operačních systémech neměl správce služby žádný užitečný způsob, jak zjistit, které front-endové služby jsou delegovány službám prostředků, které vlastní. Všechny front-endové služby, které by mohly delegovat službu prostředků, byly potenciálního bodu útoku. Pokud došlo k ohrožení bezpečnosti serveru, který hostuje front-end službu nakonfigurovanou pro delegování na služby prostředků, mohly by taky dojít k ohrožení služeb prostředků.
+Omezené delegování protokolu Kerberos (KCD) omezuje služby nebo prostředky, které může zadaný server nebo aplikace připojit při zosobnění jiné identity. Tradiční KCD vyžaduje oprávnění správce domény ke konfiguraci účtu domény pro službu a omezuje účet tak, aby běžel v jedné doméně.
+
+Tradiční KCD také obsahuje několik problémů. Například ve starších operačních systémech neměl správce služby žádný užitečný způsob, jak zjistit, které front-endové služby jsou delegovány službám prostředků, které vlastní. Všechny front-endové služby, které by mohly delegovat službu prostředků, byly potenciálního bodu útoku. Pokud došlo k ohrožení bezpečnosti serveru, který hostuje front-end službu nakonfigurovanou pro delegování na služby prostředků, mohly by taky dojít k ohrožení služeb prostředků.
 
 Ve spravované doméně Azure služba AD DS nemáte oprávnění správce domény. V důsledku toho se tradiční KCD založený na účtu nedá nakonfigurovat v Azure služba AD DS spravované doméně. Místo toho je možné použít KCD založené na prostředku, což je také bezpečnější.
 
@@ -87,7 +89,7 @@ V tomto scénáři předpokládáme, že máte webovou aplikaci, která je spuš
     Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak delegování funguje v Active Directory Domain Services, najdete v tématu [Přehled omezeného delegování protokolu Kerberos][kcd-technet].
 

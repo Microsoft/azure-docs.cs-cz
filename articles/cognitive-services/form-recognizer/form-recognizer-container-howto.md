@@ -1,7 +1,7 @@
 ---
-title: How to install and run container for Form Recognizer
+title: Jak nainstalovat a spustit kontejner pro rozpoznávání formulářů
 titleSuffix: Azure Cognitive Services
-description: This article will explain how to use the Azure Cognitive Services Form Recognizer container to parse form and table data.
+description: V tomto článku se dozvíte, jak pomocí kontejneru pro rozpoznávání formulářů Azure Cognitive Services analyzovat data formuláře a tabulky.
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
@@ -16,120 +16,120 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325844"
 ---
-# <a name="install-and-run-form-recognizer-containers-preview"></a>Install and run Form Recognizer containers (Preview)
+# <a name="install-and-run-form-recognizer-containers-preview"></a>Instalace a spuštění kontejnerů pro rozpoznávání formulářů (Preview)
 
-Azure Form Recognizer applies machine learning technology to identify and extract key-value pairs and tables from forms. It associates values and table entries with the key-value pairs and then outputs structured data that includes the relationships in the original file. 
+Nástroj pro rozpoznávání formulářů Azure používá technologii strojového učení k identifikaci a extrakci párů klíč-hodnota a tabulek z formulářů. Přidružuje hodnoty a položky tabulky s páry klíč-hodnota a pak vypíše strukturovaná data, která zahrnují relace v původním souboru. 
 
-To reduce complexity and easily integrate a custom Form Recognizer model into your workflow automation process or other application, you can call the model by using a simple REST API. Only five form documents (or one empty form and two filled-in forms) are needed, so you can get results quickly, accurately, and tailored to your specific content. No heavy manual intervention or extensive data science expertise is necessary. And it doesn't require data labeling or data annotation.
+Chcete-li omezit složitost a snadno integrovat model rozpoznávání vlastního formuláře do procesu automatizace pracovního postupu nebo jiné aplikace, můžete model volat pomocí jednoduchého REST API. Je potřeba jenom pět dokumentů formuláře (nebo jedné prázdné formy a dvou vyplněných formulářů), takže můžete získat výsledky rychle, přesně a přizpůsobit konkrétnímu obsahu. K dispozici není nutné provádět těžké Ruční zásahy nebo rozsáhlé odborné znalosti datových věd. A nevyžaduje popisky dat ani datová anotace.
 
 |Funkce|Funkce|
 |-|-|
-|Rozpoznávání formulářů| <li>Processes PDF, PNG, and JPG files<li>Trains custom models with a minimum of five forms of the same layout <li>Extracts key-value pairs and table information <li>Uses the Azure Cognitive Services Computer Vision API Recognize Text feature to detect and extract printed text from images inside forms<li>Doesn't require annotation or labeling|
+|Rozpoznávání formulářů| <li>Zpracovává soubory PDF, PNG a JPG.<li>Vlastní modely vlaků s minimálně pěti formuláři stejného rozložení <li>Extrahuje páry klíč-hodnota a informace o tabulce. <li>K detekci a extrakci vytištěného textu z obrázků uvnitř formulářů používá funkci Azure Cognitive Services rozhraní API pro počítačové zpracování obrazu Rozpoznávání textu.<li>Nevyžaduje poznámku nebo popisky|
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Before you use Form Recognizer containers, you must meet the following prerequisites:
+Než začnete používat kontejnery pro rozpoznávání formulářů, musíte splnit následující předpoklady:
 
 |Požaduje se|Účel|
 |--|--|
-|Docker Engine| You need the Docker Engine installed on a [host computer](#the-host-computer). Docker provides packages that configure the Docker environment on [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), and [Linux](https://docs.docker.com/engine/installation/#supported-platforms). For a primer on Docker and container basics, see the [Docker overview](https://docs.docker.com/engine/docker-overview/).<br><br> Docker must be configured to allow the containers to connect with and send billing data to Azure. <br><br> On Windows, Docker must also be configured to support Linux containers.<br><br>|
-|Familiarity with Docker | You should have a basic understanding of Docker concepts, such as registries, repositories, containers, and container images, and knowledge of basic `docker` commands.|
-|Rozhraní příkazového řádku Azure| Install the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) on your host.|
-|Computer Vision API resource| To process scanned documents and images, you need a Computer Vision resource. You can access the Recognize Text feature as either an Azure resource (the REST API or SDK) or a *cognitive-services-recognize-text* [container](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull). The usual billing fees apply. <br><br>Pass in both the API key and endpoints for your Computer Vision resource (Azure cloud or Cognitive Services container). Use this API key and the endpoint as **{COMPUTER_VISION_API_KEY}** and **{COMPUTER_VISION_ENDPOINT_URI}** .<br><br> If you use the *cognitive-services-recognize-text* container, make sure that:<br><br>Your Computer Vision key for the Form Recognizer container is the key specified in the Computer Vision `docker run` command for the *cognitive-services-recognize-text* container.<br>Your billing endpoint is the container's endpoint (for example, `http://localhost:5000`). If you use both the Computer Vision container and Form Recognizer container together on the same host, they can't both be started with the default port of *5000*. |
-|Form Recognizer resource |To use these containers, you must have:<br><br>An Azure **Form Recognizer** resource to get the associated API key and endpoint URI. Both values are available on the Azure portal **Form Recognizer** Overview and Keys pages, and both values are required to start the container.<br><br>**{FORM_RECOGNIZER_API_KEY}** : One of the two available resource keys on the Keys page<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** : The endpoint as provided on the Overview page|
+|Modul Docker| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Informace o úvodu k Docker a kontejneru najdete v tématu [Přehled Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> V systému Windows musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
+|Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a znalosti základních `docker`ch příkazů.|
+|Rozhraní příkazového řádku Azure| Na hostitele nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .|
+|Prostředek rozhraní API pro počítačové zpracování obrazu| Chcete-li zpracovat naskenované dokumenty a obrázky, potřebujete Počítačové zpracování obrazu prostředek. K funkci Rozpoznávání textu můžete přistupovat buď jako prostředek Azure (REST API nebo SDK), nebo jako *textový* [kontejner](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)pro rozpoznávání služeb. Použijí se obvyklé fakturační poplatky. <br><br>Předejte klíč rozhraní API a koncové body pro váš prostředek Počítačové zpracování obrazu (cloud Azure nebo kontejner Cognitive Services). Použijte tento klíč rozhraní API a koncový bod jako **{COMPUTER_VISION_API_KEY}** a **{COMPUTER_VISION_ENDPOINT_URI}** .<br><br> Použijete-li kontejner *vnímání-Services-rozpoznávání-text* , ujistěte se, že:<br><br>Váš Počítačové zpracování obrazu klíč pro kontejner pro rozpoznávání formulářů je klíč zadaný v příkazu Počítačové zpracování obrazu `docker run` pro kontejner rozpoznávání *-Services-rozpoznávání-text* .<br>Koncový bod fakturace je koncový bod kontejneru (například `http://localhost:5000`). Použijete-li kontejner Počítačové zpracování obrazu kontejner a rozpoznávání formulářů společně na stejném hostiteli, nelze současně spustit výchozí port *5000*. |
+|Prostředek pro rozpoznávání formulářů |Chcete-li použít tyto kontejnery, musíte mít:<br><br>Prostředek pro **rozpoznávání formulářů** Azure, který získá přidružený klíč rozhraní API a identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehled a klíče pro **rozpoznávání formulářů** Azure Portal a pro spuštění kontejneru jsou nutné obě hodnoty.<br><br>**{FORM_RECOGNIZER_API_KEY}** : jeden ze dvou dostupných klíčů prostředků na stránce klíče<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** : koncový bod uvedený na stránce Přehled|
 
-## <a name="gathering-required-parameters"></a>Gathering required parameters
+## <a name="gathering-required-parameters"></a>Shromažďují se požadované parametry.
 
-There are three primary parameters for all Cognitive Services' containers that are required. The end-user license agreement (EULA) must be present with a value of `accept`. Additionally, both an Endpoint URL and API Key are needed.
+Existují tři primární parametry pro všechny požadované kontejnery Cognitive Services. Licenční smlouvu s koncovým uživatelem (EULA) se musí nacházet s hodnotou `accept`. Kromě toho je potřeba adresa URL koncového bodu i klíč rozhraní API.
 
-### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Endpoint URI `{COMPUTER_VISION_ENDPOINT_URI}` and `{FORM_RECOGNIZER_ENDPOINT_URI}`
+### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Identifikátor URI koncového bodu `{COMPUTER_VISION_ENDPOINT_URI}` a `{FORM_RECOGNIZER_ENDPOINT_URI}`
 
-The **Endpoint** URI value is available on the Azure portal *Overview* page of the corresponding Cognitive Service resource. Navigate to the *Overview* page, hover over the Endpoint, and a `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> icon will appear. Copy and use where needed.
+Hodnota identifikátoru URI **koncového bodu** je k dispozici na stránce *Přehled* Azure Portal odpovídajícího prostředku služby pro rozpoznávání. Přejděte na stránku *Přehled* , najeďte myší na koncový bod a zobrazí se <span class="docon docon-edit-copy x-hidden-focus"></span> ikona `Copy to clipboard`. Zkopírujte a použijte tam, kde je to potřeba.
 
-![Gather the endpoint uri for later use](../containers/media/overview-endpoint-uri.png)
+![Shromáždit identifikátor URI koncového bodu pro pozdější použití](../containers/media/overview-endpoint-uri.png)
 
-### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Keys `{COMPUTER_VISION_API_KEY}` and `{FORM_RECOGNIZER_API_KEY}`
+### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Klíče `{COMPUTER_VISION_API_KEY}` a `{FORM_RECOGNIZER_API_KEY}`
 
-This key is used to start the container, and is available on the Azure portal's Keys page of the corresponding Cognitive Service resource. Navigate to the *Keys* page, and click on the `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> icon.
+Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíčů Azure Portal odpovídajícího prostředku služby pro rozpoznávání. Přejděte na stránku *klíče* a klikněte na ikonu `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> .
 
-![Get one of the two keys for later use](../containers/media/keys-copy-api-key.png)
+![Získat jeden ze dvou klíčů pro pozdější použití](../containers/media/keys-copy-api-key.png)
 
 > [!IMPORTANT]
-> These subscription keys are used to access your Cognitive Service API. Do not share your keys. Store them securely, for example, using Azure Key Vault. We also recommend regenerating these keys regularly. Only one key is necessary to make an API call. When regenerating the first key, you can use the second key for continued access to the service.
+> Tyto klíče předplatného se používají pro přístup ke službě rozpoznávání rozhraní API. Nesdílejte své klíče. Bezpečně je uložte, například pomocí Azure Key Vault. Tyto klíče doporučujeme také pravidelně obnovovat. K volání rozhraní API je potřeba jenom jeden klíč. Při opětovném generování prvního klíče můžete použít druhý klíč pro pokračování přístupu ke službě.
 
-## <a name="request-access-to-the-container-registry"></a>Request access to the container registry
+## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
 
-You must first complete and submit the [Cognitive Services Form Recognizer Containers access request form](https://aka.ms/FormRecognizerRequestAccess) to request access to the container. Doing so also signs you up for Computer Vision. You don't need to sign up for the Computer Vision request form separately. 
+Aby bylo možné požádat o přístup ke kontejneru, musíte nejprve dokončit a odeslat [formulář žádosti o přístup kontejnerů pro rozpoznávání formulářů Cognitive Services](https://aka.ms/FormRecognizerRequestAccess) . Tím se také zaregistruje Počítačové zpracování obrazu. Nemusíte se do formuláře žádosti o Počítačové zpracování obrazu zaregistrovat samostatně. 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
-## <a name="the-host-computer"></a>The host computer
+## <a name="the-host-computer"></a>Hostitelský počítač
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="container-requirements-and-recommendations"></a>Container requirements and recommendations
+### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
-The minimum and recommended CPU cores and memory to allocate for each Form Recognizer container are described in the following table:
+Minimální a doporučené PROCESORové jádro a paměť k přidělení pro každý kontejner pro rozpoznávání formulářů jsou popsány v následující tabulce:
 
 | Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
-| Rozpoznávání formulářů | 2 core, 4-GB memory | 4 core, 8-GB memory |
-| Recognize Text | 1 core, 8-GB memory | 2 cores, 8-GB memory |
+| Rozpoznávání formulářů | 2 jádra, 4 GB paměti | 4 jádra, 8 GB paměti |
+| Rozpoznávání textu | 1 jádro, 8 GB paměti | 2 jádra, 8 GB paměti |
 
-* Each core must be at least 2.6 gigahertz (GHz) or faster.
-* Core and memory correspond to the `--cpus` and `--memory` settings, which are used as part of the `docker run` command.
+* Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
+* Základní a paměť odpovídají nastavení `--cpus` a `--memory`, které se používají jako součást příkazu `docker run`.
 
 > [!Note]
-> The minimum and recommended values are based on Docker limits and *not* the host machine resources.
+> Minimální a doporučené hodnoty jsou založené na omezeních Docker, a *ne* na zdrojích hostitelských počítačů.
 
-## <a name="get-the-container-images-with-the-docker-pull-command"></a>Get the container images with the docker pull command
+## <a name="get-the-container-images-with-the-docker-pull-command"></a>Získání imagí kontejneru pomocí příkazu docker pull
 
-Container images for both the **Form Recognizer** and **Recognize Text** offerings are available in the following container registry:
+Image kontejneru pro **rozpoznávání formulářů** a **rozpoznávání textu** nabídky jsou k dispozici v následujícím registru kontejneru:
 
-| Kontejner | Fully qualified image name |
+| Kontejner | Plně kvalifikovaný název bitové kopie |
 |-----------|------------|
 | Rozpoznávání formulářů | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
-| Recognize Text | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
+| Rozpoznávání textu | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-You will need both containers, please note that the **Recognizer Text** container is [detailed outside of this article.](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)
+Budete potřebovat oba kontejnery, Upozorňujeme, že textový kontejner **pro rozpoznávání** se [podrobně popisuje mimo tento článek.](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-form-recognizer-container"></a>Docker pull for the Form Recognizer container
+### <a name="docker-pull-for-the-form-recognizer-container"></a>Funkce Docker Pull pro kontejner pro rozpoznávání formulářů
 
 #### <a name="form-recognizer"></a>Rozpoznávání formulářů
 
-To get the Form Recognizer container, use the following command:
+Chcete-li získat kontejner pro rozpoznávání formulářů, použijte následující příkaz:
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
 ```
-### <a name="docker-pull-for-the-recognize-text-container"></a>Docker pull for the Recognize Text container
+### <a name="docker-pull-for-the-recognize-text-container"></a>Vyžádané čtení Docker pro kontejner Rozpoznávání textu
 
-#### <a name="recognize-text"></a>Recognize Text
+#### <a name="recognize-text"></a>Rozpoznávání textu
 
-To get the Recognize Text container, use the following command:
+Chcete-li získat kontejner Rozpoznávání textu, použijte následující příkaz:
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
 
-## <a name="how-to-use-the-container"></a>How to use the container
+## <a name="how-to-use-the-container"></a>Jak používat kontejner
 
-After the container is on the [host computer](#the-host-computer), use the following process to work with the container.
+Po dokončení kontejneru v [hostitelském počítači](#the-host-computer)použijte následující postup pro práci s kontejnerem.
 
-1. [Run the container](#run-the-container-by-using-the-docker-run-command), with the required billing settings. More [examples](form-recognizer-container-configuration.md#example-docker-run-commands) of the `docker run` command are available.
-1. [Query the container's prediction endpoint](#query-the-containers-prediction-endpoint).
+1. [Spusťte kontejner](#run-the-container-by-using-the-docker-run-command)s požadovaným nastavením fakturace. K dispozici jsou další [příklady](form-recognizer-container-configuration.md#example-docker-run-commands) `docker run` příkazu.
+1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
-## <a name="run-the-container-by-using-the-docker-run-command"></a>Run the container by using the docker run command
+## <a name="run-the-container-by-using-the-docker-run-command"></a>Spuštění kontejneru pomocí příkazu Docker run
 
-Use the [docker run](https://docs.docker.com/engine/reference/commandline/run/) command to run the container. Refer to [gathering required parameters](#gathering-required-parameters) for details on how to get the `{COMPUTER_VISION_ENDPOINT_URI}`, `{COMPUTER_VISION_API_KEY}`, `{FORM_RECOGNIZER_ENDPOINT_URI}` and `{FORM_RECOGNIZER_API_KEY}` values.
+Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat `{COMPUTER_VISION_ENDPOINT_URI}`, `{COMPUTER_VISION_API_KEY}`, `{FORM_RECOGNIZER_ENDPOINT_URI}` a `{FORM_RECOGNIZER_API_KEY}` hodnot najdete v tématu [shromáždění požadovaných parametrů](#gathering-required-parameters) .
 
-[Examples](form-recognizer-container-configuration.md#example-docker-run-commands) of the `docker run` command are available.
+K dispozici jsou [příklady](form-recognizer-container-configuration.md#example-docker-run-commands) `docker run` příkazu.
 
 ### <a name="form-recognizer"></a>Rozpoznávání formulářů
 
@@ -145,21 +145,21 @@ FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 ```
 
-This command:
+Tento příkaz:
 
-* Runs a Form Recognizer container from the container image.
-* Allocates 2 CPU cores and 8 gigabytes (GB) of memory.
-* Exposes TCP port 5000 and allocates a pseudo-TTY for the container.
-* Automatically removes the container after it exits. The container image is still available on the host computer.
-* Mounts an /input and an /output volume to the container.
+* Spustí kontejner pro rozpoznávání formulářů z image kontejneru.
+* Přiděluje 2 jádra procesoru a 8 GB paměti.
+* Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
+* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+* Připojí/Input a svazek/Output ke kontejneru.
 
 [!INCLUDE [Running multiple containers on the same host H2](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
-### <a name="run-separate-containers-as-separate-docker-run-commands"></a>Run separate containers as separate docker run commands
+### <a name="run-separate-containers-as-separate-docker-run-commands"></a>Spustit samostatné kontejnery jako samostatné příkazy pro spuštění Docker
 
-For the Form Recognizer and Text Recognizer combination that's hosted locally on the same host, use the following two example Docker CLI commands:
+V případě kombinace formuláře a kombinace pro rozpoznávání textu, která je hostována místně na stejném hostiteli, použijte následující dva příklady příkazů Docker CLI:
 
-Run the first container on port 5000. 
+Spusťte první kontejner na portu 5000. 
 
 ```bash 
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -173,7 +173,7 @@ FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 ```
 
-Run the second container on port 5001.
+Spusťte druhý kontejner na portu 5001.
 
 ```bash 
 docker run --rm -it -p 5001:5000 --memory 4g --cpus 1 \
@@ -182,11 +182,11 @@ Eula=accept \
 Billing={COMPUTER_VISION_ENDPOINT_URI} \
 ApiKey={COMPUTER_VISION_API_KEY}
 ```
-Each subsequent container should be on a different port. 
+Každý další kontejner by měl být na jiném portu. 
 
-### <a name="run-separate-containers-with-docker-compose"></a>Run separate containers with Docker Compose
+### <a name="run-separate-containers-with-docker-compose"></a>Spustit samostatné kontejnery pomocí Docker Compose
 
-For the Form Recognizer and Text Recognizer combination that's hosted locally on the same host, see the following example Docker Compose YAML file. The Text Recognizer `{COMPUTER_VISION_API_KEY}` must be the same for both the `formrecognizer` and `ocr` containers. The `{COMPUTER_VISION_ENDPOINT_URI}` is used only in the `ocr` container, because the `formrecognizer` container uses the `ocr` name and port. 
+Pro rozpoznávání formulářů a kombinaci pro rozpoznávání textu, která je hostována místně na stejném hostiteli, si přečtěte následující příklad Docker Compose souboru YAML. `{COMPUTER_VISION_API_KEY}` pro rozpoznávání textu musí být pro kontejnery `formrecognizer` i `ocr` stejné. `{COMPUTER_VISION_ENDPOINT_URI}` se používá pouze v kontejneru `ocr`, protože kontejner `formrecognizer` používá `ocr` název a port. 
 
 ```docker
 version: '3.3'
@@ -237,23 +237,23 @@ services:
 ```
 
 > [!IMPORTANT]
-> The `Eula`, `Billing`, and `ApiKey`, as well as the `FormRecognizer:ComputerVisionApiKey` and `FormRecognizer:ComputerVisionEndpointUri` options, must be specified to run the container; otherwise, the container won't start. For more information, see [Billing](#billing).
+> `Eula`, `Billing`a `ApiKey`, a také možnosti `FormRecognizer:ComputerVisionApiKey` a `FormRecognizer:ComputerVisionEndpointUri`, je nutné zadat pro spuštění kontejneru. v opačném případě se kontejner nespustí. Další informace najdete v tématu [fakturace](#billing).
 
-## <a name="query-the-containers-prediction-endpoint"></a>Query the container's prediction endpoint
+## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
 
 |Kontejner|Koncový bod|
 |--|--|
-|form-recognizer|http://localhost:5000
+|formulář – rozpoznávání|http://localhost:5000
 
 ### <a name="form-recognizer"></a>Rozpoznávání formulářů
 
-The container provides websocket-based query endpoint APIs, which you access through [Form Recognizer services SDK documentation](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/).
+Kontejner poskytuje rozhraní API koncových bodů dotazů založených na protokolu WebSocket, ke kterým přistupujete v [dokumentaci k sadě SDK služby pro rozpoznávání formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/).
 
-By default, the Form Recognizer SDK uses the online services. To use the container, you need to change the initialization method. See the examples below.
+Ve výchozím nastavení používá sada SDK pro rozpoznávání formulářů online služby. Chcete-li použít kontejner, je nutné změnit inicializační metodu. Podívejte se na následující příklady.
 
-#### <a name="for-c"></a>For C#
+#### <a name="for-c"></a>ForC#
 
-Change from using this Azure-cloud initialization call:
+Změnit z použití tohoto volání inicializace Azure-Cloud:
 
 ```csharp
 var config =
@@ -261,7 +261,7 @@ var config =
         "YourSubscriptionKey",
         "YourServiceRegion");
 ```
-to this call, which uses the container endpoint:
+do tohoto volání, které používá koncový bod kontejneru:
 
 ```csharp
 var config =
@@ -270,9 +270,9 @@ var config =
         "YourSubscriptionKey");
 ```
 
-#### <a name="for-python"></a>For Python
+#### <a name="for-python"></a>Pro Python
 
-Change from using this Azure-cloud initialization call:
+Změnit z použití tohoto volání inicializace Azure-Cloud:
 
 ```python
 formrecognizer_config =
@@ -280,7 +280,7 @@ formrecognizer_config =
         subscription=formrecognizer_key, region=service_region)
 ```
 
-to this call, which uses the container endpoint:
+do tohoto volání, které používá koncový bod kontejneru:
 
 ```python
 formrecognizer_config = 
@@ -291,29 +291,29 @@ formrecognizer_config =
 
 ### <a name="form-recognizer"></a>Rozpoznávání formulářů
 
-The container provides REST endpoint APIs, which you can find on the [Form Recognizer API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel) page.
+Kontejner poskytuje rozhraní API koncového bodu REST, které můžete najít na stránce [rozhraní API pro rozpoznávání formulářů](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel) .
 
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 
-## <a name="stop-the-container"></a>Stop the container
+## <a name="stop-the-container"></a>Zastavení kontejneru
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-If you run the container with an output [mount](form-recognizer-container-configuration.md#mount-settings) and logging enabled, the container generates log files that are helpful to troubleshoot issues that happen while starting or running the container.
+Pokud spouštíte kontejner s povoleným výstupním [připojením](form-recognizer-container-configuration.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 
-The Form Recognizer containers send billing information to Azure by using a _Form Recognizer_ resource on your Azure account.
+Kontejnery pro rozpoznávání formulářů odesílají informace o fakturaci do Azure pomocí prostředku _pro rozpoznávání formulářů_ v účtu Azure.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-For more information about these options, see [Configure containers](form-recognizer-container-configuration.md).
+Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](form-recognizer-container-configuration.md).
 
 <!--blogs/samples/video courses -->
 
@@ -321,18 +321,18 @@ For more information about these options, see [Configure containers](form-recogn
 
 ## <a name="summary"></a>Souhrn
 
-In this article, you learned concepts and workflow for downloading, installing, and running Form Recognizer containers. Souhrn:
+V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů pro rozpoznávání formulářů. Souhrn:
 
-* Form Recognizer provides one Linux container for Docker.
-* Container images are downloaded from the private container registry in Azure.
-* Container images run in Docker.
-* You can use either the REST API or the REST SDK to call operations in Form Recognizer container by specifying the host URI of the container.
-* You must specify the billing information when you instantiate a container.
+* Nástroj pro rozpoznávání formulářů poskytuje pro Docker jeden kontejner Linux.
+* Image kontejneru se stáhnou z privátního registru kontejnerů v Azure.
+* Spuštění imagí kontejnerů v Dockeru.
+* Můžete použít buď REST API, nebo sadu SDK REST k volání operací v kontejneru pro rozpoznávání formulářů zadáním identifikátoru URI hostitele kontejneru.
+* Fakturační údaje je nutné zadat při vytváření instance kontejneru.
 
 > [!IMPORTANT]
->  Cognitive Services containers are not licensed to run without being connected to Azure for metering. Customers need to enable the containers to communicate billing information with the metering service at all times. Cognitive Services containers do not send customer data (for example, the image or text that is being analyzed) to Microsoft.
+>  Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Kontejnery Cognitive Services neodesílají zákaznická data (například obrázek nebo analyzovaný text) společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Review [Configure containers](form-recognizer-container-configuration.md) for configuration settings.
-* Use more [Cognitive Services Containers](../cognitive-services-container-support.md).
+* Přečtěte si téma [konfigurace kontejnerů](form-recognizer-container-configuration.md) pro nastavení konfigurace.
+* Použijte více [Cognitive Services kontejnerů](../cognitive-services-container-support.md).

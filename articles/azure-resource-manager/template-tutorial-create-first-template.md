@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Create & deploy template
-description: Create your first Azure Resource Manager template. In the tutorial, you learn about the template file syntax and how to deploy a storage account.
+title: Kurz – vytvoření šablony & nasazení
+description: Vytvořte svou první šablonu Azure Resource Manager. V tomto kurzu se dozvíte o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
 author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
@@ -12,44 +12,44 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406025"
 ---
-# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Tutorial: Create and deploy your first Azure Resource Manager template
+# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>Kurz: vytvoření a nasazení první šablony Azure Resource Manager
 
-This tutorial introduces you to Azure Resource Manager templates. It shows you how to create a starter template and deploy it to Azure. You'll learn about the structure of the template and the tools you'll need for working with templates. It takes about **12 minutes** to complete this tutorial, but the actual time will vary based on how many tools you need to install.
+V tomto kurzu se seznámíte s Azure Resource Manager šablon. Ukazuje, jak vytvořit úvodní šablonu a jak ji nasadit do Azure. Seznámíte se se strukturou šablony a nástroji, které budete potřebovat pro práci se šablonami. Dokončení tohoto kurzu trvá přibližně **12 minut** , ale skutečný čas se bude lišit podle toho, kolik nástrojů potřebujete nainstalovat.
 
-This tutorial is the first of a series. As you progress through the series, you modify the starting template step-by-step until you've explored all of the core parts of a Resource Manager template. These elements are the building blocks for much more complex templates. We hope by the end of the series you're confident creating your own templates and ready to automate your deployments with templates.
+Tento kurz je první z řad. Jak budete postupovat podle řady, upravíte počáteční šablonu krok za krokem, dokud neprojdete všechny základní části šablony Správce prostředků. Tyto prvky jsou stavebními bloky pro mnohem složitější šablony. Doufáme, že na konci řady jste si jistí, že máte jistotu, že vytváříte vlastní šablony a jste připraveni automatizovat nasazení pomocí šablon.
 
-If you want to learn about the benefits of using templates and why you should automate deployment with templates, see [Azure Resource Manager templates](template-deployment-overview.md).
+Pokud se chcete dozvědět o výhodách používání šablon a proč byste měli automatizovat nasazení se šablonami, přečtěte si téma [Azure Resource Manager šablony](template-deployment-overview.md).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="get-tools"></a>Get tools
+## <a name="get-tools"></a>Získat nástroje
 
-Let's start by making sure you have the tools you need to create and deploy templates.
+Pojďme začít tím, že budete mít k dispozici nástroje, které potřebujete k vytváření a nasazování šablon.
 
 ### <a name="editor"></a>Editor
 
-Templates are JSON files. To create templates, you need a good JSON editor. We recommend Visual Studio Code with the Resource Manager Tools extension. If you need to install these tools, see [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+Šablony jsou soubory JSON. K vytváření šablon potřebujete dobrý Editor JSON. Doporučujeme Visual Studio Code s rozšířením nástroje Správce prostředků Tools. Pokud potřebujete nainstalovat tyto nástroje, přečtěte si téma [použití Visual Studio Code k vytvoření šablon Azure Resource Manager](./resource-manager-tools-vs-code.md).
 
-### <a name="command-line-deployment"></a>Command-line deployment
+### <a name="command-line-deployment"></a>Nasazení z příkazového řádku
 
-You also need either Azure PowerShell or Azure CLI to deploy the template. For the installation instructions, see:
+K nasazení šablony budete taky potřebovat buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Pokyny k instalaci najdete v těchto tématech:
 
 - [Instalace Azure PowerShellu](/powershell/azure/install-az-ps)
-- [Install Azure CLI on Windows](/cli/azure/install-azure-cli-windows)
-- [Install Azure CLI on Linux](/cli/azure/install-azure-cli-linux)
+- [Instalace rozhraní příkazového řádku Azure CLI ve Windows](/cli/azure/install-azure-cli-windows)
+- [Instalace rozhraní příkazového řádku Azure CLI v systému Linux](/cli/azure/install-azure-cli-linux)
 
-After installing either Azure PowerShell or Azure CLI, make sure you sign in for the first time. For help, see [Sign in - PowerShell](/powershell/azure/install-az-ps#sign-in) or [Sign in - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
+Po instalaci Azure PowerShell nebo rozhraní příkazového řádku Azure se ujistěte, že poprvé se přihlašujete. Nápovědu najdete v tématu věnovaném [přihlášení k prostředí PowerShell](/powershell/azure/install-az-ps#sign-in) nebo [přihlášení – Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
 
-Okay, you're ready to start learning about templates.
+V pořádku budete připraveni začít se získáváním informací o šablonách.
 
-## <a name="create-your-first-template"></a>Create your first template
+## <a name="create-your-first-template"></a>Vytvoření první šablony
 
-1. Open Visual Studio Code with the Resource Manager Tools extension installed.
-1. From the **File** menu, select **New File** to create a new file.
-1. From the **File** menu, select **Save as**.
-1. Name the file **azuredeploy** and select the **JSON** file extension. The complete name of the file **azuredeploy.json**.
-1. Save the file to your workstation. Select a path that is easy to remember because you'll provide that path later when deploying the template.
-1. Copy and paste the following JSON into the file:
+1. Otevřete Visual Studio Code s nainstalovaným rozšířením nástroje Správce prostředků Tools.
+1. V nabídce **soubor** vyberte **nový soubor** a vytvořte nový soubor.
+1. V nabídce **soubor** vyberte **Uložit jako**.
+1. Pojmenujte soubor **azuredeploy** a vyberte příponu souboru **JSON** . Úplný název souboru **azuredeploy. JSON**.
+1. Uložte soubor do pracovní stanice. Vyberte cestu, která se snadno pamatuje, protože tuto cestu zadáte později při nasazování šablony.
+1. Zkopírujte následující kód JSON a vložte ho do souboru:
 
     ```json
     {
@@ -59,25 +59,25 @@ Okay, you're ready to start learning about templates.
     }
     ```
 
-    Here's what your VS Code environment looks like:
+    Toto prostředí VS Code vypadá takto:
 
-    ![Resource Manager template visual studio code first template](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
+    ![Šablona sady Visual Studio Code First Správce prostředků](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
 
-    This template doesn't deploy any resources. We're starting with a blank template so you can get familiar with the steps to deploy a template while minimizing the chance of something going wrong.
+    Tato šablona neimplementuje žádné prostředky. Začínáme prázdnou šablonou, takže se můžete seznámit s postupem nasazení šablony, přičemž se minimalizuje pravděpodobnost, že došlo k nějakému problému.
 
-    The JSON file has these elements:
+    Soubor JSON má tyto prvky:
 
-    - **$schema**: Specifies the location of the JSON schema file. The schema file describes the properties that are available within a template. For example, the schema defines **resources** as one of the valid properties for a template. Don't worry that the date for the schema is 2015-01-01. This schema version is up-to-date and includes all of the latest features. The schema date hasn't been changed because there have been no breaking changes since its introduction.
-    - **contentVersion**: Specifies the version of the template (such as 1.0.0.0). You can provide any value for this element. Use this value to document significant changes in your template. When deploying resources using the template, this value can be used to make sure that the right template is being used.
-    - **resources**: Contains the resources you want to deploy or update. Currently, it's empty, but you'll add resources later.
+    - **$Schema**: Určuje umístění souboru schématu JSON. Soubor schématu popisuje vlastnosti, které jsou k dispozici v rámci šablony. Například schéma definuje **prostředky** jako jednu z platných vlastností šablony. Nedělejte si starosti s tím, že datum schématu je 2015-01-01. Tato verze schématu je aktuální a zahrnuje všechny nejnovější funkce. Datum schématu se nezměnilo, protože od jeho úvodu nedošlo k žádným změnám.
+    - **contentversion –** : Určuje verzi šablony (například 1.0.0.0). Pro tento prvek můžete zadat libovolnou hodnotu. Tuto hodnotu použijte k dokumentování významných změn v šabloně. Při nasazování prostředků pomocí šablony můžete tuto hodnotu použít k tomu, abyste se ujistili, že je používána pravá šablona.
+    - **prostředky**: obsahuje prostředky, které chcete nasadit nebo aktualizovat. V současné době je prázdná, ale později přidáte prostředky.
 
 1. Uložte soubor.
 
-Congratulations, you've created your first template.
+Blahopřejeme, vytvořili jste svou první šablonu.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-To start working with Azure PowerShell/Azure CLI, sign in with your Azure credentials.
+Pokud chcete začít pracovat s Azure PowerShell/Azure CLI, přihlaste se pomocí přihlašovacích údajů Azure.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -94,7 +94,7 @@ az login
 ---
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-When you deploy a template, you specify a resource group that will contain the resources. Before running the deployment command, create the resource group with either Azure CLI or Azure PowerShell. Select the tabs in the following code section to choose between Azure PowerShell and Azure CLI. The CLI examples in this article are written for the Bash shell.
+Když nasadíte šablonu, zadáte skupinu prostředků, která bude obsahovat prostředky. Před spuštěním příkazu k nasazení vytvořte skupinu prostředků buď pomocí rozhraní příkazového řádku Azure CLI nebo Azure PowerShell. Vyberte karty v následující části kódu a vyberte si mezi Azure PowerShell a Azure CLI. Příklady rozhraní příkazového řádku v tomto článku se napíší pro prostředí bash.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -116,7 +116,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-To deploy the template, use either Azure CLI or Azure PowerShell. Use the resource group you created. Give a name to the deployment so you can easily identify it in the deployment history. For convenience, also create a variable that stores the path to the template file. This variable makes it easier for you to run the deployment commands because you don't have to retype the path every time you deploy.
+K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell. Použijte skupinu prostředků, kterou jste vytvořili. Zadejte název nasazení, abyste ho mohli snadno identifikovat v historii nasazení. Pro usnadnění práce vytvořte také proměnnou, která ukládá cestu k souboru šablony. Tato proměnná usnadňuje spuštění příkazů nasazení, protože nemusíte znovu zadávat cestu pokaždé, když nasadíte.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -140,45 +140,45 @@ az group deployment create \
 
 ---
 
-The deployment command returns results. Look for `ProvisioningState` to see whether the deployment succeeded.
+Příkaz pro nasazení vrátí výsledky. Vyhledejte `ProvisioningState` a zjistěte, jestli nasazení proběhlo úspěšně.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-![PowerShell deployment provisioning state](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
+![Stav zřizování nasazení PowerShellu](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-![Azure CLI deployment provisioning state](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
+![Stav zřizování nasazení Azure CLI](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
 
 ## <a name="verify-deployment"></a>Ověření nasazení
 
-You can verify the deployment by exploring the resource group from the Azure portal.
+Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
-1. From the left menu, select **Resource groups**.
+1. V nabídce vlevo vyberte **skupiny prostředků**.
 
-1. Select the resource group deploy in the last procedure. The default name is **myResourceGroup**. You shall see no resource deployed within the resource group.
+1. V posledním postupu vyberte nasazení skupiny prostředků. Výchozí název je **myResourceGroup**. V rámci skupiny prostředků se nezobrazí žádný prostředek nasazený.
 
-1. Notice in the upper right of the overview, the status of the deployment is displayed. Select **1 Succeeded**.
+1. Všimněte si, že v pravém horním rohu přehledu se zobrazí stav nasazení. Vyberte **1 úspěšné**.
 
-   ![View deployment status](./media/template-tutorial-create-first-template/deployment-status.png)
+   ![Zobrazit stav nasazení](./media/template-tutorial-create-first-template/deployment-status.png)
 
-1. You see a history of deployment for the resource group. Select **blanktemplate**.
+1. Zobrazí se historie nasazení pro skupinu prostředků. Vyberte **blanktemplate**.
 
-   ![Select deployment](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
+   ![Vybrat nasazení](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
 
-1. You see a summary of the deployment. In this case, there's not a lot to see because no resources were deployed. Later in this series you might find it helpful to review the summary in the deployment history. Notice on the left you can view inputs, outputs, and the template used during deployment.
+1. Zobrazí se souhrn nasazení. V tomto případě není k dispozici hodně prostředků, protože nebyly nasazeny žádné prostředky. Později v této sérii může být užitečné zkontrolovat souhrn v historii nasazení. Na levé straně si můžete zobrazit vstupy, výstupy a šablony použité během nasazování.
 
-   ![View deployment summary](./media/template-tutorial-create-first-template/view-deployment-summary.png)
+   ![Zobrazit souhrn nasazení](./media/template-tutorial-create-first-template/view-deployment-summary.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you're moving on to the next tutorial, you don't need to delete the resource group.
+Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
 
-If you're stopping now, you might want to delete the resource group.
+Pokud nyní provádíte zastavování, možná budete chtít odstranit skupinu prostředků.
 
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
@@ -187,7 +187,7 @@ If you're stopping now, you might want to delete the resource group.
 
 ## <a name="next-steps"></a>Další kroky
 
-You created a simple template to deploy to Azure. In the next tutorial, you'll add a storage account to the template and deploy it to your resource group.
+Vytvořili jste jednoduchou šablonu pro nasazení do Azure. V dalším kurzu přidáte účet úložiště do šablony a nasadíte ho do vaší skupiny prostředků.
 
 > [!div class="nextstepaction"]
-> [Add resource](template-tutorial-add-resource.md)
+> [Přidat prostředek](template-tutorial-add-resource.md)

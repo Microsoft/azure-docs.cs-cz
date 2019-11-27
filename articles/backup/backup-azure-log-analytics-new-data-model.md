@@ -38,9 +38,9 @@ Tato tabulka poskytuje informace o základních entitách zálohování, jako js
 | BackupManagementServerOSVersion   | Text          | Verze operačního systému serveru pro správu zálohování                   |
 | BackupManagementServerVersion     | Text          | Verze serveru pro správu zálohování                      |
 | LatestRecoveryPointLocation       | Text          | Umístění posledního bodu obnovení pro zálohovanou položku    |
-| LatestRecoveryPointTime           | Datum a čas      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
+| LatestRecoveryPointTime           | DateTime      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
 | OldestRecoveryPointLocation       | Text          | Umístění nejstaršího bodu obnovení pro zálohovanou položku    |
-| OldestRecoveryPointTime           | Datum a čas      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
+| OldestRecoveryPointTime           | DateTime      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
 | PolicyUniqueId                    | Text          | Jedinečné ID pro identifikaci zásad                             |
 | ProtectedContainerFriendlyName    | Text          | Popisný název chráněného serveru                        |
 | ProtectedContainerLocation        | Text          | Bez ohledu na to, jestli je chráněný kontejner umístěný místně nebo v Azure |
@@ -74,7 +74,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 | Kategorie                       | Text          | Kategorie dat diagnostiky nabízených do protokolů Azure Monitor – AddonAzureBackupAlerts |
 | AlertCode                      | Text          | Kód pro jedinečnou identifikaci typu výstrahy                     |
 | AlertConsolidationStatus       | Text          | Zjistit, jestli je výstraha konsolidovaná výstraha nebo ne         |
-| AlertOccurrenceDateTime        | Datum a čas      | Datum a čas, kdy byla výstraha vytvořena                     |
+| AlertOccurrenceDateTime        | DateTime      | Datum a čas, kdy byla výstraha vytvořena                     |
 | AlertRaisedOn                  | Text          | Typ entity, na které se aktivuje výstraha                        |
 | AlertSeverity                  | Text          | Závažnost výstrahy Například kritický                 |
 | AlertStatus                    | Text          | Stav výstrahy Například aktivní                     |
@@ -130,12 +130,12 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | JobFailureCode                 | Text          | Řetězec kódu chyby, protože došlo k selhání úlohy    |
 | JobOperation                   | Text          | Operace, pro kterou je úloha spuštěná, například zálohování, obnovení, konfigurace zálohování |
 | JobOperationSubType            | Text          | Dílčí typ operace úlohy Například ' log ' v případě úlohy zálohování protokolu |
-| JobStartDateTime               | Datum a čas      | Datum a čas spuštění úlohy                       |
+| JobStartDateTime               | DateTime      | Datum a čas spuštění úlohy                       |
 | JobStatus                      | Text          | Stav dokončené úlohy, například dokončeno, neúspěšné   |
 | JobUniqueId                    | Text          | Jedinečné ID pro identifikaci úlohy                                |
 | ProtectedContainerUniqueId     | Text          | Jedinečný identifikátor chráněného serveru přidruženého k výstraze |
 | RecoveryJobDestination         | Text          | Cíl úlohy obnovení, kde se data obnovují   |
-| RecoveryJobRPDateTime          | Datum a čas      | Datum a čas vytvoření bodu obnovení, který se má obnovit |
+| RecoveryJobRPDateTime          | DateTime      | Datum a čas vytvoření bodu obnovení, který se má obnovit |
 | RecoveryJobLocation            | Text          | Umístění, kam se uložil bod obnovení, který se má obnovit |
 | RecoveryLocationType           | Text          | Typ umístění pro obnovení                                |
 | SchemaVersion                  | Text          | Aktuální verze schématu, například **v2**            |

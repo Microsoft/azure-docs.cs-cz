@@ -1,6 +1,6 @@
 ---
-title: What is an Azure Private Endpoint?
-description: Learn about Azure Private Endpoint
+title: Co je privátní koncový bod Azure?
+description: Seznamte se s privátním koncovým bodem Azure
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,125 +14,125 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228118"
 ---
-# <a name="what-is-azure-private-endpoint"></a>What is Azure Private Endpoint?
+# <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
-Azure Private Endpoint is a network interface that connects you privately and securely to a service powered by Azure Private Link. Private Endpoint uses a private IP address from your VNet, effectively bringing the service into your VNet. The service could be an Azure service such as Azure Storage, Azure Cosmos DB, SQL, etc. or your own [Private Link Service](private-link-service-overview.md).
+Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Služba může být služba Azure, například Azure Storage, Azure Cosmos DB, SQL atd. nebo vaše vlastní [Služba privátních odkazů](private-link-service-overview.md).
   
-## <a name="private-endpoint-properties"></a>Private Endpoint properties 
- A Private Endpoint specifies the following properties: 
+## <a name="private-endpoint-properties"></a>Vlastnosti privátního koncového bodu 
+ Soukromý koncový bod určuje následující vlastnosti: 
 
 
 |Vlastnost  |Popis |
 |---------|---------|
-|Name (Název)    |    A unique name within the resource group.      |
-|Podsíť    |  The subnet to deploy and allocate private IP addresses from a virtual network. For subnet requirements, see the Limitations section in this article.         |
-|Private Link Resource    |   The private link resource to connect using resource ID or alias, from the list of available types. A unique network identifier will be generated for all traffic sent to this resource.       |
-|Target subresource   |      The subresource to connect. Each private link resource type has different options to select based on preference.    |
-|Connection approval method    |  Automatic or manual. Based on role-based access control (RBAC) permissions, your private endpoint can be approved automatically. If you try to connect to a private link resource without RBAC, use the manual method to allow the owner of the resource to approve the connection.        |
-|Request Message     |  You can specify a message for requested connections to be approved manually. This message can be used to identify a specific request.        |
-|Stav připojení   |   A read-only property that specifies if the private endpoint is active. Only private endpoints in an approved state can be used to send traffic. Additional states available: <br>-**Approved**: Connection was automatically or manually approved and is ready to be used.</br><br>-**Pending**: Connection was created manually and is pending approval by the private link resource owner.</br><br>-**Rejected**: Connection was rejected by the private link resource owner.</br><br>-**Disconnected**: Connection was removed by the private link resource owner. The private endpoint becomes informative and should be deleted for cleanup. </br>|
+|Název    |    Jedinečný název v rámci skupiny prostředků.      |
+|Podsíť    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
+|Prostředek privátního propojení    |   Prostředek privátního propojení pro připojení pomocí ID prostředku nebo aliasu ze seznamu dostupných typů. Pro veškerý provoz odeslaný do tohoto prostředku se vygeneruje jedinečný identifikátor sítě.       |
+|Cílový podprostředek   |      Prostředek, který se má připojit. Každý typ prostředku privátního propojení má různé možnosti pro výběr na základě předvolby.    |
+|Metoda schválení připojení    |  Automatické nebo ruční. V závislosti na oprávněních řízení přístupu na základě role (RBAC) může být váš soukromý koncový bod schválen automaticky. Pokud se pokusíte připojit k prostředku privátního propojení bez RBAC, použijte ruční metodu, která vlastníkovi prostředku povolí schválení připojení.        |
+|Zpráva požadavku     |  Můžete zadat zprávu, aby požadovaná připojení byla schválena ručně. Tato zpráva se dá použít k identifikaci konkrétního požadavku.        |
+|Stav připojení   |   Vlastnost jen pro čtení, která určuje, zda je privátní koncový bod aktivní. K odeslání provozu lze použít pouze privátní koncové body ve schváleném stavu. Další stavy k dispozici: <br>-**schváleno**: připojení bylo automaticky nebo schváleno a je připraveno k použití.</br><br>**Nedokončený**-: připojení bylo vytvořeno ručně a vlastníkem prostředku privátního odkazu čeká na schválení.</br><br>-**Odmítnuto**: připojení bylo odmítnuto vlastníkem prostředku privátního odkazu.</br><br>-**Odpojeno**: připojení bylo odebráno vlastníkem prostředku privátního odkazu. Soukromý koncový bod se bude jednat o informativní a měl by se odstranit pro vyčištění. </br>|
 
-Here are some key details about private endpoints: 
-- Private endpoint enables connectivity between the consumers from the same VNet, regionally peered VNets, globally peered VNets and on premises using [VPN](https://azure.microsoft.com/services/vpn-gateway/) or [Express Route](https://azure.microsoft.com/services/expressroute/) and services powered by Private Link.
+Tady jsou některé klíčové podrobnosti o privátních koncových bodech: 
+- Privátní koncový bod umožňuje připojení mezi spotřebiteli ze stejné virtuální sítě, v oblasti partnerských virtuální sítě, globálně vázaných virtuální sítě a místně pomocí [VPN](https://azure.microsoft.com/services/vpn-gateway/) nebo [Express Route](https://azure.microsoft.com/services/expressroute/) and Services využívajících soukromé odkazy.
  
-- When creating a private endpoint, a network interface is also created for the lifecycle of the resource. The interface is assigned a private IP address from the subnet that maps to the Private Link Service.
+- Při vytváření privátního koncového bodu se pro životní cyklus prostředku vytvoří také síťové rozhraní. Rozhraní je přiřazena privátní IP adresa z podsítě, která je mapována na službu privátního propojení.
  
-- The private endpoint must be deployed in the same region as the virtual network. 
+- Privátní koncový bod musí být nasazený ve stejné oblasti jako virtuální síť. 
  
-- The private link resource can be deployed in a different region than the virtual network and private endpoint.
+- Prostředek privátního propojení se dá nasadit v jiné oblasti, než je virtuální síť a soukromý koncový bod.
  
-- Multiple private endpoints can be created using the same private link resource. For a single network using a common DNS server configuration, the recommended practice is to use a single private endpoint for a given private link resource to avoid duplicate entries or conflicts in DNS resolution. 
+- Pomocí stejného prostředku privátního propojení lze vytvořit více privátních koncových bodů. V případě jedné sítě, která používá běžnou konfiguraci serveru DNS, doporučujeme použít jeden privátní koncový bod pro daný prostředek privátního propojení, aby nedocházelo k duplicitním položkám nebo konfliktům v překladu názvů DNS. 
  
-- Multiple private endpoints can be created on the same or different subnets within the same virtual network. There are limits to the number of private endpoints you can create in a subscription. For details, see [Azure limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Ve stejné virtuální síti je možné vytvořit více privátních koncových bodů v rámci jedné nebo více podsítí. Existují omezení počtu privátních koncových bodů, které můžete v rámci předplatného vytvořit. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
 
 
  
-## <a name="private-link-resource"></a>Private link resource 
-A private link resource is the destination target of a given private endpoint. The following is a list of available private link resource types: 
+## <a name="private-link-resource"></a>Prostředek privátního propojení 
+Prostředek privátního propojení je cílovým cílem daného privátního koncového bodu. Následuje seznam dostupných typů prostředků privátního propojení: 
  
-|Private link resource name  |Typ prostředku   |Subresources  |
+|Název prostředku privátního propojení  |Typ prostředku   |Dílčí prostředky  |
 |---------|---------|---------|
-|**Private Link Service** (Your own service)   |  Microsoft.Network/privateLinkServices       | empty |
-|**Azure SQL Database** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
-|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
-|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Table (table, table_secondary)<BR> Queue (queue, queue_secondary)<BR> File (file, file_secondary)<BR> Web (web, web_secondary)        |
-|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)       |
-|**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql, MongoDB, Cassandra, Gremlin, Table|
+|**Služba privátního propojení** (vaše vlastní služba)   |  Microsoft. Network/privateLinkServices       | Prázdná |
+|**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
+|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
+|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Tabulka (tabulka, table_secondary)<BR> Queue (Queue, queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (web, web_secondary)        |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)       |
+|**Databáze Azure Cosmos** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabulka|
  
-## <a name="network-security-of-private-endpoints"></a>Network security of private endpoints 
-When using private endpoints for Azure services, traffic is secured to a specific private link resource. The platform performs an access control to validate network connections reaching only the specified private link resource. To access additional resources within the same Azure service, additional private endpoints are required. 
+## <a name="network-security-of-private-endpoints"></a>Zabezpečení sítě privátních koncových bodů 
+Při používání privátních koncových bodů pro služby Azure je provoz zabezpečený pro konkrétní prostředek privátního propojení. Platforma provede řízení přístupu, aby se ověřilo, že síťová připojení dosáhnou pouze zadaného prostředku privátního propojení. Pokud chcete získat přístup k dalším prostředkům v rámci stejné služby Azure, vyžadují se další privátní koncové body. 
  
-You can completely lock down your workloads from accessing public endpoints to connect to a supported Azure service. This control provides an additional network security layer to your resources by providing a built-in exfiltration protection that prevents access to other resources hosted on the same Azure service. 
+Pro připojení k podporované službě Azure můžete úlohy zcela uzamknout z přístupu k veřejným koncovým bodům. Tento ovládací prvek zajišťuje další vrstvu zabezpečení sítě pro vaše prostředky tím, že poskytuje vestavěnou exfiltrace ochranu, která brání přístupu k dalším prostředkům hostovaným na stejné službě Azure. 
  
-## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Access to a private link resource using approval workflow 
-You can connect to a private link resource using the following connection approval methods:
-- **Automatically** approved when you own or have permission on the specific private link resource. The permission required is based on the private link resource type in the following format: Microsoft.\<Provider>/<resource_type>/privateEndpointConnectionApproval/action
-- **Manual** request when you don't have the permission required and would like to request access. An approval workflow will be initiated. The private endpoint and subsequent private endpoint connection will be created in a "Pending" state. The private link resource owner is responsible to approve the connection. After it's approved, the private endpoint is enabled to send traffic normally, as shown in the following approval workflow diagram.  
+## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Přístup k prostředku privátního propojení pomocí pracovního postupu schválení 
+K prostředku privátního propojení se můžete připojit pomocí následujících metod schvalování připojení:
+- **Automaticky** schváleno, pokud vlastníte nebo máte oprávnění ke konkrétnímu prostředku privátního propojení. Požadovaná oprávnění jsou založená na typu prostředku privátního propojení v následujícím formátu: Microsoft. Poskytovatel\<>/< resource_type >/privateEndpointConnectionApproval/action
+- **Ruční** požadavek, pokud nemáte požadovaná oprávnění a přejete si požádat o přístup. Zahájí se schvalovací pracovní postup. Privátní koncový bod a následné připojení privátního koncového bodu se vytvoří ve stavu čeká na vyřízení. Vlastník prostředku privátního propojení je zodpovědný za schválení připojení. Po schválení je povolený privátní koncový bod pro normální odesílání provozu, jak je znázorněno v následujícím diagramu pracovního postupu schválení.  
 
-![workflow approval](media/private-endpoint-overview/private-link-paas-workflow.png)
+![schválení pracovního postupu](media/private-endpoint-overview/private-link-paas-workflow.png)
  
-The private link resource owner can perform the following actions over a private endpoint connection: 
-- Review all private endpoint connections details. 
-- Approve a private endpoint connection. The corresponding private endpoint will be enabled to send traffic to the private link resource. 
-- Reject a private endpoint connection. The corresponding private endpoint will be updated to reflect the status.
-- Delete a private endpoint connection in any state. The corresponding private endpoint will be updated with a disconnected state to reflect the action, the private endpoint owner can only delete the resource at this point. 
+Vlastník prostředku privátního propojení může provést následující akce přes připojení privátního koncového bodu: 
+- Zkontrolujte podrobnosti o všech připojeních privátního koncového bodu. 
+- Schvalte připojení privátního koncového bodu. Odpovídající privátní koncový bod bude povolen k odeslání provozu do prostředku privátního propojení. 
+- Odmítne připojení privátního koncového bodu. Odpovídající soukromý koncový bod bude aktualizován tak, aby odrážel stav.
+- Odstraňte připojení privátního koncového bodu v libovolném stavu. Odpovídající privátní koncový bod bude aktualizován pomocí odpojeného stavu, aby odrážel akci, vlastník privátního koncového bodu může v tomto okamžiku odstranit pouze prostředek. 
  
 > [!NOTE]
-> Only a private endpoint in an approved state can send traffic to a given private link resource. 
+> Pouze privátní koncový bod ve schváleném stavu může odesílat provoz do daného prostředku privátního propojení. 
 
-### <a name="connecting-using-alias"></a>Connecting using Alias
-Alias is a unique moniker that is generated when the service owner creates the private link service behind a standard load balancer. Service owner can share this Alias with their consumers offline. Consumers can request a connection to private link service using either the resource URI or the Alias. If you want to connect using Alias, you must create private endpoint using manual connection approval method. For using manual connection approval method, set manual request parameter to true during private endpoint create flow. Look at [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) and [az network private-endpoint create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) for details. 
+### <a name="connecting-using-alias"></a>Připojování pomocí aliasu
+Alias je jedinečný moniker, který se generuje, když vlastník služby vytvoří službu privátního propojení za standardním nástrojem pro vyrovnávání zatížení. Vlastník služby může tento alias sdílet se svými spotřebiteli offline. Příjemci můžou požádat o připojení ke službě privátního propojení buď pomocí identifikátoru URI prostředku, nebo aliasu. Pokud se chcete připojit pomocí aliasu, musíte vytvořit privátní koncový bod pomocí metody ručního schválení připojení. Pro použití metody schvalování ručního připojení nastavte parametr ruční požadavek na hodnotu true během vytváření toku privátního koncového bodu. Podrobnosti najdete v [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) a [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) . 
 
 ## <a name="dns-configuration"></a>Konfigurace DNS 
-When connecting to a private link resource using a fully qualified domain name (FQDN) as part of the connection string, it's important to correctly configure your DNS settings to resolve to the allocated private IP address. Existing Azure services might already have a DNS configuration to use when connecting over a public endpoint. This needs to be overridden to connect using your private endpoint. 
+Při připojování k prostředku privátního propojení pomocí plně kvalifikovaného názvu domény (FQDN) jako součásti připojovacího řetězce je důležité správně nakonfigurovat nastavení DNS tak, aby se přeložilo na přidělenou privátní IP adresu. Existující služby Azure už můžou mít konfiguraci DNS, která se má použít při připojování přes Veřejný koncový bod. To je nutné přepsat pro připojení pomocí privátního koncového bodu. 
  
-The network interface associated with the private endpoint contains the complete set of information required to configure your DNS, including FQDN and private IP addresses allocated for a given private link resource. 
+Síťové rozhraní přidružené k privátnímu koncovému bodu obsahuje úplnou sadu informací potřebných ke konfiguraci DNS, včetně plně kvalifikovaného názvu domény a privátních IP adres přidělených pro daný prostředek privátního propojení. 
  
-You can use the following options to configure your DNS settings for private endpoints: 
-- **Use the Host file (only recommended for testing)** . You can use the host file on a virtual machine to override the DNS.  
-- **Use a private DNS zone**. You can use private DNS zones to override the DNS resolution for a given private endpoint. A private DNS zone can be linked to your virtual network to resolve specific domains.
-- **Use your custom DNS server**. You can use your own DNS server to override the DNS resolution for a given private link resource. If your [DNS server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) is hosted on a virtual network, you can create a DNS forwarding rule to use a private DNS zone to simplify the configuration for all private link resources.
+Pomocí následujících možností můžete nakonfigurovat nastavení DNS privátních koncových bodů: 
+- **Použijte soubor hostitele (doporučeno pouze pro testování)** . K přepsání DNS můžete použít soubor hostitele na virtuálním počítači.  
+- **Použijte privátní ZÓNU DNS**. K přepsání překladu DNS pro daný privátní koncový bod můžete použít soukromé zóny DNS. Privátní zóna DNS se dá propojit s vaší virtuální sítí a vyřešit konkrétní domény.
+- **Použijte vlastní server DNS**. Pomocí vlastního serveru DNS můžete přepsat překlad DNS pro daný prostředek privátního propojení. Pokud je váš [Server DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) hostovaný ve virtuální síti, můžete vytvořit předávací pravidlo DNS pro použití privátní zóny DNS a zjednodušit tak konfiguraci všech prostředků privátního propojení.
  
 > [!IMPORTANT]
-> It's not recommended to override a zone that is actively in use to resolve public endpoints. Connections to resources won't be able to resolve correctly without DNS forwarding to the public DNS. To avoid issues, create a different domain name or follow the suggested name for each service below. 
+> Nedoporučujeme potlačit zónu, která je aktivně používána k řešení veřejných koncových bodů. Připojení k prostředkům nebude možné správně přeložit bez předávání DNS do veřejného serveru DNS. Pokud se chcete vyhnout problémům, vytvořte jiný název domény nebo použijte navrhovaný název pro každou službu níže. 
  
-For Azure services, use the recommended zone names as described in the following table:
+Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následující tabulce:
 
-|Private Link resource type   |Subresource  |Zone name  |
+|Typ prostředku privátního propojení   |Vytváření  |Název zóny  |
 |---------|---------|---------|
-|SQL DB/DW (Microsoft.Sql/servers)    |  Sql Server (sqlServer)        |   privatelink.database.windows.net       |
-|Storage Account (Microsoft.Storage/storageAccounts)    |  Blob (blob, blob_secondary)        |    privatelink.blob.core.windows.net      |
-|Storage Account (Microsoft.Storage/storageAccounts)    |    Table (table, table_secondary)      |   privatelink.table.core.windows.net       |
-|Storage Account (Microsoft.Storage/storageAccounts)    |    Queue (queue, queue_secondary)     |   privatelink.queue.core.windows.net       |
-|Storage Account (Microsoft.Storage/storageAccounts)   |    File (file, file_secondary)      |    privatelink.file.core.windows.net      |
-|Storage Account (Microsoft.Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
-|Data Lake File System Gen2 (Microsoft.Storage/storageAccounts)  |  Data Lake File System Gen2 (dfs, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Tabulka|privatelink.table.cosmos.azure.com|
+|SQL DB/DW (Microsoft. SQL/servery)    |  SQL Server (sqlServer)        |   privatelink.database.windows.net       |
+|Účet úložiště (Microsoft. Storage/storageAccounts)    |  BLOB (objekt blob, blob_secondary)        |    privatelink.blob.core.windows.net      |
+|Účet úložiště (Microsoft. Storage/storageAccounts)    |    Tabulka (tabulka, table_secondary)      |   privatelink.table.core.windows.net       |
+|Účet úložiště (Microsoft. Storage/storageAccounts)    |    Queue (Queue, queue_secondary)     |   privatelink.queue.core.windows.net       |
+|Účet úložiště (Microsoft. Storage/storageAccounts)   |    Soubor (soubor, file_secondary)      |    privatelink.file.core.windows.net      |
+|Účet úložiště (Microsoft. Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
+|Data Lake Gen2 systému souborů (Microsoft. Storage/storageAccounts)  |  Data Lake Gen2 systému souborů (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Table|privatelink.table.cosmos.azure.com|
  
-Azure will create a canonical name DNS record (CNAME) on the public DNS to redirect the resolution to the suggested domain names. You'll be able to override the resolution with the private IP address of your private endpoints. 
+Azure vytvoří záznam DNS (CNAME) kanonického názvu (CNAME) na veřejném serveru DNS pro přesměrování řešení na navržené názvy domén. Řešení bude možné přepsat privátní IP adresou vašich privátních koncových bodů. 
  
-Your applications don't need to change the connection URL. When attempting to resolve using a public DNS, the DNS server will now resolve to your private endpoints. The process does not impact your applications. 
+Vaše aplikace nemusí měnit adresu URL připojení. Při pokusu o překlad pomocí veřejné služby DNS se server DNS teď přeloží na vaše soukromé koncové body. Proces nemá vliv na vaše aplikace. 
  
 ## <a name="limitations"></a>Omezení
  
-The following table includes a list of known limitations when using private endpoints: 
+Následující tabulka obsahuje seznam známých omezení při použití privátních koncových bodů: 
 
 
 |Omezení |Popis |Omezení rizik  |
 |---------|---------|---------|
-|Network Security Group (NSG) rules and User Defined Routes do not apply to Private Endpoint    |NSG is not supported on private endpoints. While subnets containing the private endpoint can have NSG associated with it, the rules will not be effective on traffic processed by the private endpoint. You must have [network policies enforcement disabled](disable-private-endpoint-network-policy.md) to deploy private endpoints in a subnet. NSG is still enforced on other workloads hosted on the same subnet. Routes on any client subnet will be using an /32 prefix, changing the default routing behavior requires a similar UDR  | Control the traffic by using NSG rules for outbound traffic on source clients. Deploy individual routes with /32 prefix to override private endpoint routes        |
-|  Peered Virtual Network with Private endpoints only are not supported   |   When connecting to private endpoints on a peered Virtual Network without any other workload is not supported       | Deploy a single VM on the peered Virtual Network to enable the connectivity |
-|Specialized workloads cannot access private endpoints    |   The following services deployed into your virtual network cannot access any private link resource using private endpoints:<br>Plán služby App Service</br>Instance kontejneru Azure</br>Azure NetApp Files</br>Rezervované HSM Azure<br>       |   No mitigation during preview.       |
+|Pravidla skupiny zabezpečení sítě (NSG) a uživatelsky definované trasy se nevztahují na soukromý koncový bod.    |NSG se nepodporuje u privátních koncových bodů. V případě, že k podsítím obsahujícím soukromý koncový bod může být přidruženo NSG, pravidla nebudou platná pro přenosy zpracovávané privátním koncovým bodem. K nasazení privátních koncových bodů v podsíti je nutné, aby bylo [vynucování zásad sítě zakázané](disable-private-endpoint-network-policy.md) . NSG se pořád vynutil na jiných úlohách hostovaných ve stejné podsíti. Při směrování v každé podsíti klienta bude použita předpona/32, změna výchozího chování směrování vyžaduje podobný UDR  | Řízení provozu pomocí pravidel NSG pro odchozí přenosy na zdrojových klientech. Nasaďte jednotlivé trasy s předponou/32 a přepište trasy privátních koncových bodů.        |
+|  Partnerský Virtual Network s privátními koncovými body se nepodporují.   |   Při připojování k privátním koncovým bodům na Virtual Network s partnerským vztahem bez nutnosti jiné úlohy není podporovaná.       | Nasazení jediného virtuálního počítače v partnerském Virtual Network pro povolení připojení |
+|Specializované úlohy nemůžou přistupovat k privátním koncovým bodům.    |   Následující služby nasazené do vaší virtuální sítě nemají přístup k jakémukoli prostředku privátního propojení pomocí privátních koncových bodů:<br>Plán služby App Service</br>Instance kontejneru Azure</br>Azure NetApp Files</br>Rezervované HSM Azure<br>       |   Ve verzi Preview není žádné zmírnění.       |
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Create a Private Endpoint for SQL Database Server using Portal ](create-private-endpoint-portal.md)
-- [Create a Private Endpoint for SQL Database Server using PowerShell ](create-private-endpoint-powershell.md)
-- [Create a Private Endpoint for SQL Database Server using CLI ](create-private-endpoint-cli.md)
-- [Create a Private Endpoint for Storage account using Portal ](create-private-endpoint-storage-portal.md)
-- [Create a Private Endpoint for Azure Cosmos account using Portal ](../cosmos-db/how-to-configure-private-endpoints.md)
-- [Create your own Private Link service using Azure PowerShell](create-private-link-service-powershell.md)
+- [Vytvoření privátního koncového bodu pro SQL Database Server pomocí portálu](create-private-endpoint-portal.md)
+- [Vytvoření privátního koncového bodu pro SQL Database Server pomocí PowerShellu](create-private-endpoint-powershell.md)
+- [Vytvoření privátního koncového bodu pro SQL Database Server pomocí rozhraní příkazového řádku](create-private-endpoint-cli.md)
+- [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu](create-private-endpoint-storage-portal.md)
+- [Vytvoření privátního koncového bodu pro účet Azure Cosmos pomocí portálu](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Vytvoření vlastní služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)

@@ -1,6 +1,6 @@
 ---
-title: Cross-registry authentication from ACR task
-description: Configure an Azure Container Registry Task (ACR Task) to access another private Azure container registry by using a managed identity for Azure Resources
+title: Ověřování mezi registry z ACR úlohy
+description: Konfigurace úlohy Azure Container Registry (úloha ACR) pro přístup k jinému privátnímu registru služby Azure Container Registry pomocí spravované identity pro prostředky Azure
 ms.topic: article
 ms.date: 07/12/2019
 ms.openlocfilehash: 3dc4792f196ab7553f3167983ce34850669fa5bc
@@ -10,49 +10,49 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456197"
 ---
-# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Cross-registry authentication in an ACR task using an Azure-managed identity 
+# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Ověřování mezi registry v úloze ACR pomocí identity spravované službou Azure 
 
-In an [ACR task](container-registry-tasks-overview.md), you can [enable a managed identity for Azure resources](container-registry-tasks-authentication-managed-identity.md). The task can use the identity to access other Azure resources, without needing to provide or manage credentials. 
+V [úloze ACR](container-registry-tasks-overview.md)můžete [Povolit spravovanou identitu pro prostředky Azure](container-registry-tasks-authentication-managed-identity.md). Tato úloha může používat identitu pro přístup k dalším prostředkům Azure, aniž byste museli zadávat nebo spravovat přihlašovací údaje. 
 
-In this article, you learn how to enable a managed identity in a task that pulls an image from a registry different from the one used to run the task.
+V tomto článku se dozvíte, jak povolit spravovanou identitu v úloze, která načte image z registru, který se liší od toho, který se používá ke spuštění úlohy.
 
-To create the Azure resources, this article requires that you run the Azure CLI version 2.0.68 or later. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.68 nebo novější, abyste mohli vytvořit prostředky Azure. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
-The example task pulls a base image from another Azure container registry to build and push an application image. To pull the base image, you configure the task with a managed identity and assign appropriate permissions to it. 
+Ukázkový úkol vyžádá základní image z jiného služby Azure Container registry pro sestavení a vložení image aplikace. Pokud chcete načíst základní image, nakonfigurujete úlohu se spravovanou identitou a přiřadíte jí patřičná oprávnění. 
 
-This example shows steps using either a user-assigned or system-assigned managed identity. Your choice of identity depends on your organization's needs.
+Tento příklad ukazuje kroky buď pomocí uživatelsky přiřazené nebo spravované identity přiřazené systémem. Vaše volba identity závisí na potřebách vaší organizace.
 
-In a real-world scenario, an organization might maintain a set of base images used by all development teams to build their applications. These base images are stored in a corporate registry, with each development team having only pull rights. 
+V reálném scénáři může organizace udržovat sadu základních imagí, které používají všechny vývojové týmy pro vytváření aplikací. Tyto základní image jsou uložené v podnikovém registru, přičemž každý vývojový tým má jenom práva k získání. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-For this article, you need two Azure container registries:
+Pro tento článek potřebujete dva služby Azure Container Registry:
 
-* You use the first registry to create and execute ACR tasks. In this article, this registry is named *myregistry*. 
-* The second registry hosts a base image used for the task to build an image. In this article, the second registry is named *mybaseregistry*. 
+* Pomocí prvního registru můžete vytvářet a spouštět úlohy ACR. V tomto článku má tento registr název *myregistry*. 
+* Druhý registr hostuje základní image, která se používá pro úkol k sestavení image. V tomto článku má druhý registr název *mybaseregistry*. 
 
-Replace with your own registry names in later steps.
+Nahraďte vlastními názvy registru v pozdějších krocích.
 
-If you don't already have the needed Azure container registries, see [Quickstart: Create a private container registry using the Azure CLI](container-registry-get-started-azure-cli.md). You don't need to push images to the registry yet.
+Pokud ještě nemáte potřebné registry kontejnerů Azure, přečtěte si téma [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md). Image ještě nemusíte vkládat do registru.
 
-## <a name="prepare-base-registry"></a>Prepare base registry
+## <a name="prepare-base-registry"></a>Příprava základního registru
 
-First, create a working directory and then create a file named Dockerfile with the following content. This simple example builds a Node.js base image from a public image in Docker Hub.
+Nejprve vytvořte pracovní adresář a pak vytvořte soubor s názvem souboru Dockerfile s následujícím obsahem. V tomto jednoduchém příkladu se vytvoří základní image Node. js z veřejné image v Docker Hub.
     
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
-In the current directory, run the [az acr build][az-acr-build] command to build and push the base image to the base registry. In practice, another team or process in the organization might maintain the base registry.
+V aktuálním adresáři spuštěním příkazu [AZ ACR Build][az-acr-build] Sestavte a nahrajte základní image do základního registru. V praxi může jiný tým nebo proces v organizaci uchovávat základní Registry.
     
 ```azurecli
 az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
 ```
 
-## <a name="define-task-steps-in-yaml-file"></a>Define task steps in YAML file
+## <a name="define-task-steps-in-yaml-file"></a>Definování kroků úkolu v souboru YAML
 
-The steps for this example [multi-step task](container-registry-tasks-multi-step.md) are defined in a [YAML file](container-registry-tasks-reference-yaml.md). Create a file named `helloworldtask.yaml` in your local working directory and paste in the following contents. Update the value of `REGISTRY_NAME` in the build step with the server name of your base registry.
+Kroky pro tento příklad [úlohy s více kroky](container-registry-tasks-multi-step.md) jsou definovány v [souboru YAML](container-registry-tasks-reference-yaml.md). V místním pracovním adresáři vytvořte soubor s názvem `helloworldtask.yaml` a vložte následující obsah. Aktualizujte hodnotu `REGISTRY_NAME` v kroku sestavení s názvem serveru vašeho základního registru.
 
 ```yml
 version: v1.0.0
@@ -62,17 +62,17 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-The build step uses the `Dockerfile-app` file in the [Azure-Samples/acr-build-helloworld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) repo to build an image. The `--build-arg` references the base registry to pull the base image. When successfully built, the image is pushed to the registry used to run the task.
+Krok sestavení používá soubor `Dockerfile-app` v úložišti [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) k sestavení image. `--build-arg` odkazuje na základní registr, aby bylo možné načíst základní image. Po úspěšném sestavení se obrázek vloží do registru, který se používá ke spuštění úlohy.
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>Option 1: Create task with user-assigned identity
+## <a name="option-1-create-task-with-user-assigned-identity"></a>Možnost 1: vytvoření úlohy s identitou přiřazenou uživatelem
 
-The steps in this section create a task and enable a user-assigned identity. If you want to enable a system-assigned identity instead, see [Option 2: Create task with system-assigned identity](#option-2-create-task-with-system-assigned-identity). 
+Kroky v této části vytvoří úlohu a umožní uživateli přiřazenou identitu. Pokud místo toho chcete povolit identitu přiřazenou systémem, přečtěte si část [možnost 2: vytvoření úlohy s identitou přiřazenou systémem](#option-2-create-task-with-system-assigned-identity). 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
-### <a name="create-task"></a>Create task
+### <a name="create-task"></a>Vytvořit úlohu
 
-Create the task *helloworldtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `helloworldtask.yaml` in the working directory. The `--assign-identity` parameter passes the resource ID of the user-assigned identity. 
+Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. Parametr `--assign-identity` předává ID prostředku identity přiřazené uživatelem. 
 
 ```azurecli
 az acr task create \
@@ -85,13 +85,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Create task with system-assigned identity
+## <a name="option-2-create-task-with-system-assigned-identity"></a>Možnost 2: vytvoření úlohy s identitou přiřazenou systémem
 
-The steps in this section create a task and enable a system-assigned identity. If you want to enable a user-assigned identity instead, see [Option 1: Create task with user-assigned identity](#option-1-create-task-with-user-assigned-identity). 
+Kroky v této části vytvoří úlohu a povolí identitu přiřazenou systémem. Pokud místo toho chcete povolit uživatelsky přiřazenou identitu, přečtěte si část [možnost 1: vytvoření úlohy s identitou přiřazenou uživatelem](#option-1-create-task-with-user-assigned-identity). 
 
-### <a name="create-task"></a>Create task
+### <a name="create-task"></a>Vytvořit úlohu
 
-Create the task *helloworldtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `helloworldtask.yaml` in the working directory. The `--assign-identity` parameter with no value enables the system-assigned identity on the task. 
+Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. Parametr `--assign-identity` bez hodnoty umožňuje pro tuto úlohu přiřadit identitu systému. 
 
 ```azurecli
 az acr task create \
@@ -103,25 +103,25 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>Give identity pull permissions to the base registry
+## <a name="give-identity-pull-permissions-to-the-base-registry"></a>Udělení oprávnění pro získání identity základnímu registru
 
-In this section, give the managed identity permissions to pull from the base registry, *mybaseregistry*.
+V této části udělte spravované identitě oprávnění k vyžádání ze základního registru *mybaseregistry*.
 
-Use the [az acr show][az-acr-show] command to get the resource ID of the base registry and store it in a variable:
+Pomocí příkazu [AZ ACR show][az-acr-show] Získejte ID prostředku základního registru a uložte ho do proměnné:
 
 ```azurecli
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-Use the [az role assignment create][az-role-assignment-create] command to assign the identity the `acrpull` role to the base registry. This role has permissions only to pull images from the registry.
+Pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] přiřaďte identitu `acrpull` roli k základnímu registru. Tato role má oprávnění pouze k vyžádání imagí z registru.
 
 ```azurecli
 az role assignment create --assignee $principalID --scope $baseregID --role acrpull
 ```
 
-## <a name="add-target-registry-credentials-to-task"></a>Add target registry credentials to task
+## <a name="add-target-registry-credentials-to-task"></a>Přidat do úlohy přihlašovací údaje pro cílový registr
 
-Now use the [az acr task credential add][az-acr-task-credential-add] command to add the identity's credentials to the task so that it can authenticate with the base registry. Run the command corresponding to the type of managed identity you enabled in the task. If you enabled a user-assigned identity, pass `--use-identity` with the client ID of the identity. If you enabled a system-assigned identity, pass `--use-identity [system]`.
+Teď pomocí příkazu [AZ ACR Task Credential Add][az-acr-task-credential-add] přidejte přihlašovací údaje identity k úloze, aby se mohla ověřit u základního registru. Spusťte příkaz odpovídající typu spravované identity, který jste povolili v úloze. Pokud jste povolili uživatelem přiřazenou identitu, předejte `--use-identity` s ID klienta identity. Pokud jste povolili systémově přiřazenou identitu, předejte `--use-identity [system]`.
 
 ```azurecli
 # Add credentials for user-assigned identity to the task
@@ -139,9 +139,9 @@ az acr task credential add \
   --use-identity [system]
 ```
 
-## <a name="manually-run-the-task"></a>Manually run the task
+## <a name="manually-run-the-task"></a>Ručně spustit úlohu
 
-To verify that the task in which you enabled a managed identity runs successfully, manually trigger the task with the [az acr task run][az-acr-task-run] command. 
+Chcete-li ověřit, zda je úloha, ve které jste povolili spravovanou identitu, úspěšně spuštěna, spusťte úlohu ručně pomocí příkazu [AZ ACR Task Run][az-acr-task-run] . 
 
 ```azurecli
 az acr task run \
@@ -149,7 +149,7 @@ az acr task run \
   --registry myregistry
 ```
 
-If the task runs successfully, output is similar to:
+Pokud je úloha úspěšně spuštěna, výstup je podobný následujícímu:
 
 ```
 Queued a run with ID: cf10
@@ -198,7 +198,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-Run the [az acr repository show-tags][az-acr-repository-show-tags] command to verify that the image built and was successfully pushed to *myregistry*:
+Spuštěním příkazu [AZ ACR úložiště show-Tags][az-acr-repository-show-tags] ověřte, že se image sestavila a byla úspěšně vložena do *myregistry*:
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv
@@ -212,8 +212,8 @@ cf10
 
 ## <a name="next-steps"></a>Další kroky
 
-* Learn more about [enabling a managed identity in an ACR task](container-registry-tasks-authentication-managed-identity.md).
-* See the [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md)
+* Přečtěte si další informace o [Povolení spravované identity v ACR úloze](container-registry-tasks-authentication-managed-identity.md).
+* Další informace najdete v tématu [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md)
 
 <!-- LINKS - Internal -->
 [az-login]: /cli/azure/reference-index#az-login

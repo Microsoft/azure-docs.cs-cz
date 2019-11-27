@@ -1,7 +1,7 @@
 ---
-title: 'Designer: classify book reviews example'
+title: 'Návrhář: příklad klasifikace knihy klasifikace'
 titleSuffix: Azure Machine Learning
-description: Build a multiclass logistic regression classifier to predict the company category with wikipedia SP 500 dataset using Azure Machine Learning designer.
+description: Sestavte si klasifikátor pro více tříd logistické regrese pro předpověď kategorie společnosti s datovou sadou Wikipedii SP 500 pomocí návrháře Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,91 +17,91 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213774"
 ---
-# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Build a classifier to predict company category using Azure Machine Learning designer.
+# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Sestavte klasifikátor pro předpověď kategorie společnost pomocí návrháře Azure Machine Learning.
 
-**Designer (preview) sample 7**
+**Návrhář (Preview) – ukázka 7**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-This sample demonstrates how to use text analytics modules to build a text classification pipeline in Azure Machine Learning designer (preview).
+Tato ukázka předvádí, jak použít moduly Text Analytics k sestavení kanálu klasifikace textu v Návrháři Azure Machine Learning (Preview).
 
-The goal of text classification is to assign some piece of text to one or more predefined classes or categories. The piece of text could be a document, news article, search query, email, tweet, support tickets, customer feedback, user product review etc. Applications of text classification include categorizing newspaper articles and news wire contents into topics, organizing web pages into hierarchical categories, filtering spam email, sentiment analysis, predicting user intent from search queries, routing support tickets, and analyzing customer feedback. 
+Cílem klasifikace textu je přiřazení části textu k jedné nebo více předdefinovaným třídám nebo kategoriím. Část textu může být dokument, novinka, vyhledávací dotaz, e-mail, seznam vstupenek, lístky podpory, názory zákazníků, Uživatelská recenze produktu atd. Mezi aplikace pro klasifikaci textu patří kategorizace článků o novinkách a obsahu novinek do témat, organizování webových stránek do hierarchických kategorií, filtrování nevyžádané pošty, analýzy mínění, předpověď záměru uživatele z vyhledávacích dotazů, směrování Podpora lístků a analýza zpětné vazby od zákazníků. 
 
-This pipeline trains a **multiclass logistic regression classifier** to predict the company category with **Wikipedia SP 500 dataset derived from Wikipedia**.  
+Tento kanál navlacích **klasifikátoru logistické regrese** pro předpověď kategorie společnosti s **datovou sadou Wikipedii SP 500 odvozenou od Wikipedii**.  
 
-The fundamental steps of a training machine learning model with text data are:
+Základní kroky pro školicí model strojového učení s textovými daty jsou:
 
 1. Získání dat
 
-1. Pre-process the text data
+1. Předběžné zpracování textových dat
 
-1. Feature Engineering
+1. Strojírenství funkcí
 
-   Convert text feature into the numerical feature with feature extracting module such as feature hashing, extract n-gram feature from the text data.
+   Převede funkci text na číselnou funkci s modulem pro extrakci funkcí, jako je například hashování funkcí, extrahuje n-gram funkce z textových dat.
 
 1. Trénování modelu
 
-1. Score dataset
+1. Datová sada skóre
 
 1. Vyhodnocení modelu
 
-Here's the final, completed graph of the pipeline we'll be working on. We'll provide the rationale for all the modules so you can make similar decisions on your own.
+Tady je konečný a dokončený Graf kanálu, na kterém budeme pracovat. Pro všechny moduly poskytneme odůvodnění, abyste mohli dělat podobná rozhodnutí sami.
 
-[![Graph of the pipeline](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png)](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png#lightbox)
+[![Graf kanálu](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png)](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png#lightbox)
 
 ## <a name="data"></a>Data
 
-In this pipeline, we use the **Wikipedia SP 500** dataset. The dataset is derived from Wikipedia (https://www.wikipedia.org/) based on articles of each S&P 500 company. Before uploading to Azure Machine Learning designer, the dataset was processed as follows:
+V tomto kanálu použijeme datovou sadu **WIKIPEDII SP 500** . Datová sada je odvozena od Wikipedii (https://www.wikipedia.org/) na základě článků z každé & P 500 společnosti. Před nahráním do návrháře Azure Machine Learning byla datová sada zpracována takto:
 
-- Extract text content for each specific company
-- Remove wiki formatting
-- Remove non-alphanumeric characters
-- Convert all text to lowercase
-- Known company categories were added
+- Extrakce textového obsahu pro každou konkrétní firmu
+- Odebrat formátování wikiwebu
+- Odebrat jiné než alfanumerické znaky
+- Převést veškerý text na malá písmena
+- Byly přidány známé kategorie společnosti.
 
-Articles could not be found for some companies, so the number of records is less than 500.
+Pro některé společnosti se nepovedlo najít články, takže počet záznamů je menší než 500.
 
-## <a name="pre-process-the-text-data"></a>Pre-process the text data
+## <a name="pre-process-the-text-data"></a>Předběžné zpracování textových dat
 
-We use the **Preprocess Text** module to preprocess the text data, including detect the sentences, tokenize sentences and so on. You would found all supported options in the [**Preprocess Text**](../algorithm-module-reference/preprocess-text.md) article. After pre-processing tex data, we use the **Split Data** module to randomly divide the input data so that the training dataset contains 50% of the original data and the testing dataset contains 50% of the original data.
+K Předzpracování textových dat používáme modul **textu předzpracování** , včetně rozpoznávání vět, vět tokenizovat a tak dále. Všechny podporované možnosti najdete v článku [**předzpracování textu**](../algorithm-module-reference/preprocess-text.md) . Po předběžném zpracování dat TEX používáme modul **rozdělit data** k náhodnému rozdělení vstupních dat, aby datová sada školení obsahovala 50% původních dat a testovací datová sada obsahuje 50% původních dat.
 
-## <a name="feature-engineering"></a>Feature Engineering
-In this sample, we will use two methods performing feature engineering.
+## <a name="feature-engineering"></a>Strojírenství funkcí
+V této ukázce použijeme dvě metody, které provádí strojírenství funkcí.
 
 ### <a name="feature-hashing"></a>Hashování funkcí
-We used the [**Feature Hashing**](../algorithm-module-reference/feature-hashing.md) module to convert the plain text of the articles to integers and used the integer values as input features to the model. 
+Použili jsme modul [**hashování funkcí**](../algorithm-module-reference/feature-hashing.md) k převodu prostého textu článků na celá čísla a použití celočíselných hodnot jako vstupních funkcí modelu. 
 
-The **Feature Hashing** module can be used to convert variable-length text documents to equal-length numeric feature vectors, using the 32-bit murmurhash v3 hashing method provided by the Vowpal Wabbit library. The objective of using feature hashing is dimensionality reduction; also feature hashing makes the lookup of feature weights faster at classification time because it uses hash value comparison instead of string comparison.
+Modul **hashování funkcí** lze použít k převodu textových dokumentů s proměnlivou délkou na numerické vektory funkce se stejnou délkou, a to pomocí metody hash 32-bit murmurhash v3, kterou poskytuje knihovna dostupné pro. Cílem použití funkce hashing funkcí je zmenšení rozměru; také funkce hashing funkcí umožňuje rychleji vyhledat váhy funkcí v době klasifikace, protože místo porovnání řetězců používá porovnání hodnot hash.
 
-In the sample pipeline, we set the number of hashing bits to 14 and set the number of n-grams to 2. With these settings, the hash table can hold 2^14 entries, in which each hashing feature represents one or more n-gram features and its value represents the occurrence frequency of that n-gram in the text instance. For many problems, a hash table of this size is more than adequate, but in some cases, more space might be needed to avoid collisions. Evaluate the performance of your machine learning solution using different number of bits. 
+V ukázkovém kanálu nastavíme počet bitů hash na hodnotu 14 a nastavíte počet n-gramů na 2. V případě těchto nastavení může tabulka hash uchovávat 2 ^ 14 záznamů, ve kterých každá funkce hash představuje jednu nebo více n-gramů funkcí a její hodnota představuje četnost výskytů n-gramů v instanci textu. V případě mnoha problémů je zatřiďovací tabulka této velikosti větší než adekvátní, ale v některých případech může být potřeba více místa pro zamezení kolizí. Vyhodnoťte výkon řešení Machine Learning pomocí různých počtu bitů. 
 
-### <a name="extract-n-gram-feature-from-text"></a>Extract N-Gram Feature from Text
+### <a name="extract-n-gram-feature-from-text"></a>Extrahovat z textu funkci N-gramů
 
-An n-gram is a contiguous sequence of n terms from a given sequence of text. An n-gram of size 1 is referred to as a unigram; an n-gram of size 2 is a bigram; an n-gram of size 3 is a trigram. N-grams of larger sizes are sometimes referred to by the value of n, for instance, "four-gram", "five-gram", and so on.
+N-gram je souvislá sekvence n podmínek z dané sekvence textu. N-gram velikosti 1 se označuje jako unigram; n-gram velikosti 2 je bigram; n-gram velikosti 3 je Hiragana. N-gramům větších velikostí se někdy říká hodnota n, například "4 gramy", "pět-gram" atd.
 
-We used [**Extract N-Gram Feature from Text**](../algorithm-module-reference/extract-n-gram-features-from-text.md)module as another solution for feature engineering. This module first extracts the set of n-grams, in addition to the n-grams, the number of documents where each n-gram appears in the text is counted(DF). In this sample, TF-IDF metric is used to calculate feature values. Then, it converts unstructured text data into equal-length numeric feature vectors where each feature represents the TF-IDF of an n-gram in a text instance.
+V modulu [**textu jsme použili funkci pro extrakci N-gramů**](../algorithm-module-reference/extract-n-gram-features-from-text.md)jako jiné řešení pro strojírenství funkcí. Tento modul nejprve extrahuje sadu n-gramů, kromě n-gramů, počet dokumentů, ve kterých se každý n-gram zobrazí v textu, počítá (DF). V této ukázce se k výpočtu hodnot funkcí používá metrika TF-IDF. Pak převede nestrukturovaná textová data na numerické funkce, které mají stejnou délku, kde každá funkce představuje TF-IDF n-gram v instanci text.
 
-After converting text data into numeric feature vectors, A **Select Column** module is used to remove the text data from the dataset. 
+Po převodu textových dat na číselné vektory funkce se k odebrání textových dat z datové sady použije modul **výběrového sloupce** . 
 
 ## <a name="train-the-model"></a>Trénování modelu
 
-Your choice of algorithm often depends on the requirements of the use case. Because the goal of this pipeline is to predict the category of company, a multi-class classifier model is a good choice. Considering that the number of features is large and these features are sparse, we use **Multiclass Logistic Regression** model for this pipeline.
+Vaše volba algoritmu často závisí na požadavcích případu použití. Vzhledem k tomu, že cílem tohoto kanálu je předpověď kategorie společnosti, je model klasifikátoru více tříd dobrou volbou. Vzhledem k tomu, že počet funkcí je velký a že se jedná o zhuštěné funkce, používáme pro tento kanál model **logistické regrese** .
 
-## <a name="test-evaluate-and-compare"></a>Test, evaluate, and compare
+## <a name="test-evaluate-and-compare"></a>Testování, vyhodnocení a porovnání
 
- We split the dataset and use different datasets to train and test the model to make the evaluation of the model more objective.
+ Datovou sadu rozdělíme a použijeme různé datové sady ke školení a testování modelu, aby bylo vyhodnocení modelu více objektivně.
 
-After the model is trained, we would use the **Score Model** and **Evaluate Model** modules to generate predicted results and evaluate the models. However, before using the **Score Model** module, performing feature engineering as what we have done during training is required. 
+Po vyzkoušení modelu budeme k vygenerování předpokládaných výsledků a vyhodnocení modelů používat **model skóre** a **vyhodnocovat moduly modelů** . Před použitím modulu **skóre model** se ale při provádění školení vyžaduje, aby se prováděla technologie pro práci s funkcemi. 
 
-For **Feature Hashing** module, it is easy to perform feature engineer on scoring flow as training flow. Use **Feature Hashing** module directly to process the input text data.
+Pro modul **hashování funkcí** je snadné provádět inženýry funkcí v toku bodování jako školicí tok. Použijte modul pro **Vyhashení funkcí** přímo ke zpracování vstupních textových dat.
 
-For **Extract N-Gram Feature from Text** module, we would connect the **Result Vocabulary output** from the training dataflow to the **Input Vocabulary** on the scoring dataflow, and set the **Vocabulary mode** parameter to **ReadOnly**.
-[![Graph of n-gram score](./media/how-to-designer-sample-text-classification/n-gram.png)](./media/how-to-designer-sample-text-classification/n-gram.png)
+V případě **extrakce N-gramů z modulu textu** připojíme **výstup slovníku výsledků** z toku dat školení ke **vstupnímu slovníku** v toku dat bodování a nastavíte parametr **režimu slovníku** na **jen pro čtení.** .
+[![graf skóre n-gramů](./media/how-to-designer-sample-text-classification/n-gram.png)](./media/how-to-designer-sample-text-classification/n-gram.png)
 
-After finishing the engineering step, **Score Model** could be used to generate predictions for the test dataset by using the trained model. To check the result, select the output port of **Score Model** and then select **Visualize**.
+Po dokončení technického kroku se dá **model skóre** použít k vygenerování předpovědi pro testovací datovou sadu pomocí proučeného modelu. Pro kontrolu výsledku vyberte výstupní port **modelu skóre** a pak vyberte **vizualizovat**.
 
-We then pass the scores to the **Evaluate Model** module to generate evaluation metrics. **Evaluate Model** has two input ports, so that we could evaluate and compare scored datasets that are generated with different methods. In this sample, we compare the performance of the result generated with feature hashing method and n-gram method.
-To check the result, select the output port of the **Evaluate Model** and then select **Visualize**.
+Pak předáte skóre do modulu **vyhodnocení modelu** za účelem generování metrik vyhodnocení. **Model vyhodnocení** má dva vstupní porty, aby bylo možné vyhodnotit a porovnat datové sady s skóre, které jsou generovány různými metodami. V této ukázce porovnáváme výkon výsledku generovaného metodou hashování funkcí a n-gramem metody.
+Chcete-li zjistit výsledek, vyberte výstupní port **modelu vyhodnocení** a pak vyberte **vizualizovat**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -109,10 +109,10 @@ To check the result, select the output port of the **Evaluate Model** and then s
 
 ## <a name="next-steps"></a>Další kroky
 
-Explore the other samples available for the designer:
-- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
-- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
-- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+Prozkoumejte další ukázky, které jsou k dispozici pro návrháře:
+- [Ukázka 1 – regrese: předpověď ceny automobilu](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Ukázka 2 – regrese: porovnání algoritmů pro předpověď cen automobilu](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Ukázka 3 – klasifikace s výběrem funkcí: předpověď příjmů](how-to-designer-sample-classification-predict-income.md)
+- [Ukázka 4 – klasifikace: předpověď úvěrového rizika (citlivé na náklady)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Ukázka 5 – klasifikace: předpověď změn](how-to-designer-sample-classification-churn.md)
+- [Ukázka 6 – klasifikace: předpověď zpoždění letů](how-to-designer-sample-classification-flight-delay.md)

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12882860b8a9beadd4e56cbb151d670fac4da43b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ff28ae7dbff40910ac0431fb47f7f0be3e1569c0
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798694"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538132"
 ---
 # <a name="overview-of-azure-farmbeats"></a>Přehled služby Azure FarmBeats
 
@@ -19,7 +19,7 @@ Azure FarmBeats je kolekce služeb a schopností Azure, které jsou navržené t
 > [!NOTE]
 > Služba Azure FarmBeats je aktuálně ve verzi Public Preview. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure FarmBeats se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [Fórum Azure FarmBeats](https://aka.ms/FarmBeatsMSDN ) .
 
-Pomocí Azure FarmBeats budete moct získat data z různých zdrojů, jako jsou senzory, satelit, DRONY zachraňují životy, a to vše v kontextu farmy (zeměpisné oblasti zájmu).
+Pomocí Azure FarmBeats budete moct získat data z různých zdrojů, jako jsou senzory, satelity, DRONY zachraňují životy, a to vše v kontextu farmy (zeměpisné oblasti zájmu).
 
 Budete moci:
 
@@ -36,20 +36,20 @@ Azure FarmBeats poskytuje robustní a snadný způsob, jak provádět tyto akce:
 - Sestavování modelů AI/ML nad agregovanou datovou sadu vám umožní získat užitečné poznatky.
 - Vytvořte nebo Rozšiřte své řešení pro digitální zemědělství poskytováním poradců pro stav farmy.
 
-Komponenty Azure FarmBeat jsou popsány v následujících částech tohoto článku.
+Komponenty Azure FarmBeats jsou popsány v následujících částech tohoto článku.
 
 ## <a name="data-hub"></a>Datové centrum
 
-Vrstva rozhraní API, která umožňuje agregaci, normalizaci a kontextování různých datových sad v zemědělství napříč poskytovateli. V této verzi Preview můžete využít dva poskytovatele senzorů [Davisové nástroje](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), jednoho satelitního cloudového poskytovatele, [Sentinel-2](https://sentinel.esa.int/web/sentinel/home)a dva pomocí dronů [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/). Datový rozbočovač je navržený jako platforma rozhraní API a pracujeme s mnoha dalšími poskytovateli pro integraci s Azure FarmBeats, takže při sestavování řešení máte větší možnosti.
+Datový rozbočovač Azure FarmBeats je vrstva rozhraní API, která umožňuje agregaci, normalizaci a kontextování různých datových sad v zemědělství napříč poskytovateli. V této verzi Preview můžete využít dva poskytovatele senzorů [Davisové nástroje](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), jednoho satelitního ukázkového cloudového satelitního cloudu [– 2](https://sentinel.esa.int/web/sentinel/home)a tři pomocí dronů [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/) , [DJI](https://dji.com/). Datový rozbočovač je navržený jako platforma rozhraní API a pracujeme s mnoha dalšími poskytovateli pro integraci s Azure FarmBeats, takže při sestavování řešení máte větší možnosti.
 
 ## <a name="accelerator"></a>Accelerator
 
 Ukázkové řešení, které je postavené na datovém centru, které Jumpstarts vaše uživatelské rozhraní a vývoj modelů. Tato webová aplikace využívá rozhraní API k předvedení vizualizace dat s příjmovým senzorem jako grafů a vizualizaci výstupu modelu jako map. Akcelerátor můžete použít například k rychlému vytvoření farmy a ke snadnému získání mapy pro vegetaci nebo k mapě umístění senzoru pro danou farmu.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
-Navštivte FarmBeats [blog](https://aka.ms/AzureFarmBeats) a [fóra](https://aka.ms/FarmBeatsMSDN).
+Další informace najdete na [blogu](https://aka.ms/AzureFarmBeats) o Azure FarmBeats a na [fórech](https://aka.ms/FarmBeatsMSDN) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít s Azure FarmBeats, přejděte na web [Azure Marketplace](https://aka.ms/FarmBeatsMarketplace) a nasaďte ho.
+Pokud chcete začít s Azure FarmBeats, přejděte na web [Azure Marketplace](https://aka.ms/FarmBeatsMarketplace) a spusťte proces nasazení.

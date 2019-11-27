@@ -1,6 +1,6 @@
 ---
-title: Change your work or school account password - Azure AD
-description: Learn to change your work or school account password from the Change Password page of the My Account portal.
+title: Změna hesla k pracovnímu nebo školnímu účtu – Azure AD
+description: Přečtěte si, jak změnit heslo pracovního nebo školního účtu na stránce změnit heslo na portálu Můj účet.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -19,41 +19,41 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231875"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Change your work or school account password from the My Account portal
+# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Změna hesla k pracovnímu nebo školnímu účtu na portálu Můj účet
 
-From the **Change password** page of the **My Account** portal, you can update your work or school account password. This will only work if you know your existing password and if you aren't locked out of your account.
+Na stránce **změnit heslo** na portálu **můj účet** můžete aktualizovat heslo pracovního nebo školního účtu. To bude fungovat jenom v případě, že znáte vaše stávající heslo, a pokud se vám nezamkne váš účet.
 
-If you don't remember your password, if you've been locked out of your account, or if you never got a password from your company support team, you can use your security info and your mobile device to reset your password. For more information, see [Reset your work or school password](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
+Pokud si nepamatujete heslo, pokud jste se odhlásili z účtu, nebo pokud jste nikdy nezapomněli heslo od týmu podpory společnosti, můžete svoje heslo resetovat pomocí svých bezpečnostních údajů a mobilního zařízení. Další informace najdete v tématu [resetování svého pracovního nebo školního hesla](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
 
 >[!Note]
->If you're trying to get back into a personal account like for Xbox, hotmail.com, or outlook.com, try the suggestions in the [When you can't sign in to your Microsoft account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) article.
+>Pokud se pokoušíte vrátit se k osobnímu účtu, třeba ke konzole Xbox, hotmail.com nebo outlook.com, zkuste návrhy v části [když se nemůžete přihlásit k vašemu účet Microsoftmu](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku.
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>To change your password from the My Account portal
+## <a name="to-change-your-password-from-the-my-account-portal"></a>Změna hesla z portálu Můj účet
 
-1. Sign in to your work or school account, using your existing password, and then go to your https://myprofile.microsoft.com/ page.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí stávajícího hesla a pak na stránce https://myprofile.microsoft.com/.
 
-2. Select **Password** from the left navigation pane or select the **Change password** link from the **Password** block.
+2. V levém navigačním podokně vyberte **heslo** , nebo vyberte odkaz **změnit heslo** z bloku **hesla** .
 
-    ![My Account page, showing highlighted Change password link](media/my-account-portal/my-account-portal-change-password.png)
+    ![Stránka můj účet se zvýrazněným odkazem na změnu hesla](media/my-account-portal/my-account-portal-change-password.png)
 
-3. Type your old password, and then create and confirm your new password.
+3. Zadejte původní heslo a pak vytvořte a potvrďte nové heslo.
 
-    ![Change password page, showing password fields](media/my-account-portal/my-account-portal-change-password-page.png)
+    ![Stránka pro změnu hesla, zobrazení polí hesla](media/my-account-portal/my-account-portal-change-password-page.png)
 
-4. Select **Submit**.
+4. Vyberte **Odeslat**.
 
-    Your password will be changed and you'll be asked to sign in to your work or school account again.
+    Vaše heslo se změní a budete vyzváni k opětovnému přihlášení ke svému pracovnímu nebo školnímu účtu.
 
 ## <a name="next-steps"></a>Další kroky
 
-After changing your password, you can:
+Po změně hesla můžete:
 
-- View or manage your [security info](user-help-security-info-overview.md).
+- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md).
 
-- View or manage your connected [devices](my-account-portal-devices-page.md).
+- Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md).
 
-- View or manage your [organizations](my-account-portal-organizations-page.md).
+- Umožňuje zobrazit nebo spravovat vaše [organizace](my-account-portal-organizations-page.md).
 
-- View your [sign-in activity](my-account-portal-sign-ins-page.md).
+- Zobrazit [přihlašovací aktivitu](my-account-portal-sign-ins-page.md)
 
-- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).
+- Podívejte se, jak vaše organizace [používá data týkající se ochrany osobních údajů](my-account-portal-privacy-page.md).

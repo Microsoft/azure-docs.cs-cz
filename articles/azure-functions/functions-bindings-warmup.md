@@ -1,10 +1,10 @@
 ---
-title: Azure Functions warmup trigger
-description: Understand how to use the warmup trigger in Azure Functions.
+title: Aktivační událost zahřívání Azure Functions
+description: Vysvětlení použití triggeru zahřívání v Azure Functions.
 documentationcenter: na
 author: alexkarcher-msft
 manager: gwallace
-keywords: azure functions, functions, event processing, warmup, cold start, premium, dynamic compute, serverless architecture
+keywords: funkce Azure Functions, Functions, zpracování událostí, zahřívání, studená Start, Premium, dynamické výpočty, architektura bez serveru
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
@@ -16,40 +16,40 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74328492"
 ---
-# <a name="azure-functions-warm-up-trigger"></a>Azure Functions warm-up trigger
+# <a name="azure-functions-warm-up-trigger"></a>Aktivační událost Azure Functions zahřívání
 
-This article explains how to work with the warmup trigger in Azure Functions. The warmup trigger is supported only for function apps running in a [Premium plan](functions-premium-plan.md). A warmup trigger  is invoked when an instance is added to scale a running function app. You can use a warmup trigger to pre-load custom dependencies during the [pre-warming process](./functions-premium-plan.md#pre-warmed-instances) so that your functions are ready to start processing requests immediately. 
+Tento článek vysvětluje, jak pracovat s triggerem zahřívání v Azure Functions. Aktivační událost zahřívání je podporovaná jenom pro aplikace Function App běžící v [plánu Premium](functions-premium-plan.md). Trigger zahřívání je vyvolán, když je přidána instance pro škálování běžící aplikace Function App. Pomocí triggeru zahřívání můžete předem načíst vlastní závislosti během [procesu před zahříváním](./functions-premium-plan.md#pre-warmed-instances) , aby byly vaše funkce připravené na okamžité zpracování požadavků. 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Packages - Functions 2.x
+## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-The [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet package, version **3.0.5 or higher** is required. Source code for the package is in the [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub repository. 
+Vyžaduje se balíček NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) , verze **3.0.5 nebo vyšší** . Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) . 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>Trigger
 
-The warmup trigger lets you define a function that will be run on an instance when it is added to your running app. You can use a warmup function to open connections, load dependencies, or run any other custom logic before your app will begin receiving traffic. 
+Aktivační událost zahřívání umožňuje definovat funkci, která se spustí na instanci při přidání do spuštěné aplikace. Funkci zahřívání můžete použít k otevření připojení, načtení závislostí nebo spuštění libovolné jiné vlastní logiky ještě předtím, než aplikace začne přijímat přenosy. 
 
-The warmup trigger is intended to create shared dependencies that will be used by the other functions in your app. [See examples of shared dependencies here](./manage-connections.md#client-code-examples).
+Aktivační událost zahřívání slouží k vytváření sdílených závislostí, které budou používány jinými funkcemi ve vaší aplikaci. [Tady najdete příklady sdílených závislostí](./manage-connections.md#client-code-examples).
 
-Note that the warmup trigger is only called during scale-up operations, not during restarts or other non-scale startups. You must ensure your logic can load all necessary dependencies without using the warmup trigger. Lazy loading is a good pattern to achieve this.
+Všimněte si, že Trigger zahřívání je volán pouze během operací škálování, nikoli během restartování nebo jiných neškálovatelných spuštění. Je nutné zajistit, aby vaše logika mohla načíst všechny nezbytné závislosti bez použití triggeru zahřívání. K tomu je dobrým vzorem opožděné načítání.
 
-## <a name="trigger---example"></a>Trigger - example
+## <a name="trigger---example"></a>Aktivační události – příklad
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-The following example shows a [C# function](functions-dotnet-class-library.md) that will run on each new instance when it is added to your app. A return value attribute isn't required.
+Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která se spustí na každé nové instanci při přidání do vaší aplikace. Atribut návratové hodnoty není povinný.
 
 
-* Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
-* To use warmup as a .NET class library function, please make sure you have a package reference to **Microsoft.Azure.WebJobs.Extensions >= 3.0.5**
+* Vaše funkce musí mít název ```warmup``` (nerozlišuje velká a malá písmena) a v každé aplikaci může být jenom jedna zahřívání funkce.
+* Pokud chcete používat zahřívání jako funkci knihovny tříd .NET, ujistěte se prosím, že máte odkaz na balíček **Microsoft. Azure. WebJobs. extensions > = 3.0.5**
     * ```<PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.5" />```
 
 
-Placeholder comments show where in the application to declare and initialize shared dependencies. 
-[Learn more about shared dependencies here](./manage-connections.md#client-code-examples).
+Komentáře k zástupným symbolům ukazují, kam v aplikaci deklarovat a inicializovat sdílené závislosti. 
+[Další informace o sdílených závislostech najdete tady](./manage-connections.md#client-code-examples).
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -73,14 +73,14 @@ namespace WarmupSample
     }
 }
 ```
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
 
-The following example shows a warmup trigger in a *function.json* file and a [C# script function](functions-reference-csharp.md) that will run on each new instance when it is added to your app.
+Následující příklad ukazuje Trigger zahřívání v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která se spustí na každé nové instanci při přidání do aplikace.
 
-Your function must be named ```warmup``` (case-insensitive), and there may only be one warmup function per app.
+Vaše funkce musí mít název ```warmup``` (nerozlišuje velká a malá písmena) a pro každou aplikaci může existovat jenom jedna zahřívání funkce.
 
-Here's the *function.json* file:
+Tady je soubor *Function. JSON* :
 
 ```json
 {
@@ -94,9 +94,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#trigger---configuration) .
 
-Here's C# script code that binds to `HttpRequest`:
+Zde je C# kód skriptu, který se váže k `HttpRequest`:
 
 ```cs
 public static void Run(ILogger log)
@@ -107,11 +107,11 @@ public static void Run(ILogger log)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-The following example shows a warmup trigger in a *function.json* file and a [JavaScript function](functions-reference-node.md)  that will run on each new instance when it is added to your app.
+Následující příklad ukazuje Trigger zahřívání v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která se spustí na každé nové instanci při přidání do aplikace.
 
-Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
+Vaše funkce musí mít název ```warmup``` (nerozlišuje velká a malá písmena) a v každé aplikaci může být jenom jedna zahřívání funkce.
 
-Here's the *function.json* file:
+Tady je soubor *Function. JSON* :
 
 ```json
 {
@@ -125,9 +125,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#trigger---configuration) .
 
-Here's the JavaScript code:
+Tady je kód jazyka JavaScript:
 
 ```javascript
 module.exports = async function (context, warmupContext) {
@@ -138,11 +138,11 @@ module.exports = async function (context, warmupContext) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-The following example shows a warmup trigger in a *function.json* file and a [Python function](functions-reference-python.md) that will run on each new instance when it is added to your app.
+Následující příklad ukazuje Trigger zahřívání v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která se spustí na každé nové instanci při přidání do vaší aplikace.
 
-Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
+Vaše funkce musí mít název ```warmup``` (nerozlišuje velká a malá písmena) a v každé aplikaci může být jenom jedna zahřívání funkce.
 
-Here's the *function.json* file:
+Tady je soubor *Function. JSON* :
 
 ```json
 {
@@ -156,9 +156,9 @@ Here's the *function.json* file:
 }
 ```
 
-The [configuration](#trigger---configuration) section explains these properties.
+Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#trigger---configuration) .
 
-Here's the Python code:
+Tady je kód Pythonu:
 
 ```python
 import logging
@@ -171,11 +171,11 @@ def main(warmupContext: func.Context) -> None:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-The following example shows a warmup trigger in a *function.json* file and a [Java functions](functions-reference-java.md)  that will run on each new instance when it is added to your app.
+Následující příklad ukazuje Trigger zahřívání v souboru *Function. JSON* a [funkce jazyka Java](functions-reference-java.md) , které se spustí na každé nové instanci při přidání do vaší aplikace.
 
-Your function must be named ```warmup``` (case-insensitive) and there may only be one warmup function per app.
+Vaše funkce musí mít název ```warmup``` (nerozlišuje velká a malá písmena) a v každé aplikaci může být jenom jedna zahřívání funkce.
 
-Here's the *function.json* file:
+Tady je soubor *Function. JSON* :
 
 ```json
 {
@@ -189,7 +189,7 @@ Here's the *function.json* file:
 }
 ```
 
-Here's the Java code:
+Tady je kód Java:
 
 ```java
 @FunctionName("Warmup")
@@ -200,15 +200,15 @@ public void run( ExecutionContext context) {
 
 ---
 
-## <a name="trigger---attributes"></a>Trigger - attributes
+## <a name="trigger---attributes"></a>Aktivační události – atributy
 
-In [C# class libraries](functions-dotnet-class-library.md), the `WarmupTrigger` attribute is available to configure the function.
+V [ C# knihovnách tříd](functions-dotnet-class-library.md)je k dispozici atribut `WarmupTrigger` pro konfiguraci funkce.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-This example demonstrates how to use the [warmup](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) attribute.
+Tento příklad ukazuje, jak použít atribut [zahřívání](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) .
 
-Note that your function must be called ```Warmup``` and there can only be one warmup function per app.
+Všimněte si, že funkce musí být volána ```Warmup``` a může být pouze jedna funkce zahřívání na aplikaci.
 
 ```csharp
  [FunctionName("Warmup")]
@@ -219,47 +219,47 @@ Note that your function must be called ```Warmup``` and there can only be one wa
         }
 ```
 
-For a complete example, see the [trigger example](#trigger---example).
+Úplný příklad najdete v [příkladu triggeru](#trigger---example).
 
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
-Attributes are not supported by C# Script.
+C# Skript nepodporuje atributy.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Attributes are not supported by JavaScript.
+Atributy nejsou podporovány jazykem JavaScript.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Attributes are not supported by Python.
+Python nepodporuje atributy.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-The warmup trigger is not supported in Java as an attribute.
+Aktivační událost zahřívání není v jazyce Java podporována jako atribut.
 
 ---
 
-## <a name="trigger---configuration"></a>Trigger - configuration
+## <a name="trigger---configuration"></a>Aktivační události – konfigurace
 
-The following table explains the binding configuration properties that you set in the *function.json* file and the `WarmupTrigger` attribute.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `WarmupTrigger`.
 
-|function.json property | Attribute property |Popis|
+|Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-| **type** | –| Required - must be set to `warmupTrigger`. |
-| **direction** | –| Required - must be set to `in`. |
-| **name** | –| Required - the variable name used in function code.|
+| **type** | neuvedeno| Požadováno – musí být nastavené na `warmupTrigger`. |
+| **direction** | neuvedeno| Požadováno – musí být nastavené na `in`. |
+| **Jméno** | neuvedeno| Požadováno – název proměnné použitý v kódu funkce.|
 
-## <a name="trigger---usage"></a>Trigger - usage
+## <a name="trigger---usage"></a>Aktivační události – využití
 
-No additional information is provided to a warmup triggered function when it is invoked.
+Při vyvolání funkce aktivované zahřívání nejsou k dispozici žádné další informace.
 
-## <a name="trigger---limits"></a>Trigger - limits
+## <a name="trigger---limits"></a>Aktivační události – omezení
 
-* The warmup trigger is only available to apps running on the [Premium plan](./functions-premium-plan.md).
-* The warmup trigger is only called during scale up operations, not during restarts or other non-scale startups. You must ensure your logic can load all necessary dependencies without using the warmup trigger. Lazy loading is a good pattern to achieve this.
-* The warmup trigger cannot be invoked once an instance is already running.
-* There can only be one warmup trigger function per function app.
+* Aktivační událost zahřívání je dostupná jenom pro aplikace, které běží na [plánu Premium](./functions-premium-plan.md).
+* Aktivační událost zahřívání se volá jenom během operací s horizontálním škálováním, ne během restartování nebo jiných neškálovatelných spuštění. Je nutné zajistit, aby vaše logika mohla načíst všechny nezbytné závislosti bez použití triggeru zahřívání. K tomu je dobrým vzorem opožděné načítání.
+* Aktivační událost zahřívání nejde vyvolat, když už je instance spuštěná.
+* Na aplikaci Function App může být jenom jedna funkce triggeru zahřívání.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Learn more about Azure functions triggers and bindings](functions-triggers-bindings.md)
+[Další informace o aktivačních událostech a vazbách Azure Functions](functions-triggers-bindings.md)

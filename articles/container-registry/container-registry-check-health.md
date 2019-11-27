@@ -1,6 +1,6 @@
 ---
-title: Check registry health
-description: Learn how to run a quick diagnostic command to identify common problems when using an Azure container registry, including local Docker configuration and connectivity to the registry
+title: Ověřit stav registru
+description: Naučte se, jak spustit příkaz Rychlý diagnostiky k identifikaci běžných problémů při použití služby Azure Container Registry, včetně místní konfigurace Docker a připojení k registru.
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
@@ -10,40 +10,40 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456406"
 ---
-# <a name="check-the-health-of-an-azure-container-registry"></a>Check the health of an Azure container registry
+# <a name="check-the-health-of-an-azure-container-registry"></a>Zkontroluje stav služby Azure Container Registry.
 
-When using an Azure container registry, you might occasionally encounter problems. For example, you might not be able to pull a container image because of an issue with Docker in your local environment. Or, a network issue might prevent you from connecting to the registry. 
+Při použití služby Azure Container Registry může občas docházet k problémům. Například je možné, že nebudete moci načíst image kontejneru z důvodu problému s Docker ve vašem místním prostředí. Případně může dojít k potížím se sítí, takže se nebudete moci připojit k registru. 
 
-As a first diagnostic step, run the [az acr check-health][az-acr-check-health] command to get information about the health of the environment and optionally access to a target registry. This command is available in Azure CLI version 2.0.67 or later. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Jako první krok diagnostiky spusťte příkaz [AZ ACR check-Health][az-acr-check-health] , který získá informace o stavu prostředí a volitelně přístup k cílovému registru. Tento příkaz je k dispozici v Azure CLI verze 2.0.67 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-## <a name="run-az-acr-check-health"></a>Run az acr check-health
+## <a name="run-az-acr-check-health"></a>Spuštění AZ ACR check-Health
 
-The follow examples show different ways to run the `az acr check-health` command.
+Následující příklady znázorňují různé způsoby, jak spustit příkaz `az acr check-health`.
 
 > [!NOTE]
-> If you run the command in Azure Cloud Shell, the local environment is not checked. However, you can check the access to a target registry.
+> Pokud příkaz spustíte v Azure Cloud Shell, místní prostředí se nekontroluje. Můžete ale kontrolovat přístup k cílovému registru.
 
-### <a name="check-the-environment-only"></a>Check the environment only
+### <a name="check-the-environment-only"></a>Kontrolovat jenom prostředí
 
-To check the local Docker daemon, CLI version, and Helm client configuration, run the command without additional parameters:
+Chcete-li ověřit místní rozhraní Docker démona, verzi rozhraní příkazového řádku a konfiguraci klienta Helm, spusťte příkaz bez dalších parametrů:
 
 ```azurecli
 az acr check-health
 ```
 
-### <a name="check-the-environment-and-a-target-registry"></a>Check the environment and a target registry
+### <a name="check-the-environment-and-a-target-registry"></a>Zkontrolování prostředí a cílového registru
 
-To check access to a registry as well as perform local environment checks, pass the name of a target registry. Například:
+Chcete-li zkontrolovat přístup k registru a provádět kontroly místního prostředí, předejte název cílového registru. Příklad:
 
 ```azurecli
 az acr check-health --name myregistry
 ```
 
-## <a name="error-reporting"></a>Error reporting
+## <a name="error-reporting"></a>Hlášení chyb
 
-The command logs information to the standard output. If a problem is detected, it provides an error code and description. For more information about the codes and possible solutions, see the [error reference](container-registry-health-error-reference.md).
+Příkaz protokoluje informace do standardního výstupu. Pokud se zjistí problém, zobrazí se kód chyby a popis. Další informace o kódech a možných řešeních naleznete v [referenčních](container-registry-health-error-reference.md)informacích o chybě.
 
-By default, the command stops whenever it finds an error. You can also run the command so that it provides output for all health checks, even if errors are found. Add the `--ignore-errors` parameter, as shown in the following examples:
+Ve výchozím nastavení se příkaz zastaví pokaždé, když najde chybu. Můžete také spustit příkaz tak, aby poskytoval výstup pro všechny kontroly stavu, i když jsou zjištěny chyby. Přidejte parametr `--ignore-errors`, jak je znázorněno v následujících příkladech:
 
 ```azurecli
 # Check environment only
@@ -74,9 +74,9 @@ Fetch access token for registry 'myregistry.azurecr.io' : OK
 
 ## <a name="next-steps"></a>Další kroky
 
-For details about error codes returned by the [az acr check-health][az-acr-check-health] command, see the [Health check error reference](container-registry-health-error-reference.md).
+Podrobnosti o kódech chyb vrácených příkazem [AZ ACR check-Health][az-acr-check-health] najdete v referenčních informacích o [chybě kontroly stavu](container-registry-health-error-reference.md).
 
-See the [FAQ](container-registry-faq.md) for frequently asked questions and other known issues about Azure Container Registry.
+Nejčastější dotazy a další známé problémy týkající se Azure Container Registry najdete v [nejčastějších](container-registry-faq.md) dotazech.
 
 
 

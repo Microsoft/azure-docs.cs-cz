@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 1676ad3dde5a97d2afdb64595d51f5502f9dcc3d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185922"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534491"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Nastavení zařízení pro virtuální počítače Hyper-V
 
@@ -50,7 +50,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro virtuální pevný disk.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
 3.  U zařízení verze 2.19.11.12 by se měla vygenerovaná hodnota hash shodovat s tímto nastavením.
 
   **Algoritmus** | **Hodnota hash**
@@ -70,9 +70,9 @@ Naimportujte stažený soubor a vytvořte virtuální počítač.
     ![Nasazení VHD](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
 2. V Průvodci importem virtuálního počítače > **než začnete**, klikněte na **Další**.
-3. V části **Vyhledat složku**zadejte složku obsahující extrahovaný virtuální pevný disk. Potom klikněte na tlačítko **Další**.
+3. V části **Vyhledat složku**zadejte složku obsahující extrahovaný virtuální pevný disk. Pak klikněte na tlačítko **Další**.
 1. V nabídce **Vybrat virtuální počítač**klikněte na **Další**.
-2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)** . Potom klikněte na tlačítko **Další**.
+2. V části **zvolit typ importu**klikněte na **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)** . Pak klikněte na tlačítko **Další**.
 3. V části **zvolit cíl**ponechte výchozí nastavení. Klikněte na **Další**.
 4. V části **složky úložiště**ponechte výchozí nastavení. Klikněte na **Další**.
 5. V části **zvolit síť**zadejte virtuální přepínač, který bude virtuální počítač používat. Přepínač potřebuje připojení k Internetu, aby bylo možné odesílat data do Azure.

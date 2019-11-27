@@ -1,6 +1,6 @@
 ---
-title: What is Azure Private Link service?
-description: Learn about Azure Private Link service.
+title: Co je služba privátního propojení Azure?
+description: Přečtěte si o službě Azure Private Link.
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,97 +14,97 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228050"
 ---
-# <a name="what-is-azure-private-link-service"></a>What is Azure Private Link service?
+# <a name="what-is-azure-private-link-service"></a>Co je služba privátního propojení Azure?
 
-Azure Private Link service is the reference to your own service that is powered by Azure Private Link. Your service that is running behind [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) can be enabled for Private Link access so that consumers to your service can access it privately from their own VNets. Your customers can create a private endpoint inside their VNet and map it to this service. This article explains concepts related to the service provider side. 
+Služba privátního propojení Azure je odkazem na vlastní službu, která využívá privátní propojení Azure. Služba, která je spuštěná za [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) , se dá povolit pro přístup k privátním odkazům, aby k nim uživatelé mohli přistupovat soukromě z vlastních virtuální sítě. Vaši zákazníci můžou ve své virtuální síti vytvořit privátní koncový bod a namapovat ho k této službě. Tento článek vysvětluje koncepty týkající se strany poskytovatele služeb. 
 
-## <a name="workflow"></a>Pracovní postupy
+## <a name="workflow"></a>Pracovní postup
 
-![Private Link service workflow](media/private-link-service-overview/private-link-service-workflow.png)
+![Pracovní postup služby privátního propojení](media/private-link-service-overview/private-link-service-workflow.png)
 
-### <a name="create-your-private-link-service"></a>Create your Private Link Service
+### <a name="create-your-private-link-service"></a>Vytvoření služby privátního propojení
 
-- Configure your application to run behind a standard load balancer in your virtual network. If you already have your application configured behind a standard load balancer, you can skip this step.   
-- Create a Private Link Service referencing the load balancer above. In the load balancer selection process, choose the frontend IP configuration where you want to receive the traffic. Choose a subnet for NAT IP addresses for the Private Link Service. It is recommended to have at least eight NAT IP addresses available in the subnet. All consumer traffic will appear to originate from this pool of private IP addresses to the service provider. Choose the appropriate properties/settings for the Private Link Service.    
+- Nakonfigurujte svou aplikaci tak, aby běžela za standardním nástrojem pro vyrovnávání zatížení ve vaší virtuální síti. Pokud již máte aplikaci nakonfigurovanou za standardním nástrojem pro vyrovnávání zatížení, můžete tento krok přeskočit.   
+- Vytvořte službu privátního propojení odkazující na výše uvedený nástroj pro vyrovnávání zatížení. V procesu výběru nástroje pro vyrovnávání zatížení vyberte konfiguraci protokolu IP front-endu, kde chcete provoz přijímat. Vyberte podsíť pro IP adresy NAT pro službu privátního propojení. Doporučuje se mít v podsíti k dispozici aspoň osm IP adres NAT. U všech uživatelských přenosů se zdá, že pochází z fondu privátních IP adres k poskytovateli služeb. Vyberte odpovídající vlastnosti/nastavení služby privátního propojení.    
 
     > [!NOTE]
-    > Azure Private Link Service is only supported on Standard Load Balancer. 
+    > Služba privátního propojení Azure je podporovaná jenom na Standard Load Balancer. 
     
-### <a name="share-your-service"></a>Share your service
+### <a name="share-your-service"></a>Sdílení služby
 
-After you create a Private Link service, Azure will generate a globally unique named moniker called "alias" based on the name you provide for your service. You can share either the alias or resource URI of your service with your customers offline. Consumers can start a Private Link connection using the alias or the resource URI.
+Po vytvoření služby privátního propojení Azure vygeneruje globálně jedinečný pojmenovaný moniker nazvaný "alias" na základě názvu, který zadáte pro vaši službu. Můžete sdílet alias nebo identifikátor URI prostředku vaší služby vašim zákazníkům v režimu offline. Příjemci mohou spustit připojení pomocí privátního propojení pomocí aliasu nebo identifikátoru URI prostředku.
  
-### <a name="manage-your-connection-requests"></a>Manage your connection requests
+### <a name="manage-your-connection-requests"></a>Správa žádostí o připojení
 
-After a consumer initiates a connection, the service provider can accept or reject the connection request. All connection requests will be listed under the **privateendpointconnections** property on the Private Link service.
+Po zahájení připojení příjemce může poskytovatel služeb přijmout nebo odmítnout žádost o připojení. Všechny požadavky na připojení budou uvedeny v části vlastnost **privateendpointconnections** ve službě privátního propojení.
  
-### <a name="delete-your-service"></a>Delete your service
+### <a name="delete-your-service"></a>Odstranění služby
 
-If the Private Link service is no longer in use, you can delete it. However, before your delete the service, ensure that there are no private endpoint connections associated with it. You can reject all connections and delete the service.
+Pokud se služba privátního propojení již nepoužívá, můžete ji odstranit. Před odstraněním služby se ale ujistěte, že k ní nejsou přidružená žádná připojení privátních koncových bodů. Můžete odmítat všechna připojení a službu odstranit.
 
 ## <a name="properties"></a>Vlastnosti
 
-A Private Link service specifies the following properties: 
+Služba privátního propojení určuje následující vlastnosti: 
 
 |Vlastnost |Vysvětlení  |
 |---------|---------|
-|Provisioning State (provisioningState)  |A read-only property that lists the current provisioning state for Private Link service. Applicable provisioning states are: "Deleting; Failed; Succeeded; Updating". When the provisioning state is "Succeeded", you have successfully provisioned your Private Link service.        |
-|Alias (alias)     | Alias is a globally unique read-only string for your service. It helps you mask the customer data for your service and at the same time creates an easy-to-share name for your service. When you create a Private Link service, Azure generates the alias for your service that you can share with your customers. Your customers can use this alias to request a connection to your service.          |
-|Visibility (visibility)     | Visibility is the property that controls the exposure settings for your Private Link service. Service providers can choose to limit the exposure to their service to subscriptions with role-based access control (RBAC) permissions, a restricted set of subscriptions, or all Azure subscriptions.          |
-|Auto Approval (autoApproval)    |   Auto-approval controls the automated access to the Private Link service. The subscriptions specified in the auto-approval list are approved automatically when a connection is requested from private endpoints in those subscriptions.          |
-|Load Balancer Frontend IP Configuration (loadBalancerFrontendIpConfigurations)    |    Private Link service is tied to the frontend IP address of a Standard Load Balancer. All traffic destined for the service will reach the frontend of the SLB. You can configure SLB rules to direct this traffic to appropriate backend pools where your applications are running. Load balancer frontend IP configurations are different than NAT IP configurations.      |
-|NAT IP Configuration (ipConfigurations)    |    This property refers to the NAT (Network Address Translation) IP configuration for the Private Link service. The NAT IP can be chosen from any subnet in a service provider's virtual network. Private Link service performs destination side NAT-ing on the Private Link traffic. This ensures that there is no IP conflict between source (consumer side) and destination (service provider) address space. On the destination side (service provider side), the NAT IP address will show up as Source IP for all packets received by your service and destination IP for all packets sent by your service.       |
-|Private endpoint connections (privateEndpointConnections)     |  This property lists the private endpoints connecting to Private Link service. Multiple private endpoints can connect to the same Private Link service and the service provider can control the state for individual private endpoints.        |
+|Stav zřizování (provisioningState)  |Vlastnost jen pro čtení, která uvádí aktuální stav zřizování pro službu privátního propojení. Příslušné stavy zřizování jsou: "odstraňování; Nepovedlo se Úspěchu Aktualizuje se. Po úspěšném stavu zřizování jste úspěšně zřídili službu privátních odkazů.        |
+|Alias (alias)     | Alias je globálně jedinečný řetězec jen pro čtení vaší služby. Pomůže vám to maskovat zákaznická data pro vaši službu a zároveň vytvořit snadnou sdílenou složku pro vaši službu. Když vytvoříte službu privátního propojení, Azure vytvoří alias pro vaši službu, kterou můžete sdílet se svými zákazníky. Vaši zákazníci můžou pomocí tohoto aliasu požádat o připojení ke službě.          |
+|Viditelnost (viditelnost)     | Viditelnost je vlastnost, která řídí nastavení expozice pro službu privátního propojení. Poskytovatelé služeb se můžou rozhodnout omezit expozici své služby na předplatná pomocí oprávnění řízení přístupu na základě role (RBAC), omezené sady předplatných nebo všech předplatných Azure.          |
+|Automatické schvalování (automatické schválení)    |   Automatické schválení řídí automatizovaný přístup ke službě privátního propojení. Odběry zadané v seznamu automatického schvalování se schvalují automaticky, když se v těchto předplatných požaduje připojení z privátních koncových bodů.          |
+|Load Balancer konfigurace IP adresy front-endu (loadBalancerFrontendIpConfigurations)    |    Služba Private Link je vázaná na IP adresu front-endu Standard Load Balancer. Veškerý provoz určený pro službu se dostane do front-endu služby SLB. Můžete nakonfigurovat pravidla služby SLB pro přesměrování tohoto provozu do příslušných back-end fondů, kde běží vaše aplikace. Konfigurace IP adresy front-endu pro vyrovnávání zatížení se liší od konfigurace IP adres NAT.      |
+|Konfigurace protokolu IP NAT (IPConfiguration)    |    Tato vlastnost odkazuje na konfiguraci protokolu IP NAT (překladu síťových adres) pro službu privátního propojení. IP adresu NAT si můžete vybrat z libovolné podsítě ve virtuální síti poskytovatele služeb. Služba privátního propojení provádí NAT cílového umístění na straně cíle na přenosy privátního propojení. Tím se zajistí, že nedojde ke konfliktu IP adres mezi zdrojovým a cílovým adresním prostorem (poskytovatelem služeb). Na straně cíle (na straně poskytovatele služeb) se IP adresa NAT zobrazí jako zdrojová IP adresa pro všechny pakety přijaté službou a cílovou IP adresou pro všechny pakety odesílané vaší službou.       |
+|Připojení privátního koncového bodu (privateEndpointConnections)     |  Tato vlastnost zobrazí seznam privátních koncových bodů připojujících se ke službě privátního propojení. Ke stejné službě privátního propojení se může připojit několik privátních koncových bodů a poskytovatel služeb může řídit stav jednotlivých privátních koncových bodů.        |
 |||
 
 
 ### <a name="details"></a>Podrobnosti
 
-- Private Link service can be accessed from approved private endpoints in the same region. The private endpoint can be reached from the same virtual network, regionally peered VNets, globally peered VNets and on premises using private VPN or ExpressRoute connections. 
+- Služba privátního propojení je dostupná ze schválených privátních koncových bodů ve stejné oblasti. K privátnímu koncovému bodu se dá získat přístup ze stejné virtuální sítě, s virtuální sítěem partnerským vztahem, globálně partnerským virtuální sítě a místně pomocí privátních připojení VPN nebo ExpressRoute. 
  
-- When creating a Private Link Service, a network interface is created for the lifecycle of the resource. This interface is not manageable by the customer.
+- Při vytváření služby privátního propojení se pro životní cyklus prostředku vytvoří síťové rozhraní. Toto rozhraní nejde spravovat od zákazníka.
  
-- The Private Link Service must be deployed in the same region as the virtual network and the Standard Load Balancer.  
+- Služba privátního propojení musí být nasazená ve stejné oblasti jako virtuální síť a Standard Load Balancer.  
  
-- A single Private Link Service can be accessed from multiple Private Endpoints belonging to different VNets, subscriptions and/or Active Directory tenants. The connection is established through a connection workflow. 
+- Jedna služba privátního propojení je dostupná z více privátních koncových bodů patřících různým virtuální sítě, předplatným a/nebo klientům služby Active Directory. Připojení je vytvořeno prostřednictvím pracovního postupu připojení. 
  
-- Multiple Private Link services can be created on the same Standard Load Balancer using different front-end IP configurations. There are limits to the number of Private Link services you can create per Standard Load Balancer and per subscription. For details, see [Azure limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Ve stejném Standard Load Balancer lze pomocí různých konfigurací front-end IP adres vytvořit více služeb privátních propojení. Existují omezení počtu služeb privátních odkazů, které můžete vytvořit pro jednotlivé Standard Load Balancer a pro každé předplatné. Podrobnosti najdete v tématu [omezení Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
  
-- Private Link service can have more than one NAT IP configurations linked to it. Choosing more than one NAT IP configurations can help service providers to scale. Today, service providers can assign up to eight NAT IP addresses per Private Link service. With each NAT IP address, you can assign more ports for your TCP connections and thus scale out. After you add multiple NAT IP addresses to a Private Link service, you can't delete the NAT IP addresses. This is done to ensure that active connections are not impacted while deleting the NAT IP addresses.
+- Služba privátního propojení může mít na sebe propojenou více konfigurací IP adres NAT. Výběr více než jedné konfigurace protokolu IP NAT může pomáhat poskytovatelům služeb škálovat. V dnešní době můžou poskytovatelé služeb přiřadit až osm IP adres NAT na jednu službu privátního propojení. U každé IP adresy překladu adres (NAT) můžete přiřadit více portů pro připojení TCP a tak škálovat. Po přidání více IP adres NAT do služby privátního propojení nemůžete IP adresy NAT odstranit. K tomu je potřeba zajistit, aby při odstraňování IP adres překladu adres (NAT) nedošlo k ovlivnění aktivních připojení.
 
 
 ## <a name="alias"></a>Alias
 
-**Alias** is a globally unique name for your service. It helps you mask the customer data for your service and at the same time creates an easy-to-share name for your service. When you create a Private Link service, Azure generates an alias for your service that you can share with your customers. Your customers can use this alias to request a connection to your service.
+**Alias** je globálně jedinečný název vaší služby. Pomůže vám to maskovat zákaznická data pro vaši službu a zároveň vytvořit snadnou sdílenou složku pro vaši službu. Když vytvoříte službu privátního propojení, Azure vytvoří alias pro vaši službu, který můžete sdílet se svými zákazníky. Vaši zákazníci můžou pomocí tohoto aliasu požádat o připojení ke službě.
 
-The alias is composed of three parts: *Prefix*.*GUID*.*Suffix*
+Alias se skládá ze tří částí: *prefix*. *Identifikátor GUID* *Přípona*
 
-- Prefix is the service name. You can pick you own prefix. After "Alias" is created, you can't change it, so select your prefix appropriately.  
-- GUID will be provided by platform. This helps make the name globally unique. 
-- Suffix is appended by Azure: *region*.azure.privatelinkservice 
+- Předpona je název služby. Můžete si vybrat vlastní předponu. Po vytvoření aliasu ho už nemůžete změnit, takže ho můžete vhodně vybrat.  
+- Identifikátor GUID bude poskytován platformou. To pomáhá nastavit globálně jedinečný název. 
+- Přípona je připojená pomocí Azure: *region*. Azure. privatelinkservice. 
 
-Complete alias:  *Prefix*. {GUID}.*region*.azure.privatelinkservice  
+Úplný alias: *prefix* {GUID}. *oblast*. Azure. privatelinkservice  
 
-## <a name="control-service-exposure"></a>Control service exposure
+## <a name="control-service-exposure"></a>Řízení expozice služby
 
-Private Link service provides you options to control the exposure of your service through "Visibility" setting. You can make the service private for consumption from different VNets you own (RBAC permissions only), restrict the exposure to a limited set of subscriptions that you trust, or make it public so that all Azure subscriptions can request connections on the Private Link service. Your visibility settings decide whether a consumer can connect to your service or not. 
+Služba privátního propojení vám nabízí možnosti řízení expozice vaší služby prostřednictvím nastavení viditelnosti. Službu můžete nastavit jako soukromou pro spotřebu z různých virtuální sítě, které vlastníte (jenom oprávnění RBAC), omezit vystavení omezené sadě předplatných, kterým důvěřujete, nebo je zveřejnit, aby všechna předplatná Azure mohla vyžadovat připojení na privátním odkazu. službám. Nastavení viditelnosti rozhodují, jestli se příjemce může ke službě připojit, nebo ne. 
 
-## <a name="control-service-access"></a>Control service access
+## <a name="control-service-access"></a>Řízení přístupu ke službě
 
-Consumers having exposure (controlled by visibility setting) to your Private Link service can create a private endpoint in their VNets and request a connection to your Private Link service. The private endpoint connection will be created in a "Pending" state on the Private Link service object. The service provider is responsible for acting on the connection request. You can either approve the connection, reject the connection, or delete the connection. Only connections that are approved can send traffic to the Private Link service.
+Příjemci s expozicí (řízenou nastavením viditelnosti) do vaší služby privátního propojení můžou v virtuální sítě vytvořit privátní koncový bod a požádat o připojení ke službě privátních odkazů. Připojení privátního koncového bodu se vytvoří ve stavu "čeká" v objektu služby privátního propojení. Poskytovatel služeb zodpovídá za to, že funguje na žádosti o připojení. Můžete buď schválit připojení, odmítat připojení, nebo připojení odstranit. Pouze připojení, která jsou schválena, mohou odesílat data do služby privátního propojení.
 
-The action of approving the connections can be automated by using the auto-approval property on the Private Link service. Auto-Approval is an ability for service providers to preapprove a set of subscriptions for automated access to their service. Customers will need to share their subscriptions offline for service providers to add to the auto-approval list. Auto-approval is a subset of the visibility array. Visibility controls the exposure settings whereas auto-approval controls the approval settings for your service. If a customer requests a connection from a subscription in the auto-approval list, the connection is automatically approved and the connection is established. Service providers don’t need to manually approve the request anymore. On the other hand, if a customer requests a connection from a subscription in the visibility array and not in the auto-approval array, the request will reach the service provider but the service provider has to manually approve the connections.
+Akci schválení připojení lze automatizovat pomocí vlastnosti automatického schvalování ve službě privátního propojení. Automatické schválení je schopnost, aby poskytovatelé služeb předem schválili sadu předplatných pro automatický přístup ke své službě. Aby poskytovatelé služeb mohli přidat do seznamu automatického schválení, budou muset uživatelé sdílet své odběry do offline režimu. Automatické schválení je podmnožinou pole viditelnosti. Viditelnost ovládá nastavení expozice, zatímco automatické schvalování kontroluje nastavení schválení pro vaši službu. Pokud zákazník požádá o připojení z předplatného v seznamu automatického schválení, připojení se automaticky schválí a naváže se připojení. Poskytovatelé služeb nemusí žádost už ručně schválit. Na druhé straně, pokud zákazník požádá o připojení z předplatného v poli viditelnosti, nikoli v poli automatického schválení, požadavek se dostane k poskytovateli služeb, ale poskytovatel služeb musí připojení ručně schválit.
 
 ## <a name="limitations"></a>Omezení
 
-The following are the known limitations when using the Private Link service:
-- Supported only on Standard Load Balancer 
-- Supports IPv4 traffic only
-- Supports TCP traffic only
-- Only reachable from private endpoints in the same region
-- Create and Manage experience from Azure portal is not supported
-- Clients connection information using proxy protocol is not available to service provider
+Následující jsou známá omezení při použití služby privátního propojení:
+- Podporováno pouze v Standard Load Balancer 
+- Podporuje jenom přenosy IPv4.
+- Podporuje jenom přenosy TCP.
+- Dosažitelný pouze z privátních koncových bodů ve stejné oblasti
+- Vytváření a Správa prostředí z Azure Portal se nepodporuje.
+- Poskytovateli služeb nenabízí informace o připojení klientů pomocí protokolu proxy.
 
 ## <a name="next-steps"></a>Další kroky
-- [Create a private link service using Azure PowerShell](create-private-link-service-powershell.md)
-- [Create a private link service using Azure CLI](create-private-link-service-cli.md)
+- [Vytvoření služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)
+- [Vytvoření služby privátního propojení pomocí Azure CLI](create-private-link-service-cli.md)

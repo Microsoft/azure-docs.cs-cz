@@ -1,21 +1,16 @@
 ---
-title: Konfigurace sond připravenosti v Azure Container Instances
+title: Nastavení testu připravenosti na instanci kontejneru
 description: Naučte se konfigurovat sondu, aby kontejnery v Azure Container Instances přijímaly požadavky pouze v případě, že jsou připravené.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 10/17/2019
-ms.author: danlep
-ms.openlocfilehash: 9cdc8362c377be28a3ed1300b599dc8ebef9e903
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905573"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533566"
 ---
-# <a name="configure-readiness-probes"></a>Konfigurace sond připravenosti
+# <a name="configure-readiness-probes"></a>Konfigurace testů připravenosti
 
 U kontejnerových aplikací, které obsluhují provoz, můžete chtít ověřit, že je váš kontejner připravený na zpracování příchozích požadavků. Azure Container Instances podporuje testy připravenosti k zahrnutí konfigurací, aby ke kontejneru za určitých podmínek nezískal přístup. Test připravenosti se chová jako [test připravenosti na Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/). Aplikace kontejneru může například potřebovat načíst velkou datovou sadu při spuštění a nechcete, aby během této doby přijímala žádosti.
 

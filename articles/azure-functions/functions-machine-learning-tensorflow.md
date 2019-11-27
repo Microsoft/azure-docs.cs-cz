@@ -1,6 +1,6 @@
 ---
-title: Use Python and TensorFlow in Azure Functions to make machine learning inferences
-description: This tutorial demonstrates how to apply TensorFlow machine learning models in Azure Functions
+title: Použití Pythonu a TensorFlow v Azure Functions k vytváření odvození strojového učení
+description: Tento kurz ukazuje, jak použít modely strojového učení TensorFlow v Azure Functions
 author: anthonychu
 ms.topic: tutorial
 ms.date: 07/29/2019
@@ -13,53 +13,53 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230505"
 ---
-# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Tutorial: Apply machine learning models in Azure Functions with Python and TensorFlow
+# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Kurz: použití modelů strojového učení v Azure Functions pomocí Pythonu a TensorFlow
 
-This article demonstrates how Azure Functions allows you to use Python and TensorFlow with a machine learning model to classify an image based on its contents.
+Tento článek ukazuje, jak Azure Functions umožňuje používat Python a TensorFlow s modelem strojového učení ke klasifikaci image na základě jejího obsahu.
 
 V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
-> * Initialize a local environment for developing Azure Functions in Python
-> * Import a custom TensorFlow machine learning model into a function app
-> * Build a serverless HTTP API for predicting whether a photo contains a dog or a cat
-> * Consume the API from a web application
+> * Inicializace místního prostředí pro vývoj Azure Functions v Pythonu
+> * Import vlastního modelu Machine Learning ve TensorFlow do aplikace Function App
+> * Sestavte rozhraní HTTP API bez serveru pro předpověď, jestli fotka obsahuje pes nebo kočka.
+> * Využívání rozhraní API z webové aplikace
 
-![Screenshot of finished project](media/functions-machine-learning-tensorflow/functions-machine-learning-tensorflow-screenshot.png)
+![Snímek obrazovky dokončeného projektu](media/functions-machine-learning-tensorflow/functions-machine-learning-tensorflow-screenshot.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
-To create Azure Functions in Python, you need to install a few tools.
+Pokud chcete vytvořit Azure Functions v Pythonu, musíte nainstalovat několik nástrojů.
 
-- [Python 3.6](https://www.python.org/downloads/release/python-360/)
+- [Python 3,6](https://www.python.org/downloads/release/python-360/)
 - [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)
-- A code editor such as [Visual Studio Code](https://code.visualstudio.com/)
+- Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="clone-the-tutorial-repository"></a>Clone the tutorial repository
+## <a name="clone-the-tutorial-repository"></a>Naklonujte úložiště kurzu.
 
-To begin, open a terminal and clone the following repository using Git:
+Začněte tím, že otevřete terminál a naklonete následující úložiště pomocí Gitu:
 
 ```console
 git clone https://github.com/Azure-Samples/functions-python-tensorflow-tutorial.git
 cd functions-python-tensorflow-tutorial
 ```
 
-The repository contains a few folders.
+Úložiště obsahuje několik složek.
 
-- *start*:  This is your working folder for the tutorial
-- *end*: This is the final result and full implementation for your reference
-- *resources*: Contains the machine learning model and helper libraries
-- *frontend*: A website that calls the function app
+- *Začínáme*: Toto je pracovní složka pro kurz.
+- *konec*: Toto je konečný výsledek a plná implementace pro váš odkaz.
+- *prostředky*: obsahuje model strojového učení a pomocné knihovny.
+- *front-end*: web, který volá aplikaci Function App
 
-## <a name="create-and-activate-a-python-virtual-environment"></a>Create and activate a Python virtual environment
+## <a name="create-and-activate-a-python-virtual-environment"></a>Vytvoření a aktivace virtuálního prostředí Pythonu
 
-Azure Functions requires Python 3.6.x. You'll create a virtual environment to ensure you're using the required Python version.
+Azure Functions vyžaduje Python 3.6. x. Vytvoříte virtuální prostředí, abyste měli jistotu, že používáte požadovanou verzi Pythonu.
 
-Change the current working directory to the *start* folder. Then create and activate a virtual environment named *.venv*. Depending on your Python installation, the commands to create a Python 3.6 virtual environment may differ from the following instructions.
+Změňte aktuální pracovní adresář na složku *Start* . Pak vytvořte a aktivujte virtuální prostředí s názvem *. venv*. V závislosti na instalaci Pythonu se můžou příkazy pro vytvoření virtuálního prostředí Python 3,6 lišit od následujících pokynů.
 
-#### <a name="linux-and-macos"></a>Linux and macOS:
+#### <a name="linux-and-macos"></a>Linux a macOS:
 
 ```bash
 cd start
@@ -75,70 +75,70 @@ py -3.6 -m venv .venv
 .venv\scripts\activate
 ```
 
-The terminal prompt is now prefixed with `(.venv)` which indicates you have successfully activated the virtual environment. Confirm that `python` in the virtual environment is indeed Python 3.6.x.
+Výzva k zadání terminálu je nyní předpona `(.venv)`, která indikuje, že jste úspěšně aktivovali virtuální prostředí. Potvrďte, že `python` ve virtuálním prostředí jsou ve skutečnosti Python 3.6. x.
 
 ```console
 python --version
 ```
 
 > [!NOTE]
-> For the remainder of the tutorial, you run commands in the virtual environment. If you need to reactivate the virtual environment in a terminal, execute the appropriate activate command for your operating system.
+> Ve zbývající části kurzu spustíte ve virtuálním prostředí příkazy. Pokud potřebujete znovu aktivovat virtuální prostředí v terminálu, spusťte příslušný příkaz k aktivaci pro váš operační systém.
 
 ## <a name="create-an-azure-functions-project"></a>Vytvoření projektu Azure Functions
 
-In the *start* folder, use the Azure Functions Core Tools to initialize a Python function app.
+Ve složce *Start* použijte Azure Functions Core Tools k inicializaci aplikace funkcí Pythonu.
 
 ```console
 func init --worker-runtime python
 ```
 
-A function app can contain one or more Azure Functions. Open the *start* folder in an editor and examine the contents.
+Aplikace Function App může obsahovat jeden nebo více Azure Functions. Otevřete složku *Start* v editoru a prověřte obsah.
 
-- [*local.settings.json*](functions-run-local.md#local-settings-file): Contains application settings used for local development
-- [*host.json*](functions-host-json.md): Contains settings for the Azure Functions host and extensions
-- [*requirements.txt*](functions-reference-python.md#package-management): Contains Python packages required by this application
+- [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): obsahuje nastavení aplikace používané pro místní vývoj.
+- [*Host. JSON*](functions-host-json.md): obsahuje nastavení pro hostitele Azure functions a rozšíření.
+- [*požadavky. txt*](functions-reference-python.md#package-management): obsahuje balíčky Pythonu, které vyžaduje tato aplikace.
 
-## <a name="create-an-http-function"></a>Create an HTTP function
+## <a name="create-an-http-function"></a>Vytvoření funkce HTTP
 
-The application requires a single HTTP API endpoint that takes an image URL as the input and returns a prediction of whether the image contains a dog or a cat.
+Aplikace vyžaduje jeden koncový bod HTTP API, který jako vstup převezme adresu URL obrázku, a vrátí předpověď, zda obrázek obsahuje pes nebo kočka.
 
-In the terminal, use the Azure Functions Core Tools to scaffold a new HTTP function named *classify*.
+V terminálu použijte Azure Functions Core Tools k vytvoření nové funkce HTTP s názvem *klasifikovat*.
 
 ```console
 func new --language python --template HttpTrigger --name classify
 ```
 
-A new folder named *classify* is created, containing two files.
+Vytvoří se nová složka s názvem *klasifikovat* , která obsahuje dva soubory.
 
-- *\_\_init\_\_.py*: A file for the main function
-- *function.json*:  A file describing the function's trigger and its input and output bindings
+- *\_\_init\_\_. py*: soubor pro hlavní funkci
+- *Function. JSON*: soubor popisující aktivační událost funkce a její vstupní a výstupní vazby
 
-### <a name="run-the-function"></a>Run the function
+### <a name="run-the-function"></a>Spuštění funkce
 
-In the terminal with the Python virtual environment activated, start the function app.
+V terminálu s aktivovaným virtuálním prostředím Python spusťte aplikaci Function App.
 
 ```console
 func start
 ```
 
-Open a browser and navigate to the following URL. The function should execute and return *Hello Azure!*
+Otevřete prohlížeč a přejděte na následující adresu URL. Funkce by měla být spuštěná a vracet *Hello Azure!*
 
 ```
 http://localhost:7071/api/classify?name=Azure
 ```
 
-Use `Ctrl-C` to stop the function app.
+K zastavení aplikace Function App použijte `Ctrl-C`.
 
-## <a name="import-the-tensorflow-model"></a>Import the TensorFlow model
+## <a name="import-the-tensorflow-model"></a>Import modelu TensorFlow
 
-You'll use a pre-built TensorFlow model that was trained with and exported from Azure Custom Vision Service.
+Použijete předem sestavený TensorFlow model, který byl vyškolen a exportován z Azure Custom Vision Service.
 
 > [!NOTE]
-> If you want to build your own using Custom Vision Service's free tier, you can follow the [instructions in the sample project repository](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
+> Pokud chcete sestavit vlastní s využitím bezplatné úrovně Custom Vision Service, můžete postupovat podle [pokynů v tématu úložiště projektu Ukázka](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
 
-The model consists of two files in the *<REPOSITORY_ROOT>/resources/model* folder: *model.pb* and *labels.txt*. Copy them into the *classify* function's folder.
+Model se skládá ze dvou souborů v *< REPOSITORY_ROOT > složce/Resources/model* : *model. pb* a *labels. txt*. Zkopírujte je do složky *klasifikovat* funkci.
 
-#### <a name="linux-and-macos"></a>Linux and macOS:
+#### <a name="linux-and-macos"></a>Linux a macOS:
 
 ```bash
 cp ../resources/model/* classify
@@ -150,13 +150,13 @@ cp ../resources/model/* classify
 copy ..\resources\model\* classify
 ```
 
-Be sure to include the \* in the above command. Confirm that *classify* now contains files named *model.pb* and *labels.txt*.
+Nezapomeňte zahrnout \* do výše uvedeného příkazu. Potvrďte, že *klasifikace* nyní obsahuje soubory s názvem *model. pb* a *labels. txt*.
 
-## <a name="add-the-helper-functions-and-dependencies"></a>Add the helper functions and dependencies
+## <a name="add-the-helper-functions-and-dependencies"></a>Přidání pomocných funkcí a závislostí
 
-Some helper functions for preparing the input image and making a prediction using TensorFlow are in a file named *predict.py* in the *resources* folder. Copy this file into the *classify* function's folder.
+Některé pomocné funkce pro přípravu vstupní image a předpovědi s použitím TensorFlow jsou v souboru s názvem *PREDICT.py* ve složce *Resources* . Zkopírujte tento soubor do složky *klasifikovat* funkci.
 
-#### <a name="linux-and-macos"></a>Linux and macOS:
+#### <a name="linux-and-macos"></a>Linux a macOS:
 
 ```bash
 cp ../resources/predict.py classify
@@ -168,11 +168,11 @@ cp ../resources/predict.py classify
 copy ..\resources\predict.py classify
 ```
 
-Confirm that *classify* now contains a file named *predict.py*.
+Potvrďte, že *klasifikace* nyní obsahuje soubor s názvem *PREDICT.py*.
 
 ### <a name="install-dependencies"></a>Instalace závislostí
 
-The helper library has some dependencies that need to be installed. Open *start/requirements.txt* in your editor and add the following dependencies to the file.
+Pomocná knihovna obsahuje některé závislosti, které je potřeba nainstalovat. V editoru otevřete soubor *Start/požadavky. txt* a přidejte do něj následující závislosti.
 
 ```txt
 tensorflow==1.14
@@ -182,28 +182,28 @@ requests
 
 Uložte soubor.
 
-In the terminal with the virtual environment activated, run the following command in the *start* folder to install the dependencies. Some installation steps may take a few minutes to complete.
+V terminálu s aktivovaným virtuálním prostředím spusťte následující příkaz pro instalaci závislostí ve složce *Start* . Dokončení některých kroků instalace může trvat několik minut.
 
 ```console
 pip install --no-cache-dir -r requirements.txt
 ```
 
-### <a name="caching-the-model-in-global-variables"></a>Caching the model in global variables
+### <a name="caching-the-model-in-global-variables"></a>Ukládání modelu do mezipaměti v globálních proměnných
 
-In the editor, open *predict.py* and look at the `_initialize` function near the top of the file. Notice that the TensorFlow model is loaded from disk the first time the function is executed and saved to global variables. The loading from disk is skipped in subsequent executions of the `_initialize` function. Caching the model in memory with this technique speeds up later predictions.
+V editoru otevřete *PREDICT.py* a podívejte se na funkci `_initialize` v horní části souboru. Všimněte si, že model TensorFlow je načten z disku při prvním spuštění funkce a uložení do globálních proměnných. Načítání z disku se při dalších spuštěních funkce `_initialize` přeskočí. Ukládání modelu do mezipaměti pomocí této techniky zrychlí pozdější předpovědi.
 
-For more information on global variables, refer to the [Azure Functions Python developer guide](functions-reference-python.md#global-variables).
+Další informace o globálních proměnných najdete v [příručce pro vývojáře Azure Functions Pythonu](functions-reference-python.md#global-variables).
 
-## <a name="update-function-to-run-predictions"></a>Update function to run predictions
+## <a name="update-function-to-run-predictions"></a>Funkce Update pro spuštění předpovědi
 
-Open *classify/\_\_init\_\_.py* in your editor. Import the *predict* library that you added to the same folder earlier. Add the following `import` statements below the other imports already in the file.
+V editoru otevřete *klasifikovat/\_\_init\_\_. py* . Importujte knihovnu *předpověď* , kterou jste přidali do stejné složky dříve. Následující příkazy `import` přidejte pod ostatní importy, které jsou již v souboru.
 
 ```python
 import json
 from .predict import predict_image_from_url
 ```
 
-Replace the function template code with the following.
+Kód šablony funkce nahraďte následujícím kódem.
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -217,38 +217,38 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(json.dumps(results), headers = headers)
 ```
 
-Make sure to save your changes.
+Ujistěte se, že změny uložte.
 
-This function receives an image URL in a query string parameter named `img`. It calls `predict_image_from_url` from the helper library that downloads the image and returns a prediction using the TensorFlow model. The function then returns an HTTP response with the results.
+Tato funkce obdrží adresu URL obrázku v parametru řetězce dotazu s názvem `img`. Volá `predict_image_from_url` z pomocné knihovny, která stáhne image a vrátí předpověď pomocí modelu TensorFlow. Funkce pak vrátí odpověď HTTP s výsledky.
 
-Since the HTTP endpoint is called by a web page hosted on another domain, the HTTP response includes an `Access-Control-Allow-Origin` header to satisfy the browser's Cross-Origin Resource Sharing (CORS) requirements.
+Vzhledem k tomu, že je koncový bod HTTP volán webovou stránkou, která je hostována v jiné doméně, odpověď protokolu HTTP zahrnuje hlavičku `Access-Control-Allow-Origin` pro splnění požadavků na sdílení prostředků mezi zdroji (CORS) v prohlížeči.
 
 > [!NOTE]
-> In a production application, change `*` to the web page's specific origin for added security.
+> V produkční aplikaci změňte `*` na specifický zdroj webové stránky pro zvýšení zabezpečení.
 
-### <a name="run-the-function-app"></a>Run the function app
+### <a name="run-the-function-app"></a>Spuštění aplikace Function App
 
-Ensure the Python virtual environment is still activated and start the function app using the following command.
+Ujistěte se, že virtuální prostředí Pythonu je pořád aktivované, a spusťte aplikaci Function App pomocí následujícího příkazu.
 
 ```console
 func start
 ```
 
-In a browser, open this URL that calls your function with the URL of a cat photo. Confirm that a valid prediction result is returned.
+V prohlížeči otevřete tuto adresu URL, která volá vaši funkci s adresou URL fotky Cat. Potvrďte, že je vrácen platný výsledek předpovědi.
 
 ```
 http://localhost:7071/api/classify?img=https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat1.png
 ```
 
-Keep the function app running.
+Nechte aplikaci Function App spuštěnou.
 
 ### <a name="run-the-web-app"></a>Spuštění webové aplikace
 
-There's a simple web app in the *frontend* folder that consumes the HTTP API in the function app.
+Ve složce *front-endu* je jednoduchá webová aplikace, která využívá rozhraní API http ve Function App.
 
-Open a *separate* terminal and change to the *frontend* folder. Start an HTTP server with Python 3.6.
+Otevřete *samostatný* terminál a přejděte do složky *front-endu* . Spusťte HTTP server s Pythonem 3,6.
 
-#### <a name="linux-and-macos"></a>Linux and macOS:
+#### <a name="linux-and-macos"></a>Linux a macOS:
 
 ```bash
 cd <FRONT_END_FOLDER>
@@ -262,25 +262,25 @@ cd <FRONT_END_FOLDER>
 py -3.6  -m http.server
 ```
 
-In a browser, navigate to the HTTP server's URL that is displayed in the terminal. A web app should appear. Enter one of the following photo URLs into the textbox. You may also use a URL of a publicly accessible cat or dog photo.
+V prohlížeči přejděte na adresu URL serveru HTTP, která se zobrazí v terminálu. Měla by se zobrazit webová aplikace. Do textového pole zadejte jednu z následujících adres URL fotek. Můžete použít také adresu URL veřejně přístupné fotografie Cat nebo pes.
 
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat1.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat2.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/dog1.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/dog2.png`
 
-When you click submit, the function app is called and a result is displayed on the page.
+Když kliknete na Odeslat, aplikace Function App se zavolá a na stránce se zobrazí výsledek.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-The entirety of this tutorial runs locally on your machine, so there are no Azure resources or services to clean up.
+Celý tento kurz běží místně na vašem počítači, takže neexistují žádné prostředky nebo služby Azure, které by bylo potřeba vyčistit.
 
 ## <a name="next-steps"></a>Další kroky
 
-In this tutorial, you learned how to build and customize an HTTP API with Azure Functions to make predictions using a TensorFlow model. You also learned how to call the API from a web application.
+V tomto kurzu jste zjistili, jak vytvořit a přizpůsobit rozhraní API HTTP pomocí Azure Functions předpovědi pomocí modelu TensorFlow. Zjistili jste také, jak volat rozhraní API z webové aplikace.
 
-You can use the techniques in this tutorial to build out APIs of any complexity, all while running on the serverless compute model provided by Azure Functions.
+Techniky v tomto kurzu můžete použít k sestavení rozhraní API jakékoli složitosti, která se spustí na výpočetním modelu bez serveru, který poskytuje Azure Functions.
 
-To deploy the function app to Azure, use the [Azure Functions Core Tools](./functions-run-local.md#publish) or [Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-azure-functions).
+K nasazení aplikace Function App do Azure použijte [Azure Functions Core Tools](./functions-run-local.md#publish) nebo [Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-azure-functions).
 
 > [!div class="nextstepaction"]
-> [Azure Functions Python Developer Guide](./functions-reference-python.md)
+> [Příručka pro vývojáře Azure Functions Pythonu](./functions-reference-python.md)

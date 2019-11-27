@@ -1,6 +1,6 @@
 ---
-title: Zero-downtime deployment for Durable Functions
-description: Learn how to enable your Durable Functions orchestration for zero-downtime deployments.
+title: Nasazení s nulovou dobou výpadku pro Durable Functions
+description: Naučte se, jak povolit orchestraci Durable Functions pro nasazení s nulovými výpadky.
 author: tsushi
 ms.topic: conceptual
 ms.date: 10/10/2019
@@ -12,61 +12,61 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231261"
 ---
-# <a name="zero-downtime-deployment-for-durable-functions"></a>Zero-downtime deployment for Durable Functions
+# <a name="zero-downtime-deployment-for-durable-functions"></a>Nasazení s nulovou dobou výpadku pro Durable Functions
 
-The [reliable execution model](durable-functions-checkpointing-and-replay.md) of Durable Functions requires that orchestrations be deterministic, which creates an additional challenge to consider when you deploy updates. When a deployment contains changes to activity function signatures or orchestrator logic, in-flight orchestration instances fail. This situation is especially a problem for instances of long-running orchestrations, which might represent hours or days of work.
+[Model spolehlivého spuštění](durable-functions-checkpointing-and-replay.md) Durable Functions vyžaduje, aby orchestrace byly deterministické, což vytvoří další výzvu, která se při nasazení aktualizací zváží. Pokud nasazení obsahuje změny signatur funkcí aktivity nebo logiky nástroje Orchestrator, instance orchestrace v rámci letu selžou. Tato situace je obzvláště problémem pro instance dlouhotrvajících orchestrací, což může představovat hodiny nebo dny v práci.
 
-To prevent these failures from happening, you have two options: 
-- Delay your deployment until all running orchestration instances have completed.
-- Make sure that any running orchestration instances use the existing versions of your functions. 
+Aby nedošlo k těmto selháním, máte dvě možnosti: 
+- Nastavte zpoždění nasazení, dokud se nedokončí všechny spuštěné instance orchestrace.
+- Zajistěte, aby všechny spuštěné instance orchestrace používaly stávající verze vašich funkcí. 
 
 > [!NOTE]
-> This article provides guidance for functions apps that target Durable Functions 1.x. It hasn't been updated to account for changes introduced in Durable Functions 2.x. For more information about the differences between extension versions, see [Durable Functions versions](durable-functions-versions.md).
+> Tento článek poskytuje pokyny pro aplikace Functions, které cílí na Durable Functions 1. x. Nebyla aktualizována na účet pro změny, které byly zavedeny v Durable Functions 2. x. Další informace o rozdílech mezi verzemi rozšíření naleznete v tématu [Durable Functions verze](durable-functions-versions.md).
 
-The following chart compares the three main strategies to achieve a zero-downtime deployment for Durable Functions: 
+Následující graf porovnává tři hlavní strategie, abyste dosáhli nasazení s nulovými výpadky pro Durable Functions: 
 
-| Strategie |  When to use | Pros | Nevýhody |
+| Strategie |  Kdy je použít | V oblasti IT | Nevýhody |
 | -------- | ------------ | ---- | ---- |
-| [Versioning](#versioning) |  Applications that don't experience frequent [breaking changes.](durable-functions-versioning.md) | Simple to implement. |  Increased function app size in memory and number of functions.<br/>Code duplication. |
-| [Status check with slot](#status-check-with-slot) | A system that doesn't have long-running orchestrations lasting more than 24 hours or frequently overlapping orchestrations. | Simple code base.<br/>Doesn't require additional function app management. | Requires additional storage account or task hub management.<br/>Requires periods of time when no orchestrations are running. |
-| [Application routing](#application-routing) | A system that doesn't have periods of time when orchestrations aren't running, such as those time periods with orchestrations that last more than 24 hours or with frequently overlapping orchestrations. | Handles new versions of systems with continually running orchestrations that have breaking changes. | Requires an intelligent application router.<br/>Could max out the number of function apps allowed by your subscription. The default is 100. |
+| [Správa verzí](#versioning) |  Aplikace, u kterých nedochází k častým [změnám.](durable-functions-versioning.md) | Jednoduchá implementace. |  Zvýšení velikosti aplikace funkcí v paměti a počtu funkcí<br/>Duplikace kódu. |
+| [Stavová kontrolu pomocí slotu](#status-check-with-slot) | Systém, který nemá dlouhodobě běžící orchestraci trvající více než 24 hodin nebo často překrývající orchestrace. | Základ jednoduchého kódu.<br/>Nevyžaduje další správu aplikací Function App. | Vyžaduje další účet úložiště nebo správu centra úloh.<br/>Vyžaduje časové období, kdy nejsou spuštěny žádné orchestrace. |
+| [Směrování aplikace](#application-routing) | Systém, který nemá časová období, pokud orchestrace nejsou spuštěny, například tato časová období s orchestrací, která byla za posledních více než 24 hodin nebo často překrývající orchestrace. | Zpracovává nové verze systémů s nepřetržitým spouštěním orchestrace, které mají zásadní změny. | Vyžaduje inteligentní směrovač aplikace.<br/>Může se jednat o maximální počet aplikací Function App povolených vaším předplatným. Výchozí hodnota je 100. |
 
 ## <a name="versioning"></a>Správa verzí
 
-Define new versions of your functions and leave the old versions in your function app. As you can see in the diagram, a function's version becomes part of its name. Because previous versions of functions are preserved, in-flight orchestration instances can continue to reference them. Meanwhile, requests for new orchestration instances call for the latest version, which your orchestration client function can reference from an app setting.
+Definujte nové verze vašich funkcí a ve své aplikaci Function App ponechte staré verze. Jak vidíte v diagramu, verze funkce se bude součástí svého názvu. Vzhledem k tomu, že předchozí verze funkcí jsou zachovány, mohou instance orchestrace v letadle i nadále na ně odkazovat. Mezitím požadavky na nové instance orchestrace volají na nejnovější verzi, kterou může vaše klientská funkce Orchestration odkazovat z nastavení aplikace.
 
-![Versioning strategy](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
+![Strategie správy verzí](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
 
-In this strategy, every function must be copied, and its references to other functions must be updated. You can make it easier by writing a script. Here's a [sample project](https://github.com/TsuyoshiUshio/DurableVersioning) with a migration script.
+V této strategii je nutné zkopírovat každou funkci a její odkazy na jiné funkce musí být aktualizovány. To můžete usnadnit psaním skriptu. Tady je [ukázkový projekt](https://github.com/TsuyoshiUshio/DurableVersioning) se skriptem migrace.
 
 >[!NOTE]
->This strategy uses deployment slots to avoid downtime during deployment. For more detailed information about how to create and use new deployment slots, see [Azure Functions deployment slots](../functions-deployment-slots.md).
+>Tato strategie využívá sloty nasazení, aby nedocházelo k výpadkům během nasazení. Podrobnější informace o tom, jak vytvořit a používat nové sloty nasazení, najdete v tématu [Azure Functions sloty nasazení](../functions-deployment-slots.md).
 
-## <a name="status-check-with-slot"></a>Status check with slot
+## <a name="status-check-with-slot"></a>Stavová kontrolu pomocí slotu
 
-While the current version of your function app is running in your production slot, deploy the new version of your function app to your staging slot. Before you swap your production and staging slots, check to see if there are any running orchestration instances. After all orchestration instances are complete, you can do the swap. This strategy works when you have predictable periods when no orchestration instances are in flight. This is the best approach when your orchestrations aren't long-running and when your orchestration executions don't frequently overlap.
+Zatímco aktuální verze vaší aplikace Function App běží v produkčním slotu, nasaďte novou verzi aplikace Function App do přípravného slotu. Než provedete prohození produkčních a přípravných slotů, zkontrolujte, jestli nejsou spuštěné instance orchestrace. Po dokončení všech instancí orchestrace můžete provést prohození. Tato strategie funguje, když máte předvídatelné doby, kdy se v letu neúčtují žádné instance orchestrace. Toto je nejlepší přístup, pokud vaše orchestrace nejsou dlouhotrvající a když se vaše orchestrace nemění často.
 
-### <a name="function-app-configuration"></a>Function app configuration
+### <a name="function-app-configuration"></a>Konfigurace aplikace Function App
 
-Use the following procedure to set up this scenario.
+Tento scénář nastavíte pomocí následujícího postupu.
 
-1. [Add deployment slots](../functions-deployment-slots.md#add-a-slot) to your function app for staging and production.
+1. [Přidejte sloty nasazení](../functions-deployment-slots.md#add-a-slot) do aplikace Function App pro přípravu a výrobu.
 
-1. For each slot, set the [AzureWebJobsStorage application setting](../functions-app-settings.md#azurewebjobsstorage) to the connection string of a shared storage account. This storage account connection string is used by the Azure Functions runtime. This account is used by the Azure Functions runtime and manages the function's keys.
+1. U každého slotu nastavte [nastavení aplikace AzureWebJobsStorage](../functions-app-settings.md#azurewebjobsstorage) na připojovací řetězec sdíleného účtu úložiště. Tento připojovací řetězec účtu úložiště používá modul runtime Azure Functions. Tento účet je používán modulem runtime Azure Functions a spravuje klíče funkce.
 
-1. For each slot, create a new app setting, for example, `DurableManagementStorage`. Set its value to the connection string of different storage accounts. These storage accounts are used by the Durable Functions extension for [reliable execution](durable-functions-checkpointing-and-replay.md). Use a separate storage account for each slot. Don't mark this setting as a deployment slot setting.
+1. Pro každou slot vytvořte nové nastavení aplikace, například `DurableManagementStorage`. Nastavte jeho hodnotu na připojovací řetězec různých účtů úložiště. Tyto účty úložiště používá rozšíření Durable Functions pro [spolehlivé provádění](durable-functions-checkpointing-and-replay.md). Pro jednotlivé sloty použijte samostatný účet úložiště. Toto nastavení neoznačujte jako nastavení slotu nasazení.
 
-1. In your function app's [host.json file's durableTask section](durable-functions-bindings.md#hostjson-settings), specify `azureStorageConnectionStringName` as the name of the app setting you created in step 3.
+1. V [části durableTask souboru Host. JSON](durable-functions-bindings.md#hostjson-settings)aplikace Function app zadejte `azureStorageConnectionStringName` jako název nastavení aplikace, které jste vytvořili v kroku 3.
 
-The following diagram shows the described configuration of deployment slots and storage accounts. In this potential predeployment scenario, version 2 of a function app is running in the production slot, while version 1 remains in the staging slot.
+Následující diagram znázorňuje popsanou konfiguraci slotů pro nasazení a účtů úložiště. V tomto potenciálním scénáři přednasazení je verze 2 aplikace Function App spuštěná v produkčním slotu, zatímco verze 1 zůstává v přípravném slotu.
 
-![Deployment slots and storage accounts](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
+![Sloty nasazení a účty úložiště](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>host.json examples
+### <a name="hostjson-examples"></a>Příklady Host. JSON
 
-The following JSON fragments are examples of the connection string setting in the *host.json* file.
+Následující fragmenty JSON jsou příklady nastavení připojovacího řetězce v souboru *Host. JSON* .
 
-#### <a name="functions-20"></a>Functions 2.0
+#### <a name="functions-20"></a>Funkce 2,0
 
 ```json
 {
@@ -89,9 +89,9 @@ The following JSON fragments are examples of the connection string setting in th
 }
 ```
 
-### <a name="cicd-pipeline-configuration"></a>CI/CD pipeline configuration
+### <a name="cicd-pipeline-configuration"></a>Konfigurace kanálu CI/CD
 
-Configure your CI/CD pipeline to deploy only when your function app has no pending or running orchestration instances. When you're using Azure Pipelines, you can create a function that checks for these conditions, as in the following example:
+Nakonfigurujte svůj kanál CI/CD tak, aby se nasadil jenom v případě, že vaše aplikace Function App nemá žádné nedokončené nebo spuštěné instance orchestrace. Pokud používáte Azure Pipelines, můžete vytvořit funkci, která kontroluje tyto podmínky, jako v následujícím příkladu:
 
 ```csharp
 [FunctionName("StatusCheck")]
@@ -110,68 +110,68 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-Next, configure the staging gate to wait until no orchestrations are running. For more information, see [Release deployment control using gates](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
+Dále nakonfigurujte pracovní bránu tak, aby čekala na neběhu žádné orchestrace. Další informace najdete v tématu [Správa nasazení vydaných verzí pomocí bran](/azure/devops/pipelines/release/approvals/gates?view=azure-devops) .
 
-![Deployment gate](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
+![Brána nasazení](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 
-Azure Pipelines checks your function app for running orchestration instances before your deployment starts.
+Azure Pipelines kontroluje, jestli aplikace Function App běží na instancích orchestrace před zahájením nasazení.
 
-![Deployment gate (running)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
+![Brána nasazení (spuštěná)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
 
-Now the new version of your function app should be deployed to the staging slot.
+Teď je potřeba nasadit novou verzi vaší aplikace Function App do přípravného slotu.
 
-![Staging slot](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
+![Přípravný slot](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
 
-Finally, swap slots. 
+Nakonec Proměňte sloty. 
 
-Application settings that aren't marked as deployment slot settings are also swapped, so the version 2 app keeps its reference to storage account A. Because orchestration state is tracked in the storage account, any orchestrations running on the version 2 app continue to run in the new slot without interruption.
+Nastavení aplikace, která nejsou označená jako nastavení slotu nasazení, se taky mění, takže aplikace verze 2 udržuje odkaz na účet úložiště A. Vzhledem k tomu, že je stav orchestrace sledován v účtu úložiště, všechny orchestrace běžící v aplikaci verze 2 i nadále běží na nové pozici bez přerušení.
 
 ![Slot nasazení](media/durable-functions-zero-downtime-deployment/deployment-slot-3.png)
 
-To use the same storage account for both slots, you can change the names of your task hubs. In this case, you need to manage the state of your slots and your app's HubName settings. To learn more, see [Task hubs in Durable Functions](durable-functions-task-hubs.md).
+Chcete-li pro oba sloty použít stejný účet úložiště, můžete změnit názvy Center úloh. V takovém případě musíte spravovat stav vašich slotů a nastavení HubName vaší aplikace. Další informace najdete v tématu [centra úloh v Durable Functions](durable-functions-task-hubs.md).
 
-## <a name="application-routing"></a>Application routing
+## <a name="application-routing"></a>Směrování aplikace
 
-This strategy is the most complex. However, it can be used for function apps that don't have time between running orchestrations.
+Tato strategie je nejsložitější. Dá se ale použít pro aplikace Function App, které nemají čas mezi běžícími orchestrací.
 
-For this strategy, you must create an *application router* in front of your Durable Functions. This router can be implemented with Durable Functions. The router has the responsibility to:
+Pro tuto strategii musíte před Durable Functions vytvořit *směrovač aplikace* . Tento směrovač se dá implementovat s Durable Functions. Směrovač má odpovědnost za:
 
-* Deploy the function app.
-* Manage the version of Durable Functions. 
-* Route orchestration requests to function apps.
+* Nasaďte aplikaci Function App.
+* Správa verze Durable Functions. 
+* Žádosti orchestrace směrování na aplikace Function App.
 
-The first time an orchestration request is received, the router does the following tasks:
+Při prvním přijetí žádosti o orchestraci provede směrovač následující úlohy:
 
-1. Creates a new function app in Azure.
-2. Deploys your function app's code to the new function app in Azure.
-3. Forwards the orchestration request to the new app.
+1. Vytvoří novou aplikaci Function App v Azure.
+2. Nasadí kód aplikace Function App do nové aplikace Function App v Azure.
+3. Předá požadavek orchestrace do nové aplikace.
 
-The router manages the state of which version of your app's code is deployed to which function app in Azure.
+Směrovač spravuje stav, ve kterém je nasazená verze kódu vaší aplikace, do které aplikace Function App v Azure pracuje.
 
-![Application routing (first time)](media/durable-functions-zero-downtime-deployment/application-routing.png)
+![Směrování aplikací (první čas)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-The router directs deployment and orchestration requests to the appropriate function app based on the version sent with the request. It ignores the patch version.
+Směrovač nasměruje požadavky na nasazení a orchestraci na příslušnou aplikaci Function App na základě verze odeslané s požadavkem. Ignoruje verzi opravy.
 
-When you deploy a new version of your app without a breaking change, you can increment the patch version. The router deploys to your existing function app and sends requests for the old and new versions of the code, which are routed to the same function app.
+Když nasadíte novou verzi aplikace bez zásadní změny, můžete zvýšit verzi opravy. Směrovač se nasadí do vaší stávající aplikace Function App a pošle žádosti o starou a novou verzi kódu, které jsou směrované do stejné aplikace Function App.
 
-![Application routing (no breaking change)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
+![Směrování aplikace (beze změny)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
 
-When you deploy a new version of your app with a breaking change, you can increment the major or minor version. Then the application router creates a new function app in Azure, deploys to it, and routes requests for the new version of your app to it. In the following diagram, running orchestrations on the 1.0.1 version of the app keep running, but requests for the 1.1.0 version are routed to the new function app.
+Když nasadíte novou verzi aplikace s zásadní změnou, můžete zvýšit hlavní nebo dílčí verzi. Pak směrovač aplikace vytvoří novou aplikaci Function App v Azure, nasadí ji do IT a směruje požadavky na novou verzi vaší aplikace. V následujícím diagramu jsou spuštěné orchestrace v 1.0.1 verzi aplikace i nadále spuštěné, ale požadavky na verzi 1.1.0 se směrují do nové aplikace Function App.
 
-![Application routing (breaking change)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
+![Směrování aplikace (Průlomová změna)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
 
-The router monitors the status of orchestrations on the 1.0.1 version and removes apps after all orchestrations are finished. 
+Směrovač monitoruje stav orchestrací ve verzi 1.0.1 a odebírá aplikace po dokončení všech orchestrací. 
 
-### <a name="tracking-store-settings"></a>Tracking store settings
+### <a name="tracking-store-settings"></a>Nastavení úložiště sledování
 
-Each function app should use separate scheduling queues, possibly in separate storage accounts. If you want to query all orchestrations instances across all versions of your application, you can share instance and history tables across your function apps. You can share tables by configuring the `trackingStoreConnectionStringName` and `trackingStoreNamePrefix` settings in the [host.json settings](durable-functions-bindings.md#host-json) file so that they all use the same values.
+Každá aplikace Function app by měla používat samostatné fronty plánování, případně samostatné účty úložiště. Pokud chcete zadat dotaz na všechny instance orchestrace napříč všemi verzemi vaší aplikace, můžete sdílet tabulky instancí a historie napříč vašimi aplikacemi Function App. Tabulky můžete sdílet konfigurací nastavení `trackingStoreConnectionStringName` a `trackingStoreNamePrefix` v souboru [Nastavení Host. JSON](durable-functions-bindings.md#host-json) tak, aby všechny používaly stejné hodnoty.
 
-For more information, see [Manage instances in Durable Functions in Azure](durable-functions-instance-management.md).
+Další informace najdete v tématu [Správa instancí v Durable Functions v Azure](durable-functions-instance-management.md).
 
-![Tracking store settings](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
+![Nastavení úložiště sledování](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Versioning Durable Functions](durable-functions-versioning.md)
+> [Durable Functions správy verzí](durable-functions-versioning.md)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Monitor your devices in Azure IoT Central'
-description: 'Tutorial: As an operator, use your Azure IoT Central application to monitor your devices.'
+title: 'Kurz: monitorování zařízení v Azure IoT Central'
+description: 'Kurz: jako operátor použijte aplikaci Azure IoT Central k monitorování vašich zařízení.'
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/13/2019
@@ -25,11 +25,11 @@ V tomto kurzu se dozvíte, jak jako operátor můžete pomocí aplikace Microsof
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Příjem oznámení
-> * Průzkum problému
-> * Opravit problém
+> * Přijmout oznámení
+> * Prozkoumat problém
+> * Oprava problému
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než se pustíte do práce, měl by tvůrce dokončit tři kurzy pro tvůrce a vytvořit aplikaci Azure IoT Central:
 
@@ -37,19 +37,19 @@ Než se pustíte do práce, měl by tvůrce dokončit tři kurzy pro tvůrce a v
 * [Konfigurace pravidel a akcí pro zařízení](tutorial-configure-rules.md)
 * [Přizpůsobení zobrazení operátora](tutorial-customize-operator.md)
 
-## <a name="receive-a-notification"></a>Příjem oznámení
+## <a name="receive-a-notification"></a>Přijmout oznámení
 
 Azure IoT Central posílá oznámení o zařízení v podobě e-mailových zpráv. Tvůrce přidal pravidlo, které odešle oznámení, když teplota v připojeném klimatizačním zařízení překročí prahovou hodnotu. Zprávu najdete v e-mailech odeslaných na účet, který tvůrce zvolil pro příjem oznámení.
 
-Otevřete e-mailovou zprávu, kterou jste obdrželi na konci kurzu [Konfigurace pravidel a akcí pro zařízení](tutorial-configure-rules.md). In the email, select the link to the device next to **Device Name** in the **Details** section:
+Otevřete e-mailovou zprávu, kterou jste obdrželi na konci kurzu [Konfigurace pravidel a akcí pro zařízení](tutorial-configure-rules.md). V e-mailu vyberte v části **Podrobnosti** odkaz na zařízení vedle **názvu zařízení** :
 
-![Alert notification email](media/tutorial-monitor-devices/email.png)
+![E-mail s oznámením výstrah](media/tutorial-monitor-devices/email.png)
 
 V prohlížeči se otevře stránka **Device** (Zařízení) simulovaného zařízení **Connected Air Conditioner-1**, které jste vytvořili v předchozích kurzech:
 
 ![Zařízení, které aktivovalo e-mailovou zprávu s oznámením](media/tutorial-monitor-devices/sourcedevice.png)
 
-## <a name="investigate-an-issue"></a>Průzkum problému
+## <a name="investigate-an-issue"></a>Prozkoumat problém
 
 Jako operátor se můžete podívat na informace o zařízení na stránkách **Measurements** (Měření), **Settings** (Nastavení), **Properties** (Vlastnosti), **Rules** (Pravidla) a **Dashboard** (Řídicí panel). Tvůrce přizpůsobil stránku **Dashboard**, aby se na ní zobrazovaly důležité informace o připojeném klimatizačním zařízení.
 
@@ -57,13 +57,13 @@ Zvolte zobrazení **Dashboard** a podívejte se na informace o zařízení.
 
 ![Řídicí panel zařízení](media/tutorial-monitor-devices/initial_screen.png)
 
-Graf na řídicím panelu vykresluje teplotní křivku zařízení. You can also see the current target temperature for the device in the **Device properties** tile. Rozhodnete se, že cílová teplota je příliš vysoká.
+Graf na řídicím panelu vykresluje teplotní křivku zařízení. Aktuální cílovou teplotu pro zařízení můžete zobrazit také na dlaždici **vlastnosti zařízení** . Rozhodnete se, že cílová teplota je příliš vysoká.
 
-## <a name="remediate-an-issue"></a>Opravit problém
+## <a name="remediate-an-issue"></a>Oprava problému
 
 Cílovou teplotu zařízení můžete změnit na stránce **Settings**:
 
-1. Zvolte **Settings** (Nastavení). Změňte nastavení **Set Temperature** (Nastavit teplotu) na hodnotu 75. Zvolte **Update** (Aktualizovat), aby se do zařízení odeslala nová cílová teplota. When the device confirms the settings change, the status of the setting changes to **synced**:
+1. Zvolte **Settings**. Změňte nastavení **Set Temperature** (Nastavit teplotu) na hodnotu 75. Zvolte **Update** (Aktualizovat), aby se do zařízení odeslala nová cílová teplota. Když zařízení potvrdí změnu nastavení, stav nastavení se změní na **Synchronizovaný**:
 
     ![Aktualizace nastavení](media/tutorial-monitor-devices/change_settings.png)
 
@@ -76,8 +76,8 @@ Cílovou teplotu zařízení můžete změnit na stránce **Settings**:
 V tomto kurzu jste se naučili:
 
 > [!div class="nextstepaction"]
-> * Příjem oznámení
-> * Průzkum problému
-> * Opravit problém
+> * Přijmout oznámení
+> * Prozkoumat problém
+> * Oprava problému
 
 Když už víte, jak monitorovat zařízení, dalším navrhovaným krokem je [přidání zařízení](tutorial-add-device.md).

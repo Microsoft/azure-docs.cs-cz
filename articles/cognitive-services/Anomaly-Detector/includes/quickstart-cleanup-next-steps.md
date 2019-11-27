@@ -1,5 +1,5 @@
 ---
-title: Next steps for Anomaly Detector quickstarts
+title: Další kroky pro rychlé starty detektoru anomálií
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -17,7 +17,7 @@ ms.locfileid: "74483026"
 ---
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you want to clean up and remove a Cognitive Services subscription, you can delete the resource or resource group. Deleting the resource group also deletes any other resources associated with the resource group.
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků dojde také k odstranění všech dalších prostředků přidružených ke skupině prostředků.
 
 * [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -26,11 +26,11 @@ If you want to clean up and remove a Cognitive Services subscription, you can de
 
 Koncepty:
 
-* [What is the Anomaly Detector API?](../overview.md)
-* [Anomaly detection methods](../how-to/identify-anomalies.md)
-* [Best practices when using the Anomaly Detector API.](../concepts/anomaly-detection-best-practices.md) 
+* [Co je rozhraní API pro detekci anomálií?](../overview.md)
+* [Metody detekce anomálií](../how-to/identify-anomalies.md)
+* [Osvědčené postupy při použití rozhraní API detektoru anomálií](../concepts/anomaly-detection-best-practices.md) 
 
 Kurzy:
 
-* [Visualize anomalies as a batch using Power BI](../tutorials/batch-anomaly-detection-powerbi.md)
-* [Anomaly detection on streaming data using Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)
+* [Vizualizujte anomálie jako dávku pomocí Power BI](../tutorials/batch-anomaly-detection-powerbi.md)
+* [Detekce anomálií pro streamovaná data pomocí Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)

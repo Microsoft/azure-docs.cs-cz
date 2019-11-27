@@ -1,5 +1,5 @@
 ---
-title: Use an Azure file share with Azure Storage | Microsoft Docs
+title: Použít sdílenou složku Azure s Azure Storage | Microsoft Docs
 description: Zjistěte, jak používat sdílenou složku Azure s Windows a Windows Serverem.
 author: todmccoy
 manager: dcscontentpm
@@ -17,29 +17,29 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233789"
 ---
-# <a name="how-to-recover-a-deleted-storage-account"></a>How to recover a deleted storage account
+# <a name="how-to-recover-a-deleted-storage-account"></a>Jak obnovit odstraněný účet úložiště
 
-Azure Storage provides data resiliency through automated replicas, but doesn't prevent users or application code from corrupting data, whether accidentally or maliciously. Maintaining data fidelity during instances of application or user error requires more advanced techniques, such as copying the data to a secondary storage location with an audit log.
+Azure Storage zajišťuje odolnost dat prostřednictvím automatizovaných replik, ale nebrání uživatelům nebo kódu aplikace v poškozených datech, ať už omylem nebo zlomyslným. Zachování přesnosti dat během výskytů aplikace nebo chyby uživatele vyžaduje pokročilejší techniky, jako je například kopírování dat do sekundárního úložiště s protokolem auditu.
 
-The following table provides overview of the scope of Storage Account Recovery depending on the replication strategy.
+V následující tabulce najdete přehled rozsahu obnovení účtu úložiště v závislosti na strategii replikace.
 
-| |LRS|ZRS|GRS|RA - GRS|
+| |LRS|ZRS|GRS|RA – GRS|
 |---|---|---|---|---|
-|Storage Account Azure Resource Manager|Ano|Ano|Ano|Ano|
-|Storage Account Classic|Ano|Ano|Ano|Ano|
+|Azure Resource Manager účtu úložiště|Ano|Ano|Ano|Ano|
+|Účet úložiště – klasický|Ano|Ano|Ano|Ano|
 
-Gather the following information and file a support request with Microsoft Support:
+Shromážděte následující informace a Zažádejte si žádost o podporu s podpora Microsoftu:
 
 * Název účtu úložiště
-* Date of deletion
-* Storage account region
-* How was the storage account deleted?
-* What method deleted the storage account? (Portal, PowerShell, etc.)
+* Datum odstranění
+* Oblast účtu úložiště
+* Jak se odstranil účet úložiště?
+* Jakou metodu odstranili účet úložiště? (Portál, PowerShell atd.)
 
-Important Points
+Důležité body
 
-* It can generally take up to 15 days from the time of deletion for the storage service to perform garbage collection, so storage accounts recovery may not be recovered with an SLA.
-* Microsoft Support will try to recover the Container/Account on a best-effort basis and cannot guarantee the recovery.
+* Může obecně trvat až 15 dní od okamžiku odstranění služby úložiště, aby bylo možné provést uvolňování paměti, takže obnovení účtů úložiště se nemusí obnovit se smlouvou SLA.
+* Podpora Microsoftu se pokusí obnovit kontejner nebo účet na základě optimálního úsilí a nemůže zaručit obnovení.
 
 > [!NOTE]
-> The recovery may not be successful if the account has been re-created. If you have already re-created the account, you must delete it first before recovery can be attempted.
+> Pokud byl účet znovu vytvořen, obnovení nemusí být úspěšné. Pokud jste už účet znovu vytvořili, musíte ho nejdřív odstranit, aby se mohl pokusit o obnovení.

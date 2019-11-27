@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ee3f59bc9e9f8c7950d005b16433cde9267fea9a
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744411"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539002"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Rychlý Start: Content Moderator klientskou knihovnu pro Python
 
@@ -104,8 +104,8 @@ Vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objek
 Následující kód používá klienta Content Moderator k analýze textu a k vytištění výsledků do konzoly. Nejprve vytvořte **text_files nebo** složku v kořenovém adresáři projektu a přidejte soubor *content_moderator_text_moderation. txt* . Přidejte do tohoto souboru vlastní text nebo použijte následující vzorový text:
 
 ```
-Is this a grabage email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
-Crap is the profanity here. Is this information PII? phone 3144444444
+Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
+Crap is the profanity here. Is this information PII? phone 2065550111
 ```
 
 Přidejte odkaz do nové složky.
@@ -122,7 +122,7 @@ Následující kód ukazuje, jak spravovat seznam vlastních podmínek pro moder
 
 ### <a name="get-sample-text"></a>Získat vzorový text
 
-Chcete-li použít tuto ukázku, je nutné vytvořit **text_files/** složku v kořenovém adresáři projektu a přidat soubor *content_moderator_term_list. txt* . Tento soubor by měl obsahovat organický text, který se bude kontrolovat podle seznamu podmínek. Můžete použít následující vzorový text:
+Chcete-li použít tuto ukázku, je nutné vytvořit **text_files nebo** složku v kořenovém adresáři projektu a přidat soubor *content_moderator_term_list. txt* . Tento soubor by měl obsahovat organický text, který se bude kontrolovat podle seznamu podmínek. Můžete použít následující vzorový text:
 
 ```
 This text contains the terms "term1" and "term2".
@@ -132,7 +132,7 @@ Přidejte odkaz na složku, pokud jste ji ještě nedefinovali.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_textfolder)]
 
-### <a name="create-a-list"></a>Vytvoří seznam.
+### <a name="create-a-list"></a>Vytvořit seznam
 
 Do skriptu Pythonu přidejte následující kód, který vytvoří vlastní seznam podmínek a uloží jeho hodnotu ID.
 
@@ -242,7 +242,7 @@ Následující kód přidá všechny vaše obrázky do seznamu.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_add)]
 
-Ve svém skriptu definujte pomocnou funkci **add_images** .
+V rámci skriptu definujte funkci pomocné funkce **add_images** jinde.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelist_addhelper)]
 
@@ -356,4 +356,4 @@ V tomto rychlém startu jste zjistili, jak pomocí Content Moderator knihovny Py
 >[Koncepty moderování obrázků](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Co je Azure Content Moderator?](./overview.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py).

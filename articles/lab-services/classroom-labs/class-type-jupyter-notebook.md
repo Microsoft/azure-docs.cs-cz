@@ -1,6 +1,6 @@
 ---
-title: Set up a lab to teach data science with Python and Jupyter Notebooks | Microsoft Docs
-description: Learn how to set up a lab to teach data science using Python and Jupyter Notebooks.
+title: Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter | Microsoft Docs
+description: Naučte se, jak nastavit testovací prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter.
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -20,60 +20,60 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383980"
 ---
-# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Set up a lab to teach data science with Python and Jupyter Notebooks
+# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter
 
-This article outlines how to set up a template machine in Lab Services with the tools needed to teach students how to use [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io).  Jupyter Notebooks is an open-source project that lets you easily combine rich text and executable [Python](https://www.python.org/) source code on a single canvas called a notebook.  Running a notebook results in a linear record of inputs and outputs.  Those outputs can include text, tables of information, scatter plots, and more.
+V tomto článku se dozvíte, jak nastavit počítač šablony v testovacích službách pomocí nástrojů potřebných pro učení studentů, jak používat [Jupyter poznámkové bloky](http://jupyter-notebook.readthedocs.io).  Jupyter Poznámkový blok je open source projekt, který umožňuje snadno kombinovat text a spustitelný zdrojový kód [Pythonu](https://www.python.org/) na jednom plátně s názvem Poznámkový blok.  Spuštění poznámkového bloku má za následek lineární záznam vstupů a výstupů.  Tyto výstupy můžou zahrnovat text, tabulky informací, bodové a další.
 
-## <a name="lab-configuration"></a>Lab configuration
+## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-To set up this lab, you need an Azure subscription and lab account to get started. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Once you get an Azure subscription, you can create a new lab account in Azure Lab Services. For more information about creating a new lab account, see [tutorial to setup a lab account](tutorial-setup-lab-account.md).  You can also use an existing lab account.
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete použít i existující účet testovacího prostředí.
 
-### <a name="lab-account-settings"></a>Lab Account Settings
+### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 
-Enable the settings described in the table below for the lab account. For more information about how to enable marketplace images, see [specify marketplace images available to lab creators](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators).
+Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators).
 
-| Lab account setting | Pokyny |
+| Nastavení účtu testovacího prostředí | Pokyny |
 | ------------------- | ------------ |
-| Marketplace image | Enable the [Data Science Virtual Machine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) image for use within your lab account. |
+| Obrázek Marketplace | Povolte image [Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) pro použití v rámci vašeho účtu testovacího prostředí. |
 
 >[!TIP]
->This article will focus on configuring a template machine that uses the Windows Server operating system.  It's also possible to set up a data science class with Python and Jupyter Notebooks using [Data Science Virtual Machine for Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) or [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) images from the Azure Marketplace.
+>Tento článek se zaměřuje na konfiguraci počítače šablony, který používá operační systém Windows Server.  Je také možné nastavit třídu pro datové vědy pomocí poznámkových bloků Python a Jupyter pomocí [Data Science Virtual Machine pro Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) nebo [Data Science Virtual Machine pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) imagí z Azure Marketplace.
 
-### <a name="lab-settings"></a>Lab settings
+### <a name="lab-settings"></a>Nastavení testovacího prostředí
 
-Use the settings in the table below when setting up a classroom lab.  For more information how to create a classroom lab, see [set up a classroom lab tutorial](tutorial-setup-classroom-lab.md).
+Při nastavování testovacího prostředí učebny použijte nastavení v následující tabulce.  Další informace o tom, jak vytvořit prostředí učebny, najdete v tématu [Nastavení kurzu pro prostředí učebny](tutorial-setup-classroom-lab.md).
 
-| Lab settings | Value/instructions |
+| Nastavení testovacího prostředí | Hodnota/pokyny |
 | ------------ | ------------------ |
-|Virtual Machine Size| Small GPU (Compute). This size is best suited for compute-intensive and network-intensive applications like Artificial Intelligence and Deep Learning. |
-|Virtual Machine Image| SQL Server 2019 Standard on Windows Server 2019|
+|Velikost virtuálního počítače| Malý grafický procesor (COMPUTE). Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon a síťové prostředky, jako je umělá a obsáhlá výuka. |
+|Image virtuálního počítače| SQL Server 2019 standard v systému Windows Server 2019|
 
-## <a name="template-machine"></a>Template machine
+## <a name="template-machine"></a>Počítač šablony
 
-The [Data Science Virtual Machine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) image provides the necessary deep learning frameworks and tools required for this type of class.  The image includes Jupyter Notebooks and Visual Studio Code.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) is a web application that allows data scientists to take raw data, run computations, and see the results all in the same environment.  For our template machine, the web application will be running locally.  [Visual Studio Code](https://code.visualstudio.com/) is an IDE that provides a rich interactive experience when writing and testing a notebook.  For more information, see [Working with Jupyter Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
+Bitová kopie [Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) poskytuje nezbytné architektury a nástroje pro hloubkové učení, které jsou potřebné pro tento typ třídy.  Obrázek obsahuje poznámkové bloky Jupyter a Visual Studio Code.  [Jupyter Poznámkový blok](http://jupyter-notebook.readthedocs.io) je webová aplikace, která umožňuje odborníkům přes data přijímat nezpracované údaje, provádět výpočty a zobrazovat výsledky ve stejném prostředí.  Pro náš počítač šablony bude webová aplikace spuštěna místně.  [Visual Studio Code](https://code.visualstudio.com/) je rozhraní IDE, které poskytuje bohatě interaktivní prostředí při psaní a testování poznámkového bloku.  Další informace najdete v tématu [práce s Jupyter poznámkovým blokem v Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
 
-The remaining task to set up the class is to provide local notebooks.  For instructions how to use the Azure Machine Learning samples, see [how to configure an environment with Jupyter Notebooks](../../machine-learning/service/how-to-configure-environment.md#jupyter).  You can also provide your own notebooks on the template machine.  The notebooks will be copied to all student machines when the template is published.
+Zbývajícím úkolem pro nastavení třídy je poskytnutí místních poznámkových bloků.  Pokyny k použití ukázek Azure Machine Learning najdete v tématu [jak nakonfigurovat prostředí pomocí poznámkových bloků Jupyter](../../machine-learning/service/how-to-configure-environment.md#jupyter).  Můžete také zadat vlastní poznámkové bloky na počítači šablony.  Poznámkové bloky budou zkopírovány do všech počítačů studenta při publikování šablony.
 
 ## <a name="cost-estimate"></a>Odhad nákladů
 
-Let's cover a possible cost estimate for this class.  We'll use a class of 25 students.  There are 20 hours of scheduled class time.  Also, each student gets 10 hours quota for homework or assignments outside scheduled class time.  The virtual machine size we chose was small gpu (compute), which is 139 lab units.
+Pojďme pro tuto třídu pokrýt možné náklady.  Použijeme třídu 25 studentů.  Naplánovaný čas třídy je 20 hodin.  Každý student navíc získá kvótu 10 hodin pro domácí nebo přiřazení mimo plánovanou dobu třídy.  Velikost virtuálního počítače, kterou jsme zvolili, byla malá GPU (COMPUTE), což je 139 jednotek testovacího prostředí.
 
-Here is an example of a possible cost estimate for this class:
+Zde je příklad možného odhadu nákladů pro tuto třídu:
 
-25 students \* (20 scheduled hours + 10 quota hours) \* 139 lab units \*  0.01 USD per hour  = 1042.5 USD
+25 studentů \* (20 naplánovaných hodin + 10 hodin) \* 139 jednotek testovacího prostředí \* 0,01 USD za hodinu = 1042,5 USD
 
-Further more details on pricing, see [Azure Lab Services Pricing](https://azure.microsoft.com/pricing/details/lab-services/).
+Další podrobnosti o cenách najdete v článku [Azure Lab Services ceny](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Závěr
 
-In this article, we walked through the steps to create a lab for a Jupyter Notebooks class. You can use a similar setup for other machine learning classes.
+V tomto článku jsme vás provedl prostřednictvím kroků pro vytvoření testovacího prostředí pro třídu notebooků Jupyter. Podobné nastavení můžete použít pro jiné třídy strojového učení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Next steps are common to setting up any lab.
+Další kroky jsou běžné pro nastavení testovacího prostředí.
 
-- [Create and manage a template](how-to-create-manage-template.md)
+- [Vytvoření a Správa šablony](how-to-create-manage-template.md)
 - [Přidání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Set quota](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Set a schedule](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Email registration links to students](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Nastavit kvótu](how-to-configure-student-usage.md#set-quotas-for-users)
+- [Nastavit plán](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users)

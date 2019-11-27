@@ -1,7 +1,7 @@
 ---
-title: AD FS support in Microsoft Authentication Library for .NET
+title: Podpora AD FS v knihovně Microsoft Authentication Library pro .NET
 titleSuffix: Microsoft identity platform
-description: Learn about Active Directory Federation Services (AD FS) support in Microsoft Authentication Library for .NET (MSAL.NET).
+description: Přečtěte si o podpoře Active Directory Federation Services (AD FS) (AD FS) v knihovně Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -25,42 +25,42 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483064"
 ---
-# <a name="active-directory-federation-services-support-in-msalnet"></a>Active Directory Federation Services support in MSAL.NET
-Active Directory Federation Services (AD FS) in Windows Server enables you to add OpenID Connect and OAuth 2.0 based authentication and authorization to applications you are developing. Those applications can, then, authenticate users directly against AD FS. For more information, read [AD FS Scenarios for Developers](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios).
+# <a name="active-directory-federation-services-support-in-msalnet"></a>Podpora Active Directory Federation Services (AD FS) v MSAL.NET
+Active Directory Federation Services (AD FS) (AD FS) ve Windows serveru vám umožní přidat ověřování a autorizaci na základě protokolu OAuth 2,0 a povolit aplikace, které vyvíjíte. Tyto aplikace můžou a pak ověřovat uživatele přímo proti AD FS. Další informace najdete v [AD FS scénářích pro vývojáře](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios).
 
-Microsoft Authentication Library for .NET (MSAL.NET) supports two scenarios for authenticating against AD FS:
+Knihovna Microsoft Authentication Library pro .NET (MSAL.NET) podporuje dva scénáře ověřování proti AD FS:
 
-- MSAL.NET talks to Azure Active Directory, which itself is *federated* with AD FS.
-- MSAL.NET talks **directly** to an ADFS authority. This is only supported from AD FS 2019 and above. One of the scenarios this highlights is [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) support
+- MSAL.NET mluví Azure Active Directory, které jsou *federované* s AD FS.
+- MSAL.NET mluví **přímo** se autoritou služby ADFS. Tato podpora se podporuje jenom z AD FS 2019 a vyšších. Jedním z scénářů, které tato funkce zvýrazní, je [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) podpora.
 
 
-## <a name="msal-connects-to-azure-ad-which-is-federated-with-ad-fs"></a>MSAL connects to Azure AD, which is federated with AD FS
-MSAL.NET supports connecting to Azure AD, which signs in managed-users (users managed in Azure AD) or federated users (users managed by another identity provider such as AD FS). MSAL.NET does not know about the fact that users are federated. As far as it’s concerned, it talks to Azure AD.
+## <a name="msal-connects-to-azure-ad-which-is-federated-with-ad-fs"></a>MSAL se připojuje ke službě Azure AD, která je federované s AD FS
+MSAL.NET podporuje připojení ke službě Azure AD, která podepisuje spravované uživatele (uživatelé spravováni v Azure AD) nebo federované uživatele (uživatelé spravováni jiným poskytovatelem identity, jako je AD FS). MSAL.NET neví o tom, že jsou uživatelé federované. V takovém případě mluví s Azure AD.
 
-The [authority](msal-client-application-configuration.md#authority) you use in this case is the usual authority (authority host name + tenant, common, or organizations).
+[Autorita](msal-client-application-configuration.md#authority) , kterou použijete v tomto případě, je obvyklá autorita (název hostitele autority + tenant, Common nebo organizace).
 
-### <a name="acquiring-a-token-interactively"></a>Acquiring a token interactively
-When you call the `AcquireTokenInteractive` method, the user experience is typically:
+### <a name="acquiring-a-token-interactively"></a>Interaktivní získání tokenu
+Když zavoláte metodu `AcquireTokenInteractive`, uživatelské prostředí je obvykle:
 
-1. The user enters their account ID.
-2. Azure AD displays briefly the message "Taking you to your organization's page".
-3. The user is redirected to the sign-in page of the identity provider. The sign-in page is usually customized with the logo of the organization.
+1. Uživatel zadá své ID účtu.
+2. Služba Azure AD stručně zobrazí zprávu s odkazem na stránku vaší organizace.
+3. Uživatel se přesměruje na přihlašovací stránku zprostředkovatele identity. Přihlašovací stránka se obvykle přizpůsobí s logem organizace.
 
-Supported AD FS versions in this federated scenario are AD FS v2, AD FS v3 (Windows Server 2012 R2), and AD FS v4 (AD FS 2016).
+Podporované verze AD FS v tomto federovaném scénáři jsou AD FS v2, AD FS V3 (Windows Server 2012 R2) a AD FS v4 (AD FS 2016).
 
-### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Acquiring a token using AcquireTokenByIntegratedAuthentication or AcquireTokenByUsernamePassword
-When acquiring a token using the `AcquireTokenByIntegratedAuthentication` or `AcquireTokenByUsernamePassword` methods, MSAL.NET gets the identity provider to contact based on the username.  MSAL.NET receives a [SAML 1.1 token](reference-saml-tokens.md) after contacting the identity provider.  MSAL.NET then provides the SAML token to Azure AD as a user assertion (similar to the [on-behalf-of flow](msal-authentication-flows.md#on-behalf-of)) to get back a JWT.
+### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Získání tokenu pomocí AcquireTokenByIntegratedAuthentication nebo AcquireTokenByUsernamePassword
+Při získání tokenu pomocí `AcquireTokenByIntegratedAuthentication` nebo `AcquireTokenByUsernamePassword` metody MSAL.NET získá poskytovatele identity, aby kontaktoval na základě uživatelského jména.  MSAL.NET po kontaktování zprostředkovatele identity obdrží [token SAML 1,1](reference-saml-tokens.md) .  MSAL.NET pak poskytuje token SAML pro Azure AD jako kontrolní výraz uživatele (podobně jako [u toku](msal-authentication-flows.md#on-behalf-of)spouštěného za běhu), který vrátí token JWT.
 
-## <a name="msal-connects-directly-to-ad-fs"></a>MSAL connects directly to AD FS
-MSAL.NET supports connecting to AD FS 2019, which is Open ID Connect compliant and understands PKCE and scopes. This support requires that a service pack [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) is applied to Windows Server. When connecting directly to AD FS, the authority you'll want to use to build your application is similar to `https://mysite.contoso.com/adfs/`.
+## <a name="msal-connects-directly-to-ad-fs"></a>MSAL se připojuje přímo k AD FS
+MSAL.NET podporuje připojení k AD FS 2019, což je otevřené ID připojení kompatibilní a pochopení PKCE a oborů. Tato podpora vyžaduje, aby se v systému Windows Server používala aktualizace Service Pack [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) . Při přímém připojení k AD FS se autorita, kterou chcete použít k sestavení vaší aplikace, podobná `https://mysite.contoso.com/adfs/`.
 
-Currently, there are no plans to support a direct connection to:
+V současné době nejsou k dispozici žádné plány pro podporu přímého připojení k:
 
-- AD FS 16, as it doesn't support PKCE and still uses resources, not scope
-- AD FS v2, which is not OIDC-compliant.
+- AD FS 16, protože nepodporuje PKCE a pořád používá prostředky, ne obor
+- AD FS v2, který není kompatibilní s OIDC.
 
- If you need to support scenarios requiring a direct connection to AD FS 2016, use the latest version of [Azure Active Directory Authentication Library](active-directory-authentication-libraries.md#microsoft-supported-client-libraries). When you have upgraded your on-premises system to AD FS 2019, you'll be able to use MSAL.NET.
+ Pokud potřebujete podporu scénářů vyžadujících přímé připojení k AD FS 2016, použijte nejnovější verzi [knihovny ověřování Azure Active Directory](active-directory-authentication-libraries.md#microsoft-supported-client-libraries). Po upgradu místního systému na AD FS 2019 budete moci používat MSAL.NET.
 
 ## <a name="next-steps"></a>Další kroky
 
-For the federated case, see [Configure Azure Active Directory sign in behavior for an application by using a Home Realm Discovery policy](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
+V případě federovaného případu si přečtěte téma [Konfigurace chování přihlášení Azure Active Directory pro aplikaci pomocí zásad zjišťování domovské sféry](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal) .

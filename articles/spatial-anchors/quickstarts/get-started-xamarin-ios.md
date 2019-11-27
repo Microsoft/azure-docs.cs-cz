@@ -48,7 +48,7 @@ Otevřete `Xamarin/SampleXamarin.sln` v aplikaci Visual Studio.
 
 Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Při [nastavování prostředku prostorových ukotvení](#create-a-spatial-anchors-resource)jste je zkopírovali do textového editoru.
 
-Otevřít `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
+Otevřete `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
 Vyhledejte pole `SpatialAnchorsAccountKey` a nahraďte `Set me` klíčem účtu.
 
