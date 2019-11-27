@@ -19,9 +19,9 @@ ms.locfileid: "74456570"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
-Language Understanding (LUIS) is a cloud-based API service that applies custom machine-learning intelligence to natural language text to predict overall meaning, and pull out relevant, detailed information. 
+Language Understanding (LUIS) je cloudová služba API, která na text v přirozeném jazyce používá vlastní informace o tom, jak předpovědět celkový význam a vyžádat si relevantní a podrobné informace. 
 
-For example, when a client application sends the text, `find me a wireless keyboard for $30`, LUIS responds with the following JSON object. 
+Například když klientská aplikace pošle text, `find me a wireless keyboard for $30`LUIS odpoví následujícím objektem JSON. 
 
 ```JSON
 {
@@ -48,26 +48,26 @@ For example, when a client application sends the text, `find me a wireless keybo
     }
 }
 ```
-In the example above, the _**intent**_ , or overall meaning of the phrase is that the user is trying to find an item. The detailed pieces of information that LUIS extracts are called _**entities**_ . In this case, the entities are the name of the item the user is looking for and the amount of money they want to spend.
+V předchozím příkladu _**záměr**_ nebo celkový význam fráze je, že se uživatel pokouší najít položku. Podrobné informace, které LUIS extrahují, se nazývají _**entity**_ . V tomto případě jsou entitami název položky, kterou uživatel hledá, a množství peněz, které chtějí strávit.
 
-Client applications use LUIS's returned JSON, the _intent_ (category), and _entities_ (extracted detailed information), to drive actions in the client application. A client application for LUIS is often a conversational application that communicates with a user in natural language to complete a task. Mezi příklady klientských aplikací patří aplikace sociálních médií, chatboti a desktopové aplikace s podporou hlasových služeb. 
+Klientské aplikace používají LUIS JSON, _záměr_ (kategorie) a _entity_ (extrahování podrobných informací) k řízení akcí v klientské aplikaci. Klientská aplikace pro LUIS je často konverzační aplikace, která komunikuje s uživatelem v přirozeném jazyce k dokončení úkolu. Mezi příklady klientských aplikací patří aplikace sociálních médií, chatboti a desktopové aplikace s podporou hlasových služeb. 
 
-![Conceptual image of 3 client applications working with Cognitive Services Language Understanding (LUIS)](./media/luis-overview/luis-entry-point.png "Conceptual image of 3 client applications working with Cognitive Services Language Understanding (LUIS)")
+![Koncepční obrázek 3 klientských aplikací pracujících s Cognitive Services Language Understanding (LUIS)](./media/luis-overview/luis-entry-point.png "Koncepční obrázek 3 klientských aplikací pracujících s Cognitive Services Language Understanding (LUIS)")
 
-## <a name="example-use-luis-in-a-chat-bot"></a>Example use LUIS in a chat bot
+## <a name="example-use-luis-in-a-chat-bot"></a>Příklad použití LUIS v robotovi chatu
 
 <a name="Accessing-LUIS"></a>
 
-A client application sends utterances (text) to the published LUIS natural language processing endpoint [API][endpoint-apis] and receives the results as JSON responses. Běžnou klientskou aplikace pro službu LUIS je chatbot.
+Klientská aplikace pošle projevy (text) do publikovaného [rozhraní API][endpoint-apis] koncového bodu Luis přirozeného jazyka pro zpracování a výsledky obdrží jako odpověď JSON. Běžnou klientskou aplikace pro službu LUIS je chatbot.
 
 
-![Conceptual imagery of LUIS working with Chat bot to predict user text with natural language understanding (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Conceptual imagery of LUIS working with Chat bot to predict user text with natural language understanding (NLP")
+![Koncepční obrázky LUIS pracující s robotem chatu pro předpověď textu uživatele s porozuměním v přirozeném jazyku (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Koncepční obrázky LUIS pracující s robotem chatu pro předpověď textu uživatele s porozuměním v přirozeném jazyku (NLP")
 
 |Krok|Akce|
 |:--|:--|
-|1\. místo|Klientská aplikace odešle _promluvu_ uživatele (text napsaný vlastními slovy): „I want to call my HR rep“ (Chci zavolat zástupci z oddělení lidských zdrojů). do koncového bodu služby LUIS jako požadavek HTTP.|
-|2|LUIS applies machine learned language models to the user's unstructured input text and returns a JSON-formatted response, with a top intent, `HRContact`. Odpověď koncového bodu JSON obsahuje minimálně promluvu dotazu a záměr s nejvyšším skóre. It can also extract data such as the _Contact Type_ entity.|
-|3|Klientská aplikace se na základě odpovědi ve formátu JSON rozhoduje, jak splnit požadavky uživatele. These decisions can include a decision tree in the bot and calls to other services. |
+|1|Klientská aplikace odešle _promluvu_ uživatele (text napsaný vlastními slovy): „I want to call my HR rep“ (Chci zavolat zástupci z oddělení lidských zdrojů). do koncového bodu služby LUIS jako požadavek HTTP.|
+|2|LUIS aplikuje na nestrukturovaný vstupní text uživatele zjištěné jazykové modely a vrátí odpověď ve formátu JSON s nejvyšším záměrem `HRContact`. Odpověď koncového bodu JSON obsahuje minimálně promluvu dotazu a záměr s nejvyšším skóre. Může také extrahovat data, jako je například entita _typu kontakt_ .|
+|3|Klientská aplikace se na základě odpovědi ve formátu JSON rozhoduje, jak splnit požadavky uživatele. Tato rozhodnutí mohou zahrnovat rozhodovací strom na robotovi a volání dalších služeb. |
 
 Aplikace LUIS poskytuje klientské aplikaci informace, které jí umožní chytře rozhodovat. Služba LUIS toto rozhodování nezajišťuje. 
 
@@ -76,18 +76,18 @@ Aplikace LUIS poskytuje klientské aplikaci informace, které jí umožní chyt�
 
 ## <a name="natural-language-processing"></a>Zpracování přirozeného jazyka
 
-Your LUIS app contains domain-specific natural language models, which work together. You can start the LUIS app with one or more prebuilt models, build your own model, or blend prebuilt models with your own custom information.
+Vaše aplikace LUIS obsahuje modely přirozeného jazyka specifické pro doménu, které vzájemně spolupracují. Aplikaci LUIS můžete spustit s jedním nebo více předem sestavenými modely, Sestavte si vlastní model nebo blende předem připravené modely s vlastními informacemi.
 
-* **Prebuilt model** LUIS has many prebuilt domains that include intent and entity models that work together to complete common usage scenarios. These domains include labeled utterances that can be inspected and edited, allowing you to customize them. [Předem připravené doménové modely](luis-how-to-use-prebuilt-domains.md) zahrnují celý návrh a představují skvělý způsob, jak rychle začít používat službu LUIS. In addition, there are prebuilt entities such as currency and number that you can use independently from the prebuilt domains.
+* **Předem sestavený model** LUIS má mnoho předem sestavených domén, které zahrnují modely záměrů a entit, které spolupracují za účelem dokončení běžných scénářů použití. Tyto domény zahrnují označené projevy, které je možné kontrolovat a upravovat, a umožňují jejich přizpůsobení. [Předem připravené doménové modely](luis-how-to-use-prebuilt-domains.md) zahrnují celý návrh a představují skvělý způsob, jak rychle začít používat službu LUIS. Kromě toho existují předem připravené entity, jako je měna a číslo, které můžete použít nezávisle na předem sestavených doménách.
 
-* **Custom model** LUIS gives you several ways to build your own custom models including intents, and entities. Entities include machine-learned entities, pattern matching entities, and a combination of machine-learned and pattern matching.
+* **Vlastní model** LUIS nabízí několik způsobů, jak vytvářet vlastní modely, včetně záměrů a entit. Mezi entity patří entity náročné na počítač, entity pro porovnávání vzorů a kombinace porovnávacího strojového a vzorového porovnávání.
 
-## <a name="build-the-luis-app"></a>Build the LUIS app
-Build the app with the [authoring](https://go.microsoft.com/fwlink/?linkid=2092087) APIs or with the [LUIS portal](https://www.luis.ai).
+## <a name="build-the-luis-app"></a>Sestavení aplikace LUIS
+Sestavte aplikaci s využitím rozhraní API pro [vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087) nebo pomocí [portálu Luis](https://www.luis.ai).
 
-The LUIS app begins with categories of input text called **[intents](luis-concept-intent.md)** . Každý záměr potřebuje příklady **[promluv](luis-concept-utterance.md)** uživatele. Each utterance can provide data that needs to be extracted. 
+Aplikace LUIS začíná kategoriemi vstupního textu s názvem **[záměry](luis-concept-intent.md)** . Každý záměr potřebuje příklady **[promluv](luis-concept-utterance.md)** uživatele. Každý utterance může poskytnout data, která je třeba extrahovat. 
 
-|Příklad promluvy uživatele|Záměr|Extracted data|
+|Příklad promluvy uživatele|Záměr|Extrahovaná data|
 |-----------|-----------|-----------|
 |`Book a flight to __Seattle__?`|BookFlight (Rezervovat let)|Seattle|
 |`When does your store __open__?`|StoreHoursAndLocation (Poloha a otevírací doba obchodu)|open (otevírá)|
@@ -95,9 +95,9 @@ The LUIS app begins with categories of input text called **[intents](luis-concep
 
 ## <a name="query-prediction-endpoint"></a>Koncový bod předpovědi dotazů
 
-After your app is trained and published to the endpoint, the client application sends utterances to the prediction [endpoint](https://go.microsoft.com/fwlink/?linkid=2092356) API. The API applies the app to the utterance for analysis and responds with the prediction results in a JSON format.  
+Po vyškolení a publikování vaší aplikace do koncového bodu pošle klientská aplikace projevy rozhraní API [koncového bodu](https://go.microsoft.com/fwlink/?linkid=2092356) předpovědi. Rozhraní API aplikuje aplikaci na utterance pro analýzu a odpoví s výsledkem předpovědi ve formátu JSON.  
 
-Odpověď koncového bodu JSON obsahuje minimálně promluvu dotazu a záměr s nejvyšším skóre. It can also extract data such as the following **Contact Type** entity and overall sentiment. 
+Odpověď koncového bodu JSON obsahuje minimálně promluvu dotazu a záměr s nejvyšším skóre. Může také extrahovat data, jako je například následující entita **typu kontakt** a celková mínění. 
 
 ```JSON
 {
@@ -125,41 +125,41 @@ Odpověď koncového bodu JSON obsahuje minimálně promluvu dotazu a záměr s 
 
 ## <a name="improve-model-prediction"></a>Vylepšení předpovědí modelu
 
-After your LUIS app is published and receives real user utterances, LUIS provides [active learning](luis-concept-review-endpoint-utterances.md) of endpoint utterances to improve prediction accuracy. 
+Po publikování aplikace LUIS a přijetí reálných uživatelských projevy LUIS poskytuje [aktivní učení](luis-concept-review-endpoint-utterances.md) koncového bodu projevy, aby se zlepšila přesnost předpovědi. 
 
 <a name="using-luis"></a>
 
-## <a name="iterative-development-lifecycle"></a>Iterative development lifecycle
-LUIS provides tools, versioning, and collaboration with other LUIS authors to integrate into the full iterative [development life cycle](luis-concept-app-iteration.md). 
+## <a name="iterative-development-lifecycle"></a>Cyklus iterativního vývoje
+LUIS poskytuje nástroje, správu verzí a spolupráci s ostatními autory LUIS pro integraci do plného iterativního [životního cyklu vývoje](luis-concept-app-iteration.md). 
 
 ## <a name="implementing-luis"></a>Implementace služby LUIS
-Language Understanding (LUIS), as a REST API, can be used with any product, service, or framework with an HTTP request. Následující seznam obsahuje produkty a služby Microsoftu nejčastěji používané se službou LUIS.
+Language Understanding (LUIS) jako REST API lze použít s libovolným produktem, službou nebo architekturou s požadavkem HTTP. Následující seznam obsahuje produkty a služby Microsoftu nejčastěji používané se službou LUIS.
 
 Hlavní klientská aplikace služby LUIS je následující:
-* [Robot webové aplikace](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) umožňující rychlé vytvoření chatbota s podporou služby LUIS, který bude s uživatelem komunikovat prostřednictvím textového vstupu. Uses [Bot Framework][bot-framework] version [4.x](https://github.com/Microsoft/botbuilder-dotnet) for a complete bot experience.
+* [Robot webové aplikace](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) umožňující rychlé vytvoření chatbota s podporou služby LUIS, který bude s uživatelem komunikovat prostřednictvím textového vstupu. Pro kompletní prostředí robota používá [rozhraní bot Framework][bot-framework] verze [4. x](https://github.com/Microsoft/botbuilder-dotnet) .
 
 Nástroje pro rychlé a snadné používání služby LUIS s využitím robota:
-* [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) The NPM package provides authoring and prediction with as either a stand-alone command line tool or as import. 
+* [Luis CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) Balíček NPM poskytuje vytváření a předpovědi pomocí samostatného nástroje příkazového řádku nebo jako importu. 
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) – LUISGen je nástroj pro generování zdrojového kódu C# se silnými typy a zdrojového kódu TypeScript z exportovaného modelu LUIS.
 * [Dispatch](https://aka.ms/dispatch-tool) umožňuje používat z nadřazené aplikace několik aplikací LUIS a QnA Maker s využitím modelu dispečera.
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) – LUDown je nástroj příkazového řádku, který pomáhá spravovat jazykové modely pro vašeho robota.
-* [Bot framework - Composer](https://github.com/microsoft/BotFramework-Composer) - an integrated development tool for developers and multi-disciplinary teams to build bots and conversational experiences with the Microsoft Bot Framework
+* [Robot Framework – skladatel](https://github.com/microsoft/BotFramework-Composer) – integrovaný vývojový nástroj pro vývojáře a víceklientské týmy pro sestavování roboty a konverzací pomocí Microsoft bot Frameworku
 
 Další služby Cognitive Services používané se službou LUIS:
-* [QnA Maker][qnamaker] allows several types of text to combine into a question and answer knowledge base.
+* [QnA maker][qnamaker] umožňuje zkombinovat několik typů textu do otázek a odpovědí znalostní báze.
 * [Služba Speech](../Speech-Service/overview.md) převádí mluvené požadavky na text. 
 * [Conversation learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview) umožňuje ve službě LUIS rychleji vytvářet konverzace chatbota.
 
-Samples using LUIS:
-* [Conversational AI](https://github.com/Microsoft/AI) GitHub repository.
-* [Bot framework - Bot samples](https://github.com/microsoft/BotBuilder-Samples)
+Ukázky pomocí LUIS:
+* [Konverzační AI](https://github.com/Microsoft/AI) Úložiště GitHub.
+* [Robot Framework – ukázky bot](https://github.com/microsoft/BotBuilder-Samples)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Co je nového](whats-new.md)
-* Author a new LUIS app with a [prebuilt](luis-get-started-create-app.md) or [custom](luis-quickstart-intents-only.md) domain
+* Vytvoření nové aplikace LUIS s [předem vytvořenou](luis-get-started-create-app.md) nebo [vlastní](luis-quickstart-intents-only.md) doménou
 * [Odešlete dotaz na koncový bod předpovědi](luis-get-started-get-intent-from-browser.md) veřejné aplikace IoT. 
-* [Developer resources](developer-reference-resource.md) for LUIS. 
+* [Materiály pro vývojáře](developer-reference-resource.md) pro Luis. 
 
 [bot-framework]: https://docs.microsoft.com/bot-framework/
 [flow]: https://docs.microsoft.com/connectors/luis/

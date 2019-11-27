@@ -1,6 +1,6 @@
 ---
-title: Sample - Ensure HTTPS traffic for storage accounts
-description: This sample policy definition requires all Azure storage accounts to allow only secure HTTPS traffic.
+title: Ukázka – zajistěte provoz HTTPS pro účty úložiště.
+description: Tato ukázková definice zásad vyžaduje, aby všechny účty úložiště Azure povolovaly jenom zabezpečený provoz HTTPS.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 4d6b6f7e494d2f8c5278c546ead1f9697f245f38
@@ -10,7 +10,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463586"
 ---
-# <a name="sample---ensure-https-traffic-only-for-storage-account"></a>Sample - Ensure HTTPS traffic only for storage account
+# <a name="sample---ensure-https-traffic-only-for-storage-account"></a>Ukázka – zajistěte provoz HTTPS jenom pro účet úložiště.
 
 Tato zásada vyžaduje, aby účty úložiště používaly provoz HTTPS.
 
@@ -24,9 +24,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fhttps-traffic-only%2Fazurepolicy.json)
+[![nasazení ukázky zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fhttps-traffic-only%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -45,7 +45,7 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'https-traffic-only' --display-name 'Ensure h
 az policy assignment create --name <assignmentname> --scope <scope> --policy "https-traffic-only"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

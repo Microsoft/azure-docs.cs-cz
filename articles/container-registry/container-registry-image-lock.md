@@ -1,6 +1,6 @@
 ---
 title: Uzamknutí imagí
-description: Set attributes for a container image or repository so it can't be deleted or overwritten in an Azure container registry.
+description: Nastavte atributy pro Image kontejneru nebo úložiště, aby se nemohlo odstranit ani přepsat v registru kontejnerů Azure.
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: 9e55a6688be9f51f1c1b237ae86bd57692a86592
@@ -10,33 +10,33 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456332"
 ---
-# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Lock a container image in an Azure container registry
+# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Uzamknutí image kontejneru ve službě Azure Container Registry
 
-In an Azure container registry, you can lock an image version or a repository so that it can't be deleted or updated. To lock an image or a repository, update its attributes using the Azure CLI command [az acr repository update][az-acr-repository-update]. 
+Ve službě Azure Container Registry můžete zamknout verzi Image nebo úložiště, aby se nemohlo odstranit ani aktualizovat. Pokud chcete zamknout Image nebo úložiště, aktualizujte jeho atributy pomocí příkazu Azure CLI [AZ ACR úložiště Update][az-acr-repository-update]. 
 
-This article requires that you run the Azure CLI in Azure Cloud Shell or locally (version 2.0.55 or later recommended). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Tento článek vyžaduje, abyste spouštěli Azure CLI v Azure Cloud Shell nebo lokálně (doporučuje se verze 2.0.55 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 > [!IMPORTANT]
-> This article doesn't apply to locking an entire registry, for example, using **Settings > Locks** in the Azure portal, or `az lock` commands in the Azure CLI. Locking a registry resource doesn't prevent you from creating, updating, or deleting data in repositories. Locking a registry only affects management operations such as adding or deleting replications, or deleting the registry itself. More information in [Lock resources to prevent unexpected changes](../azure-resource-manager/resource-group-lock-resources.md).
+> Tento článek se nevztahuje na uzamykání celého registru, například pomocí **nastavení > zámky** v Azure Portal nebo `az lock` příkazů v rozhraní příkazového řádku Azure CLI. Uzamykání prostředku registru nebrání v vytváření, aktualizaci nebo odstraňování dat v úložištích. Uzamknutí registru má vliv jenom na operace správy, jako je přidání nebo odstranění replikace nebo odstranění samotného registru. Další informace o [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../azure-resource-manager/resource-group-lock-resources.md).
 
 ## <a name="scenarios"></a>Scénáře
 
-By default, a tagged image in Azure Container Registry is *mutable*, so with appropriate permissions you can repeatedly update and push an image with the same tag to a registry. Container images can also be [deleted](container-registry-delete.md) as needed. This behavior is useful when you develop images and need to maintain a size for your registry.
+Ve výchozím nastavení je označený obrázek v Azure Container Registry *proměnlivý*, takže s příslušnými oprávněními můžete opakovaně aktualizovat a nasdílet image se stejnou značkou do registru. V případě potřeby můžete také [Odstranit](container-registry-delete.md) image kontejneru. Toto chování je užitečné při vývoji imagí a potřebě udržovat velikost registru.
 
-However, when you deploy a container image to production, you might need an *immutable* container image. An immutable image is one that you can't accidentally delete or overwrite. Use the [az acr repository update][az-acr-repository-update] command to set repository attributes so you can:
+Pokud však nasadíte image kontejneru do produkčního prostředí, budete možná potřebovat *neměnné* image kontejneru. Neproměnlivá Image je taková, kterou nemůžete omylem odstranit ani přepsat. Pomocí příkazu [AZ ACR úložiště Update][az-acr-repository-update] nastavte atributy úložiště, abyste mohli:
 
-* Lock an image version, or an entire repository
+* Uzamčení verze bitové kopie nebo celého úložiště
 
-* Protect an image version or repository from deletion, but allow updates
+* Ochrana verze bitové kopie nebo úložiště před odstraněním, ale povolení aktualizací
 
-* Prevent read (pull) operations on an image version, or an entire repository
+* Zabránit operacím čtení (přijetí) v imagi verze nebo v celém úložišti
 
-See the following sections for examples.
+Příklady najdete v následujících oddílech.
 
-## <a name="lock-an-image-or-repository"></a>Lock an image or repository 
+## <a name="lock-an-image-or-repository"></a>Uzamknutí obrázku nebo úložiště 
 
-### <a name="show-the-current-repository-attributes"></a>Show the current repository attributes
-To see the current attributes of a repository, run the following [az acr repository show][az-acr-repository-show] command:
+### <a name="show-the-current-repository-attributes"></a>Zobrazit aktuální atributy úložiště
+Pokud chcete zobrazit aktuální atributy úložiště, spusťte následující příkaz [AZ ACR úložiště show][az-acr-repository-show] :
 
 ```azurecli
 az acr repository show \
@@ -44,8 +44,8 @@ az acr repository show \
     --output jsonc
 ```
 
-### <a name="show-the-current-image-attributes"></a>Show the current image attributes
-To see the current attributes of a tag, run the following [az acr repository show][az-acr-repository-show] command:
+### <a name="show-the-current-image-attributes"></a>Zobrazit aktuální atributy obrázku
+Chcete-li zobrazit aktuální atributy značky, spusťte následující příkaz [AZ ACR úložiště show][az-acr-repository-show] :
 
 ```azurecli
 az acr repository show \
@@ -53,9 +53,9 @@ az acr repository show \
     --output jsonc
 ```
 
-### <a name="lock-an-image-by-tag"></a>Lock an image by tag
+### <a name="lock-an-image-by-tag"></a>Uzamknutí obrázku podle značky
 
-To lock the *myrepo/myimage:tag* image in *myregistry*, run the following [az acr repository update][az-acr-repository-update] command:
+Chcete-li zamknout *myrepo/MyImage: image značky* v *myregistry*, spusťte následující příkaz [AZ ACR úložiště Update][az-acr-repository-update] :
 
 ```azurecli
 az acr repository update \
@@ -63,9 +63,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-an-image-by-manifest-digest"></a>Lock an image by manifest digest
+### <a name="lock-an-image-by-manifest-digest"></a>Uzamknutí obrázku pomocí výtahu manifestu
 
-To lock a *myrepo/myimage* image identified by manifest digest (SHA-256 hash, represented as `sha256:...`), run the following command. (To find the manifest digest associated with one or more image tags, run the [az acr repository show-manifests][az-acr-repository-show-manifests] command.)
+K uzamknutí image *myrepo/MyImage* identifikované hodnotou Digest MANIFESTU (SHA-256 hash reprezentovaná jako `sha256:...`) spusťte následující příkaz. (Chcete-li zjistit, který výtah manifestu je přidružen k jedné nebo více značkám obrázku, spusťte příkaz [AZ ACR úložištì show-Manifests][az-acr-repository-show-manifests] .)
 
 ```azurecli
 az acr repository update \
@@ -73,9 +73,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-a-repository"></a>Lock a repository
+### <a name="lock-a-repository"></a>Uzamčení úložiště
 
-To lock the *myrepo/myimage* repository and all images in it, run the following command:
+Chcete-li uzamknout úložiště *myrepo/MyImage* a všechny bitové kopie, spusťte následující příkaz:
 
 ```azurecli
 az acr repository update \
@@ -83,11 +83,11 @@ az acr repository update \
     --write-enabled false
 ```
 
-## <a name="protect-an-image-or-repository-from-deletion"></a>Protect an image or repository from deletion
+## <a name="protect-an-image-or-repository-from-deletion"></a>Ochrana Image nebo úložiště před odstraněním
 
-### <a name="protect-an-image-from-deletion"></a>Protect an image from deletion
+### <a name="protect-an-image-from-deletion"></a>Ochrana obrázku před odstraněním
 
-To allow the *myrepo/myimage:tag* image to be updated but not deleted, run the following command:
+Pokud chcete, aby se obrázek *značky myrepo/MyImage:* aktualizoval, ale neodstranil, spusťte následující příkaz:
 
 ```azurecli
 az acr repository update \
@@ -95,9 +95,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-### <a name="protect-a-repository-from-deletion"></a>Protect a repository from deletion
+### <a name="protect-a-repository-from-deletion"></a>Ochrana úložiště před odstraněním
 
-The following command sets the *myrepo/myimage* repository so it can't be deleted. Individual images can still be updated or deleted.
+Následující příkaz nastaví úložiště *myrepo/MyImage* tak, aby se nemohlo odstranit. Jednotlivé image se pořád dají aktualizovat nebo odstranit.
 
 ```azurecli
 az acr repository update \
@@ -105,9 +105,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-## <a name="prevent-read-operations-on-an-image-or-repository"></a>Prevent read operations on an image or repository
+## <a name="prevent-read-operations-on-an-image-or-repository"></a>Zabránit operacím čtení na obrázku nebo v úložišti
 
-To prevent read (pull) operations on the *myrepo/myimage:tag* image, run the following command:
+Chcete-li zabránit operacím čtení (pull) na obrázku *myrepo/MyImage: tag* , spusťte následující příkaz:
 
 ```azurecli
 az acr repository update \
@@ -115,7 +115,7 @@ az acr repository update \
     --read-enabled false
 ```
 
-To prevent read operations on all images in the *myrepo/myimage* repository, run the following command:
+Pokud chcete zabránit operacím čtení na všech obrázcích v úložišti *myrepo/MyImage* , spusťte následující příkaz:
 
 ```azurecli
 az acr repository update \
@@ -123,9 +123,9 @@ az acr repository update \
     --read-enabled false
 ```
 
-## <a name="unlock-an-image-or-repository"></a>Unlock an image or repository
+## <a name="unlock-an-image-or-repository"></a>Odemčení Image nebo úložiště
 
-To restore the default behavior of the *myrepo/myimage:tag* image so that it can be deleted and updated, run the following command:
+Chcete-li obnovit výchozí chování obrázku *značky myrepo/MyImage:* , aby jej bylo možné odstranit a aktualizovat, spusťte následující příkaz:
 
 ```azurecli
 az acr repository update \
@@ -133,7 +133,7 @@ az acr repository update \
     --delete-enabled true --write-enabled true
 ```
 
-To restore the default behavior of the *myrepo/myimage* repository and all images so that they can be deleted and updated, run the following command:
+Chcete-li obnovit výchozí chování úložiště *myrepo/MyImage* a všech imagí, aby bylo možné je odstranit a aktualizovat, spusťte následující příkaz:
 
 ```azurecli
 az acr repository update \
@@ -143,11 +143,11 @@ az acr repository update \
 
 ## <a name="next-steps"></a>Další kroky
 
-In this article, you learned about using the [az acr repository update][az-acr-repository-update] command to prevent deletion or updating of image versions in a repository. To set additional attributes, see the [az acr repository update][az-acr-repository-update] command reference.
+V tomto článku jste se dozvěděli o použití příkazu [AZ ACR úložištì Update][az-acr-repository-update] , který zabraňuje odstranění nebo aktualizaci verzí imagí v úložišti. Informace o nastavení dalších atributů najdete v referenčních informacích k příkazu [AZ ACR úložiště Update][az-acr-repository-update] .
 
-To see the attributes set for an image version or repository, use the [az acr repository show][az-acr-repository-show] command.
+Pokud chcete zobrazit atributy nastavené pro verzi Image nebo úložiště, použijte příkaz [AZ ACR úložištì show][az-acr-repository-show] .
 
-For details about delete operations, see [Delete container images in Azure Container Registry][container-registry-delete].
+Podrobnosti o operacích odstranění najdete [v tématu Odstranění imagí kontejneru v Azure Container Registry][container-registry-delete].
 
 <!-- LINKS - Internal -->
 [az-acr-repository-update]: /cli/azure/acr/repository#az-acr-repository-update

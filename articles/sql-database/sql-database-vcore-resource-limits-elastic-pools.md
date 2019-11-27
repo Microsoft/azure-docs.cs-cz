@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 11/04/2019
-ms.openlocfilehash: f356b9d248ac9c5f0bcfaaeeb37b43d958eaa528
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/25/2019
+ms.openlocfilehash: 74cc13386befa5cd97900b6b36d07d3144d9b727
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822360"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534208"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu vCore
 
@@ -25,13 +25,12 @@ Tento článek poskytuje podrobné omezení prostředků pro Azure SQL Database 
 Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení prostředků DTU – elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md).
 
 > [!IMPORTANT]
-> Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
 Úroveň služby, výpočetní velikost a množství úložiště můžete nastavit pomocí [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShellu](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), rozhraní příkazového [řádku Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases)nebo [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
 > [!IMPORTANT]
 > Pokyny a požadavky pro škálování najdete v tématu [škálování elastického fondu](sql-database-elastic-pool-scale.md) .
-
 
 ## <a name="general-purpose---provisioned-compute---gen4"></a>Pro obecné účely zřízené COMPUTE – COMPUTE GEN4 –
 
@@ -47,25 +46,24 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Paměť (GB)|7|14|21|28|35|42|
 |Maximální počet databází pro každý fond|100|200|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
-|Maximální velikost dat (GB)|512|756|756|1536|1536|1536|
-|Maximální velikost protokolu|154|227|227|461|461|461|
+|Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Maximální velikost dat (GB)|512|756|1536|1536|1536|2 048|
+|Maximální velikost protokolu|154|227|461|461|461|614|
 |Velikost databáze TempDB (GB)|32|64|96|128|160|192|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
-|Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
+|Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Cílové IOPS (64 KB)|500|1000|1 500|2000|2500|3000|
 |Omezení rychlosti protokolu (MB/s)|4,6875|9,375|14,0625|18,75|23,4375|28,125|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * |210|420|630|840|1050|1260|
 |Maximální počet souběžných přihlášení na fond * |210|420|630|840|1050|1260|
 |Maximální počet povolených relací|30000|30000|30000|30000|30000|30000|
-|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
+|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
 |Počet replik|1|1|1|1|1|1|
-|Více AZ|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
-|Škálování čtení na více instancí|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Škálování čtení|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi najdete v části [omezení prostředků databáze na jednu databázi](sql-database-vcore-resource-limits-single-databases.md). Pokud například elastický fond používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na Vcore.  Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
-
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Úroveň služby pro obecné účely: výpočetní platforma generace 4 (část 2)
 
@@ -76,25 +74,24 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Paměť (GB)|49|56|63|70|112|168|
 |Maximální počet databází pro každý fond|500|500|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
-|Maximální velikost dat (GB)|1536|2 048|2 048|2 048|3584|4 096|
-|Maximální velikost protokolu (GB)|461|614|614|614|1075|1229|
+|Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Maximální velikost dat (GB)|2 048|2 048|2 048|2 048|3584|4 096|
+|Maximální velikost protokolu (GB)|614|614|614|614|1075|1229|
 |Velikost databáze TempDB (GB)|224|256|288|320|384|384|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
-|Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
+|Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Cílové IOPS (64 KB)|3500|4000|4500|5000|7000|7000|
 |Omezení rychlosti protokolu (MB/s)|32,8125|37,5|37,5|37,5|37,5|37,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální počet souběžných přihlášení ve fondu (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální počet povolených relací|30000|30000|30000|30000|30000|30000|
-|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
+|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |Počet replik|1|1|1|1|1|1|
-|Více AZ|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
-|Škálování čtení na více instancí|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Škálování čtení|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi najdete v části [omezení prostředků databáze na jednu databázi](sql-database-vcore-resource-limits-single-databases.md). Pokud například elastický fond používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na Vcore.  Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
-
 
 ## <a name="general-purpose---provisioned-compute---gen5"></a>Pro obecné účely zřízené COMPUTE – Gen5
 
@@ -107,21 +104,21 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Paměť (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
 |Maximální počet databází pro každý fond|100|200|500|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
-|Maximální velikost dat (GB)|512|756|756|1536|1536|1536|
-|Maximální velikost protokolu (GB)|154|227|227|461|461|461|461|
+|Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Maximální velikost dat (GB)|512|756|1536|1536|1536|2 048|2 048|
+|Maximální velikost protokolu (GB)|154|227|461|461|461|614|614|
 |Velikost databáze TempDB (GB)|64|128|192|256|320|384|384|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
-|Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
+|Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Cílové IOPS (64 KB)|1000|2000|3000|4000|5000|6000|7000|
 |Omezení rychlosti protokolu (MB/s)|4,6875|9,375|14,0625|18,75|23,4375|28,125|32,8125|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|210|420|630|840|1050|1260|1470|
 |Maximální počet souběžných přihlášení na fond (požadavky) *|210|420|630|840|1050|1260|1470|
 |Maximální počet povolených relací|30000|30000|30000|30000|30000|30000|30000|
-|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
+|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
-|Škálování čtení na více instancí|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Škálování čtení|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi najdete v části [omezení prostředků databáze na jednu databázi](sql-database-vcore-resource-limits-single-databases.md). Pokud například elastický fond používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na Vcore.  Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
@@ -135,20 +132,20 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Paměť (GB)|81,6|91,8|102|122,4|163,2|204|408|
 |Maximální počet databází pro každý fond|500|500|500|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
-|Maximální velikost dat (GB)|2 048|2 048|3072|3072|4 096|4 096|4 096|
-|Maximální velikost protokolu (GB)|614|614|922|922|1229|1229|1229|
+|Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Maximální velikost dat (GB)|2 048|3072|3072|3072|4 096|4 096|4 096|
+|Maximální velikost protokolu (GB)|614|922|922|922|1229|1229|1229|
 |Velikost databáze TempDB (GB)|384|384|384|384|384|384|384|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|Úložiště úrovně Premium (vzdálené)|
-|Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
+|Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Cílové IOPS (64 KB)|7000|7000|7000|7000|7000|7000|7000|
 |Omezení rychlosti protokolu (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1680|1890|2 100|2520|3360|4200|8400|
 |Maximální počet souběžných přihlášení na fond (požadavky) *|1680|1890|2 100|2520|3360|4200|8400|
-|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
+|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...16, 24, 32, 40|0, 0.25, 0.5, 1...16, 24, 32, 40, 80|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
-|Škálování čtení na více instancí|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Škálování čtení|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Pro obecné účely zřízené COMPUTE-Fsv2-Series
@@ -162,27 +159,23 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Paměť (GB)|136|
 |Maximální počet databází pro každý fond|500|
 |Podpora columnstore|Ano|
-|Úložiště OLTP v paměti (GB)|Není dostupné.|
+|Úložiště OLTP v paměti (GB)|neuvedeno|
 |Maximální velikost dat (GB)|4 096|
 |Maximální velikost protokolu (GB)|1024|
 |Maximální velikost dat databáze TempDB (GB)|333|
 |Typ úložiště|Úložiště úrovně Premium (vzdálené)|
-|Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|
+|Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Cílové IOPS (64 KB)|36000|
 |Omezení rychlosti protokolu (MB/s)|37,5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1680|
 |Maximální počet souběžných přihlášení na fond (požadavky) *|1680|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0-72|
 |Počet replik|1|
-|Více AZ|Není dostupné.|
-|Škálování čtení na více instancí|Není dostupné.|
+|Více AZ|neuvedeno|
+|Škálování čtení|neuvedeno|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|
 
-
-
-
 \* maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi najdete v části [omezení prostředků databáze na jednu databázi](sql-database-vcore-resource-limits-single-databases.md). Pokud například elastický fond používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na Vcore.  Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
-
 
 ## <a name="business-critical---provisioned-compute---gen4"></a>Uživatelsky důležité – zřízené COMPUTE – COMPUTE GEN4 –
 
@@ -191,29 +184,29 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Podniková úroveň služeb: výpočetní platforma generace 4 (část 1)
 
-|Velikost výpočetního prostředí|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|Velikost výpočetního prostředí|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
-|Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
-|Virtuální jádra|1|2|3|4|5|6|
-|Paměť (GB)|7|14|21|28|35|42|
-|Maximální počet databází pro každý fond|Pro tuto výpočetní velikost se podporují jenom jeden databáze.|50|100|100|100|100|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|1|2|3|4|5|6|
-|Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
-|Maximální velikost dat (GB)|650|650|650|650|650|650|
-|Maximální velikost protokolu (GB)|195|195|195|195|195|195|
-|Velikost databáze TempDB (GB)|32|64|96|128|160|192|
-|Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
-|Cílové IOPS (64 KB)|5000|10000|15 000|20000|25000|30000|
-|Omezení rychlosti protokolu (MB/s)|10|20|30|40|50|60|
-|Maximální počet souběžných pracovních procesů na fond (požadavky) *|210|420|630|840|1050|1260|
-|Maximální počet souběžných přihlášení na fond (požadavky) *|210|420|630|840|1050|1260|
-|Maximální počet povolených relací|30000|30000|30000|30000|30000|30000|
-|Minimální/maximální vCore elastického fondu – volby pro každou databázi|Není dostupné.|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
-|Počet replik|4|4|4|4|4|4|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
-|Škálování čtení na více instancí|Ano|Ano|Ano|Ano|Ano|Ano|
-|Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
+|Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
+|Virtuální jádra|2|3|4|5|6|
+|Paměť (GB)|14|21|28|35|42|
+|Maximální počet databází pro každý fond|100|100|100|100|100|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
+|Úložiště OLTP v paměti (GB)|2|3|4|5|6|
+|Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
+|Maximální velikost dat (GB)|1024|1024|1024|1024|1024|
+|Maximální velikost protokolu (GB)|307|307|307|307|307|
+|Velikost databáze TempDB (GB)|64|96|128|160|192|
+|Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
+|Cílové IOPS (64 KB)|10000|15 000|20000|25000|30000|
+|Omezení rychlosti protokolu (MB/s)|20|30|40|50|60|
+|Maximální počet souběžných pracovních procesů na fond (požadavky) *|420|630|840|1050|1260|
+|Maximální počet souběžných přihlášení na fond (požadavky) *|420|630|840|1050|1260|
+|Maximální počet povolených relací|30000|30000|30000|30000|30000|
+|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
+|Počet replik|4|4|4|4|4|
+|Více AZ|Ano|Ano|Ano|Ano|Ano|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|
+|Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi najdete v části [omezení prostředků databáze na jednu databázi](sql-database-vcore-resource-limits-single-databases.md). Pokud například elastický fond používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na Vcore.  Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
 
@@ -225,22 +218,22 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|81,6|91,8|102|122,4|163,2|204|
 |Maximální počet databází pro každý fond|100|100|100|100|100|100|
-|Podpora columnstore|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
+|Podpora columnstore|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Úložiště OLTP v paměti (GB)|7|8|9.5|11|20|36|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
-|Maximální velikost dat (GB)|650|650|650|650|1024|1024|
-|Maximální velikost protokolu (GB)|195|195|195|195|307|307|
+|Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
+|Maximální velikost protokolu (GB)|307|307|307|307|307|307|
 |Velikost databáze TempDB (GB)|224|256|288|320|384|384|
-|Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
+|Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
 |Cílové IOPS (64 KB)|35000|40000|45000|50000|80000|120000|
 |Omezení rychlosti protokolu (MB/s)|70|80|80|80|80|80|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální počet souběžných přihlášení na fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální počet povolených relací|30000|30000|30000|30000|30000|30000|
-|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
+|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |Počet replik|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
-|Škálování čtení na více instancí|Ano|Ano|Ano|Ano|Ano|Ano|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi najdete v části [omezení prostředků databáze na jednu databázi](sql-database-vcore-resource-limits-single-databases.md). Pokud například elastický fond používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na Vcore.  Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
@@ -249,29 +242,29 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Podniková úroveň služeb: výpočetní platforma generace 5 (část 1)
 
-|Velikost výpočetního prostředí|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|Velikost výpočetního prostředí|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
-|Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
-|Virtuální jádra|2|4|6|8|10|12|14|
-|Paměť (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
-|Maximální počet databází pro každý fond|Pro tuto výpočetní velikost se podporují jenom jeden databáze.|50|100|100|100|100|100|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
-|Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|3072|
-|Maximální velikost protokolu (GB)|307|307|307|461|461|922|922|
-|Velikost databáze TempDB (GB)|64|128|192|256|320|384|384|
-|Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
-|Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
-|Cílové IOPS (64 KB)|5000|10000|15 000|20000|25000|30000|35000|
-|Omezení rychlosti protokolu (MB/s)|15|30|45|60|75|90|105|
-|Maximální počet souběžných pracovních procesů na fond (požadavky) *|210|420|630|840|1050|1260|1470|
-|Maximální počet souběžných přihlášení na fond (požadavky) *|210|420|630|840|1050|1260|1470|
-|Maximální počet povolených relací|30000|30000|30000|30000|30000|30000|30000|
-|Minimální/maximální vCore elastického fondu – volby pro každou databázi|Není dostupné.|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
-|Počet replik|4|4|4|4|4|4|4|
+|Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Virtuální jádra|4|6|8|10|12|14|
+|Paměť (GB)|20,4|30,6|40,8|51|61,2|71,4|
+|Maximální počet databází pro každý fond|100|100|100|100|100|100|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
+|Úložiště OLTP v paměti (GB)|3,142|4,713|6,284|8,655|11,026|13,397|
+|Maximální velikost dat (GB)|1024|1536|1536|1536|3072|3072|
+|Maximální velikost protokolu (GB)|307|307|461|461|922|922|
+|Velikost databáze TempDB (GB)|128|192|256|320|384|384|
+|Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
+|Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
+|Cílové IOPS (64 KB)|10000|15 000|20000|25000|30000|35000|
+|Omezení rychlosti protokolu (MB/s)|30|45|60|75|90|105|
+|Maximální počet souběžných pracovních procesů na fond (požadavky) *|420|630|840|1050|1260|1470|
+|Maximální počet souběžných přihlášení na fond (požadavky) *|420|630|840|1050|1260|1470|
+|Maximální počet povolených relací|30000|30000|30000|30000|30000|30000|
+|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
+|Počet replik|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
-|Škálování čtení na více instancí|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
+|Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* maximálního počtu souběžných pracovních procesů (požadavků) pro každou jednotlivou databázi najdete v části [omezení prostředků databáze na jednu databázi](sql-database-vcore-resource-limits-single-databases.md). Pokud například elastický fond používá Gen5 a jeho maximální vCore na databázi je 2, maximální počet souběžných pracovních procesů je 200.  Pokud je maximální počet vCore na databázi 0,5, pak maximální počet souběžných pracovních procesů je 50, protože na Gen5 existuje maximální 100 počet souběžných pracovních procesů na Vcore.  Pro jiné maximum vCore nastavení na databázi, které mají méně než 1 vCore nebo méně, je počet souběžných pracovních procesů podobně škálovat.
 
@@ -289,16 +282,16 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální velikost protokolu (GB)|922|922|922|1229|1229|1229|1229|
 |Velikost databáze TempDB (GB)|384|384|384|384|384|384|384|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
-|Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
+|Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
 |Cílové IOPS (64 KB)|40000|45000|50000|60000|80000|100000|200000|
 |Omezení rychlosti protokolu (MB/s)|120|120|120|120|120|120|120|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1680|1890|2 100|2520|3360|4200|8400|
 |Maximální počet souběžných přihlášení na fond (požadavky) *|1680|1890|2 100|2520|3360|4200|8400|
 |Maximální počet povolených relací|30000|30000|30000|30000|30000|30000|30000|
-|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 20, 24, 32, 40|0, 0,25, 0,5, 1... 20, 24, 32, 40, 80|
+|Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...20, 24, 32, 40|0, 0.25, 0.5, 1...20, 24, 32, 40, 80|
 |Počet replik|4|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Škálování čtení na více instancí|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 ## <a name="business-critical---provisioned-compute---m-series"></a>Podnikové kritické pro výpočetní prostředí-M-Series
@@ -317,7 +310,7 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální velikost protokolu (GB)|2 048|
 |Maximální velikost dat databáze TempDB (GB)|4 096|
 |Typ úložiště|Místní jednotka SSD|
-|Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|
+|Vstupně-výstupní latence (přibližné)|1-2 ms (zápis)<br>1-2 ms (čtení)|
 |Cílové IOPS (64 KB)|40000|
 |Omezení rychlosti protokolu (MB/s)|120|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1680|
@@ -326,7 +319,7 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0-128|
 |Počet replik|4|
 |Více AZ|Ano|
-|Škálování čtení na více instancí|Ano|
+|Škálování čtení|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|
 
 

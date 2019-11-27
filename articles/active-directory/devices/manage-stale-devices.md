@@ -1,6 +1,6 @@
 ---
-title: How to manage stale devices in Azure AD | Microsoft Docs
-description: Learn how to remove stale devices from your database of registered devices in Azure Active Directory.
+title: Jak spravovat zastaralá zařízení v Azure AD | Microsoft Docs
+description: Přečtěte si, jak z databáze registrovaných zařízení z Azure Active Directory odebrat zastaralá zařízení.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1829c56f9804c5aa808461db98a5048d63f55446
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207283"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538806"
 ---
-# <a name="how-to-manage-stale-devices-in-azure-ad"></a>How To: Manage stale devices in Azure AD
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Postupy: Správa zastaralých zařízení v Azure AD
 
 Registrace zařízení, která už nejsou zapotřebí, měla se kvůli dokončení jejich životního cyklu měla v ideálním případě zrušit. Avšak například kvůli ztraceným, odcizeným a poškozeným zařízením nebo přeinstalaci operačního systému zpravidla ve svém prostředí máte zastaralá zařízení. Jako správce IT budete zřejmě potřebovat nějakou metodu pro odebrání zastaralých zařízení, abyste se mohli soustředit na správu zařízení, která to opravdu potřebují.
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak efektivně spravovat zastaralá zařízení ve
 Zastaralé zařízení je zařízení, které bylo zaregistrováno ve službě Azure AD, ale po určitou dobu se nepoužívá pro přístup ke cloudovým aplikacím. Zastaralá zařízení ovlivňují vaši schopnost spravovat a podporovat zařízení a uživatele v tenantovi, protože: 
 
 - Duplicitní zařízení mohou pracovníkům helpdesku znesnadnit identifikaci, které zařízení je aktuálně aktivní.
-- An increased number of devices creates unnecessary device writebacks increasing the time for Azure AD connect syncs.
+- Větší počet zařízení vytváří zbytečné buněky zařízení, které zvyšují čas pro synchronizaci služby Azure AD Connect.
 - Kvůli obecnému udržení pořádku a dodržování předpisů potřebujete znát přesný stav zařízení. 
 
 Zastaralá zařízení ve službě Azure AD mohou kolidovat s obecnými zásadami životního cyklu zařízení ve vaší organizaci.
@@ -43,11 +43,11 @@ Protože se zastaralé zařízení definuje jako registrované zařízení, kter
 
 Vyhodnocení časového razítka aktivity se aktivuje při pokusu o ověření zařízení. Služba Azure AD časové razítko aktivity vyhodnocuje, když:
 
-- A Conditional Access policies requiring [managed devices](../conditional-access/require-managed-devices.md) or [approved client apps](../conditional-access/app-based-conditional-access.md) has been triggered.
+- Aktivovaly se zásady podmíněného přístupu vyžadující [spravovaná zařízení](../conditional-access/require-managed-devices.md) nebo [schválené klientské aplikace](../conditional-access/app-based-conditional-access.md) .
 - Jsou v síti aktivní zařízení s Windows 10, která jsou připojená k Azure AD nebo hybridně připojená k Azure AD. 
 - Zařízení spravovaná přes Intune se přihlásí k této službě.
 
-If the delta between the existing value of the activity timestamp and the current value is more than 14 days (+/-5 day variance), the existing value is replaced with the new value.
+Pokud rozdíl mezi existující hodnotou časového razítka aktivity a aktuální hodnotou je více než 14 dní (odchylka od 5 dnů), stávající hodnota se nahradí novou hodnotou.
 
 ## <a name="how-do-i-get-the-activity-timestamp"></a>Jak získám časové razítko aktivity?
 
@@ -70,14 +70,14 @@ Pokud chcete ve svém prostředí efektivně uklidit zastaralá zařízení, mě
 K aktualizaci zařízení ve službě Azure AD potřebujete účet, který má přiřazenu jednu z následujících rolí:
 
 - Globální správce
-- Cloud Device Administrator
+- Správce cloudového zařízení
 - Správce služby Intune
 
 V zásadách úklidu vyberte účty, které mají přiřazené požadované role. 
 
-### <a name="timeframe"></a>Časový rámec
+### <a name="timeframe"></a>Časové období
 
-Definujte časové období, které je ukazatelem zastaralého zařízení. When defining your timeframe, factor the window noted for updating the activity timestamp into your value. For example, you shouldn't consider a timestamp that is younger than 21 days (includes variance) as an indicator for a stale device. V určitých situacích se zařízení může jevit jako zastaralé, přestože není. Vlastník takového zařízení může být například na dovolené nebo na nemocenské,  která přesahuje časové období pro zastaralá zařízení.
+Definujte časové období, které je ukazatelem zastaralého zařízení. Při definování časového rámce přihlaste okno, ve kterém se aktualizuje časové razítko aktivity, na svou hodnotu. Například byste neměli považovat časové razítko mladší než 21 dní (zahrnuje odchylku) jako indikátor pro zastaralé zařízení. V určitých situacích se zařízení může jevit jako zastaralé, přestože není. Vlastník takového zařízení může být například na dovolené nebo na nemocenské,  která přesahuje časové období pro zastaralá zařízení.
 
 ### <a name="disable-devices"></a>Zakázání zařízení
 
@@ -89,7 +89,7 @@ Pokud je zařízení pod kontrolou Intune nebo jiných řešení MDM, před zak�
 
 ### <a name="system-managed-devices"></a>Zařízení spravovaná systémem
 
-Neodstraňujte zařízení spravovaná systémem. Jedná se obecně o zařízení, jako je například autopilot. Once deleted, these devices can't be reprovisioned. Nová rutina `get-msoldevice` standardně vylučuje zařízení spravovaná systémem. 
+Neodstraňujte zařízení spravovaná systémem. Jedná se o obecně zařízení, jako je například autopilot. Po odstranění nebude možné tato zařízení znovu zřídit. Nová rutina `get-msoldevice` standardně vylučuje zařízení spravovaná systémem. 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hybridní zařízení připojená k Azure AD
 
@@ -98,13 +98,13 @@ Zařízení hybridně připojená k Azure AD by měla dodržovat zásady pro spr
 Službu Azure AD uklidíte takto:
 
 - **Zařízení s Windows 10** – zakažte nebo odstraňte zařízení s Windows 10 v místní službě AD a nechejte nástroj Azure AD Connect synchronizovat stav změněných zařízení se službou Azure AD.
-- **Windows 7/8** - Disable or delete Windows 7/8 devices in your on-premises AD first. K zakázání nebo odstranění zařízení s Windows 7/8 ve službě Azure AD nemůžete použít Azure AD Connect. Instead, when you make the change in your on-premises, you must disable/delete in Azure AD.
+- **Windows 7/8** – nejdřív zakažte nebo odstraňte zařízení s Windows 7/8 v místní službě AD. K zakázání nebo odstranění zařízení s Windows 7/8 ve službě Azure AD nemůžete použít Azure AD Connect. Pokud provedete změnu v místním prostředí, musíte v Azure AD zakázat nebo odstranit.
 
 > [!NOTE]
->* Deleting devices in your on-premises AD or Azure AD does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g. Conditional Access). Read additional information on how to [remove registration on the client](faq.md#hybrid-azure-ad-join-faq).
->* Deleting a Windows 10 device only in Azure AD will re-synchronize the device from your on-premises using Azure AD connect but as a new object in "Pending" state. A re-registration is required on the device.
->* Removing the device from sync scope for Windows 10/Server 2016 devices will delete the Azure AD device. Adding it back to sync scope will place a new object in "Pending" state. A re-registration of the device is required.
->* If you not using Azure AD Connect for Windows 10 devices to synchronize (e.g. ONLY using AD FS for registration), you must manage lifecycle similar to Windows 7/8 devices.
+>* Při odstraňování zařízení v místní službě AD nebo Azure AD nedojde k odebrání registrace na klientovi. Znemožní přístup k prostředkům pomocí zařízení jako identity (např. podmíněný přístup). Přečtěte si další informace o tom, jak [Odebrat registraci na klientovi](faq.md#hybrid-azure-ad-join-faq).
+>* Odstranění zařízení s Windows 10 v Azure AD znovu synchronizuje zařízení z místního prostředí pomocí služby Azure AD Connect, ale jako nový objekt ve stavu čeká na vyřízení. V zařízení se vyžaduje nová registrace.
+>* Odebrání zařízení z oboru synchronizace pro zařízení s Windows 10/serverem 2016 odstraní zařízení Azure AD. Přidáním zpátky do oboru synchronizace dojde k umístění nového objektu do stavu čeká na vyřízení. Vyžaduje se opakovaná registrace zařízení.
+>* Pokud nepoužíváte Azure AD Connect pro synchronizaci zařízení s Windows 10 (například jenom pomocí AD FS k registraci), musíte pro správu životního cyklu podobně jako u zařízení s Windows 7/8.
 
 
 ### <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
@@ -112,20 +112,20 @@ Službu Azure AD uklidíte takto:
 Zakažte nebo odstraňte zařízení připojená k Azure AD ve službě Azure AD.
 
 > [!NOTE]
->* Deleting an Azure AD device does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g Conditional Access). 
->* Read more on [how to unjoin on Azure AD](faq.md#azure-ad-join-faq) 
+>* Odstraněním zařízení Azure AD se nepovedlo odebrat registraci na klientovi. Znemožní přístup k prostředkům pomocí zařízení jako identity (např. podmíněný přístup). 
+>* Další informace o [odpojování v Azure AD](faq.md#azure-ad-join-faq) 
 
 ### <a name="azure-ad-registered-devices"></a>Zařízení zaregistrovaná v Azure AD
 
 Zakažte nebo odstraňte zařízení zaregistrovaná v Azure AD ve službě Azure AD.
 
 > [!NOTE]
->* Deleting an Azure AD registered device in Azure AD does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g. Conditional Access).
->* Read more on [how to remove a registration on the client](faq.md#azure-ad-register-faq)
+>* Odstraněním zařízení registrovaného službou Azure AD ve službě Azure AD nedojde k odebrání registrace na klientovi. Znemožní přístup k prostředkům pomocí zařízení jako identity (např. podmíněný přístup).
+>* Další informace o [tom, jak odebrat registraci na klientovi](faq.md#azure-ad-register-faq)
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Vymazání zastaralých zařízení na webu Azure Portal  
 
-I když zastaralá zařízení můžete uklidit na webu Azure Portal, je efektivnější použít k tomuto účelu powershellový skript. Pomocí nejnovějšího modulu PowerShell V1 můžete použít filtr časového razítka a odfiltrovat zařízení spravovaná systémem, například autopilot. V tento okamžik není doporučeno používat PowerShell V2.
+I když zastaralá zařízení můžete uklidit na webu Azure Portal, je efektivnější použít k tomuto účelu powershellový skript. Použijte nejnovější modul PowerShell V1 k použití filtru časových razítek a k odfiltrování zařízení spravovaných systémem, jako je třeba Automatický pilot. V tento okamžik není doporučeno používat PowerShell V2.
 
 Typická rutina se skládá z následujících kroků:
 
@@ -144,7 +144,7 @@ Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, De
 mateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
-If you have a large number of devices in your directory, use the timestamp filter to narrow down the number of returned devices. Všechna zařízení s časovým razítkem starším než určité datum a vrácená data uložíte do souboru CSV takto: 
+Pokud máte ve svém adresáři velký počet zařízení, použijte filtr časových razítek k zúžení počtu vrácených zařízení. Všechna zařízení s časovým razítkem starším než určité datum a vrácená data uložíte do souboru CSV takto: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
@@ -161,12 +161,12 @@ Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, Devi
 
 Pokud je to nakonfigurováno, jsou klíče nástroje BitLocker pro zařízení s Windows 10 uložené v objektu zařízení služby Azure AD. Když odstraníte zastaralé zařízení, odstraníte také klíče nástroje Bitlocker, které jsou uložené v tomto zařízení. Před odstraněním zastaralého zařízení byste měli určit, jestli jsou zásady úklidu v souladu s životním cyklem zařízení. 
 
-### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Why should I worry about Windows Autopilot devices?
+### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Proč se mám starat o zařízení s Windows autopilotem?
 
-When a Azure AD device was associated with a Windows Autopilot object the following three scenarios can occur if the device will be repurposed in future:
-- With Windows Autopilot user-driven deployments without using white glove, a new Azure AD device will be created, but it won’t be tagged with the ZTDID.
-- With Windows Autopilot self-deploying mode deployments, they will fail because an associate Azure AD device cannot be found.  (This is a security mechanism to make sure that no “imposter” devices try to join Azure AD with no credentials.) The failure will indicate a ZTDID mismatch.
-- With Windows Autopilot white glove deployments, they will fail because an associated Azure AD device cannot be found. (Behind the scenes, white glove deployments use the same self-deploying mode process, so they enforce the same security mechanisms.)
+Když je zařízení Azure AD přidružené k objektu Windows autopilotu, můžou se tyto tři scénáře vyskytnout, pokud se zařízení bude v budoucnu změnit na účel:
+- Díky uživatelsky nasazeným samoobslužným nasazením Windows bez použití prázdných šetrnější se vytvoří nové zařízení Azure AD, které ale nebude označené ZTDID.
+- S nasazením autopilotního režimu automatického nasazení Windows se nezdaří, protože nejde najít přidružení zařízení Azure AD.  (Toto je bezpečnostní mechanismus, který zajistí, že se zařízení bez jakýchkoli přihlašovacích údajů pokusí připojit k Azure AD.) Selhání bude označovat neshodu ZTDID.
+- S bílými šetrnější nasazeními Windows autopilotu se nezdaří, protože se nepovedlo najít přidružené zařízení Azure AD. (Na pozadí budou šetrnější nasazení používat stejný proces režimu samoobslužného nasazení, aby vynutila stejné mechanismy zabezpečení.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Jak poznám všechny typy připojených zařízení?
 

@@ -1,21 +1,16 @@
 ---
-title: Kurz – nasazení skupiny více kontejnerů ve Azure Container Instances – YAML
+title: Kurz – nasazení skupiny více kontejnerů – YAML
 description: V tomto kurzu se naučíte, jak nasadit skupinu kontejnerů s více kontejnery v Azure Container Instances pomocí souboru YAML pomocí Azure CLI.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: danlep
-ms.openlocfilehash: a38b0cfe7072975e4bcaf61b65ab7733694f714c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: cce98ec56ee1d84c087150ba486b9482515b46f0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178569"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533597"
 ---
-# <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Kurz: Nasazení skupiny s více kontejnery pomocí souboru YAML
+# <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Kurz: nasazení skupiny s více kontejnery pomocí souboru YAML
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
@@ -85,7 +80,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Pro použití privátního registru image kontejneru přidejte `imageRegistryCredentials` vlastnost do skupiny kontejnerů s hodnotami upravenými pro vaše prostředí:
+Pro použití privátního registru imagí kontejneru přidejte do skupiny kontejnerů vlastnost `imageRegistryCredentials` s hodnotami upravenými pro vaše prostředí:
 
 ```YAML
   imageRegistryCredentials:
@@ -126,9 +121,9 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-container-logs"></a>Zobrazit protokoly kontejneru
+## <a name="view-container-logs"></a>Zobrazení protokolů kontejneru
 
-Zobrazte výstup protokolu kontejneru pomocí příkazu [AZ Container logs][az-container-logs] . `--container-name` Argument určuje kontejner, ze kterého mají být vyžádané protokoly. V tomto příkladu `aci-tutorial-app` je určen kontejner.
+Zobrazte výstup protokolu kontejneru pomocí příkazu [AZ Container logs][az-container-logs] . Argument `--container-name` určuje kontejner, ze kterého mají být vyžádané protokoly. V tomto příkladu je určen kontejner `aci-tutorial-app`.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -143,7 +138,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Chcete-li zobrazit protokoly pro kontejner vozíku, spusťte podobný příkaz určující `aci-tutorial-sidecar` kontejner.
+Chcete-li zobrazit protokoly pro kontejner vozíku, spusťte podobný příkaz, který určí kontejner `aci-tutorial-sidecar`.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -169,7 +164,7 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Jak vidíte, postranní vozík pravidelně vytváří požadavek HTTP do hlavní webové aplikace prostřednictvím místní sítě skupiny, aby bylo zajištěno, že je spuštěný. Tento příklad postranního vozíku se dá rozšířit tak, aby aktivoval výstrahu, pokud obdržel jiný `200 OK`kód odpovědi HTTP než.
+Jak vidíte, postranní vozík pravidelně vytváří požadavek HTTP do hlavní webové aplikace prostřednictvím místní sítě skupiny, aby bylo zajištěno, že je spuštěný. Tento příklad postranního vozíku se dá rozšířit tak, aby aktivoval výstrahu, pokud obdržel jiný kód odpovědi HTTP než `200 OK`.
 
 ## <a name="next-steps"></a>Další kroky
 

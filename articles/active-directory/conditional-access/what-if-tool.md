@@ -1,6 +1,6 @@
 ---
-title: The Conditional Access What If tool - Azure Active Directory
-description: Learn how you can understand the impact of your Conditional Access policies on your environment.
+title: Nástroj pro What If podmíněného přístupu – Azure Active Directory
+description: Zjistěte, jak můžete pochopit dopad zásad podmíněného přístupu ve vašem prostředí.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,92 +18,92 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379977"
 ---
-# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Troubleshoot using the What If tool in Conditional Access
+# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Řešení potíží pomocí nástroje What If v podmíněném přístupu
 
-[Conditional Access](../active-directory-conditional-access-azure-portal.md) is a capability of Azure Active Directory (Azure AD) that enables you to control how authorized users access your cloud apps. How do you know what to expect from the Conditional Access policies in your environment? To answer this question, you can use the **Conditional Access What If tool**.
+[Podmíněný přístup](../active-directory-conditional-access-azure-portal.md) je schopností Azure Active Directory (Azure AD), která vám umožní řídit, jak autorizovaným uživatelům přistupují k vašim cloudovým aplikacím. Jak se dozvíte, co očekávat od zásad podmíněného přístupu ve vašem prostředí? K zodpovězení této otázky můžete použít nástroj pro **What If podmíněného přístupu**.
 
-This article explains how you can use this tool to test your Conditional Access policies.
+Tento článek vysvětluje, jak můžete pomocí tohoto nástroje testovat zásady podmíněného přístupu.
 
 ## <a name="what-it-is"></a>Co to je
 
-The **Conditional Access What If policy tool** allows you to understand the impact of your Conditional Access policies on your environment. Místo testování zásad ručním prováděním několika přihlášení umožňuje tento nástroj vyhodnotit simulované přihlášení uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace. The report does not only list the applied Conditional Access policies but also [classic policies](policy-migration.md#classic-policies) if they exist.    
+**Nástroj zásady podmíněného přístupu what if Policy** vám umožní pochopit dopad zásad podmíněného přístupu ve vašem prostředí. Místo testování zásad ručním prováděním několika přihlášení umožňuje tento nástroj vyhodnotit simulované přihlášení uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace. Tato sestava neobsahuje jenom seznam použitých zásad podmíněného přístupu, ale také [klasické zásady](policy-migration.md#classic-policies) , pokud existují.    
 
-The **What If** tool provides a way to quickly determine the policies that apply to a specific user. You can use the information, for example, if you need to troubleshoot an issue.    
+Nástroj **What If** poskytuje způsob, jak rychle určit zásady, které se vztahují na konkrétního uživatele. Tyto informace můžete použít například v případě, že potřebujete vyřešit problém.    
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-In the **Conditional Access What If tool**, you first need to configure the settings of the sign-in scenario you want to simulate. These settings include:
+V **nástroji what if podmíněného přístupu**musíte nejprve nakonfigurovat nastavení scénáře přihlášení, který chcete simulovat. Mezi tato nastavení patří:
 
-- The user you want to test 
-- The cloud apps the user would attempt to access
-- The conditions under which access to the configures cloud apps is performed
+- Uživatel, kterého chcete testovat 
+- Cloudové aplikace, se kterými se uživatel pokusí získat přístup
+- Podmínky, za kterých se provádí přístup ke konfiguraci cloudových aplikací
      
-As a next step, you can initiate a simulation run that evaluates your settings. Only policies that are enabled are part of an evaluation run.
+V dalším kroku můžete iniciovat spuštění simulace, které vyhodnotí vaše nastavení. Pouze zásady, které jsou povoleny, jsou součástí zkušebního běhu.
 
-When the evaluation has finished, the tool generates a report of the affected policies.
+Po dokončení vyhodnocení nástroj vygeneruje sestavu ovlivněných zásad.
 
-## <a name="running-the-tool"></a>Running the tool
+## <a name="running-the-tool"></a>Spuštění nástroje
 
-You can find the **What If** tool on the **[Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** page in the Azure portal.
+Nástroj **What If** můžete najít na stránce **[zásady podmíněného přístupu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** v Azure Portal.
 
-To start the tool, in the toolbar on top of the list of policies, click **What If**.
+Chcete-li spustit nástroj, klikněte na panelu nástrojů v seznamu zásad na položku **What If**.
 
 ![What If](./media/what-if-tool/01.png)
 
-Before you can run an evaluation, you must configure the settings.
+Předtím, než můžete spustit vyhodnocení, je nutné nakonfigurovat nastavení.
 
 ## <a name="settings"></a>Nastavení
 
-This section provides you with information about the settings of simulation run.
+V této části najdete informace o nastavení spuštění simulace.
 
 ![What If](./media/what-if-tool/02.png)
 
 ### <a name="user"></a>Uživatel
 
-You can only select one user. This is the only required field.
+Můžete vybrat jenom jednoho uživatele. Toto je jediné povinné pole.
 
-### <a name="cloud-apps"></a>Cloud apps
+### <a name="cloud-apps"></a>Cloudové aplikace
 
-The default for this setting is **All cloud apps**. The default setting performs an evaluation of all available policies in your environment. You can narrow down the scope to policies affecting specific cloud apps.
+Výchozí hodnota pro toto nastavení je **všechny cloudové aplikace**. Výchozí nastavení provádí vyhodnocení všech dostupných zásad ve vašem prostředí. Rozsah můžete zúžit na zásady ovlivňující konkrétní cloudové aplikace.
 
 ### <a name="ip-address"></a>IP adresa
 
-The IP address is a single IPv4 address to mimic the [location condition](location-condition.md). The address represents Internet facing address of the device used by your user to sign in. You can verify the IP address of a device by, for example, navigating to [What is my IP address](https://whatismyipaddress.com).    
+IP adresa je jedna adresa IPv4 pro napodobení [podmínky umístění](location-condition.md). Adresa představuje internetovou adresu zařízení používaného vaším uživatelem k přihlášení. IP adresu zařízení můžete například ověřit tak, že přejdete na [adresu moje IP adresa](https://whatismyipaddress.com).    
 
-### <a name="device-platforms"></a>Device platforms
+### <a name="device-platforms"></a>Platformy zařízení
 
-This setting mimics the [device platforms condition](conditions.md#device-platforms) and represents the equivalent of **All platforms (including unsupported)** . 
+Toto nastavení napodobuje [stav platforem zařízení](conditions.md#device-platforms) a představuje ekvivalent **všech platforem (včetně nepodporovaných)** . 
 
-### <a name="client-apps"></a>Client apps
+### <a name="client-apps"></a>Klientské aplikace
 
-This setting mimics the [client apps condition](conditions.md#client-apps).
-By default, this setting causes an evaluation of all policies having **Browser** or **Mobile apps and desktop clients** either individually or both selected. It also detects policies that enforce **Exchange ActiveSync (EAS)** . You can narrow this setting down by selecting:
+Toto nastavení napodobuje [stav klientských aplikací](conditions.md#client-apps).
+Ve výchozím nastavení toto nastavení způsobí vyhodnocení všech zásad s **prohlížečem** nebo **mobilními aplikacemi a desktopových klientů** buď jednotlivě, nebo podle obou vybraných. Také detekuje zásady, které vynutily **protokol Exchange ActiveSync (EAS)** . Toto nastavení můžete zúžit výběrem možnosti:
 
-- **Browser** to evaluate all policies having at least **Browser** selected. 
-- **Mobile apps and desktop clients** to evaluate all policies having at least **Mobile apps and desktop clients** selected. 
+- **Prohlížeč** pro vyhodnocení všech zásad s aspoň vybraným **prohlížečem** . 
+- **Mobilní aplikace a klienti klasické pracovní plochy** pro vyhodnocení všech zásad, které mají vybrané aspoň **mobilní aplikace a klientské počítače** . 
 
-### <a name="sign-in-risk"></a>Sign-in risk
+### <a name="sign-in-risk"></a>Riziko přihlášení
 
-This setting mimics the [sign-in risk condition](conditions.md#sign-in-risk).   
+Toto nastavení napodobuje [rizikové podmínky přihlášení](conditions.md#sign-in-risk).   
 
-## <a name="evaluation"></a>Evaluation 
+## <a name="evaluation"></a>Hodnocení 
 
-You start an evaluation by clicking **What If**. The evaluation result provides you with a report that consists of: 
+Kliknutím na **What If**spustíte vyhodnocení. Výsledek vyhodnocení obsahuje sestavu, která se skládá z těchto součástí: 
 
 ![What If](./media/what-if-tool/03.png)
 
-- An indicator whether classic policies exist in your environment
-- Policies that apply to your user
-- Policies that don't apply to your user
+- Indikátor, jestli ve vašem prostředí existují klasické zásady
+- Zásady, které se vztahují na uživatele
+- Zásady, které se nevztahují na uživatele
 
-If [classic policies](policy-migration.md#classic-policies) exist for the selected cloud apps, an indicator is presented to you. By clicking the indicator, you are redirected to the classic policies page. On the classic policies page, you can migrate a classic policy or just disable it. You can return to your evaluation result by closing this page.
+Pokud pro vybrané cloudové aplikace existují [klasické zásady](policy-migration.md#classic-policies) , zobrazí se vám indikátor. Kliknutím na indikátor budete přesměrováni na stránku klasických zásad. Na stránce klasické zásady můžete migrovat klasické zásady, nebo ji jenom zakázat. Na výsledek vyhodnocení se můžete vrátit zavřením této stránky.
 
-On the list of policies that apply to your selected user, you can also find a list of [grant controls](controls.md#grant-controls) and [session](controls.md#session-controls) controls your user must satisfy.
+V seznamu zásad, které se vztahují k vybranému uživateli, můžete také vyhledat seznam [ovládacích prvků](controls.md#grant-controls) a řízení [relace](controls.md#session-controls) , které musí váš uživatel splňovat.
 
-On the list of policies that don't apply to your user, you can and also find the reasons why these policies don't apply. For each listed policy, the reason represents the first condition that was not satisfied. A possible reason for a policy that is not applied is a disabled policy because they are not further evaluated.   
+V seznamu zásad, které se nevztahují na uživatele, můžete najít také důvody, proč se tyto zásady nevztahují. Pro každou uvedenou zásadu představuje důvod první podmínku, která nebyla splněna. Možný důvod, proč zásada, která není použita, je zakázaná zásada, protože se ještě nevyhodnotí.   
 
 ## <a name="next-steps"></a>Další kroky
 
-- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md). 
-- if you want to migrate classic policies, see [Migrate classic policies in the Azure portal](policy-migration.md)  
+- Pokud chcete zjistit, jak nakonfigurovat zásady podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md).
+- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 
+- Pokud chcete migrovat klasické zásady, přečtěte si téma [migrace klasických zásad v Azure Portal](policy-migration.md)  

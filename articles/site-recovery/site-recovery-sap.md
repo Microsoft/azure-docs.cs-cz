@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: ca3126c983d62cb28c543215b86ab9709a4736d8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 29b3e4af33702c75e92b5e36c5521d9af12b1013
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083794"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533857"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení aplikace NetWeaver SAP ve více vrstvách
 
@@ -74,9 +74,9 @@ K implementaci řešení vysoké dostupnosti lze použít buď cluster sdílené
  > [!NOTE]
  > Azure Site Recovery nereplikuje sdílené složky v cloudu. proto se doporučuje nasadit v oblasti zotavení po havárii cloudovou kopii clusteru.
 
-Pro podporu prostředí clusteru převzetí služeb při selhání [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) provádí funkci clusteru sdíleného svazku to replikací nezávislých disků, které jsou ve vlastnictví uzlů clusteru. Azure nativně nepodporuje sdílené disky a proto vyžaduje řešení poskytovaných SIOS. 
+V rámci podpory prostředí clusteru s podporou převzetí služeb při selhání provede s tím, že služba [DataKeeper Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) provádí replikaci nezávislých disků vlastněných uzly clusteru, pomocí funkce Shared Volume clusteru. Azure nativně nepodporuje sdílené disky a proto vyžaduje řešení poskytovaných SIOS. 
 
-Dalším způsobem, jak zvládnout clustering, je implementovat cluster sdílené složky. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) naposledy upravovaných model nasazení centrální služby pro přístup k /sapmnt globální adresáře prostřednictvím cesty UNC. Přesto se však doporučuje zajistit vysokou dostupnost sdílení/sapmnt UNC. To se dá udělat na instanci centrální služby pomocí clusteru s podporou převzetí služeb při selhání Windows serveru se souborovým serverem se škálováním na více systémů (SOFS) a funkcí Prostory úložiště s přímým přístupem (S2D) ve Windows serveru 2016. 
+Dalším způsobem, jak zvládnout clustering, je implementovat cluster sdílené složky. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) nedávno upravil vzor nasazení centrální služby pro přístup k globálním adresářům/sapmnt pomocí cesty UNC. Přesto se však doporučuje zajistit vysokou dostupnost sdílení/sapmnt UNC. To se dá udělat na instanci centrální služby pomocí clusteru s podporou převzetí služeb při selhání Windows serveru se souborovým serverem se škálováním na více systémů (SOFS) a funkcí Prostory úložiště s přímým přístupem (S2D) ve Windows serveru 2016. 
  > [!NOTE]
  > V současné době Azure Site Recovery podporovat jenom replikaci bodů s konzistentním selháním pro virtuální počítače s využitím prostorů úložiště s přímým přístupem a pasivního uzlu s datakeep
 
@@ -95,7 +95,7 @@ Níže jsou uvedené kroky pro nastavení zotavení po havárii.
 
 Níže je uvedené doporučení pro zotavení po havárii jednotlivých vrstev používaných v tomto příkladu. 
 
- **Úrovně SAP** | **Doporučení**
+ **Úrovně SAP** | **Základě**
  --- | ---
 **Fond webového dispečera SAP** |  Replikace pomocí Site Recovery 
 **Fond aplikačních serverů SAP** |  Replikace pomocí Site Recovery 
@@ -110,7 +110,7 @@ Pokud chcete zahájit replikaci všech virtuálních počítačů aplikace SAP d
 
 * Pokyny k ochraně služby Active Directory a DNS najdete v tématu [ochrana služby Active Directory a dokumentu DNS](site-recovery-active-directory.md) .
 
-* Pokyny k ochraně databázových vrstev běžících na SQL serveru najdete v tématu [ochrana SQL Server](site-recovery-active-directory.md) dokumentu.
+* Pokyny k ochraně databázových vrstev běžících na SQL serveru najdete v tématu [ochrana SQL Server](site-recovery-sql.md) dokumentu.
 
 ## <a name="networking-configuration"></a>Konfigurace sítě
 

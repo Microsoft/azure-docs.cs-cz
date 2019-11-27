@@ -1,6 +1,6 @@
 ---
-title: Sample - Allowed application gateway SKUs
-description: This sample policy definition requires that application gateways use an approved SKU defined in a parameter.
+title: Ukázka – SKU s povolenými položkami aplikační brány
+description: Tato ukázková definice zásad vyžaduje, aby aplikační brány používaly schválenou SKLADOVOU položku definovanou v parametru.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 89a1f7f60639f31d79690d0ddb1ea11d26ae4bdc
@@ -10,7 +10,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463767"
 ---
-# <a name="sample---allowed-application-gateway-skus"></a>Sample - Allowed application gateway SKUs
+# <a name="sample---allowed-application-gateway-skus"></a>Ukázka – SKU s povolenými položkami aplikační brány
 
 Tato zásada vyžaduje, aby aplikační brány používaly schválené skladové položky. Zadejte pole schválených skladových položek.
 
@@ -24,9 +24,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fapplication-gateway-skus%2Fazurepolicy.json)
+[![nasazení ukázky zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fapplication-gateway-skus%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -45,7 +45,7 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'application-gateway-skus' --display-name 'Al
 az policy assignment create --name <assignmentname> --scope <scope> --policy "application-gateway-skus"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

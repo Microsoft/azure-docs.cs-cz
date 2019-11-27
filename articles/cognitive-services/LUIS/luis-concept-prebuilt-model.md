@@ -28,7 +28,7 @@ LUIS poskytuje tři typy předem sestavených modelů. Každý model lze přidat
 
 |Typ modelu|Zahrnuje|
 |--|--|
-|[Domény](luis-reference-prebuilt-domains.md)|Záměrů, projevy, entity|
+|[Domain](luis-reference-prebuilt-domains.md)|Záměrů, projevy, entity|
 |Záměry|Záměrů, projevy|
 |[Podnikům](luis-reference-prebuilt-entities.md)|Pouze entity| 
 
@@ -40,13 +40,13 @@ Předem připravených domén jsou trénované a připravené k přidání do ap
 
 > [!TIP]
 > Záměry a entity v doméně předem připravených fungují nejlépe společně. Je lepší zkombinovat záměry a entity ve stejné doméně, pokud je to možné.
-> Doména předem připravených nástrojů má záměrů, které můžete přizpůsobit pro použití v libovolné doméně. Například můžete přidat `Utilities.Repeat` do vaší aplikace a trénování rozpoznat libovolné akce uživatele může být vhodné opakování ve vaší aplikaci. 
+> Doména předem připravených nástrojů má záměrů, které můžete přizpůsobit pro použití v libovolné doméně. Do své aplikace můžete například přidat `Utilities.Repeat` a naučit se rozpoznávat jakékoli akce, které by měl uživatel opakovat. 
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Změna chování záměr předem připravených domény
 
 Můžete zjistit, že předem připravená doména obsahuje záměru, který je podobný záměru, který chcete mít ve vaší aplikaci LUIS, ale chcete, aby chovat odlišně. Například předem sestavená doména poskytuje `MakeReservation` záměr vytvořit rezervaci v rámci restaurace, ale chcete, aby aplikace použila tento záměr k použití rezervací hotelu. V takovém případě můžete chování tohoto záměru upravit přidáním příkladu projevy do záměru o provedení rezervací hotelu a pak aplikaci znovu naučit. 
 
-Najdete úplný seznam předem připravených domén v [předem připravených domén odkaz](./luis-reference-prebuilt-domains.md).
+Úplný seznam předdefinovaných domén najdete v [odkazech předem sestavené domény](./luis-reference-prebuilt-domains.md).
 
 ## <a name="prebuilt-intents"></a>Předem připravené příkazy
 
@@ -54,13 +54,13 @@ LUIS poskytuje předem sestavené záměry a jejich projevy pro každou ze svýc
 
 ## <a name="prebuilt-entities"></a>Předem připravené entity
 
-Služba LUIS zahrnuje sadu předem připravených entit pro rozpoznávání běžných typů informací, jako jsou data, časy, čísla, měření a měny. Podpora předem připravených entit se liší podle jazykové verze vaší aplikace LUIS. Úplný seznam předem připravených entit, které podporuje služba LUIS, včetně podpory podle jazykové verze, najdete v článku [předem připravených entit odkaz](./luis-reference-prebuilt-entities.md).
+Služba LUIS zahrnuje sadu předem připravených entit pro rozpoznávání běžných typů informací, jako jsou data, časy, čísla, měření a měny. Podpora předem připravených entit se liší podle jazykové verze vaší aplikace LUIS. Úplný seznam předem připravených entit, které LUIS podporuje, včetně podpory podle jazykové verze, najdete v tématu [předem sestavený odkaz na entitu](./luis-reference-prebuilt-entities.md).
 
-Předem připravených entit je obsažen ve vaší aplikaci, jeho předpovědi jsou zahrnuty v publikované aplikaci. Chování předem připravených entit je předem vytrénovaných a **nelze** upravit. 
+Předem připravených entit je obsažen ve vaší aplikaci, jeho předpovědi jsou zahrnuty v publikované aplikaci. Chování předem připravených entit je předem vyškolené a **nelze** je upravit. 
 
 > [!NOTE]
-> **Builtin.DateTime** je zastaralý. Se nahrazuje [ **builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md), která poskytuje rozpoznávání datum a časové rozsahy a také vylepšené rozpoznávání nejednoznačný dat a časů.
+> **předdefinovaná hodnota. DateTime** je zastaralá. Je nahrazená funkcí [**Builtin. datetimeV2**](luis-reference-prebuilt-datetimev2.md), která poskytuje rozpoznávání rozsahů data a času a vylepšené rozpoznávání nejednoznačných dat a časů.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak [přidání předem připravených entit](luis-prebuilt-entities.md) do vaší aplikace.
+Naučte se, jak do své aplikace [Přidat předem připravené entity](luis-prebuilt-entities.md) .

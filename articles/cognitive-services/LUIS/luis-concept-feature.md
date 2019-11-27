@@ -87,8 +87,8 @@ Entita (A) by měla být přidána jako funkce jiné entitě (B), pokud je zjiš
 Například pokud je zjištěna entita adresy (A), pak hledání ulice (A) přidá váhu předpovědi pro entitu dodací adresy (B). 
 
 ## <a name="best-practices"></a>Osvědčené postupy
-Přečtěte si [osvědčené postupy](luis-concept-best-practices.md).
+Seznamte se s [osvědčenými postupy](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Zobrazit [přidat funkce](luis-how-to-add-features.md) získat další informace o tom, jak přidat funkce do vaší aplikace LUIS.
+Další informace o tom, jak přidat funkce do aplikace LUIS, najdete v tématu věnovaném [Přidání funkcí](luis-how-to-add-features.md) .

@@ -1,22 +1,17 @@
 ---
-title: Kurz – nasazení skupiny více kontejnerů v Azure Container Instances-Template
+title: Kurz – nasazení skupiny více kontejnerů – šablona
 description: V tomto kurzu se naučíte, jak nasadit skupinu kontejnerů s více kontejnery v Azure Container Instances pomocí Azure Resource Manager šablony pomocí Azure CLI.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 7438b5a91d3bf0ce8330e33bc1c849a8b0329c6f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325897"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533624"
 ---
-# <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Kurz: Nasazení skupiny s více kontejnery pomocí Správce prostředků šablony
+# <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Kurz: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
@@ -42,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="configure-a-template"></a>Konfigurace šablony
 
-Začněte tím, že zkopírujete následující JSON do nového souboru `azuredeploy.json`s názvem. V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
+Začněte tím, že zkopírujete následující JSON do nového souboru s názvem `azuredeploy.json`. V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
 
 ```
 code azuredeploy.json
@@ -182,7 +177,7 @@ myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tut
 
 ## <a name="view-container-logs"></a>Zobrazení protokolů kontejneru
 
-Zobrazte výstup protokolu kontejneru pomocí příkazu [AZ Container logs][az-container-logs] . `--container-name` Argument určuje kontejner, ze kterého mají být vyžádané protokoly. V tomto příkladu `aci-tutorial-app` je určen kontejner.
+Zobrazte výstup protokolu kontejneru pomocí příkazu [AZ Container logs][az-container-logs] . Argument `--container-name` určuje kontejner, ze kterého mají být vyžádané protokoly. V tomto příkladu je určen kontejner `aci-tutorial-app`.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -197,7 +192,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Chcete-li zobrazit protokoly pro kontejner vozíku, spusťte podobný příkaz určující `aci-tutorial-sidecar` kontejner.
+Chcete-li zobrazit protokoly pro kontejner vozíku, spusťte podobný příkaz, který určí kontejner `aci-tutorial-sidecar`.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -223,9 +218,9 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Jak vidíte, postranní vozík pravidelně vytváří požadavek HTTP do hlavní webové aplikace prostřednictvím místní sítě skupiny, aby bylo zajištěno, že je spuštěný. Tento příklad postranního vozíku se dá rozšířit tak, aby aktivoval výstrahu, pokud obdržel jiný `200 OK`kód odpovědi HTTP než.
+Jak vidíte, postranní vozík pravidelně vytváří požadavek HTTP do hlavní webové aplikace prostřednictvím místní sítě skupiny, aby bylo zajištěno, že je spuštěný. Tento příklad postranního vozíku se dá rozšířit tak, aby aktivoval výstrahu, pokud obdržel jiný kód odpovědi HTTP než `200 OK`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste použili šablonu Azure Resource Manager k nasazení skupiny více kontejnerů v Azure Container Instances. Naučili jste se tyto postupy:
 

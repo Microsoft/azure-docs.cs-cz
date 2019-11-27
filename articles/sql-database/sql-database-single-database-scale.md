@@ -1,6 +1,6 @@
 ---
-title: Scale single database resources
-description: This article describes how to scale the compute and storage resources available for a single database in Azure SQL Database.
+title: Škálování jednotlivých prostředků databáze
+description: Tento článek popisuje, jak škálovat výpočetní prostředky a prostředky úložiště dostupné pro jednu databázi v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -18,66 +18,66 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422542"
 ---
-# <a name="scale-single-database-resources-in-azure-sql-database"></a>Scale single database resources in Azure SQL Database
+# <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování jednoho databázového prostředku v Azure SQL Database
 
-This article describes how to scale the compute and storage resources available for an Azure SQL Database in the provisioned compute tier. Alternatively, the [serverless compute tier](sql-database-serverless.md) provides compute auto-scaling and bills per second for compute used.
+Tento článek popisuje, jak škálovat výpočetní prostředky a prostředky úložiště dostupné pro Azure SQL Database v zřízené výpočetní úrovni. [Výpočetní úroveň bez serveru](sql-database-serverless.md) navíc poskytuje výpočetní automatické škálování a platby za sekundu pro využité výpočetní prostředky.
 
-## <a name="change-compute-size-vcores-or-dtus"></a>Change compute size (vCores or DTUs)
+## <a name="change-compute-size-vcores-or-dtus"></a>Změna velikosti výpočtů (virtuální jádra nebo DTU)
 
-After initially picking the number of vCores or DTUs, you can scale a single database up or down dynamically based on actual experience using the [Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), the [Azure CLI](/cli/azure/sql/db#az-sql-db-update), or the [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
+Po počátečním výběru počtu virtuální jádra nebo DTU můžete dynamicky škálovat jednu databázi na základě aktuálního prostředí pomocí [Azure Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API ](https://docs.microsoft.com/rest/api/sql/databases/update).
 
-The following video shows dynamically changing the service tier and compute size to increase available DTUs for a single database.
+Následující video ukazuje dynamicky se měnící úroveň služby a výpočetní velikost, aby se zvýšila dostupnost DTU pro izolovanou databázi.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 
 > [!IMPORTANT]
-> Under some circumstances, you may need to shrink a database to reclaim unused space. For more information, see [Manage file space in Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Impact of changing service tier or rescaling compute size
+### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Dopad změny úrovně služby nebo změna velikosti výpočetní velikosti
 
-Changing the service tier or compute size of mainly involves the service performing the following steps:
+Změna úrovně služby nebo výpočetní velikosti hlavně zahrnuje službu, která provádí následující kroky:
 
-1. Create new compute instance for the database  
+1. Vytvořit novou výpočetní instanci pro databázi  
 
-    A new compute instance is created with the requested service tier and compute size. For some combinations of service tier and compute size changes, a replica of the database must be created in the new compute instance which involves copying data and can strongly influence the overall latency. Regardless, the database remains online during this step, and connections continue to be directed to the database in the original compute instance.
+    Vytvoří se nová instance COMPUTE s požadovanou úrovní služeb a výpočetní velikostí. V případě některých kombinací úrovně služeb a výpočtů velikosti se musí replika databáze vytvořit v nové výpočetní instanci, která zahrnuje kopírování dat a může silně ovlivnit celkovou latenci. Bez ohledu na to, že databáze zůstane v průběhu tohoto kroku online, připojení budou dál směrována do databáze v původní výpočetní instanci.
 
-2. Switch routing of connections to new compute instance
+2. Přepnout směrování připojení na novou výpočetní instanci
 
-    Existing connections to the database in the original compute instance are dropped. Any new connections are established to the database in the new compute instance. For some combinations of service tier and compute size changes, database files are detached and reattached during the switch.  Regardless, the switch can result in a brief service interruption when the database is unavailable generally for less than 30 seconds and often for only a few seconds. If there are long running transactions running when connections are dropped, the duration of this step may take longer in order to recover aborted transactions. [Accelerated Database Recovery](sql-database-accelerated-database-recovery.md) can reduce the impact from aborting long running transactions.
+    Existující připojení k databázi v původní výpočetní instanci jsou vyhozena. Všechna nová připojení jsou navázána na databázi v nové instanci Compute. V případě některých kombinací úrovně služby a velikosti výpočetních souborů jsou soubory databáze odpojeny a připojeny během přepínače.  Přepínač může mít za následek krátké přerušení služby, když databáze není k dispozici, obvykle po dobu kratší než 30 sekund a často jenom pár sekund. Pokud při vyřazení připojení dojde k nespuštěným transakcím, může trvat delší dobu trvání tohoto kroku, aby bylo možné obnovit přerušené transakce. [Urychlené obnovení databáze](sql-database-accelerated-database-recovery.md) může snížit dopad přerušení dlouho probíhajících transakcí.
 
 > [!IMPORTANT]
-> No data is lost during any step in the workflow. Make sure that you have implemented some [retry logic](sql-database-connectivity-issues.md) in the applications and components that are using Azure SQL Database while the service tier is changed.
+> Během žádného kroku pracovního postupu nebudou ztracena žádná data. Ujistěte se, že jste implementovali nějakou [logiku opakování](sql-database-connectivity-issues.md) v aplikacích a součástech, které při změně úrovně služby používají Azure SQL Database.
 
-### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Latency of changing service tier or rescaling compute size
+### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Latence změny úrovně služby nebo změna velikosti výpočetní velikosti
 
-The estimated latency to change the service tier or rescale the compute size of a single database or elastic pool is parameterized as follows:
+Odhadovaná latence změny úrovně služby nebo změna velikosti výpočetní velikosti jedné databáze nebo elastického fondu je parametrizovaná takto:
 
-|Úroveň služby|Basic single database,</br>Standard (S0-S1)|Basic elastic pool,</br>Standard (S2-S12), </br>Hyperscale, </br>General Purpose single database or elastic pool|Premium or Business Critical single database or elastic pool|
+|Úroveň služby|Jednoduchá databáze úrovně Basic,</br>Standard (S0-S1)|Elastický fond úrovně Basic,</br>Standard (S2-S12), </br>Hyperškálovatelný </br>Pro obecné účely izolovanou databázi nebo elastický fond|Izolovaná databáze nebo elastický fond úrovně Premium nebo Pro důležité obchodní informace|
 |:---|:---|:---|:---|
-|**Basic single database,</br> Standard (S0-S1)**|&bull; &nbsp;Constant time latency independent of space used</br>&bull; &nbsp;Typically, less than 5 minutes|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|
-|**Basic elastic pool, </br>Standard (S2-S12), </br>Hyperscale, </br>General Purpose single database or elastic pool**|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|&bull; &nbsp;Constant time latency independent of space used</br>&bull; &nbsp;Typically, less than 5 minutes|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|
-|**Premium or Business Critical single database or elastic pool**|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|
+|**Základní samostatná databáze</br> Standard (S0-S1)**|&bull; &nbsp;konstantní časovou latenci nezávisle na využitém prostoru</br>&bull; &nbsp;obvykle, méně než 5 minut|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|
+|**Základní elastický fond, </br>Standard (S2-S12), </br>AutoScale, </br>Pro obecné účely jedna databáze nebo elastický fond**|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|&bull; &nbsp;konstantní časovou latenci nezávisle na využitém prostoru</br>&bull; &nbsp;obvykle, méně než 5 minut|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|
+|**Izolovaná databáze nebo elastický fond úrovně Premium nebo Pro důležité obchodní informace**|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|&bull; &nbsp;latence úměrná prostoru databáze použitému v důsledku kopírování dat</br>&bull; &nbsp;obvykle, méně než 1 minuta za GB využitého místa|
 
 > [!TIP]
-> To monitor in-progress operations, see: [Manage operations using the SQL REST API](https://docs.microsoft.com/rest/api/sql/operations/list), [Manage operations using CLI](/cli/azure/sql/db/op), [Monitor operations using T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) and these two PowerShell commands: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) and [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Informace o monitorování probíhajících operací najdete v tématu [: Správa operací pomocí příkazu SQL REST API](https://docs.microsoft.com/rest/api/sql/operations/list), [Správa operací pomocí](/cli/azure/sql/db/op)rozhraní příkazového řádku a [monitorování operací pomocí T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a těchto dvou příkazů PowerShellu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) a [ Stop – AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
-### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Cancelling service tier changes or compute rescaling operations
+### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Rušení změn úrovně služeb nebo operací přeškálování výpočetních prostředků
 
-A service tier change or compute rescaling operation can be canceled.
+Operaci změny měřítka úrovně služby nebo operace přeškálování výpočetních prostředků je možné zrušit.
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>portál Azure
 
-In the database overview blade, navigate to **Notifications** and click on the tile indicating there is an ongoing operation:
+V okně Přehled databáze přejděte na **oznámení** a klikněte na dlaždici, která indikuje, že se jedná o probíhající operaci:
 
-![Ongoing operation](media/sql-database-single-database-scale/ongoing-operations.png)
+![Probíhající operace](media/sql-database-single-database-scale/ongoing-operations.png)
 
-Next, click on the button labeled **Cancel this operation**.
+Potom klikněte na tlačítko s popiskem **zrušit tuto operaci**.
 
-![Cancel ongoing operation](media/sql-database-single-database-scale/cancel-ongoing-operation.png)
+![Zrušit probíhající operaci](media/sql-database-single-database-scale/cancel-ongoing-operation.png)
 
 #### <a name="powershell"></a>PowerShell
 
-From a PowerShell command prompt, set the `$resourceGroupName`, `$serverName`, and `$databaseName`, and then run the following command:
+Z příkazového řádku PowerShellu nastavte `$resourceGroupName`, `$serverName`a `$databaseName`a pak spusťte následující příkaz:
 
 ```powershell
 $operationName = (az sql db op list --resource-group $resourceGroupName --server $serverName --database $databaseName --query "[?state=='InProgress'].name" --out tsv)
@@ -90,51 +90,51 @@ else {
 }
 ```
 
-### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Additional considerations when changing service tier or rescaling compute size
+### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Další předpoklady při změně úrovně služby nebo změna velikosti výpočetní velikosti
 
-- If you are upgrading to a higher service tier or compute size, the database max size does not increase unless you explicitly specify a larger size (maxsize).
-- To downgrade a database, the database used space must be smaller than the maximum allowed size of the target service tier and compute size.
-- When downgrading from **Premium** to the **Standard** tier, an extra storage cost applies if both (1) the max size of the database is supported in the target compute size, and (2) the max size exceeds the included storage amount of the target compute size. For example, if a P1 database with a max size of 500 GB is downsized to S3, then an extra storage cost applies since S3 supports a max size of 1 TB and its included storage amount is only 250 GB. So, the extra storage amount is 500 GB – 250 GB = 250 GB. For pricing of extra storage, see [SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/). If the actual amount of space used is less than the included storage amount, then this extra cost can be avoided by reducing the database max size to the included amount.
-- When upgrading a database with [geo-replication](sql-database-geo-replication-portal.md) enabled, upgrade its secondary databases to the desired service tier and compute size before upgrading the primary database (general guidance for best performance). When upgrading to a different, upgrading the secondary database first is required.
-- When downgrading a database with [geo-replication](sql-database-geo-replication-portal.md) enabled, downgrade its primary databases to the desired service tier and compute size before downgrading the secondary database (general guidance for best performance). When downgrading to a different edition, downgrading the primary database first is required.
-- Nabídky služeb pro obnovení se u různých úrovní služby liší. If you are downgrading to the **Basic** tier, there is a lower backup retention period. See [Azure SQL Database Backups](sql-database-automated-backups.md).
+- Pokud provádíte upgrade na vyšší úroveň služby nebo výpočetní velikost, nezvýší se maximální velikost databáze, pokud explicitně neurčíte větší velikost (MaxSize).
+- Aby bylo možné downgradovat databázi, musí být využité místo v databázi menší než maximální povolená velikost cílové úrovně služby a výpočetní velikosti.
+- Při přechodu z úrovně **Premium** na úroveň **Standard** se platí dodatečné náklady na úložiště, pokud je maximální velikost databáze podporována v cílové výpočetní velikosti a (2) maximální velikost překračuje zahrnutou velikost úložiště cílové výpočetní velikosti. Pokud je například databáze P1 s maximální velikostí 500 GB zmenšován do S3, platí dodatečné náklady na úložiště, protože S3 podporuje maximální velikost 1 TB a velikost zahrnutého úložiště je pouze 250 GB. Navíc je velikost dodatečného úložiště 500 GB – 250 GB = 250 GB. Ceny dodatečného úložiště najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/). Pokud je skutečné množství využitého místa menší než zahrnuté množství úložiště, je možné tyto dodatečné náklady vyvarovat snížením maximální velikosti databáze na zahrnutou částku.
+- Při upgradu databáze s povolenou [geografickou replikací](sql-database-geo-replication-portal.md) Upgradujte své sekundární databáze na požadovanou úroveň služby a výpočetní velikost před upgradem primární databáze (Obecné pokyny pro nejlepší výkon). Při upgradu na jinou je třeba nejprve upgradovat sekundární databázi.
+- Když se downgrade databáze s povolenou [geografickou replikací](sql-database-geo-replication-portal.md) , downgrade primárních databází na požadovanou úroveň služby a výpočetní velikost před přechodem na sekundární databázi (Obecné pokyny pro nejlepší výkon). Když se downgrade na jinou edici, je nutné nejprve downgradovat primární databázi.
+- Nabídky služeb pro obnovení se u různých úrovní služby liší. Pokud přecházíte na úroveň **Basic** , je k dispozici nižší doba uchovávání záloh. Viz [zálohy Azure SQL Database](sql-database-automated-backups.md).
 - Nové vlastnosti databáze se nepoužijí, dokud nebudou změny dokončeny.
 
-### <a name="billing-during-compute-rescaling"></a>Billing during compute rescaling
+### <a name="billing-during-compute-rescaling"></a>Fakturace během výpočetního škálování
 
-You are billed for each hour a database exists using the highest service tier + compute size that applied during that hour, regardless of usage or whether the database was active for less than an hour. For example, if you create a single database and delete it five minutes later your bill reflects a charge for one database hour.
+Fakturuje se vám každá hodina existence databáze na nejvyšší úrovni služby + výpočetní velikost, která během této hodiny platila, bez ohledu na využití nebo na to, jestli je databáze aktivní kratší dobu než hodinu. Pokud třeba vytvoříte izolovanou databázi a za 5 minut ji odstraníte, bude se vám účtovat poplatek za jednu hodinu databáze.
 
-## <a name="change-storage-size"></a>Change storage size
+## <a name="change-storage-size"></a>Změna velikosti úložiště
 
 ### <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
 
-- Storage can be provisioned up to the max size limit using 1GB increments. The minimum configurable data storage is 5 GB
-- Storage for a single database can be provisioned by increasing or decreasing its max size using the [Azure portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), the [Azure CLI](/cli/azure/sql/db#az-sql-db-update), or the [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
-- SQL Database automatically allocates 30% of additional storage for the log files and 32GB per vCore for TempDB, but not to exceed 384GB. TempDB is located on an attached SSD in all service tiers.
-- The price of storage for a single database is the sum of data storage and log storage amounts multiplied by the storage unit price of the service tier. The cost of TempDB is included in the vCore price. For details on the price of extra storage, see [SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/).
+- Úložiště se dá zřídit až do limitu maximální velikosti s využitím přírůstcích po 1 GB. Minimální konfigurovatelné úložiště dat je 5 GB.
+- Úložiště pro izolovanou databázi je možné zřídit zvýšením nebo snížením jeho maximální velikosti pomocí [Azure Portal](https://portal.azure.com), [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
+- SQL Database automaticky přiděluje 30% dodatečného úložiště pro soubory protokolu a 32 GB na vCore pro databázi TempDB, ale ne až 384GB. Databáze TempDB je umístěná na připojené SSD ve všech úrovních služby.
+- Cena za úložiště pro izolovanou databázi je součtem částek úložiště dat a protokolů úložiště vynásobené jednotkovou cenou za jednotku služby. Cena databáze TempDB je zahrnutá v ceně vCore. Podrobnosti o ceně dodatečného úložiště najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Under some circumstances, you may need to shrink a database to reclaim unused space. For more information, see [Manage file space in Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
-### <a name="dtu-based-purchasing-model"></a>DTU-based purchasing model
+### <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 
-- The DTU price for a single database includes a certain amount of storage at no additional cost. Extra storage beyond the included amount can be provisioned for an additional cost up to the max size limit in increments of 250 GB up to 1 TB, and then in increments of 256 GB beyond 1 TB. For included storage amounts and max size limits, see [Single database: Storage sizes and compute sizes](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
-- Extra storage for a single database can be provisioned by increasing its max size using the Azure portal, [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), the [Azure CLI](/cli/azure/sql/db#az-sql-db-update), or the [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
-- The price of extra storage for a single database is the extra storage amount multiplied by the extra storage unit price of the service tier. For details on the price of extra storage, see [SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/).
+- Cena DTU pro jednu databázi zahrnuje určité množství úložiště bez dalších poplatků. Dodatečné úložiště nad rámec zahrnuté částky se dá zřídit za dodatečné náklady až do limitu maximální velikosti v přírůstcích po 250 GB až do 1 TB a potom v přírůstcích po 256 GB po 1 TB. Zahrnuté množství úložišť a omezení maximální velikosti najdete v tématu izolovaná [databáze: velikosti úložiště a výpočetní velikosti](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
+- Dodatečné úložiště pro izolovanou databázi lze zřídit zvýšením jeho maximální velikosti pomocí Azure Portal, [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
+- Cena za dodatečné úložiště pro izolovanou databázi je dodatečná hodnota úložiště vynásobená dodatečnou jednotkou ceny za službu Storage úrovně služby. Podrobnosti o ceně dodatečného úložiště najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Under some circumstances, you may need to shrink a database to reclaim unused space. For more information, see [Manage file space in Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11 and P15 constraints when max size greater than 1 TB
+## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>Omezení P11 a P15, pokud je maximální velikost větší než 1 TB
 
-More than 1 TB of storage in the Premium tier is currently available in all regions except: China East, China North, Germany Central, Germany Northeast, West Central US, US DoD regions, and US Government Central. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB. The following considerations and limitations apply to P11 and P15 databases with a maximum size greater than 1 TB:
+Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB. Následující hlediska a omezení se vztahují na databáze P11 a P15 s maximální velikostí větší než 1 TB:
 
-- If the max size for a P11 or P15 database was ever set to a value greater than 1 TB, then can it only be restored or copied to a P11 or P15 database.  Subsequently, the database can be rescaled to a different compute size provided the amount of space allocated at the time of the rescaling operation does not exceed max size limits of the new compute size.
-- For active geo-replication scenarios:
-  - Setting up a geo-replication relationship: If the primary database is P11 or P15, the secondary(ies) must also be P11 or P15; lower compute size are rejected as secondaries since they are not capable of supporting more than 1 TB.
-  - Upgrading the primary database in a geo-replication relationship: Changing the maximum size to more than 1 TB on a primary database triggers the same change on the secondary database. Both upgrades must be successful for the change on the primary to take effect. Region limitations for the more than 1-TB option apply. If the secondary is in a region that does not support more than 1 TB, the primary is not upgraded.
-- Using the Import/Export service for loading P11/P15 databases with more than 1 TB is not supported. Use SqlPackage.exe to [import](sql-database-import.md) and [export](sql-database-export.md) data.
+- Pokud byla maximální velikost databáze P11 nebo P15 nastavena na hodnotu větší než 1 TB, pak ji lze obnovit nebo zkopírovat pouze do databáze P11 nebo P15.  V důsledku toho může být databáze znovu škálovaná na jinou výpočetní velikost, a to za předpokladu, že množství místa přidělené v době operace změny škálování nepřekračuje omezení maximální velikosti nové výpočetní velikosti.
+- Scénáře aktivní geografické replikace:
+  - Nastavení vztahu geografické replikace: Pokud je primární databáze P11 nebo P15, sekundární (y) musí být také P11 nebo P15; nižší výpočetní velikost je odmítnuta jako sekundární, protože nepodporují více než 1 TB.
+  - Upgrade primární databáze v relaci geografické replikace: Změna maximální velikosti na více než 1 TB v primární databázi spustí stejnou změnu v sekundární databázi. Aby se změny na primárním počítači projevily, musí být oba upgrady úspěšné. Omezení oblastí pro možnost použít více než 1 TB. Pokud je sekundární v oblasti, která nepodporuje více než 1 TB, primární verze se neupgraduje.
+- Používání služby Import/export pro načítání databází P11/P15 s více než 1 TB se nepodporuje. K [importu](sql-database-import.md) a [exportu](sql-database-export.md) dat použijte SqlPackage. exe.
 
 ## <a name="next-steps"></a>Další kroky
 
-For overall resource limits, see [SQL Database vCore-based resource limits - single databases](sql-database-vcore-resource-limits-single-databases.md) and [SQL Database DTU-based resource limits - elastic pools](sql-database-dtu-resource-limits-single-databases.md).
+Celkové omezení prostředků najdete v tématu [SQL Database omezení prostředků na základě Vcore – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [SQL Database omezení prostředků na základě DTU – elastické fondy](sql-database-dtu-resource-limits-single-databases.md).

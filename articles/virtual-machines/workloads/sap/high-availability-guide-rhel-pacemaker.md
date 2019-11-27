@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 954ff23997e56249859dd8d35f124324432f2b22
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: ee67c811835d99bf2f4c00dc59b43e29f63c81d6
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673004"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533819"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -36,7 +36,7 @@ ms.locfileid: "71673004"
 [2243692]: https://launchpad.support.sap.com/#/notes/2243692
 [1999351]: https://launchpad.support.sap.com/#/notes/1999351
 
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
+[virtual-machines-linux-maintenance]:../../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
 
 Nejprve si přečtěte následující poznámky a dokumenty SAP:
@@ -76,7 +76,7 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 > Red Hat nepodporuje sledovací zařízení emulované softwarem. Red Hat nepodporuje SBD na cloudových platformách. Podrobnosti najdete v tématu [zásady podpory pro RHEL clustery s vysokou dostupností – SBD a fence_sbd](https://access.redhat.com/articles/2800691).
 > Jediným podporovaným mechanismem pro Pacemaker Red Hat Enterprise Linux clusterů v Azure je agent Azure plot.  
 
-Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
+Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
 1. **[A]** zaregistrovat
 
@@ -122,7 +122,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    > [!IMPORTANT]
    > Pokud potřebujete aktualizovat agenta Azure plot a při použití vlastní role, nezapomeňte aktualizovat vlastní roli tak, aby zahrnovala akci **stavu PowerOff**. Podrobnosti najdete v tématu [Vytvoření vlastní role pro agenta plotu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent).  
 
-1. **[A]**  Nastavit rozlišení názvu hostitele
+1. **[A]** nastavení rozlišení názvu hostitele
 
    Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    Nahraďte IP adresu a název hostitele v následujících příkazech. Výhodou použití/Etc/Hosts je, že cluster bude nezávisle na DNS, který může být kritickým prvkem způsobujícím selhání příliš.
@@ -138,7 +138,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <b>10.0.0.7 prod-cl1-1</b>
    </code></pre>
 
-1. **[A]**  Hacluster Změna hesla na stejné heslo
+1. **[A]** Změna hesla hacluster na stejné heslo
 
    <pre><code>sudo passwd hacluster
    </code></pre>
@@ -210,12 +210,12 @@ Využitím techniky STONITH zařízení využívá instanční objekt služby k 
    Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
 1. Vyberte certifikáty a tajné klíče a pak klikněte na nový tajný klíč klienta.
 1. Zadejte popis nového klíče, vyberte možnost "nikdy vyprší platnost" a klikněte na tlačítko Přidat.
-1. Poznamenejte si hodnotu. Používá se jako **heslo** pro instanční objekt
-1. Vyberte přehled. Poznamenejte si ID aplikace. Se používá jako uživatelské jméno (**přihlašovací ID** v následujících krocích) instanční objekt služby
+1. Poznamenejte si hodnotu. Používá se jako **heslo** instančního objektu.
+1. Vyberte přehled. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno (**přihlašovací ID** v následujících krocích) instančního objektu.
 
-### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Vytvořit vlastní roli pro agent síťové izolace
+### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** vytvoření vlastní role pro agenta plotu
 
-Instanční objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Musíte přidělit oprávnění instančního objektu pro spuštění a zastavení (napájení) všech virtuálních počítačů v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete vytvořit pomocí [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+Instanční objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Musíte přidělit oprávnění instančního objektu pro spuštění a zastavení (napájení) všech virtuálních počítačů v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete ji vytvořit pomocí [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) .
 
 Použijte následující obsah vstupního souboru. Je potřeba upravit obsah, který je pro vaše předplatná, c276fc76-9cd4-44c9-99a7-4fd71546436e a e91d47c4-76f3-4271-a796-21b4ecfe3624 nahraďte ID vašeho předplatného. Pokud máte pouze jedno předplatné, odeberte v AssignableScopes druhou položku.
 
@@ -254,7 +254,7 @@ Přiřazení vlastní role "Linux ohrazení agenta roli", který byl vytvořen v
 
 Opakujte předchozí kroky pro druhý uzel clusteru.
 
-### <a name="1-create-the-stonith-devices"></a>**[1]**  Umožňuje vytvářet devices využitím techniky STONITH
+### <a name="1-create-the-stonith-devices"></a>**[1]** vytvoření zařízení STONITH
 
 Až budete upravovat oprávnění pro virtuální počítače, můžete nakonfigurovat zařízení využitím techniky STONITH v clusteru.
 

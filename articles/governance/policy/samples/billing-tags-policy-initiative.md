@@ -1,6 +1,6 @@
 ---
-title: Sample - Billing tags policy initiative
-description: This sample policy initiative (policy set) requires specified tag values defined in parameters for cost center and product name.
+title: Ukázka – iniciativa zásad fakturačních značek
+description: Tato ukázková iniciativa zásad (sada zásad) vyžaduje zadané hodnoty značek definované v parametrech pro nákladové středisko a název produktu.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: 449909b160c2b811c62cd8c6592e74dd0f714e41
@@ -10,7 +10,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463386"
 ---
-# <a name="sample---billing-tags-policy-initiative"></a>Sample - Billing tags policy initiative
+# <a name="sample---billing-tags-policy-initiative"></a>Ukázka – iniciativa zásad fakturačních značek
 
 Tato sada zásad vyžaduje zadání hodnot značek pro nákladové středisko a název produktu. S využitím předdefinovaných zásad používá a vynucuje požadované značky. Pro značky zadáte požadované hodnoty.
 
@@ -20,9 +20,9 @@ Tato sada zásad vyžaduje zadání hodnot značek pro nákladové středisko a 
 
 [!code-json[main](../../../../policy-templates/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.json "Billing Tags Policy Initiative")]
 
-You can deploy this template with [PowerShell](#deploy-with-powershell).
+Tuto šablonu můžete nasadit pomocí [PowerShellu](#deploy-with-powershell).
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 

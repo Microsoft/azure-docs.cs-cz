@@ -1,6 +1,6 @@
 ---
-title: Understand resource locking
-description: Learn about the locking options in Azure Blueprints to protect resources when assigning a blueprint.
+title: Vysvětlení uzamykání prostředků
+description: Přečtěte si o možnostech uzamykání v plánech Azure k ochraně prostředků při přiřazování podrobného plánu.
 ms.date: 04/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
@@ -10,58 +10,58 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406405"
 ---
-# <a name="understand-resource-locking-in-azure-blueprints"></a>Understand resource locking in Azure Blueprints
+# <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení uzamykání prostředků v semodrotiskych Azure
 
-The creation of consistent environments at scale is only truly valuable if there's a mechanism to maintain that consistency. This article explains how resource locking works in Azure Blueprints. To see an example of resource locking and application of _deny assignments_, see the [protecting new resources](../tutorials/protect-new-resources.md) tutorial.
+Vytváření konzistentních prostředí se škálováním je skutečně cenné jenom v případě, že existuje mechanismus pro zachování této konzistence. Tento článek vysvětluje, jak funguje uzamykání prostředků v Azure modrotisky. Příklad uzamčení prostředků a použití _přiřazení odepřít_najdete v kurzu [ochrana nových prostředků](../tutorials/protect-new-resources.md) .
 
-## <a name="locking-modes-and-states"></a>Locking modes and states
+## <a name="locking-modes-and-states"></a>Režimy zamykání a stavy
 
-Locking Mode applies to the blueprint assignment and it has three options: **Don't Lock**, **Read Only**, or **Do Not Delete**. The locking mode is configured during artifact deployment during a blueprint assignment. A different locking mode can be set by updating the blueprint assignment.
-Locking modes, however, can't be changed outside of Blueprints.
+Režim uzamykání se vztahuje na přiřazení podrobného plánu a má tři možnosti: **nezamknout**, jen **pro čtení**nebo **neodstraňovat**. Režim uzamykání se konfiguruje během nasazování artefaktů během přiřazení podrobného plánu. V případě, že aktualizujete přiřazení podrobného plánu, lze nastavit jiný režim uzamykání.
+Blokovací režimy se ale nedají změnit mimo plány.
 
-Resources created by artifacts in a blueprint assignment have four states: **Not Locked**, **Read Only**, **Cannot Edit / Delete**, or **Cannot Delete**. Each artifact type can be in the **Not Locked** state. The following table can be used to determine the state of a resource:
+Prostředky vytvořené artefakty v přiřazení podrobného plánu mají čtyři stavy: **Neuzamčeno**, jen **pro čtení**, **nelze je upravit nebo odstranit**nebo **nelze odstranit**. Každý typ artefaktu může být ve stavu **Neuzamčeno** . K určení stavu prostředku lze použít následující tabulku:
 
-|Režim|Artifact Resource Type|Stav|Popis|
+|Režim|Typ prostředku artefaktu|State|Popis|
 |-|-|-|-|
-|Don't Lock|*|Not Locked|Resources aren't protected by Blueprints. This state is also used for resources added to a **Read Only** or **Do Not Delete** resource group artifact from outside a blueprint assignment.|
-|Jen pro čtení|Skupina prostředků|Cannot Edit / Delete|The resource group is read only and tags on the resource group can't be modified. **Not Locked** resources can be added, moved, changed, or deleted from this resource group.|
-|Jen pro čtení|Non-resource group|Jen pro čtení|The resource can't be altered in any way -- no changes and it can't be deleted.|
-|Do Not Delete|*|Cannot Delete|The resources can be altered, but can't be deleted. **Not Locked** resources can be added, moved, changed, or deleted from this resource group.|
+|Nezamknout|*|Neuzamčeno|Prostředky nejsou chráněny pomocí modrotisky. Tento stav se používá také pro prostředky přidané do **pouze pro čtení** nebo **neodstraňují** artefakt skupiny prostředků z vnějšího přiřazení podrobného plánu.|
+|Jen pro čtení|Skupina prostředků|Nelze upravit/odstranit|Skupina prostředků je jen pro čtení a značky ve skupině prostředků nejde upravovat. Do této skupiny prostředků se dají přidat, přesunout, změnit nebo odstranit prostředky, **které nejsou zamčené** .|
+|Jen pro čtení|Skupina bez prostředků|Jen pro čtení|Prostředek se nedá změnit jakýmkoli způsobem – bez změn a nedá se odstranit.|
+|Neodstraňovat|*|Nejde odstranit|Prostředky je možné změnit, ale nelze je odstranit. Do této skupiny prostředků se dají přidat, přesunout, změnit nebo odstranit prostředky, **které nejsou zamčené** .|
 
-## <a name="overriding-locking-states"></a>Overriding locking states
+## <a name="overriding-locking-states"></a>Přepsání stavů uzamčení
 
-It's typically possible for someone with appropriate [role-based access control](../../../role-based-access-control/overview.md) (RBAC) on the subscription, such as the 'Owner' role, to be allowed to alter or delete any resource. This access isn't the case when Blueprints applies locking as part of a deployed assignment. If the assignment was set with the **Read Only** or **Do Not Delete** option, not even the subscription owner can perform the blocked action on the protected resource.
+Pro někoho, kdo má v předplatném příslušné [role](../../../role-based-access-control/overview.md) (RBAC), je obvykle možné, jako je role vlastník, aby bylo možné upravovat nebo odstraňovat jakékoli prostředky. Tento přístup se netýká případu, kdy se při nasazení v rámci nasazeného přiřazení používá jako součást zámky. Pokud bylo přiřazení nastaveno s možností jen **pro čtení** nebo **neodstraňovat** , není ani vlastník předplatného, který může u chráněného prostředku provést akci zablokování.
 
-This security measure protects the consistency of the defined blueprint and the environment it was designed to create from accidental or programmatic deletion or alteration.
+Tato míra zabezpečení chrání konzistenci definovaného podrobného plánu a prostředí, které bylo navrženo pro vytvoření z náhodného nebo neprogramového odstranění nebo změny.
 
-## <a name="removing-locking-states"></a>Removing locking states
+## <a name="removing-locking-states"></a>Odebírají se stavy zamykání.
 
-If it becomes necessary to modify or delete a resource protected by an assignment, there are two ways to do so.
+Pokud bude nutné upravit nebo odstranit prostředek chráněný přiřazením, existují dva způsoby, jak to provést.
 
-- Updating the blueprint assignment to a locking mode of **Don't Lock**
-- Delete the blueprint assignment
+- Aktualizuje se přiřazení podrobného plánu na režim uzamčení **bez zámku** .
+- Odstranit přiřazení podrobného plánu
 
-When the assignment is removed, the locks created by Blueprints are removed. However, the resource is left behind and would need to be deleted through normal means.
+Po odebrání přiřazení se odeberou zámky vytvořené pomocí modrotisky. Prostředek je však ponechán na pozadí a je třeba jej odstranit běžným způsobem.
 
-## <a name="how-blueprint-locks-work"></a>How blueprint locks work
+## <a name="how-blueprint-locks-work"></a>Jak podrobný plán funguje zámky
 
-An RBAC [deny assignments](../../../role-based-access-control/deny-assignments.md) deny action is applied to artifact resources during assignment of a blueprint if the assignment selected the **Read Only** or **Do Not Delete** option. The deny action is added by the managed identity of the blueprint assignment and can only be removed from the artifact resources by the same managed identity. This security measure enforces the locking mechanism and prevents removing the blueprint lock outside Blueprints.
+Pokud přiřazení vybere možnost **jen pro čtení** nebo **neodstraní** , je u prostředků artefaktů při přiřazení podrobného plánu použita akce odepřít odmítnutí [přiřazení](../../../role-based-access-control/deny-assignments.md) . Akce odepřít je přidána spravovanou identitou přiřazení podrobného plánu a lze ji odebrat pouze z prostředků artefaktu pomocí stejné spravované identity. Tato míra zabezpečení vynutila blokovací mechanizmus a zabraňuje odebrání zámku podrobného plánu mimo plány.
 
-![Blueprint deny assignment on resource group](../media/resource-locking/blueprint-deny-assignment.png)
+![Přiřazení podrobného plánu k zamítnutí ve skupině prostředků](../media/resource-locking/blueprint-deny-assignment.png)
 
-The [deny assignment properties](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) of each mode are as follows:
+[Vlastnosti přiřazení odepřít](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) pro každý režim jsou následující:
 
-|Režim |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|Režim |Oprávnění. akce |Oprávnění. NotActions |Principals[i].Type |ExcludePrincipals [i]. Účet | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Jen pro čtení |**\*** |**\*/read** |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
-|Do Not Delete |**\*/delete** | |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
+|Jen pro čtení |**\*** |**\*/Read** |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
+|Neodstraňovat |**\*/DELETE** | |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
 
 > [!IMPORTANT]
-> Azure Resource Manager caches role assignment details for up to 30 minutes. As a result, deny assignments deny action's on blueprint resources may not immediately be in full effect. During this period of time, it might be possible to delete a resource intended to be protected by blueprint locks.
+> Azure Resource Manager ukládá do mezipaměti Podrobnosti přiřazení role po dobu až 30 minut. V důsledku toho nemusí být přiřazení zamítnutí akcí Odepřít u prostředků podrobného plánu okamžitě platit. Během této doby může být možné odstranit prostředek určený k ochraně pomocí zámků podrobného plánu.
 
-## <a name="exclude-a-principal-from-a-deny-assignment"></a>Exclude a principal from a deny assignment
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Vyloučení objektu zabezpečení z přiřazení zamítnutí
 
-In some design or security scenarios, it may be necessary to exclude a principal from the [deny assignment](../../../role-based-access-control/deny-assignments.md) the blueprint assignment creates. This is done in REST API by adding up to five values to the **excludedPrincipals** array in the **locks** property when [creating the assignment](/rest/api/blueprints/assignments/createorupdate). This is an example of a request body that includes **excludedPrincipals**:
+V některých scénářích návrhu nebo zabezpečení může být nutné vyřadit objekt zabezpečení z [přiřazení zamítnutí](../../../role-based-access-control/deny-assignments.md) , které přiřazení podrobného plánu vytvoří. To se provádí v REST API přidáním až pěti hodnot do pole **excludedPrincipals** ve vlastnosti **zámky** při [vytváření přiřazení](/rest/api/blueprints/assignments/createorupdate). Toto je příklad textu žádosti, který obsahuje **excludedPrincipals**:
 
 ```json
 {
@@ -105,7 +105,7 @@ In some design or security scenarios, it may be necessary to exclude a principal
 
 ## <a name="next-steps"></a>Další kroky
 
-- Follow the [protect new resources](../tutorials/protect-new-resources.md) tutorial.
+- Postupujte podle kurzu [ochrany nových prostředků](../tutorials/protect-new-resources.md) .
 - Další informace o [životním cyklu podrobného plánu](lifecycle.md)
 - Principy použití [statických a dynamických parametrů](parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)

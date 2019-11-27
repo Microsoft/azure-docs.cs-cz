@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Perform a news search using the SDK for Java - Bing News Search'
+title: 'Rychlý Start: provedení hledání zpráv pomocí sady SDK pro jazyk Java Vyhledávání zpráv Bingu'
 titleSuffix: Azure Cognitive Services
-description: Use this quickstart to search for news using the Bing News Search SDK for Java, and process the response.
+description: V tomto rychlém startu můžete vyhledat zprávy pomocí sady Vyhledávání zpráv Bingu SDK pro jazyk Java a zpracovat odpověď.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -18,13 +18,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383917"
 ---
-# <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Quickstart: Search for news with the Bing News Search SDK for Java
+# <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Rychlý Start: hledání zpráv pomocí sady Vyhledávání zpráv Bingu SDK pro jazyk Java
 
-Use this quickstart to begin searching for news with the Bing News Search SDK for Java. While Bing News Search has a REST API compatible with most programming languages, the SDK provides an easy way to integrate the service into your applications. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
+V tomto rychlém startu můžete začít hledat zprávy s Vyhledávání zpráv Bingu SDK pro jazyk Java. I když Vyhledávání zpráv Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Install the Bing News Search SDK dependencies using Maven, Gradle, or another dependency management system. Soubor POM Mavenu vyžaduje následující deklaraci:
+Nainstalujte závislosti Vyhledávání zpráv Bingu SDK pomocí Maven, Gradle nebo jiného systému pro správu závislostí. Soubor POM Mavenu vyžaduje následující deklaraci:
 
 ```xml
     <dependencies>
@@ -55,9 +55,9 @@ import okhttp3.Response;
 import java.io.IOException;
 ```
 
-## <a name="create-a-search-client-and-store-credentials"></a>Create a search client and store credentials
+## <a name="create-a-search-client-and-store-credentials"></a>Vytvoření vyhledávacího klienta a přihlašovacích údajů pro Store
 
-1. Create a method called `getClient()` that returns a new `NewsSearchAPIImpl` search client. Add your endpoint as the first parameter for the new`NewsSearchAPIImpl` object, and a new `ServiceClientCredentials` object to store your credentials.
+1. Vytvořte metodu nazvanou `getClient()`, která vrátí nového klienta `NewsSearchAPIImpl` vyhledávání. Přidejte svůj koncový bod jako první parametr nového objektu`NewsSearchAPIImpl` a nový objekt `ServiceClientCredentials` pro uložení vašich přihlašovacích údajů.
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
@@ -67,7 +67,7 @@ import java.io.IOException;
     }
     ```
 
-2. To create the `ServiceClientCredentials` object, override the `applyCredentialsFilter()` function. Pass a `OkHttpClient.Builder` to the method, and use the builder's `addNetworkInterceptor()` method to create your credentials for the SDK call.
+2. Chcete-li vytvořit objekt `ServiceClientCredentials`, přepište funkci `applyCredentialsFilter()`. Předat `OkHttpClient.Builder` metodě a použít metodu `addNetworkInterceptor()` Tvůrce k vytvoření přihlašovacích údajů pro volání sady SDK.
 
     ```java
     new ServiceClientCredentials() {
@@ -90,9 +90,9 @@ import java.io.IOException;
     });
     ```
 
-## <a name="send-and-receive-a-search-request"></a>Send and receive a search request
+## <a name="send-and-receive-a-search-request"></a>Odeslání a přijetí žádosti o vyhledávání
 
-1. Create a method that calls `getClient()` and sends a search request to the Bing News Search service. Filter the search with the *market* and *count* parameters, then print information about the first news result: name, URL, publication date, description, provider name, and total number of estimated matches for your search.
+1. Vytvořte metodu, která volá `getClient()` a odešle požadavek na hledání do služby Vyhledávání zpráv Bingu. Vyfiltrujte hledání pomocí parametrů *trhu* a *počtu* a pak si vytiskněte informace o prvním výsledku zprávy: jméno, URL, datum publikování, popis, název zprostředkovatele a celkový počet odhadovaných shod pro vaše hledání.
 
     ```java
     public static void newsSearch(String subscriptionKey)
@@ -126,7 +126,7 @@ import java.io.IOException;
     
     ```
 
-2. Add your search method to a `main()` method to execute the code.
+2. Chcete-li spustit kód, přidejte metodu hledání do `main()` metody.
 
     ```java 
     public static void main(String[] args) {

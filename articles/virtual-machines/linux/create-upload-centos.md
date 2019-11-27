@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/04/2018
+ms.date: 11/25/2019
 ms.author: szark
-ms.openlocfilehash: 6c3bb16e249d84f1da94b6b827bbaf6f8e9df1a1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1ac2b24649363538d2728f302941b5a4bf5dd357
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171256"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534158"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na CentOS pro Azure
 
@@ -29,7 +29,7 @@ Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsah
 * [Příprava virtuálního počítače s CentOS 7.0 pro Azure](#centos-70)
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podobný odvozený) operační systém Linux na virtuální pevný disk. Pro vytváření souborů. VHD, například virtualizačního řešení, jako je například Hyper-V, existuje více nástrojů. Pokyny najdete v tématu [instalace role Hyper-V a konfigurace virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
 
@@ -43,7 +43,7 @@ V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podo
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor.  Další informace o tomto postupu najdete v následujících krocích.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
 
-## <a name="centos-6x"></a>CentOS 6. x
+## <a name="centos-6x"></a>CentOS 6.x
 
 1. Ve Správci technologie Hyper-V vyberte virtuální počítač.
 
@@ -355,7 +355,7 @@ Příprava virtuálního počítače s CentOS 7 pro Azure je velmi podobná Cent
     Upravit `/etc/dracut.conf`, přidat obsah:
 
     ```console
-    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+    add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
     ```
 
     Znovu sestavte initramfs:

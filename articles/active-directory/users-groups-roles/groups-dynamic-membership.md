@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 11/27/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6cfad04d9b0dd3537d60f2651ed341d96bd0210
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027126"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538793"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -32,7 +32,7 @@ Když se změní kterýkoli atribut uživatele nebo zařízení, systém vyhodno
 
 > [!NOTE]
 > Tato funkce vyžaduje licenci Azure AD Premium P1 pro každého jedinečného uživatele, který je členem jedné nebo více dynamických skupin. Nemusíte přiřazovat licence uživatelům, aby byli členy dynamických skupin, ale musíte mít minimální počet licencí v tenantovi pro pokrytí všech takových uživatelů. Pokud byste například měli celkem 1 000 jedinečných uživatelů ve všech dynamických skupinách ve vašem tenantovi, budete potřebovat minimálně 1 000 licencí pro Azure AD Premium P1, aby splňovaly licenční požadavek.
->
+> Pro zařízení, která jsou členem dynamické skupiny zařízení, není nutná žádná licence.
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Tvůrce pravidel v Azure Portal
 
@@ -119,7 +119,7 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | Příjmení |Libovolná hodnota řetězce nebo hodnota *null* |(User. příjmení-EQ "hodnota") |
 | telephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. telephoneNumber-EQ "value") |
 | usageLocation |Dva směrové číslo země |(User. usageLocation-EQ "US") |
-| userPrincipalName (Hlavní název uživatele) |Libovolná hodnota řetězce |(user.userPrincipalName -eq "alias@domain") |
+| userPrincipalName (Hlavní název uživatele) |Libovolná hodnota řetězce |(User. userPrincipalName-EQ "alias@domain") |
 | userType |člen typu host *null* |(User. userType-EQ "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce řetězců typu
@@ -138,7 +138,7 @@ V následující tabulce jsou uvedeny všechny podporované operátory a jejich 
 | Operátor | Syntaxe |
 | --- | --- |
 | Nerovná se |-Ne |
-| Rovná se |– EQ |
+| Je rovno |– EQ |
 | Nezačíná na |-notStartsWith |
 | Začíná |– startsWith |
 | Neobsahuje |-notContains |

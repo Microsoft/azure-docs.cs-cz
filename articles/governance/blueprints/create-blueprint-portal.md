@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Create a blueprint in the portal'
-description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts through the Azure portal.
+title: 'Rychlý Start: vytvoření podrobného plánu na portálu'
+description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů prostřednictvím Azure Portal.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
@@ -10,84 +10,84 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74321946"
 ---
-# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Quickstart: Define and assign a blueprint in the portal
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
 
-When you learn how to create and assign blueprints, you can define common patterns to develop reusable and rapidly deployable configurations based on Azure Resource Manager templates, policy, security, and more. In this tutorial, you learn to use Azure Blueprints to do some of the common tasks related to creating, publishing, and assigning a blueprint within your organization. These tasks include:
+Když se naučíte vytvářet a přiřazovat modrotisky, můžete definovat běžné vzory pro vývoj opakovaně použitelných a rychle nasazujíných konfigurací na základě Azure Resource Manager šablon, zásad, zabezpečení a dalších. V tomto kurzu se naučíte používat Azure modrotisky k provádění některých běžných úkolů souvisejících s vytvářením, publikováním a přiřazováním podrobného plánu v rámci vaší organizace. Mezi tyto úlohy patří:
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
 ## <a name="create-a-blueprint"></a>Vytvoření podrobného plánu
 
-Jako první krok při definování standardního vzoru pro dodržování předpisů je sestavení podrobného plánu z dostupných prostředků. In this example, create a new blueprint named **MyBlueprint** to configure role and policy assignments for the subscription. Then add a new resource group, and create a Resource Manager template and role assignment on the new resource group.
+Jako první krok při definování standardního vzoru pro dodržování předpisů je sestavení podrobného plánu z dostupných prostředků. V tomto příkladu vytvořte nový podrobný plán s názvem **MyBlueprint** , ve kterém nakonfigurujete přiřazení rolí a zásad pro předplatné. Pak přidejte novou skupinu prostředků a vytvořte Správce prostředků šablonu a přiřazení role pro novou skupinu prostředků.
 
-1. Select **All services** in the left pane. Search for and select **Blueprints**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Select **Blueprint definitions** from the page on the left and select the **+ Create blueprint** button at the top of the page.
+1. Na stránce vlevo vyberte **definice** podrobného plánu a v horní části stránky vyberte tlačítko **+ vytvořit podrobný plán** .
 
-   Or, select **Create** from the **Getting started** page to go straight to creating a blueprint.
+   Nebo na stránce **Začínáme** vyberte **vytvořit** a pokračujte tak, že vytvoříte podrobný plán.
 
-   ![Create a blueprint from the Blueprint definitions page](./media/create-blueprint-portal/create-blueprint-button.png)
+   ![Vytvořit podrobný plán ze stránky definice podrobného plánu](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Provide a **Blueprint name** such as **MyBlueprint**. (Use up to 48 letters and numbers, but no spaces or special characters). Leave **Blueprint description** blank for now.
+1. Zadejte **název** podrobného plánu, například **MyBlueprint**. (Použijte až 48 písmen a číslic, ale žádné mezery ani speciální znaky). Pro nyní nechejte **Popis** podrobného plánu prázdný.
 
-1. In the **Definition location** box, select the ellipsis on the right, select the [management group](../management-groups/overview.md) or subscription where you want to save the blueprint, and choose **Select**.
+1. V poli **umístění definice** vyberte tři tečky na pravé straně, vyberte [skupinu pro správu](../management-groups/overview.md) nebo předplatné, kam chcete uložit podrobný plán, a zvolte **Vybrat**.
 
-1. Verify that the information is correct. The **Blueprint name** and **Definition location** fields can't be changed later. Then select **Next : Artifacts** at the bottom of the page or the **Artifacts** tab at the top of the page.
+1. Ověřte, zda jsou informace správné. Pole **název** a **umístění definice** podrobného plánu nelze později změnit. Pak vyberte **Další: artefakty** ve spodní části stránky nebo na kartě **artefakty** v horní části stránky.
 
-1. Add a role assignment at the subscription level:
+1. Přidejte přiřazení role na úrovni předplatného:
 
-   1. Select the **+ Add artifact** row under **Subscription**. The **Add artifact** window opens on the right side of the browser.
+   1. V části **předplatné**vyberte řádek **+ Přidat artefakt** . Otevře se okno **Přidat artefakt** na pravé straně prohlížeče.
 
-   1. Select **Role assignment** for **Artifact type**.
+   1. Vyberte **přiřazení role** pro **Typ artefaktu**.
 
-   1. Under **Role**, select **Contributor**. Leave the **Add user, app or group** box with the check box that indicates a dynamic parameter.
+   1. V části **role**vyberte **Přispěvatel**. Ponechejte pole **Přidat uživatele, aplikaci nebo skupinu** pomocí zaškrtávacího políčka, které označuje dynamický parametr.
 
-   1. Select **Add** to add this artifact to the blueprint.
+   1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
-   ![Role assignment for a blueprint artifact](./media/create-blueprint-portal/add-role-assignment.png)
+   ![Přiřazení role pro artefakt podrobného plánu](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
-   > Most artifacts support parameters. A parameter that's assigned a value during blueprint creation is a *static parameter*. If the parameter is assigned during blueprint assignment, it's a *dynamic parameter*. Další informace najdete v [parametry podrobného plánu](./concepts/parameters.md).
+   > Většina artefaktů podporuje parametry. Parametr, kterému je přiřazena hodnota během vytváření podrobného plánu, je *statický parametr*. Pokud je parametr přiřazen během přiřazení podrobného plánu, jedná se o *dynamický parametr*. Další informace najdete v [parametry podrobného plánu](./concepts/parameters.md).
 
-1. Add a policy assignment at the subscription level:
+1. Přidat přiřazení zásady na úrovni předplatného:
 
-   1. Select the **+ Add artifact** row under the role assignment artifact.
+   1. V artefaktu přiřazení role vyberte řádek **+ Přidat artefakt** .
 
-   1. Select **Policy assignment** for **Artifact type**.
+   1. Vyberte **přiřazení zásad** pro **Typ artefaktu**.
 
-   1. Change **Type** to **Built-in**. In **Search**, enter **tag**.
+   1. Změňte **typ** na **předdefinovaný**. Do **vyhledávacího**výrazu zadejte **tag**.
 
-   1. Vyklikněte z **hledání** pro zobrazení filtrování. Select **Append tag and its default value to resource groups**.
+   1. Vyklikněte z **hledání** pro zobrazení filtrování. Vyberte možnost **připojit značku a její výchozí hodnotu do skupin prostředků**.
 
-   1. Select **Add** to add this artifact to the blueprint.
+   1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
-1. Select the row of the policy assignment **Append tag and its default value to resource groups**.
+1. Vyberte řádek s označením přiřazení zásady **připojit a jeho výchozí hodnotu do skupin prostředků**.
 
-1. The window to provide parameters to the artifact as part of the blueprint definition opens and allows setting the parameters for all assignments (static parameters) based on this blueprint instead of during assignment (dynamic parameters). This example uses dynamic parameters during blueprint assignment, so leave the defaults and select **Cancel**.
+1. Okno pro zadání parametrů artefaktu v rámci definice podrobného plánu se otevře a umožní nastavení parametrů pro všechna přiřazení (statické parametry) na základě tohoto podrobného plánu, nikoli během přiřazení (dynamické parametry). Tento příklad používá dynamické parametry během přiřazení podrobného plánu, takže ponechte výchozí hodnoty a vyberte **Zrušit**.
 
-1. Add a resource group at the subscription level:
+1. Přidat skupinu prostředků na úrovni předplatného:
 
-   1. Select the **+ Add artifact** row under **Subscription**.
+   1. V části **předplatné**vyberte řádek **+ Přidat artefakt** .
 
-   1. Select **Resource group** for **Artifact type**.
+   1. Vyberte **skupinu prostředků** pro **Typ artefaktu**.
 
-   1. Leave the **Artifact display name**, **Resource Group Name**, and **Location** boxes blank, but make sure that the check box is checked for each parameter property to make them dynamic parameters.
+   1. **Zobrazované názvy artefaktů**, **název skupiny prostředků**a pole **umístění** nechte prázdné, ale ujistěte se, že je zaškrtnuté políčko pro všechny vlastnosti parametrů, aby byly dynamické parametry.
 
-   1. Select **Add** to add this artifact to the blueprint.
+   1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
-1. Add a template under the resource group:
+1. Přidejte šablonu do skupiny prostředků:
 
-   1. Select the **+ Add artifact** row under the **ResourceGroup** entry.
+   1. V položce **zdroj dat** vyberte řádek **+ Přidat artefakt** .
 
-   1. Select **Azure Resource Manager template** for **Artifact type**, set **Artifact display name** to **StorageAccount**, and leave **Description** blank.
+   1. Vyberte **šablonu Azure Resource Manager** pro **Typ artefaktu**, nastavte **Zobrazovaný název artefaktu** na **StorageAccount**a nechejte **Popis** prázdný.
 
    1. Na kartu **šablona** v poli editoru, vložte následující šablonu správce prostředků.
-      After you paste the template, select the **Parameters** tab and note that the template parameters **storageAccountType** and **location** were detected. Each parameter was automatically detected and populated, but configured as a dynamic parameter.
+      Po vložení šablony vyberte kartu **parametry** a Všimněte si, že byly zjištěny parametry šablony **storageAccountType** a **Location** . Každý parametr byl automaticky zjištěn a vyplněn, ale nakonfigurován jako dynamický parametr.
 
       > [!IMPORTANT]
-      > If you're importing the template, ensure that the file is only JSON and doesn't include HTML. When you're pointing to a URL on GitHub, ensure that you have selected **RAW** to get the pure JSON file and not the one wrapped with HTML for display on GitHub. Pokud importovaná šablona není čistě JSON, dojde k chybě.
+      > Pokud importujete šablonu, ujistěte se, že je soubor pouze JSON a neobsahuje kód HTML. Když odkazujete na adresu URL na GitHubu, ujistěte se, že jste si vybrali **nezpracované** soubory JSON, a ne ta, která je zabalená do HTML pro zobrazení na GitHubu. Pokud importovaná šablona není čistě JSON, dojde k chybě.
 
       ```json
       {
@@ -138,159 +138,159 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
       }
       ```
 
-   1. Clear the **storageAccountType** check box and note that the drop-down list contains only values included in the Resource Manager template under **allowedValues**. Select the box to set it back to a dynamic parameter.
+   1. Zrušte zaškrtnutí políčka **storageAccountType** a Všimněte si, že rozevírací seznam obsahuje pouze hodnoty obsažené v šabloně správce prostředků v části **allowedValues**. Zaškrtněte políčko pro jeho nastavení zpět na dynamický parametr.
 
-   1. Select **Add** to add this artifact to the blueprint.
+   1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
-   ![Resource Manager template for the blueprint artifact](./media/create-blueprint-portal/add-resource-manager-template.png)
+   ![Šablona Správce prostředků pro artefakt podrobného plánu](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Notice that each artifact has **_x_ out of _y_ parameters populated** in the **Parameters** column. The dynamic parameters are set during each assignment of the blueprint.
+1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že každý artefakt má ve sloupci **Parameters** **naplněný parametr _y_** . Dynamické parametry jsou nastaveny během každého přiřazení podrobného plánu.
 
-   ![Completed blueprint definition](./media/create-blueprint-portal/completed-blueprint.png)
+   ![Dokončena definice podrobného plánu](./media/create-blueprint-portal/completed-blueprint.png)
 
-1. Now that all planned artifacts have been added, select **Save Draft** at the bottom of the page.
+1. Teď, když jste přidali všechny plánované artefakty, vyberte **Uložit koncept** ve spodní části stránky.
 
 ## <a name="edit-a-blueprint"></a>Upravit podrobný plán
 
-In [Create a blueprint](#create-a-blueprint), you didn't provide a description or add the role assignment to the new resource group. You can fix both by following these steps:
+V části [vytvořit podrobný plán](#create-a-blueprint)jste nezadali popis nebo přidáte přiřazení role do nové skupiny prostředků. V obou případech můžete opravit pomocí následujících kroků:
 
-1. Select **Blueprint definitions** from the page on the left.
+1. Na levé straně stránky vyberte **definice** podrobného plánu.
 
-1. In the list of blueprints, right-click the one that you previously created and select **Edit blueprint**.
+1. V seznamu modrotisky klikněte pravým tlačítkem na ten, který jste vytvořili dříve, a vyberte **Upravit podrobný plán**.
 
-1. In **Blueprint description**, provide some information about the blueprint and the artifacts that compose it. In this case, enter something like: **This blueprint sets tag policy and role assignment on the subscription, creates a ResourceGroup, and deploys a resource template and role assignment to that ResourceGroup.**
+1. V **popisu**podrobného plánu zadejte nějaké informace o podrobném plánu a artefaktech, které ho tvoří. V takovém případě zadejte něco podobného: **Tento plán nastaví u předplatného zásadu značky a přiřazení role, vytvoří zdroj skupiny a nasadí šablonu prostředků a přiřazení role do této skupiny prostředků.**
 
-1. Select **Next : Artifacts** at the bottom of the page or the **Artifacts** tab at the top of the page.
+1. Vyberte **Další: artefakty** ve spodní části stránky nebo na kartě **artefakty** v horní části stránky.
 
-1. Add a role assignment under the resource group:
+1. Přidejte přiřazení role pod skupinu prostředků:
 
-   1. Select the **+ Add artifact** row directly under the **ResourceGroup** entry.
+   1. Vyberte řádek **+ Přidat artefakt** přímo pod položkou **resourceName** .
 
-   1. Select **Role assignment** for **Artifact type**.
+   1. Vyberte **přiřazení role** pro **Typ artefaktu**.
 
-   1. Under **Role**, select **Owner**, and clear the check box under the **Add user, app or group** box.
+   1. V části **role**vyberte **vlastník**a zrušte zaškrtnutí políčka v poli **Přidat uživatele, aplikaci nebo skupinu** .
 
-   1. Search for and select a user, app, or group to add. This artifact uses a static parameter set the same in every assignment of this blueprint.
+   1. Vyhledejte a vyberte uživatele, aplikaci nebo skupinu, které chcete přidat. Tento artefakt používá statický parametr nastavený v každém přiřazení tohoto podrobného plánu.
 
-   e. Select **Add** to add this artifact to the blueprint.
+   e. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
-   ![Second role assignment for the blueprint artifact](./media/create-blueprint-portal/add-role-assignment-2.png)
+   ![Přiřazení druhé role pro artefakt podrobného plánu](./media/create-blueprint-portal/add-role-assignment-2.png)
 
-1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Notice that the newly added role assignment shows **1 out of 1 parameters populated**. That means it's a static parameter.
+1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že nově přidané přiřazení role zobrazuje **naplněný 1 z 1 parametrů**. To znamená, že se jedná o statický parametr.
 
-   ![Second definition for the completed blueprint](./media/create-blueprint-portal/completed-blueprint-2.png)
+   ![Druhá definice pro dokončený podrobný plán](./media/create-blueprint-portal/completed-blueprint-2.png)
 
-1. Select **Save Draft** now that it has been updated.
+1. Vyberte **Uložit koncept** nyní, že byl aktualizován.
 
 ## <a name="publish-a-blueprint"></a>Publikování podrobného plánu
 
 Teď, když jsou do podrobného plánu přidané všechny plánované artefakty, je na čase ho publikovat.
-Publishing makes the blueprint available to be assigned to a subscription.
+Publikování zpřístupní plán, který se má přiřadit k předplatnému.
 
-1. Select **Blueprint definitions** from the page on the left.
+1. Na levé straně stránky vyberte **definice** podrobného plánu.
 
-1. In the list of blueprints, right-click the one you previously created and select **Publish blueprint**.
+1. V seznamu modrotisky klikněte pravým tlačítkem na ten, který jste dříve vytvořili, a vyberte **publikovat podrobný plán**.
 
-1. In the pane that opens, provide a **Version** (letters, numbers, and hyphens with a maximum length of 20 characters), such as **v1**. Optionally, enter text in **Change notes**, such as **First publish**.
+1. V podokně, které se otevře, zadejte **verzi** (písmena, číslice a spojovníky s maximální délkou 20 znaků), například **v1**. V případě potřeby můžete zadat text do **poznámek ke změnám**, jako je například **první publikování**.
 
-1. Select **Publish** at the bottom of the page.
+1. V dolní části stránky vyberte **publikovat** .
 
 ## <a name="assign-a-blueprint"></a>Přiřazení podrobného plánu
 
-After a blueprint has been published, it can be assigned to a subscription. Assign the blueprint that you created to one of the subscriptions under your management group hierarchy. If the blueprint is saved to a subscription, it can only be assigned to that subscription.
+Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný plán, který jste vytvořili, do některého z předplatných ve vaší hierarchii skupin pro správu. Pokud je podrobný plán uložen v předplatném, může být přiřazen pouze k tomuto předplatnému.
 
-1. Select **Blueprint definitions** from the page on the left.
+1. Na levé straně stránky vyberte **definice** podrobného plánu.
 
-1. In the list of blueprints, right-click the one that you previously created (or select the ellipsis) and select **Assign blueprint**.
+1. V seznamu modrotisky klikněte pravým tlačítkem na ten, který jste dříve vytvořili (nebo vyberte tři tečky) a vyberte **přiřadit podrobný plán**.
 
-1. On the **Assign blueprint** page, in the **Subscription** drop-down list, select the subscriptions that you want to deploy this blueprint to.
+1. Na stránce **přiřadit podrobný plán** vyberte v rozevíracím seznamu **odběr** odběry, do kterých chcete nasadit tento plán.
 
-   If there are supported Enterprise offerings available from [Azure Billing](../../billing/index.md), a **Create new** link is activated under the **Subscription** box. Postupujte následovně:
+   Pokud jsou v rámci [fakturace Azure](../../billing/index.md)dostupné podporované nabídky Enterprise, v poli **předplatné** se aktivuje odkaz **vytvořit nový** . Postupujte následovně:
 
-   1. Select the **Create new** link to create a new subscription instead of selecting existing ones.
+   1. Vyberte odkaz **vytvořit nový** pro vytvoření nového předplatného místo výběru stávajících.
 
-   1. Provide a **Display name** for the new subscription.
+   1. Zadejte **Zobrazovaný název** pro nové předplatné.
 
-   1. Select the available **Offer** from the drop-down list.
+   1. V rozevíracím seznamu vyberte dostupnou **nabídku** .
 
-   1. Use the ellipsis to select the [management group](../management-groups/overview.md) that the subscription will be a child of.
+   1. Pomocí tří teček vyberte [skupinu pro správu](../management-groups/overview.md) , pro kterou bude předplatné podřízeno.
 
-   1. Select **Create** at the bottom of the page.
+   1. V dolní části stránky vyberte **vytvořit** .
 
-   ![Create a subscription for a blueprint assignment subscription](./media/create-blueprint-portal/assignment-create-subscription.png)
+   ![Vytvoření odběru pro odběr přiřazení podrobného plánu](./media/create-blueprint-portal/assignment-create-subscription.png)
 
    > [!IMPORTANT]
-   > The new subscription is created immediately after you select **Create**.
+   > Nové předplatné se vytvoří ihned po výběru **vytvořit**.
 
    > [!NOTE]
-   > An assignment is created for each subscription that you select. You can make changes to a single subscription assignment at a later time without forcing changes on the remainder of the selected subscriptions.
+   > U každého předplatného, které vyberete, se vytvoří přiřazení. Změny v jednom předplatném můžete provádět později bez vynucení změn ve zbývající části vybraných předplatných.
 
-1. For **Assignment name**, provide a unique name for this assignment.
+1. Pro **název přiřazení**zadejte jedinečný název pro toto přiřazení.
 
-1. In **Location**, select a region for the managed identity and subscription deployment object to be created in. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+1. V části **umístění**vyberte oblast, ve které se má vytvořit objekt nasazení spravované identity a předplatného. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-1. Leave the **Blueprint definition version** drop-down selection of **Published** versions on the **v1** entry. (The default is the most recently published version.)
+1. Ponechte v rozevíracím seznamu **verze definice** podrobného plánu možnost **publikované** verze v položce **v1** . (Výchozí je naposledy publikovaná verze.)
 
-1. Pro **zámek přiřazení**, ponechte výchozí hodnotu na **bez zámku**. For more information, see [Blueprints resource locking](./concepts/resource-locking.md).
+1. Pro **zámek přiřazení**, ponechte výchozí hodnotu na **bez zámku**. Další informace najdete v tématu [uzamykání prostředků v modrotisky](./concepts/resource-locking.md).
 
-   ![Locking and managed identities for the assignment](./media/create-blueprint-portal/assignment-locking-mi.png)
+   ![Uzamykání a spravované identity pro přiřazení](./media/create-blueprint-portal/assignment-locking-mi.png)
 
-1. Under **Managed Identity**, leave the default of **System assigned**.
+1. V části **spravovaná identita**ponechte výchozí hodnotu **přiřazenou systému**.
 
 1. Pro přiřazení role na úrovni předplatného **[skupiny uživatelů nebo název aplikace]: Přispěvatel**, vyhledejte a vyberte uživatele, aplikace nebo skupinu.
 
-1. For the subscription level policy assignment, set **Tag Name** to **CostCenter** and the **Tag Value** to **ContosoIT**.
+1. U přiřazení zásady na úrovni předplatného nastavte **název značky** na **CostCenter** a **hodnotu značky** na **ContosoIT**.
 
-1. For **ResourceGroup**, provide a **Name** of **StorageAccount** and a **Location** of **East US 2** from the drop-down list.
+1. V rozevíracím seznamu pro **zdroj dat**zadejte **název** **StorageAccount** a **umístění** **východní USA 2** .
 
    > [!NOTE]
-   > For each artifact that you added under the resource group during blueprint definition, that artifact is indented to align with the resource group or object that you'll deploy it with.
-   > Artifacts that either don't take parameters or have no parameters to be defined at assignment are listed only for contextual information.
+   > Pro každý artefakt, který jste přidali do skupiny prostředků během definice podrobného plánu, je tento artefakt odsazený tak, aby se zarovnal se skupinou prostředků nebo objektem, pomocí kterého ho nasadíte.
+   > Artefakty, které buď nepřebírají parametry, nebo nemají žádné parametry, které by bylo možné definovat v přiřazení, jsou uvedeny pouze pro kontextové informace.
 
-1. On the Azure Resource Manager template **StorageAccount**, select **Standard_GRS** for the **storageAccountType** parameter.
+1. V šabloně Azure Resource Manager **StorageAccount**vyberte pro parametr **storageAccountType** možnost **Standard_GRS** .
 
-1. Read the information box at the bottom of the page, and then select **Assign**.
+1. Přečtěte si informační pole v dolní části stránky a potom vyberte **přiřadit**.
 
 ## <a name="track-deployment-of-a-blueprint"></a>Sledování aplikace plánu
 
 Pokud byl plán přiřazený k jednomu nebo několika předplatným, stanou dvě věci:
 
-- The blueprint is added to the **Assigned blueprints** page for each subscription.
-- The process of deploying all the artifacts defined by the blueprint begins.
+- Podrobný plán se přidá na stránku **přiřazené plány** pro každé předplatné.
+- Proces nasazení všech artefaktů definovaných v podrobném plánu začíná.
 
-Now that the blueprint has been assigned to a subscription, verify the progress of the deployment:
+Po přiřazení podrobného plánu k předplatnému ověřte průběh nasazení:
 
-1. Select **Assigned blueprints** from the page on the left.
+1. Na levé straně vyberte **přiřazené plány** .
 
-1. In the list of blueprints, right-click the one that you previously assigned and select **View assignment details**.
+1. V seznamu modrotisky klikněte pravým tlačítkem na ten, který jste předtím přiřadili, a vyberte **Zobrazit podrobnosti přiřazení**.
 
-   ![View assignment details from the Assigned blueprints page](./media/create-blueprint-portal/view-assignment-details.png)
+   ![Zobrazit podrobnosti o přiřazení z přiřazené stránky modrotisky](./media/create-blueprint-portal/view-assignment-details.png)
 
-1. On the **Blueprint assignment** page, validate that all artifacts were successfully deployed and that there were no errors during the deployment. If errors occurred, see [Troubleshooting blueprints](./troubleshoot/general.md) for steps to determine what went wrong.
+1. Na stránce **přiřazení** podrobného plánu ověřte, zda byly všechny artefakty úspěšně nasazeny a zda během nasazení nedošlo k chybám. Pokud došlo k chybám, přečtěte si téma [řešení potíží s](./troubleshoot/general.md) podrobnými kroky pro určení, co se stalo.
 
-## <a name="unassign-a-blueprint"></a>Zrušení přiřazení podrobného plánu
+## <a name="unassign-a-blueprint"></a>Zrušení přiřazení plánu
 
-If you no longer need a blueprint assignment, remove it from a subscription. The blueprint might have been replaced by a newer blueprint with updated patterns, policies, and designs. Po odebrání podrobného plánu zůstanou přiřazené artefakty, které byly jeho součástí. Pokud chcete odebrat přiřazení podrobného plánu, postupujte následovně:
+Pokud už přiřazení podrobného plánu nepotřebujete, odeberte ho z předplatného. Podrobný plán mohl být nahrazen novějším plánem s aktualizovanými vzorci, zásadami a návrhy. Po odebrání podrobného plánu zůstanou přiřazené artefakty, které byly jeho součástí. Pokud chcete odebrat přiřazení podrobného plánu, postupujte následovně:
 
-1. Select **Assigned blueprints** from the page on the left.
+1. Na levé straně vyberte **přiřazené plány** .
 
-1. In the list of blueprints, select the blueprint that you want to unassign. Then select the **Unassign blueprint** button at the top of the page.
+1. V seznamu modrotisky vyberte plán, který chcete zrušit přiřazení. Pak vyberte tlačítko zrušit **přiřazení** podrobného plánu v horní části stránky.
 
-1. Read the confirmation message and then select **OK**.
+1. Přečtěte si potvrzovací zprávu a pak vyberte **OK**.
 
-## <a name="delete-a-blueprint"></a>Odstranění podrobného plánu
+## <a name="delete-a-blueprint"></a>Smazání podrobného plánu
 
-1. Select **Blueprint definitions** from the page on the left.
+1. Na levé straně stránky vyberte **definice** podrobného plánu.
 
-1. Right-click the blueprint that you want to delete, and select **Delete blueprint**. Then select **Yes** in the confirmation dialog box.
+1. Klikněte pravým tlačítkem na podrobný plán, který chcete odstranit, a vyberte **Odstranit podrobný plán**. Potom v potvrzovacím dialogovém okně vyberte **Ano** .
 
 > [!NOTE]
-> Deleting a blueprint in this method also deletes all published versions of the selected blueprint.
-> To delete a single version, open the blueprint, select the **Published versions** tab, select the version that you want to delete, and then select **Delete This Version**. Also, you can't delete a blueprint until you've deleted all blueprint assignment of that blueprint definition.
+> Odstraněním podrobného plánu v této metodě se odstraní také všechny publikované verze vybraného podrobného plánu.
+> Pokud chcete odstranit jednu verzi, otevřete plán, vyberte kartu **publikované verze** , vyberte verzi, kterou chcete odstranit, a pak vyberte **Odstranit tuto verzi**. Nemůžete také odstranit podrobný plán, dokud neodstraníte všechna přiřazení podrobného plánu této definice podrobného plánu.
 
 ## <a name="next-steps"></a>Další kroky
 
-In this quickstart, you've created, assigned, and removed a blueprint with Azure portal. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+V tomto rychlém startu jste vytvořili, přiřadili a odebrali podrobný plán s Azure Portal. Další informace o plánech Azure najdete v článku o životním cyklu podrobného plánu.
 
 > [!div class="nextstepaction"]
-> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)
+> [Další informace o životním cyklu podrobného plánu](./concepts/lifecycle.md)

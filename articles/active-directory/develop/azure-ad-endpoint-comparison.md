@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 975c7f18da9797305b0af3f81b00acca1ba14a1a
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e5a000d08afb3afba06d82aae4414e87b61e502f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200313"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533044"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč se má aktualizovat platforma Microsoft Identity Platform (v 2.0)?
 
@@ -62,9 +62,9 @@ Souhlas správce, který se provádí jménem organizace, pořád vyžaduje stat
 
 ## <a name="scopes-not-resources"></a>Obory, nikoli prostředky
 
-U aplikací využívajících koncový bod verze 1.0 se aplikace může chovat jako **prostředek**nebo příjemce tokenů. Prostředek může definovat počet **oborů** nebo **oAuth2Permissions** , které rozumí, a umožnit tak klientským aplikacím žádat o tokeny z daného prostředku na určitou sadu oborů. Jako příklad prostředku zvažte Graph API Azure AD:
+U aplikací využívajících koncový bod verze 1.0 se aplikace může chovat jako **prostředek**nebo příjemce tokenů. Prostředek může definovat počet **oborů** nebo **oAuth2Permissions** , které rozumí, a umožnit tak klientským aplikacím žádat o tokeny z daného prostředku na určitou sadu oborů. Jako příklad prostředku zvažte Microsoft Graph rozhraní API:
 
-* Identifikátor prostředku nebo `AppID URI`: `https://graph.windows.net/`
+* Identifikátor prostředku nebo `AppID URI`: `https://graph.microsoft.com/`
 * Rozsahy nebo `oAuth2Permissions`: `Directory.Read`, `Directory.Write`a tak dále.
 
 To platí pro koncový bod Microsoft Identity Platform. Aplikace se může stále chovat jako prostředek, definovat obory a identifikovat pomocí identifikátoru URI. Klientské aplikace si stále můžou vyžádat přístup k těmto oborům. Nicméně způsob, jakým klient požaduje tato oprávnění, se změnil.
@@ -95,7 +95,7 @@ Tady je parametr **Scope (obor** ) indikuje, který prostředek a oprávnění a
 
 ### <a name="offline-access"></a>Offline přístup
 
-Aplikace, které používají koncový bod platformy Microsoft identity, můžou vyžadovat použití nového známého oprávnění pro aplikace – `offline_access` rozsahu. Všechny aplikace budou muset požádat o toto oprávnění, pokud potřebují přístup k prostředkům jménem uživatele za delší dobu, a to i v případě, že uživatel nemusí aplikaci aktivně používat. Obor `offline_access` se uživateli zobrazí v dialogových oknech pro vyjádření souhlasu s **přístupem k datům kdykoli**a uživatel musí souhlasit. Vyžádáním oprávnění `offline_access` umožníte, aby webová aplikace přijímala OAuth 2,0 refresh_tokens z koncového bodu Microsoft Identity Platform. Aktualizační tokeny jsou dlouhodobé a dají se vyměňovat za nové přístupové tokeny OAuth 2,0 pro rozšířená období přístupu.
+Aplikace, které používají koncový bod platformy Microsoft identity, můžou vyžadovat použití nového známého oprávnění pro aplikace – `offline_access` rozsahu. Všechny aplikace budou muset požádat o toto oprávnění, pokud potřebují přístup k prostředkům jménem uživatele za delší dobu, a to i v případě, že uživatel nemusí aplikaci aktivně používat. Obor `offline_access` se uživateli zobrazí v dialogových oknech pro vyjádření souhlasu s **přístupem k datům kdykoli**a uživatel musí souhlasit. Vyžádáním oprávnění `offline_access` umožníte, aby webová aplikace přijímala refresh_tokens OAuth 2,0 z koncového bodu Microsoft Identity Platform. Aktualizační tokeny jsou dlouhodobé a dají se vyměňovat za nové přístupové tokeny OAuth 2,0 pro rozšířená období přístupu.
 
 Pokud vaše aplikace nepožaduje obor `offline_access`, neobdrží aktualizační tokeny. To znamená, že při uplatnění autorizačního kódu v toku autorizačního kódu OAuth 2,0 obdržíte jenom přístupový token z `/token`ho koncového bodu. Přístupový token zůstane po krátkou dobu platný (obvykle jednou za hodinu), ale nakonec vyprší jeho platnost. V tomto okamžiku bude vaše aplikace muset přesměrovat uživatele zpátky na `/authorize` koncový bod a načíst nový autorizační kód. Během tohoto přesměrování může uživatel nebo nemusí později zadat svoje přihlašovací údaje nebo znovu vyjádřit souhlas s oprávněními v závislosti na typu aplikace.
 
@@ -103,11 +103,11 @@ Další informace o OAuth 2,0, `refresh_tokens`a `access_tokens`, najdete v refe
 
 ### <a name="openid-profile-and-email"></a>OpenID, profil a e-mail
 
-Z historického hlediska je nejzákladnější tok přihlašování OpenID Connect s platformou Microsoft identity, který poskytuje velké množství informací o uživateli ve výsledných *id_token*. Deklarace ve id_token můžou zahrnovat jméno uživatele, upřednostňované uživatelské jméno, e-mailovou adresu, ID objektu a další.
+Z historického hlediska OpenID připojení s platformou Microsoft identity na úrovni Basic Connect poskytuje velké množství informací o uživateli ve výsledných *id_token*. Deklarace v id_token můžou zahrnovat jméno uživatele, upřednostňované uživatelské jméno, e-mailovou adresu, ID objektu a další.
 
 Informace, na které `openid` rozsah poskytují přístup k aplikaci, jsou teď omezené. Obor `openid` umožní, aby se aplikace přihlásila uživateli a získala pro uživatele identifikátor specifický pro aplikaci. Pokud chcete získat osobní údaje o uživateli v aplikaci, aplikace musí požádat uživatele o další oprávnění. Dva nové obory, `email` a `profile`, vám umožní požádat o další oprávnění.
 
-* Obor `email` umožňuje vaší aplikaci přístup k primární e-mailové adrese uživatele prostřednictvím deklarace identity `email` v id_token, za předpokladu, že uživatel má adresovatelnou e-mailovou adresu.
+* Obor `email` umožňuje vaší aplikaci přístup k primární e-mailové adrese uživatele prostřednictvím deklarace `email` v id_token za předpokladu, že uživatel má adresovatelnou e-mailovou adresu.
 * Obor `profile` poskytuje vaší aplikaci přístup ke všem dalším základním informacím o uživateli, jako je například jeho jméno, upřednostňované uživatelské jméno, ID objektu a tak dále, v id_token.
 
 Tyto obory vám umožňují nakódovat aplikaci při minimálním zpřístupnění, abyste se mohli pouze uživatele zeptat na sadu informací, které vaše aplikace potřebuje ke své práci. Další informace o těchto oborech najdete v [referenčních informacích o oboru platformy Microsoft Identity](v2-permissions-and-consent.md).
@@ -117,7 +117,7 @@ Tyto obory vám umožňují nakódovat aplikaci při minimálním zpřístupněn
 U koncového bodu Microsoft Identity Platform se ve výchozím nastavení v tokenech vystaví menší sada deklarací identity, aby byly datové části malé. Pokud máte aplikace a služby, které mají závislost na konkrétní deklaraci v tokenu v 1.0, který už není ve výchozím nastavení součástí tokenu platformy Microsoft identity, zvažte použití volitelné funkce [deklarace](active-directory-optional-claims.md) identity, která tuto deklaraci zahrnuje.
 
 > [!IMPORTANT]
-> tokeny v 1.0 a v 2.0 mohou být vydávány koncovými body v 1.0 i v 2.0. id_tokens *vždy* odpovídají koncovému bodu, ze kterého se požadují, a přístupové tokeny se *vždycky* shodují s formátem očekávaným webovým rozhraním API, které klient bude volat pomocí tohoto tokenu.  Takže pokud vaše aplikace používá koncový bod v 2.0 k získání tokenu pro volání Microsoft Graph, což očekává v případě přístupových tokenů ve formátu, vaše aplikace dostane token ve formátu v 1.0.  
+> tokeny v 1.0 a v 2.0 mohou být vydávány koncovými body v 1.0 i v 2.0. id_tokens *vždy* odpovídají koncovému bodu, ze kterého jsou požadovány, a přístupové tokeny *vždy* odpovídají formátu očekávanému webovým rozhraním API, které bude klient volat pomocí tohoto tokenu.  Takže pokud vaše aplikace používá koncový bod v 2.0 k získání tokenu pro volání Microsoft Graph, což očekává v případě přístupových tokenů ve formátu, vaše aplikace dostane token ve formátu v 1.0.  
 
 ## <a name="limitations"></a>Omezení
 

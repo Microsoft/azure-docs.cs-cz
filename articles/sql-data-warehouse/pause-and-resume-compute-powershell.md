@@ -11,16 +11,16 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2ad83e51a11e08373f2132e861ec1c8f3ac20458
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 148f3f99aac5ce01bd88f1efaecb5821ae94f50a
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686009"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539169"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý Start: pozastavení a obnovení výpočtů ve Azure SQL Data Warehouse s využitím Azure PowerShell
 
-Pomocí PowerShellu můžete pozastavit výpočetní prostředí v Azure SQL Data Warehouse a ušetřit tak náklady. Až budete připraveni k používání datového skladu, [obnovte výpočetní](sql-data-warehouse-manage-compute-overview.md) prostředky.
+Pomocí Azure PowerShell můžete pozastavit výpočetní prostředí v Azure SQL Data Warehouse a ušetřit tak náklady. Až budete připraveni k používání datového skladu, [obnovte výpočetní](sql-data-warehouse-manage-compute-overview.md) prostředky.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -56,8 +56,8 @@ Vyhledejte název databáze, název serveru a skupinu prostředků pro datový s
 
 Informace o umístění vašeho datového skladu vyhledáte pomocí následujících kroků.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
-2. Na levé stránce webu Azure Portal klikněte na **Databáze SQL**.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+2. Na webu Azure Portal klikněte vlevo na **Databáze SQL**.
 3. Na stránce **Databáze SQL** vyberte **mySampleDataWarehouse**. Otevře se datový sklad.
 
     ![Název serveru a skupina prostředků](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)

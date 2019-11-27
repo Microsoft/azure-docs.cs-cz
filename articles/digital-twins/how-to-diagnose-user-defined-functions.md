@@ -1,6 +1,6 @@
 ---
-title: How to debug UDFs - Azure Digital Twins | Microsoft Docs
-description: Learn about recommended approaches to debug user-defined functions in Azure Digital Twins.
+title: Jak ladit UDF – digitální vlákna Azure | Microsoft Docs
+description: Přečtěte si o doporučených přístupech k ladění uživatelsky definovaných funkcí v digitálních Vlákenách Azure.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -16,87 +16,87 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457014"
 ---
-# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>How to debug user-defined functions in Azure Digital Twins
+# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak ladit uživatelsky definované funkce v digitálních prostředníkech Azure
 
-This article summarizes how to diagnose and debug user-defined functions in Azure Digital Twins. Then, it identifies some of the most common scenarios found when debugging them.
+Tento článek shrnuje, jak diagnostikovat a ladit uživatelsky definované funkce v digitálních Vlákenách Azure. Pak identifikuje některé z nejběžnějších scénářů, které byly nalezeny při jejich ladění.
 
 >[!TIP]
-> Read [How to configure monitoring and logging](./how-to-configure-monitoring.md) to learn more about setting up debugging tools in Azure Digital Twins using Activity Logs, Diagnostic Logs, and Azure Monitor.
+> Přečtěte si, [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md) pro další informace o nastavení ladicích nástrojů v digitálních aktivitách Azure pomocí protokolů aktivit, diagnostických protokolů a Azure monitor.
 
-## <a name="debug-issues"></a>Debug issues
+## <a name="debug-issues"></a>Problémy ladění
 
-Knowing how to diagnose issues within Azure Digital Twins allows you to effectively analyze issues, identify the causes of problems, and provide appropriate solutions for them.
+Znalost toho, jak diagnostikovat problémy v rámci digitálních vláken Azure, vám umožní efektivně analyzovat problémy, identifikovat příčiny problémů a poskytovat pro ně vhodná řešení.
 
-A variety of logging, analytics, and diagnostic tools are provided to that end.
+K tomuto účelu se poskytuje celá řada nástrojů pro protokolování, analýzu a diagnostiku.
 
-### <a name="enable-logging-for-your-instance"></a>Enable logging for your instance
+### <a name="enable-logging-for-your-instance"></a>Povolit protokolování pro vaši instanci
 
-Azure Digital Twins supports robust logging, monitoring, and analytics. Solutions developers can use Azure Monitor logs, diagnostic logs, activity logs, and other services to support the complex monitoring needs of an IoT app. Logging options can be combined to query or display records across several services and to provide granular logging coverage for many services.
+Digitální vlákna Azure podporuje robustní protokolování, monitorování a analýzu. Vývojáři řešení můžou používat protokoly Azure Monitor, diagnostické protokoly, protokoly aktivit a další služby pro podporu složitých potřeb monitorování aplikace IoT. Možnosti protokolování lze kombinovat pro dotazování nebo zobrazení záznamů napříč několika službami a pro zajištění podrobného pokrytí protokolování pro mnoho služeb.
 
-* For logging configuration specific to Azure Digital Twins, read [How to configure monitoring and logging](./how-to-configure-monitoring.md).
-* Consult the [Azure Monitor](../azure-monitor/overview.md) overview to learn about powerful log settings enabled through Azure Monitor.
-* Review the article [Collect and consume log data from your Azure resources](../azure-monitor/platform/resource-logs-overview.md) for configuring diagnostic log settings in Azure Digital Twins through the Azure portal, Azure CLI, or PowerShell.
+* Pro konfiguraci protokolování specificky pro digitální vlákna Azure si přečtěte, [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md).
+* V přehledu [Azure monitor](../azure-monitor/overview.md) najdete informace o výkonném nastavení protokolu povoleném prostřednictvím Azure monitor.
+* Přečtěte si článek [shromáždění a využití dat protokolu z vašich prostředků Azure](../azure-monitor/platform/resource-logs-overview.md) ke konfiguraci nastavení diagnostického protokolu v digitálních prostředcích azure pomocí Azure Portal, Azure CLI nebo PowerShellu.
 
-Once configured, you'll be able to select all log categories, metrics, and use powerful Azure Monitor log analytics workspaces to support your debugging efforts.
+Po nakonfigurování budete moct vybrat všechny kategorie protokolů, metriky a používat Azure Monitor výkonné pracovní prostory Log Analytics pro podporu vašeho úsilí o ladění.
 
-### <a name="trace-sensor-telemetry"></a>Trace sensor telemetry
+### <a name="trace-sensor-telemetry"></a>Telemetrie snímačů trasování
 
-To trace sensor telemetry, verify that diagnostic settings are enabled for your Azure Digital Twins instance. Then, ensure that all desired log categories are selected. Lastly, confirm that the desired logs are being sent to Azure Monitor logs.
+Chcete-li trasovat telemetrii senzorů, ověřte, zda jsou pro instanci digitálního vlákna Azure povoleny nastavení diagnostiky. Pak se ujistěte, že jsou vybrané všechny požadované kategorie protokolu. Nakonec potvrďte, že jsou odesílány požadované protokoly do protokolů Azure Monitor.
 
-To match a sensor telemetry message to its respective logs, you can specify a Correlation ID on the event data being sent. To do so, set the `x-ms-client-request-id` property to a GUID.
+Pokud chcete, aby se zpráva telemetrie senzorů shodovala s příslušnými protokoly, můžete pro odesílaná data události zadat ID korelace. Provedete to tak, že nastavíte vlastnost `x-ms-client-request-id` na identifikátor GUID.
 
-After sending telemetry, open Azure Monitor log analytics to query for logs using the set Correlation ID:
+Po odeslání telemetrie otevřete Azure Monitor Log Analytics a Dotazujte se na protokoly pomocí nastavení ID korelace:
 
 ```Kusto
 AzureDiagnostics
 | where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Query value | Nahradit hodnotou |
+| Hodnota dotazu | Nahradit hodnotou |
 | --- | --- |
-| YOUR_CORRELATION_IDENTIFIER | The Correlation ID that was specified on the event data |
+| YOUR_CORRELATION_IDENTIFIER | ID korelace, které bylo zadáno pro data události |
 
-To see all recent telemetry logs query:
+Chcete-li zobrazit všechny nedávné dotazy o protokolech telemetrie:
 
 ```Kusto
 AzureDiagnostics
 | order by CorrelationId desc
 ```
 
-If you enable logging for your user-defined function, those logs appear in your log analytics instance with the category `UserDefinedFunction`. To retrieve them, enter the following query condition in log analytics:
+Pokud povolíte protokolování pro uživatelsky definovanou funkci, zobrazí se tyto protokoly v instanci Log Analytics s kategorií `UserDefinedFunction`. Pokud je chcete načíst, zadejte do Log Analytics následující podmínku dotazu:
 
 ```Kusto
 AzureDiagnostics
 | where Category == 'UserDefinedFunction'
 ```
 
-For more information about powerful query operations, read [Getting started with queries](../azure-monitor/log-query/get-started-queries.md).
+Další informace o výkonných operacích dotazů najdete v článku [Začínáme s dotazy](../azure-monitor/log-query/get-started-queries.md).
 
-## <a name="identify-common-issues"></a>Identify common issues
+## <a name="identify-common-issues"></a>Identifikace běžných problémů
 
-Both diagnosing and identifying common issues are important when troubleshooting your solution. Several issues that are commonly encountered when developing user-defined functions are summarized in the following subsections.
+Při řešení potíží s řešením jsou důležité jak diagnostikovat, tak i identifikovat běžné problémy. Několik problémů, které se běžně vyskytují při vývoji uživatelsky definovaných funkcí, jsou shrnuté v následujících pododdílech.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-### <a name="check-if-a-role-assignment-was-created"></a>Check if a role assignment was created
+### <a name="check-if-a-role-assignment-was-created"></a>Zkontroluje, jestli se vytvořilo přiřazení role.
 
-Without a role assignment created within the Management API, the user-defined function doesn't have access to perform any actions such as sending notifications, retrieving metadata, and setting computed values within the topology.
+Bez přiřazení role vytvořeného v rozhraní API pro správu nemá uživatelem definovaná funkce přístup k provádění jakýchkoli akcí, jako je odesílání oznámení, načítání metadat a nastavení počítaných hodnot v rámci topologie.
 
-Check if a role assignment exists for your user-defined function through your Management API:
+Ověřte, jestli pro vaši uživatelsky definovanou funkci prostřednictvím rozhraní API pro správu existuje přiřazení role:
 
 ```URL
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Parameter value | Nahradit hodnotou |
+| Hodnota parametru | Nahradit hodnotou |
 | --- | --- |
-| YOUR_USER_DEFINED_FUNCTION_ID | The ID of the user-defined function to retrieve role assignments for|
+| YOUR_USER_DEFINED_FUNCTION_ID | ID uživatelsky definované funkce, pro kterou se mají načíst přiřazení rolí|
 
-Learn [How to create a role assignment for your user-defined function](./how-to-user-defined-functions.md), if no role assignments exist.
+Zjistěte, [jak vytvořit přiřazení role pro uživatelsky definovanou funkci](./how-to-user-defined-functions.md), pokud neexistují žádné přiřazení rolí.
 
-### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>Check if the matcher works for a sensor's telemetry
+### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>Zkontroluje, jestli se pro telemetrii senzoru funguje.
 
-With the following call against your Azure Digital Twins instances' Management API, you're able to determine if a given matcher applies for the given sensor.
+S následujícím voláním rozhraní API pro správu instancí digitálních vláken Azure je možné určit, jestli se daný typ shody pro daný senzor vztahuje.
 
 ```URL
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
@@ -104,8 +104,8 @@ GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSO
 
 | Parametr | Nahradit hodnotou |
 | --- | --- |
-| *YOUR_MATCHER_IDENTIFIER* | The ID of the matcher you wish to evaluate |
-| *YOUR_SENSOR_IDENTIFIER* | The ID of the sensor you wish to evaluate |
+| *YOUR_MATCHER_IDENTIFIER* | ID shody, kterou chcete vyhodnotit |
+| *YOUR_SENSOR_IDENTIFIER* | ID senzoru, který chcete vyhodnotit |
 
 Odpověď:
 
@@ -118,9 +118,9 @@ Odpověď:
 }
 ```
 
-### <a name="check-what-a-sensor-triggers"></a>Check what a sensor triggers
+### <a name="check-what-a-sensor-triggers"></a>Zjistit, co senzor spouští
 
-With the following call against the Azure Digital Twins Management APIs, you're able to determine the identifiers of your user-defined functions triggered by the given sensor's incoming telemetry:
+S následujícím voláním rozhraní API pro správu digitálních vláken Azure je možné určit identifikátory uživatelem definovaných funkcí aktivovaných příchozí telemetrie daného senzoru:
 
 ```URL
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
@@ -128,7 +128,7 @@ GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=Use
 
 | Parametr | Nahradit hodnotou |
 | --- | --- |
-| *YOUR_SENSOR_IDENTIFIER* | The ID of the sensor to send telemetry |
+| *YOUR_SENSOR_IDENTIFIER* | ID snímače, který má být odeslán telemetrie |
 
 Odpověď:
 
@@ -159,11 +159,11 @@ Odpověď:
 ]
 ```
 
-### <a name="issue-with-receiving-notifications"></a>Issue with receiving notifications
+### <a name="issue-with-receiving-notifications"></a>Problém s přijímáním oznámení
 
-When you're not receiving notifications from the triggered user-defined function, confirm that your topology object type parameter matches the type of identifier that's being used.
+Pokud nepřijímáte oznámení z aktivované uživatelsky definované funkce, potvrďte, že parametr typu objektu topologie odpovídá typu používaného identifikátoru.
 
-**Incorrect** Example:
+**Nesprávné** Případě
 
 ```JavaScript
 var customNotification = {
@@ -173,9 +173,9 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-This scenario arises because the used identifier refers to a sensor while the topology object type specified is `Space`.
+K tomuto scénáři dojde, protože použitý identifikátor odkazuje na senzor, zatímco zadaný typ objektu topologie je `Space`.
 
-**Correct** Example:
+**Správné** Případě
 
 ```JavaScript
 var customNotification = {
@@ -185,7 +185,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-The easiest way to not run into this issue is to use the `Notify` method on the metadata object.
+Nejjednodušší způsob, jak tento problém vyřešit, je použití metody `Notify` u objektu metadata.
 
 Příklad:
 
@@ -202,18 +202,18 @@ function process(telemetry, executionContext) {
 }
 ```
 
-## <a name="common-diagnostic-exceptions"></a>Common diagnostic exceptions
+## <a name="common-diagnostic-exceptions"></a>Běžné výjimky diagnostiky
 
-If you enable diagnostic settings, you might encounter these common exceptions:
+Pokud povolíte nastavení diagnostiky, můžete se setkat s těmito častými výjimkami:
 
-1. **Throttling**: if your user-defined function exceeds the execution rate limits outlined in the [Service Limits](./concepts-service-limits.md) article, it will be throttled. No further operations are successfully executed until the throttling limits expire.
+1. **Omezování**: Pokud vaše uživatelsky definovaná funkce překročí omezení přenosové rychlosti uvedené v článku [omezení služby](./concepts-service-limits.md) , bude omezena. Žádné další operace se úspěšně provedly až do vypršení limitu omezení.
 
-1. **Data Not Found**: if your user-defined function attempts to access metadata that does not exist, the operation fails.
+1. **Data nenalezena**: Pokud se vaše uživatelsky definovaná funkce pokusí získat přístup k metadatům, které neexistují, operace se nezdařila.
 
-1. **Not Authorized**: if your user-defined function doesn't have a role assignment set or lacks enough permission to access certain metadata from the topology, the operation fails.
+1. **Neautorizováno**: Pokud vaše uživatelsky definovaná funkce nemá nastavené přiřazení role nebo nemá dostatečná oprávnění pro přístup k určitým metadatům z topologie, operace se nezdařila.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Learn how to enable [monitoring and logs](./how-to-configure-monitoring.md) in Azure Digital Twins.
+- Naučte se, jak povolit [monitorování a protokoly](./how-to-configure-monitoring.md) v digitálních vlákenách Azure.
 
-- Read the [Overview of Azure Activity log](../azure-monitor/platform/activity-logs-overview.md) article for more Azure logging options.
+- Další možnosti protokolování Azure najdete v článku [Přehled protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md) .

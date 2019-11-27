@@ -17,7 +17,7 @@ ms.locfileid: "74451386"
 ---
 Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu Azure Portal, postupujte takto:
 
-1. On the Azure portal menu, select **All services**. V seznamu prostředků zadejte **Účty úložiště**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Účty úložiště**.
+1. V nabídce Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Účty úložiště**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Účty úložiště**.
 1. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
 1. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
 1. Pod polem **Skupina prostředků** vyberte **Vytvořit novou**. Zadejte název nové skupiny prostředků, jak je znázorněno na následujícím obrázku.
@@ -30,13 +30,13 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu A
 
    |Pole  |Hodnota  |
    |---------|---------|
-   |Model nasazení     |Správce prostředků         |
-   |Výkon     |Úroveň Standard         |
+   |Model nasazení     |Resource Manager         |
+   |Výkon     |Standard         |
    |Account kind (Druh účtu)     |StorageV2 (obecné účely v2)         |
    |Replikace     |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)         |
    |Vrstva přístupu     |Hot         |
 
 1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 Další informace o typech účtů úložiště a dalším nastavení účtu úložiště najdete v článku s [přehledem účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview). Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 

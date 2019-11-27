@@ -1,6 +1,6 @@
 ---
-title: Metrics and diagnostics logging
-description: Learn how to enable diagnostics in Azure SQL Database to store information about resource utilization and query execution statistics.
+title: Metriky a protokolování diagnostiky
+description: Naučte se, jak povolit diagnostiku v Azure SQL Database k ukládání informací o využití prostředků a statistikách spouštění dotazů.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -11,737 +11,737 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/15/2019
-ms.openlocfilehash: 27810f2ee1bc95c924003cd8a5944860df40db14
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 95953b4f052531c9804024410e225bb0b5c62aef
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420809"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539190"
 ---
-# <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrics and diagnostics logging
+# <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metriky a protokolování diagnostiky
 
-In this topic, you will learn how to configure logging of diagnostics telemetry for Azure SQL Database through the Azure portal, PowerShell, Azure CLI, Azure Monitor REST API, and Azure Resource Manager template. These diagnostics can be used to gauge resource utilization and query execution statistics.
+V tomto tématu se dozvíte, jak nakonfigurovat protokolování telemetrie diagnostiky pro Azure SQL Database přes Azure Portal, PowerShell, Azure CLI, Azure Monitor REST API a šablonu Azure Resource Manager. Tato diagnostika se dá použít k posouzení využití prostředků a statistik provádění dotazů.
 
-Single databases, pooled databases in elastic pools, and instance databases in a managed instance can stream metrics and diagnostics logs for easier performance monitoring. You can configure a database to transmit resource usage, workers and sessions, and connectivity to one of the following Azure resources:
+Izolované databáze, sdružené databáze v elastických fondech a databáze instancí ve spravované instanci mohou streamovat metriky a diagnostické protokoly pro snazší monitorování výkonu. Databázi můžete nakonfigurovat tak, aby předávala využití prostředků, pracovní procesy a relace a připojení k jednomu z následujících prostředků Azure:
 
-- **Azure SQL Analytics**: to get intelligent monitoring of your Azure SQL databases that includes performance reports, alerts, and mitigation recommendations.
-- **Azure Event Hubs**: to integrate SQL Database telemetry with your custom monitoring solutions or hot pipelines.
-- **Azure Storage**: to archive vast amounts of telemetry for a fraction of the price.
+- **Azure SQL Analytics**: Získejte inteligentní monitorování vašich databází SQL Azure, včetně sestav o výkonu, výstrah a doporučení pro zmírnění rizik.
+- **Azure Event Hubs**: pro integraci SQL Database telemetrie s vlastními řešeními monitorování nebo s aktivními kanály.
+- **Azure Storage**: pro archivaci obrovského množství telemetrie za zlomek ceny.
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 
-For more information about the metrics and log categories supported by the various Azure services, see:
+Další informace o metrikách a kategoriích protokolů podporovaných různými službami Azure najdete v těchto tématech:
 
-- [Overview of metrics in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Overview of Azure diagnostics logs](../azure-monitor/platform/resource-logs-overview.md)
+- [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Přehled diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-overview.md)
 
-This article provides guidance to help you enable diagnostics telemetry for Azure SQL databases, elastic pools, and managed instances. It also can help you understand how to configure Azure SQL Analytics as a monitoring tool for viewing database diagnostics telemetry.
+Tento článek poskytuje pokyny, které vám pomůžou povolit telemetrii diagnostiky pro databáze SQL Azure, elastické fondy a spravované instance. Může vám také porozumět tomu, jak nakonfigurovat Azure SQL Analytics jako monitorovací nástroj pro zobrazení telemetrie diagnostiky databáze.
 
-## <a name="enable-logging-of-diagnostics-telemetry"></a>Enable logging of diagnostics telemetry
+## <a name="enable-logging-of-diagnostics-telemetry"></a>Povolit protokolování telemetrie diagnostiky
 
-You can enable and manage metrics and diagnostics telemetry logging by using one of the following methods:
+Můžete povolit a spravovat metriky a protokolování telemetrie diagnostiky pomocí jedné z následujících metod:
 
-- Portál Azure
+- portál Azure
 - PowerShell
 - Azure CLI
 - Azure Monitor REST API
 - Šablona Azure Resource Manageru
 
-When you enable metrics and diagnostics logging, you need to specify the Azure resource destination for collecting the diagnostics telemetry. Available options include:
+Když povolíte metriky a protokolování diagnostiky, musíte zadat cíl prostředku Azure pro shromažďování telemetrie diagnostiky. K dispozici jsou tyto možnosti:
 
 - Azure SQL Analytics
 - Azure Event Hubs
 - Azure Storage
 
-You can provision a new Azure resource or select an existing resource. After you choose a resource by using the **Diagnostic settings** option, specify which data to collect.
+Můžete zřídit nový prostředek Azure nebo vybrat existující prostředek. Po výběru prostředku pomocí možnosti **nastavení diagnostiky** určete, která data se mají shromažďovat.
 
-## <a name="supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases"></a>Supported diagnostic logging for Azure SQL databases, and instance databases
+## <a name="supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases"></a>Podporované protokolování diagnostiky pro databáze SQL Azure a databáze instancí
 
-Enable the metrics and diagnostics logging on SQL databases - they're not enabled by default.
+Povolit metriky a protokolování diagnostiky pro databáze SQL – nejsou ve výchozím nastavení povolené.
 
-You can set up Azure SQL databases, and instance databases to collect the following diagnostics telemetry:
+Můžete nastavit databáze Azure SQL a databáze instancí pro shromažďování následujících diagnostických telemetrie:
 
-| Monitoring telemetry for databases | Single database and pooled database support | Instance database support |
+| Monitorování telemetrie pro databáze | Podpora jedné databáze a databáze ve fondu | Podpora databáze instancí |
 | :------------------- | ----- | ----- |
-| [Basic metrics](#basic-metrics): Contains DTU/CPU percentage, DTU/CPU limit, physical data read percentage, log write percentage, Successful/Failed/Blocked by firewall connections, sessions percentage, workers percentage, storage, storage percentage, and XTP storage percentage. | Ano | Ne |
-| [Instance and App Advanced](#advanced-metrics):  Contains tempdb system database data and log file size and tempdb percent log file used. | Ano | Ne |
-| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Contains information about the query runtime statistics such as CPU usage and query duration statistics. | Ano | Ano |
-| [QueryStoreWaitStatistics](#query-store-wait-statistics): Contains information about the query wait statistics (what your queries waited on) such are CPU, LOG, and LOCKING. | Ano | Ano |
-| [Errors](#errors-dataset): Contains information about SQL errors on a database. | Ano | Ano |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Contains information about how much time a database spent waiting on different wait types. | Ano | Ne |
-| [Timeouts](#time-outs-dataset): Contains information about timeouts on a database. | Ano | Ne |
-| [Blocks](#blockings-dataset): Contains information about blocking events on a database. | Ano | Ne |
-| [Deadlocks](#deadlocks-dataset): Contains information about deadlock events on a database. | Ano | Ne |
-| [AutomaticTuning](#automatic-tuning-dataset): Contains information about automatic tuning recommendations for a database. | Ano | Ne |
-| [SQLInsights](#intelligent-insights-dataset): Contains Intelligent Insights into performance for a database. To learn more, see [Intelligent Insights](sql-database-intelligent-insights.md). | Ano | Ano |
+| [Základní metriky](#basic-metrics): obsahuje hodnoty DTU/CPU, DTU/CPU, procenta fyzického načtení dat, procento zápisu protokolu, úspěšné/neúspěšné/blokované připojení brány firewall, procento relací, procento pracovních procesů, úložiště, procenta úložiště a XTP. procento úložiště | Ano | Ne |
+| [Rozšířená instance a aplikace](#advanced-metrics): obsahuje data systémové databáze tempdb a velikost souboru protokolu a soubor protokolu tempdb%. | Ano | Ne |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): obsahuje informace o statistice za běhu dotazu, jako je například využití procesoru a statistika doby trvání dotazu. | Ano | Ano |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): obsahuje informace o statistice čekání na dotaz (co vaše dotazy čekaly), jako je například CPU, protokol a uzamykání. | Ano | Ano |
+| [Chyby](#errors-dataset): obsahuje informace o chybách SQL v databázi. | Ano | Ano |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): obsahuje informace o tom, kolik času databáze strávila čekáním na různé typy čekání. | Ano | Ne |
+| [Timeout](#time-outs-dataset): obsahuje informace o časových limitech v databázi. | Ano | Ne |
+| [Bloky](#blockings-dataset): obsahuje informace o blokujících událostech v databázi. | Ano | Ne |
+| [Zablokování](#deadlocks-dataset): obsahuje informace o událostech zablokování v databázi. | Ano | Ne |
+| [AutomaticTuning](#automatic-tuning-dataset): obsahuje informace o automatickém ladění doporučení pro databázi. | Ano | Ne |
+| [SQLInsights](#intelligent-insights-dataset): obsahuje Intelligent Insights do výkonu pro databázi. Další informace najdete v tématu [Intelligent Insights](sql-database-intelligent-insights.md). | Ano | Ano |
 
 > [!IMPORTANT]
-> Elastic pools and managed instances have their own separate diagnostics telemetry from databases they contain. This is important to note as diagnostics telemetry is configured separately for each of these resources, as documented below.
+> Elastické fondy a spravované instance mají svou vlastní samostatnou diagnostické telemetrie z databází, které obsahují. Je důležité si uvědomit, že se pro každý z těchto prostředků nakonfiguruje telemetrie diagnostiky samostatně, jak je uvedeno níže.
 
 > [!NOTE]
-> Security Audit and SQLSecurityAuditEvents logs can't be enabled from the database diagnostics settings (although showing on the screen). To enable audit log streaming, see [Set up auditing for your database](sql-database-auditing.md#subheading-2), and [auditing logs in Azure Monitor logs and Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
+> Pokud chcete povolit streamování protokolů auditu, přečtěte si téma [nastavení auditování pro vaši databázi](sql-database-auditing.md#subheading-2)a [protokoly auditování v Azure monitor protokoly a Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>portál Azure
 
-You can use the **Diagnostics settings** menu for each single, pooled, or instance database in Azure portal to configure streaming of diagnostics telemetry. In addition, diagnostic telemetry can also be configured separately for database containers: elastic pools and managed instances. You can set the following destinations to stream the diagnostics telemetry: Azure Storage, Azure Event Hubs, and Azure Monitor logs.
+V nabídce **nastavení diagnostiky** můžete pro každou jednotlivou, sdruženou nebo instancinou databázi v Azure Portal nakonfigurovat streamování diagnostické telemetrie. Kromě toho je možné pro kontejnery databáze samostatně nakonfigurovat také diagnostiku telemetrie: elastické fondy a spravované instance. Můžete nastavit následující cíle pro streamování diagnostiky: Azure Storage, Azure Event Hubs a protokoly Azure Monitor.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>Configure streaming of diagnostics telemetry for elastic pools
+### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>Konfigurace streamování diagnostické telemetrie pro elastické fondy
 
-   ![Elastic pool icon](./media/sql-database-metrics-diag-logging/icon-elastic-pool-text.png)
+   ![Ikona elastického fondu](./media/sql-database-metrics-diag-logging/icon-elastic-pool-text.png)
 
-You can set up an elastic pool resource to collect the following diagnostics telemetry:
+Prostředek elastického fondu můžete nastavit tak, aby shromáždil následující telemetrii diagnostiky:
 
-| Prostředek | Monitoring telemetry |
+| Prostředek | Monitorování telemetrie |
 | :------------------- | ------------------- |
-| **Elastic pool** | [Basic metrics](sql-database-metrics-diag-logging.md#basic-metrics) contains eDTU/CPU percentage, eDTU/CPU limit, physical data read percentage, log write percentage, sessions percentage, workers percentage, storage, storage percentage, storage limit, and XTP storage percentage. |
+| **Elastický fond** | [Základní metriky](sql-database-metrics-diag-logging.md#basic-metrics) obsahují procento z EDTU/CPU, limit EDTU/procesor, procento fyzického načtení dat, procento zápisu protokolu, procento relací, procento pracovních podílů, úložiště, procento úložiště, limit úložiště a procento XTP úložiště. |
 
-To configure streaming of diagnostics telemetry for elastic pools and databases in elastic pools, you will need to separately configure **both** of the following:
+Chcete-li nakonfigurovat streamování diagnostiky diagnostiky pro elastické fondy a databáze v elastických fondech, bude nutné samostatně nakonfigurovat **obě** z těchto možností:
 
-- Enable streaming of diagnostics telemetry for an elastic pool, **and**
-- Enable streaming of diagnostics telemetry for each database in elastic pool
+- Povolí streamování diagnostiky pro elastický fond **a**
+- Povolit streamování diagnostiky pro každou databázi v elastickém fondu
 
-This is because elastic pool is a database container with its own telemetry being separate from an individual database telemetry.
+Důvodem je to, že elastický fond je databázový kontejner se svou vlastní telemetrie, který je oddělený od jednotlivých telemetrie databáze.
 
-To enable streaming of diagnostics telemetry for an elastic pool resource, follow these steps:
+Pokud chcete povolit streamování diagnostické telemetrie pro prostředek elastického fondu, postupujte takto:
 
-1. Go to the **elastic pool** resource in Azure portal.
-1. Select **Diagnostics settings**.
-1. Select **Turn on diagnostics** if no previous settings exist, or select **Edit setting** to edit a previous setting.
+1. V Azure Portal přejít na prostředek **elastického fondu** .
+1. Vyberte **nastavení diagnostiky**.
+1. Vyberte **zapnout diagnostiku** , pokud neexistuje žádné předchozí nastavení, nebo vyberte **Upravit nastavení** a upravte předchozí nastavení.
 
-   ![Enable diagnostics for elastic pools](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-enable.png)
+   ![Povolit diagnostiku pro elastické fondy](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-enable.png)
 
-1. Enter a setting name for your own reference.
-1. Select a destination resource for the streaming diagnostics data: **Archive to storage account**, **Stream to an event hub**, or **Send to Log Analytics**.
-1. For log analytics, select **Configure** and create a new workspace by selecting **+Create New Workspace**, or select an existing workspace.
-1. Select the check box for elastic pool diagnostics telemetry: **Basic** metrics.
-   ![Configure diagnostics for elastic pools](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
+1. Zadejte název nastavení vlastní reference.
+1. Vyberte cílový prostředek pro data diagnostiky streamování: **archivujte do účtu úložiště**, **streamujte do centra událostí**nebo **Log Analytics odeslat**.
+1. V případě Log Analytics vyberte možnost **Konfigurovat** a vytvořit nový pracovní prostor výběrem možnosti **+ vytvořit nový pracovní prostor**nebo vyberte existující pracovní prostor.
+1. Zaškrtněte políčko pro telemetrii diagnostiky elastického fondu: **základní** metriky.
+   ![konfigurace diagnostiky pro elastické fondy](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 
-1. Vyberte **Save** (Uložit).
-1. In addition, configure streaming of diagnostics telemetry for each database within the elastic pool you want to monitor by following steps described in the next section.
+1. Vyberte **Uložit**.
+1. Kromě toho nakonfigurujte streamování diagnostiky pro každou databázi v elastickém fondu, který chcete monitorovat pomocí následujících kroků popsaných v následující části.
 
 > [!IMPORTANT]
-> In addition to configuring diagnostics telemetry for an elastic pool, you also need to configure diagnostics telemetry for each database in elastic pool, as documented below.
+> Kromě konfigurace telemetrie diagnostiky pro elastický fond musíte také nakonfigurovat telemetrii diagnostiky pro každou databázi v elastickém fondu, jak je uvedeno níže.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>Configure streaming of diagnostics telemetry for single database, or database in elastic pool
+### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>Konfigurace streamování diagnostické telemetrie pro izolovanou databázi nebo databáze v elastickém fondu
 
-   ![SQL Database icon](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
+   ![Ikona SQL Database](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
 
-To enable streaming of diagnostics telemetry for single or pooled databases, follow these steps:
+Pokud chcete povolit streamování diagnostické telemetrie pro databáze s jednou nebo ve fondu, postupujte takto:
 
-1. Go to Azure **SQL database** resource.
-1. Select **Diagnostics settings**.
-1. Select **Turn on diagnostics** if no previous settings exist, or select **Edit setting** to edit a previous setting.
-   - You can create up to three parallel connections to stream diagnostics telemetry.
-   - Select **Add diagnostic setting** to configure parallel streaming of diagnostics data to multiple resources.
+1. Přejít na prostředek služby Azure **SQL Database** .
+1. Vyberte **nastavení diagnostiky**.
+1. Vyberte **zapnout diagnostiku** , pokud neexistuje žádné předchozí nastavení, nebo vyberte **Upravit nastavení** a upravte předchozí nastavení.
+   - Můžete vytvořit až tři paralelní připojení ke streamování diagnostiky diagnostiky.
+   - Pokud chcete nakonfigurovat paralelní streamování diagnostických dat na více prostředků, vyberte **Přidat nastavení diagnostiky** .
 
-   ![Enable diagnostics for single, pooled, or instance databases](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
+   ![Povolit diagnostiku pro databáze s jedním, sdruženým nebo instancí](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
 
-1. Enter a setting name for your own reference.
-1. Select a destination resource for the streaming diagnostics data: **Archive to storage account**, **Stream to an event hub**, or **Send to Log Analytics**.
-1. For the standard, event-based monitoring experience, select the following check boxes for database diagnostics log telemetry: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **Errors**, **DatabaseWaitStatistics**, **Timeouts**, **Blocks**, and **Deadlocks**.
-1. For an advanced, one-minute-based monitoring experience, select the check box for **Basic** metrics.
-   ![Configure diagnostics for single, pooled, or instance databases](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
-1. Vyberte **Save** (Uložit).
-1. Repeat these steps for each database you want to monitor.
+1. Zadejte název nastavení vlastní reference.
+1. Vyberte cílový prostředek pro data diagnostiky streamování: **archivujte do účtu úložiště**, **streamujte do centra událostí**nebo **Log Analytics odeslat**.
+1. U standardních možností monitorování založeného na událostech zaškrtněte následující políčka pro telemetrii protokolu diagnostiky databáze: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** , **Chyby**, **DatabaseWaitStatistics**, **časové limity**, **bloky**a **zablokování**.
+1. V případě pokročilých možností monitorování na základě minut zaškrtněte políčko pro **základní** metriky.
+   ![nakonfigurovat diagnostiku pro databáze s jedním, sdruženým nebo instancí](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
+1. Vyberte **Uložit**.
+1. Opakujte tyto kroky pro každou databázi, kterou chcete monitorovat.
 
 > [!NOTE]
-> Security Audit and SQLSecurityAuditEvents logs can't be enabled from the database diagnostics settings (although shown on the screen). To enable audit log streaming, see [Set up auditing for your database](sql-database-auditing.md#subheading-2), and [auditing logs in Azure Monitor logs and Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
+> Pokud chcete povolit streamování protokolů auditu, přečtěte si téma [nastavení auditování pro vaši databázi](sql-database-auditing.md#subheading-2)a [protokoly auditování v Azure monitor protokoly a Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 
 > [!TIP]
-> Repeat these steps for each Azure SQL Database you want to monitor.
+> Opakujte tyto kroky pro každý Azure SQL Database, který chcete monitorovat.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instances"></a>Configure streaming of diagnostics telemetry for managed instances
+### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instances"></a>Konfigurace streamování diagnostické telemetrie pro spravované instance
 
-   ![Managed instance icon](./media/sql-database-metrics-diag-logging/icon-managed-instance-text.png)
+   ![Ikona spravované instance](./media/sql-database-metrics-diag-logging/icon-managed-instance-text.png)
 
-You can set up a managed instance resource to collect the following diagnostics telemetry:
+Prostředek spravované instance můžete nastavit tak, aby shromáždil následující telemetrii diagnostiky:
 
-| Prostředek | Monitoring telemetry |
+| Prostředek | Monitorování telemetrie |
 | :------------------- | ------------------- |
-| **Managed instance** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) contains vCores count, average CPU percentage, IO requests, bytes read/written, reserved storage space, and used storage space. |
+| **Spravovaná instance** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) obsahuje počet virtuální jádra, průměrné procento procesoru, vstupně-výstupní požadavky, přečtené/zapsané bajty, vyhrazený prostor úložiště a využitý prostor úložiště. |
 
-To configure streaming of diagnostics telemetry for managed instance and instance databases, you will need to separately configure **both** of the following:
+Chcete-li nakonfigurovat streamování diagnostické telemetrie pro databáze spravované instance a instance, bude nutné samostatně nakonfigurovat **obě** následující:
 
-- Enable streaming of diagnostics telemetry for managed instance, **and**
-- Enable streaming of diagnostics telemetry for each instance database
+- Povolte streamování diagnostické telemetrie pro spravovanou instanci **a**
+- Povolit streamování diagnostiky pro každou databázi instance
 
-This is because managed instance is a database container with its own telemetry, separate from an individual instance database telemetry.
+Je to proto, že spravovaná instance je databázový kontejner se svou vlastní telemetrie, oddělený od telemetrie databáze jednotlivých instancí.
 
-To enable streaming of diagnostics telemetry for a managed instance resource, follow these steps:
+Chcete-li povolit streamování diagnostické telemetrie pro prostředek spravované instance, postupujte takto:
 
-1. Go to the **managed instance** resource in Azure portal.
-1. Select **Diagnostics settings**.
-1. Select **Turn on diagnostics** if no previous settings exist, or select **Edit setting** to edit a previous setting.
+1. V Azure Portal přejít na prostředek **spravované instance** .
+1. Vyberte **nastavení diagnostiky**.
+1. Vyberte **zapnout diagnostiku** , pokud neexistuje žádné předchozí nastavení, nebo vyberte **Upravit nastavení** a upravte předchozí nastavení.
 
-   ![Enable diagnostics for managed instance](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
+   ![Povolit diagnostiku pro spravovanou instanci](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
-1. Enter a setting name for your own reference.
-1. Select a destination resource for the streaming diagnostics data: **Archive to storage account**, **Stream to an event hub**, or **Send to Log Analytics**.
-1. For log analytics, select **Configure** and create a new workspace by selecting **+Create New Workspace**, or use an existing workspace.
-1. Select the check box for instance diagnostics telemetry: **ResourceUsageStats**.
+1. Zadejte název nastavení vlastní reference.
+1. Vyberte cílový prostředek pro data diagnostiky streamování: **archivujte do účtu úložiště**, **streamujte do centra událostí**nebo **Log Analytics odeslat**.
+1. V případě Log Analytics vyberte **Konfigurovat** a vytvořte nový pracovní prostor tak, že vyberete **+ vytvořit nový pracovní prostor**nebo použijete existující pracovní prostor.
+1. Zaškrtněte políčko instance telemetrie diagnostiky: **ResourceUsageStats**.
 
-   ![Configure diagnostics for managed instance](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
+   ![Konfigurace diagnostiky pro spravovanou instanci](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
-1. Vyberte **Save** (Uložit).
-1. In addition, configure streaming of diagnostics telemetry for each instance database within the managed instance you want to monitor by following the steps described in the next section.
+1. Vyberte **Uložit**.
+1. Kromě toho nakonfigurujte streamování diagnostiky pro každou databázi instancí v rámci spravované instance, kterou chcete monitorovat, podle postupu popsaného v následující části.
 
 > [!IMPORTANT]
-> In addition to configuring diagnostics telemetry for a managed instance, you also need to configure diagnostics telemetry for each instance database, as documented below.
+> Kromě konfigurace telemetrie diagnostiky pro spravovanou instanci musíte také nakonfigurovat telemetrii diagnostiky pro každou databázi instance, jak je uvedeno níže.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>Configure streaming of diagnostics telemetry for instance databases
+### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>Konfigurace streamování diagnostické telemetrie pro databáze instancí
 
-   ![Instance database in managed instance icon](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
+   ![Ikona databáze instancí v Managed instance](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
 
-To enable streaming of diagnostics telemetry for instance databases, follow these steps:
+Pokud chcete povolit streamování diagnostické telemetrie pro databáze instancí, postupujte podle těchto kroků:
 
-1. Go to **instance database** resource within managed instance.
-1. Select **Diagnostics settings**.
-1. Select **Turn on diagnostics** if no previous settings exist, or select **Edit setting** to edit a previous setting.
-   - You can create up to three (3) parallel connections to stream diagnostics telemetry.
-   - Select **+Add diagnostic setting** to configure parallel streaming of diagnostics data to multiple resources.
+1. Přejít na **instanci databázového** prostředku v rámci spravované instance.
+1. Vyberte **nastavení diagnostiky**.
+1. Vyberte **zapnout diagnostiku** , pokud neexistuje žádné předchozí nastavení, nebo vyberte **Upravit nastavení** a upravte předchozí nastavení.
+   - Můžete vytvořit až tři (3) paralelní připojení ke streamování diagnostiky diagnostiky.
+   - Vyberte **+ Přidat nastavení diagnostiky** a nakonfigurujte paralelní streamování diagnostických dat na více prostředků.
 
-   ![Enable diagnostics for instance databases](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
+   ![Povolit diagnostiku pro databáze instancí](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
-1. Enter a setting name for your own reference.
-1. Select a destination resource for the streaming diagnostics data: **Archive to storage account**, **Stream to an event hub**, or **Send to Log Analytics**.
-1. Select the check boxes for database diagnostics telemetry: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** and **Errors**.
-   ![Configure diagnostics for instance databases](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
-1. Vyberte **Save** (Uložit).
-1. Repeat these steps for each instance database you want to monitor.
+1. Zadejte název nastavení vlastní reference.
+1. Vyberte cílový prostředek pro data diagnostiky streamování: **archivujte do účtu úložiště**, **streamujte do centra událostí**nebo **Log Analytics odeslat**.
+1. Zaškrtněte políčka pro telemetrii diagnostiky databáze: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** a **Errors**.
+   ![nakonfigurovat diagnostiku pro databáze instancí](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+1. Vyberte **Uložit**.
+1. Opakujte tyto kroky pro každou databázi instance, kterou chcete monitorovat.
 
 > [!TIP]
-> Repeat these steps for each instance database you want to monitor.
+> Opakujte tyto kroky pro každou databázi instance, kterou chcete monitorovat.
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
-You can enable metrics and diagnostics logging by using PowerShell.
+Metriky a protokolování diagnostiky můžete povolit pomocí prostředí PowerShell.
 
-- To enable storage of diagnostics logs in a storage account, use this command:
+- Pokud chcete povolit úložiště pro diagnostické protokoly v účtu úložiště, použijte tento příkaz:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
    ```
 
-   The storage account ID is the resource ID for the destination storage account.
+   ID účtu úložiště je ID prostředku cílového účtu úložiště.
 
-- To enable streaming of diagnostics logs to an event hub, use this command:
+- Pokud chcete povolit streamování protokolů diagnostiky do centra událostí, použijte tento příkaz:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
-   The Azure Service Bus rule ID is a string with this format:
+   ID pravidla služby Azure Service Bus je řetězec v tomto formátu:
 
    ```powershell
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- To enable sending diagnostics logs to a Log Analytics workspace, use this command:
+- Povolení odesílání protokolů diagnostiky k pracovnímu prostoru Log Analytics, použijte tento příkaz:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
-- You can obtain the resource ID of your Log Analytics workspace by using the following command:
+- ID prostředku pracovního prostoru Log Analytics můžete získat pomocí následujícího příkazu:
 
    ```powershell
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-You can combine these parameters to enable multiple output options.
+Tyto parametry pro povolení více možností výstupu můžete kombinovat.
 
-### <a name="to-configure-multiple-azure-resources"></a>To configure multiple Azure resources
+### <a name="to-configure-multiple-azure-resources"></a>Konfigurace více prostředků Azure
 
-To support multiple subscriptions, use the PowerShell script from [Enable Azure resource metrics logging using PowerShell](https://blogs.technet.microsoft.com/msoms/20../../enable-azure-resource-metrics-logging-using-powershell/).
+Pokud chcete podporovat víc předplatných, použijte skript PowerShellu z části [Povolení protokolování metrik prostředků Azure pomocí PowerShellu](https://blogs.technet.microsoft.com/msoms/20../../enable-azure-resource-metrics-logging-using-powershell/).
 
-Provide the workspace resource ID \<$WSID\> as a parameter when executing the script `Enable-AzureRMDiagnostics.ps1` to send diagnostic data from multiple resources to the workspace.
+Zadejte ID prostředku pracovního prostoru \<$WSID\> jako parametr při spouštění `Enable-AzureRMDiagnostics.ps1` skriptu pro odesílání diagnostických dat z několika prostředků do pracovního prostoru.
 
-- To get the workspace ID \<$WSID\> of the destination for your diagnostic data, use the following script:
+- Chcete-li získat ID pracovního prostoru \<$WSID\> cíle pro diagnostická data, použijte následující skript:
 
     ```powershell
     $WSID = "/subscriptions/<subID>/resourcegroups/<RG_NAME>/providers/microsoft.operationalinsights/workspaces/<WS_NAME>"
     .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
     ```
 
-   Replace \<subID\> with the subscription ID, \<RG_NAME\> with the resource group name, and \<WS_NAME\> with the workspace name.
+   \> \<subID nahraďte ID předplatného \<RG_NAME\> s názvem skupiny prostředků a \<WS_NAME\> s názvem pracovního prostoru.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-You can enable metrics and diagnostics logging by using the Azure CLI.
+Metriky a protokolování diagnostiky můžete povolit pomocí rozhraní příkazového řádku Azure CLI.
 
 > [!NOTE]
-> Scripts to enable diagnostics logging are supported for Azure CLI v1.0. Please note that CLI v2.0 is unsupported at this time.
+> Skripty pro povolení protokolování diagnostiky se podporují pro Azure CLI v 1.0. Počítejte s tím, že rozhraní příkazového řádku v 2.0 není v současnosti podporováno.
 
-- To enable the storage of diagnostics logs in a storage account, use this command:
+- Pokud chcete povolit úložiště diagnostických protokolů v účtu úložiště, použijte tento příkaz:
 
    ```azurecli-interactive
    azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
    ```
 
-   The storage account ID is the resource ID for the destination storage account.
+   ID účtu úložiště je ID prostředku cílového účtu úložiště.
 
-- To enable the streaming of diagnostics logs to an event hub, use this command:
+- Pokud chcete povolit streamování diagnostických protokolů do centra událostí, použijte tento příkaz:
 
    ```azurecli-interactive
    azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
    ```
 
-   The Service Bus rule ID is a string with this format:
+   ID pravidla Service Bus je řetězec s tímto formátem:
 
    ```azurecli-interactive
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- To enable the sending of diagnostics logs to a Log Analytics workspace, use this command:
+- Pokud chcete povolit odesílání diagnostických protokolů do pracovního prostoru Log Analytics, použijte tento příkaz:
 
    ```azurecli-interactive
    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
    ```
 
-You can combine these parameters to enable multiple output options.
+Tyto parametry pro povolení více možností výstupu můžete kombinovat.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
-Read about how to [change diagnostics settings by using the Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
+Přečtěte si o tom, jak [změnit nastavení diagnostiky pomocí REST API Azure monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
 
 ### <a name="resource-manager-template"></a>Šablona Resource Manageru
 
-Read about how to [enable diagnostics settings at resource creation by using a Resource Manager template](../azure-monitor/platform/diagnostic-settings-template.md).
+Přečtěte si informace o tom, jak [Povolit nastavení diagnostiky při vytváření prostředků pomocí šablony Správce prostředků](../azure-monitor/platform/diagnostic-settings-template.md).
 
-## <a name="stream-into-azure-sql-analytics"></a>Stream into Azure SQL Analytics
+## <a name="stream-into-azure-sql-analytics"></a>Streamování do Azure SQL Analytics
 
-Azure SQL Analytics is a cloud solution that monitors the performance of Azure SQL databases, elastic pools, and managed instances at scale and across multiple subscriptions. It can help you collect and visualize Azure SQL Database performance metrics, and it has built-in intelligence for performance troubleshooting.
+Azure SQL Analytics je cloudové řešení, které monitoruje výkon databází SQL Azure, elastických fondů a spravovaných instancí ve velkém rozsahu a mezi několika předplatnými. Může vám to usnadnit shromažďování a vizualizace Azure SQL Database metriky výkonu a obsahuje integrované inteligentní funkce pro řešení potíží s výkonem.
 
-![Azure SQL Analytics Overview](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
+![Přehled služby Azure SQL Analytics](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
-SQL Database metrics and diagnostics logs can be streamed into Azure SQL Analytics by using the built-in **Send to Log Analytics** option in the diagnostics settings tab in the portal. You can also enable log analytics by using a diagnostics setting via PowerShell cmdlets, the Azure CLI, or the Azure Monitor REST API.
+SQL Database metriky a diagnostické protokoly je možné streamovat do Azure SQL Analytics pomocí možnosti zabudované **Odeslat do Log Analytics** na kartě nastavení diagnostiky na portálu. Službu Log Analytics můžete taky povolit pomocí nastavení diagnostiky prostřednictvím rutin PowerShellu, rozhraní příkazového řádku Azure nebo Azure Monitor REST API.
 
 ### <a name="installation-overview"></a>Přehled instalace
 
-You can monitor a SQL Database fleet with Azure SQL Analytics. Perform the following  steps:
+SQL Database loďstva můžete monitorovat pomocí Azure SQL Analytics. Proveďte následující kroky:
 
-1. Create an Azure SQL Analytics solution from the Azure Marketplace.
-2. Create a monitoring workspace in the solution.
-3. Configure databases to stream diagnostics telemetry into the workspace.
+1. Vytvořte Azure SQL Analytics řešení z Azure Marketplace.
+2. Vytvořte pracovní prostor monitorování v řešení.
+3. Nakonfigurujte databáze pro streamování diagnostiky diagnostiky do pracovního prostoru.
 
-If you're using elastic pools or managed instances, you also need to configure diagnostics telemetry streaming from these resources.
+Pokud používáte elastické fondy nebo spravované instance, musíte taky nakonfigurovat streamování diagnostiky z těchto prostředků.
 
-### <a name="create-azure-sql-analytics-resource"></a>Create Azure SQL Analytics resource
+### <a name="create-azure-sql-analytics-resource"></a>Vytvořit prostředek Azure SQL Analytics
 
-1. Search for Azure SQL Analytics in Azure Marketplace and select it.
+1. Vyhledejte Azure SQL Analytics v Azure Marketplace a vyberte ji.
 
-   ![Search for Azure SQL Analytics in portal](./media/sql-database-metrics-diag-logging/sql-analytics-in-marketplace.png)
+   ![Hledat Azure SQL Analytics na portálu](./media/sql-database-metrics-diag-logging/sql-analytics-in-marketplace.png)
 
-2. Select **Create** on the solution's overview screen.
+2. Na obrazovce s přehledem řešení vyberte **vytvořit** .
 
-3. Fill in the Azure SQL Analytics form with the additional information that is required: workspace name, subscription, resource group, location, and pricing tier.
+3. Do formuláře Azure SQL Analytics zadejte další požadované informace: název pracovního prostoru, předplatné, skupina prostředků, umístění a cenová úroveň.
 
-   ![Configure Azure SQL Analytics in portal](./media/sql-database-metrics-diag-logging/sql-analytics-configuration-blade.png)
+   ![Konfigurace Azure SQL Analytics na portálu](./media/sql-database-metrics-diag-logging/sql-analytics-configuration-blade.png)
 
-4. Select **OK** to confirm, and then select **Create**.
+4. Kliknutím na **OK** potvrďte a pak vyberte **vytvořit**.
 
-### <a name="configure-databases-to-record-metrics-and-diagnostics-logs"></a>Configure databases to record metrics and diagnostics logs
+### <a name="configure-databases-to-record-metrics-and-diagnostics-logs"></a>Konfigurace databází pro zaznamenávání metrik a diagnostických protokolů
 
-The easiest way to configure where databases record metrics is by using the Azure portal. As previously described, go to your SQL Database resource in the Azure portal and select **Diagnostics settings**.
+Nejjednodušší způsob, jak nakonfigurovat, kde databáze zaznamenávají metriky, je použití Azure Portal. Jak je popsáno výše, v Azure Portal klikněte na prostředek SQL Database a vyberte **nastavení diagnostiky**.
 
-If you're using elastic pools or managed instances, you also need to configure diagnostics settings in these resources to enable the diagnostics telemetry to stream into the workspace.
+Pokud používáte elastické fondy nebo spravované instance, budete také muset nakonfigurovat nastavení diagnostiky v těchto zdrojích, aby mohla diagnostická Diagnostika umožňovat streamování do pracovního prostoru.
 
-### <a name="use-the-sql-analytics-solution-for-monitoring-and-alerting"></a>Use the SQL Analytics solution for monitoring and alerting
+### <a name="use-the-sql-analytics-solution-for-monitoring-and-alerting"></a>Použití řešení SQL Analytics pro monitorování a upozorňování
 
-You can use SQL Analytics as a hierarchical dashboard to view your SQL Database resources.
+SQL Analytics můžete použít jako hierarchický řídicí panel k zobrazení svých SQL Databasech prostředků.
 
-- To learn how to use the SQL Analytics solution, see [Monitor SQL Database by using the SQL Analytics solution](../log-analytics/log-analytics-azure-sql.md).
-- To learn how to setup alerts for SQL Database and managed instance based on SQL Analytics, see [Creating alerts for SQL Database and managed instance](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts).
+- Informace o použití řešení SQL Analytics najdete v tématu [monitorování SQL Database pomocí řešení SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
+- Informace o tom, jak nastavit výstrahy pro SQL Database a spravovanou instanci založené na analýze SQL, najdete v tématu [vytváření výstrah pro SQL Database a spravovanou instanci](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts).
 
 ## <a name="stream-into-event-hubs"></a>Streamování do služby Event Hubs
 
-You can stream SQL Database metrics and diagnostics logs into Event Hubs by using the built-in **Stream to an event hub** option in the Azure portal. You also can enable the Service Bus rule ID by using a diagnostics setting via PowerShell cmdlets, the Azure CLI, or the Azure Monitor REST API.
+Můžete streamovat SQL Database metriky a diagnostické protokoly do Event Hubs pomocí integrovaného **datového proudu pro možnost centra událostí** v Azure Portal. ID pravidla Service Bus můžete povolit také pomocí nastavení diagnostiky prostřednictvím rutin PowerShellu, rozhraní příkazového řádku Azure nebo REST API Azure Monitor.
 
-### <a name="what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs"></a>What to do with metrics and diagnostics logs in Event Hubs
+### <a name="what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs"></a>Co dělat s protokoly metrik a diagnostikami v Event Hubs
 
-After the selected data is streamed into Event Hubs, you're one step closer to enabling advanced monitoring scenarios. Event Hubs acts as the front door for an event pipeline. After data is collected into an event hub, it can be transformed and stored by using a real-time analytics provider or a storage adapter. Event Hubs decouples the production of a stream of events from the consumption of those events. In this way, event consumers can access the events on their own schedule. For more information on Event Hubs, see:
+Jakmile se vybraná data streamují do Event Hubs, budete mít jeden krok blíž k povolení rozšířených scénářů monitorování. Event Hubs funguje jako přední dveře pro kanál událostí. Po shromáždění dat do centra událostí je možné je transformovat a ukládat pomocí poskytovatele analýz v reálném čase nebo adaptéru úložiště. Event Hubs odpojí produkci proudu událostí od spotřeby těchto událostí. Tímto způsobem můžou příjemci události získat přístup k událostem podle vlastního plánu. Další informace o Event Hubs najdete v tématech:
 
-- [What are Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Co je Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-You can use streamed metrics in Event Hubs to:
+V Event Hubs můžete použít streamované metriky pro:
 
-- **View service health by streaming hot-path data to Power BI**
+- **Zobrazení stavu služby streamování dat Hot-Path do Power BI**
 
-   By using Event Hubs, Stream Analytics, and Power BI, you can easily transform your metrics and diagnostics data into near real-time insights on your Azure services. For an overview of how to set up an event hub, process data with Stream Analytics, and use Power BI as an output, see [Stream Analytics and Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md).
+   Pomocí Event Hubs, Stream Analytics a Power BI můžete snadno transformovat metriky a diagnostická data na vaše služby Azure téměř v reálném čase. Přehled nastavení centra událostí, zpracování dat pomocí Stream Analytics a použití Power BI jako výstupu najdete v tématu [Stream Analytics a Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md).
 
-- **Stream logs to third-party logging and telemetry streams**
+- **Streamování protokolů a datových proudů telemetrie od třetích stran**
 
-   By using Event Hubs streaming, you can get your metrics and diagnostics logs into various third-party monitoring and log analytics solutions.
+   Pomocí služby Event Hubs streaming můžete získat své metriky a diagnostické protokoly do různých řešení pro monitorování a analýzu protokolů třetích stran.
 
-- **Build a custom telemetry and logging platform**
+- **Sestavení vlastní telemetrie a protokolovací platformy**
 
-   Do you already have a custom-built telemetry platform or are considering building one? The highly scalable publish-subscribe nature of Event Hubs allows you to flexibly ingest diagnostics logs. See [Dan Rosanova's guide to using Event Hubs in a global-scale telemetry platform](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+   Už máte vlastní platformu telemetrie nebo se domnívají, že ji vytváříte? Vysoce škálovatelná povaha publikování a odběru Event Hubs umožňuje flexibilní příjem protokolů diagnostiky. Přečtěte si [průvodce Event Hubs Dan na používání v globální platformě telemetrie](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
-## <a name="stream-into-storage"></a>Stream into Storage
+## <a name="stream-into-storage"></a>Streamování do úložiště
 
-You can store SQL Database metrics and diagnostics logs in Azure Storage by using the built-in **Archive to a storage account** option in the Azure portal. You  can also enable Storage by using a diagnostics setting via PowerShell cmdlets, the Azure CLI, or the Azure Monitor REST API.
+SQL Database metriky a diagnostické protokoly můžete v Azure Storage ukládat pomocí integrovaného archivu v možnosti **účtu úložiště** v Azure Portal. Úložiště můžete taky povolit pomocí nastavení diagnostiky prostřednictvím rutin PowerShellu, rozhraní příkazového řádku Azure nebo Azure Monitor REST API.
 
-### <a name="schema-of-metrics-and-diagnostics-logs-in-the-storage-account"></a>Schema of metrics and diagnostics logs in the storage account
+### <a name="schema-of-metrics-and-diagnostics-logs-in-the-storage-account"></a>Schéma metrik a protokolů diagnostiky v účtu úložiště
 
-After you set up metrics and diagnostics logs collection, a storage container is created in the storage account you selected when the first rows of data are available. The structure of the blobs is:
+Po nastavení metrik a shromažďování diagnostických protokolů se kontejner úložiště vytvoří v účtu úložiště, který jste vybrali, když jsou k dispozici první řádky dat. Struktura objektů BLOB je:
 
 ```powershell
 insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/ RESOURCEGROUPS/{resource group name}/PROVIDERS/Microsoft.SQL/servers/{resource_server}/ databases/{database_name}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Or, more simply:
+Nebo jednoduše:
 
 ```powershell
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-For example, a blob name for Basic metrics might be:
+Například název objektu BLOB pro základní metriky může být:
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
 ```
 
-A blob name for storing data from an elastic pool looks like:
+Název objektu BLOB pro ukládání dat z elastického fondu vypadá takto:
 
 ```powershell
 insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/ RESOURCEGROUPS/{resource group name}/PROVIDERS/Microsoft.SQL/servers/{resource_server}/ elasticPools/{elastic_pool_name}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-## <a name="data-retention-policy-and-pricing"></a>Data retention policy and pricing
+## <a name="data-retention-policy-and-pricing"></a>Zásady uchovávání dat a ceny
 
-If you select Event Hubs or a Storage account, you can specify a retention policy. This policy deletes data that is older than a selected time period. If you specify Log Analytics, the retention policy depends on the selected pricing tier. In this case, the provided free units of data ingestion can enable free monitoring of several databases each month. Any consumption of diagnostics telemetry in excess of the free units might incur costs. Be aware that active databases with heavier workloads ingest more data than idle databases. For more information, see [Log analytics pricing](https://azure.microsoft.com/pricing/details/monitor/).
+Pokud vyberete Event Hubs nebo účet úložiště, můžete zadat zásady uchovávání informací. Tato zásada odstraní data, která jsou starší než vybrané časové období. Pokud zadáte Log Analytics, zásady uchovávání informací závisí na vybrané cenové úrovni. V takovém případě může dodané volné jednotky příjmu dat umožnit bezplatné monitorování několika databází každý měsíc. Jakákoli spotřeba diagnostické telemetrie nad rámec volných jednotek může mít za následek náklady. Mějte na paměti, že aktivní databáze s těžšími úlohami ingestují více dat než nečinné databáze. Další informace najdete v tématu [ceny Log Analytics](https://azure.microsoft.com/pricing/details/monitor/).
 
-If you are using Azure SQL Analytics, you can monitor your data ingestion consumption in the solution by selecting **OMS Workspace** on the navigation menu of Azure SQL Analytics, and then selecting **Usage** and **Estimated Costs**.
+Pokud používáte Azure SQL Analytics, můžete monitorovat spotřebu příjmu dat v řešení zvolením možnosti **pracovní prostor OMS** v navigační nabídce Azure SQL Analytics a následným výběrem možnosti **využití** a **Odhadované náklady**.
 
-## <a name="metrics-and-logs-available"></a>Metrics and logs available
+## <a name="metrics-and-logs-available"></a>Dostupné metriky a protokoly
 
-Monitoring telemetry available for Azure SQL Database, elastic pools and managed instance is documented below. Collected monitoring telemetry inside SQL Analytics can be used for your own custom analysis and application development using [Azure Monitor log queries](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) language.
+Azure SQL Database, elastické fondy a spravovaná instance jsou popsány níže v části monitorování telemetrie. Shromážděná telemetrie monitorování v rámci služby SQL Analytics lze použít pro vlastní analýzu a vývoj aplikací pomocí jazyka [Azure Monitorch dotazů protokolu](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) .
 
-## <a name="basic-metrics"></a>Basic metrics
+## <a name="basic-metrics"></a>Základní metriky
 
-Refer to the following tables for details about Basic metrics by resource.
+Podrobnosti o základních metrikách podle prostředků najdete v následujících tabulkách.
 
 > [!NOTE]
-> Basic metrics option was formerly known as All metrics. The change made was to the naming only and there was no change to the metrics monitored. This change was initiated to allow for introduction of additional metric categories in the future.
+> Možnost základních metrik se dřív jmenovala jako všechny metriky. Změna byla provedena pouze pro pojmenování a na monitorované metriky se nezměnily žádné změny. Tato změna byla zahájena, aby bylo možné v budoucnu zavést další kategorie metrik.
 
-### <a name="basic-metrics-for-elastic-pools"></a>Basic metrics for elastic pools
-
-|**Prostředek**|**Metriky**|
-|---|---|
-|Elastický fond|eDTU percentage, eDTU used, eDTU limit, CPU percentage, physical data read percentage, log write percentage, sessions percentage, workers percentage, storage, storage percentage, storage limit, XTP storage percentage |
-
-### <a name="basic-metrics-for-azure-sql-databases"></a>Basic metrics for Azure SQL Databases
+### <a name="basic-metrics-for-elastic-pools"></a>Základní metriky pro elastické fondy
 
 |**Prostředek**|**Metriky**|
 |---|---|
-|Databáze Azure SQL|DTU percentage, DTU used, DTU limit, CPU percentage, physical data read percentage, log write percentage, Successful/Failed/Blocked by firewall connections, sessions percentage, workers percentage, storage, storage percentage, XTP storage percentage, and deadlocks |
+|Elastický fond|procento eDTU, využité eDTU, limit pro eDTU, procento využití procesoru, procento čtení fyzických dat, procentuální hodnota zápisu protokolu, procento relací, procento pracovních procesů, úložiště, procento úložiště, omezení úložiště, procento XTP |
 
-## <a name="advanced-metrics"></a>Advanced metrics
+### <a name="basic-metrics-for-azure-sql-databases"></a>Základní metriky pro databáze SQL Azure
 
-Refer to the following table for details about advanced metrics.
+|**Prostředek**|**Metriky**|
+|---|---|
+|Databáze Azure SQL|Procento DTU, využité DTU, limit DTU, procento využití procesoru, procento čtení fyzických dat, procentuální hodnota zápisu protokolu, úspěšná/neúspěšná/zablokovaná připojeními brány firewall, procento relací, procento pracovních procesů, úložiště, procentuální hodnota úložiště, procento velikosti XTP a zablokování |
 
-|**Metrika**|**Metric Display Name**|**Popis**|
+## <a name="advanced-metrics"></a>Pokročilé metriky
+
+Podrobnosti o rozšířených metrikách najdete v následující tabulce.
+
+|**Metrika**|**Zobrazovaný název metriky**|**Popis**|
 |---|---|---|
-|tempdb_data_size| Tempdb Data File Size Kilobytes |Tempdb Data File Size Kilobytes. Not applicable to data warehouses. This metric will be available for databases using the vCore purchasing model or 100 DTU and higher for DTU-based purchasing models. |
-|tempdb_log_size| Tempdb Log File Size Kilobytes |Tempdb Log File Size Kilobytes. Not applicable to data warehouses. This metric will be available for databases using the vCore purchasing model or 100 DTU and higher for DTU-based purchasing models. |
-|tempdb_log_used_percent| Tempdb Percent Log Used |Tempdb Percent Log Used. Not applicable to data warehouses. This metric will be available for databases using the vCore purchasing model or 100 DTU and higher for DTU-based purchasing models. |
+|tempdb_data_size| Velikost datového souboru tempdb v kilobajtech |Velikost datového souboru tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU. |
+|tempdb_log_size| Velikost souboru protokolu tempdb v kilobajtech |Velikost souboru protokolu tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU. |
+|tempdb_log_used_percent| Použit protokol tempdb v procentech |Byl použit protokol tempdb Percent. Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU. |
 
-## <a name="basic-logs"></a>Basic logs
+## <a name="basic-logs"></a>Základní protokoly
 
-Details of telemetry available for all logs are documented in the tables below. Please see [supported diagnostic logging](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases) to understand which logs are supported for a particular database flavor - Azure SQL single, pooled, or instance database.
+Podrobnosti o telemetrie dostupných pro všechny protokoly jsou popsány v následujících tabulkách. Informace o tom, které protokoly jsou podporovány pro konkrétní charakter databáze, najdete v tématu [podporované diagnostické protokolování](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases) – Azure SQL Single, Pooled nebo instance Database.
 
-### <a name="resource-usage-stats-for-managed-instance"></a>Resource usage stats for managed instance
-
-|Vlastnost|Popis|
-|---|---|
-|TenantId|Your tenant ID |
-|SourceSystem|Always: Azure|
-|TimeGenerated [UTC]|Time stamp when the log was recorded |
-|Typ|Always: AzureDiagnostics |
-|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
-|Kategorie|Name of the category. Always: ResourceUsageStats |
-|Prostředek|Název prostředku |
-|ResourceType|Name of the resource type. Always: MANAGEDINSTANCES |
-|SubscriptionId|Subscription GUID for the database |
-|ResourceGroup|Name of the resource group for the database |
-|LogicalServerName_s|Name of the managed instance |
-|ResourceId|Resource URI |
-|SKU_s|Managed instance product SKU |
-|virtual_core_count_s|Number of vCores available |
-|avg_cpu_percent_s|Average CPU percentage |
-|reserved_storage_mb_s|Reserved storage capacity on the managed instance |
-|storage_space_used_mb_s|Used storage on the managed instance |
-|io_requests_s|IOPS count |
-|io_bytes_read_s|IOPS bytes read |
-|io_bytes_written_s|IOPS bytes written |
-
-### <a name="query-store-runtime-statistics"></a>Query Store runtime statistics
+### <a name="resource-usage-stats-for-managed-instance"></a>Statistika využití prostředků pro spravovanou instanci
 
 |Vlastnost|Popis|
 |---|---|
-|TenantId|Your tenant ID |
-|SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Time stamp when the log was recorded |
+|TenantId|ID tenanta |
+|SourceSystem|Vždycky: Azure|
+|TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |Typ|Always: AzureDiagnostics |
-|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
-|Kategorie|Name of the category. Always: QueryStoreRuntimeStatistics |
-|OperationName|Name of the operation. Always: QueryStoreRuntimeStatisticsEvent |
+|ResourceProvider|Název poskytovatele prostředků Always: MICROSOFT. SQL |
+|Kategorie|Název kategorie Always: ResourceUsageStats |
 |Prostředek|Název prostředku |
-|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
-|SubscriptionId|Subscription GUID for the database |
-|ResourceGroup|Name of the resource group for the database |
-|LogicalServerName_s|Name of the server for the database |
-|ElasticPoolName_s|Name of the elastic pool for the database, if any |
-|DatabaseName_s|Name of the database |
-|ResourceId|Resource URI |
-|query_hash_s|Query hash |
-|query_plan_hash_s|Query plan hash |
-|statement_sql_handle_s|Statement sql handle |
-|interval_start_time_d|Start datetimeoffset of the interval in number of ticks from 1900-1-1 |
-|interval_end_time_d|End datetimeoffset of the interval in number of ticks from 1900-1-1 |
-|logical_io_writes_d|Total number of logical IO writes |
-|max_logical_io_writes_d|Max number of logical IO writes per execution |
-|physical_io_reads_d|Total number of physical IO reads |
-|max_physical_io_reads_d|Max number of logical IO reads per execution |
-|logical_io_reads_d|Total number of logical IO reads |
-|max_logical_io_reads_d|Max number of logical IO reads per execution |
-|execution_type_d|Execution type |
-|count_executions_d|Number of executions of the query |
-|cpu_time_d|Total CPU time consumed by the query in microseconds |
-|max_cpu_time_d|Max CPU time consumer by a single execution in microseconds |
-|dop_d|Sum of degrees of parallelism |
-|max_dop_d|Max degree of parallelism used for single execution |
-|rowcount_d|Total number of rows returned |
-|max_rowcount_d|Max number of rows returned in single execution |
-|query_max_used_memory_d|Total amount of memory used in KB |
-|max_query_max_used_memory_d|Max amount of memory used by a single execution in KB |
-|duration_d|Total execution time in microseconds |
-|max_duration_d|Max execution time of a single execution |
-|num_physical_io_reads_d|Total number of physical reads |
-|max_num_physical_io_reads_d|Max number of physical reads per execution |
-|log_bytes_used_d|Total amount of log bytes used |
-|max_log_bytes_used_d|Max amount of log bytes used per execution |
-|query_id_d|ID of the query in Query Store |
-|plan_id_d|ID of the plan in Query Store |
+|ResourceType|Název typu prostředku Always: MANAGEDINSTANCES |
+|SubscriptionId|Identifikátor GUID předplatného pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
+|LogicalServerName_s|Název spravované instance |
+|ResourceId|Identifikátor URI prostředku |
+|SKU_s|SKU produktu Managed instance |
+|virtual_core_count_s|Počet dostupných virtuální jádra |
+|avg_cpu_percent_s|Průměrné procento procesoru |
+|reserved_storage_mb_s|Rezervovaná kapacita úložiště na spravované instanci |
+|storage_space_used_mb_s|Použito úložiště na spravované instanci |
+|io_requests_s|Počet IOPS |
+|io_bytes_read_s|Přečtené bajty IOPS |
+|io_bytes_written_s|Zapsané bajty IOPS |
 
-Learn more about [Query Store runtime statistics data](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql).
-
-### <a name="query-store-wait-statistics"></a>Query Store wait statistics
+### <a name="query-store-runtime-statistics"></a>Statistiky za běhu úložiště dotazů
 
 |Vlastnost|Popis|
 |---|---|
-|TenantId|Your tenant ID |
-|SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Time stamp when the log was recorded |
+|TenantId|ID tenanta |
+|SourceSystem|Vždycky: Azure |
+|TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |Typ|Always: AzureDiagnostics |
-|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
-|Kategorie|Name of the category. Always: QueryStoreWaitStatistics |
-|OperationName|Name of the operation. Always: QueryStoreWaitStatisticsEvent |
+|ResourceProvider|Název poskytovatele prostředků Always: MICROSOFT. SQL |
+|Kategorie|Název kategorie Always: QueryStoreRuntimeStatistics |
+|OperationName|Název operace Always: QueryStoreRuntimeStatisticsEvent |
 |Prostředek|Název prostředku |
-|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
-|SubscriptionId|Subscription GUID for the database |
-|ResourceGroup|Name of the resource group for the database |
-|LogicalServerName_s|Name of the server for the database |
-|ElasticPoolName_s|Name of the elastic pool for the database, if any |
-|DatabaseName_s|Name of the database |
-|ResourceId|Resource URI |
-|wait_category_s|Category of the wait |
-|is_parameterizable_s|Is the query parameterizable |
-|statement_type_s|Type of the statement |
-|statement_key_hash_s|Statement key hash |
-|exec_type_d|Type of execution |
-|total_query_wait_time_ms_d|Total wait time of the query on the specific wait category |
-|max_query_wait_time_ms_d|Max wait time of the query in individual execution on the specific wait category |
+|ResourceType|Název typu prostředku Vždy: servery/databáze |
+|SubscriptionId|Identifikátor GUID předplatného pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
+|LogicalServerName_s|Název serveru pro databázi |
+|ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
+|DatabaseName_s|Název databáze |
+|ResourceId|Identifikátor URI prostředku |
+|query_hash_s|Hodnota hash dotazu |
+|query_plan_hash_s|Hodnota hash plánu dotazů |
+|statement_sql_handle_s|Obslužná rutina příkazu SQL |
+|interval_start_time_d|Počáteční hodnota DateTimeOffset intervalu v počtu taktů od 1900-1-1 |
+|interval_end_time_d|Koncový DateTimeOffset intervalu v počtu taktů od 1900-1-1 |
+|logical_io_writes_d|Celkový počet logických zápisů v/v |
+|max_logical_io_writes_d|Maximální počet logických zápisů v/v za spuštění |
+|physical_io_reads_d|Celkový počet fyzických čtení v/v |
+|max_physical_io_reads_d|Maximální počet logických čtení v/v za spuštění |
+|logical_io_reads_d|Celkový počet logických čtení v/v |
+|max_logical_io_reads_d|Maximální počet logických čtení v/v za spuštění |
+|execution_type_d|Typ spuštění |
+|count_executions_d|Počet spuštění dotazu |
+|cpu_time_d|Celkový čas procesoru spotřebovaný dotazem v mikrosekundách |
+|max_cpu_time_d|Maximální čas procesoru u jednoho spuštění v mikrosekundách |
+|dop_d|Součet stupňů paralelismu |
+|max_dop_d|Maximální stupeň paralelismu používaných pro jedno spuštění |
+|rowcount_d|Celkový počet vrácených řádků |
+|max_rowcount_d|Maximální počet řádků vrácených v jednom spuštění |
+|query_max_used_memory_d|Celková velikost paměti využitá v KB |
+|max_query_max_used_memory_d|Maximální velikost paměti, kterou používá jedno spuštění v KB |
+|duration_d|Celková doba provádění v mikrosekundách |
+|max_duration_d|Maximální doba provádění jednoho spuštění |
+|num_physical_io_reads_d|Celkový počet fyzických čtení |
+|max_num_physical_io_reads_d|Maximální počet fyzických čtení na jedno spuštění |
+|log_bytes_used_d|Celková velikost použitých bajtů protokolu |
+|max_log_bytes_used_d|Maximální množství bajtů protokolu použitých na spuštění |
+|query_id_d|ID dotazu v úložišti dotazů |
+|plan_id_d|ID plánu v úložišti dotazů |
+
+Další informace o [datech statistiky modulu runtime úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql).
+
+### <a name="query-store-wait-statistics"></a>Statistika čekání na úložiště dotazů
+
+|Vlastnost|Popis|
+|---|---|
+|TenantId|ID tenanta |
+|SourceSystem|Vždycky: Azure |
+|TimeGenerated [UTC]|Časové razítko záznamu protokolu |
+|Typ|Always: AzureDiagnostics |
+|ResourceProvider|Název poskytovatele prostředků Always: MICROSOFT. SQL |
+|Kategorie|Název kategorie Always: QueryStoreWaitStatistics |
+|OperationName|Název operace Always: QueryStoreWaitStatisticsEvent |
+|Prostředek|Název prostředku |
+|ResourceType|Název typu prostředku Vždy: servery/databáze |
+|SubscriptionId|Identifikátor GUID předplatného pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
+|LogicalServerName_s|Název serveru pro databázi |
+|ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
+|DatabaseName_s|Název databáze |
+|ResourceId|Identifikátor URI prostředku |
+|wait_category_s|Kategorie čekání |
+|is_parameterizable_s|Je dotaz parametrizovat |
+|statement_type_s|Typ příkazu |
+|statement_key_hash_s|Hodnota hash klíče příkazu |
+|exec_type_d|Typ spuštění |
+|total_query_wait_time_ms_d|Celková čekací doba dotazu v konkrétní kategorii čekání |
+|max_query_wait_time_ms_d|Maximální čekací doba dotazu v individuálním spuštění v konkrétní kategorii čekání |
 |query_param_type_d|0 |
-|query_hash_s|Query hash in Query Store |
-|query_plan_hash_s|Query plan hash in Query Store |
-|statement_sql_handle_s|Statement handle in Query Store |
-|interval_start_time_d|Start datetimeoffset of the interval in number of ticks from 1900-1-1 |
-|interval_end_time_d|End datetimeoffset of the interval in number of ticks from 1900-1-1 |
-|count_executions_d|Count of executions of the query |
-|query_id_d|ID of the query in Query Store |
-|plan_id_d|ID of the plan in Query Store |
+|query_hash_s|Hodnota hash dotazu v úložišti dotazů |
+|query_plan_hash_s|Hodnota hash plánu dotazů v úložišti dotazů |
+|statement_sql_handle_s|Popisovač příkazu v úložišti dotazů |
+|interval_start_time_d|Počáteční hodnota DateTimeOffset intervalu v počtu taktů od 1900-1-1 |
+|interval_end_time_d|Koncový DateTimeOffset intervalu v počtu taktů od 1900-1-1 |
+|count_executions_d|Počet spuštění dotazu |
+|query_id_d|ID dotazu v úložišti dotazů |
+|plan_id_d|ID plánu v úložišti dotazů |
 
-Learn more about [Query Store wait statistics data](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql).
+Další informace o [datech statistiky čekání na úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql).
 
-### <a name="errors-dataset"></a>Errors dataset
+### <a name="errors-dataset"></a>Datová sada chyb
 
 |Vlastnost|Popis|
 |---|---|
-|TenantId|Your tenant ID |
-|SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Time stamp when the log was recorded |
+|TenantId|ID tenanta |
+|SourceSystem|Vždycky: Azure |
+|TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |Typ|Always: AzureDiagnostics |
-|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
-|Kategorie|Name of the category. Always: Errors |
-|OperationName|Name of the operation. Always: ErrorEvent |
+|ResourceProvider|Název poskytovatele prostředků Always: MICROSOFT. SQL |
+|Kategorie|Název kategorie Vždycky: Chyby |
+|OperationName|Název operace Always: ErrorEvent |
 |Prostředek|Název prostředku |
-|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
-|SubscriptionId|Subscription GUID for the database |
-|ResourceGroup|Name of the resource group for the database |
-|LogicalServerName_s|Name of the server for the database |
-|ElasticPoolName_s|Name of the elastic pool for the database, if any |
-|DatabaseName_s|Name of the database |
-|ResourceId|Resource URI |
-|Zpráva|Error message in plain text |
-|user_defined_b|Is the error user defined bit |
+|ResourceType|Název typu prostředku Vždy: servery/databáze |
+|SubscriptionId|Identifikátor GUID předplatného pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
+|LogicalServerName_s|Název serveru pro databázi |
+|ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
+|DatabaseName_s|Název databáze |
+|ResourceId|Identifikátor URI prostředku |
+|Zpráva|Chybová zpráva v prostém textu |
+|user_defined_b|Je chybově definovaný bit uživatelem |
 |error_number_d|Kód chyby |
-|Závažnost|Severity of the error |
-|state_d|State of the error |
-|query_hash_s|Query hash of the failed query, if available |
-|query_plan_hash_s|Query plan hash of the failed query, if available |
+|Severity|Závažnost chyby |
+|state_d|Stav chyby |
+|query_hash_s|Hodnota hash dotazu neúspěšného dotazu, pokud je k dispozici |
+|query_plan_hash_s|Hodnota hash plánu dotazu neúspěšného dotazu, je-li k dispozici |
 
-Learn more about [SQL Server error messages](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15).
+Přečtěte si další informace o [SQL serverch chybových zprávách](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15).
 
-### <a name="database-wait-statistics-dataset"></a>Database wait statistics dataset
-
-|Vlastnost|Popis|
-|---|---|
-|TenantId|Your tenant ID |
-|SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Time stamp when the log was recorded |
-|Typ|Always: AzureDiagnostics |
-|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
-|Kategorie|Name of the category. Always: DatabaseWaitStatistics |
-|OperationName|Name of the operation. Always: DatabaseWaitStatisticsEvent |
-|Prostředek|Název prostředku |
-|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
-|SubscriptionId|Subscription GUID for the database |
-|ResourceGroup|Name of the resource group for the database |
-|LogicalServerName_s|Name of the server for the database |
-|ElasticPoolName_s|Name of the elastic pool for the database, if any |
-|DatabaseName_s|Name of the database |
-|ResourceId|Resource URI |
-|wait_type_s|Name of the wait type |
-|start_utc_date_t [UTC]|Measured period start time |
-|end_utc_date_t [UTC]|Measured period end time |
-|delta_max_wait_time_ms_d|Max waited time per execution |
-|delta_signal_wait_time_ms_d|Total signals wait time |
-|delta_wait_time_ms_d|Total wait time in the period |
-|delta_waiting_tasks_count_d|Number of waiting tasks |
-
-Learn more about [database wait statistics](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql).
-
-### <a name="time-outs-dataset"></a>Time-outs dataset
+### <a name="database-wait-statistics-dataset"></a>Datová sada statistiky čekání databáze
 
 |Vlastnost|Popis|
 |---|---|
-|TenantId|Your tenant ID |
-|SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Time stamp when the log was recorded |
+|TenantId|ID tenanta |
+|SourceSystem|Vždycky: Azure |
+|TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |Typ|Always: AzureDiagnostics |
-|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
-|Kategorie|Name of the category. Always: Timeouts |
-|OperationName|Name of the operation. Always: TimeoutEvent |
+|ResourceProvider|Název poskytovatele prostředků Always: MICROSOFT. SQL |
+|Kategorie|Název kategorie Always: DatabaseWaitStatistics |
+|OperationName|Název operace Always: DatabaseWaitStatisticsEvent |
 |Prostředek|Název prostředku |
-|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
-|SubscriptionId|Subscription GUID for the database |
-|ResourceGroup|Name of the resource group for the database |
-|LogicalServerName_s|Name of the server for the database |
-|ElasticPoolName_s|Name of the elastic pool for the database, if any |
-|DatabaseName_s|Name of the database |
-|ResourceId|Resource URI |
-|error_state_d|Error state code |
-|query_hash_s|Query hash, if available |
-|query_plan_hash_s|Query plan hash, if available |
+|ResourceType|Název typu prostředku Vždy: servery/databáze |
+|SubscriptionId|Identifikátor GUID předplatného pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
+|LogicalServerName_s|Název serveru pro databázi |
+|ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
+|DatabaseName_s|Název databáze |
+|ResourceId|Identifikátor URI prostředku |
+|wait_type_s|Název typu čekání |
+|start_utc_date_t [UTC]|Čas zahájení měřeného období |
+|end_utc_date_t [UTC]|Čas ukončení měřeného období |
+|delta_max_wait_time_ms_d|Maximální doba čekání na spuštění |
+|delta_signal_wait_time_ms_d|Doba čekání na celkový počet signálů |
+|delta_wait_time_ms_d|Celková doba čekání v období |
+|delta_waiting_tasks_count_d|Počet čekajících úloh |
 
-### <a name="blockings-dataset"></a>Blockings dataset
+Přečtěte si další informace o [statistice čekání databáze](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql).
+
+### <a name="time-outs-dataset"></a>Datová sada časových limitů
 
 |Vlastnost|Popis|
 |---|---|
-|TenantId|Your tenant ID |
-|SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Time stamp when the log was recorded |
+|TenantId|ID tenanta |
+|SourceSystem|Vždycky: Azure |
+|TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |Typ|Always: AzureDiagnostics |
-|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
-|Kategorie|Name of the category. Always: Blocks |
-|OperationName|Name of the operation. Always: BlockEvent |
+|ResourceProvider|Název poskytovatele prostředků Always: MICROSOFT. SQL |
+|Kategorie|Název kategorie Vždycky: časové limity |
+|OperationName|Název operace Always: TimeoutEvent |
 |Prostředek|Název prostředku |
-|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
-|SubscriptionId|Subscription GUID for the database |
-|ResourceGroup|Name of the resource group for the database |
-|LogicalServerName_s|Name of the server for the database |
-|ElasticPoolName_s|Name of the elastic pool for the database, if any |
-|DatabaseName_s|Name of the database |
-|ResourceId|Resource URI |
-|lock_mode_s|Lock mode used by the query |
-|resource_owner_type_s|Owner of the lock |
-|blocked_process_filtered_s|Blocked process report XML |
-|duration_d|Duration of the lock in microseconds |
+|ResourceType|Název typu prostředku Vždy: servery/databáze |
+|SubscriptionId|Identifikátor GUID předplatného pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
+|LogicalServerName_s|Název serveru pro databázi |
+|ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
+|DatabaseName_s|Název databáze |
+|ResourceId|Identifikátor URI prostředku |
+|error_state_d|Chybový kód stavu |
+|query_hash_s|Hodnota hash dotazu, je-li k dispozici |
+|query_plan_hash_s|Hodnota hash plánu dotazu, je-li k dispozici |
 
-### <a name="deadlocks-dataset"></a>Deadlocks dataset
+### <a name="blockings-dataset"></a>Datová sada bloků
 
 |Vlastnost|Popis|
 |---|---|
-|TenantId|Your tenant ID |
-|SourceSystem|Always: Azure |
-|TimeGenerated [UTC] |Time stamp when the log was recorded |
+|TenantId|ID tenanta |
+|SourceSystem|Vždycky: Azure |
+|TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |Typ|Always: AzureDiagnostics |
-|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
-|Kategorie|Name of the category. Always: Deadlocks |
-|OperationName|Name of the operation. Always: DeadlockEvent |
+|ResourceProvider|Název poskytovatele prostředků Always: MICROSOFT. SQL |
+|Kategorie|Název kategorie Always: bloky |
+|OperationName|Název operace Always: BlockEvent |
 |Prostředek|Název prostředku |
-|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
-|SubscriptionId|Subscription GUID for the database |
-|ResourceGroup|Name of the resource group for the database |
-|LogicalServerName_s|Name of the server for the database |
-|ElasticPoolName_s|Name of the elastic pool for the database, if any |
-|DatabaseName_s|Name of the database |
-|ResourceId|Resource URI |
-|deadlock_xml_s|Deadlock report XML |
+|ResourceType|Název typu prostředku Vždy: servery/databáze |
+|SubscriptionId|Identifikátor GUID předplatného pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
+|LogicalServerName_s|Název serveru pro databázi |
+|ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
+|DatabaseName_s|Název databáze |
+|ResourceId|Identifikátor URI prostředku |
+|lock_mode_s|Režim zámku použitý dotazem |
+|resource_owner_type_s|Vlastník zámku |
+|blocked_process_filtered_s|KÓD XML sestavy blokovaného procesu |
+|duration_d|Doba trvání zámku v mikrosekundách |
 
-### <a name="automatic-tuning-dataset"></a>Automatic tuning dataset
+### <a name="deadlocks-dataset"></a>Datová sada zablokování
 
 |Vlastnost|Popis|
 |---|---|
-|TenantId|Your tenant ID |
-|SourceSystem|Always: Azure |
-|TimeGenerated [UTC]|Time stamp when the log was recorded |
+|TenantId|ID tenanta |
+|SourceSystem|Vždycky: Azure |
+|TimeGenerated [UTC] |Časové razítko záznamu protokolu |
 |Typ|Always: AzureDiagnostics |
-|ResourceProvider|Name of the resource provider. Always: MICROSOFT.SQL |
-|Kategorie|Name of the category. Always: AutomaticTuning |
+|ResourceProvider|Název poskytovatele prostředků Always: MICROSOFT. SQL |
+|Kategorie|Název kategorie Vždycky: zablokování |
+|OperationName|Název operace Always: DeadlockEvent |
 |Prostředek|Název prostředku |
-|ResourceType|Name of the resource type. Always: SERVERS/DATABASES |
-|SubscriptionId|Subscription GUID for the database |
-|ResourceGroup|Name of the resource group for the database |
-|LogicalServerName_s|Name of the server for the database |
-|LogicalDatabaseName_s|Name of the database |
-|ElasticPoolName_s|Name of the elastic pool for the database, if any |
-|DatabaseName_s|Name of the database |
-|ResourceId|Resource URI |
-|RecommendationHash_s|Unique hash of Automatic tuning recommendation |
-|OptionName_s|Automatic tuning operation |
-|Schema_s|Database schema |
-|Table_s|Table affected |
-|IndexName_s|Index name |
-|IndexColumns_s|Column name |
-|IncludedColumns_s|Columns included |
-|EstimatedImpact_s|Estimated impact of Automatic tuning recommendation JSON |
-|Event_s|Type of Automatic tuning event |
-|Timestamp_t|Last updated timestamp |
+|ResourceType|Název typu prostředku Vždy: servery/databáze |
+|SubscriptionId|Identifikátor GUID předplatného pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
+|LogicalServerName_s|Název serveru pro databázi |
+|ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
+|DatabaseName_s|Název databáze |
+|ResourceId|Identifikátor URI prostředku |
+|deadlock_xml_s|XML sestavy zablokování |
 
-### <a name="intelligent-insights-dataset"></a>Intelligent Insights dataset
+### <a name="automatic-tuning-dataset"></a>Datová sada automatického ladění
 
-Learn more about the [Intelligent Insights log format](sql-database-intelligent-insights-use-diagnostics-log.md).
+|Vlastnost|Popis|
+|---|---|
+|TenantId|ID tenanta |
+|SourceSystem|Vždycky: Azure |
+|TimeGenerated [UTC]|Časové razítko záznamu protokolu |
+|Typ|Always: AzureDiagnostics |
+|ResourceProvider|Název poskytovatele prostředků Always: MICROSOFT. SQL |
+|Kategorie|Název kategorie Always: AutomaticTuning |
+|Prostředek|Název prostředku |
+|ResourceType|Název typu prostředku Vždy: servery/databáze |
+|SubscriptionId|Identifikátor GUID předplatného pro databázi |
+|ResourceGroup|Název skupiny prostředků pro databázi |
+|LogicalServerName_s|Název serveru pro databázi |
+|LogicalDatabaseName_s|Název databáze |
+|ElasticPoolName_s|Název elastického fondu pro databázi, pokud existuje |
+|DatabaseName_s|Název databáze |
+|ResourceId|Identifikátor URI prostředku |
+|RecommendationHash_s|Jedinečná hodnota hash pro automatické ladění – doporučení |
+|OptionName_s|Operace automatického ladění |
+|Schema_s|Schéma databáze |
+|Table_s|Ovlivněná tabulka |
+|IndexName_s|Název indexu |
+|IndexColumns_s|Název sloupce |
+|IncludedColumns_s|Zahrnuté sloupce |
+|EstimatedImpact_s|Odhadovaný dopad automatického ladění s doporučením JSON |
+|Event_s|Typ události automatického ladění |
+|Timestamp_t|Poslední aktualizované časové razítko |
+
+### <a name="intelligent-insights-dataset"></a>Intelligent Insights datová sada
+
+Přečtěte si další informace o [formátu protokolu Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-To learn how to enable logging and to understand the metrics and log categories supported by the various Azure services, see:
+Informace o tom, jak povolit protokolování a pochopit kategorie metrik a protokolů podporované různými službami Azure, najdete v těchto tématech:
 
-- [Overview of metrics in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Overview of Azure diagnostics logs](../azure-monitor/platform/resource-logs-overview.md)
+- [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Přehled diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-overview.md)
 
-To learn about Event Hubs, read:
+Pokud se chcete dozvědět o Event Hubs, přečtěte si:
 
-- [What is Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Co je Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-To learn how to setup alerts based on telemetry from log analytics see:
+Informace o tom, jak nastavit výstrahy na základě telemetrie z Log Analytics, najdete v těchto tématech:
 
-- [Creating alerts for SQL Database and managed instance](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)
+- [Vytváření výstrah pro SQL Database a spravovanou instanci](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)

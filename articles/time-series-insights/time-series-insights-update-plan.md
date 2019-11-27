@@ -1,6 +1,6 @@
 ---
-title: Plan your Preview environment - Azure Time Series Insights | Microsoft Docs
-description: Learn how to plan your Azure Time Series Insights Preview environment.
+title: Plánování prostředí Preview – Azure Time Series Insights | Microsoft Docs
+description: Naučte se plánovat prostředí Azure Time Series Insights Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -17,88 +17,88 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420313"
 ---
-# <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plan your Azure Time Series Insights Preview environment
+# <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí pro Azure Time Series Insights Preview
 
-This article describes best practices to plan and get started quickly by using Azure Time Series Insights Preview.
-
-> [!NOTE]
-> For best practices to plan a general availability Time Series Insights instance, see [Plan your Azure Time Series Insights general availability environment](time-series-insights-environment-planning.md).
-
-## <a name="best-practices-for-planning-and-preparation"></a>Best practices for planning and preparation
-
-Best practices surrounding planning for and preparing your environment are described further in the following articles:
-
-* What you get when you [provision a Time Series Insights Preview environment](#the-preview-environment).
-* What your [Time Series IDs and Timestamp properties are](#configure-time-series-ids-and-timestamp-properties).
-* What the new [Time Series Model is](#understand-the-time-series-model), and how to build your own.
-* How to [send events efficiently in JSON](#shape-your-events).
-* Time Series Insights [business disaster recovery options](#business-disaster-recovery).
-
-Azure Time Series Insights employs a pay-as-you-go business model. For more information about charges and capacity, see [Time Series Insights pricing](https://azure.microsoft.com/pricing/details/time-series-insights/).
-
-## <a name="the-preview-environment"></a>The preview environment
-
-When you provision a Time Series Insights Preview environment, you create two Azure resources:
-
-* An Azure Time Series Insights Preview environment
-* An Azure Storage general-purpose V1 account
-
-As part of the provisioning process, you specify whether you want to enable a warm store. Warm store provides you with a tiered query experience. When enabled, you must specify a retention period between 7 and 30 days. Queries executed within the warm store retention period generally provide faster response times. When a query spans over the warm store retention period, it's served from cold store.
-
-Queries on warm store are free, while queries on cold store incur costs. It's important to understand your query patterns and plan your warm store configuration accordingly. We recommend that interactive analytics on the most recent data reside in your warm store and pattern analysis and long-term trends reside in cold.
+Tento článek popisuje osvědčené postupy pro plánování a rychlé zprovoznění pomocí Azure Time Series Insights verze Preview.
 
 > [!NOTE]
-> We currently support a maximum of 1,000 properties with warm store.
+> Osvědčené postupy pro plánování obecné dostupnosti Time Series Insights instance najdete v tématu [plánování prostředí pro obecné dostupnosti Azure Time Series Insights](time-series-insights-environment-planning.md).
 
-To start, you need three additional items:
+## <a name="best-practices-for-planning-and-preparation"></a>Osvědčené postupy pro plánování a přípravu
 
-* A [Time Series Model](./time-series-insights-update-tsm.md)
-* An [event source connected to Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md)
-* [Events flowing into the event source](./time-series-insights-send-events.md) that are both mapped to the model and are in valid JSON format
+Osvědčené postupy při plánování a přípravě prostředí jsou podrobněji popsány v následujících článcích:
 
-## <a name="review-preview-limits"></a>Review preview limits
+* Co dostanete při [zřizování prostředí Time Series Insights Preview](#the-preview-environment).
+* K čemu [slouží vaše ID časových řad a vlastnosti časového razítka](#configure-time-series-ids-and-timestamp-properties).
+* Co je nový [model časové řady](#understand-the-time-series-model)a jak vytvořit vlastní.
+* Jak [odesílat události efektivně ve formátu JSON](#shape-your-events).
+* Time Series Insights [možností zotavení po havárii firmy](#business-disaster-recovery).
+
+Azure Time Series Insights využívá obchodní model s průběžnými platbami. Další informace o nákladech a kapacitě najdete v tématu [Time Series Insights ceny](https://azure.microsoft.com/pricing/details/time-series-insights/).
+
+## <a name="the-preview-environment"></a>Prostředí verze Preview
+
+Když zřizujete prostředí Time Series Insights Preview, vytvoříte dva prostředky Azure:
+
+* Prostředí Azure Time Series Insights Preview
+* Účet Azure Storage pro obecné účely v1
+
+V rámci procesu zřizování určíte, jestli chcete povolit teplé úložiště. Úložiště pro poskytování vrstvených dotazů vám poskytuje vícevrstvé možnosti. Pokud je povoleno, je nutné zadat dobu uchování mezi 7 a 30 dny. Dotazy spouštěné v období uchovávání teplého úložiště obecně poskytují rychlejší odezvy. Když dotaz pokrývá dobu uchovávání teplého úložiště, je obsluhován z chladírenského skladu.
+
+Dotazy na teplém úložišti jsou bezplatné, zatímco dotazy na chladírenský sklad účtují náklady. Je důležité porozumět vašim vzorům dotazů a odpovídajícím způsobem naplánovat konfiguraci pro svůj záložní obchod. Doporučujeme, aby se interaktivní analýzy na nejaktuálnějších datech nacházely v provozním úložišti a analýze vzorků a dlouhodobé trendy se nachází v chladu.
+
+> [!NOTE]
+> V současné době podporujeme maximálně 1 000 vlastností s teplým úložištěm.
+
+Začněte tím, že budete potřebovat tři další položky:
+
+* [Model časové řady](./time-series-insights-update-tsm.md)
+* [Zdroj události připojený k Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md)
+* Události se přenášejí [do zdroje událostí](./time-series-insights-send-events.md) , které jsou namapované na model a jsou v platném formátu JSON.
+
+## <a name="review-preview-limits"></a>Kontrola omezení verze Preview
 
 [!INCLUDE [Review Time Series Insights Preview limits](../../includes/time-series-insights-preview-limits.md)]
 
-## <a name="configure-time-series-ids-and-timestamp-properties"></a>Configure Time Series IDs and Timestamp properties
+## <a name="configure-time-series-ids-and-timestamp-properties"></a>Konfigurace ID časových řad a vlastností časového razítka
 
-To create a new Time Series Insights environment, select a Time Series ID. Doing so acts as a logical partition for your data. As noted, make sure to have your Time Series IDs ready.
+Pokud chcete vytvořit nové prostředí Time Series Insights, vyberte ID časové řady. K tomu slouží jako logický oddíl pro vaše data. Jak je uvedeno, ujistěte se, že máte připravené identifikátory časových řad.
 
 > [!IMPORTANT]
-> Time Series IDs *can't be changed later*. Verify each one before final selection and first use.
+> ID časových řad *nelze později změnit*. Ověřte každý z nich před konečným výběrem a prvním použitím.
 
-You can select up to three keys to uniquely differentiate your resources. For more information, read [Best practices for choosing a Time Series ID](./time-series-insights-update-how-to-id.md) and [Storage and ingress](./time-series-insights-update-storage-ingress.md).
+Můžete vybrat až tři klíče a jednoznačně odlišit vaše prostředky. Další informace najdete v článku [osvědčené postupy pro výběr ID](./time-series-insights-update-how-to-id.md) a [úložiště](./time-series-insights-update-storage-ingress.md)časových řad a příchozího přenosu dat.
 
-The **Timestamp** property is also important. You can designate this property when you add event sources. Each event source has an optional Timestamp property that's used to track event sources over time. Timestamp values are case sensitive and must be formatted to the individual specification of each event source.
+Vlastnost **časového razítka** je také důležitá. Tuto vlastnost můžete určit při přidávání zdrojů událostí. Každý zdroj události má volitelnou vlastnost časového razítka, která se používá ke sledování zdrojů událostí v průběhu času. Hodnoty časového razítka rozlišují velká a malá písmena a musí být formátovány na jednotlivé specifikace jednotlivých zdrojů událostí.
 
 > [!TIP]
-> Verify the formatting and parsing requirements for your event sources.
+> Ověřte požadavky na formátování a analýzu pro zdroje událostí.
 
-When left blank, the Event Enqueue Time of an event source is used as the event Timestamp. If you send historical data or batched events, customizing the Timestamp property is more helpful than the default Event Enqueue Time. For more information, read about how to [add event sources in Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+Pokud je ponecháno prázdné, použije se čas zařazení do fronty události jako časové razítko události. Pokud odesíláte historická data nebo dávkové události, přizpůsobení vlastnosti časového razítka je vhodnější než výchozí doba zařazování událostí. Další informace najdete v tématu Postup [Přidání zdrojů událostí do Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
 
-## <a name="understand-the-time-series-model"></a>Understand the Time Series Model
+## <a name="understand-the-time-series-model"></a>Pochopení modelu časové řady
 
-You can now configure your Time Series Insights environment’s Time Series Model. The new model makes it easy to find and analyze IoT data. It enables the curation, maintenance, and enrichment of time series data and helps to prepare consumer-ready data sets. The model uses Time Series IDs, which map to an instance that associates the unique resource with variables, known as types, and hierarchies. Read about the new [Time Series Model](./time-series-insights-update-tsm.md).
+Nyní můžete nakonfigurovat model časové řady Time Series Insightsho prostředí. Nový model usnadňuje hledání a analýzu dat IoT. Umožňuje léčební, údržbu a obohacení dat časových řad a pomáhá připravit datové sady připravené pro uživatele. Model používá ID časových řad, které se mapují na instanci, která přidruží jedinečný prostředek k proměnným, označovaným jako typy a hierarchie. Přečtěte si o novém [modelu časové řady](./time-series-insights-update-tsm.md).
 
-The model is dynamic, so it can be built at any time. To get started quickly, build and upload it prior to pushing data into Time Series Insights. To build your model, see [Use the Time Series Model](./time-series-insights-update-how-to-tsm.md).
+Model je dynamický, takže se dá vytvořit kdykoli. Aby bylo možné rychle začít, sestavte a nahrajte ho před vložením dat do Time Series Insights. Informace o sestavování modelu najdete v tématu [použití modelu časové řady](./time-series-insights-update-how-to-tsm.md).
 
-For many customers, the Time Series Model maps to an existing asset model or ERP system already in place. If you don't have an existing model, a prebuilt user experience is [provided](https://github.com/Microsoft/tsiclient) to get up and running quickly. To envision how a model might help you, view the [sample demo environment](https://insights.timeseries.azure.com/preview/demo).
+Pro mnoho zákazníků se model časových řad mapuje na existující model assetů nebo systém ERP, který je už na svém místě. Pokud nemáte existující model, je k [dispozici](https://github.com/Microsoft/tsiclient) předem sestavené uživatelské prostředí, které vám umožní rychle začít pracovat. Chcete-li předvést, jak vám model může pomáhat, podívejte se do [ukázkového](https://insights.timeseries.azure.com/preview/demo)ukázkového prostředí.
 
-## <a name="shape-your-events"></a>Shape your events
+## <a name="shape-your-events"></a>Natvarování událostí
 
-You can verify the way that you send events to Time Series Insights. Ideally, your events are denormalized well and efficiently.
+Můžete ověřit způsob, jakým odesíláte události do Time Series Insights. V ideálním případě jsou vaše události dobře denormalizované a efektivně.
 
-A good rule of thumb:
+Dobré pravidlo pro palec:
 
-* Store metadata in your Time Series Model.
-* Ensure that Time Series Mode, instance fields, and events include only necessary information, such as a Time Series ID or Timestamp property.
+* Uložte metadata v modelu časové řady.
+* Zajistěte, aby režim časové řady, pole instancí a události zahrnoval pouze potřebné informace, například ID časové řady nebo vlastnost časového razítka.
 
-For more information, see [Shape events](./time-series-insights-send-events.md#supported-json-shapes).
+Další informace najdete v tématu [události obrazce](./time-series-insights-send-events.md#supported-json-shapes).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- Review [Azure Advisor](../advisor/advisor-overview.md) to plan out your business recovery configuration options.
-- Read more about [storage and ingress](./time-series-insights-update-storage-ingress.md) in the Time Series Insights Preview.
-- Learn about [data modeling](./time-series-insights-update-tsm.md) in the Time Series Insights Preview.
+- Přečtěte si [Azure Advisor](../advisor/advisor-overview.md) a naplánujte si možnosti konfigurace pro obnovení firmy.
+- Přečtěte si další informace o službě [Storage a](./time-series-insights-update-storage-ingress.md) příchozím přenosu ve službě Time Series Insights Preview.
+- Přečtěte si o [modelování dat](./time-series-insights-update-tsm.md) ve verzi Preview Time Series Insights.

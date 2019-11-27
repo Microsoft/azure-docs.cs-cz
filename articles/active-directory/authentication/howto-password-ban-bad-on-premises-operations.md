@@ -1,6 +1,6 @@
 ---
-title: Password protection operations and reports - Azure Active Directory
-description: Azure AD Password Protection post-deployment operations and reporting
+title: Operace a sestavy ochrany heslem – Azure Active Directory
+description: Operace po nasazení a vytváření sestav ochrany heslem Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -18,50 +18,50 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74381669"
 ---
-# <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD Password Protection operational procedures
+# <a name="azure-ad-password-protection-operational-procedures"></a>Provozní procedury ochrany heslem Azure AD
 
-After you have completed the [installation of Azure AD Password Protection](howto-password-ban-bad-on-premises-deploy.md) on-premises, there are a couple items that must be configured in the Azure portal.
+Po dokončení [instalace ochrany heslem Azure AD](howto-password-ban-bad-on-premises-deploy.md) v místním prostředí existuje několik položek, které je potřeba nakonfigurovat v Azure Portal.
 
-## <a name="configure-the-custom-banned-password-list"></a>Configure the custom banned password list
+## <a name="configure-the-custom-banned-password-list"></a>Konfigurovat vlastní seznam zakázaných hesel
 
-Follow the guidance in the article [Configuring the custom banned password list](howto-password-ban-bad-configure.md) for steps to customize the banned password list for your organization.
+Postupujte podle pokynů v článku [Konfigurace vlastního seznamu zakázaných hesel,](howto-password-ban-bad-configure.md) kde najdete postup přizpůsobení seznamu zakázaných hesel ve vaší organizaci.
 
-## <a name="enable-password-protection"></a>Enable Password Protection
+## <a name="enable-password-protection"></a>Povolení ochrany heslem
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and browse to **Azure Active Directory**, **Authentication methods**, then **Password Protection**.
-1. Set **Enable Password Protection on Windows Server Active Directory** to **Yes**
-1. As mentioned in the [Deployment guide](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), it is recommended to initially set the **Mode** to **Audit**
-   * After you are comfortable with the feature, you can switch the **Mode** to **Enforced**
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do **Azure Active Directory**, **metod ověřování**a **ochrany heslem**.
+1. Nastavte **možnost Povolit ochranu heslem ve službě Windows Server Active Directory** na **hodnotu Ano** .
+1. Jak je uvedeno v [Průvodci nasazením](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), doporučujeme nejprve nastavit **režim** na **audit** .
+   * Až budete s funkcí spokojeni, můžete **režim** přepnout na **vynutilo** .
 1. Klikněte na **Uložit**.
 
-![Enabling Azure AD Password Protection components in the Azure portal](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
+![Povolení součástí ochrany heslem služby Azure AD v Azure Portal](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
 
-## <a name="audit-mode"></a>Audit Mode
+## <a name="audit-mode"></a>Režim auditování
 
-Audit mode is intended as a way to run the software in a “what if” mode. Each DC agent service evaluates an incoming password according to the currently active policy. If the current policy is configured to be in Audit mode, “bad” passwords result in event log messages but are accepted. This is the only difference between Audit and Enforce mode; all other operations run the same.
+Režim auditu je určený jako způsob, jak software spustit v režimu "co if". Každá služba agenta řadiče domény vyhodnotí příchozí heslo podle aktuálně aktivních zásad. Pokud je aktuální zásada nakonfigurovaná tak, aby byla v režimu auditování, je výsledkem "špatných" hesla zpráva protokolu událostí, ale budou přijata. Toto je jediný rozdíl mezi režimem auditu a vymáhání. všechny ostatní operace mají stejný provoz.
 
 > [!NOTE]
-> Microsoft recommends that initial deployment and testing always start out in Audit mode. Events in the event log should then be monitored to try to anticipate whether any existing operational processes would be disturbed once Enforce mode is enabled.
+> Microsoft doporučuje, aby se počáteční nasazení a testování vždy spouštělo v režimu auditování. Události v protokolu událostí by se pak měly monitorovat, aby se pokusily odhadnout, jestli by nějaké existující provozní procesy po povolení režimu vykonání byly nerušené.
 
-## <a name="enforce-mode"></a>Enforce Mode
+## <a name="enforce-mode"></a>Režim vymáhání
 
-Enforce mode is intended as the final configuration. As in Audit mode above, each DC agent service evaluates incoming passwords according to the currently active policy. If Enforce mode is enabled though, a password that is considered unsecure according to the policy is rejected.
+Režim vymáhání je určený jako konečná konfigurace. Stejně jako v režimu auditování výše každá služba agenta řadiče domény vyhodnocuje příchozí hesla podle aktuálně aktivních zásad. Pokud je povolený režim vymáhání, heslo, které se považuje za nezabezpečené podle zásad, se odmítne.
 
-When a password is rejected in Enforce mode by the Azure AD Password Protection DC Agent, the visible impact seen by an end user is identical to what they would see if their password was rejected by traditional on-premises password complexity enforcement. For example, a user might see the following traditional error message at the Windows logon\change password screen:
+Když je v režimu vynucení odmítnuto heslo agent řadiče domény služby Azure AD heslem, viditelný dopad zobrazený koncovým uživatelem se shoduje s tím, jak by se jednalo o odmítnutí hesla tradičním vynuceným nastavením složitosti hesel. Uživatel může například na obrazovce pro heslo pro Windows logon\change zobrazit následující tradiční chybovou zprávu:
 
 `Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.`
 
-This message is only one example of several possible outcomes. The specific error message can vary depending on the actual software or scenario that is attempting to set an unsecure password.
+Tato zpráva je pouze jedním z příkladů možných výsledků. Konkrétní chybová zpráva se může lišit v závislosti na skutečném softwaru nebo scénáři, který se pokouší nastavit nezabezpečené heslo.
 
-Affected end users may need to work with their IT staff to understand the new requirements and be more able to choose secure passwords.
+Ovlivnění koncoví uživatelé možná budou muset spolupracovat s pracovníky IT, aby porozuměli novým požadavkům a mohli si vybrat zabezpečená hesla.
 
 > [!NOTE]
-> Azure AD Password Protection has no control over the specific error message displayed by the client machine when a weak password is rejected.
+> Ochrana heslem Azure AD nemá žádné řízení pro konkrétní chybovou zprávu, která se zobrazí v klientském počítači, když se odmítne slabé heslo.
 
-## <a name="enable-mode"></a>Enable Mode
+## <a name="enable-mode"></a>Zapnout režim
 
-This setting should be left in its default enabled (Yes) state. Configuring this setting to disabled (No) will cause all deployed Azure AD Password Protection DC agents to go into a quiescent mode where all passwords are accepted as-is, and no validation activities will be executed whatsoever (for example, not even audit events will be emitted).
+Toto nastavení by mělo zůstat ve výchozím stavu povoleno (Ano). Konfigurace tohoto nastavení na zakázáno (ne) způsobí, že všichni nasazení agenti řadiče domény Azure AD pro ochranu heslem přejdou do režimu quiescent, ve kterém jsou všechna hesla přijímána, a nebudou spuštěny žádné ověřovací aktivity (například ne i události auditu). bude vygenerováno).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Monitoring for Azure AD Password Protection](howto-password-ban-bad-on-premises-monitor.md)
+[Monitorování ochrany hesel služby Azure AD](howto-password-ban-bad-on-premises-monitor.md)

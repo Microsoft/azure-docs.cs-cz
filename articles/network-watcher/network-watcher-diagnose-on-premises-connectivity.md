@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275939"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531834"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místního připojení prostřednictvím bran VPN
 
@@ -42,7 +42,7 @@ Chcete nakonfigurovat připojení typu Site-to-site mezi Azure a místním prost
 
 Podrobný návod pro konfiguraci konfigurace site-to-site najdete v tématu [vytvoření virtuální sítě s připojením typu Site-to-site pomocí Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Jedním z důležitých kroků konfigurace je konfigurace komunikačních parametrů protokolu IPsec, jakákoli Chybná konfigurace vede ke ztrátě připojení mezi místní sítí a Azure. V současné době jsou brány VPN Azure nakonfigurované tak, aby podporovaly následující parametry protokolu IPsec pro fázi 1. Všimněte si, že výše uvedená nastavení nelze upravovat.  Jak vidíte v následující tabulce, šifrovací algoritmy podporované službou Azure VPN Gateway jsou AES256, AES128 a 3DES.
+Jedním z důležitých kroků konfigurace je konfigurace komunikačních parametrů protokolu IPsec, jakákoli Chybná konfigurace vede ke ztrátě připojení mezi místní sítí a Azure. V současné době jsou brány VPN Azure nakonfigurované tak, aby podporovaly následující parametry protokolu IPsec pro fázi 1. Jak vidíte v následující tabulce, šifrovací algoritmy podporované službou Azure VPN Gateway jsou AES256, AES128 a 3DES.
 
 ### <a name="ike-phase-1-setup"></a>Nastavení protokolu IKE fáze 1
 
@@ -53,7 +53,7 @@ Jedním z důležitých kroků konfigurace je konfigurace komunikačních parame
 | Metoda ověřování |Předsdílený klíč |Předsdílený klíč |
 | Algoritmy šifrování |AES256 AES128 3DES |AES256 3DES |
 | Algoritmus hash |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| Životnost přidružení zabezpečení (SA) Fáze 1 (čas) |28 800 sekund |10 800 sekund |
+| Životnost přidružení zabezpečení (SA) Fáze 1 (čas) |28 800 sekund |28 800 sekund |
 
 Jako uživatel byste se museli FortiGate nakonfigurovat, ukázkovou konfiguraci najdete na [GitHubu](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). Nevědomě jste si nakonfigurovali FortiGate, aby jako algoritmus hash používala SHA-512. Vzhledem k tomu, že tento algoritmus není podporovaným algoritmem pro připojení založená na zásadách, vaše připojení k síti VPN funguje.
 
@@ -108,7 +108,7 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojeno. |Ne|
 | ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
 | ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
-| Authentication | Neshoda s předsdíleným klíčem. | Ano|
+| Ověřování | Neshoda s předsdíleným klíčem. | Ano|
 | PeerReachability | Partnerská brána není dostupná. | Ano|
 | IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
 | WfpParse Error | Při analýze protokolu WFP došlo k chybě. |Ano|

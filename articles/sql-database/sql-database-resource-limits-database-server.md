@@ -60,7 +60,7 @@ Pokud se setkáte s vysokým využitím výpočetních prostředků, zahrnují m
 - Zvýšením výpočetní velikosti databáze nebo elastického fondu poskytnete databázi s více výpočetními prostředky. Viz téma [škálování prostředků jedné databáze](sql-database-single-database-scale.md) a [škálování prostředků elastického fondu](sql-database-elastic-pool-scale.md).
 - Optimalizace dotazů pro snížení využití prostředků každého dotazu. Další informace najdete v tématu [ladění a hinty dotazů](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Když využité místo v databázi dosáhne limitu maximální velikosti, vkládání a aktualizace databáze, které zvyšují velikost dat, selžou a klienti obdrží [chybovou zprávu](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). Příkazy SELECT a DELETE budou i nadále úspěšné.
 

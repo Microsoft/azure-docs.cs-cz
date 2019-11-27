@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 7dd0000d6797411d56143f8a977e4c478d551858
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 951cd7ae8962d71f41899eca848ce0740d6395ad
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694743"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538761"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -73,18 +73,18 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 Kubernetes podporuje [horizontální automatické škálování podů][kubernetes-hpa] pro úpravu počtu podů v nasazení v závislosti na využití procesoru nebo jiné vybrané metrice. [Server metriky][metrics-server] slouží k poskytování využití prostředků Kubernetes a je automaticky nasazen v clusterech AKS verze 1,10 a vyšší. Pokud chcete zobrazit verzi clusteru AKS, použijte příkaz [AZ AKS show][az-aks-show] , jak je znázorněno v následujícím příkladu:
 
 ```azurecli
-az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
+az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion --output table
 ```
 
 > [!NOTE]
-> Pokud je váš cluster AKS menší než *1,10*, server metriky se neinstaluje automaticky. Pokud chcete nainstalovat, naklonujte úložiště GitHub `metrics-server` a nainstalujte ukázkové definice prostředků. Pokud si chcete zobrazit obsah těchto definicí YAML, přečtěte si téma [Server metrik pro Kuberenetes 1.8 +][metrics-server-github].
+> Pokud je váš cluster AKS menší než *1,10*, server metriky se neinstaluje automaticky. Pokud chcete nainstalovat, naklonujte `metrics-server` úložiště GitHub a nainstalujte ukázkové definice prostředků. Pokud si chcete zobrazit obsah těchto definicí YAML, přečtěte si téma [Server metrik pro Kuberenetes 1.8 +][metrics-server-github].
 > 
 > ```console
 > git clone https://github.com/kubernetes-incubator/metrics-server.git
 > kubectl create -f metrics-server/deploy/1.8+/
 > ```
 
-Chcete-li použít automatické škálování, všechny kontejnery v luskech a vaše lusky musí mít definované požadavky na procesor a omezení. V nasazení `azure-vote-front` už front-end kontejner vyžádá 0,25 procesor s limitem 0,5 CPU. Tyto požadavky na prostředky a omezení jsou definovány tak, jak je znázorněno v následujícím ukázkovém kódu:
+Chcete-li použít automatické škálování, všechny kontejnery v luskech a vaše lusky musí mít definované požadavky na procesor a omezení. V nasazení `azure-vote-front` kontejner front-endu již vyžádal 0,25 procesor, a to s limitem 0,5 CPU. Tyto požadavky na prostředky a omezení jsou definovány tak, jak je znázorněno v následujícím ukázkovém kódu:
 
 ```yaml
 resources:

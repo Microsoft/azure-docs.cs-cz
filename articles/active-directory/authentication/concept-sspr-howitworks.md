@@ -58,7 +58,7 @@ Pokud je povolená možnost SSPR, musíte pro metody ověřování vybrat alespo
 
 * Oznámení mobilní aplikace
 * Kód mobilní aplikace
-* Email
+* E-mail
 * Mobilní telefon
 * Telefon do kanceláře
 * Bezpečnostní otázky

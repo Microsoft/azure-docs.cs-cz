@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 773e55bd1908c04e1c73d998348d36b685524715
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: df662353f7c9c788158ce2dfe05385f022289466
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075663"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539105"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -27,7 +27,7 @@ Přestože je emulace služby Azure Cosmos DB věrná, implementace emulátoru s
 
 Data mezi emulátorem Azure Cosmos a službou Azure Cosmos DB můžete migrovat pomocí [nástroje Azure Cosmos DB Data Migration Tool](https://github.com/azure/azure-documentdb-datamigrationtool).
 
-Emulátor Azure Cosmos můžete spustit v kontejneru Docker systému Windows. Další informace najdete v [Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) pro příkaz Docker Pull a na [GitHubu](https://github.com/Azure/azure-cosmos-db-emulator-docker) pro zdrojový kód emulátoru.
+Emulátor Azure Cosmos můžete spustit na kontejneru Docker systému Windows, další informace najdete v [Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) pro příkaz Docker Pull a na [GitHubu](https://github.com/Azure/azure-cosmos-db-emulator-docker) `Dockerfile`.
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Rozdíly mezi emulátorem a službou
 
@@ -41,7 +41,7 @@ Vzhledem k tomu, že emulátor Azure Cosmos poskytuje emulované prostředí bě
 * Protože vaše kopie emulátoru Azure Cosmos nemusí být vždycky aktuální s nejnovějšími změnami ve službě Azure Cosmos DB, měli byste se podívat na [Azure Cosmos DB Capacity Planneru](https://www.documentdb.com/capacityplanner) a přesně odhadnout, jaké jsou požadavky vaší aplikace v produkční propustnosti (ru).
 * Při použití emulátoru Azure Cosmos ve výchozím nastavení můžete vytvořit až 25 kontejnerů s pevnou velikostí (podporované jenom pomocí sad SDK pro Azure Cosmos DB) nebo 5 neomezených kontejnerů pomocí emulátoru Azure Cosmos. Další informace o změně této hodnoty najdete v části [Nastavení hodnoty PartitionCount](#set-partitioncount).
 
-## <a name="system-requirements"></a>Požadavky na systém
+## <a name="system-requirements"></a>Systémové požadavky
 
 Emulátor Azure Cosmos má následující požadavky na hardware a software:
 
@@ -246,11 +246,11 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
 |Port | Určuje číslo portu pro emulátor. Výchozí hodnota je 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>: číslo jednoho portu |
 | ComputePort | Určuje číslo portu, které se má použít pro službu COMPUTE Interop Gateway. Port testu koncového bodu HTTP brány se počítá jako ComputePort + 79. Proto musí být ComputePort a ComputePort + 79 otevřené a dostupné. Výchozí hodnoty jsou 8900, 8979. | CosmosDB. emulátor. exe/ComputePort = \<ComputePort\> | \<computeport\>: jedno číslo portu |
 | EnableMongoDbEndpoint | Povolí rozhraní MongoDB API. | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
-| MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongo port\>: číslo jednoho portu|
+| MongoPort | Určuje číslo portu, který chcete použít pro rozhraní API kompatibility MongoDB. Výchozí hodnota je 10255. |CosmosDB. emulátor. exe/MongoPort = \<MongoPort\>|\<mongo port\>: číslo jednoho portu|
 | EnableCassandraEndpoint | Povolí rozhraní API Cassandra | CosmosDB. emulátor. exe/EnableCassandraEndpoint | |
 | CassandraPort | Určuje číslo portu, který se má použít pro koncový bod Cassandra. Výchozí hodnota je 10350. | CosmosDB. emulátor. exe/CassandraPort = \<CassandraPort\> | \<cassandraport\>: jedno číslo portu |
 | EnableGremlinEndpoint | Povolí rozhraní Gremlin API. | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
-| GremlinPort | Číslo portu, které se má použít pro koncový bod Gremlin Výchozí hodnota je 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>: číslo jednoho portu |
+| GremlinPort | Číslo portu, které se má použít pro koncový bod Gremlin Výchozí hodnota je 8901. | CosmosDB. emulátor. exe/GremlinPort =\<port\> | \<port\>: číslo jednoho portu |
 |EnableTableEndpoint | Povolí Azure rozhraní API pro tabulky | CosmosDB. emulátor. exe/EnableTableEndpoint | |
 |TablePort | Číslo portu, které se má použít pro koncový bod tabulky Azure Výchozí hodnota je 8902. | CosmosDB. emulátor. exe/TablePort =\<port\> | \<port\>: číslo jednoho portu|
 | KeyFile | Načte autorizační klíč ze zadaného souboru. Pro vytvoření souboru klíče použijte možnost/GenKeyFile | CosmosDB. emulátor. exe/KeyFile =\<file_name\> | \<file_name\>: cesta k souboru |
@@ -289,7 +289,7 @@ Pokud chcete změnit počet kontejnerů dostupných v emulátoru Azure Cosmos, s
 2. Odstraňte všechna data emulátoru v této složce `%LOCALAPPDATA%\CosmosDBEmulator`.
 3. Ukončete všechny otevřené instance tak, že kliknete pravým tlačítkem myši na ikonu **emulátoru služby Azure Cosmos DB** na hlavním panelu systému a potom kliknete na **Exit** (Konec). Ukončení všech instancí může chvíli trvat.
 4. Nainstalujte nejnovější verzi [emulátoru Azure Cosmos](https://aka.ms/cosmosdb-emulator).
-5. Spusťte emulátor s příznakem PartitionCount nastaveným na hodnotu < = 250. Příklad: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`.
+5. Spusťte emulátor s příznakem PartitionCount nastaveným na hodnotu < = 250. Například: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`.
 
 ## <a name="controlling-the-emulator"></a>Řízení emulátoru
 
@@ -310,7 +310,7 @@ Zde je uveden seznam příkazů pro řízení emulátoru z PowerShellu:
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Syntaxe**
+**Syntaktick**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -320,7 +320,7 @@ Vrátí jednu z těchto hodnot ServiceControllerStatus: ServiceControllerStatus.
 
 ### `Start-CosmosDbEmulator`
 
-**Syntaxe**
+**Syntaktick**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -330,7 +330,7 @@ Spustí emulátor. Ve výchozím nastavení tento příkaz čeká, dokud emulát
 
 ### `Stop-CosmosDbEmulator`
 
-**Syntaxe**
+**Syntaktick**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -340,7 +340,7 @@ Zastaví emulátor. Ve výchozím nastavení tento příkaz čeká, až emuláto
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Syntaxe**
+**Syntaktick**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 
@@ -487,7 +487,7 @@ Nakonec z virtuálního počítače s Windows spusťte emulátor Cosmos z přík
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Následující tipy vám pomůžou při řešení problémů, ke kterým dochází v emulátoru Azure Cosmos:
 

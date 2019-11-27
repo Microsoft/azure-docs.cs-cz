@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 11/25/2019
 ms.author: swmachan
-ms.openlocfilehash: 79cf87cef4e58cf4e5a2039f30289d55038c8b92
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3694c8cb34b2a050c9e18265c8cc0a0198456076
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671964"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533708"
 ---
 # <a name="request-limits-for-translator-text"></a>Omezení požadavků pro Translator Text
 
@@ -29,12 +29,12 @@ Následující tabulka uvádí prvky pole a omezení znaků pro každou operaci 
 
 | Operace | Maximální velikost elementu pole |   Maximální počet prvků pole |  Maximální velikost požadavku (ve znacích) |
 |:----|:----|:----|:----|
-| Translate | 5,000 | 100   | 5,000 |
-| Transliterace | 5,000 | 10    | 5,000 |
-| Detect | 10,000 | 100 |   50,000 |
-| BreakSentence | 10,000    | 100 | 50,000 |
+| Překlad | 5 000 | 100   | 5 000 |
+| Transliterace | 5 000 | 10    | 5 000 |
+| Zjišťování | 10 000 | 100 |   50 000 |
+| BreakSentence | 10 000    | 100 | 50 000 |
 | Slovníkové vyhledávání| 100 |  10  | 1 000 |
-| Příklady slovníku | 100 pro text a 100 pro překlad (200 celkem)| 10|   2 000 |
+| Příklady slovníku | 100 pro text a 100 pro překlad (200 celkem)| 10|   2,000 |
 
 ## <a name="character-limits-per-hour"></a>Omezení počtu znaků za hodinu
 
@@ -58,7 +58,7 @@ Tato omezení se omezují na standardní modely překladu společnosti Microsoft
 
 ## <a name="latency"></a>Latence
 
-Translator Text API má maximální latenci 15 sekund pomocí standardních modelů. Překlad pomocí vlastních modelů má maximální latenci 25 sekund. V tuto chvíli obdržíte výsledek nebo odpověď na časový limit. Odpovědi jsou obvykle vraceny během 150 milisekund do 300 milisekund. Doby odezvy se budou lišit v závislosti na velikosti páru požadavků a jazyků. Pokud neobdržíte překlad nebo odpověď na [chybu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) v rámci tohoto časového období, měli byste ověřit připojení k síti a zkusit to znovu.
+Translator Text API má maximální latenci 15 sekund pomocí standardních modelů a 120 sekund při použití vlastních modelů. Odpovědi *na text v rámci 100 znaků* jsou obvykle vraceny během 150 milisekund na 300 milisekund. Modely vlastního překladatele mají podobné vlastnosti latence u trvalých požadavků a můžou mít vyšší latenci, když je vaše frekvence požadavků přerušovaná. Doby odezvy se budou lišit v závislosti na velikosti páru požadavků a jazyků. Pokud neobdržíte překlad nebo odpověď na [chybu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) v rámci tohoto časového období, zkontrolujte prosím svůj kód, připojení k síti a zkuste to znovu. 
 
 ## <a name="sentence-length-limits"></a>Omezení délky věty
 

@@ -1,6 +1,6 @@
 ---
-title: Back up SQL Server databases to Azure
-description: This article explains how to back up SQL Server to Azure. The article also explains SQL Server recovery.
+title: Zálohování SQL Server databází do Azure
+description: Tento článek vysvětluje, jak zálohovat SQL Server do Azure. Článek také vysvětluje SQL Server obnovení.
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
@@ -12,175 +12,175 @@ ms.locfileid: "74462588"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
-SQL Server databases are critical workloads that require a low recovery point objective (RPO) and long-term retention. You can back up SQL Server databases running on Azure VMs using [Azure Backup](backup-overview.md).
+SQL Server databáze jsou kritické úlohy, které vyžadují nízký cíl bodu obnovení (RPO) a dlouhodobé uchovávání. Můžete zálohovat SQL Server databáze běžící na virtuálních počítačích Azure pomocí [Azure Backup](backup-overview.md).
 
-## <a name="backup-process"></a>Backup process
+## <a name="backup-process"></a>Proces zálohování
 
-This solution leverages the SQL native APIs to take backups of your SQL databases.
+Toto řešení využívá rozhraní API systému SQL Native k převzetí záloh vašich databází SQL.
 
-* Once you specify the SQL Server VM that you want to protect and query for the databases in it, Azure Backup service will install a workload backup extension on the VM by the name `AzureBackupWindowsWorkload` extension.
-* This extension consists of a coordinator and a SQL plugin. While the coordinator is responsible for triggering workflows for various operations like configure backup, backup and restore, the plugin is responsible for actual data flow.
-* To be able to discover databases on this VM, Azure Backup creates the account `NT SERVICE\AzureWLBackupPluginSvc`. This account is used for backup and restore and requires SQL sysadmin permissions. The `NT SERVICE\AzureWLBackupPluginSvc` account is a [Virtual Service Account](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), and therefore does not require any password management. Azure Backup leverages the `NT AUTHORITY\SYSTEM` account for database discovery/inquiry, so this account needs to be a public login on SQL. If you didn't create the SQL Server VM from the Azure Marketplace, you might receive an error **UserErrorSQLNoSysadminMembership**. If this occurs [follow these instructions](#set-vm-permissions).
-* Once you trigger configure protection on the selected databases, the backup service sets up the coordinator with the backup schedules and other policy details, which the extension caches locally on the VM.
-* At the scheduled time, the coordinator communicates with the plugin and it starts streaming the backup data from the SQL server using VDI.  
-* The plugin sends the data directly to the recovery services vault, thus eliminating the need for a staging location. The data is encrypted and stored by the Azure Backup service in storage accounts.
-* When the data transfer is complete, coordinator confirms the commit with the backup service.
+* Jakmile zadáte SQL Server virtuální počítač, který chcete chránit, a dotaz na databáze v něm, služba Azure Backup Service nainstaluje na virtuálním počítači rozšíření zálohování pomocí názvu `AzureBackupWindowsWorkload` příponu.
+* Toto rozšíření se skládá z koordinátora a modulu plug-in SQL. I když je koordinátor zodpovědný za aktivaci pracovních postupů pro různé operace, jako je konfigurace zálohování, zálohování a obnovení, je za skutečný tok dat zodpovědný modul plug-in.
+* Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup vytvoří účet `NT SERVICE\AzureWLBackupPluginSvc`. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. Účet `NT SERVICE\AzureWLBackupPluginSvc` je [účet virtuální služby](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), a proto nevyžaduje správu hesel. Azure Backup využívá účet `NT AUTHORITY\SYSTEM` pro zjišťování nebo dotaz databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](#set-vm-permissions).
+* Jakmile na vybraných databázích spustíte konfiguraci ochrany, služba zálohování nastaví koordinátora s plány zálohování a dalšími podrobnostmi zásad, které rozšíření ukládá do mezipaměti místně na virtuálním počítači.
+* V naplánovaném čase koordinátor komunikuje s modulem plug-in a spustí streamování zálohovaných dat z SQL serveru pomocí infrastruktury virtuálních klientských počítačů (VDI).  
+* Modul plug-in odesílá data přímo do trezoru služby Recovery Services. tím eliminuje nutnost pracovní umístění. Data jsou zašifrovaná a uložená službou Azure Backup v účtech úložiště.
+* Po dokončení přenosu dat koordinátor potvrdí potvrzení u služby zálohování.
 
-  ![SQL Backup architecture](./media/backup-azure-sql-database/backup-sql-overview.png)
+  ![Architektura zálohování SQL](./media/backup-azure-sql-database/backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>Než začnete
 
-Before you start, verify the below:
+Než začnete, ověřte následující:
 
-1. Make sure you have a SQL Server instance running in Azure. You can [quickly create a SQL Server instance](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md) in the marketplace.
-2. Review the [feature consideration](#feature-consideration-and-limitations) and [scenario support](#scenario-support).
-3. [Review common questions](faq-backup-sql-server.md) about this scenario.
+1. Ujistěte se, že máte spuštěnou instanci SQL Server v Azure. Na webu Marketplace můžete [rychle vytvořit instanci SQL Server](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md) .
+2. Přečtěte si téma [posouzení funkcí](#feature-consideration-and-limitations) a [Podpora scénářů](#scenario-support).
+3. [Přečtěte si běžné otázky](faq-backup-sql-server.md) k tomuto scénáři.
 
-## <a name="scenario-support"></a>Scenario support
+## <a name="scenario-support"></a>Podpora scénářů
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Supported deployments** | SQL Marketplace Azure VMs and non-Marketplace (SQL Server manually installed) VMs are supported.
-**Supported geos** | Australia South East (ASE), East Australia (AE), Australia Central (AC), Australia Central 2 (AC) <br> Brazílie – jih (BRS)<br> Canada Central (CNC), Canada East (CE)<br> South East Asia (SEA), East Asia (EA) <br> East US (EUS), East US 2 (EUS2), West Central US (WCUS), West US (WUS); West US 2 (WUS 2) North Central US (NCUS) Central US (CUS) South Central US (SCUS) <br> India Central (INC), India South (INS), India West <br> Japan East (JPE), Japan West (JPW) <br> Korea Central (KRC), Korea South (KRS) <br> North Europe (NE), West Europe <br> UK South (UKS), UK West (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD Central, US DoD East <br> Germany North, Germany West Central <br> Switzerland North, Switzerland West <br> Francie – střed <br> China East, China East 2, China North, China North 2
-**Podporované operační systémy** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux isn't currently supported.
-**Supported SQL Server versions** | SQL Server 2019, SQL Server 2017 as detailed on the [Search product lifecycle page](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 and SPs as detailed on the [Search product lifecycle page](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.
-**Supported .NET versions** | .NET Framework 4.5.2 or later installed on the VM
+**Podporovaná nasazení** | Virtuální počítače Azure Marketplace a virtuální počítače mimo Marketplace (SQL Server ručně nainstalované) jsou podporované.
+**Podporované zeměpisných oblastech** | Austrálie – jihovýchod (pomocného mechanismu), východní Austrálie (AE), Austrálie – střed (AC), Austrálie – střed 2 (AC) <br> Brazílie – jih (BRS)<br> Kanada – střed (CNC), Kanada – východ (CE)<br> Jižní Východní Asie (moře), Východní Asie (EA) <br> Východní USA (EUS), Východní USA 2 (EUS2), Středozápadní USA (WCUS), Západní USA (WUS); Západní USA 2 (WUS 2) Střed USA – sever (NCUS) Střed USA (kapacitní jednotky) Střed USA – jih (SCUS) <br> Indie – střed (INC), Indie – jih (in), Indie – západ <br> Japonsko – východ (JPE), Japonsko – západ (JPW) <br> Korea – střed (KRC), Korea – jih (KRS) <br> Severní Evropa (NE), Západní Evropa <br> Velká Británie – jih (UKS), Velká Británie – západ (UKW) <br> US Gov – Arizona, US Gov – Virginie, US Gov – Texas, US DoD – střed US DoD – východ <br> Německo – sever Německo – středozápad <br> Švýcarsko – sever Švýcarsko – západ <br> Francie – střed <br> Čína – východ Čína – východ 2 Čína – sever Čína – sever 2
+**Podporované operační systémy** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux není aktuálně podporován.
+**Podporované verze SQL Server** | SQL Server 2019 SQL Server 2017 na [stránce prohledat životní cyklus produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 a SPS, jak je podrobně popsán na [stránce hledání životního cyklu produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, web, Developer, Express.
+**Podporované verze rozhraní .NET** | Na virtuálním počítači je nainstalovaný .NET Framework 4.5.2 nebo novější.
 
-## <a name="feature-consideration-and-limitations"></a>Feature consideration and limitations
+## <a name="feature-consideration-and-limitations"></a>Aspekty a omezení funkcí
 
-* SQL Server backup can be configured in the Azure portal or **PowerShell**. We do not support CLI.
-* The solution is supported on both kinds of [deployments](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) - Azure Resource Manager VMs and classic VMs.
-* VM running SQL Server requires internet connectivity to access Azure public IP addresses.
-* SQL Server **Failover Cluster Instance (FCI)** is not supported.
-* Back up and restore operations for mirror databases and database snapshots aren't supported.
-* Using more than one backup solutions to back up your standalone SQL Server instance or SQL Always on availability group may lead to backup failure; refrain from doing so.
-* Backing up two nodes of an availability group individually with same or different solutions, may also lead to backup failure.
-* Azure Backup supports only Full and Copy-only Full backup types for **Read-only** databases
-* Databases with large number of files can't be protected. The maximum number of files that is supported is **~1000**.  
-* You can back up to **~2000** SQL Server databases in a vault. You can create multiple vaults in case you have a greater number of databases.
-* You can configure backup for up to **50** databases in one go; this restriction helps optimize backup loads.
-* We support databases up to **2 TB** in size; for sizes greater than that performance issues may come up.
-* To have a sense of as to how many databases can be protected per server, we need to consider factors such as bandwidth, VM size, backup frequency, database size, etc. [Download](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) the resource planner that gives the approximate number of databases you can have per server based on the VM resources and the backup policy.
-* In case of availability groups, backups are taken from the different nodes based on a few factors. The backup behavior for an availability group is summarized below.
+* Zálohování SQL Server můžete nakonfigurovat v Azure Portal nebo **PowerShellu**. Rozhraní příkazového řádku nepodporujeme.
+* Řešení je podporované v obou druzích [nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) – Azure Resource Manager virtuálních počítačů a klasických virtuálních počítačů.
+* Virtuální počítač se spuštěným SQL Server vyžaduje připojení k Internetu pro přístup k veřejným IP adresám Azure.
+* SQL Server **instance clusteru s podporou převzetí služeb při selhání (FCI)** se nepodporuje.
+* Operace zálohování a obnovení pro databáze zrcadlení a snímky databáze nejsou podporovány.
+* Použití více než jednoho řešení zálohování k zálohování samostatné instance SQL Server nebo skupiny dostupnosti Always On SQL může způsobit selhání zálohování; upustí od tohoto postupu.
+* Zálohování dvou uzlů skupiny dostupnosti jednotlivě se stejnými nebo různými řešeními může také vést k chybě zálohování.
+* Pro databáze **jen pro čtení** podporuje Azure Backup jenom úplné typy úplné zálohy a jenom pro kopírování.
+* Databáze s velkým počtem souborů není možné chránit. Maximální podporovaný počet souborů je **~ 1000**.  
+* V trezoru můžete zálohovat až **~ 2000** SQL Server databází. Pro případ, že máte větší počet databází, můžete vytvořit více trezorů.
+* Zálohu můžete nakonfigurovat až na **50** databází v jednom přechodu; Toto omezení pomáhá optimalizovat zatížení zálohování.
+* Podporujeme databáze o velikosti až **2 TB** . velikost, která je větší, než může dojít k problémům s výkonem.
+* Abychom měli smysl o tom, kolik databází je možné chránit na jeden server, musíme vzít v úvahu faktory, jako je šířka pásma, velikost virtuálních počítačů, četnost zálohování, velikost databáze atd. [Stáhněte](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) si Plánovač prostředků, který poskytuje přibližný počet databází, které můžete mít na server, na základě prostředků virtuálních počítačů a zásad zálohování.
+* V případě skupin dostupnosti jsou zálohy odebírány z různých uzlů na základě několika faktorů. Chování zálohování skupiny dostupnosti je shrnuto níže.
 
-### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Back up behavior in case of Always on availability groups
+### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Chování při zálohování v případě skupin dostupnosti Always On
 
-It is recommended that the backup is configured on only one node of an AG. Backup should always be configured in the same region as the primary node. In other words, you always need the primary node to be present in the region in which you are configuring backup. If all the nodes of the AG are in the same region in which the backup is configured, there isn’t any concern.
+Doporučuje se, aby záloha byla nakonfigurovaná jenom v jednom uzlu ovládacího prvku AG. Zálohování by se mělo vždycky nakonfigurovat ve stejné oblasti jako primární uzel. Jinými slovy, vždy potřebujete, aby byl primární uzel přítomen v oblasti, ve které konfigurujete zálohování. Pokud jsou všechny uzly AG ve stejné oblasti, ve které je nakonfigurované zálohování, nezáleží na tom.
 
-#### <a name="for-cross-region-ag"></a>For cross-region AG
+#### <a name="for-cross-region-ag"></a>Pro křížovou oblast AG
 
-* Regardless of the backup preference, backups won’t happen from the nodes that are not in the same region where the backup is configured. This is because the cross-region backups are not supported. If you have only two nodes and the secondary node is in the other region; in this case, the backups will continue to happen from primary node (unless your backup preference is ‘secondary only’).
-* If a fail-over happens to a region different than the one in which the backup is configured, backups would fail on the nodes in the failed-over region.
+* Bez ohledu na předvolbu zálohování nedojde k zálohování z uzlů, které nejsou ve stejné oblasti, ve které je nakonfigurované zálohování. Důvodem je to, že zálohování mezi oblastmi není podporováno. Pokud máte pouze dva uzly a sekundární uzel je v jiné oblasti; v takovém případě budou zálohy i nadále provedeny z primárního uzlu (Pokud vaše preference zálohování není "sekundární").
+* Pokud se převzetí služeb při selhání stane jinou oblastí než ta, ve které je zálohování nakonfigurované, zálohování se nepovede na uzlech v oblasti převzetí služeb při selhání.
 
-Depending on the backup preference and backups types (full/differential/log/copy-only full), backups are taken from a particular node (primary/secondary).
+V závislosti na předvolbách zálohování a typech zálohování (úplné/rozdílové/protokolované/kopie jsou úplné) se zálohují z konkrétního uzlu (primární/sekundární).
 
-* **Backup preference: Primary**
+* **Předvolby zálohování: primární**
 
-**Backup Type** | **Node**
+**Typ zálohování** | **Node**
     --- | ---
     Úplná | Primární
-    Differential | Primární
+    Diferenciál | Primární
     Protokol |  Primární
-    Copy-Only Full |  Primární
+    Pouze kopírování je úplné |  Primární
 
-* **Backup preference: Secondary Only**
+* **Předvolby zálohování: jenom sekundární**
 
-**Backup Type** | **Node**
+**Typ zálohování** | **Node**
 --- | ---
 Úplná | Primární
-Differential | Primární
+Diferenciál | Primární
 Protokol |  Sekundární
-Copy-Only Full |  Sekundární
+Pouze kopírování je úplné |  Sekundární
 
-* **Backup preference: Secondary**
+* **Předvolby zálohování: sekundární**
 
-**Backup Type** | **Node**
+**Typ zálohování** | **Node**
 --- | ---
 Úplná | Primární
-Differential | Primární
+Diferenciál | Primární
 Protokol |  Sekundární
-Copy-Only Full |  Sekundární
+Pouze kopírování je úplné |  Sekundární
 
-* **No Backup preference**
+* **Žádná předvolba zálohování**
 
-**Backup Type** | **Node**
+**Typ zálohování** | **Node**
 --- | ---
 Úplná | Primární
-Differential | Primární
+Diferenciál | Primární
 Protokol |  Sekundární
-Copy-Only Full |  Sekundární
+Pouze kopírování je úplné |  Sekundární
 
-## <a name="set-vm-permissions"></a>Set VM permissions
+## <a name="set-vm-permissions"></a>Nastavení oprávnění virtuálních počítačů
 
-  When you run discovery on a SQL Server, Azure Backup does the following:
+  Když spustíte zjišťování na SQL Server, Azure Backup provede následující akce:
 
-* Adds the AzureBackupWindowsWorkload extension.
-* Creates an NT SERVICE\AzureWLBackupPluginSvc account to discover databases on the virtual machine. This account is used for a backup and restore and requires SQL sysadmin permissions.
-* Discovers databases that are running on a VM, Azure Backup uses the NT AUTHORITY\SYSTEM account. This account must be a public sign-in on SQL.
+* Přidá rozšíření AzureBackupWindowsWorkload.
+* Vytvoří účet NT SERVICE\AzureWLBackupPluginSvc pro zjišťování databází na virtuálním počítači. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL.
+* Zjišťuje databáze, které běží na virtuálním počítači, Azure Backup používá účet NT AUTHORITY\SYSTEM. Tento účet musí být veřejným přihlašováním v SQL.
 
-If you didn't create the SQL Server VM in the Azure Marketplace or if you are on SQL 2008 and 2008 R2, you might receive a **UserErrorSQLNoSysadminMembership** error.
+Pokud jste virtuální počítač SQL Server v Azure Marketplace nevytvořili nebo jste na SQL 2008 a 2008 R2, může se zobrazit chyba **UserErrorSQLNoSysadminMembership** .
 
-For giving permissions in case of **SQL 2008** and **2008 R2** running on Windows 2008 R2, refer [here](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2).
+Informace o udělení oprávnění v případě **SQL 2008** a **2008 R2** běžících ve Windows 2008 R2 najdete [tady](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2).
 
-For all other versions, fix permissions with the following steps:
+U všech ostatních verzí opravte oprávnění pomocí následujících kroků:
 
-  1. Use an account with SQL Server sysadmin permissions to sign in to SQL Server Management Studio (SSMS). Unless you need special permissions, Windows authentication should work.
-  2. On the SQL Server, open the **Security/Logins** folder.
+  1. K přihlášení do SQL Server Management Studio (SSMS) použijte účet s oprávněními správce systému SQL Server. Pokud nepotřebujete zvláštní oprávnění, ověřování systému Windows by mělo fungovat.
+  2. Na SQL Server otevřete složku **zabezpečení/přihlášení** .
 
-      ![Open the Security/Logins folder to see accounts](./media/backup-azure-sql-database/security-login-list.png)
+      ![Otevřete složku zabezpečení/přihlášení a zobrazte si účty.](./media/backup-azure-sql-database/security-login-list.png)
 
-  3. Right-click the **Logins** folder and select **New Login**. In **Login - New**, select **Search**.
+  3. Klikněte pravým tlačítkem na složku **přihlášení** a vyberte **nové přihlašovací údaje**. V **přihlašování – nové**vyberte **Hledat**.
 
-      ![In the Login - New dialog box, select Search](./media/backup-azure-sql-database/new-login-search.png)
+      ![V dialogovém okně přihlášení – nové vyberte Hledat.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. The Windows virtual service account **NT SERVICE\AzureWLBackupPluginSvc** was created during the virtual machine registration and SQL discovery phase. Enter the account name as shown in **Enter the object name to select**. Select **Check Names** to resolve the name. Klikněte na **OK**.
+  4. Účet virtuální služby Windows **NT SERVICE\AzureWLBackupPluginSvc** se vytvořil během registrace virtuálního počítače a fáze zjišťování SQL. Zadejte název účtu, jak je uvedeno v **poli zadejte název objektu, který chcete vybrat**. Chcete-li název vyřešit, vyberte možnost **kontrolovat názvy** . Klikněte na tlačítko **OK**.
 
-      ![Select Check Names to resolve the unknown service name](./media/backup-azure-sql-database/check-name.png)
+      ![Pokud chcete přeložit neznámý název služby, vyberte možnost kontrolovat názvy.](./media/backup-azure-sql-database/check-name.png)
 
-  5. In **Server Roles**, make sure the **sysadmin** role is selected. Klikněte na **OK**. The required permissions should now exist.
+  5. V části **role serveru**se ujistěte, že je vybraná role **sysadmin** . Klikněte na tlačítko **OK**. Nyní by měla existovat požadovaná oprávnění.
 
-      ![Make sure the sysadmin server role is selected](./media/backup-azure-sql-database/sysadmin-server-role.png)
+      ![Ujistěte se, že je vybraná role serveru sysadmin.](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
-  6. Now associate the database with the Recovery Services vault. In the Azure portal, in the **Protected Servers** list, right-click the server that's in an error state > **Rediscover DBs**.
+  6. Nyní přidružte databázi k trezoru Recovery Services. V Azure Portal v seznamu **chráněné servery** klikněte pravým tlačítkem myši na server, který je v chybovém stavu > znovu **zjistit databáze**.
 
-      ![Verify the server has appropriate permissions](./media/backup-azure-sql-database/check-erroneous-server.png)
+      ![Ověřte, že server má příslušná oprávnění.](./media/backup-azure-sql-database/check-erroneous-server.png)
 
-  7. Check progress in the **Notifications** area. When the selected databases are found, a success message appears.
+  7. Podívejte se na průběh v **oznamovací** oblasti. Když se najde vybrané databáze, zobrazí se zpráva o úspěchu.
 
-      ![Deployment success message](./media/backup-azure-sql-database/notifications-db-discovered.png)
+      ![Zpráva o úspěšném nasazení](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
 > [!NOTE]
-> If your SQL Server has multiple instances of SQL Server installed, then you must add sysadmin permission for **NT Service\AzureWLBackupPluginSvc** account to all SQL instances.
+> Pokud je v SQL Server nainstalovaná více instancí SQL Server, musíte do všech instancí SQL přidat oprávnění sysadmin pro účet **NT Service\AzureWLBackupPluginSvc** .
 
-### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>Give SQL sysadmin permissions for SQL 2008 and SQL 2008 R2
+### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>Udělení oprávnění správce systému SQL pro SQL 2008 a SQL 2008 R2
 
-Add **NT AUTHORITY\SYSTEM** and **NT Service\AzureWLBackupPluginSvc** logins to the SQL Server Instance:
+Přidejte do instance SQL Server přihlašovací údaje pro **NT AUTHORITY\SYSTEM** a **NT Service\AzureWLBackupPluginSvc** :
 
-1. Go the SQL Server Instance in the Object explorer.
-2. Navigate to Security -> Logins
-3. Right click on the Logins and click *New Login…*
+1. V Průzkumníku objektů přejdete na instanci SQL Server.
+2. Přejít na zabezpečení-> přihlášení
+3. Klikněte pravým tlačítkem na přihlašovací údaje a klikněte na *nové přihlášení...*
 
-    ![New Login using SSMS](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
+    ![Nové přihlášení pomocí SSMS](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 
-4. Go to the General tab and enter **NT AUTHORITY\SYSTEM** as the Login Name.
+4. Přejděte na kartu Obecné a jako přihlašovací jméno zadejte **NT AUTHORITY\SYSTEM** .
 
-    ![login name for SSMS](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
+    ![přihlašovací jméno pro SSMS](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
 
-5. Go to *Server Roles* and choose *public* and *sysadmin* roles.
+5. Přejít na *role serveru* a zvolit *veřejné* a *sysadmin* role.
 
-    ![choosing roles in SSMS](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
+    ![Výběr rolí v SSMS](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 
-6. Go to *Status*. *Grant* the Permission to connect to database engine and Login as *Enabled*.
+6. Přejít na *stav*. *Udělte* oprávnění připojit se k databázovému stroji a přihlásit se jako *povolené*.
 
-    ![Grant permissions in SSMS](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
+    ![Udělení oprávnění v SSMS](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 
 7. Klikněte na tlačítko OK.
-8. Repeat the same sequence of steps (1-7 above) to add NT Service\AzureWLBackupPluginSvc login to the SQL Server instance. If the login already exists, make sure it has the sysadmin server role and under Status it has Grant the Permission to connect to database engine and Login as Enabled.
-9. After granting permission, **Rediscover DBs** in the portal: Vault **->** Backup Infrastructure **->** Workload in Azure VM:
+8. Zopakováním stejné posloupnosti kroků (1-7 výše) přidejte přihlášení NT Service\AzureWLBackupPluginSvc do instance SQL Server. Pokud přihlášení již existuje, ujistěte se, že má roli serveru sysadmin a v části stav uděluje oprávnění připojit se k databázovému stroji a přihlásit se jako povolené.
+9. Po udělení oprávnění si znovu pročtěte **databáze** na portálu: **->** úlohy úložiště **->** trezoru zálohování na virtuálním počítači Azure:
 
-    ![Rediscover DBs in Azure portal](media/backup-azure-sql-database/sql-rediscover-dbs.png)
+    ![Znovu zjišťovat databáze v Azure Portal](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 
-Alternatively, you can automate giving the permissions by running the following PowerShell commands in admin mode. The instance name is set to MSSQLSERVER by default. Change the instance name argument in script if need be:
+Případně můžete automatizovat oprávnění tím, že spustíte následující příkazy PowerShellu v režimu správce. Název instance je ve výchozím nastavení nastaven na hodnotu MSSQLSERVER. V případě potřeby změňte argument název instance ve skriptu:
 
 ```powershell
 param(
@@ -217,6 +217,6 @@ catch
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Learn about](backup-sql-server-database-azure-vms.md) backing up SQL Server databases.
-* [Learn about](restore-sql-database-azure-vm.md) restoring backed up SQL Server databases.
-* [Learn about](manage-monitor-sql-database-backup.md) managing backed up SQL Server databases.
+* [Přečtěte si o](backup-sql-server-database-azure-vms.md) zálohování SQL Server databází.
+* [Přečtěte si informace o](restore-sql-database-azure-vm.md) obnovení zálohovaných SQL Server databází.
+* [Přečtěte si o](manage-monitor-sql-database-backup.md) správě zálohovaných SQL Server databází.

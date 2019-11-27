@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: bc53ed3e3a7fd988464b9100df654920d5589596
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036662"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534186"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurace softwarového pole RAID v Linuxu
 Běžným scénářem je použití softwarového pole RAID u virtuálních počítačů se systémem Linux v Azure, které slouží k zobrazení několika připojených datových disků jako jednoho zařízení RAID. To se obvykle dá využít ke zlepšení výkonu a k zajištění vyšší propustnosti v porovnání s použitím pouze jednoho disku.
 
 ## <a name="attaching-data-disks"></a>Připojování datových disků
 Ke konfiguraci zařízení RAID potřebujete dva nebo více prázdných datových disků.  Hlavním důvodem pro vytvoření zařízení RAID je zvýšit výkon v/v disku.  Na základě požadavků na vstupně-výstupní operace se můžete rozhodnout připojit disky, které jsou uložené v naší službě Storage úrovně Standard, s až 500 IO/PS na disk nebo naše úložiště Premium s až 5000/s/PS na disk. Tento článek neposkytuje podrobné informace o tom, jak zřídit a připojit datové disky k virtuálnímu počítači se systémem Linux.  Podrobné pokyny k připojení prázdného datového disku k virtuálnímu počítači se systémem Linux v Azure najdete v článku o Microsoft Azureu [připojit disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+
+> [!IMPORTANT]
+>Nekombinujte disky různých velikostí, takže by to vedlo k tomu, že raidset bude mít vliv na to, co nejpomalejší disk bude omezený. 
 
 ## <a name="install-the-mdadm-utility"></a>Instalace nástroje mdadm
 * **Ubuntu**

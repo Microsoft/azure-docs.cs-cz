@@ -1,6 +1,6 @@
 ---
-title: Sample - Enforce like pattern
-description: This sample policy definition requires that resources meet the like pattern defined in a parameter for naming conventions.
+title: Ukázka – vynutilo vzor
+description: Tato definice ukázkové zásady vyžaduje, aby prostředky splňovaly vzor podobný vzoru, který je definovaný v parametru pro konvence pojmenování.
 ms.date: 01/23/2019
 ms.topic: sample
 ms.openlocfilehash: df72db59e0370e82ca9f4aff199498ffdf06d834
@@ -10,7 +10,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74463606"
 ---
-# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>Sample - Enforce like pattern for naming conventions
+# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>Ukázka – vymáhání vzoru pro konvence pojmenování
 
 Vyžaduje, aby názvy prostředků splňovaly vzor like. Zadejte povolený vzor like jako parametr.
 
@@ -24,9 +24,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-like-pattern%2Fazurepolicy.json)
+[![nasazení ukázky zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-like-pattern%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -55,7 +55,7 @@ az policy definition create --name 'enforce-like-pattern' --display-name 'Ensure
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-like-pattern" 
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

@@ -1,5 +1,5 @@
 ---
-title: Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure | Microsoft Docs
+title: Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure | Dokumentace Microsoftu
 description: Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 8c7da1b989546950bf61153e96193c0bab11d8ac
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 8136e65636561079603986f0d6ff30bcbd68258f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603541"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534228"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -27,53 +27,53 @@ ms.locfileid: "73603541"
 [deployment-guide]:deployment-guide.md
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
-[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
+[virtual-machines-linux-maintenance]:../../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
+[virtual-machines-windows-maintenance]:../../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 [sles-nfs-guide]:high-availability-guide-suse-nfs.md
 [sles-guide]:high-availability-guide-suse.md
 
-Existují dvě možnosti, jak nastavit cluster Pacemaker v Azure. Můžete použít buď agenta pro oplocení, který postará restartování uzlu, který selhal, přes rozhraní API Azure, nebo můžete použít zařízení SBD.
+Existují dvě možnosti, jak nastavit Pacemaker clusteru v Azure. Můžete použít buď agenta monitorování geografických zón, které se postará o restartování neúspěšných uzlu prostřednictvím rozhraní API služby Azure nebo můžete použít SBD zařízení.
 
-Zařízení SBD vyžaduje aspoň jeden další virtuální počítač, který funguje jako cílový server iSCSI a poskytuje zařízení SBD. Tyto cílové servery iSCSI je možné sdílet s jinými Pacemaker clustery. Výhodou použití zařízení SBD je rychlejší doba převzetí služeb při selhání a pokud používáte místní zařízení SBD, nevyžaduje žádné změny v tom, jak provozovat cluster Pacemaker. Pro cluster Pacemaker můžete použít až tři SBD zařízení, která umožní, aby se zařízení SBD nedostupné, například během oprav operačního systému cílového serveru iSCSI. Pokud chcete používat více než jedno zařízení SBD na Pacemaker, nezapomeňte nasadit několik cílových serverů iSCSI a připojit jeden SBD od každého cílového serveru iSCSI. Doporučujeme použít buď jedno zařízení SBD, nebo tři. Pokud nakonfigurujete jenom dvě zařízení SBD a jedna z nich není dostupná, Pacemaker nebude moct uzel clusteru automaticky navýšit. Pokud chcete být schopni si je vymezit, když jeden cílový server iSCSI nefunguje, musíte použít tři zařízení SBD, a proto tři cílové servery iSCSI.
+Zařízení SBD vyžaduje alespoň jeden další virtuální počítač, který funguje jako cílový server iSCSI a poskytuje SBD zařízení. Může ale být tyto cílové servery iSCSI s další clustery Pacemaker sdílí. Výhodou použití zařízení SBD je rychlejší doba převzetí služeb při selhání a pokud používáte místní zařízení SBD, nevyžaduje žádné změny v tom, jak provozovat cluster Pacemaker. Povolit zařízení s SBD přestanou být dostupné, například při použití dílčích oprav operačního systému cílového serveru iSCSI můžete použít až tři SBD zařízení Pacemaker clusteru. Pokud chcete použít více než jedno zařízení SBD za Pacemaker, nezapomeňte nasadit více cílové servery iSCSI a připojit jeden SBD z každý cílový server iSCSI. Doporučujeme používat jedno zařízení SBD nebo tři. Pacemaker nebude možné automaticky plotu uzlem clusteru, pokud nakonfigurujete dvě SBD zařízení a jeden z nich není k dispozici. Pokud chcete být schopni plotu při jeden cílový server iSCSI je mimo provoz, budete muset použít tři SBD zařízení a proto tři cílové servery iSCSI.
 
-Pokud nechcete investovat do jednoho dalšího virtuálního počítače, můžete také použít agenta Azure plot. Nevýhodou je to, že převzetí služeb při selhání může trvat 10 až 15 minut, pokud se zastavení prostředku nepovede nebo uzly clusteru už vzájemně nekomunikují.
+Pokud nechcete investovat do jednoho dalšího virtuálního počítače, můžete také použít agenta Azure plot. Nevýhodou je, že převzetí služeb při selhání můžete provést mezi 10 až 15 minut v případě zdroje stop selže nebo uzlech clusteru nemůže komunikovat které mezi sebou už.
 
-![Pacemaker on SLES – přehled](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
+![Pacemaker na SLES – přehled](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Když naplánujete a nasazujete clusterované uzly Pacemaker pro Linux a SBD zařízení, je nezbytné zajistit celkovou spolehlivost kompletní konfigurace clusteru, že směrování mezi jednotlivými virtuálními počítači a virtuálními počítači hostujícími zařízení SBD neprojde. všechna ostatní zařízení, jako je [Síťová virtuální zařízení](https://azure.microsoft.com/solutions/network-appliances/). V opačném případě problémy a události údržby s síťové virtuální zařízení můžou mít negativní dopad na stabilitu a spolehlivost celkové konfigurace clusteru. Abyste se vyhnuli takovým překážkám, nedefinujte pravidla směrování pro síťová virtuální zařízení nebo [uživatelsky definovaná pravidla směrování](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) , která směrují provoz mezi clusterovanými uzly a zařízeními SBD prostřednictvím síťová virtuální zařízení a podobných zařízení při plánování a nasazení clusterových uzlů pro Linux Pacemaker a Zařízení SBD. 
+> Když naplánujete a nasazujete clusterované uzly Pacemaker pro Linux a SBD zařízení, je nezbytné zajistit celkovou spolehlivost kompletní konfigurace clusteru, že směrování mezi jednotlivými virtuálními počítači a virtuálními počítači hostujícími zařízení SBD neprojde. všechna ostatní zařízení, jako je [Síťová virtuální zařízení](https://azure.microsoft.com/solutions/network-appliances/). V opačném případě problémy a události údržby pomocí síťového virtuálního zařízení může mít negativní dopad na stabilitu a spolehlivost na celkové konfiguraci clusteru. Abyste se vyhnuli takovým překážkám, nedefinujte pravidla směrování pro síťová virtuální zařízení nebo [uživatelsky definovaná pravidla směrování](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) , která směrují provoz mezi clusterovanými uzly a zařízeními SBD prostřednictvím síťová virtuální zařízení a podobných zařízení při plánování a nasazení clusterových uzlů pro Linux Pacemaker a Zařízení SBD. 
 >
 
-## <a name="sbd-fencing"></a>SBDé oplocení
+## <a name="sbd-fencing"></a>Monitorování geografických zón SBD
 
-Použijte následující postup, pokud chcete zařízení SBD použít ke oplocení.
+Pokud chcete použít SBD zařízení pro monitorování geografických zón, postupujte podle těchto kroků.
 
-### <a name="set-up-iscsi-target-servers"></a>Nastavení cílových serverů iSCSI
+### <a name="set-up-iscsi-target-servers"></a>Nastavení cílové servery iSCSI
 
-Nejprve je třeba vytvořit virtuální počítače cíle iSCSI. cílové servery iSCSI je možné sdílet s několika Pacemaker clustery.
+Nejdřív je potřeba vytvořit iSCSI target virtuálních počítačů. cílový server iSCSI je sdílet s více clustery Pacemaker.
 
-1. Nasaďte nové virtuální počítače s SLES 12 SP1 nebo novější a připojte se k nim přes SSH. Počítače nemusí být velké. Velikost virtuálního počítače, jako je Standard_E2s_v3 nebo Standard_D2s_v3, je dostačující. Ujistěte se, že používáte disk s operačním systémem Premium Storage.
+1. Nasaďte nový SLES 12 SP1 nebo virtuálním počítačům s vyšší a k nim připojit přes ssh. Počítače nemusí být velké. Velikost virtuálního počítače jako Standard_E2s_v3 nebo Standard_D2s_v3 je dostačující. Ujistěte se, že chcete používat Premium storage disk s operačním systémem.
 
 Na všech **virtuálních počítačích cíle iSCSI**spusťte následující příkazy.
 
-1. Aktualizovat SLES
+1. Aktualizace SLES
 
    <pre><code>sudo zypper update
    </code></pre>
 
-1. Odebrat balíčky
+1. Odebrání balíčků
 
-   Chcete-li se vyhnout známému problému s targetcli a SLES 12 SP3, odinstalujte následující balíčky. Můžete ignorovat chyby balíčků, které se nenašly.
+   Aby se zabránilo známým problémem se systémem targetcli a SLES 12 SP3, odinstalujte následující balíčky. Můžete ignorovat chyby týkající se balíčky, které se nenašel
 
    <pre><code>sudo zypper remove lio-utils python-rtslib python-configshell targetcli
    </code></pre>
 
-1. Nainstalovat cílové balíčky iSCSI
+1. Instalace balíčků cíl iSCSI
 
    <pre><code>sudo zypper install targetcli-fb dbus-1-python
    </code></pre>
 
-1. Povolení služby iSCSI Target
+1. Zapněte službu iSCSI target
 
    <pre><code>sudo systemctl enable targetcli
    sudo systemctl start targetcli
@@ -81,9 +81,9 @@ Na všech **virtuálních počítačích cíle iSCSI**spusťte následující p�
 
 ### <a name="create-iscsi-device-on-iscsi-target-server"></a>Vytvoření zařízení iSCSI na cílovém serveru iSCSI
 
-Spusťte následující příkazy na všech **virtuálních počítačích cíle iSCSI** a vytvořte tak disky iSCSI pro clustery, které používají vaše systémy SAP. V následujícím příkladu se vytvoří SBD zařízení pro několik clusterů. Ukáže vám, jak byste pro několik clusterů použili jeden cílový server iSCSI. Zařízení SBD se umístí na disk s operačním systémem. Ujistěte se, že máte dostatek místa.
+Spusťte následující příkazy na všech **virtuálních počítačích cíle iSCSI** a vytvořte tak disky iSCSI pro clustery, které používají vaše systémy SAP. V následujícím příkladu se vytvoří SBD zařízení pro několik clusterů. To se dozvíte, jak byste použili jeden cílový server iSCSI pro několik clusterů. Zařízení SBD umísťují na disk s operačním systémem. Ujistěte se, že máte dostatek místa.
 
-**`nfs`** slouží k identifikaci clusteru NFS, používá se **ascsnw1** k identifikaci clusteru ASCS **NW1**, **dbnw1** se používá k identifikaci databázového clusteru **NW1**, **NFS-0** a **NFS-1** jsou názvy hostitelů Uzly clusteru NFS, **NW1-xscs-0** a **NW1-xscs-1** jsou názvy hostitelů uzlů clusterů **NW1 ASCS a** **NW1-DB-0** a **NW1-DB-1** jsou názvy hostitelů uzlů databázového clusteru. Nahraďte je názvy hostitelů uzlů clusteru a identifikátorem SID vašeho systému SAP.
+**`nfs`** slouží k identifikaci clusteru NFS, používá se **ascsnw1** k identifikaci clusteru ASCS **NW1**, **dbnw1** se používá k identifikaci databázového clusteru **NW1**, **NFS-0** a **NFS-1** jsou názvy hostitelů Uzly clusteru NFS, **NW1-xscs-0** a **NW1-xscs-1** jsou názvy hostitelů uzlů clusterů **NW1 ASCS a** **NW1-DB-0** a **NW1-DB-1** jsou názvy hostitelů uzlů databázového clusteru. Je nahraďte názvy hostitelů uzlů clusteru a identifikátor SID systému SAP.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -113,7 +113,7 @@ sudo targetcli iscsi/iqn.2006-04.db<b>nw1</b>.local:db<b>nw1</b>/tpg1/acls/ crea
 sudo targetcli saveconfig
 </code></pre>
 
-Můžete zjistit, jestli se všechno správně nastavilo s
+Můžete zkontrolovat, pokud všechno je správně nastavené pomocí
 
 <pre><code>sudo targetcli ls
 
@@ -171,15 +171,15 @@ o- / ...........................................................................
   o- xen-pvscsi ........................................................................................ [Targets: 0]
 </code></pre>
 
-### <a name="set-up-sbd-device"></a>Nastavení zařízení SBD
+### <a name="set-up-sbd-device"></a>Nastavit SBD zařízení
 
-Připojte se k zařízení iSCSI, které bylo vytvořeno v posledním kroku z clusteru.
-Na uzlech nového clusteru, který chcete vytvořit, spusťte následující příkazy.
+Připojte se k zařízení iSCSI, který byl vytvořen v posledním kroku z clusteru.
+Spuštěním následujících příkazů na uzlech nového clusteru, který chcete vytvořit.
 Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
 1. **[A]** připojit k zařízením iSCSI
 
-   Nejdřív povolte služby iSCSI a SBD.
+   Nejprve povolte iSCSI a SBD služby.
 
    <pre><code>sudo systemctl enable iscsid
    sudo systemctl enable iscsi
@@ -191,7 +191,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    <pre><code>sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
 
-   Změňte obsah souboru tak, aby odpovídal seznamům ACL, které jste použili při vytváření zařízení iSCSI na cílovém serveru iSCSI, například pro server NFS.
+   Změníte obsah souboru tak, aby odpovídaly seznamy ACL, které jste použili při vytváření zařízení iSCSI na cílovém serveru iSCSI, třeba pro server systému souborů NFS.
 
    <pre><code>InitiatorName=<b>iqn.2006-04.nfs-0.local:nfs-0</b>
    </code></pre>
@@ -201,20 +201,20 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    <pre><code>sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
 
-   Změňte obsah souboru tak, aby odpovídal seznamům ACL, které jste použili při vytváření zařízení iSCSI na cílovém serveru iSCSI.
+   Změnit obsah souboru tak, aby odpovídaly seznamy ACL, které jste použili při vytváření zařízení iSCSI na cílovém serveru iSCSI
 
    <pre><code>InitiatorName=<b>iqn.2006-04.nfs-1.local:nfs-1</b>
    </code></pre>
 
 1. **[A]** restartování služby iSCSI
 
-   Nyní restartujte službu iSCSI, aby se změna projevila.
+   Nyní restartujte službu iSCSI na použití změny
 
    <pre><code>sudo systemctl restart iscsid
    sudo systemctl restart iscsi
    </code></pre>
 
-   Připojte zařízení iSCSI. V následujícím příkladu je 10.0.0.17 IP adresa cílového serveru iSCSI a 3260 je výchozí port. <b>IQN. 2006-04. NFS. local: NFS</b> je jeden z cílových názvů, který je uveden při spuštění prvního příkazu níže (iscsiadm-m Discovery).
+   Připojení zařízení iSCSI. V následujícím příkladu 10.0.0.17 je IP adresa cílového serveru iSCSI a 3260 je výchozím portem. <b>IQN. 2006-04. NFS. local: NFS</b> je jeden z cílových názvů, který je uveden při spuštění prvního příkazu níže (iscsiadm-m Discovery).
 
    <pre><code>sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.17:3260</b>
@@ -231,7 +231,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> --op=update --name=node.startup --value=automatic
    </code></pre>
 
-   Ujistěte se, že jsou k dispozici zařízení iSCSI, a poznamenejte si název zařízení (v následujícím příkladu/dev/SDE).
+   Ujistěte se, že zařízení iSCSI, která jsou k dispozici a poznamenejte si název zařízení (v následujícím příkladu/dev/sde)
 
    <pre><code>lsscsi
    
@@ -244,7 +244,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    # <b>[8:0:0:0]    disk    LIO-ORG  sbdnfs           4.0   /dev/sdf</b>
    </code></pre>
 
-   Teď načtěte ID zařízení iSCSI.
+   Teď načtěte identifikátory zařízení iSCSI.
 
    <pre><code>ls -l /dev/disk/by-id/scsi-* | grep <b>sdd</b>
    
@@ -265,7 +265,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    # lrwxrwxrwx 1 root root  9 Aug  9 13:32 /dev/disk/by-id/scsi-SLIO-ORG_sbdnfs_f88f30e7-c968-4678-bc87-fe7bfcbdb625 -> ../../sdf
    </code></pre>
 
-   Seznam příkazů pro každé zařízení SBD se třemi identifikátory zařízení. Doporučujeme použít ID, které začíná na rozhraní SCSI-3, v předchozím příkladu je to
+   Příkaz seznamu tři identifikátory zařízení pro každé zařízení SBD. Doporučujeme, abyste pomocí ID, který začíná scsi-3, v příkladu výše to je
 
    * **/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03**
    * **/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df**
@@ -273,7 +273,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 1. **[1]** vytvoření zařízení SBD
 
-   Pomocí ID zařízení zařízení iSCSI vytvořte nová zařízení SBD na prvním uzlu clusteru.
+   ID zařízení zařízení iSCSI použijte k vytvoření nových zařízení SBD na prvním uzlu clusteru.
 
    <pre><code>sudo sbd -d <b>/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03</b> -1 60 -4 120 create
 
@@ -284,12 +284,12 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 1. **[A]** přizpůsobení konfigurace SBD
 
-   Otevřít konfigurační soubor SBD
+   Otevřete konfigurační soubor SBD
 
    <pre><code>sudo vi /etc/sysconfig/sbd
    </code></pre>
 
-   Změňte vlastnost zařízení SBD, povolte integraci Pacemaker a změňte režim spuštění SBD.
+   Změňte vlastnost SBD zařízení, povolit integraci pacemaker a změnit režim spouštění SBD.
 
    <pre><code>[...]
    <b>SBD_DEVICE="/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf"</b>
@@ -306,7 +306,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
 
-   Teď načtěte modul.
+   Nyní načtení modulu
 
    <pre><code>sudo modprobe -v softdog
    </code></pre>
@@ -327,7 +327,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 1. **[A]** konfigurace operačního systému
 
-   V některých případech Pacemaker vytvoří mnoho procesů a tím vyčerpá povolený počet procesů. V takovém případě může dojít k selhání prezenčního signálu mezi uzly clusteru a výsledkem převzetí služeb při selhání vašich prostředků. Doporučujeme zvýšit maximální povolený počet procesů nastavením následujícího parametru.
+   V některých případech Pacemaker vytvoří velký počet procesů a tím vyčerpá povolený počet procesů. V takovém případě prezenčního signálu mezi uzly clusteru může selhat a vést k převzetí služeb při selhání z vašich prostředků. Doporučujeme zvýšit maximální povolené procesy tak, že nastavíte následující parametr.
 
    <pre><code># Edit the configuration file
    sudo vi /etc/systemd/system.conf
@@ -343,7 +343,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo systemctl --no-pager show | grep DefaultTasksMax
    </code></pre>
 
-   Snižte velikost nečisté mezipaměti. Další informace najdete v tématu [nízký výkon zápisu na serverech SLES 11/12 s velkou pamětí RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Snížení velikosti mezipaměti změny. Další informace najdete v tématu [nízký výkon zápisu na serverech SLES 11/12 s velkou pamětí RAM](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>sudo vi /etc/sysctl.conf
 
@@ -427,13 +427,13 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 1. **[A]** nastavení rozlišení názvu hostitele
 
-   Můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
-   V následujících příkazech nahraďte IP adresu a název hostitele. Výhodou použití/etc/hosts je to, že váš cluster bude nezávislý na službě DNS, což může být jen jeden bod selhání.
+   Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
+   Nahraďte IP adresu a název hostitele v následujících příkazech. Výhodou použití/Etc/Hosts je, že cluster bude nezávisle na DNS, který může být kritickým prvkem způsobujícím selhání příliš.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí.   
+   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele, aby odpovídaly vašemu prostředí   
 
    <pre><code># IP address of the first cluster node
    <b>10.0.0.6 prod-cl1-0</b>
@@ -474,7 +474,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Pokud tyto hodnoty nejsou nebo jsou odlišné, přidejte do souboru následující tučný obsah. Ujistěte se, že jste token změnili na 30000, aby se zajistila údržba paměti. Další informace najdete v [tomto článku pro Linux][virtual-machines-linux-maintenance] nebo [Windows][virtual-machines-windows-maintenance].
+   Pokud hodnoty nejsou zde nebo jiné, přidejte do souboru následující tučného písma obsahu. Ujistěte se, že chcete-li změnit token 30000 umožňující Údržba pro zachování paměti. Další informace najdete v [tomto článku pro Linux][virtual-machines-linux-maintenance] nebo [Windows][virtual-machines-windows-maintenance].
 
    <pre><code>[...]
      <b>token:          30000
@@ -508,33 +508,33 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    }
    </code></pre>
 
-   Pak restartujte službu Corosync.
+   Potom restartujte službu corosync
 
    <pre><code>sudo service corosync restart
    </code></pre>
 
-## <a name="create-azure-fence-agent-stonith-device"></a>Vytvoření zařízení STONITH s agentem Azure plot
+## <a name="create-azure-fence-agent-stonith-device"></a>Vytvořit Azure ohrazení agenta využitím techniky STONITH zařízení
 
-Zařízení STONITH používá instanční objekt k autorizaci proti Microsoft Azure. Pomocí těchto kroků můžete vytvořit instanční objekt.
+Využitím techniky STONITH zařízení využívá instanční objekt služby k autorizaci s Microsoft Azure. Postupujte podle těchto kroků můžete vytvořit instanční objekt služby.
 
 1. Přejděte na <https://portal.azure.com>.
-1. Otevřete okno Azure Active Directory  
-   Přejděte na vlastnosti a zapište ID adresáře. Toto je **ID tenanta**.
-1. Klikněte na Registrace aplikací
+1. Otevře se okno Azure Active Directory  
+   Přejděte do vlastností a poznamenejte si ID adresáře. Toto je **ID tenanta**.
+1. Klikněte na možnost registrace aplikací
 1. Klikněte na nová registrace.
 1. Zadejte název, vyberte účty pouze v tomto adresáři organizace. 
 2. Vyberte typ aplikace "Web", zadejte adresu URL pro přihlášení (například http:\//localhost) a klikněte na Přidat.  
-   Přihlašovací adresa URL se nepoužívá a může to být libovolná platná adresa URL.
+   Adresa URL přihlašování se nepoužívá a může být jakákoliv platná adresa URL
 1. Vyberte certifikáty a tajné klíče a pak klikněte na nový tajný klíč klienta.
 1. Zadejte popis nového klíče, vyberte možnost "nikdy vyprší platnost" a klikněte na tlačítko Přidat.
-1. Zapište hodnotu. Používá se jako **heslo** instančního objektu.
+1. Poznamenejte si hodnotu. Používá se jako **heslo** instančního objektu.
 1. Vyberte přehled. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno (**přihlašovací ID** v následujících krocích) instančního objektu.
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** vytvoření vlastní role pro agenta plotu
 
-Objekt služby nemá ve výchozím nastavení oprávnění pro přístup k prostředkům Azure. Musíte přidělit instančnímu objektu oprávnění ke spouštění a zastavování (navrácení) všech virtuálních počítačů v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete ji vytvořit pomocí [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) .
+Objekt služby nemá ve výchozím nastavení oprávnění pro přístup k prostředkům Azure. Je potřeba udělit oprávnění instančního objektu pro spuštění a zastavení (uvolníte) všechny virtuální počítače v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete ji vytvořit pomocí [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) .
 
-Pro vstupní soubor použijte následující obsah. Je potřeba upravit obsah pro vaše předplatná, která jsou, nahraďte c276fc76-9cd4-44c9-99a7-4fd71546436e a e91d47c4-76f3-4271-a796-21b4ecfe3624 ID vašeho předplatného. Pokud máte jenom jedno předplatné, odeberte druhou položku v AssignableScopes.
+Použijte následující obsah vstupního souboru. Je potřeba upravit obsah, který je pro vaše předplatná, c276fc76-9cd4-44c9-99a7-4fd71546436e a e91d47c4-76f3-4271-a796-21b4ecfe3624 nahraďte ID vašeho předplatného. Pokud máte pouze jedno předplatné, odeberte v AssignableScopes druhou položku.
 
 ```json
 {
@@ -558,22 +558,22 @@ Pro vstupní soubor použijte následující obsah. Je potřeba upravit obsah pr
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** přiřazení vlastní role k instančnímu objektu
 
-Přiřaďte vlastní roli "role ochrany systému Linux" vytvořenou v poslední kapitole objektu služby. Tuto roli vlastníka už nepoužívejte!
+Přiřazení vlastní role "Linux ohrazení agenta roli", který byl vytvořen v kapitole poslední k Instančnímu objektu. Tuto roli vlastníka už nepoužívejte!
 
 1. Přejít na [https://portal.azure.com](https://portal.azure.com)
-1. Otevřete okno všechny prostředky.
-1. Vyberte virtuální počítač prvního uzlu clusteru.
-1. Klikněte na řízení přístupu (IAM).
-1. Klikněte na přidat přiřazení role.
-1. Vyberte roli "role agenta pro ochrannou část Linux".
-1. Zadejte název aplikace, kterou jste vytvořili výše.
+1. Otevřete v okně všechny prostředky
+1. Vyberte virtuální počítač na prvním uzlu clusteru
+1. Klikněte na řízení přístupu (IAM)
+1. Klikněte na tlačítko Přidat přiřazení role
+1. Vyberte roli "Linux ohrazení agenta roli"
+1. Zadejte název aplikace, kterou jste vytvořili výše
 1. Kliknutí na Uložit
 
-Opakujte výše uvedené kroky pro druhý uzel clusteru.
+Opakujte předchozí kroky pro druhý uzel clusteru.
 
 ### <a name="1-create-the-stonith-devices"></a>**[1]** vytvoření zařízení STONITH
 
-Po úpravě oprávnění pro virtuální počítače můžete nakonfigurovat zařízení STONITH v clusteru.
+Až budete upravovat oprávnění pro virtuální počítače, můžete nakonfigurovat zařízení využitím techniky STONITH v clusteru.
 
 <pre><code># replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
@@ -583,7 +583,7 @@ sudo crm configure property stonith-timeout=900
 sudo crm configure property stonith-enabled=true
 </code></pre>
 
-## <a name="default-pacemaker-configuration-for-sbd"></a>Výchozí konfigurace Pacemaker pro SBD
+## <a name="default-pacemaker-configuration-for-sbd"></a>Výchozí konfigurace Pacemaker SBD
 
 1. **[1]** povolit použití zařízení STONITH a nastavit zpoždění plotu
 
@@ -624,9 +624,9 @@ sudo crm configure property maintenance-mode=false
 
    > [!NOTE]
    > Po nakonfigurování prostředků Pacemaker pro agenta Azure-Events při umístění clusteru do režimu údržby nebo z něj dostanete varovné zprávy, jako například:  
-     Upozornění: CIB-Bootstrap-Options: neznámý atribut hostName_ <strong>hostname</strong>  
+     Upozornění: CIB-Bootstrap-Options: neznámý atribut hostName_ <strong>název hostitele</strong>  
      Upozornění: CIB-Bootstrap-Options: neznámý atribut ' Azure-events_globalPullState '  
-     Upozornění: CIB-Bootstrap-Options: neznámý atribut hostName_ <strong>hostname</strong>  
+     Upozornění: CIB-Bootstrap-Options: neznámý atribut hostName_ <strong>název hostitele</strong>  
    > Tyto zprávy upozornění je možné ignorovat.
 
 ## <a name="next-steps"></a>Další kroky

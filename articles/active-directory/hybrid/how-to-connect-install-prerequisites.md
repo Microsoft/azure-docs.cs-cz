@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Prerequisites and hardware | Microsoft Docs'
-description: This topic describes the pre-requisites and the hardware requirements for Azure AD Connect
+title: 'Azure AD Connect: požadavky a hardware | Microsoft Docs'
+description: Toto téma popisuje předpoklady a požadavky na hardware pro Azure AD Connect
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -23,84 +23,84 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74462007"
 ---
-# <a name="prerequisites-for-azure-ad-connect"></a>Prerequisites for Azure AD Connect
-This topic describes the pre-requisites and the hardware requirements for Azure AD Connect.
+# <a name="prerequisites-for-azure-ad-connect"></a>Předpoklady pro Azure AD Connect
+Toto téma popisuje předpoklady a požadavky na hardware pro Azure AD Connect.
 
-## <a name="before-you-install-azure-ad-connect"></a>Before you install Azure AD Connect
-Before you install Azure AD Connect, there are a few things that you need.
+## <a name="before-you-install-azure-ad-connect"></a>Než nainstalujete Azure AD Connect
+Než nainstalujete Azure AD Connect, budete potřebovat několik věcí.
 
 ### <a name="azure-ad"></a>Azure AD
-* Tenanta Azure AD. You get one with an [Azure free trial](https://azure.microsoft.com/pricing/free-trial/). You can use one of the following portals to manage Azure AD Connect:
-  * The [Azure portal](https://portal.azure.com).
-  * The [Office portal](https://portal.office.com).  
-* [Add and verify the domain](../active-directory-domains-add-azure-portal.md) you plan to use in Azure AD. For example, if you plan to use contoso.com for your users then make sure this domain has been verified and you are not only using the contoso.onmicrosoft.com default domain.
-* An Azure AD tenant allows by default 50k objects. When you verify your domain, the limit is increased to 300k objects. If you need even more objects in Azure AD, then you need to open a support case to have the limit increased even further. If you need more than 500k objects, then you need a license, such as Office 365, Azure AD Basic, Azure AD Premium, or Enterprise Mobility and Security.
+* Tenanta Azure AD. Získáte ji s [bezplatnou zkušební verzí Azure](https://azure.microsoft.com/pricing/free-trial/). Ke správě Azure AD Connect můžete použít jeden z následujících portálů:
+  * [Azure Portal](https://portal.azure.com).
+  * [Portál Office](https://portal.office.com).  
+* [Přidejte a ověřte doménu](../active-directory-domains-add-azure-portal.md) , kterou plánujete použít ve službě Azure AD. Pokud například plánujete používat contoso.com pro uživatele, ujistěte se, že je tato doména ověřená a že nepoužíváte pouze výchozí doménu contoso.onmicrosoft.com.
+* Tenant Azure AD umožňuje standardně 50 tis objekty. Při ověřování domény se tento limit zvyšuje na 300k objekty. Pokud potřebujete ještě více objektů v Azure AD, musíte otevřít případ podpory, aby se tento limit ještě dál zvýšil. Pokud potřebujete více než 500 000 objekty, budete potřebovat licenci, jako je například Office 365, Azure AD Basic, Azure AD Premium nebo Enterprise mobility and Security.
 
-### <a name="prepare-your-on-premises-data"></a>Prepare your on-premises data
-* Use [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) to identify errors such as duplicates and formatting problems in your directory before you synchronize to Azure AD and Office 365.
-* Review [optional sync features you can enable in Azure AD](how-to-connect-syncservice-features.md) and evaluate which features you should enable.
+### <a name="prepare-your-on-premises-data"></a>Příprava místních dat
+* Použijte [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) k identifikaci chyb, jako jsou duplicity a problémy s formátováním v adresáři, ještě než se synchronizujete do Azure AD a Office 365.
+* Podívejte se [na volitelné funkce synchronizace, které můžete ve službě Azure AD povolit](how-to-connect-syncservice-features.md) , a vyhodnoťte, které funkce byste měli povolit.
 
 ### <a name="on-premises-active-directory"></a>Místní služby Active Directory
-* The AD schema version and forest functional level must be Windows Server 2003 or later. The domain controllers can run any version as long as the schema and forest level requirements are met.
-* If you plan to use the feature **password writeback**, then the Domain Controllers must be on Windows Server 2008 R2 or later.
-* The domain controller used by Azure AD must be writable. It is **not supported** to use a RODC (read-only domain controller) and Azure AD Connect does not follow any write redirects.
-* It is **not supported** to use on-premises forests/domains using "dotted" (name contains a period ".") NetBios names.
-* It is recommended to [enable the Active Directory recycle bin](how-to-connect-sync-recycle-bin.md).
+* Úroveň funkčnosti schématu AD a doménové struktury musí být Windows Server 2003 nebo novější. Řadiče domény můžou spouštět libovolnou verzi, pokud jsou splněné požadavky na úroveň schématu a doménové struktury.
+* Pokud máte v úmyslu použít **zpětný zápis hesla**k funkci, musí být řadiče domény v systému Windows Server 2008 R2 nebo novějším.
+* Řadič domény, který používá Azure AD, musí být zapisovatelný. Není **podporováno** použití řadiče domény jen pro čtení (řadič domény jen pro čtení) a Azure AD Connect nedodržuje žádné přesměrování zápisu.
+* Používání místních doménových struktur a domén pomocí teček (název obsahuje tečku) se **nepodporuje** . Názvy rozhraní NetBios.
+* Doporučuje se [Povolit Koš služby Active Directory](how-to-connect-sync-recycle-bin.md).
 
-### <a name="azure-ad-connect-server"></a>Azure AD Connect server
+### <a name="azure-ad-connect-server"></a>Server Azure AD Connect
 >[!IMPORTANT]
->The Azure AD Connect server contains critical identity data and should be treated as a Tier 0 component as documented in [the Active Directory administrative tier model](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)
+>Azure AD Connect Server obsahuje kritická data identity a měla by se považovat za součást vrstvy 0, jak je popsáno v [modelu vrstvy správy služby Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) .
 
-* Azure AD Connect cannot be installed on Small Business Server or Windows Server Essentials before 2019 (Windows Server Essentials 2019 is supported). The server must be using Windows Server standard or better.
-* Installing Azure AD Connect on a Domain Controller is not recommended due to security practices and more restrictive settings that can prevent Azure AD Connect from installing correctly.
-* The Azure AD Connect server must have a full GUI installed. It is **not supported** to install on server core.
+* Azure AD Connect nejde nainstalovat na Small Business Server nebo Windows Server Essentials před 2019 (podporuje se Windows Server Essentials 2019). Server musí používat Windows Server Standard nebo vyšší.
+* Instalace Azure AD Connect v řadiči domény se nedoporučuje z důvodu postupů zabezpečení a více omezujících nastavení, která můžou zabránit tomu, aby se Azure AD Connect správně nainstalovala.
+* Azure AD Connect Server musí mít nainstalované úplné grafické rozhraní (GUI). Instalace na jádro serveru není **podporovaná** .
 >[!IMPORTANT]
->Installing Azure AD Connect on small business server, server essentials, or server core is not supported.
+>Instalace Azure AD Connect na Small Business Server, Server Essentials nebo jádro serveru není podporovaná.
 
-* Azure AD Connect must be installed on Windows Server 2008 R2 or later. This server must be domain joined and may be a domain controller or a member server.
-* If you install Azure AD Connect on Windows Server 2008 R2, then make sure to apply the latest hotfixes from Windows Update. The installation is not able to start with an unpatched server.
-* If you plan to use the feature **password synchronization**, then the Azure AD Connect server must be on Windows Server 2008 R2 SP1 or later.
-* If you plan to use a **group managed service account**, then the Azure AD Connect server must be on Windows Server 2012 or later.
-* The Azure AD Connect server must have [.NET Framework 4.5.1](#component-prerequisites) or later and [Microsoft PowerShell 3.0](#component-prerequisites) or later installed.
-* The Azure AD Connect server must not have PowerShell Transcription Group Policy enabled if you are using Azure AD Connect wizard to manage ADFS configuration. You can enable PowerShell transcription if you are using Azure AD Connect wizard to manage sync configuration.
-* If Active Directory Federation Services is being deployed, the servers where AD FS or Web Application Proxy are installed must be Windows Server 2012 R2 or later. [Windows remote management](#windows-remote-management) must be enabled on these servers for remote installation.
-* If Active Directory Federation Services is being deployed, you need [SSL Certificates](#ssl-certificate-requirements).
-* If Active Directory Federation Services is being deployed, then you need to configure [name resolution](#name-resolution-for-federation-servers).
-* If your global administrators have MFA enabled, then the URL **https://secure.aadcdn.microsoftonline-p.com** must be in the trusted sites list. You are prompted to add this site to the trusted sites list when you are prompted for an MFA challenge and it has not added before. You can use Internet Explorer to add it to your trusted sites.
-* Microsoft recommends hardening your Azure AD Connect server to decrease the security attack surface for this critical component of your IT environment.  Following the recommendations below will decrease the security risks to your organization.
+* Azure AD Connect musí být nainstalovaný na Windows serveru 2008 R2 nebo novějším. Tento server musí být připojený k doméně a může se jednat o řadič domény nebo členský server.
+* Pokud nainstalujete Azure AD Connect do systému Windows Server 2008 R2, nezapomeňte použít nejnovější opravy hotfix z web Windows Update. Instalaci není možné spustit s neopraveným serverem.
+* Pokud plánujete použití funkce **Synchronizace hesel**, musí být server Azure AD Connect v systému Windows Server 2008 R2 SP1 nebo novějším.
+* Pokud máte v úmyslu použít **skupinový účet spravované služby**, musí být server Azure AD Connect v systému Windows Server 2012 nebo novějším.
+* Azure AD Connect Server musí mít nainstalovanou [.NET Framework 4.5.1](#component-prerequisites) nebo novějším a [Microsoft PowerShell 3,0](#component-prerequisites) nebo novější.
+* Pokud ke správě konfigurace služby ADFS používáte Průvodce Azure AD Connect, Azure AD Connect Server nesmí mít povolený Zásady skupiny prostředí PowerShell přepis. Pokud ke správě konfigurace synchronizace používáte Azure AD Connect průvodce, můžete povolit PowerShellový přepis.
+* Pokud je nasazen Active Directory Federation Services (AD FS), musí být servery, na kterých AD FS nebo proxy webových aplikací nainstalovány, systémy Windows Server 2012 R2 nebo novější. Pro vzdálenou instalaci musí být na těchto serverech povolená [Vzdálená správa systému Windows](#windows-remote-management) .
+* Pokud nasazujete Active Directory Federation Services (AD FS), budete potřebovat [certifikáty SSL](#ssl-certificate-requirements).
+* Pokud probíhá nasazení Active Directory Federation Services (AD FS), je nutné nakonfigurovat [Překlad adres IP](#name-resolution-for-federation-servers).
+* Pokud mají globální správci povolené MFA, musí být adresa URL **https://secure.aadcdn.microsoftonline-p.com** v seznamu důvěryhodných serverů. Po zobrazení výzvy k zadání dotazu MFA se zobrazí výzva k přidání tohoto webu do seznamu důvěryhodných webů. Aplikaci Internet Explorer můžete použít k jejímu přidání do důvěryhodných webů.
+* Společnost Microsoft doporučuje posílit Azure AD Connect Server, aby se snížila plocha pro útok na zabezpečení pro tuto kritickou součást vašeho IT prostředí.  Podle následujících doporučení se sníží rizika zabezpečení vaší organizace.
 
-* Deploy Azure AD Connect on a domain joined server and restrict administrative access to domain administrators or other tightly controlled security groups.
+* Nasaďte Azure AD Connect na serveru připojeném k doméně a omezte přístup pro správu na správce domény nebo na jiné pevně kontrolované skupiny zabezpečení.
 
 Další informace naleznete v tématu: 
 
-* [Securing administrators groups](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+* [Zabezpečení skupin správců](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [Securing built-in administrator accounts](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [Zabezpečení předdefinovaných účtů správců](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [Security improvement and sustainment by reducing attack surfaces](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [Vylepšení a udržování zabezpečení snížením počtu napadených ploch](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [Reducing the Active Directory attack surface](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [Snížení prostoru pro útoky na službu Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
-### <a name="sql-server-used-by-azure-ad-connect"></a>SQL Server used by Azure AD Connect
-* Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. By default a SQL Server 2012 Express LocalDB (a light version of SQL Server Express) is installed. SQL Server Express has a 10GB size limit that enables you to manage approximately 100,000 objects. If you need to manage a higher volume of directory objects, you need to point the installation wizard to a different installation of SQL Server. The type of SQL Server installation can impact the [performance of Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
-* If you use a different installation of SQL Server, then these requirements apply:
-  * Azure AD Connect supports all versions of Microsoft SQL Server from 2008 R2 (with latest Service Pack) to SQL Server 2019. Microsoft Azure SQL Database is **not supported** as a database.
-  * You must use a case-insensitive SQL collation. These collations are identified with a \_CI_ in their name. It is **not supported** to use a case-sensitive collation, identified by \_CS_ in their name.
-  * You can only have one sync engine per SQL instance. It is **not supported** to share a SQL instance with FIM/MIM Sync, DirSync, or Azure AD Sync.
+### <a name="sql-server-used-by-azure-ad-connect"></a>SQL Server používané Azure AD Connect
+* Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Ve výchozím nastavení je nainstalovaná SQL Server 2012 Express LocalDB (světlá verze SQL Server Express). SQL Server Express má limit velikosti 10GB, který umožňuje spravovat přibližně 100 000 objektů. Pokud potřebujete spravovat větší objem objektů adresáře, musíte Průvodce instalací nasměrovat na jinou instalaci SQL Server. Typ SQL Server instalace může mít vliv na [výkon Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
+* Pokud používáte jinou instalaci SQL Server, platí tyto požadavky:
+  * Azure AD Connect podporuje všechny verze Microsoft SQL Server z 2008 R2 (s nejnovější aktualizací Service Pack) do SQL Server 2019. Microsoft Azure SQL Database není **podporován** jako databáze.
+  * Je nutné použít kolaci SQL nerozlišující malá a velká písmena. Tyto kolace se identifikují pomocí \_CI_ v názvu. Použití kolace citlivého **na velká** a malá písmena, které identifikuje \_CS_ v názvu.
+  * Můžete mít jenom jeden synchronizační modul na jednu instanci SQL. Pro sdílení instance SQL s nástrojem FIM/MIM Sync, DirSync nebo Azure AD Sync **není podporována** .
 
 ### <a name="accounts"></a>Účty
-* An Azure AD Global Administrator account for the Azure AD tenant you wish to integrate with. This account must be a **school or organization account** and cannot be a **Microsoft account**.
-* If you use express settings or upgrade from DirSync, then you must have an Enterprise Administrator account for your on-premises Active Directory.
-* [Accounts in Active Directory](reference-connect-accounts-permissions.md) if you use the custom settings installation path or an Enterprise Administrator account for your on-premises Active Directory.
+* Účet globálního správce Azure AD pro tenanta Azure AD, se kterým se chcete integrovat. Tento účet musí být **školním nebo organizačním účtem** a nemůže být **účet Microsoft**.
+* Pokud používáte expresní nastavení nebo upgrade z DirSync, musíte mít účet správce rozlehlé sítě pro vaši místní službu Active Directory.
+* [Účty ve službě Active Directory](reference-connect-accounts-permissions.md) , pokud použijete instalační cestu pro vlastní nastavení nebo účet správce rozlehlé sítě pro místní službu Active Directory.
 
 ### <a name="connectivity"></a>Připojení
-* The Azure AD Connect server needs DNS resolution for both intranet and internet. The DNS server must be able to resolve names both to your on-premises Active Directory and the Azure AD endpoints.
-* If you have firewalls on your Intranet and you need to open ports between the Azure AD Connect servers and your domain controllers, then see [Azure AD Connect Ports](reference-connect-ports.md) for more information.
-* If your proxy or firewall limit which URLs can be accessed, then the URLs documented in [Office 365 URLs and IP address ranges](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) must be opened.
-  * If you are using the Microsoft Cloud in Germany or the Microsoft Azure Government cloud, then see [Azure AD Connect sync service instances considerations](reference-connect-instances.md) for URLs.
-* Azure AD Connect (version 1.1.614.0 and after) by default uses TLS 1.2 for encrypting communication between the sync engine and Azure AD. If TLS 1.2 isn't available on the underlying operating system, Azure AD Connect incrementally falls back to older protocols (TLS 1.1 and TLS 1.0).
-* Prior to version 1.1.614.0, Azure AD Connect by default uses TLS 1.0 for encrypting communication between the sync engine and Azure AD. To change to TLS 1.2, follow the steps in [Enable TLS 1.2 for Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
-* If you are using an outbound proxy for connecting to the Internet, the following setting in the **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** file must be added for the installation wizard and Azure AD Connect sync to be able to connect to the Internet and Azure AD. This text must be entered at the bottom of the file. In this code, &lt;PROXYADDRESS&gt; represents the actual proxy IP address or host name.
+* Azure AD Connect server potřebuje překlad DNS pro intranet i Internet. Server DNS musí být schopný přeložit názvy do vaší místní služby Active Directory a koncových bodů Azure AD.
+* Pokud máte v intranetu brány firewall a potřebujete otevřít porty mezi Azure AD Connect servery a řadiči domény, další informace najdete v tématu [Azure AD Connect porty](reference-connect-ports.md) .
+* Pokud váš proxy server nebo brána firewall omezují přistup k adresám URL, musí se otevřít adresy URL dokumentované v [adresách URL a rozsahech IP adres Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) .
+  * Pokud používáte Microsoft Cloud v Německu nebo v cloudu Microsoft Azure Government, najdete informace v tématu [Azure AD Connect synchronizace instancí služby](reference-connect-instances.md) pro adresy URL.
+* Azure AD Connect (verze 1.1.614.0 a After) ve výchozím nastavení používá protokol TLS 1,2 pro šifrování komunikace mezi synchronizačním modulem a službou Azure AD. Pokud není v podkladovém operačním systému k dispozici protokol TLS 1,2, Azure AD Connect přírůstkové ke starším protokolům (TLS 1,1 a TLS 1,0).
+* Před verzí 1.1.614.0 Azure AD Connect ve výchozím nastavení používá TLS 1,0 pro šifrování komunikace mezi synchronizačním modulem a službou Azure AD. Pokud chcete přejít na TLS 1,2, postupujte podle kroků v části [Povolení TLS 1,2 pro Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
+* Pokud používáte pro připojení k Internetu odchozí proxy server, je třeba přidat následující nastavení v souboru **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** pro Průvodce instalací a Azure AD Connect synchronizaci, aby bylo možné se připojit k Internetu a službě Azure AD. Tento text musí být zadaný na konci souboru. V tomto kódu &lt;PROXYADDRESS&gt; představuje skutečnou IP adresu proxy serveru nebo název hostitele.
 
 ```
     <system.net>
@@ -114,7 +114,7 @@ Další informace naleznete v tématu:
     </system.net>
 ```
 
-* If your proxy server requires authentication, then the [service account](reference-connect-accounts-permissions.md#adsync-service-account) must be located in the domain and you must use the customized settings installation path to specify a [custom service account](how-to-connect-install-custom.md#install-required-components). You also need a different change to machine.config. With this change in machine.config, the installation wizard and sync engine respond to authentication requests from the proxy server. In all installation wizard pages, excluding the **Configure** page, the signed in user's credentials are used. On the **Configure** page at the end of the installation wizard, the context is switched to the [service account](reference-connect-accounts-permissions.md#adsync-service-account) that was created by you. The machine.config section should look like this.
+* Pokud vaše proxy server vyžaduje ověření, musí se [účet služby](reference-connect-accounts-permissions.md#adsync-service-account) nacházet v doméně a k určení [vlastního účtu služby](how-to-connect-install-custom.md#install-required-components)musíte použít instalační cestu přizpůsobená nastavení. Také potřebujete jinou změnu souboru Machine. config. V rámci této změny v souboru Machine. config reaguje Průvodce instalací a synchronizační modul na žádosti o ověření z proxy server. V případě všech stránek průvodce instalací, kromě stránky **Konfigurace** , se použijí přihlašovací údaje přihlášeného uživatele. Na stránce **Konfigurace** na konci Průvodce instalací je kontext přepnut na [účet služby](reference-connect-accounts-permissions.md#adsync-service-account) , který byl vytvořen vámi. Oddíl Machine. config by měl vypadat takto.
 
 ```
     <system.net>
@@ -128,104 +128,104 @@ Další informace naleznete v tématu:
     </system.net>
 ```
 
-* When Azure AD Connect sends a web request to Azure AD as part of directory synchronization, Azure AD can take up to 5 minutes to respond. It is common for proxy servers to have connection idle timeout configuration. Please ensure the configuration is set to at least 6 minutes or more.
+* Když Azure AD Connect odešle webový požadavek do služby Azure AD jako součást synchronizace adresářů, může Azure AD trvat až 5 minut, než bude reagovat. U proxy serverů je běžné, že mají konfiguraci časového limitu nečinnosti připojení. Ujistěte se prosím, že je konfigurace nastavená aspoň na 6 minut nebo víc.
 
-For more information, see MSDN about the [default proxy Element](https://msdn.microsoft.com/library/kd3cf2ex.aspx).  
-For more information when you have problems with connectivity, see [Troubleshoot connectivity problems](tshoot-connect-connectivity.md).
+Další informace najdete v tématu MSDN o [výchozím elementu proxy serveru](https://msdn.microsoft.com/library/kd3cf2ex.aspx).  
+Další informace o potížích s připojením najdete v tématu [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Jiné
-* Optional: A test user account to verify synchronization.
+### <a name="other"></a>Ostatní
+* Volitelné: testovací uživatelský účet pro ověření synchronizace.
 
-## <a name="component-prerequisites"></a>Component prerequisites
-### <a name="powershell-and-net-framework"></a>PowerShell and .NET Framework
-Azure AD Connect depends on Microsoft PowerShell and .NET Framework 4.5.1. You need this version or a later version installed on your server. Depending on your Windows Server version, do the following:
+## <a name="component-prerequisites"></a>Předpoklady součásti
+### <a name="powershell-and-net-framework"></a>PowerShell a .NET Framework
+Azure AD Connect závisí na prostředí Microsoft PowerShell a .NET Framework 4.5.1. Budete potřebovat tuto verzi nebo novější verzi nainstalovanou na vašem serveru. V závislosti na verzi Windows serveru udělejte toto:
 
 * Windows Server 2012R2
-  * Microsoft PowerShell is installed by default. Nevyžaduje se žádná akce.
-  * .NET Framework 4.5.1 and later releases are offered through Windows Update. Make sure you have installed the latest updates to Windows Server in the Control Panel.
+  * Prostředí Microsoft PowerShell je nainstalováno ve výchozím nastavení. Nevyžaduje se žádná akce.
+  * K dispozici jsou .NET Framework 4.5.1 a novější verze prostřednictvím web Windows Update. Ujistěte se, že máte v Ovládacích panelech nainstalované nejnovější aktualizace Windows serveru.
 * Windows Server 2008 R2 a Windows Server 2012
-  * The latest version of Microsoft PowerShell is available in **Windows Management Framework 4.0**, available on [Microsoft Download Center](https://www.microsoft.com/downloads).
-  * .NET Framework 4.5.1 and later releases are available on [Microsoft Download Center](https://www.microsoft.com/downloads).
+  * Nejnovější verze prostředí Microsoft PowerShell je k dispozici v **rozhraní Windows Management Framework 4,0**, které je k dispozici na [webu Microsoft Download Center](https://www.microsoft.com/downloads).
+  * .NET Framework 4.5.1 a novější verze jsou k dispozici na [webu Microsoft Download Center](https://www.microsoft.com/downloads).
 
 
-### <a name="enable-tls-12-for-azure-ad-connect"></a>Enable TLS 1.2 for Azure AD Connect
-Prior to version 1.1.614.0, Azure AD Connect by default uses TLS 1.0 for encrypting the communication between the sync engine server and Azure AD. You can change this by configuring .NET applications to use TLS 1.2 by default on the server. More information about TLS 1.2 can be found in [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358).
+### <a name="enable-tls-12-for-azure-ad-connect"></a>Povolit TLS 1,2 pro Azure AD Connect
+Před verzí 1.1.614.0 Azure AD Connect ve výchozím nastavení používá TLS 1,0 pro šifrování komunikace mezi serverem synchronizačního stroje a službou Azure AD. To můžete změnit tak, že nakonfigurujete aplikace .NET tak, aby ve výchozím nastavení používaly TLS 1,2 standardně na serveru. Další informace o protokolu TLS 1,2 najdete v [zpravodaji zabezpečení společnosti Microsoft 2960358](https://technet.microsoft.com/security/advisory/2960358).
 
-1. TLS 1.2 cannot be enabled prior to Windows Server 2008 R2 or earlier. Make sure you have the .NET 4.5.1 hotfix installed for your operating system, see [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358). You might have this hotfix or a later release installed on your server already.
-2. If you use Windows Server 2008 R2, then make sure TLS 1.2 is enabled. On Windows Server 2012 server and later versions, TLS 1.2 should already be enabled.
+1. Protokol TLS 1,2 nelze povolit před systémem Windows Server 2008 R2 nebo starším. Ujistěte se, že máte nainstalovanou opravu hotfix rozhraní .NET 4.5.1 pro váš operační systém, viz [Microsoft Security advisor 2960358](https://technet.microsoft.com/security/advisory/2960358). Je možné, že je tato oprava hotfix nebo novější verze v serveru již nainstalována.
+2. Pokud používáte systém Windows Server 2008 R2, zajistěte, aby byl povolen protokol TLS 1,2. V systému Windows Server 2012 Server a novějších verzích by měl být protokol TLS 1,2 již povolen.
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
     ```
-3. For all operating systems, set this registry key and restart the server.
+3. Pro všechny operační systémy nastavte tento klíč registru a restartujte server.
     ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
     "SchUseStrongCrypto"=dword:00000001
     ```
-4. If you also want to enable TLS 1.2 between the sync engine server and a remote SQL Server, then make sure you have the required versions installed for [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
+4. Pokud chcete také povolit TLS 1,2 mezi serverem synchronizace a vzdáleným SQL Server, ujistěte se, že máte nainstalované požadované verze pro [podporu TLS 1,2 pro Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 
-## <a name="prerequisites-for-federation-installation-and-configuration"></a>Prerequisites for federation installation and configuration
+## <a name="prerequisites-for-federation-installation-and-configuration"></a>Předpoklady pro instalaci a konfiguraci federace
 ### <a name="windows-remote-management"></a>Vzdálená správa systému Windows
-When using Azure AD Connect to deploy Active Directory Federation Services or the Web Application Proxy, check these requirements:
+Při použití Azure AD Connect k nasazení Active Directory Federation Services (AD FS) nebo proxy webových aplikací, Projděte si tyto požadavky:
 
-* If the target server is domain joined, then ensure that Windows Remote Managed is enabled
-  * In an elevated PSH command window, use command `Enable-PSRemoting –force`
-* If the target server is a non-domain joined WAP machine, then there are a couple of additional requirements
-  * On the target machine (WAP machine):
-    * Ensure the winrm (Windows Remote Management / WS-Management) service is running via the Services snap-in
-    * In an elevated PSH command window, use command `Enable-PSRemoting –force`
-  * On the machine on which the wizard is running (if the target machine is non-domain joined or untrusted domain):
-    * In an elevated PSH command window, use the command `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
-    * In Server Manager:
-      * add DMZ WAP host to machine pool (server manager -> Manage -> Add Servers...use DNS tab)
-      * Server Manager All Servers tab: right click WAP server and choose Manage As..., enter local (not domain) creds for the WAP machine
-      * To validate remote PSH connectivity, in the Server Manager All Servers tab: right click WAP server and choose Windows PowerShell. A remote PSH session should open to ensure remote PowerShell sessions can be established.
+* Pokud je cílový server připojený k doméně, zajistěte, aby byla povolená Vzdálená správa systému Windows.
+  * V příkazovém okně se zvýšenými oprávněními PSH použijte příkaz `Enable-PSRemoting –force`
+* Pokud je cílový Server počítač WAP, který není připojený k doméně, existuje několik dalších požadavků.
+  * Na cílovém počítači (WAP Machine):
+    * Zajistěte, aby služba WinRM (Vzdálená správa systému Windows/WS-Management) běžela prostřednictvím modulu snap-in služby.
+    * V příkazovém okně se zvýšenými oprávněními PSH použijte příkaz `Enable-PSRemoting –force`
+  * V počítači, na kterém je spuštěný Průvodce (Pokud je cílový počítač připojený k doméně nebo nedůvěryhodnou doménu):
+    * V okně příkazového řádku se zvýšenými oprávněními PSH použijte příkaz `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
+    * V Správce serveru:
+      * Přidat hostitele WAP DMZ do fondu počítačů (Správce serveru-> Spravovat-> přidat servery... použít kartu DNS)
+      * Správce serveru kartě všechny servery: klikněte pravým tlačítkem na možnost Server WAP a vyberte možnost spravovat jako..., zadejte místní (nikoli doménu) přihlašovací údaje pro počítač WAP.
+      * Pokud chcete ověřit připojení vzdáleného PSH, na kartě Správce serveru všechny servery: klikněte pravým tlačítkem na možnost Server WAP a vyberte Windows PowerShell. Vzdálená relace PSH by se měla otevřít, aby se zajistilo, že se můžou vytvořit vzdálené relace PowerShellu.
 
-### <a name="ssl-certificate-requirements"></a>SSL Certificate Requirements
-* It’s strongly recommended to use the same SSL certificate across all nodes of your AD FS farm and all Web Application proxy servers.
-* The certificate must be an X509 certificate.
-* You can use a self-signed certificate on federation servers in a test lab environment. However, for a production environment, we recommend that you obtain the certificate from a public CA.
-  * If using a certificate that is not publicly trusted, ensure that the certificate installed on each Web Application Proxy server is trusted on both the local server and on all federation servers
-* The identity of the certificate must match the federation service name (for example, sts.contoso.com).
-  * The identity is either a subject alternative name (SAN) extension of type dNSName or, if there are no SAN entries, the subject name specified as a common name.  
-  * Multiple SAN entries can be present in the certificate, provided one of them matches the federation service name.
-  * If you are planning to use Workplace Join, an additional SAN is required with the value **enterpriseregistration.** followed by the User Principal Name (UPN) suffix of your organization, for example, **enterpriseregistration.contoso.com**.
-* Certificates based on CryptoAPI next generation (CNG) keys and key storage providers are not supported. This means you must use a certificate based on a CSP (cryptographic service provider) and not a KSP (key storage provider).
-* Wild-card certificates are supported.
+### <a name="ssl-certificate-requirements"></a>Požadavky na certifikát SSL
+* Důrazně se doporučuje použít stejný certifikát SSL ve všech uzlech AD FS farmy a všech proxy serverech webových aplikací.
+* Certifikát musí být certifikát x509.
+* Certifikát podepsaný svým držitelem můžete použít na federačních serverech v prostředí testovací laboratoře. V produkčním prostředí ale doporučujeme získat certifikát od veřejné certifikační autority.
+  * Pokud používáte certifikát, který není veřejně důvěryhodný, ujistěte se, že certifikát nainstalovaný na každém proxy serveru webových aplikací je důvěryhodný na místním serveru i na všech federačních serverech.
+* Identita certifikátu se musí shodovat s názvem federační služby (například sts.contoso.com).
+  * Identita je rozšířením alternativní název subjektu (SAN) typu dNSName nebo, pokud nejsou k dispozici žádné záznamy v síti SAN, název subjektu zadaný jako běžný název.  
+  * V certifikátu může být k dispozici více záznamů sítě SAN, pokud je jedna z nich shodná s názvem federační služby.
+  * Pokud plánujete použít Workplace Join, vyžaduje se další síť SAN s hodnotou **enterpriseregistration.** Následuje přípona hlavního názvu uživatele (UPN) vaší organizace, například **enterpriseregistration.contoso.com**.
+* Certifikáty založené na klíčích služby CryptoAPI Next Generation (CNG) a zprostředkovatelích úložiště klíčů nejsou podporovány. To znamená, že musíte použít certifikát založený na zprostředkovateli kryptografických služeb (CSP), nikoli KSP (Zprostředkovatel úložiště klíčů).
+* Podporují se i certifikáty se zástupnými kartami.
 
-### <a name="name-resolution-for-federation-servers"></a>Name resolution for federation servers
-* Set up DNS records for the AD FS federation service name (for example sts.contoso.com) for both the intranet (your internal DNS server) and the extranet (public DNS through your domain registrar). For the intranet DNS record, ensure that you use A records and not CNAME records. This is required for windows authentication to work correctly from your domain joined machine.
-* If you are deploying more than one AD FS server or Web Application Proxy server, then ensure that you have configured your load balancer and that the DNS records for the AD FS federation service name (for example sts.contoso.com) point to the load balancer.
-* For windows integrated authentication to work for browser applications using Internet Explorer in your intranet, ensure that the AD FS federation service name (for example sts.contoso.com) is added to the intranet zone in IE. This can be controlled via group policy and deployed to all your domain joined computers.
+### <a name="name-resolution-for-federation-servers"></a>Překlad názvů pro federační servery
+* Nastavte záznamy DNS pro název služby AD FS FS (například sts.contoso.com) pro intranet (interní server DNS) a extranet (veřejný DNS prostřednictvím vašeho registrátora domény). Pro intranetový záznam DNS se ujistěte, že používáte záznamy a nikoli záznamy CNAME. K tomu je potřeba, aby ověřování Windows fungovalo správně z počítače připojeného k doméně.
+* Pokud nasazujete více než jeden server AD FS nebo proxy server webové aplikace, ujistěte se, že jste nakonfigurovali Nástroj pro vyrovnávání zatížení a že záznamy DNS pro název služby AD FS FS (například sts.contoso.com) odkazuje na nástroj pro vyrovnávání zatížení.
+* Aby integrované ověřování systému Windows fungovalo pro prohlížeče aplikací pomocí aplikace Internet Explorer v intranetu, ujistěte se, že název služby AD FS Federation Service (například sts.contoso.com) se přidá do zóny intranet v IE. Dá se řídit pomocí zásad skupiny a nasazených na všechny počítače připojené k doméně.
 
-## <a name="azure-ad-connect-supporting-components"></a>Azure AD Connect supporting components
-The following is a list of components that Azure AD Connect installs on the server where Azure AD Connect is installed. This list is for a basic Express installation. If you choose to use a different SQL Server on the Install synchronization services page, then SQL Express LocalDB is not installed locally.
+## <a name="azure-ad-connect-supporting-components"></a>Azure AD Connect podpůrné komponenty
+Níže je seznam komponent, které Azure AD Connect nainstalovat na server, na kterém je nainstalovaná Azure AD Connect. Tento seznam je určen pro základní expresní instalaci. Pokud se rozhodnete použít jiný SQL Server na stránce instalovat synchronizační služby, pak není SQL Express LocalDB nainstalován místně.
 
 * Azure AD Connect Health
-* Microsoft SQL Server 2012 Command Line Utilities
+* Nástroje příkazového řádku Microsoft SQL Server 2012
 * Microsoft SQL Server 2012 Express LocalDB
 * Microsoft SQL Server 2012 Native Client
-* Microsoft Visual C++ 2013 Redistribution Package
+* Balíček pro C++ redistribuci Microsoft Visual 2013
 
-## <a name="hardware-requirements-for-azure-ad-connect"></a>Hardware requirements for Azure AD Connect
-The table below shows the minimum requirements for the Azure AD Connect sync computer.
+## <a name="hardware-requirements-for-azure-ad-connect"></a>Požadavky na hardware pro Azure AD Connect
+Následující tabulka uvádí minimální požadavky na počítač Azure AD Connect Sync.
 
-| Number of objects in Active Directory | Procesor | Paměť | Hard drive size |
+| Počet objektů ve službě Active Directory | Procesor | Memory (Paměť) | Velikost pevného disku |
 | --- | --- | --- | --- |
-| Fewer than 10,000 |1.6 GHz |4 GB |70 GB |
-| 10,000–50,000 |1.6 GHz |4 GB |70 GB |
-| 50,000–100,000 |1.6 GHz |16 GB |100 GB |
-| For 100,000 or more objects the full version of SQL Server is required | | | |
-| 100,000–300,000 |1.6 GHz |32 GB |300 GB |
-| 300,000–600,000 |1.6 GHz |32 GB |450 GB |
-| More than 600,000 |1.6 GHz |32 GB |500 GB |
+| Méně než 10 000 |1,6 GHz |4 GB |70 GB |
+| 10,000–50,000 |1,6 GHz |4 GB |70 GB |
+| 50,000–100,000 |1,6 GHz |16 GB |100 GB |
+| Pro 100 000 nebo více objektů se vyžaduje plná verze SQL Server. | | | |
+| 100,000–300,000 |1,6 GHz |32 GB |300 GB |
+| 300,000–600,000 |1,6 GHz |32 GB |450 GB |
+| Více než 600 000 |1,6 GHz |32 GB |500 GB |
 
-The minimum requirements for computers running AD FS or Web Application Proxy Servers is the following:
+Minimální požadavky na počítače se systémem AD FS nebo proxy servery webových aplikací jsou následující:
 
-* CPU: Dual core 1.6 GHz or higher
-* MEMORY: 2 GB or higher
-* Azure VM: A2 configuration or higher
+* Procesor: Dual Core 1,6 GHz nebo vyšší
+* PAMĚŤ: 2 GB nebo vyšší
+* Virtuální počítač Azure: konfigurace a2 nebo vyšší
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

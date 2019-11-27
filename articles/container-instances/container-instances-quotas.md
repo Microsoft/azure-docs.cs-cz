@@ -1,19 +1,14 @@
 ---
-title: Kvóty a dostupnost oblastí pro Azure Container Instances
+title: Kvóty služeb a dostupnost oblastí
 description: Kvóty, omezení a dostupnost oblastí služby Azure Container Instances.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: danlep
-ms.openlocfilehash: c266a67685197ba40d2868fefca08098cb41598c
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 91681130e32cf8a76829b8bfc3e2a1e97a59ff6b
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172377"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533510"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>Kvóty a omezení pro Azure Container Instances
 
@@ -25,7 +20,7 @@ Dostupnost funkcí Azure Container Instances a prostředků v oblastech Azure na
 
 [!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Některé výchozí limity a kvóty je možné zvýšit. Pokud chcete požádat o zvýšení jednoho nebo více prostředků, které podporují takové zvýšení, odešlete prosím [žádost o podporu Azure][azure-support] (pro **typ problému**vyberte "kvóta").
 

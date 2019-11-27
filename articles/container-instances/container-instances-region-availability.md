@@ -1,19 +1,14 @@
 ---
-title: Dostupnost prostředků Azure Container Instances
+title: Dostupnost prostředků podle oblasti
 description: Dostupnost výpočetních a paměťových prostředků pro službu Azure Container Instances v různých oblastech Azure.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 05/14/2019
-ms.author: danlep
-ms.openlocfilehash: 24edce511c2d07050db1e77edeae4e587fcd79b0
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172396"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533473"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
@@ -28,9 +23,9 @@ Informace o kvótách a dalších omezeních v nasazeních najdete v tématu [kv
 
 ## <a name="availability---general"></a>Dostupnost – obecné
 
-Pro skupiny kontejnerů se systémem Linux a podporovanými kontejnery Windows Server [](container-instances-faq.md#what-windows-base-os-images-are-supported) 2016 jsou k dispozici následující oblasti a prostředky.
+Pro skupiny kontejnerů se systémem Linux a [podporovanými](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnery Windows Server 2016 jsou k dispozici následující oblasti a prostředky.
 
-| Location | OS | Procesor | Paměť (GB) |
+| Umístění | Operační systém | Procesor | Paměť (GB) |
 | -------- | -- | :---: | :-----------: |
 | Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní USA | Linux | 4 | 16 |
 | Západní Evropa Západní USA 2 | Linux | 4 | 14 |
@@ -44,10 +39,10 @@ Pro skupiny kontejnerů se systémem Linux a podporovanými kontejnery Windows S
 
 Následující oblasti a prostředky jsou k dispozici pro skupiny kontejnerů s kontejnery založenými na Windows serveru 2019 (Preview).
 
-| Location | OS | Procesor | Paměť (GB) |
+| Umístění | Operační systém | Procesor | Paměť (GB) |
 | -------- | -- | :---: | :-----------: |
 | Jihovýchodní Asie, Severní Evropa, Západní Evropa, Střed USA, Východní USA, Západní USA západní USA 2 | Windows | 4 | 16 |
-| Východní USA 2 | Windows | 2 | 3,5 |
+| Východ USA 2 | Windows | 2 | 3,5 |
 
 
 ## <a name="availability---virtual-network-deployment-preview"></a>Dostupnost – nasazení virtuální sítě (Preview)
@@ -63,7 +58,7 @@ Pro skupinu kontejnerů nasazené s [prostředky GPU](container-instances-gpu.md
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nechejte tým informovat, pokud byste chtěli zobrazit další oblasti nebo zvýšit dostupnost prostředků na [aka.MS/ACI/Feedback](https://aka.ms/aci/feedback).
 

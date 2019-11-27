@@ -1,8 +1,8 @@
 ---
-title: Learn how the security manager protects devices, software - Azure IoT Edge | Microsoft Docs
-description: Manages the IoT Edge device security stance and the integrity of security services.
+title: Zjistěte, jak správce zabezpečení chrání zařízení, software – Azure IoT Edge | Dokumentace Microsoftu
+description: Spravuje postoj zabezpečení zařízení IoT Edge a integrity služby zabezpečení.
 services: iot-edge
-keywords: security, secure element, enclave, TEE, IoT Edge
+keywords: zabezpečení, zabezpečené element, enklávy, TEE, IoT Edge
 author: eustacea
 manager: philmea
 ms.author: eustacea
@@ -16,113 +16,113 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457529"
 ---
-# <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge security manager
+# <a name="azure-iot-edge-security-manager"></a>Správce zabezpečení služby Azure IoT Edge
 
-The Azure IoT Edge security manager is a well-bounded security core for protecting the IoT Edge device and all its components by abstracting the secure silicon hardware. It is the focal point for security hardening and provides technology integration point to original equipment manufacturers (OEM).
+Správce zabezpečení Azure IoT Edge je základní dobře ohraničené zabezpečení pro ochranu zařízení IoT Edge a všechny její součásti podle abstrahovat zabezpečené silicon hardwaru. Je to ústřední bod pro posílení zabezpečení a poskytuje integrační bod pro technologie výrobcům OEM (Original Equipment Manufacturer).
 
-![Azure IoT Edge security manager](media/edge-security-manager/iot-edge-security-manager.png)
+![Správce zabezpečení služby Azure IoT Edge](media/edge-security-manager/iot-edge-security-manager.png)
 
-IoT Edge security manager aims to defend the integrity of the IoT Edge device and all inherent software operations. The security manager transitions trust from underlying hardware root of trust hardware (if available) to bootstrap the IoT Edge runtime and monitor ongoing operations.  The IoT Edge security manager is software working along with secure silicon hardware (where available) to help deliver the highest security assurances possible.  
+Správce zabezpečení IoT Edge, zaměřuje se chránit integritu zařízení IoT Edge a všechny operace vlastní software. Správce zabezpečení přechází z základní hardwarové kořene hardwaru důvěryhodnosti (Pokud je k dispozici), aby mohl spustit modul runtime IoT Edge a monitorovat průběžné operace.  IoT Edge Security Manager je software pracující společně s zabezpečeným Silicon hardwarem (Pokud je k dispozici), který vám umožní zajistit nejvyšší možný bezpečnostní ujištění.  
 
-The responsibilities of the IoT Edge security manager include, but aren't limited to:
+Mezi odpovědnosti IoT Edge Security Manageru patří mimo jiné:
 
-* Secured and measured bootstrapping of the Azure IoT Edge device.
-* Device identity provisioning and transition of trust where applicable.
-* Host and protect device components of cloud services like Device Provisioning Service.
-* Securely provision IoT Edge modules with unique identities.
-* Gatekeeper to device hardware root of trust through notary services.
-* Monitor the integrity of IoT Edge operations at runtime.
+* Zabezpečené a měří spuštění zařízení Azure IoT Edge.
+* Zřízení identit zařízení a přechod důvěryhodnosti kde je to možné.
+* Hostování a chránit zařízení komponentami cloudových služeb, jako jsou služby Device Provisioning.
+* Bezpečně zřídí IoT Edge moduly s jedinečnými identitami.
+* Gatekeepera, aby zařízení hardwaru důvěryhodný kořenový certifikát prostřednictvím notář služeb.
+* Monitorování integrity operací IoT Edge v době běhu.
 
-IoT Edge security manager includes three components:
+Správce zabezpečení IoT Edge zahrnuje tři komponenty:
 
-* IoT Edge security daemon.
-* Hardware security module platform abstraction Layer (HSM PAL).
-* Optional but highly recommended hardware silicon root of trust or HSM.
+* Démon procesu zabezpečení IoT Edge.
+* Zabezpečení modulu platformy abstrakce hardwaru vrstvy (PAL modulu hardwarového zabezpečení).
+* Volitelné, ale důrazně doporučené hardwarové silicon kořenové důvěryhodnosti nebo modulu hardwarového zabezpečení.
 
-## <a name="the-iot-edge-security-daemon"></a>The IoT Edge security daemon
+## <a name="the-iot-edge-security-daemon"></a>Démon zabezpečení IoT Edge
 
-The IoT Edge security daemon is responsible for the logical operations of IoT Edge security manager. It represents a significant portion of the trusted computing base of the IoT Edge device. 
+Démon zabezpečení IoT Edge zodpovídá za logické operace nástroje IoT Edge Security Manager. Představuje významnou část základu IoT Edgeho zařízení pro účely důvěryhodných počítačů. 
 
 ### <a name="design-principles"></a>Principy návrhu
 
-The IoT Edge security daemon follows two core principles: maximize operational integrity, and minimize bloat and churn.
+Démon zabezpečení IoT Edge se skládá ze dvou základních principů: maximalizace provozní integrity a minimalizace dispozici determinističtější a změn.
 
-#### <a name="maximize-operational-integrity"></a>Maximize operational integrity
+#### <a name="maximize-operational-integrity"></a>Maximalizovat provozní integrity
 
-The IoT Edge security daemon operates with the highest integrity possible within the defense capability of any given root of trust hardware. With proper integration, the root of trust hardware measures and monitors the security daemon statically and at runtime to resist tampering.
+IoT Edge démon zabezpečení funguje s nejvyšší možnou integritou v rámci schopnosti obrany kteréhokoli daného kořene hardwaru důvěryhodnosti. Integrace správná kořenové důvěryhodnosti hardwaru opatření a monitoruje démona zabezpečení staticky a za běhu proti manipulaci.
 
-Physical access is always a threat to IoT devices. Hardware root of trust plays an important role in defending the integrity of the IoT Edge security daemon.  Hardware root of trust come in two varieties:
+Fyzický přístup je vždy hrozbou pro zařízení IoT. Hardwarový kořen vztahu důvěryhodnosti hraje důležitou roli při zachování integrity procesu démona zabezpečení IoT Edge.  Kořenová kořenová složka vztahu důvěryhodnosti se dodává ve dvou variantách:
 
-* secure elements for the protection of sensitive information like secrets and cryptographic keys.
-* secure enclaves for the protection of secrets like keys, and sensitive workloads like metering and billing.
+* tajných kódů a kryptografických klíčů, jako je zabezpečené prvky pro ochranu citlivých informací.
+* zabezpečené enklávy pro ochranu tajné kódy, jako jsou klíče a citlivých úloh, jako jsou měření a fakturace.
 
-Two kinds of execution environments exist to use hardware root of trust:
+Existují dva druhy prováděcích prostředí, které používají kořenový adresář hardwaru důvěryhodnosti:
 
-* The standard or rich execution environment (REE) that relies on the use of secure elements to protect sensitive information.
-* The trusted execution environment (TEE) that relies on the use of secure enclave technology to protect sensitive information and offer protection to software execution.
+* Standardní nebo bohatá spouštěcí prostředí (REE), které spoléhá na použití zabezpečených prvků pro ochranu citlivých informací.
+* Prostředí pro důvěryhodné spuštění (TEE), které spoléhá na použití zabezpečené technologie enklávy k ochraně citlivých informací a poskytování ochrany před spuštěním softwaru.
 
-For devices using secure enclaves as hardware root of trust, sensitive logic within IoT Edge security daemon should be inside the enclave.  Non-sensitive portions of the security daemon can be outside of the TEE.  In any case, original design manufacturers (ODM) and original equipment manufacturers (OEM) should extend trust from their HSM to measure and defend the integrity of the IoT Edge security daemon at boot and runtime.
+Pro zařízení, která používají zabezpečený enclaves jako hardwarový kořen vztahu důvěryhodnosti, by měla být citlivá logika v rámci služby IoT Edge Security daemon uvnitř enklávy.  Necitlivá část démona zabezpečení může být mimo TEE.  V každém případě by výrobci originálního prostředí (ODM) a výrobci OEM měli pro účely měření a ochrany integrity procesu démona zabezpečení IoT Edge při spuštění a běhu chránit důvěryhodnost.
 
-#### <a name="minimize-bloat-and-churn"></a>Minimize bloat and churn
+#### <a name="minimize-bloat-and-churn"></a>Minimalizovat determinističtější a četnosti změn
 
-Another core principle for the IoT Edge security daemon is to minimize churn.  For the highest level of trust, the IoT Edge security daemon can tightly couple with the device hardware root of trust and operate as native code.  It's common for these types of realizations to update the daemon software through the hardware root of trust's secure update paths (as opposed to OS provided update mechanisms), which can be challenging in some scenarios.  While security renewal is recommended for IoT devices, excessive update requirements or large update payloads can expand the threat surface in many ways.  Examples include skipping of updates to maximize operational availability or root of trust hardware too constrained to process large update payloads.  As such, the design of IoT Edge security daemon is concise to keep the footprint and trusted computing base small and to minimize update requirements.
+Další základní zásadou pro démona zabezpečení IoT Edge je minimalizace změn.  Pro nejvyšší úroveň důvěryhodnosti může démon zabezpečení IoT Edge pevně spojit s hardwarem hardwaru zařízení, který důvěřuje, a fungovat jako nativní kód.  Je běžné, že tyto typy oddělení aktualizuje software démona prostřednictvím kořenového adresáře hardwaru cest aktualizace důvěryhodnosti (na rozdíl od mechanismů aktualizace poskytovaných operačním systémem), což může být v některých případech náročné.  I když se pro zařízení IoT doporučuje obnovování zabezpečení, nadměrné požadavky na aktualizace nebo rozsáhlé datové části aktualizace mohou plochu hrozby rozšířit mnoha způsoby.  Mezi příklady patří přeskočení aktualizací, aby se maximalizovala dostupnost provozní nebo kořenové důvěryhodnosti hardwaru moc omezené ke zpracování velkých aktualizací datových částí.  V takovém případě je návrh démona zabezpečení IoT Edge stručnější, aby se zajistila Základnová a důvěryhodná výpočetní databáze a minimalizovala požadavky na aktualizaci.
 
-### <a name="architecture-of-iot-edge-security-daemon"></a>Architecture of IoT Edge security daemon
+### <a name="architecture-of-iot-edge-security-daemon"></a>Architektura démon zabezpečení IoT Edge
 
-![Azure IoT Edge security daemon](media/edge-security-manager/iot-edge-security-daemon.png)
+![Démon zabezpečení Azure IoT Edge](media/edge-security-manager/iot-edge-security-daemon.png)
 
-The IoT Edge security daemon takes advantage of any available hardware root of trust technology for security hardening.  It also allows for split-world operation between a standard/rich execution environment (REE) and a trusted execution environment (TEE) when hardware technologies offer trusted execution environments. Role-specific interfaces enable the major components of IoT Edge to assure the integrity of the IoT Edge device and its operations.
+IoT Edge démon zabezpečení využívá všechny dostupné hardwarové kořenové složky důvěryhodných technologií pro posílení zabezpečení.  Umožňuje taky rozdělit operace mezi standardním a bohatým spouštěcím prostředím (REE) a prostředím TEE (Trusted Execution Environment), když hardwarové technologie nabízejí prostředí pro důvěryhodné spouštění. Rozhraní specifická pro role povolují hlavní součásti IoT Edge, aby se zajistila integrita IoT Edge zařízení a jeho operací.
 
-#### <a name="cloud-interface"></a>Cloud interface
+#### <a name="cloud-interface"></a>Cloudové rozhraní
 
-The cloud interface allows the IoT Edge security daemon to access cloud services such as cloud compliments to device security like security renewal.  For example, the IoT Edge security daemon currently uses this interface to access the Azure IoT Hub [Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) for device identity lifecycle management.  
+Cloudové rozhraní umožňuje, aby démon zabezpečení IoT Edge mohl přistupovat ke cloudovým službám, jako je cloudový přístup k zabezpečení zařízení, jako je třeba obnovení zabezpečení.  Například démon zabezpečení IoT Edge aktuálně používá toto rozhraní pro přístup ke službě Azure IoT Hub [Device Provisioning](https://docs.microsoft.com/azure/iot-dps/) pro správu životního cyklu identity zařízení.  
 
 #### <a name="management-api"></a>Rozhraní API pro správu
 
-IoT Edge security daemon offers a management API, which is called by the IoT Edge agent when creating/starting/stopping/removing an IoT Edge module. The security daemon stores “registrations” for all active modules. These registrations map a module’s identity to some properties of the module. A few examples for these properties are the process identifier (pid) of the process running in the container or the hash of the docker container’s contents.
+IoT Edge démon zabezpečení nabízí rozhraní API pro správu, které je voláno agentem IoT Edge při vytváření, spouštění, zastavování/odebírání modulu IoT Edge. Démon zabezpečení ukládá "registrace" pro všechny aktivní moduly. Tyto registrace mapování identit modul na některé vlastnosti modulu. Pár příkladů, pro tyto vlastnosti jsou identifikátor procesu (pid) proces, který běží v kontejneru nebo hodnotu hash obsahu kontejneru dockeru.
 
-These properties are used by the workload API (described below) to verify that the caller is authorized to perform an action.
+Tyto vlastnosti používá rozhraní API úlohy (popsané níže) k ověření, že volající je autorizován k provedení akce.
 
-The management API is a privileged API, callable only from the IoT Edge agent.  Since the IoT Edge security daemon bootstraps and starts the IoT Edge agent, it can create an implicit registration for the IoT Edge agent, after it has attested that the IoT Edge agent has not been tampered with. The same attestation process that the workload API uses also restricts access to the management API to only the IoT Edge agent.
+Rozhraní API pro správu je privilegované rozhraní API, které lze volat pouze z agenta IoT Edge.  Vzhledem k tomu, že démon zabezpečení IoT Edge bootstraps a spuštění agenta IoT Edge, může vytvořit implicitní registrace agenta IoT Edge po má ověřuje, jestli nebylo manipulováno agenta IoT Edge. Stejný proces ověření identity, jaký používá rozhraní API pro úlohy, taky omezuje přístup k rozhraní API pro správu jenom na agenta IoT Edge.
 
-#### <a name="container-api"></a>Container API
+#### <a name="container-api"></a>Kontejner rozhraní API
 
-The container API interacts with the container system in use for module management, like Moby or Docker.
+Rozhraní API kontejneru spolupracuje se systémem kontejneru, který se používá ke správě modulů, jako je Moby nebo Docker.
 
-#### <a name="workload-api"></a>Workload API
+#### <a name="workload-api"></a>Úloha rozhraní API
 
-The workload API is accessible to all modules. It provides proof of identity, either as an HSM rooted signed token or an X509 certificate, and the corresponding trust bundle to a module. The trust bundle contains CA certificates for all the other servers that the modules should trust.
+Rozhraní API úlohy je dostupné pro všechny moduly. Poskytuje důkaz identity, buď jako podepsaný token HSM root nebo certifikát x509, a odpovídající sadu důvěryhodnosti pro modul. Sada důvěryhodnosti obsahuje certifikáty certifikační autority pro všechny ostatní servery, na které mají tyto moduly důvěřovat.
 
-The IoT Edge security daemon uses an attestation process to guard this API. When a module calls this API, the security daemon attempts to find a registration for the identity. If successful, it uses the properties of the registration to measure the module. If the result of the measurement process matches the registration, a new proof of identity is generated. The corresponding CA certificates (trust bundle) are returned to the module.  The module uses this certificate to connect to IoT Hub, other modules, or start a server. When the signed token or certificate nears expiration, it's the responsibility of the module to request a new certificate. 
+Démon zabezpečení IoT Edge pro ochranu tohoto rozhraní API používá proces ověření identity. Když modul toto rozhraní API volá, pokusí se démon zabezpečení najít registraci pro identitu. V případě úspěchu se používá vlastnosti registrace k měření modulu. Pokud výsledek procesu měření odpovídá registraci, je vygenerován nový důkaz identity. Do modulu se vrátí odpovídající certifikáty certifikační autority (sada Trust).  Modul používá tento certifikát k připojení ke službě IoT Hub, ostatní moduly, nebo spuštění serveru. Pokud se podepsaný token nebo certifikát blíží k vypršení platnosti, je zodpovědností modulu požádat o nový certifikát. 
 
-### <a name="integration-and-maintenance"></a>Integration and maintenance
+### <a name="integration-and-maintenance"></a>Integrace a údržba
 
-Microsoft maintains the main code base for the [IoT Edge security daemon on GitHub](https://github.com/Azure/iotedge/tree/master/edgelet).
+Společnost Microsoft udržuje hlavní základ kódu pro [démona zabezpečení IoT Edge na GitHubu](https://github.com/Azure/iotedge/tree/master/edgelet).
 
-#### <a name="installation-and-updates"></a>Installation and updates
+#### <a name="installation-and-updates"></a>Instalace a aktualizace
 
-Installation and updates of the IoT Edge security daemon are managed through the operating system's package management system. IoT Edge devices with hardware root of trust should provide additional hardening to the integrity of the daemon by managing its lifecycle through the secure boot and updates management systems. Device makers should explore these avenues based on their respective device capabilities.
+Instalace a aktualizace procesu démona zabezpečení IoT Edge jsou spravovány prostřednictvím systém správy balíčků operačního systému. Zařízení IoT Edge s hardwarovým kořenem důvěry by měla poskytovat další posílení zabezpečení démona tím, že spravuje svůj životní cyklus prostřednictvím systémů pro správu zabezpečeného spouštění a aktualizací. Tvůrci zařízení by měli prozkoumat tyto cesty vedoucíy na základě příslušných možností zařízení.
 
 #### <a name="versioning"></a>Správa verzí
 
-The IoT Edge runtime tracks and reports the version of the IoT Edge security daemon. The version is reported as the *runtime.platform.version* attribute of the IoT Edge agent module reported property.
+Modul runtime IoT Edge sleduje a sestavy verzi démona zabezpečení IoT Edge. Verze je hlášena jako atribut *runtime. Platform. version* IoT Edgeho modulu agenta, který ohlásil vlastnost.
 
-### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>Hardware security module platform abstraction layer (HSM PAL)
+### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>Zabezpečení modulu platformy HAL (PAL modulu hardwarového zabezpečení)
 
-The HSM PAL abstracts all root of trust hardware to isolate the developer or user of IoT Edge from their complexities.  It includes a combination of application programming interface (API) and trans-domain communication procedures, for example communication between a standard execution environment and a secure enclave.  The actual implementation of the HSM PAL depends on the specific secure hardware in use. Its existence enables the use of virtually any secure silicon hardware.
+HSM PAL abstrahuje všechny kořenové důvěryhodnosti hardwaru Izolovat uživatele služby IoT Edge z jejich složitosti nebo vývojáře.  Zahrnuje kombinaci rozhraní API (Application Programming Interface) a komunikačních postupů napříč doménami, například komunikaci mezi standardním spouštěcím prostředím a zabezpečenou enklávy.  Skutečná implementace HSM PAL, závisí na konkrétní zabezpečený hardware používá. Jeho existence umožňuje použití prakticky jakéhokoli zabezpečeného karbidu hardwaru.
 
-## <a name="secure-silicon-root-of-trust-hardware"></a>Secure silicon root of trust hardware
+## <a name="secure-silicon-root-of-trust-hardware"></a>Zabezpečené silicon kořenové důvěryhodnosti hardwaru
 
-Secure silicon is necessary to anchor trust inside the IoT Edge device hardware.  Secure silicon come in variety to include Trusted Platform Module (TPM), embedded Secure Element (eSE), ARM TrustZone, Intel SGX, and custom secure silicon technologies.  The use of secure silicon root of trust in devices is recommended given the threats associated with physical accessibility of IoT devices.
+Zabezpečené silicon je potřeba ukotvení důvěryhodnosti uvnitř hardwaru zařízení IoT Edge.  Zabezpečené silicon se dělí na různých Trusted Platform Module (TPM), zabezpečené vložený Element (technologii eSE), ARM TrustZone, Intel SGX a vlastní zabezpečené silicon technologie.  Použití zabezpečeného křemíkového kořene důvěryhodnosti v zařízeních se doporučuje vzhledem k hrozbám přidruženým k fyzické dostupnosti zařízení IoT.
 
-## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge security manager integration and maintenance
+## <a name="iot-edge-security-manager-integration-and-maintenance"></a>Integrace správce zabezpečení ve službě IoT Edge a údržba
 
-The IoT Edge security manager aims to identify and isolate the components that defend the security and integrity of the Azure IoT Edge platform for custom hardening. Third parties, like device makers, should make use of custom security features available with their device hardware.  See next steps section for links that demonstrate how to harden the Azure IoT security manager with the Trusted Platform Module (TPM) on Linux and Windows platforms. These examples use software or virtual TPMs but directly apply to using discrete TPM devices.  
+IoT Edge Security Manager se zaměřuje na identifikaci a izolaci komponent, které chrání zabezpečení a integritu Azure IoT Edge platformy pro vlastní posílení zabezpečení. Třetí strany, jako jsou tvůrci zařízení, by měli používat vlastní funkce zabezpečení, které jsou k dispozici u svého hardwaru zařízení.  V části Další kroky najdete odkazy, které ukazují, jak posílit správce zabezpečení Azure IoT pomocí čipu TPM (Trusted Platform Module) na platformách Linux a Windows. Tyto příklady používají software nebo Virtual čipy TPM, ale přímo se používají pro používání diskrétních zařízení TPM.  
 
 ## <a name="next-steps"></a>Další kroky
 
-Read the blog on [Securing the intelligent edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
+Přečtěte si blog o [zabezpečení inteligentního Edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
 
-Create and provision an [IoT Edge device with a virtual TPM on a Linux virtual machine](how-to-auto-provision-simulated-device-linux.md).
+Vytvoření a zřízení [zařízení IoT Edge s virtuálním čipem TPM na virtuálním počítači se systémem Linux](how-to-auto-provision-simulated-device-linux.md).
 
-Create and provision an [IoT Edge device with a simulated TPM on Windows](how-to-auto-provision-simulated-device-windows.md).
+Vytvoření a zřízení [IoT Edge zařízení s simulovaným čipem TPM ve Windows](how-to-auto-provision-simulated-device-windows.md).

@@ -1,5 +1,5 @@
 ---
-title: Getting started Azure MFA Server - Azure Active Directory
+title: Začínáme s Azure MFA serverem – Azure Active Directory
 description: Podrobný návod, jak začít s místním Azure MFA Serverem
 services: multi-factor-authentication
 ms.service: active-directory
@@ -22,17 +22,17 @@ ms.locfileid: "74404249"
 
 <center>
 
-![Getting started with MFA Server on-premises](./media/howto-mfaserver-deploy/server2.png)</center>
+![Začínáme s MFA serverem v místním prostředí](./media/howto-mfaserver-deploy/server2.png)</center>
 
 Tato stránka popisuje novou instalaci serveru a jeho nastavení pro spolupráci s místní službou Active Directory. Pokud už máte nainstalovaný server MFA a chcete provést upgrade, přečtěte si téma [Upgrade na nejnovější verzi Azure Multi-Factor Authentication Serveru](howto-mfaserver-deploy-upgrade.md). Pokud hledáte informace pouze o instalaci webové služby, přečtěte si téma [Nasazení webové služby mobilní aplikace Azure Multi-Factor Authentication Serveru](howto-mfaserver-deploy-mobileapp.md).
 
 > [!IMPORTANT]
-> As of July 1, 2019, Microsoft will no longer offer MFA Server for new deployments. New customers who would like to require multi-factor authentication from their users should use cloud-based Azure Multi-Factor Authentication. Existing customers who have activated MFA Server prior to July 1 will be able to download the latest version, future updates and generate activation credentials as usual.
+> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 ## <a name="plan-your-deployment"></a>Plánování nasazení
 
 > [!WARNING]
-> Starting in March of 2019 MFA Server downloads will only be available to paid tenants. Free/trial tenants will no longer be able to download or generate and use activation credentials.
+> Od března 2019 bude stažení MFA serveru dostupné jenom pro placené klienty. Bezplatná/zkušební klienti už nebudou moct stahovat ani generovat a používat přihlašovací údaje pro aktivaci.
 
 Před stažením Azure Multi-Factor Authentication Serveru se zamyslete nad tím, jaké jsou vaše požadavky na zatížení a vysokou dostupnost. Tyto informace použijte k rozhodnutí, jak a kde provést nasazení.
 
@@ -57,8 +57,8 @@ Ujistěte se, že server, který používáte pro Azure Multi-Factor Authenticat
 | Požadavky pro Azure Multi-Factor Authentication Server | Popis |
 |:--- |:--- |
 | Hardware |<li>200 MB volného místa na pevném disku</li><li>Procesor kompatibilní s x32 nebo x64</li><li>1 GB RAM nebo víc</li> |
-| Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, aktualizace SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, aktualizace SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, všechny edice</li><li>Windows 8, všechny edice</li><li>Windows 7, všechny edice</li><li>Windows Vista, všechny edice, aktualizace SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 nebo novější, pokud instalujete uživatelský portál nebo sadu SDK webové služby</li> |
-| Oprávnění | Domain Administrator or Enterprise Administrator account to register with Active Directory |
+| Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, aktualizace SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, aktualizace SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, všechny edice</li><li>Windows 8, všechny edice</li><li>Windows 7, všechny edice</li><li>Windows Vista, všechny edice, aktualizace SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 nebo novější, pokud instalujete uživatelský portál nebo sadu SDK webové služby</li> |
+| Oprávnění | Účet správce domény nebo účet správce rozlehlé sítě pro registraci ve službě Active Directory |
 
 ### <a name="azure-mfa-server-components"></a>Komponenty Azure MFA Serveru
 
@@ -80,7 +80,7 @@ Každý server MFA musí být schopný komunikovat na odchozím portu 443 s těm
 
 Pokud brána firewall omezuje odchozí port 443, je nutné otevřít tyto rozsahy IP adres:
 
-| Podsíť IP | Síťová maska | Rozsah IP adres |
+| Podsíť protokolu IP | Síťová maska | Rozsah IP adres |
 |:---: |:---: |:---: |
 | 134.170.116.0/25 |255.255.255.128 |134.170.116.1 – 134.170.116.126 |
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1 – 134.170.165.126 |
@@ -88,7 +88,7 @@ Pokud brána firewall omezuje odchozí port 443, je nutné otevřít tyto rozsah
 
 Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužívají k ověřování ze zařízení v podnikové síti mobilní aplikace, potřebujete pouze následující rozsahy:
 
-| Podsíť IP | Síťová maska | Rozsah IP adres |
+| Podsíť protokolu IP | Síťová maska | Rozsah IP adres |
 |:---: |:---: |:---: |
 | 134.170.116.72/29 |255.255.255.248 |134.170.116.72 – 134.170.116.79 |
 | 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |
@@ -97,16 +97,16 @@ Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužíva
 ## <a name="download-the-mfa-server"></a>Stažení MFA Serveru
 
 > [!WARNING]
-> Starting in March of 2019 MFA Server downloads will only be available to paid tenants. Free/trial tenants will no longer be able to download or generate and use activation credentials.
+> Od března 2019 bude stažení MFA serveru dostupné jenom pro placené klienty. Bezplatná/zkušební klienti už nebudou moct stahovat ani generovat a používat přihlašovací údaje pro aktivaci.
 
 Postupujte podle těchto kroků a stáhněte Azure Multi-Factor Authentication Server z webu Azure Portal:
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Search for and select *Azure Active Directory*. Select **MFA Server**.
+2. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **MFA Server**.
 3. Vyberte **Nastavení serveru**.
 4. Vyberte **Stáhnout** a podle pokynů na stránce pro stažení uložte instalační program. 
 
-   ![Download MFA Server from the Azure portal](./media/howto-mfaserver-deploy/downloadportal.png)
+   ![Stažení MFA serveru z Azure Portal](./media/howto-mfaserver-deploy/downloadportal.png)
 
 5. Ponechte tuto stránku otevřenou, protože se k ní vrátíme po spuštění instalačního programu.
 
@@ -119,7 +119,7 @@ Teď, když jste server stáhli, ho můžete nainstalovat a nastavit. Ujistěte 
 3. Až instalace skončí, klikněte na **Dokončit**. Spustí se průvodce konfigurací.
 4. Na úvodní obrazovce průvodce konfigurací zaškrtněte políčko **Vynechat použití průvodce konfigurací ověřování** a klikněte na **Další**. Průvodce se zavře a spustí se server.
 
-   ![Skip using the Authentication Configuration Wizard](./media/howto-mfaserver-deploy/skip2.png)
+   ![Přeskočit pomocí Průvodce konfigurací ověřování](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Zpátky na stránce, odkud jste server stáhli, klikněte na tlačítko **Vytvoření přihlašovacích údajů pro aktivaci**. Tyto údaje zkopírujte do příslušných polí v Azure MFA Serveru a klikněte na **Aktivovat**.
 
@@ -139,7 +139,7 @@ Kliknutím vlevo na ikonu e-mailu můžete změnit nastavení odesílání těch
 
 Na kartě Obsah e-mailu uvidíte šablony e-mailů, ze kterých si můžete vybrat. V závislosti na tom, jak jste uživatelům nakonfigurovali dvoustupňové ověřování, vyberte nejvhodnější šablonu.
 
-![MFA Server Email templates in the console](./media/howto-mfaserver-deploy/email2.png)
+![Šablony e-mailu MFA serveru v konzole](./media/howto-mfaserver-deploy/email2.png)
 
 ## <a name="import-users-from-active-directory"></a>Import uživatelů ze služby Active Directory
 
@@ -152,7 +152,7 @@ Teď, když je server nainstalovaný, budete chtít přidat uživatele. Můžete
 3. Teď můžete hledat jednotlivé uživatele nebo v adresáři AD vyhledat organizační jednotky, ve kterých jsou uživatelé. V tomto případě vyhledáme OJ uživatele.
 4. Vpravo označte všechny uživatele a klikněte na **Importovat**. Mělo by se zobrazit vyskakovací okno s informací, že akce proběhla úspěšně. Zavřete okno importu.
 
-   ![MFA Server user import from Active Directory](./media/howto-mfaserver-deploy/import2.png)
+   ![Import uživatele MFA serveru ze služby Active Directory](./media/howto-mfaserver-deploy/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>Automatizovaná synchronizace se službou Active Directory
 
@@ -180,7 +180,7 @@ Když Multi-Factor Authentication (MFA) Server používáte lokálně, uživatel
 Vedle těchto polí se s ověřovacími údaji uloží taky výsledek ověření (úspěch/zamítnuto) a případně důvod zamítnutí, které jsou dostupné v sestavách o ověřování/používání.
 
 > [!IMPORTANT]
-> Starting in March of 2019 the phone call options will not be available to MFA Server users in free/trial Azure AD tenants. SMS messages are not impacted by this change. Phone call will continue to be available to users in paid Azure AD tenants. This change only impacts free/trial Azure AD tenants.
+> Od března 2019 nebudou možnosti telefonního hovoru dostupné uživatelům MFA serveru v bezplatných nebo zkušebních klientech Azure AD. Tato změna nemá vliv na zprávy SMS. Telefonní hovor bude dál k dispozici uživatelům v placených klientech Azure AD. Tato změna má vliv jenom na bezplatné nebo zkušební klienty Azure AD.
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>Zálohování a obnovení Azure MFA Serveru
 

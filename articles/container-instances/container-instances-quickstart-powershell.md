@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – nasazení kontejneru Docker do Azure Container Instances – PowerShell
+title: Rychlý Start – nasazení kontejneru Docker do instance kontejneru – PowerShell
 description: V tomto rychlém startu použijete Azure PowerShell k rychlému nasazení kontejnerové webové aplikace, která běží v izolované instanci kontejneru Azure.
 services: container-instances
 author: dlepow
@@ -7,16 +7,15 @@ manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7fe199d2ac228ddb0ccfd1e5bc980e680e160acf
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9901b3f18973365dc9ceb8c85ff8587b6c2ea894
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325825"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533608"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Rychlý start: Nasazení instance kontejneru v Azure pomocí Azure PowerShell
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí Azure PowerShell
 
 Použijte Azure Container Instances ke spouštění kontejnerů Docker bez serveru v Azure s využitím jednoduchosti a rychlosti. Pokud nepotřebujete úplnou platformu orchestrace kontejnerů, jako je třeba služba Azure Kubernetes, nasaďte aplikaci na vyžádání do instance kontejneru na vyžádání.
 
@@ -44,11 +43,11 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru s Azure PowerShell, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Docker do rutiny [New-AzContainerGroup][New-AzContainerGroup] . V tomto rychlém startu použijete veřejnou `mcr.microsoft.com/windows/servercore/iis:nanoserver` image. Balíčky imagí, které Microsoft Internetová informační služba (IIS) spustí na nano serveru.
+Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru s Azure PowerShell, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Docker do rutiny [New-AzContainerGroup][New-AzContainerGroup] . V tomto rychlém startu použijete obrázek veřejné `mcr.microsoft.com/windows/servercore/iis:nanoserver`. Balíčky imagí, které Microsoft Internetová informační služba (IIS) spustí na nano serveru.
 
 Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s označením názvu DNS, aby byla služba IIS veřejně dosažitelná.
 
-Spusťte příkaz podobný následujícímu jako při spuštění instance kontejneru. Nastavte jedinečnou `-DnsNameLabel` hodnotu v rámci oblasti Azure, ve které jste instanci vytvořili. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
+Spusťte příkaz podobný následujícímu jako při spuštění instance kontejneru. Nastavte hodnotu `-DnsNameLabel` jedinečnou v rámci oblasti Azure, ve které vytvoříte instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
  ```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
@@ -98,7 +97,7 @@ Až budete s kontejnerem hotovi, odeberte ho pomocí rutiny [Remove-AzContainerG
 Remove-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili instanci kontejneru Azure z image ve veřejném registru Docker Hub. Pokud chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
 
