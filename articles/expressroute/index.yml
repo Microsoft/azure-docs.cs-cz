@@ -10,12 +10,12 @@ metadata:
   author: cherylmc
   ms.author: cherylmc
   ms.date: 08/27/2019
-  ms.openlocfilehash: 67a20fb9adf8351ce6024f4c521852bbf7935c0d
-  ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+  ms.openlocfilehash: 262043a70bb155c57c9e8ed1f9c0ba614fe0ecdc
+  ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70114526"
+  ms.lasthandoff: 11/27/2019
+  ms.locfileid: "74561787"
 landingContent:
 - title: Informace o ExpressRoute
   linkLists:
@@ -121,3 +121,9 @@ landingContent:
       url: /powershell/module/az.network#expressroute
     - text: REST
       url: /rest/api/expressroute
+  - linkListType: architecture
+    links:
+    - text: Referenční architektura pro hybridní sítě
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/expressroute
+    - text: Referenční architektura pro hybridní sítě s převzetím služeb při selhání sítě VPN
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/expressroute-vpn-failover
