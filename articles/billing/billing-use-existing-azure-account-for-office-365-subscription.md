@@ -8,19 +8,19 @@ manager: adpick
 editor: ''
 tags: billing,top-support-issue
 ms.assetid: ''
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: b67f3c590be290515329af390b4d3d79a9746112
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 998aedc8cb799d0064a2704dc819d483ced9e99e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60369801"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225653"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Registrace předplatného Office 365 s využitím účtu Azure
 Pokud jste předplatitelem Azure, můžete k registraci předplatného Office 365 použít svůj účet Azure. Pokud jste součástí organizace, která má předplatné Azure, můžete pro uživatele ve vašem stávajícím tenantovi Azure Active Directory (Azure AD) vytvořit předplatná Office 365. Zaregistrujte si Office 365 pomocí účtu, který má ve vašem tenantovi Azure Active Directory oprávnění globálního správce nebo správce fakturace. Další informace najdete v tématech [Kontrola oprávnění účtu v Azure AD](#RoleInAzureAD) a [Přiřazování rolí správců v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).

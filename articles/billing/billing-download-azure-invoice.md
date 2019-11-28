@@ -5,19 +5,19 @@ keywords: billing invoice, invoice download, azure invoice, azure usage
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 80ec40a7411a370460d663084f9f7034b28e1a2e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7d52a589ee7fcb8891f5ea839b2baeb5e4b30733
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375759"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224029"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Zobrazit a stáhnout fakturu Microsoft Azure
 
@@ -32,7 +32,7 @@ Pokud máte smlouvu se zákazníkem Microsoftu (MCA) a chcete získat faktury, m
 - Čtenář
 - Správce faktur
 
-Pokud máte smlouvu s partnerem Microsoftu (MPA) a chcete zobrazit nebo stáhnout faktury za Azure, musíte být globálním správcem nebo agentem správy v partnerské organizaci. Pokud chcete zjistit, jaká oprávnění potřebujete, [zkontrolujte typ svého fakturačního účtu](#check-your-billing-account-type). 
+Pokud máte smlouvu s partnerem Microsoftu (MPA) a chcete zobrazit nebo stáhnout faktury za Azure, musíte být globálním správcem nebo agentem správy v partnerské organizaci. Pokud chcete zjistit, jaká oprávnění potřebujete, [zkontrolujte typ svého fakturačního účtu](#check-your-billing-account-type).
 
 <!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](billing-understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
@@ -46,7 +46,7 @@ Faktura se nemusí zobrazovat z několika důvodů:
 
 - Nemáte oprávnění k zobrazení faktur. Pokud máte smlouvu MCA nebo MPA, musíte být vlastníkem, přispěvatelem, čtenářem nebo správcem faktura daného fakturačního profilu. U jiných předplatných se může stát, že pokud nejste správcem účtu, nemusí se vám zobrazovat staré faktury. Další informace o získání přístupu k fakturačním údajům najdete v článku o [správě přístupu k fakturaci Azure pomocí rolí](billing-manage-access.md).
 
-- Pokud máte bezplatnou zkušební verzi předplatného nebo předplatné s měsíčním kreditem, faktura se vám vystaví pouze v případě, že překročíte měsíční kredit. Pokud máte smlouvu se zákazníkem Microsoftu nebo smlouvu s partnerem Microsoftu, faktura se vám vystaví vždy. 
+- Pokud máte bezplatnou zkušební verzi předplatného nebo předplatné s měsíčním kreditem, faktura se vám vystaví pouze v případě, že překročíte měsíční kredit. Pokud máte smlouvu se zákazníkem Microsoftu nebo smlouvu s partnerem Microsoftu, faktura se vám vystaví vždy.
 
 ## <a name="download-invoices-in-the-azure-portal"></a>Stahování faktur na webu Azure Portal
 

@@ -1,15 +1,15 @@
 ---
 author: amberbhargava
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
-ms.openlocfilehash: 79e5e0bf1476bf049e47ba6aedcc172cea0bb13c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 42589d6843923f84b51488057941a638515cf45d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850317"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223817"
 ---
 Zkontrolujte typ smlouvy a určete typ vašeho fakturačního účtu.
  

@@ -4,16 +4,16 @@ description: Přečtěte si, jak pomocí rezervované kapacity ušetřit náklad
 services: billing
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 381a709c74f5fcf6bb1f89f07ad84d5e3af0c5e0
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 75e008a6a19baacec40a809530e3a1f624a33f2b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806275"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223623"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Úspora nákladů na poplatky za SQL Data Warehouse pomocí rezervované kapacity
 
@@ -58,7 +58,7 @@ Předpokládejme například, že vaše celková spotřeba kapacity služby SQL 
 6. Zvolte množství. Množství zadejte ve stovkách výpočetních jednotek datového skladu (cDWU), které chcete koupit.    
    Například množství 30 vám poskytne 3 000 jednotek cDWU rezervované kapacity každou hodinu.
 7. V části **Poplatky** se podívejte, jaké budou náklady na rezervaci kapacity služby SQL Data Warehouse.
-8. Vyberte **Nákup**.
+8. Vyberte **Koupit**.
 9. Stav nákupu zobrazíte tak, že vyberete **Zobrazit tuto rezervaci**.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací

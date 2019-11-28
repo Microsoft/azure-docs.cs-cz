@@ -8,7 +8,7 @@ manager: amberb
 editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 035d2e567b6aad23801ff043652ea143e3f6105b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c1f9ef78431b6b293972d4adbc0f64dc49d5c4b7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709622"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223816"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Správa přístupu k fakturačním údajům v Azure
 
 K fakturačním údajům na vašemu účtu na webu Azure Portal můžete poskytnout přístup i jiným osobám. Typy fakturačních rolí a pokyny k poskytnutí přístupu k fakturačním údajům se liší v závislosti na typu fakturačního účtu. Pokud chcete zjistit, jaký typ fakturačního účtu máte, přejděte do části [Ověření typu fakturačního účtu](#check-the-type-of-your-billing-account).
 
-Tento článek se týká zákazníků s účty v rámci programu Microsoft Online Service. Pokud jste zákazníkem Azure se smlouvou Enterprise (EA) a jste zároveň podnikovým správcem, můžete udělit oprávnění správcům oddělení a vlastníkům účtů na webu Enterprise Portal. Další informace najdete v tématu [Principy rolí pro správu smlouvy Azure Enterprise v Azure](billing-understand-ea-roles.md). Pokud máte smlouvu se zákazníkem Microsoftu, přečtěte si téma [Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure](billing-understand-mca-roles.md). 
+Tento článek se týká zákazníků s účty v rámci programu Microsoft Online Service. Pokud jste zákazníkem Azure se smlouvou Enterprise (EA) a jste zároveň podnikovým správcem, můžete udělit oprávnění správcům oddělení a vlastníkům účtů na webu Enterprise Portal. Další informace najdete v tématu [Principy rolí pro správu smlouvy Azure Enterprise v Azure](billing-understand-ea-roles.md). Pokud máte smlouvu se zákazníkem Microsoftu, přečtěte si téma [Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure](billing-understand-mca-roles.md).
 
 ## <a name="account-administrators-for-microsoft-online-service-program-accounts"></a>Správci účtů pro účty programu Microsoft Online Service
 
@@ -60,9 +60,9 @@ Jakmile správce účtu přiřadí jiným uživatelům příslušné role, musí
 1. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/billing-manage-access/billing-search-cost-management-billing.png)
- 
+
 1. V levém podokně vyberte **Předplatná**. V závislosti na způsobu přístupu možná budete muset vybrat rozsah fakturace a potom **Předplatná**.
- 
+
     ![Snímek obrazovky znázorňující výběr předplatných](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. Vyberte **Faktury** a potom **Přístup k fakturám**.
@@ -88,7 +88,7 @@ Funkce role Čtenář fakturace je ve verzi Preview a ještě nepodporuje jiné 
     ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/billing-manage-access/billing-search-cost-management-billing.png)
 
 1. V levém podokně vyberte **Předplatná**. V závislosti na způsobu přístupu možná budete muset vybrat rozsah fakturace a potom **Předplatná**.
- 
+
     ![Snímek obrazovky znázorňující výběr předplatných](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. Vyberte **Řízení přístupu (IAM)** .

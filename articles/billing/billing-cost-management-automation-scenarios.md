@@ -5,22 +5,20 @@ services: billing
 documentationcenter: ''
 author: bandersmsft
 manager: dougeby
-editor: ''
 tags: billing
-ms.assetid: 204b15b2-6667-4b6c-8ea4-f32c06f287fd
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 54c4426fb8bdb1476b33defb5351b3fb0e6a0663
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 6a2cb3df5bf8a67c7b79a24fd8328267bf6c4dd0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718839"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224067"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Scénáře automatizace pro fakturaci a správu nákladů
 
@@ -70,7 +68,7 @@ Zákazníci programu Web Direct a Enterprise můžou používat všechna násled
 
 -   [Rozhraní API Poplatky za Marketplace:](https://docs.microsoft.com/rest/api/consumption/marketplaces) Mějte přehled o poplatcích a využití pro všechny prostředky Azure Marketplace (nabídky partnerů Azure). Tato data můžete využít k přiřazování nákladů napříč všemi prostředky z Marketplace nebo ke zkoumání nákladů/využití u konkrétních prostředků.
 
--   [Rozhraní API Ceník](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*jenom zákazníci programu Enterprise*): Získejte vlastní ceny u všech měřičů. Podniky můžou tato data v kombinaci s informacemi o využití a informacemi o využití Marketplace použít k výpočtu nákladů na základě dat o využití a Marketplace. 
+-   [Rozhraní API Ceník](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*jenom zákazníci programu Enterprise*): Získejte vlastní ceny u všech měřičů. Podniky můžou tato data v kombinaci s informacemi o využití a informacemi o využití Marketplace použít k výpočtu nákladů na základě dat o využití a Marketplace.
 
 -   [Rozhraní API Doporučení pro rezervace:](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations) Získejte doporučení pro nákup rezervovaných instancí virtuálních počítačů. Doporučení pomáhají analyzovat očekávané úspory nákladů a kupní ceny. Další informace najdete v tématu [Rozhraní API pro automatizaci rezervací Azure](billing-reservation-apis.md).
 
@@ -80,14 +78,14 @@ Zákazníci programu Web Direct a Enterprise můžou používat všechna násled
 
 -   [Rozhraní API Podrobnosti využití:](https://docs.microsoft.com/rest/api/consumption/usagedetails) Získejte informace o nákladech na všechny prostředky Azure od Microsoftu a o jejich využití. Informace mají podobu podrobných záznamů o využití, které se v současné době vystavují jednou denně pro každý měřič. Tyto informace můžete využít k přiřazování nákladů napříč všemi prostředky nebo ke zkoumání nákladů/využití u konkrétních prostředků.
 
--   [Rozhraní API RateCard:](/previous-versions/azure/reference/mt219005(v=azure.100)) Pokud jste zákazník programu Web Direct, můžete si zobrazit sazby měřičů. Vrácené informace pak můžete v kombinaci s informacemi o využití prostředků použít k ručnímu výpočtu očekávané výše faktury. 
+-   [Rozhraní API RateCard:](/previous-versions/azure/reference/mt219005(v=azure.100)) Pokud jste zákazník programu Web Direct, můžete si zobrazit sazby měřičů. Vrácené informace pak můžete v kombinaci s informacemi o využití prostředků použít k ručnímu výpočtu očekávané výše faktury.
 
 -   [Rozhraní API Nehodnocené využití:](/previous-versions/azure/reference/mt219003(v=azure.100)) Získejte nezpracované informace o využití ještě před tím, než Azure provede měření a vyúčtování.
 
 ### <a name="billing"></a>Fakturace
 -   [Rozhraní API Fakturační období:](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) Určete si fakturační období, které chcete analyzovat, a ID faktur za dané období. ID faktur můžete použít i v rozhraní API Faktury.
 
--   [Rozhraní API Faktury:](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) Získejte adresu URL pro stažení faktury za určité fakturační období ve formátu PDF.
+-   [Rozhraní API Faktury:](/rest/api/billing/2019-10-01-preview/invoices) Získejte adresu URL pro stažení faktury za určité fakturační období ve formátu PDF.
 
 ### <a name="enterprise-consumption"></a>Podniková spotřeba
 Následující rozhraní API jsou určená jenom pro program Enterprise:
@@ -107,11 +105,11 @@ Následující rozhraní API jsou určená jenom pro program Enterprise:
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Jaký je rozdíl mezi rozhraními Enterprise Reporting API a rozhraními Consumption API? Kdy mám které použít?
-Tato rozhraní API mají podobnou sadu funkcí a můžou odpovědět na stejné obecné otázky týkající se fakturace a správy nákladů. Mají ale různé cílové skupiny: 
+Tato rozhraní API mají podobnou sadu funkcí a můžou odpovědět na stejné obecné otázky týkající se fakturace a správy nákladů. Mají ale různé cílové skupiny:
 
 - Rozhraní Enterprise Reporting API jsou dostupná zákazníkům, kteří s Microsoftem uzavřeli smlouvu Enterprise, která jim zaručuje přístup ke sjednaným peněžním závazkům a vlastním cenám. Tato rozhraní API vyžadují klíč, který můžete získat na webu [Enterprise Portal](https://ea.azure.com). Popis těchto rozhraní API najdete v tématu [Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky](billing-enterprise-api.md).
 
-- Rozhraní Consumption API jsou s několika výjimkami dostupná všem zákazníkům. Další informace najdete v tématech [Přehled rozhraní API služby Azure Consumption](billing-consumption-api-overview.md) a [Referenční informace o rozhraní Azure Consumption API](https://docs.microsoft.com/rest/api/consumption/). Poskytnutá API doporučujeme jako řešení pro nejnovější scénáře vývoje. 
+- Rozhraní Consumption API jsou s několika výjimkami dostupná všem zákazníkům. Další informace najdete v tématech [Přehled rozhraní API služby Azure Consumption](billing-consumption-api-overview.md) a [Referenční informace o rozhraní Azure Consumption API](https://docs.microsoft.com/rest/api/consumption/). Poskytnutá API doporučujeme jako řešení pro nejnovější scénáře vývoje.
 
 ### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Jaký je rozdíl mezi rozhraním API Podrobnosti využití a rozhraním API Využití?
 Tato rozhraní API poskytují zásadně odlišná data:
@@ -126,7 +124,7 @@ Tato rozhraní API poskytují zásadně odlišná data:
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Jaký je rozdíl mezi rozhraním API Faktura a rozhraním API Podrobnosti využití?
 Tato rozhraní API poskytují různé zobrazení stejných dat:
 
-- [Rozhraní API Faktura](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) je určené jenom zákazníkům programu Web Direct. Poskytuje měsíční souhrn vaší faktury na základě souhrnných poplatků za jednotlivé typy měřičů. 
+- [Rozhraní API Faktura](/rest/api/billing/2019-10-01-preview/invoices) je určené jenom zákazníkům programu Web Direct. Poskytuje měsíční souhrn vaší faktury na základě souhrnných poplatků za jednotlivé typy měřičů.
 
 - [Rozhraní API Podrobnosti využití](https://docs.microsoft.com/rest/api/consumption/usagedetails) poskytuje podrobné zobrazení záznamů o využití/nákladech za každý den. Můžou je využívat zákazníci programu Enterprise i Web Direct.
 

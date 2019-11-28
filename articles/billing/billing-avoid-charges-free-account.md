@@ -4,23 +4,23 @@ description: Zjistěte, proč se vám za bezplatný účet Azure účtují popla
 author: amberbhargava
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ca685e70fea8d02a16485b135d82575069889bfa
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 9f75b630dd26e2cdef009771ad5e09cc3d230449
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375907"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226443"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Jak se vyhnout poplatkům na bezplatném účtu Azure
 
-S [bezplatným účtem Azure](https://azure.microsoft.com/free/) získáte 200 USD v kreditech Azure na prvních 30 dnů a omezené množství bezplatných služeb na 12 měsíců. Informace o limitech bezplatných služeb najdete v tématu [Nejčastější dotazy k bezplatnému účtu Azure](https://azure.microsoft.com/free/free-account-faq/). Dokud máte nevyčerpaný kredit nebo využíváte pouze bezplatné služby v rámci příslušných limitů, neúčtují se vám žádné poplatky. 
+S [bezplatným účtem Azure](https://azure.microsoft.com/free/) získáte 200 USD v kreditech Azure na prvních 30 dnů a omezené množství bezplatných služeb na 12 měsíců. Informace o limitech bezplatných služeb najdete v tématu [Nejčastější dotazy k bezplatnému účtu Azure](https://azure.microsoft.com/free/free-account-faq/). Dokud máte nevyčerpaný kredit nebo využíváte pouze bezplatné služby v rámci příslušných limitů, neúčtují se vám žádné poplatky.
 
 Teď se podíváme na některé důvody, kvůli kterým se vám na bezplatném účtu Azure můžou účtovat poplatky.
 

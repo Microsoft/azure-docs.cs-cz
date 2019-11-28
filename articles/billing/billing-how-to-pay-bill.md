@@ -2,25 +2,22 @@
 title: Placení vyúčtování služeb Microsoft Azure | Microsoft Docs
 description: Popisuje způsob platby faktury na webu Azure Portal.
 keywords: billing, past due, balance, pay now,
-services: billing
-documentationcenter: ''
 author: jureid
 manager: jureid
-editor: ''
 tags: billing, past due, pay now, bill, invoice, pay
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 4df0939137a529dd35f8f61ff90ee6da43ec5d61
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 68c9838fc374bd3bd8a4d25f3d6f1c4bdace8e95
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709671"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226192"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Postup placení vyúčtování služeb Microsoft Azure
 
@@ -50,7 +47,7 @@ Pokud chcete platit faktury na webu Azure Portal, musíte být vlastníkem, při
 1. V novém okně klikněte na **Vybrat způsob platby** a zvolte existující platební kartu nebo přidejte novou.<!-- screenshot of select payment method link -->
 1. Jakmile je vybraný způsob platby, klikněte na **Zaplatit**.
 
-Stav faktury se v okně faktury aktualizuje na zaplaceno. 
+Stav faktury se v okně faktury aktualizuje na zaplaceno.
 
 <!-- pay now from invoice blade -->
 

@@ -4,19 +4,19 @@ description: Zjistěte, jak číst různé oddíly souboru CSV s informacemi o v
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: c0c43c779affb4edca78def95906f5adfcc6fac4
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: b46c635b28d693cb0d6ab9e643a8a1ee9e55fc64
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709469"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226091"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Výrazy v souboru s informacemi o využití Azure a poplatcích pro smlouvu se zákazníkem Microsoftu
 

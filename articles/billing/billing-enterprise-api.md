@@ -8,19 +8,19 @@ manager: mumami
 editor: ''
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: f5d549006961f3108bf7155610dfb3a9ea78422a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 513dac3a1cdcefa7a49116ea02af5410265af3ec
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719783"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226255"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky
 Rozhraní API pro generování sestav umožňují podnikovým zákazníkům Azure programově předávat data o spotřebě a fakturaci do upřednostňovaných nástrojů pro analýzu dat. Podnikoví zákazníci uzavřeli s Azure [smlouvu Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), ve které si vyjednali určité peněžní závazky a která jim poskytuje přístup k vlastním cenám prostředků Azure.
@@ -31,20 +31,20 @@ Rozhraní API pro generování sestav umožňují podnikovým zákazníkům Azur
 
 |Klíč v hlavičce požadavku | Hodnota|
 |-|-|
-|Autorizace| Zadejte hodnotu v tomto formátu: **bearer {KLÍČ_API}** . <br/> Příklad: bearer eyr....09| 
+|Autorizace| Zadejte hodnotu v tomto formátu: **bearer {KLÍČ_API}** . <br/> Příklad: bearer eyr....09|
 
 ## <a name="consumption-apis"></a>Rozhraní API s informacemi o spotřebě
-Pro níže popsaná rozhraní API je [tady](https://consumption.azure.com/swagger/ui/index) dostupný koncový bod Swagger, který by měl umožňovat snadnou introspekci rozhraní API a měl by poskytovat možnost generovat klientské sady SDK pomocí nástroje [AutoRest](https://github.com/Azure/AutoRest) nebo [Swagger CodeGen](https://swagger.io/swagger-codegen/). Prostřednictvím tohoto rozhraní API jsou dostupná data od 1. května 2014. 
+Pro níže popsaná rozhraní API je [tady](https://consumption.azure.com/swagger/ui/index) dostupný koncový bod Swagger, který by měl umožňovat snadnou introspekci rozhraní API a měl by poskytovat možnost generovat klientské sady SDK pomocí nástroje [AutoRest](https://github.com/Azure/AutoRest) nebo [Swagger CodeGen](https://swagger.io/swagger-codegen/). Prostřednictvím tohoto rozhraní API jsou dostupná data od 1. května 2014.
 
 * **Zůstatek a souhrn:** [Rozhraní API Zůstatek a souhrn](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) nabízí měsíční přehled informací o zůstatcích, nových nákupech, poplatcích ve službě Azure Marketplace, úpravách a poplatcích za nadlimitní využití.
 
-* **Podrobnosti využití:** [Rozhraní API Podrobnosti využití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) poskytuje denní rozpis spotřebovaných prostředků a odhadované poplatky za určitou smlouvu. Výsledek obsahuje také informace o instancích, měřičích a odděleních. Na rozhraní API je možné zadávat dotazy podle fakturačního období nebo podle zadaného počátečního a koncového data. 
+* **Podrobnosti využití:** [Rozhraní API Podrobnosti využití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) poskytuje denní rozpis spotřebovaných prostředků a odhadované poplatky za určitou smlouvu. Výsledek obsahuje také informace o instancích, měřičích a odděleních. Na rozhraní API je možné zadávat dotazy podle fakturačního období nebo podle zadaného počátečního a koncového data.
 
 * **Poplatky za obchod Marketplace:** [Rozhraní API Poplatky za obchod Marketplace](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) vrací rozpis poplatků vzniklých v obchodě na základě využití po jednotlivých dnech, a to pro zadané fakturační období nebo konkrétní počáteční a koncové datum (nezahrnuje jednorázové poplatky).
 
 * **Ceník:** [Rozhraní API Ceník](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) poskytuje platnou sazbu každého měřiče pro danou smlouvu a fakturační období.
 
-* **Podrobnosti o rezervované instanci:** [Rozhraní API Podrobnosti o rezervované instanci](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) vrací informace o využití nákupů rezervovaných instancí. [Rozhraní API Podrobnosti o rezervované instanci](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) uvádí provedené fakturační transakce. 
+* **Podrobnosti o rezervované instanci:** [Rozhraní API Podrobnosti o rezervované instanci](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) vrací informace o využití nákupů rezervovaných instancí. [Rozhraní API Podrobnosti o rezervované instanci](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) uvádí provedené fakturační transakce.
 
 ## <a name="data-freshness"></a>Aktuálnost dat
 Na dotazy na všechna výše uvedená rozhraní API se vrací značky ETag. Změna značky ETag znamená, že došlo k aktualizaci dat.  V následných voláních stejného rozhraní API pomocí stejných parametrů předejte v hlavičce požadavku HTTP získanou značku ETag s klíčem „If-None-Match“. Pokud už se data dál neaktualizovala, bude mít odpověď stavový kód „NotModified“ a nevrátí se žádná data. Pokud došlo ke změně značky ETag, vrátí rozhraní API celou datovou sadu za požadované období.
@@ -60,13 +60,4 @@ Na dotazy na všechna výše uvedená rozhraní API se vrací značky ETag. Změ
 |401| Neautorizováno| Klíč rozhraní API se nedá najít, je neplatný, vypršela jeho platnost atd.|
 |404| Neaktivní| Nenašel se koncový bod sestavy.|
 |400| Chybný požadavek| Neplatné parametry – rozsahy dat, čísla smluv EA atd.|
-|500| Chyba serveru| Neočekávaná chyba při zpracování požadavku| 
-
-
-
-
-
-
-
-
-
+|500| Chyba serveru| Neočekávaná chyba při zpracování požadavku|

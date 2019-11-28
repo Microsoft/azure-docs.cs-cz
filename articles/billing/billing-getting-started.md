@@ -4,19 +4,19 @@ description: Zjistěte, jak se vyhnout neočekávaným poplatkům ve faktuře za
 author: bandersmsft
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 6f7a29adfbd145be11f9f6c91e8e66dd229fed62
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e5cdd7181e680dbc7406118afeb4aeb837d3aaf2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375669"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223912"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Jak zabránit neočekávaným poplatkům pomocí fakturace a řízení nákladů v Azure
 
@@ -68,11 +68,11 @@ Náklady můžete monitorovat pomocí následujících nástrojů:
 
 ### <a name="track-costs-with-budgets-and-cost-alerts"></a>Sledování nákladů s využitím rozpočtů a upozornění na náklady
 
-Pro účely řízení nákladů vytvořte [rozpočty](../cost-management/tutorial-acm-create-budgets.md) a nastavte [upozornění](../cost-management/cost-mgt-alerts-monitor-usage-spending.md), která vás a účastníky automaticky upozorní na anomálie ve výdajích a nadměrné výdaje. 
+Pro účely řízení nákladů vytvořte [rozpočty](../cost-management/tutorial-acm-create-budgets.md) a nastavte [upozornění](../cost-management/cost-mgt-alerts-monitor-usage-spending.md), která vás a účastníky automaticky upozorní na anomálie ve výdajích a nadměrné výdaje.
 
 ### <a name="costs"></a>Zkoumání a analýza nákladů s využitím analýzy nákladů
 
-Po spuštění služeb Azure sledujte svou útratu v Azure tím, že budete pravidelně kontrolovat poplatky. Pomocí analýzy nákladů můžete zjistit původ nákladů na využití Azure. 
+Po spuštění služeb Azure sledujte svou útratu v Azure tím, že budete pravidelně kontrolovat poplatky. Pomocí analýzy nákladů můžete zjistit původ nákladů na využití Azure.
 
 1. Navštivte stránku [Cost Management a fakturace na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade).
 
@@ -166,7 +166,7 @@ Smlouva o úrovni služeb (SLA) popisuje závazky Microsoftu týkající se dost
 
 Kredit si vyžádáte takto:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Pokud máte více účtů, nezapomeňte použít ten, který byl ovlivněn výpadkem Azure. 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Pokud máte více účtů, nezapomeňte použít ten, který byl ovlivněn výpadkem Azure.
 2. Vytvořte novou žádost o podporu.
 3. V seznamu **Typ problému** vyberte **Fakturace**.
 4. V seznamu **Typ problému** vyberte **Žádost o refundaci**.
