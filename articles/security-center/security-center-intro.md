@@ -1,6 +1,6 @@
 ---
 title: Co je Azure Security Center? | Microsoft Docs
-description: Můžete se dozvědět o službě Azure Security Center, jejích klíčových funkcích a způsobu práce.
+description: Tato stránka popisuje klíčové výhody Security Center – zjišťuje stav zabezpečení a zlepšuje se s využitím cloudových a premch prostředků.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: e02fd0de00b8feed15fcd51b657afcc015d816f2
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202104"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558639"
 ---
-# <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
+# <a name="what-is-azure-security-center"></a>Co je Centrum zabezpečení Azure?
 
 Azure Security Center je jednotný systém pro správu zabezpečení infrastruktury, který posílí stav zabezpečení vašich datových center a poskytuje rozšířenou ochranu před hrozbami napříč vašimi hybridními úlohami v cloudu – ať už jsou v Azure, nebo ne, a také místně.
 
@@ -37,11 +37,11 @@ Azure Security Center řeší tři naléhavé problémy se zabezpečením:
 
 Abychom vám pomohli chránit před těmito výzvami, Security Center poskytuje nástroje pro:
 
--   **Posílit zabezpečení stav**: Security Center posuzuje vaše prostředí a umožňuje pochopit stav svých prostředků a to, jestli jsou zabezpečené.
+-   **Posílit zabezpečení stav**: Security Center vyhodnocuje vaše prostředí a umožní vám pochopit stav vašich prostředků a to, jestli jsou zabezpečené.
 
 -   **Ochrana před hrozbami**: Security Center posuzuje vaše úlohy a vyvolává doporučení prevence hrozeb a výstrahy detekce hrozeb.
 
--   **Rychlejší získání zabezpečení**: V Security Center se všechno provádí v rychlosti cloudu. Vzhledem k tomu, že je nativně integrovaná, nasazení Security Center je jednoduché a poskytuje vám možnost autozřizování a ochrana pomocí služeb Azure.
+-   **Rychlejší zabezpečení**: v Security Center se všechno provádí v rychlosti cloudu. Vzhledem k tomu, že je nativně integrovaná, nasazení Security Center je jednoduché a poskytuje vám možnost autozřizování a ochrana pomocí služeb Azure.
 
 ## <a name="architecture"></a>Architektura
 
@@ -63,7 +63,7 @@ Je to základní zabezpečení, které se dozvíte a zajistěte, aby byly vaše 
 
 ![Řídicí panel Security Center](media/security-center-intro/sc-dashboard.png)
 
-Security Center vám pomůže **identifikovat Stínová předplatná**. Zobrazením předplatných, která **nejsou** pokrytá na řídicím panelu, můžete okamžitě zjistit, jestli existují nově vytvořená předplatná, a že jsou pokryté vašimi zásadami a chráněny pomocí Azure Security Center.
+Security Center vám pomůže **identifikovat Stínová předplatná**. Zobrazením předplatných, která **nejsou pokrytá** na řídicím panelu, můžete okamžitě zjistit, jestli existují nově vytvořená předplatná, a že jsou pokryté vašimi zásadami a chráněny pomocí Azure Security Center.
 
 ![Řídicí panel zásad Security Center](media/security-center-intro/sc-policy-dashboard.png)
 
@@ -87,7 +87,7 @@ Security Center zjednodušuje výstrahy zabezpečení o krokování v jednom kro
 
 Srdcová hodnota Azure Security Center leží ve svých doporučeních. Doporučení jsou přizpůsobená konkrétním problémům zabezpečení zjištěným na vašich úlohách a Security Center zajišťuje, aby správce zabezpečení pracoval jenom s vašimi hrozbami, ale poskytoval vám konkrétní pokyny, jak je zbavit.
 
-![Doporučení služby Security Center](media/security-center-intro/sc-recommendations.png)
+![Security Center doporučení](media/security-center-intro/sc-recommendations.png)
 
 Tímto způsobem Security Center umožňuje nejen nastavovat zásady zabezpečení, ale používat standardy zabezpečené konfigurace napříč prostředky.
 
@@ -145,5 +145,5 @@ Rozsáhlá kolekce protokolů – protokoly z Windows a Linux se využívají v 
 
 - Pokud chcete začít využívat Security Center, musíte mít předplatné Microsoft Azure. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 - Cenová úroveň Free služby Security Center je povolená s vaším předplatným Azure. Pokud chcete využívat pokročilé možnosti správy zabezpečení a detekce hrozeb, musíte upgradovat na cenovou úroveň Standard. Úroveň Standard může být vyzkoušená zdarma. Další informace najdete na [stránce s cenami za Security Center](https://azure.microsoft.com/pricing/details/security-center/).
-- Pokud jste připraveni povolit Security Center Standard nyní, [rychlý Start: Připojte si předplatné Azure k Security Center Standard](security-center-get-started.md) vás provede kroky.
+- Pokud už jste připraveni povolit Security Center, článek [Rychlý Start: Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem.
 

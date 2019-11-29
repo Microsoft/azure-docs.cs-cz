@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/23/2019
+ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: c8e0bb50e14467d2950d97da660fc8e6fa176b99
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008897"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566237"
 ---
 Akcelerátor zápisu je schopnost disku pro procesory řady M-Series Virtual Machines (VM) v Premium Storage se výhradně Managed Disks Azure. Jako název uvádíme účel funkce ke zvýšení latence zápisu zápisů do služby Azure Premium Storage v/v. Akcelerátor zápisu je ideálně vhodným způsobem, kdy se aktualizace souboru protokolu vyžadují k uchování na disku vysoce výkonném způsobem pro moderní databáze.
 
@@ -46,12 +46,13 @@ Existují limity pro virtuální počítače Azure Premium Storage, které můž
 
 | SKU VIRTUÁLNÍHO POČÍTAČE | Počet Akcelerátor zápisu disků | Akcelerátor zápisu vstupně-výstupních operací na virtuální počítač |
 | --- | --- | --- |
+| M416ms_v2 M416s_v2| 16 | 20000 |
 | M208ms_v2 M208s_v2| 8 | 10000 |
-| M128ms, 128s | 16 | 20000 |
+| M128ms, M128s | 16 | 20000 |
 | M64ms, M64ls, M64s | 8 | 10000 |
 | M32ms, M32ls, M32ts, M32s | 4 | 5000 |
 | M16ms, M16s | 2 | 2500 |
-| M8ms, M8s | 1 | 1250 |
+| M8ms, M8s | 1\. místo | 1250 |
 
 Omezení IOPS jsou vázaná na virtuální počítač a *ne* na disk. Všechny Akcelerátor zápisu disky sdílí stejný limit počtu IOPS na virtuální počítač.
 
@@ -59,7 +60,7 @@ Omezení IOPS jsou vázaná na virtuální počítač a *ne* na disk. Všechny A
 
 V následujících částech se dozvíte, jak můžete Akcelerátor zápisu povolit na virtuálních pevných discích Azure Premium Storage.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Následující požadavky se vztahují na použití Akcelerátor zápisu v tomto okamžiku:
 
@@ -88,8 +89,8 @@ Pokud parametr nezadáte, nastaví ve výchozím nastavení vlastnost na hodnotu
 
 Do následujících **rutin se přidal** nový volitelný logický parametr (bez hodnoty null):
 
-- [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
-- [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
+- [Update – AzVM](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
+- [Update – AzVmss](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
 
 Zadejte buď $true, nebo $false k řízení podpory služby Azure Akcelerátor zápisu na discích.
 

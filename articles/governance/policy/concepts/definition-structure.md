@@ -1,33 +1,33 @@
 ---
 title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: afb06771422b2f8117383b0bde711dc3e1a4d238
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 93b03622f03c095a61291f4a6d25284e5052c35a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279457"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555182"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
-Definice zásad prostředků používají k navázání vytváření názvů pro prostředky Azure Policy. Každá definice popisuje dodržování předpisů prostředkem a co projeví má provést, když prostředek se jako nevyhovující.
-Definuje konvence, můžete řídit náklady a snadněji spravovat vaše prostředky. Například můžete určit, zda jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby všechny prostředky měly konkrétní značku. Všechny podřízené prostředky dědí zásady. Pokud zásady se použijí pro skupinu prostředků, se vztahuje na všechny prostředky v příslušné skupině prostředků.
+Definice zásad prostředků používá Azure Policy k navázání konvencí pro prostředky. Každá definice popisuje dodržování předpisů a postup, který se má provést v případě nedodržení prostředku.
+Definováním konvencí můžete řídit náklady a snadněji spravovat prostředky. Můžete například určit, že jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby všechny prostředky měly konkrétní značku. Zásady se dědí ze všech podřízených prostředků. Pokud se zásada použije pro skupinu prostředků, vztahuje se na všechny prostředky v této skupině prostředků.
 
 Schéma definice zásad najdete tady: [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
 
-Vytvoření definice zásady pomocí JSON. Definice zásady obsahuje elementy pro:
+K vytvoření definice zásady použijete JSON. Definice zásad obsahuje prvky pro:
 
-- režim
+- Mode
 - parameters
-- Zobrazovaný název
-- Popis
+- Zobrazované jméno
+- description
 - pravidlo zásad
-  - logické hodnocení
-  - Efekt
+  - logické vyhodnocení
+  - až
 
-Například následující kód JSON ukazuje zásadu, která omezí, ve které jsou nasazené prostředky:
+Například následující JSON zobrazuje zásadu, která omezuje, kde jsou prostředky nasazeny:
 
 ```json
 {
@@ -69,7 +69,7 @@ Všechny ukázky Azure Policy jsou na [Azure Policy Samples](../samples/index.md
 
 ### <a name="resource-manager-modes"></a>Správce prostředků režimy
 
-**Režim** určuje, které typy prostředků se budou vyhodnocovat pro zásady. Jsou podporované režimy:
+**Režim** určuje, které typy prostředků se budou vyhodnocovat pro zásady. Podporované režimy:
 
 - `all`: vyhodnotit skupiny prostředků a všechny typy prostředků
 - `indexed`: vyhodnotit jenom typy prostředků, které podporují značky a umístění.
@@ -92,11 +92,11 @@ V současné době jsou podporovány následující režimy poskytovatele prost�
 
 ## <a name="parameters"></a>Parametry
 
-Parametry pomáhají zjednodušit správu zásad snížením počtu definic zásad. Představte si parametry jako pole ve formuláři – `name`, `address`, `city``state`. Tyto parametry vždy stejné, ale změnit jejich hodnoty podle jednotlivých vyplňování formuláře.
-Parametry fungovat stejným způsobem jako při vytváření zásad. Včetně parametrů v definici zásad, můžete využít této zásadě pro různé scénáře pomocí různých hodnot.
+Parametry vám pomůžou zjednodušit správu zásad tím, že se sníží počet definic zásad. Představte si parametry jako pole ve formuláři – `name`, `address`, `city``state`. Tyto parametry vždy zůstávají stejné, ale jejich hodnoty se změní na základě jednotlivých vyplňování formuláře.
+Parametry fungují stejným způsobem při vytváření zásad. Zahrnutím parametrů do definice zásady můžete tuto zásadu použít pro různé scénáře pomocí různých hodnot.
 
 > [!NOTE]
-> Parametry mohou být přidány do existující a přiřazené definice. Nový parametr musí zahrnovat vlastnost **DefaultValue** . To zabrání existující přiřazení zásady nebo iniciativa nepřímo prováděné neplatný.
+> Parametry mohou být přidány do existující a přiřazené definice. Nový parametr musí zahrnovat vlastnost **DefaultValue** . To brání tomu, aby se stávající přiřazení zásady nebo iniciativy od nepřímo neplatně vytvořila.
 
 ### <a name="parameter-properties"></a>Vlastnosti parametru
 
@@ -165,20 +165,20 @@ V rámci vlastnosti `metadata` můžete použít **strongType** k poskytnutí se
 
 ## <a name="definition-location"></a>Umístění definice
 
-Při vytváření iniciativy nebo zásady, je nutné zadat umístění definice. Umístění definice musí být skupinu pro správu nebo předplatného. Toto umístění Určuje obor, ke které je možné přiřadit iniciativy nebo zásady. Prostředky musí být přímými členy nebo podřízené prvky v rámci hierarchie umístění definice cílit na přiřazení.
+Při vytváření iniciativy nebo zásad je nutné zadat umístění definice. Umístění definice musí být skupina pro správu nebo předplatné. Toto umístění určuje obor, do kterého lze iniciativu nebo zásadu přiřadit. Prostředky musí být přímé členy nebo podřízené položky v rámci hierarchie umístění definice na cíl pro přiřazení.
 
 Pokud je umístění definice:
 
 - Zásadu můžou přiřadit jenom prostředky v rámci daného **předplatného** .
-- Zásadu můžou přiřadit jenom prostředky v rámci podřízených skupin **pro správu a** podřízených předplatných. Pokud budete chtít použít definici zásady pro několik předplatných, musí být umístění skupiny pro správu, který obsahuje těchto předplatných.
+- Zásadu můžou přiřadit jenom prostředky v rámci podřízených skupin **pro správu a** podřízených předplatných. Pokud plánujete použít definici zásady pro několik předplatných, umístění musí být skupina pro správu, která obsahuje tyto odběry.
 
-## <a name="display-name-and-description"></a>Zobrazovaný název a popis
+## <a name="display-name-and-description"></a>Zobrazované jméno a popis
 
 K identifikaci definice zásad a zadání kontextu, kdy se má použít, můžete použít **DisplayName** a **Description** . hodnota **DisplayName** má maximální délku _128_ znaků a **popis** nesmí být delší než _512_ znaků.
 
 ## <a name="policy-rule"></a>Pravidlo zásad
 
-Pravidlo zásad se skládá z **if** a **pak** Block. V bloku **if** můžete definovat jednu nebo více podmínek, které určují, kdy se zásada vynutila. Tyto podmínky přesně definovat scénář pro zásady můžete použít logické operátory.
+Pravidlo zásad se skládá z **if** a **pak** Block. V bloku **if** můžete definovat jednu nebo více podmínek, které určují, kdy se zásada vynutila. Můžete použít logické operátory na tyto podmínky a přesně tak definovat scénář pro zásady.
 
 V bloku **potom** definujete efekt, který nastane, když jsou splněny podmínky **if** .
 
@@ -203,7 +203,7 @@ Podporované logické operátory jsou:
 
 Syntaxe **Not** převertuje výsledek podmínky. Syntaxe **allOf** (podobná logické hodnotě **a** operaci) vyžaduje splnění všech podmínek. Syntaxe **anyOf** (podobná logické hodnotě **nebo** operaci) vyžaduje splnění jedné nebo více podmínek.
 
-Logické operátory lze vnořit. Následující příklad ukazuje, že operace **není** vnořena v rámci operace **allOf** .
+Logické operátory můžete vnořovat. Následující příklad ukazuje, že operace **není** vnořena v rámci operace **allOf** .
 
 ```json
 "if": {
@@ -223,7 +223,7 @@ Logické operátory lze vnořit. Následující příklad ukazuje, že operace *
 
 ### <a name="conditions"></a>Podmínky
 
-Podmínka vyhodnocuje, zda **pole** nebo **hodnota** přistupující objekty splňují určitá kritéria. Jsou podporované podmínky:
+Podmínka vyhodnocuje, zda **pole** nebo **hodnota** přistupující objekty splňují určitá kritéria. Podporované podmínky jsou:
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -253,13 +253,13 @@ Při **porovnávání** a **notMatch** se rozlišují velká a malá písmena. A
 
 ### <a name="fields"></a>Fields (Pole)
 
-Podmínky jsou vytvářena pomocí polí. Pole odpovídá vlastnosti datové části požadavku prostředků a popisuje stav prostředku.
+Podmínky jsou tvořeny pomocí polí. Pole odpovídá vlastnostem v datové části požadavku prostředku a popisuje stav prostředku.
 
-Podporovány jsou následující pole:
+Podporují se následující pole:
 
 - `name`
 - `fullName`
-  - Vrátí úplný název prostředku. Úplný název prostředku je název prostředku předcházený žádné nadřazené názvy prostředků (například "myServer/databáze").
+  - Vrátí úplný název prostředku. Úplný název prostředku je název prostředku, který předchází všechny názvy nadřazených prostředků (například "myServer/myDatabase").
 - `kind`
 - `type`
 - `location`
@@ -394,6 +394,146 @@ Místo toho použijte funkci [if ()](../../../azure-resource-manager/resource-gr
 
 Pomocí revidovaného pravidla zásad `if()` zkontroluje délku **názvu** a potom se pokusí získat `substring()` na hodnotu, která má méně než tři znaky. Pokud je **název** příliš krátký, je místo toho vrácena hodnota "nezačíná na ABC" a porovnána s **ABC**. Prostředek s krátkým názvem, který nezačíná na **ABC** , se stále neúspěšně stane pravidlem zásad, ale během vyhodnocování se nestane příčinou chyby.
 
+### <a name="count"></a>Počet
+
+Podmínky, které počítají, kolik členů pole v datové části prostředků, které odpovídají výrazu podmínky, mohou být tvořeny pomocí výrazu **Count** . Běžné scénáře kontrolují, jestli alespoň jedno z ', ' přesně jedno z ', ' vše z ' nebo ' žádné z ', které členové pole splní. funkce **Count** vyhodnocuje jednotlivé členy pole pro výraz podmínky a sečte _skutečné_ výsledky, které jsou pak porovnány s operátorem výrazu.
+
+Struktura výrazu **Count** je:
+
+```json
+{
+    "count": {
+        "field": "<[*] alias>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+Pro **počet**se používají tyto vlastnosti:
+
+- **Count. Field** (Required): obsahuje cestu k poli a musí se jednat o alias pole. Pokud pole chybí, je výraz vyhodnocen jako _nepravdivý_ bez zvážení výrazu podmínky.
+- **Count. Where** (volitelné): výraz podmínky pro individuální vyhodnocení každého [\[\*\]](#understanding-the--alias) člena pole alias **Count. Field**. Pokud tato vlastnost není zadána, jsou všechny členy pole s cestou pole vyhodnoceny na _hodnotu true_. V této vlastnosti lze použít jakoukoli [podmínku](../concepts/definition-structure.md#conditions) .
+  [Logické operátory](#logical-operators) lze použít uvnitř této vlastnosti k vytvoření složitých požadavků na vyhodnocení.
+- **\>podmínky\<** (povinné): hodnota je porovnána s počtem položek, které splnily výraz **Count. Where** podmínky. Měla by se použít číselná [Podmínka](../concepts/definition-structure.md#conditions) .
+
+#### <a name="count-examples"></a>Příklady počtu
+
+Příklad 1: zjištění, zda je pole prázdné
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]"
+    },
+    "equals": 0
+}
+```
+
+Příklad 2: zkontrolování pouze jednoho člena pole pro splnění výrazu podmínky
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My unique description"
+        }
+    },
+    "equals": 1
+}
+```
+
+Příklad 3: Vyhledání alespoň jednoho člena pole pro splnění výrazu podmínky
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My common description"
+        }
+    },
+    "greaterOrEquals": 1
+}
+```
+
+Příklad 4: Ověřte, že všechny členy pole objektů splňují výraz podmínky.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "description"
+        }
+    },
+    "equals": "[length(field(Microsoft.Network/networkSecurityGroups/securityRules[*]))]"
+}
+```
+
+Příklad 5: Ověřte, že všechny členy pole řetězců splňují výraz podmínky.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+        "where": {
+            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+            "like": "*@contoso.com"
+        }
+    },
+    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
+}
+```
+
+Příklad 6: použití **pole** uvnitř **hodnoty** ke kontrole, že všichni členové pole splňují výraz podmínky
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+        "where": {
+            "value": "[last(split(first(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]')), '@'))]",
+            "equals": "contoso.com"
+        }
+    },
+    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
+}
+```
+
+Příklad 7: Ověřte, že aspoň jeden člen pole odpovídá více vlastnostem ve výrazu podmínky.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "allOf": [
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                    "equals": "Inbound"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                    "equals": "Allow"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                    "equals": "3389"
+                }
+            ]
+        }
+    },
+    "greater": 0
+}
+```
+
 ### <a name="effect"></a>Efekt
 
 Azure Policy podporuje následující typy účinku:
@@ -415,13 +555,13 @@ Podrobné informace o každém z efektů, pořadí vyhodnocení, vlastností a p
 Pro použití v rámci pravidla zásad jsou k dispozici všechny [funkce šablon Správce prostředků](../../../azure-resource-manager/resource-group-template-functions.md) , s výjimkou následujících funkcí a uživatelsky definovaných funkcí:
 
 - copyIndex()
-- deployment()
+- nasazení ()
 - seznamu
 - newGuid()
 - pickZones()
 - Zprostředkovatelé ()
 - Reference ()
-- resourceId()
+- resourceId ()
 - proměnné ()
 
 Následující funkce jsou k dispozici pro použití v pravidle zásad, ale liší se od použití v šabloně Azure Resource Manager:
@@ -454,9 +594,9 @@ Tato ukázka pravidla zásad používá funkci `resourceGroup` prostředků k z�
 
 ## <a name="aliases"></a>Aliasy
 
-Vlastnost aliasy používáte pro přístup k určité vlastnosti pro typ prostředku. Aliasy umožňují omezit, jaké hodnoty nebo podmínky jsou povolena pro vlastnost prostředku. Každý alias namapuje cesty v různých verzích rozhraní API pro typ daný prostředek. Modul zásad během hodnocení zásad, získá vlastnost cesty pro tuto verzi rozhraní API.
+Aliasy vlastností se používají pro přístup ke specifickým vlastnostem pro typ prostředku. Aliasy umožňují omezit, jaké hodnoty nebo podmínky jsou povoleny pro vlastnost v prostředku. Každý alias se mapuje na cesty v různých verzích rozhraní API pro daný typ prostředku. Během hodnocení zásad získá modul zásad cestu k vlastnosti pro tuto verzi rozhraní API.
 
-Seznam aliasů se pořád rozrůstá. Pokud chcete zjistit, jaké aliasy jsou aktuálně podporovány službou Azure Policy, použijte jednu z následujících metod:
+Seznam aliasů se vždycky zvětšuje. Chcete-li zjistit, které aliasy jsou aktuálně podporovány nástrojem Azure Policy, použijte jednu z následujících metod:
 
 - Azure PowerShell
 
@@ -482,22 +622,23 @@ Seznam aliasů se pořád rozrůstá. Pokud chcete zjistit, jaké aliasy jsou ak
   az provider show --namespace Microsoft.Compute --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
   ```
 
-- Rozhraní REST API / ARMClient
+- REST API/ARMClient
 
   ```http
   GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
   ```
 
-### <a name="understanding-the--alias"></a>Principy alias [*]
+### <a name="understanding-the--alias"></a>Princip aliasu [*]
 
-Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další s připojeným **[\*]** . Příklad:
+Několik dostupných aliasů má verzi, která se zobrazuje jako "normální" název a druhá, která má **\[\*\]** k ní připojená. Například:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 Alias ' Normal ' představuje pole jako jedinou hodnotu. Toto pole je určeno pro přesné scénáře porovnání shody, pokud celá sada hodnot musí být přesně definovaná, a ne více a méně.
 
-Alias **[\*]** umožňuje porovnání s hodnotou každého prvku v poli a specifickými vlastnostmi každého prvku. Tento přístup umožňuje porovnat vlastnosti elementu pro ' Pokud žádný z ', ', pokud je to u všech scénářů ', ', ', '. Pomocí **ipRules [\*]** může příklad ověřit, že každá _Akce_ je _Zamítnutá_, ale bez obav o tom, kolik pravidel existuje nebo jaká je _hodnota_ IP. Toto ukázkové pravidlo vyhledá všechny shody **ipRules [\*]. Value** to **10.0.4.1** a použije **effectType** pouze v případě, že nenajde alespoň jednu shodu:
+Alias **\[\*\]** umožňuje porovnat s hodnotou každého prvku v poli a určit vlastnosti každého prvku. Tento přístup umožňuje porovnat vlastnosti elementu pro ' Pokud žádný z ', ', pokud je to u všech scénářů ', ', ', '. U složitějších scénářů použijte výraz podmínky [Count](#count) . Pomocí **ipRules\[\*\]** je třeba ověřit, že každá _Akce_ je _Zamítnutá_, ale nedělejte si starosti, kolik pravidel existuje nebo jaká je _hodnota_ IP.
+Toto ukázkové pravidlo vyhledá všechny shody **ipRules\[\*\]. Value** to **10.0.4.1** a použije **effectType** pouze v případě, že nenajde alespoň jednu shodu:
 
 ```json
 "policyRule": {
@@ -519,13 +660,15 @@ Alias **[\*]** umožňuje porovnání s hodnotou každého prvku v poli a specif
 }
 ```
 
+
+
 Další informace najdete v tématu [vyhodnocení aliasu [\*]](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ## <a name="initiatives"></a>Iniciativy
 
-Iniciativy umožňují seskupit několik definic zásad souvisejících ke zjednodušení přiřazení a správy, protože pracujete s skupinu jako jednu položku. Například můžete seskupovat související označení definice zásad do jednoho initiative. Místo toho každé zásady zvlášť, můžete použít iniciativy.
+Iniciativy umožňují seskupit několik souvisejících definic zásad, které zjednodušují přiřazování a správu, protože pracujete se skupinou jako s jednou položkou. Můžete například seskupit související definice zásad označování do jedné iniciativy. Místo toho, abyste každou zásadu přiřadíte jednotlivě, můžete použít iniciativu.
 
-Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvou značek: `costCenter` a `productName`. Využívá dvě předdefinované zásady použít výchozí hodnotu značky.
+Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvou značek: `costCenter` a `productName`. Pomocí dvou předdefinovaných zásad použije výchozí hodnotu značky.
 
 ```json
 {

@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7ea98baa9cb202e2584c18998c5ab96d1c1f9e5a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012657"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561380"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnění omezení pro snížení latence v Azure Time Series Insights
 
@@ -42,13 +42,13 @@ Máte pravděpodobně na latenci a omezení, když máte tyto možnosti:
 
 Výstrahy vám můžou pomáhat diagnostikovat a zmírnit problémy latence způsobené vaším prostředím.
 
-1. V Azure Portal vyberte **výstrahy**.
+1. V Azure Portal vyberte své prostředí Time Series Insights. Pak vyberte **výstrahy**.
 
-   [Výstrahy ![](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![přidání výstrahy do prostředí Time Series Insights](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. Zobrazí se panel **vytvořit pravidlo** . Vyberte **Přidat** pod **podmínkou**.
 
-   [![přidat výstrahu](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [![přidat podokno výstrah](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
 1. Dále nakonfigurujte přesné podmínky pro logiku signálu.
 
@@ -70,11 +70,11 @@ Výstrahy vám můžou pomáhat diagnostikovat a zmírnit problémy latence způ
 
 1. Po nakonfigurování požadované logiky signálu si prohlédněte zvolené pravidlo výstrahy vizuálně.
 
-   [![příchozí přenosy](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [zobrazení latence ![a vytváření grafů](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png)](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Omezování a správa pro příchozí přenosy
 
-* Pokud se omezíte, zobrazí se hodnota *prodlevy přijatých zpráv příchozího*přenosu dat, která informuje o tom, kolik sekund má vaše prostředí Time Series Insights od skutečné doby, kdy zpráva narazí na zdroj události (s výjimkou času indexování. appx. 30-60 sekund).  
+* Pokud se omezíte, zobrazí se hodnota *prodlevy při příchozím příjmu zpráv*, která vás informuje o tom, kolik sekund má vaše prostředí Time Series Insights od skutečné doby, kdy zpráva narazí na zdroj události (s výjimkou času indexování appx). 30-60 sekund).  
 
   *Prodleva počtu přijatých zpráv příchozího* přenosu dat by měla mít také hodnotu, která vám umožní určit, kolik zpráv je za vás.  Nejjednodušší způsob, jak se získat, je zvýšit kapacitu vašeho prostředí na velikost, která vám umožní překonat rozdíl.  
 

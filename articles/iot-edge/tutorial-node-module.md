@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 16212f7229dc84b9495976bd40b6d48b3f2686bd
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7b723b4a5ef35b17514181b622f68d00c1f3ecee
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457647"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560945"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení IoT Edge modul Node. js pro zařízení se systémem Linux
 
@@ -44,7 +44,7 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 | **Linux AMD64** | ![Použití VS Code pro moduly node. js v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Použití VS Code pro moduly node. js v systému Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení některého z těchto kurzů byste měli mít následující požadavky: 
 
@@ -139,7 +139,7 @@ Každá šablona obsahuje vzorový kód, který obsahuje Simulovaná data senzor
 
     ```
 
-4. Ve funkci `pipeMessage` nahraďte funkci s názvem `filterMessage` funkcí s názvem `client.on()`.
+4. Ve funkci `client.on()` nahraďte funkci s názvem `pipeMessage` funkcí s názvem `filterMessage`.
 
     ```javascript
     client.on('inputMessage', function (inputName, msg) {
@@ -177,14 +177,14 @@ Každá šablona obsahuje vzorový kód, který obsahuje Simulovaná data senzor
      }
    ```
 
-   ![Dvojče zařízení přidat do šablony nasazení](./media/tutorial-node-module/module-twin.png)
+   ![Přidat nevlákenný modul do šablony nasazení](./media/tutorial-node-module/module-twin.png)
 
 9. Uložte soubor Deployment. template. JSON.
 
 
 ## <a name="build-and-push-your-module"></a>Sestavení a vložení modulu
 
-V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do NodeModule, který odfiltruje zprávy, kde je hlášená teplota počítače v přípustných mezích. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
+V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do NodeModule, který odfiltruje zprávy, kde je hlášená teplota počítače v přípustných mezích. Teď je potřeba sestavit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
 1. Výběrem **View** (Zobrazit) > **Terminal** (Terminál) otevřete integrovaný terminál VS Code.
 
@@ -250,7 +250,9 @@ Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto čl�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili modul IoT Edge obsahující kód pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji vlastních modulů IoT Edge](module-development.md) nebo o [vývoji modulů pomocí Visual Studio Code](how-to-vs-code-develop-module.md). V dalších kurzech můžete pokračovat a zjistit, jak vám Azure IoT Edge může pomáhat s nasazením cloudových služeb Azure pro zpracování a analýzu dat na hraničních zařízeních.
+V tomto kurzu jste vytvořili modul IoT Edge obsahující kód pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji vlastních modulů IoT Edge](module-development.md) nebo o [vývoji modulů pomocí Visual Studio Code](how-to-vs-code-develop-module.md). Příklady modulů IoT Edge, včetně modulu simulované teploty, najdete v tématu [ukázky IoT Edge modulů](https://github.com/Azure/iotedge/tree/master/edge-modules). 
+
+V dalších kurzech můžete pokračovat a zjistit, jak vám Azure IoT Edge může pomáhat s nasazením cloudových služeb Azure pro zpracování a analýzu dat na hraničních zařízeních.
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)

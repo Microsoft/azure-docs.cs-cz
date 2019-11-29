@@ -1,6 +1,6 @@
 ---
-title: Zásady správného řízení infrastruktury Azure DevTest Labs
-description: Tento článek obsahuje pokyny pro zásady správného řízení infrastruktury Azure DevTest Labs.
+title: Správa nákladů a vlastnictví v Azure DevTest Labs
+description: Tento článek poskytuje informace, které vám pomůžou s optimalizací a vyrovnáním vlastnictví napříč vaším prostředím.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,56 +10,56 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 7832691812d8f10342dc7df20a7cfab7265f2d9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b82d338f85f1b43712296ac7f27bdad55f8f1919
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775708"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561661"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – Správa nákladů a vlastnictví
-Náklady a vlastnictví jsou primární obavy, když zvažte sestavení vaše vývojové a testovací prostředí. V této části najdete informace, které vám pomůže optimalizovat náklady a zarovnat vlastnictví napříč vaším prostředím.
+Náklady a vlastnictví jsou primárními aspekty, když zvažte vytvoření vývojových a testovacích prostředí. V této části najdete informace, které vám pomůžou s optimalizací a vyrovnáním vlastnictví napříč vaším prostředím.
 
-## <a name="optimize-for-cost"></a>Optimalizace nákladů
+## <a name="optimize-for-cost"></a>Optimalizovat pro náklady
 
 ### <a name="question"></a>Otázka
-Jak se můžete optimalizovat náklady v rámci mého prostředí DevTest Labs?
+Jak se dá optimalizovat pro náklady v prostředí DevTest Labs?
 
 ### <a name="answer"></a>Odpověď
-Existují celou řadou integrovaných funkcí služby DevTest Labs, který vám pomůže optimalizovat náklady. Naleznete v tématu [náklady správy prahy](devtest-lab-configure-cost-management.md) [, zásady a](devtest-lab-set-lab-policy.md) články k omezení aktivity vašich uživatelů. 
+Existuje řada integrovaných funkcí DevTest Labs, které vám pomůžou optimalizovat náklady. Pokud chcete omezit aktivity vašich uživatelů, přečtěte si článek [Správa nákladů, prahové hodnoty](devtest-lab-configure-cost-management.md) [a zásady](devtest-lab-set-lab-policy.md) . 
 
-Jak využívat DevTest Labs pro vývojová a testovací úlohy, můžete zvážit použití [zvýhodněné předplatné Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/), jako součást vaší smlouvy Enterprise. Případně, pokud jste zákazník s průběžnými platbami, můžete chtít zvážit [platit jako můžete přejít DevTest nabídka](https://azure.microsoft.com/offers/ms-azr-0023p/).
+Pokud používáte DevTest Labs pro vývojové a testovací úlohy, můžete zvážit použití [výhod Enterprise pro vývoj/testování předplatného](https://azure.microsoft.com/offers/ms-azr-0148p/)v rámci smlouva Enterprise. Případně, pokud se platíte jako zákazník, možná budete chtít vzít v úvahu [nabídku s průběžnými platbami za DevTest](https://azure.microsoft.com/offers/ms-azr-0023p/).
 
-Tento přístup vám poskytuje řadu výhod:
+Tento přístup poskytuje mnoho výhod:
 
-- Speciální nižší sazby pro vývoj/testování pro Windows virtual machines, cloud services, HDInsight, App Service a Logic Apps
-- Skvělé sazby Enterprise Agreement (EA) na ostatní služby Azure
+- Speciální nižší sazby pro vývoj a testování na virtuálních počítačích s Windows, Cloud Services, HDInsight, App Service a Logic Apps
+- Skvělé smlouva Enterprise (EA) tarify dalších služeb Azure
 - Přístup k exkluzivním imagím pro vývoj/testování v Galerii, včetně Windows 8.1 a Windows 10
  
-Prostředky Azure v rámci podniku předplatného pro vývoj/testování můžou používat jenom aktivní předplatitelé sady Visual Studio (standardní předplatná, roční Cloudová předplatná a měsíční Cloudová předplatná). Ale koncoví uživatelé přístup k aplikaci poskytnout zpětnou vazbu nebo provádět předávací testy. Využívání prostředků v rámci tohoto předplatného je omezené na vývoj a testování aplikací a neexistuje žádná garance doby provozu.
+Prostředky Azure běžící v rámci předplatného Enterprise pro vývoj/testování můžou používat jenom aktivní předplatitelé sady Visual Studio (standardní předplatná, roční cloudová předplatná a měsíční předplatné cloudu). Koncoví uživatelé ale mají k aplikaci přístup, aby mohli poskytovat zpětnou vazbu nebo provádět testy pro přijetí. Využívání prostředků v rámci tohoto předplatného je omezené na vývoj a testování aplikací a neexistuje žádná garance doby provozu.
 
-Pokud se rozhodnete použít nabídku DevTest, mějte na paměti, že tato výhoda je určená pro vývoj a testování aplikací. Používání v rámci předplatného není vázané žádnou finančně jištěnou smlouvu SLA, s výjimkou použití Azure DevOps a HockeyApp.
+Pokud se rozhodnete použít nabídku DevTest, mějte na paměti, že tato výhoda je určená výhradně pro vývoj a testování vašich aplikací. Využití v rámci předplatného nenese finančně zajištěnou smlouvu SLA, s výjimkou použití Azure DevOps a HockeyApp.
 
-## <a name="define-a-role-based-access-across-your-organization"></a>Definování přístupu podle role v organizaci
+## <a name="define-a-role-based-access-across-your-organization"></a>Definování přístupu na základě role v rámci vaší organizace
 ### <a name="question"></a>Otázka
-Jak definovat řízení přístupu na základě rolí pro moje DevTest Labs prostředí, abyste, který může IT řídit při vývojáři a testování můžete své práci? 
+Návody pro prostředí DevTest Labs definovat řízení přístupu na základě rolí, aby se zajistilo, že se může řídit, zatímco vývojáři/testy můžou svou práci dělat? 
 
 ### <a name="answer"></a>Odpověď
-Neexistuje široké vzor, ale podrobností závisí na vaší organizaci.
+Existuje velký model, ale podrobnosti závisí na vaší organizaci.
 
-Centrální IT by měl vlastní pouze co je potřeba a umožňuje týmům projektu a aplikace potřebné stupeň ovládacího prvku. Obvykle to znamená, že tento centrální IT vlastníkem předplatného a zpracovává základní IT funkcemi, jako je například konfigurace sítí. Sada **vlastníky** předplatného musí být malé. Tyto vlastníky můžete nominujte další vlastníky, když je potřeba, nebo použít zásady na úrovni předplatného, například "žádná veřejná IP adresa".
+Centrální IT oddělení by mělo mít pouze to, co je nezbytné, a povolit týmům projektů a aplikací, aby měli potřebnou úroveň řízení. Obvykle to znamená, že je ústřední IT vlastníkem předplatného a zpracovává základní funkce IT, jako jsou třeba síťové konfigurace. Sada **vlastníků** předplatného musí být malá. Tito vlastníci můžou jmenovat další vlastníky, pokud je potřeba, nebo použít zásady na úrovni předplatného, například bez veřejné IP adresy.
 
-Může existovat podmnožinu uživatelů, které vyžadují přístup v rámci předplatného, jako je například podpora úrovně 1 nebo 2. V takovém případě vám doporučujeme, abyste udělili těmto uživatelům **Přispěvatel** přístup tak, aby nelze spravovat prostředky, ale poskytnout uživatelský přístup nebo úpravě zásad.
+Může existovat podmnožina uživatelů, kteří vyžadují přístup v rámci předplatného, jako je Tier1 nebo podpora vrstvy 2. V takovém případě doporučujeme těmto uživatelům udělit přístup **přispěvatelům** , aby mohli spravovat prostředky, ale neposkytovali přístup k uživatelům nebo neupravují zásady.
 
-DevTest Labs prostředků musí být vlastněn vlastníky, kteří jsou blízko aplikace project/team. Je to proto, že tito uživatelé pochopit jejich požadavky z hlediska počítače a požadovaný software. Ve většině organizací vlastníka tohoto prostředku DevTest Labs je obvykle vedoucí projektu nebo vývoje. Tohoto vlastníka mohou spravovat uživatele a zásad v testovacím prostředí a můžete spravovat všechny virtuální počítače v prostředí DevTest Labs.
+Prostředek DevTest Labs by měl vlastnit vlastníci, kteří jsou blízko týmu projektu nebo aplikace. Je to proto, že zná požadavky na počítače a požadovaný software. Ve většině organizací je vlastníkem tohoto prostředku DevTest Labs obvykle vedoucí projektu nebo vývoje. Tento vlastník může spravovat uživatele a zásady v rámci testovacího prostředí a může spravovat všechny virtuální počítače v prostředí DevTest Labs.
 
-Členové týmu aplikace project a měli byste přidat k roli uživatele DevTest Labs. Tito uživatelé můžou vytvářet virtuální počítače (v řádku pomocí testovacího prostředí a zásad na úrovni předplatného). Mohou také spravovat vlastní virtuální počítače. Jejich nemůže spravovat virtuální počítače, které patří jiným uživatelům.
+Členové týmu projektu nebo aplikace by měli být přidáni do role uživatelé DevTest Labs. Tito uživatelé můžou vytvářet virtuální počítače (v souladu s zásadami testovacího prostředí a na úrovni předplatného). Můžou taky spravovat svoje vlastní virtuální počítače. Nemůžou spravovat virtuální počítače, které patří jiným uživatelům.
 
-Další informace najdete v tématu [Základní kostra Azure enterprise – zásady správného řízení předplatná](/azure/architecture/cloud-adoption/appendix/azure-scaffold) dokumentaci.
+Další informace najdete v tématu základní informace o [službě Azure Enterprise lešení – dokumentace zásad správného řízení předplatného](/azure/architecture/cloud-adoption/appendix/azure-scaffold) .
 
 
-## <a name="next-steps"></a>Další postup
-Zobrazit [podnikové zásady a dodržování předpisů](devtest-lab-guidance-governance-policy-compliance.md).
+## <a name="next-steps"></a>Další kroky
+Viz [podnikové zásady a dodržování předpisů](devtest-lab-guidance-governance-policy-compliance.md).

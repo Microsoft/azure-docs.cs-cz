@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 1320764687f3eb2f033ca70703a9bcb16ab616ea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/25/2019
+ms.openlocfilehash: 7e9ab0e41086a4c9478f95c5a56754640feeab4e
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494734"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561830"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
 
-Tento článek popisuje, jak používat server pro rozšířené Apache Spark pro ladění a diagnostikování dokončených a spuštěných aplikací Spark. Rozšíření zahrnuje kartu data a kartu graf a diagnostika. Na kartě **data** mohou uživatelé kontrolovat vstupní a výstupní data úlohy Spark. Na kartě **graf** mohou uživatelé kontrolovat tok dat a znovu přehrát graf úlohy. Na kartě **Diagnostika** může uživatel odkazovat na překrytí **dat**, **časově zkosit** a **analýzu využití prováděcího modulu**.
+Tento článek popisuje, jak používat server pro rozšířené Apache Spark pro ladění a diagnostikování dokončených a spuštěných aplikací Spark. Rozšíření zahrnuje kartu data a kartu graf a diagnostika. Na kartě **data** mohou uživatelé kontrolovat vstupní a výstupní data úlohy Spark. Na kartě **graf** mohou uživatelé kontrolovat tok dat a znovu přehrát graf úlohy. Na kartě **Diagnostika** může uživatel odkazovat na překrytí **dat**, **zkosení času**a **analýzu využití prováděcího modulu**.
 
 ## <a name="get-access-to-apache-spark-history-server"></a>Získat přístup k serveru historie Apache Spark
 
@@ -26,35 +26,31 @@ Server historie Apache Spark je webové uživatelské rozhraní pro kompletní a
 ### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Otevřete webové uživatelské rozhraní serveru Apache Spark historie z Azure Portal
 
 1. Z [Azure Portal](https://portal.azure.com/)otevřete cluster Spark. Další informace najdete v tématech [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters).
-2. Z **panelu Rychlé odkazy**klikněte na **řídicí panel clusteru**a pak klikněte na **Server historie Spark**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
+2. Z **řídicích panelů clusteru**vyberte možnost **Server historie Spark**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
 
-    ![portál – spustit historii serveru Spark](./media/apache-azure-spark-history-server/launch-history-server.png "Server historie Sparku")
+    ![portál – spustit historii serveru Spark](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Server historie Sparku")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>Otevřete webové uživatelské rozhraní serveru historie Sparku podle adresy URL
 
-Přejděte na následující adresu URL, kde otevřete Server historie Spark, nahraďte `<ClusterName>` názvem clusteru Spark zákazníka.
+Otevřete Server historie Sparku tak, že přejdete na `https://CLUSTERNAME.azurehdinsight.net/sparkhistory`, kde název_clusteru je název vašeho clusteru Spark.
 
-   ```
-   https://<ClusterName>.azurehdinsight.net/sparkhistory
-   ```
-
-Webové uživatelské rozhraní serveru historie Sparku vypadá takto:
+Webové uživatelské rozhraní serveru historie Spark může vypadat podobně jako:
 
 ![Server historie HDInsight Spark](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
 
 ## <a name="data-tab-in-spark-history-server"></a>Karta data v historii serveru Spark
 
-Vyberte ID úlohy a potom v nabídce Nástroje klikněte na **data** , aby se zobrazila data.
+Vyberte ID úlohy a potom v nabídce Nástroje vyberte **data** , aby se zobrazila data.
 
 + Zkontrolujte **vstupy**a **výstupy**a **operace s tabulkami** , a to tak, že karty vyberete samostatně.
 
     ![Data pro karty aplikace Spark](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
-+ Kliknutím na tlačítko **Kopírovat**zkopírujte všechny řádky.
++ Kopírovat všechny řádky výběrem **kopie**tlačítka
 
     ![Data pro kopii aplikace Spark](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
-+ Uložte všechna data jako soubor CSV kliknutím na tlačítko **CSV**.
++ Uložte všechna data jako soubor CSV tak, že vyberete tlačítko **CSV**.
 
     ![Data pro uložení aplikace Spark](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
@@ -62,23 +58,23 @@ Vyberte ID úlohy a potom v nabídce Nástroje klikněte na **data** , aby se zo
 
     ![Data pro vyhledávání aplikace Spark](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
-+ Kliknutím na záhlaví sloupce seřadíte tabulku, kliknutím na znaménko plus rozbalíte řádek a zobrazíte další podrobnosti, nebo kliknutím na znaménko mínus řádek sbalíte.
++ Vyberte záhlaví sloupce k seřazení tabulky, vyberte znaménko plus pro rozbalení řádku, aby se zobrazily další podrobnosti, nebo vyberte znaménko mínus pro sbalení řádku.
 
     ![Data pro tabulku aplikace Spark](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
-+ Stažení jednoho souboru kliknutím na tlačítko **částečné stažení** , které je napravo, pak bude vybraný soubor stažen do místního umístění, pokud soubor již neexistuje, otevře novou kartu pro zobrazení chybových zpráv.
++ Stažení samostatného souboru výběrem **částečného stažení tlačítka Stáhnout** , vybrané soubory se stáhnou do místní, pokud soubor už neexistuje, otevře se nová karta, kde se zobrazí chybové zprávy.
 
     ![Data pro řádek pro stažení aplikace Spark](./media/apache-azure-spark-history-server/sparkui-data-download-row.png)
 
-+ Úplnou cestu nebo relativní cestu zkopírujte výběrem možnosti **Kopírovat úplnou cestu**a **Kopírovat relativní cestu** , která se rozbalí z nabídky stáhnout. Pro soubory Azure Data Lake Storage **otevřete v Průzkumník služby Azure Storage** spustí Průzkumník služby Azure Storage a po přihlášení Najděte složku do složky.
++ Úplnou cestu nebo relativní cestu zkopírujte výběrem možnosti **Kopírovat úplnou cestu**a **Kopírovat relativní cestu** , která se rozbalí z nabídky stáhnout. Pro soubory Azure Data Lake Storage **otevřete v Průzkumník služby Azure Storage** spustí Průzkumník služby Azure Storage a při přihlášení Najděte složku.
 
     ![Data pro kopírovací cestu aplikace Spark](./media/apache-azure-spark-history-server/sparkui-data-copy-path.png)
 
-+ Kliknutím na číslo pod tabulkou můžete procházet stránky, když se na jedné stránce zobrazí příliš mnoho řádků.
++ Vyberte číslo pod tabulkou pro procházení stránek, když je na jedné stránce zobrazeno příliš mnoho řádků.
 
     ![Data pro stránku aplikace Spark](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
-+ Poklikáním na otazník vedle položky data zobrazíte popis tlačítka nebo kliknutím na otazník získáte další informace.
++ Najeďte myší na otazník vedle položky data, abyste zobrazili popis, nebo vyberte otazník a získejte další informace.
 
     ![Data pro aplikaci Spark další informace](./media/apache-azure-spark-history-server/sparkui-data-more-info.png)
 
@@ -104,13 +100,15 @@ Vyberte ID úlohy a potom kliknutím na **graf** v nabídce nástroje Získejte 
 
     ![Heatmapu grafu aplikací a úloh Spark](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
-+ Začněte tím, že kliknete na tlačítko **přehrávání** a kdykoli kliknete na tlačítko Zastavit. Zobrazený úkol v barvě pro zobrazení jiného stavu při přehrávání:
++ Přehrajte úlohu tak, že vyberete tlačítko pro **přehrávání** a ukončíte ho kliknutím na tlačítko Zastavit. Zobrazený úkol v barvě pro zobrazení jiného stavu při přehrávání:
 
-  + Zelená pro úspěšná: úloha se úspěšně dokončila.
-  + Oranžová pro opakování: instance úloh, které selhaly, ale neovlivňují konečný výsledek úlohy. Tyto úlohy měly duplicitní nebo opakované instance, které mohou být později úspěšné.
-  + Modrá pro běh: úloha je spuštěná.
-  + Bílá pro čekání nebo přeskočení: úloha čeká na spuštění, nebo se fáze přeskočila.
-  + Červená chyba: úloha se nezdařila.
+    |Barva |Popis |
+    |---|---|
+    |Zelená|Úloha se úspěšně dokončila.|
+    |Orange|Instance úloh, které selhaly, ale neovlivňují konečný výsledek úlohy. Tyto úlohy měly duplicitní nebo opakované instance, které mohou být později úspěšné.|
+    |Modrá|Úloha je spuštěna.|
+    |Bílá|Úloha čeká na spuštění, nebo byla fáze přeskočena.|
+    |Červená|Úloha se nezdařila.|
 
     ![Ukázka barvy grafu aplikace Spark a grafu úlohy, která běží](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
@@ -152,25 +150,25 @@ Vyberte ID úlohy a potom kliknutím na **graf** v nabídce nástroje Získejte 
     > [!NOTE]  
     > Pro velikost dat čtení a zápisu používáme 1 MB = 1000 KB = 1000 * 1000 bajtů.
 
-+ Kliknutím na **poskytnout zpětnou**vazbu pošlete nám problémy s problémy.
++ Sdělte nám svůj názor s problémy tím, že si vyberete poslat **svůj názor**.
 
     ![Zpětná vazba grafu aplikace Spark a úlohy](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 ## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Karta Diagnostika v serveru historie Apache Spark
 
-Vyberte ID úlohy a potom kliknutím na **diagnóza** v nabídce nástroje Získejte zobrazení diagnostiky úlohy. Karta Diagnostika zahrnuje analýzu **dat**, **zkosení času**a **analýzy využití prováděcího modulu**.
+Vyberte ID úlohy a potom v nabídce Nástroje vyberte **diagnóza** a získejte zobrazení diagnostiky úlohy. Karta Diagnostika zahrnuje analýzu **dat**, **zkosení času**a **analýzy využití prováděcího modulu**.
 
-+ Výběrem karet v uvedeném pořadí ověřte, jak se mají **Přezkosit data**, **Zkosit**a **analyzovat využití prováděcích** modulů.
++ Vybíráním karet si Projděte přehledy o překrytí **dat**, **časovém intervalu**a **analýze využití prováděcího modulu** .
 
     ![SparkUI karta pro zkosení dat diagnostiky](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
 
 ### <a name="data-skew"></a>Zkosit data
 
-Klikněte na kartu **zkosení dat** . na základě zadaných parametrů se zobrazí odpovídající šikmé úkoly.
+Vyberte kartu **zkosení dat** . na základě zadaných parametrů se zobrazí odpovídající šikmé úkoly.
 
-+ **Zadejte parametry** – první oddíl zobrazuje parametry, které se používají ke zjištění zkosení dat. Předdefinované pravidlo je: čtení dat úkolu je více než 3 krát průměrně přečtených dat úkolu a přečtených dat úlohy je více než 10 MB. Pokud chcete definovat vlastní pravidlo pro úkoly, které jsou pro úlohy zkreslené, můžete zvolit parametry, oddíl **zkosených fází**a **znaků zkosení** se odpovídajícím způsobem aktualizuje.
++ **Zadejte parametry** – první oddíl zobrazuje parametry, které se používají ke zjištění zkosení dat. Předdefinované pravidlo je: čtení dat úkolu je více než třikrát průměrně přečtených dat úkolu a přečtených dat úlohy je více než 10 MB. Pokud chcete definovat vlastní pravidlo pro úkoly, které jsou pro úlohy zkreslené, můžete zvolit parametry, oddíl **zkosených fází**a **znaků zkosení** se odpovídajícím způsobem aktualizuje.
 
-+ **Zkosený stupeň** – druhý oddíl zobrazuje fáze, které mají úkoly, které splňují kritéria uvedená výše. Pokud ve fázi existuje více než jeden zkosený úkol, tabulka zkosených fází zobrazí pouze nejvýraznější úlohu (např. největší data pro zkosení dat).
++ **Zkosený stupeň** – druhý oddíl zobrazuje fáze, které mají úlohy, které splňují kritéria uvedená výše. Pokud ve fázi existuje více než jeden zkosený úkol, tabulka zkosených fází zobrazí pouze nejvýraznější úlohu (např. největší data pro zkosení dat).
 
     ![sparkui karta pro zkosení dat diagnostiky](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
 
@@ -182,9 +180,9 @@ Klikněte na kartu **zkosení dat** . na základě zadaných parametrů se zobra
 
 Na kartě **časové zkosení** se zobrazují zkreslené úkoly na základě doby spuštění úkolu.
 
-+ **Zadejte parametry** – první oddíl zobrazuje parametry, které se používají ke zjištění zešikmení času. Výchozí kritéria pro detekci časového zkosení jsou: doba provádění úlohy je větší než 3 krát Průměrná doba spuštění a doba provádění úlohy je větší než 30 sekund. Parametry můžete změnit podle svých potřeb. Graf **zkosených fází** a **zkosení** zobrazuje odpovídající informace o fázích a úlohách stejně jako karta pro **zkosení dat** výše.
++ **Zadejte parametry** – první oddíl zobrazuje parametry, které se používají ke zjištění zešikmení času. Výchozí kritéria pro detekci časového zkosení jsou: doba provádění úlohy je větší než tři časy doby spuštění a doba provádění úlohy je větší než 30 sekund. Parametry můžete změnit podle svých potřeb. Graf **zkosených fází** a **zkosení** zobrazuje odpovídající informace o fázích a úlohách stejně jako karta pro **zkosení dat** výše.
 
-+ Klikněte na možnost **Časová zkosená**a následně filtrovaný výsledek se zobrazí v části **zkosený fáze** podle parametrů nastavených v oddílu **určení parametrů**. Klikněte na jednu položku v části **šikmá fáze** a pak se na odpovídající graf připravuje v section3 a podrobnosti úlohy se zobrazí v pravém dolním panelu.
++ Vyberte možnost **časové zkosení**a následně filtrovaný výsledek se zobrazí v části **zkosený fáze** podle parametrů nastavených v oddílu **určení parametrů**. Vyberte jednu položku v části **šikmá fáze** . odpovídající graf je koncept v section3 a podrobnosti úlohy se zobrazí v pravém dolním panelu.
 
     ![oddíl asymetrie doby diagnostiky sparkui](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
@@ -192,11 +190,11 @@ Na kartě **časové zkosení** se zobrazují zkreslené úkoly na základě dob
 
 Graf využití prováděcího modulu, který vizualizuje skutečné přidělení prováděcího modulu úlohy Spark a stav spuštění.  
 
-+ Klikněte na možnost **Analýza využití prováděcího modulu**, potom čtyři typy křivky o použití prováděcího modulu jsou koncepty, včetně **přidělených prováděcích**modulů, **spuštěných**prováděcích modulů,**nečinných prováděcích**modulů a **maximálního počtu instancí** U přidělených prováděcích modulů dojde ke zvýšení nebo snížení přidělených prováděcích modulů každý "prováděcí modul" nebo "exekutor" odebraný ", a proto můžete na kartě úlohy zaškrtnout možnost časová osa události.
++ Vyberte možnost **Analýza využití prováděcího modulu**, pak čtyři typy křivky o použití prováděcího modulu jsou koncepty, včetně **přidělených prováděcích**modulů, **spuštěných**prováděcích modulů, **nečinných prováděcích**modulů a **maximálního počtu instancí prováděcí** U přidělených prováděcích modulů dojde ke zvýšení nebo snížení přidělených prováděcích modulů každý "prováděcí modul" nebo "exekutor" odebraný ", a proto můžete na kartě úlohy zaškrtnout možnost časová osa události.
 
     ![karta prováděcích modulů diagnostiky sparkui](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
 
-+ Kliknutím na ikonu barvy vyberte nebo zrušte výběr odpovídajícího obsahu ve všech konceptech.
++ Vyberte ikonu barvy a vyberte nebo zrušte výběr odpovídajícího obsahu ve všech konceptech.
 
     ![sparkui – výběr grafu pro diagnostiku](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
@@ -206,33 +204,32 @@ Graf využití prováděcího modulu, který vizualizuje skutečné přidělení
 
 Chcete-li se vrátit k verzi komunity, proveďte následující kroky:
 
-1. Otevřete cluster v Ambari. Klikněte na **Spark2** na levém panelu.
-2. Klikněte na kartu **Konfigurace** .
-3. Rozbalte **vlastní spark2 skupiny – výchozí**.
-4. Klikněte na **Přidat vlastnost**, přidejte **Spark. UI. vylepšení. Enabled = FALSE**, uložte.
-5. Vlastnost nastaví na **hodnotu false** nyní.
-6. Kliknutím na **Uložit** uložte konfiguraci.
+1. Otevřete cluster v Ambari.
+1. Přejděte na **Spark2** > **config** > **Custom Spark2-Defaults**.
+1. Vyberte **Přidat vlastnost...** , přidejte **Spark. UI. vylepšení. Enabled = FALSE**, uložte.
+1. Vlastnost nastaví na **hodnotu false** nyní.
+1. Kliknutím na **Uložit** uložte konfiguraci.
 
     ![Funkce Apache Ambari se vypne.](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
-7. Klikněte na **Spark2** na levém panelu a na kartě **Souhrn** klikněte na **Server historie Spark2**.
+1. V levém panelu vyberte **Spark2** , na kartě **Souhrn** vyberte **Server historie Spark2**.
 
     ![Souhrnné zobrazení Apache Ambari Spark2](./media/apache-azure-spark-history-server/apache-spark-restart1.png)
 
-8. Kliknutím na **restartovat** **Server historie Spark2**restartujte server historie.
+1. Restartujte server historie výběrem možnosti **restartovat** **Server historie Spark2**.
 
     ![Restart Ambari Spark2 pro Apache](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
-9. Aktualizuje webové uživatelské rozhraní serveru historie Sparku, bude se vrátit na verzi komunity.
+1. Aktualizuje webové uživatelské rozhraní serveru historie Sparku, bude se vrátit na verzi komunity.
 
 ### <a name="2-upload-history-server-event"></a>2. odeslání události serveru historie
 
 Pokud se při spuštění do historie serveru zobrazí chyba, postupujte podle pokynů pro zadání této události:
 
-1. Událost ke stažení kliknutím na **Stáhnout** ve webovém uživatelském rozhraní serveru historie.
+1. Stáhněte událost tak, že vyberete **Stáhnout** ve webovém uživatelském rozhraní serveru historie.
 
     ![Stažení serveru historie Spark2](./media/apache-azure-spark-history-server/sparkui-download-event.png)
 
-2. Klikněte na tlačítko **poskytnout zpětnou vazbu** z karty data/graf.
+2. Vyberte možnost **poskytnout nám svůj názor** z karty data/graf.
 
     ![Sparkový graf nám poskytuje svůj názor](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
@@ -302,32 +299,29 @@ Pokud chcete upgradovat pomocí opravy hotfix, použijte následující skript, 
 **Použití souboru bash z Azure Portal**
 
 1. Spusťte [Azure Portal](https://ms.portal.azure.com)a vyberte svůj cluster.
-2. Klikněte na **akce skriptu**a pak na **Odeslat novou**. Vyplňte formulář **Odeslat akci skriptu** a klikněte na tlačítko **vytvořit** .
+2. Dokončete [akci skriptu](../hdinsight-hadoop-customize-cluster-linux.md) s následujícími parametry:
 
-    + **Typ skriptu**: vyberte **vlastní**.
-    + **Název**: zadejte název skriptu.
-    + **Bash skriptu URI**: Nahrajte soubor bash do privátního clusteru a pak sem zkopírujte adresu URL. Případně použijte poskytnutý identifikátor URI.
-
-   ```upgrade_spark_enhancement
-    https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh
-   ```
-
-   + Podívejte se na **vedoucí** a **pracovní proces**.
-   + **Parametry**: Nastavte parametry podle bash využití.
+    |Vlastnost |Hodnota |
+    |---|---|
+    |Typ skriptu|– Vlastní|
+    |Name (Název)|UpgradeJar|
+    |Identifikátor URI skriptu bash|`https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh`|
+    |Typ (typy) uzlů|Vedoucí pracovník|
+    |Parametry|`https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`|
 
      ![Azure Portal odeslat akci skriptu](./media/apache-azure-spark-history-server/apache-spark-upload1.png)
 
 ## <a name="known-issues"></a>Známé problémy
 
-1. V současné době funguje pouze pro cluster Spark 2,3 a 2,4.
++ V současné době funguje pouze pro cluster Spark 2,3 a 2,4.
 
-2. Vstupní/výstupní data pomocí RDD se nezobrazí na kartě data.
++ Vstupní/výstupní data pomocí RDD se nezobrazují na kartě data.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa prostředků pro cluster Apache Spark v HDInsight](apache-spark-resource-manager.md)
-* [Konfigurace nastavení Apache Spark](apache-spark-settings.md)
++ [Správa prostředků pro cluster Apache Spark v HDInsight](apache-spark-resource-manager.md)
++ [Konfigurace nastavení Apache Spark](apache-spark-settings.md)
 
 ## <a name="contact-us"></a>Kontaktujte nás
 
-Pokud máte nějakou zpětnou vazbu nebo pokud při používání tohoto nástroje narazíte na jiné problémy, pošlete e-mail na adresu ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)).
+Pokud máte nějakou zpětnou vazbu nebo při použití tohoto nástroje máte nějaké problémy, pošlete e-mail na adresu ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)).

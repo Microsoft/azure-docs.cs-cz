@@ -7,13 +7,13 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
-ms.openlocfilehash: 71631cd2394efd6743bc0e80a458fed2678d4be0
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/22/2019
+ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076247"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561758"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Použití Apache Hive jako nástroje pro extrakci, transformaci a načítání (ETL)
 
@@ -21,11 +21,11 @@ Obvykle je nutné vyčistit a transformovat příchozí data před jejich načte
 
 ## <a name="use-case-and-model-overview"></a>Přehled případu a modelu použití
 
-Následující obrázek ukazuje přehled případu použití a modelu pro automatizaci ETL. Vstupní data jsou transformovaná tak, aby vygenerovala příslušný výstup.  Během této transformace mohou data měnit tvar, datový typ a dokonce i jazyk.  Procesy ETL můžete převést na možnost britské na metriky, změnit časová pásma a zlepšit přesnost správného zarovnání se stávajícími daty v cíli.  Procesy ETL mohou také kombinovat nová data se stávajícími daty, aby bylo možné sestavy stále aktuální, nebo poskytovat další přehled o stávajících datech.  Aplikace, jako jsou nástroje pro vytváření sestav a služby, pak mohou tato data spotřebovat v požadovaném formátu.
+Následující obrázek ukazuje přehled případu použití a modelu pro automatizaci ETL. Vstupní data jsou transformovaná tak, aby vygenerovala příslušný výstup.  Během této transformace mohou data měnit tvar, datový typ a dokonce i jazyk.  Procesy ETL můžete převést na možnost britské na metriky, změnit časová pásma a zlepšit přesnost správného zarovnání se stávajícími daty v cíli.  Procesy ETL mohou také kombinovat nová data se stávajícími daty, aby bylo možné sestavy udržovat v aktualizovaném stavu, nebo poskytnout další přehled o stávajících datech.  Aplikace, jako jsou nástroje pro vytváření sestav a služby, pak mohou tato data spotřebovat v požadovaném formátu.
 
 ![Apache Hive jako architektura ETL](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Hadoop se obvykle používá v procesech ETL, které importují buď obrovské množství textových souborů (například CSV), nebo menší, často se měnící počet textových souborů nebo obojí.  Podregistr je skvělý nástroj, který slouží k přípravě dat před jejich načtením do cíle dat.  Podregistr umožňuje vytvořit schéma přes sdílený svazek clusteru a použít jazyk podobný SQL ke generování MapReduce programů, které pracují s daty. 
+Hadoop se obvykle používá v procesech ETL, které importují buď obrovské množství textových souborů (například CSV), nebo menší, často se měnící počet textových souborů nebo obojí.  Podregistr je skvělý nástroj, který slouží k přípravě dat před jejich načtením do cíle dat.  Podregistr umožňuje vytvořit schéma přes sdílený svazek clusteru a použít jazyk podobný SQL ke generování MapReduce programů, které pracují s daty.
 
 K provedení ETL jsou typické kroky pro použití podregistru:
 
@@ -38,14 +38,14 @@ K provedení ETL jsou typické kroky pro použití podregistru:
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
-    
+
     CREATE EXTERNAL TABLE hvac(`date` STRING, time STRING, targettemp BIGINT,
-        actualtemp BIGINT, 
-        system BIGINT, 
-        systemage BIGINT, 
+        actualtemp BIGINT,
+        system BIGINT,
+        systemage BIGINT,
         buildingid BIGINT)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
-    STORED AS TEXTFILE LOCATION 'wasb://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    STORED AS TEXTFILE LOCATION 'wasbs://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
     ```
 
 5. Transformujte data a načtěte je do cíle.  Existuje několik způsobů, jak použít podregistr při transformaci a načítání:
@@ -73,7 +73,7 @@ Můžete použít podregistr pro výstup dat do celé řady cílů, včetně:
 * Excel.
 * Azure Table a BLOB Storage.
 * Aplikace nebo služby, které vyžadují zpracování dat do konkrétních formátů nebo jako soubory, které obsahují určité typy informačních struktur.
-* Úložiště dokumentů JSON, jako je <a href="https://azure.microsoft.com/services/cosmos-db/">CosmosDB</a>.
+* Úložiště dokumentů JSON, jako je [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
 ## <a name="considerations"></a>Požadavky
 
@@ -87,7 +87,7 @@ Pokud cíl pro data není databáze, můžete vygenerovat soubor v příslušné
 
 Pokud v rámci procesu ETL potřebujete spustit několik operací s daty, zvažte, jak je spravovat. Pokud jsou operace ovládány externím programem, nikoli jako pracovní postup v rámci řešení, je nutné rozhodnout, zda lze některé operace provádět paralelně, a zjistit, kdy se Každá úloha dokončí. Použití mechanismu pracovního postupu, jako je Oozie v rámci Hadoop, může být jednodušší než pokus o orchestraci sekvence operací pomocí externích skriptů nebo vlastních programů. Další informace o Oozie najdete v článku [orchestrace pracovních postupů a úloh](https://msdn.microsoft.com/library/dn749829.aspx).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [ETL ve velkém měřítku](apache-hadoop-etl-at-scale.md)
 * [Zprovoznění datového kanálu](../hdinsight-operationalize-data-pipeline.md)
