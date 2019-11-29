@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 28666aaac4ec221acca00d937d54a753a4e6a055
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1c375370ec6bae2775ad758688825b92cbbbca50
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172673"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407031"
 ---
 ::: zone target="docs"
 
@@ -123,28 +123,7 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
 2. Ujistěte se, že se dokončilo kopírování dat do zařízení a úspěšně proběhla **příprava k odeslání**.
 3. Vypněte zařízení a odpojte kabely.
 4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-5. Odešlete společnosti Quantium Solutions e-mail s žádostí o vyzvednutí. Uveďte referenční číslo služby uvedené na webu Azure Portal. Použijte následující šablonu e-mailu: *Žádost o zpáteční expediční štítek s kódem TAU*. V e-mailu nezapomeňte uvést následující podrobnosti: 
-
-    ```
-    To: Azure@quantiumsolutions.com
-    Subject: Pickup request for Azure｜Reference number：XXX XXX XXX
-    Body: 
-    - Company name：
-    - Address:
-    - Contact name:
-    - Contact number:
-    - Requested pickup date: mm/dd
-    ```
-6. Společnost Quantium Solutions Austrálie vám e-mailem pošle zpáteční expediční štítek.
-7. Zpáteční štítek vytiskněte a připevněte ho na obal zásilky.
-8. Předejte balíček přepravci.
-
-V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutions na e-mailu Azure@quantiumsolutions.com nebo přes telefon.
-
-V případě dotazů souvisejících s vaší objednávkou přes telefon:
-
-- Nejprve odešlete e-mail s žádostí o vyzvednutí.
-- Přes telefon uveďte název vaší objednávky.
+5. Zarezervujte si vyzvednutí online pomocí [odkazu DHL](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference).
 
 ::: zone target="chromeless"
 

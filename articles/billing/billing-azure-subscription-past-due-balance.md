@@ -1,26 +1,22 @@
 ---
-title: E-mail o zůstatku po splatnosti z Azure | Microsoft Docs
+title: E-mail o zůstatku po splatnosti z Azure
 description: Popisuje, jak provést platbu v případě, že je u předplatného Azure zůstatek po splatnosti.
-services: ''
-documentationcenter: ''
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: billing
-ms.assetid: d0b88c92-fb9d-4d12-931b-c26104ad63e9
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: cd3c29c4b65f45863647599ae2447584845f27c8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: c042f5cee3d0a1e874729911a2162e48c1630a72
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300289"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226431"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Řešení zůstatku po splatnosti u předplatného Azure
 
