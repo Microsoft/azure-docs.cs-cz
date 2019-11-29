@@ -276,6 +276,8 @@
               href: storage-blob-containers-list.md
             - name: Správa vlastností a metadat (.NET)
               href: storage-blob-container-properties-metadata.md
+            - name: Nastavení a správa zásad neměnnosti
+              href: storage-blob-immutability-policies-manage.md
         - name: Vytváření a správa objektů blob
           items:
             - name: Výpis objektů blob (.NET)

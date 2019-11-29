@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/15/2019
+ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: 2ca8f0e34b63802453c8876f878b531e78e66d76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991780"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560098"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Začínáme s tématy služby Service Bus
 
@@ -30,14 +30,14 @@ Tento kurz se zabývá následujícími kroky:
 1. Napíšeme konzolovou aplikaci .NET Core pro odeslání sady zpráv do tématu.
 2. Napíšeme konzolovou aplikaci .NET Core pro příjem těchto zpráv z odběru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat vaše [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo zaregistrujte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Postupujte podle kroků v [rychlý start: Pomocí webu Azure portal k vytvoření tématu služby Service Bus a odběrů na téma](service-bus-quickstart-topics-subscriptions-portal.md) a proveďte následující úlohy:
-    1. Vytvoření služby Service Bus **obor názvů**.
-    2. Získejte **připojovací řetězec**.
-    3. Vytvoření **tématu** v oboru názvů.
-    4. Vytvoření **jedno předplatné** téma v oboru názvů.
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a odběry k tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:
+    1. Vytvořte **obor názvů**Service Bus.
+    2. Získá **připojovací řetězec**.
+    3. Vytvořte **téma** v oboru názvů.
+    4. Vytvořte **jedno předplatné** k tématu v oboru názvů.
 3. [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější.
 4. [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
  
@@ -75,16 +75,10 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NE
     static ITopicClient topicClient;
     ``` 
 
-3. Nahraďte výchozí obsah metody `Main()` následujícím řádkem kódu:
+3. Metodu `Main()` nahraďte následující **asynchronní** metodou `Main`, která odesílá zprávy asynchronně pomocí metody SendMessagesAsync, kterou přidáte v dalším kroku. 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-   
-4. Přímo za metodu `Main()` přidejte následující asynchronní metodu `MainAsync()`, která volá metodu pro odeslání zpráv:
-
-    ```csharp
-    static async Task MainAsync()
+    public static async Task Main(string[] args)
     {
         const int numberOfMessages = 10;
         topicClient = new TopicClient(ServiceBusConnectionString, TopicName);
@@ -101,8 +95,7 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NE
         await topicClient.CloseAsync();
     }
     ```
-
-5. Přímo za metodu `MainAsync()` přidejte následující metodu `SendMessagesAsync()`, která provádí odeslání určitého počtu zpráv zadaného v proměnné `numberOfMessagesToSend` (aktuálně nastavená na hodnotu 10):
+5. Přímo za metodu `Main` přidejte následující metodu `SendMessagesAsync()`, která provádí odeslání určitého počtu zpráv zadaného v proměnné `numberOfMessagesToSend` (aktuálně nastavená na hodnotu 10):
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -146,25 +139,20 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NE
             const string TopicName = "<your_topic_name>";
             static ITopicClient topicClient;
 
-            static void Main(string[] args)
-            {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
+            public static async Task Main(string[] args)
             {
                 const int numberOfMessages = 10;
                 topicClient = new TopicClient(ServiceBusConnectionString, TopicName);
-
+    
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after sending all the messages.");
                 Console.WriteLine("======================================================");
-
+    
                 // Send messages.
                 await SendMessagesAsync(numberOfMessages);
-
+    
                 Console.ReadKey();
-
+    
                 await topicClient.CloseAsync();
             }
 
@@ -196,11 +184,11 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NE
 
 3. Spusťte program a podívejte se na web Azure Portal: klikněte na název vašeho tématu v okně **Přehled** oboru názvů. Zobrazí se obrazovka **Základy** tématu. Všimněte si, že v odběru uvedeném v dolní části okna je teď hodnota **Počet zpráv** pro odběr **10**. Pokaždé, když spustíte aplikaci odesílatele bez načtení zpráv (jak je popsáno v další části), se tato hodnota zvýší o 10. Všimněte si také, že aktuální velikost tématu navyšuje hodnotu **Aktuální** v okně **Základy** pokaždé, když aplikace do daného tématu přidá zprávy.
    
-      ![Velikost zpráv][topic-message]
+      ![Velikost zprávy][topic-message]
 
 ## <a name="receive-messages-from-the-subscription"></a>Příjem zpráv z odběru
 
-Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolovou aplikaci .NET Core a nainstalujte **Microsoft.Azure.ServiceBus** balíček NuGet, podobně jako předtím u aplikace odesílatele.
+Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolovou aplikaci .NET Core a nainstalujte balíček NuGet **Microsoft. Azure. ServiceBus** , který se podobá předchozí aplikaci odesílatele.
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>Napsání kódu pro příjem zpráv z odběru
 
@@ -222,17 +210,11 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolo
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. Nahraďte výchozí obsah metody `Main()` následujícím řádkem kódu:
+3. Metodu `Main()` nahraďte následující **asynchronní** metodou `Main`. Volá metodu `RegisterOnMessageHandlerAndReceiveMessages()`, kterou budete přidávat v dalším kroku. 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-4. Přímo za metodu `Main()` přidejte následující asynchronní metodu `MainAsync()`, která volá metodu `RegisterOnMessageHandlerAndReceiveMessages()`:
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, TopicName, SubscriptionName);
 
         Console.WriteLine("======================================================");
@@ -244,11 +226,10 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolo
 
         Console.ReadKey();
 
-        await subscriptionClient.CloseAsync();
+        await subscriptionClient.CloseAsync();    
     }
-    ```
-
-5. Přímo za metodu `MainAsync()` přidejte následující metodu, která registruje popisovač zprávy a přijímá zprávy odeslané aplikací odesílatele:
+   ```
+5. Přímo za metodu `Main()` přidejte následující metodu, která registruje popisovač zprávy a přijímá zprávy odeslané aplikací odesílatele:
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -322,25 +303,20 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolo
             const string SubscriptionName = "<your_subscription_name>";
             static ISubscriptionClient subscriptionClient;
 
-            static void Main(string[] args)
-            {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
-            {
+            public static async Task Main(string[] args)
+            {    
                 subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, TopicName, SubscriptionName);
-
+        
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
                 Console.WriteLine("======================================================");
-
-                // Register subscription message handler and receive messages in a loop.
+        
+                // Register subscription message handler and receive messages in a loop
                 RegisterOnMessageHandlerAndReceiveMessages();
-
+        
                 Console.ReadKey();
-
-                await subscriptionClient.CloseAsync();
+        
+                await subscriptionClient.CloseAsync();    
             }
 
             static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -395,9 +371,9 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolo
 Blahopřejeme! Právě jste s použitím knihovny .NET Standard vytvořili téma a odběr, odeslali 10 zpráv a přijali tyto zprávy.
 
 > [!NOTE]
-> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [úložiště GitHub s ukázkami](https://github.com/Azure/azure-service-bus/tree/master/samples) pro Service Bus, které předvádějí některé pokročilejší funkce zasílání zpráv služby Service Bus.
 

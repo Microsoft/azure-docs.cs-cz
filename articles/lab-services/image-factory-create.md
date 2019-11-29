@@ -1,6 +1,6 @@
 ---
-title: Vytvořte objekt pro vytváření bitové kopie ve službě Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit objekt pro vytváření vlastní image ve službě Azure DevTest Labs.
+title: Vytvoření objektu pro vytváření imagí v Azure DevTest Labs | Microsoft Docs
+description: Naučte se, jak nastavit vlastní objekt pro vytváření imagí pomocí ukázkových skriptů dostupných v úložišti Git.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,52 +10,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: cf1bb31614c04d6073bc40c510fc43b2f8e4e189
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7779914d9681d0f80cab9568da6a20b15e3a2eb1
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622618"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560005"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Vytvořte objekt pro vytváření vlastní image ve službě Azure DevTest Labs
-V tomto článku se dozvíte, jak vytvořit objekt pro vytváření vlastní image pomocí dostupných v ukázkových skriptech [úložiště Git](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory).
+# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Vytvoření vlastní továrny imagí v Azure DevTest Labs
+V tomto článku se dozvíte, jak nastavit vlastní objekt pro vytváření imagí pomocí ukázkových skriptů dostupných v [úložišti Git](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory).
 
-## <a name="whats-an-image-factory"></a>Co je objekt pro vytváření image?
-Objekt pro vytváření bitové kopie je konfigurace jako kódu řešení, která sestavuje a distribuuje imagí automaticky v pravidelných intervalech s požadovanou konfigurací. Obrázky v objektu pro vytváření bitové kopie jsou vždy aktuální a průběžnou údržbu není téměř nulové po je celý proces automatizovat. A vzhledem k tomu, že všechny požadované konfigurace jsou již v bitové kopii, šetří čas z ručně po vytvoření virtuálního počítače s operačním systémem základní konfigurace systému.
+## <a name="whats-an-image-factory"></a>Co je to objekt pro vytváření obrázků?
+Objekt pro vytváření imagí je řešení pro konfiguraci, které vytváří a distribuuje image automaticky v pravidelných intervalech s použitím všech požadovaných konfigurací. Obrázky v továrně imagí jsou vždycky aktuální a Průběžná údržba je po automatizaci celého procesu skoro nula. A vzhledem k tomu, že všechny požadované konfigurace už jsou v imagi, šetří čas od ruční konfigurace systému po vytvoření virtuálního počítače se základním operačním systémem.
 
-Významné akcelerátoru zobrazíte developer desktop do připraveného stavu ve službě DevTest Labs je použití vlastní Image. Z vlastních imagí nevýhod je, že je něco navíc udržovat v testovacím prostředí. Například časem vypršení platnosti zkušební verze produktů (nebo) se nepoužijí nově vydané aktualizace zabezpečení, která vynutí nám pravidelně aktualizují vlastní image. Pomocí objektu pro vytváření bitové kopie máte definici image vráceny se změnami do zdrojového kódu a mít automatizovaný proces pro vytvoření vlastní Image na základě definice.
+Významný akcelerátor, jak získat Desktop pro vývojáře do připraveného stavu v DevTest Labs, používá vlastní image. Nevýhodou vlastních imagí je ještě něco dalšího, co je potřeba v testovacím prostředí udržovat. Například zkušební verze produktů, jejichž platnost vyprší v čase (nebo nově vydané aktualizace zabezpečení, se nepoužijí, což nám vynutí pravidelnou aktualizaci vlastní image). S objektem pro vytváření imagí máte definici image vrácenou se správou zdrojového kódu a máte automatizovaný proces, který vytváří vlastní image na základě definice.
 
-Toto řešení umožňuje rychlost vytváření virtuálních počítačů z vlastních imagí a nemusíte průběžnou údržbu další náklady. S tímto řešením můžete automaticky vytvořit vlastní Image, distribuovat na další DevTest Labs a vyřazení staré Image. V následujícím videu se dozvíte o objekt pro vytváření bitové kopie a jak je implementováno s DevTest Labs.  Všechny skripty Azure Powershellu jsou volně k dispozici a je umístěn zde: [ https://aka.ms/dtlimagefactory ](https://aka.ms/dtlimagefactory).
+Řešení umožňuje zrychlit vytváření virtuálních počítačů z vlastních imagí a zároveň eliminovat náklady na další probíhající údržbu. Pomocí tohoto řešení můžete automaticky vytvářet vlastní image, distribuovat je do jiných DevTest Labs a vyřadit staré image. V následujícím videu se dozvíte o továrně imagí a způsobu jejich implementace pomocí DevTest Labs.  Všechny skripty Azure PowerShellu jsou volně dostupné a nacházejí se tady: [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory).
 
 <br/>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Custom-Image-Factory-with-Azure-DevTest-Labs/player]
 
 
-## <a name="high-level-view-of-the-solution"></a>Souhrnný přehled řešení
-Toto řešení umožňuje rychlost vytváření virtuálních počítačů z vlastních imagí a nemusíte průběžnou údržbu další náklady. S tímto řešením můžete automaticky vytvořit vlastní Image a distribuovat na další DevTest Labs. Použití Azure DevOps (dřív Visual Studio Team Services) jako orchestrační modul pro automatizaci všechny operace ve službě DevTest Labs.
+## <a name="high-level-view-of-the-solution"></a>Pohled na vysoké úrovni řešení
+Řešení umožňuje zrychlit vytváření virtuálních počítačů z vlastních imagí a zároveň eliminovat náklady na další probíhající údržbu. Pomocí tohoto řešení můžete automaticky vytvářet vlastní image a distribuovat je do jiných DevTest Labs. Jako modul orchestrace pro automatizaci všech operací v DevTest Labs používáte Azure DevOps (dříve Visual Studio Team Services).
 
-![Souhrnný přehled řešení](./media/create-image-factory/high-level-view-of-solution.png)
+![Pohled na vysoké úrovni řešení](./media/create-image-factory/high-level-view-of-solution.png)
 
-Je [rozšíření VSTS pro DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) , která umožňuje spustit tyto jednotlivé kroky:
+K dispozici je [rozšíření VSTS pro DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) , které umožňuje provádět tyto jednotlivé kroky:
 
 - Vytvoření vlastní image
 - Vytvoření virtuálního počítače
-- Odstranění virtuálního počítače
-- Vytvoření prostředí
-- Odstranění prostředí
-- Naplnění prostředí
+- Odstranit virtuální počítač
+- Vytvořit prostředí
+- Odstranit prostředí
+- Naplnit prostředí
 
-Použití rozšíření DevTest Labs je snadný způsob, jak začít pracovat s automaticky vytváření vlastních imagí ve službě DevTest Labs.
+Použití rozšíření DevTest Labs představuje snadný způsob, jak začít s automatickým vytvářením vlastních imagí v DevTest Labs.
 
-Není k dispozici alternativní implementace pomocí Powershellového skriptu pro složitější scénář. Pomocí Powershellu, lze plně automatizovat objekt pro vytváření bitové kopie založené na službě DevTest Labs, který lze použít v průběžnou integraci a průběžné doručování (CI/CD) nástrojů. Se zásadami, a potom v tomto alternativní řešení:
+Existuje alternativní implementace pomocí skriptu PowerShellu pro složitější scénář. Pomocí prostředí PowerShell můžete plně automatizovat továrnu imagí založenou na DevTest Labs, kterou je možné použít při průběžné integraci a průběžném doručování (CI/CD) sada nástrojů. Principy, které následují v tomto alternativním řešení:
 
-- Běžné aktualizace by měla nevyžadují žádné změny k objektu pro vytváření bitové kopie. (například přidání nového typu z vlastní image, automatické vyřazení staré Image, přidáte nový "koncový bod' DevTest Labs pro příjem vlastních imagí a tak dále.)
-- Společné změny jsou zajišťované zdrojového kódu (infrastruktura jako kód)
-- DevTest Labs přijímání vlastních imagí nemusí být ve stejném předplatném Azure (labs span předplatných)
-- Powershellové skripty musí být opakovaně použitelné, proto jsme aktivovat další objekty pro vytváření podle potřeby
+- Běžné aktualizace by neměly vyžadovat žádné změny továrny imagí. (například přidání nového typu vlastní image, automatické vyřazení starých imagí, přidání nového ' Endpoint ' DevTest Labs pro příjem vlastních imagí atd.)
+- Běžné změny jsou zajištěny prostřednictvím správy zdrojového kódu (infrastruktura jako kód).
+- DevTest Labs, které přijímají vlastní image, nemusí být ve stejném předplatném Azure (předplatná prostředí Labs).
+- Skripty PowerShellu je potřeba znovu použít, abychom mohli podle potřeby vystavovat další továrny.
 
-## <a name="next-steps"></a>Další postup
-Přejít na další článek v této části: [Spustit objekt pro vytváření image z Azure DevOps](image-factory-set-up-devops-lab.md)
+## <a name="next-steps"></a>Další kroky
+Přejděte k dalšímu článku v této části: spuštění objektu pro [vytváření imagí z Azure DevOps](image-factory-set-up-devops-lab.md)

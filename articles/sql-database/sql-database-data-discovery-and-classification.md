@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 922a2eb910a99a899bdb9f2b3e2392559ec9b0f3
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 7a8fe0f21ea8b31fb26727e2220f7395e2d71c2c
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548410"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555371"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasifikace & Azure SQL Database a SQL Data Warehouse Discovery Data
 
@@ -128,7 +128,15 @@ Důležitým aspektem paradigmata Information Protection je schopnost sledovat p
 
 ![Protokol auditu](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-### <a name="manage-classifications"></a>Spravovat klasifikace
+## <a id="subheading-4"></a>Oprávnění
+
+Následující předdefinované role mohou číst klasifikaci dat služby Azure SQL Database: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` a `User Access Administrator`.
+
+Následující předdefinované role mohou změnit klasifikaci dat služby Azure SQL Database: `Owner`, `Contributor``SQL Security Manager`.
+
+Další informace o [RBAC pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
+
+## <a id="subheading-5"></a>Spravovat klasifikace
 
 # <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
 Pomocí T-SQL můžete přidat nebo odebrat klasifikace sloupců a načíst všechny klasifikace pro celou databázi.
@@ -152,8 +160,10 @@ Pomocí rozhraní REST API můžete také programově spravovat klasifikace. Pub
 
 - [Seznam doporučený databází](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) – získá Doporučené popisky citlivosti dané databáze.
 
-# <a name="powershell-cmdlet-for-azure-sqltabazure-portal-sqldb"></a>[Rutina PowerShellu pro Azure SQL](#tab/azure-portal-sqldb)
-K získání všech doporučených sloupců ve službě Azure SQL Database můžete použít PowerShell.
+# <a name="powershell-cmdlettabazure-powelshell"></a>[Rutina PowerShellu](#tab/azure-powelshell)
+K získání všech doporučených sloupců v databázi SQL Azure a ve spravované instanci můžete použít PowerShell.
+
+### <a name="powershell-cmdlet-for-azure-sql-database"></a>Rutina PowerShellu pro Azure SQL Database
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
@@ -161,8 +171,7 @@ K získání všech doporučených sloupců ve službě Azure SQL Database můž
 - [Enable – AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
 - [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-# <a name="powershell-cmdlets-for-managed-instancetabazure-powershell-mi"></a>[Rutiny PowerShellu pro spravovanou instanci](#tab/azure-powershell-mi)
-K získání všech doporučených sloupců ve spravované instanci můžete použít PowerShell.
+### <a name="powershell-cmdlets-for-managed-instance"></a>Rutiny PowerShellu pro spravovanou instanci
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
@@ -170,22 +179,17 @@ K získání všech doporučených sloupců ve spravované instanci můžete pou
 - [Enable – AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
-## <a name="permissions"></a>Oprávnění
+---
 
-Následující předdefinované role mohou číst klasifikaci dat služby Azure SQL Database: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` a `User Access Administrator`.
-
-Následující předdefinované role mohou změnit klasifikaci dat služby Azure SQL Database: `Owner`, `Contributor``SQL Security Manager`.
-
-Další informace o [RBAC pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
-
-## <a id="subheading-5"></a>Další kroky
+## <a id="subheading-6"></a>Další kroky
 
 - Přečtěte si další informace o [pokročilém zabezpečení dat](sql-database-advanced-data-security.md).
 - Zvažte konfiguraci [Azure SQL Database auditování](sql-database-auditing.md) pro monitorování a auditování přístupu k utajovaným citlivým datům.
 
 <!--Anchors-->
-[SQL data discovery & classification overview]: #subheading-1
+[What is data discovery & classification]: #subheading-1
 [Discovering, classifying & labeling sensitive columns]: #subheading-2
 [Auditing access to sensitive data]: #subheading-3
-[Automated/Programmatic classification]: #subheading-4
-[Next Steps]: #subheading-5
+[Permissions]: #subheading-4
+[Manage classifications]: #subheading-5
+[Next Steps]: #subheading-6

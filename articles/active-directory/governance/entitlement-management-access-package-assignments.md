@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f06da43e758c24da65664b34dd83f876a00e3a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174908"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554000"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Zobrazení, přidání a odebrání přiřazení balíčku pro přístup ve správě nároků Azure AD
 
@@ -76,6 +76,24 @@ V některých případech můžete chtít přímo přiřadit konkrétní uživat
 1. Kliknutím na tlačítko **Přidat** můžete vybraným uživatelům přiřadit přímý přístup k balíčku přístupu.
 
     Po chvíli klikněte na **aktualizovat** , aby se uživatelé mohli zobrazit v seznamu přiřazení.
+
+## <a name="remove-an-assignment"></a>Odebrání přiřazení
+
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
+
+1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
+
+1. V nabídce vlevo klikněte na **přístup k balíčkům** a otevřete balíček pro přístup.
+
+1. V nabídce vlevo klikněte na **přiřazení**.
+ 
+1. Zaškrtněte políčko vedle uživatele, jehož přiřazení chcete odebrat z balíčku pro přístup. 
+
+1. V horní části levého podokna klikněte na tlačítko **Odebrat** . 
+ 
+    ![Přiřazení – odebrat uživatele z balíčku přístupu](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+
+    Zobrazí se oznámení o odebrání přiřazení. 
 
 ## <a name="next-steps"></a>Další kroky
 

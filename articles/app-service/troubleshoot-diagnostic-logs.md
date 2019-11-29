@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: bf25967133901aca911c0ad3a69d43c75bb816a0
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958054"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558565"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -64,13 +64,13 @@ Možnost **systému souborů** je určena pro dočasné účely ladění a sama 
 
 Vyberte **úroveň**nebo úroveň podrobností, které se mají protokolovat. V následující tabulce jsou uvedeny kategorie protokolů, které jsou součástí jednotlivých úrovní:
 
-| Level | Zahrnuté kategorie |
+| Úroveň | Zahrnuté kategorie |
 |-|-|
-|**Disabled** (Zakázáno) | Žádný |
+|**Disabled** (Zakázáno) | Žádné |
 |**Chyba** | Chyba, kritická |
 |**Upozornění** | Upozornění, chyba, kritická|
-|**Informace o** | Informace, varování, chyba, kritické|
-|**Verbose** | Trasování, ladění, informace, varování, chyba, kritická (všechny kategorie) |
+|**Informace** | Informace, varování, chyba, kritické|
+|**Podrobné** | Trasování, ladění, informace, varování, chyba, kritická (všechny kategorie) |
 
 Po dokončení vyberte **Uložit**.
 
@@ -112,9 +112,9 @@ Oba typy protokolů jsou uloženy v App Service systému souborů. Zachovají se
 
 ## <a name="add-log-messages-in-code"></a>Přidat protokolové zprávy v kódu
 
-V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Příklad:
+V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Například:
 
-- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Příklad:
+- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Například:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -142,12 +142,12 @@ Pokud chcete streamovat živé vysílání v [Cloud Shell](../cloud-shell/overvi
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Příklad:
+Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Například:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Příklad:
+Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Například:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -189,14 +189,14 @@ S novou [integrací Azure monitor](https://aka.ms/appsvcblog-azmon)můžete [vyt
 
 Následující tabulka uvádí podporované typy a popisy protokolů: 
 
-| Typ protokolu | Podpora Windows | Podpora Linuxu | Popis |
+| Typ protokolu | Podpora Windows | Podpora pro Linux (Docker) | Popis |
 |-|-|-|
-| AppServiceConsoleLogs | TBA | Ano | Standardní výstup a standardní chyba |
+| AppServiceConsoleLogs | přidáme | Ano | Standardní výstup a standardní chyba |
 | AppServiceHTTPLogs | Ano | Ano | Protokoly webového serveru |
 | AppServiceEnvironmentPlatformLogs | Ano | Ano | App Service Environment: škálování, změny konfigurace a protokoly stavu|
 | AppServiceAuditLogs | Ano | Ano | Přihlašovací aktivita prostřednictvím FTP a Kudu |
-| AppServiceFileAuditLogs | TBA | TBA | Změny souborů prostřednictvím FTP a Kudu |
-| AppServiceAppLogs | TBA | Java SE & Tomcat | Protokoly aplikací |
+| AppServiceFileAuditLogs | přidáme | přidáme | Změny souborů prostřednictvím FTP a Kudu |
+| AppServiceAppLogs | přidáme | Java SE & Tomcat | Protokoly aplikací |
 
 ## <a name="nextsteps"></a> Další kroky
 * [Dotazování protokolů pomocí Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

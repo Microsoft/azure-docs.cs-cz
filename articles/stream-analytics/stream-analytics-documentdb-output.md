@@ -1,6 +1,6 @@
 ---
-title: Výstup Azure Stream Analytics ke službě Cosmos DB
-description: Tento článek popisuje, jak používat Azure Stream Analytics se uložit výstup do služby Azure Cosmos DB pro výstup JSON pro archivaci dat a dotazy s nízkou latencí nestrukturovaných dat JSON.
+title: Azure Stream Analytics výstup do Cosmos DB
+description: Tento článek popisuje, jak pomocí Azure Stream Analytics uložit výstup do Azure Cosmos DB pro výstup JSON, pro archivaci dat a pro dotazy s nízkou latencí v nestrukturovaných datech JSON.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,23 +9,23 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 52bbb52b13a3606e3ddc8deca2da8505233c9352
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: aa4ac011a7b6258958ac1ac176fd63b18a4ef856
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062016"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560181"
 ---
-# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Výstup Azure Stream Analytics ke službě Azure Cosmos DB  
-Stream Analytics můžete směrovat [služby Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) výstup ve formátu JSON, povolení archivace a s nízkou latencí dotazy na data nestrukturovaných dat JSON. Tento dokument uvádí i některé doporučené postupy pro implementaci této konfigurace.
+# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics výstup do Azure Cosmos DB  
+Stream Analytics může cílit [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) na výstup JSON, povolit archivaci dat a dotazy s nízkou latencí na nestrukturovaná data JSON. Tento dokument popisuje některé osvědčené postupy pro implementaci této konfigurace.
 
-Pro ty, kteří zkušenosti se službou Cosmos DB, podívejte se na [výuky pro služby Azure Cosmos DB](https://azure.microsoft.com/documentation/learning-paths/documentdb/) začít. 
+Pro uživatele, kteří nejsou obeznámeni s Cosmos DB, se podívejte na postup, jak začít používat [Azure Cosmos DB](https://azure.microsoft.com/documentation/learning-paths/documentdb/) . 
 
 > [!Note]
-> V tuto chvíli Azure Stream Analytics podporuje jenom připojení ke službě Azure Cosmos DB pomocí **rozhraní SQL API**.
-> Další rozhraní API služby Azure Cosmos DB se zatím nepodporují. Pokud bod Azure Stream Analytics k účtům Azure Cosmos DB vytvořené pomocí jiných rozhraní API, nemusí být data uložená správně. 
+> V tuto chvíli Azure Stream Analytics podporuje jenom připojení k Azure Cosmos DB pomocí **rozhraní SQL API**.
+> Jiná rozhraní API Azure Cosmos DB ještě nejsou podporovaná. Pokud přejdete Azure Stream Analytics na účty Azure Cosmos DB vytvořené pomocí jiných rozhraní API, data nemusí být správně uložená. 
 
-## <a name="basics-of-cosmos-db-as-an-output-target"></a>Základy služby Cosmos DB jako cíl výstupu
+## <a name="basics-of-cosmos-db-as-an-output-target"></a>Základy Cosmos DB jako cíle výstupu
 Výstup Azure Cosmos DB v Stream Analytics umožňuje zapisovat výsledky zpracování streamu jako výstup JSON do kontejnerů, které jsou Cosmos DB. Stream Analytics ve vaší databázi nevytváří kontejnery, ale vyžaduje, abyste je vytvořili předem. To je tak, aby náklady na Cosmos DB kontejnery byly řízeny vámi, a aby bylo možné vyladit výkon, konzistenci a kapacitu kontejnerů přímo pomocí [rozhraní api Cosmos DB](https://msdn.microsoft.com/library/azure/dn781481.aspx).
 
 > [!Note]
@@ -33,25 +33,25 @@ Výstup Azure Cosmos DB v Stream Analytics umožňuje zapisovat výsledky zpraco
 
 Některé možnosti kontejneru Cosmos DB jsou podrobně popsané níže.
 
-## <a name="tune-consistency-availability-and-latency"></a>Vyladění konzistencí, dostupností a latencí
-Aby se shodovaly s požadavky vaší aplikace, Azure Cosmos DB vám umožní vyladit databáze a kontejnery a dělat kompromisy mezi konzistencí, dostupností, latencí a propustností. V závislosti na tom, jaké úrovně konzistence čtení vašim potřebám scénář pro čtení a zápis latenci, že můžete použít úrovně konzistence na váš účet databáze. Propustnost lze zlepšit škálováním jednotek žádostí (ru) v kontejneru. Ve výchozím nastavení Azure Cosmos DB také umožňuje synchronní indexování každé operace CRUD do vašeho kontejneru. Toto je další užitečná možnost řízení výkonu zápisu/čtení ve službě Azure Cosmos DB. Další informace najdete v článku [změnit úrovně konzistence vaší databáze a dotazu](../cosmos-db/consistency-levels.md) článku.
+## <a name="tune-consistency-availability-and-latency"></a>Vyladění konzistence, dostupnosti a latence
+Aby se shodovaly s požadavky vaší aplikace, Azure Cosmos DB vám umožní vyladit databáze a kontejnery a dělat kompromisy mezi konzistencí, dostupností, latencí a propustností. V závislosti na tom, jaké úrovně konzistence čtení vaše situace potřebuje k latenci čtení a zápisu, můžete zvolit úroveň konzistence v databázovém účtu. Propustnost lze zlepšit škálováním jednotek žádostí (ru) v kontejneru. Ve výchozím nastavení Azure Cosmos DB také umožňuje synchronní indexování každé operace CRUD do vašeho kontejneru. Toto je další užitečnou možností pro řízení výkonu zápisu a čtení v Azure Cosmos DB. Další informace najdete v článku [Změna úrovně konzistence databáze a dotazu](../cosmos-db/consistency-levels.md) .
 
-## <a name="upserts-from-stream-analytics"></a>Upsertuje ze Stream Analytics
+## <a name="upserts-from-stream-analytics"></a>Upsertuje z Stream Analytics
 Stream Analytics Integration with Azure Cosmos DB umožňuje do kontejneru vkládat nebo aktualizovat záznamy na základě zadaného sloupce s ID dokumentu. To se také označuje jako *Upsert*.
 
-Stream Analytics používá optimistické upsert přístupu, kde aktualizace jsou pouze provedeno při vložení selže kvůli konfliktu ID dokumentu. S úrovní kompatibility 1,0 se tato aktualizace provádí jako oprava, takže umožňuje částečné aktualizace dokumentu. to znamená, že přidání nových vlastností nebo nahrazení stávající vlastnosti je provedeno přírůstkově. Však není sloučit změny hodnoty vlastnosti pole ve vašich výsledku dokumentu JSON v celého pole získávání přepsány, to znamená, pole. S 1,2 je chování Upsert upraveno pro vložení dokumentu nebo jeho nahrazení. To je popsáno dále v níže uvedené části úroveň kompatibility 1,2.
+Stream Analytics používá optimistický Upsert přístup, kde se aktualizace provádějí pouze v případě, že se operace INSERT nezdařila s kódem konfliktu ID dokumentu. S úrovní kompatibility 1,0 se tato aktualizace provádí jako oprava, takže umožňuje částečné aktualizace dokumentu. to znamená, že přidání nových vlastností nebo nahrazení stávající vlastnosti je provedeno přírůstkově. Změny v hodnotách vlastností pole v dokumentu JSON ale budou mít za následek přepsání celého pole, to znamená, že pole není sloučeno. S 1,2 je chování Upsert upraveno pro vložení dokumentu nebo jeho nahrazení. To je popsáno dále v níže uvedené části úroveň kompatibility 1,2.
 
-Pokud vstupní dokument JSON má existující pole ID, že pole je automaticky použít jako sloupec ID dokumentu ve službě Cosmos DB a jakékoli další zápisy jsou zpracovány jako takové, což vede k jednomu z těchto situací:
-- Jedinečné ID vést k vložení
-- duplicitní ID a "ID dokumentu' nastavena na"ID"vede má upsertovat
-- duplicitní ID a 'ID dokumentu' není sada vede k chybě, po první dokument
+Pokud má příchozí dokument JSON existující pole ID, bude toto pole automaticky použito jako sloupec ID dokumentu v Cosmos DB a jakékoli následné zápisy jsou zpracovávány jako takové, což vede k jedné z těchto situací:
+- jedinečné identifikátory, které vedou k vložení
+- duplicitní ID a ' ID dokumentu ' nastavené na ' ID ' vede na Upsert
+- duplicitní ID a ' ID dokumentu ' nenastaví u prvního dokumentu, že má za následek chybu.
 
-Pokud chcete uložit <i>všechny</i> dokumenty, včetně těch s duplicitním ID přejmenovat pole ID v dotazu (s klíčovým slovem AS) a umožní Cosmos DB vytvořit pole ID nebo nahraďte ID s hodnotou jiného sloupce (pomocí klíčového slova AS, nebo pomocí nastavení "ID dokumentu").
+Chcete-li uložit <i>všechny</i> dokumenty včetně těch s duplicitním ID, přejmenujte pole ID v dotazu (s klíčovým slovem as) a nechejte Cosmos DB vytvořit pole ID nebo nahradit ID jinou hodnotou sloupce (pomocí klíčového slova as nebo pomocí nastavení ' ID dokumentu ').
 
-## <a name="data-partitioning-in-cosmos-db"></a>Dělení dat v databázi Cosmos DB
-Azure Cosmos DB [](../cosmos-db/partition-data.md) neomezenými kontejnery jsou doporučeným přístupem k vytváření oddílů dat, protože Azure Cosmos DB automaticky škálují oddíly na základě vašich úloh. Když zapisujete do neomezených kontejnerů, Stream Analytics použije jako předchozí krok dotazu a jako vstupní schéma dělení tolik paralelních zapisovačů.
+## <a name="data-partitioning-in-cosmos-db"></a>Dělení dat v Cosmos DB
+Azure Cosmos DB [neomezenými](../cosmos-db/partition-data.md) kontejnery jsou doporučeným přístupem k vytváření oddílů dat, protože Azure Cosmos DB automaticky škálují oddíly na základě vašich úloh. Když zapisujete do neomezených kontejnerů, Stream Analytics použije jako předchozí krok dotazu a jako vstupní schéma dělení tolik paralelních zapisovačů.
 > [!NOTE]
-> V tuto chvíli Azure Stream Analytics podporuje jenom neomezené kontejnery s klíči oddílů na nejvyšší úrovni. Například `/region` je podporována. Vnořené klíče oddílů (třeba `/region/name`) nejsou podporovány. 
+> V tuto chvíli Azure Stream Analytics podporuje jenom neomezené kontejnery s klíči oddílů na nejvyšší úrovni. Například `/region` je podporována. Vnořené klíče oddílů (např. `/region/name`) nejsou podporovány. 
 
 V závislosti na zvoleném klíči oddílu se může zobrazit toto _Upozornění_:
 
@@ -61,7 +61,7 @@ Je důležité zvolit vlastnost klíče oddílu, která má několik různých h
 
 Klíč oddílu je také hranice pro transakce v uložených procedurách a triggerech DocumentDB. Měli byste zvolit klíč oddílu, aby dokumenty, ke kterým dojde společně v transakcích, sdílely stejnou hodnotu klíče oddílu. Článek [dělení Cosmos DB](../cosmos-db/partitioning-overview.md) obsahuje další podrobnosti o výběru klíče oddílu.
 
-U pevných Azure Cosmos DB kontejnerů neumožňuje Stream Analytics horizontálního navýšení nebo navýšení kapacity směrem nahoru nebo dolů. Mají maximální limit je 10 GB a propustnosti 10 000 RU/s.  Pokud chcete migrovat data z pevný kontejner do neomezeného kontejneru (například jeden s minimálně 1 000 RU/s a klíč oddílu), budete muset použít [nástroj pro migraci dat](../cosmos-db/import-data.md) nebo [změnit informační kanál knihovny](../cosmos-db/change-feed.md).
+U pevných Azure Cosmos DB kontejnerů neumožňuje Stream Analytics horizontálního navýšení nebo navýšení kapacity směrem nahoru nebo dolů. Mají horní limit 10 GB a propustnosti 10 000 RU/s.  Chcete-li migrovat data z pevného kontejneru do neomezeného kontejneru (například jeden s minimálně 1 000 RU/s a klíč oddílu), je nutné použít [Nástroj pro migraci dat](../cosmos-db/import-data.md) nebo [knihovnu změn kanálu](../cosmos-db/change-feed.md).
 
 Možnost zápisu do více pevných kontejnerů je zastaralá a nedoporučuje se pro horizontální navýšení kapacity Stream Analytics úlohy.
 
@@ -83,21 +83,31 @@ Upozorňujeme, že Cosmos DB výstupní propustnost je shodná s 1,0 a 1,1. Vzhl
 
 
 
-## <a name="cosmos-db-settings-for-json-output"></a>Nastavení služby cosmos DB pro výstup ve formátu JSON
+## <a name="cosmos-db-settings-for-json-output"></a>Nastavení Cosmos DB pro výstup JSON
 
-Vytváření služby Cosmos DB jako výstup ve službě Stream Analytics generuje řádku informace, jak je vidět níže. Tato část obsahuje vysvětlení definici vlastnosti.
+Vytvoření Cosmos DB jako výstup v Stream Analytics vygeneruje výzvu k zadání informací, jak je vidět níže. V této části najdete vysvětlení definice vlastností.
 
-![documentdb stream analytics výstupní obrazovky](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
+![výstupní obrazovka DocumentDB Stream Analytics](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
 |Pole           | Popis|
 |-------------   | -------------|
 |Alias pro výstup    | Alias pro odkazování na tento výstup v dotazu ASA.|
-|Subscription    | Vyberte předplatné Azure.|
-|ID účtu      | Název nebo identifikátor URI koncového bodu účtu Azure Cosmos DB.|
+|Předplatné    | Vyberte předplatné Azure.|
+|Account ID      | Název nebo identifikátor URI koncového bodu účtu Azure Cosmos DB.|
 |Klíč účtu     | Sdílený přístupový klíč pro účet Azure Cosmos DB.|
 |Databáze        | Azure Cosmos DB název databáze.|
-|Název kontejneru | Název kontejneru, který se má použít. `MyContainer`musí existovat vzorový platný kontejner Input-One s `MyContainer` názvem.  |
-|ID dokumentu     | Volitelné. Název sloupce ve výstupních událostech používaný jako jedinečný klíč, na které insert nebo update musí být operace založené. Pokud pole ponecháte prázdné, všechny události se vloží, bez možnosti aktualizace.|
+|Název kontejneru | Název kontejneru, který se má použít. `MyContainer` je vzorový platný kontejner Input-One s názvem `MyContainer` musí existovat.  |
+|ID dokumentu     | Volitelné. Název sloupce ve výstupních událostech použitý jako jedinečný klíč, na kterém musí být operace INSERT nebo Update založená. Pokud je ponecháno prázdné, budou vloženy všechny události bez možnosti aktualizace.|
+
+Jakmile je výstup Cosmos DB nakonfigurovaný, dá se použít v dotazu jako cíl [příkazu into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). Při použití výstupu Cosmos DB jako takového je [potřeba nastavit klíč oddílu explicitně](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). Výstupní záznam musí obsahovat sloupec s rozlišováním velkých a malých písmen pojmenovaný za klíčem oddílu v Cosmos DB. Aby bylo dosaženo větší paralelismu, příkaz může vyžadovat [klauzuli partition by](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) pomocí stejného sloupce.
+
+**Vzorový dotaz**:
+
+```SQL
+    SELECT TollBoothId, PartitionId
+    INTO CosmosDBOutput
+    FROM Input1 PARTITION BY PartitionId
+``` 
 
 ## <a name="error-handling-and-retries"></a>Zpracování chyb a opakování
 

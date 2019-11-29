@@ -1,6 +1,6 @@
 ---
 title: Správa potíží s ochranou Endpoint Protection pomocí Azure Security Center | Microsoft Docs
-description: Naučte se spravovat problémy ochrany koncových bodů v Azure Security Center.
+description: Přečtěte si o monitorování ochrany koncových bodů Security Center a o tom, jak vyvstanou problémy vyřešit.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: memildin
-ms.openlocfilehash: b1bcce1e94a64253986ad9b1fd77874ba0a39839
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 70b7f511c32013a5dbc9369a2dfba2b8cd5f9145
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202065"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558612"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Správa potíží s ochranou Endpoint Protection pomocí Azure Security Center
-Azure Security Center monitoruje stav antimalwarové ochrany a oznamuje ho v okně problémy ochrany koncového bodu. Security Center zvýrazní problémy, jako jsou zjištěné hrozby a nedostatečná ochrana, což může způsobit, že vaše virtuální počítače a počítače budou zranitelné proti malwarovým hrozbám. Pomocí informací v části **problémy s ochranou koncového bodu Endpoint Protection**můžete identifikovat plán, který řeší všechny zjištěné problémy.
+Azure Security Center monitoruje stav antimalwarové ochrany a oznamuje je na stránce problémy s ochranou koncového bodu. Security Center zvýrazní problémy, jako jsou zjištěné hrozby a nedostatečná ochrana, což může způsobit, že vaše virtuální počítače a počítače budou zranitelné proti malwarovým hrozbám. Pomocí informací v části **problémy s ochranou koncového bodu Endpoint Protection**můžete identifikovat plán, který řeší všechny zjištěné problémy.
 
 Security Center oznamuje následující problémy ochrany koncového bodu:
 
@@ -30,7 +30,7 @@ Security Center oznamuje následující problémy ochrany koncového bodu:
 - Stav služby Endpoint Protection:
 
   - Zastaralý podpis – antimalwarové řešení je nainstalované na těchto virtuálních počítačích a počítačích, ale řešení nemá nejnovější antimalwarové signatury.
-  - Bez ochrany v reálném čase – na tyto virtuální počítače a počítače je nainstalované antimalwarové řešení, ale není nakonfigurované na ochranu v reálném čase.   Služba může být zakázaná nebo Security Center nemůže získat stav, protože řešení není podporované. Seznam podporovaných řešení najdete v tématu [integrace partnera](security-center-services.md#endpoint-supported) .
+  - Bez ochrany v reálném čase – na tyto virtuální počítače a počítače je nainstalované antimalwarové řešení, ale není nakonfigurované na ochranu v reálném čase. Služba může být zakázaná nebo Security Center nemůže získat stav, protože řešení není podporované. Seznam podporovaných řešení najdete v tématu [integrace partnera](security-center-services.md#endpoint-supported) .
   - Bez hlášení – antimalwarové řešení je nainstalované, ale neoznamuje data.
   - Neznámé – je nainstalované antimalwarové řešení, ale jeho stav je neznámý nebo oznamuje neznámou chybu.
 
@@ -40,7 +40,7 @@ Security Center oznamuje následující problémy ochrany koncového bodu:
     >
 
 ## <a name="implement-the-recommendation"></a>Implementace doporučení
-Problémy s ochranou koncového bodu se zobrazují jako doporučení v Security Center.  Pokud je vaše prostředí zranitelné proti malwarovým hrozbám, toto doporučení se zobrazí v části **doporučení** a v části **COMPUTE**. Pokud chcete zobrazit **řídicí panel problémy ochrany koncového bodu**, musíte postupovat podle pracovního postupu služby Compute.
+Problémy s ochranou koncového bodu se zobrazují jako doporučení v Security Center. Pokud je vaše prostředí zranitelné proti malwarovým hrozbám, toto doporučení se zobrazí v části **doporučení** a v části **COMPUTE**. Pokud chcete zobrazit **řídicí panel problémy ochrany koncového bodu**, musíte postupovat podle pracovního postupu služby Compute.
 
 V tomto příkladu použijeme **COMPUTE**.  Podíváme se na to, jak nainstalovat antimalware na virtuální počítače Azure a v počítačích mimo Azure.
 
@@ -75,7 +75,7 @@ V tomto příkladu použijeme **COMPUTE**.  Podíváme se na to, jak nainstalova
 
 4. V části **Endpoint Protection není nainstalovaná na virtuálních počítačích Azure** seznam virtuálních počítačů Azure, u kterých není nainstalovaný antimalwarový software.  Můžete zvolit instalaci antimalwaru na všechny virtuální počítače v seznamu nebo vybrat jednotlivé virtuální počítače pro instalaci antimalwaru kliknutím na konkrétní virtuální počítač.
 5. V části **Vybrat službu Endpoint Protection**vyberte řešení ochrany koncových bodů, které chcete použít. V tomto příkladu vyberte **Microsoft Antimalware**.
-6. Zobrazí se další informace o řešení ochrany koncových bodů. Vyberte **Vytvořit**.
+6. Zobrazí se další informace o řešení ochrany koncových bodů. Vyberte **Create** (Vytvořit).
 
 ## <a name="install-antimalware-on-non-azure-computers"></a>Instalace antimalwaru v počítačích mimo Azure
 

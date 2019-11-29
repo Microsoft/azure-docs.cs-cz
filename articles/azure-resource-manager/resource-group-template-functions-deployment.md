@@ -2,17 +2,17 @@
 title: Funkce šablon – nasazení
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení informací o nasazení.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: a255cea128241465788f21013eb0522a29f5bd9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 11/27/2019
+ms.openlocfilehash: 67540a78e349285be032f696a9ef4b9ba3c7e242
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230232"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561456"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkce nasazení pro šablony Azure Resource Manager 
 
-Správce prostředků poskytuje následující funkce pro získání hodnot z částí šablony a hodnot souvisejících s nasazením:
+Správce prostředků poskytuje následující funkce pro získání hodnot vztahujících se k aktuálnímu nasazení:
 
 * [prostředí](#deployment)
 * [hlediska](#environment)
@@ -89,7 +89,7 @@ Nasazení () můžete použít k propojení na jinou šablonu na základě ident
 
 Pokud šablonu znovu nasadíte z historie nasazení na portálu, šablona bude nasazena jako místní soubor. Vlastnost `templateLink` není ve funkci nasazení vrácena. Pokud vaše šablona spoléhá na `templateLink` vytvoření odkazu na jinou šablonu, nepoužívejte portál k opětovnému nasazení. Místo toho použijte příkazy, které jste použili k původnímu nasazení šablony.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) vrátí objekt nasazení:
 
@@ -141,7 +141,7 @@ Vrátí informace o prostředí Azure používaném pro nasazení.
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Tato funkce vrátí vlastnosti aktuálního prostředí Azure.
+Tato funkce vrátí vlastnosti aktuálního prostředí Azure. Následující příklad ukazuje vlastnosti pro globální Azure. Cloudy svrchovaného května můžou vracet mírně odlišné vlastnosti.
 
 ```json
 {
@@ -177,7 +177,7 @@ Tato funkce vrátí vlastnosti aktuálního prostředí Azure.
 }
 ```
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující příklad šablony vrátí objekt prostředí.
 
@@ -241,7 +241,7 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definován v odd�
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
+| parameterName |Ano |string |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -267,7 +267,7 @@ Obvykle použijete parametry pro nastavení hodnot prostředků. Následující 
 ]
 ```
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) ukazuje zjednodušené použití funkce Parameters.
 
@@ -326,10 +326,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringOutput | Řetězec | Možnost 1 |
-| intOutput | Int | 1 |
+| intOutput | Hmot | 1\. místo |
 | objectOutput | Objekt | {"One": "a", "Two": "b"} |
 | arrayOutput | Pole | [1, 2, 3] |
 | crossOutput | Řetězec | Možnost 1 |
@@ -376,7 +376,7 @@ Obvykle používáte proměnné pro zjednodušení šablony vytvořením složit
 ],
 ```
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) vrací různé hodnoty proměnných.
 
@@ -418,7 +418,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
 | exampleOutput1 | Řetězec | MojePromenna |
 | exampleOutput2 | Pole | [1, 2, 3, 4] |

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 846fd92bce3056dc119f38ac253a0a937e8c56a4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74309800"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566231"
 ---
 Přírůstkové snímky (Preview) jsou zálohy v čase pro spravované disky, které se při pořízení skládají pouze ze všech změn od posledního snímku. Při pokusu o stažení nebo jiné použití přírůstkového snímku se použije úplný virtuální pevný disk. Tato nová funkce pro snímky spravovaných disků může potenciálně dovolit, aby bylo cenově výhodnější, protože už nebudete muset ukládat celý disk s každým snímkem, pokud se nerozhodnete. Stejně jako běžné snímky lze přírůstkové snímky použít k vytvoření úplného spravovaného disku, nebo k vytvoření normálního snímku.
 
@@ -25,7 +25,7 @@ Pokud jste se ještě nezaregistrovali ve verzi Preview a chcete začít použí
 
 ## <a name="restrictions"></a>Omezení
 
-- Přírůstkové snímky jsou v tuto chvíli dostupné jenom v Středozápadní USA a Severní Evropa.
+- Přírůstkové snímky jsou v tuto chvíli dostupné jenom v Východní USA, Střed USA, Kanadě Central, Středozápadní USA a Severní Evropa.
 - Přírůstkové snímky momentálně nelze vytvořit poté, co jste změnili velikost disku.
 - Přírůstkové snímky se aktuálně nedají přesunout mezi předplatnými.
 - V současné době můžete v daném okamžiku generovat pouze identifikátory URI SAS až na pět snímků konkrétní rodiny snímků.

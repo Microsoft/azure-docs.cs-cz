@@ -9,18 +9,18 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8200c2511d4f85705ff56df43f128034d29b0604
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2c68c64202efec6d7dab745b6e1bdc029fa3976f
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012705"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561309"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Pochopení uchovávání dat v Azure Time Series Insights
 
-Tento článek popisuje dvě nastavení, která mají vliv na uchovávání dat ve vašem Azure Time Series Insightsovém prostředí.
+Tento článek popisuje dvě primární nastavení, která mají vliv na uchovávání dat ve vašem Azure Time Series Insightsovém prostředí.
 
 ## <a name="video"></a>Video
 
@@ -88,7 +88,7 @@ Po obnovení příchozího přenosu dat:
 
 V ovlivněných Event Hubs zvažte úpravu vlastnosti **uchovávání zpráv** , aby se minimalizovala ztráta dat, když dojde k pozastavení vstupu v Time Series Insights.
 
-[![uchovávání zpráv centra událostí.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[![uchovávání zpráv centra událostí.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
 Pokud ve zdroji událostí (`timeStampPropertyName`) nejsou nakonfigurované žádné vlastnosti, Time Series Insights ve výchozím nastavení časové razítko doručení do centra událostí jako osu X. Pokud je `timeStampPropertyName` nakonfigurovaná tak, aby byla něco jiného, prostředí vyhledá nakonfigurovanou `timeStampPropertyName` v datovém paketu, když se události analyzují.
 

@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81697293be235c12ca009c76a9fd9d3975e232fc
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173698"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554102"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Požádat o přístup k balíčku přístupu v Azure AD – Správa nároků
 
@@ -35,7 +35,7 @@ Prvním krokem je přihlášení k portálu pro přístup, kde si můžete vyž�
 
 **Požadovaná role:** Žadatele
 
-1. Vyhledejte e-mail nebo zprávu z projektu nebo obchodního manažera, se kterým pracujete. E-mail by měl obsahovat odkaz na balíček pro přístup, ke kterému budete potřebovat přístup. Odkaz začíná na `myaccess`, obsahuje pomocný parametr adresáře a končí ID balíčku přístupu.
+1. Vyhledejte e-mail nebo zprávu z projektu nebo obchodního manažera, se kterým pracujete. E-mail by měl obsahovat odkaz na balíček pro přístup, ke kterému budete potřebovat přístup. Odkaz začíná na `myaccess`, zahrnuje pomocný parametr adresáře a končí ID balíčku přístupu.
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -80,6 +80,30 @@ Po nalezení balíčku přístupu na portálu pro přístup můžete odeslat ž�
 Pokud požadujete přístup k balíčku přístupu, který má víc zásad, které platí, můžete být požádáni, abyste vybrali zásadu. Správce balíčků pro přístup může například nakonfigurovat balíček přístupu se dvěma zásadami pro dvě skupiny interních zaměstnanců. První zásada může mít povolený přístup po 60 dnech a vyžaduje schválení. Druhá zásada může mít povolený přístup 2 dny a nemusí vyžadovat schválení. Pokud se setkáte s tímto scénářem, musíte vybrat zásadu, kterou chcete použít.
 
 ![Můj portál přístupu – žádost o přístup-více zásad](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+## <a name="resubmit-a-request"></a>Odeslat žádost znovu
+
+Když vyžádáte přístup k balíčku přístupu, může být žádost zamítnutá nebo může vypršet platnost vaší žádosti, pokud schvalovatelé neodpoví včas. Pokud potřebujete přístup, můžete to zkusit znovu a odeslat žádost znovu. Následující postup vysvětluje, jak znovu odeslat žádost o přístup:
+
+**Požadovaná role:** Žadatele
+
+1. Přihlaste se k portálu **přístupu** .
+
+1. Klikněte na **historie požadavků** z navigační nabídky vlevo.
+
+1. Najděte balíček pro přístup, pro který znovu odešlete žádost.
+
+1. Kliknutím na značku zaškrtnutí vyberte balíček přístupu.
+
+1. Klikněte na modré **zobrazení** na odkaz napravo od vybraného balíčku přístupu.
+    
+    ![Vybrat přístup k balíčku a odkazu pro zobrazení](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
+
+    Otevře se podokno napravo s historií žádostí balíčku pro přístup.
+    
+    ![Vybrat tlačítko pro opětovné odeslání](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
+
+1. Klikněte na tlačítko **znovu odeslat** v dolní části podokna.
 
 ## <a name="cancel-a-request"></a>Zrušení žádosti
 

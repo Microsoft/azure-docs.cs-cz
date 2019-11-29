@@ -12,20 +12,20 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: cecd37c16d34c0cd6cf7a4d98732762d16073864
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c1f9c8a03a503444c7c45d5374b67e5b453a8931
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884107"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561607"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 V tomto kurzu vytvoříte konzolové aplikace .NET Core pro posílání zpráv a přijímání zpráv z fronty Service Bus.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
@@ -74,17 +74,11 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
 
     Jako proměnnou `ServiceBusConnectionString` zadejte připojovací řetězec pro obor názvů. Zadejte název fronty.
 
-1. Nahraďte výchozí obsah metody `Main()` následujícím řádkem kódu:
+1. Metodu `Main()` nahraďte následující **asynchronní** metodou `Main`. Volá metodu SendMessagesAsync, kterou přidáte v dalším kroku k odesílání zpráv do fronty. 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. Přímo za metodu `Main()` přidejte následující asynchronní metodu `MainAsync()`, která volá metodu pro odeslání zpráv:
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         const int numberOfMessages = 10;
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
@@ -100,7 +94,6 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
         await queueClient.CloseAsync();
     }
     ```
-
 1. Přímo za metodu `MainAsync()` přidejte následující metodu `SendMessagesAsync()`, která provede práci odesláním počtu zpráv určených `numberOfMessagesToSend` (aktuálně nastavené na hodnotu 10):
 
     ```csharp
@@ -147,25 +140,20 @@ namespace CoreSenderApp
         const string QueueName = "<your_queue_name>";
         static IQueueClient queueClient;
 
-        static void Main(string[] args)
-        {
-            MainAsync().GetAwaiter().GetResult();
-        }
-
-        static async Task MainAsync()
-        {
+        public static async Task Main(string[] args)
+        {    
             const int numberOfMessages = 10;
             queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
+    
             Console.WriteLine("======================================================");
             Console.WriteLine("Press ENTER key to exit after sending all the messages.");
             Console.WriteLine("======================================================");
-
-            // Send Messages
+    
+            // Send messages.
             await SendMessagesAsync(numberOfMessages);
-
+    
             Console.ReadKey();
-
+    
             await queueClient.CloseAsync();
         }
 
@@ -235,14 +223,8 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další aplikac
 1. Nahraďte výchozí obsah metody `Main()` následujícím řádkem kódu:
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. Přímo za metodu `Main()` přidejte následující asynchronní metodu `MainAsync()`, která volá metodu `RegisterOnMessageHandlerAndReceiveMessages()`:
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");

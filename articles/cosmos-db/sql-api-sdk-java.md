@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: eb8110c953787d1ebf7f01037808ee77db2eb8b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 42dcc0e9bd07f357c17f28dd754e4ae3404e01ff
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934160"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561891"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ Rozhraní SQL API Java SDK podporuje synchronní operace. Pro asynchronní podpo
 |**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
+* Pokud uživatel poskytuje pkRangeId, nebudete mít k dispozici chybu rozsahu klíčů pro neplatnou operaci.
 
 ### <a name="a-name244244"></a><a name="2.4.4"/>2.4.4
 * Aktualizace mezipaměti rozsahu klíčů optimalizovaného oddílu

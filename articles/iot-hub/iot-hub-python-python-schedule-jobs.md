@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: f1fbfcaa80a3d1781878fe3d6eb14558a3b298a5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c424c18538a4e428c0e713bb814c2febe28d2d04
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999528"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555572"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Úlohy plánování a vysílání (Python)
 
@@ -29,7 +29,7 @@ V koncepčním případě úloha obaluje jednu z těchto akcí a sleduje průbě
 
 Další informace o každé z těchto možností najdete v těchto článcích:
 
-* Vlastnosti a vlákna zařízení: [Začínáme s dvojitými zprávami](iot-hub-python-twin-getstarted.md) a [kurzem zařízení: Jak používat zdvojené vlastnosti zařízení](tutorial-device-twins.md)
+* Vlákna a vlastnosti zařízení: [Začínáme s dvojitými zprávami](iot-hub-python-twin-getstarted.md) a [kurzem zařízení: jak používat vlastnosti se zdvojeným zařízením](tutorial-device-twins.md)
 
 * Přímé metody: [IoT Hub příručka pro vývojáře – přímé metody](iot-hub-devguide-direct-methods.md) a [kurz: přímé metody](quickstart-control-device-python.md)
 
@@ -53,11 +53,11 @@ Na konci tohoto kurzu máte dvě aplikace v Pythonu:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -75,13 +75,9 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která reaguje na př
     pip install azure-iot-device
     ```
 
-   > [!NOTE]
-   > Balíčky PIP pro Azure-iothub-Service-Client jsou momentálně dostupné jenom pro operační systém Windows. Informace pro Linux a Mac OS najdete v oddílech týkajících se Linux a Mac OS na stránce [Příprava vývojového prostředí pro Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
-   >
-
 2. Pomocí textového editoru vytvořte nový soubor **simDevice.py** v pracovním adresáři.
 
-3. Na začátek souboru `import` **simDevice.py** přidejte následující příkazy a proměnné. Nahraďte `deviceConnectionString` připojovacím řetězcem zařízení, které jste vytvořili výše:
+3. Na začátek souboru **simDevice.py** přidejte následující příkazy a proměnné `import`. Nahraďte `deviceConnectionString` připojovacím řetězcem zařízení, které jste vytvořili výše:
 
     ```python
     import threading
@@ -117,7 +113,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která reaguje na př
             print (patch)
     ```
 
-6. Přidejte následující kód pro registraci obslužné rutiny pro metodu **lockDoor** . Zahrňte `main` také rutinu:
+6. Přidejte následující kód pro registraci obslužné rutiny pro metodu **lockDoor** . Zahrňte také rutinu `main`:
 
     ```python
     def iothub_jobs_sample_run():
@@ -189,12 +185,12 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která inicializuje v
     ```
 
    > [!NOTE]
-   > Balíčky PIP pro Azure-iothub-Service-Client a Azure-iothub-Device-Client jsou momentálně dostupné jenom pro operační systém Windows. Informace pro Linux a Mac OS najdete v oddílech týkajících se Linux a Mac OS na stránce [Příprava vývojového prostředí pro Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
+   > Balíček PIP pro Azure-iothub-Service-Client je momentálně dostupný jenom pro operační systém Windows. Informace pro Linux a Mac OS najdete v oddílech týkajících se Linux a Mac OS na stránce [Příprava vývojového prostředí pro Python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) .
    >
 
 2. Pomocí textového editoru vytvořte nový soubor **scheduleJobService.py** v pracovním adresáři.
 
-3. Na začátek souboru `import` **scheduleJobService.py** přidejte následující příkazy a proměnné. Zástupný symbol nahraďte připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT Hub.](#get-the-iot-hub-connection-string) `{IoTHubConnectionString}` Zástupný symbol nahraďte ID zařízení, které jste zaregistrovali v [části registrace nového zařízení ve službě IoT Hub:](#register-a-new-device-in-the-iot-hub) `{deviceId}`
+3. Na začátek souboru **scheduleJobService.py** přidejte následující příkazy a proměnné `import`. Zástupný symbol `{IoTHubConnectionString}` nahraďte připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string). Zástupný symbol `{deviceId}` nahraďte ID zařízení, které jste zaregistrovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub):
 
     ```python
     import sys
@@ -263,7 +259,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která inicializuje v
             print ( "Device twin updated." )
     ```
 
-6. Přidejte následující kód pro naplánování úloh a aktualizaci stavu úlohy. Zahrňte `main` také rutinu:
+6. Přidejte následující kód pro naplánování úloh a aktualizaci stavu úlohy. Zahrňte také rutinu `main`:
 
     ```python
     def iothub_jobs_sample_run():
@@ -342,7 +338,7 @@ Nyní můžete spustit aplikace.
 
     ![Ukázka úlohy IoT Hub 2 – výstup zařízení](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste použili úlohu k naplánování přímé metody na zařízení a aktualizaci vlastností vlákna zařízení.
 

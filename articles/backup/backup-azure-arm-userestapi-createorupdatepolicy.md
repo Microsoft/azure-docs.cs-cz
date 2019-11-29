@@ -4,16 +4,16 @@ description: V tomto článku se naučíte, jak vytvářet a spravovat zásady z
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: b6e665b5c71dc5f2e8ebc22e00e1a71237f48bfc
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173424"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554892"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásad služby Azure Recovery Services Backup pomocí REST API
 
-Postup vytvoření zásady zálohování pro trezor služby Azure Recovery Services je popsaný v [dokumentu REST API zásad](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate). Tento dokument můžeme použít jako referenci k vytvoření zásady pro zálohování virtuálních počítačů Azure.
+Postup vytvoření zásady zálohování pro trezor služby Azure Recovery Services je popsaný v [dokumentu REST API zásad](/rest/api/backup/protectionpolicies/createorupdate). Tento dokument můžeme použít jako referenci k vytvoření zásady pro zálohování virtuálních počítačů Azure.
 
 ## <a name="backup-policy-essentials"></a>Základy zásad zálohování
 
@@ -44,12 +44,12 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Pokud například chcete vytvořit zásadu pro zálohování virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Požaduje se  |Typ  |Popis  |
+|Name (Název)  |Požaduje se  |Typ  |Popis  |
 |---------|---------|---------|---------|
-|properties     |   Pravda      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
-|značek     |         | Objekt        |  Značky prostředků       |
+|properties     |   Pravda      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
+|tags     |         | Objekt        |  Značky prostředků       |
 
-Úplný seznam definic v těle žádosti najdete v [dokumentu zásady zálohování REST API](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate).
+Úplný seznam definic v těle žádosti najdete v [dokumentu zásady zálohování REST API](/rest/api/backup/protectionpolicies/createorupdate).
 
 ### <a name="example-request-body"></a>Příklad textu žádosti
 
@@ -152,9 +152,9 @@ Vytvoření nebo aktualizace zásad zálohování je [asynchronní operace](http
 
 Při vytvoření jiné operace vrátí dvě odpovědi: 202 (přijato) a po dokončení této operace pak 200 (OK).
 
-|Název  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
-|200 OK     |    [PolicyResource ochrany](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
+|200 OK     |    [PolicyResource ochrany](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 přijato     |         |     Přijata    |
 
 ### <a name="example-responses"></a>Příklady odpovědí

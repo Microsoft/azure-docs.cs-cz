@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: fb72ed337219f58481c094d68342dbf6f26493c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260684"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566238"
 ---
 ## <a name="for-users-in-your-directory"></a>Pro uživatele ve vašem adresáři
 
@@ -106,6 +106,14 @@ V části schvalování určíte, jestli se vyžaduje schválení, když si uži
 - Schválení od každého vybraného schvalovatele není vyžadováno pro schválení typu Single nebo 2 fáze.
 - Rozhodnutí o schválení vychází z toho, kdo žádost nejprve zkontroluje.
 
+Ukázku, jak přidat schvalovatele do zásady žádosti, najdete v následujícím videu:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4cZfg]
+
+Ukázku toho, jak do zásad žádosti přidat schválení ve více fázích, najdete v následujícím videu:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4d1Jw]
+
 Pomocí těchto kroků určete nastavení schválení pro žádosti pro balíček pro přístup:
 
 1. Pokud chcete pro žádosti od vybraných uživatelů vyžadovat schválení, nastavte u přepínače **vyžadovat schválení** **hodnotu Ano**. Nebo pokud chcete, aby se požadavky automaticky schválily, nastavte přepínač na **ne**.
@@ -115,7 +123,6 @@ Pomocí těchto kroků určete nastavení schválení pro žádosti pro balíče
 1. Teď určíte, jestli žádosti budou vyžadovat schválení jednou nebo 2 fázemi. Nastavte, **kolik fází** se má přepnout na **1** pro schválení v rámci jedné fáze nebo nastavte přepínač na **2** pro schválení ve dvou fázích.
 
     ![Přístup k balíčku – nastavení schválení](./media/active-directory-entitlement-management-request-policy/approval.png)
-
 
 Pomocí následujících kroků přidejte schvalovatele po výběru počtu fází, které požadujete: 
 

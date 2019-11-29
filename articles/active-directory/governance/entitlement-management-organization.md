@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a8e5dc43170af8f33ad266edfa02ac5b41ca67a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2dec950f5475a8a64cfecfac1fb25246d6a7aa29
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174137"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561922"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
@@ -33,7 +33,7 @@ Připojená organizace je externí adresář nebo doména služby Azure AD, ke k
 
 Předpokládejme například, že pracujete s Woodgrove bankou a chcete spolupracovat se dvěma externími organizacemi: grafický design Institute a contoso. Vaše kontaktní osoba pracovala s grafickým institutem pro vytváření grafiky, kterou používají Azure AD, a uživatelé tohoto institutu pro grafický design Institute mají hlavní název uživatele, který končí `graphicdesigninstitute.com`. A Vy jste na svém místě od společnosti Contoso dozvěděli, že ještě nepoužívají službu Azure AD, ale uživatelé společnosti Contoso mají hlavní název uživatele, který končí `contoso.com`.
 
-Můžete nakonfigurovat dvě připojené organizace – jednu pro Graphics design Institute s doménovou `graphicdesigninstitute.com`a jednu pro contoso s doménovou `contoso.com`. Pokud pak přidáte tyto dvě připojené organizace do zásady, můžou uživatelé z každé organizace, které mají hlavní název uživatele odpovídající zásadám, vyžadovat přístup k balíčkům. Vzhledem k tomu, že byl pomocí služby Azure AD identifikována aplikace Graphical Designer, pak je v případě, že je v nástroji Graphical Designer následně použity subdomény (například `graphicdesigninstitute.example`), uživatelé s tímto hlavním názvem uživatele budou moci žádat o přístup k balíčkům pomocí stejné zásady.
+Můžete nakonfigurovat dvě připojené organizace – jednu pro Graphics design Institute s doménovou `graphicdesigninstitute.com`a jednu pro contoso s doménovou `contoso.com`. Pokud pak přidáte tyto dvě připojené organizace do zásady, můžou uživatelé z každé organizace, které mají hlavní název uživatele odpovídající zásadám, vyžadovat přístup k balíčkům. Vzhledem k tomu, že grafický úřad pro vytváření grafiky byl identifikován jako při použití služby Azure AD, `graphicdesigninstitute.example`pak budou mít uživatelé s tímto hlavním názvem uživatele také přístup k balíčkům, které používají stejné zásady.
 
 ![Příklad propojené organizace](./media/entitlement-management-organization/connected-organization-example.png)
 
@@ -42,6 +42,10 @@ Jak budou uživatelé z adresáře nebo domény služby Azure AD ověřeni, záv
 - Azure AD
 - [Přímá federace](../b2b/direct-federation.md)
 - [Jednorázové heslo](../b2b/one-time-passcode.md) (doména)
+
+Ukázku, jak přidat propojenou organizaci, najdete v následujícím videu:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4dskS]
 
 ## <a name="add-a-connected-organization"></a>Přidání připojené organizace
 

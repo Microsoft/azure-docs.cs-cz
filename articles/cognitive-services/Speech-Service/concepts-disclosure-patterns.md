@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e0cb73f224f53441ad4f23298a035f95d59b9f7c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836995"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559010"
 ---
-# <a name="disclosure-design-patterns"></a>Vzory návrhu zpřístupnění
+# <a name="disclosure-design-patterns"></a>Zpřístupnění způsobů návrhu
 Teď, když&#39;jste zjistili správnou [úroveň zveřejnění](concepts-disclosure-guidelines.md#disclosure-assessment) pro syntetické hlasové zážitky, je&#39;vhodný čas na prozkoumání potenciálních vzorů návrhu.
 ## <a name="overview"></a>Přehled
 Existuje spektrum vzorů návrhu zpřístupnění, které můžete použít na syntetické hlasové prostředí. Pokud byl výsledek hodnocení zveřejnění "vysoké zpřístupnění", doporučujeme, abyste [**výslovně vyzrazeni**](#explicit-disclosure), což znamená, že navzájem komunikují původem syntetického hlasu. [**Implicitní zveřejnění**](#implicit-disclosure) zahrnuje hromádky a vzory interakce, které využívají hlasové funkce, ať už jsou požadované úrovně zveřejnění vysoké nebo nízké.
@@ -167,7 +167,7 @@ Konzistence je klíč k dosažení implicitního zpřístupnění v průběhu ce
 
 ![Konzistence implicitních pomůcek](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues-amp-feedback"></a>Implicitní hromádky &amp; zpětné vazby
+### <a name="implicit-cues--feedback"></a>Implicitní hromádky & zpětné vazby
 
 Anthropomorphism může manifestovat různými způsoby, od skutečného vizuální reprezentace agenta až po hlas, zvuky, vzory světla, skákající tvary nebo dokonce vibrace zařízení. Při definování svého uživatelů Využijte implicitní hromádky a vzory zpětné vazby, místo cílení na miniaturu, která je člověkem podobná. To je jeden ze způsobů, jak minimalizovat nutnost výslovného odhalení.
 
@@ -239,7 +239,7 @@ Vyzrazení můžete využít jako příležitost k řádnému selhání.
 
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 - [Pokyny pro Microsoft bot](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
 - [Pokyny pro návrh Cortany](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
 - [Pokyny pro návrh mluveného slova pro Microsoft Windows UWP](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)

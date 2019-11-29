@@ -1,14 +1,14 @@
 ---
-title: Ukázka – podrobný plán SWIFT CSP-CSCF v2020 – přehled
+title: Ukázka podrobného plánu SWIFT CSP-CSCF v2020 – přehled
 description: Přehled ukázky podrobného plánu SWIFT CSP-CSCF v2020. Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly SWIFT CSP-CSCF.
 ms.date: 09/24/2019
 ms.topic: sample
-ms.openlocfilehash: 0c042cd728694da11bddbe9960717127c3888ce8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ee8670522bc4549dbb687a9ebe35bb20d53b0f17
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037816"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546462"
 ---
 # <a name="overview-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Přehled ukázky podrobného plánu SWIFT CSP-CSCF v2020
 

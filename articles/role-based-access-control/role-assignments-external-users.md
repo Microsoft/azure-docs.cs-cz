@@ -16,12 +16,12 @@ ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802689"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555548"
 ---
 # <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Správa přístupu k prostředkům Azure pro externí uživatele typu Host pomocí RBAC
 
@@ -45,7 +45,7 @@ Pomocí těchto kroků přidáte uživatele typu Host do adresáře pomocí str�
 
 1. Ujistěte se, že jsou nakonfigurovaná externí nastavení spolupráce vaší organizace, aby bylo možné pozvat hosty. Další informace najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../active-directory/b2b/delegate-invitations.md).
 
-1. V Azure Portal klikněte na **Azure Active Directory** > **uživatele** > **Nový uživatel typu Host**.
+1. V Azure Portal klikněte na **Azure Active Directory** > **uživatelů** > **noví uživatelé typu Host**.
 
     ![Nová funkce uživatele typu Host v Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -155,7 +155,7 @@ Před odebráním uživatele typu host z adresáře byste nejdřív měli odebra
 
 1. Ve zprávě odebrat přiřazení role, která se zobrazí, klikněte na **Ano**.
 
-1. V levém navigačním panelu klikněte na **Azure Active Directory** > **uživatelů**.
+1. V levém navigačním panelu klikněte na **Azure Active Directory** > **Uživatelé**.
 
 1. Klikněte na uživatele typu Host, kterého chcete odebrat.
 
@@ -206,4 +206,4 @@ Pokud uživateli typu Host byl udělen přístup k adresáři, ale nevidí jim p
 - [Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal](../active-directory/b2b/add-users-administrator.md)
 - [Vlastnosti Azure Active Directoryho uživatele spolupráce B2B](../active-directory/b2b/user-properties.md)
 - [Prvky e-mailu s pozvánkou pro spolupráci B2B Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
-- [Přidání uživatele typu Host jako spolupracujícího správce](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)
+- [Přidání uživatele typu Host jako spolupracujícího správce](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

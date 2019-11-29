@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 06/30/2017
+ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: f05c8724fe87888c93230b4ca77a7a82fe9357c2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3e316527992b4a478b82bef61fb6da608e218ba5
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677473"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554926"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí sady Application Insights .NET SDK
 
@@ -30,7 +30,7 @@ Tento dokument poskytuje pokyny k tomu, jak sledovat vlastní operace pomocí sa
 ## <a name="overview"></a>Přehled
 Operace je logická část práce, kterou aplikace spouští. Má název, čas spuštění, dobu trvání, výsledek a kontext spuštění, jako je uživatelské jméno, vlastnosti a výsledek. Pokud operace A byla iniciována operací B, pak je operace B nastavena jako nadřazená pro. Operace může mít pouze jeden nadřazený prvek, ale může mít mnoho podřízených operací. Další informace týkající se operací a korelace telemetrie najdete v tématu [korelace telemetrie Azure Application Insights](correlation.md).
 
-V sadě Application Insights .NET SDK je operace popsána pomocí abstraktní třídy [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) a jejích potomků [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) a [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
+V sadě Application Insights .NET SDK je operace popsána pomocí abstraktní třídy [OperationTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) a jejích potomků [RequestTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) a [DependencyTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
 
 ## <a name="incoming-operations-tracking"></a>Sledování příchozích operací 
 Application Insights webová sada SDK automaticky shromáždí požadavky HTTP pro aplikace ASP.NET spuštěné v kanálu služby IIS a všech ASP.NET Corech aplikacích. K dispozici jsou řešení podporovaná komunitou pro jiné platformy a rozhraní. Nicméně pokud aplikace není podporovaná žádným z řešení Standard nebo Community, můžete ji instrumentovat ručně.
@@ -130,7 +130,7 @@ I když existuje [kontext trasování W3C](https://www.w3.org/TR/trace-context/)
 Application Insights sleduje volání zasílání zpráv Service Bus pomocí nového [klienta Microsoft Azure ServiceBus pro rozhraní .NET](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) verze 3.0.0 a vyšší.
 Pokud ke zpracování zpráv používáte [vzor obslužné rutiny zpráv](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) , jste hotovi: všechna Service Bus volání prováděná službou jsou automaticky sledována a koreluje s ostatními položkami telemetrie. Pokud ruční zpracování zpráv zpracováváte, přečtěte si téma [Service Bus trasování klienta s Microsoft Application Insights](../../service-bus-messaging/service-bus-end-to-end-tracing.md) .
 
-Použijete-li balíček [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) , následující příklady ukazují, jak sledovat (a korelovat) volání Service Bus jako Service Bus fronta používá protokol AMQP a Application Insights automaticky nesleduje frontu. Operations.
+Použijete-li balíček [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) , následující příklady ukazují, jak sledovat (a korelovat) volání Service Bus jako Service Bus fronta používá protokol AMQP a Application Insights automaticky nesleduje operace ve frontě.
 Identifikátory korelace jsou předány ve vlastnostech zprávy.
 
 #### <a name="enqueue"></a>Zařazování
@@ -268,11 +268,11 @@ public async Task Enqueue(CloudQueue queue, string message)
 Chcete-li snížit množství telemetrie v sestavách aplikace nebo pokud nechcete sledovat `Enqueue` operace z jiných důvodů, použijte rozhraní API `Activity` přímo:
 
 - Vytvořte (a zahajte) novou `Activity` místo spuštění operace Application Insights. *Nemusíte* jim přiřazovat žádné vlastnosti s výjimkou názvu operace.
-- Místo `operation.Telemetry.Id` serializovat `yourActivity.Id` do datové části zprávy. Můžete také použít `Activity.Current.Id`.
+- Místo `operation.Telemetry.Id`serializovat `yourActivity.Id` do datové části zprávy. Můžete také použít `Activity.Current.Id`.
 
 
 #### <a name="dequeue"></a>Odstranění z fronty
-Podobně jako u `Enqueue` se pro Application Insights automaticky sleduje skutečný požadavek HTTP na frontu úložiště. Nicméně operace `Enqueue` předpokládá, že se v nadřazeném kontextu stane, jako je například příchozí kontext požadavku. Application Insights sady SDK automaticky korelují takovou operaci (a její část HTTP) s nadřazeným požadavkem a další telemetrie hlášenou ve stejném oboru.
+Podobně jako u `Enqueue`se pro Application Insights automaticky sleduje skutečný požadavek HTTP na frontu úložiště. Nicméně operace `Enqueue` předpokládá, že se v nadřazeném kontextu stane, jako je například příchozí kontext požadavku. Application Insights sady SDK automaticky korelují takovou operaci (a její část HTTP) s nadřazeným požadavkem a další telemetrie hlášenou ve stejném oboru.
 
 Operace `Dequeue` je obtížné. Sada SDK pro Application Insights automaticky sleduje požadavky HTTP. Ale neví kontext korelace, dokud se zpráva neanalyzuje. Není možné sladit požadavek protokolu HTTP a získat zprávu se zbytkem telemetrie zvlášť, pokud je přijata více než jedna zpráva.
 
@@ -342,11 +342,11 @@ Podobně je možné instrumentovat další operace s frontou. Operace náhledu b
 Při odstraňování zprávy instrumentace se ujistěte, že jste nastavili identifikátory operace (korelace). Alternativně můžete použít rozhraní `Activity` API. Pak nemusíte pro položky telemetrie nastavovat identifikátory operací, protože Application Insights SDK to dělá za vás:
 
 - Pokud máte položku z fronty, vytvořte novou `Activity`.
-- @No__t_0 můžete použít ke korelaci zákazníků a výrobců protokolů.
+- `Activity.SetParentId(message.ParentId)` můžete použít ke korelaci zákazníků a výrobců protokolů.
 - Spusťte `Activity`.
 - Sledujte operace vyřazování z fronty, procesů a odstraňování pomocí `Start/StopOperation` pomocníků. Udělejte to ze stejného asynchronního toku řízení (kontext spuštění). Tímto způsobem jsou správně přihlášeny.
 - Zastavte `Activity`.
-- Použijte `Start/StopOperation` nebo volejte `Track` telemetrie ručně.
+- Použijte `Start/StopOperation`nebo volejte `Track` telemetrie ručně.
 
 ### <a name="dependency-types"></a>Typy závislostí
 

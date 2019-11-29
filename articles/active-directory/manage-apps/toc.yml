@@ -72,8 +72,14 @@
       items:
         - name: Naplánování nasazení automatického zřizování uživatelů
           href: plan-auto-user-provisioning.md
+        - name: Automatizace zřizování pro aplikace s podporou SCIM
+          href: use-scim-to-provision-users-and-groups.md
         - name: Ruční vs. automatické zřizování
           href: application-provisioning-config-how-to.md
+    - name: Zřizování HR v cloudu
+      items:
+        - name: Naplánování nasazení zřizování uživatelů HR v cloudu
+          href: plan-cloud-hr-provision.md
     - name: Proxy aplikací pro místní aplikace
       items:
         - name: Proxy aplikací

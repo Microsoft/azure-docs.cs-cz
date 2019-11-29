@@ -4,12 +4,12 @@ description: Monitorujte Azure Backup úlohy a vytvářejte vlastní výstrahy p
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 66417071190fa45a746ce0b80a9de12968198bda
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bdb59e5ec461288c89e4c7d036488b5eaeb9472a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278274"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554882"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure Monitor
 
@@ -37,7 +37,7 @@ V části monitorování vyberte **nastavení diagnostiky** a zadejte cíl pro d
 
 ![Nastavení diagnostiky Recovery Services trezoru, které cílí na Log Analytics](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
 
-Log Analytics pracovní prostor můžete cílit z jiného předplatného. Pokud chcete monitorovat trezory v rámci předplatných na jednom místě, vyberte stejný pracovní prostor Log Analytics pro několik trezorů Recovery Services. Pokud chcete všechny informace, které souvisejí s Azure Backup, přepínat k pracovnímu prostoru Log Analytics, v zobrazeném přepínači zvolte **konkrétní prostředky** a vyberte následující události – **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. Další podrobnosti o konfiguraci nastavení diagnostiky LA najdete v [tomto článku](https://aka.ms/AA6jkus) .
+Log Analytics pracovní prostor můžete cílit z jiného předplatného. Pokud chcete monitorovat trezory v rámci předplatných na jednom místě, vyberte stejný pracovní prostor Log Analytics pro několik trezorů Recovery Services. Pokud chcete všechny informace, které souvisejí s Azure Backup, přepínat k pracovnímu prostoru Log Analytics, v zobrazeném přepínači zvolte **konkrétní prostředky** a vyberte následující události – **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. Další podrobnosti o konfiguraci nastavení diagnostiky LA najdete v [tomto článku](backup-azure-diagnostic-events.md) .
 
 > [!IMPORTANT]
 > Po dokončení konfigurace byste měli počkat 24 hodin na dokončení počátečního vkládání dat. Po této počáteční datové stránce jsou všechny události vloženy, jak je popsáno dále v tomto článku v [části frekvence](#diagnostic-data-update-frequency).

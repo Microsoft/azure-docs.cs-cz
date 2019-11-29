@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20d5db9656dbcab31d73e504f1ca67fd577aec8e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6deeb224f8c70dabcf8c5a29e80e87414ea32657
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439742"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561429"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s JIRA SAML SSO Microsoftu
 
@@ -60,8 +60,8 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="supported-versions-of-jira"></a>Podporované verze JIRA
 
-* JIRA Core a software: 6,4 až 8.2.4
-* JIRA oddělení služeb 3.0.0 na 4.2.1
+* JIRA Core a software: 6,4 až 8.5.1
+* JIRA oddělení služeb 3.0.0 na 4.5.1
 * JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](jira52microsoft-tutorial.md) .
 
 > [!NOTE]
@@ -109,11 +109,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/plugins/servlet/saml/auth`.
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/plugins/servlet/saml/auth`
 
     b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/plugins/servlet/saml/auth`.
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Port je nepovinný pro případ, že se jedná o pojmenovanou adresu URL. Tyto hodnoty jsou obdrženy během konfigurace modulu plug-in JIRA, který je vysvětlen dále v tomto kurzu.
@@ -246,11 +246,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k JIRA místním serveru, musí 
 
     ![Přidat zaměstnance](./media/jiramicrosoft-tutorial/user4.png) 
 
-    a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele, například B.simon@contoso.com.
+    a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele, jako B.simon@contoso.com.
 
     b. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je B. Simon.
 
-    c. Do textového pole **uživatelské jméno** zadejte e-maily uživatele, jako B.simon@contoso.com.
+    c. Do textového pole **uživatelské jméno** zadejte e-mail uživatele, jako B.simon@contoso.com.
 
     d. Do textového pole **heslo** zadejte heslo uživatele.
 

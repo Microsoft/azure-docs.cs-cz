@@ -3,12 +3,12 @@ title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 9c6e4c66d96b02c2d5b4b4fe70fe6e6798c4e2c6
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b4c39c631963a358dcdc9d1eafe954a85a9499ad
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285918"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554863"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
@@ -20,16 +20,61 @@ Před konfigurací záloh najdete v oddílech [požadavky](tutorial-backup-sap-h
 
 ## <a name="common-user-errors"></a>Běžné chyby uživatelů
 
-| Chyba                                | Chybová zpráva                    | Možné příčiny                                              | Doporučená akce                                           |
-| ------------------------------------ | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| UserErrorInOpeningHanaOdbcConnection | Nepovedlo se připojit k systému HANA. | Instance SAP HANA může být mimo provoz. <br> Požadovaná oprávnění pro práci s databází HANA nejsou nastavená pro Azure Backup. | Ověřte, zda je databáze SAP HANA. Pokud je databáze spuštěná a spuštěná, ověřte, jestli jsou nastavená všechna požadovaná oprávnění. Pokud některá z oprávnění chybí, spusťte [předregistrační skript](https://aka.ms/scriptforpermsonhana) pro přidání chybějících oprávnění. |
-| UserErrorHanaInstanceNameInvalid | Zadaná instance SAP HANA buď není platná, nebo ji nejde najít. | Víc instancí SAP HANA na jednom virtuálním počítači Azure se nedá zálohovat. | Spusťte [skript Předregistrace](https://aka.ms/scriptforpermsonhana) na instanci SAP HANA, kterou chcete zálohovat. Pokud potíže přetrvávají, obraťte se na podporu Microsoftu. |
-| UserErrorHanaUnsupportedOperation | Zadaná operace SAP HANA není podporovaná. | Azure Backup pro SAP HANA nepodporuje přírůstkové zálohování a akce prováděné v SAP HANA nativních klientech (Studio/řídicí panel/DBA). | Další informace najdete [tady](sap-hana-backup-support-matrix.md#scenario-support). |
-| UserErrorHANAPODoesNotSupportBackupType | Tato databáze SAP HANA nepodporuje požadovaný typ zálohování. | Azure Backup nepodporuje přírůstkové zálohování a zálohování pomocí snímků. | Další informace najdete [tady](sap-hana-backup-support-matrix.md#scenario-support). |
-| UserErrorHANALSNValidationFailure | Řetěz záložního protokolu je porušený. | Cíl zálohování protokolu mohl být aktualizován z backint na systém souborů nebo může být změněn spustitelný soubor backint. | Pokud chcete problém vyřešit, spusťte úplnou zálohu. |
-| UserErrorIncomaptibleSrcTargetSystsemsForRestore | Zdrojový a cílový systém pro obnovení nejsou kompatibilní. | Cílový systém pro obnovení není kompatibilní se zdrojem. | Další informace o typech obnovení, které jsou v současnosti podporované, najdete v tématu SAP Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) . |
-| UserErrorSDCtoMDCUpgradeDetected | Zjistil se upgrade SDC na MDC. | Instance SAP HANA byla upgradována z SDC na MDC. Po aktualizaci se zálohování nezdaří. | Pokud chcete tento problém vyřešit, postupujte podle kroků uvedených v [části Upgrade z SAP HANA 1,0 na 2,0](#upgrading-from-sap-hana-10-to-20) . |
-| UserErrorInvalidBackintConfiguration | Zjistila se neplatná konfigurace backint. | Parametry zálohování jsou pro Azure Backup nesprávně zadané. | Ověřte, zda jsou nastaveny následující parametry (backint): <br> * [catalog_backup_using_backint: true] <br>  * [enable_accumulated_catalog_backup: false] <br> * [parallel_data_backup_backint_channels: 1] <br>* [log_backup_timeout_s: 900)] <br> * [backint_response_timeout: 7200] <br> Pokud jsou na hostiteli přítomné parametry založené na backint, odeberte je. Pokud parametry nejsou k dispozici na úrovni hostitele, ale byly ručně upraveny na úrovni databáze, vraťte je na příslušné hodnoty, jak je popsáno výše. Případně můžete spustit možnost [Zastavit ochranu a zachovat data zálohy](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) z Azure Portal a pak vybrat **obnovit zálohování**. |
+###  <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection 
+
+| Chybová zpráva      | Nepovedlo se připojit k systému HANA.                             |
+| ------------------ | ------------------------------------------------------------ |
+| Možné příčiny    | Instance SAP HANA může být mimo provoz.<br/>Požadovaná oprávnění pro práci s databází HANA nejsou nastavená pro Azure Backup. |
+| Doporučená akce | Ověřte, zda je databáze SAP HANA. Pokud je databáze spuštěná a spuštěná, ověřte, jestli jsou nastavená všechna požadovaná oprávnění. Pokud některá z oprávnění chybí, spusťte [předregistrační skript](https://aka.ms/scriptforpermsonhana) pro přidání chybějících oprávnění. |
+
+###  <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid 
+
+| Chybová zpráva      | Zadaná instance SAP HANA buď není platná, nebo ji nejde najít. |
+| ------------------ | ------------------------------------------------------------ |
+| Možné příčiny    | Víc instancí SAP HANA na jednom virtuálním počítači Azure se nedá zálohovat. |
+| Doporučená akce | Spusťte [skript Předregistrace](https://aka.ms/scriptforpermsonhana) na instanci SAP HANA, kterou chcete zálohovat. Pokud potíže přetrvávají, obraťte se na podporu Microsoftu. |
+
+###  <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation 
+
+| Chybová zpráva      | Zadaná operace SAP HANA není podporovaná.             |
+| ------------------ | ------------------------------------------------------------ |
+| Možné příčiny    | Azure Backup pro SAP HANA nepodporuje přírůstkové zálohování a akce prováděné v SAP HANA nativních klientech (Studio/řídicí panel/DBA). |
+| Doporučená akce | Další informace najdete [tady](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). |
+
+###  <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType 
+
+| Chybová zpráva      | Tato databáze SAP HANA nepodporuje požadovaný typ zálohování. |
+| ------------------ | ------------------------------------------------------------ |
+| Možné příčiny    | Azure Backup nepodporuje přírůstkové zálohování a zálohování pomocí snímků. |
+| Doporučená akce | Další informace najdete [tady](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). |
+
+###  <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure 
+
+| Chybová zpráva      | Řetěz záložního protokolu je porušený.                                   |
+| ------------------ | ------------------------------------------------------------ |
+| Možné příčiny    | Cíl zálohování protokolu mohl být aktualizován z backint na systém souborů nebo může být změněn spustitelný soubor backint. |
+| Doporučená akce | Pokud chcete problém vyřešit, spusťte úplnou zálohu.                   |
+
+###  <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore 
+
+| Chybová zpráva      | Zdrojový a cílový systém pro obnovení nejsou kompatibilní.   |
+| ------------------ | ------------------------------------------------------------ |
+| Možné příčiny    | Cílový systém pro obnovení není kompatibilní se zdrojem. |
+| Doporučená akce | Další informace o typech obnovení, které jsou v současnosti podporované, najdete v tématu SAP Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) . |
+
+###  <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected 
+
+| Chybová zpráva      | Zjistil se upgrade SDC na MDC.                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Možné příčiny    | Instance SAP HANA byla upgradována z SDC na MDC. Po aktualizaci se zálohování nezdaří. |
+| Doporučená akce | Pokud chcete tento problém vyřešit, postupujte podle kroků uvedených v [části Upgrade z SAP HANA 1,0 na 2,0](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) . |
+
+###  <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration 
+
+| Chybová zpráva      | Zjistila se neplatná konfigurace backint.                       |
+| ------------------ | ------------------------------------------------------------ |
+| Možné příčiny    | Parametry zálohování jsou pro Azure Backup nesprávně zadané. |
+| Doporučená akce | Ověřte, zda jsou nastaveny následující parametry (backint):<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: false]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Pokud jsou na hostiteli přítomné parametry založené na backint, odeberte je. Pokud parametry nejsou k dispozici na úrovni hostitele, ale byly ručně upraveny na úrovni databáze, vraťte je na příslušné hodnoty, jak je popsáno výše. Případně můžete spustit možnost [Zastavit ochranu a zachovat data zálohy](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) z Azure Portal a pak vybrat **obnovit zálohování**. |
 
 ## <a name="restore-checks"></a>Obnovit kontroly
 

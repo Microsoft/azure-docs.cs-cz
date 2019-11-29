@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: fff5ad379aa11a0aae14b33f9f82f6da9c794517
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5cc473635543a22fd7e7223f4a5715f78457a897
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643725"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561747"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
@@ -26,11 +26,11 @@ Funkce automatického škálování clusteru Azure HDInsight automaticky škálu
 
 Následující tabulka popisuje typy clusterů a verze, které jsou kompatibilní s funkcí automatického škálování.
 
-| Verze | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Version | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ne | Ne | Ne | Ne | Ne |
+| HDInsight 3,6 bez protokolu ESP | Pouze Ano 2,3| Ano | Ne | Ne | Ne | Ne | Ne |
 | HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ne | Ne | Ne | Ne | Ne |
-| HDInsight 3,6 s ESP | Ano | Ano | Ne | Ne | Ne | Ne | Ne |
+| HDInsight 3,6 s ESP | Pouze Ano 2,3 | Ano | Ne | Ne | Ne | Ne | Ne |
 | HDInsight 4,0 s ESP | Ano | Ano | Ne | Ne | Ne | Ne | Ne |
 
 ## <a name="how-it-works"></a>Jak to funguje
@@ -70,7 +70,7 @@ Při zjištění následujících podmínek bude automatické škálování vyd�
 
 V závislosti na počtu kontejnerů AM na uzel a aktuálních požadavcích na procesor a paměť vystaví automatické škálování požadavek na odebrání určitého počtu uzlů. Služba také detekuje, které uzly jsou kandidáty na odebrání na základě aktuálního spuštění úlohy. Operace horizontálního snížení kapacity nejprve vyřadí uzly z provozu a pak je z clusteru odebere.
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>Vytvoření clusteru s automatickým škálováním na základě zatížení
 
@@ -233,7 +233,7 @@ Běžící úlohy budou i nadále spouštěny a dokončeny. Čekající úlohy b
 
 Neměňte rozsah clusteru dolů na méně než tři uzly. Škálování clusteru na méně než tři uzly může vést k zablokování v bezpečném režimu z důvodu nedostatečné replikace souborů. Další informace najdete [v tématu Získání zablokování v nouzovém režimu]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode) .
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 ### <a name="cluster-status"></a>Stav clusteru
 

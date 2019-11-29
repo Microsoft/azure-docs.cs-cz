@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a86c809e239a84b2ec6910c47a17b935c440c741
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 472c4a75f5a4253220383ae79d88d5b90cec4795
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286997"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555049"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -32,12 +32,12 @@ Upozornění neukončí indexování, ale označují podmínky, které by mohly 
 
 Počínaje rozhraním API `2019-05-06`se chyby a upozornění indexerů na úrovni položek strukturují tak, aby poskytovaly lepší srozumitelnost příčin a dalších kroků. Obsahují následující vlastnosti:
 
-| Vlastnost | Popis | Příklad |
+| Vlastnost | Popis | Příklad: |
 | --- | --- | --- |
-| key | ID dokumentu dokumentu ovlivněného chybou nebo upozorněním. | https://coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| key | ID dokumentu dokumentu ovlivněného chybou nebo upozorněním. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | jméno | Název operace popisující, kde došlo k chybě nebo upozornění. Tato struktura je generována následující strukturou: [Category]. [Subcategory]. [ResourceType]. resourceName | DocumentExtraction. azureblobu. myBlobContainerName obohacení. WebApiSkill. mySkillName projekce. SearchIndex. OutputFieldMapping. myOutputFieldName projekce. SearchIndex. MergeOrUpload. myIndexName Projekce. KnowledgeStore. Table. myTableName |
 | zpráva | Popis chyby nebo varování na nejvyšší úrovni. | Nelze provést dovednost, protože požadavek webového rozhraní API se nezdařil. |
-| details | Jakékoli další podrobnosti, které mohou být užitečné při diagnostice problému, jako je například odpověď WebApi při provádění vlastní dovednosti, se nezdařila. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 zdroj, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... zbytek trasování zásobníku... |
+| zobrazí | Jakékoli další podrobnosti, které mohou být užitečné při diagnostice problému, jako je například odpověď WebApi při provádění vlastní dovednosti, se nezdařila. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 zdroj, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... zbytek trasování zásobníku... |
 | documentationLink | Odkaz na příslušnou dokumentaci s podrobnými informacemi pro ladění a vyřešení problému. Tento odkaz často odkazuje na jednu z níže uvedených částí na této stránce. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -46,7 +46,7 @@ Počínaje rozhraním API `2019-05-06`se chyby a upozornění indexerů na úrov
 
 Indexer nemohl přečíst dokument ze zdroje dat. K tomu může dojít v důsledku:
 
-| Důvod | Podrobnosti/příklad | Řešení |
+| Důvod | Podrobnosti/příklad | Rozlišení |
 | --- | --- | --- |
 | Nekonzistentní typy polí v různých dokumentech | Typ hodnoty se neshoduje s typem sloupce. Nepovedlo se uložit `'{47.6,-122.1}'` ve sloupci autoři.  Očekávaný typ je JArray. | Ujistěte se, že je typ každého pole stejný v různých dokumentech. Pokud je například prvním dokumentem `'startTime'` pole DateTime a druhý dokument je řetězec, tato chyba bude dosaženo. |
 | chyby ze základní služby zdroje dat | (z Cosmos DB) `{"Errors":["Request rate is large"]}` | Zkontrolujte instanci úložiště, abyste měli jistotu, že je v pořádku. Možná budete muset upravit škálování nebo dělení na oddíly. |
@@ -57,7 +57,7 @@ Indexer nemohl přečíst dokument ze zdroje dat. K tomu může dojít v důsled
 ## <a name="error-could-not-extract-document-content"></a>Chyba: nelze extrahovat obsah dokumentu
 Indexer se zdrojem dat objektu BLOB nemohl extrahovat obsah z dokumentu (například soubor PDF). K tomu může dojít v důsledku:
 
-| Důvod | Podrobnosti/příklad | Řešení |
+| Důvod | Podrobnosti/příklad | Rozlišení |
 | --- | --- | --- |
 | objekt BLOB překračuje limit velikosti. | Dokument je `'150441598'` bajtů, což překračuje maximální velikost `'134217728'` bajtů pro extrakci dokumentů pro aktuální úroveň služby. | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | objekt BLOB má nepodporovaný typ obsahu. | Dokument má nepodporovaný typ obsahu `'image/png'` | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ Indexer se zdrojem dat objektu BLOB nemohl extrahovat obsah z dokumentu (napří
 ## <a name="error-could-not-parse-document"></a>Chyba: nepovedlo se analyzovat dokument.
 Indexer si přečte dokument ze zdroje dat, ale při převodu obsahu dokumentu do zadaného schématu mapování polí došlo k problému. K tomu může dojít v důsledku:
 
-| Důvod | Podrobnosti/příklad | Řešení |
+| Důvod | Podrobnosti/příklad | Rozlišení |
 | --- | --- | --- |
 | Chybí klíč dokumentu. | Klíč dokumentu nemůže být chybí nebo je prázdný. | Zajistěte, aby všechny dokumenty měly platný klíč dokumentu. |
 | Klíč dokumentu je neplatný. | Klíč dokumentu nemůže být delší než 1024 znaků. | Upravte klíč dokumentu tak, aby splňoval požadavky na ověření. |
@@ -81,7 +81,7 @@ Indexer si přečte dokument ze zdroje dat, ale při převodu obsahu dokumentu d
 ## <a name="error-could-not-execute-skill"></a>Chyba: nepovedlo se spustit dovednost.
 Indexer nemohl v dovednosti spustit dovednost.
 
-| Důvod | Podrobnosti/příklad | Řešení |
+| Důvod | Podrobnosti/příklad | Rozlišení |
 | --- | --- | --- |
 | Problémy s přechodným připojením | Došlo k přechodné chybě. Zkuste to prosím znova později. | Občas dojde k neočekávaným potížím s připojením. Zkuste znovu spustit dokument v indexeru později. |
 | Potenciální chyba produktu | Došlo k neočekávané chybě. | To indikuje neznámou třídu selhání a může znamenat, že došlo k chybě produktu. Požádejte o pomoc [lístek podpory](https://ms.portal.azure.com/#create/Microsoft.Support) . |
@@ -140,7 +140,7 @@ Maximální hodnota, kterou můžete nastavit pro parametr `timeout`, je 230 sek
 
 Dokument byl načten a zpracován, ale indexer ho nemohl přidat do indexu vyhledávání. K tomu může dojít v důsledku:
 
-| Důvod | Podrobnosti/příklad | Řešení |
+| Důvod | Podrobnosti/příklad | Rozlišení |
 | --- | --- | --- |
 | Pole obsahuje termín, který je příliš velký. | Termín v dokumentu je větší než [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) . | Tomuto omezení se můžete vyhnout tím, že zajistíte, že pole není nakonfigurováno jako filtrovatelné, plošky nebo seřaditelné.
 | Dokument je moc velký a nedá se indexovat. | Dokument je větší než [maximální velikost požadavku rozhraní API](search-limits-quotas-capacity.md#api-request-limits) . | [Indexování velkých datových sad](search-howto-large-index.md)
@@ -195,7 +195,7 @@ Pokud chcete zadat výchozí hodnotu pro případ chybějícího vstupu, můžet
 }
 ```
 
-| Důvod | Podrobnosti/příklad | Řešení |
+| Důvod | Podrobnosti/příklad | Rozlišení |
 | --- | --- | --- |
 | Nesprávný vstup dovednosti je nesprávného typu. | Požadovaný vstup `X` dovednosti není očekávaného typu `String`. Požadovaný vstup `X` dovednosti není v očekávaném formátu. | Určité dovednosti očekávají vstupy konkrétního typu, například [mínění dovednost](cognitive-search-skill-sentiment.md) očekává, že `text` být řetězec. Pokud vstup Určuje hodnotu, která není typu řetězec, pak se dovednost nespustí a negeneruje žádné výstupy. Ujistěte se, že vaše datová sada má v typu stejné vstupní hodnoty, nebo použijte [vlastní dovednost webového rozhraní API](cognitive-search-custom-skill-web-api.md) k předzpracování vstupu. Pokud provádíte iteraci dovedností v poli, ověřte, že kontext dovednosti a vstup mají `*` ve správných pozicích. Pro pole by měl být obvykle jak kontext, tak vstupní zdroj `*`. |
 | Chybí vstup dovedností. | `X` chybí požadovaný vstup pro dovednost. | Pokud se zobrazí všechny dokumenty s tímto upozorněním, pravděpodobně dojde k překlepu ve vstupních cestách a v cestě byste měli poklepat na název vlastnosti velká a malá písmena, `*` v cestě a dokumenty ze zdroje dat definovat požadované vstupy. |
@@ -208,7 +208,7 @@ Jedna nebo více hodnot předaných do volitelného `languageCode` vstupu odborn
 
 Pokud víte, že je vaše datová sada v jednom jazyce, měli byste odebrat [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) `languageCode` a vstup odbornosti a místo toho použít pro tuto dovednost parametr dovednosti `defaultLanguageCode`, za předpokladu, že je jazyk pro tuto dovednost podporovaný.
 
-Pokud víte, že vaše datová sada obsahuje více jazyků, takže potřebujete [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) a `languageCode` vstup, zvažte přidání [ConditionalSkill](cognitive-search-skill-conditional.md) pro odfiltrování textu s jazyky, které nejsou podporované před předáním do text na dovednost pro příjem dat.  Tady je příklad toho, co může vypadat jako u EntityRecognitionSkill:
+Pokud víte, že vaše datová sada obsahuje několik jazyků, takže budete potřebovat [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) a `languageCode`, zvažte přidání [ConditionalSkill](cognitive-search-skill-conditional.md) pro odfiltrování textu s jazyky, které nejsou podporované před předáním textu do dovednosti pro příjem dat.  Tady je příklad toho, co může vypadat jako u EntityRecognitionSkill:
 
 ```json
 {
@@ -298,7 +298,7 @@ Mapování polí výstupu, které odkazují na neexistující nebo null data, vy
 
 [Režimy analýzy indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) musí před analýzou zjistit, jak je text kódovaný. Dvěma nejběžnějšími způsoby kódování textu jsou UTF-16 a UTF-8. UTF-8 je kódování s proměnlivou délkou, kde každý znak je dlouhý 1 bajt a 4 bajty. UTF-16 je kódování s pevnou délkou, kde každý znak je dlouhý 2 bajty. UTF-16 má dvě různé varianty, "big endian" a "Little endian". Kódování textu je určeno označením "znak pořadí bajtů", řady bajtů před textem.
 
-| Kódování | Znak pořadí bajtů |
+| Encoding | Znak pořadí bajtů |
 | --- | --- |
 | UTF-16 big endian | 0xFE 0xFF |
 | UTF-16 Little endian | 0xFF – 0xFE |

@@ -1,5 +1,5 @@
 ---
-title: Datové proudy IoT v reálném čase se službou Azure Stream Analytics
+title: Zpracování datových proudů IoT v reálném čase pomocí Azure Stream Analytics
 description: Zařízení SensorTag pro IoT, proudy dat, analytické funkce pro analýzu proudů dat a zpracování dat v reálném čase
 services: stream-analytics
 author: mamccrea
@@ -7,28 +7,28 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: f6a1d5e5a15a2af7db5b6256a6a0c5f19f0e7cf5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 11/26/2019
+ms.openlocfilehash: 1cc9c6dbb700664e732a67245563e9a211456767
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620973"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559903"
 ---
-# <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Začínáme se zpracováním dat ze zařízení IoT pomocí služby Azure Stream Analytics
+# <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Zpracování datových proudů IoT v reálném čase pomocí Azure Stream Analytics
 
-V tomto kurzu se naučíte vytvořit logiku zpracování datového proudu ke shromáždění dat ze zařízení Internetu věcí (IoT). Na skutečném případu použití platformy IoT si budete moci prohlédnout postup rychlého a ekonomického sestavení potřebného řešení.
+V tomto článku se dozvíte, jak vytvořit logiku zpracování datového proudu pro shromažďování dat ze zařízení Internet věcí (IoT). Pomocí případu použití Real-World Internet věcí (IoT) můžete předvést, jak rychle a ekonomicky sestavovat řešení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Předplatné Azure](https://azure.microsoft.com/pricing/free-trial/)
-* Ukázkový dotaz a datové soubory ke stažení z webu [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)
+* Vytvořte si bezplatné [předplatné Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Stáhněte si ukázkový dotaz a datové soubory z [GitHubu](https://aka.ms/azure-stream-analytics-get-started-iot).
 
 ## <a name="scenario"></a>Scénář
 
-Contoso, společnost působící v oboru automatizace průmyslu, zcela automatizovala svůj výrobní proces. Stroje v továrně společnosti mají snímače, které dokáží vysílat datové proudy v reálném čase. V tomto scénáři chce manažer provozovny v reálném čase získávat informace na základě dat ze senzorů, hledat jejich pomocí různé vzorce a na jejich základě provádět potřebné akce. K identifikaci zajímavých vzorců v příchozím datovém proudu ze senzorů použije jazyk SAQL (Stream Analytics Query Language).
+Contoso, společnost působící v oboru automatizace průmyslu, zcela automatizovala svůj výrobní proces. Stroje v továrně společnosti mají snímače, které dokáží vysílat datové proudy v reálném čase. V tomto scénáři chce manažer provozovny v reálném čase získávat informace na základě dat ze senzorů, hledat jejich pomocí různé vzorce a na jejich základě provádět potřebné akce. K vyhledání zajímavých vzorů z příchozího datového proudu dat můžete použít jazyk SAQL (Stream Analytics Query Language) prostřednictvím dat snímače.
 
-Samotná data jsou generována zařízením Texas Instruments SensorTag. Datová část dat je ve formátu JSON a vypadá takto:
+V tomto příkladu jsou data generována ze zařízení se značkami Texas Instrumentation snímače. Datová část dat je ve formátu JSON a vypadá takto:
 
 ```json
 {
@@ -44,73 +44,114 @@ V podobném scénáři z reálného prostředí by se jednalo o stovky podobnýc
 Pro snadnější použití tato příručka Začínáme poskytuje soubor ukázkových dat, která byla zaznamenána skutečnými zařízeními SensorTag. Na těchto ukázkových datech můžete spouštět dotazy a zobrazit výsledky. V následujících kurzech se naučíte připojovat své úlohy ke vstupům a výstupům a nasazovat je ve službě Azure.
 
 ## <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
-1. Na webu [Azure Portal](https://portal.azure.com) klikněte na symbol plus a do textového pole vpravo napište **STREAM ANALYTICS**. Ve výsledcích hledání vyberte **Úloha Stream Analytics**.
+
+1. V [Azure Portal](https://portal.azure.com)v navigační nabídce vlevo vyberte **+ vytvořit prostředek** . Pak vyberte **Stream Analytics úlohy** z **analýz**.
    
     ![Vytvoření nové úlohy Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
-2. Zadejte jedinečný název úlohy a ověřte, že je předplatné pro vaši úlohu správné. Potom vytvořte novou skupinu prostředků nebo vyberte existující skupinu v rámci svého předplatného.
-3. Pak vyberte umístění pro úlohu. Pro urychlení zpracování a snížení nákladů přenosů dat se doporučuje výběr stejného umístění, ve kterém je skupina prostředků a zamýšlený účet úložiště.
+
+1. Zadejte jedinečný název úlohy a ověřte, že je předplatné pro vaši úlohu správné. Vytvořte novou skupinu prostředků nebo vyberte existující v rámci předplatného.
+
+1. Vyberte umístění pro vaši úlohu. Pro skupinu prostředků a všechny prostředky použijte stejné umístění, abyste zvýšili rychlost zpracování a snížili náklady. Po provedení konfigurace vyberte **vytvořit**.
    
     ![Podrobnosti o vytvoření nové úlohy Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
-   
-   > [!NOTE]
-   > Tento účet úložiště byste měli pro každý region vytvořit pouze jednou. Toto úložiště bude sdílené napříč všemi úlohami Stream Analytics vytvořenými v příslušné oblasti.
-   > 
-   > 
-4. Zaškrtněte políčko pro umístění úlohy do řídicího panelu a klikněte na **VYTVOŘIT**.
-   
-    ![Probíhá vytváření úlohy Stream analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
-5. V pravém horním rohu okna prohlížeče by se měla zobrazit zpráva Nasazení začalo... Brzy se změní na okno s informací o dokončení, jak je vidět dále.
-   
-    ![Stream analytics nasazení bylo úspěšné.](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
 ## <a name="create-an-azure-stream-analytics-query"></a>Vytvoření dotazu služby Stream Analytics
-Po vytvoření úlohy nastal čas ji otevřít a vytvořit dotaz. K úloze můžete jednoduše přejít tak, že kliknete na její dlaždici.
+Dalším krokem po vytvoření úlohy je zápis dotazu. Můžete testovat dotazy proti ukázkovým datům bez propojení vstupu nebo výstupu s vaší úlohou.
 
-![Dlaždice úlohy Stream Analytics na webu Azure portal](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
+Stáhněte si [HelloWorldASA-InputStream. JSON](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
+) z GitHubu. Pak v Azure Portal přejděte na svou Azure Stream Analytics úlohu.
 
-V podokně **Topologie úlohy** klikněte do pole **DOTAZ**. Tím přejdete do Editoru dotazů. Editor **DOTAZŮ** umožňuje zadání dotazu T-SQL, který provádí transformaci příchozích dat událostí.
+V nabídce vlevo vyberte **dotaz** v části **topologie úlohy** . Pak vyberte **nahrát vzorový vstup**. Nahrajte soubor `HelloWorldASA-InputStream.json` a vyberte **OK**.
 
-![Dlaždice dotazu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Dlaždice dotazů na řídicím panelu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+
+Všimněte si, že náhled dat se vyplní automaticky v tabulce **input Preview** .
+
+![Náhled ukázkových vstupních dat](./media/stream-analytics-get-started-with-iot-devices/input-preview.png)
 
 ### <a name="query-archive-your-raw-data"></a>Dotaz: Archivace nezpracovaných dat
-Nejjednodušším typem dotazu je průchozí dotaz, který archivuje veškerá vstupní data do definovaného výstupního umístění. Teď si z webu [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) stáhněte soubor ukázkových dat do umístění ve svém počítači. 
 
-1. Vložte dotaz ze souboru PassThrough.txt. 
-   
-    ![Vložte dotaz do editoru dotazů Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
-2. Klikněte na tlačítko se třemi tečkami vedle vstupního datového proudu a zaškrtněte políčko **Odeslat ukázková data ze souboru**.
-   
-    ![Zvolte nahrát ukázková data ze souboru](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
-3. Vpravo se otevře podokno. V něm vyberte datový soubor HelloWorldASA-InputStream.json ze staženého umístění a v dolní části podokna klikněte na **OK**.
-   
-    ![Nahrajte ukázkový soubor dat json](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
-4. Potom klikněte na ikonu ozubeného kola **Test** vlevo nahoře a zpracujte zkušební dotaz s ukázkovou datovou sadou. Po dokončení zpracování se pod dotazem otevře okno s výsledky.
-   
-    ![Výsledky dotazu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+Nejjednodušším typem dotazu je průchozí dotaz, který archivuje veškerá vstupní data do definovaného výstupního umístění. Tento dotaz je výchozí dotaz naplněný v nové Azure Stream Analytics úlohy.
+
+```sql
+SELECT 
+    *
+INTO
+    Output
+FROM
+    InputStream
+```
+
+Vyberte **test Query** a podívejte se na výsledky v tabulce **výsledky testu** .
+
+![Výsledky testu pro dotaz Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>Dotaz: Filtrování dat na základě podmínky
-Nyní si vyzkoušíte filtrování výsledků na základě podmínky. Rádi bychom se zobrazit výsledky pouze pro události, které pocházejí z "sensorA." Dotaz je umístěný v souboru Filtering.txt.
+
+Zkusíme filtrovat výsledky na základě podmínky. Chtěli bychom zobrazit výsledky jenom pro události, které pocházejí z "senzoru".
+
+```sql
+SELECT 
+    time,
+    dspl AS SensorName,
+    temp AS Temperature,
+    hmdt AS Humidity
+INTO
+   Output
+FROM
+    InputStream
+WHERE dspl='sensorA'
+```
+
+Vložte dotaz do editoru a vyberte **test Query** a zkontrolujte výsledky.
 
 ![Filtrování datového proudu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
-Všimněte si, že hodnotu řetězce porovnává dotaz rozlišující velká a malá písmena. Opětovným kliknutím na ikonu ozubeného kola **Test** proveďte dotaz. Dotaz by měl vrátit 389 řádků z 1860 událostí.
-
-![Druhé výsledky výstupu z testu dotazu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
-
 ### <a name="query-alert-to-trigger-a-business-workflow"></a>Dotaz: Upozornění spouštějící pracovní postup společnosti
-Vytvoříme podrobnější dotaz. Pro každý typ snímače chceme monitorovat průměrnou teplotu v 30sekundovém intervalu a výsledky zobrazit pouze v případě, že teplota překročí 100 stupňů. Napíšeme následující dotaz a zobrazíme výsledky kliknutím na **Test**. Dotaz je umístěný v souboru ThresholdAlerting.txt.
+
+Vytvoříme podrobnější dotaz. Pro každý typ snímače chceme monitorovat průměrnou teplotu v 30sekundovém intervalu a výsledky zobrazit pouze v případě, že teplota překročí 100 stupňů.
+
+```sql
+SELECT 
+    System.Timestamp AS OutputTime,
+    dspl AS SensorName,
+    Avg(temp) AS AvgTemperature
+INTO
+   Output
+FROM
+    InputStream TIMESTAMP BY time
+GROUP BY TumblingWindow(second,30),dspl
+HAVING Avg(temp)>100
+```
 
 ![30sekundový dotaz filtru](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Teď byste měli vidět výsledky, které obsahují pouze 245 řádků a uvádějí jenom názvy snímačů, u kterých průměrná teplota překročila 100 stupňů. Tento dotaz seskupí toky událostí podle hodnoty **dspl**, což je název snímače, a pomocí 30sekundového **přeskakujícího okna**. Dočasné dotazy musí stanovit, jakým způsobem se má načasovat postup. Pomocí klauzule **TIMESTAMP BY** jsme jako klíč přidružení časů ke všem dočasným výpočtům určili sloupec **OUTPUTTIME**. Podrobné informace najdete v článcích na webu MSDN o [správě času](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) a [funkcích práce s okny](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics).
+Měli byste vidět výsledky, které obsahují jenom 245 řádky a názvy senzorů, u kterých je průměr teplota překročila větší než 100. Tento dotaz seskupí toky událostí podle hodnoty **dspl**, což je název snímače, a pomocí 30sekundového **přeskakujícího okna**. Dočasné dotazy musí nastavovat způsob, jakým budete chtít čas sledovat. Pomocí klauzule **timestamp** by jste zadali sloupec **OUTPUTTIME** , který bude přidružit časy ke všem dočasným výpočtům. Podrobné informace najdete v tématu o funkcích [pro správu času](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) a [oknech](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics).
 
 ### <a name="query-detect-absence-of-events"></a>Dotaz: Zjištění neexistence událostí
-Jak napsat dotaz, abychom dokázali najít chybějící vstupní události? Můžete například zjistit, kdy snímač naposledy odeslal data a následně po dobu 5 sekund neodeslal žádné události. Dotaz je umístěný v souboru AbsenceOfEvent.txt.
+
+Jak napsat dotaz, abychom dokázali najít chybějící vstupní události? Pojďme najít čas, kdy senzor odeslal data a pak neodeslal události na dalších 5 sekund.
+
+```sql
+SELECT 
+    t1.time,
+    t1.dspl AS SensorName
+INTO
+   Output
+FROM
+    InputStream t1 TIMESTAMP BY time
+LEFT OUTER JOIN InputStream t2 TIMESTAMP BY time
+ON
+    t1.dspl=t2.dspl AND
+    DATEDIFF(second,t1,t2) BETWEEN 1 and 5
+WHERE t2.dspl IS NULL
+```
 
 ![Zjištění neexistence událostí](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-V dotazu se používá příkaz **LEFT OUTER JOIN** na stejný datový proud (spojení sama na sebe). Při použití příkazu **INNER JOIN** se vrátí výsledek, pouze když je nalezena shoda.  Příkaz **LEFT OUTER JOIN** však v případě, že pro událost z levé strany spojení není nalezena shoda, vrátí řádek s hodnotami NULL pro všechny sloupce pravé strany. Tato technika je velmi užitečná k vyhledání absence událostí. Další informace o příkazu [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) najdete v dokumentaci MSDN.
+V dotazu se používá příkaz **LEFT OUTER JOIN** na stejný datový proud (spojení sama na sebe). Při použití příkazu **INNER JOIN** se vrátí výsledek, pouze když je nalezena shoda.  Příkaz **LEFT OUTER JOIN** však v případě, že pro událost z levé strany spojení není nalezena shoda, vrátí řádek s hodnotami NULL pro všechny sloupce pravé strany. Tato technika je velmi užitečná k vyhledání absence událostí. Další informace najdete v tématu [Join](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics).
 
 ## <a name="conclusion"></a>Závěr
-Účelem tohoto kurzu je předvést způsob psaní různých dotazů v jazyku Stream Analytics Query Language a zobrazení výsledků v prohlížeči. Je to však jenom začátek. Pomocí Stream Analytics toho můžete dělat mnohem víc. Stream Analytics podporuje celou řadu vstupů a výstupů a může dokonce využít i funkce ve službě Azure Machine Learning. To z něj dělá robustní nástroj pro analýzu datových proudů. Můžete začít s bližším prozkoumáváním Stream Analytics pomocí našich [výukových materiálů](https://docs.microsoft.com/azure/stream-analytics/). Další informace o tom, jak psát dotazy, najdete v článku o [běžných vzorech dotazů](stream-analytics-stream-analytics-query-patterns.md).
+
+Účelem tohoto článku je Ukázat, jak psát různé dotazy na dotazovací jazyk Stream Analytics a zobrazit výsledky v prohlížeči. To je ale jenom k tomu, abyste mohli začít. Stream Analytics podporuje celou řadu vstupů a výstupů a může dokonce využít i funkce ve službě Azure Machine Learning. To z něj dělá robustní nástroj pro analýzu datových proudů. Další informace o tom, jak psát dotazy, najdete v článku o [běžných vzorech dotazů](stream-analytics-stream-analytics-query-patterns.md).
 

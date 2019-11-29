@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dd3b79e931464e83264433a923e9078b2f62525
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f75c84aeb1893008832635cf93cd634d96653dd3
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006958"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561537"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Plánování prostředí Azure Time Series Insights GA
 
@@ -46,14 +46,14 @@ Chcete-li nejlépe naplánovat Time Series Insights prostředí pro dlouhodobou 
 
 Ve výchozím nastavení Time Series Insights uchovává data na základě velikosti úložiště, které zřizujete (jednotkové &#215; množství úložiště na jednotku) a příchozího přenosu dat.
 
-## <a name="data-retention"></a>Uchovávání dat
+## <a name="data-retention"></a>Uchování dat
 
 Nastavení **doby uchovávání dat** můžete změnit v prostředí Azure Time Series Insights. Můžete povolit až 400 dnů uchovávání. 
 
 Azure Time Series Insights má dva režimy:
 
 * Jeden režim optimalizuje pro nejaktuálnější data. Vynutila zásady pro **mazání starých dat** , která opustí poslední data dostupná s instancí. Tento režim je ve výchozím nastavení zapnutý. 
-* Ostatní data optimalizují, aby zůstala pod nakonfigurovanými limity uchování. **Pozastavit** příchozí přenos dat brání tomu, aby se nová data zobrazovala v případě, že se vybralo **omezení úložiště**. 
+* Ostatní data optimalizují, aby zůstala pod nakonfigurovanými limity uchování. **Pozastavení** příchozího přenosu dat znemožňuje, aby se nová data nezobrazovala, když se vybrala při **překročení limitu úložiště**. 
 
 Můžete upravit dobu uchovávání a přepínání mezi oběma režimy na stránce konfigurace prostředí v Azure Portal.
 
@@ -64,11 +64,11 @@ Můžete upravit dobu uchovávání a přepínání mezi oběma režimy na strá
 
 1. V [Azure Portal](https://portal.azure.com)vyberte své prostředí Time Series Insights.
 
-1. V podokně **Time Series Insights prostředí** v části **Nastavení**vyberte **Konfigurovat**.
+1. V podokně **Time Series Insights prostředí** v části **Nastavení**vyberte **Konfigurace úložiště**.
 
 1. Do pole **Doba uchovávání dat (ve dnech)** zadejte hodnotu mezi 1 a 400.
 
-   [![konfigurace uchovávání](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [![konfigurace uchovávání](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
 > Další informace o tom, jak implementovat příslušné zásady uchovávání dat, najdete v tématu [Postup konfigurace uchovávání](./time-series-insights-how-to-configure-retention.md).

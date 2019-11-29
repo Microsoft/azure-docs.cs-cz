@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 94df90db4a715d2540dfc5ec0aa521d76d22f757
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 2bd8c07b384872f3107b5938380cea4c8eb0abae
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624216"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559128"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modelování dat grafu pro Azure Cosmos DB rozhraní Gremlin API
 
@@ -21,7 +21,7 @@ Následující dokument je navržený tak, aby poskytoval doporučení pro model
 ## <a name="requirements"></a>Požadavky
 
 Proces popsaný v této příručce je založený na následujících předpokladech:
- * Identifikují se **entity** v místě problému. Tyto entity mají být pro každý požadavek spotřebovány atomicky. Jinými slovy, databázový systém není navržený tak, aby načetl data jedné entity v rámci více požadavků na dotazy.
+ * Identifikují se **entity** v místě problému. Tyto entity mají být pro každý požadavek spotřebovány _atomicky_ . Jinými slovy, databázový systém není navržený tak, aby načetl data jedné entity v rámci více požadavků na dotazy.
  * Pro databázový systém je potřeba pochopit **požadavky na čtení a zápis** . Tyto požadavky budou mít na výběr optimalizace potřebné pro datový model grafu.
  * Principy [standardu grafu vlastností Apache Tinkerpop](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) se dobře rozumí.
 
@@ -41,17 +41,17 @@ Dalším krokem je určit, jestli se má graf použít pro účely analýzy nebo
 
 ## <a name="how-to-use-graph-objects"></a>Jak používat objekty grafu
 
-[Standard pro Tinkerpop sady Apache](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) definuje dva typy objektů vrcholů a **hran**. 
+[Standard pro Tinkerpop sady Apache](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) definuje dva typy objektů **vrcholů** a **hran**. 
 
 Níže jsou uvedené osvědčené postupy pro vlastnosti v objektech grafu:
 
-| Object | Vlastnost | type | Poznámky |
+| Objekt | Vlastnost | Typ | Poznámky |
 | --- | --- | --- |  --- |
-| Vertex | id | Řetězec | Jedinečně vynutilo na oddíl. Pokud při vložení nezadáte hodnotu a automaticky vygenerovaný identifikátor GUID bude uložen. |
-| Vertex | label | Řetězec | Tato vlastnost slouží k definování typu entity, kterou vrchol představuje. Pokud hodnota není zadaná, použije se výchozí hodnota "vrchol". |
-| Vertex | properties | Řetězec, logická hodnota, číselná hodnota | Seznam samostatných vlastností uložených jako páry klíč-hodnota v každém vrcholu. |
-| Vertex | klíč oddílu | Řetězec, logická hodnota, číselná hodnota | Tato vlastnost určuje, kde budou uloženy vrcholy a jejich odchozí okraje. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). |
-| Edge | id | Řetězec | Jedinečně vynutilo na oddíl. Automaticky generuje standardně. Okraje obvykle nemají jedinečně načteny IDENTIFIKÁTORem. |
+| Úpravě | ID | Řetězec | Jedinečně vynutilo na oddíl. Pokud při vložení není zadána hodnota, bude uložen automaticky generovaný identifikátor GUID. |
+| Úpravě | label | Řetězec | Tato vlastnost slouží k definování typu entity, kterou vrchol představuje. Pokud hodnota není zadaná, použije se výchozí hodnota "vrchol". |
+| Úpravě | properties | Řetězec, logická hodnota, číselná hodnota | Seznam samostatných vlastností uložených jako páry klíč-hodnota v každém vrcholu. |
+| Úpravě | klíč oddílu | Řetězec, logická hodnota, číselná hodnota | Tato vlastnost určuje, kde budou uloženy vrcholy a jejich odchozí okraje. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). |
+| Edge | ID | Řetězec | Jedinečně vynutilo na oddíl. Automaticky generuje standardně. Okraje obvykle nemají jedinečně načteny IDENTIFIKÁTORem. |
 | Edge | label | Řetězec | Tato vlastnost slouží k definování typu vztahu, který má dva vrcholy. |
 | Edge | properties | Řetězec, logická hodnota, číselná hodnota | Seznam samostatných vlastností uložených jako páry klíč-hodnota v jednotlivých hraničních zařízeních. |
 
@@ -71,7 +71,7 @@ Prvním krokem pro datový model grafu je namapovat každou identifikovanou enti
 
 Jednou z běžných Pitfall je mapovat vlastnosti jedné entity jako samostatné vrcholy. Vezměte v úvahu následující příklad, ve kterém je stejná entita zastoupena dvěma různými způsoby:
 
-* **Vlastnosti založené na vrcholu**: V tomto přístupu entita používá tři samostatné vrcholy a dva hrany k popisu jejích vlastností. I když tento přístup může snížit redundanci, zvyšuje složitost modelu. Zvýšení složitosti modelu může mít za následek přidání latence, složitosti dotazu a výpočetních nákladů. Tento model může také prezentovat problémy při dělení.
+* **Vlastnosti založené na vrcholu**: v tomto přístupu entita používá tři samostatné vrcholy a dva hrany k popsání jejích vlastností. I když tento přístup může snížit redundanci, zvyšuje složitost modelu. Zvýšení složitosti modelu může mít za následek přidání latence, složitosti dotazu a výpočetních nákladů. Tento model může také prezentovat problémy při dělení.
 
 ![Model entity s vrcholy pro vlastnosti](./media/graph-modeling/graph-modeling-1.png)
 
@@ -90,11 +90,11 @@ Existují však situace, kdy odkazování na vlastnost může poskytovat výhody
 
 Po modelování vrcholů lze přidat okraje k označení vztahů mezi nimi. První aspekt, který je nutné vyhodnotit, je **Směr vztahu**. 
 
-Při použití `out()` funkce or `outE()` mají objekty Edge výchozí směr, který následuje po průchodu. Použití tohoto přirozeného směru vede k efektivní operaci, protože všechny vrcholy jsou uloženy spolu s jejich odchozími okraji. 
+Objekty Edge mají výchozí směr následovaný průchodem při použití funkce `out()` nebo `outE()`. Použití tohoto přirozeného směru vede k efektivní operaci, protože všechny vrcholy jsou uloženy spolu s jejich odchozími okraji. 
 
-Procházení v opačném směru hrany na okraji ale pomocí `in()` funkce vždy způsobí dotaz na více oddílů. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). Pokud je potřeba nepřetržitě procházet pomocí `in()` funkce, doporučujeme přidat hrany v obou směrech.
+Přechod v opačném směru Edge pomocí funkce `in()` ale bude mít vždycky dotaz na více oddílů. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). Pokud je potřeba nepřetržitě procházet pomocí funkce `in()`, doporučuje se přidat hrany v obou směrech.
 
-Můžete určit směr okraje pomocí `.to()` predikátů `.addE()` nebo `.from()` v kroku Gremlin. Nebo pomocí [knihovny hromadných prováděcích modulů pro rozhraní Gremlin API](bulk-executor-graph-dotnet.md).
+Směr okraje můžete určit pomocí predikátů `.to()` nebo `.from()` do kroku `.addE()` Gremlin. Nebo pomocí [knihovny hromadných prováděcích modulů pro rozhraní Gremlin API](bulk-executor-graph-dotnet.md).
 
 > [!NOTE]
 > Objekty Edge mají ve výchozím nastavení směr.

@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 46975cf7762e2d92e5112911bd491f372cb22a31
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: a86d94110e78b7ace0e963469e9f236f7cc72ab4
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544631"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555474"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zóna – redundantní úložiště (ZRS) pro vytváření vysoce dostupných Azure Storagech aplikací
 
@@ -22,9 +22,9 @@ ms.locfileid: "74544631"
 
 ## <a name="support-coverage-and-regional-availability"></a>Pokrytí podpory a regionální dostupnost
 
-ZRS aktuálně podporuje typy účtů úložiště úrovně Standard pro obecné účely v2 a úložiště. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md).
+ZRS aktuálně podporuje typy účtů úložiště standard pro obecné účely v2, úložiště úložiště a BlockBlobStorage. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md).
 
-ZRS je k dispozici pro objekty blob bloku, objekty blob stránky mimo disk, standardní sdílené složky, tabulky a fronty.
+Účty pro obecné účely v2 ZRS podporují objekty blob bloku, objekty blob stránky mimo disk, standardní sdílené složky, tabulky a fronty.
 
 Pro účty pro obecné účely v2 je ZRS všeobecně dostupná v následujících oblastech:
 

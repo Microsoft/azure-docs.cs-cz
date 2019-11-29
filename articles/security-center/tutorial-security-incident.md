@@ -1,6 +1,6 @@
 ---
 title: Kurz reakce na incidenty – Azure Security Center
-description: Kurz pro Azure Security Center – Reakce na incidenty zabezpečení
+description: V tomto kurzu se dozvíte, jak řadit výstrahy zabezpečení, jak určit hlavní příčinu & rozsahu incidentu, a data zabezpečení hledání.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663646"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559188"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Kurz: Reakce na incidenty zabezpečení
-Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomocí pokročilých analytických algoritmů a inteligentního rozpoznávání hrozeb a upozorní vás na škodlivé aktivity. Kromě toho můžete do Security Center integrovat výstrahy z jiných bezpečnostních produktů a služeb a vytvořit vlastní výstrahy na základě definovaných indikátorů nebo zdroje informací. Jakmile je vygenerována výstraha, je pro prozkoumání a nápravu nutná rychlá akce. V tomto kurzu se naučíte:
+Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomocí pokročilých analytických algoritmů a inteligentního rozpoznávání hrozeb a upozorní vás na škodlivé aktivity. Kromě toho můžete do Security Center integrovat výstrahy z jiných bezpečnostních produktů a služeb a vytvořit vlastní výstrahy na základě definovaných indikátorů nebo zdroje informací. Jakmile je vygenerována výstraha, je pro prozkoumání a nápravu nutná rychlá akce. V tomto kurzu se naučíte, jak:
 
 > [!div class="checklist"]
 > * Analyzovat výstrahy zabezpečení
@@ -31,7 +31,7 @@ Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomoc�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Chcete-li si vyzkoušet postupy popsané v tomto kurzu, budete potřebovat službu Security Center v cenové úrovni Standard. Můžete vyzkoušet Security Center Standard bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem upgradu na úroveň Standard.
 
 ## <a name="scenario"></a>Scénář
@@ -78,7 +78,7 @@ Security Center poskytuje jednotné zobrazení všech výstrah zabezpečení. V�
 
    Výstrahy mohou být různých typů, další podrobnosti o typech výstrah a možnostech nápravy si přečtěte v článku [Význam výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). U výstrah, které je možné bezpečně zrušit, klikněte pravým tlačítkem na výstrahu a vyberte možnost **Zavřít**:
 
-   ![Výstrahy](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+   ![Upozornění](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 
 4. Pokud neznáte hlavní příčinu a rozsah škodlivé aktivity, pokračujte dalším krokem ve vyšetřování.
 
@@ -104,14 +104,14 @@ Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého st
 2. Vyberte předplatné nebo zásady, které chcete vrátit na úroveň Free. Otevře se okno **Zásady zabezpečení**.
 3. V části **SOUČÁSTI ZÁSAD** vyberte **Cenová úroveň**.
 4. Výběrem **Free** změníte předplatné z úrovně Standard na úroveň Free.
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
 Pokud chcete vypnout automatické zřizování:
 
 1. Vraťte se do hlavní nabídky služby Security Center a vyberte **Zásady zabezpečení**.
 2. Vyberte předplatné, pro které chcete vypnout automatické zřizování.
 3. V části **Zásady zabezpečení – shromažďování dat** výběrem možnosti **Vypnuto** u volby **Onboarding** vypnete automatické zřizování.
-4. Vyberte **Uložit**.
+4. Vyberte **Save** (Uložit).
 
 >[!NOTE]
 > Vypnutím automatického zřizování neodeberete agenta Microsoft Monitoring Agent z virtuálních počítačů Azure, na kterých byl agent zřízen. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.

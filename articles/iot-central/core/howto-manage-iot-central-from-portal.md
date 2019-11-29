@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 2133819ce7c298e2f73fdc5a68b80b64f9e72ea7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c86df7c50e59309f921c60738870407e74a23219
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480417"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555223"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Správa IoT Central z Azure Portal
 
@@ -41,7 +41,7 @@ Nyní vyberte **vytvořit**.
 
 Vyplňte všechna pole ve formuláři. Tento formulář je podobný formuláři, který vyplníte, abyste mohli vytvářet aplikace na webu [Správce aplikací Azure IoT Central](https://aka.ms/iotcentral) . Další informace najdete v tématu rychlý Start [k vytvoření IoT Central aplikace](quick-deploy-iot-central.md) .
 
-Můžete vytvořit aplikaci IoT Central s obecnými funkcemi, a to tak, že vyberete možnost **Ukázka contoso**, **vlastní aplikace** a **Ukázka Devkits** jako šablony aplikací. všechny ostatní šablony aplikací používají funkce veřejné verze Preview.
+Pomocí všeobecně dostupných funkcí můžete vytvořit IoT Central aplikaci, a to tak, že vyberete možnost **Ukázka contoso**, **vlastní aplikace** a **Ukázka Devkits** jako šablony aplikací. všechny ostatní šablony aplikací používají funkce veřejné verze Preview.
 
 ![vytvořit formulář IoT Central](media/howto-manage-iot-central-from-portal/image6a.png)
 

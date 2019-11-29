@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: bc6c33762fa572e971fff9dee8988a100e50b07c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006806"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561155"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Postup škálování Time Series Insightsho prostředí
 
@@ -34,13 +34,13 @@ Změna SKU cenové úrovně ale není povolená. Například prostředí s cenov
 
 1. V Azure Portal vyhledejte a vyberte své Time Series Insights prostředí.
 
-1. V nabídce pro prostředí Time Series Insights vyberte **Konfigurovat**.
+1. V nabídce pro prostředí Time Series Insights vyberte **Konfigurace úložiště**.
 
-   [![configure. png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [![konfiguraci kapacity Time Series Insights](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
 1. Nastavením posuvníku **kapacity** můžete vybrat kapacitu, která splňuje požadavky na míry příchozího přenosu dat a kapacitu úložiště. Všimněte si, že míra příchozího **přenosu**dat, **kapacita úložiště**a **Odhadovaná cena** se dynamicky aktualizuje, aby se zobrazil dopad změny.
 
-   [Posuvník ![](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [![nakonfigurovat prostředí pomocí posuvníku kapacity](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 
    Alternativně můžete do textového pole napravo od posuvníku zadat číslo multiplikátoru kapacity.
 

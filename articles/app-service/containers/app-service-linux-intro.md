@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 966eb6068ff545dde284463866bfeee3d5074069
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819682"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559028"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 
@@ -67,7 +67,12 @@ Na základě současného omezení pro stejnou skupinu prostředků nemůžete k
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud se aplikaci nepodaří spustit nebo pokud chcete zkontrolovat protokolování z aplikace, zkontrolujte protokoly Dockeru v adresáři LogFiles. Přístup k tomuto adresáři získáte prostřednictvím webu SCM nebo přes protokol FTP. Chcete-li protokolovat `stdout` a `stderr` z kontejneru, je nutné povolit **protokolování kontejneru Docker** v části **protokoly App Service**. Nastavení se projeví okamžitě. App Service detekuje změnu a automaticky restartuje kontejner.
+> [!NOTE]
+> Funkce [Azure Monitoring (Preview)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) nabízí nové integrované možnosti protokolování. 
+>
+>
+
+Pokud se aplikaci nepodaří spustit nebo pokud chcete zkontrolovat protokolování z aplikace, zkontrolujte protokoly Dockeru v adresáři LogFiles. Přístup k tomuto adresáři získáte prostřednictvím webu SCM nebo přes protokol FTP. Chcete-li protokolovat `stdout` a `stderr` z kontejneru, je nutné povolit **protokolování aplikace** v části **App Service protokoly**. Nastavení se projeví okamžitě. App Service detekuje změnu a automaticky restartuje kontejner.
 
 Na web SCM můžete přejít přes možnost **Rozšířené nástroje** v nabídce **Vývojové nástroje**.
 

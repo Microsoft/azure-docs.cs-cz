@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 629ba904d055977fe70f749a46fbbec71be71b79
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b71d3b4824d8c1c73f40c8c6d87db315aabd423b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083654"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555494"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitorování vaší úlohy pomocí DMV
 Tento článek popisuje, jak pomocí zobrazení dynamické správy (zobrazení dynamické správy) monitorovat vaše úlohy. To zahrnuje šetření provádění dotazů v Azure SQL Data Warehouse.
@@ -63,7 +63,7 @@ ORDER BY total_elapsed_time DESC;
 
 Z předchozích výsledků dotazu **si poznamenejte ID žádosti** o dotaz, který chcete prozkoumat.
 
-Dotazy v **pozastaveném** stavu lze zařadit do fronty z důvodu velkého počtu aktivních spuštěných dotazů. Tyto dotazy se také zobrazí v [Sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) čeká na dotaz s typem UserConcurrencyResourceType. Informace o omezeních souběžnosti najdete v tématech [úrovně výkonu](/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu#performance-tiers-and-data-warehouse-units) nebo [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy mohou také čekat na jiné důvody, například na zámky objektů.  Pokud dotaz čeká na prostředek, prostudujte si další informace v tomto článku v tématu [zkoumání dotazů, které čekají na prostředky][Investigating queries waiting for resources] .
+Dotazy v **pozastaveném** stavu lze zařadit do fronty z důvodu velkého počtu aktivních spuštěných dotazů. Tyto dotazy se také zobrazí v [Sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) čeká na dotaz s typem UserConcurrencyResourceType. Informace o omezeních souběžnosti najdete v tématu [omezení paměti a souběžnosti pro Azure SQL Data Warehouse](memory-concurrency-limits.md) nebo [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy mohou také čekat na jiné důvody, například na zámky objektů.  Pokud dotaz čeká na prostředek, prostudujte si další informace v tomto článku v tématu [zkoumání dotazů, které čekají na prostředky][Investigating queries waiting for resources] .
 
 Chcete-li zjednodušit vyhledávání dotazů v tabulce [Sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , použijte [popisek][LABEL] k přiřazení komentáře k dotazu, který lze vyhledat v zobrazení sys. dm_pdw_exec_requests.
 
@@ -206,7 +206,7 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Pokud máte dotaz, který spotřebovává velké množství paměti nebo obdržel chybovou zprávu týkající se přidělení databáze tempdb, může to být způsobeno velmi velkým [Create Table jako Select (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) nebo příkazem [INSERT Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) , který je spuštěný, který selhává v poslední operace přesunu dat To může být obvykle identifikováno jako operace ShuffleMove v plánu distribuovaného dotazu přímo před konečným výběrem vložení.  Pomocí [Sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) můžete monitorovat operace ShuffleMove. 
+Pokud máte dotaz, který spotřebovává velké množství paměti nebo obdržel chybovou zprávu týkající se přidělení databáze tempdb, může to být způsobeno velmi velkým [Create Table jako Select (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) nebo příkaz [INSERT Select](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) , který se v konečné operaci přesunu dat nezdařil. To může být obvykle identifikováno jako operace ShuffleMove v plánu distribuovaného dotazu přímo před konečným výběrem vložení.  Pomocí [Sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) můžete monitorovat operace ShuffleMove. 
 
 Nejběžnějším rizikem je přerušení CTAS nebo vložení příkazu SELECT do více příkazů Load, aby datový svazek nepřesáhl počet 1 TB na uzel tempdb. Cluster můžete také škálovat na větší velikost, která bude rozšiřovat velikost databáze tempdb na více uzlech, čímž se zmenší databáze tempdb na každém jednotlivém uzlu.
 

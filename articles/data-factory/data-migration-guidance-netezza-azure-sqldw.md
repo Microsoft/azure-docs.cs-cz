@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 2844b48b3d832e8d9ec659ba657879d683016aee
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 762e7d4a7356c11171355b5325e77569e9acb1e2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217677"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555091"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Použití Azure Data Factory k migraci dat z místního serveru Netezza do Azure 
 
@@ -156,7 +156,7 @@ Pokud se do Azure nedá načíst do dvou hodin a kapacita uzlu IR v místním pr
 
 Sledujte využití CPU a paměti na místním počítači IR a připravte se na horizontální navýšení kapacity počítače nebo horizontální navýšení kapacity na více počítačů, když zjistíte, že je procesor a paměť plně využité. 
 
-Když narazíte na chyby omezování, jak je uvedeno v Azure Data Factory aktivita kopírování, buď zmenšete nastavení souběžnosti nebo `parallelCopies` v Azure Data Factory, nebo zvažte zvýšení limitu šířky pásma nebo vstupně-výstupních operací za sekundu (IOPS) sítě a dat. Store. 
+Když narazíte na chyby omezování, jak je uvedeno v Azure Data Factory aktivita kopírování, buď zmenšete nastavení souběžnosti nebo `parallelCopies` v Azure Data Factory, nebo zvažte zvýšení limitu šířky pásma nebo vstupně-výstupních operací za sekundu (IOPS) v síti a úložištích dat. 
 
 
 ### <a name="estimate-your-pricing"></a>Odhad ceny 
@@ -190,7 +190,7 @@ V závislosti na předchozích předpokladech je zde uvedená odhadovaná cena:
 
 Další informace najdete v následujících článcích a příručkách:
 
-- [Migrace dat z místní databáze relačního datového skladu do Azure pomocí Azure Data Factory](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premises-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
+- [Migrace dat z místní databáze relačního datového skladu do Azure pomocí Azure Data Factory](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
 - [Konektor Netezza](https://docs.microsoft.com/azure/data-factory/connector-netezza)
 - [Konektor ODBC](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Konektor služby Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)

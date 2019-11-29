@@ -1,6 +1,6 @@
 ---
 title: Adaptivní posílení zabezpečení sítě v Azure Security Center | Microsoft Docs
-description: " Naučte se, jak povolit adaptivní posílení zabezpečení sítě v Azure Security Center. "
+description: Naučte se posílit na základě skutečných schémat přenosů, pravidel skupin zabezpečení sítě (NSG) a další vylepšení stav zabezpečení.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 060a5a6a356574e04a3492cdeadd93ddf9a38535
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255246"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559283"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptivní posílení zabezpečení sítě v Azure Security Center
 Přečtěte si, jak nakonfigurovat adaptivní posílení zabezpečení sítě v Azure Security Center.
@@ -47,7 +47,7 @@ Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu po
 
      ![zdroje, které nejsou v pořádku](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
-2. Na kartě **poškozené prostředky** vyberte virtuální počítač pro zobrazení výstrah a doporučená pravidla posílení zabezpečení.
+2. Na kartě **poškozené prostředky** vyberte virtuální počítač, na kterém se mají zobrazit výstrahy, a doporučená pravidla posílení zabezpečení, která se mají použít.
 
     ![Upozornění posílení zabezpečení](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
 
@@ -83,7 +83,7 @@ Některé důležité pokyny pro úpravu pravidla posílení adaptivní sítě:
 * Nemůžete změnit pravidla "Povolit", která se stanou "Odepřít". 
 
   > [!NOTE]
-  > Vytváření a úpravy pravidel "Odepřít" se provádí přímo na NSG. Další podrobnosti najdete v tématu [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+  > Vytváření a úpravy pravidel "Odepřít" se provádí přímo na NSG. Další informace najdete v tématu [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
 * Pravidlo **Odepřít všechna přenosová** pravidla jsou jediným typem pravidla odepřít, které by bylo uvedeno zde a nelze je upravit. Můžete ho ale odstranit (viz [odstranění pravidla](#delete-rule)).
   > [!NOTE]
@@ -111,7 +111,7 @@ Některé důležité pokyny pro úpravu pravidla posílení adaptivní sítě:
 Můžete přidat pravidlo "Allow", které nedoporučuje Security Center.
 
 > [!NOTE]
-> Sem lze přidat pouze pravidla "povoleno". Pokud chcete přidat pravidla "Odepřít", můžete tak učinit přímo na NSG. Další podrobnosti najdete v tématu [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+> Sem lze přidat pouze pravidla "povoleno". Pokud chcete přidat pravidla "Odepřít", můžete tak učinit přímo na NSG. Další informace najdete v tématu [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
 *Postup přidání pravidla posílení adaptivní sítě:*
 

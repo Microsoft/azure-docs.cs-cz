@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 261816e42c8de670cd7888af726a70e1a6e5b228
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269365"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560130"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se soubory Azure v systému Windows
 
@@ -271,7 +271,7 @@ Chcete-li zkopírovat soubor přes síť, je nutné jej nejprve dešifrovat. Pou
 
 - Použijte příkaz **Kopírovat/d** . Povoluje ukládání šifrovaných souborů v cílovém umístění jako dešifrovaných souborů.
 - Nastavte následující klíč registru:
-  - Path = HKLM\Software\Policies\Microsoft\Windows\System
+  - Cesta = HKLM\Software\Policies\Microsoft\Windows\System
   - Typ hodnoty = DWORD
   - Název = CopyFileAllowDecryptedRemoteDestination
   - Hodnota = 1
@@ -295,11 +295,11 @@ Pokud chcete tento problém vyřešit, upravte hodnotu registru **DirectoryCache
  
 Můžete ho například nastavit na 0x100000 a zjistit, jestli se výkon zlepšil.
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Při povolování Azure Active Directory ověřování pro soubory Azure došlo k chybě AadDsTenantNotFound. Nejde najít aktivní klienty s ID tenanta AAD-tenant-ID.
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Chyba AadDsTenantNotFound při povolování ověřování služby Azure Active Directory Domain Service (AAD DS) pro soubory Azure nemůže najít aktivní klienty s ID tenanta AAD-tenant-ID.
 
 ### <a name="cause"></a>Příčina
 
-K chybě AadDsTenantNotFound dojde při pokusu o [Povolení ověřování Azure Active Directory (AAD) pro soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) v účtu úložiště, ve kterém není vytvořená [Služba AAD Domain Service (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) v tenantovi AAD přidruženého předplatného.  
+K chybě AadDsTenantNotFound dojde při pokusu o [Povolení ověřování služby Azure Active Directory Domain Service (AAD DS) pro soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) v účtu úložiště, ve kterém není vytvořená [Služba AAD Domain Service (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) v tenantovi AAD přidruženého předplatného.  
 
 ### <a name="solution"></a>Řešení
 
@@ -307,5 +307,17 @@ Povolte AAD DS v tenantovi AAD předplatného, na které je váš účet úloži
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>Došlo k chybě "Systémová chyba 1359. Došlo k vnitřní chybě přijaté přes přístup SMB ke sdíleným složkám s povoleným ověřováním služby Azure Active Directory Domain Service (AAD DS).
+
+### <a name="cause"></a>Příčina
+
+Došlo k chybě "Systémová chyba 1359. K interní chybě dojde, když se pokusíte připojit ke sdílené složce s povoleným ověřováním AAD DS přes službu AAD DS s názvem DNS domény začínající číselným znakem. Pokud třeba název DNS vaší domény AAD DS je "1domain", tato chyba se zobrazí při pokusu o připojení sdílené složky pomocí přihlašovacích údajů AAD. 
+
+### <a name="solution"></a>Řešení
+
+V současné době můžete zvážit opětovné nasazení služby AAD DS pomocí nového názvu domény DNS, který platí pro následující pravidla:
+- Názvy nesmí začínat číselným znakem.
+- Název musí mít délku 3 až 63 znaků.
+
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém.

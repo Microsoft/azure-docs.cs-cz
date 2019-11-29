@@ -1,14 +1,14 @@
 ---
 title: Vytváření zásad pro vlastnosti polí u prostředků
 description: Naučte se pracovat s parametry pole a výrazy jazyka pole, vyhodnotit alias [*] a přidat prvky pomocí pravidel Definice Azure Policy.
-ms.date: 03/06/2019
+ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 96598918f0dbcc2f56e8ccc316844ee768306b75
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 035f300d01efe80cc44687d3779d7a5fb6be2fc3
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463499"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555163"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytváření zásad pro vlastnosti pole v prostředcích Azure
 
@@ -16,7 +16,9 @@ Vlastnosti Azure Resource Manager jsou běžně definovány jako řetězce a log
 
 - Typ [parametru definice](../concepts/definition-structure.md#parameters), který poskytuje více možností
 - Součást [pravidla zásad](../concepts/definition-structure.md#policy-rule) s použitím podmínek **v** nebo **notIn**
-- Součást pravidla zásad, které vyhodnocuje [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) pro vyhodnocení konkrétních scénářů, jako jsou **none**, **Any**nebo **All**
+- Součást pravidla zásad, které vyhodnocuje [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) k vyhodnocení:
+  - Scénáře, jako je **none**, **Any**nebo **All**
+  - Komplexní scénáře s **počtem**
 - V [efektu připojit](../concepts/effects.md#append) , který se má nahradit nebo přidat k existujícímu poli
 
 Tento článek se zabývá každým použitím Azure Policy a poskytuje několik ukázkových definic.
@@ -138,10 +140,10 @@ Očekávaným **typem** podmínky `equals` je _řetězec_. Vzhledem k tomu, že 
 
 ### <a name="evaluating-the--alias"></a>Vyhodnocení aliasu [*]
 
-Aliasy, které mají **[\*]** připojené k jejich názvu, označují, že **typ** je _pole_. Místo vyhodnocení hodnoty celého pole, **[\*]** , umožňuje vyhodnotit každý prvek pole. Existují tři scénáře, které jsou pro vyhodnocení každé položky užitečné: žádné, žádné a všechny.
+Aliasy, které mají **\[\*\]** připojeny k jejich názvu, označují, že **typ** je _pole_. Místo vyhodnocení hodnoty celého pole **\[\*\]** umožňuje vyhodnotit každý prvek pole. Existují tři standardní scénáře, které jsou pro vyhodnocení každé položky užitečné: žádné, žádné a všechny. U složitých scénářů použijte [počet](../concepts/definition-structure.md#count).
 
 Modul zásad aktivuje **efekt** v **a pak** jenom v případě, že se pravidlo **if** vyhodnotí jako true.
-Tento fakt je důležité pochopit v kontextu způsobu, jakým **[\*]** vyhodnocuje každý jednotlivý prvek pole.
+Tento fakt je důležitý pro pochopení v kontextu způsobu, jakým **\[\*\]** vyhodnocuje každý jednotlivý prvek pole.
 
 Příklad pravidla zásad pro tabulku scénář:
 
@@ -194,10 +196,10 @@ Následující výsledky jsou výsledkem kombinace podmínky a ukázkového prav
 
 ## <a name="the-append-effect-and-arrays"></a>Efekt připojení a pole
 
-[Efekt připojení](../concepts/effects.md#append) se chová odlišně v závislosti na tom, zda je v **poli podrobnosti** alias **[\*]** .
+[Efekt připojení](../concepts/effects.md#append) se chová odlišně v závislosti na tom, zda je **pole details.** **\[\*\]** alias nebo not.
 
-- Pokud se nejedná o alias **[\*]** , příkaz append nahradí celé pole vlastností **Value** .
-- Když alias **[\*]** přidá vlastnost **Value** do existujícího pole nebo vytvoří nové pole.
+- Pokud není alias **\[\*\]** , příkaz append nahradí celé pole vlastností **Value** .
+- Když **\[\*alias \]** , připojí se vlastnost **Value** k existujícímu poli nebo vytvoří nové pole.
 
 Další informace najdete v [příkladech připojení](../concepts/effects.md#append-examples).
 

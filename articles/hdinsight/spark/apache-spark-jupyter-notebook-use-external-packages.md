@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/09/2018
-ms.openlocfilehash: 0cdd962e5d027b5576a0556ca5decb976af45ff1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 11/22/2019
+ms.openlocfilehash: cec94b2ecb18bc9e8cceb24a21967a3c829d78a5
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494553"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561737"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Použití externích balíčků s Jupyter poznámkovým blokům v clusterech s Apache Spark v HDInsight
 
@@ -21,7 +21,7 @@ ms.locfileid: "73494553"
 > * [Použití buňky Magic](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Pomocí akce skriptu](apache-spark-python-package-installation.md)
 
-Naučte se, jak nakonfigurovat [Jupyter notebook](https://jupyter.org/) v clusteru Apache Spark v HDInsight tak, aby používaly externí balíčky Apache **Maven** poskytované komunitou, které nejsou zahrnuté do clusteru. 
+Naučte se, jak nakonfigurovat [Jupyter notebook](https://jupyter.org/) v clusteru Apache Spark ve službě HDInsight tak, aby používaly externí balíčky Apache **Maven** poskytované komunitou, které nejsou zahrnuté do clusteru.
 
 Úplný seznam dostupných balíčků můžete vyhledat v [úložišti Maven](https://search.maven.org/) . Můžete také získat seznam dostupných balíčků z jiných zdrojů. Například úplný seznam balíčků, které jsou součástí komunity, je k dispozici v [balíčcích Spark](https://spark-packages.org/).
 
@@ -29,27 +29,22 @@ V tomto článku se dozvíte, jak pomocí poznámkového bloku Jupyter použít 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Musíte mít následující:
-
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+
+* Znalost používání poznámkových bloků Jupyter se Sparkem ve službě HDInsight. Další informace najdete v tématech [načtení dat a spuštění dotazů s Apache Spark v HDInsight](./apache-spark-load-data-run-query.md).
+
+* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To `wasb://` pro Azure Storage `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage nebo Data Lake Storage Gen2 povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` nebo `abfss://`[, a to](../../storage/common/storage-require-secure-transfer.md)i v tomto pořadí.
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Použijte externí balíčky s poznámkovými bloky Jupyter
 
-1. Z [Portálu Azure](https://portal.azure.com/) z úvodního panelu klikněte na dlaždici pro váš cluster Spark (pokud je připnutý na úvodní panel). Můžete také přejít na cluster pod položkou **Procházet vše** > **Clustery HDInsight**.
+1. Přejděte na `https://CLUSTERNAME.azurehdinsight.net/jupyter`, kde `CLUSTERNAME` je název vašeho clusteru Spark.
 
-1. Z okna clusteru Spark klikněte na tlačítko **Rychlé odkazy** a pak z okna **Řídicí panel clusteru** klikněte na tlačítko **Poznámkový blok Jupyter**. Po vyzvání zadejte přihlašovací údaje správce clusteru.
+1. Vytvořte nový poznámkový blok. Vyberte **Nový**a pak vyberte **Spark**.
 
-    > [!NOTE]  
-    > Může také otevřít poznámkový blok Jupyter pro váš cluster tak, že otevřete následující adresu URL v prohlížeči. Nahraďte **CLUSTERNAME** názvem clusteru:
-    > 
-    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-
-1. Vytvořte nový poznámkový blok. Klikněte na **Nový**a potom na **Spark**.
-   
     ![Vytvoření nového poznámkového bloku Spark Jupyter](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Vytvoření nového poznámkového bloku Jupyter")
 
-1. Nový poznámkový blok se vytvoří a otevře s názvem Untitled.pynb. Klikněte na název poznámkového bloku v horní části a zadejte popisný název.
-   
+1. Nový poznámkový blok se vytvoří a otevře s názvem Untitled.pynb. Vyberte název poznámkového bloku v horní části a zadejte popisný název.
+
     ![Zadejte název poznámkového bloku.](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Zadání názvu poznámkového bloku")
 
 1. K nakonfigurování poznámkového bloku pro použití externího balíčku použijete `%%configure` Magic. V poznámkových blocích, které používají externí balíčky, se ujistěte, že jste v první buňce kódu volali `%%configure` Magic. Tím se zajistí, že jádro je nakonfigurované na použití balíčku před spuštěním relace.
@@ -59,31 +54,31 @@ Musíte mít následující:
 
     | Verze HDInsight | Příkaz |
     |-------------------|---------|
+    | Pro HDInsight 3,5 a HDInsight 3,6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.11:1.5.0" }}`|
     |Pro HDInsight 3,3 a HDInsight 3,4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
-    | Pro HDInsight 3,5 a HDInsight 3,6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
 
-1. Výše uvedený fragment kódu očekává souřadnice Maven pro externí balíček v centrálním úložišti Maven. V tomto fragmentu kódu je `com.databricks:spark-csv_2.10:1.4.0` souřadnici Maven pro balíček **Spark-CSV** . Tady je postup, jak sestavit souřadnice balíčku.
-   
-    a. Vyhledejte balíček v úložišti Maven. V tomto článku používáme [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
-   
-    b. Z úložiště Shromážděte hodnoty pro ID **skupiny**, **ArtifactId**a **verzi**. Ujistěte se, že hodnoty, které shromáždíte, odpovídají vašemu clusteru. V tomto případě používáme balíček Scala 2,10 a Spark 1.4.0, ale v clusteru možná budete muset vybrat jiné verze pro příslušnou verzi Scala nebo Sparku. Verzi Scala můžete v clusteru zjistit spuštěním `scala.util.Properties.versionString` v jádru Spark Jupyter nebo v Sparku odeslat. Verzi Sparku v clusteru můžete zjistit spuštěním `sc.version` na poznámkových blocích Jupyter.
-   
+1. Výše uvedený fragment kódu očekává souřadnice Maven pro externí balíček v centrálním úložišti Maven. V tomto fragmentu kódu je `com.databricks:spark-csv_2.11:1.5.0` souřadnici Maven pro balíček **Spark-CSV** . Tady je postup, jak sestavit souřadnice balíčku.
+
+    a. Vyhledejte balíček v úložišti Maven. V tomto článku používáme [Spark-CSV](https://mvnrepository.com/artifact/com.databricks/spark-csv).
+
+    b. Z úložiště Shromážděte hodnoty pro ID **skupiny**, **ArtifactId**a **verzi**. Ujistěte se, že hodnoty, které shromáždíte, odpovídají vašemu clusteru. V tomto případě používáme balíček Scala 2,11 a Spark 1.5.0, ale v clusteru možná budete muset vybrat jiné verze pro příslušnou verzi Scala nebo Sparku. Verzi Scala můžete v clusteru zjistit spuštěním `scala.util.Properties.versionString` v jádru Spark Jupyter nebo v Sparku odeslat. Verzi Sparku v clusteru můžete zjistit spuštěním `sc.version` na poznámkových blocích Jupyter.
+
     ![Použití externích balíčků s poznámkovým blokem Jupyter](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Použití externích balíčků s poznámkovým blokem Jupyter")
-   
+
     c. Zřetězí tři hodnoty oddělené dvojtečkou ( **:** ).
-   
-        com.databricks:spark-csv_2.10:1.4.0
+
+        com.databricks:spark-csv_2.11:1.5.0
 
 1. Spusťte buňku Code s `%%configure` Magic. Tím se nakonfiguruje základní Livy relace tak, aby používala balíček, který jste zadali. V následujících buňkách poznámkového bloku teď můžete použít balíček, jak vidíte níže.
-   
-        val df = sqlContext.read.format("com.databricks.spark.csv").
+
+        val df = spark.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-    Pro HDInsight 3,6 byste měli použít následující fragment kódu.
+    Pro HDInsight 3,4 a níže byste měli použít následující fragment kódu.
 
-        val df = spark.read.format("com.databricks.spark.csv").
+        val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")

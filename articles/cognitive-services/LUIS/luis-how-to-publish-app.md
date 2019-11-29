@@ -1,7 +1,7 @@
 ---
 title: Publikování aplikace – LUIS
 titleSuffix: Azure Cognitive Services
-description: Po dokončení vytváření a testování aplikace LUIS aktivní, zpřístupní ji pro klientské aplikace ji publikujete do koncového bodu.
+description: Až dokončíte sestavování a testování vaší aktivní aplikace LUIS, zpřístupněte ji klientské aplikaci tím, že ji publikujete do koncového bodu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: f213c1d43930075c78cf81de345f612e46bbfb1c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74221719"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554846"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikujte svou aktivní, školenou aplikaci do pracovního nebo produkčního koncového bodu.
 
@@ -45,7 +45,7 @@ Pomocí obou slotů pro publikování vám to umožňuje mít v publikovaných k
 
 ### <a name="publishing-regions"></a>Publikování oblastí
 
-Aplikace se publikuje do všech oblastí přidružených k prostředkům koncového bodu předpovědi LUIS přidaným na portálu LUIS ze stránky **Správa** **[prostředků Azure](/luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)**  -> . 
+Aplikace se publikuje do všech oblastí přidružených k prostředkům koncového bodu předpovědi LUIS přidaným na portálu LUIS ze stránky **Správa** **[prostředků Azure](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)**  -> . 
 
 Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud vytvoříte prostředek Luis ve dvou oblastech, **westus** a **eastus**a přidáte je do aplikace jako prostředky, aplikace se publikuje v obou oblastech. Další informace o oblastech LUIS najdete v tématu [oblasti](luis-reference-regions.md).
 
@@ -57,7 +57,7 @@ Například pro aplikaci vytvořenou v [www.Luis.AI](https://www.luis.ai), pokud
 
 Po výběru slotu nakonfigurujte nastavení publikování pro:
 
-* Analýza mínění
+* Analýza subjektivního hodnocení
 * Oprava pravopisu – pouze koncový bod verze V2 – předpověď
 * Neprojevení řeči 
 
@@ -67,17 +67,17 @@ Po publikování jsou tato nastavení dostupná ke kontrole na stránce **Správ
 
 Po úspěšném publikování vaší aplikace se v horní části prohlížeče zobrazí oznámení o úspěchu. Oznámení také obsahuje odkaz na koncové body. 
 
-Pokud budete potřebovat adresu URL koncového bodu, vyberte odkaz. K adresám URL koncových bodů se můžete dostat taky tak, že v horní nabídce vyberete **Spravovat** a v nabídce vlevo vyberete **prostředky Azure** . 
+Pokud potřebujete adresu URL koncového bodu, vyberte odkaz. K adresám URL koncových bodů se můžete dostat taky tak, že v horní nabídce vyberete **Spravovat** a v nabídce vlevo vyberete **prostředky Azure** . 
 
-## <a name="sentiment-analysis"></a>Analýza mínění
+## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
 
 <a name="enable-sentiment-analysis"></a>
 
 Analýza mínění umožňuje integraci LUIS s [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) , aby poskytovala mínění a analýzu klíčových frází. 
 
-Není potřeba zadat klíč pro analýzu textu a nic neplatíte fakturace pro tuto službu ke svému účtu Azure. 
+Nemusíte zadávat Analýza textu klíč a za tuto službu se neúčtují žádné poplatky za váš účet Azure. 
 
-Je skóre mezi 1 a 0 označující pozitivní mínění data (blíže 1) ani na zápornou (blíže 0) mínění data. Popisek mínění `positive`, `neutral`a `negative` je na podporovanou jazykovou verzi. V současné době podporuje popisky mínění jenom angličtina. 
+Mínění data jsou skóre mezi 1 a 0 značící kladné (blíže k 1) nebo záporné (navýšení na 0) mínění dat. Popisek mínění `positive`, `neutral`a `negative` je na podporovanou jazykovou verzi. V současné době podporuje popisky mínění jenom angličtina. 
 
 Další informace o odpovědích koncových bodů JSON s analýzou mínění najdete v tématu [Analýza mínění](luis-concept-data-extraction.md#sentiment-analysis) .
 

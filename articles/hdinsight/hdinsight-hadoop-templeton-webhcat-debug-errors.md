@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení a řešení chyb WebHCat na HDInsight – Azure
-description: Zjistěte, jak o běžné chyby vrácené WebHCat na HDInsight a jejich řešení.
+title: Pochopení a řešení chyb WebHCat ve službě HDInsight – Azure
+description: Naučte se o běžných chybách vrácených WebHCat ve službě HDInsight a o tom, jak je vyřešit.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,79 +8,79 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: cfbd42a67f9c9d6c66df3787b53575dc9e918e35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c103482771b829730d009d65283a54ec1d8eb8a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067975"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555014"
 ---
-# <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Pochopení a vyřešení chyb přijatých z WebHCat v HDInsight
+# <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Pochopení a řešení chyb přijatých z WebHCat ve službě HDInsight
 
-Další informace o chyb oznámených při použití WebHCat s HDInsight a způsob jejich řešení. WebHCat se používá interně pomocí nástrojů na straně klienta, jako je Azure PowerShell a nástrojů Data Lake pro Visual Studio.
+Přečtěte si o chybách přijatých při používání WebHCat se službou HDInsight a o tom, jak je vyřešit. WebHCat se používá interně pomocí nástrojů na straně klienta, jako je Azure PowerShell a Data Lake nástrojů pro Visual Studio.
 
 ## <a name="what-is-webhcat"></a>Co je WebHCat
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) je rozhraní REST API pro [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tabulky a vrstva správy úložiště pro Apache Hadoop. WebHCat je povolené ve výchozím nastavení v clusterech HDInsight a různé nástroje používají k odesílání úloh, není nutné se připojit ke clusteru můžete získat stav úlohy, atd.
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) je REST API pro [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tabulku a vrstvu správy úložiště pro Apache Hadoop. WebHCat je ve výchozím nastavení povolená v clusterech HDInsight a používá se v různých nástrojích k odesílání úloh, získávání stavu úlohy atd. bez přihlášení ke clusteru.
 
-## <a name="modifying-configuration"></a>Změna konfigurace
+## <a name="modifying-configuration"></a>Úprava konfigurace
 
 > [!IMPORTANT]  
-> Několik chyb uvedených v tomto dokumentu dojít, protože se překročila nakonfigurované maximum. Když krok řešení uvádí, že můžete změnit hodnotu, musíte použít jednu z následujících provádět změny:
+> Několik chyb uvedených v tomto dokumentu je způsobeno tím, že bylo překročeno nakonfigurované maximum. Pokud krok řešení uvádí, že můžete změnit hodnotu, je nutné použít jednu z následujících možností, abyste změnu provedli:
 
-* Pro **Windows** clustery: Nakonfigurujte tuto hodnotu při vytváření clusteru pomocí skriptových akcí. Další informace najdete v tématu [vývoj akcí skriptů](hdinsight-hadoop-script-actions-linux.md).
+* Pro clustery **Windows** : ke konfiguraci hodnoty během vytváření clusteru použijte akci skriptu. Další informace najdete v tématu [vývoj akcí skriptů](hdinsight-hadoop-script-actions-linux.md).
 
-* Pro **Linux** clustery: Použití Apache Ambari (web nebo rozhraní REST API) ke změně hodnoty. Další informace najdete v tématu [Správa HDInsight pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md)
+* Pro clustery se **systémem Linux** : hodnotu můžete upravit pomocí Apache Ambari (web nebo REST API). Další informace najdete v tématu [Správa HDInsight pomocí Apache Ambari](hdinsight-hadoop-manage-ambari.md) .
 
 
 ### <a name="default-configuration"></a>Výchozí konfigurace
 
-Překročení následujících výchozích hodnot může snížit výkon WebHCat nebo dojít k chybám:
+Pokud dojde k překročení následujících výchozích hodnot, může dojít ke snížení výkonu WebHCat nebo k chybám:
 
-| Nastavení | Co dělá | Výchozí hodnota |
+| Nastavení | Výsledek | Výchozí hodnota |
 | --- | --- | --- |
-| [yarn.scheduler.capacity.maximum-applications][maximum-applications] |Maximální počet úloh, které mohou být souběžně aktivní (čekající na vyřízení nebo spuštěné) |10,000 |
-| [templeton.exec.max-procs][max-procs] |Maximální počet požadavků, které se dají obsluhovat současně |20 |
-| [mapreduce.jobhistory.max-age-ms][max-age-ms] |Počet dní, které historie úlohy se zachovají. |7 dní |
+| [příze. Scheduler. Capacity. Max – aplikace][maximum-applications] |Maximální počet úloh, které mohou být aktivní souběžně (čeká na vyřízení nebo spuštění) |10 000 |
+| [Templeton. Exec. Max – procs][max-procs] |Maximální počet požadavků, které mohou být souběžně obsluhovány |20 |
+| [MapReduce. jobhistory. Max – stáří-MS][max-age-ms] |Počet dní, po který se zachová historie úloh |7 dní |
 
-## <a name="too-many-requests"></a>Příliš mnoho požadavků
+## <a name="too-many-requests"></a>Příliš mnoho žádostí
 
-**Kód stavu HTTP**: 429
+**Stavový kód HTTP**: 429
 
-| Příčina | Řešení |
+| Příčina | Rozlišení |
 | --- | --- |
-| Překročili jste maximální souběžných žádostí za minutu (20 výchozí nastavení) obsluhovat WebHCat |Snižte úloh, abyste zajistili, že neodešlete více než maximální počet souběžných požadavků nebo zvyšte limit souběžných žádostí úpravou `templeton.exec.max-procs`. Další informace najdete v tématu [změna konfigurace](#modifying-configuration) |
+| Překročili jste maximální počet souběžných požadavků zpracovaných WebHCat za minutu (výchozí 20). |Zmenšete své zatížení, abyste se ujistili, že neodesíláte více než maximální počet souběžných požadavků, nebo můžete zvýšit limit souběžných požadavků úpravou `templeton.exec.max-procs`. Další informace najdete v tématu [Úprava konfigurace](#modifying-configuration) . |
 
 ## <a name="server-unavailable"></a>Server není k dispozici
 
-**Kód stavu HTTP**: 503
+**Stavový kód HTTP**: 503
 
-| Příčina | Řešení |
+| Příčina | Rozlišení |
 | --- | --- |
-| Tento kód stavu obvykle dochází při převzetí služeb při selhání mezi primární a sekundární hlavní uzel clusteru |Počkejte 2 minuty a potom operaci opakujte |
+| Tento stavový kód se obvykle objevuje během převzetí služeb při selhání mezi primárním a sekundárním hlavnímu uzlu clusteru. |Počkejte dvě minuty a potom zkuste operaci zopakovat. |
 
-## <a name="bad-request-content-could-not-find-job"></a>Chybný požadavek obsahu: Nelze najít úlohu
+## <a name="bad-request-content-could-not-find-job"></a>Chybný obsah žádosti: nepovedlo se najít úlohu.
 
-**Kód stavu HTTP**: 400
+**Stavový kód HTTP**: 400
 
-| Příčina | Řešení |
+| Příčina | Rozlišení |
 | --- | --- |
-| Podrobnosti úlohy nebyly vyčištěny pomocí historie úloh čisticí |Výchozí době uchování historie úlohy je 7 dní. Úpravou můžete změnit výchozí dobu uchování `mapreduce.jobhistory.max-age-ms`. Další informace najdete v tématu [změna konfigurace](#modifying-configuration) |
-| Úlohy byl ukončen z důvodu převzetí služeb při selhání |Opakujte odeslání úlohy pro až dvě minuty |
-| ID úlohy je neplatné. byl použit. |Zkontrolujte, jestli je správný ID úlohy |
+| Podrobnosti o úloze byly vyčištěny čisticí historií úlohy. |Výchozí doba uchování pro historii úlohy je 7 dní. Výchozí dobu uchování lze změnit úpravou `mapreduce.jobhistory.max-age-ms`. Další informace najdete v tématu [Úprava konfigurace](#modifying-configuration) . |
+| Úloha byla ukončena z důvodu převzetí služeb při selhání. |Opakovat odeslání úlohy po dobu až dvou minut |
+| Bylo použito neplatné ID úlohy. |Zkontroluje, jestli je ID úlohy správné. |
 
 ## <a name="bad-gateway"></a>Chybná brána
 
-**Kód stavu HTTP**: 502
+**Stavový kód HTTP**: 502
 
-| Příčina | Řešení |
+| Příčina | Rozlišení |
 | --- | --- |
-| Interní uvolňování paměti dochází v rámci procesu WebHCat |Počkejte, uvolňování paměti na dokončení nebo restartujte službu WebHCat |
-| Časový limit čekání na odpověď ze služby Správce prostředků. Této chybě může dojít, když se počet aktivních aplikací dostane nakonfigurované maximum (výchozí hodnota 10 000) |Počkejte právě probíhajících úloh dokončíte. nebo zvýšení limitu souběžných úloh tak, že upravíte `yarn.scheduler.capacity.maximum-applications`. Další informace najdete v tématu [změna konfigurace](#modifying-configuration) oddílu. |
-| Při pokusu o načtení všech úloh prostřednictvím [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) volání při `Fields` je nastavena na `*` |Nepřijmou *všechny* podrobnosti úlohy. Místo toho použijte `jobid` k načtení podrobností pro úlohy pouze větší než určité ID úlohy. Nebo, nepoužívejte `Fields` |
-| Služba WebHCat je mimo provoz během převzetí služeb při selhání hlavního uzlu |Počkejte po dobu dvou minut a zkuste operaci zopakovat |
-| Existuje více než 500 čekající úlohy odeslat prostřednictvím WebHCat |Počkejte na dokončení aktuálně čeká na provedení úloh před odesláním další úlohy |
+| V rámci procesu WebHCat dochází k internímu uvolňování paměti. |Počkejte, až se uvolňování paměti dokončí, nebo restartujte službu WebHCat. |
+| Vypršel časový limit čekání na odpověď ze služby ResourceManager. K této chybě může dojít v případě, že počet aktivních aplikací překročí nakonfigurované maximum (výchozí 10 000). |Počkejte, než se aktuálně spuštěné úlohy dokončí, nebo zvyšte limit souběžnosti úloh úpravou `yarn.scheduler.capacity.maximum-applications`. Další informace najdete v části [Úprava konfiguračního](#modifying-configuration) oddílu. |
+| Probíhá pokus o načtení všech úloh prostřednictvím volání metody [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) , pokud je `Fields` nastaveno na `*` |Nezískávat podrobnosti o *všech* úlohách. Místo toho použijte `jobid` k načtení podrobností pro úlohy, které jsou jenom delší než určité ID úlohy. Nebo nepoužívejte `Fields` |
+| Služba WebHCat je během převzetí služeb při selhání hlavnímu uzlu vypnutá. |Počkejte dvě minuty a zkuste operaci zopakovat. |
+| Prostřednictvím WebHCat bylo odesláno více než 500 nedokončených úloh. |Před odesláním dalších úloh počkejte na dokončení probíhajících úloh. |
 
-[maximum-applications]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
+[maximum-applications]: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration
 [max-age-ms]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml

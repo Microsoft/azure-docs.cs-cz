@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 11/04/2019
+ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a31498ec5459604d89fa72a6f2a003dbc1189eed
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 51990e02eada52263006627be803c4073b9361ac
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685371"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555403"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>Izolace skupiny úloh SQL Data Warehouse (Preview)
 
@@ -30,9 +30,9 @@ V následujících částech se dozvíte, jak skupiny úloh poskytují možnost 
 
 ## <a name="workload-isolation"></a>Izolace úloh
 
-Izolace úloh znamená, že prostředky jsou rezervované, výhradně pro skupinu úloh.  Izolaci úloh dosáhnete tak, že v syntaxi [vytvořit skupinu úloh](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) nakonfigurujete parametr MIN_PERCENTAGE_RESOURCE na hodnotu větší než nula.  Pro úlohy průběžného spouštění, které musí dodržovat těsné SLA, izolace zajišťuje, aby prostředky byly vždy dostupné pro skupinu úloh. 
+Izolace úloh znamená, že prostředky jsou rezervované, výhradně pro skupinu úloh.  Izolaci úloh se dosahuje tak, že v syntaxi [vytvořit skupinu úloh](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) nakonfigurujete parametr MIN_PERCENTAGE_RESOURCE na hodnotu větší než nula.  Pro úlohy průběžného spouštění, které musí dodržovat těsné SLA, izolace zajišťuje, aby prostředky byly vždy dostupné pro skupinu úloh. 
 
-Konfigurace izolace úloh implicitně definuje zaručenou úroveň souběžnosti.  S MIN_PERCENTAGE_RESOURCE nastavenou na 30% a REQUEST_MIN_RESOURCE_GRANT_PERCENT nastavenou na 2% je pro skupinu úloh zaručena úroveň 15 Concurrency.  Pro určení garantované souběžnosti zvažte následující metodu:
+Konfigurace izolace úloh implicitně definuje zaručenou úroveň souběžnosti.  Když je MIN_PERCENTAGE_RESOURCE nastavená na 30% a REQUEST_MIN_RESOURCE_GRANT_PERCENT nastavená na 2%, bude pro skupinu úloh zaručená úroveň pro 15-Concurrency.  Pro určení garantované souběžnosti zvažte následující metodu:
 
 [Garantovaná souběžnost] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
@@ -43,7 +43,7 @@ V případě neexistence izolace úloh fungují požadavky ve [sdíleném fondu]
 
 Konfigurace izolace úloh se musí provádět opatrně, protože prostředky jsou přiděleny do skupiny úloh i v případě, že ve skupině úloh nejsou žádné aktivní požadavky.  Překonfigurování izolace může vést k výraznému snížení celkového využití systému.
 
-Uživatelé by se měli vyhnout řešení správy úloh, které konfiguruje 100% izolaci úloh: 100% izolace se dosahuje, když se součet min_percentage_resource nakonfigurovaných napříč všemi skupinami úloh rovná 100%.  Tento typ konfigurace je nadomezující a tuhý, ale u žádostí o prostředky, které jsou omylem neklasifikované, je málo místa.  Existuje zřídit, aby bylo možné spustit jednu žádost ze skupin úloh, které nejsou nakonfigurované pro izolaci.  Prostředky přidělené této žádosti se v systémech zobrazení dynamické správy a vypůjčí smallrc úroveň udělení prostředků ze systémových rezervovaných prostředků.
+Uživatelé by se měli vyhnout řešení správy úloh, které konfiguruje 100% izolaci úloh: 100% izolace se dosáhne, když se součet min_percentage_resource nakonfigurovaných napříč všemi skupinami úloh 100 rovná%.  Tento typ konfigurace je nadomezující a tuhý, ale u žádostí o prostředky, které jsou omylem neklasifikované, je málo místa.  Existuje zřídit, aby bylo možné spustit jednu žádost ze skupin úloh, které nejsou nakonfigurované pro izolaci.  Prostředky přidělené této žádosti se v systémech zobrazení dynamické správy a vypůjčí smallrc úroveň udělení prostředků ze systémových rezervovaných prostředků.
 
 > [!NOTE] 
 > Pro zajištění optimálního využití prostředků zvažte řešení pro správu úloh, které využívá určitou izolaci, aby se zajistilo, že SLA jsou splněné a smíchány se sdílenými prostředky, ke kterým se dostanete na základě [důležitosti úloh](sql-data-warehouse-workload-importance.md).
@@ -57,21 +57,21 @@ Konfigurace omezení úloh implicitně definuje maximální úroveň souběžnos
 [Max. Concurrency] = [`CAP_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE] 
-> Pokud se vytvoří skupiny úloh s MIN_PERCENTAGE_RESOURCE na úrovni, která je větší než nula, efektivní CAP_PERCENTAGE_RESOURCE skupiny úloh se nedosáhne 100%.  Efektivní běhové hodnoty najdete v tématu [Sys. DM _workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
+> Pokud se vytvoří skupiny úloh s MIN_PERCENTAGE_RESOURCE na úrovni větší než nula, bude efektivní CAP_PERCENTAGE_RESOURCE skupiny úloh nedosahovat 100%.  Platné hodnoty modulu runtime najdete v tématu [Sys. dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
 
 ## <a name="resources-per-request-definition"></a>Definice prostředků na žádost
 
-Skupiny úloh poskytují mechanismus pro definování minimálních a maximálních objemů prostředků, které jsou přiděleny podle požadavků, pomocí parametrů REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT v syntaxi CREATE GROUP Resource ( [vytvořit skupinu úloh](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) ).  Prostředky v tomto případě jsou CPU a paměť.  Konfigurace těchto hodnot určuje, kolik prostředků a jakou úroveň souběžnosti lze v systému dosáhnout.
+Skupiny úloh poskytují mechanismus pro definování minimálních a maximálních objemů prostředků, které jsou přiděleny na žádost, pomocí parametrů REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT v syntaxi [Create Group](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) Resource.  Prostředky v tomto případě jsou CPU a paměť.  Konfigurace těchto hodnot určuje, kolik prostředků a jakou úroveň souběžnosti lze v systému dosáhnout.
 
 > [!NOTE] 
-> REQUEST_MAX_RESOURCE_GRANT_PERCENT je volitelný parametr, který je ve výchozím nastavení stejný jako výchozí hodnota, která je zadána pro REQUEST_MIN_RESOURCE_GRANT_PERCENT.
+> REQUEST_MAX_RESOURCE_GRANT_PERCENT je volitelný parametr, jehož výchozí hodnota je stejná jako ta, která je určená pro REQUEST_MIN_RESOURCE_GRANT_PERCENT.
 
-Podobně jako u výběru třídy prostředků REQUEST_MIN_RESOURCE_GRANT_PERCENT nastaví hodnotu pro prostředky využívané požadavkem.  Množství prostředků, které je uvedené v hodnotě nastavené, je zaručené pro přidělení žádosti před zahájením provádění.  Zákazníci, kteří migrují z tříd prostředků do skupin úloh, považují za výchozí bod podle článku [postup](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md) mapování tříd prostředků na skupiny úloh.
+Podobně jako při volbě třídy prostředku konfigurace REQUEST_MIN_RESOURCE_GRANT_PERCENT nastaví hodnotu pro prostředky využívané požadavkem.  Množství prostředků, které je uvedené v hodnotě nastavené, je zaručené pro přidělení žádosti před zahájením provádění.  Zákazníci, kteří migrují z tříd prostředků do skupin úloh, považují za výchozí bod podle článku [postup](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md) mapování tříd prostředků na skupiny úloh.
 
 Konfigurace REQUEST_MAX_RESOURCE_GRANT_PERCENT na hodnotu větší než REQUEST_MIN_RESOURCE_GRANT_PERCENT umožňuje systému přidělit více prostředků na požadavek.  Při plánování požadavku systém Určuje skutečné přidělení prostředků žádosti, která je mezi REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT, na základě dostupnosti prostředků ve sdíleném fondu a současného zatížení souborů.  Prostředky musí existovat ve [sdíleném fondu](#shared-pool-resources) prostředků, když je dotaz naplánován.  
 
 > [!NOTE] 
-> REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT mají platné hodnoty, které jsou závislé na platných hodnotách MIN_PERCENTAGE_RESOURCE a CAP_PERCENTAGE_RESOURCE.  Efektivní běhové hodnoty najdete v tématu [Sys. DM _workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
+> REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT mají platné hodnoty, které jsou závislé na platných MIN_PERCENTAGE_RESOURCE a CAP_PERCENTAGE_RESOURCEch hodnotách.  Platné hodnoty modulu runtime najdete v tématu [Sys. dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
 
 ## <a name="execution-rules"></a>Pravidla spuštění
 
@@ -79,7 +79,7 @@ V systémech generování sestav ad-hoc můžou zákazníci omylem provádět na
 
 ## <a name="shared-pool-resources"></a>Prostředky sdíleného fondu
 
-Prostředky sdíleného fondu jsou prostředky, které nejsou nakonfigurované pro izolaci.  Skupiny úloh s MIN_PERCENTAGE_RESOURCE nastavenou na hodnotu nula využívají prostředky ve sdíleném fondu ke spouštění požadavků.  Skupiny úloh s CAP_PERCENTAGE_RESOURCE větší než MIN_PERCENTAGE_RESOURCE také používaly sdílené prostředky.  Množství prostředků, které jsou k dispozici ve sdíleném fondu, se vypočte takto.
+Prostředky sdíleného fondu jsou prostředky, které nejsou nakonfigurované pro izolaci.  Skupiny úloh s MIN_PERCENTAGE_RESOURCE nastavenou na hodnotu nula využívají prostředky ve sdíleném fondu ke spouštění požadavků.  Skupiny úloh s CAP_PERCENTAGE_RESOURCE větší než MIN_PERCENTAGE_RESOURCE také využité sdílené prostředky.  Množství prostředků, které jsou k dispozici ve sdíleném fondu, se vypočte takto.
 
 [Sdílený fond] = 100 – [součet `MIN_PERCENTAGE_RESOURCE` napříč všemi skupinami úloh]
 
@@ -88,5 +88,5 @@ Přístup k prostředkům ve sdíleném fondu se přiděluje na základě [důle
 ## <a name="next-steps"></a>Další kroky
 
 - [Rychlý Start: Konfigurace izolace úloh](quickstart-configure-workload-isolation-tsql.md)
-- [VYTVOŘIT SKUPINU ÚLOH](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [VYTVOŘIT SKUPINU ÚLOH](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
 - [Převeďte třídy prostředků na skupiny úloh](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md).

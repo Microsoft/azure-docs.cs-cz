@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: eb5085db10c5763a4173f460eabde6afcccd5aff
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 514f4b26a708a6fec30a1f54cfe6da6d1b58b79d
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000446"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555519"
 ---
 # <a name="get-started-with-device-management-python"></a>Začínáme se správou zařízení (Python)
 
@@ -29,17 +29,17 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Na konci tohoto kurzu máte dvě konzolové aplikace v Pythonu:
 
-* **dmpatterns_getstarted_device. py**, který se připojuje ke službě IoT Hub s dříve vytvořenou identitou zařízení, přijímá přímou metodu restartování, simuluje fyzické restartování a oznamuje čas posledního restartování.
+* **dmpatterns_getstarted_device. py**, který se připojí ke službě IoT Hub s dříve vytvořenou identitou zařízení, obdrží přímou metodu restart, simuluje fyzické restartování a oznamuje čas posledního restartování.
 
 * **dmpatterns_getstarted_service. py**, který volá přímou metodu v aplikaci simulovaného zařízení, zobrazuje odpověď a zobrazuje aktualizované hlášené vlastnosti.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -63,13 +63,9 @@ V této části:
     pip install azure-iot-device
     ```
 
-   > [!NOTE]
-   > Balíčky PIP pro Azure-iothub-Service-Client jsou dostupné jenom pro operační systém Windows. Informace pro Linux a Mac OS najdete v oddílech týkajících se Linux a Mac OS na stránce [Příprava vývojového prostředí pro Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
-   >
-
 2. Pomocí textového editoru vytvořte v pracovním adresáři soubor s názvem **dmpatterns_getstarted_device. py** .
 
-3. Na začátek souboru `import` **dmpatterns_getstarted_device. py** přidejte následující příkazy.
+3. Na začátek souboru **dmpatterns_getstarted_device. py** přidejte následující příkazy `import`.
 
     ```python
     import threading
@@ -78,7 +74,7 @@ V této části:
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. Přidejte proměnnou **CONNECTION_STRING** . Nahraďte `{deviceConnectionString}` hodnotu zástupného symbolu připojovacím řetězcem zařízení. Tento připojovací řetězec jste dříve zkopírovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).  
+4. Přidejte **CONNECTION_STRING** proměnnou. Nahraďte hodnotu zástupného symbolu `{deviceConnectionString}` vaším připojovacím řetězcem zařízení. Tento připojovací řetězec jste dříve zkopírovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -161,12 +157,12 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která iniciuje vzdá
     ```
 
    > [!NOTE]
-   > Balíčky PIP pro Azure-iothub-Service-Client a Azure-iothub-Device-Client jsou momentálně dostupné jenom pro operační systém Windows. Informace pro Linux a Mac OS najdete v oddílech týkajících se Linux a Mac OS na stránce [Příprava vývojového prostředí pro Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
+   > Balíček PIP pro Azure-iothub-Service-Client je momentálně dostupný jenom pro operační systém Windows. Informace pro Linux a Mac OS najdete v oddílech týkajících se Linux a Mac OS na stránce [Příprava vývojového prostředí pro Python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) .
    >
 
 2. Pomocí textového editoru vytvořte v pracovním adresáři soubor s názvem **dmpatterns_getstarted_service. py** .
 
-3. Na začátek souboru `import` **dmpatterns_getstarted_service. py** přidejte následující příkazy.
+3. Na začátek souboru **dmpatterns_getstarted_service. py** přidejte následující příkazy `import`.
 
     ```python
     import sys, time
@@ -175,7 +171,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která iniciuje vzdá
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-4. Přidejte následující deklarace proměnných. Nahraďte hodnotu [](#get-the-iot-hub-connection-string) zástupnéhosymbolupřipojovacímřetězcemIoTHub,kterýjstezkopírovalidřívevčástizískánípřipojovacíhořetězcecentraIoT`{IoTHubConnectionString}` hub. Nahraďte hodnotu [](#register-a-new-device-in-the-iot-hub) zástupnéhosymboluIDzařízení,kteréjstezaregistrovalivčástiregistracenovéhozařízeníveslužběIoT`{deviceId}` hub.
+4. Přidejte následující deklarace proměnných. Nahraďte hodnotu zástupného symbolu `{IoTHubConnectionString}` připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT](#get-the-iot-hub-connection-string). Nahraďte hodnotu zástupného symbolu `{deviceId}` IDENTIFIKÁTORem zařízení, které jste zaregistrovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

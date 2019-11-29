@@ -2,20 +2,20 @@
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 11/28/2019
 ms.author: raynew
-ms.openlocfilehash: 96cba4e077be8b7658c270b09b177a845e16c8b0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: de15e3028cf22cdd03ce29385278fc5e2babaa9b
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175533"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566239"
 ---
 V tomto článku se předpokládá následující:
 
 1. Už bylo navázáno připojení **S2S VPN** nebo **Express Route** mezi vaší místní sítí a Azure Virtual Network.
 2. Váš uživatelský účet má oprávnění k vytvoření nového virtuálního počítače v rámci předplatného Azure, do kterého bylo provedeno převzetí služeb při selhání virtuálních počítačů.
-3. Vaše předplatné má minimálně 4 jádra, která jsou k dispozici pro rozběh nového virtuálního počítače procesového serveru.
+3. K vytvoření nového virtuálního počítače procesového serveru má vaše předplatné minimálně 8 jader.
 4. Máte k dispozici **heslo konfiguračního serveru**.
 
 > [!TIP]

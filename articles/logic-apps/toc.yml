@@ -103,6 +103,20 @@
               href: logic-apps-custom-api-host-deploy-call.md
         - name: Řešení chyb
           href: logic-apps-diagnosing-failures.md
+    - name: Přístup k virtuálním sítím Azure
+      items:
+        - name: Připojení k virtuálním sítím s prostředími integrační služby
+          href: connect-virtual-network-vnet-isolated-environment.md
+        - name: Nastavení přístupu k více prostředím integrační služby
+          href: connect-virtual-network-vnet-set-up-single-ip-address.md
+        - name: Přidání artefaktů do prostředí integrační služby
+          href: add-artifacts-integration-service-environment-ise.md
+    - name: Přístup k místním datům
+      items:
+        - name: Instalace brány dat
+          href: logic-apps-gateway-install.md
+        - name: Připojení k místním datům
+          href: logic-apps-gateway-connection.md
     - name: Vývoj pro scénáře B2B
       items:
         - name: Vytvoření účtu integrace
@@ -159,16 +173,6 @@
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: Sestavení plánu zotavení po havárii
           href: logic-apps-enterprise-integration-b2b-business-continuity.md
-    - name: Připojení k virtuálním sítím s izolovanými prostředími
-      href: connect-virtual-network-vnet-isolated-environment.md
-    - name: Přidání artefaktů do prostředí integrační služby
-      href: add-artifacts-integration-service-environment-ise.md
-    - name: Přístup k místním datům
-      items:
-        - name: Instalace brány dat
-          href: logic-apps-gateway-install.md
-        - name: Připojení k místním datům
-          href: logic-apps-gateway-connection.md
     - name: 'Konektory: Podrobná témata'
       items:
         - name: AS2
