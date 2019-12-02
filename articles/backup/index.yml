@@ -1,69 +1,142 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Backup
+summary: Služba Azure Backup poskytuje jednoduchá, zabezpečená a cenově výhodná řešení pro zálohování vašich dat a jejich obnovení z cloudu Microsoft Azure.
 metadata:
-  title: 'Dokumentace ke službě Azure Backup – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
-  description: 'Azure Backup umožňuje zálohovat data pro místní servery, virtuální počítače, virtualizované úlohy, server SQL, server SharePoint a nejenom to. Naučte se prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek zálohovat a obnovovat vaše data.'
-  services: backup
-  author: dcurwin
-  manager: carmonm
+  title: Dokumentace ke službě Azure Backup
+  description: Služba Azure Backup poskytuje jednoduchá, zabezpečená a cenově výhodná řešení pro zálohování vašich dat a jejich obnovení z cloudu Microsoft Azure.
   ms.service: backup
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 05/22/2018
+  author: dcurwin
   ms.author: dacurwin
-abstract:
-  description: 'Azure Backup využijte k ochraně dat pro místní servery, virtuální počítače, virtualizované úlohy, server SQL, server SharePoint a nejenom to. Naučte se prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek zálohovat a obnovovat vaše data.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Naučte se, jak virtuální počítače Azure zálohovat v Azure.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Azure Portal
-            href: quick-backup-vm-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: quick-backup-vm-powershell
-          - image:
-              src: 'https://docs.microsoft.com/media/common/cli.svg'
-            text: Azure CLI
-            href: quick-backup-vm-cli
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Naučte se zálohovat a obnovovat virtuální počítače v Azure nebo Windows Serveru.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-backup-vm-at-scale">Zálohování několika virtuálních počítačů Azure</a>
-          - html: <a href="tutorial-restore-disk">Obnovení disku a vytvoření obnoveného virtuálního počítače</a>
-          - html: <a href="tutorial-restore-files">Obnovení souborů do virtuálního počítače v Azure</a>
-          - html: <a href="tutorial-backup-windows-server-to-azure">Zálohování Windows Serveru do Azure</a>
-          - html: <a href="tutorial-backup-restore-files-windows-server">Obnovení souborů z Azure do Windows Serveru</a>
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: Následující ukázky použijte k ochraně vašich dat v Azure.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/powershell/module/az.recoveryservices">Azure PowerShell</a></p><p><a href="/cli/azure/backup?view=azure-cli-latest">Azure CLI</a></p>
-          - title: Jazyky
-            html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/backup/">Referenční informace k rozhraní API služby Azure Backup</a></p>
+  ms.date: 12/01/2019
+  ms.openlocfilehash: e352f5aa764795c27dd94ef2750b1265ffcc527d
+  ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 12/02/2019
+  ms.locfileid: "74669088"
+landingContent:
+- title: Přečtěte si o službě Azure Backup
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Backup?
+      url: backup-overview.md
+  - linkListType: concept
+    links:
+    - text: Matice podpory pro Azure Backup
+      url: backup-support-matrix.md
+    - text: Architektura služby Azure Backup
+      url: backup-architecture.md
+- title: Začínáme se službou Azure Backup
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Zálohování virtuálního počítače pomocí webu Azure Portal
+      url: quick-backup-vm-portal.md
+    - text: Zálohování virtuálního počítače pomocí PowerShellu
+      url: quick-backup-vm-powershell.md
+    - text: Zálohování virtuálního počítače pomocí Azure CLI
+      url: quick-backup-vm-cli.md
+    - text: Zálohování virtuálního počítače pomocí šablony Resource Manageru
+      url: quick-backup-vm-template.md
+- title: Vyzkoušení těchto podrobných kurzů
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Zálohování virtuálních počítačů Azure
+      url: tutorial-backup-vm-at-scale.md
+    - text: Záložní SQL Server na virtuálním počítači Azure
+      url: tutorial-sql-backup.md
+    - text: Zálohování souborů a složek ve Windows Serveru
+      url: tutorial-backup-windows-server-to-azure.md
+    - text: Zálohování sdílených složek Azure Files
+      url: tutorial-backup-azure-files.md
+- title: Informace o nejnovějších funkcích ve službě Azure Backup
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Obnovitelné odstranění pro zálohovaná data virtuálních počítačů Azure
+      url: backup-azure-security-feature-cloud.md
+    - text: SQL Server na virtuálních počítačích Azure – obnovit jako soubory
+      url: restore-sql-database-azure-vm.md#restore-as-files
+    - text: Zálohování databází SAP HANA na virtuálních počítačích Azure
+      url: backup-azure-sap-hana-database.md
+- title: Zálohování virtuálních počítačů Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Informace o zálohování virtuálních počítačů Azure
+      url: backup-azure-vms-introduction.md
+    - text: Matice podpory pro zálohování virtuálních počítačů Azure
+      url: backup-support-matrix-iaas.md
+    - text: Nejčastější dotazy – zálohování virtuálních počítačů Azure
+      url: backup-azure-vm-backup-faq.md
+    - text: Správa záloh virtuálních počítačů Azure
+      url: backup-azure-manage-vms.md
+- title: Zálohování SQL Serveru na virtuálních počítačích Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Informace o SQL Serveru v zálohách virtuálních počítačů Azure
+      url: backup-azure-sql-database.md
+    - text: Nejčastější dotazy – SQL Server v zálohách virtuálních počítačů Azure
+      url: faq-backup-sql-server.md
+    - text: Zálohování databází SQL Serveru ve virtuálních počítačích Azure
+      url: backup-sql-server-database-azure-vms.md
+    - text: Správa a monitorování zálohovaných databází SQL Serveru
+      url: manage-monitor-sql-database-backup.md
+- title: Zálohování SAP HANA na virtuálních počítačích Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zálohování databází SAP HANA na virtuálních počítačích Azure
+      url: backup-azure-sap-hana-database.md
+    - text: Správa a monitorování zálohovaných databází SAP HANA
+      url: sap-hana-db-manage.md
+    - text: Nejčastější dotazy – zálohování databází SAP HANA na virtuálních počítačích Azure
+      url: sap-hana-faq-backup-azure-vm.md
+    - text: Matice podpory pro zálohování databází SAP HANA na virtuálních počítačích Azure
+      url: sap-hana-backup-support-matrix.md
+- title: Zálohování sdílených složek Azure Files
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zálohování a obnovení sdílených složek Azure
+      url: backup-azure-files.md
+    - text: Nejčastější dotazy – zálohování Azure Files
+      url: backup-azure-files-faq.md
+- title: Zálohování s využitím agenta Microsoft Azure Recovery Services (MARS)
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zálohování počítačů s Windows s využitím agenta MARS služby Azure Backup
+      url: backup-configure-vault.md
+    - text: Správa záloh agenta MARS s využitím služby Azure Backup
+      url: backup-azure-manage-mars.md
+    - text: Matice podpory pro agenty MARS
+      url: backup-support-matrix-mars-agent.md
+    - text: Nejčastější dotazy – agent Mars
+      url: backup-azure-file-folder-backup-faq.md
+- title: Zálohování s využitím Microsoft Azure Backup Serveru (MABS) a DPM
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Matice ochrany MABS
+      url: backup-mabs-protection-matrix.md
+    - text: Matice podpory MABS/DPM
+      url: backup-support-matrix-mabs-dpm.md
+    - text: Nejčastější dotazy – MABS a DPM
+      url: backup-azure-dpm-azure-server-faq.md
+    - text: Instalace a upgrade MABS
+      url: backup-azure-microsoft-azure-backup.md
+- title: Prozkoumání prostředků pro Azure Backup
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Cenová kalkulačka služby Azure Backup
+      url: https://azure.microsoft.com/pricing/details/backup/
+    - text: Aktualizace služby Azure Backup
+      url: https://azure.microsoft.com/updates/?product=backup
+    - text: Fórum MSDN pro Azure Backup
+      url: https://social.msdn.microsoft.com/Forums/home?forum=windowsazureonlinebackup
