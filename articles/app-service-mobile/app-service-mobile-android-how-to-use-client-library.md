@@ -1,24 +1,17 @@
 ---
-title: Jak používat sadu Azure Mobile Apps SDK pro Android | Microsoft Docs
+title: Jak používat sadu SDK pro Android
 description: Jak používat sadu Azure Mobile Apps SDK pro Android
-services: app-service\mobile
-documentationcenter: android
-author: elamalani
-manager: crdun
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 991f3c8939c0f9e270423ff30282b02f110eb39e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 32e0584478031226ed52d6ed5f6849f7ad6d3cfe
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388922"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668896"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak používat sadu Azure Mobile Apps SDK pro Android
 
@@ -113,7 +106,7 @@ MobileServiceClient mClient = new MobileServiceClient(
 
 Klient také vyžaduje přístup k aktivitě nebo kontextu – parametr `this` v příkladu.  Konstrukce MobileServiceClient by měla probíhat v rámci metody `onCreate()` aktivity, na kterou se odkazuje `AndroidManifest.xml` souboru.
 
-V rámci osvědčeného postupu byste měli v rámci své vlastní třídy (singleton-vzoru) vytvořit abstraktní komunikaci serveru.  V takovém případě byste měli předat aktivitu v rámci konstruktoru a patřičně tak nakonfigurovat službu.  Příklad:
+V rámci osvědčeného postupu byste měli v rámci své vlastní třídy (singleton-vzoru) vytvořit abstraktní komunikaci serveru.  V takovém případě byste měli předat aktivitu v rámci konstruktoru a patřičně tak nakonfigurovat službu.  Například:
 
 ```java
 package com.example.appname.services;
@@ -212,7 +205,7 @@ Tabulka back-endu Azure Mobile Apps definuje pět speciálních polí, z nichž 
 * `byte[] version`: obvykle reprezentované jako řetězec, verze je také nastavena serverem.
 * `boolean deleted`: označuje, že záznam byl odstraněn, ale ještě nebyl smazán.  Nepoužívejte `deleted` jako vlastnost ve třídě.
 
-Pole `id` je povinné.  Pole `updatedAt` a `version` pole se používají pro offline synchronizaci (pro přírůstkovou synchronizaci a řešení konfliktů).  Pole `createdAt` je referenční pole a klient ho nepoužívá.  Názvy jsou "mezidrátové" názvy vlastností a nelze je upravit.  Pomocí knihovny [gson][3] ale můžete vytvořit mapování mezi vaším objektem a názvy "napříč" vodiči.  Příklad:
+Pole `id` je povinné.  Pole `updatedAt` a `version` pole se používají pro offline synchronizaci (pro přírůstkovou synchronizaci a řešení konfliktů).  Pole `createdAt` je referenční pole a klient ho nepoužívá.  Názvy jsou "mezidrátové" názvy vlastností a nelze je upravit.  Pomocí knihovny [gson][3] ale můžete vytvořit mapování mezi vaším objektem a názvy "napříč" vodiči.  Například:
 
 ```java
 package com.example.zumoappname;
@@ -461,7 +454,7 @@ Požadavek na všechny záznamy pomocí této metody vytvoří minimálně dva p
 
 ### <a name="chaining"></a>Postupy: zřetězení metod dotazů
 
-Metody používané při dotazování na back-end tabulky můžou být zřetězené. Řetězení metod dotazů umožňuje vybrat konkrétní sloupce filtrovaných řádků, které jsou seřazené a stránkované. Můžete vytvářet složité logické filtry.  Každá metoda dotazu vrátí objekt dotazu. Chcete-li ukončit sérii metod a ve skutečnosti spustit dotaz, zavolejte metodu **Execute** . Příklad:
+Metody používané při dotazování na back-end tabulky můžou být zřetězené. Řetězení metod dotazů umožňuje vybrat konkrétní sloupce filtrovaných řádků, které jsou seřazené a stránkované. Můžete vytvářet složité logické filtry.  Každá metoda dotazu vrátí objekt dotazu. Chcete-li ukončit sérii metod a ve skutečnosti spustit dotaz, zavolejte metodu **Execute** . Například:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -531,7 +524,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 }
 ```
 
-Přepište metodu **GetView** adaptéru. Příklad:
+Přepište metodu **GetView** adaptéru. Například:
 
 ```java
     @Override

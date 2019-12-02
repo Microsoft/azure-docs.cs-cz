@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 8a5ea692bfdec7f676a80cc670f686af66152e6f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 17312840b0081056ad04723f2b2c241c47902021
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606607"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667294"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>Vytvoření zásad databáze a tabulek pro Azure Průzkumník dat pomocíC#
 
@@ -21,27 +21,22 @@ ms.locfileid: "73606607"
 > * [Python](database-table-policies-python.md)
 >
 
-Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. V tomto článku vytvoříte zásady databáze a tabulek pro Azure Průzkumník dat pomocí C#.
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. V tomto článku vytvoříte zásady databáze a tabulek pro Azure Průzkumník dat pomocí C#.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Visual Studio 2019. Pokud nemáte Visual Studio 2019, můžete si stáhnout a použít *bezplatnou* [visual Studio Community 2019](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio vybrat možnost **vývoj pro Azure** .
-
 * Předplatné Azure. Pokud potřebujete, můžete si před zahájením vytvořit [bezplatný účet Azure](https://azure.microsoft.com/free/) .
-
 * [Testovací cluster a databáze](create-cluster-database-csharp.md).
-
 * [Testovací tabulka](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
 
 ## <a name="install-c-nuget"></a>Nainstalovat C# NuGet
 
 * Nainstalujte [balíček NuGet pro Azure Průzkumník dat (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-
 * Nainstalujte [balíček NuGet Microsoft. Azure. Kusto. data. NETStandard](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). (Volitelné, pro změnu zásad tabulky.)
-
 * Pro ověřování nainstalujte [balíček NuGet Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověření
 Chcete-li spustit příklady v tomto článku, potřebujete aplikaci Azure Active Directory (Azure AD) a instanční objekt, který má přístup k prostředkům. Můžete použít stejnou aplikaci Azure AD pro ověřování z [testovacího clusteru a databáze](create-cluster-database-csharp.md#authentication). Pokud chcete použít jinou aplikaci Azure AD, přečtěte si téma [Vytvoření aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) pro vytvoření bezplatné aplikace Azure AD a přidání přiřazení role v oboru předplatného. Tento článek také ukazuje, jak získat `Directory (tenant) ID`, `Application ID`a `Client secret`. Může být nutné přidat novou aplikaci Azure AD jako objekt zabezpečení v databázi. Další informace najdete v tématu [Správa oprávnění pro databázi Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).
 
 ## <a name="alter-database-retention-policy"></a>Změnit zásady uchovávání informací databáze

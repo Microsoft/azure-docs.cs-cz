@@ -7,23 +7,26 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 2afe3da8b4d4bee31b17320ad976e795e91d410a
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: a0fe86e2dcb802b822cb08ed0922b5da9c5cfd1c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71997238"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667281"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Vytvoření zásad databáze a tabulek pro Azure Průzkumník dat pomocí Pythonu
 
-Azure Průzkumník dat je rychlá a vysoce škálovatelná služba průzkumu dat pro data protokolů a telemetrie. V tomto článku vytvoříte zásady databáze a tabulek pro Azure Průzkumník dat pomocí Pythonu.
+> [!div class="op_single_selector"]
+> * [C#](database-table-policies-csharp.md)
+> * [Python](database-table-policies-python.md)
+>
 
-## <a name="prerequisites"></a>Požadavky
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. V tomto článku vytvoříte zásady databáze a tabulek pro Azure Průzkumník dat pomocí Pythonu.
+
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-
 * [Testovací cluster a databáze](create-cluster-database-python.md)
-
 * [Testovací tabulka](python-ingest-data.md#create-a-table-on-your-cluster)
 
 ## <a name="install-the-data-libraries"></a>Instalace datových knihoven
@@ -34,8 +37,8 @@ pip install azure-mgmt-kusto
 pip install azure-kusto-data (Optional, for changing table's policies)
 ```
 
-## <a name="authentication"></a>Ověřování
-Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure AD a instanční objekt, který má přístup k prostředkům. Pro ověřování z [testovacího clusteru a databáze](create-cluster-database-csharp.md#authentication)můžete použít stejnou aplikaci Azure AD. Pokud chcete použít jinou aplikaci Azure AD, přečtěte si téma [Vytvoření aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) pro vytvoření bezplatné aplikace Azure AD a přidání přiřazení role v oboru předplatného. Také ukazuje, jak získat `Directory (tenant) ID`, `Application ID` a `Client Secret`. Je možné, že budete muset přidat novou aplikaci Azure AD jako objekt zabezpečení v databázi, viz téma [Správa oprávnění pro databázi azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).    
+## <a name="authentication"></a>Ověření
+Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure AD a instanční objekt, který má přístup k prostředkům. Pro ověřování z [testovacího clusteru a databáze](create-cluster-database-csharp.md#authentication)můžete použít stejnou aplikaci Azure AD. Pokud chcete použít jinou aplikaci Azure AD, přečtěte si téma [Vytvoření aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) pro vytvoření bezplatné aplikace Azure AD a přidání přiřazení role v oboru předplatného. Také ukazuje, jak získat `Directory (tenant) ID`, `Application ID`a `Client Secret`. Je možné, že budete muset přidat novou aplikaci Azure AD jako objekt zabezpečení v databázi, viz téma [Správa oprávnění pro databázi azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).    
 
 ## <a name="alter-database-retention-policy"></a>Změnit zásady uchovávání informací databáze
 Nastaví zásady uchovávání informací s obdobím tichého odstranění 10 dnů.

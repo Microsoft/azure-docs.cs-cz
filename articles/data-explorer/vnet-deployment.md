@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: a7a9efbf6fd9c3dbe6b16d12a54f743d5b0820ba
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8dec673408b706a92a29f418af3bef4cc05a8d2d
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838217"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668579"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Nasazení Azure Průzkumník dat do Virtual Network (Preview)
 
@@ -64,6 +64,9 @@ Celkový počet IP adres:
 [Koncové body služby Azure](/azure/virtual-network/virtual-network-service-endpoints-overview) umožňují zabezpečit vaše prostředky Azure pro více tenantů do vaší virtuální sítě.
 Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nastavit datová připojení pomocí [centra událostí](/azure/event-hubs/event-hubs-about) nebo [Event Grid](/azure/event-grid/overview) a zároveň omezit základní prostředky pro podsíť Azure Průzkumník dat.
 
+> [!NOTE]
+> Při použití instalačního programu EventGrid s [úložištěm](/azure/storage/common/storage-introduction) a [centra událostí] může být účet úložiště, který se používá v předplatném, uzamčený pomocí koncových bodů služby do podsítě Azure Průzkumník dat a přitom povoluje v [konfiguraci brány firewall](/azure/storage/common/storage-network-security)důvěryhodné služby platformy Azure, ale centrum událostí nemůže koncový bod služby povolit, protože nepodporuje důvěryhodné [služby platformy Azure](/azure/event-hubs/event-hubs-service-endpoints).
+
 ## <a name="dependencies-for-vnet-deployment"></a>Závislosti pro nasazení virtuální sítě
 
 ### <a name="network-security-groups-configuration"></a>Konfigurace skupin zabezpečení sítě
@@ -75,8 +78,8 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | **Použití**   | **Výsledkem**   | **Komu**   | **Protokol**   |
 | --- | --- | --- | --- |
 | Správa  |[ADX Management addresss](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX podsíť: 443  | TCP  |
-| Monitorování stavu  | [Adresy sledování stavu ADX](#health-monitoring-addresses)  | ADX podsíť: 443  | TCP  |
-| Interní komunikace ADX  | ADX podsíť: všechny porty  | ADX podsíť: všechny porty  | Vše  |
+| Sledování stavu  | [Adresy sledování stavu ADX](#health-monitoring-addresses)  | ADX podsíť: 443  | TCP  |
+| Interní komunikace ADX  | ADX podsíť: všechny porty  | ADX podsíť: všechny porty  | Všechno  |
 | Povolit příchozí službu Azure Load Balancer (sondu stavu)  | AzureLoadBalancer  | ADX podsíť: 80443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>Konfigurace odchozího NSG
@@ -90,14 +93,14 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Stažení konfigurace Azure Monitor  | ADX podsíť  | [Adresy koncových bodů konfigurace Azure monitor](#azure-monitor-configuration-endpoint-addresses): 443 | TCP  |
 | Služba Active Directory (Pokud je k dispozici) | ADX podsíť | Azureactivedirectory selhala: 443 | TCP |
 | Certifikační autorita | ADX podsíť | Internet: 80 | TCP |
-| Interní komunikace  | ADX podsíť  | ADX podsíť: všechny porty  | Vše  |
+| Interní komunikace  | ADX podsíť  | ADX podsíť: všechny porty  | Všechno  |
 | Porty používané pro `sql\_request` a moduly plug-in `http\_request`  | ADX podsíť  | Internet: vlastní  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>Relevantní IP adresy
 
 #### <a name="azure-data-explorer-management-ip-addresses"></a>IP adresy pro správu služby Azure Průzkumník dat
 
-| Region (Oblast) | Adresy |
+| Oblast | Adresy |
 | --- | --- |
 | Austrálie – střed | 20.37.26.134 |
 | Central2 Austrálie | 20.39.99.177 |
@@ -106,37 +109,37 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | BrazilSouth | 191.233.25.183 |
 | Kanada – střed | 40.82.188.208 |
 | Kanada – východ | 40.80.255.12 |
-| Střed Indie | 40.81.249.251 |
+| Střední Indie | 40.81.249.251 |
 | Střední USA | 40.67.188.68 |
 | Střed USA EUAP | 40.89.56.69 |
 | Východní Asie | 20.189.74.103 |
-| Východ USA | 52.224.146.56 |
+| USA – východ | 52.224.146.56 |
 | USA – východ 2 | 52.232.230.201 |
 | EUAP pro východní USA 2 | 52.253.226.110 |
 | Francie – střed | 40.66.57.91 |
 | Francie – jih | 40.82.236.24 |
 | Japonsko – východ | 20.43.89.90 |
 | Japonsko – západ | 40.81.184.86 |
-| Jižní Korea – střed | 40.82.156.149 |
-| Jižní Korea – jih | 40.80.234.9 |
+| Korea – střed | 40.82.156.149 |
+| Korea – jih | 40.80.234.9 |
 | Středoseverní USA | 40.81.45.254 |
 | Severní Evropa | 52.142.91.221 |
 | Jižní Afrika – sever | 102.133.129.138 |
 | Jižní Afrika – západ | 102.133.0.97 |
 | Středojižní USA | 20.45.3.60 |
 | Jihovýchodní Asie | 40.119.203.252 |
-| Indie – jih | 40.81.72.110 |
-| Spojené království – jih | 40.81.154.254 |
-| Spojené království – západ | 40.81.122.39 |
+| Jižní Indie | 40.81.72.110 |
+| Velká Británie – jih | 40.81.154.254 |
+| Velká Británie – západ | 40.81.122.39 |
 | Středozápadní USA | 52.159.55.120 |
 | Západní Evropa | 51.145.176.215 |
-| Indie – západ | 40.81.88.112 |
+| Západní Indie | 40.81.88.112 |
 | Západní USA | 13.64.38.225 |
 | Západní USA 2 | 40.90.219.23 |
 
 #### <a name="health-monitoring-addresses"></a>Adresy sledování stavu
 
-| Region (Oblast) | Adresy |
+| Oblast | Adresy |
 | --- | --- |
 | Austrálie – střed | 191.239.64.128 |
 | Austrálie – střed 2 | 191.239.64.128 |
@@ -145,37 +148,37 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Brazílie – jih | 23.98.145.105 |
 | Kanada – střed | 168.61.212.201 |
 | Kanada – východ | 168.61.212.201 |
-| Střed Indie | 23.99.5.162 |
+| Střední Indie | 23.99.5.162 |
 | Střední USA | 168.61.212.201 |
 | Střed USA EUAP | 168.61.212.201 |
 | Východní Asie | 168.63.212.33 |
-| Východ USA | 137.116.81.189 |
+| USA – východ | 137.116.81.189 |
 | Východ USA 2 | 137.116.81.189 |
 | Východní USA 2 EUAP | 137.116.81.189 |
 | Francie – střed | 23.97.212.5 |
 | Francie – jih | 23.97.212.5 |
 | Japonsko – východ | 138.91.19.129 |
 | Japonsko – západ | 138.91.19.129 |
-| Jižní Korea – střed | 138.91.19.129 |
-| Jižní Korea – jih | 138.91.19.129 |
+| Korea – střed | 138.91.19.129 |
+| Korea – jih | 138.91.19.129 |
 | Středoseverní USA | 23.96.212.108 |
 | Severní Evropa | 191.235.212.69 
 | Jižní Afrika – sever | 104.211.224.189 |
 | Jižní Afrika – západ | 104.211.224.189 |
 | Středojižní USA | 23.98.145.105 |
-| Indie – jih | 23.99.5.162 |
+| Jižní Indie | 23.99.5.162 |
 | Jihovýchodní Asie | 168.63.173.234 |
-| Spojené království – jih | 23.97.212.5 |
-| Spojené království – západ | 23.97.212.5 |
+| Velká Británie – jih | 23.97.212.5 |
+| Velká Británie – západ | 23.97.212.5 |
 | Středozápadní USA | 168.61.212.201 |
 | Západní Evropa | 23.97.212.5 |
-| Indie – západ | 23.99.5.162 |
+| Západní Indie | 23.99.5.162 |
 | Západní USA | 23.99.5.162 |
 | Západní USA 2 | 23.99.5.162 | 
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Adresy koncových bodů konfigurace Azure Monitor
 
-| Region (Oblast) | Adresy |
+| Oblast | Adresy |
 | --- | --- |
 | Austrálie – střed | 52.148.86.165 |
 | Austrálie – střed 2 | 52.148.86.165 |
@@ -251,7 +254,7 @@ Je také potřeba definovat [směrovací tabulku](/azure/virtual-network/virtual
 
 Například pro **západní USA** oblast musí být definována následující udr:
 
-| Název | Předpona adresy | Další segment směrování |
+| Name (Název) | Předpona adresy | Další segment směrování |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |

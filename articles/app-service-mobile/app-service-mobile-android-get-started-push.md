@@ -1,25 +1,17 @@
 ---
-title: Přidání nabízených oznámení do aplikace pro Android s Mobile Apps | Microsoft Docs
+title: Přidání nabízených oznámení do aplikace pro Android
 description: Naučte se používat Mobile Apps k odesílání nabízených oznámení do vaší aplikace pro Android.
-services: app-service\mobile
-documentationcenter: android
-manager: crdun
-editor: ''
-author: elamalani
 ms.assetid: 9058ed6d-e871-4179-86af-0092d0ca09d3
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 539859ba73c8a26d6f7e8f25b9e7453d987a52bd
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ce4ebe9e8874e779b8da16e9c30fcfc3ca46754e
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389013"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668615"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Přidání nabízených oznámení do aplikace pro Android
 
@@ -36,7 +28,7 @@ V tomto kurzu přidáte nabízená oznámení do projektu s [Rychlý Start pro A
 
 Pokud nepoužíváte stažený projekt serveru pro rychlý Start, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Potřebujete následující:
 

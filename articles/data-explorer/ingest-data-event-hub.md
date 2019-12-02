@@ -1,37 +1,35 @@
 ---
-title: Ingestování dat z centra událostí do Azure Průzkumník dat
-description: V tomto článku se dozvíte, jak pomocí centra událostí ingestovat (načítat) data do Azure Průzkumník dat.
+title: Ingest data from Event Hub into Azure Data Explorer
+description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Event Hub.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1750267b5780dcfbb227ffcd6bb98e2f77ff1511
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 13c0bf8d0829debaa4ae41c724aafdaf5891ce4d
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539291"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667441"
 ---
-# <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Ingestování dat z centra událostí do Azure Průzkumník dat
+# <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Ingest data from Event Hub into Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
+> * [Šablona Azure Resource Manageru](data-connection-event-hub-resource-manager.md)
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí ingestování (načítání) dat ze služby Event Hubs, platformy pro streamování velkých objemů dat a služby pro ingestování událostí. [Event Hubs](/azure/event-hubs/event-hubs-about) může zpracovávat miliony událostí za sekundu téměř v reálném čase. V tomto článku vytvoříte centrum událostí, připojíte se k němu z Azure Průzkumník dat a Prohlédněte si tok dat prostřednictvím systému.
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí ingestování (načítání) dat ze služby Event Hubs, platformy pro streamování velkých objemů dat a služby pro ingestování událostí. [Event Hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real-time. In this article, you create an event hub, connect to it from Azure Data Explorer and see data flow through the system.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-
-* [Testovací cluster a databáze](create-cluster-database-portal.md).
-
-* [Ukázková aplikace](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) , která generuje data a odesílá je do centra událostí. Stáhněte si ukázkovou aplikaci do svého systému.
-
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) pro spuštění ukázkové aplikace.
+* [A test cluster and database](create-cluster-database-portal.md).
+* [A sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub. Download the sample app to your system.
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) to run the sample app.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -39,9 +37,9 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-V tomto článku vygenerujete ukázková data a odešlete je do centra událostí. Prvním krokem je vytvoření centra událostí. To provedete pomocí šablony Azure Resource Manageru na webu Azure Portal.
+In this article, you generate sample data and send it to an event hub. Prvním krokem je vytvoření centra událostí. To provedete pomocí šablony Azure Resource Manageru na webu Azure Portal.
 
-1. Chcete-li vytvořit centrum událostí, použijte následující tlačítko ke spuštění nasazení. Klikněte pravým tlačítkem myši a vyberte **otevřít v novém okně**, abyste mohli postupovat podle zbývajících kroků v tomto článku.
+1. To create an event hub, use the following button to start the deployment. Right-click and select **Open in new window**, so you can follow the rest of the steps in this article.
 
     [![Nasazení do Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -63,7 +61,7 @@ V tomto článku vygenerujete ukázková data a odešlete je do centra událost�
     |---|---|---|
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svoje centrum událostí.|
     | Skupina prostředků | *test-hub-rg* | Vytvořte novou skupinu prostředků. |
-    | Umístění | *Západní USA* | Pro tento článek vyberte *západní USA* . Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám. Vytvořte obor názvů centra událostí ve stejném umístění jako cluster Kusto pro nejlepší výkon (nejdůležitější pro obory názvů centra událostí s vysokou propustností).
+    | Umístění | *Západní USA* | Select *West US* for this article. Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám. Create the event hub namespace in the same Location as the Kusto cluster for best performance (most important for event hub namespaces with high throughput).
     | Název oboru názvů | Jedinečný název oboru názvů | Zvolte jedinečný název, který identifikuje váš obor názvů. Například *mytestnamespace*. K názvu, který zadáte, bude připojen název domény *servicebus.windows.net*. Název může obsahovat pouze písmena, číslice a pomlčky. Musí začínat písmenem a končit písmenem nebo číslicí. Počet znaků musí být mezi 6 a 50.
     | Název centra událostí | *test-hub* | Centrum událostí se nachází v rámci oboru názvů, který poskytuje jedinečný kontejner oboru. Název centra událostí musí být v rámci oboru názvů jedinečný. |
     | Název skupiny uživatelů | *test-group* | Skupiny uživatelů umožňují, aby měla každá z aplikací samostatné zobrazení streamu událostí. |
@@ -83,7 +81,7 @@ Teď v Azure Data Exploreru vytvoříte tabulku, do které bude služba Event Hu
 
     ![Dotaz – odkaz aplikace](media/ingest-data-event-hub/query-explorer-link.png)
 
-1. Zkopírujte následující příkaz do okna a vyberte **Spustit** pro vytvoření tabulky (pole s testovacími daty), která přijme ingestovaná data.
+1. Copy the following command into the window and select **Run** to create the table (TestTable) which will receive the ingested data.
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -91,7 +89,7 @@ Teď v Azure Data Exploreru vytvoříte tabulku, do které bude služba Event Hu
 
     ![Spuštění vytvářecího dotazu](media/ingest-data-event-hub/run-create-query.png)
 
-1. Zkopírujte do okna následující příkaz a vyberte možnost **Spustit** pro mapování příchozích dat JSON na názvy sloupců a datové typy tabulky (tabulka).
+1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
@@ -107,11 +105,11 @@ Teď se můžete z Azure Data Exploreru připojit k centru událostí. Po naváz
 
     ![Výběr testovací databáze](media/ingest-data-event-hub/select-test-database.png)
 
-1. Vyberte **přijímání dat** a **přidejte datové připojení**. Pak vyplňte formulář následujícími informacemi. Po dokončení vyberte **vytvořit** .
+1. Select **Data ingestion** and **Add data connection**. Then fill out the form with the following information. Select **Create** when you are finished.
 
     ![Připojení centra událostí](media/ingest-data-event-hub/event-hub-connection.png)
 
-    Zdroj dat:
+    Data Source:
 
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
@@ -119,19 +117,19 @@ Teď se můžete z Azure Data Exploreru připojit k centru událostí. Po naváz
     | Obor názvů centra událostí | Jedinečný název oboru názvů | Název, který jste zvolili dříve a který identifikuje váš obor názvů |
     | Centrum událostí | *test-hub* | Centrum událostí, které jste vytvořili |
     | Skupina uživatelů | *test-group* | Skupina uživatelů, kterou jste definovali v centrum událostí, které jste vytvořili |
-    | Vlastnosti systému událostí | Vyberte příslušné vlastnosti. | [Vlastnosti systému centra událostí](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Pokud existuje více záznamů na jednu zprávu události, budou do prvního z nich přidány vlastnosti systému. Při přidávání vlastností systému, [Vytvoření](/azure/kusto/management/tables#create-table) nebo [aktualizace](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schématu tabulky a [mapování](/azure/kusto/management/mappings) tak, aby zahrnovaly vybrané vlastnosti. |
+    | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](/azure/kusto/management/tables#create-table) or [update](/azure/kusto/management/tables#alter-table-and-alter-merge-table) table schema and [mapping](/azure/kusto/management/mappings) to include the selected properties. |
     | | |
 
-    Cílová tabulka:
+    Target table:
 
-    K dispozici jsou dvě možnosti směrování přijatých dat: *statické* a *dynamické*. 
-    V tomto článku použijete statické směrování, kde zadáte název tabulky, formát dat a mapování. Proto nechte **moje data zahrnovat informace o směrování** bez výběru.
+    There are two options for routing the ingested data: *static* and *dynamic*. 
+    For this article, you use static routing, where you specify the table name, data format, and mapping. Therefore, leave **My data includes routing info** unselected.
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
     | Tabulka | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
-    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOHSV, SCSV, TSV, TSVE a TXT. Podporované možnosti komprese: GZip |
-    | Mapování sloupců | *TestMapping* | [Mapování](/azure/kusto/management/mappings) , které jste vytvořili v **TestDatabase**, které mapuje příchozí data JSON na názvy sloupců a datové typy **testovacího**typu. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON nebo AVRO a volitelné pro jiné formáty.|
+    | Formát dat | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE and TXT. Supported compression options: GZip |
+    | Mapování sloupců | *TestMapping* | The [mapping](/azure/kusto/management/mappings) you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON nebo AVRO a volitelné pro jiné formáty.|
     | | |
 
     > [!NOTE]

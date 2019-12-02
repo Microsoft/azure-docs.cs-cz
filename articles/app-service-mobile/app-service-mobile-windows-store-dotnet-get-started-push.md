@@ -1,25 +1,17 @@
 ---
-title: Přidání nabízených oznámení do aplikace Univerzální platforma Windows (UWP) | Microsoft Docs
+title: Přidání nabízených oznámení do aplikace pro UWP
 description: Naučte se používat Azure App Service Mobile Apps a Azure Notification Hubs k odesílání nabízených oznámení do aplikace pro Univerzální platforma Windows (UWP).
-services: app-service\mobile,notification-hubs
-documentationcenter: windows
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 80723bc8e7685c66117e71d87cbf64710ab4507a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e2178322c7006a6ddd2ca6daffca066f04fff68c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388633"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668733"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Přidání nabízených oznámení do aplikace pro Windows
 

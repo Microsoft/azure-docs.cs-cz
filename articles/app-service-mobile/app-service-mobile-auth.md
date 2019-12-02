@@ -1,34 +1,25 @@
 ---
-title: Ověřování a autorizace v Azure App Service pro mobilní aplikace | Microsoft Docs
-description: Koncepční referenční informace a Přehled funkce ověřování/autorizace pro Azure App Service, konkrétně pro mobilní aplikace
-services: app-service
-documentationcenter: ''
-author: mattchenderson
-manager: erikre
-editor: ''
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
+title: Ověřování a autorizace
+description: Koncepční referenční informace a přehled funkcí ověřování a autorizace pro Azure App Service, konkrétně pro mobilní aplikace.
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: mahender
-ms.openlocfilehash: 6017d9bc8b9a791e46fd1562660c9049ca0f72e5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2c3bc1f9563a5657d7574020fc908f23a711391c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388897"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668519"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Ověřování a autorizace v Azure App Service pro mobilní aplikace
 
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 Tento článek popisuje, jak ověřování a autorizace funguje při vývoji nativních mobilních aplikací pomocí back-endu App Service. App Service poskytuje integrované ověřování a autorizaci, takže vaše mobilní aplikace mohou podepisovat uživatele bez nutnosti měnit kód v App Service. Poskytuje snadný způsob ochrany vaší aplikace a práci s daty jednotlivých uživatelů. 
 
-Tento článek se zaměřuje na vývoj mobilních aplikací. Pokud chcete rychle začít s App Service ověřováním a autorizací pro vaši mobilní aplikaci, přečtěte si jedno z následujících kurzů, které [přidávají ověřování do vaší aplikace pro iOS][iOS] (nebo [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms]nebo [Cordova]). 
+Tento článek se zaměřuje na vývoj mobilních aplikací. Pokud chcete rychle začít s App Service ověřováním a autorizací pro vaši mobilní aplikaci, přečtěte si jedno z následujících kurzů, [které přidávají ověřování do vaší aplikace pro iOS][iOS] (nebo [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms]nebo [Cordova]). 
 
 Informace o tom, jak ověřování a autorizace fungují v App Service, najdete v tématu [ověřování a autorizace v Azure App Service](../app-service/overview-authentication-authorization.md).
 

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: bcc80000be5e061a37601f05a2a245aac031fc15
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0cac03e50bf46910f8430b745803107b60905769
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031653"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667389"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-c-preview"></a>Vytvoření datového připojení IoT Hub pro Azure Průzkumník dat pomocí C# (Preview)
 
@@ -20,30 +20,26 @@ ms.locfileid: "72031653"
 > * [Azure Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Šablona Azure Resource Manageru](data-connection-iot-hub-resource-manager.md)
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) z Event Hubs, rozbočovačů IoT a objektů BLOB zapsaných do kontejnerů objektů BLOB. V tomto článku vytvoříte datové připojení IoT Hub pro Azure Průzkumník dat pomocí C#.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * Pokud nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
-
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-
 * Vytvoření [clusteru a databáze](create-cluster-database-csharp.md)
-
 * Vytvořit [mapování tabulek a sloupců](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-
 * Nastavení [zásad databáze a tabulek](database-table-policies-csharp.md) (volitelné)
-
-* Vytvoření služby [IoT Hub se nakonfigurovanými zásadami sdíleného přístupu](ingest-data-iot-hub.md#create-an-iot-hub)
+* Create an [IoT Hub with a shared access policy configured](ingest-data-iot-hub.md#create-an-iot-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-an-iot-hub-data-connection"></a>Přidání datového připojení IoT Hub 
+## <a name="add-an-iot-hub-data-connection"></a>Add an IoT Hub data connection 
 
-Následující příklad ukazuje, jak přidat IoT Hub datové připojení prostřednictvím kódu programu. Pokud chcete přidat datové připojení ke službě IoT Hub pomocí Azure Portal, přečtěte si téma [připojení tabulky Azure Průzkumník dat k IoT Hub](ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub) .
+The following example shows you how to add an IoT Hub data connection programmatically. See [connect Azure Data Explorer table to IoT Hub](ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub) for adding an Iot Hub data connection using the Azure portal.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -93,9 +89,9 @@ await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, cl
 | tableName | *StormEvents* | Název cílové tabulky v cílové databázi.|
 | mappingRuleName | *StormEvents_CSV_Mapping* | Název mapování sloupce souvisejícího s cílovou tabulkou.|
 | Formát DataFormat | *Formát* | Formát dat zprávy|
-| iotHubResourceId | *ID prostředku* | ID prostředku vašeho centra IoT, které obsahuje data pro ingestování. |
-| sharedAccessPolicyName | *iothubforread* | Název zásad sdíleného přístupu, který definuje oprávnění pro zařízení a služby pro připojení k IoT Hub. |
-| Klientská organizace | *$Default* | Skupina uživatelů centra událostí.|
+| iotHubResourceId | *ID prostředku* | The resource ID of your IoT hub that holds the data for ingestion. |
+| sharedAccessPolicyName | *iothubforread* | The name of the shared access policy that defines the permissions for devices and services to connect to IoT Hub. |
+| Klientská organizace | *$Default* | The consumer group of your event hub.|
 | location | *Střed USA* | Umístění prostředku datového připojení.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

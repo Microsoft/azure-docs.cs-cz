@@ -1,25 +1,17 @@
 ---
-title: Přidání ověřování na Androidu pomocí Mobile Apps | Microsoft Docs
-description: Naučte se používat funkci Mobile Apps Azure App Service k ověřování uživatelů vaší aplikace pro Android prostřednictvím celé řady poskytovatelů identity, včetně Google, Facebook, Twitteru a Microsoftu.
-services: app-service\mobile
-documentationcenter: android
-author: elamalani
-manager: crdun
-editor: ''
+title: Přidání ověřování v Androidu
+description: Naučte se používat Azure App Service k ověřování uživatelů vaší aplikace pro Android pomocí zprostředkovatelů identity, jako jsou Google, Facebook, Twitter a Microsoft.
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: b520f6129e7d7fa1a4800143d5987d3eba625e98
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f68b4f8477d5b21a7107270370af387a7e88756e
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388953"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668951"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Přidání ověřování do aplikace pro Android
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -45,9 +37,9 @@ Zabezpečené ověřování vyžaduje, abyste pro svou aplikaci nadefinovali nov
 
 3. Do pole **povolené externí adresy URL pro přesměrování**zadejte `appname://easyauth.callback`.  _AppName_ v tomto řetězci je schéma adresy URL vaší mobilní aplikace.  Měla by následovat po běžné specifikaci adresy URL protokolu (použijte pouze písmena a čísla a začněte písmenem).  Měli byste si poznamenat řetězec, který si zvolíte, protože budete muset upravit kód mobilní aplikace pomocí schématu adresy URL na několika místech.
 
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
-5. Klikněte na možnost **Uložit**.
+5. Klikněte na **Uložit**.
 
 ## <a name="permissions"></a>Omezení oprávnění pro ověřené uživatele
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]

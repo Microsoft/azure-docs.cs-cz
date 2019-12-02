@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b69cdb1ee04e3824bf5fd20a7db2401161fdf6e7
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 113c039c9b7f0319bb724bcde1432044c0770672
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031666"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667677"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Vytvoření datového připojení centra událostí pro Azure Průzkumník dat pomocí Pythonu
 
@@ -20,19 +20,16 @@ ms.locfileid: "72031666"
 > * [Azure Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
+> * [Šablona Azure Resource Manageru](data-connection-event-hub-resource-manager.md)
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) z Event Hubs, rozbočovačů IoT a objektů BLOB zapsaných do kontejnerů objektů BLOB. V tomto článku vytvoříte připojení dat centra událostí pro Azure Průzkumník dat pomocí Pythonu.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-
 * Vytvoření [clusteru a databáze](create-cluster-database-csharp.md)
-
 * Vytvořit [mapování tabulek a sloupců](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-
 * Nastavení [zásad databáze a tabulek](database-table-policies-csharp.md) (volitelné)
-
 * Vytvořte [centrum událostí s daty pro přijímání](ingest-data-event-hub.md#create-an-event-hub). 
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
@@ -89,9 +86,9 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | client_secret | *xxxxxxxxxxxxxx* | Tajný klíč klienta aplikace, který má přístup k prostředkům ve vašem tenantovi. |
 | resource_group_name | *testrg* | Název skupiny prostředků, která obsahuje váš cluster.|
 | cluster_name | *mykustocluster* | Název vašeho clusteru.|
-| název_databáze | *mykustodatabase* | Název cílové databáze v clusteru.|
+| database_name | *mykustodatabase* | Název cílové databáze v clusteru.|
 | data_connection_name | *myeventhubconnect* | Požadovaný název datového připojení.|
-| TABLE_NAME | *StormEvents* | Název cílové tabulky v cílové databázi.|
+| table_name | *StormEvents* | Název cílové tabulky v cílové databázi.|
 | mapping_rule_name | *StormEvents_CSV_Mapping* | Název mapování sloupce souvisejícího s cílovou tabulkou.|
 | data_format | *Formát* | Formát dat zprávy|
 | event_hub_resource_id | *ID prostředku* | ID prostředku centra událostí, které obsahuje data pro ingestování. |

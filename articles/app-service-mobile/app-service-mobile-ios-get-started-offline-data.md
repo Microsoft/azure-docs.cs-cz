@@ -1,25 +1,17 @@
 ---
-title: Povolení offline synchronizace s mobilními aplikacemi pro iOS | Microsoft Docs
+title: Povolit offline synchronizaci (iOS)
 description: Naučte se používat Azure App Service Mobile Apps k ukládání a synchronizaci offline dat v aplikacích pro iOS.
-documentationcenter: ios
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: f29a28f9a80b64ef0a6890fa8fc7ecd0ca205e66
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388758"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668484"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Povolení offline synchronizace s mobilními aplikacemi pro iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -94,7 +86,7 @@ Teď provedeme skutečnou operaci synchronizace a získáme data ze vzdáleného
        }];
    }
    ```
-* **Swift**:
+* **SWIFT**:
    ```swift
    func onRefresh(sender: UIRefreshControl!) {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -168,8 +160,8 @@ Pokud používáte funkci offline synchronizace, definujte tři systémové tabu
 | --- | --- |
 | id | Celé číslo 64 |
 | itemId | Řetězec |
-| properties | Binary Data |
-| table | Řetězec |
+| properties | Binární data |
+| stolní | Řetězec |
 | tableKind | Celé číslo 16 |
 
 
@@ -181,7 +173,7 @@ Pokud používáte funkci offline synchronizace, definujte tři systémové tabu
 | --- | --- |
 | id |Řetězec |
 | operationId |Celé číslo 64 |
-| properties |Binary Data |
+| properties |Binární data |
 | tableKind |Celé číslo 16 |
 
  **MS_TableConfig**
@@ -193,7 +185,7 @@ Pokud používáte funkci offline synchronizace, definujte tři systémové tabu
 | id |Řetězec |
 | key |Řetězec |
 | keyType |Celé číslo 64 |
-| table |Řetězec |
+| stolní |Řetězec |
 | hodnota |Řetězec |
 
 ### <a name="data-table"></a>Tabulka dat
@@ -229,7 +221,7 @@ V této části aplikaci upravíte tak, aby se nesynchronizoval při spuštění
    }
    ```
 
-**Swift**:
+**SWIFT**:
 
 V `viewDidLoad`v **ToDoTableViewController. SWIFT**přidejte komentář ke všem zobrazeným řádkům a zastavte synchronizaci při spuštění aplikace. V době psaní tohoto textu aplikace SWIFT TODO neaktualizuje službu, když někdo přidá nebo dokončí položku. Aktualizuje službu jenom při spuštění aplikace.
 
@@ -247,7 +239,7 @@ V této části se připojíte k neplatné adrese URL pro simulaci offline scén
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
-   **SWIFT**. In ToDoTableViewController.swift:
+   **SWIFT**. V ToDoTableViewController. SWIFT:
    ```swift
    let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
    ```
@@ -275,7 +267,7 @@ Operace normálního vytváření, čtení, aktualizace a odstranění (CRUD) pr
 
 Při synchronizaci místního úložiště se serverem jsme použili metodu **MSSyncTable. pullWithQuery** .
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 * [Synchronizace offline dat v Mobile Apps]
 * [Cloudové pokrytí: offline synchronizace v Azure Mobile Services] \(se video týká Mobile Services, ale Mobile Apps offline synchronizace funguje podobným způsobem.\)
 

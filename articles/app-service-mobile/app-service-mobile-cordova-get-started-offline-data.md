@@ -1,25 +1,17 @@
 ---
-title: Povolit offline synchronizaci pro mobilní aplikace Azure (Cordova) | Microsoft Docs
+title: Povolit offline synchronizaci (Cordova)
 description: Naučte se používat App Service mobilní aplikace pro ukládání a synchronizaci offline dat v aplikaci Cordova.
-documentationcenter: cordova
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: 1a3f685d-f79d-4f8b-ae11-ff96e79e9de9
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-cordova-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: c5fcc98bf3da79d1978da6e67535a5a93a8fe321
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: aae78285b5ed13031275b4969befa2e1d67bf5b7
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388853"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668541"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Povolení offline synchronizace pro mobilní aplikace Cordova
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -192,7 +184,7 @@ V této části znovu připojíte aplikaci k mobilnímu back-endu, která simulu
 
     Všimněte si, že data byla synchronizovaná mezi databází a místním úložištěm a obsahuje položky, které jste přidali v době, kdy byla aplikace odpojena.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 * [Synchronizace offline dat v prostředí Azure Mobile Apps]
 * [Visual Studio Tools for Apache Cordova]
 

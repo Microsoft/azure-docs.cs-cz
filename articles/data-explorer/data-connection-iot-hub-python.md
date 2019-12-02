@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 1e6cd94e18382b3e66fc6a9c284539bc178e199c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7e1d9021abbbe507f3bf287291d5638c77f6e0cb
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031640"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667363"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>Vytvoření datového připojení IoT Hub pro Azure Průzkumník dat pomocí Pythonu (Preview)
 
@@ -20,20 +20,17 @@ ms.locfileid: "72031640"
 > * [Azure Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Šablona Azure Resource Manageru](data-connection-iot-hub-resource-manager.md)
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) z Event Hubs, rozbočovačů IoT a objektů BLOB zapsaných do kontejnerů objektů BLOB. V tomto článku vytvoříte datové připojení IoT Hub pro Azure Průzkumník dat pomocí Pythonu.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-
 * Vytvoření [clusteru a databáze](create-cluster-database-csharp.md)
-
 * Vytvořit [mapování tabulek a sloupců](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-
 * Nastavení [zásad databáze a tabulek](database-table-policies-csharp.md) (volitelné)
-
-* Vytvoření služby [IoT Hub se nakonfigurovanými zásadami sdíleného přístupu](ingest-data-iot-hub.md#create-an-iot-hub)
+* Vytvoří [IoT Hub se nakonfigurovanou zásadou sdíleného přístupu](ingest-data-iot-hub.md#create-an-iot-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 
@@ -91,9 +88,9 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | client_secret | *xxxxxxxxxxxxxx* | Tajný klíč klienta aplikace, který má přístup k prostředkům ve vašem tenantovi. |
 | resource_group_name | *testrg* | Název skupiny prostředků, která obsahuje váš cluster.|
 | cluster_name | *mykustocluster* | Název vašeho clusteru.|
-| název_databáze | *mykustodatabase* | Název cílové databáze v clusteru.|
+| database_name | *mykustodatabase* | Název cílové databáze v clusteru.|
 | data_connection_name | *myeventhubconnect* | Požadovaný název datového připojení.|
-| TABLE_NAME | *StormEvents* | Název cílové tabulky v cílové databázi.|
+| table_name | *StormEvents* | Název cílové tabulky v cílové databázi.|
 | mapping_rule_name | *StormEvents_CSV_Mapping* | Název mapování sloupce souvisejícího s cílovou tabulkou.|
 | data_format | *Formát* | Formát dat zprávy|
 | iot_hub_resource_id | *ID prostředku* | ID prostředku vašeho centra IoT, které obsahuje data pro ingestování.|

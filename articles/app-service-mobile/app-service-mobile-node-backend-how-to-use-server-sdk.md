@@ -1,25 +1,17 @@
 ---
-title: Jak pracovat s back-end serverem sady Node. js pro Mobile Apps | Microsoft Docs
+title: Práce s back-end serverem SDK pro Node. js
 description: Naučte se pracovat s back-end serverem sady Node. js pro Azure App Service Mobile Apps.
-services: app-service\mobile
-documentationcenter: ''
-author: elamalani
-manager: elamalani
-editor: ''
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: a3883d233bd621607ec724e0c85734b508195340
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fe5ced96a74bfbfbacf3ce1874d64711f6db7449
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388661"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668761"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak používat Mobile Apps Node. js SDK
 
@@ -98,9 +90,9 @@ Tato aplikace vytvoří mobilní optimalizované webové rozhraní API s jedním
 * [Rychlý Start klienta Apache Cordova]
 * [rychlý Start klienta iOS]
 * [Rychlý Start klienta Windows Storu]
-* [Rychlé spuštění klienta Xamarin.iOS]
+* [Rychlý Start pro klienta Xamarin. iOS]
 * [Rychlý Start pro klienta Xamarin. Android]
-* [Rychlé spuštění klienta Xamarin.Forms]
+* [Rychlý Start klienta Xamarin. Forms]
 
 Kód pro tuto základní aplikaci najdete v [Ukázka basicapp na GitHubu].
 
@@ -377,24 +369,24 @@ Většina nastavení v souboru azureMobile. js má ekvivalentní nastavení apli
 
 | Nastavení aplikace | nastavení azureMobile. js | Popis | Platné hodnoty |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |jméno |Název aplikace |řetězec |
+| **MS_MobileAppName** |jméno |Název aplikace |string |
 | **MS_MobileLoggingLevel** |Logging. Level |Minimální úroveň protokolu pro zprávy, které se mají protokolovat |Chyba, upozornění, informace, podrobný, ladění, Silly |
 | **MS_DebugMode** |ladí |Povolí nebo zakáže režim ladění. |true, false |
-| **MS_TableSchema** |data.schema |Výchozí název schématu pro tabulky SQL |String (výchozí: dbo) |
-| **MS_DynamicSchema** |data.dynamicSchema |Povolí nebo zakáže režim ladění. |true, false |
+| **MS_TableSchema** |data. Schema |Výchozí název schématu pro tabulky SQL |String (výchozí: dbo) |
+| **MS_DynamicSchema** |data. dynamicSchema |Povolí nebo zakáže režim ladění. |true, false |
 | **MS_DisableVersionHeader** |verze (nastavená na undefined) |Zakáže hlavičku X-ZUMO-server-Version. |true, false |
 | **MS_SkipVersionCheck** |skipversioncheck |Zakáže kontrolu verze rozhraní API klienta. |true, false |
 
 Nastavení aplikace nastavíte takto:
 
-1. Přihlásit se na [Azure Portal].
+1. Přihlaste se na web [Azure Portal].
 1. Vyberte **všechny prostředky** nebo **App Services**a pak vyberte název mobilní aplikace.
 1. Ve výchozím nastavení se otevře podokno **Nastavení** . Pokud tomu tak není, vyberte **Nastavení**.
 1. V nabídce **Obecné** vyberte **nastavení aplikace**.
 1. Přejděte do části **nastavení aplikace** .
 1. Pokud už nastavení aplikace existuje, vyberte hodnotu nastavení aplikace a upravte hodnotu.
    Pokud nastavení aplikace neexistuje, zadejte nastavení aplikace v poli **klíč** a hodnotu v poli **hodnota** .
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 Změna většiny nastavení aplikace vyžaduje restart služby.
 
@@ -404,7 +396,7 @@ Změna většiny nastavení aplikace vyžaduje restart služby.
 
 Použití Azure SQL Database jako úložiště dat je identické napříč všemi Azure App Service typy aplikací. Pokud jste to ještě neudělali, postupujte podle těchto kroků a vytvořte Mobile Apps back-end:
 
-1. Přihlásit se na [Azure Portal].
+1. Přihlaste se na web [Azure Portal].
 1. V levém horním rohu okna vyberte tlačítko **+ nový** > **web a mobilní zařízení** > **mobilní aplikace**a zadejte název pro Mobile Apps back end.
 1. Do pole **Skupina prostředků** zadejte stejný název jako vaše aplikace.
 1. Je vybrán výchozí plán App Service. Pokud chcete změnit plán App Service:
@@ -415,10 +407,10 @@ Použití Azure SQL Database jako úložiště dat je identické napříč všem
 
    c. Vyberte odpovídající cenovou úroveň pro službu. Výběrem **Zobrazit vše** zobrazíte další cenové možnosti, například **Free** a **Shared**.
 
-   d. Klikněte na tlačítko **vyberte** tlačítko.
+   d. Klikněte na tlačítko **Vybrat** .
 
    e. Zpátky v podokně **App Service plán** vyberte **OK**.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 Zřízení Mobile Apps back-endu může trvat několik minut. Po zřízení back-endu Mobile Apps se portál otevře v podokně **nastavení** Mobile Apps back-endu.
 
@@ -922,9 +914,9 @@ Aplikace Node. js mají přístup k široké škále nástrojů diagnostického 
 [Rychlý Start pro klienta Android]: app-service-mobile-android-get-started.md
 [Rychlý Start klienta Apache Cordova]: app-service-mobile-cordova-get-started.md
 [rychlý Start klienta iOS]: app-service-mobile-ios-get-started.md
-[Rychlé spuštění klienta Xamarin.iOS]: app-service-mobile-xamarin-ios-get-started.md
+[Rychlý Start pro klienta Xamarin. iOS]: app-service-mobile-xamarin-ios-get-started.md
 [Rychlý Start pro klienta Xamarin. Android]: app-service-mobile-xamarin-android-get-started.md
-[Rychlé spuštění klienta Xamarin.Forms]: app-service-mobile-xamarin-forms-get-started.md
+[Rychlý Start klienta Xamarin. Forms]: app-service-mobile-xamarin-forms-get-started.md
 [Rychlý Start klienta Windows Storu]: app-service-mobile-windows-store-dotnet-get-started.md
 [synchronizaci offline dat]: app-service-mobile-offline-data-sync.md
 [Konfigurace ověřování Azure Active Directory]: ../app-service/configure-authentication-provider-aad.md

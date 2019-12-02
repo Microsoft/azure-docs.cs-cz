@@ -1,32 +1,24 @@
 ---
-title: Synchronizace offline dat v Azure Mobile Apps | Microsoft Docs
+title: Synchronizace offline dat
 description: Koncepční referenční informace a Přehled funkce synchronizace offline dat pro Azure Mobile Apps
-documentationcenter: windows
 author: conceptdev
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
-ms.service: app-service-mobile
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: dcab966aed125e43fff49299a46a2e8bbb938d66
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9238ebd06a4aa532d20a2a98499963a75780f025
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388597"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668420"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Synchronizace offline dat v prostředí Azure Mobile Apps
 
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="what-is-offline-data-sync"></a>Co je offline synchronizace dat?
 Offline synchronizace dat je funkce klient a server sady SDK služby Azure Mobile Apps usnadňující vývojářům vytvářet aplikace, které jsou funkční bez připojení k síti.
@@ -54,7 +46,7 @@ Následující kurzy ukazují, jak přidat offline synchronizaci do mobilních k
 ## <a name="what-is-a-sync-table"></a>Co je synchronizovaná tabulka?
 Pro přístup ke koncovému bodu "/Tables" poskytují sady SDK pro mobilní klienty Azure rozhraní, jako je například `IMobileServiceTable` (.NET Client SDK) nebo `MSTable` (klient iOS). Tato rozhraní API se připojují přímo k back-endu mobilní aplikace Azure a selžou, pokud v klientském zařízení není síťové připojení.
 
-Aby bylo možné podporu offline použít, měla by vaše aplikace místo toho používat rozhraní API pro *synchronizaci tabulek* , například `IMobileServiceSyncTable` (.NET Client SDK) nebo `MSSyncTable` (klient iOS). Všechny stejné operace CRUD (vytvoření, čtení, aktualizace, odstranění) práce s rozhraními API pro synchronizaci tabulek, s výjimkou případů, kdy se nyní čtou z *místního úložiště*nebo do něj zapisovat. Před provedením jakékoli operace synchronizace tabulek je nutné inicializovat místní úložiště.
+Aby bylo možné podporu offline použít, měla by vaše aplikace místo toho používat rozhraní API pro *synchronizaci tabulek* , jako je například `IMobileServiceSyncTable` (.NET Client SDK) nebo `MSSyncTable` (klient iOS). Všechny stejné operace CRUD (vytvoření, čtení, aktualizace, odstranění) práce s rozhraními API pro synchronizaci tabulek, s výjimkou případů, kdy se nyní čtou z *místního úložiště*nebo do něj zapisovat. Před provedením jakékoli operace synchronizace tabulek je nutné inicializovat místní úložiště.
 
 ## <a name="what-is-a-local-store"></a>Co je místní úložiště?
 Místní úložiště je vrstva trvalosti dat v klientském zařízení. Sady SDK pro klienty Azure Mobile Apps poskytují výchozí implementaci místního úložiště. Ve Windows, Xamarin a Androidu je založena na SQLite. V systému iOS je založena na základních datech.
@@ -74,9 +66,9 @@ Při použití synchronizačních tabulek váš klientský kód řídí, kdy se 
 * **Push**: Push je operace v kontextu synchronizace a odesílá všechny CUD změny od posledního vložení. Všimněte si, že není možné odesílat pouze změny jednotlivých tabulek, protože jiné operace mohou být odeslány mimo pořadí. Příkaz push spustí sérii volání REST do back-endu mobilních aplikací Azure, což zase upraví databázi serveru.
 * **Pull**: operace přijetí změn se provádí na bázi jednotlivých tabulek a dá se přizpůsobit pomocí dotazu, který načte jenom podmnožinu serverových dat. Sady SDK mobilních klientů Azure pak vloží výsledná data do místního úložiště.
 * **Implicitní nabízená oznámení**: Pokud se u tabulky, která čeká na místní aktualizace, spustí operaci vyžádání obsahu, vyžádá si nejprve `push()` v kontextu synchronizace. Tato nabízená oznámení pomáhají minimalizovat konflikty mezi změnami, které jsou už ve frontě, a novými daty ze serveru.
-* **Přírůstková synchronizace**: první parametr operace přijetí změn je *název dotazu* , který se používá pouze v klientovi. Pokud použijete název dotazu, který není null, Azure Mobile SDK provede *přírůstkovou synchronizaci*. Pokaždé, když operace vyžádání obsahu vrátí sadu výsledků, bude v tabulce místních systémových systémů sady SDK uloženo nejnovější časové razítko `updatedAt` z této sady výsledků. Následné operace Pull načítají pouze záznamy po tomto časovém razítku.
+* **Přírůstková synchronizace**: první parametr operace přijetí změn je *název dotazu* , který se používá pouze v klientovi. Pokud použijete název dotazu, který není null, Azure Mobile SDK provede *přírůstkovou synchronizaci*. Pokaždé, když operace vyžádání obsahu vrátí sadu výsledků, bude v tabulce v místních systémových tabulkách sady SDK uloženo nejnovější `updatedAt` časové razítko z této sady výsledků. Následné operace Pull načítají pouze záznamy po tomto časovém razítku.
 
-  Chcete-li použít přírůstkovou synchronizaci, váš server musí vracet smysluplné hodnoty `updatedAt` a musí také podporovat řazení podle tohoto pole. Vzhledem k tomu, že sada SDK přidává vlastní řazení do pole updatedAt, nemůžete použít dotaz Pull, který má svou vlastní klauzuli `orderBy`.
+  Chcete-li použít přírůstkovou synchronizaci, server musí vracet smysluplné `updatedAt` hodnoty a musí také podporovat řazení podle tohoto pole. Vzhledem k tomu, že sada SDK přidá své vlastní řazení do pole updatedAt, nemůžete použít dotaz Pull, který má svou vlastní klauzuli `orderBy`.
 
   Název dotazu může být libovolný řetězec, který si zvolíte, ale musí být jedinečný pro každý logický dotaz ve vaší aplikaci.
   V opačném případě můžou různé operace přijetí změn přepsat stejné časové razítko přírůstkového synchronizace a dotazy můžou vracet nesprávné výsledky.

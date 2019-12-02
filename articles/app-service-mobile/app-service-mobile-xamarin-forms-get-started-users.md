@@ -1,25 +1,17 @@
 ---
-title: Začínáme s ověřováním pro Mobile Apps v aplikaci Xamarin Forms | Microsoft Docs
-description: Naučte se používat Mobile Apps k ověřování uživatelů vaší aplikace Xamarin Forms prostřednictvím různých poskytovatelů identit, jako jsou AAD, Google, Facebook, Twitter a Microsoft.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Začínáme s ověřováním v aplikaci Xamarin Forms
+description: Naučte se používat Mobile Apps k ověřování uživatelů vaší aplikace Xamarin Forms pomocí zprostředkovatelů identity, jako jsou AAD, Google, Facebook, Twitter a Microsoft.
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: d9bd698535b09ecb5c484eefcbe31228eb99e04f
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 90d26d6469c5f3e238ac2410cdccb8ef5e0c160f
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388412"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668328"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Přidání ověřování do aplikace Xamarin Forms
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388412"
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Přehled
 V tomto tématu se dozvíte, jak ověřit uživatele App Service mobilní aplikace z klientské aplikace. V tomto kurzu přidáte do projektu pro rychlý Start formulářů Xamarin ověřování pomocí zprostředkovatele identity, který je podporován App Service. Po úspěšném ověření a autorizaci vaší mobilní aplikace se zobrazí hodnota ID uživatele a budete mít přístup k omezeným datům tabulky.
@@ -48,7 +40,7 @@ Zabezpečené ověřování vyžaduje, abyste pro svou aplikaci nadefinovali nov
 
 2. Klikněte na možnost nabídka **ověřování/autorizace** .
 
-3. Do pole **povolené externí adresy URL pro přesměrování**zadejte `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** v tomto řetězci představuje schéma adresy URL vaší mobilní aplikace.  Měla by následovat po běžné specifikaci adresy URL protokolu (použijte pouze písmena a čísla a začněte písmenem).  Měli byste si poznamenat řetězec, který si zvolíte, protože budete muset upravit kód mobilní aplikace pomocí schématu adresy URL na několika místech.
+3. Do pole **povolené externí adresy URL pro přesměrování**zadejte `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** v tomto řetězci je schéma adresy URL vaší mobilní aplikace.  Měla by následovat po běžné specifikaci adresy URL protokolu (použijte pouze písmena a čísla a začněte písmenem).  Měli byste si poznamenat řetězec, který si zvolíte, protože budete muset upravit kód mobilní aplikace pomocí schématu adresy URL na několika místech.
 
 4. Klikněte na **OK**.
 
@@ -67,7 +59,7 @@ Implementujte rozhraní **IAuthenticate** pro každou platformu, kterou vaše ap
 1. V aplikaci Visual Studio nebo Xamarin Studio otevřete App.cs z projektu s **přenosným** v názvu, který je Přenosná knihovna tříd projektu, a přidejte následující příkaz `using`:
 
         using System.Threading.Tasks;
-2. V App.cs přidejte následující definici rozhraní `IAuthenticate` bezprostředně před definicí třídy `App`.
+2. V App.cs přidejte následující definici rozhraní `IAuthenticate` těsně před definici třídy `App`.
 
         public interface IAuthenticate
         {
@@ -128,7 +120,7 @@ V této části se dozvíte, jak implementovat rozhraní **IAuthenticate** v pro
 
 1. V sadě Visual Studio nebo Xamarin Studio klikněte pravým tlačítkem na projekt **Droid** a pak **nastavte jako spouštěný projekt**.
 2. Stisknutím klávesy F5 spusťte projekt v ladicím programu a pak ověřte, že po spuštění aplikace je vyvolána neošetřená výjimka se stavovým kódem 401 (Neautorizováno). Kód 401 se vytvoří, protože přístup k back-endu je omezený jenom na autorizované uživatele.
-3. V projektu pro Android otevřete MainActivity.cs a přidejte následující příkazy `using`:
+3. Otevřete MainActivity.cs v projektu pro Android a přidejte následující příkazy `using`:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
@@ -185,7 +177,7 @@ V této části se dozvíte, jak implementovat rozhraní **IAuthenticate** v pro
     </activity>
     ```
     Nahraďte `{url_scheme_of_your_app}` vaším schématem URL.
-7. Do metody **Create** třídy **MainActivity** přidejte následující kód před voláním `LoadApplication()`:
+7. Přidejte následující kód do metody **Create** třídy **MainActivity** před voláním `LoadApplication()`:
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
@@ -195,7 +187,7 @@ V této části se dozvíte, jak implementovat rozhraní **IAuthenticate** v pro
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-**V aplikaci došlo k chybě s `Java.Lang.NoSuchMethodError: No static method startActivity`.**
+**V aplikaci došlo k chybě `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
 V některých případech jsou konflikty v balíčcích pro podporu zobrazeny jako upozornění v aplikaci Visual Studio, ale aplikace při běhu selže s touto výjimkou. V takovém případě je nutné se ujistit, že všechny balíčky podpory, na které se odkazuje v projektu, mají stejnou verzi. [Balíček NuGet pro mobilní aplikace Azure](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) má závislost `Xamarin.Android.Support.CustomTabs` pro platformu Android, takže pokud váš projekt používá novější balíčky podpory, je nutné nainstalovat přímo tento balíček s požadovanou verzi, aby nedocházelo ke konfliktům.
 

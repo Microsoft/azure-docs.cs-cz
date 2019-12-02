@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/25/2019
+ms.date: 11/27/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1faf6e4c9124d494507a124013d5fd8588f4b41b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8419ce5c5c7144008027a93f985d1f6ffdc1ced4
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934922"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669114"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -42,9 +42,9 @@ Minimální SAP HANA certifikované podmínky pro různé typy úložišť:
 - Azure Ultra disk alespoň pro svazek/Hana/log. Svazek/Hana/data se dá umístit buď do SSD úrovně Premium bez Akcelerátor zápisu Azure, nebo aby se dosáhlo rychlejšího restartování extrémně disku.
 - Svazky **systému souborů NFS v 4.1** nad Azure NetApp Files/Hana/log **a** /Hana/data. Svazek/Hana/Shared může používat protokol NFS v3 nebo NFS verze 4.1. Protokol NFS v 4.1 je povinný pro svazky/Hana/data a/Hana/protokolů.
 
-Některé typy úložišť lze kombinovat. Například je možné umístit/Hana/data do Premium Storage a/Hana/log je možné umístit do úložiště Ultra disk, aby se dosáhlo požadované nízké latence. Nedoporučuje se ale kombinovat svazky NFS pro například/Hana/data a používat jeden z dalších certifikovaných typů úložiště pro/Hana/log.
+Některé typy úložišť lze kombinovat. Například je možné umístit/Hana/data do Premium Storage a/Hana/log je možné umístit do úložiště Ultra disk, aby se dosáhlo požadované nízké latence. Pokud ale použijete svazek systému souborů NFS v 4.1 na základě ANF pro/Hana/data, budete muset použít jiný svazek NFS v 4.1 na základě ANF pro/Hana/log. Použití NFS na ANF pro jeden ze svazků (jako/Hana/data) a Azure Premium Storage nebo Ultra disk pro jiný svazek (jako/Hana/log) se **nepodporuje**.
 
-V místním světě se zřídka postará o subsystémech I/O a jeho schopnosti. Důvodem je, že dodavatel zařízení musí zajistit, aby byly splněny minimální požadavky na úložiště pro SAP HANA. Při sestavování infrastruktury Azure byste si měli být vědomi některých z těchto požadavků. Některé z vlastností minimální propustnosti, které jsou kladeny, mají za následek nutnost:
+V místním světě se zřídka postará o subsystémech I/O a jeho schopnosti. Důvodem je, že dodavatel zařízení musí zajistit, aby byly splněny minimální požadavky na úložiště pro SAP HANA. Při sestavování infrastruktury Azure byste si měli být vědomi některých z těchto požadavků na vydaných SAP. Některé z vlastností minimální propustnosti, které jsou požadovány pro SAP, mají za následek nutnost:
 
 - Povolit čtení a zápis v **/Hana/logu** s 250 MB/s a velikosti 1 MB vstupu/výstupu
 - Povolit aktivitu čtení minimálně 400 MB/s pro **/Hana/data** pro velikost I/O 16 mb a 64 MB
@@ -96,7 +96,7 @@ Níže uvedená doporučení pro ukládání do mezipaměti jsou popsána v para
 > [!NOTE]
 > V případě produkčních scénářů ověřte, jestli určitý typ virtuálního počítače podporuje SAP HANA SAP v [dokumentaci SAP pro IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
 
-
+Doporučení často překračují minimální požadavky SAP, jak je uvedeno výše v tomto článku. Uvedená doporučení představují kompromis mezi doporučeními velikosti podle SAP a maximální propustností úložiště, kterou poskytují různé typy virtuálních počítačů.
 
 **Doporučení: doporučené konfigurace pro produkční scénáře vypadají jako:**
 
@@ -114,7 +114,7 @@ Níže uvedená doporučení pro ukládání do mezipaměti jsou popsána v para
 | M416s_v2 | 5700 GiB | 2000 MB/s | 4 x P40 | 2 × P20 | 1 × P30 | 1 × P10 | 1 × P6 | 3 x P50 |
 | M416ms_v2 | 11400 GiB | 2000 MB/s | 8 × P40 | 2 × P20 | 1 × P30 | 1 × P10 | 1 × P6 | 4 x P50 |
 
-Typy virtuálních počítačů s M416xx_v2 ještě nejsou od Microsoftu k dispozici k veřejnému. Ověřte, zda propustnost úložiště pro různé navrhované svazky splňuje zatížení, které chcete spustit. Pokud zatížení vyžaduje větší objemy pro **/Hana/data** a **/Hana/log**, je potřeba zvýšit počet virtuálních pevných disků Azure Premium Storage. Změna velikosti svazku s více virtuálními disky, než je uvedené, zvyšuje počet IOPS a propustnost vstupně-výstupních operací v rámci omezení typu virtuálního počítače Azure.
+Ověřte, zda propustnost úložiště pro různé navrhované svazky splňuje zatížení, které chcete spustit. Pokud zatížení vyžaduje větší objemy pro **/Hana/data** a **/Hana/log**, je potřeba zvýšit počet virtuálních pevných disků Azure Premium Storage. Změna velikosti svazku s více virtuálními disky, než je uvedené, zvyšuje počet IOPS a propustnost vstupně-výstupních operací v rámci omezení typu virtuálního počítače Azure.
 
 Azure Akcelerátor zápisu funguje jenom ve spojení se službou [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Proto musí být alespoň disky Premium Storage Azure tvořící svazek **/Hana/log** nasazené jako spravované disky.
 
@@ -140,6 +140,7 @@ Následující tabulka uvádí konfiguraci typů virtuálních počítačů, kte
 > [!NOTE]
 > Změna z dřívějších doporučení pro řešení s vědomím nákladů je přechod z [HDD úrovně Standard disků Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd) na lepší výkon a spolehlivější [SSD úrovně Standard disky Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) .
 
+Doporučení často překračují minimální požadavky SAP, jak je uvedeno výše v tomto článku. Uvedená doporučení představují kompromis mezi doporučeními velikosti podle SAP a maximální propustností úložiště, kterou poskytují různé typy virtuálních počítačů.
 
 | SKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Nejvýše k VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /Hana/data a/Hana/log<br /> prokládaný pomocí LVM nebo MDADM | /hana/shared | Rozsah/root | /usr/sap | Hana a zálohování |
 | --- | --- | --- | --- | --- | --- | --- | -- |
@@ -161,7 +162,7 @@ Následující tabulka uvádí konfiguraci typů virtuálních počítačů, kte
 | M416ms_v2 | 11400 GiB | 2 000 MB/s | 8 × P40 | 1 × E30 | 1 × E10 | 1 × E6 |  4 x E50 |
 
 
-Typy virtuálních počítačů s M416xx_v2 ještě nejsou od Microsoftu k dispozici k veřejnému. Disky doporučené pro menší typy virtuálních počítačů se 3 x P20 neodesílá svazky týkající se doporučení místa podle dokumentu [White paper k úložišti SAP TDI](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Nicméně možnost zobrazená v tabulce byla provedena za účelem zajištění dostatečné propustnosti disku pro SAP HANA. Pokud budete potřebovat změny ve svazku **/Hana/Backup** , který měl velikost pro uchovávání záloh, které reprezentují dvojnásobek paměti, můžete ho klidně upravit.   
+Disky doporučené pro menší typy virtuálních počítačů se 3 x P20 neodesílá svazky týkající se doporučení místa podle dokumentu [White paper k úložišti SAP TDI](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Nicméně možnost zobrazená v tabulce byla provedena za účelem zajištění dostatečné propustnosti disku pro SAP HANA. Pokud budete potřebovat změny ve svazku **/Hana/Backup** , který měl velikost pro uchovávání záloh, které reprezentují dvojnásobek paměti, můžete ho klidně upravit.   
 Ověřte, zda propustnost úložiště pro různé navrhované svazky splňuje zatížení, které chcete spustit. Pokud zatížení vyžaduje větší objemy pro **/Hana/data** a **/Hana/log**, je potřeba zvýšit počet virtuálních pevných disků Azure Premium Storage. Změna velikosti svazku s více virtuálními disky, než je uvedené, zvyšuje počet IOPS a propustnost vstupně-výstupních operací v rámci omezení typu virtuálního počítače Azure. 
 
 > [!NOTE]
@@ -189,6 +190,8 @@ Dalšími výhodami extrémně disku může být lepší latence čtení v porov
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>Provozní řešení doporučené pro produkční úložiště s čistou konfigurací disků Ultra
 V této konfiguraci se svazky/Hana/data a/Hana/log udržují samostatně. Navrhované hodnoty jsou odvozeny mimo klíčové ukazatele výkonu, které SAP musí certifikovat typy virtuálních počítačů pro SAP HANA a konfigurace úložiště podle doporučení v dokumentu [White paper k úložišti SAP TDI](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html).
 
+Doporučení často překračují minimální požadavky SAP, jak je uvedeno výše v tomto článku. Uvedená doporučení představují kompromis mezi doporučeními velikosti podle SAP a maximální propustností úložiště, kterou poskytují různé typy virtuálních počítačů.
+
 | SKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Nejvýše k VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /Hana/data svazek | /Hana/data v/v – propustnost | /Hana/data IOPS | /Hana/log svazek | /Hana/log v/v – propustnost | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E64s_v3 | 432 GiB | 1 200 MB/s | 600 GB | 700 MB/s | 7 500 | 512 GB | 500 MB/s  | 2 000 |
@@ -204,13 +207,15 @@ V této konfiguraci se svazky/Hana/data a/Hana/log udržují samostatně. Navrho
 | M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 200 GB | 1 500 MB/s | 9 000 | 512 GB | 800 MB/s  | 3000 | 
 | M416ms_v2 | 11 400 GiB | 2 000 MB/s | 14 400 GB | 1 500 MB/s | 9 000 | 512 GB | 800 MB/s  | 3000 |   
 
-Typy virtuálních počítačů s M416xx_v2 ještě nejsou od Microsoftu k dispozici k veřejnému. Uvedené hodnoty mají být výchozím bodem a je nutné je vyhodnotit proti skutečným požadavkům. Výhodou pro Azure Ultra disk je, že hodnoty pro vstupně-výstupní operace a propustnost můžou být přizpůsobené bez nutnosti vypnout virtuální počítač nebo zastavit zatížení, které se v systému používá.   
+Uvedené hodnoty mají být výchozím bodem a je nutné je vyhodnotit proti skutečným požadavkům. Výhodou pro Azure Ultra disk je, že hodnoty pro vstupně-výstupní operace a propustnost můžou být přizpůsobené bez nutnosti vypnout virtuální počítač nebo zastavit zatížení, které se v systému používá.   
 
 > [!NOTE]
 > Zatím nejsou k dispozici snímky úložiště s úložištěm Ultra disk. Tím se zablokuje použití snímků virtuálních počítačů s Azure Backup službami.
 
-### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>Provozní řešení doporučené pro produkční úložiště s čistou konfigurací disků Ultra
-V této konfiguraci jsou svazky/Hana/data a/Hana/log na stejném disku. Navrhované hodnoty jsou odvozeny mimo klíčové ukazatele výkonu, které SAP musí certifikovat typy virtuálních počítačů pro SAP HANA a konfigurace úložiště podle doporučení v dokumentu [White paper k úložišti SAP TDI](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html).
+### <a name="cost-conscious-storage-solution-with-pure-ultra-disk-configuration"></a>Řešení úložiště s důrazem na náklady s čistou konfigurací disků Ultra
+V této konfiguraci jsou svazky/Hana/data a/Hana/log na stejném disku. Navrhované hodnoty jsou odvozeny mimo klíčové ukazatele výkonu, které SAP musí certifikovat typy virtuálních počítačů pro SAP HANA a konfigurace úložiště podle doporučení v dokumentu [White paper k úložišti SAP TDI](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). 
+
+Doporučení často překračují minimální požadavky SAP, jak je uvedeno výše v tomto článku. Uvedená doporučení představují kompromis mezi doporučeními velikosti podle SAP a maximální propustností úložiště, kterou poskytují různé typy virtuálních počítačů.
 
 | SKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Nejvýše k VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | Svazek pro/Hana/data a/log | /Hana/data a propustnost vstupně-výstupních operací protokolu | /Hana/data a log IOPS |
 | --- | --- | --- | --- | --- | --- |
@@ -227,13 +232,13 @@ V této konfiguraci jsou svazky/Hana/data a/Hana/log na stejném disku. Navrhova
 | M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 700 GB | 1, 800MBps | 12 000 |  
 | M416ms_v2 | 11 400 GiB | 2 000 MB/s | 15 000 GB | 1 800 MB/s | 12 000 |    
 
-Typy virtuálních počítačů s M416xx_v2 ještě nejsou od Microsoftu k dispozici k veřejnému. Uvedené hodnoty mají být výchozím bodem a je nutné je vyhodnotit proti skutečným požadavkům. Výhodou pro Azure Ultra disk je, že hodnoty pro vstupně-výstupní operace a propustnost můžou být přizpůsobené bez nutnosti vypnout virtuální počítač nebo zastavit zatížení, které se v systému používá.  
+Uvedené hodnoty mají být výchozím bodem a je nutné je vyhodnotit proti skutečným požadavkům. Výhodou pro Azure Ultra disk je, že hodnoty pro vstupně-výstupní operace a propustnost můžou být přizpůsobené bez nutnosti vypnout virtuální počítač nebo zastavit zatížení, které se v systému používá.  
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Svazky NFS v 4.1 na Azure NetApp Files
 Azure NetApp Files poskytuje nativní sdílené složky systému souborů NFS, které se dají použít pro svazky/Hana/Shared,/Hana/data a/Hana/log. Použití sdílených složek systému souborů NFS založených na ANF pro svazky/Hana/data a/Hana/log vyžaduje použití protokolu NFS v 4.1. Protokol NFS verze 3 není podporován pro použití/Hana/data a/Hana/log svazků při založení sdílených složek na ANF. 
 
 > [!IMPORTANT]
-> Protokol NFS v3 implementovaný v Azure NetApp Files není podporován pro použití pro/Hana/data a/Hana/log. Použití NFS 4,1 je povinné pro svazky/Hana/data a/Hana/log z funkčního bodu zobrazení. Vzhledem k tomu, že je možné použít pro svazek/Hana/Shared systém souborů NFS v3 nebo NFS verze 4.1, ze funkčního hlediska.
+> Protokol NFS v3 implementovaný v Azure NetApp Files **není podporován pro** použití pro/Hana/data a/Hana/log. Použití NFS 4,1 je povinné pro svazky/Hana/data a/Hana/log z funkčního bodu zobrazení. Vzhledem k tomu, že je možné použít pro svazek/Hana/Shared systém souborů NFS v3 nebo NFS verze 4.1, ze funkčního hlediska.
 
 ### <a name="important-considerations"></a>Důležité informace
 Při zvažování Azure NetApp Files SAP NetWeaver a SAP HANA si pamatujte na následující důležité informace:
@@ -245,20 +250,20 @@ Při zvažování Azure NetApp Files SAP NetWeaver a SAP HANA si pamatujte na n�
 - Propustnost svazku Azure NetApp je funkcí kvóty svazku a úrovně služeb, jak je uvedeno v části [úroveň služby pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels). Při změně velikosti svazků NetApp HANA Azure se ujistěte, že výsledná propustnost splňuje požadavky na systém HANA.  
 - Azure NetApp Files nabízí [zásady exportu](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): můžete řídit povolené klienty, typ přístupu (čtení & zápisu, jen pro čtení atd.). 
 - Azure NetApp Files funkce zatím nereaguje na zóny. Aktuálně Azure NetApp Files funkce není nasazená ve všech zónách dostupnosti v oblasti Azure. Mějte na paměti, že v některých oblastech Azure máte vliv na potenciální latenci.  
-- Je důležité mít virtuální počítače nasazené v těsné blízkosti úložiště Azure NetApp pro nízkou latenci. Pro úlohy SAP HANA nízká latence je kritická. Spolupracujte se zástupcem Microsoftu a zajistěte, aby se virtuální počítače a Azure NetApp Files svazky nasadily v těsné blízkosti.  
+- Je důležité mít virtuální počítače nasazené v těsné blízkosti úložiště Azure NetApp pro nízkou latenci. 
 - ID uživatele <b>pro ADM a ID skupiny pro `sapsys`</b>na virtuálních počítačích se musí shodovat s konfigurací v Azure NetApp Files. 
 
 > [!IMPORTANT]
-> Pro úlohy SAP HANA nízká latence je kritická. Spolupracujte se zástupcem Microsoftu a zajistěte, aby se virtuální počítače a Azure NetApp Files svazky nasadily v těsné blízkosti.  
+> U SAP HANA úloh je nízká latence kritická. Spolupracujte se zástupcem Microsoftu a zajistěte, aby se virtuální počítače a Azure NetApp Files svazky nasadily v těsné blízkosti.  
 
 > [!IMPORTANT]
-> Pokud dojde k neshodě mezi ID uživatele pro <b>ADM a ID skupiny pro `sapsys`</b>mezi virtuálním počítačem a konfigurací Azure NetApp, zobrazí se jako `nobody` oprávnění pro soubory na svazcích Azure NetApp připojené k virtuálním počítačům. Nezapomeňte zadat správné ID uživatele pro ADM s <b>identifikátorem SID</b>a ID skupiny pro `sapsys` při [připojování nového systému](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) k Azure NetApp Files.
+> Pokud dojde k neshodě mezi ID uživatele pro <b>ADM a ID skupiny pro `sapsys`</b>mezi virtuálním počítačem a konfigurací Azure NetApp, zobrazí se jako `nobody`oprávnění pro soubory na svazcích Azure NetApp připojené k virtuálním počítačům. Nezapomeňte zadat správné ID uživatele pro ADM s <b>identifikátorem SID</b>a ID skupiny pro `sapsys`při [připojování nového systému](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) k Azure NetApp Files.
 
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Určení velikosti databáze HANA v Azure NetApp Files
 
 Propustnost svazku Azure NetApp je funkce velikosti svazku a úrovně služby, jak je uvedeno v části [úroveň služby pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels). 
 
-Při návrhu infrastruktury pro SAP v Azure byste měli znát minimální požadavky na úložiště, které SAP podporuje, a překládat je na minimální propustnost:
+Při návrhu infrastruktury pro SAP v Azure byste měli znát minimální požadavky na propustnost úložiště v SAP, která se přeloží na minimální propustnost:
 
 - Povolit čtení a zápis v/Hana/logu s 250 MB/s a velikosti 1 MB vstupu/výstupu  
 - Povolit aktivitu čtení minimálně 400 MB/s pro/Hana/data pro velikost I/O 16 MB a 64 MB  
@@ -276,18 +281,11 @@ Aby splňovala požadavky na minimální propustnost SAP pro data a protokol a p
 | /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
 | /hana/shared | Max (512 GB, 1xRAM) na 4 pracovní uzly | Max (512 GB, 1xRAM) na 4 pracovní uzly | V3 nebo v 4.1 |
 
-Konfigurace SAP HANA pro rozložení prezentovaná v tomto článku by mohla pomocí Azure NetApp Files úrovně Ultra Storage vypadat takto:
-
-| Svazek | Velikost<br /> Úroveň úložiště Ultra Storage | Podporovaný protokol NFS |
-| --- | --- |
-| /hana/log/mnt00001 | 2 TiB | v 4.1 |
-| /hana/log/mnt00002 | 2 TiB | v 4.1 |
-| /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
-| /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
-| /hana/shared | 2 TiB | V3 nebo v 4.1 |
 
 > [!NOTE]
 > Tady uvedená doporučení pro změny velikosti Azure NetApp Files cílí na to, aby splňovala minimální požadavky SAP na jejich poskytovatele infrastruktury. V reálných scénářích nasazení zákazníků a úloh, které nemusí být dostatečné. Tato doporučení použijte jako výchozí bod a přizpůsobte je na základě požadavků konkrétního zatížení.  
+
+Proto byste měli zvážit, jak nasadit podobnou propustnost pro ANF svazky, jak je uvedeno pro úložiště Ultra disk již. Vezměte v úvahu také velikosti pro velikosti uvedené pro svazky pro různé skladové položky virtuálních počítačů, které jsou v tabulkách s Ultra diskem již provedeny.
 
 > [!TIP]
 > Velikost svazků Azure NetApp Files lze dynamicky měnit bez nutnosti `unmount` svazků, zastavení virtuálních počítačů nebo zastavení SAP HANA. To umožňuje flexibilitu v závislosti na očekávané i nepředvídatelné propustnosti požadavků.

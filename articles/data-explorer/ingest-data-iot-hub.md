@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cbad0e5409dfaa25eda040e3c7409b49728a4169
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028470"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667409"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Ingestování dat z IoT Hub do Azure Průzkumník dat (Preview)
 
@@ -20,17 +20,15 @@ ms.locfileid: "72028470"
 > * [Azure Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Šablona Azure Resource Manageru](data-connection-iot-hub-resource-manager.md)
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) od IoT Hub, platformy pro streamování velkých objemů dat a služby ingestování IoT.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-
 * Vytvořte [testovací cluster a databázi](create-cluster-database-portal.md) s názvem databáze *TestDB*.
-
 * [Ukázková aplikace](https://github.com/Azure-Samples/azure-iot-samples-csharp) a dokumentace pro simulaci zařízení
-
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) pro spuštění ukázkové aplikace.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
@@ -116,7 +114,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
 
 1. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
 
-    Nahraďte hodnotu proměnné `s_connectionString` připojovacím řetězcem zařízení a [Zaregistrujte zařízení do IoT Hub](#register-a-device-to-the-iot-hub). Změny pak uložte do souboru **SimulatedDevice.cs**.
+    Nahraďte hodnotu `s_connectionString` proměnné připojovacím řetězcem zařízení z [registrace zařízení do IoT Hub](#register-a-device-to-the-iot-hub). Změny pak uložte do souboru **SimulatedDevice.cs**.
 
 1. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované balíčky pro aplikaci simulovaného zařízení:
 

@@ -1,24 +1,17 @@
 ---
-title: Jak používat sadu iOS SDK pro Azure Mobile Apps
+title: Použití sady iOS SDK
 description: Jak používat sadu iOS SDK pro Azure Mobile Apps
-services: app-service\mobile
-documentationcenter: ios
-author: elamalani
-editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 175351d6bab6cc6aee06b83bdeb8544c2e7c2d24
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9860ab6b16c6639581d0bcd1783d43f420f88d74
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435396"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668432"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Jak používat klientskou knihovnu iOS pro Azure Mobile Apps
 
@@ -57,7 +50,7 @@ Pokud chcete získat přístup k back-endu Azure Mobile Apps v projektu, vytvoř
 MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 let client = MSClient(applicationURLString: "AppUrl")
@@ -73,7 +66,7 @@ Pro přístup k datům a jejich aktualizaci vytvořte odkaz na back-endovou tabu
 MSTable *table = [client tableWithName:@"TodoItem"];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 let table = client.tableWithName("TodoItem")
@@ -97,7 +90,7 @@ Chcete-li vytvořit databázový dotaz, proveďte dotaz na objekt `MSTable`. Ná
 }];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 table.readWithCompletion { (result, error) in
@@ -134,7 +127,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 }];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 // Create a predicate that finds items where complete is false
@@ -162,7 +155,7 @@ MSQuery *query = [table query];
 MSQuery *query = [table queryWithPredicate: [NSPredicate predicateWithFormat:@"complete == NO"]];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 let query = table.query()
@@ -200,7 +193,7 @@ Pokud chcete výsledky seřadit, Podívejme se na příklad. Pokud chcete řadit
 }];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 query.orderByAscending("text")
@@ -226,7 +219,7 @@ Chcete-li omezit pole, která mají být vrácena v dotazu, zadejte názvy polí
 query.selectFields = @[@"text", @"complete"];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 query.selectFields = ["text", "complete"]
@@ -243,7 +236,7 @@ query.parameters = @{
 };
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
@@ -275,7 +268,7 @@ Pokud zvětšíte velikost stránky klienta, měli byste také zvětšit velikos
                            }];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 let pullSettings = MSPullSettings(pageSize: 3)
@@ -307,7 +300,7 @@ NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"comple
 }];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 let newItem = ["id": "custom-id", "text": "my new item", "complete": false]
@@ -338,7 +331,7 @@ NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
 }];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
@@ -367,7 +360,7 @@ Případně zadejte ID řádku a aktualizované pole:
 }];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
@@ -397,7 +390,7 @@ Chcete-li odstranit položku, volejte `delete` s položkou:
 }];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
@@ -423,7 +416,7 @@ Případně můžete odstranit zadáním ID řádku:
 }];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
@@ -460,7 +453,7 @@ Chcete-li volat vlastní rozhraní API, zavolejte `MSClient.invokeAPI`. Obsah ž
             }];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 client.invokeAPI("sendEmail",
@@ -492,7 +485,7 @@ Chcete-li registrovat šablony, předejte šablony pomocí metody **Client. push
 }];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { (error) in
@@ -510,7 +503,7 @@ client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { 
 NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"alert": @"$(message)" } } } };
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
@@ -530,7 +523,7 @@ Soubor [`<WindowsAzureMobileServices/MSError.h>`][6] definuje konstanty `MSError
 NSDictionary *serverItem = [error.userInfo objectForKey:MSErrorServerItemKey];
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 let serverItem = error.userInfo[MSErrorServerItemKey]
@@ -544,7 +537,7 @@ Kromě toho soubor definuje konstanty pro každý kód chyby:
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 if (error.code == MSErrorPreconditionFailed) {
@@ -609,7 +602,7 @@ K podepisování uživatelů do aplikace pomocí Azure Active Directory můžete
 }
 ```
 
-**Swift**:
+**SWIFT**:
 
 ```swift
 // add the following imports to your bridging header:
@@ -692,7 +685,7 @@ Můžete použít sadu Facebook SDK pro iOS k podepisování uživatelů do vaš
     }
     ```
 
-    **Swift**:
+    **SWIFT**:
 
     ```swift
     // Add the following imports to your bridging header:
@@ -743,7 +736,7 @@ K podepisování uživatelů do aplikace pomocí služby Twitter můžete použ�
     }
     ```
 
-    **Swift**:
+    **SWIFT**:
 
     ```swift
     import Fabric
@@ -780,7 +773,7 @@ K podepisování uživatelů do aplikace pomocí služby Twitter můžete použ�
     }
     ```
 
-    **Swift**:
+    **SWIFT**:
 
     ```swift
     import TwitterKit
@@ -818,7 +811,7 @@ K podepisování uživatelů do vaší aplikace pomocí účtu Google můžete p
     }];
     ```
 
-    **Swift**:
+    **SWIFT**:
 
     ```swift
     let payload: [String: String] = ["id_token": user.authentication.idToken, "authorization_code": user.serverAuthCode]
@@ -835,7 +828,7 @@ K podepisování uživatelů do vaší aplikace pomocí účtu Google můžete p
     [GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
     ```
 
-     **Swift**:
+     **SWIFT**:
 
     ```swift
     GIDSignIn.sharedInstance().serverClientID = "SERVER_CLIENT_ID"
@@ -856,7 +849,7 @@ K podepisování uživatelů do vaší aplikace pomocí účtu Google můžete p
     }
     ```
 
-   **Swift**:
+   **SWIFT**:
 
     ```swift
     // ...

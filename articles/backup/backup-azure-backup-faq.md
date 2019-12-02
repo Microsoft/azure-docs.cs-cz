@@ -3,12 +3,12 @@ title: Odpovědi na časté otázky
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: f95a4e7e9084c304838b01bdfaceee261d8151cf
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4005b171ef61fa02821b4a32db3be26cfb94c9ff
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173228"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668081"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – často kladené otázky
 
@@ -88,7 +88,7 @@ Windows Server 2016 64 – bit | Standard, Datacenter, Essentials | S nejnověj�
 Windows Server 2012 R2 64 bitů | Standard, Datacenter, Foundation | S nejnovějšími aktualizacemi nebo aktualizacemi Service Pack.
 Windows Server 2012 64 – bit | Datacenter, Foundation, Standard | S nejnovějšími aktualizacemi nebo aktualizacemi Service Pack.
 Windows Storage Server 2016 64 – bit | Standard, Workgroup | S nejnovějšími aktualizacemi nebo aktualizacemi Service Pack.
-Windows Storage Server 2012 R2 64 bit | Standard, Workgroup, Essential | S nejnovějšími aktualizacemi nebo aktualizacemi Service Pack.
+Windows Storage Server 2012 R2 64 bit | Standard, pracovní skupina, nezbytný | S nejnovějšími aktualizacemi nebo aktualizacemi Service Pack.
 Windows Storage Server 2012 64 – bit | Standard, Workgroup | S nejnovějšími aktualizacemi nebo aktualizacemi Service Pack.
 Windows Server 2008 R2 SP1 64 bit | Standard, Enterprise, Datacenter, Foundation | S nejnovějšími aktualizacemi.
 Windows Server 2008 64 – bit | Standard, Enterprise, Datacenter | S nejnovějšími aktualizacemi.
@@ -116,7 +116,7 @@ Následující tabulka vysvětluje, jak je určená velikost jednotlivých zdroj
 **Zdroj dat** | **Podrobnosti**
 --- | ---
 Svazek |Množství zálohovaných dat z zálohovaného virtuálního počítače s jedním svazkem.
-Databáze systému SQL Server |Velikost samostatné velikosti databáze SQL.
+SQL Server databáze |Velikost samostatné velikosti databáze SQL.
 SharePoint | Součet databází s obsahem a konfigurací v rámci farmy služby SharePoint, která se zálohuje.
 Exchange |Součet všech databází serveru Exchange v zálohovaném serveru Exchange.
 BMR nebo stav systému |Každou jednotlivou kopii BMR nebo stavu systému zálohovaného počítače.
@@ -176,7 +176,7 @@ Architektura úložiště Azure Backup nabízí to nejlepší z obou světů –
 
 Na jednu chráněnou instanci je možné vytvořit až 9 999 bodů obnovení. Chráněná instance je počítač, Server (fyzický nebo virtuální) nebo zatížení, které se zálohuje do Azure.
 
-- Přečtěte si další informace o [zálohování a uchovávání](./backup-overview.md#backup-and-retention).
+- Přečtěte si další informace o [zálohování a uchovávání](./backup-support-matrix.md).
 
 ### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Kolikrát můžu obnovit data zálohovaná do Azure?
 

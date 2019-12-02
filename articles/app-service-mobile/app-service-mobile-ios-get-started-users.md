@@ -1,25 +1,17 @@
 ---
-title: Přidání ověřování v iOS pomocí Azure Mobile Apps
-description: Naučte se používat Azure Mobile Apps k ověřování uživatelů vaší aplikace pro iOS prostřednictvím různých poskytovatelů identit, jako jsou AAD, Google, Facebook, Twitter a Microsoft.
-services: app-service\mobile
-documentationcenter: ios
-author: elamalani
-manager: crdun
-editor: ''
+title: Přidání ověřování v iOS
+description: Naučte se používat Azure Mobile Apps k ověřování uživatelů vaší aplikace pro iOS prostřednictvím poskytovatelů identit, jako jsou AAD, Google, Facebook, Twitter a Microsoft.
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 800d86750f091404ee7f940d7cf8f6631e3fbbeb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 925894cab00537cb9aeb03ca05c9699bb4bf6a84
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388699"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668456"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Přidání ověřování do aplikace pro iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +19,7 @@ ms.locfileid: "72388699"
 > [!NOTE]
 > Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
 >
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 V tomto kurzu přidáte do projektu [rychlý Start pro iOS] ověřování pomocí podporovaného zprostředkovatele identity. Tento kurz je založený na [rychlý Start pro iOS] , který musíte nejdřív provést.
 
@@ -86,7 +78,7 @@ V Xcode spusťte aplikaci stisknutím klávesy **Run** . Vyvolá se výjimka, pr
 
     Nahraďte **urlScheme** jedinečným názvem vaší aplikace.  UrlScheme by měl být stejný jako protokol schématu adresy URL, který jste zadali v poli **povolené adresy URL externích přesměrování** v Azure Portal. UrlScheme používá zpětné volání ověřování k přepínání zpátky do aplikace po dokončení žádosti o ověření.
 
-2. Nahraďte `[self refresh]` v `viewDidLoad` v *QSTodoListViewController. m* následujícím kódem:
+2. `[self refresh]` v `viewDidLoad` v *QSTodoListViewController. m* nahraďte následujícím kódem:
 
     ```Objective-C
     [self loginAndGetData];
@@ -133,9 +125,9 @@ V Xcode spusťte aplikaci stisknutím klávesy **Run** . Vyvolá se výjimka, pr
     </array>
     ```
 
-    Tento kód by měl být umístěn uvnitř elementu `<dict>`.  Nahraďte řetězec _AppName_ (v rámci pole pro **CFBundleURLSchemes**) názvem aplikace, který jste zvolili v kroku 1.  Tyto změny můžete provést také v editoru plist – kliknutím na soubor `AppName-Info.plist` v XCode otevřete Editor plist.
+    Tento kód by měl být umístěn uvnitř prvku `<dict>`.  Nahraďte řetězec _AppName_ (v rámci pole pro **CFBundleURLSchemes**) názvem aplikace, který jste zvolili v kroku 1.  Tyto změny můžete provést také v editoru plist – kliknutím na soubor `AppName-Info.plist` v XCode otevřete Editor plist.
 
-    Nahraďte řetězec `com.microsoft.azure.zumo` pro **CFBundleURLName** pomocí identifikátoru Apple sady prostředků.
+    Řetězec `com.microsoft.azure.zumo` pro **CFBundleURLName** nahraďte identifikátorem Apple sady.
 
 6. Stisknutím klávesy *Run* spusťte aplikaci a pak se přihlaste. Když jste přihlášeni, měli byste být schopni zobrazit seznam úkolů a provést aktualizace.
 
@@ -172,13 +164,13 @@ V Xcode spusťte aplikaci stisknutím klávesy **Run** . Vyvolá se výjimka, pr
 
     Nahraďte **urlScheme** jedinečným názvem vaší aplikace.  UrlScheme by měl být stejný jako protokol schématu adresy URL, který jste zadali v poli **povolené adresy URL externích přesměrování** v Azure Portal. UrlScheme používá zpětné volání ověřování k přepínání zpátky do aplikace po dokončení žádosti o ověření.
 
-2. Odebere řádky `self.refreshControl?.beginRefreshing()` a `self.onRefresh(self.refreshControl)` na konci `viewDidLoad()` v *ToDoTableViewController. SWIFT*. Přidejte volání `loginAndGetData()` na svém místě:
+2. Odebere řádky `self.refreshControl?.beginRefreshing()` a `self.onRefresh(self.refreshControl)` na konci `viewDidLoad()` v *ToDoTableViewController. SWIFT*. Přidejte na místo `loginAndGetData()` volání:
 
     ```swift
     loginAndGetData()
     ```
 
-3. Otevřete soubor `AppDelegate.swift` a přidejte následující řádek do třídy `AppDelegate`:
+3. Otevřete soubor `AppDelegate.swift` a přidejte následující řádek do `AppDelegate` třídy:
 
     ```swift
     var todoTableViewController: ToDoTableViewController?
@@ -211,9 +203,9 @@ V Xcode spusťte aplikaci stisknutím klávesy **Run** . Vyvolá se výjimka, pr
     </array>
     ```
 
-    Tento kód by měl být umístěn uvnitř elementu `<dict>`.  Nahraďte řetězec _AppName_ (v rámci pole pro **CFBundleURLSchemes**) názvem aplikace, který jste zvolili v kroku 1.  Tyto změny můžete provést také v editoru plist – kliknutím na soubor `AppName-Info.plist` v XCode otevřete Editor plist.
+    Tento kód by měl být umístěn uvnitř prvku `<dict>`.  Nahraďte řetězec _AppName_ (v rámci pole pro **CFBundleURLSchemes**) názvem aplikace, který jste zvolili v kroku 1.  Tyto změny můžete provést také v editoru plist – kliknutím na soubor `AppName-Info.plist` v XCode otevřete Editor plist.
 
-    Nahraďte řetězec `com.microsoft.azure.zumo` pro **CFBundleURLName** pomocí identifikátoru Apple sady prostředků.
+    Řetězec `com.microsoft.azure.zumo` pro **CFBundleURLName** nahraďte identifikátorem Apple sady.
 
 5. Stisknutím klávesy *Run* spusťte aplikaci a pak se přihlaste. Když jste přihlášeni, měli byste být schopni zobrazit seznam úkolů a provést aktualizace.
 
