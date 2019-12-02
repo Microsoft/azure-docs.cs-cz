@@ -1,6 +1,6 @@
 ---
-title: Principy Azure Security Center pro místní konfigurační soubor agenta pro C# | Microsoft Docs
-description: Přečtěte si o Azure Security Center pro místní konfigurační soubor C#agenta pro.
+title: Principy Azure Security Center pro místní konfigurační soubor služby IoT Agent zabezpečení C# pro | Microsoft Docs
+description: Přečtěte si další informace o Azure Security Center pro služby zabezpečení IoT, místní konfigurační soubor agenta C#zabezpečení pro.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cc7b9f0b6e537ca3bdcbb82a357b2f2b9451fab0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600628"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664185"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Porozumění místnímu konfiguračnímu souboruC# (Agent)
 
@@ -39,7 +39,7 @@ Konfigurační soubory obsahují výchozí konfiguraci. Konfigurace ověřován�
 
 ## <a name="configuration-file-location"></a>Umístění konfiguračního souboru
 Pro Linux:
-- Konfigurační soubory operačního systému jsou umístěny v `/var/ASCIoTAgent`.
+- Konfigurační soubory operačního systému se nacházejí v `/var/ASCIoTAgent`.
 
 Ve Windows:
 - Konfigurační soubory operačního systému se nacházejí v adresáři agenta zabezpečení. 
@@ -48,13 +48,13 @@ Ve Windows:
 
 | Název konfigurace | Možné hodnoty | Podrobnosti | 
 |:-----------|:---------------|:--------|
-| ID agenta | GUID | Jedinečný identifikátor agenta |
+| ID agenta | HLAVNÍCH | Jedinečný identifikátor agenta |
 | readRemoteConfigurationTimeout | TimeSpan | Časové období načítání vzdálené konfigurace z IoT Hub. Pokud Agent nemůže v zadaném čase načíst konfiguraci, bude časový limit operace vypršel.|
 | schedulerInterval | TimeSpan | Interval interního plánovače. |
 | producerInterval | TimeSpan | Interval pracovního procesu producenta události |
 | consumerInterval | TimeSpan | Interval pracovního procesu pro uživatele události |
 | highPriorityQueueSizePercentage | 0 < číslo < 1 | Část celkové mezipaměti vyhrazená pro zprávy s vysokou prioritou. |
-| logLevel | "Vypnuto", "závažná", "Chyba", "upozornění", "informace", "ladění"  | Zprávy protokolu rovnající se této závažnosti se budou protokolovat do ladicí konzoly (syslog v systému Linux). |
+| LogLevel | "Vypnuto", "závažná", "Chyba", "upozornění", "informace", "ladění"  | Zprávy protokolu rovnající se této závažnosti se budou protokolovat do ladicí konzoly (syslog v systému Linux). |
 | LogLevel |  "Vypnuto", "závažná", "Chyba", "upozornění", "informace", "ladění"| Zprávy protokolu rovnající se této závažnosti se budou protokolovat do souboru (syslog v Linux). |
 | diagnosticVerbosityLevel | None, "All", "All", | Úroveň podrobností diagnostických událostí. Žádné – neodesílají se diagnostické události, odesílají se jenom diagnostické události s vysokou důležitostí, všechny protokoly se také odesílají jako diagnostické události. |
 | logFilePath | Cesta k souboru | Pokud > vypnuto, protokoly se zapisují do tohoto souboru. |
@@ -82,15 +82,15 @@ Ve Windows:
 
 | Název konfigurace | Možné hodnoty | Podrobnosti | 
 |:-----------|:---------------|:--------|
-| moduleName | řetězec | Název identity modulu zabezpečení Tento název musí odpovídat názvu identity modulu v zařízení. |
-| deviceId | řetězec | ID zařízení (registrované v Azure IoT Hub) || schedulerInterval | Řetězec TimeSpan | Interval interního plánovače. |
-| gatewayHostname | řetězec | Název hostitele služby Azure IoT Hub. Obvykle < >u mého centra. Azure – devices.net |
+| moduleName | string | Název identity modulu zabezpečení Tento název musí odpovídat názvu identity modulu v zařízení. |
+| deviceId | string | ID zařízení (registrované v Azure IoT Hub) || schedulerInterval | Řetězec TimeSpan | Interval interního plánovače. |
+| gatewayHostname | string | Název hostitele služby Azure IoT Hub. Obvykle < >u mého centra. Azure – devices.net |
 | filePath | řetězec – cesta k souboru | Cesta k souboru, který obsahuje tajný klíč ověřování.|
 | type | "SymmetricKey", "SelfSignedCertificate" | Tajný klíč uživatele pro ověřování. Pokud je tajný klíč uživatele symetrický klíč, vyberte *SymmetricKey* . Pokud je tajný kód certifikát podepsaný svým držitelem, vyberte *certifikát podepsaný držitelem* . |
-| identity | "DPS", "Module", "Device" | Ověřování identity – DPS Pokud se provádí ověření prostřednictvím DPS, modul, pokud se provádí ověřování pomocí přihlašovacích údajů modulu, nebo zařízení, pokud se provádí ověřování pomocí přihlašovacích údajů k zařízení.
+| identita | "DPS", "Module", "Device" | Ověřování identity – DPS Pokud se provádí ověření prostřednictvím DPS, modul, pokud se provádí ověřování pomocí přihlašovacích údajů modulu, nebo zařízení, pokud se provádí ověřování pomocí přihlašovacích údajů k zařízení.
 | certificateLocationKind |  "Místní_soubor", "Store" | Místní_soubor Pokud je certifikát uložen v souboru, uloží se, pokud se certifikát nachází v úložišti certifikátů. |
-| idScope | řetězec | Rozsah ID v DPS |
-| registrationId | řetězec  | ID registrace zařízení DPS. |
+| idScope | string | Rozsah ID v DPS |
+| registrationId | string  | ID registrace zařízení DPS. |
 |
 
 ### <a name="authenticationconfig-example"></a>Příklad ověřování. config
@@ -123,11 +123,11 @@ Ve Windows:
 </ExternalInterface>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si [Přehled](overview.md) služby Azure Security Center for IoT.
 - Další informace o [architektuře](architecture.md) Azure Security Center pro IoT
 - Povolení služby Azure Security Center pro [službu](quickstart-onboard-iot-hub.md) IoT
 - Přečtěte si [Nejčastější dotazy](resources-frequently-asked-questions.md) ke službě Azure Security Center for IoT
-- Přečtěte si, jak získat přístup k nezpracovaným [datům zabezpečení](how-to-security-data-access.md)
+- Přečtěte si, jak získat přístup k [nezpracovaným datům zabezpečení](how-to-security-data-access.md)
 - Vysvětlení [doporučení](concept-recommendations.md)
 - Vysvětlení [výstrah](concept-security-alerts.md) zabezpečení

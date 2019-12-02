@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: 46187aa1d4e0670b45aeeafd643f541ab90fb9a7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326750"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665181"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních aplikací pomocí jazyka Java
 
@@ -23,11 +23,11 @@ Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API 
 
 Tato ukázková aplikace získá data místní odpovědi z rozhraní API pro vyhledávací dotaz `hotel in Bellevue`.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Sada Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraním API pro vyhledávání Bingu. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pokud aktivujete bezplatnou zkušební verzi, budete potřebovat přístupový klíč.  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraním API pro vyhledávání Bingu. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pokud aktivujete bezplatnou zkušební verzi, budete potřebovat přístupový klíč.  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Tato ukázková aplikace získá data místních odpovědí z dotazu na *Hotel v Bellevue*.
 
@@ -35,7 +35,7 @@ Tato ukázková aplikace získá data místních odpovědí z dotazu na *Hotel v
 
 Následující kód vytvoří `WebRequest`, nastaví hlavičku přístupového klíče a přidá řetězec dotazu pro "Hotel v Bellevue".  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
 
-```
+```java
     // construct URL of search request (endpoint + query string)
      URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -53,12 +53,12 @@ Následující kód vytvoří `WebRequest`, nastaví hlavičku přístupového k
 
 Rozhraní API služby Bing pro hledání v místním obchodu vrátí výsledky z vyhledávacího stroje Bingu.
 1. Stáhněte nebo nainstalujte knihovnu gson.
-2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java.
+2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy.
 3. Přidejte níže uvedený kód.
 4. Hodnotu subscriptionKey nahraďte přístupovým klíčem platným pro vaše předplatné.
 5. Spusťte program.
 
-```
+```java
 package localSearch;
 import java.net.*;
 import java.util.*;

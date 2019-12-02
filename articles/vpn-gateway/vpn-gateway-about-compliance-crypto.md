@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: f18e5dbdc257aa1ae647505c323c17f9f197d360
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150991"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666490"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>O kryptografických požadavcích a branách Azure VPN Gateway
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak můžete nakonfigurovat brány VPN Azure tak, aby s
 
 ## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>Informace o připojeních VPN IKEv1 a IKEv2 pro Azure
 
-Tradičně jsme povolili připojení IKEv1 jenom pro základní SKU a povolená připojení IKEv2 pro všechny skladové položky služby VPN Gateway kromě základních SKU. Základní skladové položky (SKU) umožňují pouze 1 připojení a společně s dalšími omezeními, jako je například výkon, zákazníci používající starší zařízení, která podporují pouze IKEv1 protokoly, mají omezené prostředí. Abychom vylepšili možnosti zákazníků pomocí IKEv1 protokolů, teď pro všechny skladové položky služby VPN Gateway povolujeme připojení IKEv1. Další informace najdete v tématu [VPN Gateway SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku).
+Tradičně jsme povolili připojení IKEv1 jenom pro základní SKU a povolená připojení IKEv2 pro všechny skladové položky služby VPN Gateway kromě základních SKU. Základní skladové položky (SKU) umožňují pouze 1 připojení a společně s dalšími omezeními, jako je například výkon, zákazníci používající starší zařízení, která podporují pouze IKEv1 protokoly, mají omezené prostředí. Abychom vylepšili možnosti zákazníků pomocí IKEv1 protokolů, teď pro všechny SKU brány VPN Gateway povolujeme připojení IKEv1, a to s výjimkou základního SKU. Další informace najdete v tématu [VPN Gateway SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku).
 
 ![Připojení k Azure VPN Gateway IKEv1 a IKEv2](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 
@@ -46,7 +46,7 @@ Azure VPN Gateway teď podporují zásadu pro připojení, vlastní zásady IPse
 
 Můžete vytvořit zásadu IPsec/IKE a použít ji pro nové nebo existující připojení.
 
-### <a name="workflow"></a>Pracovní postup
+### <a name="workflow"></a>Pracovní postupy
 
 1. Vytvořte virtuální sítě, brány sítě VPN nebo brány místní sítě pro topologii připojení, jak je popsáno v tématu další dokumenty s postupy.
 2. Vytvoření zásady IPsec/IKE

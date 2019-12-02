@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cd26ed446ce676bcec85d8e413d3ec37ac236869
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: f994f4ec6d41fa0aab37e36d713eaefb22e85b28
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521992"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665051"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>Exportovat výstrahy a doporučení zabezpečení (Preview)
 
@@ -73,6 +73,29 @@ Pokud chcete exportovat do Log Analytics pracovního prostoru, musíte mít v pr
 Výstrahy a doporučení zabezpečení se ukládají do tabulek *SecurityAlert* a *SecurityRecommendations* . Název Log Analytics řešení obsahující tyto tabulky závisí na tom, jestli jste na úrovni Free nebo Standard (viz [ceny](security-center-pricing.md)): Security nebo SecurityCenterFree.
 
 ![Tabulka * SecurityAlert * v Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
+
+###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>Zobrazení exportovaných výstrah zabezpečení a doporučení v Azure Monitor
+
+V některých případech můžete zvolit zobrazení exportovaných výstrah zabezpečení nebo doporučení v [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview). 
+
+Azure Monitor poskytuje jednotné prostředí pro upozorňování na nejrůznější výstrahy Azure, včetně diagnostického protokolu, výstrah metrik a vlastních výstrah, a to na základě Log Analytics dotazů v pracovním prostoru.
+
+Chcete-li zobrazit výstrahy a doporučení z Security Center v Azure Monitor, nakonfigurujte pravidlo výstrahy založené na Log Analyticsch dotazech (výstraha protokolu):
+
+1. Na stránce **výstrahy** Azure Monitor klikněte na **nové pravidlo výstrahy**.
+
+    ![Stránka s výstrahami Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
+
+1. Na stránce Vytvořit pravidlo nakonfigurujte nové pravidlo (stejným způsobem, jako byste nakonfigurovali [pravidlo upozornění protokolu v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log):
+
+    * Jako **prostředek**vyberte pracovní prostor Log Analytics, do kterého jste exportovali výstrahy a doporučení zabezpečení.
+
+    * V případě **podmínky**vyberte **vlastní prohledávání protokolu**. Na zobrazené stránce nakonfigurujte dotaz, období lookback a periodu četnosti. Do vyhledávacího dotazu můžete zadat *SecurityAlert* nebo *SecurityRecommendation* pro dotazování datových typů, které Security Center průběžně exportovat do funkce průběžný export do Log Analytics. 
+    
+    * Volitelně můžete nakonfigurovat [skupinu akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) , kterou chcete aktivovat. Skupiny akcí můžou aktivovat odesílání e-mailů, lístky ITSM, Webhooky a další.
+    pravidlo výstrahy ![Azure Monitor](./media/continuous-export/azure-monitor-alert-rule.png)
+
+V závislosti na konfiguraci se teď v Azure Monitor výstrahy zobrazí nové výstrahy Azure Security Center nebo doporučení (v závislosti na vaší konfiguraci) a automaticky se aktivuje skupina akcí (Pokud je k dispozici).
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>Ruční export výstrah zabezpečení v jednorázovém čase
 

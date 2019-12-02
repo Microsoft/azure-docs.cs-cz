@@ -7,7 +7,7 @@ author: Brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/28/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 60442ab101423d0a91fa35a7a12a0b930417af71
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113619"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666303"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Přidání profilů vyhodnocování do indexu služby Azure Kognitivní hledání
 
@@ -37,7 +37,7 @@ ms.locfileid: "74113619"
  Chcete-li poskytnout představu o tom, jak profil vyhodnocování vypadá, následující příklad ukazuje jednoduchý profil s názvem geo. Tato jedna zvyšuje položky, které mají hledaný termín v poli **hotely** . Používá také funkci `distance` k upřednostnění položek, které spadají do deseti kilometrů aktuálního umístění. Pokud někdo vyhledá pojem "Inn" a "Inn" se stane součástí názvu hotelu, dokumenty, které obsahují Hotely s "Inn" v rámci poloměru 10 KM v aktuálním umístění, se ve výsledcích hledání zobrazí výše.  
 
 
-```  
+```json
 "scoringProfiles": [
   {  
     "name":"geo",
@@ -92,7 +92,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
  Tento příklad ukazuje schéma indexu se dvěma profily bodování (`boostGenre`, `newAndHighlyRated`). Každý dotaz na tento index, který obsahuje buď profil jako parametr dotazu, použije profil k vyhodnocení sady výsledků dotazu.  
 
-```  
+```json
 {  
   "name": "musicstoreindex",  
   "fields": [  
@@ -157,7 +157,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 }  
 ```  
 
-## <a name="workflow"></a>Pracovní postup  
+## <a name="workflow"></a>Pracovní postupy  
  Chcete-li implementovat vlastní chování bodování, přidejte profil vyhodnocování do schématu definujícího index. V rámci indexu můžete mít až 100 profilů vyhodnocování (viz [omezení služby](search-limits-quotas-capacity.md)), ale v libovolném daném dotazu můžete zadat jenom jeden profil v čase.  
 
  Začněte [šablonou](#bkmk_template) uvedeným v tomto tématu.  
@@ -234,14 +234,14 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
 |Atribut|Popis|  
 |---------------|-----------------|  
-|`Name`|Povinná hodnota. Toto je název profilu vyhodnocování. Řídí se stejnými zásadami pro pojmenování pole. Musí začínat písmenem, nesmí obsahovat tečky, dvojtečky nebo @ symboly a nemůže začínat slovem ' azureSearch ' (rozlišuje velká a malá písmena).|  
-|`Text`|Obsahuje vlastnost váhy.|  
-|`Weights`|Volitelné. Dvojice název-hodnota, která určuje název pole a relativní váhu. Relativní váha musí být kladné celé číslo nebo číslo s plovoucí desetinnou čárkou. Maximální hodnota je Int32. MaxValue.<br /><br /> Název pole můžete zadat bez odpovídající váhy. Váhy se používají k označení důležitosti jednoho pole vzhledem k jinému.|  
-|`Functions`|Volitelné. Funkci bodování lze použít pouze pro pole, která lze filtrovat.|  
-|`Type`|Vyžaduje se pro funkce bodování. Určuje typ funkce, která se má použít. Platné hodnoty zahrnují velikost, aktuálnost, vzdálenost a značku. Do každého profilu vyhodnocování můžete zahrnout více než jednu funkci. Název funkce musí být malými písmeny.|  
-|`Boost`|Vyžaduje se pro funkce bodování. Kladné číslo, které se používá jako násobitel pro nezpracované skóre. Nemůže být rovna 1.|  
-|`Fieldname`|Vyžaduje se pro funkce bodování. Funkci bodování lze použít pouze pro pole, která jsou součástí kolekce polí indexu a která jsou filtrovatelné. Kromě toho každý typ funkce zavádí další omezení (aktuálnost se používá s poli DateTime, rozsah s celočíselnými nebo dvojitými poli a vzdáleností s poli umístění). Pro každou definici funkce můžete zadat jenom jedno pole. Chcete-li například použít velikost dvakrát ve stejném profilu, je třeba zahrnout velikost dvou definic, jednu pro každé pole.|  
-|`Interpolation`|Vyžaduje se pro funkce bodování. Definuje sklon, pro který se zvyšování skóre zvyšuje od začátku rozsahu až po konec rozsahu. Mezi platné hodnoty patří lineární (výchozí), konstanta, kvadratická a logaritmická. Podrobnosti najdete v tématu [Nastavení interpolací](#bkmk_interpolation) .|  
+|`name`|Povinná hodnota. Toto je název profilu vyhodnocování. Řídí se stejnými zásadami pro pojmenování pole. Musí začínat písmenem, nesmí obsahovat tečky, dvojtečky nebo @ symboly a nemůže začínat slovem ' azureSearch ' (rozlišuje velká a malá písmena).|  
+|`text`|Obsahuje vlastnost váhy.|  
+|`weights`|Volitelné. Obsahuje páry název-hodnota, které určují název pole a relativní váhu. Relativní váha musí být kladné celé číslo nebo číslo s plovoucí desetinnou čárkou.<br /><br /> Váhy se používají k označení důležitosti jednoho vyhledávacího pole relativně k druhému.|  
+|`functions`|Volitelné. Funkci bodování lze použít pouze pro pole, která lze filtrovat.|  
+|`type`|Vyžaduje se pro funkce bodování. Určuje typ funkce, která se má použít. Platné hodnoty zahrnují velikost, aktuálnost, vzdálenost a značku. Do každého profilu vyhodnocování můžete zahrnout více než jednu funkci. Název funkce musí být malými písmeny.|  
+|`boost`|Vyžaduje se pro funkce bodování. Kladné číslo, které se používá jako násobitel pro nezpracované skóre. Nemůže být rovna 1.|  
+|`fieldname`|Vyžaduje se pro funkce bodování. Funkci bodování lze použít pouze pro pole, která jsou součástí kolekce polí indexu a která jsou filtrovatelné. Kromě toho každý typ funkce zavádí další omezení (aktuálnost se používá s poli DateTime, rozsah s celočíselnými nebo dvojitými poli a vzdáleností s poli umístění). Pro každou definici funkce můžete zadat jenom jedno pole. Chcete-li například použít velikost dvakrát ve stejném profilu, je třeba zahrnout velikost dvou definic, jednu pro každé pole.|  
+|`interpolation`|Vyžaduje se pro funkce bodování. Definuje sklon, pro který se zvyšování skóre zvyšuje od začátku rozsahu až po konec rozsahu. Mezi platné hodnoty patří lineární (výchozí), konstanta, kvadratická a logaritmická. Podrobnosti najdete v tématu [Nastavení interpolací](#bkmk_interpolation) .|  
 |`magnitude`|Funkce hodnocení velikosti se používá ke změně pořadí na základě rozsahu hodnot číselného pole. Mezi nejběžnější příklady použití patří:<br /><br /> -   **hodnocení hvězdičkami:** změňte hodnocení na základě hodnoty v poli hodnocení hvězdičkami. V případě, že jsou relevantní dvě položky, zobrazí se jako první položka s vyšším hodnocením.<br />-   **marže:** když jsou relevantní dva dokumenty, může maloobchodní prodejce chtít zvýšit dokumenty, které mají vyšší marže jako první.<br />-   **kliknutí na počty:** u aplikací, které sledují kliknutí prostřednictvím akcí na produkty nebo stránky, můžete použít velikost ke zvýšení počtu položek, které mají za následek největší přenos dat.<br />-   **počty stahování:** u aplikací, které sledují stahování, funkce velikost umožňuje zvýšit počet položek, které mají nejvíce souborů ke stažení.|  
 |`magnitude` &#124; `boostingRangeStart`|Nastaví počáteční hodnotu rozsahu, jehož velikost je vyhodnocena. Hodnota musí být celé číslo nebo číslo s plovoucí desetinnou čárkou. Pro hodnocení hvězdičkami 1 až 4 by to bylo 1. Pro okraje větší než 50% by to bylo 50.|  
 |`magnitude` &#124; `boostingRangeEnd`|Nastaví koncovou hodnotu rozsahu, jehož velikost je vyhodnocena. Hodnota musí být celé číslo nebo číslo s plovoucí desetinnou čárkou. Pro hodnocení hvězdičkami 1 až 4 by to bylo 4.|  
@@ -261,10 +261,10 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
 |||  
 |-|-|  
-|`Linear`|U položek, které jsou v rozsahu Max a min, se zvýšení použité pro položku provede v nepřetržitém snížení množství. Lineární je výchozí interpolací pro profil vyhodnocování.|  
-|`Constant`|Pro položky, které jsou v rozsahu od začátku do konce, se pro výsledky řazení použije konstantní zvýšení.|  
-|`Quadratic`|V porovnání s lineární interpolací, která má neustále se zmenšující zvýšení, se zpočátku zkrátí na menší tempo a pak při blížící se k koncovému rozsahu se zmenší v mnohem větším intervalu. Tato možnost interpolace není povolená ve funkcích bodování značek.|  
-|`Logarithmic`|V porovnání s lineární interpolací, která má neustále se zmenšující zvýšení, se logaritmická hodnota zpočátku zmenší při větším tempu a potom se blíží koncovému rozsahu, sníží se v mnohem kratším intervalu. Tato možnost interpolace není povolená ve funkcích bodování značek.|  
+|`linear`|U položek, které jsou v rozsahu Max a min, se zvýšení použité pro položku provede v nepřetržitém snížení množství. Lineární je výchozí interpolací pro profil vyhodnocování.|  
+|`constant`|Pro položky, které jsou v rozsahu od začátku do konce, se pro výsledky řazení použije konstantní zvýšení.|  
+|`quadratic`|V porovnání s lineární interpolací, která má neustále se zmenšující zvýšení, se zpočátku zkrátí na menší tempo a pak při blížící se k koncovému rozsahu se zmenší v mnohem větším intervalu. Tato možnost interpolace není povolená ve funkcích bodování značek.|  
+|`logarithmic`|V porovnání s lineární interpolací, která má neustále se zmenšující zvýšení, se logaritmická hodnota zpočátku zmenší při větším tempu a potom se blíží koncovému rozsahu, sníží se v mnohem kratším intervalu. Tato možnost interpolace není povolená ve funkcích bodování značek.|  
 
  ![Konstanta, lineární, kvadratická, log10 –ová čára v grafu](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
@@ -275,7 +275,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
  Následující tabulka uvádí několik příkladů.  
 
-|Doba trvání|boostingDuration|  
+|Délka|boostingDuration|  
 |--------------|----------------------|  
 |1 den|"P1D"|  
 |2 dny a 12 hodin|"P2DT12H"|  
@@ -284,7 +284,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
  Další příklady naleznete v tématu [schéma XML: DataTypes (w3.org Web)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration).  
 
-## <a name="see-also"></a>Viz také  
+## <a name="see-also"></a>Další informace najdete v tématech  
  [Azure kognitivní hledání REST](https://docs.microsoft.com/rest/api/searchservice/)   
  [Vytvoření indexu &#40;služby Azure kognitivní hledání&#41; REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
  [Sada Azure Kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

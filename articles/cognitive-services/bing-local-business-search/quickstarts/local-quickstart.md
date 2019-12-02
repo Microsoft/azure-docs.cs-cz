@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 04/26/2019
-ms.author: rosh
-ms.openlocfilehash: 439f775fb6124c847631467caabe3f48cfa6b645
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 2265471001896652a4ce35dbf8bd84aca50000fb
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326710"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665674"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních aplikací vC#
 
@@ -23,18 +23,18 @@ Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API 
 
 Tato ukázková aplikace získá data místní odpovědi z rozhraní API pro vyhledávací dotaz `hotel in Bellevue`.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 
-Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraním API pro vyhledávání Bingu. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraním API pro vyhledávání Bingu. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-the-request"></a>Vytvoření žádosti 
 
 Následující kód vytvoří `WebRequest`, nastaví hlavičku přístupového klíče a přidá řetězec dotazu pro restauraci v Bellevue.  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
 
-```
+```csharp
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
@@ -60,7 +60,7 @@ Rozhraní API pro místní vyhledávání Bingu vrací lokalizované výsledky h
 3. Hodnotu accessKey nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Text;

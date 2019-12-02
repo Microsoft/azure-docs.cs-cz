@@ -1,5 +1,5 @@
 ---
-title: Automatické zřizování zařízení s DPS pomocí ověřování symetrického klíče pomocí ověření identity-Azure IoT Edge | Microsoft Docs
+title: Zřízení zařízení pomocí ověření identity symetrického klíče – Azure IoT Edge
 description: Použití ověření identity symetrického klíče k testování automatického zřizování zařízení pro Azure IoT Edge se službou Device Provisioning
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.date: 10/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 53b1abca25119f4168aaf12a66c4347c53ed0a62
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c42d13f4d2e00b67a2ef471a07c80e1ef61e9c07
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828076"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666320"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Vytvoření a zřízení zařízení IoT Edge pomocí ověřování symetrického klíče
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak vytvořit službu Device Provisioning pomocí 
 
 Symetrický ověření identity je jednoduchý přístup k ověřování zařízení pomocí instance služby Device Provisioning. Tato metoda ověření identity představuje prostředí "Hello World" pro vývojáře, kteří jsou noví v zřizování zařízení, nebo nemají přísné požadavky na zabezpečení. Ověření zařízení pomocí [čipu TPM](../iot-dps/concepts-tpm-attestation.md) nebo [X. 509](../iot-dps/concepts-security.md#x509-certificates) je bezpečnější a mělo by se používat pro přísnější požadavky na zabezpečení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aktivní IoT Hub
 * Fyzické nebo virtuální zařízení
@@ -82,7 +82,7 @@ Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteč
 
    1. Vyberte **, jak chcete, aby se data zařízení při opětovném zřizování zpracovala** při zřizování zařízení po prvním přihlášení.
 
-   1. Pokud chcete, přidejte hodnotu značky do **počátečního stavového vlákna zařízení** . Pomocí značek můžete cílit skupiny zařízení na nasazení modulů. Příklad:
+   1. Pokud chcete, přidejte hodnotu značky do **počátečního stavového vlákna zařízení** . Pomocí značek můžete cílit skupiny zařízení na nasazení modulů. Například:
 
       ```json
       {
@@ -97,7 +97,7 @@ Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteč
 
    1. Ujistěte se, že **položka povolit položku** je nastavená na **Povolit**.
 
-   1. Vyberte **Uložit**.
+   1. Vyberte **Save** (Uložit).
 
 Teď, když pro toto zařízení existuje registrace, IoT Edge modul runtime může zařízení během instalace automaticky zřídit. Nezapomeňte zkopírovat hodnotu **primárního klíče** registrace, která se má použít při instalaci IoT Edge runtime, nebo pokud budete vytvářet klíče zařízení pro použití se zápisem skupiny.
 
@@ -116,7 +116,7 @@ Pokud používáte pracovní stanici se systémem Linux, můžete použít OpenS
 
 Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
 
-Nahraďte hodnotu **REG_ID** ID registrace vašeho zařízení.
+Hodnotu **REG_ID** nahraďte ID registrace vašeho zařízení.
 
 ```bash
 KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
@@ -136,7 +136,7 @@ Pokud používáte pracovní stanici se systémem Windows, můžete použít Pow
 
 Nahraďte hodnotu **klíče** **primárním klíčem** , který jste si poznamenali dříve.
 
-Nahraďte hodnotu **REG_ID** ID registrace vašeho zařízení.
+Hodnotu **REG_ID** nahraďte ID registrace vašeho zařízení.
 
 ```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
@@ -155,7 +155,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="install-the-iot-edge-runtime"></a>Instalace modulu runtime IoT Edge
 
-Modul runtime IoT Edge je nasazený na všech IoT Edge zařízeních. Jeho komponenty se spouštějí v kontejnerech a umožňují na zařízení nasadit další kontejnery, abyste mohli spustit kód na hraničních zařízeních.
+Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho komponenty se spouštějí v kontejnerech a umožňují na zařízení nasadit další kontejnery, abyste mohli spustit kód na hraničních zařízeních.
 
 Při zřizování zařízení budete potřebovat následující informace:
 
@@ -186,7 +186,7 @@ provisioning:
       symmetric_key: "{symmetric_key}"
 ```
 
-Nahraďte zástupné hodnoty pro `{scope_id}`, `{registration_id}` a `{symmetric_key}` daty, která jste shromáždili dříve.
+Nahraďte zástupné hodnoty pro `{scope_id}`, `{registration_id}`a `{symmetric_key}` dříve shromážděnými daty.
 
 ### <a name="windows-device"></a>Zařízení s Windows
 
@@ -207,7 +207,7 @@ Podrobnější informace o instalaci IoT Edge ve Windows, včetně požadavků a
 
 1. Příkaz **Initialize-IoTEdge** nakonfiguruje IoT Edge modul runtime na vašem počítači. Příkaz se ve výchozím nastavení provede ručním zřizováním pomocí kontejnerů Windows, pokud nepoužijete příznak `-Dps` pro Automatické zřizování.
 
-   Nahraďte zástupné hodnoty pro `{scope_id}`, `{registration_id}` a `{symmetric_key}` daty, která jste shromáždili dříve.
+   Nahraďte zástupné hodnoty pro `{scope_id}`, `{registration_id}`a `{symmetric_key}` dříve shromážděnými daty.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -220,7 +220,7 @@ Pokud se modul runtime úspěšně spustil, můžete přejít do svého IoT Hub 
 
 ### <a name="linux-device"></a>Zařízení se systémem Linux
 
-Ověřte stav služby IoT Edge.
+Zkontrolujte stav služby IoT Edge.
 
 ```cmd/sh
 systemctl status iotedge
@@ -240,7 +240,7 @@ iotedge list
 
 ### <a name="windows-device"></a>Zařízení s Windows
 
-Ověřte stav služby IoT Edge.
+Zkontrolujte stav služby IoT Edge.
 
 ```powershell
 Get-Service iotedge

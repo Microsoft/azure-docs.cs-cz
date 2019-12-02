@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 56283c1e07ec55c753701e86ff8c7c00078cffa2
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172778"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664098"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -208,7 +208,7 @@ Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup 
 
 1. V Azure Portal na levé straně navigace vyberte *skupiny prostředků* .
 1. Zvolte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte skupinu zabezpečení sítě, třeba *aaads-NSG*.
-1. Zobrazí se seznam existujících příchozích a odchozích pravidel zabezpečení. Na levé straně okna skupiny zabezpečení sítě vyberte **zabezpečení > příchozí pravidla zabezpečení**.
+1. Zobrazí se seznam existujících příchozích a odchozích pravidel zabezpečení. Na levé straně okna skupiny zabezpečení sítě vyberte **nastavení > příchozí pravidla zabezpečení**.
 1. Vyberte **Přidat**a pak vytvořit pravidlo, které povolí port TCP *636*. Pro lepší zabezpečení zvolte zdroj jako *IP adresy* a pak zadejte vlastní platnou IP adresu nebo rozsah pro vaši organizaci.
 
     | Nastavení                           | Hodnota        |
@@ -243,7 +243,7 @@ Následující příklad položky DNS, buď s vaším externím poskytovatelem D
 
 ## <a name="test-queries-to-the-managed-domain"></a>Testovat dotazy do spravované domény
 
-Pokud se chcete připojit ke spravované doméně Azure služba AD DS a prohledat je přes LDAP, použijte taky nástroj *Ldp. exe* . Tento nástroj je součástí balíčku Nástroje pro vzdálenou správu serveru (RSAT). Další informace najdete v tématu [instalace nástroje pro vzdálenou správu serveru][rsat].
+K připojení k vaší spravované doméně služba AD DS Azure a k vyhledávání přes LDAP se používá nástroj *Ldp. exe* . Tento nástroj je součástí balíčku Nástroje pro vzdálenou správu serveru (RSAT). Další informace najdete v tématu [instalace nástroje pro vzdálenou správu serveru][rsat].
 
 1. Spusťte nástroj *Ldp. exe* a připojte se ke spravované doméně. Vyberte **připojení**a pak zvolte **připojit...** .
 1. Zadejte název domény DNS zabezpečeného LDAP vaší spravované domény, který jste vytvořili v předchozím kroku, například *LDAPS.contoso.com*. Chcete-li použít zabezpečený protokol LDAP, nastavte **port** na *636*a zaškrtněte políčko pro **protokol SSL**.

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Konfigurace IoT Edge Machine Learning zařízení v Azure IoT Edge'
+title: 'Kurz: Konfigurace IoT Edge Azure IoT Edge zařízení & Machine Learning'
 description: 'Kurz: konfigurace virtuálního počítače Azure se systémem Linux jako zařízení Azure IoT Edge, které funguje jako transparentní brána.'
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 714f0c335e2871fa1afe2f99d08870f0e39c488e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 510580dff575d60d9071667f6be28b525bc05d88
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113966"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665657"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: konfigurace zařízení IoT Edge
 
@@ -26,7 +26,7 @@ Kroky v tomto článku jsou obvykle prováděny vývojářem cloudu.
 
 ## <a name="generate-certificates"></a>Generování certifikátů
 
-Aby zařízení fungovalo jako brána, musí být schopné bezpečně se připojit k zařízením pro příjem dat. Azure IoT Edge umožňuje používat infrastrukturu veřejných klíčů (PKI) nastavení zabezpečeného připojení mezi zařízeními. V tomto případě jsme se umožní příjem dat zařízení pro připojení k zařízení IoT Edge sloužit jako transparentní brána. Aby bylo možné zajistit přiměřené zabezpečení, musí zařízení pro příjem dat potvrdit identitu zařízení IoT Edge. Další informace o tom, jak IoT Edge zařízení používají certifikáty, najdete v tématu [Azure IoT Edge informace o využití certifikátu](iot-edge-certs.md).
+Aby zařízení fungovalo jako brána, musí být schopné bezpečně se připojit k zařízením pro příjem dat. Azure IoT Edge umožňuje použít infrastrukturu veřejných klíčů (PKI) k nastavení zabezpečených připojení mezi zařízeními. V tomto případě umožníme, aby se pro zařízení s IoT Edge připojila k zařízení, které funguje jako transparentní brána. Aby bylo možné zajistit přiměřené zabezpečení, musí zařízení pro příjem dat potvrdit identitu zařízení IoT Edge. Další informace o tom, jak IoT Edge zařízení používají certifikáty, najdete v tématu [Azure IoT Edge informace o využití certifikátu](iot-edge-certs.md).
 
 V této části vytvoříme certifikáty podepsané svým držitelem pomocí Image Docker, kterou následně sestavíme a spustíte. Rozhodli jste se použít k dokončení tohoto kroku image Docker, která významně snižuje počet kroků potřebných k vytvoření certifikátů na vývojovém počítači s Windows. Podrobnosti o tom, jak vytvořit certifikáty bez použití kontejneru, najdete v tématu [generování certifikátů pomocí systému Windows](how-to-create-transparent-gateway.md#generate-certificates-with-windows) . [Generování certifikátů se systémem Linux](how-to-create-transparent-gateway.md#generate-certificates-with-linux) obsahuje sadu instrukcí, které provádíme automatizovaně s imagí Docker.
 
@@ -65,11 +65,11 @@ V této části vytvoříme certifikáty podepsané svým držitelem pomocí Ima
 
 12. Po dokončení kontejneru vyhledejte v jazyce c následující soubory **:\\edgeCertificates**:
 
-    * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
+    * c:\\edgeCertificates\\ch certifikátů\\Azure-IoT-test-Only. root. ca. CERT. pem
     * c:\\edgeCertificates\\ch certifikátů\\New-Edge-Device-full-Chain. CERT. pem
-    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pem
-    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
-    * c:\\edgeCertificates\\private\\new-edge-device.key.pem
+    * c:\\edgeCertificates\\ch certifikátů\\New-Edge-Device. CERT. pem
+    * c:\\edgeCertificates\\ch certifikátů\\New-Edge-Device. CERT. pfx
+    * c:\\edgeCertificates\\Private\\New-Edge-Device. Key. pem
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Nahrání certifikátů do Azure Key Vault
 
@@ -174,7 +174,7 @@ Potom spuštěním skriptu vytvořte virtuální počítač pro zařízení IoT 
 
     ![Zkopírování připojovacího řetězce SSH pro virtuální počítač](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
 
-## <a name="connect-to-your-iot-edge-device"></a>Připojte se k zařízení IoT Edge
+## <a name="connect-to-your-iot-edge-device"></a>Připojení k zařízení IoT Edge
 
 V následujících částech se konfiguruje virtuální počítač Azure, který jsme vytvořili. Prvním krokem je připojení k virtuálnímu počítači.
 

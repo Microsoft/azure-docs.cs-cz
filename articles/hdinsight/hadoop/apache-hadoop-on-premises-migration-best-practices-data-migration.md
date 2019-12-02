@@ -2,18 +2,18 @@
 title: 'Migrace dat: místní Apache Hadoop do Azure HDInsight'
 description: Naučte se osvědčené postupy migrace dat pro migraci místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: hrasheed
-ms.openlocfilehash: 30f7ae2eeb928e3f8dc71baed20d9c9b2129d1f9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 11/22/2019
+ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494993"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665997"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy pro migraci dat
 
@@ -23,16 +23,20 @@ Tento článek obsahuje doporučení pro migraci dat do Azure HDInsight. Je sou�
 
 Existují dvě hlavní možnosti migrace dat z místního prostředí do prostředí Azure:
 
-1.  Přenos dat přes síť pomocí protokolu TLS
-    1. Přes Internet – data můžete přenést do služby Azure Storage prostřednictvím běžného internetového připojení pomocí některého z několika nástrojů, jako je: Průzkumník služby Azure Storage, AzCopy, Azure PowerShell a Azure CLI.  Další informace najdete v tématu [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md) .
-    2. Express Route-ExpressRoute je služba Azure, která umožňuje vytvářet privátní připojení mezi datovými centry Microsoftu a infrastrukturou ve vašich prostorách nebo v zařízení se systémem. Připojení ExpressRoute nevyužívají veřejný Internet a nabízejí vyšší úroveň zabezpečení, spolehlivosti a rychlosti s nižší latencí než typická připojení přes Internet. Další informace najdete v tématu [Vytvoření a úprava okruhu ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
-    1. Data Box online přenosu dat – Data Box Edge a Data Box Gateway jsou online produkty pro přenos dat, které fungují jako brány síťového úložiště pro správu dat mezi vaší lokalitou a Azure. Data Box Edge je místní síťové zařízení, které přenáší data do a z Azure a při zpracování dat využívá hraniční výpočetní prostředky s podporou umělé inteligence (AI). Data Box Gateway je virtuální zařízení s funkcemi brány úložiště. Další informace najdete v tématu [Azure Data box dokumentaci – online přenos](https://docs.microsoft.com/azure/databox-online/).
-1.  Přenos dat do režimu offline
-    1. Data Box offline přenos dat – Data Box, Data Box Disk a Data Box Heavy zařízení vám pomůžou přenášet velké objemy dat do Azure, když síť není možnost. Tato zařízení pro offline přenos dat se převážejí mezi vaší organizací a datacentrem Azure. Přenášená data pomáhají chránit s využitím šifrování AES a po nahrání provádějí proces důkladné sanitizace, který odstraní vaše data ze zařízení. Další informace o Data Box offline přenosových zařízeních najdete v části [Azure Data box dokumentace – offline přenos](https://docs.microsoft.com/azure/databox/). Další informace o migraci clusterů Hadoop najdete v tématu [použití Azure Data box k migraci z místního úložiště HDFS do Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
+* Přenos dat přes síť pomocí protokolu TLS
+    * Přes Internet – data můžete přenést do služby Azure Storage prostřednictvím běžného internetového připojení pomocí některého z několika nástrojů, jako je: Průzkumník služby Azure Storage, AzCopy, Azure PowerShell a Azure CLI. Další informace najdete v tématu [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md).
+
+    * Express Route-ExpressRoute je služba Azure, která umožňuje vytvářet privátní připojení mezi datovými centry Microsoftu a infrastrukturou ve vašich prostorách nebo v zařízení se systémem. Připojení ExpressRoute nevyužívají veřejný Internet a nabízejí vyšší úroveň zabezpečení, spolehlivosti a rychlosti s nižší latencí než typická připojení přes Internet. Další informace najdete v tématu [Vytvoření a úprava okruhu ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
+
+    * Data Box online přenosu dat – Data Box Edge a Data Box Gateway jsou online produkty pro přenos dat, které fungují jako brány síťového úložiště pro správu dat mezi vaší lokalitou a Azure. Data Box Edge je místní síťové zařízení, které přenáší data do a z Azure a při zpracování dat využívá hraniční výpočetní prostředky s podporou umělé inteligence (AI). Data Box Gateway je virtuální zařízení s funkcemi brány úložiště. Další informace najdete v tématu [Azure Data box dokumentaci – online přenos](https://docs.microsoft.com/azure/databox-online/).
+
+* Přenos dat do režimu offline
+
+    Data Box offline přenos dat – Data Box, Data Box Disk a Data Box Heavy zařízení vám pomůžou přenášet velké objemy dat do Azure, když síť není možnost. Tato zařízení pro offline přenos dat se převážejí mezi vaší organizací a datacentrem Azure. Přenášená data pomáhají chránit s využitím šifrování AES a po nahrání provádějí proces důkladné sanitizace, který odstraní vaše data ze zařízení. Další informace o Data Box offline přenosových zařízeních najdete v části [Azure Data box dokumentace – offline přenos](https://docs.microsoft.com/azure/databox/). Další informace o migraci clusterů Hadoop najdete v tématu [použití Azure Data box k migraci z místního úložiště HDFS do Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
 
 Následující tabulka má přibližnou dobu trvání přenosu dat na základě objemu dat a šířky pásma sítě. Pokud se očekává, že migrace dat trvá déle než tři týdny, použijte data box.
 
-|**Množství dat**|**Šířka pásma sítě**||||
+|Množství dat|Šířka pásma sítě||||
 |---|---|---|---|---|
 || **45 MB/s (T3)**|**100 MB/s**|**1 GB/s**|**10 GB/s**|
 |1 TB|2 dny|1 den| 2 hodiny|14 minut|
@@ -47,9 +51,7 @@ Následující tabulka má přibližnou dobu trvání přenosu dat na základě 
 
 Nástroje, které jsou nativní pro Azure, například Apache Hadoop DistCp, Azure Data Factory a AzureCp, se dají použít k přenosu dat přes síť. Nástroj WANDisco třetí strany se dá použít i pro stejný účel. Apache Kafka nástroje MirrorMaker a Apache Sqoop je možné použít pro průběžné přenosy dat z místního prostředí do systémů úložiště Azure.
 
-
 ## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Požadavky na výkon při použití Apache Hadoop DistCp
-
 
 DistCp je projekt Apache, který používá úlohu mapování MapReduce k přenosu dat, zpracování chyb a zotavení z těchto chyb. Přiřadí seznam zdrojových souborů ke každé úloze mapy. Úloha mapy pak zkopíruje všechny přiřazené soubory do cílového umístění. Existuje několik postupů, které mohou zlepšit výkon DistCp.
 
@@ -57,8 +59,9 @@ DistCp je projekt Apache, který používá úlohu mapování MapReduce k přeno
 
 DistCp se pokusí vytvořit úlohy mapování, aby každá z nich přibližně stejný počet bajtů měla. Ve výchozím nastavení používají úlohy DistCp 20 mapovačů. Použití většího počtu mapovačů pro Distcp (s parametrem ' m ' na příkazovém řádku) zvyšuje paralelismus během procesu přenosu dat a snižuje délku přenosu dat. Při zvyšování počtu mapovačů je ale potřeba vzít v úvahu dvě věci:
 
-1. Nejnižší členitost DistCp je jeden soubor. Zadání počtu mapovačů, než je počet zdrojových souborů, nepomůže a zachová dostupné prostředky clusteru.
-1. Vezměte v úvahu dostupnou paměť příze v clusteru, abyste zjistili počet mapovačů. Každá úloha mapy se spustí jako kontejner příze. Za předpokladu, že v clusteru nejsou spuštěny žádné jiné náročné úlohy, lze počet mapovačů určit pomocí následujícího vzorce: m = (počet pracovních uzlů \* PŘÍZ paměti pro každý pracovní uzel)/velikost kontejneru PŘÍZ. Pokud však jiná aplikace používá paměť, pak zvolte možnost použít pouze část paměti PŘÍZe pro úlohy DistCp.
+* Nejnižší členitost DistCp je jeden soubor. Zadání počtu mapovačů s více než počtem zdrojových souborů nepomůže a bude mít za odpad dostupné prostředky clusteru.
+
+* Vezměte v úvahu dostupnou paměť příze v clusteru, abyste zjistili počet mapovačů. Každá úloha mapy se spustí jako kontejner příze. Za předpokladu, že v clusteru nejsou spuštěny žádné jiné náročné úlohy, lze počet mapovačů určit pomocí následujícího vzorce: m = (počet pracovních uzlů \* PŘÍZ paměti pro každý pracovní uzel)/velikost kontejneru PŘÍZ. Pokud však jiná aplikace používá paměť, pak zvolte možnost použít pouze část paměti PŘÍZe pro úlohy DistCp.
 
 ### <a name="use-more-than-one-distcp-job"></a>Použití víc než jedné úlohy DistCp
 
@@ -102,14 +105,14 @@ Podregistr metastore lze migrovat buď pomocí skriptů, nebo pomocí replikace 
 - Nastavte replikaci databáze mezi místními metastore Hive DB a HDInsight metastore DB.
 - Pomocí příkazu "podregistr MetaTool" nahraďte adresu URL HDFS adresami URL WASB/ADLS/ABFS, například:
 
-```bash
-./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
-```
+    ```bash
+    ./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
+    ```
 
 ### <a name="apache-ranger"></a>Apache Ranger
 
 - Exportujte zásady místních Ranger do souborů XML.
-- Transformujte místní konkrétní cesty na základě HDFS na WASB/ADLS pomocí nástroje, jako je XSLT.
+- Transformujte místní cesty založené na HDFS na WASB/ADLS pomocí nástroje jako XSLT.
 - Importujte zásady na Ranger běžící na HDInsight.
 
 ## <a name="next-steps"></a>Další kroky

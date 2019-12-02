@@ -4,7 +4,7 @@ description: Pomocí této cesty výukového programu začněte s podporou proto
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
+keywords: IPv6, Azure Load Balancer, duální zásobník, veřejná IP adresa, nativní IPv6, mobilní zařízení, IoT
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 07dd3ee507f31099e32f18143d2beedf76e83c36
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4f4baea1c293a1707d87780044a21ff675cb7f98
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077028"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666201"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Přehled protokolu IPv6 pro Azure Load Balancer
 
 
 >[!NOTE] 
->Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o nástroji Load Balancer úrovně Standard najdete v [přehledu tohoto nástroje](load-balancer-standard-overview.md).
+>Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o Standard Load Balancer najdete v tématu [Standard Load Balancer Overview](load-balancer-standard-overview.md).
 
 Základní služba Vyrovnávání zatížení na základě Internetu se dá nasadit s adresou IPv6. Kromě připojení protokolem IPv4 Tato funkce umožňuje následující možnosti:
 
@@ -78,7 +78,6 @@ Omezení
 * Změna parametru loadDistributionMethod pro protokol IPv6 se v tuto **chvíli**nepodporuje.
 * Rezervované IP adresy IPv6 (kde IPAllocationMethod = static) se **aktuálně nepodporují**.
 * NAT64 (převod IPv6 na IPv4) není podporován.
-* Nástroje pro vyrovnávání zatížení standardních SKU aktuálně nepodporují adresy IPv6.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,26 +1,26 @@
 ---
-title: Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure CLI
-description: Naučte se používat rozhraní příkazového řádku Azure ke konfiguraci klíčů spravovaných zákazníkem pro Azure Storage šifrování. Klíče spravované zákazníkem umožňují vytvářet, otáčet, zakazovat a odvolávat řízení přístupu.
+title: Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure CLI – Azure Storage
+description: Naučte se používat rozhraní příkazového řádku Azure ke konfiguraci klíčů spravovaných zákazníkem Azure Key Vault pro Azure Storage šifrování. Klíče spravované zákazníkem umožňují vytvářet, otáčet, zakazovat a odvolávat řízení přístupu.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/15/2019
+ms.topic: how-to
+ms.date: 11/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 18209816b5b73f58a8112efca0363b31dd47bd91
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: df65267924cfbfdc856b81928c4b6d7029f61184
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374274"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665963"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure CLI
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>Konfigurace klíčů spravovaných zákazníkem pro Azure Storage pomocí Azure CLI
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí Azure CLI.
+V tomto článku se dozvíte, jak nakonfigurovat Azure Key Vault s použitím klíčů spravovaných zákazníkem pomocí Azure CLI. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure CLI, najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](../../key-vault/quick-create-cli.md).
 
 > [!IMPORTANT]
 > Použití klíčů spravovaných zákazníkem s šifrováním Azure Storage vyžaduje, aby byly v trezoru klíčů nastaveny dvě vlastnosti, **obnovitelné odstranění** a **nemazatelné**. Tyto vlastnosti nejsou ve výchozím nastavení povolené. Pokud chcete tyto vlastnosti povolit, použijte PowerShell nebo rozhraní příkazového řádku Azure CLI.

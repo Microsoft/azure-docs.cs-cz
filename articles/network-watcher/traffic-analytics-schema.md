@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: a678039b3386c3df290327238d3bf968a803d2c1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229440"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666371"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregace schématu a dat v Analýza provozu
 
@@ -143,7 +143,7 @@ Níže jsou uvedené pole ve schématu a co značí.
 | LocalNetworkGateway1_s | \<SubscriptionID >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | Brána místní sítě přidružená ke zdrojové IP adrese v toku |
 | LocalNetworkGateway2_s | \<SubscriptionID >/\<ResourceGroupName >/\<LocalNetworkGatewayName > | Brána místní sítě přidružená k cílové IP adrese v toku |
 | ConnectionType_s | Možné hodnoty jsou VNetPeering, VpnGateway a ExpressRoute. |    Typ připojení |
-| ConnectionName_s | \<SubscriptionID >/\<ResourceGroupName >/\<connectionName > | Název připojení |
+| ConnectionName_s | \<SubscriptionID >/\<ResourceGroupName >/\<connectionName > | Název připojení Pro flowtype P2S se bude formátovat jako <gateway name>_<VPN Client IP> |
 | ConnectingVNets_s | Prostor oddělený seznam názvů virtuálních sítí | V případě topologie centra a paprsků se tady naplní virtuální sítě rozbočovačů. |
 | Country_s | Dvoumístné číslo země (ISO 3166-1 alpha-2) | Bylo vyplněno pro typ toku ExternalPublic. Všechny IP adresy v poli PublicIPs_s budou sdílet stejný kód země. |
 | AzureRegion_s | Umístění oblastí Azure | Bylo vyplněno pro typ toku AzurePublic. Všechny IP adresy v poli PublicIPs_s budou sdílet oblast Azure. |
@@ -161,7 +161,7 @@ Níže jsou uvedené pole ve schématu a co značí.
 | SrcPublicIPs_s | < SOURCE_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|\<FLOW_ENDED_COUNT >\|\<OUTBOUND_PACKETS >\|\<INBOUND_PACKETS >\|\<OUTBOUND_BYTES >\|\<INBOUND_BYTES > | Položky oddělené řádky |
 | DestPublicIPs_s | < DESTINATION_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|\<FLOW_ENDED_COUNT >\|\<OUTBOUND_PACKETS >\|\<INBOUND_PACKETS >\|\<OUTBOUND_BYTES >\|\<INBOUND_BYTES > | Položky oddělené řádky |
 
-### <a name="notes"></a>Poznámky:
+### <a name="notes"></a>Poznámky
 
 1. V případě toků AzurePublic a ExternalPublic se v poli VMIP_s vyplní IP adresa virtuálního počítače Azure ve vlastnictví zákazníka, zatímco veřejné IP adresy se naplní do pole PublicIPs_s. U těchto dvou typů toků doporučujeme použít VMIP_s a PublicIPs_s namísto SrcIP_s a DestIP_s polí. U adres AzurePublic a ExternalPublicIP se ještě agreguje, takže počet záznamů, které se ingestují do pracovního prostoru služby Log Analytics pro zákazníky, je minimální. (Toto pole bude brzy zastaralé a v závislosti na tom, zda byl virtuální počítač Azure zdrojem nebo cílem v toku, by se mělo používat SrcIP_ a DestIP_s.)
 1. Podrobnosti o typech toků: v závislosti na IP adresách, které jsou zapojené do toku, řadíme toky do těchto typů toků:

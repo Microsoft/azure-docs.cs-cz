@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea1d286d00564587a9692dac1b04c5bbb04742cc
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3e24cb2d4b5b82f6878647cdd631bd8ebca16199
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561475"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666153"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure
 
@@ -103,19 +103,7 @@ Klientská knihovna Azure identity načítá při ověřování instančního ob
 
 Další informace najdete v tématu věnovaném [vytvoření identity pro aplikaci Azure na portálu](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-## <a name="install-client-library-packages"></a>Nainstalovat balíčky klientské knihovny
-
-Příklady v tomto článku používají nejnovější verzi Azure Storage klientské knihovny pro úložiště objektů BLOB. Chcete-li nainstalovat balíček, spusťte následující příkaz z konzoly Správce balíčků NuGet:
-
-```powershell
-Install-Package Azure.Storage.Blobs
-```
-
-Příklady v tomto článku také využívají nejnovější verzi [klientské knihovny Azure identity pro .NET](https://www.nuget.org/packages/Azure.Identity/) k ověřování pomocí přihlašovacích údajů Azure AD. Chcete-li nainstalovat balíček, spusťte následující příkaz z konzoly Správce balíčků NuGet:
-
-```powershell
-Install-Package Azure.Identity
-```
+[!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
 ## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu .NET: vytvoření objektu blob bloku
 

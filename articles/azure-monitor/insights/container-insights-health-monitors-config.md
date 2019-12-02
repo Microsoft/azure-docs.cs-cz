@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279697"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664943"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Průvodce konfigurací monitorování stavu kontejnerů Azure Monitor
 
@@ -77,12 +77,12 @@ Azure Monitor for Containers zahrnuje řadu klíčových scénářů monitorová
 
 |**Název monitorování** | **Popis** | **Algoritmus** |
 |-----------------|-----------------|---------------|
-|Node |Toto monitorování je souhrnem všech monitorů uzlů. Odpovídá stavu podřízeného monitorování s nejhorším stavem:<br> Využití procesoru uzlů<br> Využití paměti uzlu<br> Stav uzlu | Nejhorší část|
+|Uzel |Toto monitorování je souhrnem všech monitorů uzlů. Odpovídá stavu podřízeného monitorování s nejhorším stavem:<br> Využití procesoru uzlů<br> Využití paměti uzlu<br> Stav uzlu | Nejhorší část|
 |Fond uzlů |Toto monitorování hlásí kombinovaný stav všech uzlů ve fondu uzlů *neznámá*. Toto je tři monitorování stavu, jejichž stav je založen na nejhorším stavu 80% uzlů v rámci fondu uzlů seřazený v sestupném pořadí závažností stavů uzlů (tzn. kritická, varovná, v pořádku).|Procento |
 |Uzly (nadřazený uzel fondu uzlů) |Toto je agregované monitorování všech fondů uzlů. Jeho stav vychází z nejhoršího stavu svých podřízených monitorování (to znamená fondů uzlů přítomných v clusteru). |Nejhorší část |
 |Cluster (nadřazený uzel uzlů/<br> Infrastruktura Kubernetes) |Toto je nadřazené monitorování, které odpovídá stavu podřízeného monitorování s nejhorším stavem, který je Kubernetes infrastrukturou a uzly. |Nejhorší část |
 |Infrastruktura Kubernetes |Toto monitorování hlásí kombinovaný stav komponent spravované infrastruktury clusteru. jeho stav je vypočítán jako nejhorší z těchto stavů monitorování, tj. Kube – systémové úlohy a stav serveru rozhraní API. |Nejhorší část|
-|Systémová úloha |Toto monitorování hlásí stav úlohy Kube-System. Toto monitorování odpovídá stavu podřízeného monitorování s nejhorším stavem, který je součástí monitorování **stavu připravenosti** a kontejnerů v rámci úlohy. |Nejhorší část |
+|Systémová úloha |Toto monitorování hlásí stav úlohy Kube-System. Toto monitorování odpovídá stavu podřízeného monitorování s nejhorším stavem, který je **ve stavu připraveno** (monitorování a kontejnery v rámci úlohy). |Nejhorší část |
 |Kontejner |Toto monitorování hlásí celkový stav kontejneru v daném zatížení. Toto monitorování odpovídá stavu podřízeného monitorování s nejhorším stavem, který je **využití procesoru** a monitorování **využití paměti** . |Nejhorší část |
 
 ## <a name="next-steps"></a>Další kroky

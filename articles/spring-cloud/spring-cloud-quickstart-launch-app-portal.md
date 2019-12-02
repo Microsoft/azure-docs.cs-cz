@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 8a34dcd31ba15ed949fa0a50ec904da96a048a7d
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0d8bc302434ea973dd4d94156c65ee6965dd1dc1
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560062"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666239"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění aplikace ve jarním cloudu Azure pomocí Azure Portal
 
@@ -72,13 +72,17 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. Přejít na stránku **Přehled** služby a vyberte možnost **konfigurační server**.
 
-1. V části **výchozí úložiště** nastavte možnost **URI** na https\://GitHub.com/Azure-Samples/piggymetrics, nastavte **popisek** na "config" a pak změny uložte kliknutím na **použít** .
+1. V části **výchozí úložiště** nastavte **URI** na https\://GitHub.com/Azure-Samples/piggymetrics.
+
+1. Nastavte **popisek** na "config".
+
+1. Pokud chcete změny uložit, vyberte **použít** .
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Sestavování a nasazování aplikací mikroslužeb
 
-1. Otevřete [Azure cloudshellu](https://shell.azure.com) a naklonujte úložiště ukázkové aplikace do místního počítače.  V tomto příkladu vytvoříme před klonováním aplikace dočasný adresář s názvem `source-code`.
+1. Otevřete [Azure Cloud Shell](https://shell.azure.com) a naklonujte úložiště ukázkové aplikace do místního počítače.  V tomto příkladu vytvoříme před klonováním aplikace dočasný adresář s názvem `source-code`.
 
     ```azurecli
     mkdir source-code
@@ -123,7 +127,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. Vyberte aplikaci `gateway`, aby se zobrazila stránka s **přehledem** .
 
-1. Vyberte **přiřadit doménu** a přiřaďte k bráně veřejný koncový bod. Může to pár minut trvat.
+1. Vyberte **přiřadit doménu** a přiřaďte k bráně veřejný koncový bod. Tato možnost může trvat několik minut.
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 

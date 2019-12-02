@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/29/2019
 ms.author: juliako
-ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d06be1b5301889a1fcb8ff1390d8618bbb88c03f
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839141"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666473"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -61,7 +61,7 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 - Změna stavu indexování: 
     - Vlastnosti    
     
-        |Název|Popis|
+        |Name (Název)|Popis|
         |---|---|
         |id|ID videa|
         |state|Stav videa|  
@@ -69,7 +69,7 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 - Osoba identifikovaná ve videu:
   - Vlastnosti
     
-      |Název|Popis|
+      |Name (Název)|Popis|
       |---|---|
       |id| ID videa|
       |faceId|ID obličeje, které se zobrazí v indexu videa|
@@ -87,9 +87,10 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 
 Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují šum na pozadí. Tento parametr se používá ke konfiguraci indexovacího procesu. Můžete určit tyto hodnoty:
 
-- `Default` – indexovat a extrahovat přehledy s využitím zvuku i videa
 - `AudioOnly` – indexovat a extrahovat přehledy s využitím jenom zvuku (video se ignoruje)
+- `Default` – indexovat a extrahovat přehledy s využitím zvuku i videa
 - `DefaultWithNoiseReduction` – indexovat a extrahovat přehledy ze zvuku i videa při použití algoritmů snížení šumu na zvukový datový proud
+- `VideoOnly` – indexování a extrakce Insights jenom pomocí videa 
 
 Cena závisí na vybrané možnosti indexování.  
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: db9132936604e8eed17bbdf173ce1b766fb1b334
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: beab594126ce292ea1fc47e399a12274dbb31aa3
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326688"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665691"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání v místním obchodu pomocí Node. js
 
@@ -23,13 +23,13 @@ Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API 
 
 Tato ukázková aplikace získá data místní odpovědi z rozhraní API pro vyhledávací dotaz `hotel in Bellevue`.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Nejnovější verze [Node.js](https://nodejs.org/en/download/).
+* Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 
 * [Knihovna požadavků JavaScriptu](https://github.com/request/request)
 
-Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Použijte přístupový klíč, který je k dispozici v bezplatné zkušební verzi.  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Použijte přístupový klíč, který je k dispozici v bezplatné zkušební verzi.  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="code-scenario"></a>Scénář kódu
 
@@ -43,7 +43,7 @@ Následující kód získá definici a odešle požadavek. Implementuje se v ná
 
 Následuje celý kód pro tuto ukázku:
 
-```
+```javascript
 'use strict';
 
 let https = require('https');

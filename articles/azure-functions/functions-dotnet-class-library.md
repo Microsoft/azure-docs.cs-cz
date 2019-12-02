@@ -3,12 +3,12 @@ title: Referenční C# informace pro vývojáře Azure Functions
 description: Naučte se vyvíjet Azure Functions pomocí C#.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 20bbf31bc92e49106a94e7a85d3b1541aaa2a34b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9ecaff438eb30e6a05a7e744e17d2d713eef21cd
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230604"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665572"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referenční C# informace pro vývojáře Azure Functions
 
@@ -149,7 +149,7 @@ Vygenerovaný soubor *Function. JSON* obsahuje vlastnost `configurationSource`, 
 }
 ```
 
-## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
+## <a name="microsoftnetsdkfunctions"></a>Microsoft. NET. SDK. Functions
 
 Generování souboru *Function. JSON* provádí balíček NuGet [Microsoft\.NET\.SDK\.funkce](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
@@ -366,11 +366,11 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definuje vstupní nebo výstupní vazbu [objektu BLOB úložiště](functions-bindings-storage-blob.md) a [TextWriter](/dotnet/api/system.io.textwriter) je podporovaný výstupní typ vazby.
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definuje vstupní nebo výstupní vazbu [objektu BLOB úložiště](functions-bindings-storage-blob.md) a [TextWriter](/dotnet/api/system.io.textwriter) je podporovaný výstupní typ vazby.
 
 ### <a name="multiple-attribute-example"></a>Příklad více atributů
 
-Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage`). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()`. Použijte parametr `Binder`, nikoli `IBinder`.  Příklad:
+Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage`). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()`. Použijte parametr `Binder`, nikoli `IBinder`.  Například:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

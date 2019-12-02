@@ -9,37 +9,34 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: aad66a91f7de8380ac7e87f0ce8e35ed43cac4a6
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4460d19de1859a8a3c51d91d418b948b5d3532a6
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594541"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666721"
 ---
-Kód pro všechny funkce v aplikaci konkrétní funkce je umístěn v kořenové složky projektu, který obsahuje konfigurační soubor hostitele a jeden nebo více jejích podsložkách. Každá podsložka obsahuje kód do samostatné funkce. Struktura složek je vidět v následující reprezentaci:
+Kód pro všechny funkce v konkrétní aplikaci Function App je umístěn v kořenové složce projektu, která obsahuje konfigurační soubor hostitele a jednu nebo více podsložek. Každá podsložka obsahuje kód pro samostatnou funkci. Struktura složek se zobrazuje v následujícím vyjádření:
 
 ```
 FunctionApp
  | - host.json
- | - Myfirstfunction
+ | - MyFirstFunction
  | | - function.json
  | | - ...  
- | - mysecondfunction
+ | - MySecondFunction
  | | - function.json
  | | - ...  
  | - SharedCode
  | - bin
 ```
 
-Ve verzi 2.x modul runtime služby Functions, všechny funkce do aplikace function App musí sdílet stejný zásobník jazyka.  
+Ve verzi 2. x modulu runtime Functions musí všechny funkce v aplikaci Function App sdílet stejnou jazykovou sadu.  
 
-[Host.json](../articles/azure-functions/functions-host-json.md) soubor obsahuje konfigurace modulu runtime specifické a je v kořenové složce aplikace function app. A *bin* složka obsahuje balíčky a další soubory knihovny, které aplikace function app vyžaduje. Projděte si požadavky na konkrétní jazyk pro projekt aplikace funkcí:
+Soubor [Host. JSON](../articles/azure-functions/functions-host-json.md) obsahuje konfigurace specifické pro modul runtime a je v kořenové složce aplikace Function App. Složka *bin* obsahuje balíčky a jiné soubory knihovny, které aplikace Function App vyžaduje. Prohlédněte si požadavky na konkrétní jazyk pro projekt Function App:
 
-* [Knihovny tříd C# (.csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
-* [C# skript (.csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
-* [F#skript](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
+* [C#Knihovna tříd (. csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
+* [C#skript (. csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
+* [F#pravidel](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
 * [Java](../articles/azure-functions/functions-reference-java.md#folder-structure)
 * [JavaScript](../articles/azure-functions/functions-reference-node.md#folder-structure)
-
-
-

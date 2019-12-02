@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: ed297a1005f67a14db1da15aba2c47c98e83df9c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885007"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665353"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -73,7 +73,7 @@ Vyberte skupinu prostředků a prostředky, abyste mohli začít zobrazovat změ
 Můžete si prohlédnout přehledy a související prostředky, které hostují vaši aplikaci. Toto zobrazení je určené pro vývojáře zaměřené na aplikace, aby mohl řešit problémy.
 
 Aktuálně podporované prostředky zahrnují:
-- Virtuální počítače
+- Služba Virtual Machines
 - Sada škálování virtuálních počítačů
 - Síťové prostředky Azure
 - Webová aplikace se změnami sledování souborů a proměnných prostředí v hostovi
@@ -102,7 +102,7 @@ V Azure Monitor je analýza změn integrovaná i v prostředí pro samoobslužno
 
    ![Snímek obrazovky s možnostmi zhroucení aplikací](./media/change-analysis/enable-changeanalysis.png)
 
-1. Zapněte **analýzu změn** a vyberte **Uložit**. Tento nástroj zobrazí všechny webové aplikace v rámci plánu App Services. Pomocí přepínače úroveň plánu můžete zapnout analýzu změn pro všechny webové aplikace v rámci plánu.
+1. Zapněte **analýzu změn** a vyberte **Uložit**. Tento nástroj zobrazí všechny webové aplikace v rámci plánu App Service. Pomocí přepínače úroveň plánu můžete zapnout analýzu změn pro všechny webové aplikace v rámci plánu.
 
     ![Snímek obrazovky s uživatelským rozhraním povolit analýzu změn](./media/change-analysis/change-analysis-on.png)
 

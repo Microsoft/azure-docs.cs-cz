@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 5cc473635543a22fd7e7223f4a5715f78457a897
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5a8e641c8a1b29d657fe8b0eabf7657ab5973516
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561747"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666031"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
 > [!Important]
-> Funkce automatického škálování funguje jenom pro clustery Spark, podregistr a MapReduce, které se vytvořily až do 8. května 2019. 
+> Funkce automatického škálování funguje jenom pro clustery Spark, podregistr, LLAP a HBA, které se vytvořily až do 8. května 2019. 
 
 Funkce automatického škálování clusteru Azure HDInsight automaticky škáluje počet pracovních uzlů v clusteru směrem nahoru a dolů. V tuto chvíli nejde škálovat jiné typy uzlů v clusteru.  Během vytváření nového clusteru HDInsight je možné nastavit minimální a maximální počet pracovních uzlů. Automatické škálování pak monitoruje požadavky na prostředky analytického zatížení a škáluje počet uzlů pracovních procesů nahoru nebo dolů. Pro tuto funkci se neúčtují žádné další poplatky.
 

@@ -4,15 +4,15 @@ description: Přečtěte si o vyhodnocení serveru a migraci pomocí služby Azu
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/19/2019
+ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a64e7366281f15c94d6551c1f7be27f461737634
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 04e6eddb86d34089db0243ff102d5ebd5ee77e43
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185789"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666116"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -49,7 +49,7 @@ Kromě nativních nástrojů Azure se Azure Migrate integruje s řadou nabídek 
 [Technologie spolupronájmu](https://www.corenttech.com/AzureMigrate/) | Posouzení a migrace serverů
 [Zařízení 42](https://docs.device42.com/) | Vyhodnotit servery
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Vyhodnotit VDI
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Migrace serverů
+[RackWare](https://www.rackwareinc.com/cloud-migration) | Migrace serverů
 [Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Vyhodnotit servery
 [UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Posouzení serverů a databází
 

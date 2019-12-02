@@ -1,6 +1,6 @@
 ---
-title: Kurz nasazení Custom Vision třídění zařízení – Azure IoT Edge | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak aby běžela jako kontejner pomocí vlastní vize a IoT Edge modelem počítačového zpracování obrazu.
+title: 'Kurz: obrázky & Custom Vision Service-Azure IoT Edge'
+description: V tomto kurzu se naučíte, jak pomocí Custom Vision a IoT Edge spustit model počítačové vize jako kontejner.
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.date: 10/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3418c57493e19580f0d3dbd9ea979b0322d930b8
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2303b4f4b639d015e9322e167ffbd956446c5061
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457286"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665946"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provádění klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
 
@@ -37,7 +37,7 @@ klasifikátoru nasazení </center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 >[!TIP]
 >Tento kurz je zjednodušenou verzí [Custom Vision a Azure IoT Edge v projektu s](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) ukázkovým projektem malin. PI 3. Tento kurz byl navržený tak, aby se spouštěl v cloudovém virtuálním počítači a pomocí statických imagí dokázal naučit a testovat třídění imagí. to je užitečné pro někoho, co začne hodnotit Custom Vision IoT Edge. Ukázkový projekt používá fyzický hardware a nastavuje živý kanál kamery ke školení a testování klasifikátoru obrázků, který je užitečný pro někoho, kdo chce vyzkoušet podrobnější scénář pro reálný život.
@@ -74,7 +74,7 @@ Jakmile bude klasifikátor obrázků vytvořený a natrénovaný, můžete ho ex
 
    | Pole | Hodnota |
    | ----- | ----- |
-   | Název | Zadejte název projektu, například **EdgeTreeClassifier**. |
+   | Name (Název) | Zadejte název projektu, například **EdgeTreeClassifier**. |
    | Popis | Volitelný popis projektu. |
    | Prostředek | Vyberte jednu ze skupin prostředků Azure, která zahrnuje prostředek Custom Vision Service, nebo **vytvořte novou** , pokud jste ho ještě nepřidali. |
    | Typy projektů | **Klasifikace** |
@@ -102,7 +102,7 @@ Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obráz
 
 5. Vyberte **Nahrát soubory (10)** . 
 
-   ![Nahrát soubory označené hemlock Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![Nahrání souborů s příznakem Hemlock do Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. Po úspěšném nahrání obrázků vyberte **Hotovo**.
 
@@ -120,7 +120,7 @@ Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obráz
 
 1. Po natrénování klasifikátoru na stránce Výkon klasifikátoru vyberte **Exportovat**. 
 
-   ![Export klasifikátoru trénovaného image](./media/tutorial-deploy-custom-vision/export.png)
+   ![Exportovat klasifikátor vyškolených imagí](./media/tutorial-deploy-custom-vision/export.png)
 
 2. Jako platformu vyberte **DockerFile**. 
 

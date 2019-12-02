@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3b011d3d7dc881d44fdcafb29efacf9548866d7a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3f50c94dafd01c6493f4765270c53c7903360c44
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747732"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665164"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service v systému Linux
 
@@ -53,7 +53,11 @@ Proces nasazení Azure App Service používá přihlašovací údaje účtu z Az
 az login
 ```
 
-Potom můžete nakonfigurovat nasazení, spustit příkaz Maven `mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config` na příkazovém řádku a použít výchozí konfigurace stisknutím klávesy **ENTER** , dokud nezískáte výzvu k **potvrzení (Y/N)** , stiskněte klávesu **Y** a konfigurace se provede.
+Potom můžete nakonfigurovat nasazení, spustit na příkazovém řádku příkaz Maven a pomocí výchozích konfigurací stisknout klávesu **ENTER** , dokud nezískáte výzvu k **potvrzení (Y/N)** , stiskněte klávesu **Y** a konfigurace se provede. 
+```cmd
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
+```
+Vzorový proces vypadá takto:
 
 ```cmd
 ~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
@@ -95,15 +99,18 @@ Confirm (Y/N)? : Y
 
 Přejděte na `pom.xml` znovu, abyste viděli konfiguraci modulu plug-in. v případě potřeby můžete upravit jiné konfigurace pro App Service přímo v souboru pom:
 
- Vlastnost | Požaduje se | Popis | Verze
+ Vlastnost | Požaduje se | Popis | Version
 ---|---|---|---
-`<schemaVersion>` | false (nepravda) | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1`, `v2`. | 2.5.1
+`<schemaVersion>` | false | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1`, `v2`. | 2.5.1
 `<resourceGroup>` | true | Skupina prostředků Azure pro vaši webovou aplikaci | 0.1.0 +
 `<appName>` | true | Název vaší webové aplikace | 0.1.0 +
 [`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope**. Všechny platné oblasti v části [podporované oblasti](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) . | 0.1.0 +
-[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false (nepravda) | Cenová úroveň pro vaši webovou aplikaci. Výchozí hodnota je **P1V2**.| 0.1.0 +
+[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | Cenová úroveň pro vaši webovou aplikaci. Výchozí hodnota je **P1V2**.| 0.1.0 +
 [`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | Konfigurace běhového prostředí můžete zobrazit podrobnosti [zde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting). | 0.1.0 +
 [`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | Konfigurace nasazení vám může [Zobrazit podrobnosti.](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | 0.1.0 +
+
+> [!div class="nextstepaction"]
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)
 
 ## <a name="deploy-the-app"></a>Nasazení aplikace
 
@@ -119,9 +126,12 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 
 **Blahopřejeme!** Nasadili jste svou první aplikaci v Javě do služby App Service v Linuxu.
 
+> [!div class="nextstepaction"]
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud předpokládáte, že už tyto prostředky nebudete potřebovat, odstraňte skupinu prostředků spuštěním následujícího příkazu ve službě Cloud Shell:
+V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků z portálu nebo spuštěním následujícího příkazu v Cloud Shell:
 
 ```azurecli-interactive
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
@@ -142,3 +152,6 @@ Spuštění tohoto příkazu může trvat přibližně minut.
 
 > [!div class="nextstepaction"]
 > [Další materiály pro vývojáře na platformě Java](/java/azure/)
+
+> [!div class="nextstepaction"]
+> [Další informace o modulech plug-in Maven pro Azure](https://github.com/microsoft/azure-maven-plugins)

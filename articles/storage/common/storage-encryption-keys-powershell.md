@@ -1,26 +1,26 @@
 ---
-title: Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z PowerShellu
+title: Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí prostředí PowerShell – Azure Storage
 description: Naučte se používat PowerShell ke konfiguraci klíčů spravovaných zákazníkem pro Azure Storage šifrování. Klíče spravované zákazníkem umožňují vytvářet, otáčet, zakazovat a odvolávat řízení přístupu.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/09/2019
+ms.topic: how-to
+ms.date: 11/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 30fed5a75e368e9d87da54d4c75e6f69759813e7
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: bd723787d9cea2d3b9d81ae9db63c70a21190854
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249289"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666218"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z PowerShellu
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-powershell"></a>Konfigurace klíčů spravovaných zákazníkem pro Azure Storage pomocí prostředí PowerShell
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí PowerShellu.
+V tomto článku se dozvíte, jak nakonfigurovat Azure Key Vault s použitím klíčů spravovaných zákazníkem pomocí PowerShellu. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure CLI, najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí prostředí PowerShell](../../key-vault/quick-create-powershell.md).
 
 > [!IMPORTANT]
 > Použití klíčů spravovaných zákazníkem s šifrováním Azure Storage vyžaduje, aby byly v trezoru klíčů nastaveny dvě vlastnosti, **obnovitelné odstranění** a **nemazatelné**. Tyto vlastnosti nejsou ve výchozím nastavení povolené. Pokud chcete tyto vlastnosti povolit, použijte PowerShell nebo rozhraní příkazového řádku Azure CLI.
@@ -96,5 +96,5 @@ Když vytváříte novou verzi klíče, budete muset aktualizovat účet úloži
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md) 
+- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md)
 - [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

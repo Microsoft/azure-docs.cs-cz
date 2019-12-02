@@ -1,6 +1,6 @@
 ---
-title: Kurz nasazení funkce Azure do zařízení – Azure IoT Edge | Dokumentace Microsoftu
-description: V tomto kurzu budete vyvíjet Azure fungovat jako modul IoT Edge a pak ji nasadit do hraničního zařízení.
+title: 'Kurz: nasazení služby Azure Functions jako modulů – Azure IoT Edge'
+description: V tomto kurzu vyvíjíte funkci Azure Function jako modul IoT Edge a pak ho nasadíte do hraničního zařízení.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1db64c2cc68dc9c47d4f2cf5f63eb0667907d737
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8edd6028e73690829129168d912b312247d8b880
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456714"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664093"
 ---
-# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: Nasazení Azure funguje jako moduly IoT Edge
+# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: nasazení služby Azure Functions jako modulů IoT Edge
 
 Pomocí služby Azure Functions můžete nasadit kód, který implementuje vaši obchodní logiku přímo do zařízení Azure IoT Edge. Tento kurz vás provedete vytvořením a nasazením funkce Azure Functions, která filtruje data senzorů na simulovaném zařízení IoT Edge. Budete používat simulované zařízení IoT Edge, které jste vytvořili v rychlých startech o nasazení Azure IoT Edge na simulované zařízení ve [Windows](quickstart.md) nebo [Linuxu](quickstart-linux.md). V tomto kurzu se naučíte:
 
@@ -39,7 +39,7 @@ Funkce Azure Functions, kterou v tomto kurzu vytvoříte, filtruje teplotní úd
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky: 
 
@@ -100,7 +100,7 @@ Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hranici p�
 
 1. V Visual Studio Code otevřete **moduly** > **CSharpFunction** > **CSharpFunction.cs**.
 
-1. Obsah souboru **CSharpFunction.cs** nahraďte následujícím kódem. Tento kód přijímá telemetrická data o okolí a počítač teploty a pouze předává zprávy do služby IoT Hub, jestliže je počítač teplota nad definovanou prahovou hodnotu.
+1. Obsah souboru **CSharpFunction.cs** nahraďte následujícím kódem. Tento kód obdrží telemetrii o teplotě okolí a počítače a přesměruje zprávu na IoT Hub, pokud je teplota počítače nad stanovenou prahovou hodnotou.
 
    ```csharp
    using System;
@@ -177,7 +177,7 @@ Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hranici p�
 
 ## <a name="build-your-iot-edge-solution"></a>Vytvoření řešení IoT Edge
 
-V předchozí části jste vytvořili řešení IoT Edge a do modulu **CSharpFunction** jste přidali kód k odfiltrování zpráv, ve kterých je hlášená teplota počítače nižší než přípustná mezní hodnota. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
+V předchozí části jste vytvořili řešení IoT Edge a do modulu **CSharpFunction** jste přidali kód k odfiltrování zpráv, ve kterých je hlášená teplota počítače nižší než přípustná mezní hodnota. Teď je potřeba sestavit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
 V této části zadáte přihlašovací údaje pro váš registr kontejneru za sekundu (první byl v souboru **. env** vašeho řešení IoT Edge), a to tak, že se přihlásíte místně z vývojového počítače, aby Visual Studio Code mohl do registru vložit image.
 
@@ -219,7 +219,7 @@ K nasazení modulu funkce na zařízení IoT Edge můžete použít web Azure Po
 
 3. Přejděte do složky řešení, která obsahuje modul **CSharpFunction**. Otevřete konfigurační složku, vyberte soubor **Deployment. JSON** a pak zvolte **možnost vybrat manifest nasazení Edge**.
 
-4. Aktualizujte oddíl **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). Měl by se zobrazit nový **CSharpFunction** spuštěný spolu s modulem **SimulatedTemperatureSensor** a **$edgeAgent** a **$edgeHub**. Může trvat ještě chvilku na nové moduly zobrazení. Zařízení IoT Edge má k načtení nové informace o nasazení ze služby IoT Hub, spustit nové kontejnery a vykazování stavu zpět do služby IoT Hub. 
+4. Aktualizujte oddíl **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). Měl by se zobrazit nový **CSharpFunction** spuštěný spolu s modulem **SimulatedTemperatureSensor** a **$edgeAgent** a **$edgeHub**. Aby se nové moduly zobrazovaly, může chvíli trvat. Vaše zařízení IoT Edge musí načíst nové informace o nasazení z IoT Hub, začít nové kontejnery a pak stav nahlásit zpět do IoT Hub. 
 
    ![Zobrazení nasazených modulů ve VS Code](./media/tutorial-deploy-function/view-modules.png)
 

@@ -8,40 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: overview
-ms.date: 09/13/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: bdada613ef46881bbf051144efded541ac3d0974
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 4e08596e8cf71bbb0e88abdc51f5d8e69972464d
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996691"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665251"
 ---
 # <a name="what-is-bing-local-business-search"></a>Co je vyhledávání v místním podnikání Bingu?
-Rozhraní API pro místní vyhledávání Bingu je služba RESTful, která umožňuje vašim aplikacím najít informace o místních firmách na základě vyhledávacích dotazů. Například `q=<business-name> in Redmond, Washington`, nebo `q=Italian restaurants near me`. 
+Rozhraní API pro místní vyhledávání Bingu je služba RESTful, která umožňuje vašim aplikacím najít informace o místních firmách na základě vyhledávacích dotazů. Například `q=<business-name> in Redmond, Washington`nebo `q=Italian restaurants near me`. 
 
 ## <a name="features"></a>Funkce
 | Funkce | Popis |  
 | -- | -- | 
-| [Najít místní firmy a umístění](quickstarts/local-quickstart.md) | Rozhraní API pro místní vyhledávání Bingu získá lokalizované výsledky dotazu. Výsledky zahrnují adresu URL webu firmy a zobrazený text, telefonní číslo a zeměpisnou polohu, včetně: Souřadnice GPS, město, adresa na ulici |  
+| [Najít místní firmy a umístění](quickstarts/local-quickstart.md) | Rozhraní API pro místní vyhledávání Bingu získá lokalizované výsledky dotazu. Mezi výsledky patří adresa URL webu firmy a zobrazený text, telefonní číslo a zeměpisná poloha, včetně: souřadnice GPS, město, Adresa ulice |  
 | [Filtrování místních výsledků s geografickými hranicemi](specify-geographic-search.md) | Přidáním souřadnic jako parametrů hledání můžete výsledky omezit na konkrétní geografickou oblast určenou kruhovou oblastí nebo čtvercovým ohraničovacím rámečkem. | 
 | [Filtrovat výsledky místních obchodních výsledků podle kategorií](local-categories.md) | Hledání místních obchodních výsledků podle kategorií Tato možnost používá k vrácení lokalizovaných výsledků do různých kategorií firmy reverzní umístění IP nebo souřadnice GPS volajícího.|
 
-## <a name="workflow"></a>Pracovní postup
+## <a name="workflow"></a>Pracovní postupy
 Volejte rozhraní API pro místní vyhledávání Bingu z libovolného programovacího jazyka, který může vytvářet požadavky HTTP a analyzovat odpovědi JSON. Tato služba je přístupná pomocí REST API.
  
 1. Vytvořte [účet Cognitive Services rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).   
-2. Adresa URL pro `q=""` parametr dotazu zakóduje hledané výrazy. Například `q=nearby+restaurant` nebo `q=nearby%20restaurant`. Nastavte také stránkování, pokud je to potřeba. 
+2. Adresa URL kódování hledaných výrazů pro parametr dotazu `q=""`. Například `q=nearby+restaurant` nebo `q=nearby%20restaurant`. Nastavte také stránkování, pokud je to potřeba. 
 3. Odeslat [žádost do rozhraní API služby Bing pro hledání v místních obchodech](quickstarts/local-quickstart.md) 
 4. Analyzovat odpověď JSON 
 
 > [!NOTE]
-> Místní vyhledávání v `en-US` současné době podporuje jenom trh. 
-> [!NOTE]
-> Místní vyhledávání v současné době nepodporuje automatické návrhy. 
+> V současné době místní hledání firmy: 
+> * Podporuje jenom `en-US` trh. 
+> * Nepodporuje Automatické návrhy Bingu. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Dotaz a odpověď](local-search-query-response.md)
 - [Rychlý start hledání místních obchodních obchodů](quickstarts/local-quickstart.md)
 - [Referenční informace k rozhraní API pro místní vyhledávání v obchodu](local-search-reference.md)
-- [Požadavky na použití a zobrazení](use-display-requirements.md)
+- [Požadavky na zobrazení a použití](use-display-requirements.md)
