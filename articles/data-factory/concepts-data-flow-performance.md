@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 20a08345d8335b4857ca9777efb55f953ee63e9f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ae6ff5fb5a5bfc6ba9299e06bad9afafc1403f3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681539"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671577"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -120,6 +120,14 @@ Pokud máte například seznam datových souborů z července 2019, které chcet
 ```DateFiles/*_201907*.txt```
 
 Když použijete zástupné znaky, kanál bude obsahovat jenom jednu aktivitu toku dat. To bude mít lepší výkon než vyhledávání v úložišti objektů blob, které pak projde všemi odpovídajícími soubory pomocí příkazu ForEach s aktivitou spustit tok dat uvnitř.
+
+### <a name="optimizing-for-cosmosdb"></a>Optimalizace pro CosmosDB
+
+Nastavení propustnosti a vlastností dávky u jímky CosmosDB se projeví pouze během provádění tohoto toku dat z aktivity toku dat kanálu. Po spuštění toku dat budou v CosmosDB dodržena původní nastavení kolekce.
+
+* Velikost dávky: Vypočítejte přibližnou velikost řádků dat a ujistěte se, že velikost dávky rowSize * je menší než 2 000 000. Pokud je, zvyšte velikost dávky, abyste získali lepší propustnost.
+* Througput: tady nastavte vyšší propustnost, aby bylo možné dokumentům zapisovat rychleji na CosmosDB. Na základě nastavení vysoké propustnosti Prosím mějte na paměti vyšší náklady na RU.
+*   Rozpočet propustnosti zápisu: použijte hodnotu, která je menší než celková ru za minutu. Pokud máte tok dat s vysokým počtem Spark partitiongs, nastavení propustnosti rozpočtu umožníte větší rovnováhu mezi těmito oddíly.
 
 ## <a name="next-steps"></a>Další kroky
 

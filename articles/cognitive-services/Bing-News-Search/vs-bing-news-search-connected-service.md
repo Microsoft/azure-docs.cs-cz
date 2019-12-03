@@ -3,19 +3,19 @@ title: Připojení k rozhraní API Bingu pro vyhledávání zpráv s připojený
 titleSuffix: Azure Cognitive Services
 description: S využitím rozhraní API Bingu pro vyhledávání zpráv můžete aplikacím a službám umožnit využívat výkon vyhledávacího webu, který je bez reklam a omezený na web.
 services: cognitive-services
-author: ghogen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.author: ghogen
-ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 9cac13f8fb42959e79cafedcc7057d1cb7c2f7d5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111511"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689386"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Kurz: připojení k rozhraní API Bingu pro vyhledávání zpráv s připojenými službami v aplikaci Visual Studio aC#
 
@@ -23,7 +23,7 @@ S využitím rozhraní API Bingu pro vyhledávání zpráv můžete aplikacím a
 
 Tento článek obsahuje podrobnosti o používání funkce připojené služby sady Visual Studio pro rozhraní API Bingu pro vyhledávání zpráv. Tato možnost je dostupná v sadě Visual Studio 2017 15.7 nebo novější s nainstalovaným rozšířením Cognitive Services.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
 - Visual Studio 2019 s nainstalovanou úlohou vývoje webu. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
@@ -260,7 +260,7 @@ Do projektu jste přidali podporu rozhraní API Bingu pro vyhledávání zpráv.
            
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už skupinu prostředků nepotřebujete, můžete ji odstranit. Tím se odstraní služba Cognitive Services a související prostředky. Odstranění skupiny prostředků přes portál:
+Pokud už skupinu prostředků nepotřebujete, můžete ji odstranit. Tím se odstraní kognitivní služba a související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do vyhledávacího pole v horní části portálu zadejte název vaší skupiny prostředků. Vyberte skupinu prostředků, kterou chcete odstranit.
 2. Vyberte **Odstranit skupinu prostředků**.

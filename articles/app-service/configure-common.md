@@ -1,26 +1,17 @@
 ---
-title: Konfigurace aplikací na portálu – Azure App Service
-description: Naučte se konfigurovat společná nastavení pro App Service aplikaci v Azure Portal.
+title: Konfigurace aplikací na portálu
+description: Naučte se konfigurovat společná nastavení pro App Service aplikaci v Azure Portal. Nastavení aplikace, připojovací řetězce, platforma, sada jazyků, kontejner atd.
 keywords: Azure App Service, Webová aplikace, nastavení aplikace, proměnné prostředí
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c22f88487fd8b34d48d3012c706bb0415760b21e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470937"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671951"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -251,7 +242,7 @@ Další informace najdete v tématu [Konfigurace vlastního kontejneru Linux pro
 
 - [Konfigurace vlastní domény ve službě Azure App Service]
 - [Nastavení přípravných prostředí ve službě Azure App Service]
-- [Zabezpečení vlastního názvu DNS s vazbou SSL v Azure App Service](configure-ssl-bindings.md)
+- [Zabezpečení vlastního názvu DNS s využitím vazby SSL ve službě Azure App Service](configure-ssl-bindings.md)
 - [Povolit diagnostické protokoly](troubleshoot-diagnostic-logs.md)
 - [Horizontální navýšení kapacity aplikace v Azure App Service]
 - [Základy monitorování v Azure App Service]

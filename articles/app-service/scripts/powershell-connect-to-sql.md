@@ -1,26 +1,17 @@
 ---
-title: Ukázka skriptu Azure PowerShell – připojení aplikace k databázi SQL | Microsoft Docs
-description: Ukázka skriptu Azure PowerShell – připojení aplikace App Service k databázi SQL
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: 'PowerShell: připojení k SQL Database'
+description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. V této ukázce se dozvíte, jak připojit aplikaci k SQL Database.
 tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 799fb67b20c45653ec741a92ec7a75aff2f8c509
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bb5fc8bcc99a4439276f53325c029635143c86c5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087836"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685388"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database"></a>Připojení aplikace App Service k databázi SQL
 
@@ -60,4 +51,4 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Další ukázky Azure PowerShellu pro Azure App Service najdete v ukázkách [Azure PowerShell](../samples-powershell.md).
+Další ukázky Azure PowerShellu pro Azure App Service najdete v [ukázkách Azure PowerShell](../samples-powershell.md).

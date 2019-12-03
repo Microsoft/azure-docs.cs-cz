@@ -2,24 +2,24 @@
 title: Apache Hive & Data Lake Tools for Visual Studio – Azure HDInsight
 description: Naučte se používat nástroje Data Lake pro Visual Studio ke spouštění dotazů Apache Hive s Apache Hadoop ve službě Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5b10cc5a8b7468b222fec3f2e66a8258470047ae
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: 27ab13481525819eb1435f4c9ac256a21acd21fb
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931892"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687800"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Apache Hive pomocí nástrojů Data Lake pro Visual Studio
 
 Naučte se používat nástroje Data Lake pro Visual Studio k dotazování Apache Hive. Nástroje Data Lake umožňují snadno vytvářet, odesílat a monitorovat dotazy na podregistry pro Apache Hadoop v Azure HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Hadoop v HDInsight. Informace o vytvoření této položky najdete v tématu [Vytvoření clusteru Apache Hadoop ve službě Azure HDInsight pomocí šablony Správce prostředků](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -36,11 +36,11 @@ Vytvářet a spouštět dotazy Hive můžete dvěma způsoby:
 
 ### <a name="create-an-ad-hoc-hive-query"></a>Vytvoření dotazu na podregistr pro ad hoc
 
-Dotazy ad-hoc je možné provádět v **dávkovém** nebo **interaktivním** režimu.
+Ad hoc dotazy se dají spustit buď v **dávce** , nebo v **interaktivním** režimu.
 
-1. Otevřete **Visual Studio**.
+1. Spusťte **Visual Studio** a vyberte **pokračovat bez kódu**.
 
-2. Z **Průzkumník serveru**přejděte na **Azure** > **HDInsight**.
+2. V **Průzkumník serveru**klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit se k Microsoft Azure předplatného...** a dokončete proces přihlašování.
 
 3. Rozbalte **HDInsight**, klikněte pravým tlačítkem na cluster, ve kterém chcete spustit dotaz, a pak vyberte **zapsat dotaz na podregistr**.
 
@@ -99,7 +99,7 @@ Chcete-li spustit dotaz na podregistr vytvořením aplikace podregistru, postupu
         > Externí tabulky by se měly používat, pokud očekáváte, že se podkladová data aktualizují externím zdrojem, jako je například úloha MapReduce nebo služba Azure.
         >
         > Vyřazení externí tabulky **neodstraní data** , pouze definici tabulky.
-    
+
     * `ROW FORMAT`: instruuje podregistr, jak se data naformátují. V tomto případě jsou pole v každém protokolu oddělená mezerou.
 
     * `STORED AS TEXTFILE LOCATION`: říká podregistru, že data jsou uložená v *příkladu nebo v datovém* adresáři a že se ukládají jako text.
@@ -138,7 +138,7 @@ Následující příklad spoléhá na tabulku `log4jLogs` vytvořenou v předcho
         > Na rozdíl od `EXTERNAL` tabulek odstraní interní tabulka také podkladová data.
 
     * `STORED AS ORC`: ukládá data ve formátu *optimalizovaného řádku* (Orc). ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.
-    
+
     * `INSERT OVERWRITE ... SELECT`: Vybere řádky z tabulky `log4jLogs`, která obsahuje `[ERROR]`, a pak vloží data do tabulky `errorLogs`.
 
 3. V případě potřeby změňte **Interactive** na **Batch** a pak vyberte **Odeslat**.
@@ -149,14 +149,8 @@ Následující příklad spoléhá na tabulku `log4jLogs` vytvořenou v předcho
 
 Jak vidíte, nástroje HDInsight pro Visual Studio poskytují snadný způsob práce s dotazy na podregistry v HDInsight.
 
-Obecné informace o podregistru v HDInsight:
+* Obecné informace o podregistru v HDInsight najdete v tématu [co je Apache Hive a HiveQL v Azure HDInsight?](hdinsight-use-hive.md)
 
-* [Co je Apache Hive a HiveQL ve službě Azure HDInsight?](hdinsight-use-hive.md)
+* Informace o dalších způsobech práce se systémem Hadoop ve službě HDInsight najdete v tématu [použití MapReduce v Apache Hadoop](hdinsight-use-mapreduce.md) ve službě HDInsight.
 
-Informace o dalších způsobech, jak můžete pracovat se systémem Hadoop ve službě HDInsight:
-
-* [Použití MapReduce v Apache Hadoopu ve službě HDInsight](hdinsight-use-mapreduce.md)
-
-Další informace o nástrojích HDInsight pro Visual Studio:
-
-* [Použití Data Lake nástrojů pro Visual Studio pro připojení k Azure HDInsight a spouštění dotazů Apache Hive](apache-hadoop-visual-studio-tools-get-started.md)
+* Další informace o nástrojích HDInsight Tools for Visual Studio najdete v tématu[použití Data Lake nástrojů pro Visual Studio pro připojení k Azure HDInsight a spouštění dotazů Apache Hive](apache-hadoop-visual-studio-tools-get-started.md) .

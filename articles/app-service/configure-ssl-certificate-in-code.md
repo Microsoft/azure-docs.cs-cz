@@ -1,25 +1,16 @@
 ---
-title: Použít certifikát SSL v kódu-Azure App Service | Microsoft Docs
-description: Naučte se používat klientské certifikáty pro připojení ke vzdáleným prostředkům, které je vyžadují.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Použít certifikát SSL v kódu
+description: Naučte se používat klientské certifikáty ve vašem kódu. Ověřování pomocí klientských certifikátů pomocí vzdálených prostředků, nebo s nimi spouštějte kryptografické úlohy.
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1546ded1977e1e26792189e1d992d106d3d77ef2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d783b61c372c7d0f8cca13106bf297ab9b55c424
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271284"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671892"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Použijte certifikát SSL v kódu v Azure App Service
 
@@ -29,7 +20,7 @@ Tento přístup k používání certifikátů v kódu využívá funkci SSL v Ap
 
 Když necháte App Service spravovat certifikáty SSL, můžete spravovat certifikáty a kód aplikace samostatně a chránit citlivá data.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup při použití tohoto průvodce:
 
@@ -159,7 +150,7 @@ var cert = new X509Certificate2(bytes);
 
 Pokud chcete zjistit, jak načíst certifikát SSL ze souboru v Node. js, PHP, Pythonu, Java nebo Ruby, přečtěte si dokumentaci k příslušnému jazyku nebo webové platformě.
 
-## <a name="more-resources"></a>Další zdroje informací
+## <a name="more-resources"></a>Další zdroje
 
 * [Zabezpečení vlastního názvu DNS pomocí vazby SSL](configure-ssl-bindings.md)
 * [Vynucení HTTPS](configure-ssl-bindings.md#enforce-https)

@@ -1,25 +1,18 @@
 ---
-title: Automatické škálování a App Service Environment v1 – Azure
-description: Automatické škálování a App Service Environment
-services: app-service
-documentationcenter: ''
+title: Automatické škálování v1
+description: Automatické škálování a App Service Environment v1. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: btardif
-manager: erikre
-editor: ''
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f0c49e1835412b61817ff3571dd3ee1eaa29f21f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070088"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687284"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatické škálování a App Service Environment v1
 
@@ -66,7 +59,7 @@ Jan je sysadmin pro podnik, který migrovali část úloh, které spravují do A
 
 Prostředí App Service je nakonfigurované tak, aby manuální škálování bylo následující:
 
-* **Front-endy:** 3
+* **Přední zakončení:** 3
 * **Fond pracovních procesů 1**: 10
 * **Fond pracovních procesů 2**: 5
 * **Fond pracovních procesů 3**: 5
@@ -81,32 +74,32 @@ Jan je s aplikací velmi obeznámený. Ví, že špička zatížení je mezi 9:0
 
 | **Profil automatického škálování – pracovní dny – App Service plán** | **Profil automatického škálování – víkendy – App Service plán** |
 | --- | --- |
-| **Jméno:** Profil dne v týdnu |**Jméno:** Profil víkendu |
+| **Název:** Profil dne v týdnu |**Název:** Profil víkendu |
 | **Škálovat podle:** Pravidla plánování a výkonu |**Škálovat podle:** Pravidla plánování a výkonu |
-| **Profilu** Všední dny |**Profilu** Volné |
-| **Textový** Opakování |**Textový** Opakování |
+| **Profil:** Všední dny |**Profil:** Volné |
+| **Zadejte:** Vzorec |**Zadejte:** Vzorec |
 | **Cílový rozsah:** 5 až 20 instancí |**Cílový rozsah:** 3 až 10 instancí |
-| **Denní** Pondělí, úterý, středa, čtvrtek, pátek |**Denní** Sobota, neděle |
-| **Čas spuštění:** 9:00 DOP. |**Čas spuštění:** 9:00 DOP. |
+| **Dny:** Pondělí, úterý, středa, čtvrtek, pátek |**Dny:** Sobota, neděle |
+| **Čas spuštění:** 9:00 dop. |**Čas spuštění:** 9:00 dop. |
 | **Časové pásmo:** UTC-08 |**Časové pásmo:** UTC-08 |
 |  | |
 | **Pravidlo automatického škálování (horizontální navýšení kapacity)** |**Pravidlo automatického škálování (horizontální navýšení kapacity)** |
-| **Partner** Výroba (App Service Environment) |**Partner** Výroba (App Service Environment) |
-| **Metriky** VČETNĚ |**Metriky** VČETNĚ |
-| **NázevOperace** Větší než 60% |**NázevOperace** Větší než 80% |
-| **Úkolu** 5 minut |**Úkolu** 10 minut |
-| **Časová agregace:** Average |**Časová agregace:** Average |
-| **Kroky** Zvýšit počet o 2 |**Kroky** Zvýšit počet o 1 |
-| **Doba vychladnutí (minuty):** 15 |**Doba vychladnutí (minuty):** 20 |
+| **Prostředek:** Výroba (App Service Environment) |**Prostředek:** Výroba (App Service Environment) |
+| **Metrika:** VČETNĚ |**Metrika:** VČETNĚ |
+| **Operace:** Větší než 60% |**Operace:** Větší než 80% |
+| **Doba trvání:** 5 minut |**Doba trvání:** 10 minut |
+| **Časová agregace:** Vypočítat |**Časová agregace:** Vypočítat |
+| **Akce:** Zvýšit počet o 2 |**Akce:** Zvýšit počet o 1 |
+| Doba **vychladnutí (minuty):** 15 |Doba **vychladnutí (minuty):** 20 |
 |  | |
 | **Pravidlo automatického škálování (horizontální snížení kapacity)** |**Pravidlo automatického škálování (horizontální snížení kapacity)** |
-| **Partner** Výroba (App Service Environment) |**Partner** Výroba (App Service Environment) |
-| **Metriky** VČETNĚ |**Metriky** VČETNĚ |
-| **NázevOperace** Méně než 30% |**NázevOperace** Méně než 20% |
-| **Úkolu** 10 minut |**Úkolu** 15 minut |
-| **Časová agregace:** Average |**Časová agregace:** Average |
-| **Kroky** Snížit počet o 1 |**Kroky** Snížit počet o 1 |
-| **Doba vychladnutí (minuty):** 20 |**Doba vychladnutí (minuty):** 10 |
+| **Prostředek:** Výroba (App Service Environment) |**Prostředek:** Výroba (App Service Environment) |
+| **Metrika:** VČETNĚ |**Metrika:** VČETNĚ |
+| **Operace:** Méně než 30% |**Operace:** Méně než 20% |
+| **Doba trvání:** 10 minut |**Trvání:** 15 minut |
+| **Časová agregace:** Vypočítat |**Časová agregace:** Vypočítat |
+| **Akce:** Snížit počet o 1 |**Akce:** Snížit počet o 1 |
+| Doba **vychladnutí (minuty):** 20 |Doba **vychladnutí (minuty):** 10 |
 
 ### <a name="app-service-plan-inflation-rate"></a>Míra inflace App Serviceho plánu
 Plány App Service, které jsou nakonfigurovány pro automatické škálování, tak mají maximální sazbu za hodinu. Tato sazba se dá vypočítat na základě hodnot zadaných v pravidle automatického škálování.
@@ -152,32 +145,32 @@ Pomocí těchto informací může Jan definovat následující profil a pravidla
 
 | **Profil automatického škálování – pracovní dny** | **Profil automatického škálování – víkendy** |
 | --- | --- |
-| **Jméno:** Profil dne v týdnu |**Jméno:** Profil víkendu |
+| **Název:** Profil dne v týdnu |**Název:** Profil víkendu |
 | **Škálovat podle:** Pravidla plánování a výkonu |**Škálovat podle:** Pravidla plánování a výkonu |
-| **Profilu** Všední dny |**Profilu** Volné |
-| **Textový** Opakování |**Textový** Opakování |
+| **Profil:** Všední dny |**Profil:** Volné |
+| **Zadejte:** Vzorec |**Zadejte:** Vzorec |
 | **Cílový rozsah:** 13 až 25 instancí |**Cílový rozsah:** 6 až 15 instancí |
-| **Denní** Pondělí, úterý, středa, čtvrtek, pátek |**Denní** Sobota, neděle |
-| **Čas spuštění:** 7:00 DOP. |**Čas spuštění:** 9:00 DOP. |
+| **Dny:** Pondělí, úterý, středa, čtvrtek, pátek |**Dny:** Sobota, neděle |
+| **Čas spuštění:** 7:00 dop. |**Čas spuštění:** 9:00 dop. |
 | **Časové pásmo:** UTC-08 |**Časové pásmo:** UTC-08 |
 |  | |
 | **Pravidlo automatického škálování (horizontální navýšení kapacity)** |**Pravidlo automatického škálování (horizontální navýšení kapacity)** |
-| **Partner** Fond pracovních procesů 1 |**Partner** Fond pracovních procesů 1 |
-| **Metriky** WorkersAvailable |**Metriky** WorkersAvailable |
-| **NázevOperace** Méně než 8 |**NázevOperace** Méně než 3 |
-| **Úkolu** 20 minut |**Úkolu** 30 minut |
-| **Časová agregace:** Average |**Časová agregace:** Average |
-| **Kroky** Zvýšit počet o 8 |**Kroky** Zvýšit počet o 3 |
-| **Doba vychladnutí (minuty):** 180 |**Doba vychladnutí (minuty):** 180 |
+| **Prostředek:** Fond pracovních procesů 1 |**Prostředek:** Fond pracovních procesů 1 |
+| **Metrika:** WorkersAvailable |**Metrika:** WorkersAvailable |
+| **Operace:** Méně než 8 |**Operace:** Méně než 3 |
+| **Doba trvání:** 20 minut |**Doba trvání:** 30 minut |
+| **Časová agregace:** Vypočítat |**Časová agregace:** Vypočítat |
+| **Akce:** Zvýšit počet o 8 |**Akce:** Zvýšit počet o 3 |
+| Doba **vychladnutí (minuty):** 180 |Doba **vychladnutí (minuty):** 180 |
 |  | |
 | **Pravidlo automatického škálování (horizontální snížení kapacity)** |**Pravidlo automatického škálování (horizontální snížení kapacity)** |
-| **Partner** Fond pracovních procesů 1 |**Partner** Fond pracovních procesů 1 |
-| **Metriky** WorkersAvailable |**Metriky** WorkersAvailable |
-| **NázevOperace** Větší než 8 |**NázevOperace** Větší než 3 |
-| **Úkolu** 20 minut |**Úkolu** 15 minut |
-| **Časová agregace:** Average |**Časová agregace:** Average |
-| **Kroky** Snížit počet o 2 |**Kroky** Snížit počet o 3 |
-| **Doba vychladnutí (minuty):** 120 |**Doba vychladnutí (minuty):** 120 |
+| **Prostředek:** Fond pracovních procesů 1 |**Prostředek:** Fond pracovních procesů 1 |
+| **Metrika:** WorkersAvailable |**Metrika:** WorkersAvailable |
+| **Operace:** Větší než 8 |**Operace:** Větší než 3 |
+| **Doba trvání:** 20 minut |**Trvání:** 15 minut |
+| **Časová agregace:** Vypočítat |**Časová agregace:** Vypočítat |
+| **Akce:** Snížit počet o 2 |**Akce:** Snížit počet o 3 |
+| Doba **vychladnutí (minuty):** 120 |Doba **vychladnutí (minuty):** 120 |
 
 Cílový rozsah definovaný v profilu se počítá minimálními instancemi definovanými v profilu pro App Service plán + vyrovnávací paměť.
 
@@ -197,32 +190,32 @@ V tomto scénáři Jan ví, že se míra chyb zvyšuje až po front-endy dosahuj
 
 | **Profil automatického škálování – přední zakončení** |
 | --- |
-| **Jméno:** Automatické škálování – front-endy |
+| **Název:** Automatické škálování – front-endy |
 | **Škálovat podle:** Pravidla plánování a výkonu |
-| **Profilu** Každý den |
-| **Textový** Opakování |
+| **Profil:** Běžně |
+| **Zadejte:** Vzorec |
 | **Cílový rozsah:** 3 až 10 instancí |
-| **Denní** Každý den |
-| **Čas spuštění:** 9:00 DOP. |
+| **Dny:** Běžně |
+| **Čas spuštění:** 9:00 dop. |
 | **Časové pásmo:** UTC-08 |
 |  |
 | **Pravidlo automatického škálování (horizontální navýšení kapacity)** |
-| **Partner** Front-end fond |
-| **Metriky** VČETNĚ |
-| **NázevOperace** Větší než 60% |
-| **Úkolu** 20 minut |
-| **Časová agregace:** Average |
-| **Kroky** Zvýšit počet o 3 |
-| **Doba vychladnutí (minuty):** 120 |
+| **Prostředek:** Front-end fond |
+| **Metrika:** VČETNĚ |
+| **Operace:** Větší než 60% |
+| **Doba trvání:** 20 minut |
+| **Časová agregace:** Vypočítat |
+| **Akce:** Zvýšit počet o 3 |
+| Doba **vychladnutí (minuty):** 120 |
 |  |
 | **Pravidlo automatického škálování (horizontální snížení kapacity)** |
-| **Partner** Fond pracovních procesů 1 |
-| **Metriky** VČETNĚ |
-| **NázevOperace** Méně než 30% |
-| **Úkolu** 20 minut |
-| **Časová agregace:** Average |
-| **Kroky** Snížit počet o 3 |
-| **Doba vychladnutí (minuty):** 120 |
+| **Prostředek:** Fond pracovních procesů 1 |
+| **Metrika:** VČETNĚ |
+| **Operace:** Méně než 30% |
+| **Doba trvání:** 20 minut |
+| **Časová agregace:** Vypočítat |
+| **Akce:** Snížit počet o 3 |
+| Doba **vychladnutí (minuty):** 120 |
 
 <!-- IMAGES -->
 [intro]: ./media/app-service-environment-auto-scale/introduction.png

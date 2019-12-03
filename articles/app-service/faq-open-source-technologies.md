@@ -1,26 +1,20 @@
 ---
-title: Nejčastější dotazy týkající se technologie Open Source – Azure App Service | Microsoft Docs
-description: Získejte odpovědi na nejčastější dotazy týkající se Open Source technologií v Web Apps funkce Azure App Service.
-services: app-service\web
-documentationcenter: ''
+title: Nejčastější dotazy k technologiím Open Source
+description: Získejte odpovědi na nejčastější dotazy týkající se Open Source technologií v Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169691"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672426"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se technologie Open source pro Web Apps v Azure
 
@@ -36,7 +30,7 @@ Zapnutí protokolování PHP:
 2. V horní nabídce vyberte **ladit konzolu** > **cmd**.
 3. Vyberte složku **webu** .
 4. Vyberte složku **wwwroot** .
-5. Vyberte ikonu **+** a potom vyberte **nový soubor**.
+5. Vyberte ikonu **+** a pak vyberte **nový soubor**.
 6. Nastavte název souboru na **. User. ini**.
 7. Vyberte ikonu tužky vedle souboru **. User. ini**.
 8. Do souboru přidejte tento kód: `log_errors=on`
@@ -61,7 +55,7 @@ Chcete-li změnit verzi aplikace Node. js, můžete použít jednu z následují
 * V Azure Portal použijte **nastavení aplikace**.
   1. V Azure Portal přejdete do své webové aplikace.
   2. V okně **Nastavení** vyberte **nastavení aplikace**.
-  3. V **nastavení aplikace**můžete jako klíč zahrnout WEBSITE_NODE_DEFAULT_VERSION a verzi Node. js, kterou chcete použít jako hodnotu.
+  3. V **nastavení aplikace**můžete zahrnout WEBSITE_NODE_DEFAULT_VERSION jako klíč a verzi Node. js, kterou chcete použít jako hodnotu.
   4. Přejít na [konzolu Kudu](https://*yourwebsitename*.scm.azurewebsites.net).
   5. Chcete-li zjistit verzi Node. js, zadejte následující příkaz:  
      ```
@@ -78,7 +72,7 @@ Chcete-li změnit verzi aplikace Node. js, můžete použít jednu z následují
   Proces nasazení správy zdrojových kódů Azure zahrnuje následující kroky:
   1. Přesune obsah do webové aplikace Azure.
   2. Vytvoří výchozí skript nasazení, pokud v kořenové složce webové aplikace není jeden (nasadit soubory. cmd,. nasazení).
-  3. Spustí skript nasazení, ve kterém vytvoří soubor iisnode. yml, pokud zmiňujete verzi Node. js v souboru Package. JSON > Engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`.
+  3. Spustí skript nasazení, ve kterém vytvoří soubor iisnode. yml, pokud zmiňujete verzi Node. js v souboru Package. JSON > Engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Soubor iisnode. yml má následující řádek kódu:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -86,7 +80,7 @@ Chcete-li změnit verzi aplikace Node. js, můžete použít jednu z následují
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>V aplikaci WordPress se zobrazí zpráva "Chyba při navazování připojení k databázi", která je hostovaná v App Service. Návody problém vyřešit?
 
-Pokud se tato chyba zobrazí ve vaší aplikaci Azure WordPress, pokud chcete povolit php_errors. log a Debug. log, postupujte podle kroků popsaných v tématu [Povolení protokolů chyb WordPress](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+Pokud se tato chyba zobrazí v aplikaci Azure WordPress a povolí php_errors. log a Debug. log, dokončete postup popsaný v tématu [Povolení protokolů chyb WordPress](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
 
 Když jsou protokoly povolené, reprodukuje chybu a pak zkontrolujte protokoly, abyste zjistili, jestli nedochází k připojení:
 ```
@@ -144,7 +138,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. Odstraňte soubor Sqljdbc*. jar ze složky App/lib.
 2. Pokud používáte vlastní webový server Tomcat nebo Azure Marketplace Tomcat, zkopírujte tento soubor. jar do složky Tomcat lib.
-3. Pokud povolujete jazyk Java z Azure Portal (vyberte **java 1,8** > **Tomcat Server**), zkopírujte soubor Sqljdbc. * jar do složky, která je pro vaši aplikaci rovnoběžná. Pak přidejte následující nastavení classpath do souboru Web. config:
+3. Pokud povolíte Java z Azure Portal (vyberte **java 1,8** > **Tomcat Server**), zkopírujte soubor Sqljdbc. * jar do složky, která je pro vaši aplikaci rovnoběžná. Pak přidejte následující nastavení classpath do souboru Web. config:
 
     ```xml
     <httpPlatform>

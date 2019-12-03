@@ -1,27 +1,18 @@
 ---
-title: Oprava 502 Chybná brána, nedostupná Chyba služby 503 – Azure App Service | Microsoft Docs
+title: Oprava chyb HTTP 502 a HTTP 503
 description: Řešení 502 chybných chyb služby Gateway a 503 nedostupných ve vaší aplikaci hostované v Azure App Service.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
 tags: top-support-issue
 keywords: 502 Chybná brána, služba 503 není dostupná, chyba 503, Chyba 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fdbd77db349eed62af2eb8cf539ef749217a187a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066689"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688331"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Řešení chyb HTTP z "502 špatné brány" a "503 Služba není dostupná" v Azure App Service
 "502 Chybná brána" a "503 Služba není k dispozici" jsou běžné chyby v aplikaci hostované v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tento článek vám pomůže vyřešit tyto chyby.
@@ -49,12 +40,12 @@ Tento problém je často způsoben problémy na úrovni aplikace, například:
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. Sledování a monitorování chování aplikace
+### <a name="1-observe-and-monitor-application-behavior"></a>1. Sledujte a sledujte chování aplikace
 #### <a name="track-service-health"></a>Sledovat stav služby
 Microsoft Azure publicizes pokaždé, když dojde k přerušení služby nebo snížení výkonu. Stav služby můžete sledovat na webu [Azure Portal](https://portal.azure.com/). Další informace najdete v tématu [sledování stavu služby](../monitoring-and-diagnostics/insights-service-health.md).
 
 #### <a name="monitor-your-app"></a>Monitorování aplikace
-Tato možnost umožňuje zjistit, jestli má aplikace nějaké problémy. V okně vaší aplikace klikněte na dlaždici **požadavky a chyby** . V okně metriky se zobrazí všechny metriky, které můžete přidat.
+Tato možnost umožňuje zjistit, jestli má aplikace nějaké problémy. V okně vaší aplikace klikněte na dlaždici **požadavky a chyby** . V okně **metriky** se zobrazí všechny metriky, které můžete přidat.
 
 Některé metriky, které můžete chtít monitorovat pro vaši aplikaci, jsou
 
@@ -66,14 +57,14 @@ Některé metriky, které můžete chtít monitorovat pro vaši aplikaci, jsou
 
 ![monitorování aplikace pro řešení chyb HTTP 502 chybných bran a 503 Služba není k dispozici](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
-Další informace naleznete v tématu:
+Další informace:
 
 * [Monitorování aplikací v Azure App Service](web-sites-monitor.md)
 * [Zobrazování oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 <a name="collect" />
 
-### <a name="2-collect-data"></a>2. Shromažďování dat
+### <a name="2-collect-data"></a>2. shromažďování dat
 #### <a name="use-the-diagnostics-tool"></a>Použití nástroje pro diagnostiku
 App Service poskytuje inteligentní a interaktivní prostředí, které vám umožní řešit problémy s aplikací bez nutnosti konfigurace. Když narazíte na problémy s vaší aplikací, nástroj pro diagnostiku zjistí, co je špatné, aby vás převedl na správné informace pro snadnější a rychlé řešení potíží a vyřešení problému.
 
@@ -82,7 +73,7 @@ Pokud chcete získat přístup k diagnostice App Service, přejděte v [Azure Po
 #### <a name="use-the-kudu-debug-console"></a>Použití konzoly ladění Kudu
 App Service se dodává s konzolou ladění, kterou můžete použít pro ladění, prozkoumávání, nahrávání souborů a také pro koncové body JSON pro získání informací o vašem prostředí. To se označuje jako *Konzola Kudu* nebo *řídicí panel SCM* pro vaši aplikaci.
 
-K tomuto řídicímu panelu se dostanete tak, že na něj **https://te&lt;název aplikace >. SCM. azurewebsites. NET/** .
+K tomuto řídicímu panelu se dostanete tak, že na odkaz **https://&lt;název vaší aplikace >. SCM. azurewebsites. NET/** .
 
 K dispozici jsou některé z věcí, které Kudu poskytuje:
 
@@ -97,7 +88,7 @@ Další informace o funkcích dostupných v Kudu najdete v tématu [online nást
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Zmírnit problém
+### <a name="3-mitigate-the-issue"></a>3. zmírnění problému
 #### <a name="scale-the-app"></a>Škálování aplikace
 V Azure App Service můžete pro zvýšení výkonu a propustnosti upravit měřítko, na kterém aplikaci spouštíte. Horizontální navýšení kapacity aplikace zahrnuje dvě související akce: Změna plánu App Service na vyšší cenovou úroveň a konfiguraci určitého nastavení po přepnutí na vyšší cenovou úroveň.
 

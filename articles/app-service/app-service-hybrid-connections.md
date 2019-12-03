@@ -1,25 +1,18 @@
 ---
-title: Hybridní připojení – Azure App Service | Microsoft Docs
-description: Postup vytvoření a použití Hybrid Connections pro přístup k prostředkům v různorodých sítích
-services: app-service
-documentationcenter: ''
+title: Hybridní připojení
+description: Naučte se vytvářet a používat hybridní připojení v Azure App Service k přístupu k prostředkům v různorodých sítích.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff2dac5d27cfffb92922038c1d1c67cd5118557a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ffc5ee32541cfbbda2ae54fd229c1436f133d730
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082398"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671508"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybrid Connections #
 
@@ -63,7 +56,7 @@ Mezi věci, které nemůžete Hybrid Connections, patří:
 - Podporuje protokol LDAP, protože může vyžadovat protokol UDP.
 - Podporuje službu Active Directory, protože se nemůžete připojit k doméně App Service pracovního procesu.
 
-### <a name="prerequisites"></a>Požadavky ###
+### <a name="prerequisites"></a>Předpoklady ###
  - Služba Windows App Service je povinná. Je k dispozici pouze v systému Windows.  
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Přidání a vytvoření Hybrid Connections v aplikaci ##
@@ -106,8 +99,8 @@ App Service Hybrid Connections jsou k dispozici pouze v jednotkách Basic, Stand
 
 | Cenový tarif | Počet Hybrid Connections použitelný v plánu |
 |----|----|
-| Basic | 5 |
-| Standard | 25 |
+| Úroveň Basic | 5 |
+| Úroveň Standard | 25 |
 | Premium | 200 |
 | Isolated | 200 |
 
@@ -146,7 +139,7 @@ Přidání jednoho nebo více Hybrid Connections do HCM:
 1. Vyberte Hybrid Connections, který má HCM Relay.
 ![snímku Hybrid Connections][9]
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 Teď můžete zobrazit Hybrid Connections, které jste přidali. Můžete také vybrat nakonfigurované hybridní připojení a zobrazit podrobnosti.
 
@@ -172,7 +165,7 @@ Pokud chcete někomu mimo předplatné povolit hostování instance HCM pro dan�
 
 ![Ruční přidání hybridního připojení][11]
 
-### <a name="upgrade"></a>Upgrade ###
+### <a name="upgrade"></a>Aktualizace ###
 
 Existují pravidelné aktualizace Správce hybridního připojení, které řeší problémy nebo poskytují vylepšení. Po vydání upgradů se v uživatelském rozhraní HCM zobrazí místní nabídka. Při použití upgradu se změny projeví a restartuje HCM. 
 

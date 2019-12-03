@@ -1,25 +1,16 @@
 ---
-title: Konfigurace ověřování na Twitteru – Azure App Service
-description: Přečtěte si, jak nakonfigurovat ověřování na Twitteru pro vaši aplikaci App Service.
-services: app-service
-documentationcenter: ''
-author: mattchenderson
-manager: syntaxc4
-editor: ''
+title: Konfigurace ověřování na Twitteru
+description: Naučte se nakonfigurovat ověřování na Twitter jako zprostředkovatele identity pro vaši aplikaci App Service.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
-ms.service: app-service-mobile
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/19/2018
-ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 02008b7dc1609a5f28ac6ba2a582933a96428198
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b5ec17c18cec8053f0732366c0cc5d0c5003e4de
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176960"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670803"
 ---
 # <a name="configure-your-app-service-app-to-use-twitter-login"></a>Konfigurace aplikace pro App Service, aby používala přihlášení k Twitteru
 
@@ -50,7 +41,7 @@ K dokončení postupu v tomto článku potřebujete účet na Twitteru s ověře
 1. V [Azure Portal]přejdete do své aplikace.
 1. Vyberte **nastavení** > **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
 1. Vyberte **Twitter**.
-1. Vložte do hodnot `API Key` a `API Secret`, které jste získali dříve.
+1. Vložte do `API Key` a `API Secret` hodnoty, které jste získali dříve.
 1. Vyberte **OK**.
 
    ![Snímek obrazovky s nastavením Twitteru mobilní aplikace][1]

@@ -1,26 +1,19 @@
 ---
-title: Osvědčené postupy a řešení potíží pro Node. js – Azure App Service
-description: Seznamte se s osvědčenými postupy a kroky při řešení potíží pro aplikace uzlů v Azure App Service.
-services: app-service\web
-documentationcenter: nodejs
+title: Osvědčené postupy pro Node. js a řešení potíží
+description: Seznamte se s osvědčenými postupy a kroky pro řešení potíží pro aplikace Node. js běžící v Azure App Service.
 author: ranjithr
-manager: wadeh
-editor: ''
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: bwren
 ms.custom: seodec18
-ms.openlocfilehash: 5ef0cf691ae3a199ea82cb8cfa23c386d30551dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024230"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672047"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service Windows
 
@@ -94,7 +87,7 @@ Středníkem oddělený seznam souborů, které jsou sledovány pro změny. Při
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-Výchozí hodnota je false. Pokud je povolená, může se vaše aplikace uzlů připojit k pojmenovanému kanálu (proměnná prostředí IISNODE\_ŘÍDICÍm KANÁLem\_a poslat zprávu o recyklaci. Tím dojde k řádnému recyklování W3wp.
+Výchozí hodnota je false (NEPRAVDA). Pokud je povolená, může se vaše aplikace uzlů připojit k pojmenovanému kanálu (proměnná prostředí IISNODE\_ŘÍDICÍm KANÁLem\_a poslat zprávu o recyklaci. Tím dojde k řádnému recyklování W3wp.
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -106,7 +99,7 @@ Výchozí hodnota je 0, což znamená, že tato funkce je zakázaná. Pokud je h
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-Výchozí hodnota je false. Pokud se nastaví na true, iisnode přidá hlavičku odpovědi HTTP `iisnode-debug` do každé odpovědi HTTP, kterou pošle `iisnode-debug` hodnota hlavičky je adresa URL. Jednotlivé části diagnostických informací lze získat tak, že si prohlížíte fragment adresy URL. vizualizace je však k dispozici otevřením adresy URL v prohlížeči.
+Výchozí hodnota je false (NEPRAVDA). Pokud se nastaví na true, iisnode přidá hlavičku odpovědi HTTP `iisnode-debug` do každé odpovědi HTTP, kterou pošle `iisnode-debug` hodnota hlavičky je adresa URL. Jednotlivé části diagnostických informací lze získat tak, že si prohlížíte fragment adresy URL. vizualizace je však k dispozici otevřením adresy URL v prohlížeči.
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -114,7 +107,7 @@ Toto nastavení řídí protokolování stdout a stderr pomocí iisnode. Iisnode
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-Výchozí hodnota je false. Když se nastaví na true, iisnode zobrazí stavový kód HTTP a kód chyby Win32 v prohlížeči. Kód Win32 je užitečný při ladění určitých typů problémů.
+Výchozí hodnota je false (NEPRAVDA). Když se nastaví na true, iisnode zobrazí stavový kód HTTP a kód chyby Win32 v prohlížeči. Kód Win32 je užitečný při ladění určitých typů problémů.
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (Nepovolit pro živý produkční Web)
 
@@ -264,19 +257,19 @@ Povolte FREB pro vaši aplikaci, aby se zobrazil kód chyby Win32 (je třeba pov
 
 | Stav http | Podřízený stav http | Možný důvod? |
 | --- | --- | --- |
-| 500 |1000 |Došlo k nějakému problému s odesláním požadavku do IISNODE – ověřte, jestli se Node. exe spustil. Při spuštění došlo k chybě Node. exe. Ověřte chyby v konfiguraci souboru Web. config. |
+| 500 |1 000 |Došlo k nějakému problému s odesláním požadavku do IISNODE – ověřte, jestli se Node. exe spustil. Při spuštění došlo k chybě Node. exe. Ověřte chyby v konfiguraci souboru Web. config. |
 | 500 |1001 |-Win32Error 0x2-aplikace nereaguje na adresu URL. Ověřte pravidla pro přepis adres URL nebo ověřte, jestli má aplikace Express definované správné trasy. -Win32Error 0x6d – pojmenovaný kanál je zaneprázdněný – Node. exe nepřijímá požadavky, protože kanál je zaneprázdněný. Ověřte vysoké využití procesoru. -Jiné chyby – ověřte, zda došlo k chybě Node. exe. |
 | 500 |1002 |Došlo k chybě Node. exe – ověřte d:\\Home\\soubory protokolu\\Logging-Errors. txt pro trasování zásobníku. |
 | 500 |1003 |Problém s konfigurací kanálu – konfigurace pojmenovaného kanálu je nesprávná. |
 | 500 |1004-1018 |Při odesílání požadavku nebo zpracování odpovědi na soubor Node. exe došlo k chybě. Ověřte, zda došlo k chybě Node. exe. Podívejte se na d:\\Home\\soubory protokolu\\Logging-Errors. txt pro trasování zásobníku. |
-| 503 |1000 |Pro přidělení více pojmenovaných připojení kanálu není dostatek paměti. Podívejte se, proč vaše aplikace spotřebovává spoustu paměti. Ověřte hodnotu nastavení maxConcurrentRequestsPerProcess. Pokud není nekonečné a máte hodně požadavků, zvyšte tuto hodnotu, aby se zabránilo této chybě. |
+| 503 |1 000 |Pro přidělení více pojmenovaných připojení kanálu není dostatek paměti. Podívejte se, proč vaše aplikace spotřebovává spoustu paměti. Ověřte hodnotu nastavení maxConcurrentRequestsPerProcess. Pokud není nekonečné a máte hodně požadavků, zvyšte tuto hodnotu, aby se zabránilo této chybě. |
 | 503 |1001 |Požadavek nebylo možné odeslat do Node. exe, protože aplikace se recykluje. Po recyklaci aplikace by měly být požadavky obsluhovány normálně. |
 | 503 |1002 |Ověřte kód chyby Win32 ze skutečného důvodu – požadavek nebylo možné odeslat do Node. exe. |
 | 503 |1003 |Pojmenovaný kanál je moc zaneprázdněný – ověřte, jestli Node. exe spotřebovává nadměrný procesor. |
 
 NODE. exe má nastavení s názvem `NODE_PENDING_PIPE_INSTANCES`. V Azure App Service je tato hodnota nastavená na 5000. To znamená, že Node. exe může přijmout 5000 požadavků v čase u pojmenovaného kanálu. Tato hodnota by měla být dostatečná pro většinu aplikací uzlů běžících na Azure App Service. Pro `NODE_PENDING_PIPE_INSTANCES` byste neměli vidět 503,1003 Azure App Service z důvodu vysoké hodnoty pro
 
-## <a name="more-resources"></a>Další zdroje informací
+## <a name="more-resources"></a>Další zdroje
 
 Pomocí těchto odkazů se dozvíte více o aplikacích Node. js v Azure App Service.
 

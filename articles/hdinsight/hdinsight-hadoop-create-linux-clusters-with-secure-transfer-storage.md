@@ -1,5 +1,5 @@
 ---
-title: Apache Hadoop & zabezpečené úložiště trans – Azure HDInsight
+title: Apache Hadoop & zabezpečené úložiště tranfser – Azure HDInsight
 description: Naučte se vytvářet clustery HDInsight s účty úložiště Azure s povoleným zabezpečeným přístupem.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: b8a5d48e977009cf592f271760232a3b0138c8c5
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: ed8e20509c4a3f941d6f215dfc476c87e9a813a7
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044948"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687784"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Vytvoření clusteru Apache Hadoop s účty úložiště zabezpečeného přenosu ve službě Azure HDInsight
 
@@ -24,7 +24,7 @@ Funkce [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secu
 Než začnete tento článek, musíte mít:
 
 * **Předplatné Azure**: pro vytvoření bezplatného zkušebního účet na jeden měsíc otevřete web [azure.microsoft.com/free](https://azure.microsoft.com/free).
-* **Účet služby Azure Storage s povoleným zabezpečeným přenosem**. Pokyny najdete v tématech popisujících [vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md) a funkci [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
+* **Účet služby Azure Storage s povoleným zabezpečeným přenosem**. Pokyny najdete v tématech popisujících [vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md) a funkci [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md). Povolení přenosu zabezpečeného úložiště po vytvoření clusteru vyžaduje další kroky, které nejsou popsané v tomto článku.
 * **Kontejner objektů blob v účtu úložiště**.
 
 ## <a name="create-cluster"></a>Vytvoření clusteru

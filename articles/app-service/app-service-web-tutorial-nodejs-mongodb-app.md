@@ -1,26 +1,17 @@
 ---
-title: Node. js (střední. js) s MongoDB-Azure App Service | Microsoft Docs
-description: Zjistěte, jak v Azure zprovoznit aplikaci Node.js s připojením k databázi Cosmos DB pomocí připojovacího řetězce MongoDB. STŘEDNÍ. js se používá v tomto kurzu.
-services: app-service\web
-documentationcenter: nodejs
-author: cephalin
-manager: erikre
-editor: ''
+title: 'Kurz: aplikace Node. js s MongoDB'
+description: Naučte se, jak v Azure získat aplikaci Node. js s připojením k databázi MongoDB v Azure (Cosmos DB). STŘEDNÍ. js se používá v tomto kurzu.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0b9b10542b861b49e83ff9704912a569cdca7616
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7d0a1d89b0547b1cd982b2717ac7548bec848a77
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024915"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671308"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Kurz: Vytvoření aplikace Node. js a MongoDB v Azure
 
@@ -464,7 +455,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-Po dokončení `git push` přejděte do aplikace Azure a vyzkoušejte nové funkce.
+Až se `git push` dokončí, přejděte do aplikace Azure a vyzkoušejte nové funkce.
 
 ![Změny modelu a databáze publikované v Azure](media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 

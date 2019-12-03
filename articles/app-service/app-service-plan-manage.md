@@ -1,26 +1,17 @@
 ---
-title: Správa plánu App Service – Azure | Microsoft Docs
-description: Naučte se provádět různé úlohy pro správu plánu App Service.
+title: Správa plánu App Service
+description: Naučte se, jak provádět různé úlohy pro správu plánu App Service, jako je vytváření, přesouvání, škálování a odstraňování.
 keywords: App Service, Azure App Service, škálování, plán služby App Service, změna, vytváření, Správa, Správa
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e8bdc749ee354e75a6043dbd6dac3f93a606f79e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d628031515a9b0fdf3aa7b7ec88ee1b6b7f41f51
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898950"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672193"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Správa plánu App Service v Azure
 

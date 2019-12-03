@@ -1,25 +1,16 @@
 ---
-title: Konfigurace ověřování Azure Active Directory – Azure App Service
-description: Přečtěte si, jak nakonfigurovat ověřování Azure Active Directory pro aplikaci App Service.
-author: cephalin
-services: app-service
-documentationcenter: ''
-manager: gwallace
-editor: ''
+title: Konfigurace ověřování Azure AD
+description: Naučte se, jak nakonfigurovat ověřování Azure Active Directory jako zprostředkovatele identity pro vaši aplikaci App Service.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
-ms.service: app-service
-ms.workload: web,mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/03/2019
-ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6812f99d8433ef318eca37eb2615d43f4749e944
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b833604ce18873e22c22990a26dcbae1d9928628
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886178"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670890"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Konfigurace aplikace App Service pro použití přihlášení Azure AD
 
@@ -54,7 +45,7 @@ Při nastavování aplikace a ověřování použijte tyto osvědčené postupy:
 
     > [!CAUTION]
     > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. U takových aplikací může být upřednostňována možnost **povolení anonymních požadavků (žádná akce)** , přičemž aplikace se ručně spouští samotné přihlášení. Další informace najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="advanced"> </a>Konfigurace s pokročilým nastavením
 
@@ -77,8 +68,8 @@ Proveďte následující kroky:
 1. Přihlaste se k [Azure Portal] a pokračujte do aplikace App Service. Poznamenejte si **adresu URL**vaší aplikace. Použijete ho ke konfiguraci registrace aplikace Azure Active Directory.
 1. Vyberte **Azure Active Directory** > **Registrace aplikací** > **nové registrace**.
 1. Na stránce **zaregistrovat aplikaci** zadejte **název** registrace vaší aplikace.
-1. V části **identifikátor URI pro přesměrování**vyberte **Web** a zadejte adresu URL vaší App Service aplikace a přidejte cestu `/.auth/login/aad/callback`. například `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
-1. Vyberte **Vytvořit**.
+1. V části **identifikátor URI pro přesměrování**vyberte **Web** a zadejte adresu URL vaší App Service aplikace a přidejte cestu `/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
+1. Vyberte **Create** (Vytvořit).
 1. Po vytvoření registrace aplikace zkopírujte **ID aplikace (klienta)** a **ID adresáře (tenant)** pro pozdější použití.
 1. Vyberte **branding**. Do pole **Adresa URL domovské stránky**zadejte adresu URL vaší aplikace App Service a vyberte **Uložit**.
 1. Vyberte možnost zveřejnit > **sadu** **rozhraní API** . Vložte adresu URL vaší aplikace App Service a vyberte **Uložit**.
@@ -120,8 +111,8 @@ Nativní klienty můžete registrovat, aby bylo možné ověřování pomocí kl
 
 1. V [Azure Portal]vyberte možnost **Active Directory** > **Registrace aplikací** > **nové registrace**.
 1. Na stránce **zaregistrovat aplikaci** zadejte **název** registrace vaší aplikace.
-1. V části **identifikátor URI pro přesměrování**vyberte **veřejný klient (mobilní & Desktop)** a zadejte adresu URL vaší aplikace App Service a přidejte cestu `/.auth/login/aad/callback`. například `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
-1. Vyberte **Vytvořit**.
+1. V části **identifikátor URI pro přesměrování**vyberte **veřejný klient (mobilní & Desktop)** a zadejte adresu URL vaší aplikace App Service a přidejte cestu `/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
+1. Vyberte **Create** (Vytvořit).
 
     > [!NOTE]
     > V případě aplikace pro Windows použijte místo toho identifikátor [SID balíčku](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) .

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 8fada1d944a3d6bb6c0f85b3fd456581b2b0bdc6
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: cbdf4a4c9e7f3816a0a5b280c81bfa60b65d9769
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720017"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688037"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorizace uživatelů pro zobrazení Apache Ambari
 
@@ -28,7 +28,7 @@ Pokud jste to ještě neudělali, postupujte podle [těchto pokynů](./domain-jo
 
 ## <a name="access-the-ambari-management-page"></a>Přístup ke stránce správy Ambari
 
-Pokud se chcete dostat na **stránku správy Ambari** ve [webovém uživatelském rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md), přejděte na **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** . Zadejte uživatelské jméno a heslo správce clusteru, které jste definovali při vytváření clusteru. Pak z řídicího panelu Ambari vyberte **Spravovat Ambari** pod nabídkou **správce** :
+Pokud se chcete dostat na **stránku správy Ambari** ve [webovém uživatelském rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md), přejděte na `https://CLUSTERNAME.azurehdinsight.net`. Zadejte uživatelské jméno a heslo správce clusteru, které jste definovali při vytváření clusteru. Pak z řídicího panelu Ambari vyberte **Spravovat Ambari** pod nabídkou **správce** :
 
 ![Správa řídicího panelu Apache Ambari](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
@@ -230,7 +230,7 @@ Pokud chcete spravovat role, přejděte na **stránku Správa Ambari**a pak vybe
 
 Pokud chcete zobrazit seznam oprávnění udělených jednotlivým rolím, klikněte na modré otazník vedle záhlaví tabulky **role** na stránce role.
 
-![Odkazy v nabídce role Apache Ambari oprávnění]odkaz na(./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "nabídku role Apache Ambari")
+![Oprávnění pro odkazy na nabídku rolí Apache Ambari](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Oprávnění pro odkazy na nabídku rolí Apache Ambari")
 
 Na této stránce jsou k dispozici dvě různá zobrazení, která můžete použít ke správě rolí pro uživatele a skupiny: blokování a seznam.
 
@@ -248,7 +248,7 @@ Zobrazení seznamu poskytuje možnosti rychlého úprav ve dvou kategoriích: u�
 
     ![Zobrazení seznamu rolí Apache Ambari – uživatelé](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-*  V kategorii skupiny v zobrazení seznamu se zobrazí všechny skupiny a role přiřazená jednotlivým skupinám. V našem příkladu je seznam skupin synchronizovaný ze skupin Azure AD, které jsou zadané ve vlastnosti **skupiny uživatelů Access** v doméně nastavení domény. Přečtěte si téma [Vytvoření clusteru HDInsight s povoleným](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)protokolem ESP.
+* V kategorii skupiny v zobrazení seznamu se zobrazí všechny skupiny a role přiřazená jednotlivým skupinám. V našem příkladu je seznam skupin synchronizovaný ze skupin Azure AD, které jsou zadané ve vlastnosti **skupiny uživatelů Access** v doméně nastavení domény. Přečtěte si téma [Vytvoření clusteru HDInsight s povoleným](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)protokolem ESP.
 
     ![Zobrazení seznamu rolí Apache Ambari – skupiny](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

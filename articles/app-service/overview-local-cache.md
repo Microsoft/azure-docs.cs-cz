@@ -1,27 +1,17 @@
 ---
-title: Přehled místní mezipaměti – Azure App Service | Microsoft Docs
-description: Tento článek popisuje, jak povolit, změnit velikost a zadat dotaz na stav funkce Azure App Service místní mezipaměti.
-services: app-service
-documentationcenter: app-service
-author: cephalin
-manager: jpconnock
-editor: ''
+title: Místní mezipaměť
+description: Přečtěte si, jak místní mezipaměť funguje v Azure App Service a jak povolit, změnit velikost a zadat dotaz na stav místní mezipaměti vaší aplikace.
 tags: optional
-keywords: ''
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
-ms.service: app-service
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/04/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4dffa7dcafe4aabe3e8dcb56d4f5084d0c6ef821
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: bce0620ed6be4937c95a2ce01f3d4c175c8bc18d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819664"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687073"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled Azure App Service místní mezipaměti
 

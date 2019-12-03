@@ -1,25 +1,18 @@
 ---
-title: Omezení přístupu – Azure App Service | Microsoft Docs
-description: Použití omezení přístupu s Azure App Service
+title: Omezení přístupu pro IP adresy
+description: Seznamte se s postupem zabezpečení aplikace v Azure App Service výslovně povolenými IP adresami klientů nebo rozsahy adres.
 author: ccompy
-manager: stefsch
-editor: ''
-services: app-service\web
-documentationcenter: ''
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cee6fc9fb5cc10a2b3442e146ef5688ed74290bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 64ce74c84f8f69e72510be76a1309e1a5ea42f2f
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088435"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672185"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Omezení přístupu Azure App Service #
 
@@ -37,7 +30,7 @@ Možnost omezit přístup k vaší webové aplikaci z Azure Virtual Network (VNe
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Přidání a úprava pravidel omezení přístupu na portálu ##
 
-Pokud chcete do aplikace přidat pravidlo omezení přístupu, otevřete pomocí nabídky**omezení přístupu k** **síti**>a klikněte na **konfigurovat omezení přístupu** .
+Pokud chcete do aplikace přidat pravidlo omezení přístupu, otevřete pomocí nabídky **omezení přístupu k** **síti**>a klikněte na **konfigurovat omezení přístupu** .
 
 ![Možnosti App Service sítě](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -101,7 +94,7 @@ Pro nová omezení přístupu momentálně není k dispozici žádný CLI ani Po
 
 Umístění pro tyto informace v Správce prostředků:
 
-**ID**předplatného Management.Azure.com/Subscriptions//resourceGroups/**skupiny prostředků**/Providers/Microsoft.Web/Sites/**název webové aplikace**/config/Web? API-Version = 2018-02-01
+**ID předplatného**Management.Azure.com/Subscriptions//resourceGroups/**skupiny prostředků**/Providers/Microsoft.Web/Sites/**název webové aplikace**/config/Web? API-Version = 2018-02-01
 
 Syntaxe JSON pro předchozí příklad je:
 

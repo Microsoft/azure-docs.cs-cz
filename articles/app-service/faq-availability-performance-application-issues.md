@@ -1,26 +1,20 @@
 ---
-title: Nejčastější dotazy týkající se výkonu aplikace – Azure App Service | Microsoft Docs
-description: Získejte odpovědi na nejčastější dotazy týkající se problémů s dostupností, výkonem a aplikací v Web Apps funkce Azure App Service.
-services: app-service\web
-documentationcenter: ''
+title: Nejčastější dotazy týkající se výkonu aplikace
+description: Získejte odpovědi na nejčastější dotazy týkající se problémů s dostupností, výkonem a aplikací v Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a5af98aae420193b8316a48aa60550cef70a9c4a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122072"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671708"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se výkonu aplikací pro Web Apps v Azure
 
@@ -46,7 +40,7 @@ V některých scénářích s vysokými nároky na paměť může vaše aplikace
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Návody Automatizujte App Service webové aplikace pomocí PowerShellu?
 
-K správě a údržbě App Service webových aplikací můžete použít rutiny prostředí PowerShell. V našem blogovém příspěvku můžete [automatizovat webové aplikace hostované v Azure App Service pomocí prostředí PowerShell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/). popisujeme, jak používat rutiny prostředí PowerShell založené na Azure Resource Manager k automatizaci běžných úloh. Blogový příspěvek má také vzorový kód pro různé úlohy správy webových aplikací. Popisy a syntaxi pro všechny rutiny App Service Web Apps najdete v tématu [AZ.](/powershell/module/az.websites)websites.
+K správě a údržbě App Service webových aplikací můžete použít rutiny prostředí PowerShell. V našem blogovém příspěvku můžete [automatizovat webové aplikace hostované v Azure App Service pomocí prostředí PowerShell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/). popisujeme, jak používat rutiny prostředí PowerShell založené na Azure Resource Manager k automatizaci běžných úloh. Blogový příspěvek má také vzorový kód pro různé úlohy správy webových aplikací. Popisy a syntaxi pro všechny rutiny App Service Web Apps najdete v tématu [AZ. websites](/powershell/module/az.websites).
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Návody zobrazit protokoly událostí webové aplikace?
 
@@ -56,7 +50,7 @@ Chcete-li zobrazit protokoly událostí vaší webové aplikace:
 2. V nabídce vyberte **ladit konzolu** > **cmd**.
 3. Vyberte složku **soubory protokolů** .
 4. Chcete-li zobrazit protokoly událostí, vyberte ikonu tužky vedle **EventLog. XML**.
-5. Pokud chcete stáhnout protokoly, spusťte rutinu `Save-AzureWebSiteLog -Name webappname`PowerShellu.
+5. Pokud chcete stáhnout protokoly, spusťte `Save-AzureWebSiteLog -Name webappname`rutiny PowerShellu.
 
 ## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Návody zachytit výpis paměti moje webové aplikace v uživatelském režimu?
 
@@ -65,7 +59,7 @@ Postup při zaznamenání výpisu paměti ve vaší webové aplikaci v uživatel
 1. Přihlaste se k [webu Kudu](https://*yourwebsitename*.scm.azurewebsites.net).
 2. Vyberte nabídku **Průzkumník procesů** .
 3. Klikněte pravým tlačítkem na proces **W3wp. exe** nebo na proces webové úlohy.
-4. Vyberte možnost **Stáhnout výpis stavu** > paměti –**úplný výpis**.
+4. Vyberte možnost **Stáhnout výpis paměti** > **úplný výpis**.
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Návody zobrazit informace na úrovni procesu pro moji webovou aplikaci?
 
@@ -87,7 +81,7 @@ Tato chyba může způsobit tři podmínky:
 * Webová aplikace se zastavila na portálu.
 * U webové aplikace se dosáhlo limitu kvóty prostředků, který by se mohl vztahovat na plán služby škály free nebo Shared.
 
-Chcete-li zjistit, co způsobuje chybu a vyřešit problém, postupujte podle kroků v [Web Apps: "Chyba 403 – Tato webová aplikace je zastavena](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)."
+Chcete-li zjistit, co způsobuje chybu a vyřešit problém, postupujte podle kroků v [Web Apps: "error 403 – Tato webová aplikace je zastavena"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Kde se mohu dozvědět více o kvótách a omezeních pro různé plány App Service?
 
@@ -108,10 +102,10 @@ Zapnutí trasování chybných požadavků:
 1. V Azure Portal přejdete do své webové aplikace.
 3. Vyberte **všechna nastavení** > **diagnostické protokoly**.
 4. Pro **trasování chybných požadavků**vyberte **zapnuto**.
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 6. V okně webová aplikace vyberte **nástroje**.
 7. Vyberte **Visual Studio Online**.
-8. Pokud nastavení není zapnuto, vyberte **zapnuto**.
+8. Pokud nastavení není **zapnuto**, vyberte **zapnuto**.
 9. Vyberte **Přejít**.
 10. Vyberte soubor **Web. config**.
 11. V System. webServer přidejte tuto konfiguraci (pro zachycení konkrétní adresy URL):
@@ -147,7 +141,7 @@ Zapnutí trasování chybných požadavků:
     </tracing>
     ```
 13. Pokud si chcete stáhnout trasování chybných požadavků, na [portálu](https://portal.azure.com)přejdete na svůj web.
-15. Vyberte **nástroje** > KuduPřejít > .
+15. Vyberte **nástroje** > **Kudu** > **Přejít**.
 18. V nabídce vyberte **ladit konzolu** > **cmd**.
 19. Vyberte složku **soubory protokolu** a potom vyberte složku s názvem, který začíná na **W3SVC**.
 20. Chcete-li zobrazit soubor XML, vyberte ikonu tužky.
@@ -170,7 +164,7 @@ Webové úlohy jsou navržené pro zpracování na pozadí. V rámci webové úl
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>ASP.NET Core aplikace, které jsou hostované v App Service někdy přestanou reagovat. Návody tento problém vyřešit?
 
-Známý problém s dřívější [verzí Kestrel](https://github.com/aspnet/KestrelHttpServer/issues/1182) může způsobit, že aplikace ASP.NET Core 1,0, která je hostovaná v App Service, bude schopná přestat reagovat. Může se zobrazit také tato zpráva: V zadané aplikaci CGI došlo k chybě a server ukončil proces.
+Známý problém s dřívější [verzí Kestrel](https://github.com/aspnet/KestrelHttpServer/issues/1182) může způsobit, že aplikace ASP.NET Core 1,0, která je hostovaná v App Service, bude schopná přestat reagovat. Může se také zobrazit tato zpráva: v zadané aplikaci CGI došlo k chybě a server ukončil proces.
 
 Tento problém je opravený v Kestrel verze 1.0.2. Tato verze je součástí aktualizace ASP.NET Core 1.0.3. Pokud chcete tento problém vyřešit, nezapomeňte aktualizovat závislosti aplikací tak, aby používaly Kestrel 1.0.2. Alternativně můžete použít jedno ze dvou alternativních řešení, která jsou popsána v příspěvku blogu [ASP.NET Core 1,0 pomalých potížích s výkonem v App Service Web Apps](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites).
 
@@ -179,7 +173,7 @@ Tento problém je opravený v Kestrel verze 1.0.2. Tato verze je součástí akt
 
 Pokud používáte funkci místní mezipaměti App Service, jsou ovlivněny struktury složek protokolů a složek dat pro vaši instanci App Service. Při použití místní mezipaměti se v protokolech úložiště a složkách dat vytvoří podsložky. Podsložky používají vzor pojmenování "jedinečný identifikátor" + časové razítko. Každá podsložka odpovídá instanci virtuálního počítače, ve které je webová aplikace spuštěná nebo spuštěná.
 
-Chcete-li zjistit, zda používáte místní mezipaměť, zkontrolujte kartu **nastavení aplikace** App Service. Pokud se používá místní mezipaměť, nastavení `WEBSITE_LOCAL_CACHE_OPTION` aplikace je nastaveno na. `Always`
+Chcete-li zjistit, zda používáte místní mezipaměť, zkontrolujte kartu **nastavení aplikace** App Service. Pokud se používá místní mezipaměť, nastavení aplikace `WEBSITE_LOCAL_CACHE_OPTION` je nastavené na `Always`.
 
 Pokud nepoužíváte místní mezipaměť a dochází k tomuto problému, odešlete žádost o podporu.
 
@@ -189,7 +183,7 @@ K této chybě obvykle dochází v případě, že jsou vyčerpána odchozí př
 
 K této chybě může dojít také v případě, že se pokusíte o přístup k místní adrese z vaší aplikace. Další informace najdete v tématu [požadavky na místní adresy](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#local-address-requests).
 
-Další informace o odchozích připojeních ve vaší webové aplikaci najdete v blogovém příspěvku o [odchozích připojeních k Azure](https://www.freekpaans.nl/2015/08/starving-outgoing-connections-on-windows-azure-web-sites/)websites.
+Další informace o odchozích připojeních ve vaší webové aplikaci najdete v blogovém příspěvku o [odchozích připojeních k Azure websites](https://www.freekpaans.nl/2015/08/starving-outgoing-connections-on-windows-azure-web-sites/).
 
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Návody použít Visual Studio ke vzdálenému ladění moje App Service webové aplikace?
 

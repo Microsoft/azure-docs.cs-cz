@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 3613639b43db1cd5310a7ea5d7fa18f34e22ed44
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 62a2c3324df70c7ccdbbac273d314ff94cbb7b9a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276732"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671568"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ V tomto postupu se naučíte následující úlohy:
 > * Vytvořte [kanál machine learningu](concept-ml-pipelines.md) , který zaregistruje předem vyškolený model klasifikace imagí na základě datové sady [mnist ručně zapsaných](https://publicdataset.azurewebsites.net/dataDetail/mnist/) . 
 > * Pomocí modelu spusťte odvozování dávky na ukázkových imagí dostupných v účtu úložiště Azure Blob. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -40,7 +40,7 @@ V tomto postupu se naučíte následující úlohy:
 
 * Informace o [tom, jak](how-to-configure-environment.md) spravovat vlastní prostředí a závislosti, najdete v tématu Průvodce konfigurací vlastního prostředí. Pokud chcete stáhnout potřebné závislosti, spusťte `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` ve vašem prostředí.
 
-## <a name="set-up-machine-learning-resources"></a>Nastavení prostředků machine learning
+## <a name="set-up-machine-learning-resources"></a>Nastavení prostředků strojového učení
 
 Následující akce nastaví prostředky, které potřebujete ke spuštění kanálu odvození dávky:
 
@@ -255,7 +255,7 @@ batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
 batch_env.docker.enabled = True
-batch_env.docker.base_image = DEFAULT_CPU_IMAGE
+batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 batch_env.spark.precache_packages = False
 ```
 
@@ -292,7 +292,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>Vytvoření kanálu krok
+### <a name="create-the-pipeline-step"></a>Vytvoření kroku kanálu
 
 Vytvořte krok kanálu pomocí skriptu, konfigurace prostředí a parametrů. Určete výpočetní cíl, který jste už ke svému pracovnímu prostoru připojili jako cíl provádění skriptu. Pomocí `ParallelRunStep` vytvořit krok kanálu odvození dávky, který převezme všechny následující parametry:
 - `name`: název kroku s následujícími omezeními pojmenovávání: jedinečné, 3-32 znaky a Regex ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.

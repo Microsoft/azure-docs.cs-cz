@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/13/2018
-ms.openlocfilehash: 229216ee873ade9418574141017aaf88235ba9e4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d313fed6a61ac98e596e6f8caca8f0e46a8c9600
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820710"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689082"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému v Application Insights
 
@@ -139,7 +139,7 @@ Podobně jako u jiné telemetrie **čítače výkonu** má také sloupec `cloud_
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Čítače výkonu pro aplikace běžící v Azure Web Apps
 
-Aplikace ASP.NET i ASP.NET Core nasazené do Azure Web Apps běžet ve speciálním prostředí izolovaného prostoru (sandbox). Toto prostředí neumožňuje přímý přístup k čítačům výkonu systému. Omezená podmnožina čítačů je však k dispozici jako proměnné prostředí, jak je popsáno [zde](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables). Sada Application Insights SDK pro ASP.NET a ASP.NET Core shromažďuje čítače výkonu z Azure Web Apps z těchto speciálních proměnných prostředí. V tomto prostředí je dostupná jenom podmnožina čítačů. úplný seznam najdete [tady.](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)
+Aplikace ASP.NET i ASP.NET Core nasazené do Azure Web Apps běžet ve speciálním prostředí izolovaného prostoru (sandbox). Toto prostředí neumožňuje přímý přístup k čítačům výkonu systému. Omezená podmnožina čítačů je však k dispozici jako proměnné prostředí, jak je popsáno [zde](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables). Sada Application Insights SDK pro ASP.NET a ASP.NET Core shromažďuje čítače výkonu z Azure Web Apps z těchto speciálních proměnných prostředí. V tomto prostředí je dostupná jenom podmnožina čítačů. úplný seznam najdete [tady.](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/WEB/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>Čítače výkonu v aplikacích ASP.NET Core
 

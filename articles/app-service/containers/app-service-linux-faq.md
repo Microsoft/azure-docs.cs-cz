@@ -1,26 +1,18 @@
 ---
-title: Nejčastější dotazy k App Service v systému Linux – Azure | Microsoft Docs
-description: Nejčastější dotazy k Azure App Service v systému Linux.
+title: Nejčastější dotazy ke spouštění integrovaných kontejnerů
+description: V Azure App Service najdete odpovědi na nejčastější dotazy týkající se integrovaných kontejnerů pro Linux.
 keywords: Azure App Service, Web App, nejčastější dotazy, Linux, OSS, Web App for Containers, multi-Container, více kontejnerů
-services: app-service
-documentationCenter: ''
 author: msangapu-msft
-manager: stefsch
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fa7b6a02ba287c7f51284a28ce41b2291317f99c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066911"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687597"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Nejčastější dotazy k Azure App Service v systému Linux
 
@@ -38,12 +30,12 @@ Všechny soubory Docker můžete najít na [GitHubu](https://github.com/azure-ap
 
 **Jaké jsou očekávané hodnoty oddílu spouštěcí soubor při konfiguraci zásobníku modulu runtime?**
 
-| Zásobník           | Očekávaná hodnota                                                                         |
+| Vrstvě           | Očekávaná hodnota                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
 | Java SE         | příkaz pro spuštění aplikace JAR (například `java -jar my-app.jar --server.port=80`) |
 | Tomcat, WildFly | umístění skriptu pro provedení potřebných konfigurací (například `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | konfigurační soubor konfiguračního PM2 nebo soubor skriptu                                |
-| .Net Core       | název zkompilované knihovny DLL jako`dotnet <myapp>.dll`                                 |
+| .Net Core       | název zkompilované knihovny DLL jako `dotnet <myapp>.dll`                                 |
 | Ruby            | skript Ruby, se kterým chcete aplikaci inicializovat                     |
 
 Tyto příkazy nebo skripty se spustí po spuštění předdefinovaného kontejneru Docker, ale před spuštěním kódu aplikace.
@@ -66,7 +58,7 @@ Ano, můžete to provést prostřednictvím lokality správy zdrojového kódu (
 
 Měli byste nastavit **rezervované** pole služby App Service na *hodnotu true*.
 
-## <a name="continuous-integration-and-deployment"></a>Průběžná integrace a nasazování
+## <a name="continuous-integration-and-deployment"></a>Průběžná integrace a nasazování
 
 **Moje webová aplikace stále používá starou image kontejneru Docker po aktualizaci image v Docker Hub. Podporujete průběžnou integraci a nasazování vlastních kontejnerů?**
 
@@ -78,21 +70,21 @@ Ano.
 
 **Můžu k nasazení webové aplikace použít *WebDeploy/MSDeploy* ?**
 
-Ano, je třeba nastavit nastavení `WEBSITE_WEBDEPLOY_USE_SCM` aplikace na hodnotu NEPRAVDA.
+Ano, je třeba nastavit nastavení aplikace s názvem `WEBSITE_WEBDEPLOY_USE_SCM` na *hodnotu false (NEPRAVDA*).
 
 **Nasazení Git moje aplikace se při použití webové aplikace pro Linux nezdařilo. Jak můžu tento problém obejít?**
 
 Pokud se nasazení Git nepovede do vaší webové aplikace pro Linux, vyberte jednu z následujících možností pro nasazení kódu aplikace:
 
-- Použijte funkci průběžné doručování (Preview): Zdrojový kód vaší aplikace můžete uložit v úložišti Git Azure DevOps nebo v úložišti GitHubu, abyste mohli používat průběžné doručování Azure. Další informace najdete v tématu [Konfigurace průběžného doručování pro webovou aplikaci pro Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- Použití funkce průběžné doručování (Preview): zdrojový kód vaší aplikace můžete uložit v úložišti Git Azure DevOps nebo v úložišti GitHubu, abyste mohli používat průběžné doručování Azure. Další informace najdete v tématu [Konfigurace průběžného doručování pro webovou aplikaci pro Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
-- Použijte [rozhraní API pro nasazení zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Pokud chcete toto rozhraní API použít, spusťte [do své webové aplikace SSH](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) a přejdete do složky, do které chcete kód nasadit. Spusťte následující kód:
+- Použijte [rozhraní API pro nasazení zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): pro použití tohoto rozhraní API, [SSH do vaší webové aplikace](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) a přechod do složky, do které chcete kód nasadit. Spusťte následující kód:
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
-   Pokud se zobrazí chyba, že `curl` příkaz nebyl nalezen, ujistěte se, že jste nainstalovali kudrlinkou pomocí `apt-get install curl` před spuštěním předchozího `curl` příkazu.
+   Pokud se zobrazí chyba, že nebyl nalezen příkaz `curl`, ujistěte se, že je před spuštěním předchozího příkazu `curl` nainstalováno otočení pomocí `apt-get install curl`.
 
 ## <a name="language-support"></a>Podpora jazyků
 
@@ -116,13 +108,13 @@ Ano, Kudu by během nasazování Gitu měli zjistit, že nasazujete aplikaci PHP
 
 ## <a name="custom-containers"></a>Vlastní kontejnery
 
-**Používám vlastní kontejner. Chci, aby platforma připojovat sdílenou složku SMB k `/home/` adresáři.**
+**Používám vlastní kontejner. Má platforma připojit sdílenou složku SMB k adresáři `/home/`.**
 
-Pokud `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení není **zadáno** nebo je nastaveno `/home/` na *hodnotu true*, bude adresář **sdílen** napříč instancemi škálování a zapsané soubory **budou uchovány** v rámci restartování. Při explicitním nastavení `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na *false* se připojení zakáže.
+Pokud nastavení `WEBSITES_ENABLE_APP_SERVICE_STORAGE` není **zadáno** nebo je nastaveno na *hodnotu true*, bude adresář `/home/` **sdílen** napříč instancemi škálování a zapsané soubory **budou uchovány** v rámci restartování. Explicitní nastavení `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na *hodnotu false* zakáže připojení.
 
 **Spuštění vlastního kontejneru trvá dlouhou dobu a platforma restartuje kontejner před tím, než se začne dokončí.**
 
-Můžete nakonfigurovat dobu, po kterou bude platforma čekat, než restartuje váš kontejner. Provedete to tak, `WEBSITES_CONTAINER_START_TIME_LIMIT` že nastavíte nastavení aplikace na požadovanou hodnotu. Výchozí hodnota je 230 sekund a maximální hodnota je 1800 sekund.
+Můžete nakonfigurovat dobu, po kterou bude platforma čekat, než restartuje váš kontejner. Provedete to tak, že nastavíte nastavení aplikace `WEBSITES_CONTAINER_START_TIME_LIMIT` na požadovanou hodnotu. Výchozí hodnota je 230 sekund a maximální hodnota je 1800 sekund.
 
 **Jaký je formát adresy URL serveru privátního registru?**
 
@@ -130,7 +122,7 @@ Zadejte úplnou adresu URL registru, včetně `http://` nebo `https://`.
 
 **Jaký je formát názvu bitové kopie v možnosti privátního registru?**
 
-Přidejte úplný název bitové kopie včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Názvy obrázků, které používají vlastní port, [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). K nastavení `docker-custom-image-name` [ použijtenástrojpříkazovéhořádku.`az` ](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)
+Přidejte úplný název bitové kopie včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Názvy obrázků, které používají vlastní port, [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Chcete-li nastavit `docker-custom-image-name`, použijte [Nástroj příkazového řádku`az`](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
 **Můžu na vlastní imagi kontejneru zobrazit víc než jeden port?**
 
@@ -161,8 +153,8 @@ Aby bylo možné používat ACR s více kontejnery, je nutné, aby **všechny im
 Vytvořte následující nastavení aplikace:
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (úplná adresa URL, např `https://<server-name>.azurecr.io`.)
-- DOCKER_REGISTRY_SERVER_PASSWORD (povolení přístupu správce v nastavení ACR)
+- DOCKER_REGISTRY_SERVER_URL (úplná adresa URL, např. `https://<server-name>.azurecr.io`)
+- DOCKER_REGISTRY_SERVER_PASSWORD (povolit přístup správce v nastavení ACR)
 
 V konfiguračním souboru, odkazujte na obrázek ACR jako v následujícím příkladu:
 
@@ -177,7 +169,7 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 
 Tady jsou pravidla pro určení kontejneru, který je přístupný – v pořadí podle priority:
 
-- Nastavení `WEBSITES_WEB_CONTAINER_NAME` aplikace je nastaveno na název kontejneru
+- Nastavení aplikace `WEBSITES_WEB_CONTAINER_NAME` nastaveno na název kontejneru
 - První kontejner pro definování portu 80 nebo 8080
 - Pokud žádná z výše uvedených možností není pravdivá, bude první kontejner definovaný v souboru přístupný (vystaveno).
 
@@ -197,7 +189,7 @@ Pro nastavení aplikace lze použít pouze písmena (A-Z, A-z), čísla (0-9) a 
 
 Svůj nápad můžete odeslat na [fóru Web Apps Feedback](https://aka.ms/webapps-uservoice). Přidejte "[Linux]" do titulu vaší myšlenky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Co je Azure App Service v systému Linux?](app-service-linux-intro.md)
 - [Nastavení přípravných prostředí ve službě Azure App Service](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

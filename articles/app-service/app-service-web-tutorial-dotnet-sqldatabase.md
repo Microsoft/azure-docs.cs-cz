@@ -1,26 +1,17 @@
 ---
-title: Sestavování aplikace ASP.NET pomocí SQL Database-Azure App Service | Microsoft Docs
+title: 'Kurz: aplikace v ASP.NET s SQL Database'
 description: Zjistěte, jak nasadit aplikaci C# ASP.NET s databází SQL Serveru do Azure.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2f815d99c32c2dcaa1fd35d00110b27a90f53ab4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2a0b3994af48372b8ed0a3c6eaecf4289d0980c1
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471188"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671380"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Kurz: Vytvoření aplikace ASP.NET se službou SQL Database v Azure
 

@@ -3,12 +3,12 @@ title: Nasazení zákazníků do správy delegovaných prostředků Azure
 description: Naučte se, jak začlenit správu delegovaných prostředků do Azure, aby k nim bylo možné získat a spravovat jejich prostředky prostřednictvím vašeho vlastního tenanta.
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: fde0e82ff2dcf048643524b5a2d076d66a4f5a50
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 88e75b92ca09f3c6671fe4399c4672240f863f66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463954"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689264"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
@@ -36,7 +36,7 @@ Pokud chcete připojit tenanta zákazníka, musí mít aktivní předplatné Azu
 
 Pokud tyto informace ještě nemáte, můžete si je načíst jedním z následujících způsobů.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 ID tenanta si můžete zobrazit tak, že najedete myší na název účtu v horní pravé části Azure Portal, nebo výběrem **přepínače Adresář**. Pokud chcete vybrat a zkopírovat ID tenanta, vyhledejte na portálu "Azure Active Directory", pak vyberte **vlastnosti** a zkopírujte hodnotu zobrazenou v poli **ID adresáře** . Pokud chcete najít ID předplatného, vyhledejte "Subscriptions" a pak vyberte příslušné ID předplatného.
 
@@ -106,7 +106,7 @@ az role definition list --name "<roleName>" | grep name
 > [!TIP]
 > Při připojování zákazníka doporučujeme přiřadit [roli odstranění registrace spravovaných služeb](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) , aby uživatelé ve vašem tenantovi mohli později v případě potřeby [Odebrat přístup k delegování](#remove-access-to-a-delegation) . Pokud tato role není přiřazená, delegované prostředky může odebrat jenom uživatel v tenantovi zákazníka.
 
-## <a name="create-an-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manageru
+## <a name="create-an-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manager
 
 K připojení zákazníka budete muset vytvořit šablonu [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) pro vaši nabídku s následujícími informacemi. Hodnoty **mspOfferName** a **mspOfferDescription** se zákazníkům zobrazí při zobrazení podrobností nabídky na [stránce poskytovatelé služeb](view-manage-service-providers.md) Azure Portal.
 
@@ -115,7 +115,7 @@ K připojení zákazníka budete muset vytvořit šablonu [Azure Resource Manage
 |**mspOfferName**     |Název popisující tuto definici. Tato hodnota se zobrazí zákazníkovi jako název nabídky.         |
 |**mspOfferDescription**     |Stručný popis vaší nabídky (například "nabídka správy virtuálních počítačů contoso")      |
 |**managedByTenantId**     |ID tenanta         |
-|**autorizace**     |Hodnoty **principalId** pro uživatele/skupiny/hlavní názvy služby z vašeho tenanta, z nichž každá má **principalIdDisplayName** , aby vašemu zákazníkovi pomohly pochopit účel autorizace a namapovanou na integrovanou hodnotu **roleDefinitionId** s určením úroveň přístupu         |
+|**autorizace**     |Hodnoty **principalId** pro uživatele/skupiny nebo hlavní názvy služby z vašeho tenanta, z nichž každá má **principalIdDisplayName** , aby vašemu zákazníkovi pomohly pochopit účel autorizace a namapovaný na předdefinovanou **roleDefinitionId** hodnotu k určení úrovně přístupu         |
 
 K zaregistrování předplatného zákazníka použijte příslušnou šablonu Azure Resource Manager, kterou poskytujeme v [úložišti ukázek](https://github.com/Azure/Azure-Lighthouse-samples/), spolu s odpovídajícím souborem parametrů, který upravíte tak, aby odpovídal vaší konfiguraci a definoval vaše autorizace. Samostatné šablony jsou uvedené v závislosti na tom, jestli se chystáte registrovat celé předplatné, skupinu prostředků nebo víc skupin prostředků v rámci předplatného. Poskytujeme také šablonu, která se dá použít pro zákazníky, kteří si zakoupili nabídku spravované služby, kterou jste publikovali na Azure Marketplace, pokud upřednostňujete jejich odběry tímto způsobem.
 
@@ -238,7 +238,7 @@ az deployment create –-name <deploymentName \
 
 Po úspěšném připojení zákaznického předplatného na delegované řízení prostředků v Azure budou uživatelé v tenantovi poskytovatele služeb moci zobrazit předplatné a jeho prostředky (pokud jim byl udělen přístup prostřednictvím výše uvedeného postupu). buď samostatně, nebo jako člen skupiny Azure AD s příslušnými oprávněními). Potvrďte to tak, že zkontrolujete, že se odběr zobrazuje jedním z následujících způsobů:  
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 V tenantovi poskytovatele služeb:
 
@@ -247,7 +247,7 @@ V tenantovi poskytovatele služeb:
 3. Potvrďte, že si můžete zobrazit odběry s názvem nabídky, který jste zadali v šabloně Správce prostředků.
 
 > [!IMPORTANT]
-> Aby bylo možné zobrazit delegované předplatné ve [svých zákaznících](view-manage-customers.md), uživatelé v tenantovi poskytovatele služeb musí mít přiřazenou roli [Čtenář](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům), když se předplatné připojilo k Azure. delegovaná Správa prostředků
+> Aby bylo možné zobrazit delegované předplatné ve [svých zákaznících](view-manage-customers.md), uživatelé v tenantovi poskytovatele služeb musí mít přiřazenou roli [Čtenář](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům), pokud bylo předplatné pro správu delegovaných prostředků Azure zaregistrované.
 
 V tenantovi zákazníka:
 
@@ -335,7 +335,7 @@ az managedservices assignment list
 
 # Delete the registration assignment
 
-az managedservices assignment delete –assignment <id or full resourceId>
+az managedservices assignment delete --assignment <id or full resourceId>
 ```
 
 ## <a name="next-steps"></a>Další kroky

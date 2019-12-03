@@ -1,24 +1,17 @@
 ---
-title: Zabezpečení vlastního názvu DNS pomocí vazby SSL-Azure App Service | Microsoft Docs
-description: Naučte se koupit certifikát App Service a vytvořit jeho propojení s aplikací App Service.
-services: app-service
-author: cephalin
-manager: gwallace
+title: Zabezpečení vlastního serveru DNS pomocí vazby SSL
+description: Zabezpečte přístup HTTPS k vlastní doméně vytvořením vazby TLS/SSL s certifikátem. Vylepšete zabezpečení svého webu vynucením protokolu HTTPS nebo TLS 1,2.
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 10/25/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 259a4d33ba6e8c072f8df906da4784119b299822
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501215"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670676"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS s vazbou SSL v Azure App Service
 

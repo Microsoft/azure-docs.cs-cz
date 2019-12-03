@@ -1,24 +1,18 @@
 ---
-title: Vytvoření externího prostředí App Service – Azure
-description: Vysvětluje, jak vytvořit prostředí App Service při vytváření aplikace nebo samostatného.
-services: app-service
-documentationcenter: na
+title: Vytvoření externího pomocného mechanismu
+description: Naučte se, jak vytvořit prostředí App Service pomocí aplikace nebo vytvořit samostatný (prázdný) pomocný objekt pro vytváření.
 author: ccompy
-manager: stefsch
 ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 19d58ed90de4bdbd3cd7606d15c115bb1633770a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5ec9a99f55c2c9a3cb487ad7d69610a512d5b8bd
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069693"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687247"
 ---
 # <a name="create-an-external-app-service-environment"></a>Vytvoření externího prostředí App Service
 
@@ -38,9 +32,9 @@ V tomto článku se dozvíte, jak vytvořit externí pomocný objekt pro vytvá�
 
 Po vytvoření pomocného mechanismu služby nemůžete změnit následující:
 
-- Location
-- Subscription
-- Resource group
+- Umístění
+- Předplatné
+- Skupina prostředků
 - Použitá virtuální síť
 - Použitá podsíť
 - Velikost podsítě
@@ -65,7 +59,7 @@ Plán App Service je kontejner aplikací. Když vytváříte aplikaci v App Serv
 
 Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte **vytvořit prostředek** > **web a mobilní zařízení** > **webovou aplikaci**.
+1. V [Azure Portal](https://portal.azure.com/)vyberte **vytvořit prostředek** > **web a mobilní zařízení** > **webové aplikaci**.
 
     ![Vytvoření webové aplikace][1]
 
@@ -77,7 +71,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
 5. Vyberte plán App Service a pak vyberte **vytvořit novou**. Webové aplikace a webové aplikace pro Linux nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment. 
 
-    ![Nový plán služby App Service][2]
+    ![Nový plán App Service][2]
 
 6. V rozevíracím seznamu **umístění** vyberte oblast, ve které chcete vytvořit pomocného panelu. Když vyberete existující pomocným mechanismem, nevytvoří se nový. V rámci pomocného mechanismu, který jste vybrali, se vytvoří plán App Service. 
 
@@ -95,7 +89,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
     b. Zadejte nový název podsítě.
 
-    c. Vyberte velikost podsítě. *Nezapomeňte si vybrat dostatečně velkou velikost, aby vyhovovala budoucímu růstu vašeho pomocného mechanismu.* Doporučujeme, `/24`abyste měli k dis128 adresám a mohli zpracovat maximální velikost pomocného mechanismu. Nedoporučujeme `/28`například, protože k dispozici jsou jenom 16 adres. Infrastruktura používá minimálně sedm adres a síť Azure používá další 5. `/28` V podsíti zůstanete s maximálním počtem 4 App Service instancí plánu pro externí pomocného mechanismu pro zápis a jenom 3 App Service plánování instancí pro interního nástroje.
+    c. Vyberte velikost podsítě. *Nezapomeňte si vybrat dostatečně velkou velikost, aby vyhovovala budoucímu růstu vašeho pomocného mechanismu.* Doporučujeme `/24`, který má 128 adres a může posloužit k obsluze pomocného mechanismu pro maximální velikost. Nedoporučujeme `/28`například, protože k dispozici jsou jenom 16 adres. Infrastruktura používá minimálně sedm adres a síť Azure používá další 5. V `/28` podsíti zůstanete s maximální škálou 4 App Service instancí plánu pro externí přihlašování a jenom 3 App Service instance plánů pro interního nástroje pomocného programu.
 
     d. Vyberte rozsah IP adres podsítě.
 
@@ -103,7 +97,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Vytvořte si pomocného mechanismu pro čtení a webovou aplikaci pro Linux s využitím vlastní image Docker.
 
-1. V [Azure Portal](https://portal.azure.com/) **vytvořte** > web a mobilní zařízeníprostředku > **Web App for Containers.** 
+1. V [Azure Portal](https://portal.azure.com/) **vytvořte prostředek** > **web a mobilní zařízení** > **Web App for Containers.** 
 
     ![Vytvoření webové aplikace][7]
 
@@ -113,7 +107,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
 1. Vyberte plán App Service a pak vyberte **vytvořit novou**. Webové aplikace a webové aplikace pro Linux nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment. 
 
-    ![Nový plán služby App Service][8]
+    ![Nový plán App Service][8]
 
 1. V rozevíracím seznamu **umístění** vyberte oblast, ve které chcete vytvořit pomocného panelu. Když vyberete existující pomocným mechanismem, nevytvoří se nový. V rámci pomocného mechanismu, který jste vybrali, se vytvoří plán App Service. 
 
@@ -131,7 +125,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
     b. Zadejte nový název podsítě.
 
-    c. Vyberte velikost podsítě. *Nezapomeňte si vybrat dostatečně velkou velikost, aby vyhovovala budoucímu růstu vašeho pomocného mechanismu.* Doporučujeme, `/24`abyste měli k dis128 adresám a mohli zpracovat maximální velikost pomocného mechanismu. Nedoporučujeme `/28`například, protože k dispozici jsou jenom 16 adres. Infrastruktura používá minimálně sedm adres a síť Azure používá další 5. `/28` V podsíti zůstanete s maximálním počtem 4 App Service instancí plánu pro externí pomocného mechanismu pro zápis a jenom 3 App Service plánování instancí pro interního nástroje.
+    c. Vyberte velikost podsítě. *Nezapomeňte si vybrat dostatečně velkou velikost, aby vyhovovala budoucímu růstu vašeho pomocného mechanismu.* Doporučujeme `/24`, který má 128 adres a může posloužit k obsluze pomocného mechanismu pro maximální velikost. Nedoporučujeme `/28`například, protože k dispozici jsou jenom 16 adres. Infrastruktura používá minimálně sedm adres a síť Azure používá další 5. V `/28` podsíti zůstanete s maximální škálou 4 App Service instancí plánu pro externí přihlašování a jenom 3 App Service instance plánů pro interního nástroje pomocného programu.
 
     d. Vyberte rozsah IP adres podsítě.
 
@@ -147,7 +141,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
 Pokud vytvoříte samostatného pomocného mechanismu řízení, nemá nic v něm. Prázdnému pomocnému mechanismu řízení se pořád účtuje měsíční poplatek za infrastrukturu. Postupujte podle těchto kroků a vytvořte pomocí služby interního nástroje nebo vytvořte v vlastní skupině prostředků pomocného mechanismu řízení. Po vytvoření pomocného mechanismu služby můžete v něm vytvářet aplikace pomocí normálního procesu. Jako umístění vyberte nový pomocného panelu.
 
-1. Vyhledejte Azure Marketplace pro **App Service Environment**nebo vyberte **vytvořit prostředek** > **Web mobilní** > **App Service Environment**. 
+1. Vyhledejte Azure Marketplace **App Service Environment**nebo vyberte **vytvořit prostředek** > **Web Mobile** > **App Service Environment**. 
 
 1. Zadejte název vašeho pomocného programu. Tento název se používá pro aplikace vytvořené v pomocném formuláři. Pokud je název *mynewdemoase*, název subdomény je *. mynewdemoase.p.azurewebsites.NET*. Pokud vytvoříte aplikaci s názvem *MyTestApp*, tato adresa se dá adresovat na MyTestApp.mynewdemoase.p.azurewebsites.NET. V názvu nelze použít prázdné znaky. Použijete-li velká písmena, název domény je celková verze názvu. Pokud použijete interního nástroje, váš název pomocného mechanismu se v subdoméně nepoužije, ale místo toho se zadává explicitně během vytváření pomocného mechanismu.
 

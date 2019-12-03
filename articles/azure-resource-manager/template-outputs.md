@@ -3,12 +3,12 @@ title: Výstupy v šablonách
 description: Popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: b4c652d71436202b9b6e551f9c582e5c98508259
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 61120b9941a6a20812ea046265ecbe13014d769e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149181"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689144"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Výstupy v šabloně Azure Resource Manager
 
@@ -51,7 +51,7 @@ K načtení výstupní hodnoty z propojené šablony použijte [odkazovou](resou
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Při získávání výstupu vlastnost z propojené šablony, název vlastnosti nemůže obsahovat čárku.
+Při získávání výstupní vlastnosti z propojené šablony název vlastnosti nemůže obsahovat pomlčku.
 
 Následující příklad ukazuje, jak nastavit IP adresu v nástroji pro vyrovnávání zatížení načtením hodnoty z propojené šablony.
 
@@ -61,7 +61,7 @@ Následující příklad ukazuje, jak nastavit IP adresu v nástroji pro vyrovn�
 }
 ```
 
-Nelze použít `reference` funkce v části výstupů [vnořené šablony](resource-group-linked-templates.md#nested-template). Na návratové hodnoty pro nasazený prostředek ve vnořené šablony, převeďte vnořené šablony na propojenou šablonu.
+Funkci `reference` nelze použít v oddílu Outputs [vnořené šablony](resource-group-linked-templates.md#nested-template). Chcete-li vrátit hodnoty nasazeného prostředku ve vnořené šabloně, převeďte vnořenou šablonu na propojenou šablonu.
 
 ## <a name="get-output-values"></a>Získat výstupní hodnoty
 
@@ -88,17 +88,16 @@ az group deployment show \
 
 ---
 
-## <a name="example-templates"></a>Příklad šablony
+## <a name="example-templates"></a>Příklady šablon
 
 Následující příklady ukazují scénáře použití výstupů.
 
 |Šablona  |Popis  |
 |---------|---------|
-|[Zkopírujte proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Vytvoří proměnné komplexní a vrací tyto hodnoty. Nenasadí žádné prostředky. |
+|[Kopírovat proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Vytvoří komplexní proměnné a vypíše tyto hodnoty. Neimplementuje žádné prostředky. |
 |[Veřejná IP adresa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Vytvoří veřejnou IP adresu a vypíše ID prostředku. |
-|[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Obsahuje odkazy na předchozí šablonu postupem. Při vytváření nástroje pro vyrovnávání zatížení, používá ID prostředku ve výstupu. |
+|[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Odkazuje na předchozí šablonu. Při vytváření nástroje pro vyrovnávání zatížení používá ID prostředku ve výstupu. |
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dostupných vlastnostech výstupů naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
-* Doporučení k vytváření výstupů najdete v tématu [osvědčené postupy – výstupy](template-best-practices.md#outputs).

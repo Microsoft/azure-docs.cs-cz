@@ -1,24 +1,16 @@
 ---
-title: Vytvoření C# webové aplikace ASP.NET Framework – Azure App Service | Microsoft Docs
-description: Nasazením výchozí webové aplikace C# ASP.NET se naučíte, jak spouštět webové aplikace ve službě Azure App Service.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: 'Rychlý Start: vytvoření C# aplikace ASP.NET'
+description: Naučte se spouštět webové aplikace v Azure App Service nasazením výchozí C# šablony webové aplikace ASP.NET ze sady Visual Studio.
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 10/21/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 04dd7cb55f9a6d4ceb722606f0eb90792413e414
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f2e31723dc2761007994f652d9d6c28ab3f7d47d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471781"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671394"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Framework v Azure
 

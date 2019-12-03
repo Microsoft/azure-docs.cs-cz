@@ -1,24 +1,17 @@
 ---
-title: Přidání a Správa certifikátů SSL – Azure App Service | Microsoft Docs
-description: Naučte se koupit certifikát App Service a vytvořit jeho propojení s aplikací App Service.
-services: app-service
-author: cephalin
-manager: gwallace
+title: Přidání a Správa certifikátů SSL
+description: Vytvořte si bezplatný certifikát, importujte certifikát App Service, importujte certifikát Key Vault nebo si kupte certifikát App Service v Azure App Service.
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 10/25/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 2cba4e8223e98f95fc8d0f0472c10b2f9b67a658
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907136"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670739"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Přidat certifikát SSL v Azure App Service
 
@@ -36,7 +29,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 | Nahrání privátního certifikátu | Pokud už privátní certifikát máte od jiného poskytovatele, můžete ho nahrát. Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrajte veřejný certifikát. | Veřejné certifikáty se nepoužívají k zabezpečení vlastních domén, ale můžete je načíst do kódu, pokud je potřebujete pro přístup ke vzdáleným prostředkům. |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup při použití tohoto průvodce:
 
@@ -118,7 +111,7 @@ Pomocí následující tabulky můžete nakonfigurovat certifikát. Jakmile bude
 
 | Nastavení | Popis |
 |-|-|
-| Název | Popisný název certifikátu App Service. |
+| Name (Název) | Popisný název certifikátu App Service. |
 | Název hostitele holé domény | Sem zadejte kořenovou doménu. Vydaný certifikát zabezpečuje kořenovou *doménu i* subdoménu `www`. V vystaveném certifikátu obsahuje pole společné jméno kořenovou doménu a pole Alternativní název subjektu obsahuje doménu `www`. Chcete-li zabezpečit všechny subdomény, zadejte plně kvalifikovaný název domény, například `mysubdomain.contoso.com`).|
 | Předplatné | Datacentrum, které je hostitelem webové aplikace. |
 | Skupina prostředků | Skupina prostředků, která obsahuje certifikát. Můžete použít novou skupinu prostředků nebo vybrat stejnou skupinu prostředků jako aplikace App Service, například. |
@@ -139,7 +132,7 @@ Na stránce **stav Key Vault** klikněte na **úložiště Key Vault** a vytvoř
 
 | Nastavení | Popis |
 |-|-|
-| Název | Jedinečný název, který se skládá pro alfanumerické znaky a pomlčky. |
+| Name (Název) | Jedinečný název, který se skládá pro alfanumerické znaky a pomlčky. |
 | Skupina prostředků | Jako doporučení vyberte stejnou skupinu prostředků jako certifikát App Service. |
 | Umístění | Vyberte stejné umístění jako aplikace App Service. |
 | Cenová úroveň | Informace najdete v tématu informace [o cenách Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
@@ -372,7 +365,7 @@ Nyní můžete certifikát App Service odstranit. V levém navigačním panelu v
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Další zdroje informací
+## <a name="more-resources"></a>Další zdroje
 
 * [Zabezpečení vlastního názvu DNS pomocí vazby SSL](configure-ssl-bindings.md)
 * [Vynucení HTTPS](configure-ssl-bindings.md#enforce-https)

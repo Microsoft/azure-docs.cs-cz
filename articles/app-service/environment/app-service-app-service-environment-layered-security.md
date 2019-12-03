@@ -1,28 +1,20 @@
 ---
-title: Vrstvená architektura zabezpečení s App Service prostředími – Azure
-description: Implementace vrstvené architektury zabezpečení s App Service prostředími.
-services: app-service
-documentationcenter: ''
+title: Vrstvené zabezpečení v1
+description: Naučte se implementovat vícevrstvou architekturu zabezpečení v prostředí App Service. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 2d9eedcdc66dceabdd6506c5b64f0c15c874efee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8920e97d315dc7bfd0ba22386b8b637afb7c05e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070127"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688801"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementace vrstvené architektury zabezpečení s App Service prostředími
-## <a name="overview"></a>Přehled
 Vzhledem k tomu, že prostředí App Service poskytují izolované běhové prostředí nasazené ve virtuální síti, můžou vývojáři vytvořit vrstvenou architekturu zabezpečení, která poskytuje různé úrovně síťového přístupu pro každou fyzickou aplikační vrstvu.
 
 Běžným přáním je skrýt back-endy rozhraní API z obecného přístupu k Internetu a jenom v případě, že jsou rozhraní API zavolána pomocí nadřazeného webového aplikace.  [Skupiny zabezpečení sítě (skupin zabezpečení sítě)][NetworkSecurityGroups] se dají použít na podsítích, které obsahují App Service prostředí, aby se omezil veřejný přístup k aplikacím API.

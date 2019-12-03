@@ -1,27 +1,17 @@
 ---
-title: 'Rychlý Start: Vytvoření aplikace v Pythonu na platformě Linux – Azure App Service'
-description: Během několika minut můžete nasadit svou první aplikaci Hello world v Pythonu ve službě Azure App Service v Linuxu.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 'Rychlý Start: Vytvoření aplikace Python pro Linux'
+description: Začněte s aplikacemi pro Linux v Azure App Service nasazením první aplikace v Pythonu do kontejneru Linux v App Service.
 ms.topic: quickstart
 ms.date: 10/22/2019
-ms.author: cephalin
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 69e7cfef01005432a99dd10ed5bc7f004562e582
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 67fbffbe96bc32b6ec38fa75c1e754c7f11d38d6
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470825"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687470"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -88,7 +78,7 @@ flask run
 
 ---
 
-Otevřete webový prohlížeč a přejít na ukázkovou aplikaci na adrese `http://localhost:5000/`. Aplikace zobrazí zprávu **Hello World!** .
+Otevřete webový prohlížeč a v `http://localhost:5000/`použijte ukázkovou aplikaci. Aplikace zobrazí zprávu **Hello World!** .
 
 ![Místní spuštění ukázkové aplikace v Pythonu](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
@@ -182,7 +172,7 @@ Po dokončení nasazení přepněte zpátky do okna prohlížeče, které se ote
 
 Můžete přistupovat k protokolům konzoly generovaným zevnitř aplikace a kontejnerem, ve kterém je spuštěný. Protokoly obsahují výstup generovaný pomocí příkazů `print`.
 
-Nejdřív zapněte protokolování kontejneru spuštěním následujícího příkazu v terminálu a nahraďte `<app-name>` názvem vaší aplikace a `<resource-group-name>` názvem skupiny prostředků, kterou jste použili ve výstupu `az webapp up` příkazu (například "appsvc_rg_Linux_centralus"). ):
+Nejdřív zapněte protokolování kontejneru spuštěním následujícího příkazu v terminálu a nahraďte `<app-name>` názvem vaší aplikace a `<resource-group-name>` názvem skupiny prostředků, kterou jste použili ve výstupu `az webapp up` příkazu (například "appsvc_rg_Linux_centralus"):
 
 ```terminal
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
@@ -225,7 +215,7 @@ V nabídce App Service najdete různé stránky pro konfiguraci vaší aplikace.
 
 V předchozích krocích jste vytvořili prostředky Azure ve skupině prostředků. V závislosti na vašem umístění má skupina prostředků název, jako je například "appsvc_rg_Linux_CentralUS". Pokud použijete App Service SKU jinou než bezplatnou úroveň F1, budou tyto prostředky účtovat průběžné náklady.
 
-Pokud tyto prostředky nebudete potřebovat v budoucnu, odstraňte skupinu prostředků spuštěním následujícího příkazu, kde nahradíte `<resource-group-name>` skupinou prostředků zobrazenou ve výstupu příkazu `az webapp up`, například "appsvc_rg_Linux_centralus". Dokončení příkazu může trvat několik minut.
+Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, odstraňte skupinu prostředků spuštěním následujícího příkazu, který nahradí `<resource-group-name>` skupinou prostředků, která se zobrazuje ve výstupu příkazu `az webapp up`, například "appsvc_rg_Linux_centralus". Dokončení příkazu může trvat několik minut.
 
 ```terminal
 az group delete -n <resource-group-name>

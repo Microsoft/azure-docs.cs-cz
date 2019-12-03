@@ -1,27 +1,20 @@
 ---
-title: Ukázkový skript Azure CLI – vytvoření aplikace s průběžným nasazováním z GitHubu | Microsoft Docs
-description: Ukázkový skript Azure CLI – vytvoření aplikace a průběžné nasazování z GitHubu
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'CLI: průběžné nasazování z GitHubu'
+description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak vytvořit aplikaci s CI/CD z GitHubu.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 09/02/2019
-ms.author: cephalin
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 02853186a1f28d8c6db6b5421c6ebba0640461cb
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 829f1507bdf69522f1baf5af1c8d92455608334f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "71057892"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688483"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>Vytvoření aplikace App Service s průběžným nasazováním z GitHubu pomocí rozhraní příkazového řádku
 
@@ -53,7 +46,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci App Service. |
 | [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Přidruží aplikaci App Service k úložišti Git nebo Mercurial. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

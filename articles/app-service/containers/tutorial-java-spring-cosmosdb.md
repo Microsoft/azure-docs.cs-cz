@@ -1,20 +1,18 @@
 ---
-title: Sestavení webové aplikace v jazyce Java v systému Linux – Azure App Service
-description: Sestavujte, nasaďte a škálujte jarní spouštění webových aplikací Java pomocí Azure App Service v systémech Linux a Azure Cosmos DB.
+title: 'Kurz: aplikace pro Linux Java s MongoDB'
+description: Naučte se, jak získat datově řízenou aplikaci Java pro Linux pracující v Azure App Service s připojením k MongoDB běžícímu v Azure (Cosmos DB).
 author: rloutlaw
 ms.author: routlaw
-manager: angerobe
-ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 077c9b22dbb629c8408d431de3e2e621b79c9c48
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a3e9c05fbe68bf1b03f45d045afd8754753fecd3
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747686"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688835"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Java jarní Boot pomocí Azure App Service v systému Linux a Azure Cosmos DB
 
@@ -33,7 +31,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/overview), které je nainstalované na vašem počítači. 
 * [Git](https://git-scm.com/)
@@ -238,7 +236,7 @@ Otevřete soubor `pom.xml` v adresáři `initial/spring-boot-todo` a přidejte n
 </plugins>
 ```
 
-## <a name="deploy-to-app-service-on-linux"></a>Nasazení do App Service v Linuxu
+## <a name="deploy-to-app-service-on-linux"></a>Nasazení na App Service v systému Linux
 
 K nasazení aplikace TODO pro Azure App Service v systému Linux použijte `azure-webapp:deploy` cíl Maven.
 

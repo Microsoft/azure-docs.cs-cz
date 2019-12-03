@@ -1,24 +1,21 @@
 ---
-title: Konfigurace aplikací pro Linux Java – Azure App Service | Microsoft Docs
-description: Naučte se konfigurovat aplikace Java spuštěné v Azure App Service v systému Linux.
+title: Konfigurace aplikací pro Linux v jazyce Java
+description: Přečtěte si, jak nakonfigurovat předem sestavený kontejner Java pro vaši aplikaci. Tento článek ukazuje nejběžnější konfigurační úlohy.
 keywords: Azure App Service, Web App, Linux, OSS, Java, Java EE, JEE, JavaEE
-services: app-service
 author: bmitchell287
 manager: barbkess
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
+ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9625870132d088bf1de6df06f05f0cac41a1e7fa
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
-ms.translationtype: MT
+ms.openlocfilehash: a3e0bbb414dd1f47e70de6b7a25a84a2b27c0dc7
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144228"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671861"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
@@ -55,7 +52,7 @@ Další informace najdete v tématu [protokoly streamování v Cloud Shell](../t
 
 Povolte [protokolování aplikací](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Home/LogFiles/Application/* .
 
-Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tyto trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumat protokoly trasování Java v Application Insights](/azure/application-insights/app-insights-java-trace-logs).
+Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tato trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumávání protokolů trasování Java v Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
 
 ### <a name="troubleshooting-tools"></a>Nástroje pro řešení potíží
 
@@ -618,7 +615,7 @@ Následující kroky vysvětlují požadavky na připojení stávajících App S
 
 6. Pomocí rozhraní příkazového řádku Azure můžete přidat nastavení do App Service, která obsahují informace o připojení k databázi. Hodnoty `<resource group>` a `<webapp name>` nahraďte hodnotami, které vaše App Service používá. V informacích o připojení databáze nahraďte `<database server name>`, `<database name>`, `<admin name>`a `<admin password>`. Z Azure Portal můžete získat informace o App Service a databázi.
 
-    **PostgreSQL:**
+    **PostgreSQL**
 
     ```bash
     az webapp config appsettings set \
@@ -630,7 +627,7 @@ Následující kroky vysvětlují požadavky na připojení stávajících App S
             DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
     ```
 
-    **MySQL:**
+    **MySQL**
 
     ```bash
     az webapp config appsettings set \

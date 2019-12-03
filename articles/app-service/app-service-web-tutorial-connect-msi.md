@@ -1,25 +1,16 @@
 ---
-title: Zabezpečené SQL Database připojení ke spravované identitě – Azure App Service | Microsoft Docs
+title: 'Kurz: přístup k datům pomocí spravované identity'
 description: Naučte se, jak zajistit bezpečnější připojení k databázi pomocí spravované identity a jak ji použít pro jiné služby Azure.
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: syntaxc4
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f10d3ee78dffb32db01a48ccf935e5443fae08b6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 53dc6291d699ce08e08d3504bfcd63a525eb9196
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227467"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671195"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
@@ -40,7 +31,7 @@ Až budete hotovi, vaše ukázková aplikace se bezpečně připojí ke službě
 Co se naučíte:
 
 > [!div class="checklist"]
-> * Povolit spravované identity
+> * Povolení spravovaných identit
 > * Udělit přístup ke spravované identitě službě SQL Database
 > * Konfigurace Entity Framework pro použití ověřování Azure AD s SQL Database
 > * Připojení k SQL Database ze sady Visual Studio pomocí ověřování Azure AD
@@ -50,7 +41,7 @@ Co se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek pokračuje tam, kde jste skončili v [kurzu: sestavení aplikace v ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) nebo [kurzu: sestavení ASP.NET Core a SQL Database aplikace v Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md). Pokud jste to ještě neudělali, Projděte si jeden ze dvou kurzů jako první. Alternativně můžete upravit postup pro vlastní aplikaci .NET pomocí SQL Database.
 
@@ -236,7 +227,7 @@ Ve službě Cloud Shell se přihlaste ke službě SQL Database pomocí příkazu
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy a přidejte skupinu Azure AD a udělte jim oprávnění, která vaše aplikace potřebuje. Například 
+V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy a přidejte skupinu Azure AD a udělte jim oprávnění, která vaše aplikace potřebuje. Například: 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
@@ -288,7 +279,7 @@ Teď byste měli mít možnost upravovat seznam úkolu stejně jako předtím.
 Naučili jste se:
 
 > [!div class="checklist"]
-> * Povolit spravované identity
+> * Povolení spravovaných identit
 > * Udělit přístup ke spravované identitě službě SQL Database
 > * Konfigurace Entity Framework pro použití ověřování Azure AD s SQL Database
 > * Připojení k SQL Database ze sady Visual Studio pomocí ověřování Azure AD

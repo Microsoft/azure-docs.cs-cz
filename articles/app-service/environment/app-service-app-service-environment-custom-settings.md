@@ -1,25 +1,18 @@
 ---
-title: Vlastní nastavení pro App Service prostředí – Azure
-description: Vlastní nastavení konfigurace pro App Service prostředí
-services: app-service
-documentationcenter: ''
+title: Konfigurace vlastního nastavení
+description: Nakonfigurujte nastavení, která se vztahují na celé Azure App Service prostředí. Naučte se, jak to udělat pomocí Azure Resource Manager šablon.
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 768e354281aeb5e2143ddb0e190b0f27bf4f4e24
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 36208b4662242b37c135eaffc745a819c11fa015
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470706"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687329"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Vlastní nastavení konfigurace pro App Service prostředí
 ## <a name="overview"></a>Přehled

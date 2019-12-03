@@ -1,24 +1,16 @@
 ---
-title: Nakonfigurovat přihlašovací údaje nasazení – Azure App Service | Microsoft Docs
-description: Naučte se používat přihlašovací údaje pro nasazení Azure App Service.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnoc
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Konfigurace přihlašovacích údajů nasazení
+description: Přečtěte si, jaké typy přihlašovacích údajů nasazení jsou v Azure App Service a jak je nakonfigurovat a používat.
 ms.topic: article
 ms.date: 08/14/2019
-ms.author: cephalin
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: fc9445b64baae0e625b62356fee381329b01e8fd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c4e7a66a9535812da505045c26e7b1e6fbc6c661
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098487"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669973"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurovat přihlašovací údaje nasazení pro Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro nasazení [místního úložiště Git](deploy-local-git.md) a [FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejné jako přihlašovací údaje vašeho předplatného Azure.
@@ -33,9 +25,9 @@ Přihlašovací údaje na úrovni uživatele můžete nakonfigurovat na [stránc
 
 ### <a name="in-the-cloud-shell"></a>V Cloud Shell
 
-Chcete-li nakonfigurovat uživatele nasazení v [Cloud Shell](https://shell.azure.com), spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Nahraďte \<uživatelské jméno \<> a heslo > pomocí uživatelského jména a hesla pro nasazení. 
+Chcete-li nakonfigurovat uživatele nasazení v [Cloud Shell](https://shell.azure.com), spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Nahraďte \<username > a \<hesla > pomocí uživatelského jména a hesla pro nasazení. 
 
-- Uživatelské jméno musí být jedinečný v rámci Azure a místní Git nesmí obsahovat nabízených oznámení, "\@" symbol. 
+- Uživatelské jméno musí být v rámci Azure jedinečné a pro místní nabízená oznámení Git nesmí obsahovat symbol @. 
 - Heslo musí mít délku alespoň osm znaků a dva z následujících tří prvků: písmena, číslice a symboly. 
 
 ```azurecli-interactive
@@ -48,11 +40,11 @@ Výstup JSON zobrazuje heslo jako `null`. Pokud se zobrazí chyba `'Conflict'. D
 
 V Azure Portal musíte mít alespoň jednu aplikaci, abyste mohli získat přístup k přihlašovací stránce nasazení. Konfigurace přihlašovacích údajů na úrovni uživatele:
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services** >  >  > **na řídicím**panelu**FTP** **\<** centranasazeníany_app> > .
+1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services** >  **\<any_app** ** > ovém** **řídicím panelu** **FTP > serveru FTP** .
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Nebo pokud jste už nakonfigurovali nasazení Git, vyberte **App Services** >  **&lt;any_app >**  > **FTP/přihlašovací údaje**ke**službě Deployment Center** > .
+    Nebo pokud jste už nakonfigurovali nasazení Git, vyberte **App Services** >  **&lt;any_app >**  > **centra nasazení** > **FTP/přihlašovací údaje**.
 
     ![](./media/app-service-deployment-credentials/access-with-git.png)
 
@@ -71,19 +63,19 @@ Pokud je nakonfigurované nasazení Git, na stránce se zobrazí **uživatelské
 
 ## <a name="use-user-level-credentials-with-ftpftps"></a>Použití přihlašovacích údajů na úrovni uživatele s FTP/FTPS
 
-Ověřování u koncového bodu FTP/FTPS pomocí přihlašovacích údajů na úrovni uživatele requirers uživatelské jméno v následujícím formátu:`<app-name>\<user-name>`
+Ověřování u koncového bodu FTP/FTPS pomocí přihlašovacích údajů na úrovni uživatele requirers uživatelské jméno v následujícím formátu: `<app-name>\<user-name>`
 
 Vzhledem k tomu, že přihlašovací údaje na úrovni uživatele jsou propojené s uživatelem a ne konkrétním prostředkem, musí být uživatelské jméno v tomto formátu, aby se akce přihlášení nasměrovala do pravého koncového bodu aplikace.
 
 ## <a name="appscope"></a>Získání a resetování přihlašovacích údajů na úrovni aplikace
 Získání přihlašovacích údajů na úrovni aplikace:
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services** >  **&lt;any_app >**  > **Deployment Center** > **FTP/přihlašovací údaje**.
+1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services** >  **&lt;any_app >**  > **centra nasazení** > **FTP/přihlašovací údaje**.
 
 2. Vyberte možnost **přihlašovací údaje aplikace**a kliknutím na odkaz **Kopírovat** zkopírujte uživatelské jméno nebo heslo.
 
 Pokud chcete resetovat přihlašovací údaje na úrovni aplikace, vyberte **resetovat přihlašovací údaje** ve stejném dialogu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zjistěte, jak pomocí těchto přihlašovacích údajů nasadit aplikaci z [místního Gitu](deploy-local-git.md) nebo pomocí [FTP/S](deploy-ftp.md).

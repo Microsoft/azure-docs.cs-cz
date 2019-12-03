@@ -1,24 +1,18 @@
 ---
-title: Integrace interního nástroje App Service Environment s využitím Application Gateway – Azure
-description: Návod, jak integrovat aplikaci do interního nástroje App Service Environment pomocí Application Gateway
-services: app-service
-documentationcenter: na
+title: Integrace s Application Gateway
+description: Naučte se, jak integrovat aplikaci do interního nástroje App Service Environment pomocí Application Gateway v tomto komplexním podrobném návodu.
 author: ccompy
-manager: stefsch
 ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 090952a065b8c3b2b25ad737992b68b9bc9aa9ec
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069474"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687137"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrace App Service Environment interního nástroje s využitím Azure Application Gateway #
 
@@ -39,14 +33,14 @@ Tento návod vám ukáže, jak:
 * Nakonfigurujte svou aplikaci tak, aby dodržovala vlastní název domény.
 * Upravte název veřejného hostitele DNS, který odkazuje na vaši Aplikační bránu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K integraci svého Application Gateway s App Service Environment interního nástroje potřebujete:
 
 * INTERNÍHO nástroje App Service Environment.
 * Aplikace spuštěná v interního nástroje App Service Environment.
 * Název internetové IP domény, který se má používat s vaší aplikací v interního nástroje App Service Environment.
-* Adresa interního nástroje, kterou používá vaše interního nástroje App Service Environment. Tyto informace jsou na portálu App Service Environment v části **Nastavení** > **IP adresy**:
+* Adresa interního nástroje, kterou používá vaše interního nástroje App Service Environment. Tyto informace jsou na portálu App Service Environment v části **nastavení** > **IP adresy**:
 
     ![Příklad seznamu IP adres, které používá App Service Environment interního nástroje][9]
     
@@ -62,7 +56,7 @@ Bránu nemůžete umístit ani do podsítě, kterou používá interního nástr
 
 ## <a name="configuration-steps"></a>Postup konfigurace ##
 
-1. V Azure Portal přejít na **Nový** > **síťový** > **Application Gateway**.
+1. V Azure Portal přejdete na **nový** >  > **sítě** **Application Gateway**.
 
 2. V oblasti **základy** :
 

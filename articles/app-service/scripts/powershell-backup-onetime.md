@@ -1,25 +1,19 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Zálohování webové aplikace | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu – Zálohování webové aplikace
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'PowerShell: zálohování aplikace'
+description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. V této ukázce se dozvíte, jak zálohovat aplikaci.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c1c43e8523a46971e99b2d91b9c121de3dc57681
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5b9906abaa253c667c883a2e0e8ecd6e4cc9d496
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087958"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685745"
 ---
 # <a name="back-up-a-web-app-using-powershell"></a>Zálohování webové aplikace pomocí PowerShellu
 
@@ -56,7 +50,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [New-AzWebAppBackup](/powershell/module/az.websites/new-azwebappbackup) | Vytvoří zálohu webové aplikace. |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Získá seznam záloh webové aplikace. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

@@ -1,19 +1,19 @@
 ---
 title: Práce s podporou kanálu změn v Azure Cosmos DB
 description: Využijte podporu Azure Cosmos DB změn kanálu ke sledování změn v dokumentech a provádění zpracování na základě událostí, jako jsou triggery a udržování mezipamětí a analytických systémů v aktuálním stavu.
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8e6bd3dadd636127f212db0ea0c0755a6b52a087
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: eef950c4e8c4a880d331022ed60477bebce65b5d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757029"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689093"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Změnit informační kanál v Azure Cosmos DB – přehled
 
@@ -33,12 +33,12 @@ Informační kanál změny v Azure Cosmos DB umožňuje vytváření efektivníc
 
 Tato funkce je v současnosti podporovaná následujícími Azure Cosmos DB rozhraní API a klientské sady SDK.
 
-| **Klientské ovladače** | **Azure CLI** | **ROZHRANÍ SQL API** | **rozhraní API Cassandra** | **Rozhraní API pro MongoDB Azure Cosmos DB** | **Rozhraní API pro Gremlin**|**Rozhraní Table API** |
+| **Klientské ovladače** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní API pro Cassandra Azure Cosmos DB** | **Rozhraní API pro MongoDB Azure Cosmos DB** | **Rozhraní API pro Gremlin**|**Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | není k dispozici | Ano | Ne | Ne | Ano | Ne |
-|Java|není k dispozici|Ano|Ne|Ne|Ano|Ne|
-|Python|není k dispozici|Ano|Ne|Ne|Ano|Ne|
-|Uzel/JS|není k dispozici|Ano|Ne|Ne|Ano|Ne|
+| .NET | není k dispozici | Ano | Ano | Ano | Ano | Ne |
+|Java|není k dispozici|Ano|Ano|Ano|Ano|Ne|
+|Python|není k dispozici|Ano|Ano|Ano|Ano|Ne|
+|Uzel/JS|není k dispozici|Ano|Ano|Ano|Ano|Ne|
 
 ## <a name="change-feed-and-different-operations"></a>Změna kanálu a různých operací
 
@@ -56,9 +56,9 @@ Pokud dojde k převzetí služeb při selhání v účtu Azure Cosmos ve více o
 
 Pokud je vlastnost TTL (Time to Live) nastavená na položku na hodnotu-1, kanál změn zůstane trvale uložený. Pokud se data neodstraní, zůstane v informačním kanálu změn.  
 
-### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Změna kanálu a _etag, _lsn nebo _ts
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Změna kanálu a _etag _lsn nebo _ts
 
-Formát _etag je interní a na něj byste neměli mít závislost, protože se může kdykoli změnit. _ts je změna nebo časové razítko vytvoření. _Ts můžete použít k chronologickému porovnání. _lsn je ID dávky, které je přidáno pouze pro změnu kanálu. představuje ID transakce. Mnoho položek může mít stejný _lsn. ETag v FeedResponse se liší od _etag, které vidíte na položce. _etag je interní identifikátor, který se používá pro řízení souběžnosti o verzi položky, zatímco značka ETag se používá pro sekvencování informačního kanálu.
+Formát _etag je interní a na něj byste neměli mít závislost, protože se může kdykoli změnit. _ts je změna nebo časové razítko vytvoření. K chronologickému porovnání můžete použít _ts. _lsn je ID dávky, které se přidají jenom pro změny kanálu. představuje ID transakce. Mnoho položek může mít stejné _lsn. ETag v FeedResponse se liší od _etag, které vidíte na položce. _etag je interní identifikátor a používá se pro řízení souběžnosti o verzi položky, zatímco značka ETag se používá pro sekvencování informačního kanálu.
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>Změny případů použití kanálu a scénářů
 
@@ -84,7 +84,7 @@ Například u kanálu změn můžete efektivně provádět následující úlohy
 
 Níže jsou uvedeny některé z scénářů, které lze snadno implementovat pomocí kanálu změn:
 
-* V rámci webových nebo mobilních aplikací bez [serveru](https://azure.microsoft.com/solutions/serverless/) můžete sledovat události, jako jsou všechny změny v profilu vašeho zákazníka, předvolby nebo jejich umístění a aktivovat určité akce, například odesílání nabízených oznámení do jejich zařízení pomocí [Azure. Funkce](change-feed-functions.md).
+* V rámci webových nebo mobilních aplikací bez [serveru](https://azure.microsoft.com/solutions/serverless/) můžete sledovat události, jako jsou všechny změny v profilu vašeho zákazníka, předvolby nebo jejich umístění a aktivovat určité akce, například odesílání nabízených oznámení do jejich zařízení pomocí [Azure Functions](change-feed-functions.md).
 
 * Pokud používáte Azure Cosmos DB k vytvoření hry, můžete například použít kanál Change k implementaci žebříčky v reálném čase na základě skóre z dokončených her.
 
@@ -119,6 +119,12 @@ Kanál změn je k dispozici pro každý klíč logického oddílu v rámci konte
 * Změny jsou k dispozici paralelně pro všechny klíče logického oddílu kontejneru Azure Cosmos. Tato funkce umožňuje, aby se změny z velkých kontejnerů zpracovaly paralelně více příjemcům.
 
 * Aplikace mohou současně požadovat více kanálů změn ve stejném kontejneru. ChangeFeedOptions. StartTime lze použít k poskytnutí počátečního počátečního bodu. Například chcete-li najít token pro pokračování odpovídající danému časovému okamžiku. Token continuationtoken je-li tento parametr zadán, služba WINS překračuje hodnoty StartTime a StartFromBeginning. Přesnost ChangeFeedOptions. StartTime je ~ 5 sekund. 
+
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Změna kanálu rozhraní API pro Cassandra a MongoDB
+
+Funkce Change feed je v rozhraní MongoDB API označená jako datový proud a dotaz s predikátem v rozhraní API Cassandra. Další informace o podrobnostech implementace rozhraní MongoDB API najdete v tématu [Změna datových proudů v rozhraní Azure Cosmos DB API pro MongoDB](mongodb-change-streams.md).
+
+Nativní Apache Cassandra poskytuje Change Data Capture (CDC), mechanismus pro označení určitých tabulek pro archivaci a také odmítnutí zápisů do těchto tabulek, jakmile se dosáhne konfigurovatelné velikosti na disku pro protokol CDC. Funkce kanálu změn v rozhraní Azure Cosmos DB API pro Cassandra vylepšuje schopnost dotazovat se na změny pomocí predikátu prostřednictvím CQL. Další informace o podrobnostech implementace najdete v tématu [Změna kanálu v rozhraní Azure Cosmos DB API pro Cassandra](cassandra-change-feed.md).
 
 ## <a name="next-steps"></a>Další kroky
 

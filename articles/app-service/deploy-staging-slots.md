@@ -1,31 +1,21 @@
 ---
-title: Nastavení přípravného prostředí pro webové aplikace v Azure App Service | Microsoft Docs
-description: Naučte se používat dvoufázové publikování pro webové aplikace v Azure App Service.
-services: app-service
-documentationcenter: ''
-author: cephalin
-writer: cephalin
-manager: jpconnoc
-editor: mollybos
+title: Nastavení přípravného prostředí
+description: Naučte se nasazovat aplikace do neprodukčního slotu a autoswap do produkčního prostředí. Zvyšte spolehlivost a Eliminujte výpadky aplikací z nasazení.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
-ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7f98ba9851216737712b6be1ec29156ba0b1a68b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382270"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671757"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravného prostředí v Azure App Service
 <a name="Overview"></a>
 
-Když nasadíte webovou aplikaci, webovou aplikaci v systému Linux, back-end Mobile nebo aplikaci API na [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), můžete místo výchozího produkčního slotu použít samostatný slot pro nasazení, když pracujete v rámci **Standard**, **Premium**nebo **Isolated.** App Service úroveň plánu. Sloty nasazení jsou živé aplikace s vlastními názvy hostitelů. Prvky obsahu aplikace a konfigurace je možné prohodit mezi dvěma sloty nasazení, včetně produkčního slotu. 
+Když nasadíte webovou aplikaci, webovou aplikaci v systému Linux, back-end Mobile nebo aplikaci API na [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), můžete místo výchozího produkčního slotu použít samostatný slot pro nasazení, když pracujete na úrovni plánu **Standard**, **Premium**nebo **Isolated** App Service. Sloty nasazení jsou živé aplikace s vlastními názvy hostitelů. Prvky obsahu aplikace a konfigurace je možné prohodit mezi dvěma sloty nasazení, včetně produkčního slotu. 
 
 Nasazení aplikace do neprodukčního slotu má následující výhody:
 
@@ -242,7 +232,7 @@ Postup automatického směrování provozních přenosů:
 
 1. Přejít na stránku prostředků vaší aplikace a vyberte **sloty nasazení**.
 
-2. Ve sloupci **provoz%** slotu, na který chcete směrovat, zadejte procento (mezi 0 a 100), které bude představovat objem celkového provozu, který chcete směrovat. Vyberte **Uložit**.
+2. Ve sloupci **provoz%** slotu, na který chcete směrovat, zadejte procento (mezi 0 a 100), které bude představovat objem celkového provozu, který chcete směrovat. Vyberte **Save** (Uložit).
 
     ![Nastavení procenta provozu](./media/web-sites-staged-publishing/RouteTraffic.png)
 
@@ -295,7 +285,7 @@ Azure PowerShell je modul, který poskytuje rutiny pro správu Azure prostředni
 Informace o instalaci a konfiguraci Azure PowerShell a o ověřování Azure PowerShell pomocí předplatného Azure najdete v tématu [Jak nainstalovat a nakonfigurovat Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 ---
-### <a name="create-a-web-app"></a>Vytvoření webové aplikace
+### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 ```powershell
 New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```

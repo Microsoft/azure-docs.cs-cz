@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7097faa64319a46b1efc91233e30ea992d064246
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595127"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687644"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -58,14 +58,14 @@ Pomocí následujícího příkazu spusťte test srovnávacího testu výkonu.
 
 Tento příkaz spustí srovnávací test výkonu odesláním testovacích dat do zadaného cíle. Testovací data jsou generována v paměti, odeslána do cíle a poté po dokončení testu odstraněna z cílového umístění. Můžete určit, kolik souborů se má vygenerovat a jakou velikost byste chtěli použít při použití volitelných parametrů příkazu.
 
-Chcete-li zobrazit podrobné pokyny pro nápovědu k tomuto příkazu, zadejte `azcopy bench -h` a potom stiskněte klávesu ENTER.
+Chcete-li zobrazit podrobné pokyny pro nápovědu k tomuto příkazu, zadejte příkaz `azcopy bench -h` a stiskněte klávesu ENTER.
 
 ### <a name="optimize-throughput"></a>Optimalizace propustnosti
 
-Pomocí příznaku `cap-mbps` můžete umístit strop pro míru propustnosti dat. Například následující příkaz CAPS propustnosti `10` megabitů (MB) za sekundu.
+Pomocí příznaku `cap-mbps` můžete umístit strop pro míru propustnosti dat. Například následující funkce CAPS propustnosti `10` megabitů (MB) za sekundu.
 
 ```azcopy
-azcopy cap-mbps 10
+azcopy --cap-mbps 10
 ```
 
 Při přenosu malých souborů se propustnost může snížit. Propustnost můžete zvýšit nastavením proměnné prostředí `AZCOPY_CONCURRENCY_VALUE`. Tato proměnná Určuje počet souběžných požadavků, které mohou nastat.  
@@ -97,7 +97,7 @@ Vyjádřete tuto hodnotu v gigabajtech (GB).
 
 AzCopy vytvoří soubory protokolů a plánů pro každou úlohu. Protokoly můžete použít k prozkoumání a odstraňování potíží s případnými problémy. 
 
-Protokoly budou obsahovat stav selhání (`UPLOADFAILED`, `COPYFAILED` a `DOWNLOADFAILED`), úplnou cestu a důvod selhání.
+Protokoly budou obsahovat stav selhání (`UPLOADFAILED`, `COPYFAILED`a `DOWNLOADFAILED`), úplnou cestu a důvod selhání.
 
 Ve výchozím nastavení se soubory protokolů a plánů nacházejí v adresáři `%USERPROFILE$\.azcopy` ve Windows nebo v adresáři `$HOME$\.azcopy` v systémech Mac a Linux, ale pokud chcete, můžete toto umístění změnit.
 
@@ -179,14 +179,14 @@ Pro kontrolu aktuální hodnoty této proměnné použijte `azcopy env`. Pokud j
 
 ## <a name="change-the-default-log-level"></a>Změna výchozí úrovně protokolu
 
-Ve výchozím nastavení je úroveň protokolu AzCopy nastavena na hodnotu `INFO`. Pokud chcete snížit podrobnosti protokolu, aby se ušetřilo místo na disku, přepište toto nastavení pomocí možnosti ``--log-level``. 
+Ve výchozím nastavení je úroveň protokolu AzCopy nastavená na `INFO`. Pokud chcete snížit podrobnosti protokolu, aby se ušetřilo místo na disku, přepište toto nastavení pomocí možnosti ``--log-level``. 
 
-Dostupné úrovně protokolu jsou: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` a `FATAL`.
+Dostupné úrovně protokolu jsou: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC`a `FATAL`.
 
 ## <a name="remove-plan-and-log-files"></a>Odebrat soubory plánu a protokolu
 
 Pokud chcete ze svého místního počítače odebrat všechny soubory plánu a protokolu, abyste ušetřili místo na disku, použijte příkaz `azcopy jobs clean`.
 
-Chcete-li odebrat plán a soubory protokolu spojené pouze s jednou úlohou, použijte `azcopy jobs rm <job-id>`. V tomto příkladu nahraďte zástupný symbol `<job-id>` s ID úlohy úlohy.
+Chcete-li odebrat plán a soubory protokolu spojené pouze s jednou úlohou, použijte `azcopy jobs rm <job-id>`. V tomto příkladu nahraďte zástupný symbol `<job-id>` číslem ID úlohy.
 
 

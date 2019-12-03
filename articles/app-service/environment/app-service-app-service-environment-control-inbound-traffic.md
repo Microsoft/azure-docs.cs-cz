@@ -1,25 +1,18 @@
 ---
-title: Řízení příchozího provozu do prostředí App Service – Azure
-description: Přečtěte si, jak nakonfigurovat pravidla zabezpečení sítě pro řízení příchozího provozu do App Service Environment.
-services: app-service
-documentationcenter: ''
+title: Řízení příchozího provozu v1
+description: Seznamte se s postupy pro řízení příchozího provozu do App Service Environment. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: ccompy
-manager: erikre
-editor: ''
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: c887ae5568bfd0f72f8d90daecd95547ed7b8b7d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070404"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687398"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Řízení příchozího provozu na App Service Environment
 ## <a name="overview"></a>Přehled
@@ -38,16 +31,16 @@ Před uzamčením příchozího síťového provozu pomocí skupiny zabezpečen�
 
 Následuje seznam portů používaných App Service Environment. Všechny porty jsou **TCP**, pokud není výslovně uvedeno jinak:
 
-* 454:  **Požadovaný port** používaný infrastrukturou Azure pro správu a údržbu App Servicech prostředí prostřednictvím protokolu SSL.  Neblokovat provoz na tento port.  Tento port je vždycky vázaný na veřejnou virtuální IP adresu pomocného mechanismu.
-* 455:  **Požadovaný port** používaný infrastrukturou Azure pro správu a údržbu App Servicech prostředí prostřednictvím protokolu SSL.  Neblokovat provoz na tento port.  Tento port je vždycky vázaný na veřejnou virtuální IP adresu pomocného mechanismu.
-* 80:  Výchozí port pro příchozí přenos HTTP do aplikací spuštěných v App Service plánuje v App Service Environment.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
-* 443: Výchozí port pro příchozí provoz SSL do aplikací spuštěných v App Service plánuje v App Service Environment.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
-* 21:  Řídicí kanál pro FTP.  Pokud se FTP nepoužívá, můžete tento port bezpečně zablokovat.  Na interního nástroje přihlašování s povolenými možnostmi je možné tento port svázat s interního nástroje adresou pro pomocného mechanismu řízení.
-* 990:  Řídicí kanál pro FTPS.  Pokud se FTPS nepoužívá, můžete tento port bezpečně zablokovat.  Na interního nástroje přihlašování s povolenými možnostmi je možné tento port svázat s interního nástroje adresou pro pomocného mechanismu řízení.
-* 10001-10020: Datové kanály pro FTP.  Stejně jako u řídicího kanálu můžou být tyto porty bezpečně blokované, pokud se FTP nepoužívá.  Na interního nástroje přihlašování s povolenými možnostmi je možné tento port svázat s interního nástroje adresou pro pomocného mechanismu.
-* 4016: Používá se pro vzdálené ladění pomocí sady Visual Studio 2012.  Pokud se funkce nepoužívá, můžete tento port bezpečně zablokovat.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
-* 4018: Používá se pro vzdálené ladění pomocí Visual Studio 2013.  Pokud se funkce nepoužívá, můžete tento port bezpečně zablokovat.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
-* 4020: Používá se pro vzdálené ladění pomocí sady Visual Studio 2015.  Pokud se funkce nepoužívá, můžete tento port bezpečně zablokovat.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
+* 454: **požadovaný port** používaný infrastrukturou Azure pro správu a údržbu App Servicech prostředí prostřednictvím protokolu SSL.  Neblokovat provoz na tento port.  Tento port je vždycky vázaný na veřejnou virtuální IP adresu pomocného mechanismu.
+* 455: **požadovaný port** používaný infrastrukturou Azure pro správu a údržbu App Servicech prostředí prostřednictvím protokolu SSL.  Neblokovat provoz na tento port.  Tento port je vždycky vázaný na veřejnou virtuální IP adresu pomocného mechanismu.
+* 80: výchozí port pro příchozí přenos HTTP do aplikací spuštěných v App Service plánuje v App Service Environment.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
+* 443: výchozí port pro příchozí provoz SSL do aplikací spuštěných v App Service plánuje v App Service Environment.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
+* 21: řídicí kanál pro FTP.  Pokud se FTP nepoužívá, můžete tento port bezpečně zablokovat.  Na interního nástroje přihlašování s povolenými možnostmi je možné tento port svázat s interního nástroje adresou pro pomocného mechanismu řízení.
+* 990: řídicí kanál pro FTPS.  Pokud se FTPS nepoužívá, můžete tento port bezpečně zablokovat.  Na interního nástroje přihlašování s povolenými možnostmi je možné tento port svázat s interního nástroje adresou pro pomocného mechanismu řízení.
+* 10001-10020: datové kanály pro FTP.  Stejně jako u řídicího kanálu můžou být tyto porty bezpečně blokované, pokud se FTP nepoužívá.  Na interního nástroje přihlašování s povolenými možnostmi je možné tento port svázat s interního nástroje adresou pro pomocného mechanismu.
+* 4016: používá se pro vzdálené ladění pomocí sady Visual Studio 2012.  Pokud se funkce nepoužívá, můžete tento port bezpečně zablokovat.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
+* 4018: používá se pro vzdálené ladění pomocí Visual Studio 2013.  Pokud se funkce nepoužívá, můžete tento port bezpečně zablokovat.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
+* 4020: používá se pro vzdálené ladění pomocí sady Visual Studio 2015.  Pokud se funkce nepoužívá, můžete tento port bezpečně zablokovat.  Na přihlašování s povoleným interního nástroje je tento port vázán na interního nástroje adresu mechanismu řízení.
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>Odchozí připojení a požadavky DNS
 Aby App Service Environment správně fungovalo, vyžaduje také odchozí přístup k různým koncovým bodům. Úplný seznam externích koncových bodů používaných pomocným mechanismem najdete v části "požadované připojení k síti" v článku [Konfigurace sítě pro ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) .
@@ -57,7 +50,7 @@ App Service prostředí vyžadují pro virtuální síť platnou infrastrukturu 
 Před vytvořením App Service Environment taky doporučujeme, aby všechny vlastní servery DNS ve virtuální síti byly napřed času.  Pokud dojde ke změně konfigurace DNS virtuální sítě během vytváření App Service Environment, což způsobí selhání procesu vytváření App Service Environment.  Pokud v podobném přístupnosti existuje vlastní server DNS na druhém konci brány VPN a server DNS je nedosažitelný nebo nedostupný, proces vytváření App Service Environment se také nezdaří.
 
 ## <a name="creating-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
-Úplné podrobnosti o tom, jak fungují skupiny zabezpečení sítě, najdete [][NetworkSecurityGroups]v následujících informacích.  Níže uvedený příklad správy služeb Azure se zaměřuje na nejdůležitější skupiny zabezpečení sítě. Zaměřte se na konfiguraci a použití skupiny zabezpečení sítě pro podsíť, která obsahuje App Service Environment.
+Úplné podrobnosti o tom, jak fungují skupiny zabezpečení sítě, najdete v následujících [informacích][NetworkSecurityGroups].  Níže uvedený příklad správy služeb Azure se zaměřuje na nejdůležitější skupiny zabezpečení sítě. Zaměřte se na konfiguraci a použití skupiny zabezpečení sítě pro podsíť, která obsahuje App Service Environment.
 
 **Poznámka:** Skupiny zabezpečení sítě je možné konfigurovat graficky pomocí webu [Azure Portal](https://portal.azure.com) nebo prostřednictvím Azure PowerShell.
 
@@ -95,7 +88,7 @@ Pokud se používá vzdálené ladění pomocí sady Visual Studio, následujíc
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT RemoteDebuggingVS2015" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '4020' -Protocol TCP
 
 ## <a name="assigning-a-network-security-group-to-a-subnet"></a>Přiřazení skupiny zabezpečení sítě k podsíti
-Skupina zabezpečení sítě má výchozí pravidlo zabezpečení, které odepře přístup ke všem externím přenosům.  Výsledkem kombinace pravidel zabezpečení sítě popsaných výše a výchozího pravidla zabezpečení blokujícího příchozího provozu je to, že přenos dat do aplikací spuštěných v rámci služby může odesílat jenom přenosy ze zdrojových rozsahů adres, které jsou přidružené k akci *Povolit* . App Service Environment.
+Skupina zabezpečení sítě má výchozí pravidlo zabezpečení, které odepře přístup ke všem externím přenosům.  Výsledkem kombinace pravidel zabezpečení sítě popsaných výše a výchozího pravidla zabezpečení blokujícího příchozího provozu je, že přenos dat do aplikací spuštěných v App Service Environment bude umožňovat pouze provoz ze zdrojových rozsahů adres spojených s akcí *Povolit* .
 
 Po naplnění skupiny zabezpečení sítě pomocí pravidel zabezpečení je potřeba ji přiřadit k podsíti obsahující App Service Environment.  Příkaz přiřazení odkazuje na název virtuální sítě, ve které se App Service Environment nachází, a na název podsítě, ve které byla App Service Environment vytvořena.  
 
@@ -110,7 +103,7 @@ V případě úplnosti následující příklad ukazuje, jak odebrat a tedy dis 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecurityGroupFromSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
 ## <a name="special-considerations-for-explicit-ip-ssl"></a>Zvláštní požadavky na explicitní IP-SSL
-Pokud je aplikace nakonfigurovaná s explicitní adresou IP-SSL (platí *jenom* pro služby ASE, která má veřejnou virtuální IP adresu), místo použití výchozí IP adresy App Service Environment přenos přes protokol HTTP i HTTPS do podsítě přes jinou sadu portů. jiné než porty 80 a 443.
+Pokud je aplikace nakonfigurovaná s explicitní adresou IP-SSL (platí *jenom* pro služby ASE, která má veřejnou virtuální IP adresu), místo použití výchozí IP adresy App Service Environment přenos přes protokol HTTP i HTTPS do podsítě přes jinou sadu jiných portů než porty 80 a 443.
 
 Jednotlivé páry portů používané jednotlivými adresami IP-SSL najdete v okně uživatelské rozhraní portálu z okna s podrobnostmi o App Service Environment.  Vyberte všechna nastavení--> "IP adresy".  V okně "IP adresy" se zobrazí tabulka všech explicitně nakonfigurovaných adres IP-SSL pro App Service Environment spolu se speciální dvojicí portů, která se používá ke směrování přenosů HTTP a HTTPS přidružených ke každé adrese IP-SSL.  Je to dvojice portů, kterou je třeba použít pro parametry DestinationPortRange při konfiguraci pravidel ve skupině zabezpečení sítě.
 

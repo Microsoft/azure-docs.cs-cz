@@ -1,17 +1,17 @@
 ---
 title: Přístup ke změně kanálu v Azure Cosmos DB Azure Cosmos DB
 description: Tento článek popisuje různé možnosti, které jsou k dispozici pro čtení a přístup k informačnímu kanálu změn v Azure Cosmos DB Azure Cosmos DB.
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 3d30c9f946f97f06c1a3ba1cd2e77e1ab151a572
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 11/25/2019
+ms.openlocfilehash: fc7e78a44d03af8952c1e178a3e92b1ee0c6fe66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754875"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688119"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Čtení kanálu změn Azure Cosmos DB
 
@@ -31,7 +31,13 @@ Knihovna Change feed Processor skrývá složitost a stále poskytuje úplnou ko
 
 ## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>Použití sady SDK rozhraní Azure Cosmos DB SQL API
 
-Pomocí sady SDK získáte řízení kanálu změn na nízké úrovni. Můžete spravovat kontrolní bod, přistupovat k určitému klíči logického oddílu atd. Pokud máte více čtenářů, můžete použít `ChangeFeedOptions` k distribuci načtení čtení do různých vláken nebo různých klientů. 
+Pomocí sady SDK získáte řízení kanálu změn na nízké úrovni. Můžete spravovat kontrolní bod, přistupovat k určitému klíči logického oddílu atd. Pokud máte více čtenářů, můžete použít `ChangeFeedOptions` k distribuci načtení čtení do různých vláken nebo různých klientů.
+
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Změna kanálu rozhraní API pro Cassandra a MongoDB
+
+Funkce Change feed je v rozhraní MongoDB API označená jako datový proud a dotaz s predikátem v rozhraní API Cassandra. Další informace o podrobnostech implementace rozhraní MongoDB API najdete v tématu [Změna datových proudů v rozhraní Azure Cosmos DB API pro MongoDB](mongodb-change-streams.md).
+
+Nativní Apache Cassandra poskytuje Change Data Capture (CDC), mechanismus pro označení určitých tabulek pro archivaci a také odmítnutí zápisů do těchto tabulek, jakmile se dosáhne konfigurovatelné velikosti na disku pro protokol CDC. Funkce kanálu změn v rozhraní Azure Cosmos DB API pro Cassandra vylepšuje schopnost dotazovat se na změny pomocí predikátu prostřednictvím CQL. Další informace o podrobnostech implementace najdete v tématu [Změna kanálu v rozhraní Azure Cosmos DB API pro Cassandra](cassandra-change-feed.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,24 +1,15 @@
 ---
-title: Spustit vlastní kontejner Windows (Preview) – Azure App Service | Microsoft Docs
-description: Zjistěte, jak do služby Azure App Service nasadit vlastní kontejner s Windows.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 'Rychlý Start: kontejner Windows (Preview)'
+description: Nasaďte první vlastní kontejner Windows do Azure App Service. Využijte možnost kontejneru, upravte kontejner Windows tak, jak vám to vyhovuje.
 ms.topic: quickstart
 ms.date: 08/30/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 230ff96aaf2c78827c7c4da92abe0f356cc2643e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241914"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671353"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Spuštění vlastního kontejneru s Windows v Azure (Preview)
 
@@ -26,16 +17,16 @@ ms.locfileid: "70241914"
 
 V tomto rychlém startu se dozvíte, jak nasadit aplikaci ASP.NET v imagi Windows do [Docker Hub](https://hub.docker.com/) ze sady Visual Studio. Aplikaci spustíte ve vlastním kontejneru v Azure App Service.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu je potřeba:
 
 - <a href="https://hub.docker.com/" target="_blank">Zaregistrovat si účet Centra Dockeru</a>
-- <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalovat Docker for Windows</a>.
+- <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalujte Docker for Windows</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Přepnout Docker na spouštění kontejnerů Windows</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalujte Visual Studio 2019</a> s pracovními procesy pro **vývoj ASP.NET a web** a **vývoj pro Azure** . Pokud jste již nainstalovali Visual Studio 2019:
 
-    - Nainstalujte nejnovější aktualizace v aplikaci Visual Studio tak, že vyberete **nápovědu** > vyhledat**aktualizace**.
+    - Nainstalujte nejnovější aktualizace v aplikaci Visual Studio tak, že vyberete možnost **Help** > **Vyhledat aktualizace**.
     - Přidejte úlohy do sady Visual Studio tak, že vyberete **nástroje** > **získat nástroje a funkce**.
 
 ## <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace ASP.NET
@@ -52,7 +43,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 1. Do Azure můžete nasadit jakýkoli typ webové aplikace ASP.NET. Pro tento rychlý Start vyberte šablonu **MVC** .
 
-1. Vyberte možnost **Podpora Docker**a ujistěte se, že je ověřování nastaveno na **bez ověřování**. Vyberte **Vytvořit**.
+1. Vyberte možnost **Podpora Docker**a ujistěte se, že je ověřování nastaveno na **bez ověřování**. Vyberte **Create** (Vytvořit).
 
    ![Vytvoření webové aplikace v ASP.NET](./media/app-service-web-get-started-windows-container/select-mvc-template-for-container.png)
 
@@ -88,7 +79,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 ## <a name="create-a-windows-container-app"></a>Vytvoření aplikace typu kontejner pro Windows
 
-1. Přihlaste se k webu [Azure Portal]( https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal]( https://portal.azure.com).
 
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 
@@ -96,7 +87,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 1. V možnosti **vytvořit webovou aplikaci**vyberte předplatné a **skupinu prostředků**. V případě potřeby můžete vytvořit novou skupinu prostředků.
 
-1. Zadejte název aplikace, jako je například *Win-Container-demo* a vyberte **Windows** pro **operační systém**. Vyberte **další: Docker** pro pokračování.
+1. Zadejte název aplikace, jako je například *Win-Container-demo* a vyberte **Windows** pro **operační systém**. Pokračujte výběrem **Další: Docker** .
 
    ![Vytvoření Web App for Containers](media/app-service-web-get-started-windows-container/create-web-app-continer.png)
 
@@ -147,7 +138,7 @@ Streamované protokoly vypadají přibližně takto:
 
 ## <a name="update-locally-and-redeploy"></a>Místní aktualizace a opětovné nasazení
 
-1. V aplikaci Visual Studio v **Průzkumník řešení**otevřete **zobrazení** > **Domů** > **index. cshtml**.
+1. V aplikaci Visual Studio v **Průzkumník řešení**otevřete **zobrazení** > **Home** > **index. cshtml**.
 
 1. Najděte HTML značku `<div class="jumbotron">` poblíž začátku a nahraďte celý element následujícím kódem:
 
@@ -179,10 +170,10 @@ Pro spuštění vaší aplikace můžete použít jinou vlastní image Docker. M
 
 Stažení nadřazené image při spuštění aplikace nějakou dobu trvá. Čas spuštění však můžete zkrátit použitím některé z následujících nadřazených imagí, které jsou již uložené v mezipaměti ve službě Azure App Service:
 
-- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
+- [MCR.Microsoft.com/DotNET/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
 - [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – tento obrázek je základní kontejner používaný v Microsoft [ASP.NET Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) imagí Microsoft Windows nano serveru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Migrace na kontejner Windows v Azure](app-service-web-tutorial-windows-containers-custom-fonts.md)

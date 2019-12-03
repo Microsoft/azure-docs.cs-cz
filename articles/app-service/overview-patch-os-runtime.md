@@ -1,24 +1,15 @@
 ---
-title: Operační systém a opravy běhového prostředí tempo-Azure App Service | Microsoft Docs
-description: Popisuje, jak Azure App Service aktualizuje operační systém a moduly runtime a jak můžete získat oznámení o aktualizacích.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Tempo opravy operačního systému a modulu runtime
+description: Přečtěte si, jak Azure App Service aktualizovat operační systém a moduly runtime, jaké moduly runtime a úroveň oprav mají vaše aplikace a jak můžete dostávat oznámení o aktualizacích.
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3469c4f11a075ceb958e35e4cfc87a78e60b3882
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1a56fed04399325be315d8d977e5a72223bddac5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074135"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688574"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Opravy operačního systému a modulu runtime v Azure App Service
 
@@ -84,21 +75,21 @@ I když jsou důležité informace o operačním systému uzamčené od přístu
 
 Následující tabulka ukazuje, jak verze Windows, tak jazykového modulu runtime, ve kterém běží vaše aplikace:
 
-| Information | Kde ji najít | 
+| Informace | Kde ji najít | 
 |-|-|
-| Verze systému Windows | Viz `https://<appname>.scm.azurewebsites.net/Env.cshtml` (informace o systému) |
-| Verze rozhraní .NET | `https://<appname>.scm.azurewebsites.net/DebugConsole`V spusťte na příkazovém řádku následující příkaz: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| Verze .NET Core | `https://<appname>.scm.azurewebsites.net/DebugConsole`V spusťte na příkazovém řádku následující příkaz: <br> `dotnet --version` |
-| Verze PHP | `https://<appname>.scm.azurewebsites.net/DebugConsole`V spusťte na příkazovém řádku následující příkaz: <br> `php --version` |
+| Verze systému Windows | Viz `https://<appname>.scm.azurewebsites.net/Env.cshtml` (v části systémové informace) |
+| Verze .NET | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| Verze .NET Core | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `dotnet --version` |
+| Verze PHP | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `php --version` |
 | Výchozí verze Node. js | V [Cloud Shell](../cloud-shell/overview.md)spusťte následující příkaz: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Verze Pythonu | `https://<appname>.scm.azurewebsites.net/DebugConsole`V spusťte na příkazovém řádku následující příkaz: <br> `python --version` |  
+| Verze Pythonu | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `python --version` |  
 
 > [!NOTE]  
-> Přístup k umístění `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`registru, kde jsou uložené informace o [opravách KB](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jsou uzamčené.
+> Přístup k umístění registru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, kde jsou uložené informace o [opravách KB](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jsou uzamčené.
 >
 >
 
-## <a name="more-resources"></a>Další materiály
+## <a name="more-resources"></a>Další zdroje
 
-[Centrum zabezpečení: Zabezpečení](https://www.microsoft.com/en-us/trustcenter/security)  
+[Centrum zabezpečení: zabezpečení](https://www.microsoft.com/en-us/trustcenter/security)  
 [64 bitová ASP.NET Core na Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

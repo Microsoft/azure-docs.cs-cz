@@ -1,26 +1,20 @@
 ---
 title: Nejčastější dotazy k nasazení – Azure App Service | Microsoft Docs
 description: Získejte odpovědi na nejčastější dotazy týkající se nasazení Web Apps funkce Azure App Service.
-services: app-service\web
-documentationcenter: ''
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 0a01f25894d1226466473dec7333859c7415f1fd
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 25f43051f11d42c4f8565039d3168f2ae162eb37
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121204"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671692"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy k nasazení pro Web Apps v Azure
 
@@ -39,7 +33,7 @@ Další informace najdete v tématu [nasazení aplikace do App Service](deploy-l
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Při pokusu o nasazení ze sady Visual Studio se zobrazí chybová zpráva. Návody vyřešit tuto chybu?
 
-Pokud se zobrazí následující zpráva, můžete použít starší verzi sady SDK: "Při nasazení pro prostředek" YourResourceName "ve skupině prostředků" YourResourceGroup "došlo k chybě: MissingRegistrationForLocation: Předplatné není zaregistrované pro typ prostředku ' součásti ' v umístění ' Střed USA '. K tomuto poskytovateli se znovu zaregistrujte, aby měl přístup k tomuto umístění. " 
+Pokud se zobrazí následující zpráva, možná použijete starší verzi sady SDK: "Chyba při nasazení pro prostředek" YourResourceName "ve skupině prostředků" YourResourceGroup ": MissingRegistrationForLocation: předplatné není zaregistrované pro typ prostředku ' součásti ' v umístění ' Střed USA '. K tomuto poskytovateli se znovu zaregistrujte, aby měl přístup k tomuto umístění. " 
 
 Chcete-li tuto chybu vyřešit, upgradujte na [nejnovější sadu SDK](https://azure.microsoft.com/downloads/). Pokud se zobrazí tato zpráva a máte nejnovější sadu SDK, odešlete žádost o podporu.
 
@@ -66,7 +60,7 @@ Průběžné nasazování můžete nastavit z několika prostředků, včetně A
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Návody řešení potíží s průběžným nasazováním z GitHubu a Bitbucket?
 
-Nápovědu k prozkoumání problémů s průběžným nasazováním z GitHubu [](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)nebo Bitbucket najdete v tématu prozkoumání průběžného nasazování.
+Nápovědu k prozkoumání problémů s průběžným nasazováním z GitHubu nebo Bitbucket najdete v tématu [prozkoumání průběžného nasazování](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment).
 
 ## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>Nedaří se mi FTP na můj web a publikovat můj kód. Návody vyřešit tento problém?
 
@@ -74,7 +68,7 @@ Nápovědu k prozkoumání problémů s průběžným nasazováním z GitHubu []
 
 1. Ověřte, že zadáváte správný název a přihlašovací údaje hostitele. Podrobné informace o různých typech přihlašovacích údajů a způsobu jejich použití najdete v tématu [přihlašovací údaje pro nasazení](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).
 2. Ověřte, že brána firewall neblokuje porty FTP. Porty by měly mít tato nastavení:
-    * Port pro připojení ovládacího prvku FTP: 21
+    * Port připojení řízení FTP: 21
     * Port pro připojení dat FTP: 989, 10001-10300
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>Návody publikovat můj kód do App Service?

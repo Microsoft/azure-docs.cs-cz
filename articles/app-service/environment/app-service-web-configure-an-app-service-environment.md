@@ -1,25 +1,18 @@
 ---
-title: Jak nakonfigurovat App Service Environment v1 – Azure
-description: Konfigurace, Správa a monitorování App Service Environment v1
-services: app-service
-documentationcenter: ''
+title: Konfigurace pomocného mechanismu v1
+description: Konfigurace, Správa a monitorování App Service Environment v1. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b8a05b7e8466187202e6a4d11efce288238cc19b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069935"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687261"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurace App Service Environment v1
 
@@ -31,12 +24,12 @@ ms.locfileid: "70069935"
 Azure App Service Environment se na nejvyšší úrovni skládá z několika hlavních součástí:
 
 * Výpočetní prostředky, které běží v hostované službě App Service Environment
-* Storage
+* Úložiště
 * Databáze
 * Rozhraní Azure Classic (V1) nebo Správce prostředků (v2) Virtual Network (VNet) 
 * Podsíť, ve které je spuštěná hostovaná služba App Service Environment
 
-### <a name="compute-resources"></a>Výpočet prostředků
+### <a name="compute-resources"></a>Výpočetní prostředky
 Využijete výpočetní prostředky pro vaše čtyři fondy zdrojů.  Každý App Service Environment (pomocného programu) má sadu front-endu a tři možné fondy pracovních procesů. Nemusíte používat všechny tři fondy pracovních procesů – Pokud chcete, můžete použít jenom jednu nebo dvě.
 
 Hostitelé ve fondech prostředků (front-endy a pracovní procesy) nejsou přímo přístupné pro klienty. K připojení k nim nemůžete použít protokol RDP (Remote Desktop Protocol) (RDP), měnit jejich zřizování nebo působit jako správce.
@@ -44,14 +37,14 @@ Hostitelé ve fondech prostředků (front-endy a pracovní procesy) nejsou pří
 Můžete nastavit množství a velikost fondu zdrojů. V pomocném mechanismu služby máte čtyři možnosti velikosti, které jsou označené P1 až P4. Podrobnosti o těchto velikostech a jejich cenách najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/).
 Změna množství nebo velikosti se nazývá operace škálování.  V jednom okamžiku může probíhat jenom jedna operace škálování.
 
-**Front-endy**: Front-endy jsou koncové body HTTP/HTTPS pro vaše aplikace, které jsou uložené v pomocném mechanismu pro zápis. Nespouštíte úlohy na front-endy.
+**Front-endy**: front-endy jsou koncové body HTTP/HTTPS pro vaše aplikace, které jsou uložené ve vašem pomocném mechanismu pro zápis. Nespouštíte úlohy na front-endy.
 
 * Pomocného programu začíná dvěma P2s, což je dostatečné pro úlohy pro vývoj a testování a pro produkční úlohy nízké úrovně. Důrazně doporučujeme P3S pro středně náročné provozní úlohy.
 * U středně velkých a velkých produkčních úloh doporučujeme, abyste měli aspoň čtyři P3sy, abyste zajistili, že budou při plánované údržbě spuštěny dostatečné front-endy. Naplánované aktivity údržby odeberou jeden front-end v čase. Tím se snižuje Celková dostupná kapacita front-endu během aktivit údržby.
 * Pro front-endy může být zřízení trvat až hodinu. 
 * Pro další škálovatelné ladění byste měli monitorovat procento využití procesoru, procentuální podíl paměti a aktivní požadavky na front-end fond. Pokud jsou procentuální hodnoty procesoru nebo paměti vyšší než 70% při spuštění P3S, přidejte další front-endy. Pokud je hodnota aktivní požadavky průměrně 15 000 až 20 000 požadavků za front-end, měli byste také přidat další front-endy. Celkovým cílem je udržet procento využití procesoru a paměti pod 70% a aktivní požadavky vychází z maximálního počtu požadavků 15 000 na front-end za sekundu, pokud používáte P3S.  
 
-**Pracovní procesy**: Pracovní procesy jsou ve skutečnosti, kde vaše aplikace skutečně běží. Při horizontálním navýšení kapacity App Service plány používá pracovní procesy v přidruženém fondu pracovních procesů.
+**Pracovní procesy**: pracovní procesy, kde se vaše aplikace skutečně spouštějí. Při horizontálním navýšení kapacity App Service plány používá pracovní procesy v přidruženém fondu pracovních procesů.
 
 * Nemůžete okamžitě přidat pracovní procesy. Zřízení můžou trvat až hodinu.
 * Škálování velikosti výpočetních prostředků pro každý fond bude trvat < 1 hodinu na jednu doménu aktualizace. V pomocném mechanismu služby je 20 aktualizačních domén. Pokud jste škálovat výpočetní velikost fondu pracovních procesů s 10 instancemi, může to trvat až 10 hodin, než se dokončí.
@@ -68,11 +61,11 @@ Pokud vaše aplikace vyžadují větší velikost výpočetních prostředků, n
 * Znovu přiřaďte plány App Service, které hostují aplikace, které vyžadují větší velikost pro nově nakonfigurovaný fond pracovních procesů. Toto je rychlá operace, kterou je třeba dokončit kratší dobu než minutu.  
 * Pokud už nepotřebujete tyto nepoužívané instance, můžete škálovat první fond pracovních procesů. Dokončení této operace trvá několik minut.
 
-Automatické **škálování**: Jedním z nástrojů, které vám pomůžou se správou spotřeby výpočetních prostředků, je automatické škálování. Automatické škálování můžete použít pro front-end nebo fondy pracovních procesů. Můžete provádět akce, jako je například zvýšení instancí libovolného typu fondu v ráno a jejich snížení večer. Případně můžete přidat instance, když počet pracovníků, kteří jsou k dispozici ve fondu pracovních procesů, klesne pod určitou prahovou hodnotu.
+Automatické **škálování**: jedním z nástrojů, které vám pomůžou spravovat spotřebu výpočetních prostředků, je automatické škálování. Automatické škálování můžete použít pro front-end nebo fondy pracovních procesů. Můžete provádět akce, jako je například zvýšení instancí libovolného typu fondu v ráno a jejich snížení večer. Případně můžete přidat instance, když počet pracovníků, kteří jsou k dispozici ve fondu pracovních procesů, klesne pod určitou prahovou hodnotu.
 
 Pokud chcete nastavit pravidla automatického škálování na základě metrik fondu výpočetních prostředků, pamatujte na dobu, kterou zřizování vyžaduje. Další informace o automatickém škálování App Service prostředí najdete v tématu [Postup konfigurace automatického škálování v App Service Environment][ASEAutoscale].
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Každý pomocného programu je nakonfigurovaný s 500 GB úložiště. Toto místo se používá napříč všemi aplikacemi v pomocném formuláři. Tento prostor úložiště je součástí pomocného mechanismu řízení a momentálně se nedá přepnout na použití prostoru úložiště. Pokud provádíte úpravy směrování nebo zabezpečení vaší virtuální sítě, je potřeba, abyste stále povolili přístup k Azure Storage--nebo nemůžete funkci pomocného mechanismu nastavovat.
 
 ### <a name="database"></a>Databáze
@@ -116,7 +109,7 @@ Chcete-li otevřít uživatelské rozhraní se seznamem všech App Servicech pro
 
 Toto první okno zobrazuje některé vlastnosti vašeho pomocného programu spolu s grafem metriky na fond zdrojů. Některé vlastnosti, které jsou uvedeny v bloku **Essentials** , jsou také hypertextové odkazy, které otevřou okno, které je k němu přidruženo. Můžete například vybrat název **Virtual Network** a otevřít tak uživatelské rozhraní přidružené k virtuální síti, ve které je spuštěný váš pomocným mechanismem řízení. **App Service plány** a **aplikace** jednotlivých otevřených oken, které uvádějí tyto položky v pomocném mechanismu řízení.  
 
-### <a name="monitoring"></a>Monitorování
+### <a name="monitoring"></a>Sledování
 Grafy vám umožní zobrazit v každém fondu zdrojů nejrůznější metriky výkonu. Pro front-end fond můžete monitorovat průměrný procesor a paměť. U fondů pracovních procesů můžete monitorovat množství, které se používá, a množství, které je k dispozici.
 
 Více plánů App Service může využít pracovní procesy ve fondu pracovních procesů. Zatížení se nedistribuuje stejným způsobem jako u front-end serverů, takže využití procesoru a paměti nepřináší tolik, jak jsou užitečné informace. Je důležitější, abyste mohli sledovat, kolik pracovníků jste používali a jsou k dispozici – zejména pokud spravujete tento systém, aby ho ostatní používali.  
@@ -132,13 +125,13 @@ V pomocném mechanismu řízení jsou všechny plány App Service vyhrazené App
 ### <a name="settings"></a>Nastavení
 V okně pomocného mechanismu se nachází oddíl **Nastavení** , který obsahuje několik důležitých možností:
 
- > **Vlastnosti**nastavení: Okno **Nastavení** se automaticky otevře při otevření okna pomocného mechanismu. V horní části jsou **vlastnosti**. Tady je několik položek, které jsou redundantní na to, co vidíte v **Essentials**, ale to je velmi užitečné pro **virtuální IP adresu**i pro **odchozí IP adresy**.
+**Nastavení** > **vlastnosti**: okno **Nastavení** se automaticky otevře při otevření okna pomocného mechanismu řízení. V horní části jsou **vlastnosti**. Tady je několik položek, které jsou redundantní na to, co vidíte v **Essentials**, ale to je velmi užitečné pro **virtuální IP adresu**i pro **odchozí IP adresy**.
 
 ![Okno nastavení a vlastnosti][4]
 
-Nastavení > **IP adres**: Při vytváření aplikace SSL (Secure Sockets Layer) (SSL) v pomocném mechanismu služby budete potřebovat IP SSL adresu. Abyste si ho mohli opatřit, vaše pomocného mechanismu potřebuje IP SSL adres, které vlastní, a dá se přidělit. Při vytvoření pomocného mechanismu pro tento účel má jednu IP SSL adresu, ale můžete přidat další. Pro další IP SSL adresy se účtuje poplatek, jak je uvedeno v článku o [cenách App Service][AppServicePricing] (v části o připojeních SSL). Další cenou je IP SSL cena.
+**Nastavení** > **IP adresy**: když v pomocném mechanismu služby vytvoříte aplikaci IP SSL (Secure Sockets Layer) (SSL), budete potřebovat IP SSL adresu. Abyste si ho mohli opatřit, vaše pomocného mechanismu potřebuje IP SSL adres, které vlastní, a dá se přidělit. Při vytvoření pomocného mechanismu pro tento účel má jednu IP SSL adresu, ale můžete přidat další. Pro další IP SSL adresy se účtuje poplatek, jak je uvedeno v článku o [cenách App Service][AppServicePricing] (v části o připojeních SSL). Další cenou je IP SSL cena.
 
-**Nastavení** > **fondy pracovních procesů** **fondu** / front-end: Každá z těchto oken fondů prostředků nabízí možnost zobrazovat informace pouze v tomto fondu zdrojů, kromě poskytování ovládacích prvků pro úplné škálování fondu zdrojů.  
+**Nastavení** > **fondu Front-Endu** / **fondů pracovních procesů**: každá z těchto skupin fondů prostředků nabízí možnost zobrazit informace pouze v tomto fondu zdrojů a poskytnout tak ovládací prvky pro kompletní škálování fondu zdrojů.  
 
 Základní okno pro každý fond zdrojů poskytuje graf s metrikami pro daný fond zdrojů. Stejně jako u grafů z okna pomocného mechanismu můžete přejít do grafu a nastavit výstrahy podle potřeby. Nastavení výstrahy z okna pomocného mechanismu řízení pro určitý fond zdrojů má stejný stav jako z fondu zdrojů. V okně **Nastavení** fondu pracovních procesů máte přístup ke všem aplikacím nebo App Servicem plánům, které jsou spuštěné v tomto fondu pracovních procesů.
 
@@ -161,7 +154,7 @@ Pokud chcete použít operaci škálování v okně pomocného mechanismu říze
 
 ![Škálování uživatelského rozhraní][6]
 
-Pokud chcete používat funkce ručního nebo automatického škálování v konkrétním fondu zdrojů, v případě potřeby použijte možnost **Nastavení** > **fondy pracovních procesů** **fondu** / front-endu. Pak otevřete fond, který chcete změnit. Přejít na **Nastavení** > **horizontální** navýšení kapacity nebo navýšení**kapacity** **Nastavení** > . Okno horizontálního navýšení **kapacity** umožňuje řídit množství instancí. **Horizontální navýšení kapacity** umožňuje řídit velikost prostředků.  
+Pokud chcete používat funkce ručního nebo automatického škálování v konkrétním fondu zdrojů, v závislosti na **nastavení** > **fondu Front-Endu** / **fondy pracovních procesů** . Pak otevřete fond, který chcete změnit. Přejít na **nastavení** > **horizontální** navýšení kapacity nebo **Nastavení** > **horizontálního navýšení kapacity**. Okno **horizontálního** navýšení kapacity umožňuje řídit množství instancí. **Horizontální navýšení kapacity** umožňuje řídit velikost prostředků.  
 
 ![Uživatelské rozhraní nastavení škálování][7]
 

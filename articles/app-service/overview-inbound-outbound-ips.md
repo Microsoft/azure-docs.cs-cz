@@ -1,24 +1,15 @@
 ---
-title: Příchozí/odchozí IP adresy – Azure App Service | Microsoft Docs
-description: Popisuje, jak se v App Service používají příchozí a odchozí IP adresy a jak v nich najít informace pro vaši aplikaci.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Příchozí/odchozí IP adresy
+description: Přečtěte si, jak se příchozí a odchozí IP adresy používají v Azure App Service, když se mění a jak najít adresy pro vaši aplikaci.
 ms.topic: article
 ms.date: 06/06/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 26033192ee841262345b0fc7f6aec76872379070
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: aebce04fe2f1b055a4d498021dcd25144cd122a9
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470180"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671607"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Příchozí a odchozí IP adresy v Azure App Service
 
@@ -52,7 +43,7 @@ Bez ohledu na počet instancí s horizontálním navýšení kapacity má každ�
 
 Sada odchozích IP adres vaší aplikace se mění při škálování aplikace mezi nižšími úrovněmi (**Basic**, **Standard**a **Premium**) a úrovní **Premium v2** .
 
-Můžete najít sadu všech možných odchozích IP adres, které vaše aplikace může používat, a to bez ohledu na cenové úrovně, a to tak, že vyhledáte vlastnost `possibleOutboundIpAddresses` nebo v poli **Další odchozí IP adresy** v okně **vlastnosti** Azure Portal. Viz [Najít odchozí IP adresy](#find-outbound-ips).
+Můžete najít sadu všech možných odchozích IP adres, které vaše aplikace může používat, bez ohledu na cenové úrovně, a to tak, že vyhledáte vlastnost `possibleOutboundIpAddresses` nebo v poli **Další odchozí IP adresy** v okně **vlastnosti** Azure Portal. Viz [Najít odchozí IP adresy](#find-outbound-ips).
 
 ## <a name="find-outbound-ips"></a>Najít odchozí IP adresy
 

@@ -1,6 +1,6 @@
 ---
-title: Co je nového? Poznámky – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, co je nové službě Azure Active Directory, jako je nejnovější poznámky k verzi, známé problémy, opravy chyb, zastaralé funkce a nadcházející změny.
+title: Co je nového? Poznámky k verzi – Azure Active Directory | Microsoft Docs
+description: Přečtěte si, co je nového v Azure Active Directory, jako jsou například nejnovější poznámky k verzi, známé problémy, opravy chyb, zastaralé funkce a nadcházející změny.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -16,26 +16,26 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6c6e680de6253f5e822ba282df2e2397093d003
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 793b9d1b33c244354841402babbd9177ce7ed19b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270999"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687719"
 ---
-# <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
+# <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
 >Přečtěte si informace o tom, kdy se tato stránka na aktualizace znovu navštíví zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` do ![ikona čtečky informačního kanálu RSS](./media/whats-new/feed-icon-16x16.png) čtečku informačního kanálu.
 
-Azure AD obdrží vylepšení průběžně. Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje informace o:
+Služba Azure AD průběžně přijímá vylepšení. V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vývojem.
 
-- Nejnovější vydané verzi
+- Nejnovější verze
 - Známé problémy
 - Opravy chyb
 - Zastaralé funkce
-- Plány pro změny
+- Plánuje změny
 
-Tato stránka se aktualizuje každý měsíc, takže návštěvě pravidelně. Pokud hledáte položky, které jsou starší než šest měsíců, najdete je v archivu, abyste mohli [novinky v Azure Active Directory](whats-new-archive.md).
+Tato stránka se aktualizuje měsíčně, takže ji můžete pravidelně znovu navštěvovat. Pokud hledáte položky, které jsou starší než šest měsíců, najdete je v archivu, abyste mohli [novinky v Azure Active Directory](whats-new-archive.md).
 
 ---
 
@@ -198,10 +198,10 @@ Nová nabídka **zabezpečení** zahrnuje:
 - Ochrany identit
 - Security Center
 - Skóre Secure identity
-- Metody ověřování
-- MFA
+- Metody ověření
+- Vícefaktorové ověřování
 - Sestavy rizik – rizikové uživatele, rizikové přihlašovacíky, detekce rizik
-- a další...
+- A další...
 
 Další informace najdete v tématu [zabezpečení – Začínáme](https://portal.azure.com/#blade/Microsoft_AAD_IAM/SecurityMenuBlade/GettingStarted).
 
@@ -551,13 +551,13 @@ Další informace o nastavení Azure Monitor najdete [v tématu protokoly aktivi
 
 25. září 2019 se vypíná staré, nerozšířené informace o zabezpečení pro registraci a správu bezpečnostních údajů uživatelů a zapínání nové [Rozšířené verze](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271). To znamená, že uživatelé již nebudou moci používat staré prostředí.
 
-Další informace o prostředí rozšířené informace o zabezpečení najdete v naší [dokumentaci pro správce](https://aka.ms/securityinfodocs) a v [dokumentaci pro uživatele](https://aka.ms/securityinfoguide).
+Další informace o prostředí rozšířené informace o zabezpečení najdete v naší [dokumentaci pro správu](https://aka.ms/securityinfodocs) a v [dokumentaci k uživateli](https://aka.ms/securityinfoguide).
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>Pokud chcete toto nové prostředí zapnout, musíte:
 
 1. Přihlaste se k Azure Portal jako globální správce nebo Správce uživatelů.
 
-2. Přejděte na **Azure Active Directory > nastavení uživatele > spravovat nastavení pro přístupové panely funkce verze Preview**.
+2. Přejděte na **Azure Active Directory > nastavení uživatele > spravovat nastavení pro přístupové panely funkce verze Preview**.
 
 3. V části **Uživatelé můžou používat funkce verze Preview pro registraci a správu informací o zabezpečení** , vyberte **vybrané**a potom buď zvolte skupinu uživatelů, nebo zvolte možnost **vše** , pokud chcete tuto funkci zapnout pro všechny uživatele v tenantovi.
 

@@ -1,25 +1,16 @@
 ---
-title: Přehled zabezpečení-Azure App Service | Microsoft Docs
+title: Zabezpečení
 description: Přečtěte si, jak App Service pomáhá zabezpečit vaši aplikaci a jak můžete aplikaci dál uzamknout před hrozbami.
 keywords: Azure App Service, Webová aplikace, mobilní aplikace, aplikace API, aplikace Function App, zabezpečení, zabezpečení, zabezpečení, dodržování předpisů, kompatibilní, certifikát, certifikáty, https, FTPS, TLS, důvěryhodnost, šifrování, šifrování, zašifrovaná, omezení IP adres, ověřování, autorizace, Authn, autho, MSI, identita spravované služby, spravovaná identita, tajné klíče, tajný kód, opravy, oprava, opravy, verze, izolace, izolace sítě, DDoS, MITM
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/24/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 07dbbb956dcf6f1204bef2af3a28a0af3eeb5226
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 28394689048e730aa0c84e3bf807ef3afb898b1e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470097"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688561"
 ---
 # <a name="security-in-azure-app-service"></a>Zabezpečení v Azure App Service
 
@@ -40,7 +31,7 @@ V následujících částech se dozvíte, jak dále chránit aplikaci App Servic
 
 ## <a name="https-and-certificates"></a>HTTPS a certifikáty
 
-App Service vám umožní zabezpečit aplikace pomocí [protokolu HTTPS](https://wikipedia.org/wiki/HTTPS). Po vytvoření aplikace je její výchozí název domény (\<APP_NAME >. azurewebsites. NET) již přístupný pomocí protokolu HTTPS. Pokud [pro svou aplikaci nakonfigurujete vlastní doménu](app-service-web-tutorial-custom-domain.md), měli byste [ji také ZABEZPEČIT pomocí certifikátu SSL](configure-ssl-bindings.md) , aby klientské prohlížeče mohli vytvořit zabezpečená připojení HTTPS k vaší vlastní doméně. App Service podporuje několik typů certifikátů:
+App Service vám umožní zabezpečit aplikace pomocí [protokolu HTTPS](https://wikipedia.org/wiki/HTTPS). Po vytvoření aplikace je její výchozí název domény (\<app_name >. azurewebsites. NET) již přístupný pomocí protokolu HTTPS. Pokud [pro svou aplikaci nakonfigurujete vlastní doménu](app-service-web-tutorial-custom-domain.md), měli byste [ji také ZABEZPEČIT pomocí certifikátu SSL](configure-ssl-bindings.md) , aby klientské prohlížeče mohli vytvořit zabezpečená připojení HTTPS k vaší vlastní doméně. App Service podporuje několik typů certifikátů:
 
 - Free App Service spravovaný certifikát
 - App Service certifikát

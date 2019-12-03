@@ -2,19 +2,19 @@
 title: Použití PowerShellu k zálohování Windows serveru do Azure
 description: V tomto článku se naučíte, jak pomocí PowerShellu nastavit Azure Backup pro Windows Server nebo klienta Windows a spravovat zálohování a obnovení.
 ms.topic: conceptual
-ms.date: 08/20/2019
-ms.openlocfilehash: 6285b7fc6493090ab0bead5f00124a6eaa02dc7e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.date: 12/2/2019
+ms.openlocfilehash: 54cfbb4a550ff14705d8d02b0589ee023cf9c225
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172450"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689198"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 
 V tomto článku se dozvíte, jak pomocí PowerShellu nastavit Azure Backup pro Windows Server nebo klienta Windows a spravovat zálohování a obnovení.
 
-## <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
+## <a name="install-azure-powershell"></a>Instalace Azure PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -113,12 +113,12 @@ K dispozici jsou tyto možnosti:
 
 | Možnost | Podrobnosti | Výchozí |
 | --- | --- | --- |
-| /q |Tichá instalace |- |
+| parametr |Tichá instalace |- |
 | /p: "umístění" |Cesta k instalační složce pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s: umístění |Cesta ke složce mezipaměti pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m |Výslovný souhlas s Microsoft Update |- |
+| řetězec |Výslovný souhlas s Microsoft Update |- |
 | /nu |Po dokončení instalace Nekontrolovat aktualizace |- |
-| /d |Odinstaluje agenta Microsoft Azure Recovery Services. |- |
+| parametr |Odinstaluje agenta Microsoft Azure Recovery Services. |- |
 | /pH |Adresa hostitele proxy serveru |- |
 | /po |Číslo portu hostitele proxy serveru |- |
 | /pu |Uživatelské jméno hostitele proxy serveru |- |
@@ -569,7 +569,7 @@ Tato část vás provede jednotlivými kroky pro automatizaci obnovení dat z Az
 
 1. Výběr zdrojového svazku
 2. Vyberte bod zálohování, který chcete obnovit.
-3. Vyberte položku, kterou chcete obnovit.
+3. Zadejte položku, kterou chcete obnovit.
 4. Aktivace procesu obnovení
 
 ### <a name="picking-the-source-volume"></a>Výběr zdrojového svazku
@@ -593,95 +593,61 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>Výběr bodu zálohování, ze kterého se má obnovit
 
-Seznam bodů zálohování načtete spuštěním rutiny [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) s příslušnými parametry. V našem příkladu vybereme nejnovější bod zálohování pro zdrojový svazek *D:* a použijete ho k obnovení konkrétního souboru.
+Seznam bodů zálohování načtete spuštěním rutiny [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) s příslušnými parametry. V našem příkladu si vybereme nejnovější bod zálohy zdrojového svazku *C:* a použijete ho k obnovení konkrétního souboru.
 
 ```powershell
-$Rps = Get-OBRecoverableItem -Source $Source[1]
+$Rps = Get-OBRecoverableItem $Source[0]
+$Rps
 ```
 
 ```Output
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 17-Jun-15 6:31:31 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/16/2019 7:00:19 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 ```
 
 Objekt `$Rps` je pole záložních bodů. První prvek je poslední bod a n-tý prvek je nejstarším bodem. K výběru nejnovějšího bodu použijeme `$Rps[0]`.
 
-### <a name="choosing-an-item-to-restore"></a>Výběr položky k obnovení
+### <a name="specifying-an-item-to-restore"></a>Určení položky k obnovení
 
-Chcete-li identifikovat přesný soubor nebo složku pro obnovení, rekurzivně použijte rutinu [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) . Tímto způsobem lze hierarchii složek procházet výhradně pomocí `Get-OBRecoverableItem`.
-
-Pokud v tomto příkladu chceme obnovit soubor *finance. xls* , můžeme na něj odkazovat pomocí `$FilesFolders[1]`objektu.
+Chcete-li obnovit konkrétní soubor, zadejte název souboru relativně ke kořenovému svazku. Chcete-li například načíst C:\Test\Cat.job, spusťte následující příkaz. 
 
 ```powershell
-$FilesFolders = Get-OBRecoverableItem $Rps[0]
-$FilesFolders
+$Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
+$Item
 ```
 
 ```Output
-IsDir : True
-ItemNameFriendly : D:\MyData\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : MyData
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
-ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
-```
-
-```powershell
-$FilesFolders = Get-OBRecoverableItem $FilesFolders[0]
-$FilesFolders
-```
-
-```Output
-IsDir : False
-ItemNameFriendly : D:\MyData\screenshot.oxps
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : screenshot.oxps
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 228313
-ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
-
-IsDir : False
-ItemNameFriendly : D:\MyData\finances.xls
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\finances.xls
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : finances.xls
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 96256
+IsDir                : False
+ItemNameFriendly     : C:\Test\cat.jpg
+ItemNameGuid         :
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : cat.jpg
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
-```
 
-Můžete také vyhledat položky, které chcete obnovit, pomocí rutiny ```Get-OBRecoverableItem```. V našem příkladu můžete vyhledat *finance. xls.* k souboru můžeme získat popisovač spuštěním tohoto příkazu:
-
-```powershell
-$Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
 ### <a name="triggering-the-restore-process"></a>Aktivace procesu obnovení

@@ -1,25 +1,18 @@
 ---
-title: Vytvoření aplikace s více kontejnery pomocí Docker Compose-Azure App Service
-description: Nasazení první vícekontejnerové aplikace ve službě Azure Web App for Containers během několika minut
+title: 'Rychlý Start: Vytvoření aplikace s více kontejnery'
+description: Začněte s aplikacemi pro více kontejnerů na Azure App Service nasazením první aplikace s více kontejnery.
 keywords: Azure App Service, Web App, Linux, Docker, sestavení, více kontejnerů, Web App for Containers, více kontejnerů, kontejnerů, WordPress, Azure DB pro MySQL, provozní databáze s kontejnery
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+author: msangapu-msft
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 89cf13fd4405b9ddcbc5b31fad9f0c945aef64aa
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0fdba3afe7e0977496af105e39fb5d7e657df2f0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071126"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687532"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Vytvoření aplikace s více kontejnery (Preview) pomocí konfigurace Docker Compose
 
@@ -101,7 +94,7 @@ Po vytvoření plánu služby App Service se v rozhraní příkazového řádku 
 
 ## <a name="create-a-docker-compose-app"></a>Vytvoření aplikace Docker Compose
 
-V terminálu Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](app-service-linux-intro.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit  _\<APP_NAME >_ jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9`a `-`).
+V terminálu Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](app-service-linux-intro.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit _\<app_name >_ jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9`a `-`).
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -137,7 +130,7 @@ Přejděte do nasazené aplikace na adrese `http://<app_name>.azurewebsites.net`
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: Aplikace WordPress s více kontejnery](tutorial-multi-container-app.md)
+> [Kurz: aplikace pro více kontejnerů WordPress](tutorial-multi-container-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurace vlastního kontejneru](configure-custom-container.md)

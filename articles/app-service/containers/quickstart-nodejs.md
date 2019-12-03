@@ -1,18 +1,17 @@
 ---
-title: Vytvoření webové aplikace v Node. js – Azure App Service
-description: Jak nasadit aplikaci Node. js do Azure App Service
-author: msangapu
+title: 'Rychlý Start: Vytvoření aplikace v Node. js pro Linux'
+description: Začněte s aplikacemi pro Linux v Azure App Service nasazením první aplikace v Node. js do kontejneru Linux v App Service.
+author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
-ms.service: app-service
 ms.devlang: javascript
-ms.openlocfilehash: 32e141cae98e3fe34c8207f1565a82d2d76bdd25
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: fb79f4b87d8ddc5303fea834c81329315401464a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439203"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688970"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Vytvoření aplikace v Node. js v Azure
 
@@ -34,7 +33,7 @@ Po instalaci rozšíření se přihlaste ke svému účtu Azure. V řádku aktiv
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Pokud se zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"** , může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraní API Azure. Nakonfigurujte proměnné prostředí `HTTP_PROXY` a `HTTPS_PROXY` s informacemi svého proxy serveru v terminálu pomocí `export`.
+Pokud se zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"** , může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraní API Azure. Nakonfigurujte `HTTP_PROXY` a `HTTPS_PROXY` proměnné prostředí pomocí informací o proxy serveru v terminálu pomocí `export`.
 
 ```sh
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -69,7 +68,7 @@ npx express-generator myExpressApp --view pug --git
 
 Parametry `--view pug --git` informují generátoru, aby používal modul šablon [Pug](https://pugjs.org/api/getting-started.html) (dříve označovaný jako `jade`) a vytvořil soubor `.gitignore`.
 
-Chcete-li nainstalovat všechny závislosti aplikace, pokračujte do nové složky a spusťte `npm install`.
+Chcete-li nainstalovat všechny závislosti aplikace, otevřete složku nová a spusťte `npm install`.
 
 ```bash
 cd myExpressApp
@@ -84,7 +83,7 @@ Dále zkontrolujte, zda je aplikace spuštěna. Z terminálu spusťte aplikaci p
 npm start
 ```
 
-Nyní otevřete prohlížeč a přejděte na [http://localhost:3000](http://localhost:3000), kde by se mělo zobrazit něco jako:
+Nyní otevřete prohlížeč a přejděte na [http://localhost:3000](http://localhost:3000), kde by se měla zobrazit něco podobného:
 
 ![Spuštění expresní aplikace](./media/quickstart-nodejs/express.png)
 
@@ -110,7 +109,7 @@ V Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasa�
 > [!TIP]
 > Z **palety příkazů** (CTRL + SHIFT + P) se dá nasadit taky tak, že zadáte ' nasadit do webové aplikace ' a spustíte příkaz **Azure App Service: nasadit do webové aplikace** .
 
-1. Vyberte adresář, který máte v současnosti otevřený, `myExpressApp`.
+1. Vyberte adresář, který máte v současnosti otevřený `myExpressApp`.
 
 1. Vyberte **vytvořit novou webovou aplikaci**, která ve výchozím nastavení nasadí App Service v systému Linux.
 

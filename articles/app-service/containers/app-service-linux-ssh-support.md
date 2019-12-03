@@ -1,26 +1,19 @@
 ---
-title: Podpora SSH pro App Service v systému Linux – Azure | Microsoft Docs
-description: Další informace o použití SSH s Azure App Service v systému Linux.
+title: Přístup SSH pro kontejnery platformy Linux
+description: Můžete otevřít relaci SSH k kontejneru Linux v Azure App Service. Vlastní kontejnery Linux jsou podporovány s některými úpravami vlastní image.
 keywords: Azure App Service, Web App, Linux, OSS
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fef8a17de4539a1427c269cdc512063d07df195c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 299bbfbc50e9ba779898ab0e0e9dec060bf6541d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066865"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687575"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Podpora SSH pro Azure App Service v systému Linux
 
@@ -50,14 +43,14 @@ Pomocí tunelového propojení TCP můžete vytvořit síťové připojení mezi
 
 Chcete-li začít, je nutné nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Pokud chcete zjistit, jak funguje bez instalace rozhraní příkazového řádku Azure, otevřete [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Pomocí příkazu [AZ WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) spusťte vzdálené připojení k aplikaci. \_Zadejte  _\<ID předplatného->_ ,  _\<Group-Name >_ a \<App-Name > _ pro vaši aplikaci.
+Pomocí příkazu [AZ WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) spusťte vzdálené připojení k aplikaci. Pro vaši aplikaci zadejte _\<> ID předplatného_, _\<skupinového názvu >_ a \_\<App-Name > _.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]
-> `&`na konci příkazu je jenom pro pohodlí, pokud používáte Cloud Shell. Spustí proces na pozadí, takže můžete spustit další příkaz ve stejném prostředí.
+> `&` na konci příkazu je jenom pro pohodlí, pokud používáte Cloud Shell. Spustí proces na pozadí, takže můžete spustit další příkaz ve stejném prostředí.
 
 Výstup příkazu vám poskytne informace, které potřebujete k otevření relace SSH.
 
@@ -73,7 +66,7 @@ Pomocí místního portu otevřete v kontejneru relaci SSH s vámi zvoleným kli
 ssh root@127.0.0.1 -p <port>
 ```
 
-Po zobrazení výzvy zadejte `yes` , že chcete pokračovat v připojování. Pak se zobrazí výzva k zadání hesla. Použijte `Docker!`, které jste si zobrazili dříve.
+Po zobrazení výzvy zadejte `yes`, abyste mohli pokračovat v připojování. Pak se zobrazí výzva k zadání hesla. Použijte `Docker!`, které jste si zobrazili dříve.
 
 ```
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
@@ -120,7 +113,7 @@ Load average: 0.07 0.04 0.08 4/765 45738
 45738     1 root     Z        0   0%   0   0% [init]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Otázky a připomínky můžete publikovat na [fóru Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
 

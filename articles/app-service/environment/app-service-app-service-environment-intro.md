@@ -1,25 +1,18 @@
 ---
-title: Seznámení s App Service Environment v1 – Azure
-description: Přečtěte si o funkci App Service Environment V1, která poskytuje zabezpečené jednotky škálování připojené k virtuální síti, které jsou vyhrazené pro používání všech vašich aplikací.
-services: app-service
-documentationcenter: ''
+title: Seznámení s přidaným MECHANISMem v1
+description: Přečtěte si o funkcích App Service Environment v1. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 32450d0c5fbb5599b286921b9653ae68faf40ecf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070156"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687358"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Úvod do App Service Environment v1
 

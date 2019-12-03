@@ -1,25 +1,17 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Nahrání souborů do webové aplikace pomocí FTP | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu – Nahrání souborů do webové aplikace pomocí FTP
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 'PowerShell: nahrání souborů pomocí FTP'
+description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. V této ukázce se dozvíte, jak nahrát soubory do aplikace pomocí FTP.
 tags: azure-service-management
 ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: fa5bc2b05f4bf34bdefd2291f10e0f69d1cd634f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1dfcbec9530a66570244e8168faa84bfe0759038
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098325"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685092"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>Nahrání souborů do webové aplikace pomocí FTP
 
@@ -52,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci. |
 | [Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) | Získá profil publikování webové aplikace. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

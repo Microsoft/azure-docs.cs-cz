@@ -1,25 +1,18 @@
 ---
-title: Konfigurace firewallu webových aplikací (WAF) pro App Service Environment – Azure
-description: Zjistěte, jak nakonfigurovat Firewall webových aplikací před službou App Service Environment.
-services: app-service\web
-documentationcenter: ''
-author: naziml
-manager: erikre
-editor: jimbe
+title: Konfigurace WAF
+description: Přečtěte si, jak nakonfigurovat Firewall webových aplikací (WAF) před vaším App Service Environment, a to buď pomocí Azure Application Gateway, nebo WAF třetí strany.
+author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/03/2018
-ms.author: naziml
+ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 01224e4270ba8a7c7df4a311823dd6156038438a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ba53438eb5ae1870cb180b169348ab0f92e5f305
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070052"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688757"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány firewall webových aplikací pro službu App Service Environment
 ## <a name="overview"></a>Přehled
@@ -30,7 +23,7 @@ Kromě služby Azure Application Gateway je k dispozici několik možností na w
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## <a name="setup"></a>Instalace
+## <a name="setup"></a>Nastavení
 Pro účely tohoto dokumentu nakonfigurujeme službu App Service Environment za několika instancemi Barracuda WAF s vyrovnáváním zatížení, aby se do služby App Service Environment dostal pouze provoz z této brány WAF a aby služba nebyla přístupná z DMZ. Před instancí Barracuda WAF také máme službu Azure Traffic Manager, která vyrovnává zatížení napříč datovými centry a oblastmi Azure. Podrobný diagram nastavení bude podobný jako na následujícím obrázku:
 
 ![Architektura][Architecture] 
@@ -89,7 +82,7 @@ Pokud je vaše aplikace dostupná ve více oblastech, měli byste vyrovnávat je
 
 Pokud vaše aplikace vyžaduje ověřování, ujistěte se, že máte některé prostředky, které nevyžadují ověřování, aby služba Traffic Manager mohla pomocí příkazu ping testovat dostupnost vaší aplikace. Adresu URL tohoto prostředku můžete nakonfigurovat na stránce **Konfigurace** na webu [Azure Portal](https://portal.azure.com), jak je znázorněno na následujícím obrázku:
 
-![Konfigurace služby Traffic Manager][ConfigureTrafficManager]
+![Konfigurace Traffic Manageru][ConfigureTrafficManager]
 
 Pokud chcete směrovat příkazy ping služby Traffic Manager z brány WAF do aplikace, musíte v bráně Barracuda WAF nastavit funkci Website Translations (Překlad webů) pro směrování provozu do vaší aplikace, jak je znázorněno v následujícím příkladu:
 

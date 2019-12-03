@@ -1,26 +1,17 @@
 ---
-title: Nasazení obsahu pomocí FTP/S-Azure App Service | Microsoft Docs
-description: Naučte se, jak nasadit aplikaci pro Azure App Service pomocí FTP nebo FTPS.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: Nasazení obsahu pomocí FTP/S
+description: Naučte se, jak nasadit aplikaci pro Azure App Service pomocí FTP nebo FTPS. Vylepšete zabezpečení webu zakázáním nešifrovaného serveru FTP.
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/18/2019
-ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098064"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671724"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace pro Azure App Service pomocí FTP/S
 
@@ -32,7 +23,7 @@ Koncový bod FTP/S pro vaši aplikaci je už aktivní. Pro povolení nasazení F
 
 V [Azure Portal](https://portal.azure.com)otevřete [stránku prostředků](../azure-resource-manager/manage-resources-portal.md#manage-resources)vaší aplikace.
 
-Řídicí panel FTP otevřete kliknutím na**řídicí panel** **FTP** >  **centra** > nasazení.
+Řídicí panel FTP otevřete tak, že kliknete na **centrum nasazení** > **FTP** > **řídicí panel**.
 
 ![Otevření řídicího panelu FTP](./media/app-service-deploy-ftp/open-dashboard.png)
 
@@ -72,7 +63,7 @@ Doporučujeme, abyste pro nasazení do aplikace použili **přihlašovací údaj
 
 Pro zvýšení zabezpečení byste měli povolený jenom FTP přes SSL. Pokud nepoužíváte nasazení FTP, můžete také zakázat protokol FTP i FTPS.
 
-Na stránce prostředků vaší aplikace v [Azure Portal](https://portal.azure.com)v levém navigačním panelu vyberte **Konfigurace** > **Obecné nastavení** .
+Na stránce prostředků vaší aplikace v [Azure Portal](https://portal.azure.com)v levém navigačním panelu vyberte **Konfigurace** > **Obecná nastavení** .
 
 Pokud chcete zakázat nešifrované FTP, vyberte **FTPS jenom** ve **stavu FTP**. Pokud chcete úplně vypnout FTP i FTPS, vyberte **disabled (zakázáno**). Jakmile budete hotoví, klikněte na **Uložit**. Pokud používáte **jenom FTPS**, musíte vyhovět TLS 1,2 nebo vyššímu, a to tak, že přejdete do okna **Nastavení TLS/SSL** ve vaší webové aplikaci. TLS 1,0 a 1,1 nejsou podporované jenom pro **FTPS**.
 
@@ -89,7 +80,7 @@ Informace o nasazení FTP pomocí [Azure PowerShell](/cli/azure)najdete v témat
 ## <a name="troubleshoot-ftp-deployment"></a>Řešení potíží s nasazením FTP
 
 - [Jak můžu řešit potíže s nasazením FTP?](#how-can-i-troubleshoot-ftp-deployment)
-- [Nemůžu se připojit přes protokol FTP a publikovat kód. Jak můžu problém vyřešit?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [Nedaří se mi FTP a publikovat můj kód. Jak můžu problém vyřešit?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
 - [Jak se můžu připojit k FTP v Azure App Service prostřednictvím pasivního režimu?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Jak můžu řešit potíže s nasazením FTP?
@@ -105,7 +96,7 @@ K určení problému s nasazením nebo za běhu najdete informace v tématu [nas
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>Nedaří se mi FTP a publikovat můj kód. Jak můžu problém vyřešit?
 Ověřte, zda jste zadali správný název hostitele a [přihlašovací údaje](#open-ftp-dashboard). Ověřte také, že brána firewall neblokuje následující porty FTP v počítači:
 
-- Port pro připojení ovládacího prvku FTP: 21
+- Port připojení řízení FTP: 21
 - Port pro připojení dat FTP: 989, 10001-10300
  
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Jak se můžu připojit k FTP v Azure App Service prostřednictvím pasivního režimu?
@@ -115,6 +106,6 @@ Azure App Service podporuje připojení prostřednictvím aktivního i pasivníh
 
 V případě pokročilejších scénářů nasazení zkuste [nasadit do Azure pomocí Gitu](deploy-local-git.md). Nasazení založené na Gitu do Azure umožňuje správu verzí, obnovování balíčků, MSBuild a další.
 
-## <a name="more-resources"></a>Další materiály
+## <a name="more-resources"></a>Další zdroje
 
 * [Přihlašovací údaje pro nasazení Azure App Service](deploy-configure-credentials.md)

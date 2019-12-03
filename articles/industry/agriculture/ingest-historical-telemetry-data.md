@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 5ae64371bd114a898ddca874e23b499bc4a2b8a3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 27aec53fd2e92e19f1c749e833217fb8b5deae57
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128779"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672575"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
 
@@ -21,6 +21,7 @@ Běžné scénáře v FarmBeats jsou ingestování historických dat od Internet
 ## <a name="before-you-begin"></a>Než začnete
 
 Než budete pokračovat v tomto článku, ujistěte se, že jste nainstalovali FarmBeats a shromáždili historická data z IoT.
+Budete taky muset povolit partnerský přístup, jak je uvedeno v následujících krocích.
 
 ## <a name="enable-partner-access"></a>Povolit přístup k partnerovi
 
@@ -80,16 +81,16 @@ Vygenerujte je podle následujících kroků:
 |          Výrobce            |         2 hvězdičky     |
 |  ProductCode                    |  Kód produktu zařízení nebo název/číslo modelu. Například EnviroMonitor # 6800.  |
 |            Porty          |     Název a typ portu (digitální/analogový)
-|     Název                 |  Název, který identifikuje prostředek. Například název modelu/název produktu.
+|     Name (Název)                 |  Název, který identifikuje prostředek. Například název modelu/název produktu.
       Popis     | Zadejte smysluplný popis modelu.
 |    Vlastnosti          |    Další vlastnosti od výrobce   |
-|    **zařízení**             |                      |
+|    **Zařízení**             |                      |
 |   DeviceModelId     |     ID přidruženého modelu zařízení  |
 |  hardwareId          | Jedinečné ID zařízení, například adresa MAC atd.
 |  ReportingInterval        |   Interval generování sestav v sekundách
 |  Umístění            |  Zeměpisná šířka zařízení (-90 až + 90)/longitude (-180 až 180)/Elevation (v metrech)   
 |ParentDeviceId       |    ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například uzel připojený k bráně. Uzel bude mít parentDeviceId jako bránu.  |
-|    Název            | Název, který identifikuje prostředek. Partneři zařízení musí odeslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats.|
+|    Name (Název)            | Název, který identifikuje prostředek. Partneři zařízení musí odeslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats.|
 |     Popis       |      Zadejte smysluplný popis.  |
 |     Vlastnosti    |  Další vlastnosti od výrobce
 |     **Model senzorů**        |          |
@@ -101,7 +102,7 @@ Vygenerujte je podle následujících kroků:
 |    Typ > sensorMeasures    |Typ měření dat telemetrie senzorů. Níže jsou uvedené typy systému: AmbientTemperature, CO2, Hloubka, ElectricalConductivity, LeafWetness, Length, LiquidLevel, dusičnan, O2, PH, fosforečnan, PointInTime, draselný, tlak, RainGauge, RelativeHumidity, slanost, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, evapotranspiration, PAR. Pokud chcete přidat další informace, podívejte se na/ExtendedType API.|
 |        Jednotka > SensorMeasures              | Jednotka dat telemetrie snímačů. Níže jsou uvedené jednotky definované systémem: jednotka jednotek, Celsia, Fahrenheita, Kelviny, Rankine, Pascal, rtuť, Psí, milimetry, centimetry, měřiče, palce, nohy, míle, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, procenta, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litr, MilliLiter, sekundy, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour, další informace najdete na/ Rozhraní ExtendedType API.|
 |    SensorMeasures > aggregationType    |  Hodnoty mohou být None, Average, Max, minima nebo StandardDeviation.  |
-|          Název            | Název, který identifikuje prostředek. Například název modelu/název produktu.  |
+|          Name (Název)            | Název, který identifikuje prostředek. Například název modelu/název produktu.  |
 |    Popis        | Zadejte smysluplný popis modelu.  |
 |   Vlastnosti       |  Další vlastnosti od výrobce  |
 |    **Elektrické**      |          |
@@ -110,7 +111,7 @@ Vygenerujte je podle následujících kroků:
 | location          |  Zeměpisná šířka (-90 až + 90)/longitude (-180 až 180)/Elevation (v metrech)|
 |   název > portu        |  Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení. |
 |    DeviceID  |    ID zařízení, ke kterému je senzor připojený     |
-| Název            |   Název, který identifikuje prostředek. Například název snímače/název produktu a číslo modelu/kód produktu.|
+| Name (Název)            |   Název, který identifikuje prostředek. Například název snímače/název produktu a číslo modelu/kód produktu.|
 |    Popis      | Zadejte smysluplný popis. |
 |    Vlastnosti        |Další vlastnosti od výrobce |
 

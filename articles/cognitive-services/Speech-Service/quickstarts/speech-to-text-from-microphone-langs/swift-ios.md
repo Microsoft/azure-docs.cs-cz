@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 661dd94caa2a1998b26ec1270688c0729011c15a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5bc7ce5cee6235125cf65f492d9294af5214a760
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503623"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672602"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>Rychlý Start: rozpoznávání řeči v SWIFT v systému iOS pomocí sady Speech SDK
 
@@ -23,7 +23,7 @@ K dispozici jsou také rychlé starty pro [syntézu řeči](~/articles/cognitive
 
 V tomto článku se naučíte, jak vytvořit aplikaci pro iOS v SWIFT pomocí sady Azure Cognitive Services Speech SDK pro přepisovat řeči zaznamenané z mikrofonu na text.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete potřebovat:
 
@@ -36,7 +36,7 @@ Než začnete, budete potřebovat:
 
 Tento kurz nebude fungovat s verzí sady SDK starší než 1.6.0.
 
-Sada Cognitive Services Speech SDK pro iOS je distribuována jako sada rozhraní. Dá se použít v projektech Xcode jako [CocoaPod](https://cocoapods.org/) nebo stahovat z https://aka.ms/csspeech/macosbinary a propojit ručně. Tento článek používá CocoaPod.
+Sada Cognitive Services Speech SDK pro iOS je distribuována jako sada rozhraní. Dá se použít v projektech Xcode jako [CocoaPod](https://cocoapods.org/) nebo stahovat z https://aka.ms/csspeech/iosbinary a propojit ručně. Tento článek používá CocoaPod.
 
 ## <a name="create-an-xcode-project"></a>Vytvoření projektu Xcode
 

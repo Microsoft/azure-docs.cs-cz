@@ -1,25 +1,18 @@
 ---
-title: Vytvoření a použití interního nástroje pro vyrovnávání zatížení s prostředím App Service – Azure | Microsoft Docs
-description: Vytvoření a použití pomocného objektu s interního nástroje
-services: app-service
-documentationcenter: ''
+title: Vytvoření pomocného mechanismu interního nástroje v1
+description: Vytvoření a použití pomocného objektu s interního nástroje. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65d62df954dbbfbdd221adb33eccd82f73588fae
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d8ed6b1806e1cbb0ca7419c5892a4a84bc62e541
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069901"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688725"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Použití interního Load Balancer s App Service Environment
 
@@ -75,7 +68,7 @@ Vytvoření aplikace v pomocném okně interního nástroje je stejné jako vytv
 3. Vyberte své předplatné.
 4. Vyberte nebo vytvořte skupinu prostředků.
 5. Vyberte nebo vytvořte plán App Service (ASP). Pokud vytváříte nové prostředí ASP, jako umístění vyberte svůj pomocným mechanismem a vyberte fond pracovních procesů, ve kterém chcete vytvořit ASP. Při vytváření ASP vyberete jako umístění a fond pracovních procesů správce přidaných objektů. Když zadáte název aplikace, uvidíte, že subdoména v názvu vaší aplikace je nahrazena subdoménou pro váš přístup k pomocnému programu. 
-6. Vyberte **Vytvořit**. Nezapomeňte zaškrtnout políčko připnout **na řídicí panel** , pokud chcete, aby se aplikace zobrazovala na řídicím panelu. 
+6. Vyberte **Create** (Vytvořit). Nezapomeňte zaškrtnout políčko **Připnout na řídicí panel** , pokud chcete, aby se aplikace zobrazovala na řídicím panelu. 
 
 ![][2]
 
@@ -96,19 +89,19 @@ Pokud chcete tento tok vyzkoušet s vlastními certifikáty a otestovat přístu
 
 1. Přejít na uživatelské rozhraní pomocného uživatelského rozhraní po vytvoření pomocného mechanismu **řízení-> nastavení-> certifikátů interního nástroje**.
 2. Nastavte interního nástroje certifikát tak, že vyberete soubor PFX certifikátu a zadáte heslo. Tento krok chvíli trvá a zobrazí se zpráva, že probíhá operace škálování.
-3. Získejte interního nástroje adresu pro váš pomocného správce (pomocného **> vlastností – > virtuální IP adresa**).
+3. Získejte interního nástroje adresu pro váš pomocného správce (**Pomocného > vlastností – > virtuální IP adresa**).
 4. Po vytvoření vytvořte webovou aplikaci v pomocném mechanismu. 
 5. Vytvořte virtuální počítač, pokud ho v této virtuální síti nemáte (ne ve stejné podsíti jako pomocného mechanismu řízení nebo věci).
 6. Nastavte DNS pro subdoménu. Můžete použít zástupný znak s vaší subdoménou v DNS nebo pokud chcete provést některé jednoduché testy, upravte soubor hostitelů na VIRTUÁLNÍm počítači a nastavte název webové aplikace na VIP IP adresa. Pokud byl váš správce přihlášený jako název subdomény. ilbase.com a provedli jste webovou aplikaci MyTestApp, aby byla řešena v mytestapp.ilbase.com, nastavte ji v souboru Hosts. (V systému Windows je soubor hostitelů na adrese C:\Windows\System32\drivers\etc\)
-7. Použijte na tomto virtuálním počítači prohlížeč a pak https://mytestapp.ilbase.com na (nebo na základě názvu vaší webové aplikace ve vaší subdoméně).
+7. Použijte na tomto virtuálním počítači prohlížeč a pak na https://mytestapp.ilbase.com (nebo na základě názvu vaší webové aplikace s vaší subdoménou).
 8. V prohlížeči na tomto virtuálním počítači přejděte na adresu https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, musíte přijmout nedostatečné zabezpečení. 
 
 IP adresa pro váš interního nástroje je uvedena ve vašich vlastnostech jako virtuální IP adresa.
 
 ![][4]
 
-## <a name="using-an-ilb-ase"></a>Používá službu App Service Environment s interním nástrojem pro vyrovnávání zatížení.
-#### <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě)
+## <a name="using-an-ilb-ase"></a>Použití pomocného mechanismu interního nástroje
+#### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 INTERNÍHO nástroje pomocného mechanismu umožňuje izolaci sítě pro vaše aplikace. Aplikace nejsou přístupné nebo ani známy v Internetu. Tento přístup je skvělý pro hostování intranetových webů, jako jsou třeba obchodní aplikace. Pokud potřebujete přístup ještě více omezit, můžete k řízení přístupu na úrovni sítě dál používat skupiny zabezpečení sítě (skupin zabezpečení sítě). 
 
 Pokud chcete k dalšímu omezení přístupu použít skupin zabezpečení sítě, musíte se ujistit, že jste nepřerušili komunikaci, kterou vyžaduje pomocný přístup k provozu. I když přístup HTTP/HTTPS je jenom prostřednictvím interního nástroje, který používá přístupový modul pro zápis, pořád závisí na prostředcích mimo virtuální síť. Informace o tom, jaký přístup k síti stále potřebujete, najdete v tématu [řízení příchozího provozu do App Service Environment][ControlInbound] a [podrobností konfigurace sítě pro App Service prostředí pomocí ExpressRoute][ExpressRoute]. 

@@ -1,24 +1,17 @@
 ---
-title: Jak používat WebJobs SDK – Azure
-description: Přečtěte si další informace o tom, jak napsat kód pro sadu WebJobs SDK. Vytvářejte úlohy zpracování na pozadí založené na událostech, které přistupují k datům ze služeb Azure a služeb třetích stran.
-services: app-service\web, storage
-documentationcenter: .net
+title: Jak používat sadu WebJobs SDK
+description: Přečtěte si další informace o tom, jak napsat kód pro sadu WebJobs SDK. Vytvářejte úlohy zpracování na pozadí založené na událostech, které přistupují k datům v Azure a službách třetích stran.
 author: ggailey777
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67cd7f82597d306c8bf3c463d11457199aec7277
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 8e29c632ff3920c77a757fe45475a12c212cf579
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815747"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684005"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak používat sadu SDK Azure WebJobs pro zpracování na pozadí založené na událostech
 
@@ -151,7 +144,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="triggers"></a>Aktivační procedury
+## <a name="triggers"></a>Aktivační události
 
 Funkce musí být veřejné metody a musí mít jeden atribut triggeru nebo atribut [`NoAutomaticTrigger`](#manual-triggers) .
 
@@ -284,9 +277,9 @@ Chcete-li použít aktivační událost časovače nebo vazby souborů, které j
 
 Tyto triggery a typy vazeb jsou součástí verze 2. *x* `Microsoft.Azure.WebJobs` balíčku:
 
-* Blob Storage
-* Queue Storage
-* Úložiště Table
+* Úložiště blobů
+* Úložiště front
+* Úložiště tabulek
 
 Chcete-li použít jiné typy triggerů a vazeb, nainstalujte balíček NuGet, který je obsahuje, a zavolejte metodu `Use<binding>` pro objekt `JobHostConfiguration`. Například pokud chcete použít aktivační událost časovače, nainstalujte `Microsoft.Azure.WebJobs.Extensions` a zavolejte `UseTimers` v metodě `Main`, jak je znázorněno zde:
 
@@ -837,12 +830,12 @@ Každý protokol vytvořený instancí `ILogger` má přidruženou `Category` a 
 |LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladění       | 1 |
+|Ladění       | 1\. místo |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
-|Kritická    | 5 |
-|Žádný        | 6 |
+|Kritické    | 5 |
+|Žádné        | 6 |
 
 Jednotlivé kategorie můžete nezávisle filtrovat na konkrétní [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Můžete například chtít zobrazit všechny protokoly pro zpracování triggerů objektů blob, ale jenom `Error` a vyšší pro všechno ostatní.
 
@@ -1011,9 +1004,9 @@ config.LoggerFactory = new LoggerFactory()
 
 V tomto článku jsou uvedené fragmenty kódu, které ukazují, jak zpracovávat běžné scénáře pro práci se sadou WebJobs SDK. Kompletní ukázky najdete v tématu [Azure-WebJobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
-[`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
-[`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
-[`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-[`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
-[`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
-[`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs
+[ExecutionContext]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
+[TelemetryClient]: /dotnet/api/microsoft.applicationinsights.telemetryclient
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
+['ITelemetryInitializer']: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+['TelemetryConfiguration']: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
+['JobHostConfiguration']: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs

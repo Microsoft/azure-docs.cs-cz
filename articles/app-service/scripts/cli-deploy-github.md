@@ -1,31 +1,24 @@
 ---
-title: Skript Azure CLI ukázkový – vytvoření aplikace s nasazením z Githubu | Dokumentace Microsoftu
-description: Skript Azure CLI ukázkový – vytvoření aplikace služby App Service s nasazením z Githubu
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'CLI: nasazení aplikace z GitHubu'
+description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak nasadit aplikaci z GitHubu.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: sample
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 61cf31bcd82997a13ffae79df106485a86a9444d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dbb5c4f17b8bfecf0ada6405c789c5f9d7655a2d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136829"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74686900"
 ---
-# <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>Vytvoření aplikace služby App Service s nasazením z Githubu pomocí Azure CLI
+# <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>Vytvoření aplikace App Service s nasazením z GitHubu pomocí rozhraní příkazového řádku Azure
 
-Tento ukázkový skript vytvoří aplikaci ve službě App Service se souvisejícími prostředky. Pak nasadí kód vaší aplikace z veřejného úložiště GitHub (bez průběžného nasazování). Nasazení z Githubu s průběžným nasazováním, naleznete v tématu [vytvoření aplikace s průběžným nasazováním z Githubu](cli-continuous-deployment-github.md).
+Tento ukázkový skript vytvoří v App Service aplikaci se souvisejícími prostředky. Pak nasadí kód vaší aplikace z veřejného úložiště GitHub (bez průběžného nasazování). Nasazení GitHubu s průběžným nasazováním najdete v tématu [Vytvoření aplikace s průběžným nasazováním z GitHubu](cli-continuous-deployment-github.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -47,10 +40,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Přidruží k aplikaci služby App Service úložišti Git nebo Mercurial. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci App Service. |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Přidruží aplikaci App Service k úložišti Git nebo Mercurial. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

@@ -1,24 +1,18 @@
 ---
-title: Konfigurace App Service Environment vynuceného tunelování – Azure
-description: Umožněte fungování služby App Service Environment s vynuceným tunelováním odchozího provozu
-services: app-service
-documentationcenter: na
+title: Konfigurace vynuceného tunelového propojení
+description: Naučte se, jak App Service Environment fungovat při vynuceném tunelovém přenosu ve virtuální síti.
 author: ccompy
-manager: stefsch
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e80c0e4e57f8af067c17d0dcfefd26ce7ce8255f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e0164ac3903c63632c97c4a089066cf6ad23b31b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069449"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687178"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurace vynuceného tunelového propojení ve službě App Service Environment
 
@@ -81,7 +75,7 @@ Pokud chcete směrovat veškerý odchozí provoz ze služby ASE kromě provozu s
 
 Pokud chcete vytvořit službu ASE ve virtuální síti, která už má nakonfigurované směrování veškerého provozu do místní sítě, musíte službu ASE vytvořit pomocí šablony Resource Manageru.  Pomocí portálu není možné vytvořit službu ASE v již existující podsíti.  Při nasazování služby ASE do virtuální sítě, která už má nakonfigurované směrování odchozího provozu do místní sítě, musíte službu ASE vytvořit pomocí šablony Resource Manageru, která neumožňuje zadání již existující podsítě. Podrobnosti o nasazení pomocného mechanismu pro přístup k šabloně najdete v [tématu vytvoření App Service Environment pomocí šablony][template].
 
-Koncové body služby umožňují omezit přístup k víceklientským službám na sadu virtuálních sítí a podsítí Azure. Další informace o koncových bodech služby najdete v dokumentaci k koncovým bodům služby [Virtual Network][serviceendpoints] . 
+Koncové body služby umožňují omezit přístup k víceklientským službám na sadu virtuálních sítí a podsítí Azure. Další informace o koncových bodech služby najdete v dokumentaci k [koncovým][serviceendpoints] bodům služby Virtual Network. 
 
 Když pro prostředek povolíte koncové body služby, vytvoří se trasy s vyšší prioritou než všechny ostatní trasy. Pokud použijete koncové body služby se službou ASE s vynuceným tunelováním, nebude se vynucovat tunelování provozu správy SQL Azure a služby Azure Storage. Provoz ostatních závislostí služby ASE se bude vynuceně tunelovat a nesmí se ztratit, jinak služba ASE nebude správně fungovat.
 
@@ -101,13 +95,13 @@ Pokud chcete tunelovat veškerý odchozí provoz ze služby ASE kromě provozu s
 
 3. Získejte adresy, které se použijí pro veškerý odchozí provoz z vaší služby App Service Environment do internetu. Pokud provoz směrujete do místní sítě, tyto adresy jsou vaše IP adresy překladu adres nebo brány. Pokud chcete směrovat odchozí přenosy služby App Service Environment přes virtuální síťové zařízení, výstupní adresou je veřejná IP adresa tohoto virtuálního síťového zařízení.
 
-4. _Nastavení odchozích adres v existujícím App Service Environment:_ Přejít na Resources.Azure.com a přejít na ID předplatného nebo\<předplatného > >\</resourceGroups/\<pomocného mechanismu názvů >. Uvidíte zápis JSON, který popisuje vaši službu App Service Environment. Zkontrolujte, jestli se nahoře píše **Čtení/zápis**. Vyberte **Upravit**. Posuňte se do dolní části. U položky **userWhitelistedIpRanges** změňte hodnotu **null** na podobnou hodnotu jako v následujícímu příkladu. Použijte adresy, které chcete nastavit jako výstupní rozsah adres. 
+4. _Nastavení výstupních adres ve stávající službě App Service Environment:_ Přejděte na web resources.azure.com a pak na Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>. Uvidíte zápis JSON, který popisuje vaši službu App Service Environment. Zkontrolujte, jestli se nahoře píše **Čtení/zápis**. Vyberte **Upravit**. Posuňte se do dolní části. U položky **userWhitelistedIpRanges** změňte hodnotu **null** na podobnou hodnotu jako v následujícímu příkladu. Použijte adresy, které chcete nastavit jako výstupní rozsah adres. 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 
    V horní části vyberte možnost **PUT**. Tato možnost spustí ve vaší službě App Service Environment operaci škálování a upraví bránu firewall.
 
-_Vytvoření vašeho_pomocného programu s výstupními adresami: Postupujte podle pokynů v části [vytvoření App Service Environment se šablonou][template] a stažení příslušné šablony.  V souboru azuredeploy.json upravte část resources (prostředky) a mimo blok properties (vlastnosti) do ní vložte řádek **userWhitelistedIpRanges** s vašimi hodnotami.
+_Vytvoření vašeho přihlášeného pomocí odchozích adres_: postupujte podle pokynů v části [Vytvoření App Service Environment se šablonou][template] a stáhněte příslušnou šablonu.  V souboru azuredeploy.json upravte část resources (prostředky) a mimo blok properties (vlastnosti) do ní vložte řádek **userWhitelistedIpRanges** s vašimi hodnotami.
 
     "resources": [
       {

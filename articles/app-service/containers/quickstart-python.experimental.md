@@ -1,27 +1,18 @@
 ---
-title: Vytvoření aplikace v Pythonu na platformě Linux-Azure App Service | Microsoft Docs
-description: Během několika minut můžete nasadit svou první aplikaci Hello world v Pythonu ve službě Azure App Service v Linuxu.
-services: app-service\web
-documentationcenter: ''
+title: 'Rychlý Start: Vytvoření aplikace Python pro Linux'
+description: Začněte s aplikacemi pro Linux v Azure App Service nasazením první aplikace v Pythonu do kontejneru Linux v App Service.
 author: msangapu-msft
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
-ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: d6e062145474b8479db749627b56163106f088d8
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7905b086ac390243f2fe02697f68c9b1c05ca28e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024941"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688986"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -124,7 +115,7 @@ Vzorový kód Pythonu je spuštěný v App Service v systému Linux s integrovan
 
 ## <a name="update-and-redeploy-the-code"></a>Aktualizace a opětovné nasazení kódu
 
-V Cloud Shell otevřete Editor Cloud Shell zadáním `code application.py`.
+V Cloud Shell zadejte `code application.py` a otevřete Editor Cloud Shell.
 
 ![Application.py kódu](media/quickstart-python/code-applicationpy.png)
 

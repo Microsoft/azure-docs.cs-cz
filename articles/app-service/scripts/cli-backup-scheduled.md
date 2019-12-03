@@ -1,25 +1,20 @@
 ---
-title: Ukázkový skript Azure CLI – vytvoření naplánovaného zálohování aplikace | Microsoft Docs
-description: Ukázkový skript Azure CLI – vytvoření naplánovaného zálohování aplikace
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'CLI: vytvoření naplánovaného zálohování'
+description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak vytvořit naplánované zálohování pro aplikaci.
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
+ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c16a5c3cb51ab8ca571eb99acbe6a3034cb8ee21
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e301b5503cee939846bdcfd1d0c4e755f3debe21
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088113"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74686770"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>Vytvoření naplánovaného zálohování pro App Service aplikaci pomocí rozhraní příkazového řádku
 
@@ -53,7 +48,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az webapp config backup show`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-show) | Zobrazuje plán zálohování pro aplikaci App Service. |
 | [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Načte seznam záloh pro aplikaci App Service. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

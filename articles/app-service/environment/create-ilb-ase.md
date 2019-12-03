@@ -1,24 +1,18 @@
 ---
-title: Vytvoření interního nástroje pro vyrovnávání zatížení pomocí App Service Environment – Azure
-description: Podrobnosti o tom, jak vytvořit a používat službu Azure App Service Environment izolovanou od internetu
-services: app-service
-documentationcenter: na
+title: Vytvoření pomocného programu interního nástroje pomocí ARM
+description: Naučte se vytvářet App Service prostředí s interním nástrojem pro vyrovnávání zatížení (interního nástroje pomocného programu pro čtení) pomocí šablon Azure Resource Manager. Plně izolujte své aplikace z Internetu.
 author: ccompy
-manager: stefsch
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 07b47374484cf954b1fc4279c93dddcc6cec7e61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ae1d04043c740456368b0831bee84490778f0171
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470568"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687213"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Vytvoření a použití interní Load Balancer App Service Environment 
 
@@ -120,7 +114,7 @@ Pomocí názvu webu SCM se dostanete do konzoly Kudu na portálu Azure s názvem
 
 Internetové systémy kontinuální integrace, například GitHub a Azure DevOps, budou nadále fungovat se službou ASE s interním nástrojem pro vyrovnávání zatížení, pokud je agent sestavení přístupný z internetu a nachází se ve stejné síti jako služba ASE s interním nástrojem pro vyrovnávání zatížení. Takže pokud se používá Azure DevOps a agent sestavení je vytvořený ve stejné virtuální síti jako služba ASE s interním nástrojem pro vyrovnávání zatížení (může být i v jiné podsíti), bude moct přijmout změny kódu z gitu Azure DevOps a nasadit ho do služby ASE s interním nástrojem pro vyrovnávání zatížení. Pokud si nechcete vytvořit vlastního agenta sestavení, budete muset použít systém kontinuální integrace (CI), který používá model vyžádání, například Dropbox.
 
-Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Tato doména se objevuje v profilu publikování aplikace a v okně portálu aplikace (**Přehled** > **Essentials** a také **Vlastnosti**). Pokud máte interního nástroje pomocného programu s příponou domény *&lt;název POmocného seznamu&gt;. appserviceenvironment.NET*a aplikace s názvem *MyTest*, použijte *MYTEST.&lt;název pomocného programu&gt;. appserviceenvironment.NET* pro FTP a  *mytest.scm.contoso.net* pro nasazení webu.
+Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Tato doména se objevuje v profilu publikování aplikace a v okně portálu aplikace (**Přehled** > **Essentials** a také **Vlastnosti**). Pokud máte interního nástroje pomocného programu s příponou domény *&lt;POmocném jménem&gt;. appserviceenvironment.NET*a aplikace s názvem *MyTest*, použijte *MyTest.&lt;pomocného mechanismu názvů&gt;. appserviceenvironment.NET* pro FTP a *MyTest.SCM.contoso.NET* pro nasazení webu.
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Konfigurace pomocného programu interního nástroje pomocí zařízení WAF ##
 

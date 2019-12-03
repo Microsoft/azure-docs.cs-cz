@@ -1,30 +1,23 @@
 ---
-title: Vytvoření webové aplikace v Node. js – Azure App Service | Microsoft Docs
-description: Během několika minut můžete nasadit svou první aplikaci Node.js Hello World pomocí služby Azure App Service Web Apps.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Rychlý Start: Vytvoření webové aplikace v Node. js'
+description: Nasaďte první Hello World Node. js do Azure App Service v řádu minut. Nasadíte pomocí balíčku ZIP, který je jedním z mnoha způsobů, jak nasadit do App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7d81dae25b793144bfe044f8434a6df181dbcd1b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+experimental: false
+experiment_id: a231f2b4-2625-4d
+ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067391"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671406"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v Node.js ve službě Azure App Service v Linuxu](./containers/quickstart-nodejs.md).
+> Tento článek nasadí aplikaci do služby App Service v systému Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v Node.js ve službě Azure App Service v Linuxu](./containers/quickstart-nodejs.md).
 >
 
 [Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto rychlém startu se dozvíte, jak nasadit aplikaci Node. js do Azure App Service. Webovou aplikaci vytvoříte pomocí [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale tyto příkazy můžete spustit i místně pomocí [Azure CLI](/cli/azure/install-azure-cli). Ukázkový kód Node. js nasadíte do webové aplikace pomocí příkazu [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) .  
@@ -71,7 +64,7 @@ Checking connectivity... done.
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-scus.md)]
 
-## <a name="create-a-web-app"></a>Vytvoření webové aplikace
+## <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 
 Ve službě Cloud Shell pomocí příkazu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte v plánu služby App Service `myAppServicePlan` webovou aplikaci.
 
@@ -107,13 +100,13 @@ Nastavte modul runtime uzlu na 10.14.1. Pokud chcete zobrazit všechny podporova
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=10.14.1
 ```
 
-Přejděte do vaší nově vytvořené webové aplikace. Nahraďte `<app_name>` s jedinečným názvem aplikace.
+Přejděte do vaší nově vytvořené webové aplikace. Nahraďte `<app_name>` jedinečným názvem aplikace.
 
 ```
 http://<app_name>.azurewebsites.net
 ```
 
-Vaše nová webová aplikace by měla vypadat takto: ![Prázdná stránka webové aplikace](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
+Vaše nová webová aplikace by měla vypadat takto: ![prázdnou stránku webové aplikace](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
 ## <a name="deploy-zip-file"></a>Nasazení souboru ZIP
 
@@ -152,7 +145,7 @@ Vzorový kód Node.js je spuštěný ve webové aplikaci služby Azure App Servi
 
 ## <a name="update-and-redeploy-the-code"></a>Aktualizace a opětovné nasazení kódu
 
-V Cloud Shell zadejte `code index.js` , aby se otevřel Editor Cloud Shell.
+V Cloud Shell zadejte `code index.js` a otevřete Editor Cloud Shell.
 
 ![Index kódu. js](media/app-service-web-get-started-nodejs-poc/code-indexjs.png)
 
@@ -193,7 +186,7 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Node.js s databází MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)

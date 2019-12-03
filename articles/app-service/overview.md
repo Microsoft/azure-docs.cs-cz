@@ -1,25 +1,16 @@
 ---
-title: Přehled App Service – Azure | Microsoft Docs
+title: Přehled
 description: Zjistěte, jak služba Azure App Service pomáhá nasazovat, hostovat a používat webové aplikace
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/04/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ee80667789e661927f611257b438eb2eecbd0c83
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 849886eb03f46949301d76113109aae8188ff8fc
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074093"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687037"
 ---
 # <a name="app-service-overview"></a>Přehled App Service
 
@@ -45,7 +36,7 @@ Tady jsou některé klíčové funkce App Service:
 
 Kromě App Service nabízí Azure další služby, které lze použít k hostování webů a webových aplikací. Pro většinu scénářů je App Service nejlepší volbou.  Pro architekturu mikroslužeb zvažte [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric). Pokud potřebujete větší kontrolu nad virtuálními počítači, na kterých se kód spouští, zvažte službu [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). Příklady typických aplikačních scénářů, k nimž můžete použít službu Web Apps, naleznete v tématu [Srovnání Azure App Service, Virtual Machines, Service Fabric a Cloud Services](overview-compare.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vytvořte svou první aplikaci.
 

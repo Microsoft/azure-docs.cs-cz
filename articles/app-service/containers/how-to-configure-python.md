@@ -1,34 +1,24 @@
 ---
-title: Konfigurace aplikací v Pythonu – Azure App Service
-description: Tento kurz popisuje možnosti vytváření a konfigurace aplikací Pythonu pro službu Azure App Service v Linuxu.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Konfigurace aplikací pro Linux Python
+description: Přečtěte si, jak nakonfigurovat předem sestavený kontejner Pythonu pro vaši aplikaci. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: cephalin
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 8563e0ac060e5cce6853472dfb1c51c6c2c36a4d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071092"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670479"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
 Tento článek popisuje, jak [Azure App Service](app-service-linux-intro.md) spouští aplikace v Pythonu a jak můžete v případě potřeby přizpůsobit chování App Service. Aplikace Python musí být nasazené se všemi požadovanými moduly [PIP](https://pypi.org/project/pip/) .
 
-Modul pro nasazení App Service automaticky aktivuje virtuální prostředí a spustí `pip install -r requirements.txt` se při nasazení [úložiště Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)nebo [balíčku zip](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) s procesy sestavení přepnutými na.
+Modul pro nasazení App Service automaticky aktivuje virtuální prostředí a spustí se `pip install -r requirements.txt` při nasazení [úložiště Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)nebo [balíčku zip](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) s procesy sestavení přepnutými na.
 
-Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v Pythonu, kteří používají integrovaný kontejner Linux v nástroji App Service. Pokud jste nikdy Azure App Service nepoužili, měli byste nejdřív postupovat podle [kurzu](tutorial-python-postgresql-app.md) [rychlý Start](quickstart-python.md) a Pythonu v Pythonu.
+Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v Pythonu, kteří používají integrovaný kontejner Linux v nástroji App Service. Pokud jste nikdy Azure App Service nepoužili, měli byste nejdřív postupovat podle kurzu [rychlý Start](quickstart-python.md) a [Pythonu v](tutorial-python-postgresql-app.md) Pythonu.
 
 > [!NOTE]
 > Linux je aktuálně doporučenou možností pro spouštění aplikací v Pythonu v App Service. Informace o možnostech Windows najdete v tématu věnovaném jazyku [Python na App Service systému Windows](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
@@ -119,7 +109,7 @@ Zadáním vlastního spouštěcího příkazu serveru Gunicorn můžete řídit 
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Například pokud máte aplikaci v baňce, jejíž hlavní modul je *Hello.py* , a objekt aplikace v baňce má název `myapp`, pak  *\<vlastní příkaz >* je následující:
+Například pokud máte aplikaci v baňce, jejíž hlavní modul je *Hello.py* , a objekt aplikace v baňce má název `myapp`, *\<vlastní příkaz >* je následující:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -131,9 +121,9 @@ Pokud je hlavní modul v podsložce, například `website`, zadejte tuto složku
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Můžete také přidat další argumenty pro Gunicorn k  *\<vlastním příkazům >* , jako je `--workers=4`například. Další informace najdete v [Running Gunicorn (Spuštění serveru Gunicorn)](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
+Můžete také přidat další argumenty pro Gunicorn do *\<> vlastního příkazu*, jako je například `--workers=4`. Další informace najdete v [Running Gunicorn (Spuštění serveru Gunicorn)](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-Pokud chcete použít jiný než Gunicorn Server, jako je třeba [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), můžete nahradit  *\<vlastní příkaz >* podobným způsobem:
+Pokud chcete použít jiný než Gunicorn Server, jako je třeba [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), můžete nahradit *\<vlastního příkazu >* podobným způsobem:
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -144,7 +134,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
-V App Service můžete [nastavit nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [OS. Environ –](https://docs.python.org/3/library/os.html#os.environ) . Chcete-li například získat přístup k nastavení aplikace `WEBSITE_SITE_NAME`s názvem, použijte následující kód:
+V App Service můžete [nastavit nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [OS. Environ –](https://docs.python.org/3/library/os.html#os.environ) . Chcete-li například získat přístup k nastavení aplikace s názvem `WEBSITE_SITE_NAME`, použijte následující kód:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -152,14 +142,14 @@ os.environ['WEBSITE_SITE_NAME']
 
 ## <a name="detect-https-session"></a>Zjistit relaci HTTPS
 
-V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje, aby zkontrolovala, jestli jsou požadavky uživatele zašifrované, `X-Forwarded-Proto` zkontrolujte záhlaví.
+V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje zkontrolovat, jestli jsou požadavky uživatele zašifrované, nebo ne, zkontrolujte `X-Forwarded-Proto` záhlaví.
 
 ```python
 if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto'] == 'https':
 # Do something when HTTPS is used
 ```
 
-Oblíbená webová rozhraní umožňují přístup `X-Forwarded-*` k informacím ve standardním vzoru aplikace. V [CodeIgniter](https://codeigniter.com/) [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) ve výchozím nastavení kontroluje hodnotu `X_FORWARDED_PROTO` .
+Oblíbená webová rozhraní umožňují přístup k informacím o `X-Forwarded-*` ve standardním vzorcích aplikací. V [CodeIgniter](https://codeigniter.com/) [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) ve výchozím nastavení kontroluje hodnotu `X_FORWARDED_PROTO`.
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
@@ -184,10 +174,10 @@ Oblíbená webová rozhraní umožňují přístup `X-Forwarded-*` k informacím
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: Aplikace Python s PostgreSQL](tutorial-python-postgresql-app.md)
+> [Kurz: aplikace v Pythonu s PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Kurz: Nasazení z privátního úložiště kontejnerů](tutorial-custom-docker-image.md)
+> [Kurz: nasazení z privátního úložiště kontejnerů](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
 > [Nejčastější dotazy k App Service Linux](app-service-linux-faq.md)

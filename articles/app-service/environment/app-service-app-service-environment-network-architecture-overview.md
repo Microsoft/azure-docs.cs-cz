@@ -1,28 +1,20 @@
 ---
-title: Přehled architektury sítě App Service prostředí – Azure
-description: Přehled architektury síťové topologie ofApp Service Environment.
-services: app-service
-documentationcenter: ''
+title: Architektura sítě v1
+description: Přehled architektury síťové topologie App Service prostředí. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 98eb4d7440126bedb3d2e1de5711141eaac8b07a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070072"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687350"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Přehled síťové architektury ve službě App Service Environment
-## <a name="introduction"></a>Úvod
 App Service prostředí se vždycky vytvářejí v rámci podsítě [virtuální sítě][virtualnetwork] – aplikace běžící v App Service Environment můžou komunikovat s privátními koncovými body umístěnými ve stejné topologii virtuální sítě.  Vzhledem k tomu, že zákazníci můžou uzamknout části své infrastruktury virtuální sítě, je důležité pochopit typy toků síťové komunikace, ke kterým dochází s App Service Environment.
 
 ## <a name="general-network-flow"></a>Obecný tok sítě
@@ -72,7 +64,7 @@ Ve výše uvedeném diagramu:
 ## <a name="calls-between-app-service-environments"></a>Volání mezi prostředími App Service
 Složitější scénář může nastat, pokud nasadíte více App Service prostředí ve stejné virtuální síti a odchozí volání z jednoho App Service Environment na jiný App Service Environment.  Tyto typy volání vzájemného App Service Environment budou také považovány za volání "Internet".
 
-Následující diagram znázorňuje příklad vrstvené architektury s aplikacemi na jednom App Service Environment (např. "Webové aplikace front-endu" – volání aplikací na druhém App Service Environment (např. interní back-endové aplikace API nejsou určeny k přístupu z Internetu). 
+Následující diagram znázorňuje příklad vrstvené architektury s aplikacemi na jednom App Service Environment (např. "webové aplikace front-endu"), které volají aplikace na druhém App Service Environment (např. interní back-endové aplikace API, které nejsou určené k přístupu z Internetu). 
 
 ![Volání mezi prostředími App Service][CallsBetweenAppServiceEnvironments] 
 

@@ -1,25 +1,18 @@
 ---
-title: Hostování s vysokou hustotou pomocí škálování podle aplikace – Azure App Service | Microsoft Docs
-description: Vysoká hustota hostování na Azure App Service
+title: Škálování na aplikaci pro hostování s vysokou hustotou
+description: Škálujte aplikace nezávisle na App Service plánech a optimalizujte instance s horizontálním škálováním v plánu.
 author: btardif
-manager: erikre
-editor: ''
-services: app-service\web
-documentationcenter: ''
 ms.assetid: a903cb78-4927-47b0-8427-56412c4e3e64
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 7130c9547e0778ce40a0ad1c1ea41607a02df23e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088108"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672353"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Vysoká hustota hostování na Azure App Service pomocí škálování podle aplikace
 
@@ -39,7 +32,7 @@ Platforma nespoléhá na metriky při rozhodování o přidělení pracovního p
 
 ## <a name="per-app-scaling-using-powershell"></a>Škálování podle aplikace pomocí PowerShellu
 
-Vytvořte plán s škálováním na aplikaci předáním ```-PerSiteScaling $true``` parametru ```New-AzAppServicePlan``` do rutiny.
+Vytvořte plán s škálováním na aplikaci předáním parametru ```-PerSiteScaling $true``` rutině ```New-AzAppServicePlan```.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -48,7 +41,7 @@ New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-Povolte škálování podle aplikace s existujícím plánem App Service předáním `-PerSiteScaling $true` parametru ```Set-AzAppServicePlan``` do rutiny.
+Pokud chcete povolit škálování podle aplikace s existujícím App Servicem plánem, předejte do rutiny ```Set-AzAppServicePlan``` `-PerSiteScaling $true` parametr.
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
@@ -72,7 +65,7 @@ Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> `$newapp.SiteConfig.NumberOfWorkers`se liší od `$newapp.MaxNumberOfWorkers`. Škálování podle aplikace používá `$newapp.SiteConfig.NumberOfWorkers` k určení charakteristik měřítka aplikace.
+> `$newapp.SiteConfig.NumberOfWorkers` se liší od `$newapp.MaxNumberOfWorkers`. Škálování podle aplikace používá `$newapp.SiteConfig.NumberOfWorkers` k určení charakteristik měřítka aplikace.
 
 ## <a name="per-app-scaling-using-azure-resource-manager"></a>Škálování podle aplikace pomocí Azure Resource Manager
 
@@ -132,15 +125,15 @@ App Service plán nastavuje vlastnost **PerSiteScaling** na hodnotu true `"perSi
 
 ## <a name="recommended-configuration-for-high-density-hosting"></a>Doporučená konfigurace pro hostování s vysokou hustotou
 
-Škálování na aplikaci je funkce, která je povolená v globálních oblastech Azure i [](environment/app-service-app-service-environment-intro.md)v App Servicech prostředích. Doporučuje se ale použít prostředí App Service k využití jejich pokročilých funkcí a větší App Service kapacity plánu.  
+Škálování na aplikaci je funkce, která je povolená v globálních oblastech Azure i v [App Servicech prostředích](environment/app-service-app-service-environment-intro.md). Doporučuje se ale použít prostředí App Service k využití jejich pokročilých funkcí a větší App Service kapacity plánu.  
 
 Pomocí těchto kroků můžete nakonfigurovat hostování s vysokou hustotou pro vaše aplikace:
 
 1. Určete plán App Service jako plán s vysokou hustotou a proveďte jeho horizontální navýšení kapacity na požadovanou kapacitu.
-1. `PerSiteScaling` Nastavte příznak na hodnotu true v plánu App Service.
+1. Pro App Service plán nastavte příznak `PerSiteScaling` na hodnotu true.
 1. Vytvoří se nové aplikace a přiřadí se k tomuto App Service plánu s vlastností **numberOfWorkers** nastavenou na hodnotu **1**.
    - Použití této konfigurace má za důsledek nejvyšší možnou hustotu.
-1. Počet pracovních procesů se dá nakonfigurovat nezávisle na aplikaci, aby bylo možné v případě potřeby udělit další prostředky. Příklad:
+1. Počet pracovních procesů se dá nakonfigurovat nezávisle na aplikaci, aby bylo možné v případě potřeby udělit další prostředky. Například:
    - Aplikace s vysokým využitím může nastavit **numberOfWorkers** na **3** , aby pro tuto aplikaci měla větší kapacitu zpracování.
    - Aplikace s nízkým použitím by nastavily **numberOfWorkers** na **1**.
 

@@ -1,26 +1,17 @@
 ---
-title: Azure PowerShell ukázkového skriptu – aplikace se škálují po celém světě s využitím Traffic Manager | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu – Škálování webové aplikace po celém světě s využitím architektury s vysokou dostupností
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: 'PowerShell: škálování pomocí Traffic Manager'
+description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. V této ukázce se dozvíte, jak škálovat aplikaci po celém světě pomocí Traffic Manager.
 tags: azure-service-management
 ms.assetid: 470f0129-1efe-462c-a029-5c66e04158a8
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 02f1d063f8dfcc21e076296676700a5cb11be55c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6ffcf22b640d6393ed48d803f6f52bac5334d4b7
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098267"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684323"
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>Škálování webové aplikace po celém světě s využitím architektury s vysokou dostupností
 
@@ -54,7 +45,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci. |
 | [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) | Vytvoří v profilu služby Traffic Manager koncový bod. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

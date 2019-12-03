@@ -1,24 +1,18 @@
 ---
-title: Integrace aplikace s využitím Azure Virtual Network-Azure App Service
-description: Ukazuje, jak připojit aplikaci v Azure App Service k nové nebo existující službě Azure Virtual Network.
-services: app-service
-documentationcenter: ''
+title: Integrace aplikace s využitím Azure Virtual Network
+description: Přečtěte si, jak Azure App Service integrovat s Azure Virtual Network a jak připojit aplikaci k virtuální síti.
 author: ccompy
-manager: stefsch
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034723"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688293"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s Virtual Network Azure
 Tento dokument popisuje funkci Integrace virtuální sítě Azure App Service a jak ji nastavit pomocí aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Virtuální sítě Azure][VNETOverview] (virtuální sítě) umožňují umístit spoustu vašich prostředků Azure do sítě směrovatelné do jiné sítě.  
@@ -112,7 +106,7 @@ Regionální integrace virtuální sítě vyžaduje, aby vaše podsíť integrac
 Pokud chcete aplikaci odpojit od virtuální sítě, vyberte **Odpojit**. Tím dojde k restartování vaší webové aplikace. 
 
 
-#### <a name="web-app-for-containers"></a>Služba Web App for Containers
+#### <a name="web-app-for-containers"></a>Web App for Containers
 
 Pokud používáte App Service v systému Linux s vestavěnými bitovými kopiemi, funkce Místní integrace virtuální sítě funguje bez dalších změn. Pokud používáte Web App for Containers, je nutné upravit image Docker, aby bylo možné použít integraci virtuální sítě. V imagi Docker použijte proměnnou prostředí portu jako port naslouchání hlavního webového serveru namísto použití pevně zakódované čísla portu. Proměnná prostředí portu je automaticky nastavena App Service platformou v době spuštění kontejneru. Pokud používáte SSH, musí být démon procesu SSH nakonfigurovaný tak, aby naslouchal na čísle portu určeném proměnnou prostředí SSH_PORT při použití místní integrace virtuální sítě.
 
@@ -258,7 +252,7 @@ Existují tři související poplatky za použití funkce integrace virtuální 
 I když se tato funkce dá snadno nastavit, neznamená to, že vaše zkušenosti budou bez problémů. Pokud máte problémy s přístupem k požadovanému koncovému bodu, můžete použít některé nástroje, pomocí kterých můžete testovat připojení z konzoly aplikace. Můžete použít dvě konzoly. Jedním z nich je konzola Kudu a druhá je konzola v Azure Portal. Pokud se chcete připojit ke konzole Kudu z vaší aplikace, použijte nástroje-> Kudu. Ke konzole Kudo se můžete dostat i na adrese [název_webu]. SCM. azurewebsites. NET. Po načtení webu přejdete na kartu ladit konzolu. Pokud se chcete dostat do Azure Portal hostované konzoly, pak z aplikace přejdete do konzoly nástroje->. 
 
 #### <a name="tools"></a>Nástroje
-**Příkazy příkazového testu**a nástroje **nslookup** a **tracert** nebudou prostřednictvím konzoly fungovat z důvodu omezení zabezpečení. K vyplnění void se přidaly dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem nameresolver. exe. Syntaxe je následující:
+**Příkazy příkazového testu**a nástroje **nslookup** a **tracert** nebudou prostřednictvím konzoly fungovat z důvodu omezení zabezpečení. K vyplnění void se přidaly dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem nameresolver. exe. Syntaxe je:
 
     nameresolver.exe hostname [optional: DNS Server]
 
@@ -302,7 +296,7 @@ Mějte na paměti, že nevíte, jaká adresa bude vaše aplikace skutečně pou�
 
 Mezi další kroky ladění patří:
 
-* Připojte se k VIRTUÁLNÍmu počítači ve virtuální síti a pokuste se připojit k hostiteli prostředků: port. K otestování přístupu TCP použijte příkaz PowerShellu **test-NetConnection**. Syntaxe je následující:
+* Připojte se k VIRTUÁLNÍmu počítači ve virtuální síti a pokuste se připojit k hostiteli prostředků: port. K otestování přístupu TCP použijte příkaz PowerShellu **test-NetConnection**. Syntaxe je:
 
       test-netconnection hostname [optional: -Port]
 

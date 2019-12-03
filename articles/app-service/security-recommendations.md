@@ -1,20 +1,18 @@
 ---
-title: Doporučení zabezpečení pro Azure App Service
-description: Doporučení zabezpečení pro Azure App Service. Implementace těchto doporučení vám pomůže splnit vaše povinnosti zabezpečení, jak je popsáno v našem sdíleném modelu zodpovědnosti, a zvýší celkové zabezpečení vašich řešení webových aplikací.
-services: app-service
+title: Doporučení zabezpečení
+description: Implementujte doporučení zabezpečení, která vám pomůžou splnit vaše povinnosti zabezpečení, jak uvádí náš sdílený model zodpovědnosti. Zvyšte zabezpečení své aplikace.
 author: barclayn
 manager: barbkess
-ms.service: app-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 71d564dac43328371e9d34684f2d13a26616a99d
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: e3f901fd78436b42729607d38f0ddb533f31cd30
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609770"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684113"
 ---
 # <a name="security-recommendations-for-app-service"></a>Doporučení zabezpečení pro App Service
 
@@ -26,7 +24,7 @@ Tento článek obsahuje doporučení zabezpečení pro Azure App Service. Implem
 |-|-|----|
 | Stále aktuální | Používejte nejnovější verze podporovaných platforem, programovacích jazyků, protokolů a platforem. |
 
-## <a name="identity-and-access-management"></a>Správa identit a přístupu
+## <a name="identity-and-access-management"></a>Správa identit a přístupu
 
 | Doporučení | Komentáře |
 |-|----|
@@ -43,7 +41,7 @@ Tento článek obsahuje doporučení zabezpečení pro Azure App Service. Implem
 | Šifrování komunikace s prostředky Azure | Když se vaše aplikace připojí k prostředkům Azure, jako je [SQL Database](https://azure.microsoft.com/services/sql-database/) nebo [Azure Storage](/azure/storage/), připojení zůstane v Azure. Vzhledem k tomu, že připojení prochází přes sdílené sítě v Azure, měli byste vždycky zašifrovat veškerou komunikaci. |
 | Vyžadovat nejnovější možnou verzi TLS | Vzhledem k tomu, že 2018 nové aplikace Azure App Service používají TLS 1,2. Novější verze TLS zahrnují vylepšení zabezpečení starších verzí protokolů. |
 | Použití FTPS | App Service podporuje FTP i FTPS pro nasazování souborů. Pokud je to možné, používejte FTPS místo FTP. Pokud se jeden nebo oba tyto protokoly nepoužívají, měli byste [je zakázat](deploy-ftp.md#enforce-ftps). |
-| Zabezpečení dat aplikací | Neukládejte tajné klíče aplikace, jako jsou přihlašovací údaje databáze, tokeny API nebo privátní klíče, do kódu nebo konfiguračních souborů. Běžně přijímaným přístupem je přístup k těmto [proměnným prostředí](https://wikipedia.org/wiki/Environment_variable) pomocí standardního vzoru ve zvoleném jazyce. V Azure App Service můžete definovat proměnné prostředí prostřednictvím [nastavení aplikace](web-sites-configure.md) a připojovacích [řetězců](web-sites-configure.md). Nastavení aplikace a připojovací řetězce se ukládají v Azure jako šifrované. Nastavení aplikace se dešifrují jenom předtím, než se vloží do paměti procesu vaší aplikace při spuštění aplikace. Šifrovací klíče se pravidelně otáčí. Alternativně můžete svou aplikaci Azure App Service integrovat s [Azure Key Vault](/azure/key-vault/) pro pokročilou správu tajných klíčů. Když [přístup k Key Vault ke spravované identitě](../key-vault/tutorial-web-application-keyvault.md), vaše aplikace App Service může zabezpečeně přistupovat k tajným údajům, které potřebujete. |
+| Zabezpečení dat aplikací | Neukládejte tajné klíče aplikace, jako jsou přihlašovací údaje databáze, tokeny API nebo privátní klíče, do kódu nebo konfiguračních souborů. Běžně přijímaným přístupem je přístup k těmto [proměnným prostředí](https://wikipedia.org/wiki/Environment_variable) pomocí standardního vzoru ve zvoleném jazyce. V Azure App Service můžete definovat proměnné prostředí prostřednictvím [nastavení aplikace](web-sites-configure.md) a [připojovacích řetězců](web-sites-configure.md). Nastavení aplikace a připojovací řetězce se ukládají v Azure jako šifrované. Nastavení aplikace se dešifrují jenom předtím, než se vloží do paměti procesu vaší aplikace při spuštění aplikace. Šifrovací klíče se pravidelně otáčí. Alternativně můžete svou aplikaci Azure App Service integrovat s [Azure Key Vault](/azure/key-vault/) pro pokročilou správu tajných klíčů. Když [přístup k Key Vault ke spravované identitě](../key-vault/tutorial-web-application-keyvault.md), vaše aplikace App Service může zabezpečeně přistupovat k tajným údajům, které potřebujete. |
 
 ## <a name="networking"></a>Sítě
 
@@ -51,15 +49,15 @@ Tento článek obsahuje doporučení zabezpečení pro Azure App Service. Implem
 |-|-|
 | Použít omezení statických IP adres | Azure App Service ve Windows vám umožní definovat seznam IP adres, které mají povolený přístup k vaší aplikaci. Seznam povolených adres může zahrnovat jednotlivé IP adresy nebo rozsah IP adres definovaných maskou podsítě. Další informace najdete v tématu [Azure App Service omezení statických IP adres](app-service-ip-restrictions.md).  |
 | Použití izolované cenové úrovně | S výjimkou cenové úrovně inizolace všechny úrovně spouštějí vaše aplikace na sdílené síťové infrastruktuře v Azure App Service. Izolovaná vrstva poskytuje kompletní izolaci sítě spuštěním aplikací v [prostředí vyhrazené App Service](environment/intro.md). Prostředí App Service běží ve vaší vlastní instanci [Azure Virtual Network](/azure/virtual-network/).|
-| Použití zabezpečených připojení při přístupu k místním prostředkům | Pomocí hybridních [připojení](app-service-hybrid-connections.md), [Virtual Network integrace](web-sites-integrate-with-vnet.md)nebo [App Service prostředí](environment/intro.md) se můžete připojit k místním prostředkům. |
+| Použití zabezpečených připojení při přístupu k místním prostředkům | Pomocí [hybridních připojení](app-service-hybrid-connections.md), [Virtual Network integrace](web-sites-integrate-with-vnet.md)nebo [App Service prostředí](environment/intro.md) se můžete připojit k místním prostředkům. |
 | Omezit expozici příchozímu síťovému provozu | Skupiny zabezpečení sítě umožňují omezit přístup k síti a řídit počet vystavených koncových bodů. Další informace najdete v tématu [řízení příchozího provozu do App Service Environment](environment/app-service-app-service-environment-control-inbound-traffic.md). |
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 | Doporučení | Komentáře |
 |-|-|
 |Použít úroveň Azure Security Center úrovně Standard | [Azure Security Center](../security-center/security-center-app-services.md) je nativně integrována s Azure App Service. Může spustit posouzení a poskytnout doporučení pro zabezpečení. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Obraťte se na poskytovatele aplikace a zjistěte, zda jsou k dispozici další požadavky na zabezpečení. Další informace o vývoji zabezpečených aplikací najdete v [dokumentaci k zabezpečení vývoje](../security/fundamentals/abstract-develop-secure-apps.md).

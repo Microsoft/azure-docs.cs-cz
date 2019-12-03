@@ -1,25 +1,18 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Vazba vlastního certifikátu SSL na webovou aplikaci | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu – Vazba vlastního certifikátu SSL na webovou aplikaci
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'PowerShell: nahrání a vazba SSL'
+description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. V této ukázce se dozvíte, jak navazovat vlastní certifikát SSL pro aplikaci.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 057d9beebc106d71183b3c979636bb9c5410b15c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4e5e1835927b135037d416ebaca84157c851d361
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098376"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685599"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>Vytvoření vazby vlastního certifikátu SSL k webové aplikaci pomocí PowerShellu
 
@@ -58,7 +51,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Upraví konfiguraci webové aplikace. |
 | [New-AzWebAppSSLBinding](/powershell/module/az.websites/new-azwebappsslbinding) | Vytvoří vazbu certifikátu SSL na webovou aplikaci. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

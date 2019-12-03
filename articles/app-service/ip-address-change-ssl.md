@@ -1,55 +1,48 @@
 ---
-title: Příprava na změnu adresy SSL IP – Azure App Service
-description: Pokud je vaše adresa SSL IP změnit, zjistěte, co můžete udělat tak, aby vaše aplikace i nadále fungovat po provedení změny.
-services: app-service\web
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
+title: Příprava na změnu IP adresy SSL
+description: Pokud se vaše IP adresa SSL bude měnit, zjistěte, co dělat, aby vaše aplikace po změně nadále fungovala.
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6c8c86ff6212acc31e961d6ae62836ca2b7b7380
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34f35eb67cada6066e35227fcd6a0eaf425ac007
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61268894"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672395"
 ---
-# <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Postup přípravy na změnu adresy SSL IP
+# <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Příprava na změnu IP adresy SSL
 
-Pokud jste dostali oznámení, že se mění SSL IP adresu vaší aplikace Azure App Service, postupujte podle pokynů v tomto článku na verze existující adresu SSL IP a přiřadit nový.
+Pokud jste obdrželi oznámení o změně IP adresy SSL aplikace Azure App Service, postupujte podle pokynů v tomto článku, abyste uvolnili existující IP adresu SSL a přiřadili novou.
 
-## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>Uvolnit adresy SSL IP a přiřaďte nové značky
+## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>Vydávat IP adresy SSL a přiřazovat nové
 
 1.  Otevřete web [Azure Portal](https://portal.azure.com).
 
-2.  V levé navigační nabídce vyberte **App Services**.
+2.  V navigační nabídce na levé straně vyberte **App Services**.
 
-3.  Vyberte ze seznamu vaši aplikaci služby App Service.
+3.  Ze seznamu vyberte svou aplikaci App Service.
 
-4.  V části **nastavení** záhlaví, klikněte na tlačítko **nastavení SSL** v levém navigačním panelu.
+4.  V záhlaví **Nastavení** klikněte na **Nastavení SSL** v levém navigačním panelu.
 
-1. V části vazby SSL vyberte záznam název hostitele. V editoru, které se otevře, zvolte **SNI SSL** na **typ SSL** rozevírací nabídky a klikněte na tlačítko **přidat vazbu**. Když se zobrazí zpráva o úspěchu operací, stávající IP adresa byla uvolněna.
+1. V části vazby SSL vyberte záznam názvu hostitele. V editoru, který se otevře, vyberte v rozevírací nabídce **typ SSL** možnost **sni SSL** a klikněte na **Přidat vazbu**. Po zobrazení zprávy o úspěchu operace byla uvolněna existující IP adresa.
 
-6.  V **vazby SSL** znovu vyberte záznam stejného názvu hostitele s certifikátem. V editoru, které se otevře, zvolte tuto chvíli **IP SSL na základě** na **typ SSL** rozevírací nabídky a klikněte na tlačítko **přidat vazbu**. Když se zobrazí zpráva o úspěchu operací, které jste získali novou IP adresu.
+6.  V části **vazby SSL** znovu vyberte stejný záznam názvu hostitele s certifikátem. V editoru, který se otevře, vyberte v rozevírací nabídce **typ SSL** možnost **SSL na základě IP adresy** a klikněte na **Přidat vazbu**. Po zobrazení zprávy o úspěchu operace jste získali novou IP adresu.
 
-7.  Pokud je záznam (záznam DNS odkazuje přímo na IP adresu) nakonfigurované v portálu pro registraci vaší domény (třetích stran poskytovatele DNS nebo Azure DNS), nahraďte existující IP adresu nově vygenerovaný. Podle pokynů uvedených v následující části najdete novou IP adresu.
+7.  Pokud je záznam A (záznam DNS ukazující přímo na vaši IP adresu) nakonfigurovaný na vašem portálu pro registraci domény (poskytovatel DNS nebo Azure DNS), nahraďte stávající IP adresu nově vytvořeným. Novou IP adresu najdete podle pokynů v následující části.
 
-## <a name="find-the-new-ssl-ip-address-in-the-azure-portal"></a>Na webu Azure Portal najdete novou adresu SSL IP
+## <a name="find-the-new-ssl-ip-address-in-the-azure-portal"></a>Najít novou IP adresu SSL na webu Azure Portal
 
-1.  Počkejte pár minut a pak otevřete [webu Azure portal](https://portal.azure.com).
+1.  Počkejte pár minut a pak otevřete [Azure Portal](https://portal.azure.com).
 
-2.  V levé navigační nabídce vyberte **App Services**.
+2.  V navigační nabídce na levé straně vyberte **App Services**.
 
-3.  Vyberte ze seznamu vaši aplikaci služby App Service.
+3.  Ze seznamu vyberte svou aplikaci App Service.
 
-4.  V části **nastavení** záhlaví, klikněte na tlačítko **vlastnosti** v levém navigačním panelu a najít v části s názvem **virtuální IP adresa**.
+4.  V záhlaví **Nastavení** klikněte na tlačítko **vlastnosti** v levém navigačním panelu a vyhledejte oddíl označený **virtuální IP adresou**.
 
-5. Zkopírujte IP adresu a překonfigurujte záznamu domény nebo IP mechanismus.
+5. Zkopírujte IP adresu a překonfigurujte záznam domény nebo mechanismus IP adres.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tento článek vysvětlil, jak připravit pro změnu IP adresy, který byl inicializován nástrojem Azure. Další informace o IP adresách v Azure App Service najdete v tématu [SSL a SSL IP adres ve službě Azure App Service](overview-inbound-outbound-ips.md).
+Tento článek vysvětluje, jak připravit na změnu IP adresy, kterou iniciovala Azure. Další informace o IP adresách v Azure App Service najdete [v tématu IP adresy SSL a SSL v Azure App Service](overview-inbound-outbound-ips.md).

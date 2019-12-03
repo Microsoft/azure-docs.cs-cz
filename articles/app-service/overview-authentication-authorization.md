@@ -1,26 +1,17 @@
 ---
-title: Ověřování a autorizace – Azure App Service | Microsoft Docs
-description: Koncepční referenční informace a Přehled funkce ověřování/autorizace pro Azure App Service
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
+title: Ověřování a autorizace
+description: Přečtěte si o integrované podpoře ověřování a autorizaci v Azure App Service a o tom, jak vám může pomoci zabezpečit vaši aplikaci před neoprávněným přístupem.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 2179f4e7d5350cdf9d82413e4f70647c20c3c399
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808752"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672246"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -32,8 +23,10 @@ Azure App Service poskytuje integrovanou podporu ověřování a autorizace, tak
 
 Zabezpečené ověřování a autorizace vyžadují důkladné porozumění zabezpečení, včetně federace, šifrování, správy [webových tokenů JSON (Jwt)](https://wikipedia.org/wiki/JSON_Web_Token) , [typů udělení](https://oauth.net/2/grant-types/)a tak dále. App Service poskytuje tyto nástroje, díky kterým můžete věnovat více času a energii na poskytování obchodních hodnot vašemu zákazníkovi.
 
-> [!NOTE]
-> K ověřování a autorizaci nemusíte používat App Service. Mnohé webové architektury jsou součástí sady funkcí zabezpečení a můžete je použít, pokud chcete. Pokud potřebujete větší flexibilitu, než App Service poskytuje, můžete také napsat vlastní nástroje.  
+> [!IMPORTANT]
+> Nemusíte používat App Service pro AuthN/AuthO. Mnohé webové architektury jsou součástí sady funkcí zabezpečení a můžete je použít, pokud chcete. Pokud potřebujete větší flexibilitu, než App Service poskytuje, můžete také napsat vlastní nástroje.  
+>
+> Pokud však přecházíte na některou z možností bez App Service pro vzdálené ověřování, pamatujte, že [Chrome 80 provádí zásadní změny v implementaci SameSite for soubory cookie](https://www.chromestatus.com/feature/5088147346030592) (Datum vydání v březnu 2020) a ověřovací mechanismus vaší aplikace může při aktualizaci prohlížečů klienta poškodit. Dokumentace k ASP.NET Core obsahuje informace o tom, jak tento postup vyřešit v aplikaci, v [http: Browser SameSite změny dopadu ověřování](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). Obsahuje užitečné pokyny k tomu, jak otestovat tuto zásadní změnu v hlavních prohlížečích bez ohledu na to, jestli používáte ASP.NET Core nebo ne.
 >
 
 Informace specifické pro nativní mobilní aplikace najdete v tématech [ověřování a autorizace uživatelů pro mobilní aplikace s Azure App Service](../app-service-mobile/app-service-mobile-auth.md).

@@ -2,13 +2,13 @@
 title: Osvědčené postupy pro šablony
 description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon. Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.openlocfilehash: 7e1b6496302af3edde4d888c67ec3e461d300a5a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/02/2019
+ms.openlocfilehash: d4cf4364b2e835db3d53fa64682a99710ceb2b29
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150300"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689106"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Doporučené postupy pro šablonu Azure Resource Manager
 
@@ -93,7 +93,7 @@ Informace v této části mohou být užitečné při práci s [parametry](templ
 
 * Nepoužívejte parametr pro verzi rozhraní API pro typ prostředku. Vlastnosti a hodnoty prostředků se mohou lišit podle čísla verze. Technologie IntelliSense v editoru kódu nemůže určit správné schéma, pokud je verze rozhraní API nastavena na parametr. Místo toho je třeba v šabloně pevně nakódovat verzi rozhraní API.
 
-* Používejte `allowedValues` s využitím zřídka. Použijte ji pouze v případě, že je nutné zajistit, aby některé hodnoty nebyly zahrnuty do povolených možností. Pokud používáte `allowedValues` moc široké, můžete zablokovat platná nasazení tím, že seznam nezůstane v aktuálním stavu.
+* Používejte `allowedValues` s využitím zřídka. Použijte ji pouze v případě, že je nutné zajistit, aby některé hodnoty nebyly zahrnuty do povolených možností. Pokud používáte `allowedValues` příliš široce, můžete zablokovat platná nasazení tím, že seznam nezůstane v aktuálním stavu.
 
 * Pokud název parametru ve vaší šabloně odpovídá parametru v příkazu PowerShell Deployment, Správce prostředků vyřeší tento konflikt názvů přidáním přípony **FromTemplate** do parametru Template. Například pokud zahrnete parametr s názvem **ResourceGroupName** v šabloně, je v konfliktu s parametrem **ResourceGroupName** v rutině [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) . Během nasazování budete vyzváni k zadání hodnoty pro **ResourceGroupNameFromTemplate**.
 
@@ -174,7 +174,7 @@ Při rozhodování, jaké [závislosti](resource-group-define-dependencies.md) s
 
 * Pokud je možné určit hodnotu před nasazením, zkuste prostředek nasadit bez závislosti. Pokud například hodnota konfigurace potřebuje název jiného prostředku, možná nebudete potřebovat závislost. Tyto pokyny nefungují vždycky, protože některé prostředky ověřují existenci druhého prostředku. Pokud se zobrazí chyba, přidejte závislost.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Materiály
 
 Následující informace můžou být užitečné při práci s [prostředky](resource-group-authoring-templates.md#resources):
 
@@ -204,7 +204,7 @@ Následující informace můžou být užitečné při práci s [prostředky](re
    }
    ```
    
-   Pokud je účet úložiště nasazený ve stejné šabloně, kterou vytváříte, a název účtu úložiště není sdílený s jiným prostředkem v šabloně, při odkazování na prostředek není nutné zadat obor názvů poskytovatele ani apiVersion. Následující příklad ukazuje zjednodušenou syntaxi:
+   Pokud je účet úložiště nasazený ve stejné šabloně, kterou vytváříte, a název účtu úložiště se v šabloně nesdílí s jiným prostředkem, nemusíte při odkazování na prostředek zadávat obor názvů poskytovatele ani apiVersion. Následující příklad ukazuje zjednodušenou syntaxi:
    
    ```json
    "diagnosticsProfile": {
@@ -276,23 +276,6 @@ Následující informace můžou být užitečné při práci s [prostředky](re
    > Aby se zajistilo šifrování tajných klíčů při jejich předávání jako parametrů virtuálním počítačům a rozšířením, použijte vlastnost **protectedSettings** relevantních rozšíření.
    > 
    > 
-
-## <a name="outputs"></a>Výstupy
-
-Pokud k vytvoření veřejných IP adres použijete šablonu, zahrňte [část výstupy](template-outputs.md) , která vrátí podrobnosti o IP adrese a plně kvalifikovaném názvu domény (FQDN). Výstupní hodnoty můžete snadno získat podrobnosti o veřejné IP adresy a plně kvalifikované názvy domény po nasazení.
-
-```json
-"outputs": {
-    "fqdn": {
-        "value": "[reference(parameters('publicIPAddresses_name')).dnsSettings.fqdn]",
-        "type": "string"
-    },
-    "ipaddress": {
-        "value": "[reference(parameters('publicIPAddresses_name')).ipAddress]",
-        "type": "string"
-    }
-}
-```
 
 ## <a name="next-steps"></a>Další kroky
 

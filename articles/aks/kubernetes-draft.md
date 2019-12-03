@@ -7,26 +7,26 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: bd099b9d76e17eda36be1650ef5081e5aaa7e53a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9338f0e26595c1ab25ab51578880daf8c0c5bbc4
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "67303546"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672455"
 ---
-# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Rychlý start: Vývoj ve službě Azure Kubernetes Service (AKS) s využitím konceptu
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Rychlý Start: vývoj ve službě Azure Kubernetes Service (AKS) s využitím konceptu
 
 Koncept je open source nástroj, který pomáhá balíčkům a spouštěním kontejnerů aplikací v clusteru Kubernetes. S konceptem můžete rychle znovu nasadit aplikaci na Kubernetes, když dojde ke změnám kódu, aniž byste museli potvrzovat změny ve správě verzí. Další informace o konceptu najdete v [dokumentaci konceptu na GitHubu][draft-documentation].
 
 V tomto článku se dozvíte, jak používat koncept balíčku a spustit aplikaci v AKS.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Docker je nainstalovaný a nakonfigurovaný. Docker poskytuje balíčky, které konfigurují Docker v systému [Mac][docker-for-mac], [Windows][docker-for-windows]nebo [Linux][docker-for-linux] .
-* [Helm je nainstalovaný](https://github.com/helm/helm/blob/master/docs/install.md).
+* [Helm je nainstalovaný](https://github.com/helm/helm#install).
 * Byl [nainstalován koncept][draft-documentation].
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
@@ -103,7 +103,7 @@ Pokud používáte Azure Cloud Shell, `kubectl` je už nainstalovaný. Můžete 
 az aks install-cli
 ```
 
-Pokud chcete `kubectl` nakonfigurovat připojení ke clusteru Kubernetes, použijte příkaz [AZ AKS Get-Credentials][] . Následující příklad vrátí pověření pro cluster AKS s názvem *MyAKS* v *MyResourceGroup*:
+Pokud chcete nakonfigurovat `kubectl` pro připojení ke clusteru Kubernetes, použijte příkaz [AZ AKS Get-Credentials][] . Následující příklad vrátí pověření pro cluster AKS s názvem *MyAKS* v *MyResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -113,7 +113,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 Než budete moct nasadit Helm v clusteru AKS s povoleným RBAC, budete potřebovat účet služby a vazbu role pro službu do služby. Další informace o zabezpečení Helm/v případě, že je v clusteru s povoleným RBAC, najdete v tématech předané [, obory názvů a RBAC][tiller-rbac]. Pokud váš cluster AKS není RBAC povolený, přeskočte tento krok.
 
-Vytvořte soubor s názvem `helm-rbac.yaml` a zkopírujte ho do následujícího YAML:
+Vytvořte soubor s názvem `helm-rbac.yaml` a zkopírujte následující YAML:
 
 ```yaml
 apiVersion: v1
@@ -136,7 +136,7 @@ subjects:
     namespace: kube-system
 ```
 
-Vytvořte účet služby a vazbu role pomocí `kubectl apply` příkazu:
+Pomocí příkazu `kubectl apply` vytvořte vazbu role a účtu služby:
 
 ```console
 kubectl apply -f helm-rbac.yaml
@@ -151,7 +151,7 @@ helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="lin
 
 ## <a name="configure-draft"></a>Konfigurovat koncept
 
-Pokud jste na místním počítači nenakonfigurovali koncept, spusťte `draft init`příkaz:
+Pokud jste na místním počítači nenakonfigurovali koncept, spusťte `draft init`:
 
 ```console
 $ draft init
@@ -162,7 +162,7 @@ Installing default pack repositories...
 Happy Sailing!
 ```
 
-Je také potřeba nakonfigurovat koncept pro použití *loginServer* vašeho ACR. Následující příkaz používá `draft config set` nástroj `mydraftacr.azurecr.io` jako registr.
+Je také potřeba nakonfigurovat koncept pro použití *loginServer* vašeho ACR. Následující příkaz používá `draft config set` k použití `mydraftacr.azurecr.io` jako registru.
 
 ```console
 draft config set registry mydraftacr.azurecr.io
@@ -172,7 +172,7 @@ Nakonfigurovali jste koncept pro použití vašeho ACR a koncept může do vaše
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
-V tomto rychlém startu [se používá ukázková aplikace Java z konceptu úložiště GitHub][example-java]. Naklonujte aplikaci z GitHubu a přejděte `draft/examples/example-java/` do adresáře.
+V tomto rychlém startu [se používá ukázková aplikace Java z konceptu úložiště GitHub][example-java]. Naklonujte aplikaci z GitHubu a přejděte do adresáře `draft/examples/example-java/`.
 
 ```console
 git clone https://github.com/Azure/draft
@@ -181,7 +181,7 @@ cd draft/examples/example-java/
 
 ## <a name="run-the-sample-application-with-draft"></a>Spustit ukázkovou aplikaci s využitím konceptu
 
-K přípravě aplikace použijte příkaz.`draft create`
+K přípravě aplikace použijte příkaz `draft create`.
 
 ```console
 draft create
@@ -196,7 +196,7 @@ $ draft create
 --> Ready to sail
 ```
 
-Pokud chcete spustit ukázkovou aplikaci v clusteru AKS, použijte `draft up` příkaz.
+Chcete-li spustit ukázkovou aplikaci v clusteru AKS, použijte příkaz `draft up`.
 
 ```console
 draft up
@@ -216,7 +216,7 @@ Inspect the logs with `draft logs 01CMZAR1F4T1TJZ8SWJQ70HCNH`
 
 ## <a name="connect-to-the-running-sample-application-from-your-local-machine"></a>Připojte se ke spuštěné ukázkové aplikaci z místního počítače.
 
-K otestování aplikace použijte `draft connect` příkaz.
+K otestování aplikace použijte příkaz `draft connect`.
 
 ```console
 draft connect
@@ -235,13 +235,13 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-Přejděte do aplikace v prohlížeči pomocí `localhost` adresy URL, abyste viděli ukázkovou aplikaci. V předchozím příkladu je `http://localhost:49804`adresa URL. Zastavte připojení `Ctrl+c`pomocí.
+Přejděte do aplikace v prohlížeči pomocí `localhost` URL, abyste viděli ukázkovou aplikaci. V předchozím příkladu je adresa URL `http://localhost:49804`. Zastavte připojení pomocí `Ctrl+c`.
 
 ## <a name="access-the-application-on-the-internet"></a>Přístup k aplikaci na internetu
 
-Předchozí krok vytvořil proxy připojení k aplikaci pod clusterem AKS. Při vývoji a testování aplikace může být vhodné zpřístupnit aplikaci na internetu. K vystavení aplikace na internetu můžete vytvořit službu Kubernetes s typem nástroje pro vyrovnávání [zatížení][kubernetes-service-loadbalancer].
+Předchozí krok vytvořil proxy připojení k aplikaci pod clusterem AKS. Při vývoji a testování aplikace může být vhodné zpřístupnit aplikaci na internetu. K vystavení aplikace na internetu můžete vytvořit službu Kubernetes s typem nástroje pro [Vyrovnávání zatížení][kubernetes-service-loadbalancer].
 
-Pomocí `charts/example-java/values.yaml` aktualizace vytvořte službu *Vyrovnávání zatížení* . Změňte hodnotu *Service. Type* z *ClusterIP* na nástroj pro *Vyrovnávání zatížení*.
+Aktualizujte `charts/example-java/values.yaml` pro vytvoření služby *Vyrovnávání zatížení* . Změňte hodnotu *Service. Type* z *ClusterIP* na nástroj pro *Vyrovnávání zatížení*.
 
 ```yaml
 ...
@@ -253,13 +253,13 @@ service:
 ...
 ```
 
-Uložte změny, zavřete soubor a spusťte `draft up` aplikaci znovu.
+Uložte změny, zavřete soubor a spusťte `draft up` a spusťte aplikaci znovu.
 
 ```console
 draft up
 ```
 
-Vrácení veřejné IP adresy službou může trvat několik minut. Chcete-li monitorovat průběh, `kubectl get service` použijte příkaz s parametrem *Watch* :
+Vrácení veřejné IP adresy službou může trvat několik minut. Chcete-li monitorovat průběh, použijte příkaz `kubectl get service` s parametrem *Watch* :
 
 ```console
 $ kubectl get service --watch
@@ -284,7 +284,7 @@ Aktualizuje zprávu vrácenou na [řádku 7 src/Main/Java/HelloWorld/Hello. Java
     }
 ```
 
-`draft up` Spusťte příkaz pro opětovné nasazení aplikace:
+Spusťte příkaz `draft up` pro opětovné nasazení aplikace:
 
 ```console
 $ draft up
@@ -309,7 +309,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!NOTE]
 > Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu [AKS a informace o instančním objektu a jejich odstranění][sp-delete].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o používání konceptu najdete v dokumentaci konceptu na GitHubu.
 

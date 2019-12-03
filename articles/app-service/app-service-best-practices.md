@@ -1,25 +1,18 @@
 ---
-title: Osvědčené postupy – Azure App Service
-description: Naučte se osvědčené postupy a řešení potíží s Azure App Service.
-services: app-service
-documentationcenter: ''
+title: Doporučené postupy
+description: Seznamte se s osvědčenými postupy a běžnými scénáři řešení potíží pro vaši aplikaci spuštěnou v Azure App Service.
 author: dariagrigoriu
-manager: erikre
-editor: mollybos
 ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: c40191c8682d6ff93f70e0853e767c89248ae887
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071620"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671496"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Osvědčené postupy pro Azure App Service
 Tento článek shrnuje osvědčené postupy pro používání [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -38,17 +31,17 @@ Pokud si všimnete, že aplikace spotřebovává více paměti, než se očekáv
 ## <a name="CPUresources"></a>Když aplikace spotřebovávají více PROCESORů, než se očekávalo
 Když si všimnete, že aplikace spotřebovává více PROCESORů, než se očekávala, nebo se pokusíte o opakované využití procesoru, jak je uvedeno v doporučení týkající se monitorování nebo služby, zvažte možnost škálovat škálování nebo škálovat App Service plánu. Pokud je vaše aplikace stavová, je jedinou možností horizontální navýšení kapacity, pokud je vaše aplikace Bezstavová, nabízí větší flexibilitu a vyšší škálovatelnost. 
 
-Další informace o stavových a bezstavových aplikacích můžete sledovat v tomto videu: [Plánování škálovatelné komplexní aplikace na více úrovních v Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Další informace o možnostech škálování App Service a automatického škálování najdete v tématu [škálování webové aplikace v Azure App Service](manage-scale-up.md).  
+Další informace o stavových a bezstavových aplikacích můžete sledovat v tomto videu: [plánování škálovatelné komplexní aplikace na více úrovních v Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Další informace o možnostech škálování App Service a automatického škálování najdete v tématu [škálování webové aplikace v Azure App Service](manage-scale-up.md).  
 
 ## <a name="socketresources"></a>Při vyčerpání prostředků soketu
 Běžným důvodem pro vyčerpání odchozích připojení TCP je použití klientských knihoven, které nejsou implementované k opakovanému použití připojení TCP, nebo když se nepoužívá protokol vyšší úrovně, jako je třeba HTTP-Keep-Alive. Přečtěte si dokumentaci ke každé knihovně, na kterou odkazují aplikace v plánu App Service, abyste se ujistili, že jsou ve vašem kódu nakonfigurované nebo používané pro efektivní opakované použití odchozích připojení. Dále postupujte podle pokynů v dokumentaci ke knihovně pro správné vytvoření a vystavení nebo vyčištění, abyste zabránili nevracení připojení. I když tyto klientské knihovny probíhá šetření, dopad může být omezen škálováním na více instancí.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node. js a odchozí požadavky http
-Při práci s Node. js a mnoho odchozích požadavků HTTP, které je potřeba řešit pomocí protokolu HTTP-Keep-Alive, je důležité. Pomocí balíčku [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` můžete usnadnit práci s vaším kódem.
+Při práci s Node. js a mnoho odchozích požadavků HTTP, které je potřeba řešit pomocí protokolu HTTP-Keep-Alive, je důležité. Pomocí `npm` balíčku [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) můžete usnadnit vytváření kódu.
 
-Vždy zpracujte `http` odpověď, i když neuděláte nic v obslužné rutině. Pokud odpověď nezpracujete správně, vaše aplikace se zablokuje, protože už nejsou k dispozici žádné další sokety.
+Vždy zpracujte odpověď `http`, i když neuděláte nic v obslužné rutině. Pokud odpověď nezpracujete správně, vaše aplikace se zablokuje, protože už nejsou k dispozici žádné další sokety.
 
-Například při práci s `http` balíčkem nebo: `https`
+Například při práci s `http` nebo `https` balíček:
 
 ```javascript
 const request = https.request(options, function(response) {

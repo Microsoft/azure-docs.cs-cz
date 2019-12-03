@@ -1,25 +1,17 @@
 ---
-title: Ukázka skriptu Azure PowerShell – vytvoření aplikace a nasazení kódu do přípravného slotu | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu – Vytvoření webové aplikace a nasazení kódu do přípravného prostředí
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 'PowerShell: nasazení kódu do přípravného slotu'
+description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. Tato ukázka ukazuje, jak nasadit kód do přípravného prostředí.
 tags: azure-service-management
 ms.assetid: 27cf0680-c3a9-4a58-9f71-6dec09f6b874
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7d65a5977ff8db8d31fe7a46d4f99569a8c2270a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7e8ebe28fa7989997b5d3adfd14c582438a00b1b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087604"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684775"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Vytvoření webové aplikace a nasazení kódu do přípravného prostředí
 
@@ -53,9 +45,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | Upraví plán služby App Service a změní jeho cenovou úroveň. |
 | [New-AzWebAppSlot](/powershell/module/az.websites/new-azwebappslot) | Vytvoří slot nasazení pro webovou aplikaci. |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | Upraví prostředek ve skupině prostředků. |
-| [Switch-AzWebAppSlot](/powershell/module/az.websites/switch-azwebappslot) | Přepne slot nasazení webové aplikace do produkčního prostředí. |
+| [Switch – AzWebAppSlot](/powershell/module/az.websites/switch-azwebappslot) | Přepne slot nasazení webové aplikace do produkčního prostředí. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

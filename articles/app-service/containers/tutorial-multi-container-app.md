@@ -1,24 +1,17 @@
 ---
-title: Vytvoření aplikace s více kontejnery v Web App for Containers-Azure App Service
-description: Naučte se používat více kontejnerů v Azure s Docker Compose, WordPress a MySQL.
+title: 'Kurz: Vytvoření aplikace s více kontejnery'
+description: Naučte se, jak pomocí sestavení aplikace s více kontejnery na Azure App Service, která obsahuje aplikaci WordPress a kontejner MySQL, nakonfigurovat aplikaci WordPress.
 keywords: Azure App Service, Web App, Linux, Docker, sestavení, více kontejnerů, Web App for Containers, více kontejnerů, kontejnerů, WordPress, Azure DB pro MySQL, provozní databáze s kontejnery
-services: app-service
-documentationcenter: ''
 author: msangapu-msft
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: f4a366809bd5c6267ef76632e8990309f100c393
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 327b2aaadd77c00d847504ff16415813d2fcf89c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554943"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687468"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Kurz: Vytvoření vícekontejnerové aplikace (verze Preview) ve službě Web App for Containers
 
@@ -112,7 +105,7 @@ Po vytvoření plánu služby App Service se ve službě Cloud Shell zobrazí po
 
 ## <a name="create-a-docker-compose-app"></a>Vytvoření aplikace Docker Compose
 
-Ve službě Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](app-service-linux-intro.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit _\<app-name >_ jedinečným názvem aplikace.
+Ve službě Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](app-service-linux-intro.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit _\<název aplikace >_ jedinečným názvem aplikace.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -151,7 +144,7 @@ Kontejnery databáze se nedoporučuje používat v produkčním prostředí. Mí
 
 Příkazem [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) vytvořte server Azure Database for MySQL.
 
-V následujícím příkazu nahraďte název serveru MySQL, kde se zobrazí zástupný symbol _&lt;mysql-Server-název >_ (platné znaky jsou `a-z`, `0-9` a `-`). Tento název je součástí názvu hostitele serveru MySQL (`<mysql-server-name>.database.windows.net`) a musí být globálně jedinečný.
+V následujícím příkazu nahraďte název serveru MySQL, kde vidíte _&lt;MySQL-server-name >_ zástupný symbol (platné znaky jsou `a-z`, `0-9`a `-`). Tento název je součástí názvu hostitele serveru MySQL (`<mysql-server-name>.database.windows.net`) a musí být globálně jedinečný.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
@@ -282,7 +275,7 @@ Uložte změny a editor nano zavřete. K uložení použijte příkaz `^O` a k z
 
 ### <a name="update-app-with-new-configuration"></a>Aktualizace aplikace o novou konfiguraci
 
-Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit _\<app-name >_ názvem webové aplikace, kterou jste vytvořili dříve.
+Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit _\<název aplikace >_ názvem webové aplikace, kterou jste vytvořili dříve.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -358,7 +351,7 @@ services:
 
 ### <a name="update-app-with-new-configuration"></a>Aktualizace aplikace o novou konfiguraci
 
-Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit _\<app-name >_ jedinečným názvem aplikace.
+Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit _\<název aplikace >_ jedinečným názvem aplikace.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -442,7 +435,7 @@ Po vytvoření nastavení aplikace se ve službě Cloud Shell zobrazí podobné 
 
 ### <a name="update-app-with-new-configuration"></a>Aktualizace aplikace o novou konfiguraci
 
-Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit _\<app-name >_ jedinečným názvem aplikace.
+Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit _\<název aplikace >_ jedinečným názvem aplikace.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml

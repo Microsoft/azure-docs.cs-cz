@@ -1,24 +1,18 @@
 ---
-title: Uzamčení App Service Environment odchozího provozu – Azure
-description: Popisuje postup při integraci s Azure Firewall pro zabezpečení odchozího provozu.
-services: app-service
-documentationcenter: na
+title: Uzamčení odchozího provozu
+description: Naučte se integrovat s Azure Firewall k zabezpečení odchozího provozu v rámci App Service prostředí.
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 936fd797786d05edd7cf0f729af33c95ad3b3c56
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: c78749d9d0f0bd4b1dadb8dc0d2f6dd84408a95e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74405662"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687231"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Uzamčení App Service Environment
 
@@ -112,7 +106,7 @@ Následující informace jsou požadovány pouze v případě, že chcete nakonf
 |----------|
 | Azure SQL |
 | Azure Storage |
-| Centrum událostí Azure |
+| Azure Event Hubs |
 
 #### <a name="ip-address-dependencies"></a>Závislosti IP adres
 

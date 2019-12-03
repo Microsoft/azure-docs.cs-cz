@@ -1,25 +1,16 @@
 ---
-title: Konfigurace názvů DNS pro aplikace, které používají Traffic Manager-Azure App Service
-description: Použijte vlastní název domény pro webovou aplikaci v Azure App Service, která zahrnuje Traffic Manager pro vyrovnávání zatížení.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: Nakonfigurujte názvy DNS pomocí Traffic Manager
+description: Přečtěte si, jak nakonfigurovat vlastní doménu pro Azure App Service aplikaci, která se integruje s Traffic Manager pro vyrovnávání zatížení.
 ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/17/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e6a59d519ae8bb515ab16632bd39509682959f50
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9139b83f1f2920da47b4a0d440f622626d41c938
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074036"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689278"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Konfigurace vlastního názvu domény pro webovou aplikaci v Azure App Service pomocí Traffic Manager
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -57,7 +48,7 @@ K přidružení vlastní domény k webové aplikaci v Azure App Service musíte 
 I když se konkrétní poskytovatelé domény liší, namapujete si *z* vlastního názvu domény (například **contoso.com**) *na* název domény služby Traffic Manager (**contoso.trafficmanager.NET**), který je integrovaný do vaší webové aplikace.
 
 > [!NOTE]
-> Pokud se záznam už používá a vy k němu potřebujete na něj navazovat vazby, můžete vytvořit další záznam CNAME. Pokud třeba chcete do webové aplikace bez přerušení navazovat vazby **webové\.contoso.com** , vytvořte záznam CNAME z **awverify. www** do **contoso.trafficmanager.NET**. Do své webové aplikace pak můžete\.přidat "www contoso.com", aniž byste změnili záznam CNAME "www". Další informace najdete v tématu [Vytvoření záznamů DNS pro webovou aplikaci ve vlastní doméně][CREATEDNS].
+> Pokud se záznam už používá a vy k němu potřebujete na něj navazovat vazby, můžete vytvořit další záznam CNAME. Pokud třeba chcete do vaší webové aplikace bez přerušení navazovat vazby **webové\.contoso.com** , vytvořte záznam CNAME z **awverify. www** do **contoso.trafficmanager.NET**. Do své webové aplikace pak můžete přidat "www\.contoso.com", aniž byste změnili záznam CNAME "www". Další informace najdete v tématu [Vytvoření záznamů DNS pro webovou aplikaci ve vlastní doméně][CREATEDNS].
 
 Až dokončíte přidávání nebo úpravu záznamů DNS u svého poskytovatele domény, uložte změny.
 
@@ -66,7 +57,7 @@ Až dokončíte přidávání nebo úpravu záznamů DNS u svého poskytovatele 
 ## <a name="enable-traffic-manager"></a>Povolit Traffic Manager
 [!INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace najdete ve [Středisku pro vývojáře Node.js](https://azure.microsoft.com/develop/nodejs/).
 
 <!-- URL List -->

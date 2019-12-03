@@ -1,24 +1,17 @@
 ---
-title: Nasazení kontejneru z kanálu CI/CD s akcemi na GitHubu – Azure App Service | Microsoft Docs
-description: Naučte se používat akce GitHubu k nasazení kontejneru do App Service
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Vlastní CI kontejnerů/CD z akcí GitHubu
+description: Naučte se používat akce GitHubu k nasazení vlastního kontejneru Linux do App Service z kanálu CI/CD.
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 7fbd7b571f5590ff35d52062cc621069a47b619c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 127dd8645596b605980bf3c6fbc87bf159f7c03e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620235"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671811"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
@@ -71,7 +64,7 @@ Následující příklad používá přihlašovací údaje na úrovni uživatele
 
 1. V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných klíčů > Přidat nový tajný kód** .
 
-2. Vložte obsah níže uvedeného `az cli` příkazu jako hodnotu tajné proměnné. například `AZURE_CREDENTIALS`.
+2. Vložte obsah níže uvedeného `az cli` příkazu jako hodnotu tajné proměnné. Například, `AZURE_CREDENTIALS`.
 
     
     ```azurecli

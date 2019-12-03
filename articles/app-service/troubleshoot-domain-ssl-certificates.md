@@ -1,25 +1,19 @@
 ---
-title: Řešení potíží s certifikáty domén a SSL – Azure App Service | Microsoft Docs
-description: Řešení potíží s certifikátem domény a SSL v Azure App Service
-services: app-service\web
-documentationcenter: ''
+title: Řešení potíží s doménami a certifikáty SSL
+description: Vyhledá řešení běžných problémů, se kterými se můžete setkat při konfiguraci domény nebo certifikátu SSL v Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 778836661ff15c334823f95fef42acadb3e8b649
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470143"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688349"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s certifikátem domény a SSL v Azure App Service
 
@@ -235,17 +229,17 @@ V Azure Portal nelze koupit doménu App Service.
 
 K tomuto problému dochází z jednoho z následujících důvodů:
 
-- V předplatném Azure není žádná kreditní karta nebo platební karta není platná.
+- V předplatném Azure není žádná platební karta, případně je platební karta neplatná.
 
     **Řešení**: přidejte do svého předplatného platnou platební kartu.
 
 - Nejste vlastníkem předplatného, takže nemáte oprávnění k nákupu domény.
 
     **Řešení**: [přiřaďte](../role-based-access-control/role-assignments-portal.md) k vašemu účtu roli vlastníka. Nebo se obraťte na správce předplatného, aby získal oprávnění k nákupu domény.
-- Dosáhli jste limitu pro nákupy domén v rámci vašeho předplatného. Aktuální limit je 20.
+- Dosáhli jste limitu pro nákup domén pro vaše předplatné. Aktuální limit je 20.
 
     **Řešení**: Pokud chcete požádat o zvýšení limitu, obraťte se na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Typ vašeho předplatného Azure nepodporuje nákup App Service domény.
+- Váš typ předplatného Azure nepodporuje nákup domény služby App Service.
 
     **Řešení**: Upgradujte předplatné Azure na jiný typ předplatného, například předplatné s průběžnými platbami.
 

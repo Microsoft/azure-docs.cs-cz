@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 0dd07b3394e385b3931e01867d467af7559b4f8b
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664161"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684132"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Řešení potíží s virtuálním počítačem Linux, když není k dispozici přístup ke konzole sériového rozhraní Azure a rozložení disku používá LVM (Správce logických svazků)
 
@@ -211,6 +211,29 @@ V případě potřeby odeberte nebo upgradujte
 ### <a name="example-3---enable-serial-console"></a>Příklad 3 – povolení sériové konzoly
 Pokud nemáte přístup ke konzole sériového prostředí Azure, ověřte parametry konfigurace GRUB pro virtuální počítač se systémem Linux a opravte je. Podrobné informace najdete [v tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration) .
 
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Příklad 4 – načítání jádra s problematickým svazkem LVM swap
+
+Spuštění virtuálního počítače se nemusí zdařit a na příkazovém řádku se **Dracut** .
+Další podrobnosti o tomto selhání najdete v části buď pomocí sériové konzole Azure, nebo v části > Azure Portal Diagnostika spouštění – > sériového protokolu.
+
+
+Může se zobrazit chyba podobná této:
+
+```
+[  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
+         Starting Dracut Emergency Shell...
+Warning: /dev/VG/SwapVol does not exist
+```
+
+V tomto příkladu je nakonfigurován grub. cfg, aby se načetla LV s názvem **Rd. LVM. lv = VG/SwapVol** a virtuální počítač ho nemůže najít. Tento řádek ukazuje, jak se jádro načítá na SwapVol LV.
+
+```
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
+[    0.000000] e820: BIOS-provided physical RAM map:
+```
+
+ Odstraňte problematický Lotyšsko z konfigurace/etc/default/grub a znovu sestavte grub2. cfg.
+
 
 ## <a name="exit-chroot-and-swap-the-os-disk"></a>Ukončení chroot a prohození disku s operačním systémem
 
@@ -247,4 +270,8 @@ Pokud je na virtuálním počítači spuštěná Výměna disku, vypne se, jakmi
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [službě Azure Serial Console]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+Další informace o
+
+ [Sériová konzola Azure]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+
+[Režim jednoho uživatele](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)

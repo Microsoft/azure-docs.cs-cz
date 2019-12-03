@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/04/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: f11d23207a21af5c73831d0edd5ffc9eaa59c119
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 027e6ec829e9de9956451e48e5f9e1cdd749f9f7
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280661"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689330"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Příklady scénářů uživatelů pro rozhraní API pro analýzu textu
 
@@ -29,7 +29,7 @@ Vykreslete přehledy ze výsledků průzkumu zákazníků a zaměstnanců zpraco
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>Analyzovat zaznamenaná příchozí volání zákazníků
 
-Pomocí Převod textu na řeč, Analýza mínění a Extrakce klíčových frází extrahujte přehledy z volání služeb zákazníkům. Zobrazit výsledky v Power BI řídicím panelu nebo na portálu, abyste lépe pochopili zákazníky, mohli zvýraznit trendy zákaznických služeb a řídit zapojení zákazníků. Odešlete požadavky rozhraní API jako dávku pro vytváření sestav nebo v reálném čase pro účely intervence. Viz [vzorový kód](https://github.com/rlagh2/callcenteranalytics).
+Pomocí Převod textu na řeč, Analýza mínění a Extrakce klíčových frází extrahujte přehledy z volání služeb zákazníkům. Zobrazit výsledky v Power BI řídicím panelu nebo na portálu, abyste lépe pochopili zákazníky, mohli zvýraznit trendy zákaznických služeb a řídit zapojení zákazníků. Odešlete požadavky rozhraní API jako dávku pro vytváření sestav nebo v reálném čase pro účely intervence. Podívejte se na vzorový kód [na GitHubu](https://github.com/rlagh2/callcenteranalytics).
 
 ![Obrázek popisující, jak automatizovat získávání přehledů z hovorů zákaznických služeb pomocí analýzy mínění](media/use-cases/azure-inbound.svg)
 

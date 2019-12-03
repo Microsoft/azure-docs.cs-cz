@@ -1,36 +1,29 @@
 ---
-title: Klonování aplikace pomocí PowerShellu – Azure App Service
-description: Naučte se naklonovat App Service aplikaci do nové aplikace pomocí prostředí PowerShell.
-services: app-service\web
-documentationcenter: ''
+title: Klonování aplikací s využitím PowerShellu
+description: Naučte se naklonovat App Service aplikaci do nové aplikace pomocí prostředí PowerShell. Zahrnuje celou řadu scénářů klonování, včetně integrace Traffic Manager.
 author: ahmedelnably
-manager: stefsch
-editor: ''
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 47efcfc4bf2b0268d6720b659786300e751e861d
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: ccff07009d2f46f6d91b8e3c57158aa6ede3607e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983691"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671430"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Azure App Service klonování aplikace pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-S vydáním Microsoft Azure PowerShell verze 1.1.0 byla přidána `New-AzWebApp` nová možnost, která umožňuje klonovat existující aplikaci App Service na nově vytvořenou aplikaci v jiné oblasti nebo ve stejné oblasti. Tato možnost umožňuje zákazníkům rychle a snadno nasadit řadu aplikací v různých oblastech.
+S vydáním Microsoft Azure PowerShell verze 1.1.0 byla do `New-AzWebApp` přidána nová možnost, která umožňuje klonovat existující aplikaci App Service do nově vytvořené aplikace v jiné oblasti nebo ve stejné oblasti. Tato možnost umožňuje zákazníkům rychle a snadno nasadit řadu aplikací v různých oblastech.
 
 Klonování aplikací se podporuje pro plány služby App Service úrovně Standard, Premium a Premium v2 a Isolated. Nová funkce používá stejná omezení jako funkce App Service Backup, viz [zálohování aplikace v Azure App Service](manage-backup.md).
 
 ## <a name="cloning-an-existing-app"></a>Klonování existující aplikace
-Scénář: Existující aplikace v Střed USA – jih oblasti a chcete klonovat obsah do nové aplikace v Střed USA – sever oblasti. Dá se dosáhnout pomocí Azure Resource Manager verze rutiny prostředí PowerShell pro vytvoření nové aplikace s `-SourceWebApp` možností.
+Scénář: existující aplikace v Střed USA – jih oblasti a chcete klonovat obsah do nové aplikace v Střed USA – sever oblasti. Dá se dosáhnout pomocí Azure Resource Manager verze rutiny prostředí PowerShell pro vytvoření nové aplikace s možností `-SourceWebApp`.
 
 Znalost názvu skupiny prostředků, která obsahuje zdrojovou aplikaci, můžete k získání informací o zdrojové aplikaci použít následující příkaz PowerShellu (v tomto případě s názvem `source-webapp`):
 
@@ -38,19 +31,19 @@ Znalost názvu skupiny prostředků, která obsahuje zdrojovou aplikaci, můžet
 $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
 ```
 
-Pokud chcete vytvořit nový plán App Service, můžete použít `New-AzAppServicePlan` příkaz jako v následujícím příkladu.
+Pokud chcete vytvořit nový plán App Service, můžete použít příkaz `New-AzAppServicePlan` jako v následujícím příkladu.
 
 ```powershell
 New-AzAppServicePlan -Location "North Central US" -ResourceGroupName DestinationAzureResourceGroup -Name DestinationAppServicePlan -Tier Standard
 ```
 
-`New-AzWebApp` Pomocí příkazu můžete vytvořit novou aplikaci v oblasti střed USA – sever a spojit ji s existujícím plánem App Service. Kromě toho můžete použít stejnou skupinu prostředků jako zdrojovou aplikaci nebo definovat novou skupinu prostředků, jak je znázorněno v následujícím příkazu:
+Pomocí příkazu `New-AzWebApp` můžete vytvořit novou aplikaci v oblasti Střed USA – sever a spojit ji s existujícím plánem App Service. Kromě toho můžete použít stejnou skupinu prostředků jako zdrojovou aplikaci nebo definovat novou skupinu prostředků, jak je znázorněno v následujícím příkazu:
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
 ```
 
-Pokud chcete klonovat existující aplikaci včetně všech přidružených slotů nasazení, musíte použít `IncludeSourceWebAppSlots` parametr.  Všimněte si, `IncludeSourceWebAppSlots` že parametr je podporován pouze pro klonování celé aplikace včetně všech slotů. Následující příkaz prostředí PowerShell ukazuje použití tohoto parametru s `New-AzWebApp` příkazem:
+Pokud chcete klonovat existující aplikaci včetně všech přidružených slotů nasazení, musíte použít parametr `IncludeSourceWebAppSlots`.  Všimněte si, že parametr `IncludeSourceWebAppSlots` je podporován pouze pro klonování celé aplikace včetně všech slotů. Následující příkaz prostředí PowerShell demonstruje použití tohoto parametru pomocí příkazu `New-AzWebApp`:
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
@@ -63,7 +56,7 @@ $destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-weba
 ```
 
 ## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>Klonování existující aplikace do App Service Environment
-Scénář: Existující aplikace v Střed USA – jih oblasti a chcete klonovat obsah do nové aplikace do existující App Service Environment (pomocného mechanismu).
+Scénář: existující aplikace v Střed USA – jih oblasti a chcete klonovat obsah do nové aplikace do existující App Service Environment (pomocného mechanismu).
 
 Znalost názvu skupiny prostředků, která obsahuje zdrojovou aplikaci, můžete k získání informací o zdrojové aplikaci použít následující příkaz PowerShellu (v tomto případě s názvem `source-webapp`):
 
@@ -77,12 +70,12 @@ Znalost jména pomocného mechanismu a názvu skupiny prostředků, do které pa
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -ASEName DestinationASE -ASEResourceGroupName DestinationASEResourceGroupName -SourceWebApp $srcapp
 ```
 
-`Location` Parametr je vyžadován z důvodu starší verze, ale při vytváření aplikace v pomocném mechanismu řízení se ignoruje. 
+Parametr `Location` se vyžaduje z důvodu starší verze, ale při vytváření aplikace v pomocném mechanismu se ignoruje. 
 
 ## <a name="cloning-an-existing-app-slot"></a>Klonování existujícího slotu aplikace
-Scénář: Chcete naklonovat existující slot nasazení aplikace do nové aplikace nebo nové přihrádky. Nová aplikace může být ve stejné oblasti jako původní pozice aplikace nebo v jiné oblasti.
+Scénář: chcete naklonovat existující slot nasazení aplikace do nové aplikace nebo nové přihrádky. Nová aplikace může být ve stejné oblasti jako původní pozice aplikace nebo v jiné oblasti.
 
-Znalost názvu skupiny prostředků, která obsahuje zdrojovou aplikaci, můžete k získání informací o pozici zdrojové aplikace (v tomto případě s názvem `source-appslot`) `source-app`použít následující příkaz prostředí PowerShell:
+Znalost názvu skupiny prostředků, která obsahuje zdrojovou aplikaci, můžete pomocí následujícího příkazu PowerShellu získat informace o pozici zdrojové aplikace (v tomto případě s názvem `source-appslot`), která se váže k `source-app`:
 
 ```powershell
 $srcappslot = Get-AzWebAppSlot -ResourceGroupName SourceAzureResourceGroup -Name source-app -Slot source-appslot
@@ -98,14 +91,14 @@ $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name d
 Vytváření aplikací pro více oblastí a konfigurace služby Azure Traffic Manager pro směrování provozu do všech těchto aplikací je důležitým scénářem, který zajistí vysokou dostupnost aplikací pro zákazníky. Při klonování existující aplikace máte možnost připojit obě aplikace buď k novému profilu Traffic Manageru, nebo k existujícímu. Je podporována pouze Azure Resource Manager verze Traffic Manager.
 
 ### <a name="creating-a-new-traffic-manager-profile-while-cloning-an-app"></a>Vytvoření nového profilu Traffic Manager během klonování aplikace
-Scénář: Chcete naklonovat aplikaci do jiné oblasti během konfigurace Azure Resource Manager profilu Traffic Manageru, který zahrnuje obě aplikace. Následující příkaz ukazuje vytvoření klonu zdrojové aplikace do nové aplikace při konfiguraci nového profilu Traffic Manager:
+Scénář: chcete naklonovat aplikaci do jiné oblasti během konfigurace Azure Resource Manager profilu Traffic Manageru, který zahrnuje obě aplikace. Následující příkaz ukazuje vytvoření klonu zdrojové aplikace do nové aplikace při konfiguraci nového profilu Traffic Manager:
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
 ```
 
 ### <a name="adding-new-cloned-app-to-an-existing-traffic-manager-profile"></a>Přidání nové klonované aplikace do existujícího profilu Traffic Manager
-Scénář: Už máte profil Azure Resource Manager Traffic Manageru a chcete obě aplikace přidat jako koncové body. K tomu je třeba nejprve sestavit ID profilu Traffic Manageru. Budete potřebovat ID předplatného, název skupiny prostředků a stávající název profilu Traffic Manageru.
+Scénář: už máte profil Azure Resource Manager Traffic Manageru a chcete obě aplikace přidat jako koncové body. K tomu je třeba nejprve sestavit ID profilu Traffic Manageru. Budete potřebovat ID předplatného, název skupiny prostředků a stávající název profilu Traffic Manageru.
 
 ```powershell
 $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"

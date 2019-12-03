@@ -1,24 +1,15 @@
 ---
-title: Konfigurace aplikací ASP.NET Core – Azure App Service | Microsoft Docs
-description: Naučte se konfigurovat aplikace ASP.NET Core pro práci v Azure App Service
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Konfigurace aplikací pro Linux ASP.NET Core
+description: Naučte se konfigurovat předem sestavený ASP.NET Core kontejner pro vaši aplikaci. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: cephalin
-ms.openlocfilehash: b05120148d3b82829c465effbcdc948da950aaf0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d26c490ad37b25785ff1347cccf1e2be21bba277
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990265"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670469"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurace aplikace ASP.NET Core pro Linux pro Azure App Service
 
@@ -81,7 +72,7 @@ Pokud nakonfigurujete nastavení aplikace se stejným názvem v App Service a v 
 
 ## <a name="get-detailed-exceptions-page"></a>Získat podrobné stránky výjimek
 
-Když aplikace ASP.NET vygeneruje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradila Obecná chyba **HTTP 500** nebo při **zpracování vaší žádosti došlo k chybě.** Zpráva. Pokud chcete zobrazit stránku podrobností o výjimce v App Service, `ASPNETCORE_ENVIRONMENT` přidejte do aplikace nastavení aplikace spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+Když aplikace ASP.NET vygeneruje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradila Obecná chyba **HTTP 500** nebo při **zpracování vaší žádosti došlo k chybě.** Zpráva. Pokud chcete zobrazit stránku podrobností o výjimce v App Service, přidejte do aplikace nastavení aplikace `ASPNETCORE_ENVIRONMENT` spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -91,9 +82,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje zjistit, jestli jsou požadavky uživatele zašifrované, nebo ne, nakonfigurujte v *Startup.cs*middleware pro předávané hlavičky:
 
-- Nakonfigurujte middleware pomocí [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) k `X-Forwarded-For` přeposílání `X-Forwarded-Proto` hlaviček a `Startup.ConfigureServices`v.
+- Nakonfigurujte middleware pomocí [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) k přeposílání `X-Forwarded-For` a `X-Forwarded-Proto` hlavičky v `Startup.ConfigureServices`.
 - Přidejte do známých sítí rozsahy privátních IP adres, aby middleware mohl důvěřovat nástroji pro vyrovnávání zatížení App Service.
-- Vyvolat metodu [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) v v `Startup.Configure` před voláním jiných middlewarů.
+- Než zavoláte jiné middlewary, volejte metodu [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) v `Startup.Configure`.
 
 Vložení všech tří prvků dohromady, váš kód vypadá jako v následujícím příkladu:
 
@@ -122,7 +113,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-Další informace najdete v tématu [konfigurace ASP.NET Core práci se servery proxy a nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
+Další informace najdete v tématu [konfigurace ASP.NET Core pro práci se servery proxy a nástroji pro vyrovnávání zatížení](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
 
 ## <a name="deploy-multi-project-solutions"></a>Nasazení řešení s více projekty
 
@@ -141,7 +132,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>Použití nastavení aplikace
 
-V <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>přidejte do aplikace App Service nastavení aplikace spuštěním následujícího příkazu CLI. Nahraďte  *\<> název aplikace*,  *\<název skupiny prostředků >* a  *\<> název projektu* příslušnými hodnotami.
+V <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>přidejte do aplikace App Service nastavení aplikace spuštěním následujícího příkazu CLI. Nahraďte *\<název aplikace >* , *\<resource-group-name >* a *\<Project-Name >* odpovídajícími hodnotami.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"

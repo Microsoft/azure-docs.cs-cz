@@ -1,22 +1,16 @@
 ---
-title: PHP (Laravel) s MySQL v Linux – Azure App Service | Microsoft Docs
-description: Naučte se, jak získat aplikaci PHP fungující v Azure App Service v systému Linux s připojením k databázi MySQL v Azure. V tomto kurzu se používá Laravel.
-services: app-service\web
-author: cephalin
-manager: jeconnoc
-ms.service: app-service-web
-ms.workload: web
+title: 'Kurz: aplikace pro Linux PHP s MySQL'
+description: Naučte se, jak získat aplikaci pro Linux Node. js pracující v Azure App Service s připojením k databázi MySQL v Azure. V tomto kurzu se používá Laravel.
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4fade03d798096e250cb5b56fbb2003ea4b58e1b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: be8bbfde7e9873f9cef3a85cacc2dfcf4db9039b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481318"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687421"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Sestavení aplikace PHP a MySQL v Azure App Service v systému Linux
 
@@ -40,9 +34,9 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat PHP 5.6.4 nebo novější](https://php.net/downloads.php)
@@ -161,7 +155,7 @@ V tomto kroku vytvoříte v [Azure Database for MySQL](/azure/mysql) databázi M
 
 Pomocí příkazu [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) vytvořte v Azure Database for MySQL server.
 
-V následujícím příkazu nahraďte zástupný symbol jedinečným názvem serveru *\<MySQL-server-name >* , uživatelské jméno pro *>\<správce uživatele*a heslo pro zástupný symbol *\<správce-heslo >* . Název serveru se používá jako součást koncového bodu MySQL (`https://<mysql-server-name>.mysql.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure. Podrobnosti o výběru SKU databáze MySQL DB najdete v tématu [vytvoření serveru Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server).
+V následujícím příkazu nahraďte zástupný symbol jedinečným názvem serveru *\<MySQL-server-name >* , uživatelské jméno pro *\<správce uživatele*a heslo pro zástupný symbol *\<správce-heslo >* . Název serveru se používá jako součást koncového bodu MySQL (`https://<mysql-server-name>.mysql.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure. Podrobnosti o výběru SKU databáze MySQL DB najdete v tématu [vytvoření serveru Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server).
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1
@@ -264,7 +258,7 @@ Uložte změny.
 
 Ve výchozím nastavení vynucuje Azure Database for MySQL od klientů připojení SSL. Pokud se chcete připojit ke své databázi MySQL v Azure, je potřeba použít certifikát [ _.pem_, který poskytuje Azure Database for MySQL](../../mysql/howto-configure-ssl.md).
 
-Otevřete soubor _config/database.php_ a do _přidejte parametry_sslmode_a_options`connections.mysql`, jak je znázorněno v následujícím kódu.
+Otevřete soubor _config/database.php_ a do `connections.mysql` přidejte parametry _sslmode_ a _options_, jak je znázorněno v následujícím kódu.
 
 ```php
 'mysql' => [
@@ -317,7 +311,7 @@ git commit -m "database.php updates"
 
 Vaše aplikace je připravená k nasazení.
 
-## <a name="deploy-to-azure"></a>Nasazení do Azure
+## <a name="deploy-to-azure"></a>Nasadit do Azure
 
 V tomto kroku nasadíte aplikaci PHP připojenou k MySQL do služby Azure App Service.
 
@@ -333,7 +327,7 @@ Další informace najdete v tématu [Změna kořene lokality](configure-language
 
 [!INCLUDE [Create app service plan no h](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Vytvoření webové aplikace
+### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
@@ -413,7 +407,7 @@ remote: Running deployment command...
 > Můžete si všimnout, že proces nasazení na konci nainstaluje balíčky [Composer](https://getcomposer.org/). Služba App Service tyto automatizace nespouští při výchozím nasazení, takže toto ukázkové úložiště obsahuje v kořenovém adresáři tři další soubory, které je povolují:
 >
 > - `.deployment` – Tento soubor informuje službu App Service, že má jako vlastní skript nasazení spustit `bash deploy.sh`.
-> - `deploy.sh` – vlastní skript nasazení. Když se do souboru podíváte, zjistíte, že po příkazu `php composer.phar install` spouští příkaz `npm install`.
+> - `deploy.sh` – vlastní skript nasazení. Když se do souboru podíváte, zjistíte, že po příkazu `npm install` spouští příkaz `php composer.phar install`.
 > - `composer.phar` – správce balíčků Composer.
 >
 > Pomocí tohoto postupu můžete přidat do služby App Service libovolný krok nasazení z Gitu. Další informace najdete v tématu [spuštění skladatele](configure-language-php.md#run-composer).

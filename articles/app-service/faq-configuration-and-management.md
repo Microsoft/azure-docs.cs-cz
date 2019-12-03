@@ -1,25 +1,19 @@
 ---
-title: Nejčastější dotazy ke konfiguraci – Azure App Service | Microsoft Docs
-description: Získejte odpovědi na nejčastější dotazy týkající se problémů s konfigurací a správou funkce Web Apps Azure App Service.
-services: app-service\web
-documentationcenter: ''
+title: Nejčastější dotazy ke konfiguraci
+description: Získejte odpovědi na nejčastější dotazy týkající se problémů s konfigurací a správou pro Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 111ee6cda46677b3b0fc39f5a84268e6ac192da9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc13b0939563f93c31683b432b0410035d892de0
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470531"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672508"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
@@ -67,7 +61,7 @@ Nastavení časového pásma serveru pro vaši webovou aplikaci:
 
 1. V Azure Portal v předplatném App Service přejděte do nabídky **nastavení aplikace** .
 2. V části **nastavení aplikace**přidejte toto nastavení:
-    * Klíč = WEBSITE_TIME_ZONE
+    * Key = WEBSITE_TIME_ZONE
     * Hodnota = *časové pásmo, které chcete*
 3. Vyberte **Save** (Uložit).
 

@@ -1,25 +1,16 @@
 ---
-title: Konfigurace ověřování účtu Microsoft – Azure App Service
-description: Přečtěte si, jak nakonfigurovat ověřování účtu Microsoft pro vaši aplikaci App Service.
-author: mattchenderson
-services: app-service
-documentationcenter: ''
-manager: syntaxc4
-editor: ''
+title: Konfigurace ověřování společnosti Microsoft
+description: Naučte se nakonfigurovat ověřování účtu Microsoft jako zprostředkovatele identity pro vaši aplikaci App Service.
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/08/2019
-ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 70af534e6bcd0039dbc602a5ebc3fc35fb145e79
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f9158a4094b7d2ec148c2cae85decb3ad959b7c3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176935"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671920"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Konfigurace aplikace App Service pro používání přihlášení k účtu Microsoft
 
@@ -31,11 +22,11 @@ V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service pro použití 
 
 1. V Azure Portal přejít na [**Registrace aplikací**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) . V případě potřeby se přihlaste pomocí účet Microsoft.
 1. Vyberte **Nová registrace**a pak zadejte název aplikace.
-1. V rozevíracích **identifikátorech URI pro přesměrování**vyberte **Web**a potom zadejte `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`. Nahraďte *\<app-Domain-name >* názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
+1. V v **identifikátorech URI pro přesměrování**vyberte **Web**a pak zadejte `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`. Nahraďte *\<App-Domain-name >* názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
 
 1. Vyberte **Zaregistrovat**.
 1. Zkopírujte **ID aplikace (klienta)** . Budete ho potřebovat později.
-1. V levém podokně vyberte **certifikáty & tajných**kódů  > **nový tajný klíč klienta**. Zadejte popis, vyberte dobu platnosti a vyberte **Přidat**.
+1. V levém podokně vyberte **certifikáty & tajných klíčů** > **nový tajný klíč klienta**. Zadejte popis, vyberte dobu platnosti a vyberte **Přidat**.
 1. Zkopírujte hodnotu, která se zobrazí na stránce **certifikáty & tajných** kódů. Po opuštění stránky se znovu nezobrazí.
 
     > [!IMPORTANT]

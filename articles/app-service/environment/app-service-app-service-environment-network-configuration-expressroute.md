@@ -1,25 +1,18 @@
 ---
-title: Podrobnosti o konfiguraci sítě pro Azure ExpressRoute – App Service
-description: Podrobnosti o konfiguraci sítě pro App Service Environment pro PowerApps ve virtuálních sítích připojených k okruhu Azure ExpressRoute.
-services: app-service
-documentationcenter: ''
+title: Konfigurace Azure ExpressRoute v1
+description: Konfigurace sítě pro App Service Environment pro PowerApps s Azure ExpressRoute. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: b10bd15538ecca7934a397ca63db1150a0bfc32c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070028"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688752"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Podrobnosti o konfiguraci sítě pro App Service Environment pro PowerApps s Azure ExpressRoute
 
@@ -86,28 +79,28 @@ Kombinovaný účinek této konfigurace je, že UDR na úrovni podsítě má př
 
 Základní informace o trasách definovaných uživatelem najdete v tématu [směrování provozu virtuální sítě][UDROverview].  
 
-Informace o tom, jak vytvořit a nakonfigurovat uživatelsky definované trasy, najdete v tématu [směrování síťového provozu pomocí směrovací tabulky][UDRHowTo]pomocí PowerShellu.
+Informace o tom, jak vytvořit a nakonfigurovat uživatelsky definované trasy, najdete v tématu [směrování síťového provozu pomocí směrovací tabulky pomocí PowerShellu][UDRHowTo].
 
 ## <a name="udr-configuration"></a>Konfigurace UDR
 
 Tato část ukazuje příklad konfigurace UDR pro App Service Environment.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-* Nainstalujte Azure PowerShell na [stránce soubory ke stažení pro Azure][AzureDownloads]. Vyberte soubor ke stažení s datem od června 2015 nebo novějším. V části **nástroje** > příkazového řádku**Windows PowerShell**vyberte **instalovat** a nainstalujte nejnovější rutiny PowerShellu.
+* Nainstalujte Azure PowerShell na [stránce soubory ke stažení pro Azure][AzureDownloads]. Vyberte soubor ke stažení s datem od června 2015 nebo novějším. V části **nástroje příkazového řádku** > **prostředí Windows PowerShell**vyberte **instalovat** a nainstalujte nejnovější rutiny PowerShellu.
 
 * Vytvořte jedinečnou podsíť pro výhradní použití pomocí App Service Environment. Jedinečná podsíť zajišťuje, že udr, který se použije pro podsíť, otevírá odchozí provoz jenom pro App Service Environment.
 
 > [!IMPORTANT]
 > Nasaďte App Service Environment jenom po dokončení kroků konfigurace. Tento postup zajistí, aby bylo k dispozici odchozí připojení k síti, než se pokusíte nasadit App Service Environment.
 
-### <a name="step-1-create-a-route-table"></a>Krok 1: Vytvoření směrovací tabulky
+### <a name="step-1-create-a-route-table"></a>Krok 1: vytvoření směrovací tabulky
 
 V Západní USA oblasti Azure vytvořte směrovací tabulku s názvem **DirectInternetRouteTable** , jak je znázorněno v tomto fragmentu kódu:
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>Krok 2: Vytvořit trasy v tabulce
+### <a name="step-2-create-routes-in-the-table"></a>Krok 2: vytvoření tras v tabulce
 
 Pokud chcete povolit odchozí přístup k Internetu, přidejte do směrovací tabulky trasy.  
 
@@ -126,26 +119,26 @@ Jako alternativu si můžete stáhnout aktuální a kompletní seznam rozsahů C
 > Jeden UDR má výchozí horní limit 100 tras. Musíte "shrnout" rozsahy IP adres Azure, které se vejdou do limitu 100-tras. Trasy definované UDR musí být specifičtější než trasy, které jsou inzerovány vaším připojením ExpressRoute.
 > 
 
-### <a name="step-3-associate-the-table-to-the-subnet"></a>Krok 3: Přidružit tabulku k podsíti
+### <a name="step-3-associate-the-table-to-the-subnet"></a>Krok 3: přidružení tabulky k podsíti
 
 Přidružte směrovací tabulku k podsíti, do které chcete nasadit App Service Environment. Tento příkaz přidruží tabulku **DirectInternetRouteTable** k podsíti **ASESubnet** , která bude obsahovat App Service Environment.
 
 `Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-### <a name="step-4-test-and-confirm-the-route"></a>Krok 4: Testování a potvrzení trasy
+### <a name="step-4-test-and-confirm-the-route"></a>Krok 4: testování a potvrzení trasy
 
 Poté, co je tabulka směrování svázána s podsítí, otestujte a potvrďte trasu.
 
 Nasaďte virtuální počítač do podsítě a potvrďte tyto podmínky:
 
-* Odchozí přenosy do koncových bodů Azure a mimo Azure popsaných v tomto článku nesměrují okruh ExpressRoute. Pokud se odchozí přenos z podsítě vynutí pro místní připojení, App Service Environment vytváření vždy selhává.
+* Odchozí přenosy do koncových bodů Azure a mimo Azure popsaných v tomto článku **nesměrují** okruh ExpressRoute. Pokud se odchozí přenos z podsítě vynutí pro místní připojení, App Service Environment vytváření vždy selhává.
 * Hledání ve službě DNS pro koncové body popsané v tomto článku se vyřeší správně. 
 
 Po dokončení kroků konfigurace a potvrzení trasy odstraňte virtuální počítač. Pokud je vytvořena App Service Environment, musí být podsíť "prázdná".
 
 Teď jste připraveni nasadit App Service Environment!
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít s App Service Environment pro PowerApps, přečtěte si téma [Úvod do App Service Environment][IntroToAppServiceEnvironment].
 

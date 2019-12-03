@@ -1,25 +1,18 @@
 ---
-title: Vytvoření App Service Environment v1 – Azure
-description: Popis toku vytváření pro službu App Service Environment v1
-services: app-service
-documentationcenter: ''
+title: Vytvoření namocného mechanismu v1
+description: Popis toku vytváření pro službu App Service Environment v1. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 81bd32cf-7ae5-454b-a0d2-23b57b51af47
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 017c79ec1341c85f3bd08393dd5553f90a2f6cef
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 752334e3d594b1f95786aecaca134b74c4e264d5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069743"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688695"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Vytvoření App Service Environment v1 
 
@@ -33,8 +26,8 @@ App Service Environment (pomocným mechanismem) je možnost služby Premium v Az
 ### <a name="before-you-create-your-ase"></a>Před vytvořením pomocného mechanismu
 Je důležité vědět, co nemůžete změnit. Tyto aspekty nemůžete po vytvoření pomocného mechanismu změnit:
 
-* Location
-* Subscription
+* Umístění
+* Předplatné
 * Skupina prostředků
 * Použitá virtuální síť
 * Použitá podsíť 
@@ -43,7 +36,7 @@ Je důležité vědět, co nemůžete změnit. Tyto aspekty nemůžete po vytvo�
 Když vybíráte virtuální síť a zadáváte podsíť, ujistěte se, že je dostatečně velká, aby vyhovovala budoucímu růstu. 
 
 ### <a name="creating-an-app-service-environment-v1"></a>Vytvoření App Service Environment v1
-Pokud chcete vytvořit App Service Environment V1, můžete vyhledat Azure Marketplace ***App Service Environment v1***nebo si projít **vytvořením prostředku** -> **web a mobilní zařízení** -> **App Service Environment**. Vytvoření ASEv1:
+Pokud chcete vytvořit App Service Environment V1, můžete vyhledat Azure Marketplace ***App Service Environment v1***nebo si Projděte **vytvořením prostředku** -> **web a mobilní zařízení** -> **App Service Environment**. Vytvoření ASEv1:
 
 1. Zadejte název vašeho pomocného programu. Název, který zadáte pro pomocného nástroje, se použije pro aplikace vytvořené v pomocném mechanismu. Pokud je název pomocného mechanismu appsvcenvdemo, název subdomény by byl: *appsvcenvdemo.p.azurewebsites.NET*. Pokud tedy vytvoříte aplikaci s názvem *MyTestApp*, bude se adresovat na *MyTestApp.appsvcenvdemo.p.azurewebsites.NET*. V názvu vašeho pomocného mechanismu se nedá použít prázdné znaky. Použijete-li velká písmena v názvu, bude název domény celková verze tohoto názvu. Pokud použijete interního nástroje, vaše jméno pomocného mechanismu se nepoužije v subdoméně, ale místo toho je explicitně uvedeno během vytváření pomocného mechanismu.
    
@@ -55,21 +48,21 @@ Pokud chcete vytvořit App Service Environment V1, můžete vyhledat Azure Marke
 4. Proveďte Virtual Network a výběr umístění. Můžete si vytvořit novou virtuální síť nebo vybrat již existující virtuální síť. Pokud vyberete novou virtuální síť, můžete zadat její název a umístění. Nová virtuální síť bude mít rozsah adres 192.168.250.0/23 a podsíť s názvem **Default** , která je definovaná jako 192.168.250.0/24. Můžete také jednoduše vybrat stávající virtuální síť typu Classic nebo Správce prostředků. Výběr typu VIP určuje, jestli k vašemu přimocnému objektu se dá získat přímý pøístup z Internetu (externí) nebo jestli používá interní Load Balancer (interního nástroje). Další informace o nich najdete v tématu [použití interní Load Balancer s App Service Environment][ILBASE]. Pokud vyberete externí typ VIP, můžete vybrat, kolik externích IP adres se má systém vytvořit, pro účely IPSSL. Vyberete-li možnost interní, je třeba zadat subdoménu, kterou bude používat váš správce přidaných mechanismů. Služby ASE je možné nasadit do virtuálních sítí, které používají *buď* rozsahy veřejných adres, *nebo* RFC1918 adresní prostory (tj. soukromé adresy). Aby bylo možné používat virtuální síť s rozsahem veřejných adres, bude nutné vytvořit virtuální síť předem. Když vyberete existující virtuální síť, budete muset během vytváření pomocného mechanismu vytvořit novou podsíť. **Na portálu nemůžete použít předem vytvořenou podsíť. Pokud vytváříte pomocného správce prostředků pomocí šablony Resource Manageru, můžete vytvořit pomocného programu s již existující podsítí.** Pokud chcete vytvořit pomocného objektu ze šablony, použijte zde tyto informace, vytvořte [App Service Environment ze šablony][ILBAseTemplate] a tady a vytvořte [App Service Environment interního nástroje ze šablony][ASEfromTemplate].
 
 ### <a name="details"></a>Podrobnosti
-Přístupový objekt pro vytváření se vytvoří se dvěma front-endy a 2 pracovními procesy. Front-endy slouží jako koncové body HTTP/HTTPS a odesílají přenosy do pracovních procesů, které jsou hostiteli vašich aplikací. Po vytvoření pomocného mechanismu můžete upravit množství a můžete dokonce nastavit pravidla automatického škálování na těchto fondech zdrojů. Další informace o ručním škálování, správě a monitorování App Service Environment najdete tady: [Postup konfigurace App Service Environment][ASEConfig] 
+Přístupový objekt pro vytváření se vytvoří se dvěma front-endy a 2 pracovními procesy. Front-endy slouží jako koncové body HTTP/HTTPS a odesílají přenosy do pracovních procesů, které jsou hostiteli vašich aplikací. Po vytvoření pomocného mechanismu můžete upravit množství a můžete dokonce nastavit pravidla automatického škálování na těchto fondech zdrojů. Další informace o ručním škálování, správě a monitorování App Service Environment najdete tady: [jak nakonfigurovat App Service Environment][ASEConfig] 
 
 V podsíti, kterou používá pomocný modul pro pořízení, může existovat jenom jeden přihlášený. Podsíť se nedá použít pro žádnou jinou než pomocného mechanismu.
 
 ### <a name="after-app-service-environment-v1-creation"></a>Po vytvoření App Service Environment v1
 Po vytvoření pomocného mechanismu můžete upravit:
 
-* Množství front-endy (minimální: 2)
+* Množství front-endy (minimálně: 2)
 * Množství pracovních procesů (minimálně: 2)
 * Množství IP adres, které jsou k dispozici pro IP SSL
 * Velikosti výpočetních prostředků používané předními konci nebo pracovními procesy (minimální velikost front-endu je P2)
 
-K dispozici jsou další podrobnosti o ručním škálování, správě a monitorování App Servicech prostředích: [Postup konfigurace App Service Environment][ASEConfig] 
+V této části najdete další podrobnosti o ručním škálování, správě a monitorování App Servicech prostředí: [jak nakonfigurovat App Service Environment][ASEConfig] 
 
-Informace o automatickém škálování tady je příručka: [Jak nakonfigurovat automatické škálování pro App Service Environment][ASEAutoscale]
+Informace o automatickém škálování tady je příručka: [jak nakonfigurovat automatické škálování pro App Service Environment][ASEAutoscale]
 
 Existují další závislosti, které nejsou k dispozici pro vlastní nastavení, jako je databáze a úložiště. Tyto služby jsou zpracovávány v Azure a dodávány se systémem. Systémové úložiště podporuje pro celou App Service Environment až 500 GB a databáze se podle potřeby škáluje podle Azure.
 

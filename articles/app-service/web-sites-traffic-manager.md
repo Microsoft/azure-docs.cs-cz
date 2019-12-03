@@ -1,26 +1,16 @@
 ---
-title: Řízení provozu pomocí Traffic Manager-Azure App Service
-description: Tento článek poskytuje souhrnné informace o službě Azure Traffic Manager v souvislosti s Azure App Service.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-writer: cephalin
-manager: erikre
-editor: mollybos
+title: Řízení provozu pomocí Traffic Manager
+description: Vyhledá osvědčené postupy pro konfiguraci Azure Traffic Manager při integraci s Azure App Service.
 ms.assetid: dabda633-e72f-4dd4-bf1c-6e945da456fd
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2cd53c3c0b3e9acbb8a5a88c7696e8b3089c50c9
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 200effab70b369d69b4e89b1901578ecfe1a1b87
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483376"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684107"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Řízení provozu Azure App Service s využitím Azure Traffic Manager
 > [!NOTE]
@@ -28,7 +18,7 @@ ms.locfileid: "74483376"
 > 
 > 
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 Pomocí Azure Traffic Manager můžete řídit, jak se budou požadavky z webových klientů distribuovat do aplikací v Azure App Service. Pokud do profilu služby Azure Traffic Manager přidáte koncové body služby App Service, služba Azure Traffic Manager bude sledovat stav vašich aplikací App Service (spuštěné, zastavené nebo odstraněné), aby se mohla rozhodnout, do kterého z těchto koncových bodů se má směrovat provoz.
 
 ## <a name="routing-methods"></a>Metody směrování

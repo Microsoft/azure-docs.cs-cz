@@ -1,29 +1,21 @@
 ---
-title: Zabezpečené připojení k prostředkům back-endu z App Service prostředí – Azure
-description: Přečtěte si, jak se bezpečně připojit k back-endu prostředkům z App Service Environment.
-services: app-service
-documentationcenter: ''
+title: Připojení k back-endu v1
+description: Přečtěte si, jak se bezpečně připojit k back-endu prostředkům z App Service Environment. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: adb7c246a9f8c8d202d45b58f4d22eeb8d51a773
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 03f773e286697a12188f238cf2f422a18a20054f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069968"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687299"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Zabezpečené připojení k prostředkům back-endu z App Serviceho prostředí
-## <a name="overview"></a>Přehled
-Vzhledem k tomu, že je vždy vytvořen App Service Environment ve virtuální síti Azure Resource Manager **nebo** v modelu nasazení Classic [][virtualnetwork], odchozí připojení z App Service Environment k jiným back-end prostředkům může se přenášet výhradně přes virtuální síť.  V důsledku nedávné změny provedené v červnu 2016 lze služby ASE také nasadit do virtuálních sítí, které používají buď rozsahy veřejných adres, nebo RFC1918 adresní prostory (tj. soukromé adresy).  
+Vzhledem k [tomu, že][virtualnetwork]je vždy vytvořen App Service Environment v rámci virtuální sítě Azure Resource Manager **nebo** modelu nasazení Classic, odchozí připojení z App Service Environment do jiných back-end prostředků mohou být **výhradně v rámci** virtuální sítě.  V důsledku nedávné změny provedené v červnu 2016 lze služby ASE také nasadit do virtuálních sítí, které používají buď rozsahy veřejných adres, nebo RFC1918 adresní prostory (tj. soukromé adresy).  
 
 Může se například jednat o SQL Server běžící na clusteru virtuálních počítačů s uzamčeným portem 1433.  Koncový bod může být ACLd, aby povoloval přístup jenom z jiných prostředků ve stejné virtuální síti.  
 
@@ -45,11 +37,11 @@ Před vytvořením App Service Environment taky doporučujeme, aby všechny vlas
 ## <a name="connecting-to-a-sql-server"></a>Připojení k SQL Server
 Konfigurace běžného SQL Server má koncový bod naslouchat na portu 1433:
 
-![SQL Server Endpoint][SqlServerEndpoint]
+![SQL Server koncový bod][SqlServerEndpoint]
 
 Existují dva přístupy k omezení provozu do tohoto koncového bodu:
 
-* [Seznam Access Control sítě][NetworkAccessControlLists] (Seznamy ACL v síti)
+* [Seznamy síťových Access Control][NetworkAccessControlLists] (seznamy ACL sítě)
 * [Skupiny zabezpečení sítě][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Omezení přístupu pomocí seznamu ACL sítě

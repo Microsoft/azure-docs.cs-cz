@@ -1,39 +1,30 @@
 ---
-title: Vytvoření webové aplikace Ruby na platformě Linux-Azure App Service | Microsoft Docs
-description: Naučte se vytvořit aplikaci v Ruby on Rails pomocí služby App Service v Linuxu.
+title: 'Rychlý Start: Vytvoření aplikace pro Linux Ruby'
+description: Začněte s aplikacemi pro Linux v Azure App Service nasazením první aplikace v Ruby do kontejneru Linux v App Service.
 keywords: azure app service, linux, oss, ruby, rails
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 07/11/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cfcea4c4450ea806b36d1d46c17c6676f7d92893
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 17c81ab71352f57731d9b36138c88c34421e374c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071070"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689029"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Vytvoření aplikace v Ruby on Rails ve službě App Service v Linuxu
 
 [App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. V tomto kurzu rychlý Start se dozvíte, jak nasadit aplikaci v Ruby na železnici, která Azure App Service na Linux pomocí [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 > [!NOTE]
-> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít jinou platformu, například Sinatra, nebo pokud chcete použít nepodporovanou [verzi Ruby](app-service-linux-intro.md), je nutné [ji spustit ve vlastním kontejneru](quickstart-docker-go.md).
+> Vývojová sada Ruby podporuje v současnosti jen Ruby on Rails. Pokud chcete použít jinou platformu, například Sinatra, nebo pokud chcete použít [nepodporovanou verzi Ruby](app-service-linux-intro.md), je nutné [ji spustit ve vlastním kontejneru](quickstart-docker-go.md).
 
 ![Hello World](./media/quickstart-ruby/hello-world-configured.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Nainstalovat Ruby 2,6 nebo vyšší</a>
 * <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
@@ -50,7 +41,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 Spusťte aplikaci místně, abyste viděli, jak by měla vypadat po nasazení do Azure. Otevřete okno terminálu, přejděte do adresáře `hello-world` a pomocí příkazu `rails server` spusťte server.
 
-Prvním krokem je instalace požadovaných souborů gem. V ukázce je `Gemfile` zahrnut, stačí spustit následující příkaz:
+Prvním krokem je instalace požadovaných souborů gem. Ukázka obsahuje `Gemfile`, takže stačí spustit následující příkaz:
 
 ```bash
 bundle install
@@ -74,7 +65,7 @@ Ve webovém prohlížeči přejděte na adresu `http://localhost:3000` a místn�
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Vytvoření webové aplikace
+## <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
@@ -125,12 +116,12 @@ http://<app-name>.azurewebsites.net
 ![aktualizovaná webová aplikace](./media/quickstart-ruby/hello-world-configured.png)
 
 > [!NOTE]
-> I když se aplikace restartuje, můžete sledovat stavový kód `Error 503 Server unavailable` http v prohlížeči `Hey, Ruby developers!` nebo výchozí stránku. Úplné restartování aplikace může trvat několik minut.
+> Při restartování aplikace můžete sledovat stavový kód HTTP `Error 503 Server unavailable` v prohlížeči nebo na `Hey, Ruby developers!` výchozí stránce. Úplné restartování aplikace může trvat několik minut.
 >
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Kurz: Ruby na kolejnicích s Postgres](tutorial-ruby-postgres-app.md)

@@ -1,22 +1,18 @@
 ---
-title: Sestavení webové aplikace Java Enterprise v systému Linux – Azure App Service | Microsoft Docs
-description: Naučte se, jak získat podnikovou aplikaci v jazyce Java pracující v WildFly Azure App Service na platformě Linux.
+title: 'Kurz: Java Enterprise App on Linux'
+description: Naučte se, jak získat podnikovou aplikaci Java pracující v WildFly Azure App Service na platformě Linux s připojením k databázi PostgreSQL v Azure.
 author: JasonFreeberg
-manager: routlaw
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 2d26d9e145030e5972289c224dc2f76078d67527
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 84f22d52e9a92707a26a4e64f194e82cca87757d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498488"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687440"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Java EE a Postgres v Azure
 
@@ -30,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Aktualizace a opětovné nasazení aplikace
 > * Spustit testy jednotek na WildFly
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Stažení a instalace Gitu](https://git-scm.com/)
 2. [Stažení a instalace Maven 3](https://maven.apache.org/install.html)
@@ -52,7 +48,7 @@ git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
 
 Aktualizujte modul plug-in Azure Maven s požadovaným názvem a skupinou prostředků vašeho App Service. Nemusíte vytvářet App Service plán nebo instanci předem. Modul plug-in Maven vytvoří skupinu prostředků a App Service, pokud ještě neexistuje.
 
-Chcete-li provést změny, `<plugins>` můžete přejít dolů k části souboru *pom. XML*, řádku 200.
+Chcete-li provést změny, můžete přejít dolů k části `<plugins>` souboru *pom. XML*, řádku 200.
 
 ```xml
 <!-- Azure App Service Maven plugin for deployment -->
@@ -68,7 +64,7 @@ Chcete-li provést změny, `<plugins>` můžete přejít dolů k části souboru
 </plugin>  
 ```
 
-`YOUR_APP_NAME` Nahraďte `YOUR_RESOURCE_GROUP` a názvem svého App Service a skupiny prostředků.
+Nahraďte `YOUR_APP_NAME` a `YOUR_RESOURCE_GROUP` názvy vašich App Service a skupiny prostředků.
 
 ## <a name="build-and-deploy-the-application"></a>Sestavení a nasazení aplikace
 
@@ -96,7 +92,7 @@ Až se nasazení dokončí, pokračujte k dalšímu kroku.
 
 ### <a name="create-a-record"></a>Vytvoření záznamu
 
-Otevřete prohlížeč a přejděte do `https://<your_app_name>.azurewebsites.net/`. Gratulujeme, nasadili jste aplikaci Java EE do Azure App Service!
+Otevřete prohlížeč a přejděte na adresu `https://<your_app_name>.azurewebsites.net/`. Gratulujeme, nasadili jste aplikaci Java EE do Azure App Service!
 
 V tuto chvíli aplikace používá databázi H2 v paměti. Na navigačním panelu klikněte na správce a vytvořte novou kategorii. Při restartování instance App Service dojde ke ztrátě záznamu v databázi v paměti. V následujících krocích to opravíte tak, že zřídíte databázi Postgres v Azure a nakonfigurujete WildFly pro její použití.
 
@@ -130,7 +126,7 @@ Nyní provedeme změny v aplikaci Java, aby mohla používat naši databázi Pos
 
 ### <a name="add-postgres-credentials-to-the-pom"></a>Přidání přihlašovacích údajů Postgres do POM
 
-V *souboru pom. XML*nahraďte hodnoty zástupných symbolů velkými písmeny názvem vašeho serveru Postgres, přihlašovacím jménem správce a heslem. Tato pole jsou v rámci modulu plug-in Azure Maven. (Nezapomeňte nahradit `YOUR_SERVER_NAME`, `YOUR_PG_USERNAME`, a `YOUR_PG_PASSWORD` ve `<value>` značkách... není v rámci `<name>` značek.)
+V *souboru pom. XML*nahraďte hodnoty zástupných symbolů velkými písmeny názvem vašeho serveru Postgres, přihlašovacím jménem správce a heslem. Tato pole jsou v rámci modulu plug-in Azure Maven. (Nezapomeňte v `<value>` značkách nahradit `YOUR_SERVER_NAME`, `YOUR_PG_USERNAME`a `YOUR_PG_PASSWORD`... není v rámci značek `<name>`.)
 
 ```xml
 <plugin>
@@ -165,24 +161,24 @@ Dál je potřeba upravit konfiguraci rozhraní API pro JPA (Java Transaction API
 
 Před nasazením naší překonfigurované aplikace je potřeba aktualizovat aplikační server WildFly pomocí modulu Postgres a jeho závislostí. Další informace o konfiguraci najdete na adrese [Konfigurace serveru WildFly](configure-language-java.md#configure-java-ee-wildfly).
 
-K nakonfigurování tohoto serveru budeme potřebovat čtyři soubory v adresáři *wildfly_config/* :
+Ke konfiguraci serveru budeme potřebovat čtyři soubory v *wildfly_config/* adresáři:
 
-- **postgresql-42.2.5.jar**: Tento soubor JAR je ovladač JDBC pro Postgres. Další informace najdete na [oficiální webové stránce](https://jdbc.postgresql.org/index.html).
-- **postgres-module.xml**: Tento soubor XML deklaruje název modulu Postgres (org. Postgres). Také určuje prostředky a závislosti, které jsou nezbytné pro použití modulu.
+- **PostgreSQL-42.2.5. jar**: Tento soubor JAR je ovladač JDBC pro Postgres. Další informace najdete na [oficiální webové stránce](https://jdbc.postgresql.org/index.html).
+- **Postgres-Module. XML**: Tento soubor XML deklaruje název pro modul Postgres (org. Postgres). Také určuje prostředky a závislosti, které jsou nezbytné pro použití modulu.
 - **jboss_cli_commands. CLI**: Tento soubor obsahuje příkazy konfigurace, které budou spouštěny pomocí rozhraní příkazového řádku JBoss. Příkazy přidávají modul Postgres k aplikačnímu serveru WildFly, poskytují přihlašovací údaje, deklaruje název JNDI, nastaví prahovou hodnotu časového limitu atd. Pokud nejste obeznámeni s rozhraním příkazového řádku JBoss, přečtěte si [oficiální dokumentaci](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
-- **startup_script.sh**: Nakonec bude tento skript prostředí proveden při každém spuštění instance App Service. Skript provádí pouze jednu funkci: potrubní příkazy v *jboss_cli_commands. CLI* do rozhraní příkazového řádku JBoss.
+- **startup_script. sh**: nakonec se spustí tento skript prostředí při každém spuštění instance App Service. Skript provádí pouze jednu funkci: potrubní příkazy v *jboss_cli_commands. CLI* do rozhraní příkazového řádku JBoss.
 
 Důrazně doporučujeme, abyste si přečetli obsah těchto souborů, zejména *jboss_cli_commands. CLI*.
 
 ### <a name="ftp-the-configuration-files"></a>Konfigurační soubory FTP
 
-Budeme potřebovat FTP obsah *wildfly_config/* na naši instanci App Service. Pokud chcete získat přihlašovací údaje FTP, klikněte na tlačítko **získat profil publikování** v okně App Service v Azure Portal. Vaše uživatelské jméno a heslo FTP budou ve staženém dokumentu XML. Další informace o profilu publikování najdete v [tomto dokumentu](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
+Budeme potřebovat FTP obsah *wildfly_config/* do naší App Service instance. Pokud chcete získat přihlašovací údaje FTP, klikněte na tlačítko **získat profil publikování** v okně App Service v Azure Portal. Vaše uživatelské jméno a heslo FTP budou ve staženém dokumentu XML. Další informace o profilu publikování najdete v [tomto dokumentu](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
-Pomocí nástroje FTP dle vašeho výběru přeneste čtyři soubory v *wildfly_config/* na */Home/site/Deployments/Tools/* . (Všimněte si, že byste neměli přenášet adresář, jenom samotné soubory.)
+Pomocí nástroje FTP dle vašeho výběru přeneste čtyři soubory v *wildfly_config/* do */Home/site/Deployments/Tools/* . (Všimněte si, že byste neměli přenášet adresář, jenom samotné soubory.)
 
 ### <a name="finalize-app-service"></a>Dokončit App Service
 
-V okně App Service přejděte na panel nastavení aplikace. V části "modul runtime" nastavte pole spouštěcí soubor na */Home/site/Deployments/Tools/startup_script.sh*. Tím se zajistí, že se skript prostředí spustí po vytvoření instance App Service, ale před spuštěním serveru WildFly.
+V okně App Service přejděte na panel nastavení aplikace. V části "modul runtime" nastavte pole spouštěcí soubor na */home/site/deployments/tools/startup_script. sh*. Tím se zajistí, že se skript prostředí spustí po vytvoření instance App Service, ale před spuštěním serveru WildFly.
 
 Nakonec restartujte App Service. Tlačítko je na panelu přehled.
 
@@ -204,7 +200,7 @@ Pokud tyto prostředky nepotřebujete pro jiný kurz (viz další kroky), může
 az group delete --name <your-resource-group>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
@@ -218,7 +214,7 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS na svou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Kurz: Mapování vlastního názvu DNS na aplikaci](../app-service-web-tutorial-custom-domain.md)
+> [Kurz: mapování vlastního názvu DNS na aplikaci](../app-service-web-tutorial-custom-domain.md)
 
 Nebo si prohlédněte další zdroje informací:
 

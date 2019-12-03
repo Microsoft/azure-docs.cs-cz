@@ -1,32 +1,23 @@
 ---
-title: Konfigurace úrovně PremiumV2 – Azure App Service | Microsoft Docs
+title: Konfigurace úrovně PremiumV2
 description: Přečtěte si, jak lépe zvýšit výkon webové, mobilní a API aplikace v Azure App Service škálováním na novou cenovou úroveň PremiumV2.
 keywords: app service, azure app service, škálování, škálovatelné, plán služby App Service, náklady služby App Service
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aa1e522e395f869f73c0b250623665a9b175384e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067231"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672216"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurace PremiumV2 úrovně pro Azure App Service
 
 Nová cenová úroveň **PremiumV2** poskytuje rychlejší procesory, SSD úložiště a zdvojnásobí poměr paměti k jádrům pro stávající cenové úrovně. Díky výhodám výkonu můžete ušetřit peníze tím, že své aplikace spustíte na méně instancí. V tomto článku se dozvíte, jak vytvořit aplikaci ve vrstvě **PremiumV2** nebo jak škálovat aplikaci na **PremiumV2** vrstvu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli škálovat aplikaci na **PremiumV2**, musíte mít Azure App Service aplikaci, která běží v cenové úrovni nižší než **PremiumV2**, a aplikace musí běžet v nasazení App Service, které podporuje PremiumV2.
 
@@ -113,7 +104,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Následující příkaz vytvoří plán App Service v _P1V2_. `-WorkerSize` Možnosti pro jsou _malá_, _střední_a _Velká_.
+Následující příkaz vytvoří plán App Service v _P1V2_. Možnosti pro `-WorkerSize` jsou _malé_, _střední_a _velké_.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
@@ -122,7 +113,7 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
     -Tier "PremiumV2" `
     -WorkerSize "Small"
 ```
-## <a name="more-resources"></a>Další materiály
+## <a name="more-resources"></a>Další zdroje
 
-[Škálování aplikace v Azure](manage-scale-up.md)  
+[Horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md)  
 [Ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md)

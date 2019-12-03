@@ -1,0 +1,99 @@
+---
+title: Změna kanálu v rozhraní Azure Cosmos DB API pro Cassandra
+description: Naučte se, jak pomocí služby Change feed v rozhraní Azure Cosmos DB API pro Cassandra získat změny provedené ve vašich datech.
+author: TheovanKraay
+ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
+ms.topic: conceptual
+ms.date: 11/25/2019
+ms.author: thvankra
+ms.openlocfilehash: c2c695608653130b97bf29cc9ce48e2fbb429209
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74694620"
+---
+# <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Změna kanálu v rozhraní Azure Cosmos DB API pro Cassandra
+
+Podpora [kanálu změny](change-feed.md) v rozhraní Azure Cosmos DB API pro Cassandra je k dispozici prostřednictvím predikátů dotazu v CQL (Cassandra Query Language). Pomocí těchto podmínek predikátu se můžete dotazovat na rozhraní API Change feed. Aplikace mohou získat změny provedené v tabulce pomocí primárního klíče (označovaného také jako klíč oddílu), jak je požadováno v CQL. Na základě výsledků pak můžete provést další akce. Změny v řádcích v tabulce jsou zachyceny v pořadí podle doby jejich změny a pořadí řazení je zaručeno na klíč oddílu.
+
+Následující příklad ukazuje, jak získat kanál změn na všech řádcích v tabulce rozhraní API Cassandraho prostoru klíčů s použitím rozhraní .NET. Predikát COSMOS_CHANGEFEED_START_TIME () se používá přímo v rámci CQL k dotazování na položky v kanálu změn od zadaného počátečního času (v tomto případě aktuální datum a čas). Úplnou ukázku si můžete stáhnout [tady](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/).
+
+V každé iteraci pokračuje dotaz u poslední změny bodu pomocí stavu stránkování. Průběžný Stream pro nové změny v tabulce se zobrazí v prostoru. Uvidíme změny v řádcích, které jsou vložené nebo aktualizované. Sledování operací odstranění pomocí kanálu změn v rozhraní API Cassandra aktuálně není podporováno. 
+
+```C#
+    //set initial start time for pulling the change feed
+     DateTime timeBegin = DateTime.UtcNow;
+
+    //initialise variable to store the continuation token
+    byte[] pageState = null;
+    while (true)
+    {
+        try
+        {
+
+            //Return the latest change for all rows in 'user' table    
+            IStatement changeFeedQueryStatement = new SimpleStatement(
+            $"SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME() = '{timeBegin.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture)}'");
+            if (pageState != null)
+            {
+                changeFeedQueryStatement = changeFeedQueryStatement.SetPagingState(pageState);
+            }
+            Console.WriteLine("getting records from change feed at last page state....");
+            RowSet rowSet = session.Execute(changeFeedQueryStatement);
+
+            //store the continuation token here
+            pageState = rowSet.PagingState;
+
+            List<Row> rowList = rowSet.ToList();
+            if (rowList.Count != 0)
+            {
+                for (int i = 0; i < rowList.Count; i++)
+                {
+                    string value = rowList[i].GetValue<string>("user_name");
+                    int key = rowList[i].GetValue<int>("user_id");
+                    // do something with the data - e.g. compute, forward to another event, function, etc.
+                    // here, we just print the user name field
+                    Console.WriteLine("user_name: " + value);
+                }
+            }
+            else
+            {
+                Console.WriteLine("zero documents read");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception " + e);
+        }
+    }
+
+```
+
+Chcete-li získat změny v jednom řádku podle primárního klíče, můžete v dotazu přidat primární klíč. Následující příklad ukazuje, jak sledovat změny řádku, kde "user_id = 1"
+
+```C#
+    //Return the latest change for all row in 'user' table where user_id = 1
+    IStatement changeFeedQueryStatement = new SimpleStatement(
+    $"SELECT * FROM uprofile.user where user_id = 1 AND COSMOS_CHANGEFEED_START_TIME() = '{timeBegin.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture)}'");
+
+```
+
+## <a name="current-limitations"></a>Aktuální omezení
+
+Při použití kanálu Change s rozhraní API Cassandra platí následující omezení:
+
+* V tuto chvíli se podporuje vkládání a aktualizace. Operace odstranění ještě není podporovaná. Jako alternativní řešení můžete přidat měkké označení na řádky, které se odstraňují. Přidejte například pole do řádku s názvem "Deleted" a nastavte jej na hodnotu "true".
+* Poslední aktualizace je trvalá, protože v základní službě SQL API nejsou k dispozici průběžné aktualizace pro danou entitu.
+
+
+## <a name="error-handling"></a>Zpracování chyb
+
+Při použití kanálu Change v rozhraní API Cassandra jsou podporovány následující chybové kódy a zprávy:
+
+* **Kód chyby HTTP 429** – Pokud je přenosový kanál změn omezený, vrátí prázdnou stránku.
+
+## <a name="next-steps"></a>Další kroky
+
+* [Správa prostředků Azure Cosmos DB rozhraní API Cassandra pomocí šablon Azure Resource Manager](manage-cassandra-with-resource-manager.md)

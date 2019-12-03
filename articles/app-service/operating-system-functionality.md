@@ -1,25 +1,16 @@
 ---
-title: Funkce operačního systému v App Service – Azure
-description: Přečtěte si o funkcích operačního systému dostupných pro webové aplikace, back-endy mobilních aplikací a aplikacích API na Azure App Service
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: mollybos
+title: Funkce operačního systému
+description: Přečtěte si o funkcích operačního systému v Azure App Service ve Windows. Zjistěte, jaké typy souborů, sítí a přístup k registru vaše aplikace získá.
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b108814caaace83cd417dc8858e27ed01d54c39e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066768"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671615"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému na Azure App Service
 Tento článek popisuje běžné funkce operačního systému pro základní hodnoty, které jsou k dispozici pro všechny aplikace pro Windows běžící na [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje přístup k souboru, k síti a k registru a diagnostické protokoly a události. 
@@ -31,7 +22,7 @@ Tento článek popisuje běžné funkce operačního systému pro základní hod
 <a id="tiers"></a>
 
 ## <a name="app-service-plan-tiers"></a>App Service vrstev plánu
-App Service spouští aplikace zákazníka v hostitelském prostředí s více klienty. Aplikace nasazené na úrovni **Free** a **Shared** běží v pracovních procesech na sdílených virtuálních počítačích, zatímco aplikace nasazené na úrovních **Standard** a **Premium** běží na virtuálních počítačích vyhrazených speciálně pro aplikace, které jsou k nim přidružené. jediným zákazníkem.
+App Service spouští aplikace zákazníka v hostitelském prostředí s více klienty. Aplikace nasazené na úrovni **Free** a **Shared** běží v pracovních procesech na sdílených virtuálních počítačích, zatímco aplikace nasazené na úrovních **Standard** a **Premium** běží na virtuálních počítačích, které jsou vyhrazené speciálně pro aplikace přidružené k jednomu zákazníkovi.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -60,7 +51,7 @@ App Service je služba, která běží nad infrastrukturou Azure PaaS (platforma
 - Jednotka aplikace, která obsahuje soubory cspkg balíčku Azure, používané výhradně App Service (a nepřístupné pro zákazníky)
 - "Uživatelská" jednotka (C:\ jednotka), jejíž velikost se liší v závislosti na velikosti virtuálního počítače. 
 
-Při zvětšování vaší aplikace je důležité monitorovat využití disku. Pokud je dosažena kvóta disku, může to mít nepříznivý vliv na vaši aplikaci. Příklad: 
+Při zvětšování vaší aplikace je důležité monitorovat využití disku. Pokud je dosažena kvóta disku, může to mít nepříznivý vliv na vaši aplikaci. Například: 
 
 - Aplikace může vyvolat chybu oznamující, že na disku není dostatek místa.
 - Při procházení konzoly Kudu se může zobrazit chyba disku.
@@ -85,7 +76,7 @@ Na místních jednotkách připojených k virtuálnímu počítači, na kterém 
 
 Dva příklady, jak App Service používá dočasné místní úložiště, jsou adresářem pro dočasné soubory ASP.NET a adresář pro komprimované soubory IIS. Systém kompilace ASP.NET využívá dočasný adresář ASP.NET Files jako dočasné umístění mezipaměti kompilace. Služba IIS pomocí adresáře "dočasné komprimované soubory služby IIS" ukládá komprimovaný výstup odpovědi. Oba tyto typy použití souborů (stejně jako ostatní) jsou přemapovány v App Service na dočasné místní úložiště pro aplikaci. Toto přemapování zajišťuje, že funkčnost bude pokračovat podle očekávání.
 
-Každá aplikace v App Service běží jako náhodná jedinečná identita pracovního procesu s nízkými oprávněními označovaná jako identita fondu aplikací, která je popsána [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)dále:. Kód aplikace používá tuto identitu pro základní přístup jen pro čtení k jednotce operačního systému (D:\ jednotka). To znamená, že kód aplikace může vypsat společné adresářové struktury a číst běžné soubory na jednotce operačního systému. I když se to může zdát poněkud široká úroveň přístupu, stejné adresáře a soubory jsou přístupné při zřizování role pracovního procesu v hostované službě Azure a čtení obsahu jednotky. 
+Každá aplikace v App Service běží jako náhodná jedinečná identita pracovního procesu s nízkými oprávněními označovaná jako identita fondu aplikací, která je popsána dále: [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities). Kód aplikace používá tuto identitu pro základní přístup jen pro čtení k jednotce operačního systému (D:\ jednotka). To znamená, že kód aplikace může vypsat společné adresářové struktury a číst běžné soubory na jednotce operačního systému. I když se to může zdát poněkud široká úroveň přístupu, stejné adresáře a soubory jsou přístupné při zřizování role pracovního procesu v hostované službě Azure a čtení obsahu jednotky. 
 
 <a name="multipleinstances"></a>
 
@@ -124,7 +115,7 @@ Oblasti protokolování a trasování diagnostiky, které nejsou k dispozici pro
 <a id="RegistryAccess"></a>
 
 ## <a name="registry-access"></a>Přístup k registru
-Aplikace mají přístup jen pro čtení k mnoha (ale ne všem) registru virtuálního počítače, na kterém běží. V praxi to znamená, že aplikace budou mít k dispozici klíče registru, které umožňují přístup jen pro čtení k místní skupině uživatelů. Jedna oblast registru, která se v tuto chvíli nepodporuje pro přístup pro čtení nebo zápis, je HKEY\_aktuálním\_podregistrem uživatele.
+Aplikace mají přístup jen pro čtení k mnoha (ale ne všem) registru virtuálního počítače, na kterém běží. V praxi to znamená, že aplikace budou mít k dispozici klíče registru, které umožňují přístup jen pro čtení k místní skupině uživatelů. Jedna oblast registru, která se v tuto chvíli nepodporuje pro přístup pro čtení nebo zápis, je HKEY\_aktuální\_podregistr uživatele.
 
 Přístup pro zápis do registru je zablokovaný, včetně přístupu k jakýmkoli klíčům registru pro jednotlivé uživatele. Z pohledu aplikace by se v prostředí Azure nikdy neměl spoléhat na přístup k zápisu do registru, protože aplikace se můžou (a dělat) migrovat mezi různými virtuálními počítači. Jediným trvalým úložištěm, které může být závislé na aplikaci, je struktura adresáře obsahu pro aplikaci uloženou ve sdílených složkách App Service UNC. 
 

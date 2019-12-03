@@ -1,24 +1,18 @@
 ---
-title: Použití prostředí App Service – Azure
-description: Jak vytvářet, publikovat a škálovat aplikace v prostředí Azure App Service
-services: app-service
-documentationcenter: na
+title: Použití a Správa pomocného mechanismu
+description: Jak vytvářet, publikovat a škálovat aplikace v prostředí Azure App Service. Najde běžné úkoly v jednom dokumentu.
 author: ccompy
-manager: stefsch
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 841271c474ba8e24bc352bcae1fa037cf382a8ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5c127673e4b0cb6c68aaf0a9790abbf78758670
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470578"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687094"
 ---
 # <a name="use-an-app-service-environment"></a>Použití App Serviceho prostředí #
 

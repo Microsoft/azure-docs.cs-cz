@@ -7,18 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 98598a28e14dfd8175cbb019ff1b001c65503580
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c4ee4ed81cd4cc443a8f412462a5a7f204c91898
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73644596"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688191"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Ingestování dat do Azure Průzkumník dat pomocí přijímání jedním kliknutím
 
-V tomto článku se dozvíte, jak pomocí ingestování jedním kliknutím rychle ingestovat novou tabulku ve formátech JSON nebo CSV z úložiště do Azure Průzkumník dat. Po ingestování dat můžete tabulku upravit a spustit dotazy pomocí webového uživatelského rozhraní.
+V tomto článku se dozvíte, jak používat příjem jedním kliknutím pro rychlou příjem nové tabulky ve formátech JSON nebo CSV z úložiště nebo místního souboru do existující tabulky nebo do nové tabulky v Azure Průzkumník dat. Pomocí intuitivního průvodce a během několika minut se data ingestují, můžete tabulku upravit a spouštět dotazy pomocí webového uživatelského rozhraní.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * Přihlaste se k [aplikaci](https://dataexplorer.azure.com/).

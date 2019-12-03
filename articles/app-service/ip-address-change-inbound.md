@@ -1,53 +1,46 @@
 ---
-title: Příprava na změnu adresy příchozí IP - službě Azure App Service
-description: Pokud chcete změnit vaše příchozí IP adresa, zjistěte, co můžete udělat tak, aby vaše aplikace i nadále fungovat po provedení změny.
-services: app-service\web
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
+title: Příprava na změnu příchozí IP adresy
+description: Pokud se vaše příchozí IP adresa bude měnit, zjistěte, co dělat, aby vaše aplikace po provedení změny i nadále fungovala.
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aaa89b5a3bb1af6878ed21e0160a534a1c989228
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61270060"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672422"
 ---
-# <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Postup přípravy na změnu příchozí IP adresy
+# <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Příprava na změnu příchozí IP adresy
 
-Pokud jste dostali oznámení, že se mění příchozí IP adresu vaší aplikace Azure App Service, postupujte podle pokynů v tomto článku.
+Pokud se vám zobrazilo oznámení, že se příchozí IP adresa vaší aplikace Azure App Service mění, postupujte podle pokynů v tomto článku.
 
-## <a name="determine-if-you-have-to-do-anything"></a>Zjistit, pokud máte dělat nic.
+## <a name="determine-if-you-have-to-do-anything"></a>Určení, jestli je nutné provést cokoli
 
-* Option 1: Pokud vaše aplikace app Service nemá žádné vlastní domény, nemusíte nic dělat.
+* Možnost 1: Pokud vaše aplikace App Service nemá vlastní doménu, nevyžaduje se žádná akce.
 
-* Option 2: Pokud pouze záznam CNAME (záznam DNS odkazuje na identifikátor URI) je nakonfigurován v portálu pro registraci vaší domény (třetích stran poskytovatele DNS nebo Azure DNS), nemusíte nic dělat.
+* Možnost 2: Pokud je v portálu pro registraci domény nakonfigurovaný jenom záznam CNAME (záznam DNS odkazující na identifikátor URI) (poskytovatel DNS nebo Azure DNS) třetí strany, nevyžaduje se žádná akce.
 
-* Možnost 3: Pokud záznam (záznam DNS odkazuje přímo na IP adresu) je nakonfigurován v portálu pro registraci vaší domény (třetích stran poskytovatele DNS nebo Azure DNS), nahraďte existující IP adresu nového. Podle pokynů uvedených v následující části najdete novou IP adresu.
+* Možnost 3: Pokud je záznam A (záznam DNS ukazující přímo na vaši IP adresu) nakonfigurovaný na vašem portálu pro registraci domény (poskytovatel DNS nebo Azure DNS), nahraďte stávající IP adresu novou. Novou IP adresu najdete podle pokynů v následující části.
 
-* Option 4: Pokud je vaše aplikace za nástroj pro vyrovnávání zatížení, filtr nebo jiný mechanismus IP, která vyžaduje vaše aplikace IP adresu, nahraďte existující IP adresu nového. Podle pokynů uvedených v následující části najdete novou IP adresu.
+* Možnost 4: Pokud je vaše aplikace za nástrojem pro vyrovnávání zatížení, filtrem IP nebo jakýmkoli jiným mechanismem IP adres, který vyžaduje IP adresu vaší aplikace, nahraďte stávající IP adresu novým. Novou IP adresu najdete podle pokynů v následující části.
 
-## <a name="find-the-new-inbound-ip-address-in-the-azure-portal"></a>Zjistit novou příchozí IP adresu na webu Azure Portal
+## <a name="find-the-new-inbound-ip-address-in-the-azure-portal"></a>Najít novou příchozí IP adresu v Azure Portal
 
-Novou příchozí IP adresu, dostane do vaší aplikace je v portálu **virtuální IP adresa** pole. Tuto novou IP adresu a ten starý jsou připojené k vaší aplikaci nyní a později se starou odpojí.
+Nová příchozí IP adresa, která je dána vaší aplikaci, je na portálu v poli **virtuální IP adresa** . Tuto novou IP adresu i starou je teď připojené k vaší aplikaci a později se její starý odpojí.
 
 1.  Otevřete web [Azure Portal](https://portal.azure.com).
 
-2.  V levé navigační nabídce vyberte **App Services**.
+2.  V navigační nabídce na levé straně vyberte **App Services**.
 
-3.  Vyberte ze seznamu vaši aplikaci služby App Service.
+3.  Ze seznamu vyberte svou aplikaci App Service.
 
-1.  Pokud je aplikace function app, naleznete v tématu [aplikace Function app příchozí IP adresu](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
+1.  Pokud je aplikace Function App, přečtěte si téma [příchozí IP adresa aplikace Function App](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
 
-4.  V části **nastavení** záhlaví, klikněte na tlačítko **vlastnosti** v levém navigačním panelu a najít v části s názvem **virtuální IP adresa**.
+4.  V záhlaví **Nastavení** klikněte na tlačítko **vlastnosti** v levém navigačním panelu a vyhledejte oddíl označený **virtuální IP adresou**.
 
-5. Zkopírujte IP adresu a překonfigurujte záznamu domény nebo IP mechanismus.
+5. Zkopírujte IP adresu a překonfigurujte záznam domény nebo mechanismus IP adres.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tento článek vysvětlil, jak připravit pro změnu IP adresy, který byl inicializován nástrojem Azure. Další informace o IP adresách v Azure App Service najdete v tématu [příchozí a odchozí IP adresy ve službě Azure App Service](overview-inbound-outbound-ips.md).
+Tento článek vysvětluje, jak připravit na změnu IP adresy, kterou iniciovala Azure. Další informace o IP adresách v Azure App Service najdete [v tématu příchozí a odchozí IP adresy v Azure App Service](overview-inbound-outbound-ips.md).

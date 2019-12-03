@@ -1,24 +1,18 @@
 ---
-title: Vytvoření App Service prostředí pomocí šablony Správce prostředků – Azure
-description: Vysvětluje, jak vytvořit externí nebo interního nástroje Azure App Service prostředí pomocí Správce prostředků šablony.
-services: app-service
-documentationcenter: na
+title: Vytvoření pomocného mechanismu pro ARM
+description: Naučte se vytvářet externí nebo interního nástroje App Service prostředí pomocí Azure Resource Manager šablony.
 author: ccompy
-manager: stefsch
 ms.assetid: 6eb7d43d-e820-4a47-818c-80ff7d3b6f8e
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 60c9d89bc0ab7c63e779a7cadece863540e827aa
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0dccefa47789b4658a7bca828b5a820db0d448e5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470599"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688662"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Vytvoření pomocného objektu pomocí šablony Azure Resource Manager
 

@@ -1,24 +1,15 @@
 ---
-title: Pokročilé použití ověřování a autorizace – Azure App Service | Microsoft Docs
-description: Ukazuje, jak přizpůsobit ověřování a autorizaci v App Service a získat deklarace identity uživatelů a různé tokeny.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
+title: Pokročilé použití AuthN/AuthO
+description: Naučte se přizpůsobit funkci ověřování a autorizace v App Service pro různé scénáře a získat deklarace identity uživatelů a různé tokeny.
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f453a0276a3448273964a589112e21ca5665c2d2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900123"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672233"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -42,7 +33,7 @@ Nejprve na stránce **ověřování/autorizace** v Azure Portal nakonfigurujte k
 
 V **akci, která se má provést, když se žádost neověřuje**, vyberte možnost **povoluje anonymní žádosti (bez akce)** .
 
-Na přihlašovací stránce nebo v navigačním panelu nebo v jakémkoli jiném umístění aplikace přidejte odkaz na přihlášení ke každému poskytovateli, který jste povolili (`/.auth/login/<provider>`). Příklad:
+Na přihlašovací stránce nebo v navigačním panelu nebo v jakémkoli jiném umístění aplikace přidejte odkaz na přihlášení ke každému poskytovateli, který jste povolili (`/.auth/login/<provider>`). Například:
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -64,7 +55,7 @@ Pokud chcete přesměrovat uživatele po přihlášení na vlastní adresu URL, 
 
 V přihlašování klienta se aplikace přihlásí k poskytovateli ručně a poté odešle ověřovací token k App Service k ověření (viz [tok ověřování](overview-authentication-authorization.md#authentication-flow)). Toto ověření sama o sobě neuděluje přístup k požadovaným prostředkům aplikace, ale úspěšné ověření vám poskytne token relace, který můžete použít pro přístup k prostředkům aplikace. 
 
-Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token pro `/.auth/login/<provider>` k ověření. Příklad: 
+Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token pro `/.auth/login/<provider>` k ověření. Například: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -95,7 +86,7 @@ V případě úspěšného ověření tokenu poskytovatele vrátí rozhraní API
 }
 ```
 
-Jakmile budete mít tento token relace, budete mít přístup k prostředkům chráněných aplikací tak, že do požadavků HTTP přidáte hlavičku `X-ZUMO-AUTH`. Příklad: 
+Jakmile budete mít tento token relace, budete mít přístup k prostředkům chráněných aplikací tak, že do požadavků HTTP přidáte hlavičku `X-ZUMO-AUTH`. Například: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -116,7 +107,7 @@ Tady je jednoduchý odkaz na odhlášení na webové stránce:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Ve výchozím nastavení přesměruje úspěšné odhlášení klienta na adresu URL `/.auth/logout/done`. Stránku přesměrování po odhlášení můžete změnit přidáním parametru `post_logout_redirect_uri` dotazu. Příklad:
+Ve výchozím nastavení přesměruje úspěšné odhlášení klienta na adresu URL `/.auth/logout/done`. Stránku přesměrování po odhlášení můžete změnit přidáním parametru `post_logout_redirect_uri` dotazu. Například:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -232,7 +223,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Účet Microsoft i Azure Active Directory vám umožňují přihlašovat se z více domén. Například účet Microsoft umožňuje účty _Outlook.com_, _Live.com_a _hotmail.com_ . Azure AD povoluje pro přihlašovací účty libovolný počet vlastních domén. Můžete ale chtít zrychlit uživatele přímo na přihlašovací stránku služby Azure AD, která je označená značkou (například `contoso.com`). Chcete-li navrhnout název domény přihlašovacích účtů, postupujte podle těchto kroků.
 
-V [https://resources.azure.com](https://resources.azure.com)přejděte na **odběry** >  **_\<předplatné\_název_**  > **resourceGroups** >  **_\<_** \_\_skupiny > > název >  > **poskytovatel** > **Microsoft. Web**\<**weby**\_ **_> aplikace > název > _** **config** **authsettings**. 
+V [https://resources.azure.com](https://resources.azure.com)přejděte na **odběry** >  **_\< předplatné\_ název_**  > **resourceGroups** >  **_\<_** \_\_ skupiny > >  název >  > **poskytovatel** > **Microsoft. Web**\<**weby**\_ **_> aplikace >  název > _** **config** **authsettings**. 
 
 Klikněte na tlačítko **Upravit**, upravte následující vlastnost a pak klikněte na tlačítko **Vložit**. Nezapomeňte nahradit _\<\_název domény >_ požadovanou doménou.
 
@@ -258,7 +249,7 @@ I když App Service postará o nejjednodušší případ autorizace (tj. odmítn
 
 U jakékoli aplikace pro Windows můžete definovat chování ověřování webového serveru IIS úpravou souboru *Web. config* . Aplikace pro Linux nepoužívají službu IIS a nelze je konfigurovat pomocí *souboru Web. config*.
 
-1. Přejděte na `https://<app-name>.scm.azurewebsites.net/DebugConsole`
+1. Přejít na `https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
 1. V Průzkumníkovi prohlížeče souborů App Service přejděte na *lokalitu/wwwroot*. Pokud soubor *Web. config* neexistuje, vytvořte jej výběrem **+**  > **nový soubor**. 
 
@@ -278,7 +269,7 @@ U jakékoli aplikace pro Windows můžete definovat chování ověřování webo
 
 ### <a name="identity-provider-level"></a>Úroveň poskytovatele identity
 
-Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Příklad:
+Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Například:
 
 - Pro [Azure App Service](configure-authentication-provider-aad.md)můžete [spravovat přístup na podnikové úrovni](../active-directory/manage-apps/what-is-access-management.md) přímo ve službě Azure AD. Pokyny najdete v tématu [Postup odebrání přístupu uživatele k aplikaci](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - Pro [Google](configure-authentication-provider-google.md)jsou projekty Google API, které patří do [organizace](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) , možné nakonfigurovat tak, aby povolovaly přístup jenom uživatelům ve vaší organizaci (viz [Stránka podpory **OAuth 2,0 s nastavením** Google](https://support.google.com/cloud/answer/6158849?hl=en)).

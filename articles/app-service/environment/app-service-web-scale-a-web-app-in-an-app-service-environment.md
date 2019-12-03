@@ -1,27 +1,20 @@
 ---
-title: Jak škálovat aplikaci v App Service Environment – Azure
-description: Škálování aplikace v App Service Environment
-services: app-service
-documentationcenter: ''
+title: Škálování aplikace v pomocném mechanismu v1
+description: Škálování aplikace v App Service Environment. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: ccompy
-manager: stefsch
-editor: jimbe
 ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 711dc4d59785418d6637eb144b644948ed495e2c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069733"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688680"
 ---
-# <a name="scaling-apps-in-an-app-service-environment"></a>Škálování aplikací ve službě App Service Environment
+# <a name="scaling-apps-in-an-app-service-environment-v1"></a>Škálování aplikací ve App Service Environment v1
 V Azure App Service existují obvykle tři věci, které můžete škálovat:
 
 * Cenový tarif
@@ -39,7 +32,7 @@ Změna jedné položky se provádí prostřednictvím příslušného uživatels
 
 ![][1]
 
-Nemůžete škálovat prostředí ASP nad rámec počtu dostupných výpočetních prostředků ve fondu pracovních procesů, ve kterém je vaše prostředí ASP.  Pokud v tomto fondu pracovních procesů potřebujete výpočetní prostředky, je potřeba, abyste správce pomocného mechanismu mohli přidat.  Informace o opětovné konfiguraci služby pomocného mechanismu pro čtení najdete tady: [Jak nakonfigurovat App Service prostředí][HowtoConfigureASE].  Můžete také využít výhod funkcí automatického škálování pomocného mechanismu, abyste mohli přidat kapacitu na základě plánu nebo metrik.  Další informace o konfiguraci automatického škálování pro samotný prostředí přihlašování k systému najdete v tématu [Konfigurace automatického škálování pro App Service Environment][ASEAutoscale].
+Nemůžete škálovat prostředí ASP nad rámec počtu dostupných výpočetních prostředků ve fondu pracovních procesů, ve kterém je vaše prostředí ASP.  Pokud v tomto fondu pracovních procesů potřebujete výpočetní prostředky, je potřeba, abyste správce pomocného mechanismu mohli přidat.  Informace o opětovné konfiguraci služby pomocného mechanismu pro čtení najdete tady: [jak nakonfigurovat App Service prostředí][HowtoConfigureASE].  Můžete také využít výhod funkcí automatického škálování pomocného mechanismu, abyste mohli přidat kapacitu na základě plánu nebo metrik.  Další informace o konfiguraci automatického škálování pro samotný prostředí přihlašování k systému najdete v tématu [Konfigurace automatického škálování pro App Service Environment][ASEAutoscale].
 
 Můžete vytvořit několik plánů služby App Service s využitím výpočetních prostředků z různých fondů pracovních procesů nebo můžete použít stejný fond pracovních procesů.  Například pokud máte (10) dostupných výpočetních prostředků ve fondu pracovních procesů 1, můžete vytvořit jeden plán služby App Service s využitím (6) výpočetních prostředků a druhý plán služby App Service, který využívá (4) výpočetní prostředky.
 

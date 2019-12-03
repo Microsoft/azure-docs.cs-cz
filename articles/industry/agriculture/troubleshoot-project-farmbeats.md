@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131971"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672588"
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 
@@ -39,7 +39,17 @@ Pokud potřebujete další nápovědu, napište do nás na farmbeatssupport@micr
 3. V případě, že nejsou k dispozici **žádné příchozí zprávy**, obraťte se na partnera zařízení.  
 4. V případě **příchozích zpráv**se obraťte farmbeatssupport@microsoft.com s protokoly datového centra a akcelerátory a zachycená telemetrie.
 
-V [části protokoly](#collect-logs-manually) v dokumentu najdete informace o tom, jak stahovat protokoly.    
+V [části protokoly](#collect-logs-manually) v dokumentu najdete informace o tom, jak stahovat protokoly.  
+
+### <a name="dont-have-the-eventhub-connection-string"></a>Nemáte připojovací řetězec Eventhub.
+
+**Nápravné opatření**: navštivte DataHub Swagger a postupujte takto:
+1. Přejít na rozhraní API partnera
+2. Klikněte na GET-> vyzkoušet > provést.
+3. Poznamenejte si ID partnerského serveru, který vás zajímá.
+4. Vraťte se na partnerské rozhraní API a klikněte na získat/{ID}.
+5. Zadejte ID z kroku 3 a klikněte na provést.
+6. Odpověď rozhraní API musí mít připojovací řetězec EventHub.
 
 ### <a name="device-appears-offline"></a>Zařízení se zobrazuje v režimu offline.
 
@@ -84,7 +94,7 @@ V této části jsou uvedené běžné chybové scénáře při odstraňování 
 
 ## <a name="accelerator-troubleshooting"></a>Řešení potíží s akcelerátory
 
-### <a name="access-control"></a>Řízení přístupu
+### <a name="access-control"></a>Access Control
 
 **Při přidávání přiřazení role došlo k chybě.**
 

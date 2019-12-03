@@ -1,66 +1,66 @@
 ---
 title: Vývoj akcí skriptů pro přizpůsobení clusterů Azure HDInsight
-description: Další informace o použití skripty Bash pro přizpůsobení clusterů HDInsight. Akce se skripty umožňují spouštění skriptů během nebo po vytvoření clusteru změnit nastavení konfigurace clusteru nebo instalovat další software.
+description: Naučte se používat skripty bash k přizpůsobení clusterů HDInsight. Akce skriptu umožňují spouštět skripty během nebo po vytvoření clusteru, aby bylo možné změnit nastavení konfigurace clusteru nebo nainstalovat další software.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/22/2019
-ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2019
+ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687452"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687729"
 ---
-# <a name="script-action-development-with-hdinsight"></a>Vývoj skriptových akcí s HDInsight
+# <a name="script-action-development-with-hdinsight"></a>Vývoj akcí skriptů pomocí HDInsight
 
-Zjistěte, jak přizpůsobit vašeho clusteru HDInsight pomocí skriptů prostředí Bash. Akce skriptů jsou způsob, jak přizpůsobit HDInsight během nebo po vytvoření clusteru.
+Naučte se, jak pomocí skriptů bash přizpůsobit cluster HDInsight. Akce skriptu představují způsob přizpůsobení služby HDInsight během nebo po vytvoření clusteru.
 
-## <a name="what-are-script-actions"></a>Co jsou akce skriptu
+## <a name="what-are-script-actions"></a>Co jsou akce skriptů
 
-Akce skriptů jsou skripty Bash, které Azure používá na uzlech clusteru pro provádění změn konfigurace nebo instalace softwaru. Akce skriptu je spuštěn jako uživatel root a poskytuje úplná přístupová práva k uzlům clusteru.
+Akce skriptů jsou skripty bash, které Azure spouští na uzlech clusteru, aby mohl provádět změny konfigurace nebo instalovat software. Akce skriptu se spouští jako kořenová a poskytuje přístup k uzlům clusteru s úplnými oprávněními.
 
-Akce skriptů se dá použít prostřednictvím následujících metod:
+Akce skriptu lze použít prostřednictvím následujících metod:
 
-| Pomocí této metody můžete použít skript... | Při vytvoření clusteru... | Na spuštěný cluster... |
+| Tuto metodu použijte, chcete-li použít skript... | Během vytváření clusteru... | Ve spuštěném clusteru... |
 | --- |:---:|:---:|
-| portál Azure |✓ |✓ |
+| Portál Azure |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
-| Klasické rozhraní příkazového řádku Azure |&nbsp; |✓ |
+| Azure Classic CLI |&nbsp; |✓ |
 | Sada HDInsight .NET SDK |✓ |✓ |
 | Šablona Azure Resource Manageru |✓ |&nbsp; |
 
-Další informace o použití těchto metod lze aplikovat akce skriptu, najdete v tématu [HDInsight přizpůsobit clustery pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md).
+Další informace o použití těchto metod pro aplikování akcí skriptu najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md).
 
 ## <a name="bestPracticeScripting"></a>Osvědčené postupy pro vývoj skriptů
 
-Když vyvíjíte vlastní skript pro HDInsight cluster, existuje několik osvědčených postupů brát v úvahu:
+Při vývoji vlastního skriptu pro cluster HDInsight je potřeba mít na paměti několik osvědčených postupů:
 
-* [Cílení na verzi Apache Hadoop](#bPS1)
-* [Cílení na verzi operačního systému](#bps10)
-* [Stabilní odkazy skriptu prostředků](#bPS2)
+* [Cílová verze Apache Hadoop](#bPS1)
+* [Cíl verze operačního systému](#bps10)
+* [Poskytování stabilních odkazů na zdroje skriptů](#bPS2)
 * [Použití předem kompilovaných prostředků](#bPS4)
-* [Ujistěte se, že cluster přizpůsobení skript je idempotentní](#bPS3)
+* [Zajistěte, aby byl skript vlastního nastavení clusteru idempotentní.](#bPS3)
 * [Zajištění vysoké dostupnosti architektury clusteru](#bPS5)
-* [Konfigurace vlastních součástech používání úložiště objektů Blob v Azure](#bPS6)
-* [Zápis informací o do STDOUT a STDERR](#bPS7)
-* [Ukládat soubory ve formátu ASCII s LF konce řádků](#bps8)
-* [Použít logika opakovaných pokusů provést obnovení při přechodné chyby](#bps9)
+* [Konfigurace vlastních komponent pro použití služby Azure Blob Storage](#bPS6)
+* [Zápis informací do STDOUT a STDERR](#bPS7)
+* [Uložení souborů jako ASCII pomocí konců řádků LF](#bps8)
+* [Pro obnovení z přechodných chyb použít logiku opakování](#bps9)
 
 > [!IMPORTANT]  
-> Akce se skripty musí dokončit během 60 minut nebo proces selže. Během zřizování uzlu, bude skript spuštěn současně jiných nastavení a konfigurace procesů. Soutěže pro prostředky, jako jsou procesor čas nebo síťové šířky pásma může způsobit skriptu trvá déle dokončit, než ve vašem vývojovém prostředí.
+> Akce skriptu musí být dokončeny během 60 minut nebo se proces nezdařil. Během zřizování uzlů se skript spouští souběžně s jinými procesy nastavení a konfigurace. Soutěž na prostředky, jako je čas procesoru nebo šířka pásma sítě, může způsobit, že se dokončení skriptu bude trvat déle, než ve vývojovém prostředí.
 
-### <a name="bPS1"></a>Cílení na verzi Apache Hadoop
+### <a name="bPS1"></a>Cílová verze Apache Hadoop
 
-Různé verze HDInsight mají různé verze služby Hadoop a nainstalované součásti. Pokud váš skript očekává, že konkrétní verzi služby nebo komponenty, byste měli skript používat jenom s verzí služby HDInsight, který obsahuje požadované součásti. Můžete najít informace o verzích komponenty součástí pomocí HDInsight [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.
+Různé verze služby HDInsight mají nainstalované různé verze služeb a součástí systému Hadoop. Pokud váš skript očekává určitou verzi služby nebo komponenty, měli byste použít jenom skript s verzí HDInsight, která zahrnuje požadované součásti. Můžete najít informace o verzích komponent, které jsou součástí HDInsight, pomocí dokumentu [správy verzí komponent HDInsight](hdinsight-component-versioning.md) .
 
-### <a name="checking-the-operating-system-version"></a>Kontroluje se verze operačního systému
+### <a name="checking-the-operating-system-version"></a>Kontrola verze operačního systému
 
-Spolehněte se na konkrétní verze Ubuntu různých verzích HDInsight. Mohou existovat rozdíly mezi verzemi operačního systému, které musíte hledat ve skriptu. Například budete muset nainstalovat binární soubor, který se váže na verze Ubuntu.
+Různé verze HDInsight spoléhají na konkrétní verze Ubuntu. Mezi verzemi operačních systémů, které musíte ve svém skriptu vyhledat, můžou být rozdíly. Například může být nutné nainstalovat binární soubor, který je svázán s verzí Ubuntu.
 
-Pokud chcete zkontrolovat verzi operačního systému, použít `lsb_release`. Například následující skript ukazuje, jak odkazovat na konkrétní cíl soubor v závislosti na verzi operačního systému:
+Chcete-li zjistit verzi operačního systému, použijte `lsb_release`. Například následující skript ukazuje, jak odkazovat na konkrétní soubor tar v závislosti na verzi operačního systému:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -73,11 +73,11 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-### <a name="bps10"></a> Cílení na verzi operačního systému
+### <a name="bps10"></a>Cílení na verzi operačního systému
 
-HDInsight se systémem Linux je založená na Ubuntu Linuxovou distribuci. Spolehněte se na různé verze Ubuntu, které mohou změnit chování vašich skriptů různých verzích HDInsight. Například vycházejí HDInsight 3.4 a starší verze Ubuntu, které používají Upstart. Verze 3.5 a vyšší jsou založené na Ubuntu 16.04, který používá Systemd. Systemd a Upstart využívají různé příkazy, aby váš skript by měly být napsány pro práci s oběma.
+HDInsight je založený na distribuci Ubuntu Linux. Různé verze služby HDInsight spoléhají na různé verze Ubuntu, což může změnit způsob, jakým se skript chová. Například HDInsight 3,4 a starší jsou založené na verzích Ubuntu, které používají příkaz Spustit jako. Verze 3,5 a vyšší jsou založené na Ubuntu 16,04, který používá systém. Systém a spuštění jsou závislé na různých příkazech, takže by měl být vytvořen skript pro práci s oběma.
 
-Další důležitý rozdíl mezi HDInsight 3.4 a 3.5 je, že `JAVA_HOME` nyní odkazuje na jazyce Java 8. Následující kód ukazuje, jak určit, zda je skript spuštěn na Ubuntu 14 nebo 16:
+Dalším důležitým rozdílem mezi HDInsight 3,4 a 3,5 je, že `JAVA_HOME` nyní ukazuje na Java 8. Následující kód demonstruje, jak zjistit, jestli skript běží na Ubuntu 14 nebo 16:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -108,89 +108,89 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-Můžete najít úplná skript, který obsahuje tyto fragmenty kódu v https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.
+Úplný skript, který obsahuje tyto fragmenty kódu, můžete najít na adrese https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.
 
-Verze Ubuntu, které používají HDInsight, najdete v článku [verzí komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.
+Verze Ubuntu, kterou používá HDInsight, najdete v dokumentu [verze součásti HDInsight](hdinsight-component-versioning.md) .
 
-Rozdíly mezi Systemd a Upstart najdete v tématu [Systemd pro uživatele Upstart](https://wiki.ubuntu.com/SystemdForUpstartUsers).
+Chcete-li porozumět rozdílům mezi systémem a nastartem, přečtěte si téma [systém pro uživatele pro zahájení](https://wiki.ubuntu.com/SystemdForUpstartUsers).
 
-### <a name="bPS2"></a>Stabilní odkazy skriptu prostředků
+### <a name="bPS2"></a>Poskytování stabilních odkazů na zdroje skriptů
 
-Skript a související prostředky musí zůstat k dispozici v rámci životnosti clusteru. Tyto prostředky jsou povinné, Pokud Přidání nových uzlů do clusteru během operace škálování.
+Skript a přidružené prostředky musí zůstat dostupné po celou dobu životnosti clusteru. Tyto prostředky jsou požadovány v případě, že během operace škálování dojde k přidání nových uzlů do clusteru.
 
-Osvědčeným postupem je ke stažení a archivovat vše, co v účtu služby Azure Storage v rámci předplatného.
+Osvědčeným postupem je stažení a archivace všeho v účtu Azure Storage v rámci vašeho předplatného.
 
 > [!IMPORTANT]  
-> Účet úložiště používané musí být výchozí účet úložiště pro cluster nebo veřejné, jen pro čtení kontejneru na jiný účet úložiště.
+> Použitý účet úložiště musí být výchozím účtem úložiště pro cluster nebo veřejným kontejnerem jen pro čtení v jakémkoli jiném účtu úložiště.
 
-Například vzorky od Microsoftu jsou uloženy v [ https://hdiconfigactions.blob.core.windows.net/ ](https://hdiconfigactions.blob.core.windows.net/) účtu úložiště. Toto umístění je veřejné, jen pro čtení kontejneru udržované týmem HDInsight.
+Například ukázky poskytované společností Microsoft jsou uloženy v účtu úložiště [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) . Toto umístění je veřejný kontejner, který je jen pro čtení a který je spravován týmem HDInsight.
 
 ### <a name="bPS4"></a>Použití předem kompilovaných prostředků
 
-Pokud chcete snížit čas potřebný ke spuštění skriptu, vyhněte se operace, které se kompilují prostředky ze zdrojového kódu. Například před kompilací prostředků a uložit je do objektu blob pro účet služby Azure Storage ve stejném datovém centru jako HDInsight.
+Chcete-li zkrátit dobu potřebnou ke spuštění skriptu, vyhněte se operacím, které zkompiluje prostředky ze zdrojového kódu. Představte si například předkompilování prostředků a uložte je do objektu blob Azure Storage účtu ve stejném datovém centru jako HDInsight.
 
-### <a name="bPS3"></a>Ujistěte se, že cluster přizpůsobení skript je idempotentní
+### <a name="bPS3"></a>Zajistěte, aby byl skript vlastního nastavení clusteru idempotentní.
 
-Skripty musí být idempotentní. Pokud se skript spustí více než jednou, měla by vrátit clusteru do stejného stavu pokaždé, když.
+Skripty musí být idempotentní. Pokud se skript spouští několikrát, měl by cluster vracet do stejného stavu kdykoli.
 
-Například skript, který upraví konfigurační soubory neměli byste přidávat duplicitní položky, pokud spuštění více než jednou.
+Například skript, který upravuje konfigurační soubory, by neměl přidat duplicitní položky, pokud se spustilo několikrát.
 
 ### <a name="bPS5"></a>Zajištění vysoké dostupnosti architektury clusteru
 
-Založené na Linuxu clustery HDInsight poskytují dva hlavní uzly, které jsou aktivní v rámci clusteru a akce skriptů, spusťte na obou uzlech. Pokud komponenty, které instalujete očekává pouze jeden hlavní uzel, neinstalujte součásti na oba hlavní uzly.
+Clustery HDInsight se systémem Linux poskytují dva hlavní uzly, které jsou aktivní v rámci clusteru, a akce skriptů spouštěné na obou uzlech. Pokud komponenty, které nainstalujete, očekávají jenom jeden hlavní uzel, neinstalujte komponenty na oba hlavní uzly.
 
 > [!IMPORTANT]  
-> Služby poskytované v rámci HDInsight jsou navrženy pro převzetí služeb při selhání mezi dva hlavní uzly podle potřeby. Tato funkce není rozšířené k vlastní komponenty nainstalované prostřednictvím akce skriptu. Pokud potřebujete vysokou dostupnost pro vlastní komponenty, musíte implementovat vlastní mechanismus převzetí služeb při selhání.
+> Služby poskytované jako součást služby HDInsight jsou navržené tak, aby v případě potřeby převzaly mezi oběma hlavními uzly. Tato funkce se nerozšířila na vlastní součásti nainstalované prostřednictvím akcí skriptů. Pokud potřebujete vysokou dostupnost pro vlastní komponenty, musíte implementovat vlastní mechanismus převzetí služeb při selhání.
 
-### <a name="bPS6"></a>Konfigurace vlastních součástech používání úložiště objektů Blob v Azure
+### <a name="bPS6"></a>Konfigurace vlastních komponent pro použití služby Azure Blob Storage
 
-Součásti, které instalujete na clusteru může být výchozí konfigurace, který používá Apache Hadoop Distributed File System (HDFS) úložiště. HDInsight používá jako výchozího úložiště Data Lake Storage nebo Azure Storage. Oba poskytují systému HDFS kompatibilní soubor, který bude zachován dat i v případě odstranění clusteru. Budete muset konfigurovat součásti instalujete používat WASB nebo ADL namísto HDFS.
+Komponenty, které nainstalujete na cluster, můžou mít výchozí konfiguraci, která používá úložiště Apache Hadoop systém souborů DFS (Distributed File System) (HDFS). HDInsight používá jako výchozí úložiště buď Azure Storage, nebo Data Lake Storage. Oba poskytují systém souborů kompatibilní se systémem HDFS, který uchovává data i v případě, že se cluster odstraní. Možná budete muset nakonfigurovat komponenty, které nainstalujete, aby se místo HDFS používaly WASB nebo ADL.
 
-Pro většinu operací není potřeba zadat v systému souborů. Například následující zkopíruje soubor hadoop common.jar z místního systému souborů do úložiště clusteru:
+Pro většinu operací nemusíte zadávat systém souborů. Následující příkaz například zkopíruje soubor Hadoop-Common. jar z místního systému souborů do úložiště clusteru:
 
 ```bash
 hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 ```
 
-V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiště clusteru. Pro některé operace budete možná muset zadat identifikátor URI. Například `adl:///example/jars` pro Azure Data Lake Storage Gen1 `abfs:///example/jars` pro Data Lake Storage Gen2 nebo `wasb:///example/jars` pro službu Azure Storage.
+V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiště clusteru. Pro některé operace možná budete muset zadat identifikátor URI. Například `adl:///example/jars` pro Azure Data Lake Storage Gen1 `abfs:///example/jars` pro Data Lake Storage Gen2 nebo `wasb:///example/jars` pro Azure Storage.
 
-### <a name="bPS7"></a>Zápis informací o do STDOUT a STDERR
+### <a name="bPS7"></a>Zápis informací do STDOUT a STDERR
 
-Výstup skriptu protokoly HDInsight, která jsou zapsána do STDOUT a STDERR. Můžete zobrazit tyto informace pomocí webového uživatelského rozhraní Ambari.
+HDInsight protokoluje výstup skriptu, který je zapsaný do STDOUT a STDERR. Tyto informace můžete zobrazit pomocí webového uživatelského rozhraní Ambari.
 
 > [!NOTE]  
-> Apache Ambari slouží pouze k dispozici, pokud je cluster úspěšně vytvořen. Pokud použijete akci skriptu během vytváření clusteru a vytvoření selže, naleznete v části řešení potíží [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) existují i jiné možnosti přístupu k zaznamenané informace.
+> Apache Ambari je k dispozici pouze v případě, že byl cluster úspěšně vytvořen. Použijete-li během vytváření clusteru akci skriptu a vytváření se nepovede, přečtěte si část věnované řešení problémů [Přizpůsobení clusterů HDInsight pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) pro jiné způsoby přístupu k protokolovaným informacím.
 
-Většina nástrojů a instalační balíčky již zápis informací o do STDOUT a STDERR, ale můžete chtít přidat další protokolování. Chcete-li odeslat text do STDOUT, použijte `echo`. Příklad:
+Většina nástrojů a instalačních balíčků již zapisuje informace do STDOUT a STDERR, ale možná budete chtít přidat další protokolování. K odeslání textu do STDOUT použijte `echo`. Například:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Ve výchozím nastavení `echo` odešle řetězec do STDOUT. Chcete-li ho přímo do STDERR, přidejte `>&2` před `echo`. Příklad:
+Ve výchozím nastavení `echo` odesílá řetězec do STDOUT. Pokud ho chcete směrovat do STDERR, přidejte `>&2` před `echo`. Například:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
 ```
 
-To přesměruje informací, zapsán do STDOUT do výstupu STDERR (2) místo toho. Další informace o přesměrování vstupně-výstupních operací, najdete v části [ https://www.tldp.org/LDP/abs/html/io-redirection.html ](https://www.tldp.org/LDP/abs/html/io-redirection.html).
+Tento postup přesměruje informace zapsané do STDOUT na STDERR (2). Další informace o přesměrování v/v naleznete v tématu [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html).
 
-Další informace o zobrazení informacím protokolovaným v akcí skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
+Další informace o zobrazení informací protokolovaných akcemi skriptu najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) .
 
-### <a name="bps8"></a> Ukládat soubory ve formátu ASCII s LF konce řádků
+### <a name="bps8"></a>Uložení souborů jako ASCII pomocí konců řádků LF
 
-Skripty bash uskladněny ve formátu ASCII, řádky ukončen znakem LF. Soubory, které jsou uloženy jako UTF-8, nebo použít CRLF jako ukončení řádku může selhat kvůli následující chybě:
+Bash skripty by měly být uložené ve formátu ASCII a řádky zakončené znakem LF. Soubory, které jsou uložené jako UTF-8, nebo v případě konce řádku použijte CRLF, může dojít k následující chybě:
 
 ```
 $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="bps9"></a> Použít logika opakovaných pokusů provést obnovení při přechodné chyby
+### <a name="bps9"></a>Pro obnovení z přechodných chyb použít logiku opakování
 
-Při stahování souborů, instalace balíčků pomocí apt-get, nebo jiné akce, které přenášejí data přes internet, tato akce může selhat z důvodu přechodných síťových chyb. Vzdálený prostředek, který komunikuje se například může být probíhá přebírání služeb při selhání uzlu zálohování.
+Když stahujete soubory, instalujete balíčky pomocí apt-get nebo jiné akce, které přenášejí data prostřednictvím Internetu, může akce selhat kvůli přechodným chybám v síti. Například vzdálený prostředek, který komunikujete, může být v procesu převzetí služeb při selhání do záložního uzlu.
 
-Aby váš skript odolné pro přechodné chyby, můžete implementovat logiku opakování. Následující funkce ukazuje, jak implementovat logiku opakování. Zopakuje pokus o operaci třikrát před selháním.
+Aby váš skript byl odolný vůči přechodným chybám, můžete implementovat logiku opakování. Následující funkce ukazuje, jak implementovat logiku opakování. Opakuje operaci třikrát předtím, než vyprší jejich selhání.
 
 ```bash
 #retry
@@ -216,7 +216,7 @@ retry() {
 }
 ```
 
-Následující příklady ukazují, jak tuto funkci používat.
+Následující příklady ukazují, jak používat tuto funkci.
 
 ```bash
 retry ls -ltr foo
@@ -226,141 +226,141 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helpermethods"></a>Pomocné metody pro vlastní skripty
 
-Pomocné metody akcí skriptů jsou nástroje, které můžete použít při zápisu vlastních skriptů. Tyto metody jsou obsaženy v [ https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh ](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) skriptu. Stáhnout a použít je jako součást vašeho skriptu, použijte následující:
+Pomocné metody pro akce skriptu jsou nástroje, které můžete použít při psaní vlastních skriptů. Tyto metody jsou obsaženy ve skriptu [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) . K jejich stažení a použití jako součást skriptu použijte následující:
 
 ```bash
 # Import the helper method module.
 wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh && source /tmp/HDInsightUtilities-v01.sh && rm -f /tmp/HDInsightUtilities-v01.sh
 ```
 
-Následující pomocníky dostupné k použití ve vašem skriptu:
+Následující pomocníky jsou k dispozici pro použití ve skriptu:
 
-| Použití pomocné rutiny | Popis |
+| Použití pomocníka | Popis |
 | --- | --- |
-| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Stáhne soubor z identifikátoru URI zdroje do zadané cesty k souboru. Ve výchozím nastavení to není přepis existujícího souboru. |
+| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Stáhne soubor ze zdrojového identifikátoru URI do zadané cesty k souboru. Ve výchozím nastavení nedojde k přepsání stávajícího souboru. |
 | `untar_file TARFILE DESTDIR` |Extrahuje soubor tar (pomocí `-xf`) do cílového adresáře. |
-| `test_is_headnode` |Pokud byly spuštěny v hlavního uzlu clusteru, návratový 1; jinak 0. |
-| `test_is_datanode` |Pokud je aktuální uzel uzlem data (pracovní), vrátí se 1; jinak 0. |
-| `test_is_first_datanode` |Pokud aktuální uzel je první data (pracovní) uzlu (pojmenované workernode0) vrátí 1; jinak 0. |
-| `get_headnodes` |Vrátí název plně kvalifikované domény hlavních uzlech v clusteru. Názvy jsou oddělené čárkami. Při chybě je vrácen prázdný řetězec. |
-| `get_primary_headnode` |Získá název plně kvalifikované domény primárnímu hlavnímu uzlu. Při chybě je vrácen prázdný řetězec. |
-| `get_secondary_headnode` |Získá název plně kvalifikované domény sekundární hlavní uzel. Při chybě je vrácen prázdný řetězec. |
-| `get_primary_headnode_number` |Získá číselnou příponou primárnímu hlavnímu uzlu. Při chybě je vrácen prázdný řetězec. |
-| `get_secondary_headnode_number` |Získá číselnou příponou sekundární hlavní uzel. Při chybě je vrácen prázdný řetězec. |
+| `test_is_headnode` |V případě, že je hlavní uzel clusteru spuštěný, vrátí 1; v opačném případě 0. |
+| `test_is_datanode` |Pokud je aktuálním uzlem uzel data (Worker), vrátí hodnotu 1. v opačném případě 0. |
+| `test_is_first_datanode` |Pokud je aktuální uzel prvním uzlem dat (Worker) (s názvem workernode0), vrátí hodnotu 1. v opačném případě 0. |
+| `get_headnodes` |Vrátí plně kvalifikovaný název domény hlavních v clusteru. Názvy jsou odděleny čárkami. Při chybě se vrátí prázdný řetězec. |
+| `get_primary_headnode` |Získá plně kvalifikovaný název domény primární hlavnímu uzlu. Při chybě se vrátí prázdný řetězec. |
+| `get_secondary_headnode` |Získá plně kvalifikovaný název domény sekundárního hlavnímu uzluu. Při chybě se vrátí prázdný řetězec. |
+| `get_primary_headnode_number` |Získá číselnou příponu primárního hlavnímu uzluu. Při chybě se vrátí prázdný řetězec. |
+| `get_secondary_headnode_number` |Získá číselnou příponu sekundárního hlavnímu uzluu. Při chybě se vrátí prázdný řetězec. |
 
-## <a name="commonusage"></a>Běžné vzory využití
+## <a name="commonusage"></a>Běžné vzorce použití
 
-Tato část obsahuje pokyny k implementaci některých běžných vzorů využití, které můžete narazit na při zápisu vlastních skriptů.
+V této části najdete pokyny k implementaci některých běžných vzorů použití, ke kterým můžete při psaní vlastního skriptu použít.
 
 ### <a name="passing-parameters-to-a-script"></a>Předávání parametrů skriptu
 
-V některých případech může váš skript vyžadují parametry. Například můžete potřebovat heslo správce pro cluster při použití rozhraní Ambari REST API.
+V některých případech může skript vyžadovat parametry. Při použití REST API Ambari můžete například potřebovat heslo správce clusteru.
 
-Parametry předané do skriptu jsou označovány jako *poziční parametry*a jsou přiřazeny k `$1` pro první parametr `$2` druhé a proto dostupné. `$0` obsahuje název samotný skript.
+Parametry předané skriptu jsou známé jako *poziční parametry*a jsou přiřazeny `$1` pro první parametr, `$2` pro druhý a tak dále. `$0` obsahuje název samotného skriptu.
 
-Hodnoty předány do skriptu jako parametry by měl být uzavřen v jednoduchých uvozovkách ('). Tím se zajistí, že předaná hodnota je považována za literál.
+Hodnoty předané skriptu jako parametry by měly být uzavřeny jednoduchými uvozovkami ('). Tím zajistíte, že předaná hodnota je považována za literál.
 
 ### <a name="setting-environment-variables"></a>Nastavení proměnných prostředí
 
-Nastavení proměnné prostředí se provádí pomocí následujícího příkazu:
+Nastavení proměnné prostředí se provádí následujícím příkazem:
 
     VARIABLENAME=value
 
-NÁZEVPROMĚNNÉ kde je název proměnné. Chcete-li získat přístup k proměnné, použijte `$VARIABLENAME`. Například pro přiřazení hodnoty poskytnuté pozičních parametrů jako proměnnou prostředí s názvem heslo, použijete následující příkaz:
+WHERE proměnná je název proměnné. Pro přístup k proměnné použijte `$VARIABLENAME`. Například chcete-li přiřadit hodnotu poskytnutou pozičním parametrem jako proměnnou prostředí s názvem PASSWORD, použijte následující příkaz:
 
     PASSWORD=$1
 
-Pak můžete použít následující přístup k informacím `$PASSWORD`.
+Následný přístup k informacím pak může použít `$PASSWORD`.
 
-Proměnné prostředí nastavené v rámci skriptu existují pouze v rámci oboru skriptu. V některých případech budete muset přidat systémové proměnné, které se uloží po dokončení skriptu. Pro přidání systémové proměnné, přidejte proměnné do `/etc/environment`. Například následující příkaz přidá `HADOOP_CONF_DIR`:
+Proměnné prostředí nastavené v rámci skriptu existují pouze v rámci rozsahu skriptu. V některých případech může být nutné přidat proměnné prostředí v rámci systému, které budou zachovány po dokončení skriptu. Chcete-li přidat proměnné prostředí v rámci systému, přidejte proměnnou do `/etc/environment`. Například následující příkaz přidá `HADOOP_CONF_DIR`:
 
 ```bash
 echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 ```
 
-### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Přístup k umístění, kde jsou uloženy vlastních skriptů
+### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Přístup k umístěním, kde jsou uloženy vlastní skripty
 
-Skripty používané k úpravám clusteru musí být uložen v jednom z následujících umístění:
+Skripty používané k přizpůsobení clusteru musí být uloženy v jednom z následujících umístění:
 
-* __Účtu služby Azure Storage__ , který je přidružen cluster.
+* __Účet Azure Storage__ , který je spojený s clusterem.
 
-* __Dalšího účtu úložiště__ přidružené ke clusteru.
+* __Další účet úložiště__ spojený s clusterem.
 
-* A __veřejně čitelné URI__. Například adresa URL k datům uloženým na Onedrivu, Dropboxu nebo jiný soubor, který je hostitelem služby.
+* __Veřejně čitelný identifikátor URI__. Například adresa URL pro data uložená na OneDrivu, Dropboxu nebo jiné službě hostování souborů.
 
-* __Účet Azure Data Lake Storage__ , který je přidružen HDInsight cluster. Další informace o používání služby Azure Data Lake Storage s HDInsight naleznete v tématu [rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* __Účet Azure Data Lake Storage__ , který je spojený s clusterem HDInsight. Další informace o použití Azure Data Lake Storage se službou HDInsight najdete v tématu [rychlý Start: nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     > [!NOTE]  
-    > Instanční objekt služby, kterou používá HDInsight pro přístup k Data Lake Storage musí mít oprávnění ke čtení pro skript.
+    > Služba HDInsight instančního objektu používá pro přístup Data Lake Storage musí mít ke skriptu oprávnění ke čtení.
 
-Prostředky využívané třídou skriptu musí být také veřejně dostupná.
+Prostředky používané skriptem musí být také veřejně dostupné.
 
-Ukládání souborů do účtu Azure Storage nebo Azure Data Lake Storage poskytuje rychlý přístup, jako v rámci sítě Azure.
+Ukládání souborů v účtu Azure Storage nebo Azure Data Lake Storage poskytuje rychlý přístup v rámci sítě Azure.
 
 > [!NOTE]  
-> Formát identifikátoru URI slouží jako odkaz na skript se liší v závislosti na používaných služeb. Pro účty úložiště přidružené ke clusteru HDInsight, použijte `wasb://` nebo `wasbs://`. Veřejně čitelné identifikátory URI, použijte `http://` nebo `https://`. Pro Data Lake Storage, použijte `adl://`.
+> Formát identifikátoru URI, který se používá k odkazování na skript, se liší v závislosti na používané službě. Pro účty úložiště přidružené k clusteru HDInsight použijte `wasb://` nebo `wasbs://`. Pro veřejně čitelné identifikátory URI použijte `http://` nebo `https://`. Pro Data Lake Storage použijte `adl://`.
 
-## <a name="deployScript"></a>Kontrolní seznam pro nasazení skriptových akcí
+## <a name="deployScript"></a>Kontrolní seznam pro nasazení akce skriptu
 
-Tady jsou kroky vzít při přípravě nasazení skriptu:
+Tady jsou kroky, které je potřeba provést při přípravě nasazení skriptu:
 
-* Umístěte soubory, které obsahují vlastní skripty na místě, které je přístupné uzly clusteru během nasazení. Například výchozí úložiště pro cluster. Soubory můžete také uloženy ve veřejně čitelné hostitelské služby.
-* Ověřte, zda skript je idempotentní. Díky tomu skript, který se spustí více než jednou ve stejném uzlu.
-* Pomocí TMP adresáře dočasných souborů stažených souborů, které skripty používají a následnému vyčištění po jejich po uzavřeli dohodu o skripty.
-* Pokud se změní nastavení na úrovni operačního systému nebo konfigurační soubory služby Hadoop, můžete restartovat služby HDInsight.
+* Soubory, které obsahují vlastní skripty, umístěte do místa, které je přístupné pro uzly clusteru během nasazování. Například výchozí úložiště pro cluster. Soubory mohou být také uloženy ve veřejně čitelných hostitelských službách.
+* Ověřte, že je skript idempotentní. To umožňuje, aby se skript ve stejném uzlu spustil víckrát.
+* Pomocí dočasného adresářového souboru adresáře/TMP Udržujte stažené soubory používané skripty a pak je vyčistěte po provedení skriptů.
+* Pokud se změní nastavení na úrovni operačního systému nebo konfigurační soubory služby Hadoop, budete možná chtít restartovat služby HDInsight.
 
-## <a name="runScriptAction"></a>Jak spustit akci skriptu
+## <a name="runScriptAction"></a>Spuštění akce skriptu
 
-Akce se skripty můžete použít k přizpůsobení clusterů HDInsight pomocí následujících metod:
+Pomocí akcí skriptů můžete přizpůsobit clustery HDInsight následujícími způsoby:
 
-* portál Azure
+* Portál Azure
 * Azure PowerShell
 * Šablony Azure Resource Manageru
-* Sady HDInsight .NET SDK.
+* Sada SDK pro HDInsight .NET.
 
-Další informace o použití každé metody, naleznete v tématu [způsob použití akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
+Další informace o použití jednotlivých metod naleznete v tématu [How to use Script Action](hdinsight-hadoop-customize-cluster-linux.md).
 
 ## <a name="sampleScripts"></a>Ukázky vlastních skriptů
 
-Společnost Microsoft poskytuje ukázkové skripty pro instalaci součásti v clusteru HDInsight. V následujících tématech pro další příklad skriptových akcí.
+Společnost Microsoft poskytuje ukázkové skripty pro instalaci komponent do clusteru HDInsight. Další příklady akcí skriptů najdete na následujících odkazech.
 
-* [Nainstalovat a používat rozhraní Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md)
-* [Instalace a použití Giraphu Apache v clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md)
+* [Instalace a použití odstínu v clusterech HDInsight](hdinsight-hadoop-hue-linux.md)
+* [Instalace a použití Apache Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Tady jsou chyby, které může dojít při používání skriptů, kterou jste vytvořili:
+V následujícím seznamu jsou chyby, které se můžou při používání skriptů, které jste vyvinuli, nacházet:
 
-**Chyba**: `$'\r': command not found`. Někdy následovaný `syntax error: unexpected end of file`.
+**Chyba**: `$'\r': command not found`. Někdy následuje po `syntax error: unexpected end of file`.
 
-*Příčina:* K této chybě dojde, pokud řádků ve skriptu končit znaky CRLF. Systémy UNIX očekávat, že pouze LF jako ukončení řádku.
+*Příčina*: Tato chyba je způsobena tím, že řádky ve skriptu končí znakem CRLF. Systémy UNIX očekávají jako konec řádku pouze LF.
 
-Tento problém nejčastěji nastane, pokud se vytváří skript v prostředí Windows CRLF je běžné řádku ukončení pro mnoho textových editorů na Windows.
+K tomuto problému často dochází, když je skript vytvořen v prostředí systému Windows, protože znak CRLF je obvyklým řádkem, který končí mnoho textových editorů v systému Windows.
 
-*Rozlišení*: Pokud je možnost v textovém editoru, vyberte formát operačního systému Unix nebo LF pro ukončení řádku. Chcete-li změnit znaky CRLF LF může také použít následující příkazy v systému Unix:
+*Řešení*: Pokud se jedná o možnost v textovém editoru, vyberte pro konec řádku možnost formát systému UNIX nebo LF. V systému UNIX můžete také použít následující příkazy, abyste změnili znak CRLF na LF:
 
 > [!NOTE]  
-> Následující příkazy jsou zhruba ekvivalentní v tom, že by měl mění konce řádků CRLF k LF. Vyberte jednu podle nástrojů, které jsou k dispozici ve vašem systému.
+> Následující příkazy jsou přibližně stejné jako v tom, že by měly změnit čáru CRLF zakončení na LF. Vyberte jednu z nástrojů, které jsou k dispozici ve vašem systému.
 
 | Příkaz | Poznámky |
 | --- | --- |
-| `unix2dos -b INFILE` |Původní soubor je zálohovaný s. BAK rozšíření |
-| `tr -d '\r' < INFILE > OUTFILE` |VÝSTUPNÍ_SOUBOR obsahuje verzi s pouze LF konce |
-| `perl -pi -e 's/\r\n/\n/g' INFILE` | Upraví soubor přímo |
-| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |VÝSTUPNÍ_SOUBOR obsahuje verzi s pouze LF konce. |
+| `unix2dos -b INFILE` |Původní soubor je zálohovaný pomocí. Rozšíření BAK |
+| `tr -d '\r' < INFILE > OUTFILE` |SOUBOR s informacemi o verzi obsahující jenom konce LF |
+| `perl -pi -e 's/\r\n/\n/g' INFILE` | Upraví soubor přímo. |
+| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |SOUBOR s informacemi o verzi obsahuje jenom konce LF. |
 
 **Chyba**: `line 1: #!/usr/bin/env: No such file or directory`.
 
-*Příčina:* Tato chyba nastane, pokud skript byl uložen jako UTF-8 s značky pořadí bajtů (BOM).
+*Příčina*: k této chybě dochází, když byl skript uložen jako UTF-8 s označením pořadí bajtů (BOM).
 
-*Rozlišení*: Uložte soubor ve formátu ASCII nebo jako UTF-8 bez BOM. Vytvoření souboru bez BOM může také použít následující příkaz v systému Linux nebo Unix:
+*Řešení*: Uložte soubor buď jako ASCII, nebo jako UTF-8 bez kusovníku. V systému Linux nebo UNIX můžete také použít následující příkaz k vytvoření souboru bez tohoto kusovníku:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
-Nahraďte `INFILE` v souboru s BOM. `OUTFILE` nový název souboru, který obsahuje skript bez BOM by měl být.
+Nahraďte `INFILE` souborem, který obsahuje kusovník. `OUTFILE` by měl být nový název souboru, který obsahuje skript bez tohoto kusovníku.
 
 ## <a name="seeAlso"></a>Další kroky
 
-* Zjistěte, jak [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md)
-* Použití [referenční sady HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) Další informace o vytváření aplikací .NET, které spravují HDInsight
-* Použít [rozhraní REST API služby HDInsight](https://msdn.microsoft.com/library/azure/mt622197.aspx) na další informace o použití REST k provádění akcí správy v clusterech HDInsight.
+* Postup [Přizpůsobení clusterů HDInsight pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md)
+* Další informace o vytváření aplikací .NET, které spravují HDInsight, najdete v referenčních informacích k [sadě HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) .
+* Pomocí [REST API HDInsight](https://msdn.microsoft.com/library/azure/mt622197.aspx) se naučíte, jak používat REST k provádění akcí správy v clusterech HDInsight.

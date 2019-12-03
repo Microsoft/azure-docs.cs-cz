@@ -1,27 +1,18 @@
 ---
-title: Vytvoření webové aplikace v Node. js – Azure App Service | Microsoft Docs
-description: Během několika minut můžete nasadit svou první aplikaci Node.js Hello World pomocí služby Azure App Service Web Apps.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Rychlý Start: Vytvoření webové aplikace v Node. js'
+description: Nasaďte první Hello World Node. js do Azure App Service v řádu minut. Nasadíte pomocí Visual Studio Code, což je jedním z mnoha způsobů, jak nasadit do App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 09/30/2019
-ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 98d939c69bb03666dbeed124778b06f8a7e73532
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91494cc9c1e3a1fc159702bdbb7f68a4423b604c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471470"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671366"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure 
 
@@ -78,7 +69,7 @@ npx express-generator myExpressApp --view pug --git
 
 Parametry `--view pug --git` informují generátoru, aby používal modul šablon [Pug](https://pugjs.org/api/getting-started.html) (dříve označovaný jako `jade`) a vytvořil soubor `.gitignore`.
 
-Chcete-li nainstalovat všechny závislosti aplikace, pokračujte do nové složky a spusťte `npm install`.
+Chcete-li nainstalovat všechny závislosti aplikace, otevřete složku nová a spusťte `npm install`.
 
 ```bash
 cd myExpressApp
@@ -93,7 +84,7 @@ Dále zkontrolujte, zda je aplikace spuštěna. Z terminálu spusťte aplikaci p
 npm start
 ```
 
-Nyní otevřete prohlížeč a přejděte na [http://localhost:3000](http://localhost:3000), kde by se mělo zobrazit něco jako:
+Nyní otevřete prohlížeč a přejděte na [http://localhost:3000](http://localhost:3000), kde by se měla zobrazit něco podobného:
 
 ![Spuštění expresní aplikace](containers/media/quickstart-nodejs/express.png)
 
@@ -119,7 +110,7 @@ V Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasa�
 > [!TIP]
 > Z **palety příkazů** (CTRL + SHIFT + P) se dá nasadit taky tak, že zadáte ' nasadit do webové aplikace ' a spustíte příkaz **Azure App Service: nasadit do webové aplikace** .
 
-1. Vyberte adresář, který máte v současnosti otevřený, `myExpressApp`.
+1. Vyberte adresář, který máte v současnosti otevřený `myExpressApp`.
 
 1. Vyberte možnost vytvoření v závislosti na operačním systému, do kterého chcete nasadit:
 
