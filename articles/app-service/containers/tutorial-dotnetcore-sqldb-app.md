@@ -1,26 +1,17 @@
 ---
-title: ASP.NET Core s SQL Database na platformě Linux-Azure App Service | Microsoft Docs
-description: Naučte se, jak získat aplikaci ASP.NET Core v Azure App Service v systému Linux pracovat s připojením k SQL Database.
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Kurz: ASP.NET Core pro Linux s SQL DB'
+description: Naučte se, jak získat datově řízenou ASP.NET Coreovou aplikaci pro Linux pracující v Azure App Service s připojením k SQL Database.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 532c6a45351f872260ea9383adaacacd486b9d9a
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 67ea11b2e1457bf4a788f54664ed54ff7ca9c8d9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532716"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688915"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Sestavení aplikace ASP.NET Core a SQL Database v Azure App Service na Linux
 
@@ -100,7 +91,7 @@ Jako databáze SQL se v tomto kurzu používá [Azure SQL Database](/azure/sql-d
 
 V Cloud Shellu vytvořte logický server databáze SQL příkazem[`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create).
 
-Nahraďte zástupný text *\<server-name >* jedinečným názvem SQL Database. Tento název se používá jako součást koncového bodu databáze SQL (`<server-name>.database.windows.net`), takže název musí být jedinečný v rámci všech logických serverů v Azure. Název smí obsahovat jen malá písmena, číslice a znak spojovníku (-) a musí mít délku 3 až 50 znaků. Také nahraďte *\<db-username >* a *\<db-Password >* pomocí uživatelského jména a hesla podle svého výběru. 
+Nahraďte zástupný text *\<ového serveru >* jedinečným názvem SQL Database. Tento název se používá jako součást koncového bodu databáze SQL (`<server-name>.database.windows.net`), takže název musí být jedinečný v rámci všech logických serverů v Azure. Název smí obsahovat jen malá písmena, číslice a znak spojovníku (-) a musí mít délku 3 až 50 znaků. Také nahraďte *\<DB-username >* a *\<db-Password >* pomocí uživatelského jména a hesla podle svého výběru. 
 
 
 ```azurecli-interactive
@@ -145,7 +136,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Vytvoření připojovacího řetězce
 
-Nahraďte následující řetězec *názvem \<server >* , *\<db-username >* a *\<dbm heslem >* jste použili dříve.
+Nahraďte následující řetězec *názvem\<Server->* , *\<db-username >* a *\<DB-Password >* jste použili dříve.
 
 ```
 Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
@@ -171,7 +162,7 @@ V tomto kroku nasadíte aplikaci .NET Core připojenou k databázi SQL do služb
 
 ### <a name="configure-connection-string"></a>Konfigurace připojovacího řetězce
 
-Pokud chcete nastavit pro svou aplikaci Azure připojovací řetězce, použijte v Cloud Shellu příkaz [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set). V následujícím příkazu nahraďte *\<app-name >* a také parametr *\<connection-String >* s připojovacím řetězcem, který jste vytvořili dříve.
+Pokud chcete nastavit pro svou aplikaci Azure připojovací řetězce, použijte v Cloud Shellu příkaz [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set). V následujícím příkazu nahraďte *\<App-name >* a připojovacím řetězcem *\<* připojovacího řetězce, který jste vytvořili dříve.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
@@ -185,7 +176,7 @@ Pokud chcete zjistit, jak se na připojovací řetězec odkazuje v kódu, přeč
 
 Dále nastavte proměnnou `ASPNETCORE_ENVIRONMENT` aplikace na hodnotu _Production_. Toto nastavení vám umožní zjistit, jestli používáte v Azure, protože pro své místní vývojové prostředí a SQL Database pro vaše prostředí Azure použijete SQLite.
 
-Následující příklad konfiguruje nastavení aplikace `ASPNETCORE_ENVIRONMENT` v aplikaci Azure. Nahraďte zástupný text *\<app-name >* .
+Následující příklad konfiguruje nastavení aplikace `ASPNETCORE_ENVIRONMENT` v aplikaci Azure. Nahraďte zástupný symbol *\<název aplikace >* .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
@@ -219,7 +210,7 @@ services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate
 
 Pokud tento kód zjistí, že je spuštěný v produkčním prostředí (což indikuje prostředí Azure), pak použije připojovací řetězec, který jste nakonfigurovali pro připojení k SQL Database. Informace o tom, jak se k nastavení aplikace přistupuje v App Service, najdete v tématu [přístup k proměnným prostředí](configure-language-dotnetcore.md#access-environment-variables).
 
-@No__t_0 volání pomáhá při spuštění v Azure, protože automaticky vytvoří databáze, které vaše aplikace .NET Core potřebuje, na základě konfigurace migrace.
+`Database.Migrate()` volání pomáhá při spuštění v Azure, protože automaticky vytvoří databáze, které vaše aplikace .NET Core potřebuje, na základě konfigurace migrace.
 
 Uložte provedené změny a potom je potvrďte v úložišti Gitu.
 
@@ -362,7 +353,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-Po dokončení `git push` přejděte do aplikace Azure a vyzkoušejte nové funkce.
+Až se `git push` dokončí, přejděte do aplikace Azure a vyzkoušejte nové funkce.
 
 ![Aplikace Azure po Code First migraci](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 

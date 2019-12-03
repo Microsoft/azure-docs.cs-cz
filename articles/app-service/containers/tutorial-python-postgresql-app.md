@@ -1,26 +1,19 @@
 ---
-title: 'Kurz: webová aplikace Python (Django) s PostgreSQL v systému Linux – Azure App Service'
-description: Naučte se, jak spustit webovou aplikaci Python řízenou daty (Django) v Azure s připojením k databázi PostgreSQL.
-services: app-service\web
-documentationcenter: python
-author: cephalin
-manager: gwallace
-ms.service: app-service-web
-ms.workload: web
+title: 'Kurz: aplikace pro Linux v Pythonu s Postgre'
+description: Naučte se, jak získat aplikaci pro Linux v Pythonu pracující v Azure App Service s připojením k databázi PostgreSQL v Azure. V tomto kurzu se používá Django.
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: 34dbce2a6da2395bbc627a30d464a9817dfe76fe
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: d23097c9674d2b7e60e779304a2d08c734bd614d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439496"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688867"
 ---
 # <a name="tutorial-build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: Vytvoření webové aplikace v Pythonu (Django) s PostgreSQL v Azure App Service
 
@@ -44,9 +37,9 @@ Postup uvedený v tomto článku najdete na macOS, Linux a pokyny pro Windows js
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalovat Python](https://www.python.org/downloads/).
@@ -280,7 +273,7 @@ Přejít na `http://localhost:8000/admin` a přihlaste se pomocí vámi vytvoře
 
 Přejděte na `http://localhost:8000` znovu a podívejte se na zobrazenou otázku dotazování. Vaše aplikace teď zapisuje data do databáze v Azure.
 
-## <a name="deploy-to-azure"></a>Nasazení do Azure
+## <a name="deploy-to-azure"></a>Nasadit do Azure
 
 V tomto kroku nasadíte aplikaci Python připojenou k Postgre do služby Azure App Service.
 
@@ -331,7 +324,7 @@ git commit -am "configure for App Service"
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Vytvoření webové aplikace
+### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
