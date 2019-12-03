@@ -568,6 +568,8 @@
               href: cassandra-import-data.md
         - name: Návody
           items:
+            - name: Změna kanálu
+              href: cassandra-change-feed.md
             - name: Ukládání a správa služby Spring Data
               href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
               maintainContext: true
