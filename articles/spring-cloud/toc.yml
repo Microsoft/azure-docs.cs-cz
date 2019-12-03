@@ -26,6 +26,8 @@
       href: spring-cloud-tutorial-scale-manual.md
     - name: Monitorování aplikace pomocí distribuovaného trasování a App Insights
       href: spring-cloud-tutorial-distributed-tracing.md
+    - name: Monitorování prostředků Spring Cloudu s využitím výstrah a skupin akcí
+      href: spring-cloud-tutorial-alerts-action-groups.md
     - name: Navázání aplikace na Azure CosmosDB
       href: spring-cloud-tutorial-bind-cosmos.md
     - name: Navázání aplikace s využitím Azure Cache for Redis
