@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9dc7e6341f77fc17ae26f34ea029b3eb5414dcbc
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546317"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705304"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Vytvoření skupinového účtu spravované služby (gMSA) v Azure AD Domain Services
 
@@ -65,7 +65,7 @@ Nejdřív vytvořte vlastní organizační jednotku pomocí rutiny [New-ADOrgani
 > [!TIP]
 > K vytvoření gMSA [použijte virtuální počítač pro správu][tutorial-create-management-vm]a proveďte tyto kroky. Tento virtuální počítač pro správu by už měl mít požadované rutiny služby AD PowerShell a připojení ke spravované doméně.
 
-Následující příklad vytvoří vlastní organizační jednotku s názvem *myNewOU* ve spravované doméně Azure služba AD DS s názvem *contoso.com*. Použijte vlastní organizační jednotku a název spravované domény:
+Následující příklad vytvoří vlastní organizační jednotku s názvem *myNewOU* ve spravované doméně Azure služba AD DS s názvem *aadds.contoso.com*. Použijte vlastní organizační jednotku a název spravované domény:
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
@@ -75,20 +75,20 @@ Nyní vytvořte gMSA pomocí rutiny [New-ADServiceAccount][New-ADServiceAccount]
 
 * **-Name** je nastavená na *WebFarmSvc* .
 * Parametr **-path** určuje vlastní organizační jednotku pro gMSA vytvořené v předchozím kroku.
-* Pro *WebFarmSvc.contoso.com* jsou nastavené položky DNS a hlavní názvy služeb.
+* Pro *WebFarmSvc.aadds.contoso.com* jsou nastavené položky DNS a hlavní názvy služeb.
 * Objekty zabezpečení ve *společnosti Contoso-Server $* smějí načíst heslo pomocí této identity.
 
 Zadejte vlastní názvy a názvy domén.
 
 ```powershell
 New-ADServiceAccount -Name WebFarmSvc `
-    -DNSHostName WebFarmSvc.contoso.com `
+    -DNSHostName WebFarmSvc.aadds.contoso.com `
     -Path "OU=MYNEWOU,DC=contoso,DC=com" `
     -KerberosEncryptionType AES128, AES256 `
     -ManagedPasswordIntervalInDays 30 `
-    -ServicePrincipalNames http/WebFarmSvc.contoso.com/contoso.com, `
-        http/WebFarmSvc.contoso.com/contoso, `
-        http/WebFarmSvc/contoso.com, `
+    -ServicePrincipalNames http/WebFarmSvc.aadds.contoso.com/aadds.contoso.com, `
+        http/WebFarmSvc.aadds.contoso.com/contoso, `
+        http/WebFarmSvc/aadds.contoso.com, `
         http/WebFarmSvc/contoso `
     -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
 ```

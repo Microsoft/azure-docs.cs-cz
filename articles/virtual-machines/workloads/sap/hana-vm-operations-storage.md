@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/27/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8419ce5c5c7144008027a93f985d1f6ffdc1ced4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 26994c3488feb5f2c1522960ba4d2664bdbc80f4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669114"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707472"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -65,7 +65,7 @@ Nahromadění řady virtuálních pevných disků Azure pod položkou RAID se ac
 Při změně velikosti nebo rozhodování pro virtuální počítač si taky Pamatujte na propustnost v/v. Celková propustnost úložiště virtuálních počítačů je popsána v článku [paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory).
 
 ## <a name="linux-io-scheduler-mode"></a>Režim plánovače I/O systému Linux
-Linux má několik různých režimů plánování vstupu a výstupu. Běžnými doporučeními pro dodavatele Linux a SAP je překonfigurování režimu I/O Scheduleru pro svazky disků z režimu **CFQ** do režimu **NoOp** . Podrobnosti jsou odkazovány v [#1984798 SAP Note](https://launchpad.support.sap.com/#/notes/1984787). 
+Linux má několik různých režimů plánování vstupu a výstupu. Běžnými doporučeními pro dodavatele Linux a SAP je překonfigurování režimu I/O Scheduleru pro svazky disků z režimu **CFQ** do režimu **NoOp** . Podrobnosti jsou odkazovány v [#1984787 SAP Note](https://launchpad.support.sap.com/#/notes/1984787). 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Řešení s Premium Storage a Azure Akcelerátor zápisu pro virtuální počítače řady Azure M-Series

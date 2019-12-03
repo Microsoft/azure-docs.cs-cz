@@ -14,18 +14,18 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f1fd1c21789c272bf8deae72ef64f2bbb1c6b3cb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185055"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707439"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Framework s využitím konfigurace aplikace Azure
 
 V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové aplikace založené na .NET Framework pro centralizaci úložiště a správy nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -112,7 +112,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho v aplikaci .NET Framework konzolu. Hodnota `AppSettings` `ConfiguratoinManager` se po spuštění aplikace nezmění. Knihovna zprostředkovatele konfigurace .NET Standard konfigurace aplikace se ale dá použít i v aplikaci .NET Framework. Další informace o tom, jak aplikaci .NET Framework povolit, aby dynamicky aktualizovala nastavení konfigurace, najdete v dalším kurzu.
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho v aplikaci .NET Framework konzolu. Hodnota `AppSettings` `ConfigurationManager` se po spuštění aplikace nezmění. Knihovna zprostředkovatele konfigurace .NET Standard konfigurace aplikace se ale dá použít i v aplikaci .NET Framework. Další informace o tom, jak aplikaci .NET Framework povolit, aby dynamicky aktualizovala nastavení konfigurace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
 > [Povolit dynamickou konfiguraci](./enable-dynamic-configuration-dotnet.md)

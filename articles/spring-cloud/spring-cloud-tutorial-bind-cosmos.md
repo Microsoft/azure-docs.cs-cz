@@ -1,17 +1,17 @@
 ---
-title: Vytvoření vazby Azure Cosmos DB k aplikaci Azure jaře Cloud | Microsoft Docs
-description: Přečtěte si, jak vytvořit vazby Azure Cosmos DB k aplikaci Azure jaře Cloud.
+title: Kurz – vytvoření vazby Azure Cosmos DB k aplikaci Azure jaře Cloud
+description: V tomto kurzu se naučíte vytvořit vazby Azure Cosmos DB k aplikaci Azure pro jarní Cloud.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 76a2b9f305f041a19b8d7ace8234a804825f6a0e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7e796c6f8b2ae17ba267a19da1d909087163d99c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607136"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708833"
 ---
 # <a name="tutorial-bind-an-azure-cosmos-db-to-your-azure-spring-cloud-application"></a>Kurz: vytvoření vazby Azure Cosmos DB k aplikaci Azure jaře Cloud
 

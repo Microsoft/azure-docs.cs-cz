@@ -1,6 +1,6 @@
 ---
-title: Připojení zařízení IoT technologie Plug and Play ve verzi Preview ke službě Azure IoT Central | Microsoft Docs
-description: Pomocí modelu schopností zařízení vygenerujte kód zařízení. Pak spusťte kód zařízení, přečtěte si téma připojení k aplikaci IoT Central a použijte automaticky vygenerovaná zobrazení.
+title: Kurz – připojení zařízení IoT technologie Plug and Play ve verzi Preview ke službě Azure IoT Central
+description: V tomto kurzu se dozvíte, jak pomocí modelu schopností zařízení vygenerovat kód zařízení. Pak spusťte kód zařízení, přečtěte si téma připojení k aplikaci IoT Central a použijte automaticky vygenerovaná zobrazení.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/08/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: be03684f89382f198c13540bbdfb3de5bf8513a6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 59261d6a1cea034df58bd7e8d53439cdf1fbae6b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404552"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702864"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Kurz: použití modelu schopností zařízení k vytvoření zařízení IoT technologie Plug and Play a jeho připojení k aplikaci IoT Central
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Spusťte kód zařízení ve Windows a podívejte se, jak se připojí k vaší IoT Central aplikaci.
 > * Podívejte se na simulovanou telemetrii, kterou zařízení odesílá.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete průvodce [vytvořením aplikace Azure IoT Central (náhled funkcí)](./quick-deploy-iot-central.md) a vytvořte aplikaci IoT Central pomocí vlastní šablony aplikace **> Preview** .
 

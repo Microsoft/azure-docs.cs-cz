@@ -1,6 +1,6 @@
 ---
-title: Vytvořit vlastní role prostředků Azure pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Zjistěte, jak vytvářet vlastní role pomocí řízení přístupu na základě rolí (RBAC) pro prostředky Azure pomocí Azure CLI. Jedná se o seznam, vytvářet, aktualizovat a odstraňovat vlastní role.
+title: Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí Azure CLI | Microsoft Docs
+description: Přečtěte si, jak vypsat, vytvořit, aktualizovat nebo odstranit vlastní role pomocí řízení přístupu na základě role (RBAC) pro prostředky Azure pomocí Azure CLI.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,29 +14,29 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ebced83346a7b130598e4a5f49a72d51ffd18e4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2b2ffde66468ae7cb2818010ac374126d2973be
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118769"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703139"
 ---
-# <a name="create-custom-roles-for-azure-resources-using-azure-cli"></a>Vytvoření vlastních rolí pro prostředky Azure pomocí Azure CLI
+# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí Azure CLI
 
-Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak vytvořit a spravovat vlastní role pomocí Azure CLI.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak pomocí Azure CLI vypsat, vytvořit, aktualizovat nebo odstranit vlastní role.
 
-Podrobný kurz o tom, jak vytvořit vlastní roli, najdete v tématu [kurzu: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI](tutorial-custom-role-cli.md).
+Podrobný návod, jak vytvořit vlastní roli, najdete v tématu [kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI](tutorial-custom-role-cli.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud chcete vytvořit vlastní role, budete potřebovat:
+K vytvoření vlastních rolí budete potřebovat:
 
 - Oprávnění k vytváření vlastních rolí, například [Vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator)
-- [Azure Cloud Shell](../cloud-shell/overview.md) nebo [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli)
+- [Azure Cloud Shell](../cloud-shell/overview.md) nebo [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="list-custom-roles"></a>Výpis vlastních rolí
 
-K zobrazení seznamu vlastních rolí, které jsou k dispozici pro přiřazení, použijte [az role definition list](/cli/azure/role/definition#az-role-definition-list). Následující příklady jsou uvedeny všechny vlastní role v rámci aktuálního předplatného.
+K vypsání vlastních rolí, které jsou k dispozici pro přiřazení, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). V následujících příkladech jsou uvedeny všechny vlastní role v aktuálním předplatném.
 
 ```azurecli
 az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "roleType":.roleType}'
@@ -63,15 +63,15 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 ...
 ```
 
-## <a name="list-a-custom-role-definition"></a>Seznam definice vlastních rolí
+## <a name="list-a-custom-role-definition"></a>Seznam definice vlastní role
 
-Chcete-li vypsat definice vlastních rolí, použijte [az role definition list](/cli/azure/role/definition#az-role-definition-list). Toto je stejný příkaz, který používáte pro předdefinovanou roli.
+Pokud chcete zobrazit seznam definice vlastní role, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). Jedná se o stejný příkaz, který byste použili pro předdefinovanou roli.
 
 ```azurecli
 az role definition list --name <role_name>
 ```
 
-Následující příklad zobrazí *virtuálního počítače operátor* definice role:
+V následujícím příkladu je uveden seznam definice role *operátora virtuálního počítače* :
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator"
@@ -113,7 +113,7 @@ az role definition list --name "Virtual Machine Operator"
 ]
 ```
 
-Následující příklad vypíše pouze akce *virtuálního počítače operátor* role:
+Následující příklad vypíše pouze akce role *operátora virtuálního počítače* :
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator" --output json | jq '.[] | .permissions[0].actions'
@@ -137,15 +137,15 @@ az role definition list --name "Virtual Machine Operator" --output json | jq '.[
 
 ## <a name="create-a-custom-role"></a>Vytvoření vlastní role
 
-Chcete-li vytvořit vlastní roli, použijte [az role definition vytvořit](/cli/azure/role/definition#az-role-definition-create). Definice role může být popis JSON nebo cesta k souboru, který obsahuje popis JSON.
+Pokud chcete vytvořit vlastní roli, použijte příkaz [AZ role definice Create](/cli/azure/role/definition#az-role-definition-create). Definice role může být popis JSON nebo cesta k souboru obsahujícímu popis JSON.
 
 ```azurecli
 az role definition create --role-definition <role_definition>
 ```
 
-Následující příklad vytvoří vlastní roli s názvem *virtuálního počítače operátor*. Tato vlastní role přiřadí přístup pro všechny operace čtení z *Microsoft.Compute*, *Microsoft.Storage*, a *Microsoft.Network* přístup poskytovatele a přiřadí k prostředkům Pokud chcete začít, restartování a monitorovat virtuální počítače. Tuto vlastní roli je možné ve dvou předplatných. Tento příklad používá soubor JSON jako vstup.
+Následující příklad vytvoří vlastní roli s názvem *operátor virtuálního počítače*. Tato vlastní role přiřadí přístup ke všem operacím čtení pro poskytovatele prostředků *Microsoft. COMPUTE*, *Microsoft. Storage*a *Microsoft. Network* a přiřadí přístup ke spouštění, restartování a monitorování virtuálních počítačů. Tato vlastní role se dá použít ve dvou předplatných. V tomto příkladu se jako vstup používá soubor JSON.
 
-vmoperator.json
+vmoperator. JSON
 
 ```json
 {
@@ -180,15 +180,15 @@ az role definition create --role-definition ~/roles/vmoperator.json
 
 ## <a name="update-a-custom-role"></a>Aktualizace vlastní role
 
-Pokud chcete aktualizovat vlastní roli, nejprve pomocí [az role definition list](/cli/azure/role/definition#az-role-definition-list) načíst definici role. Za druhé proveďte požadované změny do definice role. Nakonec použijte [az role definition update](/cli/azure/role/definition#az-role-definition-update) se uložit definici aktualizovaná role.
+Pokud chcete aktualizovat vlastní roli, napřed načtěte definici role pomocí [seznamu AZ role definition list](/cli/azure/role/definition#az-role-definition-list) . Za druhé proveďte požadované změny definice role. Nakonec pomocí příkazu [AZ role definition Update](/cli/azure/role/definition#az-role-definition-update) uložte aktualizovanou definici role.
 
 ```azurecli
 az role definition update --role-definition <role_definition>
 ```
 
-Následující příklad přidá *Microsoft.Insights/diagnosticSettings/* operace *akce* z *virtuálního počítače operátor* vlastní roli.
+Následující příklad přidá *službu Microsoft. Insights/diagnosticSettings/* Operation do *akcí* vlastní role *operátoru virtuálního počítače* .
 
-vmoperator.json
+vmoperator. JSON
 
 ```json
 {
@@ -224,20 +224,20 @@ az role definition update --role-definition ~/roles/vmoperator.json
 
 ## <a name="delete-a-custom-role"></a>Odstranění vlastní role
 
-Pokud chcete odstranit vlastní roli, použijte [az role definition delete](/cli/azure/role/definition#az-role-definition-delete). Pokud chcete nastavit roli, kterou chcete odstranit, použijte název role nebo ID role. Pokud chcete zjistit role ID, použít [az role definition list](/cli/azure/role/definition#az-role-definition-list).
+Pokud chcete odstranit vlastní roli, použijte příkaz [AZ role definition Delete](/cli/azure/role/definition#az-role-definition-delete). Chcete-li určit roli, kterou chcete odstranit, použijte název role nebo ID role. Chcete-li zjistit ID role, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list).
 
 ```azurecli
 az role definition delete --name <role_name or role_id>
 ```
 
-Následující příklad odstraní *virtuálního počítače operátor* vlastní roli.
+Následující příklad odstraní vlastní roli *operátoru virtuálního počítače* .
 
 ```azurecli
 az role definition delete --name "Virtual Machine Operator"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI](tutorial-custom-role-cli.md)
 - [Vlastní role pro prostředky Azure](custom-roles.md)
-- [Operace poskytovatele prostředků Azure Resource Manageru](resource-provider-operations.md)
+- [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md)

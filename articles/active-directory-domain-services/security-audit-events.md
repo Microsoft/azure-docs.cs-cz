@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6ff996129cc140c9154edb8fb60840cd48017a5e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569808"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704295"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services (Preview)
 
@@ -41,7 +41,7 @@ K dispozici jsou následující kategorie událostí auditu:
 |Přístup k objektu| Audity se pokouší o přístup k určitým objektům nebo typům objektů v síti nebo počítači. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat vygenerované aplikace](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-generated)</li><li>[Auditovat certifikační služby](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-certification-services)</li><li>[Auditovat podrobnou sdílenou složku](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-file-share)</li><li>[Auditovat sdílenou složku](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-share)</li><li>[Auditovat systém souborů](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-system)</li><li>[Auditovat připojení platformy pro filtrování](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection)</li><li>[Auditovat vyřazení paketů platformy filtrování](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-packet-drop)</li><li>[Manipulace s popisovačem auditu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-handle-manipulation)</li><li>[Auditovat objekt jádra](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kernel-object)</li><li>[Auditovat jiné události přístupu k objektu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-object-access-events)</li><li>[Audit registru](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-registry)</li><li>[Audit vyměnitelného úložiště](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-removable-storage)</li><li>[Audit SAM](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sam)</li><li>[Auditovat přípravu zásad centrálního přístupu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-central-access-policy-staging)</li></ul>|
 |Změna zásad|Audituje změny v důležitých zásadách zabezpečení v místním systému nebo v síti. Zásady jsou většinou zřízené správci, aby lépe zabezpečily síťové prostředky. Sledování změn nebo pokusů o změnu těchto zásad může být důležitým aspektem správy zabezpečení sítě. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat změnu zásad auditu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-audit-policy-change)</li><li>[Auditovat změnu zásad ověřování](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authentication-policy-change)</li><li>[Auditovat změnu zásad autorizace](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authorization-policy-change)</li><li>[Auditovat změny zásad platformy pro filtrování](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-policy-change)</li><li>[Auditovat změnu zásad na úrovni pravidel MPSSVC](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-mpssvc-rule-level-policy-change)</li><li>[Auditovat jiné změny zásad](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-policy-change-events)</li></ul>|
 |Použití oprávnění| Audituje použití určitých oprávnění v jednom nebo více systémech. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat používání necitlivých oprávnění](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-non-sensitive-privilege-use)</li><li>[Auditovat použití citlivých oprávnění](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sensitive-privilege-use)</li><li>[Auditovat události použití jiných oprávnění](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-privilege-use-events)</li></ul>|
-|Systémový| Audituje změny na úrovni systému na počítač, který není zahrnutý v jiných kategoriích a který má možné dopady na zabezpečení. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat ovladač IPsec](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[Auditovat jiné systémové události](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[Auditovat změnu stavu zabezpečení](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[Auditovat rozšíření systému zabezpečení](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[Auditovat integritu systému](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
+|Systém| Audituje změny na úrovni systému na počítač, který není zahrnutý v jiných kategoriích a který má možné dopady na zabezpečení. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat ovladač IPsec](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[Auditovat jiné systémové události](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[Auditovat změnu stavu zabezpečení](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[Auditovat rozšíření systému zabezpečení](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[Auditovat integritu systému](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
 
 ## <a name="event-ids-per-category"></a>ID událostí na kategorii
 
@@ -51,10 +51,10 @@ K dispozici jsou následující kategorie událostí auditu:
 |:---|:---|
 |Zabezpečení přihlášení k účtu|4767, 4774, 4775, 4776, 4777|
 |Zabezpečení správy účtů|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781, 4782, 4793, 4798, 4799, 5376, 5377,|
-|Zabezpečení sledování podrobností|Žádný|
+|Zabezpečení sledování podrobností|Žádné|
 |Zabezpečení přístupu DS|5136, 5137, 5138, 5139, 5141|
 |Zabezpečení při odhlašování|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Zabezpečení přístupu k objektům|Žádný|
+|Zabezpečení přístupu k objektům|Žádné|
 |Zabezpečení změny zásad|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Zabezpečení použití oprávnění|4985|
 |Zabezpečení systému|4612, 4621|
@@ -82,7 +82,7 @@ Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí 
 > Audity zabezpečení Azure služba AD DS nejsou zpětně. Nemůžete načíst události z minulosti nebo pro opětovné přehrání událostí z minulosti. Azure služba AD DS může posílat jenom události, ke kterým dojde po jeho povolení.
 
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
-1. V horní části Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte spravovanou doménu, například *contoso.com*.
+1. V horní části Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte spravovanou doménu, například *aadds.contoso.com*.
 1. V okně Azure služba AD DS na levé straně vyberte **nastavení diagnostiky (Preview)** .
 1. Ve výchozím nastavení nejsou nakonfigurované žádné diagnostiky. Začněte tím, že vyberete **Přidat nastavení diagnostiky**.
 

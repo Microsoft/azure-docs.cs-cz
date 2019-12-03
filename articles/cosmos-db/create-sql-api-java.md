@@ -1,6 +1,6 @@
 ---
-title: Vytvoření databáze dokumentů pomocí jazyka Java – Azure Cosmos DB
-description: Tento článek představuje vzorový kód Java, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API.
+title: Rychlý Start – použití jazyka Java k vytvoření databáze dokumentů pomocí Azure Cosmos DB
+description: V tomto rychlém startu se zobrazí ukázka kódu Java, kterou můžete použít k připojení a dotazování Azure Cosmos DB rozhraní SQL API.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: d5a32780f8598c0843958b99f02cd18aa33bea2e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a4a8990b3da534acb39ff87c9f7665fb3b08ef06
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582851"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708166"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
 
@@ -29,12 +29,12 @@ ms.locfileid: "73582851"
 
 V tomto rychlém startu se dozvíte, jak pomocí aplikace v jazyce Java vytvořit a spravovat databázi dokumentů z Azure Cosmos DB účtu rozhraní SQL API. Nejdřív vytvoříte Azure Cosmos DB účet rozhraní SQL API pomocí Azure Portal, vytvoříte aplikaci Java pomocí SQL Java SDK a potom do svého účtu Cosmos DB přidáte prostředky pomocí aplikace Java. Pokyny v tomto rychlém startu platí pro všechny operační systémy, které podporují Javu. Po dokončení tohoto rychlého startu budete obeznámeni s vytvářením a úpravou databází Cosmos DB, kontejnerů buď v uživatelském rozhraní, nebo programově, podle toho, co je vaše preference.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-Navíc platí: 
+Dále musí být splněny všechny tyto podmínky: 
 
 * [Java Development Kit (JDK) verze 8](https://aka.ms/azure-jdks)
     * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
@@ -133,7 +133,7 @@ Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovac�
 
 7. Aplikace neodstraňuje vytvořené prostředky. Přepněte zpět na portál a [vyčistěte prostředky](#clean-up-resources)  ze svého účtu, aby se vám za ně neúčtovaly poplatky.
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
+## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 

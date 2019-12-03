@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: vývoj modulů pro zařízení se systémem Linux – Azure IoT Edge'
+title: Kurz – vývoj pro zařízení se systémem Linux pomocí Azure IoT Edge
 description: Tento kurz vás provede nastavením vývojového počítače a cloudových prostředků pro vývoj IoT Edge modulů pomocí kontejnerů Linux pro zařízení se systémem Linux.
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 01ca118348b3a084c97182338bf656da83d52cb4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e4291c5dcea27699de72b72c52a832a7dc86b97b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114054"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701884"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: vývoj IoT Edgech modulů pro zařízení se systémem Linux
 
@@ -49,7 +49,7 @@ V následující tabulce jsou uvedeny podporované vývojové scénáře pro **k
 |   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Architektura zařízení se systémem Linux** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
-| **Služby Azure** | Azure Functions <br> Azure Stream Analytics <br> Azure Machine Learning |   |
+| **Služby Azure** | Funkce Azure <br> Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Jazyky** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
 | **Další informace** | [Azure IoT Edge pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
@@ -58,7 +58,7 @@ V následující tabulce jsou uvedeny podporované vývojové scénáře pro **k
 
 V tomto kurzu se naučíte postup vývoje Visual Studio Code. Pokud místo toho chcete použít aplikaci Visual Studio, přečtěte si pokyny v tématu [použití sady Visual studio 2019 k vývoji a ladění modulů pro Azure IoT Edge](how-to-visual-studio-develop-module.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vývojový počítač:
 
@@ -131,8 +131,8 @@ V paletě příkazu Visual Studio Code vyhledejte a vyberte **Azure IoT Edge: no
    | Pole | Hodnota |
    | ----- | ----- |
    | Vyberte složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
-   | Zadejte název řešení | Zadejte popisný název pro vaše řešení nebo přijměte výchozí **EdgeSolution**. |
-   | Vyberte šablonu modulu | Zvolte  **C# modulu**. |
+   | Zadejte název řešení | Zadejte popisný název vašeho řešení nebo přijměte výchozí **EdgeSolution**. |
+   | Vyberte šablonu modulu | Vyberte  **C# modul**. |
    | Zadejte název modulu | Přijměte výchozí **SampleModule**. |
    | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Konečné úložiště imagí vypadá jako \<název registru\>. azurecr.io/samplemodule. |
  
@@ -168,7 +168,7 @@ V současné době Visual Studio Code může C# vyvíjet moduly pro zařízení 
 
 2. V paletě příkazů vyberte v seznamu možností cílovou architekturu. Pro tento kurz používáme virtuální počítač s Ubuntu jako zařízení IoT Edge, takže se zachová výchozí hodnota **amd64**. 
 
-### <a name="review-the-sample-code"></a>Revize ukázkového kódu
+### <a name="review-the-sample-code"></a>Kontrola ukázkového kódu
 
 Šablona řešení, kterou jste vytvořili, obsahuje vzorový kód pro modul IoT Edge. Tento vzorový modul jednoduše přijímá zprávy a pak je předává. Funkce kanálu ukazuje důležitou koncepci v IoT Edge, což je způsob, jakým vzájemně komunikují moduly.
 
@@ -202,7 +202,7 @@ Vzorový C# kód, který je součástí šablony projektu, používá [třídu M
 
    ![Kontrola tras v nasazení. template. JSON](./media/tutorial-develop-for-linux/deployment-routes.png)
 
-## <a name="build-and-push-your-solution"></a>Vytváření a nasdílení změn vašeho řešení
+## <a name="build-and-push-your-solution"></a>Sestavení a nabízení řešení
 
 Zkontrolovali jste kód modulu a šablonu nasazení, abyste pochopili některé koncepty nasazení. Nyní jste připraveni sestavit image kontejneru SampleModule a vložit ji do registru kontejneru. S rozšířením nástrojů IoT pro Visual Studio Code tento krok také generuje manifest nasazení na základě informací v souboru šablony a informací o modulu ze souborů řešení. 
 
@@ -330,5 +330,5 @@ V tomto kurzu nastavíte Visual Studio Code na svém vývojovém počítači a z
 > [C](tutorial-c-module.md)
 > [C#](tutorial-csharp-module.md)
 > [Java](tutorial-java-module.md)
-> [Node.js](tutorial-node-module.md)
+> [Node. js](tutorial-node-module.md)
 > [Python](tutorial-python-module.md)

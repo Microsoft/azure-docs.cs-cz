@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 4a1d835ebe47ec36bb839da8dcbcd107ffcb9c4c
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 11/22/2019
+ms.openlocfilehash: 15d44f95cccf15fd0f7615655f5bbac1b0c35127
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161960"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706064"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
@@ -31,10 +31,10 @@ Microsoft poskytuje následující nástroje pro škálování clusterů:
 
 |Spuštění | Popis|
 |---|---|
-|[PowerShell AZ](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -název_clusteru \<cluster Name >-TargetInstanceCount \<NewSize >|
-|[AzureRM PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -název_clusteru \<cluster Name >-TargetInstanceCount \<NewSize >|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [AZ HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --Resource-Group \<Group >--name \<název_clusteru >--target-instance-Count \<NewSize >|
-|[Azure CLI](hdinsight-administer-use-command-line.md)|cluster Azure HDInsight změnil \<velikost clusteru > \<cílový počet instancí > |
+|[PowerShell AZ](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -název_clusteru \<název clusteru >-TargetInstanceCount \<NewSize >|
+|[AzureRM PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -název_clusteru \<název clusteru >-TargetInstanceCount \<NewSize >|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [AZ HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --Resource-Group \<skupina prostředků >--Name \<název clusteru >--target-instance \<NewSize >|
+|[Azure CLI](hdinsight-administer-use-command-line.md)|Změna velikosti clusteru Azure HDInsight \<název_clusteru > \<cílový počet instancí > |
 |[Azure Portal](https://portal.azure.com)|Otevřete podokno cluster HDInsight, v nabídce vlevo vyberte **Velikost clusteru** a pak v podokně velikost clusteru zadejte počet pracovních uzlů a vyberte Uložit.|  
 
 ![Možnost clusteru Azure Portal Scale](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
@@ -108,13 +108,13 @@ Aby se předešlo tomu, že spuštěné úlohy selžou během operace horizontá
 Chcete-li zobrazit seznam probíhajících a spuštěných úloh, můžete použít **uživatelské rozhraní příz správce prostředků**následujícím postupem:
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster.  Pokyny najdete v tématu [seznam a zobrazení clusterů](./hdinsight-administer-use-portal-linux.md#showClusters) . Cluster se otevře na nové stránce portálu.
-2. V hlavním zobrazení přejděte na **řídicí panely** > clusteru**Ambari domů**. Zadejte přihlašovací údaje clusteru.
+2. V hlavním zobrazení přejděte na **řídicí panely clusteru** > **Ambari Home**. Zadejte přihlašovací údaje clusteru.
 3. V uživatelském rozhraní Ambari vyberte možnost **příze** v seznamu služeb v nabídce na levé straně.  
 4. Na stránce PŘÍZe vyberte možnost **Rychlé odkazy** a najeďte myší na aktivní hlavní uzel a pak vyberte **uživatelské rozhraní ResourceManager**.
 
     ![Uživatelské rozhraní ResourceManager pro rychlé odkazy Apache Ambari](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
-K uživatelskému rozhraní ResourceManager můžete přistupovat přímo `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`pomocí.
+K uživatelskému rozhraní ResourceManager můžete přistupovat přímo pomocí `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`.
 
 Zobrazí se seznam úloh spolu s jejich aktuálním stavem. Na snímku obrazovky je aktuálně spuštěná jedna úloha:
 
@@ -126,7 +126,7 @@ Pokud chcete tuto spuštěnou aplikaci odstranit ručně, spusťte v prostředí
 yarn application -kill <application_id>
 ```
 
-Příklad:
+Například:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
@@ -136,7 +136,7 @@ yarn application -kill "application_1499348398273_0003"
 
 Při horizontálním navýšení kapacity clusteru používá HDInsight rozhraní pro správu Apache Ambari a nejdřív vyřadí další pracovní uzly, které replikují své bloky HDFS do jiných online pracovních uzlů. Služba HDInsight pak cluster bezpečně škáluje. HDFS přechází do bezpečného režimu během operace škálování a měl by se nacházet po dokončení škálování. V některých případech se ale HDFS zablokuje v bezpečném režimu během operace škálování z důvodu blokování souborů v rámci replikace.
 
-Ve výchozím nastavení má HDFS nakonfigurovanou `dfs.replication` hodnotu 3, která určuje, kolik kopií každého bloku souboru je k dispozici. Každá kopie bloku souboru je uložená v jiném uzlu clusteru.
+Ve výchozím nastavení je HDFS nakonfigurovaný s nastavením `dfs.replication` 1, které určuje, kolik kopií každého bloku souborů je dostupných. Každá kopie bloku souboru je uložená v jiném uzlu clusteru.
 
 Když HDFS zjistí, že očekávaný počet kopií bloku není k dispozici, HDFS vstoupí do bezpečného režimu a Ambari vygeneruje výstrahy. Pokud HDFS vstupuje do bezpečného režimu pro operaci škálování, ale pak nemůže ukončit nouzový režim, protože pro replikaci není zjištěn požadovaný počet uzlů, cluster se může zablokovat v bezpečném režimu.
 
@@ -150,7 +150,7 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-V případě, že se v clusteru změnila `/var/log/hadoop/hdfs/` velikost, můžete zkontrolovat protokoly uzlů názvů z této složky, aby se zjistilo, kdy vstoupila do bezpečného režimu. Soubory protokolu jsou pojmenovány `Hadoop-hdfs-namenode-hn0-clustername.*`.
+V případě, že dojde ke změně velikosti clusteru, můžete zkontrolovat protokoly uzlu názvu ze složky `/var/log/hadoop/hdfs/`. Soubory protokolu jsou pojmenovány `Hadoop-hdfs-namenode-hn0-clustername.*`.
 
 Hlavní příčinou předchozích chyb je, že při spouštění dotazů závisí podregistr na dočasné soubory v HDFS. Když HDFS vstoupí do bezpečného režimu, podregistr nemůže spustit dotazy, protože nemůže zapisovat do HDFS. Dočasné soubory v HDFS jsou umístěné na místní jednotce připojené k jednotlivým virtuálním počítačům uzlu pracovního procesu a replikují se mezi ostatními pracovními uzly na třech replikách, minimálně.
 
@@ -159,7 +159,7 @@ Hlavní příčinou předchozích chyb je, že při spouštění dotazů závis�
 Existuje několik způsobů, jak zabránit v tom, aby HDInsight zůstalo v bezpečném režimu:
 
 * Před škálováním HDInsight zastavte všechny úlohy podregistru. Případně můžete naplánovat proces horizontálního navýšení kapacity, aby nedocházelo ke konfliktům s běžícími úlohami.
-* Před horizontálním navýšení `tmp` kapacity je nutné ručně vyčistit soubory odkládacího adresáře podregistru v HDFS.
+* Před horizontálním navýšení kapacity je nutné ručně vyčistit soubory adresáře `tmp` adresářů v HDFS.
 * Nahorizontální navýšení kapacity HDInsight na tři pracovní uzly, minimální. Vyhněte se nedostatku na jeden pracovní uzel.
 * Spusťte příkaz a v případě potřeby ponechte nouzový režim.
 
@@ -175,7 +175,7 @@ Zastavení úloh podregistru před škálováním pomůže minimalizovat počet 
 
 Pokud podregistr opustí dočasné soubory, můžete tyto soubory před horizontálním škálováním ručně vyčistit a vyhnout se bezpečnému režimu.
 
-1. Podívejte se `hive.exec.scratchdir` na vlastnost konfigurace a ověřte, které umístění se používá pro dočasné soubory podregistru. Tento parametr je nastaven v `/etc/hive/conf/hive-site.xml`rámci:
+1. Podívejte se na vlastnost konfigurace `hive.exec.scratchdir`, které umístění se používá pro dočasné soubory podregistru. Tento parametr je nastaven v rámci `/etc/hive/conf/hive-site.xml`:
 
     ```xml
     <property>
@@ -185,7 +185,7 @@ Pokud podregistr opustí dočasné soubory, můžete tyto soubory před horizont
     ```
 
 1. Zastavte služby podregistru a ujistěte se, že jsou dokončené všechny dotazy a úlohy.
-2. Vypíše obsah pomocného adresáře, který se `hdfs://mycluster/tmp/hive/` našel výše, aby se zjistilo, jestli obsahuje nějaké soubory:
+2. Vypíše obsah pomocného adresáře, který byl nalezen výše, `hdfs://mycluster/tmp/hive/` a zjistí, zda obsahuje nějaké soubory:
 
     ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive

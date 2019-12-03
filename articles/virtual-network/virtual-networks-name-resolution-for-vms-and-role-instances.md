@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176050"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707572"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky v Azure Virtual Networks
 
@@ -149,7 +149,7 @@ Předávání DNS taky umožňuje překlad DNS mezi virtuálními sítěmi a umo
 > Instance role může provádět překlad názvů virtuálních počítačů v rámci stejné virtuální sítě. K tomu připadá pomocí plně kvalifikovaného názvu domény, který se skládá z názvu hostitele virtuálního počítače a přípony DNS **internal.cloudapp.NET** . V tomto případě je překlad názvů úspěšný jenom v případě, že instance role má název virtuálního počítače definovaný ve [schématu role (soubor. cscfg)](https://msdn.microsoft.com/library/azure/jj156212.aspx).
 > `<Role name="<role-name>" vmName="<vm-name>">`
 >
-> Instance rolí, které potřebují překládat IP adresy virtuálních počítačů v jiné virtuální síti (plně kvalifikovaný název domény pomocí přípony **internal.cloudapp.NET** ), musí probíhat pomocí metody popsané v této části (vlastní servery DNS, které předávají mezi oběma virtuálními sítěmi. sítě).
+> Instance rolí, které potřebují překládat IP adresy virtuálních počítačů v jiné virtuální síti (FQDN pomocí přípony **internal.cloudapp.NET** ), musí probíhat pomocí metody popsané v této části (vlastní servery DNS, které předávají mezi oběma virtuálními sítěmi).
 >
 
 ![Diagram DNS mezi virtuálními sítěmi](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
@@ -206,7 +206,7 @@ Pokud používáte model nasazení Azure Resource Manager, můžete zadat server
 Pokud používáte model nasazení Classic, můžete zadat servery DNS pro virtuální síť v Azure Portal nebo v [souboru konfigurace sítě](https://msdn.microsoft.com/library/azure/jj157100). Pro Cloud Services můžete zadat servery DNS prostřednictvím [konfiguračního souboru služby](https://msdn.microsoft.com/library/azure/ee758710) nebo pomocí prostředí PowerShell s rutinou [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
-> Pokud změníte nastavení DNS pro virtuální síť nebo virtuální počítač, který je už nasazený, musíte restartovat všechny ovlivněné virtuální počítače, aby se změny projevily.
+> Pokud změníte nastavení DNS pro virtuální síť nebo virtuální počítač, který je již nasazený, bude nutné provést obnovení zapůjčení služby DHCP u všech ovlivněných virtuálních počítačů ve virtuální síti. Pro virtuální počítače s operačním systémem Windows to můžete provést zadáním `ipconfig /renew` přímo do virtuálního počítače. Postup se liší v závislosti na operačním systému. Podívejte se na příslušnou dokumentaci pro typ operačního systému. 
 >
 >
 

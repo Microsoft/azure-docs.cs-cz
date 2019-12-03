@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f35c9c3c6c974c79dc849425fc91b532aed4d22
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755691"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705004"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Připojení virtuálního počítače s Windows serverem k Azure Active Directory Domain Services spravované doméně pomocí šablony Správce prostředků
 
@@ -92,8 +92,8 @@ Pokud chcete vytvořit virtuální počítač s Windows serverem, připojte ho k
     | Název existující virtuální sítě        | Název existující virtuální sítě, ke které se má virtuální počítač připojit, například *myVnet*. |
     | Existující název podsítě      | Název existující podsítě virtuální sítě, jako jsou například *úlohy*. |
     | Předpona popisku DNS          | Zadejte název DNS, který chcete pro virtuální počítač použít, například *myvm*. |
-    | Velikost virtuálního počítače                   | Zadejte velikost virtuálního počítače, třeba *Standard_DS2_v2*. |
-    | Doména pro připojení            | Název DNS spravované domény Azure služba AD DS, například *contoso.com*. |
+    | Velikost virtuálního počítače                   | Zadejte velikost virtuálního počítače, například *Standard_DS2_v2*. |
+    | Doména pro připojení            | Název DNS spravované domény Azure služba AD DS, například *aadds.contoso.com*. |
     | Uživatelské jméno domény           | Uživatelský účet ve spravované doméně Azure služba AD DS, který se má použít k připojení virtuálního počítače ke spravované doméně. Tento účet musí být členem skupiny *Azure AD DC Administrators* . |
     | Heslo domény           | Heslo pro uživatelský účet zadané v předchozím nastavení |
     | Volitelná cesta organizační jednotky          | Vlastní organizační jednotka, do které se má virtuální počítač přidat Pokud nezadáte hodnotu pro tento parametr, virtuální počítač se přidá do výchozí organizační jednotky *řadiče domény AAD* . |

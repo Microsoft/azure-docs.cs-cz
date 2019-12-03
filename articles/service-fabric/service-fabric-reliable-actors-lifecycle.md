@@ -1,6 +1,6 @@
 ---
-title: Přehled životního cyklu Azure Service Fabric actor | Dokumentace Microsoftu
-description: Vysvětluje, Service Fabric Reliable Actor životního cyklu uvolňování paměti a ručně odstranění objektů actor a jejich stavu
+title: Přehled životního cyklu objektu actor pro Azure Service Fabric | Microsoft Docs
+description: Vysvětluje Service Fabric životní cyklus spolehlivého objektu actor, uvolňování paměti a ruční odstraňování objektů actor a jejich stavu.
 services: service-fabric
 documentationcenter: .net
 author: amanbha
@@ -14,54 +14,54 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: f81fde441a2f0dc2504601f82e5b890eb6e216de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a8e95c634a1d30b7c566fcd907cb06f34043fa9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105288"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706494"
 ---
-# <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Životní cyklus objektů actor, automatické uvolňování paměti a ruční odstranění
-Objekt actor se aktivuje při prvním volání k některé z jeho metod. Prvek "actor" je deaktivované (uvolňování paměti shromážděných modulem Actors runtime), pokud se nepoužívá pro nastaveném časovém. Prvek "actor" a jeho stav může také odstranit ručně kdykoli.
+# <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Životní cyklus objektu actor, automatické uvolňování paměti a ruční odstranění
+Objekt actor se aktivuje při prvním volání jakékoli z jeho metod. Objekt actor se deaktivuje (uvolňování paměti modulem Actors), pokud se nepoužívá pro konfigurovatelnou dobu. Objekt actor a jeho stav lze také kdykoli odstranit ručně.
 
 ## <a name="actor-activation"></a>Aktivace objektu actor
-Při aktivaci objektu actor, dojde k následujícímu:
+Při aktivaci objektu actor dojde k následujícímu:
 
-* Při volání pochází pro prvek "actor" a už není aktivní, se vytvoří nový objekt actor.
-* Pokud se udržuje stav, se načte stav objektu actor.
-* `OnActivateAsync` (C#) nebo `onActivateAsync` volání metody (Java), (které mohou být přepsána nastaveními v implementace objektu actor).
-* Objekt actor se teď považuje za aktivní.
+* Pokud se pro objekt actor dostane volání a jedna z nich ještě není aktivní, vytvoří se nový objekt actor.
+* Stav objektu actor je načten, pokud udržuje stav.
+* Je volána metodaC#`OnActivateAsync` () nebo `onActivateAsync` (v jazyce Java) (která může být přepsána v implementaci objektu actor).
+* Objekt actor je nyní považován za aktivní.
 
 ## <a name="actor-deactivation"></a>Deaktivace objektu actor
-Při deaktivaci prvek "actor" se stane toto:
+Při deaktivaci objektu actor dojde k následujícímu:
 
-* Pokud prvek "actor" není používána k po nějaké časové období, odebere se z tabulky aktivní účastníky.
-* `OnDeactivateAsync` (C#) nebo `onDeactivateAsync` volání metody (Java), (které mohou být přepsána nastaveními v implementace objektu actor). Tato akce smaže všechny časovače pro objekt actor. Operace objektu actor, jako jsou stavu, ve kterém změn by neměla být volána z této metody.
+* Pokud se objekt actor nepoužívá v určitém časovém období, je odebrán z tabulky aktivních aktérů.
+* Je volána metodaC#`OnDeactivateAsync` () nebo `onDeactivateAsync` (v jazyce Java) (která může být přepsána v implementaci objektu actor). Tím se vymažou všechny časovače objektu actor. Z této metody by neměly být volány operace objektu actor, jako jsou změny stavu.
 
 > [!TIP]
-> Modul runtime Fabric Actors vysílá některé [události související s objektu actor aktivace a deaktivace](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters). Jsou užitečné pro diagnostiku a sledování výkonu.
+> Modul runtime Fabric Actors generuje některé [události související s aktivací a deaktivací objektu actor](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters). Jsou užitečné v monitorování diagnostiky a výkonu.
 >
 >
 
 ### <a name="actor-garbage-collection"></a>Uvolňování paměti objektu actor
-Při deaktivaci prvek "actor" odkazy na objekt actor se vydávají a může být uvolněn z paměti obvykle common language runtime (CLR) nebo systému uvolňování paměti java virtual machine (JVM). Uvolňování paměti vyčistí jenom objekt actor. provádí **není** odebrání stavu uloženého v správce stavu objektu actor. Při příštím objektu actor se aktivuje, vytvoří nový objekt actor a obnovit jeho stav.
+Když je objekt actor deaktivován, jsou uvolněny odkazy na objekt actor a v normálním případě se může jednat o uvolňování paměti modulem CLR (Common Language Runtime) nebo s uvolňováním paměti Java Virtual Machine (JVM). Uvolňování paměti vyčistí pouze objekt objektu actor; neodebere **stav** uložený ve Správci stavu objektu actor. Při dalším spuštění objektu actor je vytvořen nový objekt actor a jeho stav je obnoven.
 
-Co se počítá jako "se používá" pro účely deaktivaci a systém kolekce paměti?
+Co se počítá jako "používá se" pro účely deaktivace a uvolňování paměti?
 
-* Přijímá volání
-* `IRemindable.ReceiveReminderAsync` metody volané (platí jenom v případě, že objekt actor používá připomenutí)
+* Přijetí volání
+* vyvolaná metoda `IRemindable.ReceiveReminderAsync` (platí pouze v případě, že objekt actor používá připomenutí)
 
 > [!NOTE]
-> Pokud objekt actor používá časovačů a jeho zpětné volání časovače je volána, nemá **není** se počítají jako "používá se".
+> Pokud objekt actor používá časovače a je vyvolána jeho zpětné volání časovače, **nepočítá se** jako "používaný".
 >
 >
 
-Než přejdeme k podrobnostem o deaktivaci, je potřeba definovat následující podmínky:
+Než přejdete k podrobnostem o deaktivaci, je důležité definovat následující výrazy:
 
-* *Interval sledování*. Jedná se o interval, ve kterém Actors modul runtime vyhledává objektů actor, které lze deaktivovat svou tabulku aktivních objektů actor a uklizeny. Výchozí hodnota je 1 minuta.
-* *Časový limit nečinnosti*. Toto je množství času, kterou je potřeba nepoužíval. prvek "actor" (nečinné) předtím, než může být deaktivované a prováděno uvolnění paměti. Výchozí hodnota je 60 minut.
+* *Interval kontroly*. Toto je interval, ve kterém modul runtime Actors prohledává v tabulce aktivních aktérů pro aktéry, které mohou být deaktivovány a shromažďovány z paměti. Výchozí hodnota je 1 minuta.
+* *Časový limit nečinnosti*. To je doba, po kterou musí objekt actor zůstat nepoužitý (nečinný) předtím, než bude možné ho deaktivovat a shromažďovat z paměti. Výchozí hodnota je 60 minut.
 
-Obvykle není potřeba změnit výchozí nastavení. Ale v případě potřeby tyto intervaly lze změnit prostřednictvím `ActorServiceSettings` při registraci vaší [služba objektu Actor](service-fabric-reliable-actors-platform.md):
+Obvykle není nutné měnit tato výchozí nastavení. V případě potřeby je ale možné tyto intervaly při registraci [služby objektu actor](service-fabric-reliable-actors-platform.md)změnit pomocí `ActorServiceSettings`:
 
 ```csharp
 public class Program
@@ -94,36 +94,36 @@ public class Program
     }
 }
 ```
-Pro každého herce aktivní uchovává informace modulu runtime actor o množství času, který byl nečinný (tzn. ne použít). Modulu runtime actor zkontroluje každý aktérů každý `ScanIntervalInSeconds` zobrazíte, pokud může být uvolňování paměti shromažďují a shromažďuje ji, pokud byl nečinný `IdleTimeoutInSeconds`.
+Pro každý aktivní objekt actor sleduje modul runtime objektu actor množství času, který je nečinný (tj. nepoužitý). Modul runtime objektu actor kontroluje všechny objekty actor každé `ScanIntervalInSeconds`, aby bylo možné zjistit, zda může být uvolněna z paměti, a označí ji, pokud byla nečinná pro `IdleTimeoutInSeconds`.
 
-Kdykoli se používá prvek "actor", její nečinnosti se resetuje na hodnotu 0. Potom může být objekt actor uvolněn pouze v případě, že znovu zůstane neaktivní, pro `IdleTimeoutInSeconds`. Připomínáme, že nebyly použity, pokud spuštění metody rozhraní objektu actor nebo zpětné volání objektu actor připomenutí považován za prvek "actor". Prvek "actor" je **není** považovány za nebyly použity, pokud se provádí jeho zpětné volání časovače.
+Kdykoli je použit objekt actor, jeho doba nečinnosti je nastavena na hodnotu 0. V takovém případě může být objekt actor uvolněn z paměti pouze v případě, že opět zůstane nečinný pro `IdleTimeoutInSeconds`. Odvolání, že se objekt actor považuje za použitý, pokud je spuštěná metoda rozhraní objektu actor nebo zpětné volání připomenutí objektu actor. Objekt actor není **považován za** použitý, pokud je provedeno zpětné volání časovače.
 
-Následující diagram znázorňuje životní cyklus jednoho objektu actor pro ilustraci těchto konceptů.
+Následující diagram znázorňuje životní cyklus jednoho objektu actor k ilustraci těchto konceptů.
 
-![Příklad nečinnosti][1]
+![Příklad času nečinnosti][1]
 
-Příklad ukazuje dopad volání metody objektu actor, připomenutí a časovače týkající se doby platnosti tohoto objektu actor. Za zmínku jsou následující body o příkladu:
+Tento příklad ukazuje dopad volání, připomenutí a časovačů metody actor na životního cyklu tohoto objektu actor. Následující body tohoto příkladu představují zmínku o:
 
-* ScanInterval a IdleTimeout jsou nastaveny na hodnotu 5 a 10 v uvedeném pořadí. (Jednotky není důležitá, protože Naším cílem je pouze pro ilustraci koncept.)
-* Kontrola koncepce actorů je naprosto uvolněna z paměti se odehrává na T = 0, 5, 10, 15, 20, 25, tak jak je definoval interval skenování 5.
-* Pravidelné časovač vyvolá na T = 4, 8, 12, 16, 20, 24, a provede zpětné volání. Doba nečinnosti objektu actor nemá vliv.
-* Volání metody rozhraní objektu actor v T = 7 dobu nečinnosti, po resetuje na hodnotu 0 a zpoždění uvolnění paměti objektu actor.
-* Zpětné volání objektu actor připomenutí spouští v T = 14 a dalších zpoždění uvolnění paměti objektu actor.
-* Při kontrole kolekce uvolnění paměti na T = 25 čas nečinnosti objektu actor a nakonec překročí časový limit nečinnosti 10 a objekt actor je uvolněna z paměti.
+* Hodnoty ScanInterval a IdleTimeout jsou nastaveny na 5 a 10 v uvedeném pořadí. (Jednotky tady nezáleží, protože náš účel je jenom k ilustraci konceptu.)
+* Vyhledávání objektů Actor, které se mají vyhodnotit do paměti, probíhá v T = 0, 5, 10, 15, 20, 25, jak je definováno v intervalu prohledávání 5.
+* Pravidelný časovač je aktivován při T = 4, 8, 12, 16, 20, 24 a spustí se jeho zpětné volání. Nemá vliv na dobu nečinnosti objektu actor.
+* Volání metody objektu actor při T = 7 obnoví dobu nečinnosti na hodnotu 0 a zpozdí uvolnění paměti objektu actor.
+* Zpětné volání připomenutí objektu actor se provádí při T = 14 a dále zpozdí uvolňování paměti objektu actor.
+* Během kontroly uvolňování paměti při T = 25, doba nečinnosti objektu actor nakonec překračuje časový limit nečinnosti 10 a objekt actor je uvolněn z paměti.
 
-Prvek "actor" nebude nikdy uvolněna z paměti při provádění jedné z jeho metod, bez ohledu na to, jak dlouho se stráven v provádění této metody. Jak už bylo zmíněno dříve, brání provádění metody rozhraní objektu actor a upomínky zpětná volání uvolňování paměti obnovením objektu actor nečinnosti na hodnotu 0. Provádění zpětných volání časovače neprovádí vynulování dobu nečinnosti, po na hodnotu 0. Uvolnění paměti objektu actor, ale je odloženo, dokud zpětné volání časovače byl dokončen.
+Objekt actor nebude nikdy uvolněn při provádění jedné z jeho metod, bez ohledu na to, kolik času stráví při provádění této metody. Jak bylo zmíněno dříve, spuštění metod rozhraní objektu actor a zpětného volání připomenutí brání uvolňování paměti resetováním doby nečinnosti objektu actor na hodnotu 0. Spuštění zpětného volání časovače neresetuje dobu nečinnosti na 0. Uvolňování paměti objektu actor je však odloženo, dokud zpětné volání časovače nedokončí provedení.
 
-## <a name="manually-deleting-actors-and-their-state"></a>Ruční odstranění objektů actor a jejich stav
-Uvolnění paměti deaktivované actors pouze vyčistí objekt actor, ale neodeberou se data ukládaná ve službě Správce stavu prvek "actor". Při opětovné aktivaci prvek "actor" je znovu svoje data k dispozici k němu prostřednictvím Správce stavu. V případech, kde actors ukládání dat v State Manager a se deaktivuje, ale nikdy znovu aktivovat může být potřeba vyčistit svá data.  Příklady odstranění objektů actor, najdete v článku [odstranění objektů actor a jejich stav](service-fabric-reliable-actors-delete-actors.md).
+## <a name="manually-deleting-actors-and-their-state"></a>Ruční odstranění objektů actor a jejich stavu
+Uvolňování paměti deaktivovaných aktérů vyčistí jenom objekt actor, ale neodebere data uložená ve Správci stavu objektu actor. Když je objekt actor znovu aktivován, jeho data jsou znovu zpřístupněna prostřednictvím Správce stavu. V případech, kdy objekty actor ukládají data do Správce stavů a deaktivují se, ale nikdy se neaktivují, může být nutné vyčistit svá data.  Příklady, jak odstranit aktéry, najdete v tématu [odstranění objektů actor a jejich stav](service-fabric-reliable-actors-delete-actors.md).
 
-## <a name="next-steps"></a>Další postup
-* [Objekt actor časovače a připomenutí](service-fabric-reliable-actors-timers-reminders.md)
+## <a name="next-steps"></a>Další kroky
+* [Časovače a připomenutí objektu actor](service-fabric-reliable-actors-timers-reminders.md)
 * [Události objektu actor](service-fabric-reliable-actors-events.md)
 * [Vícenásobný přístup objektu actor](service-fabric-reliable-actors-reentrancy.md)
-* [Monitorování výkonu a Diagnostika objektů actor](service-fabric-reliable-actors-diagnostics.md)
-* [Referenční dokumentace rozhraní API objektu actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Ukázka v jazyce C# kód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java ukázkový kód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Monitorování diagnostiky a výkonu objektu actor](service-fabric-reliable-actors-diagnostics.md)
+* [Referenční dokumentace k rozhraní API actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [C#Vzorový kód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Vzorový kód Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

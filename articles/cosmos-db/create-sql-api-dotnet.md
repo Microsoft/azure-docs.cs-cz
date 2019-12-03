@@ -1,6 +1,6 @@
 ---
-title: Vytvoření konzolové aplikace .NET pro správu Azure Cosmos DB prostředků rozhraní SQL API
-description: Naučte se vytvářet konzolovou aplikaci .NET pro správu Azure Cosmos DB prostředků účtů rozhraní SQL API.
+title: Rychlý Start – vytvoření konzolové aplikace .NET pro správu Azure Cosmos DBch prostředků rozhraní SQL API
+description: Naučte se vytvářet konzolovou aplikaci .NET pro správu Azure Cosmos DB prostředků účtů rozhraní SQL API v tomto rychlém startu.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
-ms.openlocfilehash: d74af7297018fe8814475d7dc259b5a0d81d2910
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0981ed30c6bcd9d4246ce1eb047aa66168e3884a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561448"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707921"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Rychlý Start: Vytvoření konzolové aplikace .NET pro správu Azure Cosmos DBch prostředků rozhraní SQL API
 

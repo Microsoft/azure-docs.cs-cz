@@ -1,6 +1,6 @@
 ---
-title: Vytváření a Správa pravidel v aplikaci Azure IoT Central | Microsoft Docs
-description: Pravidla Azure IoT Central umožňují monitorovat zařízení téměř v reálném čase a automaticky vyvolávat akce, jako je odeslání e-mailu, když se pravidlo aktivuje.
+title: Kurz – vytváření a Správa pravidel v aplikaci Azure IoT Central
+description: V tomto kurzu se dozvíte, jak pravidla Azure IoT Central umožňují monitorovat zařízení téměř v reálném čase a automaticky vyvolávat akce, jako je odeslání e-mailu, když se pravidlo aktivuje.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6327ee8a1b0d52c933844670d9b8098c2c3c4f09
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: e2ec01e372ebda79272b585ea6f1708029ea7b13
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958151"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702540"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Kurz: vytvoření pravidla a nastavení oznámení v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření pravidla
 > * Přidat akci e-mailu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, měli byste dokončit [Vytvoření aplikace IoT Central v Azure](./quick-deploy-iot-central.md) a [Přidat simulované zařízení do](./quick-create-pnp-device.md) rychlých startů pro aplikace IoT Central a vytvořit šablonu zařízení **snímače prostředí** , se kterou chcete pracovat.
 

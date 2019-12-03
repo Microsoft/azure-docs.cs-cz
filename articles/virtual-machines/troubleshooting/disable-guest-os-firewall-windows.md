@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030599"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705552"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Zakázání brány firewall hostovaného operačního systému na virtuálním počítači Azure
 
@@ -27,7 +27,7 @@ Tento článek poskytuje referenční informace o situacích, ve kterých máte 
 
 ## <a name="solution"></a>Řešení
 
-Postup, který je popsaný v tomto článku, je určený k použití jako alternativní řešení, abyste se mohli soustředit na řešení reálného problému, který je správně nastavený na pravidla brány firewall. It\rquote s osvědčeným postupem Microsoftu je povolit součást brány Windows Firewall. Způsob konfigurace pravidel brány firewall \cf3 závisí na úrovni přístupu k virtuálnímu počítači that\rquote, který je povinný.
+Postup, který je popsaný v tomto článku, je určený k použití jako alternativní řešení, abyste se mohli soustředit na řešení reálného problému, který je správně nastavený na pravidla brány firewall. Osvědčeným postupem Microsoftu je povolit součást brány Windows Firewall. Způsob konfigurace pravidel brány firewall závisí na úrovni přístupu k požadovanému virtuálnímu počítači.
 
 ### <a name="online-solutions"></a>Online řešení 
 
@@ -130,7 +130,7 @@ Pokud máte situaci, kdy se k virtuálnímu počítači nemůžete dostat pomoc�
 
 6.  Pro tento postup řešení potíží Namontujte podregistry jako BROKENSYSTEM a BROKENSOFTWARE.
 
-7.  Zvýrazněte klíč HKEY_LOCAL_MACHINE a v nabídce vyberte soubor > Načíst podregistr.
+7.  Zvýrazněte HKEY_LOCAL_MACHINE klíč a v nabídce vyberte soubor > Načíst podregistr.
 
 8.  Vyhledejte soubor \windows\system32\config\SYSTEM na připojeném systémovém disku.
 

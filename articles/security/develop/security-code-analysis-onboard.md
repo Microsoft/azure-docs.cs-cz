@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: aaf59de2425e0725958847477f1043a5b7fac68a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 77be6d8518774a1e2656e23024490dd9c1431865
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839345"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707250"
 ---
 # <a name="onboarding-and-installing"></a>Připojování a instalace
 
@@ -53,7 +53,8 @@ Požadavky na Začínáme s analýzou kódu zabezpečení Microsoftu:
 
 1. Po sdílení rozšíření s vaší organizací Azure DevOps můžete přejít na stránku organizace Azure DevOps. Příklad adresy URL pro takovou stránku je `https://dev.azure.com/contoso`.
 1. Vyberte ikonu nákupního balíčku v pravém horním rohu vedle svého jména a pak vyberte **Spravovat rozšíření**.
-1. Vyberte rozšíření Microsoft Security Code Analysis Extension a pak otevřete Průvodce uživatelským rozhraním Azure DevOps a spusťte instalaci.
+1. Vyberte **Shared**.
+1. Vyberte rozšíření Microsoft Security Code Analysis, vyberte **nainstalovat**.
 1. V rozevíracím seznamu vyberte organizaci Azure DevOps, na kterou chcete rozšíření nainstalovat.
 1. Vyberte **Install** (Nainstalovat). Po dokončení instalace můžete začít používat rozšíření.
 

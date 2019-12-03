@@ -1,6 +1,6 @@
 ---
-title: Připojení k síti peer ve službě Azure Lab Services | Dokumentace Microsoftu
-description: Zjistěte, jak připojit síť testovacího prostředí s jinou sítí jako sdílené. Třeba může připojte vaší školy nebo univerzity v místní síti pomocí testovacího prostředí v Azure virtual network.
+title: Připojení k síti typu peer v Azure Lab Services | Microsoft Docs
+description: Přečtěte si, jak propojit síť testovacího prostředí s jinou sítí jako s partnerským vztahem. Připojte například svou místní školní nebo univerzitní síť k virtuální síti testovacího prostředí v Azure.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,51 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: c9b305beae1b385d4714e3a80e6843c7e76a4f60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3f6acef7491a07f94eec0b2c3b2f3bcd9c01a33
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411007"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701673"
 ---
-# <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Připojit síť testovacího prostředí s partnerská virtuální síť v Azure Lab Services 
-Tento článek obsahuje informace o partnerských vztazích labs sítě s jinou sítí. 
+# <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Připojte síť testovacího prostředí k partnerské virtuální síti v Azure Lab Services 
+Tento článek poskytuje informace o partnerském vztahu vaší sítě Labs s jinou sítí. 
 
 ## <a name="overview"></a>Přehled
-Partnerský vztah virtuálních sít umožňuje bezproblémové propojení virtuálních sítí Azure. Po navázání partnerského vztahu se virtuální sítě pro účely připojení jeví jako jedna síť. Provoz mezi virtuálními počítači v partnerských virtuálních sítích je směrován přes páteřní infrastrukturu Microsoftu, stejně jako mezi virtuálními počítači ve stejné virtuální síti pomocí soukromých IP adres pouze prochází. Další informace najdete v tématu [partnerský vztah virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md).
+Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení virtuálních sítí Azure. Po navázání partnerského vztahu se virtuální sítě pro účely připojení jeví jako jedna síť. Přenos dat mezi virtuálními počítači v partnerských virtuálních sítích je směrován přes páteřní infrastrukturu Microsoftu, podobně jako provoz se směruje mezi virtuálními počítači ve stejné virtuální síti, a to pouze pomocí privátních IP adres. Další informace najdete v tématu [partnerský vztah virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md).
 
-Budete muset připojit síť testovacího prostředí s partnerská virtuální síť v některých scénářích, včetně následujících:
+V některých scénářích může být nutné připojit síť testovacího prostředí k partnerské virtuální síti, včetně následujících:
 
-- Software, který se připojuje k místním serverům licence pro získání licence mají virtuální počítače v testovacím prostředí
-- Virtuální počítače v testovacím prostředí potřebovat přístup k datovým sadám (nebo jiné soubory) ve sdílených síťových složkách na university. 
+- Virtuální počítače v testovacím prostředí mají software, který se připojuje k místním licenčním serverům, aby získal licenci.
+- Virtuální počítače v testovacím prostředí potřebují přístup k datovým sadám (nebo jakýmkoli jiným souborům) na sdílených síťových složkách univerzity. 
 
-Určité místní sítě jsou buď připojené k virtuální síti Azure přes [ExpressRoute](../../expressroute/expressroute-introduction.md) nebo [brány virtuální sítě](../../vpn-gateway/vpn-gateway-about-vpngateways.md). Tyto služby musíte nastavit mimo Azure Lab Services. Další informace o připojení místní sítě k Azure pomocí ExpressRoute, najdete v článku [přehled ExpressRoute]) (.. /expressroute/expressroute-Introduction.MD). Pro místní připojení pomocí virtuální síťová brána, brány, zadaná virtuální síť a účet testovacího prostředí musí být ve stejné oblasti.
+Některé místní sítě jsou připojené k Azure Virtual Network buď prostřednictvím [ExpressRoute](../../expressroute/expressroute-introduction.md) , nebo [Virtual Network bránou](../../vpn-gateway/vpn-gateway-about-vpngateways.md). Tyto služby musí být nastaveny mimo Azure Lab Services. Další informace o připojení místní sítě k Azure pomocí ExpressRoute najdete v tématu [ExpressRoute Overview](../../expressroute/expressroute-introduction.md). V případě místního připojení pomocí Virtual Network brány musí být brána, zadaná virtuální síť a účet testovacího prostředí všechny ve stejné oblasti.
 
-## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurace v době vytvoření účtu služby testovacího prostředí
-Při vytvoření nového účtu testovacího prostředí, můžete si vybrat existující virtuální síť, která zobrazuje **partnerská virtuální síť** rozevíracího seznamu. Vybrané virtuální síti je connected(peered) k testovacím prostředím vytvořené v rámci účtu testovacího prostředí. Všechny virtuální počítače v testovacích prostředí, které jsou vytvořeny po k provedení této změny bude obsahovat přístup k prostředkům v partnerské virtuální síti. 
+## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurace v době vytváření účtu testovacího prostředí
+Během vytváření nového účtu testovacího prostředí můžete vybrat existující virtuální síť, která se zobrazí v rozevíracím seznamu **partnerských virtuálních sítí** . Vybraná virtuální síť je připojená k laboratořím vytvořeným v rámci účtu testovacího prostředí. Všechny virtuální počítače v laboratořích, které se vytvoří po provedení této změny, budou mít přístup k prostředkům v partnerské virtuální síti. 
 
-![Vyberte virtuální síť na vytvoření partnerského vztahu](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
+![Vybrat virtuální síť pro partnerský uzel](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 
 > [!NOTE]
-> Podrobné pokyny pro vytvoření účtu testovacího prostředí, najdete v části [nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md)
+> Podrobné pokyny pro vytvoření účtu testovacího prostředí najdete v tématu [Nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md) .
 
 
-## <a name="configure-after-the-lab-is-created"></a>Nakonfigurovat po vytvoření testovacího prostředí
-Stejnou vlastnost můžete povolit z **Labs konfigurace** karty **účet testovacího prostředí** stránky, pokud jste nenastavili sítě peer v době vytvoření účtu služby testovacího prostředí. Změny provedené v toto nastavení platí jenom pro testovací prostředí, které jsou vytvořeny po provedení změny. Jak je vidět na obrázku, můžete povolit nebo zakázat **partnerská virtuální síť** pro laboratorní cvičení v účtu testovacího prostředí. 
+## <a name="configure-after-the-lab-is-created"></a>Konfigurace po vytvoření testovacího prostředí
+Pokud jste v době vytváření účtu testovacího prostředí nevytvořili rovnocennou síť, můžete tuto vlastnost Povolit na kartě **Konfigurace Labs** stránky **účtu testovacího prostředí** . Změny provedené v tomto nastavení platí pouze pro laboratoře, které byly vytvořeny po provedení změny. Jak vidíte na obrázku, můžete povolit nebo zakázat **partnerský virtuální síť** pro laboratoře v účtu testovacího prostředí. 
 
-![Povolení nebo zakázání VNet peering po vytvoření testovacího prostředí](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer-existing-lab.png) 
+![Povolení nebo zakázání partnerského vztahu VNet po vytvoření testovacího prostředí](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer-existing-lab.png) 
 
-Když vyberete virtuální síť pro **partnerská virtuální síť** pole, **Autor testovacího prostředí povolit vybrat umístění testovacího prostředí** možnost je zakázaná. Je to proto, že testovací prostředí v rámci účtu testovacího prostředí musí být ve stejné oblasti jako účet testovacího prostředí můžou připojit k prostředkům v partnerské virtuální sítě. 
+Když vyberete virtuální síť pro pole **rovnocenná virtuální síť** , možnost **Povolení testovacího prostředí pro výběr umístění testovacího** prostředí je zakázaná. Je to proto, že laboratoře v účtu testovacího prostředí musí být ve stejné oblasti jako účet testovacího prostředí, aby se připojovaly k prostředkům v partnerské virtuální síti. 
 
 > [!IMPORTANT]
-> Tato změna nastavení platí jenom pro testovací prostředí, které jsou vytvořeny po provedení změny, ne na existující testovací prostředí. 
+> Tato změna nastavení se vztahuje pouze na laboratoře vytvořené po provedení změny, nikoli na stávající cvičení. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Jako správce vytvářet a spravovat účty pro testovací prostředí](how-to-manage-lab-accounts.md)
-- [Jako vlastník testovacího prostředí vytvoření a správa testovacích prostředí](how-to-manage-classroom-labs.md)
-- [Jako vlastník testovacího prostředí nastavení a publikování šablon](how-to-create-manage-template.md)
-- [Jako uživatel, který testovací prostředí přístup k testovacím prostředím v učebnách](how-to-use-classroom-lab.md)
+- [Účty testovacího prostředí se vytvářejí a spravují jako správce.](how-to-manage-lab-accounts.md)
+- [Jako vlastník testovacího prostředí vytvářet a spravovat cvičení](how-to-manage-classroom-labs.md)
+- [Jako vlastník testovacího prostředí, nastavení a publikování šablon](how-to-create-manage-template.md)
+- [Jako uživatel testovacího prostředí, Access učeben Labs](how-to-use-classroom-lab.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Definování nového typu Azure IoT Edge zařízení v Azure IoT Central | Microsoft Docs
+title: Kurz – definování nového typu Azure IoT Edge zařízení v Azure IoT Central
 description: V tomto kurzu se dozvíte jako tvůrce, jak vytvořit nové zařízení Azure IoT Edge v aplikaci Azure IoT Central. Definujete telemetrii, stav, vlastnosti a příkazy pro svůj typ.
 author: rangv
 ms.author: rangv
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0a293d74c9e37a6771c5bb246b74bda38db3b7c3
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 97bfd2b1e8b571f44c0b782459567f5677dd36a7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406469"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702794"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Kurz: definování nového typu Azure IoT Edge zařízení v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -57,7 +57,7 @@ V tomto kurzu se naučíte:
 > * Přidejte relace do šablon zařízení pro příjem dat.
 > * Publikujte šablonu zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete [vytvořit aplikaci Azure IoT Central](quick-deploy-iot-central.md).
 
@@ -103,7 +103,7 @@ Na stránce **Vybrat typ šablony** vyberte **Azure IoT Edge**a vyberte **Dalš�
 
 V IoT Edge můžete nasadit a spravovat obchodní logiku ve formě modulů. IoT Edge moduly jsou nejmenší jednotkou výpočtu spravovanou pomocí IoT Edge a můžou obsahovat služby Azure (například Azure Stream Analytics) nebo vlastní kód specifický pro řešení. Pokud chcete pochopit, jak se moduly vyvíjí, nasazují a udržují, přečtěte si téma [IoT Edge moduly](../../iot-edge/iot-edge-modules.md).
 
-Manifest nasazení na vysoké úrovni, je seznam dvojčaty modulů, které jsou nakonfigurovány s jejich požadované vlastnosti. Manifest nasazení oznamuje IoT Edge zařízení (nebo skupině zařízení), které moduly se mají nainstalovat, a jak je nakonfigurovat. Manifesty nasazení obsahují požadované vlastnosti pro každý modul s dvojitou vlastností. IoT Edge zařízení hlásí zpět ohlášené vlastnosti pro každý modul.
+Manifest nasazení je na vysoké úrovni seznamem vláken modulu, které jsou nakonfigurovány s požadovanými vlastnostmi. Manifest nasazení oznamuje IoT Edge zařízení (nebo skupině zařízení), které moduly se mají nainstalovat, a jak je nakonfigurovat. Manifesty nasazení obsahují požadované vlastnosti pro každý modul s dvojitou vlastností. IoT Edge zařízení hlásí zpět ohlášené vlastnosti pro každý modul.
 
 Pomocí Visual Studio Code vytvořit manifest nasazení. Další informace najdete v tématu [Azure IoT Edge Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
 
@@ -196,7 +196,7 @@ Následující vývojový diagram znázorňuje životní cyklus manifestu nasaze
 
 ![Vývojový diagram životního cyklu manifestu nasazení](./media/tutorial-define-edge-device-type/dmflow.png)
 
-V dalším kroku se zobrazí stránka pro kontrolu s podrobnostmi o manifestu nasazení. Tato stránka zobrazuje seznam modulů z manifestu nasazení. V tomto kurzu si všimněte, že je uvedený modul `SimulatedTemperatureSensor`. Vyberte **Vytvořit**.
+V dalším kroku se zobrazí stránka pro kontrolu s podrobnostmi o manifestu nasazení. Tato stránka zobrazuje seznam modulů z manifestu nasazení. V tomto kurzu si všimněte, že je uvedený modul `SimulatedTemperatureSensor`. Vyberte **Create** (Vytvořit).
 
 ![Snímek obrazovky se stránkou pro revize s modulem a zvýrazněnou možností vytvořit](./media/tutorial-define-edge-device-type/edgedevicetemplatereview.png)
 
@@ -293,10 +293,10 @@ Můžete vybrat model schopností pro příjem dat, nebo můžete vybrat symbol 
 
     | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádný          | Datum   |
-    | Jméno zákazníka     | Žádný          | Řetězec |
+    | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
+    | Jméno zákazníka     | Žádné          | Řetězec |
 
-2. Vyberte **Uložit**.
+2. Vyberte **Save** (Uložit).
 
   
     ![Snímek šablony senzoru prostředí se zvýrazněnou možností Uložit](./media/tutorial-define-edge-device-type/edgetemplatecloudproperties.png)
@@ -341,7 +341,7 @@ Ambientní telemetrie a telemetrie počítačů jsou komplexní objekty. Vytvá�
   
    ![Snímek šablony senzoru prostředí s vybranými různými možnostmi](./media/tutorial-define-edge-device-type/sensorambienttelemetrychart.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 Můžete přidat další dlaždice, které zobrazují další vlastnosti nebo hodnoty telemetrie. Můžete také přidat statický text, odkazy a obrázky. Chcete-li přesunout nebo změnit velikost dlaždice na řídicím panelu, přesuňte ukazatel myši na dlaždici a přetáhněte dlaždici na nové umístění nebo změňte jeho velikost.
   
@@ -363,7 +363,7 @@ Vytvoření formuláře pro zobrazení a úpravy vlastností senzoru životního
   
    ![Obrazovka stránky zobrazení šablon senzoru v prostředí s vybranými různými možnostmi](./media/tutorial-define-edge-device-type/views-properties.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="publish-a-device-template"></a>Publikování šablony zařízení
 

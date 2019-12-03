@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/20/2019
+ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052516"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706263"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight – Nejčastější dotazy
 
@@ -90,7 +90,7 @@ Ano. K instalaci dalších součástí nebo přizpůsobení konfigurace clusteru
 
 Podpora Microsoftu týmy však mohou nabízet podporu pouze v následujících situacích:
 
-- Problémy nebo chyby, ke kterým dochází při načítání skriptu. Všechny chyby, ke kterým dojde během provádění vlastních skriptů, jsou mimo obor lístku podpory.
+- Problémy nebo chyby, ke kterým dochází při načítání skriptu. Jakékoli chyby při provádění vlastních skriptů jsou nad rámec lístku podpory.
 
 - Další aplikace, které jsou součástí procesu vytváření clusteru. 
 
@@ -180,6 +180,11 @@ Ano, můžete nasadit další virtuální počítač ve stejné podsíti jako cl
 - Hraniční uzly: do clusteru můžete přidat další hraniční uzel, jak je popsáno v tématu [použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDInsight](hdinsight-apps-use-edge-node.md).
 
 - Samostatné uzly: můžete přidat samostatný virtuální počítač ke stejné podsíti a přistupovat ke clusteru z tohoto virtuálního počítače pomocí `https://<CLUSTERNAME>-int.azurehdinsight.net`privátního koncového bodu. Další informace najdete v tématu [řízení síťového provozu](hdinsight-plan-virtual-network-deployment.md#networktraffic).
+
+### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>Mám ukládat data na místní disk hraničního uzlu?
+
+Ne, není vhodné ukládat data na místním disku. Pokud uzel selže, všechna místně uložená data budou ztracena. Doporučujeme ukládat data do Azure Data Lake Storage Gen2 nebo úložiště objektů BLOB v Azure nebo připojením sdílené složky služby soubory Azure pro ukládání dat.
+
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Můžu přidat existující cluster HDInsight do jiné virtuální sítě?
 

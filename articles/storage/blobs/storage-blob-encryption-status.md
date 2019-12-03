@@ -9,12 +9,12 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 28a387b77c9a4db4be151dffc853617c426c6927
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666556"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707599"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>Zkontroluje stav šifrování objektu BLOB.
 
@@ -72,7 +72,7 @@ Chcete-li zjistit, kdy byl objekt BLOB vytvořen, zkontrolujte hodnotu vlastnost
 
 ---
 
-### <a name="force-encryption-of-a-blob"></a>Vynutit šifrování objektu BLOB
+## <a name="force-encryption-of-a-blob"></a>Vynutit šifrování objektu BLOB
 
 Pokud objekt blob, který se vytvořil před 20. října 2017, ještě není zašifrovaný procesem na pozadí, můžete vynutit, aby se šifrování nacházelo hned stažením a znovu nahráním objektu BLOB. To lze provést jednoduchým způsobem pomocí AzCopy.
 

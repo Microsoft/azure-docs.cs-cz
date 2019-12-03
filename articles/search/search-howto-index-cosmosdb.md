@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f1e1ae76c44e66c04baaad110b87264279dfdaf1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 33c26ff15095928d6050a77794b74480e364bfb6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530996"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707755"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Jak indexovat data Cosmos DB pomocí indexeru v Azure Kognitivní hledání 
 
@@ -246,7 +246,7 @@ Ujistěte se, že schéma cílového indexu je kompatibilní se schématem zdroj
 > [!NOTE]
 > U dělených kolekcí je výchozí klíč dokumentu Azure Cosmos DB `_rid` vlastnost, která se v Azure Kognitivní hledání automaticky přejmenuje na `rid`, protože názvy polí nemůžou začínat znakem podtržítka. Azure Cosmos DB `_rid` hodnoty taky obsahují znaky, které jsou v klíčích Azure Kognitivní hledání neplatné. Z tohoto důvodu jsou `_rid` hodnoty kódování Base64.
 > 
-> Pro kolekce MongoDB Azure Kognitivní hledání automaticky přejmenuje vlastnost `_id` na `doc_id`.  
+> Pro kolekce MongoDB Azure Kognitivní hledání automaticky přejmenuje vlastnost `_id` na `id`.  
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>Mapování mezi datovými typy JSON a datovými typy Azure Kognitivní hledání
 | Datový typ JSON | Kompatibilní typy polí cílového indexu |

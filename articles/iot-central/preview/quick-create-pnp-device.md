@@ -1,6 +1,6 @@
 ---
-title: Přidání simulovaného zařízení do Azure IoT Central | Microsoft Docs
-description: Vytvořte šablonu zařízení a přidejte do aplikace IoT Central simulované zařízení.
+title: Rychlý Start – přidání simulovaného zařízení do Azure IoT Central
+description: V tomto rychlém startu se dozvíte, jak vytvořit šablonu zařízení a přidat do aplikace IoT Central simulované zařízení.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 8b6720af6328242a1fe297e60c9d413d0b83f3d2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 46d325fd609363a5425fc16845552e75b575c231
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893820"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706698"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application-preview-features"></a>Rychlý Start: Přidání simulovaného zařízení do aplikace IoT Central (funkce ve verzi Preview)
 
@@ -30,7 +30,7 @@ V tomto rychlém startu vytvoříte šablonu zařízení **senzoru pro životní
 * Reaguje na příkazy, jako je zapnutí a vypnutí.
 * Sestavy obecných vlastností zařízení, jako je například verze firmwaru a sériové číslo.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete průvodce [vytvořením aplikace Azure IoT Central (náhled funkcí)](./quick-deploy-iot-central.md) a vytvořte aplikaci IoT Central pomocí vlastní šablony aplikace **> Preview** .
 
@@ -72,8 +72,8 @@ Následující kroky ukazují, jak naimportovat model schopností pro zařízen�
 
     | Zobrazovaný název      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádný          | Datum   |
-    | Jméno zákazníka     | Žádný          | Řetězec |
+    | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
+    | Jméno zákazníka     | Žádné          | Řetězec |
 
 1. Kliknutím na **Uložit** uložte změny:
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 92735d8982fb1364d5ebfe0494f5ee51f4302469
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: bf88928ca24a1205ec7a1ddd2fd20af0d0e91468
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794003"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422672"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Rychlý Start: Přidání otázek a odpovědí pomocí portálu QnA Maker
 
@@ -28,7 +28,7 @@ Například otázky v následující tabulce jsou o omezeních služeb Azure, al
 <a name="qna-table"></a>
 
 
-|Sada|Otázky|Odpověď|Metadata|
+|Nastavit|Otázky|Odpověď|Metadata|
 |--|--|--|--|
 |1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -176,4 +176,4 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Získat odpověď s použitím post](get-answer-from-kb-using-postman.md)
+> [Získání odpovědi pomocí metody post nebo kudrlinkou](get-answer-from-knowledge-base-using-url-tool.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Provádění operací ETL pomocí Azure Databricks'
-description: Zjistěte, jak extrahovat data z Data Lake Storage Gen2 do Azure Databricks, transformovat data a pak načíst data do Azure SQL Data Warehouse.
+title: Kurz – provádění operací ETL pomocí Azure Databricks
+description: V tomto kurzu zjistíte, jak extrahovat data z Data Lake Storage Gen2 do Azure Databricks, transformovat data a pak načíst data do Azure SQL Data Warehouse.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 8ceb9e940584ae4c41484fe31ce5cb1832bb3400
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 11e5aac559370c478b774f2a503bde590dfeedf4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605703"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707459"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure Databricks
 
@@ -43,7 +43,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
 > Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
      
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, dokončete tyto úkoly:
 
@@ -65,7 +65,7 @@ Než začnete s tímto kurzem, dokončete tyto úkoly:
 
    * Při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a hodnoty hesla do textového souboru. Budete je potřebovat brzy.
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Shromážděte informace, které potřebujete.
 
@@ -81,7 +81,7 @@ Ujistěte se, že jste dokončili požadavky tohoto kurzu.
 
    : heavy_check_mark: ID tenanta vašeho předplatného.
 
-   : heavy_check_mark: ID aplikace aplikace, kterou jste zaregistrovali ve službě Azure Active Directory (Azure AD).
+   : heavy_check_mark: ID aplikace aplikace, kterou jste zaregistrovali v Azure Active Directory (Azure AD).
 
    : heavy_check_mark: ověřovací klíč pro aplikaci, kterou jste zaregistrovali ve službě Azure AD.
 
@@ -147,7 +147,7 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
 
     ![Zadání podrobností pro Poznámkový blok v datacihlách](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Zadání podrobností pro Poznámkový blok v datacihlách")
 
-4. Vyberte **Vytvořit**.
+4. Vyberte **Create** (Vytvořit).
 
 5. Následující blok kódu nastaví výchozí přihlašovací údaje instančního objektu pro libovolný účet ADLS Gen 2, ke kterému se přistupoval v relaci Spark. Druhý blok kódu připojí název účtu k nastavení k zadání přihlašovacích údajů pro konkrétní účet ADLS Gen 2.  Zkopírujte a vložte blok kódu do první buňky Azure Databricks poznámkového bloku.
 
@@ -242,7 +242,7 @@ V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
 
 ## <a name="transform-data-in-azure-databricks"></a>Transformace dat v Azure Databricks
 
-Nezpracovaný ukázkový soubor **small_radio_json. JSON** zachycuje cílovou skupinu pro radiovou stanici a má různé sloupce. V této části Transformujte data tak, aby se z datové sady načítala jenom konkrétní sloupce.
+Nezpracovaná ukázková data **small_radio_json. JSON** zachytí cílovou skupinu pro radiovou stanici a má různé sloupce. V této části Transformujte data tak, aby se z datové sady načítala jenom konkrétní sloupce.
 
 1. Nejdříve načtěte pouze sloupce **FirstName**, **LastName**, **pohlaví**, **Location**a **Level** z datového rámce, který jste vytvořili.
 
@@ -343,7 +343,7 @@ Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá úložiš
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Je nutné, abyste vytvořili datový sklad SQL jako předpoklad. Použijte plně kvalifikovaný název serveru pro **dwServer**. například `<servername>.database.windows.net`.
+4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Je nutné, abyste vytvořili datový sklad SQL jako předpoklad. Použijte plně kvalifikovaný název serveru pro **dwServer**. Například, `<servername>.database.windows.net`.
 
    ```scala
    //SQL Data Warehouse related settings

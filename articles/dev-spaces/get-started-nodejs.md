@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 32ff7554ca599b7d50a4c815083b97eda8b4e57e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 64d4f7560325429fc2a36be066c6c475d4d60e90
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327307"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708598"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Vytvoření Kubernetes vývojového prostoru: Visual Studio Code a Node. js s Azure Dev Spaces
 
@@ -40,9 +40,10 @@ az login
 Svoje předplatná můžete zobrazit spuštěním tohoto příkazu: 
 
 ```cmd
-az account list
+az account list --output table
 ```
-Vyhledejte předplatné, které ve výstupu JSON obsahuje: `isDefault: true`.
+
+Vyhledejte předplatné, které má *hodnotu true* pro *výchozí nastavení*.
 Pokud se nejedná o předplatné, které chcete použít, můžete výchozí předplatné změnit:
 
 ```cmd
@@ -106,7 +107,7 @@ Příkaz Azure CLI `azds prep` vygeneruje prostředky Dockeru a Kubernetes s vý
 
 Celému obsahu těchto souborů prozatím rozumět nemusíte. Stojí však za zmínku, že **stejné prostředky konfigurace jako kódu pro Kubernetes a Docker můžete používat v různých fázích od vývoje až po produkci, takže si napříč různými prostředími zajistíte lepší konzistentnost**.
  
-Příkaz `./azds.yaml` také vygeneruje soubor s názvem `prep`, což je konfigurační soubor pro Azure Dev Spaces. Doplňuje artefakty Dockeru a Kubernetes další konfigurací, která v Azure zapne iterativní vývojové prostředí.
+Příkaz `prep` také vygeneruje soubor s názvem `./azds.yaml`, což je konfigurační soubor pro Azure Dev Spaces. Doplňuje artefakty Dockeru a Kubernetes další konfigurací, která v Azure zapne iterativní vývojové prostředí.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Sestavení a spuštění kódu v Kubernetes
 Teď spustíme náš kód! V okně terminálu spusťte tento příkaz z **kořenové složky kódu** webfrontend:
@@ -177,7 +178,7 @@ Z tohoto příkladu jasně vyplývá, že některé potíže nezjistíte, dokud 
 ### <a name="update-a-code-file"></a>Aktualizace souboru s kódem
 Aktualizace souborů s kódem na straně serveru je pracnější, protože aplikaci Node.js je potřeba restartovat.
 
-1. V okně terminálu stiskněte `Ctrl+C`, abyste zastavili `azds up`.
+1. V okně terminálu stiskněte `Ctrl+C` (kvůli zastavení `azds up`).
 1. Otevřete soubor s kódem nazvaný `server.js` a změňte úvodní zprávu služby: 
 
     ```javascript
@@ -238,7 +239,7 @@ Nastavte zarážku v souboru kódu na straně serveru, například v rámci `app
 
 Aktualizujte stránku prohlížeče, nebo stiskněte tlačítko *řekněte ho znovu* a měli byste se dostat ke zarážce a být schopni krokovat kód.
 
-Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., stejně jako při lokálním spuštění kódu.
+Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., úplně stejně jako při lokálním spuštění kódu.
 
 ### <a name="edit-code-and-refresh-the-debug-session"></a>Úprava kódu a aktualizace ladicí relace
 S aktivním ladicím programem udělejte úpravu kódu; například upravte zprávu Hello na [řádku 13 `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) znovu:

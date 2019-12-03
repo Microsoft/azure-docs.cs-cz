@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 1dc7005ac0d1cb520e4c0452196a2b47665f9b5c
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 5888547939759984effb10aa2c7c6b2add135d12
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325831"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708397"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Vytvoření Kubernetes vývojového prostoru: Visual Studio Code a Java s Azure Dev Spaces
 
@@ -43,9 +43,10 @@ az login
 Svoje předplatná můžete zobrazit spuštěním tohoto příkazu: 
 
 ```cmd
-az account list
+az account list --output table
 ```
-Vyhledejte předplatné, které ve výstupu JSON obsahuje: `isDefault: true`.
+
+Vyhledejte předplatné, které má *hodnotu true* pro *výchozí nastavení*.
 Pokud se nejedná o předplatné, které chcete použít, můžete výchozí předplatné změnit:
 
 ```cmd
@@ -111,7 +112,7 @@ Příkaz Azure CLI `azds prep` vygeneruje prostředky Dockeru a Kubernetes s vý
 
 Celému obsahu těchto souborů prozatím rozumět nemusíte. Stojí však za zmínku, že **stejné prostředky konfigurace jako kódu pro Kubernetes a Docker můžete používat v různých fázích od vývoje až po produkci, takže si napříč různými prostředími zajistíte lepší konzistentnost**.
  
-Příkaz `./azds.yaml` také vygeneruje soubor s názvem `prep`, což je konfigurační soubor pro Azure Dev Spaces. Doplňuje artefakty Dockeru a Kubernetes další konfigurací, která v Azure zapne iterativní vývojové prostředí.
+Příkaz `prep` také vygeneruje soubor s názvem `./azds.yaml`, což je konfigurační soubor pro Azure Dev Spaces. Doplňuje artefakty Dockeru a Kubernetes další konfigurací, která v Azure zapne iterativní vývojové prostředí.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Sestavení a spuštění kódu v Kubernetes
 Teď spustíme náš kód! V okně terminálu spusťte tento příkaz z **kořenové složky kódu** webfrontend:
@@ -149,7 +150,7 @@ Webovou aplikaci zobrazíte otevřením veřejné adresy URL v prohlížeči. V�
 ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
 Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
 
-1. V okně terminálu stiskněte `Ctrl+C`, abyste zastavili `azds up`.
+1. V okně terminálu stiskněte `Ctrl+C` (kvůli zastavení `azds up`).
 1. Otevřete `src/main/java/com/ms/sample/webfrontend/Application.java`a upravte zprávu pozdravu na [řádku 19](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19):
 
     ```java
@@ -202,7 +203,7 @@ Stejně jako u příkazu `up` se kód synchronizuje s vývojovým prostorem a se
 
 V serverovém souboru s kódem nastavte zarážku, třeba ve funkci `greeting()` ve zdrojovém souboru `src/main/java/com/ms/sample/webfrontend/Application.java`. Aktualizace stránky prohlížeče způsobí aktivaci zarážky.
 
-Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., stejně jako při lokálním spuštění kódu.
+Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., úplně stejně jako při lokálním spuštění kódu.
 
 ### <a name="edit-code-and-refresh"></a>Úprava a aktualizace kódu
 V aktivním ladicím programu upravte kód. Například změňte úvodní zprávu v kódu `src/main/java/com/ms/sample/webfrontend/Application.java`. 

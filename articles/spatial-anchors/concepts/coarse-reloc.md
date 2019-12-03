@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f03d2fba01dadc443da19416871a93a72289c0c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 87179cbce9fa99d4c3422ce88b630312b5080481
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270153"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706241"
 ---
 # <a name="coarse-relocalization"></a>Přibližná relokalizace
 
@@ -129,7 +129,7 @@ V dalším kroku se budete muset rozhodnout, jaké senzory chcete použít pro h
 |             | Nedvířka | Otevřené |
 |-------------|---------|----------|
 | GPS         | Vypnuto | Zapnuto |
-| Wi-Fi        | Zapnuto | Zapnuto (volitelné) |
+| WiFi        | Zapnuto | Zapnuto (volitelné) |
 | Majáky v/v | Zapnuto (volitelné s upozorněními, viz níže) | Vypnuto |
 
 
@@ -495,7 +495,7 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Prostorové kotvy Azure budou sledovat jenom signály Bluetooth, které jsou v seznamu. Škodlivé signály, které mají v případě, že mají bílé identifikátory UUID, můžou mít negativně vliv na kvalitu služby, i když. Z tohoto důvodu byste měli používat signály pouze v podaných prostorech, kde můžete řídit jejich nasazení.
+Prostorové kotvy Azure budou sledovat jenom signály Bluetooth, které jsou v seznamu. Škodlivé signály, které jsou naprogramovány na povolené identifikátory UUID, můžou mít negativní vliv na kvalitu služby, i když. Z tohoto důvodu byste měli používat signály pouze v podaných prostorech, kde můžete řídit jejich nasazení.
 
 ## <a name="querying-with-sensor-data"></a>Dotazování na data senzorů
 
@@ -655,7 +655,7 @@ Následující tabulka odhadne očekávaný hledaný prostor pro každý typ sen
 | Elektrické      | Hledat v poloměru místa (přibližně) | Podrobnosti |
 |-------------|:-------:|---------|
 | GPS         | 20 m – 30 metrů | Určeno nejistotum GPS mezi ostatními faktory. Hlášené počty jsou odhadované pro střední přesnost GPS mobilních telefonů pomocí GPS, což je 7 metrů. |
-| Wi-Fi        | 50 m – 100 m | Určuje rozsah bezdrátových přístupových bodů. Závisí na četnosti, síle vysílače, fyzických překážkách, rušení atd. |
+| WiFi        | 50 m – 100 m | Určuje rozsah bezdrátových přístupových bodů. Závisí na četnosti, síle vysílače, fyzických překážkách, rušení atd. |
 | Majáky v/v |  70 m | Určuje rozsahem majáku. Závisí na četnosti, síle přenosu, fyzických překážkách, rušení atd. |
 
 ## <a name="per-platform-support"></a>Podpora pro platformy
@@ -665,8 +665,8 @@ Následující tabulka shrnuje data senzorů shromážděná na jednotlivých po
 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
-| GPS         | neuvedeno | Podporováno prostřednictvím rozhraní [LocationManager][3] API (GPS i síť) | Podporováno prostřednictvím rozhraní [CLLocationManager][4] API |
-| Wi-Fi        | Podporuje se rychlostí přibližně jedné kontroly každé 3 sekundy. | Podporuje se. Počínaje rozhraním API Level 28 jsou kontroly Wi-Fi omezené na 4 volání každé 2 minuty. Z Androidu 10 se omezování dá zakázat v nabídce nastavení pro vývojáře. Další informace najdete v [dokumentaci k Androidu][5]. | Není k dispozici žádné veřejné rozhraní API |
+| GPS         | Nevztahuje se | Podporováno prostřednictvím rozhraní [LocationManager][3] API (GPS i síť) | Podporováno prostřednictvím rozhraní [CLLocationManager][4] API |
+| WiFi        | Podporuje se rychlostí přibližně jedné kontroly každé 3 sekundy. | Podporuje se. Počínaje rozhraním API Level 28 jsou kontroly Wi-Fi omezené na 4 volání každé 2 minuty. Z Androidu 10 se omezování dá zakázat v nabídce nastavení pro vývojáře. Další informace najdete v [dokumentaci k Androidu][5]. | Není k dispozici žádné veřejné rozhraní API |
 | Majáky v/v | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] |
 
 ## <a name="next-steps"></a>Další kroky

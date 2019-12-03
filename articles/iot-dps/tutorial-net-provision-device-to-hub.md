@@ -1,6 +1,6 @@
 ---
-title: Zřízení zařízení pomocí Azure IoT Hub Device Provisioning Service (.NET)
-description: Kurz – zřízení zařízení pro jedno centrum IoT pomocí IoT Hub Device Provisioning Service Azure (.NET)
+title: Kurz – zřízení zařízení pomocí Azure IoT Hub Device Provisioning Service (.NET)
+description: V tomto kurzu se dozvíte, jak můžete zřídit zařízení pro jedno centrum IoT pomocí IoT Hub Device Provisioning Service Azure (.NET).
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: a19774a163c8725e0232e955a7be907420ce8249
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 98b2ef05a1abb6ebea8dac073fbf7671ed79c06e
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229477"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701995"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Kurz: registrace zařízení do služby IoT Hub pomocí klienta služby Azure IoT Hub Provisioning Service (.NET)
 
@@ -25,7 +25,7 @@ V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke sl
 > * Spuštění zařízení
 > * Ověření registrace zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, nezapomeňte nakonfigurovat své zařízení a *modul hardwarového zabezpečení*, jak je popsáno v kurzu [Nastavení zařízení pro zřízení pomocí služby Azure IoT Hub Device Provisioning](./tutorial-set-up-device.md).
 
@@ -63,7 +63,7 @@ Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsob
 
 1. V okně **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **microsoft.azure.devices.provisioning.service**. Vyberte příslušnou položku, kliknutím na **Nainstalovat** nainstalujte balíček **Microsoft.Azure.Devices.Provisioning.Service** a přijměte podmínky použití. Tímto postupem se stáhne a nainstaluje balíček NuGet [sady SDK služby Azure IoT Device Provisioning](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) a jeho závislosti a přidá se na něj odkaz.
 
-1. Do horní části souboru `using`Program.cs**přidejte následující příkazy**:
+1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
@@ -146,7 +146,7 @@ Po úspěšné registraci by se zařízení mělo zobrazit na portálu, jak je z
 
 1. V Průzkumníku řešení sady Visual Studio otevřete projekt **DeviceProvisioning** vytvořený výše. 
 
-1. Do horní části souboru `using`Program.cs**přidejte následující příkazy**:
+1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;

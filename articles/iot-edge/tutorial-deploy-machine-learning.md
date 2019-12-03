@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: nasazení Azure Machine Learning do zařízení – Azure IoT Edge'
+title: Kurz – nasazení Azure Machine Learning do zařízení pomocí Azure IoT Edge
 description: V tomto kurzu vytvoříte model Azure Machine Learning a pak ho nasadíte jako modul do hraničního zařízení.
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3f1bd4ce5b701652318679f3277bc7c9109fa529
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 3d46e0695238ed7a09f180fe59063f8e2590f307
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457637"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701922"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Zařízení Azure IoT Edge:
 
@@ -141,7 +141,7 @@ Následující kroky ukazují, jak nastavit Visual Studio Code k monitorování 
 
 2. Vyberte **...** a potom v nabídce vyberte **Set IoT Hub Connection String** (Nastavení připojovacího řetězce IoT Hubu).
 
-   ![Nastavit připojovací řetězec služby IoT Hub](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![Nastavit připojovací řetězec IoT Hub](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. Do textového pole, které se otevře nahoře na stránce, zadejte připojovací řetězec iothubowner svého IoT Hubu. Vaše zařízení IoT Edge by se mělo zobrazit v seznamu zařízení IoT Hubu.
 
@@ -165,4 +165,3 @@ V tomto kurzu jste nasadili modul IoT Edge, který používá technologii Azure 
 
 > [!div class="nextstepaction"]
 > [Klasifikace obrázků s využitím služby Custom Vision](tutorial-deploy-custom-vision.md)
-

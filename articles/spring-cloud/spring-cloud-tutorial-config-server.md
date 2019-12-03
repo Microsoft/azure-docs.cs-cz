@@ -1,17 +1,17 @@
 ---
-title: Nastavení instance konfiguračního serveru v Azure jaře cloudu | Microsoft Docs
+title: Kurz – nastavení instance konfiguračního serveru v Azure jaře cloudu
 description: V tomto kurzu se naučíte, jak nastavit instanci jarního cloudového konfiguračního serveru pro váš jarní cloud Azure na Azure Portal
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/18/2019
-ms.openlocfilehash: 7589a3a750e2fe04736bb3c8fc072c7a2c0a7358
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 186ba771d2df3b08244a05e349beea8dad2af93b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147551"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708804"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Kurz: nastavení instance jarního cloudového konfiguračního serveru pro vaši službu
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak připojit instanci jarního cloudového konfig
 
 Jarní cloudová konfigurace poskytuje podporu na straně serveru a klienta pro externou konfiguraci v distribuovaném systému. V případě instance konfiguračního serveru máte centrální místo pro správu externích vlastností pro aplikace ve všech prostředích. Další informace najdete v tématu [Reference k serveru pro konfiguraci jarního cloudu](https://spring.io/projects/spring-cloud-config).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 * Již zřízené a běžící cloudová služba Azure. Pokud chcete nastavit a spustit službu jarních cloudů Azure, přečtěte si [rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure](spring-cloud-quickstart-launch-app-cli.md).
 
@@ -124,7 +124,7 @@ Všechny konfigurovatelné vlastnosti používané k nastavení úložišť Git 
 
 Teď, když jsou konfigurační soubory uložené v úložišti, musíte k ní připojit jarní cloud Azure.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Přejít na stránku s **přehledem** jarního cloudu Azure.
 

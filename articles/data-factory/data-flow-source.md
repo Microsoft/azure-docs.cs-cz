@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 33a63b8a887594747aba03e19c107653e438853f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217732"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702042"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro tok dat mapování 
 
@@ -156,7 +156,7 @@ Můžete upravit typy dat sloupce v transformaci odvozeného sloupce z vedlejš�
 
 ### <a name="import-schema"></a>Importovat schéma
 
-Datové sady, jako jsou Avro a CosmosDB, které podporují komplexní datové struktury, nevyžadují, aby v datové sadě existovaly definice schématu. Proto budete moci kliknout na tlačítko "importovat schéma" na kartu projekce pro tyto typy zdrojů.
+Datové sady, jako jsou Avro a CosmosDB, které podporují komplexní datové struktury, nevyžadují, aby v datové sadě existovaly definice schématu. Proto budete moci kliknout na tlačítko **importovat schéma** na kartě **projekce** pro tyto typy zdrojů.
 
 ## <a name="cosmosdb-specific-settings"></a>Konkrétní nastavení CosmosDB
 

@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473336"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706225"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
@@ -98,7 +98,7 @@ V tomto příkladu se uživatelé a skupiny vytvoří v databázi HR připojené
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatické zřizování uživatelů jenom pro cloudové podniky
 
-V tomto příkladu probíhá vytvoření uživatele ve službě Azure AD a služba zřizování Azure AD spravuje Automatické zřizování uživatelů pro cílové aplikace (SaaS):
+V tomto příkladu dojde k vytvoření uživatele ve službě Azure AD a služba zřizování Azure AD spravuje Automatické zřizování uživatelů pro cílové (SaaS) aplikace.
 
 ![Obrázek 2](media/auto-user-provision-dp/cloudprovisioning.png)
 
@@ -112,16 +112,17 @@ V tomto příkladu probíhá vytvoření uživatele ve službě Azure AD a služ
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Automatické zřizování uživatelů pro cloudové aplikace HR 
 
-V tomto příkladu se uživatelé a skupiny vytvářejí v rámci aplikace cloudového HR, jako je třeba Workday.
+V tomto příkladu se uživatelé a skupiny vytvářejí v rámci aplikace cloudového HR, jako třeba Workday a SuccessFactors. Služba zřizování služby Azure AD a Agent pro zřizování Azure AD Connect zřídí data uživatelů z tenanta aplikace cloudového HR do AD. Po aktualizaci účtů ve službě AD se služba synchronizuje se službou Azure AD prostřednictvím Azure AD Connect a e-mailové adresy a atributy uživatelského jména se dají zapsat zpátky do tenanta aplikace cloudového HR.
 
 ![Obrázek 2](media/auto-user-provision-dp/workdayprovisioning.png)
 
-1. Účty vytvořené v systému Cloud HR
-1. Data se natokůují do místní služby AD prostřednictvím služby zřizování Azure AD a agenta zřizování.
-1. Azure AD Connect synchronizuje data do Azure AD.
-1. Atributy e-mail a username se dají zapsat zpátky do aplikace cloudového HR.
-
-Další informace o architektuře řešení a nasazení najdete v tématu [kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial).
+1.  **Tým HR** provádí transakce v tenantovi cloudové aplikace.
+2.  **Služba zřizování Azure AD** spouští naplánované cykly z tenanta aplikace cloudového HR a identifikuje změny, které je potřeba zpracovat pro synchronizaci se službou AD.
+3.  **Služba zřizování Azure AD** vyvolá agenta Azure AD Connect zřizování s datovou částí požadavku obsahující účet služby AD, který obsahuje operace vytvořit/aktualizovat/povolit/zakázat.
+4.  **Agent zřizování Azure AD Connect** pro správu dat účtu AD používá účet služby.
+5.  **Azure AD Connect** spustí rozdílovou synchronizaci s aktualizacemi Pull ve službě AD.
+6.  Aktualizace **AD** se synchronizují se službou Azure AD. 
+7.  Buněk e-mailový atribut **služby Azure AD zřizování** a uživatelské jméno z Azure AD do tenanta aplikace cloudového hr.
 
 ## <a name="plan-the-deployment-project"></a>Plánování projektu nasazení
 

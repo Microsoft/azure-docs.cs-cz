@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: přizpůsobení řídicího panelu operátora v Azure IoT Central'
+title: Kurz – přizpůsobení řídicího panelu operátora v Azure IoT Central
 description: V tomto kurzu se dozvíte, jak přizpůsobit řídicí panel operátora v aplikaci IoT Central a jak spravovat zařízení.
 services: iot-central
 ms.service: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 0dcabada522bf8189d163936551ea94cb4dd2657
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112911"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702690"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Kurz: přizpůsobení řídicího panelu operátora a Správa zařízení v Azure IoT Central
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > * Přidat dlaždice vlastností pro zobrazení podrobností o zařízení
 > * Přidání dlaždic příkazů ke spuštění příkazů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, měl by tvůrce dokončit první kurz a vytvořit aplikaci Azure IoT Central in-Store Analytics a přidat zařízení:
 
@@ -54,7 +54,7 @@ Chcete-li přizpůsobit řídicí panel operátora, upravte výchozí řídicí 
 
 1. Zadejte popisný název řídicího panelu v **názvu řídicího panelu.** V tomto kurzu se používá fiktivní společnost s názvem contoso a Příkladem názvu řídicího panelu je *řídicí panel contoso*. 
 
-1. Vyberte **Uložit**. Tím uložíte změny na řídicí panel a zakážete režim úprav.
+1. Vyberte **Save** (Uložit). Tím uložíte změny na řídicí panel a zakážete režim úprav.
 
     ![Azure IoT Central změnit název řídicího panelu](./media/tutorial-in-store-analytics-customize-dashboard-pnp/dashboard-change-name.png)
 
@@ -97,7 +97,7 @@ Pokud chcete přizpůsobit dlaždici s obrázkem, která zobrazuje mapu zón sen
 
     ![Zóny Azure IoT Central Store](./media/tutorial-in-store-analytics-customize-dashboard-pnp/store-zones.png)
 
-1. Vyberte **Uložit**. 
+1. Vyberte **Save** (Uložit). 
 
 ## <a name="arrange-tiles-to-modify-the-layout"></a>Uspořádat dlaždice a upravit rozložení
 Hlavním krokem při přizpůsobování řídicího panelu je změna uspořádání dlaždic za účelem vytvoření užitečného zobrazení. Obsluha aplikace pomocí řídicího panelu vizualizuje telemetrie zařízení, spravuje zařízení a monitoruje podmínky v obchodě. Azure IoT Central zjednodušuje úlohu sestavovatele aplikace při vytváření řídicího panelu. Režim úprav řídicího panelu vám umožní rychle přidat, přesunout, změnit velikost a odstranit dlaždice. Šablona aplikace **s rezervací v rámci Storu** také zjednodušuje úlohu vytváření řídicího panelu. Poskytuje pracovní řídicí panel s připojenými senzory a dlaždice, které zobrazují počty řádků rezervace a podmínky prostředí.
@@ -118,7 +118,7 @@ Chcete-li odebrat dlaždice, které nechcete použít v aplikaci:
 
    ![Zbývající dlaždice odstranění služby Azure IoT Central](./media/tutorial-in-store-analytics-customize-dashboard-pnp/delete-tiles-2.png)
 
-1. Vyberte **Uložit**. Odebrání nepoužívaných dlaždic uvolní místo na stránce pro úpravy a zjednodušuje zobrazení řídicího panelu pro operátory.
+1. Vyberte **Save** (Uložit). Odebrání nepoužívaných dlaždic uvolní místo na stránce pro úpravy a zjednodušuje zobrazení řídicího panelu pro operátory.
 
 1. Prohlédněte si změny na řídicím panelu.
 
@@ -134,7 +134,7 @@ Změna uspořádání zbývajících dlaždic:
 
 1. Vyberte dlaždici **termostatu pro firmware** a přetáhněte ji napravo od dlaždice **termostatu** na baterii.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 1. Zobrazit změny v rozložení. 
 
@@ -173,7 +173,7 @@ Přidání dlaždic pro zobrazení dat o životním prostředí ze senzorů Ruuv
 
 1. Přetáhněte dlaždici s názvem **zóna 1 prostředí** pod dlaždici **přenosů osob** . 
 
-1. Vyberte **Uložit**. Řídicí panel zobrazuje telemetrii zóny v těchto dvou nových dlaždicích.
+1. Vyberte **Save** (Uložit). Řídicí panel zobrazuje telemetrii zóny v těchto dvou nových dlaždicích.
 
     ![Azure IoT Central všechny dlaždice RuuviTag](./media/tutorial-in-store-analytics-customize-dashboard-pnp/all-ruuvitag-tiles.png)
 
@@ -193,7 +193,7 @@ Postup úpravy dlaždice **provoz osob** pro zobrazení telemetrie jenom pro dv�
 
 1. Vyberte **Konfigurace aktualizace**. 
 
-1. Vyberte **Uložit**.  Aktualizovaný řídicí panel zobrazuje počty jenom pro vaše dvě zóny rezervací, které jsou založené na simulovaném snímači obsazení.
+1. Vyberte **Save** (Uložit).  Aktualizovaný řídicí panel zobrazuje počty jenom pro vaše dvě zóny rezervací, které jsou založené na simulovaném snímači obsazení.
 
     ![Provoz Azure IoT Central lidé dva dráhy](./media/tutorial-in-store-analytics-customize-dashboard-pnp/people-traffic-two-lanes.png)
 
@@ -222,7 +222,7 @@ Chcete-li přidat dlaždici vlastností pro jednotlivé RuuviTag:
 
 1. Zopakováním předchozích kroků vytvořte dlaždici vlastností verze softwaru pro druhý RuuviTag. 
 
-1. Vyberte **Uložit**.  
+1. Vyberte **Save** (Uložit).  
 
     ![Dlaždice vlastností RuuviTag v Azure IoT Central](./media/tutorial-in-store-analytics-customize-dashboard-pnp/add-ruuvi-property-tiles.png)
 
@@ -239,7 +239,7 @@ Chcete-li přidat dlaždici příkazu pro restartování brány:
 
 1. Vyberte **příkaz > restartovat** a přetáhněte ho na řídicí panel vedle mapy Storu. 
 
-1. Vyberte **Uložit**. 
+1. Vyberte **Save** (Uložit). 
 
 1. Zobrazte si dokončený řídicí panel společnosti Contoso. 
 

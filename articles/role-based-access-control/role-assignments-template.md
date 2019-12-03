@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu k prostředkům Azure pomocí RBAC a šablon Azure Resource Manager | Microsoft Docs
-description: Naučte se spravovat přístup k prostředkům Azure pro uživatele, skupiny a aplikace pomocí řízení přístupu na základě rolí (RBAC) a šablon Azure Resource Manager.
+title: Přidání přiřazení rolí pomocí Azure RBAC a Azure Resource Manager šablon
+description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí řízení přístupu na základě role (RBAC) Azure a šablon Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/21/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 268913fb7aebd1d6c8b377b95939c3bc1f77daca
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a183dc3b318cb9d740fe91bf553dc9f0c7ec99c4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383999"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707799"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Správa přístupu k prostředkům Azure pomocí šablon RBAC a Azure Resource Manager
+# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Přidání přiřazení rolí pomocí Azure RBAC a Azure Resource Manager šablon
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. Kromě použití Azure PowerShell nebo rozhraní příkazového řádku Azure CLI můžete spravovat přístup k prostředkům Azure pomocí [šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Šablony mohou být užitečné, pokud potřebujete nasadit prostředky konzistentně a opakovaně. Tento článek popisuje, jak můžete spravovat přístup pomocí RBAC a šablon.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Kromě používání Azure PowerShell nebo rozhraní příkazového řádku Azure CLI můžete role přiřadit pomocí [šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Šablony mohou být užitečné, pokud potřebujete nasadit prostředky konzistentně a opakovaně. Tento článek popisuje, jak přiřadit role pomocí šablon.
 
 ## <a name="get-object-ids"></a>Získat ID objektů
 
@@ -64,9 +64,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Vytvoření přiřazení role v oboru skupiny prostředků (bez parametrů)
+## <a name="add-a-role-assignment"></a>Přidání přiřazení role
 
-V RBAC se přístup uděluje vytvořením přiřazení role. Následující šablona ukazuje základní způsob, jak vytvořit přiřazení role. Některé hodnoty jsou zadány v rámci šablony. Následující šablona znázorňuje:
+Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC.
+
+### <a name="resource-group-without-parameters"></a>Skupina prostředků (bez parametrů)
+
+Následující šablona ukazuje základní způsob, jak přidat přiřazení role. Některé hodnoty jsou zadány v rámci šablony. Následující šablona znázorňuje:
 
 -  Přiřazení role [čtenáře](built-in-roles.md#reader) k uživateli, skupině nebo aplikaci v oboru skupiny prostředků
 
@@ -107,7 +111,7 @@ Níže vidíte příklad přiřazení role čtenáře uživateli pro skupinu pro
 
 ![Přiřazení role v oboru skupiny prostředků](./media/role-assignments-template/role-assignment-template.png)
 
-## <a name="create-a-role-assignment-at-a-resource-group-or-subscription-scope"></a>Vytvoření přiřazení role v oboru skupiny prostředků nebo předplatného
+### <a name="resource-group-or-subscription"></a>Skupina prostředků nebo předplatné
 
 Předchozí šablona není příliš flexibilní. Následující šablona používá parametry a lze ji použít v různých oborech. Následující šablona znázorňuje:
 
@@ -191,9 +195,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-scope"></a>Vytvoření přiřazení role v oboru prostředků
+### <a name="resource"></a>Prostředek
 
-Pokud potřebujete vytvořit přiřazení role na úrovni prostředku, formát přiřazení role se liší. Zadejte obor názvů poskytovatele prostředků a typ prostředku, ke kterému chcete přiřadit roli. Do názvu přiřazení role zadáte také název prostředku.
+Pokud potřebujete přidat přiřazení role na úrovni prostředku, formát přiřazení role se liší. Zadejte obor názvů poskytovatele prostředků a typ prostředku, ke kterému chcete přiřadit roli. Do názvu přiřazení role zadáte také název prostředku.
 
 Pro typ a název přiřazení role použijte následující formát:
 
@@ -287,7 +291,7 @@ Níže vidíte příklad přiřazení role přispěvatele uživateli pro účet 
 
 ![Přiřazení role v oboru prostředků](./media/role-assignments-template/role-assignment-template-resource.png)
 
-## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Vytvoření přiřazení role pro nový instanční objekt
+### <a name="new-service-principal"></a>Nový instanční objekt
 
 Pokud vytvoříte nový instanční objekt a hned se pokusíte přiřadit roli k tomuto instančnímu objektu, toto přiřazení role může v některých případech selhat. Pokud například vytvoříte novou spravovanou identitu a pak se pokusíte přiřadit roli k tomuto instančnímu objektu ve stejné šabloně Azure Resource Manager, přiřazení role může selhat. Důvodem této chyby je nejspíš zpoždění replikace. Instanční objekt se vytvoří v jedné oblasti. přiřazení role se ale může vyskytnout v jiné oblasti, která ještě nereplikoval instanční objekt. Pro vyřešení tohoto scénáře byste měli nastavit vlastnost `principalType` na `ServicePrincipal` při vytváření přiřazení role.
 

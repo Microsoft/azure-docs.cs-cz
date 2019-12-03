@@ -1,19 +1,19 @@
 ---
-title: 'Rychlý Start: spuštění vaší jarní cloudové aplikace ze zdrojového kódu'
-description: Naučte se, jak spustit cloudovou aplikaci Azure pro jaře přímo ze zdrojového kódu.
+title: Rychlý Start – spuštění vaší jarní cloudové aplikace ze zdrojového kódu
+description: V tomto rychlém startu se dozvíte, jak spustit cloudovou aplikaci Azure jaře přímo ze zdrojového kódu.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 6e18ac6c0fa97125b89ea5760a5d7da6c1545393
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721288"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708888"
 ---
-# <a name="launch-your-spring-cloud-application-from-source-code"></a>Spustit svou jarní cloudovou aplikaci ze zdrojového kódu
+# <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Rychlý Start: spuštění vaší jarní cloudové aplikace ze zdrojového kódu
 
 Jarní cloud Azure umožňuje snadné spouštění aplikací mikroslužeb založených na jarních cloudech v Azure.
 
@@ -28,7 +28,7 @@ Po tomto rychlém startu se dozvíte, jak:
 > * Nasazení jednotlivých mikroslužeb
 > * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 >[!Note]
 > Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v našich [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo v souboru o [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) , kde se dozvíte víc.

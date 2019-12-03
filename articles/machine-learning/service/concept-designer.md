@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 73facea2b99ee038b16053fd818d93d35da4cbdd
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196189"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707693"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Co je Návrhář Azure Machine Learning (Preview)? 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Návrhář nabízí vizuální plátno pro sestavování, testování a nasazen�
     + Publikování **kanálu odvození dávky** , aby se předpovědi na nová data pomocí dříve poučeného modelu.
 + [](#deploy) Nasaďte **kanál pro odvození v reálném čase** do koncového bodu v reálném čase, abyste mohli předpovědi na nová data v reálném čase.
 
-![Diagram pracovního postupu pro školení, odvozování dávek a odvození v reálném čase v Návrháři](media/ui-concept-visual-interface/designer-workflow-diagram.png)
+![Diagram pracovního postupu pro školení, odvozování dávek a odvození v reálném čase v Návrháři](media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>Kanál
 
@@ -80,17 +80,17 @@ Modul je algoritmus, který je možné provést na datech. Návrhář má někol
 
 Modul může obsahovat sadu parametrů, pomocí kterých je možné konfigurovat jeho vnitřní algoritmy. Když vyberete modul na plátně, parametry modulu se zobrazí v podokně vlastnosti napravo od plátna. Úpravou parametrů v tomto podokně můžete model optimalizovat. Můžete nastavit výpočetní prostředky pro jednotlivé moduly v návrháři. 
 
-![Vlastnosti modulu](media/ui-concept-visual-interface/properties.png)
+![Vlastnosti modulu](media/concept-designer/properties.png)
 
 Další nápovědu k dispozici v knihovně strojového učení, najdete v tématu [Přehled modulu & algoritmu](../algorithm-module-reference/module-reference.md) .
 
 ## <a name="compute"></a>Výpočetní prostředky
 
-Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kanál a hostovat nasazené modely jako koncové body v reálném čase nebo koncové body kanálu (pro odvození dávky). Cílových podporovaných výpočetních prostředí jsou:
+Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kanál a hostovat nasazené modely jako koncové body v reálném čase nebo koncové body kanálu (pro odvození dávky). Podporované cíle výpočtů:
 
 | Cílový výpočetní objekt | Školení | Nasazení |
 | ---- |:----:|:----:|
-| Azure Machine Learning compute | ✓ | |
+| Azure Machine Learning COMPUTE | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 Cíle výpočetní služby jsou připojeny k vašemu [pracovnímu prostoru](concept-workspace.md)Machine Learning. Výpočetní cíle můžete spravovat ve vašem pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com).
@@ -107,7 +107,7 @@ Informace o tom, jak model nasadit, najdete v tématu [kurz: nasazení modelu st
 
 Kanál můžete také publikovat na **koncový bod kanálu**. Podobně jako koncový bod v reálném čase umožňuje koncový bod kanálu odeslat z externích aplikací spuštění nového kanálu pomocí volání REST. Pomocí koncového bodu kanálu ale nemůžete data odesílat nebo přijímat v reálném čase.
 
-Publikované kanály jsou flexibilní, dají se využít ke školení a reučení modelů, provádění dávkových Inferencing, zpracování nových dat a mnohem víc. Můžete publikovat více kanálů do jednoho koncového bodu kanálu a určit, která verze kanálu se má spustit.
+Publikované kanály jsou flexibilní, dají se využít ke školení a reučení modelů, [provádění dávkových Inferencing](how-to-run-batch-predictions-designer.md), zpracování nových dat a mnohem víc. Můžete publikovat více kanálů do jednoho koncového bodu kanálu a určit, která verze kanálu se má spustit.
 
 Publikovaný kanál běží na výpočetních prostředcích, které definujete v konceptu kanálu pro každý modul.
 
@@ -122,7 +122,7 @@ V důsledku těchto aktualizací se některé koncepty a pojmy pro vizuální ro
 
 | Koncept v Návrháři | Dříve v vizuálním rozhraní |
 | ---- |:----:|
-| Koncept kanálu | Experiment |
+| Koncept kanálu | Začátku |
 | Koncový bod v reálném čase | Webová služba |
 
 ### <a name="migrating-to-the-designer"></a>Migrace do návrháře

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření pracovního prostoru Azure Databricks pomocí Azure Resource Manageru
-description: Tento rychlý start ukazuje, jak pomocí šablony Azure Resource Manageru vytvořit pracovní prostor Azure Databricks a cluster Apache Spark a spustit úlohu Spark.
+title: Rychlý Start – vytvoření pracovního prostoru Azure Databricks pomocí Azure Resource Manageru
+description: V tomto rychlém startu se dozvíte, jak použít šablonu Azure Resource Manager k vytvoření pracovního prostoru Azure Databricks, vytvoření clusteru Apache Spark a spuštění úlohy Sparku.
 services: azure-databricks
 ms.service: azure-databricks
 author: mamccrea
@@ -10,24 +10,24 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 83dc18424bc8606eff9a735b76cdaa09e381d588
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2fbe1e91204df7901b4ac3ccfdcd323304b2ce3c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129354"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706169"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Rychlý start: Spuštění úlohy Spark v Azure Databricks pomocí šablony Azure Resource Manageru
 
 V tomto rychlém startu použijete šablonu Azure Resource Manager k vytvoření pracovního prostoru Azure Databricks s Apache Sparkm clusterem. Úlohu spustíte v clusteru a pomocí vlastních grafů můžete vytvořit sestavy v reálném čase z bezplatného nebo placeného využití na základě demografických údajů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlásit se na [Azure Portal](https://portal.azure.com). 
+Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 
 > [!Note]
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
@@ -182,7 +182,7 @@ Po dokončení tohoto článku můžete cluster ukončit. Pokud to chcete uděla
 
 ![Zastavení clusteru datacihly](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "Zastavení clusteru datacihly")
 
-Pokud se cluster automaticky zastaví neukončíte ručně, k dispozici, jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. V takovém případě se cluster automaticky zastaví, pokud byl po stanovenou dobu neaktivní.
+Pokud cluster neukončíte ručně, zastaví se automaticky a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_\_ minut při nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po stanovenou dobu neaktivní.
 
 ## <a name="next-steps"></a>Další kroky
 

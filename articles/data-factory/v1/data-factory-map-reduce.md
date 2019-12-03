@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6d32cd12989262ebeaafee60a02bb7ea2a9b1e32
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139297"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703154"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Vyvolat programy MapReduce z Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -39,12 +39,12 @@ ms.locfileid: "70139297"
 Aktivita MapReduce služby HDInsight v [kanálu](data-factory-create-pipelines.md) Data Factory spouští programy MapReduce na [vašem](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight založeném na systému Windows nebo Linux na [vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . Tento článek se sestavuje na článku [aktivity transformace dat](data-factory-data-transformation-activities.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
 
 > [!NOTE] 
-> Pokud s Azure Data Factory začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: Před čtením tohoto článku Sestavte [první datový kanál](data-factory-build-your-first-pipeline.md) .  
+> Pokud se Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: [Vytvoření prvního datového kanálu](data-factory-build-your-first-pipeline.md) před přečtením tohoto článku.  
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 Kanál v datové továrně Azure zpracovává data v propojených službách úložiště pomocí propojených výpočetních služeb. Obsahuje posloupnost aktivit, kde každá aktivita provádí určitou operaci zpracování. Tento článek popisuje použití aktivity HDInsight MapReduce.
 
-Podrobnosti [](data-factory-pig-activity.md) o spouštění [](data-factory-hive-activity.md) skriptů na bázi vepřového a podregistru v clusteru HDInsight se systémem Windows/Linux z kanálu najdete v tématu věnovaném vepřovým sádl a aktivitám podregistru služby HDInsight. 
+Podrobnosti o spouštění skriptů na bázi vepřového a podregistru v clusteru HDInsight se systémem Windows/Linux z kanálu najdete [v tématu věnovaném vepřovým](data-factory-pig-activity.md) sádl a aktivitám podregistru [služby HDInsight](data-factory-hive-activity.md) . 
 
 ## <a name="json-for-hdinsight-mapreduce-activity"></a>JSON pro aktivitu MapReduce služby HDInsight
 V definici JSON aktivity HDInsight: 
@@ -112,7 +112,7 @@ V definici JSON aktivity HDInsight:
    Aktivitu HDInsight MapReduce můžete použít ke spuštění všech souborů JAR MapReduce v clusteru HDInsight. V následující ukázkové definici JSON kanálu je aktivita HDInsight nakonfigurovaná tak, aby spouštěla soubor Mahout JAR.
 
 ## <a name="sample-on-github"></a>Ukázka na GitHubu
-Můžete si stáhnout ukázku pro použití aktivity HDInsight MapReduce z: [Data Factory ukázky na GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  
+Můžete si stáhnout ukázku pro použití aktivity HDInsight MapReduce z: [Data Factory ukázky na GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample).  
 
 ## <a name="running-the-word-count-program"></a>Spuštění programu počet slov
 Kanál v tomto příkladu spustí program pro mapování/zmenšení počtu slov v clusteru Azure HDInsight.   
@@ -250,5 +250,5 @@ Pomocí aktivity MapReduce můžete na svém clusteru HDInsight Spark spouštět
 * [Aktivita prasete](data-factory-pig-activity.md)
 * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 * [Vyvolání programů Spark](data-factory-spark.md)
-* [Vyvolání skriptů jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [Vyvolání skriptů jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

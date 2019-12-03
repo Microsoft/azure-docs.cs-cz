@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622416"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706368"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pro zotavení po havárii pomocí Azure Site Recovery
 
@@ -34,7 +34,7 @@ Můžete se podívat na následující video o obnovování vícevrstvé aplikac
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že rozumíte následujícímu:
 
@@ -65,7 +65,7 @@ Site Recovery je nezávislá aplikace a měl by fungovat s libovolnou verzí Sha
 **Hyper-V** | Ano | Ano
 **VMware** | Ano | Ano
 **Fyzický server** | Ano | Ano
-**Azure** | Není k dispozici | Ano
+**Azure** | není k dispozici | Ano
 
 
 ### <a name="things-to-keep-in-mind"></a>Co je potřeba mít na paměti
@@ -82,7 +82,7 @@ Podle [těchto pokynů](site-recovery-vmware-to-azure.md) spusťte replikaci vir
 
 * Pokyny k ochraně služby Active Directory a DNS najdete v tématu [ochrana služby Active Directory a dokumentu DNS](site-recovery-active-directory.md) .
 
-* Pokyny k ochraně databázových vrstev běžících na SQL serveru najdete v tématu [ochrana SQL Server](site-recovery-active-directory.md) dokumentu.
+* Pokyny k ochraně databázových vrstev běžících na SQL serveru najdete v tématu [ochrana SQL Server](site-recovery-sql.md) dokumentu.
 
 ## <a name="networking-configuration"></a>Konfigurace sítě
 

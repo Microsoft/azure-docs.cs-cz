@@ -1,14 +1,14 @@
 ---
 title: Příklady ovládacích prvků modelu CI Microsoft Azure Foundation srovnávacího testu
 description: Mapování doporučení pro ukázka srovnávacího testu služby CIS Microsoft Azure Foundation pro Azure Policy.
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 55abac9f7479f0ee7d1adddea64cb81a1c7cf2b5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544532"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707426"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Mapování doporučení ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
 
@@ -40,6 +40,12 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 - Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
 - Z předplatného by se měly odebrat externí účty s oprávněními pro zápis
+
+## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1,23 zajistěte, aby nevytvářely žádné vlastní role vlastníka předplatného.
+
+Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou monitorovat vlastní role vlastníků předplatného, které je potřeba odebrat.
+
+- Vlastní role vlastníka předplatného by neměly existovat.
 
 ## <a name="21-ensure-that-standard-pricing-tier-is-selected"></a>2,1 Ujistěte se, že je vybraná cenová úroveň Standard.
 
@@ -243,11 +249,35 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 - Pro databázové servery MySQL by mělo být povoleno připojení SSL vynutilo.
 
+## <a name="412-ensure-server-parameter-log_checkpoints-is-set-to-on-for-postgresql-database-server"></a>4,12 zajistěte, aby parametr serveru ' log_checkpoints ' byl pro databázový server PostgreSQL nastaven na hodnotu ' ON '.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, aby byly kontrolní body protokolu PostgreSQL databázových serverů.
+
+- Pro databázové servery PostgreSQL by měly být povoleny kontrolní body protokolu
+
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4,13 zajistěte, aby se vynutilo připojení SSL u databázového serveru PostgreSQL nastavené na povoleno.
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že databázové servery PostgreSQL vynutily připojení SSL.
 
 - Pro databázové servery PostgreSQL by mělo být povoleno připojení SSL vynutilo.
+
+## <a name="414-ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>4,14 zajistěte, aby parametr serveru ' log_connections ' byl pro databázový server PostgreSQL nastaven na hodnotu ' ON '.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, aby se PostgreSQL databázové servery přihlásily.
+
+- Pro databázové servery PostgreSQL by se měla povolit protokolovat připojení.
+
+## <a name="415-ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>4,15 zajistěte, aby parametr serveru ' log_disconnections ' byl pro databázový server PostgreSQL nastaven na hodnotu ' ON '.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit odpojení protokolů databázových serverů PostgreSQL.
+
+- Odpojení by se měla protokolovat pro databázové servery PostgreSQL.
+
+## <a name="416-ensure-server-parameter-log_duration-is-set-to-on-for-postgresql-database-server"></a>4,16 zajistěte, aby parametr serveru ' log_duration ' byl pro databázový server PostgreSQL nastaven na hodnotu ' ON '.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, aby se databázové servery PostgreSQL do protokolu po dobu trvání dokončených příkazů.
+
+- Doba trvání protokolu by měla být povolená pro PostgreSQL databázové servery.
 
 ## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4,17 zajistěte, aby parametr serveru ' connection_throttling ' byl pro databázový server PostgreSQL nastaven na hodnotu ' ON '.
 
@@ -350,6 +380,71 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že webové aplikace budou přístupné jenom přes zabezpečená připojení.
 
 - Webová aplikace by měla být přístupná jen přes protokol HTTPS
+
+## <a name="93-ensure-web-app-is-using-the-latest-version-of-tls-encryption"></a>9,3 zajistěte, aby webová aplikace používala nejnovější verzi šifrování TLS.
+
+Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby webové aplikace používaly nejnovější verzi TLS.
+
+- V aplikaci API by se měla použít nejnovější verze TLS.
+- V Function App by se měla použít nejnovější verze TLS.
+- Ve vaší webové aplikaci by se měla použít nejnovější verze TLS.
+
+## <a name="94-ensure-the-web-app-has-client-certificates-incoming-client-certificates-set-to-on"></a>9,4 zajistěte, aby webová aplikace měla klientské certifikáty (příchozí klientské certifikáty) nastavené na zapnuto.
+
+Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, že se může připojit k webové aplikaci jenom klienti s platnými certifikáty.
+
+- Zajistěte, aby měla aplikace API pro klientské certifikáty (příchozí klientské certifikáty) nastavené na zapnuto.
+- Zajistěte, aby aplikace Function App měla klientské certifikáty (příchozí klientské certifikáty) nastavené na zapnuto.
+- Zajistěte, aby webová aplikace měla klientské certifikáty (příchozí klientské certifikáty) nastavené na zapnuto.
+
+## <a name="95-ensure-that-register-with-azure-active-directory-is-enabled-on-app-service"></a>9,5 zajistěte, aby byl v App Service povolen registr s Azure Active Directory.
+
+Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby webové aplikace používaly spravovanou identitu.
+
+- Ujistěte se, že v aplikaci API je povolená možnost registrovat v Azure Active Directory.
+- Ujistěte se, že je v Function App povolená možnost registrovat v Azure Active Directory.
+- Zajistěte, aby byl ve webové aplikaci povolený registr s Azure Active Directory.
+
+## <a name="96-ensure-that-net-framework-version-is-the-latest-if-used-as-a-part-of-the-web-app"></a>9,6 zajistěte, aby byla verze rozhraní .NET Framework nejnovější, pokud se používá jako součást webové aplikace.
+
+Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby webové aplikace používaly nejnovější verzi rozhraní .NET Framework.
+
+- Ujistěte se, že verze rozhraní .NET Framework je nejnovější, pokud se používá jako součást aplikace API.
+- Zajistěte, aby byla verze rozhraní .NET Framework nejnovější, pokud se používá jako součást Function App
+- Ujistěte se, že verze rozhraní .NET Framework je nejnovější, pokud se používá jako součást webové aplikace.
+
+## <a name="97-ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>9,7 zajistěte, aby byla verze PHP nejnovější, pokud se používá ke spuštění webové aplikace.
+
+Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby webové aplikace používaly nejnovější verzi PHP.
+
+- Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást aplikace API.
+- Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást aplikace Function App.
+- Zajistěte, aby byla verze PHP nejnovější, pokud se používá jako součást webové aplikace.
+
+## <a name="98-ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>9,8 zajistěte, aby byla nejnovější verze Pythonu, pokud se používá ke spuštění webové aplikace.
+
+Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby webové aplikace používaly nejnovější verzi Pythonu.
+
+- Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást aplikace API.
+- Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást aplikace Function App.
+- Zajistěte, aby byla nejnovější verze Pythonu, pokud se používá jako součást webové aplikace.
+
+## <a name="99-ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>9,9 zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá ke spuštění webové aplikace.
+
+Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby webové aplikace používaly nejnovější verzi Java.
+
+- Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást aplikace API.
+- Zajistěte, aby byla nejnovější verze Java, pokud se používá jako součást aplikace funtion.
+- Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást webové aplikace.
+
+## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9,10 Ujistěte se, že ' HTTP Version ' je nejnovější, pokud se používá ke spuštění webové aplikace
+
+Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby webové aplikace používaly nejnovější verzi http.
+
+- Ujistěte se, že hodnota HTTP verze je nejnovější, pokud se používá ke spuštění aplikace API.
+- Ujistěte se, že hodnota HTTP Version je nejnovější, pokud se používá ke spuštění aplikace Function App.
+- Ujistěte se, že hodnota HTTP verze je nejnovější, pokud se používá ke spuštění webové aplikace.
+
 
 ## <a name="next-steps"></a>Další kroky
 

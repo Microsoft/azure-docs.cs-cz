@@ -1,17 +1,17 @@
 ---
-title: 'Rychlý Start: spuštění aplikace s využitím Maven – jarního cloudu Azure'
-description: Spuštění ukázkové aplikace pomocí Maven
+title: Rychlý Start – spuštění aplikace pomocí Maven s využitím služby Azure Pramenitého cloudu
+description: V tomto rychlém startu spustíte ukázkovou aplikaci pomocí Maven.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1a719b878f3e5fbade3adf453ac7d0604ea85077
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ea840d1e133c213c907e596e5eb0a651820291c9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384084"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708863"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Rychlý Start: spuštění aplikace pro jarní Cloud z Azure pomocí modulu plug-in Maven
 
@@ -33,9 +33,9 @@ Po tomto rychlém startu se dozvíte, jak:
 >[!TIP]
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění příkazů v tomto článku. Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Gitu, sady Java Development Kit (JDK), Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com). Další informace najdete v tématu [přehled Azure Cloud Shell](../cloud-shell/overview.md).
 
-K dokončení tohoto rychlého startu je potřeba:
+K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-1. [Nainstalovat Git](https://git-scm.com/)
+1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalujte JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
 3. [Nainstalujte Maven 3,0 nebo novější](https://maven.apache.org/download.cgi).
 4. [Zaregistrujte si bezplatné předplatné Azure](https://azure.microsoft.com/free/).

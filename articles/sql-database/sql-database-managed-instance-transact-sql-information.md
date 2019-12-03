@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186427"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707646"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -26,10 +26,10 @@ Tento článek shrnuje a vysvětluje rozdíly v syntaxi a chování mezi Azure S
 
 Existují některá omezení PaaS, která se zavádějí do spravované instance, a některé změny chování jsou v porovnání s SQL Server. Rozdíly jsou rozděleny do následujících kategorií:<a name="Differences"></a>
 
-- [Dostupnost](#availability) zahrnuje rozdíly v části [vždy zapnuto](#always-on-availability) a [zálohování](#backup).
+- [Dostupnost](#availability) zahrnuje rozdíly v případě [záloh](#backup)a [skupin dostupnosti Always On](#always-on-availability-groups) .
 - [Zabezpečení](#security) zahrnuje rozdíly v [auditování](#auditing), [certifikáty](#certificates), [přihlašovací údaje](#credential), [zprostředkovatele kryptografických](#cryptographic-providers)služeb, [přihlášení a uživatele](#logins-and-users)a [klíč služby a hlavní klíč služby](#service-key-and-service-master-key).
 - [Konfigurace](#configuration) zahrnuje rozdíly v [rozšíření fondu vyrovnávací paměti](#buffer-pool-extension), [řazení](#collation), [úrovně kompatibility](#compatibility-levels), [zrcadlení databáze](#database-mirroring), [Možnosti databáze](#database-options), [SQL Server agenta](#sql-server-agent)a [Možnosti tabulky](#tables).
-- Mezi [funkce](#functionalities) patří [Bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [distribuované transakce](#distributed-transactions), [Rozšířené události](#extended-events), [externí knihovny](#external-libraries), [FileStream a Souborová](#filestream-and-filetable)vlastnost, [fulltextový zápis. Sémantické vyhledávání](#full-text-semantic-search), [propojené servery](#linked-servers), [základní](#polybase), [replikace](#replication), [obnovení](#restore-statement), [Service Broker](#service-broker), [uložené procedury, funkce a triggery](#stored-procedures-functions-and-triggers).
+- Mezi [funkce](#functionalities) patří [Bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [distribuované transakce](#distributed-transactions), [Rozšířené události](#extended-events), [externí knihovny](#external-libraries), [FileStream a Souborová](#filestream-and-filetable) [sémantika, fulltextové vyhledávání](#full-text-semantic-search), [propojené servery](#linked-servers), [základní](#polybase), [replikace](#replication), [obnovení](#restore-statement), [Service Broker](#service-broker), [uložené procedury, funkce a triggery](#stored-procedures-functions-and-triggers).
 - [Nastavení prostředí](#Environment) , jako jsou například virtuální sítě a konfigurace podsítí.
 
 Většina těchto funkcí je omezení architektury a představuje funkce služby.
@@ -38,7 +38,7 @@ Tato stránka také vysvětluje [dočasné známé problémy](#Issues) , které 
 
 ## <a name="availability"></a>Dostupnost
 
-### <a name="always-on-availability"></a>Vždy zapnuto
+### <a name="always-on-availability-groups"></a>Skupiny dostupnosti Always On
 
 [Vysoká dostupnost](sql-database-high-availability.md) je integrována do spravované instance a nemůže být řízena uživateli. Následující příkazy nejsou podporovány:
 
@@ -95,7 +95,7 @@ Hlavní rozdíly v syntaxi `CREATE AUDIT` pro auditování do úložiště objek
 - K dispozici je nová syntaxe `TO URL`, kterou můžete použít k zadání adresy URL kontejneru úložiště objektů BLOB v Azure, kde jsou umístěné `.xel` soubory.
 - Syntaxe `TO FILE` není podporována, protože spravovaná instance nemůže přistupovat ke sdíleným složkám souborů systému Windows.
 
-Další informace naleznete v tématu: 
+Další informace: 
 
 - [VYTVOŘIT AUDIT SERVERU](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -163,7 +163,7 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
     - Exportujte databázi ze spravované instance a importujte ji do SQL Server (verze 2012 nebo novější).
       - V této konfiguraci jsou všichni uživatelé Azure AD vytvořeni jako objekty SQL Database (uživatelé) bez přihlášení. Typ uživatelů je uveden jako SQL (zobrazený jako SQL_USER v sys. database_principals). Jejich oprávnění a role zůstávají v SQL Server metadatech databáze a lze je použít pro zosobnění. Nedají se ale použít k přístupu k SQL Server a k jejich přihlášení pomocí svých přihlašovacích údajů.
 
-- Pouze hlavní přihlášení na úrovni serveru, které je vytvořeno procesem zřizování spravované instance, členové rolí serveru, například `securityadmin` nebo `sysadmin`, nebo jiná přihlášení s oprávněními změnit libovolné přihlašovací oprávnění na úrovni serveru můžou vytvořit server Azure AD. objekty zabezpečení (přihlášení) v hlavní databázi pro spravovanou instanci.
+- Pouze hlavní přihlášení na úrovni serveru, které je vytvořeno procesem zřizování spravované instance, členové rolí serveru, například `securityadmin` nebo `sysadmin`, nebo jiná přihlášení s oprávněním změnit libovolné přihlašovací údaje na úrovni serveru mohou vytvořit objekty zabezpečení serveru Azure AD (přihlášení) v hlavní databázi pro spravovanou instanci.
 - Pokud je přihlášení objektem zabezpečení SQL, můžou pomocí příkazu CREATE vytvořit přihlašovací údaje pro účet Azure AD jenom přihlášení, která jsou součástí role `sysadmin`.
 - Přihlášení Azure AD musí být členem služby Azure AD v rámci stejného adresáře, který se používá pro Azure SQL Database spravovanou instanci.
 - Objekty zabezpečení serveru Azure AD (přihlášení) se zobrazují v Průzkumník objektů počínaje verzí SQL Server Management Studio 18,0 Preview 5.
@@ -184,14 +184,14 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
 - [Záloha hlavního klíče služby](/sql/t-sql/statements/backup-service-master-key-transact-sql) není podporovaná (spravovaná službou SQL Database).
 - [Obnovení hlavního klíče služby](/sql/t-sql/statements/restore-service-master-key-transact-sql) se nepodporuje (spravuje služba SQL Database).
 
-## <a name="configuration"></a>Konfiguraci
+## <a name="configuration"></a>Konfigurace
 
 ### <a name="buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti
 
 - [Rozšíření fondu vyrovnávací paměti](/sql/database-engine/configure-windows/buffer-pool-extension) se nepodporuje.
 - `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` se nepodporuje. Viz [ALTER Server Configuration](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Kolace
+### <a name="collation"></a>Velké
 
 Výchozí kolace instance je `SQL_Latin1_General_CP1_CI_AS` a lze ji zadat jako parametr vytvoření. Viz [kolace](/sql/t-sql/statements/collations).
 
@@ -299,10 +299,10 @@ Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter
 
 Následující funkce agenta SQL momentálně nejsou podporované:
 
-- Proxy servery
+- Proxy
 - Plánování úloh na nečinném procesoru
 - Povolení nebo zakázání agenta
-- Upozornění
+- Výstrahy
 
 Informace o agentovi SQL Server najdete v tématu [agent SQL Server](/sql/ssms/agent/sql-server-agent).
 
@@ -339,7 +339,7 @@ Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a sl
  - `sp_send_dbmail` nemůže odeslat přílohy pomocí parametru @file_attachments. Tento postup nemá přístup k místnímu systému souborů a externím sdíleným složkám nebo k Azure Blob Storage.
  - Podívejte se na známé problémy související s `@query` parametrem a ověřováním.
  
-### <a name="dbcc"></a>DBCC
+### <a name="dbcc"></a>NÁSTROJI
 
 Neuvedené příkazy DBCC, které jsou povolené v SQL Server nejsou ve spravovaných instancích podporované.
 
@@ -389,7 +389,7 @@ Propojené servery ve spravovaných instancích podporují omezený počet cíl�
 - Propojené servery nepodporují distribuované transakce s možností zápisu (MS DTC).
 - Nepodporované cíle jsou soubory, Analysis Services a další RDBMS. Zkuste použít nativní Import CSV z Azure Blob Storage jako alternativu pro import souborů pomocí `BULK INSERT` nebo `OPENROWSET`.
 
-Operace
+Operations
 
 - Transakce zápisu mezi instancemi nejsou podporované.
 - `sp_dropserver` se podporuje pro vyřazování propojeného serveru. Viz [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
@@ -519,17 +519,17 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 
 ## <a name="Environment"></a>Omezení prostředí
 
-### <a name="subnet"></a>Subnet
+### <a name="subnet"></a>Podsíť
 -  V podsíti, do které jste nasadili spravovanou instanci, nemůžete umístit žádné další prostředky (například virtuální počítače). Nasaďte tyto prostředky pomocí jiné podsítě.
 - Podsíť musí mít dostatečný počet dostupných [IP adres](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimum je 16, ale doporučujeme mít minimálně 32 IP adres v podsíti.
 - [Koncové body služby nelze přidružit k podsíti spravované instance](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Ujistěte se, že je při vytváření virtuální sítě možnost koncové body služby zakázaná.
 - Počet virtuální jádra a typů instancí, které můžete nasadit v oblasti, mají některá [omezení a omezení](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
 - Existují některá [pravidla zabezpečení, která je nutné použít v podsíti](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
-### <a name="vnet"></a>VNET
+### <a name="vnet"></a>SÍTĚ
 - Virtuální síť se dá nasadit pomocí modelu prostředků – model klasický pro virtuální síť se nepodporuje.
 - Po vytvoření spravované instance se nepodporují přesunutí spravované instance nebo virtuální sítě do jiné skupiny prostředků nebo předplatného.
-- Některé služby, jako jsou App Service prostředí, Logic Apps a spravované instance (používané pro geografickou replikaci, transakční replikaci nebo prostřednictvím odkazovaných serverů), nemají přístup ke spravovaným instancím v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globální. partnerský vztah](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
+- Některé služby, jako jsou App Service prostředí, Logic Apps a spravované instance (používané pro geografickou replikaci, transakční replikaci nebo prostřednictvím odkazovaných serverů), nemají přístup ke spravovaným instancím v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globálního partnerského vztahu](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
 
 ### <a name="tempdb"></a>DATABÁZE
 
@@ -569,7 +569,7 @@ Probíhající příkaz `RESTORE`, proces migrace dat a integrované obnovení k
 
 **Datum:** SEP 2019
 
-Funkce [Správce prostředků](/sql/relational-databases/resource-governor/resource-governor) , která umožňuje omezit prostředky přiřazené k úloze uživatele, může po převzetí služeb při selhání nebo na základě uživatelem iniciované změny úrovně služby (například změna maximálního počtu Vcore nebo maximální instance) nesprávně klasifikovat některé uživatelské úlohy. velikost úložiště).
+Funkce [Správce prostředků](/sql/relational-databases/resource-governor/resource-governor) , která umožňuje omezit prostředky přiřazené k uživatelskému zatížení, může nesprávně klasifikovat určitou úlohu uživatelů po převzetí služeb při selhání nebo uživatelem iniciované změny úrovně služby (například změna maximální velikosti úložiště Vcore nebo maximálního počtu instancí).
 
 **Alternativní řešení**: spouštějte `ALTER RESOURCE GOVERNOR RECONFIGURE` pravidelně nebo jako součást úlohy agenta SQL, která SPUSTÍ úlohu SQL, když se instance spouští, pokud používáte [Správce zdrojů](/sql/relational-databases/resource-governor/resource-governor).
 

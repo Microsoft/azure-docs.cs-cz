@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c2ce39c40ad535b4a66349fcbb4529333218555a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512662"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705530"
 ---
-Premium SSD podporuje rozpínání na libovolné velikosti disků < = 512 GiB (P20 nebo nižší). Tyto velikosti disků podporují rozpínání na nejlepší úsilí a využívají systém kreditů ke správě shlukování. Kredity se sčítají v rámci shlukového přenosu vždy, když je přenos disku pod zřízeným cílem výkonu pro velikost disku, a využití kreditů při nárůstu provozu nad rámec cíle. Provoz na disku se sleduje proti vstupně-výstupních operací i šířce pásma v zřízeném cíli.
+Pro prémiové SSD je aktuálně funkce pro vystavování disku ve verzi Preview. Shluking se podporuje u všech velikostí disků SSD úrovně Premium < = 512 GiB (P20 nebo níže). Tyto velikosti disků podporují rozpínání na nejlepší úsilí a využívají systém kreditů ke správě shlukování. Kredity se sčítají v rámci shlukového přenosu vždy, když je přenos disku pod zřízeným cílem výkonu pro velikost disku, a využití kreditů při nárůstu provozu nad rámec cíle. Provoz na disku se sleduje proti vstupně-výstupních operací i šířce pásma v zřízeném cíli.
 
 Při nových nasazení velikosti disků, která ho podporují, je rozšíření disku ve výchozím nastavení povolené. Stávající velikosti disků, pokud podporují shlukování disku, mohou umožňovat roztržení pomocí jedné z následujících metod:
 
@@ -34,7 +34,7 @@ Pokud je disk připojený k virtuálnímu počítači, zahájí se všechny veli
 
 Velikosti disků, které poskytují podporu pro shlukování spolu s specifikacemi shluku, jsou shrnuty v následující tabulce.
 
-## <a name="regional-availability"></a>Regionální dostupnost
+## <a name="regional-availability"></a>Dostupnost podle oblastí
 
 V současné době je shlukování disků dostupné pouze v Středozápadní USA oblasti.
 

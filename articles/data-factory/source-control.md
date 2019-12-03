@@ -5,19 +5,19 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: naF
 ms.topic: conceptual
 ms.date: 01/09/2019
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 264c60c719ffdd94664ae3a85fc67894d14f394d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 904165c4a221e1db30f9aa1ce1f2ce7b21cf04ed
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484451"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703831"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 
@@ -145,7 +145,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 | **Adresa URL GitHubu Enterprise** | Kořenová adresa URL webu GitHub Enterprise Například: https://github.mydomain.com. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v protokolu https:\//GitHub.com/{account Name}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |
 | **Název úložiště**  | Název vašeho úložiště kódu GitHubu Účty GitHubu obsahují úložiště Git pro správu zdrojového kódu. Můžete vytvořit nové úložiště nebo použít existující úložiště, které už máte ve svém účtu. | `<your repository name>` |
-| **Větev pro spolupráci** | Vaše větev pro spolupráci GitHubu, která se používá k publikování. Ve výchozím nastavení se jedná o hlavní server. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch>` |
+| **Větev pro spolupráci** | Vaše větev pro spolupráci GitHubu, která se používá k publikování. Ve výchozím nastavení je to hlavní. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch>` |
 | **Kořenová složka** | Kořenová složka ve větvi spolupráce na GitHubu. |`<your root folder name>` |
 | **Importovat stávající prostředky Data Factory do úložiště** | Určuje, jestli se mají importovat stávající prostředky služby Data Factory z plátna pro vytváření uživatelského rozhraní do úložiště GitHubu. Zaškrtněte políčko pro import prostředků datové továrny do přidruženého úložiště Git ve formátu JSON. Tato akce exportuje jednotlivé prostředky jednotlivě (tj. propojené služby a datové sady jsou exportovány do samostatných JSON). Pokud toto políčko není zaškrtnuté, existující prostředky se neimportují. | Vybráno (výchozí) |
 | **Vytvořit větev pro import prostředku** | Určuje, do které větve se importují prostředky služby Data Factory (kanály, datové sady, propojené služby atd.). Prostředky můžete importovat do jedné z následujících větví: a. Spolupráci b. Vytvořte novou c. Použít existující |  |
@@ -186,7 +186,7 @@ Až budete připraveni sloučit změny z větve funkcí do vaší větve pro spo
 
 ### <a name="configure-publishing-settings"></a>Konfigurovat nastavení publikování
 
-Postup konfigurace větve publikovat – to znamená, že větev, ve které Správce prostředků šablony jsou uloženy – přidejte `publish_config.json` soubor do kořenové složky ve větvi pro spolupráci. Data Factory přečte tento soubor, vyhledá pole `publishBranch`a vytvoří novou větev (Pokud ještě neexistuje) s poskytnutou hodnotou. Pak uloží všechny šablony Správce prostředků do zadaného umístění. Příklad:
+Postup konfigurace větve publikovat – to znamená, že větev, ve které Správce prostředků šablony jsou uloženy – přidejte `publish_config.json` soubor do kořenové složky ve větvi pro spolupráci. Data Factory přečte tento soubor, vyhledá pole `publishBranch`a vytvoří novou větev (Pokud ještě neexistuje) s poskytnutou hodnotou. Pak uloží všechny šablony Správce prostředků do zadaného umístění. Například:
 
 ```json
 {
@@ -236,7 +236,7 @@ Doporučuje se nepovoluje přímá vrácení se změnami do větve pro spoluprá
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Používání hesel z Azure Key Vault
 
-doporučuje se použít Azure Key Vault k uložení připojovacích řetězců nebo hesel pro Data Factory propojené služby. Z bezpečnostních důvodů neuložíme v Gitu žádné tajné informace, takže jakékoli změny propojených služeb se hned publikují do služby Azure Data Factory.
+Doporučuje se použít Azure Key Vault k uložení připojovacích řetězců nebo hesel pro Data Factory propojené služby. Z bezpečnostních důvodů neuložíme v Gitu žádné tajné informace, takže jakékoli změny propojených služeb se hned publikují do služby Azure Data Factory.
 
 Použití Key Vault také usnadňuje průběžnou integraci a nasazování, protože tyto tajné klíče nebude nutné zadávat během Správce prostředkůho nasazení šablony.
 
@@ -251,7 +251,7 @@ Pokud větev publikování není synchronizovaná s hlavní větví a obsahuje z
 1. Odstranit všechny prostředky z vaší větve pro spolupráci
 1. Vytvoření žádosti o přijetí změn, která sloučí změny do větve pro spolupráci 
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 Vyberte **zpětnou vazbu** pro komentář k funkcím nebo upozorněte společnost Microsoft na problémy s nástrojem:
 
 ![Váš názor](media/author-visually/provide-feedback.png)

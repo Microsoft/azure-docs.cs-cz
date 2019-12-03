@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: výuka a nasazení modelu-Machine Learning na Azure IoT Edge'
-description: 'Kurz: Naučte se model strojového učení pomocí Azure Machine Learning a potom tento model zabalit jako image kontejneru, která se dá nasadit jako Azure IoT Edge modul.'
+description: V tomto kurzu vytvoříte model strojového učení pomocí Azure Machine Learning a pak zabalíte model jako image kontejneru, která se dá nasadit jako Azure IoT Edge modul.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8cb3d0329c41256823a66fc3276711c43da61cdd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9c0613d319c0c82fa61d75ed016d68d38dfcea8d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112466"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701827"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Kurz: výuka a nasazení Azure Machine Learningho modelu
 

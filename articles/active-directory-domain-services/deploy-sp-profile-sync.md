@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 90d728ceee0b9a4ed5e5e33805de9358aca6530c
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: a24ff1d5f94a50dc30819e6ab86318592da72e45
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996340"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705210"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Konfigurace Azure Active Directory Domain Services pro podporu synchronizace profilů uživatelů pro server SharePoint
 
@@ -24,7 +24,7 @@ SharePoint Server obsahuje službu pro synchronizaci profilů uživatelů. Tato 
 
 V tomto článku se dozvíte, jak nakonfigurovat službu Azure služba AD DS tak, aby umožňovala službu synchronizace profilů uživatelů serveru SharePoint.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -45,7 +45,7 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 Ve spravované doméně Azure služba AD DS existuje skupina zabezpečení s názvem **účty služby AAD DC** jako součást organizační jednotky *uživatelů* (OU). Členové této skupiny zabezpečení mají delegovaná tato oprávnění:
 
 - **Replikace oprávnění ke změnám adresáře** u KOŘENOVÉho DSEu.
-- **Replikace oprávnění ke změnám adresáře** v názvovém kontextu konfigurace`cn=configuration` (kontejneru).
+- **Replikace oprávnění ke změnám adresáře** v názvovém kontextu *Konfigurace* (`cn=configuration` kontejneru).
 
 Skupina zabezpečení **účty služby AAD DC** je zároveň členem předdefinované skupiny **Pre-Windows 2000 Compatible Access**.
 
@@ -62,7 +62,7 @@ Z virtuálního počítače pro správu Azure služba AD DS proveďte následuj�
 
 1. Z obrazovky Start vyberte **Nástroje pro správu**. Zobrazí se seznam dostupných nástrojů pro správu, které byly nainstalovány v tomto kurzu, aby bylo možné [vytvořit virtuální počítač pro správu][tutorial-create-management-vm].
 1. Pokud chcete spravovat členství ve skupině, vyberte **Centrum správy služby Active Directory** ze seznamu nástrojů pro správu.
-1. V levém podokně vyberte spravovanou doménu Azure služba AD DS, například *contoso.com*. Zobrazí se seznam existujících organizačních jednotek a prostředků.
+1. V levém podokně vyberte spravovanou doménu Azure služba AD DS, například *aadds.contoso.com*. Zobrazí se seznam existujících organizačních jednotek a prostředků.
 1. Vyberte organizační jednotku **uživatelů** a pak zvolte skupinu zabezpečení *AAD DC Service Accounts* .
 1. Vyberte **Členové**a pak zvolte **Přidat...** .
 1. Zadejte název účtu služby SharePoint a pak vyberte **OK**. V následujícím příkladu má účet služby SharePoint název *SPAdmin*:

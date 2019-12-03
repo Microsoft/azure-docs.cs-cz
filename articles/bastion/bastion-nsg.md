@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24279ff81daf0a350aa5234e78f27a99b7e4a03e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4b64c420290bec687388690f1c901c2ae789a3c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528021"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707554"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Práce s NSG přístupem a Azure bastionu
 
@@ -58,7 +58,7 @@ Pokud vytvoříte a použijete NSG na ***AzureBastionSubnet***, ujistěte se, ž
 * **Protokolování diagnostiky a další:** Odchozí na 443 až AzureCloud. Regionální značky v této značce služby se zatím nepodporují.
 * **Cílový virtuální počítač:** Odchozí pro 3389 a 22 až VirtualNetwork
 
-Příklad pravidla NSG je k dispozici pro referenci v této [šabloně pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion).
+Příklad pravidla NSG je k dispozici pro referenci v této [šabloně pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg).
 
 ## <a name="next-steps"></a>Další kroky
 

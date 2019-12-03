@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: výuka & nasazení model-Azure IoT Edge & Machine Learning'
-description: 'Kurz: vytváření a nasazování IoT Edge modulů, které zpracovávají data ze seznamu zařízení prostřednictvím modelu strojového učení, a pak tyto přehledy odesílají IoT Hub.'
+title: 'Kurz: vytvoření a nasazení vlastních modulů – Machine Learning v Azure IoT Edge'
+description: V tomto kurzu se dozvíte, jak vytvářet a nasazovat IoT Edge moduly, které zpracovávají data z listových zařízení prostřednictvím modelu strojového učení, a pak tyto přehledy odesílat do IoT Hub.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 371c897f0b4858a642322ff35a6008edbe9a651d
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664212"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701836"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: vytvoření a nasazení vlastních modulů IoT Edge
 

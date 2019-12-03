@@ -1,6 +1,6 @@
 ---
-title: Zápis C# uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics v aplikaci Visual Studio (Preview)
-description: Naučte se psát uživatelsky definované funkce c# pro úlohy Stream Analytics v aplikaci Visual Studio.
+title: Kurz – zápis C# uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics v aplikaci Visual Studio (Preview)
+description: V tomto kurzu se dozvíte, jak psát funkce definované uživatelem v jazyce c# pro úlohy Stream Analytics v aplikaci Visual Studio.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d6cf420c8baceb243e8c4d70c8bcbc95ec626c3a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: d600c891f35a0719012707bdc2cb45101e14e090
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990243"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707349"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Kurz: zápis C# uživatelsky definované funkce pro Azure Stream Analytics úlohy (Preview)
 

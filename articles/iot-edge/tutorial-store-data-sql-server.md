@@ -1,6 +1,6 @@
 ---
-title: Kurz ukládání dat s modulem SQL – Azure IoT Edge | Dokumentace Microsoftu
-description: Zjistěte, jak místně ukládat data na zařízení IoT Edge pomocí modulu SQL Serveru.
+title: Kurz – ukládání dat pomocí modulu SQL pomocí Azure IoT Edge
+description: V tomto kurzu se dozvíte, jak místně ukládat data na zařízení IoT Edge pomocí modulu SQL Server
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -9,18 +9,18 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5a3133100621cee2e786c4001df02f2316b1e4ec
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: dc8e3e92a9b843291643fe3a43092a6ac9b9c7cb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457062"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701917"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Ukládání dat na hraničních zařízeních s využitím databází SQL Serveru
 
 Nasaďte modul SQL Server pro ukládání dat do zařízení se systémem Linux se systémem Azure IoT Edge.
 
-Pomocí Azure IoT Edge a SQL Serveru můžete ukládat a dotazovat data na hraničních zařízeních. Azure IoT Edge má schopnosti základní úložiště do mezipaměti zprávy, pokud zařízení přejde do režimu offline a potom je předejte, když se obnoví připojení. Můžete však chtít pokročilejší možnosti úložiště, jako je možnost dotazovat data místně. Vaše zařízení IoT Edge můžou pomocí místních databází provádět složitější výpočetní prostředí, aniž by bylo nutné navázání připojení k IoT Hub. 
+Pomocí Azure IoT Edge a SQL Serveru můžete ukládat a dotazovat data na hraničních zařízeních. Azure IoT Edge má základní možnosti úložiště pro ukládání zpráv do mezipaměti, pokud zařízení přejde do režimu offline a pak je přepošle po opětovném vytvoření připojení. Můžete však chtít pokročilejší možnosti úložiště, jako je možnost dotazovat data místně. Vaše zařízení IoT Edge můžou pomocí místních databází provádět složitější výpočetní prostředí, aniž by bylo nutné navázání připojení k IoT Hub. 
 
 Tento článek obsahuje pokyny k nasazení databáze SQL Serveru do zařízení IoT Edge. Služba Azure Functions spuštěná na zařízení IoT Edge strukturuje příchozí data a pak je odesílá do databáze. Kroky v tomto článku je možné použít i pro další databáze, které fungují v kontejnerech, jako je MySQL nebo PostgreSQL.
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky: 
 
@@ -228,7 +228,7 @@ V současné době Visual Studio Code může vyvíjet moduly C pro zařízení s
 
 8. Zavřete soubor **Deployment. template. JSON** .
 
-## <a name="build-your-iot-edge-solution"></a>Sestavení řešení IoT Edge
+## <a name="build-your-iot-edge-solution"></a>Vytvoření řešení IoT Edge
 
 V předchozích částech jste vytvořili řešení s jedním modulem a pak jste přidali další modul do šablony manifestu nasazení. Modul SQL Server je veřejně hostovaný Microsoftem, ale je potřeba kontejnerizace kód v modulu Functions. V této části sestavíte řešení, vytvoříte image kontejneru pro modul sqlFunction a nahrajete image do registru kontejneru. 
 
@@ -244,7 +244,7 @@ V předchozích částech jste vytvořili řešení s jedním modulem a pak jste
 
 2. V průzkumníku VS Code klikněte pravým tlačítkem na soubor **deployment.template.json** a vyberte **Build and Push IoT Edge solution** (Vytvořit a odeslat řešení IoT Edge). 
 
-Když Visual Studio Code vystavíte řešení, nejprve převezme informace v šabloně nasazení a vygeneruje soubor Deployment. JSON v nové složce s názvem **config**. Potom spustí dva příkazy v integrovaném terminálu: `docker build` a `docker push`. Tyto dva příkazy vytváření kódu, kontejnerizace modulu a potom nasdílejte kód do registru kontejneru, který jste zadali při inicializaci řešení. 
+Když Visual Studio Code vystavíte řešení, nejprve převezme informace v šabloně nasazení a vygeneruje soubor Deployment. JSON v nové složce s názvem **config**. Potom spustí dva příkazy v integrovaném terminálu: `docker build` a `docker push`. Tyto dva příkazy sestaví kód, kontejnerizace modul a pak nahrajte kód do registru kontejneru, který jste zadali při inicializaci řešení. 
 
 Můžete ověřit, zda byl modul sqlFunction úspěšně vložen do registru kontejneru. V Azure Portal přejděte do registru kontejneru. Vyberte **úložiště** a vyhledejte **sqlFunction**. Ostatní dva moduly, SimulatedTemperatureSensor a SQL, se do registru kontejnerů nevloží, protože už odkazujete na úložiště v registrech Microsoft Registry.
 
@@ -262,7 +262,7 @@ Moduly na zařízení můžete nastavit prostřednictvím služby IoT Hub, ale p
 
 Pokud nasazení proběhne úspěšně, ve výstupu VS Code se zobrazí potvrzovací zpráva. 
 
-Aktualizujte stav vašeho zařízení v části zařízení Azure IoT Hub VS Code. V seznamu jsou uvedené nové moduly, které se při instalaci a spuštění kontejnerů začnou nahlásit jako spuštěné v několika dalších minutách. Můžete také zkontrolovat, jestli jsou na vašem zařízení zprovozněné všechny moduly. Spuštěním následujícího příkazu na vašem zařízení IoT Edge zobrazte stav modulů. 
+Aktualizujte stav zařízení v části VS Code IoT Hub zařízení Azure. V seznamu jsou uvedené nové moduly, které se při instalaci a spuštění kontejnerů začnou nahlásit jako spuštěné v několika dalších minutách. Můžete také zkontrolovat, jestli jsou na vašem zařízení zprovozněné všechny moduly. Spuštěním následujícího příkazu na vašem zařízení IoT Edge zobrazte stav modulů. 
 
    ```cmd/sh
    iotedge list
@@ -272,9 +272,9 @@ Aktualizujte stav vašeho zařízení v části zařízení Azure IoT Hub VS Cod
 
 Když pro své zařízení použijete manifest nasazení, získáte tři spuštěné moduly. Modul SimulatedTemperatureSensor generuje Simulovaná data prostředí. Modul sqlFunction přebírá data a formátuje je pro databázi. Tato část vás provede nastavením databáze SQL pro ukládání údajů o teplotě. 
 
-Spusťte následující příkazy na zařízení IoT Edge. Tyto příkazy se připojí k modulu **SQL** běžícímu na vašem zařízení a vytvoří databázi a tabulku pro ukládání dat o teplotě, která se do ní odesílají. 
+Na zařízení IoT Edge spusťte následující příkazy. Tyto příkazy se připojí k modulu **SQL** běžícímu na vašem zařízení a vytvoří databázi a tabulku pro ukládání dat o teplotě, která se do ní odesílají. 
 
-1. V nástroji příkazového řádku na vašem zařízení IoT Edge připojení k vaší databázi. 
+1. V nástroji příkazového řádku na zařízení IoT Edge se připojte k databázi. 
       ```bash
       sudo docker exec -it sql bash
       ```
@@ -312,7 +312,7 @@ Spuštěním následujícího příkazu v nástroji příkazového řádku SQL z
    GO
    ```
 
-   ![Zobrazit obsah z místní databáze](./media/tutorial-store-data-sql-server/view-data.png)
+   ![Zobrazit obsah místní databáze](./media/tutorial-store-data-sql-server/view-data.png)
 
 
 

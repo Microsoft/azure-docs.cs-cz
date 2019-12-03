@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b85c5c6c5642d10c8d917ed9785d0fcf48a5e68
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5d4bdd554fb7c8817ada80a294f3ecb1c6c85b00
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554130"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707036"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -246,7 +246,7 @@ Uživatelé v této roli můžou číst nastavení a informace pro správu např
 > Tyto funkce jsou momentálně ve vývoji.
 >
 
-### <a name="group-administratorgroup-administrator"></a>[Správce skupiny](#group-administrator)
+### <a name="group-administratorgroup-administrator-permissions"></a>[Správce skupiny](#group-administrator-permissions)
 
 Uživatelé v této roli můžou vytvářet a spravovat skupiny a její nastavení, jako jsou zásady pro pojmenování a vypršení platnosti. Je důležité pochopit, že přiřazení uživatele k této roli dává možnost spravovat všechny skupiny v tenantovi napříč různými úlohami, jako jsou týmy, SharePoint, Yammer kromě Outlooku. Uživatel bude také moci spravovat různá nastavení skupin na různých portálech pro správu, jako je například centrum pro správu Microsoft, Azure Portal a také konkrétní úlohy, jako jsou týmy a centra pro správu služby SharePoint.
 
@@ -279,7 +279,9 @@ Tato role se dřív nazývala "správce hesel" ve [Azure Portal](https://portal.
 
 ### <a name="intune-administratorintune-service-administrator-permissions"></a>[Správce Intune](#intune-service-administrator-permissions)
 
-Uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Intune online, pokud je tato služba k dispozici. Kromě toho tato role obsahuje možnost spravovat uživatele a zařízení, aby bylo možné přidružit zásady, a také vytvářet a spravovat skupiny. Další informace najdete v [řízení správy na základě rolí (RBAC) pomocí Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
+Uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Intune online, pokud je tato služba k dispozici. Kromě toho tato role obsahuje možnost spravovat uživatele a zařízení, aby bylo možné přidružit zásady, a také vytvářet a spravovat skupiny. Další informace najdete v [rámci řízení správy na základě rolí (RBAC) pomocí Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control).
+
+Tato role může vytvářet a spravovat všechny skupiny zabezpečení. Správce Intune ale nemá oprávnění správce přes skupiny Office. To znamená, že správce nemůže aktualizovat vlastníky ani členství všech skupin Office v tenantovi. Může ale spravovat skupinu Office, kterou vytvoří, která je součástí svých oprávnění koncových uživatelů. Všechny skupiny Office (nikoli skupina zabezpečení), které vytvoří, by se měly počítat s kvótou 250.
 
 > [!NOTE]
 > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell je tato role označená jako "Správce služby Intune". Ve [Azure Portal](https://portal.azure.com)je to správce Intune.
@@ -1081,8 +1083,8 @@ Může číst vše, co globální správce může, ale ne nic upravovat.
 | Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
 | Microsoft. Office 365. WebPort/allEntities/Standard/Read   | Načte standardní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
-### <a name="group-administrator"></a>Správce skupiny
-Může spravovat všechny aspekty skupin a nastavení skupiny, jako jsou zásady pojmenování a vypršení platnosti.
+### <a name="group-administrator-permissions"></a>Oprávnění správce skupiny
+Může spravovat všechny aspekty skupin a nastavení skupiny, jako jsou zásady pro pojmenování a vypršení platnosti.
 
 | **Akce** | **Popis** |
 | --- | --- |

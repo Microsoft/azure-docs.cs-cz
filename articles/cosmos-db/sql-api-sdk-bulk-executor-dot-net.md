@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/24/2019
+ms.date: 12/02/2019
 ms.author: ramkris
-ms.openlocfilehash: b6685f8524dc1f3ac080abe81389d091c7cf6f1b
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 2d573d329ad27a4801c091d0dcfb10c5f530169f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306749"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707272"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna hromadného prováděcího modulu .NET: informace o stažení 
 
@@ -72,6 +72,10 @@ ms.locfileid: "74306749"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0 – Preview
 
 * Přidání .NET Standard 2,0 jako jedné z podporovaných cílových rozhraní umožňuje, aby knihovna hromadného prováděcího modulu fungovala s aplikacemi .NET Core.
+
+### <a name="a-name186186"></a><a name="1.8.6"/>1.8.6
+
+* MongoBulkExecutor nyní implementuje rozhraní IDisposable a očekává se, že bude po použití uvolněn.
 
 ### <a name="a-name185185"></a><a name="1.8.5"/>1.8.5
 

@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: e33a7a1360a837df08725b2e592973b465dff38c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4443d1117d0dd08cbe2fe89b8ca8465c0c7083f8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954224"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706942"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Začínáme s identitou modulu IoT Hub a modulem s dvojitou identitou (C)
 
@@ -31,13 +31,13 @@ Na konci tohoto kurzu máte dvě aplikace C:
 > [!NOTE]
 > Informace o sadách Azure IoT SDK, které můžete použít k vytváření aplikací pro spouštění na zařízeních a back-endu vašeho řešení, najdete v tématu sady [SDK Azure IoT](iot-hub-devguide-sdks.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si [bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/) vytvořit během několika minut.)
 
 * Nejnovější [sada SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -190,7 +190,9 @@ V této části vytvoříte aplikaci v jazyce C na simulovaném zařízení, kte
 
     ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **Vytvoření aplikace UpdateModuleTwinReportedProperties** Do horní části souboru **program.cs** přidejte následující příkazy `using`:
+2. **Vytvoření aplikace UpdateModuleTwinReportedProperties**
+   
+   Do souboru jazyka C přidejte následující:
 
     ```C
     #include <stdio.h>

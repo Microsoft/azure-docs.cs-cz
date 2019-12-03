@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: b6941a159c8be9f7d1921dd281f7366b078b30a7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546269"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705280"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurace omezeného delegování protokolu Kerberos (KCD) v Azure Active Directory Domain Services
 
@@ -56,7 +56,7 @@ KCD na základě prostředků se konfiguruje pomocí PowerShellu. Rutiny [set-AD
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Konfigurace KCD na základě prostředků pro účet počítače
 
-V tomto scénáři předpokládáme, že máte webovou aplikaci, která běží na počítači s názvem *Contoso-WebApp.contoso.com*. Webová aplikace potřebuje přístup k webovému rozhraní API, které běží na počítači s názvem *Contoso-API.contoso.com* v kontextu doménových uživatelů. Pro konfiguraci tohoto scénáře proveďte následující kroky:
+V tomto scénáři předpokládáme, že máte webovou aplikaci, která běží na počítači s názvem *Contoso-WebApp.aadds.contoso.com*. Webová aplikace potřebuje přístup k webovému rozhraní API, které běží na počítači s názvem *Contoso-API.aadds.contoso.com* v kontextu doménových uživatelů. Pro konfiguraci tohoto scénáře proveďte následující kroky:
 
 1. [Vytvořte vlastní organizační jednotku](create-ou.md). Můžete delegovat oprávnění ke správě této vlastní organizační jednotky pro uživatele v rámci spravované domény Azure služba AD DS.
 1. [Doména se připojí k virtuálním počítačům][create-join-windows-vm], které používají webovou aplikaci, a tu, která spouští webové rozhraní API, do spravované domény Azure služba AD DS. Vytvořte tyto účty počítačů ve vlastní organizační jednotce z předchozího kroku.
@@ -67,8 +67,8 @@ V tomto scénáři předpokládáme, že máte webovou aplikaci, která běží 
 1. Nakonec nakonfigurujte KCD založené na prostředku pomocí rutiny [set-ADComputer][Set-ADComputer] prostředí PowerShell. Z virtuálního počítače pro správu připojeného k doméně a přihlášený jako uživatelský účet, který je členem skupiny *Azure AD DC Administrators* , spusťte následující rutiny. Zadejte vlastní názvy počítačů podle potřeby:
     
     ```powershell
-    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.contoso.com
-    Set-ADComputer contoso-api.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aadds.contoso.com
+    Set-ADComputer contoso-api.aadds.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>Konfigurace KCD založených na prostředcích pro uživatelský účet

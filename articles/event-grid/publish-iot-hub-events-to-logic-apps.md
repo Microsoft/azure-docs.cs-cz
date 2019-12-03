@@ -1,18 +1,18 @@
 ---
 title: Kurz – použití událostí IoT Hub k aktivaci Azure Logic Apps
-description: Kurz – použití služby Směrování událostí Azure Event Grid, vytváření automatizovaných procesů k provádění Azure Logic Apps akcí na základě IoT Hubch událostí.
+description: V tomto kurzu se dozvíte, jak používat službu Směrování událostí Azure Event Grid, vytvářet automatizované procesy pro provádění Azure Logic Apps akcí na základě IoT Hubch událostí.
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
-ms.openlocfilehash: 70ad74715446a54605a23a049ebc92a81d7ee673
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 334b7b2c59b328e8eff3c7c2b9c3ed46bffc3442
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423777"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706441"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Kurz: odesílání e-mailových oznámení o událostech Azure IoT Hub pomocí Event Grid a Logic Apps
 
@@ -20,7 +20,7 @@ Azure Event Grid vám umožňuje reagovat na události ve službě IoT Hub aktiv
 
 Tento článek vás provede ukázkovou konfigurací, která používá IoT Hub a Event Grid. Na konci máte aplikaci logiky Azure nastavenou k odeslání e-mailu s oznámením pokaždé, když se do služby IoT Hub přidá zařízení. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * E-mailový účet od jakéhokoliv poskytovatele e-mailu podporovaného v Azure Logic Apps, jako je Office 365 Outlook, Outlook.com nebo Gmail. Tento e-mailový účet se používá k posílání oznámení o událostech. Úplný seznam podporovaných konektorů aplikace logiky najdete v článku [Přehled konektorů](https://docs.microsoft.com/connectors/).
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
@@ -42,7 +42,7 @@ Nejdřív vytvořte aplikaci logiky a přidejte Trigger služby Event Grid, kter
 
    ![Pole pro vytvoření aplikace logiky](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 1. Po vytvoření prostředku přejděte do aplikace logiky. Provedete to tak, že vyberete **skupiny prostředků**a pak vyberete skupinu prostředků, kterou jste pro tento kurz vytvořili. Pak v seznamu prostředků Najděte aplikaci logiky a vyberte ji. 
 
@@ -218,7 +218,7 @@ Otestujte si aplikaci logiky vytvořením nového zařízení, aby se aktivoval 
 
 3. Pro **ID zařízení** zadejte `Building1_Floor1_Room1_Light`.
 
-4. Vyberte **Uložit**. 
+4. Vyberte **Save** (Uložit). 
 
 5. Můžete přidat více zařízení s různými ID a otestovat filtry odběrů událostí. Zkuste tyto příklady: 
 

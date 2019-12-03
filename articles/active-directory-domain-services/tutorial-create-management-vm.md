@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172320"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703636"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Vytvoření virtuálního počítače pro správu pro konfiguraci a správu spravované domény Azure Active Directory Domain Services
 
@@ -105,7 +105,7 @@ Pokud chcete nainstalovat nástroje pro správu služby Active Directory do virt
 1. V podokně *řídicí panel* v okně **Správce serveru** vyberte **Přidat role a funkce**.
 1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí*vyberte **Další**.
 1. Pro *typ instalace*ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
-1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.contoso.com*, a pak vyberte **Další**.
+1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.aadds.contoso.com*, a pak vyberte **Další**.
 1. Na stránce **role serveru** klikněte na **Další**.
 1. Na stránce **funkce** rozbalte uzel **Nástroje pro vzdálenou správu serveru** a potom rozbalte uzel **Nástroje pro správu rolí** .
 
@@ -125,7 +125,7 @@ S nainstalovanými nástroji pro správu se podívejme, jak je použít ke sprá
     ![Seznam nástrojů pro správu nainstalovaných na serveru](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. Vyberte **Centrum správy služby Active Directory**.
-1. Pokud chcete prozkoumat spravovanou doménu Azure služba AD DS, v levém podokně vyberte název domény, například *contoso.com*. Dva kontejnery s názvem *počítače AADDC* a *Uživatelé AADDC* jsou v horní části seznamu.
+1. Pokud chcete prozkoumat spravovanou doménu Azure služba AD DS, v levém podokně vyberte název domény, například *aadds.contoso.com*. Dva kontejnery s názvem *počítače AADDC* a *Uživatelé AADDC* jsou v horní části seznamu.
 
     ![Výpis dostupných kontejnerů část spravované domény Azure služba AD DS](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

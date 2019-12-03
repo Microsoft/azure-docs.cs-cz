@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646133"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708670"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Průběžná integrace a nasazování pro Azure SQL Data Warehouse
 
@@ -25,12 +25,8 @@ V tomto jednoduchém kurzu se naučíte integrovat projekt databáze SSDT (SQL S
 
 - Projděte si [kurz integrace správy zdrojového kódu](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
 
-- Vytvoření agenta s místním [hostováním](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops#install) , který má nainstalované služby SSDT preview (16,3 Preview 2 a novější) pro SQL Data Warehouse (Preview)
-
 - Nastavení a připojení k Azure DevOps
 
-  > [!NOTE]
-  > SSDT je aktuálně ve verzi Preview, kde budete potřebovat využít samoobslužného agenta. Agenti s hostováním Microsoftu budou aktualizováni během několika následujících měsíců.
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Průběžná integrace se sestavením sady Visual Studio
 
@@ -49,13 +45,13 @@ V tomto jednoduchém kurzu se naučíte integrovat projekt databáze SSDT (SQL S
 V tomto okamžiku máte jednoduché prostředí, kde jakékoli vrácení se změnami do hlavní větve úložiště správy zdrojových kódů by mělo automaticky aktivovat úspěšné sestavení databázového projektu sady Visual Studio. Ověřte, že automatizace pracuje na konci, tím, že provedete změnu v projektu místní databáze a zkontrolujete, že se změní na hlavní větev.
 
 
-## <a name="continuous-deployment-with-the-azure-sql-database-deployment-task"></a>Průběžné nasazování pomocí úlohy nasazení Azure SQL Database
+## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Průběžné nasazování s úlohou nasazení Azure SQL Data Warehouse (nebo databáze)
 
-1. Přidejte nový úkol pomocí [úlohy nasazení Azure SQL Database](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) a vyplňte požadovaná pole pro připojení k cílovému datovému skladu. Při spuštění této úlohy je DACPAC vygenerovaný z předchozího procesu sestavení nasazen do cílového datového skladu.
+1. Přidejte nový úkol pomocí [úlohy nasazení Azure SQL Database](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) a vyplňte požadovaná pole pro připojení k cílovému datovému skladu. Při spuštění této úlohy je DACPAC vygenerovaný z předchozího procesu sestavení nasazen do cílového datového skladu. Můžete také použít [úlohu nasazení Azure SQL DataWarehouse](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) . 
 
       ![Úloha nasazení](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Úloha nasazení")
 
-2. Při použití agenta s vlastním hostováním se ujistěte, že jste nastavili proměnnou prostředí tak, aby pro SQL Data Warehouse používala správný soubor SqlPackage. exe. Cesta by měla vypadat přibližně takto:
+2. Pokud používáte samoobslužného agenta, ujistěte se, že jste nastavili proměnnou prostředí tak, aby pro SQL Data Warehouse používala správný soubor SqlPackage. exe. Cesta by měla vypadat přibližně takto:
 
       ![Proměnná prostředí](media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Proměnná prostředí")
 

@@ -10,14 +10,14 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f8a83fccefe3310fe1a582ef44d72cfbef7e9469
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1320448b88fa3851196a3dfcb3107921721d364d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133083"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707685"
 ---
-# <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
+# <a name="what-is-automated-machine-learning"></a>Co je automatizované strojové učení?
 
 Automatizované strojové učení, označované také jako automatizovaná ML, je proces automatizace časově náročného a iterativních úkolů vývoje modelů strojového učení. Umožňuje datovým vědcům, analytikům a vývojářům vytvářet modely ML s vysokým škálováním, efektivitou a produktivitou, a přitom udržuje kvalitu modelu. Automatizované ML je založené na převratcích z našeho [oddělení Microsoft Research](https://arxiv.org/abs/1705.05355).
 
@@ -98,7 +98,7 @@ K dispozici jsou také další rozšířené předzpracování a featurization, 
 
 + Azure Machine Learning Studio: [pomocí těchto kroků](how-to-create-portal-experiments.md)v části **spuštění konfigurace** vyberte **Nastavení zobrazení featurization** .
 
-+ Python SDK: určení `"feauturization": auto' / 'off' / FeaturizationConfig` pro [třídu`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
++ Python SDK: určení `"feauturization": auto' / 'off' / FeaturizationConfig` pro [třídu`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py).
 
 
 ## <a name="time-series-forecasting"></a>Předvídání časových řad

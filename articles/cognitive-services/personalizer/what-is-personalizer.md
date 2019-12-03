@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467184"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707951"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
-Přizpůsobování Azure je cloudová služba API, která umožňuje vybrat nejlepší prostředí pro zobrazování vašich uživatelů a seznámit se s jejich celkovým chováním v reálném čase.
+Přizpůsobování Azure je cloudová služba API, která umožňuje vaší aplikaci vybrat si nejlepší prostředí, které se uživatelům zobrazí, a seznámit se s nimi na základě jejich společného chování v reálném čase.
 
 * Poskytněte informace o uživatelích a obsahu a dostanete nejvyšší akci pro zobrazení uživatelů. 
 * Před použitím přizpůsobeného přizpůsobování nemusíte data čistit a označovat.
@@ -60,8 +60,8 @@ Přizpůsobování není služba pro uchovávání a správu informací o profil
 
 Služba pro přizpůsobení má dvě rozhraní API:
 
-* Odeslat informace o vašich uživatelích a obsahu (_akcích_ _) pro_přizpůsobení. Přizpůsobuje odezvu na horní akci.
-* Pošlete nám svůj názor na vlastní informace o tom, jak dobře se hodnocení vypracovalo jako [skóre odměňování](concept-rewards.md). 
+* *Pořadí*: pomocí rozhraní API řazení určete, která _Akce_ se má zobrazit v aktuálním _kontextu_. Akce se odesílají jako pole objektů JSON s ID a informacemi (_funkcemi_) o každé z nich. kontext je odeslán jako jiný objekt JSON. Rozhraní API Vrátí actionId, které by měla aplikace vykreslovat uživateli.
+* *Odměna*: když uživatel komunikuje s vaší aplikací, měříte, jak dobře se přizpůsobení pracovalo jako číslo mezi 0 a 1 a pošle ho jako [skóre odměňování](concept-rewards.md). 
 
 ![Základní sekvence událostí pro přizpůsobení](media/what-is-personalizer/personalization-intro.png)
 

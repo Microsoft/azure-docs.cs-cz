@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: ad96d0a04b03e070a7108832370749377d723826
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821762"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707652"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Obnovení databáze SQL ve spravované instanci k předchozímu bodu v čase
 
@@ -58,7 +58,7 @@ Obnovte stávající databázi do stejné instance pomocí Azure Portal, PowerSh
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 2. Přejít do spravované instance a vybrat databázi, kterou chcete obnovit.
 3. Na stránce databáze vyberte **obnovit** :
 
@@ -230,7 +230,7 @@ az sql midb delete -g mygroupname --mi myinstancename -n mymanageddbname
 Připojte se přímo ke spravované instanci a spusťte SQL Server Management Studio. Pak spusťte následující dotaz Transact-SQL (T-SQL). Dotaz změní název obnovené databáze na databázi, kterou máte v úmyslu přepsat.
 
 ```sql
-ALTER WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
+ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 ```
 
 Pro připojení k databázi ve spravované instanci použijte jednu z následujících metod:

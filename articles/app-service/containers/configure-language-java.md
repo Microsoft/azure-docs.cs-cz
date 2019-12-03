@@ -6,20 +6,20 @@ author: bmitchell287
 manager: barbkess
 ms.devlang: java
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a3e0bbb414dd1f47e70de6b7a25a84a2b27c0dc7
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
-ms.translationtype: HT
+ms.openlocfilehash: edb8f25ff1e4fa01e905c3ae5c7d0ec7ab58f8bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671861"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705941"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
-Azure App Service v systému Linux umožňuje vývojářům v jazyce Java rychle sestavit, nasadit a škálovat zabalené webové aplikace v jazyce Java Standard (SE) na plně spravovanou službu se systémem Linux. Nasaďte aplikace pomocí modulů plug-in Maven z příkazového řádku nebo v editorech, jako je IntelliJ, zatmění nebo Visual Studio Code.
+Azure App Service v systému Linux umožňuje vývojářům Java rychle sestavovat, nasazovat a škálovat své Tomcat, WildFly nebo Java Standard Edition (SE) zabalené webové aplikace na plně spravovanou službu se systémem Linux. Nasaďte aplikace pomocí modulů plug-in Maven z příkazového řádku nebo v editorech, jako je IntelliJ, zatmění nebo Visual Studio Code.
 
 Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v jazyce Java, kteří používají integrovaný kontejner Linux v nástroji App Service. Pokud jste Azure App Service nikdy nepoužili, postupujte nejprve podle kurzu [Java Starter](quickstart-java.md) a [Java with PostgreSQL](tutorial-java-enterprise-postgresql-app.md) .
 
@@ -50,7 +50,7 @@ Další informace najdete v tématu [protokoly streamování v Cloud Shell](../t
 
 ### <a name="app-logging"></a>Protokolování aplikace
 
-Povolte [protokolování aplikací](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Home/LogFiles/Application/* .
+Povolte [protokolování aplikací](../troubleshoot-diagnostic-logs.md?toc=/azure/app-service/containers/toc.json#enable-application-logging-windows) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Home/LogFiles/Application/* .
 
 Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tato trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumávání protokolů trasování Java v Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
 
@@ -105,15 +105,15 @@ Použijte [FTPS](../deploy-ftp.md) ke stažení souboru jfr do místního počí
 
 Azure App Service pro Linux podporuje vyladění a přizpůsobení prostřednictvím Azure Portal a CLI. Projděte si následující články s konfigurací webové aplikace specifické pro jazyk Java:
 
-- [Konfigurovat nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
-- [Nastavení vlastní domény](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [Konfigurace vazeb SSL](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [Přidat síť CDN](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Konfigurovat nastavení aplikace](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings)
+- [Nastavení vlastní domény](../app-service-web-tutorial-custom-domain.md?toc=/azure/app-service/containers/toc.json)
+- [Konfigurace vazeb SSL](../configure-ssl-bindings.md?toc=/azure/app-service/containers/toc.json)
+- [Přidat síť CDN](../../cdn/cdn-add-to-web-app.md?toc=/azure/app-service/containers/toc.json)
 - [Konfigurace webu Kudu](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
 ### <a name="set-java-runtime-options"></a>Nastavení možností modulu Java Runtime
 
-Pokud chcete nastavit přidělenou paměť nebo jiné možnosti JVM modulu runtime v prostředích Tomcat a Java SE systémem, vytvořte [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) s názvem `JAVA_OPTS` s možnostmi. App Service Linux předá toto nastavení jako proměnnou prostředí modulu runtime Java při spuštění.
+Pokud chcete nastavit přidělenou paměť nebo jiné možnosti JVM modulu runtime v prostředích Tomcat a Java SE systémem, vytvořte [nastavení aplikace](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings) s názvem `JAVA_OPTS` s možnostmi. App Service Linux předá toto nastavení jako proměnnou prostředí modulu runtime Java při spuštění.
 
 V Azure Portal v části **nastavení aplikace** pro webovou aplikaci vytvořte nové nastavení aplikace s názvem `JAVA_OPTS`, které obsahuje další nastavení, jako je například `-Xms512m -Xmx1204m`.
 
@@ -184,7 +184,7 @@ Aplikace Java běžící v App Service pro Linux mají stejnou sadu [osvědčen�
 
 ### <a name="authenticate-users-easy-auth"></a>Ověřování uživatelů (snadné ověřování)
 
-Pomocí možnosti **ověřování a autorizace** nastavte ověřování aplikací v Azure Portal. Odtud můžete povolit ověřování pomocí Azure Active Directory nebo přes sociální přihlášení, jako je Facebook, Google nebo GitHub. Konfigurace Azure Portal funguje pouze při konfiguraci jednoho poskytovatele ověřování. Další informace najdete v tématu [Konfigurace aplikace App Service pro použití Azure Active Directory přihlášení](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) a souvisejících článků pro jiné poskytovatele identity. Pokud potřebujete povolit více poskytovatelů přihlašování, postupujte podle pokynů v článku [přizpůsobení App Serviceho ověřování](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) .
+Pomocí možnosti **ověřování a autorizace** nastavte ověřování aplikací v Azure Portal. Odtud můžete povolit ověřování pomocí Azure Active Directory nebo přes sociální přihlášení, jako je Facebook, Google nebo GitHub. Konfigurace Azure Portal funguje pouze při konfiguraci jednoho poskytovatele ověřování. Další informace najdete v tématu [Konfigurace aplikace App Service pro použití Azure Active Directory přihlášení](../configure-authentication-provider-aad.md?toc=/azure/app-service/containers/toc.json) a souvisejících článků pro jiné poskytovatele identity. Pokud potřebujete povolit více poskytovatelů přihlašování, postupujte podle pokynů v článku [přizpůsobení App Serviceho ověřování](../app-service-authentication-how-to.md?toc=/azure/app-service/containers/toc.json) .
 
 #### <a name="tomcat-and-wildfly"></a>Tomcat a WildFly
 
@@ -226,7 +226,7 @@ Vývojáři pružinového spouštění můžou pomocí [Azure Active Directory p
 
 ### <a name="configure-tlsssl"></a>Konfigurace TLS/SSL
 
-Podle pokynů v části [zabezpečení vlastního názvu DNS s vazbou SSL v Azure App Service](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) Nahrajte stávající certifikát SSL a vytvořte jeho vazbu s názvem domény vaší aplikace. Ve výchozím nastavení bude vaše aplikace pořád umožňovat připojení HTTP – postupujte podle kroků v tomto kurzu, abyste vynutili SSL a TLS.
+Podle pokynů v části [zabezpečení vlastního názvu DNS s vazbou SSL v Azure App Service](../configure-ssl-bindings.md?toc=/azure/app-service/containers/toc.json) Nahrajte stávající certifikát SSL a vytvořte jeho vazbu s názvem domény vaší aplikace. Ve výchozím nastavení bude vaše aplikace pořád umožňovat připojení HTTP – postupujte podle kroků v tomto kurzu, abyste vynutili SSL a TLS.
 
 ### <a name="use-keyvault-references"></a>Použití odkazů na Trezor klíčů
 
@@ -250,7 +250,7 @@ Pro šifrování připojení JDBC může být nutná další konfigurace. Dalš�
 
 #### <a name="manually-initialize-and-load-the-key-store"></a>Ruční inicializace a načtení úložiště klíčů
 
-Můžete inicializovat úložiště klíčů a přidat certifikáty ručně. Vytvořte nastavení aplikace `SKIP_JAVA_KEYSTORE_LOAD`s hodnotou `1`, která zakáže App Service načtení certifikátů do úložiště klíčů automaticky. Všechny veřejné certifikáty nahrané do App Service prostřednictvím webu Azure Portal jsou uložené v části `/var/ssl/certs/`. Privátní certifikáty jsou uložené v `/var/ssl/private/`.
+Můžete inicializovat úložiště klíčů a přidat certifikáty ručně. Vytvořte nastavení aplikace `SKIP_JAVA_KEYSTORE_LOAD`s hodnotou `1`, která zakáže App Service načtení certifikátů do úložiště klíčů automaticky. Všechny veřejné certifikáty nahrané do App Service přes Azure Portal jsou uložené v `/var/ssl/certs/`. Privátní certifikáty jsou uložené v `/var/ssl/private/`.
 
 Další informace o rozhraní API úložiště klíčů najdete [v oficiální dokumentaci](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
 
@@ -282,7 +282,8 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
     - Pokud používáte **Tomcat**, vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` kde `<app-name>` je váš App Service název.
     - Pokud používáte **WildFly**, přečtěte si [dokumentaci k AppDynamics, kde najdete](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) pokyny k instalaci agenta Java a konfiguraci JBoss.
 
->  Pokud již máte proměnnou prostředí pro `JAVA_OPTS` nebo `CATALINA_OPTS`, přidejte možnost `-javaagent:/...` na konec aktuální hodnoty.
+> [!NOTE]
+> Pokud již máte proměnnou prostředí pro `JAVA_OPTS` nebo `CATALINA_OPTS`, přidejte možnost `-javaagent:/...` na konec aktuální hodnoty.
 
 ## <a name="configure-jar-applications"></a>Konfigurovat aplikace JAR
 
@@ -454,7 +455,7 @@ Nakonec umístěte jar ovladače do cesty pro Tomcat a restartujte App Service.
 
     3. Připojte se k místnímu tunelovém portu pomocí klienta SFTP a nahrajte soubory do složky */Home/Tomcat/lib* .
 
-    Alternativně můžete k nahrání ovladače JDBC použít klienta FTP. [Při získávání přihlašovacích údajů k FTP](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)postupujte podle těchto pokynů.
+    Alternativně můžete k nahrání ovladače JDBC použít klienta FTP. [Při získávání přihlašovacích údajů k FTP](../deploy-configure-credentials.md?toc=/azure/app-service/containers/toc.json)postupujte podle těchto pokynů.
 
 2. Pokud jste vytvořili zdroj dat na úrovni serveru, restartujte aplikaci App Service Linux. Tomcat obnoví `CATALINA_BASE` `/home/tomcat` a použije aktualizovanou konfiguraci.
 
@@ -487,13 +488,13 @@ Tato část obsahuje následující pododdíly:
 - [Přizpůsobení konfigurace aplikačního serveru](#customize-application-server-configuration)
 - [Nainstalovat moduly a závislosti](#install-modules-and-dependencies)
 - [Konfigurace zdrojů dat](#configure-data-sources)
-- [Povolit poskytovatele zasílání zpráv](#enable-messaging-providers)
+- [Použití Service Bus jako zprostředkovatele zpráv](#use-service-bus-as-a-message-broker)
 
 ### <a name="scale-with-app-service"></a>Škálování pomocí App Service
 
 Aplikační server WildFly běžící v App Service v systému Linux běží v samostatném režimu, nikoli v konfiguraci domény. Při horizontálním navýšení kapacity App Service plánu je každá instance WildFly nakonfigurovaná jako samostatný server.
 
-Škálujte aplikaci vertikálně nebo vodorovně pomocí [pravidel škálování](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) a [zvyšte počet instancí](../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+Škálujte aplikaci vertikálně nebo vodorovně pomocí [pravidel škálování](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) a [zvyšte počet instancí](../manage-scale-up.md?toc=/azure/app-service/containers/toc.json).
 
 ### <a name="customize-application-server-configuration"></a>Přizpůsobení konfigurace aplikačního serveru
 
@@ -516,7 +517,7 @@ Pomocí protokolu FTP nahrajte spouštěcí skript do umístění v App Service 
 
 Do pole **spouštěcí skript** v Azure Portal nastavte umístění spouštěcího skriptu Shell, například */Home/site/Deployments/Tools/Your-Startup-Script.sh*.
 
-Zadejte [Nastavení](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) aplikace v konfiguraci aplikace a předejte proměnné prostředí pro použití ve skriptu. Nastavení aplikace udržuje připojovací řetězce a další tajné kódy, které jsou potřeba ke konfiguraci vaší aplikace z řízení verze.
+Zadejte [Nastavení](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings) aplikace v konfiguraci aplikace a předejte proměnné prostředí pro použití ve skriptu. Nastavení aplikace udržuje připojovací řetězce a další tajné kódy, které jsou potřeba ke konfiguraci vaší aplikace z řízení verze.
 
 ### <a name="install-modules-and-dependencies"></a>Nainstalovat moduly a závislosti
 
@@ -693,36 +694,323 @@ Vaše instance App Service je teď nakonfigurovaná pro přístup k databázi.
 
 Další informace o konfiguraci připojení databáze pomocí WildFly najdete v tématu [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7), [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource)nebo [SQL Server](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898).
 
-### <a name="enable-messaging-providers"></a>Povolit poskytovatele zasílání zpráv
+### <a name="use-service-bus-as-a-message-broker"></a>Použití Service Bus jako zprostředkovatele zpráv
 
-Postup povolení fazolových bobů v rámci zprávy pomocí Service Bus jako mechanismu zasílání zpráv:
+WildFly a své fazole řízené zprávami můžete nakonfigurovat tak, aby jako zprostředkovatele zpráv používaly [Azure Service Bus](/azure/service-bus-messaging) . Po dokončení konfigurace můžete odesílat a přijímat zprávy pomocí [Apache Qpid](https://qpid.apache.org) jako klienta služby JMS (Java Message Service). K dispozici je několik kroků ke konfiguraci adaptéru JMS (JMS RA), který umožní podnikovým Java Fazolům (EJBs) Konfigurovat vzdálenou a frontu připojení JMS. Tato Vzdálená instalace bude ukazovat na Azure Service Bus a použít poskytovatele JMS Apache Qpid pro protokol AMQP.
 
-1. Použijte [knihovnu pro zasílání zpráv Apache QPID JMS](https://qpid.apache.org/proton/index.html). Zahrňte tuto závislost do souboru pom. XML (nebo jiného souboru sestavení) pro aplikaci.
+Následující kroky popisují požadovanou konfiguraci a kód. Tyto kroky předpokládají, že jste vytvořili instanci App Service pro hostování služby Bob, Service Bus oboru názvů, fronty a tématu s předplatným. Informace o vytváření těchto prostředků najdete v následujících tématech:
 
-2. Vytvoření [prostředků Service Bus](/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp). Vytvoří obor názvů Azure Service Bus a zařadí do fronty v rámci tohoto oboru názvů a zásadu sdíleného přístupu s funkcemi pro odesílání a příjem.
+- [Rychlý Start: Vytvoření aplikace Java na Azure App Service v systému Linux](/azure/app-service/containers/quickstart-java)
+- [Rychlý Start: použití rozhraní příkazového řádku Azure k vytvoření fronty Service Bus](/azure/service-bus-messaging/service-bus-quickstart-cli)
+- [Rychlý Start: pomocí Azure Portal vytvořit Service Bus téma a odběry tématu](/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal)
 
-3. Předejte klíč zásad sdíleného přístupu do kódu buď pomocí adresy URL, a to tak, že zadáte primární klíč zásady, nebo [použijete sadu Service Bus SDK](/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp#setup-jndi-context-and-configure-the-connectionfactory).
+1. Otevřete terminál bash a pomocí následujících příkazů uložte informace o prostředcích Azure do proměnných prostředí. Nahraďte zástupné symboly (včetně lomených závorek) zadanými hodnotami.
 
-4. Postupujte podle kroků uvedených v části instalace modulů a závislostí s popisovačem XML modulu, závislostmi jar, příkazy rozhraní příkazového řádku JBoss a spouštěcím skriptem pro poskytovatele JMS. Kromě těchto čtyř souborů budete také muset vytvořit soubor XML, který definuje název JNDI pro frontu JMS a téma. Podívejte se na [Toto úložiště](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig) pro referenční konfigurační soubory.
+    | Proměnná            | Hodnota                                                                      |
+    |---------------------|----------------------------------------------------------------------------|
+    | RESOURCEGROUP_NAME  | Název skupiny prostředků, která obsahuje vaši instanci App Service.       |
+    | WEBAPP_NAME         | Název vaší App Service instance.                                     |
+    | OBLAST              | Název oblasti, ve které je vaše aplikace hostovaná.                           |
+    | DEFAULT_SBNAMESPACE | Název vašeho oboru názvů Service Bus.                                    |
+    | SB_SAS_POLICY       | Název zásad sdíleného přístupového podpisu (SAS) pro váš obor názvů.   |
+    | SB_SAS_KEY          | Primární nebo sekundární klíč pro zásady SAS vaší fronty.                  |
+    | SB_QUEUE            | Název fronty Service Bus.                                        |
+    | SB_TOPIC            | Název Service Busho tématu.                                        |
+    | SB_SUBSCRIPTION     | Název předplatného vašeho tématu.                                |
+
+    ```bash
+    RESOURCEGROUP_NAME=<resource group>
+    WEBAPP_NAME=<web app>
+    WEBAPP_PLAN_NAME=${WEBAPP_NAME}-appservice-plan
+    REGION=<region>
+    DEFAULT_SBNAMESPACE=<namespace>
+    SB_SAS_POLICY=<SAS policy>
+    SB_SAS_KEY=<SAS key>
+    SB_QUEUE=<queue>
+    SB_TOPIC=<topic>
+    SB_SUBSCRIPTION=<subscription>
+    PROVIDER_URL=amqps://${DEFAULT_SBNAMESPACE}.servicebus.windows.net?amqp.idleTimeout=120000
+    ```
+
+    Tyto informace najdete v Azure Portal. V případě zásad a klíčů SAS nezapomeňte použít hodnoty pro obor názvů tak, aby vaše aplikace měla přístup k vaší frontě i k předplatnému vašeho tématu. Pokud chcete najít tyto hodnoty v Azure Portal, přejděte k prostředku oboru názvů, vyberte **zásady sdíleného přístupu**a pak vyberte zásady **RootManageSharedAccessKey** .
+
+2. Stáhněte si [poskytovatele Apache QPID JMS](https://qpid.apache.org/components/jms/index.html). Vyhledejte soubory. jar v adresářích *lib* a *lib/volitelných* adresářích.
+
+3. Vytvořte soubor s názvem *Module. XML* a přidejte následující kód. Nahraďte všechny výskyty `<version>` zástupného symbolu (včetně lomených závorek) správnou verzí každého souboru. jar, aby názvy souborů odpovídaly souborům, které jste extrahovali v kroku 1.
+
+    ```xml
+    <module xmlns="urn:jboss:module:1.1" name="org.jboss.genericjms.provider">
+        <resources>
+            <resource-root path="proton-j-<version>.jar"/>
+            <resource-root path="qpid-jms-client-<version>.jar"/>
+            <resource-root path="slf4j-log4j12-<version>.jar"/>
+            <resource-root path="slf4j-api-<version>.jar"/>
+            <resource-root path="log4j-<version>.jar"/>
+            <resource-root path="netty-buffer-<version>.jar" />
+            <resource-root path="netty-codec-<version>.jar" />
+            <resource-root path="netty-codec-http-<version>.jar" />
+            <resource-root path="netty-common-<version>.jar" />
+            <resource-root path="netty-handler-<version>.jar" />
+            <resource-root path="netty-resolver-<version>.jar" />
+            <resource-root path="netty-transport-<version>.jar" />
+            <resource-root path="netty-transport-native-epoll-<version>-linux-x86_64.jar" />
+            <resource-root path="netty-transport-native-kqueue-<version>-osx-x86_64.jar" />
+            <resource-root path="netty-transport-native-unix-common-<version>.jar" />
+            <resource-root path="qpid-jms-discovery-<version>jar" />
+        </resources>
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="javax.jms.api"/>
+        </dependencies>
+    </module>
+    ```
+
+4. Vytvořte soubor s názvem *Startup.sh* a přidejte následující kód.
+
+    ```bash
+    echo "Generating jndi.properties file in /home/site/deployments/tools directory"
+    echo "connectionfactory.mymdbconnection=amqps://${DEFAULT_SBNAMESPACE}.servicebus.windows.net?amqp.idleTimeout=120000&jms.username=${SB_SAS_POLICY}&jms.password=${SB_SAS_KEY}" > /home/site/deployments/tools/jndi.properties
+    echo "queue.mymdbqueue=${SB_QUEUE}" >> /home/site/deployments/tools/jndi.properties
+    echo "topic.mymdbtopic=${SB_TOPIC}" >> /home/site/deployments/tools/jndi.properties
+    echo "queue.mymdbsubscription=${SB_TOPIC}/Subscriptions/${SB_SUBSCRIPTION}" >> /home/site/deployments/tools/jndi.properties
+    echo "====== contents of /home/site/deployments/tools/jndi.properties ======"
+    cat /home/site/deployments/tools/jndi.properties
+    echo "====== EOF /home/site/deployments/tools/jndi.properties ======"
+    echo "Generating commands.cli file for /home/site/deployments/tools directory"
+    echo "# Start batching commands" > /home/site/deployments/tools/commands.cli
+    echo "batch" >> /home/site/deployments/tools/commands.cli
+    echo "# Configure the ee subsystem to enable MDB annotation property substitution" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=ee:write-attribute(name=annotation-property-replacement,value=true)" >> /home/site/deployments/tools/commands.cli
+    echo "# Define system properties to be used in the substititution" >> /home/site/deployments/tools/commands.cli
+    echo "/system-property=property.mymdb.queue:add(value=java:global/remoteJMS/mymdbqueue})" >> /home/site/deployments/tools/commands.cli
+    echo "/system-property=property.mymdb.topic:add(value=java:global/remoteJMS/mymdbsubscription)" >> /home/site/deployments/tools/commands.cli
+    echo "/system-property=property.connection.factory:add(value=java:global/remoteJMS/mymdbconnection)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=ee:list-add(name=global-modules, value={\"name\" => \"org.jboss.genericjms.provider\", \"slot\" =>\"main\"}" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=naming/binding=\"java:global/remoteJMS\":add(binding-type=external-context,module=org.jboss.genericjms.provider,class=javax.naming.InitialContext,environment=[java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory,org.jboss.as.naming.lookup.by.string=true,java.naming.provider.url=/home/site/deployments/tools/jndi.properties])" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra:add(module=org.jboss.genericjms,transaction-support=XATransaction)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd:add(class-name=org.jboss.resource.adapter.jms.JmsManagedConnectionFactory, jndi-name=java:/jms/mymdbconnection)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd/config-properties=ConnectionFactory:add(value=mymdbconnection)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd/config-properties=JndiParameters:add(value=\"java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory;java.naming.provider.url=/home/site/deployments/tools/jndi.properties\")" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd:write-attribute(name=security-application,value=true)" >> /home/site/deployments/tools/commands.cli
+    echo "/subsystem=ejb3:write-attribute(name=default-resource-adapter-name, value=generic-ra)" >> /home/site/deployments/tools/commands.cli
+    echo "# Run the batch commands" >> /home/site/deployments/tools/commands.cli
+    echo "run-batch" >> /home/site/deployments/tools/commands.cli
+    echo "reload" >> /home/site/deployments/tools/commands.cli
+    echo "====== contents of /home/site/deployments/tools/commands.cli ======"
+    cat /home/site/deployments/tools/commands.cli
+    echo "======= EOF /home/site/deployments/tools/commands.cli ========"
+    mkdir /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider
+    mkdir /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main
+    cp  /home/site/deployments/tools/*.jar /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main/
+    cp /home/site/deployments/tools/module.xml /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main/
+    cp /home/site/deployments/tools/jndi.properties /opt/jboss/wildfly/standalone/configuration/
+    /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/home/site/deployments/tools/commands.cli
+    echo "Startup Run done"
+    ```
+
+    Vaše instance App Service spustí tento skript pokaždé, když se spustí, čímž se dokončí další konfigurace, kterou vyžaduje WildFly. Tento skript zkopíruje závislosti vaší aplikace do požadovaných umístění. Také generuje *JNDI. Properties* a *Commands. CLI* Files, které používají proměnné prostředí zobrazené v kroku 1. Tyto hodnoty jsou také předány do instance App Service v pozdějším kroku.
+
+    Soubor *Commands. CLI* je skript [WildFly CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) spouštěný spouštěcím skriptem. Příkazy v tomto souboru konfigurují JMS a JNDI, které využívají soubor *JNDI. Properties* . Tyto příkazy vytvoří připojení mezi vaší aplikací a vaší Service Busovou frontou nebo tématem.
+
+5. Pomocí protokolu FTP nahrajte do instance App Service soubory. jar, soubor *Module. XML* a soubor *Startup.sh* . Vložte *Startup.sh* do adresáře */Home* a vložte ostatní soubory do adresáře */Home/site/Deployments/Tools* . Nezapomeňte nahrát každý soubor. jar uvedený v souboru *Module. XML* , abyste dosáhli přenosného uzavírání závislostí. Další informace o FTP najdete v tématu [nasazení aplikace pro Azure App Service pomocí protokolu FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp).
+
+6. Aktualizujte implementaci MessageListener a přidejte následující příkazy `import`:
+
+    ```java
+    import javax.ejb.ActivationConfigProperty;
+    import javax.ejb.MessageDriven;
+    import javax.ejb.TransactionAttribute;
+    import javax.ejb.TransactionAttributeType;
+    import javax.ejb.TransactionManagement;
+    import javax.ejb.TransactionManagementType;
+    import javax.jms.JMSException;
+    import javax.jms.Message;
+    import javax.jms.MessageListener;
+    import javax.jms.TextMessage;
+    ```
+
+7. Dále aktualizujte anotace třídy naslouchacího procesu tak, aby odpovídaly následujícímu příkladu. Tato třída poskytuje ukázkovou implementaci, která protokoluje příjem zpráv.
+
+    ```java
+    @TransactionManagement(TransactionManagementType.BEAN)
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    @MessageDriven(name = "MyQueueListener", activationConfig = {
+            @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "${property.connection.factory}"),
+            @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "${property.mymdb.queue}"),
+            @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+            @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+    public class MyQueueListener implements MessageListener {
+
+        private static final Logger LOGGER = Logger.getLogger(TopicListener.class.toString());
+
+        public void onMessage(Message rcvMessage) {
+            TextMessage msg = null;
+            try {
+                if (rcvMessage instanceof TextMessage) {
+                    msg = (TextMessage) rcvMessage;
+                    LOGGER.info("Received Message from topic: " + msg.getText());
+                } else {
+                    LOGGER.warning("Message of wrong type: " + rcvMessage.getClass().getName());
+                }
+            } catch (JMSException e) {
+                LOGGER.warning("Exception on message : " + e.getMessage());
+                throw new RuntimeException(e);
+            }
+        }
+    }
+    ```
+
+    Hodnoty `connectionFactory` a `destinationLookup` odkazují na hodnoty vlastností systému WildFly konfigurované skriptem *Startup.sh* . Hodnota `destinationType` je `javax.jms.Queue`, což znamená, že se připojujete k instanci fronty Service Bus. Tato hodnota by měla být `javax.jms.Topic`, když se připojíte k Service Bus tématu, jak je znázorněno zde:
+
+    ```java
+    @TransactionManagement(TransactionManagementType.BEAN)
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    @MessageDriven(name = "MyTopicListener", activationConfig = {
+            @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "${property.connection.factory}"),
+            @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "${property.mymdb.topic}"),
+            @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
+            @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+        public class MyTopicListener implements MessageListener {
+        // ...
+    }
+    ```
+
+8. Aktualizujte část `dependencies` souboru *pom. XML* a přidejte následující závislosti:
+
+    ```xml
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.qpid</groupId>
+            <artifactId>qpid-jms-client</artifactId>
+            <version>0.40.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.qpid</groupId>
+            <artifactId>proton-j</artifactId>
+            <version>0.31.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.jms</groupId>
+            <artifactId>jboss-jms-api_2.0_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.servlet</groupId>
+            <artifactId>jboss-servlet-api_4.0_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.annotation</groupId>
+            <artifactId>jboss-annotations-api_1.3_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    ```
+
+9. Aktualizujte konfiguraci `azure-webapp-maven-plugin` v souboru *pom. XML* , chcete-li se podívat na informace o vašem účtu Service Bus. V případě potřeby změňte `1.7.0` na aktuální verzi [modulu plug-in Maven pro Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme).
+
+    ```xml
+    <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <configuration>
+
+            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+            <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
+            <appName>${WEBAPP_NAME}</appName>
+            <region>${REGION}</region>
+
+            <!-- Java Runtime Stack for Web App on Linux-->
+            <linuxRuntime>wildfly 14-jre8</linuxRuntime>
+
+            <appSettings>
+                <property>
+                    <name>DEFAULT_SBNAMESPACE</name>
+                    <value>${DEFAULT_SBNAMESPACE}</value>
+                </property>
+                <property>
+                    <name>SB_SAS_POLICY</name>
+                    <value>${SB_SAS_POLICY}</value>
+                </property>
+                <property>
+                    <name>SB_SAS_KEY</name>
+                    <value>${SB_SAS_KEY}</value>
+                </property>
+                <property>
+                    <name>PROVIDER_URL</name>
+                    <value>${PROVIDER_URL}</value>
+                </property>
+                <property>
+                    <name>SB_QUEUE</name>
+                    <value>${SB_QUEUE}</value>
+                </property>
+                <property>
+                    <name>SB_TOPIC</name>
+                    <value>${SB_TOPIC}</value>
+                </property>
+                <property>
+                    <name>SB_SUBSCRIPTION</name>
+                    <value>${SB_SUBSCRIPTION}</value>
+                </property>
+            </appSettings>
+        </configuration>
+    </plugin>
+    ```
+
+    Tato nastavení konfigurují instanci App Service tak, aby měla stejné proměnné prostředí, které nastavíte místně. Pomocí proměnných prostředí udržuje informace o vašem účtu mimo vaše zdrojové soubory.
+
+10. Znovu sestavte a nasaďte aplikaci.
+
+    ```bash
+    mvn package -DskipTests azure-webapp:deploy
+    ```
+
+Bob řízená zprávami jsou teď nakonfigurované tak, aby používaly Service Bus jako mechanismus zasílání zpráv.
+
+Při příštím restartování App Service spustí spouštěcí skript a provede kroky potřebné ke konfiguraci. K otestování, jestli tato konfigurace proběhne správně, můžete ke svému App Service přistupovat pomocí SSH a potom spustit spouštěcí skript sami z bash výzvy. Můžete také prostudovat protokoly App Service. Další informace o těchto možnostech najdete v tématu [protokolování a ladění aplikací](#logging-and-debugging-apps).
+
+Ukázku, kterou můžete použít k otestování těchto pokynů, najdete v článku [migrace – Java-EE – app-to-Azure-2](https://github.com/Azure-Samples/migrate-java-ee-app-to-azure-2) na GitHubu a hledání `helloworld-mdb-propertysubstitution` ukázka.
 
 ## <a name="use-redis-as-a-session-cache-with-tomcat"></a>Použití Redis jako mezipaměti relace s Tomcat
 
 Tomcat můžete nakonfigurovat tak, aby používala externí úložiště relací, jako je například [Azure cache pro Redis](/azure/azure-cache-for-redis/). To umožňuje zachovat stav uživatelské relace (například data nákupního košíku), když se uživatel přenese do jiné instance aplikace, například když dojde k automatickému škálování, restartování nebo převzetí služeb při selhání.
 
-Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby používala implementaci [PersistentManager](http://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) . Následující kroky vysvětlují tento proces pomocí [správce relací Pivot: Redis-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) jako příklad.
+Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby používala implementaci [PersistentManager](https://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) . Následující kroky vysvětlují tento proces pomocí [správce relací Pivot: Redis-Store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) jako příklad.
 
-1. Otevřete terminál bash a pomocí `export <variable>=<value>` nastavte každou z následujících proměnných prostředí.
+1. Otevřete terminál bash a pomocí `<variable>=<value>` nastavte každou z následujících proměnných prostředí.
 
     | Proměnná                 | Hodnota                                                                      |
     |--------------------------|----------------------------------------------------------------------------|
     | RESOURCEGROUP_NAME       | Název skupiny prostředků, která obsahuje vaši instanci App Service.       |
     | WEBAPP_NAME              | Název vaší App Service instance.                                     |
-    | WEBAPP_PLAN_NAME         | Název vašeho plánu App Service                                          |
+    | WEBAPP_PLAN_NAME         | Název vašeho plánu App Service.                                         |
     | OBLAST                   | Název oblasti, ve které je vaše aplikace hostovaná.                           |
     | REDIS_CACHE_NAME         | Název vaší instance Azure cache pro instanci Redis                           |
     | REDIS_PORT               | Port SSL, na kterém Redis Cache naslouchá.                             |
     | REDIS_PASSWORD           | Primární přístupový klíč vaší instance.                                  |
     | REDIS_SESSION_KEY_PREFIX | Hodnota, kterou určíte k identifikaci klíčů relací, které pocházejí z vaší aplikace. |
+
+    ```bash
+    RESOURCEGROUP_NAME=<resource group>
+    WEBAPP_NAME=<web app>
+    WEBAPP_PLAN_NAME=<App Service plan>
+    REGION=<region>
+    REDIS_CACHE_NAME=<cache>
+    REDIS_PORT=<port>
+    REDIS_PASSWORD=<access key>
+    REDIS_SESSION_KEY_PREFIX=<prefix>
+    ```
 
     Informace o názvu, portu a přístupu k informacím o Azure Portal najdete v částech **vlastnosti** nebo **přístupové klíče** vaší instance služby.
 
@@ -813,8 +1101,7 @@ Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby
 9. Znovu sestavte a nasaďte aplikaci.
 
     ```bash
-    mvn package
-    mvn azure-webapp:deploy
+    mvn package -DskipTests azure-webapp:deploy
     ```
 
 Vaše aplikace teď bude používat Redis Cache pro správu relací.

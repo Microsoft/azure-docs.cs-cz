@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d0efbaec6905d0d24d9dc1c310d472958011960
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228396"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702075"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Pokud máte pracovní prostor Azure Machine Learning s edicí Enterprise, [přej
 
 1. Vyberte **Návrhář**.
 
-    ![Snímek obrazovky s vizuálním pracovním prostorem, který ukazuje, jak získat přístup k Návrháři](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
+    ![Snímek obrazovky s vizuálním pracovním prostorem, který ukazuje, jak získat přístup k Návrháři](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
 1. Vyberte **snadno použitelné předem připravené moduly**.
 
@@ -127,7 +127,7 @@ Při výukovém modelu je nutné provést něco o chybějících datech. Ve slou
 
 1. V podokně Vlastnosti vyberte **parametry** > **Komentář** a zadejte *vyloučit normalizované ztráty*.
 
-### <a name="clean-missing-data"></a>Vyčištění chybějících dat
+### <a name="clean-missing-data"></a>Vyčistit chybějící data
 
 V datové sadě ještě chybí hodnoty po odebrání sloupce **normalizované ztráty** . Zbývající chybějící data můžete odebrat pomocí modulu **Vyčištění chybějících dat** .
 

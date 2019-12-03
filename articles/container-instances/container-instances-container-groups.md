@@ -4,12 +4,12 @@ description: Seznamte se se skupinami kontejnerů v Azure Container Instances, k
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 9fbf9fea7da0896ee6c0e248d18e18d52798fbd7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482113"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706316"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure Container Instances
 
@@ -48,15 +48,15 @@ Azure Container Instances přiděluje prostředky, jako jsou CPU, paměť a voli
 
 ### <a name="resource-usage-by-instances"></a>Využití prostředků podle instancí
 
-Každá instance kontejneru má přidělené prostředky, které jsou zadány v žádosti o prostředky. Využití prostředků v instanci kontejneru ve skupině ale závisí na tom, jak nakonfigurujete její volitelnou vlastnost [limitu prostředků][resource-limits] .
+Každá instance kontejneru má přidělené prostředky, které jsou zadány v žádosti o prostředky. Využití prostředků v instanci kontejneru ve skupině ale závisí na tom, jak nakonfigurujete její volitelnou vlastnost [limitu prostředků][resource-limits] . Omezení prostředků musí být menší než povinná vlastnost [požadavku na prostředek][resource-requests] .
 
 * Pokud nezadáte omezení prostředků, maximální využití prostředků instance je stejné jako jeho požadavek na prostředek.
 
 * Pokud pro instanci zadáte omezení prostředků, můžete pro její úlohu upravit využití prostředků instance, buď snížit nebo zvýšit využití vzhledem k žádosti o prostředky. Maximální počet prostředků, které můžete nastavit, je celkový počet prostředků přidělených skupině.
     
-    Například ve skupině se dvěma instancemi požadujících 1 procesor může jeden z vašich kontejnerů spustit úlohu, která vyžaduje více procesorů pro spuštění než druhá.
+Například ve skupině se dvěma instancemi požadujících 1 procesor může jeden z vašich kontejnerů spustit úlohu, která vyžaduje více procesorů pro spuštění než druhá.
 
-    V tomto scénáři můžete nastavit limit prostředků 0,5 procesor pro jednu instanci a limit 2 procesorů pro druhý. Tato konfigurace omezuje využití prostředků prvního kontejneru na 0,5 procesor, což umožňuje, aby druhý kontejner používal až plný 2 procesory, pokud jsou k dispozici.
+V tomto scénáři můžete nastavit limit prostředků 0,5 procesor pro jednu instanci a limit 2 procesorů pro druhý. Tato konfigurace omezuje využití prostředků prvního kontejneru na 0,5 procesor, což umožňuje, aby druhý kontejner používal až plný 2 procesory, pokud jsou k dispozici.
 
 Další informace naleznete v tématu vlastnost [ResourceRequirements][resource-requirements] ve skupinách kontejneru REST API.
 

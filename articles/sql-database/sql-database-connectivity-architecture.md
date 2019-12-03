@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 0ac9247f5156eb1b766aec7403b2dc8473114659
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 6f6c64acf814b39d38138ed0e6a9c6075b693c7d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483717"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707987"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení Azure SQL
 
@@ -45,13 +45,13 @@ Azure SQL Database podporuje pro nastavení zásad připojení serveru SQL Datab
 
 - **Proxy server:** V tomto režimu jsou všechna připojení proxy přes Azure SQL Database bran, což vede k zvýšené latenci a zkrácení v celém. Aby připojení používala tento režim, klienti musí povolit příchozí a odchozí komunikaci od klienta až po Azure SQL Database IP adresy brány na portu 1433.
 
-- **Výchozí:** Toto je zásada připojení platná pro všechny servery po vytvoření, pokud zásadu připojení explicitně neupravíte na buď `Proxy`, nebo `Redirect`. Výchozí zásady jsou`Redirect` pro všechna připojení klientů pocházející z Azure (např. z virtuálního počítače Azure) a `Proxy`pro všechna připojení klientů, která pocházejí uvnitř (např. připojení z místní pracovní stanice).
+- **Výchozí:** Toto je zásada připojení platná pro všechny servery po vytvoření, pokud zásadu připojení explicitně neupravíte na buď `Proxy`, nebo `Redirect`. Výchozí zásady jsou`Redirect` pro všechna připojení klientů pocházející z Azure (např. z virtuálního počítače Azure) a `Proxy`pro všechna klientská připojení, která pocházejí mimo (např. připojení z místní pracovní stanice).
 
  Pro nejnižší latenci a nejvyšší propustnost doporučujeme, abyste zásady připojení `Redirect` k zásadám připojení `Proxy`. Budete ale muset splnit další požadavky na povolení síťového provozu, jak je uvedeno výše. Pokud se jedná o virtuální počítač Azure, můžete to udělat pomocí skupin zabezpečení sítě (NSG) s [visačkami služby](../virtual-network/security-overview.md#service-tags). Pokud se klient připojuje z místní pracovní stanice, možná budete muset spolupracovat se správcem sítě a zapnout síťový provoz přes bránu firewall vaší firmy.
 
 ## <a name="connectivity-from-within-azure"></a>Připojení v rámci Azure
 
-Pokud se připojujete z Azure, mají připojení `Redirect` ve výchozím nastavení zásady připojení. Zásada `Redirect` znamená, že po navázání relace TCP na databázi SQL Azure se relace klienta přesměruje do správného databázového clusteru se změnou cílové virtuální IP adresy z této Azure SQL Database brány na služby. Následně se všechny následné pakety nasměrují přímo do clusteru a vycházejí z Azure SQL Database brány. Tento tok přenosů znázorňuje následující diagram.
+Pokud se připojujete z Azure, mají připojení `Redirect` ve výchozím nastavení zásady připojení. Zásada `Redirect` znamená, že po navázání relace TCP na databázi SQL Azure se relace klienta přesměruje do správného databázového clusteru se změnou cílové virtuální IP adresy z této Azure SQL Database brány na cluster. Následně se všechny následné pakety nasměrují přímo do clusteru a vycházejí z Azure SQL Database brány. Tento tok přenosů znázorňuje následující diagram.
 
 ![Přehled architektury](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
@@ -79,15 +79,15 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Austrálie – východ       | 13.75.149.87, 40.79.161.1 |
 | Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251 |
 | Brazílie – jih         | 104.41.11.5, 191.233.200.14 |
-| Střední Kanada       | 40.85.224.249      |
-| Východní Kanada          | 40.86.226.166      |
+| Kanada – střed       | 40.85.224.249      |
+| Kanada – východ          | 40.86.226.166      |
 | Střední USA           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | Čína – východ           | 139.219.130.35     |
 | Čína – východ 2         | 40.73.82.1         |
 | Čína – sever          | 139.219.15.17      |
 | Čína – sever 2        | 40.73.50.0         |
 | Východní Asie            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
-| Východní USA              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| USA – východ              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | Východ USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
 | Francie – střed       | 40.79.137.0, 40.79.129.1 |
 | Německo – střed      | 51.4.144.100       |
@@ -97,8 +97,8 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Indie – západ           | 104.211.160.80     |
 | Japonsko – východ           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
 | Japonsko – západ           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
-| Jižní Korea – střed        | 52.231.32.42       |
-| Jižní Korea – jih          | 52.231.200.86      |
+| Korea – střed        | 52.231.32.42       |
+| Korea – jih          | 52.231.200.86      |
 | Středoseverní USA     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Severní Evropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Jižní Afrika – sever   | 102.133.152.0      |
@@ -107,8 +107,8 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Jihovýchodní Asie      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Spojené arabské emiráty – střed          | 20.37.72.64        |
 | Spojené arabské emiráty – sever            | 65.52.248.0        |
-| Spojené království – jih             | 51.140.184.11      |
-| Spojené království – západ              | 51.141.8.11        |
+| Velká Británie – jih             | 51.140.184.11      |
+| Velká Británie – západ              | 51.141.8.11        |
 | Středozápadní USA      | 13.78.145.25       |
 | Západní Evropa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | Západní USA              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |

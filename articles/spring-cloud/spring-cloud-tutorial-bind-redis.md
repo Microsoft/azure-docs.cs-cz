@@ -1,23 +1,23 @@
 ---
-title: Postup vytvoření vazby mezipaměti Azure pro Redis do vaší aplikace pro jarní Cloud v Azure | Microsoft Docs
-description: Naučte se navazovat Azure cache pro Redis do vaší aplikace pro jarní cloudy v Azure.
+title: Kurz – vytvoření vazby mezipaměti Azure pro Redis do vaší aplikace založené na jarním cloudu Azure
+description: V tomto kurzu se dozvíte, jak vytvořit vazby Azure cache pro Redis do vaší aplikace pro jarní Cloud v Azure.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a901e4194909df85f53799d5937515e42ea87a69
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1653db3619fd569238872ca1fcfd6d0c439e84c9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607577"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708787"
 ---
 # <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>Kurz: vázání služeb Azure na svoji cloudovou aplikaci Azure na jaře: Azure cache pro Redis
 
 Pomocí Azure jaře cloudu můžete automaticky navazovat vybrané služby Azure na vaše aplikace místo ruční konfigurace aplikace pro spouštění pružiny. Tento článek ukazuje, jak vytvořit propojení aplikace s mezipamětí Azure cache pro Redis.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nasazená instance cloudu Azure pro jaře
 * Služba Azure cache pro instanci služby Redis

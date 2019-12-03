@@ -1,5 +1,5 @@
 ---
-title: Vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code
+title: Rychlý Start – vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code
 description: V tomto rychlém startu se dozvíte, jak začít vytvořením Stream Analytics úlohy, konfigurací vstupů, výstupů a definováním dotazu pomocí Visual Studio Code.
 ms.service: stream-analytics
 author: mamccrea
@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 35e2711bbb3cd6dc0662146a566014dd65d879bc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1deb042ecffe8a46c70374a0ee15344a31043be8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935092"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707412"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Rychlý Start: vytvoření cloudové úlohy Azure Stream Analytics v Visual Studio Code (Preview)
 
@@ -161,7 +161,7 @@ Postupujte podle pokynů v části [test s ukázkovými daty](vscode-local-run.m
    |-------|---------------|-----------|
    |Name (Název)|Vstup|Zadejte název pro identifikaci vstupu úlohy.|
    |IotHubNamespace|MyASAIoTHub|Vyberte nebo zadejte název IoT Hub. Názvy IoT Hub jsou automaticky zjištěny, pokud jsou vytvořeny ve stejném předplatném.|
-   |sharedAccessPolicyName|iothubowner| |
+   |SharedAccessPolicyName|iothubowner| |
 
    ![Konfigurace vstupu v Visual Studio Code](./media/quick-create-vs-code/configure-input.png)
 

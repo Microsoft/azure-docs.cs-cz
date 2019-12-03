@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: nastavení zařízení pro Azure IoT Hub Device Provisioning Service'
-description: 'Kurz: nastavení zařízení pro zřizování prostřednictvím IoT Hub Device Provisioning Service během procesu výroby zařízení'
+title: Kurz – nastavení zařízení pro Azure IoT Hub Device Provisioning Service
+description: V tomto kurzu se dozvíte, jak můžete nastavit zařízení pro zřizování prostřednictvím IoT Hub Device Provisioning Service během procesu výroby zařízení.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e7f6151968fb14d44f1e330fb6ddc06fabad3ee6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: bdda46a89fc2bcf8b16b2ce771c6540c9ceaa3e0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112758"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701984"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Kurz: nastavení zařízení pro zřízení pomocí IoT Hub Device Provisioning Service Azure
 
@@ -34,7 +34,7 @@ Pokud neznáte proces automatického zřizování, nezapomeňte si přečíst o 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s povolenou úlohou [" C++vývoj pro stolní počítače"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
@@ -116,7 +116,7 @@ V závislosti na tom, jestli jste sestavili sadu SDK, aby používala ověřová
       > [!NOTE]
       > Pokud pro tento krok používáte příkazový řádek Git Bash, budete muset změnit zpětná lomítka na lomítka – například: `./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe`.
 
-   1. Pomocí sady Visual Studio otevřete řešení *vygenerované ve složce*cmake`azure_iot_sdks.sln` a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
+   1. Pomocí sady Visual Studio otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
 
    1. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **tpm_device_provision** a vyberte **Nastavit jako spouštěný projekt**. 
 
@@ -124,7 +124,7 @@ V závislosti na tom, jestli jste sestavili sadu SDK, aby používala ověřová
 
 - Simulované zařízení X.509:
 
-  1. Pomocí sady Visual Studio otevřete řešení *vygenerované ve složce*cmake`azure_iot_sdks.sln` a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
+  1. Pomocí sady Visual Studio otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
 
   1. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **dice\_device\_enrollment** a vyberte **Nastavit jako spouštěný projekt**. 
   
@@ -212,4 +212,3 @@ V dalším kurzu se dozvíte, jak zřídit zařízení pro vaše centrum IoT pro
 
 > [!div class="nextstepaction"]
 > [Zřízení zařízení pro centrum IoT](tutorial-provision-device-to-hub.md)
-

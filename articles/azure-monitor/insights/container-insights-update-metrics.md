@@ -7,40 +7,40 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/11/2019
-ms.openlocfilehash: 8fb1c6c65ab9c38ef16cfbc20435b35d0c7a7ce5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5a43d7e23c9d6550e8985599786ff968050f19c1
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279619"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707486"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Postup aktualizace Azure Monitor pro kontejnery pro povolení metrik
 
 Azure Monitor for Containers zavádí podporu shromažďování metrik z uzlů clusterů Azure Kubernetes Services (AKS) a lusků a jejich zápis do úložiště Azure Monitorch metrik. Tato změna má poskytovat vylepšenou časovou osu při vytváření agregačních výpočtů (střední, Count, Max, min, Sum) v grafech výkonu, podpora připnutí grafů výkonu v Azure Portal řídicích panelech a podpora upozornění na metriky.
 
 >[!NOTE]
->Tato funkce v současné době nepodporuje clustery Red Hat OpenShift.
+>Tato funkce v současné době nepodporuje clustery Azure Red Hat OpenShift.
 >
 
 V rámci této funkce jsou povoleny následující metriky:
 
 | Obor názvů metriky | Metrika | Popis |
 |------------------|--------|-------------|
-| insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Jedná se o metriky *uzlů* a zahrnují *hostitele* jako dimenzi a také zahrnují<br> název uzlu jako hodnota pro dimenzi *hostitele* . |
-| insights.container/pods | podCount | Jsou *pod* metrikami a obsahují následující údaje jako Dimensions-Controller, Kubernetes Namespace, Name, Phase. |
+| Insights. Container/Nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Jedná se o metriky *uzlů* a zahrnují *hostitele* jako dimenzi a také zahrnují<br> název uzlu jako hodnota pro dimenzi *hostitele* . |
+| přehledy. kontejner/lusky | podCount | Jsou *pod* metrikami a obsahují následující údaje jako Dimensions-Controller, Kubernetes Namespace, Name, Phase. |
 
 Aktualizace clusteru tak, aby podporovala tyto nové funkce, se dá provádět z Azure Portal, Azure PowerShell nebo pomocí Azure CLI. Pomocí Azure PowerShell a rozhraní příkazového řádku můžete povolit tento cluster nebo pro všechny clustery v rámci vašeho předplatného. Nová nasazení AKS budou automaticky zahrnovat tuto změnu konfigurace a možnosti.
 
 Buď proces přiřadí roli **vydavatele metrik monitorování** k instančnímu objektu clusteru, aby data shromážděná agentem mohla být publikována do vašeho prostředku clusterů. Vydavatel monitorování metrik má oprávnění pouze k odeslání metrik do prostředku, nemůže změnit žádný stav, aktualizovat prostředek ani číst žádná data. Další informace o roli najdete v tématu [monitorování role vydavatele metrik](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, zkontrolujte následující:
 
 * Vlastní metriky jsou dostupné jenom v podmnožině oblastí Azure. [Tady](../platform/metrics-custom-overview.md#supported-regions)je popsán seznam podporovaných oblastí.
 * Jste členem role **[vlastníka](../../role-based-access-control/built-in-roles.md#owner)** v prostředku clusteru AKS, aby bylo možné povolit shromažďování uzlů a pod vlastním metriku výkonu. 
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.59 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.59 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Upgrade clusteru z Azure Portal
 
@@ -62,7 +62,7 @@ Provedením následujících kroků aktualizujte všechny clustery ve vašem př
     curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
-    Dokončení změny konfigurace může trvat několik sekund. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
+    Dokončení změny konfigurace může trvat několik sekund. Po dokončení se zobrazí zpráva podobná následující zprávě, která obsahuje výsledek:
 
     ```azurecli
     completed role assignments for all AKS clusters in subscription: <subscriptionId>
@@ -331,7 +331,7 @@ Provedením následujících kroků aktualizujte všechny clustery v rámci pře
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
     ```
-    Dokončení změny konfigurace může trvat několik sekund. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
+    Dokončení změny konfigurace může trvat několik sekund. Po dokončení se zobrazí zpráva podobná následující zprávě, která obsahuje výsledek:
 
     ```powershell
     Completed adding role assignment for the aks clusters in subscriptionId :<subscriptionId>
@@ -582,7 +582,7 @@ Provedením následujících kroků aktualizujte konkrétní cluster pomocí Azu
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
-    Dokončení změny konfigurace může trvat několik sekund. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
+    Dokončení změny konfigurace může trvat několik sekund. Po dokončení se zobrazí zpráva podobná následující zprávě, která obsahuje výsledek:
 
     ```powershell
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>

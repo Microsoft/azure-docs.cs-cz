@@ -1,17 +1,17 @@
 ---
-title: 'Rychlý Start: spuštění aplikace ve jarním cloudu Azure pomocí Azure Portal'
-description: Nasaďte ukázkovou aplikaci do jarního cloudu Azure pomocí Azure Portal.
+title: Rychlý Start – spuštění aplikace pro jarní Cloud v Azure pomocí Azure Portal
+description: V tomto rychlém startu nasadíte ukázkovou aplikaci do jarního cloudu Azure pomocí Azure Portal.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 0d8bc302434ea973dd4d94156c65ee6965dd1dc1
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 891952000f633d7d873c6d76c475916acc8ac4ec
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666239"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708849"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění aplikace ve jarním cloudu Azure pomocí Azure Portal
 

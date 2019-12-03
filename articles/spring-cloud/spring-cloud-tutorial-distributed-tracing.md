@@ -1,17 +1,17 @@
 ---
-title: 'Kurz: použití distribuovaného trasování u jarního cloudu Azure | Microsoft Docs'
-description: Naučte se používat distribuované trasování jarního cloudu prostřednictvím Azure Application Insights
+title: Kurz – použití distribuovaného trasování u jarního cloudu Azure
+description: V tomto kurzu se dozvíte, jak používat distribuované trasování jarního cloudu prostřednictvím Azure Application Insights
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a9d2100103cdd5858d0d58cf6ef77a6ccac3745f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c049ecbea3c630e0f7d08e4a42bd441ba3f5cfa
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607552"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708759"
 ---
 # <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Kurz: použití distribuovaného trasování u jarního cloudu Azure
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak:
 > * Zobrazení map závislostí pro vaše aplikace mikroslužeb
 > * Hledání dat trasování pomocí různých filtrů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu je potřeba:
 
@@ -85,7 +85,7 @@ Pokud již máte vytvořenou a nasazenou aplikaci, můžete upravit vzorkovací 
 
 Vraťte se na stránku distribuované trasování a vyberte **Zobrazit mapu aplikací**. Zkontrolujte vizuální znázornění nastavení aplikace a monitorování. Informace o použití mapy aplikace najdete v [tomto článku](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
 
-## <a name="search"></a>Hledání
+## <a name="search"></a>Hledat
 
 Pomocí vyhledávací funkce můžete zadat dotaz na jiné konkrétní položky telemetrie. Na stránce **distribuované trasování** vyberte **Hledat**. Další informace o tom, jak používat funkci hledání, najdete v [tomto článku](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
 

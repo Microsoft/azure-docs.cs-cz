@@ -1,17 +1,17 @@
 ---
-title: Příprava jarní aplikace na nasazení v Azure jaře cloudu | Microsoft Docs
-description: V tomto rychlém startu připravíte pro nasazení aplikaci pružiny Java.
+title: Kurz – Příprava pružinové aplikace na nasazení v jarním cloudu Azure
+description: V tomto kurzu připravíte pro nasazení pružinovou aplikaci Java.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3c567c54f887afe9ac112970a682b9466515d949
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721250"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708732"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Kurz: Příprava aplikace na jaře v jazyce Java pro nasazení v jarním cloudu Azure
 
@@ -176,4 +176,3 @@ V tomto kurzu jste zjistili, jak nakonfigurovat aplikaci pro pružinu v jazyce J
 
 > [!div class="nextstepaction"]
 > [Přečtěte si, jak nastavit konfigurační server](spring-cloud-tutorial-config-server.md).
-

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 334a5c3c76f1ebaf4c8c36020110ef9c0bcc8d69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46764fdae89d5af4c9dedf4037d07dc48d1cda83
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208689"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703683"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Kurz: vytvoření a konfigurace instance Azure Active Directory Domain Services s pokročilými možnostmi konfigurace
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -73,7 +73,7 @@ Když vytváříte instanci Azure služba AD DS, zadáte název DNS. Při volbě
 >
 > Můžete použít kořenový název DNS pro spravovanou doménu Azure služba AD DS, ale možná budete muset vytvořit další záznamy DNS pro další služby ve vašem prostředí. Pokud například spustíte webový server, který je hostitelem lokality pomocí kořenového názvu DNS, může dojít ke konfliktům názvů, které vyžadují další položky DNS.
 >
-> V těchto kurzech a v článcích s návody se jako krátký příklad používá vlastní doména *contoso.com* . Ve všech příkazech zadejte vlastní název domény, který může obsahovat jedinečnou předponu.
+> V těchto kurzech a v článcích s návody se jako krátký příklad používá vlastní doména *aadds.contoso.com* . Ve všech příkazech zadejte vlastní název domény, který může obsahovat jedinečnou předponu.
 >
 > Další informace najdete v tématu [výběr předpony pro pojmenování pro doménu] [pojmenování předpon].
 
@@ -167,7 +167,7 @@ Na stránce **Souhrn** v průvodci zkontrolujte nastavení konfigurace pro sprav
 
     ![Oznámení v Azure Portal probíhajícího nasazení](./media/tutorial-create-instance-advanced/deployment-in-progress.png)
 
-1. Vyberte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte instanci Azure služba AD DS ze seznamu prostředků Azure, jako je třeba *contoso.com*. Na kartě **Přehled** se zobrazuje, že se spravovaná doména aktuálně *nasazuje*. Nemůžete nakonfigurovat spravovanou doménu, dokud není plně zřízené.
+1. Vyberte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte instanci Azure služba AD DS ze seznamu prostředků Azure, jako je třeba *aadds.contoso.com*. Na kartě **Přehled** se zobrazuje, že se spravovaná doména aktuálně *nasazuje*. Nemůžete nakonfigurovat spravovanou doménu, dokud není plně zřízené.
 
     ![Stav služby Domain Services ve stavu zřizování](./media/tutorial-create-instance-advanced/provisioning-in-progress.png)
 

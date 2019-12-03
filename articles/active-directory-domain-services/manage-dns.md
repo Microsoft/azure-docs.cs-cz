@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: c225be5a1123c89d8a470a8dea48b3c57eb893b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f47f112991a4fe2e5b245920db98e5ae7617161a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474570"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704931"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>Správa DNS ve spravované doméně Azure AD Domain Services
 
@@ -52,7 +52,7 @@ Pokud chcete vytvářet a upravovat záznamy DNS v Azure služba AD DS, musíte 
 1. V podokně *řídicí panel* v okně **Správce serveru** vyberte **Přidat role a funkce**.
 1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí*vyberte **Další**.
 1. Pro *typ instalace*ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
-1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.contoso.com*, a pak vyberte **Další**.
+1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.aadds.contoso.com*, a pak vyberte **Další**.
 1. Na stránce **role serveru** klikněte na **Další**.
 1. Na stránce **funkce** rozbalte uzel **Nástroje pro vzdálenou správu serveru** a potom rozbalte uzel **Nástroje pro správu rolí** . V seznamu nástrojů pro správu rolí vyberte funkci **Nástroje serveru DNS** .
 
@@ -69,7 +69,7 @@ S nainstalovanými nástroji serveru DNS můžete spravovat záznamy DNS ve spra
 > Pokud chcete spravovat DNS ve spravované doméně služba AD DS Azure, musíte být přihlášeni k uživatelskému účtu, který je členem skupiny *Správci AAD řadiče domény* .
 
 1. Z obrazovky Start vyberte **Nástroje pro správu**. Zobrazí se seznam dostupných nástrojů pro správu, včetně **DNS** nainstalovaného v předchozí části. Vyberte **DNS** a spusťte konzolu pro správu DNS.
-1. V dialogovém okně **připojit k serveru DNS** vyberte **následující počítač**a potom zadejte název domény DNS spravované domény, například *contoso.com*:
+1. V dialogovém okně **připojit k serveru DNS** vyberte **následující počítač**a potom zadejte název domény DNS spravované domény, například *aadds.contoso.com*:
 
     ![Připojení k spravované doméně Azure služba AD DS v konzole DNS](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 

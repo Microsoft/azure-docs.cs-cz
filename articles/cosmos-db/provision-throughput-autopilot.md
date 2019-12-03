@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 584fedc2ebe93b2a3cfd8a3b538a410d29aebe9d
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2259343d2c7bca1f60a5256efcd572e6cc21b565
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383094"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706039"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Vytvoření kontejnerů a databází Azure Cosmos v režimu autopilotu (Preview)
 
@@ -102,7 +102,7 @@ V následující tabulce je uvedeno maximum v celém rozsahu a omezení úloži�
 |---------|---------|
 |4000 RU/s  |   50 GB    |
 |20 000 RU/s  |  200 GB  |
-|100 000 RU/s    |  1 TB   |
+|100 000 RU/s    |  1 TB   |
 |500 000 RU/s    |  5 TB  |
 
 ## <a name="next-steps"></a>Další kroky

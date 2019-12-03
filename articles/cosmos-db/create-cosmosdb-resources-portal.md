@@ -1,6 +1,6 @@
 ---
-title: Vytvoří databázi Azure Cosmos z Azure Portal.
-description: Vytvořte databázi, kontejner a položky Azure Cosmos pomocí Azure Portal.
+title: Rychlý Start – vytvoření databáze Azure Cosmos z Azure Portal
+description: V tomto rychlém startu se dozvíte, jak vytvořit databázi Azure Cosmos, kontejner a položky pomocí Azure Portal.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/01/2019
-ms.openlocfilehash: b42a442564812f4386eb94b9bd7b7c9aff9e9f29
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0f7102081d5ccd29507917068893b484902a4fb3
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220734"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708185"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rychlý Start: vytvoření účtu, databáze, kontejneru a položek Azure Cosmos z Azure Portal
 
@@ -30,7 +30,7 @@ Databáze Azure Cosmos je databázová služba Microsoftu s více modely použit
 
 V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit účet Azure Cosmos DB [rozhraní SQL API](sql-api-introduction.md) , vytvořit databázi dokumentů a kontejner a přidat data do kontejneru. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
@@ -73,7 +73,7 @@ Přidejte data do nové databáze pomocí Průzkumník dat.
 
 1. V **Průzkumník dat**rozbalte databázi **ToDoList** a rozbalte kontejner **položky** . V dalším kroku vyberte **položky**a pak vyberte **Nová položka**. 
    
-   ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
+   ![Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
 1. Přidejte následující strukturu do dokumentu na pravé straně podokna **dokumenty** :
 
@@ -87,7 +87,7 @@ Přidejte data do nové databáze pomocí Průzkumník dat.
      }
      ```
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
    
    ![Zkopírujte data JSON a vyberte Uložit v Průzkumník dat Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
    

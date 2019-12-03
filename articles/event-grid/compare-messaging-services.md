@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: b68bd69c6d00ac177466f8fdaabd89649c910287
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7a2b15ffdcc1a611c2cb165b4f2657ad7276e05b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790292"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706355"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Výběr mezi službami Azure Messaging Services – Event Grid, Event Hubs a Service Bus
 
@@ -98,7 +98,7 @@ V jiných případech služby vzájemně propojíte do kanálu událostí a dat.
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články: 
-
+- [Možnosti asynchronního zasílání zpráv v Azure](/azure/architecture/guide/technology-choices/messaging.md)
 - [Události, datové body a zprávy – výběr správné služby zasílání zpráv Azure pro vaše data](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
 - [Fronty úložiště a fronty Service Bus – porovnání a kontrast](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - Pokud chcete začít pracovat s Event Gridem, přečtěte si článek [Vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).

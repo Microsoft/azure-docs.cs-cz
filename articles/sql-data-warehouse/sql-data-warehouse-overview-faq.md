@@ -10,22 +10,22 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f7b4f926bb9611d87c67276f754a6b596850b59d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 9e64d184ef0fd120d1bc64ce274ee882b7938df0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645595"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708651"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
 
 ## <a name="general"></a>Obecné
 
-Otázka: Co je Azure synapse?
+Otázka: Co je Azure Synapse?
 
-A. Azure synapse je bezlimitní analytická služba, která přináší dohromady datové sklady a analýzu velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek, a to s využitím neserverových nebo zřízených prostředků se škálováním na vyžádání. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure synapse je bezlimitní analytická služba, která přináší dohromady datové sklady a analýzu velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek, a to s využitím neserverových nebo zřízených prostředků se škálováním na vyžádání. Azure Synapse propojuje tyto dva světy pomocí jednotného prostředí pro ingestování, přípravu, správu a poskytování dat pro okamžité využití v BI a strojovém učení. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
-Otázka: Co se stalo s Azure SQL Data Warehouse?
+Otázka: Co se stalo se službou Azure SQL Data Warehouse?
 
 A. Azure synapse je vyvíjejí se Azure SQL Data Warehouse (SQL DW). Převzali jsme stejný špičkový datový sklad v oboru na celou novou úroveň výkonu a schopností. Můžete dál spouštět stávající úlohy datového skladu v provozu s Azure synapse a automaticky využívat výhod nových funkcí, které jsou ve verzi Preview. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
@@ -83,10 +83,6 @@ A. Řada funkcí je podporována, ty, které nejsou podporovány a jsou zdokumen
 
 ## <a name="tooling-and-administration"></a>Nástroje a Správa
 
-Otázka: Podporujete databázové projekty v aplikaci Visual Studio.
-
-A. V současné době nepodporujeme databázové projekty v aplikaci Visual Studio. Pokud chcete přetypování hlasovat, aby se tato funkce získala, navštivte náš požadavek na [Požadavek na funkce databázových projektů]uživatele.
-
 Otázka: Podporuje SQL Analytics rozhraní REST API?
 
 A. Ano. Většina funkcí REST, které je možné používat s SQL Database, je také k dispozici v rámci SQL Analytics. Informace o rozhraní API najdete na stránkách dokumentace k REST nebo na [MSDN].
@@ -130,6 +126,6 @@ Další informace o Azure synapse jako celku najdete na naší stránce s [Přeh
 [Nepodporované funkce tabulky]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
 [Objekty blob Azure Storage]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-[Požadavek na funkce databázových projektů]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
+[Database projects feature request]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
 [Přehled]: ./sql-data-warehouse-overview-faq.md

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 8c1736fcd4356e0778c3b36301b4490764efab76
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240888"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707226"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes
 
@@ -89,13 +89,13 @@ Microsoft a zákazníci mají odpovědnost za pracovní uzly Kubernetes, kde:
 * Základní image operačního systému obsahuje požadované dodatky (například monitorování a síťové agenty).
 * Pracovní uzly automaticky dostanou opravy operačního systému.
 * Problémy s komponentou roviny ovládacího prvku Kubernetes, které běží na pracovních uzlech, jsou automaticky opraveny. Součástí jsou tyto součásti:
-  * Kube-proxy
+  * Kube – proxy
   * Síťové tunely, které poskytují komunikační cesty k hlavním komponentám Kubernetes
   * Kubelet
   * Docker nebo Moby démon
 
 > [!NOTE]
-> Pokud je v pracovním uzlu nefunkční komponenta roviny ovládacího prvku, může tým AKS restartovat jednotlivé součásti nebo celý pracovní uzel. Tyto operace restartování jsou automatizované a poskytují automatickou nápravu běžných problémů. Tato restartování se vyskytnou pouze na úrovni _uzlu_ , nikoli v clusteru, pokud se nejedná o nouzovou údržbu nebo výpadek.
+> Pokud je v pracovním uzlu nefunkční komponenta roviny ovládacího prvku, může tým AKS restartovat jednotlivé součásti nebo celý pracovní uzel. Tyto operace restartování jsou automatizované a poskytují automatickou nápravu běžných problémů. Tato restartování se vyskytují jenom na úrovni _uzlu_ a ne v clusteru, pokud nedochází k nouzové údržbě nebo výpadku.
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Odpovědnosti zákazníků pro pracovní uzly AKS
 

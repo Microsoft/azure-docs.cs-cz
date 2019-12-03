@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f0b8a438a7c236c5e016673a59bfb691e9c2152
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: ee4c41ca3179eead0e4fd470a02a5cdfa4a6d43a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546301"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705244"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Odstranění Azure Active Directory Domain Services spravované domény pomocí Azure Portal
 
@@ -35,7 +35,7 @@ Pokud už nepotřebujete spravovanou doménu, můžete instanci Azure Active Dir
 Pokud chcete odstranit spravovanou doménu Azure služba AD DS, proveďte následující kroky:
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**.
-1. Vyberte název spravované domény Azure služba AD DS, například *contoso.com*.
+1. Vyberte název spravované domény Azure služba AD DS, například *aadds.contoso.com*.
 1. Na stránce **Přehled** vyberte **Odstranit**. Odstranění potvrďte tak, že znovu zadáte název domény spravované domény a pak vyberete **Odstranit**.
 
 Odstranění spravované domény Azure služba AD DS může trvat 15-20 minut nebo déle.

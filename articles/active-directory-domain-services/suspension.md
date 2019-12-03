@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 31a1c7cd72d57b9c680452d5e84f8fe78f47cebb
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693313"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704276"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Pochopení stavů a řešení pozastavených domén v Azure Active Directory Domain Services
 
@@ -35,7 +35,7 @@ Spravovaná doména Azure služba AD DS může být v jednom z následujících 
 * [Instalovanou](#running-state)
 * [Vyžaduje pozornost](#needs-attention-state)
 * [Rozpuštěn](#suspended-state)
-* [Odstraňování](#deleted-state)
+* [Odstraněné](#deleted-state)
 
 ## <a name="running-state"></a>Běžící stav
 
@@ -96,7 +96,7 @@ Na stránce Stav služby Azure služba AD DS v Azure Portal se zobrazí [Upozorn
 Pokud chcete obnovit stav spravované domény Azure služba AD DS, která je v *pozastaveném* stavu, proveďte následující kroky:
 
 1. V Azure Portal vyhledejte a vyberte **Domain Services**.
-1. Ze seznamu vyberte spravovanou doménu Azure služba AD DS, například *contoso.com*, a pak vyberte **stav**.
+1. Ze seznamu vyberte spravovanou doménu Azure služba AD DS, například *aadds.contoso.com*, a pak vyberte **stav**.
 1. V závislosti na příčině pozastavení vyberte výstrahu, jako je například *AADDS503* nebo *AADDS504*.
 1. Vyberte odkaz řešení, který je uveden v upozornění, a postupujte podle kroků k jeho vyřešení.
 

@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e218877ee0d29e493a31091ccbce406ed888f8cc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114731"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705977"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Vizualizace dat z Time Series Insights v Power BI
 
@@ -29,10 +29,13 @@ V tomto případě se naučíte vizualizovat data časových řad prostřednictv
 
 Nezapomeňte si zaregistrovat [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Stáhněte a nainstalujte si nejnovější verzi [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-* Vytvoření nebo vytvoření instance [Azure Time Series Insights GA](time-series-insights-get-started.md) nebo [Azure Time Series Insights instance Preview](time-series-insights-update-how-to-manage.md)
+* Mít nebo vytvořit [instanci služby Azure Time Series Insights Preview](time-series-insights-update-how-to-manage.md)
+
+> [!IMPORTANT]
+> Konektor Power BI je v prostředích s průběžnými *platbami* , které jsou nakonfigurované pro **záložní úložiště**, v Time Series Insights Preview.
 
 ## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Připojení dat z Time Series Insights k Power BI
 
@@ -65,12 +68,12 @@ Jak začít:
 
        [![připojit](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. Pokud jste instanci Time Series Insights pro záložní úložiště nenakonfigurovali, zobrazí se upozornění.
+   1. Pokud jste instanci Time Series Insights pro **záložní úložiště**nenakonfigurovali, zobrazí se upozornění.
 
        [![připojit](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > V Azure Portal můžete nakonfigurovat stávající instanci pro teplé úložiště.
+       > V Azure Portal můžete nakonfigurovat stávající instanci pro **teplé úložiště** .
 
 1. Vyberte **Kopírovat dotaz do schránky**.
 1. Nyní spusťte Power BI Desktop.

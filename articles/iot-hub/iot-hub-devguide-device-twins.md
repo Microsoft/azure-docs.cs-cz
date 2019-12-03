@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 406f6f7a3db5f63fb50242a93f021c481631adaa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a800336fb6fda8a0ed0af71f243936d29e8079e7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209720"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706834"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Pochopení a používání vláken zařízení v IoT Hub
 
@@ -119,7 +119,7 @@ V předchozím příkladu obsahuje nedokončené zařízení vlastnost `batteryL
 
 ### <a name="desired-property-example"></a>Požadovaný příklad vlastnosti
 
-V předchozím příkladu se v back-endu řešení a v aplikaci pro zařízení používá k synchronizaci konfigurace telemetrie pro toto zařízení `telemetryConfig` nedokončené požadované vlastnosti zařízení. Příklad:
+V předchozím příkladu se v back-endu řešení a v aplikaci pro zařízení používá k synchronizaci konfigurace telemetrie pro toto zařízení `telemetryConfig` nedokončené požadované vlastnosti zařízení. Například:
 
 1. Back-end řešení nastaví požadovanou vlastnost s požadovanou konfigurační hodnotou. Tady je část dokumentu s požadovanou sadou vlastností:
 
@@ -182,12 +182,12 @@ Back-end řešení funguje na vlákna zařízení pomocí následujících atomi
 
   - Vlastnosti
 
-    | Název | Hodnota |
+    | Name (Název) | Hodnota |
     | --- | --- |
-    $content-type | application/json |
-    $iothub-enqueuedtime |  Čas odeslání oznámení |
+    $content – typ | application/json |
+    $iothub – enqueuedtime |  Čas odeslání oznámení |
     $iothub-Message-source | twinChangeEvents |
-    $content-encoding | utf-8 |
+    $content – kódování | UTF-8 |
     deviceId | ID zařízení |
     hubName | Název IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) časové razítko operace |
@@ -285,7 +285,7 @@ Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s ná
 
 ## <a name="device-twin-size"></a>Velikost vlákna zařízení
 
-IoT Hub vynutilo omezení velikosti 8 KB u každé z příslušných celkových hodnot `tags`, `properties/desired`a `properties/reported`s vyloučením prvků jen pro čtení.
+IoT Hub vynutila omezení velikosti 8 KB pro hodnotu `tags`a omezení velikosti 32 KB každou na hodnotu `properties/desired` a `properties/reported`. Tyto součty jsou výhradně prvky jen pro čtení.
 
 Velikost je vypočítána napočítáním všech znaků, kromě řídicích znaků UNICODE (segmenty C0 a C1) a mezer, které jsou mimo řetězcové konstanty.
 
@@ -295,7 +295,7 @@ IoT Hub se odmítne s chybou všech operací, které by zvýšily velikost těch
 
 IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v požadovaném a hlášeném vlastnosti zařízení. Časová razítka jsou v UTC a kódovaná ve formátu [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 
-Příklad:
+Například:
 
 ```json
 {

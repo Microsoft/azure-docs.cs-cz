@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: odeslání dat prostřednictvím brány – Azure IoT Edge & Machine Learning'
-description: 'Kurz: použití vývojového počítače jako simulovaného IoT Edgeho zařízení k posílání dat do IoT Hub pomocí zařízení nakonfigurovaného jako transparentní brány.'
+title: 'Kurz: odesílání dat zařízení přes transparentní bránu – Machine Learning v Azure IoT Edge'
+description: V tomto kurzu se dozvíte, jak můžete použít vývojový počítač jako simulované IoT Edge zařízení a posílat data do IoT Hub tím, že projdete zařízení nakonfigurované jako transparentní bránu.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cdd1e1d83b1d184e6a904fc64e9c2395c2896d54
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 50f339b257110f0a5dc0ac08b9f40043ee384afb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665623"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706915"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Kurz: posílání dat přes transparentní bránu
 
