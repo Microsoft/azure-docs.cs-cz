@@ -1,5 +1,5 @@
 - name: Dokumentace k rozhraní API Bingu pro vyhledávání obrázků
-  href: index.yml
+  href: ../bing-web-search/index.yml
 - name: Přehled
   expanded: true
   items:

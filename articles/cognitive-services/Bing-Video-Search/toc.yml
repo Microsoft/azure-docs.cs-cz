@@ -1,5 +1,5 @@
 - name: Dokumentace rozhraní API Bingu pro vyhledávání videí
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Přehled
   expanded: true
   items:
