@@ -1,29 +1,29 @@
 ---
-title: 'Kurz: Návrh služby Azure Database pro MariaDB pomocí Azure CLI'
-description: Tento kurz vysvětluje, jak vytvářet a spravovat Azure Database pro MariaDB server a databáze pomocí rozhraní příkazového řádku Azure z příkazového řádku.
+title: 'Kurz: návrh Azure Database for MariaDB – Azure CLI'
+description: V tomto kurzu se dozvíte, jak vytvořit a spravovat Azure Database for MariaDB Server a databázi pomocí Azure CLI z příkazového řádku.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/10/2018
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 548f4f10758b2d69bf4fda00f8bf52d33d20306c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 91283b453e71e476d247e752b24e9eec0047a814
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999163"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776777"
 ---
-# <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Kurz: Návrh služby Azure Database pro MariaDB pomocí Azure CLI
+# <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Kurz: návrh Azure Database for MariaDB pomocí Azure CLI
 
-Azure Database pro MariaDB je služba relačních databází v cloudu Microsoftu založená na databázovém stroji MariaDB Community Edition. V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
+Azure Database for MariaDB je služba relačních databází v cloudu Microsoftu založená na databázovém stroji MariaDB Community Edition. V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření databáze Azure Database for MariaDB
 > * Konfigurace brány firewall serveru
 > * Použití [nástroje pro příkazový řádek mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) k vytvoření databáze
-> * Načtení ukázkových dat
+> * Načíst ukázková data
 > * Dotazování dat
 > * Aktualizace dat
 > * Obnovení dat
@@ -51,9 +51,9 @@ az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Vytvoření serveru Azure Database for MariaDB
-Vytvoření serveru Azure Database for MariaDB s `az mariadb server create` příkazu. Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
+Vytvořte Azure Database for MariaDB Server pomocí příkazu `az mariadb server create`. Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
 
-Následující příklad vytvoří Azure Database pro MariaDB server umístěný v `westus` ve skupině prostředků `myresourcegroup` s názvem `mydemoserver`. Server má správce s přihlašovacím jménem `myadmin`. Je pro obecné účely, generace 5 serveru se 2 virtuálními jádry. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
+Následující příklad vytvoří server Azure Database for MariaDB umístěný v `westus` ve skupině prostředků `myresourcegroup` s názvem `mydemoserver`. Server má správce s přihlašovacím jménem `myadmin`. Je to Pro obecné účelyý Server Gen 5 se 2 virtuální jádra. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
 
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.2
@@ -70,7 +70,7 @@ Vysvětlení platných hodnot pro jednotlivé oblasti a úrovně najdete v dokum
 
 
 ## <a name="configure-firewall-rule"></a>Konfigurace pravidla brány firewall
-Vytvoření Azure Database pro MariaDB pravidlo brány firewall na úrovni serveru s `az mariadb server firewall-rule create` příkazu. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako například **mysql** nástroj příkazového řádku nebo MySQL Workbench, aby připojení k serveru přes bránu firewall služby Azure MariaDB.
+Vytvořte Azure Database for MariaDB pravidlo brány firewall na úrovni serveru pomocí příkazu `az mariadb server firewall-rule create`. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například nástroj příkazového řádku **MySQL** nebo MySQL Workbench, aby se připojila k vašemu serveru prostřednictvím brány firewall služby Azure MariaDB.
 
 Následující příklad vytvoří pravidlo brány firewall `AllowMyIP`, které povolí připojení z konkrétní IP adresy 192.168.0.1. Nahraďte ji za IP adresu nebo rozsah IP adres, které odpovídají umístění, ze kterého se budete připojovat.
 
@@ -133,7 +133,7 @@ mysql> USE mysampledb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>Vytvoření tabulek v databázi
-Teď, když víte, jak se připojit ke službě Azure Database pro MariaDB databáze, dokončíte některé základní úlohy.
+Teď, když víte, jak se připojit k databázi Azure Database for MariaDB, dokončete některé základní úlohy.
 
 Nejdřív vytvoříte tabulku a načtete do ní data. Pojďme vytvořit tabulku, ve které jsou uložené informace o inventáři.
 ```sql
@@ -170,14 +170,14 @@ SELECT * FROM inventory;
 ```
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>Obnovení databáze k dřívějšímu bodu v čase
-Představte si, že jste tuto tabulku omylem odstranili. Taková situace se těžko napravuje. Azure Database pro MariaDB umožňuje vrátit do libovolného bodu v čase během posledních až 35 dnů a obnovit tento bod v čase na nový server. Tento nový server můžete použít k obnovení odstraněných dat. Následující kroky obnoví ukázkový server do bodu před přidáním tabulky.
+Představte si, že jste tuto tabulku omylem odstranili. Taková situace se těžko napravuje. Azure Database for MariaDB vám umožní vrátit se k libovolnému bodu v čase během posledních až 35 dnů a obnovit tento bod v čase na nový server. Tento nový server můžete použít k obnovení odstraněných dat. Následující kroky obnoví ukázkový server do bodu před přidáním tabulky.
 
 K obnovení budete potřebovat následující informace:
 
-- Bod obnovení: Vyberte v daném okamžiku, který nastal dřív, než se server změnil. Musí být větší nebo rovný hodnotě Nejstarší záloha zdrojové databáze.
-- Cílový server: Zadejte nový název serveru, kterou chcete obnovit
-- Zdrojový server: Zadejte název serveru, který chcete obnovit z
-- Umístění: Nejde vyberte oblast, ve výchozím nastavení je stejná jako u zdrojového serveru
+- Bod obnovení: Vyberte bod v čase, který nastal dřív, než došlo ke změně serveru. Musí být větší nebo rovný hodnotě Nejstarší záloha zdrojové databáze.
+- Cílový server: Zadejte nový název serveru, na který chcete provést obnovení.
+- Zdrojový server: Zadejte název serveru, ze kterého se má obnovení provést.
+- Umístění: Nejde vyberte oblast, ve výchozím nastavení je stejná jako u zdrojového serveru.
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -188,7 +188,7 @@ Příkaz `az mariadb server restore` potřebuje následující parametry:
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
-| name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| jméno | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Vyberte bod v čase, ke kterému se má provést obnovení. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete použít například své místní časové pásmo, třeba `2017-04-13T05:59:00-08:00`, nebo formát UTC Zulu `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
 
@@ -196,13 +196,13 @@ Obnovení serveru k bodu v čase vytvoří nový server jako kopii původního s
 
 Příkaz je synchronní a vrátí se po obnovení serveru. Po dokončení obnovení vyhledejte nově vytvořený server. Ověřte, že se data obnovila podle očekávání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for MariaDB
 > * Konfigurace brány firewall serveru
 > * Použití [nástroje pro příkazový řádek mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) k vytvoření databáze
-> * Načtení ukázkových dat
+> * Načíst ukázková data
 > * Dotazování dat
 > * Aktualizace dat
 > * Obnovení dat

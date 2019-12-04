@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0ba69715998f110d88015bdba2fbf340a6b64089
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: acd601512f2240802de47483a015f03a226da115
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491631"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796082"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Jaký je rozdíl mezi bránou virtuální sítě Azure (VPN Gateway) a bránou VPN Azure Virtual WAN?
 
@@ -36,8 +36,6 @@ Informace o krocích automatizace u partnerů najdete v tématu o [automatizaci 
 Ne. Můžete použít libovolné zařízení s podporou VPN, které vyhovuje požadavkům Azure na podporu IKEv2/IKEv1 protokolu IPsec.
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Jak partneři pro Virtual WAN automatizují možnosti připojení s využitím Azure Virtual WAN?
-
-Softwarově definovaná řešení možností připojení obvykle spravují svá pobočková zařízení s využitím kontroleru nebo centra pro zřizování zařízení. Kontroler může k automatizaci připojení k Azure Virtual WAN využívat rozhraní API Azure. Další informace najdete v tématu o automatizaci Virtual WAN u partnerů.
 
 Softwarově definovaná řešení možností připojení obvykle spravují svá pobočková zařízení s využitím kontroleru nebo centra pro zřizování zařízení. Kontroler může k automatizaci připojení k Azure Virtual WAN využívat rozhraní API Azure. Automatizace zahrnuje odesílání informací o větvích, stahování konfigurace Azure, nastavování tunelů IPSec na virtuální rozbočovače Azure a automatické nastavení připojení k vytvoření připojení k virtuální síti WAN na Azure. Když máte stovky větví, připojení pomocí virtuálních sítí WAN CPE je snadné, protože možnosti registrace neberou v platnost nutnost nastavovat, konfigurovat a spravovat rozsáhlé připojení IPsec. Další informace najdete v tématu věnovaném [automatizaci partnerů pro Virtual WAN](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 

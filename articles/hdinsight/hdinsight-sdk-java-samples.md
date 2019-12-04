@@ -1,20 +1,20 @@
 ---
-title: 'Azure HDInsight: Ukázky Java'
+title: 'Azure HDInsight: ukázky Java'
 description: Příklady jazyka Java na GitHubu pro běžné úlohy s využitím sady HDInsight SDK pro jazyk Java.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
-ms.date: 04/15/2019
-ms.openlocfilehash: 4a9bfe83c9fc1ccbc496ec97822305720dc52c10
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/29/2019
+ms.openlocfilehash: e277814bda41a70f9ac8ff02b6e8018fba4b6f52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076840"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775348"
 ---
-# <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Ukázky Java
+# <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: ukázky Java
 
 > [!div class="op_single_selector"]
 > * [Příklady v Javě](hdinsight-sdk-java-samples.md)
@@ -27,11 +27,11 @@ Tento článek obsahuje:
 * Obsahuje odkazy na ukázky pro úlohy vytváření clusterů.
 * Odkazy na referenční obsah pro jiné úlohy správy.
 
-## <a name="prerequisites"></a>Požadavky
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [Azure HDInsight SDK pro Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+## <a name="prerequisites"></a>Předpoklady
+
+[Azure HDInsight SDK pro Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>Správa clusteru – vytvoření
 

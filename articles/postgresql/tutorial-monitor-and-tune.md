@@ -1,19 +1,19 @@
 ---
-title: Kurz týkající se monitorování a ladění ve službě Azure Database for PostgreSQL – jeden Server
-description: Tento kurz vás provede monitorování a ladění ve službě Azure Database for PostgreSQL – jeden Server.
+title: 'Kurz: monitorování a ladění – Azure Database for PostgreSQL – jeden server'
+description: Tento kurz vás provede monitorováním a optimalizací na Azure Database for PostgreSQL jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: dcd8363db33809e2a33885f43e570c53807505fd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073088"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774733"
 ---
-# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Kurz: Sledování a ladění – Azure Database for PostgreSQL – jeden Server
+# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Kurz: monitorování a ladění Azure Database for PostgreSQL – jeden server
 
 Azure Database for PostgreSQL obsahuje funkce, které vám pomohou pochopit a zlepši výkon vašeho serveru. V tomto kurzu se naučíte, jak:
 > [!div class="checklist"]
@@ -92,5 +92,5 @@ Funkce [Doporučení k výkonu](concepts-performance-recommendations.md) analyzu
 ### <a name="permissions"></a>Oprávnění
 Pro spuštění funkce analýzy za použití funkce Doporučení k výkonu potřebujete oprávnění **vlastníka** nebo **přispěvatele**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [sledování a ladění ](concepts-monitoring.md) ve službě Azure Database for PostgreSQL.

@@ -1,5 +1,5 @@
 ---
-title: Skript Azure CLI – Změna konfigurace serveru
+title: Skript rozhraní příkazového řádku – Změna parametrů serveru – Azure Database for MariaDB
 description: Tento ukázkový skript rozhraní příkazového řádku vypíše všechny dostupné konfigurace serveru a aktualizuje hodnotu innodb_lock_wait_timeout.
 author: ajlam
 ms.author: andrela
@@ -7,16 +7,16 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 11/28/2018
-ms.openlocfilehash: 514f2fe7e8c2b94e175bc6f6fb0cec8ea3d0c9c6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 12/02/2019
+ms.openlocfilehash: 515eb7523c5a08d52ad5eb4f7bd261f3f4e03fc4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125878"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771790"
 ---
-# <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Výpis a aktualizace konfigurace serveru Azure Database pro MariaDB server pomocí rozhraní příkazového řádku Azure
-Tento ukázkový skript rozhraní příkazového řádku vypíše všechny dostupné parametry konfigurace jako a jejich povolené hodnoty pro službu Azure Database pro MariaDB serveru a nastaví *innodb_lock_wait_timeout* hodnotu než výchozí hodnotu.
+# <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Seznam a aktualizace konfigurací Azure Database for MariaDB serveru pomocí Azure CLI
+Tento ukázkový skript rozhraní příkazového řádku vypíše všechny dostupné parametry konfigurace, jakož i jejich přípustné hodnoty pro Azure Database for MariaDB Server a nastaví *innodb_lock_wait_timeout* na jinou hodnotu než výchozí.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -36,13 +36,13 @@ Tento skript používá příkazy uvedené v následující tabulce:
 | **Příkaz** | **Poznámky** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Vytvoření serveru az mariadb](/cli/azure/mariadb/server#az-mariadb-server-create) | Vytvoří server MariaDB, který je hostitelem databáze. |
-| [AZ mariadb server configuration list](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) | Vypíše konfiguraci serveru Azure Database pro MariaDB server. |
-| [az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) | Aktualizuje konfiguraci serveru Azure Database pro MariaDB server. |
-| [AZ mariadb server configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) | Zobrazí konfiguraci serveru Azure Database pro MariaDB server. |
+| [AZ MariaDB Server Create](/cli/azure/mariadb/server#az-mariadb-server-create) | Vytvoří server MariaDB, který je hostitelem databází. |
+| [AZ MariaDB Server Configuration list](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) | Vypíše konfiguraci serveru Azure Database for MariaDB. |
+| [AZ MariaDB Server Configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) | Aktualizujte konfiguraci serveru Azure Database for MariaDB. |
+| [AZ MariaDB Server Configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) | Zobrazit konfiguraci serveru Azure Database for MariaDB. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
-- Přečtěte si další informace o Azure CLI: [Dokumentace k Azure CLI](/cli/azure).
-- Vyzkoušejte i další skripty: [Ukázky v Azure CLI pro službu Azure Database pro MariaDB](../sample-scripts-azure-cli.md)
-- Další informace o parametrech serveru najdete v tématu [způsob konfigurace parametrů serveru ve službě Azure Database pro MariaDB](../howto-server-parameters.md).
+## <a name="next-steps"></a>Další kroky
+- Další informace o Azure CLI najdete tady: [Dokumentace k Azure CLI](/cli/azure).
+- Vyzkoušejte další skripty: [ukázky v Azure CLI pro Azure Database for MariaDB](../sample-scripts-azure-cli.md)
+- Další informace o parametrech serveru najdete v tématu [Postup konfigurace parametrů serveru v Azure Database for MariaDB](../howto-server-parameters.md).

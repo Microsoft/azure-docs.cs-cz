@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Návrh databáze Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure'
-description: Tento kurz ukazuje, jak vytvořit, nakonfigurovat a dotazovat první databáze Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure.
+title: 'Kurz: návrh Azure Database for PostgreSQL-Single server – Azure CLI'
+description: V tomto kurzu se dozvíte, jak pomocí Azure CLI vytvořit, nakonfigurovat a dotazovat svůj první Azure Database for PostgreSQL – samostatný server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,20 +8,20 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: db0ff9facbd8609955c5ef1918b0f8a6aa53ea65
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0f1f4c07f3dc694bcae9b540c71a11e53a00eb7f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447226"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773676"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Kurz: Návrh databáze Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure 
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Kurz: návrh Azure Database for PostgreSQLho samostatného serveru pomocí Azure CLI 
 V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for PostgreSQL
 > * Konfigurace brány firewall serveru
 > * Vytvoření databáze pomocí nástroje [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html)
-> * Načtení ukázkových dat
+> * Načíst ukázková data
 > * Dotazování dat
 > * Aktualizace dat
 > * Obnovení dat
@@ -46,12 +46,12 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL
 Vytvořte [server Azure Database for PostgreSQL](overview.md) pomocí příkazu [az postgres server create](/cli/azure/postgres/server). Server obsahuje soubor databází spravovaných jako skupina. 
 
-Následující příklad vytvoří ve skupině prostředků `myresourcegroup` server s názvem `mydemoserver` a přihlašovacím jménem správce serveru `myadmin`. Název serveru se mapuje na název DNS, a proto musí být v rámci Azure globálně jedinečný. Nahraďte položku `<server_admin_password>` vlastní hodnotou. Je pro obecné účely, generace 5 serveru se 2 virtuálními jádry.
+Následující příklad vytvoří ve skupině prostředků `myresourcegroup` server s názvem `mydemoserver` a přihlašovacím jménem správce serveru `myadmin`. Název serveru se mapuje na název DNS, a proto musí být v rámci Azure globálně jedinečný. Nahraďte položku `<server_admin_password>` vlastní hodnotou. Je to Pro obecné účelyý Server Gen 5 se 2 virtuální jádra.
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_2` mapuje se na Basic, obecné 5 a 2 virtuální jádra.
++ `--sku-name B_Gen5_2` se mapuje na Basic, Gen 5 a 2 virtuální jádra.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
 
@@ -67,7 +67,7 @@ Ve výchozím nastavení se databáze **postgres** vytvoří v rámci vašeho se
 
 Pomocí příkazu [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) vytvořte pravidlo brány firewall na úrovni serveru Azure PostgreSQL. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je třeba [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) nebo [PgAdmin](https://www.pgadmin.org/), aby se k vašemu serveru připojila prostřednictvím brány firewall služby Azure PostgreSQL. 
 
-Abyste se mohli připojit z vaší sítě, můžete nastavit pravidlo brány firewall, které pokrývá rozsah IP adres. Následující příklad vytvoří pomocí příkazu [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) pravidlo brány firewall `AllowMyIP` umožňující připojení z jedné IP adresy.
+Pokud se chcete připojovat ze své sítě, můžete nastavit pravidlo brány firewall, které pokrývá rozsah IP adres. Následující příklad vytvoří pomocí příkazu [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) pravidlo brány firewall `AllowMyIP` umožňující připojení z jedné IP adresy.
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -132,7 +132,7 @@ Pokud má klientský počítač nainstalovaný systém PostgreSQL, můžete se p
    ```
 
    > [!TIP]
-   > Pokud chcete použít cestu adresy URL pro připojení k Postgres, kódování URL uživatelské jméno se symbolem @ `%40`. Například by být připojovací řetězec pro psql,
+   > Pokud upřednostňujete použití cesty URL pro připojení k Postgres, adresa URL: kódování @ uživatelského jména pomocí `%40`. Například připojovací řetězec pro psql by byl,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -202,7 +202,7 @@ Příkaz `az postgres server restore` potřebuje následující parametry:
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
-| name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| jméno | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Vyberte bod v čase, ke kterému se má provést obnovení. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete použít například své místní časové pásmo, třeba `2017-04-13T05:59:00-08:00`, nebo formát UTC Zulu `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
 
@@ -211,15 +211,15 @@ Obnovení serveru k bodu v čase vytvoří nový server jako kopii původního s
 Příkaz je synchronní a vrátí se po obnovení serveru. Po dokončení obnovení vyhledejte nově vytvořený server. Ověřte, že se data obnovila podle očekávání.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak pomocí Azure CLI (rozhraní příkazového řádku) a dalších nástrojů provést následující:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for PostgreSQL
 > * Konfigurace brány firewall serveru
 > * Vytvoření databáze pomocí nástroje [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html)
-> * Načtení ukázkových dat
+> * Načíst ukázková data
 > * Dotazování dat
 > * Aktualizace dat
 > * Obnovení dat
 
-V dalším kroku zjistěte, jak podobné úlohy provést, přečtěte si tento kurz pomocí webu Azure portal: [Návrh první databáze Azure Database for PostgreSQL pomocí webu Azure portal](tutorial-design-database-using-azure-portal.md)
+Pokud teď chcete zjistit, jak podobné úlohy provést pomocí webu Azure Portal, přečtěte si tento kurz: [Návrh první databáze Azure Database for PostgreSQL pomocí webu Azure Portal](tutorial-design-database-using-azure-portal.md).

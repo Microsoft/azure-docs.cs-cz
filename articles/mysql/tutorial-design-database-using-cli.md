@@ -1,19 +1,19 @@
 ---
-title: 'Kurz: Návrh databáze Azure Database for MySQL pomocí Azure CLI'
+title: 'Kurz: návrh serveru – Azure CLI – Azure Database for MySQL'
 description: Tento kurz vysvětluje, jak vytvořit a spravovat databázi a server Azure Database for MySQL pomocí Azure CLI z příkazového řádku.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/29/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 00c2efacab72c08d33b0004650bece2c369c757b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 00beae5a65e61f814d3498dbb41af02aaf0287fb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64936003"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771208"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Kurz: Návrh databáze Azure Database for MySQL pomocí Azure CLI
 
@@ -23,7 +23,7 @@ Azure Database for MySQL je relační databázová služba v cloudu Microsoftu z
 > * Vytvoření Azure Database for MySQL
 > * Konfigurace brány firewall serveru
 > * Použití [nástroje pro příkazový řádek mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) k vytvoření databáze
-> * Načtení ukázkových dat
+> * Načíst ukázková data
 > * Dotazování dat
 > * Aktualizace dat
 > * Obnovení dat
@@ -53,13 +53,13 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
 Vytvořte server Azure Database for MySQL pomocí příkazu az mysql server create. Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
 
-Následující příklad vytvoří server Azure Database for MySQL, jehož umístěním je `westus` ve skupině prostředků `myresourcegroup` s názvem `mydemoserver`. Server má správce uživatele, s názvem `myadmin`. Je pro obecné účely, generace 5 serveru se 2 virtuálními jádry. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
+Následující příklad vytvoří server Azure Database for MySQL, jehož umístěním je `westus` ve skupině prostředků `myresourcegroup` s názvem `mydemoserver`. Server má uživatele správce s názvem `myadmin`. Je to Pro obecné účelyý Server Gen 5 se 2 virtuální jádra. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_2` mapuje se na Basic, obecné 5 a 2 virtuální jádra.
++ `--sku-name B_Gen5_2` se mapuje na Basic, Gen 5 a 2 virtuální jádra.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
 
@@ -170,14 +170,14 @@ SELECT * FROM inventory;
 ```
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>Obnovení databáze k dřívějšímu bodu v čase
-Představte si, že jste tuto tabulku omylem odstranili. Z této situace se nejde snadno zotavit. Azure Database for MySQL umožňuje vrátit se do libovolného bodu v čase během posledních až 35 dnů a obnovit tento bod v čase na nový server. Tento nový server můžete použít k obnovení odstraněných dat. Následující kroky obnoví ukázkový server do bodu před přidáním tabulky.
+Představte si, že jste tuto tabulku omylem odstranili. Taková situace se těžko napravuje. Azure Database for MySQL umožňuje vrátit se do libovolného bodu v čase během posledních až 35 dnů a obnovit tento bod v čase na nový server. Tento nový server můžete použít k obnovení odstraněných dat. Následující kroky obnoví ukázkový server do bodu před přidáním tabulky.
 
 K obnovení budete potřebovat následující informace:
 
-- Bod obnovení: Vyberte v daném okamžiku, který nastal dřív, než se server změnil. Musí být větší nebo rovný hodnotě Nejstarší záloha zdrojové databáze.
-- Cílový server: Zadejte nový název serveru, kterou chcete obnovit
-- Zdrojový server: Zadejte název serveru, který chcete obnovit z
-- Umístění: Nejde vyberte oblast, ve výchozím nastavení je stejná jako u zdrojového serveru
+- Bod obnovení: Vyberte bod v čase, který nastal dřív, než došlo ke změně serveru. Musí být větší nebo rovný hodnotě Nejstarší záloha zdrojové databáze.
+- Cílový server: Zadejte nový název serveru, na který chcete provést obnovení.
+- Zdrojový server: Zadejte název serveru, ze kterého se má obnovení provést.
+- Umístění: Nejde vyberte oblast, ve výchozím nastavení je stejná jako u zdrojového serveru.
 
 ```azurecli-interactive
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -188,7 +188,7 @@ Příkaz `az mysql server restore` potřebuje následující parametry:
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
-| name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| jméno | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Vyberte bod v čase, ke kterému se má provést obnovení. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete použít například své místní časové pásmo, třeba `2017-04-13T05:59:00-08:00`, nebo formát UTC Zulu `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
 
@@ -196,13 +196,13 @@ Obnovení serveru k bodu v čase vytvoří nový server jako kopii původního s
 
 Příkaz je synchronní a vrátí se po obnovení serveru. Po dokončení obnovení vyhledejte nově vytvořený server. Ověřte, že se data obnovila podle očekávání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for MySQL
 > * Konfigurace brány firewall serveru
 > * Použití [nástroje pro příkazový řádek mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) k vytvoření databáze
-> * Načtení ukázkových dat
+> * Načíst ukázková data
 > * Dotazování dat
 > * Aktualizace dat
 > * Obnovení dat

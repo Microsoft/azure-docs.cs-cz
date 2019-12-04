@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: d0d1cfee535a04203d9ff995b94fcad5d432ed3e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f67c98eb8417b66c3315bccb1d56b98a68aac839
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960806"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795932"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete, nezapomeňte:
+Než začnete:
 
 > [!div class="checklist"]
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=xamarin)
 > * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=xamarin)
+> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 
 Pokud jste to již provedli, Skvělé. Pojďme pokračovat.
 
@@ -99,7 +100,7 @@ Nyní přidejte C# kód, který definuje část aplikace specifickou pro iOS. V 
 
 1. Pokud vytváříte počítač s Windows, navažte připojení k zařízení Mac pro sestavování prostřednictvím **nástrojů** > dvojice > iOS **do počítače Mac**. Postupujte podle pokynů průvodce, který poskytuje Visual Studio, a povolte tak připojení k zařízení Mac.
 
-#### <a name="uwptabhelloworlduwp"></a>[UPW](#tab/helloworlduwp)
+#### <a name="uwptabhelloworlduwp"></a>[PODPORUJÍ](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidat vzorový kód pro `helloworld.UWP` projekt
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidejte vzorový kód pro HelloWorld. Projekt UWP

@@ -1,22 +1,18 @@
 ---
-title: Vytváření automatizovaných pracovních postupů založených na plánu – Azure Logic Apps
+title: Vytváření automatizovaných pracovních postupů založených na plánu
 description: Kurz – vytvoření opakovaného a automatizovaného pracovního postupu založeného na plánu pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: eae2319e8d1c162969a04f8dafa18eec671ee1d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f9203f77d5b398f53fcb7c9fceb70604b364a4e0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034654"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790297"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Kurz: vytvoření automatizovaných pracovních postupů založených na plánech pomocí Azure Logic Apps
 
@@ -50,7 +46,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
-1. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **integrace** **Aplikace logiky** > .
+1. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **integraci** > **Aplikace logiky**.
 
    ![Vytvoření prostředku aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 
@@ -63,11 +59,11 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
    | **Název** | LA-dobacesty | Název vaší aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky (`(`, `)`) a tečky (`.`). V tomto příkladu se používá "LA-Dobacesty". |
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Název vašeho předplatného Azure |
    | **Skupina prostředků** | LA-dobacesty-SP | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md), která se používá k uspořádání souvisejících prostředků. V tomto příkladu se používá "LA-Dobacesty-RG". |
-   | **Umístění** | Západ USA | TNelze načíst oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
+   | **Umístění** | Západní USA | TNelze načíst oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 
-1. Jakmile Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure **oznámení** > **Přejít k prostředku** pro vaši nasazenou aplikaci logiky.
+1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení** > pro vaši nasazenou aplikaci logiky **Přejít na prostředek** .
 
    ![Přejít na nový prostředek aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 
@@ -251,7 +247,7 @@ Dál přidejte podmínku, která zkontroluje, zda je aktuální doba trvání ce
 
    1. V poli prostřední porovnání vyberte operátor **je větší než** .
 
-   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento limit: `15`.
+   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento limit: `15`
 
       Jakmile budete hotovi, bude podmínka vypadat jako v tomto příkladu:
 

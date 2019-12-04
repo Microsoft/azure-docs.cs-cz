@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 05/20/2019
-ms.openlocfilehash: 677ea48244f8417670a2645ab67fa08c1f869f1a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 11179d6adc676ae99257442b186a15e69dcc4a03
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142584"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764469"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s Azure Cosmos DB rozhraní API pro tabulky a Azure Table Storage pomocí sady .NET SDK
 
@@ -23,9 +23,9 @@ ms.locfileid: "70142584"
 
 Pomocí Azure Cosmos DB rozhraní API pro tabulky nebo úložiště tabulek Azure můžete ukládat strukturovaná data NoSQL do cloudu a poskytnout tak úložiště klíčů a atributů s návrhem bez schématu. Vzhledem k tomu, že Azure Cosmos DB rozhraní API pro tabulky a úložiště tabulek jsou míň schématu, je snadné přizpůsobit data, jak se vyvíjí vaše aplikace. K ukládání flexibilních datových sad, například uživatelských dat pro webové aplikace, adresářů, informací o zařízení nebo jiných typů metadat, které vaše služba vyžaduje, můžete použít Azure Cosmos DB rozhraní API pro tabulky nebo úložiště tabulek. 
 
-V tomto kurzu se dozvíte, jak používat [Microsoft Azure Cosmos DB knihovny tabulek pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) se službou Azure Cosmo DB rozhraní API pro tabulky a scénáři úložiště tabulek Azure. Je nutné použít připojení specifické pro službu Azure. Tyto scénáře jsou prozkoumány pomocí C# příkladů, které ilustrují vytváření tabulek, vkládání, aktualizaci dat, dotazování dat a odstraňování tabulek.
+Tento kurz popisuje ukázku, která vám ukáže, jak používat [Microsoft Azure Cosmos DB knihovny tabulek pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) s Azure Cosmos DB rozhraní API pro tabulky a scénáři úložiště tabulek Azure. Je nutné použít připojení specifické pro službu Azure. Tyto scénáře jsou prozkoumány pomocí C# příkladů, které ilustrují vytváření tabulek, vkládání, aktualizaci dat, dotazování dat a odstraňování tabulek.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro úspěšné dokončení této ukázky potřebujete následující položky:
 
@@ -49,7 +49,7 @@ V aplikaci Visual Studio vytvořte novou konzolovou aplikaci .NET. Následujíc�
 
 1. Do pole **název projektu** zadejte název vaší aplikace, například **CosmosTableSamples**. (V případě potřeby můžete zadat jiný název.)
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 Všechny příklady kódu v této ukázce lze přidat do metody Main () souboru **program.cs** vaší konzolové aplikace.
 
@@ -59,7 +59,7 @@ K získání balíčku NuGet použijte tento postup:
 
 1. Klikněte v **Průzkumníku řešení** pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
 
-1. Vyhledejte v online `Microsoft.Azure.Cosmos.Table`režimu `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json` ,`Microsoft.Extensions.Configuration.Binder` a vyberte **nainstalovat** a nainstalujte Microsoft Azure Cosmos DB knihovnu tabulek.
+1. Vyhledejte online `Microsoft.Azure.Cosmos.Table`, `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json``Microsoft.Extensions.Configuration.Binder` a vyberte **nainstalovat** a nainstalujte Microsoft Azure Cosmos DB knihovny tabulek.
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 
@@ -108,7 +108,7 @@ K získání balíčku NuGet použijte tento postup:
 
 1. Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **Přidat**, **Nová položka** a přidejte třídu s názvem **Common.cs**. Budete psát kód, který ověří podrobnosti připojení a vytvoří tabulku v rámci této třídy.
 
-1. Definujte metodu `CreateStorageAccountFromConnectionString` , jak je znázorněno níže. Tato metoda analyzuje podrobnosti připojovacího řetězce a ověří, zda jsou platné podrobnosti o názvu účtu a klíči účtu uvedené v souboru Settings. JSON. 
+1. Definujte metodu `CreateStorageAccountFromConnectionString`, jak je uvedeno níže. Tato metoda analyzuje podrobnosti připojovacího řetězce a ověří, zda jsou platné podrobnosti o názvu účtu a klíči účtu uvedené v souboru Settings. JSON. 
 
  ```csharp
 using System;
@@ -149,7 +149,7 @@ namespace CosmosTableSamples
 
 ## <a name="create-a-table"></a>Vytvoření tabulky 
 
-Třída [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) vám umožňuje načíst tabulky a entity, které jsou uložené ve službě Table Storage. Vzhledem k tomu, že v účtu Cosmos DB rozhraní API pro tabulky nejsou žádné tabulky, přidejte `CreateTableAsync` metodu do třídy **Common.cs** a vytvořte tabulku:
+Třída [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) vám umožňuje načíst tabulky a entity, které jsou uložené ve službě Table Storage. Vzhledem k tomu, že v účtu Cosmos DB rozhraní API pro tabulky nejsou žádné tabulky, přidejte do třídy **Common.cs** metodu `CreateTableAsync` pro vytvoření tabulky:
 
 ```csharp
 public static async Task<CloudTable> CreateTableAsync(string tableName)

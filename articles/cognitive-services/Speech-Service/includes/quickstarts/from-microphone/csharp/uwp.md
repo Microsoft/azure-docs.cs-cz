@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: rozpoznávání řeči pomocí mikrofonu C# (UWP) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d1da9a9ef32aed1975595bb15909b9531ab2400
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 50de8fd6ba28039c5ca7660c96c6d863f53cf02a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503553"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796140"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete, nezapomeňte:
+Než začnete:
 
 > [!div class="checklist"]
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=uwp)
 > * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=uwp)
+> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 
 Pokud jste to již provedli, Skvělé. Pojďme pokračovat.
 

@@ -1,5 +1,5 @@
 ---
-title: Skript Azure CLI – Škálování serveru Azure Database for MySQL
+title: Skript rozhraní příkazového řádku – škálování serveru – Azure Database for MySQL
 description: Tento ukázkový skript rozhraní příkazového řádku po dotazování metrik škáluje server Azure Database for MySQL na jinou úroveň výkonu.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 08/07/2019
-ms.openlocfilehash: f54b3f6fa8bb37f57479d6a9e7bc05340e411a48
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 12/02/2019
+ms.openlocfilehash: 54082daeeee2d5cc894aee49e2c3456e377637f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882929"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771307"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>Monitorování a škálování serveru Azure Database for MySQL pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku škáluje výpočetní výkon a úložiště pro jeden Azure Database for MySQL server po dotazování metrik. Výpočetní výkon se může škálovat nahoru nebo dolů. Velikost úložiště se dá škálovat jenom nahoru.
@@ -41,7 +41,7 @@ Tento skript používá příkazy uvedené v následující tabulce:
 | [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) | Vypíše hodnotu metriky pro prostředky. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [Azure Database for MySQL COMPUTE a úložišti](../concepts-pricing-tiers.md)
-- Vyzkoušejte další skripty: [Ukázky v Azure CLI pro Azure Database for MySQL](../sample-scripts-azure-cli.md)
+- Vyzkoušejte i další skripty: [Ukázky v Azure CLI pro službu Azure Database for MySQL](../sample-scripts-azure-cli.md)
 - Další informace o [Azure CLI](/cli/azure)

@@ -1,22 +1,22 @@
 ---
-title: Skript Azure CLI – obnovení serveru Azure Database for MariaDB
-description: Tento ukázkový skript Azure CLI ukazuje, jak obnovit serveru Azure Database for MariaDB a jeho databáze k dřívějšímu bodu v čase.
+title: Skript CLI – obnovení serveru – Azure Database for MariaDB
+description: Tento ukázkový skript Azure CLI ukazuje, jak obnovit server Azure Database for MariaDB a jeho databáze k dřívějšímu bodu v čase.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 11/28/2018
-ms.openlocfilehash: 2d294f5b43ba3fb7587ca1d03903e39d75291754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: d7591c4f88026644ee2453150cfa226a155ab32d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171350"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771700"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Obnovení serveru Azure Database for MariaDB pomocí Azure CLI
-Tento ukázkový skript rozhraní příkazového řádku obnoví jeden Azure Database pro MariaDB serveru k určitému bodu v čase.
+Tento ukázkový skript rozhraní příkazového řádku obnoví jeden Azure Database for MariaDB Server k předchozímu bodu v čase.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -36,10 +36,10 @@ Tento skript používá příkazy uvedené v následující tabulce:
 | **Příkaz** | **Poznámky** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Vytvoření serveru az mariadb](/cli/azure/mariadb/server#az-mariadb-server-create) | Vytvoří server MariaDB, který je hostitelem databáze. |
-| [az mariadb server restore](/cli/azure/mariadb/server#az-mariadb-server-restore) | Obnoví server ze zálohy. |
+| [AZ MariaDB Server Create](/cli/azure/mariadb/server#az-mariadb-server-create) | Vytvoří server MariaDB, který je hostitelem databází. |
+| [AZ MariaDB Server Restore](/cli/azure/mariadb/server#az-mariadb-server-restore) | Obnoví server ze zálohy. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
-- Přečtěte si další informace o Azure CLI: [Dokumentace k Azure CLI](/cli/azure).
-- Vyzkoušejte i další skripty: [Ukázky v Azure CLI pro službu Azure Database pro MariaDB](../sample-scripts-azure-cli.md)
+## <a name="next-steps"></a>Další kroky
+- Další informace o Azure CLI najdete tady: [Dokumentace k Azure CLI](/cli/azure).
+- Vyzkoušejte další skripty: [ukázky v Azure CLI pro Azure Database for MariaDB](../sample-scripts-azure-cli.md)

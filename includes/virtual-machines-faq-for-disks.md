@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008579"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795712"
 ---
 Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Managed Disks a Azure SSD úrovně Premium disků.
 
@@ -137,7 +137,9 @@ U spravovaných disků je nemůžete přejmenovat. Nespravovaný disk ale může
 
 **Můžu na disku Azure použít dělení na oddíly GPT?**
 
-Dělení GPT se dá použít jenom na datových discích, nikoli na discích s operačním systémem. Disky s operačním systémem musí používat styl oddílu MBR.
+Bitové kopie 1. generace můžou na datových discích používat jenom oddíly GPT, ne disky s operačním systémem. Disky s operačním systémem musí používat styl oddílu MBR.
+
+[Image 2. generace](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) můžou na disku s operačním systémem i na datových discích používat dělení GPT.
 
 **Jaké typy disků podporují snímky?**
 
@@ -149,7 +151,7 @@ Snímky podpory SSD úrovně Premium, Standard SSD a standardní HDD. U těchto 
 Rezervace disku je možnost předem si koupit jeden rok diskového úložiště a snížit tak celkové náklady.
 
 **Jaké možnosti nabízí rezervace disku Azure?**
-Rezervace disku Azure nabízí možnost koupit SSD úrovně Premium v zadaných SKU z P30 (1 TiB) až P80 (32 TiB) po dobu jednoho roku. Minimální množství disků potřebných k zakoupení rezervovaného disku není nijak omezené. Kromě toho se můžete rozhodnout, že platíte s jednou, předem platbou nebo měsíčními platbami. Pro SSD úrovně Premium Managed Disks se neúčtují žádné další transakční náklady.
+Rezervace disku Azure nabízí možnost koupit SSD úrovně Premium v zadaných SKU z P30 (1 TiB) až P80 (32 TiB) po dobu jednoho roku. Minimální množství disků potřebných k zakoupení rezervovaného disku není nijak omezené. Kromě toho můžete zvolit jednu platbu předem nebo měsíční platby. Pro SSD úrovně Premium Managed Disks se neúčtují žádné další transakční náklady.
 
 Rezervace se provádějí ve formě disků, mimo kapacitu. Jinými slovy, když rezervujete disk P80 (32 TiB), dostanete na jeden P80 disk, ale nebudete moct Divvy tuto specifickou rezervaci na dva menší P70 (16 TiB) disky. Můžete samozřejmě vyhradit tolik disků, kolik jich budete chtít, a to včetně dvou samostatných disků P70 (16 TiB).
 
@@ -252,7 +254,7 @@ Kompletní příklad vytvoření SSD úrovně Standard disku pomocí šablony na
 
 **Můžu převést existující disky na SSD úrovně Standard?**
 Ano, je to možné. Přečtěte si téma [Převod úložiště Azure Managed disks z úrovně Standard na Premium a naopak](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) pro obecné pokyny k převodu Managed disks. Pomocí následující hodnoty můžete aktualizovat typ disku na SSD úrovně Standard.
--AccountType StandardSSD_LRS
+– AccountType StandardSSD_LRS
 
 **Jaká je výhoda použití SSD úrovně Standard disků místo HDD?**
 SSD úrovně Standard disky dodávají lepší latenci, konzistenci, dostupnost a spolehlivost v porovnání s disky HDD. Úlohy aplikací běží na SSD úrovně Standard mnohem plynule. Upozorňujeme, že SSD úrovně Premium disky jsou doporučeným řešením pro většinu produkčních úloh náročných na vstupně-výstupní operace.
@@ -263,7 +265,7 @@ Ne, standardní disky SSD jsou k dispozici pouze jako Managed Disks.
 **Podporuje SSD úrovně Standard disky smlouvu SLA pro virtuální počítače s jednou instancí?**
 Ne, standardní SSD nemají smlouvu SLA pro virtuální počítače s jednou instancí. Pro smlouvu SLA pro virtuální počítače s jednou instancí použijte SSD úrovně Premium disky.
 
-## <a name="migrate-to-managed-disks"></a>Migrace na spravované disky
+## <a name="migrate-to-managed-disks"></a>Migrace na Spravované disky
 
 **Existuje dopad migrace na Managed Disks výkon?**
 

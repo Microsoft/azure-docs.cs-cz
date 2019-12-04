@@ -1,20 +1,20 @@
 ---
-title: 'Kurz: Návrh služby Azure Database pro MariaDB s využitím webu Azure portal'
+title: 'Kurz: návrh Azure Database for MariaDB-Azure Portal'
 description: Tento kurz vysvětluje, jak vytvořit a spravovat databázi a server Azure Database for MariaDB pomocí webu Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 1938a84d3e9c0ba8c84cbdbd2eee5b7ca448554d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 28a20325fac92d0b296c336e2e1186487d1e0272
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515664"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776704"
 ---
-# <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MariaDB s využitím webu Azure portal
+# <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MariaDB pomocí webu Azure Portal
 
 Azure Database for MariaDB je spravovaná služba, pomocí které můžete provozovat, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. Azure Portal umožňuje snadnou správu vašeho serveru a návrh databáze.
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte, jak pomocí webu Azure Portal provést následujíc�
 > * Vytvoření databáze Azure Database for MariaDB
 > * Konfigurace brány firewall serveru
 > * Vytvoření databáze pomocí nástroje pro příkazový řádek mysql
-> * Načtení ukázkových dat
+> * Načíst ukázková data
 > * Dotazování dat
 > * Aktualizace dat
 > * Obnovení dat
@@ -41,7 +41,7 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetníc
 
 1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
 
-2. Vyberte **databází** > **Azure Database pro MariaDB**. Můžete také zadat **MariaDB** do vyhledávacího pole vyhledejte službu.
+2. Vyberte **databáze** > **Azure Database for MariaDB**. Službu můžete vyhledat také zadáním **MariaDB** do vyhledávacího pole.
    
    ![Přechod k MySQL](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
@@ -51,25 +51,25 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetníc
 
     Nastavení | Navrhovaná hodnota | Popis pole 
     ---|---|---
-    Název serveru | *Jedinečný název serveru* | Zvolte jedinečný název, který identifikuje váš server Azure Database for MariaDB. Například **mydemoserver**. K zadanému názvu serveru se připojí název domény *.mariadb.database.azure.com*. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.
+    Název serveru | *Jedinečný název serveru* | Zvolte jedinečný název serveru, který identifikuje váš server Azure Database for MariaDB. Například **mydemoserver**. K zadanému názvu serveru se připojí název domény *.mariadb.database.azure.com*. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.
     Předplatné | *Vaše předplatné* | Vyberte předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků | **myresourcegroup** | Zadejte název nové skupiny prostředků nebo vyberte existující skupinu prostředků.
     Výběr zdroje | **Prázdné** | Vyberte **Prázdné** a vytvořte nový server. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for MariaDB, vyberte **Záloha**.)
     Přihlašovací jméno správce serveru | **myadmin** | Přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-    Heslo | *Nějaké si zvolte* | Zadejte nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena, číslice (0 – 9) a jiné než alfanumerické znaky (!, $, #, % a tak dále).
+    Heslo | *Nějaké si zvolte* | Zadejte nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
     Potvrzení hesla | *Nějaké si zvolte*| Potvrďte heslo účtu správce.
-    Location | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
+    Umístění | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
     Version | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující použití jiné verze).
-    Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenová úroveň** > **Pro obecné účely**. U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**vCore** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
+    Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenová úroveň** > **Pro obecné účely**. U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**Vcore** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
     
    ![Cenová úroveň](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
-   > S **automatického růstu** povoleno serveru zvýší úložiště v případě, že se blíží přidělené limit, bez dopadu na vaše úlohy.
+   > Díky **automatickému růstu** může server zvýšit kapacitu úložiště při přístupu k přidělenému limitu, aniž by to ovlivnilo vaše zatížení.
 
-4. Vyberte **Vytvořit**. Po jedné až dvou minutách bude server Azure Database for MariaDB spuštěný v cloudu. Pokud chcete monitorovat proces nasazení, vyberte na panelu nástrojů **Oznámení**.
+4. Vyberte **Create** (Vytvořit). Po jedné až dvou minutách bude server Azure Database for MariaDB spuštěný v cloudu. Pokud chcete monitorovat proces nasazení, vyberte na panelu nástrojů **Oznámení**.
 
-## <a name="configure-the-firewall"></a>Konfigurace brány firewall
+## <a name="configure-the-firewall"></a>Konfigurace firewallu
 
 Služba Azure Database for MariaDB je chráněná bránou firewall. Ve výchozím nastavení se všechna připojení k serveru a databázím na serveru odmítají. Než se poprvé připojíte k Azure Database for MariaDB, nakonfigurujte bránu firewall tak, že do ní přidáte IP adresu veřejné sítě klientského počítače (nebo rozsah IP adres).
 
@@ -93,7 +93,7 @@ Na webu Azure Portal získejte hodnoty **Název serveru** (plně kvalifikovaný)
 
    ![Vlastnosti serveru](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-V našem příkladu je název serveru **mydemoserver.mariadb.database.azure.com** a přihlašovací jméno správce serveru je **myadmin\@mydemoserver**.
+V našem příkladu je název serveru **mydemoserver.MariaDB.Database.Azure.com** a přihlašovací jméno správce serveru je **myadmin\@mydemoserver**.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>Připojení k serveru pomocí mysql
 
@@ -174,21 +174,21 @@ Představte si, že jste omylem odstranili důležitou databázovou tabulku a ne
    
    ![Formulář Obnovit](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
-   - **Bod obnovení**: Vyberte bod v čase, který chcete provést obnovení, v rozmezí okamžik. Nezapomeňte převést své místní časové pásmo na čas UTC.
-   - **Obnovit na nový server**: Zadejte nový název serveru, chcete-li obnovit.
-   - **Umístění**: V oblasti je stejná jako u zdrojového serveru a nedá se změnit.
-   - **Cenová úroveň**: Cenová úroveň je stejný jako u zdrojového serveru a nedá se změnit.
+   - **Bod obnovení:** Vyberte v uvedeném časovém rozmezí bod v čase, ke kterému chcete provést obnovení. Nezapomeňte převést své místní časové pásmo na čas UTC.
+   - **Obnovit na nový server:** Zadejte název nového serveru, na který chcete provést obnovení.
+   - **Umístění:** Oblast se shoduje se zdrojovým serverem a nedá se změnit.
+   - **Cenová úroveň:** Cenová úroveň se shoduje se zdrojovým serverem a nedá se změnit.
    
 3. Výběrem **OK** provedete [obnovení serveru k určitému bodu v čase](./howto-restore-server-portal.md) před odstraněním tabulky. Při obnovení serveru se vytvoří nová kopie serveru k vybranému bodu v čase. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili, jak na webu Azure Portal provádět následující kroky:
 
 > [!div class="checklist"]
 > * Vytvoření databáze Azure Database for MariaDB
 > * Konfigurace brány firewall serveru
 > * Vytvoření databáze pomocí nástroje pro příkazový řádek mysql
-> * Načtení ukázkových dat
+> * Načíst ukázková data
 > * Dotazování dat
 > * Aktualizace dat
 > * Obnovení dat

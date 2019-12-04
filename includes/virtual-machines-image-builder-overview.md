@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 04/30/2019
+ms.date: 11/25/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2bd40db51d82bd2278bd716615636968adf8277b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391596"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795814"
 ---
 Standardizované image virtuálních počítačů umožňují organizacím migrovat do cloudu a zajistit konzistenci nasazení. Obrázky obvykle zahrnují předdefinovaná nastavení zabezpečení a konfigurace a potřebný software. Nastavení vlastního kanálu pro vytváření imagí vyžaduje čas, infrastrukturu a instalaci, ale s nástrojem Azure VM Image Builder stačí jednoduše zadat jednoduchou konfiguraci popisující vaši image, odeslat ji do služby a image se sestaví a distribuuje.
  
@@ -20,7 +20,7 @@ Správce imagí virtuálních počítačů Azure (Azure image Builder) umožňuj
 > Azure image Builder je momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Funkce Preview
+## <a name="preview-features"></a>Funkce verze Preview
 
 Pro verzi Preview jsou tyto funkce podporované:
 
@@ -33,26 +33,26 @@ Pro verzi Preview jsou tyto funkce podporované:
 - Vytváření imagí ve formátu VHD.
  
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Oblasti
 Služba Azure image Builder bude k dispozici pro verzi Preview v těchto oblastech. Obrázky lze distribuovat mimo tyto oblasti.
-- Východní USA
-- Východní USA 2
+- USA – východ
+- Východ USA 2
 - Středozápadní USA
 - Západní USA
-- USA – západ 2
+- Západní USA 2
 
 ## <a name="os-support"></a>Podpora operačního systému
 AIB bude podporovat image základního operačního systému Azure Marketplace:
 - Ubuntu 18.04
 - Ubuntu 16.04
 - RHEL 7,6
-- CentOS 7.6
+- CentOS 7,6
 - Windows 10 RS5 Enterprise/Professional/Enterprise pro Virtual Desktop (EVD) 
 - Windows 2016
-- Windows 2019
+- Systém Windows 2019
 
 AIB bude podporovat RHEL ISO jako zdroj pro:
-- RHEL 7.3
+- RHEL 7,3
 - RHEL 7,4
 - RHEL 7.5
 
@@ -73,7 +73,7 @@ Azure image Builder je plně spravovaná služba Azure, která je přístupná p
 
 1. Vytvořte šablonu obrázku jako soubor. JSON. Tento soubor. JSON obsahuje informace o zdroji, přizpůsobení a distribuci obrázku. V [úložišti GitHub Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)je několik příkladů.
 1. Odešlete ji do služby. tím se vytvoří artefakt šablony obrázku ve skupině prostředků, kterou zadáte. Na pozadí bude tvůrce imagí stahovat zdrojové Image nebo ISO a skripty podle potřeby. Ukládají se do samostatné skupiny prostředků, která se automaticky vytvoří v rámci vašeho předplatného, ve formátu: IT_\<DestinationResourceGroup > _\<template >. 
-1. Po vytvoření šablony image pak můžete vytvořit image. V Tvůrci imagí na pozadí se používá šablona a zdrojové soubory k vytvoření virtuálního počítače (D1v2), sítě, veřejné IP adresy a úložiště v IT_\<DestinationResourceGroup > _\<template > skupiny prostředků.
+1. Po vytvoření šablony image pak můžete vytvořit image. V Tvůrci imagí na pozadí používá šablona a zdrojové soubory k vytvoření virtuálního počítače (výchozí velikost: Standard_D1_v2), sítě, veřejné IP adresy, NSG a úložiště v IT_\<DestinationResourceGroup > _\<template > skupiny prostředků.
 1. V rámci vytvoření bitové kopie obrázek sestaví image podle šablony a pak odstraní další prostředky v IT_\<DestinationResourceGroup > _\<template > Group, která byla vytvořena pro daný proces.
 
 

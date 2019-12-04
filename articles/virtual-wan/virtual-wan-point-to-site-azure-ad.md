@@ -1,22 +1,24 @@
 ---
-title: Vytvoření připojení typu point-to-site k Azure pomocí služby Azure Virtual WAN | Microsoft Docs
-description: V tomto kurzu zjistíte, jak pomocí služby Azure Virtual WAN vytvořit připojení VPN typu point-to-site k Azure.
+title: Konfigurace ověřování Azure AD pro připojení Point-to-site k Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak nakonfigurovat ověřování Azure Active Directory pro uživatele VPN.
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 12/02/2019
 ms.author: alzam
-ms.openlocfilehash: 0572a919675ab363c55938f8731c691cd8129826
+ms.openlocfilehash: 19aa029311584b5a9762691d24ed10c1666a032c
 ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767649"
+ms.locfileid: "74782428"
 ---
-# <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Kurz: vytvoření připojení VPN uživatele pomocí Azure Virtual WAN
+# <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Kurz: vytvoření připojení VPN uživatele pomocí Azure Virtual WAN
 
-V tomto kurzu se dozvíte, jak se pomocí služby Virtual WAN připojit ke svým prostředkům v Azure přes připojení VPN IPsec/IKE (IKEv2) nebo OpenVPN. Tento typ připojení vyžaduje, aby byl na klientském počítači nakonfigurovaný klient. Další informace o službě Virtual WAN najdete v článku [Přehled služby Virtual WAN](virtual-wan-about.md)
+V tomto kurzu se dozvíte, jak nakonfigurovat ověřování Azure AD pro uživatele VPN ve virtuální síti WAN, aby se připojily k prostředkům v Azure prostřednictvím připojení VPN OpenVPN. Ověřování Azure Active Directory je k dispozici pouze pro brány pomocí protokolu OpenVPN a klientů se systémem Windows.
+
+Tento typ připojení vyžaduje, aby byl na klientském počítači nakonfigurovaný klient. Další informace o službě Virtual WAN najdete v tématu [Přehled služby Virtual WAN](virtual-wan-about.md).
 
 V tomto kurzu se naučíte:
 
@@ -53,7 +55,7 @@ V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a př
 2. Z výsledků vyberte **virtuální síť WAN** . Na stránce virtuální síť WAN kliknutím na **vytvořit** otevřete stránku vytvořit síť WAN.
 3. Na stránce **vytvořit síť WAN** na kartě **základy** vyplňte následující pole:
 
-   ![Virtual WAN](./media/virtual-wan-point-to-site-portal/vwan.png)
+   ![Virtual WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 
    * **Subscription** (Předplatné) – vyberte předplatné, které chcete použít.
    * **Skupina prostředků** – vytvořte nové nebo použijte existující.
@@ -65,9 +67,9 @@ V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a př
 
 ## <a name="site"></a>Vytvořit prázdné virtuální rozbočovač
 
-1. V části virtuální síť WAN vyberte centra a klikněte na **+ nové centrum** .
+1. V části virtuální síť WAN vyberte centra a klikněte na **+ nové centrum**.
 
-   ![nová lokalita](media/virtual-wan-point-to-site-portal/hub1.jpg)
+   ![nová lokalita](media/virtual-wan-point-to-site-azure-ad/hub1.jpg)
 2. Na stránce vytvořit virtuální rozbočovač vyplňte následující pole.
 
    **Oblast** – vyberte oblast, do které chcete nasadit virtuální rozbočovač.
@@ -76,44 +78,40 @@ V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a př
 
    **Privátní adresní prostor centra** – rozsah adres rozbočovače v zápisu CIDR.
 
-   ![nová lokalita](media/virtual-wan-point-to-site-portal/hub2.jpg)  
-3. Klikněte na tlačítko **zkontrolovat + vytvořit** .
-4. Na stránce **ověřování proběhlo úspěšně** klikněte na **vytvořit** .
+   ![nová lokalita](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
+3. Klikněte na **Zkontrolovat a vytvořit**.
+4. Na stránce **ověřování proběhlo úspěšně** klikněte na **vytvořit**.
 
-## <a name="site"></a>Vytvoření konfigurace P2S
+## <a name="site"></a>Vytvořit novou konfiguraci P2S
 
 Konfigurace P2S definuje parametry pro připojení vzdálených klientů.
 
-1. Přejděte na **All resources** (Všechny prostředky).
-2. Klikněte na virtuální síť WAN, kterou jste vytvořili.
-3. Kliknutím na **+ vytvořit uživatelskou konfiguraci sítě VPN** v horní části stránky otevřete stránku pro **Vytvoření nové konfigurace sítě VPN uživatele** .
+1. Nastavte následující proměnné a nahraďte hodnoty podle potřeby vašeho prostředí.
 
-   ![nová lokalita](media/virtual-wan-point-to-site-portal/p2s1.jpg)
-4. Na stránce **vytvořit novou konfiguraci VPN uživatele** zadejte následující pole:
+   ```powershell
+   $aadAudience = "00000000-abcd-abcd-abcd-999999999999"
+   $aadIssuer = "https://sts.windows.net/00000000-abcd-abcd-abcd-999999999999/"
+   $aadTenant = "https://login.microsoftonline.com/00000000-abcd-abcd-abcd-999999999999"    
+   ```
 
-   **Název konfigurace** – Název, kterým chcete na konfiguraci odkazovat.
+2. Spuštěním následujících příkazů vytvořte konfiguraci:
 
-   **Typ tunelu** – Protokol, který se má použít pro tunel.
-
-   **Název kořenového certifikátu** – Popisný název certifikátu.
-
-   **Data veřejného certifikátu** -Base-64 kódovaná data certifikátu X. 509
-  
-   ![nová lokalita](media/virtual-wan-point-to-site-portal/p2s2.jpg)
-5. Kliknutím na **Vytvořit** vytvořte konfiguraci.
+   ```powershell
+   $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
+   ```
 
 ## <a name="hub"></a>Upravit přiřazení centra
 
 1. Přejděte do okna **centra** v rámci virtuální sítě WAN.
-2. Vyberte centrum, ke kterému chcete přiřadit konfiguraci serveru VPN, a klikněte na **...**
+2. Vyberte centrum, ke kterému chcete přiřadit konfiguraci serveru VPN, a klikněte na tlačítko se třemi tečkami (...).
 
-   ![nová lokalita](media/virtual-wan-point-to-site-portal/p2s4.jpg)
+   ![nová lokalita](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
 3. Klikněte na **Upravit virtuální rozbočovač**.
 4. Zaškrtněte políčko **Zahrnout bránu Point-to-site** a vyberte **jednotku škálování brány** , kterou chcete použít.
 
-   ![nová lokalita](media/virtual-wan-point-to-site-portal/p2s2.jpg)
+   ![nová lokalita](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
 5. Zadejte **fond adres** , ze kterého budou klienti VPN přiřazeni IP adresy.
-6. Klikněte na **Potvrdit** .
+6. Klikněte na **Confirm** (Potvrdit).
 7. Dokončení operace může trvat až 30 minut.
 
 ## <a name="device"></a>Stáhnout profil VPN
@@ -125,27 +123,67 @@ Pomocí profilu sítě VPN nakonfigurujte své klienty.
 3. Jakmile se dokončí vytváření souboru, můžete ho kliknutím na odkaz stáhnout.
 4. K nakonfigurování klientů VPN použijte profilový soubor.
 
-### <a name="configure-user-vpn-clients"></a>Konfigurace klientů VPN uživatelů
-Pomocí staženého profilu nakonfigurujte klienty pro vzdálený přístup. Postup se v jednotlivých operačních systémech liší, postupujte tedy podle odpovídajících pokynů uvedených níže:
+## <a name="configure-user-vpn-clients"></a>Konfigurace klientů VPN uživatelů
 
-#### <a name="microsoft-windows"></a>Microsoft Windows
-##### <a name="openvpn"></a>OpenVPN
+Abyste se mohli připojit, je potřeba stáhnout klienta Azure VPN (Preview) a importovat profil klienta VPN, který jste stáhli v předchozích krocích v každém počítači, který se chce připojit k virtuální síti.
 
-1. Z oficiálního webu si stáhněte klienta OpenVPN a nainstalujte ho.
-2. Stáhněte si profil sítě VPN pro bránu. To se dá udělat na kartě Konfigurace sítě VPN uživatele v Azure Portal nebo New-AzureRmVpnClientConfiguration v PowerShellu.
-3. Rozbalte profil. V Poznámkovém bloku otevřete konfigurační soubor vpnconfig.ovpn ze složky OpenVPN.
-4. V části klientského certifikátu P2S vyplňte veřejný klíč klientského certifikátu P2S v kódování Base-64. V případě certifikátu s formátem PEM stačí otevřít soubor .cer a zkopírovat klíč Base-64 uvedený mezi hlavičkami certifikátu. V této části najdete informace [o tom, jak vyexportovat certifikát pro získání kódovaného veřejného klíče.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)
-5. V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Tady zjistíte, jak extrahovat privátní klíč.
-6. Ostatní pole ponechte beze změny. S použitím vyplněné konfigurace ve vstupu klienta se připojte k síti VPN.
-7. Zkopírujte soubor vpnconfig.ovpn do složky C:\Program Files\OpenVPN\config.
-8. Klikněte pravým tlačítkem na ikonu OpenVPN na hlavním panelu a klikněte na Připojit.
+> [!NOTE]
+> Ověřování Azure AD se podporuje jenom pro připojení OpenVPN® protokolu.
+>
 
-##### <a name="ikev2"></a>IKEv2
+#### <a name="to-download-the-azure-vpn-client"></a>Stažení klienta Azure VPN
 
-1. Vyberte konfigurační soubory klienta VPN, které odpovídají architektuře počítače s Windows. V případě 64bitové architektury procesoru zvolte instalační balíček VpnClientSetupAmd64. V případě 32bitové architektury procesoru zvolte instalační balíček VpnClientSetupX86.
-2. Dvakrát klikněte na balíček a nainstalujte ho. Pokud se zobrazí automaticky otevírané okno filtru SmartScreen, klikněte na Další informace a pak na Přesto spustit.
-3. Na klientském počítači přejděte do Nastavení sítě a klikněte na Síť VPN. Připojení k síti VPN zobrazuje název virtuální sítě, ke které se připojuje.
-4. Než se pokusíte o připojení, ověřte, že jste na klientském počítači nainstalovali klientský certifikát. Klientský certifikát se vyžaduje k ověřování při použití typu nativního ověřování certifikátů Azure. Další informace o generování certifikátů najdete v tématu věnovaném [generování certifikátů](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site). Informace o instalaci klientského certifikátu najdete v tématu Instalace klientského certifikátu.
+Pomocí tohoto [odkazu](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) si stáhněte klienta Azure VPN (Preview).
+
+#### <a name="import"></a>Import profilu klienta
+
+1. Na stránce vyberte **importovat**.
+
+    ![importovat](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
+
+2. Přejděte k souboru XML profilu a vyberte ho. Když je vybraný soubor, vyberte **otevřít**.
+
+    ![importovat](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
+
+3. Zadejte název profilu a vyberte **Uložit**.
+
+    ![importovat](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
+
+4. Vyberte **připojit** a připojte se k síti VPN.
+
+    ![importovat](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
+
+5. Po připojení se ikona změní na zelenou a znamená se **připojit**.
+
+    ![importovat](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
+
+#### <a name="delete"></a>Odstranění profilu klienta
+
+1. Vyberte tři tečky (...) vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat**.
+
+    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
+
+2. Vyberte **Odebrat** a odstraňte.
+
+    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
+
+#### <a name="diagnose"></a>Diagnostika problémů s připojením
+
+1. K diagnostice problémů s připojením můžete použít nástroj pro **diagnostiku** . Vyberte tři tečky (...) vedle připojení VPN, které chcete diagnostikovat, aby se nabídka zobrazila. Pak vyberte **Diagnostika**.
+
+    ![diagnóz](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
+
+2. Na stránce **Vlastnosti připojení** vyberte **Spustit diagnostiku**.
+
+    ![diagnóz](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
+
+3. Přihlaste se pomocí svých přihlašovacích údajů.
+
+    ![diagnóz](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
+
+4. Zobrazení výsledků diagnostiky.
+
+    ![diagnóz](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
 
 ## <a name="viewwan"></a>Zobrazení virtuální sítě WAN
 

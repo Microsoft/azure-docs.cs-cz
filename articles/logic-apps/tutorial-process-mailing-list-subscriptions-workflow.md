@@ -1,22 +1,18 @@
 ---
-title: Vytváření automatizovaných pracovních postupů založených na schválení sestavení – Azure Logic Apps
+title: Vytváření automatizovaných pracovních postupů založených na schválení
 description: Kurz – vytvoření automatizovaného pracovního postupu založeného na schválení, který zpracovává odběry seznamu adresátů pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: f720e22542533d17fc7ab581f8ba8d9c03a89570
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: bcd90859066911797d78737187cae6d361029ddd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025581"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784659"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Kurz: vytváření pracovních postupů pro automatizované schvalování pomocí Azure Logic Apps
 
@@ -51,7 +47,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
-1. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **integrace** **Aplikace logiky** > .
+1. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **integraci** > **Aplikace logiky**.
 
    ![Vytvoření nového prostředku aplikace logiky](./media/tutorial-process-mailing-list-subscriptions-workflow/create-new-logic-app-resource.png)
 
@@ -68,7 +64,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 
-1. Jakmile Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure **oznámení** > **Přejít k prostředku** pro vaši nasazenou aplikaci logiky.
+1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení** > pro vaši nasazenou aplikaci logiky **Přejít na prostředek** .
 
    ![Přejít na nový prostředek aplikace logiky](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
 
@@ -82,7 +78,7 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
 ## <a name="add-trigger-to-monitor-emails"></a>Přidání triggeru pro monitorování e-mailů
 
-1. V návrháři aplikace logiky zadejte do vyhledávacího pole `when email arrives` jako filtr. V seznamu **triggery** vyberte, kdy se má aktivovat **nový e-mail** pro poskytovatele e-mailu.
+1. V návrháři aplikace logiky do vyhledávacího pole zadejte `when email arrives` jako filtr. V seznamu **triggery** vyberte, kdy se má aktivovat **nový e-mail** pro poskytovatele e-mailu.
 
    V tomto příkladu se používá aktivační událost sady Office 365 Outlook:
 
@@ -159,7 +155,7 @@ Dále přidejte podmínku pro kontrolu vybrané odpovědi schvalovatele.
 
 1. V akci **Odeslat e-mail pro schválení** vyberte **Nový krok**.
 
-1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte jako filtr `condition`. V seznamu akce vyberte akci **Podmínka** .
+1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `condition` jako filtr. V seznamu akce vyberte akci **Podmínka** .
 
    ![Vyhledejte a vyberte akci podmínka.](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition-action.png)
 
@@ -181,7 +177,7 @@ Dále přidejte podmínku pro kontrolu vybrané odpovědi schvalovatele.
 
    1. V poli prostřední porovnání vyberte operátor **je rovno** .
 
-   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento text: `Approve`.
+   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento text: `Approve`
 
       Jakmile budete hotovi, bude podmínka vypadat jako v tomto příkladu:
 
@@ -197,7 +193,7 @@ Nyní přidejte akci, která přidá schváleného člena do seznamu adresátů.
 
 1. V větvi podmínka **Pokud je true** vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte jako filtr `mailchimp` a vyberte akci **Přidat člena do seznamu** .
+1. V části **zvolit akci**zadejte `mailchimp` jako filtr a vyberte akci **Přidat člena do seznamu** .
 
    ![Výběr akce Přidat člena do seznamu](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -224,7 +220,7 @@ Dále přidejte podmínku, abyste mohli kontrolovat, jestli se nový člen úsp�
 
 1. Ve větvi **Pokud je true** v akci **Přidat člena do seznamu** vyberte **přidat akci**.
 
-1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte jako filtr `condition`. V seznamu akce vyberte **Podmínka**.
+1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `condition` jako filtr. V seznamu akce vyberte **Podmínka**.
 
 1. Přejmenujte podmínku s použitím tohoto popisu: `If add member succeeded`
 
@@ -238,7 +234,7 @@ Dále přidejte podmínku, abyste mohli kontrolovat, jestli se nový člen úsp�
 
    1. V poli prostřední porovnání vyberte operátor **je rovno** .
 
-   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento text: `subscribed`.
+   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento text: `subscribed`
 
       Jakmile budete hotovi, bude podmínka vypadat jako v tomto příkladu:
 

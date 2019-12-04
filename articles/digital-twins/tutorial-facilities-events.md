@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 492fa7f4989a40ea1d5ec91a4fbf4dbbe79ef6ce
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383262"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790344"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Kurz: příjem oznámení z digitálních vláken Azure pomocí Logic Apps
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Integrujte události s Azure Event Grid.
 > * Upozorněte události pomocí Logic Apps.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že jste [nakonfigurovali](tutorial-facilities-setup.md) a [zřídili](tutorial-facilities-udf.md) vlastní systém Azure Digital Twins. Než budete pokračovat, ujistěte se, že máte následující:
 
@@ -51,13 +51,13 @@ V této části nastavíte [Event Grid](../event-grid/overview.md) pro shromaž�
 
 [Téma Event Grid](../event-grid/concepts.md#topics) poskytuje rozhraní pro směrování událostí generovaných uživatelsky definovanou funkcí. 
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **Vytvořit prostředek**. 
 
-1. Vyhledejte a vyberte **Téma Event Gridu**. Vyberte **Vytvořit**.
+1. Vyhledejte a vyberte **Téma Event Gridu**. Vyberte **Create** (Vytvořit).
 
-1. Zadejte **Název** tématu Event Gridu a zvolte **Předplatné**. Vyberte **skupinu prostředků** , kterou jste použili nebo vytvořili pro instanci digitálního vlákna a **umístění**. Vyberte **Vytvořit**. 
+1. Zadejte **Název** tématu Event Gridu a zvolte **Předplatné**. Vyberte **skupinu prostředků** , kterou jste použili nebo vytvořili pro instanci digitálního vlákna a **umístění**. Vyberte **Create** (Vytvořit). 
 
     [![vytvoření tématu Event gridu](./media/tutorial-facilities-events/create-event-grid-topic.png)](./media/tutorial-facilities-events/create-event-grid-topic.png#lightbox)
 
@@ -110,17 +110,17 @@ Službu [Azure Logic Apps](../logic-apps/logic-apps-overview.md) můžete použ�
 
 1. V levém podokně [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**.
 
-1. Vyhledejte a vyberte nový prostředek **Aplikace logiky**. Vyberte **Vytvořit**.
+1. Vyhledejte a vyberte nový prostředek **Aplikace logiky**. Vyberte **Create** (Vytvořit).
 
-1. Zadejte **název** prostředku aplikace logiky a pak vyberte své **předplatné**, **skupinu prostředků**a **umístění**. Vyberte **Vytvořit**.
+1. Zadejte **název** prostředku aplikace logiky a pak vyberte své **předplatné**, **skupinu prostředků**a **umístění**. Vyberte **Create** (Vytvořit).
 
     [![vytvořit prostředek Logic Apps](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
 
 1. Otevřete prostředek Logic Apps, když se nasadí, a pak otevřete podokno **návrháře aplikace logiky** . 
 
-1. Vyberte, kdy se má aktivovat **událost prostředku Event Grid** . Po zobrazení výzvy se přihlaste ke svému tenantovi pomocí svého účtu Azure. Pokud se zobrazí výzva, vyberte v případě potřeby přístup k prostředku Event Grid možnost **Povolení přístupu** . Vyberte **Pokračovat**.
+1. Vyberte, kdy se má aktivovat **událost prostředku Event Grid** . Po zobrazení výzvy rozbalte možnost **Azure Event Grid** a přihlaste se ke svému klientovi pomocí svého účtu Azure. Pokud se zobrazí výzva, vyberte v případě potřeby přístup k prostředku Event Grid možnost **Povolení přístupu** . Vyberte **Pokračovat**.
 
-1. V okně **při výskytu události prostředku (Preview)** : 
+1. V okně **při výskytu události prostředku** : 
    
    a. Vyberte **předplatné** , které jste použili k vytvoření tématu Event Grid.
 
@@ -198,12 +198,12 @@ Pokud chcete přestat přijímat tyto e-maily, na portálu klikněte na prostře
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez obav odstraňte prostředky vytvořené v tomto kurzu:
+Pokud chcete přestat zkoumat digitální vlákna Azure v tomto okamžiku, můžete odstranit prostředky vytvořené v tomto kurzu:
 
 1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků vaše digitální vlákna a vyberte **Odstranit**.
 
     > [!TIP]
-    > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
+    > Pokud jste narazili na potíže s odstraněním instance digitálního vlákna, aktualizovala se aktualizace služby s touto opravou. Zkuste prosím instanci znovu odstranit.
 
 2. V případě potřeby odstraňte ukázkové aplikace v pracovním počítači.
 

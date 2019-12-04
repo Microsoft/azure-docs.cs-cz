@@ -1,16 +1,16 @@
 ---
-title: Použití Azure Deployment Manager se šablonami
-description: Nasazujte prostředky Azure s využitím šablon Resource Manageru a Azure Deployment Manageru.
+title: Použít kontrolu stavu služby Azure Deployment Manager
+description: K bezpečnému nasazení prostředků Azure pomocí Azure Deployment Manager použijte kontrolu stavu.
 author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0ce37a744cdf22beddcef433fca1a64252e1673d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 355a40db7714ddae39c4171aaa0ebe4b5e5f777e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149898"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784676"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: použití kontroly stavu v Azure Deployment Manager (Public Preview)
 
@@ -40,7 +40,7 @@ Další materiály:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -73,7 +73,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 Ověření a otestování funkce Azure Functions:
 
-1. Otevřete [portál Azure](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků.  Výchozí název je název projektu s připojeným **RG** .
 1. Vyberte službu App Service ze skupiny prostředků.  Výchozím názvem služby App Service je název projektu s připojenou **WebApp** .
 1. Rozbalte položku **funkce**a pak vyberte **HttpTrigger1**.
@@ -348,7 +348,7 @@ Zopakováním této části znovu nasaďte zavedení do stavové adresy URL stav
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Otevřete [portál Azure](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 2. Přejděte k nově vytvořeným webovým aplikacím v nových skupinách prostředků vytvořených nasazením uvedení.
 3. Otevřete webovou aplikaci ve webovém prohlížeči. Zkontrolujte umístění a verzi souboru index.html.
 

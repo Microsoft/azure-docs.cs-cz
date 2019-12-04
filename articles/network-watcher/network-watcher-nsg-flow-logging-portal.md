@@ -18,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: a5d600e761ce3c3cebbe155c6be7e0f5a377eb32
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: afa1d2ca59bacec2695aaff0cacb119a8fbf787b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419628"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766595"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí portálu Azure Portal
 
@@ -46,7 +46,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myVm|
+    |Name (Název)|myVm|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
@@ -63,7 +63,7 @@ Vytvoření virtuálního počítače trvá několik minut. Se zbývajícími kr
 
 Pokud už máte sledovací proces sítě v oblasti USA – východ povolený, přejděte na [Registrace poskytovatele Insights](#register-insights-provider).
 
-1. Na portálu vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
 2. Rozbalte **Oblasti** a potom vedle **USA – východ** vyberte **...** (stejně jako v následujícím obrázku):
 
     ![Povolení Network Watcheru](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
@@ -89,7 +89,7 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
 
     | Nastavení        | Hodnota                                                        |
     | ---            | ---   |
-    | Název           | Délka 3–24 znaků, může obsahovat jenom malá písmena a čísla a musí být jedinečný v rámci všech účtů Azure Storage.                                                               |
+    | Name (Název)           | Délka 3–24 znaků, může obsahovat jenom malá písmena a čísla a musí být jedinečný v rámci všech účtů Azure Storage.                                                               |
     | Umístění       | Vyberte **USA – východ**.                                           |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
 
@@ -127,7 +127,7 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
    ![Stažení protokolů toku](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Vyberte účet úložiště, který jste nakonfigurovali ve 2. kroku [Povolení protokolu toku NSG](#enable-nsg-flow-log).
-4. V části **BLOB Service**vyberte **objekty blob**a potom vyberte kontejner **Insights-logs-networksecuritygroupflowevent** .
+4. V části **BLOB Service**vyberte **kontejnery**a pak vyberte kontejner **Insights-logs-networksecuritygroupflowevent** .
 5. V kontejneru přejděte do hierarchie složek, dokud se nedostanete do souboru PT1H. JSON, jak je znázorněno na následujícím obrázku. Soubory protokolu se zapisují do hierarchie složek, které následují po následujících konvencích vytváření názvů: https://{storageAccountName}. blob. Core. Windows. NET/Insights-logs-networksecuritygroupflowevent/resourceId =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {month}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.json
 
    ![Protokol toku](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
@@ -216,8 +216,8 @@ Hodnota **mac** v předchozím výstupu je adresa MAC síťového rozhraní, kte
 | 13.67.143.118     | Cílová IP adresa | Cílová IP adresa, kam tok mířil.                                                                                  |
 | 44931        | Zdrojový port            | Zdrojový port, ze které tok pocházel.                                           |
 | 443         | Cílový port       | Cílový port, do kterého tok mířil. Vzhledem k tomu, že provoz byl určen pro port 443, pravidlo s názvem **UserRule_default-Allow-RDP**v souboru protokolu zpracovalo tok.                                                |
-| T            | Protocol (Protokol)               | Jestli byl protokol toku TCP (T) nebo UDP (U).                                  |
-| O            | Směr              | Jestli byl provoz příchozí (I) nebo odchozí (O).                                     |
+| bil.            | Protocol (Protokol)               | Jestli byl protokol toku TCP (T) nebo UDP (U).                                  |
+| Zápis            | Směr              | Jestli byl provoz příchozí (I) nebo odchozí (O).                                     |
 | A            | Akce                 | Jestli byl provoz povolený (A) nebo odmítnutý (D).  
 | C            | Pouze stav toku **verze 2** | Zachycuje stav toku. Možné stavy jsou při vytváření toku **B**: begin. Statistiky nejsou k dispozici. **C**: pokračuje se na průběžný tok. Statistika je k dispozici v intervalu 5 minut. **E**: end, když se ukončí tok. Statistiky jsou k dispozici. |
 | 30 | Odeslané pakety – pouze zdrojová do cílové **verze 2** | Celkový počet paketů TCP nebo UDP odeslaných ze zdroje do cíle od poslední aktualizace. |

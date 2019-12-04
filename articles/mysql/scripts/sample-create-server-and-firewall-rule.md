@@ -1,5 +1,5 @@
 ---
-title: Skript Azure CLI – Vytvoření Azure Database for MySQL
+title: Skript CLI – vytvoření serveru – Azure Database for MySQL
 description: Tento ukázkový skript Azure CLI vytvoří server Azure Database for MySQL a nakonfiguruje pravidlo brány firewall na úrovni serveru.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.custom: mvc
 ms.topic: sample
-ms.date: 02/28/2018
-ms.openlocfilehash: 6a73041218ab6182d8aa3df6261697cc8dd4efe7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: a210d2d11c9d9fccd000a6dffbf1f8730bda0c8b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343252"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765786"
 ---
 # <a name="create-a-mysql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Vytvoření serveru MySQL a konfigurace pravidla brány firewall pomocí Azure CLI
 Tento ukázkový skript Azure CLI vytvoří server Azure Database for MySQL a nakonfiguruje pravidlo brány firewall na úrovni serveru. Po úspěšném spuštění skriptu bude server MySQL přístupný ze všech služeb Azure a nakonfigurovaných IP adres.
@@ -40,6 +40,6 @@ Tento skript používá příkazy uvedené v následující tabulce:
 | [az mysql server firewall create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) | Vytvoří pravidlo brány firewall umožňující přístup k serveru a jeho databázím ze zadaného rozsahu IP adres. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
-- Přečtěte si další informace o Azure CLI: [Dokumentace k Azure CLI](/cli/azure).
+## <a name="next-steps"></a>Další kroky
+- Další informace o Azure CLI najdete tady: [Dokumentace k Azure CLI](/cli/azure).
 - Vyzkoušejte i další skripty: [Ukázky v Azure CLI pro službu Azure Database for MySQL](../sample-scripts-azure-cli.md)
