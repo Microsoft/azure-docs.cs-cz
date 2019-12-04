@@ -46,10 +46,10 @@
         - name: 2. Extrakce dat uživatelů
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+        - name: 3. Zjištění mínění z projevů uživatele
+          href: tutorial-publish-settings.md
     - name: Sestavování aplikací
       items:
-        - name: Zjištění mínění z projevů uživatele
-          href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: Získání správně formátovaných dat s využitím regulárních výrazů
           href: luis-quickstart-intents-regex-entity.md
         - name: Získání přesné shody textu s využitím seznamů

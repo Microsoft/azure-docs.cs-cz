@@ -45,7 +45,7 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-maps/tutorial-geofence">Nastavení monitorované geografické zóny</a>
-          - html: <a href="/azure-maps/tutorial-iot-hub-maps">Prostorová analýza</a>
+          - html: <a href="/azure/azure-maps/tutorial-iot-hub-maps">Prostorová analýza</a>
           - html: <a href=/azure/azure-maps/tutorial-ev-routing">Směrování EV s využitím Azure Notebooks (Python)</a>
   - title: Referenční informace
     items:

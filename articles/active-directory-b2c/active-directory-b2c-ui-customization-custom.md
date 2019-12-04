@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ef4ddc422041de623b96f3a0c85f067427cacd7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 2f0e13b4e68ee4b94a254cb8497a44cc0b8b470f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374232"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209445"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "72374232"
 
 Po dokončení tohoto článku budete mít vlastní zásadu registrace a přihlašování s vaší značkou a vzhledem. Pomocí Azure Active Directory B2C (Azure AD B2C) získáte téměř úplné řízení obsahu HTML a CSS, který je prezentován uživatelům. Když použijete vlastní zásadu, nakonfigurujete přizpůsobení uživatelského rozhraní v XML namísto použití ovládacích prvků v Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Proveďte kroky v části Začínáme [s vlastními zásadami](active-directory-b2c-get-started-custom.md). Měli byste mít pracovní vlastní zásady pro registraci a přihlašování pomocí místních účtů.
 
@@ -37,7 +37,7 @@ Tady je postup, jak to funguje: Azure AD B2C spouští kód v prohlížeči zák
 
 V nadpisu Vytvořte obsah HTML s názvem značky vašeho produktu.
 
-1. Zkopírujte následující fragment kódu HTML. Je ve správném formátu HTML5 s prázdným elementem s názvem *\<div ID = "API" \> @ no__t-3/div @ no__t-4* nacházející se v rámci značek *\<body @ no__t-7* . Tento prvek indikuje, kam se má vložit Azure AD B2C obsah.
+1. Zkopírujte následující fragment kódu HTML. Je ve správném formátu HTML5 s prázdným elementem s názvem *\<div ID = "API"\>\</div\>* umístěný v\<značky\>*těla zprávy* . Tento prvek indikuje, kam se má vložit Azure AD B2C obsah.
 
    ```html
    <!DOCTYPE html>
@@ -56,15 +56,15 @@ V nadpisu Vytvořte obsah HTML s názvem značky vašeho produktu.
 > [!NOTE]
 > Prvky formuláře HTML budou odebrány z důvodu omezení zabezpečení, pokud použijete login.microsoftonline.com. Použijte b2clogin.com, pokud chcete použít prvky formuláře HTML ve vlastním obsahu HTML. Další výhody najdete v tématu [použití b2clogin.com](b2clogin.md) .
 
-## <a name="create-an-azure-blob-storage-account"></a>Vytvoření účtu služby Azure Blob Storage
+## <a name="create-an-azure-blob-storage-account"></a>Vytvoření účtu úložiště objektů Blob v Azure
 
 >[!NOTE]
 > V tomto článku používáme pro hostování našeho obsahu službu Azure Blob Storage. Svůj obsah můžete hostovat na webovém serveru, ale musíte [na svém webovém serveru povolit CORS](https://enable-cors.org/server.html).
 
 Chcete-li tento obsah HTML hostovat v úložišti objektů blob, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. V nabídce **centra** vyberte **nový** **účet úložiště** > **úložiště** > .
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. V nabídce **centra** vyberte **nový** > **úložiště** > **účet úložiště**.
 1. Vyberte **předplatné** pro účet úložiště.
 1. Vytvořte **skupinu prostředků** nebo vyberte existující.
 1. Zadejte jedinečný **název** účtu úložiště.
@@ -101,11 +101,11 @@ Pomocí následujících kroků nakonfigurujte úložiště objektů BLOB pro sd
 
 1. V nabídce vyberte **CORS**.
 1. U **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
-1. U **povolených metod**vyberte `GET` a `OPTIONS`.
+1. U **povolených metod**vyberte `GET` i `OPTIONS`.
 1. U **povolených hlaviček**zadejte hvězdičku (*).
 1. U **zveřejněných hlaviček**zadejte hvězdičku (*).
 1. Do **maximálního stáří**zadejte 200.
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 ## <a name="test-cors"></a>Test CORS
 
@@ -181,12 +181,12 @@ Složka sample_templates/Wingtip obsahuje následující soubory HTML:
 
 Tady je postup, jak použít ukázku:
 
-1. Naklonujte úložiště na místním počítači. V části sample_templates vyberte složku šablony. Můžete použít `wingtip` nebo `contoso`.
-1. Nahrajte všechny soubory ve složkách `css`, `fonts` a `images` do úložiště objektů blob, jak je popsáno v předchozích částech.
-1. Potom otevřete každý @no__t soubor -0. HTML v kořenovém adresáři buď `wingtip` nebo `contoso` (podle toho, co jste vybrali v prvním kroku), a nahraďte všechny výskyty "http://localhost" adresami URL souborů CSS, obrázků a písem, které jste odeslali v kroku 2.
-1. Uložte soubory @no__t -0. html a nahrajte je do úložiště objektů BLOB.
+1. Naklonujte úložiště na místním počítači. Vyberte složku šablony v části sample_templates. Můžete použít `wingtip` nebo `contoso`.
+1. Nahrajte všechny soubory ve složkách `css`, `fonts`a `images` do úložiště objektů blob, jak je popsáno v předchozích částech.
+1. Potom otevřete každý soubor \*. HTML v kořenovém adresáři buď `wingtip` nebo `contoso` (podle toho, co jste vybrali v prvním kroku), a nahraďte všechny výskyty "http://localhost" adresami URL souborů CSS, obrázků a písem, které jste nahráli v kroku 2.
+1. Uložte soubory \*. html a nahrajte je do úložiště objektů BLOB.
 1. Nyní upravte soubor rozšíření tak, jak bylo uvedeno dříve v [části Úprava souboru rozšíření](#modify-the-extensions-file).
-1. Pokud se zobrazí chybějící písma, obrázky nebo šablony stylů CSS, zkontrolujte odkazy v zásadách rozšíření a @no__t -0. html soubory.
+1. Pokud se zobrazí chybějící písma, obrázky nebo CSS, zkontrolujte odkazy v zásadách rozšíření a v souborech \*. html.
 
 ### <a name="content-definition-ids"></a>ID definice obsahu
 
@@ -207,4 +207,4 @@ V části Upravit vlastní zásady registrace nebo přihlašování jste nakonfi
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o prvcích uživatelského rozhraní, které je možné přizpůsobit, najdete v [Referenční příručce pro přizpůsobení uživatelského rozhraní pro předdefinované zásady](active-directory-b2c-reference-ui-customization.md).
+Další informace o prvcích uživatelského rozhraní, které je možné přizpůsobit, najdete v [Referenční příručce pro přizpůsobení uživatelského rozhraní pro toky uživatelů](active-directory-b2c-reference-ui-customization.md).
