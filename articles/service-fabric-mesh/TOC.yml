@@ -77,6 +77,8 @@
   items:
     - name: Rozhraní REST API poskytovatele prostředků služby Service Fabric Mesh
       href: /rest/api/servicefabric/sfmeshrp-index
+    - name: Reference k CLI služby Service Fabric Mesh
+      href: /cli/azure/ext/mesh
     - name: Rozhraní REST API prostředků klienta služby Service Fabric
       href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
     - name: Reference k CLI Mavenu platformy Service Fabric

@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Dokumentace k akcelerátorům řešení Azure IoT
+summary: Akcelerátory řešení Azure IoT jsou kompletní a ucelená řešení IoT připravená k nasazení, která implementují běžné scénáře IoT, jako je vzdálené monitorování.
+metadata:
+  title: Dokumentace k akcelerátorům řešení Azure IoT
+  description: Akcelerátory řešení IoT jsou kompletní a ucelená řešení IoT připravená k nasazení, která implementují běžné scénáře IoT. Tyto scénáře zahrnují vzdálené monitorování, propojenou továrnu, prediktivní údržbu a simulaci zařízení. Když nasadíte akcelerátor řešení, součástí nasazení jsou všechny požadované cloudové služby i veškerý požadovaný kód aplikace.
+  services: iot-accelerators
+  ms.service: iot-accelerators
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  manager: philmea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: cdad55cb8972e54f613319e890f052c26d94f0ef
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74781622"
+landingContent:
+- title: Informace o akcelerátorech řešení Azure IoT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou akcelerátory řešení Azure IoT?
+      url: about-iot-accelerators.md
+    - text: Web AzureIoTSolutions.com
+      url: iot-accelerators-permissions.md
+- title: Začínáme se vzdáleným monitorováním
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled akcelerátorů řešení pro vzdálené monitorování
+      url: iot-accelerators-remote-monitoring-sample-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: Vyzkoušení cloudového řešení pro vzdálené monitorování
+      url: quickstart-remote-monitoring-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Monitorování zařízení
+      url: iot-accelerators-remote-monitoring-monitor.md
+    - text: Zjišťování problémů se zařízeními
+      url: iot-accelerators-remote-monitoring-automate.md
+- title: Začínáme s průmyslovým IoT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled průmyslového IoT
+      url: overview-iot-industrial.md
+    - text: Přehled technologie OPC Twin
+      url: overview-opc-twin.md
+    - text: Přehled technologie OPC Vault
+      url: overview-opc-vault.md
+    - text: Přehled technologie OPC Publisher
+      url: overview-opc-publisher.md
+    - text: Co je průmyslové IoT?
+      url: iot-accelerators-connected-factory-features.md
+  - linkListType: quickstart
+    links:
+    - text: Vyzkoušení cloudového řešení propojené továrny
+      url: quickstart-connected-factory-deploy.md
+- title: Začínáme se simulací zařízení
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled akcelerátorů řešení simulace zařízení
+      url: iot-accelerators-device-simulation-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Vyzkoušení řešení simulace zařízení
+      url: quickstart-device-simulation-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření a spuštění simulace zařízení IoT
+      url: iot-accelerators-device-simulation-create-simulation.md
+    - text: Vytvoření vlastního simulovaného zařízení
+      url: iot-accelerators-device-simulation-create-custom-device.md
+- title: Začínáme s prediktivní údržbou
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled akcelerátoru řešení prediktivní údržby
+      url: iot-accelerators-predictive-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: Vyzkoušení řešení prediktivní údržby
+      url: quickstart-predictive-maintenance-deploy.md

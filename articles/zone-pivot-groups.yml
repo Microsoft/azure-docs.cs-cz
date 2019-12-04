@@ -1,14 +1,14 @@
 ### YamlMime:Yaml
-ms.openlocfilehash: 8f0811dacfbedd59726fcdfe58d6a71cb02797da
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
-ms.translationtype: MT
+ms.openlocfilehash: 798a3ad1a2e81eae8621ae43d47d41031603331f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968407"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74734456"
 groups:
 - id: programming-languages-set-one
   title: Programovací jazyky
-  prompt: Zvolte programovací jazyk
+  prompt: Volba programovacího jazyka
   pivots:
   - id: programming-language-csharp
     title: C#
@@ -19,4 +19,84 @@ groups:
   - id: programming-language-nodejs
     title: Node.js
   - id: programming-language-go
-    title: Go
+    title: Přejít
+- id: cogsvcs-text-analytics-features
+  title: Funkce Analýzy textu
+  prompt: Volba nabídky funkcí Analýzy textu
+  pivots:
+  - id: text-analytics-key-phrase-extraction
+    title: Extrakce klíčových frází
+  - id: text-analytics-language-detection
+    title: Rozpoznávání jazyka
+  - id: text-analytics-sentiment-analysis
+    title: Analýza mínění
+- id: client-operating-system
+  title: Programovací jazyky
+  prompt: Volba klientského operačního systému
+  pivots:
+  - id: client-operating-system-linux
+    title: Linux
+  - id: client-operating-system-macos
+    title: MacOS
+  - id: client-operating-system-windows
+    title: Windows
+- id: programming-languages-set-two
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: Další jazyky...
+- id: programming-languages-set-three
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-four
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: Další jazyky...
+- id: programming-languages-set-five
+  title: Programovací jazyky
+  prompt: Volba programovacího jazyka
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-go
+    title: Přejít
+  - id: programming-language-ruby
+    title: Ruby
+- id: URL-test-interface
+  title: Nástroj pro testování URL
+  prompt: Volba jedné z následujících možností
+  pivots:
+  - id: url-test-tool-curl
+    title: cURL
+  - id: url-test-tool-postman
+    title: Postman

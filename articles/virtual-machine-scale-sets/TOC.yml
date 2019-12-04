@@ -231,8 +231,8 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Převod šablony škálovací sady pro použití spravovaného disku
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: Použití s nízkou prioritou
-          href: virtual-machine-scale-sets-use-low-priority.md
+        - name: Použití spotové instance
+          href: use-spot.md
     - name: Spravovat
       items:
         - name: Běžné úlohy správy

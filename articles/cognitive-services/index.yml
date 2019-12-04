@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 11/04/2019
-  ms.openlocfilehash: 15a89528ce53eabe7ed70ca66a514b71ef5e5307
-  ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+  ms.openlocfilehash: fae1321f70d538dcacde83cadd83f5cb15155459
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/27/2019
-  ms.locfileid: "74554936"
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74775519"
 highlightedContent:
   items:
   - title: Co jsou služby Cognitive Services?
@@ -111,34 +111,37 @@ conceptualContent:
   - title: Search
     summary: Přidejte do svých aplikací rozhraní API pro Vyhledávání Bingu a využijte možnosti pročesávat miliardy webů, obrázků, videí a novinek pomocí jediného volání rozhraní API.
     links:
-    - url: ./Bing-Autosuggest/index.yml
+    - url: ./Bing-web-search/index.yml
+      itemType: overview
+      text: Stránka centra rozhraní API pro vyhledávání Bingu
+    - url: ./Bing-Autosuggest/get-suggested-search-terms.md
       itemType: overview
       text: Automatické návrhy pro hledání
-    - url: ./bing-custom-search/index.yml
+    - url: ./bing-custom-search/overview.md
       itemType: overview
       text: Vlastní vyhledávání
-    - url: ./bing-entities-search/index.yml
+    - url: ./bing-entities-search/overview.md
       itemType: overview
       text: Vyhledávání entit
-    - url: ./bing-image-search/index.yml
+    - url: ./bing-image-search/overview.md
       itemType: overview
       text: Vyhledávání obrázků
-    - url: ./bing-local-business-search/index.yml
+    - url: ./bing-local-business-search/overview.md
       itemType: overview
       text: Vyhledávání místních firem (Preview)
-    - url: ./bing-news-search/index.yml
+    - url: ./bing-news-search/search-the-web.md
       itemType: overview
       text: Vyhledávání zpráv
-    - url: ./bing-spell-check/index.yml
+    - url: ./bing-spell-check/overview.md
       itemType: overview
       text: Kontrola pravopisu
-    - url: ./Bing-Video-Search/index.yml
+    - url: ./Bing-Video-Search/overview.md
       itemType: overview
       text: Vyhledávání videí
-    - url: ./bing-visual-search/index.yml
+    - url: ./bing-visual-search/overview.md
       itemType: overview
       text: Vizuální vyhledávání
-    - url: ./bing-web-search/index.yml
+    - url: ./bing-web-search/overview.md
       itemType: overview
       text: Vyhledávání na webu
   - title: Kontejnery služby Cognitive Service
@@ -159,9 +162,6 @@ conceptualContent:
     - url: ./containers/docker-compose-recipe.md
       itemType: get-started
       text: Použití nástroje Docker Compose k nasazení několika kontejnerů
-    - url: ./containers/container-image-tags.md
-      itemType: reference
-      text: Značky imagí kontejnerů Cognitive Services
     - url: ./containers/container-faq.md
       itemType: reference
       text: Nejčastější dotazy ke kontejnerům Cognitive Services
@@ -170,12 +170,10 @@ additionalContent:
   - items:
     - title: Další zdroje
       links:
-      - text: Možnosti pomoci a podpory
-        url: cognitive-services-support-options.md
       - text: Azure CLI
         url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
       - text: PowerShell
-        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-3.0.0#cognitive_services
+        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
     - title: Rozhraní REST API
       links:
       - text: Správa služeb Cognitive Services

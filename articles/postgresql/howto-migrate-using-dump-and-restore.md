@@ -1,29 +1,29 @@
 ---
-title: Postup při vystavení a obnovení na Azure Database for PostgreSQL – jeden server
-description: Popisuje postup extrakce databáze PostgreSQL do souboru s výpisem paměti a obnovení ze souboru vytvořeného nástrojem pg_dump v Azure Database for PostgreSQLm jednom serveru.
+title: Výpis a obnovení Azure Database for PostgreSQL – jeden server
+description: Popisuje postup extrakce databáze PostgreSQL do souboru s výpisem paměti a obnovení ze souboru vytvořeného pg_dump v Azure Database for PostgreSQLm jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 4291db0bb1edbc366c42febed992a7c27d46eb15
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 4365338efa56593e80edcc19cba5944b213d2b72
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796753"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770233"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace databáze PostgreSQL pomocí výpisu a obnovení
-[Pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) můžete použít k extrakci databáze PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) pro obnovení databáze PostgreSQL z archivního souboru vytvořeného pomocí pg_dump.
+Můžete použít [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) k extrakci databáze PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) k obnovení databáze PostgreSQL z archivního souboru vytvořeného pg_dump.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete projít tento průvodce, budete potřebovat:
 - [Azure Database for PostgreSQL Server](quickstart-create-server-database-portal.md) s pravidly brány firewall pro povolení přístupu a databáze pod ní.
 - nainstalované nástroje příkazového řádku [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html)
 
 Pomocí těchto kroků vypíšete a obnovíte databázi PostgreSQL:
 
-## <a name="create-a-dump-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Vytvořte soubor s výpisem paměti pomocí pg_dump, který obsahuje data, která se mají načíst.
+## <a name="create-a-dump-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Vytvoření souboru s výpisem paměti pomocí pg_dump obsahujícího data, která mají být načtena
 Pokud chcete zálohovat stávající databázi PostgreSQL místně nebo na virtuálním počítači, spusťte následující příkaz:
 ```bash
 pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> -f <database>.dump
@@ -34,7 +34,7 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb
 ```
 
 
-## <a name="restore-the-data-into-the-target-azure-database-for-postgresql-using-pg_restore"></a>Obnovení dat do cílového Azure Database for PostgreSQL pomocí pg_restore
+## <a name="restore-the-data-into-the-target-azure-database-for-postgresql-using-pg_restore"></a>Obnovte data do cílového Azure Database for PostgreSQL pomocí pg_restore
 Po vytvoření cílové databáze můžete použít příkaz pg_restore a parametr-d,--dbname k obnovení dat do cílové databáze ze souboru s výpisem paměti.
 ```bash
 pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
@@ -61,18 +61,18 @@ Jedním ze způsobů, jak migrovat stávající databázi PostgreSQL do služby 
 >
 
 ### <a name="for-the-backup"></a>Pro zálohu
-- Proveďte zálohu pomocí přepínače-FC, aby bylo možné provést obnovení paralelně, abyste ho urychlili. Příklad:
+- Proveďte zálohu pomocí přepínače-FC, aby bylo možné provést obnovení paralelně, abyste ho urychlili. Například:
 
     ```
     pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
     ```
 
 ### <a name="for-the-restore"></a>Pro obnovení
-- Doporučujeme přesunout záložní soubor do virtuálního počítače Azure ve stejné oblasti jako server Azure Database for PostgreSQL, do kterého migrujete, a provést pg_restore z tohoto virtuálního počítače a snížit tak latenci sítě. Doporučujeme také vytvořit virtuální počítač s povolenými [akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-powershell.md) službami.
+- Doporučujeme přesunout záložní soubor do virtuálního počítače Azure ve stejné oblasti, ve které je Azure Database for PostgreSQL Server, do kterého migrujete, a pg_restore z tohoto virtuálního počítače snížit latenci sítě. Doporučujeme také vytvořit virtuální počítač s povolenými [akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-powershell.md) službami.
 
 - Mělo by být již provedeno ve výchozím nastavení, ale otevřete soubor s výpisem paměti, abyste ověřili, že příkazy CREATE index jsou po vložení dat. Pokud tomu tak není, přesuňte příkazy CREATE index po vložení dat.
 
-- Obnovte pomocí přepínačů-FC a-j *#* paralelizovat obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit s *#* nastavenou na dvojnásobek počtu jader cílového serveru, abyste viděli dopad. Příklad:
+- Obnovte pomocí přepínačů-FC a-j *#* paralelizovat obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit s *#* nastavenou na dvojnásobek počtu jader cílového serveru, abyste viděli dopad. Například:
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump

@@ -127,8 +127,12 @@
           href: security-center-monitoring.md
         - name: Ochrana vašich počítačů a aplikací
           href: security-center-virtual-machine-protection.md
+        - name: Referenční informace k doporučením pro počítače a aplikace
+          href: recommendations-compute-and-apps.md
         - name: Ochrana síťových prostředků
           href: security-center-network-recommendations.md
+        - name: Referenční informace k doporučením pro síť
+          href: recommendations-network.md
         - name: Ochrana dat a služby úložiště
           href: security-center-sql-service-recommendations.md
         - name: Ochrana identit a přístupu

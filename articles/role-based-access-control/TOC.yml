@@ -28,15 +28,31 @@
       href: tutorial-custom-role-cli.md
 - name: Koncepty
   items:
-    - name: Vysvětlení definic rolí
-      href: role-definitions.md
     - name: PIM pro prostředky Azure
       href: pim-azure-resource.md
     - name: Podmíněný přístup pro správu Azure
       href: conditional-access-azure-management.md
 - name: Návody
   items:
-    - name: Správa přístupu
+    - name: Zobrazení seznamu definic rolí
+      items:
+        - name: Přehled
+          href: role-definitions.md
+        - name: Zobrazení seznamu definic rolí
+          href: role-definitions-list.md
+        - name: Vestavěné role
+          href: built-in-roles.md
+    - name: Zobrazení seznamu přiřazení rolí
+      items:
+        - name: Portál
+          href: role-assignments-list-portal.md
+        - name: PowerShell
+          href: role-assignments-list-powershell.md
+        - name: Rozhraní příkazového řádku
+          href: role-assignments-list-cli.md
+        - name: REST API
+          href: role-assignments-list-rest.md
+    - name: Přidání nebo odebrání přiřazení rolí
       items:
         - name: Portál
           href: role-assignments-portal.md
@@ -50,9 +66,9 @@
           href: role-assignments-rest.md
         - name: Šablona
           href: role-assignments-template.md
-    - name: Odepření přístupu
+    - name: Zobrazení seznamu zamítnutých přiřazení
       items:
-        - name: Přiřazení zamítnutí
+        - name: Přehled
           href: deny-assignments.md
         - name: Portál
           href: deny-assignments-portal.md
@@ -60,7 +76,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: Vlastní role
+    - name: Vytvoření vlastních rolí
       items:
         - name: Přehled
           href: custom-roles.md
@@ -72,7 +88,7 @@
           href: custom-roles-rest.md
     - name: Zobrazení protokolů aktivit
       href: change-history-report.md
-    - name: Zvýšení úrovně přístupu pro správu všech předplatných
+    - name: Zvýšení přístupu
       href: elevate-access-global-admin.md
     - name: Klasičtí správci
       href: classic-administrators.md
@@ -80,8 +96,6 @@
       href: troubleshooting.md
 - name: Referenční informace
   items:
-    - name: Vestavěné role
-      href: built-in-roles.md
     - name: Operace poskytovatele prostředků
       href: resource-provider-operations.md
     - name: Omezení RBAC

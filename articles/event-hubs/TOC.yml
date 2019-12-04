@@ -164,11 +164,11 @@
           href: event-hubs-service-endpoints.md
         - name: Povolení bran firewall a integrace virtuálních sítí v oboru názvů Event Hubs
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Konfigurace klíčů spravovaných zákazníkem pro šifrování neaktivních uložených dat
+        - name: Konfigurace klíčů spravovaných zákazníkem pro šifrování neaktivních uložených dat (Preview)
           href: configure-customer-managed-key.md
     - name: Řešení potíží
       items:
-        - name: Výjimky
+        - name: Průvodce odstraňováním potíží
           href: event-hubs-messaging-exceptions.md
 - name: Referenční informace
   items:

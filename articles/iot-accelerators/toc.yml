@@ -1,24 +1,42 @@
 - name: Dokumentace k akcelerátorům řešení IoT
-  href: index.md
+  href: index.yml
 - name: Přehled
-  expanded: true
   items:
     - name: Co jsou akcelerátory řešení IoT
       href: about-iot-accelerators.md
-    - name: AzureIoTSolution.com
+    - name: AzureIoTSolutions.com
       href: iot-accelerators-permissions.md
-- name: Vzdálené monitorování
-  items:
-    - name: Přehled
+    - name: Vzdálené monitorování
       href: iot-accelerators-remote-monitoring-sample-walkthrough.md
+    - name: Průmyslové IoT
+      href: overview-iot-industrial.md
       items:
-        - name: Architektonické volby
-          href: iot-accelerators-remote-monitoring-architectural-choices.md
-    - name: Šablony Rychlý start
-      items:
-        - name: Vyzkoušení řešení pro vzdálené monitorování
-          href: quickstart-remote-monitoring-deploy.md
-    - name: Kurzy
+        - name: Co je OPC Twin
+          href: overview-opc-twin.md
+        - name: Co je OPC Vault
+          href: overview-opc-vault.md
+        - name: Co je vydavatel OPC
+          href: overview-opc-publisher.md
+        - name: Co je propojená továrna
+          href: iot-accelerators-connected-factory-features.md
+    - name: Simulace zařízení
+      href: iot-accelerators-device-simulation-overview.md
+    - name: Prediktivní údržba
+      href: iot-accelerators-predictive-walkthrough.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Vyzkoušení řešení pro vzdálené monitorování
+      href: quickstart-remote-monitoring-deploy.md
+    - name: Vyzkoušení řešení propojené továrny
+      href: quickstart-connected-factory-deploy.md
+    - name: Vyzkoušení řešení simulace zařízení
+      href: quickstart-device-simulation-deploy.md
+    - name: Vyzkoušení řešení prediktivní údržby
+      href: quickstart-predictive-maintenance-deploy.md
+- name: Kurzy
+  items:
+    - name: Vzdálené monitorování
       items:
         - name: Monitorování zařízení IoT
           href: iot-accelerators-remote-monitoring-monitor.md
@@ -34,7 +52,31 @@
           href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
         - name: Detekce anomálií na hraničních zařízeních
           href: iot-accelerators-remote-monitoring-edge.md
-    - name: Návody
+    - name: Simulace zařízení
+      items:
+        - name: Vytvoření a spuštění simulace
+          href: iot-accelerators-device-simulation-create-simulation.md
+        - name: Vytvoření vlastního simulovaného zařízení
+          href: iot-accelerators-device-simulation-create-custom-device.md
+- name: Koncepty
+  items:
+    - name: Vzdálené monitorování
+      items:
+        - name: Architektura
+          href: iot-accelerators-remote-monitoring-architectural-choices.md
+        - name: Schéma modelu zařízení
+          href: iot-accelerators-remote-monitoring-device-schema.md
+        - name: Chování modelu zařízení
+          href: iot-accelerators-remote-monitoring-device-behavior.md
+    - name: Průmyslové IoT
+      items:
+        - name: Architektura využívající technologii OPC Twin
+          href: overview-opc-twin-architecture.md
+        - name: Architektura služby OPC Vault
+          href: overview-opc-vault-architecture.md
+- name: Návody
+  items:
+    - name: Vzdálené monitorování
       items:
         - name: Nasazení řešení
           items:
@@ -107,51 +149,7 @@
               href: iot-accelerators-remote-monitoring-rbac-tsi.md
         - name: Integrace dat SIM
           href: iot-accelerators-remote-monitoring-telefonica-sim.md
-    - name: Referenční informace
-      items:
-        - name: Schéma modelu zařízení
-          href: iot-accelerators-remote-monitoring-device-schema.md
-        - name: Chování modelu zařízení
-          href: iot-accelerators-remote-monitoring-device-behavior.md
-    - name: Zdroje a prostředky
-      items:
-        - name: Referenční příručka pro vývojáře (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-        - name: Referenční příručka pro vývojáře (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
-        - name: Průvodce řešením potíží pro vývojáře
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-        - name: Úložiště GitHub (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
-        - name: Úložiště GitHub (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
-        - name: Vzdálené monitorování – nejčastější dotazy
-          href: iot-accelerators-faq-rm-v2.md
-- name: Průmyslové IoT
-  items:
-    - name: Přehled
-      items:
-        - name: Co je průmyslové IoT
-          href: overview-iot-industrial.md
-        - name: Co je OPC Twin
-          href: overview-opc-twin.md
-        - name: Co je OPC Vault
-          href: overview-opc-vault.md
-        - name: Co je vydavatel OPC
-          href: overview-opc-publisher.md
-        - name: Co je propojená továrna
-          href: iot-accelerators-connected-factory-features.md
-    - name: Šablony Rychlý start
-      items:
-        - name: Vyzkoušení řešení propojené továrny
-          href: quickstart-connected-factory-deploy.md
-    - name: Koncepty
-      items:
-        - name: Architektura využívající technologii OPC Twin
-          href: overview-opc-twin-architecture.md
-        - name: Architektura služby OPC Vault
-          href: overview-opc-vault-architecture.md
-    - name: Návody
+    - name: Průmyslové IoT
       items:
         - name: Propojená továrna
           items:
@@ -185,27 +183,7 @@
               href: howto-opc-publisher-configure.md
             - name: Spuštění vydavatele OPC
               href: howto-opc-publisher-run.md
-    - name: Zdroje a prostředky
-      items:
-        - name: Úložiště GitHub
-          href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: Propojená továrna – nejčastější dotazy
-          href: iot-accelerators-faq-cf.md
-- name: Simulace zařízení
-  items:
-    - name: Přehled
-      href: iot-accelerators-device-simulation-overview.md
-    - name: Šablony Rychlý start
-      items:
-        - name: Vyzkoušení řešení simulace zařízení
-          href: quickstart-device-simulation-deploy.md
-    - name: Kurzy
-      items:
-        - name: Vytvoření a spuštění simulace
-          href: iot-accelerators-device-simulation-create-simulation.md
-        - name: Vytvoření vlastního simulovaného zařízení
-          href: iot-accelerators-device-simulation-create-custom-device.md
-    - name: Návody
+    - name: Simulace zařízení
       items:
         - name: Použití existující služby IoT Hub
           href: iot-accelerators-device-simulation-choose-hub.md
@@ -217,44 +195,10 @@
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Nasazení vlastní image Dockeru
           href: iot-accelerators-device-simulation-deploy-image.md
-    - name: Zdroje a prostředky
-      items:
-        - name: Referenční příručka pro vývojáře
-          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
-        - name: Úložiště GitHub
-          href: 'https://github.com/Azure/device-simulation-dotnet'
-- name: Prediktivní údržba
-  items:
-    - name: Přehled
-      href: iot-accelerators-predictive-walkthrough.md
-    - name: Šablony Rychlý start
-      items:
-        - name: Vyzkoušení řešení prediktivní údržby
-          href: quickstart-predictive-maintenance-deploy.md
-    - name: Zdroje a prostředky
-      items:
-        - name: Úložiště GitHub
-          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
-- name: Referenční architektura
-  items:
-    - name: Přehled
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
-    - name: Implementace partnerů
-      items:
-        - name: Intel CLP (Connected Logistics Platform)
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
-        - name: Dynamometrické analýzy hraničních zařízení
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
-        - name: Řešení pro digitální reklamní panely
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
 - name: Související
   items:
-    - name: Řešení
-      items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: Akcelerátory řešení IoT
-          href: /azure/iot-accelerators
+    - name: IoT Central
+      href: 'https://docs.microsoft.com/microsoft-iot-central/'
     - name: Služby platformy
       items:
         - name: IoT Hub
@@ -277,8 +221,47 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Vzdálené monitorování
+      items:
+        - name: Referenční příručka pro vývojáře (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: Referenční příručka pro vývojáře (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
+        - name: Průvodce řešením potíží pro vývojáře
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+        - name: Úložiště GitHub (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: Úložiště GitHub (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: Vzdálené monitorování – nejčastější dotazy
+          href: iot-accelerators-faq-rm-v2.md
+    - name: Průmyslové IoT
+      items:
+        - name: Úložiště GitHub
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: Propojená továrna – nejčastější dotazy
+          href: iot-accelerators-faq-cf.md
+    - name: Simulace zařízení
+      items:
+        - name: Referenční příručka pro vývojáře
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+        - name: Úložiště GitHub
+          href: 'https://github.com/Azure/device-simulation-dotnet'
+    - name: Úložiště GitHub pro prediktivní údržbu
+      href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
+    - name: Referenční architektura
+      href: iot-accelerators-architecture-overview.md
+      items:
+        - name: Ke stažení
+          href: 'https://aka.ms/iotrefarchitecture'
+        - name: Implementace partnerů
+          items:
+            - name: Intel CLP (Connected Logistics Platform)
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
+            - name: Dynamometrické analýzy hraničních zařízení
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
+            - name: Řešení pro digitální reklamní panely
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
     - name: Nejčastější dotazy
       href: iot-accelerators-faq.md
     - name: Stack Overflow
