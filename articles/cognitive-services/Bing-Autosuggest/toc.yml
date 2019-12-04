@@ -1,5 +1,5 @@
 - name: Dokumentace k Automatickým návrhům Bingu
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Přehled
   items:
     - name: Co jsou Automatické návrhy Bingu?

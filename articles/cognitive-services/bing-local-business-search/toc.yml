@@ -1,5 +1,5 @@
 - name: Dokumentace k rozhraní API Bingu pro místní obchodní vyhledávání
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
   expanded: true
   items: null
 - name: Přehled

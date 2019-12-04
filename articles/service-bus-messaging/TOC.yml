@@ -205,7 +205,7 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Řešení potíží
       items:
-        - name: Výjimky
+        - name: Průvodce odstraňováním potíží
           href: service-bus-messaging-exceptions.md
 - name: Referenční informace
   items:
