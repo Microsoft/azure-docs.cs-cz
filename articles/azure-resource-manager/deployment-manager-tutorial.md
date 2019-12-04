@@ -1,16 +1,16 @@
 ---
-title: Použití Azure Deployment Manageru s šablonami Resource Manageru | Microsoft Docs
-description: Nasazujte prostředky Azure s využitím šablon Resource Manageru a Azure Deployment Manageru.
+title: Použití Azure Deployment Manager k nasazení šablon
+description: Naučte se používat Správce prostředků šablony s Azure Deployment Manager k nasazení prostředků Azure.
 author: mumian
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: db130da9943007e647adf77411b456914af9886f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: f8091aedcf1f03ef83dbab3b27e9af6b2912d25a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307029"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789984"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Public Preview)
 
@@ -47,12 +47,12 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
 * Určité zkušenosti s vývojem [šablon Azure Resource Manageru](./resource-group-overview.md).
-* Azure PowerShell Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Azure Powershell Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Rutiny Deployment Manageru. K instalaci těchto předběžných verzí rutin potřebujete nejnovější verzi modulu PowerShellGet. Pokud chcete získat nejnovější verzi, přečtěte si článek [Instalace modulu PowerShellGet](/powershell/scripting/gallery/installing-psget). Jakmile nainstalujete PowerShellGet, zavřete okno PowerShellu. Otevřete nové okno prostředí PowerShell se zvýšenými oprávněními a použijte tento příkaz:
 
     ```powershell
@@ -186,7 +186,7 @@ V pozdější části kurzu nasadíte uvedení. K provedení akcí nasazení (na
 
 Je potřeba vytvořit spravovanou identitu přiřazenou uživatelem a nakonfigurovat řízení přístupu pro vaše předplatné.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vytvořte [spravovanou identitu přiřazenou uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. V levé nabídce portálu vyberte **Předplatná** a pak vyberte své předplatné.
 4. Vyberte **řízení přístupu (IAM)** a pak vyberte **Přidat přiřazení role**.
@@ -197,7 +197,7 @@ Je potřeba vytvořit spravovanou identitu přiřazenou uživatelem a nakonfigur
     * **Role:** Udělte dostatečná oprávnění k dokončení nasazení artefaktů (webové aplikace a účty úložiště). Pro účely tohoto kurzu vyberte roli **Přispěvatel**. V praxi byste měli oprávnění omezit na minimum.
     * **Přiřazený přístup:** Vyberte **Spravovaná identita přiřazená uživatelem**.
     * Vyberte spravovanou identitu přiřazenou uživatelem, kterou jste vytvořili v dřívější části kurzu.
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
 ## <a name="create-the-service-topology-template"></a>Vytvoření šablony topologie služby
 
@@ -427,7 +427,7 @@ K nasazení šablon je možné použít Azure PowerShell.
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Otevřete [portál Azure](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 2. Přejděte k nově vytvořeným webovým aplikacím v nových skupinách prostředků vytvořených nasazením uvedení.
 3. Otevřete webovou aplikaci ve webovém prohlížeči. Zkontrolujte umístění a verzi souboru index.html.
 

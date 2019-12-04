@@ -1,22 +1,18 @@
 ---
-title: Automatizace úloh s více službami Azure – Azure Logic Apps
+title: Automatizace úloh s více službami Azure
 description: Kurz – vytvoření automatizovaných pracovních postupů pro zpracování e-mailů pomocí Azure Logic Apps, Azure Storage a Azure Functions
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 52c9a23e3e00075e934b9f9f22a835090e02f1b9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 6486427753543e0f4fe9a197b6825a555ef2fc70
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820117"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793479"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Kurz: automatizace úloh pro zpracování e-mailů pomocí Azure Logic Apps, Azure Functions a Azure Storage
 
@@ -62,8 +58,8 @@ Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejner
    |---------|-------|-------------|
    | **Předplatné** | <*název_předplatného_Azure*> | Název vašeho předplatného Azure |  
    | **Skupina prostředků** | <*Azure-Resource-group*> | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md), který slouží k uspořádání a správě souvisejících prostředků V tomto příkladu se používá "LA-tutorial-RG". <p>**Poznámka:** Skupina prostředků existuje v konkrétní oblasti. Položky z tohoto kurzu nemusí být k dispozici ve všech oblastech, snažte se nicméně používat stejnou oblast, kdykoli je to možné. |
-   | **Název účtu úložiště** | <*Azure-Storage-Account-name* > | Název účtu úložiště, který musí mít 3-24 znaků a může obsahovat jenom malá písmena a číslice. V tomto příkladu se používá "attachmentstorageacct". |
-   | **Umístění** | <*Azure-region*> | Oblast, kam se mají ukládat informace o vašem účtu úložiště V tomto příkladu se používá "Západní USA". |
+   | **Název účtu úložiště** | <*Azure-Storage-Account-name*> | Název účtu úložiště, který musí mít 3-24 znaků a může obsahovat jenom malá písmena a číslice. V tomto příkladu se používá "attachmentstorageacct". |
+   | **Umístění** | <*Azure – oblast*> | Oblast, kam se mají ukládat informace o vašem účtu úložiště V tomto příkladu se používá "Západní USA". |
    | **Výkon** | Úroveň Standard | Toto nastavení specifikuje podporované datové typy a média pro ukládání dat. Další informace najdete v tématu [Typy účtů úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Druh účtu** | Obecné použití | [Typ účtu úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts) |
    | **Replikace** | Místně redundantní úložiště (LRS) | Toto nastavení určuje, jak se budou kopírovat, ukládat, spravovat a synchronizovat data. Viz [místně redundantní úložiště (LRS): redundance dat s nízkými náklady pro Azure Storage](../storage/common/storage-redundancy-lrs.md). |
@@ -144,7 +140,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
 
    | Nastavení | Hodnota | Popis |
    | ------- | ----- | ----------- |
-   | **Název aplikace** | <*Function-App-name* > | Název vaší aplikace Function App, který musí být globálně jedinečný v rámci Azure. Tento příklad už používá "CleanTextFunctionApp", takže zadejte jiný název, jako je například "MyCleanTextFunctionApp-<*your-name*>". |
+   | **Název aplikace** | <*Function-App-name*> | Název vaší aplikace Function App, který musí být globálně jedinečný v rámci Azure. Tento příklad už používá "CleanTextFunctionApp", takže zadejte jiný název, jako je například "MyCleanTextFunctionApp-<*your-name*>". |
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Stejné předplatné Azure, jaké jste používali dříve |
    | **Skupina prostředků** | LA-Tutorial-RG | Stejná skupina prostředků Azure, jakou jste používali dříve |
    | **OS** | <*vašeho operačního systému*> | Vyberte operační systém, který podporuje váš oblíbený programovací jazyk funkcí. V tomto příkladu vyberte možnost **Windows**. |

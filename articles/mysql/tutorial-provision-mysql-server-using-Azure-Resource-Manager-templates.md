@@ -1,19 +1,19 @@
 ---
-title: 'Kurz: zřízení Azure Database for MySQL serveru pomocí šablony Azure Resource Manager'
+title: 'Kurz: Vytvoření šablony Azure Database for MySQL-Azure Resource Manager'
 description: V tomto kurzu se dozvíte, jak zřídit a automatizovat Azure Database for MySQL nasazení na serverech pomocí Azure Resource Manager šablony.
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.devlang: json
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 69025dd70ffe88c1592cf656e956b3e78a97a5e7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163903"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771084"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Kurz: zřízení Azure Database for MySQL serveru pomocí šablony Azure Resource Manager
 
@@ -88,11 +88,11 @@ V této žádosti jsou hodnoty, které je třeba přizpůsobit, následující:
 +   `sku/tier` – zadejte úroveň Basic, GeneralPurpose nebo MemoryOptimized pro nasazení.
 +   `sku/capacity` – zadejte kapacitu vCore. Možné hodnoty zahrnují 2, 4, 8, 16, 32 nebo 64.
 +   `sku/family` – zadejte Gen5 pro výběr generování hardwaru pro nasazení serveru.
-+   `sku/name` – zadejte TierPrefix_family_capacity. Například B_Gen5_1, GP_Gen5_16, MO_Gen5_32. V dokumentaci k [cenovým úrovním](./concepts-pricing-tiers.md) najdete informace o platných hodnotách pro jednotlivé oblasti a na úrovni.
++   `sku/name` – zadejte TierPrefix_family_capacity. Například B_Gen5_1 GP_Gen5_16 MO_Gen5_32. V dokumentaci k [cenovým úrovním](./concepts-pricing-tiers.md) najdete informace o platných hodnotách pro jednotlivé oblasti a na úrovni.
 +   `resources/properties/virtualNetworkSubnetId` – zadejte identifikátor Azure podsítě ve virtuální síti, kam se má umístit server Azure MySQL. 
 +   `tags(optional)` – zadejte volitelné značky jsou páry klíč-hodnota, které byste použili k kategorizaci prostředků pro fakturaci atd.
 
-Pokud chcete vytvořit šablonu Azure Resource Manager pro automatizaci nasazení Azure Database for MySQL ve vaší organizaci, doporučujeme začít od [šablony ukázka Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) v galerii GitHubu pro rychlý Start Azure. nejprve a sestavte ho nad ním. 
+Pokud chcete vytvořit šablonu Azure Resource Manager pro automatizaci nasazení Azure Database for MySQL pro vaši organizaci, doporučujeme nejdřív začít od šablony vzorové [Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) v galerii GitHub pro rychlý Start v Azure a sestavovat ji nad ní. 
 
 Pokud Azure Resource Manager šablony a chcete si je vyzkoušet, můžete začít pomocí následujících kroků:
 +   Naklonujte nebo Stáhněte vzorovou [šablonu Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) z Galerie Azure pro rychlý Start.  

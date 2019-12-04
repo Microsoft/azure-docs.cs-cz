@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c04875f92ee58c24567fbb4d73d8d01697810f99
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 6a053b94813145f9ccd69158d18edb728d5dad61
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391592"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796175"
 ---
 | Prostředek | Výběr cílového umístění | Omezení pevné velikosti |
 |----------|--------------|------------|
@@ -23,12 +23,11 @@ ms.locfileid: "72391592"
 | Cloudové koncové body na skupinu synchronizace | 1 koncový bod cloudu | Ano |
 | Koncové body serveru na skupinu synchronizace | koncové body serveru 50 | Ne |
 | Koncové body serveru na server | 30 koncových bodů serveru | Ano |
-| Objekty systému souborů (adresáře a soubory) na skupinu synchronizace | objekty 50 000 000 | Ne |
+| Objekty systému souborů (adresáře a soubory) na skupinu synchronizace | objekty 100 000 000 | Ne |
 | Maximální počet objektů systému souborů (adresářů a souborů) v adresáři | objekty 5 000 000 | Ano |
 | Maximální velikost popisovače zabezpečení objektů (adresářů a souborů) | 64 KiB | Ano |
 | Velikost souboru | 100 GiB | Ne |
-| Minimální velikost souboru, který se má převrstvený | 64 KiB | Ano |
-| Souběžné relace synchronizace | Agent v4 a novější: omezení se liší v závislosti na dostupných systémových prostředcích. <BR> V3 agent: dvě aktivní relace synchronizace na jeden procesor nebo maximálně osm aktivních relací synchronizace na jeden server. | Ano
+| Minimální velikost souboru, který se má převrstvený | V9: na základě velikosti clusteru systému souborů (velikost clusteru systému souborů Double). Pokud je například velikost clusteru systému souborů 4kb, minimální velikost souboru bude 8 KB.<br> V8 a starší verze: 64 KiB  | Ano |
 
 > [!Note]  
 > Koncový bod Azure File Sync může škálovat až na velikost sdílené složky Azure. Pokud je dosaženo limitu velikosti sdílené složky Azure, nebude synchronizace moct fungovat.

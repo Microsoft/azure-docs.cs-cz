@@ -8,17 +8,18 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: a01455da36e8ab573773fec2a6da1f7903b8ea20
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: eb2d663a56084fc625c95f1f1a6236385880180d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224479"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796106"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Počet virtuálních počítačů na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |25 000<sup>1</sup> na oblast |25 000 na oblast |
 | Celkový počet jader virtuálního počítače na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast. | Obraťte se na podporu. |
+| Celkový počet jader virtuálních počítačů Azure na jedno [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast. | Obraťte se na podporu. |
 | Virtuální počítač na řadu, například Dv2 a F, jader na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast. | Obraťte se na podporu. |
 | [Spolusprávci](../articles/billing-add-change-azure-subscription-administrator.md) na předplatné |Počet. |Počet. |
 | [Účty úložiště](../articles/storage/common/storage-quickstart-create-account.md) pro jednotlivé oblasti a předplatné |250 |250 |

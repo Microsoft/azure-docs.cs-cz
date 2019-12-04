@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: c52bf372f21d9c2ef3d1a148aadd899435ad4181
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383060"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790335"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Kurz: vizualizace a analýza událostí z digitálních vláken Azure pomocí Time Series Insights
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Streamování dat pomocí Event Hubs Azure
 > * Analýza pomocí Time Series Insights.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že jste [nakonfigurovali](tutorial-facilities-setup.md) a [zřídili](tutorial-facilities-udf.md) vlastní systém Azure Digital Twins. Než budete pokračovat, ujistěte se, že máte následující:
 
@@ -48,15 +48,15 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 ### <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **Vytvořit prostředek**.
 
-1. Vyhledejte a vyberte **Event Hubs**. Vyberte **Vytvořit**.
+1. Vyhledejte a vyberte **Event Hubs**. Vyberte **Create** (Vytvořit).
 
     [![vytvořit obor názvů Event Hubs](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
 
-1. Zadejte **název** oboru názvů Event Hubs. Pro **cenovou úroveň**, vaše **předplatné**, **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a **umístění**, vyberte **Standard** . Vyberte **Vytvořit**.
+1. Zadejte **název** oboru názvů Event Hubs. Pro **cenovou úroveň**, vaše **předplatné**, **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a **umístění**, vyberte **Standard** . Vyberte **Create** (Vytvořit).
 
 1. V Event Hubs nasazení oboru názvů vyberte podokno **Přehled** a pak vyberte **Přejít k prostředku**.
 
@@ -69,7 +69,7 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
    Po nasazení centra událostí se zobrazí v podokně **Event Hubs** Event Hubs oboru názvů s **aktivním** stavem. Vyberte toto centrum událostí a otevřete jeho podokno **přehledu** .
 
-1. V horní části vyberte tlačítko **Skupina příjemců** a jako skupinu příjemců zadejte název, třeba **tsievents** . Vyberte **Vytvořit**.
+1. V horní části vyberte tlačítko **Skupina příjemců** a jako skupinu příjemců zadejte název, třeba **tsievents** . Vyberte **Create** (Vytvořit).
 
     [![skupina uživatelů centra událostí](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
@@ -82,7 +82,7 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
     > [!TIP]
     > Ověřte, že vytváříte zásady SAS pro instanci centra událostí a nikoli obor názvů.
 
-1. Otevřete zásadu **ManageSend**, kterou jste vytvořili, a zkopírujte do dočasného souboru hodnoty **Připojovací řetězec – primární klíč** a **Připojovací řetězec – sekundární klíč**. Tyto hodnoty budete potřebovat pro vytvoření koncového bodu centra událostí v další části.
+1. Otevřete zásadu **ManageSend** , kterou jste vytvořili, a zkopírujte hodnoty **připojovacího řetězce – primární klíč** a **připojovací řetězec – sekundární klíč** do dočasného souboru. Tyto hodnoty budete potřebovat pro vytvoření koncového bodu centra událostí v další části.
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>Vytvoření koncového bodu centra událostí
 
@@ -139,13 +139,13 @@ Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytv
 
 1. V levém podokně [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**. 
 
-1. Vyhledejte a vyberte prostředek **Time Series Insights** obecné dostupnosti (GA). Vyberte **Vytvořit**.
+1. Vyhledejte a vyberte prostředek **Time Series Insights** obecné dostupnosti (GA). Vyberte **Create** (Vytvořit).
 
 1. Zadejte **Název** vaší instance služby Time Series Insights a pak vyberte své **Předplatné**. Vyberte **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a vaši **polohu**. Vyberte **Další: tlačítko zdroje události** nebo karta **zdroj události** .
 
     [![výběrů pro vytvoření instance Time Series Insights](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
-1. Na kartě **zdroj události** zadejte **název**, vyberte **centrum událostí** jako **typ zdroje**a ujistěte se, že jsou vybrané jiné hodnoty správně. Vyberte **ManageSend** pro **název zásady přístupu centra událostí**a pak vyberte skupinu uživatelů, kterou jste vytvořili v předchozí části **skupiny uživatelů centra událostí**. Vyberte **Zkontrolovat a vytvořit**.
+1. Na kartě **zdroj události** zadejte **název**, vyberte **centrum událostí** jako **typ zdroje**a ujistěte se, že jsou vybrané jiné hodnoty, aby odkazovaly na centrum událostí, které jste vytvořili. Vyberte **ManageSend** pro **název zásady přístupu centra událostí**a pak vyberte skupinu uživatelů, kterou jste vytvořili v předchozí části **skupiny uživatelů centra událostí**. Vyberte **Zkontrolovat a vytvořit**.
 
     [![výběry pro vytvoření zdroje události](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
@@ -174,7 +174,7 @@ Pokud chcete přestat zkoumat digitální vlákna Azure nad rámec tohoto bodu, 
 1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte svou skupinu prostředků digitálního vynechání a pak vyberte **Odstranit**.
 
     > [!TIP]
-    > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
+    > Pokud jste narazili na potíže s odstraněním instance digitálního vlákna, aktualizovala se aktualizace služby s touto opravou. Zkuste prosím instanci znovu odstranit.
 
 2. V případě potřeby odstraňte ukázkové aplikace v pracovním počítači.
 

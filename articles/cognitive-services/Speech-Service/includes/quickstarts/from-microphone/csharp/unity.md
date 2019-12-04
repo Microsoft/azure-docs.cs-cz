@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: rozpoznávání řeči z mikrofonu C# , (Unity) – služba pro rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,24 +10,27 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: babc6b1c0b6207d404091db3117f95f6d71c53ac
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b6439c6461ca9f4fa272eb43ef16240175fdec4f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503497"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795616"
 ---
 > [!NOTE]
 > Sada Speech SDK for Unity podporuje Desktop Windows (x86 a x64) nebo Univerzální platforma Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) a iOS (simulátor x64, ARM32 a ARM64).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete, nezapomeňte:
+Než začnete:
 
 > [!div class="checklist"]
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=unity) Pokud jste to již provedli, Skvělé. Pojďme pokračovat.
+> * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=unity)
+> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
+
+Pokud jste to již provedli, Skvělé. Pojďme pokračovat.
 
 ## <a name="create-a-unity-project"></a>Vytvoření projektu Unity
 
@@ -40,7 +43,7 @@ Než začnete, nezapomeňte:
 1. Do **název projektu**zadejte **CSharp-Unity**.
 1. Pokud se v **šablonách**ještě není vybraná možnost **3D** , vyberte ji.
 1. V části **umístění**vyberte nebo vytvořte složku, do které chcete projekt uložit.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 Po uplynutí časového intervalu se zobrazí okno Editor Unity.
 
